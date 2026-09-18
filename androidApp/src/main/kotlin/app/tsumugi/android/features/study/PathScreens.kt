@@ -38,7 +38,7 @@ import app.tsumugi.android.TsumugiApplication
 import app.tsumugi.android.ui.japanese
 import app.tsumugi.domain.ItemKind
 import app.tsumugi.domain.Stage
-import app.tsumugi.srs.PathItem
+import app.tsumugi.srs.LevelEntry
 import app.tsumugi.srs.PathItemDetail
 import app.tsumugi.srs.PathStatus
 import kotlinx.coroutines.launch
@@ -80,17 +80,17 @@ fun PathLevelsScreen(onOpenLevel: (Int) -> Unit) {
 @Composable
 fun PathLevelScreen(level: Int, onOpenItem: (String) -> Unit) {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
-    var items by remember(level) { mutableStateOf<List<Pair<PathItem, Stage?>>?>(null) }
+    var items by remember(level) { mutableStateOf<List<LevelEntry>?>(null) }
     LaunchedEffect(level) { items = graph.path()?.level(level) }
     val list = items ?: return Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
     LazyVerticalGrid(GridCells.Adaptive(76.dp), Modifier.fillMaxSize().padding(8.dp), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         for (kind in listOf(ItemKind.RADICAL, ItemKind.KANJI, ItemKind.VOCAB)) {
-            val group = list.filter { it.first.kind == kind }
+            val group = list.filter { it.item.kind == kind }
             if (group.isEmpty()) continue
             item(span = { GridItemSpan(maxLineSpan) }) {
-                Text("${kind.label} (${group.count { it.second != null }}/${group.size})", style = MaterialTheme.typography.titleSmall, modifier = Modifier.padding(top = 8.dp))
+                Text("${kind.label} (${group.count { it.stage != null }}/${group.size})", style = MaterialTheme.typography.titleSmall, modifier = Modifier.padding(top = 8.dp))
             }
-            items(group, key = { it.first.id }) { (item, stage) ->
+            items(group, key = { it.item.id }) { (item, stage) ->
                 Column(
                     Modifier
                         .background(if (stage == null) Color.Gray.copy(alpha = 0.25f) else kindColor(kind), RoundedCornerShape(10.dp))

@@ -10,7 +10,6 @@ import app.tsumugi.study.LessonSession
 import app.tsumugi.study.LessonState
 import app.tsumugi.study.ReviewSession
 import app.tsumugi.study.ReviewState
-import app.tsumugi.study.StatsService
 import app.tsumugi.study.StatsSnapshot
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -38,11 +37,11 @@ class StudyOverviewViewModel(app: Application) : AndroidViewModel(app) {
         val path = graph.path()
         _pathMissing.value = path == null
         _status.value = path?.status()
-        _stats.value = StatsService(graph.userDatabase, graph.srs(), graph.settings).snapshot()
+        _stats.value = graph.stats.snapshot()
     }
 
     fun setVacation(on: Boolean) = viewModelScope.launch {
-        StatsService(graph.userDatabase, graph.srs(), graph.settings).setVacation(on)
+        graph.stats.setVacation(on)
         refresh()
     }
 }

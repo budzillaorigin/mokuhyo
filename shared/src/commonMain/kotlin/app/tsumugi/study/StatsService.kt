@@ -5,6 +5,7 @@ import app.tsumugi.domain.ItemKind
 import app.tsumugi.domain.Stage
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.SrsRepository
+import app.tsumugi.srs.StageCount
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
@@ -37,7 +38,13 @@ data class StatsSnapshot(
     val stages: Map<Stage, Int>,
     /** Reviews coming due per day for the next week (today first). */
     val forecast: List<DayCount>,
-)
+) {
+    /** List forms of the maps above, in a fixed order (easier to render, and to use from Swift). */
+    val stageList: List<StageCount> get() = Stage.entries.map { StageCount(it, stages[it] ?: 0) }
+    val accuracyList: List<KindAccuracy> get() = accuracy.map { (k, a) -> KindAccuracy(k, a) }.sortedBy { it.kind.ordinal }
+}
+
+data class KindAccuracy(val kind: ItemKind, val accuracy: Accuracy)
 
 /**
  * Progress numbers for the Me tab and Today screen (BRIEF §5.12). Everything is derived from the review log,

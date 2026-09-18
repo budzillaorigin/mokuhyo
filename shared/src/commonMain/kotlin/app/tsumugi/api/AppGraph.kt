@@ -15,6 +15,7 @@ import app.tsumugi.srs.PathService
 import app.tsumugi.srs.SrsRepository
 import app.tsumugi.study.LessonSession
 import app.tsumugi.study.ReviewSession
+import app.tsumugi.study.StatsService
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
@@ -31,6 +32,7 @@ class AppGraph(val platform: PlatformServices) {
     val device: DeviceState by lazy { DeviceState(userDatabase) }
     val settings: SettingsRepository by lazy { SettingsRepository(userDatabase) }
     val srs: SrsRepository by lazy { SrsRepository(userDatabase, device.deviceId) }
+    val stats: StatsService by lazy { StatsService(userDatabase, srs, settings) }
 
     private val lock = Mutex()
     private var dictionaryRepository: DictionaryRepository? = null
@@ -49,7 +51,7 @@ class AppGraph(val platform: PlatformServices) {
 
     /** The 60-level kanji path, or null when the path pack isn't installed. */
     suspend fun path(): PathService? {
-        val srs = srs()
+        val srs = configuredSrs()
         return lock.withLock {
             pathService ?: openPack(PackInstaller.KANJI_PATH) {
                 PathService(PathDatabase(platform.packDriver(PathDatabase.Schema, PackInstaller.KANJI_PATH)), srs, settings)
@@ -58,7 +60,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** SRS repository with the user's scheduler settings (fitted FSRS weights, desired retention) applied. */
-    suspend fun srs(): SrsRepository {
+    suspend fun configuredSrs(): SrsRepository {
         if (!schedulerLoaded) {
             srs.scheduler = FsrsScheduler(schedulerParameters())
             schedulerLoaded = true
@@ -66,16 +68,16 @@ class AppGraph(val platform: PlatformServices) {
         return srs
     }
 
-    suspend fun startReviews(limit: Int = 500): ReviewSession = ReviewSession.start(srs(), limit)
+    suspend fun startReviews(limit: Int = 500): ReviewSession = ReviewSession.start(configuredSrs(), limit)
 
     suspend fun startLessons(): LessonSession? {
         val path = path() ?: return null
-        val batch = path.lessonQueue(settings.int(SettingsRepository.LESSON_BATCH_SIZE, DEFAULT_LESSON_BATCH))
+        val batch = path.lessonQueue(settings.lessonBatchSize())
         return if (batch.isEmpty()) null else LessonSession(path, batch)
     }
 
     private suspend fun schedulerParameters(): FsrsParameters {
-        val retention = settings.get(SettingsRepository.DESIRED_RETENTION)?.toDoubleOrNull() ?: 0.9
+        val retention = settings.desiredRetention()
         val weights = settings.get(SettingsRepository.FSRS_WEIGHTS)
             ?.let { runCatching { Json.decodeFromString<List<Double>>(it) }.getOrNull() }
             ?: FsrsParameters.DEFAULT_WEIGHTS
@@ -89,7 +91,8 @@ class AppGraph(val platform: PlatformServices) {
             PackStatus.Missing -> null
         }
 
-    companion object {
-        const val DEFAULT_LESSON_BATCH = 5
+    /** Call after changing scheduler settings so the next review uses them. */
+    fun reloadScheduler() {
+        schedulerLoaded = false
     }
 }

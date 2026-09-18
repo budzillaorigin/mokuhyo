@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import app.tsumugi.android.TsumugiApplication
-import app.tsumugi.api.AppGraph
 import app.tsumugi.settings.SettingsRepository
 import kotlinx.coroutines.launch
 
@@ -29,17 +28,17 @@ import kotlinx.coroutines.launch
 fun SettingsScreen() {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
     val scope = rememberCoroutineScope()
-    var batch by remember { mutableFloatStateOf(AppGraph.DEFAULT_LESSON_BATCH.toFloat()) }
+    var batch by remember { mutableFloatStateOf(SettingsRepository.DEFAULT_LESSON_BATCH.toFloat()) }
     var retention by remember { mutableFloatStateOf(0.9f) }
     LaunchedEffect(Unit) {
-        batch = graph.settings.int(SettingsRepository.LESSON_BATCH_SIZE, AppGraph.DEFAULT_LESSON_BATCH).toFloat()
-        retention = graph.settings.get(SettingsRepository.DESIRED_RETENTION)?.toFloatOrNull() ?: 0.9f
+        batch = graph.settings.lessonBatchSize().toFloat()
+        retention = graph.settings.desiredRetention().toFloat()
     }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text("Lessons per batch: ${batch.toInt()}", style = MaterialTheme.typography.titleMedium)
         Slider(
             value = batch, onValueChange = { batch = it }, valueRange = 3f..15f, steps = 11,
-            onValueChangeFinished = { scope.launch { graph.settings.put(SettingsRepository.LESSON_BATCH_SIZE, batch.toInt().toString()) } },
+            onValueChangeFinished = { scope.launch { graph.settings.setLessonBatchSize(batch.toInt()) } },
         )
         Text("Desired retention: ${(retention * 100).toInt()}%", style = MaterialTheme.typography.titleMedium)
         Text(
@@ -48,7 +47,12 @@ fun SettingsScreen() {
         )
         Slider(
             value = retention, onValueChange = { retention = it }, valueRange = 0.8f..0.97f,
-            onValueChangeFinished = { scope.launch { graph.settings.put(SettingsRepository.DESIRED_RETENTION, "%.2f".format(retention)) } },
+            onValueChangeFinished = {
+                scope.launch {
+                    graph.settings.setDesiredRetention(retention.toDouble())
+                    graph.reloadScheduler()
+                }
+            },
         )
     }
 }

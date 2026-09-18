@@ -65,7 +65,12 @@ data class ReviewSummary(
     val leeches: List<StudyItem>,
 ) {
     val accuracy: Double get() = if (reviewed == 0) 0.0 else correct.toDouble() / reviewed
+
+    /** [byKind] as a list in kind order. */
+    val kinds: List<KindResult> get() = byKind.map { (k, t) -> KindResult(k, t.correct, t.total) }.sortedBy { it.kind.ordinal }
 }
+
+data class KindResult(val kind: ItemKind, val correct: Int, val total: Int)
 
 sealed interface ReviewState {
     data class Asking(

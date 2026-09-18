@@ -45,6 +45,11 @@ data class PathItemDetail(
     val synonyms: List<String>,
 )
 
+/** One cell of the level grid. [stage] is null when the item hasn't been started. */
+data class LevelEntry(val item: PathItem, val stage: Stage?)
+
+data class StageCount(val stage: Stage, val count: Int)
+
 data class PathStatus(
     val currentLevel: Int,
     val maxLevel: Int,
@@ -53,7 +58,10 @@ data class PathStatus(
     val availableLessons: Int,
     val dueReviews: Int,
     val stageCounts: Map<Stage, Int>,
-)
+) {
+    /** [stageCounts] for every stage in order, zeros included (list form for Swift). */
+    val stages: List<StageCount> get() = Stage.entries.map { StageCount(it, stageCounts[it] ?: 0) }
+}
 
 /**
  * The WaniKani-style kanji path (BRIEF §5.4): which lessons are unlocked, taking lessons, and level progress.
@@ -122,10 +130,10 @@ class PathService(
     suspend fun saveMyStory(itemId: String, story: String) = srs.saveNote(itemId, myStory = story)
 
     /** Items of one level with their current stage (null = not started), for the level grid. */
-    suspend fun level(level: Int): List<Pair<PathItem, Stage?>> {
+    suspend fun level(level: Int): List<LevelEntry> {
         val (items, _) = loaded()
         val stages = srs.stages()
-        return items.filter { it.level == level }.map { it to stages[it.id] }
+        return items.filter { it.level == level }.map { LevelEntry(it, stages[it.id]) }
     }
 
     /** Lesson finished: the items join the user's collection and their cards enter the review queue. */

@@ -20,7 +20,17 @@ class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clo
     suspend fun int(key: String, default: Int): Int = get(key)?.toIntOrNull() ?: default
     suspend fun bool(key: String, default: Boolean): Boolean = get(key)?.toBooleanStrictOrNull() ?: default
 
+    suspend fun lessonBatchSize(): Int = int(LESSON_BATCH_SIZE, DEFAULT_LESSON_BATCH)
+    suspend fun setLessonBatchSize(size: Int) = put(LESSON_BATCH_SIZE, size.coerceIn(1, 50).toString())
+
+    /** Target recall probability for FSRS (0.7–0.99). Takes effect for the next scheduled review. */
+    suspend fun desiredRetention(): Double = get(DESIRED_RETENTION)?.toDoubleOrNull() ?: DEFAULT_RETENTION
+    suspend fun setDesiredRetention(value: Double) = put(DESIRED_RETENTION, value.coerceIn(0.7, 0.99).toString())
+
     companion object Keys {
+        const val DEFAULT_LESSON_BATCH = 5
+        const val DEFAULT_RETENTION = 0.9
+
         /** Lowest path level the learner is on (manual level skip / known-kanji import). */
         const val PATH_LEVEL_FLOOR = "path.levelFloor"
         /** JSON array of path item ids unlocked by hand. */
