@@ -2,6 +2,9 @@ package app.tsumugi.study
 
 import app.tsumugi.domain.CardDirection
 import app.tsumugi.domain.ItemKind
+import app.tsumugi.grammar.ExerciseKind
+import app.tsumugi.grammar.GrammarExercise
+import app.tsumugi.grammar.GrammarService
 import app.tsumugi.srs.AnswerChecker
 import app.tsumugi.srs.Rating
 import app.tsumugi.srs.SrsRepository
@@ -23,6 +26,10 @@ enum class AnswerMode {
     READING,
     /** Flashcard: reveal, then grade yourself Again/Hard/Good/Easy. */
     SELF_GRADED,
+    /** Grammar: type the construction missing from a sentence. */
+    CLOZE,
+    /** Grammar: put shuffled chunks of a sentence in order. */
+    BUILD,
 }
 
 data class ReviewPrompt(
@@ -31,6 +38,8 @@ data class ReviewPrompt(
     val mode: AnswerMode,
     /** True for a missed card re-asked at the end of the session; practice answers are not recorded. */
     val practice: Boolean = false,
+    /** Grammar cards: the sentence exercise chosen for this review. */
+    val exercise: GrammarExercise? = null,
 ) {
     /** "Kanji · Meaning", "Vocabulary · Reading", … */
     val label: String
@@ -38,12 +47,22 @@ data class ReviewPrompt(
             CardDirection.MEANING -> "Meaning"
             CardDirection.READING -> "Reading"
             CardDirection.RECALL -> "Recall"
+            CardDirection.CLOZE, CardDirection.GHOST -> if (mode == AnswerMode.BUILD) "Build the sentence" else "Fill the gap"
             else -> "Recognition"
         }
 
     /** What to show as the question. RECALL cards ask from the meaning side. */
     val question: String
-        get() = if (card.direction == CardDirection.RECALL) item.meanings.joinToString(", ") else item.primaryText
+        get() = when {
+            exercise != null && mode == AnswerMode.BUILD -> exercise.example.english
+            exercise != null -> exercise.prompt
+            card.direction == CardDirection.RECALL -> item.meanings.joinToString(", ")
+            else -> item.primaryText
+        }
+
+    /** Cloze hint: the translation and the grammar point being practised. */
+    val hint: String?
+        get() = exercise?.let { if (mode == AnswerMode.CLOZE) "${it.example.english}  ·  ${it.point.meaning}" else it.point.title }
 
     /** The accepted answers, shown after answering. */
     val expected: List<String>
@@ -51,6 +70,8 @@ data class ReviewPrompt(
             AnswerMode.MEANING -> item.meanings
             AnswerMode.READING -> item.acceptedReadings
             AnswerMode.SELF_GRADED -> if (card.direction == CardDirection.RECALL) listOf(item.primaryText) else item.meanings
+            AnswerMode.CLOZE -> listOfNotNull(exercise?.example?.answer)
+            AnswerMode.BUILD -> listOfNotNull(exercise?.example?.japanese)
         }
 }
 
@@ -112,9 +133,23 @@ class ReviewSession(
     private val items: Map<String, StudyItem>,
     private val clock: Clock = Clock.System,
     random: Random = Random.Default,
+    /** Exercises for grammar cards, by card id (cards without one are skipped). */
+    exercises: Map<String, GrammarExercise> = emptyMap(),
+    private val grammar: GrammarService? = null,
 ) {
     private val queue = ArrayDeque(
-        cards.filter { it.itemId in items }.shuffled(random).map { ReviewPrompt(it, items.getValue(it.itemId), modeFor(it.direction)) },
+        cards.filter { it.itemId in items }
+            .filter { !it.direction.isGrammar || it.id in exercises }
+            .shuffled(random)
+            .map { card ->
+                val exercise = exercises[card.id]
+                val mode = when (exercise?.kind) {
+                    ExerciseKind.BUILD -> AnswerMode.BUILD
+                    ExerciseKind.CLOZE -> AnswerMode.CLOZE
+                    null -> modeFor(card.direction)
+                }
+                ReviewPrompt(card, items.getValue(card.itemId), mode, exercise = exercise)
+            },
     )
     private val results = ArrayList<Pair<ReviewPrompt, Boolean>>()
     private var lastOutcome: SrsRepository.ReviewOutcome? = null
@@ -134,6 +169,7 @@ class ReviewSession(
         val check = when (prompt.mode) {
             AnswerMode.MEANING -> AnswerChecker.checkMeaning(answer, item.meanings, item.synonyms)
             AnswerMode.READING -> AnswerChecker.checkReading(answer, item.acceptedReadings)
+            AnswerMode.CLOZE, AnswerMode.BUILD -> grammar?.check(prompt.exercise ?: return, answer) ?: return
             AnswerMode.SELF_GRADED -> return
         }
         if (check.verdict == Verdict.WRONG_KIND) {
@@ -207,6 +243,13 @@ class ReviewSession(
         val now = clock.now()
         lastOutcome = srs.review(prompt.card.id, rating, now - shownAt, answer, correct, now)
         results += prompt to correct
+        if (grammar != null && prompt.card.direction.isGrammar) {
+            if (prompt.card.direction == CardDirection.GHOST) {
+                grammar.ghostAnswered(prompt.card.id, correct)
+            } else if (!correct) {
+                grammar.spawnGhost(prompt.item.id)
+            }
+        }
     }
 
     private suspend fun advance() {
@@ -244,14 +287,27 @@ class ReviewSession(
         fun modeFor(direction: CardDirection): AnswerMode = when (direction) {
             CardDirection.MEANING -> AnswerMode.MEANING
             CardDirection.READING -> AnswerMode.READING
+            CardDirection.CLOZE, CardDirection.GHOST -> AnswerMode.CLOZE
             else -> AnswerMode.SELF_GRADED
         }
 
-        /** A session over everything due now (up to [limit] cards). */
-        suspend fun start(srs: SrsRepository, limit: Int = 500, clock: Clock = Clock.System): ReviewSession {
+        private val CardDirection.isGrammar: Boolean get() = this == CardDirection.CLOZE || this == CardDirection.GHOST
+
+        /** A session over everything due now (up to [limit] cards). Grammar cards need [grammar] for exercises. */
+        suspend fun start(
+            srs: SrsRepository,
+            grammar: GrammarService? = null,
+            limit: Int = 500,
+            clock: Clock = Clock.System,
+            random: Random = Random.Default,
+        ): ReviewSession {
             val cards = srs.dueCards(limit, clock.now())
             val items = srs.items(cards.map { it.itemId }.toSet())
-            return ReviewSession(srs, cards, items, clock)
+            val exercises = if (grammar == null) emptyMap() else cards
+                .filter { it.direction.isGrammar }
+                .mapNotNull { c -> grammar.exercise(c.itemId.removePrefix("g:"), random)?.let { c.id to it } }
+                .toMap()
+            return ReviewSession(srs, cards, items, clock, random, exercises, grammar)
         }
     }
 }

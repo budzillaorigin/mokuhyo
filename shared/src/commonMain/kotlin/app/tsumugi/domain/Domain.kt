@@ -19,7 +19,12 @@ enum class ItemSource(val code: String) {
  * What a card asks. Kanji-path items use MEANING/READING (typed answers, WaniKani-style); flashcards imported
  * from Anki use RECOGNITION/RECALL (self-graded); the rest arrive with their features.
  */
-enum class CardDirection { RECOGNITION, RECALL, MEANING, READING, WRITING, LISTENING, CLOZE, PRODUCTION }
+enum class CardDirection {
+    RECOGNITION, RECALL, MEANING, READING, WRITING, LISTENING, CLOZE, PRODUCTION,
+
+    /** Bunpro-style "ghost": a short-lived extra grammar card spawned by a miss, retired after two correct answers. */
+    GHOST,
+}
 
 enum class RelationKind { COMPONENT, USES_KANJI, GRAMMAR_EXAMPLE, SIMILAR, CONFUSED_WITH }
 

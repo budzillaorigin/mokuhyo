@@ -55,11 +55,22 @@ fun ReviewScreen(onDone: () -> Unit) {
             is ReviewState.Asking -> {
                 Progress(s.done, s.remaining + 1)
                 Text(s.prompt.label + if (s.prompt.practice) " · practice" else "", style = MaterialTheme.typography.labelLarge)
-                ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                val exercise = s.prompt.exercise
+                if (exercise != null) {
+                    Text(s.prompt.question, style = MaterialTheme.typography.headlineSmall.japanese())
+                    s.prompt.hint?.let { Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                } else {
+                    ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                }
                 if (s.prompt.mode == AnswerMode.SELF_GRADED) {
                     Button(onClick = vm::reveal, Modifier.fillMaxWidth()) { Text("Show answer") }
+                } else if (s.prompt.mode == AnswerMode.BUILD && exercise != null) {
+                    BuildAnswer(exercise, resetKey = s.prompt.card.id + s.done + s.prompt.practice) { vm.submit(it) }
                 } else {
-                    AnswerField(s.prompt.mode, enabled = true, resetKey = s.prompt.card.id + s.done + s.prompt.practice) { vm.submit(it) }
+                    AnswerField(
+                        if (s.prompt.mode == AnswerMode.CLOZE) AnswerMode.READING else s.prompt.mode,
+                        enabled = true, resetKey = s.prompt.card.id + s.done + s.prompt.practice,
+                    ) { vm.submit(it) }
                     s.hint?.let { Text(it, color = MaterialTheme.colorScheme.tertiary) }
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -81,7 +92,14 @@ fun ReviewScreen(onDone: () -> Unit) {
             is ReviewState.Answered -> {
                 Progress(s.done, s.remaining)
                 Text(s.prompt.label, style = MaterialTheme.typography.labelLarge)
-                ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                val exercise = s.prompt.exercise
+                if (exercise != null) {
+                    Text(exercise.example.japanese, style = MaterialTheme.typography.headlineSmall.japanese())
+                    Text(exercise.example.english, style = MaterialTheme.typography.bodyMedium)
+                    Text("${exercise.point.title} — ${exercise.point.meaning}", style = MaterialTheme.typography.bodyMedium.japanese(), color = MaterialTheme.colorScheme.primary)
+                } else {
+                    ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                }
                 val color = if (s.correct) Correct else Wrong
                 Text(
                     when (s.verdict) {

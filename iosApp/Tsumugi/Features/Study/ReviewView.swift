@@ -55,12 +55,20 @@ struct ReviewView: View {
         case .asking(let s):
             ProgressLine(done: Int(s.done), left: Int(s.remaining) + 1)
             Text(s.prompt.label + (s.prompt.practice ? " · practice" : "")).font(.caption.weight(.semibold))
-            ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
+            if s.prompt.exercise != nil {
+                Text(s.prompt.question).font(.japanese(size: 24))
+                if let hint = s.prompt.hint { Text(hint).font(.subheadline).foregroundStyle(.secondary) }
+            } else {
+                ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
+            }
             if s.prompt.mode == .selfGraded {
                 Button("Show answer") { model.reveal() }
                     .buttonStyle(.borderedProminent).frame(maxWidth: .infinity)
+            } else if s.prompt.mode == .build, let exercise = s.prompt.exercise {
+                BuildAnswer(exercise: exercise) { model.submit($0) }
+                    .id("\(s.prompt.card.id)-\(s.done)-\(s.prompt.practice)")
             } else {
-                AnswerField(mode: s.prompt.mode) { model.submit($0) }
+                AnswerField(mode: s.prompt.mode == .cloze ? .reading : s.prompt.mode) { model.submit($0) }
                     .id("\(s.prompt.card.id)-\(s.done)-\(s.prompt.practice)")
                 if let hint = s.hint { Text(hint).foregroundStyle(.orange) }
             }
@@ -83,7 +91,13 @@ struct ReviewView: View {
         case .answered(let s):
             ProgressLine(done: Int(s.done), left: Int(s.remaining))
             Text(s.prompt.label).font(.caption.weight(.semibold))
-            ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
+            if let exercise = s.prompt.exercise {
+                Text(exercise.example.japanese).font(.japanese(size: 24))
+                Text(exercise.example.english).font(.subheadline)
+                Text("\(exercise.point.title) — \(exercise.point.meaning)").font(.japanese(size: 15)).foregroundStyle(.tint)
+            } else {
+                ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
+            }
             Text(verdictText(s)).font(.title3.weight(.semibold)).foregroundStyle(s.correct ? .green : .red)
             Text("You answered: \(s.given)").font(.japanese(size: 17))
             Text("Accepted: " + s.prompt.expected.joined(separator: ", ")).font(.japanese(size: 17))

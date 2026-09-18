@@ -83,5 +83,6 @@ class PackInstaller(
         const val MANIFEST = "manifest.json"
         const val DICTIONARY = "dictionary.sqlite"
         const val KANJI_PATH = "kanji-path.sqlite"
+        const val GRAMMAR = "grammar.sqlite"
     }
 }

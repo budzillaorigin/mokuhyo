@@ -16,6 +16,10 @@ enum Route: Hashable {
     case importExport
     case wordLists
     case wordList(String)
+    case grammar
+    case grammarLevel(Int)
+    case grammarPoint(String)
+    case grammarLessons
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -66,6 +70,10 @@ struct TabStack<Root: View>: View {
                     case .importExport: ImportView()
                     case .wordLists: WordListsView()
                     case .wordList(let id): WordListView(listId: id)
+                    case .grammar: GrammarLevelsView()
+                    case .grammarLevel(let level): GrammarLevelView(level: level)
+                    case .grammarPoint(let id): GrammarPointView(id: id)
+                    case .grammarLessons: GrammarLessonView()
                     }
                 }
         }
@@ -77,6 +85,9 @@ struct LearnHomeView: View {
         List {
             NavigationLink(value: Route.pathLevels) {
                 LabeledContent("Kanji path", value: "60 levels")
+            }
+            NavigationLink(value: Route.grammar) {
+                LabeledContent("Grammar", value: "JLPT N5–N3")
             }
             NavigationLink(value: Route.dictionary) {
                 LabeledContent("Dictionary", value: "JMdict · kanji · examples")

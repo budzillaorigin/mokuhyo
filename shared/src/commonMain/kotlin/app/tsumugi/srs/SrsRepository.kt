@@ -143,6 +143,7 @@ class SrsRepository(
      */
     suspend fun stages(): Map<String, Stage> = io {
         q.allStartedCards().executeAsList()
+            .filter { it.direction != CardDirection.GHOST.name }
             .groupBy { it.item_id }
             .mapValues { (_, cards) -> cards.mapNotNull { Stage.of(it.stability, true) }.min() }
     }

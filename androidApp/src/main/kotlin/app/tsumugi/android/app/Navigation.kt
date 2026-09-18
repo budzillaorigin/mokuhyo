@@ -30,6 +30,10 @@ sealed interface Route {
     data class PathItem(val id: String) : Route { override val title = "Item" }
     data object Settings : Route { override val title = "Settings" }
     data object WordLists : Route { override val title = "Word lists" }
+    data object Grammar : Route { override val title = "Grammar" }
+    data class GrammarLevel(val level: Int) : Route { override val title = "N$level grammar" }
+    data class GrammarPoint(val id: String) : Route { override val title = "Grammar" }
+    data object GrammarLessons : Route { override val title = "Grammar lessons" }
     data class WordList(val id: String) : Route { override val title = "Word list" }
     data object Import : Route { override val title = "Import & export" }
     data object Licenses : Route { override val title = "Licenses" }

@@ -5,6 +5,9 @@ import app.tsumugi.content.PackStatus
 import app.tsumugi.db.TsumugiDatabase
 import app.tsumugi.dictionary.DictionaryRepository
 import app.tsumugi.dictionary.db.DictionaryDatabase
+import app.tsumugi.grammar.GrammarPoint
+import app.tsumugi.grammar.GrammarService
+import app.tsumugi.grammar.db.GrammarDatabase
 import app.tsumugi.integrations.ImportService
 import app.tsumugi.path.db.PathDatabase
 import app.tsumugi.platform.PlatformServices
@@ -19,6 +22,8 @@ import app.tsumugi.study.LessonSession
 import app.tsumugi.study.ReminderPlanner
 import app.tsumugi.study.ReviewSession
 import app.tsumugi.study.StatsService
+import app.tsumugi.study.TodayPlan
+import app.tsumugi.study.TodayPlanner
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
@@ -39,10 +44,22 @@ class AppGraph(val platform: PlatformServices) {
     val imports: ImportService by lazy { ImportService(this) }
     val reminders: ReminderPlanner by lazy { ReminderPlanner(userDatabase, settings) }
     val collection: CollectionService by lazy { CollectionService(userDatabase, srs, { path() }) }
+    private val planner: TodayPlanner by lazy { TodayPlanner(userDatabase, settings) }
+
+    /** Today's plan (BRIEF §5.6) from the current queue, path and grammar state. */
+    suspend fun today(): TodayPlan {
+        val srs = configuredSrs()
+        val grammarLeft = grammar()?.lessonQueue(3)?.size ?: 0
+        return planner.plan(srs.dueCount(), path()?.status(), grammarLeft)
+    }
+
+    /** Next grammar lesson batch (1–3 points) or empty when the pack is missing or everything is learned. */
+    suspend fun grammarLessons(): List<GrammarPoint> = grammar()?.lessonQueue((settings.int(SettingsRepository.DAILY_BUDGET_MINUTES, TodayPlanner.DEFAULT_BUDGET) / 20).coerceIn(1, 3)).orEmpty()
 
     private val lock = Mutex()
     private var dictionaryRepository: DictionaryRepository? = null
     private var pathService: PathService? = null
+    private var grammarService: GrammarService? = null
     private var schedulerLoaded = false
 
     /**
@@ -74,7 +91,17 @@ class AppGraph(val platform: PlatformServices) {
         return srs
     }
 
-    suspend fun startReviews(limit: Int = 500): ReviewSession = ReviewSession.start(configuredSrs(), limit)
+    /** The grammar pack service, or null when the grammar pack isn't installed. */
+    suspend fun grammar(): GrammarService? {
+        val srs = configuredSrs()
+        return lock.withLock {
+            grammarService ?: openPack(PackInstaller.GRAMMAR) {
+                GrammarService(GrammarDatabase(platform.packDriver(GrammarDatabase.Schema, PackInstaller.GRAMMAR)), srs) { dictionary() }
+            }?.also { grammarService = it }
+        }
+    }
+
+    suspend fun startReviews(limit: Int = 500): ReviewSession = ReviewSession.start(configuredSrs(), grammar(), limit)
 
     suspend fun startLessons(): LessonSession? {
         val path = path() ?: return null

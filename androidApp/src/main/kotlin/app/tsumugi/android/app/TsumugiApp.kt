@@ -33,6 +33,10 @@ import app.tsumugi.android.features.me.LicensesScreen
 import app.tsumugi.android.features.me.MeDestination
 import app.tsumugi.android.features.me.MeScreen
 import app.tsumugi.android.features.me.SettingsScreen
+import app.tsumugi.android.features.study.GrammarLessonScreen
+import app.tsumugi.android.features.study.GrammarLevelScreen
+import app.tsumugi.android.features.study.GrammarLevelsScreen
+import app.tsumugi.android.features.study.GrammarPointScreen
 import app.tsumugi.android.features.study.LessonScreen
 import app.tsumugi.android.features.study.PathItemScreen
 import app.tsumugi.android.features.study.PathLevelScreen
@@ -88,6 +92,10 @@ fun TsumugiApp() {
                     is Route.PathItem -> PathItemScreen(route.id, onOpenItem = { nav.push(Route.PathItem(it)) })
                     Route.Settings -> SettingsScreen()
                     Route.WordLists -> WordListsScreen(onOpen = { nav.push(Route.WordList(it)) })
+                    Route.Grammar -> GrammarLevelsScreen(onOpenLevel = { nav.push(Route.GrammarLevel(it)) }, onLessons = { nav.push(Route.GrammarLessons) })
+                    is Route.GrammarLevel -> GrammarLevelScreen(route.level, onOpenPoint = { nav.push(Route.GrammarPoint(it)) })
+                    is Route.GrammarPoint -> GrammarPointScreen(route.id)
+                    Route.GrammarLessons -> GrammarLessonScreen(onDone = nav::back)
                     is Route.WordList -> WordListScreen(route.id, onOpenEntry = { nav.push(Route.Entry(it)) })
                     Route.Import -> ImportScreen()
                     Route.Licenses -> LicensesScreen()
@@ -100,8 +108,8 @@ fun TsumugiApp() {
 @Composable
 private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
     when (tab) {
-        Tab.TODAY -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) })
-        Tab.REVIEWS -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) })
+        Tab.TODAY -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) }, onGrammar = { push(Route.GrammarLessons) })
+        Tab.REVIEWS -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) }, onGrammar = { push(Route.GrammarLessons) })
         Tab.LEARN -> LearnHome(push)
         Tab.PRACTICE -> ComingSoonScreen(tab.label)
         Tab.ME -> MeScreen { d ->
@@ -121,6 +129,7 @@ private fun LearnHome(push: (Route) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         listOf(
             Triple("Kanji path", "60 levels · radicals → kanji → vocabulary", Route.PathLevels),
+            Triple("Grammar", "JLPT N5–N3 · cloze and sentence-building reviews", Route.Grammar),
             Triple("Dictionary", "Offline JMdict · kanji · examples", Route.Dictionary),
             Triple("Radical search", "Find a kanji by its parts", Route.Radicals),
             Triple("Word lists", "Your lists · imiwa imports", Route.WordLists),

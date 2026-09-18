@@ -73,5 +73,10 @@ sqldelight {
             packageName.set("app.tsumugi.path.db")
             srcDirs.setFrom("src/commonMain/sqldelightPath")
         }
+        // Read-only grammar pack (N5→N1 points, examples, patterns), built by tools/packs/build_grammar.py.
+        create("GrammarDatabase") {
+            packageName.set("app.tsumugi.grammar.db")
+            srcDirs.setFrom("src/commonMain/sqldelightGrammar")
+        }
     }
 }
