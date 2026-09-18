@@ -55,8 +55,15 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Shared tests (Android host, incl. real-pack smoke test)
         run: ./gradlew :shared:allTests
-      - name: Android debug APK
-        run: ./gradlew :androidApp:assembleDebug
+      - name: Install NDK + CMake for llama.cpp / whisper.cpp
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "ndk;29.0.14206865" "cmake;3.31.6" > /dev/null
+      - name: Cache native source downloads
+        uses: actions/cache@v4
+        with:
+          path: androidApp/.cxx
+          key: android-cxx-${{ hashFiles('androidApp/src/main/cpp/**') }}
+      - name: Android debug APK (with native inference)
+        run: ./gradlew :androidApp:assembleDebug -Ptsumugi.native=true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -84,6 +91,13 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Shared tests (iOS simulator)
         run: ./gradlew :shared:iosSimulatorArm64Test
+      - name: Cache llama.cpp / whisper.cpp xcframeworks
+        uses: actions/cache@v4
+        with:
+          path: tools/.cache/frameworks
+          key: xcframeworks-${{ hashFiles('tools/models/fetch_ios_frameworks.sh') }}
+      - name: Fetch llama.cpp / whisper.cpp xcframeworks
+        run: bash tools/models/fetch_ios_frameworks.sh
       - name: Pick an available iPhone simulator
         id: sim
         run: |
@@ -101,6 +115,12 @@ jobs:
             -resultBundlePath build/TestResults.xcresult \
             CODE_SIGNING_ALLOWED=NO > build/xcodebuild.log 2>&1 || status=$?
           grep -E "error:|warning: .*/iosApp/|Test (case|run)|✔|✘|passed|failed|Dictionary lookup" build/xcodebuild.log | head -300 || true
+          exit $status
+      - name: Build iOS app for device (compiles the llama.cpp bridge; no simulator slice exists)
+        run: |
+          status=0
+          xcodebuild build             -project iosApp/Tsumugi.xcodeproj             -scheme Tsumugi             -destination "generic/platform=iOS"             CODE_SIGNING_ALLOWED=NO > build/xcodebuild-device.log 2>&1 || status=$?
+          grep -E "error:|warning: .*/iosApp/|BUILD (SUCCEEDED|FAILED)" build/xcodebuild-device.log | head -200 || true
           exit $status
       - name: Test failures and crash reports
         if: failure()
@@ -128,6 +148,7 @@ jobs:
           name: ios-build-logs
           path: |
             build/xcodebuild.log
+            build/xcodebuild-device.log
             build/TestResults.xcresult
             build/crashes
 
