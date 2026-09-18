@@ -123,6 +123,22 @@ adb install -r androidApp/build/outputs/apk/debug/androidApp-debug.apk
 
 `-Ptsumugi.native=false` skips the native AI libraries for a quick UI-only build. Without adb, copy the APK to the phone and open it, allowing "Install unknown apps" for your file manager. On-device AI needs an arm64 phone with ARMv8.2 dot-product (roughly any phone from 2018 on).
 
+**APK size.** Almost all of it is content, not code:
+- The packs from `content/packs` are stored in the APK as assets: about 155 MB raw (dictionary 127 MB, tokenizer 25 MB, the rest under 3 MB each). APK zip compression brings the dictionary down to roughly 46 MB.
+- The ML Kit Japanese text-recognition model, and the arm64 llama.cpp/whisper.cpp libraries when the native build is on.
+- The Phase 3 debug APK measured 123 MB with the dictionary, tokenizer and ML Kit model. Expect a little more with the native libraries.
+- AI models are never in the APK. They are downloaded in Settings → AI & speech and live in the app's `files/models` directory.
+
+Check a build with `ls -lh androidApp/build/outputs/apk/debug/`. For a per-folder breakdown, open the APK in Android Studio (Build → Analyze APK).
+
+A release build (`./gradlew :androidApp:assembleRelease`) is not minified (`proguard-rules.pro` keeps the JNI bridges in case that changes). It is unsigned unless you add a signing config, and an unsigned APK can't be installed. For sideloading, the debug APK is the one to use.
+
+**Language.** The UI is in English and Japanese. It follows the phone's language, and on Android 13+ it can be set per app: Settings → Apps → Tsumugi → Language.
+
+**Sharing into the app.** "Read in Tsumugi" appears in the share sheet for text and links. It imports the text, or fetches the page, into the reader. "Look up in Tsumugi" appears in the text-selection menu and opens the dictionary search.
+
+**Backups.** Android backups (Google or device-to-device) include your reviews, settings and imported media. They leave out the content packs and downloaded models, which are re-created from the APK or downloaded again. They also leave out stored API tokens, so after a restore, sign in to sync and reconnect WaniKani again.
+
 ## 8. Sync server (optional)
 
 See `server/README.md` and `docs/SYNC_PROTOCOL.md`. `docker compose -f server/docker-compose.yml up -d` runs the server with Postgres. Point the app at it in Me → Sync. Running a public hosted instance is open decision 2.

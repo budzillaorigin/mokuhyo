@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Status-bar icon: the launcher's spool as a white silhouette. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#FFFFFFFF">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M7.5,5.5h8v13h-8zM5.8,3H17.2A1,1 0,0 1,18.2 4V5A1,1 0,0 1,17.2 6H5.8A1,1 0,0 1,4.8 5V4A1,1 0,0 1,5.8 3ZM5.8,18H17.2A1,1 0,0 1,18.2 19V20A1,1 0,0 1,17.2 21H5.8A1,1 0,0 1,4.8 20V19A1,1 0,0 1,5.8 18Z" />
+    <path
+        android:pathData="M15.5,13C19,13.5 17.5,17.5 20.5,19"
+        android:strokeWidth="1.4"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+</vector>

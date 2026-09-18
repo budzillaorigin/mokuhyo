@@ -1,5 +1,7 @@
 package app.tsumugi.android.features
 
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +21,6 @@ fun ComingSoonScreen(title: String, modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(title, style = MaterialTheme.typography.headlineMedium)
-        Text("Coming soon", style = MaterialTheme.typography.bodyMedium)
+        Text(stringResource(R.string.coming_soon), style = MaterialTheme.typography.bodyMedium)
     }
 }

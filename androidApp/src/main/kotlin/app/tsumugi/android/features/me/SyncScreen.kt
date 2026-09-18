@@ -1,5 +1,9 @@
 package app.tsumugi.android.features.me
 
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,6 +36,7 @@ import app.tsumugi.sync.SyncEngine
 import kotlinx.coroutines.launch
 
 /** Optional, self-hostable sync (BRIEF §8): account, status, end-to-end encryption. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SyncScreen() {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
@@ -46,61 +51,60 @@ fun SyncScreen() {
     var engine by remember { mutableStateOf<SyncEngine?>(null) }
     LaunchedEffect(signedIn) { engine = if (signedIn) graph.sync() else null }
 
+    val context = LocalContext.current
     fun run(label: String, block: suspend () -> String?) {
-        message = "$label…"
-        scope.launch { message = runCatching { block() }.getOrElse { "$label failed: ${it.message}" } }
+        message = context.getString(R.string.status_working, label)
+        scope.launch { message = runCatching { block() }.getOrElse { context.getString(R.string.status_failed, label, it.message.orEmpty()) } }
     }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text(
-            "Sync keeps your reviews, notes and lists in step across devices. It's optional; run your own server with " +
-                "`docker compose up` from the project's server/ folder, or use a hosted one.",
+            stringResource(R.string.sync_intro),
             style = MaterialTheme.typography.bodySmall,
         )
         message?.let { Text(it) }
         if (!signedIn) {
-            OutlinedTextField(server, { server = it }, Modifier.fillMaxWidth(), label = { Text("Server URL") }, singleLine = true)
-            OutlinedTextField(email, { email = it }, Modifier.fillMaxWidth(), label = { Text("Email") }, singleLine = true)
-            OutlinedTextField(password, { password = it }, Modifier.fillMaxWidth(), label = { Text("Password") }, singleLine = true, visualTransformation = PasswordVisualTransformation())
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedTextField(server, { server = it }, Modifier.fillMaxWidth(), label = { Text(stringResource(R.string.sync_server_url)) }, singleLine = true)
+            OutlinedTextField(email, { email = it }, Modifier.fillMaxWidth(), label = { Text(stringResource(R.string.sync_email)) }, singleLine = true)
+            OutlinedTextField(password, { password = it }, Modifier.fillMaxWidth(), label = { Text(stringResource(R.string.sync_password)) }, singleLine = true, visualTransformation = PasswordVisualTransformation())
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Button(onClick = {
-                    run("Signing in") {
+                    run(context.getString(R.string.sync_signing_in)) {
                         account.login(server.trim(), email.trim(), password, Build.MODEL, "android")
                         password = ""
                         signedIn = true
                         graph.syncIfConfigured()
-                        "Signed in and synced."
+                        context.getString(R.string.sync_signed_in)
                     }
-                }, enabled = server.isNotBlank() && email.isNotBlank() && password.isNotBlank()) { Text("Sign in") }
+                }, enabled = server.isNotBlank() && email.isNotBlank() && password.isNotBlank()) { Text(stringResource(R.string.sync_sign_in)) }
                 OutlinedButton(onClick = {
-                    run("Creating account") {
+                    run(context.getString(R.string.sync_creating_account)) {
                         account.register(server.trim(), email.trim(), password, null)
-                        "Account created. Now sign in."
+                        context.getString(R.string.sync_account_created)
                     }
-                }, enabled = server.isNotBlank() && email.isNotBlank() && password.length >= 8) { Text("Create account") }
+                }, enabled = server.isNotBlank() && email.isNotBlank() && password.length >= 8) { Text(stringResource(R.string.sync_create_account)) }
             }
         } else {
             val status = engine?.status?.collectAsState()?.value
-            Text("Server: ${account.baseUrl}", style = MaterialTheme.typography.bodyMedium)
-            status?.let { Text("Status: ${it.state.name.lowercase()} · ${it.pending} changes waiting" + (it.error?.let { e -> " · $e" } ?: "")) }
-            Button(onClick = { run("Syncing") { graph.sync()?.sync()?.let { "Sent ${it.pushed}, received ${it.pulled}." } } }) { Text("Sync now") }
+            Text(stringResource(R.string.sync_server, account.baseUrl.orEmpty()), style = MaterialTheme.typography.bodyMedium)
+            status?.let { Text(stringResource(R.string.sync_status, it.state.name.lowercase(), it.pending) + (it.error?.let { e -> " · $e" } ?: "")) }
+            Button(onClick = { run(context.getString(R.string.sync_syncing)) { graph.sync()?.sync()?.let { context.getString(R.string.sync_result, it.pushed, it.pulled) } } }) { Text(stringResource(R.string.sync_now)) }
             HorizontalDivider()
-            Text("End-to-end encryption", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.sync_e2e), style = MaterialTheme.typography.titleSmall)
             Text(
-                "With a passphrase, the server stores only ciphertext it can't read. You'll need the passphrase on every device; " +
-                    "it can't be recovered. (Encrypted accounts don't appear on leaderboards.)",
+                stringResource(R.string.sync_e2e_hint),
                 style = MaterialTheme.typography.bodySmall,
             )
-            OutlinedTextField(passphrase, { passphrase = it }, Modifier.fillMaxWidth(), label = { Text("Passphrase") }, singleLine = true, visualTransformation = PasswordVisualTransformation())
+            OutlinedTextField(passphrase, { passphrase = it }, Modifier.fillMaxWidth(), label = { Text(stringResource(R.string.sync_passphrase)) }, singleLine = true, visualTransformation = PasswordVisualTransformation())
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (!account.e2eEnabled) {
-                    OutlinedButton(onClick = { run("Enabling encryption") { account.enableE2e(passphrase); passphrase = ""; graph.sync(); "Encryption on." } }, enabled = passphrase.length >= 8) { Text("Turn on") }
+                    OutlinedButton(onClick = { run(context.getString(R.string.sync_enabling_e2e)) { account.enableE2e(passphrase); passphrase = ""; graph.sync(); context.getString(R.string.sync_e2e_on) } }, enabled = passphrase.length >= 8) { Text(stringResource(R.string.sync_turn_on)) }
                 } else {
-                    OutlinedButton(onClick = { run("Unlocking") { if (account.unlockE2e(passphrase)) { passphrase = ""; graph.sync(); "Unlocked." } else "Wrong passphrase." } }, enabled = passphrase.isNotBlank()) { Text("Unlock") }
+                    OutlinedButton(onClick = { run(context.getString(R.string.sync_unlocking)) { if (account.unlockE2e(passphrase)) { passphrase = ""; graph.sync(); context.getString(R.string.sync_unlocked) } else context.getString(R.string.sync_wrong_passphrase) } }, enabled = passphrase.isNotBlank()) { Text(stringResource(R.string.sync_unlock)) }
                 }
             }
             HorizontalDivider()
-            OutlinedButton(onClick = { run("Signing out") { account.logout(); graph.resetSync(); signedIn = false; "Signed out. Your data stays on this device." } }) { Text("Sign out") }
+            OutlinedButton(onClick = { run(context.getString(R.string.sync_signing_out)) { account.logout(); graph.resetSync(); signedIn = false; context.getString(R.string.sync_signed_out) } }) { Text(stringResource(R.string.sync_sign_out)) }
         }
     }
 }

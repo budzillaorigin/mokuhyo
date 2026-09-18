@@ -1,5 +1,16 @@
 package app.tsumugi.android.app
 
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
+import app.tsumugi.android.ui.japanese
+import app.tsumugi.android.features.exams.displayTitle
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -73,9 +84,25 @@ import app.tsumugi.android.features.study.ReviewScreen
 import app.tsumugi.android.features.today.TodayScreen
 import app.tsumugi.android.ui.TsumugiTheme
 
+/** Text handed to the app by another app: the share sheet ("Read in Tsumugi") or the text-selection menu ("Look up"). */
+sealed interface Incoming {
+    data class Read(val text: String) : Incoming
+    data class Lookup(val text: String) : Incoming
+}
+
+private val URL = Regex("https?://\\S+")
+private val JAPANESE = Regex("[\\u3040-\\u30ff\\u3400-\\u9fff\\uf900-\\ufaff\\uff66-\\uff9f]")
+
+/** A shared web page arrives as its URL, sometimes with a title around it; anything with Japanese in it is read as text. */
+private fun sharedUrl(text: String): String? {
+    val trimmed = text.trim()
+    if (URL.matchEntire(trimmed) != null) return trimmed
+    return if (JAPANESE.containsMatchIn(trimmed)) null else URL.find(trimmed)?.value
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TsumugiApp() {
+fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
     val nav: NavigationViewModel = viewModel()
     val dictionaryNav = DictionaryNav(
         openEntry = { nav.push(Route.Entry(it)) },
@@ -86,6 +113,27 @@ fun TsumugiApp() {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
     var onboarded by remember { mutableStateOf<Boolean?>(null) }
     LaunchedEffect(Unit) { onboarded = graph.onboarding.isDone() }
+    val context = LocalContext.current
+    var shareBusy by remember { mutableStateOf(false) }
+    var shareError by remember { mutableStateOf<String?>(null) }
+    // Shared text opens once onboarding is done: a URL is fetched into the reader, other text is imported as is.
+    LaunchedEffect(incoming, onboarded) {
+        val item = incoming ?: return@LaunchedEffect
+        if (onboarded != true) return@LaunchedEffect
+        onIncomingHandled()
+        when (item) {
+            is Incoming.Lookup -> nav.open(Tab.LEARN, Route.Lookup(item.text.trim()))
+            is Incoming.Read -> {
+                shareBusy = true
+                runCatching {
+                    val url = sharedUrl(item.text)
+                    if (url != null) graph.reader.importUrl(url) else graph.reader.importText(item.text)
+                }.onSuccess { nav.open(Tab.LEARN, Route.Read(it)) }
+                    .onFailure { shareError = context.getString(R.string.share_failed, it.message ?: it::class.simpleName.orEmpty()) }
+                shareBusy = false
+            }
+        }
+    }
 
     if (onboarded == false) {
         TsumugiTheme {
@@ -108,14 +156,35 @@ fun TsumugiApp() {
     val lockedDown = (nav.current as? Route.ExamRun)?.spec?.strict == true
 
     TsumugiTheme {
+        shareError?.let { message ->
+            AlertDialog(
+                onDismissRequest = { shareError = null },
+                text = { Text(message) },
+                confirmButton = { TextButton(onClick = { shareError = null }) { Text(stringResource(R.string.action_ok)) } },
+            )
+        }
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = { Text(nav.current.title.ifEmpty { nav.tab.label }) },
-                    // In a strict exam, leaving goes through the runner's confirmation (system back) instead.
-                    navigationIcon = { if (nav.canGoBack && !lockedDown) TextButton(onClick = nav::back) { Text("‹ Back") } },
-                    actions = { if (nav.current != Route.Dictionary && !lockedDown) TextButton(onClick = nav::openSearch) { Text("Search") } },
-                )
+                Column {
+                    TopAppBar(
+                        title = { Text(routeTitle(nav.current, nav.tab), maxLines = 1, overflow = TextOverflow.Ellipsis) },
+                        // In a strict exam, leaving goes through the runner's confirmation (system back) instead.
+                        navigationIcon = {
+                            if (nav.canGoBack && !lockedDown) {
+                                val backLabel = stringResource(R.string.nav_back_description)
+                                TextButton(onClick = nav::back, Modifier.semantics { contentDescription = backLabel }) {
+                                    Text(stringResource(R.string.nav_back))
+                                }
+                            }
+                        },
+                        actions = {
+                            if (nav.current != Route.Dictionary && !lockedDown) {
+                                TextButton(onClick = nav::openSearch) { Text(stringResource(R.string.action_search)) }
+                            }
+                        },
+                    )
+                    if (shareBusy) LinearProgressIndicator(Modifier.fillMaxWidth())
+                }
             },
             bottomBar = {
                 if (!lockedDown) NavigationBar {
@@ -123,8 +192,9 @@ fun TsumugiApp() {
                         NavigationBarItem(
                             selected = tab == nav.tab,
                             onClick = { nav.select(tab) },
-                            icon = { Text(tab.glyph, style = MaterialTheme.typography.titleMedium) },
-                            label = { Text(tab.label) },
+                            // The glyph is decorative; TalkBack reads the label.
+                            icon = { Text(tab.glyph, Modifier.clearAndSetSemantics {}, style = MaterialTheme.typography.titleMedium.japanese()) },
+                            label = { Text(stringResource(tab.label), maxLines = 1, overflow = TextOverflow.Ellipsis) },
                         )
                     }
                 }
@@ -213,20 +283,63 @@ private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
 private fun LearnHome(push: (Route) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         listOf(
-            Triple("Kanji path", "60 levels · radicals → kanji → vocabulary", Route.PathLevels),
-            Triple("Grammar", "JLPT N5–N1 · cloze and sentence-building reviews", Route.Grammar),
-            Triple("Reading", "Articles, books, feeds · tap any word", Route.Library),
-            Triple("Dictionary", "Offline JMdict · kanji · examples", Route.Dictionary),
-            Triple("Radical search", "Find a kanji by its parts", Route.Radicals),
-            Triple("Draw to search", "Handwrite a kanji to look it up", Route.Handwriting),
-            Triple("Word lists", "Your lists · imiwa imports", Route.WordLists),
-            Triple("Scan text", "Read Japanese from a photo", Route.Scan),
+            Triple(R.string.title_kanji_path, R.string.learn_path_sub, Route.PathLevels),
+            Triple(R.string.title_grammar, R.string.learn_grammar_sub, Route.Grammar),
+            Triple(R.string.title_reading, R.string.learn_reading_sub, Route.Library),
+            Triple(R.string.title_dictionary, R.string.learn_dictionary_sub, Route.Dictionary),
+            Triple(R.string.title_radicals, R.string.learn_radicals_sub, Route.Radicals),
+            Triple(R.string.title_draw_search, R.string.learn_draw_sub, Route.Handwriting),
+            Triple(R.string.title_word_lists, R.string.learn_lists_sub, Route.WordLists),
+            Triple(R.string.title_scan, R.string.learn_scan_sub, Route.Scan),
         ).forEach { (title, subtitle, route) ->
             ListItem(
                 modifier = Modifier.clickable { push(route) },
-                headlineContent = { Text(title) },
-                supportingContent = { Text(subtitle) },
+                headlineContent = { Text(stringResource(title)) },
+                supportingContent = { Text(stringResource(subtitle)) },
             )
         }
     }
+}
+
+/** Top-bar title for a screen; a tab's root shows the tab name. */
+@Composable
+private fun routeTitle(route: Route, tab: Tab): String = when (route) {
+    Route.TabRoot -> stringResource(tab.label)
+    Route.Dictionary, is Route.Lookup -> stringResource(R.string.title_dictionary)
+    Route.Scan -> stringResource(R.string.title_scan)
+    Route.Library -> stringResource(R.string.title_reading)
+    is Route.Read -> stringResource(R.string.title_reader)
+    Route.Feeds -> stringResource(R.string.title_feeds)
+    Route.Aozora -> stringResource(R.string.title_aozora)
+    is Route.WritingPractice -> stringResource(R.string.title_writing)
+    Route.Handwriting -> stringResource(R.string.title_draw_search)
+    is Route.Entry -> stringResource(R.string.title_word)
+    is Route.Kanji -> route.literal
+    Route.Radicals -> stringResource(R.string.title_radicals)
+    Route.Lessons -> stringResource(R.string.title_lessons)
+    Route.Reviews -> stringResource(R.string.title_reviews)
+    Route.PathLevels -> stringResource(R.string.title_kanji_path)
+    is Route.PathLevel -> stringResource(R.string.title_level, route.level)
+    is Route.PathItem -> stringResource(R.string.title_item)
+    Route.Settings -> stringResource(R.string.title_settings)
+    Route.WordLists -> stringResource(R.string.title_word_lists)
+    Route.Grammar -> stringResource(R.string.title_grammar)
+    is Route.GrammarLevel -> stringResource(R.string.title_grammar_level, route.level)
+    is Route.GrammarPoint -> stringResource(R.string.title_grammar)
+    Route.GrammarLessons -> stringResource(R.string.title_grammar_lessons)
+    is Route.WordList -> stringResource(R.string.title_word_list)
+    Route.Import -> stringResource(R.string.title_import)
+    Route.Sync -> stringResource(R.string.title_sync)
+    Route.Licenses -> stringResource(R.string.title_licenses)
+    Route.AiSettings -> stringResource(R.string.title_ai)
+    Route.Scenarios, is Route.Roleplay -> stringResource(R.string.title_roleplay)
+    Route.Dialogues -> stringResource(R.string.title_dialogues)
+    is Route.DialoguePlayer -> stringResource(R.string.title_dialogue)
+    Route.MinimalPairs -> stringResource(R.string.title_minimal_pairs)
+    Route.Media -> stringResource(R.string.title_media)
+    is Route.Pomodoro -> stringResource(R.string.title_speaking_session)
+    is Route.Opi -> stringResource(R.string.title_opi)
+    Route.Exams -> stringResource(R.string.title_exams)
+    is Route.ExamRun -> route.spec.displayTitle()
+    is Route.Attempt -> stringResource(R.string.title_attempt)
 }

@@ -23,7 +23,10 @@ android {
 
     buildTypes {
         release {
+            // Not minified: the APK is sideloaded (docs/RELEASE.md §7) and most of its size is native code and
+            // content packs, which R8 wouldn't shrink. proguard-rules.pro keeps the JNI bridges if this is ever turned on.
             isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 

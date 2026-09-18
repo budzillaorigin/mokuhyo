@@ -1,5 +1,17 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.ui.PlayLabel
+import androidx.annotation.StringRes
+import app.tsumugi.android.ui.JaText
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -72,14 +84,14 @@ fun DialogueListScreen(onOpen: (String) -> Unit) {
     Column(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
         JlptFilter(level, { level = it }, Modifier.padding(vertical = 8.dp))
         when {
-            missing -> Notice(PRACTICE_PACK_MISSING)
+            missing -> PracticePackMissing()
             dialogues == null -> LinearProgressIndicator(Modifier.fillMaxWidth())
-            dialogues!!.isEmpty() -> Text("No dialogues at this level in the installed pack.", Modifier.padding(8.dp))
+            dialogues!!.isEmpty() -> Text(stringResource(R.string.listen_none), Modifier.padding(8.dp))
             else -> LazyColumn {
                 items(dialogues!!, key = { it.id }) { d ->
                     ListItem(
                         modifier = Modifier.clickable { onOpen(d.id) },
-                        headlineContent = { Text(d.title, style = MaterialTheme.typography.titleSmall.japanese()) },
+                        headlineContent = { JaText(d.title, style = MaterialTheme.typography.titleSmall) },
                         supportingContent = { Text(d.topic) },
                         trailingContent = {
                             Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(2.dp)) {
@@ -94,7 +106,9 @@ fun DialogueListScreen(onOpen: (String) -> Unit) {
     }
 }
 
-private enum class ListenMode(val label: String) { LISTEN("Listen"), GAPS("Gap-fill"), ORDER("Order"), QUESTIONS("Questions") }
+private enum class ListenMode(@StringRes val label: Int) {
+    LISTEN(R.string.practice_listen), GAPS(R.string.listen_gaps), ORDER(R.string.listen_order), QUESTIONS(R.string.listen_questions),
+}
 
 /** Line-by-line dialogue player with gap-fill, chunk ordering and comprehension questions. */
 @Composable
@@ -109,7 +123,7 @@ fun DialoguePlayerScreen(id: String) {
     val d = dialogue
     when {
         !loaded -> LinearProgressIndicator(Modifier.fillMaxWidth().padding(16.dp))
-        d == null -> Notice(PRACTICE_PACK_MISSING, Modifier.padding(16.dp))
+        d == null -> PracticePackMissing(Modifier.padding(16.dp))
         else -> DialoguePlayer(d)
     }
 }
@@ -129,19 +143,19 @@ private fun DialoguePlayer(dialogue: Dialogue) {
     }
     Column(Modifier.fillMaxSize()) {
         Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(dialogue.title, style = MaterialTheme.typography.titleLarge.japanese())
+            JaText(dialogue.title, Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
                 Tag("N${dialogue.jlpt}")
                 Text(dialogue.topic, style = MaterialTheme.typography.bodySmall)
                 if (dialogue.isAiGenerated) AiBadge()
             }
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Speed", style = MaterialTheme.typography.labelLarge)
+                Text(stringResource(R.string.listen_speed), style = MaterialTheme.typography.labelLarge)
                 listOf(0.75f, 1f).forEach { r -> FilterChip(rate == r, { rate = r }, { Text("${r}×") }) }
             }
         }
         PrimaryTabRow(selectedTabIndex = modes.indexOf(mode).coerceAtLeast(0)) {
-            modes.forEach { m -> Tab(selected = m == mode, onClick = { voices.stop(); mode = m }, text = { Text(m.label) }) }
+            modes.forEach { m -> Tab(selected = m == mode, onClick = { voices.stop(); mode = m }, text = { Text(stringResource(m.label)) }) }
         }
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             when (mode) {
@@ -199,12 +213,12 @@ private fun ListenView(dialogue: Dialogue, voices: Voices, rate: Float) {
     Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         FilterChip(showJa, { showJa = !showJa }, { Text("JP") })
         FilterChip(showEn, { showEn = !showEn }, { Text("EN") })
-        FilterChip(furigana, { furigana = !furigana }, { Text("Furigana") })
+        FilterChip(furigana, { furigana = !furigana }, { Text(stringResource(R.string.reader_furigana)) })
     }
-    if (furigana && noTokenizer) Text("Furigana needs the tokenizer pack, which isn't installed in this build.", style = MaterialTheme.typography.bodySmall)
+    if (furigana && noTokenizer) Text(stringResource(R.string.listen_no_tokenizer), style = MaterialTheme.typography.bodySmall)
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Button(onClick = { play(0, single = false) }) { Text("▶ Play all") }
-        OutlinedButton(onClick = { job?.cancel(); voices.stop() }) { Text("■ Stop") }
+        Button(onClick = { play(0, single = false) }) { PlayLabel(stringResource(R.string.listen_play_all)) }
+        OutlinedButton(onClick = { job?.cancel(); voices.stop() }) { Text(stringResource(R.string.listen_stop)) }
     }
     dialogue.lines.forEachIndexed { i, line ->
         val speaker = dialogue.speaker(line.speaker)
@@ -218,12 +232,13 @@ private fun ListenView(dialogue: Dialogue, voices: Voices, rate: Float) {
                     Text(speaker?.name ?: line.speaker, style = MaterialTheme.typography.labelMedium)
                     if (showJa) {
                         val segments = readings[i]
-                        if (furigana && segments != null) FuriganaLine(segments) else Text(line.japanese, style = MaterialTheme.typography.bodyLarge.japanese())
+                        if (furigana && segments != null) FuriganaLine(segments) else JaText(line.japanese, style = MaterialTheme.typography.bodyLarge)
                     }
                     if (showEn) Text(line.english, style = MaterialTheme.typography.bodySmall)
                     if (!showJa && !showEn) Text("…", style = MaterialTheme.typography.bodyLarge)
                 }
-                IconButton(onClick = { play(i, single = true) }, modifier = Modifier.semantics { contentDescription = "Replay line ${i + 1}" }) { Text("↻") }
+                val replayLabel = stringResource(R.string.listen_replay_line, i + 1)
+                IconButton(onClick = { play(i, single = true) }, modifier = Modifier.semantics { contentDescription = replayLabel }) { Text("↻") }
             }
         }
     }
@@ -242,7 +257,7 @@ private fun GapFillView(dialogue: Dialogue, voices: Voices, rate: Float) {
     val scope = rememberCoroutineScope()
     val answers = remember { mutableStateMapOf<String, String>() }
     var checked by remember { mutableStateOf(false) }
-    Text("Listen to each line and type the missing words (kana is fine).", style = MaterialTheme.typography.bodyMedium)
+    Text(stringResource(R.string.listen_gap_hint), style = MaterialTheme.typography.bodyMedium)
     var total = 0
     var right = 0
     dialogue.lines.forEachIndexed { i, line ->
@@ -258,10 +273,11 @@ private fun GapFillView(dialogue: Dialogue, voices: Voices, rate: Float) {
         Card {
             Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(prompt, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge.japanese())
+                    JaText(prompt, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
+                    val playLabel = stringResource(R.string.listen_play_line, i + 1)
                     IconButton(
                         onClick = { scope.launch { voices.say(line.japanese, voiceOf(dialogue, line), rate) } },
-                        modifier = Modifier.semantics { contentDescription = "Play line ${i + 1}" },
+                        modifier = Modifier.semantics { contentDescription = playLabel },
                     ) { Text("▶") }
                 }
                 line.gaps.sortedBy { it.start }.forEachIndexed { k, g ->
@@ -272,17 +288,17 @@ private fun GapFillView(dialogue: Dialogue, voices: Voices, rate: Float) {
                     if (ok) right++
                     OutlinedTextField(
                         value, { answers[key] = it; checked = false }, Modifier.fillMaxWidth(),
-                        label = { Text("Gap ${k + 1}") }, singleLine = true,
+                        label = { Text(stringResource(R.string.listen_gap, k + 1)) }, singleLine = true,
                         textStyle = MaterialTheme.typography.bodyLarge.japanese(),
                         isError = checked && !ok,
-                        supportingText = if (checked) ({ Text(if (ok) "✓" else "Answer: ${g.text}") }) else null,
+                        supportingText = if (checked) ({ Text(if (ok) "✓" else stringResource(R.string.listen_answer, g.text)) }) else null,
                     )
                 }
             }
         }
     }
-    Button(onClick = { checked = true }) { Text("Check") }
-    if (checked) Text("$right of $total correct", style = MaterialTheme.typography.titleMedium)
+    Button(onClick = { checked = true }) { Text(stringResource(R.string.action_check)) }
+    if (checked) Text(stringResource(R.string.listen_score, right, total), style = MaterialTheme.typography.titleMedium)
 }
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -295,29 +311,29 @@ private fun OrderView(dialogue: Dialogue, voices: Voices, rate: Float) {
     var score by remember { mutableIntStateOf(0) }
     val line = lines.getOrNull(index)
     if (line == null) {
-        Text("Done: $score of ${lines.size} lines in the right order.", style = MaterialTheme.typography.titleMedium)
-        OutlinedButton(onClick = { index = 0; score = 0 }) { Text("Again") }
+        Text(stringResource(R.string.listen_order_done, score, lines.size), style = MaterialTheme.typography.titleMedium)
+        OutlinedButton(onClick = { index = 0; score = 0 }) { Text(stringResource(R.string.action_again)) }
         return
     }
     val order = remember(line) { line.chunks.indices.shuffled(Random(line.japanese.hashCode())) }
     val complete = picked.size == line.chunks.size
     val correct = complete && picked.map { line.chunks[it] } == line.chunks
-    Text("Line ${index + 1} of ${lines.size}: listen, then tap the chunks in order.", style = MaterialTheme.typography.bodyMedium)
+    Text(stringResource(R.string.listen_order_hint, index + 1, lines.size), style = MaterialTheme.typography.bodyMedium)
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Button(onClick = { scope.launch { voices.say(line.japanese, voiceOf(dialogue, line), rate) } }) { Text("▶ Play") }
-        OutlinedButton(onClick = { picked = emptyList() }) { Text("Reset") }
+        Button(onClick = { scope.launch { voices.say(line.japanese, voiceOf(dialogue, line), rate) } }) { PlayLabel(stringResource(R.string.listen_play)) }
+        OutlinedButton(onClick = { picked = emptyList() }) { Text(stringResource(R.string.listen_reset)) }
     }
     Card(Modifier.fillMaxWidth()) {
-        Text(picked.joinToString("") { line.chunks[it] }.ifEmpty { " " }, Modifier.padding(12.dp), style = MaterialTheme.typography.titleMedium.japanese())
+        JaText(picked.joinToString("") { line.chunks[it] }.ifEmpty { " " }, Modifier.padding(12.dp), style = MaterialTheme.typography.titleMedium)
     }
     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         order.forEach { k ->
-            if (k !in picked) OutlinedButton(onClick = { picked = picked + k }, enabled = !complete) { Text(line.chunks[k], style = MaterialTheme.typography.bodyLarge.japanese()) }
+            if (k !in picked) OutlinedButton(onClick = { picked = picked + k }, enabled = !complete) { JaText(line.chunks[k], style = MaterialTheme.typography.bodyLarge) }
         }
     }
     if (complete) {
-        Text(if (correct) "✓ Correct" else "Not quite: ${line.japanese}", color = if (correct) Color(0xFF2E7D32) else MaterialTheme.colorScheme.error)
-        Button(onClick = { if (correct) score++; index++ }) { Text("Next") }
+        Text(if (correct) "✓ " + stringResource(R.string.review_correct) else stringResource(R.string.listen_not_quite, line.japanese), Modifier.semantics { liveRegion = LiveRegionMode.Polite }, color = if (correct) Color(0xFF2E7D32) else MaterialTheme.colorScheme.error)
+        Button(onClick = { if (correct) score++; index++ }) { Text(stringResource(R.string.action_next)) }
     }
 }
 
@@ -327,9 +343,10 @@ private fun QuestionsView(dialogue: Dialogue, voices: Voices, rate: Float) {
     val chosen = remember { mutableStateMapOf<Int, Int>() }
     Button(onClick = {
         scope.launch { voices.sayAll(dialogue.lines.map { it.japanese to voiceOf(dialogue, it) }, rate) }
-    }) { Text("▶ Play the dialogue") }
+    }) { PlayLabel(stringResource(R.string.listen_play_dialogue)) }
     dialogue.questions.forEachIndexed { qi, q ->
-        Text("${qi + 1}. ${q.question}", style = MaterialTheme.typography.titleSmall.japanese())
+        JaText("${qi + 1}. ${q.question}", style = MaterialTheme.typography.titleSmall)
+        Column(Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         q.choices.forEachIndexed { ci, choice ->
             val answered = chosen[qi]
             val color = when {
@@ -339,13 +356,15 @@ private fun QuestionsView(dialogue: Dialogue, voices: Voices, rate: Float) {
                 else -> MaterialTheme.colorScheme.surfaceVariant
             }
             Card(
-                Modifier.fillMaxWidth().clickable(enabled = answered == null) { chosen[qi] = ci },
+                Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                    .selectable(selected = answered == ci, enabled = answered == null, role = Role.RadioButton, onClick = { chosen[qi] = ci }),
                 colors = CardDefaults.cardColors(containerColor = color),
-            ) { Text(choice, Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium.japanese()) }
+            ) { JaText(choice, Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium) }
+        }
         }
     }
     if (chosen.size == dialogue.questions.size) {
         val right = dialogue.questions.indices.count { chosen[it] == dialogue.questions[it].answer }
-        Text("$right of ${dialogue.questions.size} correct", style = MaterialTheme.typography.titleMedium)
+        Text(stringResource(R.string.listen_score, right, dialogue.questions.size), style = MaterialTheme.typography.titleMedium)
     }
 }

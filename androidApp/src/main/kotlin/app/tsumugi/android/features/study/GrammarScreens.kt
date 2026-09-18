@@ -1,5 +1,14 @@
 package app.tsumugi.android.features.study
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import app.tsumugi.android.ui.localized
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -50,7 +59,7 @@ import kotlinx.coroutines.launch
 
 /** CLAUDE.md rule 10: anything an LLM wrote carries this badge until a human verifies it. */
 @Composable
-fun AiBadge() = Tag("AI-generated · unreviewed")
+fun AiBadge() = Tag(stringResource(R.string.ai_badge_unreviewed))
 
 @Composable
 fun GrammarLevelsScreen(onOpenLevel: (Int) -> Unit, onLessons: () -> Unit) {
@@ -60,10 +69,10 @@ fun GrammarLevelsScreen(onOpenLevel: (Int) -> Unit, onLessons: () -> Unit) {
     val list = levels ?: return Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
     Column(Modifier.fillMaxSize()) {
         if (list.isEmpty()) {
-            Text("The grammar pack isn't installed in this build.", Modifier.padding(24.dp))
+            Text(stringResource(R.string.grammar_missing), Modifier.padding(24.dp))
             return@Column
         }
-        Button(onClick = onLessons, modifier = Modifier.padding(16.dp)) { Text("Learn new grammar") }
+        Button(onClick = onLessons, modifier = Modifier.padding(16.dp)) { Text(stringResource(R.string.grammar_learn_new)) }
         list.sortedDescending().forEach { level ->
             ListItem(modifier = Modifier.clickable { onOpenLevel(level) }, headlineContent = { Text("JLPT N$level") })
         }
@@ -79,9 +88,9 @@ fun GrammarLevelScreen(level: Int, onOpenPoint: (String) -> Unit) {
         items(points, key = { it.point.id }) { p ->
             ListItem(
                 modifier = Modifier.clickable { onOpenPoint(p.point.id) },
-                headlineContent = { Text(p.point.title, style = MaterialTheme.typography.titleMedium.japanese()) },
+                headlineContent = { JaText(p.point.title, style = MaterialTheme.typography.titleMedium) },
                 supportingContent = { Text(p.point.meaning) },
-                trailingContent = { Text(p.stage?.label ?: "", style = MaterialTheme.typography.labelSmall) },
+                trailingContent = { Text(p.stage?.localized() ?: "", style = MaterialTheme.typography.labelSmall) },
             )
         }
     }
@@ -97,9 +106,9 @@ fun GrammarPointScreen(id: String) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         GrammarPointContent(d.point, d.examples)
         if (d.stage == null) {
-            Button(onClick = { scope.launch { graph.grammar()?.learn(listOf(d.point)); detail = graph.grammar()?.point(id) } }) { Text("Add to reviews") }
+            Button(onClick = { scope.launch { graph.grammar()?.learn(listOf(d.point)); detail = graph.grammar()?.point(id) } }) { Text(stringResource(R.string.action_add_to_reviews)) }
         } else {
-            Text("In reviews · ${d.stage!!.label}", color = MaterialTheme.colorScheme.tertiary)
+            Text(stringResource(R.string.grammar_in_reviews, d.stage!!.localized()), color = MaterialTheme.colorScheme.tertiary)
         }
     }
 }
@@ -108,28 +117,30 @@ fun GrammarPointScreen(id: String) {
 @Composable
 fun GrammarPointContent(point: GrammarPoint, examples: List<GrammarExample>) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text(point.title, style = MaterialTheme.typography.displaySmall.japanese())
+        JaText(point.title, Modifier.semantics { heading() }, style = MaterialTheme.typography.displaySmall)
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             Tag("N${point.jlpt}")
             if (point.source != ItemSource.VERIFIED) AiBadge()
             point.textbooks.forEach { (book, chapter) -> Tag("$book $chapter") }
         }
         Text(point.meaning, style = MaterialTheme.typography.titleMedium)
-        Text(point.structure, style = MaterialTheme.typography.bodyLarge.japanese(), color = MaterialTheme.colorScheme.primary)
+        JaText(point.structure, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.primary)
         Text(point.nuance, style = MaterialTheme.typography.bodyMedium)
         if (point.mistakes.isNotEmpty()) {
-            Text("Watch out", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.secondary)
+            Text(stringResource(R.string.grammar_watch_out), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.secondary)
             point.mistakes.forEach { Text("• $it", style = MaterialTheme.typography.bodyMedium) }
         }
-        Text("Examples", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+        Text(stringResource(R.string.dict_examples), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
         examples.forEach { ex ->
             Column {
                 Text(
-                    buildAnnotatedString {
-                        append(ex.before)
-                        withStyle(SpanStyle(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.secondary)) { append(ex.answer) }
-                        append(ex.after)
-                    },
+                    ja(
+                        buildAnnotatedString {
+                            append(ex.before)
+                            withStyle(SpanStyle(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.secondary)) { append(ex.answer) }
+                            append(ex.after)
+                        },
+                    ),
                     style = MaterialTheme.typography.bodyLarge.japanese(),
                 )
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -139,7 +150,7 @@ fun GrammarPointContent(point: GrammarPoint, examples: List<GrammarExample>) {
             }
         }
         if (examples.any { !it.isAiGenerated }) {
-            Text("Example sentences from Tatoeba (CC BY 2.0 FR).", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
+            Text(stringResource(R.string.grammar_examples_credit), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
         }
     }
 }
@@ -158,16 +169,16 @@ fun GrammarLessonScreen(onDone: () -> Unit) {
     LaunchedEffect(index, list) { list.getOrNull(index)?.let { examples = graph.grammar()?.examples(it.id).orEmpty() } }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         when {
-            list.isEmpty() -> { Text("No grammar left to learn (or the grammar pack isn't installed)."); Button(onClick = onDone) { Text("OK") } }
-            done -> { Text("Added ${list.size} grammar points to reviews.", style = MaterialTheme.typography.titleMedium); Button(onClick = onDone) { Text("Done") } }
+            list.isEmpty() -> { Text(stringResource(R.string.grammar_none_left)); Button(onClick = onDone) { Text(stringResource(R.string.action_ok)) } }
+            done -> { Text(stringResource(R.string.grammar_added, list.size), style = MaterialTheme.typography.titleMedium); Button(onClick = onDone) { Text(stringResource(R.string.action_done)) } }
             else -> {
-                Text("Grammar ${index + 1} of ${list.size}", style = MaterialTheme.typography.labelLarge)
+                Text(stringResource(R.string.grammar_progress, index + 1, list.size), style = MaterialTheme.typography.labelLarge)
                 GrammarPointContent(list[index], examples)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    if (index > 0) OutlinedButton(onClick = { index-- }) { Text("Back") }
+                    if (index > 0) OutlinedButton(onClick = { index-- }) { Text(stringResource(R.string.action_back)) }
                     Button(onClick = {
                         if (index < list.lastIndex) index++ else scope.launch { graph.grammar()?.learn(list); done = true }
-                    }) { Text(if (index < list.lastIndex) "Next" else "Add to reviews") }
+                    }) { Text(stringResource(if (index < list.lastIndex) R.string.action_next else R.string.action_add_to_reviews)) }
                 }
             }
         }
@@ -180,19 +191,20 @@ fun GrammarLessonScreen(onDone: () -> Unit) {
 fun BuildAnswer(exercise: GrammarExercise, resetKey: Any, onSubmit: (String) -> Unit) {
     var picked by remember(resetKey) { mutableStateOf(listOf<Int>()) }
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text(
-            picked.joinToString("") { exercise.chunks[it] }.ifEmpty { "Tap the pieces in order" },
-            style = MaterialTheme.typography.headlineSmall.japanese(),
-            modifier = Modifier.fillMaxWidth(),
-        )
+        val built = picked.joinToString("") { exercise.chunks[it] }
+        if (built.isEmpty()) {
+            Text(stringResource(R.string.grammar_tap_pieces), Modifier.fillMaxWidth(), style = MaterialTheme.typography.titleMedium)
+        } else {
+            JaText(built, Modifier.fillMaxWidth().semantics { liveRegion = LiveRegionMode.Polite }, style = MaterialTheme.typography.headlineSmall)
+        }
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             exercise.chunks.forEachIndexed { i, chunk ->
-                if (i !in picked) AssistChip(onClick = { picked = picked + i }, label = { Text(chunk, style = MaterialTheme.typography.titleMedium.japanese()) })
+                if (i !in picked) AssistChip(onClick = { picked = picked + i }, label = { JaText(chunk, style = MaterialTheme.typography.titleMedium) })
             }
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            OutlinedButton(onClick = { picked = picked.dropLast(1) }, enabled = picked.isNotEmpty()) { Text("Undo") }
-            Button(onClick = { onSubmit(picked.joinToString("") { exercise.chunks[it] }) }, enabled = picked.size == exercise.chunks.size) { Text("Check") }
+            OutlinedButton(onClick = { picked = picked.dropLast(1) }, enabled = picked.isNotEmpty()) { Text(stringResource(R.string.action_undo)) }
+            Button(onClick = { onSubmit(picked.joinToString("") { exercise.chunks[it] }) }, enabled = picked.size == exercise.chunks.size) { Text(stringResource(R.string.action_check)) }
         }
     }
 }

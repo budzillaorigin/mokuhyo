@@ -1,5 +1,8 @@
 package app.tsumugi.android.ui
 
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.text
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,7 +32,9 @@ fun FuriganaText(
     style: TextStyle = MaterialTheme.typography.headlineLarge,
     showFurigana: Boolean = true,
 ) {
-    Row(verticalAlignment = Alignment.Bottom) {
+    // TalkBack reads the whole word once, in Japanese, rather than each reading and kanji run separately.
+    val spoken = segments.joinToString("") { it.ruby }
+    Row(Modifier.clearAndSetSemantics { text = ja(spoken) }, verticalAlignment = Alignment.Bottom) {
         segments.forEach { seg ->
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 if (showFurigana) {
@@ -64,7 +69,7 @@ fun PitchDiagram(reading: String, accent: PitchAccent, modifier: Modifier = Modi
         }
         Row {
             morae.forEach { m ->
-                Text(m, Modifier.size(step, 22.dp), style = MaterialTheme.typography.bodyMedium.japanese(), maxLines = 1)
+                Text(m, Modifier.width(step), style = MaterialTheme.typography.bodyMedium.japanese(), maxLines = 1, softWrap = false)
             }
         }
     }

@@ -1,5 +1,12 @@
 package app.tsumugi.android.features.exams
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -55,20 +62,23 @@ fun AttemptReviewScreen(id: String, onOpenAiSettings: () -> Unit) {
     val r = review
     when {
         !loaded -> LinearProgressIndicator(Modifier.fillMaxWidth().padding(16.dp))
-        r == null -> Text("This attempt couldn't be found.", Modifier.padding(16.dp))
+        r == null -> Text(stringResource(R.string.attempt_not_found), Modifier.padding(16.dp))
         else -> LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             item { ScoringView(r.summary.exam, r.summary.summary, r.summary.scoring) }
             if (r.summary.exam == ExamKind.OPI) {
-                item { Text("Transcript", style = MaterialTheme.typography.titleMedium) }
+                item { Text(stringResource(R.string.opi_transcript), style = MaterialTheme.typography.titleMedium) }
                 itemsIndexed(transcript) { _, (speaker, text) ->
                     Text(
-                        (if (speaker == "LEARNER") "You: " else "Interviewer: ") + text,
+                        buildAnnotatedString {
+                            append(stringResource(if (speaker == "LEARNER") R.string.opi_you else R.string.opi_interviewer))
+                            append(ja(text))
+                        },
                         style = MaterialTheme.typography.bodyMedium.japanese(),
                         color = if (speaker == "LEARNER") MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
                     )
                 }
             } else {
-                if (r.items.isEmpty()) item { Text("The items of this attempt are no longer installed (the bank was removed).") }
+                if (r.items.isEmpty()) item { Text(stringResource(R.string.attempt_items_gone)) }
                 itemsIndexed(r.items, key = { _, it -> it.item.id }) { i, reviewed ->
                     ReviewedItemCard(i + 1, reviewed, reviewed.item.passageId?.let { r.passages[it] }, onOpenAiSettings)
                 }
@@ -90,28 +100,29 @@ private fun ReviewedItemCard(number: Int, reviewed: ReviewedItem, passage: ExamP
     Card(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Row {
-                Text("$number. ${typeLabel(item.type)}", Modifier.weight(1f), style = MaterialTheme.typography.labelLarge.japanese())
-                Text(if (reviewed.answer.correct) "✓" else "✗", color = if (reviewed.answer.correct) Color(0xFF2E7D32) else MaterialTheme.colorScheme.error)
+                JaText("$number. ${typeLabel(item.type)}", Modifier.weight(1f), style = MaterialTheme.typography.labelLarge)
+                val verdict = stringResource(if (reviewed.answer.correct) R.string.review_correct else R.string.review_not_quite)
+                Text(if (reviewed.answer.correct) "✓" else "✗", Modifier.semantics { contentDescription = verdict }, color = if (reviewed.answer.correct) Color(0xFF2E7D32) else MaterialTheme.colorScheme.error)
             }
             if (passage != null) {
-                TextButton(onClick = { showPassage = !showPassage }) { Text(if (showPassage) "Hide passage" else "Show passage") }
+                TextButton(onClick = { showPassage = !showPassage }) { Text(stringResource(if (showPassage) R.string.attempt_hide_passage else R.string.attempt_show_passage)) }
                 if (showPassage) {
                     if (passage.body.isNotBlank()) ExamText(passage.body, style = MaterialTheme.typography.bodyMedium, highlight = markerOf(item.stem))
-                    if (passage.script.isNotEmpty()) Text(passage.script.joinToString("\n") { "${it.speaker}: ${it.text}" }, style = MaterialTheme.typography.bodyMedium.japanese())
+                    if (passage.script.isNotEmpty()) JaText(passage.script.joinToString("\n") { "${it.speaker}: ${it.text}" }, style = MaterialTheme.typography.bodyMedium)
                     if (passage.aiGenerated) AiBadge()
                 }
             }
             if (item.script.isNotEmpty()) {
-                Text("Audio script", style = MaterialTheme.typography.labelMedium)
-                Text(item.script.joinToString("\n") { (if (it.speaker.isNotBlank()) "${it.speaker}: " else "") + it.text }, style = MaterialTheme.typography.bodyMedium.japanese())
+                Text(stringResource(R.string.attempt_audio_script), style = MaterialTheme.typography.labelMedium)
+                JaText(item.script.joinToString("\n") { (if (it.speaker.isNotBlank()) "${it.speaker}: " else "") + it.text }, style = MaterialTheme.typography.bodyMedium)
             }
             ExamText(item.stem, style = MaterialTheme.typography.titleSmall)
             if (item.aiGenerated) AiBadge()
             item.choices.forEachIndexed { i, c ->
                 val mark = when {
-                    i == item.answer && i == chosen -> "✓ your answer · key"
-                    i == item.answer -> "key"
-                    i == chosen -> "your answer"
+                    i == item.answer && i == chosen -> stringResource(R.string.attempt_mark_both)
+                    i == item.answer -> stringResource(R.string.attempt_mark_key)
+                    i == chosen -> stringResource(R.string.attempt_mark_yours)
                     else -> ""
                 }
                 Row {
@@ -128,13 +139,13 @@ private fun ReviewedItemCard(number: Int, reviewed: ReviewedItem, passage: ExamP
                     if (mark.isNotEmpty()) Text(mark, style = MaterialTheme.typography.labelSmall)
                 }
             }
-            if (chosen == null) Text("Not answered", style = MaterialTheme.typography.bodySmall)
+            if (chosen == null) Text(stringResource(R.string.attempt_not_answered), style = MaterialTheme.typography.bodySmall)
             HorizontalDivider()
             if (item.explanation.isNotBlank()) {
                 ExamText(item.explanation, style = MaterialTheme.typography.bodyMedium)
                 if (item.aiGenerated) AiBadge()
             } else {
-                Text("No written explanation for this item.", style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.attempt_no_explanation), style = MaterialTheme.typography.bodySmall)
             }
             when (val e = explanation) {
                 null -> OutlinedButton(
@@ -154,10 +165,10 @@ private fun ReviewedItemCard(number: Int, reviewed: ReviewedItem, passage: ExamP
                             explaining = false
                         }
                     },
-                ) { Text(if (explaining) "Asking the model…" else "Explain with AI") }
+                ) { Text(stringResource(if (explaining) R.string.attempt_asking else R.string.attempt_explain)) }
                 is AiResult.Ok -> ExplanationView(e.value, e.engine)
                 is AiResult.Fallback -> ExplanationView(e.value, null)
-                is AiResult.Unavailable -> Notice("No AI explanation: ${e.reason}", actionLabel = "Open AI settings", onAction = onOpenAiSettings)
+                is AiResult.Unavailable -> Notice(stringResource(R.string.attempt_no_ai, "${e.reason}"), actionLabel = stringResource(R.string.ai_open_settings), onAction = onOpenAiSettings)
             }
         }
     }
@@ -167,8 +178,8 @@ private fun ReviewedItemCard(number: Int, reviewed: ReviewedItem, passage: ExamP
 private fun ExplanationView(out: JlptExplainItem.Output, engine: String?) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         if (engine != null) AiBadge(engine)
-        Text(out.explanation, style = MaterialTheme.typography.bodyMedium.japanese())
-        if (out.whyWrong.isNotBlank()) Text("Why your choice doesn't fit: ${out.whyWrong}", style = MaterialTheme.typography.bodyMedium.japanese())
-        Text("Key point: ${out.keyPoint}", style = MaterialTheme.typography.bodyMedium.japanese())
+        JaText(out.explanation, style = MaterialTheme.typography.bodyMedium)
+        if (out.whyWrong.isNotBlank()) Text(stringResource(R.string.attempt_why_wrong, out.whyWrong), style = MaterialTheme.typography.bodyMedium.japanese())
+        Text(stringResource(R.string.attempt_key_point, out.keyPoint), style = MaterialTheme.typography.bodyMedium.japanese())
     }
 }

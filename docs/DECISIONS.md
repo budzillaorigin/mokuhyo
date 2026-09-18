@@ -150,6 +150,26 @@ Item banks carry both `source`, which records where the item came from, and `ver
 - **Device RAM:** rounded to whole GB for model recommendations, because iOS reports slightly less than what's installed.
 - **Swift boundary:** `api/SwiftSupport.kt` catches Kotlin exceptions at the Swift edge for the calls that can fail at runtime (network, audio, model files). Kotlin/Native aborts the app on an exception that isn't declared with `@Throws`.
 
+### D-038: Android release hardening (2026-09-18)
+- **Localization:** UI text lives in `res/values/strings.xml` (English) and `res/values-ja/strings.xml` (Japanese), about 660 keys each.
+  - Learning content is never translated. That includes dictionary glosses, grammar write-ups and pack text, and the English labels the shared core produces (Today block titles, reminder bodies, exam section and item-type names).
+  - Shared enums that appear in the UI (item kind, SRS stage, rating, goal, phase) are mapped to resources in `ui/Labels.kt`. `shared/` keeps its English labels for exports and iOS.
+  - The per-app language comes from `res/xml/locales_config.xml`. No AppCompat dependency was added: on Android 13+ the platform applies the per-app locale by itself. Older versions follow the system language.
+- **Japanese for TalkBack:** Japanese learner text is wrapped in a ja-JP `SpanStyle(localeList)` span through `ja()` / `JaText` (`ui/Accessibility.kt`). Compose turns the span into a `LocaleSpan`, so TalkBack switches to a Japanese voice. `TextStyle.japanese()` on its own only changes glyph shapes and isn't passed to TalkBack.
+- **Share target:** MainActivity (`singleTop`) handles `ACTION_SEND` text/plain and `ACTION_PROCESS_TEXT` instead of a separate activity, because both end up in the same navigation state.
+  - If the shared text is a lone URL, or a URL with no Japanese around it (title plus link), it is fetched with `reader.importUrl`. Anything else is imported as text.
+  - Shared text waits until onboarding is finished.
+- **Stage names in Japanese:** 見習い / 熟練 / 達人 / 悟り / 卒業. These are our own wording, not WaniKani's.
+- **Backups:** `allowBackup` stays on. The review DB (`databases/`), settings and `files/media` are backed up. Excluded:
+  - `files/packs` and `files/models`: re-created from the APK or downloaded again.
+  - `files/tmp` and `files/tts`: scratch space.
+  - `app.tsumugi.secrets.xml`: encrypted with a Keystore key that never leaves the device, so a restored copy couldn't be decrypted anyway.
+
+  After a restore the user signs in to sync again. The restored DB keeps the old `device_id`, which is fine when a phone replaces another. Running both phones at once would share one sync identity, which is a known limitation.
+- **Release build:** stays unminified, since most of the size is packs and native code, which R8 doesn't shrink. `proguard-rules.pro` already keeps the `LlamaNative`/`WhisperNative` JNI entry points and the `Sink.onPiece` callback, so turning R8 on later can't break them silently.
+- **Launcher icon:** an adaptive vector spool of thread (紡ぐ, "to spin"): indigo background, cream flanges, a vermilion thread body and a loose end. It includes a monochrome layer for Android 13 themed icons, and a matching status-bar icon for reminders. Everything is drawn with paths, with no font rendering.
+- **Reduced motion:** when "Remove animations" is on (`ANIMATOR_DURATION_SCALE == 0`), `StrokeOrderView` shows the finished character with no motion, and tapping it doesn't animate.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

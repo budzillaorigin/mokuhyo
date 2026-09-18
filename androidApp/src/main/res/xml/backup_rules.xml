@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto Backup on Android 11 and older: same rules as data_extraction_rules.xml. -->
+<full-backup-content>
+    <exclude domain="file" path="packs" />
+    <exclude domain="file" path="models" />
+    <exclude domain="file" path="tmp" />
+    <exclude domain="file" path="tts" />
+    <exclude domain="sharedpref" path="app.tsumugi.secrets.xml" />
+</full-backup-content>

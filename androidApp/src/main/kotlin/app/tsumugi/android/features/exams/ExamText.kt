@@ -1,5 +1,6 @@
 package app.tsumugi.android.features.exams
 
+import app.tsumugi.android.ui.ja
 import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -74,7 +75,7 @@ fun ExamText(text: String, modifier: Modifier = Modifier, style: TextStyle = Mat
         blocks.forEach { block ->
             when (block) {
                 is Block.Table -> TableGrid(block.rows, style)
-                is Block.Lines -> Text(examAnnotated(block.text, highlight), style = style.japanese())
+                is Block.Lines -> Text(ja(examAnnotated(block.text, highlight)), style = style.japanese())
             }
         }
     }
@@ -118,7 +119,7 @@ private fun TableGrid(rows: List<List<String>>, style: TextStyle) {
             Row(Modifier.height(IntrinsicSize.Min)) {
                 for (c in 0 until columns) {
                     Text(
-                        examAnnotated(cells.getOrElse(c) { "" }),
+                        ja(examAnnotated(cells.getOrElse(c) { "" })),
                         Modifier.fillMaxHeight().border(0.5.dp, border).widthIn(min = 64.dp, max = 220.dp).padding(6.dp),
                         style = (if (r == 0) style.copy(fontWeight = FontWeight.Bold) else style).japanese(),
                     )

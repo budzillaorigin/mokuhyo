@@ -1,68 +1,68 @@
 package app.tsumugi.android.app
 
+import androidx.annotation.StringRes
 import androidx.compose.runtime.getValue
+import app.tsumugi.android.R
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import app.tsumugi.android.features.exams.ExamSpec
 
-enum class Tab(val label: String, val glyph: String) {
-    TODAY("Today", "今"),
-    REVIEWS("Reviews", "復"),
-    LEARN("Learn", "学"),
-    PRACTICE("Practice", "練"),
-    ME("Me", "私"),
+enum class Tab(@StringRes val label: Int, val glyph: String) {
+    TODAY(R.string.tab_today, "今"),
+    REVIEWS(R.string.tab_reviews, "復"),
+    LEARN(R.string.tab_learn, "学"),
+    PRACTICE(R.string.tab_practice, "練"),
+    ME(R.string.tab_me, "私"),
 }
 
 /** Every screen reachable in the app. Each tab keeps its own back stack of these. */
 sealed interface Route {
-    val title: String
-
-    data object TabRoot : Route { override val title = "" }
-    data object Dictionary : Route { override val title = "Dictionary" }
-    data class Lookup(val query: String) : Route { override val title = "Dictionary" }
-    data object Scan : Route { override val title = "Scan text" }
-    data object Library : Route { override val title = "Reading" }
-    data class Read(val docId: String) : Route { override val title = "Reader" }
-    data object Feeds : Route { override val title = "Feeds" }
-    data object Aozora : Route { override val title = "Aozora Bunko" }
-    data class WritingPractice(val kanji: List<String>) : Route { override val title = "Writing" }
-    data object Handwriting : Route { override val title = "Draw to search" }
-    data class Entry(val id: Long) : Route { override val title = "Word" }
-    data class Kanji(val literal: String) : Route { override val title = literal }
-    data object Radicals : Route { override val title = "Radical search" }
-    data object Lessons : Route { override val title = "Lessons" }
-    data object Reviews : Route { override val title = "Reviews" }
-    data object PathLevels : Route { override val title = "Kanji path" }
-    data class PathLevel(val level: Int) : Route { override val title = "Level $level" }
-    data class PathItem(val id: String) : Route { override val title = "Item" }
-    data object Settings : Route { override val title = "Settings" }
-    data object WordLists : Route { override val title = "Word lists" }
-    data object Grammar : Route { override val title = "Grammar" }
-    data class GrammarLevel(val level: Int) : Route { override val title = "N$level grammar" }
-    data class GrammarPoint(val id: String) : Route { override val title = "Grammar" }
-    data object GrammarLessons : Route { override val title = "Grammar lessons" }
-    data class WordList(val id: String) : Route { override val title = "Word list" }
-    data object Import : Route { override val title = "Import & export" }
-    data object Sync : Route { override val title = "Sync" }
-    data object Licenses : Route { override val title = "Licenses" }
-    data object AiSettings : Route { override val title = "AI & speech" }
+    data object TabRoot : Route
+    data object Dictionary : Route
+    data class Lookup(val query: String) : Route
+    data object Scan : Route
+    data object Library : Route
+    data class Read(val docId: String) : Route
+    data object Feeds : Route
+    data object Aozora : Route
+    data class WritingPractice(val kanji: List<String>) : Route
+    data object Handwriting : Route
+    data class Entry(val id: Long) : Route
+    data class Kanji(val literal: String) : Route
+    data object Radicals : Route
+    data object Lessons : Route
+    data object Reviews : Route
+    data object PathLevels : Route
+    data class PathLevel(val level: Int) : Route
+    data class PathItem(val id: String) : Route
+    data object Settings : Route
+    data object WordLists : Route
+    data object Grammar : Route
+    data class GrammarLevel(val level: Int) : Route
+    data class GrammarPoint(val id: String) : Route
+    data object GrammarLessons : Route
+    data class WordList(val id: String) : Route
+    data object Import : Route
+    data object Sync : Route
+    data object Licenses : Route
+    data object AiSettings : Route
 
     // Practice. Routes that start a session carry a nonce so each visit gets a fresh ViewModel.
-    data object Scenarios : Route { override val title = "Role-play" }
-    data class Roleplay(val scenarioId: String, val nonce: Long = System.nanoTime()) : Route { override val title = "Role-play" }
-    data object Dialogues : Route { override val title = "Dialogues" }
-    data class DialoguePlayer(val id: String) : Route { override val title = "Dialogue" }
-    data object MinimalPairs : Route { override val title = "Minimal pairs" }
-    data object Media : Route { override val title = "Media player" }
-    data class Pomodoro(val nonce: Long = System.nanoTime()) : Route { override val title = "Speaking session" }
-    data class Opi(val nonce: Long = System.nanoTime()) : Route { override val title = "OPI practice" }
+    data object Scenarios : Route
+    data class Roleplay(val scenarioId: String, val nonce: Long = System.nanoTime()) : Route
+    data object Dialogues : Route
+    data class DialoguePlayer(val id: String) : Route
+    data object MinimalPairs : Route
+    data object Media : Route
+    data class Pomodoro(val nonce: Long = System.nanoTime()) : Route
+    data class Opi(val nonce: Long = System.nanoTime()) : Route
 
     // Exams
-    data object Exams : Route { override val title = "Exams" }
-    data class ExamRun(val spec: ExamSpec, val nonce: Long = System.nanoTime()) : Route { override val title = spec.title }
-    data class Attempt(val id: String) : Route { override val title = "Attempt review" }
+    data object Exams : Route
+    data class ExamRun(val spec: ExamSpec, val nonce: Long = System.nanoTime()) : Route
+    data class Attempt(val id: String) : Route
 }
 
 /** Per-tab back stacks that survive configuration changes. */
@@ -88,6 +88,12 @@ class NavigationViewModel : ViewModel() {
 
     fun back() {
         if (canGoBack) stacks[tab] = stack(tab).dropLast(1)
+    }
+
+    /** Opens [route] on [tab] from outside the app (share sheet, text-selection menu), replacing that tab's stack. */
+    fun open(tab: Tab, route: Route) {
+        stacks[tab] = listOf(Route.TabRoot, route)
+        this.tab = tab
     }
 
     /** Global search (reachable from every tab): opens the dictionary on the current tab's stack. */

@@ -1,5 +1,10 @@
 package app.tsumugi.android.features.me
 
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
@@ -132,22 +137,20 @@ fun AiSettingsScreen() {
             return@Column
         }
         Text(
-            "Everything runs on this phone by default. Optionally use your own server (Ollama, LM Studio, llama-server, vLLM). " +
-                "No account, subscription or API key from a company is needed.",
+            stringResource(R.string.ai_intro),
             style = MaterialTheme.typography.bodyMedium,
         )
 
-        SectionTitle("Language model")
+        SectionTitle(stringResource(R.string.ai_llm))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            FilterChip(c.llm == LlmEngine.NONE, { config = c.copy(llm = LlmEngine.NONE) }, { Text("Off") })
-            FilterChip(c.llm == LlmEngine.LOCAL, { config = c.copy(llm = LlmEngine.LOCAL) }, { Text("On-device") })
-            FilterChip(c.llm == LlmEngine.ENDPOINT, { config = c.copy(llm = LlmEngine.ENDPOINT) }, { Text("My server") })
+            FilterChip(c.llm == LlmEngine.NONE, { config = c.copy(llm = LlmEngine.NONE) }, { Text(stringResource(R.string.ai_off)) })
+            FilterChip(c.llm == LlmEngine.LOCAL, { config = c.copy(llm = LlmEngine.LOCAL) }, { Text(stringResource(R.string.ai_on_device)) })
+            FilterChip(c.llm == LlmEngine.ENDPOINT, { config = c.copy(llm = LlmEngine.ENDPOINT) }, { Text(stringResource(R.string.ai_my_server)) })
         }
         status?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
         if (c.llm == LlmEngine.NONE) {
             Text(
-                "With no model, practice still works: role-plays follow scripts, the OPI uses question banks and a self-rating " +
-                    "checklist, and explanations come from the packs.",
+                stringResource(R.string.ai_no_model_hint),
                 style = MaterialTheme.typography.bodySmall,
             )
         }
@@ -157,15 +160,15 @@ fun AiSettingsScreen() {
         if (c.llm == LlmEngine.ENDPOINT) {
             OutlinedTextField(
                 c.endpointUrl, { config = c.copy(endpointUrl = it) }, Modifier.fillMaxWidth(),
-                label = { Text("Server URL") }, placeholder = { Text("http://<lan-ip>:11434/v1") }, singleLine = true,
+                label = { Text(stringResource(R.string.sync_server_url)) }, placeholder = { Text("http://<lan-ip>:11434/v1") }, singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
             )
             OutlinedTextField(
                 apiKey, { apiKey = it; keyEdited = true }, Modifier.fillMaxWidth(),
-                label = { Text("API key (optional)") }, singleLine = true, visualTransformation = PasswordVisualTransformation(),
-                supportingText = { Text("Stored in the Android Keystore and sent only to this server.") },
+                label = { Text(stringResource(R.string.ai_api_key)) }, singleLine = true, visualTransformation = PasswordVisualTransformation(),
+                supportingText = { Text(stringResource(R.string.ai_api_key_hint)) },
             )
-            OutlinedTextField(c.endpointModel, { config = c.copy(endpointModel = it) }, Modifier.fillMaxWidth(), label = { Text("Model name") }, singleLine = true)
+            OutlinedTextField(c.endpointModel, { config = c.copy(endpointModel = it) }, Modifier.fillMaxWidth(), label = { Text(stringResource(R.string.ai_model_name)) }, singleLine = true)
             Button(
                 onClick = {
                     probing = true
@@ -175,66 +178,70 @@ fun AiSettingsScreen() {
                     }
                 },
                 enabled = c.endpointUrl.isNotBlank() && !probing,
-            ) { Text(if (probing) "Testing…" else "Test connection") }
+            ) { Text(stringResource(if (probing) R.string.ai_testing else R.string.ai_test)) }
             probe?.let { r ->
                 r.onSuccess { models ->
-                    Text("Connected. ${models.size} models — pick one:", style = MaterialTheme.typography.bodyMedium)
+                    Text(stringResource(R.string.ai_connected, models.size), style = MaterialTheme.typography.bodyMedium)
                     models.forEach { m ->
-                        Row(Modifier.fillMaxWidth().clickable { config = c.copy(endpointModel = m) }, verticalAlignment = Alignment.CenterVertically) {
-                            RadioButton(c.endpointModel == m, { config = c.copy(endpointModel = m) })
+                        Row(
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .selectable(selected = c.endpointModel == m, role = Role.RadioButton, onClick = { config = c.copy(endpointModel = m) }),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            RadioButton(c.endpointModel == m, onClick = null)
                             Text(m)
                         }
                     }
                 }
-                r.onFailure { Text("Couldn't connect: ${it.message}", color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
+                r.onFailure { Text(stringResource(R.string.ai_connect_failed, it.message.orEmpty()), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
             }
         }
 
         HorizontalDivider()
-        SectionTitle("Speech recognition")
+        SectionTitle(stringResource(R.string.ai_stt))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            FilterChip(c.stt == SttEngine.SYSTEM, { config = c.copy(stt = SttEngine.SYSTEM) }, { Text("System") })
-            FilterChip(c.stt == SttEngine.WHISPER_LOCAL, { config = c.copy(stt = SttEngine.WHISPER_LOCAL) }, { Text("On-device Whisper") })
-            FilterChip(c.stt == SttEngine.WHISPER_ENDPOINT, { config = c.copy(stt = SttEngine.WHISPER_ENDPOINT) }, { Text("Whisper server") })
+            FilterChip(c.stt == SttEngine.SYSTEM, { config = c.copy(stt = SttEngine.SYSTEM) }, { Text(stringResource(R.string.ai_system)) })
+            FilterChip(c.stt == SttEngine.WHISPER_LOCAL, { config = c.copy(stt = SttEngine.WHISPER_LOCAL) }, { Text(stringResource(R.string.ai_whisper_local)) })
+            FilterChip(c.stt == SttEngine.WHISPER_ENDPOINT, { config = c.copy(stt = SttEngine.WHISPER_ENDPOINT) }, { Text(stringResource(R.string.ai_whisper_server)) })
         }
         when (c.stt) {
             SttEngine.SYSTEM -> Text(
-                "Android's recognizer in Japanese, offline when the device has the Japanese pack. Recordings stay on this device.",
+                stringResource(R.string.ai_stt_system_hint),
                 style = MaterialTheme.typography.bodySmall,
             )
             SttEngine.WHISPER_LOCAL -> {
-                Text("Whisper runs on this phone; recordings never leave it.", style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.ai_whisper_local_hint), style = MaterialTheme.typography.bodySmall)
                 ModelList(vm, ModelKind.STT, selected = c.localSttModelId, onSelect = { config = c.copy(localSttModelId = it) }, onDownload = { pendingDownload = it })
             }
             SttEngine.WHISPER_ENDPOINT -> {
                 OutlinedTextField(
                     c.sttEndpointUrl, { config = c.copy(sttEndpointUrl = it) }, Modifier.fillMaxWidth(),
-                    label = { Text("Whisper server URL") }, placeholder = { Text("http://<lan-ip>:8000/v1") }, singleLine = true,
+                    label = { Text(stringResource(R.string.ai_whisper_url)) }, placeholder = { Text("http://<lan-ip>:8000/v1") }, singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
                 )
-                Text("Recordings are sent only to this server (yours), using the API key above if set.", style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.ai_whisper_server_hint), style = MaterialTheme.typography.bodySmall)
             }
         }
 
         HorizontalDivider()
-        SectionTitle("Voices")
+        SectionTitle(stringResource(R.string.ai_voices))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            FilterChip(c.tts == TtsEngine.SYSTEM, { config = c.copy(tts = TtsEngine.SYSTEM) }, { Text("System") })
+            FilterChip(c.tts == TtsEngine.SYSTEM, { config = c.copy(tts = TtsEngine.SYSTEM) }, { Text(stringResource(R.string.ai_system)) })
             FilterChip(c.tts == TtsEngine.VOICEVOX, { config = c.copy(tts = TtsEngine.VOICEVOX) }, { Text("VOICEVOX") })
         }
         if (c.tts == TtsEngine.SYSTEM) {
-            Text("Android's text-to-speech. Install a Japanese voice in Android settings → Text-to-speech if none is available.", style = MaterialTheme.typography.bodySmall)
+            Text(stringResource(R.string.ai_tts_system_hint), style = MaterialTheme.typography.bodySmall)
         } else {
             OutlinedTextField(
                 c.voicevoxUrl, { config = c.copy(voicevoxUrl = it) }, Modifier.fillMaxWidth(),
-                label = { Text("VOICEVOX engine URL") }, placeholder = { Text("http://<lan-ip>:50021") }, singleLine = true,
+                label = { Text(stringResource(R.string.ai_voicevox_url)) }, placeholder = { Text("http://<lan-ip>:50021") }, singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
             )
             OutlinedTextField(
                 c.voicevoxSpeaker.toString(), { v -> v.toIntOrNull()?.let { config = c.copy(voicevoxSpeaker = it) } }, Modifier.fillMaxWidth(),
-                label = { Text("Speaker id") }, singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                label = { Text(stringResource(R.string.ai_speaker_id)) }, singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             )
-            Text("A free engine you run yourself. If it can't be reached, the system voice is used.", style = MaterialTheme.typography.bodySmall)
+            Text(stringResource(R.string.ai_voicevox_hint), style = MaterialTheme.typography.bodySmall)
         }
     }
 
@@ -248,31 +255,31 @@ fun AiSettingsScreen() {
         if (isMetered(context)) {
             AlertDialog(
                 onDismissRequest = { pendingDownload = null },
-                title = { Text("Download on mobile data?") },
-                text = { Text("${model.name} is ${gb(model.totalBytes)}. You're on a metered connection; Wi-Fi is recommended. You can pause and resume later.") },
-                confirmButton = { TextButton(onClick = { vm.download(model); pendingDownload = null }) { Text("Download anyway") } },
-                dismissButton = { TextButton(onClick = { pendingDownload = null }) { Text("Wait for Wi-Fi") } },
+                title = { Text(stringResource(R.string.ai_metered_title)) },
+                text = { Text(stringResource(R.string.ai_metered_text, model.name, gb(model.totalBytes))) },
+                confirmButton = { TextButton(onClick = { vm.download(model); pendingDownload = null }) { Text(stringResource(R.string.ai_download_anyway)) } },
+                dismissButton = { TextButton(onClick = { pendingDownload = null }) { Text(stringResource(R.string.ai_wait_wifi)) } },
             )
         }
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ModelList(vm: AiSettingsViewModel, kind: ModelKind, selected: String?, onSelect: (String) -> Unit, onDownload: (ModelInfo) -> Unit) {
     val manager = vm.graph.ai.models
     if (manager == null) {
-        Notice("The model catalog (content/models/manifest.json) is missing from this build.")
+        Notice(stringResource(R.string.ai_catalog_missing))
         return
     }
     val ram = vm.graph.ai.deviceRamGb
     val recommended = manager.recommend(kind, ram)
     val models = manager.models(kind)
     Text(
-        "Downloads come straight from the model host: no account or sign-in. Use Wi-Fi (models are large); an interrupted " +
-            "download resumes where it stopped. This phone has about ${ram.toInt()} GB of RAM.",
+        stringResource(R.string.ai_download_hint, ram.toInt()),
         style = MaterialTheme.typography.bodySmall,
     )
-    if (models.isEmpty()) Text("No models of this kind in the catalog.")
+    if (models.isEmpty()) Text(stringResource(R.string.ai_no_models))
     @Suppress("UNUSED_VARIABLE") val v = vm.diskVersion
     val effective = selected ?: recommended?.id
     models.forEach { m ->
@@ -281,41 +288,44 @@ private fun ModelList(vm: AiSettingsViewModel, kind: ModelKind, selected: String
         val p = vm.progress[m.id]
         Card(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    RadioButton(effective == m.id, { onSelect(m.id) }, enabled = installed)
+                Row(
+                    Modifier.selectable(selected = effective == m.id, enabled = installed, role = Role.RadioButton, onClick = { onSelect(m.id) }),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    RadioButton(effective == m.id, onClick = null, enabled = installed)
                     Column(Modifier.weight(1f)) {
                         Text(m.name, style = MaterialTheme.typography.titleSmall)
-                        Text("${gb(m.totalBytes)} · needs ${m.minRamGb} GB RAM · ${m.license}", style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(R.string.ai_model_row, gb(m.totalBytes), m.minRamGb.toString(), m.license), style = MaterialTheme.typography.bodySmall)
                     }
-                    if (m.id == recommended?.id) Tag("Recommended")
+                    if (m.id == recommended?.id) Tag(stringResource(R.string.ai_recommended))
                 }
-                if (m.minRamGb > ram) Text("May not fit in this phone's memory.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                if (m.minRamGb > ram) Text(stringResource(R.string.ai_may_not_fit), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                 when {
                     vm.isDownloading(m) -> {
                         when (p) {
                             is DownloadProgress.Downloading -> {
                                 LinearProgressIndicator(progress = { p.fraction.toFloat() }, modifier = Modifier.fillMaxWidth())
-                                Text("${gb(p.bytesDone)} of ${gb(p.bytesTotal)}", style = MaterialTheme.typography.bodySmall)
+                                Text(stringResource(R.string.ai_progress, gb(p.bytesDone), gb(p.bytesTotal)), style = MaterialTheme.typography.bodySmall)
                             }
                             is DownloadProgress.Verifying -> {
                                 LinearProgressIndicator(Modifier.fillMaxWidth())
-                                Text("Verifying ${p.file}…", style = MaterialTheme.typography.bodySmall)
+                                Text(stringResource(R.string.ai_verifying, p.file), style = MaterialTheme.typography.bodySmall)
                             }
                             else -> LinearProgressIndicator(Modifier.fillMaxWidth())
                         }
-                        OutlinedButton(onClick = { vm.cancel(m) }) { Text("Pause") }
+                        OutlinedButton(onClick = { vm.cancel(m) }) { Text(stringResource(R.string.ai_pause)) }
                     }
                     installed -> Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Text("Installed · ${gb(onDisk)} on disk", Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
-                        OutlinedButton(onClick = { vm.delete(m) }) { Text("Delete") }
+                        Text(stringResource(R.string.ai_installed, gb(onDisk)), Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
+                        OutlinedButton(onClick = { vm.delete(m) }) { Text(stringResource(R.string.action_delete)) }
                     }
                     else -> {
                         (p as? DownloadProgress.Failed)?.let {
-                            Text("Download failed: ${it.message}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                            Text(stringResource(R.string.ai_download_failed, it.message.orEmpty()), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                         }
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Button(onClick = { onDownload(m) }) { Text(if (onDisk > 0) "Resume (${gb(onDisk)} done)" else "Download") }
-                            if (onDisk > 0) OutlinedButton(onClick = { vm.delete(m) }) { Text("Discard") }
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Button(onClick = { onDownload(m) }) { Text(if (onDisk > 0) stringResource(R.string.ai_resume, gb(onDisk)) else stringResource(R.string.ai_download)) }
+                            if (onDisk > 0) OutlinedButton(onClick = { vm.delete(m) }) { Text(stringResource(R.string.ai_discard)) }
                         }
                     }
                 }

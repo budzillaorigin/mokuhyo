@@ -23,6 +23,10 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import app.tsumugi.android.R
 import app.tsumugi.dictionary.KanjiStroke
 import app.tsumugi.jp.strokes.Point
 import app.tsumugi.jp.strokes.SvgPath
@@ -31,17 +35,24 @@ private const val KANJIVG_SIZE = 109f
 
 /**
  * Animated KanjiVG stroke order: completed strokes in the foreground colour, the current stroke drawn
- * progressively with a start dot. Tap to replay.
+ * progressively with a start dot. Tap to replay. With "Remove animations" on, the finished character is shown
+ * straight away (every stroke drawn, no motion).
  */
 @Composable
-fun StrokeOrderView(strokes: List<KanjiStroke>, modifier: Modifier = Modifier, msPerStroke: Int = 550) {
+fun StrokeOrderView(strokes: List<KanjiStroke>, modifier: Modifier = Modifier, msPerStroke: Int = 550, contentDescription: String? = null) {
     val polylines = remember(strokes) { strokes.map { SvgPath.flatten(it.path) } }
     val progress = remember(strokes) { Animatable(0f) }
     var replay by remember { mutableIntStateOf(0) }
+    val still = rememberAnimationsDisabled()
     LaunchedEffect(strokes, replay) {
+        if (still) {
+            progress.snapTo(polylines.size.toFloat())
+            return@LaunchedEffect
+        }
         progress.snapTo(0f)
         progress.animateTo(polylines.size.toFloat(), tween(msPerStroke * polylines.size, easing = LinearEasing))
     }
+    val replayLabel = stringResource(R.string.stroke_replay)
     val ink = MaterialTheme.colorScheme.onSurface
     val guide = MaterialTheme.colorScheme.outlineVariant
     val accent = MaterialTheme.colorScheme.secondary
@@ -50,7 +61,8 @@ fun StrokeOrderView(strokes: List<KanjiStroke>, modifier: Modifier = Modifier, m
         modifier
             .aspectRatio(1f)
             .border(1.dp, guide)
-            .clickable { replay++ },
+            .clickable(onClickLabel = replayLabel) { replay++ }
+            .semantics { this.contentDescription = contentDescription ?: replayLabel },
     ) {
         val scale = size.minDimension / KANJIVG_SIZE
         val dash = PathEffect.dashPathEffect(floatArrayOf(6f, 6f))

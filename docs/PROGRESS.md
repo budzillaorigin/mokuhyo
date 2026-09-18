@@ -4,6 +4,52 @@ Current phase: **Phases 0–7 complete. Phase 8 (release hardening) in progress.
 
 ---
 
+## Phase 8: Release hardening
+
+### Phase 8 (Android) (2026-09-18)
+
+#### What was built
+- **Localization (en + ja):** about 660 string keys, in `res/values/strings.xml` and `res/values-ja/strings.xml`.
+  - Every screen's UI text is in resources: tabs, top-bar titles, buttons, section headers, settings, empty states, dialogs, onboarding, and the exam/OPI disclaimer. Status and error messages built in coroutines use `context.getString`.
+  - Shared enums (kind, stage, rating, goal, phase) are mapped in `ui/Labels.kt`.
+  - Android 13+ per-app language uses `res/xml/locales_config.xml`.
+  - Learning content is not translated (D-038).
+- **Accessibility:**
+  - `ja()` / `JaText` (`ui/Accessibility.kt`) tag Japanese learner text with a ja-JP locale span, so TalkBack reads it in Japanese. Applied to dictionary headwords, readings and examples, review prompts and answers, reader text and titles, exam passages, stems and choices, grammar points, dialogue and role-play lines, and transcripts.
+  - Content descriptions on every icon-only button (media controls, line replay, previous/next question, back).
+  - Semantics on custom controls:
+    - The review answer field says whether it wants the reading or the meaning.
+    - Stage bars read as one node each ("Guru: 12").
+    - The JLPT score bars, the pronunciation gauge and the sub-scores have spoken values.
+    - Exam and listening choices are a radio group (`selectable` + `Role.RadioButton`), and the question navigator has answered/unanswered state.
+    - The mic button and the drawing canvas have descriptions, and each reader word is one node read in Japanese.
+    - Section headings are marked as headings, and the review verdicts are live regions.
+  - Font scaling: fixed-size boxes that clipped at 200% are gone. That covers the stage-bar labels, the kanji-screen header, the dictionary label columns, the pitch-diagram morae, the tally tables and the pronunciation rows. Button rows that overflowed now wrap (`FlowRow`), and rating buttons are 2×2.
+  - Touch targets are at least 48dp: list rows, the self-rating checklist, the endpoint model picker, the vacation toggle.
+  - The stroke-order animation respects "Remove animations".
+- **Share target:** "Read in Tsumugi" (`ACTION_SEND` text/plain) imports shared text, or fetches a shared URL, into the reader and opens it. "Look up in Tsumugi" (`ACTION_PROCESS_TEXT`) opens the dictionary search.
+- **Release polish:**
+  - Adaptive vector launcher icon (a spool of thread) with a themed-icon layer, and a matching notification icon.
+  - `data_extraction_rules.xml` / `backup_rules.xml`: user data is backed up, while packs, models, scratch files and keystore-encrypted secrets are excluded.
+  - `proguard-rules.pro` with JNI keep rules. The release build is still unminified.
+  - APK size, language, sharing and backup notes in `docs/RELEASE.md` §7.
+
+#### Deferred
+- Platform error strings from `platform/AudioCapture.kt` and the native bridges are still English only. So are English strings produced by the shared core: Today block titles and details, reminder text, weekly-challenge titles.
+- Some rare long notes stay as they are: technical pack-missing hints mention file paths.
+- There's no in-app language picker. Android 13+ uses the system per-app setting. Older Android follows the system language.
+- There's no Glance widget (unchanged).
+
+#### How to run
+```bash
+./gradlew :androidApp:assembleDebug -Ptsumugi.native=false
+adb install -r androidApp/build/outputs/apk/debug/androidApp-debug.apk
+# Japanese UI: Settings → Apps → Tsumugi → Language → 日本語 (Android 13+), or set the phone to Japanese.
+# Share target: share a web page or selected text from Chrome → "Read in Tsumugi"; select text → ⋮ → "Look up in Tsumugi".
+```
+
+---
+
 ## Phase 7: Exams (2026-09-18)
 
 ### What was built
@@ -334,5 +380,9 @@ cd tools && uv sync && uv run ruff check .
 | Practice: role-play, pronunciation panel, OPI, Pomodoro session | | ✅ |
 | Listening: dialogues, minimal pairs, media player with dual subtitles | | ✅ |
 | Exams: JLPT/DLPT hub, timed runner, results, attempt review, bank import | | ✅ |
-| Onboarding | — | — |
-| Sync | Phase 5 | Phase 5 |
+| Onboarding | — | ✅ |
+| Sync | Phase 5 | ✅ |
+| Localization (en + ja UI) | | ✅ (per-app language on Android 13+) |
+| Accessibility (screen reader labels, Japanese speech for learner text, large fonts, 48dp targets, reduced motion) | | ✅ |
+| Share / text-selection entry points ("Read in Tsumugi", "Look up in Tsumugi") | | ✅ |
+| App icon, backup rules, release notes | | ✅ (sideload APK only) |
