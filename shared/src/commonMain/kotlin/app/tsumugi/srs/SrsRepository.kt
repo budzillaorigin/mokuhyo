@@ -230,6 +230,14 @@ class SrsRepository(
 
     // --- Notes --------------------------------------------------------------------------------------------
 
+    data class UserNote(val myStory: String, val synonyms: List<String>)
+
+    /** The user's note for an item, which may exist before the item is started (written during a lesson). */
+    suspend fun note(itemId: String): UserNote = io {
+        val n = q.noteFor(itemId).executeAsOneOrNull()
+        UserNote(n?.my_story.orEmpty(), n?.synonyms?.let(::decode).orEmpty())
+    }
+
     suspend fun saveNote(itemId: String, myStory: String? = null, synonyms: List<String>? = null) = io {
         val existing = q.noteFor(itemId).executeAsOneOrNull()
         q.putNote(

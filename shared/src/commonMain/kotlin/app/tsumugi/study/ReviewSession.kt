@@ -54,19 +54,6 @@ data class ReviewPrompt(
         }
 }
 
-val ItemKind.label: String
-    get() = when (this) {
-        ItemKind.RADICAL -> "Radical"
-        ItemKind.KANJI -> "Kanji"
-        ItemKind.VOCAB -> "Vocabulary"
-        ItemKind.GRAMMAR -> "Grammar"
-        ItemKind.SENTENCE -> "Sentence"
-        ItemKind.LISTENING -> "Listening"
-        ItemKind.WRITING -> "Writing"
-        ItemKind.MINIMAL_PAIR -> "Minimal pair"
-        ItemKind.CUSTOM -> "Card"
-    }
-
 data class KindTally(val correct: Int, val total: Int)
 
 data class ReviewSummary(

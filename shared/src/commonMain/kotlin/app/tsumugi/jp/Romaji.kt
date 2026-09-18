@@ -196,7 +196,7 @@ object Romaji {
                 parts += two; i += 2; continue
             }
             parts += when (val c = s[i]) {
-                'っ' -> " " // placeholder, resolved against the following mora below
+                'っ' -> "\u0000" // placeholder, resolved against the following mora below
                 'ん' -> "n"
                 'ー' -> "-"
                 else -> reverse[c.toString()] ?: c.toString()
@@ -207,7 +207,7 @@ object Romaji {
             parts.forEachIndexed { idx, p ->
                 val next = parts.getOrNull(idx + 1)
                 when {
-                    p == " " -> when {
+                    p == "\u0000" -> when {
                         next == null || next.isEmpty() || next[0] !in 'a'..'z' || next[0] in VOWELS -> {}
                         next.startsWith("ch") -> append('t')
                         else -> append(next[0])

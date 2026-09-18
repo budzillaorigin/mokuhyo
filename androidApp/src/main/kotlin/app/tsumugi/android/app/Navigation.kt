@@ -1,8 +1,8 @@
 package app.tsumugi.android.app
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
@@ -23,6 +23,14 @@ sealed interface Route {
     data class Entry(val id: Long) : Route { override val title = "Word" }
     data class Kanji(val literal: String) : Route { override val title = literal }
     data object Radicals : Route { override val title = "Radical search" }
+    data object Lessons : Route { override val title = "Lessons" }
+    data object Reviews : Route { override val title = "Reviews" }
+    data object PathLevels : Route { override val title = "Kanji path" }
+    data class PathLevel(val level: Int) : Route { override val title = "Level $level" }
+    data class PathItem(val id: String) : Route { override val title = "Item" }
+    data object Settings : Route { override val title = "Settings" }
+    data object Import : Route { override val title = "Import & export" }
+    data object Licenses : Route { override val title = "Licenses" }
 }
 
 /** Per-tab back stacks that survive configuration changes. */

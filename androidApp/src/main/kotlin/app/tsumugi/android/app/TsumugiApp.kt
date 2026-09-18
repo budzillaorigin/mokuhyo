@@ -26,6 +26,15 @@ import app.tsumugi.android.features.dictionary.DictionarySearchScreen
 import app.tsumugi.android.features.dictionary.EntryScreen
 import app.tsumugi.android.features.dictionary.KanjiScreen
 import app.tsumugi.android.features.dictionary.RadicalSearchScreen
+import app.tsumugi.android.features.me.LicensesScreen
+import app.tsumugi.android.features.me.MeDestination
+import app.tsumugi.android.features.me.MeScreen
+import app.tsumugi.android.features.me.SettingsScreen
+import app.tsumugi.android.features.study.LessonScreen
+import app.tsumugi.android.features.study.PathItemScreen
+import app.tsumugi.android.features.study.PathLevelScreen
+import app.tsumugi.android.features.study.PathLevelsScreen
+import app.tsumugi.android.features.study.ReviewScreen
 import app.tsumugi.android.features.today.TodayScreen
 import app.tsumugi.android.ui.TsumugiTheme
 
@@ -69,6 +78,14 @@ fun TsumugiApp() {
                     is Route.Entry -> EntryScreen(route.id, dictionaryNav)
                     is Route.Kanji -> KanjiScreen(route.literal, dictionaryNav)
                     Route.Radicals -> RadicalSearchScreen(dictionaryNav)
+                    Route.Lessons -> LessonScreen(onDone = nav::back, onOpenItem = { nav.push(Route.PathItem(it)) })
+                    Route.Reviews -> ReviewScreen(onDone = nav::back)
+                    Route.PathLevels -> PathLevelsScreen(onOpenLevel = { nav.push(Route.PathLevel(it)) })
+                    is Route.PathLevel -> PathLevelScreen(route.level, onOpenItem = { nav.push(Route.PathItem(it)) })
+                    is Route.PathItem -> PathItemScreen(route.id, onOpenItem = { nav.push(Route.PathItem(it)) })
+                    Route.Settings -> SettingsScreen()
+                    Route.Import -> ComingSoonScreen("Import & export")
+                    Route.Licenses -> LicensesScreen()
                 }
             }
         }
@@ -78,24 +95,35 @@ fun TsumugiApp() {
 @Composable
 private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
     when (tab) {
-        Tab.TODAY -> TodayScreen()
+        Tab.TODAY -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) })
+        Tab.REVIEWS -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) })
         Tab.LEARN -> LearnHome(push)
-        else -> ComingSoonScreen(tab.label)
+        Tab.PRACTICE -> ComingSoonScreen(tab.label)
+        Tab.ME -> MeScreen { d ->
+            push(
+                when (d) {
+                    MeDestination.IMPORT -> Route.Import
+                    MeDestination.SETTINGS -> Route.Settings
+                    MeDestination.LICENSES -> Route.Licenses
+                },
+            )
+        }
     }
 }
 
 @Composable
 private fun LearnHome(push: (Route) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-        ListItem(
-            modifier = Modifier.clickable { push(Route.Dictionary) },
-            headlineContent = { Text("Dictionary") },
-            supportingContent = { Text("Offline JMdict · kanji · radicals · examples") },
-        )
-        ListItem(
-            modifier = Modifier.clickable { push(Route.Radicals) },
-            headlineContent = { Text("Radical search") },
-            supportingContent = { Text("Find a kanji by its parts") },
-        )
+        listOf(
+            Triple("Kanji path", "60 levels · radicals → kanji → vocabulary", Route.PathLevels),
+            Triple("Dictionary", "Offline JMdict · kanji · examples", Route.Dictionary),
+            Triple("Radical search", "Find a kanji by its parts", Route.Radicals),
+        ).forEach { (title, subtitle, route) ->
+            ListItem(
+                modifier = Modifier.clickable { push(route) },
+                headlineContent = { Text(title) },
+                supportingContent = { Text(subtitle) },
+            )
+        }
     }
 }

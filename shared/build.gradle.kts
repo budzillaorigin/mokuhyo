@@ -28,9 +28,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.kotlinx.coroutines.core)
+            // Types from these appear in the shared API (StateFlow, LocalDate), so apps see them too.
+            api(libs.kotlinx.coroutines.core)
+            api(libs.kotlinx.datetime)
             implementation(libs.kotlinx.serialization.json)
-            implementation(libs.kotlinx.datetime)
             implementation(libs.okio)
             implementation(libs.ktor.client.core)
             implementation(libs.sqldelight.coroutines)

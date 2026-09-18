@@ -33,6 +33,18 @@ data class PathItem(
     val prerequisites: List<String>,
 )
 
+/** Everything the lesson and item screens show for one path item. */
+data class PathItemDetail(
+    val item: PathItem,
+    /** Radicals of a kanji, or kanji of a word. */
+    val components: List<PathItem>,
+    /** Kanji that use this radical, or words that use this kanji. */
+    val usedIn: List<PathItem>,
+    val stage: Stage?,
+    val myStory: String,
+    val synonyms: List<String>,
+)
+
 data class PathStatus(
     val currentLevel: Int,
     val maxLevel: Int,
@@ -91,6 +103,23 @@ class PathService(
         val level = tree.currentLevel(stages, levelFloor())
         return tree.availableLessons(stages, level, manualUnlocks()).take(limit).mapNotNull { byId[it.id] }
     }
+
+    suspend fun detail(id: String): PathItemDetail? {
+        val (items, _) = loaded()
+        val byId = items.associateBy { it.id }
+        val item = byId[id] ?: return null
+        val note = srs.note(id)
+        return PathItemDetail(
+            item = item,
+            components = item.prerequisites.mapNotNull { byId[it] },
+            usedIn = items.filter { id in it.prerequisites },
+            stage = srs.stages()[id],
+            myStory = note.myStory,
+            synonyms = note.synonyms,
+        )
+    }
+
+    suspend fun saveMyStory(itemId: String, story: String) = srs.saveNote(itemId, myStory = story)
 
     /** Items of one level with their current stage (null = not started), for the level grid. */
     suspend fun level(level: Int): List<Pair<PathItem, Stage?>> {

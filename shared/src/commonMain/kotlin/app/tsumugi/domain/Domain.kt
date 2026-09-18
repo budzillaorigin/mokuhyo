@@ -1,7 +1,10 @@
 package app.tsumugi.domain
 
 /** BRIEF §5.1. Stored as the enum name in TEXT columns. */
-enum class ItemKind { RADICAL, KANJI, VOCAB, GRAMMAR, SENTENCE, LISTENING, WRITING, MINIMAL_PAIR, CUSTOM }
+enum class ItemKind(val label: String) {
+    RADICAL("Radical"), KANJI("Kanji"), VOCAB("Vocabulary"), GRAMMAR("Grammar"), SENTENCE("Sentence"),
+    LISTENING("Listening"), WRITING("Writing"), MINIMAL_PAIR("Minimal pair"), CUSTOM("Card"),
+}
 
 /** Where an item came from. `LLM` content must show an "AI-generated" badge (CLAUDE.md rule 10). */
 enum class ItemSource(val code: String) {
@@ -28,8 +31,8 @@ enum class IntegrationKind { WANIKANI, BUNPRO, NOTION, LLM_ENDPOINT, VOICEVOX, S
  * WaniKani-style familiarity names over FSRS stability (DECISIONS D-017). Unlocks key off [GURU].
  * Thresholds are in days of stability, i.e. the interval at which recall probability falls to 90%.
  */
-enum class Stage(val minStabilityDays: Double) {
-    APPRENTICE(0.0), GURU(3.0), MASTER(21.0), ENLIGHTENED(60.0), BURNED(180.0);
+enum class Stage(val minStabilityDays: Double, val label: String) {
+    APPRENTICE(0.0, "Apprentice"), GURU(3.0, "Guru"), MASTER(21.0, "Master"), ENLIGHTENED(60.0, "Enlightened"), BURNED(180.0, "Burned");
 
     companion object {
         fun of(stabilityDays: Double?, started: Boolean): Stage? {

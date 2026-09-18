@@ -48,6 +48,10 @@ abstract class BundlePacks : DefaultTask() {
     @get:InputFiles
     abstract val packs: ConfigurableFileCollection
 
+    /** docs/LICENSES.md, rendered by the in-app Licenses screen. */
+    @get:InputFile
+    abstract val licenses: RegularFileProperty
+
     @get:OutputDirectory
     abstract val outputDir: DirectoryProperty
 
@@ -57,11 +61,13 @@ abstract class BundlePacks : DefaultTask() {
         out.deleteRecursively()
         out.mkdirs()
         packs.files.filter { it.isFile }.forEach { it.copyTo(out.resolve(it.name)) }
+        licenses.get().asFile.copyTo(outputDir.get().asFile.resolve("LICENSES.md"), overwrite = true)
     }
 }
 
 val bundlePacks = tasks.register<BundlePacks>("bundlePacks") {
     packs.from(rootProject.fileTree("content/packs") { include("*.sqlite", "manifest.json") })
+    licenses.set(rootProject.layout.projectDirectory.file("docs/LICENSES.md"))
 }
 
 androidComponents {
