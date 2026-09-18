@@ -224,7 +224,12 @@ private struct ActivityView: View {
             let out = await SpeechToText.transcribe(samples, graph: g)
             heard = out.error == nil ? out.text : nil
             if let error = out.error { note = error }
-            report = try? await SwiftSupport.shared.analyzePronunciation(graph: g, sentence: target, transcript: heard, samples: kotlinFloats(samples))
+            let outcome = try? await SwiftSupport.shared.analyzePronunciation(graph: g, sentence: target, transcript: heard, samples: kotlinFloats(samples))
+            report = outcome?.report
+            if report == nil {
+                note = [note, "Couldn't analyze the recording" + (outcome?.error.map { ": \($0)" } ?? "") + ". Try again."]
+                    .compactMap { $0 }.joined(separator: " ")
+            }
             working = false
         }
     }

@@ -12,6 +12,7 @@ struct DictionaryGate<Content: View>: View {
     enum LoadState {
         case loading
         case missing
+        case failed(String)
         case ready(DictionaryRepository)
     }
 
@@ -26,14 +27,31 @@ struct DictionaryGate<Content: View>: View {
                     systemImage: "character.book.closed",
                     description: Text("This build has no dictionary pack. Build it with `uv run packs/build_all.py` in tools/ and rebuild the app.")
                 )
+            case .failed(let message):
+                ContentUnavailableView {
+                    Label("Couldn't open the dictionary", systemImage: "exclamationmark.triangle")
+                } description: {
+                    Text(message)
+                } actions: {
+                    Button("Retry") { Task { await open() } }.buttonStyle(.borderedProminent)
+                }
             case .ready(let repo):
                 content(repo)
             }
         }
         .task {
             if case .ready = state { return }
-            let repo = try? await app.graph.dictionary()
+            await open()
+        }
+    }
+
+    private func open() async {
+        state = .loading
+        do {
+            let repo = try await app.graph.dictionary()
             state = repo.map { .ready($0) } ?? .missing
+        } catch {
+            state = .failed(error.localizedDescription)
         }
     }
 }

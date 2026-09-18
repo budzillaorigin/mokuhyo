@@ -456,6 +456,93 @@ The GitHub releases API confirms both pinned tags exist and serve the pinned zip
 
 Both are automated build releases marked "pre-release" on GitHub. `tools/models/README.md` now records this. No pin changed.
 
+### D-070: The iOS Reviews tab (F-07, 2026-09-18)
+`ReviewsHomeView` replaces the second `TodayView` in the tab bar. Everything it shows comes from the shared core:
+
+- **Queue by kind:** `SwiftSupport.reviewQueue(graph)` runs the existing `dueCountByKind` query on `Dispatchers.IO`. The counts use the same filter as `dueCards`: no suspended, held (D-045) or deleted cards.
+- **Start** opens the existing `ReviewView`. Its end state is the session summary (accuracy by kind, missed items, leeches of this session), so there's no second summary screen.
+- **Forecast strip:** the 7-day `forecast` from `StatsService.snapshot(heatmapDays: 1)`. The day labels are formatted in Swift from today's date, so no `LocalDate` crosses the bridge.
+- **Leech list:** there was no Kotlin API, only the `leeches` query. `SwiftSupport.leeches(graph, limit)` returns one row per item (its worst card) at `SrsRepository.LEECH_LAPSES`+ lapses, worst first.
+- The screen refreshes on appear, so the counts are current after a session.
+
+### D-071: Reader translation on demand; ruby per kanji run (F-08, F-36, 2026-09-18)
+- **Translation:** the long-press sentence panel has a **Translate** button. It calls `SwiftSupport.translate(ai, text)`, which runs `translate_sentence` (`TranslateSentence`, JA→EN) through `AiGateway`. It runs only when asked, because an on-device generation costs seconds and battery.
+  - A result carries the engine and shows the "AI-generated · engine" badge (rule 10), with the literal gloss and notes when the model gave them.
+  - With no engine configured (`needsSetup`), the panel says "Enable an AI engine to translate" and links to Settings → AI.
+  - A failure shows the reason and Retry. Translating can be cancelled; the coroutine cancellation reaches the bridge's `cancel()`.
+  - There's no canned fallback translation.
+- **Ruby:** each reader token already carries `furigana` segments (the source's ruby or `Furigana.align`). The reader now draws one ruby per segment, so okurigana stay bare. A token without segments falls back to the whole-token reading.
+- **Limitation:** `ReaderDocument` doesn't store the importer's `RubyHint`s, so the reader still passes `ruby: []`, and Aozora's own readings aren't used yet. That needs a shared schema change, so it's left for the shared side.
+
+### D-072: iOS model downloads use a background URLSession; the shared side verifies and installs (F-13, 2026-09-18)
+- **Downloader:** `ModelDownloads` (Swift) owns one background `URLSession` (`app.tsumugi.model-downloads`, `sessionSendsLaunchEvents`, not discretionary). Downloads continue while the app is suspended. iOS relaunches the app through `AppDelegate.application(_:handleEventsForBackgroundURLSession:completionHandler:)` to deliver finished files.
+- **Hand-off:** `DownloadedModelInstaller` lives in `SwiftSupport.kt`, next to its only user, and is tested by `DownloadedModelInstallerTest`.
+  - `plan(model)` lists the files still missing, each with a target `models/<id>/<file>.download`. It applies `ModelManager`'s 1.5× free-space rule. "Not enough storage" is returned as a non-retryable error and shown before anything starts.
+  - `install(model, file, path)` checks the size and SHA-256 on `Dispatchers.IO`, atomically moves the file into place and writes the `.sha256` marker. `ModelManager.isInstalled` then treats the model like one it downloaded itself.
+  - A bad file is deleted.
+- **Hashing:** the system writes the file, so the hash can't be computed while writing (D-053). Verification is a second pass after the transfer. It runs off the main thread with a "Verifying…" state.
+- **Pause and resume:** Cancel pauses by producing resume data, stored as `<target>.resume`. The next Download resumes from it. Resume data delivered with a failure, or after a force-quit, is kept the same way.
+- **Unverified files:** a finished but unverified `.download` (for example, the app was killed while hashing) is installed on the next Download without fetching it again.
+- **Timeouts (rule 13):** 120 s without data fails a transfer; the resource limit is 3 days.
+- **Stale partials:** the shared Ktor `ModelManager.download` is no longer used on iOS. `plan()` deletes its stale `.part` files, so a partial download from an older build restarts once.
+- **Model folder:** `SwiftSupport.modelInstaller` builds the installer on `dataDir/models`, the same folder `AiService.models` uses. The path is written in both places.
+
+### D-073: iOS bridge cancellation is a per-generation high-water mark (F-10, F-41, 2026-09-18)
+- **Generation ids:** `LlamaBridge` gives every `generate` call an increasing id. `cancel()` sets `cancelledThrough = lastIssued`, and `unload()` does the same with the reason `cancelled: unloaded`. The queued job checks its own id when it starts and before every token.
+- **No reset:** this is the Android scheme (D-064). The brief asks for the flag to be reset inside the queued block rather than before it. A mark that is never reset meets that intent more strongly: a late cancel can only stop calls issued before it, so it never reaches the next call, and a runaway call never blocks the next one.
+- **Contract:** a stopped call reports `onDone(nil, "cancelled…")`. A decode failure mid-generation now reports `onDone(nil, error)`. It used to pass the partial text, which `LocalLlamaModel` treated as success.
+- **Whisper:** `WhisperBridge` adopts `CancellableSttBridge` with the same mark. A queued transcription never starts. A running `whisper_full` can't be interrupted, because the C shim has no abort callback, but its result is dropped and reported as `cancelled`. Adding `abort_callback` to `tsumugi_whisper.c` is a possible follow-up.
+
+### D-074: One AudioSessionController (F-14, 2026-09-18)
+- **Clients:** every audio user registers with `AudioSessionController.shared`, and the controller holds each one weakly. The clients are `VoicePlayer` (system voices and VOICEVOX), `Speech` (the reader), `Recorder` (via `AudioCapture`) and `MediaModel`.
+- **Categories:**
+  - Playback uses `.playback`, so audio is heard with the silent switch on.
+  - While anyone records, the session is `.playAndRecord` with `.defaultToSpeaker`.
+- **Deactivation:** when the last client ends, the session is deactivated with `.notifyOthersOnDeactivation` after a 1 s grace period, so consecutive dialogue lines don't bounce other apps' audio.
+- **Interruptions:** an interruption pauses or stops every client, and a recording in progress is dropped with a message. Playback doesn't resume by itself.
+- **Headphones:** a route change with `oldDeviceUnavailable` (headphones unplugged) pauses playback clients.
+- **Background audio:** `UIBackgroundModes = [audio]` is in `TsumugiInfo.plist` for the media player. Leaving the media screen still pauses it, as before.
+
+### D-075: Review UI actions are single-flight; async screens show errors with Retry (F-09 UI half, F-33, 2026-09-18)
+- **Single-flight:** `ReviewModel` sets `busy` before an action's task starts and ignores taps while it's set. The answer controls are disabled meanwhile. A failed action shows "That didn't save" and the controls come back. The shared `Mutex` (D-044) still serializes underneath.
+- **Error states with Retry** instead of endless spinners:
+  - review start
+  - role-play open, and a partner turn: `session.modelFailure` is shown as a banner with Retry → `session.retry()`, and the composer is locked until it succeeds
+  - turn feedback
+  - dictionary open and search
+  - reader library, document open and imports (imports also get Cancel and the `analysisProgress` bar)
+  - exam hub load and test build
+  - kanji path
+  - AI settings
+- **Typed failure:** `SwiftSupport.analyzePronunciation` returns `PronunciationOutcome(report, error)` instead of null.
+
+### D-076: Notification permission is asked after the first finished review session (F-34, 2026-09-18)
+- **Trigger:** `TsumugiApp` no longer asks at launch. When a review session finishes with at least one answer, the summary checks `Reminders.shouldAsk()`: the system status is still `.notDetermined` and this device hasn't shown the sheet.
+- **Sheet:** `ReminderPermissionSheet` explains what the reminder is and that it's local, then offers "Allow reminders" (the system prompt) or "Not now".
+- **Device-local flag:** whether the sheet was shown is stored in `UserDefaults`. It's device UI state, so it isn't synced (rule 16).
+
+### D-077: The writing canvas claims its strokes inside scroll views (F-25, 2026-09-18)
+- **Gesture priority:** the canvas's `DragGesture(minimumDistance: 0)` is a `highPriorityGesture`.
+- **Scroll lock:** while a stroke is in progress, the canvas publishes `WritingActiveKey`. Scroll views that contain a canvas apply `.locksScrollWhileWriting()`, which sets `.scrollDisabled(true)` until the stroke ends. The writing practice screen and the review screen (WRITING cards) use it.
+- **No UIKit wrapper:** a `UIViewRepresentable` canvas was not needed.
+
+### D-078: Exam timer processes every elapsed deadline on return (F-24 UI half, 2026-09-18)
+- **Clock:** `ExamRunnerView` already shows `session.remainingMs()`, which the shared session computes from the wall clock.
+- **Catch-up:** on every tick, and when the scene becomes active, the view calls `session.tick()` until it returns false. That loop is bounded by the section count, so every section deadline that passed in the background is processed.
+- **Limitation:** until the shared persistence work lands, `ExamSession.nextSection()` starts the next section's clock at "now". So a section that opened during the background time gets its full length. Resume UI is left to the coordinator.
+
+### D-079: Swift call sites for the merged shared work (2026-09-18)
+- **Path:** passed levels in the path list offer "Reset to level N…" (swipe action and context menu). A confirmation dialog explains the effect, then calls `PathService.resetToLevel`. This is the only way down (rule 11, D-041).
+- **FSRS:**
+  - Settings gains "Optimize from my reviews". It runs `FsrsOptimizer.optimize` in a detached task and saves through `graph.setFsrsWeights` when at least `MIN_REVIEWS` usable reviews exist. Before this, iOS had no optimizer UI.
+  - `graph.recomputeProgress` is shown as a banner in Today and Settings while cards are rebuilt.
+- **Grammar:** points with `GrammarPointStatus.noExamples` show a "No examples yet" tag.
+- **AI settings:**
+  - Separate Whisper and VOICEVOX keys (`ai.sttEndpointKey`, `ai.ttsEndpointKey`; D-051).
+  - A VOICEVOX "Test" button (`ai.probeVoicevox`, 3 s).
+  - The non-retryable "Not enough storage" download failure, shown in red.
+- **VoicePlayer:** deletes each synthesized file after playback (`deleteSynthesized`). `cleanSynthesized` runs at launch in a detached task. There's no URLSession in `VoicePlayer`: VOICEVOX goes through the shared Ktor client, whose timeouts are D-050. The only new URLSession is the model downloader's (D-072), and it has explicit bounds.
+
 ### D-080: Exam attempts are saved as they go and follow the wall clock (F-24, 2026-09-18)
 - **Storage:** a new user-DB table, `exam_in_progress(id, exam, level, mode, started_at, updated_at, state)`, added by `migrations/2.sqm` (schema version 3; `databases/2.db` is the pre-change snapshot). It has no sync trigger and isn't in `SyncTables`: an unfinished attempt is device-local, like the clock it runs on.
 - **What is saved:** `state` is the JSON `ExamProgress`: the form's item ids per section (with score group and type title), passage ids, answers, time per item, audio plays, the current section and item, and each opened timed section's deadline as absolute epoch ms. Item and passage content is re-read from the packs and banks on resume. Items that disappeared since (a deleted bank) are dropped. If none are left, the attempt is discarded.

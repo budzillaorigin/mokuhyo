@@ -24,12 +24,14 @@ final class Speech: NSObject, AVSpeechSynthesizerDelegate {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * rate
+        AudioSessionController.shared.beginPlayback(self) { [weak self] in self?.stop() }
         synthesizer.speak(utterance)
     }
 
     func stop() {
         synthesizer.stopSpeaking(at: .immediate)
         speakingRange = nil
+        AudioSessionController.shared.end(self)
     }
 
     nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
@@ -39,6 +41,9 @@ final class Speech: NSObject, AVSpeechSynthesizerDelegate {
     }
 
     nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        Task { @MainActor in self.speakingRange = nil }
+        Task { @MainActor in
+            self.speakingRange = nil
+            if !self.synthesizer.isSpeaking { AudioSessionController.shared.end(self) }
+        }
     }
 }

@@ -3,8 +3,13 @@ import SwiftUI
 
 /// A timed exam (BRIEF §5.11). All timing, navigation rules and scoring live in the shared ExamSession; this view
 /// ticks it once a second, renders the open section and submits at the end.
+///
+/// The clock shown is `session.remainingMs()`, which the shared session computes from the wall clock, so the timer
+/// never drifts or pauses with the 1 Hz UI tick. Back from the background, `tick()` is called until it reports no
+/// more expired sections, so every deadline that passed meanwhile is processed (F-24, UI half).
 struct ExamRunnerView: View {
     @Environment(AppModel.self) private var app
+    @Environment(\.scenePhase) private var scenePhase
     let session: ExamSession
     let onClose: () -> Void
 
@@ -37,6 +42,9 @@ struct ExamRunnerView: View {
             }
         }
         .onReceive(timer) { _ in tick() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { tick() }
+        }
         .onDisappear { voice.stop() }
         .confirmationDialog("End this section?", isPresented: $confirmEndSection, titleVisibility: .visible) {
             Button(isLastSection ? "Submit the test" : "End section", role: .destructive) { endSection() }
@@ -207,7 +215,13 @@ struct ExamRunnerView: View {
 
     private func tick() {
         guard result == nil else { return }
-        if session.tick() {
+        // Several sections may have run out while the app was away: process every elapsed deadline, not just one.
+        // Bounded by the section count, so a shared-side bug can't spin the main thread.
+        var closed = 0
+        while closed <= session.form.sections.count, session.tick() {
+            closed += 1
+        }
+        if closed > 0 {
             voice.stop()
         }
         if session.finished {

@@ -161,8 +161,11 @@ struct PronunciationPracticeView: View {
             } else {
                 heard = out.text
             }
-            report = try? await SwiftSupport.shared.analyzePronunciation(graph: graph, sentence: target, transcript: out.error == nil ? out.text : nil, samples: kotlinFloats(samples))
-            if report == nil { note = (note ?? "") + " Couldn't analyze the recording." }
+            let outcome = try? await SwiftSupport.shared.analyzePronunciation(graph: graph, sentence: target, transcript: out.error == nil ? out.text : nil, samples: kotlinFloats(samples))
+            report = outcome?.report
+            if report == nil {
+                note = (note ?? "") + " Couldn't analyze the recording" + (outcome?.error.map { ": \($0)." } ?? ".") + " Try again."
+            }
             working = false
         }
     }

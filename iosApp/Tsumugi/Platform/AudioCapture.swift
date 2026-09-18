@@ -35,11 +35,9 @@ final class AudioCapture: @unchecked Sendable {
     /// Current input level 0…1 (for a simple meter).
     var level: Float { store.level }
 
+    /// The audio session must already be set up for recording (`AudioSessionController.beginRecording`).
     func start() throws {
         if isRunning { _ = stop() }
-        let session = AVAudioSession.sharedInstance()
-        try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
-        try session.setActive(true)
         _ = store.take()
 
         let input = engine.inputNode
@@ -145,11 +143,18 @@ final class Recorder {
             return false
         }
         do {
+            // A call or Siri stops the microphone; what was said so far is dropped with a note (F-14).
+            try AudioSessionController.shared.beginRecording(self) { [weak self] in
+                guard let self, self.isRecording else { return }
+                _ = self.stop()
+                self.message = "Recording stopped by an interruption. Tap Speak to try again."
+            }
             try capture.start()
             isRecording = true
             message = nil
             return true
         } catch {
+            AudioSessionController.shared.end(self)
             message = "Couldn't start recording: \(error.localizedDescription)"
             return false
         }
@@ -158,7 +163,9 @@ final class Recorder {
     /// Stops and returns the recording (16 kHz mono).
     func stop() -> [Float] {
         isRecording = false
-        return capture.stop()
+        let samples = capture.stop()
+        AudioSessionController.shared.end(self)
+        return samples
     }
 
     var level: Float { capture.level }

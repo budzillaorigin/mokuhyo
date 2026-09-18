@@ -46,6 +46,7 @@ final class VoicePlayer: NSObject, AVSpeechSynthesizerDelegate, AVAudioPlayerDel
         utterance.rate = min(AVSpeechUtteranceMaximumSpeechRate, max(AVSpeechUtteranceMinimumSpeechRate, AVSpeechUtteranceDefaultSpeechRate * rate * pick.rate))
         currentId = ObjectIdentifier(utterance)
         isSpeaking = true
+        claimAudio()
         await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
             waiter = c
             synthesizer.speak(utterance)
@@ -53,19 +54,23 @@ final class VoicePlayer: NSObject, AVSpeechSynthesizerDelegate, AVAudioPlayerDel
     }
 
     /// The role-play partner / interviewer voice: VOICEVOX when configured and reachable, else the system voice.
+    /// Each synthesis is its own file (F-30), deleted as soon as playback ends or is interrupted.
     func sayPartner(_ text: String, graph: AppGraph, rate: Float = 1.0) async {
-        if let path = try? await SwiftSupport.shared.synthesizeToFile(graph: graph, text: text, speed: Double(rate)),
-           let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: path)) {
-            stop()
-            player.delegate = self
-            audio = player
-            currentId = ObjectIdentifier(player)
-            isSpeaking = true
-            await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
-                waiter = c
-                if !player.play() { finish(ObjectIdentifier(player)) }
+        if let path = try? await SwiftSupport.shared.synthesizeToFile(graph: graph, text: text, speed: Double(rate)) {
+            defer { SwiftSupport.shared.deleteSynthesized(graph: graph, path: path) }
+            if let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: path)) {
+                stop()
+                player.delegate = self
+                audio = player
+                currentId = ObjectIdentifier(player)
+                isSpeaking = true
+                claimAudio()
+                await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
+                    waiter = c
+                    if !player.play() { finish(ObjectIdentifier(player)) }
+                }
+                return
             }
-            return
         }
         await say(text, voice: .any, rate: rate)
     }
@@ -84,6 +89,7 @@ final class VoicePlayer: NSObject, AVSpeechSynthesizerDelegate, AVAudioPlayerDel
         audio = nil
         currentId = nil
         isSpeaking = false
+        AudioSessionController.shared.end(self)
         let w = waiter
         waiter = nil
         w?.resume()
@@ -94,9 +100,15 @@ final class VoicePlayer: NSObject, AVSpeechSynthesizerDelegate, AVAudioPlayerDel
         currentId = nil
         audio = nil
         isSpeaking = false
+        AudioSessionController.shared.end(self)
         let w = waiter
         waiter = nil
         w?.resume()
+    }
+
+    /// Playback category (audible with the silent switch on); an interruption or unplugged headphones stop us (F-14).
+    private func claimAudio() {
+        AudioSessionController.shared.beginPlayback(self) { [weak self] in self?.stop() }
     }
 
     nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {

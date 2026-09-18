@@ -2,14 +2,29 @@ import Shared
 import SwiftUI
 
 /// Observes a shared ReviewSession; all review logic lives in Kotlin.
+///
+/// F-09: one action at a time. [busy] is set before an action's task starts and cleared when it ends; while it's set
+/// further taps are ignored and the answer controls are disabled, so a double tap can't enqueue a second submit (the
+/// shared session also serializes, D-044). F-33: a failed start or action shows an error with Retry, never a spinner.
 @MainActor
 @Observable
 final class ReviewModel {
     private(set) var state: ReviewState?
+    private(set) var busy = false
+    private(set) var loadError: String?
+    private(set) var actionError: String?
     private var session: ReviewSession?
 
     func run(graph: AppGraph) async {
-        if session == nil { session = try? await graph.startReviews(limit: 500) }
+        loadError = nil
+        if session == nil {
+            do {
+                session = try await graph.startReviews(limit: 500)
+            } catch {
+                loadError = error.localizedDescription
+                return
+            }
+        }
         guard let session else { return }
         for await value in session.state { state = value }
     }
@@ -17,14 +32,23 @@ final class ReviewModel {
     func submit(_ answer: String) { act { try await $0.submit(answer: answer) } }
     func next() { act { try await $0.next() } }
     func undo() { act { try await $0.undo() } }
-    func reveal() { session?.reveal() }
+    func reveal() { if !busy { session?.reveal() } }
     func grade(_ rating: Rating) { act { try await $0.grade(rating: rating) } }
     func wrapUp() { session?.wrapUp(keep: 10) }
     func finish() { act { try await $0.finish() } }
 
     private func act(_ block: @escaping (ReviewSession) async throws -> Void) {
-        guard let session else { return }
-        Task { try? await block(session) }
+        guard let session, !busy else { return }
+        busy = true
+        actionError = nil
+        Task {
+            do {
+                try await block(session)
+            } catch {
+                actionError = error.localizedDescription
+            }
+            busy = false
+        }
     }
 }
 
@@ -37,14 +61,28 @@ struct ReviewView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                if let state = model.state {
+                if let error = model.loadError {
+                    ContentUnavailableView {
+                        Label("Couldn't start reviews", systemImage: "exclamationmark.triangle")
+                    } description: {
+                        Text(error)
+                    } actions: {
+                        Button("Retry") { Task { await model.run(graph: app.graph) } }.buttonStyle(.borderedProminent)
+                    }
+                } else if let state = model.state {
                     content(state)
+                        .disabled(model.busy)
+                    if let error = model.actionError {
+                        Label("That didn't save: \(error). Try again.", systemImage: "exclamationmark.triangle")
+                            .font(.subheadline).foregroundStyle(.red)
+                    }
                 } else {
                     ProgressView().frame(maxWidth: .infinity)
                 }
             }
             .padding()
         }
+        .locksScrollWhileWriting()
         .navigationTitle("Reviews")
         .navigationBarTitleDisplayMode(.inline)
         .task { await model.run(graph: app.graph) }
@@ -158,6 +196,7 @@ struct ProgressLine: View {
 private struct SummaryView: View {
     let summary: ReviewSummary
     let onDone: () -> Void
+    @State private var askReminders = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -181,6 +220,11 @@ private struct SummaryView: View {
             }
             Button("Done", action: onDone).buttonStyle(.borderedProminent).padding(.top, 8)
         }
+        // F-34: reminders are offered after the first finished session, with the reason, never at first launch.
+        .task {
+            if summary.reviewed > 0, await Reminders.shouldAsk() { askReminders = true }
+        }
+        .sheet(isPresented: $askReminders) { ReminderPermissionSheet() }
     }
 }
 

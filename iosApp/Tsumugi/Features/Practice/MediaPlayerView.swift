@@ -36,6 +36,7 @@ final class MediaModel {
         release()
         if url.startAccessingSecurityScopedResource() { scopedURL = url }
         player.replaceCurrentItem(with: AVPlayerItem(url: url))
+        claimAudio()
         mediaName = url.lastPathComponent
         loopA = nil
         loopB = nil
@@ -117,7 +118,20 @@ final class MediaModel {
         }
     }
 
+    /// Playback session (plays with the silent switch on, keeps going in the background with UIBackgroundModes audio);
+    /// a call or unplugged headphones pause the player (F-14).
+    func claimAudio() {
+        AudioSessionController.shared.beginPlayback(self) { [weak self] in self?.player.pause() }
+    }
+
+    /// Leaving the screen: pause and let other apps' audio resume.
+    func pauseAndReleaseAudio() {
+        player.pause()
+        AudioSessionController.shared.end(self)
+    }
+
     func release() {
+        AudioSessionController.shared.end(self)
         player.pause()
         player.replaceCurrentItem(with: nil)
         scopedURL?.stopAccessingSecurityScopedResource()
@@ -181,7 +195,8 @@ struct MediaPlayerView: View {
         .fileImporter(isPresented: $picking, allowedContentTypes: pick == .media ? [.audiovisualContent, .movie, .audio] : subtitleTypes) { result in
             handle(result)
         }
-        .onDisappear { model.player.pause() }
+        .onAppear { if model.mediaName != nil { model.claimAudio() } }
+        .onDisappear { model.pauseAndReleaseAudio() }
         .task(id: model.currentIndex) { await tokenizeCurrent() }
     }
 

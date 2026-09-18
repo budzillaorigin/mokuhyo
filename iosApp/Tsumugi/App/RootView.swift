@@ -68,7 +68,7 @@ struct RootView: View {
         TabView(selection: $tab) {
             TabStack { TodayView() }
                 .tabItem { Label("Today", systemImage: "sun.max") }.tag(0)
-            TabStack { TodayView() }
+            TabStack { ReviewsHomeView() }
                 .tabItem { Label("Reviews", systemImage: "arrow.triangle.2.circlepath") }.tag(1)
             TabStack { LearnHomeView() }
                 .tabItem { Label("Learn", systemImage: "book") }.tag(2)

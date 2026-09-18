@@ -17,9 +17,17 @@ private struct SearchResultsView: View {
 
     @State var query: String
     @State private var results: SearchResults = SearchResults.companion.EMPTY
+    @State private var searchError: String?
+    @State private var attempt = 0
 
     var body: some View {
         List {
+            if let searchError {
+                Section {
+                    Label("Search failed: \(searchError)", systemImage: "exclamationmark.triangle").foregroundStyle(.red)
+                    Button("Retry") { attempt += 1 }
+                }
+            }
             if results.mode == .sentence {
                 Section("Words in this sentence") {
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -54,10 +62,15 @@ private struct SearchResultsView: View {
                 NavigationLink("部首", value: Route.radicals)
             }
         }
-        .task(id: query) {
+        .task(id: "\(attempt)|\(query)") {
             try? await Task.sleep(for: .milliseconds(120))
             guard !Task.isCancelled else { return }
-            if let r = try? await repo.search(rawQuery: query, limit: 40) { results = r }
+            do {
+                results = try await repo.search(rawQuery: query, limit: 40)
+                searchError = nil
+            } catch {
+                if !Task.isCancelled { searchError = error.localizedDescription }
+            }
         }
     }
 }

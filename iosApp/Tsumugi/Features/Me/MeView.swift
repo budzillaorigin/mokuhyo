@@ -64,6 +64,9 @@ struct SettingsView: View {
     @Environment(AppModel.self) private var app
     @State private var batch = 5.0
     @State private var retention = 0.9
+    @State private var optimizing = false
+    @State private var optimizeNote: String?
+    @State private var recompute: RecomputeProgress?
 
     var body: some View {
         Form {
@@ -86,6 +89,18 @@ struct SettingsView: View {
             } footer: {
                 Text("The share of reviews you aim to get right. Higher means shorter intervals and more reviews.")
             }
+            Section {
+                if let recompute, recompute.running {
+                    RecomputeBanner(progress: recompute)
+                }
+                Button(optimizing ? "Fitting to your reviews…" : "Optimize from my reviews") { optimize() }
+                    .disabled(optimizing || recompute?.running == true)
+                if let optimizeNote { Text(optimizeNote).font(.caption) }
+            } header: {
+                Text("Scheduler weights")
+            } footer: {
+                Text("Fits the FSRS scheduler to your own answers (needs \(FsrsOptimizer.shared.MIN_REVIEWS) reviews). Your cards are then rescheduled in the background. Syncs to your other devices.")
+            }
             Section("AI") {
                 NavigationLink("AI & speech", value: Route.aiSettings)
             }
@@ -95,6 +110,49 @@ struct SettingsView: View {
             batch = Double((try? await app.graph.settings.lessonBatchSize())?.intValue ?? 5)
             retention = (try? await app.graph.settings.desiredRetention())?.doubleValue ?? 0.9
         }
+        .task { for await p in app.graph.recomputeProgress { recompute = p } }
+    }
+
+    /// Runs the shared FSRS optimizer off the main actor and stores the result with `setFsrsWeights`, which reloads
+    /// the scheduler and rebuilds every card in the background (F-32).
+    private func optimize() {
+        let graph = app.graph
+        optimizing = true
+        optimizeNote = nil
+        Task {
+            defer { optimizing = false }
+            do {
+                let log = try await graph.srs.reviewLogForOptimizer()
+                let result = await Task.detached(priority: .userInitiated) {
+                    FsrsOptimizer.shared.optimize(log: log, initial: FsrsParameters.companion.DEFAULT_WEIGHTS, iterations: 5, seed: 42)
+                }.value
+                let needed = Int(FsrsOptimizer.shared.MIN_REVIEWS)
+                guard Int(result.reviewCount) >= needed else {
+                    optimizeNote = String(localized: "Not enough history yet: \(Int(result.reviewCount)) of \(needed) usable reviews. The default weights work well until then.")
+                    return
+                }
+                try await graph.setFsrsWeights(weights: result.weights)
+                optimizeNote = String(localized: "Fitted to \(Int(result.reviewCount)) reviews. Prediction error \(String(format: "%.3f", result.lossBefore)) → \(String(format: "%.3f", result.lossAfter)).")
+            } catch {
+                optimizeNote = String(localized: "Couldn't optimize: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+/// Shown while every card is rebuilt after new FSRS weights (local or synced; F-32).
+struct RecomputeBanner: View {
+    let progress: RecomputeProgress
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Label("Updating your review schedule…", systemImage: "arrow.triangle.2.circlepath")
+                .font(.subheadline.weight(.semibold))
+            ProgressView(value: progress.fraction)
+            Text("\(progress.done) of \(progress.total) cards").font(.caption).foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .combine)
     }
 }
 

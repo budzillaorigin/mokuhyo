@@ -4,6 +4,8 @@ import UIKit
 
 @main
 struct TsumugiApp: App {
+    /// Background model downloads report through the app delegate when iOS relaunches the app for them (F-13).
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var model = AppModel()
     @Environment(\.scenePhase) private var scenePhase
 
@@ -13,7 +15,6 @@ struct TsumugiApp: App {
                 .environment(model)
                 // EPUB, .apkg, subtitles and item banks opened from Files, Mail or AirDrop (Platform/OpenedFiles.swift).
                 .handlesOpenedFiles(model)
-                .task { await Reminders.requestPermission() }
                 // Text and links shared with "Read in Tsumugi" while the app wasn't running.
                 .task { await model.importSharedItems() }
                 // Free the on-device model under memory pressure; it reloads on next use.
@@ -55,6 +56,12 @@ final class AppModel {
         graph.ai.sttBridge = WhisperBridge()
         // iOS reports a little less than the installed RAM; round to whole GB for the model recommendation.
         graph.ai.deviceRamGb = (Double(ProcessInfo.processInfo.physicalMemory) / 1_073_741_824).rounded()
+        ModelDownloads.shared.attach(graph: graph)
+        // Synthesized VOICEVOX audio left over from the last run (nothing is playing yet; F-30).
+        let appGraph = graph
+        Task.detached(priority: .utility) {
+            SwiftSupport.shared.cleanSynthesized(graph: appGraph)
+        }
     }
 
     /// Imports items waiting in the share inbox into the reader and opens the newest one.
