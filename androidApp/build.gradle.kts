@@ -33,5 +33,39 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.kotlinx.coroutines.core)
     debugImplementation(libs.androidx.compose.ui.tooling)
+}
+
+/**
+ * Bundles content packs built by tools/packs (every .sqlite in content/packs plus manifest.json, git-ignored) into the
+ * APK under assets/packs/. When no packs have been built the app still builds and shows an honest
+ * "dictionary not installed" state (CLAUDE.md rule 9).
+ */
+abstract class BundlePacks : DefaultTask() {
+    @get:InputFiles
+    abstract val packs: ConfigurableFileCollection
+
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun copy() {
+        val out = outputDir.get().asFile.resolve("packs")
+        out.deleteRecursively()
+        out.mkdirs()
+        packs.files.filter { it.isFile }.forEach { it.copyTo(out.resolve(it.name)) }
+    }
+}
+
+val bundlePacks = tasks.register<BundlePacks>("bundlePacks") {
+    packs.from(rootProject.fileTree("content/packs") { include("*.sqlite", "manifest.json") })
+}
+
+androidComponents {
+    onVariants { variant ->
+        variant.sources.assets?.addGeneratedSourceDirectory(bundlePacks, BundlePacks::outputDir)
+    }
 }

@@ -13,7 +13,9 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | OkHttp / Okio (via Ktor OkHttp engine) | shared (Android) | Apache-2.0 | © Square, Inc. — https://github.com/square/okhttp |
 | SQLDelight (runtime, android/native drivers, coroutines extensions) | shared | Apache-2.0 | © Square, Inc. / Cash App — https://github.com/sqldelight/sqldelight |
 | SKIE (runtime + Swift bridging) | shared (iOS) | Apache-2.0 | © Touchlab — https://github.com/touchlab/SKIE |
-| AndroidX Activity, Jetpack Compose (UI, Material 3) | androidApp | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx |
+| kotlinx-datetime | shared | Apache-2.0 | © JetBrains s.r.o. — https://github.com/Kotlin/kotlinx-datetime |
+| Okio | shared | Apache-2.0 | © Square, Inc. — https://github.com/square/okio |
+| AndroidX Activity, Lifecycle, Jetpack Compose (UI, Material 3) | androidApp | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx |
 
 ## Build tooling (not shipped in binaries)
 
@@ -23,7 +25,20 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | Android Gradle Plugin | Apache-2.0 | https://developer.android.com/build |
 | SQLDelight Gradle plugin, SKIE Gradle plugin | Apache-2.0 | see above |
 | ruff (Python lint, `tools/`) | MIT | https://github.com/astral-sh/ruff |
+| sqlite-jdbc (xerial), via SQLDelight sqlite-driver — tests only | Apache-2.0 | https://github.com/xerial/sqlite-jdbc |
 
-## Data and content
+## Data and content (dictionary pack)
 
-_None yet. JMdict, KANJIDIC2, KanjiVG, Tatoeba etc. arrive in Phase 1 with their attribution text (BRIEF.md §4)._
+| Data | Source | License | Attribution text |
+|---|---|---|---|
+| JMdict (English) | EDRDG, via scriptin/jmdict-simplified JSON releases | CC BY-SA 4.0 | This application uses the JMdict/EDICT and KANJIDIC dictionary files. These files are the property of the Electronic Dictionary Research and Development Group, and are used in conformance with the Group's licence. https://www.edrdg.org/edrdg/licence.html |
+| KANJIDIC2 | EDRDG, via jmdict-simplified | CC BY-SA 4.0 | (as above) |
+| KRADFILE / RADKFILE | EDRDG (Michael Raine, Jim Breen), via jmdict-simplified | CC BY-SA 4.0 | (as above) |
+| KanjiVG | Ulrich Apel, https://kanjivg.tagaini.net | CC BY-SA 3.0 | Stroke order data © Ulrich Apel, KanjiVG project. |
+| JmdictFurigana | Doublevil, https://github.com/Doublevil/JmdictFurigana | MIT | Furigana alignments © Doublevil. |
+| Pitch accent (accents.txt) | mifunetoshiro/kanjium | CC BY-SA 4.0 | Pitch accent data from Kanjium, © mifunetoshiro. |
+| JLPT vocabulary levels (unofficial) | Jonathan Waller's JLPT Resources (tanos.co.uk), mapped to JMdict ids by stephenmk/yomitan-jlpt-vocab | CC BY (Waller), CC BY-SA 4.0 (mapping) | JLPT lists © Jonathan Waller; JMdict mapping by stephenmk. There is no official JLPT list since 2010. |
+| JLPT kanji levels (unofficial) | davidluzgouveia/kanji-data (`jlpt_new` field only; no WaniKani fields are used) | MIT | © David Gouveia. |
+| Example sentences + word index | Tatoeba, https://tatoeba.org | CC BY 2.0 FR | Example sentences from the Tatoeba project. |
+
+Word frequency ranks are computed by `tools/packs/build_sentences.py` from Tatoeba's indexed corpus.

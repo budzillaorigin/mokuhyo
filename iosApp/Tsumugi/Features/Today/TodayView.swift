@@ -1,26 +1,17 @@
 import SwiftUI
 
+/// Placeholder until the Today planner lands (Phase 3).
 struct TodayView: View {
-    @State private var model = TodayViewModel()
-
     var body: some View {
         VStack(spacing: 8) {
-            if let title = model.title {
-                Text(title)
-                    .font(.system(size: 48, weight: .semibold))
-                Text(model.message ?? "")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            } else {
-                ProgressView()
-            }
+            Text("今日")
+                .font(.japanese(size: 48, weight: .semibold))
+            Text("Your daily plan appears here once lessons and reviews are set up.")
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
         }
         .padding(24)
-        .task { await model.observe() }
+        .navigationTitle("Today")
     }
-}
-
-#Preview {
-    TodayView()
 }

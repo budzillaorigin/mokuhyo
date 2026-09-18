@@ -1,6 +1,54 @@
 # Progress
 
-Current phase: **Phase 0 complete. Waiting for owner review before Phase 1.**
+Current phase: **Phase 1 complete (iOS side awaiting its first CI run). Continuing to Phase 2.** The owner asked for all phases to run back to back, without per-phase review stops.
+
+---
+
+## Phase 1: Data engine (2026-09-18)
+
+### What was built
+- **Content pack builders** (`tools/packs/`):
+  - `build_dictionary.py`: JMdict, KANJIDIC2, KRADFILE/RADKFILE, JmdictFurigana, Kanjium pitch, and unofficial JLPT levels.
+  - `build_kanjivg.py`: stroke paths.
+  - `build_sentences.py`: Tatoeba sentences, a word→sentence index, and frequency ranks.
+  - `build_all.py`: runs all three plus `manifest.json`.
+  - Output: `content/packs/dictionary.sqlite`, 127 MB (46 MB compressed), built in about 1 minute.
+  - The schema is `shared/.../dictionary.sq` (single source; DECISIONS D-008).
+- **Japanese text engine** (`shared/jp`):
+  - `Deinflector`: rule table, 441 test forms including chained auxiliaries and colloquial contractions.
+  - `Conjugator`: 26 rows per verb or adjective, with a round-trip test against the deinflector (~800 checks).
+  - `Kana`, `Romaji` (full conversion plus an incremental IME for answer fields), `Mora`, `Pitch` (all four patterns), `Furigana` (fallback aligner).
+  - `strokes/SvgPath`: flattens KanjiVG path data into polylines for both apps.
+- **Dictionary** (`shared/dictionary`): `DictionaryRepository`.
+  - Search: kanji/kana/katakana-folded exact matches, deinflection checked against part of speech, prefix completion, romaji→kana, English reverse index, and sentence mode.
+  - Details: entry view data (furigana, pitch, kanji breakdown, conjugations, Tatoeba examples), kanji detail (strokes, components, words), radical search with live narrowing.
+  - `tokenize()` does dictionary longest-match (D-011).
+- **Packs at runtime**: `PackInstaller` copies bundled packs into app storage on first launch, keyed on the manifest version (D-013). `AppGraph` is the composition root both apps hold.
+- **Android**:
+  - Application-scoped `AppGraph`, Material 3 theme, and Japanese locale on Japanese text so shared Chinese/Japanese characters use Japanese glyph shapes.
+  - Per-tab back stacks, with global search from every tab.
+  - Dictionary search, entry, kanji (animated stroke order) and radical search screens.
+  - The Gradle `bundlePacks` task puts the pack in the APK (67 MB debug APK).
+- **iOS**: the same screens in SwiftUI.
+  - `NavigationStack` per tab, a global search button, and `Font.japanese` (Hiragino) for Japanese text.
+  - Furigana, pitch diagram, and animated stroke order (`TimelineView` + `Canvas`).
+  - A "Bundle Content Packs" build phase, and Swift tests for search plus the < 5 ms lookup budget.
+- **CI**: a `packs` job builds the real pack once and hands it to the Android and iOS jobs, so both run tests on real data.
+
+### Verified on the dev machine
+- `./gradlew :shared:allTests`: 81 tests green on the Android host, including `RealPackSmokeTest` against the real pack.
+  - 食べさせられなかった→食べる, cat→猫, kanji→漢字, sentence mode, 語 has 14 strokes, 言+口 radicals find 語.
+  - About 2.4 ms per lookup on the JVM (D-015).
+- `./gradlew :androidApp:assembleDebug` builds, with the pack bundled.
+
+### Not yet verified
+- iOS: Kotlin/Native compile, SKIE bridging of the new API, SwiftUI build, and Swift tests. The first macOS CI run will be the first compile.
+- Android UI on a device: there's no emulator for Windows on ARM (D-016).
+
+### Deferred
+- Handwriting search and camera OCR: Phase 4, as the brief schedules.
+- Word lists and "Add to SRS": Phase 2, along with the user-data model.
+- JMnedict (names): not bundled yet. It adds ~40 MB for names only; to be revisited with on-demand packs.
 
 ---
 

@@ -81,6 +81,7 @@
 				7A5E00000000000000000015 /* Sources */,
 				7A5E00000000000000000013 /* Frameworks */,
 				7A5E00000000000000000016 /* Resources */,
+				7A5E00000000000000000017 /* Bundle Content Packs */,
 			);
 			buildRules = (
 			);
@@ -195,6 +196,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build: OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED=YES\"\n  exit 0\nfi\ncd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+		};
+		7A5E00000000000000000017 /* Bundle Content Packs */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle Content Packs";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Copies packs built by tools/packs (git-ignored) into the app bundle under packs/.\n# Without them the app builds and shows an honest 'dictionary not installed' state.\nSRC=\"$SRCROOT/../content/packs\"\nDEST=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/packs\"\nrm -rf \"$DEST\"\nmkdir -p \"$DEST\"\nfor f in \"$SRC\"/*.sqlite \"$SRC\"/manifest.json; do\n  [ -f \"$f\" ] && cp \"$f\" \"$DEST/\"\ndone\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

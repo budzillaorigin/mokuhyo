@@ -25,6 +25,33 @@ CLAUDE.md asks for "Swift 5.10+/6 with strict concurrency". The project starts w
 ### D-007: Dev machine is Windows 11 ARM64 (2026-09-18)
 JDK (Temurin 21, `~/.jdks`) and Android SDK (`%LOCALAPPDATA%\Android\Sdk`) were installed per-user. Kotlin/Native can't compile iOS targets on Windows, so iOS is verified by the macOS CI job and on the owner's Mac. `kotlin.native.ignoreDisabledTargets=true` keeps the Windows build quiet about that.
 
+### D-008: One dictionary pack file, one schema source (2026-09-18)
+JMdict, KANJIDIC2, KRADFILE/RADKFILE, KanjiVG strokes, furigana, pitch and Tatoeba all live in one pack, `content/packs/dictionary.sqlite`. Separate builders (`build_dictionary.py`, `build_kanjivg.py`, `build_sentences.py`) each own their tables, as in Appendix B, but the app opens one read-only file. The schema lives only in `shared/.../dictionary.sq`. The Python builders execute its CREATE statements verbatim, so the builders and the app can't drift apart.
+
+### D-009: English search uses a reverse index table, not FTS (2026-09-18)
+Android's framework SQLite doesn't reliably include FTS5, and SQLDelight's FTS support varies by dialect. `gloss_index(term, entry_id, score)` is a plain `WITHOUT ROWID` table: gloss words plus whole short glosses (prefixed `=`) for exact hits. It is portable, deterministic and fast enough (D-015).
+
+### D-010: Separate read-only SQLDelight database instead of ATTACH (2026-09-18)
+BRIEF §3.4 says content packs are ATTACHed to the user DB. Instead, each pack is its own SQLDelight database (`DictionaryDatabase`) with its own read-only connection. That gives type-safe generated queries for pack tables without also creating those tables in the user DB. Cross-database joins, for example "words I know", are done in Kotlin. If a join ever needs to happen in SQL, ATTACH can be added to the pack connection without changing either schema.
+
+### D-011: Phase 1 tokenizer is dictionary longest-match, not platform tokenizers (2026-09-18)
+BRIEF §5.2 suggests platform tokenizers (NLTokenizer / Kuromoji) for Phase 1. Instead, `DictionaryRepository.tokenize` does a deinflection-aware greedy longest match over the dictionary in shared Kotlin. It behaves identically on both platforms from day one (the goal of the Phase 4 tokenizer), adds no Kuromoji dependency (13 MB), and is what popup lookup needs anyway. The Phase 4 lattice tokenizer replaces it for reader segmentation.
+
+### D-012: Word frequency from Tatoeba, not Kanjium's frequency lists (2026-09-18)
+Kanjium's `wikipedia_freq.txt`/`novels_freq.txt` come from third-party sources whose licensing isn't clear. Entry rank combines: JMdict common flag, then presence on the (unofficial) JLPT lists, then occurrence counts in Tatoeba's indexed corpus (CC BY), computed by `build_sentences.py`.
+
+### D-013: Packs ship inside the app and are copied on first launch (2026-09-18)
+The dictionary pack (~127 MB raw, ~46 MB compressed) is bundled in the APK/IPA and copied to app storage on first launch, then again only when `manifest.json`'s version changes. This keeps the dictionary fully offline from the first launch, with no download step (App Store §5.1.1, Guideline 4.2). Later on-demand packs (models, optional content) use the same `PackInstaller` folder. Builds without a pack show an honest "not installed" state.
+
+### D-014: Dictionary storage layout (2026-09-18)
+Composite-key tables are `WITHOUT ROWID` and JSON arrays use `""` for the empty/`["*"]` cases. Furigana is stored as `ruby=rt|…` rather than JSON. Together these cut the pack from 224 MB to 127 MB. Kanji→word lists keep the 150 most common words per kanji.
+
+### D-015: Lookup performance budget (2026-09-18)
+A single search runs 3–5 SQL queries: combined kanji/kana form match, part of speech only when deinflection was used, one summary query per result list, and prefix search. On the desktop JVM via JDBC a lookup averages ~2.4 ms, and the raw SQLite work is under 1 ms. Kana prefix search starts at 2 characters, because a single kana scans thousands of words. The iOS test `DictionaryTests.lookupIsFast` enforces < 5 ms on the simulator; the Android host test enforces the same on the JVM.
+
+### D-016: No Android emulator on the dev machine (2026-09-18)
+Google ships the Android Emulator for Windows x64 only; it doesn't run on Windows on ARM. UI behaviour is verified with JVM screenshot tests where possible and on real devices by the owner. The APK is built by CI on every push.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

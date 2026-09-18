@@ -4,26 +4,64 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  shared-and-android:
-    name: Shared tests + Android debug build
+  packs:
+    name: Build content packs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Cache source downloads
+        uses: actions/cache@v4
+        with:
+          path: tools/.cache
+          # Sources are fetched from their latest releases; refresh weekly.
+          key: pack-sources-${{ hashFiles('tools/packs/*.py') }}-${{ github.run_id }}
+          restore-keys: pack-sources-${{ hashFiles('tools/packs/*.py') }}-
+      - name: Lint tools
+        working-directory: tools
+        run: |
+          uv sync --locked
+          uv run ruff check .
+      - name: Build packs
+        working-directory: tools
+        run: uv run python packs/build_all.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packs
+          path: content/packs/
+          retention-days: 7
+
+  shared-and-android:
+    name: Shared tests + Android debug build
+    needs: packs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: packs
+          path: content/packs/
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
       - uses: gradle/actions/setup-gradle@v4
-      - name: Shared tests (Android host)
+      - name: Shared tests (Android host, incl. real-pack smoke test)
         run: ./gradlew :shared:allTests
       - name: Android debug APK
         run: ./gradlew :androidApp:assembleDebug
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shared-test-reports
+          path: shared/build/reports/tests/
       - uses: actions/upload-artifact@v4
         with:
           name: androidApp-debug
@@ -31,9 +69,14 @@ jobs:
 
   ios:
     name: Shared iOS tests + iOS app build
+    needs: packs
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: packs
+          path: content/packs/
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -49,20 +92,20 @@ jobs:
           echo "udid=$udid" >> "$GITHUB_OUTPUT"
       - name: Build and test iOS app
         run: |
+          mkdir -p build
+          status=0
           xcodebuild test \
             -project iosApp/Tsumugi.xcodeproj \
             -scheme Tsumugi \
             -destination "id=${{ steps.sim.outputs.udid }}" \
-            CODE_SIGNING_ALLOWED=NO
-
-  tools:
-    name: Python tools lint
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: tools
-    steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
-      - run: uv sync --locked
-      - run: uv run ruff check .
+            -resultBundlePath build/TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO > build/xcodebuild.log 2>&1 || status=$?
+          grep -E "error:|warning: .*/iosApp/|Test (case|run)|✔|✘|passed|failed|Dictionary lookup" build/xcodebuild.log | head -300 || true
+          exit $status
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ios-build-logs
+          path: |
+            build/xcodebuild.log
+            build/TestResults.xcresult

@@ -8,7 +8,8 @@ plugins {
 
 kotlin {
     compilerOptions {
-        freeCompilerArgs.add("-Xexpect-actual-classes")
+        freeCompilerArgs.addAll("-Xexpect-actual-classes")
+        optIn.addAll("kotlin.uuid.ExperimentalUuidApi", "kotlin.time.ExperimentalTime")
     }
 
     android {
@@ -29,16 +30,22 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.okio)
             implementation(libs.ktor.client.core)
             implementation(libs.sqldelight.coroutines)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
             implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.okio.fakefilesystem)
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.android.driver)
+        }
+        getByName("androidHostTest").dependencies {
+            implementation(libs.sqldelight.sqlite.driver)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -49,8 +56,15 @@ kotlin {
 
 sqldelight {
     databases {
+        // Writable user database: progress, review log, notes. The only thing that syncs.
         create("TsumugiDatabase") {
             packageName.set("app.tsumugi.db")
+            srcDirs.setFrom("src/commonMain/sqldelight")
+        }
+        // Read-only dictionary content pack, built by tools/packs/*.py from the same .sq schema.
+        create("DictionaryDatabase") {
+            packageName.set("app.tsumugi.dictionary.db")
+            srcDirs.setFrom("src/commonMain/sqldelightDictionary")
         }
     }
 }

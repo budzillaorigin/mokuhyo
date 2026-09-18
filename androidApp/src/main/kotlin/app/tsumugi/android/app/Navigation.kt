@@ -1,0 +1,55 @@
+package app.tsumugi.android.app
+
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+
+enum class Tab(val label: String, val glyph: String) {
+    TODAY("Today", "今"),
+    REVIEWS("Reviews", "復"),
+    LEARN("Learn", "学"),
+    PRACTICE("Practice", "練"),
+    ME("Me", "私"),
+}
+
+/** Every screen reachable in the app. Each tab keeps its own back stack of these. */
+sealed interface Route {
+    val title: String
+
+    data object TabRoot : Route { override val title = "" }
+    data object Dictionary : Route { override val title = "Dictionary" }
+    data class Entry(val id: Long) : Route { override val title = "Word" }
+    data class Kanji(val literal: String) : Route { override val title = literal }
+    data object Radicals : Route { override val title = "Radical search" }
+}
+
+/** Per-tab back stacks that survive configuration changes. */
+class NavigationViewModel : ViewModel() {
+    var tab by mutableStateOf(Tab.TODAY)
+        private set
+    private val stacks = mutableStateMapOf<Tab, List<Route>>()
+
+    fun stack(tab: Tab): List<Route> = stacks[tab] ?: listOf(Route.TabRoot)
+
+    val current: Route get() = stack(tab).last()
+    val canGoBack: Boolean get() = stack(tab).size > 1
+
+    fun select(tab: Tab) {
+        // Re-selecting the current tab pops to its root, like iOS.
+        if (tab == this.tab) stacks[tab] = listOf(Route.TabRoot)
+        this.tab = tab
+    }
+
+    fun push(route: Route) {
+        stacks[tab] = stack(tab) + route
+    }
+
+    fun back() {
+        if (canGoBack) stacks[tab] = stack(tab).dropLast(1)
+    }
+
+    /** Global search (reachable from every tab): opens the dictionary on the current tab's stack. */
+    fun openSearch() = push(Route.Dictionary)
+}
