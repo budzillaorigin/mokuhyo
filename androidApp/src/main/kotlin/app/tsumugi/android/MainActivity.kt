@@ -21,6 +21,11 @@ class MainActivity : ComponentActivity() {
         setContent { TsumugiApp() }
     }
 
+    override fun onStart() {
+        super.onStart()
+        lifecycleScope.launch { (application as TsumugiApplication).graph.syncIfConfigured() }
+    }
+
     override fun onStop() {
         super.onStop()
         // Plan the next "reviews are ready" reminder from the current queue whenever the app leaves the screen.

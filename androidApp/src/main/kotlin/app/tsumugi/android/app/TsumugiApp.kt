@@ -40,6 +40,7 @@ import app.tsumugi.android.features.me.LicensesScreen
 import app.tsumugi.android.features.me.MeDestination
 import app.tsumugi.android.features.me.MeScreen
 import app.tsumugi.android.features.me.SettingsScreen
+import app.tsumugi.android.features.me.SyncScreen
 import app.tsumugi.android.features.study.GrammarLessonScreen
 import app.tsumugi.android.features.study.GrammarLevelScreen
 import app.tsumugi.android.features.study.GrammarLevelsScreen
@@ -113,6 +114,7 @@ fun TsumugiApp() {
                     Route.GrammarLessons -> GrammarLessonScreen(onDone = nav::back)
                     is Route.WordList -> WordListScreen(route.id, onOpenEntry = { nav.push(Route.Entry(it)) })
                     Route.Import -> ImportScreen()
+                    Route.Sync -> SyncScreen()
                     Route.Licenses -> LicensesScreen()
                 }
             }
@@ -131,6 +133,7 @@ private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
             push(
                 when (d) {
                     MeDestination.IMPORT -> Route.Import
+                    MeDestination.SYNC -> Route.Sync
                     MeDestination.SETTINGS -> Route.Settings
                     MeDestination.LICENSES -> Route.Licenses
                 },

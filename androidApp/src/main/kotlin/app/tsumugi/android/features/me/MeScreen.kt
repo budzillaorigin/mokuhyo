@@ -62,7 +62,8 @@ fun MeScreen(onOpen: (MeDestination) -> Unit) {
 }
 
 enum class MeDestination(val title: String, val subtitle: String) {
-    IMPORT("Import & export", "Anki .apkg, imiwa lists, WaniKani"),
+    IMPORT("Import & export", "Anki .apkg, imiwa lists, Bunpro, WaniKani"),
+    SYNC("Sync", "Your devices, your server"),
     SETTINGS("Settings", "Lessons per batch, retention, reminders"),
     LICENSES("Licenses", "Data sources and open-source software"),
 }

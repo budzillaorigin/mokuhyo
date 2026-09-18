@@ -67,6 +67,11 @@ class ReviewViewModel(app: Application) : AndroidViewModel(app) {
     fun wrapUp() = act { wrapUp() }
     fun finish() = act { finish() }
 
+    override fun onCleared() {
+        // A finished session is a good moment to sync (BRIEF §8.2 client algorithm, step 4).
+        getApplication<TsumugiApplication>().appScope.launch { graph.syncIfConfigured() }
+    }
+
     private fun act(block: suspend ReviewSession.() -> Unit) {
         val s = session.value ?: return
         viewModelScope.launch { s.block() }

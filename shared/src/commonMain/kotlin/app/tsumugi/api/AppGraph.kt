@@ -15,6 +15,8 @@ import app.tsumugi.integrations.ImportService
 import app.tsumugi.path.db.PathDatabase
 import app.tsumugi.platform.PlatformServices
 import app.tsumugi.reader.ReaderService
+import app.tsumugi.sync.SyncAccount
+import app.tsumugi.sync.SyncEngine
 import app.tsumugi.settings.DeviceState
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.FsrsParameters
@@ -41,7 +43,8 @@ class AppGraph(val platform: PlatformServices) {
 
     val packs = PackInstaller(platform)
 
-    val userDatabase: TsumugiDatabase by lazy { TsumugiDatabase(platform.userDatabaseDriver()) }
+    private val userDriver by lazy { platform.userDatabaseDriver() }
+    val userDatabase: TsumugiDatabase by lazy { TsumugiDatabase(userDriver) }
     val device: DeviceState by lazy { DeviceState(userDatabase) }
     val settings: SettingsRepository by lazy { SettingsRepository(userDatabase) }
     val srs: SrsRepository by lazy { SrsRepository(userDatabase, device.deviceId) }
@@ -50,6 +53,30 @@ class AppGraph(val platform: PlatformServices) {
     val reminders: ReminderPlanner by lazy { ReminderPlanner(userDatabase, settings) }
     val collection: CollectionService by lazy { CollectionService(userDatabase, srs, { path() }) }
     val reader: ReaderService by lazy { ReaderService(this) }
+
+    /** Optional self-hostable sync (BRIEF §8). Nothing syncs until the learner signs in. */
+    val syncAccount: SyncAccount by lazy { SyncAccount(userDatabase, platform.secrets, { platform.httpEngine() }) }
+    private var syncEngine: SyncEngine? = null
+
+    /** The sync engine for the signed-in account, or null when sync isn't set up. */
+    suspend fun sync(): SyncEngine? {
+        val client = syncAccount.client() ?: return null
+        val srs = configuredSrs()
+        return lock.withLock {
+            (syncEngine ?: SyncEngine(userDriver, userDatabase, srs, device.deviceId, client).also { syncEngine = it })
+                .also { it.sealer = syncAccount.sealer }
+        }
+    }
+
+    /** Syncs now if configured; failures are reported through [SyncEngine.status], never thrown at callers. */
+    suspend fun syncIfConfigured() {
+        runCatching { sync()?.sync() }
+    }
+
+    /** Call after signing out so a new account gets a fresh engine. */
+    fun resetSync() {
+        syncEngine = null
+    }
     private val planner: TodayPlanner by lazy { TodayPlanner(userDatabase, settings) }
 
     /** Today's plan (BRIEF §5.6) from the current queue, path and grammar state. */

@@ -44,6 +44,7 @@ sealed interface Route {
     data object GrammarLessons : Route { override val title = "Grammar lessons" }
     data class WordList(val id: String) : Route { override val title = "Word list" }
     data object Import : Route { override val title = "Import & export" }
+    data object Sync : Route { override val title = "Sync" }
     data object Licenses : Route { override val title = "Licenses" }
 }
 
