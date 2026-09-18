@@ -49,6 +49,14 @@ struct ImportView: View {
             }
 
             Section {
+                NavigationLink("Exam item banks", value: Route.examBanks)
+            } header: {
+                Text("Exams")
+            } footer: {
+                Text("Import JLPT/DLPT practice item banks (JSON). Invalid banks are rejected with every problem listed.")
+            }
+
+            Section {
                 Text(wkStatus)
                 SecureField("API v2 token", text: $token)
                     .textInputAutocapitalization(.never)

@@ -28,6 +28,7 @@ struct MeView: View {
                 NavigationLink("Import & export", value: Route.importExport)
                 NavigationLink("Sync", value: Route.sync)
                 NavigationLink("Settings", value: Route.settings)
+                NavigationLink("AI & speech (models, server, VOICEVOX)", value: Route.aiSettings)
                 NavigationLink("Licenses", value: Route.licenses)
             }
         }
@@ -83,6 +84,9 @@ struct SettingsView: View {
                 Text("Scheduling")
             } footer: {
                 Text("The share of reviews you aim to get right. Higher means shorter intervals and more reviews.")
+            }
+            Section("AI") {
+                NavigationLink("AI & speech", value: Route.aiSettings)
             }
         }
         .navigationTitle("Settings")
