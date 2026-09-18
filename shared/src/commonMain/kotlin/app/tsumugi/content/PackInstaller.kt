@@ -30,7 +30,7 @@ sealed interface PackStatus {
  */
 class PackInstaller(
     private val platform: PlatformServices,
-    private val fs: FileSystem = FileSystem.SYSTEM,
+    private val fs: FileSystem = platform.fileSystem,
 ) {
     private val json = Json { ignoreUnknownKeys = true }
     private val packsDir: Path get() = platform.dataDir / "packs"

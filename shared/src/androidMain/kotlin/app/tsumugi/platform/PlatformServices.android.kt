@@ -7,6 +7,7 @@ import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.db.SqlSchema
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import app.tsumugi.db.TsumugiDatabase
+import okio.FileSystem
 import okio.Path
 import okio.Path.Companion.toOkioPath
 import okio.Source
@@ -18,6 +19,8 @@ actual class PlatformServices(private val context: Context) {
     actual val platformName: String = "Android ${Build.VERSION.RELEASE}"
 
     actual val dataDir: Path = context.filesDir.toOkioPath()
+
+    actual val fileSystem: FileSystem = FileSystem.SYSTEM
 
     actual fun openBundled(fileName: String): Source? =
         try {

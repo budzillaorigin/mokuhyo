@@ -3,6 +3,7 @@ package app.tsumugi.platform
 import app.cash.sqldelight.db.QueryResult
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.db.SqlSchema
+import okio.FileSystem
 import okio.Path
 import okio.Source
 
@@ -15,6 +16,9 @@ expect class PlatformServices {
 
     /** Writable, app-private directory for packs, recordings and other files. */
     val dataDir: Path
+
+    /** The device file system (Okio's SYSTEM is platform-specific, so common code gets it from here). */
+    val fileSystem: FileSystem
 
     /** A content pack (or its manifest) shipped inside the app bundle under `packs/`, or null if not bundled. */
     fun openBundled(fileName: String): Source?

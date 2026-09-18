@@ -33,6 +33,8 @@ actual class PlatformServices {
         dir
     }
 
+    actual val fileSystem: FileSystem = FileSystem.SYSTEM
+
     actual fun openBundled(fileName: String): Source? {
         val resources = NSBundle.mainBundle.resourcePath ?: return null
         val path = resources.toPath() / "packs" / fileName

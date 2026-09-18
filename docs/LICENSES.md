@@ -27,6 +27,7 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | SQLDelight Gradle plugin, SKIE Gradle plugin | Apache-2.0 | see above |
 | ruff (Python lint, `tools/`) | MIT | https://github.com/astral-sh/ruff |
 | sqlite-jdbc (xerial), via SQLDelight sqlite-driver — tests only | Apache-2.0 | https://github.com/xerial/sqlite-jdbc |
+| Ktor client mock engine — tests only | Apache-2.0 | https://github.com/ktorio/ktor |
 
 ## Data and content (dictionary pack)
 
