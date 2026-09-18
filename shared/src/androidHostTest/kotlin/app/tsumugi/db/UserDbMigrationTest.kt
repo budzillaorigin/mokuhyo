@@ -46,7 +46,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(2L, TsumugiDatabase.Schema.version)
+        assertEquals(3L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -74,5 +74,8 @@ class UserDbMigrationTest {
         assertEquals(0L, driver.long("SELECT applying FROM sync_state"))
         assertEquals(0L, driver.long("SELECT pushing FROM sync_state"))
         assertNull(db.srsQueries.cardById("k:水#MEANING").executeAsOne().blocked_reason)
+
+        // v2 -> v3 (2.sqm): the device-local in-progress exam table (F-24).
+        assertNull(db.examAttemptQueries.inProgress().executeAsOneOrNull())
     }
 }

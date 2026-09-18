@@ -63,6 +63,10 @@ import app.tsumugi.speaking.ConversationLine
 import app.tsumugi.speaking.RoleplaySession
 import app.tsumugi.speaking.TurnFeedback
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.CancellationException
+import androidx.compose.material3.TextButton
+import app.tsumugi.android.ui.ErrorState
+import app.tsumugi.android.ui.readable
 
 /** Scenario role-plays, filterable by JLPT level (BRIEF §5.10). */
 @Composable
@@ -113,33 +117,68 @@ class RoleplayViewModel(app: Application, private val scenarioId: String) : Andr
         private set
     var unavailable by mutableStateOf<String?>(null)
         private set
+    /** The model failed mid-conversation (F-23, D-057): shown as a banner with a retry, never replaced by a script. */
+    var modelFailure by mutableStateOf<String?>(null)
+        private set
+    /** Loading the scenario failed (F-33). */
+    var loadError by mutableStateOf<String?>(null)
+        private set
     val feedback = mutableStateMapOf<Int, TurnFeedback?>()
     val recordings = mutableStateMapOf<Int, SpeechResult>()
 
     init {
+        load()
+    }
+
+    fun load() {
+        loading = true
+        loadError = null
         viewModelScope.launch {
-            unavailable = graph.ai.unavailableReason()
-            val s = graph.roleplay(scenarioId)
-            session = s
-            if (s != null) {
-                busy = true
-                s.start()
-                lines = s.transcript
-                busy = false
+            try {
+                unavailable = graph.ai.unavailableReason()
+                val s = graph.roleplay(scenarioId)
+                session = s
+                if (s != null && s.transcript.isEmpty()) turn { s.start() }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                loadError = e.readable()
+            } finally {
+                loading = false
             }
-            loading = false
         }
     }
 
     fun send(text: String, recording: SpeechResult?) {
         val s = session ?: return
-        if (text.isBlank() || busy) return
-        busy = true
+        if (text.isBlank() || busy || modelFailure != null) return
         viewModelScope.launch {
             val learnerIndex = lines.size
             recording?.let { recordings[learnerIndex] = it }
             lines = lines + ConversationLine(Speaker.LEARNER, text.trim())
-            s.reply(text)
+            turn { s.reply(text) }
+        }
+    }
+
+    /** Asks the model again for the partner's turn that failed. */
+    fun retry() {
+        val s = session ?: return
+        if (busy) return
+        viewModelScope.launch { turn { s.retry() } }
+    }
+
+    /** Runs one partner turn; a null line means the model failed and [RoleplaySession.modelFailure] says why. */
+    private suspend fun turn(block: suspend () -> ConversationLine?) {
+        val s = session ?: return
+        busy = true
+        try {
+            block()
+            modelFailure = s.modelFailure
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            modelFailure = e.readable()
+        } finally {
             lines = s.transcript
             busy = false
         }
@@ -179,6 +218,10 @@ fun RoleplayScreen(scenarioId: String, key: String, onOpenAiSettings: () -> Unit
     val session = vm.session
     if (vm.loading) {
         LinearProgressIndicator(Modifier.fillMaxWidth().padding(16.dp))
+        return
+    }
+    vm.loadError?.let {
+        ErrorState(stringResource(R.string.error_loading, it), onRetry = vm::load, modifier = Modifier.padding(16.dp))
         return
     }
     if (session == null) {
@@ -236,12 +279,21 @@ fun RoleplayScreen(scenarioId: String, key: String, onOpenAiSettings: () -> Unit
                     }
                 }
                 if (vm.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
+                vm.modelFailure?.let { reason ->
+                    if (!vm.busy) {
+                        Notice(
+                            stringResource(R.string.roleplay_model_failed, reason),
+                            actionLabel = stringResource(R.string.action_retry), onAction = vm::retry,
+                        )
+                        TextButton(onClick = onOpenAiSettings) { Text(stringResource(R.string.ai_open_settings)) }
+                    }
+                }
                 hint?.let { Text(buildAnnotatedString { append(stringResource(R.string.roleplay_hint_prefix)); append(ja(it)) }, style = MaterialTheme.typography.bodyMedium.japanese()) }
                 val noHint = stringResource(R.string.roleplay_no_hint)
                 OutlinedButton(
                     onClick = { hint = vm.lines.lastOrNull { it.speaker == Speaker.PARTNER }?.hint?.ifBlank { noHint } },
                 ) { Text(stringResource(R.string.roleplay_hint)) }
-                SpeakOrType(input, enabled = !vm.busy, onSubmit = { text, rec -> vm.send(text, rec) })
+                SpeakOrType(input, enabled = !vm.busy && vm.modelFailure == null, onSubmit = { text, rec -> vm.send(text, rec) })
                 Text(
                     stringResource(R.string.roleplay_tap_hint),
                     style = MaterialTheme.typography.bodySmall,

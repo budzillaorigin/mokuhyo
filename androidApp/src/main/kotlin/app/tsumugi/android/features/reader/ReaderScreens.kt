@@ -1,5 +1,8 @@
 package app.tsumugi.android.features.reader
 
+import app.tsumugi.android.ui.ErrorState
+import app.tsumugi.android.ui.readable
+import androidx.compose.material3.LinearProgressIndicator
 import app.tsumugi.android.ui.JaText
 import app.tsumugi.android.ui.ja
 import app.tsumugi.android.ui.localized
@@ -86,13 +89,28 @@ fun ReaderLibraryScreen(onOpen: (String) -> Unit, onFeeds: () -> Unit, onAozora:
     var dialog by remember { mutableStateOf<String?>(null) }
     var input by remember { mutableStateOf("") }
     var status by remember { mutableStateOf<String?>(null) }
-    suspend fun reload() { docs = graph.reader.documents() }
+    // F-33: a failed import shows an error with a retry of the same import.
+    var failure by remember { mutableStateOf<String?>(null) }
+    var retry by remember { mutableStateOf<(() -> Unit)?>(null) }
+    var listError by remember { mutableStateOf<String?>(null) }
+    // F-26: analysis of a long import runs on IO and reports its progress here.
+    val analysis by graph.reader.analysisProgress.collectAsStateWithLifecycle()
+    suspend fun reload() {
+        runCatching { graph.reader.documents() }
+            .onSuccess { docs = it; listError = null }
+            .onFailure { listError = it.readable() }
+    }
     LaunchedEffect(Unit) { reload() }
     fun run(label: String, block: suspend () -> String) {
         status = context.getString(R.string.status_working, label)
+        failure = null
         scope.launch {
-            runCatching { block() }.onSuccess { id -> status = null; reload(); onOpen(id) }
-                .onFailure { status = context.getString(R.string.status_failed, label, it.message.orEmpty()) }
+            runCatching { block() }.onSuccess { id -> status = null; retry = null; reload(); onOpen(id) }
+                .onFailure {
+                    status = null
+                    failure = context.getString(R.string.status_failed, label, it.readable())
+                    retry = { run(label, block) }
+                }
         }
     }
     val epubPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
@@ -113,6 +131,16 @@ fun ReaderLibraryScreen(onOpen: (String) -> Unit, onFeeds: () -> Unit, onAozora:
             OutlinedButton(onClick = onAozora) { Text(stringResource(R.string.title_aozora)) }
         }
         status?.let { Text(it, Modifier.padding(12.dp)) }
+        analysis?.let { a ->
+            Column(Modifier.padding(horizontal = 12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(stringResource(R.string.reader_analyzing, (a.fraction * 100).toInt()), style = MaterialTheme.typography.bodySmall)
+                LinearProgressIndicator(progress = { a.fraction.toFloat() }, modifier = Modifier.fillMaxWidth())
+            }
+        }
+        failure?.let { message ->
+            ErrorState(message, onRetry = { retry?.invoke() }, modifier = Modifier.padding(horizontal = 12.dp))
+        }
+        listError?.let { ErrorState(stringResource(R.string.error_loading, it), onRetry = { scope.launch { reload() } }, modifier = Modifier.padding(12.dp)) }
         if (docs.isEmpty()) Text(stringResource(R.string.reader_empty), Modifier.padding(16.dp))
         LazyColumn {
             items(docs, key = { it.id }) { d ->

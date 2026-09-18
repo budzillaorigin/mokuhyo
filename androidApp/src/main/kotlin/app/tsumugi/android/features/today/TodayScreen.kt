@@ -1,5 +1,6 @@
 package app.tsumugi.android.features.today
 
+import app.tsumugi.android.ui.RecomputeBanner
 import app.tsumugi.android.ui.JaText
 import app.tsumugi.android.ui.localized
 import androidx.compose.foundation.layout.FlowRow
@@ -61,6 +62,7 @@ fun TodayScreen(onLessons: () -> Unit, onReviews: () -> Unit, onGrammar: () -> U
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         JaText("今日", style = MaterialTheme.typography.displaySmall)
+        RecomputeBanner()
         stats?.let { s -> Text(stringResource(R.string.today_streak, s.streak.current, s.reviewsToday), style = MaterialTheme.typography.titleMedium) }
         plan?.let { p ->
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.Center) {

@@ -41,6 +41,15 @@ import app.tsumugi.android.features.practice.Notice
 import app.tsumugi.android.features.practice.SectionTitle
 import app.tsumugi.android.features.practice.rememberGraph
 import app.tsumugi.exam.AttemptSummary
+import app.tsumugi.exam.InProgressAttempt
+import app.tsumugi.android.ui.ErrorState
+import app.tsumugi.android.ui.readable
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import app.tsumugi.exam.ExamCoverage
 import app.tsumugi.exam.ExamKind
 import app.tsumugi.exam.jlpt.JlptBlueprints
@@ -73,6 +82,12 @@ sealed interface ExamSpec {
         override val title get() = "${exam.title} · ${if (minutes >= 180) "full length" else "$minutes min"}"
         override val strict get() = true
     }
+
+    /** The unfinished attempt saved on this device (F-24): the runner rebuilds it with `ExamService.resume()`. */
+    data class Resume(val attempt: InProgressAttempt) : ExamSpec {
+        override val title get() = "${attempt.exam.title} ${attempt.level} · ${attempt.mode.title}".replace("  ", " ")
+        override val strict get() = attempt.mode.strict
+    }
 }
 
 /** Localized title of an exam form (top bar and preview). */
@@ -82,6 +97,7 @@ fun ExamSpec.displayTitle(): String = when (this) {
     is ExamSpec.JlptSection -> "N$level · $sectionTitle"
     is ExamSpec.JlptType -> "N$level · " + (JlptItemType.of(type)?.english ?: type)
     is ExamSpec.Dlpt -> "${exam.title} · " + if (minutes >= 180) stringResource(R.string.exam_full_length) else stringResource(R.string.minutes_short, minutes)
+    is ExamSpec.Resume -> title
 }
 
 /** Exams hub (BRIEF §5.11): JLPT mock/section/type drills with coverage, DLPT slices, OPI, history. */
@@ -93,21 +109,32 @@ fun ExamHubScreen(onStart: (ExamSpec) -> Unit, onOpi: () -> Unit, onOpenAttempt:
     var blueprints by remember { mutableStateOf<JlptBlueprints?>(null) }
     var coverage by remember { mutableStateOf<List<ExamCoverage>>(emptyList()) }
     var history by remember { mutableStateOf<List<AttemptSummary>>(emptyList()) }
+    var inProgress by remember { mutableStateOf<InProgressAttempt?>(null) }
     var loaded by remember { mutableStateOf(false) }
-    LaunchedEffect(Unit) {
-        val exams = graph.exams()
-        blueprints = exams.blueprints()
-        coverage = exams.coverage()
-        history = exams.history()
-        loaded = true
+    var error by remember { mutableStateOf<String?>(null) }
+    var attempt by remember { mutableIntStateOf(0) }
+    var confirmDiscard by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    // Re-read on every return to the hub, so a finished or abandoned attempt updates the resume card.
+    LaunchedEffect(attempt) {
+        error = null
+        runCatching {
+            val exams = graph.exams()
+            blueprints = exams.blueprints()
+            coverage = exams.coverage()
+            history = exams.history()
+            inProgress = exams.inProgress()
+        }.onSuccess { loaded = true }.onFailure { error = it.readable() }
     }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Notice(stringResource(R.string.exam_disclaimer))
+        error?.let { ErrorState(stringResource(R.string.error_loading, it), onRetry = { attempt++ }) }
         if (!loaded) {
-            LinearProgressIndicator(Modifier.fillMaxWidth())
+            if (error == null) LinearProgressIndicator(Modifier.fillMaxWidth())
             return@Column
         }
+        inProgress?.let { a -> ResumeCard(a, onResume = { onStart(ExamSpec.Resume(a)) }, onDiscard = { confirmDiscard = true }) }
         SectionTitle("JLPT")
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             (5 downTo 1).forEach { l -> FilterChip(level == l, { level = l }, { Text("N$l") }, Modifier.semantics { role = Role.RadioButton }) }
@@ -174,6 +201,47 @@ fun ExamHubScreen(onStart: (ExamSpec) -> Unit, onOpi: () -> Unit, onOpenAttempt:
                 supportingContent = { Text("${a.mode.title} · ${format.format(Date(a.submittedAt.toEpochMilliseconds()))}") },
                 trailingContent = { Text("›", Modifier.width(16.dp).clearAndSetSemantics {}) },
             )
+        }
+    }
+    if (confirmDiscard) {
+        AlertDialog(
+            onDismissRequest = { confirmDiscard = false },
+            title = { Text(stringResource(R.string.exam_discard_title)) },
+            text = { Text(stringResource(R.string.exam_discard_text)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    confirmDiscard = false
+                    scope.launch {
+                        runCatching { graph.exams().discardInProgress() }.onFailure { error = it.readable() }
+                        attempt++
+                    }
+                }) { Text(stringResource(R.string.exam_discard)) }
+            },
+            dismissButton = { TextButton(onClick = { confirmDiscard = false }) { Text(stringResource(R.string.action_cancel)) } },
+        )
+    }
+}
+
+/** F-24: the unfinished attempt, with where it stands and how much time its open section has left (wall clock). */
+@Composable
+private fun ResumeCard(a: InProgressAttempt, onResume: () -> Unit, onDiscard: () -> Unit) {
+    Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(stringResource(R.string.exam_resume_title), style = MaterialTheme.typography.titleMedium)
+            Text(ExamSpec.Resume(a).title, style = MaterialTheme.typography.bodyMedium)
+            JaText(
+                stringResource(R.string.exam_section_progress, a.sectionIndex + 1, a.sectionCount, a.answered, a.total) + " · " + a.sectionTitle,
+                style = MaterialTheme.typography.bodySmall,
+            )
+            val remaining = a.sectionDeadline?.let { (it.toEpochMilliseconds() - System.currentTimeMillis()).coerceAtLeast(0) }
+            when {
+                a.timeUp -> Text(stringResource(R.string.exam_resume_time_up), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                remaining != null -> Text(stringResource(R.string.exam_resume_time_left, (remaining / 60_000).toInt()), style = MaterialTheme.typography.bodySmall)
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = onResume) { Text(stringResource(if (a.timeUp) R.string.exam_resume_score else R.string.exam_resume)) }
+                OutlinedButton(onClick = onDiscard) { Text(stringResource(R.string.exam_discard)) }
+            }
         }
     }
 }

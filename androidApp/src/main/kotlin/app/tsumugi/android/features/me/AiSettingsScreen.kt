@@ -35,7 +35,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -53,44 +52,55 @@ import app.tsumugi.ai.ModelInfo
 import app.tsumugi.ai.ModelKind
 import app.tsumugi.android.TsumugiApplication
 import app.tsumugi.android.features.practice.Notice
+import app.tsumugi.android.platform.ModelDownloads
+import app.tsumugi.android.ui.ErrorState
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.distinctUntilChanged
 import app.tsumugi.android.features.practice.SectionTitle
 import app.tsumugi.android.ui.Tag
 import app.tsumugi.speaking.AiConfig
 import app.tsumugi.speaking.LlmEngine
 import app.tsumugi.speaking.SttEngine
 import app.tsumugi.speaking.TtsEngine
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-/** Holds model downloads so they keep going across rotation and while the learner looks at other screens. */
+/**
+ * Model downloads run as WorkManager foreground jobs ([ModelDownloads], F-13), so they keep going when the learner
+ * leaves this screen or the app. This view model only mirrors their state.
+ */
 class AiSettingsViewModel(app: Application) : AndroidViewModel(app) {
     val graph = (app as TsumugiApplication).graph
-    val progress = mutableStateMapOf<String, DownloadProgress>()
-    private val jobs = mutableMapOf<String, Job>()
+    val progress: StateFlow<Map<String, DownloadProgress>> = ModelDownloads.progress
+    /** Models with a queued or running download job. */
+    val active: StateFlow<Set<String>> = ModelDownloads.active(app).stateIn(viewModelScope, SharingStarted.Eagerly, emptySet())
     /** Bumped when files change on disk (download finished, deleted) so sizes refresh. */
     var diskVersion by mutableStateOf(0)
         private set
 
-    fun isDownloading(model: ModelInfo) = jobs[model.id]?.isActive == true
+    init {
+        viewModelScope.launch { active.collect { diskVersion++ } }
+        // Refresh sizes when a download ends (not on every progress step).
+        viewModelScope.launch {
+            progress.map { m -> m.filterValues { it is DownloadProgress.Done || it is DownloadProgress.Failed }.keys }
+                .distinctUntilChanged()
+                .collect { diskVersion++ }
+        }
+    }
 
     fun download(model: ModelInfo) {
-        val manager = graph.ai.models ?: return
-        if (isDownloading(model)) return
-        jobs[model.id] = viewModelScope.launch {
-            try {
-                manager.download(model).collect { progress[model.id] = it }
-            } finally {
-                if (jobs[model.id] === coroutineContext[Job]) jobs.remove(model.id)
-                diskVersion++
-            }
-        }
+        if (graph.ai.models == null || model.id in active.value) return
+        ModelDownloads.start(getApplication(), model)
     }
 
     /** Pauses: the partial file stays, and the next download resumes from it. */
     fun cancel(model: ModelInfo) {
-        jobs.remove(model.id)?.cancel()
-        progress.remove(model.id)
+        ModelDownloads.cancel(getApplication(), model.id)
         diskVersion++
     }
 
@@ -109,31 +119,57 @@ fun AiSettingsScreen() {
     val graph = vm.graph
     val context = LocalContext.current
     var config by remember { mutableStateOf<AiConfig?>(null) }
+    var loadError by remember { mutableStateOf<String?>(null) }
+    var loadAttempt by remember { mutableIntStateOf(0) }
+    // One key per endpoint (rule 14): the LLM key never goes to the STT or TTS server.
     var apiKey by remember { mutableStateOf("") }
     var keyEdited by remember { mutableStateOf(false) }
+    var sttKey by remember { mutableStateOf("") }
+    var sttKeyEdited by remember { mutableStateOf(false) }
+    var ttsKey by remember { mutableStateOf("") }
+    var ttsKeyEdited by remember { mutableStateOf(false) }
     var probe by remember { mutableStateOf<Result<List<String>>?>(null) }
     var probing by remember { mutableStateOf(false) }
+    var voicevoxProbe by remember { mutableStateOf<Result<Boolean>?>(null) }
+    var voicevoxProbing by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf<String?>(null) }
+    var saveError by remember { mutableStateOf<String?>(null) }
     var pendingDownload by remember { mutableStateOf<ModelInfo?>(null) }
+    val progress by vm.progress.collectAsStateWithLifecycle()
+    val active by vm.active.collectAsStateWithLifecycle()
 
-    LaunchedEffect(Unit) {
-        config = graph.ai.config()
-        apiKey = graph.ai.endpointKey.orEmpty()
+    LaunchedEffect(loadAttempt) {
+        loadError = null
+        runCatching {
+            config = graph.ai.config()
+            apiKey = graph.ai.endpointKey.orEmpty()
+            sttKey = graph.ai.sttEndpointKey.orEmpty()
+            ttsKey = graph.ai.ttsEndpointKey.orEmpty()
+        }.onFailure { loadError = it.message ?: it::class.simpleName.orEmpty() }
     }
     // Debounced auto-save.
-    LaunchedEffect(config, apiKey) {
+    LaunchedEffect(config, apiKey, sttKey, ttsKey) {
         val c = config ?: return@LaunchedEffect
         delay(400)
-        graph.ai.save(c)
-        if (keyEdited) graph.ai.endpointKey = apiKey
-        status = graph.ai.unavailableReason()
+        runCatching {
+            graph.ai.save(c)
+            if (keyEdited) graph.ai.endpointKey = apiKey
+            if (sttKeyEdited) graph.ai.sttEndpointKey = sttKey
+            if (ttsKeyEdited) graph.ai.ttsEndpointKey = ttsKey
+            status = graph.ai.unavailableReason()
+        }.onSuccess { saveError = null }.onFailure { saveError = it.message ?: it::class.simpleName.orEmpty() }
     }
-    LaunchedEffect(vm.diskVersion) { status = config?.let { graph.ai.unavailableReason() } }
+    LaunchedEffect(vm.diskVersion) { status = config?.let { runCatching { graph.ai.unavailableReason() }.getOrNull() } }
 
     val c = config
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         if (c == null) {
-            LinearProgressIndicator(Modifier.fillMaxWidth())
+            val error = loadError
+            if (error != null) {
+                ErrorState(stringResource(R.string.error_loading, error), onRetry = { loadAttempt++ })
+            } else {
+                LinearProgressIndicator(Modifier.fillMaxWidth())
+            }
             return@Column
         }
         Text(
@@ -148,6 +184,7 @@ fun AiSettingsScreen() {
             FilterChip(c.llm == LlmEngine.ENDPOINT, { config = c.copy(llm = LlmEngine.ENDPOINT) }, { Text(stringResource(R.string.ai_my_server)) })
         }
         status?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
+        saveError?.let { Text(stringResource(R.string.ai_save_failed, it), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
         if (c.llm == LlmEngine.NONE) {
             Text(
                 stringResource(R.string.ai_no_model_hint),
@@ -155,7 +192,7 @@ fun AiSettingsScreen() {
             )
         }
         if (c.llm == LlmEngine.LOCAL) {
-            ModelList(vm, ModelKind.LLM, selected = c.localModelId, onSelect = { config = c.copy(localModelId = it) }, onDownload = { pendingDownload = it })
+            ModelList(vm, progress, active, ModelKind.LLM, selected = c.localModelId, onSelect = { config = c.copy(localModelId = it) }, onDownload = { pendingDownload = it })
         }
         if (c.llm == LlmEngine.ENDPOINT) {
             OutlinedTextField(
@@ -211,13 +248,18 @@ fun AiSettingsScreen() {
             )
             SttEngine.WHISPER_LOCAL -> {
                 Text(stringResource(R.string.ai_whisper_local_hint), style = MaterialTheme.typography.bodySmall)
-                ModelList(vm, ModelKind.STT, selected = c.localSttModelId, onSelect = { config = c.copy(localSttModelId = it) }, onDownload = { pendingDownload = it })
+                ModelList(vm, progress, active, ModelKind.STT, selected = c.localSttModelId, onSelect = { config = c.copy(localSttModelId = it) }, onDownload = { pendingDownload = it })
             }
             SttEngine.WHISPER_ENDPOINT -> {
                 OutlinedTextField(
                     c.sttEndpointUrl, { config = c.copy(sttEndpointUrl = it) }, Modifier.fillMaxWidth(),
                     label = { Text(stringResource(R.string.ai_whisper_url)) }, placeholder = { Text("http://<lan-ip>:8000/v1") }, singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
+                )
+                OutlinedTextField(
+                    sttKey, { sttKey = it; sttKeyEdited = true }, Modifier.fillMaxWidth(),
+                    label = { Text(stringResource(R.string.ai_stt_api_key)) }, singleLine = true, visualTransformation = PasswordVisualTransformation(),
+                    supportingText = { Text(stringResource(R.string.ai_endpoint_key_hint)) },
                 )
                 Text(stringResource(R.string.ai_whisper_server_hint), style = MaterialTheme.typography.bodySmall)
             }
@@ -241,6 +283,35 @@ fun AiSettingsScreen() {
                 c.voicevoxSpeaker.toString(), { v -> v.toIntOrNull()?.let { config = c.copy(voicevoxSpeaker = it) } }, Modifier.fillMaxWidth(),
                 label = { Text(stringResource(R.string.ai_speaker_id)) }, singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             )
+            OutlinedTextField(
+                ttsKey, { ttsKey = it; ttsKeyEdited = true }, Modifier.fillMaxWidth(),
+                label = { Text(stringResource(R.string.ai_tts_api_key)) }, singleLine = true, visualTransformation = PasswordVisualTransformation(),
+                supportingText = { Text(stringResource(R.string.ai_endpoint_key_hint)) },
+            )
+            Button(
+                onClick = {
+                    voicevoxProbing = true
+                    voicevoxProbe = null
+                    vm.viewModelScope.launch {
+                        // The probe reads the stored TTS key; store an edit first so the test uses it.
+                        voicevoxProbe = runCatching {
+                            if (ttsKeyEdited) graph.ai.ttsEndpointKey = ttsKey
+                            graph.ai.probeVoicevox(c.voicevoxUrl)
+                        }
+                        voicevoxProbing = false
+                    }
+                },
+                enabled = c.voicevoxUrl.isNotBlank() && !voicevoxProbing,
+            ) { Text(stringResource(if (voicevoxProbing) R.string.ai_testing else R.string.ai_test)) }
+            voicevoxProbe?.let { r ->
+                val ok = r.getOrNull() == true
+                Text(
+                    if (ok) stringResource(R.string.ai_voicevox_ok)
+                    else stringResource(R.string.ai_voicevox_failed, r.exceptionOrNull()?.message ?: stringResource(R.string.ai_voicevox_no_answer)),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = if (ok) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
+                )
+            }
             Text(stringResource(R.string.ai_voicevox_hint), style = MaterialTheme.typography.bodySmall)
         }
     }
@@ -266,7 +337,11 @@ fun AiSettingsScreen() {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun ModelList(vm: AiSettingsViewModel, kind: ModelKind, selected: String?, onSelect: (String) -> Unit, onDownload: (ModelInfo) -> Unit) {
+private fun ModelList(
+    vm: AiSettingsViewModel,
+    progress: Map<String, DownloadProgress>,
+    active: Set<String>,
+    kind: ModelKind, selected: String?, onSelect: (String) -> Unit, onDownload: (ModelInfo) -> Unit) {
     val manager = vm.graph.ai.models
     if (manager == null) {
         Notice(stringResource(R.string.ai_catalog_missing))
@@ -285,7 +360,7 @@ private fun ModelList(vm: AiSettingsViewModel, kind: ModelKind, selected: String
     models.forEach { m ->
         val installed = manager.isInstalled(m)
         val onDisk = manager.bytesOnDisk(m)
-        val p = vm.progress[m.id]
+        val p = progress[m.id]
         Card(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Row(
@@ -301,7 +376,7 @@ private fun ModelList(vm: AiSettingsViewModel, kind: ModelKind, selected: String
                 }
                 if (m.minRamGb > ram) Text(stringResource(R.string.ai_may_not_fit), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                 when {
-                    vm.isDownloading(m) -> {
+                    m.id in active && p !is DownloadProgress.Failed -> {
                         when (p) {
                             is DownloadProgress.Downloading -> {
                                 LinearProgressIndicator(progress = { p.fraction.toFloat() }, modifier = Modifier.fillMaxWidth())
@@ -321,7 +396,13 @@ private fun ModelList(vm: AiSettingsViewModel, kind: ModelKind, selected: String
                     }
                     else -> {
                         (p as? DownloadProgress.Failed)?.let {
-                            Text(stringResource(R.string.ai_download_failed, it.message.orEmpty()), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                            if (!it.retryable) {
+                                // Not enough storage (D-053): retrying won't help until space is freed, so say so plainly.
+                                Text(stringResource(R.string.ai_no_storage_title), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.error)
+                                Text(it.message, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                            } else {
+                                Text(stringResource(R.string.ai_download_failed, it.message), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                            }
                         }
                         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Button(onClick = { onDownload(m) }) { Text(if (onDisk > 0) stringResource(R.string.ai_resume, gb(onDisk)) else stringResource(R.string.ai_download)) }

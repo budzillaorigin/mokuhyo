@@ -65,6 +65,11 @@ import app.tsumugi.exam.ScriptLine
 import app.tsumugi.exam.jlpt.JlptItemType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.CancellationException
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
+import app.tsumugi.android.ui.ErrorState
+import app.tsumugi.android.ui.readable
 
 class ExamRunViewModel(app: Application, private val spec: ExamSpec) : AndroidViewModel(app) {
     private val graph = (app as TsumugiApplication).graph
@@ -73,6 +78,11 @@ class ExamRunViewModel(app: Application, private val spec: ExamSpec) : AndroidVi
     var preview by mutableStateOf<ExamForm?>(null)
         private set
     var loaded by mutableStateOf(false)
+        private set
+    /** Building or resuming the form failed (F-33): shown with a retry. */
+    var error by mutableStateOf<String?>(null)
+        private set
+    var saveError by mutableStateOf<String?>(null)
         private set
     var session by mutableStateOf<ExamSession?>(null)
         private set
@@ -87,9 +97,30 @@ class ExamRunViewModel(app: Application, private val spec: ExamSpec) : AndroidVi
         private set
 
     init {
+        load()
+    }
+
+    fun load() {
+        loaded = false
+        error = null
         viewModelScope.launch {
-            preview = create()?.form
+            try {
+                if (spec is ExamSpec.Resume) {
+                    // F-24: straight back into the saved attempt; sections that ran out meanwhile are already closed.
+                    val resumed = graph.exams().resume()
+                    session = resumed
+                    if (resumed == null) error = getApplication<Application>().getString(R.string.exam_resume_gone)
+                    else if (resumed.finished) submit()
+                } else {
+                    preview = create()?.form
+                }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                error = e.readable()
+            }
             loaded = true
+            version++
         }
     }
 
@@ -100,12 +131,23 @@ class ExamRunViewModel(app: Application, private val spec: ExamSpec) : AndroidVi
             is ExamSpec.JlptSection -> exams.jlptSection(spec.level, spec.sectionId, seed)
             is ExamSpec.JlptType -> exams.jlptTypeDrill(spec.level, spec.type, seed)
             is ExamSpec.Dlpt -> exams.dlpt(spec.exam, spec.minutes, seed)
+            is ExamSpec.Resume -> exams.resume()
         }
     }
 
-    /** Builds the same form again (same seed) so the clock starts now, not when the preview was made. */
+    /**
+     * Builds the same form again (same seed) so the clock starts now, not when the preview was made, and starts
+     * saving it (F-24): from here the attempt survives process death and can be resumed from the hub.
+     */
     fun start() = viewModelScope.launch {
-        session = create()
+        try {
+            session = create()?.also { it.begin() }
+            error = null
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            error = e.readable()
+        }
         version++
     }
 
@@ -113,10 +155,13 @@ class ExamRunViewModel(app: Application, private val spec: ExamSpec) : AndroidVi
         version++
     }
 
-    /** Once a second: advances the section when its time runs out; submits after the last one. */
+    /**
+     * Once a second, and whenever the screen resumes: closes every section whose deadline has passed on the wall
+     * clock (there may be several after the app was in the background), then submits if that was the last one.
+     */
     fun tick() {
         val s = session ?: return
-        s.tick()
+        while (s.tick()) Unit
         if (s.finished && result == null) submit() else version++
     }
 
@@ -126,7 +171,32 @@ class ExamRunViewModel(app: Application, private val spec: ExamSpec) : AndroidVi
         val r = s.submit()
         result = r
         version++
-        viewModelScope.launch { savedId = graph.exams().save(r) }
+        save(r)
+    }
+
+    fun retrySave() {
+        result?.let { save(it) }
+    }
+
+    private fun save(r: ExamResult) {
+        saveError = null
+        viewModelScope.launch {
+            try {
+                savedId = graph.exams().save(r)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                saveError = e.readable()
+            }
+        }
+    }
+
+    /** Leaving keeps a started attempt for "Resume attempt"; this throws it away instead. */
+    fun discard(then: () -> Unit) {
+        viewModelScope.launch {
+            runCatching { graph.exams().discardInProgress() }
+            then()
+        }
     }
 
     fun addMissedToSrs() {
@@ -147,13 +217,22 @@ fun ExamRunScreen(spec: ExamSpec, key: String, onReview: (String) -> Unit, onExi
         AlertDialog(
             onDismissRequest = { confirmLeave = false },
             title = { Text(stringResource(R.string.exam_leave_title)) },
-            text = { Text(stringResource(R.string.exam_leave_text)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(stringResource(if (spec.strict) R.string.exam_leave_resume_strict else R.string.exam_leave_resume))
+                    TextButton(onClick = { confirmLeave = false; vm.discard(onExit) }) {
+                        Text(stringResource(R.string.exam_discard), color = MaterialTheme.colorScheme.error)
+                    }
+                }
+            },
             confirmButton = { TextButton(onClick = { confirmLeave = false; onExit() }) { Text(stringResource(R.string.exam_leave)) } },
             dismissButton = { TextButton(onClick = { confirmLeave = false }) { Text(stringResource(R.string.exam_stay)) } },
         )
     }
     when {
         !vm.loaded -> LinearProgressIndicator(Modifier.fillMaxWidth().padding(16.dp))
+        vm.error != null && session == null && result == null ->
+            ErrorState(stringResource(R.string.exam_start_failed, vm.error.orEmpty()), onRetry = vm::load, modifier = Modifier.padding(16.dp))
         result != null -> ResultView(vm, result, onReview, onExit)
         session != null -> Runner(vm, session, spec)
         else -> Preview(vm, spec)
@@ -194,6 +273,7 @@ private fun Preview(vm: ExamRunViewModel, spec: ExamSpec) {
                 Text(stringResource(R.string.exam_ai_items), style = MaterialTheme.typography.bodySmall)
             }
         }
+        vm.error?.let { ErrorState(stringResource(R.string.exam_start_failed, it), onRetry = { vm.start() }) }
         Button(onClick = { vm.start() }) { Text(stringResource(R.string.action_start)) }
     }
 }
@@ -204,6 +284,8 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
     val voices = rememberVoices()
     val scope = rememberCoroutineScope()
     var confirmEnd by remember { mutableStateOf(false) }
+    // Remaining time comes from the wall clock (section deadlines are absolute), so this loop only redraws and
+    // closes sections on time; after the app was in the background, ON_RESUME catches up on every missed deadline.
     LaunchedEffect(session) {
         while (!session.finished) {
             delay(1_000)
@@ -211,6 +293,7 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
         }
         vm.submit()
     }
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { vm.tick() }
     @Suppress("UNUSED_VARIABLE") val v = vm.version // recompose on ticks and answers
     val section = session.section ?: return
     val formItem = session.current ?: return
@@ -367,7 +450,12 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
 private fun ResultView(vm: ExamRunViewModel, result: ExamResult, onReview: (String) -> Unit, onExit: () -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         ScoringView(result.form.exam, result.summary, result.scoring)
-        Text(stringResource(if (vm.savedId != null) R.string.exam_saved else R.string.exam_saving), style = MaterialTheme.typography.bodySmall)
+        val saveError = vm.saveError
+        if (saveError != null) {
+            ErrorState(stringResource(R.string.exam_save_failed, saveError), onRetry = vm::retrySave)
+        } else {
+            Text(stringResource(if (vm.savedId != null) R.string.exam_saved else R.string.exam_saving), style = MaterialTheme.typography.bodySmall)
+        }
         val refs = result.missedRefs.filter { it.startsWith("g:") || it.startsWith("v:") }
         if (refs.isNotEmpty()) {
             val added = vm.added

@@ -1,5 +1,11 @@
 package app.tsumugi.android.features.study
 
+import app.tsumugi.android.ui.ErrorState
+import app.tsumugi.android.ui.RecomputeBanner
+import app.tsumugi.android.ui.readable
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.mutableIntStateOf
 import app.tsumugi.android.ui.JaText
 import app.tsumugi.android.ui.localized
 import androidx.compose.foundation.layout.widthIn
@@ -54,22 +60,38 @@ import kotlinx.coroutines.launch
 @Composable
 fun PathLevelsScreen(onOpenLevel: (Int) -> Unit) {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
+    val scope = rememberCoroutineScope()
     var status by remember { mutableStateOf<PathStatus?>(null) }
     var missing by remember { mutableStateOf(false) }
-    LaunchedEffect(Unit) {
-        val path = graph.path()
-        missing = path == null
-        status = path?.status()
+    var error by remember { mutableStateOf<String?>(null) }
+    var attempt by remember { mutableIntStateOf(0) }
+    var resetTarget by remember { mutableStateOf<Int?>(null) }
+    LaunchedEffect(attempt) {
+        error = null
+        runCatching {
+            val path = graph.path()
+            missing = path == null
+            status = path?.status()
+        }.onFailure { error = it.readable() }
     }
     val s = status
     when {
         missing -> Text(stringResource(R.string.path_missing), Modifier.padding(24.dp))
-        s == null -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
+        s == null -> error?.let { ErrorState(stringResource(R.string.error_loading, it), onRetry = { attempt++ }, modifier = Modifier.padding(16.dp)) }
+            ?: Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
         else -> LazyColumn(Modifier.fillMaxSize()) {
+            item { RecomputeBanner(Modifier.padding(16.dp)) }
+            error?.let { item { ErrorState(it, onRetry = { attempt++ }, modifier = Modifier.padding(16.dp)) } }
             items((1..s.maxLevel).toList()) { level ->
                 ListItem(
                     modifier = Modifier.clickable { onOpenLevel(level) },
                     headlineContent = { Text(stringResource(R.string.title_level, level)) },
+                    // Rule 11: the only way the level goes down is this explicit, confirmed reset (D-041).
+                    trailingContent = if (level < s.currentLevel) {
+                        { TextButton(onClick = { resetTarget = level }) { Text(stringResource(R.string.path_reset_action)) } }
+                    } else {
+                        null
+                    },
                     supportingContent = {
                         Text(
                             when {
@@ -82,6 +104,24 @@ fun PathLevelsScreen(onOpenLevel: (Int) -> Unit) {
                 )
             }
         }
+    }
+    resetTarget?.let { level ->
+        AlertDialog(
+            onDismissRequest = { resetTarget = null },
+            title = { Text(stringResource(R.string.path_reset_title, level)) },
+            text = { Text(stringResource(R.string.path_reset_text, level)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    resetTarget = null
+                    scope.launch {
+                        runCatching { graph.path()?.resetToLevel(level) }
+                            .onSuccess { attempt++ }
+                            .onFailure { error = it.readable() }
+                    }
+                }) { Text(stringResource(R.string.path_reset_confirm, level)) }
+            },
+            dismissButton = { TextButton(onClick = { resetTarget = null }) { Text(stringResource(R.string.action_cancel)) } },
+        )
     }
 }
 

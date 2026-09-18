@@ -18,6 +18,7 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | Okio | shared | Apache-2.0 | © Square, Inc. — https://github.com/square/okio |
 | Google ML Kit Text Recognition v2, Japanese (bundled model) | androidApp | ML Kit Terms of Service (free, on-device, no API key) | https://developers.google.com/ml-kit/terms — used for camera/photo OCR only (BRIEF §3.2) |
 | AndroidX Activity, Lifecycle, Jetpack Compose (UI, Material 3) | androidApp | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx |
+| AndroidX WorkManager (work-runtime 2.11.2, with its transitive AndroidX Room, Startup and Concurrent libraries) | androidApp | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx/releases/work — background model downloads (F-13) |
 | llama.cpp (b11040; prebuilt xcframework on iOS, built from source via CMake on Android) | iosApp, androidApp | MIT | © 2023-2026 The ggml authors — https://github.com/ggml-org/llama.cpp |
 | whisper.cpp (b5130; prebuilt xcframework on iOS, built from source via CMake on Android) | iosApp, androidApp | MIT | © 2023-2026 The ggml authors — https://github.com/ggml-org/whisper.cpp |
 | ggml (tensor library bundled inside llama.cpp and whisper.cpp) | iosApp, androidApp | MIT | © 2023-2026 The ggml authors (originally Georgi Gerganov) — https://github.com/ggml-org/ggml |

@@ -21,6 +21,27 @@ import kotlin.random.Random
 import kotlin.time.Clock
 import kotlin.time.Instant
 
+/**
+ * The unfinished attempt on this device, for the hub's "Resume attempt" card (F-24). [sectionDeadline] is the open
+ * section's end (null when untimed); [timeUp] is true when every remaining section's time has already run out, so
+ * resuming leads straight to submitting.
+ */
+data class InProgressAttempt(
+    val id: String,
+    val exam: ExamKind,
+    val level: String,
+    val mode: ExamMode,
+    val startedAt: Instant,
+    val updatedAt: Instant,
+    val answered: Int,
+    val total: Int,
+    val sectionIndex: Int,
+    val sectionCount: Int,
+    val sectionTitle: String,
+    val sectionDeadline: Instant?,
+    val timeUp: Boolean,
+)
+
 data class AttemptSummary(val id: String, val exam: ExamKind, val level: String, val mode: ExamMode, val submittedAt: Instant, val summary: String, val scoring: AttemptScoring)
 
 /** A past attempt with its items, for review with explanations. */
@@ -56,6 +77,26 @@ class ExamService(
     private var blueprintCache: JlptBlueprints? = null
     private var userBankCache: List<ExamBankFile>? = null
 
+    /**
+     * Saves the running attempt synchronously on the caller's thread: one small row, so an answer is on disk before
+     * [ExamSession.choose] returns and a later clear can't be overtaken by a queued write (DECISIONS D-080).
+     */
+    private val progressStore = object : ExamProgressStore {
+        override fun save(progress: ExamProgress) {
+            val state = json.encodeToString(ExamProgress.serializer(), progress)
+            q.transaction {
+                q.deleteOtherInProgress(progress.id)
+                q.putInProgress(progress.id, progress.exam, progress.level, progress.mode, progress.startedAt, clock.now().toEpochMilliseconds(), state)
+            }
+        }
+
+        override fun clear(id: String) {
+            q.deleteInProgress(id)
+        }
+    }
+
+    private fun session(form: ExamForm, blueprint: app.tsumugi.exam.jlpt.LevelBlueprint?) = ExamSession(form, blueprint, clock, progressStore)
+
     @Throws(Exception::class)
     suspend fun blueprints(): JlptBlueprints? = io {
         blueprintCache ?: pack?.examQueries?.meta(BLUEPRINT_KEY)?.executeAsOneOrNull()
@@ -81,29 +122,98 @@ class ExamService(
     suspend fun jlptMock(level: Int, seed: Long = clock.now().toEpochMilliseconds()): ExamSession? {
         val bp = blueprints()?.level(level) ?: return null
         val (pool, passages) = pool(ExamKind.JLPT, listOf("N$level"))
-        return ExamSession(ExamAssembler.jlptMock(level, bp, pool, passages, Random(seed)), bp, clock)
+        return session(ExamAssembler.jlptMock(level, bp, pool, passages, Random(seed)), bp)
     }
 
     @Throws(Exception::class)
     suspend fun jlptSection(level: Int, sectionId: String, seed: Long = clock.now().toEpochMilliseconds()): ExamSession? {
         val bp = blueprints()?.level(level) ?: return null
         val (pool, passages) = pool(ExamKind.JLPT, listOf("N$level"))
-        return ExamSession(ExamAssembler.jlptSection(level, bp, sectionId, pool, passages, Random(seed)), bp, clock)
+        return session(ExamAssembler.jlptSection(level, bp, sectionId, pool, passages, Random(seed)), bp)
     }
 
     @Throws(Exception::class)
     suspend fun jlptTypeDrill(level: Int, type: String, seed: Long = clock.now().toEpochMilliseconds()): ExamSession? {
         val bp = blueprints()?.level(level) ?: return null
         val (pool, passages) = pool(ExamKind.JLPT, listOf("N$level"))
-        return ExamSession(ExamAssembler.jlptTypeDrill(level, bp, type, pool, passages, Random(seed)), bp, clock)
+        return session(ExamAssembler.jlptTypeDrill(level, bp, type, pool, passages, Random(seed)), bp)
     }
 
     /** DLPT reading or listening; [minutes] = 180 (full length), 60 or 30. */
     @Throws(Exception::class)
     suspend fun dlpt(exam: ExamKind, minutes: Int, seed: Long = clock.now().toEpochMilliseconds()): ExamSession {
         val (pool, passages) = pool(exam, app.tsumugi.exam.dlpt.IlrLevel.lowerRange.map { it.label })
-        return ExamSession(ExamAssembler.dlpt(exam, minutes, pool, passages, Random(seed)), null, clock)
+        return session(ExamAssembler.dlpt(exam, minutes, pool, passages, Random(seed)), null)
     }
+
+    /** The unfinished attempt on this device, or null. Reads one row; the form's items aren't loaded. */
+    @Throws(Exception::class)
+    suspend fun inProgress(): InProgressAttempt? = io {
+        val row = q.inProgress().executeAsOneOrNull() ?: return@io null
+        val p = decodeProgress(row.state)
+        val exam = ExamKind.entries.firstOrNull { it.name == row.exam }
+        val mode = ExamMode.entries.firstOrNull { it.name == row.mode }
+        if (p == null || exam == null || mode == null) {
+            q.deleteInProgress(row.id)
+            return@io null
+        }
+        val now = clock.now().toEpochMilliseconds()
+        val deadline = if (p.finished) null else p.deadlines.getOrNull(p.sectionIndex)
+        // Remaining sections open back to back; the attempt is over when the last deadline has passed.
+        val remaining = p.sections.drop(p.sectionIndex + 1)
+        val timed = p.deadlines.getOrNull(p.sectionIndex) != null && remaining.all { it.minutes != null }
+        val lastDeadline = if (timed) deadline?.plus(remaining.sumOf { (it.minutes ?: 0) * 60_000L }) else null
+        InProgressAttempt(
+            id = p.id, exam = exam, level = p.level, mode = mode,
+            startedAt = Instant.fromEpochMilliseconds(row.started_at),
+            updatedAt = Instant.fromEpochMilliseconds(row.updated_at),
+            answered = p.answeredCount, total = p.totalCount,
+            sectionIndex = p.sectionIndex, sectionCount = p.sections.size,
+            sectionTitle = p.sections.getOrNull(p.sectionIndex)?.title.orEmpty(),
+            sectionDeadline = deadline?.let { Instant.fromEpochMilliseconds(it) },
+            timeUp = p.finished || (lastDeadline != null && lastDeadline <= now),
+        )
+    }
+
+    /**
+     * Rebuilds the unfinished attempt, or null when there is none (or its items are no longer installed, in which
+     * case it is discarded). Sections whose deadline passed while the app was away are already closed, in order.
+     * Items removed since (a deleted bank) are dropped from the form.
+     */
+    @Throws(Exception::class)
+    suspend fun resume(): ExamSession? {
+        val row = io { q.inProgress().executeAsOneOrNull() } ?: return null
+        val p = decodeProgress(row.state)
+        val exam = ExamKind.entries.firstOrNull { it.name == p?.exam }
+        val mode = ExamMode.entries.firstOrNull { it.name == p?.mode }
+        if (p == null || exam == null || mode == null) {
+            io { q.deleteInProgress(row.id) }
+            return null
+        }
+        val items = itemsByIds(p.sections.flatMap { s -> s.items.map { it.id } })
+        if (items.isEmpty()) {
+            io { q.deleteInProgress(row.id) }
+            return null
+        }
+        val sections = p.sections.map { s ->
+            FormSection(s.title, s.minutes, s.items.mapNotNull { r -> items[r.id]?.let { FormItem(it, r.group, r.typeTitle) } }, s.listening)
+        }
+        val passages = passagesByIds(p.passageIds)
+        val blueprint = if (exam == ExamKind.JLPT) p.level.removePrefix("N").toIntOrNull()?.let { blueprints()?.level(it) } else null
+        val form = ExamForm(exam, p.level, mode, sections, passages, emptyList())
+        val session = ExamSession(form, blueprint, clock, progressStore, p)
+        io { while (session.tick()) Unit }
+        return session
+    }
+
+    /** Throws away the unfinished attempt. */
+    @Throws(Exception::class)
+    suspend fun discardInProgress() {
+        io { q.clearInProgress() }
+    }
+
+    private fun decodeProgress(state: String): ExamProgress? =
+        runCatching { json.decodeFromString(ExamProgress.serializer(), state) }.getOrNull()
 
     /** Stores a finished attempt; returns its id. */
     @Throws(Exception::class)

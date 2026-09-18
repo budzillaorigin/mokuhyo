@@ -1,0 +1,10 @@
+-- User database v2 → v3 (BRIEF_V2 F-24; DECISIONS D-080): the resumable exam attempt. Device-local, no sync trigger.
+CREATE TABLE exam_in_progress (
+    id TEXT NOT NULL PRIMARY KEY,
+    exam TEXT NOT NULL,
+    level TEXT NOT NULL,
+    mode TEXT NOT NULL,
+    started_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    state TEXT NOT NULL
+);

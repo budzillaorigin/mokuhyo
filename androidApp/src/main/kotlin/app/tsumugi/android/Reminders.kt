@@ -10,9 +10,22 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 
 /**
  * Local review reminders. The shared ReminderPlanner decides when; this schedules one inexact alarm whenever
@@ -64,4 +77,42 @@ class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Reminders.show(context, intent.getStringExtra("title") ?: context.getString(R.string.reminder_title), intent.getStringExtra("body").orEmpty())
     }
+}
+
+private const val NOTIFICATIONS_ASKED = "notifications.asked"
+
+/**
+ * F-34: asks for the notification permission once, after the first completed review session, from a dialog that says
+ * what the notifications are for. Nothing shows below Android 13, when it's already granted, or once the learner has
+ * answered (either way). That answer is a device-local preference, like the permission itself.
+ */
+@Composable
+fun NotificationPermissionPrompt() {
+    if (Build.VERSION.SDK_INT < 33) return
+    val context = LocalContext.current
+    val prefs = remember { context.getSharedPreferences("tsumugi.device", Context.MODE_PRIVATE) }
+    var show by remember {
+        mutableStateOf(
+            !prefs.getBoolean(NOTIFICATIONS_ASKED, false) &&
+                ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED,
+        )
+    }
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { }
+    if (!show) return
+    val answered = {
+        prefs.edit { putBoolean(NOTIFICATIONS_ASKED, true) }
+        show = false
+    }
+    AlertDialog(
+        onDismissRequest = answered,
+        title = { Text(stringResource(R.string.notifications_ask_title)) },
+        text = { Text(stringResource(R.string.notifications_ask_text)) },
+        confirmButton = {
+            TextButton(onClick = {
+                answered()
+                launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }) { Text(stringResource(R.string.notifications_ask_allow)) }
+        },
+        dismissButton = { TextButton(onClick = answered) { Text(stringResource(R.string.notifications_ask_later)) } },
+    )
 }

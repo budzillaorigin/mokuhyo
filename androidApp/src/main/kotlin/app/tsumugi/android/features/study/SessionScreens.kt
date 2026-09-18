@@ -61,6 +61,9 @@ import app.tsumugi.android.features.writing.WritingCanvas
 import app.tsumugi.android.ui.StrokeOrderView
 import app.tsumugi.dictionary.KanjiStroke
 import androidx.compose.foundation.layout.size
+import app.tsumugi.android.ui.ErrorState
+import app.tsumugi.android.ui.RecomputeBanner
+import app.tsumugi.android.NotificationPermissionPrompt
 
 private val Correct = Color(0xFF2E7D32)
 private val Wrong = Color(0xFFC62828)
@@ -83,10 +86,16 @@ private fun LabeledJa(label: String, value: String) {
 fun ReviewScreen(onDone: () -> Unit) {
     val vm: ReviewViewModel = viewModel()
     val state by vm.state.collectAsStateWithLifecycle()
+    val loadError by vm.loadError.collectAsStateWithLifecycle()
+    val actionError by vm.actionError.collectAsStateWithLifecycle()
+    val submitting by vm.submitting.collectAsStateWithLifecycle()
     var writingResult by remember { mutableStateOf<RawResult?>(null) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        RecomputeBanner()
+        actionError?.let { ErrorState(stringResource(R.string.review_action_failed, it), onRetry = vm::retryAction) }
         when (val s = state) {
-            null -> Box(Modifier.fillMaxWidth(), Alignment.Center) { CircularProgressIndicator() }
+            null -> loadError?.let { ErrorState(stringResource(R.string.error_loading, it), onRetry = vm::load) }
+                ?: Box(Modifier.fillMaxWidth(), Alignment.Center) { CircularProgressIndicator() }
             is ReviewState.Asking -> {
                 Progress(s.done, s.remaining + 1)
                 Text(s.prompt.label + if (s.prompt.practice) stringResource(R.string.review_practice_suffix) else "", style = MaterialTheme.typography.labelLarge)
@@ -105,11 +114,11 @@ fun ReviewScreen(onDone: () -> Unit) {
                 } else if (s.prompt.mode == AnswerMode.SELF_GRADED) {
                     Button(onClick = vm::reveal, Modifier.fillMaxWidth()) { Text(stringResource(R.string.review_show_answer)) }
                 } else if (s.prompt.mode == AnswerMode.BUILD && exercise != null) {
-                    BuildAnswer(exercise, resetKey = s.prompt.card.id + s.done + s.prompt.practice) { vm.submit(it) }
+                    BuildAnswer(exercise, resetKey = s.prompt.card.id + s.done + s.prompt.practice, enabled = !submitting) { vm.submit(it) }
                 } else {
                     AnswerField(
                         if (s.prompt.mode == AnswerMode.CLOZE) AnswerMode.READING else s.prompt.mode,
-                        enabled = true, resetKey = s.prompt.card.id + s.done + s.prompt.practice,
+                        enabled = !submitting, resetKey = s.prompt.card.id + s.done + s.prompt.practice,
                     ) { vm.submit(it) }
                     s.hint?.let { Text(it, color = MaterialTheme.colorScheme.tertiary) }
                 }
@@ -171,7 +180,11 @@ fun ReviewScreen(onDone: () -> Unit) {
                     if (s.canUndo) OutlinedButton(onClick = vm::undo) { Text(stringResource(R.string.action_undo)) }
                 }
             }
-            is ReviewState.Finished -> SummaryView(s.summary, onDone)
+            is ReviewState.Finished -> {
+                SummaryView(s.summary, onDone)
+                // F-34: notification permission is asked here, after the first real session, with the reason first.
+                if (s.summary.reviewed > 0) NotificationPermissionPrompt()
+            }
         }
     }
 }

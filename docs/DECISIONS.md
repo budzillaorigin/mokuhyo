@@ -456,6 +456,38 @@ The GitHub releases API confirms both pinned tags exist and serve the pinned zip
 
 Both are automated build releases marked "pre-release" on GitHub. `tools/models/README.md` now records this. No pin changed.
 
+### D-080: Exam attempts are saved as they go and follow the wall clock (F-24, 2026-09-18)
+- **Storage:** a new user-DB table, `exam_in_progress(id, exam, level, mode, started_at, updated_at, state)`, added by `migrations/2.sqm` (schema version 3; `databases/2.db` is the pre-change snapshot). It has no sync trigger and isn't in `SyncTables`: an unfinished attempt is device-local, like the clock it runs on.
+- **What is saved:** `state` is the JSON `ExamProgress`: the form's item ids per section (with score group and type title), passage ids, answers, time per item, audio plays, the current section and item, and each opened timed section's deadline as absolute epoch ms. Item and passage content is re-read from the packs and banks on resume. Items that disappeared since (a deleted bank) are dropped. If none are left, the attempt is discarded.
+- **When:** after every answer, move, audio play and section change. The write is a single small row done synchronously on the caller's thread. The answer is then on disk before `choose()` returns, and a queued write can never land after the clear on submit. A new session starts saving at `begin()` (the Start button) or its first change. A form built only for the preview never replaces an unfinished attempt. There is one unfinished attempt per device, and starting another replaces it. `submit()` deletes the row.
+- **Clock:** remaining time is `deadline − now`. `tick()` closes the open section once its deadline has passed. The next section is taken to open *at that deadline*, not at the moment the app noticed, so looping `tick()` after a long background closes every section that ran out, in order. `resume()` runs that loop before returning. Time away from the app isn't charged to any item's answer time.
+- **Finished while away:** if the last section's deadline passed, the resumed session is `finished` and the UI submits it. `inProgress().timeUp` says so up front.
+- **API for the hubs:** `ExamService.inProgress(): InProgressAttempt?`, `resume(): ExamSession?`, `discardInProgress()`. `ExamSession` gains `begin()`, `attemptId`, `sectionDeadlineMs` and `progress()`. Tests: `ExamResumeTest`.
+
+### D-081: Android model downloads run as WorkManager foreground work (F-13 Android, 2026-09-18)
+- Each download is a unique `OneTimeWorkRequest` named `model-download:<id>`, with `KEEP` so a second tap doesn't start a second job, and a network-connected constraint. The metered-network warning stays in the UI, before enqueueing.
+- `ModelDownloadWorker` runs in the foreground (`dataSync` type, declared on WorkManager's `SystemForegroundService` in the manifest) with a progress notification and a Pause action (`createCancelPendingIntent`). The notification updates at most once a second.
+- The worker collects the shared `ModelManager.download` flow. Writing and hashing already run on IO there (D-053). Cancelling the job cancels the collection, and the `.part` file stays, so a later start resumes. If the process dies, WorkManager restarts the job, which resumes from the `.part`.
+- The settings screen reads the job state from WorkManager, which survives process death, and the byte progress from an in-process `StateFlow`. A non-retryable failure (not enough storage) is shown under a "Not enough storage" heading with the shared message.
+- New dependency `androidx.work:work-runtime` 2.11.2 (Apache-2.0), recorded in `docs/LICENSES.md`.
+
+### D-082: Android asks for notifications after the first review session (F-34 Android, 2026-09-18)
+`MainActivity` no longer requests `POST_NOTIFICATIONS` at launch. The review summary shows `NotificationPermissionPrompt` after a session with at least one review. It explains what the notifications are for (review reminders, download progress) and asks only on "Allow". It asks once: the answer, either way, is kept in a device-local `SharedPreferences` flag, and nothing shows on Android 12 or lower or when the permission is already granted. Model downloads don't depend on it: a foreground worker runs without the permission, but its notification is hidden.
+
+### D-083: Android error states and the review double-submit guard (F-33, F-09 Android, 2026-09-18)
+- **Error states:** `ui/StateViews.kt` adds `ErrorState(message, onRetry)`. Loading and actions that can fail now end in it instead of a spinner: reviews (start and each action), role-play (load), dictionary (opening and each search), reader (library list and each import, with a retry of the same import), exam hub and exam start/resume and saving the result, AI settings (load and save), the kanji path.
+- **Role-play model failure:** `session.modelFailure` shows as a notice with Retry (`session.retry()`) and a link to AI settings. Input is disabled until the retry succeeds, because the shared session never splices in scripted turns (D-057).
+- **F-09:** `ReviewViewModel.submit` ignores a second call while one is in flight, and the answer field and "Check" are disabled for that time. The shared `ReviewSession` mutex (D-044) still guarantees one review per prompt.
+
+### D-084: Rule 13 on Android: no Android-only network code (2026-09-18)
+An audit of `androidApp/` and `shared/src/androidMain` found no `HttpURLConnection`, `java.net` or direct OkHttp use. VOICEVOX synthesis in `platform/Voices.kt` goes through the shared `VoicevoxSynthesizer`: a Ktor client on the OkHttp engine with `VOICEVOX_SYNTH` / `VOICEVOX_PROBE` timeouts (D-050). The call is cancellable, and a failure falls back to the Android voice. Android's own `TextToSpeech` and `MediaPlayer` only play local files. Nothing needed to change.
+
+### D-085: Android path and FSRS UI (2026-09-18)
+- **Reset:** every passed level on the path screen has "Reset here", which opens a confirmation dialog saying what closes and that the reset syncs. Only then does it call `PathService.resetToLevel` (D-041).
+- **Recompute banner:** `AppGraph.recomputeProgress` shows as a banner with progress on Today, Reviews and the path while cards are rebuilt.
+- **No examples yet:** grammar lists show a "No examples yet" tag for `GrammarPointStatus.noExamples` (D-045).
+- **Optimizer:** the Android app has no FSRS optimizer screen, so no UI saves weights and nothing calls `graph.setFsrsWeights` yet. A future optimizer screen must use it and not write the setting directly.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

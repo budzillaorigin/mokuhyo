@@ -27,6 +27,19 @@ CREATE TABLE user_exam_bank (
     imported_at INTEGER NOT NULL
 );
 
+-- The attempt in progress, if any (F-24, DECISIONS D-080). One row per device at most: state is the JSON
+-- ExamProgress (form item/passage ids, answers, position, section deadlines as absolute epoch ms). Device-local:
+-- no sync trigger, not in SyncTables. Rewritten after every answer, move and section change; deleted on submit.
+CREATE TABLE exam_in_progress (
+    id TEXT NOT NULL PRIMARY KEY,
+    exam TEXT NOT NULL,
+    level TEXT NOT NULL,
+    mode TEXT NOT NULL,
+    started_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    state TEXT NOT NULL
+);
+
 insertAttempt:
 INSERT OR IGNORE INTO exam_attempt(id, exam, level, mode, started_at, submitted_at, answers, scoring, summary, device_id)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -48,3 +61,18 @@ SELECT * FROM user_exam_bank ORDER BY imported_at;
 
 deleteBank:
 DELETE FROM user_exam_bank WHERE id = ?;
+
+putInProgress:
+INSERT OR REPLACE INTO exam_in_progress(id, exam, level, mode, started_at, updated_at, state) VALUES (?, ?, ?, ?, ?, ?, ?);
+
+inProgress:
+SELECT * FROM exam_in_progress ORDER BY updated_at DESC LIMIT 1;
+
+deleteInProgress:
+DELETE FROM exam_in_progress WHERE id = ?;
+
+deleteOtherInProgress:
+DELETE FROM exam_in_progress WHERE id != ?;
+
+clearInProgress:
+DELETE FROM exam_in_progress;

@@ -90,7 +90,11 @@ fun GrammarLevelScreen(level: Int, onOpenPoint: (String) -> Unit) {
                 modifier = Modifier.clickable { onOpenPoint(p.point.id) },
                 headlineContent = { JaText(p.point.title, style = MaterialTheme.typography.titleMedium) },
                 supportingContent = { Text(p.point.meaning) },
-                trailingContent = { Text(p.stage?.localized() ?: "", style = MaterialTheme.typography.labelSmall) },
+                trailingContent = {
+                    // F-20: a point with no example sentences can't be practised yet; its cards are held, not due.
+                    if (p.noExamples) Tag(stringResource(R.string.grammar_no_examples))
+                    else Text(p.stage?.localized() ?: "", style = MaterialTheme.typography.labelSmall)
+                },
             )
         }
     }
@@ -188,7 +192,7 @@ fun GrammarLessonScreen(onDone: () -> Unit) {
 /** Sentence building: tap chunks in order. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun BuildAnswer(exercise: GrammarExercise, resetKey: Any, onSubmit: (String) -> Unit) {
+fun BuildAnswer(exercise: GrammarExercise, resetKey: Any, enabled: Boolean = true, onSubmit: (String) -> Unit) {
     var picked by remember(resetKey) { mutableStateOf(listOf<Int>()) }
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         val built = picked.joinToString("") { exercise.chunks[it] }
@@ -204,7 +208,7 @@ fun BuildAnswer(exercise: GrammarExercise, resetKey: Any, onSubmit: (String) -> 
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedButton(onClick = { picked = picked.dropLast(1) }, enabled = picked.isNotEmpty()) { Text(stringResource(R.string.action_undo)) }
-            Button(onClick = { onSubmit(picked.joinToString("") { exercise.chunks[it] }) }, enabled = picked.size == exercise.chunks.size) { Text(stringResource(R.string.action_check)) }
+            Button(onClick = { onSubmit(picked.joinToString("") { exercise.chunks[it] }) }, enabled = enabled && picked.size == exercise.chunks.size) { Text(stringResource(R.string.action_check)) }
         }
     }
 }

@@ -1,5 +1,6 @@
 package app.tsumugi.android.features.dictionary
 
+import app.tsumugi.android.ui.ErrorState
 import app.tsumugi.android.ui.JaText
 import app.tsumugi.android.ui.ja
 import androidx.compose.ui.text.buildAnnotatedString
@@ -93,6 +94,9 @@ fun DictionaryGate(content: @Composable (DictionaryRepository) -> Unit) {
             )
         }
         is DictionaryState.Ready -> content(state.repository)
+        is DictionaryState.Failed -> Box(Modifier.fillMaxSize().padding(24.dp), Alignment.Center) {
+            ErrorState(stringResource(R.string.error_loading, state.message), onRetry = vm::open)
+        }
     }
 }
 
@@ -102,6 +106,7 @@ fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
     LaunchedEffect(initialQuery) { if (initialQuery != null) vm.query.value = initialQuery }
     val query by vm.query.collectAsStateWithLifecycle()
     val results by vm.results.collectAsStateWithLifecycle()
+    val searchError by vm.searchError.collectAsStateWithLifecycle()
 
     DictionaryGate {
         Column(Modifier.fillMaxSize()) {
@@ -128,7 +133,8 @@ fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
                     }
                 }
             }
-            if (query.isNotBlank() && results.hits.isEmpty() && results.query == query.trim()) {
+            searchError?.let { ErrorState(stringResource(R.string.dict_search_failed, it), onRetry = vm::retrySearch, modifier = Modifier.padding(horizontal = 16.dp)) }
+            if (searchError == null && query.isNotBlank() && results.hits.isEmpty() && results.query == query.trim()) {
                 Text(stringResource(R.string.dict_no_matches), Modifier.padding(24.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             LazyColumn(Modifier.fillMaxSize()) {
