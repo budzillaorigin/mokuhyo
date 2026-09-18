@@ -123,7 +123,7 @@ struct LearnHomeView: View {
                 LabeledContent("Kanji path", value: "60 levels")
             }
             NavigationLink(value: Route.grammar) {
-                LabeledContent("Grammar", value: "JLPT N5–N3")
+                LabeledContent("Grammar", value: "JLPT N5–N1")
             }
             NavigationLink(value: Route.library) {
                 LabeledContent("Reading", value: "Articles, books, feeds")

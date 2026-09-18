@@ -99,11 +99,19 @@ def utf16_offsets(text: str, start: int, end: int) -> tuple[int, int]:
     return u16(text[:start]), u16(text[:end])
 
 
+def source_order(path: Path) -> tuple[int, int, str]:
+    """Matching order of the source files. Each Tatoeba sentence goes to the first point that claims it, so N3–N5
+    keep their original order (n3, n4, n5) and the harder levels come after (n2, then n1): adding N2/N1 never
+    takes example sentences away from easier points."""
+    level = int(path.stem[1:]) if path.stem[1:].isdigit() else 0
+    return (0, 0, path.stem) if level >= 3 else (1, -level, path.stem)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--level", help="only this level, e.g. N5 (default: every source file)")
     args = parser.parse_args()
-    files = sorted(SOURCES.glob("n*.json"))
+    files = sorted(SOURCES.glob("n*.json"), key=source_order)
     if args.level:
         files = [f for f in files if f.stem == args.level.lower()]
     points = [p for f in files for p in json.loads(f.read_text(encoding="utf-8"))["points"]]
