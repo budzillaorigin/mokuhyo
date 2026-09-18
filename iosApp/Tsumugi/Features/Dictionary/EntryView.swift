@@ -35,7 +35,7 @@ private struct EntryContent: View {
                 }
                 let others = e.kanji.dropFirst().map(\.text) + e.kana.dropFirst().map(\.text)
                 if !others.isEmpty {
-                    Text("Also: " + others.joined(separator: "、")).font(.japanese(size: 15))
+                    Text("Also: \(others.joined(separator: "、"))").font(.japanese(size: 15))
                 }
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(Array(e.senses.enumerated()), id: \.offset) { i, sense in
@@ -56,7 +56,7 @@ private struct EntryContent: View {
                     ForEach(detail.kanji, id: \.literal) { k in
                         NavigationLink(value: Route.kanji(k.literal)) {
                             HStack(spacing: 12) {
-                                Text(k.literal).font(.japanese(size: 40, relativeTo: .largeTitle))
+                                Text(k.literal).font(.japanese(size: 40, relativeTo: .largeTitle)).japaneseSpeech()
                                 VStack(alignment: .leading) {
                                     Text(k.meanings.prefix(4).joined(separator: ", ")).fontWeight(.medium)
                                     Text((k.onyomi + k.kunyomi).prefix(6).joined(separator: "、")).font(.japanese(size: 14))
@@ -85,7 +85,7 @@ private struct EntryContent: View {
                     SectionHeader("Examples")
                     ForEach(detail.sentences, id: \.id) { s in
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(s.japanese).font(.japanese(size: 17)).textSelection(.enabled)
+                            Text(s.japanese).font(.japanese(size: 17)).textSelection(.enabled).japaneseSpeech()
                             Text(s.english).font(.subheadline).foregroundStyle(.secondary)
                         }
                     }
@@ -98,10 +98,12 @@ private struct EntryContent: View {
     }
 }
 
+/// A localized section heading (the key is looked up in Localizable.xcstrings). Announced as a header by VoiceOver.
 struct SectionHeader: View {
-    let title: String
-    init(_ title: String) { self.title = title }
+    let title: LocalizedStringKey
+    init(_ title: LocalizedStringKey) { self.title = title }
     var body: some View {
         Text(title).font(.headline).foregroundStyle(.tint)
+            .accessibilityAddTraits(.isHeader)
     }
 }

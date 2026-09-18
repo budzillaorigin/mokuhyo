@@ -46,7 +46,12 @@ struct WritingCanvas: View {
             )
         }
         .aspectRatio(1, contentMode: .fit)
-        .accessibilityLabel("Writing area")
+        // Direct interaction lets VoiceOver users draw strokes with a finger instead of swiping between elements.
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text("Writing area"))
+        .accessibilityValue(Text("\(inked.count) strokes drawn"))
+        .accessibilityHint(Text("Draw each stroke with one finger."))
+        .accessibilityAddTraits(.allowsDirectInteraction)
     }
 }
 
@@ -133,17 +138,17 @@ struct WritingPracticeView: View {
         if result.accepted {
             inked.append(template[Int(result.index)])
             done = session.done
-            feedback = session.done ? "Done! Rating: \(session.suggestedRating)/4" : nil
+            feedback = session.done ? String(localized: "Done! Rating: \(Int(session.suggestedRating))/4") : nil
         } else {
             var text: String
             switch result.problem {
-            case .wrongDirection: text = "Wrong direction"
-            case .wrongOrder: text = "Wrong stroke order"
-            case .wrongPosition: text = "Right shape, wrong place"
-            case .tooShort: text = "Too short"
-            default: text = "Not quite — try again"
+            case .wrongDirection: text = String(localized: "Wrong direction")
+            case .wrongOrder: text = String(localized: "Wrong stroke order")
+            case .wrongPosition: text = String(localized: "Right shape, wrong place")
+            case .tooShort: text = String(localized: "Too short")
+            default: text = String(localized: "Not quite — try again")
             }
-            if session.failuresOnCurrent >= hintAfterFailures { text += " (hint shown)" }
+            if session.failuresOnCurrent >= hintAfterFailures { text += String(localized: " (hint shown)") }
             feedback = text
         }
     }
@@ -154,6 +159,8 @@ struct HandwritingSearchView: View {
     @Environment(AppModel.self) private var app
     @State private var strokes: [[CGPoint]] = []
     @State private var candidates: [Candidate] = []
+    /// Candidate strip height; grows with Dynamic Type so large kanji aren't clipped.
+    @ScaledMetric(relativeTo: .title) private var stripHeight: CGFloat = 56
 
     var body: some View {
         VStack(spacing: 12) {
@@ -161,12 +168,12 @@ struct HandwritingSearchView: View {
                 HStack {
                     if candidates.isEmpty { Text("Draw a kanji below").foregroundStyle(.secondary) }
                     ForEach(candidates, id: \.kanji) { c in
-                        NavigationLink(value: Route.kanji(c.kanji)) { Text(c.kanji).font(.japanese(size: 30)) }
+                        NavigationLink(value: Route.kanji(c.kanji)) { Text(c.kanji).font(.japanese(size: 30)).japaneseSpeech() }
                             .buttonStyle(.bordered)
                     }
                 }
             }
-            .frame(height: 56)
+            .frame(height: stripHeight)
             WritingCanvas(inked: strokes) { stroke in
                 strokes.append(stroke)
                 recognize()

@@ -27,7 +27,9 @@ struct OpiView: View {
     @State private var recorder = Recorder()
     @State private var voice = VoicePlayer()
 
-    static let disclaimer = "Unofficial practice; not affiliated with DLI, ACTFL or JLPT. Ratings are estimates."
+    static var disclaimer: String {
+        String(localized: "Unofficial practice; not affiliated with DLI, ACTFL or JLPT. Ratings are estimates.")
+    }
 
     var body: some View {
         ScrollView {
@@ -88,6 +90,7 @@ struct OpiView: View {
                 }
                 HStack {
                     Image(systemName: voice.isSpeaking ? "waveform" : "person.wave.2").font(.largeTitle)
+                        .accessibilityHidden(true)
                     Text(voice.isSpeaking ? "The interviewer is speaking…" : "Answer out loud.")
                 }
                 Button {

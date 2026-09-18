@@ -9,6 +9,8 @@ import SwiftUI
 struct ExamText: View {
     let text: String
     var size: CGFloat = 18
+    /// VoiceOver reads the text with a Japanese voice. False for English text (DLPT questions, explanations).
+    var japanese = true
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -26,6 +28,7 @@ struct ExamText: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .japaneseSpeech(japanese)
     }
 }
 

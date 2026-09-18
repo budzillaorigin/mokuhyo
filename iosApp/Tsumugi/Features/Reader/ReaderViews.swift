@@ -118,7 +118,11 @@ struct ReaderView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 14) {
-                if let doc { Text(doc.title).font(.japanese(size: 22, weight: .semibold)) }
+                if let doc {
+                    Text(doc.title).font(.japanese(size: 22, weight: .semibold))
+                        .accessibilityAddTraits(.isHeader)
+                        .japaneseSpeech()
+                }
                 ForEach(Array(paragraphs.enumerated()), id: \.offset) { i, p in
                     FlowLayout(spacing: 0) {
                         ForEach(Array(p.sentences.enumerated()), id: \.offset) { _, s in
@@ -143,6 +147,7 @@ struct ReaderView: View {
                         Text("None").tag(FuriganaMode.none)
                     }
                 } label: { Image(systemName: "textformat.size") }
+                .accessibilityLabel(Text("Furigana"))
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -177,6 +182,12 @@ struct ReaderView: View {
         .background(highlighted ? Color.yellow.opacity(0.3) : .clear)
         .onTapGesture { if t.isWord { select(t, s) } }
         .onLongPressGesture { sentencePanel = s }
+        // VoiceOver: one element per token, read in Japanese, without the furigana line.
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(t.surface)
+        .accessibilityAddTraits(t.isWord ? .isButton : [])
+        .accessibilityHint(t.isWord ? Text("Double-tap to look up this word.") : Text(""))
+        .japaneseSpeech()
     }
 
     @ViewBuilder
@@ -185,8 +196,8 @@ struct ReaderView: View {
             let (token, sentence) = selected
             VStack(alignment: .leading, spacing: 6) {
                 HStack(alignment: .lastTextBaseline) {
-                    Text(summary?.headword ?? token.dictionaryForm ?? token.surface).font(.japanese(size: 24))
-                    Text(summary?.reading ?? token.reading ?? "").font(.japanese(size: 14))
+                    Text(summary?.headword ?? token.dictionaryForm ?? token.surface).font(.japanese(size: 24)).japaneseSpeech()
+                    Text(summary?.reading ?? token.reading ?? "").font(.japanese(size: 14)).japaneseSpeech()
                     if let stage = token.stage { TagView(stage.label) }
                 }
                 if !token.deinflection.isEmpty { Text("← " + token.deinflection.joined(separator: " ← ")).font(.caption2) }

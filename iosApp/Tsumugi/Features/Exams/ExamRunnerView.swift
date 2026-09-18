@@ -108,6 +108,8 @@ struct ExamRunnerView: View {
                 .frame(minWidth: 36, minHeight: 32)
                 .background(i == Int(session.index) ? Color.accentColor.opacity(0.3) : (answered ? Color.green.opacity(0.18) : Color.secondary.opacity(0.1)), in: RoundedRectangle(cornerRadius: 6))
                 .buttonStyle(.plain)
+                .accessibilityLabel(Text("Question \(i + 1)"))
+                .accessibilityValue(answered ? Text("Answered") : Text("Not answered"))
             }
         }
     }
@@ -131,24 +133,31 @@ struct ExamRunnerView: View {
         if !script.isEmpty {
             audioButton(itemId: item.id, script: script)
         }
-        ExamText(text: item.stem, size: 19)
+        // JLPT questions are Japanese; DLPT questions and answers are English.
+        let japanese = session.form.exam == .jlpt
+        ExamText(text: item.stem, size: 19, japanese: japanese)
         let chosen = session.choiceFor(itemId: item.id)?.intValue
         ForEach(Array(item.choices.enumerated()), id: \.offset) { i, choice in
+            let isChosen = chosen.map({ Int($0) }) == i
             Button {
                 session.choose(choice: Int32(i))
                 bump()
             } label: {
                 HStack(alignment: .top) {
                     Text("\(i + 1)").font(.subheadline.monospacedDigit()).foregroundStyle(.secondary)
+                        .accessibilityHidden(true)
                     Text(examInline(choice)).font(.japanese(size: 17)).multilineTextAlignment(.leading)
+                        .japaneseSpeech(japanese)
                     Spacer()
-                    if chosen.map({ Int($0) }) == i { Image(systemName: "largecircle.fill.circle").foregroundStyle(.tint) }
+                    if isChosen { Image(systemName: "largecircle.fill.circle").foregroundStyle(.tint).accessibilityHidden(true) }
                 }
                 .padding(10)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(chosen.map({ Int($0) }) == i ? Color.accentColor.opacity(0.12) : Color.secondary.opacity(0.06), in: RoundedRectangle(cornerRadius: 8))
+                .background(isChosen ? Color.accentColor.opacity(0.12) : Color.secondary.opacity(0.06), in: RoundedRectangle(cornerRadius: 8))
             }
             .buttonStyle(.plain)
+            .accessibilityHint(Text("Choice \(i + 1) of \(item.choices.count)"))
+            .accessibilityAddTraits(isChosen ? .isSelected : [])
         }
     }
 
@@ -306,7 +315,9 @@ struct ScoreSections: View {
                         Spacer()
                         Text("\(g.scaled)/\(g.scaledMax)").font(.headline.monospacedDigit())
                         Image(systemName: g.metMinimum ? "checkmark.circle" : "xmark.circle").foregroundStyle(g.metMinimum ? .green : .red)
+                            .accessibilityLabel(g.metMinimum ? Text("Minimum met") : Text("Below the minimum"))
                     }
+                    .accessibilityElement(children: .combine)
                 }
                 if let total = scoring.total?.intValue {
                     LabeledContent("Total", value: "\(total)/\(scoring.totalMax?.intValue ?? 180)")
@@ -354,20 +365,24 @@ struct ScoreSections: View {
 
     static func ilrText(_ s: AttemptScoring) -> String {
         if let level = s.ilr {
-            return s.ilrConfident ? "Estimated ILR \(level)" : "Estimated ILR \(level) (low confidence: few items at that level)"
+            let label = String(describing: level)
+            return s.ilrConfident
+                ? String(localized: "Estimated ILR \(label)")
+                : String(localized: "Estimated ILR \(label) (low confidence: few items at that level)")
         }
         if let provisional = s.ilrProvisional {
-            return "Provisional ≈ ILR \(provisional): too few items for a firm estimate"
+            let label = String(describing: provisional)
+            return String(localized: "Provisional ≈ ILR \(label): too few items for a firm estimate")
         }
-        return "Not enough correct answers at any level for an estimate"
+        return String(localized: "Not enough correct answers at any level for an estimate")
     }
 
     static func groupTitle(_ group: String) -> String {
         switch group {
-        case "language": "Language knowledge (vocabulary, grammar)"
-        case "reading": "Reading"
-        case "listening": "Listening"
-        case "language_reading": "Language knowledge & reading"
+        case "language": String(localized: "Language knowledge (vocabulary, grammar)")
+        case "reading": String(localized: "Reading")
+        case "listening": String(localized: "Listening")
+        case "language_reading": String(localized: "Language knowledge & reading")
         default: group
         }
     }

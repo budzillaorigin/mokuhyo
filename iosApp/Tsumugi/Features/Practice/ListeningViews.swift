@@ -144,7 +144,7 @@ private struct DialoguePlayer: View {
                     if d.aiGenerated { AIBadge() }
                 }
                 Picker("Mode", selection: $mode) {
-                    ForEach(ListenMode.allCases) { Text($0.rawValue).tag($0) }
+                    ForEach(ListenMode.allCases) { Text(LocalizedStringKey($0.rawValue)).tag($0) }
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: mode) { _, _ in stop() }
@@ -183,9 +183,10 @@ private struct DialoguePlayer: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(line.speakerName).font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
                 if showJapanese {
-                    Text(line.japanese).font(.japanese(size: 19))
+                    Text(line.japanese).font(.japanese(size: 19)).japaneseSpeech()
                 } else {
                     Text("• • •").foregroundStyle(.secondary)
+                        .accessibilityLabel(Text("Japanese hidden"))
                 }
                 if showEnglish { Text(line.english).font(.caption) }
                 HStack(spacing: 14) {

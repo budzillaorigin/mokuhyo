@@ -135,19 +135,24 @@ private struct ReviewedItemView: View {
                     }
                 }
             }
-            ExamText(text: item.stem, size: 18)
+            ExamText(text: item.stem, size: 18, japanese: item.exam == .jlpt)
             ForEach(Array(item.choices.enumerated()), id: \.offset) { i, choice in
+                let isAnswer = i == Int(item.answer)
+                let isChosen = chosen.map { Int($0) } == i
                 HStack(alignment: .top) {
-                    Image(systemName: i == Int(item.answer) ? "checkmark.circle.fill" : (chosen.map { Int($0) } == i ? "xmark.circle.fill" : "circle"))
-                        .foregroundStyle(i == Int(item.answer) ? Color.green : (chosen.map { Int($0) } == i ? Color.red : Color.secondary))
-                    Text(examInline(choice)).font(.japanese(size: 16))
+                    Image(systemName: isAnswer ? "checkmark.circle.fill" : (isChosen ? "xmark.circle.fill" : "circle"))
+                        .foregroundStyle(isAnswer ? Color.green : (isChosen ? Color.red : Color.secondary))
+                        .accessibilityHidden(true)
+                    Text(examInline(choice)).font(.japanese(size: 16)).japaneseSpeech(item.exam == .jlpt)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityValue(isAnswer ? (isChosen ? Text("Correct answer, your choice") : Text("Correct answer")) : (isChosen ? Text("Your choice, wrong") : Text("")))
             }
             if chosen == nil { Text("Not answered").font(.caption).foregroundStyle(.orange) }
             if !item.explanation.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Explanation").font(.caption.weight(.semibold))
-                    ExamText(text: item.explanation, size: 15)
+                    ExamText(text: item.explanation, size: 15, japanese: false)
                 }
             }
             if let ai {

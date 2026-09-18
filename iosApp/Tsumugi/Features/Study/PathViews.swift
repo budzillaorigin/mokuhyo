@@ -32,9 +32,12 @@ struct PathLevelsView: View {
     }
 
     private func caption(_ level: Int, _ s: PathStatus) -> String {
-        if level < Int(s.currentLevel) { return "Passed" }
-        if level == Int(s.currentLevel) { return "Current · \(Int(s.levelProgress * 100))% of kanji at Guru" }
-        return "Locked"
+        if level < Int(s.currentLevel) { return String(localized: "Passed") }
+        if level == Int(s.currentLevel) {
+            let percent = Int(s.levelProgress * 100)
+            return String(localized: "Current · \(percent)% of kanji at Guru")
+        }
+        return String(localized: "Locked")
     }
 }
 
@@ -80,6 +83,9 @@ struct PathLevelView: View {
         .foregroundStyle(started ? AnyShapeStyle(.white) : AnyShapeStyle(.primary))
         .frame(maxWidth: .infinity, minHeight: 56)
         .background(started ? AnyShapeStyle(entry.item.kind.color) : AnyShapeStyle(.quaternary.opacity(0.5)), in: RoundedRectangle(cornerRadius: 10))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(entry.item.display)
+        .accessibilityValue(entry.stage?.label ?? String(localized: "Not started"))
     }
 }
 

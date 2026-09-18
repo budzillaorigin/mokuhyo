@@ -150,6 +150,23 @@ Item banks carry both `source`, which records where the item came from, and `ver
 - **Device RAM:** rounded to whole GB for model recommendations, because iOS reports slightly less than what's installed.
 - **Swift boundary:** `api/SwiftSupport.kt` catches Kotlin exceptions at the Swift edge for the calls that can fail at runtime (network, audio, model files). Kotlin/Native aborts the app on an exception that isn't declared with `@Throws`.
 
+### D-037: iOS release hardening: localization, accessibility, share extension, privacy manifest (2026-09-18)
+- **What is localized.** Only UI chrome goes into `Localizable.xcstrings` (sourceLanguage `en`, plus `ja`). Learning content never does: Japanese examples, English glosses, grammar write-ups and exam items stay as they are, whatever the UI language. English glosses are the learner's reference language, not UI.
+- **Kotlin labels.** Labels that come from the shared core (SRS stages, item kinds, Today blocks, exam modes, OPI phases) stay English for now, because `shared/` is out of scope for this change. Where a Swift view needs one localized, it passes the Kotlin label to `LocalizedStringKey(...)` so the English label is the catalog key (done for onboarding goals). Moving these labels to string resources in `shared/` is a later option.
+- **Key collisions.** One English word with two Japanese meanings gets a separate key through `String(localized:defaultValue:)`. "Reading" is 読解 (reading comprehension) everywhere, except in the lesson quiz, where `quiz.reading` is 読み (a word's kana reading).
+- **Japanese voice for VoiceOver.** `View.japaneseSpeech()` sets `\.locale` to `ja-JP` on leaf views with Japanese content. It is applied only to leaves, because the locale also selects which language localized strings in the subtree resolve to. The `accessibilitySpeechLanguage` attributed-string attribute was not used, because it couldn't be verified to compile without a Mac. Exam stems and choices get the Japanese locale only for JLPT; DLPT questions are English.
+- **Dynamic Type.** The `Font.japanese(size:relativeTo:)` helper already scales, since it uses `Font.custom(_:size:relativeTo:)`. Only `.system(size:)` and fixed-height strips were changed, to `@ScaledMetric`.
+- **Share extension.**
+  - It is a separate `TsumugiShare` app extension (`com.apple.share-services`, principal class `ShareViewController` hosting SwiftUI, no storyboard) with bundle ID `app.tsumugi.ios.share`.
+  - It doesn't link the Kotlin framework and never touches the database. It writes `share-inbox/<epoch-ms>-<uuid>.json` (`kind` url|text, `value`, `title`, `createdAt`, `attempts`) to the App Group container. One file per item means the extension and the app never rewrite the same file.
+  - The app imports the files on launch and on activation through `reader.importUrl` / `reader.importText`, then deletes them. Plain text that is a single http(s) URL is read as a link.
+  - A failed import, usually offline, stays in the inbox and is dropped after 3 attempts. The newest imported document opens in a reader sheet.
+- **Privacy manifest.**
+  - No tracking and no collected data types. Sync is optional and self-hosted, and it is covered by the App Store Connect nutrition label (docs/RELEASE.md).
+  - Required-reason APIs: UserDefaults `CA92.1` (`@AppStorage`); FileTimestamp `C617.1`, because Okio/SQLite in the Kotlin framework stat files in the container; SystemBootTime `35F9.1`, because Kotlin/Native's monotonic clock uses it. No disk-space API is used.
+  - The widget and the share extension carry empty manifests, because App Group file reads and writes aren't a required-reason API.
+- **Export compliance.** `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO` on the app target. The app uses only standard encryption (HTTPS, and XChaCha20-Poly1305 / Argon2id for optional E2E sync).
+
 ---
 
 ## Open decisions (BRIEF.md §14)

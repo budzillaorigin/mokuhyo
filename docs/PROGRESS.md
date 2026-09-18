@@ -4,6 +4,43 @@ Current phase: **Phases 0–7 complete. Phase 8 (release hardening) in progress.
 
 ---
 
+## Phase 8: Release hardening
+
+### Phase 8 (iOS) (2026-09-18)
+
+#### What was built
+- **Localization (en, ja):**
+  - `iosApp/Tsumugi/Localizable.xcstrings` is a String Catalog with Japanese for the UI chrome: tabs, titles, buttons, section headers, settings, empty states, the exam/OPI disclaimers, onboarding, and VoiceOver labels.
+  - Views that passed `String` chrome to `Text` now use `LocalizedStringKey` or `String(localized:)` (`SectionHeader`, badges, verdicts, score and feedback texts).
+  - Learning content is not translated (D-037).
+- **Accessibility:**
+  - Spoken names for icon-only buttons.
+  - Labels and values for the review answer field, session progress, path level cells, pronunciation scores, exam choices (selected trait), the question grid, the writing canvas (direct touch) and stroke order.
+  - `japaneseSpeech()` sets a Japanese locale on Japanese content so VoiceOver reads it with a Japanese voice. DLPT questions and answers, which are English, keep the English voice.
+  - Dynamic Type: the one fixed-size font (pronunciation score) and the fixed-height candidate strips now scale. Review grade buttons stack when they don't fit in one row.
+  - Reduce Motion: stroke order is drawn complete, and the role-play chat scrolls without animation.
+- **Share extension "Read in Tsumugi"** (new `TsumugiShare` target):
+  - Accepts text and one web URL, and writes one JSON file per item to `share-inbox/` in the App Group container.
+  - On launch or activation, the app imports pending items into the reader and opens the newest one (`Platform/ShareInbox.swift`).
+  - The extension doesn't link the Kotlin framework.
+- **Release settings:**
+  - `ITSAppUsesNonExemptEncryption = NO`.
+  - Privacy manifests for the app (UserDefaults CA92.1, file timestamp C617.1, system boot time 35F9.1), the widget and the share extension.
+  - The camera, microphone and speech-recognition usage strings are confirmed in Debug and Release. No photo-library string is needed (PhotosPicker).
+
+#### Deferred
+- Labels that come from the shared core are still English: SRS stages, item kinds, Today blocks, exam-mode and section titles, and OPI phases. Onboarding goals are the exception, because the Kotlin labels double as catalog keys.
+- Most status messages built in view models, such as import and sync results, are still English.
+- Japanese App Store listing text and screenshots (**Owner**).
+- The size audit, crash-free soak and TestFlight (see `docs/RELEASE.md`) need the owner's Apple account.
+- None of this is compiled locally (Windows). CI's macOS job is the first build of the new target and strings.
+
+#### How to check
+- Run `docs/QA.md` → "Accessibility and polish" and "Share extension" on a device.
+- Xcode → Product → Archive → Generate Privacy Report shows the three declared API reasons.
+
+---
+
 ## Phase 7: Exams (2026-09-18)
 
 ### What was built

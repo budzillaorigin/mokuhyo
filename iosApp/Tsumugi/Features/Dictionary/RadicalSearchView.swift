@@ -15,6 +15,8 @@ private struct RadicalPicker: View {
     @State private var radicals: [Radical] = []
     @State private var selected: Set<String> = []
     @State private var result: RadicalSearchResult?
+    /// Result strip height; grows with Dynamic Type so large kanji aren't clipped.
+    @ScaledMetric(relativeTo: .title) private var stripHeight: CGFloat = 60
 
     private var byStrokes: [(Int32, [Radical])] {
         Dictionary(grouping: radicals, by: \.strokeCount).sorted { $0.key < $1.key }
@@ -29,7 +31,7 @@ private struct RadicalPicker: View {
                     }
                     ForEach((result?.kanji ?? []).prefix(120), id: \.literal) { k in
                         NavigationLink(value: Route.kanji(k.literal)) {
-                            Text(k.literal).font(.japanese(size: 30, relativeTo: .title))
+                            Text(k.literal).font(.japanese(size: 30, relativeTo: .title)).japaneseSpeech()
                         }
                         .buttonStyle(.plain)
                         .padding(.horizontal, 4)
@@ -37,12 +39,14 @@ private struct RadicalPicker: View {
                 }
                 .padding(8)
             }
-            .frame(height: 60)
+            .frame(height: stripHeight)
             Divider()
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))], spacing: 6) {
                     ForEach(byStrokes, id: \.0) { strokes, group in
                         Text("\(strokes)").font(.headline).foregroundStyle(.tint).frame(width: 40, height: 40)
+                            .accessibilityLabel(Text("\(Int(strokes)) strokes"))
+                            .accessibilityAddTraits(.isHeader)
                         ForEach(group, id: \.radical) { r in
                             let isSelected = selected.contains(r.radical)
                             let enabled = isSelected || selected.isEmpty || (result?.compatibleRadicals.contains(r.radical) ?? false)
@@ -58,6 +62,8 @@ private struct RadicalPicker: View {
                             .buttonStyle(.plain)
                             .disabled(!enabled)
                             .opacity(enabled ? 1 : 0.25)
+                            .accessibilityAddTraits(isSelected ? .isSelected : [])
+                            .japaneseSpeech()
                         }
                     }
                 }

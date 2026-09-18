@@ -28,6 +28,7 @@ struct ItemGlyph: View {
             .padding(.vertical, 28)
             .background(kind.color, in: RoundedRectangle(cornerRadius: 16))
             .accessibilityLabel(text)
+            .japaneseSpeech()
     }
 }
 
@@ -49,6 +50,8 @@ struct AnswerField: View {
             .submitLabel(.done)
             .textFieldStyle(.roundedBorder)
             .focused($focused)
+            .accessibilityLabel(mode == .reading ? Text("Answer: reading in kana") : Text("Answer: meaning in English"))
+            .accessibilityHint(mode == .reading ? Text("Type in romaji; it turns into kana as you type.") : Text("Type the English meaning, then press Done."))
             .onChange(of: text) { _, new in
                 guard mode == .reading else { return }
                 let converted = Romaji.shared.imeConvert(buffer: new).text
@@ -83,11 +86,11 @@ struct PathItemContent: View {
                 if let stage = detail.stage { Text(stage.label).font(.caption).foregroundStyle(.tint) }
             }
             if item.meanings.count > 1 {
-                Text("Also: " + item.meanings.dropFirst().prefix(6).joined(separator: ", ")).font(.subheadline)
+                Text("Also: \(item.meanings.dropFirst().prefix(6).joined(separator: ", "))").font(.subheadline)
             }
             if !item.readings.isEmpty {
                 SectionHeader("Readings")
-                Text(item.readings.joined(separator: "、")).font(.japanese(size: 22))
+                Text(item.readings.joined(separator: "、")).font(.japanese(size: 22)).japaneseSpeech()
             }
             if !strokes.isEmpty {
                 StrokeOrderView(strokes: strokes).frame(width: 140, height: 140)
@@ -102,7 +105,7 @@ struct PathItemContent: View {
             }
             ForEach(sentences.prefix(3), id: \.id) { s in
                 VStack(alignment: .leading) {
-                    Text(s.japanese).font(.japanese(size: 17))
+                    Text(s.japanese).font(.japanese(size: 17)).japaneseSpeech()
                     Text(s.english).font(.caption).foregroundStyle(.secondary)
                 }
             }
@@ -124,6 +127,7 @@ struct PathItemContent: View {
                     Text(label).font(.japanese(size: 16))
                         .padding(.horizontal, 10).padding(.vertical, 6)
                         .background(.quaternary.opacity(0.6), in: Capsule())
+                        .japaneseSpeech()
                 }
             }
         }

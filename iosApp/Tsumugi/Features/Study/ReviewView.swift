@@ -57,7 +57,7 @@ struct ReviewView: View {
             ProgressLine(done: Int(s.done), left: Int(s.remaining) + 1)
             Text(s.prompt.label + (s.prompt.practice ? " · practice" : "")).font(.caption.weight(.semibold))
             if s.prompt.exercise != nil {
-                Text(s.prompt.question).font(.japanese(size: 24))
+                Text(s.prompt.question).font(.japanese(size: 24)).japaneseSpeech()
                 if let hint = s.prompt.hint { Text(hint).font(.subheadline).foregroundStyle(.secondary) }
             } else {
                 ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
@@ -92,19 +92,17 @@ struct ReviewView: View {
                 ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
             }
             Text(s.prompt.expected.joined(separator: "; ")).font(.japanese(size: 22)).frame(maxWidth: .infinity)
-            if let reading = s.prompt.item.reading { Text(reading).font(.japanese(size: 20)).frame(maxWidth: .infinity) }
-            HStack {
-                ForEach([Rating.again, .hard, .good, .easy], id: \.self) { r in
-                    let suggested = s.prompt.mode == .writing && writingResult.map { Int($0.suggestedRating) == Int(r.value) } == true
-                    Button(String(describing: r).capitalized) { model.grade(r) }
-                        .buttonStyle(.bordered).tint(suggested ? .accentColor : .secondary).frame(maxWidth: .infinity)
-                }
+            if let reading = s.prompt.item.reading { Text(reading).font(.japanese(size: 20)).frame(maxWidth: .infinity).japaneseSpeech() }
+            // One row normally; stacked when large Dynamic Type sizes don't fit four buttons across.
+            ViewThatFits(in: .horizontal) {
+                HStack { gradeButtons(s) }
+                VStack { gradeButtons(s) }
             }
         case .answered(let s):
             ProgressLine(done: Int(s.done), left: Int(s.remaining))
             Text(s.prompt.label).font(.caption.weight(.semibold))
             if let exercise = s.prompt.exercise {
-                Text(exercise.example.japanese).font(.japanese(size: 24))
+                Text(exercise.example.japanese).font(.japanese(size: 24)).japaneseSpeech()
                 Text(exercise.example.english).font(.subheadline)
                 Text("\(exercise.point.title) — \(exercise.point.meaning)").font(.japanese(size: 15)).foregroundStyle(.tint)
             } else {
@@ -112,8 +110,8 @@ struct ReviewView: View {
             }
             Text(verdictText(s)).font(.title3.weight(.semibold)).foregroundStyle(s.correct ? .green : .red)
             Text("You answered: \(s.given)").font(.japanese(size: 17))
-            Text("Accepted: " + s.prompt.expected.joined(separator: ", ")).font(.japanese(size: 17))
-            if !s.prompt.item.myStory.isEmpty { Text("My story: " + s.prompt.item.myStory).font(.subheadline) }
+            Text("Accepted: \(s.prompt.expected.joined(separator: ", "))").font(.japanese(size: 17))
+            if !s.prompt.item.myStory.isEmpty { Text("My story: \(s.prompt.item.myStory)").font(.subheadline) }
             HStack {
                 Button("Next") { model.next() }.buttonStyle(.borderedProminent)
                 if s.canUndo { Button("Undo") { model.undo() }.buttonStyle(.bordered) }
@@ -123,11 +121,21 @@ struct ReviewView: View {
         }
     }
 
+    @ViewBuilder
+    private func gradeButtons(_ s: ReviewStateRevealed) -> some View {
+        ForEach([Rating.again, .hard, .good, .easy], id: \.self) { r in
+            let suggested = s.prompt.mode == .writing && writingResult.map { Int($0.suggestedRating) == Int(r.value) } == true
+            // Keys "Again", "Hard", "Good", "Easy" in Localizable.xcstrings.
+            Button(LocalizedStringKey(String(describing: r).capitalized)) { model.grade(r) }
+                .buttonStyle(.bordered).tint(suggested ? .accentColor : .secondary).frame(maxWidth: .infinity)
+        }
+    }
+
     private func verdictText(_ s: ReviewStateAnswered) -> String {
         switch s.verdict {
-        case .correct: "Correct"
-        case .close: "Close enough — “\(s.matched ?? "")”"
-        default: "Not quite"
+        case .correct: String(localized: "Correct")
+        case .close: String(localized: "Close enough — “\(s.matched ?? "")”")
+        default: String(localized: "Not quite")
         }
     }
 }
@@ -141,6 +149,9 @@ struct ProgressLine: View {
             ProgressView(value: Double(done), total: Double(max(1, done + left)))
             Text("\(done) done · \(left) left").font(.caption2).foregroundStyle(.secondary)
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text("Session progress"))
+        .accessibilityValue(Text("\(done) done · \(left) left"))
     }
 }
 

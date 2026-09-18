@@ -169,6 +169,7 @@ struct RoleplayView: View {
     @State private var transcribing = false
     @State private var sttNote: String?
     @State private var feedbackLine: ChatLine?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         Group {
@@ -212,7 +213,9 @@ struct RoleplayView: View {
                     .padding()
                 }
                 .onChange(of: model.lines.count) { _, _ in
-                    if let last = model.lines.last { withAnimation { proxy.scrollTo(last.id, anchor: .bottom) } }
+                    if let last = model.lines.last {
+                        withAnimation(reduceMotion ? nil : .default) { proxy.scrollTo(last.id, anchor: .bottom) }
+                    }
                 }
             }
             Divider()
@@ -260,6 +263,7 @@ struct RoleplayView: View {
                 .padding(10)
                 .background(line.learner ? Color.accentColor.opacity(0.15) : Color.secondary.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
                 .textSelection(.enabled)
+                .japaneseSpeech()
             if showEnglish && !line.english.isEmpty {
                 Text(line.english).font(.caption).foregroundStyle(.secondary)
             }
