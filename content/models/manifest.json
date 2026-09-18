@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "On-demand model downloads (BRIEF §7.1). Sizes and SHA-256 are the Hugging Face LFS values verified 2026-09-18. No key or paid service is needed. Multi-part GGUFs load from the first part; all parts must sit in the same folder.",
+  "note": "On-demand model downloads (BRIEF §7.1). Sizes and SHA-256 are the Hugging Face LFS values verified 2026-09-18. No key or paid service is needed. Multi-part GGUFs load from the first part; all parts must sit in the same folder. Only permissively licensed models are listed (CLAUDE.md rule 5); Qwen2.5-3B is excluded because of its research license.",
   "models": [
     {
       "id": "qwen2.5-1.5b-instruct-q4km",
@@ -16,23 +16,6 @@
           "url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct-q4_k_m.gguf",
           "sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
           "bytes": 1117320736
-        }
-      ]
-    },
-    {
-      "id": "qwen2.5-3b-instruct-q4km",
-      "name": "Qwen2.5 3B Instruct (Q4_K_M)",
-      "kind": "LLM",
-      "recommended": false,
-      "minRamGb": 8,
-      "contextSize": 4096,
-      "license": "Qwen Research License (Qwen2.5-3B is not Apache-2.0; personal/non-commercial use — check before shipping as default)",
-      "files": [
-        {
-          "name": "qwen2.5-3b-instruct-q4_k_m.gguf",
-          "url": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/resolve/main/qwen2.5-3b-instruct-q4_k_m.gguf",
-          "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
-          "bytes": 2104932768
         }
       ]
     },

@@ -67,3 +67,23 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | Tokenizer lexicon (`tokenizer.sqlite`) | mecab-ipadic 2.7.0-20070801 | NAIST/ICOT free license (BSD-style) | © 2000–2003 Nara Institute of Science and Technology; entries from ICOT Free Software. Use, reproduction and distribution permitted; the copyright notice and the NO WARRANTY conditions must accompany copies. |
 
 Word frequency ranks are computed by `tools/packs/build_sentences.py` from Tatoeba's indexed corpus.
+
+## On-device models (downloaded on request, never bundled)
+
+Listed in `content/models/manifest.json`; the in-app model manager shows each model's license before download. Only permissively licensed models are offered.
+
+| Model | License | Source |
+|---|---|---|
+| Qwen2.5-1.5B-Instruct (GGUF Q4_K_M) | Apache-2.0 | © Alibaba Cloud (Qwen team) — https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF |
+| Qwen2.5-7B-Instruct (GGUF Q4_K_M) | Apache-2.0 | © Alibaba Cloud (Qwen team) — https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF |
+| Whisper base / small (ggml conversions) | MIT | © OpenAI; ggml weights via https://huggingface.co/ggerganov/whisper.cpp |
+
+## Practice and exam content
+
+| Content | License | Notes |
+|---|---|---|
+| Role-play scenarios, listening dialogues (`tools/packs/speaking`, `tools/packs/listening`) | CC BY-SA 4.0 | Tsumugi contributors; AI-drafted, shown with the "AI-generated" badge until human-reviewed |
+| OPI practice questions and self-rating statements | CC BY-SA 4.0 | Statements paraphrase the public-domain ILR skill level descriptions (https://www.govtilr.org) |
+| Minimal pairs | derived from JMdict (CC BY-SA 4.0, EDRDG) and Kanjium pitch data | computed by `build_practice.py`, no new text |
+| JLPT blueprints (`tools/items/jlpt_blueprints.json`) | facts | Published test structure from https://www.jlpt.jp; no official items are used |
+| JLPT / DLPT item banks (`tools/items/bank/`) | CC BY-SA 4.0 | Tsumugi contributors; rule-generated items from JMdict/Tatoeba/grammar packs keep their sources' attribution; AI-drafted items carry the badge until reviewed. Not affiliated with JLPT, DLI or ACTFL |
