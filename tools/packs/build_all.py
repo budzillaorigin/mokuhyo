@@ -1,6 +1,7 @@
 """Build every content pack in dependency order. Run: uv run python packs/build_all.py"""
 
 import build_dictionary
+import build_exam
 import build_grammar
 import build_kanji_path
 import build_kanjivg
@@ -17,4 +18,5 @@ if __name__ == "__main__":
     build_grammar.main()
     build_practice.main()
     build_tokenizer.main()
+    build_exam.main()
     write_manifest()
