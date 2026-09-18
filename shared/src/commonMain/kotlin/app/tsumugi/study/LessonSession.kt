@@ -46,12 +46,13 @@ class LessonSession(
     private val _state = MutableStateFlow<LessonState>(LessonState.Presenting(items, 0))
     val state: StateFlow<LessonState> = _state.asStateFlow()
 
-    fun next() {
+    /** Teaching screens: forward (the last item starts the quiz). */
+    fun nextItem() {
         val s = _state.value as? LessonState.Presenting ?: return
         if (s.isLast) startQuiz() else _state.value = s.copy(index = s.index + 1)
     }
 
-    fun previous() {
+    fun previousItem() {
         val s = _state.value as? LessonState.Presenting ?: return
         if (s.index > 0) _state.value = s.copy(index = s.index - 1)
     }
@@ -78,9 +79,9 @@ class LessonSession(
         _state.value = LessonState.QuizFeedback(q, answer, check.verdict, quiz.size)
     }
 
-    /** After feedback: next question, or finish the batch. */
-    suspend fun next(afterFeedback: Boolean = true) {
-        if (!afterFeedback || _state.value !is LessonState.QuizFeedback) return
+    /** After quiz feedback: next question, or finish the batch. */
+    suspend fun next() {
+        if (_state.value !is LessonState.QuizFeedback) return
         val q = quiz.firstOrNull()
         if (q == null) {
             path.completeLessons(items)
