@@ -1,6 +1,6 @@
 # Progress
 
-Current phase: **Phases 0–7 complete. Phase 8 (release hardening) in progress.** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+Current phase: **Phases 0–8 built. Next: owner review, real-device QA (`docs/QA.md`) and TestFlight (`docs/RELEASE.md`).** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
 
 ---
 
