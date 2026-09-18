@@ -29,6 +29,21 @@ class SrsRepositoryTest {
     private val meaning = SrsRepository.cardId("k:語", CardDirection.MEANING)
     private val reading = SrsRepository.cardId("k:語", CardDirection.READING)
 
+    /** BRIEF_V2 F-17: an item whose two cards are LEARNING with no stability yet has a defined stage. */
+    @Test
+    fun itemWithTwoLearningCardsHasAStage() = runTest {
+        srs.addItems(listOf(kanji))
+        srs.introduce(listOf(meaning, reading))
+        assertTrue(srs.cardsForItems(listOf("k:語")).all { it.fsrs.state == CardState.LEARNING && it.fsrs.stability == null })
+        assertEquals(Stage.APPRENTICE, srs.stages()["k:語"])
+        assertEquals(Stage.APPRENTICE, srs.stagesFor(listOf("k:語"))["k:語"])
+
+        // A card graded once keeps the item at the lower of its two cards' stages.
+        clock.advance(10.minutes)
+        srs.review(meaning, Rating.EASY)
+        assertEquals(Stage.APPRENTICE, srs.stages()["k:語"])
+    }
+
     @Test
     fun addedItemsAwaitALesson() = runTest {
         srs.addItems(listOf(kanji))

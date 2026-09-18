@@ -76,7 +76,21 @@ data class GrammarExercise(
     }
 }
 
-data class GrammarPointStatus(val point: GrammarPoint, val stage: Stage?)
+data class GrammarPointStatus(
+    val point: GrammarPoint,
+    val stage: Stage?,
+    /** The pack has no example sentence for this point yet: its cards are held out of reviews (BRIEF_V2 F-20). */
+    val noExamples: Boolean = false,
+)
+
+/** What a miss did to the point's ghost card, so an undo of that answer can take it back exactly (BRIEF_V2 F-20). */
+data class GhostSpawn(
+    val cardId: String,
+    /** Reviews the spawn recorded (the ghost's introduction, or the AGAIN that revived a retired ghost). */
+    val reviewIds: List<String>,
+    /** The ghost was retired (suspended) and has been revived. */
+    val revived: Boolean,
+)
 
 data class GrammarPointDetail(val point: GrammarPoint, val examples: List<GrammarExample>, val stage: Stage?, val myNote: String)
 
@@ -99,9 +113,32 @@ class GrammarService(
     @Throws(Exception::class)
     suspend fun points(jlpt: Int): List<GrammarPointStatus> {
         val points = io { q.pointsAtLevel(jlpt.toLong()).executeAsList().map { it.toPoint() } }
-        val stages = srs.stages()
-        return points.map { GrammarPointStatus(it, stages[it.itemId]) }
+        val stages = srs.stagesFor(points.map { it.itemId })
+        val empty = io { points.filter { q.examplesFor(it.id).executeAsList().isEmpty() }.map { it.id }.toSet() }
+        return points.map { GrammarPointStatus(it, stages[it.itemId], noExamples = it.id in empty) }
     }
+
+    /**
+     * Holds every grammar card whose point has no example sentence in this pack out of reviews, and releases
+     * ones whose point now has examples. Run when the pack is opened (AppGraph), so a card never counts as due
+     * while no exercise can be built for it. Device-local: packs differ per device (DECISIONS D-045).
+     */
+    @Throws(Exception::class)
+    suspend fun syncExampleAvailability() {
+        val cards = srs.cardsOfKind(ItemKind.GRAMMAR)
+        if (cards.isEmpty()) return
+        val pointIds = cards.map { it.itemId.removePrefix("g:") }.toSet()
+        val withExamples = io { pointIds.filter { q.examplesFor(it).executeAsList().isNotEmpty() }.toSet() }
+        val (ok, missing) = cards.partition { it.itemId.removePrefix("g:") in withExamples }
+        srs.setBlocked(missing.filter { it.blockedReason != SrsRepository.BLOCK_NO_EXAMPLES }.map { it.id }, SrsRepository.BLOCK_NO_EXAMPLES)
+        srs.setBlocked(ok.filter { it.blockedReason == SrsRepository.BLOCK_NO_EXAMPLES }.map { it.id }, null)
+    }
+
+    /** Point ids whose cards are held out of reviews because the pack has no example yet ("no examples yet"). */
+    @Throws(Exception::class)
+    suspend fun pointsWithoutExamples(): List<String> =
+        srs.blockedCards().filterValues { it == SrsRepository.BLOCK_NO_EXAMPLES }.keys
+            .map { it.substringBeforeLast('#').removePrefix("g:") }.distinct().sorted()
 
     @Throws(Exception::class)
     suspend fun point(id: String): GrammarPointDetail? {
@@ -194,11 +231,11 @@ class GrammarService(
      * ghost is revived with a lapse so it drops back to short intervals.
      */
     @Throws(Exception::class)
-    suspend fun spawnGhost(itemId: String) {
+    suspend fun spawnGhost(itemId: String): GhostSpawn? {
         val cardId = SrsRepository.cardId(itemId, CardDirection.GHOST)
         val existing = srs.card(cardId)
-        if (existing == null) {
-            val item = srs.item(itemId) ?: return
+        return if (existing == null) {
+            val item = srs.item(itemId) ?: return null
             srs.addItems(listOf(
                 NewItem(
                     id = item.id, kind = item.kind, primaryText = item.primaryText, reading = item.reading,
@@ -206,17 +243,33 @@ class GrammarService(
                     directions = listOf(CardDirection.GHOST), jlpt = item.jlpt, packId = PACK_ID, refId = item.id.removePrefix("g:"),
                 ),
             ))
-            srs.introduce(listOf(cardId))
+            GhostSpawn(cardId, srs.introduce(listOf(cardId)), revived = false)
         } else if (existing.suspended) {
             srs.setSuspended(cardId, false)
-            srs.review(cardId, Rating.AGAIN)
+            GhostSpawn(cardId, listOf(srs.review(cardId, Rating.AGAIN).reviewId), revived = true)
+        } else {
+            null
         }
     }
 
-    /** Two correct ghost answers in a row graduate it off the learning steps; then it retires (suspended). */
+    /** Takes back a [spawnGhost] whose triggering answer was undone: its reviews are retracted and a revived ghost retires again. */
     @Throws(Exception::class)
-    suspend fun ghostAnswered(cardId: String, correct: Boolean) {
-        if (correct && srs.card(cardId)?.fsrs?.state == CardState.REVIEW) srs.setSuspended(cardId, true)
+    suspend fun undoGhost(spawn: GhostSpawn) {
+        srs.retractReviews(spawn.cardId, spawn.reviewIds)
+        if (spawn.revived) srs.setSuspended(spawn.cardId, true)
+    }
+
+    /**
+     * Two correct ghost answers in a row graduate it off the learning steps; then it retires (suspended).
+     * Returns true when this answer retired it.
+     */
+    @Throws(Exception::class)
+    suspend fun ghostAnswered(cardId: String, correct: Boolean): Boolean {
+        if (correct && srs.card(cardId)?.fsrs?.state == CardState.REVIEW) {
+            srs.setSuspended(cardId, true)
+            return true
+        }
+        return false
     }
 
     /** Splits a sentence into phrase-sized chunks for BUILD exercises; the grammar construction is one chunk. */

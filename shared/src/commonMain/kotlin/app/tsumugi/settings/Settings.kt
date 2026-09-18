@@ -63,6 +63,41 @@ class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clo
 }
 
 /**
+ * Per-device configuration that never syncs (CLAUDE.md rule 16, BRIEF_V2 F-31, DECISIONS D-047): AI engine and
+ * model choice, endpoint URLs, audio engine — anything tied to this device's hardware or network. Stored in the
+ * `device_setting` table, which has no sync trigger. Same accessors as [SettingsRepository], so a service can
+ * switch stores without other changes.
+ *
+ * Keys stored here (docs/DECISIONS.md D-047): [KEYS]. The v1 → v2 migration (1.sqm) moved their old values out of
+ * the synced `setting` table once.
+ */
+class DeviceSettings(private val db: TsumugiDatabase) {
+    private val q get() = db.userQueries
+
+    @Throws(Exception::class)
+    suspend fun get(key: String): String? = withContext(Dispatchers.IO) { q.deviceSetting(key).executeAsOneOrNull() }
+
+    @Throws(Exception::class)
+    suspend fun put(key: String, value: String) = withContext(Dispatchers.IO) { q.putDeviceSetting(key, value) }
+
+    @Throws(Exception::class)
+    suspend fun remove(key: String) = withContext(Dispatchers.IO) { q.removeDeviceSetting(key) }
+
+    @Throws(Exception::class)
+    suspend fun int(key: String, default: Int): Int = get(key)?.toIntOrNull() ?: default
+    @Throws(Exception::class)
+    suspend fun bool(key: String, default: Boolean): Boolean = get(key)?.toBooleanStrictOrNull() ?: default
+
+    companion object {
+        /** Every key that lives per device (AiService's engine/model/endpoint/audio settings). Keep 1.sqm in step. */
+        val KEYS: List<String> = listOf(
+            "ai.llm", "ai.local_model", "ai.endpoint_url", "ai.endpoint_model", "ai.stt", "ai.local_stt_model",
+            "ai.stt_endpoint_url", "ai.tts", "ai.voicevox_url", "ai.voicevox_speaker",
+        )
+    }
+}
+
+/**
  * Device-local state that never syncs.
  *
  * The user database is included in OS backups and device transfers, so a restored copy would carry the old

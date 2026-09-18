@@ -257,4 +257,63 @@ class FsrsTest {
             FsrsParameters(weights = FsrsParameters.DEFAULT_WEIGHTS.toMutableList().also { it[4] = 11.0 })
         }
     }
+
+    // --- HARD / same-day vectors (BRIEF_V2 F-18) ---------------------------------------------------------
+    // Expected values computed with the formulas of py-fsrs v6.3.2 (fsrs/scheduler.py: _short_term_stability
+    // clamps the increase to ≥ 1 for Hard, Good and Easy; _next_difficulty mean-reverts towards the *unclamped*
+    // _initial_difficulty(Easy, clamp=False)) and its DEFAULT_PARAMETERS (DECISIONS D-048).
+
+    private fun memoryStates(seq: List<Pair<Int, Rating>>): List<Pair<Double?, Double?>> {
+        val scheduler = FsrsScheduler(FsrsParameters(enableFuzzing = false))
+        var card = FsrsCard(due = t0)
+        return seq.map { (minutes, rating) ->
+            card = scheduler.review(card, rating, t0 + minutes.minutes)
+            card.stability to card.difficulty
+        }
+    }
+
+    @Test
+    fun pyFsrsSameDayHardAgainSequence() {
+        // Good, then same-day Hard, Again, Hard; next-day Hard; Good three days later.
+        val states = memoryStates(
+            listOf(0 to Rating.GOOD, 1 to Rating.HARD, 5 to Rating.AGAIN, 15 to Rating.HARD, 1455 to Rating.HARD, 5775 to Rating.GOOD),
+        )
+        val expected = listOf(
+            2.3065000000 to 2.1181039705,
+            2.3065000000 to 4.7528584885,
+            0.7750839829 to 8.2605286350,
+            0.7750839829 to 8.8304862179,
+            1.4533907619 to 9.2088506214,
+            3.5685569321 to 9.1948701401,
+        )
+        states.zip(expected).forEach { (actual, want) ->
+            assertNear(want.first, actual.first, 1e-8)
+            assertNear(want.second, actual.second, 1e-8)
+        }
+    }
+
+    @Test
+    fun pyFsrsSameDayAgainFromFirstAgain() {
+        val states = memoryStates(listOf(0 to Rating.AGAIN, 10 to Rating.AGAIN, 20 to Rating.GOOD, 2900 to Rating.HARD))
+        val expected = listOf(
+            0.2120000000 to 6.4133000000,
+            0.0833567171 to 8.8063044689,
+            0.1031406501 to 8.7927265337,
+            0.5483055528 to 9.1837839834,
+        )
+        states.zip(expected).forEach { (actual, want) ->
+            assertNear(want.first, actual.first, 1e-8)
+            assertNear(want.second, actual.second, 1e-8)
+        }
+    }
+
+    @Test
+    fun pyFsrsMemoryFunctions() {
+        val model = Fsrs(FsrsParameters.DEFAULT_WEIGHTS)
+        assertNear(1.5968179980, model.shortTermStability(5.0, Rating.AGAIN), 1e-9)
+        assertNear(0.212, model.shortTermStability(0.212, Rating.HARD), 1e-12) // increase < 1 is clamped for Hard
+        assertNear(6.6659953693, model.nextDifficulty(5.0, Rating.HARD), 1e-9)
+        assertNear(3.3144613693, model.nextDifficulty(5.0, Rating.EASY), 1e-9)
+        assertNear(-4.7716307032, model.initialDifficulty(Rating.EASY, clamp = false), 1e-9)
+    }
 }

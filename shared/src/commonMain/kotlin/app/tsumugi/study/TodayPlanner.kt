@@ -1,6 +1,8 @@
 package app.tsumugi.study
 
+import app.tsumugi.db.ReviewsSince
 import app.tsumugi.db.TsumugiDatabase
+import app.tsumugi.domain.CardDirection
 import app.tsumugi.domain.ItemKind
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.PathStatus
@@ -73,8 +75,10 @@ class TodayPlanner(
         val todayStart = today.atStartOfDayIn(tz).toEpochMilliseconds()
         val yesterdayStart = today.minus(DatePeriod(days = 1)).atStartOfDayIn(tz).toEpochMilliseconds()
         val recent = db.srsQueries.reviewsSince(yesterdayStart).executeAsList()
-        val lessonsToday = recent.count { it.ts >= todayStart && it.rating == SrsRepository.INTRODUCED.toLong() && it.item_kind != ItemKind.GRAMMAR.name }
-        val grammarToday = recent.count { it.ts >= todayStart && it.rating == SrsRepository.INTRODUCED.toLong() && it.item_kind == ItemKind.GRAMMAR.name }
+        // One lesson per item, not per card (an item introduces 2 cards; a ghost card's introduction is no lesson).
+        val introducedToday = recent.filter { it.ts >= todayStart && it.isLesson() }
+        val lessonsToday = introducedToday.filter { it.item_kind != ItemKind.GRAMMAR.name }.distinctItems()
+        val grammarToday = introducedToday.filter { it.item_kind == ItemKind.GRAMMAR.name }.distinctItems()
         val answeredToday = recent.count { it.ts >= todayStart && it.rating in 1L..4L }
         val yesterday = recent.filter { it.ts in yesterdayStart until todayStart && it.correct != null }
         val yesterdayAccuracy = if (yesterday.isEmpty()) null else yesterday.count { it.correct == 1L }.toDouble() / yesterday.size
@@ -148,9 +152,14 @@ class TodayPlanner(
             0 -> WeeklyChallenge("Study on 5 days this week", week.filter { it.rating in 1L..4L }
                 .map { Instant.fromEpochMilliseconds(it.ts).toLocalDateTime(tz).date }.distinct().size, 5)
             1 -> WeeklyChallenge("Answer 300 reviews this week", week.count { it.rating in 1L..4L }, 300)
-            else -> WeeklyChallenge("Learn 25 new items this week", week.count { it.rating == SrsRepository.INTRODUCED.toLong() }, 25)
+            else -> WeeklyChallenge("Learn 25 new items this week", week.filter { it.isLesson() }.distinctItems(), 25)
         }
     }
+
+    private fun ReviewsSince.isLesson() =
+        rating == SrsRepository.INTRODUCED.toLong() && card_direction != CardDirection.GHOST.name
+
+    private fun List<ReviewsSince>.distinctItems() = map { it.item_id }.distinct().size
 
     private fun minutes(value: Number) = kotlin.math.ceil(value.toDouble()).toInt()
 

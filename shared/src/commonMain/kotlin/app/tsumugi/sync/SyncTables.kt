@@ -13,10 +13,20 @@ import kotlinx.serialization.json.longOrNull
 internal enum class ColumnType { TEXT, INTEGER, REAL }
 
 internal enum class MergeRule {
-    /** Immutable facts merged by set union (reviews, relations). */
+    /** Immutable facts merged by set union (relations, exam attempts, path unlocks). */
     UNION,
+    /**
+     * Set union plus a one-way tombstone column (reviews, CLAUDE.md rule 12): a row tombstoned anywhere ends up
+     * tombstoned everywhere, and the earliest tombstone time wins so every device stores the same value.
+     */
+    UNION_TOMBSTONE,
     /** Last writer wins by (updatedAt, deviceId). */
     LWW,
+    /**
+     * The highest [TableSpec.rank] tuple wins, then the higher deviceId (path progress, CLAUDE.md rule 11). A later
+     * write of a lower level loses; only raising a more significant rank column (the reset generation) lowers it.
+     */
+    MAX,
 }
 
 /** How one synced table maps to wire rows (docs/SYNC_PROTOCOL.md "Synced tables"). */
@@ -26,6 +36,10 @@ internal class TableSpec(
     val keys: List<String>,
     val updatedAt: String?,
     val merge: MergeRule,
+    /** [MergeRule.UNION_TOMBSTONE]: the nullable tombstone-time column. */
+    val tombstone: String? = null,
+    /** [MergeRule.MAX]: integer columns compared lexicographically, most significant first. */
+    val rank: List<String> = emptyList(),
 ) {
     private val columnList = columns.joinToString(", ") { it.first }
     private val keyWhere = keys.joinToString(" AND ") { "$it = ?" }
@@ -53,7 +67,24 @@ internal class TableSpec(
         driver.execute(null, "DELETE FROM $name WHERE $keyWhere", keys.size) { parts.forEachIndexed { i, v -> bindString(i, v) } }
     }
 
-    fun updatedAtOf(row: JsonObject): Long = updatedAt?.let { (row[it] as? JsonPrimitive)?.longOrNull } ?: 0L
+    /** The row's version on the wire: its tombstone time once tombstoned (so the update is a distinct change), else [updatedAt]. */
+    fun updatedAtOf(row: JsonObject): Long =
+        tombstoneOf(row) ?: updatedAt?.let { (row[it] as? JsonPrimitive)?.longOrNull } ?: 0L
+
+    fun tombstoneOf(row: JsonObject): Long? = tombstone?.let { (row[it] as? JsonPrimitive)?.longOrNull }
+
+    fun rankOf(row: JsonObject): List<Long> = rank.map { (row[it] as? JsonPrimitive)?.longOrNull ?: 0L }
+
+    /** Tombstones an existing row at [at] unless it already carries an earlier tombstone. */
+    fun applyTombstone(driver: SqlDriver, key: String, at: Long) {
+        val column = tombstone ?: return
+        val parts = splitKey(key)
+        driver.execute(null, "UPDATE $name SET $column = ? WHERE $keyWhere AND ($column IS NULL OR $column > ?)", keys.size + 2) {
+            bindLong(0, at)
+            parts.forEachIndexed { i, v -> bindString(i + 1, v) }
+            bindLong(parts.size + 1, at)
+        }
+    }
 
     private fun rowOf(cursor: SqlCursor): JsonObject = JsonObject(
         columns.mapIndexed { i, (column, type) ->
@@ -104,9 +135,9 @@ internal class TableSpec(
             "review",
             listOf(
                 "id" to T, "card_id" to T, "ts" to I, "rating" to I, "elapsed_ms" to I, "answer_text" to T,
-                "correct" to I, "device_id" to T, "source" to T,
+                "correct" to I, "device_id" to T, "source" to T, "deleted_at" to I,
             ),
-            listOf("id"), "ts", MergeRule.UNION,
+            listOf("id"), "ts", MergeRule.UNION_TOMBSTONE, tombstone = "deleted_at",
         )
         val note = TableSpec(
             "note",
@@ -139,9 +170,21 @@ internal class TableSpec(
             listOf("id"), "submitted_at", MergeRule.UNION,
         )
 
+        val pathProgress = TableSpec(
+            "path_progress",
+            listOf("track" to T, "generation" to I, "passed_level" to I, "passed_at" to I, "updated_at" to I),
+            listOf("track"), "updated_at", MergeRule.MAX, rank = listOf("generation", "passed_level", "updated_at"),
+        )
+        val pathUnlock = TableSpec(
+            "path_unlock", listOf("item_id" to T, "source" to T, "unlocked_at" to I),
+            listOf("item_id"), "unlocked_at", MergeRule.UNION,
+        )
+
         /** Card rows don't sync; only the user-set suspended flag does, as its own change type. */
         const val CARD_FLAGS = "card_flags"
 
-        val all = listOf(item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt).associateBy { it.name }
+        val all = listOf(
+            item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt, pathProgress, pathUnlock,
+        ).associateBy { it.name }
     }
 }

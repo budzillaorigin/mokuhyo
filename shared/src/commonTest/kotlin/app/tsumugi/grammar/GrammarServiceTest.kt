@@ -20,6 +20,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.minutes
@@ -97,5 +98,54 @@ class GrammarServiceTest {
         }
         assertTrue(srs.card(ghostId)!!.suspended)
         assertIs<ReviewState.Finished>(s.state.value)
+    }
+
+    /** BRIEF_V2 F-20: undoing the miss that spawned a ghost takes the ghost back too. */
+    @Test
+    fun undoOfAMissRetractsTheGhostItSpawned() = runTest {
+        grammar.learn(grammar.lessonQueue(2))
+        clock.advance(10.minutes)
+        val s = ReviewSession.start(srs, grammar, clock = clock, random = Random(2))
+        val ghostId = SrsRepository.cardId("g:n4-teoku", CardDirection.GHOST)
+        while (true) {
+            val asking = assertIs<ReviewState.Asking>(s.state.value)
+            if (asking.prompt.item.id == "g:n4-teoku") break
+            s.submit(asking.prompt.expected.first())
+            s.next()
+        }
+        s.submit("だめ")
+        assertNotNull(srs.card(ghostId), "the miss spawned a ghost")
+        s.undo()
+        assertNull(srs.card(ghostId), "undo retracted the ghost")
+        s.submit(assertIs<ReviewState.Asking>(s.state.value).prompt.expected.first())
+        assertNull(srs.card(ghostId))
+    }
+
+    /** BRIEF_V2 F-20: a point with no example sentence can't be reviewed, so it must not count as due. */
+    @Test
+    fun pointsWithoutExamplesAreHeldOutOfReviews() = runTest {
+        val packDb = GrammarDatabase(inMemoryDriver(GrammarDatabase.Schema))
+        val q = packDb.grammarQueries
+        q.insertPoint(Grammar_point("n5-tai", 5, 1, "〜たい", "Verb stem + たい", "want to", "", "[]", "[]", "{}", "llm"))
+        q.insertPoint(Grammar_point("n5-desu", 5, 2, "〜です", "Noun + です", "to be", "", "[]", "[]", "{}", "llm"))
+        q.insertExample(Grammar_example("n5-tai", 0, "水が飲みたい。", "I want to drink water.", 4, 6, "tatoeba", 1))
+        val g = GrammarService(packDb, srs) { null }
+        g.learn(g.lessonQueue(5))
+        clock.advance(10.minutes)
+        assertEquals(2, srs.dueCount())
+
+        g.syncExampleAvailability() // what AppGraph runs when the pack is opened
+        assertEquals(1, srs.dueCount(), "the point without examples is not due")
+        assertEquals(listOf("n5-desu"), g.pointsWithoutExamples())
+        assertTrue(g.points(5).single { it.point.id == "n5-desu" }.noExamples)
+        val only = assertIs<ReviewState.Asking>(ReviewSession.start(srs, g, clock = clock).state.value)
+        assertEquals("g:n5-tai", only.prompt.item.id)
+        assertEquals(0, only.remaining)
+
+        // A pack update that adds an example releases it.
+        q.insertExample(Grammar_example("n5-desu", 0, "学生です。", "I am a student.", 2, 4, "tatoeba", 2))
+        g.syncExampleAvailability()
+        assertEquals(2, srs.dueCount())
+        assertTrue(g.pointsWithoutExamples().isEmpty())
     }
 }

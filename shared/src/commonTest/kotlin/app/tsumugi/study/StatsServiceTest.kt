@@ -11,12 +11,17 @@ import app.tsumugi.srs.SrsRepository
 import app.tsumugi.testing.TestClock
 import app.tsumugi.testing.inMemoryDriver
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.minus
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.minutes
 
 class StatsServiceTest {
 
@@ -80,5 +85,40 @@ class StatsServiceTest {
         assertEquals(Accuracy(1, 2), snap.accuracy[ItemKind.KANJI])
         assertEquals(7, snap.forecast.size)
         assertEquals(1, snap.forecast.sumOf { it.count }, "the relearning card is due within the week")
+    }
+
+    /**
+     * BRIEF_V2 F-27: day totals read from daily_stats match the old full scan of the review log, in zones with
+     * half- and quarter-hour offsets, after undos (fast-path delete and tombstone) and after a rebuild.
+     */
+    @Test
+    fun materializedStatsMatchTheReviewLog() = runTest {
+        setUp()
+        val random = kotlin.random.Random(7)
+        repeat(120) {
+            clock.advance(random.nextInt(1, 20 * 60).minutes)
+            val outcome = srs.review(card, if (random.nextBoolean()) Rating.GOOD else Rating.AGAIN, correct = random.nextBoolean())
+            when (random.nextInt(10)) {
+                0 -> srs.undo(outcome) // never pushed: deleted
+                1 -> { db.syncQueries.setPushing(1); srs.undo(outcome); db.syncQueries.setPushing(0) } // tombstoned
+            }
+        }
+        for (zone in listOf("UTC", "Asia/Kolkata", "Asia/Kathmandu", "America/St_Johns", "Pacific/Chatham")) {
+            val tz = TimeZone.of(zone)
+            val service = StatsService(db, srs, settings, clock) { tz }
+            val today = clock.now().toLocalDateTime(tz).date
+            val fromLog = db.srsQueries.allReviews().executeAsList().filter { it.rating != 0L }
+                .groupingBy { Instant.fromEpochMilliseconds(it.ts).toLocalDateTime(tz).date }.eachCount()
+            val snap = service.snapshot(heatmapDays = 60)
+            assertEquals(snap.heatmap.map { it.date to (fromLog[it.date] ?: 0) }, snap.heatmap.map { it.date to it.count }, zone)
+            assertEquals(fromLog[today] ?: 0, snap.reviewsToday, zone)
+            var run = 0
+            var d = if (today in fromLog) today else today.minus(DatePeriod(days = 1))
+            while (d in fromLog) { run++; d = d.minus(DatePeriod(days = 1)) }
+            assertEquals(run, snap.streak.current, zone)
+        }
+        val before = db.srsQueries.statsSlotsSince(0).executeAsList()
+        db.transaction { db.srsQueries.clearStats(); db.srsQueries.rebuildStats() }
+        assertEquals(before, db.srsQueries.statsSlotsSince(0).executeAsList(), "trigger-maintained totals equal a rebuild")
     }
 }

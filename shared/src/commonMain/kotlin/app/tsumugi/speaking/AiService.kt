@@ -15,7 +15,7 @@ import app.tsumugi.ai.VoicevoxSynthesizer
 import app.tsumugi.ai.WhisperEndpointRecognizer
 import app.tsumugi.ai.WhisperRecognizer
 import app.tsumugi.platform.PlatformServices
-import app.tsumugi.settings.SettingsRepository
+import app.tsumugi.settings.DeviceSettings
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import okio.buffer
@@ -58,7 +58,8 @@ data class AiConfig(
  */
 class AiService(
     private val platform: PlatformServices,
-    private val settings: SettingsRepository,
+    /** Per-device store (rule 16): engine, model and endpoint choices never sync. */
+    private val settings: DeviceSettings,
     private val isKnownJapanese: (String) -> Boolean = { true },
 ) {
     var llmBridge: LocalLlmBridge? = null

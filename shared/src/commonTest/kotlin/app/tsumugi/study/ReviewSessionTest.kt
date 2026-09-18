@@ -11,6 +11,9 @@ import app.tsumugi.srs.SrsRepository
 import app.tsumugi.srs.Verdict
 import app.tsumugi.testing.TestClock
 import app.tsumugi.testing.inMemoryDriver
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import kotlin.random.Random
 import kotlin.test.Test
@@ -126,5 +129,37 @@ class ReviewSessionTest {
         val s = session(*items.toTypedArray())
         s.wrapUp(keep = 3)
         assertEquals(2, (s.state.value as ReviewState.Asking).remaining)
+    }
+
+    /** BRIEF_V2 F-09: a double tap (two concurrent submits) records exactly one review and advances exactly one card. */
+    @Test
+    fun concurrentSubmitsRecordOneReview() = runTest {
+        val s = session(kanji("k:日", "日", "sun", "にち"), kanji("k:月", "月", "moon", "げつ"))
+        val first = (s.state.value as ReviewState.Asking)
+        val answer = if (first.prompt.mode == AnswerMode.MEANING) first.prompt.item.meanings.first() else first.prompt.item.acceptedReadings.first()
+        val before = db.srsQueries.reviewCount().executeAsOne()
+        coroutineScope {
+            repeat(2) { launch(Dispatchers.Default) { s.submit(answer) } }
+        }
+        assertEquals(before + 1, db.srsQueries.reviewCount().executeAsOne(), "one review row")
+        val answered = assertIs<ReviewState.Answered>(s.state.value)
+        assertEquals(first.prompt.card.id, answered.prompt.card.id)
+        assertEquals(first.remaining, answered.remaining, "exactly one card left the queue")
+        assertEquals(1, answered.done)
+    }
+
+    /** A wrap-up requested while an answer is being written is applied right after it, not lost. */
+    @Test
+    fun wrapUpDuringSubmitIsDeferredNotLost() = runTest {
+        val items = (1..20).map { NewItem("k:$it", ItemKind.RADICAL, "$it", null, listOf("m$it"), emptyList(), ItemSource.PACK, listOf(CardDirection.MEANING)) }
+        val s = session(*items.toTypedArray())
+        coroutineScope {
+            launch(Dispatchers.Default) { s.answerCorrectly() }
+            launch(Dispatchers.Default) { s.wrapUp(keep = 3) }
+        }
+        s.next()
+        val asking = assertIs<ReviewState.Asking>(s.state.value)
+        assertTrue(asking.remaining <= 3, "wrap-up applied: ${asking.remaining}")
+        assertTrue(asking.wrappingUp)
     }
 }

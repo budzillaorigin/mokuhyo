@@ -40,10 +40,15 @@ enum class Stage(val minStabilityDays: Double, val label: String) {
     APPRENTICE(0.0, "Apprentice"), GURU(3.0, "Guru"), MASTER(21.0, "Master"), ENLIGHTENED(60.0, "Enlightened"), BURNED(180.0, "Burned");
 
     companion object {
-        fun of(stabilityDays: Double?, started: Boolean): Stage? {
-            if (!started) return null
+        fun of(stabilityDays: Double?, started: Boolean): Stage? = if (started) started(stabilityDays) else null
+
+        /**
+         * Stage of a started card. Total: a card with no stability yet (introduced, or LEARNING before its first
+         * graded answer) and any out-of-range value (NaN, negative) is [APPRENTICE] (BRIEF_V2 F-17).
+         */
+        fun started(stabilityDays: Double?): Stage {
             val s = stabilityDays ?: return APPRENTICE
-            return entries.last { s >= it.minStabilityDays }
+            return entries.lastOrNull { s >= it.minStabilityDays } ?: APPRENTICE
         }
     }
 }

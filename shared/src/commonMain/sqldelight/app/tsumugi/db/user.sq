@@ -109,3 +109,63 @@ INSERT OR REPLACE INTO integration(kind, config, last_sync_at, cursor) VALUES (?
 
 removeIntegration:
 DELETE FROM integration WHERE kind = ?;
+
+-- Path progress (CLAUDE.md rule 11, DECISIONS D-041) ---------------------------------------------------------
+
+-- The highest path level the learner has passed, per track ("kanji-path"). A persisted fact: it only rises
+-- (raisePathProgress), except through an explicit, confirmed reset that bumps generation. Synced with the MAX
+-- rule: the higher (generation, passed_level, updated_at, device) wins, so two devices converge on the higher
+-- level, and a reset beats every level recorded before it.
+CREATE TABLE path_progress (
+    track TEXT NOT NULL PRIMARY KEY,
+    generation INTEGER NOT NULL DEFAULT 0,
+    passed_level INTEGER NOT NULL,
+    passed_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL
+);
+
+-- Path items the learner may take a lesson for, once unlocked: by hand ('manual') or because their prerequisites
+-- reached Guru ('auto'). Insert-only and synced by set union, so an unlock never disappears.
+CREATE TABLE path_unlock (
+    item_id TEXT NOT NULL PRIMARY KEY,
+    source TEXT NOT NULL,
+    unlocked_at INTEGER NOT NULL
+);
+
+pathProgress:
+SELECT * FROM path_progress WHERE track = ?;
+
+insertPathProgressIfAbsent:
+INSERT OR IGNORE INTO path_progress(track, generation, passed_level, passed_at, updated_at) VALUES (?, 0, 0, 0, 0);
+
+raisePathProgress:
+UPDATE path_progress SET passed_level = :level, passed_at = :at, updated_at = :at
+WHERE track = :track AND passed_level < :level;
+
+resetPathProgress:
+UPDATE path_progress SET generation = generation + 1, passed_level = :level, passed_at = :at, updated_at = :at
+WHERE track = :track;
+
+insertUnlock:
+INSERT OR IGNORE INTO path_unlock(item_id, source, unlocked_at) VALUES (?, ?, ?);
+
+allUnlocks:
+SELECT * FROM path_unlock;
+
+-- Device settings (CLAUDE.md rule 16, DECISIONS D-047) -----------------------------------------------------------
+
+-- Per-device configuration that must never sync: AI engine and model choice, endpoint URLs, audio engine.
+-- There is deliberately no sync trigger on this table.
+CREATE TABLE device_setting (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+deviceSetting:
+SELECT value FROM device_setting WHERE key = ?;
+
+putDeviceSetting:
+INSERT OR REPLACE INTO device_setting(key, value) VALUES (?, ?);
+
+removeDeviceSetting:
+DELETE FROM device_setting WHERE key = ?;
