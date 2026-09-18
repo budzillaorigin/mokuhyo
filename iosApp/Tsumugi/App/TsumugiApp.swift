@@ -13,6 +13,10 @@ struct TsumugiApp: App {
                 .task { await Reminders.requestPermission() }
         }
         .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                let graph = model.graph
+                Task { try? await graph.syncIfConfigured() }
+            }
             // Whenever the app backgrounds: plan the next "reviews are ready" reminder and refresh the widgets.
             if phase == .background {
                 let graph = model.graph

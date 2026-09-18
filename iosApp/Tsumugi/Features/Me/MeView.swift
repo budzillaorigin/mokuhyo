@@ -26,6 +26,7 @@ struct MeView: View {
             }
             Section {
                 NavigationLink("Import & export", value: Route.importExport)
+                NavigationLink("Sync", value: Route.sync)
                 NavigationLink("Settings", value: Route.settings)
                 NavigationLink("Licenses", value: Route.licenses)
             }

@@ -32,6 +32,7 @@ struct ReviewView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
     @State private var model = ReviewModel()
+    @State private var writingResult: RawResult?
 
     var body: some View {
         ScrollView {
@@ -61,7 +62,13 @@ struct ReviewView: View {
             } else {
                 ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
             }
-            if s.prompt.mode == .selfGraded {
+            if s.prompt.mode == .writing {
+                WritingAnswer(kanji: s.prompt.item.primaryText) { result in
+                    writingResult = result
+                    model.reveal()
+                }
+                .id("\(s.prompt.card.id)-\(s.done)")
+            } else if s.prompt.mode == .selfGraded {
                 Button("Show answer") { model.reveal() }
                     .buttonStyle(.borderedProminent).frame(maxWidth: .infinity)
             } else if s.prompt.mode == .build, let exercise = s.prompt.exercise {
@@ -79,13 +86,18 @@ struct ReviewView: View {
             .font(.subheadline)
         case .revealed(let s):
             ProgressLine(done: Int(s.done), left: Int(s.remaining) + 1)
-            ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
+            if s.prompt.mode == .writing {
+                WritingReveal(kanji: s.prompt.item.primaryText, result: writingResult)
+            } else {
+                ItemGlyph(text: s.prompt.question, kind: s.prompt.item.kind)
+            }
             Text(s.prompt.expected.joined(separator: "; ")).font(.japanese(size: 22)).frame(maxWidth: .infinity)
             if let reading = s.prompt.item.reading { Text(reading).font(.japanese(size: 20)).frame(maxWidth: .infinity) }
             HStack {
                 ForEach([Rating.again, .hard, .good, .easy], id: \.self) { r in
+                    let suggested = s.prompt.mode == .writing && writingResult.map { Int($0.suggestedRating) == Int(r.value) } == true
                     Button(String(describing: r).capitalized) { model.grade(r) }
-                        .buttonStyle(.bordered).frame(maxWidth: .infinity)
+                        .buttonStyle(.bordered).tint(suggested ? .accentColor : .secondary).frame(maxWidth: .infinity)
                 }
             }
         case .answered(let s):
@@ -158,5 +170,29 @@ private struct SummaryView: View {
             }
             Button("Done", action: onDone).buttonStyle(.borderedProminent).padding(.top, 8)
         }
+    }
+}
+
+/// Reference and automatic checks after drawing a WRITING card.
+private struct WritingReveal: View {
+    @Environment(AppModel.self) private var app
+    let kanji: String
+    let result: RawResult?
+    @State private var strokes: [KanjiStroke] = []
+
+    var body: some View {
+        VStack(spacing: 8) {
+            if strokes.isEmpty {
+                Text(kanji).font(.japanese(size: 88))
+            } else {
+                StrokeOrderView(strokes: strokes).frame(width: 160, height: 160)
+            }
+            if let result {
+                Text("\(result.countOk ? "Stroke count ✓" : "Stroke count ✗") · \(result.orderOk ? "Order ✓" : "Order ✗") — suggested rating \(result.suggestedRating)/4")
+                    .font(.subheadline)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .task(id: kanji) { strokes = (try? await app.graph.dictionary()?.strokes(literal: kanji)) ?? [] }
     }
 }

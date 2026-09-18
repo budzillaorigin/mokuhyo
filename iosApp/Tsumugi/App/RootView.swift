@@ -22,6 +22,13 @@ enum Route: Hashable {
     case grammarLessons
     case lookup(String)
     case scan
+    case library
+    case read(String)
+    case feeds
+    case aozora
+    case writingPractice([String])
+    case handwriting
+    case sync
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -78,6 +85,13 @@ struct TabStack<Root: View>: View {
                     case .grammarLessons: GrammarLessonView()
                     case .lookup(let text): DictionarySearchView(initialQuery: text)
                     case .scan: ScanView()
+                    case .library: ReaderLibraryView()
+                    case .read(let id): ReaderView(docId: id)
+                    case .feeds: FeedsView()
+                    case .aozora: AozoraView()
+                    case .writingPractice(let kanji): WritingPracticeView(kanji: kanji)
+                    case .handwriting: HandwritingSearchView()
+                    case .sync: SyncView()
                     }
                 }
         }
@@ -93,11 +107,17 @@ struct LearnHomeView: View {
             NavigationLink(value: Route.grammar) {
                 LabeledContent("Grammar", value: "JLPT N5–N3")
             }
+            NavigationLink(value: Route.library) {
+                LabeledContent("Reading", value: "Articles, books, feeds")
+            }
             NavigationLink(value: Route.dictionary) {
                 LabeledContent("Dictionary", value: "JMdict · kanji · examples")
             }
             NavigationLink(value: Route.radicals) {
                 LabeledContent("Radical search", value: "Find a kanji by its parts")
+            }
+            NavigationLink(value: Route.handwriting) {
+                LabeledContent("Draw to search", value: "Handwrite a kanji")
             }
             NavigationLink(value: Route.scan) {
                 LabeledContent("Scan text", value: "Camera or photo")
