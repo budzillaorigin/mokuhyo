@@ -33,18 +33,36 @@ enum Route: Hashable {
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
 struct RootView: View {
+    @Environment(AppModel.self) private var app
+    @State private var onboarded: Bool?
+    @State private var tab = 0
+
     var body: some View {
-        TabView {
+        Group {
+            if onboarded == false {
+                OnboardingView { openImport in
+                    onboarded = true
+                    if openImport { tab = 4 }
+                }
+            } else {
+                tabs
+            }
+        }
+        .task { onboarded = (try? await app.graph.onboarding.isDone())?.boolValue ?? true }
+    }
+
+    private var tabs: some View {
+        TabView(selection: $tab) {
             TabStack { TodayView() }
-                .tabItem { Label("Today", systemImage: "sun.max") }
+                .tabItem { Label("Today", systemImage: "sun.max") }.tag(0)
             TabStack { TodayView() }
-                .tabItem { Label("Reviews", systemImage: "arrow.triangle.2.circlepath") }
+                .tabItem { Label("Reviews", systemImage: "arrow.triangle.2.circlepath") }.tag(1)
             TabStack { LearnHomeView() }
-                .tabItem { Label("Learn", systemImage: "book") }
+                .tabItem { Label("Learn", systemImage: "book") }.tag(2)
             TabStack { ComingSoonView(title: "Practice") }
-                .tabItem { Label("Practice", systemImage: "mic") }
+                .tabItem { Label("Practice", systemImage: "mic") }.tag(3)
             TabStack { MeView() }
-                .tabItem { Label("Me", systemImage: "person.crop.circle") }
+                .tabItem { Label("Me", systemImage: "person.crop.circle") }.tag(4)
         }
     }
 }

@@ -18,6 +18,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import app.tsumugi.android.TsumugiApplication
+import app.tsumugi.android.features.OnboardingScreen
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.tsumugi.android.features.ComingSoonScreen
@@ -63,6 +71,26 @@ fun TsumugiApp() {
         openRadicals = { nav.push(Route.Radicals) },
     )
     BackHandler(enabled = nav.canGoBack) { nav.back() }
+    val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
+    var onboarded by remember { mutableStateOf<Boolean?>(null) }
+    LaunchedEffect(Unit) { onboarded = graph.onboarding.isDone() }
+
+    if (onboarded == false) {
+        TsumugiTheme {
+            Scaffold { padding ->
+                Box(Modifier.padding(padding)) {
+                    OnboardingScreen { openImport ->
+                        onboarded = true
+                        if (openImport) {
+                            nav.select(Tab.ME)
+                            nav.push(Route.Import)
+                        }
+                    }
+                }
+            }
+        }
+        return
+    }
 
     TsumugiTheme {
         Scaffold(

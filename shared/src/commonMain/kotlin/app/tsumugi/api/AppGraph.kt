@@ -25,6 +25,7 @@ import app.tsumugi.srs.PathService
 import app.tsumugi.srs.SrsRepository
 import app.tsumugi.study.CollectionService
 import app.tsumugi.study.LessonSession
+import app.tsumugi.study.Onboarding
 import app.tsumugi.study.ReminderPlanner
 import app.tsumugi.study.ReviewSession
 import app.tsumugi.study.StatsService
@@ -53,6 +54,7 @@ class AppGraph(val platform: PlatformServices) {
     val reminders: ReminderPlanner by lazy { ReminderPlanner(userDatabase, settings) }
     val collection: CollectionService by lazy { CollectionService(userDatabase, srs, { path() }) }
     val reader: ReaderService by lazy { ReaderService(this) }
+    val onboarding: Onboarding by lazy { Onboarding(settings) { path() } }
 
     /** Optional self-hostable sync (BRIEF §8). Nothing syncs until the learner signs in. */
     val syncAccount: SyncAccount by lazy { SyncAccount(userDatabase, platform.secrets, { platform.httpEngine() }) }
