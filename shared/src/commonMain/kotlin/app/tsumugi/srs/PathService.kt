@@ -71,10 +71,66 @@ class PathService(
     private val pack: PathDatabase,
     private val srs: SrsRepository,
     private val settings: SettingsRepository,
+    private val store: PathProgressStore,
 ) {
     private val json = Json { ignoreUnknownKeys = true }
     private val loadLock = Mutex()
     private var cache: Pair<List<PathItem>, UnlockTree>? = null
+
+    init {
+        // Record a passed level the moment an answer meets the pass criterion, before any later lapse (rule 11).
+        srs.addReviewListener { card -> if (loaded().second.node(card.itemId)?.kind == ItemKind.KANJI) recordProgress() }
+    }
+
+    /** What the path shows right now, from persisted progress plus live stages. */
+    private class Snapshot(
+        val tree: UnlockTree,
+        val stages: Map<String, Stage>,
+        val currentLevel: Int,
+        val available: List<PathNode>,
+    )
+
+    /**
+     * The persisted level decides which levels are open: lessons come from `1..max(passed + 1, current)`, where
+     * current only counts levels passed *now* on top of the persisted level, so a lapse can never close a level.
+     * Newly passed levels and newly unlocked items are persisted on the way (BRIEF_V2 F-04, DECISIONS D-041).
+     */
+    private suspend fun snapshot(): Snapshot {
+        val (_, tree) = loaded()
+        store.importLegacyManualUnlocks(settings.get(SettingsRepository.PATH_MANUAL_UNLOCKS))
+        val stages = srs.stages()
+        var passed = store.progress().passedLevel
+        val current = tree.currentLevel(stages, passed + 1)
+        if (current - 1 > passed && store.recordPassed(current - 1)) passed = current - 1
+        val through = maxOf(passed + 1, current).coerceAtMost(maxOf(1, tree.maxLevel))
+        val persisted = store.unlocks()
+        // Auto unlocks only count up to the open levels (after an explicit reset, higher ones close again).
+        val kept = persisted.filter { it.manual || (tree.node(it.itemId)?.level ?: Int.MAX_VALUE) <= through }.map { it.itemId }.toSet()
+        val unlocked = tree.unlocked(stages, through, kept)
+        val known = persisted.map { it.itemId }.toSet()
+        store.addUnlocks(unlocked.filter { it !in known && tree.node(it) != null }, manual = false)
+        return Snapshot(tree, stages, through, tree.availableLessons(stages, through, kept))
+    }
+
+    /** Persists any level passed since the last check. Uses per-level stage queries, so it is cheap after each review. */
+    @Throws(Exception::class)
+    suspend fun recordProgress() {
+        val (_, tree) = loaded()
+        val passed = store.progress().passedLevel
+        val highest = tree.highestPassed(passed + 1) { ids -> srs.stagesFor(ids) }
+        if (highest > passed) store.recordPassed(highest)
+    }
+
+    /** The persisted level: highest level passed and when (0 = none yet). */
+    @Throws(Exception::class)
+    suspend fun progress(): PathProgress = store.progress()
+
+    /**
+     * Explicit, confirmed "reset to level N": the only way the level goes down. Lessons above [level] close again;
+     * items already learned keep their reviews.
+     */
+    @Throws(Exception::class)
+    suspend fun resetToLevel(level: Int) = store.resetTo(level)
 
     private suspend fun loaded(): Pair<List<PathItem>, UnlockTree> = loadLock.withLock {
         cache ?: withContext(Dispatchers.IO) {
@@ -93,27 +149,23 @@ class PathService(
 
     @Throws(Exception::class)
     suspend fun status(): PathStatus {
-        val (_, tree) = loaded()
-        val stages = srs.stages()
-        val level = tree.currentLevel(stages, levelFloor())
+        val s = snapshot()
         return PathStatus(
-            currentLevel = level,
-            maxLevel = tree.maxLevel,
-            levelProgress = tree.levelProgress(level, stages),
-            availableLessons = tree.availableLessons(stages, level, manualUnlocks()).size,
+            currentLevel = s.currentLevel,
+            maxLevel = s.tree.maxLevel,
+            levelProgress = s.tree.levelProgress(s.currentLevel, s.stages),
+            availableLessons = s.available.size,
             dueReviews = srs.dueCount(),
-            stageCounts = stages.values.groupingBy { it }.eachCount(),
+            stageCounts = s.stages.values.groupingBy { it }.eachCount(),
         )
     }
 
-    /** Next lessons in path order (radicals → kanji → vocab, lower levels first). */
+    /** Next lessons in path order (lower levels first; radicals → kanji → vocab; then pack order). */
     @Throws(Exception::class)
     suspend fun lessonQueue(limit: Int = Int.MAX_VALUE): List<PathItem> {
-        val (items, tree) = loaded()
+        val (items, _) = loaded()
         val byId = items.associateBy { it.id }
-        val stages = srs.stages()
-        val level = tree.currentLevel(stages, levelFloor())
-        return tree.availableLessons(stages, level, manualUnlocks()).take(limit).mapNotNull { byId[it.id] }
+        return snapshot().available.take(limit).mapNotNull { byId[it.id] }
     }
 
     @Throws(Exception::class)
@@ -126,7 +178,7 @@ class PathService(
             item = item,
             components = item.prerequisites.mapNotNull { byId[it] },
             usedIn = items.filter { id in it.prerequisites },
-            stage = srs.stages()[id],
+            stage = srs.stagesFor(listOf(id))[id],
             myStory = note.myStory,
             synonyms = note.synonyms,
         )
@@ -139,8 +191,9 @@ class PathService(
     @Throws(Exception::class)
     suspend fun level(level: Int): List<LevelEntry> {
         val (items, _) = loaded()
-        val stages = srs.stages()
-        return items.filter { it.level == level }.map { LevelEntry(it, stages[it.id]) }
+        val atLevel = items.filter { it.level == level }
+        val stages = srs.stagesFor(atLevel.map { it.id })
+        return atLevel.map { LevelEntry(it, stages[it.id]) }
     }
 
     /**
@@ -155,19 +208,15 @@ class PathService(
         srs.introduce(lessons.flatMap { item -> directions(item).map { SrsRepository.cardId(item.id, it) } })
     }
 
+    /** Skip ahead (onboarding, "I already know these"): levels below [level] count as passed. Never lowers the level. */
     @Throws(Exception::class)
-    suspend fun skipToLevel(level: Int) = settings.put(SettingsRepository.PATH_LEVEL_FLOOR, level.toString())
-
-    @Throws(Exception::class)
-    suspend fun unlockManually(itemId: String) {
-        val current = manualUnlocks()
-        settings.put(SettingsRepository.PATH_MANUAL_UNLOCKS, json.encodeToString((current + itemId).toList()))
+    suspend fun skipToLevel(level: Int) {
+        store.recordPassed(level - 1)
     }
 
-    private suspend fun levelFloor() = settings.int(SettingsRepository.PATH_LEVEL_FLOOR, 1)
-
-    private suspend fun manualUnlocks(): Set<String> =
-        settings.get(SettingsRepository.PATH_MANUAL_UNLOCKS)?.let { json.decodeFromString<List<String>>(it).toSet() }.orEmpty()
+    /** Unlocks one item by hand; a per-item row that syncs by set union. */
+    @Throws(Exception::class)
+    suspend fun unlockManually(itemId: String) = store.addUnlocks(listOf(itemId), manual = true)
 
     private fun PathItem.toNewItem() = NewItem(
         id = id,

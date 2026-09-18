@@ -1,6 +1,7 @@
 package app.tsumugi.sync
 
 import app.tsumugi.sync.crypto.Argon2id
+import app.tsumugi.sync.crypto.HmacSha256
 import app.tsumugi.sync.crypto.XChaCha20Poly1305
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
@@ -13,6 +14,12 @@ interface Sealer {
 
     /** The plaintext, or null when the key is wrong or the data was tampered with. */
     fun open(sealed: String): String?
+
+    /**
+     * The id the server sees for a row key. Deterministic, so the server can still order and dedupe a row's
+     * changes, but opaque: without the key it can't be reversed or linked across tables (BRIEF_V2 F-37).
+     */
+    fun keyId(table: String, key: String): String = key
 }
 
 /**
@@ -23,6 +30,18 @@ interface Sealer {
 class E2eSealer(private val key: ByteArray) : Sealer {
     init {
         require(key.size == XChaCha20Poly1305.KEY_BYTES)
+    }
+
+    /** Separate subkey for key ids, so the encryption key itself is never used as a MAC key. */
+    private val keyIdKey: ByteArray = HmacSha256.mac(key, KEY_ID_LABEL.encodeToByteArray())
+
+    /** HMAC-SHA256(subkey, table ‖ U+001F ‖ key), base64url without padding. */
+    override fun keyId(table: String, key: String): String =
+        Base64.UrlSafe.withPadding(Base64.PaddingOption.ABSENT)
+            .encode(HmacSha256.mac(keyIdKey, (table + TableSpec.KEY_SEPARATOR + key).encodeToByteArray()))
+
+    private companion object {
+        const val KEY_ID_LABEL = "tsumugi-sync-key-id-v1"
     }
 
     override fun seal(plaintext: String): String {

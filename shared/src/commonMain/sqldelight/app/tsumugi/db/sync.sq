@@ -15,7 +15,10 @@ CREATE INDEX change_log_unsynced ON change_log(synced, seq);
 
 CREATE TABLE sync_state (
     id INTEGER NOT NULL PRIMARY KEY CHECK (id = 1),
-    applying INTEGER NOT NULL DEFAULT 0
+    applying INTEGER NOT NULL DEFAULT 0,
+    -- 1 while a push is between reading rows and marking them synced: rows may be on the wire, so an undo must
+    -- tombstone rather than physically delete (DECISIONS D-042).
+    pushing INTEGER NOT NULL DEFAULT 0
 );
 INSERT OR IGNORE INTO sync_state(id, applying) VALUES (1, 0);
 
@@ -53,11 +56,36 @@ BEGIN
     VALUES ('item_relation', new.parent_id || char(31) || new.child_id || char(31) || new.kind, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
 END;
 
--- review (immutable; union) ------------------------------------------------------------------------------
+-- review (append-only; union + tombstone) ----------------------------------------------------------------
 CREATE TRIGGER sync_review_insert AFTER INSERT ON review
 WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
 BEGIN
     INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('review', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+-- The one permitted update: an undo tombstones the row, and the tombstone must reach every device.
+CREATE TRIGGER sync_review_tombstone AFTER UPDATE OF deleted_at ON review
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0 AND old.deleted_at IS NULL AND new.deleted_at IS NOT NULL
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('review', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+
+-- path_progress (MAX merge) ------------------------------------------------------------------------------
+CREATE TRIGGER sync_path_progress_insert AFTER INSERT ON path_progress
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('path_progress', new.track, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_path_progress_update AFTER UPDATE ON path_progress
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('path_progress', new.track, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+
+-- path_unlock (insert-only union) ------------------------------------------------------------------------
+CREATE TRIGGER sync_path_unlock_insert AFTER INSERT ON path_unlock
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('path_unlock', new.item_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
 END;
 
 -- exam_attempt (immutable; union) ------------------------------------------------------------------------
@@ -162,3 +190,13 @@ SELECT * FROM sync_row_version WHERE table_name = ? AND row_key = ?;
 
 putRowVersion:
 INSERT OR REPLACE INTO sync_row_version(table_name, row_key, updated_at, device_id) VALUES (?, ?, ?, ?);
+
+setPushing:
+UPDATE sync_state SET pushing = ? WHERE id = 1;
+
+isPushing:
+SELECT pushing FROM sync_state WHERE id = 1;
+
+-- Drops the insert marker of an append-only row that is physically deleted before it was ever pushed.
+deleteUnsyncedMarkers:
+DELETE FROM change_log WHERE synced = 0 AND table_name = ? AND row_key = ?;

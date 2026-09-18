@@ -3,6 +3,7 @@ package app.tsumugi.study
 import app.tsumugi.domain.CardDirection
 import app.tsumugi.domain.ItemKind
 import app.tsumugi.grammar.ExerciseKind
+import app.tsumugi.grammar.GhostSpawn
 import app.tsumugi.grammar.GrammarExercise
 import app.tsumugi.grammar.GrammarService
 import app.tsumugi.srs.AnswerChecker
@@ -14,6 +15,8 @@ import app.tsumugi.srs.Verdict
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.random.Random
 import kotlin.time.Clock
 import kotlin.time.Instant
@@ -131,6 +134,11 @@ sealed interface ReviewState {
  * One review session over due cards (BRIEF §5.4 review UX): typed answers with instant grading, wrong answers
  * re-asked at the end as practice, undo of the last answer, wrap-up mode, and a summary with leech detection.
  * Both apps render [state] and call the actions; no review logic lives in the UI.
+ *
+ * Every action is serialized by one [Mutex] (BRIEF_V2 F-09): a second `submit()` while the first is still writing
+ * waits, then finds the prompt already answered and does nothing, so a double tap records one review and advances
+ * one card. The non-suspending [reveal] and [wrapUp] never wait: reveal is ignored and wrap-up is deferred to the end
+ * of the action in flight.
  */
 class ReviewSession(
     private val srs: SrsRepository,
@@ -158,6 +166,11 @@ class ReviewSession(
     )
     private val results = ArrayList<Pair<ReviewPrompt, Boolean>>()
     private var lastOutcome: SrsRepository.ReviewOutcome? = null
+    /** Side effects of the last recorded answer on grammar ghosts, undone together with it (BRIEF_V2 F-20). */
+    private var lastGhostSpawn: GhostSpawn? = null
+    private var lastGhostRetired: String? = null
+    private val mutex = Mutex()
+    private var pendingWrapUp: Int? = null
     private var shownAt: Instant = clock.now()
     private var wrappingUp = false
 
@@ -168,7 +181,9 @@ class ReviewSession(
 
     /** Typed answer for MEANING/READING prompts. */
     @Throws(Exception::class)
-    suspend fun submit(answer: String) {
+    suspend fun submit(answer: String) = locked { submitLocked(answer) }
+
+    private suspend fun submitLocked(answer: String) {
         val asking = _state.value as? ReviewState.Asking ?: return
         val prompt = asking.prompt
         val item = prompt.item
@@ -191,14 +206,21 @@ class ReviewSession(
 
     /** Self-graded and writing prompts: show the answer (for writing, after drawing). */
     fun reveal() {
-        val asking = _state.value as? ReviewState.Asking ?: return
-        if (asking.prompt.mode != AnswerMode.SELF_GRADED && asking.prompt.mode != AnswerMode.WRITING) return
-        _state.value = ReviewState.Revealed(asking.prompt, asking.remaining, asking.done)
+        if (!mutex.tryLock()) return
+        try {
+            val asking = _state.value as? ReviewState.Asking ?: return
+            if (asking.prompt.mode != AnswerMode.SELF_GRADED && asking.prompt.mode != AnswerMode.WRITING) return
+            _state.value = ReviewState.Revealed(asking.prompt, asking.remaining, asking.done)
+        } finally {
+            mutex.unlock()
+        }
     }
 
     /** Self-graded prompt: record the rating and move on. */
     @Throws(Exception::class)
-    suspend fun grade(rating: Rating) {
+    suspend fun grade(rating: Rating) = locked { gradeLocked(rating) }
+
+    private suspend fun gradeLocked(rating: Rating) {
         val revealed = _state.value as? ReviewState.Revealed ?: return
         record(revealed.prompt, rating, null, rating != Rating.AGAIN)
         queue.removeFirst()
@@ -208,18 +230,24 @@ class ReviewSession(
 
     /** After feedback: go to the next card. */
     @Throws(Exception::class)
-    suspend fun next() {
+    suspend fun next() = locked {
         if (_state.value is ReviewState.Answered) advance()
     }
 
     /** Take back the last answer (e.g. a typo): the review is removed and the same card is asked again. */
     @Throws(Exception::class)
-    suspend fun undo() {
+    suspend fun undo() = locked { undoLocked() }
+
+    private suspend fun undoLocked() {
         val answered = _state.value as? ReviewState.Answered ?: return
         val outcome = lastOutcome ?: return
         if (!answered.canUndo) return
         srs.undo(outcome)
+        lastGhostSpawn?.let { grammar?.undoGhost(it) }
+        lastGhostRetired?.let { srs.setSuspended(it, false) }
         lastOutcome = null
+        lastGhostSpawn = null
+        lastGhostRetired = null
         results.removeAt(results.lastIndex)
         if (!answered.correct) queue.removeLast()
         queue.addFirst(answered.prompt)
@@ -229,6 +257,18 @@ class ReviewSession(
 
     /** Finish soon: keep only the next [keep] cards (plus practice for anything missed). */
     fun wrapUp(keep: Int = WRAP_UP_SIZE) {
+        if (!mutex.tryLock()) {
+            pendingWrapUp = keep
+            return
+        }
+        try {
+            wrapUpLocked(keep)
+        } finally {
+            mutex.unlock()
+        }
+    }
+
+    private fun wrapUpLocked(keep: Int) {
         wrappingUp = true
         while (queue.count { !it.practice } > keep) {
             val lastNew = queue.indexOfLast { !it.practice }
@@ -240,12 +280,26 @@ class ReviewSession(
 
     /** End now and show the summary. */
     @Throws(Exception::class)
-    suspend fun finish() {
+    suspend fun finish() = locked {
         queue.clear()
         _state.value = ReviewState.Finished(summary())
     }
 
+    /** Runs one action under the session lock, then applies a wrap-up requested while it ran. */
+    private suspend fun <T> locked(block: suspend () -> T): T = mutex.withLock {
+        try {
+            block()
+        } finally {
+            pendingWrapUp?.let {
+                pendingWrapUp = null
+                wrapUpLocked(it)
+            }
+        }
+    }
+
     private suspend fun record(prompt: ReviewPrompt, rating: Rating, answer: String?, correct: Boolean) {
+        lastGhostSpawn = null
+        lastGhostRetired = null
         if (prompt.practice) {
             lastOutcome = null
             return
@@ -255,9 +309,9 @@ class ReviewSession(
         results += prompt to correct
         if (grammar != null && prompt.card.direction.isGrammar) {
             if (prompt.card.direction == CardDirection.GHOST) {
-                grammar.ghostAnswered(prompt.card.id, correct)
+                if (grammar.ghostAnswered(prompt.card.id, correct)) lastGhostRetired = prompt.card.id
             } else if (!correct) {
-                grammar.spawnGhost(prompt.item.id)
+                lastGhostSpawn = grammar.spawnGhost(prompt.item.id)
             }
         }
     }

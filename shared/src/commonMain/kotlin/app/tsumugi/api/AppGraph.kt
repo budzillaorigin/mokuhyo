@@ -27,10 +27,12 @@ import app.tsumugi.platform.PlatformServices
 import app.tsumugi.reader.ReaderService
 import app.tsumugi.sync.SyncAccount
 import app.tsumugi.sync.SyncEngine
+import app.tsumugi.settings.DeviceSettings
 import app.tsumugi.settings.DeviceState
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.FsrsParameters
 import app.tsumugi.srs.FsrsScheduler
+import app.tsumugi.srs.PathProgressStore
 import app.tsumugi.srs.PathService
 import app.tsumugi.srs.SrsRepository
 import app.tsumugi.study.CollectionService
@@ -42,9 +44,39 @@ import app.tsumugi.study.StatsService
 import app.tsumugi.study.TodayPlan
 import app.tsumugi.study.TodayPlanner
 import app.tsumugi.study.WritingService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
+import kotlin.concurrent.Volatile
+
+/** Progress of a background rebuild of every card (after new FSRS weights). */
+data class RecomputeProgress(val done: Int, val total: Int, val running: Boolean) {
+    val fraction: Double get() = if (total == 0) 1.0 else done.toDouble() / total
+}
+
+/**
+ * One lazily opened pack service with its own lock (BRIEF_V2 F-32): opening or installing one pack never waits
+ * on another. A missing pack (null) is retried on the next call, so installing it later works without a restart.
+ */
+private class PackSlot<T : Any> {
+    private val mutex = Mutex()
+
+    @Volatile
+    private var value: T? = null
+
+    suspend fun get(open: suspend () -> T?): T? {
+        value?.let { return it }
+        return mutex.withLock { value ?: open()?.also { value = it } }
+    }
+}
 
 /**
  * Composition root both apps hold one instance of.
@@ -58,6 +90,8 @@ class AppGraph(val platform: PlatformServices) {
     val userDatabase: TsumugiDatabase by lazy { TsumugiDatabase(userDriver) }
     val device: DeviceState by lazy { DeviceState(userDatabase, platform.secrets) }
     val settings: SettingsRepository by lazy { SettingsRepository(userDatabase) }
+    /** Per-device configuration that never syncs (AI engines, endpoints, audio engine; CLAUDE.md rule 16). */
+    val deviceSettings: DeviceSettings by lazy { DeviceSettings(userDatabase) }
     val srs: SrsRepository by lazy { SrsRepository(userDatabase, device.deviceId) }
     val stats: StatsService by lazy { StatsService(userDatabase, srs, settings) }
     val imports: ImportService by lazy { ImportService(this) }
@@ -65,13 +99,18 @@ class AppGraph(val platform: PlatformServices) {
     val collection: CollectionService by lazy { CollectionService(userDatabase, srs, { path() }) }
     val reader: ReaderService by lazy { ReaderService(this) }
     val onboarding: Onboarding by lazy { Onboarding(settings) { path() } }
+    val pathProgress: PathProgressStore by lazy { PathProgressStore(userDatabase) }
 
     /** On-device / self-hosted AI engines (BRIEF §7). Apps set `ai.llmBridge` / `ai.sttBridge` at startup. */
-    val ai: AiService by lazy { AiService(platform, settings) }
+    val ai: AiService by lazy { AiService(platform, deviceSettings) }
     val pronunciation: PronunciationService by lazy { PronunciationService({ analyzer() }, { dictionary() }) }
+
+    /** Background work that outlives a screen (card rebuilds). */
+    private val background = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     /** Optional self-hostable sync (BRIEF §8). Nothing syncs until the learner signs in. */
     val syncAccount: SyncAccount by lazy { SyncAccount(userDatabase, platform.secrets, { platform.httpEngine() }) }
+    private val syncLock = Mutex()
     private var syncEngine: SyncEngine? = null
 
     /** The sync engine for the signed-in account, or null when sync isn't set up. */
@@ -79,9 +118,12 @@ class AppGraph(val platform: PlatformServices) {
     suspend fun sync(): SyncEngine? {
         val client = syncAccount.client() ?: return null
         val srs = configuredSrs()
-        return lock.withLock {
-            (syncEngine ?: SyncEngine(userDriver, userDatabase, srs, device.deviceId, client).also { syncEngine = it })
-                .also { it.sealer = syncAccount.sealer }
+        return syncLock.withLock {
+            (syncEngine ?: SyncEngine(userDriver, userDatabase, srs, device.deviceId, client).also { engine ->
+                // Synced settings are applied inside the engine; scheduler settings need the app to react.
+                engine.onSettingsChanged = { keys -> settingsChanged(keys) }
+                syncEngine = engine
+            }).also { it.sealer = syncAccount.sealer }
         }
     }
 
@@ -105,15 +147,20 @@ class AppGraph(val platform: PlatformServices) {
         return planner.plan(srs.dueCount(), path()?.status(), grammarLeft)
     }
 
-    private var writingService: WritingService? = null
-    private var tokenizer: LatticeTokenizer? = null
+    private val tokenizerSlot = PackSlot<LatticeTokenizer>()
+    private val writingSlot = PackSlot<WritingService>()
+    private val practiceSlot = PackSlot<PracticeRepository>()
+    private val examSlot = PackSlot<ExamService>()
+    private val dictionarySlot = PackSlot<DictionaryRepository>()
+    private val pathSlot = PackSlot<PathService>()
+    private val grammarSlot = PackSlot<GrammarService>()
 
     /** The IPADIC lattice analyzer (BRIEF §5.2), or null when the tokenizer pack isn't installed. */
     @Throws(Exception::class)
-    suspend fun analyzer(): MorphologicalAnalyzer? = lock.withLock {
-        tokenizer ?: openPack(PackInstaller.TOKENIZER) {
+    suspend fun analyzer(): MorphologicalAnalyzer? = tokenizerSlot.get {
+        openPack(PackInstaller.TOKENIZER) {
             LatticeTokenizer(TokenizerDatabase(platform.packDriver(TokenizerDatabase.Schema, PackInstaller.TOKENIZER)))
-        }?.also { tokenizer = it }
+        }
     }
 
     /** Writing practice and handwriting search, or null without the dictionary pack (it holds KanjiVG). */
@@ -121,34 +168,28 @@ class AppGraph(val platform: PlatformServices) {
     suspend fun writing(): WritingService? {
         val dictionary = dictionary() ?: return null
         val srs = configuredSrs()
-        return lock.withLock { writingService ?: WritingService(dictionary, srs).also { writingService = it } }
+        return writingSlot.get { WritingService(dictionary, srs) }
     }
 
     /** Next grammar lesson batch (1–3 points) or empty when the pack is missing or everything is learned. */
     @Throws(Exception::class)
     suspend fun grammarLessons(): List<GrammarPoint> = grammar()?.lessonQueue((settings.int(SettingsRepository.DAILY_BUDGET_MINUTES, TodayPlanner.DEFAULT_BUDGET) / 20).coerceIn(1, 3)).orEmpty()
 
-    private var practiceRepository: PracticeRepository? = null
-    private var examService: ExamService? = null
-
     /** Speaking/listening practice pack (scenarios, OPI banks, dialogues, minimal pairs), or null when missing. */
     @Throws(Exception::class)
-    suspend fun practice(): PracticeRepository? = lock.withLock {
-        practiceRepository ?: openPack(PackInstaller.PRACTICE) {
+    suspend fun practice(): PracticeRepository? = practiceSlot.get {
+        openPack(PackInstaller.PRACTICE) {
             PracticeRepository(PracticeDatabase(platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE)))
-        }?.also { practiceRepository = it }
+        }
     }
 
     /** Exam simulators. Works without the exam pack too (imported banks, history), so never null. */
     @Throws(Exception::class)
-    suspend fun exams(): ExamService {
-        lock.withLock { examService }?.let { return it }
-        val pack = lock.withLock { openPack(PackInstaller.EXAM) { ExamDatabase(platform.packDriver(ExamDatabase.Schema, PackInstaller.EXAM)) } }
+    suspend fun exams(): ExamService = examSlot.get {
+        val pack = openPack(PackInstaller.EXAM) { ExamDatabase(platform.packDriver(ExamDatabase.Schema, PackInstaller.EXAM)) }
         configuredSrs() // "add missed items to SRS" schedules with the learner's settings
-        return lock.withLock {
-            examService ?: ExamService(pack, userDatabase, device.deviceId, { grammar() }, { dictionary() }, collection).also { examService = it }
-        }
-    }
+        ExamService(pack, userDatabase, device.deviceId, { grammar() }, { dictionary() }, collection)
+    }!!
 
     /** A role-play for [scenarioId] with the configured model (or scripted turns), or null without the pack. */
     @Throws(Exception::class)
@@ -171,40 +212,43 @@ class AppGraph(val platform: PlatformServices) {
     @Throws(Exception::class)
     suspend fun pomodoro(jlpt: Int = 4): PomodoroSession? = PomodoroSession.build(practice(), jlpt)
 
-    private val lock = Mutex()
-    private var dictionaryRepository: DictionaryRepository? = null
-    private var pathService: PathService? = null
-    private var grammarService: GrammarService? = null
-    private var schedulerLoaded = false
-
     /**
      * The dictionary, installing the bundled pack on first use. Returns null when no dictionary pack is
      * available, so screens can show an honest "dictionary not installed" state.
      */
     @Throws(Exception::class)
-    suspend fun dictionary(): DictionaryRepository? = lock.withLock {
-        dictionaryRepository ?: openPack(PackInstaller.DICTIONARY) {
+    suspend fun dictionary(): DictionaryRepository? = dictionarySlot.get {
+        openPack(PackInstaller.DICTIONARY) {
             DictionaryRepository(DictionaryDatabase(platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY)))
-        }?.also { dictionaryRepository = it }
+        }
     }
 
     /** The 60-level kanji path, or null when the path pack isn't installed. */
     @Throws(Exception::class)
     suspend fun path(): PathService? {
         val srs = configuredSrs()
-        return lock.withLock {
-            pathService ?: openPack(PackInstaller.KANJI_PATH) {
-                PathService(PathDatabase(platform.packDriver(PathDatabase.Schema, PackInstaller.KANJI_PATH)), srs, settings)
-            }?.also { pathService = it }
+        return pathSlot.get {
+            openPack(PackInstaller.KANJI_PATH) {
+                PathService(PathDatabase(platform.packDriver(PathDatabase.Schema, PackInstaller.KANJI_PATH)), srs, settings, pathProgress)
+            }
         }
     }
+
+    private val schedulerLock = Mutex()
+
+    @Volatile
+    private var schedulerLoaded = false
 
     /** SRS repository with the user's scheduler settings (fitted FSRS weights, desired retention) applied. */
     @Throws(Exception::class)
     suspend fun configuredSrs(): SrsRepository {
         if (!schedulerLoaded) {
-            srs.scheduler = FsrsScheduler(schedulerParameters())
-            schedulerLoaded = true
+            schedulerLock.withLock {
+                if (!schedulerLoaded) {
+                    srs.scheduler = FsrsScheduler(schedulerParameters())
+                    schedulerLoaded = true
+                }
+            }
         }
         return srs
     }
@@ -213,10 +257,10 @@ class AppGraph(val platform: PlatformServices) {
     @Throws(Exception::class)
     suspend fun grammar(): GrammarService? {
         val srs = configuredSrs()
-        return lock.withLock {
-            grammarService ?: openPack(PackInstaller.GRAMMAR) {
+        return grammarSlot.get {
+            openPack(PackInstaller.GRAMMAR) {
                 GrammarService(GrammarDatabase(platform.packDriver(GrammarDatabase.Schema, PackInstaller.GRAMMAR)), srs) { dictionary() }
-            }?.also { grammarService = it }
+            }?.also { it.syncExampleAvailability() } // points without examples never count as due (F-20)
         }
     }
 
@@ -239,7 +283,7 @@ class AppGraph(val platform: PlatformServices) {
             .getOrElse { FsrsParameters(desiredRetention = retention) }
     }
 
-    private suspend fun <T> openPack(file: String, open: () -> T): T? =
+    private suspend fun <T> openPack(file: String, open: suspend () -> T): T? =
         when (packs.ensureInstalled(file)) {
             is PackStatus.Installed -> open()
             PackStatus.Missing -> null
@@ -248,5 +292,37 @@ class AppGraph(val platform: PlatformServices) {
     /** Call after changing scheduler settings so the next review uses them. */
     fun reloadScheduler() {
         schedulerLoaded = false
+    }
+
+    // --- FSRS weights (BRIEF_V2 F-32) ------------------------------------------------------------------------
+
+    private val _recompute = MutableStateFlow<RecomputeProgress?>(null)
+
+    /** The background card rebuild after new FSRS weights, or null when none has run. */
+    val recomputeProgress: StateFlow<RecomputeProgress?> = _recompute.asStateFlow()
+    private var recomputeJob: Job? = null
+
+    /** Stores fitted FSRS weights (e.g. from the optimizer), then reloads the scheduler and rebuilds every card. */
+    @Throws(Exception::class)
+    suspend fun setFsrsWeights(weights: List<Double>) {
+        FsrsParameters(weights = weights) // validates bounds before anything is stored
+        settings.put(SettingsRepository.FSRS_WEIGHTS, Json.encodeToString(weights))
+        settingsChanged(setOf(SettingsRepository.FSRS_WEIGHTS))
+    }
+
+    /** Reacts to changed synced settings, local or pulled by sync. */
+    private fun settingsChanged(keys: Set<String>) {
+        if (SettingsRepository.FSRS_WEIGHTS in keys || SettingsRepository.DESIRED_RETENTION in keys) reloadScheduler()
+        if (SettingsRepository.FSRS_WEIGHTS in keys) recomputeAllInBackground()
+    }
+
+    /** Rebuilds every card from its reviews with the current scheduler, reporting [recomputeProgress]. */
+    fun recomputeAllInBackground(): Job {
+        recomputeJob?.cancel()
+        return background.launch {
+            val srs = configuredSrs()
+            srs.recomputeAll { done, total -> _recompute.value = RecomputeProgress(done, total, running = done < total) }
+            _recompute.value = _recompute.value?.copy(running = false)
+        }.also { recomputeJob = it }
     }
 }

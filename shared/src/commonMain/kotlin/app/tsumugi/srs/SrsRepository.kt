@@ -52,7 +52,15 @@ data class StudyItem(
     val myStory: String,
 )
 
-data class StudyCard(val id: String, val itemId: String, val direction: CardDirection, val fsrs: FsrsCard, val suspended: Boolean) {
+data class StudyCard(
+    val id: String,
+    val itemId: String,
+    val direction: CardDirection,
+    val fsrs: FsrsCard,
+    val suspended: Boolean,
+    /** Why the app holds this card out of reviews (e.g. [SrsRepository.BLOCK_NO_EXAMPLES]), null when available. */
+    val blockedReason: String? = null,
+) {
     val stage: Stage? get() = Stage.of(fsrs.stability, fsrs.state != CardState.NEW)
 }
 
@@ -100,14 +108,19 @@ class SrsRepository(
         }
     }
 
-    /** Marks cards as introduced (lesson done): their first review becomes due after the first learning step. */
+    /**
+     * Marks cards as introduced (lesson done): their first review becomes due after the first learning step.
+     * Returns the ids of the introduction reviews, in [cardIds] order (so an undo can retract them).
+     */
     @Throws(Exception::class)
-    suspend fun introduce(cardIds: List<String>) = io {
+    suspend fun introduce(cardIds: List<String>): List<String> = io {
         val now = clock.now()
-        db.transaction {
-            for (id in cardIds) {
-                q.insertReview(Uuid.random().toString(), id, now.toEpochMilliseconds(), INTRODUCED.toLong(), 0, null, null, deviceId, "lesson")
+        db.transactionWithResult {
+            cardIds.map { id ->
+                val reviewId = Uuid.random().toString()
+                q.insertReview(reviewId, id, now.toEpochMilliseconds(), INTRODUCED.toLong(), 0, null, null, deviceId, "lesson")
                 writeCard(id, recompute(id))
+                reviewId
             }
         }
     }
@@ -154,15 +167,32 @@ class SrsRepository(
      */
     @Throws(Exception::class)
     suspend fun stages(): Map<String, Stage> = io {
-        q.allStartedCards().executeAsList()
-            .filter { it.direction != CardDirection.GHOST.name }
-            .groupBy { it.item_id }
-            .mapValues { (_, cards) -> cards.mapNotNull { Stage.of(it.stability, true) }.min() }
+        stagesOf(q.allStartedCards().executeAsList().map { Triple(it.item_id, it.direction, it.stability) })
     }
+
+    /** [stages] restricted to [itemIds] (one path level), via the card_item index instead of a full card scan. */
+    @Throws(Exception::class)
+    suspend fun stagesFor(itemIds: Collection<String>): Map<String, Stage> = io {
+        stagesOf(itemIds.chunked(CHUNK).flatMap { chunk -> q.startedCardsForItems(chunk).executeAsList() }.map { Triple(it.item_id, it.direction, it.stability) })
+    }
+
+    /** (item id, direction, stability) of started cards → lowest stage per item. Ghost cards never count. */
+    private fun stagesOf(cards: List<Triple<String, String, Double?>>): Map<String, Stage> =
+        cards.filter { it.second != CardDirection.GHOST.name }
+            .groupBy { it.first }
+            .mapNotNull { (item, rows) -> rows.minOfOrNull { Stage.started(it.third) }?.let { item to it } }
+            .toMap()
 
     // --- Reviews ------------------------------------------------------------------------------------------
 
     data class ReviewOutcome(val reviewId: String, val before: StudyCard, val after: StudyCard)
+
+    private val reviewListeners = ArrayList<suspend (StudyCard) -> Unit>()
+
+    /** Runs after every recorded answer (e.g. the path records a passed level the moment it is passed). */
+    fun addReviewListener(listener: suspend (StudyCard) -> Unit) {
+        reviewListeners += listener
+    }
 
     @Throws(Exception::class)
     suspend fun review(
@@ -185,14 +215,47 @@ class SrsRepository(
             writeCard(cardId, fsrs)
             ReviewOutcome(id, before, before.copy(fsrs = fsrs))
         }
-    }
+    }.also { outcome -> reviewListeners.forEach { it(outcome.after) } }
 
-    /** Undo the last answer of a session: removes the (not yet synced) review and restores the card. */
+    /**
+     * Undo the last answer of a session: the review is tombstoned (CLAUDE.md rule 12) so the undo reaches every
+     * synced device, and the card is restored.
+     */
     @Throws(Exception::class)
     suspend fun undo(outcome: ReviewOutcome) = io {
         db.transaction {
-            q.deleteReview(outcome.reviewId)
+            retract(outcome.reviewId)
             writeCard(outcome.before.id, outcome.before.fsrs)
+        }
+    }
+
+    /**
+     * Retracts reviews of [cardId] (e.g. the introduction of a ghost card spawned by an answer that was undone)
+     * and rebuilds the card. A card left with no review row at all is removed; one whose reviews are only
+     * tombstoned stays as an inert NEW card (it may exist on other devices too).
+     */
+    @Throws(Exception::class)
+    suspend fun retractReviews(cardId: String, reviewIds: List<String>) = io {
+        db.transaction {
+            reviewIds.forEach(::retract)
+            val anyRow = reviewIds.any { q.reviewById(it).executeAsOneOrNull() != null } || q.reviewsForCard(cardId).executeAsList().isNotEmpty()
+            if (anyRow) writeCard(cardId, recompute(cardId)) else q.deleteCard(cardId)
+        }
+    }
+
+    /**
+     * Tombstones a review, or deletes it outright when it provably never left this device: its insert marker is
+     * still unpushed and no push is in flight (DECISIONS D-042). Both paths keep daily_stats right (triggers).
+     */
+    private fun retract(reviewId: String) {
+        val sync = db.syncQueries
+        val neverPushed = sync.hasUnsyncedMarker(REVIEW_TABLE, reviewId).executeAsOne() > 0 &&
+            (sync.isPushing().executeAsOneOrNull() ?: 0L) == 0L
+        if (neverPushed) {
+            q.deleteReview(reviewId)
+            sync.deleteUnsyncedMarkers(REVIEW_TABLE, reviewId)
+        } else {
+            q.tombstoneReview(clock.now().toEpochMilliseconds(), reviewId)
         }
     }
 
@@ -214,13 +277,39 @@ class SrsRepository(
     @Throws(Exception::class)
     suspend fun recomputeCard(cardId: String) = io { db.transaction { writeCard(cardId, recompute(cardId)) } }
 
-    /** Rebuilds every card, e.g. after the optimizer produced new weights. */
+    /**
+     * Rebuilds every reviewed card, e.g. after new FSRS weights arrived. Runs in batches so other writes can
+     * interleave, and reports (done, total) after each batch.
+     */
     @Throws(Exception::class)
-    suspend fun recomputeAll() = io {
-        db.transaction {
-            q.allReviews().executeAsList().map { it.card_id }.distinct().forEach { writeCard(it, recompute(it)) }
+    suspend fun recomputeAll(onProgress: (done: Int, total: Int) -> Unit = { _, _ -> }) = io {
+        val ids = q.reviewedCardIds().executeAsList()
+        onProgress(0, ids.size)
+        var done = 0
+        for (batch in ids.chunked(RECOMPUTE_BATCH)) {
+            db.transaction { batch.forEach { id -> if (q.cardById(id).executeAsOneOrNull() != null) writeCard(id, recompute(id)) } }
+            done += batch.size
+            onProgress(done, ids.size)
         }
     }
+
+    // --- App-held cards (DECISIONS D-045) -----------------------------------------------------------------
+
+    /** Holds cards out of reviews for an app reason (e.g. [BLOCK_NO_EXAMPLES]); null releases them. Device-local. */
+    @Throws(Exception::class)
+    suspend fun setBlocked(cardIds: Collection<String>, reason: String?) = io {
+        db.transaction { cardIds.forEach { q.setBlocked(reason, it) } }
+    }
+
+    /** Card id → reason for every card the app currently holds out of reviews. */
+    @Throws(Exception::class)
+    suspend fun blockedCards(): Map<String, String> = io {
+        q.blockedCards().executeAsList().associate { it.id to (it.blocked_reason ?: "") }
+    }
+
+    /** All cards of items of [kind] (e.g. every grammar card, to re-check them against a newly opened pack). */
+    @Throws(Exception::class)
+    suspend fun cardsOfKind(kind: ItemKind): List<StudyCard> = io { q.cardsOfKind(kind.name).executeAsList().map { it.toStudyCard() } }
 
     @Throws(Exception::class)
     suspend fun reviewLogForOptimizer(): List<ReviewLogEntry> = io {
@@ -309,6 +398,7 @@ class SrsRepository(
             lapses = lapses.toInt(),
         ),
         suspended = suspended != 0L,
+        blockedReason = blocked_reason,
     )
 
     private fun encode(values: List<String>) = json.encodeToString(values)
@@ -320,7 +410,11 @@ class SrsRepository(
         /** Review rating that records a lesson (introduction), not an answer. FSRS ignores it. */
         const val INTRODUCED = 0
         const val LEECH_LAPSES = 8
+        /** [StudyCard.blockedReason] of a grammar card whose point has no example sentence in the installed pack. */
+        const val BLOCK_NO_EXAMPLES = "NO_EXAMPLES"
         private const val CHUNK = 500
+        private const val RECOMPUTE_BATCH = 200
+        private const val REVIEW_TABLE = "review"
 
         fun cardId(itemId: String, direction: CardDirection) = "$itemId#${direction.name}"
     }

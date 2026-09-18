@@ -97,4 +97,25 @@ class UnlockTreeTest {
         assertEquals(Stage.ENLIGHTENED, Stage.of(90.0, true))
         assertEquals(Stage.BURNED, Stage.of(400.0, true))
     }
+
+    /** BRIEF_V2 F-17: every started card has a stage, even with no or out-of-range stability. */
+    @Test
+    fun stageIsTotalForStartedCards() {
+        assertEquals(Stage.APPRENTICE, Stage.of(null, true))
+        assertEquals(Stage.APPRENTICE, Stage.of(Double.NaN, true))
+        assertEquals(Stage.APPRENTICE, Stage.of(-1.0, true))
+        assertEquals(null, Stage.of(5.0, false))
+    }
+
+    /** BRIEF_V2 F-28: within a level and kind, lessons follow the pack's order, not hash order. */
+    @Test
+    fun lessonOrderFollowsPackPosition() {
+        val ids = listOf("r:山", "r:川", "r:口", "r:一", "r:人", "r:木", "r:水", "r:火", "r:土", "r:金", "r:月", "r:日", "r:目", "r:耳", "r:手", "r:足")
+        val packOrder = ids.map { PathNode(it, RADICAL, 1, emptyList()) } + PathNode("k:林", KANJI, 1, listOf("r:木"))
+        val t = UnlockTree(packOrder)
+        assertEquals(ids, t.availableLessons(emptyMap(), 1).map { it.id })
+        // Kind still comes before pack position: a kanji listed first in the pack comes after the radicals.
+        val kanjiFirst = UnlockTree(listOf(PathNode("k:林", KANJI, 1, emptyList())) + ids.map { PathNode(it, RADICAL, 1, emptyList()) })
+        assertEquals(ids + "k:林", kanjiFirst.availableLessons(emptyMap(), 1).map { it.id })
+    }
 }

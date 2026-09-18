@@ -62,6 +62,10 @@ sqldelight {
         create("TsumugiDatabase") {
             packageName.set("app.tsumugi.db")
             srcDirs.setFrom("src/commonMain/sqldelight")
+            // Migrations live next to the schema as <from>.sqm; <version>.db snapshots are checked by
+            // verifySqlDelightMigration (DECISIONS D-040).
+            schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
+            verifyMigrations.set(true)
         }
         // Read-only dictionary content pack, built by tools/packs/*.py from the same .sq schema.
         create("DictionaryDatabase") {

@@ -1,4 +1,6 @@
-# Sync protocol (v1)
+# Sync protocol (v2)
+
+v2 (BRIEF_V2, DECISIONS D-041, D-042, D-049) changes three things. Reviews can be tombstoned. `path_progress` and `path_unlock` are synced. With E2E on, keys are opaque. The server is unchanged: it still stores opaque changes and dedupes on `(table, key, updatedAt, deviceId, op)`. A v1 client ignores the `deleted_at` column it doesn't know, so it keeps an undone review live and doesn't apply the undo. All devices should upgrade together (the app is unreleased).
 
 Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optional; the apps are fully usable without it. The server is `server/` (Ktor + Postgres, `docker compose up`), and the client is `shared/src/commonMain/kotlin/app/tsumugi/sync/`.
 
@@ -6,7 +8,8 @@ Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optio
 
 - **Append-only change log per user.** The server assigns a monotonically increasing `seq` per user. Clients pull everything after their last seen `seq` and push their own unsynced changes.
 - **Conflict-free by construction** (BRIEF §8.2):
-  - `review` rows are immutable facts, so reviews merge by set union on `id`.
+  - `review` rows are append-only facts, so reviews merge by set union on `id`. The one exception is the tombstone: an undo sets `deleted_at` (CLAUDE.md rule 12). A tombstone set anywhere reaches every device, and the earliest tombstone time wins. Replay ignores tombstoned rows.
+  - `path_progress` merges by **MAX**: the higher `(generation, passed_level, updated_at)` wins, then the higher `device_id`, so progress never regresses through sync (rule 11). An explicit reset raises `generation`.
   - `card` FSRS state is **never synced**. Each device recomputes a card by replaying the union of its reviews (`SrsRepository.recomputeCard`), so devices converge deterministically: fuzz is seeded by `(cardId, index)`.
   - Everything else is **last-writer-wins by `(updated_at, device_id)`**, compared lexicographically. Deletes are tombstones (`deleted = 1` rows, or an op of `DELETE` for tables without a flag).
 - **Opaque payloads.** The server stores payloads as opaque JSON strings. With end-to-end encryption on, payloads are ciphertext, and the server can't read them (so it computes no leaderboard stats for that user).
@@ -18,7 +21,9 @@ Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optio
 |---|---|---|
 | `item` | `id` | LWW by `updated_at`, `deleted` tombstone |
 | `item_relation` | `(parent_id, child_id, kind)` | insert-only (union) |
-| `review` | `id` | union (immutable) → affected cards recomputed |
+| `review` | `id` | union + one-way `deleted_at` tombstone (earliest wins) → affected cards recomputed from live reviews. Wire `updatedAt` = `deleted_at` once tombstoned, else `ts` |
+| `path_progress` | `track` | MAX by `(generation, passed_level, updated_at)`, then `device_id` |
+| `path_unlock` | `item_id` | insert-only (union) |
 | `note` | `item_id` | LWW by `updated_at` |
 | `setting` | `key` | LWW by `updated_at` |
 | `word_list` | `id` | LWW by `updated_at`, `deleted` tombstone |
@@ -26,7 +31,7 @@ Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optio
 | `exam_attempt` | `id` | union (immutable once submitted) |
 | `card` | `id` | **not synced**: rows are created from items/reviews; `suspended` syncs as a `setting`-like LWW field via the `card_flags` change type |
 
-Not synced: `app_meta` (device-local), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings (unless the user turns on "include recordings", which uses blobs).
+Not synced: `app_meta` and `device_setting` (device-local: AI engine, model, endpoint URLs and audio engine, rule 16), `daily_stats` (derived from each device's own review log by triggers), `card.blocked_reason` (derived from the installed packs), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings (unless the user turns on "include recordings", which uses blobs).
 
 ## Change record (wire format)
 
@@ -42,7 +47,9 @@ Not synced: `app_meta` (device-local), `integration` (tokens stay on each device
 }
 ```
 
-With E2E encryption on, `row` is replaced by `"sealed": "<base64 nonce ‖ XChaCha20-Poly1305 ciphertext of the row JSON>"`. The key is derived with Argon2id from the user's sync passphrase and a per-account salt stored on the server (`GET /v1/account` → `e2eSalt`). `table`, `key`, `op`, `updatedAt` and `deviceId` stay in clear so the server can order and dedupe.
+With E2E encryption on, `row` is replaced by `"sealed": "<base64 nonce ‖ XChaCha20-Poly1305 ciphertext of the row JSON>"`. The key is derived with Argon2id from the user's sync passphrase and a per-account salt stored on the server (`GET /v1/account` → `e2eSalt`).
+
+**v2 key ids.** With E2E on, `key` on the wire is an opaque id: `base64url(HMAC-SHA256(k_id, table ‖ U+001F ‖ key))`, where `k_id = HMAC-SHA256(e2eKey, "tsumugi-sync-key-id-v1")`. The same row always gets the same id, so the server can still order and dedupe it. Because the table name is part of the hash, one key in two tables gets unrelated ids. The sealed plaintext is the envelope `{"v": 2, "key": "<real key>", "row": {…} | null}`. DELETEs are sealed too, so they can carry the real key. A receiving client opens the envelope, checks that the real key hashes to the wire id, and merges on the real key. A sealed payload without an envelope is read as v1 (the row itself, with the key in clear). `table`, `op`, `updatedAt` and `deviceId` stay in clear because the server orders and dedupes on them.
 
 ## Endpoints
 
@@ -76,6 +83,7 @@ Idempotency: the server dedupes pushed changes on `(user, table, key, updatedAt,
 ## Client algorithm
 
 1. Local writes to synced tables are captured by SQLite triggers into `change_log(seq, table_name, row_key, op, created_at, synced)`: dirty-row markers only, no payloads. A `sync_state.applying` flag disables the triggers while remote changes are applied, so they don't echo back.
-2. **Push:** for each unsynced marker (oldest first, deduplicated per row), serialize the row's *current* state (or a DELETE), `POST /sync/push`, then mark those markers synced.
-3. **Pull:** `GET /sync/pull?since=lastSeq` until `hasMore = false`. For each change, apply the merge rule above inside a transaction with `applying = 1`, and collect card ids whose reviews changed. Then recompute those cards and store `lastSeq` in `app_meta`.
+2. **Push:** set `sync_state.pushing = 1`. Then, for each unsynced marker (oldest first, deduplicated per row), serialize the row's *current* state (or a DELETE), `POST /sync/push`, mark those markers synced, and clear `pushing`. An append-only row that is gone was deleted by the never-pushed fast path, and is skipped.
+3. **Pull:** `GET /sync/pull?since=lastSeq` until `hasMore = false`. For each change, apply the merge rule above inside a transaction with `applying = 1`, and collect card ids whose reviews changed. Then recompute those cards, store `lastSeq` in `app_meta`, and report the changed `setting` keys to the app (`SyncEngine.onSettingsChanged`: new FSRS weights reload the scheduler and rebuild every card).
+   - **Review undo:** a review is deleted outright only when it still has an unsynced insert marker and `pushing = 0`, so it provably never left the device. Otherwise the undo tombstones it, and the tombstone syncs as an UPSERT of the row (D-042).
 4. Sync runs on app launch/foreground and after a review session ends, when sync is configured. Offline: markers wait until the next successful sync.

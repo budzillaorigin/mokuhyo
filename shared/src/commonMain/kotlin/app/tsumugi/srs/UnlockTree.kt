@@ -18,6 +18,8 @@ class UnlockTree(nodes: List<PathNode>) {
 
     private val byId = nodes.associateBy { it.id }
     private val byLevel = nodes.groupBy { it.level }
+    /** Pack position of each node (the order [nodes] came in: level, then the pack's `ord`). */
+    private val position = nodes.withIndex().associate { (i, n) -> n.id to i }
     val maxLevel: Int = nodes.maxOfOrNull { it.level } ?: 0
 
     init {
@@ -49,10 +51,13 @@ class UnlockTree(nodes: List<PathNode>) {
         return guru * 100 >= kanji.size * PASS_PERCENT
     }
 
-    /** Items whose lessons may be taken now (includes ones already started). */
-    fun unlocked(stages: Map<String, Stage?>, currentLevel: Int, manual: Set<String> = emptySet()): Set<String> {
-        val out = HashSet<String>(manual)
-        for (level in 1..currentLevel) {
+    /**
+     * Items whose lessons may be taken now (includes ones already started): every item up to [throughLevel] whose
+     * prerequisites are at Guru, plus [manual] (items unlocked earlier, persisted; see PathService).
+     */
+    fun unlocked(stages: Map<String, Stage?>, throughLevel: Int, manual: Set<String> = emptySet()): Set<String> {
+        val out = LinkedHashSet<String>(manual)
+        for (level in 1..throughLevel) {
             for (n in nodesAt(level)) {
                 if (n.prerequisites.all { pre -> byId[pre] == null || stages[pre].atLeastGuru() }) out += n.id
             }
@@ -60,12 +65,26 @@ class UnlockTree(nodes: List<PathNode>) {
         return out
     }
 
-    /** Unlocked items not yet started, in path order: lower levels first, radicals → kanji → vocab. */
-    fun availableLessons(stages: Map<String, Stage?>, currentLevel: Int, manual: Set<String> = emptySet()): List<PathNode> =
-        unlocked(stages, currentLevel, manual)
+    /**
+     * Unlocked items not yet started, in path order: lower levels first, radicals → kanji → vocab, then the pack's
+     * own order within the level (BRIEF_V2 F-28).
+     */
+    fun availableLessons(stages: Map<String, Stage?>, throughLevel: Int, manual: Set<String> = emptySet()): List<PathNode> =
+        unlocked(stages, throughLevel, manual)
             .filter { stages[it] == null }
             .mapNotNull { byId[it] }
-            .sortedWith(compareBy({ it.level }, { KIND_ORDER.indexOf(it.kind) }))
+            .sortedWith(compareBy({ it.level }, { KIND_ORDER.indexOf(it.kind) }, { position[it.id] ?: Int.MAX_VALUE }))
+
+    /**
+     * Levels passed in a row starting at [from], by the pass criterion ([isPassed]) against [stagesAt] (item
+     * stages of one level, fetched per level). Returns the highest level passed, or `from - 1` when [from] isn't.
+     * Never goes past the second-to-last level (the last level has nowhere to advance to).
+     */
+    suspend fun highestPassed(from: Int, stagesAt: suspend (List<String>) -> Map<String, Stage?>): Int {
+        var level = from.coerceAtLeast(1)
+        while (level < maxLevel && isPassed(level, stagesAt(nodesAt(level).filter { it.kind == ItemKind.KANJI }.map { it.id }))) level++
+        return level - 1
+    }
 
     /** Share of the level's kanji at Guru+ (0..1), for the level progress ring. */
     fun levelProgress(level: Int, stages: Map<String, Stage?>): Double {

@@ -50,6 +50,10 @@ data class KindAccuracy(val kind: ItemKind, val accuracy: Accuracy)
  * Progress numbers for the Me tab and Today screen (BRIEF §5.12). Everything is derived from the review log,
  * so it is identical on every synced device. A day counts for the streak with at least one answer
  * (lesson introductions don't count); vacation mode freezes the streak without breaking it.
+ *
+ * Day totals come from `daily_stats` (quarter-hour buckets kept by triggers on every review write, undo and
+ * tombstone, BRIEF_V2 F-27), so neither the heat-map nor the streak scans the review log; only the 30-day accuracy
+ * window reads reviews, through the review_ts index.
  */
 class StatsService(
     private val db: TsumugiDatabase,
@@ -64,14 +68,12 @@ class StatsService(
         val now = clock.now()
         val today = now.toLocalDateTime(tz).date
         val since = now - heatmapDays.days
-        val rows = db.srsQueries.reviewsSince(since.toEpochMilliseconds()).executeAsList()
-            .filter { it.rating != SrsRepository.INTRODUCED.toLong() }
-
-        val perDay = rows.groupingBy { Instant.fromEpochMilliseconds(it.ts).toLocalDateTime(tz).date }.eachCount()
+        val perDay = reviewsPerDay(since.toEpochMilliseconds(), tz)
         val heatmap = (heatmapDays - 1 downTo 0).map { d -> today.minus(DatePeriod(days = d)).let { DayCount(it, perDay[it] ?: 0) } }
 
         val accuracySince = (now - ACCURACY_WINDOW_DAYS.days).toEpochMilliseconds()
-        val accuracy = rows.filter { it.ts >= accuracySince && it.correct != null }
+        val accuracy = db.srsQueries.reviewsSince(accuracySince).executeAsList()
+            .filter { it.rating != SrsRepository.INTRODUCED.toLong() && it.correct != null }
             .groupBy { ItemKind.valueOf(it.item_kind) }
             .mapValues { (_, r) -> Accuracy(r.count { it.correct == 1L }, r.size) }
 
@@ -104,13 +106,25 @@ class StatsService(
         settings.put(SettingsRepository.VACATION_SINCE, if (on) clock.now().toEpochMilliseconds().toString() else "")
     }
 
+    /**
+     * Answers per local day, from the first whole slot at or after [sinceMs] (callers only read days that start
+     * after it). Slots are UTC quarter-hours; every real zone offset is a multiple of 15 minutes, so a slot never
+     * straddles two local days.
+     */
+    private fun reviewsPerDay(sinceMs: Long, tz: TimeZone): Map<LocalDate, Int> {
+        val firstSlot = -((-sinceMs).floorDiv(SLOT_MS))
+        val out = HashMap<LocalDate, Int>()
+        for (slot in db.srsQueries.statsSlotsSince(firstSlot).executeAsList()) {
+            val date = slotDate(slot.slot, tz)
+            out[date] = (out[date] ?: 0) + slot.reviews.toInt()
+        }
+        return out.filterValues { it > 0 }
+    }
+
+    private fun slotDate(slot: Long, tz: TimeZone): LocalDate = Instant.fromEpochMilliseconds(slot * SLOT_MS).toLocalDateTime(tz).date
+
     private suspend fun streak(tz: TimeZone, today: LocalDate): Streak {
-        val days = db.srsQueries.reviewsSince(0).executeAsList()
-            .filter { it.rating != SrsRepository.INTRODUCED.toLong() }
-            .map { Instant.fromEpochMilliseconds(it.ts).toLocalDateTime(tz).date }
-            .distinct()
-            .sorted()
-            .toSet()
+        val days = reviewsPerDay(0, tz).keys.sorted().toSet()
         val vacationSince = settings.get(SettingsRepository.VACATION_SINCE)?.toLongOrNull()
             ?.let { Instant.fromEpochMilliseconds(it).toLocalDateTime(tz).date }
         fun counts(d: LocalDate) = d in days || (vacationSince != null && d >= vacationSince)
@@ -137,5 +151,7 @@ class StatsService(
     companion object {
         const val ACCURACY_WINDOW_DAYS = 30
         const val FORECAST_DAYS = 7
+        /** daily_stats bucket width (see srs.sq). */
+        private const val SLOT_MS = 900_000L
     }
 }

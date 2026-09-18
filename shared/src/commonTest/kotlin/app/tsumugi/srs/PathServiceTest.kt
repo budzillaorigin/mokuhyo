@@ -41,7 +41,7 @@ class PathServiceTest {
         q.insertPrereq(Path_prereq("k:日", "r:一"))
         q.insertPrereq(Path_prereq("v:1", "k:口"))
     }
-    private val path = PathService(pathDb, srs, settings)
+    private val path = PathService(pathDb, srs, settings, PathProgressStore(userDb, clock))
 
     @Test
     fun startsWithRadicalLessons() = runTest {
