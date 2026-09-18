@@ -189,4 +189,16 @@ class TodayBlocksTest {
         assertEquals(3, LearnerLevel.jlptForPathLevel(30))
         assertEquals(1, LearnerLevel.jlptForPathLevel(60))
     }
+
+    @Test
+    fun kanaCourseReplacesPathLessonsUntilDone() = runTest {
+        settings.put(SettingsRepository.DAILY_BUDGET_MINUTES, "20")
+        val plan = planner.plan(0, status, grammarAvailable = 0, candidates = candidates, locale = AppLocale.EN, kanaLessons = 30)
+        val lessons = plan.blocks.single { it.kind == TodayBlockKind.LESSONS }
+        val launch = assertIs<TodayLaunch.Kana>(lessons.launch)
+        assertTrue(launch.count in 1..30)
+        assertTrue(lessons.detail.startsWith("Kana"), lessons.detail)
+        val later = planner.plan(0, status, grammarAvailable = 0, candidates = candidates, locale = AppLocale.EN, kanaLessons = 0)
+        assertIs<TodayLaunch.Lessons>(later.blocks.single { it.kind == TodayBlockKind.LESSONS }.launch)
+    }
 }

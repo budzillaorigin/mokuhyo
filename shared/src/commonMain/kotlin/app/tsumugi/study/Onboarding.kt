@@ -1,6 +1,7 @@
 package app.tsumugi.study
 
 import app.tsumugi.domain.ItemKind
+import app.tsumugi.kana.KanaCourse
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.PathItem
 import app.tsumugi.srs.PathService
@@ -52,9 +53,14 @@ class Onboarding(private val settings: SettingsRepository, private val path: sus
         return BANDS * BAND_SIZE - BAND_SIZE + 1
     }
 
-    /** Saves the choices; [startLevel] > 1 skips earlier path levels (their items can still be unlocked by hand). */
+    /**
+     * Saves the choices; [startLevel] > 1 skips earlier path levels (their items can still be unlocked by hand).
+     * [kanjiKnown] is how many placement kanji the learner knew (null when the check was skipped); a score of zero
+     * starts the kana course before the path (G-13).
+     */
     @Throws(Exception::class)
-    suspend fun finish(goal: LearningGoal, budgetMinutes: Int, startLevel: Int) {
+    suspend fun finish(goal: LearningGoal, budgetMinutes: Int, startLevel: Int, kanjiKnown: Int? = null) {
+        if (kanjiKnown != null) KanaCourse.recordKanjiCheck(settings, kanjiKnown)
         settings.put(GOAL, goal.name)
         settings.put(SettingsRepository.DAILY_BUDGET_MINUTES, budgetMinutes.toString())
         if (startLevel > 1) path()?.skipToLevel(startLevel)

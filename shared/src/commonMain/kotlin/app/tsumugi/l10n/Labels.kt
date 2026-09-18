@@ -154,6 +154,7 @@ object Labels {
         put("today.reviews.capReached", "Today's review budget is used up ({0} answered)", "今日の復習枠は終わりました（{0}件回答）")
         put("today.lessons.count", "{0} {0|lesson|lessons} (level {1})", "{0}レッスン（レベル{1}）")
         put("today.lessons.doneToday", "{0} done today", "今日{0}件完了")
+        put("today.kana.count", "Kana: {0} {0|lesson|lessons} first", "まず仮名：{0}レッスン")
         put("today.lessons.locked", "Nothing unlocked yet — reviews unlock more", "まだ解放されていません。復習でさらに解放されます")
         put("today.lessons.paused", "Paused while reviews catch up", "復習が追いつくまで一時停止")
         put("today.grammar.count", "{0} new {0|point|points}", "新しい文型{0}つ")

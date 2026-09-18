@@ -120,6 +120,10 @@ private class PackSlot<T : Any> {
  * Composition root both apps hold one instance of.
  * Swift: `AppGraph(platform: PlatformServices())`; Android: `AppGraph(PlatformServices(applicationContext))`.
  */
+
+/** How many kana lessons Today looks ahead when the kana course is needed (the course has 30). */
+private const val KANA_LESSONS_AHEAD = 30
+
 class AppGraph(val platform: PlatformServices) {
 
     val packs = PackInstaller(platform)
@@ -186,7 +190,9 @@ class AppGraph(val platform: PlatformServices) {
         val srs = configuredSrs()
         val grammarLeft = grammar()?.lessonQueue(3)?.size ?: 0
         val status = path()?.status()
-        return planner.plan(srs.dueCount(), status, grammarLeft, todayCandidates.collect(status?.currentLevel))
+        val kana = kana()
+        val kanaLessons = if (kana.needed(settings)) kana.lessonQueue(settings, KANA_LESSONS_AHEAD).size else 0
+        return planner.plan(srs.dueCount(), status, grammarLeft, todayCandidates.collect(status?.currentLevel), kanaLessons = kanaLessons)
     }
 
     /** Records a finished Today block (weekly challenges count these; G-01/G-11). */

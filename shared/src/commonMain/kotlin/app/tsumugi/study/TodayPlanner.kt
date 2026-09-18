@@ -39,6 +39,9 @@ sealed interface TodayLaunch {
     /** `AppGraph.startLessons()` for [count] lessons. */
     data class Lessons(val count: Int) : TodayLaunch
 
+    /** The kana course comes first for absolute beginners (G-13): `AppGraph.kana().lessonQueue(settings, count)`. */
+    data class Kana(val count: Int) : TodayLaunch
+
     /** `AppGraph.grammarLessons()` for [count] points. */
     data class Grammar(val count: Int) : TodayLaunch
 
@@ -139,6 +142,8 @@ class TodayPlanner(
         grammarAvailable: Int,
         candidates: TodayCandidates = TodayCandidates(),
         locale: AppLocale = L10n.locale,
+        /** Kana lessons still to take when the kana course is needed (G-13); they replace path lessons until done. */
+        kanaLessons: Int = 0,
     ): TodayPlan = withContext(Dispatchers.IO) {
         val tz = zone()
         val now = clock.now()
@@ -179,8 +184,17 @@ class TodayPlanner(
         )
 
         val lessonTarget = lessonTarget(budget, yesterdayAccuracy, dueReviews)
-        val lessons = if (path == null) 0 else minOf(path.availableLessons, (lessonTarget - lessonsToday).coerceAtLeast(0))
-        if (path != null) {
+        if (kanaLessons > 0) {
+            // Foundations start with kana; path lessons follow once the course is done.
+            val kana = minOf(kanaLessons, (lessonTarget / KANA_LESSON_SIZE).coerceAtLeast(1))
+            blocks += TodayBlock(
+                TodayBlockKind.LESSONS, Labels.block(TodayBlockKind.LESSONS, locale), t("today.kana.count", kana),
+                kana, minutes(kana * KANA_LESSON_SIZE * MINUTES_PER_LESSON), done = recorded(TodayBlockKind.LESSONS),
+                launch = TodayLaunch.Kana(kana),
+            )
+        }
+        val lessons = if (path == null || kanaLessons > 0) 0 else minOf(path.availableLessons, (lessonTarget - lessonsToday).coerceAtLeast(0))
+        if (path != null && kanaLessons == 0) {
             blocks += TodayBlock(
                 TodayBlockKind.LESSONS, Labels.block(TodayBlockKind.LESSONS, locale),
                 when {
@@ -377,6 +391,8 @@ class TodayPlanner(
         const val MIN_SHADOWING = 3
         const val SPEAKING_MINUTES = 5
         const val WRITING_KANJI = 3
+        /** Kana per kana lesson (a lesson is one row of the table, ~5 characters). */
+        const val KANA_LESSON_SIZE = 5
         private val DERIVED_DONE = setOf(TodayBlockKind.REVIEWS, TodayBlockKind.LESSONS, TodayBlockKind.GRAMMAR)
     }
 }

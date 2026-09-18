@@ -43,4 +43,12 @@ class OnboardingTest {
         assertEquals(LearningGoal.DLPT, onboarding.goal())
         assertEquals(40, settings.int(SettingsRepository.DAILY_BUDGET_MINUTES, 0))
     }
+
+    @Test
+    fun zeroKanjiKnownStartsTheKanaCourse() = runTest {
+        onboarding.finish(LearningGoal.GENERAL, 20, startLevel = 1, kanjiKnown = 0)
+        assertEquals("0", settings.get(app.tsumugi.kana.KanaCourse.KANJI_CHECK_SCORE))
+        onboarding.finish(LearningGoal.GENERAL, 20, startLevel = 1, kanjiKnown = null)
+        assertEquals("0", settings.get(app.tsumugi.kana.KanaCourse.KANJI_CHECK_SCORE), "a skipped check doesn't overwrite")
+    }
 }
