@@ -25,6 +25,7 @@ struct ExamHubView: View {
     @State private var loading = false
     @State private var loadError: String?
     @State private var building = false
+    @State private var inProgress: InProgressAttempt?
 
     static var disclaimer: String {
         String(localized: "Unofficial practice; not affiliated with the JLPT (JEES/Japan Foundation), DLI or ACTFL. Scores and ratings are estimates.")
@@ -44,6 +45,24 @@ struct ExamHubView: View {
                 if let loadError {
                     Label(loadError, systemImage: "exclamationmark.triangle").font(.caption).foregroundStyle(.red)
                     Button("Retry") { Task { await load() } }
+                }
+            }
+            if let attempt = inProgress {
+                Section("Unfinished attempt") {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("\(attempt.exam.title) \(attempt.level) · \(attempt.mode.title)").font(.subheadline)
+                        Text(attempt.timeUp
+                             ? String(localized: "Time ran out while you were away. Resume to see the score.")
+                             : String(localized: "\(attempt.answered) of \(attempt.total) answered · \(attempt.sectionTitle)"))
+                            .font(.caption).foregroundStyle(.secondary)
+                    }
+                    Button(attempt.timeUp ? "See the score" : "Resume attempt") { resume() }
+                    Button("Discard", role: .destructive) {
+                        Task {
+                            try? await exams?.discardInProgress()
+                            await load()
+                        }
+                    }
                 }
             }
             jlptSection
@@ -183,6 +202,27 @@ struct ExamHubView: View {
         dlptReading = reading
         dlptListening = listening
         history = (try? await service.history(exam: nil, limit: 50)) ?? []
+        inProgress = try? await service.inProgress()
+    }
+
+    /// Reopens the saved attempt; sections whose time ran out while away are already closed (shared ExamSession).
+    private func resume() {
+        guard let exams, !building else { return }
+        message = nil
+        building = true
+        Task {
+            defer { building = false }
+            do {
+                guard let session = try await exams.resume() else {
+                    message = String(localized: "That attempt can't be restored any more.")
+                    await load()
+                    return
+                }
+                running = RunningExam(session: session)
+            } catch {
+                message = String(localized: "Couldn't resume: \(error.localizedDescription)")
+            }
+        }
     }
 
     private func start(_ build: @escaping (ExamService) async throws -> ExamSession?) {
@@ -206,6 +246,8 @@ struct ExamHubView: View {
                 message = String(localized: "There aren't enough items in the bank for that test yet.")
                 return
             }
+            // Starts saving the attempt after every answer, so it survives the app being closed (F-24).
+            session.begin()
             running = RunningExam(session: session)
         }
     }
