@@ -213,6 +213,12 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
 
     suspend fun summaries(ids: List<Long>): List<EntrySummary> = io { summariesInOrder(ids) }
 
+    /** Downstep positions (Kanjium; 0 = heiban) for a written form and its hiragana reading; empty when unknown. */
+    suspend fun pitchAccents(word: String, reading: String): List<Int> = io {
+        (q.pitchFor(word, reading).executeAsOneOrNull() ?: q.pitchFor(reading, reading).executeAsOneOrNull())
+            ?.let(Pitch::parse).orEmpty()
+    }
+
     private fun summariesInOrder(ids: List<Long>): List<EntrySummary> {
         val byId = summariesById(ids)
         return ids.mapNotNull { byId[it] }

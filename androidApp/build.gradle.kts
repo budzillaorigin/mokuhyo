@@ -75,6 +75,10 @@ abstract class BundlePacks : DefaultTask() {
     @get:InputFile
     abstract val licenses: RegularFileProperty
 
+    /** content/models/manifest.json: the on-device model catalog, bundled as packs/models-manifest.json. */
+    @get:InputFile
+    abstract val modelsManifest: RegularFileProperty
+
     @get:OutputDirectory
     abstract val outputDir: DirectoryProperty
 
@@ -84,6 +88,7 @@ abstract class BundlePacks : DefaultTask() {
         out.deleteRecursively()
         out.mkdirs()
         packs.files.filter { it.isFile }.forEach { it.copyTo(out.resolve(it.name)) }
+        modelsManifest.get().asFile.copyTo(out.resolve("models-manifest.json"), overwrite = true)
         licenses.get().asFile.copyTo(outputDir.get().asFile.resolve("LICENSES.md"), overwrite = true)
     }
 }
@@ -91,6 +96,7 @@ abstract class BundlePacks : DefaultTask() {
 val bundlePacks = tasks.register<BundlePacks>("bundlePacks") {
     packs.from(rootProject.fileTree("content/packs") { include("*.sqlite", "manifest.json") })
     licenses.set(rootProject.layout.projectDirectory.file("docs/LICENSES.md"))
+    modelsManifest.set(rootProject.layout.projectDirectory.file("content/models/manifest.json"))
 }
 
 androidComponents {

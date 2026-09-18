@@ -5,6 +5,16 @@ import app.tsumugi.content.PackStatus
 import app.tsumugi.db.TsumugiDatabase
 import app.tsumugi.dictionary.DictionaryRepository
 import app.tsumugi.dictionary.db.DictionaryDatabase
+import app.tsumugi.exam.ExamService
+import app.tsumugi.exam.db.ExamDatabase
+import app.tsumugi.exam.dlpt.IlrLevel
+import app.tsumugi.exam.opi.OpiSession
+import app.tsumugi.practice.PracticeRepository
+import app.tsumugi.practice.db.PracticeDatabase
+import app.tsumugi.speaking.AiService
+import app.tsumugi.speaking.PronunciationService
+import app.tsumugi.speaking.RoleplaySession
+import app.tsumugi.study.activities.PomodoroSession
 import app.tsumugi.grammar.GrammarPoint
 import app.tsumugi.grammar.GrammarService
 import app.tsumugi.grammar.db.GrammarDatabase
@@ -55,6 +65,10 @@ class AppGraph(val platform: PlatformServices) {
     val collection: CollectionService by lazy { CollectionService(userDatabase, srs, { path() }) }
     val reader: ReaderService by lazy { ReaderService(this) }
     val onboarding: Onboarding by lazy { Onboarding(settings) { path() } }
+
+    /** On-device / self-hosted AI engines (BRIEF §7). Apps set `ai.llmBridge` / `ai.sttBridge` at startup. */
+    val ai: AiService by lazy { AiService(platform, settings) }
+    val pronunciation: PronunciationService by lazy { PronunciationService({ analyzer() }, { dictionary() }) }
 
     /** Optional self-hostable sync (BRIEF §8). Nothing syncs until the learner signs in. */
     val syncAccount: SyncAccount by lazy { SyncAccount(userDatabase, platform.secrets, { platform.httpEngine() }) }
@@ -107,6 +121,44 @@ class AppGraph(val platform: PlatformServices) {
 
     /** Next grammar lesson batch (1–3 points) or empty when the pack is missing or everything is learned. */
     suspend fun grammarLessons(): List<GrammarPoint> = grammar()?.lessonQueue((settings.int(SettingsRepository.DAILY_BUDGET_MINUTES, TodayPlanner.DEFAULT_BUDGET) / 20).coerceIn(1, 3)).orEmpty()
+
+    private var practiceRepository: PracticeRepository? = null
+    private var examService: ExamService? = null
+
+    /** Speaking/listening practice pack (scenarios, OPI banks, dialogues, minimal pairs), or null when missing. */
+    suspend fun practice(): PracticeRepository? = lock.withLock {
+        practiceRepository ?: openPack(PackInstaller.PRACTICE) {
+            PracticeRepository(PracticeDatabase(platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE)))
+        }?.also { practiceRepository = it }
+    }
+
+    /** Exam simulators. Works without the exam pack too (imported banks, history), so never null. */
+    suspend fun exams(): ExamService {
+        lock.withLock { examService }?.let { return it }
+        val pack = lock.withLock { openPack(PackInstaller.EXAM) { ExamDatabase(platform.packDriver(ExamDatabase.Schema, PackInstaller.EXAM)) } }
+        configuredSrs() // "add missed items to SRS" schedules with the learner's settings
+        return lock.withLock {
+            examService ?: ExamService(pack, userDatabase, device.deviceId, { grammar() }, { dictionary() }, collection).also { examService = it }
+        }
+    }
+
+    /** A role-play for [scenarioId] with the configured model (or scripted turns), or null without the pack. */
+    suspend fun roleplay(scenarioId: String): RoleplaySession? {
+        val practice = practice() ?: return null
+        val scenario = practice.scenario(scenarioId) ?: return null
+        return RoleplaySession(scenario, practice.scriptedTurns(scenarioId), ai.gateway())
+    }
+
+    /** An OPI practice interview starting at [startLevel]; scripted banks come from the practice pack. */
+    suspend fun opi(startLevel: IlrLevel = IlrLevel.L1): OpiSession? {
+        val practice = practice() ?: return null
+        val banks = IlrLevel.lowerRange.associateWith { practice.opiBank(it.label) }.filterValues { it.questions.isNotEmpty() }
+        if (banks.isEmpty()) return null
+        return OpiSession(banks, ai.gateway(), startLevel)
+    }
+
+    /** A 25-minute speaking session at the learner's JLPT level (from settings, default N4). */
+    suspend fun pomodoro(jlpt: Int = 4): PomodoroSession? = PomodoroSession.build(practice(), jlpt)
 
     private val lock = Mutex()
     private var dictionaryRepository: DictionaryRepository? = null

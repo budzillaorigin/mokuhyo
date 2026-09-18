@@ -6,6 +6,7 @@ import app.tsumugi.exam.db.ExamDatabase
 import app.tsumugi.exam.db.Exam_item
 import app.tsumugi.exam.db.Exam_passage
 import app.tsumugi.exam.jlpt.JlptBlueprints
+import app.tsumugi.exam.opi.OpiRating
 import app.tsumugi.grammar.GrammarService
 import app.tsumugi.study.CollectionService
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +14,9 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import kotlin.random.Random
 import kotlin.time.Clock
 import kotlin.time.Instant
@@ -62,11 +66,11 @@ class ExamService(
         val counts = mutableMapOf<Pair<ExamKind, String>, MutableMap<String, Int>>()
         pack?.examQueries?.coverage()?.executeAsList()?.forEach { row ->
             val exam = ExamBankValidator.examOf(row.exam) ?: return@forEach
-            counts.getOrPut(exam to row.level) { mutableMapOf() }.merge(row.type, row.n.toInt(), Int::plus)
+            counts.getOrPut(exam to row.level) { mutableMapOf() }.let { it[row.type] = (it[row.type] ?: 0) + row.n.toInt() }
         }
         userBanks().flatMap { it.items }.forEach { i ->
             val exam = ExamBankValidator.examOf(i.exam) ?: return@forEach
-            counts.getOrPut(exam to i.level) { mutableMapOf() }.merge(i.type, 1, Int::plus)
+            counts.getOrPut(exam to i.level) { mutableMapOf() }.let { it[i.type] = (it[i.type] ?: 0) + 1 }
         }
         counts.map { (k, v) -> ExamCoverage(k.first, k.second, v) }.sortedWith(compareBy({ it.exam.ordinal }, { it.level }))
     }
@@ -106,6 +110,40 @@ class ExamService(
             result.summary, deviceId,
         )
         id
+    }
+
+    /**
+     * Stores an OPI practice interview: the transcript (JSON list of {speaker, text}) in `answers`, the rating in
+     * `scoring` (factor scores as 1–5 tallies, next steps as weak areas). Always labeled a practice estimate.
+     */
+    suspend fun saveOpi(startedAt: Instant, transcript: List<Pair<String, String>>, rating: OpiRating): String = io {
+        val id = kotlin.uuid.Uuid.random().toString()
+        val lines = JsonArray(transcript.map { (speaker, text) -> JsonObject(mapOf("speaker" to JsonPrimitive(speaker), "text" to JsonPrimitive(text))) })
+        val factors = listOfNotNull(
+            rating.functions?.let { AttemptScoring.Tally("functions", it, 5) },
+            rating.accuracy?.let { AttemptScoring.Tally("accuracy", it, 5) },
+            rating.vocabulary?.let { AttemptScoring.Tally("vocabulary", it, 5) },
+            rating.fluency?.let { AttemptScoring.Tally("fluency", it, 5) },
+        )
+        val scoring = AttemptScoring(ilr = rating.ilr?.label, byType = factors, weakAreas = rating.nextSteps)
+        val how = if (rating.engine != null) "practice estimate" else "self-rated"
+        val summary = "OPI · " + (rating.ilr?.let { "ILR ${it.label} ($how)" } ?: "not rated")
+        q.insertAttempt(
+            id, ExamKind.OPI.name, "", ExamMode.INTERVIEW.name, startedAt.toEpochMilliseconds(), clock.now().toEpochMilliseconds(),
+            lines.toString(), json.encodeToString(AttemptScoring.serializer(), scoring), summary, deviceId,
+        )
+        id
+    }
+
+    /** Transcript of a stored OPI interview as (speaker, text), speaker = "LEARNER" | "PARTNER". */
+    suspend fun opiTranscript(id: String): List<Pair<String, String>> = io {
+        val row = q.attemptById(id).executeAsOneOrNull() ?: return@io emptyList()
+        runCatching {
+            json.parseToJsonElement(row.answers).let { it as JsonArray }.map { line ->
+                val o = line as JsonObject
+                (o["speaker"] as JsonPrimitive).content to (o["text"] as JsonPrimitive).content
+            }
+        }.getOrDefault(emptyList())
     }
 
     suspend fun history(exam: ExamKind? = null, limit: Int = 50): List<AttemptSummary> = io {

@@ -290,7 +290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copies packs built by tools/packs (git-ignored) into the app bundle under packs/.\n# Without them the app builds and shows an honest 'dictionary not installed' state.\nSRC=\"$SRCROOT/../content/packs\"\nDEST=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/packs\"\nrm -rf \"$DEST\"\nmkdir -p \"$DEST\"\nfor f in \"$SRC\"/*.sqlite \"$SRC\"/manifest.json; do\n  [ -f \"$f\" ] && cp \"$f\" \"$DEST/\"\ndone\ncp \"$SRCROOT/../docs/LICENSES.md\" \"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/LICENSES.md\" || true\nexit 0\n";
+			shellScript = "# Copies packs built by tools/packs (git-ignored) into the app bundle under packs/.\n# Without them the app builds and shows an honest 'dictionary not installed' state.\nSRC=\"$SRCROOT/../content/packs\"\nDEST=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/packs\"\nrm -rf \"$DEST\"\nmkdir -p \"$DEST\"\nfor f in \"$SRC\"/*.sqlite \"$SRC\"/manifest.json; do\n  [ -f \"$f\" ] && cp \"$f\" \"$DEST/\"\ndone\ncp \"$SRCROOT/../content/models/manifest.json\" \"$DEST/models-manifest.json\" || true\ncp \"$SRCROOT/../docs/LICENSES.md\" \"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/LICENSES.md\" || true\nexit 0\n";
 		};
 		7A5E00000000000000000018 /* Embed Native Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

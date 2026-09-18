@@ -86,5 +86,6 @@ class PackInstaller(
         const val GRAMMAR = "grammar.sqlite"
         const val TOKENIZER = "tokenizer.sqlite"
         const val EXAM = "exam.sqlite"
+        const val PRACTICE = "practice.sqlite"
     }
 }
