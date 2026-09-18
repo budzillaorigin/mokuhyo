@@ -114,7 +114,7 @@ def check_targets() -> None:
     if not check(pbx.is_file(), f"missing {pbx}"):
         return
     text = pbx.read_text(encoding="utf-8")
-    declared = sorted(set(re.findall(r"isa = PBXNativeTarget;.*?\n\s*name = (\w+);", text, flags=re.S)))
+    declared = sorted(set(re.findall(r"isa = PBXNativeTarget;.*?\n\s*name = (\w+);", text, flags=re.DOTALL)))
     expected = sorted(SHIPPING_TARGETS + ["TsumugiTests"])
     check(declared == expected, f"project.pbxproj targets are {declared}, expected {expected}")
     shipping = [t for t in declared if t != "TsumugiTests"]
