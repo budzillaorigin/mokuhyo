@@ -1,0 +1,28 @@
+# Gradle / Kotlin
+.gradle/
+.kotlin/
+build/
+local.properties
+*.iml
+.idea/
+
+# Xcode
+iosApp/**/xcuserdata/
+iosApp/**/*.xcworkspace/xcuserdata/
+DerivedData/
+*.xcuserstate
+
+# Python tools
+tools/.venv/
+__pycache__/
+*.pyc
+
+# Built content packs and downloaded models (reproducible from tools/)
+content/packs/*.sqlite
+content/models/*.gguf
+content/models/*.bin
+
+# OS
+.DS_Store
+Thumbs.db
+.ruff_cache/

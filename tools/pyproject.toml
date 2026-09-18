@@ -1,0 +1,13 @@
+[project]
+name = "tsumugi-tools"
+version = "0.0.1"
+description = "Reproducible content-pack builders, item QA and model prep for Tsumugi (see BRIEF.md §4, Appendix B)"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["ruff"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"

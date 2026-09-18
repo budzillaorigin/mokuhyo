@@ -1,0 +1,11 @@
+-- Phase 0: proves SQLDelight code generation. Domain tables (user.sq, srs.sq, …) arrive in Phase 1.
+CREATE TABLE app_meta (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+get:
+SELECT value FROM app_meta WHERE key = ?;
+
+put:
+INSERT OR REPLACE INTO app_meta(key, value) VALUES (?, ?);
