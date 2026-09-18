@@ -138,6 +138,12 @@ The engine choice, endpoint URL and model name live in the synced `setting` tabl
 ### D-034: Exam banks keep `source = "llm"` and flip `verified` (2026-09-18)
 Item banks carry both `source`, which records where the item came from, and `verified`. `tools/items/review.py` sets `verified: true` and adds `reviewed {by, on}`, and the app hides the "AI-generated" badge once `verified` is true. This keeps the intent of CLAUDE.md rule 10 (only the review tool removes the label) without losing where an item came from. Grammar packs still flip `source` to `"verified"`. DLPT ids write "+" as "p" (`dr-2p-editorial-001`); item ids are the passage id plus `-qN`.
 
+### D-035: Android speech I/O and media playback (2026-09-18)
+- **Recording:** `AudioRecord` at 16 kHz mono PCM16, kept in memory and never uploaded. Only the optional "Whisper server" engine sends audio, and only to the learner's own server.
+- **System recognizer:** when no Whisper engine is set up, Android's recognizer runs in Japanese with `EXTRA_PREFER_OFFLINE`. On Android 13+ it is fed the app's recording through `EXTRA_AUDIO_SOURCE`, so the same audio also goes to the pronunciation analyzer. On Android 12 and older the recognizer listens by itself and doesn't share its audio. There, the pronunciation panel says pitch and fluency can't be scored and points to on-device Whisper.
+- **Two voices:** "female" and "male" script lines use different installed Japanese voices when the device has more than one, plus a pitch offset either way. "narrator" and unknown hints use the default voice. VOICEVOX, when configured, uses the configured speaker for every line.
+- **Media player:** the platform `VideoView` rather than Media3, so no dependency was added. Subtitles come from the learner's .srt/.vtt files (UTF-8, falling back to Shift_JIS).
+
 ---
 
 ## Open decisions (BRIEF.md §14)

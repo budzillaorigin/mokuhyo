@@ -1,6 +1,9 @@
 package app.tsumugi.android.features.me
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ListItem
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,7 +28,7 @@ import app.tsumugi.settings.SettingsRepository
 import kotlinx.coroutines.launch
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(onOpenAi: () -> Unit = {}) {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
     val scope = rememberCoroutineScope()
     var batch by remember { mutableFloatStateOf(SettingsRepository.DEFAULT_LESSON_BATCH.toFloat()) }
@@ -53,6 +56,12 @@ fun SettingsScreen() {
                     graph.reloadScheduler()
                 }
             },
+        )
+        HorizontalDivider()
+        ListItem(
+            modifier = Modifier.clickable(onClick = onOpenAi),
+            headlineContent = { Text("AI & speech") },
+            supportingContent = { Text("On-device models, your own server, speech recognition, voices") },
         )
     }
 }
