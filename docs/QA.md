@@ -13,7 +13,7 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] Each of these finds 食べる: 食べさせられなかった, たべる, taberu, "eat".
 - [ ] A pasted sentence splits into words.
 - [ ] The entry page shows furigana, pitch accent, example sentences, the conjugation table and the kanji with animated stroke order.
-- [ ] Lookups feel instant (under about 50 ms perceived).
+- [ ] Lookups feel instant. BRIEF §11 budget: under 5 ms per lookup on an iPhone 12 in a Release build (CI checks 10 ms on a Debug simulator build).
 - [ ] Draw to search: drawing 語 finds it in the top 5.
 - [ ] Scan text: camera OCR on printed Japanese, then tap a word to look it up.
 
