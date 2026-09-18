@@ -20,6 +20,8 @@ enum Route: Hashable {
     case grammarLevel(Int)
     case grammarPoint(String)
     case grammarLessons
+    case lookup(String)
+    case scan
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -74,6 +76,8 @@ struct TabStack<Root: View>: View {
                     case .grammarLevel(let level): GrammarLevelView(level: level)
                     case .grammarPoint(let id): GrammarPointView(id: id)
                     case .grammarLessons: GrammarLessonView()
+                    case .lookup(let text): DictionarySearchView(initialQuery: text)
+                    case .scan: ScanView()
                     }
                 }
         }
@@ -94,6 +98,9 @@ struct LearnHomeView: View {
             }
             NavigationLink(value: Route.radicals) {
                 LabeledContent("Radical search", value: "Find a kanji by its parts")
+            }
+            NavigationLink(value: Route.scan) {
+                LabeledContent("Scan text", value: "Camera or photo")
             }
             NavigationLink(value: Route.wordLists) {
                 LabeledContent("Word lists", value: "Your lists")

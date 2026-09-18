@@ -29,6 +29,7 @@ import app.tsumugi.android.features.dictionary.RadicalSearchScreen
 import app.tsumugi.android.features.dictionary.WordListScreen
 import app.tsumugi.android.features.dictionary.WordListsScreen
 import app.tsumugi.android.features.me.ImportScreen
+import app.tsumugi.android.features.reader.ScanScreen
 import app.tsumugi.android.features.me.LicensesScreen
 import app.tsumugi.android.features.me.MeDestination
 import app.tsumugi.android.features.me.MeScreen
@@ -82,6 +83,8 @@ fun TsumugiApp() {
                 when (val route = nav.current) {
                     Route.TabRoot -> TabRoot(nav.tab, nav::push)
                     Route.Dictionary -> DictionarySearchScreen(dictionaryNav)
+                    is Route.Lookup -> DictionarySearchScreen(dictionaryNav, route.query)
+                    Route.Scan -> ScanScreen(onLookup = { nav.push(Route.Lookup(it)) })
                     is Route.Entry -> EntryScreen(route.id, dictionaryNav)
                     is Route.Kanji -> KanjiScreen(route.literal, dictionaryNav)
                     Route.Radicals -> RadicalSearchScreen(dictionaryNav)
@@ -133,6 +136,7 @@ private fun LearnHome(push: (Route) -> Unit) {
             Triple("Dictionary", "Offline JMdict · kanji · examples", Route.Dictionary),
             Triple("Radical search", "Find a kanji by its parts", Route.Radicals),
             Triple("Word lists", "Your lists · imiwa imports", Route.WordLists),
+            Triple("Scan text", "Read Japanese from a photo", Route.Scan),
         ).forEach { (title, subtitle, route) ->
             ListItem(
                 modifier = Modifier.clickable { push(route) },

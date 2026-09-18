@@ -2,9 +2,11 @@ import Shared
 import SwiftUI
 
 struct DictionarySearchView: View {
+    var initialQuery = ""
+
     var body: some View {
         DictionaryGate { repo in
-            SearchResultsView(repo: repo)
+            SearchResultsView(repo: repo, query: initialQuery)
         }
         .navigationTitle("Dictionary")
     }
@@ -13,7 +15,7 @@ struct DictionarySearchView: View {
 private struct SearchResultsView: View {
     let repo: DictionaryRepository
 
-    @State private var query = ""
+    @State var query: String
     @State private var results: SearchResults = SearchResults.companion.EMPTY
 
     var body: some View {

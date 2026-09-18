@@ -86,8 +86,9 @@ fun DictionaryGate(content: @Composable (DictionaryRepository) -> Unit) {
 }
 
 @Composable
-fun DictionarySearchScreen(nav: DictionaryNav) {
-    val vm: DictionaryViewModel = viewModel()
+fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
+    val vm: DictionaryViewModel = viewModel(key = initialQuery ?: "search")
+    LaunchedEffect(initialQuery) { if (initialQuery != null) vm.query.value = initialQuery }
     val query by vm.query.collectAsStateWithLifecycle()
     val results by vm.results.collectAsStateWithLifecycle()
 

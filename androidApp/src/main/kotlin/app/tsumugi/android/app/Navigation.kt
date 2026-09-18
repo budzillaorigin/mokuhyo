@@ -20,6 +20,8 @@ sealed interface Route {
 
     data object TabRoot : Route { override val title = "" }
     data object Dictionary : Route { override val title = "Dictionary" }
+    data class Lookup(val query: String) : Route { override val title = "Dictionary" }
+    data object Scan : Route { override val title = "Scan text" }
     data class Entry(val id: Long) : Route { override val title = "Word" }
     data class Kanji(val literal: String) : Route { override val title = literal }
     data object Radicals : Route { override val title = "Radical search" }
