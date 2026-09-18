@@ -126,7 +126,13 @@ struct ReaderLibraryView: View {
     }
 }
 
-/// The reader: furigana modes, tap a word for a non-blocking popup, long-press a sentence for grammar + audio.
+/// Furigana choices; "above my level" uses the learner's level and known kanji (G-07, `LearnerFurigana`).
+enum FuriganaChoice: Hashable {
+    case unknownOnly, aboveLevel, all, none
+}
+
+/// The reader: furigana modes, tap a word for a non-blocking popup, long-press a sentence for grammar + audio,
+/// pitch-accent marks and comprehension questions (G-07).
 struct ReaderView: View {
     @Environment(AppModel.self) private var app
     let docId: String
@@ -134,7 +140,13 @@ struct ReaderView: View {
     @State private var doc: ReaderDocument?
     @State private var ranges: [KotlinIntRange] = []
     @State private var paragraphs: [ReaderParagraph] = []
-    @State private var mode: FuriganaMode = .unknownOnly
+    @State private var furigana: FuriganaChoice = .unknownOnly
+    /// "Only above my level" (G-07): the learner's JLPT level and known kanji, loaded once.
+    @State private var learner: LearnerFuriganaFilter?
+    @State private var showPitch = false
+    /// Pitch marks per token start offset ("は↑し↓", or "?" when the accent is unknown).
+    @State private var pitchMarks: [Int32: String] = [:]
+    @State private var showQuestions = false
     @State private var selected: (ReaderToken, ReaderSentence)?
     @State private var summary: EntrySummary?
     @State private var sentencePanel: ReaderSentence?
@@ -183,13 +195,16 @@ struct ReaderView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
-                    Picker("Furigana", selection: $mode) {
-                        Text("Unknown words").tag(FuriganaMode.unknownOnly)
-                        Text("All").tag(FuriganaMode.all)
-                        Text("None").tag(FuriganaMode.none)
+                    Picker("Furigana", selection: $furigana) {
+                        Text("Unknown words").tag(FuriganaChoice.unknownOnly)
+                        Text("Only above my level").tag(FuriganaChoice.aboveLevel)
+                        Text("All").tag(FuriganaChoice.all)
+                        Text("None").tag(FuriganaChoice.none)
                     }
+                    Toggle("Pitch accent marks", isOn: $showPitch)
+                    Button("Comprehension questions") { showQuestions = true }
                 } label: { Image(systemName: "textformat.size") }
-                .accessibilityLabel(Text("Furigana"))
+                .accessibilityLabel(Text("Reading options"))
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -204,9 +219,41 @@ struct ReaderView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .task { await open() }
+        .task(id: furigana) {
+            if furigana == .aboveLevel && learner == nil { learner = try? await SwiftSupport.shared.learnerFurigana(graph: app.graph) }
+        }
+        .task(id: showPitch) { if showPitch { await loadPitch(paragraphs) } }
+        .sheet(isPresented: $showQuestions) {
+            if let doc {
+                NavigationStack { ReadingQuestionsSheet(document: doc, jlpt: learner?.jlpt.map { Int($0.intValue) }) }
+                    .environment(app)
+            }
+        }
         .onDisappear {
             speech.stop()
             translating?.cancel()
+        }
+    }
+
+    private func showsFurigana(_ t: ReaderToken) -> Bool {
+        switch furigana {
+        case .aboveLevel: learner?.show(token: t) ?? t.showFurigana(mode: .unknownOnly, learnerJlpt: nil)
+        case .unknownOnly: t.showFurigana(mode: .unknownOnly, learnerJlpt: nil)
+        case .all: t.showFurigana(mode: .all, learnerJlpt: nil)
+        case .none: false
+        }
+    }
+
+    /// Pitch marks from the dictionary's accent table for the words of [paragraphs] (G-07 overlay).
+    private func loadPitch(_ paragraphs: [ReaderParagraph]) async {
+        for p in paragraphs {
+            for sentence in p.sentences {
+                guard sentence.tokens.contains(where: { pitchMarks[$0.start] == nil && $0.isWord }) else { continue }
+                let pitches = (try? await app.graph.reader.pitch(sentence: sentence)) ?? []
+                for pitch in pitches {
+                    pitchMarks[pitch.start] = SwiftSupport.shared.pitchMarks(pitch: pitch) ?? "?"
+                }
+            }
         }
     }
 
@@ -233,21 +280,31 @@ struct ReaderView: View {
 
     private func tokenView(_ t: ReaderToken, _ s: ReaderSentence) -> some View {
         let highlighted = speech.speakingRange.map { NSLocationInRange(Int(t.start), $0) } ?? false
-        let show = t.showFurigana(mode: mode, learnerJlpt: nil)
+        let show = showsFurigana(t)
         // F-36: ruby sits over each kanji run (the analyzer's segments from Furigana.align), not over
         // the whole token, so okurigana such as the べる of 食べる stay bare.
         let segments = t.furigana.isEmpty ? [FuriganaSegment(ruby: t.surface, rt: t.reading)] : t.furigana
-        return HStack(alignment: .bottom, spacing: 0) {
-            ForEach(Array(segments.enumerated()), id: \.offset) { _, seg in
-                VStack(spacing: 0) {
-                    Text(show ? (seg.rt ?? " ") : " ")
-                        .font(.japanese(size: 10, relativeTo: .caption2)).foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .fixedSize()
-                    Text(seg.ruby)
-                        .font(.japanese(size: 20))
-                        .foregroundStyle(t.isWord && !t.known ? Color.accentColor : Color.primary)
+        let marks = showPitch && t.isWord ? pitchMarks[t.start] : nil
+        return VStack(spacing: 0) {
+            HStack(alignment: .bottom, spacing: 0) {
+                ForEach(Array(segments.enumerated()), id: \.offset) { _, seg in
+                    VStack(spacing: 0) {
+                        Text(show ? (seg.rt ?? " ") : " ")
+                            .font(.japanese(size: 10, relativeTo: .caption2)).foregroundStyle(.secondary)
+                            .lineLimit(1)
+                            .fixedSize()
+                        Text(seg.ruby)
+                            .font(.japanese(size: 20))
+                            .foregroundStyle(t.isWord && !t.known ? Color.accentColor : Color.primary)
+                    }
                 }
+            }
+            if showPitch {
+                // ↑ rise, ↓ drop, "?" unknown (inflected or not in the accent table; never guessed).
+                Text(marks ?? " ")
+                    .font(.japanese(size: 9, relativeTo: .caption2)).foregroundStyle(.orange)
+                    .lineLimit(1)
+                    .fixedSize()
             }
         }
         .background(highlighted ? Color.yellow.opacity(0.3) : .clear)
@@ -272,7 +329,7 @@ struct ReaderView: View {
                 HStack(alignment: .lastTextBaseline) {
                     Text(summary?.headword ?? token.dictionaryForm ?? token.surface).font(.japanese(size: 24)).japaneseSpeech()
                     Text(summary?.reading ?? token.reading ?? "").font(.japanese(size: 14)).japaneseSpeech()
-                    if let stage = token.stage { TagView(stage.label) }
+                    if let stage = token.stage { TagView(SharedText.stage(stage)) }
                 }
                 if !token.deinflection.isEmpty { Text("← " + token.deinflection.joined(separator: " ← ")).font(.caption2) }
                 Text(summary?.glossPreview ?? "").font(.subheadline).lineLimit(3)
@@ -396,8 +453,10 @@ struct ReaderView: View {
         guard let doc, let analyzer = try? await app.graph.reader.analyzer(), paragraphs.count < ranges.count else { return }
         let next = ranges[paragraphs.count..<min(ranges.count, paragraphs.count + page)]
         for range in next {
-            if let p = try? await analyzer.paragraph(body: doc.body, range: range, ruby: [], known: nil) { paragraphs.append(p) }
+            // Aozora and graded-passage ruby are authoritative readings (D-114).
+            if let p = try? await analyzer.paragraph(body: doc.body, range: range, ruby: doc.ruby, known: nil) { paragraphs.append(p) }
         }
+        if showPitch { await loadPitch(paragraphs) }
     }
 }
 

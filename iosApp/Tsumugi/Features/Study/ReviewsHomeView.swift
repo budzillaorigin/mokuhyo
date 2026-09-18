@@ -43,7 +43,7 @@ struct ReviewsHomeView: View {
                 ForEach(queue, id: \.kind) { entry in
                     HStack {
                         Circle().fill(entry.kind.color).frame(width: 10, height: 10).accessibilityHidden(true)
-                        Text(entry.kind.label)
+                        Text(SharedText.kind(entry.kind))
                         Spacer()
                         Text("\(entry.count)").monospacedDigit().foregroundStyle(.secondary)
                     }

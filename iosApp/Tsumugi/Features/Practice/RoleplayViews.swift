@@ -174,6 +174,13 @@ final class RoleplayModel {
         feedbackBusy = nil
     }
 
+    /// Stores the conversation for the level estimate and error log (G-02); stored once, when the screen closes.
+    func save(graph: AppGraph) {
+        guard let session else { return }
+        let conversations = graph.conversations
+        Task { _ = try? await session.save(conversations: conversations) }
+    }
+
     var lastHint: String? {
         guard let last = lines.last, !last.learner, !last.hint.isEmpty else { return nil }
         return last.hint
@@ -226,6 +233,7 @@ struct RoleplayView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task { await model.load(graph: app.graph, scenarioId: scenarioId, voice: voice) }
         .onDisappear {
+            model.save(graph: app.graph)
             voice.stop()
             if recorder.isRecording { _ = recorder.stop() }
         }

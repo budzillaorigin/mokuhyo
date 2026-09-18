@@ -38,6 +38,19 @@ import okio.Path.Companion.toPath
 import okio.buffer
 import okio.use
 import kotlin.time.Clock
+import app.tsumugi.integrations.ankiconnect.AnkiPushResult
+import app.tsumugi.integrations.notion.NotionPushResult
+import app.tsumugi.media.GeneratedSubtitles
+import app.tsumugi.media.MediaHash
+import app.tsumugi.media.SubtitleProgress
+import app.tsumugi.reader.TokenPitch
+import app.tsumugi.review.ContentReviewService
+import app.tsumugi.review.ReviewCandidate
+import app.tsumugi.review.ReviewKind
+import app.tsumugi.review.Verdict as ReviewVerdictKind
+import app.tsumugi.speech.PronunciationAnalyzer
+import app.tsumugi.study.FocusTimer
+import app.tsumugi.study.TodayBlockKind
 
 /** A picker option: [key] is the enum name, stable across releases. */
 data class EngineChoice(val key: String, val label: String, val detail: String)
@@ -397,4 +410,67 @@ object SwiftSupport {
     fun pomodoroBreakRemainingSeconds(session: PomodoroSession): Long = session.breakRemaining.inWholeSeconds
 
     private fun kind(speech: Boolean) = if (speech) ModelKind.STT else ModelKind.LLM
+
+    // --- Phase 10 (BRIEF_V2 G-01…G-16): thin adapters, types in SwiftBridges.kt ------------------------------
+
+    fun focusTimer(block: TodayBlockKind?, minutes: Int): FocusTimer = FocusTimer.forBlock(block, minutes)
+
+    fun focusRemainingSeconds(timer: FocusTimer): Long = timer.remaining.inWholeSeconds
+
+    fun focusBreakRemainingSeconds(timer: FocusTimer): Long = timer.breakRemaining.inWholeSeconds
+
+    /** The media content key (D-113) of a local file, off the main thread. */
+    @Throws(Exception::class)
+    suspend fun mediaHash(graph: AppGraph, path: String): String = MediaHash.of(graph.platform.fileSystem, path)
+
+    /** Whisper subtitles for the media keyed [mediaHash] (cached); cancel the calling task to stop. */
+    @Throws(Exception::class)
+    suspend fun generateSubtitles(graph: AppGraph, mediaHash: String, reader: PcmWindowReader, onProgress: (SubtitleProgress) -> Unit): GeneratedSubtitles =
+        graph.subtitles.generate(mediaHash, CallbackPcmSource(reader), "ja", onProgress)
+
+    @Throws(Exception::class)
+    suspend fun exportReviewCsv(graph: AppGraph, outPath: String): Int = graph.reviewCsv.export(graph.platform.fileSystem, outPath) { _, _ -> }
+
+    @Throws(Exception::class)
+    suspend fun exportBackup(graph: AppGraph, outPath: String): Int = graph.backup.exportTo(graph.platform.fileSystem, outPath)
+
+    @Throws(Exception::class)
+    suspend fun pushItemsToNotion(graph: AppGraph, onProgress: (PushProgress) -> Unit): NotionPushResult =
+        graph.pushItemsToNotion(emptyList()) { d, t -> onProgress(PushProgress(d, t)) }
+
+    @Throws(Exception::class)
+    suspend fun pushStatsToNotion(graph: AppGraph, days: Int, onProgress: (PushProgress) -> Unit): NotionPushResult =
+        graph.pushStatsToNotion(days) { d, t -> onProgress(PushProgress(d, t)) }
+
+    /** Pushes every mined item (source = user) to desktop Anki. */
+    @Throws(Exception::class)
+    suspend fun pushMinedToAnki(graph: AppGraph, onProgress: (PushProgress) -> Unit): AnkiPushResult =
+        graph.ankiConnect.push(graph.minedItems()) { d, t -> onProgress(PushProgress(d, t)) }
+
+    /** "は↑し↓" for a reader token's pitch, or null when the accent is unknown (inflected or not in the table). */
+    fun pitchMarks(pitch: TokenPitch): String? {
+        if (pitch.downstep == null || pitch.heights.isEmpty()) return null
+        val labels = pitch.morae + List((pitch.heights.size - pitch.morae.size).coerceAtLeast(0)) { "" }
+        return PronunciationAnalyzer.marks(labels.take(pitch.heights.size), pitch.heights.take(labels.size))
+    }
+
+    @Throws(Exception::class)
+    suspend fun learnerFurigana(graph: AppGraph): LearnerFuriganaFilter = LearnerFuriganaFilter(graph.reader.learnerLevel())
+
+    fun reviewKinds(): List<ReviewKind> = ReviewKind.entries
+
+    @Throws(Exception::class)
+    suspend fun reviewQueue(service: ContentReviewService, kind: ReviewKind?): List<ReviewEntry> =
+        service.queue(kind).map { (c, v) -> ReviewEntry(c, v?.verdict?.code, v?.notes.orEmpty(), v?.edits.orEmpty()) }
+
+    @Throws(Exception::class)
+    suspend fun reviewCounts(service: ContentReviewService): List<ReviewKindCount> =
+        service.summary().entries.sortedBy { it.key.ordinal }.map { (k, v) -> ReviewKindCount(k, v.first, v.second) }
+
+    /** Records "accept" | "edit" | "reject" for [candidate]; returns the stored verdict code. */
+    @Throws(Exception::class)
+    suspend fun decideReview(service: ContentReviewService, candidate: ReviewCandidate, verdictCode: String, notes: String, edits: Map<String, String>): String {
+        val verdict = ReviewVerdictKind.of(verdictCode) ?: throw IllegalArgumentException("unknown verdict $verdictCode")
+        return service.decide(candidate, verdict, notes, edits).verdict.code
+    }
 }

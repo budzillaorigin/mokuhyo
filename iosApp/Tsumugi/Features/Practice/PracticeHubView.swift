@@ -14,6 +14,9 @@ struct PracticeHubView: View {
                     .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
             }
             Section("Speak") {
+                NavigationLink(value: Route.freeTalk) {
+                    LabeledContent("Free talk", value: "Open conversation at your level")
+                }
                 NavigationLink(value: Route.scenarios) {
                     LabeledContent("Role-play scenarios", value: "Shop, station, doctor…")
                 }
@@ -36,6 +39,9 @@ struct PracticeHubView: View {
                 }
                 NavigationLink(value: Route.media) {
                     LabeledContent("Media player", value: "Your videos + subtitles")
+                }
+                NavigationLink(value: Route.podcasts) {
+                    LabeledContent("Podcasts", value: "RSS, downloads, transcripts")
                 }
             }
             Section("Write") {

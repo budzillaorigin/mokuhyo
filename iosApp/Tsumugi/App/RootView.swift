@@ -42,6 +42,17 @@ enum Route: Hashable {
     case exams
     case attempt(String)
     case examBanks
+    // Phase 10 (BRIEF_V2 G-01…G-16)
+    case kanaCourse
+    case personalCard
+    case freeTalk
+    case podcasts
+    case podcast(String)
+    case mediaFile(path: String, title: String, episodeId: String?)
+    case leaderboard
+    case export
+    case integrations
+    case contentReview
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -76,6 +87,18 @@ struct RootView: View {
                 .tabItem { Label("Practice", systemImage: "mic") }.tag(3)
             TabStack { MeView() }
                 .tabItem { Label("Me", systemImage: "person.crop.circle") }.tag(4)
+        }
+        // Text selected in Safari (or any app) and sent to "Look up in Tsumugi" opens the dictionary (G-09).
+        .sheet(item: Binding(get: { app.sharedLookup }, set: { app.sharedLookup = $0 })) { lookup in
+            TabStack {
+                DictionarySearchView(initialQuery: lookup.text)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Close") { app.sharedLookup = nil }
+                        }
+                    }
+            }
+            .environment(app)
         }
         // Text or a link shared with "Read in Tsumugi" opens straight in the reader.
         .sheet(item: Binding(get: { app.sharedDocument }, set: { app.sharedDocument = $0 })) { doc in
@@ -148,6 +171,16 @@ struct TabStack<Root: View>: View {
                     case .exams: ExamHubView()
                     case .attempt(let id): AttemptReviewView(attemptId: id)
                     case .examBanks: ExamBanksView()
+                    case .kanaCourse: KanaCourseView()
+                    case .personalCard: PersonalCardsView()
+                    case .freeTalk: FreeTalkView()
+                    case .podcasts: PodcastsView()
+                    case .podcast(let id): PodcastEpisodesView(podcastId: id)
+                    case .mediaFile(let path, let title, let episodeId): MediaPlayerView(initialFile: path, initialTitle: title, episodeId: episodeId)
+                    case .leaderboard: LeaderboardView()
+                    case .export: ExportView()
+                    case .integrations: IntegrationsView()
+                    case .contentReview: ContentReviewView()
                     }
                 }
         }
@@ -157,6 +190,9 @@ struct TabStack<Root: View>: View {
 struct LearnHomeView: View {
     var body: some View {
         List {
+            NavigationLink(value: Route.kanaCourse) {
+                LabeledContent("Kana", value: "Hiragana and katakana from zero")
+            }
             NavigationLink(value: Route.pathLevels) {
                 LabeledContent("Kanji path", value: "60 levels")
             }
@@ -180,6 +216,9 @@ struct LearnHomeView: View {
             }
             NavigationLink(value: Route.wordLists) {
                 LabeledContent("Word lists", value: "Your lists")
+            }
+            NavigationLink(value: Route.personalCard) {
+                LabeledContent("Personal card", value: "Your picture and voice")
             }
         }
         .navigationTitle("Learn")

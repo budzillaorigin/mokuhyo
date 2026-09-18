@@ -11,6 +11,66 @@
         }
       }
     },
+    " · practice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "・練習"
+          }
+        }
+      }
+    },
+    "%@ accuracy (30 d)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@の正答率（30日）"
+          }
+        }
+      }
+    },
+    "%@ failed: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@に失敗しました：%2$@"
+          }
+        }
+      }
+    },
+    "%@ isn't UTF-8, UTF-16 or Shift-JIS text." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@はUTF-8、UTF-16、Shift-JISのテキストではありません。"
+          }
+        }
+      }
+    },
+    "%@ phase · about %lld min planned" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@フェーズ・予定は約%2$lld分"
+          }
+        }
+      }
+    },
+    "%@ · last %lld days" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@・直近%2$lld日間"
+          }
+        }
+      }
+    },
     "%d min" : {
       "localizations" : {
         "ja" : {
@@ -31,12 +91,62 @@
         }
       }
     },
+    "%lld added, %lld already in Anki." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld件を追加、%2$lld件はAnkiに登録済みです。"
+          }
+        }
+      }
+    },
+    "%lld answers today" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日の解答 %lld件"
+          }
+        }
+      }
+    },
+    "%lld conversations · %lld min" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話%1$lld回・%2$lld分"
+          }
+        }
+      }
+    },
+    "%lld created, %lld updated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld件を作成、%2$lld件を更新しました。"
+          }
+        }
+      }
+    },
     "%lld done · %lld left" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$lld件完了・残り%2$lld件"
+          }
+        }
+      }
+    },
+    "%lld failed: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld件が失敗しました：%2$@"
           }
         }
       }
@@ -71,6 +181,16 @@
         }
       }
     },
+    "%lld of %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
     "%lld of %lld correct" : {
       "localizations" : {
         "ja" : {
@@ -81,12 +201,62 @@
         }
       }
     },
+    "%lld of %lld decided" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld件中%1$lld件判定済み"
+          }
+        }
+      }
+    },
+    "%lld of %lld lessons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lldレッスン中%1$lldレッスン"
+          }
+        }
+      }
+    },
+    "%lld of your lines." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの発言 %lld件。"
+          }
+        }
+      }
+    },
     "%lld out of 100" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "100点中%lld点"
+          }
+        }
+      }
+    },
+    "%lld reviews · 🔥%lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習%1$lld件・🔥%2$lld"
+          }
+        }
+      }
+    },
+    "%lld sentences practised." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld文を練習しました。"
           }
         }
       }
@@ -111,12 +281,32 @@
         }
       }
     },
+    "%lld uploaded, %lld downloaded, %lld deleted." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld件アップロード、%2$lld件ダウンロード、%3$lld件削除しました。"
+          }
+        }
+      }
+    },
     "%lld words" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld語"
+          }
+        }
+      }
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. %2$@"
           }
         }
       }
@@ -131,6 +321,26 @@
         }
       }
     },
+    "/ 100 shadowing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/ 100 シャドーイング"
+          }
+        }
+      }
+    },
+    "1 year" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1年"
+          }
+        }
+      }
+    },
     "25-minute Pomodoro" : {
       "localizations" : {
         "ja" : {
@@ -141,12 +351,42 @@
         }
       }
     },
+    "30 days" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30日"
+          }
+        }
+      }
+    },
     "60 levels" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "60レベル"
+          }
+        }
+      }
+    },
+    "7 days" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7日"
+          }
+        }
+      }
+    },
+    "90 days" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "90日"
           }
         }
       }
@@ -187,6 +427,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "終了したセクションは再び開けません。"
+          }
+        }
+      }
+    },
+    "A frozen day neither breaks nor extends your streak. A spent freeze can't be taken back." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "凍結した日は連続記録を途切れさせず、伸ばしもしません。使ったフリーズは取り消せません。"
+          }
+        }
+      }
+    },
+    "A restore merges the backup into what's here: nothing is deleted, no review is lost and no level goes down. Restoring the same file twice changes nothing." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復元はバックアップを今のデータに統合します。何も削除されず、復習記録も失われず、レベルも下がりません。同じファイルを2回復元しても何も変わりません。"
           }
         }
       }
@@ -241,6 +501,16 @@
         }
       }
     },
+    "AI settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI設定"
+          }
+        }
+      }
+    },
     "AI-generated" : {
       "localizations" : {
         "ja" : {
@@ -291,6 +561,26 @@
         }
       }
     },
+    "Accept" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "承認"
+          }
+        }
+      }
+    },
+    "Accepted" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "承認済み"
+          }
+        }
+      }
+    },
     "Accepted: %@" : {
       "localizations" : {
         "ja" : {
@@ -317,6 +607,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正確さ"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加"
+          }
+        }
+      }
+    },
+    "Add Japanese subtitles, or generate them, to see lines here." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語字幕を追加するか生成すると、ここにセリフが表示されます。"
+          }
+        }
+      }
+    },
+    "Add a podcast" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポッドキャストを追加"
+          }
+        }
+      }
+    },
+    "Add a podcast's RSS feed address. Episodes download to this device; transcripts are generated on it too." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポッドキャストのRSSフィードのアドレスを追加してください。エピソードはこの端末にダウンロードされ、文字起こしもこの端末で作成されます。"
           }
         }
       }
@@ -361,6 +691,26 @@
         }
       }
     },
+    "Add my recording" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分の録音を追加"
+          }
+        }
+      }
+    },
+    "Add podcast" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポッドキャストを追加"
+          }
+        }
+      }
+    },
     "Add to list" : {
       "localizations" : {
         "ja" : {
@@ -397,6 +747,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "リストに追加しました。"
+          }
+        }
+      }
+    },
+    "Added to your reviews" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習に追加しました"
           }
         }
       }
@@ -461,12 +821,92 @@
         }
       }
     },
+    "An estimate for practice from your last %lld conversations, not a rating." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直近%lld回の会話から練習用に推定したもので、評価ではありません。"
+          }
+        }
+      }
+    },
+    "An estimate for practice, not a rating." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "練習用の推定で、評価ではありません。"
+          }
+        }
+      }
+    },
+    "Anki (.apkg) and other imports" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anki（.apkg）とその他の読み込み"
+          }
+        }
+      }
+    },
+    "Anki answered. Settings saved on this device." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ankiが応答しました。設定をこの端末に保存しました。"
+          }
+        }
+      }
+    },
+    "AnkiConnect" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AnkiConnect"
+          }
+        }
+      }
+    },
+    "AnkiConnect address" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AnkiConnectのアドレス"
+          }
+        }
+      }
+    },
+    "AnkiConnect key (optional)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AnkiConnectのキー（任意）"
+          }
+        }
+      }
+    },
     "Answer" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "回答する"
+          }
+        }
+      }
+    },
+    "Answer by" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答え方"
           }
         }
       }
@@ -611,6 +1051,36 @@
         }
       }
     },
+    "Back field" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "裏面のフィールド"
+          }
+        }
+      }
+    },
+    "Backup" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックアップ"
+          }
+        }
+      }
+    },
+    "Backup written: %lld rows." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックアップを書き出しました：%lld行。"
+          }
+        }
+      }
+    },
     "Bank shortfalls" : {
       "localizations" : {
         "ja" : {
@@ -627,6 +1097,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "基準点未満"
+          }
+        }
+      }
+    },
+    "Both" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "両方"
+          }
+        }
+      }
+    },
+    "Break %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "休憩 %@"
           }
         }
       }
@@ -671,12 +1161,92 @@
         }
       }
     },
+    "Card created. It waits in your lessons like any new card." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カードを作成しました。ほかの新しいカードと同じように、レッスンで学べます。"
+          }
+        }
+      }
+    },
+    "Change picture" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画像を変更"
+          }
+        }
+      }
+    },
     "Check" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "答え合わせ"
+          }
+        }
+      }
+    },
+    "Check and save" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認して保存"
+          }
+        }
+      }
+    },
+    "Check and save again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度確認して保存"
+          }
+        }
+      }
+    },
+    "Check for new episodes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいエピソードを確認"
+          }
+        }
+      }
+    },
+    "Check this line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この文をチェック"
+          }
+        }
+      }
+    },
+    "Checking AnkiConnect" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AnkiConnectを確認中"
+          }
+        }
+      }
+    },
+    "Checking your sentence…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文をチェックしています…"
           }
         }
       }
@@ -711,12 +1281,52 @@
         }
       }
     },
+    "Choose a picture" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画像を選ぶ"
+          }
+        }
+      }
+    },
+    "Chosen picture" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選んだ画像"
+          }
+        }
+      }
+    },
     "Clear" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "消去"
+          }
+        }
+      }
+    },
+    "Clip saved without audio (%@); the review reads the line with the system voice." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声なしでクリップを保存しました（%@）。復習ではシステムの音声がセリフを読み上げます。"
+          }
+        }
+      }
+    },
+    "Clip saved. It waits in your lessons as a listening card." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリップを保存しました。聞き取りカードとしてレッスンで学べます。"
           }
         }
       }
@@ -761,12 +1371,42 @@
         }
       }
     },
+    "Compare" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比べる"
+          }
+        }
+      }
+    },
+    "Comparing with the model audio…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お手本の音声と比べています…"
+          }
+        }
+      }
+    },
     "Components" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "構成要素"
+          }
+        }
+      }
+    },
+    "Comprehension questions" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読解問題"
           }
         }
       }
@@ -791,12 +1431,102 @@
         }
       }
     },
+    "Connected" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続済み"
+          }
+        }
+      }
+    },
+    "Connected to Notion." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notionに接続しました。"
+          }
+        }
+      }
+    },
     "Connected, but the server lists no models." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "接続できましたが、サーバーにモデルがありません。"
+          }
+        }
+      }
+    },
+    "Connecting to Notion" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notionに接続中"
+          }
+        }
+      }
+    },
+    "Content review" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コンテンツレビュー"
+          }
+        }
+      }
+    },
+    "Content review tools" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コンテンツレビューツール"
+          }
+        }
+      }
+    },
+    "Context" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文脈"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
+          }
+        }
+      }
+    },
+    "Conversation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話"
+          }
+        }
+      }
+    },
+    "Conversation saved" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話を保存しました"
           }
         }
       }
@@ -831,12 +1561,52 @@
         }
       }
     },
+    "Corrected: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訂正：%@"
+          }
+        }
+      }
+    },
     "Corrections" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "訂正"
+          }
+        }
+      }
+    },
+    "Couldn't add the feed: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードを追加できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't add the lesson: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レッスンを追加できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't analyze the recording. Try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音を分析できませんでした。もう一度お試しください。"
           }
         }
       }
@@ -851,6 +1621,226 @@
         }
       }
     },
+    "Couldn't change it: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変更できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't check this line: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この文をチェックできませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't create the card: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カードを作成できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't cut the clip: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリップを切り出せませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't freeze: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "凍結できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't generate subtitles: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "字幕を生成できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the episodes: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エピソードを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the kana course: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "かなコースを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the kana lessons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "かなのレッスンを読み込めませんでした"
+          }
+        }
+      }
+    },
+    "Couldn't load the leaderboard: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキングを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the review queue: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レビュー待ちの一覧を読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load your conversation patterns: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話の傾向を読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load your podcasts: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポッドキャストを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't plan today" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日の計画を作れませんでした"
+          }
+        }
+      }
+    },
+    "Couldn't read %@." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@を読み込めませんでした。"
+          }
+        }
+      }
+    },
+    "Couldn't read that picture." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その画像を読み込めませんでした。"
+          }
+        }
+      }
+    },
+    "Couldn't read the file: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't record the block: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ブロックを記録できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't refresh the feed: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードを更新できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't save the clip: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリップを保存できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't save the conversation: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話を保存できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't save the recording: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音を保存できませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't save this attempt." : {
       "localizations" : {
         "ja" : {
@@ -861,12 +1851,32 @@
         }
       }
     },
+    "Couldn't sync recordings: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音を同期できませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't tell from the recording" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "録音からは判定できませんでした"
+          }
+        }
+      }
+    },
+    "Couldn't write questions: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題を作成できませんでした：%@"
           }
         }
       }
@@ -891,12 +1901,62 @@
         }
       }
     },
+    "Create PDF report" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDFレポートを作成"
+          }
+        }
+      }
+    },
     "Create account" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アカウントを作成"
+          }
+        }
+      }
+    },
+    "Create an internal integration in Notion, share your databases with it, and paste its token. The token is kept in the Keychain and sent only to api.notion.com. The property names each database needs are listed in docs/INTEGRATIONS.md." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notionで内部インテグレーションを作成し、データベースを共有してから、そのトークンを貼り付けてください。トークンはキーチェーンに保存され、api.notion.comにだけ送信されます。各データベースに必要なプロパティ名はdocs/INTEGRATIONS.mdにあります。"
+          }
+        }
+      }
+    },
+    "Create card" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カードを作成"
+          }
+        }
+      }
+    },
+    "Creating the report" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レポートを作成中"
+          }
+        }
+      }
+    },
+    "Current verdict: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在の判定：%@"
           }
         }
       }
@@ -931,12 +1991,32 @@
         }
       }
     },
+    "Deck" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デッキ"
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "削除"
+          }
+        }
+      }
+    },
+    "Delete download" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダウンロードを削除"
           }
         }
       }
@@ -961,12 +2041,32 @@
         }
       }
     },
+    "Desktop Anki with the AnkiConnect add-on, on the same network. Pushes the words and clips you mined (reader, media, personal cards); Anki skips duplicates. The address stays on this device." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AnkiConnectアドオンを入れたデスクトップのAnki（同じネットワーク上）。自分で集めた単語とクリップ（リーダー、メディア、自作カード）を送ります。重複はAnkiが飛ばします。アドレスはこの端末にだけ保存されます。"
+          }
+        }
+      }
+    },
     "Details" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "詳細"
+          }
+        }
+      }
+    },
+    "Developer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発者"
           }
         }
       }
@@ -1017,6 +2117,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "辞書がインストールされていません"
+          }
+        }
+      }
+    },
+    "Disconnect" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続を解除"
+          }
+        }
+      }
+    },
+    "Disconnected. The token was removed from the Keychain." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続を解除しました。トークンをキーチェーンから削除しました。"
+          }
+        }
+      }
+    },
+    "Disconnecting" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続を解除中"
+          }
+        }
+      }
+    },
+    "Display name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示名"
           }
         }
       }
@@ -1081,6 +2221,36 @@
         }
       }
     },
+    "Down %lld points this week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今週%lldポイント下降"
+          }
+        }
+      }
+    },
+    "Download" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダウンロード"
+          }
+        }
+      }
+    },
+    "Download failed: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダウンロードに失敗しました：%@"
+          }
+        }
+      }
+    },
     "Downloads are checked with SHA-256. Cancel pauses; downloading again resumes." : {
       "localizations" : {
         "ja" : {
@@ -1131,12 +2301,42 @@
         }
       }
     },
+    "Edited" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集済み"
+          }
+        }
+      }
+    },
+    "Edits keep only the fields you changed. An edit that changes nothing counts as accept." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集では変更したフィールドだけが残ります。何も変えない編集は承認として扱われます。"
+          }
+        }
+      }
+    },
     "Email" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "メールアドレス"
+          }
+        }
+      }
+    },
+    "End" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了"
           }
         }
       }
@@ -1177,6 +2377,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このセクションを終了しますか？"
+          }
+        }
+      }
+    },
+    "End-to-end encrypted accounts never appear on leaderboards." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エンドツーエンド暗号化のアカウントはランキングに表示されません。"
           }
         }
       }
@@ -1231,6 +2441,16 @@
         }
       }
     },
+    "Episodes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エピソード"
+          }
+        }
+      }
+    },
     "Estimated ILR %@" : {
       "localizations" : {
         "ja" : {
@@ -1247,6 +2467,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ILR推定 %@（信頼度低：そのレベルの問題数が少ない）"
+          }
+        }
+      }
+    },
+    "Every answer you've given, oldest first, UTF-8 so spreadsheets show the Japanese." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これまでのすべての解答を古い順に書き出します。UTF-8なので表計算ソフトでも日本語が表示されます。"
           }
         }
       }
@@ -1341,12 +2571,112 @@
         }
       }
     },
+    "Export" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出し"
+          }
+        }
+      }
+    },
+    "Export (CSV, PDF report, backup)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出し（CSV、PDFレポート、バックアップ）"
+          }
+        }
+      }
+    },
+    "Export backup (JSON)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックアップを書き出す（JSON）"
+          }
+        }
+      }
+    },
     "Export everything to .apkg" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "すべてを.apkgに書き出す"
+          }
+        }
+      }
+    },
+    "Export reviews as CSV" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習記録をCSVで書き出す"
+          }
+        }
+      }
+    },
+    "Export verdicts (JSON)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "判定を書き出す（JSON）"
+          }
+        }
+      }
+    },
+    "Exported %lld reviews." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld件の復習記録を書き出しました。"
+          }
+        }
+      }
+    },
+    "Exporting backup" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックアップを書き出し中"
+          }
+        }
+      }
+    },
+    "Exporting reviews" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習記録を書き出し中"
+          }
+        }
+      }
+    },
+    "Exporting…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出し中…"
+          }
+        }
+      }
+    },
+    "Faster" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "速く"
           }
         }
       }
@@ -1381,6 +2711,36 @@
         }
       }
     },
+    "Fetching the feed…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードを取得中…"
+          }
+        }
+      }
+    },
+    "Fewer than last week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先週より少ない"
+          }
+        }
+      }
+    },
+    "Fields" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィールド"
+          }
+        }
+      }
+    },
     "Find a kanji by its parts" : {
       "localizations" : {
         "ja" : {
@@ -1401,6 +2761,16 @@
         }
       }
     },
+    "Finish block" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ブロックを完了"
+          }
+        }
+      }
+    },
     "Fluency" : {
       "localizations" : {
         "ja" : {
@@ -1417,6 +2787,106 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "流暢さ（速さとポーズ）"
+          }
+        }
+      }
+    },
+    "Fluent Forever-style cards skip the translation: a picture that means the word to you works better." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fluent Forever方式のカードは訳を使いません。あなたにとってその言葉を表す画像のほうが覚えやすいからです。"
+          }
+        }
+      }
+    },
+    "Focus %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "集中 %@"
+          }
+        }
+      }
+    },
+    "Focus timer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "集中タイマー"
+          }
+        }
+      }
+    },
+    "Form" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "形"
+          }
+        }
+      }
+    },
+    "Free talk" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フリートーク"
+          }
+        }
+      }
+    },
+    "Free talk needs a model: there's no scripted version. Role-play scenarios work without one." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フリートークにはモデルが必要です（台本版はありません）。ロールプレイのシナリオはモデルなしでも使えます。"
+          }
+        }
+      }
+    },
+    "Free talk needs an AI model." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フリートークにはAIモデルが必要です。"
+          }
+        }
+      }
+    },
+    "Freeze today" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日を凍結"
+          }
+        }
+      }
+    },
+    "Front field" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表面のフィールド"
+          }
+        }
+      }
+    },
+    "Frozen today" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日は凍結中"
           }
         }
       }
@@ -1451,6 +2921,56 @@
         }
       }
     },
+    "Generate subtitles" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "字幕を生成"
+          }
+        }
+      }
+    },
+    "Generated with %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@で生成"
+          }
+        }
+      }
+    },
+    "Generated with %@ (cached)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@で生成（キャッシュ）"
+          }
+        }
+      }
+    },
+    "Generating subtitles on this device…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この端末で字幕を生成しています…"
+          }
+        }
+      }
+    },
+    "Get at least 9 of 10 right on a script's check to skip its lessons. Each finished lesson adds its kana to your reviews: see the kana, type the romaji." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェックで10問中9問以上正解すると、その文字のレッスンをスキップできます。終えたレッスンのかなは復習に追加されます（かなを見てローマ字を入力）。"
+          }
+        }
+      }
+    },
     "Goal reached! Keep going or try another scenario." : {
       "localizations" : {
         "ja" : {
@@ -1467,6 +2987,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正解"
+          }
+        }
+      }
+    },
+    "Grading…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "採点中…"
           }
         }
       }
@@ -1551,6 +3081,26 @@
         }
       }
     },
+    "Heuristic feedback from speech recognition and a pitch tracker. The model voice is the system voice until the audio pack is installed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声認識とピッチ追跡による目安のフィードバックです。音声パックが入るまで、お手本はシステムの音声です。"
+          }
+        }
+      }
+    },
+    "Hidden-subtitle quiz" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "字幕隠しクイズ"
+          }
+        }
+      }
+    },
     "Highest level with at least 70% correct, sustained over enough items, with consistent performance below it. Practice estimate only." : {
       "localizations" : {
         "ja" : {
@@ -1571,6 +3121,36 @@
         }
       }
     },
+    "Hiragana" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひらがな"
+          }
+        }
+      }
+    },
+    "Hiragana and katakana from zero" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひらがなとカタカナをゼロから"
+          }
+        }
+      }
+    },
+    "Hiragana check" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひらがなチェック"
+          }
+        }
+      }
+    },
     "History" : {
       "localizations" : {
         "ja" : {
@@ -1587,6 +3167,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1日にどのくらい学習しますか？"
+          }
+        }
+      }
+    },
+    "I don't know" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "わからない"
           }
         }
       }
@@ -1731,12 +3321,52 @@
         }
       }
     },
+    "Integrations" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連携"
+          }
+        }
+      }
+    },
+    "Integrations (Notion, Anki)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連携（Notion、Anki）"
+          }
+        }
+      }
+    },
+    "Internal integration token" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内部インテグレーションのトークン"
+          }
+        }
+      }
+    },
     "Interviewer" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "面接官"
+          }
+        }
+      }
+    },
+    "Intonation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "イントネーション"
           }
         }
       }
@@ -1757,6 +3387,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "問題形式別ドリル"
+          }
+        }
+      }
+    },
+    "Items database (URL or id)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "項目のデータベース（URLまたはID）"
           }
         }
       }
@@ -1831,6 +3471,36 @@
         }
       }
     },
+    "Kana" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "かな"
+          }
+        }
+      }
+    },
+    "Kana lesson" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "かなのレッスン"
+          }
+        }
+      }
+    },
+    "Kana lessons done for today" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日のかなのレッスンは終わりです"
+          }
+        }
+      }
+    },
     "Kanji" : {
       "localizations" : {
         "ja" : {
@@ -1891,6 +3561,26 @@
         }
       }
     },
+    "Katakana" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カタカナ"
+          }
+        }
+      }
+    },
+    "Katakana check" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カタカナチェック"
+          }
+        }
+      }
+    },
     "Key point: %@" : {
       "localizations" : {
         "ja" : {
@@ -1947,6 +3637,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "言語モデル"
+          }
+        }
+      }
+    },
+    "Leaderboard" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキング"
           }
         }
       }
@@ -2031,6 +3731,16 @@
         }
       }
     },
+    "Level %@ · about the start of the text" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベル%@・本文の冒頭について"
+          }
+        }
+      }
+    },
     "Level %d" : {
       "localizations" : {
         "ja" : {
@@ -2061,6 +3771,16 @@
         }
       }
     },
+    "Level estimate" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベルの推定"
+          }
+        }
+      }
+    },
     "Licenses" : {
       "localizations" : {
         "ja" : {
@@ -2077,6 +3797,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$lld行目/%2$lld行"
+          }
+        }
+      }
+    },
+    "Line %lld of %lld · %lld/%lld right" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld文中%1$lld文目・%3$lld/%4$lld正解"
           }
         }
       }
@@ -2117,6 +3847,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "聞く・穴埋め・並べ替え"
+          }
+        }
+      }
+    },
+    "Listen, then record yourself saying it along with the rhythm." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聞いてから、リズムに合わせて言うのを録音しましょう。"
           }
         }
       }
@@ -2171,6 +3911,16 @@
         }
       }
     },
+    "Longest %lld days · %lld freezes left this month" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最長%1$lld日・今月のフリーズ残り%2$lld回"
+          }
+        }
+      }
+    },
     "Look at the lesson again" : {
       "localizations" : {
         "ja" : {
@@ -2201,6 +3951,16 @@
         }
       }
     },
+    "Match: %lld%%" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致度：%lld%%"
+          }
+        }
+      }
+    },
     "Me" : {
       "localizations" : {
         "ja" : {
@@ -2221,12 +3981,42 @@
         }
       }
     },
+    "Meaning (optional)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "意味（任意）"
+          }
+        }
+      }
+    },
+    "Media" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メディア"
+          }
+        }
+      }
+    },
     "Media player" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "メディアプレーヤー"
+          }
+        }
+      }
+    },
+    "Mine" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分"
           }
         }
       }
@@ -2291,6 +4081,16 @@
         }
       }
     },
+    "Mistakes you checked" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェックした間違い"
+          }
+        }
+      }
+    },
     "Mode" : {
       "localizations" : {
         "ja" : {
@@ -2307,6 +4107,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "モデル"
+          }
+        }
+      }
+    },
+    "Model answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模範解答"
           }
         }
       }
@@ -2341,12 +4151,32 @@
         }
       }
     },
+    "More than last week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先週より多い"
+          }
+        }
+      }
+    },
     "My own server" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "自分のサーバー"
+          }
+        }
+      }
+    },
+    "My recording" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分の録音"
           }
         }
       }
@@ -2431,6 +4261,16 @@
         }
       }
     },
+    "New questions" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しい問題"
+          }
+        }
+      }
+    },
     "New session" : {
       "localizations" : {
         "ja" : {
@@ -2481,6 +4321,16 @@
         }
       }
     },
+    "Next sentence" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の文"
+          }
+        }
+      }
+    },
     "Next steps" : {
       "localizations" : {
         "ja" : {
@@ -2497,6 +4347,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AI解説なし：%@"
+          }
+        }
+      }
+    },
+    "No AI model is set up, so compare with the model answer and grade yourself." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIモデルが設定されていないので、模範解答と比べて自己採点してください。"
           }
         }
       }
@@ -2531,6 +4391,16 @@
         }
       }
     },
+    "No conversations yet. Free talk and role-plays you finish show up here with a level estimate and the mistakes that keep coming back." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだ会話がありません。終えたフリートークやロールプレイが、レベルの推定とよく繰り返す間違いとともにここに表示されます。"
+          }
+        }
+      }
+    },
     "No dialogues at this level in the installed pack." : {
       "localizations" : {
         "ja" : {
@@ -2557,6 +4427,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "フィードバックなし：%@"
+          }
+        }
+      }
+    },
+    "No freezes left this month." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今月のフリーズは残っていません。"
           }
         }
       }
@@ -2641,6 +4521,16 @@
         }
       }
     },
+    "No one on this server has opted in yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このサーバーではまだ誰も参加していません。"
+          }
+        }
+      }
+    },
     "No pairs of this kind in the installed pack." : {
       "localizations" : {
         "ja" : {
@@ -2657,6 +4547,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今は復習がありません。"
+          }
+        }
+      }
+    },
+    "No speech was recognized in this file." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このファイルでは音声を認識できませんでした。"
+          }
+        }
+      }
+    },
+    "No subtitle cues found in %@." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@に字幕が見つかりませんでした。"
           }
         }
       }
@@ -2711,6 +4621,16 @@
         }
       }
     },
+    "Not connected. Fix these in Notion first: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続していません。先にNotionで次を直してください：%@"
+          }
+        }
+      }
+    },
     "Not enough correct answers at any level for an estimate" : {
       "localizations" : {
         "ja" : {
@@ -2731,6 +4651,26 @@
         }
       }
     },
+    "Not graded by AI: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIによる採点なし：%@"
+          }
+        }
+      }
+    },
+    "Not on this device yet: %@. Turn on recordings sync in Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだこの端末にありません：%@。設定で録音の同期をオンにしてください。"
+          }
+        }
+      }
+    },
     "Not quite" : {
       "localizations" : {
         "ja" : {
@@ -2747,6 +4687,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "惜しい。もう一度書いてみましょう"
+          }
+        }
+      }
+    },
+    "Not quite: the lessons stay in your course. They go quickly for kana you know." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "惜しい！レッスンはコースに残ります。知っているかななら、すぐに終わります。"
           }
         }
       }
@@ -2801,12 +4751,92 @@
         }
       }
     },
+    "Note" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモ"
+          }
+        }
+      }
+    },
+    "Note (optional)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモ（任意）"
+          }
+        }
+      }
+    },
+    "Note type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ノートタイプ"
+          }
+        }
+      }
+    },
+    "Nothing to review: the installed packs have no unverified AI-drafted content." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レビューするものはありません。インストール済みのパックに未確認のAI作成コンテンツはありません。"
+          }
+        }
+      }
+    },
+    "Nothing to shadow" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャドーイングする文がありません"
+          }
+        }
+      }
+    },
+    "Nothing was downloaded." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "何もダウンロードされませんでした。"
+          }
+        }
+      }
+    },
     "Nothing was said." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "発話がありませんでした。"
+          }
+        }
+      }
+    },
+    "Notion" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notion"
+          }
+        }
+      }
+    },
+    "Notion and AnkiConnect" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NotionとAnkiConnect"
           }
         }
       }
@@ -2831,6 +4861,26 @@
         }
       }
     },
+    "Off by default. When on, this device uploads your recordings and card pictures to your own sync server (encrypted when end-to-end encryption is on) and downloads the ones made on your other devices. Each device decides for itself." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既定ではオフです。オンにすると、この端末は録音とカードの画像を自分の同期サーバーにアップロードし（エンドツーエンド暗号化がオンなら暗号化）、ほかの端末で作ったものをダウンロードします。端末ごとに設定します。"
+          }
+        }
+      }
+    },
+    "Oldest on the left; the tallest bar is %lld reviews." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "左が最も古い日です。いちばん高い棒は%lld件です。"
+          }
+        }
+      }
+    },
     "On" : {
       "localizations" : {
         "ja" : {
@@ -2841,12 +4891,52 @@
         }
       }
     },
+    "On this device" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この端末"
+          }
+        }
+      }
+    },
+    "Only above my level" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のレベルより上だけ"
+          }
+        }
+      }
+    },
     "Open" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "開く"
+          }
+        }
+      }
+    },
+    "Open a video or audio file from Files (iCloud Drive, On My iPhone, a network share), then add .srt or .vtt subtitles or generate them on this device. Tsumugi doesn't download from streaming services." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「ファイル」（iCloud Drive、このiPhone内、ネットワーク共有）から動画や音声を開き、.srtや.vttの字幕を追加するか、この端末で生成してください。Tsumugiは配信サービスからはダウンロードしません。"
+          }
+        }
+      }
+    },
+    "Open conversation at your level" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のレベルで自由に会話"
           }
         }
       }
@@ -2881,12 +4971,32 @@
         }
       }
     },
+    "Optional" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任意"
+          }
+        }
+      }
+    },
     "Order" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "並べ替え"
+          }
+        }
+      }
+    },
+    "Other" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他"
           }
         }
       }
@@ -2907,6 +5017,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一部のみの受験：尺度得点は受験したセクションだけによる線形の近似値です。"
+          }
+        }
+      }
+    },
+    "Particles" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "助詞"
+          }
+        }
+      }
+    },
+    "Partner level: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相手のレベル：%@"
           }
         }
       }
@@ -2957,6 +5087,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "合格済み"
+          }
+        }
+      }
+    },
+    "Passed: these lessons are skipped. The kana still come up if you add them later." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合格！これらのレッスンはスキップされます。あとで追加すれば、かなは復習に出てきます。"
           }
         }
       }
@@ -3021,12 +5161,62 @@
         }
       }
     },
+    "Paste the RSS feed address." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSSフィードのアドレスを貼り付けてください。"
+          }
+        }
+      }
+    },
+    "Period" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "期間"
+          }
+        }
+      }
+    },
+    "Personal card" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自作カード"
+          }
+        }
+      }
+    },
+    "Pick" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選ぶ"
+          }
+        }
+      }
+    },
     "Pick radicals to find a kanji" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "部首を選んで漢字を探す"
+          }
+        }
+      }
+    },
+    "Picture" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画像"
           }
         }
       }
@@ -3081,12 +5271,42 @@
         }
       }
     },
+    "Pitch accent marks" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセント記号"
+          }
+        }
+      }
+    },
     "Pitch pattern matches" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アクセントの型が一致しています"
+          }
+        }
+      }
+    },
+    "Placement check: I already know hiragana" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実力チェック：ひらがなはもう知っている"
+          }
+        }
+      }
+    },
+    "Placement check: I already know katakana" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実力チェック：カタカナはもう知っている"
           }
         }
       }
@@ -3151,6 +5371,16 @@
         }
       }
     },
+    "Play the line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セリフを再生"
+          }
+        }
+      }
+    },
     "Playing…" : {
       "localizations" : {
         "ja" : {
@@ -3167,6 +5397,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2つの単語のどちらかを再生します。"
+          }
+        }
+      }
+    },
+    "Podcasts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポッドキャスト"
+          }
+        }
+      }
+    },
+    "Politeness" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丁寧さ"
           }
         }
       }
@@ -3207,6 +5457,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "練習パックがインストールされていません"
+          }
+        }
+      }
+    },
+    "Practise writing %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@を書く練習"
           }
         }
       }
@@ -3291,6 +5551,66 @@
         }
       }
     },
+    "Push items" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "項目を送る"
+          }
+        }
+      }
+    },
+    "Push mined cards" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "集めたカードを送る"
+          }
+        }
+      }
+    },
+    "Push the last 30 days of stats" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直近30日の統計を送る"
+          }
+        }
+      }
+    },
+    "Pushing items to Notion" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notionに項目を送信中"
+          }
+        }
+      }
+    },
+    "Pushing stats to Notion" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notionに統計を送信中"
+          }
+        }
+      }
+    },
+    "Pushing to Anki" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ankiに送信中"
+          }
+        }
+      }
+    },
     "Question %lld" : {
       "localizations" : {
         "ja" : {
@@ -3317,6 +5637,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設問"
+          }
+        }
+      }
+    },
+    "Questions need an AI model" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題にはAIモデルが必要です"
           }
         }
       }
@@ -3361,12 +5691,42 @@
         }
       }
     },
+    "Quiz done: %lld of %lld right." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズ終了：%2$lld問中%1$lld問正解。"
+          }
+        }
+      }
+    },
     "Quiz · %lld left" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイズ・残り%lld問"
+          }
+        }
+      }
+    },
+    "Quiz: hide subtitles" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズ：字幕を隠す"
+          }
+        }
+      }
+    },
+    "RSS, downloads, transcripts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSS、ダウンロード、文字起こし"
           }
         }
       }
@@ -3461,6 +5821,26 @@
         }
       }
     },
+    "Reading (optional)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み（任意）"
+          }
+        }
+      }
+    },
+    "Reading options" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読書のオプション"
+          }
+        }
+      }
+    },
     "Readings" : {
       "localizations" : {
         "ja" : {
@@ -3501,6 +5881,56 @@
         }
       }
     },
+    "Record again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度録音"
+          }
+        }
+      }
+    },
+    "Record the word" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語を録音"
+          }
+        }
+      }
+    },
+    "Record yourself saying it. It becomes a listening card that plays your own voice." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分で言うのを録音しましょう。自分の声が流れる聞き取りカードになります。"
+          }
+        }
+      }
+    },
+    "Recorded" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音しました"
+          }
+        }
+      }
+    },
+    "Recordings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音"
+          }
+        }
+      }
+    },
     "Recordings stay on this device unless you choose your own Whisper server. If the system recognizer can't work offline for Japanese, Tsumugi tells you instead of using Apple's servers." : {
       "localizations" : {
         "ja" : {
@@ -3517,6 +5947,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "録音中…終わったら「停止」をタップしてください。"
+          }
+        }
+      }
+    },
+    "Recurring errors (30 days)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繰り返す間違い（30日）"
+          }
+        }
+      }
+    },
+    "Reject" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "却下"
+          }
+        }
+      }
+    },
+    "Rejected" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "却下済み"
           }
         }
       }
@@ -3541,12 +6001,32 @@
         }
       }
     },
+    "Remove picture" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画像を削除"
+          }
+        }
+      }
+    },
     "Repeat the question" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "質問をもう一度聞く"
+          }
+        }
+      }
+    },
+    "Report ready." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レポートができました。"
           }
         }
       }
@@ -3571,12 +6051,52 @@
         }
       }
     },
+    "Restore from backup…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックアップから復元…"
+          }
+        }
+      }
+    },
+    "Restored: %lld rows merged, %lld already up to date, %lld cards rescheduled." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復元しました：%1$lld行を統合、%2$lld行は最新、%3$lld枚のカードを再スケジュールしました。"
+          }
+        }
+      }
+    },
+    "Restoring" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復元中"
+          }
+        }
+      }
+    },
     "Results" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "結果"
+          }
+        }
+      }
+    },
+    "Retry" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再試行"
           }
         }
       }
@@ -3611,12 +6131,52 @@
         }
       }
     },
+    "Review log" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習記録"
+          }
+        }
+      }
+    },
+    "Reviewer name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レビュー担当者の名前"
+          }
+        }
+      }
+    },
     "Reviews" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "復習"
+          }
+        }
+      }
+    },
+    "Reviews per day" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1日あたりの復習数"
+          }
+        }
+      }
+    },
+    "Right" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解"
           }
         }
       }
@@ -3661,12 +6221,52 @@
         }
       }
     },
+    "Romaji" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローマ字"
+          }
+        }
+      }
+    },
+    "Run `tools/items/review.py --ingest verdicts.json` on the export to apply it to the source files." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出したファイルに`tools/items/review.py --ingest verdicts.json`を実行すると、ソースファイルに反映されます。"
+          }
+        }
+      }
+    },
     "Save" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "保存"
+          }
+        }
+      }
+    },
+    "Save clip" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリップを保存"
+          }
+        }
+      }
+    },
+    "Save edits" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集を保存"
           }
         }
       }
@@ -3711,12 +6311,52 @@
         }
       }
     },
+    "Saved. A listening card with your voice was added." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存しました。自分の声の聞き取りカードを追加しました。"
+          }
+        }
+      }
+    },
+    "Saving…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存中…"
+          }
+        }
+      }
+    },
+    "Say at least three lines for a level estimate." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベルを推定するには、3文以上話してください。"
+          }
+        }
+      }
+    },
     "Say it again" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "もう一度言う"
+          }
+        }
+      }
+    },
+    "Say it in Japanese using this grammar." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この文法を使って日本語で言ってみましょう。"
           }
         }
       }
@@ -3791,6 +6431,16 @@
         }
       }
     },
+    "Scoring pitch and fluency only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセントと流暢さだけを採点します。"
+          }
+        }
+      }
+    },
     "Scoring…" : {
       "localizations" : {
         "ja" : {
@@ -3861,6 +6511,16 @@
         }
       }
     },
+    "Set one up in Me → AI & speech (on device, or your own server)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「自分」→「AIと音声」で設定してください（端末内、または自分のサーバー）。"
+          }
+        }
+      }
+    },
     "Set up AI" : {
       "localizations" : {
         "ja" : {
@@ -3891,12 +6551,82 @@
         }
       }
     },
+    "Shadowing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャドーイング"
+          }
+        }
+      }
+    },
+    "Shadowing done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャドーイング完了"
+          }
+        }
+      }
+    },
+    "Shadowing uses example sentences from the grammar you're learning. Install the grammar pack and start a grammar lesson." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャドーイングでは、学習中の文法の例文を使います。文法パックを入れて、文法のレッスンを始めてください。"
+          }
+        }
+      }
+    },
+    "Share CSV" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSVを共有"
+          }
+        }
+      }
+    },
+    "Share PDF" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDFを共有"
+          }
+        }
+      }
+    },
+    "Share backup" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックアップを共有"
+          }
+        }
+      }
+    },
     "Share exported deck" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "書き出したデッキを共有"
+          }
+        }
+      }
+    },
+    "Share verdicts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "判定を共有"
           }
         }
       }
@@ -3941,6 +6671,16 @@
         }
       }
     },
+    "Show me on the leaderboard" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキングに自分を表示"
+          }
+        }
+      }
+    },
     "Show template" : {
       "localizations" : {
         "ja" : {
@@ -3951,12 +6691,42 @@
         }
       }
     },
+    "Show the line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セリフを表示"
+          }
+        }
+      }
+    },
+    "Shows Me → Content review, where AI-drafted pack content is accepted, edited or rejected for the build scripts. This device only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「自分」→「コンテンツレビュー」を表示します。AIが作成したパックの内容を、ビルドスクリプト向けに承認・編集・却下できます。この端末だけの設定です。"
+          }
+        }
+      }
+    },
     "Sign in" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "サインイン"
+          }
+        }
+      }
+    },
+    "Sign in to a sync server first (Me → Sync)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先に同期サーバーにサインインしてください（「自分」→「同期」）。"
           }
         }
       }
@@ -3997,6 +6767,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スキップしてレベル1から始める"
+          }
+        }
+      }
+    },
+    "Skipped (placement passed)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ（実力チェック合格）"
+          }
+        }
+      }
+    },
+    "Slow" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゆっくり"
+          }
+        }
+      }
+    },
+    "Slower" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遅く"
           }
         }
       }
@@ -4071,6 +6871,36 @@
         }
       }
     },
+    "Speed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "速度"
+          }
+        }
+      }
+    },
+    "Spelling" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表記"
+          }
+        }
+      }
+    },
+    "Spend a streak freeze on today?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日にフリーズを使いますか？"
+          }
+        }
+      }
+    },
     "Start" : {
       "localizations" : {
         "ja" : {
@@ -4131,6 +6961,16 @@
         }
       }
     },
+    "Stats database (URL or id)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "統計のデータベース（URLまたはID）"
+          }
+        }
+      }
+    },
     "Status" : {
       "localizations" : {
         "ja" : {
@@ -4161,12 +7001,32 @@
         }
       }
     },
+    "Stop timer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマーを止める"
+          }
+        }
+      }
+    },
     "Stops recording and checks what you said." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "録音を停止して、話した内容をチェックします。"
+          }
+        }
+      }
+    },
+    "Streak, study days, accuracy, items by stage and kind, exam trend and daily reviews." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連続記録、学習日数、正答率、段階別・種類別の項目数、試験の推移、日ごとの復習数。"
           }
         }
       }
@@ -4211,6 +7071,16 @@
         }
       }
     },
+    "Study report" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学習レポート"
+          }
+        }
+      }
+    },
     "Submit" : {
       "localizations" : {
         "ja" : {
@@ -4237,6 +7107,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "テストを提出"
+          }
+        }
+      }
+    },
+    "Subtitle generation cancelled." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "字幕の生成を中止しました。"
           }
         }
       }
@@ -4271,12 +7151,52 @@
         }
       }
     },
+    "Sync my recordings and pictures" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音と画像を同期する"
+          }
+        }
+      }
+    },
     "Sync now" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "今すぐ同期"
+          }
+        }
+      }
+    },
+    "Sync recordings now" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今すぐ録音を同期"
+          }
+        }
+      }
+    },
+    "Syncing…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期中…"
+          }
+        }
+      }
+    },
+    "Talk about anything. The partner speaks at your estimated level and keeps the conversation going." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "何でも話しましょう。相手はあなたの推定レベルで話し、会話を続けてくれます。"
           }
         }
       }
@@ -4301,6 +7221,16 @@
         }
       }
     },
+    "Tense" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時制"
+          }
+        }
+      }
+    },
     "Text is recognized on your device. Tap a line to look it up." : {
       "localizations" : {
         "ja" : {
@@ -4317,6 +7247,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "音声合成"
+          }
+        }
+      }
+    },
+    "That day can't be frozen." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その日は凍結できません。"
+          }
+        }
+      }
+    },
+    "That recording was too short. Tap Stop after you speak." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音が短すぎます。話し終えてから停止をタップしてください。"
           }
         }
       }
@@ -4381,6 +7331,16 @@
         }
       }
     },
+    "The grammar point's construction wasn't found in your answer." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解答に、この文法の形が見つかりませんでした。"
+          }
+        }
+      }
+    },
     "The installed banks have no checklist." : {
       "localizations" : {
         "ja" : {
@@ -4421,6 +7381,56 @@
         }
       }
     },
+    "The leaderboard lives on your own sync server. Joining shares only a display name, your review count and your streak with the people on that server. End-to-end encrypted accounts can't join, because the server can't count their reviews. It's off unless you turn it on." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキングは自分の同期サーバー上にあります。参加すると、表示名・復習数・連続記録だけがそのサーバーの人と共有されます。エンドツーエンド暗号化のアカウントは、サーバーが復習数を数えられないため参加できません。オンにしない限りオフのままです。"
+          }
+        }
+      }
+    },
+    "The model audio isn't available on this device yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お手本の音声はまだこの端末にありません。"
+          }
+        }
+      }
+    },
+    "The partner didn't answer: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相手が答えませんでした：%@"
+          }
+        }
+      }
+    },
+    "The recorded audio isn't on this device; the system voice reads it instead." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音した音声がこの端末にないため、システムの音声が代わりに読み上げます。"
+          }
+        }
+      }
+    },
+    "The server answered %lld." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーの応答：%lld。"
+          }
+        }
+      }
+    },
     "The share of reviews you aim to get right. Higher means shorter intervals and more reviews." : {
       "localizations" : {
         "ja" : {
@@ -4437,6 +7447,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このテストに必要な問題がまだバンクに足りません。"
+          }
+        }
+      }
+    },
+    "These subtitles have no lines long enough to quiz." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この字幕にはクイズにできる長さのセリフがありません。"
           }
         }
       }
@@ -4471,6 +7491,16 @@
         }
       }
     },
+    "This conversation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この会話"
+          }
+        }
+      }
+    },
     "This device may not have enough memory for it." : {
       "localizations" : {
         "ja" : {
@@ -4501,12 +7531,42 @@
         }
       }
     },
+    "This feed has no audio episodes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このフィードには音声のエピソードがありません。"
+          }
+        }
+      }
+    },
+    "This file has no audio track." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このファイルには音声トラックがありません。"
+          }
+        }
+      }
+    },
     "This is heuristic feedback from speech recognition and a pitch tracker, not a phoneme-level assessment. Accents come from the dictionary pack when installed." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "これは音声認識とピッチ解析による目安のフィードバックで、音素単位の評価ではありません。アクセントは辞書パックがあればそこから取得します。"
+          }
+        }
+      }
+    },
+    "This month" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今月"
           }
         }
       }
@@ -4521,12 +7581,52 @@
         }
       }
     },
+    "This week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今週"
+          }
+        }
+      }
+    },
+    "This week's patterns" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今週の傾向"
+          }
+        }
+      }
+    },
     "This week: %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "今週の目標：%@"
+          }
+        }
+      }
+    },
+    "Timer done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイマー終了"
+          }
+        }
+      }
+    },
+    "Timing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイミング"
           }
         }
       }
@@ -4551,6 +7651,26 @@
         }
       }
     },
+    "Today is already frozen." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日はすでに凍結されています。"
+          }
+        }
+      }
+    },
+    "Today is frozen. Your streak is safe." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日を凍結しました。連続記録は守られます。"
+          }
+        }
+      }
+    },
     "Today's plan is sized to this. You can change it any day." : {
       "localizations" : {
         "ja" : {
@@ -4567,6 +7687,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "短すぎます"
+          }
+        }
+      }
+    },
+    "Topic (optional), e.g. weekend plans" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "話題（任意）例：週末の予定"
           }
         }
       }
@@ -4601,12 +7731,42 @@
         }
       }
     },
+    "Try again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度"
+          }
+        }
+      }
+    },
+    "Tsumugi study report" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tsumugi 学習レポート"
+          }
+        }
+      }
+    },
     "Turn on encryption" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "暗号化をオンにする"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
           }
         }
       }
@@ -4731,6 +7891,16 @@
         }
       }
     },
+    "Unsure: the model isn't confident about this one, so no correction is shown as fact." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "判断保留：モデルに確信がないため、訂正を事実としては表示しません。"
+          }
+        }
+      }
+    },
     "Untimed" : {
       "localizations" : {
         "ja" : {
@@ -4741,12 +7911,32 @@
         }
       }
     },
+    "Unverified content" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未確認のコンテンツ"
+          }
+        }
+      }
+    },
     "Unvoiced vs. voiced" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "清音と濁音"
+          }
+        }
+      }
+    },
+    "Up %lld points this week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今週%lldポイント上昇"
           }
         }
       }
@@ -4851,6 +8041,26 @@
         }
       }
     },
+    "What did you hear?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "何と聞こえましたか？"
+          }
+        }
+      }
+    },
+    "What does the marked part mean?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "印の部分はどういう意味ですか？"
+          }
+        }
+      }
+    },
     "Which word did you hear?" : {
       "localizations" : {
         "ja" : {
@@ -4861,12 +8071,42 @@
         }
       }
     },
+    "Which word do you hear?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どちらの単語が聞こえますか？"
+          }
+        }
+      }
+    },
+    "Why (optional)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "理由（任意）"
+          }
+        }
+      }
+    },
     "With a passphrase, the server stores only ciphertext it can't read. You'll need it on every device; it can't be recovered. Encrypted accounts don't appear on leaderboards." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "パスフレーズを設定すると、サーバーには読めない暗号文だけが保存されます。すべての端末で必要になり、忘れると復元できません。暗号化したアカウントはランキングに表示されません。"
+          }
+        }
+      }
+    },
+    "With a picture the card shows it on the front; with only a recording it plays your voice." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画像があるとカードの表に表示され、録音だけなら自分の声が流れます。"
           }
         }
       }
@@ -4907,6 +8147,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "単語"
+          }
+        }
+      }
+    },
+    "Word (日本語)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語（日本語）"
+          }
+        }
+      }
+    },
+    "Word choice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語の選択"
           }
         }
       }
@@ -5031,6 +8291,16 @@
         }
       }
     },
+    "Writing questions…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題を作成中…"
+          }
+        }
+      }
+    },
     "Wrong direction" : {
       "localizations" : {
         "ja" : {
@@ -5061,6 +8331,16 @@
         }
       }
     },
+    "You already studied today, so no freeze is needed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日はもう学習したので、フリーズは不要です。"
+          }
+        }
+      }
+    },
     "You answered: %@" : {
       "localizations" : {
         "ja" : {
@@ -5081,6 +8361,16 @@
         }
       }
     },
+    "You left the leaderboard." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキングから外れました。"
+          }
+        }
+      }
+    },
     "You said" : {
       "localizations" : {
         "ja" : {
@@ -5091,12 +8381,52 @@
         }
       }
     },
+    "You wrote: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの解答：%@"
+          }
+        }
+      }
+    },
+    "You're not on the leaderboard." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキングに参加していません。"
+          }
+        }
+      }
+    },
+    "You're on the leaderboard." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ランキングに参加しました。"
+          }
+        }
+      }
+    },
     "You're set" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "準備ができました"
+          }
+        }
+      }
+    },
+    "Your Japanese sentence" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの日本語の文"
           }
         }
       }
@@ -5121,12 +8451,52 @@
         }
       }
     },
+    "Your length ÷ model length: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの長さ ÷ お手本の長さ：%@"
+          }
+        }
+      }
+    },
     "Your lists" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "自分のリスト"
+          }
+        }
+      }
+    },
+    "Your picture" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの画像"
+          }
+        }
+      }
+    },
+    "Your picture and voice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分の画像と声"
+          }
+        }
+      }
+    },
+    "Your recording isn't on this device." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの録音はこの端末にありません。"
           }
         }
       }
@@ -5141,12 +8511,32 @@
         }
       }
     },
+    "Your voice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの声"
+          }
+        }
+      }
+    },
     "imiwa? exports or any CSV/TSV of word, reading, meaning." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "imiwa?の書き出しファイル、または単語・読み・意味のCSV/TSVに対応しています。"
+          }
+        }
+      }
+    },
+    "no reply" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返事なし"
           }
         }
       }
@@ -5167,12 +8557,32 @@
         }
       }
     },
+    "this file can't be exported" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このファイルは書き出せません"
+          }
+        }
+      }
+    },
     "🔥 %d-day streak · %d answers today" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🔥 %1$d日連続・今日の回答%2$d件"
+          }
+        }
+      }
+    },
+    "🔥 %lld-day streak" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 %lld日連続"
           }
         }
       }

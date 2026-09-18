@@ -83,7 +83,7 @@ struct PathItemContent: View {
             HStack(alignment: .firstTextBaseline) {
                 Text(item.keyword).font(.title2.weight(.semibold))
                 Text("Level \(item.level)").font(.caption).foregroundStyle(.secondary)
-                if let stage = detail.stage { Text(stage.label).font(.caption).foregroundStyle(.tint) }
+                if let stage = detail.stage { Text(SharedText.stage(stage)).font(.caption).foregroundStyle(.tint) }
             }
             if item.meanings.count > 1 {
                 Text("Also: \(item.meanings.dropFirst().prefix(6).joined(separator: ", "))").font(.subheadline)
@@ -110,6 +110,10 @@ struct PathItemContent: View {
                 }
             }
             MyStoryEditor(itemId: item.id, initial: detail.myStory, onSave: onSaveStory)
+            if detail.stage != nil {
+                // G-03: the learner's own voice as a listening card (only for items already in reviews).
+                AddMyRecordingButton(itemId: item.id)
+            }
         }
         .task(id: item.id) {
             guard let dict = try? await app.graph.dictionary() else { return }

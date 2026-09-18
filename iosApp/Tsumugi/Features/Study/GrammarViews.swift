@@ -49,7 +49,7 @@ struct GrammarLevelView: View {
                     Spacer()
                     // F-20: the installed pack has no example sentence for this point, so it's held out of reviews.
                     if p.noExamples { TagView(String(localized: "No examples yet")) }
-                    if let stage = p.stage { Text(stage.label).font(.caption2) }
+                    if let stage = p.stage { Text(SharedText.stage(stage)).font(.caption2) }
                 }
             }
         }
@@ -69,7 +69,7 @@ struct GrammarPointView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     GrammarPointContent(point: detail.point, examples: detail.examples)
                     if let stage = detail.stage {
-                        Text("In reviews · \(stage.label)").foregroundStyle(.tint)
+                        Text("In reviews · \(SharedText.stage(stage))").foregroundStyle(.tint)
                     } else {
                         Button("Add to reviews") {
                             Task {

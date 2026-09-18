@@ -75,6 +75,28 @@ final class VoicePlayer: NSObject, AVSpeechSynthesizerDelegate, AVAudioPlayerDel
         await say(text, voice: .any, rate: rate)
     }
 
+    /// Plays an audio file (a recording, a clip) and returns when it ends; false when the file can't be played.
+    @discardableResult
+    func play(file path: String, rate: Float = 1.0) async -> Bool {
+        guard FileManager.default.fileExists(atPath: path),
+              let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: path)) else { return false }
+        stop()
+        player.delegate = self
+        if rate != 1.0 {
+            player.enableRate = true
+            player.rate = rate
+        }
+        audio = player
+        currentId = ObjectIdentifier(player)
+        isSpeaking = true
+        claimAudio()
+        await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
+            waiter = c
+            if !player.play() { finish(ObjectIdentifier(player)) }
+        }
+        return true
+    }
+
     /// Speaks script lines in order with their voices.
     func sayLines(_ lines: [(text: String, voice: Voice)], rate: Float = 1.0) async {
         for line in lines {
