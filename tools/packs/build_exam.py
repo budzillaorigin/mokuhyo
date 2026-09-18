@@ -38,14 +38,6 @@ def is_nfc(text: str) -> bool:
     return unicodedata.normalize("NFC", text) == text
 
 
-def kanji_density(text: str) -> float:
-    chars = [c for c in text if not c.isspace()]
-    if not chars:
-        return 0.0
-    kanji = sum(1 for c in chars if "一" <= c <= "鿿" or c == "々")
-    return kanji / len(chars)
-
-
 def blueprint_types(blueprints: dict) -> dict[str, set[str]]:
     return {
         f"N{level['level']}": {spec["type"] for section in level["sections"] for spec in section["items"]}
@@ -110,28 +102,17 @@ def validate_bank(bank: dict, types: dict[str, set[str]], seen_items: set[str], 
 
 
 def band_warnings(bank: dict, bands: dict) -> list[str]:
-    levels = bands.get("levels", {})
-    lexicon = bands.get("abstractLexicon", [])
+    """ILR band misses for DLPT passages, measured exactly as tools/items/gen_dlpt.py does."""
+    sys.path.insert(0, str(ITEMS))
+    from gen_dlpt import band_misses  # tools/items isn't a package
+
     out = []
     for p in bank.get("passages", []):
-        band = levels.get(p.get("level"))
-        if not band or p.get("exam") == "JLPT":
+        if p.get("exam") == "JLPT":
             continue
-        text = p.get("body") or "".join(line.get("text", "") for line in p.get("script", []))
-        length = len([c for c in text if not c.isspace()])
-        density = kanji_density(text)
-        abstract = sum(text.count(w) for w in lexicon) / max(1, length / 10)
-        problems = []
-        if not band["minChars"] <= length <= band["maxChars"]:
-            problems.append(f"length {length} outside {band['minChars']}–{band['maxChars']}")
-        lo, hi = band["kanjiDensity"]
-        if not lo <= density <= hi:
-            problems.append(f"kanji density {density:.2f} outside {lo}–{hi}")
-        lo, hi = band.get("abstractRatio", [0, 1])
-        if not lo <= abstract <= hi:
-            problems.append(f"abstract ratio {abstract:.2f} outside {lo}–{hi}")
-        if problems:
-            out.append(f"{bank['bank']}: passage {p['id']} (ILR {p['level']}): " + "; ".join(problems))
+        misses = band_misses(p, bands)
+        if misses:
+            out.append(f"{bank['bank']}: passage {p['id']} (ILR {p['level']}): " + "; ".join(misses))
     return out
 
 

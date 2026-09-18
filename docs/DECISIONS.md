@@ -135,6 +135,9 @@ The model manager lists Qwen2.5 1.5B/7B Instruct (Apache-2.0) and Whisper base/s
 ### D-033: AI engine settings and secrets (2026-09-18)
 The engine choice, endpoint URL and model name live in the synced `setting` table, so a second device picks up the same home server. The endpoint API key lives only in the keychain/keystore and is sent only to that endpoint (rule 6). Local models are chosen per device, since what fits in RAM differs.
 
+### D-034: Exam banks keep `source = "llm"` and flip `verified` (2026-09-18)
+Item banks carry both `source`, which records where the item came from, and `verified`. `tools/items/review.py` sets `verified: true` and adds `reviewed {by, on}`, and the app hides the "AI-generated" badge once `verified` is true. This keeps the intent of CLAUDE.md rule 10 (only the review tool removes the label) without losing where an item came from. Grammar packs still flip `source` to `"verified"`. DLPT ids write "+" as "p" (`dr-2p-editorial-001`); item ids are the passage id plus `-qN`.
+
 ---
 
 ## Open decisions (BRIEF.md §14)
