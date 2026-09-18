@@ -49,7 +49,7 @@ private struct RadicalPicker: View {
                             Button {
                                 if isSelected { selected.remove(r.radical) } else { selected.insert(r.radical) }
                             } label: {
-                                Text(r.radical)
+                                Text(r.display)
                                     .font(.japanese(size: 22))
                                     .frame(width: 40, height: 40)
                                     .background(isSelected ? AnyShapeStyle(.tint) : AnyShapeStyle(.quaternary.opacity(0.5)), in: RoundedRectangle(cornerRadius: 8))

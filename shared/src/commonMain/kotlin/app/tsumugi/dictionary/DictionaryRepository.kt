@@ -284,7 +284,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
     }
 
     suspend fun radicals(): List<Radical> = io {
-        q.allRadicals().executeAsList().map { Radical(it.radical, it.stroke_count.toInt()) }
+        q.allRadicals().executeAsList().map { Radical(it.radical, it.stroke_count.toInt(), it.display, it.name) }
     }
 
     /** Kanji containing every selected radical, plus the radicals that could still narrow the result. */

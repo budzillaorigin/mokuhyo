@@ -1,4 +1,4 @@
--- Phase 0: proves SQLDelight code generation. Domain tables (user.sq, srs.sq, …) arrive in Phase 1.
+-- Device-local key/value state that never syncs (device id, installed pack versions, last sync cursors…).
 CREATE TABLE app_meta (
     key TEXT NOT NULL PRIMARY KEY,
     value TEXT NOT NULL

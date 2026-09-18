@@ -326,7 +326,7 @@ fun RadicalSearchScreen(nav: DictionaryNav) {
                         selected = isSelected,
                         enabled = enabled,
                         onClick = { selected = if (isSelected) selected - r.radical else selected + r.radical },
-                        label = { Text(r.radical, style = MaterialTheme.typography.titleMedium.japanese()) },
+                        label = { Text(r.display, style = MaterialTheme.typography.titleMedium.japanese()) },
                     )
                 }
             }

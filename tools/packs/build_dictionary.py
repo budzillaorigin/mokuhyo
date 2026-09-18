@@ -16,6 +16,7 @@ import csv
 import json
 import re
 
+import radicals
 from common import (
     DICTIONARY_PACK_VERSION,
     download,
@@ -159,8 +160,13 @@ def build_kanji(db) -> None:
 
     krad = read_zip_json(download(latest_release_asset(JMDICT_REPO, r"kradfile-\d.*\.json\.zip")))
     radk = read_zip_json(download(latest_release_asset(JMDICT_REPO, r"radkfile-\d.*\.json\.zip")))
+    meanings = {r[0]: json.loads(r[8]) for r in rows}
     db.executemany(
-        "INSERT INTO radical VALUES (?,?)", ((r, v["strokeCount"]) for r, v in radk["radicals"].items())
+        "INSERT INTO radical VALUES (?,?,?,?)",
+        (
+            (r, v["strokeCount"], radicals.display(r), radicals.name(r, meanings))
+            for r, v in radk["radicals"].items()
+        ),
     )
     db.executemany(
         "INSERT OR IGNORE INTO kanji_component VALUES (?,?)",

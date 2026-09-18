@@ -79,10 +79,13 @@ CREATE TABLE kanji (
     nanori TEXT NOT NULL
 );
 
--- KRADFILE (kanji -> components) and RADKFILE (radical stroke counts).
+-- KRADFILE (kanji -> components) and RADKFILE (radical stroke counts). RADKFILE writes some radicals as a
+-- stand-in kanji (化 for ⺅, 汁 for 氵…); display is the glyph to show, name an English label.
 CREATE TABLE radical (
     radical TEXT NOT NULL PRIMARY KEY,
-    stroke_count INTEGER NOT NULL
+    stroke_count INTEGER NOT NULL,
+    display TEXT NOT NULL,
+    name TEXT NOT NULL
 );
 
 CREATE TABLE kanji_component (

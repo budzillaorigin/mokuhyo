@@ -124,7 +124,8 @@ data class KanjiDetail(
     val words: List<EntrySummary>,
 )
 
-data class Radical(val radical: String, val strokeCount: Int)
+/** [radical] is the search key; [display] the glyph to show (RADKFILE writes some radicals as stand-in kanji). */
+data class Radical(val radical: String, val strokeCount: Int, val display: String, val name: String)
 
 data class RadicalSearchResult(
     val kanji: List<KanjiInfo>,

@@ -1,0 +1,111 @@
+-- User-level data: settings, word lists, sessions, integrations.
+
+-- Synced settings (last-writer-wins by updated_at). Device-only state lives in app_meta.
+CREATE TABLE setting (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL,
+    updated_at INTEGER NOT NULL
+);
+
+CREATE TABLE word_list (
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted INTEGER NOT NULL DEFAULT 0
+);
+
+-- ref = "jmdict:<id>" when the word resolved to a dictionary entry, otherwise "text:<headword>|<reading>".
+-- text/reading/gloss are a snapshot so lists survive without the dictionary (imports, exports).
+CREATE TABLE word_list_entry (
+    list_id TEXT NOT NULL,
+    ref TEXT NOT NULL,
+    text TEXT NOT NULL,
+    reading TEXT NOT NULL,
+    gloss TEXT NOT NULL,
+    added_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (list_id, ref)
+) WITHOUT ROWID;
+
+-- kind: TODAY | REVIEW | LESSON | CONVERSATION | EXAM | WRITING | LISTENING | READING
+CREATE TABLE session (
+    id TEXT NOT NULL PRIMARY KEY,
+    kind TEXT NOT NULL,
+    started_at INTEGER NOT NULL,
+    ended_at INTEGER,
+    stats TEXT NOT NULL DEFAULT '{}'
+);
+CREATE INDEX session_started ON session(started_at);
+
+-- kind: WANIKANI | BUNPRO | NOTION | LLM_ENDPOINT | VOICEVOX | SYNC. Secrets are in the keychain, never here.
+CREATE TABLE integration (
+    kind TEXT NOT NULL PRIMARY KEY,
+    config TEXT NOT NULL DEFAULT '{}',
+    last_sync_at INTEGER,
+    cursor TEXT
+);
+
+-- Settings ----------------------------------------------------------------------------------------------
+
+settingValue:
+SELECT value FROM setting WHERE key = ?;
+
+putSetting:
+INSERT OR REPLACE INTO setting(key, value, updated_at) VALUES (?, ?, ?);
+
+allSettings:
+SELECT * FROM setting;
+
+-- Word lists --------------------------------------------------------------------------------------------
+
+insertList:
+INSERT INTO word_list(id, name, created_at, updated_at) VALUES (?, ?, ?, ?);
+
+renameList:
+UPDATE word_list SET name = ?, updated_at = ? WHERE id = ?;
+
+deleteList:
+UPDATE word_list SET deleted = 1, updated_at = ? WHERE id = ?;
+
+lists:
+SELECT word_list.*, (SELECT COUNT(*) FROM word_list_entry e WHERE e.list_id = word_list.id AND e.deleted = 0) AS size
+FROM word_list WHERE deleted = 0 ORDER BY name;
+
+-- Keeps the original added_at when re-adding a word that was already in the list.
+putListEntry:
+INSERT OR REPLACE INTO word_list_entry(list_id, ref, text, reading, gloss, added_at, updated_at, deleted)
+VALUES (:listId, :ref, :text, :reading, :gloss,
+    coalesce((SELECT added_at FROM word_list_entry WHERE list_id = :listId AND ref = :ref), :now), :now, 0);
+
+removeListEntry:
+UPDATE word_list_entry SET deleted = 1, updated_at = ? WHERE list_id = ? AND ref = ?;
+
+listEntries:
+SELECT * FROM word_list_entry WHERE list_id = ? AND deleted = 0 ORDER BY added_at;
+
+listsContaining:
+SELECT list_id FROM word_list_entry WHERE ref = ? AND deleted = 0;
+
+-- Sessions ----------------------------------------------------------------------------------------------
+
+insertSession:
+INSERT INTO session(id, kind, started_at, ended_at, stats) VALUES (?, ?, ?, ?, ?);
+
+finishSession:
+UPDATE session SET ended_at = ?, stats = ? WHERE id = ?;
+
+sessionsSince:
+SELECT * FROM session WHERE started_at >= ? ORDER BY started_at;
+
+-- Integrations ------------------------------------------------------------------------------------------
+
+integration:
+SELECT * FROM integration WHERE kind = ?;
+
+putIntegration:
+INSERT OR REPLACE INTO integration(kind, config, last_sync_at, cursor) VALUES (?, ?, ?, ?);
+
+removeIntegration:
+DELETE FROM integration WHERE kind = ?;

@@ -20,9 +20,12 @@ DICTIONARY_PACK = PACKS / "dictionary.sqlite"
 DICTIONARY_SQ = (
     REPO / "shared/src/commonMain/sqldelightDictionary/app/tsumugi/dictionary/db/dictionary.sq"
 )
+PATH_PACK = PACKS / "kanji-path.sqlite"
+PATH_SQ = REPO / "shared/src/commonMain/sqldelightPath/app/tsumugi/path/db/path.sq"
 
 # Bump when the builder output changes shape or content rules. Recorded in pack_meta.
 DICTIONARY_PACK_VERSION = "1"
+PATH_PACK_VERSION = "1"
 
 
 def log(msg: str) -> None:
@@ -83,17 +86,17 @@ def schema_statements(sq_path: Path = DICTIONARY_SQ) -> list[str]:
     return [s.strip() for s in ddl.split(";") if s.strip()]
 
 
-def table_statements(tables: set[str]) -> list[str]:
+def table_statements(tables: set[str], sq_path: Path = DICTIONARY_SQ) -> list[str]:
     """Subset of schema statements that create or index the given tables."""
     out = []
-    for stmt in schema_statements():
+    for stmt in schema_statements(sq_path):
         m = re.match(r"CREATE (?:TABLE|INDEX \w+ ON) (\w+)", stmt)
         if m and m.group(1) in tables:
             out.append(stmt)
     return out
 
 
-def open_pack(path: Path = DICTIONARY_PACK) -> sqlite3.Connection:
+def open_pack(path: Path = DICTIONARY_PACK, sq_path: Path = DICTIONARY_SQ) -> sqlite3.Connection:
     """Open (creating if needed) a pack with the full schema. user_version=1 so SQLDelight never re-creates it."""
     path.parent.mkdir(parents=True, exist_ok=True)
     fresh = not path.exists()
@@ -101,16 +104,16 @@ def open_pack(path: Path = DICTIONARY_PACK) -> sqlite3.Connection:
     db.execute("PRAGMA journal_mode = OFF")
     db.execute("PRAGMA synchronous = OFF")
     if fresh:
-        for stmt in schema_statements():
+        for stmt in schema_statements(sq_path):
             db.execute(stmt)
         db.execute("PRAGMA user_version = 1")
     return db
 
 
-def reset_tables(db: sqlite3.Connection, tables: set[str]) -> None:
+def reset_tables(db: sqlite3.Connection, tables: set[str], sq_path: Path = DICTIONARY_SQ) -> None:
     for t in tables:
         db.execute(f"DROP TABLE IF EXISTS {t}")
-    for stmt in table_statements(tables):
+    for stmt in table_statements(tables, sq_path):
         db.execute(stmt)
 
 

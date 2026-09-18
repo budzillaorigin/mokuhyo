@@ -92,7 +92,7 @@ object DictionaryFixture {
         kanji(q, "田", 5, listOf("rice field"), listOf("デン"), listOf("た"), listOf("田"))
         kanji(q, "畑", 9, listOf("farm"), emptyList(), listOf("はた"), listOf("火", "田"))
         listOf("人" to 2, "良" to 7, "犭" to 3, "艹" to 3, "田" to 5, "火" to 4).forEach { (r, n) ->
-            q.insertRadical(app.tsumugi.dictionary.db.Radical(r, n.toLong()))
+            q.insertRadical(app.tsumugi.dictionary.db.Radical(r, n.toLong(), r, r))
         }
         q.insertStroke(Stroke("田", 1, "M22.5,29.5c1.2,1.2,1.8,2.9,1.9,4.4c0.5,11.3,1.2,39.1,1.5,50.5", "㇑"))
         q.insertStroke(Stroke("田", 2, "M25,31.9c10.9-1.3,48.9-4.4,56.4-4.9c3.4-0.2,5.1,1.3,4.9,4.1", "㇕"))

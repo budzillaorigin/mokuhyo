@@ -66,5 +66,10 @@ sqldelight {
             packageName.set("app.tsumugi.dictionary.db")
             srcDirs.setFrom("src/commonMain/sqldelightDictionary")
         }
+        // Read-only 60-level kanji path pack, built by tools/packs/build_kanji_path.py.
+        create("PathDatabase") {
+            packageName.set("app.tsumugi.path.db")
+            srcDirs.setFrom("src/commonMain/sqldelightPath")
+        }
     }
 }
