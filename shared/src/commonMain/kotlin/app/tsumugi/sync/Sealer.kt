@@ -1,0 +1,79 @@
+package app.tsumugi.sync
+
+import app.tsumugi.sync.crypto.Argon2id
+import app.tsumugi.sync.crypto.XChaCha20Poly1305
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
+import kotlin.uuid.Uuid
+
+/** Seals and opens row payloads for end-to-end encrypted sync. */
+interface Sealer {
+    /** Base64 of nonce ‖ ciphertext. */
+    fun seal(plaintext: String): String
+
+    /** The plaintext, or null when the key is wrong or the data was tampered with. */
+    fun open(sealed: String): String?
+}
+
+/**
+ * XChaCha20-Poly1305 with a key derived from the user's sync passphrase ([E2eKeys.derive]). The key lives only in
+ * memory; the server stores ciphertext it can't read (docs/SYNC_PROTOCOL.md).
+ */
+@OptIn(ExperimentalEncodingApi::class)
+class E2eSealer(private val key: ByteArray) : Sealer {
+    init {
+        require(key.size == XChaCha20Poly1305.KEY_BYTES)
+    }
+
+    override fun seal(plaintext: String): String {
+        val nonce = E2eKeys.randomBytes(XChaCha20Poly1305.NONCE_BYTES)
+        return Base64.encode(nonce + XChaCha20Poly1305.seal(key, nonce, plaintext.encodeToByteArray()))
+    }
+
+    override fun open(sealed: String): String? {
+        val bytes = runCatching { Base64.decode(sealed) }.getOrNull() ?: return null
+        if (bytes.size < XChaCha20Poly1305.NONCE_BYTES + XChaCha20Poly1305.TAG_BYTES) return null
+        val nonce = bytes.copyOf(XChaCha20Poly1305.NONCE_BYTES)
+        val body = bytes.copyOfRange(XChaCha20Poly1305.NONCE_BYTES, bytes.size)
+        return XChaCha20Poly1305.open(key, nonce, body)?.decodeToString()
+    }
+}
+
+/** Passphrase → key derivation (Argon2id) and a verifier to detect a wrong passphrase before syncing. */
+@OptIn(ExperimentalEncodingApi::class)
+object E2eKeys {
+    data class Params(val iterations: Int = 3, val memoryKiB: Int = 32 * 1024, val parallelism: Int = 1)
+
+    private const val VERIFIER_TEXT = "tsumugi-e2e-v1"
+
+    fun derive(passphrase: String, saltBase64: String, params: Params = Params()): ByteArray =
+        Argon2id.hash(
+            password = passphrase.encodeToByteArray(),
+            salt = Base64.decode(saltBase64),
+            iterations = params.iterations,
+            memoryKiB = params.memoryKiB,
+            parallelism = params.parallelism,
+            tagLength = XChaCha20Poly1305.KEY_BYTES,
+        )
+
+    fun newSalt(): String = Base64.encode(randomBytes(16))
+
+    fun verifier(key: ByteArray): String = E2eSealer(key).seal(VERIFIER_TEXT)
+
+    fun matches(key: ByteArray, verifier: String): Boolean = E2eSealer(key).open(verifier) == VERIFIER_TEXT
+
+    /** Cryptographically secure bytes from the platform CSPRNG (via kotlin.uuid, ~122 random bits per UUID). */
+    internal fun randomBytes(n: Int): ByteArray {
+        val out = ByteArray(n)
+        var filled = 0
+        while (filled < n) {
+            val chunk = Uuid.random().toByteArray()
+            // Skip the fixed version/variant nibbles by only using bytes 0-5 and 9-15.
+            for (i in intArrayOf(0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15)) {
+                if (filled == n) break
+                out[filled++] = chunk[i]
+            }
+        }
+        return out
+    }
+}
