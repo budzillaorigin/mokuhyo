@@ -16,7 +16,7 @@ fetch() {
   local name="$1" url="$2" sha="$3"
   local zip="$CACHE/$name.zip"
   if [ ! -f "$zip" ] || ! echo "$sha  $zip" | shasum -a 256 -c --status; then
-    echo "Downloading $name…"
+    echo "Downloading ${name}..."
     curl -fsSL --retry 3 -o "$zip.part" "$url"
     mv "$zip.part" "$zip"
   fi
