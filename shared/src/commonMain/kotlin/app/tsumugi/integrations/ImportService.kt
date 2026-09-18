@@ -2,6 +2,8 @@ package app.tsumugi.integrations
 
 import app.tsumugi.api.AppGraph
 import app.tsumugi.integrations.anki.AnkiExporter
+import app.tsumugi.integrations.bunpro.BunproImportResult
+import app.tsumugi.integrations.bunpro.BunproImporter
 import app.tsumugi.integrations.anki.AnkiImportResult
 import app.tsumugi.integrations.anki.AnkiImporter
 import app.tsumugi.integrations.imiwa.ImiwaImporter
@@ -59,6 +61,13 @@ class ImportService(private val graph: AppGraph) {
     }
 
     suspend fun connectWaniKani(token: String): WkUser = wanikani.connect(token)
+
+    /** Imports a Bunpro CSV/TSV export; returns null when the grammar pack isn't installed. */
+    suspend fun importBunpro(filePath: String): BunproImportResult? {
+        val grammar = graph.grammar() ?: return null
+        val text = withContext(Dispatchers.IO) { fs.read(filePath.toPath()) { readUtf8() } }
+        return BunproImporter(grammar, graph.configuredSrs()).import(text)
+    }
 
     /** Imports WaniKani progress onto the kanji path; returns null when the path pack isn't installed. */
     suspend fun importWaniKani(progress: (String) -> Unit = {}): WaniKaniImportResult? {

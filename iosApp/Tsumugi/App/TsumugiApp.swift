@@ -13,10 +13,13 @@ struct TsumugiApp: App {
                 .task { await Reminders.requestPermission() }
         }
         .onChange(of: scenePhase) { _, phase in
-            // Plan the next "reviews are ready" reminder from the current queue whenever the app backgrounds.
+            // Whenever the app backgrounds: plan the next "reviews are ready" reminder and refresh the widgets.
             if phase == .background {
                 let graph = model.graph
-                Task { await Reminders.reschedule(graph: graph) }
+                Task {
+                    await Reminders.reschedule(graph: graph)
+                    await WidgetSnapshot.write(graph: graph)
+                }
             }
         }
     }

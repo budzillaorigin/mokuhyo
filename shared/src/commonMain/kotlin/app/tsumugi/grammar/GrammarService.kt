@@ -7,6 +7,7 @@ import app.tsumugi.domain.ItemSource
 import app.tsumugi.domain.Stage
 import app.tsumugi.grammar.db.GrammarDatabase
 import app.tsumugi.grammar.db.Grammar_point
+import app.tsumugi.integrations.bunpro.GrammarTitles
 import app.tsumugi.jp.Deinflector
 import app.tsumugi.jp.Kana
 import app.tsumugi.jp.Romaji
@@ -109,6 +110,16 @@ class GrammarService(
         q.examplesFor(pointId).executeAsList().map {
             GrammarExample(it.ja, it.en, it.blank_start.toInt(), it.blank_end.toInt(), it.source)
         }
+    }
+
+    /** Normalized title/alias → point, for matching imports (Bunpro) to our points. */
+    suspend fun titleIndex(): Map<String, GrammarPoint> = io {
+        val points = q.allPoints().executeAsList().map { it.toPoint() }
+        val byId = points.associateBy { it.id }
+        val index = HashMap<String, GrammarPoint>()
+        q.allAliases().executeAsList().forEach { a -> byId[a.point_id]?.let { index[a.alias] = it } }
+        points.forEach { p -> index.getOrPut(GrammarTitles.normalize(p.title)) { p } }
+        index
     }
 
     /** Next points to learn: easiest level first, in teaching order, skipping ones already started. */

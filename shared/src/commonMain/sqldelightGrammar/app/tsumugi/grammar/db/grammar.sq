@@ -45,6 +45,14 @@ CREATE TABLE grammar_pattern (
     PRIMARY KEY (point_id, ord)
 ) WITHOUT ROWID;
 
+-- Alternative names for points (other apps' titles, spelling variants), normalized like
+-- GrammarTitles.normalize. Used to match imports (Bunpro) to our points. Built from tools/packs/grammar/aliases.json.
+CREATE TABLE grammar_alias (
+    alias TEXT NOT NULL,
+    point_id TEXT NOT NULL,
+    PRIMARY KEY (alias, point_id)
+) WITHOUT ROWID;
+
 metaValue:
 SELECT value FROM pack_meta WHERE key = ?;
 
@@ -63,6 +71,9 @@ SELECT * FROM grammar_example WHERE point_id = ? ORDER BY ord;
 patternsFor:
 SELECT regex FROM grammar_pattern WHERE point_id = ? ORDER BY ord;
 
+allAliases:
+SELECT * FROM grammar_alias;
+
 allPatterns:
 SELECT * FROM grammar_pattern ORDER BY point_id, ord;
 
@@ -74,6 +85,9 @@ INSERT INTO grammar_example VALUES ?;
 
 insertPattern:
 INSERT INTO grammar_pattern VALUES ?;
+
+insertAlias:
+INSERT INTO grammar_alias VALUES ?;
 
 insertMeta:
 INSERT OR REPLACE INTO pack_meta(key, value) VALUES (?, ?);

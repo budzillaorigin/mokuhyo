@@ -12,6 +12,7 @@ struct ImportView: View {
     @State private var wkStatus = ""
     @State private var pickingAnki = false
     @State private var pickingList = false
+    @State private var pickingBunpro = false
     @State private var exported: URL?
 
     var body: some View {
@@ -40,6 +41,14 @@ struct ImportView: View {
             }
 
             Section {
+                Button("Import Bunpro CSV") { pickingBunpro = true }.disabled(busy)
+            } header: {
+                Text("Bunpro")
+            } footer: {
+                Text("A CSV export of your Bunpro grammar (title + SRS level). Only your progress is imported.")
+            }
+
+            Section {
                 Text(wkStatus)
                 SecureField("API v2 token", text: $token)
                     .textInputAutocapitalization(.never)
@@ -60,6 +69,13 @@ struct ImportView: View {
                 var text = "Imported \(r.notes) notes, \(r.cards) cards and \(r.reviews) reviews"
                 if r.nihongoSharkNotes > 0 { text += " (\(r.nihongoSharkNotes) NihongoShark kanji with your stories)" }
                 return text + "." + (r.warnings.isEmpty ? "" : "\n" + r.warnings.prefix(5).joined(separator: "\n"))
+            }
+        }
+        .fileImporter(isPresented: $pickingBunpro, allowedContentTypes: [.commaSeparatedText, .tabSeparatedText, .plainText, .data]) { result in
+            withFile(result, name: "bunpro.csv") { path in
+                guard let r = try await app.graph.imports.importBunpro(filePath: path) else { return "The grammar pack isn't installed." }
+                let missing = r.unmatched.prefix(8).joined(separator: "、")
+                return "Matched \(r.matched) of \(r.rows) grammar points." + (r.unmatched.isEmpty ? "" : " Not matched: \(missing)")
             }
         }
         .fileImporter(isPresented: $pickingList, allowedContentTypes: [.plainText, .commaSeparatedText, .tabSeparatedText, .data]) { result in

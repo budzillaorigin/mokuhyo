@@ -85,6 +85,13 @@ def inside_larger_word(text: str, start: int, end: int, words: set[str]) -> bool
     return False
 
 
+def normalize_title(title: str) -> str:
+    """Mirror of app.tsumugi.grammar.GrammarTitles.normalize: drop 〜/~, spaces, brackets' content, fold kana."""
+    t = re.sub(r"[（(][^）)]*[）)]", "", nfc(title))
+    t = re.sub(r"[〜～~\s・/／、,]", "", t)
+    return "".join(chr(ord(c) - 0x60) if "ァ" <= c <= "ヶ" else c for c in t).lower()
+
+
 def utf16_offsets(text: str, start: int, end: int) -> tuple[int, int]:
     """Python str offsets → UTF-16 offsets (what Kotlin String indices use)."""
     def u16(s: str) -> int:
@@ -107,7 +114,14 @@ def main() -> None:
     sentences = load_tatoeba()
     words = dictionary_words()
     db = open_pack(GRAMMAR_PACK, GRAMMAR_SQ)
-    reset_tables(db, {"grammar_point", "grammar_example", "grammar_pattern"}, GRAMMAR_SQ)
+    reset_tables(db, {"grammar_point", "grammar_example", "grammar_pattern", "grammar_alias"}, GRAMMAR_SQ)
+    ids = {p["id"] for p in points}
+    aliases_file = SOURCES / "aliases.json"
+    aliases = json.loads(aliases_file.read_text(encoding="utf-8")) if aliases_file.exists() else {}
+    db.executemany(
+        "INSERT OR IGNORE INTO grammar_alias VALUES (?,?)",
+        ((normalize_title(alias), pid) for pid, names in aliases.items() if pid in ids for alias in names),
+    )
 
     used: set[int] = set()  # prefer a different sentence for each point
     tatoeba_total = 0
@@ -118,7 +132,7 @@ def main() -> None:
             (
                 p["id"], p["jlpt"], p["order"], nfc(p["title"]), p["structure"], p["meaning"], p["nuance"],
                 dumps(p.get("mistakes", [])), dumps(p.get("related", [])), dumps(p.get("textbooks", {})),
-                p.get("source", "llm"),
+                p.get("source", "llm"),  # "verified" once reviewed with items/review.py
             ),
         )
         db.executemany(

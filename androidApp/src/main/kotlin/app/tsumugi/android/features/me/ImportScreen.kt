@@ -87,6 +87,16 @@ fun ImportScreen() {
         }
     }
 
+    val bunproPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        uri ?: return@rememberLauncherForActivityResult
+        run("Importing Bunpro progress") {
+            val file = copyToCache(context, uri, "bunpro.csv")
+            val r = graph.imports.importBunpro(file.path) ?: return@run "The grammar pack isn't installed."
+            "Matched ${r.matched} of ${r.rows} grammar points." +
+                if (r.unmatched.isNotEmpty()) " Not matched: ${r.unmatched.take(8).joinToString("、")}${if (r.unmatched.size > 8) "…" else ""}" else ""
+        }
+    }
+
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         message?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
@@ -100,6 +110,11 @@ fun ImportScreen() {
         Text("Word lists", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         Text("imiwa? exports or any CSV/TSV of word, reading, meaning.", style = MaterialTheme.typography.bodySmall)
         Button(onClick = { listPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text("Import word list") }
+
+        HorizontalDivider()
+        Text("Bunpro", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text("Import a CSV export of your Bunpro grammar (title + SRS level). Only your progress is imported.", style = MaterialTheme.typography.bodySmall)
+        Button(onClick = { bunproPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text("Import Bunpro CSV") }
 
         HorizontalDivider()
         Text("WaniKani", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
