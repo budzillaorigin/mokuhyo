@@ -7,10 +7,12 @@ import io.ktor.client.request.header
 import io.ktor.client.request.request
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsBytes
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
+import io.ktor.http.content.ByteArrayContent
 import io.ktor.http.content.TextContent
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
@@ -29,8 +31,11 @@ class HttpSyncClient(
     engine: HttpClientEngine,
     private val baseUrl: String,
     private val tokens: TokenStore,
-) : SyncTransport {
+) : SyncTransport, BlobStore {
     private val http = tsumugiHttpClient(engine, NetTimeouts.API)
+
+    /** Blobs are up to 20 MB: no whole-request limit, but 120 s without a byte fails (rule 13). */
+    private val blobHttp = tsumugiHttpClient(engine, NetTimeouts.DOWNLOAD)
     private val root get() = baseUrl.trimEnd('/') + "/v1"
 
     // --- Auth ---------------------------------------------------------------------------------------------
@@ -95,6 +100,45 @@ class HttpSyncClient(
     @Throws(Exception::class)
     override suspend fun pull(since: Long, limit: Int): PullResponse =
         call(HttpMethod.Get, "/sync/pull?since=$since&limit=$limit", null, null, PullResponse.serializer())
+
+    // --- Blobs (opt-in recordings and pictures sync, DECISIONS D-111) ---------------------------------------
+
+    @Throws(Exception::class)
+    override suspend fun putBlob(id: String, contentType: String, bytes: ByteArray) {
+        val response = blob(HttpMethod.Put, id) { setBody(ByteArrayContent(bytes, ContentType.parse(contentType))) }
+        check(response)
+    }
+
+    @Throws(Exception::class)
+    override suspend fun getBlob(id: String): ByteArray? {
+        val response = blob(HttpMethod.Get, id) {}
+        if (response.status.value == 404) return null
+        check(response)
+        return response.bodyAsBytes()
+    }
+
+    @Throws(Exception::class)
+    override suspend fun deleteBlob(id: String) {
+        val response = blob(HttpMethod.Delete, id) {}
+        if (response.status.value != 404) check(response)
+    }
+
+    @Throws(Exception::class)
+    override suspend fun deviceIds(): List<String> = devices().map { it.id }
+
+    private suspend fun blob(method: HttpMethod, id: String, body: io.ktor.client.request.HttpRequestBuilder.() -> Unit): HttpResponse {
+        suspend fun once(): HttpResponse = blobHttp.request("$root/blobs/$id") {
+            this.method = method
+            tokens.accessToken?.let { header(HttpHeaders.Authorization, "Bearer $it") }
+            body()
+        }
+        val first = once()
+        if (first.status.value == 401 && tokens.refreshToken != null) {
+            refresh()
+            return once()
+        }
+        return first
+    }
 
     // --- Plumbing -----------------------------------------------------------------------------------------
 

@@ -202,7 +202,7 @@ fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (Str
         val d = doc ?: return
         val analyzer = graph.reader.analyzer() ?: return
         val next = ranges.drop(loaded).take(PAGE)
-        next.forEach { paragraphs += analyzer.paragraph(d.body, it) }
+        next.forEach { paragraphs += analyzer.paragraph(d.body, it, d.ruby) }
         loaded += next.size
     }
     LaunchedEffect(docId) {

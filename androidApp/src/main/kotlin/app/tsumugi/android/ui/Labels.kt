@@ -26,6 +26,7 @@ fun ItemKind.localized(): String = stringResource(
         ItemKind.WRITING -> R.string.kind_writing
         ItemKind.MINIMAL_PAIR -> R.string.kind_minimal_pair
         ItemKind.CUSTOM -> R.string.kind_custom
+        ItemKind.KANA -> R.string.kind_kana
     },
 )
 

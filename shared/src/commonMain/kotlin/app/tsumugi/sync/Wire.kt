@@ -82,3 +82,23 @@ interface SyncTransport {
 }
 
 class SyncException(message: String, val status: Int? = null) : Exception(message)
+
+/**
+ * The server's per-user blob store (docs/SYNC_PROTOCOL.md `/blobs/{id}`): opaque bytes, 20 MB each, a per-user
+ * quota. Used only by the opt-in recordings/pictures sync (DECISIONS D-111). Ids: 1–128 of [A-Za-z0-9._-].
+ */
+interface BlobStore {
+    @Throws(Exception::class)
+    suspend fun putBlob(id: String, contentType: String, bytes: ByteArray)
+
+    /** The blob, or null when there is none with this id. */
+    @Throws(Exception::class)
+    suspend fun getBlob(id: String): ByteArray?
+
+    @Throws(Exception::class)
+    suspend fun deleteBlob(id: String)
+
+    /** Server ids of this account's devices (each one publishes its own manifest). */
+    @Throws(Exception::class)
+    suspend fun deviceIds(): List<String>
+}

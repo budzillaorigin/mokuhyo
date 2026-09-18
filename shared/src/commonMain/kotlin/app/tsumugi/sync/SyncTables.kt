@@ -54,6 +54,17 @@ internal class TableSpec(
         }, keys.size) { parts.forEachIndexed { i, v -> bindString(i, v) } }.value
     }
 
+    /** Every row of the table, in primary-key order (JSON backup, D-116). */
+    fun readAll(driver: SqlDriver): List<JsonObject> =
+        driver.executeQuery(null, "SELECT $columnList FROM $name ORDER BY ${keys.joinToString(", ")}", { cursor ->
+            val out = ArrayList<JsonObject>()
+            while (cursor.next().value) out += rowOf(cursor)
+            QueryResult.Value(out)
+        }, 0).value
+
+    /** The row's key as the wire carries it (composite keys joined with [KEY_SEPARATOR]). */
+    fun keyOf(row: JsonObject): String = keys.joinToString(KEY_SEPARATOR) { (row[it] as? JsonPrimitive)?.content.orEmpty() }
+
     fun write(driver: SqlDriver, row: JsonObject, orIgnore: Boolean = false) {
         val placeholders = columns.joinToString(", ") { "?" }
         val verb = if (orIgnore) "INSERT OR IGNORE" else "INSERT OR REPLACE"

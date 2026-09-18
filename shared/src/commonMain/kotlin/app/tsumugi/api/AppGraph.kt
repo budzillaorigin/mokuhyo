@@ -56,6 +56,37 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
 import kotlin.concurrent.Volatile
+import app.tsumugi.cards.PersonalCards
+import app.tsumugi.domain.ItemSource
+import app.tsumugi.export.BackupService
+import app.tsumugi.export.DailyTotals
+import app.tsumugi.export.RestoreProgress
+import app.tsumugi.export.RestoreResult
+import app.tsumugi.export.ReviewCsvExporter
+import app.tsumugi.export.StudyReport
+import app.tsumugi.export.StudyReportBuilder
+import app.tsumugi.integrations.ankiconnect.AnkiConnectPush
+import app.tsumugi.integrations.notion.NotionClient
+import app.tsumugi.integrations.notion.NotionDayStats
+import app.tsumugi.integrations.notion.NotionExport
+import app.tsumugi.integrations.notion.NotionPushResult
+import app.tsumugi.kana.KanaCourse
+import app.tsumugi.media.ClipService
+import app.tsumugi.media.PodcastService
+import app.tsumugi.media.SubtitleGenerator
+import app.tsumugi.reader.UrlImporter
+import app.tsumugi.recordings.ImageStore
+import app.tsumugi.recordings.RecordingKind
+import app.tsumugi.recordings.RecordingStore
+import app.tsumugi.recordings.RecordingSync
+import app.tsumugi.review.ContentReviewService
+import app.tsumugi.review.ExamReviewSource
+import app.tsumugi.review.GrammarReviewSource
+import app.tsumugi.review.KanaMnemonicReviewSource
+import app.tsumugi.review.PracticeReviewSource
+import app.tsumugi.review.ReviewSource
+import app.tsumugi.srs.StudyItem
+import okio.Path.Companion.toPath
 
 /** Progress of a background rebuild of every card (after new FSRS weights). */
 data class RecomputeProgress(val done: Int, val total: Int, val running: Boolean) {
@@ -315,6 +346,119 @@ class AppGraph(val platform: PlatformServices) {
         if (SettingsRepository.FSRS_WEIGHTS in keys || SettingsRepository.DESIRED_RETENTION in keys) reloadScheduler()
         if (SettingsRepository.FSRS_WEIGHTS in keys) recomputeAllInBackground()
     }
+
+    // --- Phase 10 shared features (BRIEF_V2 G-03…G-16, DECISIONS D-110…D-119) ------------------------------
+
+    /** The learner's recordings (G-03): files under dataDir/recordings, excluded from backups. */
+    val recordings: RecordingStore by lazy { RecordingStore(userDatabase, platform.fileSystem, platform.dataDir, device.deviceId) }
+
+    /** The learner's pictures for personal cards (G-12). */
+    val images: ImageStore by lazy { ImageStore(userDatabase, platform.fileSystem, platform.dataDir, device.deviceId) }
+
+    /** Opt-in recordings/pictures sync through the server's blob store (off by default, per device). */
+    val recordingSync: RecordingSync by lazy {
+        RecordingSync(
+            userDatabase, platform.fileSystem, recordings, images, deviceSettings, device.deviceId,
+            blobs = { syncAccount.client() },
+            serverDeviceId = { userDatabase.metaQueries.get(SyncAccount.SERVER_DEVICE_ID).executeAsOneOrNull() },
+            sealer = { syncAccount.sealer },
+        )
+    }
+
+    /** Personal (Fluent Forever) cards and self-recorded audio sides (G-03, G-12). */
+    val personalCards: PersonalCards by lazy { PersonalCards(userDatabase, srs, recordings, images) }
+
+    /** Whisper subtitles for media, cached by content key (G-04). */
+    val subtitles: SubtitleGenerator by lazy { SubtitleGenerator(userDatabase, { ai.recognizer() }) }
+
+    /** "Save clip to SRS" (G-04). */
+    val clips: ClipService by lazy { ClipService(userDatabase, srs, recordings) }
+
+    /** Podcast feeds, episodes and download bookkeeping (G-04). */
+    val podcasts: PodcastService by lazy {
+        val web = UrlImporter(platform.httpEngine())
+        PodcastService(userDatabase, platform.fileSystem, platform.dataDir, { web.fetchText(it) })
+    }
+
+    private val kanaCourse: KanaCourse by lazy { KanaCourse(srs) { settings.bool(SettingsRepository.WRITING_CARDS, false) } }
+
+    /** The kana course (G-13), with the learner's scheduler loaded. Today calls `kana().needed(settings)`. */
+    @Throws(Exception::class)
+    suspend fun kana(): KanaCourse {
+        configuredSrs()
+        return kanaCourse
+    }
+
+    /** CSV of the whole review log (G-10). */
+    val reviewCsv: ReviewCsvExporter by lazy { ReviewCsvExporter(userDatabase) }
+
+    /** JSON backup and merge-restore of synced data (G-10). */
+    val backup: BackupService by lazy { BackupService(userDriver, userDatabase, srs, device.deviceId) }
+
+    /** Restores a backup file and applies changed scheduler settings. */
+    @Throws(Exception::class)
+    suspend fun restoreBackup(path: String, onProgress: (RestoreProgress) -> Unit = {}): RestoreResult {
+        configuredSrs()
+        return backup.restoreFrom(platform.fileSystem, path, onProgress).also { if (it.changedSettings.isNotEmpty()) settingsChanged(it.changedSettings) }
+    }
+
+    /** The study report model the platforms render as PDF (G-10). */
+    @Throws(Exception::class)
+    suspend fun studyReport(periodDays: Int = 30): StudyReport =
+        StudyReportBuilder(userDatabase, stats, { pathProgress.progress().passedLevel }, { exams().history(limit = 100) }).build(periodDays)
+
+    /** Notion push (G-09); the token is in the keychain. */
+    val notion: NotionExport by lazy { NotionExport(userDatabase, platform.secrets, { NotionClient(it, platform.httpEngine()) }) }
+
+    /** Pushes the last [days] days of totals to the Notion stats database. */
+    @Throws(Exception::class)
+    suspend fun pushStatsToNotion(days: Int = 30, onProgress: (Int, Int) -> Unit = { _, _ -> }): NotionPushResult {
+        val since = kotlin.time.Clock.System.now().toEpochMilliseconds() - days.coerceIn(1, 3650) * 86_400_000L
+        val totals = DailyTotals.since(userDatabase, since, kotlinx.datetime.TimeZone.currentSystemDefault())
+        val streaks = DailyTotals.streaks(totals)
+        return notion.pushStats(totals.map { NotionDayStats(it.date.toString(), it.reviews, it.accuracy, streaks[it.date] ?: 0, it.minutes) }, onProgress)
+    }
+
+    /** Pushes items (all started items when [itemIds] is empty) to the Notion items database. */
+    @Throws(Exception::class)
+    suspend fun pushItemsToNotion(itemIds: List<String> = emptyList(), onProgress: (Int, Int) -> Unit = { _, _ -> }): NotionPushResult {
+        val stages = srs.stages()
+        val ids = itemIds.ifEmpty { stages.keys.toList() }
+        return notion.pushItems(srs.items(ids).values.toList(), stages, onProgress)
+    }
+
+    /** AnkiConnect push of mined cards to desktop Anki (G-09); clips carry their cut audio. */
+    val ankiConnect: AnkiConnectPush by lazy {
+        AnkiConnectPush(deviceSettings, platform.secrets, { platform.httpEngine() }) { item -> clipAudio(item) }
+    }
+
+    /** A clip item's cut audio as base64 + file name for AnkiConnect, or null. */
+    @OptIn(kotlin.io.encoding.ExperimentalEncodingApi::class)
+    private suspend fun clipAudio(item: StudyItem): Pair<String, String>? {
+        val clip = clips.contextOf(item.context) ?: return null
+        val rec = recordings.recordingsFor(RecordingKind.CLIP, clip.clipId).firstOrNull() ?: return null
+        if (!recordings.fileExists(rec)) return null
+        val bytes = kotlinx.coroutines.withContext(Dispatchers.Default) { platform.fileSystem.read(recordings.pathOf(rec).toPath()) { readByteArray() } }
+        return kotlin.io.encoding.Base64.encode(bytes) to "tsumugi-${rec.fileName}"
+    }
+
+    /** Items the learner mined themselves (reader words, clips, personal cards), newest last, for the Anki push. */
+    @Throws(Exception::class)
+    suspend fun minedItems(): List<StudyItem> =
+        srs.items(srs.allItemIds()).values.filter { it.source == ItemSource.USER }
+
+    private var reviewSources: List<ReviewSource>? = null
+
+    /** The in-app content review over the installed packs (G-16; the UI hides it behind a developer toggle). */
+    @Throws(Exception::class)
+    suspend fun contentReview(): ContentReviewService = ContentReviewService(userDatabase, {
+        reviewSources ?: buildList {
+            openPack(PackInstaller.GRAMMAR) { platform.packDriver(GrammarDatabase.Schema, PackInstaller.GRAMMAR) }?.let { add(GrammarReviewSource(it)) }
+            openPack(PackInstaller.EXAM) { platform.packDriver(ExamDatabase.Schema, PackInstaller.EXAM) }?.let { add(ExamReviewSource(it)) }
+            openPack(PackInstaller.PRACTICE) { platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE) }?.let { add(PracticeReviewSource(it)) }
+            add(KanaMnemonicReviewSource)
+        }.also { reviewSources = it }
+    })
 
     /** Rebuilds every card from its reviews with the current scheduler, reporting [recomputeProgress]. */
     fun recomputeAllInBackground(): Job {

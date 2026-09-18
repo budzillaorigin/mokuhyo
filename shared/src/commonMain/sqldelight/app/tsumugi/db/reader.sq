@@ -15,10 +15,23 @@ CREATE TABLE reader_doc (
     ilr_estimate TEXT,
     known_ratio REAL,
     progress INTEGER NOT NULL DEFAULT 0,
-    is_user_content INTEGER NOT NULL DEFAULT 1
+    is_user_content INTEGER NOT NULL DEFAULT 1,
+    -- Source-supplied readings (Aozora ruby, graded-reader furigana) as a JSON array of {start, base, reading}; the
+    -- reader treats them as authoritative (BRIEF_V2 G-07, DECISIONS D-114). Null = none.
+    ruby TEXT
 );
 CREATE INDEX reader_doc_imported ON reader_doc(imported_at);
 CREATE INDEX reader_doc_source ON reader_doc(source_url);
+
+-- Comprehension questions generated for a document by the `generate_reading_questions` prompt (always shown as
+-- AI-generated), cached so reopening a document doesn't regenerate them. questions: JSON of the prompt output.
+CREATE TABLE reader_question (
+    doc_id TEXT NOT NULL PRIMARY KEY,
+    level TEXT NOT NULL,
+    questions TEXT NOT NULL,
+    engine TEXT NOT NULL,
+    created_at INTEGER NOT NULL
+);
 
 CREATE TABLE reader_feed (
     id TEXT NOT NULL PRIMARY KEY,
@@ -29,8 +42,8 @@ CREATE TABLE reader_feed (
 );
 
 insertDoc:
-INSERT OR REPLACE INTO reader_doc(id, title, source_kind, source_url, author, body, imported_at, jlpt_estimate, ilr_estimate, known_ratio, progress, is_user_content)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO reader_doc(id, title, source_kind, source_url, author, body, imported_at, jlpt_estimate, ilr_estimate, known_ratio, progress, is_user_content, ruby)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 docById:
 SELECT * FROM reader_doc WHERE id = ?;
@@ -45,6 +58,15 @@ FROM reader_doc ORDER BY imported_at DESC;
 
 deleteDoc:
 DELETE FROM reader_doc WHERE id = ?;
+
+questionsFor:
+SELECT * FROM reader_question WHERE doc_id = ?;
+
+putQuestions:
+INSERT OR REPLACE INTO reader_question(doc_id, level, questions, engine, created_at) VALUES (?, ?, ?, ?, ?);
+
+deleteQuestions:
+DELETE FROM reader_question WHERE doc_id = ?;
 
 updateProgress:
 UPDATE reader_doc SET progress = ? WHERE id = ?;

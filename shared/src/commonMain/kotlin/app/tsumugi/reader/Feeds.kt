@@ -2,9 +2,23 @@ package app.tsumugi.reader
 
 import app.tsumugi.platform.normalizeNfc
 
-data class FeedItem(val title: String, val link: String, val published: String?, val summary: String)
+data class FeedItem(
+    val title: String,
+    val link: String,
+    val published: String?,
+    val summary: String,
+    /** Podcast audio (RSS `<enclosure>`), used by [app.tsumugi.media.PodcastService] (G-04). */
+    val enclosure: FeedEnclosure? = null,
+    /** RSS `<guid>` / Atom `<id>`; stable across fetches when present. */
+    val guid: String? = null,
+    /** `itunes:duration` in milliseconds, when the feed gives it. */
+    val durationMs: Long? = null,
+)
 
-data class ParsedFeed(val title: String, val items: List<FeedItem>)
+/** An RSS enclosure: the media file of a podcast episode. */
+data class FeedEnclosure(val url: String, val type: String?, val lengthBytes: Long?)
+
+data class ParsedFeed(val title: String, val items: List<FeedItem>, val author: String? = null, val imageUrl: String? = null)
 
 /**
  * RSS 2.0, RSS 1.0 (RDF) and Atom, parsed with the tolerant [Html] tree builder (no XML library): feeds in the
@@ -19,12 +33,34 @@ object FeedParser {
             ?.let { text(it) }.orEmpty()
         val items = entries.mapNotNull { e ->
             val title = child(e, "title")?.let { text(it) }.orEmpty()
-            val link = link(e) ?: return@mapNotNull null
+            val enclosure = enclosure(e)
+            val link = link(e) ?: enclosure?.url ?: return@mapNotNull null
             val published = listOf("pubdate", "published", "updated", "date").firstNotNullOfOrNull { child(e, it)?.let(::text) }
             val summaryHtml = listOf("description", "summary", "content", "encoded").firstNotNullOfOrNull { child(e, it)?.let(::raw) }.orEmpty()
-            FeedItem(title.ifEmpty { link }, link, published, Html.text(Html.parse(summaryHtml)))
+            val guid = listOf("guid", "id").firstNotNullOfOrNull { child(e, it)?.let(::text)?.ifEmpty { null } }
+            val duration = child(e, "duration")?.let(::text)?.let(::parseDuration)
+            FeedItem(title.ifEmpty { link }, link, published, Html.text(Html.parse(summaryHtml)), enclosure, guid, duration)
         }
-        return ParsedFeed(feedTitle, items)
+        val outside = root.elements().filter { n -> entries.none { isInside(n, it) } }.toList()
+        val author = outside.firstOrNull { it.tag == "author" }?.let { a -> (child(a, "name") ?: a).let(::text) }?.ifEmpty { null }
+        val image = outside.firstOrNull { it.tag == "image" }?.let { img -> img.attrs["href"] ?: child(img, "url")?.let(::text) }?.ifEmpty { null }
+        return ParsedFeed(feedTitle, items, author, image)
+    }
+
+    private fun enclosure(entry: HtmlNode): FeedEnclosure? {
+        val node = entry.elements().firstOrNull { it.tag == "enclosure" && it.attrs["url"] != null }
+            ?: entry.elements().firstOrNull { it.tag == "link" && it.attrs["rel"] == "enclosure" && it.attrs["href"] != null }
+            ?: return null
+        val url = (node.attrs["url"] ?: node.attrs["href"])!!.trim()
+        return FeedEnclosure(url, node.attrs["type"], node.attrs["length"]?.trim()?.toLongOrNull()?.takeIf { it > 0 })
+    }
+
+    /** `itunes:duration`: seconds, MM:SS or HH:MM:SS. */
+    internal fun parseDuration(s: String): Long? {
+        val parts = s.trim().split(':').map { it.trim().toDoubleOrNull() ?: return null }
+        if (parts.isEmpty() || parts.size > 3) return null
+        val seconds = parts.fold(0.0) { acc, v -> acc * 60 + v }
+        return (seconds * 1000).toLong().takeIf { it > 0 }
     }
 
     private fun link(entry: HtmlNode): String? {

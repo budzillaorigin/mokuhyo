@@ -86,6 +86,45 @@ class ReaderService(private val graph: AppGraph) {
         return analyzer.mine(token, sentence, dictionary, graph.collection)
     }
 
+    // --- Phase 10 (BRIEF_V2 G-07) --------------------------------------------------------------------------
+
+    /** Comprehension questions (AI-generated, cached per document). */
+    val questions: ReadingQuestionService by lazy { ReadingQuestionService(graph.userDatabase, { graph.ai.gateway() }) }
+
+    /** Graded passage packs; empty until Phase 12 installs one (the app sets this when a pack is present). */
+    var packs: ReaderPackRepository = EmptyReaderPacks
+
+    /** Paragraphs [from, from + count) of [document], with its own ruby as authoritative readings. */
+    @Throws(Exception::class)
+    suspend fun page(document: ReaderDocument, from: Int, count: Int): List<ReaderParagraph> =
+        analyzer()?.page(document.body, from, count, document.ruby).orEmpty()
+
+    /**
+     * The learner's level for "furigana only above my level": the synced [LEARNER_JLPT] setting when set, else an
+     * estimate from the passed kanji-path level; known kanji from SRS (Guru+).
+     */
+    @Throws(Exception::class)
+    suspend fun learnerLevel(): LearnerLevel {
+        val stages = graph.configuredSrs().stages()
+        val jlpt = graph.settings.get(LEARNER_JLPT)?.toIntOrNull()?.takeIf { it in 1..5 }
+            ?: LearnerLevel.jlptFromPathLevel(graph.pathProgress.progress().passedLevel)
+        return LearnerLevel(jlpt, LearnerLevel.knownKanji(stages))
+    }
+
+    /** Pitch accents for the words of [sentence] (dictionary pitch table; empty without the dictionary pack). */
+    @Throws(Exception::class)
+    suspend fun pitch(sentence: ReaderSentence): List<TokenPitch> {
+        val dictionary = graph.dictionary() ?: return emptyList()
+        return ReaderPitch.overlay(sentence.tokens) { w, r -> dictionary.pitchAccents(w, r) }
+    }
+
+    /** Opens a graded passage as a reader document (reused on reopen); returns the document id. */
+    @Throws(Exception::class)
+    suspend fun openPassage(passageId: String): String? {
+        val passage = packs.passage(passageId) ?: return null
+        return saveAndAnalyze(passage.toImportedText())
+    }
+
     private suspend fun saveAndAnalyze(text: ImportedText): String = repository.save(text).also { analyzeLater(it) }
 
     private suspend fun analyzeLater(id: String) {
@@ -93,7 +132,7 @@ class ReaderService(private val graph: AppGraph) {
         val analyzer = analyzer() ?: return
         _analysisProgress.value = AnalysisProgress(id, 0.0)
         try {
-            val analysis = analyzer.analyzeWithProgress(doc.body) { _analysisProgress.value = AnalysisProgress(id, it) }
+            val analysis = analyzer.analyzeWithProgress(doc.body, doc.ruby) { _analysisProgress.value = AnalysisProgress(id, it) }
             repository.saveAnalysis(doc.id, analysis)
         } finally {
             _analysisProgress.value = null
@@ -101,4 +140,9 @@ class ReaderService(private val graph: AppGraph) {
     }
 
     private suspend fun grammarPatterns(): List<Pair<String, Regex>> = graph.grammar()?.detectionPatterns().orEmpty()
+
+    companion object {
+        /** Synced learner preference: the learner's JLPT level, 5 (N5) … 1 (N1). */
+        const val LEARNER_JLPT = "learner.jlpt"
+    }
 }

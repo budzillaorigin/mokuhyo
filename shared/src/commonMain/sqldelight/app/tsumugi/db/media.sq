@@ -1,0 +1,237 @@
+-- Learner media (BRIEF_V2 G-03, G-04, G-12; DECISIONS D-110…D-113). Every table here is device-local: no sync
+-- trigger, not in SyncTables. Recordings and pictures reach other devices only through the opt-in blob sync
+-- (RecordingSync, device setting "sync.recordings"), never through the change log.
+
+-- A learner recording. kind: ITEM | SENTENCE | TURN | CARD | CLIP | FREE; ref: the item id, sentence text key,
+-- conversation turn id… it belongs to. file_name is relative to <dataDir>/recordings. reference_key names the model
+-- audio it is compared with side by side ("pack:<audio key>", "clip:<clip id>", "tts:<text>"). origin_device: the
+-- device that recorded it. synced_at: when it was uploaded to the blob store (null = not uploaded).
+-- deleted_at: a local tombstone so the delete can reach the blob store; the file is gone already.
+CREATE TABLE recording (
+    id TEXT NOT NULL PRIMARY KEY,
+    kind TEXT NOT NULL,
+    ref TEXT,
+    file_name TEXT NOT NULL,
+    mime TEXT NOT NULL,
+    duration_ms INTEGER NOT NULL,
+    size_bytes INTEGER NOT NULL,
+    reference_key TEXT,
+    origin_device TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    synced_at INTEGER,
+    deleted_at INTEGER
+);
+CREATE INDEX recording_ref ON recording(kind, ref);
+
+-- A learner picture for a personal (Fluent Forever) card. file_name is relative to <dataDir>/images.
+CREATE TABLE user_image (
+    id TEXT NOT NULL PRIMARY KEY,
+    file_name TEXT NOT NULL,
+    mime TEXT NOT NULL,
+    size_bytes INTEGER NOT NULL,
+    origin_device TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    synced_at INTEGER,
+    deleted_at INTEGER
+);
+
+-- Generated subtitles (Whisper), keyed by the media content key (MediaHash) so a renamed or re-imported file
+-- reuses them. srt: the cues in SRT format.
+CREATE TABLE subtitle_cache (
+    media_hash TEXT NOT NULL,
+    language TEXT NOT NULL,
+    srt TEXT NOT NULL,
+    engine TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    PRIMARY KEY (media_hash, language)
+);
+
+-- "Save clip to SRS": a span of a media file plus its subtitle line. The LISTENING item (item_id) carries the
+-- same metadata in its context so the card itself syncs; recording_id is the cut audio segment once the platform
+-- has written it.
+CREATE TABLE media_clip (
+    id TEXT NOT NULL PRIMARY KEY,
+    item_id TEXT NOT NULL,
+    media_id TEXT NOT NULL,
+    media_title TEXT NOT NULL,
+    start_ms INTEGER NOT NULL,
+    end_ms INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    translation TEXT,
+    recording_id TEXT,
+    created_at INTEGER NOT NULL
+);
+CREATE INDEX media_clip_media ON media_clip(media_id);
+
+CREATE TABLE podcast_feed (
+    id TEXT NOT NULL PRIMARY KEY,
+    url TEXT NOT NULL UNIQUE,
+    title TEXT NOT NULL,
+    author TEXT,
+    image_url TEXT,
+    added_at INTEGER NOT NULL,
+    last_fetched_at INTEGER
+);
+
+-- download_state: NONE | QUEUED | DOWNLOADING | DONE | FAILED (the platform downloads; this is its bookkeeping).
+-- local_file is relative to <dataDir>/podcasts. ord: position in the feed (0 = newest as the feed lists it).
+CREATE TABLE podcast_episode (
+    id TEXT NOT NULL PRIMARY KEY,
+    feed_id TEXT NOT NULL,
+    guid TEXT NOT NULL,
+    ord INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    published TEXT,
+    audio_url TEXT NOT NULL,
+    mime TEXT,
+    length_bytes INTEGER,
+    duration_ms INTEGER,
+    summary TEXT NOT NULL,
+    download_state TEXT NOT NULL DEFAULT 'NONE',
+    local_file TEXT,
+    downloaded_bytes INTEGER NOT NULL DEFAULT 0,
+    download_error TEXT,
+    media_hash TEXT,
+    position_ms INTEGER NOT NULL DEFAULT 0,
+    added_at INTEGER NOT NULL
+);
+CREATE INDEX podcast_episode_feed ON podcast_episode(feed_id, ord);
+
+-- Recordings --------------------------------------------------------------------------------------------------
+
+insertRecording:
+INSERT OR IGNORE INTO recording(id, kind, ref, file_name, mime, duration_ms, size_bytes, reference_key, origin_device, created_at, synced_at, deleted_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL);
+
+recordingById:
+SELECT * FROM recording WHERE id = ?;
+
+recordingsFor:
+SELECT * FROM recording WHERE kind = ? AND ref = ? AND deleted_at IS NULL ORDER BY created_at DESC;
+
+allRecordings:
+SELECT * FROM recording WHERE deleted_at IS NULL ORDER BY created_at DESC;
+
+recordingsToUpload:
+SELECT * FROM recording WHERE deleted_at IS NULL AND synced_at IS NULL AND origin_device = ? ORDER BY created_at;
+
+recordingsOfDevice:
+SELECT * FROM recording WHERE origin_device = ? ORDER BY created_at;
+
+tombstonedRecordings:
+SELECT * FROM recording WHERE deleted_at IS NOT NULL;
+
+markRecordingSynced:
+UPDATE recording SET synced_at = ? WHERE id = ?;
+
+tombstoneRecording:
+UPDATE recording SET deleted_at = ? WHERE id = ? AND deleted_at IS NULL;
+
+purgeRecording:
+DELETE FROM recording WHERE id = ?;
+
+setRecordingReference:
+UPDATE recording SET reference_key = ? WHERE id = ?;
+
+-- Images ------------------------------------------------------------------------------------------------------
+
+insertImage:
+INSERT OR IGNORE INTO user_image(id, file_name, mime, size_bytes, origin_device, created_at, synced_at, deleted_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, NULL);
+
+imageById:
+SELECT * FROM user_image WHERE id = ?;
+
+imagesToUpload:
+SELECT * FROM user_image WHERE deleted_at IS NULL AND synced_at IS NULL AND origin_device = ? ORDER BY created_at;
+
+imagesOfDevice:
+SELECT * FROM user_image WHERE origin_device = ? ORDER BY created_at;
+
+tombstonedImages:
+SELECT * FROM user_image WHERE deleted_at IS NOT NULL;
+
+markImageSynced:
+UPDATE user_image SET synced_at = ? WHERE id = ?;
+
+tombstoneImage:
+UPDATE user_image SET deleted_at = ? WHERE id = ? AND deleted_at IS NULL;
+
+purgeImage:
+DELETE FROM user_image WHERE id = ?;
+
+-- Subtitles ---------------------------------------------------------------------------------------------------
+
+cachedSubtitles:
+SELECT * FROM subtitle_cache WHERE media_hash = ? AND language = ?;
+
+putSubtitles:
+INSERT OR REPLACE INTO subtitle_cache(media_hash, language, srt, engine, created_at) VALUES (?, ?, ?, ?, ?);
+
+deleteSubtitles:
+DELETE FROM subtitle_cache WHERE media_hash = ?;
+
+-- Clips -------------------------------------------------------------------------------------------------------
+
+insertClip:
+INSERT INTO media_clip(id, item_id, media_id, media_title, start_ms, end_ms, text, translation, recording_id, created_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, ?);
+
+clipById:
+SELECT * FROM media_clip WHERE id = ?;
+
+clipsForMedia:
+SELECT * FROM media_clip WHERE media_id = ? ORDER BY start_ms;
+
+setClipRecording:
+UPDATE media_clip SET recording_id = ? WHERE id = ?;
+
+-- Podcasts ----------------------------------------------------------------------------------------------------
+
+insertPodcast:
+INSERT OR IGNORE INTO podcast_feed(id, url, title, author, image_url, added_at, last_fetched_at) VALUES (?, ?, ?, ?, ?, ?, NULL);
+
+updatePodcast:
+UPDATE podcast_feed SET title = ?, author = ?, image_url = ?, last_fetched_at = ? WHERE id = ?;
+
+podcastByUrl:
+SELECT * FROM podcast_feed WHERE url = ?;
+
+podcastById:
+SELECT * FROM podcast_feed WHERE id = ?;
+
+podcasts:
+SELECT * FROM podcast_feed ORDER BY title;
+
+deletePodcast:
+DELETE FROM podcast_feed WHERE id = ?;
+
+insertEpisode:
+INSERT OR IGNORE INTO podcast_episode(id, feed_id, guid, ord, title, published, audio_url, mime, length_bytes, duration_ms, summary, added_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+-- Feed metadata may change (title fixes, new enclosure URL); download bookkeeping is kept.
+updateEpisodeMeta:
+UPDATE podcast_episode SET ord = ?, title = ?, published = ?, audio_url = ?, mime = ?, length_bytes = ?, duration_ms = ?, summary = ?
+WHERE id = ?;
+
+episodes:
+SELECT * FROM podcast_episode WHERE feed_id = ? ORDER BY ord;
+
+episodeById:
+SELECT * FROM podcast_episode WHERE id = ?;
+
+setEpisodeDownload:
+UPDATE podcast_episode SET download_state = ?, local_file = ?, downloaded_bytes = ?, download_error = ? WHERE id = ?;
+
+setEpisodeHash:
+UPDATE podcast_episode SET media_hash = ? WHERE id = ?;
+
+setEpisodePosition:
+UPDATE podcast_episode SET position_ms = ? WHERE id = ?;
+
+episodesInState:
+SELECT * FROM podcast_episode WHERE download_state = ? ORDER BY added_at;
+
+deleteEpisodes:
+DELETE FROM podcast_episode WHERE feed_id = ?;

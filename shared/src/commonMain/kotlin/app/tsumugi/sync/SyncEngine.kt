@@ -16,7 +16,6 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.intOrNull
-import kotlinx.serialization.json.longOrNull
 import kotlin.time.Clock
 
 enum class SyncState { IDLE, SYNCING, ERROR }
@@ -54,6 +53,7 @@ class SyncEngine(
     private val q get() = db.syncQueries
     private val meta get() = db.metaQueries
     private val lock = Mutex()
+    private val applier = ChangeApplier(driver, db, deviceId)
 
     /**
      * Called after a pull that changed synced settings, with the changed keys (e.g. so the app reloads the FSRS
@@ -213,82 +213,8 @@ class SyncEngine(
         return c to (if (c.op == Change.DELETE) null else json)
     }
 
-    /** Applies one remote change; true when local data changed. */
-    private fun apply(c: Change, row: JsonObject?, affectedCards: MutableSet<String>): Boolean {
-        when (c.table) {
-            TableSpec.CARD_FLAGS -> {
-                // A local, unpushed flag change is newer from this device's point of view: keep it.
-                if (q.hasUnsyncedMarker(TableSpec.CARD_FLAGS, c.key).executeAsOne() > 0 || row == null) return false
-                ensureCard(c.key, c.updatedAt)
-                val suspended = (row["suspended"] as? JsonPrimitive)?.longOrNull ?: 0L
-                db.srsQueries.setSuspended(suspended, c.updatedAt, c.key)
-                return true
-            }
-            TableSpec.review.name -> {
-                if (row == null) return false
-                val cardId = (row["card_id"] as? JsonPrimitive)?.content ?: return false
-                ensureCard(cardId, c.updatedAt)
-                TableSpec.review.write(driver, row, orIgnore = true)
-                TableSpec.review.tombstoneOf(row)?.let { TableSpec.review.applyTombstone(driver, c.key, it) }
-                affectedCards += cardId
-                return true
-            }
-            else -> {
-                val spec = TableSpec.all[c.table] ?: return false
-                if (spec.merge == MergeRule.UNION) {
-                    if (row != null) spec.write(driver, row, orIgnore = true)
-                    return row != null
-                }
-                val local = spec.read(driver, c.key)
-                if (local == null && c.op == Change.DELETE) return false
-                if (local != null && !wins(c, spec, row, local)) return false
-                if (c.op == Change.DELETE) spec.delete(driver, c.key) else spec.write(driver, row ?: return false)
-                q.putRowVersion(c.table, c.key, c.updatedAt, c.deviceId)
-                return true
-            }
-        }
-    }
-
-    /** Whether the remote change beats the local row: MAX by rank tuple, otherwise last writer wins. */
-    private fun wins(c: Change, spec: TableSpec, remote: JsonObject?, local: JsonObject): Boolean {
-        if (spec.merge == MergeRule.MAX && remote != null) {
-            val cmp = compareRanks(spec.rankOf(remote), spec.rankOf(local))
-            if (cmp != 0) return cmp > 0
-            return c.deviceId > localDevice(c, spec, local)
-        }
-        return newer(c, spec, local)
-    }
-
-    /** Last writer wins: compare (updatedAt, deviceId) lexicographically against the local copy. */
-    private fun newer(c: Change, spec: TableSpec, local: JsonObject): Boolean {
-        val localUpdated = spec.updatedAtOf(local)
-        return when {
-            c.updatedAt != localUpdated -> c.updatedAt > localUpdated
-            else -> c.deviceId > localDevice(c, spec, local)
-        }
-    }
-
-    /** If the local row was last written by a remote device we know which one; otherwise it's ours. */
-    private fun localDevice(c: Change, spec: TableSpec, local: JsonObject): String {
-        val version = q.rowVersion(c.table, c.key).executeAsOneOrNull()
-        return version?.takeIf { it.updated_at == spec.updatedAtOf(local) }?.device_id ?: deviceId
-    }
-
-    private fun compareRanks(a: List<Long>, b: List<Long>): Int {
-        for (i in a.indices) {
-            val cmp = a[i].compareTo(b.getOrElse(i) { 0L })
-            if (cmp != 0) return cmp
-        }
-        return 0
-    }
-
-    /** Card ids are "<itemId>#<DIRECTION>"; make sure the row exists so it can be recomputed from reviews. */
-    private fun ensureCard(cardId: String, at: Long) {
-        val itemId = cardId.substringBeforeLast('#', missingDelimiterValue = "")
-        val direction = cardId.substringAfterLast('#', missingDelimiterValue = "")
-        if (itemId.isEmpty() || direction.isEmpty()) return
-        db.srsQueries.insertCardIfAbsent(cardId, itemId, direction, at, at, at)
-    }
+    /** Applies one remote change; true when local data changed (merge rules in [ChangeApplier]). */
+    private fun apply(c: Change, row: JsonObject?, affectedCards: MutableSet<String>): Boolean = applier.apply(c, row, affectedCards)
 
     companion object {
         const val MAX_PUSH = 5_000

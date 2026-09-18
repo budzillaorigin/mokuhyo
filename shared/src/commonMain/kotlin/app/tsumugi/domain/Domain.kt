@@ -4,6 +4,9 @@ package app.tsumugi.domain
 enum class ItemKind(val label: String) {
     RADICAL("Radical"), KANJI("Kanji"), VOCAB("Vocabulary"), GRAMMAR("Grammar"), SENTENCE("Sentence"),
     LISTENING("Listening"), WRITING("Writing"), MINIMAL_PAIR("Minimal pair"), CUSTOM("Card"),
+
+    /** A hiragana or katakana character of the kana course (BRIEF_V2 G-13, D-117). */
+    KANA("Kana"),
 }
 
 /** Where an item came from. `LLM` content must show an "AI-generated" badge (CLAUDE.md rule 10). */

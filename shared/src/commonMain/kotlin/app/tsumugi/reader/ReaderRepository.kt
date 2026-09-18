@@ -4,6 +4,9 @@ import app.tsumugi.db.TsumugiDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.Json
 import kotlin.time.Clock
 import kotlin.uuid.Uuid
 
@@ -21,6 +24,7 @@ data class ImportedText(
 )
 
 /** A source-provided reading: [base] at [start] in the body reads [reading]. */
+@Serializable
 data class RubyHint(val start: Int, val base: String, val reading: String)
 
 data class ReaderDocument(
@@ -36,6 +40,8 @@ data class ReaderDocument(
     val ilrEstimate: String?,
     val knownRatio: Double?,
     val progress: Int,
+    /** Readings the source supplied (Aozora ruby, graded passages): authoritative over the analyzer's (D-114). */
+    val ruby: List<RubyHint> = emptyList(),
 )
 
 data class ReaderDocumentSummary(
@@ -76,7 +82,10 @@ class ReaderRepository(private val db: TsumugiDatabase, private val clock: Clock
             id, text.title, text.kind.name, text.sourceUrl, text.author, text.body,
             clock.now().toEpochMilliseconds(), null, null, null, existing?.progress ?: 0,
             if (text.kind == SourceKind.PACK) 0 else 1,
+            encodeRuby(text.ruby),
         )
+        // A re-import replaces the text, so questions generated for the old copy no longer apply.
+        q.deleteQuestions(id)
         id
     }
 
@@ -95,7 +104,7 @@ class ReaderRepository(private val db: TsumugiDatabase, private val clock: Clock
         q.docById(id).executeAsOneOrNull()?.let {
             ReaderDocument(
                 it.id, it.title, SourceKind.valueOf(it.source_kind), it.source_url, it.author, it.body, it.imported_at,
-                it.jlpt_estimate?.toInt(), it.ilr_estimate, it.known_ratio, it.progress.toInt(),
+                it.jlpt_estimate?.toInt(), it.ilr_estimate, it.known_ratio, it.progress.toInt(), decodeRuby(it.ruby),
             )
         }
     }
@@ -134,4 +143,14 @@ class ReaderRepository(private val db: TsumugiDatabase, private val clock: Clock
     suspend fun deleteFeed(id: String) = io { q.deleteFeed(id) }
 
     private suspend fun <T> io(block: suspend () -> T): T = withContext(Dispatchers.IO) { block() }
+
+    internal companion object {
+        private val rubyJson = Json { ignoreUnknownKeys = true }
+        private val rubyList = ListSerializer(RubyHint.serializer())
+
+        fun encodeRuby(ruby: List<RubyHint>): String? = if (ruby.isEmpty()) null else rubyJson.encodeToString(rubyList, ruby)
+
+        fun decodeRuby(raw: String?): List<RubyHint> =
+            raw?.let { runCatching { rubyJson.decodeFromString(rubyList, it) }.getOrNull() }.orEmpty()
+    }
 }

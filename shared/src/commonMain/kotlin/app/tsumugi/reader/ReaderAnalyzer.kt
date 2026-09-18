@@ -38,6 +38,10 @@ data class ReaderToken(
     /** The learner's stage for this word (null = never studied). */
     val stage: Stage?,
     val deinflection: List<String>,
+    /** Reading of the dictionary form (たべる for 食べました), for pitch lookups. */
+    val lemmaReading: String? = null,
+    /** True when [reading] came from the source's own ruby (Aozora), not from the analyzer. */
+    val readingFromSource: Boolean = false,
 ) {
     val isWord: Boolean get() = entryId != null
     val known: Boolean get() = stage != null && stage >= Stage.GURU
@@ -173,14 +177,20 @@ class ReaderAnalyzer(
                 val summary = t.entryId?.let { info[it] }
                 val start = r.first + t.start
                 val end = r.first + t.end
-                val reading = t.surfaceReading ?: surfaceReading(t.surface, t.dictionaryForm, t.reading)
+                val analyzed = t.surfaceReading ?: surfaceReading(t.surface, t.dictionaryForm, t.reading)
                 val hints = ruby.filter { it.start >= start && it.start + it.base.length <= end }
+                val furigana = furigana(t.surface, start, analyzed, hints)
+                // Source ruby is authoritative (D-114): the token's reading is rebuilt from it when it covers every kanji.
+                val fromSource = hints.isNotEmpty() && furigana.none { it.rt == null && Kana.containsKanji(it.ruby) }
+                val reading = if (fromSource) furigana.joinToString("") { it.rt ?: it.ruby } else analyzed
                 ReaderToken(
                     surface = t.surface, start = start, end = end, entryId = t.entryId, dictionaryForm = t.dictionaryForm,
-                    reading = reading, furigana = furigana(t.surface, start, reading, hints), jlpt = summary?.jlpt,
+                    reading = reading, furigana = furigana, jlpt = summary?.jlpt,
                     isCommon = summary?.isCommon ?: false,
                     stage = t.entryId?.let { stageMap["jmdict:$it"] ?: stageMap["v:$it"] },
                     deinflection = t.deinflection,
+                    lemmaReading = t.reading,
+                    readingFromSource = fromSource,
                 )
             }
             ReaderSentence(text, r.first, r.last + 1, readerTokens, grammarHits(text, tokens, patterns))
@@ -209,22 +219,27 @@ class ReaderAnalyzer(
     @Throws(Exception::class)
     suspend fun analyze(body: String, sampleChars: Int = DEFAULT_SAMPLE): ReaderAnalysis = analyzeWithProgress(body, sampleChars) {}
 
+    /** [analyzeWithProgress] with the document's own ruby as authoritative readings (Aozora, graded passages). */
+    @Throws(Exception::class)
+    suspend fun analyzeWithProgress(body: String, ruby: List<RubyHint>, sampleChars: Int = DEFAULT_SAMPLE, onProgress: (Double) -> Unit): ReaderAnalysis =
+        withContext(Dispatchers.IO) { analyzeBlocking(body, sampleChars, ruby, onProgress) }
+
     /**
      * [analyze], page by page ([PAGE_PARAGRAPHS] paragraphs at a time) on [Dispatchers.IO], reporting the share of
      * the sample done (0..1) to [onProgress] after each page and checking for cancellation (CLAUDE.md rule 15).
      */
     @Throws(Exception::class)
     suspend fun analyzeWithProgress(body: String, sampleChars: Int = DEFAULT_SAMPLE, onProgress: (Double) -> Unit): ReaderAnalysis =
-        withContext(Dispatchers.IO) { analyzeBlocking(body, sampleChars, onProgress) }
+        withContext(Dispatchers.IO) { analyzeBlocking(body, sampleChars, emptyList(), onProgress) }
 
-    private suspend fun analyzeBlocking(body: String, sampleChars: Int, onProgress: (Double) -> Unit): ReaderAnalysis {
+    private suspend fun analyzeBlocking(body: String, sampleChars: Int, ruby: List<RubyHint>, onProgress: (Double) -> Unit): ReaderAnalysis {
         val sample = if (body.length <= sampleChars) body else body.substring(0, sampleChars).substringBeforeLast('\n', body.substring(0, sampleChars))
         val known = stages()
         val ranges = paragraphs(sample)
         val paragraphs = ArrayList<ReaderParagraph>(ranges.size)
         onProgress(0.0)
         for (page in ranges.chunked(PAGE_PARAGRAPHS)) {
-            page.mapTo(paragraphs) { paragraphBlocking(sample, it, emptyList(), known) }
+            page.mapTo(paragraphs) { paragraphBlocking(sample, it, ruby, known) }
             onProgress(if (sample.isEmpty()) 1.0 else (page.last().last + 1).toDouble() / sample.length)
             yield()
         }
@@ -262,7 +277,7 @@ class ReaderAnalyzer(
     /** Analyzes a stored document and saves the estimates on it. */
     @Throws(Exception::class)
     suspend fun analyzeAndSave(repo: ReaderRepository, document: ReaderDocument): ReaderAnalysis =
-        analyze(document.body).also { repo.saveAnalysis(document.id, it) }
+        analyzeWithProgress(document.body, document.ruby) {}.also { repo.saveAnalysis(document.id, it) }
 
     // --- Sentence mining ----------------------------------------------------------------------------------
 

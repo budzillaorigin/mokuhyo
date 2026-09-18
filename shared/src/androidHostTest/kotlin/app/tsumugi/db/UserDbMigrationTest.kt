@@ -10,6 +10,7 @@ import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 /**
  * The v1 → v2 user-database migration (1.sqm, DECISIONS D-040) on a copy of the real v1 schema snapshot, with the
@@ -46,7 +47,8 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(3L, TsumugiDatabase.Schema.version)
+        // 3 + the Phase 10 migrations (4.sqm: media, reader ruby, content review; D-110…D-118).
+        assertTrue(TsumugiDatabase.Schema.version >= 5L)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -77,5 +79,12 @@ class UserDbMigrationTest {
 
         // v2 -> v3 (2.sqm): the device-local in-progress exam table (F-24).
         assertNull(db.examAttemptQueries.inProgress().executeAsOneOrNull())
+
+        // 4.sqm: device-local media tables, reader ruby, content-review verdicts; none of them syncs.
+        assertTrue(db.mediaQueries.allRecordings().executeAsList().isEmpty())
+        assertNull(db.readerQueries.questionsFor("x").executeAsOneOrNull())
+        assertTrue(db.contentReviewQueries.allVerdicts().executeAsList().isEmpty())
+        driver.exec("INSERT INTO recording(id, kind, file_name, mime, duration_ms, size_bytes, origin_device, created_at) VALUES ('r', 'FREE', 'r.m4a', 'audio/mp4', 1, 1, 'd', 0)")
+        assertEquals(0L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'recording'"))
     }
 }

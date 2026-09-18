@@ -1,0 +1,113 @@
+package app.tsumugi.kana
+
+/**
+ * Mnemonics for the 46 + 46 base kana (BRIEF_V2 G-13, DECISIONS D-117).
+ *
+ * Written for Tsumugi from scratch: the *method* (a picture in the shape plus the sound) is the common
+ * picture-mnemonic approach that Tofugu and others popularized, but none of their text or images is used, and the
+ * pictures here were chosen to differ from theirs. Every line is `source = "llm"` (drafted by the assistant that
+ * built this course) and shows the "AI-generated" badge until the owner reviews it (rule 10); the content-review
+ * screen lists them as kind `kana_mnemonic`.
+ *
+ * Dakuten, handakuten and yōon kana get rule text from [KanaTable] instead of a picture each: learning the two
+ * marks and the small ゃゅょ is faster than 58 more pictures.
+ */
+internal object KanaMnemonics {
+    val hiragana: Map<String, String> = mapOf(
+        "あ" to "A cross pinned through a curled ribbon: \"Ah!\" — the pin went right through the bow.",
+        "い" to "Two raindrops falling side by side, squeaking \"ee, ee\" on the way down.",
+        "う" to "A small dash over a bent back: someone groaning \"oooh\" after lifting a heavy box.",
+        "え" to "A hat on a zig-zag dancer kicking out one leg: \"Eh? What dance is that?\"",
+        "お" to "A juggler's cross, a big loop and one ball flying off: \"Oh!\" — it got away.",
+        "か" to "A crowbar leaning on a post with a spark beside it: the post splits with a loud \"KA!\"",
+        "き" to "A gate with two bolts and a curved latch underneath: \"ki-chunk\", it clicks shut.",
+        "く" to "A boomerang in mid-flight: \"kuuu\", it cuts the air as it curves back.",
+        "け" to "A post beside a hanging banner: the sign of a kendo hall, \"ke\".",
+        "こ" to "Two short strokes, one above the other: two coins stacked on a table — \"ko\" for coins.",
+        "さ" to "A cross with a hook hanging below: a samurai's topknot as he bows — \"sa\".",
+        "し" to "One fishing line dropped straight down and hooked at the end: \"shh\", don't scare the fish.",
+        "す" to "A cross with a knot tied in its stem: a knotted straw, \"suuu\" as you slurp through it.",
+        "せ" to "A shelf with a bent bracket under it: \"set\" the books on it.",
+        "そ" to "A lightning bolt zig-zagging to the ground: \"So!\" — the storm is here.",
+        "た" to "A kite (the cross) with two short tails fluttering beside it: \"ta-ta!\", it waves goodbye.",
+        "ち" to "A cross above a big round belly: a chick puffing out its chest — \"chi\".",
+        "つ" to "A spoon lying on its side: \"tsu\", the sound of slurping soup from it.",
+        "て" to "A flat top with a curve hanging down: a hand held out palm-down — te (手) is \"hand\".",
+        "と" to "A small nail driven into a curved board: \"tok\", tap the hammer — \"to\".",
+        "な" to "A cross and a dot above a looped knot: tie a knot onto the nail — \"na\".",
+        "に" to "A tall post next to two short threads: a needle and its thread — \"ni\" for needle.",
+        "ぬ" to "Two crossed sticks inside a loop with a curl: a tangled net — \"nu\", the fish is stuck in it.",
+        "ね" to "A branch with a curly loop at its tail: a nest woven around the branch — \"ne\".",
+        "の" to "One swirl like a snail shell: \"no\" hurry, says the snail.",
+        "は" to "A fence post and a lasso looped around a stake: \"ha!\", the cowboy catches it.",
+        "ひ" to "A wide bowl with a handle curling up at one side: a hot bowl of soup — \"hi\", it's hot.",
+        "ふ" to "A dot, a hook and two flicks: someone blowing out birthday candles — \"fuu\".",
+        "へ" to "A low roof with one ridge: heave the ball over it — \"he\".",
+        "ほ" to "A post beside a pole with two crossbars and a loop: a hose reel winding up — \"ho\".",
+        "ま" to "A mast with two crossbars and a knot at the bottom: a sail tied down — \"ma\".",
+        "み" to "A curly ribbon with a slash through it: a mitten on a string — \"mi\".",
+        "む" to "A cross with a looped stem and a dot bouncing off: a music note — \"mu\".",
+        "め" to "A loop pinned by a slanted stroke: a medal on its ribbon — \"me\".",
+        "も" to "A fork with its two tines bent up: \"mo\", one more bite.",
+        "や" to "A tall stroke, a crossbar and a dot: a yacht's mast, sail and flag — \"ya\".",
+        "ゆ" to "Steam curling around a pole: yu (湯) is hot water, and the steam rises from it.",
+        "よ" to "A small flag on top of a loop: \"yo!\", someone waves it at the finish line.",
+        "ら" to "A dot above a crouching curve: a runner at the start line — \"ra\" for race.",
+        "り" to "Two falling ribbons, the right one longer: ribbons off a gift — \"ri\".",
+        "る" to "A slide with a curl at the bottom: \"ruu\", you roll off the end.",
+        "れ" to "A post with a leg kicking out at the end: relax and stretch — \"re\".",
+        "ろ" to "る without its curl: the rope came untied — \"ro\".",
+        "わ" to "A post with a big round curl: a walrus leaning on a rock — \"wa\".",
+        "を" to "A cross, a zig-zag and a stroke below: someone slipping off a ladder, \"whoa!\" — read \"o\", only as the particle.",
+        "ん" to "A quick flick like a check mark: a nod that says \"n\" — mm-hm.",
+    )
+
+    val katakana: Map<String, String> = mapOf(
+        "ア" to "A hooked blade on a short handle: an axe — \"a\".",
+        "イ" to "A slanted stroke against a post: someone leaning on an easel — \"i\".",
+        "ウ" to "う with a roof on top: the groaning mover is now inside a hut — \"u\".",
+        "エ" to "An I-beam: the shaft of an elevator — \"e\".",
+        "オ" to "A cross with a slash: an oar dipping into the water — \"o\".",
+        "カ" to "か without its spark: the same crowbar, all sharp corners — \"ka\".",
+        "キ" to "Two rails on a leaning post: a fence you kick — \"ki\".",
+        "ク" to "A sharp open corner: a cook's hat folded flat — \"ku\".",
+        "ケ" to "A slanted K with a long leg: \"ke\" for K.",
+        "コ" to "A square bracket: the corner of a box — \"ko\" for corner.",
+        "サ" to "A crossbar with two legs, one bending: a saddle on a horse's back — \"sa\".",
+        "シ" to "Two drops and a stroke all rising from the bottom left: bubbles she blows upward — \"shi\" (strokes go up).",
+        "ス" to "A roof with a leg kicking out below: a sumo wrestler's stomp — \"su\".",
+        "セ" to "せ with sharp corners: the same shelf bracket — \"se\".",
+        "ソ" to "Two strokes falling from the top down: a needle and thread dropping as you sew — \"so\" (strokes fall).",
+        "タ" to "ク with an extra stroke inside: a folded taco with its filling — \"ta\".",
+        "チ" to "A slanted hat above a cross: a chief wearing a crown — \"chi\".",
+        "ツ" to "Two tears and a streak all falling from above: \"tsu\", a teardrop runs down (strokes fall, unlike シ).",
+        "テ" to "Two bars over a hanging hook: a telephone pole with its wires — \"te\".",
+        "ト" to "A post with one branch: a totem pole — \"to\".",
+        "ナ" to "A cross leaning left: a naginata spear — \"na\".",
+        "ニ" to "Two lines: ni (二) means two — \"ni\".",
+        "ヌ" to "A bent arm with a slash through it: a nudge with the elbow — \"nu\".",
+        "ネ" to "A roof, a hook and a cross: the knot of a necktie — \"ne\".",
+        "ノ" to "One slash: \"no\" — a single line striking it out.",
+        "ハ" to "Two strokes spreading apart: \"ha\", a laugh bursting out both ways.",
+        "ヒ" to "A flat line with a hook at the bottom: a high heel — \"hi\".",
+        "フ" to "A flat top with a hook: a food tray tipping over — \"fu\".",
+        "ヘ" to "The same low roof as へ — \"he\".",
+        "ホ" to "A cross with two small flicks: a hall's holly decoration — \"ho\".",
+        "マ" to "A tilted hook with a dot: mama's apron hanging on a nail — \"ma\".",
+        "ミ" to "Three slanted strokes: a cat's whiskers — \"mi\" as in meow.",
+        "ム" to "A triangle with a flick: a moose's nose — \"mu\".",
+        "メ" to "An X: mark the spot where the medal is buried — \"me\".",
+        "モ" to "も with a straight stem: the fork, polished straight — \"mo\".",
+        "ヤ" to "A bent arm and a slash: a yardstick bending under a weight — \"ya\".",
+        "ユ" to "A U lying on its side on a base: a U-boat on the sea floor — \"yu\".",
+        "ヨ" to "A comb with three teeth: \"yo\", you comb your hair.",
+        "ラ" to "A lid over a hook: a tennis racket seen from the side — \"ra\".",
+        "リ" to "The same two ribbons as り — \"ri\".",
+        "ル" to "Two legs, one kicking up: a runner's stride — \"ru\".",
+        "レ" to "One stroke bending up: a relaxed leg kicking out — \"re\".",
+        "ロ" to "A square: a robot's box head — \"ro\".",
+        "ワ" to "A hook over a short post: a water tap — \"wa\".",
+        "ヲ" to "A two-bar hook: a wobbly shelf — \"o\", used almost only in old texts and names.",
+        "ン" to "A dot and a stroke rising: \"n\", a nod upward (it rises, unlike ソ).",
+    )
+}

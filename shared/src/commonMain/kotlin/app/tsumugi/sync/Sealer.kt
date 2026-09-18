@@ -20,6 +20,15 @@ interface Sealer {
      * changes, but opaque: without the key it can't be reversed or linked across tables (BRIEF_V2 F-37).
      */
     fun keyId(table: String, key: String): String = key
+
+    /** Seals binary data (recording and picture blobs, D-111). Default: the text sealer over base64. */
+    @OptIn(ExperimentalEncodingApi::class)
+    fun sealBytes(plain: ByteArray): ByteArray = seal(Base64.encode(plain)).encodeToByteArray()
+
+    /** Opens [sealBytes] output; null when the key is wrong or the data was tampered with. */
+    @OptIn(ExperimentalEncodingApi::class)
+    fun openBytes(sealed: ByteArray): ByteArray? =
+        open(sealed.decodeToString())?.let { runCatching { Base64.decode(it) }.getOrNull() }
 }
 
 /**
@@ -47,6 +56,18 @@ class E2eSealer(private val key: ByteArray) : Sealer {
     override fun seal(plaintext: String): String {
         val nonce = E2eKeys.randomBytes(XChaCha20Poly1305.NONCE_BYTES)
         return Base64.encode(nonce + XChaCha20Poly1305.seal(key, nonce, plaintext.encodeToByteArray()))
+    }
+
+    /** Raw nonce ‖ ciphertext, without the base64 layers of the text form. */
+    override fun sealBytes(plain: ByteArray): ByteArray {
+        val nonce = E2eKeys.randomBytes(XChaCha20Poly1305.NONCE_BYTES)
+        return nonce + XChaCha20Poly1305.seal(key, nonce, plain)
+    }
+
+    override fun openBytes(sealed: ByteArray): ByteArray? {
+        if (sealed.size < XChaCha20Poly1305.NONCE_BYTES + XChaCha20Poly1305.TAG_BYTES) return null
+        val nonce = sealed.copyOf(XChaCha20Poly1305.NONCE_BYTES)
+        return XChaCha20Poly1305.open(key, nonce, sealed.copyOfRange(XChaCha20Poly1305.NONCE_BYTES, sealed.size))
     }
 
     override fun open(sealed: String): String? {
