@@ -1,5 +1,6 @@
 package app.tsumugi.speech
 
+import app.tsumugi.testing.perfScale
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -197,6 +198,6 @@ class PronunciationTest {
         repeat(runs) { PronunciationAnalyzer.analyze(target, transcript, audio) }
         val ms = mark.elapsedNow().inWholeMilliseconds / runs
         println("PronunciationAnalyzer: ${audio.size / 16} ms of audio analysed in $ms ms")
-        assertTrue(ms < 300, "10 s analysed in $ms ms")
+        assertTrue(ms < 300 * perfScale, "10 s analysed in $ms ms")
     }
 }

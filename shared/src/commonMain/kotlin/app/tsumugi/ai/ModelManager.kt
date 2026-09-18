@@ -10,7 +10,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.readAvailable
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okio.FileSystem
@@ -97,7 +97,9 @@ class ModelManager(
      * Downloads every missing file of [model]. Cancelling the collector pauses the download; calling this again
      * resumes from the `.part` file. Emits [DownloadProgress.Done] or [DownloadProgress.Failed] last.
      */
-    fun download(model: ModelInfo, progressStepBytes: Long = 1L shl 20): Flow<DownloadProgress> = flow {
+    // channelFlow, not flow: progress is sent from inside Ktor's execute {} block, which may run in another
+    // coroutine context (it does on Kotlin/Native), and flow {} forbids emitting across contexts.
+    fun download(model: ModelInfo, progressStepBytes: Long = 1L shl 20): Flow<DownloadProgress> = channelFlow {
         val dir = dir(model)
         fs.createDirectories(dir)
         val total = model.totalBytes
@@ -135,7 +137,7 @@ class ModelManager(
                                 if (have - lastEmit >= progressStepBytes) {
                                     out.flush()
                                     lastEmit = have
-                                    emit(DownloadProgress.Downloading(file.name, doneBefore + have, total))
+                                    send(DownloadProgress.Downloading(file.name, doneBefore + have, total))
                                 }
                             }
                         }
@@ -147,27 +149,27 @@ class ModelManager(
                     "download interrupted: ${e.message}"
                 }
                 if (error != null) {
-                    emit(DownloadProgress.Failed(error, retryable = true))
-                    return@flow
+                    send(DownloadProgress.Failed(error, retryable = true))
+                    return@channelFlow
                 }
-                emit(DownloadProgress.Downloading(file.name, doneBefore + have, total))
+                send(DownloadProgress.Downloading(file.name, doneBefore + have, total))
             }
             if (have != file.bytes) {
-                emit(DownloadProgress.Failed("${file.name}: expected ${file.bytes} bytes, got $have", retryable = true))
-                return@flow
+                send(DownloadProgress.Failed("${file.name}: expected ${file.bytes} bytes, got $have", retryable = true))
+                return@channelFlow
             }
-            emit(DownloadProgress.Verifying(file.name))
+            send(DownloadProgress.Verifying(file.name))
             val actual = hashOf(part)
             if (!actual.equals(file.sha256, ignoreCase = true)) {
                 fs.delete(part)
-                emit(DownloadProgress.Failed("${file.name}: checksum mismatch, the download was discarded", retryable = true))
-                return@flow
+                send(DownloadProgress.Failed("${file.name}: checksum mismatch, the download was discarded", retryable = true))
+                return@channelFlow
             }
             fs.atomicMove(part, dir / file.name)
             fs.write(dir / "${file.name}.sha256") { writeUtf8(actual) }
             doneBefore += file.bytes
         }
-        emit(DownloadProgress.Done(dir / model.files.first().name))
+        send(DownloadProgress.Done(dir / model.files.first().name))
     }
 
     private fun dir(model: ModelInfo): Path = modelsDir / model.id
