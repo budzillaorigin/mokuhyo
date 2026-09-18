@@ -5,6 +5,7 @@ import build_grammar
 import build_kanji_path
 import build_kanjivg
 import build_sentences
+import build_tokenizer
 from common import write_manifest
 
 if __name__ == "__main__":
@@ -13,4 +14,5 @@ if __name__ == "__main__":
     build_sentences.main()
     build_kanji_path.main()
     build_grammar.main()
+    build_tokenizer.main()
     write_manifest()

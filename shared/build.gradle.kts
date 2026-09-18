@@ -78,5 +78,10 @@ sqldelight {
             packageName.set("app.tsumugi.grammar.db")
             srcDirs.setFrom("src/commonMain/sqldelightGrammar")
         }
+        // Read-only morphological-analysis pack (mecab-ipadic), built by tools/packs/build_tokenizer.py.
+        create("TokenizerDatabase") {
+            packageName.set("app.tsumugi.tokenizer.db")
+            srcDirs.setFrom("src/commonMain/sqldelightTokenizer")
+        }
     }
 }

@@ -1,0 +1,107 @@
+-- Read-only morphological-analysis pack (content/packs/tokenizer.sqlite), built from mecab-ipadic 2.7.0 by
+-- tools/packs/build_tokenizer.py, which executes the CREATE statements in this file verbatim.
+
+CREATE TABLE pack_meta (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+-- Part-of-speech + conjugation tuples, shared by many lexicon rows.
+-- features = "pos1,pos2,pos3,pos4,conjugation type,conjugation form" with "*" for empty fields.
+CREATE TABLE pos (
+    id INTEGER NOT NULL PRIMARY KEY,
+    features TEXT NOT NULL
+);
+
+-- Lexicon. seq disambiguates rows with the same surface. base = "" when equal to surface; pronunciation = ""
+-- when equal to reading; reading = "" when unknown.
+CREATE TABLE morpheme (
+    surface TEXT NOT NULL,
+    seq INTEGER NOT NULL,
+    left_id INTEGER NOT NULL,
+    right_id INTEGER NOT NULL,
+    cost INTEGER NOT NULL,
+    pos_id INTEGER NOT NULL,
+    base TEXT NOT NULL,
+    reading TEXT NOT NULL,
+    pronunciation TEXT NOT NULL,
+    PRIMARY KEY (surface, seq)
+) WITHOUT ROWID;
+
+-- Connection costs: little-endian int16, row-major [previous node's right id][next node's left id].
+CREATE TABLE connection (
+    id INTEGER NOT NULL PRIMARY KEY,
+    forward_size INTEGER NOT NULL,
+    backward_size INTEGER NOT NULL,
+    costs BLOB NOT NULL
+);
+
+-- char.def: character categories and the code-point ranges they cover (later ranges override earlier ones).
+CREATE TABLE char_category (
+    name TEXT NOT NULL PRIMARY KEY,
+    invoke INTEGER NOT NULL,
+    grp INTEGER NOT NULL,
+    length INTEGER NOT NULL
+);
+
+-- categories: space-separated, the first is the character's primary category.
+CREATE TABLE char_range (
+    ord INTEGER NOT NULL PRIMARY KEY,
+    first INTEGER NOT NULL,
+    last INTEGER NOT NULL,
+    categories TEXT NOT NULL
+);
+
+-- unk.def: entries used for unknown words of each category.
+CREATE TABLE unknown (
+    category TEXT NOT NULL,
+    seq INTEGER NOT NULL,
+    left_id INTEGER NOT NULL,
+    right_id INTEGER NOT NULL,
+    cost INTEGER NOT NULL,
+    pos_id INTEGER NOT NULL,
+    PRIMARY KEY (category, seq)
+) WITHOUT ROWID;
+
+metaValue:
+SELECT value FROM pack_meta WHERE key = ?;
+
+lookup:
+SELECT morpheme.*, pos.features FROM morpheme JOIN pos ON pos.id = morpheme.pos_id WHERE surface IN ?;
+
+-- Surfaces longer than the batched lookup length are few (~2.7k) and kept in memory.
+longMorphemes:
+SELECT morpheme.*, pos.features FROM morpheme JOIN pos ON pos.id = morpheme.pos_id WHERE length(surface) > ?;
+
+connection:
+SELECT * FROM connection WHERE id = 0;
+
+categories:
+SELECT * FROM char_category;
+
+ranges:
+SELECT * FROM char_range ORDER BY ord;
+
+unknowns:
+SELECT unknown.*, pos.features FROM unknown JOIN pos ON pos.id = unknown.pos_id ORDER BY category, seq;
+
+insertMeta:
+INSERT OR REPLACE INTO pack_meta(key, value) VALUES (?, ?);
+
+insertPos:
+INSERT INTO pos VALUES ?;
+
+insertMorpheme:
+INSERT INTO morpheme VALUES ?;
+
+insertConnection:
+INSERT INTO connection VALUES ?;
+
+insertCategory:
+INSERT INTO char_category VALUES ?;
+
+insertRange:
+INSERT INTO char_range VALUES ?;
+
+insertUnknown:
+INSERT INTO unknown VALUES ?;
