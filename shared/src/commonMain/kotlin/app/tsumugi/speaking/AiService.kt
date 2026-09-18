@@ -2,6 +2,7 @@ package app.tsumugi.speaking
 
 import app.tsumugi.ai.AiGateway
 import app.tsumugi.ai.LanguageModel
+import app.tsumugi.ai.LoadedModelSlot
 import app.tsumugi.ai.LocalLlamaModel
 import app.tsumugi.ai.LocalLlmBridge
 import app.tsumugi.ai.LocalSttBridge
@@ -12,9 +13,10 @@ import app.tsumugi.ai.SpeechRecognizer
 import app.tsumugi.ai.Synthesizer
 import app.tsumugi.ai.ValidationContext
 import app.tsumugi.ai.VoicevoxSynthesizer
-import app.tsumugi.ai.WhisperEndpointRecognizer
 import app.tsumugi.ai.WhisperRecognizer
 import app.tsumugi.platform.PlatformServices
+import app.tsumugi.platform.excludeFromBackup
+import app.tsumugi.platform.freeBytes
 import app.tsumugi.settings.SettingsRepository
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -71,8 +73,20 @@ class AiService(
         val manifest = platform.openBundled(MANIFEST)?.buffer()?.use { it.readUtf8() }
             ?.let { runCatching { ModelManager.parseManifest(it) }.getOrNull() }
             ?: return@lazy null
-        ModelManager(platform.fileSystem, platform.dataDir / "models", platform.httpEngine(), manifest)
+        // Application Support (iOS), excluded from backups: models are re-downloadable gigabytes (F-15).
+        val dir = platform.dataDir / "models"
+        runCatching {
+            platform.fileSystem.createDirectories(dir)
+            excludeFromBackup(dir)
+        }
+        ModelManager(platform.fileSystem, dir, platform.httpEngine(), manifest, freeBytes = ::freeBytes)
     }
+
+    /** Engines for the learner's own servers: one key per endpoint, shared "unreachable" cache (F-11, F-12). */
+    val endpoints: EndpointEngines by lazy { EndpointEngines({ platform.httpEngine() }, platform.secrets) }
+
+    /** What the native LLM bridge holds, so a model switch reloads (F-23). */
+    private val modelSlot = LoadedModelSlot()
 
     private val lock = Mutex()
     private var cachedModel: Pair<AiConfig, LanguageModel?>? = null
@@ -108,21 +122,51 @@ class AiService(
             cachedModel = null
             cachedRecognizer = null
         }
+        // F-23: never keep generating with the previous model's weights after a settings change.
+        llmBridge?.let { modelSlot.unload(it) }
     }
 
-    /** API key for the LLM endpoint; stored in the keychain/keystore, never in the synced settings table. */
+    /**
+     * API key for the LLM endpoint; stored in the keychain/keystore, never in the synced settings table. Sent only
+     * to the LLM endpoint (CLAUDE.md rule 14).
+     */
     var endpointKey: String?
-        get() = platform.secrets.get(ENDPOINT_KEY)
+        get() = platform.secrets.get(EndpointEngines.LLM_KEY)
         set(value) {
-            if (value.isNullOrBlank()) platform.secrets.remove(ENDPOINT_KEY) else platform.secrets.put(ENDPOINT_KEY, value.trim())
+            storeSecret(EndpointEngines.LLM_KEY, value)
             cachedModel = null
         }
 
-    /** Lists the endpoint's models (GET /v1/models) so settings can offer a picker and prove the URL works. */
+    /** API key for the Whisper STT endpoint (F-12). Never falls back to [endpointKey]. */
+    var sttEndpointKey: String?
+        get() = platform.secrets.get(EndpointEngines.STT_KEY)
+        set(value) {
+            storeSecret(EndpointEngines.STT_KEY, value)
+            cachedRecognizer = null
+        }
+
+    /** API key for the VOICEVOX / TTS endpoint (F-12), e.g. behind a reverse proxy. Never falls back to [endpointKey]. */
+    var ttsEndpointKey: String?
+        get() = platform.secrets.get(EndpointEngines.TTS_KEY)
+        set(value) = storeSecret(EndpointEngines.TTS_KEY, value)
+
+    private fun storeSecret(key: String, value: String?) {
+        if (value.isNullOrBlank()) platform.secrets.remove(key) else platform.secrets.put(key, value.trim())
+    }
+
+    /**
+     * Lists the endpoint's models (GET /v1/models) so settings can offer a picker and prove the URL works. Always
+     * tries, even when the host is cached as unreachable, and updates that cache.
+     */
     @Throws(Exception::class)
     suspend fun probeEndpoint(url: String, apiKey: String?): Result<List<String>> = runCatching {
-        OpenAICompatibleModel(platform.httpEngine(), url, apiKey, "").probe()
+        OpenAICompatibleModel(platform.httpEngine(), url, apiKey, "", endpoints.health).probe()
     }
+
+    /** "Test connection" for VOICEVOX: `GET /version` within 3 s. */
+    @Throws(Exception::class)
+    suspend fun probeVoicevox(url: String): Boolean =
+        VoicevoxSynthesizer(platform.httpEngine(), url, 0, ttsEndpointKey, endpoints.health).probe()
 
     /** The configured model, or null (the gateway then uses fallbacks). */
     @Throws(Exception::class)
@@ -167,14 +211,14 @@ class AiService(
     @Throws(Exception::class)
     suspend fun synthesizer(): Synthesizer? {
         val config = config()
-        if (config.tts != TtsEngine.VOICEVOX || config.voicevoxUrl.isBlank()) return null
-        return VoicevoxSynthesizer(platform.httpEngine(), config.voicevoxUrl, config.voicevoxSpeaker)
+        if (config.tts != TtsEngine.VOICEVOX) return null
+        return endpoints.synthesizer(config)
     }
 
     /** Frees the on-device model (memory warnings, leaving the speaking screens). */
     @Throws(Exception::class)
     suspend fun unload() {
-        llmBridge?.unload()
+        llmBridge?.let { modelSlot.unload(it) }
         lock.withLock { cachedModel = null }
     }
 
@@ -184,11 +228,9 @@ class AiService(
             val bridge = llmBridge
             val info = localModel(config)
             val path = info?.let { models?.modelPath(it) }
-            if (bridge == null || info == null || path == null) null else LocalLlamaModel(bridge, info, path.toString())
+            if (bridge == null || info == null || path == null) null else LocalLlamaModel(bridge, info, path.toString(), modelSlot)
         }
-        LlmEngine.ENDPOINT -> if (config.endpointUrl.isBlank()) null else {
-            OpenAICompatibleModel(platform.httpEngine(), config.endpointUrl, endpointKey, config.endpointModel)
-        }
+        LlmEngine.ENDPOINT -> endpoints.llm(config)
     }
 
     private fun localModel(config: AiConfig) = models?.let { m ->
@@ -204,9 +246,7 @@ class AiService(
             val path = info?.let { m.modelPath(it) }
             if (bridge == null || info == null || path == null) null else WhisperRecognizer(bridge, path.toString(), info.id)
         }
-        SttEngine.WHISPER_ENDPOINT -> if (config.sttEndpointUrl.isBlank()) null else {
-            WhisperEndpointRecognizer(platform.httpEngine(), config.sttEndpointUrl, endpointKey)
-        }
+        SttEngine.WHISPER_ENDPOINT -> endpoints.recognizer(config)
     }
 
     private inline fun <reified E : Enum<E>> enumOr(value: String?, default: E): E =
@@ -224,7 +264,6 @@ class AiService(
         const val TTS = "ai.tts"
         const val VOICEVOX_URL = "ai.voicevox_url"
         const val VOICEVOX_SPEAKER = "ai.voicevox_speaker"
-        private const val ENDPOINT_KEY = "ai.endpoint_key"
     }
 }
 

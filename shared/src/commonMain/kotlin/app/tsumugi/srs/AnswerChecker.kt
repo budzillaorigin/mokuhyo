@@ -2,6 +2,7 @@ package app.tsumugi.srs
 
 import app.tsumugi.jp.Kana
 import app.tsumugi.jp.Romaji
+import app.tsumugi.platform.normalizeNfc
 
 enum class Verdict {
     CORRECT,
@@ -47,14 +48,38 @@ object AnswerChecker {
         return CheckResult(Verdict.WRONG)
     }
 
-    internal fun normalizeMeaning(s: String): String =
-        s.lowercase()
-            .replace(Regex("\\([^)]*\\)"), " ")
-            .replace(Regex("[^a-z0-9' ]"), " ")
-            .replace(Regex("\\s+"), " ")
+    /**
+     * Meaning answers compare after: NFC, full-width ASCII → ASCII (ｃａｆé → café) and the ideographic space →
+     * space, lowercase, parenthesized notes removed, and anything that isn't a letter or digit of **any** script
+     * (plus apostrophes and combining marks) turned into a space (F-35). Accents stay (café ≠ cafe; one edit away
+     * still counts as close), kana and kanji stay (Japanese synonyms), and no NFKC: this is answer matching, not a
+     * dictionary key, and NFKC would also fold ㌔ or half-width kana in surprising ways (CLAUDE.md rule 7).
+     */
+    internal fun normalizeMeaning(s: String): String {
+        val folded = buildString(s.length) {
+            for (c in normalizeNfc(s)) {
+                append(
+                    when (c) {
+                        in '！'..'～' -> c - 0xFEE0
+                        '　' -> ' '
+                        else -> c
+                    },
+                )
+            }
+        }.lowercase().replace(PARENTHESIZED, " ")
+        val kept = buildString(folded.length) {
+            for (c in folded) {
+                append(if (c.isLetterOrDigit() || c == '\'' || c.isSurrogate() || c.category == CharCategory.NON_SPACING_MARK) c else ' ')
+            }
+        }
+        return kept.replace(WHITESPACE, " ")
             .trim()
             .removePrefix("to ").removePrefix("a ").removePrefix("an ").removePrefix("the ")
             .trim()
+    }
+
+    private val PARENTHESIZED = Regex("\\([^)]*\\)")
+    private val WHITESPACE = Regex("\\s+")
 
     /** Kana readings in KANJIDIC style ("た.べる", "-か", "ショク") reduce to plain hiragana. */
     internal fun normalizeReading(s: String): String {

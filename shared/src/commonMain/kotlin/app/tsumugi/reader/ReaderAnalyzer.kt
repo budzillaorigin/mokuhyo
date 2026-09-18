@@ -8,7 +8,12 @@ import app.tsumugi.domain.Stage
 import app.tsumugi.jp.Furigana
 import app.tsumugi.jp.FuriganaSegment
 import app.tsumugi.jp.Kana
+import app.tsumugi.jp.tokenizer.MorphologicalAnalyzer
 import app.tsumugi.study.CollectionService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import kotlin.math.roundToInt
 
 enum class FuriganaMode {
@@ -77,8 +82,9 @@ data class ReaderAnalysis(
 
 /**
  * Turns document text into tokens with furigana, known-word status and grammar hits, and estimates difficulty
- * (BRIEF §5.8). Tokenizing goes through [tokenize] (the dictionary longest-match tokenizer today; the lattice
- * tokenizer later) so this class doesn't care which is used.
+ * (BRIEF §5.8). Tokenizing goes through [tokenize]: the app passes [LatticeReaderTokenizer] (F-26), and the
+ * dictionary longest-match tokenizer only when the tokenizer pack is missing. All work runs on
+ * [Dispatchers.IO]; [page] analyzes lazily, a few paragraphs at a time.
  */
 class ReaderAnalyzer(
     private val tokenize: suspend (String) -> List<Token>,
@@ -91,6 +97,19 @@ class ReaderAnalyzer(
         stages: suspend () -> Map<String, Stage>,
         grammarPatterns: suspend () -> List<Pair<String, Regex>> = { emptyList() },
     ) : this({ dictionary.tokenize(it) }, { dictionary.summaries(it) }, stages, grammarPatterns)
+
+    /** Lattice tokenization (the morphological analyzer) with glosses from [dictionary] (F-26). */
+    constructor(
+        analyzer: MorphologicalAnalyzer,
+        dictionary: DictionaryRepository,
+        stages: suspend () -> Map<String, Stage>,
+        grammarPatterns: suspend () -> List<Pair<String, Regex>> = { emptyList() },
+    ) : this(
+        (LatticeReaderTokenizer(analyzer) { dictionary.entriesForLemmas(it) })::tokenize,
+        { dictionary.summaries(it) },
+        stages,
+        grammarPatterns,
+    )
 
     private var patternsCache: List<Pair<String, Regex>>? = null
 
@@ -131,13 +150,17 @@ class ReaderAnalyzer(
 
     /** Paragraphs [from, from + count) fully analyzed, for lazy rendering. */
     @Throws(Exception::class)
-    suspend fun page(body: String, from: Int, count: Int, ruby: List<RubyHint> = emptyList()): List<ReaderParagraph> {
-        val known = stages()
-        return paragraphs(body).drop(from).take(count).map { paragraph(body, it, ruby, known) }
-    }
+    suspend fun page(body: String, from: Int, count: Int, ruby: List<RubyHint> = emptyList()): List<ReaderParagraph> =
+        withContext(Dispatchers.IO) {
+            val known = stages()
+            paragraphs(body).drop(from).take(count).map { paragraph(body, it, ruby, known) }
+        }
 
     @Throws(Exception::class)
-    suspend fun paragraph(body: String, range: IntRange, ruby: List<RubyHint> = emptyList(), known: Map<String, Stage>? = null): ReaderParagraph {
+    suspend fun paragraph(body: String, range: IntRange, ruby: List<RubyHint> = emptyList(), known: Map<String, Stage>? = null): ReaderParagraph =
+        withContext(Dispatchers.IO) { paragraphBlocking(body, range, ruby, known) }
+
+    private suspend fun paragraphBlocking(body: String, range: IntRange, ruby: List<RubyHint>, known: Map<String, Stage>?): ReaderParagraph {
         val stageMap = known ?: stages()
         val patterns = patterns()
         val sentenceRanges = sentences(body, range)
@@ -150,7 +173,7 @@ class ReaderAnalyzer(
                 val summary = t.entryId?.let { info[it] }
                 val start = r.first + t.start
                 val end = r.first + t.end
-                val reading = surfaceReading(t.surface, t.dictionaryForm, t.reading)
+                val reading = t.surfaceReading ?: surfaceReading(t.surface, t.dictionaryForm, t.reading)
                 val hints = ruby.filter { it.start >= start && it.start + it.base.length <= end }
                 ReaderToken(
                     surface = t.surface, start = start, end = end, entryId = t.entryId, dictionaryForm = t.dictionaryForm,
@@ -160,7 +183,7 @@ class ReaderAnalyzer(
                     deinflection = t.deinflection,
                 )
             }
-            ReaderSentence(text, r.first, r.last + 1, readerTokens, patterns.filter { (_, re) -> re.containsMatchIn(text) }.map { it.first }.distinct())
+            ReaderSentence(text, r.first, r.last + 1, readerTokens, grammarHits(text, tokens, patterns))
         }
         return ReaderParagraph(range.first, range.last + 1, sentences)
     }
@@ -184,10 +207,28 @@ class ReaderAnalyzer(
      * signal for picking texts, not a DLPT rating.
      */
     @Throws(Exception::class)
-    suspend fun analyze(body: String, sampleChars: Int = DEFAULT_SAMPLE): ReaderAnalysis {
+    suspend fun analyze(body: String, sampleChars: Int = DEFAULT_SAMPLE): ReaderAnalysis = analyzeWithProgress(body, sampleChars) {}
+
+    /**
+     * [analyze], page by page ([PAGE_PARAGRAPHS] paragraphs at a time) on [Dispatchers.IO], reporting the share of
+     * the sample done (0..1) to [onProgress] after each page and checking for cancellation (CLAUDE.md rule 15).
+     */
+    @Throws(Exception::class)
+    suspend fun analyzeWithProgress(body: String, sampleChars: Int = DEFAULT_SAMPLE, onProgress: (Double) -> Unit): ReaderAnalysis =
+        withContext(Dispatchers.IO) { analyzeBlocking(body, sampleChars, onProgress) }
+
+    private suspend fun analyzeBlocking(body: String, sampleChars: Int, onProgress: (Double) -> Unit): ReaderAnalysis {
         val sample = if (body.length <= sampleChars) body else body.substring(0, sampleChars).substringBeforeLast('\n', body.substring(0, sampleChars))
         val known = stages()
-        val paragraphs = paragraphs(sample).map { paragraph(sample, it, emptyList(), known) }
+        val ranges = paragraphs(sample)
+        val paragraphs = ArrayList<ReaderParagraph>(ranges.size)
+        onProgress(0.0)
+        for (page in ranges.chunked(PAGE_PARAGRAPHS)) {
+            page.mapTo(paragraphs) { paragraphBlocking(sample, it, emptyList(), known) }
+            onProgress(if (sample.isEmpty()) 1.0 else (page.last().last + 1).toDouble() / sample.length)
+            yield()
+        }
+        onProgress(1.0)
         val sentences = paragraphs.flatMap { it.sentences }
         val words = sentences.flatMap { it.tokens }.filter { it.isWord }
         val content = words.filterNot { it.surface.length == 1 && Kana.isAllKana(it.surface) }
@@ -246,8 +287,38 @@ class ReaderAnalyzer(
     suspend fun mine(token: ReaderToken, sentence: ReaderSentence, dictionary: DictionaryRepository, collection: CollectionService): String? =
         mine(token, sentence, { dictionary.entry(it)?.entry }, { e, context -> collection.addToReviews(e, context) })
 
+    /**
+     * Grammar points with at least one match in [text] that doesn't cut into a dictionary word (F-39), the same
+     * rule tools/packs/build_grammar.py applies with `inside_larger_word`, here on token boundaries: は in おはよう
+     * or たい in 冷たい is not a hit. Inflected tokens only protect their stem (行き of 行きました), so endings like
+     * ました still match.
+     */
+    internal fun grammarHits(text: String, tokens: List<Token>, patterns: List<Pair<String, Regex>>): List<String> =
+        patterns.filter { (_, re) ->
+            re.findAll(text).any { m -> m.value.isNotEmpty() && !insideLargerWord(tokens, m.range.first, m.range.last + 1) }
+        }.map { it.first }.distinct()
+
     companion object {
         const val DEFAULT_SAMPLE = 20_000
+
+        /** Paragraphs analyzed between progress reports and cancellation checks. */
+        const val PAGE_PARAGRAPHS = 20
+
+        /** True when [start, end) starts or ends strictly inside a dictionary word's lexical part. */
+        internal fun insideLargerWord(tokens: List<Token>, start: Int, end: Int): Boolean = tokens.any { t ->
+            if (t.entryId == null) return@any false
+            val lexemeEnd = t.start + lexemeLength(t)
+            start in (t.start + 1) until lexemeEnd || end in (t.start + 1) until lexemeEnd
+        }
+
+        /** The part of a token that is the word itself: all of it, or the stem shared with its dictionary form. */
+        private fun lexemeLength(t: Token): Int {
+            val base = t.dictionaryForm
+            if (t.deinflection.isEmpty() || base == null || base == t.surface) return t.surface.length
+            var p = 0
+            while (p < t.surface.length && p < base.length && t.surface[p] == base[p]) p++
+            return p
+        }
         private const val COVERAGE_TARGET = 0.85
         private const val TERMINATORS = "。！？!?"
         private const val CLOSERS = "」』）)】〉》\"'”’"

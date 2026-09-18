@@ -67,10 +67,28 @@ GGUF LLMs and whisper `ggml-*.bin` models are downloaded at runtime by the model
   - Calls are processed in order. `onToken` and `onDone` fire **on that worker thread**, never on the main thread, so hop to the main thread or a coroutine before touching UI state.
   - Don't block the worker from inside a callback, for example by calling `load` and waiting on it.
   - `isLoaded()` is lock-free and safe from any thread.
-- **Cancellation:**
-  - `cancel()` sets a flag that is checked before each token, so generation stops within one token and `onDone(partialText, null)` fires.
+- **Cancellation (contract, F-10 / D-057):**
+  - `cancel()` sets a flag that is checked before each token, so generation stops within one token.
+  - A generation that ends because it was **stopped** (by `cancel()`, by `unload()` while generating, or by a newer
+    call superseding it) must finish with `onDone(null, error)` where `error` **starts with `cancelled`** (compared
+    case-insensitively after trimming): e.g. `"cancelled"`, `"cancelled: unloaded"`, `"cancelled: superseded"`.
+    It must **never** report the partial text as a success (`onDone(partialText, null)`): truncated JSON would fail
+    validation and make the gateway retry, reloading the model right after a memory warning.
+  - Shared code (`LocalLlmBridge.isCancelled`, `LocalLlmBridge.CANCELLED`) maps that prefix to
+    `AiCancelledException`; `AiGateway` never retries it and shows its fallback (`AiGateway.CANCELLED_REASON`).
+  - Any other error string is an ordinary failure (`AiException`).
+  - The cancel flag must belong to one generation: reset it inside the queued job (not before enqueueing) and
+    compare a per-call generation id, so a late `cancel()` from a timed-out call can't stop the next one.
   - Prompt evaluation (prefill) can't be interrupted.
   - `unload()` cancels, then frees on the worker after any in-flight call.
+  - Whisper bridges follow the same `cancelled…` error prefix. They may also implement the optional
+    `CancellableSttBridge.cancel()`; `WhisperRecognizer` calls it when the coroutine is cancelled (F-41).
+- **Model switching (F-23):** the shared layer tracks which file is loaded (`LoadedModelSlot`). It calls
+  `unload()` then `load(newPath, …)` when the configured model changes, and `unload()` whenever AI settings are
+  saved, so bridges don't need to compare paths themselves.
+- **Context window (F-23):** role-play history is trimmed in shared code to the most recent turns that fit
+  `n_ctx − maxTokens − 256` (character-based token estimate), so "Prompt too long" should no longer occur for
+  conversations; if it does, the session shows a banner instead of splicing in a scripted line.
 - **Stop strings:** stop strings are matched on the accumulated text. The text returned in `onDone` is cut before the stop string, and the chunk containing it is not streamed.
 - **Grammar:** a non-empty `grammar` is compiled as GBNF with start symbol `root`. An invalid grammar fails fast with `"Invalid GBNF grammar"`.
 - **Memory:**
@@ -86,4 +104,4 @@ GGUF LLMs and whisper `ggml-*.bin` models are downloaded at runtime by the model
   - If the conversation outgrows the context, `generate` fails with "Prompt too long"; the shared layer should summarize or trim older turns.
 - **STT input:** 16 kHz mono float samples in [-1, 1].
   - Results are JSON `[{"t0": ms, "t1": ms, "text": "…"}]`, with segment-level timestamps only (no token timestamps).
-  - Transcription isn't cancellable; keep clips short (under 30 s) for interactive use.
+  - Keep clips short (under 30 s) for interactive use. Cancellation: see the contract above.

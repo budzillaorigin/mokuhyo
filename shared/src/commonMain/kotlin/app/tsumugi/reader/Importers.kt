@@ -1,7 +1,8 @@
 package app.tsumugi.reader
 
 import app.tsumugi.platform.normalizeNfc
-import io.ktor.client.HttpClient
+import app.tsumugi.net.NetTimeouts
+import app.tsumugi.net.tsumugiHttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.request.get
@@ -31,7 +32,7 @@ class ImportException(message: String) : Exception(message)
  * locally at the user's request, never redistributed). Handles Shift_JIS/EUC-JP pages.
  */
 class UrlImporter(engine: HttpClientEngine) {
-    private val http = HttpClient(engine) { expectSuccess = false }
+    private val http = tsumugiHttpClient(engine, NetTimeouts.API)
 
     @Throws(Exception::class)
     suspend fun fetch(url: String): Pair<ByteArray, String?> {

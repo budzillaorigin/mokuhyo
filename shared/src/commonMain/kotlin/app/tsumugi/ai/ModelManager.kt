@@ -1,6 +1,7 @@
 package app.tsumugi.ai
 
-import io.ktor.client.HttpClient
+import app.tsumugi.net.NetTimeouts
+import app.tsumugi.net.tsumugiHttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.request.header
 import io.ktor.client.request.prepareGet
@@ -9,8 +10,11 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.isSuccess
 import io.ktor.utils.io.readAvailable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okio.FileSystem
@@ -55,14 +59,21 @@ sealed interface DownloadProgress {
  * Downloads, verifies and deletes on-device models listed in `content/models/manifest.json` (BRIEF §7.1).
  * Downloads resume with HTTP Range from a `.part` file; each file is SHA-256 verified before it is renamed into
  * place, and a `.sha256` marker records the verified hash so installed checks don't re-hash gigabytes.
+ *
+ * All file I/O and hashing run on [Dispatchers.IO] (F-13). The hash is computed while the bytes are written, so
+ * there is no second pass over a multi-gigabyte file; a resumed download re-reads its existing `.part` once to
+ * restore the hash state (D-053). A download starts only with at least 1.5× the model's remaining size free.
  */
 class ModelManager(
     private val fs: FileSystem,
     private val modelsDir: Path,
     engine: HttpClientEngine,
     val manifest: ModelManifest,
+    /** Free bytes on the volume holding a path; null = unknown (the check is skipped). */
+    private val freeBytes: (Path) -> Long? = { null },
+    timeouts: NetTimeouts = NetTimeouts.DOWNLOAD,
 ) {
-    private val http = HttpClient(engine) { expectSuccess = false }
+    private val http = tsumugiHttpClient(engine, timeouts)
 
     fun models(kind: ModelKind): List<ModelInfo> = manifest.models.filter { it.kind == kind }
 
@@ -103,6 +114,18 @@ class ModelManager(
         val dir = dir(model)
         fs.createDirectories(dir)
         val total = model.totalBytes
+        val remaining = total - model.files.sumOf { f -> if (isFileInstalled(dir, f)) f.bytes else 0L }
+        // Room for the rest of the download plus headroom for the OS and the model's own mmap/cache files.
+        val needed = remaining + remaining / 2 - partialBytes(dir, model)
+        val free = freeBytes(dir)
+        if (remaining > 0 && free != null && free < needed) {
+            send(DownloadProgress.Failed(
+                "Not enough storage for ${model.name}: needs ${gb(needed)} GB free, ${gb(free)} GB available. " +
+                    "Free up space and try again.",
+                retryable = false,
+            ))
+            return@channelFlow
+        }
         var doneBefore = 0L
         for (file in model.files) {
             if (isFileInstalled(dir, file)) {
@@ -115,12 +138,17 @@ class ModelManager(
                 fs.delete(part)
                 have = 0
             }
+            // Hash state for the bytes already in the .part: one read on resume, none on a fresh download.
+            var sha = if (have > 0) hashOf(part) else Sha256()
             if (have < file.bytes) {
                 val error = try {
                     http.prepareGet(file.url) { if (have > 0) header(HttpHeaders.Range, "bytes=$have-") }.execute { response ->
                         when {
                             response.status == HttpStatusCode.PartialContent -> Unit
-                            response.status.isSuccess() -> have = 0 // server ignored Range: start over
+                            response.status.isSuccess() -> { // server ignored Range: start over
+                                have = 0
+                                sha = Sha256()
+                            }
                             else -> return@execute "download failed: HTTP ${response.status.value}"
                         }
                         val channel = response.bodyAsChannel()
@@ -133,6 +161,7 @@ class ModelManager(
                                 if (n < 0) break
                                 if (n == 0) continue
                                 out.write(buffer, 0, n)
+                                sha.update(buffer, 0, n)
                                 have += n
                                 if (have - lastEmit >= progressStepBytes) {
                                     out.flush()
@@ -159,7 +188,7 @@ class ModelManager(
                 return@channelFlow
             }
             send(DownloadProgress.Verifying(file.name))
-            val actual = hashOf(part)
+            val actual = sha.hexDigest()
             if (!actual.equals(file.sha256, ignoreCase = true)) {
                 fs.delete(part)
                 send(DownloadProgress.Failed("${file.name}: checksum mismatch, the download was discarded", retryable = true))
@@ -170,6 +199,14 @@ class ModelManager(
             doneBefore += file.bytes
         }
         send(DownloadProgress.Done(dir / model.files.first().name))
+    }.flowOn(Dispatchers.IO)
+
+    private fun partialBytes(dir: Path, model: ModelInfo): Long =
+        model.files.sumOf { f -> (size(dir / "${f.name}.part") ?: 0L).coerceAtMost(f.bytes) }
+
+    private fun gb(bytes: Long): String {
+        val tenths = (bytes * 10 + (1L shl 30) - 1) / (1L shl 30)
+        return "${tenths / 10}.${tenths % 10}"
     }
 
     private fun dir(model: ModelInfo): Path = modelsDir / model.id
@@ -183,7 +220,7 @@ class ModelManager(
 
     private fun size(path: Path): Long? = fs.metadataOrNull(path)?.size
 
-    private fun hashOf(path: Path): String {
+    private fun hashOf(path: Path): Sha256 {
         val sha = Sha256()
         val buffer = ByteArray(256 * 1024)
         fs.source(path).buffer().use { src ->
@@ -193,7 +230,7 @@ class ModelManager(
                 sha.update(buffer, 0, n)
             }
         }
-        return sha.hexDigest()
+        return sha
     }
 
     companion object {

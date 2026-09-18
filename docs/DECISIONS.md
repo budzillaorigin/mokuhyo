@@ -43,6 +43,8 @@ Kanjium's `wikipedia_freq.txt`/`novels_freq.txt` come from third-party sources w
 ### D-013: Packs ship inside the app and are copied on first launch (2026-09-18)
 The dictionary pack (~127 MB raw, ~46 MB compressed) is bundled in the APK/IPA and copied to app storage on first launch, then again only when `manifest.json`'s version changes. This keeps the dictionary fully offline from the first launch, with no download step (App Store §5.1.1, Guideline 4.2). Later on-demand packs (models, optional content) use the same `PackInstaller` folder. Builds without a pack show an honest "not installed" state.
 
+> **Revised by D-052 (v2, F-16):** packs are still bundled, but iOS no longer copies them: they open in place, read-only, from the app bundle. Only Android copies, because its assets live inside the APK. That copy is now verified and atomic.
+
 ### D-014: Dictionary storage layout (2026-09-18)
 Composite-key tables are `WITHOUT ROWID` and JSON arrays use `""` for the empty/`["*"]` cases. Furigana is stored as `ruby=rt|…` rather than JSON. Together these cut the pack from 224 MB to 127 MB. Kanji→word lists keep the 150 most common words per kanji.
 
@@ -304,6 +306,108 @@ The GitHub releases API confirms both pinned tags exist and serve the pinned zip
 | whisper.cpp `b5130` | 2026-09-11, alongside v1.9.4 | `927cfce` | matches `fetch_ios_frameworks.sh` |
 
 Both are automated build releases marked "pre-release" on GitHub. `tools/models/README.md` now records this. No pin changed.
+
+### D-050: Network timeouts and the "endpoint unreachable" cache (2026-09-18, F-11)
+Every Ktor client in `shared/` is created by `net.tsumugiHttpClient(engine, NetTimeouts)`, which always installs `HttpTimeout`. All profiles connect within 5 s (VOICEVOX within 3 s). The budgets:
+
+| Profile | Used by | Limit |
+|---|---|---|
+| `CHAT` | LLM chat, `/v1/models` | 30 s per request |
+| `API` | WaniKani, sync, web/RSS/Aozora importer | 30 s per request |
+| `STT` | Whisper endpoint | 60 s per request: an upload plus server-side transcription is neither chat nor a download |
+| `DOWNLOAD` | model downloads | no request cap; a socket timeout of 120 s instead, so a slow but live 2 GB download never times out while a stalled one does |
+| `VOICEVOX_PROBE` | VOICEVOX `GET /version` | 3 s |
+| `VOICEVOX_SYNTH` | VOICEVOX audio_query + synthesis | 15 s |
+
+`EndpointHealth` remembers a failed endpoint for 60 s, keyed by scheme+host+port. A failure means a connection error or timeout; an HTTP error status doesn't count. During those 60 s every engine on that host fails immediately, so the gateway fallback, the system recognizer or the system voice takes over without a second wait. A success clears the entry, and so does "Test connection", which always tries.
+
+### D-051: One secret per endpoint (2026-09-18, F-12)
+The keystore/keychain holds three separate keys:
+- `ai.endpoint_key`: the LLM. It keeps its v1 name, so existing installs keep their key.
+- `ai.stt_endpoint_key`: Whisper.
+- `ai.tts_endpoint_key`: VOICEVOX, for a reverse proxy.
+
+`EndpointEngines` builds each engine with its own key only. There's no fallback to the LLM key. An STT server that needed the LLM key in v1 now needs its key entered in the STT field. That's the price of rule 14.
+
+### D-052: Bundled packs open in place; Android copies with verification (2026-09-18, F-16, revises D-013)
+- **iOS:** the app bundle is a plain read-only folder, so `packDriver` opens `Tsumugi.app/packs/*.sqlite` directly and nothing is copied. Copies left in `Application Support/Tsumugi/packs` by v1 builds are deleted.
+  - SQLDelight's native driver (SQLiter 1.3) exposes neither open flags nor URI filenames, so `?immutable=1` isn't reachable. The file isn't writable, so SQLite opens it read-only by itself.
+  - The driver sets `journalMode = DELETE` so SQLiter never asks for WAL, which would need `-wal`/`-shm` files beside the pack.
+  - The packs' `user_version = 1` matches the schema, so the driver never writes. Revisit if SQLDelight adds open flags.
+- **Android:** assets are compressed, or at an offset inside the APK even when marked `noCompress`, so SQLite can't open them in place. The first-launch copy stays, now with these safeguards:
+  - A lock per file, not one process-wide lock, so installing one pack doesn't block the others.
+  - A free-space check for at least the pack size + 10%.
+  - SHA-256 computed while copying and checked against `manifest.json`.
+  - A `.part` file with a random name, renamed atomically into place. Stale `.part` files are removed.
+  - Progress through `PackInstaller.progress`.
+  - A failed upgrade keeps the previous working copy.
+  - The `.sqlite` assets are `noCompress`, so the copy is a plain read.
+  - Packs open with `PRAGMA query_only = 1`, because the framework open helper has no read-only/immutable flag.
+- **Downloaded packs** (later phases) go through `PackInstaller.installFrom` with the same checks.
+
+AppGraph's global mutex around `openPack` is handled separately (pack-locking work in parallel).
+
+### D-053: Model downloads hash while writing (2026-09-18, F-13)
+- `ModelManager.download` runs on `Dispatchers.IO` (`flowOn`) and feeds each chunk to SHA-256 as it's written, so there is no second pass over a multi-gigabyte file.
+- On resume, the existing `.part` is read once to rebuild the hash state. That's the simplest correct option: SHA-256's internal state isn't serializable across launches without a custom format, and a resume is rare.
+- Before starting, the free space where the model will be stored must be at least 1.5 × the bytes still to download (minus what's already in `.part` files). Otherwise the download fails at once with a clear, non-retryable message.
+- Free bytes come from the new `freeBytes(path)` expect/actual:
+  - iOS: `volumeAvailableCapacityForImportantUsage`, falling back to `NSFileSystemFreeSize`.
+  - Android: `File.usableSpace`.
+- Background download sessions on iOS and Android (the rest of F-13) are platform work and are not part of this change.
+
+### D-054: Large folders are excluded from iOS backups (2026-09-18, F-15)
+- `dataDir` is `Library/Application Support/Tsumugi` (verified: never Documents).
+- `excludeFromBackup(path)` sets `NSURLIsExcludedFromBackupKey`. It is applied to `packs`, `models` and `tts` when they're created, and again at every launch for folders that already exist.
+- The user database lives in SQLiter's own folder and stays backed up.
+- On Android the same folders are already excluded by `backup_rules.xml` and `data_extraction_rules.xml`, so the Android `excludeFromBackup` is a no-op.
+
+### D-055: Pitch of conjugated forms from the lemma (2026-09-18, F-21)
+- **Word targets:** a pronunciation target word is a content morpheme plus its auxiliaries (助動詞) and the conjunctive て/で. Their kana stay in the target. Only particles (助詞) attach as `followedByParticle`.
+- **Accent source:** the accent is looked up for the lemma. Its reading is derived from the surface reading, e.g. 食べ/タベ → たべる.
+- **`PitchRules` in `jp/Pitch.kt`:** a small, documented table of standard Tokyo rules:
+  - ます forms: the drop is after ま.
+  - ません / ましょう: the drop is after せ / しょ.
+  - た/て forms: heiban verbs stay heiban. Accented godan verbs keep the lemma's position; ichidan verbs move it one mora earlier.
+  - ない: the drop is before な.
+  - Adjective かった: accented adjectives move one mora earlier; heiban ones drop before かった.
+  - Adjective く/くて.
+  - です/だ after a dictionary form.
+- **Outside the table:** any other form reports "accent unknown", not a guess.
+
+### D-056: Banded DTW with two rows; long shadowing clips are downsampled (2026-09-18, F-22)
+- **Alignment:** shadowing alignment keeps two rows of the cost matrix, O(m) memory. The statistics the traceback used to gather (pitch difference and distance from even pacing along the path) are carried forward with each cell's cost, using the traceback's own tie order (diagonal, up, left). Results match the full-matrix version exactly; a test keeps the old algorithm as the reference.
+- **Input cap:** recordings are cut at 60 s.
+- **Downsampling:** contours longer than 20 s (2,000 frames) are averaged down by one shared factor, so the duration ratio doesn't change. A 60 s pair compares in under a second on the JVM.
+
+### D-057: Cancellation contract and model lifecycle (2026-09-18, F-10, F-23)
+- **Cancellation contract:** bridges report a stopped generation or transcription as `onDone(null, "cancelled…")`, meaning any error string starting with `cancelled`, and never as partial success. Shared code maps it to `AiCancelledException`, which `AiGateway` never retries. It is documented in `tools/models/README.md`. An optional `CancellableSttBridge` lets Whisper bridges stop on coroutine cancellation (F-41).
+- **Model loading:** `LocalLlamaModel.ensureLoaded(path)` reloads when the loaded file differs, tracked by a shared `LoadedModelSlot`.
+- **Unload on save:** `AiService.save()` always unloads the local model. That's simple, and the next AI call reloads in a few seconds.
+- **History window:** role-play history keeps the newest turns that fit `n_ctx − maxTokens − 256`. The token estimate is 1 per non-ASCII character and 1 per 3 ASCII characters, deliberately high for Qwen's BPE.
+- **Model failure mid-conversation:** a session that started with a model never switches to scripted lines. `reply()` returns null, `modelFailure` holds the reason for a banner, and `retry()` asks again. Scripted turns are used only when no model was configured at the first turn.
+
+### D-058: Reader tokens come from the morphological analyzer (2026-09-18, F-26, F-39)
+- **Tokenizer:** the reader uses `LatticeTokenizer`, through `LatticeReaderTokenizer`, so it agrees with pronunciation and listening on word boundaries.
+  - Each content morpheme absorbs its auxiliaries and て/で, so 行き+まし+た is one tappable 行きました, with dictionary form 行く and surface reading いきました.
+  - Glosses come from one batched `DictionaryRepository.entriesForLemmas` call per sentence. It prefers an entry with the same reading, then common words, then rank.
+  - The longest-match tokenizer is used only when the tokenizer pack is missing.
+- **Threading and progress:** analysis runs on `Dispatchers.IO`. `analyzeWithProgress` works 20 paragraphs at a time and reports progress (`ReaderService.analysisProgress`). The reading view was already lazy per page.
+- **Grammar hits (F-39):** a regex match counts only if it doesn't start or end strictly inside a dictionary word's lexical part. That is the whole token, or the stem shared with the dictionary form for inflected tokens. This is the pack builder's `inside_larger_word` rule, applied on token boundaries. は in おはよう and たい in 冷たい are rejected; ました in 行きました and たい in 食べたい still count.
+
+### D-059: Meaning answers accept any script; synthesized audio gets unique files (2026-09-18, F-35, F-30)
+- **Meaning answers (F-35):** normalized in this order:
+  1. NFC.
+  2. Full-width ASCII folded to ASCII, and the ideographic space to a space.
+  3. Lowercase.
+  4. Parenthesized notes removed.
+  5. Anything that isn't a letter or digit of any script (or an apostrophe or combining mark) turned into a space.
+
+  Accents and kana/kanji are kept, and there's no NFKC (rule 7). This is answer matching, not a dictionary key.
+- **Synthesized audio (F-30):** each VOICEVOX synthesis writes its own `tts/voicevox-<uuid>.wav`, handled by `SynthesizedAudioFiles`.
+  - The player deletes the file after playback with `SwiftSupport.deleteSynthesized`.
+  - `cleanSynthesized` clears the folder at launch.
+  - Files older than 10 minutes are pruned on each synthesis, as a backstop.
 
 ---
 

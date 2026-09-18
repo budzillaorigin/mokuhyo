@@ -1,6 +1,7 @@
 package app.tsumugi.sync
 
-import io.ktor.client.HttpClient
+import app.tsumugi.net.NetTimeouts
+import app.tsumugi.net.tsumugiHttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.request.header
 import io.ktor.client.request.request
@@ -29,7 +30,7 @@ class HttpSyncClient(
     private val baseUrl: String,
     private val tokens: TokenStore,
 ) : SyncTransport {
-    private val http = HttpClient(engine) { expectSuccess = false }
+    private val http = tsumugiHttpClient(engine, NetTimeouts.API)
     private val root get() = baseUrl.trimEnd('/') + "/v1"
 
     // --- Auth ---------------------------------------------------------------------------------------------

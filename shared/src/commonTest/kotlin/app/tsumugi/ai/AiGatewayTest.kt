@@ -92,6 +92,17 @@ class AiGatewayTest {
     }
 
     @Test
+    fun cancellationIsNeverRetried() = runTest {
+        // F-10: an unload mid-generation is reported as cancelled; a retry would reload the model right after a
+        // memory warning, so the gateway gives up at once.
+        val model = FakeModel(AiCancelledException("cancelled: unloaded"), good)
+        val result = AiGateway({ model }).run(task, input)
+        assertIs<AiResult.Unavailable>(result)
+        assertEquals(AiGateway.CANCELLED_REASON, result.reason)
+        assertEquals(1, model.requests.size)
+    }
+
+    @Test
     fun noModelConfigured() = runTest {
         val result = AiGateway({ null }).run(task, input)
         assertIs<AiResult.Unavailable>(result)

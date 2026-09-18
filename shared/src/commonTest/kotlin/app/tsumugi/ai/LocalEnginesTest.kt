@@ -15,8 +15,15 @@ private val qwen = ModelInfo(
     files = listOf(ModelFile("q.gguf", "https://example.invalid/q.gguf", "00", 1)),
 )
 
-private class FakeLlmBridge(var reply: String? = "{\"ok\":true}<|im_end|>", var loadError: String? = null, var hold: Boolean = false) : LocalLlmBridge {
+private class FakeLlmBridge(
+    var reply: String? = "{\"ok\":true}<|im_end|>",
+    var loadError: String? = null,
+    var hold: Boolean = false,
+    var error: String = "boom",
+) : LocalLlmBridge {
     var loaded = false
+    var loads = 0
+    var unloads = 0
     var loadedWith: Pair<String, Int>? = null
     var prompt: String? = null
     var grammar: String? = null
@@ -27,6 +34,7 @@ private class FakeLlmBridge(var reply: String? = "{\"ok\":true}<|im_end|>", var 
     override fun isLoaded() = loaded
     override fun load(modelPath: String, contextSize: Int, onDone: (String?) -> Unit) {
         loadedWith = modelPath to contextSize
+        loads++
         loaded = loadError == null
         onDone(loadError)
     }
@@ -38,7 +46,7 @@ private class FakeLlmBridge(var reply: String? = "{\"ok\":true}<|im_end|>", var 
         this.prompt = prompt
         this.grammar = grammar
         this.stop = stop
-        if (hold) pending = onDone else onDone(reply, if (reply == null) "boom" else null)
+        if (hold) pending = onDone else onDone(reply, if (reply == null) error else null)
     }
 
     override fun cancel() {
@@ -46,7 +54,10 @@ private class FakeLlmBridge(var reply: String? = "{\"ok\":true}<|im_end|>", var 
         pending?.invoke(null, "cancelled")
     }
 
-    override fun unload() { loaded = false }
+    override fun unload() {
+        unloads++
+        loaded = false
+    }
 }
 
 class LocalEnginesTest {
@@ -135,5 +146,87 @@ class LocalEnginesTest {
         assertEquals(1, wav[44].toInt())
         assertEquals(-1, wav[46].toInt())
         assertEquals(-1, wav[47].toInt())
+    }
+
+    // --- F-23: model lifecycle ---
+
+    @Test
+    fun switchingModelsReloads() = runTest {
+        val bridge = FakeLlmBridge()
+        val slot = LoadedModelSlot()
+        LocalLlamaModel(bridge, qwen, "/models/a.gguf", slot).complete(CompletionRequest(emptyList()))
+        LocalLlamaModel(bridge, qwen, "/models/a.gguf", slot).complete(CompletionRequest(emptyList()))
+        assertEquals(1, bridge.loads, "same file: loaded once")
+        LocalLlamaModel(bridge, qwen, "/models/b.gguf", slot).complete(CompletionRequest(emptyList()))
+        assertEquals(2, bridge.loads)
+        assertEquals(1, bridge.unloads)
+        assertEquals("/models/b.gguf", bridge.loadedWith?.first)
+        assertEquals("/models/b.gguf", slot.path)
+    }
+
+    @Test
+    fun modelLoadedOutsideTheSlotIsReplaced() = runTest {
+        val bridge = FakeLlmBridge().apply { loaded = true } // e.g. left over from before a settings change
+        LocalLlamaModel(bridge, qwen, "/models/new.gguf", LoadedModelSlot()).ensureLoaded("/models/new.gguf")
+        assertEquals(1, bridge.unloads)
+        assertEquals("/models/new.gguf", bridge.loadedWith?.first)
+    }
+
+    @Test
+    fun slotUnloadForgetsThePath() = runTest {
+        val bridge = FakeLlmBridge()
+        val slot = LoadedModelSlot()
+        LocalLlamaModel(bridge, qwen, "/models/a.gguf", slot).complete(CompletionRequest(emptyList()))
+        slot.unload(bridge)
+        assertNull(slot.path)
+        assertEquals(1, bridge.unloads)
+        LocalLlamaModel(bridge, qwen, "/models/a.gguf", slot).complete(CompletionRequest(emptyList()))
+        assertEquals(2, bridge.loads)
+    }
+
+    // --- F-10: cancellation contract ---
+
+    @Test
+    fun cancelledStatusBecomesAiCancelled() = runTest {
+        for (status in listOf("cancelled", "cancelled: unloaded", "Cancelled by newer request")) {
+            val bridge = FakeLlmBridge(reply = null, error = status).apply { loaded = true }
+            assertFailsWith<AiCancelledException>(status) { LocalLlamaModel(bridge, qwen).complete(CompletionRequest(emptyList())) }
+        }
+        val failed = FakeLlmBridge(reply = null, error = "out of memory").apply { loaded = true }
+        val e = assertFailsWith<AiException> { LocalLlamaModel(failed, qwen).complete(CompletionRequest(emptyList())) }
+        assertTrue(e !is AiCancelledException)
+    }
+
+    // --- F-41 ---
+
+    @Test
+    fun whisperCancellationStopsTheBridge() = runTest {
+        val bridge = object : LocalSttBridge, CancellableSttBridge {
+            var cancelled = false
+            var pending: ((String?, String?) -> Unit)? = null
+            override fun isLoaded() = true
+            override fun load(modelPath: String, onDone: (String?) -> Unit) = onDone(null)
+            override fun transcribe(samples: FloatArray, language: String, onDone: (String?, String?) -> Unit) { pending = onDone }
+            override fun cancel() {
+                cancelled = true
+                pending?.invoke(null, "cancelled")
+            }
+        }
+        val job = async { WhisperRecognizer(bridge, "/m.bin").transcribe(ShortArray(16), "ja") }
+        runCurrent()
+        job.cancel()
+        runCurrent()
+        assertTrue(bridge.cancelled)
+        assertTrue(job.isCancelled)
+    }
+
+    @Test
+    fun whisperCancelledStatusBecomesAiCancelled() = runTest {
+        val bridge = object : LocalSttBridge {
+            override fun isLoaded() = true
+            override fun load(modelPath: String, onDone: (String?) -> Unit) = onDone(null)
+            override fun transcribe(samples: FloatArray, language: String, onDone: (String?, String?) -> Unit) = onDone(null, "cancelled")
+        }
+        assertFailsWith<AiCancelledException> { WhisperRecognizer(bridge).transcribe(ShortArray(16), "ja") }
     }
 }

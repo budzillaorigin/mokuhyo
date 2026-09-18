@@ -218,53 +218,117 @@ object PronunciationAnalyzer {
      */
     fun shadowingCompare(reference: FloatArray, attempt: FloatArray): ShadowingReport {
         val notes = mutableListOf("Compares the melody and rhythm of your recording with the model, not individual sounds.")
-        val ref = contour(reference)
-        val att = contour(attempt)
+        val ref = contour(capped(reference))
+        val att = contour(capped(attempt))
         if (ref == null || att == null) {
             notes += "Not enough voiced audio to compare — try recording again."
             return ShadowingReport(0, 0, 0, 0.0, notes)
         }
-        val n = ref.pitch.size
-        val m = att.pitch.size
-        val band = max(abs(n - m), max(n, m) / 4) + 2
-        val inf = Double.MAX_VALUE / 4
-        val cost = Array(n + 1) { DoubleArray(m + 1) { inf } }
-        cost[0][0] = 0.0
-        for (i in 1..n) {
-            val jFrom = max(1, (i.toLong() * m / n).toInt() - band)
-            val jTo = min(m, (i.toLong() * m / n).toInt() + band)
-            for (j in jFrom..jTo) {
-                val d = abs(ref.pitch[i - 1] - att.pitch[j - 1]) / 4.0 + abs(ref.energy[i - 1] - att.energy[j - 1])
-                cost[i][j] = d + minOf(cost[i - 1][j - 1], cost[i - 1][j], cost[i][j - 1])
-            }
-        }
-        // Trace the path to measure pitch difference and deviation from even pacing.
-        var i = n
-        var j = m
-        var pitchDiff = 0.0
-        var deviation = 0.0
-        var steps = 0
-        while (i > 0 && j > 0) {
-            pitchDiff += abs(ref.pitch[i - 1] - att.pitch[j - 1])
-            deviation += abs(i.toDouble() / n - j.toDouble() / m)
-            steps++
-            val diag = cost[i - 1][j - 1]
-            val up = cost[i - 1][j]
-            val left = cost[i][j - 1]
-            when (minOf(diag, up, left)) {
-                diag -> { i--; j-- }
-                up -> i--
-                else -> j--
-            }
-        }
-        val ratio = m.toDouble() / n
-        val meanPitchDiff = pitchDiff / max(1, steps)
-        val meanDeviation = deviation / max(1, steps)
-        val timing = (100 * (1.0 - min(1.0, abs(ln(ratio)) / ln(2.0) * 0.5 + meanDeviation * 4))).roundToInt().coerceIn(0, 100)
-        val intonation = (100 * (1.0 - min(1.0, meanPitchDiff / 4.0))).roundToInt().coerceIn(0, 100)
+        // Both contours shrink by the same factor, so the duration ratio and pacing are unchanged (F-22).
+        val factor = downsampleFactor(max(ref.pitch.size, att.pitch.size))
+        val alignment = align(downsample(ref, factor), downsample(att, factor))
+        val ratio = att.pitch.size.toDouble() / ref.pitch.size
+        val timing = (100 * (1.0 - min(1.0, abs(ln(ratio)) / ln(2.0) * 0.5 + alignment.meanDeviation * 4))).roundToInt().coerceIn(0, 100)
+        val intonation = (100 * (1.0 - min(1.0, alignment.meanPitchDiff / 4.0))).roundToInt().coerceIn(0, 100)
         if (ratio > 1.4) notes += "Your recording is noticeably slower than the model."
         if (ratio < 0.7) notes += "Your recording is noticeably faster than the model."
+        if (reference.size > MAX_SHADOW_SAMPLES || attempt.size > MAX_SHADOW_SAMPLES) {
+            notes += "Only the first ${MAX_SHADOW_SAMPLES / Audio.SAMPLE_RATE} seconds were compared."
+        }
         return ShadowingReport(timing, intonation, (timing + intonation) / 2, ratio, notes)
+    }
+
+    /** Longest recording compared (60 s); longer input is cut, never loaded into the alignment. */
+    internal const val MAX_SHADOW_SAMPLES = 60 * 16_000
+
+    /** Frames aligned at full resolution (20 s of 10 ms frames); longer contours are averaged down to this. */
+    internal const val MAX_DTW_FRAMES = 2_000
+
+    internal fun downsampleFactor(frames: Int): Int = (frames + MAX_DTW_FRAMES - 1) / MAX_DTW_FRAMES
+
+    private fun capped(signal: FloatArray): FloatArray =
+        if (signal.size <= MAX_SHADOW_SAMPLES) signal else signal.copyOf(MAX_SHADOW_SAMPLES)
+
+    internal class Alignment(val meanPitchDiff: Double, val meanDeviation: Double, val steps: Int)
+
+    /**
+     * Banded DTW over pitch (semitones / 4) and energy, keeping only two rows of the cost matrix: O(m) memory
+     * instead of O(n·m) (F-22). The statistics the traceback used to collect — pitch difference and distance from
+     * even pacing along the optimal path — are carried forward with each cell's cost instead, choosing the same
+     * predecessor the traceback chose (diagonal, then up, then left on ties), so results are identical to the
+     * full-matrix version.
+     */
+    internal fun align(refPitch: FloatArray, refEnergy: FloatArray, attPitch: FloatArray, attEnergy: FloatArray): Alignment {
+        val n = refPitch.size
+        val m = attPitch.size
+        val band = max(abs(n - m), max(n, m) / 4) + 2
+        val inf = Double.MAX_VALUE / 4
+        var prevCost = DoubleArray(m + 1) { inf }.also { it[0] = 0.0 }
+        var prevPitch = DoubleArray(m + 1)
+        var prevDev = DoubleArray(m + 1)
+        var prevSteps = IntArray(m + 1)
+        var curCost = DoubleArray(m + 1)
+        var curPitch = DoubleArray(m + 1)
+        var curDev = DoubleArray(m + 1)
+        var curSteps = IntArray(m + 1)
+        for (i in 1..n) {
+            curCost.fill(inf)
+            curPitch.fill(0.0)
+            curDev.fill(0.0)
+            curSteps.fill(0)
+            val center = (i.toLong() * m / n).toInt()
+            val jFrom = max(1, center - band)
+            val jTo = min(m, center + band)
+            for (j in jFrom..jTo) {
+                val pitchDiff = abs(refPitch[i - 1] - attPitch[j - 1])
+                val d = pitchDiff / 4.0 + abs(refEnergy[i - 1] - attEnergy[j - 1])
+                val diag = prevCost[j - 1]
+                val up = prevCost[j]
+                val left = curCost[j - 1]
+                val best = minOf(diag, up, left)
+                curCost[j] = d + best
+                // Same tie order as the old traceback: diagonal, then up, then left.
+                val dev = abs(i.toDouble() / n - j.toDouble() / m)
+                when (best) {
+                    diag -> {
+                        curPitch[j] = prevPitch[j - 1] + pitchDiff
+                        curDev[j] = prevDev[j - 1] + dev
+                        curSteps[j] = prevSteps[j - 1] + 1
+                    }
+                    up -> {
+                        curPitch[j] = prevPitch[j] + pitchDiff
+                        curDev[j] = prevDev[j] + dev
+                        curSteps[j] = prevSteps[j] + 1
+                    }
+                    else -> {
+                        curPitch[j] = curPitch[j - 1] + pitchDiff
+                        curDev[j] = curDev[j - 1] + dev
+                        curSteps[j] = curSteps[j - 1] + 1
+                    }
+                }
+            }
+            prevCost = curCost.also { curCost = prevCost }
+            prevPitch = curPitch.also { curPitch = prevPitch }
+            prevDev = curDev.also { curDev = prevDev }
+            prevSteps = curSteps.also { curSteps = prevSteps }
+        }
+        val steps = prevSteps[m]
+        return Alignment(prevPitch[m] / max(1, steps), prevDev[m] / max(1, steps), steps)
+    }
+
+    private fun align(ref: Contour, att: Contour): Alignment = align(ref.pitch, ref.energy, att.pitch, att.energy)
+
+    /** Averages every [factor] frames into one (the last group may be shorter). */
+    private fun downsample(c: Contour, factor: Int): Contour {
+        if (factor <= 1) return c
+        fun avg(values: FloatArray) = FloatArray((values.size + factor - 1) / factor) { k ->
+            val from = k * factor
+            val to = min(values.size, from + factor)
+            var sum = 0f
+            for (x in from until to) sum += values[x]
+            sum / (to - from)
+        }
+        return Contour(avg(c.pitch), avg(c.energy))
     }
 
     private class Contour(val pitch: FloatArray, val energy: FloatArray)
