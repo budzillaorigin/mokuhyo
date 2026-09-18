@@ -41,7 +41,7 @@ struct ReadingQuestionsSheet: View {
                     AIBadge(engine: questions.engine)
                     Text("Level \(questions.level) · about the start of the text").font(.caption).foregroundStyle(.secondary)
                     ForEach(Array(questions.questions.enumerated()), id: \.offset) { i, q in
-                        questionView(i, q)
+                        questionView(i, QuestionData(question: q.question, choices: q.choices, answer: Int(q.answer), explanation: q.explanation))
                     }
                     Button("New questions") { load(regenerate: true) }.buttonStyle(.bordered)
                 }
@@ -56,7 +56,7 @@ struct ReadingQuestionsSheet: View {
     }
 
     @ViewBuilder
-    private func questionView(_ index: Int, _ q: GenerateReadingQuestionsQuestion) -> some View {
+    private func questionView(_ index: Int, _ q: QuestionData) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("\(index + 1). \(q.question)").font(.japanese(size: 17, weight: .semibold))
             ForEach(Array(q.choices.enumerated()), id: \.offset) { c, choice in
@@ -67,7 +67,7 @@ struct ReadingQuestionsSheet: View {
                         Text(choice).font(.japanese(size: 15)).multilineTextAlignment(.leading)
                         Spacer()
                         if let p = picked[index] {
-                            if c == Int(q.answer) {
+                            if c == q.answer {
                                 Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
                             } else if c == p {
                                 Image(systemName: "xmark.circle.fill").foregroundStyle(.red)
@@ -106,4 +106,12 @@ struct ReadingQuestionsSheet: View {
             loading = false
         }
     }
+}
+
+/// A plain Swift copy of one generated question, so the view doesn't depend on how Kotlin names nested types.
+private struct QuestionData {
+    let question: String
+    let choices: [String]
+    let answer: Int
+    let explanation: String
 }
