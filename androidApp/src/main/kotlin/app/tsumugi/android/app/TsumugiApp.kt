@@ -147,7 +147,7 @@ private fun LearnHome(push: (Route) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         listOf(
             Triple("Kanji path", "60 levels · radicals → kanji → vocabulary", Route.PathLevels),
-            Triple("Grammar", "JLPT N5–N3 · cloze and sentence-building reviews", Route.Grammar),
+            Triple("Grammar", "JLPT N5–N1 · cloze and sentence-building reviews", Route.Grammar),
             Triple("Reading", "Articles, books, feeds · tap any word", Route.Library),
             Triple("Dictionary", "Offline JMdict · kanji · examples", Route.Dictionary),
             Triple("Radical search", "Find a kanji by its parts", Route.Radicals),
