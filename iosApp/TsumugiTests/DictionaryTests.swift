@@ -4,11 +4,14 @@ import Testing
 @testable import Tsumugi
 
 /// Runs against the dictionary pack bundled into the app (CI builds it; see .github/workflows/ci.yml).
-/// Skips when the build has no pack.
+/// Skips when the build has no pack. Serialized: the tests share one graph and one installed pack.
 @MainActor
+@Suite(.serialized)
 struct DictionaryTests {
+    private static let graph = AppModel().graph
+
     private static func repository() async -> DictionaryRepository? {
-        try? await AppModel().graph.dictionary()
+        try? await graph.dictionary()
     }
 
     @Test func searchFindsDeinflectedVerb() async throws {
@@ -19,7 +22,8 @@ struct DictionaryTests {
 
     @Test func englishAndRomajiSearch() async throws {
         guard let repo = await Self.repository() else { return }
-        #expect(try await repo.search(rawQuery: "cat", limit: 40).hits.first?.entry.headword == "猫")
+        let cat = try await repo.search(rawQuery: "cat", limit: 40)
+        #expect(cat.hits.first?.entry.headword == "猫")
         let kanji = try await repo.search(rawQuery: "kanji", limit: 40)
         #expect(kanji.hits.prefix(3).contains { $0.entry.headword == "漢字" })
     }

@@ -6,6 +6,13 @@ enum Route: Hashable {
     case entry(Int64)
     case kanji(String)
     case radicals
+    case lessons
+    case reviews
+    case pathLevels
+    case pathLevel(Int)
+    case pathItem(String)
+    case settings
+    case licenses
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -14,13 +21,13 @@ struct RootView: View {
         TabView {
             TabStack { TodayView() }
                 .tabItem { Label("Today", systemImage: "sun.max") }
-            TabStack { ComingSoonView(title: "Reviews") }
+            TabStack { TodayView() }
                 .tabItem { Label("Reviews", systemImage: "arrow.triangle.2.circlepath") }
             TabStack { LearnHomeView() }
                 .tabItem { Label("Learn", systemImage: "book") }
             TabStack { ComingSoonView(title: "Practice") }
                 .tabItem { Label("Practice", systemImage: "mic") }
-            TabStack { ComingSoonView(title: "Me") }
+            TabStack { MeView() }
                 .tabItem { Label("Me", systemImage: "person.crop.circle") }
         }
     }
@@ -46,6 +53,13 @@ struct TabStack<Root: View>: View {
                     case .entry(let id): EntryView(id: id)
                     case .kanji(let literal): KanjiView(literal: literal)
                     case .radicals: RadicalSearchView()
+                    case .lessons: LessonView()
+                    case .reviews: ReviewView()
+                    case .pathLevels: PathLevelsView()
+                    case .pathLevel(let level): PathLevelView(level: level)
+                    case .pathItem(let id): PathItemView(id: id)
+                    case .settings: SettingsView()
+                    case .licenses: LicensesView()
                     }
                 }
         }
@@ -55,6 +69,9 @@ struct TabStack<Root: View>: View {
 struct LearnHomeView: View {
     var body: some View {
         List {
+            NavigationLink(value: Route.pathLevels) {
+                LabeledContent("Kanji path", value: "60 levels")
+            }
             NavigationLink(value: Route.dictionary) {
                 LabeledContent("Dictionary", value: "JMdict · kanji · examples")
             }

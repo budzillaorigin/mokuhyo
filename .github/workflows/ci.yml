@@ -102,6 +102,26 @@ jobs:
             CODE_SIGNING_ALLOWED=NO > build/xcodebuild.log 2>&1 || status=$?
           grep -E "error:|warning: .*/iosApp/|Test (case|run)|✔|✘|passed|failed|Dictionary lookup" build/xcodebuild.log | head -300 || true
           exit $status
+      - name: Test failures and crash reports
+        if: failure()
+        run: |
+          xcrun xcresulttool get test-results tests --path build/TestResults.xcresult --format json > build/tests.json 2>/dev/null || true
+          python3 - <<'PY' || true
+          import json
+          def walk(n, path=""):
+              name = n.get("name", "")
+              if n.get("result") == "Failed" and n.get("nodeType") == "Test Case":
+                  print("FAILED:", path + name)
+              if n.get("nodeType") == "Failure Message":
+                  print("   ", name)
+              for c in n.get("children", []):
+                  walk(c, path + (name + " / " if n.get("nodeType") in ("Test Suite",) else ""))
+          for t in json.load(open("build/tests.json")).get("testNodes", []):
+              walk(t)
+          PY
+          mkdir -p build/crashes
+          cp ~/Library/Logs/DiagnosticReports/*Tsumugi* build/crashes/ 2>/dev/null || true
+          for f in build/crashes/*; do [ -f "$f" ] && head -c 6000 "$f"; done || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -109,3 +129,4 @@ jobs:
           path: |
             build/xcodebuild.log
             build/TestResults.xcresult
+            build/crashes

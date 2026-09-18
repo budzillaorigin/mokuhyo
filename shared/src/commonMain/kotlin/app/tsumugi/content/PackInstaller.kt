@@ -3,6 +3,8 @@ package app.tsumugi.content
 import app.tsumugi.platform.PlatformServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -10,6 +12,7 @@ import okio.FileSystem
 import okio.Path
 import okio.buffer
 import okio.use
+import kotlin.uuid.Uuid
 
 @Serializable
 data class PackManifest(val packs: List<PackFile>)
@@ -43,8 +46,11 @@ class PackInstaller(
     fun bundledManifest(): PackManifest? =
         platform.openBundled(MANIFEST)?.buffer()?.use { json.decodeFromString(it.readUtf8()) }
 
-    /** Ensures [file] is installed, copying the bundled copy if it is newer. Safe to call on every launch. */
-    suspend fun ensureInstalled(file: String): PackStatus = withContext(Dispatchers.IO) {
+    /**
+     * Ensures [file] is installed, copying the bundled copy if it is newer. Safe to call on every launch and
+     * from several places at once: installs are serialized process-wide.
+     */
+    suspend fun ensureInstalled(file: String): PackStatus = installLock.withLock { withContext(Dispatchers.IO) {
         val installed = installedVersion(file)
         val bundled = bundledManifest()?.packs?.firstOrNull { it.file == file }
         when {
@@ -55,12 +61,12 @@ class PackInstaller(
             installed != null -> PackStatus.Installed(installed)
             else -> PackStatus.Missing
         }
-    }
+    } }
 
     private fun copyBundled(pack: PackFile) {
         fs.createDirectories(packsDir)
         val target = packsDir / pack.file
-        val temp = packsDir / "${pack.file}.part"
+        val temp = packsDir / "${pack.file}.${Uuid.random()}.part"
         val source = platform.openBundled(pack.file) ?: error("manifest lists ${pack.file} but it is not bundled")
         source.use { src -> fs.sink(temp).buffer().use { it.writeAll(src) } }
         fs.delete(target, mustExist = false)
@@ -71,6 +77,9 @@ class PackInstaller(
     }
 
     companion object {
+        /** One install at a time per process, however many AppGraph/PackInstaller instances exist. */
+        private val installLock = Mutex()
+
         const val MANIFEST = "manifest.json"
         const val DICTIONARY = "dictionary.sqlite"
         const val KANJI_PATH = "kanji-path.sqlite"
