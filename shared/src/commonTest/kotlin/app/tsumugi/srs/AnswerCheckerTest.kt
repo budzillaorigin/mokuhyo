@@ -63,4 +63,24 @@ class AnswerCheckerTest {
         assertEquals(3, AnswerChecker.damerauLevenshtein("", "abc"))
         assertEquals(2, AnswerChecker.damerauLevenshtein("kitten", "sittin"))
     }
+
+    // --- F-35 ---
+
+    @Test
+    fun meaningsInAnyScriptMatch() {
+        assertEquals(Verdict.CORRECT, AnswerChecker.checkMeaning("café", listOf("café")).verdict)
+        assertEquals(Verdict.CORRECT, AnswerChecker.checkMeaning("Café", listOf("café")).verdict) // decomposed é
+        assertEquals(Verdict.CORRECT, AnswerChecker.checkMeaning("ねこ", listOf("cat"), synonyms = listOf("ねこ")).verdict)
+        assertEquals(Verdict.CORRECT, AnswerChecker.checkMeaning("猫", listOf("cat"), synonyms = listOf("猫")).verdict)
+        assertEquals(Verdict.CORRECT, AnswerChecker.checkMeaning("naïve", listOf("naïve (adj.)")).verdict)
+        assertEquals(Verdict.WRONG, AnswerChecker.checkMeaning("犬", listOf("cat"), synonyms = listOf("猫")).verdict)
+    }
+
+    @Test
+    fun meaningNormalizationFoldsCaseAndWidth() {
+        assertEquals("café", AnswerChecker.normalizeMeaning("ＣＡＦé"))
+        assertEquals("eat", AnswerChecker.normalizeMeaning("ｔｏ　ｅａｔ"))
+        assertEquals("ねこ", AnswerChecker.normalizeMeaning("「ねこ」（口語）"))
+        assertEquals("well known", AnswerChecker.normalizeMeaning("well-known!"))
+    }
 }

@@ -7,7 +7,11 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
+import okio.FileSystem
+import okio.ForwardingFileSystem
+import okio.Path
 import okio.Path.Companion.toPath
+import okio.Source
 import okio.fakefilesystem.FakeFileSystem
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
@@ -124,6 +128,64 @@ class ModelManagerTest {
         mm.delete(split)
         assertFalse(mm.isInstalled(split))
         assertTrue(mm.isInstalled(small))
+    }
+
+    // --- F-13 ---
+
+    /** Counts reads of `.part` files: the hash must come from the bytes as they're written, not a second pass. */
+    private class CountingFs(delegate: FileSystem) : ForwardingFileSystem(delegate) {
+        var partReads = 0
+        override fun source(file: Path): Source {
+            if (file.name.endsWith(".part")) partReads++
+            return super.source(file)
+        }
+    }
+
+    @Test
+    fun hashesWhileWritingWithoutSecondPass() = runTest {
+        val counting = CountingFs(fs)
+        val mm = ModelManager(counting, dir, engine(), manifest)
+        assertIs<DownloadProgress.Done>(mm.download(split).toList().last())
+        assertEquals(0, counting.partReads)
+        assertTrue(mm.isInstalled(split))
+    }
+
+    @Test
+    fun resumeRehashesThePartialFileOnce() = runTest {
+        val counting = CountingFs(fs)
+        fs.createDirectories(dir / "small-llm")
+        fs.write(dir / "small-llm" / "m-00001-of-00002.gguf.part") { write(partA, 0, 123_456) }
+        val mm = ModelManager(counting, dir, engine(), manifest)
+        assertIs<DownloadProgress.Done>(mm.download(small).toList().last())
+        assertEquals(1, counting.partReads)
+        assertEquals(listOf<String?>("bytes=123456-"), ranges)
+        assertTrue(mm.isInstalled(small))
+    }
+
+    @Test
+    fun corruptResumedPartIsCaughtByIncrementalHash() = runTest {
+        fs.createDirectories(dir / "small-llm")
+        val bad = partA.copyOf(50_000).also { it[10] = (it[10] + 1).toByte() }
+        fs.write(dir / "small-llm" / "m-00001-of-00002.gguf.part") { write(bad) }
+        val mm = ModelManager(fs, dir, engine(), manifest)
+        val last = mm.download(small).toList().last()
+        assertIs<DownloadProgress.Failed>(last)
+        assertTrue("checksum" in last.message)
+    }
+
+    @Test
+    fun refusesToStartWithoutOneAndAHalfTimesTheSpace() = runTest {
+        var asked: Path? = null
+        val tight = ModelManager(fs, dir, engine(), manifest, freeBytes = { asked = it; partA.size * 3L / 2 - 1 })
+        val last = tight.download(small).toList().single()
+        assertIs<DownloadProgress.Failed>(last)
+        assertFalse(last.retryable)
+        assertTrue("Not enough storage" in last.message, last.message)
+        assertEquals(dir / "small-llm", asked)
+        assertTrue(ranges.isEmpty(), "no bytes requested")
+
+        val enough = ModelManager(fs, dir, engine(), manifest, freeBytes = { partA.size * 3L / 2 })
+        assertIs<DownloadProgress.Done>(enough.download(small).toList().last())
     }
 
     @Test

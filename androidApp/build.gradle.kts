@@ -21,6 +21,12 @@ android {
         compose = true
     }
 
+    // Content packs are stored uncompressed in the APK: the first-launch copy is a plain read (no inflate) and
+    // the APK/Play delivery compresses them anyway (F-16, D-052).
+    androidResources {
+        noCompress += "sqlite"
+    }
+
     buildTypes {
         release {
             // Not minified: the APK is sideloaded (docs/RELEASE.md §7) and most of its size is native code and

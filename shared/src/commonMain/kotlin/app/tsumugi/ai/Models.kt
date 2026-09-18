@@ -8,6 +8,10 @@ package app.tsumugi.ai
 interface LanguageModel {
     val id: String
     val isLocal: Boolean
+
+    /** Context window in tokens when known (local models); callers trim conversation history to fit it. */
+    val contextSize: Int? get() = null
+
     @Throws(Exception::class)
     suspend fun complete(request: CompletionRequest): CompletionResult
 }
@@ -29,7 +33,14 @@ data class CompletionRequest(
 data class CompletionResult(val text: String, val engine: String, val tokens: Int?)
 
 /** Engine failure (not loaded, network, HTTP error, cancelled). The gateway turns these into fallbacks. */
-class AiException(message: String, cause: Throwable? = null) : Exception(message, cause)
+open class AiException(message: String, cause: Throwable? = null) : Exception(message, cause)
+
+/**
+ * The engine stopped the generation on purpose (unload during a memory warning, a newer call superseding it, a
+ * timed-out call's cancel). Its partial output is not an answer, and [AiGateway] never retries it (F-10). Local
+ * bridges signal it with an error string starting with [LocalLlmBridge.CANCELLED].
+ */
+class AiCancelledException(message: String = LocalLlmBridge.CANCELLED) : AiException(message)
 
 // --- Speech -------------------------------------------------------------------------------------------------
 

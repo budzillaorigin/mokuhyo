@@ -276,7 +276,7 @@ private fun RoleplayTurnView(activity: Activity.RoleplayTurn, voices: Voices, in
                 val reply = s.reply(text)
                 lines = s.transcript
                 busy = false
-                voices.say(reply.japanese, "female")
+                reply?.let { voices.say(it.japanese, "female") }
             }
         })
     } else if (!busy) {

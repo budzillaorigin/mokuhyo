@@ -61,6 +61,12 @@ class AiGateway(
     private val settings: AiSettings = AiSettings(),
     private val context: ValidationContext = ValidationContext(),
 ) {
+    /** True when a model is configured right now (it may still fail on a given call). */
+    fun hasModel(): Boolean = model() != null
+
+    /** The configured model's context window, or [LocalLlamaModel.DEFAULT_CONTEXT] when unknown. */
+    fun contextSize(): Int = model()?.contextSize ?: LocalLlamaModel.DEFAULT_CONTEXT
+
     @Throws(Exception::class)
     suspend fun <I, O> run(task: PromptTask<I, O>, input: I): AiResult<O> {
         val lm = model() ?: return fallbackOr(task, input, "no AI model is set up")
@@ -79,6 +85,10 @@ class AiGateway(
                 return fallbackOr(task, input, "the model took too long")
             } catch (e: CancellationException) {
                 throw e
+            } catch (e: AiCancelledException) {
+                // Stopped on purpose (unload, superseded): partial output isn't an answer and a retry would just
+                // reload the model right after a memory warning (F-10). Never retried.
+                return fallbackOr(task, input, CANCELLED_REASON)
             } catch (e: Exception) {
                 return fallbackOr(task, input, e.message ?: "the model failed")
             }
@@ -112,6 +122,9 @@ class AiGateway(
     }
 
     companion object {
+        /** [AiResult.Fallback.reason] / [AiResult.Unavailable.reason] when the engine reported cancellation. */
+        const val CANCELLED_REASON = "the model was stopped"
+
         private val lenient = Json {
             ignoreUnknownKeys = true
             isLenient = true

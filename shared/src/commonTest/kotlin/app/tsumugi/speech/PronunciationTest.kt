@@ -180,6 +180,82 @@ class PronunciationTest {
         assertTrue(silent.notes.any { "Not enough" in it })
     }
 
+    // --- Shadowing DTW (F-22) ---
+
+    /** The v1 algorithm: full (n+1)×(m+1) matrix, then a traceback. Kept here as the reference. */
+    private fun fullMatrix(rp: FloatArray, re: FloatArray, ap: FloatArray, ae: FloatArray): Triple<Double, Double, Int> {
+        val n = rp.size
+        val m = ap.size
+        val band = kotlin.math.max(kotlin.math.abs(n - m), kotlin.math.max(n, m) / 4) + 2
+        val inf = Double.MAX_VALUE / 4
+        val cost = Array(n + 1) { DoubleArray(m + 1) { inf } }
+        cost[0][0] = 0.0
+        for (i in 1..n) {
+            val jFrom = kotlin.math.max(1, (i.toLong() * m / n).toInt() - band)
+            val jTo = kotlin.math.min(m, (i.toLong() * m / n).toInt() + band)
+            for (j in jFrom..jTo) {
+                val d = kotlin.math.abs(rp[i - 1] - ap[j - 1]) / 4.0 + kotlin.math.abs(re[i - 1] - ae[j - 1])
+                cost[i][j] = d + minOf(cost[i - 1][j - 1], cost[i - 1][j], cost[i][j - 1])
+            }
+        }
+        var i = n
+        var j = m
+        var pitch = 0.0
+        var dev = 0.0
+        var steps = 0
+        while (i > 0 && j > 0) {
+            pitch += kotlin.math.abs(rp[i - 1] - ap[j - 1])
+            dev += kotlin.math.abs(i.toDouble() / n - j.toDouble() / m)
+            steps++
+            val diag = cost[i - 1][j - 1]
+            val up = cost[i - 1][j]
+            val left = cost[i][j - 1]
+            when (minOf(diag, up, left)) {
+                diag -> { i--; j-- }
+                up -> i--
+                else -> j--
+            }
+        }
+        return Triple(pitch / kotlin.math.max(1, steps), dev / kotlin.math.max(1, steps), steps)
+    }
+
+    @Test
+    fun rollingDtwMatchesTheFullMatrix() {
+        val random = kotlin.random.Random(7)
+        for ((n, m) in listOf(40 to 40, 120 to 90, 75 to 160, 300 to 280, 5 to 9)) {
+            val rp = FloatArray(n) { (kotlin.math.sin(it / 7.0) * 3 + random.nextDouble(-0.5, 0.5)).toFloat() }
+            val re = FloatArray(n) { random.nextFloat() }
+            val ap = FloatArray(m) { (kotlin.math.sin(it / 6.0) * 3 + random.nextDouble(-0.5, 0.5)).toFloat() }
+            val ae = FloatArray(m) { random.nextFloat() }
+            val expected = fullMatrix(rp, re, ap, ae)
+            val actual = PronunciationAnalyzer.align(rp, re, ap, ae)
+            assertEquals(expected.third, actual.steps, "path length for $n×$m")
+            assertEquals(expected.first, actual.meanPitchDiff, 1e-9, "pitch for $n×$m")
+            assertEquals(expected.second, actual.meanDeviation, 1e-9, "pacing for $n×$m")
+        }
+    }
+
+    @Test
+    fun sixtySecondShadowingStaysSmallAndFast() {
+        // v1 allocated a 6001×6001 double matrix here (~290 MB) and ran out of memory on phones.
+        val parts = ArrayList<FloatArray>()
+        repeat(40) { k ->
+            parts += Signals.tone(1200, 4) { t -> 140 + 50 * kotlin.math.sin(5.0 * t + k) }
+            parts += Signals.silence(300)
+        }
+        val minute = Signals.withFloor(Signals.concat(*parts.toTypedArray()))
+        assertTrue(minute.size >= 60 * 16_000)
+        assertEquals(3, PronunciationAnalyzer.downsampleFactor(6_000))
+        assertEquals(1, PronunciationAnalyzer.downsampleFactor(2_000))
+        val mark = TimeSource.Monotonic.markNow()
+        val r = PronunciationAnalyzer.shadowingCompare(minute, minute)
+        val ms = mark.elapsedNow().inWholeMilliseconds
+        println("Shadowing: 2 × ${minute.size / 16} ms compared in $ms ms")
+        assertTrue(r.intonationScore >= 95, "intonation ${r.intonationScore}")
+        assertTrue(r.timingScore >= 90, "timing ${r.timingScore}")
+        assertTrue(ms < 15_000L * perfScale, "60 s compared in $ms ms")
+    }
+
     // --- Performance ---
 
     @Test

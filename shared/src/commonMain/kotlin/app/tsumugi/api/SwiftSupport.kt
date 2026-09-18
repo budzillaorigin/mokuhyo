@@ -18,8 +18,14 @@ import app.tsumugi.speaking.LlmEngine
 import app.tsumugi.speaking.SttEngine
 import app.tsumugi.speaking.TtsEngine
 import app.tsumugi.speech.PronunciationReport
+import app.tsumugi.speech.SynthesizedAudioFiles
 import app.tsumugi.study.activities.PomodoroSession
+import app.tsumugi.platform.excludeFromBackup
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.withContext
+import okio.Path.Companion.toPath
 
 /** A picker option: [key] is the enum name, stable across releases. */
 data class EngineChoice(val key: String, val label: String, val detail: String)
@@ -120,21 +126,33 @@ object SwiftSupport {
         }
     }
 
-    /** VOICEVOX audio written to a WAV file in the app's data folder; null means "use the system voice". */
+    /**
+     * VOICEVOX audio written to a new, uniquely named WAV file in `dataDir/tts`; null means "use the system voice".
+     * Each call gets its own file, so a synthesis never overwrites audio that is still playing (F-30). Call
+     * [deleteSynthesized] when playback ends and [cleanSynthesized] at launch; old leftovers are also pruned on
+     * each synthesis ([SynthesizedAudioFiles]).
+     */
     @Throws(Exception::class)
     suspend fun synthesizeToFile(graph: AppGraph, text: String, speed: Double): String? = try {
         graph.ai.synthesizer()?.synthesize(text, null, speed)?.let { bytes ->
-            val dir = graph.platform.dataDir / "tts"
-            graph.platform.fileSystem.createDirectories(dir)
-            val path = dir / "voicevox.wav"
-            graph.platform.fileSystem.write(path) { write(bytes) }
-            path.toString()
+            withContext(Dispatchers.IO) {
+                val files = ttsFiles(graph)
+                files.write(bytes).toString().also { excludeFromBackup(files.dir) }
+            }
         }
     } catch (e: CancellationException) {
         throw e
     } catch (e: Exception) {
         null
     }
+
+    /** Deletes one file returned by [synthesizeToFile] (after playback finished or was interrupted). */
+    fun deleteSynthesized(graph: AppGraph, path: String) = ttsFiles(graph).delete(path.toPath())
+
+    /** Deletes every synthesized file; call at startup (nothing is playing yet). */
+    fun cleanSynthesized(graph: AppGraph) = ttsFiles(graph).prune(olderThanMs = null)
+
+    private fun ttsFiles(graph: AppGraph) = SynthesizedAudioFiles(graph.platform.fileSystem, graph.platform.dataDir / "tts")
 
     @Throws(Exception::class)
     suspend fun analyzePronunciation(graph: AppGraph, sentence: String, transcript: String?, samples: FloatArray): PronunciationReport? = try {

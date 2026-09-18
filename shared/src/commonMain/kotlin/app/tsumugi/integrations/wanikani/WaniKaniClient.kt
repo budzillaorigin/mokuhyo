@@ -1,6 +1,7 @@
 package app.tsumugi.integrations.wanikani
 
-import io.ktor.client.HttpClient
+import app.tsumugi.net.NetTimeouts
+import app.tsumugi.net.tsumugiHttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.header
@@ -54,7 +55,7 @@ class WaniKaniClient(
     private val baseUrl: String = BASE_URL,
     private val requestsPerMinute: Int = 60,
 ) {
-    private val http = HttpClient(engine) { expectSuccess = false }
+    private val http = tsumugiHttpClient(engine, NetTimeouts.API)
     private val json = Json { ignoreUnknownKeys = true; explicitNulls = false }
     private val cache = initialCache.toMutableMap()
     private val limiterLock = Mutex()

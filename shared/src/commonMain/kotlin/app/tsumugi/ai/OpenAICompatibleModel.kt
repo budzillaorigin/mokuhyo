@@ -1,6 +1,8 @@
 package app.tsumugi.ai
 
-import io.ktor.client.HttpClient
+import app.tsumugi.net.EndpointHealth
+import app.tsumugi.net.NetTimeouts
+import app.tsumugi.net.tsumugiHttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.request.get
 import io.ktor.client.request.header
@@ -13,6 +15,7 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.Url
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
+import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -33,13 +36,17 @@ import kotlinx.serialization.json.put
 class OpenAICompatibleModel(
     engine: HttpClientEngine,
     baseUrl: String,
+    /** Sent only to [baseUrl] (CLAUDE.md rule 14): the LLM endpoint's own key, never another endpoint's. */
     private val apiKey: String?,
     private val model: String,
+    /** Shared "recently unreachable" cache so a dead server fails fast (F-11). Null = always try. */
+    private val health: EndpointHealth? = null,
+    timeouts: NetTimeouts = NetTimeouts.CHAT,
 ) : LanguageModel {
     override val id: String = model
     override val isLocal: Boolean = false
 
-    private val http = HttpClient(engine) { expectSuccess = false }
+    private val http = tsumugiHttpClient(engine, timeouts)
     private val json = Json { ignoreUnknownKeys = true }
     val baseUrl: String = normalize(baseUrl)
     private val engineLabel = "endpoint $model @ ${runCatching { Url(this.baseUrl).host }.getOrDefault(this.baseUrl)}"
@@ -51,15 +58,20 @@ class OpenAICompatibleModel(
     override suspend fun complete(request: CompletionRequest): CompletionResult {
         while (true) {
             val useMode = if (request.jsonSchema == null) StructuredMode.NONE else mode
+            health?.unreachable(baseUrl)?.let { throw AiException(it) }
             val response = try {
                 http.post("$baseUrl/chat/completions") {
                     auth()
                     contentType(ContentType.Application.Json)
                     setBody(body(request, useMode).toString())
                 }
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
+                health?.markDown(baseUrl)
                 throw AiException("can't reach $baseUrl: ${e.message}", e)
             }
+            health?.markUp(baseUrl)
             if (!response.status.isSuccess()) {
                 // Servers without structured-output support reject the parameter: step down and retry.
                 if (response.status.value in 400..422 && useMode != StructuredMode.NONE) {
@@ -75,11 +87,16 @@ class OpenAICompatibleModel(
     /** GET /v1/models: the model ids the server offers (used when saving endpoint settings). */
     @Throws(Exception::class)
     suspend fun probe(): List<String> {
+        // An explicit "Test connection" always tries, and its outcome updates the cache.
         val response = try {
             http.get("$baseUrl/models") { auth() }
+        } catch (e: CancellationException) {
+            throw e
         } catch (e: Exception) {
+            health?.markDown(baseUrl)
             throw AiException("can't reach $baseUrl: ${e.message}", e)
         }
+        health?.markUp(baseUrl)
         if (!response.status.isSuccess()) throw AiException("server returned ${response.status.value}")
         return json.parseToJsonElement(response.bodyAsText()).jsonObject["data"]?.jsonArray
             ?.mapNotNull { it.jsonObject["id"]?.jsonPrimitive?.contentOrNull }.orEmpty()

@@ -81,7 +81,15 @@ data class Token(
     val dictionaryForm: String?,
     val reading: String?,
     val deinflection: List<String> = emptyList(),
+    /**
+     * Reading of the surface itself, when the tokenizer knows it (the lattice tokenizer does: 行きました →
+     * いきました). Null for the longest-match tokenizer, whose [reading] is the dictionary form's.
+     */
+    val surfaceReading: String? = null,
 )
+
+/** A dictionary form as the morphological analyzer reports it; [reading] is its kana reading when known. */
+data class Lemma(val form: String, val reading: String?)
 
 data class ExampleSentence(val id: Long, val japanese: String, val english: String, val jlpt: Int?)
 

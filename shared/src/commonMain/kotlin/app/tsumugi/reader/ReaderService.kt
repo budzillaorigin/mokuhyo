@@ -3,6 +3,9 @@ package app.tsumugi.reader
 import app.tsumugi.api.AppGraph
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
 import okio.Path.Companion.toPath
 
@@ -11,6 +14,9 @@ import okio.Path.Companion.toPath
  * Network importers (URL, RSS, Aozora) run only when the learner asks; everything they fetch stays on the
  * device (never synced, BRIEF §4).
  */
+/** Difficulty analysis of [documentId] in progress: [fraction] of the sampled text done. */
+data class AnalysisProgress(val documentId: String, val fraction: Double)
+
 class ReaderService(private val graph: AppGraph) {
     val repository: ReaderRepository by lazy { ReaderRepository(graph.userDatabase) }
     private val web: UrlImporter by lazy { UrlImporter(graph.platform.httpEngine()) }
@@ -19,14 +25,27 @@ class ReaderService(private val graph: AppGraph) {
 
     private var analyzerCache: ReaderAnalyzer? = null
 
-    /** Tokenizing/analysis needs the dictionary pack; null without it. */
+    private val _analysisProgress = MutableStateFlow<AnalysisProgress?>(null)
+
+    /** The document being analyzed after an import, and how far along (0..1); null when idle (rule 15). */
+    val analysisProgress: StateFlow<AnalysisProgress?> = _analysisProgress.asStateFlow()
+
+    /**
+     * Tokenizing/analysis needs the dictionary pack; null without it. Tokens come from the morphological analyzer
+     * (F-26); only a build without the tokenizer pack falls back to the dictionary's longest-match tokenizer.
+     */
     @Throws(Exception::class)
     suspend fun analyzer(): ReaderAnalyzer? {
         analyzerCache?.let { return it }
         val dictionary = graph.dictionary() ?: return null
         val srs = graph.configuredSrs()
-        return ReaderAnalyzer(dictionary, stages = { srs.stages() }, grammarPatterns = { grammarPatterns() })
-            .also { analyzerCache = it }
+        val morphology = graph.analyzer()
+        val analyzer = if (morphology != null) {
+            ReaderAnalyzer(morphology, dictionary, stages = { srs.stages() }, grammarPatterns = { grammarPatterns() })
+        } else {
+            ReaderAnalyzer(dictionary, stages = { srs.stages() }, grammarPatterns = { grammarPatterns() })
+        }
+        return analyzer.also { analyzerCache = it }
     }
 
     @Throws(Exception::class)
@@ -71,7 +90,14 @@ class ReaderService(private val graph: AppGraph) {
 
     private suspend fun analyzeLater(id: String) {
         val doc = repository.document(id) ?: return
-        analyzer()?.analyzeAndSave(repository, doc)
+        val analyzer = analyzer() ?: return
+        _analysisProgress.value = AnalysisProgress(id, 0.0)
+        try {
+            val analysis = analyzer.analyzeWithProgress(doc.body) { _analysisProgress.value = AnalysisProgress(id, it) }
+            repository.saveAnalysis(doc.id, analysis)
+        } finally {
+            _analysisProgress.value = null
+        }
     }
 
     private suspend fun grammarPatterns(): List<Pair<String, Regex>> = graph.grammar()?.detectionPatterns().orEmpty()

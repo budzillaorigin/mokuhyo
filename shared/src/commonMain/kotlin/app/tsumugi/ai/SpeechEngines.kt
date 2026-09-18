@@ -1,9 +1,12 @@
 package app.tsumugi.ai
 
-import io.ktor.client.HttpClient
+import app.tsumugi.net.EndpointHealth
+import app.tsumugi.net.NetTimeouts
+import app.tsumugi.net.tsumugiHttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.request.forms.formData
 import io.ktor.client.request.forms.submitFormWithBinaryData
+import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
@@ -15,6 +18,7 @@ import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
@@ -40,6 +44,15 @@ interface LocalSttBridge {
     fun transcribe(samples: FloatArray, language: String, onDone: (String?, String?) -> Unit)
 }
 
+/**
+ * Optional capability of a [LocalSttBridge]: stop the running transcription. The bridge then calls the pending
+ * `onDone(null, "cancelled…")` (see [LocalLlmBridge.CANCELLED], tools/models/README.md). A separate interface so
+ * existing Swift bridges keep compiling until they adopt it.
+ */
+interface CancellableSttBridge {
+    fun cancel()
+}
+
 /** On-device Whisper through [LocalSttBridge]. */
 class WhisperRecognizer(
     private val bridge: LocalSttBridge,
@@ -59,9 +72,16 @@ class WhisperRecognizer(
         }
         val samples = FloatArray(pcm16kMono.size) { pcm16kMono[it] / 32768f }
         val jsonText = suspendCancellableCoroutine { cont ->
+            // Leaving the screen (or a timeout) cancels the coroutine: stop the native work too, and ignore the
+            // late callback (F-41).
+            cont.invokeOnCancellation { (bridge as? CancellableSttBridge)?.cancel() }
             bridge.transcribe(samples, language) { result, error ->
                 if (!cont.isActive) return@transcribe
-                if (result != null) cont.resume(result) else cont.resumeWithException(AiException(error ?: "transcription failed"))
+                when {
+                    result != null -> cont.resume(result)
+                    LocalLlmBridge.isCancelled(error) -> cont.resumeWithException(AiCancelledException(error ?: LocalLlmBridge.CANCELLED))
+                    else -> cont.resumeWithException(AiException(error ?: "transcription failed"))
+                }
             }
         }
         val segments = parseSegments(jsonText)
@@ -85,15 +105,19 @@ class WhisperRecognizer(
 class WhisperEndpointRecognizer(
     engine: HttpClientEngine,
     baseUrl: String,
+    /** The STT endpoint's own key (`AiService.sttEndpointKey`), never the LLM key (CLAUDE.md rule 14). */
     private val apiKey: String?,
     private val model: String = "whisper-1",
+    private val health: EndpointHealth? = null,
+    timeouts: NetTimeouts = NetTimeouts.STT,
 ) : SpeechRecognizer {
-    private val http = HttpClient(engine) { expectSuccess = false }
+    private val http = tsumugiHttpClient(engine, timeouts)
     private val base = OpenAICompatibleModel.normalize(baseUrl)
 
     @Throws(Exception::class)
     override suspend fun transcribe(pcm16kMono: ShortArray, language: String): Transcript {
         val wav = Wav.encode(pcm16kMono, SAMPLE_RATE)
+        health?.unreachable(base)?.let { throw AiException(it) }
         val response = try {
             http.submitFormWithBinaryData(
                 url = "$base/audio/transcriptions",
@@ -107,9 +131,13 @@ class WhisperEndpointRecognizer(
                     })
                 },
             ) { apiKey?.takeIf { it.isNotBlank() }?.let { header(HttpHeaders.Authorization, "Bearer $it") } }
+        } catch (e: CancellationException) {
+            throw e
         } catch (e: Exception) {
+            health?.markDown(base)
             throw AiException("can't reach $base: ${e.message}", e)
         }
+        health?.markUp(base)
         if (!response.status.isSuccess()) throw AiException("server returned ${response.status.value}")
         val root = Json.parseToJsonElement(response.bodyAsText()).jsonObject
         val segments = (root["segments"] as? kotlinx.serialization.json.JsonArray)?.map { e ->
@@ -129,16 +157,43 @@ class WhisperEndpointRecognizer(
     }
 }
 
-/** Self-hosted VOICEVOX engine (free, optional): `POST /audio_query` then `POST /synthesis`. */
-class VoicevoxSynthesizer(engine: HttpClientEngine, baseUrl: String, private val speaker: Int) : Synthesizer {
-    private val http = HttpClient(engine) { expectSuccess = false }
+/**
+ * Self-hosted VOICEVOX engine (free, optional): `POST /audio_query` then `POST /synthesis`. Bounded by
+ * [NetTimeouts.VOICEVOX_SYNTH] (15 s); [probe] by [NetTimeouts.VOICEVOX_PROBE] (3 s). After a failure the host is
+ * skipped for a minute ([EndpointHealth]) so the system voice speaks immediately.
+ */
+class VoicevoxSynthesizer(
+    engine: HttpClientEngine,
+    baseUrl: String,
+    private val speaker: Int,
+    /** The TTS endpoint's own key (`AiService.ttsEndpointKey`), e.g. for a reverse proxy; never the LLM key. */
+    private val apiKey: String? = null,
+    private val health: EndpointHealth? = null,
+    timeouts: NetTimeouts = NetTimeouts.VOICEVOX_SYNTH,
+    probeTimeouts: NetTimeouts = NetTimeouts.VOICEVOX_PROBE,
+) : Synthesizer {
+    private val http = tsumugiHttpClient(engine, timeouts)
+    private val probeHttp = tsumugiHttpClient(engine, probeTimeouts)
     private val base = baseUrl.trim().trimEnd('/')
+
+    /** True when the engine answers `GET /version` within the probe timeout. */
+    @Throws(Exception::class)
+    suspend fun probe(): Boolean = try {
+        probeHttp.get("$base/version") { auth() }.status.isSuccess().also { if (it) health?.markUp(base) }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        health?.markDown(base)
+        false
+    }
 
     @Throws(Exception::class)
     override suspend fun synthesize(text: String, voice: String?, speed: Double): ByteArray? {
         val speakerId = voice?.toIntOrNull() ?: speaker
+        health?.unreachable(base)?.let { throw AiException(it) }
         return try {
             val queryResponse = http.post("$base/audio_query") {
+                auth()
                 parameter("text", text)
                 parameter("speaker", speakerId)
             }
@@ -146,17 +201,25 @@ class VoicevoxSynthesizer(engine: HttpClientEngine, baseUrl: String, private val
             val query = Json.parseToJsonElement(queryResponse.bodyAsText()).jsonObject
             val tuned = JsonObject(query + ("speedScale" to JsonPrimitive(speed)))
             val audio = http.post("$base/synthesis") {
+                auth()
                 parameter("speaker", speakerId)
                 contentType(ContentType.Application.Json)
                 setBody(tuned.toString())
             }
             if (!audio.status.isSuccess()) throw AiException("VOICEVOX synthesis returned ${audio.status.value}")
-            audio.bodyAsBytes()
+            audio.bodyAsBytes().also { health?.markUp(base) }
         } catch (e: AiException) {
             throw e
+        } catch (e: CancellationException) {
+            throw e
         } catch (e: Exception) {
+            health?.markDown(base)
             throw AiException("can't reach VOICEVOX at $base: ${e.message}", e)
         }
+    }
+
+    private fun io.ktor.client.request.HttpRequestBuilder.auth() {
+        apiKey?.takeIf { it.isNotBlank() }?.let { header(HttpHeaders.Authorization, "Bearer $it") }
     }
 }
 

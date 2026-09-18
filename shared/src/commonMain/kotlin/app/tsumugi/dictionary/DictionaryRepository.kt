@@ -194,6 +194,43 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         return null
     }
 
+    /**
+     * The best entry for each lemma the morphological analyzer produced (reader glosses, F-26): entries with a
+     * kanji or kana form equal to [Lemma.form], preferring one that also has [Lemma.reading] as a kana form, then
+     * common words, then frequency rank. Lemmas with no entry are absent from the map. Batched: a few queries per
+     * call however many lemmas.
+     */
+    @Throws(Exception::class)
+    suspend fun entriesForLemmas(lemmas: Collection<Lemma>): Map<Lemma, Long> = io { entriesForLemmasBlocking(lemmas) }
+
+    internal fun entriesForLemmasBlocking(lemmas: Collection<Lemma>): Map<Lemma, Long> {
+        if (lemmas.isEmpty()) return emptyMap()
+        val forms = lemmas.map { normalizeNfc(it.form) }.distinct()
+        val kana = (forms.map(Kana::toHiragana) + lemmas.mapNotNull { it.reading?.let(Kana::toHiragana) }).distinct()
+        val byText = HashMap<String, MutableSet<Long>>()
+        forms.chunked(SQL_CHUNK).forEach { f ->
+            q.formsExact(f, emptyList()).executeAsList().forEach { byText.getOrPut(it.text) { mutableSetOf() } += it.entry_id }
+        }
+        kana.chunked(SQL_CHUNK).forEach { k ->
+            q.formsExact(emptyList(), k).executeAsList().forEach { byText.getOrPut(it.text) { mutableSetOf() } += it.entry_id }
+        }
+        val ids = byText.values.flatten().distinct()
+        if (ids.isEmpty()) return emptyMap()
+        val meta = ids.chunked(SQL_CHUNK).flatMap { q.entriesByIds(it).executeAsList() }.associateBy { it.id }
+        val out = HashMap<Lemma, Long>()
+        for (lemma in lemmas) {
+            val form = normalizeNfc(lemma.form)
+            val candidates = byText[form].orEmpty() + byText[Kana.toHiragana(form)].orEmpty()
+            if (candidates.isEmpty()) continue
+            val withReading = lemma.reading?.let { byText[Kana.toHiragana(it)] }.orEmpty()
+            val best = candidates.filter { it in meta }.minWithOrNull(
+                compareBy<Long>({ it !in withReading }, { meta[it]?.is_common == 0L }, { meta[it]?.rank ?: Long.MAX_VALUE }),
+            ) ?: continue
+            out[lemma] = best
+        }
+        return out
+    }
+
     // --- Entries ----------------------------------------------------------------------------------------
 
     @Throws(Exception::class)
