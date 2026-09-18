@@ -43,5 +43,6 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | JLPT vocabulary levels (unofficial) | Jonathan Waller's JLPT Resources (tanos.co.uk), mapped to JMdict ids by stephenmk/yomitan-jlpt-vocab | CC BY (Waller), CC BY-SA 4.0 (mapping) | JLPT lists © Jonathan Waller; JMdict mapping by stephenmk. There is no official JLPT list since 2010. |
 | JLPT kanji levels (unofficial) | davidluzgouveia/kanji-data (`jlpt_new` field only; no WaniKani fields are used) | MIT | © David Gouveia. |
 | Example sentences + word index | Tatoeba, https://tatoeba.org | CC BY 2.0 FR | Example sentences from the Tatoeba project. |
+| Tokenizer lexicon (`tokenizer.sqlite`) | mecab-ipadic 2.7.0-20070801 | NAIST/ICOT free license (BSD-style) | © 2000–2003 Nara Institute of Science and Technology; entries from ICOT Free Software. Use, reproduction and distribution permitted; the copyright notice and the NO WARRANTY conditions must accompany copies. |
 
 Word frequency ranks are computed by `tools/packs/build_sentences.py` from Tatoeba's indexed corpus.

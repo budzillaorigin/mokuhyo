@@ -84,5 +84,6 @@ class PackInstaller(
         const val DICTIONARY = "dictionary.sqlite"
         const val KANJI_PATH = "kanji-path.sqlite"
         const val GRAMMAR = "grammar.sqlite"
+        const val TOKENIZER = "tokenizer.sqlite"
     }
 }

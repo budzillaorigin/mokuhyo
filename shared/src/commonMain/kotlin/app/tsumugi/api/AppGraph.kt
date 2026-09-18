@@ -8,6 +8,9 @@ import app.tsumugi.dictionary.db.DictionaryDatabase
 import app.tsumugi.grammar.GrammarPoint
 import app.tsumugi.grammar.GrammarService
 import app.tsumugi.grammar.db.GrammarDatabase
+import app.tsumugi.jp.tokenizer.LatticeTokenizer
+import app.tsumugi.jp.tokenizer.MorphologicalAnalyzer
+import app.tsumugi.tokenizer.db.TokenizerDatabase
 import app.tsumugi.integrations.ImportService
 import app.tsumugi.path.db.PathDatabase
 import app.tsumugi.platform.PlatformServices
@@ -55,6 +58,14 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     private var writingService: WritingService? = null
+    private var tokenizer: LatticeTokenizer? = null
+
+    /** The IPADIC lattice analyzer (BRIEF §5.2), or null when the tokenizer pack isn't installed. */
+    suspend fun analyzer(): MorphologicalAnalyzer? = lock.withLock {
+        tokenizer ?: openPack(PackInstaller.TOKENIZER) {
+            LatticeTokenizer(TokenizerDatabase(platform.packDriver(TokenizerDatabase.Schema, PackInstaller.TOKENIZER)))
+        }?.also { tokenizer = it }
+    }
 
     /** Writing practice and handwriting search, or null without the dictionary pack (it holds KanjiVG). */
     suspend fun writing(): WritingService? {
