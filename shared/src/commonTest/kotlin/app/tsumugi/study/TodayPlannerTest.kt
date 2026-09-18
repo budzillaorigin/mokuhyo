@@ -31,7 +31,14 @@ class TodayPlannerTest {
     @Test
     fun blocksInOrderWithBudget() = runTest {
         val plan = planner.plan(dueReviews = 50, path = status(), grammarAvailable = 3)
-        assertEquals(listOf(TodayBlockKind.REVIEWS, TodayBlockKind.LESSONS, TodayBlockKind.GRAMMAR), plan.blocks.map { it.kind })
+        assertEquals(
+            listOf(TodayBlockKind.REVIEWS, TodayBlockKind.LESSONS, TodayBlockKind.GRAMMAR, TodayBlockKind.IMMERSION),
+            plan.blocks.map { it.kind },
+            "no reader text, dialogue or grammar examples: immersion shows its empty state, no shadowing",
+        )
+        val immersion = plan.block(TodayBlockKind.IMMERSION)!!
+        assertEquals(null, immersion.launch)
+        assertEquals(0, immersion.minutes)
         assertEquals(20, plan.budgetMinutes)
         assertEquals(LearningPhase.FOUNDATIONS, plan.phase)
         assertEquals(6, plan.blocks[1].count, "20-minute budget → 6 lessons")

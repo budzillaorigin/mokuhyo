@@ -22,6 +22,8 @@ object PromptLibrary {
         OpiInterviewerTurn(),
         OpiRate(),
         JlptExplainItem(),
+        FreeTalkTurn(),
+        GradeProduction(),
     )
 
     val names: List<String> get() = all.map { it.name }

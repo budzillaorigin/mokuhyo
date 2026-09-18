@@ -14,6 +14,7 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
+import kotlinx.datetime.plus
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Instant
 import kotlin.test.Test
@@ -58,7 +59,7 @@ class StatsServiceTest {
     }
 
     @Test
-    fun missedDayBreaksStreakUnlessOnVacation() = runTest {
+    fun missedDayBreaksStreakAndVacationDoesNotRevive() = runTest {
         setUp()
         reviewOnDay()
         clock.advance(1.days); reviewOnDay()
@@ -69,7 +70,63 @@ class StatsServiceTest {
         stats.setVacation(true)
         clock.advance(2.days)
         assertTrue(stats.streak().onVacation)
-        assertTrue(stats.streak().current >= 1, "vacation days count")
+        assertEquals(0, stats.streak().current, "vacation freezes; it never adds days (BRIEF_V2 G-11)")
+    }
+
+    /** BRIEF_V2 G-11: a freeze day neither breaks nor extends the streak. */
+    @Test
+    fun vacationDaysAreFreezesNotStudyDays() = runTest {
+        setUp()
+        repeat(3) { reviewOnDay(); clock.advance(1.days) } // days 1–3 studied; now day 4 morning
+        stats.setVacation(true)
+        clock.advance(5.days) // days 4–9 on vacation
+        val during = stats.streak()
+        assertEquals(3, during.current, "vacation neither breaks nor extends the streak")
+        assertTrue(during.frozenToday)
+
+        stats.setVacation(false) // writes days 4–9 as freezes
+        assertEquals(6, stats.freezeDays().size)
+        reviewOnDay() // day 9 studied
+        assertEquals(4, stats.streak().current)
+        clock.advance(1.days); reviewOnDay() // day 10
+        assertEquals(5, stats.streak().current)
+        assertEquals(5, stats.streak().longest)
+    }
+
+    @Test
+    fun freezeBridgesAMissedDayWithinTheMonthlyAllowance() = runTest {
+        setUp()
+        reviewOnDay() // Sep 1
+        clock.advance(1.days); reviewOnDay() // Sep 2
+        clock.advance(2.days) // Sep 4: Sep 3 missed
+        assertEquals(0, stats.streak().current)
+        assertEquals(StatsService.FREEZES_PER_MONTH, stats.streak().freezesLeft)
+
+        val today = clock.now().toLocalDateTime(TimeZone.UTC).date
+        assertEquals(FreezeResult.FROZEN, stats.freeze(today.minus(DatePeriod(days = 1))))
+        assertEquals(2, stats.streak().current, "the frozen day bridges the gap without adding to it")
+        assertEquals(FreezeResult.ALREADY_FROZEN, stats.freeze(today.minus(DatePeriod(days = 1))))
+        assertEquals(FreezeResult.OUT_OF_RANGE, stats.freeze(today.minus(DatePeriod(days = 3))))
+
+        reviewOnDay()
+        assertEquals(3, stats.streak().current)
+        assertEquals(FreezeResult.ALREADY_STUDIED, stats.freeze(today))
+        assertEquals(FreezeResult.FROZEN, stats.freeze(today.plus(DatePeriod(days = 1))))
+        assertEquals(0, stats.streak().freezesLeft)
+        assertEquals(FreezeResult.NO_FREEZES_LEFT, stats.freeze(today.plus(DatePeriod(days = 2))))
+    }
+
+    @Test
+    fun streakArithmetic() {
+        val d = { day: Int -> kotlinx.datetime.LocalDate(2026, 9, day) }
+        // Studied 1,2,4 with 3 frozen: current 3 on day 4, longest 3.
+        assertEquals(3 to 3, StatsService.streakOf(setOf(d(1), d(2), d(4)), setOf(d(3)), d(4)))
+        // Today (5) not studied yet: still 3.
+        assertEquals(3 to 3, StatsService.streakOf(setOf(d(1), d(2), d(4)), setOf(d(3)), d(5)))
+        // A plain gap breaks it.
+        assertEquals(1 to 2, StatsService.streakOf(setOf(d(1), d(2), d(4)), emptySet(), d(4)))
+        // Only freezes: no streak.
+        assertEquals(0 to 0, StatsService.streakOf(emptySet(), setOf(d(1), d(2)), d(3)))
     }
 
     @Test

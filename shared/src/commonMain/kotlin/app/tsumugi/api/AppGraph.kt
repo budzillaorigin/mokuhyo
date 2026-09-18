@@ -41,8 +41,15 @@ import app.tsumugi.study.Onboarding
 import app.tsumugi.study.ReminderPlanner
 import app.tsumugi.study.ReviewSession
 import app.tsumugi.study.StatsService
+import app.tsumugi.study.LearnerLevel
+import app.tsumugi.study.MinimalPairService
+import app.tsumugi.study.TodayBlockKind
+import app.tsumugi.study.TodayCandidateSource
 import app.tsumugi.study.TodayPlan
 import app.tsumugi.study.TodayPlanner
+import app.tsumugi.speaking.ConversationService
+import app.tsumugi.speaking.FreeTalkSession
+import app.tsumugi.sync.LeaderboardService
 import app.tsumugi.study.WritingService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -169,14 +176,39 @@ class AppGraph(val platform: PlatformServices) {
         syncEngine = null
     }
     private val planner: TodayPlanner by lazy { TodayPlanner(userDatabase, settings) }
+    private val todayCandidates by lazy {
+        TodayCandidateSource(userDatabase, srs, { reader.documents() }, { practice() }, { grammar() }, { dictionary() != null })
+    }
 
-    /** Today's plan (BRIEF §5.6) from the current queue, path and grammar state. */
+    /** Today's plan (BRIEF §5.6, BRIEF_V2 G-01) from the current queue, path, grammar and the installed packs. */
     @Throws(Exception::class)
     suspend fun today(): TodayPlan {
         val srs = configuredSrs()
         val grammarLeft = grammar()?.lessonQueue(3)?.size ?: 0
-        return planner.plan(srs.dueCount(), path()?.status(), grammarLeft)
+        val status = path()?.status()
+        return planner.plan(srs.dueCount(), status, grammarLeft, todayCandidates.collect(status?.currentLevel))
     }
+
+    /** Records a finished Today block (weekly challenges count these; G-01/G-11). */
+    @Throws(Exception::class)
+    suspend fun markTodayBlockDone(kind: TodayBlockKind) = planner.markDone(kind)
+
+    /** Stored conversations: rolling level estimate, recurring errors, weekly patterns (G-02). */
+    val conversations: ConversationService by lazy { ConversationService(userDatabase, device.deviceId) }
+
+    /** Free talk at the learner's rolling level (G-02); `start()` returns null without a model. */
+    @Throws(Exception::class)
+    suspend fun freeTalk(topic: String? = null): FreeTalkSession {
+        val fallback = path()?.status()?.currentLevel?.let { LearnerLevel.jlptForPathLevel(it) } ?: 4
+        return FreeTalkSession(ai.gateway(), conversations, conversations.partnerLevel(fallback), topic)
+    }
+
+    /** Minimal pairs on FSRS (G-06), or null without the practice pack. */
+    @Throws(Exception::class)
+    suspend fun minimalPairDrill(): MinimalPairService? = practice()?.let { MinimalPairService(it, configuredSrs()) }
+
+    /** The opt-in leaderboard on the learner's sync server (G-11); off by default. */
+    val leaderboard: LeaderboardService by lazy { LeaderboardService({ syncAccount.client() }, { syncAccount.e2eEnabled }, settings) }
 
     private val tokenizerSlot = PackSlot<LatticeTokenizer>()
     private val writingSlot = PackSlot<WritingService>()
@@ -204,7 +236,10 @@ class AppGraph(val platform: PlatformServices) {
 
     /** Next grammar lesson batch (1–3 points) or empty when the pack is missing or everything is learned. */
     @Throws(Exception::class)
-    suspend fun grammarLessons(): List<GrammarPoint> = grammar()?.lessonQueue((settings.int(SettingsRepository.DAILY_BUDGET_MINUTES, TodayPlanner.DEFAULT_BUDGET) / 20).coerceIn(1, 3)).orEmpty()
+    suspend fun grammarLessons(): List<GrammarPoint> = grammar()?.lessonQueue(
+        (settings.int(SettingsRepository.DAILY_BUDGET_MINUTES, TodayPlanner.DEFAULT_BUDGET) / 20).coerceIn(1, 3),
+        settings.get(SettingsRepository.GRAMMAR_PATH)?.takeIf { it.isNotBlank() && it != "jlpt" },
+    ).orEmpty()
 
     /** Speaking/listening practice pack (scenarios, OPI banks, dialogues, minimal pairs), or null when missing. */
     @Throws(Exception::class)
@@ -296,7 +331,11 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     @Throws(Exception::class)
-    suspend fun startReviews(limit: Int = 500): ReviewSession = ReviewSession.start(configuredSrs(), grammar(), limit)
+    suspend fun startReviews(limit: Int = 500): ReviewSession = ReviewSession.start(
+        configuredSrs(), grammar(), limit,
+        grammarVariety = settings.bool(SettingsRepository.GRAMMAR_REVIEW_VARIETY, true),
+        gateway = ai.gateway(),
+    )
 
     @Throws(Exception::class)
     suspend fun startLessons(): LessonSession? {

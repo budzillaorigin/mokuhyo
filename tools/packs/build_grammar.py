@@ -107,6 +107,27 @@ def source_order(path: Path) -> tuple[int, int, str]:
     return (0, 0, path.stem) if level >= 3 else (1, -level, path.stem)
 
 
+def load_textbooks(ids: set[str]) -> tuple[list[dict], dict[str, dict[str, str]]]:
+    """Textbook chapter mappings (textbooks.json; chapter numbers only, DECISIONS D-104). Returns the books that map
+    at least one point (id/title/unit, for pack_meta "textbooks") and point id -> {book id: chapter}."""
+    f = SOURCES / "textbooks.json"
+    if not f.exists():
+        return [], {}
+    chapters: dict[str, dict[str, str]] = {}
+    books = []
+    for book in json.loads(f.read_text(encoding="utf-8"))["books"]:
+        mapped = {pid: ch for pid, ch in book["chapters"].items() if pid in ids}
+        unknown = set(book["chapters"]) - ids
+        if unknown:
+            log(f"textbooks: {book['id']} maps unknown points {sorted(unknown)[:5]}")
+        for pid, ch in mapped.items():
+            chapters.setdefault(pid, {})[book["id"]] = ch
+        if mapped:
+            books.append({"id": book["id"], "title": book["title"], "unit": book.get("unit", "Chapter")})
+        log(f"textbooks: {book['id']} maps {len(mapped)} points")
+    return books, chapters
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--level", help="only this level, e.g. N5 (default: every source file)")
@@ -126,6 +147,7 @@ def main() -> None:
     ids = {p["id"] for p in points}
     aliases_file = SOURCES / "aliases.json"
     aliases = json.loads(aliases_file.read_text(encoding="utf-8")) if aliases_file.exists() else {}
+    books, chapters = load_textbooks(ids)
     db.executemany(
         "INSERT OR IGNORE INTO grammar_alias VALUES (?,?)",
         ((normalize_title(alias), pid) for pid, names in aliases.items() if pid in ids for alias in names),
@@ -139,7 +161,7 @@ def main() -> None:
             "INSERT INTO grammar_point VALUES (?,?,?,?,?,?,?,?,?,?,?)",
             (
                 p["id"], p["jlpt"], p["order"], nfc(p["title"]), p["structure"], p["meaning"], p["nuance"],
-                dumps(p.get("mistakes", [])), dumps(p.get("related", [])), dumps(p.get("textbooks", {})),
+                dumps(p.get("mistakes", [])), dumps(p.get("related", [])), dumps({**p.get("textbooks", {}), **chapters.get(p["id"], {})}),
                 p.get("source", "llm"),  # "verified" once reviewed with items/review.py
             ),
         )
@@ -173,7 +195,7 @@ def main() -> None:
             ((p["id"], i, *ex) for i, ex in enumerate(examples)),
         )
 
-    set_meta(db, pack="grammar", pack_version=GRAMMAR_PACK_VERSION, points=str(len(points)))
+    set_meta(db, pack="grammar", pack_version=GRAMMAR_PACK_VERSION, points=str(len(points)), textbooks=dumps(books))
     finish_pack(db)
     log(f"grammar: {len(points)} points, {tatoeba_total} Tatoeba examples")
 

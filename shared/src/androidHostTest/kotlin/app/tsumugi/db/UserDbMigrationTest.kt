@@ -47,8 +47,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        // 3 + the Phase 10 migrations (4.sqm: media, reader ruby, content review; D-110…D-118).
-        assertTrue(TsumugiDatabase.Schema.version >= 5L)
+        assertEquals(5L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -80,7 +79,15 @@ class UserDbMigrationTest {
         // v2 -> v3 (2.sqm): the device-local in-progress exam table (F-24).
         assertNull(db.examAttemptQueries.inProgress().executeAsOneOrNull())
 
-        // 4.sqm: device-local media tables, reader ruby, content-review verdicts; none of them syncs.
+        // v3 -> v4 (3.sqm): conversations, finished Today blocks and streak freezes, all union-synced (G-01/G-02/G-11).
+        val before = driver.long("SELECT count(*) FROM change_log")!!
+        db.conversationQueries.insertConversation("c1", "FREE_TALK", null, 0, 1, "N4", "[]", null, "[]", null, "d")
+        db.studyQueries.markBlockDone("2026-09-18", "SHADOWING", 5)
+        db.studyQueries.insertFreeze("2026-09-19", "FREEZE", 5)
+        assertEquals(before + 3, driver.long("SELECT count(*) FROM change_log"))
+        assertEquals(1, db.conversationQueries.recentConversations(10).executeAsList().size)
+
+        // v4 -> v5 (4.sqm, D-110…D-118): device-local media tables, reader ruby, content-review verdicts; none syncs.
         assertTrue(db.mediaQueries.allRecordings().executeAsList().isEmpty())
         assertNull(db.readerQueries.questionsFor("x").executeAsOneOrNull())
         assertTrue(db.contentReviewQueries.allVerdicts().executeAsList().isEmpty())
