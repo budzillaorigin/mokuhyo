@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val nativeEnabled = providers.gradleProperty("tsumugi.native").orNull?.toBoolean() ?: true
+
 android {
     namespace = "app.tsumugi.android"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -22,6 +24,25 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+        }
+    }
+
+    // On-device LLM + STT: llama.cpp and whisper.cpp built from pinned sources (src/main/cpp/CMakeLists.txt).
+    // On by default; `-Ptsumugi.native=false` skips the native build for quick UI-only iterations. The bridges
+    // then report "native inference unavailable" rather than crashing.
+    if (nativeEnabled) {
+        ndkVersion = "29.0.14206865"
+        defaultConfig {
+            ndk { abiFilters += "arm64-v8a" }
+            externalNativeBuild {
+                cmake { arguments += listOf("-DCMAKE_BUILD_TYPE=Release", "-DANDROID_STL=c++_static") }
+            }
+        }
+        externalNativeBuild {
+            cmake {
+                path = file("src/main/cpp/CMakeLists.txt")
+                version = "3.31.6"
+            }
         }
     }
 }

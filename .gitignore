@@ -29,3 +29,7 @@ Thumbs.db
 tools/.cache/
 .claude/worktrees/
 content/packs/manifest.json
+
+# Native inference (tools/models/fetch_ios_frameworks.sh, CMake build dir)
+iosApp/Frameworks/
+androidApp/.cxx/

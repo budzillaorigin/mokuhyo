@@ -120,6 +120,7 @@
 				7A5E00000000000000000014 /* Compile Kotlin Framework */,
 				7A5E00000000000000000015 /* Sources */,
 				7A5E00000000000000000013 /* Frameworks */,
+				7A5E00000000000000000018 /* Embed Native Frameworks */,
 				7A5E00000000000000000016 /* Resources */,
 				7A5E00000000000000000017 /* Bundle Content Packs */,
 				7A5E0000000000000000006C /* Embed Foundation Extensions */,
@@ -291,6 +292,25 @@
 			shellPath = /bin/sh;
 			shellScript = "# Copies packs built by tools/packs (git-ignored) into the app bundle under packs/.\n# Without them the app builds and shows an honest 'dictionary not installed' state.\nSRC=\"$SRCROOT/../content/packs\"\nDEST=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/packs\"\nrm -rf \"$DEST\"\nmkdir -p \"$DEST\"\nfor f in \"$SRC\"/*.sqlite \"$SRC\"/manifest.json; do\n  [ -f \"$f\" ] && cp \"$f\" \"$DEST/\"\ndone\ncp \"$SRCROOT/../docs/LICENSES.md\" \"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/LICENSES.md\" || true\nexit 0\n";
 		};
+		7A5E00000000000000000018 /* Embed Native Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Native Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Embeds llama.framework / whisper.framework (dynamic, from tools/models/fetch_ios_frameworks.sh) for the SDK being built.\n# They're linked only when present (Swift autolinks them via `#if canImport`), so a checkout without them still builds.\n# The pinned llama.xcframework has no iOS Simulator slice, so the simulator gets whisper only.\nFW=\"$SRCROOT/Frameworks\"\nDEST=\"$TARGET_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH\"\nif [ \"$PLATFORM_NAME\" = \"iphoneos\" ]; then\n  SLICES=\"llama.xcframework/ios-arm64/llama.framework whisper.xcframework/ios-arm64/whisper.framework\"\nelse\n  SLICES=\"whisper.xcframework/ios-arm64_x86_64-simulator/whisper.framework\"\nfi\nmkdir -p \"$DEST\"\nfor rel in $SLICES; do\n  src=\"$FW/$rel\"\n  [ -d \"$src\" ] || { echo \"note: $rel not found (run tools/models/fetch_ios_frameworks.sh)\"; continue; }\n  name=\"$(basename \"$src\")\"\n  rm -rf \"$DEST/$name\"\n  cp -R \"$src\" \"$DEST/\"\n  rm -rf \"$DEST/$name/Headers\" \"$DEST/$name/Modules\"\n  if [ -n \"$EXPANDED_CODE_SIGN_IDENTITY\" ] && [ \"$CODE_SIGNING_ALLOWED\" != \"NO\" ]; then\n    codesign --force --sign \"$EXPANDED_CODE_SIGN_IDENTITY\" --preserve-metadata=identifier,entitlements \"$DEST/$name\"\n  fi\ndone\nexit 0\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -440,6 +460,17 @@
 					"$(inherited)",
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/Frameworks/llama.xcframework/ios-arm64",
+					"$(SRCROOT)/Frameworks/whisper.xcframework/ios-arm64",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/Frameworks/whisper.xcframework/ios-arm64_x86_64-simulator",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tsumugi;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Tsumugi uses the camera to read Japanese text so you can look it up. Recognition happens on your device.";
@@ -478,6 +509,17 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/Frameworks/llama.xcframework/ios-arm64",
+					"$(SRCROOT)/Frameworks/whisper.xcframework/ios-arm64",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/Frameworks/whisper.xcframework/ios-arm64_x86_64-simulator",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tsumugi;
