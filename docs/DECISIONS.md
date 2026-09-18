@@ -378,6 +378,9 @@ Every download is locked by name → URL, release tag or commit, date, sha256, l
 - **Tatoeba publishes only its latest weekly export.** We lock its hash anyway. The CI cache is keyed on the lock, so the pinned snapshot survives while CI runs regularly. After cache eviction, a moved export fails the build loudly, and the fix is a deliberate update commit.
 - **Mirror (Owner option):** attach the four Tatoeba files to a GitHub release of this repo and point the lock URLs at it, if CI churn becomes a problem.
 
+
+**Tatoeba mirror (added 2026-09-18):** Tatoeba only publishes its latest weekly export, so its four pinned files are also attached to a pre-release of this repo, tagged `sources-tatoeba-<date>` and never marked latest. `sources.lock` records it as `"mirror": {"repo", "tag"}`, and `common.source()` downloads from the mirror first, falling back to upstream. The repo is private, so this needs a token: CI passes `GITHUB_TOKEN`, and locally it uses `$GH_TOKEN` or `gh auth login`. After a deliberate re-pin (`build_all.py --update-sources …`), run `uv run python packs/mirror_sources.py` to create the new release and update the lock. Re-pinning drops the stale mirror entry. The release notes carry Tatoeba's CC BY 2.0 FR attribution.
+
 ### D-067: Export compliance: no annual BIS report on our reading, but the `ITSAppUsesNonExemptEncryption = NO` answer needs owner confirmation (F-43, 2026-09-18)
 RELEASE.md §5 now records the facts.
 

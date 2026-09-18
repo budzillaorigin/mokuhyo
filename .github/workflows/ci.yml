@@ -41,6 +41,8 @@ jobs:
       - name: Build packs (from the pinned sources in packs/sources.lock)
         working-directory: tools
         run: uv run python packs/build_all.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Tatoeba mirror is a release of this private repo
       - name: Validate JLPT item banks (with the vocabulary-level check)
         working-directory: tools
         run: uv run python items/gen_jlpt.py validate items/bank/jlpt_*.json --show-warnings 0

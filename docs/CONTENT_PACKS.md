@@ -5,6 +5,7 @@ Read-only SQLite files built by `tools/packs/*.py` into `content/packs/` (git-ig
 ```bash
 cd tools && uv sync
 uv run python packs/build_all.py      # ~1 min after the first download (~100 MB of sources, cached in tools/.cache)
+# Tatoeba files come from this repo's `sources-tatoeba-*` release (private repo: export GH_TOKEN or `gh auth login`)
 ```
 
 | Pack | Builder | Phase | Status |

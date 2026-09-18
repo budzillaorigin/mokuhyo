@@ -5,10 +5,13 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import sqlite3
+import subprocess
 import sys
 import unicodedata
+import urllib.error
 import urllib.request
 import zipfile
 from email.utils import parsedate_to_datetime
@@ -49,9 +52,10 @@ def load_lock() -> dict:
     return json.loads(SOURCES_LOCK.read_text(encoding="utf-8"))
 
 
-def _fetch(url: str, target: Path) -> str:
+def _fetch(url: str, target: Path, quiet: bool = False) -> str:
     """Download url to target via a .part file; return the sha256 of what was written."""
-    log(f"downloading {url}")
+    if not quiet:
+        log(f"downloading {url}")
     tmp = target.with_suffix(target.suffix + ".part")
     h = hashlib.sha256()
     req = urllib.request.Request(url, headers={"User-Agent": "tsumugi-tools"})
@@ -66,8 +70,70 @@ def _fetch(url: str, target: Path) -> str:
     return h.hexdigest()
 
 
+def github_token() -> str | None:
+    """Token for private-repo release downloads/uploads: $GITHUB_TOKEN (CI), $GH_TOKEN, or `gh auth token`."""
+    for var in ("GITHUB_TOKEN", "GH_TOKEN"):
+        if os.environ.get(var):
+            return os.environ[var]
+    try:
+        out = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True, timeout=10, check=False)
+        return out.stdout.strip() or None
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def _fetch_mirror(mirror: dict, file: str, target: Path) -> str:
+    """Download a release asset from the repo's own GitHub release (works for private repos with a token).
+
+    The asset endpoint answers with a redirect to signed storage; the Authorization header must not follow it.
+    """
+    token = github_token()
+    headers = {"User-Agent": "tsumugi-tools", "Accept": "application/vnd.github+json"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    req = urllib.request.Request(f"{GITHUB_API}{mirror['repo']}/releases/tags/{mirror['tag']}", headers=headers)
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        release = json.load(resp)
+    asset = next((a for a in release["assets"] if a["name"] == file), None)
+    if asset is None:
+        raise OSError(f"{file} is not attached to release {mirror['tag']}")
+    req = urllib.request.Request(asset["url"], headers={**headers, "Accept": "application/octet-stream"})
+    opener = urllib.request.build_opener(_NoRedirect)
+    try:
+        resp = opener.open(req, timeout=30)
+        location = None
+    except urllib.error.HTTPError as e:
+        if e.code not in (301, 302, 303, 307, 308):
+            raise
+        location = e.headers["Location"]
+    if location is None:  # served directly
+        log(f"downloading {file} from release {mirror['tag']}")
+        tmp = target.with_suffix(target.suffix + ".part")
+        h = hashlib.sha256()
+        try:
+            with resp, open(tmp, "wb") as out:
+                while chunk := resp.read(1 << 20):
+                    h.update(chunk)
+                    out.write(chunk)
+            tmp.replace(target)
+        finally:
+            tmp.unlink(missing_ok=True)
+        return h.hexdigest()
+    log(f"downloading {file} from release {mirror['tag']}")
+    return _fetch(location, target, quiet=True)
+
+
 def source(name: str) -> Path:
-    """Local path of the locked source [name], downloaded into tools/.cache and verified against its sha256."""
+    """Local path of the locked source [name], downloaded into tools/.cache and verified against its sha256.
+
+    Entries with a `mirror` (rolling upstream exports, e.g. Tatoeba) are fetched from this repo's own GitHub
+    release first, because upstream only keeps the latest export; the upstream URL is the fallback.
+    """
     entry = load_lock()["sources"].get(name)
     if entry is None:
         raise SystemExit(f"{name} is not in {SOURCES_LOCK.name}; add it with build_all.py --update-sources")
@@ -75,16 +141,26 @@ def source(name: str) -> Path:
     target = CACHE / entry["file"]
     if target.exists() and sha256(target) == entry["sha256"]:
         return target
-    got = _fetch(entry["url"], target)
+    got = None
+    if entry.get("mirror"):
+        try:
+            got = _fetch_mirror(entry["mirror"], entry["file"], target)
+        except (OSError, urllib.error.URLError, KeyError, ValueError) as e:
+            log(f"{name}: mirror {entry['mirror']['tag']} unavailable ({e}); trying upstream. For a private repo set "
+                "GITHUB_TOKEN / GH_TOKEN or log in with `gh auth login`.")
+    if got != entry["sha256"]:
+        got = _fetch(entry["url"], target)
     if got != entry["sha256"]:
         target.unlink(missing_ok=True)
         hint = (
-            "It is a rolling export (only the latest is published), so upstream has moved on."
+            "It is a rolling export (only the latest is published), so upstream has moved on, and the mirror "
+            "release couldn't be used."
             if entry.get("rolling") else "The pinned release changed upstream or the download was corrupted."
         )
         raise SystemExit(
             f"sha256 mismatch for {name} ({entry['url']}):\n  locked {entry['sha256']}\n  got    {got}\n"
-            f"{hint} Run `uv run python packs/build_all.py --update-sources` to re-pin deliberately."
+            f"{hint} Run `uv run python packs/build_all.py --update-sources` to re-pin deliberately "
+            "(then `uv run python packs/mirror_sources.py` to mirror rolling exports)."
         )
     return target
 
@@ -141,6 +217,7 @@ def update_sources(names: list[str] | None = None) -> None:
             continue
         new["sha256"] = _fetch(new["url"], target)
         if new["sha256"] != entry["sha256"]:
+            new.pop("mirror", None)  # the old mirror holds the old file; re-run packs/mirror_sources.py
             log(f"{name}: {entry.get('release')} -> {new['release']} ({new['sha256'][:12]})")
         lock["sources"][name] = new
     SOURCES_LOCK.write_text(json.dumps(lock, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

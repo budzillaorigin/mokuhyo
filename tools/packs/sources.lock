@@ -196,6 +196,10 @@
         "kind": "rolling",
         "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_sentences.tsv.bz2",
         "file": "jpn_sentences.tsv.bz2"
+      },
+      "mirror": {
+        "repo": "budzillaorigin/tsumugi",
+        "tag": "sources-tatoeba-2026-09-12"
       }
     },
     "tatoeba-jpn-eng-links": {
@@ -210,6 +214,10 @@
         "kind": "rolling",
         "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn-eng_links.tsv.bz2",
         "file": "jpn-eng_links.tsv.bz2"
+      },
+      "mirror": {
+        "repo": "budzillaorigin/tsumugi",
+        "tag": "sources-tatoeba-2026-09-12"
       }
     },
     "tatoeba-eng-sentences": {
@@ -224,6 +232,10 @@
         "kind": "rolling",
         "url": "https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2",
         "file": "eng_sentences.tsv.bz2"
+      },
+      "mirror": {
+        "repo": "budzillaorigin/tsumugi",
+        "tag": "sources-tatoeba-2026-09-12"
       }
     },
     "tatoeba-jpn-indices": {
@@ -238,6 +250,10 @@
         "kind": "rolling",
         "url": "https://downloads.tatoeba.org/exports/jpn_indices.tar.bz2",
         "file": "jpn_indices.tar.bz2"
+      },
+      "mirror": {
+        "repo": "budzillaorigin/tsumugi",
+        "tag": "sources-tatoeba-2026-09-12"
       }
     },
     "mecab-ipadic": {
