@@ -28,7 +28,19 @@ import app.tsumugi.android.TsumugiApplication
 import app.tsumugi.android.features.OnboardingScreen
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import app.tsumugi.android.features.ComingSoonScreen
+import app.tsumugi.android.features.exams.AttemptReviewScreen
+import app.tsumugi.android.features.exams.ExamHubScreen
+import app.tsumugi.android.features.exams.ExamRunScreen
+import app.tsumugi.android.features.me.AiSettingsScreen
+import app.tsumugi.android.features.practice.DialogueListScreen
+import app.tsumugi.android.features.practice.DialoguePlayerScreen
+import app.tsumugi.android.features.practice.MediaPlayerScreen
+import app.tsumugi.android.features.practice.MinimalPairsScreen
+import app.tsumugi.android.features.practice.OpiScreen
+import app.tsumugi.android.features.practice.PomodoroScreen
+import app.tsumugi.android.features.practice.PracticeHubScreen
+import app.tsumugi.android.features.practice.RoleplayScreen
+import app.tsumugi.android.features.practice.ScenarioListScreen
 import app.tsumugi.android.features.dictionary.DictionaryNav
 import app.tsumugi.android.features.dictionary.DictionarySearchScreen
 import app.tsumugi.android.features.dictionary.EntryScreen
@@ -92,17 +104,21 @@ fun TsumugiApp() {
         return
     }
 
+    // Strict exam modes allow no lookups: hide global search and the tab bar until the attempt ends.
+    val lockedDown = (nav.current as? Route.ExamRun)?.spec?.strict == true
+
     TsumugiTheme {
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = { Text(nav.current.title.ifEmpty { nav.tab.label }) },
-                    navigationIcon = { if (nav.canGoBack) TextButton(onClick = nav::back) { Text("‹ Back") } },
-                    actions = { if (nav.current != Route.Dictionary) TextButton(onClick = nav::openSearch) { Text("Search") } },
+                    // In a strict exam, leaving goes through the runner's confirmation (system back) instead.
+                    navigationIcon = { if (nav.canGoBack && !lockedDown) TextButton(onClick = nav::back) { Text("‹ Back") } },
+                    actions = { if (nav.current != Route.Dictionary && !lockedDown) TextButton(onClick = nav::openSearch) { Text("Search") } },
                 )
             },
             bottomBar = {
-                NavigationBar {
+                if (!lockedDown) NavigationBar {
                     Tab.entries.forEach { tab ->
                         NavigationBarItem(
                             selected = tab == nav.tab,
@@ -134,7 +150,7 @@ fun TsumugiApp() {
                     Route.PathLevels -> PathLevelsScreen(onOpenLevel = { nav.push(Route.PathLevel(it)) })
                     is Route.PathLevel -> PathLevelScreen(route.level, onOpenItem = { nav.push(Route.PathItem(it)) })
                     is Route.PathItem -> PathItemScreen(route.id, onOpenItem = { nav.push(Route.PathItem(it)) })
-                    Route.Settings -> SettingsScreen()
+                    Route.Settings -> SettingsScreen(onOpenAi = { nav.push(Route.AiSettings) })
                     Route.WordLists -> WordListsScreen(onOpen = { nav.push(Route.WordList(it)) })
                     Route.Grammar -> GrammarLevelsScreen(onOpenLevel = { nav.push(Route.GrammarLevel(it)) }, onLessons = { nav.push(Route.GrammarLessons) })
                     is Route.GrammarLevel -> GrammarLevelScreen(route.level, onOpenPoint = { nav.push(Route.GrammarPoint(it)) })
@@ -144,6 +160,27 @@ fun TsumugiApp() {
                     Route.Import -> ImportScreen()
                     Route.Sync -> SyncScreen()
                     Route.Licenses -> LicensesScreen()
+                    Route.AiSettings -> AiSettingsScreen()
+                    Route.Scenarios -> ScenarioListScreen(onOpen = { nav.push(Route.Roleplay(it)) })
+                    is Route.Roleplay -> RoleplayScreen(route.scenarioId, route.toString(), onOpenAiSettings = { nav.push(Route.AiSettings) })
+                    Route.Dialogues -> DialogueListScreen(onOpen = { nav.push(Route.DialoguePlayer(it)) })
+                    is Route.DialoguePlayer -> DialoguePlayerScreen(route.id)
+                    Route.MinimalPairs -> MinimalPairsScreen()
+                    Route.Media -> MediaPlayerScreen(onLookup = { nav.push(Route.Lookup(it)) })
+                    is Route.Pomodoro -> PomodoroScreen(route.toString())
+                    is Route.Opi -> OpiScreen(route.toString(), onOpenAiSettings = { nav.push(Route.AiSettings) })
+                    Route.Exams -> ExamHubScreen(
+                        onStart = { nav.push(Route.ExamRun(it)) },
+                        onOpi = { nav.push(Route.Opi()) },
+                        onOpenAttempt = { nav.push(Route.Attempt(it)) },
+                        onImport = { nav.push(Route.Import) },
+                    )
+                    is Route.ExamRun -> ExamRunScreen(
+                        route.spec, route.toString(),
+                        onReview = { id -> nav.back(); nav.push(Route.Attempt(id)) },
+                        onExit = nav::back,
+                    )
+                    is Route.Attempt -> AttemptReviewScreen(route.id, onOpenAiSettings = { nav.push(Route.AiSettings) })
                 }
             }
         }
@@ -156,7 +193,7 @@ private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
         Tab.TODAY -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) }, onGrammar = { push(Route.GrammarLessons) })
         Tab.REVIEWS -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) }, onGrammar = { push(Route.GrammarLessons) })
         Tab.LEARN -> LearnHome(push)
-        Tab.PRACTICE -> ComingSoonScreen(tab.label)
+        Tab.PRACTICE -> PracticeHubScreen(push)
         Tab.ME -> MeScreen { d ->
             push(
                 when (d) {
@@ -164,6 +201,8 @@ private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
                     MeDestination.SYNC -> Route.Sync
                     MeDestination.SETTINGS -> Route.Settings
                     MeDestination.LICENSES -> Route.Licenses
+                    MeDestination.AI -> Route.AiSettings
+                    MeDestination.EXAMS -> Route.Exams
                 },
             )
         }

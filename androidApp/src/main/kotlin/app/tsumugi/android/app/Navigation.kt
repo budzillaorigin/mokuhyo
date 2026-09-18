@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import app.tsumugi.android.features.exams.ExamSpec
 
 enum class Tab(val label: String, val glyph: String) {
     TODAY("Today", "今"),
@@ -46,6 +47,22 @@ sealed interface Route {
     data object Import : Route { override val title = "Import & export" }
     data object Sync : Route { override val title = "Sync" }
     data object Licenses : Route { override val title = "Licenses" }
+    data object AiSettings : Route { override val title = "AI & speech" }
+
+    // Practice. Routes that start a session carry a nonce so each visit gets a fresh ViewModel.
+    data object Scenarios : Route { override val title = "Role-play" }
+    data class Roleplay(val scenarioId: String, val nonce: Long = System.nanoTime()) : Route { override val title = "Role-play" }
+    data object Dialogues : Route { override val title = "Dialogues" }
+    data class DialoguePlayer(val id: String) : Route { override val title = "Dialogue" }
+    data object MinimalPairs : Route { override val title = "Minimal pairs" }
+    data object Media : Route { override val title = "Media player" }
+    data class Pomodoro(val nonce: Long = System.nanoTime()) : Route { override val title = "Speaking session" }
+    data class Opi(val nonce: Long = System.nanoTime()) : Route { override val title = "OPI practice" }
+
+    // Exams
+    data object Exams : Route { override val title = "Exams" }
+    data class ExamRun(val spec: ExamSpec, val nonce: Long = System.nanoTime()) : Route { override val title = spec.title }
+    data class Attempt(val id: String) : Route { override val title = "Attempt review" }
 }
 
 /** Per-tab back stacks that survive configuration changes. */

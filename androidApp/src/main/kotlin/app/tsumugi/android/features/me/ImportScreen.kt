@@ -18,7 +18,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
+import app.tsumugi.exam.BankImportResult
+import app.tsumugi.exam.ExamBankFile
+import app.tsumugi.exam.ExamService
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -97,9 +104,33 @@ fun ImportScreen() {
         }
     }
 
+    var bankErrors by remember { mutableStateOf<List<String>>(emptyList()) }
+    var banks by remember { mutableStateOf<List<ExamBankFile>>(emptyList()) }
+    LaunchedEffect(Unit) { banks = graph.exams().userBanks() }
+    val bankPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        uri ?: return@rememberLauncherForActivityResult
+        bankErrors = emptyList()
+        run("Importing exam item bank") {
+            val text = withContext(Dispatchers.IO) { context.contentResolver.openInputStream(uri)!!.use { it.readBytes().decodeToString() } }
+            val exams = graph.exams()
+            when (val r = exams.importBank(text)) {
+                is BankImportResult.Imported -> {
+                    banks = exams.userBanks()
+                    "Imported bank “${r.bank.removePrefix(ExamService.USER_PREFIX)}”: ${r.items} items, ${r.passages} passages."
+                }
+                is BankImportResult.Invalid -> {
+                    bankErrors = r.errors
+                    "The bank wasn't imported: ${r.errors.size} problem${if (r.errors.size == 1) "" else "s"} found."
+                }
+            }
+        }
+    }
+
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         message?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
+        bankErrors.take(50).forEach { Text("• $it", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
+        if (bankErrors.size > 50) Text("…and ${bankErrors.size - 50} more.", style = MaterialTheme.typography.bodySmall)
 
         Text("Anki", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         Text("Import any .apkg (including NihongoShark decks: your myStory notes come along). Review history is kept.", style = MaterialTheme.typography.bodySmall)
@@ -112,7 +143,28 @@ fun ImportScreen() {
         Button(onClick = { listPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text("Import word list") }
 
         HorizontalDivider()
-        Text("Bunpro", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text("Exam item banks", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text(
+            "Import your own JLPT or DLPT practice items (JSON, format in docs/CONTENT_PACKS.md). Every problem is listed if the file doesn't validate.",
+            style = MaterialTheme.typography.bodySmall,
+        )
+        Button(onClick = { bankPicker.launch(arrayOf("application/json", "text/*", "*/*")) }, enabled = !busy) { Text("Import exam item bank (JSON)") }
+        banks.forEach { b ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("${b.title} · ${b.items.size} items", Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+                TextButton(onClick = {
+                    run("Removing bank") {
+                        val exams = graph.exams()
+                        exams.deleteBank(b.bank)
+                        banks = exams.userBanks()
+                        "Removed “${b.title}”."
+                    }
+                }, enabled = !busy) { Text("Remove") }
+            }
+        }
+
+        HorizontalDivider()
+        Text("Bunpro",style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         Text("Import a CSV export of your Bunpro grammar (title + SRS level). Only your progress is imported.", style = MaterialTheme.typography.bodySmall)
         Button(onClick = { bunproPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text("Import Bunpro CSV") }
 

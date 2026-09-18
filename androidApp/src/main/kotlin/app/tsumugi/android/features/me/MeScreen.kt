@@ -65,6 +65,8 @@ enum class MeDestination(val title: String, val subtitle: String) {
     IMPORT("Import & export", "Anki .apkg, imiwa lists, Bunpro, WaniKani"),
     SYNC("Sync", "Your devices, your server"),
     SETTINGS("Settings", "Lessons per batch, retention, reminders"),
+    AI("AI & speech", "On-device models, your own server, speech recognition, voices"),
+    EXAMS("Exam history", "JLPT, DLPT and OPI practice attempts"),
     LICENSES("Licenses", "Data sources and open-source software"),
 }
 

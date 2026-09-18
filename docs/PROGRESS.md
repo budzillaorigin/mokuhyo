@@ -245,5 +245,9 @@ cd tools && uv sync && uv run ruff check .
 | Reminders | ✅ | ✅ |
 | Widgets | ✅ | — (Glance later) |
 | Settings / Licenses | ✅ | ✅ |
+| AI & speech settings (engines, model downloads, own server, STT, VOICEVOX) | | ✅ |
+| Practice: role-play, pronunciation panel, OPI, Pomodoro session | | ✅ |
+| Listening: dialogues, minimal pairs, media player with dual subtitles | | ✅ |
+| Exams: JLPT/DLPT hub, timed runner, results, attempt review, bank import | | ✅ |
 | Onboarding | — | — |
 | Sync | Phase 5 | Phase 5 |

@@ -111,6 +111,12 @@ The server uses:
 
 Fair-use limits are environment configuration. There's no hosted instance yet; the app asks for a server URL. Choosing and running a hosted instance is an owner decision (open decision 2).
 
+### D-029: Android speech I/O and media playback (2026-09-18)
+- **Recording:** `AudioRecord` at 16 kHz mono PCM16, kept in memory and never uploaded. Only the optional "Whisper server" engine sends audio, and only to the learner's own server.
+- **System recognizer:** when no Whisper engine is set up, Android's recognizer runs in Japanese with `EXTRA_PREFER_OFFLINE`. On Android 13+ it is fed the app's recording through `EXTRA_AUDIO_SOURCE`, so the same audio also goes to the pronunciation analyzer. On Android 12 and older the recognizer listens by itself and doesn't share its audio. There, the pronunciation panel says pitch and fluency can't be scored and points to on-device Whisper.
+- **Two voices:** "female" and "male" script lines use different installed Japanese voices when the device has more than one, plus a pitch offset either way. "narrator" and unknown hints use the default voice. VOICEVOX, when configured, uses the configured speaker for every line.
+- **Media player:** the platform `VideoView` rather than Media3, so no dependency was added. Subtitles come from the learner's .srt/.vtt files (UTF-8, falling back to Shift_JIS).
+
 ---
 
 ## Open decisions (BRIEF.md §14)
