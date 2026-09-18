@@ -40,6 +40,7 @@ def tatoeba() -> list[str]:
 
 
 def main() -> int:
+    sys.stdout.reconfigure(encoding="utf-8")
     files = [HERE / a for a in sys.argv[1:]] or sorted(HERE.glob("n*.json"))
     points = load(files)
     errors: list[str] = []

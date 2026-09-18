@@ -17,7 +17,19 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from common import CACHE, PACKS, REPO, dumps, finish_pack, log, nfc, open_pack, reset_tables, set_meta
+from common import (
+    CACHE,
+    DICTIONARY_PACK,
+    PACKS,
+    REPO,
+    dumps,
+    finish_pack,
+    log,
+    nfc,
+    open_pack,
+    reset_tables,
+    set_meta,
+)
 
 GRAMMAR_PACK = PACKS / "grammar.sqlite"
 GRAMMAR_SQ = REPO / "shared/src/commonMain/sqldelightGrammar/app/tsumugi/grammar/db/grammar.sq"
@@ -27,6 +39,8 @@ GRAMMAR_PACK_VERSION = "1"
 MAX_TATOEBA_EXAMPLES = 8
 MAX_EXAMPLES = 12
 MIN_LEN, MAX_LEN = 6, 32
+IDEAL_LEN = 16
+MAX_WORD_LEN = 8
 
 
 def load_tatoeba() -> list[tuple[int, str, str]]:
@@ -48,8 +62,27 @@ def load_tatoeba() -> list[tuple[int, str, str]]:
         en = next((eng[e] for e in links.get(sid, []) if e in eng), None)
         if en and MIN_LEN <= len(ja) <= MAX_LEN:
             out.append((sid, ja, en))
-    out.sort(key=lambda t: (len(t[1]), t[0]))
+    # Mid-length sentences first: long enough for context, short enough for a quick review.
+    out.sort(key=lambda t: (abs(len(t[1]) - IDEAL_LEN), t[0]))
     return out
+
+
+def dictionary_words() -> set[str]:
+    """Every JMdict written form and reading up to MAX_WORD_LEN characters."""
+    db = open_pack(DICTIONARY_PACK)
+    words = {t for (t,) in db.execute("SELECT text FROM entry_kanji WHERE length(text) <= ?", (MAX_WORD_LEN,))}
+    words |= {t for (t,) in db.execute("SELECT text FROM entry_kana WHERE length(text) <= ?", (MAX_WORD_LEN,))}
+    db.close()
+    return words
+
+
+def inside_larger_word(text: str, start: int, end: int, words: set[str]) -> bool:
+    """True when a dictionary word strictly contains [start, end): e.g. たい inside 冷たい or みたい."""
+    for a in range(max(0, end - MAX_WORD_LEN), start + 1):
+        for b in range(end, min(len(text), a + MAX_WORD_LEN) + 1):
+            if (a < start or b > end) and text[a:b] in words:
+                return True
+    return False
 
 
 def utf16_offsets(text: str, start: int, end: int) -> tuple[int, int]:
@@ -72,6 +105,7 @@ def main() -> None:
 
     log(f"matching {len(points)} grammar points against Tatoeba…")
     sentences = load_tatoeba()
+    words = dictionary_words()
     db = open_pack(GRAMMAR_PACK, GRAMMAR_SQ)
     reset_tables(db, {"grammar_point", "grammar_example", "grammar_pattern"}, GRAMMAR_SQ)
 
@@ -100,6 +134,8 @@ def main() -> None:
             if len(matches) != 1:  # ambiguous blanks make bad cloze items
                 continue
             m = matches[0]
+            if inside_larger_word(ja, m.start(), m.end(), words):
+                continue
             examples.append((ja, en, *utf16_offsets(ja, m.start(), m.end()), "tatoeba", sid))
             used.add(sid)
         tatoeba_total += len(examples)
