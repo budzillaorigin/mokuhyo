@@ -29,9 +29,15 @@ jobs:
         run: |
           uv sync --locked
           uv run ruff check .
+      - name: Item bank tests
+        working-directory: tools
+        run: uv run python items/test_gen_jlpt.py
       - name: Build packs
         working-directory: tools
         run: uv run python packs/build_all.py
+      - name: Validate JLPT item banks (with the vocabulary-level check)
+        working-directory: tools
+        run: uv run python items/gen_jlpt.py validate items/bank/jlpt_*.json --show-warnings 0
       - uses: actions/upload-artifact@v4
         with:
           name: packs
