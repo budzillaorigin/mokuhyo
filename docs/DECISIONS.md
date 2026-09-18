@@ -144,6 +144,12 @@ Item banks carry both `source`, which records where the item came from, and `ver
 - **Two voices:** "female" and "male" script lines use different installed Japanese voices when the device has more than one, plus a pitch offset either way. "narrator" and unknown hints use the default voice. VOICEVOX, when configured, uses the configured speaker for every line.
 - **Media player:** the platform `VideoView` rather than Media3, so no dependency was added. Subtitles come from the learner's .srt/.vtt files (UTF-8, falling back to Shift_JIS).
 
+### D-036: iOS speech I/O (2026-09-18)
+- **Recognizer:** Apple's recognizer is only used with `requiresOnDeviceRecognition`. If the device can't do Japanese offline, the app says so and suggests on-device Whisper or typing. Audio is never sent to Apple's servers (CLAUDE.md rules 1–2).
+- **VOICEVOX:** voices only the role-play partner and the OPI interviewer. Two-voice dialogues and exam audio use the system voices, picked by gender where the installed voices allow.
+- **Device RAM:** rounded to whole GB for model recommendations, because iOS reports slightly less than what's installed.
+- **Swift boundary:** `api/SwiftSupport.kt` catches Kotlin exceptions at the Swift edge for the calls that can fail at runtime (network, audio, model files). Kotlin/Native aborts the app on an exception that isn't declared with `@Throws`.
+
 ---
 
 ## Open decisions (BRIEF.md §14)
