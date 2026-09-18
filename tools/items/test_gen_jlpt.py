@@ -194,12 +194,9 @@ def test_committed_banks() -> None:
     banks = G.load_banks(files)
     rep = G.validate_banks(banks, BLUEPRINT)
     assert rep.errors == [], rep.errors[:10]
-    generated_pending = {("N2", "grammar_form"), ("N1", "grammar_form"), ("N2", "sentence_assembly"),
-                         ("N1", "sentence_assembly")}  # N2/N1 grammar pack not built yet
     for level, types in BLUEPRINT.items():
         for typ, need in types.items():
-            if (level, typ) not in generated_pending:
-                assert rep.counts[(level, typ)] >= need, (level, typ, rep.counts[(level, typ)], need)
+            assert rep.counts[(level, typ)] >= need, (level, typ, rep.counts[(level, typ)], need)
     for _, bank in banks:
         for it in bank["items"]:
             assert it["source"] in {"llm", "generated"}

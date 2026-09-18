@@ -13,8 +13,9 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | same file, `stroke` table (KanjiVG) | `packs/build_kanjivg.py` | 1 | ✅ |
 | same file, `sentence`/`sentence_word` tables (Tatoeba) + frequency ranks | `packs/build_sentences.py` | 1 | ✅ |
 | `kanji-path.sqlite` (60 levels: 243 radicals, 2,599 kanji, 7,242 words) | `packs/build_kanji_path.py` | 2 | ✅ |
-| `grammar.sqlite` (N5–N3: 448 points, 3,486 Tatoeba examples; N2/N1 in Phase 7) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ N5–N3 |
-| `exam.sqlite`: JLPT blueprints + JLPT/DLPT item banks | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 | In progress |
+| `grammar.sqlite` (N5–N1: 829 points, 5,116 Tatoeba examples; matched in order n3, n4, n5, n2, n1 so harder points don't take easier points' sentences) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ |
+| `exam.sqlite`: JLPT blueprints + 4 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 100 passages / 306 items, AI-drafted) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 | ✅ |
+| `practice.sqlite`: 30 scenarios, 62 OPI questions, 45 dialogues, 630 minimal pairs | `packs/build_practice.py` | 6 | ✅ |
 
 ## dictionary.sqlite
 
@@ -74,3 +75,28 @@ Size: ~127 MB raw, ~46 MB gzip. 218k entries, 10k kanji, 80k strokes, 112k examp
 ```
 
 Validation (`packs/build_exam.py`, also run on user imports): ids unique; `answer` in range; choices distinct and non-empty; every `passageId` exists; JLPT `type` is in the blueprint for that level; text is NFC; DLPT passage length and kanji density fall inside the per-ILR-level band in `items/ilr_bands.json`. Anything `source = "llm"` and not `verified` shows the "AI-generated" badge.
+
+### Markup and id conventions
+
+- **JLPT markup:**
+  - `<u>…</u>` underlines the target.
+  - `（　　）` is a blank to fill.
+  - In sentence_assembly, each slot is `＿＿＿` and the starred slot is `＿★＿`, separated by U+3000. The answer is the chunk that goes in ★.
+  - In text_grammar, the passage body contains `［1］`…`［5］`, and each item's stem is just the marker.
+  - In info_retrieval, tables are `| a | b |` lines with the header row first.
+  - Integrated reading puts `Ａ` / `Ｂ` on their own lines before each text.
+- **Voices:** `female`, `male` or `narrator`.
+- **refs:** `g:<grammar id>`, `v:<JMdict id>`, and `t:<Tatoeba id>` (source-sentence attribution). The app ignores prefixes it doesn't know.
+- **DLPT ids** write "+" as "p" (`dr-2p-editorial-001`). An item id is its passage id plus `-qN`.
+
+### Tools
+
+- `items/gen_jlpt.py generate`: deterministic, about 40 s, reads the built packs.
+- `items/gen_jlpt.py validate`: prints the coverage table.
+- `gen_jlpt.py draft` and `gen_dlpt.py draft`: draft more items through any OpenAI-compatible endpoint (e.g. the owner's Ollama); output is `source: "llm"`.
+- `items/gen_dlpt.py validate [--strict]`: checks the ILR bands in `items/ilr_bands.json` and warns when the key is the longest choice in more than 40% of a level's items.
+- `items/review.py`: human review. It sets `verified: true` and adds `reviewed {by, on}` (DECISIONS D-034).
+- **Measures used by the band checks:**
+  - Length is non-space characters.
+  - Kanji density is kanji / characters.
+  - The abstract ratio is abstract-lexicon hits per token run.
