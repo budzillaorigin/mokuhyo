@@ -2,6 +2,8 @@ package app.tsumugi.ai
 
 import app.tsumugi.ai.prompts.CorrectSentence
 import app.tsumugi.ai.prompts.ExplainGrammarInSentence
+import app.tsumugi.ai.prompts.FreeTalkTurn
+import app.tsumugi.ai.prompts.GradeProduction
 import app.tsumugi.ai.prompts.GenerateReadingQuestions
 import app.tsumugi.ai.prompts.JlptExplainItem
 import app.tsumugi.ai.prompts.NaturalRewrite
@@ -150,6 +152,38 @@ class PromptGoldenTest {
             "doesn't quote the correct answer",
             listOf("Correct answer: 1. ひいて", "Learner chose: 3. ひけば"),
         ) { out -> assertTrue(out.whyWrong.contains("ひけば")) },
+        Golden(
+            FreeTalkTurn(),
+            FreeTalkTurn.Input("N4", listOf(Turn(Speaker.PARTNER, "こんにちは。週末は何をしましたか。"), Turn(Speaker.LEARNER, "友達と映画を見ました。"))),
+            """{"reply":"いいですね。どんな映画を見ましたか。","translation":"Nice. What kind of movie did you see?","topic":"weekend movies"}""",
+            """{"reply":"Nice! What movie did you see?","translation":"いいですね。","topic":"movies"}""",
+            "reply is not Japanese",
+            listOf("N4 learner", "not a teacher", "Learner: 友達と映画を見ました。"),
+        ) { out -> assertEquals("weekend movies", out.topic) },
+        Golden(
+            GradeProduction(),
+            GradeProduction.Input(
+                english = "I bought the ticket in advance.", modelAnswer = "切符を買っておいた。", grammarTitle = "〜ておく",
+                grammarStructure = "Verb て-form + おく", grammarMeaning = "do in advance", answer = "切符を買っておきました。",
+                constructionFound = true,
+            ),
+            """{"meaning":2,"grammar":2,"form":2,"corrected":"","feedback":"Correct: 買っておきました uses ておく in the polite past, which fits the sentence."}""",
+            """{"meaning":2,"grammar":3,"form":2,"corrected":"","feedback":"Good."}""",
+            "scores must be 0 to 2",
+            listOf("〜ておく", "Model answer: 切符を買っておいた。", "Learner's answer: 切符を買っておきました。"),
+        ) { out -> assertEquals(6, out.total) },
+        Golden(
+            GradeProduction(),
+            GradeProduction.Input(
+                english = "I bought the ticket in advance.", modelAnswer = "切符を買っておいた。", grammarTitle = "〜ておく",
+                grammarStructure = "Verb て-form + おく", grammarMeaning = "do in advance", answer = "切符を買いました。",
+                constructionFound = false,
+            ),
+            """{"meaning":1,"grammar":0,"form":2,"corrected":"切符を買っておきました。","feedback":"The sentence is grammatical, but it doesn't use ておく, so 'in advance' is lost."}""",
+            """{"meaning":2,"grammar":2,"form":2,"corrected":"","feedback":"Perfect, well done with this one."}""",
+            "construction is not in the answer",
+            listOf("did not find 〜ておく"),
+        ) { out -> assertEquals(0, out.grammar) },
     )
 
     @Test
@@ -158,6 +192,7 @@ class PromptGoldenTest {
             listOf(
                 "correct_sentence", "natural_rewrite", "roleplay_turn", "explain_grammar_in_sentence", "translate_sentence",
                 "generate_reading_questions", "suggest_mnemonic", "opi_interviewer_turn", "opi_rate", "jlpt_explain_item",
+                "free_talk_turn", "grade_production",
             ),
             PromptLibrary.names,
         )

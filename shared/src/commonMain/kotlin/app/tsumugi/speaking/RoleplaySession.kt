@@ -50,6 +50,9 @@ class RoleplaySession(
     private val scriptedTask = RoleplayTurn { input -> scriptedReply(input.history.count { it.speaker == Speaker.LEARNER }) }
     private val modelTask = RoleplayTurn()
     private val lines = mutableListOf<ConversationLine>()
+    private val corrections = HashMap<String, CorrectSentence.Output>()
+    private val startedAt = kotlin.time.Clock.System.now().toEpochMilliseconds()
+    private var saved: ConversationRecord? = null
 
     val transcript: List<ConversationLine> get() = lines.toList()
     var goalReached: Boolean = false
@@ -93,9 +96,28 @@ class RoleplaySession(
         }
         val correction = gateway.run(CorrectSentence(), CorrectSentence.Input(text, level, scenario.setting))
         val natural = gateway.run(NaturalRewrite(), NaturalRewrite.Input(text, register))
+        (correction as? AiResult.Ok)?.value?.let { corrections[text.trim()] = it }
         val engine = (correction as? AiResult.Ok)?.engine ?: (natural as? AiResult.Ok)?.engine
         val reason = listOf(correction, natural).filterIsInstance<AiResult.Unavailable>().firstOrNull()?.reason
         return TurnFeedback((correction as? AiResult.Ok)?.value, (natural as? AiResult.Ok)?.value, engine, reason.takeIf { engine == null })
+    }
+
+    /**
+     * Stores the role-play as a SCENARIO conversation (BRIEF_V2 G-02), once, with the corrections the learner asked
+     * for; they feed the recurring-error log. Null when the learner said nothing.
+     */
+    @Throws(Exception::class)
+    suspend fun save(conversations: ConversationService): ConversationRecord? {
+        saved?.let { return it }
+        val turns = lines.map { l ->
+            if (l.speaker == Speaker.LEARNER) {
+                ConversationTurn(ConversationTurn.LEARNER, l.japanese, corrections = corrections[l.japanese])
+            } else {
+                ConversationTurn(ConversationTurn.PARTNER, l.japanese, l.english)
+            }
+        }
+        val engine = lines.firstNotNullOfOrNull { it.engine }
+        return conversations.save(ConversationMode.SCENARIO, scenario.id, level, turns, startedAt, engine).also { saved = it }
     }
 
     private suspend fun partnerTurn(): ConversationLine? {

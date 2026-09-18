@@ -1,6 +1,8 @@
 package app.tsumugi.study
 
 import app.tsumugi.db.TsumugiDatabase
+import app.tsumugi.l10n.L10n
+import app.tsumugi.l10n.Labels
 import app.tsumugi.settings.SettingsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -46,7 +48,8 @@ class ReminderPlanner(
         var at = maxOf(Instant.fromEpochMilliseconds(dues[index]), now + MIN_DELAY_MINUTES.minutes)
         at = outsideQuietHours(at, quietStart, quietEnd)
         val count = dues.count { it <= at.toEpochMilliseconds() }
-        Reminder(at, "Reviews are ready", "$count review${if (count == 1) "" else "s"} waiting. A few minutes keeps your streak going.", count)
+        // Text in the app language (shared string table, BRIEF_V2 G-14).
+        Reminder(at, Labels.text("reminder.title"), Labels.text("reminder.body", L10n.locale, count), count)
     }
 
     /** Moves [at] to the end of quiet hours if it falls inside them (quiet hours may span midnight). */

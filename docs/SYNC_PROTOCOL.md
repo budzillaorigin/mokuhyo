@@ -29,6 +29,9 @@ Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optio
 | `word_list` | `id` | LWW by `updated_at`, `deleted` tombstone |
 | `word_list_entry` | `(list_id, ref)` | LWW by `updated_at`, `deleted` tombstone |
 | `exam_attempt` | `id` | union (immutable once submitted) |
+| `conversation` | `id` | union (written once when the conversation ends; no audio paths, D-101) |
+| `today_block_done` | `(day, block)` | insert-only (union, D-100) |
+| `streak_freeze` | `day` | insert-only (union, D-106) |
 | `card` | `id` | **not synced**: rows are created from items/reviews; `suspended` syncs as a `setting`-like LWW field via the `card_flags` change type |
 
 Not synced: `app_meta` and `device_setting` (device-local: AI engine, model, endpoint URLs and audio engine, rule 16), `daily_stats` (derived from each device's own review log by triggers), `card.blocked_reason` (derived from the installed packs), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings (unless the user turns on "include recordings", which uses blobs).

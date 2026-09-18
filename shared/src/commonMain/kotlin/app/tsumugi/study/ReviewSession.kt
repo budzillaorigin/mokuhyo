@@ -1,11 +1,15 @@
 package app.tsumugi.study
 
+import app.tsumugi.ai.AiGateway
 import app.tsumugi.domain.CardDirection
 import app.tsumugi.domain.ItemKind
 import app.tsumugi.grammar.ExerciseKind
 import app.tsumugi.grammar.GhostSpawn
 import app.tsumugi.grammar.GrammarExercise
 import app.tsumugi.grammar.GrammarService
+import app.tsumugi.grammar.ProductionGrade
+import app.tsumugi.l10n.Labels
+import app.tsumugi.srs.CheckResult
 import app.tsumugi.srs.AnswerChecker
 import app.tsumugi.srs.Rating
 import app.tsumugi.srs.SrsRepository
@@ -35,6 +39,18 @@ enum class AnswerMode {
     BUILD,
     /** Kanji: draw it from memory, compare with the reference, then grade yourself (BRIEF §5.7 raw mode). */
     WRITING,
+    /** Grammar: type the missing construction with the point's title and meaning as a hint (young cards). */
+    FILL_HINT,
+    /** Grammar: pick the meaning of the marked construction from [ReviewPrompt.choices] (submit the index or the text). */
+    MEANING_CHOICE,
+    /**
+     * Grammar: translate [ReviewPrompt.question] into Japanese using the point. Graded by `grade_production` when a
+     * model is set up (Answered.production); otherwise the model answer is revealed (Revealed.production) and the
+     * learner grades themselves.
+     */
+    PRODUCTION,
+    /** Minimal pair: play [ReviewPrompt.minimalPair]'s `played` word, the learner picks A or B (submit "a"/"b" or the word). */
+    MINIMAL_PAIR,
 }
 
 data class ReviewPrompt(
@@ -45,22 +61,26 @@ data class ReviewPrompt(
     val practice: Boolean = false,
     /** Grammar cards: the sentence exercise chosen for this review. */
     val exercise: GrammarExercise? = null,
+    /** Minimal-pair cards: the pair and which word to play. */
+    val minimalPair: MinimalPairPrompt? = null,
 ) {
-    /** "Kanji · Meaning", "Vocabulary · Reading", … */
+    /** "Kanji · Meaning", "Vocabulary · Reading", … in the shared string table's language (G-14). */
     val label: String
-        get() = "${item.kind.label} · " + when (card.direction) {
-            CardDirection.MEANING -> "Meaning"
-            CardDirection.READING -> "Reading"
-            CardDirection.RECALL -> "Recall"
-            CardDirection.CLOZE, CardDirection.GHOST -> if (mode == AnswerMode.BUILD) "Build the sentence" else "Fill the gap"
-            CardDirection.WRITING -> "Write it"
-            else -> "Recognition"
+        get() = "${Labels.kind(item.kind)} · " + when {
+            card.direction == CardDirection.RECALL -> Labels.direction(CardDirection.RECALL)
+            card.direction == CardDirection.CLOZE || card.direction == CardDirection.GHOST || mode != AnswerMode.SELF_GRADED -> Labels.mode(mode)
+            else -> Labels.mode(AnswerMode.SELF_GRADED)
         }
+
+    /** MEANING_CHOICE: the four meanings to choose from. */
+    val choices: List<String> get() = exercise?.choices.orEmpty()
 
     /** What to show as the question. RECALL cards ask from the meaning side. */
     val question: String
         get() = when {
-            exercise != null && mode == AnswerMode.BUILD -> exercise.example.english
+            minimalPair != null -> minimalPair.question
+            exercise != null && (mode == AnswerMode.BUILD || mode == AnswerMode.PRODUCTION) -> exercise.example.english
+            exercise != null && mode == AnswerMode.MEANING_CHOICE -> exercise.marked
             exercise != null -> exercise.prompt
             card.direction == CardDirection.RECALL || card.direction == CardDirection.WRITING ->
                 item.meanings.joinToString(", ") + (item.reading?.let { " ($it)" } ?: "")
@@ -69,7 +89,15 @@ data class ReviewPrompt(
 
     /** Cloze hint: the translation and the grammar point being practised. */
     val hint: String?
-        get() = exercise?.let { if (mode == AnswerMode.CLOZE) "${it.example.english}  ·  ${it.point.meaning}" else it.point.title }
+        get() = exercise?.let {
+            when (mode) {
+                AnswerMode.CLOZE -> "${it.example.english}  ·  ${it.point.meaning}"
+                AnswerMode.FILL_HINT -> "${it.example.english}  ·  ${it.pointHint}"
+                AnswerMode.MEANING_CHOICE -> null
+                AnswerMode.PRODUCTION -> "${it.point.title} (${it.point.structure})"
+                else -> it.point.title
+            }
+        }
 
     /** The accepted answers, shown after answering. */
     val expected: List<String>
@@ -77,9 +105,11 @@ data class ReviewPrompt(
             AnswerMode.MEANING -> item.meanings
             AnswerMode.READING -> item.acceptedReadings
             AnswerMode.SELF_GRADED -> if (card.direction == CardDirection.RECALL) listOf(item.primaryText) else item.meanings
-            AnswerMode.CLOZE -> listOfNotNull(exercise?.example?.answer)
-            AnswerMode.BUILD -> listOfNotNull(exercise?.example?.japanese)
+            AnswerMode.CLOZE, AnswerMode.FILL_HINT -> listOfNotNull(exercise?.example?.answer)
+            AnswerMode.BUILD, AnswerMode.PRODUCTION -> listOfNotNull(exercise?.example?.japanese)
+            AnswerMode.MEANING_CHOICE -> listOfNotNull(exercise?.point?.meaning)
             AnswerMode.WRITING -> listOf(item.primaryText)
+            AnswerMode.MINIMAL_PAIR -> listOfNotNull(minimalPair?.answer)
         }
 }
 
@@ -111,8 +141,17 @@ sealed interface ReviewState {
         val wrappingUp: Boolean = false,
     ) : ReviewState
 
-    /** Self-graded card with its answer revealed; waiting for a rating. */
-    data class Revealed(val prompt: ReviewPrompt, val remaining: Int, val done: Int) : ReviewState
+    /**
+     * Self-graded card with its answer revealed; waiting for a rating. A PRODUCTION answer without a model lands here
+     * too, with the learner's [given] answer and [production] (the model answer and the rule checks).
+     */
+    data class Revealed(
+        val prompt: ReviewPrompt,
+        val remaining: Int,
+        val done: Int,
+        val given: String? = null,
+        val production: ProductionGrade? = null,
+    ) : ReviewState
 
     data class Answered(
         val prompt: ReviewPrompt,
@@ -123,6 +162,8 @@ sealed interface ReviewState {
         val remaining: Int,
         val done: Int,
         val canUndo: Boolean,
+        /** PRODUCTION: the model-graded result (rubric, feedback, model answer). */
+        val production: ProductionGrade? = null,
     ) : ReviewState {
         val correct: Boolean get() = verdict == Verdict.CORRECT || verdict == Verdict.CLOSE
     }
@@ -149,19 +190,26 @@ class ReviewSession(
     /** Exercises for grammar cards, by card id (cards without one are skipped). */
     exercises: Map<String, GrammarExercise> = emptyMap(),
     private val grammar: GrammarService? = null,
+    /** Grades PRODUCTION answers; null (or no model in it) means the learner self-grades against the model answer. */
+    private val gateway: AiGateway? = null,
 ) {
     private val queue = ArrayDeque(
         cards.filter { it.itemId in items }
             .filter { !it.direction.isGrammar || it.id in exercises }
             .shuffled(random)
             .map { card ->
+                val item = items.getValue(card.itemId)
                 val exercise = exercises[card.id]
+                val pair = if (item.kind == ItemKind.MINIMAL_PAIR) MinimalPairPrompt.of(item, random) else null
                 val mode = when (exercise?.kind) {
                     ExerciseKind.BUILD -> AnswerMode.BUILD
                     ExerciseKind.CLOZE -> AnswerMode.CLOZE
-                    null -> modeFor(card.direction)
+                    ExerciseKind.FILL_HINT -> AnswerMode.FILL_HINT
+                    ExerciseKind.MEANING_CHOICE -> AnswerMode.MEANING_CHOICE
+                    ExerciseKind.PRODUCTION -> AnswerMode.PRODUCTION
+                    null -> if (pair != null) AnswerMode.MINIMAL_PAIR else modeFor(card.direction)
                 }
-                ReviewPrompt(card, items.getValue(card.itemId), mode, exercise = exercise)
+                ReviewPrompt(card, item, mode, exercise = exercise, minimalPair = pair)
             },
     )
     private val results = ArrayList<Pair<ReviewPrompt, Boolean>>()
@@ -187,10 +235,23 @@ class ReviewSession(
         val asking = _state.value as? ReviewState.Asking ?: return
         val prompt = asking.prompt
         val item = prompt.item
+        var production: ProductionGrade? = null
         val check = when (prompt.mode) {
             AnswerMode.MEANING -> AnswerChecker.checkMeaning(answer, item.meanings, item.synonyms)
             AnswerMode.READING -> AnswerChecker.checkReading(answer, item.acceptedReadings)
-            AnswerMode.CLOZE, AnswerMode.BUILD -> grammar?.check(prompt.exercise ?: return, answer) ?: return
+            AnswerMode.CLOZE, AnswerMode.BUILD, AnswerMode.FILL_HINT, AnswerMode.MEANING_CHOICE ->
+                grammar?.check(prompt.exercise ?: return, answer) ?: return
+            AnswerMode.PRODUCTION -> {
+                if (answer.isBlank()) return
+                val grade = grammar?.gradeProduction(prompt.exercise ?: return, answer, gateway) ?: return
+                if (grade.selfGrade) {
+                    _state.value = ReviewState.Revealed(prompt, asking.remaining, asking.done, answer.trim(), grade)
+                    return
+                }
+                production = grade
+                CheckResult(grade.verdict ?: Verdict.WRONG, grade.modelAnswer)
+            }
+            AnswerMode.MINIMAL_PAIR -> prompt.minimalPair?.check(answer) ?: return
             AnswerMode.SELF_GRADED, AnswerMode.WRITING -> return
         }
         if (check.verdict == Verdict.WRONG_KIND) {
@@ -201,7 +262,7 @@ class ReviewSession(
         record(prompt, rating, answer, check.accepted)
         queue.removeFirst()
         if (!check.accepted && !prompt.practice) queue.addLast(prompt.copy(practice = true))
-        _state.value = ReviewState.Answered(prompt, answer, check.verdict, check.matched, queue.size, done(), canUndo = !prompt.practice)
+        _state.value = ReviewState.Answered(prompt, answer, check.verdict, check.matched, queue.size, done(), canUndo = !prompt.practice, production = production)
     }
 
     /** Self-graded and writing prompts: show the answer (for writing, after drawing). */
@@ -222,7 +283,7 @@ class ReviewSession(
 
     private suspend fun gradeLocked(rating: Rating) {
         val revealed = _state.value as? ReviewState.Revealed ?: return
-        record(revealed.prompt, rating, null, rating != Rating.AGAIN)
+        record(revealed.prompt, rating, revealed.given, rating != Rating.AGAIN)
         queue.removeFirst()
         if (rating == Rating.AGAIN && !revealed.prompt.practice) queue.addLast(revealed.prompt.copy(practice = true))
         advance()
@@ -358,7 +419,11 @@ class ReviewSession(
 
         private val CardDirection.isGrammar: Boolean get() = this == CardDirection.CLOZE || this == CardDirection.GHOST
 
-        /** A session over everything due now (up to [limit] cards). Grammar cards need [grammar] for exercises. */
+        /**
+         * A session over everything due now (up to [limit] cards; Today passes its budget cap, G-01). Grammar cards
+         * need [grammar] for exercises. With [grammarVariety] (G-05) grammar cards also get fill-in-with-hint, meaning
+         * recognition and production exercises by stage; production is graded through [gateway] when it has a model.
+         */
         @Throws(Exception::class)
         suspend fun start(
             srs: SrsRepository,
@@ -366,14 +431,16 @@ class ReviewSession(
             limit: Int = 500,
             clock: Clock = Clock.System,
             random: Random = Random.Default,
+            grammarVariety: Boolean = false,
+            gateway: AiGateway? = null,
         ): ReviewSession {
             val cards = srs.dueCards(limit, clock.now())
             val items = srs.items(cards.map { it.itemId }.toSet())
             val exercises = if (grammar == null) emptyMap() else cards
                 .filter { it.direction.isGrammar }
-                .mapNotNull { c -> grammar.exercise(c.itemId.removePrefix("g:"), random)?.let { c.id to it } }
+                .mapNotNull { c -> grammar.exercise(c.itemId.removePrefix("g:"), random, c.stage, grammarVariety)?.let { c.id to it } }
                 .toMap()
-            return ReviewSession(srs, cards, items, clock, random, exercises, grammar)
+            return ReviewSession(srs, cards, items, clock, random, exercises, grammar, gateway)
         }
     }
 }

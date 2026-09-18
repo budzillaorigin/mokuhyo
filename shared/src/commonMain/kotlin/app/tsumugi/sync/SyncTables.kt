@@ -180,11 +180,32 @@ internal class TableSpec(
             listOf("item_id"), "unlocked_at", MergeRule.UNION,
         )
 
+        /** Finished conversations (free talk, role-plays): written once, immutable (DECISIONS D-101). */
+        val conversation = TableSpec(
+            "conversation",
+            listOf(
+                "id" to T, "mode" to T, "scenario_id" to T, "started_at" to I, "ended_at" to I, "level" to T,
+                "turns" to T, "level_estimate" to T, "errors" to T, "engine" to T, "device_id" to T,
+            ),
+            listOf("id"), "ended_at", MergeRule.UNION,
+        )
+        /** Today blocks finished per local day (weekly challenges count them; D-100). */
+        val todayBlockDone = TableSpec(
+            "today_block_done", listOf("day" to T, "block" to T, "completed_at" to I),
+            listOf("day", "block"), "completed_at", MergeRule.UNION,
+        )
+        /** Streak freeze days (D-106). */
+        val streakFreeze = TableSpec(
+            "streak_freeze", listOf("day" to T, "reason" to T, "created_at" to I),
+            listOf("day"), "created_at", MergeRule.UNION,
+        )
+
         /** Card rows don't sync; only the user-set suspended flag does, as its own change type. */
         const val CARD_FLAGS = "card_flags"
 
         val all = listOf(
             item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt, pathProgress, pathUnlock,
+            conversation, todayBlockDone, streakFreeze,
         ).associateBy { it.name }
     }
 }

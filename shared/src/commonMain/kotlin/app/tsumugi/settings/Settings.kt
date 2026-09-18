@@ -49,9 +49,13 @@ class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clo
         const val DESIRED_RETENTION = "srs.desiredRetention"
         /** JSON array of 21 FSRS weights fitted by the optimizer; absent = defaults. */
         const val FSRS_WEIGHTS = "srs.fsrsWeights"
-        /** Epoch-ms start of vacation mode; absent = off. Streaks don't break while on vacation. */
+        /** Epoch-ms start of vacation mode; absent = off. Each vacation day is a streak freeze (D-106). */
         const val VACATION_SINCE = "streak.vacationSince"
         const val REMINDERS_ENABLED = "notifications.enabled"
+        /** Grammar lesson order: absent/"jlpt" = JLPT order, or a textbook id ("genki", "tobira", "quartet"; D-104). */
+        const val GRAMMAR_PATH = "grammar.path"
+        /** Grammar reviews mix in fill-in-with-hint, meaning recognition and production (G-05); default on. */
+        const val GRAMMAR_REVIEW_VARIETY = "grammar.reviewVariety"
         /** Add a writing card (draw the kanji) to new kanji lessons. */
         const val WRITING_CARDS = "writing.cardsEnabled"
         /** Remind once at least this many reviews are due. */

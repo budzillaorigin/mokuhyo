@@ -46,7 +46,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(3L, TsumugiDatabase.Schema.version)
+        assertEquals(4L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -77,5 +77,13 @@ class UserDbMigrationTest {
 
         // v2 -> v3 (2.sqm): the device-local in-progress exam table (F-24).
         assertNull(db.examAttemptQueries.inProgress().executeAsOneOrNull())
+
+        // v3 -> v4 (3.sqm): conversations, finished Today blocks and streak freezes, all union-synced (G-01/G-02/G-11).
+        val before = driver.long("SELECT count(*) FROM change_log")!!
+        db.conversationQueries.insertConversation("c1", "FREE_TALK", null, 0, 1, "N4", "[]", null, "[]", null, "d")
+        db.studyQueries.markBlockDone("2026-09-18", "SHADOWING", 5)
+        db.studyQueries.insertFreeze("2026-09-19", "FREEZE", 5)
+        assertEquals(before + 3, driver.long("SELECT count(*) FROM change_log"))
+        assertEquals(1, db.conversationQueries.recentConversations(10).executeAsList().size)
     }
 }
