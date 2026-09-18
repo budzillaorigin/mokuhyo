@@ -629,6 +629,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.tsumugi.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tsumugi/Platform/Tsumugi-Bridging-Header.h";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -700,6 +701,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.tsumugi.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tsumugi/Platform/Tsumugi-Bridging-Header.h";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
