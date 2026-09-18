@@ -13,9 +13,8 @@ import re
 import tarfile
 from collections import Counter, defaultdict
 
-from common import download, finish_pack, log, nfc, open_pack, reset_tables, set_meta, to_hiragana
+from common import finish_pack, log, nfc, open_pack, reset_tables, set_meta, source, to_hiragana
 
-BASE = "https://downloads.tatoeba.org/exports/"
 # B-line token: headword, optional (reading), optional [sense], optional {surface form}, optional ~
 TOKEN_RE = re.compile(r"^([^(\[{~]+)(?:\(([^)]+)\))?")
 MAX_SENTENCES_PER_WORD = 30
@@ -24,7 +23,8 @@ MAX_WORDS_PER_KANJI = 150
 
 
 def read_tsv_bz2(name: str):
-    with bz2.open(download(BASE + name), "rt", encoding="utf-8") as f:
+    """A Tatoeba export pinned in sources.lock (tatoeba-*)."""
+    with bz2.open(source(name), "rt", encoding="utf-8") as f:
         for line in f:
             yield line.rstrip("\n").split("\t")
 
@@ -34,15 +34,15 @@ def main() -> None:
     reset_tables(db, {"sentence", "sentence_word"})
 
     log("Tatoeba sentences…")
-    jpn = {int(r[0]): nfc(r[2]) for r in read_tsv_bz2("per_language/jpn/jpn_sentences.tsv.bz2") if len(r) >= 3}
+    jpn = {int(r[0]): nfc(r[2]) for r in read_tsv_bz2("tatoeba-jpn-sentences") if len(r) >= 3}
     links = defaultdict(list)
-    for r in read_tsv_bz2("per_language/jpn/jpn-eng_links.tsv.bz2"):
+    for r in read_tsv_bz2("tatoeba-jpn-eng-links"):
         if len(r) >= 2:
             links[int(r[0])].append(int(r[1]))
     wanted_eng = {e for ids in links.values() for e in ids}
     eng = {
         int(r[0]): r[2]
-        for r in read_tsv_bz2("per_language/eng/eng_sentences.tsv.bz2")
+        for r in read_tsv_bz2("tatoeba-eng-sentences")
         if len(r) >= 3 and int(r[0]) in wanted_eng
     }
 
@@ -64,7 +64,7 @@ def main() -> None:
     log("Tatoeba index…")
     freq: Counter[int] = Counter()
     sentence_words: dict[int, set[int]] = {}
-    with tarfile.open(download(BASE + "jpn_indices.tar.bz2")) as tf:
+    with tarfile.open(source("tatoeba-jpn-indices")) as tf:
         member = next(m for m in tf.getmembers() if m.isfile())
         for raw in tf.extractfile(member):
             parts = raw.decode("utf-8").rstrip("\n").split("\t")

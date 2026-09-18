@@ -1,0 +1,255 @@
+{
+  "_comment": "Pinned inputs of tools/packs (F-38, D-066). Builders verify sha256; refresh deliberately with `uv run python packs/build_all.py --update-sources [NAME ...]` and commit the diff.",
+  "sources": {
+    "jmdict-eng": {
+      "url": "https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260914172325/jmdict-eng-3.6.2%2B20260914172325.json.zip",
+      "file": "jmdict-eng-3.6.2+20260914172325.json.zip",
+      "release": "3.6.2+20260914172325",
+      "date": "2026-09-14",
+      "sha256": "420a315a911493473b04c3a5027e772f2b0474c325e5b13945a4e80a44cfe27f",
+      "license": "CC BY-SA 4.0 (EDRDG)",
+      "update": {
+        "kind": "github-release",
+        "repo": "scriptin/jmdict-simplified",
+        "asset": "jmdict\\-eng-\\d.*\\.json\\.zip"
+      }
+    },
+    "kanjidic2-en": {
+      "url": "https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260914172325/kanjidic2-en-3.6.2%2B20260914172325.json.zip",
+      "file": "kanjidic2-en-3.6.2+20260914172325.json.zip",
+      "release": "3.6.2+20260914172325",
+      "date": "2026-09-14",
+      "sha256": "3ed9cc6310be4c02bda10c07c20669f44e4d3bc39bee3d2bccbca7f0a07ae13c",
+      "license": "CC BY-SA 4.0 (EDRDG)",
+      "update": {
+        "kind": "github-release",
+        "repo": "scriptin/jmdict-simplified",
+        "asset": "kanjidic2\\-en-\\d.*\\.json\\.zip"
+      }
+    },
+    "kradfile": {
+      "url": "https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260914172325/kradfile-3.6.2%2B20260914172325.json.zip",
+      "file": "kradfile-3.6.2+20260914172325.json.zip",
+      "release": "3.6.2+20260914172325",
+      "date": "2026-09-14",
+      "sha256": "265fa3c75ee2d691ae0a5033c1196a6c47eafbabc3ad038586bc180ec2455b1f",
+      "license": "CC BY-SA 4.0 (EDRDG)",
+      "update": {
+        "kind": "github-release",
+        "repo": "scriptin/jmdict-simplified",
+        "asset": "kradfile-\\d.*\\.json\\.zip"
+      }
+    },
+    "radkfile": {
+      "url": "https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260914172325/radkfile-3.6.2%2B20260914172325.json.zip",
+      "file": "radkfile-3.6.2+20260914172325.json.zip",
+      "release": "3.6.2+20260914172325",
+      "date": "2026-09-14",
+      "sha256": "355fdb0110e9331d8b0d275592478604377f2c29dce73c636942a71d03b8443b",
+      "license": "CC BY-SA 4.0 (EDRDG)",
+      "update": {
+        "kind": "github-release",
+        "repo": "scriptin/jmdict-simplified",
+        "asset": "radkfile-\\d.*\\.json\\.zip"
+      }
+    },
+    "jmdict-furigana": {
+      "url": "https://github.com/Doublevil/JmdictFurigana/releases/download/2.3.1%2B2026-08-25/JmdictFurigana.json",
+      "file": "JmdictFurigana.json",
+      "release": "2.3.1+2026-08-25",
+      "date": "2026-08-25",
+      "sha256": "4f5e765f6226bd90fdbb0da1c1dbaba3aaa068183cd93a3930b8e1924f13ecd5",
+      "license": "MIT (code); data derived from JMdict, CC BY-SA 4.0",
+      "update": {
+        "kind": "github-release",
+        "repo": "Doublevil/JmdictFurigana",
+        "asset": "JmdictFurigana\\.json"
+      }
+    },
+    "kanjivg": {
+      "url": "https://github.com/KanjiVG/kanjivg/releases/download/r20250816/kanjivg-20250816-main.zip",
+      "file": "kanjivg-20250816-main.zip",
+      "release": "r20250816",
+      "date": "2025-08-16",
+      "sha256": "69a2944ec1183086fdee5ba9c1f48bc306b867480a95b2f337f3203bf50689a3",
+      "license": "CC BY-SA 3.0",
+      "update": {
+        "kind": "github-release",
+        "repo": "KanjiVG/kanjivg",
+        "asset": "kanjivg-\\d+-main\\.zip"
+      }
+    },
+    "kanjium-accents": {
+      "url": "https://raw.githubusercontent.com/mifunetoshiro/kanjium/8a0cdaa16d64a281a2048de2eee2ec5e3a440fa6/data/source_files/raw/accents.txt",
+      "file": "kanjium-accents.txt",
+      "release": "8a0cdaa16d64a281a2048de2eee2ec5e3a440fa6",
+      "date": "2024-06-16",
+      "sha256": "8bd0dd127dab32ceec94cb03ab1ba6b68858ea73421dfa1731af2f373deb4f20",
+      "license": "CC BY-SA 4.0",
+      "update": {
+        "kind": "github-file",
+        "repo": "mifunetoshiro/kanjium",
+        "branch": "master",
+        "path": "data/source_files/raw/accents.txt",
+        "file": "kanjium-accents.txt"
+      }
+    },
+    "jlpt-vocab-n1": {
+      "url": "https://raw.githubusercontent.com/stephenmk/yomitan-jlpt-vocab/b062d4e38c4bdd0950ae1d4ec55f04b176182e03/original_data/n1.csv",
+      "file": "jlpt-vocab-n1.csv",
+      "release": "b062d4e38c4bdd0950ae1d4ec55f04b176182e03",
+      "date": "2025-08-26",
+      "sha256": "7a58f0584e9ec2b0299ccb9b109f3bd03e08b90d129a714307c0a1cb72f07b32",
+      "license": "CC BY-SA 4.0 (repository LICENSE); lists by Jonathan Waller, CC BY",
+      "update": {
+        "kind": "github-file",
+        "repo": "stephenmk/yomitan-jlpt-vocab",
+        "branch": "main",
+        "path": "original_data/n1.csv",
+        "file": "jlpt-vocab-n1.csv"
+      }
+    },
+    "jlpt-vocab-n2": {
+      "url": "https://raw.githubusercontent.com/stephenmk/yomitan-jlpt-vocab/b062d4e38c4bdd0950ae1d4ec55f04b176182e03/original_data/n2.csv",
+      "file": "jlpt-vocab-n2.csv",
+      "release": "b062d4e38c4bdd0950ae1d4ec55f04b176182e03",
+      "date": "2025-08-26",
+      "sha256": "42a4413326e857d701dc9659b2711637ab612304a339fe0d09f4f0f042d3a214",
+      "license": "CC BY-SA 4.0 (repository LICENSE); lists by Jonathan Waller, CC BY",
+      "update": {
+        "kind": "github-file",
+        "repo": "stephenmk/yomitan-jlpt-vocab",
+        "branch": "main",
+        "path": "original_data/n2.csv",
+        "file": "jlpt-vocab-n2.csv"
+      }
+    },
+    "jlpt-vocab-n3": {
+      "url": "https://raw.githubusercontent.com/stephenmk/yomitan-jlpt-vocab/b062d4e38c4bdd0950ae1d4ec55f04b176182e03/original_data/n3.csv",
+      "file": "jlpt-vocab-n3.csv",
+      "release": "b062d4e38c4bdd0950ae1d4ec55f04b176182e03",
+      "date": "2025-08-26",
+      "sha256": "bd4d68c59cfee861351e1bdf9d99818e434392201eabbed4d3657225fe53a3ac",
+      "license": "CC BY-SA 4.0 (repository LICENSE); lists by Jonathan Waller, CC BY",
+      "update": {
+        "kind": "github-file",
+        "repo": "stephenmk/yomitan-jlpt-vocab",
+        "branch": "main",
+        "path": "original_data/n3.csv",
+        "file": "jlpt-vocab-n3.csv"
+      }
+    },
+    "jlpt-vocab-n4": {
+      "url": "https://raw.githubusercontent.com/stephenmk/yomitan-jlpt-vocab/b062d4e38c4bdd0950ae1d4ec55f04b176182e03/original_data/n4.csv",
+      "file": "jlpt-vocab-n4.csv",
+      "release": "b062d4e38c4bdd0950ae1d4ec55f04b176182e03",
+      "date": "2025-08-26",
+      "sha256": "a14dcc7fdc02259b22331a486c6ff66df74c16472c8aeb5a0ebe7e5fa8ee8eb4",
+      "license": "CC BY-SA 4.0 (repository LICENSE); lists by Jonathan Waller, CC BY",
+      "update": {
+        "kind": "github-file",
+        "repo": "stephenmk/yomitan-jlpt-vocab",
+        "branch": "main",
+        "path": "original_data/n4.csv",
+        "file": "jlpt-vocab-n4.csv"
+      }
+    },
+    "jlpt-vocab-n5": {
+      "url": "https://raw.githubusercontent.com/stephenmk/yomitan-jlpt-vocab/b062d4e38c4bdd0950ae1d4ec55f04b176182e03/original_data/n5.csv",
+      "file": "jlpt-vocab-n5.csv",
+      "release": "b062d4e38c4bdd0950ae1d4ec55f04b176182e03",
+      "date": "2025-08-26",
+      "sha256": "07dc6f197b51cc076c65c3c9f23218d10c2b67f76545f5c1c4d9e3750495533a",
+      "license": "CC BY-SA 4.0 (repository LICENSE); lists by Jonathan Waller, CC BY",
+      "update": {
+        "kind": "github-file",
+        "repo": "stephenmk/yomitan-jlpt-vocab",
+        "branch": "main",
+        "path": "original_data/n5.csv",
+        "file": "jlpt-vocab-n5.csv"
+      }
+    },
+    "kanji-data": {
+      "url": "https://raw.githubusercontent.com/davidluzgouveia/kanji-data/00fd7079c3890f430759536f91aa5e854ec0ca4f/kanji.json",
+      "file": "kanji-data.json",
+      "release": "00fd7079c3890f430759536f91aa5e854ec0ca4f",
+      "date": "2026-02-27",
+      "sha256": "561b72ea9df703c58fae0c68585812e172aaa7611d2fcee6719d55fd2dfd4fa4",
+      "license": "MIT",
+      "update": {
+        "kind": "github-file",
+        "repo": "davidluzgouveia/kanji-data",
+        "branch": "master",
+        "path": "kanji.json",
+        "file": "kanji-data.json"
+      }
+    },
+    "tatoeba-jpn-sentences": {
+      "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_sentences.tsv.bz2",
+      "file": "jpn_sentences.tsv.bz2",
+      "release": "rolling export",
+      "date": "2026-09-12",
+      "rolling": true,
+      "sha256": "8cdf1f7221cfd22a31b1d6ae3712b4ac635dc320a2fc432466eee90d39aecd3c",
+      "license": "CC BY 2.0 FR",
+      "update": {
+        "kind": "rolling",
+        "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn_sentences.tsv.bz2",
+        "file": "jpn_sentences.tsv.bz2"
+      }
+    },
+    "tatoeba-jpn-eng-links": {
+      "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn-eng_links.tsv.bz2",
+      "file": "jpn-eng_links.tsv.bz2",
+      "release": "rolling export",
+      "date": "2026-09-12",
+      "rolling": true,
+      "sha256": "256b14b7cbf8a49b91af18fe8f35f4f7a8ab142d70c5b310c9d5a21535fe1649",
+      "license": "CC BY 2.0 FR",
+      "update": {
+        "kind": "rolling",
+        "url": "https://downloads.tatoeba.org/exports/per_language/jpn/jpn-eng_links.tsv.bz2",
+        "file": "jpn-eng_links.tsv.bz2"
+      }
+    },
+    "tatoeba-eng-sentences": {
+      "url": "https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2",
+      "file": "eng_sentences.tsv.bz2",
+      "release": "rolling export",
+      "date": "2026-09-12",
+      "rolling": true,
+      "sha256": "7c46287a9146d8090ea26b6b2eaadc759b92a550e865e32388077806f584ee62",
+      "license": "CC BY 2.0 FR",
+      "update": {
+        "kind": "rolling",
+        "url": "https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2",
+        "file": "eng_sentences.tsv.bz2"
+      }
+    },
+    "tatoeba-jpn-indices": {
+      "url": "https://downloads.tatoeba.org/exports/jpn_indices.tar.bz2",
+      "file": "jpn_indices.tar.bz2",
+      "release": "rolling export",
+      "date": "2026-09-12",
+      "rolling": true,
+      "sha256": "90589cbf252e81e7fdff035c2741aeb42bafb20bdb3cf0863e8e9ebc9279de8d",
+      "license": "CC BY 2.0 FR",
+      "update": {
+        "kind": "rolling",
+        "url": "https://downloads.tatoeba.org/exports/jpn_indices.tar.bz2",
+        "file": "jpn_indices.tar.bz2"
+      }
+    },
+    "mecab-ipadic": {
+      "url": "https://deb.debian.org/debian/pool/main/m/mecab-ipadic/mecab-ipadic_2.7.0-20070801+main.orig.tar.gz",
+      "file": "mecab-ipadic-2.7.0-20070801.tar.gz",
+      "release": "2.7.0-20070801",
+      "date": "2007-08-01",
+      "sha256": "b62f527d881c504576baed9c6ef6561554658b175ce6ae0096a60307e49e3523",
+      "license": "NAIST/ICOT free license (BSD-style)",
+      "update": {
+        "kind": "fixed"
+      }
+    }
+  }
+}

@@ -18,6 +18,15 @@ Offline LLM and speech-to-text (BRIEF §3.2, §3.5, §7.1). Both engines are MIT
 | llama.cpp source `b11040.tar.gz` | b11040 | `5205d346d8a5cc005202128b68fe88afe11c1c4b9a004b9215af19d7046eab8f` |
 | whisper.cpp source `b5130.tar.gz` | b5130 | `a9ad0f82f30cb6ac5b627874895f89571dd64f7c49d0df3a38550fdb9325fe9b` |
 
+Both tags are real GitHub releases. They are the projects' automated build releases, which GitHub marks "pre-release", not the numbered `v1.x` releases. Checked 2026-09-18 (F-44) against the GitHub releases API:
+
+| Tag | Published | Commit | Asset | Size | GitHub-reported digest |
+|---|---|---|---|---|---|
+| [llama.cpp b11040](https://github.com/ggml-org/llama.cpp/releases/tag/b11040) | 2026-09-18 | `5b335f413e4f73b0809c4fe39af894efbcc6a0d2` | `llama-b11040-xcframework.zip` | 57,802,059 B | matches the pin above |
+| [whisper.cpp b5130](https://github.com/ggml-org/whisper.cpp/releases/tag/b5130) | 2026-09-11 (same day as v1.9.4) | `927cfce34f31707e17f2bff35c349632fb9e2c3a` | `whisper-b5130-xcframework.zip` | 57,180,543 B | matches the pin above |
+
+`fetch_ios_frameworks.sh` downloads from `https://github.com/ggml-org/<repo>/releases/download/<tag>/<asset>` and refuses a file whose SHA-256 differs. CI runs it in the iOS job.
+
 To bump a pin, change the tag and the hash together in `fetch_ios_frameworks.sh` and `androidApp/src/main/cpp/CMakeLists.txt`. Then check the bridges against the new `llama.h` and `whisper.h`, because the C API moves often.
 
 ## Setup

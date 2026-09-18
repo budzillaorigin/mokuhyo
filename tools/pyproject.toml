@@ -6,6 +6,9 @@ requires-python = ">=3.12"
 dependencies = []
 
 [dependency-groups]
+assets = [
+    "pillow>=12.3.0",
+]
 dev = ["ruff"]
 
 [tool.ruff]

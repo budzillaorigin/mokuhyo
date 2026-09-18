@@ -16,12 +16,11 @@ import io
 import struct
 import tarfile
 
-from common import PACKS, REPO, download, finish_pack, log, nfc, open_pack, reset_tables, set_meta
+from common import PACKS, REPO, finish_pack, log, nfc, open_pack, reset_tables, set_meta, source
 
 TOKENIZER_PACK = PACKS / "tokenizer.sqlite"
 TOKENIZER_SQ = REPO / "shared/src/commonMain/sqldelightTokenizer/app/tsumugi/tokenizer/db/tokenizer.sq"
 TOKENIZER_PACK_VERSION = "1"
-IPADIC_URL = "https://deb.debian.org/debian/pool/main/m/mecab-ipadic/mecab-ipadic_2.7.0-20070801+main.orig.tar.gz"
 TABLES = {"pos", "morpheme", "connection", "char_category", "char_range", "unknown"}
 
 
@@ -30,7 +29,7 @@ def star(value: str) -> str:
 
 
 def main() -> None:
-    with tarfile.open(download(IPADIC_URL, "mecab-ipadic-2.7.0-20070801.tar.gz")) as archive:
+    with tarfile.open(source("mecab-ipadic")) as archive:
         contents = {
             m.name.split("/")[-1]: archive.extractfile(m).read()
             for m in archive.getmembers()

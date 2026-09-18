@@ -5,7 +5,7 @@ import app.tsumugi.ai.LocalLlmBridge
 import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicLong
 
 /**
  * On-device LLM inference with llama.cpp (MIT, CPU/NEON) behind the shared [LocalLlmBridge].
@@ -15,13 +15,18 @@ import java.util.concurrent.atomic.AtomicBoolean
  * - KV-cache reuse: a prompt that extends the previous prompt + reply (a growing conversation) only decodes the
  *   new suffix.
  * - `libtsumugi_llama.so` loads lazily on the first [load], so constructing this is free.
+ * - Cancellation (F-10/F-29): every [generate] call gets an increasing id; [cancel] cancels every generation issued
+ *   so far, queued or running, by raising a high-water mark. Nothing ever resets it, so a cancel can't be lost to a
+ *   later call the way a shared boolean reset before the queued job was. A cancelled generation ends with
+ *   `onDone(null, CANCELLED)`, never with truncated text, so the caller doesn't parse half a reply and retry.
  */
 class LlamaJni(context: Context) : LocalLlmBridge {
     @Suppress("unused") private val appContext = context.applicationContext
     private val worker: ExecutorService = Executors.newSingleThreadExecutor { r ->
         Thread(null, r, "tsumugi-llama", 16L * 1024 * 1024).apply { isDaemon = true }
     }
-    private val cancelled = AtomicBoolean(false)
+    private val lastIssued = AtomicLong(0)
+    private val cancelledThrough = AtomicLong(0)
     @Volatile private var handle = 0L
 
     override fun isLoaded(): Boolean = handle != 0L
@@ -46,14 +51,20 @@ class LlamaJni(context: Context) : LocalLlmBridge {
         onToken: (String) -> Unit,
         onDone: (String?, String?) -> Unit,
     ) {
-        cancelled.set(false)
+        val id = lastIssued.incrementAndGet()
         worker.execute {
+            fun isCancelled() = cancelledThrough.get() >= id
+            if (isCancelled()) { onDone(null, CANCELLED); return@execute }
             val h = handle
             if (h == 0L) { onDone(null, "No model loaded"); return@execute }
             val text = StringBuilder()
+            var stoppedByCancel = false
             val sink = object : LlamaNative.Sink {
                 override fun onPiece(bytes: ByteArray): Boolean {
-                    if (cancelled.get()) return false
+                    if (isCancelled()) {
+                        stoppedByCancel = true
+                        return false
+                    }
                     text.append(String(bytes, Charsets.UTF_8))
                     val cut = stop.mapNotNull { s -> text.indexOf(s).takeIf { it >= 0 } }.minOrNull()
                     if (cut != null) {
@@ -72,16 +83,30 @@ class LlamaJni(context: Context) : LocalLlmBridge {
                 temperature.toFloat(),
                 sink,
             )
-            onDone(if (error != null && text.isEmpty()) null else text.toString(), error)
+            when {
+                stoppedByCancel || (error == null && isCancelled()) -> onDone(null, CANCELLED)
+                else -> onDone(if (error != null && text.isEmpty()) null else text.toString(), error)
+            }
         }
     }
 
-    /** Stops generation at the next token (checked in the sink, so no native call races with [unload]). */
-    override fun cancel() = cancelled.set(true)
+    /**
+     * Cancels every generation issued so far; each stops at its next token (checked in the sink, so no native call
+     * races with [unload]) or before it starts if still queued. Prompt decoding itself isn't interruptible.
+     */
+    override fun cancel() {
+        val issued = lastIssued.get()
+        cancelledThrough.accumulateAndGet(issued) { a, b -> maxOf(a, b) }
+    }
 
     override fun unload() {
         cancel()
         worker.execute { free() }
+    }
+
+    companion object {
+        /** Error string of a cancelled generation; AiGateway treats it as "don't retry" (F-10). */
+        const val CANCELLED = "cancelled"
     }
 
     private fun free() {

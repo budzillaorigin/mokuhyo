@@ -558,6 +558,9 @@
     <string name="settings_retention">目標定着率：%1$d%%</string>
     <string name="settings_retention_hint">復習で正解したい割合です。高くするほど間隔が短くなり、復習が増えます。</string>
     <string name="share_failed">共有されたテキストを開けませんでした：%1$s</string>
+    <string name="open_file_failed">%1$s を開けませんでした：%2$s</string>
+    <string name="open_file_subtitles">%1$s を使うには、練習 → メディアプレーヤーで動画を選んでから、この字幕を追加してください。</string>
+    <string name="open_file_unsupported">%1$s は開けません。開けるのは EPUB、Anki の .apkg、.srt/.vtt 字幕、JSON の試験問題バンクです。</string>
     <string name="share_read_label">Tsumugiで読む</string>
     <string name="speak_or_type">または日本語で入力</string>
     <string name="stage_apprentice">見習い</string>

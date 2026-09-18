@@ -12,7 +12,7 @@ import re
 import xml.etree.ElementTree as ET
 import zipfile
 
-from common import download, finish_pack, latest_release_asset, log, open_pack, reset_tables, set_meta
+from common import finish_pack, log, open_pack, reset_tables, set_meta, source, source_entry
 
 KVG = "{http://kanjivg.tagaini.net}"
 FILE_RE = re.compile(r"(?:^|/)([0-9a-f]{5})\.svg$")
@@ -20,13 +20,12 @@ STROKE_ID_RE = re.compile(r"-s(\d+)$")
 
 
 def main() -> None:
-    url = latest_release_asset("KanjiVG/kanjivg", r"kanjivg-\d+-main\.zip")
-    version = re.search(r"kanjivg-(\d+)-main", url).group(1)
+    version = re.search(r"kanjivg-(\d+)-main", source_entry("kanjivg")["file"]).group(1)
     db = open_pack()
     reset_tables(db, {"stroke"})
 
     rows = []
-    with zipfile.ZipFile(download(url)) as zf:
+    with zipfile.ZipFile(source("kanjivg")) as zf:
         for name in zf.namelist():
             m = FILE_RE.search(name)
             if not m:

@@ -588,9 +588,11 @@
 					"$(SRCROOT)/Frameworks/whisper.xcframework/ios-arm64_x86_64-simulator",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TsumugiInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Tsumugi;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Tsumugi uses the camera to read Japanese text so you can look it up. Recognition happens on your device.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Tsumugi connects to servers you set up on your own network, such as Ollama, a Whisper or VOICEVOX server, or your sync server.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Tsumugi records your voice for speaking practice and pronunciation feedback. Recordings stay on your device.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Tsumugi turns your spoken Japanese into text on your device to check your answers. Audio is not sent to Apple.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -660,9 +662,11 @@
 					"$(SRCROOT)/Frameworks/whisper.xcframework/ios-arm64_x86_64-simulator",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TsumugiInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Tsumugi;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Tsumugi uses the camera to read Japanese text so you can look it up. Recognition happens on your device.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Tsumugi connects to servers you set up on your own network, such as Ollama, a Whisper or VOICEVOX server, or your sync server.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Tsumugi records your voice for speaking practice and pronunciation feedback. Recordings stay on your device.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Tsumugi turns your spoken Japanese into text on your device to check your answers. Audio is not sent to Apple.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

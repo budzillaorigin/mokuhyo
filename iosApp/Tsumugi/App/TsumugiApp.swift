@@ -11,6 +11,8 @@ struct TsumugiApp: App {
         WindowGroup {
             RootView()
                 .environment(model)
+                // EPUB, .apkg, subtitles and item banks opened from Files, Mail or AirDrop (Platform/OpenedFiles.swift).
+                .handlesOpenedFiles(model)
                 .task { await Reminders.requestPermission() }
                 // Text and links shared with "Read in Tsumugi" while the app wasn't running.
                 .task { await model.importSharedItems() }

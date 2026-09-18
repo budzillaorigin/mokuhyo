@@ -19,17 +19,16 @@ import re
 import radicals
 from common import (
     DICTIONARY_PACK_VERSION,
-    download,
     dumps,
     finish_pack,
     is_kanji,
-    latest_release_asset,
     log,
     nfc,
     open_pack,
     read_zip_json,
     reset_tables,
     set_meta,
+    source,
     to_hiragana,
 )
 
@@ -38,10 +37,8 @@ TABLES = {
     "kanji", "radical", "kanji_component", "kanji_word", "furigana", "pitch",
 }
 
-JMDICT_REPO = "scriptin/jmdict-simplified"
-KANJIUM_ACCENTS = "https://raw.githubusercontent.com/mifunetoshiro/kanjium/master/data/source_files/raw/accents.txt"
-JLPT_VOCAB = "https://raw.githubusercontent.com/stephenmk/yomitan-jlpt-vocab/main/original_data/n{}.csv"
-KANJI_DATA = "https://raw.githubusercontent.com/davidluzgouveia/kanji-data/master/kanji.json"
+# Sources (URLs, releases, hashes) are pinned in sources.lock: jmdict-eng, kanjidic2-en, kradfile, radkfile,
+# jmdict-furigana, kanjium-accents, jlpt-vocab-n1..n5, kanji-data.
 
 # English words too common to be useful as gloss search terms on their own.
 STOPWORDS = {"a", "an", "the", "to", "of", "be", "or", "and", "in", "on", "at", "for", "with", "as", "by", "one's"}
@@ -68,7 +65,7 @@ def jlpt_vocab() -> dict[int, int]:
     """JMdict id -> JLPT level (5..1). Where a word appears at several levels, the easiest wins."""
     levels: dict[int, int] = {}
     for n in (1, 2, 3, 4, 5):
-        path = download(JLPT_VOCAB.format(n), f"jlpt-vocab-n{n}.csv")
+        path = source(f"jlpt-vocab-n{n}")
         with open(path, encoding="utf-8") as f:
             for row in csv.DictReader(f):
                 seq = row["jmdict_seq"].strip()
@@ -78,7 +75,7 @@ def jlpt_vocab() -> dict[int, int]:
 
 
 def build_words(db, jlpt: dict[int, int]) -> None:
-    data = read_zip_json(download(latest_release_asset(JMDICT_REPO, r"jmdict-eng-\d.*\.json\.zip")))
+    data = read_zip_json(source("jmdict-eng"))
     log(f"JMdict {data['version']} ({data['dictDate']}): {len(data['words'])} entries")
     set_meta(db, jmdict_version=data["version"], jmdict_date=data["dictDate"])
 
@@ -132,9 +129,9 @@ def build_words(db, jlpt: dict[int, int]) -> None:
 
 
 def build_kanji(db) -> None:
-    data = read_zip_json(download(latest_release_asset(JMDICT_REPO, r"kanjidic2-en-\d.*\.json\.zip")))
+    data = read_zip_json(source("kanjidic2-en"))
     set_meta(db, kanjidic2_version=data["version"])
-    new_levels = {k: v.get("jlpt_new") for k, v in json.loads(download(KANJI_DATA, "kanji-data.json").read_text(
+    new_levels = {k: v.get("jlpt_new") for k, v in json.loads(source("kanji-data").read_text(
         encoding="utf-8")).items()}
 
     rows = []
@@ -158,8 +155,8 @@ def build_kanji(db) -> None:
     db.executemany("INSERT INTO kanji VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", rows)
     log(f"  {len(rows)} kanji")
 
-    krad = read_zip_json(download(latest_release_asset(JMDICT_REPO, r"kradfile-\d.*\.json\.zip")))
-    radk = read_zip_json(download(latest_release_asset(JMDICT_REPO, r"radkfile-\d.*\.json\.zip")))
+    krad = read_zip_json(source("kradfile"))
+    radk = read_zip_json(source("radkfile"))
     meanings = {r[0]: json.loads(r[8]) for r in rows}
     db.executemany(
         "INSERT INTO radical VALUES (?,?,?,?)",
@@ -176,8 +173,7 @@ def build_kanji(db) -> None:
 
 
 def build_furigana(db) -> None:
-    url = latest_release_asset("Doublevil/JmdictFurigana", r"JmdictFurigana\.json")
-    items = json.loads(download(url).read_text(encoding="utf-8-sig"))
+    items = json.loads(source("jmdict-furigana").read_text(encoding="utf-8-sig"))
     rows = {}
     for it in items:
         text = nfc(it["text"])
@@ -191,7 +187,7 @@ def build_furigana(db) -> None:
 
 def build_pitch(db) -> None:
     rows = {}
-    with open(download(KANJIUM_ACCENTS, "kanjium-accents.txt"), encoding="utf-8") as f:
+    with open(source("kanjium-accents"), encoding="utf-8") as f:
         for line in f:
             parts = line.rstrip("\n").split("\t")
             if len(parts) != 3:

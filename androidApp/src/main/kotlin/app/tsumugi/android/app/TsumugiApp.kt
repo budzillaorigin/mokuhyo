@@ -84,10 +84,14 @@ import app.tsumugi.android.features.study.ReviewScreen
 import app.tsumugi.android.features.today.TodayScreen
 import app.tsumugi.android.ui.TsumugiTheme
 
-/** Text handed to the app by another app: the share sheet ("Read in Tsumugi") or the text-selection menu ("Look up"). */
+/**
+ * Content handed to the app by another app: the share sheet ("Read in Tsumugi"), the text-selection menu ("Look up"),
+ * or a file opened with Tsumugi.
+ */
 sealed interface Incoming {
     data class Read(val text: String) : Incoming
     data class Lookup(val text: String) : Incoming
+    data class OpenFile(val uri: android.net.Uri, val name: String, val mimeType: String?) : Incoming
 }
 
 private val URL = Regex("https?://\\S+")
@@ -130,6 +134,18 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     if (url != null) graph.reader.importUrl(url) else graph.reader.importText(item.text)
                 }.onSuccess { nav.open(Tab.LEARN, Route.Read(it)) }
                     .onFailure { shareError = context.getString(R.string.share_failed, it.message ?: it::class.simpleName.orEmpty()) }
+                shareBusy = false
+            }
+            is Incoming.OpenFile -> {
+                shareBusy = true
+                runCatching { openFile(context, graph, item.uri, item.name, item.mimeType) }
+                    .onSuccess { opened ->
+                        when (opened) {
+                            is OpenedFile.Document -> nav.open(Tab.LEARN, Route.Read(opened.docId))
+                            is OpenedFile.Message -> shareError = opened.text
+                        }
+                    }
+                    .onFailure { shareError = context.getString(R.string.open_file_failed, item.name, it.message ?: it::class.simpleName.orEmpty()) }
                 shareBusy = false
             }
         }

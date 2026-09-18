@@ -11,6 +11,7 @@ import sys
 import unicodedata
 import urllib.request
 import zipfile
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -32,32 +33,118 @@ def log(msg: str) -> None:
     print(msg, file=sys.stderr, flush=True)
 
 
-def download(url: str, name: str | None = None) -> Path:
-    """Download url into tools/.cache (once) and return the local path."""
-    CACHE.mkdir(parents=True, exist_ok=True)
-    target = CACHE / (name or url.rsplit("/", 1)[-1].replace("%2B", "+"))
-    if not target.exists():
-        log(f"downloading {url}")
-        tmp = target.with_suffix(target.suffix + ".part")
-        req = urllib.request.Request(url, headers={"User-Agent": "tsumugi-tools"})
-        with urllib.request.urlopen(req) as resp, open(tmp, "wb") as out:
+# --- Pinned sources (tools/packs/sources.lock, F-38) ------------------------------------------------------------
+#
+# Every downloaded input is pinned in sources.lock: URL, release tag or commit, date, sha256. Builders call
+# source(name), which downloads into tools/.cache once and refuses a file whose hash doesn't match. Nothing
+# follows "latest" during a normal build. `build_all.py --update-sources` re-resolves each source (newest GitHub
+# release, branch head commit, or the current rolling export), downloads it, and rewrites the lock; review the
+# diff and commit it like any other change.
+
+SOURCES_LOCK = Path(__file__).resolve().parent / "sources.lock"
+GITHUB_API = "https://api.github" + ".com/repos/"
+
+
+def load_lock() -> dict:
+    return json.loads(SOURCES_LOCK.read_text(encoding="utf-8"))
+
+
+def _fetch(url: str, target: Path) -> str:
+    """Download url to target via a .part file; return the sha256 of what was written."""
+    log(f"downloading {url}")
+    tmp = target.with_suffix(target.suffix + ".part")
+    h = hashlib.sha256()
+    req = urllib.request.Request(url, headers={"User-Agent": "tsumugi-tools"})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp, open(tmp, "wb") as out:
             while chunk := resp.read(1 << 20):
+                h.update(chunk)
                 out.write(chunk)
         tmp.replace(target)
+    finally:
+        tmp.unlink(missing_ok=True)
+    return h.hexdigest()
+
+
+def source(name: str) -> Path:
+    """Local path of the locked source [name], downloaded into tools/.cache and verified against its sha256."""
+    entry = load_lock()["sources"].get(name)
+    if entry is None:
+        raise SystemExit(f"{name} is not in {SOURCES_LOCK.name}; add it with build_all.py --update-sources")
+    CACHE.mkdir(parents=True, exist_ok=True)
+    target = CACHE / entry["file"]
+    if target.exists() and sha256(target) == entry["sha256"]:
+        return target
+    got = _fetch(entry["url"], target)
+    if got != entry["sha256"]:
+        target.unlink(missing_ok=True)
+        hint = (
+            "It is a rolling export (only the latest is published), so upstream has moved on."
+            if entry.get("rolling") else "The pinned release changed upstream or the download was corrupted."
+        )
+        raise SystemExit(
+            f"sha256 mismatch for {name} ({entry['url']}):\n  locked {entry['sha256']}\n  got    {got}\n"
+            f"{hint} Run `uv run python packs/build_all.py --update-sources` to re-pin deliberately."
+        )
     return target
 
 
-def latest_release_asset(repo: str, pattern: str) -> str:
-    """URL of the first asset in the latest GitHub release of repo whose name matches pattern."""
-    req = urllib.request.Request(
-        f"https://api.github.com/repos/{repo}/releases/latest", headers={"User-Agent": "tsumugi-tools"}
-    )
-    with urllib.request.urlopen(req) as resp:
-        release = json.load(resp)
-    for asset in release["assets"]:
-        if re.fullmatch(pattern, asset["name"]):
-            return asset["browser_download_url"]
-    raise SystemExit(f"no asset matching {pattern} in {repo} {release['tag_name']}")
+def source_entry(name: str) -> dict:
+    return load_lock()["sources"][name]
+
+
+def _api(path: str):
+    req = urllib.request.Request(GITHUB_API + path, headers={"User-Agent": "tsumugi-tools"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp)
+
+
+def _resolve(update: dict) -> dict:
+    """Newest upstream location for a lock entry's `update` rule: url, file, release, date."""
+    kind = update["kind"]
+    if kind == "github-release":
+        rel = _api(f"{update['repo']}/releases/latest")
+        for asset in rel["assets"]:
+            if re.fullmatch(update["asset"], asset["name"]):
+                return {"url": asset["browser_download_url"], "file": asset["name"],
+                        "release": rel["tag_name"], "date": rel["published_at"][:10]}
+        raise SystemExit(f"no asset matching {update['asset']} in {update['repo']} {rel['tag_name']}")
+    if kind == "github-file":
+        commit = _api(f"{update['repo']}/commits/{update['branch']}")
+        sha = commit["sha"]
+        return {"url": f"https://raw.githubusercontent.com/{update['repo']}/{sha}/{update['path']}",
+                "file": update["file"], "release": sha, "date": commit["commit"]["committer"]["date"][:10]}
+    if kind == "rolling":
+        req = urllib.request.Request(update["url"], method="HEAD", headers={"User-Agent": "tsumugi-tools"})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            modified = resp.headers.get("Last-Modified", "")
+        date = parsedate_to_datetime(modified).date().isoformat() if modified else ""
+        return {"url": update["url"], "file": update["file"], "release": "rolling export", "date": date}
+    if kind == "fixed":
+        return {}
+    raise SystemExit(f"unknown update kind {kind}")
+
+
+def update_sources(names: list[str] | None = None) -> None:
+    """Re-resolve, download and re-hash every source (or [names]); rewrite sources.lock."""
+    lock = load_lock()
+    CACHE.mkdir(parents=True, exist_ok=True)
+    for name, entry in lock["sources"].items():
+        if names and name not in names:
+            continue
+        resolved = _resolve(entry["update"])
+        new = {**entry, **resolved}
+        target = CACHE / new["file"]
+        unchanged = new["url"] == entry["url"] and not entry.get("rolling")
+        if unchanged and target.exists() and sha256(target) == entry["sha256"]:
+            log(f"{name}: unchanged ({new['release']})")
+            continue
+        new["sha256"] = _fetch(new["url"], target)
+        if new["sha256"] != entry["sha256"]:
+            log(f"{name}: {entry.get('release')} -> {new['release']} ({new['sha256'][:12]})")
+        lock["sources"][name] = new
+    SOURCES_LOCK.write_text(json.dumps(lock, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    log(f"wrote {SOURCES_LOCK}; review `git diff tools/packs/sources.lock` and commit it")
 
 
 def read_zip_json(path: Path):

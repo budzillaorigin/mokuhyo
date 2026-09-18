@@ -21,18 +21,24 @@ jobs:
         uses: actions/cache@v4
         with:
           path: tools/.cache
-          # Sources are fetched from their latest releases; refresh weekly.
-          key: pack-sources-${{ hashFiles('tools/packs/*.py') }}-${{ github.run_id }}
-          restore-keys: pack-sources-${{ hashFiles('tools/packs/*.py') }}-
+          # Sources are pinned (URL + sha256) in tools/packs/sources.lock and verified on use (F-38, D-066).
+          # The cache holds exactly the locked files, so it's keyed on the lock. Tatoeba only publishes its latest
+          # weekly export: if this cache is evicted after upstream moves on, the build fails with a hash mismatch
+          # and the fix is a deliberate `build_all.py --update-sources` commit.
+          key: pack-sources-${{ hashFiles('tools/packs/sources.lock') }}
+          restore-keys: pack-sources-
       - name: Lint tools
         working-directory: tools
         run: |
           uv sync --locked
           uv run ruff check .
+      - name: App icon matches the Android launcher vector
+        working-directory: tools
+        run: uv run --group assets python assets/render_icon.py --check
       - name: Item bank tests
         working-directory: tools
         run: uv run python items/test_gen_jlpt.py
-      - name: Build packs
+      - name: Build packs (from the pinned sources in packs/sources.lock)
         working-directory: tools
         run: uv run python packs/build_all.py
       - name: Validate JLPT item banks (with the vocabulary-level check)
@@ -122,12 +128,23 @@ jobs:
             CODE_SIGNING_ALLOWED=NO > build/xcodebuild.log 2>&1 || status=$?
           grep -E "error:|warning: .*/iosApp/|Test (case|run)|✔|✘|passed|failed|Dictionary lookup" build/xcodebuild.log | head -300 || true
           exit $status
-      - name: Build iOS app for device (compiles the llama.cpp bridge; no simulator slice exists)
+      # F-06: a Release archive for generic iOS, unsigned. It replaces the old Debug device build (it compiles the
+      # llama.cpp bridge the same way, since there's no simulator slice) and then proves the archive would be
+      # uploadable: usage strings, icon, extensions, frameworks, privacy manifests, licenses, packs.
+      - name: Archive for device (Release, unsigned)
         run: |
           status=0
-          xcodebuild build             -project iosApp/Tsumugi.xcodeproj             -scheme Tsumugi             -destination "generic/platform=iOS"             CODE_SIGNING_ALLOWED=NO > build/xcodebuild-device.log 2>&1 || status=$?
-          grep -E "error:|warning: .*/iosApp/|BUILD (SUCCEEDED|FAILED)" build/xcodebuild-device.log | head -200 || true
+          xcodebuild archive \
+            -project iosApp/Tsumugi.xcodeproj \
+            -scheme Tsumugi \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            -archivePath build/Tsumugi.xcarchive \
+            CODE_SIGNING_ALLOWED=NO > build/xcodebuild-archive.log 2>&1 || status=$?
+          grep -E "error:|warning: .*/iosApp/|ARCHIVE (SUCCEEDED|FAILED)" build/xcodebuild-archive.log | head -200 || true
           exit $status
+      - name: Validate the archive
+        run: python3 tools/ci/validate_archive.py build/Tsumugi.xcarchive
       - name: Test failures and crash reports
         if: failure()
         run: |
@@ -154,7 +171,7 @@ jobs:
           name: ios-build-logs
           path: |
             build/xcodebuild.log
-            build/xcodebuild-device.log
+            build/xcodebuild-archive.log
             build/TestResults.xcresult
             build/crashes
 

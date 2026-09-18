@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.lifecycleScope
 import app.tsumugi.android.app.Incoming
 import app.tsumugi.android.app.TsumugiApp
+import app.tsumugi.android.app.displayName
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -34,10 +35,14 @@ class MainActivity : ComponentActivity() {
         parse(intent)?.let { incoming.value = it }
     }
 
-    /** ACTION_SEND text/plain → "Read in Tsumugi"; ACTION_PROCESS_TEXT → "Look up in Tsumugi". */
+    /**
+     * ACTION_SEND text/plain → "Read in Tsumugi"; ACTION_PROCESS_TEXT → "Look up in Tsumugi";
+     * ACTION_VIEW on an EPUB, .apkg, subtitle or JSON file → open it (app/OpenedFiles.kt).
+     */
     private fun parse(intent: Intent?): Incoming? = when (intent?.action) {
         Intent.ACTION_SEND -> intent.getStringExtra(Intent.EXTRA_TEXT)?.takeIf { it.isNotBlank() }?.let { Incoming.Read(it) }
         Intent.ACTION_PROCESS_TEXT -> intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.toString()?.takeIf { it.isNotBlank() }?.let { Incoming.Lookup(it) }
+        Intent.ACTION_VIEW -> intent.data?.let { uri -> Incoming.OpenFile(uri, displayName(this, uri), intent.type) }
         else -> null
     }
 

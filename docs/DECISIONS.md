@@ -192,6 +192,119 @@ The user database travels in OS backups (iCloud, Android backup and device trans
 
 History is kept. Past reviews still carry the old id, which is correct because that device made them. Reinstalling on the same iPhone keeps the id, since the Keychain survives. An Android reinstall restored from a backup gets a new id, which is harmless.
 
+### D-060: The iOS app icon is rendered from the Android launcher vector (F-01, 2026-09-18)
+`tools/assets/render_icon.py` ports `ic_launcher_{background,foreground}.xml` to `tools/assets/icon.svg` and renders three 1024×1024 PNGs into `AppIcon.appiconset`. They are committed because they're build inputs.
+
+- **Crop:** the inner 72 dp of the 108 dp adaptive canvas, which is what Android launchers show.
+- **Renderer:** Pillow primitives at 4× with Lanczos downsampling. cairosvg needs a native cairo that isn't available on Windows ARM64, and resvg wheels were uncertain there. Pillow is in its own `assets` dependency group.
+- **Variants:**
+  - Light: opaque RGB, because App Store Connect rejects alpha in the marketing icon.
+  - Dark (iOS 18): the mark on transparent, so the system's dark backdrop shows through.
+  - Tinted: a grayscale mark on transparent.
+  - Contents.json uses the `appearances`/`luminosity` format.
+- **Drift check:** the script refuses to run if the Android pathData or colours change, and CI runs `render_icon.py --check`.
+
+### D-061: iOS Info.plist keys that build settings can't express live in `iosApp/TsumugiInfo.plist` (F-02, 2026-09-18)
+The app target keeps `GENERATE_INFOPLIST_FILE = YES` and now also sets `INFOPLIST_FILE = TsumugiInfo.plist`, the same pattern the widget and share extension already use. Xcode uses the file as the base and merges every `INFOPLIST_KEY_*` setting on top. The file sits next to the other targets' plists, outside the synchronized `Tsumugi/` folder, so it isn't also copied into the bundle as a resource.
+
+- **Local network:** `NSLocalNetworkUsageDescription` is a plain string, so it stays an `INFOPLIST_KEY_` setting in Debug and Release. iOS 14+ gates every LAN connection behind the local-network prompt, including typed URLs. RELEASE.md §5 said otherwise, which was wrong.
+- **ATS: `NSAllowsLocalNetworking = YES`.** This covers unqualified names (`http://homeserver:11434`) and `.local`. IP literals aren't subject to ATS.
+- **ATS: exception domains.**
+  - `ts.net` with subdomains, for Tailscale MagicDNS names like `box.tailnet-abc.ts.net`. Traffic inside a tailnet is WireGuard-encrypted, so http there isn't cleartext on the wire.
+  - `home.arpa` (RFC 8375), for home-network names.
+  - `.lan` and other private suffixes aren't valid ATS exception keys we can rely on. Those names need https, or the IP or short name instead.
+- **No arbitrary loads:** `NSAllowsArbitraryLoads` is never set. The archive validator (D-063) enforces that.
+
+### D-062: Android allows cleartext in the base config, but not for the app's own hosts (F-03, 2026-09-18)
+A network security config can't express "private IP ranges". The learner's endpoints (Ollama, Whisper, VOICEVOX, the sync server) are typed in at run time as raw IPs, bare host names, `.local` or Tailscale names. Only `base-config cleartextTrafficPermitted="true"` makes them all work.
+
+- **Mitigation:** a `domain-config` pins the hosts the app itself contacts (wanikani.com, huggingface.co, hf.co, github.com, githubusercontent.com) to https, so a programming mistake there fails instead of leaking.
+- **Trust anchors:** system only; user-installed CAs stay untrusted.
+- **Accepted cost:** a learner can also import an `http://` web page or feed into the reader. That is their explicit choice, and the same as any browser.
+
+### D-063: CI archives an unsigned Release build and validates the archive (F-06, 2026-09-18)
+The iOS job's Debug "build for device" step is replaced by `xcodebuild archive -configuration Release -destination generic/platform=iOS CODE_SIGNING_ALLOWED=NO`. It still compiles the llama bridge (there's no simulator slice) and adds a Release Kotlin/Native link, a few minutes.
+
+`tools/ci/validate_archive.py` then checks:
+
+- Info.plist: usage strings (camera, microphone, speech, local network), `ITSAppUsesNonExemptEncryption`, the ATS keys and document types.
+- The icon: `Assets.car`, `CFBundleIcons` → `AppIcon`, the AppIcon PNGs, and `assetutil` when available.
+- The widget and share `.appex` bundles: extension points, executables and privacy manifests.
+- `llama.framework` and `whisper.framework` under Frameworks.
+- The app's privacy manifest, `LICENSES.md` and `packs/`.
+- The archive's bundle id.
+
+An unsigned archive carries no entitlements, so the validator checks the three `.entitlements` files for the App Group instead. The signed-archive check (`codesign -d --entitlements`) and `-exportArchive` are Owner steps in RELEASE.md §4, because CI has no signing identity.
+
+### D-064: On-device LLM cancellation uses a per-generation id, and "cancelled" is a distinct result (F-10/F-29 Android, 2026-09-18)
+`LlamaJni` used to reset a shared `AtomicBoolean` to false *before* queueing each generation. A cancel aimed at a runaway generation was wiped by the next call, which then waited behind it.
+
+- **Generation ids:** each `generate()` now takes an increasing id. `cancel()` raises a `cancelledThrough` high-water mark to the last id issued, and that mark is never reset.
+  - A queued job whose id is at or below the mark ends before it starts.
+  - A running job stops at its next token.
+- **Result:** a cancelled generation reports `onDone(null, "cancelled")`, never truncated text. The shared `AiGateway` keys its no-retry rule on that string (F-10, coordinated with the shared-core work).
+- **Unload:** `unload()` cancels first, so unload-during-generate also reports `cancelled`.
+- **Limitation:** prompt decoding inside one `llama_decode` call is still not interruptible.
+- **Seed:** `llama_jni.cpp` now seeds the dist sampler from `std::random_device` mixed with the clock on every generation. The pinned llama.cpp b11040 already treats `LLAMA_DEFAULT_SEED` as "pick a random seed" (`get_rng_seed` in `llama-sampler.cpp`), so the audit's "identical replies every session" wasn't strictly true. The explicit seed removes the dependence on that convention and matches iOS.
+
+### D-065: Document types: imported UTIs for formats we don't own, an exported one for ours (F-42, 2026-09-18)
+iOS (`TsumugiInfo.plist`) opens these types, all with `LSHandlerRank` Alternate except the item bank:
+
+| Format | UTI |
+|---|---|
+| EPUB | `org.idpf.epub-container`, the system type (also declared as imported, as a fallback) |
+| SubRip subtitles | `app.tsumugi.subrip` |
+| WebVTT subtitles | `app.tsumugi.webvtt` |
+| Anki deck | `app.tsumugi.apkg` |
+| JSON | `public.json` |
+
+- **Imported UTIs:** SubRip, WebVTT and `.apkg` have no system UTI and no owner we can reference reliably, so they are imported under our own identifiers.
+- **Exported UTI:** `app.tsumugi.item-bank` (`.tsumugibank`, conforms to `public.json`) is declared for our own item banks. Today's banks are plain `.json` and still open through `public.json`.
+- **iOS copies, not in place:** `LSSupportsOpeningDocumentsInPlace = NO`, so iOS hands the app a copy in `Documents/Inbox`. The handler copies it to a temporary file off the main actor and deletes the inbox copy.
+- **iOS routing:** EPUB → `reader.importEpub` and opens in the reader sheet; `.apkg` → `imports.importAnki` with a result alert. Subtitles and banks get a message pointing to the media player or the exam hub.
+- **iOS code:** the handler is a small `ViewModifier` in `Platform/OpenedFiles.swift` plus one line in `TsumugiApp.swift`. Deeper UI is left to the iOS work.
+- **Android:** an `ACTION_VIEW` filter on `content:` URIs. It uses the same MIME types, plus `application/octet-stream`, because file managers report `.apkg` that way; unknown files get an explanatory message. Routing matches iOS, except JSON banks go straight to `exams.importBank`, since the Android importer takes text.
+
+### D-066: Content-pack sources are pinned in `tools/packs/sources.lock` (F-38, 2026-09-18)
+Every download is locked by name → URL, release tag or commit, date, sha256, license, plus an `update` rule. That covers all 18 inputs: jmdict-simplified's four assets, JmdictFurigana, KanjiVG, Kanjium, the stephenmk n1–n5 CSVs, kanji-data, four Tatoeba exports and IPADIC.
+
+- **Pinning:** GitHub raw files are pinned to commit SHAs, release assets to tags.
+- **Verification:** `common.source(name)` downloads into `tools/.cache` once and refuses a hash mismatch. The builders no longer call a "latest" API.
+- **Updating:** `build_all.py --update-sources [NAME…]` re-resolves the newest release, branch head or current export, re-hashes, and rewrites the lock for review. `--verify-sources` only fetches and checks.
+- **Tatoeba publishes only its latest weekly export.** We lock its hash anyway. The CI cache is keyed on the lock, so the pinned snapshot survives while CI runs regularly. After cache eviction, a moved export fails the build loudly, and the fix is a deliberate update commit.
+- **Mirror (Owner option):** attach the four Tatoeba files to a GitHub release of this repo and point the lock URLs at it, if CI churn becomes a problem.
+
+### D-067: Export compliance: no annual BIS report on our reading, but the `ITSAppUsesNonExemptEncryption = NO` answer needs owner confirmation (F-43, 2026-09-18)
+RELEASE.md §5 now records the facts.
+
+- **What the app contains:** HTTPS through the OS, plus in-app XChaCha20-Poly1305/Argon2id/BLAKE2b for optional E2E sync. The algorithms are published: RFC 8439, RFC 9106, RFC 7693 and the XChaCha IETF draft.
+- **Classification:** the primary function isn't information security → mass market, 5D992.c, License Exception ENC §740.17(b)(1).
+- **No annual report:** since 86 FR 16482 (March 29, 2021), mass-market end-item software no longer needs the annual self-classification report. Mass-market components, chipsets and their executable software still do.
+- **Apple's key is open:** Apple calls the OS's own crypto exempt, but the in-app cipher is the app's own implementation. So the current `ITSAppUsesNonExemptEncryption = NO` may be the wrong answer to Apple's question. It was left unchanged here because it's the owner's legal call. The owner should confirm, including the France question in App Store Connect.
+
+### D-068: License citations corrected and an "Inspiration, no content used" section added (F-45, 2026-09-18)
+License files were checked at the pinned commits:
+
+| Source | License | Where it's stated |
+|---|---|---|
+| Kanjium | CC BY-SA 4.0 | `LICENSE.txt`, README "Everything in this package…". The README also asks for an acknowledgement of Uros O., now included. |
+| stephenmk/yomitan-jlpt-vocab | CC BY-SA 4.0 | `LICENSE.txt`. Waller's lists are CC BY, per its README. |
+| davidluzgouveia/kanji-data | MIT | `LICENSE` |
+
+- **Correction:** JmdictFurigana was listed as MIT. That's its code license. Its README says the data is distributed "under the same licence as JMDict" (CC BY-SA), and the row now says so.
+- **Every row cites the exact file URL.**
+- **New section:** docs/LICENSES.md now has the BRIEF_V2 §7 / Appendix B resources that contribute structure only.
+
+### D-069: The llama.cpp / whisper.cpp xcframework pins are real release assets (F-44, 2026-09-18)
+The GitHub releases API confirms both pinned tags exist and serve the pinned zips:
+
+| Tag | Published | Commit | GitHub-reported sha256 |
+|---|---|---|---|
+| llama.cpp `b11040` | 2026-09-18 | `5b335f4` | matches `fetch_ios_frameworks.sh` |
+| whisper.cpp `b5130` | 2026-09-11, alongside v1.9.4 | `927cfce` | matches `fetch_ios_frameworks.sh` |
+
+Both are automated build releases marked "pre-release" on GitHub. `tools/models/README.md` now records this. No pin changed.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

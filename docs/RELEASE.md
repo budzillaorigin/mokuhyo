@@ -31,7 +31,7 @@ cd ..
 ls -la content/packs                  # *.sqlite + manifest.json
 ```
 
-The first run downloads about 100 MB of sources into `tools/.cache`, which is git-ignored. Both apps bundle whatever is in `content/packs` at build time. If a pack is missing, the app shows an honest "not installed" state rather than failing.
+The first run downloads about 100 MB of sources into `tools/.cache`, which is git-ignored. Every source is pinned in `tools/packs/sources.lock` (URL, release tag or commit, sha256) and checked on use, so two builds of the same commit use the same data (F-38). To move to newer upstream data, run `uv run python packs/build_all.py --update-sources` (or name individual sources), review the lock diff and commit it. Tatoeba only publishes its latest weekly export, so a fresh checkout whose cache is empty fails with a hash mismatch once Tatoeba has moved on. The fix is the same deliberate update. Both apps bundle whatever is in `content/packs` at build time. If a pack is missing, the app shows an honest "not installed" state rather than failing.
 
 Size budget: the bundled packs are about 155 MB raw. The App Store compresses the IPA, and the dictionary compresses to about 46 MB with gzip. Check the result against the < 200 MB base target in step 4 below.
 
@@ -65,34 +65,71 @@ Then do a manual pass on a real device (**Owner**) using [`docs/QA.md`](QA.md). 
 
 ## 4. Archive and upload
 
-```bash
-xcodebuild archive \
-  -project iosApp/Tsumugi.xcodeproj -scheme Tsumugi \
-  -configuration Release -destination "generic/platform=iOS" \
-  -archivePath build/Tsumugi.xcarchive
+CI already archives an **unsigned** Release build on every push and checks it with `tools/ci/validate_archive.py` (F-06): usage strings, export-compliance and ATS keys, the compiled app icon, the widget and share extensions, the llama/whisper frameworks, privacy manifests, `LICENSES.md` and the packs. CI can't sign, so it can't run `-exportArchive`. The signed archive is an **Owner** step on the Mac:
 
-cat > build/ExportOptions.plist <<'PLIST'
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0"><dict>
-  <key>method</key><string>app-store-connect</string>
-  <key>destination</key><string>upload</string>
-  <key>signingStyle</key><string>automatic</string>
-</dict></plist>
-PLIST
+1. Do steps 0–2 first: signing set up, `content/packs` built, `bash tools/models/fetch_ios_frameworks.sh` run. An archive without packs or frameworks builds fine but ships without them, and the validator flags it.
+2. Bump `CURRENT_PROJECT_VERSION` (build number) for every upload, and `MARKETING_VERSION` for a new version. Both are set on all three targets (Tsumugi, TsumugiWidget, TsumugiShare), and they must match across them.
+3. Archive (signed with your team) and validate:
 
-xcodebuild -exportArchive -archivePath build/Tsumugi.xcarchive \
-  -exportOptionsPlist build/ExportOptions.plist -exportPath build/export \
-  -allowProvisioningUpdates
-```
+   ```bash
+   xcodebuild archive \
+     -project iosApp/Tsumugi.xcodeproj -scheme Tsumugi \
+     -configuration Release -destination "generic/platform=iOS" \
+     -archivePath build/Tsumugi.xcarchive \
+     -allowProvisioningUpdates DEVELOPMENT_TEAM=<YOUR_TEAM_ID>
 
-Alternatively, use Xcode: Product → Archive, then Distribute App → App Store Connect → Upload.
+   python3 tools/ci/validate_archive.py build/Tsumugi.xcarchive
+
+   # Signed builds carry entitlements: all three should list group.app.tsumugi.
+   for b in build/Tsumugi.xcarchive/Products/Applications/Tsumugi.app \
+            build/Tsumugi.xcarchive/Products/Applications/Tsumugi.app/PlugIns/*.appex; do
+     codesign -d --entitlements - --xml "$b" | plutil -p - | grep -A2 application-groups
+   done
+   ```
+
+4. Export and upload:
+
+   ```bash
+   cat > build/ExportOptions.plist <<'PLIST'
+   <?xml version="1.0" encoding="UTF-8"?>
+   <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+   <plist version="1.0"><dict>
+     <key>method</key><string>app-store-connect</string>
+     <key>destination</key><string>upload</string>
+     <key>signingStyle</key><string>automatic</string>
+     <key>teamID</key><string>YOUR_TEAM_ID</string>
+   </dict></plist>
+   PLIST
+
+   xcodebuild -exportArchive -archivePath build/Tsumugi.xcarchive \
+     -exportOptionsPlist build/ExportOptions.plist -exportPath build/export \
+     -allowProvisioningUpdates
+   ```
+
+   To check without uploading, set `destination` to `export`: the `.ipa` lands in `build/export`. Then run `xcrun altool --validate-app -f build/export/Tsumugi.ipa -t ios --apiKey <KEY_ID> --apiIssuer <ISSUER_ID>`, with an App Store Connect API key.
+5. Alternatively, use Xcode: Product → Archive, then in the Organizer: Validate App, then Distribute App → App Store Connect → Upload. Validate App runs Apple's server-side checks (icon, Info.plist, entitlements, private API use) without uploading.
 
 Size audit: in App Store Connect → the build → App Store File Sizes, check the "Install size" per device. If it is over 200 MB, move `tokenizer.sqlite` and the sentence tables to an on-demand download (follow-up work; not needed yet).
 
 ## 5. App Store Connect answers (Owner)
 
-- **Encryption (export compliance):** the app uses only standard algorithms: HTTPS, and XChaCha20-Poly1305 / Argon2id for optional end-to-end-encrypted sync. Answer "Yes, uses encryption" → "Only standard encryption algorithms" → exempt. The app target already sets `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO` (Debug and Release), so uploaded builds don't ask each time.
+- **Encryption (export compliance). Owner: confirm before the first upload; this is not legal advice.**
+  - *What the app contains:*
+    - HTTPS through the OS networking stack (URLSession).
+    - Optional end-to-end-encrypted sync, implemented in the app's own Kotlin code (D-025): XChaCha20-Poly1305 for data confidentiality, Argon2id key derivation (RFC 9106), and BLAKE2b (RFC 7693).
+    - ChaCha20-Poly1305 is RFC 8439. The XChaCha20 extended nonce is a published IETF draft (draft-irtf-cfrg-xchacha), not an RFC.
+    - Nothing proprietary or unpublished, so it shouldn't count as "non-standard cryptography" under EAR §772.1 ("…not adopted or approved by a duly recognized international standards body… *and* have not otherwise been published").
+  - *Apple's key.* The app target sets `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO` (Debug and Release). Apple says NO is for apps that use no encryption, or only forms that are exempt from export documentation requirements. Its example of exempt use is the OS's own encryption, such as HTTPS through URLSession. The E2E sync cipher is the app's own implementation, used for confidentiality, not only authentication. So NO is **not clearly right**.
+    - The conservative choice is to set the key to `YES`. App Store Connect then asks its questions; answer "standard encryption algorithms instead of, or in addition to, Apple's OS".
+    - App Store Connect also asks about France. France controls the import and export of encryption apps separately (ANSSI). Its main targets are secure-storage and secure-communication apps, which Tsumugi isn't, but check the answer there.
+    - Decide, then keep the build setting and the answers consistent.
+  - *US classification (EAR).* The app's primary function is language learning, not information security, and it's generally available to the public. That points to mass-market treatment under Note 3 to Category 5 Part 2: ECCN **5D992.c**, exported under License Exception ENC §740.17(b)(1) with no license and no BIS classification request.
+  - *Annual self-classification report.* Before March 29, 2021, §740.17(b)(1) items needed a self-classification report (Supplement No. 8 to Part 742), sent to BIS and the NSA ENC coordinator by **February 1** each year. The BIS rule of 86 Fed. Reg. 16482 (March 29, 2021) removed that requirement for mass-market end items such as application software (5A992.c/5D992.c, meeting Note 3).
+    - It is still required for mass-market *components*, chipsets, electronic assemblies and their executable software.
+    - Items that provide "non-standard cryptography", or that are described in §740.17(b)(2), don't qualify for (b)(1) at all.
+    - On that reading, Tsumugi owes **no** annual report.
+  - Apple's documentation still mentions "a year-end self-classification report" for some apps, and that text predates the rule. If the owner concludes the app is *not* a mass-market end item under 5D992.c (for example, if E2E sync were ever marketed as a main feature), a report may be due by February 1 for the previous calendar year. Send it to crypt-supp8@bis.doc.gov and enc@nsa.gov (§740.17(e)(3)).
+  - Confirm with the current eCFR text of 15 CFR 740.17 and the BIS encryption pages, or an export-control adviser, because the rules are amended from time to time.
 - **Privacy nutrition label:**
   - *Without sync*, no data is collected: everything stays on the device.
   - *With sync enabled* (self-hosted or a server the owner runs), declare it as follows. None of it is used for tracking.
@@ -108,11 +145,19 @@ Size audit: in App Store Connect → the build → App Store File Sizes, check t
   | System boot time | `35F9.1` | Kotlin/Native's monotonic clock (timeouts, elapsed time) uses the system uptime. |
 
   The widget and the share extension have their own manifests (`TsumugiWidget/PrivacyInfo.xcprivacy`, `TsumugiShare/PrivacyInfo.xcprivacy`) that declare nothing: they only read and write small JSON files in the App Group container. After archiving, check the combined report with Xcode → Organizer → the archive → right-click → Generate Privacy Report.
-- **Usage strings.** Already present in both Debug and Release:
+- **Usage strings.** Present in both Debug and Release:
   - `NSCameraUsageDescription` (OCR)
   - `NSMicrophoneUsageDescription` and `NSSpeechRecognitionUsageDescription` (speaking practice; Phase 6)
 
-  `NSPhotoLibraryUsageDescription` is not needed: Scan text uses `PhotosPicker`, which runs out of process and needs no permission. If Bonjour discovery for Ollama, VOICEVOX or AnkiConnect is added later, also declare `NSLocalNetworkUsageDescription`. Typing a URL works without it.
+  - `NSLocalNetworkUsageDescription` (F-02). On iOS 14 and later, the first connection to a device on the local network, including a URL the learner typed such as `http://<lan-ip>:11434` for Ollama, shows the system's local-network permission prompt. Without this key there is no usable prompt and LAN connections fail (see D-061). If the learner declines, re-enable it in Settings → Privacy & Security → Local Network → Tsumugi. `NSBonjourServices` is needed only if Bonjour discovery is added later.
+
+  `NSPhotoLibraryUsageDescription` is not needed: Scan text uses `PhotosPicker`, which runs out of process and needs no permission.
+- **Plain http to the learner's own servers (ATS, F-02).** `iosApp/TsumugiInfo.plist`, merged into the generated Info.plist, sets:
+  - `NSAllowsLocalNetworking = YES`, which covers unqualified host names such as `http://homeserver:11434` and `.local` names. IP-address URLs aren't subject to ATS.
+  - `NSExceptionDomains` allowing http for `*.ts.net` (Tailscale MagicDNS; Tailscale encrypts the traffic with WireGuard) and `*.home.arpa` (RFC 8375 home networks).
+
+  Any other domain name needs https. The app never sets `NSAllowsArbitraryLoads`, so the review notes need no ATS justification beyond "connects to servers the user runs on their own network".
+- **Document types (F-42).** `TsumugiInfo.plist` declares that the app opens EPUB, `.srt`/`.vtt`, `.apkg` and JSON item banks (`LSSupportsOpeningDocumentsInPlace = NO`, so iOS hands the app a copy). Files → Share → Tsumugi routes EPUBs to the reader and decks to the Anki importer. Subtitles and item banks show where to use them.
 - **Localization.** The UI ships in English and Japanese (`iosApp/Tsumugi/Localizable.xcstrings`). In App Store Connect, add a Japanese localization for the listing (name, subtitle, description, keywords, screenshots) as well as English.
 - **Review notes:**
   - Everything works without an account or API keys: the dictionary, SRS, grammar, reader, writing, exams and scripted speaking practice.
@@ -150,6 +195,10 @@ Check a build with `ls -lh androidApp/build/outputs/apk/debug/`. For a per-folde
 A release build (`./gradlew :androidApp:assembleRelease`) is not minified (`proguard-rules.pro` keeps the JNI bridges in case that changes). It is unsigned unless you add a signing config, and an unsigned APK can't be installed. For sideloading, the debug APK is the one to use.
 
 **Language.** The UI is in English and Japanese. It follows the phone's language, and on Android 13+ it can be set per app: Settings → Apps → Tsumugi → Language.
+
+**Plain http to your own servers.** `res/xml/network_security_config.xml` allows cleartext so `http://` endpoints on your LAN or tailnet work (Ollama, Whisper, VOICEVOX, the sync server). The app's own fixed hosts (WaniKani, Hugging Face, GitHub) are pinned to https. See D-062 for the tradeoff.
+
+**Opening files.** File managers, mail and chat apps offer "Open with Tsumugi" for EPUB (opens in the reader), `.apkg` (Anki import), JSON exam item banks (bank import) and `.srt`/`.vtt` (a hint to add them in the media player).
 
 **Sharing into the app.** "Read in Tsumugi" appears in the share sheet for text and links. It imports the text, or fetches the page, into the reader. "Look up in Tsumugi" appears in the text-selection menu and opens the dictionary search.
 

@@ -1,11 +1,13 @@
 // JNI glue for llama.cpp (MIT), used by app.tsumugi.android.platform.LlamaJni.
 // All calls for one session come from a single Kotlin worker thread, so a session needs no locking.
-// Cancellation happens in Kotlin: the token sink returns false.
+// Cancellation happens in Kotlin: the token sink returns false (LlamaJni tracks a per-generation id, F-10).
 #include <jni.h>
 #include <android/log.h>
 
 #include <algorithm>
+#include <chrono>
 #include <mutex>
+#include <random>
 #include <string>
 #include <vector>
 
@@ -79,6 +81,24 @@ size_t complete_utf8_prefix(const std::string &s) {
         ++back;
     }
     return s.size();
+}
+
+/// A fresh sampler seed per generation (F-29), so the same prompt doesn't give the same reply every session.
+/// llama.cpp would also pick one for LLAMA_DEFAULT_SEED, but being explicit keeps parity with iOS and doesn't depend
+/// on that convention. Mixes std::random_device with the clock, since random_device may be a PRNG on some libcs.
+uint32_t fresh_seed() {
+    uint64_t seed = static_cast<uint64_t>(std::chrono::steady_clock::now().time_since_epoch().count());
+    try {
+        std::random_device rd;
+        seed ^= (static_cast<uint64_t>(rd()) << 32) | rd();
+    } catch (...) {
+        // no entropy source: the clock alone still differs per call
+    }
+    seed ^= seed >> 33;
+    seed *= 0xff51afd7ed558ccdULL; // splitmix-style finalizer spreads the clock bits
+    seed ^= seed >> 33;
+    auto out = static_cast<uint32_t>(seed);
+    return out == LLAMA_DEFAULT_SEED ? out - 1 : out;
 }
 
 /// Decodes [prompt], reusing the KV cache for the longest prefix it shares with what's cached.
@@ -180,7 +200,7 @@ Java_app_tsumugi_android_platform_LlamaNative_nativeGenerate(JNIEnv *env, jclass
     llama_sampler_chain_add(chain, llama_sampler_init_penalties(llama_vocab_n_tokens(vocab), 64, 1.1f, 0.0f, 0.0f));
     llama_sampler_chain_add(chain, llama_sampler_init_top_p(0.9f, 1));
     llama_sampler_chain_add(chain, llama_sampler_init_temp(std::max(0.0f, temperature)));
-    llama_sampler_chain_add(chain, llama_sampler_init_dist(LLAMA_DEFAULT_SEED));
+    llama_sampler_chain_add(chain, llama_sampler_init_dist(fresh_seed()));
 
     jstring result = nullptr;
     std::string pending;
