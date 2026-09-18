@@ -1,0 +1,192 @@
+{
+  "note": "Published JLPT test structure (facts only; no official items). Section timings are from BRIEF §5.11. Item counts per type follow the JLPT's published composition and change occasionally: verify against https://www.jlpt.jp/e/guideline/testsections.html before release. The exam simulator reads this file (via the exam pack), so updating it needs no code change.",
+  "scoring": {
+    "sectionMax": 60,
+    "combinedMax": 120,
+    "sectionMinimum": 19,
+    "combinedMinimum": 38,
+    "note": "N1–N3 report three sections (Language Knowledge, Reading, Listening) 0–60 each; N4–N5 report Language Knowledge + Reading 0–120 and Listening 0–60. Total 0–180. Scaled scores here are a documented linear approximation of raw scores, not the JLPT's equating."
+  },
+  "levels": [
+    {
+      "level": 1,
+      "passMark": 100,
+      "sections": [
+        {
+          "id": "language_reading", "title": "言語知識（文字・語彙・文法）・読解", "minutes": 110,
+          "scoreGroups": ["language", "reading"],
+          "items": [
+            {"type": "kanji_reading", "title": "漢字読み", "count": 6, "group": "language"},
+            {"type": "context", "title": "文脈規定", "count": 7, "group": "language"},
+            {"type": "paraphrase", "title": "言い換え類義", "count": 6, "group": "language"},
+            {"type": "usage", "title": "用法", "count": 6, "group": "language"},
+            {"type": "grammar_form", "title": "文法形式の判断", "count": 10, "group": "language"},
+            {"type": "sentence_assembly", "title": "文の組み立て", "count": 5, "group": "language"},
+            {"type": "text_grammar", "title": "文章の文法", "count": 5, "group": "language"},
+            {"type": "comprehension_short", "title": "内容理解（短文）", "count": 4, "group": "reading"},
+            {"type": "comprehension_mid", "title": "内容理解（中文）", "count": 9, "group": "reading"},
+            {"type": "comprehension_long", "title": "内容理解（長文）", "count": 4, "group": "reading"},
+            {"type": "integrated", "title": "統合理解", "count": 2, "group": "reading"},
+            {"type": "thematic", "title": "主張理解（長文）", "count": 4, "group": "reading"},
+            {"type": "info_retrieval", "title": "情報検索", "count": 2, "group": "reading"}
+          ]
+        },
+        {
+          "id": "listening", "title": "聴解", "minutes": 55, "scoreGroups": ["listening"],
+          "items": [
+            {"type": "task", "title": "課題理解", "count": 5, "group": "listening"},
+            {"type": "point", "title": "ポイント理解", "count": 6, "group": "listening"},
+            {"type": "summary", "title": "概要理解", "count": 5, "group": "listening"},
+            {"type": "quick_response", "title": "即時応答", "count": 11, "group": "listening"},
+            {"type": "integrated_listening", "title": "統合理解", "count": 3, "group": "listening"}
+          ]
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "passMark": 90,
+      "sections": [
+        {
+          "id": "language_reading", "title": "言語知識（文字・語彙・文法）・読解", "minutes": 105,
+          "scoreGroups": ["language", "reading"],
+          "items": [
+            {"type": "kanji_reading", "title": "漢字読み", "count": 5, "group": "language"},
+            {"type": "orthography", "title": "表記", "count": 5, "group": "language"},
+            {"type": "word_formation", "title": "語形成", "count": 3, "group": "language"},
+            {"type": "context", "title": "文脈規定", "count": 7, "group": "language"},
+            {"type": "paraphrase", "title": "言い換え類義", "count": 5, "group": "language"},
+            {"type": "usage", "title": "用法", "count": 5, "group": "language"},
+            {"type": "grammar_form", "title": "文法形式の判断", "count": 12, "group": "language"},
+            {"type": "sentence_assembly", "title": "文の組み立て", "count": 5, "group": "language"},
+            {"type": "text_grammar", "title": "文章の文法", "count": 5, "group": "language"},
+            {"type": "comprehension_short", "title": "内容理解（短文）", "count": 5, "group": "reading"},
+            {"type": "comprehension_mid", "title": "内容理解（中文）", "count": 9, "group": "reading"},
+            {"type": "integrated", "title": "統合理解", "count": 2, "group": "reading"},
+            {"type": "thematic", "title": "主張理解（長文）", "count": 3, "group": "reading"},
+            {"type": "info_retrieval", "title": "情報検索", "count": 2, "group": "reading"}
+          ]
+        },
+        {
+          "id": "listening", "title": "聴解", "minutes": 50, "scoreGroups": ["listening"],
+          "items": [
+            {"type": "task", "title": "課題理解", "count": 5, "group": "listening"},
+            {"type": "point", "title": "ポイント理解", "count": 6, "group": "listening"},
+            {"type": "summary", "title": "概要理解", "count": 5, "group": "listening"},
+            {"type": "quick_response", "title": "即時応答", "count": 12, "group": "listening"},
+            {"type": "integrated_listening", "title": "統合理解", "count": 4, "group": "listening"}
+          ]
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "passMark": 95,
+      "sections": [
+        {
+          "id": "vocabulary", "title": "言語知識（文字・語彙）", "minutes": 30, "scoreGroups": ["language"],
+          "items": [
+            {"type": "kanji_reading", "title": "漢字読み", "count": 8, "group": "language"},
+            {"type": "orthography", "title": "表記", "count": 6, "group": "language"},
+            {"type": "context", "title": "文脈規定", "count": 11, "group": "language"},
+            {"type": "paraphrase", "title": "言い換え類義", "count": 5, "group": "language"},
+            {"type": "usage", "title": "用法", "count": 5, "group": "language"}
+          ]
+        },
+        {
+          "id": "grammar_reading", "title": "言語知識（文法）・読解", "minutes": 70, "scoreGroups": ["language", "reading"],
+          "items": [
+            {"type": "grammar_form", "title": "文法形式の判断", "count": 13, "group": "language"},
+            {"type": "sentence_assembly", "title": "文の組み立て", "count": 5, "group": "language"},
+            {"type": "text_grammar", "title": "文章の文法", "count": 5, "group": "language"},
+            {"type": "comprehension_short", "title": "内容理解（短文）", "count": 4, "group": "reading"},
+            {"type": "comprehension_mid", "title": "内容理解（中文）", "count": 6, "group": "reading"},
+            {"type": "comprehension_long", "title": "内容理解（長文）", "count": 4, "group": "reading"},
+            {"type": "info_retrieval", "title": "情報検索", "count": 2, "group": "reading"}
+          ]
+        },
+        {
+          "id": "listening", "title": "聴解", "minutes": 40, "scoreGroups": ["listening"],
+          "items": [
+            {"type": "task", "title": "課題理解", "count": 6, "group": "listening"},
+            {"type": "point", "title": "ポイント理解", "count": 6, "group": "listening"},
+            {"type": "summary", "title": "概要理解", "count": 3, "group": "listening"},
+            {"type": "utterance", "title": "発話表現", "count": 4, "group": "listening"},
+            {"type": "quick_response", "title": "即時応答", "count": 9, "group": "listening"}
+          ]
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "passMark": 90,
+      "sections": [
+        {
+          "id": "vocabulary", "title": "言語知識（文字・語彙）", "minutes": 25, "scoreGroups": ["language_reading"],
+          "items": [
+            {"type": "kanji_reading", "title": "漢字読み", "count": 9, "group": "language_reading"},
+            {"type": "orthography", "title": "表記", "count": 6, "group": "language_reading"},
+            {"type": "context", "title": "文脈規定", "count": 10, "group": "language_reading"},
+            {"type": "paraphrase", "title": "言い換え類義", "count": 5, "group": "language_reading"},
+            {"type": "usage", "title": "用法", "count": 5, "group": "language_reading"}
+          ]
+        },
+        {
+          "id": "grammar_reading", "title": "言語知識（文法）・読解", "minutes": 55, "scoreGroups": ["language_reading"],
+          "items": [
+            {"type": "grammar_form", "title": "文法形式の判断", "count": 15, "group": "language_reading"},
+            {"type": "sentence_assembly", "title": "文の組み立て", "count": 5, "group": "language_reading"},
+            {"type": "text_grammar", "title": "文章の文法", "count": 5, "group": "language_reading"},
+            {"type": "comprehension_short", "title": "内容理解（短文）", "count": 4, "group": "language_reading"},
+            {"type": "comprehension_mid", "title": "内容理解（中文）", "count": 4, "group": "language_reading"},
+            {"type": "info_retrieval", "title": "情報検索", "count": 2, "group": "language_reading"}
+          ]
+        },
+        {
+          "id": "listening", "title": "聴解", "minutes": 35, "scoreGroups": ["listening"],
+          "items": [
+            {"type": "task", "title": "課題理解", "count": 8, "group": "listening"},
+            {"type": "point", "title": "ポイント理解", "count": 7, "group": "listening"},
+            {"type": "utterance", "title": "発話表現", "count": 5, "group": "listening"},
+            {"type": "quick_response", "title": "即時応答", "count": 8, "group": "listening"}
+          ]
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "passMark": 80,
+      "sections": [
+        {
+          "id": "vocabulary", "title": "言語知識（文字・語彙）", "minutes": 20, "scoreGroups": ["language_reading"],
+          "items": [
+            {"type": "kanji_reading", "title": "漢字読み", "count": 12, "group": "language_reading"},
+            {"type": "orthography", "title": "表記", "count": 8, "group": "language_reading"},
+            {"type": "context", "title": "文脈規定", "count": 10, "group": "language_reading"},
+            {"type": "paraphrase", "title": "言い換え類義", "count": 5, "group": "language_reading"}
+          ]
+        },
+        {
+          "id": "grammar_reading", "title": "言語知識（文法）・読解", "minutes": 40, "scoreGroups": ["language_reading"],
+          "items": [
+            {"type": "grammar_form", "title": "文法形式の判断", "count": 16, "group": "language_reading"},
+            {"type": "sentence_assembly", "title": "文の組み立て", "count": 5, "group": "language_reading"},
+            {"type": "text_grammar", "title": "文章の文法", "count": 5, "group": "language_reading"},
+            {"type": "comprehension_short", "title": "内容理解（短文）", "count": 3, "group": "language_reading"},
+            {"type": "comprehension_mid", "title": "内容理解（中文）", "count": 2, "group": "language_reading"},
+            {"type": "info_retrieval", "title": "情報検索", "count": 1, "group": "language_reading"}
+          ]
+        },
+        {
+          "id": "listening", "title": "聴解", "minutes": 30, "scoreGroups": ["listening"],
+          "items": [
+            {"type": "task", "title": "課題理解", "count": 7, "group": "listening"},
+            {"type": "point", "title": "ポイント理解", "count": 6, "group": "listening"},
+            {"type": "utterance", "title": "発話表現", "count": 5, "group": "listening"},
+            {"type": "quick_response", "title": "即時応答", "count": 6, "group": "listening"}
+          ]
+        }
+      ]
+    }
+  ]
+}
