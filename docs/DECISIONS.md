@@ -52,6 +52,33 @@ A single search runs 3–5 SQL queries: combined kanji/kana form match, part of 
 ### D-016: No Android emulator on the dev machine (2026-09-18)
 Google ships the Android Emulator for Windows x64 only; it doesn't run on Windows on ARM. UI behaviour is verified with JVM screenshot tests where possible and on real devices by the owner. The APK is built by CI on every push.
 
+### D-017: WaniKani-style stages over FSRS stability (2026-09-18)
+Stage names map to FSRS stability, the days until recall probability falls to 90%:
+- Apprentice: under 3 days.
+- Guru: 3 days or more.
+- Master: 21 days or more.
+- Enlightened: 60 days or more.
+- Burned: 180 days or more.
+
+An item's stage is the lowest of its answer cards (both meaning and reading must be Guru); grammar ghost cards are excluded. Unlocks key off Guru, and a level passes at 90% of its kanji at Guru (BRIEF §5.4).
+
+### D-018: Lessons are recorded as "introduced" reviews (2026-09-18)
+Finishing a lesson appends a review with rating 0 (`SrsRepository.INTRODUCED`) instead of changing card state directly. FSRS ignores it, but replaying a card's reviews reproduces "introduced, first review due 10 min later", so card state stays a pure function of the append-only log (BRIEF §8.2). Answers undone within a session delete their review before it's synced.
+
+### D-019: Grammar content: LLM-drafted explanations, human-written examples (2026-09-18)
+The grammar sources (`tools/packs/grammar/n5–n3.json`, 448 points) were drafted by an LLM in our own words and are marked `source: llm`. The apps show an "AI-generated · unreviewed" badge until a person accepts each point with `tools/items/review.py`.
+
+Example sentences for cloze reviews come from Tatoeba (human-written, CC BY 2.0 FR) wherever the point's patterns match: 3,486 sentences. The builder skips a match when a dictionary word strictly contains it, so 冷たい isn't treated as 〜たい. The LLM-written examples, also labelled, only fill gaps. N2/N1 packs follow in Phase 7.
+
+### D-020: Bunpro import is CSV-only (2026-09-18)
+Bunpro's public API is limited and changes, so v1 imports a CSV/TSV export (title + SRS level). Titles match our points by normalized title or the pack's alias table (`tools/packs/grammar/aliases.json`). SRS levels seed history the same way as WaniKani stages. No Bunpro text is imported.
+
+### D-021: iOS widgets read an App Group snapshot (2026-09-18)
+Linking the Kotlin framework into the widget extension would add size and startup cost. Instead, the app writes a small JSON snapshot (due count, lessons, streak, kanji of the day) to the App Group `group.app.tsumugi` whenever it backgrounds, and reloads the timelines. The widget is pure Swift. Unsigned CI builds have no App Group container, so the write is a no-op there.
+
+### D-022: Review reminders are planned locally (2026-09-18)
+A single local notification is scheduled whenever the app backgrounds: when N reviews (default 10) will be due, shifted out of quiet hours (default 22:00–08:00). No server push, no background job (BRIEF §5.12, rule 1).
+
 ---
 
 ## Open decisions (BRIEF.md §14)

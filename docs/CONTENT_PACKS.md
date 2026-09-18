@@ -12,8 +12,8 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | `dictionary.sqlite`: JMdict, KANJIDIC2, KRADFILE/RADKFILE, furigana, pitch, JLPT tags | `packs/build_dictionary.py` | 1 | ✅ |
 | same file, `stroke` table (KanjiVG) | `packs/build_kanjivg.py` | 1 | ✅ |
 | same file, `sentence`/`sentence_word` tables (Tatoeba) + frequency ranks | `packs/build_sentences.py` | 1 | ✅ |
-| `kanji-path.sqlite` (60 levels) | `packs/build_kanji_path.py` | 2 | Not started |
-| `grammar-n5…n1.sqlite` | `packs/build_grammar.py` | 3 / 7 | Not started |
+| `kanji-path.sqlite` (60 levels: 243 radicals, 2,599 kanji, 7,242 words) | `packs/build_kanji_path.py` | 2 | ✅ |
+| `grammar.sqlite` (N5–N3: 448 points, 3,486 Tatoeba examples; N2/N1 in Phase 7) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ N5–N3 |
 | `jlpt-blueprints.json` | hand-maintained facts (timings, pass marks) | 7 | Not started |
 
 ## dictionary.sqlite

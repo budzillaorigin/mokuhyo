@@ -1,6 +1,77 @@
 # Progress
 
-Current phase: **Phase 1 complete (iOS side awaiting its first CI run). Continuing to Phase 2.** The owner asked for all phases to run back to back, without per-phase review stops.
+Current phase: **Phases 0–3 complete. Continuing to Phase 4 (reading & writing).** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+
+---
+
+## Phase 3: Grammar + Today (2026-09-18)
+
+### What was built
+- **Grammar pack** (`content/packs/grammar.sqlite`), built by `tools/packs/build_grammar.py` from `tools/packs/grammar/n5.json`, `n4.json` and `n3.json`:
+  - 448 points: 127 N5, 148 N4, 173 N3.
+  - 3,486 Tatoeba example sentences with the construction's span marked.
+  - Explanations are LLM-drafted and labelled (D-019). `tools/items/review.py` flips reviewed points to `verified`.
+  - `aliases.json` maps other apps' titles onto our points for imports.
+- **`GrammarService`**:
+  - JLPT-ordered lessons.
+  - **Cloze reviews:** exact answers are correct; another valid conjugation of the same construction (checked with the deinflector and patterns) is accepted as "close".
+  - **Sentence-build reviews:** the sentence is split into phrase chunks.
+  - **Bunpro-style ghost cards:** a miss spawns an extra card on short intervals, retired after two correct answers.
+  - `ReviewSession` handles grammar cards alongside kanji and vocabulary.
+- **`TodayPlanner` (BRIEF §5.6):**
+  - **Blocks, in order:** reviews, then new kanji/vocab lessons, then grammar.
+  - **Budget:** 10, 20, 40 or 60 minutes.
+  - **Lesson count adapts:** to the budget, to yesterday's accuracy (fewer after a rough day), and to the review backlog (paused above 150 due).
+  - **Phases** follow path level: Foundations, Core, Intermediate, Advanced.
+  - **Weekly challenges** rotate every week.
+- **Bunpro CSV import** (D-020).
+- **iOS widgets** "Reviews due" and "Kanji of the day" (D-021).
+- **UI on both apps:** Learn → Grammar (levels, points with the AI badge, point page with examples), grammar lessons, cloze and sentence-build review screens, Today plan with budget picker and weekly challenge, Bunpro import.
+
+### Verified
+- Shared tests (Android host) pass, including `GrammarServiceTest` (cloze checking, ghost spawn and retirement through a real review session), `TodayPlannerTest` and `BunproImporterTest`.
+- The Android APK builds.
+- iOS builds and tests run in CI (see the latest run).
+
+### Deferred
+- Grammar "production" reviews (translate from English, graded by the on-device LLM) arrive with the AI runtime in Phase 6.
+- Textbook-order paths (Genki/Tobira chapter numbers) exist only where the source files carry them. A chapter-ordered path view is a small follow-up.
+
+---
+
+## Phase 2: SRS core + kanji path (2026-09-18)
+
+### What was built
+- **User DB** (`srs.sq`, `user.sq`, `meta.sq`): items, cards, the append-only review log, notes (myStory), settings, word lists, sessions and integrations. Ids are deterministic, which keeps sync convergent.
+- **FSRS-6** (`Fsrs.kt`, ported from py-fsrs, MIT):
+  - Matches py-fsrs's published interval sequence and memory-state numbers exactly.
+  - Learning steps 10 min → 1 day.
+  - Fuzz is derived deterministically, so replaying reviews gives the same result on every device.
+  - An on-device optimizer (`FsrsOptimizer`, Adam with exact gradients) fits the parameters.
+- **SRS layer:**
+  - `SrsRepository`: lessons recorded as reviews (D-018), undo, imports, replay.
+  - `AnswerChecker`: WaniKani-style, with typo tolerance, synonyms, and a hint when you give a valid reading of the wrong kind.
+  - `UnlockTree`, and stages over stability (D-017).
+- **Kanji path pack** (`kanji-path.sqlite`): 60 levels, 243 radicals, 2,599 kanji and 7,242 words, with our own keywords. `PathService` provides lessons, level progress, skip-to-level and manual unlock.
+- **Sessions:** `ReviewSession` and `LessonSession` state machines shared by both apps:
+  - Typed answers with a romaji→kana IME.
+  - Missed cards re-asked as unrecorded practice.
+  - Undo, wrap-up, and leech detection at 8 or more lapses.
+- **Stats and reminders:** `StatsService` covers streaks with vacation mode, a heat-map, accuracy by kind, stage distribution and a 7-day forecast. `ReminderPlanner` plus local notifications on both platforms (D-022).
+- **Integrations:**
+  - Anki `.apkg` import/export: legacy and modern zstd formats, NihongoShark decks with myStory, and an import → export → re-import round trip.
+  - imiwa word lists.
+  - WaniKani API v2 import onto the path, with optional posting of reviews back. The token lives in the Keychain/Keystore; mnemonics are never stored.
+- **UI on both apps:** Today, lessons, reviews, kanji path (level grid, item pages with stroke order and a myStory editor), dictionary "Add to reviews"/"Add to list", word lists, Me (stats, heat-map, vacation mode, settings, Licenses screen, Import & export).
+
+### Verified
+- About 190 shared tests pass on the Android host, including FSRS reference vectors, the optimizer on synthetic data, the Anki round trip, zstd vectors and WaniKani against a mock server.
+- The Android APK builds.
+- iOS: the app, the Kotlin/Native framework and the Swift tests (dictionary on the real pack, lookups under 5 ms on the simulator) passed in CI.
+
+### Deferred
+- **Your acceptance check** (import the NihongoShark deck and WaniKani token, then do a real review session on your iPhone) needs you and your devices.
+- **Real-deck checks:** the NihongoShark detection uses field-name keywords and should be checked against your actual deck. The `.anki21b` fixture is synthetic.
 
 ---
 
@@ -102,9 +173,17 @@ cd tools && uv sync && uv run ruff check .
 
 | Feature | iOS | Android |
 |---|---|---|
-| Tab shell | ✅ (unverified) | ✅ |
-| Today (placeholder) | ✅ (unverified) | ✅ |
+| Tab shell, global search | ✅ | ✅ |
+| Today plan | ✅ | ✅ |
+| Lessons / Reviews (kanji, vocab, grammar cloze/build, flashcards) | ✅ | ✅ |
+| Kanji path (levels, items, myStory) | ✅ | ✅ |
+| Grammar (levels, points, lessons) | ✅ | ✅ |
+| Dictionary (search, entry, kanji, radicals, add to reviews/lists) | ✅ | ✅ |
+| Word lists | ✅ | ✅ |
+| Stats (streak, heat-map, stages, accuracy) | ✅ | ✅ |
+| Import/export (Anki, imiwa, Bunpro, WaniKani) | ✅ | ✅ |
+| Reminders | ✅ | ✅ |
+| Widgets | ✅ | — (Glance later) |
+| Settings / Licenses | ✅ | ✅ |
 | Onboarding | — | — |
-| Reviews | — | — |
-| Dictionary | — | — |
-| Settings / Integrations / Sync | — | — |
+| Sync | Phase 5 | Phase 5 |
