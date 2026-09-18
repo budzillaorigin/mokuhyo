@@ -39,8 +39,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import kotlinx.coroutines.launch
 import app.tsumugi.android.TsumugiApplication
 import app.tsumugi.srs.PathItemDetail
+import app.tsumugi.jp.strokes.RawResult
+import app.tsumugi.jp.strokes.Point
+import app.tsumugi.android.features.writing.WritingCanvas
+import app.tsumugi.android.ui.StrokeOrderView
+import app.tsumugi.dictionary.KanjiStroke
+import androidx.compose.foundation.layout.size
 
 private val Correct = Color(0xFF2E7D32)
 private val Wrong = Color(0xFFC62828)
@@ -49,6 +56,7 @@ private val Wrong = Color(0xFFC62828)
 fun ReviewScreen(onDone: () -> Unit) {
     val vm: ReviewViewModel = viewModel()
     val state by vm.state.collectAsStateWithLifecycle()
+    var writingResult by remember { mutableStateOf<RawResult?>(null) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         when (val s = state) {
             null -> Box(Modifier.fillMaxWidth(), Alignment.Center) { CircularProgressIndicator() }
@@ -62,7 +70,12 @@ fun ReviewScreen(onDone: () -> Unit) {
                 } else {
                     ItemGlyph(s.prompt.question, s.prompt.item.kind)
                 }
-                if (s.prompt.mode == AnswerMode.SELF_GRADED) {
+                if (s.prompt.mode == AnswerMode.WRITING) {
+                    WritingAnswer(s.prompt.item.primaryText, resetKey = s.prompt.card.id + s.done) { result ->
+                        writingResult = result
+                        vm.reveal()
+                    }
+                } else if (s.prompt.mode == AnswerMode.SELF_GRADED) {
                     Button(onClick = vm::reveal, Modifier.fillMaxWidth()) { Text("Show answer") }
                 } else if (s.prompt.mode == AnswerMode.BUILD && exercise != null) {
                     BuildAnswer(exercise, resetKey = s.prompt.card.id + s.done + s.prompt.practice) { vm.submit(it) }
@@ -80,12 +93,22 @@ fun ReviewScreen(onDone: () -> Unit) {
             }
             is ReviewState.Revealed -> {
                 Progress(s.done, s.remaining + 1)
-                ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                if (s.prompt.mode == AnswerMode.WRITING) {
+                    WritingReveal(s.prompt.item.primaryText, writingResult)
+                } else {
+                    ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                }
                 Text(s.prompt.expected.joinToString("; "), style = MaterialTheme.typography.headlineSmall.japanese(), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
                 s.prompt.item.reading?.let { Text(it, style = MaterialTheme.typography.titleLarge.japanese(), modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center) }
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
                     Rating.entries.forEach { r ->
-                        OutlinedButton(onClick = { vm.grade(r) }, Modifier.weight(1f)) { Text(r.name.lowercase().replaceFirstChar { it.uppercase() }) }
+                        val suggested = s.prompt.mode == AnswerMode.WRITING && writingResult?.suggestedRating == r.value
+                        val label = r.name.lowercase().replaceFirstChar { it.uppercase() }
+                        if (suggested) {
+                            Button(onClick = { vm.grade(r) }, Modifier.weight(1f)) { Text(label) }
+                        } else {
+                            OutlinedButton(onClick = { vm.grade(r) }, Modifier.weight(1f)) { Text(label) }
+                        }
                     }
                 }
             }
@@ -198,6 +221,40 @@ fun LessonScreen(onDone: () -> Unit, onOpenItem: (String) -> Unit) {
                 Text("${s.items.size} items added. Their first reviews are due in 10 minutes.", style = MaterialTheme.typography.bodyLarge)
                 Button(onClick = onDone) { Text("Done") }
             }
+        }
+    }
+}
+
+/** Raw writing for a WRITING card: draw from memory, then check (stroke count and order are graded in shared code). */
+@Composable
+private fun WritingAnswer(kanji: String, resetKey: Any, onChecked: (RawResult?) -> Unit) {
+    val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
+    var strokes by remember(resetKey) { mutableStateOf<List<List<Point>>>(emptyList()) }
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        WritingCanvas(Modifier.fillMaxWidth(), inked = strokes) { strokes = strokes + listOf(it) }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(onClick = { strokes = strokes.dropLast(1) }, enabled = strokes.isNotEmpty()) { Text("Undo") }
+            Button(onClick = { scope.launch { onChecked(graph.writing()?.checkRaw(kanji, strokes)) } }, enabled = strokes.isNotEmpty()) { Text("Check") }
+        }
+    }
+}
+
+@Composable
+private fun WritingReveal(kanji: String, result: RawResult?) {
+    val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
+    var strokes by remember(kanji) { mutableStateOf<List<KanjiStroke>>(emptyList()) }
+    LaunchedEffect(kanji) { strokes = graph.dictionary()?.strokes(kanji).orEmpty() }
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+        if (strokes.isNotEmpty()) StrokeOrderView(strokes, Modifier.size(160.dp)) else Text(kanji, style = MaterialTheme.typography.displayLarge.japanese())
+        result?.let {
+            Text(
+                listOf(
+                    if (it.countOk) "Stroke count ✓" else "Stroke count ✗",
+                    if (it.orderOk) "Order ✓" else "Order ✗",
+                ).joinToString(" · ") + " — suggested: ${Rating.entries[it.suggestedRating - 1].name.lowercase()}",
+                style = MaterialTheme.typography.bodyMedium,
+            )
         }
     }
 }

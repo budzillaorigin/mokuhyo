@@ -22,6 +22,12 @@ sealed interface Route {
     data object Dictionary : Route { override val title = "Dictionary" }
     data class Lookup(val query: String) : Route { override val title = "Dictionary" }
     data object Scan : Route { override val title = "Scan text" }
+    data object Library : Route { override val title = "Reading" }
+    data class Read(val docId: String) : Route { override val title = "Reader" }
+    data object Feeds : Route { override val title = "Feeds" }
+    data object Aozora : Route { override val title = "Aozora Bunko" }
+    data class WritingPractice(val kanji: List<String>) : Route { override val title = "Writing" }
+    data object Handwriting : Route { override val title = "Draw to search" }
     data class Entry(val id: Long) : Route { override val title = "Word" }
     data class Kanji(val literal: String) : Route { override val title = literal }
     data object Radicals : Route { override val title = "Radical search" }

@@ -29,7 +29,13 @@ import app.tsumugi.android.features.dictionary.RadicalSearchScreen
 import app.tsumugi.android.features.dictionary.WordListScreen
 import app.tsumugi.android.features.dictionary.WordListsScreen
 import app.tsumugi.android.features.me.ImportScreen
+import app.tsumugi.android.features.reader.AozoraScreen
+import app.tsumugi.android.features.reader.FeedsScreen
+import app.tsumugi.android.features.reader.ReaderLibraryScreen
+import app.tsumugi.android.features.reader.ReaderScreen
 import app.tsumugi.android.features.reader.ScanScreen
+import app.tsumugi.android.features.writing.HandwritingSearchScreen
+import app.tsumugi.android.features.writing.WritingPracticeScreen
 import app.tsumugi.android.features.me.LicensesScreen
 import app.tsumugi.android.features.me.MeDestination
 import app.tsumugi.android.features.me.MeScreen
@@ -85,6 +91,12 @@ fun TsumugiApp() {
                     Route.Dictionary -> DictionarySearchScreen(dictionaryNav)
                     is Route.Lookup -> DictionarySearchScreen(dictionaryNav, route.query)
                     Route.Scan -> ScanScreen(onLookup = { nav.push(Route.Lookup(it)) })
+                    Route.Library -> ReaderLibraryScreen(onOpen = { nav.push(Route.Read(it)) }, onFeeds = { nav.push(Route.Feeds) }, onAozora = { nav.push(Route.Aozora) })
+                    is Route.Read -> ReaderScreen(route.docId, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) })
+                    Route.Feeds -> FeedsScreen(onOpenDoc = { nav.push(Route.Read(it)) })
+                    Route.Aozora -> AozoraScreen(onOpenDoc = { nav.push(Route.Read(it)) })
+                    is Route.WritingPractice -> WritingPracticeScreen(route.kanji, onDone = nav::back)
+                    Route.Handwriting -> HandwritingSearchScreen(onPick = { nav.push(Route.Kanji(it)) })
                     is Route.Entry -> EntryScreen(route.id, dictionaryNav)
                     is Route.Kanji -> KanjiScreen(route.literal, dictionaryNav)
                     Route.Radicals -> RadicalSearchScreen(dictionaryNav)
@@ -133,8 +145,10 @@ private fun LearnHome(push: (Route) -> Unit) {
         listOf(
             Triple("Kanji path", "60 levels · radicals → kanji → vocabulary", Route.PathLevels),
             Triple("Grammar", "JLPT N5–N3 · cloze and sentence-building reviews", Route.Grammar),
+            Triple("Reading", "Articles, books, feeds · tap any word", Route.Library),
             Triple("Dictionary", "Offline JMdict · kanji · examples", Route.Dictionary),
             Triple("Radical search", "Find a kanji by its parts", Route.Radicals),
+            Triple("Draw to search", "Handwrite a kanji to look it up", Route.Handwriting),
             Triple("Word lists", "Your lists · imiwa imports", Route.WordLists),
             Triple("Scan text", "Read Japanese from a photo", Route.Scan),
         ).forEach { (title, subtitle, route) ->

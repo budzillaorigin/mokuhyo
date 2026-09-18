@@ -112,6 +112,11 @@ class GrammarService(
         }
     }
 
+    /** Every point's detection patterns, for finding grammar in reader sentences. Invalid regexes are skipped. */
+    suspend fun detectionPatterns(): List<Pair<String, Regex>> = io {
+        q.allPatterns().executeAsList().mapNotNull { row -> runCatching { row.point_id to Regex(row.regex) }.getOrNull() }
+    }
+
     /** Normalized title/alias → point, for matching imports (Bunpro) to our points. */
     suspend fun titleIndex(): Map<String, GrammarPoint> = io {
         val points = q.allPoints().executeAsList().map { it.toPoint() }

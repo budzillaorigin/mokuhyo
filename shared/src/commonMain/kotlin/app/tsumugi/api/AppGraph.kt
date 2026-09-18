@@ -14,6 +14,7 @@ import app.tsumugi.tokenizer.db.TokenizerDatabase
 import app.tsumugi.integrations.ImportService
 import app.tsumugi.path.db.PathDatabase
 import app.tsumugi.platform.PlatformServices
+import app.tsumugi.reader.ReaderService
 import app.tsumugi.settings.DeviceState
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.FsrsParameters
@@ -48,6 +49,7 @@ class AppGraph(val platform: PlatformServices) {
     val imports: ImportService by lazy { ImportService(this) }
     val reminders: ReminderPlanner by lazy { ReminderPlanner(userDatabase, settings) }
     val collection: CollectionService by lazy { CollectionService(userDatabase, srs, { path() }) }
+    val reader: ReaderService by lazy { ReaderService(this) }
     private val planner: TodayPlanner by lazy { TodayPlanner(userDatabase, settings) }
 
     /** Today's plan (BRIEF §5.6) from the current queue, path and grammar state. */
