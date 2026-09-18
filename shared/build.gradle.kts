@@ -83,6 +83,11 @@ sqldelight {
             packageName.set("app.tsumugi.exam.db")
             srcDirs.setFrom("src/commonMain/sqldelightExam")
         }
+        // Read-only speaking/listening practice pack, built by tools/packs/build_practice.py.
+        create("PracticeDatabase") {
+            packageName.set("app.tsumugi.practice.db")
+            srcDirs.setFrom("src/commonMain/sqldelightPractice")
+        }
         // Read-only morphological-analysis pack (mecab-ipadic), built by tools/packs/build_tokenizer.py.
         create("TokenizerDatabase") {
             packageName.set("app.tsumugi.tokenizer.db")

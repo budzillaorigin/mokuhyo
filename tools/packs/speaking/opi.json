@@ -1,0 +1,135 @@
+{
+ "source": "llm",
+ "note": "OPI-style practice prompts drafted by an LLM (not official OPI or DLPT items). Self-rating checklists are paraphrased from the public-domain ILR Skill Level Descriptions for Speaking.",
+ "checklistSource": "Interagency Language Roundtable Skill Level Descriptions — Speaking (U.S. Government, public domain), https://www.govtilr.org/Skills/ILRscale2.htm",
+ "levels": [
+  {
+   "ilr": "0+",
+   "checklist": [
+    "I can say memorized words and set phrases for basic needs, like greetings, numbers and polite words.",
+    "I can name common everyday objects, colors, days and family members.",
+    "I mostly speak in single words or short memorized phrases, not in sentences of my own.",
+    "People who are used to learners often have trouble understanding me."
+   ],
+   "questions": [
+    ["WARM_UP", "こんにちは。お名前は？", "Hello. What is your name?", "Accept a one-word answer; model a full sentence back."],
+    ["WARM_UP", "お元気ですか。", "How are you?", "Memorized response expected."],
+    ["LEVEL_CHECK", "どこから来ましたか。", "Where are you from?", "Country name alone is fine at this level."],
+    ["LEVEL_CHECK", "今日は何曜日ですか。", "What day is it today?", "Checks memorized vocabulary."],
+    ["LEVEL_CHECK", "これは何ですか。", "What is this? (point to an object)", "Name an everyday object."],
+    ["PROBE", "家族は何人ですか。", "How many people are in your family?", "Probe for numbers and counters."],
+    ["PROBE", "朝ごはんに何を食べましたか。", "What did you eat for breakfast?", "Probe for a past-tense sentence (level 1)."],
+    ["ROLE_PLAY", "（お店で）いらっしゃいませ。何にしますか。", "(At a shop) Welcome. What would you like?", "Learner orders one item: 〜をください."],
+    ["WIND_DOWN", "日本語は楽しいですか。", "Is Japanese fun?", "Easy yes/no to finish."],
+    ["WIND_DOWN", "ありがとうございました。", "Thank you very much.", "Close with a set phrase."]
+   ]
+  },
+  {
+   "ilr": "1",
+   "checklist": [
+    "I can handle simple face-to-face situations like ordering food, buying things, asking directions and getting a room.",
+    "I can ask and answer simple questions about familiar topics such as myself, my family and my daily routine.",
+    "I can make my own short sentences, though I make frequent mistakes in grammar and pronunciation.",
+    "A native speaker used to foreigners can understand me, with some effort and repetition."
+   ],
+   "questions": [
+    ["WARM_UP", "自己紹介をしてください。", "Please introduce yourself.", "Name, origin, job or school."],
+    ["WARM_UP", "今日はどうやってここに来ましたか。", "How did you get here today?", "Transport vocabulary: 電車で, 車で."],
+    ["LEVEL_CHECK", "毎日、何時に起きますか。それから何をしますか。", "What time do you get up every day? What do you do next?", "Daily routine in sequence."],
+    ["LEVEL_CHECK", "週末はたいてい何をしますか。", "What do you usually do on weekends?", "Present-tense habits."],
+    ["LEVEL_CHECK", "あなたの町について教えてください。", "Tell me about your town.", "Simple descriptions with adjectives."],
+    ["PROBE", "先週の週末、何をしましたか。", "What did you do last weekend?", "Push for past narration in connected sentences (level 1+/2)."],
+    ["PROBE", "どうして日本語を勉強していますか。", "Why are you studying Japanese?", "Reasons with から; probes beyond memorized material."],
+    ["ROLE_PLAY", "（駅で）すみません、どうしましたか。", "(At a station) Excuse me, can I help?", "Learner asks how to get to a place and confirms."],
+    ["ROLE_PLAY", "（レストランで）ご注文はお決まりですか。", "(At a restaurant) Are you ready to order?", "Order two things and ask a simple question."],
+    ["WIND_DOWN", "今日はこのあと何をしますか。", "What will you do after this?", "Easy future plans."],
+    ["WIND_DOWN", "お疲れさまでした。", "Thank you for your effort.", "Close politely."]
+   ]
+  },
+  {
+   "ilr": "1+",
+   "checklist": [
+    "I can take care of most everyday and travel needs, including small complications like a lost item or a wrong order.",
+    "I can talk about my background, work and interests in some detail, and can narrate simple past events.",
+    "I sometimes manage to link sentences, but I often break down when I try to explain or describe at length.",
+    "My vocabulary for concrete topics is growing, but I still fall back on simple structures."
+   ],
+   "questions": [
+    ["WARM_UP", "最近、何か楽しいことがありましたか。", "Has anything fun happened lately?", "Warm, open question."],
+    ["LEVEL_CHECK", "あなたの仕事（勉強）について詳しく教えてください。", "Tell me about your work (studies) in detail.", "Sustained description of a familiar topic."],
+    ["LEVEL_CHECK", "初めて日本に来たときのことを話してください。", "Tell me about when you first came to Japan.", "Past narration with time words."],
+    ["LEVEL_CHECK", "あなたの国と日本の違いは何だと思いますか。", "What differences do you see between your country and Japan?", "Simple comparisons."],
+    ["PROBE", "もし一か月休みがあったら、何をしたいですか。", "If you had a month off, what would you want to do?", "Hypothetical — probing level 2."],
+    ["PROBE", "その理由を詳しく説明してください。", "Please explain your reason in detail.", "Push for extended explanation."],
+    ["ROLE_PLAY", "（ホテルで）お部屋に何か問題がございましたか。", "(At a hotel) Was there a problem with your room?", "Complication: the air conditioner is broken; ask for a solution."],
+    ["ROLE_PLAY", "（電話で）はい、山田歯科です。", "(Phone) Hello, Yamada Dental.", "Reschedule an appointment."],
+    ["WIND_DOWN", "日本でおすすめの場所はありますか。", "Any place in Japan you'd recommend?", "Comfortable topic to finish."],
+    ["WIND_DOWN", "今日はありがとうございました。", "Thank you for today.", "Close politely."]
+   ]
+  },
+  {
+   "ilr": "2",
+   "checklist": [
+    "I can handle routine social and work demands, including giving instructions and describing situations.",
+    "I can narrate and describe in the past, present and future with paragraphs of connected speech.",
+    "I can talk about current events, my job and my interests with reasonable accuracy, though I lack precision on complex topics.",
+    "Native speakers not used to foreigners can usually understand me, even when my grammar is imperfect."
+   ],
+   "questions": [
+    ["WARM_UP", "お仕事は今、忙しいですか。", "Is work busy at the moment?", "Warm-up."],
+    ["LEVEL_CHECK", "あなたの一日の仕事の流れを説明してください。", "Explain the flow of a typical workday.", "Sequenced, paragraph-length description."],
+    ["LEVEL_CHECK", "最近見たニュースで印象に残ったものを教えてください。", "Tell me about a recent news story that stuck with you.", "Concrete current events."],
+    ["LEVEL_CHECK", "今までで一番大変だった経験について話してください。", "Talk about the hardest experience you've had.", "Extended past narration."],
+    ["LEVEL_CHECK", "五年後、どんな生活をしていると思いますか。", "What do you think your life will be like in five years?", "Future time frame."],
+    ["PROBE", "在宅勤務のメリットとデメリットは何だと思いますか。", "What are the pros and cons of working from home?", "Supported opinion — probing level 3."],
+    ["PROBE", "その問題を解決するには、どうすればいいと思いますか。", "How do you think that problem could be solved?", "Abstract hypothesis."],
+    ["ROLE_PLAY", "（職場で）来週の会議の場所が変わったので、チームに説明してください。", "(At work) The meeting venue changed; explain to your team.", "Give instructions clearly and handle a question."],
+    ["ROLE_PLAY", "（店で）買った商品が壊れていました。店員と交渉してください。", "(At a shop) The item you bought is broken. Negotiate with the clerk.", "Complication with persuasion."],
+    ["WIND_DOWN", "日本語の勉強で工夫していることはありますか。", "Any tricks you use for studying Japanese?", "Comfortable close."],
+    ["WIND_DOWN", "お時間をいただき、ありがとうございました。", "Thank you for your time.", "Close politely."]
+   ]
+  },
+  {
+   "ilr": "2+",
+   "checklist": [
+    "I can meet most work demands and often speak effectively on abstract topics, though not consistently.",
+    "I can support an opinion and state a hypothesis some of the time, but my accuracy drops under pressure.",
+    "I understand and use a fairly wide range of vocabulary and can often find a way around a missing word.",
+    "Errors in grammar or word choice sometimes appear in complex structures but rarely block understanding."
+   ],
+   "questions": [
+    ["WARM_UP", "最近、何か新しく始めたことはありますか。", "Have you started anything new lately?", "Warm-up."],
+    ["LEVEL_CHECK", "あなたの専門分野について、専門外の人にわかるように説明してください。", "Explain your field so that a non-specialist can understand.", "Precise explanation."],
+    ["LEVEL_CHECK", "日本の少子化について、どう考えますか。", "What do you think about Japan's declining birth rate?", "Social issue — supported opinion."],
+    ["PROBE", "反対の立場の人を説得するとしたら、どう話しますか。", "If you had to persuade someone with the opposite view, what would you say?", "Argumentation — probing level 3."],
+    ["PROBE", "もしその政策が失敗したら、どんな影響があると思いますか。", "If that policy failed, what effects would you expect?", "Hypothesis on an abstract topic."],
+    ["PROBE", "技術の進歩は人間関係をどう変えたと思いますか。", "How do you think technology has changed human relationships?", "Abstract discussion."],
+    ["ROLE_PLAY", "（会議で）予算削減の案に反対の意見を丁寧に述べてください。", "(Meeting) Politely state your opposition to a budget-cut plan.", "Formal register; diplomacy."],
+    ["ROLE_PLAY", "（取引先に）納期が遅れることを説明し、謝罪してください。", "(To a client) Explain and apologize for a delivery delay.", "Keigo under pressure."],
+    ["WIND_DOWN", "休みの日はどう過ごすのが好きですか。", "How do you like to spend days off?", "Relax back to a familiar topic."],
+    ["WIND_DOWN", "本日はありがとうございました。", "Thank you for today.", "Close."]
+   ]
+  },
+  {
+   "ilr": "3",
+   "checklist": [
+    "I can take part effectively in most formal and informal conversations on practical, social and professional topics.",
+    "I can support opinions, argue a position and hypothesize on abstract topics with structured, extended discourse.",
+    "My errors almost never interfere with understanding or disturb a native speaker.",
+    "I can adjust my register, including keigo, to fit the situation."
+   ],
+   "questions": [
+    ["WARM_UP", "今日はお忙しい中、ありがとうございます。最近いかがですか。", "Thank you for making time today. How have you been?", "Warm-up in polite register."],
+    ["LEVEL_CHECK", "グローバル化が日本の地方に与える影響について、ご意見をお聞かせください。", "Please share your views on how globalization affects regional Japan.", "Extended, structured argument."],
+    ["LEVEL_CHECK", "AIの発展によって、教育はどう変わるべきだと思いますか。", "How should education change as AI develops?", "Abstract hypothesis with support."],
+    ["LEVEL_CHECK", "日米同盟の今後の課題は何だとお考えですか。", "What do you see as future challenges for the Japan–U.S. alliance?", "Professional/policy topic."],
+    ["PROBE", "その主張に対する最も強い反論は何でしょうか。それにどう答えますか。", "What is the strongest counterargument, and how would you answer it?", "Probing level 3+: handles counterargument."],
+    ["PROBE", "仮に法律でそれを禁止した場合、どのような問題が起こり得ますか。", "If it were banned by law, what problems might arise?", "Complex hypothesis."],
+    ["ROLE_PLAY", "（公式の場で）日本側の担当者に、計画の変更を説明し、理解を求めてください。", "(Formal setting) Explain a plan change to your Japanese counterpart and seek their understanding.", "Sonkeigo/kenjōgo, negotiation."],
+    ["ROLE_PLAY", "（記者会見で）事故について事実を説明し、質問に答えてください。", "(Press conference) State the facts about an incident and answer questions.", "Precision and register under pressure."],
+    ["WIND_DOWN", "日本語を使っていて、一番やりがいを感じるのはどんなときですか。", "When do you find using Japanese most rewarding?", "Comfortable close."],
+    ["WIND_DOWN", "本日は貴重なお時間をいただき、誠にありがとうございました。", "Thank you sincerely for your valuable time today.", "Formal close."]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,2056 @@
+{
+ "source": "llm",
+ "note": "Scenarios and scripted turns drafted by an LLM; review with tools/items/review.py before marking verified.",
+ "scenarios": [
+  {
+   "id": "konbini",
+   "titleEn": "At the convenience store",
+   "titleJa": "コンビニで",
+   "jlpt": 5,
+   "ilr": "0+",
+   "category": "daily",
+   "setting": "A busy convenience store at lunchtime. You are buying a bento and a drink.",
+   "learnerRole": "Customer",
+   "partnerRole": "Store clerk, friendly and quick",
+   "register": "polite",
+   "goals": [
+    "Say whether you want the bento heated",
+    "Ask for a bag or decline one",
+    "Pay and say thank you"
+   ],
+   "vocabulary": [
+    "弁当",
+    "温める",
+    "袋",
+    "要る",
+    "箸",
+    "カード",
+    "現金"
+   ],
+   "phrases": [
+    "温めてください",
+    "袋はいりません",
+    "カードでお願いします",
+    "ありがとうございます"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。お弁当、温めますか。",
+     "partnerEn": "Welcome. Shall I heat up your bento?",
+     "intent": "Answer yes or no about heating",
+     "sample": "はい、お願いします。"
+    },
+    {
+     "partnerJa": "袋はご利用ですか。",
+     "partnerEn": "Would you like a bag?",
+     "intent": "Accept or decline a bag",
+     "sample": "いいえ、大丈夫です。"
+    },
+    {
+     "partnerJa": "お箸はおつけしますか。",
+     "partnerEn": "Shall I add chopsticks?",
+     "intent": "Ask for chopsticks",
+     "sample": "はい、一つお願いします。"
+    },
+    {
+     "partnerJa": "お会計は八百五十円です。",
+     "partnerEn": "That comes to 850 yen.",
+     "intent": "Say how you will pay",
+     "sample": "カードでお願いします。"
+    },
+    {
+     "partnerJa": "こちらにカードをどうぞ。",
+     "partnerEn": "Please insert your card here.",
+     "intent": "Acknowledge",
+     "sample": "はい。"
+    },
+    {
+     "partnerJa": "ありがとうございました。",
+     "partnerEn": "Thank you very much.",
+     "intent": "Thank the clerk",
+     "sample": "ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "izakaya",
+   "titleEn": "Ordering at an izakaya",
+   "titleJa": "居酒屋で注文する",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "daily",
+   "setting": "A lively izakaya on a Friday evening. You and a friend have just sat down.",
+   "learnerRole": "Customer",
+   "partnerRole": "Energetic waiter",
+   "register": "polite",
+   "goals": [
+    "Order drinks",
+    "Ask for a recommendation",
+    "Order two dishes",
+    "Ask for the bill"
+   ],
+   "vocabulary": [
+    "生ビール",
+    "注文",
+    "おすすめ",
+    "焼き鳥",
+    "枝豆",
+    "お会計",
+    "メニュー"
+   ],
+   "phrases": [
+    "とりあえず生二つ",
+    "おすすめは何ですか",
+    "これをください",
+    "お会計をお願いします"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ！お飲み物はいかがですか。",
+     "partnerEn": "Welcome! What would you like to drink?",
+     "intent": "Order drinks",
+     "sample": "生ビールを二つお願いします。"
+    },
+    {
+     "partnerJa": "かしこまりました。お料理はお決まりですか。",
+     "partnerEn": "Certainly. Have you decided on food?",
+     "intent": "Ask for a recommendation",
+     "sample": "おすすめは何ですか。"
+    },
+    {
+     "partnerJa": "今日は焼き鳥がおすすめです。",
+     "partnerEn": "Today the yakitori is our recommendation.",
+     "intent": "Order it and another dish",
+     "sample": "じゃあ、焼き鳥と枝豆をください。"
+    },
+    {
+     "partnerJa": "焼き鳥は塩とたれ、どちらにしますか。",
+     "partnerEn": "Salt or sauce for the yakitori?",
+     "intent": "Choose one",
+     "sample": "たれでお願いします。"
+    },
+    {
+     "partnerJa": "以上でよろしいですか。",
+     "partnerEn": "Will that be all?",
+     "intent": "Confirm",
+     "sample": "はい、以上です。"
+    },
+    {
+     "partnerJa": "ほかにご注文はありますか。",
+     "partnerEn": "Anything else to order?",
+     "intent": "Ask for the bill",
+     "sample": "いいえ、お会計をお願いします。"
+    }
+   ]
+  },
+  {
+   "id": "doctor",
+   "titleEn": "At the doctor's",
+   "titleJa": "病院で",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "health",
+   "setting": "A small clinic. You have had a fever and a sore throat since yesterday.",
+   "learnerRole": "Patient",
+   "partnerRole": "Calm, careful doctor",
+   "register": "polite",
+   "goals": [
+    "Describe your symptoms",
+    "Say since when",
+    "Answer about allergies",
+    "Ask how to take the medicine"
+   ],
+   "vocabulary": [
+    "熱",
+    "喉",
+    "痛い",
+    "咳",
+    "薬",
+    "アレルギー",
+    "昨日"
+   ],
+   "phrases": [
+    "昨日から熱があります",
+    "喉が痛いです",
+    "アレルギーはありません",
+    "一日何回飲みますか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "今日はどうしましたか。",
+     "partnerEn": "What brings you in today?",
+     "intent": "Describe symptoms",
+     "sample": "熱があって、喉が痛いです。"
+    },
+    {
+     "partnerJa": "いつからですか。",
+     "partnerEn": "Since when?",
+     "intent": "Say since when",
+     "sample": "昨日の夜からです。"
+    },
+    {
+     "partnerJa": "咳は出ますか。",
+     "partnerEn": "Do you have a cough?",
+     "intent": "Answer",
+     "sample": "少し出ます。"
+    },
+    {
+     "partnerJa": "薬のアレルギーはありますか。",
+     "partnerEn": "Any allergies to medicine?",
+     "intent": "Answer about allergies",
+     "sample": "いいえ、ありません。"
+    },
+    {
+     "partnerJa": "風邪ですね。薬を出しておきます。",
+     "partnerEn": "It's a cold. I'll prescribe some medicine.",
+     "intent": "Ask how to take it",
+     "sample": "一日何回飲みますか。"
+    },
+    {
+     "partnerJa": "一日三回、食後に飲んでください。",
+     "partnerEn": "Three times a day, after meals.",
+     "intent": "Confirm and thank",
+     "sample": "わかりました。ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "pharmacy",
+   "titleEn": "At the pharmacy",
+   "titleJa": "薬局で",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "health",
+   "setting": "A drugstore. You need something for a headache and want to check it is safe with your allergy.",
+   "learnerRole": "Customer",
+   "partnerRole": "Pharmacist",
+   "register": "polite",
+   "goals": [
+    "Explain what you need",
+    "Mention an allergy",
+    "Ask about side effects"
+   ],
+   "vocabulary": [
+    "頭痛",
+    "薬",
+    "眠い",
+    "副作用",
+    "アレルギー",
+    "飲む"
+   ],
+   "phrases": [
+    "頭痛の薬はありますか",
+    "眠くなりますか",
+    "これを飲んでも大丈夫ですか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "何かお探しですか。",
+     "partnerEn": "Can I help you find something?",
+     "intent": "Say what you need",
+     "sample": "頭痛の薬はありますか。"
+    },
+    {
+     "partnerJa": "こちらはいかがでしょう。",
+     "partnerEn": "How about this one?",
+     "intent": "Mention an allergy",
+     "sample": "私はアスピリンのアレルギーがあります。"
+    },
+    {
+     "partnerJa": "では、こちらのほうが安心です。",
+     "partnerEn": "Then this one is safer.",
+     "intent": "Ask about side effects",
+     "sample": "眠くなりますか。"
+    },
+    {
+     "partnerJa": "少し眠くなることがあります。運転はしないでください。",
+     "partnerEn": "It may make you a little sleepy. Please don't drive.",
+     "intent": "Acknowledge",
+     "sample": "わかりました。"
+    },
+    {
+     "partnerJa": "一回二錠です。",
+     "partnerEn": "Two tablets per dose.",
+     "intent": "Ask how often",
+     "sample": "一日何回ですか。"
+    },
+    {
+     "partnerJa": "四時間以上あけて、一日三回までです。",
+     "partnerEn": "At least four hours apart, up to three times a day.",
+     "intent": "Thank",
+     "sample": "ありがとうございます。これをください。"
+    }
+   ]
+  },
+  {
+   "id": "station-lost",
+   "titleEn": "Lost item at the station",
+   "titleJa": "駅で忘れ物",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "travel",
+   "setting": "A station office. You left your umbrella on the train twenty minutes ago.",
+   "learnerRole": "Passenger",
+   "partnerRole": "Station staff member",
+   "register": "polite",
+   "goals": [
+    "Explain what you lost",
+    "Describe it",
+    "Say which train and when",
+    "Leave contact details"
+   ],
+   "vocabulary": [
+    "忘れ物",
+    "傘",
+    "電車",
+    "色",
+    "連絡",
+    "電話番号"
+   ],
+   "phrases": [
+    "電車に傘を忘れました",
+    "青い傘です",
+    "電話番号は…です"
+   ],
+   "turns": [
+    {
+     "partnerJa": "どうされましたか。",
+     "partnerEn": "What happened?",
+     "intent": "Explain the problem",
+     "sample": "電車に傘を忘れてしまいました。"
+    },
+    {
+     "partnerJa": "どの電車ですか。",
+     "partnerEn": "Which train?",
+     "intent": "Say which train and when",
+     "sample": "二十分前の東京行きです。"
+    },
+    {
+     "partnerJa": "どんな傘ですか。",
+     "partnerEn": "What does the umbrella look like?",
+     "intent": "Describe it",
+     "sample": "青くて、長い傘です。"
+    },
+    {
+     "partnerJa": "何両目に乗っていましたか。",
+     "partnerEn": "Which car were you in?",
+     "intent": "Answer (or say you don't know)",
+     "sample": "たぶん三両目です。"
+    },
+    {
+     "partnerJa": "見つかったら連絡します。お名前と電話番号をお願いします。",
+     "partnerEn": "We'll contact you if it's found. Your name and phone number, please.",
+     "intent": "Give contact details",
+     "sample": "スミスです。電話番号は〇九〇の…です。"
+    },
+    {
+     "partnerJa": "わかりました。お待ちください。",
+     "partnerEn": "Understood. Please wait.",
+     "intent": "Thank",
+     "sample": "よろしくお願いします。"
+    }
+   ]
+  },
+  {
+   "id": "directions",
+   "titleEn": "Asking for directions",
+   "titleJa": "道を聞く",
+   "jlpt": 5,
+   "ilr": "0+",
+   "category": "travel",
+   "setting": "A street corner near a station. You are looking for the post office.",
+   "learnerRole": "Tourist",
+   "partnerRole": "Kind passer-by",
+   "register": "polite",
+   "goals": [
+    "Get someone's attention politely",
+    "Ask where the place is",
+    "Confirm the directions"
+   ],
+   "vocabulary": [
+    "郵便局",
+    "道",
+    "まっすぐ",
+    "右",
+    "左",
+    "信号",
+    "近く"
+   ],
+   "phrases": [
+    "すみません",
+    "郵便局はどこですか",
+    "まっすぐですね"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、何でしょう。",
+     "partnerEn": "Yes, can I help?",
+     "intent": "Ask where the post office is",
+     "sample": "すみません、郵便局はどこですか。"
+    },
+    {
+     "partnerJa": "この道をまっすぐ行ってください。",
+     "partnerEn": "Go straight along this road.",
+     "intent": "Ask how far",
+     "sample": "遠いですか。"
+    },
+    {
+     "partnerJa": "いいえ、歩いて五分ぐらいです。",
+     "partnerEn": "No, about five minutes on foot.",
+     "intent": "Ask for the next step",
+     "sample": "それから、どうしますか。"
+    },
+    {
+     "partnerJa": "二つ目の信号を右に曲がってください。",
+     "partnerEn": "Turn right at the second traffic light.",
+     "intent": "Confirm",
+     "sample": "二つ目の信号を右ですね。"
+    },
+    {
+     "partnerJa": "はい。郵便局は左にあります。",
+     "partnerEn": "Yes. The post office is on the left.",
+     "intent": "Thank",
+     "sample": "どうもありがとうございます。"
+    },
+    {
+     "partnerJa": "気をつけて。",
+     "partnerEn": "Take care.",
+     "intent": "Say goodbye",
+     "sample": "失礼します。"
+    }
+   ]
+  },
+  {
+   "id": "hotel",
+   "titleEn": "Hotel check-in",
+   "titleJa": "ホテルのチェックイン",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "travel",
+   "setting": "A business hotel front desk in the evening.",
+   "learnerRole": "Guest with a reservation",
+   "partnerRole": "Front desk clerk",
+   "register": "keigo",
+   "goals": [
+    "Say you have a reservation",
+    "Confirm dates",
+    "Ask about breakfast",
+    "Ask for Wi-Fi"
+   ],
+   "vocabulary": [
+    "予約",
+    "チェックイン",
+    "朝食",
+    "部屋",
+    "鍵",
+    "パスワード"
+   ],
+   "phrases": [
+    "予約している…です",
+    "朝食は何時からですか",
+    "Wi-Fiのパスワードを教えてください"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。チェックインでございますか。",
+     "partnerEn": "Welcome. Are you checking in?",
+     "intent": "Say you have a reservation",
+     "sample": "はい、予約しているブラウンです。"
+    },
+    {
+     "partnerJa": "ブラウン様ですね。二泊でございますね。",
+     "partnerEn": "Mr./Ms. Brown, for two nights, correct?",
+     "intent": "Confirm",
+     "sample": "はい、そうです。"
+    },
+    {
+     "partnerJa": "こちらにご記入をお願いいたします。",
+     "partnerEn": "Please fill this in.",
+     "intent": "Acknowledge and ask about breakfast",
+     "sample": "はい。朝食は何時からですか。"
+    },
+    {
+     "partnerJa": "朝食は七時から九時半まででございます。",
+     "partnerEn": "Breakfast is from 7:00 to 9:30.",
+     "intent": "Ask for Wi-Fi",
+     "sample": "Wi-Fiのパスワードを教えてください。"
+    },
+    {
+     "partnerJa": "こちらのカードに書いてございます。お部屋は八〇五号室です。",
+     "partnerEn": "It's on this card. Your room is 805.",
+     "intent": "Take the key and thank",
+     "sample": "ありがとうございます。"
+    },
+    {
+     "partnerJa": "ごゆっくりお過ごしくださいませ。",
+     "partnerEn": "Please enjoy your stay.",
+     "intent": "Respond politely",
+     "sample": "お世話になります。"
+    }
+   ]
+  },
+  {
+   "id": "phone-reschedule",
+   "titleEn": "Rescheduling by phone",
+   "titleJa": "電話で予定を変える",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "work",
+   "setting": "You call a dental clinic to move tomorrow's appointment.",
+   "learnerRole": "Patient calling",
+   "partnerRole": "Receptionist",
+   "register": "polite",
+   "goals": [
+    "Identify yourself",
+    "Explain you can't come",
+    "Propose another day",
+    "Confirm the new time"
+   ],
+   "vocabulary": [
+    "予約",
+    "変更",
+    "都合",
+    "明日",
+    "来週",
+    "空く"
+   ],
+   "phrases": [
+    "明日の予約を変更したいんですが",
+    "都合が悪くなってしまって",
+    "来週の火曜日は空いていますか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、さくら歯科です。",
+     "partnerEn": "Hello, Sakura Dental.",
+     "intent": "Identify yourself and say why you call",
+     "sample": "もしもし、明日十時に予約しているキムです。予約を変更したいんですが。"
+    },
+    {
+     "partnerJa": "かしこまりました。ご希望の日はありますか。",
+     "partnerEn": "Certainly. Is there a day you'd prefer?",
+     "intent": "Propose another day",
+     "sample": "来週の火曜日は空いていますか。"
+    },
+    {
+     "partnerJa": "火曜日は午後三時なら空いております。",
+     "partnerEn": "On Tuesday, 3 p.m. is free.",
+     "intent": "Accept or ask for another time",
+     "sample": "三時で大丈夫です。"
+    },
+    {
+     "partnerJa": "では、来週火曜日の午後三時でお取りします。",
+     "partnerEn": "Then I'll book you for next Tuesday at 3 p.m.",
+     "intent": "Confirm the new time",
+     "sample": "来週火曜日の三時ですね。"
+    },
+    {
+     "partnerJa": "はい。明日の予約はキャンセルしておきます。",
+     "partnerEn": "Yes. I'll cancel tomorrow's booking.",
+     "intent": "Apologise for the trouble",
+     "sample": "ご迷惑をおかけしてすみません。"
+    },
+    {
+     "partnerJa": "いいえ、お大事に。",
+     "partnerEn": "Not at all. Take care.",
+     "intent": "Close the call",
+     "sample": "失礼します。"
+    }
+   ]
+  },
+  {
+   "id": "job-interview",
+   "titleEn": "Job interview",
+   "titleJa": "面接",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "work",
+   "setting": "A formal interview for a part-time office job.",
+   "learnerRole": "Applicant",
+   "partnerRole": "Interviewer, polite but probing",
+   "register": "keigo",
+   "goals": [
+    "Introduce yourself formally",
+    "Explain your motivation",
+    "Describe a strength",
+    "Ask one question at the end"
+   ],
+   "vocabulary": [
+    "志望",
+    "動機",
+    "経験",
+    "長所",
+    "貢献",
+    "質問"
+   ],
+   "phrases": [
+    "よろしくお願いいたします",
+    "御社を志望した理由は",
+    "私の長所は"
+   ],
+   "turns": [
+    {
+     "partnerJa": "では、自己紹介をお願いします。",
+     "partnerEn": "Please introduce yourself.",
+     "intent": "Introduce yourself formally",
+     "sample": "マリア・ロペスと申します。よろしくお願いいたします。"
+    },
+    {
+     "partnerJa": "志望動機を教えてください。",
+     "partnerEn": "Tell us why you applied.",
+     "intent": "Explain motivation",
+     "sample": "日本語を使って仕事をしたいと思い、応募いたしました。"
+    },
+    {
+     "partnerJa": "これまでにどんな経験がありますか。",
+     "partnerEn": "What experience do you have?",
+     "intent": "Describe experience",
+     "sample": "大学で事務のアルバイトを二年間しておりました。"
+    },
+    {
+     "partnerJa": "あなたの長所は何ですか。",
+     "partnerEn": "What is your strength?",
+     "intent": "Describe a strength with an example",
+     "sample": "私の長所は責任感が強いところです。"
+    },
+    {
+     "partnerJa": "いつから働けますか。",
+     "partnerEn": "When can you start?",
+     "intent": "Answer",
+     "sample": "来月から働けます。"
+    },
+    {
+     "partnerJa": "最後に何か質問はありますか。",
+     "partnerEn": "Finally, do you have any questions?",
+     "intent": "Ask one question",
+     "sample": "研修はどのように行われますか。"
+    }
+   ]
+  },
+  {
+   "id": "self-intro-work",
+   "titleEn": "First day at work",
+   "titleJa": "職場での自己紹介",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "work",
+   "setting": "Your first morning in a Japanese office. Your manager introduces you to the team.",
+   "learnerRole": "New employee",
+   "partnerRole": "Manager",
+   "register": "polite",
+   "goals": [
+    "Introduce yourself",
+    "Say where you're from and your role",
+    "Ask for guidance politely"
+   ],
+   "vocabulary": [
+    "自己紹介",
+    "出身",
+    "担当",
+    "同僚",
+    "よろしく"
+   ],
+   "phrases": [
+    "はじめまして",
+    "…から来ました",
+    "ご指導よろしくお願いします"
+   ],
+   "turns": [
+    {
+     "partnerJa": "じゃあ、みんなに自己紹介してください。",
+     "partnerEn": "Please introduce yourself to everyone.",
+     "intent": "Introduce yourself",
+     "sample": "はじめまして、アレックスと申します。"
+    },
+    {
+     "partnerJa": "出身はどちらですか。",
+     "partnerEn": "Where are you from?",
+     "intent": "Say where you are from",
+     "sample": "アメリカのシアトルから来ました。"
+    },
+    {
+     "partnerJa": "こちらでは営業を担当してもらいます。",
+     "partnerEn": "Here you'll be in charge of sales.",
+     "intent": "Respond with enthusiasm",
+     "sample": "精一杯がんばります。"
+    },
+    {
+     "partnerJa": "何かわからないことがあれば、田中さんに聞いてください。",
+     "partnerEn": "If you don't understand something, ask Tanaka.",
+     "intent": "Greet Tanaka",
+     "sample": "田中さん、よろしくお願いします。"
+    },
+    {
+     "partnerJa": "日本の会社は初めてですか。",
+     "partnerEn": "Is this your first Japanese company?",
+     "intent": "Answer",
+     "sample": "はい、初めてです。"
+    },
+    {
+     "partnerJa": "では、今日からよろしく。",
+     "partnerEn": "Well then, welcome aboard.",
+     "intent": "Close politely",
+     "sample": "ご指導よろしくお願いいたします。"
+    }
+   ]
+  },
+  {
+   "id": "counterpart-briefing",
+   "titleEn": "Briefing a Japanese counterpart",
+   "titleJa": "日本側担当者への説明",
+   "jlpt": 2,
+   "ilr": "2+",
+   "category": "official",
+   "setting": "A meeting room on base. You brief a Japanese liaison officer about tomorrow's joint schedule.",
+   "learnerRole": "Briefing officer",
+   "partnerRole": "Japanese liaison officer, formal and precise",
+   "register": "keigo",
+   "goals": [
+    "State the purpose of the briefing",
+    "Explain the schedule clearly",
+    "Confirm points of contact",
+    "Check for questions"
+   ],
+   "vocabulary": [
+    "日程",
+    "訓練",
+    "集合",
+    "担当者",
+    "確認",
+    "連絡"
+   ],
+   "phrases": [
+    "本日は…についてご説明いたします",
+    "集合時間は…です",
+    "ご質問はございますか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "本日はよろしくお願いいたします。",
+     "partnerEn": "Thank you for your time today.",
+     "intent": "State the purpose",
+     "sample": "本日は明日の合同訓練の日程についてご説明いたします。"
+    },
+    {
+     "partnerJa": "集合は何時でしょうか。",
+     "partnerEn": "What time do we assemble?",
+     "intent": "Explain the schedule",
+     "sample": "集合は午前七時、第二格納庫前です。"
+    },
+    {
+     "partnerJa": "日本側の人数はどのくらいを想定されていますか。",
+     "partnerEn": "How many personnel do you expect from the Japanese side?",
+     "intent": "Answer with numbers",
+     "sample": "日本側は十五名を予定しております。"
+    },
+    {
+     "partnerJa": "雨天の場合はどうなりますか。",
+     "partnerEn": "What happens if it rains?",
+     "intent": "Explain the contingency",
+     "sample": "雨天の場合は屋内訓練に変更いたします。"
+    },
+    {
+     "partnerJa": "連絡窓口はどなたになりますか。",
+     "partnerEn": "Who is the point of contact?",
+     "intent": "Name the point of contact",
+     "sample": "連絡窓口は私、ジョンソン大尉が担当いたします。"
+    },
+    {
+     "partnerJa": "承知いたしました。",
+     "partnerEn": "Understood.",
+     "intent": "Check for questions",
+     "sample": "ほかにご質問はございますか。"
+    }
+   ]
+  },
+  {
+   "id": "base-gate",
+   "titleEn": "Visitor check-in at the base gate",
+   "titleJa": "基地ゲートでの受付",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "official",
+   "setting": "The main gate of a base. A Japanese contractor arrives for a meeting; you are on gate duty.",
+   "learnerRole": "Gate guard",
+   "partnerRole": "Visiting contractor",
+   "register": "polite",
+   "goals": [
+    "Greet and ask the purpose of the visit",
+    "Request ID",
+    "Confirm the appointment",
+    "Explain the visitor pass rules"
+   ],
+   "vocabulary": [
+    "身分証明書",
+    "訪問",
+    "目的",
+    "許可",
+    "記入",
+    "返却"
+   ],
+   "phrases": [
+    "ご用件は何ですか",
+    "身分証明書を見せてください",
+    "お帰りの際に返却してください"
+   ],
+   "turns": [
+    {
+     "partnerJa": "おはようございます。十時から会議があって来ました。",
+     "partnerEn": "Good morning. I'm here for a 10 o'clock meeting.",
+     "intent": "Ask who they are meeting",
+     "sample": "おはようございます。どなたとの会議ですか。"
+    },
+    {
+     "partnerJa": "施設課の佐藤さんです。",
+     "partnerEn": "With Mr. Sato from facilities.",
+     "intent": "Request ID",
+     "sample": "身分証明書を見せていただけますか。"
+    },
+    {
+     "partnerJa": "はい、運転免許証です。",
+     "partnerEn": "Yes, here is my driver's license.",
+     "intent": "Ask them to fill out a form",
+     "sample": "ありがとうございます。こちらの用紙に記入してください。"
+    },
+    {
+     "partnerJa": "これでいいですか。",
+     "partnerEn": "Is this all right?",
+     "intent": "Confirm the appointment and issue a pass",
+     "sample": "はい。佐藤さんに確認が取れました。こちらが通行証です。"
+    },
+    {
+     "partnerJa": "どこに行けばいいですか。",
+     "partnerEn": "Where should I go?",
+     "intent": "Give directions",
+     "sample": "まっすぐ行って、二つ目の建物です。"
+    },
+    {
+     "partnerJa": "わかりました。",
+     "partnerEn": "Understood.",
+     "intent": "Explain the pass rules",
+     "sample": "お帰りの際に、通行証を返却してください。"
+    }
+   ]
+  },
+  {
+   "id": "koban",
+   "titleEn": "At the police box",
+   "titleJa": "交番で",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "official",
+   "setting": "A koban. You found a wallet on the street and want to hand it in.",
+   "learnerRole": "Finder",
+   "partnerRole": "Police officer",
+   "register": "polite",
+   "goals": [
+    "Say what you found",
+    "Say where and when",
+    "Give your contact details"
+   ],
+   "vocabulary": [
+    "財布",
+    "拾う",
+    "交番",
+    "場所",
+    "届ける",
+    "連絡先"
+   ],
+   "phrases": [
+    "財布を拾いました",
+    "駅の前で拾いました",
+    "連絡先は…です"
+   ],
+   "turns": [
+    {
+     "partnerJa": "どうしましたか。",
+     "partnerEn": "What's the matter?",
+     "intent": "Say what you found",
+     "sample": "財布を拾ったので、届けに来ました。"
+    },
+    {
+     "partnerJa": "どこで拾いましたか。",
+     "partnerEn": "Where did you find it?",
+     "intent": "Say where",
+     "sample": "駅の前の道で拾いました。"
+    },
+    {
+     "partnerJa": "何時ごろですか。",
+     "partnerEn": "About what time?",
+     "intent": "Say when",
+     "sample": "十分ぐらい前です。"
+    },
+    {
+     "partnerJa": "中は見ましたか。",
+     "partnerEn": "Did you look inside?",
+     "intent": "Answer",
+     "sample": "いいえ、見ていません。"
+    },
+    {
+     "partnerJa": "では、お名前と連絡先をお願いします。",
+     "partnerEn": "Your name and contact details, please.",
+     "intent": "Give contact details",
+     "sample": "リーです。電話番号はこちらです。"
+    },
+    {
+     "partnerJa": "ご協力ありがとうございました。",
+     "partnerEn": "Thank you for your cooperation.",
+     "intent": "Respond",
+     "sample": "いいえ、よろしくお願いします。"
+    }
+   ]
+  },
+  {
+   "id": "bank",
+   "titleEn": "Opening a bank account",
+   "titleJa": "銀行で口座を作る",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "daily",
+   "setting": "A bank branch. You want to open an account for your salary.",
+   "learnerRole": "Customer",
+   "partnerRole": "Bank clerk",
+   "register": "keigo",
+   "goals": [
+    "Say what you want to do",
+    "Show residence card",
+    "Answer questions about purpose",
+    "Ask about the cash card"
+   ],
+   "vocabulary": [
+    "口座",
+    "開く",
+    "在留カード",
+    "印鑑",
+    "目的",
+    "給料"
+   ],
+   "phrases": [
+    "口座を作りたいんですが",
+    "在留カードはこちらです",
+    "キャッシュカードはいつ届きますか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "本日はどのようなご用件でしょうか。",
+     "partnerEn": "How may I help you today?",
+     "intent": "Say what you want",
+     "sample": "口座を開きたいんですが。"
+    },
+    {
+     "partnerJa": "身分証明書はお持ちですか。",
+     "partnerEn": "Do you have identification?",
+     "intent": "Show residence card",
+     "sample": "はい、在留カードです。"
+    },
+    {
+     "partnerJa": "口座のご利用目的は何でしょうか。",
+     "partnerEn": "What is the account for?",
+     "intent": "Explain purpose",
+     "sample": "給料の振り込みに使います。"
+    },
+    {
+     "partnerJa": "印鑑はお持ちですか。",
+     "partnerEn": "Do you have a personal seal?",
+     "intent": "Answer (or ask if a signature is okay)",
+     "sample": "いいえ、サインでもいいですか。"
+    },
+    {
+     "partnerJa": "はい、サインで大丈夫です。",
+     "partnerEn": "Yes, a signature is fine.",
+     "intent": "Ask about the cash card",
+     "sample": "キャッシュカードはいつ届きますか。"
+    },
+    {
+     "partnerJa": "一週間ほどでご自宅に郵送いたします。",
+     "partnerEn": "We'll mail it to your home in about a week.",
+     "intent": "Thank",
+     "sample": "わかりました。ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "post-office",
+   "titleEn": "Sending a package",
+   "titleJa": "郵便局で荷物を送る",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "daily",
+   "setting": "A post office counter. You want to send a small package to the United States.",
+   "learnerRole": "Customer",
+   "partnerRole": "Postal clerk",
+   "register": "polite",
+   "goals": [
+    "Say where you're sending it",
+    "Choose a shipping method",
+    "Say what's inside"
+   ],
+   "vocabulary": [
+    "荷物",
+    "送る",
+    "航空便",
+    "船便",
+    "中身",
+    "届く"
+   ],
+   "phrases": [
+    "アメリカに送りたいです",
+    "航空便でお願いします",
+    "中身は本です"
+   ],
+   "turns": [
+    {
+     "partnerJa": "こちらの荷物はどちらへ送りますか。",
+     "partnerEn": "Where are you sending this package?",
+     "intent": "Say the destination",
+     "sample": "アメリカに送りたいです。"
+    },
+    {
+     "partnerJa": "航空便と船便、どちらにしますか。",
+     "partnerEn": "Airmail or sea mail?",
+     "intent": "Ask about delivery times",
+     "sample": "航空便だと何日ぐらいかかりますか。"
+    },
+    {
+     "partnerJa": "一週間ぐらいです。",
+     "partnerEn": "About a week.",
+     "intent": "Choose a method",
+     "sample": "じゃあ、航空便でお願いします。"
+    },
+    {
+     "partnerJa": "中身は何ですか。",
+     "partnerEn": "What's inside?",
+     "intent": "Say what's inside",
+     "sample": "本と服です。"
+    },
+    {
+     "partnerJa": "こちらの用紙に記入してください。",
+     "partnerEn": "Please fill in this form.",
+     "intent": "Acknowledge",
+     "sample": "はい、わかりました。"
+    },
+    {
+     "partnerJa": "料金は二千四百円です。",
+     "partnerEn": "That's 2,400 yen.",
+     "intent": "Pay and thank",
+     "sample": "はい、お願いします。"
+    }
+   ]
+  },
+  {
+   "id": "restaurant-allergy",
+   "titleEn": "Food allergy at a restaurant",
+   "titleJa": "レストランでアレルギーを伝える",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "health",
+   "setting": "A family restaurant. You are allergic to shrimp and want to order safely.",
+   "learnerRole": "Customer",
+   "partnerRole": "Server",
+   "register": "polite",
+   "goals": [
+    "State the allergy clearly",
+    "Ask about ingredients",
+    "Order a safe dish"
+   ],
+   "vocabulary": [
+    "アレルギー",
+    "海老",
+    "入る",
+    "料理",
+    "材料",
+    "大丈夫"
+   ],
+   "phrases": [
+    "海老のアレルギーがあります",
+    "これに海老は入っていますか",
+    "海老が入っていない料理はありますか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "ご注文はお決まりですか。",
+     "partnerEn": "Are you ready to order?",
+     "intent": "State the allergy",
+     "sample": "海老のアレルギーがあるんですが。"
+    },
+    {
+     "partnerJa": "かしこまりました。",
+     "partnerEn": "Understood.",
+     "intent": "Ask about a dish",
+     "sample": "このパスタに海老は入っていますか。"
+    },
+    {
+     "partnerJa": "はい、そちらには入っております。",
+     "partnerEn": "Yes, that one contains it.",
+     "intent": "Ask for alternatives",
+     "sample": "海老が入っていない料理はありますか。"
+    },
+    {
+     "partnerJa": "こちらのハンバーグなら大丈夫です。",
+     "partnerEn": "This hamburg steak is fine.",
+     "intent": "Check cooking",
+     "sample": "同じ鍋で作りますか。"
+    },
+    {
+     "partnerJa": "いいえ、別に調理いたします。",
+     "partnerEn": "No, we'll prepare it separately.",
+     "intent": "Order it",
+     "sample": "じゃあ、ハンバーグをお願いします。"
+    },
+    {
+     "partnerJa": "かしこまりました。",
+     "partnerEn": "Certainly.",
+     "intent": "Thank",
+     "sample": "ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "landlord",
+   "titleEn": "Apartment problem",
+   "titleJa": "アパートのトラブル",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "daily",
+   "setting": "You call your building's management company because the water heater is broken.",
+   "learnerRole": "Tenant",
+   "partnerRole": "Management company staff",
+   "register": "polite",
+   "goals": [
+    "Explain the problem",
+    "Say since when",
+    "Arrange a repair visit"
+   ],
+   "vocabulary": [
+    "お湯",
+    "出る",
+    "故障",
+    "修理",
+    "部屋",
+    "都合"
+   ],
+   "phrases": [
+    "お湯が出ないんです",
+    "修理に来てもらえますか",
+    "明日の午前中なら大丈夫です"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、みどり不動産です。",
+     "partnerEn": "Hello, Midori Real Estate.",
+     "intent": "Say who you are",
+     "sample": "さくらハイツ二〇三号室のパクです。"
+    },
+    {
+     "partnerJa": "どうされましたか。",
+     "partnerEn": "What's the problem?",
+     "intent": "Explain the problem",
+     "sample": "お湯が出なくなってしまったんです。"
+    },
+    {
+     "partnerJa": "いつからですか。",
+     "partnerEn": "Since when?",
+     "intent": "Say since when",
+     "sample": "今朝からです。"
+    },
+    {
+     "partnerJa": "修理業者に連絡します。ご都合のいい日はありますか。",
+     "partnerEn": "I'll contact a repair company. When is convenient?",
+     "intent": "Arrange a time",
+     "sample": "明日の午前中なら大丈夫です。"
+    },
+    {
+     "partnerJa": "では、明日の十時ごろ伺います。",
+     "partnerEn": "Then they'll come around 10 tomorrow.",
+     "intent": "Confirm",
+     "sample": "十時ですね。わかりました。"
+    },
+    {
+     "partnerJa": "ご不便をおかけします。",
+     "partnerEn": "Sorry for the inconvenience.",
+     "intent": "Thank",
+     "sample": "よろしくお願いします。"
+    }
+   ]
+  },
+  {
+   "id": "emergency-119",
+   "titleEn": "Calling 119",
+   "titleJa": "119番に電話する",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "health",
+   "setting": "Someone has collapsed on the street. You call 119. Stay calm and give facts.",
+   "learnerRole": "Caller",
+   "partnerRole": "Emergency dispatcher, calm and structured",
+   "register": "polite",
+   "goals": [
+    "Say it's an ambulance call",
+    "Give the location",
+    "Describe the person's condition",
+    "Follow instructions"
+   ],
+   "vocabulary": [
+    "救急車",
+    "場所",
+    "倒れる",
+    "意識",
+    "呼吸",
+    "住所"
+   ],
+   "phrases": [
+    "救急車をお願いします",
+    "人が倒れています",
+    "意識がありません"
+   ],
+   "turns": [
+    {
+     "partnerJa": "火事ですか、救急ですか。",
+     "partnerEn": "Fire or ambulance?",
+     "intent": "Say ambulance",
+     "sample": "救急です。救急車をお願いします。"
+    },
+    {
+     "partnerJa": "場所はどこですか。",
+     "partnerEn": "Where are you?",
+     "intent": "Give the location",
+     "sample": "中央駅の東口の前です。"
+    },
+    {
+     "partnerJa": "どうしましたか。",
+     "partnerEn": "What happened?",
+     "intent": "Describe what happened",
+     "sample": "男の人が倒れています。"
+    },
+    {
+     "partnerJa": "意識はありますか。",
+     "partnerEn": "Is he conscious?",
+     "intent": "Describe condition",
+     "sample": "意識がないみたいです。"
+    },
+    {
+     "partnerJa": "呼吸はしていますか。",
+     "partnerEn": "Is he breathing?",
+     "intent": "Answer",
+     "sample": "はい、呼吸はしています。"
+    },
+    {
+     "partnerJa": "救急車が向かっています。そのまま待ってください。",
+     "partnerEn": "An ambulance is on the way. Please wait there.",
+     "intent": "Confirm",
+     "sample": "わかりました。ここで待ちます。"
+    }
+   ]
+  },
+  {
+   "id": "returns",
+   "titleEn": "Returning an item",
+   "titleJa": "返品する",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "daily",
+   "setting": "A clothing shop. The shirt you bought yesterday is the wrong size.",
+   "learnerRole": "Customer",
+   "partnerRole": "Shop staff",
+   "register": "polite",
+   "goals": [
+    "Explain the problem",
+    "Show the receipt",
+    "Choose exchange or refund"
+   ],
+   "vocabulary": [
+    "返品",
+    "交換",
+    "サイズ",
+    "レシート",
+    "返金"
+   ],
+   "phrases": [
+    "昨日買ったんですが",
+    "サイズが合わなくて",
+    "交換できますか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。",
+     "partnerEn": "Welcome.",
+     "intent": "Explain the problem",
+     "sample": "昨日このシャツを買ったんですが、サイズが合わなくて。"
+    },
+    {
+     "partnerJa": "レシートはお持ちですか。",
+     "partnerEn": "Do you have the receipt?",
+     "intent": "Show it",
+     "sample": "はい、こちらです。"
+    },
+    {
+     "partnerJa": "交換と返金、どちらにしますか。",
+     "partnerEn": "Exchange or refund?",
+     "intent": "Choose",
+     "sample": "Lサイズに交換できますか。"
+    },
+    {
+     "partnerJa": "少々お待ちください。…Lサイズ、ございました。",
+     "partnerEn": "One moment… we have a large.",
+     "intent": "Try it or accept",
+     "sample": "試着してもいいですか。"
+    },
+    {
+     "partnerJa": "どうぞ、あちらです。",
+     "partnerEn": "Please, over there.",
+     "intent": "Report and decide",
+     "sample": "ちょうどいいです。これにします。"
+    },
+    {
+     "partnerJa": "では、交換いたします。",
+     "partnerEn": "Then I'll exchange it.",
+     "intent": "Thank",
+     "sample": "ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "hair-salon",
+   "titleEn": "At the hair salon",
+   "titleJa": "美容院で",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "daily",
+   "setting": "A hair salon. You want a trim, not a big change.",
+   "learnerRole": "Customer",
+   "partnerRole": "Stylist, chatty",
+   "register": "polite",
+   "goals": [
+    "Explain how you want your hair",
+    "Answer small talk",
+    "Give feedback at the end"
+   ],
+   "vocabulary": [
+    "髪",
+    "切る",
+    "短い",
+    "前髪",
+    "少し",
+    "長さ"
+   ],
+   "phrases": [
+    "少しだけ切ってください",
+    "前髪は眉ぐらいで",
+    "ちょうどいいです"
+   ],
+   "turns": [
+    {
+     "partnerJa": "今日はどうしますか。",
+     "partnerEn": "What would you like today?",
+     "intent": "Explain",
+     "sample": "少しだけ切ってください。"
+    },
+    {
+     "partnerJa": "どのくらい切りますか。",
+     "partnerEn": "How much should I cut?",
+     "intent": "Say how much",
+     "sample": "三センチぐらいお願いします。"
+    },
+    {
+     "partnerJa": "前髪はどうしますか。",
+     "partnerEn": "What about the fringe?",
+     "intent": "Explain",
+     "sample": "眉ぐらいの長さにしてください。"
+    },
+    {
+     "partnerJa": "お仕事帰りですか。",
+     "partnerEn": "Are you on your way home from work?",
+     "intent": "Small talk",
+     "sample": "はい、今日は早く終わりました。"
+    },
+    {
+     "partnerJa": "こんな感じでいかがですか。",
+     "partnerEn": "How does this look?",
+     "intent": "Give feedback",
+     "sample": "いいですね。ちょうどいいです。"
+    },
+    {
+     "partnerJa": "お疲れさまでした。",
+     "partnerEn": "All done, thank you.",
+     "intent": "Thank",
+     "sample": "ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "gym",
+   "titleEn": "Signing up at a gym",
+   "titleJa": "ジムに入会する",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "daily",
+   "setting": "The front desk of a local gym.",
+   "learnerRole": "Prospective member",
+   "partnerRole": "Gym staff",
+   "register": "polite",
+   "goals": [
+    "Say you want to join",
+    "Ask about fees and hours",
+    "Ask about a trial"
+   ],
+   "vocabulary": [
+    "入会",
+    "料金",
+    "月",
+    "体験",
+    "営業時間",
+    "会員"
+   ],
+   "phrases": [
+    "入会したいんですが",
+    "月いくらですか",
+    "体験はできますか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "こんにちは。見学ですか。",
+     "partnerEn": "Hello. Here to look around?",
+     "intent": "Say you want to join",
+     "sample": "入会したいと思っているんですが。"
+    },
+    {
+     "partnerJa": "ありがとうございます。何か質問はありますか。",
+     "partnerEn": "Thank you. Any questions?",
+     "intent": "Ask about fees",
+     "sample": "料金は月いくらですか。"
+    },
+    {
+     "partnerJa": "月八千円です。",
+     "partnerEn": "8,000 yen a month.",
+     "intent": "Ask about hours",
+     "sample": "営業時間は何時から何時までですか。"
+    },
+    {
+     "partnerJa": "朝七時から夜十一時までです。",
+     "partnerEn": "7 a.m. to 11 p.m.",
+     "intent": "Ask about a trial",
+     "sample": "体験はできますか。"
+    },
+    {
+     "partnerJa": "はい、一回無料で体験できます。",
+     "partnerEn": "Yes, you can try once for free.",
+     "intent": "Book it",
+     "sample": "じゃあ、明日体験したいです。"
+    },
+    {
+     "partnerJa": "では、お名前をお願いします。",
+     "partnerEn": "Your name, please.",
+     "intent": "Give your name",
+     "sample": "グエンです。"
+    }
+   ]
+  },
+  {
+   "id": "making-friends",
+   "titleEn": "Making a friend",
+   "titleJa": "友達を作る",
+   "jlpt": 5,
+   "ilr": "0+",
+   "category": "social",
+   "setting": "A language exchange café. Someone your age starts chatting.",
+   "learnerRole": "Learner",
+   "partnerRole": "Friendly student",
+   "register": "casual",
+   "goals": [
+    "Exchange names",
+    "Talk about hobbies",
+    "Suggest meeting again"
+   ],
+   "vocabulary": [
+    "趣味",
+    "名前",
+    "好き",
+    "映画",
+    "今度",
+    "一緒"
+   ],
+   "phrases": [
+    "趣味は何？",
+    "私も好き！",
+    "今度一緒に行こう"
+   ],
+   "turns": [
+    {
+     "partnerJa": "こんにちは！名前は？",
+     "partnerEn": "Hi! What's your name?",
+     "intent": "Say your name",
+     "sample": "サラです。よろしく！"
+    },
+    {
+     "partnerJa": "私はゆいです。どこから来たの？",
+     "partnerEn": "I'm Yui. Where are you from?",
+     "intent": "Say where you're from",
+     "sample": "カナダから来たよ。"
+    },
+    {
+     "partnerJa": "趣味は何？",
+     "partnerEn": "What are your hobbies?",
+     "intent": "Talk about hobbies",
+     "sample": "映画を見るのが好き。"
+    },
+    {
+     "partnerJa": "本当？私も映画、大好き！",
+     "partnerEn": "Really? I love movies too!",
+     "intent": "Ask what kind",
+     "sample": "どんな映画が好き？"
+    },
+    {
+     "partnerJa": "アニメ映画が好き。",
+     "partnerEn": "I like animated films.",
+     "intent": "Suggest meeting",
+     "sample": "今度一緒に見に行かない？"
+    },
+    {
+     "partnerJa": "いいね！行こう！",
+     "partnerEn": "Sounds good! Let's go!",
+     "intent": "Exchange contact",
+     "sample": "じゃあ、LINE交換しよう。"
+    }
+   ]
+  },
+  {
+   "id": "late-apology",
+   "titleEn": "Apologising for being late",
+   "titleJa": "遅刻を謝る",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "work",
+   "setting": "You arrive fifteen minutes late to a team meeting because the train was delayed.",
+   "learnerRole": "Team member",
+   "partnerRole": "Team leader, a little annoyed",
+   "register": "polite",
+   "goals": [
+    "Apologise sincerely",
+    "Explain the reason briefly",
+    "Say how you'll avoid it"
+   ],
+   "vocabulary": [
+    "遅刻",
+    "遅れる",
+    "電車",
+    "申し訳ない",
+    "気をつける"
+   ],
+   "phrases": [
+    "遅れて申し訳ありません",
+    "電車が遅れてしまって",
+    "今後気をつけます"
+   ],
+   "turns": [
+    {
+     "partnerJa": "あ、来ましたか。",
+     "partnerEn": "Oh, you're here.",
+     "intent": "Apologise",
+     "sample": "遅れて申し訳ありません。"
+    },
+    {
+     "partnerJa": "どうしたんですか。",
+     "partnerEn": "What happened?",
+     "intent": "Explain briefly",
+     "sample": "電車が事故で止まってしまって。"
+    },
+    {
+     "partnerJa": "連絡がほしかったですね。",
+     "partnerEn": "I'd have liked a message.",
+     "intent": "Accept and apologise",
+     "sample": "連絡しなくてすみませんでした。"
+    },
+    {
+     "partnerJa": "次から気をつけてください。",
+     "partnerEn": "Please be careful from now on.",
+     "intent": "Promise",
+     "sample": "はい、今後気をつけます。"
+    },
+    {
+     "partnerJa": "今、予算の話をしていました。",
+     "partnerEn": "We were just discussing the budget.",
+     "intent": "Ask to catch up",
+     "sample": "あとで資料を見せていただけますか。"
+    },
+    {
+     "partnerJa": "いいですよ。",
+     "partnerEn": "Sure.",
+     "intent": "Thank",
+     "sample": "ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "decline-invitation",
+   "titleEn": "Declining an invitation",
+   "titleJa": "誘いを断る",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "social",
+   "setting": "A coworker invites you to drinks tonight, but you already have plans.",
+   "learnerRole": "Coworker",
+   "partnerRole": "Friendly coworker",
+   "register": "polite",
+   "goals": [
+    "Thank them for the invitation",
+    "Decline softly",
+    "Suggest another time"
+   ],
+   "vocabulary": [
+    "誘う",
+    "今夜",
+    "予定",
+    "残念",
+    "今度"
+   ],
+   "phrases": [
+    "誘ってくれてありがとう",
+    "今日はちょっと…",
+    "また誘ってください"
+   ],
+   "turns": [
+    {
+     "partnerJa": "今夜、みんなで飲みに行くんだけど、来ない？",
+     "partnerEn": "We're all going for drinks tonight, want to come?",
+     "intent": "Thank them",
+     "sample": "誘ってくれてありがとうございます。"
+    },
+    {
+     "partnerJa": "どう？",
+     "partnerEn": "So?",
+     "intent": "Decline softly",
+     "sample": "今日はちょっと予定があって…。"
+    },
+    {
+     "partnerJa": "そうか、残念。",
+     "partnerEn": "Oh, that's a shame.",
+     "intent": "Suggest another time",
+     "sample": "来週なら行けます。"
+    },
+    {
+     "partnerJa": "じゃあ、来週の金曜日はどう？",
+     "partnerEn": "How about next Friday then?",
+     "intent": "Accept",
+     "sample": "金曜日ならぜひ。"
+    },
+    {
+     "partnerJa": "決まりだね。",
+     "partnerEn": "It's settled then.",
+     "intent": "Close warmly",
+     "sample": "楽しみにしています。"
+    },
+    {
+     "partnerJa": "お疲れさま。",
+     "partnerEn": "Good work today.",
+     "intent": "Say goodbye",
+     "sample": "お疲れさまでした。"
+    }
+   ]
+  },
+  {
+   "id": "favor-senior",
+   "titleEn": "Asking a senior colleague for a favor",
+   "titleJa": "先輩にお願いする",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "work",
+   "setting": "You need a senior colleague to check your report before a deadline.",
+   "learnerRole": "Junior colleague",
+   "partnerRole": "Busy senior colleague (先輩)",
+   "register": "polite",
+   "goals": [
+    "Check if they have time",
+    "Make the request with appropriate softness",
+    "Thank them properly"
+   ],
+   "vocabulary": [
+    "お願い",
+    "報告書",
+    "確認",
+    "締め切り",
+    "時間",
+    "助かる"
+   ],
+   "phrases": [
+    "今ちょっとよろしいですか",
+    "…していただけませんか",
+    "助かります"
+   ],
+   "turns": [
+    {
+     "partnerJa": "ん？どうした？",
+     "partnerEn": "Hm? What's up?",
+     "intent": "Check they have time",
+     "sample": "先輩、今ちょっとよろしいですか。"
+    },
+    {
+     "partnerJa": "いいよ、何？",
+     "partnerEn": "Sure, what is it?",
+     "intent": "Make the request",
+     "sample": "この報告書を確認していただけませんか。"
+    },
+    {
+     "partnerJa": "締め切りはいつ？",
+     "partnerEn": "When's the deadline?",
+     "intent": "Give the deadline",
+     "sample": "明日の朝です。"
+    },
+    {
+     "partnerJa": "今日は忙しいから、夕方でもいい？",
+     "partnerEn": "I'm busy today, is this evening okay?",
+     "intent": "Accept gratefully",
+     "sample": "はい、夕方で大丈夫です。助かります。"
+    },
+    {
+     "partnerJa": "どこを特に見ればいい？",
+     "partnerEn": "What should I look at especially?",
+     "intent": "Explain",
+     "sample": "特に数字が合っているか見ていただきたいです。"
+    },
+    {
+     "partnerJa": "わかった。",
+     "partnerEn": "Got it.",
+     "intent": "Thank properly",
+     "sample": "お忙しいところ、ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "customer-service-keigo",
+   "titleEn": "Keigo customer service",
+   "titleJa": "敬語で接客する",
+   "jlpt": 2,
+   "ilr": "2",
+   "category": "work",
+   "setting": "You work at a hotel front desk and a guest has a complaint about noise.",
+   "learnerRole": "Hotel staff",
+   "partnerRole": "Guest, irritated but reasonable",
+   "register": "keigo",
+   "goals": [
+    "Apologise in keigo",
+    "Ask for details",
+    "Offer a solution"
+   ],
+   "vocabulary": [
+    "騒音",
+    "部屋",
+    "変更",
+    "申し訳ございません",
+    "確認"
+   ],
+   "phrases": [
+    "大変申し訳ございません",
+    "詳しくお聞かせいただけますか",
+    "お部屋を変更いたしましょうか"
+   ],
+   "turns": [
+    {
+     "partnerJa": "隣の部屋がうるさくて眠れないんです。",
+     "partnerEn": "The next room is so noisy I can't sleep.",
+     "intent": "Apologise",
+     "sample": "大変申し訳ございません。"
+    },
+    {
+     "partnerJa": "昨日からずっとなんですよ。",
+     "partnerEn": "It's been like this since yesterday.",
+     "intent": "Ask for details",
+     "sample": "お部屋番号をお伺いしてもよろしいでしょうか。"
+    },
+    {
+     "partnerJa": "六一二号室です。",
+     "partnerEn": "Room 612.",
+     "intent": "Offer a solution",
+     "sample": "よろしければ、お部屋を変更いたしましょうか。"
+    },
+    {
+     "partnerJa": "変えてもらえるなら助かります。",
+     "partnerEn": "If you can change it, that would help.",
+     "intent": "Explain the next step",
+     "sample": "ただいま空いているお部屋を確認いたします。"
+    },
+    {
+     "partnerJa": "どのくらいかかりますか。",
+     "partnerEn": "How long will it take?",
+     "intent": "Give a time",
+     "sample": "五分ほどお待ちいただけますでしょうか。"
+    },
+    {
+     "partnerJa": "わかりました。",
+     "partnerEn": "All right.",
+     "intent": "Close politely",
+     "sample": "ご迷惑をおかけして、誠に申し訳ございません。"
+    }
+   ]
+  },
+  {
+   "id": "casual-chat",
+   "titleEn": "Casual chat with a friend",
+   "titleJa": "友達と雑談",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "social",
+   "setting": "You meet a friend for coffee on the weekend.",
+   "learnerRole": "Friend",
+   "partnerRole": "Close friend",
+   "register": "casual",
+   "goals": [
+    "Talk about your week",
+    "Ask about theirs",
+    "Make weekend plans"
+   ],
+   "vocabulary": [
+    "週末",
+    "最近",
+    "忙しい",
+    "疲れる",
+    "遊ぶ"
+   ],
+   "phrases": [
+    "最近どう？",
+    "めっちゃ忙しかった",
+    "週末何する？"
+   ],
+   "turns": [
+    {
+     "partnerJa": "久しぶり！最近どう？",
+     "partnerEn": "Long time no see! How've you been?",
+     "intent": "Talk about your week",
+     "sample": "仕事がめっちゃ忙しかったよ。"
+    },
+    {
+     "partnerJa": "大変だね。疲れてない？",
+     "partnerEn": "That's rough. Aren't you tired?",
+     "intent": "Answer",
+     "sample": "ちょっと疲れてる。"
+    },
+    {
+     "partnerJa": "私も今週はテストがあった。",
+     "partnerEn": "I had exams this week too.",
+     "intent": "Ask about it",
+     "sample": "テストどうだった？"
+    },
+    {
+     "partnerJa": "まあまあかな。",
+     "partnerEn": "Not bad, I guess.",
+     "intent": "Suggest plans",
+     "sample": "週末、何か予定ある？"
+    },
+    {
+     "partnerJa": "特にないよ。",
+     "partnerEn": "Nothing in particular.",
+     "intent": "Propose something",
+     "sample": "じゃあ、映画でも見に行かない？"
+    },
+    {
+     "partnerJa": "いいね、行こう！",
+     "partnerEn": "Sounds good, let's go!",
+     "intent": "Agree on time",
+     "sample": "土曜日の午後はどう？"
+    }
+   ]
+  },
+  {
+   "id": "party-smalltalk",
+   "titleEn": "Small talk at a party",
+   "titleJa": "パーティーで雑談",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "social",
+   "setting": "A welcome party for new staff. You meet someone from another department.",
+   "learnerRole": "Guest",
+   "partnerRole": "Colleague from another department",
+   "register": "polite",
+   "goals": [
+    "Introduce yourself",
+    "Find a common topic",
+    "End the chat gracefully"
+   ],
+   "vocabulary": [
+    "部署",
+    "出身",
+    "趣味",
+    "料理",
+    "おいしい"
+   ],
+   "phrases": [
+    "どちらの部署ですか",
+    "私も…が好きです",
+    "またお話ししましょう"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はじめまして。経理部の山田です。",
+     "partnerEn": "Nice to meet you. I'm Yamada from accounting.",
+     "intent": "Introduce yourself",
+     "sample": "はじめまして。営業部のジョーンズです。"
+    },
+    {
+     "partnerJa": "日本は長いんですか。",
+     "partnerEn": "Have you been in Japan long?",
+     "intent": "Answer",
+     "sample": "まだ半年です。"
+    },
+    {
+     "partnerJa": "週末は何をしているんですか。",
+     "partnerEn": "What do you do on weekends?",
+     "intent": "Share a hobby",
+     "sample": "よく山に登っています。"
+    },
+    {
+     "partnerJa": "私も登山が好きなんです！",
+     "partnerEn": "I love hiking too!",
+     "intent": "Follow up",
+     "sample": "おすすめの山はありますか。"
+    },
+    {
+     "partnerJa": "高尾山はいいですよ。",
+     "partnerEn": "Mt. Takao is nice.",
+     "intent": "React",
+     "sample": "今度行ってみます。"
+    },
+    {
+     "partnerJa": "あ、部長に呼ばれてしまいました。",
+     "partnerEn": "Oh, the manager is calling me.",
+     "intent": "End gracefully",
+     "sample": "またお話ししましょう。"
+    }
+   ]
+  },
+  {
+   "id": "short-report",
+   "titleEn": "Presenting a short report",
+   "titleJa": "短い報告をする",
+   "jlpt": 2,
+   "ilr": "2+",
+   "category": "work",
+   "setting": "A weekly team meeting. You report on project progress.",
+   "learnerRole": "Team member presenting",
+   "partnerRole": "Manager asking follow-up questions",
+   "register": "polite",
+   "goals": [
+    "Give the status",
+    "Explain one problem and its cause",
+    "Propose a next step",
+    "Answer a follow-up question"
+   ],
+   "vocabulary": [
+    "報告",
+    "進捗",
+    "問題",
+    "原因",
+    "対策",
+    "予定"
+   ],
+   "phrases": [
+    "進捗をご報告します",
+    "問題が一つあります",
+    "来週までに…する予定です"
+   ],
+   "turns": [
+    {
+     "partnerJa": "では、進捗を報告してください。",
+     "partnerEn": "Please report on progress.",
+     "intent": "Give the status",
+     "sample": "進捗をご報告します。全体の七割が終わりました。"
+    },
+    {
+     "partnerJa": "順調ですか。",
+     "partnerEn": "Is it on track?",
+     "intent": "Explain a problem",
+     "sample": "一つ問題があります。テストが遅れています。"
+    },
+    {
+     "partnerJa": "原因は何ですか。",
+     "partnerEn": "What's the cause?",
+     "intent": "Explain the cause",
+     "sample": "担当者が一人休んでいるためです。"
+    },
+    {
+     "partnerJa": "対策はありますか。",
+     "partnerEn": "Do you have a countermeasure?",
+     "intent": "Propose a next step",
+     "sample": "来週から他のチームに手伝ってもらう予定です。"
+    },
+    {
+     "partnerJa": "締め切りには間に合いそうですか。",
+     "partnerEn": "Will you make the deadline?",
+     "intent": "Answer",
+     "sample": "はい、間に合う見込みです。"
+    },
+    {
+     "partnerJa": "わかりました。ありがとう。",
+     "partnerEn": "Understood. Thank you.",
+     "intent": "Close",
+     "sample": "以上です。"
+    }
+   ]
+  },
+  {
+   "id": "taxi",
+   "titleEn": "Taking a taxi",
+   "titleJa": "タクシーに乗る",
+   "jlpt": 5,
+   "ilr": "0+",
+   "category": "travel",
+   "setting": "You get into a taxi outside a hotel.",
+   "learnerRole": "Passenger",
+   "partnerRole": "Taxi driver",
+   "register": "polite",
+   "goals": [
+    "Say the destination",
+    "Ask about time",
+    "Pay"
+   ],
+   "vocabulary": [
+    "空港",
+    "時間",
+    "かかる",
+    "領収書",
+    "止める"
+   ],
+   "phrases": [
+    "…までお願いします",
+    "どのくらいかかりますか",
+    "ここで止めてください"
+   ],
+   "turns": [
+    {
+     "partnerJa": "どちらまで？",
+     "partnerEn": "Where to?",
+     "intent": "Say the destination",
+     "sample": "空港までお願いします。"
+    },
+    {
+     "partnerJa": "はい。",
+     "partnerEn": "Okay.",
+     "intent": "Ask how long",
+     "sample": "どのくらいかかりますか。"
+    },
+    {
+     "partnerJa": "四十分ぐらいです。",
+     "partnerEn": "About forty minutes.",
+     "intent": "Acknowledge",
+     "sample": "わかりました。"
+    },
+    {
+     "partnerJa": "第一ターミナルですか。",
+     "partnerEn": "Terminal 1?",
+     "intent": "Answer",
+     "sample": "はい、第一ターミナルです。"
+    },
+    {
+     "partnerJa": "着きました。六千二百円です。",
+     "partnerEn": "We've arrived. 6,200 yen.",
+     "intent": "Ask for a receipt",
+     "sample": "領収書をお願いします。"
+    },
+    {
+     "partnerJa": "はい、どうぞ。",
+     "partnerEn": "Here you go.",
+     "intent": "Thank",
+     "sample": "ありがとうございました。"
+    }
+   ]
+  }
+ ]
+}
