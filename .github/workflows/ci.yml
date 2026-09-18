@@ -130,3 +130,21 @@ jobs:
             build/xcodebuild.log
             build/TestResults.xcresult
             build/crashes
+
+  server:
+    name: Sync server tests (SQLite + Postgres via Testcontainers)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Server tests
+        run: ./gradlew :server:test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: server-test-reports
+          path: server/build/reports/tests/

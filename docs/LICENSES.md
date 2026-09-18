@@ -19,6 +19,24 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | Google ML Kit Text Recognition v2, Japanese (bundled model) | androidApp | ML Kit Terms of Service (free, on-device, no API key) | https://developers.google.com/ml-kit/terms — used for camera/photo OCR only (BRIEF §3.2) |
 | AndroidX Activity, Lifecycle, Jetpack Compose (UI, Material 3) | androidApp | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx |
 
+## Sync server (`server/`, runs on the server; not linked into the apps)
+
+| Component | License | Source |
+|---|---|---|
+| Ktor server (core, Netty, auth, auth-jwt, content negotiation, status pages, rate limit) | Apache-2.0 | https://github.com/ktorio/ktor |
+| Netty (via Ktor) | Apache-2.0 | https://netty.io |
+| java-jwt (Auth0, via ktor-server-auth-jwt) | MIT | https://github.com/auth0/java-jwt |
+| HikariCP | Apache-2.0 | https://github.com/brettwooldridge/HikariCP |
+| Flyway Community (flyway-core, flyway-database-postgresql) | Apache-2.0 | https://github.com/flyway/flyway |
+| PostgreSQL JDBC driver | BSD-2-Clause | https://github.com/pgjdbc/pgjdbc |
+| sqlite-jdbc (xerial) — dev mode and tests | Apache-2.0 | https://github.com/xerial/sqlite-jdbc |
+| Password4j (Argon2id password hashing) | Apache-2.0 | https://github.com/Password4j/password4j |
+| WebAuthn4J (passkeys; `webauthn4j-test` in tests only) | Apache-2.0 | https://github.com/webauthn4j/webauthn4j |
+| Jackson (via WebAuthn4J) | Apache-2.0 | https://github.com/FasterXML/jackson |
+| SLF4J Simple (logging) | MIT | https://www.slf4j.org |
+| Testcontainers PostgreSQL — tests only | MIT | https://github.com/testcontainers/testcontainers-java |
+| Docker images: eclipse-temurin (JDK/JRE), postgres:16-alpine, caddy:2 — deployment only | GPLv2+CE (Temurin), PostgreSQL License, Apache-2.0 (Caddy) | https://adoptium.net · https://www.postgresql.org · https://caddyserver.com |
+
 ## Build tooling (not shipped in binaries)
 
 | Component | License | Source |
