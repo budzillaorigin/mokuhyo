@@ -1,6 +1,91 @@
 # Progress
 
-Current phase: **Phases 0–5 complete. Phase 6 (on-device AI, speaking, listening) in progress.** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+Current phase: **Phases 0–7 complete. Phase 8 (release hardening) in progress.** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+
+---
+
+## Phase 7: Exams (2026-09-18)
+
+### What was built
+- **Scoring core** (`shared/exam`), tested before any UI:
+  - JLPT blueprints (`tools/items/jlpt_blueprints.json`: published sections, item counts, timings, pass marks).
+  - Scaled scoring per score group with sectional minimums (D-029).
+  - DLPT ILR estimator (70% sustained over 20 items, with a floor for lower levels, and "provisional" for short slices).
+  - Form assembly that keeps each passage's questions together and prefers verified items.
+  - Timed `ExamSession`: strict sections that close when time runs out, and listening that plays once in mock mode.
+  - Attempts saved in `exam_attempt`, which syncs by union.
+  - Importing your own question banks, with validation.
+  - "Add missed items to SRS", for grammar points and dictionary words.
+- **OPI simulator** (`exam/opi/OpiSession`):
+  - Five phases: warm-up, level check, probe, role-play, wind-down.
+  - With a model, the interview and the rating go through `opi_interviewer_turn` / `opi_rate`, with ACTFL levels mapped to ILR.
+  - Without a model, questions come from the scripted bank per ILR level, the level adapts by answer length, and the learner rates themselves against the ILR checklist (D-031).
+- **Content** (`exam.sqlite`, built by `packs/build_exam.py`):
+  - JLPT: 2,368 items. 1,878 are rule-generated from JMdict, Tatoeba and the grammar packs by `items/gen_jlpt.py`; 490 are AI-drafted reading and listening items. There are enough items for one full mock at every level from N5 to N1.
+  - DLPT: 100 passages and 306 items across ILR 0+ to 3, AI-drafted, checked against per-level length, kanji-density and abstract-vocabulary bands (`items/ilr_bands.json`, `items/gen_dlpt.py`).
+  - `review.py` handles question banks (D-034). Both generators can draft more items through the owner's own OpenAI-compatible server.
+- **Grammar N2/N1:** 192 + 189 new points, 829 in total (5,116 Tatoeba examples). The Tatoeba matching order was fixed so N2/N1 points don't take N5–N3 sentences.
+- **UI on both apps:**
+  - Exams hub: JLPT level with the number of items available, full mock / section / item-type drills, DLPT at 180/60/30 minutes, OPI, history.
+  - Runner: countdown, question grid, passage pane with the bank markup rendered, audio button, strict modes.
+  - Results: scaled scores or ILR estimate, plus "Add missed to SRS".
+  - Attempt review with "Explain with AI" (labeled).
+  - Every exam screen carries the "unofficial practice; not affiliated with DLI/ACTFL/JLPT" disclaimer.
+
+### Verified
+- Exam scoring, assembly, session, service and OPI tests pass (37 tests).
+- `RealExamPackTest` builds JLPT mocks at all five levels, and a DLPT 60-minute form, from the real pack.
+- CI runs the Python item tests and bank validation.
+
+### Deferred
+- **Human review:** all AI-drafted items, dialogues, scenarios and N2/N1 grammar need a pass with `tools/items/review.py` (owner). Until then they show the "AI-generated" badge.
+- **Listening audio** uses on-device voices at play time rather than pre-rendered audio (D-030).
+- **Out-of-level vocabulary:** 476 validator warnings flag above-level words in JLPT items. They are worth cleaning during review.
+- **Upper range:** ILR 3+/4 passages are not written yet.
+
+---
+
+## Phase 6: On-device AI, speaking, listening (2026-09-18)
+
+### What was built
+- **AI core** (`shared/ai`):
+  - `AiGateway`: JSON-schema contract, timeout, one retry that feeds the problems back to the model, deterministic fallbacks, and output checks (wrong script, invented words, how much a correction may change).
+  - A prompt library of 10 tasks.
+  - `LocalLlamaModel` (ChatML + GBNF) and `OpenAICompatibleModel` (json_schema → json_object → prompt-only).
+  - Whisper local and endpoint recognizers, and VOICEVOX speech.
+  - `ModelManager`: resumable downloads with SHA-256 checks, offering only permissively licensed models (D-032).
+  - `tools/models/eval_ja.py` with 100 learner sentences.
+- **Native bridges:**
+  - llama.cpp b11040 and whisper.cpp b5130.
+  - iOS uses prebuilt xcframeworks, linked explicitly.
+  - Android builds them from source with CMake/NDK as arm64 JNI libraries.
+- **App wiring** (`shared/speaking`):
+  - `AiService`: engine choice, endpoint key kept in the Keychain/Keystore (D-033), model catalog bundled as `models-manifest.json`.
+  - `RoleplaySession`: model or scripted turns, with corrections and a natural version.
+  - `PronunciationService`: tokenizer plus Kanjium pitch targets.
+  - Pomodoro activities (`study/activities`).
+  - SRT/VTT subtitle parser (`media/Subtitles`).
+- **Speech analysis** (`shared/speech`): YIN pitch tracking, voice detection, mora alignment against the recognizer's transcript, per-word pitch verdicts (↑↓), a fluency score, and shadowing comparison with DTW. All of it is labeled heuristic.
+- **Practice pack** (`practice.sqlite`): 30 role-play scenarios with scripted fallbacks, 62 OPI questions plus ILR self-rating statements, 45 two-speaker dialogues with gaps, chunks and questions, and 630 minimal pairs derived from JMdict and Kanjium.
+- **UI on both apps:**
+  - A Practice tab (Speak / Listen / Write / Exams) with role-play, the pronunciation panel, listening dialogues (listen, gap-fill, order, questions), the minimal-pairs drill, a media player with dual subtitles and tap-to-look-up, Pomodoro sessions, and the OPI simulator.
+  - Settings → AI & speech: model manager, own server with "test connection", speech-recognition and voice engines.
+  - Platform details: D-035 (Android) and D-036 (iOS).
+
+### Verified
+- 360+ shared tests pass on the JVM and on the iOS simulator in CI, including the gateway, prompt golden tests, the model manager and YIN accuracy on synthetic signals.
+- The Android APK builds with native libraries in CI.
+- The iOS Swift for all the new screens compiled in CI; the link fix for whisper/llama is in the latest run.
+
+### Not yet verified
+- **Real hardware:** nothing has run on a real device or with real audio. That covers recording, speech recognition, pronunciation scores with a human voice, and loading a model and generating with it (llama has no iOS simulator slice). These are in `docs/QA.md` for the owner.
+- **Model choice:** the Japanese quality benchmark (`eval_ja.py`) hasn't been run against a real model; open decision 3.
+
+### Deferred
+- Free-talk mode.
+- For the media player: subtitle generation with on-device Whisper, "save clip to SRS", podcast RSS.
+- FSRS scheduling for minimal pairs.
+- Opt-in syncing of recordings.
 
 ---
 
