@@ -71,3 +71,17 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] In Safari, Share → Tsumugi on a Japanese article. The sheet says "Saved for Tsumugi". Opening Tsumugi imports the page 🌐 and opens it in the reader.
 - [ ] Select Japanese text in Notes, then Share → Tsumugi. Opening Tsumugi opens it in the reader. This works in airplane mode.
 - [ ] Share a link while offline, then open Tsumugi. The link waits in the inbox and imports on a later launch once online. After three failed tries it is dropped.
+
+## Phase 9: Stabilize (v2)
+- [ ] Archive and upload from the Mac as in RELEASE.md §4. Validation passes and the icon shows on TestFlight.
+- [ ] Settings → AI → own server `http://<lan-ip>:11434`. The local-network prompt appears, then Test connection lists the Ollama models. Also try a Tailscale `*.ts.net` name.
+- [ ] Android: the same test over plain http.
+- [ ] Import WaniKani and NihongoShark (.apkg), then do a real review session. Undo one review. Sync to a second device and check the undo is there too.
+- [ ] Lapse a few kanji in a level you've passed. The level doesn't drop and the next level's lessons stay available.
+- [ ] Double-tap Submit quickly in reviews. Only one review is recorded.
+- [ ] With the silent switch on, dialogue and exam audio still play. A phone call pauses playback, and unplugging headphones pauses it.
+- [ ] Start a 1 GB model download and background the app. It keeps going, and resumes after a relaunch.
+- [ ] Take a JLPT mock, answer a few questions, force-quit and reopen. "Resume attempt" appears with the answers kept, and sections whose time ran out while away are closed.
+- [ ] Draw vertical strokes on the writing canvas. The page doesn't scroll.
+- [ ] Turn off Wi-Fi while an AI engine is set. The app falls back within seconds instead of hanging.
+- [ ] The notification permission is asked only after the first finished review session.

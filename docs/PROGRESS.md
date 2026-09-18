@@ -1,6 +1,102 @@
 # Progress
 
-Current phase: **Phases 0–8 built. Next: owner review, real-device QA (`docs/QA.md`) and TestFlight (`docs/RELEASE.md`).** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Phase 10 in progress.** The owner asked for v2 phases to run without per-phase stops; device QA and the TestFlight archive are the owner's, on the Mac (`docs/QA.md`, `docs/RELEASE.md`). The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+
+---
+
+## Phase 9: Stabilize (BRIEF_V2 §4) (2026-09-18)
+
+Every P0 and P1 item (F-01…F-34) is fixed, along with most P2 items (F-35…F-45). Decisions are D-040…D-085.
+
+### Release blockers (P0)
+- **F-01 App icon:** light, dark and tinted 1024 px variants, rendered from the Android vector (`tools/assets/render_icon.py`; CI checks they match).
+- **F-02 iOS local network:** `NSLocalNetworkUsageDescription`, plus ATS `NSAllowsLocalNetworking` and exceptions for `*.ts.net` / `*.home.arpa` in `iosApp/TsumugiInfo.plist`.
+- **F-03 Android cleartext:** allowed through `network_security_config.xml`; the hosts the app itself calls stay https-only.
+- **F-04 Path progress persisted:** `path_progress` (merged by taking the higher level) and `path_unlock` (merged by union); a confirmed "Reset to level N".
+- **F-05 Review undo:** tombstones instead of deletes; they sync, with a fast path for rows never pushed.
+- **F-06 CI archive:** CI archives an unsigned Release build, and `tools/ci/validate_archive.py` checks it: icon, usage strings, three targets, frameworks, privacy manifests, LICENSES and packs.
+
+### Serious (P1)
+- **F-07 Reviews tab (iOS):** queue by item kind, forecast and leeches.
+- **F-08 Reader translation:** a labeled `translate_sentence` result.
+- **F-09 Double submit:** blocked by a Mutex in the shared session and disabled controls on both apps.
+- **F-10 Cancellation:** per-generation ids on both native bridges; a cancelled call is never retried.
+- **F-11 Timeouts:** on every client, plus a 60 s "endpoint unreachable" cache.
+- **F-12 Keys:** one key per endpoint.
+- **F-13 Model downloads:** hashed while writing, with a 1.5× free-space check. They run in the background: a background URLSession on iOS, WorkManager on Android.
+- **F-14 iOS audio:** one `AudioSessionController`, with interruption and route-change handling and background audio.
+- **F-15 iOS backups:** packs, models and tts are excluded.
+- **F-16 Packs:** iOS opens them in place. Android copies with a verified hash, an atomic rename and progress.
+- **F-17 Stages:** stage lookup can no longer fail. The audit's crash couldn't happen through the database, but the code is hardened anyway.
+- **F-18 FSRS:** already matched py-fsrs 6.3.2; reference vectors added.
+- **F-19 Lesson counts:** count distinct items.
+- **F-20 Grammar cards:** undo retracts the ghost card it spawned; points without examples are held out of reviews.
+- **F-21 Pitch targets:** looked up by lemma, with conjugation rules.
+- **F-22 Shadowing DTW:** banded, two rows.
+- **F-23 Local model:** reloads on switch, trims history, and shows a failure banner instead of splicing in scripted turns.
+- **F-24 Exam attempts:** resumable and timed by wall clock on both apps.
+- **F-25 Writing canvas:** no longer hijacked by scrolling.
+- **F-26 Reader tokenizer:** the lattice tokenizer, run in the background with progress.
+- **F-27 Stats:** a materialized `daily_stats` table and an indexed stages query.
+- **F-28 Lesson order:** follows the pack.
+- **F-29 Android seed:** random per generation.
+- **F-30 VOICEVOX temp files:** unique per synthesis.
+- **F-31 Device settings:** device-local `device_setting` table; manual unlocks are per-item rows.
+- **F-32 Pack slots and scheduler:** each pack opens in its own slot, and new FSRS weights trigger a background recompute with progress.
+- **F-33 Error states:** error and retry on every async screen.
+- **F-34 Notification permission:** asked after the first review session, with an explanation.
+
+### P2
+- **F-35 Meaning answers:** accepted in any script.
+- **F-36 iOS furigana:** placed per segment.
+- **F-37 End-to-end sync:** hides keys behind HMAC ids (protocol v2).
+- **F-38 Pinned sources:** 18 sources pinned in `sources.lock`, with the Tatoeba exports mirrored to this repo's `sources-tatoeba-2026-09-12` release.
+- **F-39 Grammar highlighting:** matched on token boundaries.
+- **F-40 LicensesTests:** check the licenses file ships in the bundle.
+- **F-41 Whisper:** can be cancelled.
+- **F-42 File types:** document types and "Open with" on both platforms.
+- **F-43 Export compliance:** notes in RELEASE.md.
+- **F-44 Frameworks:** pins verified.
+- **F-45 License citations:** corrected, and an "Inspiration, no content used" section added.
+
+### Schema
+The user database uses SQLDelight migrations now (`migrations/1.sqm`, `2.sqm`, version 3). `verifySqlDelightMigration` runs in the build, and `UserDbMigrationTest` migrates real v1 data.
+
+### Regression tests (rule 17)
+- **Path and SRS:**
+  - `PathProgressTest` (4 tests, including `levelStaysPassedAfterLapsesAndLevelFiveLessonsStayAvailable`).
+  - `SyncMergeTest.{undoAfterPushConverges, undoBeforePushNeverLeavesTheDevice, undoDuringAPushTombstones, pathProgressMergesToTheHigherLevel, pulledSettingsAreReportedToTheApp}`.
+  - `ReviewSessionTest.{concurrentSubmitsRecordOneReview, wrapUpDuringSubmitIsDeferredNotLost}`.
+  - `UnlockTreeTest.{stageIsTotalForStartedCards, lessonOrderFollowsPackPosition}` and `SrsRepositoryTest.itemWithTwoLearningCardsHasAStage`.
+  - `FsrsTest` reference vectors for Hard and same-day reviews.
+  - `TodayPlannerTest.lessonCountsAreDistinctItems`.
+  - `GrammarServiceTest.{undoOfAMissRetractsTheGhostItSpawned, pointsWithoutExamplesAreHeldOutOfReviews}`.
+  - `materializedStatsMatchTheReviewLog`.
+  - `deviceSettingsNeverSync` and `UserDbMigrationTest`.
+- **Network, AI and models:**
+  - `TimeoutsTest` (6 tests) and `EndpointKeysTest` (3 tests).
+  - `ModelManagerTest.{hashesWhileWritingWithoutSecondPass, resumeRehashesThePartialFileOnce, corruptResumedPartIsCaughtByIncrementalHash, refusesToStartWithoutOneAndAHalfTimesTheSpace}` and `DownloadedModelInstallerTest` (4 tests).
+  - `PackInstallerTest` (9 tests).
+  - `LocalEnginesTest.{switchingModelsReloads, modelLoadedOutsideTheSlotIsReplaced, slotUnloadForgetsThePath}` and `RoleplaySessionTest` (5 tests).
+  - `cancellationIsNeverRetried`, `cancelledStatusBecomesAiCancelled`, `whisperCancellationStopsTheBridge` and `whisperCancelledStatusBecomesAiCancelled`.
+  - `SynthesizedAudioFilesTest` (3 tests).
+- **Speech and reader:**
+  - `PronunciationTargetsTest`: 食べます, 食べました, 高かった.
+  - `PronunciationTest.{rollingDtwMatchesTheFullMatrix, sixtySecondShadowingStaysSmallAndFast}`.
+  - `ReaderLatticeTest` (3 tests), `particleInsideAWordIsNotAGrammarHit` and `endingInsideAnAdjectiveIsNotTai`.
+  - `meaningsInAnyScriptMatch` and `meaningNormalizationFoldsCaseAndWidth`.
+- **Exams:** `ExamResumeTest` (5 tests).
+- **iOS:** `LicensesTests`.
+
+### Not yet verified (owner, on the Mac and iPhone)
+- The Phase 9 QA pass in `docs/QA.md` and the signed TestFlight archive (`docs/RELEASE.md` §4).
+- Export compliance: `ITSAppUsesNonExemptEncryption = NO` may be wrong, because end-to-end sync uses our own XChaCha20 (D-067). This is the owner's legal call.
+
+### Known gaps carried forward
+- Aozora ruby isn't kept with saved documents yet (G-07).
+- The server leaderboard still counts reviews that were later undone. The leaderboard comes in Phase 14.
+- Background model downloads on iOS verify the file in a second pass after it arrives.
+- Strings added in Phase 9 aren't in `Localizable.xcstrings` yet. They fall back to English.
 
 ---
 
