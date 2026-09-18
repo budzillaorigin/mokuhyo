@@ -3,7 +3,10 @@ package app.tsumugi.android
 import android.app.ActivityManager
 import android.app.Application
 import android.content.ComponentCallbacks2
+import android.content.Context
+import app.tsumugi.android.platform.AppLanguages
 import app.tsumugi.android.platform.LlamaJni
+import app.tsumugi.android.widget.TodayWidget
 import app.tsumugi.android.platform.WhisperJni
 import app.tsumugi.api.AppGraph
 import app.tsumugi.platform.PlatformServices
@@ -19,8 +22,15 @@ class TsumugiApplication : Application() {
     /** Work that should outlive a screen (e.g. syncing after a review session). */
     val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(AppLanguages.wrap(base))
+    }
+
     override fun onCreate() {
         super.onCreate()
+        // Shared-core labels (stages, kinds, Today text) in the UI language (G-14).
+        AppLanguages.applyToShared(this)
+        TodayWidget.schedule(this)
         graph = AppGraph(PlatformServices(this))
         // Native bridges are cheap to construct: the .so files and models load on first use.
         graph.ai.llmBridge = LlamaJni(this)

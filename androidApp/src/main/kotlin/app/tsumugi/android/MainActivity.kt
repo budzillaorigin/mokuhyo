@@ -10,14 +10,24 @@ import androidx.lifecycle.lifecycleScope
 import app.tsumugi.android.app.Incoming
 import app.tsumugi.android.app.TsumugiApp
 import app.tsumugi.android.app.displayName
+import app.tsumugi.android.platform.AppLanguages
+import app.tsumugi.android.widget.TodayWidget
+import android.content.Context
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     /** Text from the share sheet or the text-selection menu, waiting for the UI to open it. */
     private val incoming = mutableStateOf<Incoming?>(null)
 
+    /** Android 8–12: the in-app language choice (G-15); Android 13+ gets it from LocaleManager. */
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(AppLanguages.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // A language change recreates the activity: shared-core labels follow (G-14).
+        AppLanguages.applyToShared(this)
         enableEdgeToEdge()
         // Only the first launch reads the intent; after a configuration change it has already been handled.
         if (savedInstanceState == null) incoming.value = parse(intent)
@@ -50,5 +60,7 @@ class MainActivity : ComponentActivity() {
         super.onStop()
         // Plan the next "reviews are ready" reminder from the current queue whenever the app leaves the screen.
         lifecycleScope.launch { Reminders.reschedule(applicationContext) }
+        // The home-screen widget shows what the session changed (G-15).
+        (application as TsumugiApplication).appScope.launch { TodayWidget.refresh(applicationContext) }
     }
 }

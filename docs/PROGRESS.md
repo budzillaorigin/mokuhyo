@@ -503,15 +503,27 @@ cd tools && uv sync && uv run ruff check .
 | Stats (streak, heat-map, stages, accuracy) | ✅ | ✅ |
 | Import/export (Anki, imiwa, Bunpro, WaniKani) | ✅ | ✅ |
 | Reminders | ✅ | ✅ |
-| Widgets | ✅ | — (Glance later) |
+| Widgets | ✅ | ✅ (Glance: due reviews + streak, G-15) |
 | Settings / Licenses | ✅ | ✅ |
 | AI & speech settings (engines, model downloads, own server, STT, VOICEVOX) | | ✅ |
 | Practice: role-play, pronunciation panel, OPI, Pomodoro session | | ✅ |
-| Listening: dialogues, minimal pairs, media player with dual subtitles | | ✅ |
+| Listening: dialogues, minimal pairs, media player with dual subtitles | | ✅ (Media3 ExoPlayer, G-15) |
 | Exams: JLPT/DLPT hub, timed runner, results, attempt review, bank import | | ✅ |
 | Onboarding | — | ✅ |
 | Sync | Phase 5 | ✅ |
-| Localization (en + ja UI) | | ✅ (per-app language on Android 13+) |
+| Localization (en + ja UI) | | ✅ (in-app language picker on all versions, shared-core labels via `L10n`, G-14/G-15) |
 | Accessibility (screen reader labels, Japanese speech for learner text, large fonts, 48dp targets, reduced motion) | | ✅ |
 | Share / text-selection entry points ("Read in Tsumugi", "Look up in Tsumugi") | | ✅ |
 | App icon, backup rules, release notes | | ✅ (sideload APK only) |
+| Today: every block launches its screen, shadowing block, focus timer from any block (G-01) | | ✅ |
+| Review modes: fill-in-with-hint, meaning choice, production (AI grade or self-grade), minimal pair (G-05, G-06) | | ✅ |
+| Free talk + weekly speaking patterns on Me (G-02) | | ✅ |
+| Recordings: add my recording, side-by-side playback, recordings sync switch (G-03) | | ✅ |
+| Media: subtitle generation (Whisper, progress/cancel), speed 0.7–1.2×, clip to SRS, hide-subtitle quiz, podcasts (G-04) | | ✅ |
+| Reader: furigana above my level, pitch overlay, comprehension questions (G-07) | | ✅ |
+| Integrations: Notion push, AnkiConnect (G-09) | | ✅ |
+| Export: reviews CSV, PDF report, JSON backup + merge restore (G-10) | | ✅ |
+| Streak freezes, weekly challenge, opt-in leaderboard (G-11) | | ✅ |
+| Personal picture/audio cards (G-12) | | ✅ |
+| Kana course, placement check, onboarding kanji count (G-13) | | ✅ |
+| Content review behind a developer toggle (G-16) | | ✅ |

@@ -84,6 +84,30 @@
 
         <receiver android:name=".ReminderReceiver" android:exported="false" />
 
+        <!-- G-15 home-screen widget (Glance): due reviews and the streak. -->
+        <receiver
+            android:name=".widget.TodayWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/today_widget_info" />
+        </receiver>
+
+        <!-- Exports handed to the share sheet (review CSV, PDF report, review verdicts); see res/xml/file_paths.xml. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <!-- WorkManager's foreground service, declared with the type Android 14+ requires (ModelDownloadWorker). -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"

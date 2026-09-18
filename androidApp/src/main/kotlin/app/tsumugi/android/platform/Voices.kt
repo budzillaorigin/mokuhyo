@@ -86,6 +86,41 @@ class Voices(context: Context, private val graph: AppGraph) {
         }
     }
 
+    /**
+     * Renders [text] to a WAV [file] instead of the speaker (the shadowing reference, G-01): the VOICEVOX server when
+     * configured, else the Android voice. Returns false when no Japanese voice is available.
+     */
+    suspend fun synthesizeToFile(text: String, file: File): Boolean {
+        if (text.isBlank()) return false
+        graph.ai.synthesizer()?.let { synth ->
+            val wav = runCatching { synth.synthesize(text, null, 1.0) }.getOrNull()
+            if (wav != null) {
+                withContext(Dispatchers.IO) { file.writeBytes(wav) }
+                return true
+            }
+        }
+        if (!ready.await()) return false
+        val id = UUID.randomUUID().toString()
+        val done = CompletableDeferred<Unit>()
+        pending[id] = done
+        val queued = withContext(Dispatchers.Main) {
+            voiceFor(null)?.let { tts.voice = it }
+            tts.setPitch(1f)
+            tts.setSpeechRate(1f)
+            tts.synthesizeToFile(text, android.os.Bundle(), file, id) == TextToSpeech.SUCCESS
+        }
+        if (!queued) {
+            pending.remove(id)
+            return false
+        }
+        try {
+            done.await()
+        } finally {
+            pending.remove(id)
+        }
+        return file.length() > 44
+    }
+
     /** Speaks a list of (text, voice) lines in order. */
     suspend fun sayAll(lines: List<Pair<String, String?>>, rate: Float = 1f) {
         for ((text, voice) in lines) say(text, voice, rate)

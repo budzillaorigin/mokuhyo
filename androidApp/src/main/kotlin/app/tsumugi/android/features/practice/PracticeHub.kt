@@ -35,14 +35,12 @@ fun PracticeHubScreen(push: (Route) -> Unit) {
         HubRow(stringResource(R.string.practice_roleplay), stringResource(R.string.practice_roleplay_sub)) { push(Route.Scenarios) }
         HubRow(stringResource(R.string.title_speaking_session), stringResource(R.string.practice_session_sub)) { push(Route.Pomodoro()) }
         HubRow(stringResource(R.string.practice_opi), stringResource(R.string.practice_opi_sub)) { push(Route.Opi()) }
-        ListItem(
-            headlineContent = { Text(stringResource(R.string.practice_free_talk)) },
-            supportingContent = { Text(stringResource(R.string.practice_free_talk_sub)) },
-        )
+        HubRow(stringResource(R.string.practice_free_talk), stringResource(R.string.practice_free_talk_sub)) { push(Route.FreeTalk()) }
 
         SectionTitle(stringResource(R.string.practice_listen))
         HubRow(stringResource(R.string.title_dialogues), stringResource(R.string.practice_dialogues_sub)) { push(Route.Dialogues) }
         HubRow(stringResource(R.string.title_media), stringResource(R.string.practice_media_sub)) { push(Route.Media) }
+        HubRow(stringResource(R.string.title_podcasts), stringResource(R.string.practice_podcasts_sub)) { push(Route.Podcasts) }
         HubRow(stringResource(R.string.title_minimal_pairs), stringResource(R.string.practice_pairs_sub)) { push(Route.MinimalPairs) }
 
         SectionTitle(stringResource(R.string.practice_write))

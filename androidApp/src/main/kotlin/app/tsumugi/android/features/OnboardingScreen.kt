@@ -56,7 +56,9 @@ fun OnboardingScreen(onDone: (openImport: Boolean) -> Unit) {
     LaunchedEffect(Unit) { questions = graph.onboarding.placementQuestions(System.currentTimeMillis()) }
     fun finish(openImport: Boolean) = scope.launch {
         val level = if (answers.isEmpty()) 1 else graph.onboarding.suggestedLevel(answers)
-        graph.onboarding.finish(goal, budget, level)
+        // G-13: the kanji check's "I know it" count (0 starts Today with the kana course); null when skipped.
+        val kanjiKnown = if (answers.isEmpty()) null else answers.count { it.value }
+        graph.onboarding.finish(goal, budget, level, kanjiKnown)
         onDone(openImport)
     }
 

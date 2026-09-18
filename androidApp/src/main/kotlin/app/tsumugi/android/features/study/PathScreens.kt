@@ -166,6 +166,12 @@ fun PathItemScreen(id: String, onOpenItem: (String) -> Unit) {
         if (d.stage == null) {
             Text(stringResource(R.string.path_not_started), Modifier.padding(top = 12.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
+        // G-03: "add my recording" with side-by-side playback; a started item can get a self-recorded audio card.
+        app.tsumugi.android.features.practice.RecordingsPanel(
+            app.tsumugi.recordings.RecordingKind.ITEM, id, d.item.readings.firstOrNull() ?: d.item.text,
+            Modifier.padding(top = 16.dp),
+            onUseAsCard = if (d.stage != null) { rec -> graph.personalCards.addAudioSide(id, rec.id) } else null,
+        )
     }
 }
 

@@ -68,6 +68,10 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.work.runtime)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.transformer)
+    implementation(libs.androidx.glance.appwidget)
     implementation(libs.mlkit.text.recognition.japanese)
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

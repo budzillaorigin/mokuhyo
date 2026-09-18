@@ -30,7 +30,7 @@ import app.tsumugi.settings.SettingsRepository
 import kotlinx.coroutines.launch
 
 @Composable
-fun SettingsScreen(onOpenAi: () -> Unit = {}) {
+fun SettingsScreen(onOpenAi: () -> Unit = {}, onOpenIntegrations: () -> Unit = {}) {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
     val scope = rememberCoroutineScope()
     var batch by remember { mutableFloatStateOf(SettingsRepository.DEFAULT_LESSON_BATCH.toFloat()) }
@@ -65,6 +65,15 @@ fun SettingsScreen(onOpenAi: () -> Unit = {}) {
             headlineContent = { Text(stringResource(R.string.title_ai)) },
             supportingContent = { Text(stringResource(R.string.ai_settings_sub)) },
         )
+        ListItem(
+            modifier = Modifier.clickable(onClick = onOpenIntegrations),
+            headlineContent = { Text(stringResource(R.string.title_integrations)) },
+            supportingContent = { Text(stringResource(R.string.integrations_sub)) },
+        )
+        HorizontalDivider()
+        LanguagePicker()
+        HorizontalDivider()
+        DeveloperOptions()
     }
 }
 

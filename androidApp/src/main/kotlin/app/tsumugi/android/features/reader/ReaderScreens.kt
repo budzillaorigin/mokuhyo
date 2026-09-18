@@ -75,6 +75,10 @@ import app.tsumugi.reader.ReaderFeed
 import app.tsumugi.reader.ReaderParagraph
 import app.tsumugi.reader.ReaderSentence
 import app.tsumugi.reader.ReaderToken
+import app.tsumugi.reader.LearnerLevel
+import app.tsumugi.reader.TokenPitch
+import app.tsumugi.reader.showFurigana
+import androidx.compose.runtime.mutableStateMapOf
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -178,7 +182,7 @@ fun ReaderLibraryScreen(onOpen: (String) -> Unit, onFeeds: () -> Unit, onAozora:
 /** The reader: furigana, tap a word for a non-blocking popup, long-press a sentence for grammar + audio. */
 @OptIn(ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
-fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (String) -> Unit) {
+fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (String) -> Unit, onOpenAiSettings: () -> Unit = {}) {
     val context = LocalContext.current
     val graph = (context.applicationContext as TsumugiApplication).graph
     val scope = rememberCoroutineScope()
@@ -190,6 +194,12 @@ fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (Str
     var ranges by remember { mutableStateOf<List<IntRange>>(emptyList()) }
     var loaded by remember { mutableIntStateOf(0) }
     var mode by remember { mutableStateOf(FuriganaMode.UNKNOWN_ONLY) }
+    // G-07: furigana "only above my level" (learner JLPT + known kanji), the default.
+    var aboveLevel by remember { mutableStateOf(true) }
+    var level by remember { mutableStateOf(LearnerLevel.UNKNOWN) }
+    var pitchOn by remember { mutableStateOf(false) }
+    val pitch = remember { mutableStateMapOf<Int, List<TokenPitch>>() }
+    var questionsOpen by remember { mutableStateOf(false) }
     var selected by remember { mutableStateOf<Pair<ReaderToken, ReaderSentence>?>(null) }
     var summary by remember { mutableStateOf<EntrySummary?>(null) }
     var sentencePanel by remember { mutableStateOf<ReaderSentence?>(null) }
@@ -207,6 +217,7 @@ fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (Str
     }
     LaunchedEffect(docId) {
         doc = graph.reader.document(docId)
+        level = runCatching { graph.reader.learnerLevel() }.getOrDefault(LearnerLevel.UNKNOWN)
         val d = doc ?: return@LaunchedEffect
         ranges = graph.reader.analyzer()?.paragraphs(d.body).orEmpty()
         loadMore()
@@ -226,13 +237,16 @@ fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (Str
         Column(Modifier.fillMaxSize()) {
             FlowRow(Modifier.padding(horizontal = 12.dp, vertical = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(stringResource(R.string.reader_furigana), Modifier.align(Alignment.CenterVertically), style = MaterialTheme.typography.labelLarge)
+                FilterChip(selected = aboveLevel, onClick = { aboveLevel = true }, label = { Text(stringResource(R.string.reader_furigana_level)) })
                 listOf(
                     FuriganaMode.UNKNOWN_ONLY to R.string.reader_furigana_unknown,
                     FuriganaMode.ALL to R.string.reader_furigana_all,
                     FuriganaMode.NONE to R.string.reader_furigana_none,
                 ).forEach { (m, label) ->
-                    FilterChip(selected = mode == m, onClick = { mode = m }, label = { Text(stringResource(label)) })
+                    FilterChip(selected = !aboveLevel && mode == m, onClick = { aboveLevel = false; mode = m }, label = { Text(stringResource(label)) })
                 }
+                FilterChip(selected = pitchOn, onClick = { pitchOn = !pitchOn }, label = { Text(stringResource(R.string.reader_pitch)) })
+                TextButton(onClick = { questionsOpen = true }) { Text(stringResource(R.string.reader_questions)) }
                 TextButton(onClick = {
                     if (speaking != null) speech.stop() else paragraphs.getOrNull(listState.firstVisibleItemIndex)?.let { p ->
                         doc?.body?.let { speech.speak(it.substring(p.start, minOf(it.length, p.end + 2000)), startOffset = p.start) }
@@ -242,11 +256,16 @@ fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (Str
             doc?.let { d -> JaText(d.title, Modifier.padding(horizontal = 16.dp).semantics { heading() }, style = MaterialTheme.typography.titleLarge) }
             LazyColumn(state = listState, modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
                 items(paragraphs, key = { it.start }) { p ->
+                    if (pitchOn) {
+                        LaunchedEffect(p.start) {
+                            p.sentences.forEach { s -> if (s.start !in pitch) pitch[s.start] = runCatching { graph.reader.pitch(s) }.getOrDefault(emptyList()) }
+                        }
+                    }
                     FlowRow {
                         p.sentences.forEach { s ->
                             s.tokens.forEach { t ->
                                 val highlighted = speaking?.let { t.start in it } == true
-                                val ruby = t.showFurigana(mode)
+                                val ruby = if (aboveLevel) t.showFurigana(FuriganaMode.UNKNOWN_ONLY, level) else t.showFurigana(mode)
                                 Column(
                                     Modifier
                                         .background(if (highlighted) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent, RoundedCornerShape(3.dp))
@@ -262,6 +281,7 @@ fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (Str
                                         },
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                 ) {
+                                    if (pitchOn) PitchMarks(pitch[s.start]?.firstOrNull { it.start == t.start })
                                     // Sizes follow the body style so they scale with the system font size.
                                     Text(if (ruby) t.reading.orEmpty() else " ", color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.labelSmall.japanese())
                                     Text(
@@ -315,6 +335,7 @@ fun ReaderScreen(docId: String, onOpenEntry: (Long) -> Unit, onOpenGrammar: (Str
                 }
             }
         }
+        if (questionsOpen) doc?.let { d -> QuestionsSheet(d, level, onClose = { questionsOpen = false }, onOpenAiSettings = onOpenAiSettings) }
     }
 }
 

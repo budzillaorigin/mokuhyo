@@ -194,20 +194,27 @@ object MediaHash {
 
     internal fun ofBlocking(fs: FileSystem, path: Path): String {
         val size = fs.metadata(path).size ?: throw IllegalArgumentException("unknown size: $path")
+        return fs.openReadOnly(path).use { handle -> ofReader(size) { pos, buffer, off, len -> handle.read(pos, buffer, off, len) } }
+    }
+
+    /**
+     * The same key over any random-access source of [size] bytes (an Android content URI, where there is no file
+     * path). [read] fills `buffer[off, off + len)` from byte `pos` and returns the count, or -1 at the end.
+     * Blocking: call it off the main thread.
+     */
+    fun ofReader(size: Long, read: (pos: Long, buffer: ByteArray, off: Int, len: Int) -> Int): String {
         val sha = Sha256()
         sha.update(size.toString().encodeToByteArray())
-        fs.openReadOnly(path).use { handle ->
-            val offsets = if (size <= 3 * SAMPLE) listOf(0L) else listOf(0L, size / 2 - SAMPLE / 2, size - SAMPLE)
-            val buffer = ByteArray(64 * 1024)
-            for (offset in offsets) {
-                var pos = offset
-                val end = if (size <= 3 * SAMPLE) size else offset + SAMPLE
-                while (pos < end) {
-                    val n = handle.read(pos, buffer, 0, minOf(buffer.size.toLong(), end - pos).toInt())
-                    if (n <= 0) break
-                    sha.update(buffer, 0, n)
-                    pos += n
-                }
+        val offsets = if (size <= 3 * SAMPLE) listOf(0L) else listOf(0L, size / 2 - SAMPLE / 2, size - SAMPLE)
+        val buffer = ByteArray(64 * 1024)
+        for (offset in offsets) {
+            var pos = offset
+            val end = if (size <= 3 * SAMPLE) size else offset + SAMPLE
+            while (pos < end) {
+                val n = read(pos, buffer, 0, minOf(buffer.size.toLong(), end - pos).toInt())
+                if (n <= 0) break
+                sha.update(buffer, 0, n)
+                pos += n
             }
         }
         return "m1-" + sha.hexDigest()

@@ -64,6 +64,8 @@ import androidx.compose.foundation.layout.size
 import app.tsumugi.android.ui.ErrorState
 import app.tsumugi.android.ui.RecomputeBanner
 import app.tsumugi.android.NotificationPermissionPrompt
+import app.tsumugi.android.features.practice.keyedViewModel
+import app.tsumugi.android.platform.rememberVoices
 
 private val Correct = Color(0xFF2E7D32)
 private val Wrong = Color(0xFFC62828)
@@ -83,13 +85,14 @@ private fun LabeledJa(label: String, value: String) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ReviewScreen(onDone: () -> Unit) {
-    val vm: ReviewViewModel = viewModel()
+fun ReviewScreen(limit: Int, key: String, onDone: () -> Unit) {
+    val vm = keyedViewModel(key) { ReviewViewModel(it, limit) }
     val state by vm.state.collectAsStateWithLifecycle()
     val loadError by vm.loadError.collectAsStateWithLifecycle()
     val actionError by vm.actionError.collectAsStateWithLifecycle()
     val submitting by vm.submitting.collectAsStateWithLifecycle()
     var writingResult by remember { mutableStateOf<RawResult?>(null) }
+    val voices = rememberVoices()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         RecomputeBanner()
         actionError?.let { ErrorState(stringResource(R.string.review_action_failed, it), onRetry = vm::retryAction) }
@@ -100,28 +103,34 @@ fun ReviewScreen(onDone: () -> Unit) {
                 Progress(s.done, s.remaining + 1)
                 Text(s.prompt.label + if (s.prompt.practice) stringResource(R.string.review_practice_suffix) else "", style = MaterialTheme.typography.labelLarge)
                 val exercise = s.prompt.exercise
-                if (exercise != null) {
-                    JaText(s.prompt.question, Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineSmall)
-                    s.prompt.hint?.let { Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-                } else {
-                    ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                val pair = s.prompt.minimalPair
+                val resetKey = s.prompt.card.id + s.done + s.prompt.practice
+                when {
+                    pair != null -> Unit
+                    exercise != null -> {
+                        JaText(s.prompt.question, Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineSmall)
+                        s.prompt.hint?.let { Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                    }
+                    isPersonal(s.prompt.item) -> PersonalCardFace(s.prompt.card.id, front = true, voices = voices)
+                    else -> ItemGlyph(s.prompt.question, s.prompt.item.kind)
                 }
-                if (s.prompt.mode == AnswerMode.WRITING) {
-                    WritingAnswer(s.prompt.item.primaryText, resetKey = s.prompt.card.id + s.done) { result ->
+                when {
+                    s.prompt.mode == AnswerMode.WRITING -> WritingAnswer(s.prompt.item.primaryText, resetKey = s.prompt.card.id + s.done) { result ->
                         writingResult = result
                         vm.reveal()
                     }
-                } else if (s.prompt.mode == AnswerMode.SELF_GRADED) {
-                    Button(onClick = vm::reveal, Modifier.fillMaxWidth()) { Text(stringResource(R.string.review_show_answer)) }
-                } else if (s.prompt.mode == AnswerMode.BUILD && exercise != null) {
-                    BuildAnswer(exercise, resetKey = s.prompt.card.id + s.done + s.prompt.practice, enabled = !submitting) { vm.submit(it) }
-                } else {
-                    AnswerField(
-                        if (s.prompt.mode == AnswerMode.CLOZE) AnswerMode.READING else s.prompt.mode,
-                        enabled = !submitting, resetKey = s.prompt.card.id + s.done + s.prompt.practice,
+                    s.prompt.mode == AnswerMode.SELF_GRADED -> Button(onClick = vm::reveal, Modifier.fillMaxWidth()) { Text(stringResource(R.string.review_show_answer)) }
+                    s.prompt.mode == AnswerMode.BUILD && exercise != null -> BuildAnswer(exercise, resetKey = resetKey, enabled = !submitting) { vm.submit(it) }
+                    s.prompt.mode == AnswerMode.MEANING_CHOICE && s.prompt.choices.isNotEmpty() ->
+                        MeaningChoiceAnswer(s.prompt.choices, enabled = !submitting) { vm.submit(it.toString()) }
+                    s.prompt.mode == AnswerMode.PRODUCTION -> ProductionAnswer(resetKey, submitting) { vm.submit(it) }
+                    pair != null -> MinimalPairAnswer(pair, voices, resetKey, enabled = !submitting) { vm.submit(it) }
+                    else -> AnswerField(
+                        if (s.prompt.mode == AnswerMode.CLOZE || s.prompt.mode == AnswerMode.FILL_HINT) AnswerMode.READING else s.prompt.mode,
+                        enabled = !submitting, resetKey = resetKey,
                     ) { vm.submit(it) }
-                    s.hint?.let { Text(it, color = MaterialTheme.colorScheme.tertiary) }
                 }
+                s.hint?.let { Text(it, color = MaterialTheme.colorScheme.tertiary) }
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     if (!s.wrappingUp) TextButton(onClick = vm::wrapUp) { Text(stringResource(R.string.review_wrap_up)) }
                     TextButton(onClick = vm::finish) { Text(stringResource(R.string.review_end_session)) }
@@ -129,13 +138,24 @@ fun ReviewScreen(onDone: () -> Unit) {
             }
             is ReviewState.Revealed -> {
                 Progress(s.done, s.remaining + 1)
-                if (s.prompt.mode == AnswerMode.WRITING) {
-                    WritingReveal(s.prompt.item.primaryText, writingResult)
-                } else {
-                    ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                val production = s.production
+                val personal = isPersonal(s.prompt.item)
+                when {
+                    production != null -> {
+                        Text(s.prompt.label, style = MaterialTheme.typography.labelLarge)
+                        Text(production.english, style = MaterialTheme.typography.titleMedium)
+                        s.given?.let { LabeledJa(stringResource(R.string.review_you_answered), it) }
+                        ProductionDetails(production)
+                        Text(stringResource(R.string.production_self_grade), style = MaterialTheme.typography.bodyMedium)
+                    }
+                    s.prompt.mode == AnswerMode.WRITING -> WritingReveal(s.prompt.item.primaryText, writingResult)
+                    personal -> PersonalCardFace(s.prompt.card.id, front = false, voices = voices)
+                    else -> ItemGlyph(s.prompt.question, s.prompt.item.kind)
                 }
-                JaText(s.prompt.expected.joinToString("; "), Modifier.fillMaxWidth(), style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
-                s.prompt.item.reading?.let { JaText(it, Modifier.fillMaxWidth(), style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center) }
+                if (production == null && !personal) {
+                    JaText(s.prompt.expected.joinToString("; "), Modifier.fillMaxWidth(), style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
+                    s.prompt.item.reading?.let { JaText(it, Modifier.fillMaxWidth(), style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center) }
+                }
                 // Two rows of two so the labels fit at large font sizes.
                 Rating.entries.chunked(2).forEach { row ->
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
@@ -155,12 +175,15 @@ fun ReviewScreen(onDone: () -> Unit) {
                 Progress(s.done, s.remaining)
                 Text(s.prompt.label, style = MaterialTheme.typography.labelLarge)
                 val exercise = s.prompt.exercise
-                if (exercise != null) {
-                    JaText(exercise.example.japanese, style = MaterialTheme.typography.headlineSmall)
-                    Text(exercise.example.english, style = MaterialTheme.typography.bodyMedium)
-                    JaText("${exercise.point.title} — ${exercise.point.meaning}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
-                } else {
-                    ItemGlyph(s.prompt.question, s.prompt.item.kind)
+                val pair = s.prompt.minimalPair
+                when {
+                    pair != null -> MinimalPairReveal(pair, voices)
+                    exercise != null -> {
+                        JaText(exercise.example.japanese, style = MaterialTheme.typography.headlineSmall)
+                        Text(exercise.example.english, style = MaterialTheme.typography.bodyMedium)
+                        JaText("${exercise.point.title} — ${exercise.point.meaning}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+                    }
+                    else -> ItemGlyph(s.prompt.question, s.prompt.item.kind)
                 }
                 val color = if (s.correct) Correct else Wrong
                 Text(
@@ -173,7 +196,12 @@ fun ReviewScreen(onDone: () -> Unit) {
                     modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
                 )
                 LabeledJa(stringResource(R.string.review_you_answered), s.given)
-                LabeledJa(stringResource(R.string.review_accepted), s.prompt.expected.joinToString(", "))
+                val production = s.production
+                if (production != null) {
+                    ProductionDetails(production)
+                } else {
+                    LabeledJa(stringResource(R.string.review_accepted), s.prompt.expected.joinToString(", "))
+                }
                 if (s.prompt.item.myStory.isNotBlank()) Text(stringResource(R.string.review_my_story_prefix) + s.prompt.item.myStory, style = MaterialTheme.typography.bodyMedium)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Button(onClick = vm::next) { Text(stringResource(R.string.action_next)) }

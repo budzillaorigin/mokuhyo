@@ -8,6 +8,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import app.tsumugi.android.features.exams.ExamSpec
+import app.tsumugi.study.ShadowingSentence
+import app.tsumugi.study.TodayBlockKind
 
 enum class Tab(@StringRes val label: Int, val glyph: String) {
     TODAY(R.string.tab_today, "今"),
@@ -27,13 +29,15 @@ sealed interface Route {
     data class Read(val docId: String) : Route
     data object Feeds : Route
     data object Aozora : Route
-    data class WritingPractice(val kanji: List<String>) : Route
+    /** [todayBlock]: launched from Today, so finishing marks that block done. */
+    data class WritingPractice(val kanji: List<String>, val todayBlock: TodayBlockKind? = null) : Route
     data object Handwriting : Route
     data class Entry(val id: Long) : Route
     data class Kanji(val literal: String) : Route
     data object Radicals : Route
     data object Lessons : Route
-    data object Reviews : Route
+    /** [limit]: the Today review budget (G-01); the nonce gives each visit a fresh session. */
+    data class Reviews(val limit: Int = 500, val nonce: Long = System.nanoTime()) : Route
     data object PathLevels : Route
     data class PathLevel(val level: Int) : Route
     data class PathItem(val id: String) : Route
@@ -48,6 +52,17 @@ sealed interface Route {
     data object Sync : Route
     data object Licenses : Route
     data object AiSettings : Route
+    data object Integrations : Route
+    data object Export : Route
+    data object Leaderboard : Route
+    data object Recordings : Route
+    data object ContentReview : Route
+    data object PersonalCard : Route
+
+    // Kana course (G-13)
+    data object Kana : Route
+    data class KanaLesson(val id: String) : Route
+    data class KanaPlacement(val script: app.tsumugi.kana.KanaScript, val nonce: Long = System.nanoTime()) : Route
 
     // Practice. Routes that start a session carry a nonce so each visit gets a fresh ViewModel.
     data object Scenarios : Route
@@ -58,6 +73,11 @@ sealed interface Route {
     data object Media : Route
     data class Pomodoro(val nonce: Long = System.nanoTime()) : Route
     data class Opi(val nonce: Long = System.nanoTime()) : Route
+    data class Shadowing(val sentences: List<ShadowingSentence>, val nonce: Long = System.nanoTime()) : Route
+    data class FreeTalk(val nonce: Long = System.nanoTime()) : Route
+    data object Podcasts : Route
+    data class Podcast(val id: String) : Route
+    data class Episode(val id: String) : Route
 
     // Exams
     data object Exams : Route

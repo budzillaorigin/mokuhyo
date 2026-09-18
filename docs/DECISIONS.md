@@ -689,6 +689,56 @@ The weekly challenge rotates over six kinds by ISO week: study days, reviews, ne
 - **AnkiConnect.** The client sends `POST http://host:8765` with `{"action","version":6,"params","key"?}`. It has its own short timeouts (3 s connect, 15 s per request): a desktop that doesn't answer in time is asleep. The URL, deck, note type and fields are device settings (a LAN address, rule 16), and the optional AnkiConnect key is in the keychain. `configure` checks that Anki answers and that the note type has both fields. The push covers items the learner mined (`source = user`): the word and mined sentence go on the front; the reading, meanings and an "AI-generated" note for LLM items go on the back. Tags are `tsumugi`, `tsumugi::<kind>` and `tsumugi-id::<item id>`. Clip audio travels as base64. Anki's duplicate check makes a second push harmless.
 - **Bunpro.** Bunpro publishes no official, documented public API. It has an API-key setting, but the only references are community reverse-engineering efforts, which could break at any time and might go against its terms. CSV/TSV export → `BunproImporter` remains the path (BRIEF §9.2). This is recorded in `docs/INTEGRATIONS.md`.
 
+### D-130: Android Today routes every block by its launch; one activity-scoped focus timer (G-01, 2026-09-18)
+- `TodayLaunch.route(kind)` maps each launch to a screen: Reviews(limit) → a fresh `ReviewScreen(limit)` (`graph.startReviews(limit)`), Kana → the kana course, Immersion → the reader document or the dialogue player, Shadowing → the shadowing screen, Speaking → the role-play, Writing → the writing canvas.
+- Shadowing and Writing mark their block done when their screen finishes. Immersion and Speaking have no single "end" on their screens, so their Today cards (and the timer banner) have a "Mark done" button that calls `markTodayBlockDone`. Reviews, lessons and grammar stay automatic (D-100).
+- The focus timer (`FocusTimer.forBlock`) lives in an activity-scoped ViewModel and shows as a banner under the top bar on every screen, so it keeps running while the block's screen is open. Finishing from the banner marks the block done.
+- Shadowing plays its model through one `ClipPlayer` interface: `TtsClipPlayer` (system TTS or the learner's VOICEVOX, rendered to a WAV for the comparison) today, `FileClipPlayer` for any audio file. An audio-pack clip (§5.6) plugs in as a `FileClipPlayer` without touching the screen.
+
+### D-131: Per-app language without AppCompat; shared labels replace Android mappings (G-14, G-15, 2026-09-18)
+- MainActivity is a plain ComponentActivity with a framework theme. `AppCompatDelegate.setApplicationLocales` only applies on Android 12 and older inside an AppCompatActivity, and switching would mean an AppCompat theme and a new dependency. So: Android 13+ uses the framework `LocaleManager` (the same setting as system Settings → Apps → Language, already declared in `locales_config.xml`); Android 8–12 store the choice in SharedPreferences and wrap the Application and Activity contexts (`attachBaseContext`), then recreate the activity.
+- `L10n.setLanguage` is called in `Application.onCreate` and in every `MainActivity.onCreate` (a language change recreates the activity), with the effective language: the in-app choice, else the phone's.
+- Stage, item kind, rating and learning-phase labels now come from the shared table (`Labels.stage/kind/rating/phase`). Onboarding goals and all UI chrome stay in Android resources. The PDF report renders the shared `StudyReport.sections`, which are English by design (D-109: exports don't change with the UI language).
+
+### D-132: Android recordings are 16 kHz mono WAV through newRecording/register (G-03, G-12, 2026-09-18)
+- The microphone path already captures 16 kHz PCM16 for the analyzers, so recordings are stored as WAV (no encoder, exact samples for later comparison): `recordings.newRecording("wav")` → write → `register(kind, ref, duration, referenceKey)`.
+- Shadowing stores each attempt as a SENTENCE recording with its reference (`tts:<text>` today). Item pages get "Add my recording" (ITEM) with side-by-side playback (mine / model / mine then model), and a started item can turn a recording into a self-recorded audio card (`PersonalCards.addAudioSide`). Me → My recordings lists everything with the same playback.
+- The recordings-sync switch (device setting, off by default, D-111) is on the Sync screen with a "sync now" button that shows the round's progress, and mirrored on My recordings.
+
+### D-133: Media3 replaces VideoView; clips are cut with Transformer; content URIs hash through a new shared reader (G-04, G-15, 2026-09-18)
+- The player is Media3 ExoPlayer with a `PlayerView` (no built-in controller: the app's own controls, subtitles, loop and quiz drive it). Speed chips come from `MediaPlayback.SPEEDS` (0.7–1.2×).
+- "Save line to reviews" calls `clips.saveClip` and cuts the padded span with Media3 Transformer (audio only, AAC in .m4a) into `ClipDraft.audio`, then `attachAudio`. Transformer re-encodes, so MP3, Opus or AC-3 sources work; MediaMuxer can only copy AAC/AMR into MP4. If cutting fails the card still exists and the review speaks the line (D-113).
+- Picked files are content URIs with no path, so `MediaHash` gained `ofReader(size, read)`: the same key over any random-access source (trivial shared addition; `of(fs, path)` now uses it). Android reads through a FileChannel on the URI's file descriptor.
+- Generated subtitles show the engine with the AI badge: they are machine transcription, and the learner should know they can be wrong.
+
+### D-134: PcmSource over MediaExtractor + MediaCodec, one window at a time (G-04, 2026-09-18)
+- `MediaPcmSource.read(start, end)` opens an extractor on the first audio track, seeks to the previous sync sample before `start`, decodes until the first sample at or after `end`, keeps the samples inside the window (by presentation time), downmixes to mono, and resamples with the shared band-limited `Audio.resample`. 16-bit and float PCM decoder output are both handled. It checks for cancellation between codec buffers, so Cancel stops within one buffer.
+- Each 30 s window (D-113) is decoded independently: an hour-long episode is never in memory. The same decoder turns a TTS WAV into the shadowing reference.
+
+### D-135: Podcast downloads are WorkManager jobs with explicit bounds (G-04, 2026-09-18)
+- One unique job per episode (`podcast:<id>`, network required). HttpURLConnection with 5 s connect and 120 s read timeouts (rule 13), redirects followed by hand (up to 5, so http → https works), written to `<target>.part` and renamed, then `markDownloaded` hashes it. Progress is written to the shared bookkeeping every 512 KB; the episode list polls it once a second while a download is active. Cancel cancels the job and deletes the partial file.
+- Plain (non-foreground) workers: episodes are tens of MB, and WorkManager resumes a job the system stopped. Model downloads stay foreground (F-13) because they are GBs.
+
+### D-136: Reader: "above my level" is the default furigana; pitch overlay and questions on request (G-07, 2026-09-18)
+- `doc.ruby` was already passed to paging and analysis (verified). A new furigana chip "Above my level" (default) uses `showFurigana(UNKNOWN_ONLY, learnerLevel())`, the full learner level (JLPT + known kanji); the older chips stay.
+- The pitch toggle loads `reader.pitch(sentence)` per visible paragraph and draws the reading with high/low lines and the drop; unknown accents (inflected or unlisted words) are drawn dimmed without a line, never guessed.
+- Comprehension questions are generated only when asked (they need the model and take a while), are cached per document by the shared service, carry the AI badge with the engine, and show an honest "unavailable" with a link to AI settings when no model is set up.
+
+### D-137: Exports: share-sheet files from cache/exports, SAF for backups (G-10, 2026-09-18)
+- The reviews CSV is built with `reviewCsv.rows()` + `csv(rows)` (the file-writing `export(fs, …)` takes an Okio FileSystem, which isn't on the app's compile classpath), written on IO to `cache/exports/` and shared through a FileProvider limited to that folder. Same for the PDF and the review verdicts.
+- The PDF is drawn with `android.graphics.pdf.PdfDocument` on A4 from the shared `StudyReport`: the text sections in order, paginated, then a bar chart of reviews per day. Period chips: 30, 90 or 365 days.
+- The JSON backup goes to a file the learner picks (`CreateDocument`), and restore reads one (`OpenDocument`) and merges via `restoreBackup` with progress (D-116: never deletes).
+
+### D-138: Glance widget with due reviews and the streak (G-15, 2026-09-18)
+- A 2×1 resizable Glance widget: "今日", reviews due now, and the streak (❄ on a freeze day). It reads the local database, so it works offline; tapping opens the app.
+- Refreshes: when the app leaves the screen (`onStop`), when Today loads, and hourly via a unique periodic WorkManager job (`updatePeriodMillis` is 0, so the system never wakes the app on its own schedule).
+
+### D-139: Smaller Android choices for G-11, G-12, G-13 and G-16 (2026-09-18)
+- **Freezes (G-11):** Me shows freezes left this month with "Freeze today" (only before studying) and "Freeze tomorrow", and the `FreezeResult` as text. The weekly challenge shows on Me as well as Today. The leaderboard screen keeps the switch off until the learner turns it on (D-107) and explains NotSignedIn / Encrypted states.
+- **Personal cards (G-12):** the system Photo Picker (no storage permission; the one image is granted) and a copy into `ImageStore`; the audio side is a CARD recording. Reviews render personal cards through `PersonalCards.render`: the picture on the front, the word, note and the learner's own recording on the back.
+- **Kana (G-13):** stroke practice reuses the writing canvas (`WritingPracticeScreen` with the lesson's kana; KanjiVG covers kana), which shows its honest "no stroke data" state without the dictionary pack. Onboarding passes `kanjiKnown` = the number of "I know it" answers, or null when the check was skipped.
+- **Content review (G-16):** the Me entry is hidden unless the device setting `dev.contentReview` is on (Settings → Developer; rule 16: a developer tool on one phone shouldn't appear on the others). Reject requires a note. The verdicts JSON goes out through the share sheet.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

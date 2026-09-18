@@ -49,7 +49,8 @@ class StudyOverviewViewModel(app: Application) : AndroidViewModel(app) {
 }
 
 @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
-class ReviewViewModel(app: Application) : AndroidViewModel(app) {
+/** One review session; [limit] is the Today review budget when launched from Today (G-01), else the default cap. */
+class ReviewViewModel(app: Application, private val limit: Int = 500) : AndroidViewModel(app) {
     private val graph = (app as TsumugiApplication).graph
     private val session = MutableStateFlow<ReviewSession?>(null)
 
@@ -78,7 +79,7 @@ class ReviewViewModel(app: Application) : AndroidViewModel(app) {
         _loadError.value = null
         viewModelScope.launch {
             try {
-                session.value = graph.startReviews()
+                session.value = graph.startReviews(limit)
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {

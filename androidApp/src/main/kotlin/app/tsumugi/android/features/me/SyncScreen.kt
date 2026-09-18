@@ -104,6 +104,8 @@ fun SyncScreen() {
                 }
             }
             HorizontalDivider()
+            RecordingsSyncSection()
+            HorizontalDivider()
             OutlinedButton(onClick = { run(context.getString(R.string.sync_signing_out)) { account.logout(); graph.resetSync(); signedIn = false; context.getString(R.string.sync_signed_out) } }) { Text(stringResource(R.string.sync_sign_out)) }
         }
     }

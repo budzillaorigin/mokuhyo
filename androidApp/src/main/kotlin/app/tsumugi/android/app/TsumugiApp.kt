@@ -83,6 +83,22 @@ import app.tsumugi.android.features.study.PathLevelsScreen
 import app.tsumugi.android.features.study.ReviewScreen
 import app.tsumugi.android.features.today.TodayScreen
 import app.tsumugi.android.ui.TsumugiTheme
+import app.tsumugi.android.features.today.FocusTimerBanner
+import app.tsumugi.android.features.practice.ShadowingScreen
+import app.tsumugi.android.features.practice.FreeTalkScreen
+import app.tsumugi.android.features.practice.PodcastsScreen
+import app.tsumugi.android.features.practice.PodcastScreen
+import app.tsumugi.android.features.practice.EpisodeScreen
+import app.tsumugi.android.features.practice.RecordingsScreen
+import app.tsumugi.android.features.me.IntegrationsScreen
+import app.tsumugi.android.features.me.ExportScreen
+import app.tsumugi.android.features.me.LeaderboardScreen
+import app.tsumugi.android.features.me.ContentReviewScreen
+import app.tsumugi.android.features.study.PersonalCardScreen
+import app.tsumugi.android.features.study.KanaCourseScreen
+import app.tsumugi.android.features.study.KanaLessonScreen
+import app.tsumugi.android.features.study.KanaPlacementScreen
+import kotlinx.coroutines.launch
 
 /**
  * Content handed to the app by another app: the share sheet ("Read in Tsumugi"), the text-selection menu ("Look up"),
@@ -114,7 +130,8 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
         openRadicals = { nav.push(Route.Radicals) },
     )
     BackHandler(enabled = nav.canGoBack) { nav.back() }
-    val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
+    val application = LocalContext.current.applicationContext as TsumugiApplication
+    val graph = application.graph
     var onboarded by remember { mutableStateOf<Boolean?>(null) }
     LaunchedEffect(Unit) { onboarded = graph.onboarding.isDone() }
     val context = LocalContext.current
@@ -200,6 +217,8 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                         },
                     )
                     if (shareBusy) LinearProgressIndicator(Modifier.fillMaxWidth())
+                    // G-01: a focus timer started from a Today block stays visible on the block's screen.
+                    if (!lockedDown) FocusTimerBanner()
                 }
             },
             bottomBar = {
@@ -223,20 +242,24 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     is Route.Lookup -> DictionarySearchScreen(dictionaryNav, route.query)
                     Route.Scan -> ScanScreen(onLookup = { nav.push(Route.Lookup(it)) })
                     Route.Library -> ReaderLibraryScreen(onOpen = { nav.push(Route.Read(it)) }, onFeeds = { nav.push(Route.Feeds) }, onAozora = { nav.push(Route.Aozora) })
-                    is Route.Read -> ReaderScreen(route.docId, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) })
+                    is Route.Read -> ReaderScreen(route.docId, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) }, onOpenAiSettings = { nav.push(Route.AiSettings) })
                     Route.Feeds -> FeedsScreen(onOpenDoc = { nav.push(Route.Read(it)) })
                     Route.Aozora -> AozoraScreen(onOpenDoc = { nav.push(Route.Read(it)) })
-                    is Route.WritingPractice -> WritingPracticeScreen(route.kanji, onDone = nav::back)
+                    is Route.WritingPractice -> WritingPracticeScreen(route.kanji, onDone = {
+                        // Launched from Today: finishing the set finishes the writing block (G-01).
+                        route.todayBlock?.let { kind -> application.appScope.launch { runCatching { graph.markTodayBlockDone(kind) } } }
+                        nav.back()
+                    })
                     Route.Handwriting -> HandwritingSearchScreen(onPick = { nav.push(Route.Kanji(it)) })
                     is Route.Entry -> EntryScreen(route.id, dictionaryNav)
                     is Route.Kanji -> KanjiScreen(route.literal, dictionaryNav)
                     Route.Radicals -> RadicalSearchScreen(dictionaryNav)
                     Route.Lessons -> LessonScreen(onDone = nav::back, onOpenItem = { nav.push(Route.PathItem(it)) })
-                    Route.Reviews -> ReviewScreen(onDone = nav::back)
+                    is Route.Reviews -> ReviewScreen(route.limit, route.toString(), onDone = nav::back)
                     Route.PathLevels -> PathLevelsScreen(onOpenLevel = { nav.push(Route.PathLevel(it)) })
                     is Route.PathLevel -> PathLevelScreen(route.level, onOpenItem = { nav.push(Route.PathItem(it)) })
                     is Route.PathItem -> PathItemScreen(route.id, onOpenItem = { nav.push(Route.PathItem(it)) })
-                    Route.Settings -> SettingsScreen(onOpenAi = { nav.push(Route.AiSettings) })
+                    Route.Settings -> SettingsScreen(onOpenAi = { nav.push(Route.AiSettings) }, onOpenIntegrations = { nav.push(Route.Integrations) })
                     Route.WordLists -> WordListsScreen(onOpen = { nav.push(Route.WordList(it)) })
                     Route.Grammar -> GrammarLevelsScreen(onOpenLevel = { nav.push(Route.GrammarLevel(it)) }, onLessons = { nav.push(Route.GrammarLessons) })
                     is Route.GrammarLevel -> GrammarLevelScreen(route.level, onOpenPoint = { nav.push(Route.GrammarPoint(it)) })
@@ -252,7 +275,21 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     Route.Dialogues -> DialogueListScreen(onOpen = { nav.push(Route.DialoguePlayer(it)) })
                     is Route.DialoguePlayer -> DialoguePlayerScreen(route.id)
                     Route.MinimalPairs -> MinimalPairsScreen()
-                    Route.Media -> MediaPlayerScreen(onLookup = { nav.push(Route.Lookup(it)) })
+                    Route.Media -> MediaPlayerScreen(onLookup = { nav.push(Route.Lookup(it)) }, onPodcasts = { nav.push(Route.Podcasts) })
+                    Route.Podcasts -> PodcastsScreen(onOpen = { nav.push(Route.Podcast(it)) })
+                    is Route.Podcast -> PodcastScreen(route.id, onPlay = { nav.push(Route.Episode(it)) })
+                    is Route.Episode -> EpisodeScreen(route.id, onLookup = { nav.push(Route.Lookup(it)) })
+                    is Route.Shadowing -> ShadowingScreen(route.sentences, onDone = nav::back)
+                    is Route.FreeTalk -> FreeTalkScreen(route.toString(), onOpenAiSettings = { nav.push(Route.AiSettings) }, onDone = nav::back)
+                    Route.Integrations -> IntegrationsScreen()
+                    Route.Export -> ExportScreen()
+                    Route.Leaderboard -> LeaderboardScreen(onOpenSync = { nav.push(Route.Sync) })
+                    Route.Recordings -> RecordingsScreen()
+                    Route.ContentReview -> ContentReviewScreen()
+                    Route.PersonalCard -> PersonalCardScreen(onDone = nav::back)
+                    Route.Kana -> KanaCourseScreen(push = nav::push)
+                    is Route.KanaLesson -> KanaLessonScreen(route.id, push = nav::push, onDone = nav::back)
+                    is Route.KanaPlacement -> KanaPlacementScreen(route.script, onDone = nav::back)
                     is Route.Pomodoro -> PomodoroScreen(route.toString())
                     is Route.Opi -> OpiScreen(route.toString(), onOpenAiSettings = { nav.push(Route.AiSettings) })
                     Route.Exams -> ExamHubScreen(
@@ -276,8 +313,8 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
 @Composable
 private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
     when (tab) {
-        Tab.TODAY -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) }, onGrammar = { push(Route.GrammarLessons) })
-        Tab.REVIEWS -> TodayScreen(onLessons = { push(Route.Lessons) }, onReviews = { push(Route.Reviews) }, onGrammar = { push(Route.GrammarLessons) })
+        Tab.TODAY -> TodayScreen(push)
+        Tab.REVIEWS -> TodayScreen(push)
         Tab.LEARN -> LearnHome(push)
         Tab.PRACTICE -> PracticeHubScreen(push)
         Tab.ME -> MeScreen { d ->
@@ -289,6 +326,11 @@ private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
                     MeDestination.LICENSES -> Route.Licenses
                     MeDestination.AI -> Route.AiSettings
                     MeDestination.EXAMS -> Route.Exams
+                    MeDestination.EXPORT -> Route.Export
+                    MeDestination.RECORDINGS -> Route.Recordings
+                    MeDestination.LEADERBOARD -> Route.Leaderboard
+                    MeDestination.CONTENT_REVIEW -> Route.ContentReview
+                    MeDestination.FREE_TALK -> Route.FreeTalk()
                 },
             )
         }
@@ -299,6 +341,7 @@ private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
 private fun LearnHome(push: (Route) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         listOf(
+            Triple(R.string.title_kana, R.string.learn_kana_sub, Route.Kana),
             Triple(R.string.title_kanji_path, R.string.learn_path_sub, Route.PathLevels),
             Triple(R.string.title_grammar, R.string.learn_grammar_sub, Route.Grammar),
             Triple(R.string.title_reading, R.string.learn_reading_sub, Route.Library),
@@ -307,6 +350,7 @@ private fun LearnHome(push: (Route) -> Unit) {
             Triple(R.string.title_draw_search, R.string.learn_draw_sub, Route.Handwriting),
             Triple(R.string.title_word_lists, R.string.learn_lists_sub, Route.WordLists),
             Triple(R.string.title_scan, R.string.learn_scan_sub, Route.Scan),
+            Triple(R.string.title_personal_card, R.string.learn_personal_sub, Route.PersonalCard),
         ).forEach { (title, subtitle, route) ->
             ListItem(
                 modifier = Modifier.clickable { push(route) },
@@ -333,7 +377,7 @@ private fun routeTitle(route: Route, tab: Tab): String = when (route) {
     is Route.Kanji -> route.literal
     Route.Radicals -> stringResource(R.string.title_radicals)
     Route.Lessons -> stringResource(R.string.title_lessons)
-    Route.Reviews -> stringResource(R.string.title_reviews)
+    is Route.Reviews -> stringResource(R.string.title_reviews)
     Route.PathLevels -> stringResource(R.string.title_kanji_path)
     is Route.PathLevel -> stringResource(R.string.title_level, route.level)
     is Route.PathItem -> stringResource(R.string.title_item)
@@ -358,4 +402,16 @@ private fun routeTitle(route: Route, tab: Tab): String = when (route) {
     Route.Exams -> stringResource(R.string.title_exams)
     is Route.ExamRun -> route.spec.displayTitle()
     is Route.Attempt -> stringResource(R.string.title_attempt)
+    Route.Integrations -> stringResource(R.string.title_integrations)
+    Route.Export -> stringResource(R.string.title_export)
+    Route.Leaderboard -> stringResource(R.string.title_leaderboard)
+    Route.Recordings -> stringResource(R.string.title_recordings)
+    Route.ContentReview -> stringResource(R.string.title_content_review)
+    Route.PersonalCard -> stringResource(R.string.title_personal_card)
+    Route.Kana, is Route.KanaLesson -> stringResource(R.string.title_kana)
+    is Route.KanaPlacement -> stringResource(R.string.kana_placement)
+    is Route.Shadowing -> stringResource(R.string.title_shadowing)
+    is Route.FreeTalk -> stringResource(R.string.practice_free_talk)
+    Route.Podcasts, is Route.Podcast -> stringResource(R.string.title_podcasts)
+    is Route.Episode -> stringResource(R.string.title_episode)
 }
