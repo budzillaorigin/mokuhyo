@@ -474,6 +474,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tsumugi;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Tsumugi uses the camera to read Japanese text so you can look it up. Recognition happens on your device.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Tsumugi records your voice for speaking practice and pronunciation feedback. Recordings stay on your device.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Tsumugi turns your spoken Japanese into text on your device to check your answers. Audio is not sent to Apple.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -524,6 +526,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tsumugi;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Tsumugi uses the camera to read Japanese text so you can look it up. Recognition happens on your device.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Tsumugi records your voice for speaking practice and pronunciation feedback. Recordings stay on your device.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Tsumugi turns your spoken Japanese into text on your device to check your answers. Audio is not sent to Apple.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

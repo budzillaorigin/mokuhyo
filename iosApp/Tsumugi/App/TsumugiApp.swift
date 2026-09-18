@@ -1,5 +1,6 @@
 import Shared
 import SwiftUI
+import UIKit
 
 @main
 struct TsumugiApp: App {
@@ -11,6 +12,11 @@ struct TsumugiApp: App {
             RootView()
                 .environment(model)
                 .task { await Reminders.requestPermission() }
+                // Free the on-device model under memory pressure; it reloads on next use.
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didReceiveMemoryWarningNotification)) { _ in
+                    let graph = model.graph
+                    Task { try? await graph.ai.unload() }
+                }
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
@@ -34,4 +40,12 @@ struct TsumugiApp: App {
 @Observable
 final class AppModel {
     let graph = AppGraph(platform: PlatformServices())
+
+    init() {
+        // Native engines are platform code; the shared AiService builds models on top of them (tools/models/README.md).
+        graph.ai.llmBridge = LlamaBridge()
+        graph.ai.sttBridge = WhisperBridge()
+        // iOS reports a little less than the installed RAM; round to whole GB for the model recommendation.
+        graph.ai.deviceRamGb = (Double(ProcessInfo.processInfo.physicalMemory) / 1_073_741_824).rounded()
+    }
 }

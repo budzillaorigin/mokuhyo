@@ -29,6 +29,19 @@ enum Route: Hashable {
     case writingPractice([String])
     case handwriting
     case sync
+    case aiSettings
+    case scenarios
+    case roleplay(String)
+    case pronunciation(String)
+    case dialogues
+    case dialogue(String)
+    case minimalPairs
+    case media
+    case pomodoro
+    case opi
+    case exams
+    case attempt(String)
+    case examBanks
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -59,7 +72,7 @@ struct RootView: View {
                 .tabItem { Label("Reviews", systemImage: "arrow.triangle.2.circlepath") }.tag(1)
             TabStack { LearnHomeView() }
                 .tabItem { Label("Learn", systemImage: "book") }.tag(2)
-            TabStack { ComingSoonView(title: "Practice") }
+            TabStack { PracticeHubView() }
                 .tabItem { Label("Practice", systemImage: "mic") }.tag(3)
             TabStack { MeView() }
                 .tabItem { Label("Me", systemImage: "person.crop.circle") }.tag(4)
@@ -110,6 +123,19 @@ struct TabStack<Root: View>: View {
                     case .writingPractice(let kanji): WritingPracticeView(kanji: kanji)
                     case .handwriting: HandwritingSearchView()
                     case .sync: SyncView()
+                    case .aiSettings: AiSettingsView()
+                    case .scenarios: ScenarioListView()
+                    case .roleplay(let id): RoleplayView(scenarioId: id)
+                    case .pronunciation(let sentence): PronunciationPracticeView(initialSentence: sentence)
+                    case .dialogues: DialogueListView()
+                    case .dialogue(let id): DialoguePlayerView(dialogueId: id)
+                    case .minimalPairs: MinimalPairsView()
+                    case .media: MediaPlayerView()
+                    case .pomodoro: PomodoroView()
+                    case .opi: OpiView()
+                    case .exams: ExamHubView()
+                    case .attempt(let id): AttemptReviewView(attemptId: id)
+                    case .examBanks: ExamBanksView()
                     }
                 }
         }
