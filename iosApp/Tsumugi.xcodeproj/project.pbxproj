@@ -492,6 +492,24 @@
 					Shared,
 					"-lsqlite3",
 				);
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"-framework",
+					Shared,
+					"-lsqlite3",
+					"-framework",
+					llama,
+					"-framework",
+					whisper,
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					"-framework",
+					Shared,
+					"-lsqlite3",
+					"-framework",
+					whisper,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.tsumugi.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -543,6 +561,24 @@
 					"-framework",
 					Shared,
 					"-lsqlite3",
+				);
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"-framework",
+					Shared,
+					"-lsqlite3",
+					"-framework",
+					llama,
+					"-framework",
+					whisper,
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					"-framework",
+					Shared,
+					"-lsqlite3",
+					"-framework",
+					whisper,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.tsumugi.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";

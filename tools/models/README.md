@@ -32,7 +32,7 @@ The "Embed Native Frameworks" build phase copies the right slice into `Tsumugi.a
 
 - **Both are dynamic frameworks.** Each bundles its own ggml, which is fine for two dylibs. Keep `import llama` and `import whisper` in separate Swift files.
 - **No llama simulator slice.** The pinned llama.xcframework has no iOS Simulator slice. In the Simulator, `LlamaBridge` compiles as a stub that reports "not available in this build"; use a device to test the LLM. whisper works in the Simulator (CPU only).
-- **Frameworks are optional to build.** Without them the app still builds: `#if canImport(...)` falls back to the stubs, and Swift autolinks the frameworks only when it imports them.
+- **Frameworks are required to build.** The app target links them explicitly (`OTHER_LDFLAGS[sdk=…]`: whisper on the simulator, llama + whisper on devices), because Swift did not autolink these prebuilt frameworks. Run `fetch_ios_frameworks.sh` once before the first Xcode build.
 - **CI** fetches the frameworks, runs the simulator tests, and also builds for `generic/platform=iOS` so the llama code path compiles.
 
 **Android:** nothing to fetch by hand.

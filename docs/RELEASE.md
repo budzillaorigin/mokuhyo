@@ -37,7 +37,7 @@ Size budget: the bundled packs are about 155 MB raw. The App Store compresses th
 bash tools/models/fetch_ios_frameworks.sh   # llama.xcframework + whisper.xcframework, hash-checked
 ```
 
-Without the frameworks the app still builds, and on-device AI shows as "not included in this build". Models are never bundled; the in-app model manager downloads them on request.
+This step is required: the app links both frameworks, so the Xcode build fails with "Undefined symbols _whisper_…" without them. Models are never bundled; the in-app model manager downloads them on request.
 
 ## 3. Test
 
