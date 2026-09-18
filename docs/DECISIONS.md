@@ -111,6 +111,30 @@ The server uses:
 
 Fair-use limits are environment configuration. There's no hosted instance yet; the app asks for a server URL. Choosing and running a hosted instance is an owner decision (open decision 2).
 
+### D-029: Exam scoring is a documented approximation (2026-09-18)
+**JLPT:** the JLPT equates scores per sitting and publishes no tables. Each score group is scaled linearly: `round(correct / administered × max)`. Groups are 0–60 each; N4/N5 language + reading is combined at 0–120. Pass marks and sectional minimums (19, or 38 for the combined group) follow jlpt.jp. A drill that leaves out a whole group is scored but never reported as a pass.
+
+**DLPT:** the ILR estimate is the highest level L where all three hold:
+- items at L are ≥ 70% correct, with at least 5 of them (fewer in short slices);
+- all items at L and below are ≥ 70% correct over at least 20 items;
+- no lower level with enough items falls under 60%.
+
+Short slices get a "provisional" estimate, and 10+ items at the estimated level makes it "confident". Every exam screen says the scores are unofficial practice.
+
+### D-030: Listening audio is rendered on device at play time (2026-09-18)
+BRIEF §5.11 asks for TTS rendering at build time. The build machine has no licensed Japanese voices, and shipping audio would add hundreds of MB. Exam and dialogue scripts are therefore stored as `(speaker, voice, text)` lines and spoken with the OS voices, or with VOICEVOX when the learner configures it. Two voices are picked by gender hint. Strict exam modes allow one play. Pre-rendered audio can come later as an optional pack.
+
+### D-031: OPI adaptation without a model uses answer length (2026-09-18)
+**Scripted mode:** without an LLM the interviewer asks scripted bank questions. The working level moves up when an answer is at least the next level's typical length, and down when it's under half the current level's typical length (breakdown). This is a crude, documented stand-in for "sustained speech".
+
+**Ratings:** they come from the `opi_rate` prompt, mapped ACTFL → ILR with ACTFL's published crosswalk. Without a model, the learner self-rates against checklist statements paraphrased from the public-domain ILR descriptors. A gap at any level caps the rating there.
+
+### D-032: Only permissively licensed models are offered (2026-09-18)
+The model manager lists Qwen2.5 1.5B/7B Instruct (Apache-2.0) and Whisper base/small (MIT). Qwen2.5-3B is left out because its research license is not permissive (CLAUDE.md rule 5), even though it would fit mid-range phones well.
+
+### D-033: AI engine settings and secrets (2026-09-18)
+The engine choice, endpoint URL and model name live in the synced `setting` table, so a second device picks up the same home server. The endpoint API key lives only in the keychain/keystore and is sent only to that endpoint (rule 6). Local models are chosen per device, since what fits in RAM differs.
+
 ---
 
 ## Open decisions (BRIEF.md §14)
@@ -119,7 +143,7 @@ Fair-use limits are environment configuration. There's no hosted instance yet; t
 |---|---|---|
 | 1 | Final name / bundle ID | Open. Placeholder `Tsumugi` / `app.tsumugi.*` |
 | 2 | Pricing, hosted-sync cap | Open |
-| 3 | Default on-device LLM | Open. Assume Qwen2.5-1.5B-Instruct Q4_K_M until the Phase 6 benchmark |
+| 3 | Default on-device LLM | Qwen2.5-1.5B-Instruct Q4_K_M recommended (Apache-2.0, 4 GB RAM); 7B for 12 GB devices. Benchmark with `tools/models/eval_ja.py` on real devices still open |
 | 4 | WaniKani review posting default | Open. Assume off |
 | 5 | Tokenizer lexicon | **Decided: IPADIC** (D-023) |
 | 6 | N1/N2 grammar at v1 | Open |
