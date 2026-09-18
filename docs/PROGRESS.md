@@ -1,6 +1,66 @@
 # Progress
 
-Current phase: **Phases 0–3 complete. Continuing to Phase 4 (reading & writing).** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+Current phase: **Phases 0–5 complete. Phase 6 (on-device AI, speaking, listening) in progress.** The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+
+---
+
+## Phase 5: Sync (2026-09-18)
+
+### What was built
+- **Server** (`server/`):
+  - Ktor 3 + Postgres 16 (SQLite for dev and tests), Flyway migrations.
+  - Auth: Argon2id passwords, rotating refresh tokens with family revocation on reuse, and passkeys (WebAuthn).
+  - Device registry, and push/pull with per-user sequence numbers and idempotent re-push.
+  - Blobs with quota, an opt-in leaderboard (end-to-end-encrypted accounts are excluded), rate limiting and body-size caps.
+  - `docker compose up` stack (server, postgres, optional Caddy TLS), a Makefile, and a README for self-hosting (D-028).
+- **Client** (`shared/sync`):
+  - SQLite triggers write dirty-row markers (D-026).
+  - `SyncEngine`: reviews merge as a set union, cards are recomputed, everything else is last-writer-wins by (updated_at, deviceId), and tombstones propagate.
+  - `SyncAccount` stores tokens in the Keychain/Keystore and handles opt-in end-to-end encryption (Argon2id + XChaCha20-Poly1305 in pure Kotlin, D-025).
+- **Apps:** Me → Sync screen (server URL, sign in or create account, status, sync now, end-to-end passphrase, sign out). Sync runs when the app opens or becomes active, and after review sessions.
+- **Protocol:** `docs/SYNC_PROTOCOL.md` (v1).
+
+### Verified
+- **SyncMergeTest:** two devices with interleaved offline reviews end up with identical review sets and identical recomputed FSRS cards. Also covers last-writer-wins tie-breaks, tombstones, no echo, idempotent push, and end-to-end round trips.
+- **Crypto:** RFC test vectors pass.
+- **Server:** 21 tests pass on SQLite, including passkeys through webauthn4j's emulated authenticator. The Postgres Testcontainers test runs in CI.
+
+### Deferred
+- **Hosted instance:** none exists yet. This is open decision 2.
+- **Email verification:** sent but not required to sign in.
+- **Recordings sync:** the blob store exists but the app doesn't upload recordings yet. That comes with Phase 6 recordings, as an opt-in.
+
+---
+
+## Phase 4: Reading & writing (2026-09-18)
+
+### What was built
+- **Tokenizer:** a pure-Kotlin Viterbi analyzer over an IPADIC pack (`tokenizer.sqlite`, 25 MB). `TokenizerParityTest` gives 99.8% sentence parity with MeCab (D-023).
+- **Reader** (`shared/reader`):
+  - Importers for pasted text, web articles (readability extraction, Shift_JIS/EUC-JP), RSS/RDF/Atom feeds, the Aozora Bunko catalogue and texts, and EPUB.
+  - Paragraph/sentence/token view models with furigana modes (all, none, unknown words only).
+  - Known-word ratio and difficulty labels such as "≈ N3 / ILR 1+".
+  - Grammar detection per sentence from the grammar pack's patterns, and sentence mining that adds a word to reviews with its sentence as context.
+  - Documents stay on the device (D-027).
+- **Writing** (`shared/jp/strokes`):
+  - Skritter-style stroke grading (resampling, direction histograms, DTW, start/end checks) that catches wrong direction, order, shape and position, and shows a hint after 3 misses.
+  - A raw writing checker for reviews, a handwriting recognizer (D-024), and SVG stroke panels in the NihongoShark style.
+- **OCR:** iOS uses VisionKit live text plus Vision on photos; Android uses ML Kit (Japanese, bundled model, offline).
+- **Speech:** read-aloud with the system voice on both platforms (AVSpeechSynthesizer / TextToSpeech), with word highlighting.
+- **UI on both apps:**
+  - Learn → Reading: library, reader with tap-a-word popup, "Add to reviews", sentence panel with grammar and Listen, feeds, Aozora.
+  - Learn → Draw to search, and Learn → Scan text.
+  - Writing practice screens, plus writing cards in reviews (draw, check, compare with the animated stroke order, then rate). Turn writing cards on in Settings.
+
+### Verified
+- About 263 tests pass on the JVM, covering shared and server code, including stroke grading and recognition, reader importers and analysis, and tokenizer parity.
+- The Android APK builds (123 MB debug, including the dictionary and tokenizer packs and the ML Kit model).
+- iOS is verified by CI.
+
+### Deferred
+- **Share-sheet extensions:** "Read in Tsumugi" on iOS and ACTION_SEND on Android come with Phase 8 polish. For now, text is pasted into the reader.
+- **Sentence translation and comprehension questions** arrive with the Phase 6 AI runtime.
+- **Aozora ruby hints:** readings from Aozora's ruby markup aren't kept with saved documents yet. The reader shows furigana from the dictionary instead.
 
 ---
 

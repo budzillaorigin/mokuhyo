@@ -79,6 +79,38 @@ Linking the Kotlin framework into the widget extension would add size and startu
 ### D-022: Review reminders are planned locally (2026-09-18)
 A single local notification is scheduled whenever the app backgrounds: when N reviews (default 10) will be due, shifted out of quiet hours (default 22:00–08:00). No server push, no background job (BRIEF §5.12, rule 1).
 
+### D-023: Tokenizer lexicon is IPADIC, not UniDic-lite (2026-09-18) — resolves open decision 5
+The pure-Kotlin Viterbi analyzer (`LatticeTokenizer`) runs over mecab-ipadic 2.7.0 (NAIST/ICOT BSD-style license). UniDic-lite's connection matrix is about 6,000×6,000 entries, too big to ship; IPADIC's is 1,316×1,316 (3.4 MB), and the whole pack is 25 MB. Results:
+- **Parity with MeCab (via fugashi):** 99.8% of 1,000 Tatoeba sentences match exactly; 99.97% of tokens.
+- **Speed:** about 18,000 characters per second on the JVM.
+
+The dictionary longest-match tokenizer (D-011) stays for dictionary lookups and popups.
+
+### D-024: Handwriting search uses template matching, not a trained classifier (2026-09-18)
+BRIEF §5.3 plans a Core ML/TFLite classifier trained in `tools/models/`. Instead, `HandwritingRecognizer` matches drawn strokes against all 6,702 KanjiVG characters in shared Kotlin:
+- Candidates are filtered to within ±2 strokes of the drawing.
+- Each is scored by an order-aware stroke alignment, with an order-tolerant fallback.
+
+There is no model to train, ship or keep in step across platforms, and iOS and Android give identical results. On synthetic distortions: 299 of 300 correct as first candidate, 300 of 300 in the top 10, 28 ms per query on the JVM. Real handwriting may need threshold tuning on device. A trained model can still be added behind the same `recognize()` call if needed.
+
+### D-025: End-to-end sync crypto in pure Kotlin (2026-09-18)
+The libsodium KMP bindings ship native libraries that don't load in JVM host tests and add binary size. The client implements BLAKE2b, Argon2id, XChaCha20-Poly1305 (HChaCha20 + Poly1305) in common Kotlin from RFC 7693, 9106 and 8439 and the XChaCha draft. They pass those documents' published test vectors. Argon2id defaults to 3 passes × 32 MiB × 1 lane; this hasn't been timed on a device yet.
+
+### D-026: Sync captures changes with SQLite triggers (2026-09-18)
+Every insert, update and delete on a synced table fires a trigger that records a dirty-row marker in `change_log`: table and key only, no payload. That way repositories don't need to remember to log their writes. At push time the current row is serialized. A `sync_state.applying` flag disables the triggers while remote changes are applied, so they don't echo back. No JSON1 functions or UPSERT syntax are used, because Android 8–10 ship older SQLite. Card FSRS state is never synced; it is recomputed from the merged review log (BRIEF §8.2).
+
+### D-027: Reader documents stay on the device (2026-09-18)
+Documents imported from URLs, feeds, Aozora and EPUB live in `reader_doc` and are not synced. BRIEF §4 requires that fetched news is never stored on the sync server, and a rule that applies to every source is simpler to reason about. Words mined from the reader do sync, as items and reviews.
+
+### D-028: Sync server choices (2026-09-18)
+The server uses:
+- **Framework and storage:** Ktor 3 (Netty), plain JDBC with HikariCP, and Flyway migrations. Postgres 16 in production; SQLite for dev and tests.
+- **Auth:** password4j for Argon2id, java-jwt for tokens, webauthn4j for passkeys.
+- **Logging:** slf4j-simple, because logback is EPL/LGPL.
+- **Email:** a tiny built-in SMTP client instead of a mail library. Without SMTP configured, the verification link is logged.
+
+Fair-use limits are environment configuration. There's no hosted instance yet; the app asks for a server URL. Choosing and running a hosted instance is an owner decision (open decision 2).
+
 ---
 
 ## Open decisions (BRIEF.md §14)
@@ -89,6 +121,6 @@ A single local notification is scheduled whenever the app backgrounds: when N re
 | 2 | Pricing, hosted-sync cap | Open |
 | 3 | Default on-device LLM | Open. Assume Qwen2.5-1.5B-Instruct Q4_K_M until the Phase 6 benchmark |
 | 4 | WaniKani review posting default | Open. Assume off |
-| 5 | Tokenizer lexicon | Open. Assume UniDic-lite (verify license text) |
+| 5 | Tokenizer lexicon | **Decided: IPADIC** (D-023) |
 | 6 | N1/N2 grammar at v1 | Open |
 | 7 | Leaderboard at v1 | Open |

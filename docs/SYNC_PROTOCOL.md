@@ -64,6 +64,12 @@ All under `/v1`, JSON, `Authorization: Bearer <access JWT>` except auth and heal
 | GET | `/leaderboard?period=week` | opt-in users only: `[{displayName, reviews, streak}]` (no E2E users) |
 | GET | `/health` | `{status: "ok", version}` |
 
+Server extras beyond the table above:
+- `GET /auth/verify?token=`: email verification link.
+- `DELETE /blobs/{id}`.
+- `/leaderboard?period=day|week|month`.
+- `accepted` in the push response counts every valid change, including duplicates of already-stored ones, so the client can mark all of them synced.
+
 Idempotency: the server dedupes pushed changes on `(user, table, key, updatedAt, deviceId, op)`, so a retried push after a timeout doesn't duplicate.
 
 ## Client algorithm
