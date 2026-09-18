@@ -27,7 +27,7 @@ private struct SearchResultsView: View {
                             ForEach(Array(results.tokens.enumerated()), id: \.offset) { _, token in
                                 if let id = token.entryId {
                                     NavigationLink(value: Route.entry(id.int64Value)) {
-                                        Text(token.surface).font(.japanese(size: 18))
+                                        Text(token.surface).font(.japanese(size: 18)).japaneseSpeech()
                                     }
                                     .buttonStyle(.bordered)
                                 } else {
@@ -74,6 +74,7 @@ private struct SearchHitRow: View {
                         Text(hit.entry.reading).font(.japanese(size: 14)).foregroundStyle(.secondary)
                     }
                 }
+                .japaneseSpeech()
                 Text(hit.entry.glossPreview).font(.subheadline).lineLimit(2)
                 if hit.match == .deinflected {
                     Text("← " + hit.deinflection.joined(separator: " ← ")).font(.caption2).foregroundStyle(.tint)

@@ -1,0 +1,5182 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " (hint shown)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（ヒントを表示中）"
+          }
+        }
+      }
+    },
+    "%d min" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d分"
+          }
+        }
+      }
+    },
+    "%d words" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d語"
+          }
+        }
+      }
+    },
+    "%lld done · %lld left" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld件完了・残り%2$lld件"
+          }
+        }
+      }
+    },
+    "%lld items" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld問"
+          }
+        }
+      }
+    },
+    "%lld items added. Their first reviews are due in 10 minutes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld件を追加しました。最初の復習は10分後です。"
+          }
+        }
+      }
+    },
+    "%lld min" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld分"
+          }
+        }
+      }
+    },
+    "%lld of %lld correct" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld問中%1$lld問正解"
+          }
+        }
+      }
+    },
+    "%lld out of 100" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100点中%lld点"
+          }
+        }
+      }
+    },
+    "%lld strokes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld画"
+          }
+        }
+      }
+    },
+    "%lld strokes drawn" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld画書きました"
+          }
+        }
+      }
+    },
+    "%lld words" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld語"
+          }
+        }
+      }
+    },
+    "/ 100 overall" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/ 100（総合）"
+          }
+        }
+      }
+    },
+    "25-minute Pomodoro" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "25分のポモドーロ"
+          }
+        }
+      }
+    },
+    "60 levels" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60レベル"
+          }
+        }
+      }
+    },
+    "A 15–30 minute practice interview: warm-up, level checks, probes, a role-play and a wind-down. Answer out loud; the transcript is shown only at the end." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15〜30分の練習面接です。ウォームアップ、レベルチェック、突き上げ、ロールプレイ、ワインドダウンの順に進みます。声に出して答えてください。文字起こしは最後にだけ表示されます。"
+          }
+        }
+      }
+    },
+    "A CSV export of your Bunpro grammar (title + SRS level). Only your progress is imported." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BunproからCSVで書き出した文法（タイトルとSRSレベル）。インポートされるのは進捗だけです。"
+          }
+        }
+      }
+    },
+    "A JSON item bank in the format described in docs/CONTENT_PACKS.md. Every problem is listed if it doesn't validate. Only import banks you have the right to use; official JLPT/DLPT items are copyrighted." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "docs/CONTENT_PACKS.md に記載された形式のJSON問題バンクです。検証に失敗した場合は、問題点がすべて表示されます。使用する権利のあるバンクだけをインポートしてください。JLPT/DLPTの公式問題には著作権があります。"
+          }
+        }
+      }
+    },
+    "A closed section can't be reopened." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了したセクションは再び開けません。"
+          }
+        }
+      }
+    },
+    "AI" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI"
+          }
+        }
+      }
+    },
+    "AI & speech" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIと音声"
+          }
+        }
+      }
+    },
+    "AI & speech (models, server, VOICEVOX)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIと音声（モデル・サーバー・VOICEVOX）"
+          }
+        }
+      }
+    },
+    "AI & speech settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIと音声の設定"
+          }
+        }
+      }
+    },
+    "AI is ready." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIを使う準備ができています。"
+          }
+        }
+      }
+    },
+    "AI-generated" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI生成"
+          }
+        }
+      }
+    },
+    "AI-generated by %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@によるAI生成"
+          }
+        }
+      }
+    },
+    "AI-generated · %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI生成・%@"
+          }
+        }
+      }
+    },
+    "AI-generated · unreviewed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI生成・未確認"
+          }
+        }
+      }
+    },
+    "API v2 token" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API v2トークン"
+          }
+        }
+      }
+    },
+    "Accepted: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解：%@"
+          }
+        }
+      }
+    },
+    "Account" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント"
+          }
+        }
+      }
+    },
+    "Accuracy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正確さ"
+          }
+        }
+      }
+    },
+    "Add all to reviews" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべて復習に追加"
+          }
+        }
+      }
+    },
+    "Add any RSS/Atom feed (e.g. NHK News Web Easy). Articles are fetched to this device only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RSS/Atomフィードならどれでも追加できます（例：NHK NEWS WEB EASY）。記事はこの端末にだけ取得されます。"
+          }
+        }
+      }
+    },
+    "Add feed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードを追加"
+          }
+        }
+      }
+    },
+    "Add missed items to SRS" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間違えた問題をSRSに追加"
+          }
+        }
+      }
+    },
+    "Add to list" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リストに追加"
+          }
+        }
+      }
+    },
+    "Add to reviews" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習に追加"
+          }
+        }
+      }
+    },
+    "Added %lld grammar points to reviews." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文法項目を%lld件、復習に追加しました。"
+          }
+        }
+      }
+    },
+    "Added to list." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リストに追加しました。"
+          }
+        }
+      }
+    },
+    "Added — first review in 10 minutes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加しました。最初の復習は10分後です。"
+          }
+        }
+      }
+    },
+    "Adding…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加中…"
+          }
+        }
+      }
+    },
+    "Again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度"
+          }
+        }
+      }
+    },
+    "All" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべて"
+          }
+        }
+      }
+    },
+    "Already played." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生済みです。"
+          }
+        }
+      }
+    },
+    "Also: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ほかに：%@"
+          }
+        }
+      }
+    },
+    "Answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回答する"
+          }
+        }
+      }
+    },
+    "Answer out loud." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "声に出して答えてください。"
+          }
+        }
+      }
+    },
+    "Answer: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答え：%@"
+          }
+        }
+      }
+    },
+    "Answer: meaning in English" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解答：英語で意味"
+          }
+        }
+      }
+    },
+    "Answer: reading in kana" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解答：かなで読み"
+          }
+        }
+      }
+    },
+    "Answered" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回答済み"
+          }
+        }
+      }
+    },
+    "Any .apkg, including NihongoShark decks: your myStory notes and review history come along." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NihongoSharkのデッキを含むどの.apkgでも使えます。myStoryのメモと復習履歴も引き継がれます。"
+          }
+        }
+      }
+    },
+    "Any OpenAI-compatible server you run: Ollama (…/v1), LM Studio, llama-server, vLLM. The key is kept in the Keychain and only sent to this server." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分で運用しているOpenAI互換サーバー（Ollama（…/v1）、LM Studio、llama-server、vLLM）を使えます。キーはキーチェーンに保存され、このサーバーにだけ送信されます。"
+          }
+        }
+      }
+    },
+    "Anything a model writes is marked “AI-generated” with the engine's name." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モデルが書いた内容には、エンジン名とともに「AI生成」と表示されます。"
+          }
+        }
+      }
+    },
+    "Aozora Bunko" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "青空文庫"
+          }
+        }
+      }
+    },
+    "Articles" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記事"
+          }
+        }
+      }
+    },
+    "Articles, books, feeds" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記事・本・フィード"
+          }
+        }
+      }
+    },
+    "Attempt not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受験記録が見つかりません"
+          }
+        }
+      }
+    },
+    "Audio script" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声スクリプト"
+          }
+        }
+      }
+    },
+    "Back" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "戻る"
+          }
+        }
+      }
+    },
+    "Bank shortfalls" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題数の不足"
+          }
+        }
+      }
+    },
+    "Below the minimum" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "基準点未満"
+          }
+        }
+      }
+    },
+    "Breakdown" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内訳"
+          }
+        }
+      }
+    },
+    "By item type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題形式別"
+          }
+        }
+      }
+    },
+    "Camera or photo" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラまたは写真"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "Check" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答え合わせ"
+          }
+        }
+      }
+    },
+    "Checking…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認中…"
+          }
+        }
+      }
+    },
+    "Choice %lld of %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択肢 %1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Choose a photo" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真を選ぶ"
+          }
+        }
+      }
+    },
+    "Clear" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "消去"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
+          }
+        }
+      }
+    },
+    "Close enough — “%@”" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ほぼ正解 —「%@」"
+          }
+        }
+      }
+    },
+    "Coming from WaniKani, Anki (NihongoShark), Bunpro or imiwa? Import your progress so it carries over." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WaniKani、Anki（NihongoShark）、Bunpro、imiwaを使っていましたか？進捗をインポートすれば引き継げます。"
+          }
+        }
+      }
+    },
+    "Coming soon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近日公開"
+          }
+        }
+      }
+    },
+    "Components" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "構成要素"
+          }
+        }
+      }
+    },
+    "Conjugation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "活用"
+          }
+        }
+      }
+    },
+    "Connect" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続"
+          }
+        }
+      }
+    },
+    "Connected, but the server lists no models." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続できましたが、サーバーにモデルがありません。"
+          }
+        }
+      }
+    },
+    "Correct" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解"
+          }
+        }
+      }
+    },
+    "Correct answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解"
+          }
+        }
+      }
+    },
+    "Correct answer, your choice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解（あなたの選択）"
+          }
+        }
+      }
+    },
+    "Corrections" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訂正"
+          }
+        }
+      }
+    },
+    "Couldn't build that test from the installed items." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インストールされている問題からこのテストを作成できませんでした。"
+          }
+        }
+      }
+    },
+    "Couldn't save this attempt." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この受験記録を保存できませんでした。"
+          }
+        }
+      }
+    },
+    "Couldn't tell from the recording" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音からは判定できませんでした"
+          }
+        }
+      }
+    },
+    "Create" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作成"
+          }
+        }
+      }
+    },
+    "Create & add" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作成して追加"
+          }
+        }
+      }
+    },
+    "Create account" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントを作成"
+          }
+        }
+      }
+    },
+    "Current · %lld%% of kanji at Guru" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在のレベル・漢字の%lld%%がGuru"
+          }
+        }
+      }
+    },
+    "DLPT / OPI (ILR levels)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DLPT／OPI（ILRレベル）"
+          }
+        }
+      }
+    },
+    "Daily budget" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1日の学習時間"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
+          }
+        }
+      }
+    },
+    "Desired retention" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目標定着率"
+          }
+        }
+      }
+    },
+    "Desired retention: %lld%%" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目標定着率：%lld%%"
+          }
+        }
+      }
+    },
+    "Details" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳細"
+          }
+        }
+      }
+    },
+    "Dialogue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話"
+          }
+        }
+      }
+    },
+    "Dialogue not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話が見つかりません"
+          }
+        }
+      }
+    },
+    "Dialogues" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話"
+          }
+        }
+      }
+    },
+    "Dictionary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "辞書"
+          }
+        }
+      }
+    },
+    "Dictionary not installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "辞書がインストールされていません"
+          }
+        }
+      }
+    },
+    "Do you know this kanji's meaning and a reading?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この漢字の意味と読みをひとつ知っていますか？"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        }
+      }
+    },
+    "Done — nice work!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "達成しました。お疲れさまでした！"
+          }
+        }
+      }
+    },
+    "Done! Rating: %lld/4" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了！評価：%lld/4"
+          }
+        }
+      }
+    },
+    "Double-tap to look up this word." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダブルタップでこの単語を調べます。"
+          }
+        }
+      }
+    },
+    "Double-tap to replay." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダブルタップでもう一度再生します。"
+          }
+        }
+      }
+    },
+    "Downloads are checked with SHA-256. Cancel pauses; downloading again resumes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダウンロードはSHA-256で検証されます。キャンセルすると一時停止し、もう一度ダウンロードすると再開します。"
+          }
+        }
+      }
+    },
+    "Draw a kanji below" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下に漢字を書いてください"
+          }
+        }
+      }
+    },
+    "Draw each stroke with one finger." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1画ずつ指で書いてください。"
+          }
+        }
+      }
+    },
+    "Draw to search" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手書き検索"
+          }
+        }
+      }
+    },
+    "Easy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "簡単"
+          }
+        }
+      }
+    },
+    "Email" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールアドレス"
+          }
+        }
+      }
+    },
+    "End interview" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "面接を終了"
+          }
+        }
+      }
+    },
+    "End section" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セクションを終了"
+          }
+        }
+      }
+    },
+    "End session" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セッションを終了"
+          }
+        }
+      }
+    },
+    "End this section?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このセクションを終了しますか？"
+          }
+        }
+      }
+    },
+    "End-to-end encryption" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エンドツーエンド暗号化"
+          }
+        }
+      }
+    },
+    "Engine" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エンジン"
+          }
+        }
+      }
+    },
+    "English" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語"
+          }
+        }
+      }
+    },
+    "English subs" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語字幕"
+          }
+        }
+      }
+    },
+    "English: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語：%@"
+          }
+        }
+      }
+    },
+    "Estimated ILR %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ILR推定 %@"
+          }
+        }
+      }
+    },
+    "Estimated ILR %@ (low confidence: few items at that level)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ILR推定 %@（信頼度低：そのレベルの問題数が少ない）"
+          }
+        }
+      }
+    },
+    "Exam item banks" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "試験問題バンク"
+          }
+        }
+      }
+    },
+    "Exam simulators" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模擬試験"
+          }
+        }
+      }
+    },
+    "Example sentences from Tatoeba (CC BY 2.0 FR)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例文はTatoeba（CC BY 2.0 FR）より。"
+          }
+        }
+      }
+    },
+    "Examples" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例文"
+          }
+        }
+      }
+    },
+    "Examples: Tatoeba (CC BY 2.0 FR)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例文：Tatoeba（CC BY 2.0 FR）"
+          }
+        }
+      }
+    },
+    "Exams" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "試験"
+          }
+        }
+      }
+    },
+    "Explain with AI" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIで解説"
+          }
+        }
+      }
+    },
+    "Explaining…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解説を作成中…"
+          }
+        }
+      }
+    },
+    "Explanation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解説"
+          }
+        }
+      }
+    },
+    "Export everything to .apkg" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてを.apkgに書き出す"
+          }
+        }
+      }
+    },
+    "Feed URL (RSS or Atom)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードのURL（RSSまたはAtom）"
+          }
+        }
+      }
+    },
+    "Feedback" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードバック"
+          }
+        }
+      }
+    },
+    "Feeds" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィード"
+          }
+        }
+      }
+    },
+    "Find a kanji by its parts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部品から漢字を探す"
+          }
+        }
+      }
+    },
+    "Finish" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了"
+          }
+        }
+      }
+    },
+    "Fluency" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "流暢さ"
+          }
+        }
+      }
+    },
+    "Fluency (rate and pauses)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "流暢さ（速さとポーズ）"
+          }
+        }
+      }
+    },
+    "Functions" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言語機能"
+          }
+        }
+      }
+    },
+    "Furigana" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ふりがな"
+          }
+        }
+      }
+    },
+    "Gap-fill" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "穴埋め"
+          }
+        }
+      }
+    },
+    "Goal reached! Keep going or try another scenario." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目標達成！このまま続けるか、別のシナリオに挑戦しましょう。"
+          }
+        }
+      }
+    },
+    "Good" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解"
+          }
+        }
+      }
+    },
+    "Grammar" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文法"
+          }
+        }
+      }
+    },
+    "Grammar %lld of %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文法 %1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Grammar in this sentence" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この文の文法"
+          }
+        }
+      }
+    },
+    "Grammar lessons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文法レッスン"
+          }
+        }
+      }
+    },
+    "Handwrite a kanji" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字を手書きする"
+          }
+        }
+      }
+    },
+    "Hard" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "難しい"
+          }
+        }
+      }
+    },
+    "Hear %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」を聞く"
+          }
+        }
+      }
+    },
+    "Heard: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聞き取り結果：%@"
+          }
+        }
+      }
+    },
+    "Highest level with at least 70% correct, sustained over enough items, with consistent performance below it. Practice estimate only." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "十分な問題数で70%以上正解し、それより下のレベルでも安定して正解している最も高いレベルです。練習用の推定値にすぎません。"
+          }
+        }
+      }
+    },
+    "Hint: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヒント：%@"
+          }
+        }
+      }
+    },
+    "History" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴"
+          }
+        }
+      }
+    },
+    "How much time a day?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1日にどのくらい学習しますか？"
+          }
+        }
+      }
+    },
+    "I know it" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "知っている"
+          }
+        }
+      }
+    },
+    "ILR estimate" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ILR推定"
+          }
+        }
+      }
+    },
+    "Import" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インポート"
+          }
+        }
+      }
+    },
+    "Import & export" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インポートとエクスポート"
+          }
+        }
+      }
+    },
+    "Import .apkg" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".apkgをインポート"
+          }
+        }
+      }
+    },
+    "Import Bunpro CSV" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunpro CSVをインポート"
+          }
+        }
+      }
+    },
+    "Import JLPT/DLPT practice item banks (JSON). Invalid banks are rejected with every problem listed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JLPT/DLPTの練習問題バンク（JSON）をインポートします。不正なバンクは、問題点をすべて表示して取り込みません。"
+          }
+        }
+      }
+    },
+    "Import an item bank" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題バンクをインポート"
+          }
+        }
+      }
+    },
+    "Import item bank (.json)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題バンクをインポート（.json）"
+          }
+        }
+      }
+    },
+    "Import my progress first" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先に進捗をインポートする"
+          }
+        }
+      }
+    },
+    "Import progress" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "進捗をインポート"
+          }
+        }
+      }
+    },
+    "Import word list" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語リストをインポート"
+          }
+        }
+      }
+    },
+    "In reviews" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習中"
+          }
+        }
+      }
+    },
+    "In reviews · %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習中・%@"
+          }
+        }
+      }
+    },
+    "Interviewer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "面接官"
+          }
+        }
+      }
+    },
+    "Item" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "項目"
+          }
+        }
+      }
+    },
+    "Item-type drills" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題形式別ドリル"
+          }
+        }
+      }
+    },
+    "JLPT N5–N1" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JLPT N5〜N1"
+          }
+        }
+      }
+    },
+    "JLPT · DLPT · OPI" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JLPT・DLPT・OPI"
+          }
+        }
+      }
+    },
+    "JMdict · kanji · examples" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JMdict・漢字・例文"
+          }
+        }
+      }
+    },
+    "Japanese" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語"
+          }
+        }
+      }
+    },
+    "Japanese hidden" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語は非表示"
+          }
+        }
+      }
+    },
+    "Japanese subs" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語字幕"
+          }
+        }
+      }
+    },
+    "Japanese: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語：%@"
+          }
+        }
+      }
+    },
+    "Kanji" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字"
+          }
+        }
+      }
+    },
+    "Kanji path" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字パス"
+          }
+        }
+      }
+    },
+    "Kanji path not installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字パスがインストールされていません"
+          }
+        }
+      }
+    },
+    "Kanji path starts at level %lld. Earlier items stay available if you want them." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字パスはレベル%lldから始まります。それより前の項目もいつでも学べます。"
+          }
+        }
+      }
+    },
+    "Kanji writing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字の書き取り"
+          }
+        }
+      }
+    },
+    "Kanji, vocabulary, grammar, reading and speaking in one offline app. Nothing needs an account or a subscription." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字・語彙・文法・読解・会話をひとつのオフラインアプリで。アカウントもサブスクリプションも必要ありません。"
+          }
+        }
+      }
+    },
+    "Key point: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポイント：%@"
+          }
+        }
+      }
+    },
+    "Kind" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
+          }
+        }
+      }
+    },
+    "Kun" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訓読み"
+          }
+        }
+      }
+    },
+    "Language knowledge & reading" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言語知識・読解"
+          }
+        }
+      }
+    },
+    "Language knowledge (vocabulary, grammar)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言語知識（文字・語彙・文法）"
+          }
+        }
+      }
+    },
+    "Language model" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言語モデル"
+          }
+        }
+      }
+    },
+    "Learn" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学習"
+          }
+        }
+      }
+    },
+    "Learn new grammar" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しい文法を学ぶ"
+          }
+        }
+      }
+    },
+    "Leeches" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "苦手な項目"
+          }
+        }
+      }
+    },
+    "Lesson %lld of %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レッスン %1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Lessons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レッスン"
+          }
+        }
+      }
+    },
+    "Lessons done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レッスン完了"
+          }
+        }
+      }
+    },
+    "Lessons per batch: %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1回のレッスン数：%lld"
+          }
+        }
+      }
+    },
+    "Level" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベル"
+          }
+        }
+      }
+    },
+    "Level %d" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベル%d"
+          }
+        }
+      }
+    },
+    "Level %d · %lld%% of kanji at Guru" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベル%1$d・漢字の%2$lld%%がGuru"
+          }
+        }
+      }
+    },
+    "Level %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベル%lld"
+          }
+        }
+      }
+    },
+    "Licenses" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
+          }
+        }
+      }
+    },
+    "Line %lld of %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld行目/%2$lld行"
+          }
+        }
+      }
+    },
+    "Lines" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セリフ"
+          }
+        }
+      }
+    },
+    "Listen" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聞く"
+          }
+        }
+      }
+    },
+    "Listen to the whole dialogue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話全体を聞く"
+          }
+        }
+      }
+    },
+    "Listen, fill gaps, order" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聞く・穴埋め・並べ替え"
+          }
+        }
+      }
+    },
+    "Listening" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聴解"
+          }
+        }
+      }
+    },
+    "Listening…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聞き取り中…"
+          }
+        }
+      }
+    },
+    "Load catalogue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作品リストを読み込む"
+          }
+        }
+      }
+    },
+    "Locked" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロック中"
+          }
+        }
+      }
+    },
+    "Long vowels" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "長音"
+          }
+        }
+      }
+    },
+    "Look at the lesson again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レッスンをもう一度見る"
+          }
+        }
+      }
+    },
+    "Looks correct." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正しいようです。"
+          }
+        }
+      }
+    },
+    "Loop line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1行リピート"
+          }
+        }
+      }
+    },
+    "Me" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マイページ"
+          }
+        }
+      }
+    },
+    "Meaning" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "意味"
+          }
+        }
+      }
+    },
+    "Media player" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メディアプレーヤー"
+          }
+        }
+      }
+    },
+    "Minimal pair" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミニマルペア"
+          }
+        }
+      }
+    },
+    "Minimal pairs" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミニマルペア"
+          }
+        }
+      }
+    },
+    "Minimum met" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "基準点クリア"
+          }
+        }
+      }
+    },
+    "Missed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間違えた項目"
+          }
+        }
+      }
+    },
+    "Missed items only" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間違えた問題のみ"
+          }
+        }
+      }
+    },
+    "Missing word" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抜けている単語"
+          }
+        }
+      }
+    },
+    "Mode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モード"
+          }
+        }
+      }
+    },
+    "Model" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モデル"
+          }
+        }
+      }
+    },
+    "Model name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モデル名"
+          }
+        }
+      }
+    },
+    "Mora accuracy (what the recognizer heard)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拍の正確さ（音声認識の結果）"
+          }
+        }
+      }
+    },
+    "Mora, pitch, fluency" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拍・アクセント・流暢さ"
+          }
+        }
+      }
+    },
+    "My own server" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のサーバー"
+          }
+        }
+      }
+    },
+    "My story" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のストーリー"
+          }
+        }
+      }
+    },
+    "My story: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のストーリー：%@"
+          }
+        }
+      }
+    },
+    "N%lld grammar" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%lld文法"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名前"
+          }
+        }
+      }
+    },
+    "Names" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名乗り"
+          }
+        }
+      }
+    },
+    "Natural version" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自然な言い方"
+          }
+        }
+      }
+    },
+    "New interview" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しい面接"
+          }
+        }
+      }
+    },
+    "New list" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいリスト"
+          }
+        }
+      }
+    },
+    "New session" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいセッション"
+          }
+        }
+      }
+    },
+    "Next" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次へ"
+          }
+        }
+      }
+    },
+    "Next kanji" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の漢字"
+          }
+        }
+      }
+    },
+    "Next line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の行"
+          }
+        }
+      }
+    },
+    "Next pair" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のペア"
+          }
+        }
+      }
+    },
+    "Next steps" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のステップ"
+          }
+        }
+      }
+    },
+    "No AI explanation: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI解説なし：%@"
+          }
+        }
+      }
+    },
+    "No N%lld items yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%lldの問題はまだありません。"
+          }
+        }
+      }
+    },
+    "No attempts yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだ受験記録がありません。"
+          }
+        }
+      }
+    },
+    "No blueprint for N%lld." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%lldの試験構成データがありません。"
+          }
+        }
+      }
+    },
+    "No dialogues at this level in the installed pack." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インストールされているパックには、このレベルの会話がありません。"
+          }
+        }
+      }
+    },
+    "No dictionary accent for this word" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この単語は辞書にアクセント情報がありません"
+          }
+        }
+      }
+    },
+    "No feedback: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードバックなし：%@"
+          }
+        }
+      }
+    },
+    "No grammar left to learn (or the grammar pack isn't installed)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学ぶ文法が残っていません（または文法パックがインストールされていません）。"
+          }
+        }
+      }
+    },
+    "No grammar or vocabulary links on the missed items." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間違えた問題には、文法や語彙のリンクがありません。"
+          }
+        }
+      }
+    },
+    "No interview banks" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "面接用の問題がありません"
+          }
+        }
+      }
+    },
+    "No lessons available. Keep reviewing — new items unlock as earlier ones reach Guru." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今はレッスンがありません。復習を続けると、前の項目がGuruになるたびに新しい項目が解放されます。"
+          }
+        }
+      }
+    },
+    "No matches" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致する項目はありません"
+          }
+        }
+      }
+    },
+    "No media open" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メディアが開かれていません"
+          }
+        }
+      }
+    },
+    "No model rated this interview. Tick every statement that is true of how you spoke; the level is the highest one whose statements (and every lower level's) you ticked." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この面接はモデルで評価されていません。自分の話し方に当てはまる項目にすべてチェックを入れてください。そのレベルと、それより下のすべてのレベルの項目にチェックが入った最も高いレベルが評価になります。"
+          }
+        }
+      }
+    },
+    "No models of this kind are listed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この種類のモデルはリストにありません。"
+          }
+        }
+      }
+    },
+    "No pairs of this kind in the installed pack." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インストールされているパックには、この種類のペアがありません。"
+          }
+        }
+      }
+    },
+    "No reviews due right now." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今は復習がありません。"
+          }
+        }
+      }
+    },
+    "No transcript stored." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字起こしは保存されていません。"
+          }
+        }
+      }
+    },
+    "No word lists yet. Add words from the dictionary, or import an imiwa list from Me → Import." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語リストはまだありません。辞書から単語を追加するか、マイページ →「インポート」からimiwaのリストを取り込んでください。"
+          }
+        }
+      }
+    },
+    "None" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "なし"
+          }
+        }
+      }
+    },
+    "None imported." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インポートしたバンクはありません。"
+          }
+        }
+      }
+    },
+    "Not answered" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未回答"
+          }
+        }
+      }
+    },
+    "Not enough correct answers at any level for an estimate" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どのレベルでも正解数が足りず、推定できません"
+          }
+        }
+      }
+    },
+    "Not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "見つかりません"
+          }
+        }
+      }
+    },
+    "Not quite" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "惜しい"
+          }
+        }
+      }
+    },
+    "Not quite — try again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "惜しい。もう一度書いてみましょう"
+          }
+        }
+      }
+    },
+    "Not rated" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "評価なし"
+          }
+        }
+      }
+    },
+    "Not started" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未着手"
+          }
+        }
+      }
+    },
+    "Not started yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだ始めていません。"
+          }
+        }
+      }
+    },
+    "Not yet" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだ"
+          }
+        }
+      }
+    },
+    "Not yet: below the pass mark or a sectional minimum" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不合格：合格点または基準点に届いていません"
+          }
+        }
+      }
+    },
+    "Nothing was said." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "発話がありませんでした。"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "OPI simulator" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPIシミュレーター"
+          }
+        }
+      }
+    },
+    "On" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音読み"
+          }
+        }
+      }
+    },
+    "Open" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開く"
+          }
+        }
+      }
+    },
+    "Open in history" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴で開く"
+          }
+        }
+      }
+    },
+    "Open media" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メディアを開く"
+          }
+        }
+      }
+    },
+    "Open role-play" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロールプレイを開く"
+          }
+        }
+      }
+    },
+    "Order" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "並べ替え"
+          }
+        }
+      }
+    },
+    "Overall score" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "総合スコア"
+          }
+        }
+      }
+    },
+    "Partial test: scaled scores are a linear approximation over only the sections taken." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部のみの受験：尺度得点は受験したセクションだけによる線形の近似値です。"
+          }
+        }
+      }
+    },
+    "Pass (every section met its minimum)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合格（すべての得点区分で基準点を満たしました）"
+          }
+        }
+      }
+    },
+    "Pass a JLPT level" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JLPTに合格する"
+          }
+        }
+      }
+    },
+    "Pass mark" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合格点"
+          }
+        }
+      }
+    },
+    "Passage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本文"
+          }
+        }
+      }
+    },
+    "Passed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合格済み"
+          }
+        }
+      }
+    },
+    "Passphrase" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスフレーズ"
+          }
+        }
+      }
+    },
+    "Password" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワード"
+          }
+        }
+      }
+    },
+    "Paste" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ペースト"
+          }
+        }
+      }
+    },
+    "Paste Japanese text" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語のテキストを貼り付け"
+          }
+        }
+      }
+    },
+    "Paste a Personal Access Token (WaniKani → Settings → API tokens). It's kept in the Keychain and only sent to api.wanikani.com. Progress maps onto the kanji path; mnemonics are never copied." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パーソナルアクセストークンを貼り付けてください（WaniKani →「Settings」→「API tokens」）。トークンはキーチェーンに保存され、api.wanikani.com にだけ送信されます。進捗は漢字パスに反映され、覚え方の文章はコピーされません。"
+          }
+        }
+      }
+    },
+    "Paste text, add a web article or EPUB, or pick a public-domain book from Aozora Bunko." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テキストを貼り付けるか、Web記事やEPUBを追加するか、青空文庫からパブリックドメインの本を選んでください。"
+          }
+        }
+      }
+    },
+    "Pick radicals to find a kanji" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部首を選んで漢字を探す"
+          }
+        }
+      }
+    },
+    "Pitch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセント"
+          }
+        }
+      }
+    },
+    "Pitch accent" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセント"
+          }
+        }
+      }
+    },
+    "Pitch accent %d" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセント %d"
+          }
+        }
+      }
+    },
+    "Pitch accent (word by word)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセント（単語ごと）"
+          }
+        }
+      }
+    },
+    "Pitch accent by word" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語ごとのアクセント"
+          }
+        }
+      }
+    },
+    "Pitch pattern matches" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセントの型が一致しています"
+          }
+        }
+      }
+    },
+    "Play" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生"
+          }
+        }
+      }
+    },
+    "Play again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度再生"
+          }
+        }
+      }
+    },
+    "Play audio" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声を再生"
+          }
+        }
+      }
+    },
+    "Play dialogue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会話を再生"
+          }
+        }
+      }
+    },
+    "Play line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この行を再生"
+          }
+        }
+      }
+    },
+    "Play or pause" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生／一時停止"
+          }
+        }
+      }
+    },
+    "Playing…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生中…"
+          }
+        }
+      }
+    },
+    "Plays one of the two words." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2つの単語のどちらかを再生します。"
+          }
+        }
+      }
+    },
+    "Practice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "練習"
+          }
+        }
+      }
+    },
+    "Practice estimate" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "練習用の推定"
+          }
+        }
+      }
+    },
+    "Practice interview" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "練習用の面接"
+          }
+        }
+      }
+    },
+    "Practice pack not installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "練習パックがインストールされていません"
+          }
+        }
+      }
+    },
+    "Preparing dictionary…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "辞書を準備しています…"
+          }
+        }
+      }
+    },
+    "Preparing…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "準備中…"
+          }
+        }
+      }
+    },
+    "Previous" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前へ"
+          }
+        }
+      }
+    },
+    "Previous line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前の行"
+          }
+        }
+      }
+    },
+    "Progress" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "進捗"
+          }
+        }
+      }
+    },
+    "Pronunciation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "発音"
+          }
+        }
+      }
+    },
+    "Pronunciation check" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "発音チェック"
+          }
+        }
+      }
+    },
+    "Provisional ≈ ILR %@: too few items for a firm estimate" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暫定 ≈ ILR %@：確かな推定には問題数が足りません"
+          }
+        }
+      }
+    },
+    "Question %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題%lld"
+          }
+        }
+      }
+    },
+    "Question grid" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "問題一覧"
+          }
+        }
+      }
+    },
+    "Questions" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設問"
+          }
+        }
+      }
+    },
+    "Quick kanji check (%lld/%lld)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字チェック（%1$lld/%2$lld）"
+          }
+        }
+      }
+    },
+    "Quit" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中断"
+          }
+        }
+      }
+    },
+    "Quit without saving" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存せずに中断"
+          }
+        }
+      }
+    },
+    "Quit without scoring?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "採点せずに中断しますか？"
+          }
+        }
+      }
+    },
+    "Quiz · %lld left" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズ・残り%lld問"
+          }
+        }
+      }
+    },
+    "Radical search" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部首検索"
+          }
+        }
+      }
+    },
+    "Radicals" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部首"
+          }
+        }
+      }
+    },
+    "Rate yourself" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自己評価"
+          }
+        }
+      }
+    },
+    "Rating" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "評価"
+          }
+        }
+      }
+    },
+    "Rating the interview…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "面接を評価しています…"
+          }
+        }
+      }
+    },
+    "Read a web page" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webページを読む"
+          }
+        }
+      }
+    },
+    "Read aloud" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み上げ"
+          }
+        }
+      }
+    },
+    "Read, listen and speak" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読む・聞く・話す"
+          }
+        }
+      }
+    },
+    "Reading" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読解"
+          }
+        }
+      }
+    },
+    "Readings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み"
+          }
+        }
+      }
+    },
+    "Recognized text" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "認識されたテキスト"
+          }
+        }
+      }
+    },
+    "Recommended" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おすすめ"
+          }
+        }
+      }
+    },
+    "Record" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音"
+          }
+        }
+      }
+    },
+    "Recordings stay on this device unless you choose your own Whisper server. If the system recognizer can't work offline for Japanese, Tsumugi tells you instead of using Apple's servers." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のWhisperサーバーを選ばない限り、録音はこの端末から出ません。システムの音声認識が日本語をオフラインで処理できない場合、TsumugiはAppleのサーバーを使わずにその旨をお知らせします。"
+          }
+        }
+      }
+    },
+    "Recording… tap Stop when you're done." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音中…終わったら「停止」をタップしてください。"
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
+          }
+        }
+      }
+    },
+    "Remove key" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーを削除"
+          }
+        }
+      }
+    },
+    "Repeat the question" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "質問をもう一度聞く"
+          }
+        }
+      }
+    },
+    "Reset" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット"
+          }
+        }
+      }
+    },
+    "Restart" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "やり直す"
+          }
+        }
+      }
+    },
+    "Results" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "結果"
+          }
+        }
+      }
+    },
+    "Review" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "振り返り"
+          }
+        }
+      }
+    },
+    "Review activity over the last %lld days" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "過去%lld日間の復習の記録"
+          }
+        }
+      }
+    },
+    "Review answers" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解答を確認"
+          }
+        }
+      }
+    },
+    "Reviews" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習"
+          }
+        }
+      }
+    },
+    "Right shape, wrong place" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "形は合っていますが位置が違います"
+          }
+        }
+      }
+    },
+    "Role-play scenarios" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロールプレイのシナリオ"
+          }
+        }
+      }
+    },
+    "Role-plays" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロールプレイ"
+          }
+        }
+      }
+    },
+    "Role-plays and the OPI simulator still work: they follow scripted turns and question banks." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロールプレイとOPIシミュレーターは引き続き使えます。スクリプトと問題バンクに沿って進みます。"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
+    },
+    "Save story" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ストーリーを保存"
+          }
+        }
+      }
+    },
+    "Save to history" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴に保存"
+          }
+        }
+      }
+    },
+    "Saved" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存済み"
+          }
+        }
+      }
+    },
+    "Saved to your exam history." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "試験の履歴に保存しました。"
+          }
+        }
+      }
+    },
+    "Say it again" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度言う"
+          }
+        }
+      }
+    },
+    "Scaled scores" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "得点（尺度得点）"
+          }
+        }
+      }
+    },
+    "Scaled scores use a documented linear approximation, not the JLPT's equating." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尺度得点は公開された線形近似によるもので、JLPTの等化処理ではありません。"
+          }
+        }
+      }
+    },
+    "Scan text" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テキストをスキャン"
+          }
+        }
+      }
+    },
+    "Scan with camera" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラでスキャン"
+          }
+        }
+      }
+    },
+    "Scenario unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シナリオを利用できません"
+          }
+        }
+      }
+    },
+    "Scheduling" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スケジュール"
+          }
+        }
+      }
+    },
+    "Score: %lld / %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スコア：%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Scoring…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "採点中…"
+          }
+        }
+      }
+    },
+    "Scripted mode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スクリプトモード"
+          }
+        }
+      }
+    },
+    "Search dictionary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "辞書を検索"
+          }
+        }
+      }
+    },
+    "Send" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "送信"
+          }
+        }
+      }
+    },
+    "Server URL" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーURL"
+          }
+        }
+      }
+    },
+    "Session complete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セッション完了"
+          }
+        }
+      }
+    },
+    "Session progress" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セッションの進み具合"
+          }
+        }
+      }
+    },
+    "Set up AI" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIを設定"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    },
+    "Shadow" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャドーイング"
+          }
+        }
+      }
+    },
+    "Share exported deck" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出したデッキを共有"
+          }
+        }
+      }
+    },
+    "Shop, station, doctor…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "店・駅・病院…"
+          }
+        }
+      }
+    },
+    "Short vs. long vowel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "短母音と長母音"
+          }
+        }
+      }
+    },
+    "Show English" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語を表示"
+          }
+        }
+      }
+    },
+    "Show answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答えを見る"
+          }
+        }
+      }
+    },
+    "Show template" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お手本を表示"
+          }
+        }
+      }
+    },
+    "Sign in" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サインイン"
+          }
+        }
+      }
+    },
+    "Sign out" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サインアウト"
+          }
+        }
+      }
+    },
+    "Single vs. double consonant (っ)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "促音の有無（っ）"
+          }
+        }
+      }
+    },
+    "Skip" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
+          }
+        }
+      }
+    },
+    "Skip — start from level 1" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップしてレベル1から始める"
+          }
+        }
+      }
+    },
+    "Sounded flat; try a clearer rise and fall" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平板に聞こえました。上がり下がりをはっきりさせてみましょう"
+          }
+        }
+      }
+    },
+    "Speak" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "話す"
+          }
+        }
+      }
+    },
+    "Speaking" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スピーキング"
+          }
+        }
+      }
+    },
+    "Speaking rate %@ morae/s · %lld long pauses" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "話す速さ 毎秒%1$@拍・長いポーズ%2$lld回"
+          }
+        }
+      }
+    },
+    "Speaking session" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スピーキングセッション"
+          }
+        }
+      }
+    },
+    "Speech recognition" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声認識"
+          }
+        }
+      }
+    },
+    "Speech to text" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声認識"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始"
+          }
+        }
+      }
+    },
+    "Start interview" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "面接を始める"
+          }
+        }
+      }
+    },
+    "Start learning" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学習を始める"
+          }
+        }
+      }
+    },
+    "Start quiz" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズを始める"
+          }
+        }
+      }
+    },
+    "Starting level (ILR)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始レベル（ILR）"
+          }
+        }
+      }
+    },
+    "Starts recording. Tap again to stop." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音を開始します。もう一度タップすると停止します。"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状態"
+          }
+        }
+      }
+    },
+    "Step %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ステップ%lld"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止"
+          }
+        }
+      }
+    },
+    "Stops recording and checks what you said." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音を停止して、話した内容をチェックします。"
+          }
+        }
+      }
+    },
+    "Streak: %d days (longest %d)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連続学習：%1$d日（最長%2$d日）"
+          }
+        }
+      }
+    },
+    "Strengths" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強み"
+          }
+        }
+      }
+    },
+    "Stroke order, %lld strokes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "筆順、%lld画"
+          }
+        }
+      }
+    },
+    "Strokes: %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画数：%lld"
+          }
+        }
+      }
+    },
+    "Submit" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提出"
+          }
+        }
+      }
+    },
+    "Submit and see results" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提出して結果を見る"
+          }
+        }
+      }
+    },
+    "Submit the test" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テストを提出"
+          }
+        }
+      }
+    },
+    "Subtitles hidden" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "字幕は非表示"
+          }
+        }
+      }
+    },
+    "Sync" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期"
+          }
+        }
+      }
+    },
+    "Sync keeps your reviews, notes and lists in step across devices. It's optional; run your own server with `docker compose up` from the project's server/ folder, or use a hosted one." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期を使うと、復習・メモ・リストを複数の端末でそろえられます。同期は任意です。プロジェクトの server/ フォルダで `docker compose up` を実行して自分のサーバーを立てるか、ホスト型のサーバーを使ってください。"
+          }
+        }
+      }
+    },
+    "Sync now" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今すぐ同期"
+          }
+        }
+      }
+    },
+    "Tap the pieces in order" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パーツを順番にタップしてください"
+          }
+        }
+      }
+    },
+    "Tap to replay" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップで再生"
+          }
+        }
+      }
+    },
+    "Text is recognized on your device. Tap a line to look it up." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字の認識はこの端末上で行われます。行をタップすると辞書で調べられます。"
+          }
+        }
+      }
+    },
+    "Text to speech" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声合成"
+          }
+        }
+      }
+    },
+    "That was %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解は「%@」でした"
+          }
+        }
+      }
+    },
+    "The OPI simulator needs the practice pack's scripted interview banks. Build it with `uv run packs/build_practice.py` in tools/ and rebuild the app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPIシミュレーターには練習パックの面接用スクリプトが必要です。tools/ で `uv run packs/build_practice.py` を実行し、アプリをビルドし直してください。"
+          }
+        }
+      }
+    },
+    "The audio plays once, as on the real test." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本番と同じく、音声は1回だけ流れます。"
+          }
+        }
+      }
+    },
+    "The drop is in a different place" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下がる位置が違います"
+          }
+        }
+      }
+    },
+    "The exam pack isn't installed, so JLPT forms can't be built. Build it with `uv run packs/build_exam.py` in tools/, or import your own bank." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "試験パックがインストールされていないため、JLPTの問題を作成できません。tools/ で `uv run packs/build_exam.py` を実行するか、自分の問題バンクをインポートしてください。"
+          }
+        }
+      }
+    },
+    "The grammar pack isn't installed in this build." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビルドには文法パックが含まれていません。"
+          }
+        }
+      }
+    },
+    "The installed banks have no checklist." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インストールされている問題にはチェックリストがありません。"
+          }
+        }
+      }
+    },
+    "The interviewer is speaking…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "面接官が話しています…"
+          }
+        }
+      }
+    },
+    "The interviewer is thinking…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "面接官が考えています…"
+          }
+        }
+      }
+    },
+    "The items of this attempt are no longer installed (the bank may have been removed)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この受験の問題はインストールされていません（バンクが削除された可能性があります）。"
+          }
+        }
+      }
+    },
+    "The share of reviews you aim to get right. Higher means shorter intervals and more reviews." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復習で正解したい割合です。高くするほど間隔が短くなり、復習が増えます。"
+          }
+        }
+      }
+    },
+    "There aren't enough items in the bank for that test yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このテストに必要な問題がまだバンクに足りません。"
+          }
+        }
+      }
+    },
+    "This build has no dictionary pack. Build it with `uv run packs/build_all.py` in tools/ and rebuild the app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビルドには辞書パックが含まれていません。tools/ で `uv run packs/build_all.py` を実行してパックを作成し、アプリをビルドし直してください。"
+          }
+        }
+      }
+    },
+    "This build has no kanji-path pack." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビルドには漢字パスのパックが含まれていません。"
+          }
+        }
+      }
+    },
+    "This build has no speaking & listening pack. Build it with `uv run packs/build_practice.py` in tools/ and rebuild the app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビルドにはスピーキング・リスニング用のパックが含まれていません。tools/ で `uv run packs/build_practice.py` を実行し、アプリをビルドし直してください。"
+          }
+        }
+      }
+    },
+    "This device may not have enough memory for it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この端末ではメモリが足りない可能性があります。"
+          }
+        }
+      }
+    },
+    "This dialogue has no comprehension questions." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この会話には内容理解の設問がありません。"
+          }
+        }
+      }
+    },
+    "This dialogue has no gap-fill lines." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この会話には穴埋めの行がありません。"
+          }
+        }
+      }
+    },
+    "This is heuristic feedback from speech recognition and a pitch tracker, not a phoneme-level assessment. Accents come from the dictionary pack when installed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これは音声認識とピッチ解析による目安のフィードバックで、音素単位の評価ではありません。アクセントは辞書パックがあればそこから取得します。"
+          }
+        }
+      }
+    },
+    "This scenario isn't in the installed practice pack." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このシナリオはインストールされている練習パックに含まれていません。"
+          }
+        }
+      }
+    },
+    "This week: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今週の目標：%@"
+          }
+        }
+      }
+    },
+    "Title or author" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作品名または著者名"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日"
+          }
+        }
+      }
+    },
+    "Today's plan is sized to this. You can change it any day." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日のプランはこの時間に合わせて組まれます。いつでも変更できます。"
+          }
+        }
+      }
+    },
+    "Too short" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "短すぎます"
+          }
+        }
+      }
+    },
+    "Total" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合計"
+          }
+        }
+      }
+    },
+    "Train your ear" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "耳を鍛える"
+          }
+        }
+      }
+    },
+    "Transcript" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字起こし"
+          }
+        }
+      }
+    },
+    "Turn on encryption" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暗号化をオンにする"
+          }
+        }
+      }
+    },
+    "Type in romaji; it turns into kana as you type." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローマ字で入力すると、かなに変換されます。"
+          }
+        }
+      }
+    },
+    "Type instead of speaking" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "話す代わりに入力する"
+          }
+        }
+      }
+    },
+    "Type or paste a Japanese sentence, listen to it, then record yourself saying it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語の文を入力または貼り付けて、音声を聞いてから、自分で言って録音してください。"
+          }
+        }
+      }
+    },
+    "Type or speak your reply" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返事を入力するか話してください"
+          }
+        }
+      }
+    },
+    "Type the English meaning, then press Done." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語の意味を入力して、完了を押してください。"
+          }
+        }
+      }
+    },
+    "Type your answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回答を入力"
+          }
+        }
+      }
+    },
+    "Undo" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "元に戻す"
+          }
+        }
+      }
+    },
+    "Undo stroke" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1画戻す"
+          }
+        }
+      }
+    },
+    "Unknown words" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "知らない単語"
+          }
+        }
+      }
+    },
+    "Unlock" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロック解除"
+          }
+        }
+      }
+    },
+    "Unofficial practice; not affiliated with DLI, ACTFL or JLPT. Ratings are estimates." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非公式の練習用です。DLI、ACTFL、JLPTとは関係ありません。評価は推定値です。"
+          }
+        }
+      }
+    },
+    "Unofficial practice; not affiliated with the JLPT (JEES/Japan Foundation), DLI or ACTFL. Scores and ratings are estimates." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非公式の練習用です。JLPT（日本国際教育支援協会・国際交流基金）、DLI、ACTFLとは関係ありません。得点や評価は推定値です。"
+          }
+        }
+      }
+    },
+    "Untimed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時間制限なし"
+          }
+        }
+      }
+    },
+    "Unvoiced vs. voiced" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清音と濁音"
+          }
+        }
+      }
+    },
+    "Use this model" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このモデルを使う"
+          }
+        }
+      }
+    },
+    "Used in" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使われている単語"
+          }
+        }
+      }
+    },
+    "VOICEVOX is a free engine you run yourself; check each voice's terms of use. If it can't be reached, the system voice is used. Two-voice dialogues always use system voices." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VOICEVOXは自分で動かす無料のエンジンです。各音声の利用規約を確認してください。接続できない場合はシステムの音声を使います。2人の会話では常にシステムの音声を使います。"
+          }
+        }
+      }
+    },
+    "Vacation mode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "休暇モード"
+          }
+        }
+      }
+    },
+    "Vocabulary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語彙"
+          }
+        }
+      }
+    },
+    "Voice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声"
+          }
+        }
+      }
+    },
+    "Voicing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清濁"
+          }
+        }
+      }
+    },
+    "Watch out" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意点"
+          }
+        }
+      }
+    },
+    "Welcome to Tsumugi" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tsumugiへようこそ"
+          }
+        }
+      }
+    },
+    "What are you working towards?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目標は何ですか？"
+          }
+        }
+      }
+    },
+    "Which word did you hear?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どちらの単語が聞こえましたか？"
+          }
+        }
+      }
+    },
+    "With a passphrase, the server stores only ciphertext it can't read. You'll need it on every device; it can't be recovered. Encrypted accounts don't appear on leaderboards." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスフレーズを設定すると、サーバーには読めない暗号文だけが保存されます。すべての端末で必要になり、忘れると復元できません。暗号化したアカウントはランキングに表示されません。"
+          }
+        }
+      }
+    },
+    "With or without ん" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撥音の有無（ん）"
+          }
+        }
+      }
+    },
+    "Without a model the partner follows the scenario's script and suggests sample answers." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モデルがない場合、相手はシナリオのスクリプトに沿って話し、回答例を提案します。"
+          }
+        }
+      }
+    },
+    "Without a model, questions come from scripted banks per level and you rate yourself with a checklist at the end." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モデルがない場合、質問はレベルごとのスクリプトから出題され、最後にチェックリストで自己評価します。"
+          }
+        }
+      }
+    },
+    "Word" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語"
+          }
+        }
+      }
+    },
+    "Word list" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語リスト"
+          }
+        }
+      }
+    },
+    "Word lists" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語リスト"
+          }
+        }
+      }
+    },
+    "Words" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語"
+          }
+        }
+      }
+    },
+    "Words in this sentence" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この文の単語"
+          }
+        }
+      }
+    },
+    "Work on" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強化したい分野"
+          }
+        }
+      }
+    },
+    "Wrap up" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切り上げる"
+          }
+        }
+      }
+    },
+    "Write" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書く"
+          }
+        }
+      }
+    },
+    "Write your own mnemonic from the parts above — the one you make up sticks best." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上の部品を使って自分だけの覚え方を書きましょう。自分で考えたものがいちばん記憶に残ります。"
+          }
+        }
+      }
+    },
+    "Writing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き取り"
+          }
+        }
+      }
+    },
+    "Writing area" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き取りエリア"
+          }
+        }
+      }
+    },
+    "Writing practice done." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き取り練習が終わりました。"
+          }
+        }
+      }
+    },
+    "Writing practice uses the kanji of your current path level. It appears here once the kanji path pack is installed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き取り練習では、現在の漢字パスのレベルの漢字を使います。漢字パスのパックをインストールするとここに表示されます。"
+          }
+        }
+      }
+    },
+    "Wrong direction" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書く向きが違います"
+          }
+        }
+      }
+    },
+    "Wrong stroke order" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "筆順が違います"
+          }
+        }
+      }
+    },
+    "You" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなた"
+          }
+        }
+      }
+    },
+    "You answered: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの解答：%@"
+          }
+        }
+      }
+    },
+    "You can't go back to it afterwards." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了後は戻れません。"
+          }
+        }
+      }
+    },
+    "You said" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの発話"
+          }
+        }
+      }
+    },
+    "You're set" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "準備ができました"
+          }
+        }
+      }
+    },
+    "Your banks" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インポートしたバンク"
+          }
+        }
+      }
+    },
+    "Your choice, wrong" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの選択（不正解）"
+          }
+        }
+      }
+    },
+    "Your lists" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のリスト"
+          }
+        }
+      }
+    },
+    "Your videos + subtitles" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分の動画と字幕"
+          }
+        }
+      }
+    },
+    "imiwa? exports or any CSV/TSV of word, reading, meaning." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "imiwa?の書き出しファイル、または単語・読み・意味のCSV/TSVに対応しています。"
+          }
+        }
+      }
+    },
+    "quiz.reading" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading"
+          }
+        }
+      }
+    },
+    "🔥 %d-day streak · %d answers today" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 %1$d日連続・今日の回答%2$d件"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

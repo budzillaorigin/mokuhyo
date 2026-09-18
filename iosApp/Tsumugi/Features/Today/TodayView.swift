@@ -13,7 +13,9 @@ struct TodayView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
-                Text("今日").font(.japanese(size: 40, weight: .semibold, relativeTo: .largeTitle))
+                Text(verbatim: "今日").font(.japanese(size: 40, weight: .semibold, relativeTo: .largeTitle))
+                    .accessibilityAddTraits(.isHeader)
+                    .japaneseSpeech()
                 if let stats {
                     Text("🔥 \(stats.streak.current)-day streak · \(stats.reviewsToday) answers today").font(.headline)
                 }
@@ -59,6 +61,7 @@ struct TodayView: View {
     private func blockRow(_ index: Int, _ block: TodayBlock) -> some View {
         let row = HStack {
             Text(block.done ? "✓" : "\(index + 1)").font(.title3.weight(.semibold)).frame(width: 30)
+                .accessibilityLabel(block.done ? Text("Done") : Text("Step \(index + 1)"))
             VStack(alignment: .leading) {
                 Text(block.title).font(.headline)
                 Text(block.detail).font(.caption).foregroundStyle(.secondary)
@@ -68,6 +71,7 @@ struct TodayView: View {
         }
         .padding()
         .background(.quaternary.opacity(0.4), in: RoundedRectangle(cornerRadius: 12))
+        .accessibilityElement(children: .combine)
 
         if let route = route(for: block), block.count > 0 {
             NavigationLink(value: route) { row }.buttonStyle(.plain)

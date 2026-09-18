@@ -79,6 +79,7 @@ struct SettingsView: View {
                         app.graph.reloadScheduler()
                     }
                 })
+                .accessibilityLabel(Text("Desired retention"))
                 Text("Desired retention: \(Int(retention * 100))%")
             } header: {
                 Text("Scheduling")

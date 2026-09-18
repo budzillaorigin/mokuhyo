@@ -18,19 +18,21 @@ struct OnboardingView: View {
             VStack(alignment: .leading, spacing: 16) {
                 switch step {
                 case 0:
-                    Text("紡ぎ").font(.japanese(size: 56, weight: .semibold, relativeTo: .largeTitle))
+                    Text(verbatim: "紡ぎ").font(.japanese(size: 56, weight: .semibold, relativeTo: .largeTitle)).japaneseSpeech()
                     Text("Welcome to Tsumugi").font(.title2.weight(.semibold))
                     Text("Kanji, vocabulary, grammar, reading and speaking in one offline app. Nothing needs an account or a subscription.")
                     Text("What are you working towards?").font(.headline)
                     ForEach([LearningGoal.jlpt, .dlpt, .general], id: \.self) { g in
                         Button { goal = g } label: {
                             HStack {
-                                Text(g.label)
+                                // Shared-core label used as the localization key (Localizable.xcstrings).
+                                Text(LocalizedStringKey(g.label))
                                 Spacer()
-                                if goal == g { Image(systemName: "checkmark") }
+                                if goal == g { Image(systemName: "checkmark").accessibilityHidden(true) }
                             }
                         }
                         .buttonStyle(.bordered)
+                        .accessibilityAddTraits(goal == g ? .isSelected : [])
                     }
                     Button("Next") { step = 1 }.buttonStyle(.borderedProminent)
                 case 1:
@@ -46,7 +48,7 @@ struct OnboardingView: View {
                         let q = questions[index]
                         Text("Quick kanji check (\(index + 1)/\(questions.count))").font(.headline)
                         Text("Do you know this kanji's meaning and a reading?")
-                        Text(q.item.display).font(.japanese(size: 96, relativeTo: .largeTitle)).frame(maxWidth: .infinity)
+                        Text(q.item.display).font(.japanese(size: 96, relativeTo: .largeTitle)).frame(maxWidth: .infinity).japaneseSpeech()
                         HStack {
                             Button("I know it") { answers[q] = true; index += 1 }.buttonStyle(.borderedProminent)
                             Button("Not yet") { answers[q] = false; index += 1 }.buttonStyle(.bordered)

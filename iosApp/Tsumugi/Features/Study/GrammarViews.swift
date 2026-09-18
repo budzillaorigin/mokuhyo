@@ -3,7 +3,7 @@ import SwiftUI
 
 /// CLAUDE.md rule 10: anything an LLM wrote carries this badge until a human verifies it.
 struct AiBadge: View {
-    var body: some View { TagView("AI-generated · unreviewed") }
+    var body: some View { TagView(String(localized: "AI-generated · unreviewed")) }
 }
 
 struct GrammarLevelsView: View {
@@ -43,7 +43,7 @@ struct GrammarLevelView: View {
             NavigationLink(value: Route.grammarPoint(p.point.id)) {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(p.point.title).font(.japanese(size: 18))
+                        Text(p.point.title).font(.japanese(size: 18)).japaneseSpeech()
                         Text(p.point.meaning).font(.caption).foregroundStyle(.secondary)
                     }
                     Spacer()
@@ -96,12 +96,14 @@ struct GrammarPointContent: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(point.title).font(.japanese(size: 34, weight: .semibold, relativeTo: .largeTitle))
+                .japaneseSpeech()
+                .accessibilityAddTraits(.isHeader)
             HStack {
                 TagView("N\(point.jlpt)")
                 if point.source != .verified { AiBadge() }
             }
             Text(point.meaning).font(.headline)
-            Text(point.structure).font(.japanese(size: 17)).foregroundStyle(.tint)
+            Text(point.structure).font(.japanese(size: 17)).foregroundStyle(.tint).japaneseSpeech()
             Text(point.nuance)
             if !point.mistakes.isEmpty {
                 SectionHeader("Watch out")
@@ -112,6 +114,7 @@ struct GrammarPointContent: View {
                 VStack(alignment: .leading, spacing: 2) {
                     (Text(ex.before) + Text(ex.answer).bold().foregroundColor(.accentColor) + Text(ex.after))
                         .font(.japanese(size: 18))
+                        .japaneseSpeech()
                     HStack {
                         Text(ex.english).font(.caption).foregroundStyle(.secondary)
                         if ex.isAiGenerated { AiBadge() }
@@ -194,7 +197,7 @@ struct BuildAnswer: View {
             FlowLayout(spacing: 8) {
                 ForEach(Array(exercise.chunks.enumerated()), id: \.offset) { i, chunk in
                     if !picked.contains(i) {
-                        Button(chunk) { picked.append(i) }.buttonStyle(.bordered).font(.japanese(size: 18))
+                        Button(chunk) { picked.append(i) }.buttonStyle(.bordered).font(.japanese(size: 18)).japaneseSpeech()
                     }
                 }
             }

@@ -6,6 +6,9 @@ import SwiftUI
 struct PronunciationPanel: View {
     let report: PronunciationReport
 
+    /// The big overall score follows Dynamic Type.
+    @ScaledMetric(relativeTo: .largeTitle) private var scoreSize: CGFloat = 44
+
     private var subScores: [(label: String, value: Int)] {
         let order = ["mora", "pitch", "fluency"]
         let keys = report.subScores.keys.sorted { (order.firstIndex(of: $0) ?? 99) < (order.firstIndex(of: $1) ?? 99) }
@@ -15,9 +18,12 @@ struct PronunciationPanel: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .firstTextBaseline) {
-                Text("\(report.composite)").font(.system(size: 44, weight: .bold, design: .rounded))
+                Text("\(report.composite)").font(.system(size: scoreSize, weight: .bold, design: .rounded))
                 Text("/ 100 overall").font(.subheadline).foregroundStyle(.secondary)
             }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text("Overall score"))
+            .accessibilityValue(Text("\(Int(report.composite)) out of 100"))
             ForEach(subScores, id: \.label) { s in
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
@@ -27,14 +33,19 @@ struct PronunciationPanel: View {
                     }
                     ProgressView(value: Double(s.value), total: 100)
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(Text(s.label))
+                .accessibilityValue(Text("\(s.value) out of 100"))
             }
-            Text(String(format: "Speaking rate %.1f morae/s · %ld long pauses", report.rateMoraPerSec, report.pauses.count))
+            let rate = String(format: "%.1f", report.rateMoraPerSec)
+            Text("Speaking rate \(rate) morae/s · \(report.pauses.count) long pauses")
                 .font(.caption).foregroundStyle(.secondary)
             if !report.words.isEmpty {
                 Text("Pitch accent by word").font(.subheadline.weight(.semibold)).padding(.top, 4)
                 ForEach(Array(report.words.enumerated()), id: \.offset) { _, w in
                     HStack(alignment: .top) {
                         Image(systemName: Self.icon(w.verdict)).foregroundStyle(Self.color(w.verdict))
+                            .accessibilityHidden(true)
                         VStack(alignment: .leading, spacing: 1) {
                             Text("Expected  \(w.expectedMarks)").font(.japanese(size: 16))
                             Text("Heard  \(w.observedMarks.isEmpty ? "—" : w.observedMarks)").font(.japanese(size: 16)).foregroundStyle(.secondary)
@@ -53,20 +64,20 @@ struct PronunciationPanel: View {
 
     static func label(_ key: String) -> String {
         switch key {
-        case "mora": "Mora accuracy (what the recognizer heard)"
-        case "pitch": "Pitch accent (word by word)"
-        case "fluency": "Fluency (rate and pauses)"
+        case "mora": String(localized: "Mora accuracy (what the recognizer heard)")
+        case "pitch": String(localized: "Pitch accent (word by word)")
+        case "fluency": String(localized: "Fluency (rate and pauses)")
         default: key.capitalized
         }
     }
 
     static func verdictText(_ v: PitchVerdict) -> String {
         switch v {
-        case .match: "Pitch pattern matches"
-        case .flat: "Sounded flat; try a clearer rise and fall"
-        case .wrongDrop: "The drop is in a different place"
-        case .unclear: "Couldn't tell from the recording"
-        default: "No dictionary accent for this word"
+        case .match: String(localized: "Pitch pattern matches")
+        case .flat: String(localized: "Sounded flat; try a clearer rise and fall")
+        case .wrongDrop: String(localized: "The drop is in a different place")
+        case .unclear: String(localized: "Couldn't tell from the recording")
+        default: String(localized: "No dictionary accent for this word")
         }
     }
 

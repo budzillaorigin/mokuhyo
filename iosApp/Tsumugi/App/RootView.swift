@@ -77,6 +77,18 @@ struct RootView: View {
             TabStack { MeView() }
                 .tabItem { Label("Me", systemImage: "person.crop.circle") }.tag(4)
         }
+        // Text or a link shared with "Read in Tsumugi" opens straight in the reader.
+        .sheet(item: Binding(get: { app.sharedDocument }, set: { app.sharedDocument = $0 })) { doc in
+            TabStack {
+                ReaderView(docId: doc.id)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Close") { app.sharedDocument = nil }
+                        }
+                    }
+            }
+            .environment(app)
+        }
     }
 }
 

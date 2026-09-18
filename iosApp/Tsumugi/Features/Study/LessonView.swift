@@ -74,7 +74,11 @@ struct LessonView: View {
             }
         case .quizzing(let s):
             Text("Quiz · \(Int(s.remaining) + 1) left").font(.caption.weight(.semibold))
-            Text("\(s.question.item.kind.label) · \(s.question.mode == .reading ? "Reading" : "Meaning")")
+            // "quiz.reading" is the kana reading (読み), unlike the "Reading" key used for reading comprehension (読解).
+            let modeLabel = s.question.mode == .reading
+                ? String(localized: "quiz.reading", defaultValue: "Reading")
+                : String(localized: "Meaning")
+            Text(verbatim: "\(s.question.item.kind.label) · \(modeLabel)")
             ItemGlyph(text: s.question.item.display, kind: s.question.item.kind)
             AnswerField(mode: s.question.mode) { model.submit($0) }
                 .id("\(s.question.item.id)-\(s.question.direction)-\(s.remaining)")

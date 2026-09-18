@@ -17,7 +17,7 @@ struct EntryActions: View {
                     Task {
                         _ = try? await app.graph.collection.addToReviews(entry: entry, context: nil)
                         inReviews = true
-                        note = "Added — first review in 10 minutes."
+                        note = String(localized: "Added — first review in 10 minutes.")
                     }
                 }
                 .buttonStyle(.borderedProminent)
@@ -31,7 +31,7 @@ struct EntryActions: View {
             ListPicker { listId in
                 Task {
                     try? await app.graph.collection.addToList(listId: listId, entry: entry.summary())
-                    note = "Added to list."
+                    note = String(localized: "Added to list.")
                 }
                 picking = false
             }

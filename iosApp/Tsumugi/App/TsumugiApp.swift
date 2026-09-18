@@ -12,6 +12,8 @@ struct TsumugiApp: App {
             RootView()
                 .environment(model)
                 .task { await Reminders.requestPermission() }
+                // Text and links shared with "Read in Tsumugi" while the app wasn't running.
+                .task { await model.importSharedItems() }
                 // Free the on-device model under memory pressure; it reloads on next use.
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.didReceiveMemoryWarningNotification)) { _ in
                     let graph = model.graph
@@ -22,6 +24,8 @@ struct TsumugiApp: App {
             if phase == .active {
                 let graph = model.graph
                 Task { try? await graph.syncIfConfigured() }
+                let appModel = model
+                Task { await appModel.importSharedItems() }
             }
             // Whenever the app backgrounds: plan the next "reviews are ready" reminder and refresh the widgets.
             if phase == .background {
@@ -40,6 +44,8 @@ struct TsumugiApp: App {
 @Observable
 final class AppModel {
     let graph = AppGraph(platform: PlatformServices())
+    /// The newest document imported from the share extension; RootView opens it in a reader sheet.
+    var sharedDocument: SharedDocument?
 
     init() {
         // Native engines are platform code; the shared AiService builds models on top of them (tools/models/README.md).
@@ -47,5 +53,11 @@ final class AppModel {
         graph.ai.sttBridge = WhisperBridge()
         // iOS reports a little less than the installed RAM; round to whole GB for the model recommendation.
         graph.ai.deviceRamGb = (Double(ProcessInfo.processInfo.physicalMemory) / 1_073_741_824).rounded()
+    }
+
+    /// Imports items waiting in the share inbox into the reader and opens the newest one.
+    func importSharedItems() async {
+        let ids = await ShareInbox.importPending(graph: graph)
+        if let last = ids.last { sharedDocument = SharedDocument(id: last) }
     }
 }

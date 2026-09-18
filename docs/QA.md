@@ -59,7 +59,15 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] Import a question bank JSON. Bad files list their errors.
 
 ## Accessibility and polish (Phase 8)
-- [ ] Largest Dynamic Type setting: no clipped text on Today, reviews, the dictionary entry page or the exam runner.
-- [ ] VoiceOver: main tabs, the review answer field and exam choices are announced. Japanese is read with a Japanese voice.
+- [ ] Largest Dynamic Type setting (including the Accessibility sizes): no clipped text on Today, reviews, the dictionary entry page or the exam runner. The review grade buttons stack vertically when they don't fit in one row. The pronunciation score and the radical and handwriting candidate strips grow with the text size.
+- [ ] VoiceOver: main tabs, the review answer field and exam choices are announced. The chosen exam answer is announced as "selected", and the question grid says which questions are answered.
+- [ ] VoiceOver reads Japanese with a Japanese voice: dictionary headwords and examples, review prompts, reader words, exam passages and JLPT questions. DLPT questions and answers, which are English, are read with the English voice.
+- [ ] VoiceOver: icon-only buttons (search, furigana, read aloud, play line, media controls, send) have spoken names. The writing canvas accepts strokes with VoiceOver on (direct touch) and announces how many strokes are drawn.
+- [ ] Reduce Motion on: stroke order is shown complete, without animating, and role-play chat jumps to the newest line without scrolling animation.
 - [ ] Dark mode on every screen.
-- [ ] Set the device language to Japanese: the UI shows Japanese strings where translated.
+- [ ] Set the device language (or Settings → Apps → Tsumugi → Language) to Japanese: tabs, titles, buttons, section headers, settings, empty states, the exam/OPI disclaimer and onboarding are in Japanese. Learning content (Japanese examples, English glosses) doesn't change.
+
+## Share extension (Phase 8)
+- [ ] In Safari, Share → Tsumugi on a Japanese article. The sheet says "Saved for Tsumugi". Opening Tsumugi imports the page 🌐 and opens it in the reader.
+- [ ] Select Japanese text in Notes, then Share → Tsumugi. Opening Tsumugi opens it in the reader. This works in airplane mode.
+- [ ] Share a link while offline, then open Tsumugi. The link waits in the inbox and imports on a later launch once online. After three failed tries it is dropped.

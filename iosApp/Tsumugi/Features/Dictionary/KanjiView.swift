@@ -22,7 +22,7 @@ private struct KanjiContent: View {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(alignment: .top, spacing: 16) {
                     if k.strokes.isEmpty {
-                        Text(info.literal).font(.japanese(size: 96, relativeTo: .largeTitle))
+                        Text(info.literal).font(.japanese(size: 96, relativeTo: .largeTitle)).japaneseSpeech()
                     } else {
                         StrokeOrderView(strokes: k.strokes).frame(width: 170, height: 170)
                     }
@@ -58,7 +58,7 @@ private struct KanjiContent: View {
                     ForEach(k.words, id: \.id) { w in
                         NavigationLink(value: Route.entry(w.id)) {
                             HStack(alignment: .firstTextBaseline) {
-                                Text(w.headword).font(.japanese(size: 18)).frame(width: 110, alignment: .leading)
+                                Text(w.headword).font(.japanese(size: 18)).frame(width: 110, alignment: .leading).japaneseSpeech()
                                 VStack(alignment: .leading) {
                                     Text(w.reading).font(.japanese(size: 12)).foregroundStyle(.secondary)
                                     Text(w.glossPreview).font(.subheadline).lineLimit(1)
@@ -77,10 +77,10 @@ private struct KanjiContent: View {
         }
     }
 
-    private func labeled(_ label: String, _ values: [String]) -> some View {
+    private func labeled(_ label: LocalizedStringKey, _ values: [String]) -> some View {
         HStack(alignment: .firstTextBaseline) {
-            Text(label).font(.subheadline).foregroundStyle(.secondary).frame(width: 60, alignment: .leading)
-            Text(values.joined(separator: "、")).font(.japanese(size: 17))
+            Text(label).font(.subheadline).foregroundStyle(.secondary).frame(minWidth: 60, alignment: .leading)
+            Text(values.joined(separator: "、")).font(.japanese(size: 17)).japaneseSpeech()
         }
     }
 }

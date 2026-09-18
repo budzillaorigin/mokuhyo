@@ -62,7 +62,7 @@ private struct MinimalPairsDrill: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 Picker("Kind", selection: $filter) {
-                    ForEach(PairFilter.allCases) { Text($0.rawValue).tag($0) }
+                    ForEach(PairFilter.allCases) { Text(LocalizedStringKey($0.rawValue)).tag($0) }
                 }
                 .pickerStyle(.segmented)
                 if loaded && pairs.isEmpty {
@@ -91,6 +91,7 @@ private struct MinimalPairsDrill: View {
             Label("Play", systemImage: "speaker.wave.2.fill").frame(maxWidth: .infinity)
         }
         .buttonStyle(.borderedProminent)
+        .accessibilityHint(Text("Plays one of the two words."))
         Text("Which word did you hear?").font(.headline)
         HStack(spacing: 12) {
             choice(pair.a, isA: true)
@@ -117,8 +118,8 @@ private struct MinimalPairsDrill: View {
             if ok { right += 1 }
         } label: {
             VStack(spacing: 4) {
-                Text(word.text).font(.japanese(size: 26))
-                Text(word.reading + (word.accent.map { " [\($0)]" } ?? "")).font(.japanese(size: 14))
+                Text(word.text).font(.japanese(size: 26)).japaneseSpeech()
+                Text(word.reading + (word.accent.map { " [\($0)]" } ?? "")).font(.japanese(size: 14)).japaneseSpeech()
                 if answered != nil { Text(word.gloss).font(.caption).lineLimit(2) }
             }
             .frame(maxWidth: .infinity, minHeight: 90)
@@ -152,12 +153,12 @@ private struct MinimalPairsDrill: View {
 
     private static func label(_ c: MinimalPairCategory) -> String {
         switch c {
-        case .length: "Short vs. long vowel"
-        case .gemination: "Single vs. double consonant (っ)"
-        case .voicing: "Unvoiced vs. voiced"
-        case .nasal: "With or without ん"
-        case .pitch: "Pitch accent"
-        default: "Minimal pair"
+        case .length: String(localized: "Short vs. long vowel")
+        case .gemination: String(localized: "Single vs. double consonant (っ)")
+        case .voicing: String(localized: "Unvoiced vs. voiced")
+        case .nasal: String(localized: "With or without ん")
+        case .pitch: String(localized: "Pitch accent")
+        default: String(localized: "Minimal pair")
         }
     }
 }

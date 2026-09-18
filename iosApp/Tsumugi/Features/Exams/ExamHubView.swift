@@ -24,7 +24,9 @@ struct ExamHubView: View {
     @State private var message: String?
     @State private var loading = false
 
-    static let disclaimer = "Unofficial practice; not affiliated with the JLPT (JEES/Japan Foundation), DLI or ACTFL. Scores and ratings are estimates."
+    static var disclaimer: String {
+        String(localized: "Unofficial practice; not affiliated with the JLPT (JEES/Japan Foundation), DLI or ACTFL. Scores and ratings are estimates.")
+    }
 
     var body: some View {
         List {
@@ -169,11 +171,11 @@ struct ExamHubView: View {
         message = nil
         Task {
             guard let session = try? await build(exams) else {
-                message = "Couldn't build that test from the installed items."
+                message = String(localized: "Couldn't build that test from the installed items.")
                 return
             }
             if session.form.isEmpty {
-                message = "There aren't enough items in the bank for that test yet."
+                message = String(localized: "There aren't enough items in the bank for that test yet.")
                 return
             }
             running = RunningExam(session: session)

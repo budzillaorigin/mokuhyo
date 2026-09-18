@@ -11,11 +11,15 @@ How to turn this repository into a TestFlight / App Store build (iOS) and a side
 5. Decide the final name and bundle ID (open decision 1). The placeholders are:
    - `app.tsumugi.ios` (app)
    - `app.tsumugi.ios.widget` (widget)
+   - `app.tsumugi.ios.share` ("Read in Tsumugi" share extension)
    - `group.app.tsumugi` (App Group)
 
-   To change them, edit `PRODUCT_BUNDLE_IDENTIFIER` in `iosApp/Tsumugi.xcodeproj/project.pbxproj`, and the App Group in `iosApp/Tsumugi.entitlements`, `iosApp/TsumugiWidget.entitlements` and `iosApp/Tsumugi/Platform/WidgetSnapshot.swift`.
-6. In App Store Connect, create the app record with that bundle ID, then register the App Group identifier under Certificates, Identifiers & Profiles.
-7. In Xcode, select the project → each target (Tsumugi, TsumugiWidget) → Signing & Capabilities → choose your Team and keep "Automatically manage signing" on.
+   To change them, edit `PRODUCT_BUNDLE_IDENTIFIER` in `iosApp/Tsumugi.xcodeproj/project.pbxproj`, and the App Group in:
+   - `iosApp/Tsumugi.entitlements`, `iosApp/TsumugiWidget.entitlements`, `iosApp/TsumugiShare.entitlements`
+   - `iosApp/Tsumugi/Platform/WidgetSnapshot.swift`, `iosApp/Tsumugi/Platform/ShareInbox.swift`
+   - `iosApp/TsumugiWidget/TsumugiWidget.swift`, `iosApp/TsumugiShare/ShareViewController.swift`
+6. In App Store Connect, create the app record with that bundle ID, then register the App Group identifier under Certificates, Identifiers & Profiles. All three bundle IDs need the App Group capability.
+7. In Xcode, select the project → each target (Tsumugi, TsumugiWidget, TsumugiShare) → Signing & Capabilities → choose your Team and keep "Automatically manage signing" on.
 
 ## 1. Build the content packs
 
@@ -54,8 +58,10 @@ Then do a manual pass on a real device (**Owner**) using [`docs/QA.md`](QA.md). 
 - Loading a model and generating with it (the pinned llama.xcframework has no simulator slice).
 - Camera OCR.
 - Widgets on the home screen.
+- The "Read in Tsumugi" share extension. It needs a signed build with the App Group; unsigned simulator builds have no shared container, so shared items are silently dropped there.
 - Notifications.
 - Memory behaviour with a 1.5B model loaded; watch for memory warnings.
+- VoiceOver, the largest Dynamic Type sizes, Reduce Motion and the Japanese UI (Settings → Apps → Tsumugi → Language, or the device language).
 
 ## 4. Archive and upload
 
@@ -86,18 +92,28 @@ Size audit: in App Store Connect → the build → App Store File Sizes, check t
 
 ## 5. App Store Connect answers (Owner)
 
-- **Encryption (export compliance):** the app uses only standard algorithms: HTTPS, and XChaCha20-Poly1305 / Argon2id for optional end-to-end-encrypted sync. Answer "Yes, uses encryption" → "Only standard encryption algorithms" → exempt. Add `ITSAppUsesNonExemptEncryption = NO` to the Info.plist settings so builds don't ask each time.
+- **Encryption (export compliance):** the app uses only standard algorithms: HTTPS, and XChaCha20-Poly1305 / Argon2id for optional end-to-end-encrypted sync. Answer "Yes, uses encryption" → "Only standard encryption algorithms" → exempt. The app target already sets `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO` (Debug and Release), so uploaded builds don't ask each time.
 - **Privacy nutrition label:**
   - *Without sync*, no data is collected: everything stays on the device.
   - *With sync enabled* (self-hosted or a server the owner runs), declare it as follows. None of it is used for tracking.
     - "User Content: Other User Content" and "Identifiers: User ID", both linked to the user and used for App Functionality.
     - Email if the sync server uses email sign-in.
   - Recordings never leave the device, unless the learner points speech recognition at their own Whisper server.
-- **Usage strings.** Already present:
+- **Privacy manifest.** `iosApp/Tsumugi/PrivacyInfo.xcprivacy` is bundled with the app. It declares no tracking, no tracking domains and no collected data types, because nothing is collected unless the learner turns on self-hosted sync. The nutrition label above covers the sync case. It lists these required-reason APIs:
+
+  | API category | Reason | Why |
+  |---|---|---|
+  | User defaults | `CA92.1` | `@AppStorage` remembers the chosen JLPT level. |
+  | File timestamp | `C617.1` | The Kotlin core (Okio) and SQLite read file metadata inside the app container. |
+  | System boot time | `35F9.1` | Kotlin/Native's monotonic clock (timeouts, elapsed time) uses the system uptime. |
+
+  The widget and the share extension have their own manifests (`TsumugiWidget/PrivacyInfo.xcprivacy`, `TsumugiShare/PrivacyInfo.xcprivacy`) that declare nothing: they only read and write small JSON files in the App Group container. After archiving, check the combined report with Xcode → Organizer → the archive → right-click → Generate Privacy Report.
+- **Usage strings.** Already present in both Debug and Release:
   - `NSCameraUsageDescription` (OCR)
   - `NSMicrophoneUsageDescription` and `NSSpeechRecognitionUsageDescription` (speaking practice; Phase 6)
 
-  If Bonjour discovery for Ollama, VOICEVOX or AnkiConnect is added later, also declare `NSLocalNetworkUsageDescription`. Typing a URL works without it.
+  `NSPhotoLibraryUsageDescription` is not needed: Scan text uses `PhotosPicker`, which runs out of process and needs no permission. If Bonjour discovery for Ollama, VOICEVOX or AnkiConnect is added later, also declare `NSLocalNetworkUsageDescription`. Typing a URL works without it.
+- **Localization.** The UI ships in English and Japanese (`iosApp/Tsumugi/Localizable.xcstrings`). In App Store Connect, add a Japanese localization for the listing (name, subtitle, description, keywords, screenshots) as well as English.
 - **Review notes:**
   - Everything works without an account or API keys: the dictionary, SRS, grammar, reader, writing, exams and scripted speaking practice.
   - AI features need either a downloaded model (free, from Hugging Face, no key) or the learner's own server.

@@ -14,6 +14,25 @@ extension Font {
     }
 }
 
+extension View {
+    /// VoiceOver reads this view's text with a Japanese voice. Apply it to leaf views that show Japanese learning
+    /// content (headwords, prompts, reader text, exam passages), never to containers with English UI chrome: the
+    /// locale also picks the language of any localized strings inside.
+    /// Pass `false` for text that is sometimes English (e.g. DLPT questions) to keep the surrounding locale.
+    func japaneseSpeech(_ enabled: Bool = true) -> some View {
+        modifier(JapaneseSpeechModifier(enabled: enabled))
+    }
+}
+
+private struct JapaneseSpeechModifier: ViewModifier {
+    let enabled: Bool
+    @Environment(\.locale) private var locale
+
+    func body(content: Content) -> some View {
+        content.environment(\.locale, enabled ? Locale(identifier: "ja-JP") : locale)
+    }
+}
+
 /// Text with ruby readings above kanji runs.
 struct FuriganaText: View {
     let segments: [FuriganaSegment]
@@ -35,6 +54,7 @@ struct FuriganaText: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(segments.map(\.ruby).joined())
+        .japaneseSpeech()
     }
 }
 
@@ -72,6 +92,7 @@ struct PitchDiagram: View {
                 }
             }
         }
+        .accessibilityElement(children: .ignore)
         .accessibilityLabel("Pitch accent \(accent.downstep)")
     }
 }
