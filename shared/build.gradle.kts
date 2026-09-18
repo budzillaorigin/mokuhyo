@@ -78,6 +78,11 @@ sqldelight {
             packageName.set("app.tsumugi.grammar.db")
             srcDirs.setFrom("src/commonMain/sqldelightGrammar")
         }
+        // Read-only exam pack (JLPT blueprints, JLPT/DLPT item banks), built by tools/packs/build_exam.py.
+        create("ExamDatabase") {
+            packageName.set("app.tsumugi.exam.db")
+            srcDirs.setFrom("src/commonMain/sqldelightExam")
+        }
         // Read-only morphological-analysis pack (mecab-ipadic), built by tools/packs/build_tokenizer.py.
         create("TokenizerDatabase") {
             packageName.set("app.tsumugi.tokenizer.db")

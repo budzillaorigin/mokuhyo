@@ -60,6 +60,13 @@ BEGIN
     INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('review', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
 END;
 
+-- exam_attempt (immutable; union) ------------------------------------------------------------------------
+CREATE TRIGGER sync_exam_attempt_insert AFTER INSERT ON exam_attempt
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('exam_attempt', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+
 -- note ----------------------------------------------------------------------------------------------------
 CREATE TRIGGER sync_note_insert AFTER INSERT ON note
 WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0

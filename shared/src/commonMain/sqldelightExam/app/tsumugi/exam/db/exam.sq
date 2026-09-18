@@ -1,0 +1,60 @@
+-- Read-only exam pack (content/packs/exam.sqlite), built by tools/packs/build_exam.py from
+-- tools/items/jlpt_blueprints.json and tools/items/bank/*.json, which executes the CREATE statements in this file.
+-- Format of the source banks: docs/CONTENT_PACKS.md "Exam item banks".
+
+-- Keys: version, built_at, jlpt_blueprints (the blueprint JSON verbatim), banks (JSON array of bank ids/titles/licenses).
+CREATE TABLE pack_meta (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+-- exam: JLPT | DLPT_READING | DLPT_LISTENING. level: "N5".."N1" or ILR "0+".."3".
+-- script: JSON array of {speaker, voice, text} lines ("" when none); listening passages have body = "".
+-- source: llm | generated | human | tatoeba …; verified: 1 after human review (tools/items/review.py).
+CREATE TABLE exam_passage (
+    id TEXT NOT NULL PRIMARY KEY,
+    bank TEXT NOT NULL,
+    exam TEXT NOT NULL,
+    level TEXT NOT NULL,
+    text_type TEXT NOT NULL,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+    script TEXT NOT NULL,
+    source TEXT NOT NULL,
+    verified INTEGER NOT NULL
+) WITHOUT ROWID;
+
+-- choices: JSON string array. answer: 0-based index. refs: JSON string array of "g:<grammar id>" / "v:<jmdict id>".
+CREATE TABLE exam_item (
+    id TEXT NOT NULL PRIMARY KEY,
+    bank TEXT NOT NULL,
+    exam TEXT NOT NULL,
+    level TEXT NOT NULL,
+    type TEXT NOT NULL,
+    passage_id TEXT,
+    ord INTEGER NOT NULL,
+    stem TEXT NOT NULL,
+    choices TEXT NOT NULL,
+    answer INTEGER NOT NULL,
+    explanation TEXT NOT NULL,
+    script TEXT NOT NULL,
+    refs TEXT NOT NULL,
+    source TEXT NOT NULL,
+    verified INTEGER NOT NULL
+) WITHOUT ROWID;
+CREATE INDEX exam_item_pool ON exam_item(exam, level, type);
+
+meta:
+SELECT value FROM pack_meta WHERE key = ?;
+
+itemsFor:
+SELECT * FROM exam_item WHERE exam = ? AND level = ? ORDER BY passage_id, ord, id;
+
+itemsByIds:
+SELECT * FROM exam_item WHERE id IN ?;
+
+passagesByIds:
+SELECT * FROM exam_passage WHERE id IN ?;
+
+coverage:
+SELECT exam, level, type, count(*) AS n FROM exam_item GROUP BY exam, level, type;

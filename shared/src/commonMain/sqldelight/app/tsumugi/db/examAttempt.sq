@@ -1,0 +1,50 @@
+-- Exam attempts (BRIEF §4 ExamAttempt, §5.11) and user-imported item banks.
+
+-- exam: JLPT | DLPT_READING | DLPT_LISTENING | OPI. level: "N3", ILR "2" (target band) or "" for OPI/mixed.
+-- mode: MOCK | SECTION | TYPE | SLICE_30 | SLICE_60 | FULL | PRACTICE | INTERVIEW.
+-- answers: JSON array of {itemId, choice, correct, timeMs}. scoring: JSON of the result (JLPT score groups,
+-- ILR estimate, or the OPI rating). summary: one line for lists ("N3 · 112/180 · pass", "ILR 2 (provisional)").
+-- Immutable once submitted; syncs by union like reviews.
+CREATE TABLE exam_attempt (
+    id TEXT NOT NULL PRIMARY KEY,
+    exam TEXT NOT NULL,
+    level TEXT NOT NULL,
+    mode TEXT NOT NULL,
+    started_at INTEGER NOT NULL,
+    submitted_at INTEGER NOT NULL,
+    answers TEXT NOT NULL,
+    scoring TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    device_id TEXT NOT NULL
+);
+CREATE INDEX exam_attempt_exam ON exam_attempt(exam, submitted_at);
+
+-- Item banks the user imported (docs/CONTENT_PACKS.md format). Device-local.
+CREATE TABLE user_exam_bank (
+    id TEXT NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    json TEXT NOT NULL,
+    imported_at INTEGER NOT NULL
+);
+
+insertAttempt:
+INSERT OR IGNORE INTO exam_attempt(id, exam, level, mode, started_at, submitted_at, answers, scoring, summary, device_id)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+attempts:
+SELECT * FROM exam_attempt WHERE exam = ? ORDER BY submitted_at DESC LIMIT ?;
+
+allAttempts:
+SELECT * FROM exam_attempt ORDER BY submitted_at DESC LIMIT ?;
+
+attemptById:
+SELECT * FROM exam_attempt WHERE id = ?;
+
+putBank:
+INSERT OR REPLACE INTO user_exam_bank(id, title, json, imported_at) VALUES (?, ?, ?, ?);
+
+banks:
+SELECT * FROM user_exam_bank ORDER BY imported_at;
+
+deleteBank:
+DELETE FROM user_exam_bank WHERE id = ?;

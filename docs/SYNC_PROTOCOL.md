@@ -23,6 +23,7 @@ Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optio
 | `setting` | `key` | LWW by `updated_at` |
 | `word_list` | `id` | LWW by `updated_at`, `deleted` tombstone |
 | `word_list_entry` | `(list_id, ref)` | LWW by `updated_at`, `deleted` tombstone |
+| `exam_attempt` | `id` | union (immutable once submitted) |
 | `card` | `id` | **not synced**: rows are created from items/reviews; `suspended` syncs as a `setting`-like LWW field via the `card_flags` change type |
 
 Not synced: `app_meta` (device-local), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings (unless the user turns on "include recordings", which uses blobs).

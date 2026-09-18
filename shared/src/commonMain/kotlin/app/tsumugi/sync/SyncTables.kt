@@ -130,9 +130,18 @@ internal class TableSpec(
             listOf("list_id", "ref"), "updated_at", MergeRule.LWW,
         )
 
+        val examAttempt = TableSpec(
+            "exam_attempt",
+            listOf(
+                "id" to T, "exam" to T, "level" to T, "mode" to T, "started_at" to I, "submitted_at" to I, "answers" to T,
+                "scoring" to T, "summary" to T, "device_id" to T,
+            ),
+            listOf("id"), "submitted_at", MergeRule.UNION,
+        )
+
         /** Card rows don't sync; only the user-set suspended flag does, as its own change type. */
         const val CARD_FLAGS = "card_flags"
 
-        val all = listOf(item, itemRelation, review, note, setting, wordList, wordListEntry).associateBy { it.name }
+        val all = listOf(item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt).associateBy { it.name }
     }
 }
