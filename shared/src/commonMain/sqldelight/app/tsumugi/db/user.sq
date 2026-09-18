@@ -83,7 +83,7 @@ removeListEntry:
 UPDATE word_list_entry SET deleted = 1, updated_at = ? WHERE list_id = ? AND ref = ?;
 
 listEntries:
-SELECT * FROM word_list_entry WHERE list_id = ? AND deleted = 0 ORDER BY added_at;
+SELECT * FROM word_list_entry WHERE list_id = ? AND deleted = 0 ORDER BY added_at, ref;
 
 listsContaining:
 SELECT list_id FROM word_list_entry WHERE ref = ? AND deleted = 0;

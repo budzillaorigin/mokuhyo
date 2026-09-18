@@ -14,6 +14,8 @@ enum Route: Hashable {
     case settings
     case licenses
     case importExport
+    case wordLists
+    case wordList(String)
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -62,6 +64,8 @@ struct TabStack<Root: View>: View {
                     case .settings: SettingsView()
                     case .licenses: LicensesView()
                     case .importExport: ImportView()
+                    case .wordLists: WordListsView()
+                    case .wordList(let id): WordListView(listId: id)
                     }
                 }
         }
@@ -79,6 +83,9 @@ struct LearnHomeView: View {
             }
             NavigationLink(value: Route.radicals) {
                 LabeledContent("Radical search", value: "Find a kanji by its parts")
+            }
+            NavigationLink(value: Route.wordLists) {
+                LabeledContent("Word lists", value: "Your lists")
             }
         }
         .navigationTitle("Learn")

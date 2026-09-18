@@ -42,8 +42,12 @@ class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clo
         const val FSRS_WEIGHTS = "srs.fsrsWeights"
         /** Epoch-ms start of vacation mode; absent = off. Streaks don't break while on vacation. */
         const val VACATION_SINCE = "streak.vacationSince"
-        const val REMINDER_MINUTE_OF_DAY = "notifications.reminderMinute"
         const val REMINDERS_ENABLED = "notifications.enabled"
+        /** Remind once at least this many reviews are due. */
+        const val REMINDER_THRESHOLD = "notifications.threshold"
+        /** Quiet hours, minutes after local midnight. */
+        const val QUIET_START_MINUTE = "notifications.quietStart"
+        const val QUIET_END_MINUTE = "notifications.quietEnd"
     }
 }
 

@@ -29,6 +29,8 @@ sealed interface Route {
     data class PathLevel(val level: Int) : Route { override val title = "Level $level" }
     data class PathItem(val id: String) : Route { override val title = "Item" }
     data object Settings : Route { override val title = "Settings" }
+    data object WordLists : Route { override val title = "Word lists" }
+    data class WordList(val id: String) : Route { override val title = "Word list" }
     data object Import : Route { override val title = "Import & export" }
     data object Licenses : Route { override val title = "Licenses" }
 }

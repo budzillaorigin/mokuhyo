@@ -21,6 +21,7 @@ private struct EntryContent: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 FuriganaText(segments: detail.furigana)
+                EntryActions(entry: e)
                 HStack {
                     if e.isCommon { TagView("common") }
                     if let n = jlptLabel(e.jlpt) { TagView("\(n) (unofficial)") }

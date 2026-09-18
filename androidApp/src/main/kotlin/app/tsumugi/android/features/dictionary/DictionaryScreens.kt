@@ -179,6 +179,7 @@ fun EntryScreen(id: Long, nav: DictionaryNav) {
         val e = detail.entry
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
             FuriganaText(detail.furigana)
+            EntryActions(e)
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 if (e.isCommon) Tag("common")
                 jlptLabel(e.jlpt)?.let { Tag("$it (unofficial)") }

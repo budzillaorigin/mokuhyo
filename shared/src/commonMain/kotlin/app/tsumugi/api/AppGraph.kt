@@ -14,7 +14,9 @@ import app.tsumugi.srs.FsrsParameters
 import app.tsumugi.srs.FsrsScheduler
 import app.tsumugi.srs.PathService
 import app.tsumugi.srs.SrsRepository
+import app.tsumugi.study.CollectionService
 import app.tsumugi.study.LessonSession
+import app.tsumugi.study.ReminderPlanner
 import app.tsumugi.study.ReviewSession
 import app.tsumugi.study.StatsService
 import kotlinx.coroutines.sync.Mutex
@@ -35,6 +37,8 @@ class AppGraph(val platform: PlatformServices) {
     val srs: SrsRepository by lazy { SrsRepository(userDatabase, device.deviceId) }
     val stats: StatsService by lazy { StatsService(userDatabase, srs, settings) }
     val imports: ImportService by lazy { ImportService(this) }
+    val reminders: ReminderPlanner by lazy { ReminderPlanner(userDatabase, settings) }
+    val collection: CollectionService by lazy { CollectionService(userDatabase, srs, { path() }) }
 
     private val lock = Mutex()
     private var dictionaryRepository: DictionaryRepository? = null

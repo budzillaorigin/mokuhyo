@@ -3,6 +3,7 @@
 
     <!-- Only for the explicitly online features: integrations (WaniKani, Bunpro), sync, model downloads. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".TsumugiApplication"
@@ -18,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".ReminderReceiver" android:exported="false" />
     </application>
 
 </manifest>
