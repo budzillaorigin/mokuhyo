@@ -1,5 +1,7 @@
 package app.tsumugi.android.features.me
 
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.HorizontalDivider
@@ -38,14 +40,14 @@ fun SettingsScreen(onOpenAi: () -> Unit = {}) {
         retention = graph.settings.desiredRetention().toFloat()
     }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Text("Lessons per batch: ${batch.toInt()}", style = MaterialTheme.typography.titleMedium)
+        Text(stringResource(R.string.settings_batch, batch.toInt()), style = MaterialTheme.typography.titleMedium)
         Slider(
             value = batch, onValueChange = { batch = it }, valueRange = 3f..15f, steps = 11,
             onValueChangeFinished = { scope.launch { graph.settings.setLessonBatchSize(batch.toInt()) } },
         )
-        Text("Desired retention: ${(retention * 100).toInt()}%", style = MaterialTheme.typography.titleMedium)
+        Text(stringResource(R.string.settings_retention, (retention * 100).toInt()), style = MaterialTheme.typography.titleMedium)
         Text(
-            "The share of reviews you aim to get right. Higher means shorter intervals and more reviews.",
+            stringResource(R.string.settings_retention_hint),
             style = MaterialTheme.typography.bodySmall,
         )
         Slider(
@@ -60,8 +62,8 @@ fun SettingsScreen(onOpenAi: () -> Unit = {}) {
         HorizontalDivider()
         ListItem(
             modifier = Modifier.clickable(onClick = onOpenAi),
-            headlineContent = { Text("AI & speech") },
-            supportingContent = { Text("On-device models, your own server, speech recognition, voices") },
+            headlineContent = { Text(stringResource(R.string.title_ai)) },
+            supportingContent = { Text(stringResource(R.string.ai_settings_sub)) },
         )
     }
 }
@@ -72,7 +74,7 @@ fun LicensesScreen() {
     val context = LocalContext.current
     var text by remember { mutableStateOf("") }
     LaunchedEffect(Unit) {
-        text = runCatching { context.assets.open("LICENSES.md").bufferedReader().readText() }.getOrDefault("Licenses file missing from this build.")
+        text = runCatching { context.assets.open("LICENSES.md").bufferedReader().readText() }.getOrDefault(context.getString(R.string.licenses_missing))
     }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         text.lines().forEach { line ->

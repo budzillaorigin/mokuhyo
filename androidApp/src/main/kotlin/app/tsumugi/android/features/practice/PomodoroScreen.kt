@@ -1,5 +1,12 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.ui.PlayLabel
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.app.Application
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -86,6 +93,7 @@ class PomodoroViewModel(app: Application) : AndroidViewModel(app) {
 }
 
 /** A 25-minute speaking session with a queue of mini-activities, then a 5-minute break (BRIEF §5.10). */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PomodoroScreen(key: String) {
     val vm = keyedViewModel(key) { PomodoroViewModel(it) }
@@ -104,20 +112,20 @@ fun PomodoroScreen(key: String) {
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         when {
-            vm.missing -> Notice(PRACTICE_PACK_MISSING)
+            vm.missing -> PracticePackMissing()
             session == null -> {
-                Text("Speaking session", style = MaterialTheme.typography.headlineSmall)
-                Text("25 minutes of short activities (role-play turn, repeat after me, what do you hear, pick the word, story time), then a 5-minute break. Works without an AI model.")
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                Text(stringResource(R.string.title_speaking_session), style = MaterialTheme.typography.headlineSmall)
+                Text(stringResource(R.string.pomodoro_intro))
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     (5 downTo 1).forEach { l -> FilterChip(level == l, { level = l }, { Text("N$l") }) }
                 }
-                Button(onClick = { vm.start(level) }, enabled = !vm.loading) { Text("Start") }
+                Button(onClick = { vm.start(level) }, enabled = !vm.loading) { Text(stringResource(R.string.action_start)) }
                 if (vm.loading) LinearProgressIndicator(Modifier.fillMaxWidth())
             }
             session.finished -> BreakView(session)
             else -> {
                 Row {
-                    Text("Work: ${clock(session.remaining)}", Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
+                    Text(stringResource(R.string.pomodoro_work, clock(session.remaining)), Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
                     Text("${session.index + 1} / ${session.activities.size}", style = MaterialTheme.typography.titleMedium)
                 }
                 LinearProgressIndicator(
@@ -127,7 +135,7 @@ fun PomodoroScreen(key: String) {
                 val activity = session.current ?: return@Column
                 Text(activity.title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
                 ActivityView(activity, voices, input, onDone = vm::complete)
-                TextButton(onClick = { voices.stop(); vm.skip() }) { Text("Skip") }
+                TextButton(onClick = { voices.stop(); vm.skip() }) { Text(stringResource(R.string.action_skip)) }
             }
         }
     }
@@ -141,9 +149,9 @@ private fun clock(d: Duration): String {
 @Composable
 private fun BreakView(session: PomodoroSession) {
     val results = session.completed
-    Text(if (session.onBreak) "Break time ☕" else "Queue finished", style = MaterialTheme.typography.headlineSmall)
-    if (session.onBreak) Text("Break: ${clock(session.breakRemaining)} left", style = MaterialTheme.typography.titleMedium)
-    Text("Completed ${results.size} activities" + (session.accuracy?.let { " · accuracy ${percent(it)}" } ?: ""))
+    Text(stringResource(if (session.onBreak) R.string.pomodoro_break else R.string.pomodoro_finished), style = MaterialTheme.typography.headlineSmall)
+    if (session.onBreak) Text(stringResource(R.string.pomodoro_break_left, clock(session.breakRemaining)), style = MaterialTheme.typography.titleMedium)
+    Text(stringResource(R.string.pomodoro_completed, results.size) + (session.accuracy?.let { stringResource(R.string.pomodoro_accuracy, percent(it)) } ?: ""))
     results.forEach { r ->
         Text(
             "• ${r.activity.title}" + when (r.correct) {
@@ -163,12 +171,12 @@ private fun ActivityView(activity: Activity, voices: Voices, input: SpeechInput,
         is Activity.WhatDoYouHear -> {
             val word = if (activity.playA) activity.pair.a else activity.pair.b
             LaunchedEffect(activity) { voices.say(word.text) }
-            OutlinedButton(onClick = { scope.launch { voices.say(word.text) } }) { Text("▶ Play again") }
+            OutlinedButton(onClick = { scope.launch { voices.say(word.text) } }) { PlayLabel(stringResource(R.string.play_again)) }
             ChoiceList(listOf(activity.pair.a.text, activity.pair.b.text), activity.answer) { correct -> onDone(correct, null) }
         }
         is Activity.PickAWord -> {
             LaunchedEffect(activity) { voices.say(activity.line.japanese, activity.speaker?.voice) }
-            OutlinedButton(onClick = { scope.launch { voices.say(activity.line.japanese, activity.speaker?.voice) } }) { Text("▶ Play again") }
+            OutlinedButton(onClick = { scope.launch { voices.say(activity.line.japanese, activity.speaker?.voice) } }) { PlayLabel(stringResource(R.string.play_again)) }
             Text(activity.prompt, style = MaterialTheme.typography.titleMedium.japanese())
             ChoiceList(activity.choices, activity.gap.text) { correct -> onDone(correct, null) }
         }
@@ -177,13 +185,13 @@ private fun ActivityView(activity: Activity, voices: Voices, input: SpeechInput,
             LaunchedEffect(activity) { voices.say(activity.line.japanese, activity.speaker?.voice) }
             Text(activity.line.english, style = MaterialTheme.typography.bodySmall)
             PronunciationPanel(activity.line.japanese, voices, input, onReport = { score = it.composite })
-            Button(onClick = { onDone(null, score) }) { Text("Next") }
+            Button(onClick = { onDone(null, score) }) { Text(stringResource(R.string.action_next)) }
         }
         is Activity.StoryTime -> {
             val chosen = remember(activity) { mutableStateMapOf<Int, Int>() }
             val d = activity.dialogue
             LaunchedEffect(activity) { voices.sayAll(d.lines.map { it.japanese to d.speaker(it.speaker)?.voice }) }
-            OutlinedButton(onClick = { scope.launch { voices.sayAll(d.lines.map { it.japanese to d.speaker(it.speaker)?.voice }) } }) { Text("▶ Play again") }
+            OutlinedButton(onClick = { scope.launch { voices.sayAll(d.lines.map { it.japanese to d.speaker(it.speaker)?.voice }) } }) { PlayLabel(stringResource(R.string.play_again)) }
             d.questions.forEachIndexed { qi, q ->
                 Text(q.question, style = MaterialTheme.typography.titleSmall.japanese())
                 q.choices.forEachIndexed { ci, c ->
@@ -203,8 +211,8 @@ private fun ActivityView(activity: Activity, voices: Voices, input: SpeechInput,
             }
             if (chosen.size == d.questions.size) {
                 val right = d.questions.indices.count { chosen[it] == d.questions[it].answer }
-                Text("$right of ${d.questions.size} correct")
-                Button(onClick = { onDone(right * 2 >= d.questions.size, right * 100 / d.questions.size.coerceAtLeast(1)) }) { Text("Next") }
+                Text(stringResource(R.string.listen_score, right, d.questions.size))
+                Button(onClick = { onDone(right * 2 >= d.questions.size, right * 100 / d.questions.size.coerceAtLeast(1)) }) { Text(stringResource(R.string.action_next)) }
             }
         }
         is Activity.RoleplayTurn -> RoleplayTurnView(activity, voices, input) { onDone(null, null) }
@@ -227,7 +235,7 @@ private fun ChoiceList(choices: List<String>, answer: String, onAnswered: (Boole
             ),
         ) { Text(c, Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium.japanese()) }
     }
-    picked?.let { p -> Button(onClick = { onAnswered(p == answer) }) { Text("Next") } }
+    picked?.let { p -> Button(onClick = { onAnswered(p == answer) }) { Text(stringResource(R.string.action_next)) } }
 }
 
 /** One exchange of a scenario: the partner opens, the learner answers once, the partner replies. */
@@ -245,7 +253,7 @@ private fun RoleplayTurnView(activity: Activity.RoleplayTurn, voices: Voices, in
         lines = s?.transcript.orEmpty()
         busy = false
     }
-    Text("${activity.scenario.titleJa} · you are ${activity.scenario.learnerRole}", style = MaterialTheme.typography.bodyMedium.japanese())
+    Text(buildAnnotatedString { append(ja(activity.scenario.titleJa)); append(" · "); append(stringResource(R.string.pomodoro_you_are, activity.scenario.learnerRole)) }, style = MaterialTheme.typography.bodyMedium.japanese())
     lines.forEach { l ->
         Text(
             (if (l.speaker == Speaker.PARTNER) "▷ " else "▶ ") + l.japanese,
@@ -255,7 +263,7 @@ private fun RoleplayTurnView(activity: Activity.RoleplayTurn, voices: Voices, in
         if (l.aiGenerated) AiBadge(l.engine)
     }
     lines.lastOrNull { it.speaker == Speaker.PARTNER }?.hint?.takeIf { it.isNotBlank() }?.let {
-        Text("Hint: $it", style = MaterialTheme.typography.bodySmall.japanese())
+        Text(buildAnnotatedString { append(stringResource(R.string.roleplay_hint_prefix)); append(ja(it)) }, style = MaterialTheme.typography.bodySmall.japanese())
     }
     if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
     val answered = lines.count { it.speaker == Speaker.LEARNER } > 0
@@ -272,6 +280,6 @@ private fun RoleplayTurnView(activity: Activity.RoleplayTurn, voices: Voices, in
             }
         })
     } else if (!busy) {
-        Button(onClick = onDone) { Text("Next") }
+        Button(onClick = onDone) { Text(stringResource(R.string.action_next)) }
     }
 }

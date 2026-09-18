@@ -1,5 +1,9 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.ui.PlayLabel
+import app.tsumugi.android.ui.JaText
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,13 +40,16 @@ import app.tsumugi.practice.PairWord
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-private fun MinimalPairCategory.label() = when (this) {
-    MinimalPairCategory.LENGTH -> "Vowel length"
-    MinimalPairCategory.GEMINATION -> "Small っ"
-    MinimalPairCategory.VOICING -> "Voicing"
-    MinimalPairCategory.NASAL -> "ん"
-    MinimalPairCategory.PITCH -> "Pitch accent"
-}
+@Composable
+private fun MinimalPairCategory.label() = stringResource(
+    when (this) {
+        MinimalPairCategory.LENGTH -> R.string.pairs_length
+        MinimalPairCategory.GEMINATION -> R.string.pairs_gemination
+        MinimalPairCategory.VOICING -> R.string.pairs_voicing
+        MinimalPairCategory.NASAL -> R.string.pairs_nasal
+        MinimalPairCategory.PITCH -> R.string.pron_pitch
+    },
+)
 
 /** Ear training (BRIEF §5.9): hear one word of a pair, pick A or B. Pairs come from JMdict + Kanjium, no LLM. */
 @Composable
@@ -78,18 +85,18 @@ fun MinimalPairsScreen() {
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             MinimalPairCategory.entries.forEach { c -> FilterChip(c == category, { category = c }, { Text(c.label()) }) }
         }
-        if (total > 0) Text("Accuracy: $right / $total (${percent(right.toDouble() / total)})", style = MaterialTheme.typography.titleMedium)
+        if (total > 0) Text(stringResource(R.string.pairs_accuracy, right, total, percent(right.toDouble() / total)), style = MaterialTheme.typography.titleMedium)
         when {
-            missing -> Notice(PRACTICE_PACK_MISSING)
+            missing -> PracticePackMissing()
             pairs == null -> LinearProgressIndicator(Modifier.fillMaxWidth())
-            pairs!!.isEmpty() -> Text("No pairs in this category in the installed pack.")
+            pairs!!.isEmpty() -> Text(stringResource(R.string.pairs_none))
             pair == null -> {
-                Text("Round done: $right of $total.", style = MaterialTheme.typography.titleMedium)
-                Button(onClick = { pairs = pairs!!.shuffled(); index = 0; right = 0; total = 0 }) { Text("Again") }
+                Text(stringResource(R.string.pairs_round_done, right, total), style = MaterialTheme.typography.titleMedium)
+                Button(onClick = { pairs = pairs!!.shuffled(); index = 0; right = 0; total = 0 }) { Text(stringResource(R.string.action_again)) }
             }
             else -> {
-                Text("Which word do you hear?", style = MaterialTheme.typography.titleMedium)
-                OutlinedButton(onClick = ::play) { Text("▶ Play again") }
+                Text(stringResource(R.string.pairs_question), style = MaterialTheme.typography.titleMedium)
+                OutlinedButton(onClick = ::play) { PlayLabel(stringResource(R.string.play_again)) }
                 listOf(true to pair.a, false to pair.b).forEach { (isA, word) ->
                     val colors = when {
                         answer == null -> ButtonDefaults.buttonColors()
@@ -109,10 +116,10 @@ fun MinimalPairsScreen() {
                         modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp),
                     ) {
                         Column {
-                            Text("${if (isA) "A" else "B"}  ${word.text}（${word.reading}）", style = MaterialTheme.typography.titleMedium.japanese())
+                            JaText("${if (isA) "A" else "B"}  ${word.text}（${word.reading}）", style = MaterialTheme.typography.titleMedium)
                             if (answer != null) {
                                 Text(
-                                    word.gloss + (word.accent?.let { " · accent [$it]" } ?: ""),
+                                    word.gloss + (word.accent?.let { stringResource(R.string.pairs_accent, it.toString()) } ?: ""),
                                     style = MaterialTheme.typography.bodySmall,
                                 )
                             }
@@ -120,13 +127,12 @@ fun MinimalPairsScreen() {
                     }
                 }
                 if (answer != null) {
-                    Button(onClick = { index++; answer = null; playA = Random.nextBoolean() }) { Text("Next") }
+                    Button(onClick = { index++; answer = null; playA = Random.nextBoolean() }) { Text(stringResource(R.string.action_next)) }
                 }
             }
         }
         Text(
-            "Audio is the device's text-to-speech voice (or your VOICEVOX server), so fine distinctions such as pitch may be " +
-                "approximate.",
+            stringResource(R.string.pairs_tts_note),
             style = MaterialTheme.typography.bodySmall,
         )
     }

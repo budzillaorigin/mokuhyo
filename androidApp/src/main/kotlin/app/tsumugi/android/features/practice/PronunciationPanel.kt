@@ -1,5 +1,17 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.ui.PlayLabel
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -51,6 +63,7 @@ fun PronunciationPanel(
     var heard by remember(sentence) { mutableStateOf<String?>(null) }
     var busy by remember { mutableStateOf(false) }
     var message by remember(sentence) { mutableStateOf<String?>(null) }
+    val context = LocalContext.current
 
     fun analyze(result: SpeechResult) {
         message = result.error
@@ -59,8 +72,7 @@ fun PronunciationPanel(
             report = null
             message = listOfNotNull(
                 result.error,
-                "The system recognizer on this Android version listens by itself and doesn't share the audio, so pitch and " +
-                    "fluency can't be scored. Choose on-device Whisper in Settings → AI & speech for the full analysis.",
+                context.getString(R.string.pron_no_audio),
             ).joinToString("\n")
             return
         }
@@ -68,7 +80,7 @@ fun PronunciationPanel(
         scope.launch {
             report = runCatching {
                 graph.pronunciation.analyze(sentence, result.transcript.ifBlank { null }, result.audio.samples, result.analyzerSegments)
-            }.onFailure { message = "Couldn't analyze the recording: ${it.message}" }.getOrNull()
+            }.onFailure { message = context.getString(R.string.pron_failed, it.message.orEmpty()) }.getOrNull()
             report?.let(onReport)
             busy = false
         }
@@ -77,10 +89,10 @@ fun PronunciationPanel(
 
     Card(modifier.fillMaxWidth()) {
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("Pronunciation", style = MaterialTheme.typography.titleMedium)
-            Text(sentence, style = MaterialTheme.typography.titleLarge.japanese())
+            Text(stringResource(R.string.pron_title), Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
+            JaText(sentence, style = MaterialTheme.typography.titleLarge)
             if (voices != null) {
-                OutlinedButton(onClick = { scope.launch { voices.say(sentence) } }) { Text("▶ Hear it") }
+                OutlinedButton(onClick = { scope.launch { voices.say(sentence) } }) { PlayLabel(stringResource(R.string.pron_hear)) }
             }
             MicButton(
                 input,
@@ -90,7 +102,7 @@ fun PronunciationPanel(
                 onResult = ::analyze,
             )
             if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
-            heard?.let { Text("Heard: $it", style = MaterialTheme.typography.bodyMedium.japanese()) }
+            heard?.let { Text(buildAnnotatedString { append(stringResource(R.string.pron_heard)); append(ja(it)) }, style = MaterialTheme.typography.bodyMedium.japanese()) }
             message?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
             report?.let { ReportView(it) }
         }
@@ -101,33 +113,39 @@ fun PronunciationPanel(
 fun ReportView(report: PronunciationReport) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            CircularProgressIndicator(progress = { report.composite / 100f }, strokeWidth = 6.dp)
-            Column {
+            val scoreLabel = stringResource(R.string.pron_score_description, report.composite)
+            CircularProgressIndicator(
+                progress = { report.composite / 100f },
+                modifier = Modifier.clearAndSetSemantics { contentDescription = scoreLabel },
+                strokeWidth = 6.dp,
+            )
+            Column(Modifier.clearAndSetSemantics {}) {
                 Text("${report.composite} / 100", style = MaterialTheme.typography.headlineSmall)
-                Text("Heuristic estimate, not a phoneme-level assessment", style = MaterialTheme.typography.labelSmall)
+                Text(stringResource(R.string.pron_heuristic), style = MaterialTheme.typography.labelSmall)
             }
         }
         report.subScores.forEach { (key, value) ->
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(subScoreLabel(key), Modifier.width(150.dp), style = MaterialTheme.typography.bodyMedium)
+            val label = subScoreLabel(key)
+            Row(Modifier.clearAndSetSemantics { contentDescription = "$label: $value / 100" }, verticalAlignment = Alignment.CenterVertically) {
+                Text(label, Modifier.widthIn(min = 120.dp, max = 180.dp).padding(end = 8.dp), style = MaterialTheme.typography.bodyMedium)
                 LinearProgressIndicator(progress = { value / 100f }, modifier = Modifier.weight(1f))
                 Text(" $value", style = MaterialTheme.typography.bodyMedium)
             }
         }
         if (report.rateMoraPerSec > 0) {
             Text(
-                "Speaking rate: ${"%.1f".format(report.rateMoraPerSec)} morae/s · long pauses: ${report.pauses.size}",
+                stringResource(R.string.pron_rate, "%.1f".format(report.rateMoraPerSec), report.pauses.size),
                 style = MaterialTheme.typography.bodySmall,
             )
         }
         if (report.words.isNotEmpty()) {
-            Text("Pitch by word (↑ rise, ↓ drop)", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.pron_pitch_by_word), style = MaterialTheme.typography.titleSmall)
             report.words.forEach { w ->
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text(w.reading, Modifier.width(96.dp), style = MaterialTheme.typography.bodyLarge.japanese())
+                    JaText(w.reading, Modifier.widthIn(min = 96.dp).padding(end = 8.dp), style = MaterialTheme.typography.bodyLarge)
                     Column(Modifier.weight(1f)) {
-                        Text("expected ${w.expectedMarks.ifBlank { "?" }}", style = MaterialTheme.typography.bodySmall.japanese())
-                        Text("you ${w.observedMarks.ifBlank { "unclear" }}", style = MaterialTheme.typography.bodySmall.japanese(), color = verdictColor(w.verdict))
+                        Text(stringResource(R.string.pron_expected, w.expectedMarks.ifBlank { "?" }), style = MaterialTheme.typography.bodySmall.japanese())
+                        Text(stringResource(R.string.pron_you, w.observedMarks.ifBlank { stringResource(R.string.pron_unclear) }), style = MaterialTheme.typography.bodySmall.japanese(), color = verdictColor(w.verdict))
                     }
                     Text(verdictLabel(w.verdict), style = MaterialTheme.typography.labelMedium, color = verdictColor(w.verdict))
                 }
@@ -137,20 +155,24 @@ fun ReportView(report: PronunciationReport) {
     }
 }
 
+@Composable
 private fun subScoreLabel(key: String) = when (key) {
-    "mora" -> "Mora accuracy"
-    "pitch" -> "Pitch accent"
-    "fluency" -> "Fluency"
+    "mora" -> stringResource(R.string.pron_mora)
+    "pitch" -> stringResource(R.string.pron_pitch)
+    "fluency" -> stringResource(R.string.pron_fluency)
     else -> key.replaceFirstChar { it.uppercase() }
 }
 
-private fun verdictLabel(v: PitchVerdict) = when (v) {
-    PitchVerdict.MATCH -> "match"
-    PitchVerdict.FLAT -> "too flat"
-    PitchVerdict.WRONG_DROP -> "drop in wrong place"
-    PitchVerdict.UNCLEAR -> "unclear"
-    PitchVerdict.UNKNOWN_ACCENT -> "no accent data"
-}
+@Composable
+private fun verdictLabel(v: PitchVerdict) = stringResource(
+    when (v) {
+        PitchVerdict.MATCH -> R.string.pron_match
+        PitchVerdict.FLAT -> R.string.pron_flat
+        PitchVerdict.WRONG_DROP -> R.string.pron_wrong_drop
+        PitchVerdict.UNCLEAR -> R.string.pron_unclear
+        PitchVerdict.UNKNOWN_ACCENT -> R.string.pron_no_accent
+    },
+)
 
 @Composable
 private fun verdictColor(v: PitchVerdict): Color = when (v) {

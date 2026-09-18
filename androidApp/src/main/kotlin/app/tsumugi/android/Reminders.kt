@@ -38,7 +38,7 @@ object Reminders {
 
     fun ensureChannel(context: Context) {
         val manager = context.getSystemService(NotificationManager::class.java)
-        manager.createNotificationChannel(NotificationChannel(CHANNEL, "Review reminders", NotificationManager.IMPORTANCE_DEFAULT))
+        manager.createNotificationChannel(NotificationChannel(CHANNEL, context.getString(R.string.reminder_channel), NotificationManager.IMPORTANCE_DEFAULT))
     }
 
     fun show(context: Context, title: String, body: String) {
@@ -50,7 +50,7 @@ object Reminders {
             context, 0, Intent(context, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE,
         )
         val notification = NotificationCompat.Builder(context, CHANNEL)
-            .setSmallIcon(android.R.drawable.ic_popup_reminder)
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(title)
             .setContentText(body)
             .setContentIntent(open)
@@ -62,6 +62,6 @@ object Reminders {
 
 class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        Reminders.show(context, intent.getStringExtra("title") ?: "Reviews are ready", intent.getStringExtra("body").orEmpty())
+        Reminders.show(context, intent.getStringExtra("title") ?: context.getString(R.string.reminder_title), intent.getStringExtra("body").orEmpty())
     }
 }

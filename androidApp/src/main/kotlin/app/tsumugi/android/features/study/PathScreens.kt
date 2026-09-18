@@ -1,5 +1,13 @@
 package app.tsumugi.android.features.study
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.localized
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -55,19 +63,19 @@ fun PathLevelsScreen(onOpenLevel: (Int) -> Unit) {
     }
     val s = status
     when {
-        missing -> Text("The kanji path pack isn't installed in this build.", Modifier.padding(24.dp))
+        missing -> Text(stringResource(R.string.path_missing), Modifier.padding(24.dp))
         s == null -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
         else -> LazyColumn(Modifier.fillMaxSize()) {
             items((1..s.maxLevel).toList()) { level ->
                 ListItem(
                     modifier = Modifier.clickable { onOpenLevel(level) },
-                    headlineContent = { Text("Level $level") },
+                    headlineContent = { Text(stringResource(R.string.title_level, level)) },
                     supportingContent = {
                         Text(
                             when {
-                                level < s.currentLevel -> "Passed"
-                                level == s.currentLevel -> "Current · ${(s.levelProgress * 100).toInt()}% of kanji at Guru"
-                                else -> "Locked"
+                                level < s.currentLevel -> stringResource(R.string.path_passed)
+                                level == s.currentLevel -> stringResource(R.string.path_current, (s.levelProgress * 100).toInt())
+                                else -> stringResource(R.string.path_locked)
                             },
                         )
                     },
@@ -88,7 +96,7 @@ fun PathLevelScreen(level: Int, onOpenItem: (String) -> Unit) {
             val group = list.filter { it.item.kind == kind }
             if (group.isEmpty()) continue
             item(span = { GridItemSpan(maxLineSpan) }) {
-                Text("${kind.label} (${group.count { it.stage != null }}/${group.size})", style = MaterialTheme.typography.titleSmall, modifier = Modifier.padding(top = 8.dp))
+                Text("${kind.localized()} (${group.count { it.stage != null }}/${group.size})", style = MaterialTheme.typography.titleSmall, modifier = Modifier.padding(top = 8.dp))
             }
             items(group, key = { it.item.id }) { (item, stage) ->
                 Column(
@@ -98,8 +106,8 @@ fun PathLevelScreen(level: Int, onOpenItem: (String) -> Unit) {
                         .padding(6.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Text(item.display, style = MaterialTheme.typography.titleLarge.japanese(), color = if (stage == null) MaterialTheme.colorScheme.onSurface else Color.White, maxLines = 1)
-                    Text(stage?.label ?: "—", style = MaterialTheme.typography.labelSmall, color = if (stage == null) MaterialTheme.colorScheme.onSurfaceVariant else Color.White)
+                    JaText(item.display, style = MaterialTheme.typography.titleLarge, color = if (stage == null) MaterialTheme.colorScheme.onSurface else Color.White, maxLines = 1)
+                    Text(stage?.localized() ?: stringResource(R.string.path_not_started_short), style = MaterialTheme.typography.labelSmall, color = if (stage == null) MaterialTheme.colorScheme.onSurfaceVariant else Color.White)
                 }
             }
         }
@@ -116,7 +124,7 @@ fun PathItemScreen(id: String, onOpenItem: (String) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         PathItemContent(d, onSaveStory = { story -> scope.launch { graph.path()?.saveMyStory(id, story) } }, onOpenItem = onOpenItem)
         if (d.stage == null) {
-            Text("Not started yet.", Modifier.padding(top = 12.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(R.string.path_not_started), Modifier.padding(top = 12.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }
@@ -128,13 +136,22 @@ fun StageBar(counts: Map<Stage, Int>, modifier: Modifier = Modifier) {
         Stage.entries.forEach { stage ->
             val n = counts[stage] ?: 0
             val max = (counts.values.maxOrNull() ?: 1).coerceAtLeast(1)
-            androidx.compose.foundation.layout.Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(stage.label, Modifier.size(width = 96.dp, height = 20.dp), style = MaterialTheme.typography.labelMedium)
-                Box(
-                    Modifier
-                        .size(width = (180 * n / max).coerceAtLeast(2).dp, height = 14.dp)
-                        .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(4.dp)),
-                )
+            val label = stage.localized()
+            // One node per stage for TalkBack ("Guru: 12"); the label column grows with the font instead of clipping.
+            androidx.compose.foundation.layout.Row(
+                Modifier.clearAndSetSemantics { contentDescription = "$label: $n" },
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(label, Modifier.widthIn(min = 96.dp).padding(end = 8.dp), style = MaterialTheme.typography.labelMedium)
+                Box(Modifier.weight(1f)) {
+                    Box(
+                        Modifier
+                            .fillMaxWidth(n.toFloat() / max)
+                            .widthIn(min = 2.dp)
+                            .height(14.dp)
+                            .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(4.dp)),
+                    )
+                }
                 Text("  $n", style = MaterialTheme.typography.labelMedium)
             }
         }

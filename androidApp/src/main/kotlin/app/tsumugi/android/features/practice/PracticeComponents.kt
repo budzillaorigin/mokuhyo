@@ -1,5 +1,9 @@
 package app.tsumugi.android.features.practice
 
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.app.Application
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -68,7 +72,7 @@ fun rememberGraph(): AppGraph = (LocalContext.current.applicationContext as Tsum
 fun AiBadge(engine: String? = null, modifier: Modifier = Modifier) {
     Surface(modifier, shape = RoundedCornerShape(6.dp), color = MaterialTheme.colorScheme.tertiaryContainer) {
         Text(
-            if (engine.isNullOrBlank()) "AI-generated" else "AI-generated · $engine",
+            if (engine.isNullOrBlank()) stringResource(R.string.ai_badge) else stringResource(R.string.ai_badge_engine, engine),
             Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onTertiaryContainer,
@@ -87,20 +91,20 @@ fun Notice(text: String, modifier: Modifier = Modifier, actionLabel: String? = n
     }
 }
 
-const val PRACTICE_PACK_MISSING =
-    "The speaking & listening practice pack isn't installed in this build. Build it with `uv run packs/build_practice.py` " +
-        "in tools/ (see docs/CONTENT_PACKS.md), then rebuild the app."
+/** Empty state when the practice pack wasn't built into this APK (CLAUDE.md rule 9: honest, never placeholder content). */
+@Composable
+fun PracticePackMissing(modifier: Modifier = Modifier) = Notice(stringResource(R.string.practice_pack_missing), modifier)
 
 @Composable
 fun SectionTitle(text: String, modifier: Modifier = Modifier) {
-    Text(text, modifier.padding(top = 8.dp), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+    Text(text, modifier.padding(top = 8.dp).semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
 }
 
 /** JLPT level filter chips (null = all levels). */
 @Composable
 fun JlptFilter(selected: Int?, onSelect: (Int?) -> Unit, modifier: Modifier = Modifier) {
     Row(modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-        FilterChip(selected == null, { onSelect(null) }, { Text("All") })
+        FilterChip(selected == null, { onSelect(null) }, { Text(stringResource(R.string.filter_all)) })
         (5 downTo 1).forEach { level -> FilterChip(selected == level, { onSelect(level) }, { Text("N$level") }) }
     }
 }
@@ -118,6 +122,8 @@ fun MicButton(input: SpeechInput, onResult: (SpeechResult) -> Unit, modifier: Mo
     val busy = state == SpeechInput.State.Transcribing
     fun begin() = scope.launch { input.start()?.let(onError) }
     fun end() = scope.launch { if (input.state.value == SpeechInput.State.Listening) onResult(input.stop()) }
+    val stopLabel = stringResource(R.string.mic_stop)
+    val recordLabel = stringResource(R.string.mic_record)
     val color = when {
         !enabled || busy -> MaterialTheme.colorScheme.surfaceVariant
         listening -> MaterialTheme.colorScheme.secondary
@@ -131,7 +137,7 @@ fun MicButton(input: SpeechInput, onResult: (SpeechResult) -> Unit, modifier: Mo
                 .background(color)
                 .semantics {
                     role = Role.Button
-                    contentDescription = if (listening) "Stop recording" else "Record your answer"
+                    contentDescription = if (listening) stopLabel else recordLabel
                     onClick {
                         if (!permission.granted) permission.request() else if (listening) end() else begin()
                         true
@@ -152,14 +158,14 @@ fun MicButton(input: SpeechInput, onResult: (SpeechResult) -> Unit, modifier: Mo
                 },
             contentAlignment = Alignment.Center,
         ) {
-            Text(if (listening) "●" else "🎤", color = Color.White, style = MaterialTheme.typography.headlineSmall)
+            Text(if (listening) "●" else "🎤", Modifier.clearAndSetSemantics {}, color = Color.White, style = MaterialTheme.typography.headlineSmall)
         }
         Text(
             when {
-                !permission.granted -> "Tap to allow the microphone"
-                busy -> "Listening back…"
-                listening -> "Release to finish"
-                else -> "Hold to speak"
+                !permission.granted -> stringResource(R.string.mic_allow)
+                busy -> stringResource(R.string.mic_busy)
+                listening -> stringResource(R.string.mic_release)
+                else -> stringResource(R.string.mic_hold)
             },
             style = MaterialTheme.typography.labelMedium,
         )
@@ -173,7 +179,7 @@ fun SpeakOrType(
     enabled: Boolean,
     onSubmit: (String, SpeechResult?) -> Unit,
     modifier: Modifier = Modifier,
-    placeholder: String = "Or type in Japanese",
+    placeholder: String? = null,
 ) {
     var typed by remember { mutableStateOf("") }
     var error by remember { mutableStateOf<String?>(null) }
@@ -191,14 +197,14 @@ fun SpeakOrType(
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedTextField(
                 typed, { typed = it }, Modifier.weight(1f),
-                placeholder = { Text(placeholder) }, singleLine = true,
+                placeholder = { Text(placeholder ?: stringResource(R.string.speak_or_type)) }, singleLine = true,
                 textStyle = MaterialTheme.typography.bodyLarge.japanese(),
             )
             Button(
                 onClick = { onSubmit(typed.trim(), null); typed = "" },
                 enabled = enabled && typed.isNotBlank(),
                 modifier = Modifier.sizeIn(minHeight = 48.dp),
-            ) { Text("Send") }
+            ) { Text(stringResource(R.string.action_send)) }
         }
     }
 }

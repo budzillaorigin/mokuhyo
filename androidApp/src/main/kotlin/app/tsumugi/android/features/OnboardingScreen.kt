@@ -1,5 +1,11 @@
 package app.tsumugi.android.features
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.localized
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,6 +42,7 @@ import app.tsumugi.study.TodayPlanner
 import kotlinx.coroutines.launch
 
 /** First-run setup: goal, daily budget, a quick kanji check for the starting level. Skippable throughout. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun OnboardingScreen(onDone: (openImport: Boolean) -> Unit) {
     val graph = (LocalContext.current.applicationContext as TsumugiApplication).graph
@@ -56,45 +63,45 @@ fun OnboardingScreen(onDone: (openImport: Boolean) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         when (step) {
             0 -> {
-                Text("紡ぎ", style = MaterialTheme.typography.displayMedium.japanese())
-                Text("Welcome to Tsumugi", style = MaterialTheme.typography.headlineSmall)
-                Text("Kanji, vocabulary, grammar, reading and speaking in one offline app. Nothing needs an account or a subscription.")
-                Text("What are you working towards?", style = MaterialTheme.typography.titleMedium)
+                JaText("紡ぎ", style = MaterialTheme.typography.displayMedium)
+                Text(stringResource(R.string.onboarding_welcome), style = MaterialTheme.typography.headlineSmall)
+                Text(stringResource(R.string.onboarding_intro))
+                Text(stringResource(R.string.onboarding_goal_question), style = MaterialTheme.typography.titleMedium)
                 LearningGoal.entries.forEach { g ->
-                    FilterChip(selected = goal == g, onClick = { goal = g }, label = { Text(g.label) }, modifier = Modifier.fillMaxWidth())
+                    FilterChip(selected = goal == g, onClick = { goal = g }, label = { Text(g.localized()) }, modifier = Modifier.fillMaxWidth())
                 }
-                Button(onClick = { step = 1 }) { Text("Next") }
+                Button(onClick = { step = 1 }) { Text(stringResource(R.string.action_next)) }
             }
             1 -> {
-                Text("How much time a day?", style = MaterialTheme.typography.headlineSmall)
-                Text("Today's plan is sized to this. You can change it any day.")
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    TodayPlanner.BUDGET_OPTIONS.forEach { m -> FilterChip(selected = budget == m, onClick = { budget = m }, label = { Text("$m min") }) }
+                Text(stringResource(R.string.onboarding_time_question), style = MaterialTheme.typography.headlineSmall)
+                Text(stringResource(R.string.onboarding_time_hint))
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    TodayPlanner.BUDGET_OPTIONS.forEach { m -> FilterChip(selected = budget == m, onClick = { budget = m }, label = { Text(stringResource(R.string.minutes_short, m)) }) }
                 }
-                Button(onClick = { step = if (questions.isEmpty()) 3 else 2 }) { Text("Next") }
+                Button(onClick = { step = if (questions.isEmpty()) 3 else 2 }) { Text(stringResource(R.string.action_next)) }
             }
             2 -> {
                 val q = questions.getOrNull(qIndex)
                 if (q == null) {
                     LaunchedEffect(Unit) { step = 3 }
                 } else {
-                    Text("Quick kanji check (${qIndex + 1}/${questions.size})", style = MaterialTheme.typography.titleMedium)
-                    Text("Do you know this kanji's meaning and a reading?")
-                    Text(q.item.display, fontSize = 96.sp, style = MaterialTheme.typography.displayLarge.japanese(), modifier = Modifier.align(Alignment.CenterHorizontally))
-                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Button(onClick = { answers[q] = true; qIndex++ }) { Text("I know it") }
-                        OutlinedButton(onClick = { answers[q] = false; qIndex++ }) { Text("Not yet") }
+                    Text(stringResource(R.string.onboarding_check_title, qIndex + 1, questions.size), style = MaterialTheme.typography.titleMedium)
+                    Text(stringResource(R.string.onboarding_check_question))
+                    JaText(q.item.display, Modifier.align(Alignment.CenterHorizontally), style = MaterialTheme.typography.displayLarge, fontSize = 96.sp)
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Button(onClick = { answers[q] = true; qIndex++ }) { Text(stringResource(R.string.onboarding_know_it)) }
+                        OutlinedButton(onClick = { answers[q] = false; qIndex++ }) { Text(stringResource(R.string.onboarding_not_yet)) }
                     }
-                    TextButton(onClick = { answers.clear(); step = 3 }) { Text("Skip — start from level 1") }
+                    TextButton(onClick = { answers.clear(); step = 3 }) { Text(stringResource(R.string.onboarding_skip)) }
                 }
             }
             else -> {
                 val level = if (answers.isEmpty()) 1 else graph.onboarding.suggestedLevel(answers)
-                Text("You're set", style = MaterialTheme.typography.headlineSmall)
-                Text("Kanji path starts at level $level. Earlier items stay available if you want them.")
-                Text("Coming from WaniKani, Anki (NihongoShark), Bunpro or imiwa? Import your progress so it carries over.")
-                Button(onClick = { finish(openImport = false) }) { Text("Start learning") }
-                OutlinedButton(onClick = { finish(openImport = true) }) { Text("Import my progress first") }
+                Text(stringResource(R.string.onboarding_done_title), style = MaterialTheme.typography.headlineSmall)
+                Text(stringResource(R.string.onboarding_done_level, level))
+                Text(stringResource(R.string.onboarding_done_import))
+                Button(onClick = { finish(openImport = false) }) { Text(stringResource(R.string.onboarding_start)) }
+                OutlinedButton(onClick = { finish(openImport = true) }) { Text(stringResource(R.string.onboarding_import_first)) }
             }
         }
     }

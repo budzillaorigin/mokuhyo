@@ -1,5 +1,13 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.app.Application
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -71,15 +79,15 @@ fun ScenarioListScreen(onOpen: (String) -> Unit) {
     Column(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
         JlptFilter(level, { level = it }, Modifier.padding(vertical = 8.dp))
         when {
-            missing -> Notice(PRACTICE_PACK_MISSING)
+            missing -> PracticePackMissing()
             scenarios == null -> LinearProgressIndicator(Modifier.fillMaxWidth())
-            scenarios!!.isEmpty() -> Text("No scenarios at this level in the installed pack.", Modifier.padding(8.dp))
+            scenarios!!.isEmpty() -> Text(stringResource(R.string.roleplay_none), Modifier.padding(8.dp))
             else -> LazyColumn {
                 items(scenarios!!, key = { it.id }) { s ->
                     ListItem(
                         modifier = Modifier.clickable { onOpen(s.id) },
-                        headlineContent = { Text("${s.titleJa}  ${s.titleEn}", style = MaterialTheme.typography.titleSmall.japanese()) },
-                        supportingContent = { Text("${s.setting} · you: ${s.learnerRole}") },
+                        headlineContent = { Text(buildAnnotatedString { append(ja(s.titleJa)); append("  ${s.titleEn}") }, style = MaterialTheme.typography.titleSmall.japanese()) },
+                        supportingContent = { Text(stringResource(R.string.roleplay_row, s.setting, s.learnerRole)) },
                         trailingContent = {
                             Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(2.dp)) {
                                 Tag("N${s.jlpt}")
@@ -174,27 +182,29 @@ fun RoleplayScreen(scenarioId: String, key: String, onOpenAiSettings: () -> Unit
         return
     }
     if (session == null) {
-        Notice(PRACTICE_PACK_MISSING, Modifier.padding(16.dp))
+        PracticePackMissing(Modifier.padding(16.dp))
         return
     }
     val scenario = session.scenario
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp), state = listState, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         item {
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text(scenario.titleJa, style = MaterialTheme.typography.titleLarge.japanese())
-                Text("${scenario.titleEn} · you are ${scenario.learnerRole}, talking to ${scenario.partnerRole}", style = MaterialTheme.typography.bodyMedium)
-                if (scenario.goals.isNotEmpty()) Text("Goals: " + scenario.goals.joinToString("; "), style = MaterialTheme.typography.bodySmall)
+                JaText(scenario.titleJa, Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(R.string.roleplay_roles, scenario.titleEn, scenario.learnerRole, scenario.partnerRole), style = MaterialTheme.typography.bodyMedium)
+                if (scenario.goals.isNotEmpty()) Text(stringResource(R.string.roleplay_goals) + scenario.goals.joinToString("; "), style = MaterialTheme.typography.bodySmall)
                 if (scenario.isAiGenerated) AiBadge()
                 vm.unavailable?.let {
                     Notice(
-                        "Scripted mode: the partner follows a written script and the hint shows a sample answer. " +
-                            "Corrections and the natural version need an AI model. $it",
-                        actionLabel = "Open AI settings", onAction = onOpenAiSettings,
+                        stringResource(R.string.roleplay_scripted, it),
+                        actionLabel = stringResource(R.string.ai_open_settings), onAction = onOpenAiSettings,
                     )
                 }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("Show English", Modifier.weight(1f))
-                    Switch(showEnglish, { showEnglish = it })
+                Row(
+                    Modifier.fillMaxWidth().heightIn(min = 48.dp).toggleable(value = showEnglish, role = Role.Switch, onValueChange = { showEnglish = it }),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(stringResource(R.string.roleplay_show_english), Modifier.weight(1f))
+                    Switch(showEnglish, onCheckedChange = null)
                 }
             }
         }
@@ -222,17 +232,18 @@ fun RoleplayScreen(scenarioId: String, key: String, onOpenAiSettings: () -> Unit
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (session.goalReached) {
                     Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
-                        Text("🎉 Goal reached! Keep talking or pick another scenario.", Modifier.padding(12.dp))
+                        Text(stringResource(R.string.roleplay_goal_reached), Modifier.padding(12.dp))
                     }
                 }
                 if (vm.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
-                hint?.let { Text("Hint: $it", style = MaterialTheme.typography.bodyMedium.japanese()) }
+                hint?.let { Text(buildAnnotatedString { append(stringResource(R.string.roleplay_hint_prefix)); append(ja(it)) }, style = MaterialTheme.typography.bodyMedium.japanese()) }
+                val noHint = stringResource(R.string.roleplay_no_hint)
                 OutlinedButton(
-                    onClick = { hint = vm.lines.lastOrNull { it.speaker == Speaker.PARTNER }?.hint?.ifBlank { "No hint for this line." } },
-                ) { Text("Hint") }
+                    onClick = { hint = vm.lines.lastOrNull { it.speaker == Speaker.PARTNER }?.hint?.ifBlank { noHint } },
+                ) { Text(stringResource(R.string.roleplay_hint)) }
                 SpeakOrType(input, enabled = !vm.busy, onSubmit = { text, rec -> vm.send(text, rec) })
                 Text(
-                    "Tap one of your lines for corrections, a natural version and pronunciation feedback. Recordings stay on this device.",
+                    stringResource(R.string.roleplay_tap_hint),
                     style = MaterialTheme.typography.bodySmall,
                 )
             }
@@ -245,11 +256,12 @@ private fun PartnerLine(line: ConversationLine, showEnglish: Boolean, onReplay: 
     Card(Modifier.fillMaxWidth(0.9f)) {
         Row(Modifier.padding(start = 12.dp, top = 4.dp, bottom = 8.dp), verticalAlignment = Alignment.Top) {
             Column(Modifier.weight(1f).padding(top = 8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text(line.japanese, style = MaterialTheme.typography.bodyLarge.japanese())
+                JaText(line.japanese, style = MaterialTheme.typography.bodyLarge)
                 if (showEnglish && line.english.isNotBlank()) Text(line.english, style = MaterialTheme.typography.bodySmall)
                 if (line.aiGenerated) AiBadge(line.engine)
             }
-            IconButton(onClick = onReplay, modifier = Modifier.semantics { contentDescription = "Play this line again" }) { Text("▶") }
+            val replayLabel = stringResource(R.string.roleplay_replay)
+            IconButton(onClick = onReplay, modifier = Modifier.semantics { contentDescription = replayLabel }) { Text("▶") }
         }
     }
 }
@@ -258,12 +270,12 @@ private fun PartnerLine(line: ConversationLine, showEnglish: Boolean, onReplay: 
 private fun LearnerLine(line: ConversationLine, selected: Boolean, onClick: () -> Unit) {
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
         Card(
-            Modifier.fillMaxWidth(0.9f).clickable(onClickLabel = "Show feedback", onClick = onClick),
+            Modifier.fillMaxWidth(0.9f).clickable(onClickLabel = stringResource(R.string.roleplay_show_feedback), onClick = onClick),
             colors = CardDefaults.cardColors(
                 containerColor = if (selected) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.primaryContainer,
             ),
         ) {
-            Text(line.japanese, Modifier.padding(12.dp), style = MaterialTheme.typography.bodyLarge.japanese())
+            JaText(line.japanese, Modifier.padding(12.dp), style = MaterialTheme.typography.bodyLarge)
         }
     }
 }
@@ -281,25 +293,25 @@ private fun FeedbackView(
     Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             if (!loaded || feedback == null) {
-                Text("Checking your sentence…")
+                Text(stringResource(R.string.roleplay_checking))
                 LinearProgressIndicator(Modifier.fillMaxWidth())
                 return@Column
             }
             feedback.unavailable?.let {
-                Text("No corrections: $it", style = MaterialTheme.typography.bodySmall)
-                OutlinedButton(onClick = onOpenAiSettings) { Text("Open AI settings") }
+                Text(stringResource(R.string.roleplay_no_corrections, it), style = MaterialTheme.typography.bodySmall)
+                OutlinedButton(onClick = onOpenAiSettings) { Text(stringResource(R.string.ai_open_settings)) }
             }
             feedback.correction?.let { c ->
                 Text(
                     when {
-                        c.isUnsure -> "Not sure — the model's confidence is low."
-                        c.isCorrect -> "Looks right."
-                        else -> "Correction"
+                        c.isUnsure -> stringResource(R.string.roleplay_unsure)
+                        c.isCorrect -> stringResource(R.string.roleplay_looks_right)
+                        else -> stringResource(R.string.roleplay_correction)
                     },
                     style = MaterialTheme.typography.titleSmall,
                 )
                 if (!c.isCorrect && c.corrected.isNotBlank()) {
-                    Text(diff(original, c.corrected), style = MaterialTheme.typography.bodyLarge.japanese())
+                    Text(ja(diff(original, c.corrected)), style = MaterialTheme.typography.bodyLarge.japanese())
                 }
                 c.edits.forEach { e ->
                     Text("${e.original} → ${e.replacement}: ${e.reason}", style = MaterialTheme.typography.bodySmall.japanese())
@@ -308,13 +320,13 @@ private fun FeedbackView(
             }
             feedback.natural?.let { n ->
                 HorizontalDivider()
-                Text("Natural version", style = MaterialTheme.typography.titleSmall)
-                Text(n.rewrite, style = MaterialTheme.typography.bodyLarge.japanese())
+                Text(stringResource(R.string.roleplay_natural), style = MaterialTheme.typography.titleSmall)
+                JaText(n.rewrite, style = MaterialTheme.typography.bodyLarge)
                 if (n.notes.isNotBlank()) Text(n.notes, style = MaterialTheme.typography.bodySmall)
             }
             if (feedback.engine != null) AiBadge(feedback.engine)
             val target = feedback.natural?.rewrite ?: feedback.correction?.corrected?.takeIf { it.isNotBlank() } ?: original
-            OutlinedButton(onClick = { sayAgain = !sayAgain }) { Text(if (sayAgain) "Hide" else "Say it again") }
+            OutlinedButton(onClick = { sayAgain = !sayAgain }) { Text(stringResource(if (sayAgain) R.string.action_hide else R.string.roleplay_say_again)) }
             if (sayAgain) panel(target)
         }
     }

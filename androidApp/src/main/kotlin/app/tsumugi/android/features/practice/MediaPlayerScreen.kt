@@ -1,5 +1,13 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.content.Context
 import android.net.Uri
 import android.widget.VideoView
@@ -55,6 +63,7 @@ import java.nio.charset.CodingErrorAction
  * (.srt/.vtt) and optional English ones, picked with the system file picker. Dual subtitles, tap a line to look it
  * up, previous/next line, and an A-B loop on the current line. Uses the platform VideoView (no extra dependency).
  */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MediaPlayerScreen(onLookup: (String) -> Unit) {
     val context = LocalContext.current
@@ -71,28 +80,26 @@ fun MediaPlayerScreen(onLookup: (String) -> Unit) {
 
     LaunchedEffect(jaSubs, enSubs) {
         error = null
-        val ja = jaSubs?.let { runCatching { Subtitles.parse(readText(context, Uri.parse(it))) }.onFailure { e -> error = "Couldn't read the Japanese subtitles: ${e.message}" }.getOrNull() }.orEmpty()
-        val en = enSubs?.let { runCatching { Subtitles.parse(readText(context, Uri.parse(it))) }.onFailure { e -> error = "Couldn't read the English subtitles: ${e.message}" }.getOrNull() }.orEmpty()
-        if (jaSubs != null && ja.isEmpty() && error == null) error = "No subtitle cues found in that file (expected .srt or .vtt)."
+        val ja = jaSubs?.let { runCatching { Subtitles.parse(readText(context, Uri.parse(it))) }.onFailure { e -> error = context.getString(R.string.media_ja_failed, e.message.orEmpty()) }.getOrNull() }.orEmpty()
+        val en = enSubs?.let { runCatching { Subtitles.parse(readText(context, Uri.parse(it))) }.onFailure { e -> error = context.getString(R.string.media_en_failed, e.message.orEmpty()) }.getOrNull() }.orEmpty()
+        if (jaSubs != null && ja.isEmpty() && error == null) error = context.getString(R.string.media_no_cues)
         jaCues = ja
         dual = Subtitles.dual(ja, en)
     }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(onClick = { mediaPicker.launch(arrayOf("video/*", "audio/*")) }) { Text(if (media == null) "Choose video/audio" else "Change media") }
+            Button(onClick = { mediaPicker.launch(arrayOf("video/*", "audio/*")) }) { Text(stringResource(if (media == null) R.string.media_choose else R.string.media_change)) }
         }
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            OutlinedButton(onClick = { jaPicker.launch(arrayOf("*/*")) }) { Text(if (jaSubs == null) "Japanese subtitles" else "JP subs ✓") }
-            OutlinedButton(onClick = { enPicker.launch(arrayOf("*/*")) }) { Text(if (enSubs == null) "English (optional)" else "EN subs ✓") }
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(onClick = { jaPicker.launch(arrayOf("*/*")) }) { Text(stringResource(if (jaSubs == null) R.string.media_ja_subs else R.string.media_ja_subs_ok)) }
+            OutlinedButton(onClick = { enPicker.launch(arrayOf("*/*")) }) { Text(stringResource(if (enSubs == null) R.string.media_en_subs else R.string.media_en_subs_ok)) }
         }
         error?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
         val uri = media
         if (uri == null) {
             Notice(
-                "Play your own video or audio files with Japanese subtitles (.srt or .vtt) and, optionally, English ones. " +
-                    "Everything stays on this device. Tsumugi doesn't download from streaming services: use files you already have. " +
-                    "Generating subtitles with on-device speech recognition isn't on Android yet.",
+                stringResource(R.string.media_intro),
             )
         } else {
             Player(Uri.parse(uri), jaCues, dual, onLookup)
@@ -100,6 +107,7 @@ fun MediaPlayerScreen(onLookup: (String) -> Unit) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun Player(uri: Uri, jaCues: List<Cue>, dual: List<DualCue>, onLookup: (String) -> Unit) {
     var view by remember { mutableStateOf<VideoView?>(null) }
@@ -136,31 +144,34 @@ private fun Player(uri: Uri, jaCues: List<Cue>, dual: List<DualCue>, onLookup: (
         position = target.startMs
     }
 
-    Row(horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
-        IconButton(onClick = { seekToCue(if (cue != null) index - 1 else index) }, modifier = Modifier.semantics { contentDescription = "Previous line" }) { Text("⏮") }
+    val previousLabel = stringResource(R.string.media_previous)
+    val nextLabel = stringResource(R.string.media_next)
+    val playPauseLabel = stringResource(if (playing) R.string.media_pause else R.string.media_play)
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+        IconButton(onClick = { seekToCue(if (cue != null) index - 1 else index) }, modifier = Modifier.semantics { contentDescription = previousLabel }) { Text("⏮") }
         IconButton(
             onClick = {
                 val v = view ?: return@IconButton
                 if (v.isPlaying) v.pause() else v.start()
                 playing = v.isPlaying
             },
-            modifier = Modifier.semantics { contentDescription = if (playing) "Pause" else "Play" },
+            modifier = Modifier.semantics { contentDescription = playPauseLabel },
         ) { Text(if (playing) "⏸" else "▶") }
-        IconButton(onClick = { seekToCue(index + 1) }, modifier = Modifier.semantics { contentDescription = "Next line" }) { Text("⏭") }
+        IconButton(onClick = { seekToCue(index + 1) }, modifier = Modifier.semantics { contentDescription = nextLabel }) { Text("⏭") }
         FilterChip(
             selected = loop != null,
             onClick = { loop = if (loop != null) null else current ?: dual.getOrNull(index) },
-            label = { Text("A-B loop") },
+            label = { Text(stringResource(R.string.media_loop)) },
             enabled = dual.isNotEmpty(),
         )
-        Text(time(position), style = MaterialTheme.typography.labelMedium)
+        Text(time(position), Modifier.align(Alignment.CenterVertically), style = MaterialTheme.typography.labelMedium)
     }
-    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-        FilterChip(showJa, { showJa = !showJa }, { Text("JP subtitles") })
-        FilterChip(showEn, { showEn = !showEn }, { Text("EN subtitles") })
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        FilterChip(showJa, { showJa = !showJa }, { Text(stringResource(R.string.media_show_ja)) })
+        FilterChip(showEn, { showEn = !showEn }, { Text(stringResource(R.string.media_show_en)) })
     }
     if (dual.isEmpty()) {
-        Text("Add a Japanese .srt or .vtt file to see subtitles.", style = MaterialTheme.typography.bodySmall)
+        Text(stringResource(R.string.media_add_subs), style = MaterialTheme.typography.bodySmall)
         return
     }
     Card(Modifier.fillMaxWidth()) {
@@ -169,22 +180,23 @@ private fun Player(uri: Uri, jaCues: List<Cue>, dual: List<DualCue>, onLookup: (
                 Text(" ", style = MaterialTheme.typography.titleLarge)
             } else {
                 if (showJa) {
-                    Text(
+                    JaText(
                         current.japanese,
-                        Modifier.clickable(onClickLabel = "Look up") { view?.pause(); playing = false; onLookup(current.japanese) },
-                        style = MaterialTheme.typography.titleLarge.japanese(),
+                        Modifier.clickable(onClickLabel = stringResource(R.string.reader_look_up)) { view?.pause(); playing = false; onLookup(current.japanese) },
+                        style = MaterialTheme.typography.titleLarge,
                     )
                 }
                 if (showEn) current.english?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
             }
         }
     }
-    Text("Tap the Japanese line to look it up.", style = MaterialTheme.typography.bodySmall)
-    Text("All lines", style = MaterialTheme.typography.titleSmall)
+    Text(stringResource(R.string.media_tap_hint), style = MaterialTheme.typography.bodySmall)
+    Text(stringResource(R.string.media_all_lines), style = MaterialTheme.typography.titleSmall)
+    val jumpLabel = stringResource(R.string.media_jump)
     dual.forEachIndexed { i, d ->
         Text(
-            "${time(d.startMs)}  ${d.japanese}",
-            Modifier.fillMaxWidth().clickable(onClickLabel = "Jump to this line") { seekToCue(i) }.padding(vertical = 6.dp),
+            buildAnnotatedString { append("${time(d.startMs)}  "); append(ja(d.japanese)) },
+            Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(onClickLabel = jumpLabel) { seekToCue(i) }.padding(vertical = 12.dp),
             style = MaterialTheme.typography.bodyMedium.japanese(),
             color = if (d == current) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
         )

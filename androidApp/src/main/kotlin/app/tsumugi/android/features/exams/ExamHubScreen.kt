@@ -1,5 +1,12 @@
 package app.tsumugi.android.features.exams
 
+import app.tsumugi.android.ui.JaText
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -30,7 +37,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import app.tsumugi.android.features.practice.EXAM_DISCLAIMER
 import app.tsumugi.android.features.practice.Notice
 import app.tsumugi.android.features.practice.SectionTitle
 import app.tsumugi.android.features.practice.rememberGraph
@@ -69,9 +75,14 @@ sealed interface ExamSpec {
     }
 }
 
-const val EXAM_PACK_MISSING =
-    "The exam pack (JLPT blueprints and item banks) isn't installed in this build. It's built by tools/packs/build_exam.py " +
-        "(see docs/CONTENT_PACKS.md). You can also import your own item bank (JSON) from Me → Import & export."
+/** Localized title of an exam form (top bar and preview). */
+@Composable
+fun ExamSpec.displayTitle(): String = when (this) {
+    is ExamSpec.JlptMock -> stringResource(R.string.exam_title_mock, level)
+    is ExamSpec.JlptSection -> "N$level · $sectionTitle"
+    is ExamSpec.JlptType -> "N$level · " + (JlptItemType.of(type)?.english ?: type)
+    is ExamSpec.Dlpt -> "${exam.title} · " + if (minutes >= 180) stringResource(R.string.exam_full_length) else stringResource(R.string.minutes_short, minutes)
+}
 
 /** Exams hub (BRIEF §5.11): JLPT mock/section/type drills with coverage, DLPT slices, OPI, history. */
 @OptIn(ExperimentalLayoutApi::class)
@@ -92,55 +103,56 @@ fun ExamHubScreen(onStart: (ExamSpec) -> Unit, onOpi: () -> Unit, onOpenAttempt:
     }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Notice(EXAM_DISCLAIMER)
+        Notice(stringResource(R.string.exam_disclaimer))
         if (!loaded) {
             LinearProgressIndicator(Modifier.fillMaxWidth())
             return@Column
         }
         SectionTitle("JLPT")
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            (5 downTo 1).forEach { l -> FilterChip(level == l, { level = l }, { Text("N$l") }) }
+            (5 downTo 1).forEach { l -> FilterChip(level == l, { level = l }, { Text("N$l") }, Modifier.semantics { role = Role.RadioButton }) }
         }
         val bp = blueprints?.level(level)
         val cov = coverage.firstOrNull { it.exam == ExamKind.JLPT && it.level == "N$level" }
         if (bp == null) {
-            Notice(EXAM_PACK_MISSING, actionLabel = "Import an item bank", onAction = onImport)
+            Notice(stringResource(R.string.exam_pack_missing), actionLabel = stringResource(R.string.exam_import_bank), onAction = onImport)
         } else {
-            Text("${cov?.total ?: 0} items available · a full mock uses ${bp.itemCount} in ${bp.totalMinutes} minutes", style = MaterialTheme.typography.bodyMedium)
-            Button(onClick = { onStart(ExamSpec.JlptMock(level)) }, enabled = (cov?.total ?: 0) > 0) { Text("Full mock (${bp.totalMinutes} min)") }
-            Text("Section drill", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.exam_available, cov?.total ?: 0, bp.itemCount, bp.totalMinutes), style = MaterialTheme.typography.bodyMedium)
+            Button(onClick = { onStart(ExamSpec.JlptMock(level)) }, enabled = (cov?.total ?: 0) > 0) { Text(stringResource(R.string.exam_full_mock, bp.totalMinutes)) }
+            Text(stringResource(R.string.exam_section_drill), style = MaterialTheme.typography.titleSmall)
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 bp.sections.forEach { s ->
                     val available = s.items.sumOf { cov?.types?.get(it.type) ?: 0 }
                     OutlinedButton(onClick = { onStart(ExamSpec.JlptSection(level, s.id, s.title)) }, enabled = available > 0) {
-                        Text("${s.title} · ${s.minutes} min", style = MaterialTheme.typography.bodyMedium)
+                        JaText("${s.title} · " + stringResource(R.string.minutes_short, s.minutes), style = MaterialTheme.typography.bodyMedium)
                     }
                 }
             }
-            Text("Item-type drill (available / on a real test)", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.exam_type_drill), style = MaterialTheme.typography.titleSmall)
             val specs = bp.sections.flatMap { it.items }.groupBy { it.type }
             specs.forEach { (type, list) ->
                 val available = cov?.types?.get(type) ?: 0
                 val kind = JlptItemType.of(type)
                 ListItem(
                     modifier = Modifier.clickable(enabled = available > 0) { onStart(ExamSpec.JlptType(level, type)) },
-                    headlineContent = { Text(kind?.let { "${it.title}  ${it.english}" } ?: list.first().title) },
+                    headlineContent = { JaText(kind?.let { "${it.title}  ${it.english}" } ?: list.first().title) },
                     trailingContent = { Text("$available / ${list.sumOf { it.count }}") },
                 )
             }
         }
 
         HorizontalDivider()
-        SectionTitle("DLPT (Reading, Listening)")
-        Text("ILR 0+ to 3. Passages in Japanese, questions in English.", style = MaterialTheme.typography.bodySmall)
+        SectionTitle(stringResource(R.string.exam_dlpt_title))
+        Text(stringResource(R.string.exam_dlpt_hint), style = MaterialTheme.typography.bodySmall)
         listOf(ExamKind.DLPT_READING, ExamKind.DLPT_LISTENING).forEach { kind ->
             val available = coverage.filter { it.exam == kind }.sumOf { it.total }
-            Text("${kind.title} · $available items", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.exam_kind_items, kind.title, available), style = MaterialTheme.typography.titleSmall)
             if (available == 0) {
-                Text("No items installed. Import a DLPT item bank from Me → Import & export.", style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.exam_dlpt_none), style = MaterialTheme.typography.bodySmall)
             } else {
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    listOf(180 to "Full (180)", 60 to "60 min", 30 to "30 min").forEach { (minutes, label) ->
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    listOf(180, 60, 30).forEach { minutes ->
+                        val label = if (minutes >= 180) stringResource(R.string.exam_dlpt_full) else stringResource(R.string.minutes_short, minutes)
                         OutlinedButton(onClick = { onStart(ExamSpec.Dlpt(kind, minutes)) }) { Text(label) }
                     }
                 }
@@ -148,19 +160,19 @@ fun ExamHubScreen(onStart: (ExamSpec) -> Unit, onOpi: () -> Unit, onOpenAttempt:
         }
 
         HorizontalDivider()
-        SectionTitle("OPI (speaking)")
-        OutlinedButton(onClick = onOpi) { Text("Practice interview") }
+        SectionTitle(stringResource(R.string.exam_opi_title))
+        OutlinedButton(onClick = onOpi) { Text(stringResource(R.string.exam_opi_start)) }
 
         HorizontalDivider()
-        SectionTitle("History")
-        if (history.isEmpty()) Text("No attempts yet.", style = MaterialTheme.typography.bodyMedium)
+        SectionTitle(stringResource(R.string.exam_history))
+        if (history.isEmpty()) Text(stringResource(R.string.exam_no_attempts), style = MaterialTheme.typography.bodyMedium)
         val format = remember { DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT) }
         history.forEach { a ->
             ListItem(
                 modifier = Modifier.clickable { onOpenAttempt(a.id) },
                 headlineContent = { Text(a.summary) },
                 supportingContent = { Text("${a.mode.title} · ${format.format(Date(a.submittedAt.toEpochMilliseconds()))}") },
-                trailingContent = { Text("›", Modifier.width(16.dp)) },
+                trailingContent = { Text("›", Modifier.width(16.dp).clearAndSetSemantics {}) },
             )
         }
     }

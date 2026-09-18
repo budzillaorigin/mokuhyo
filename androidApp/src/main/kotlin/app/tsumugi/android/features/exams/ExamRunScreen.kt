@@ -1,5 +1,14 @@
 package app.tsumugi.android.features.exams
 
+import app.tsumugi.android.ui.PlayLabel
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.app.Application
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
@@ -137,10 +146,10 @@ fun ExamRunScreen(spec: ExamSpec, key: String, onReview: (String) -> Unit, onExi
     if (confirmLeave) {
         AlertDialog(
             onDismissRequest = { confirmLeave = false },
-            title = { Text("Leave the exam?") },
-            text = { Text("This attempt won't be scored or saved.") },
-            confirmButton = { TextButton(onClick = { confirmLeave = false; onExit() }) { Text("Leave") } },
-            dismissButton = { TextButton(onClick = { confirmLeave = false }) { Text("Stay") } },
+            title = { Text(stringResource(R.string.exam_leave_title)) },
+            text = { Text(stringResource(R.string.exam_leave_text)) },
+            confirmButton = { TextButton(onClick = { confirmLeave = false; onExit() }) { Text(stringResource(R.string.exam_leave)) } },
+            dismissButton = { TextButton(onClick = { confirmLeave = false }) { Text(stringResource(R.string.exam_stay)) } },
         )
     }
     when {
@@ -155,38 +164,37 @@ fun ExamRunScreen(spec: ExamSpec, key: String, onReview: (String) -> Unit, onExi
 private fun Preview(vm: ExamRunViewModel, spec: ExamSpec) {
     val form = vm.preview
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text(spec.title, style = MaterialTheme.typography.headlineSmall)
+        Text(spec.displayTitle(), style = MaterialTheme.typography.headlineSmall)
         if (form == null) {
-            Notice(EXAM_PACK_MISSING)
+            Notice(stringResource(R.string.exam_pack_missing))
             return@Column
         }
         if (form.isEmpty) {
-            Notice("The installed item banks have no items for this. Import an item bank from Me → Import & export.")
+            Notice(stringResource(R.string.exam_form_empty))
             return@Column
         }
         form.sections.forEach { s ->
-            Text("• ${s.title}: ${s.items.size} items" + (s.minutes?.let { " · $it min" } ?: " · untimed"))
+            JaText("• " + stringResource(R.string.exam_preview_section, s.title, s.items.size) + " · " + (s.minutes?.let { stringResource(R.string.minutes_short, it) } ?: stringResource(R.string.exam_untimed)))
         }
         if (form.shortfalls.isNotEmpty()) {
             Notice(
-                "The bank is short of items, so this form is smaller than the real test:\n" +
-                    form.shortfalls.joinToString("\n") { "• ${typeLabel(it.type)}: ${it.got} of ${it.wanted}" },
+                stringResource(R.string.exam_shortfall) + "\n" +
+                    form.shortfalls.joinToString("\n") { "• ${typeLabel(it.type)}: ${it.got} / ${it.wanted}" },
             )
         }
         if (spec.strict) {
             Text(
-                "Strict mode: each section runs on its real clock without pausing, listening audio plays once, and " +
-                    "dictionary lookups are off until you finish. Closed sections can't be reopened.",
+                stringResource(R.string.exam_strict_hint),
                 style = MaterialTheme.typography.bodySmall,
             )
         }
         if (form.items.any { it.item.aiGenerated }) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 AiBadge()
-                Text("Some items are AI-drafted and not yet reviewed.", style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.exam_ai_items), style = MaterialTheme.typography.bodySmall)
             }
         }
-        Button(onClick = { vm.start() }) { Text("Start") }
+        Button(onClick = { vm.start() }) { Text(stringResource(R.string.action_start)) }
     }
 }
 
@@ -214,16 +222,18 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
         Surface(tonalElevation = 2.dp) {
             Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
-                    Text(section.title, style = MaterialTheme.typography.titleMedium.japanese())
+                    JaText(section.title, style = MaterialTheme.typography.titleMedium)
                     Text(
-                        "Section ${session.sectionIndex + 1} of ${session.form.sections.size} · answered ${session.answeredCount}/${session.totalCount}",
+                        stringResource(R.string.exam_section_progress, session.sectionIndex + 1, session.form.sections.size, session.answeredCount, session.totalCount),
                         style = MaterialTheme.typography.labelMedium,
                     )
                 }
                 session.remainingMs()?.let { ms ->
                     val s = ms / 1000
+                    val timeLeft = stringResource(R.string.exam_time_left, (s / 60).toInt(), (s % 60).toInt())
                     Text(
                         "%d:%02d".format(s / 60, s % 60),
+                        Modifier.semantics { contentDescription = timeLeft },
                         style = MaterialTheme.typography.titleLarge,
                         color = if (ms < 60_000) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
                     )
@@ -236,6 +246,8 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
                 section.items.forEachIndexed { i, f ->
                     val answered = session.choiceFor(f.item.id) != null
                     val current = i == session.index
+                    val goTo = stringResource(R.string.exam_go_to, i + 1)
+                    val state = stringResource(if (answered) R.string.exam_answered else R.string.exam_unanswered)
                     Surface(
                         shape = MaterialTheme.shapes.small,
                         color = when {
@@ -243,7 +255,9 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
                             answered -> MaterialTheme.colorScheme.secondaryContainer
                             else -> MaterialTheme.colorScheme.surfaceVariant
                         },
-                        modifier = Modifier.size(48.dp).clickable(onClickLabel = "Go to question ${i + 1}") { session.goTo(i); vm.changed() },
+                        modifier = Modifier.size(48.dp)
+                            .selectable(selected = current, onClick = { session.goTo(i); vm.changed() })
+                            .semantics { contentDescription = goTo; stateDescription = state },
                     ) {
                         Box(contentAlignment = Alignment.Center) {
                             Text(
@@ -255,14 +269,14 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
                 }
             }
             Text(
-                JlptItemType.of(item.type)?.let { "${it.title} · ${it.english}" } ?: formItem.typeTitle,
+                ja(JlptItemType.of(item.type)?.let { "${it.title} · ${it.english}" } ?: formItem.typeTitle),
                 style = MaterialTheme.typography.labelLarge.japanese(),
                 color = MaterialTheme.colorScheme.primary,
             )
             if (passage != null) {
                 Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
                     Column(Modifier.heightIn(max = 360.dp).verticalScroll(rememberScrollState()).padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                        if (passage.title.isNotBlank()) Text(passage.title, style = MaterialTheme.typography.titleSmall.japanese())
+                        if (passage.title.isNotBlank()) JaText(passage.title, style = MaterialTheme.typography.titleSmall)
                         if (passage.body.isNotBlank()) ExamText(passage.body, highlight = markerOf(item.stem))
                         if (passage.aiGenerated) AiBadge()
                     }
@@ -280,9 +294,9 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
                             scope.launch { voices.sayAll(script.map { it.text to it.voice }) }
                         },
                         enabled = canPlay,
-                    ) { Text("▶ Play audio") }
+                    ) { PlayLabel(stringResource(R.string.exam_play_audio)) }
                     Text(
-                        if (spec.strict) (if (canPlay) "Plays once" else "Already played") else "Replay as often as you like",
+                        stringResource(if (spec.strict) (if (canPlay) R.string.exam_plays_once else R.string.exam_already_played) else R.string.exam_replay_any),
                         style = MaterialTheme.typography.bodySmall,
                     )
                 }
@@ -290,45 +304,51 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
             ExamText(item.stem, style = MaterialTheme.typography.titleMedium)
             if (item.aiGenerated) AiBadge()
             val chosen = session.choiceFor(item.id)
+            // The choices form a radio group: one selectable node per choice, announced as "radio button, selected".
+            Column(Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             item.choices.forEachIndexed { i, c ->
                 Card(
-                    Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(onClickLabel = "Choose ${i + 1}") { session.choose(i); vm.changed() },
+                    Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                        .selectable(selected = chosen == i, role = Role.RadioButton, onClick = { session.choose(i); vm.changed() }),
                     colors = CardDefaults.cardColors(
                         containerColor = if (chosen == i) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
                     ),
                     border = CardDefaults.outlinedCardBorder(),
                 ) {
                     Row(Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                        RadioButton(selected = chosen == i, onClick = { session.choose(i); vm.changed() })
+                        RadioButton(selected = chosen == i, onClick = null)
                         Text("${i + 1}  ", style = MaterialTheme.typography.bodyLarge)
                         ExamText(c, Modifier.weight(1f))
                     }
                 }
             }
+            }
         }
         HorizontalDivider()
+        val previousLabel = stringResource(R.string.exam_previous_question)
+        val nextLabel = stringResource(R.string.exam_next_question)
         Row(Modifier.fillMaxWidth().padding(8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
             OutlinedButton(
                 onClick = { session.previous(); vm.changed() }, enabled = session.index > 0,
-                modifier = Modifier.semantics { contentDescription = "Previous question" },
+                modifier = Modifier.semantics { contentDescription = previousLabel },
             ) { Text("‹") }
             OutlinedButton(
                 onClick = { session.next(); vm.changed() }, enabled = session.index < section.items.lastIndex,
-                modifier = Modifier.semantics { contentDescription = "Next question" },
+                modifier = Modifier.semantics { contentDescription = nextLabel },
             ) { Text("›") }
             Box(Modifier.weight(1f))
-            Button(onClick = { confirmEnd = true }) { Text(if (lastSection) "Finish" else "End section") }
+            Button(onClick = { confirmEnd = true }) { Text(stringResource(if (lastSection) R.string.action_finish else R.string.exam_end_section)) }
         }
     }
     if (confirmEnd) {
         val unanswered = section.items.count { session.choiceFor(it.item.id) == null }
         AlertDialog(
             onDismissRequest = { confirmEnd = false },
-            title = { Text(if (lastSection) "Finish the exam?" else "End this section?") },
+            title = { Text(stringResource(if (lastSection) R.string.exam_finish_title else R.string.exam_end_section_title)) },
             text = {
                 Text(
-                    (if (unanswered > 0) "$unanswered unanswered in this section (they count as wrong). " else "") +
-                        if (lastSection) "Your answers will be scored." else "You can't come back to this section.",
+                    (if (unanswered > 0) stringResource(R.string.exam_unanswered_warning, unanswered) + " " else "") +
+                        stringResource(if (lastSection) R.string.exam_will_score else R.string.exam_no_return),
                 )
             },
             confirmButton = {
@@ -336,9 +356,9 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
                     confirmEnd = false
                     voices.stop()
                     if (lastSection) vm.submit() else { session.nextSection(); vm.changed() }
-                }) { Text(if (lastSection) "Finish" else "End section") }
+                }) { Text(stringResource(if (lastSection) R.string.action_finish else R.string.exam_end_section)) }
             },
-            dismissButton = { TextButton(onClick = { confirmEnd = false }) { Text("Keep working") } },
+            dismissButton = { TextButton(onClick = { confirmEnd = false }) { Text(stringResource(R.string.exam_keep_working)) } },
         )
     }
 }
@@ -347,21 +367,21 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
 private fun ResultView(vm: ExamRunViewModel, result: ExamResult, onReview: (String) -> Unit, onExit: () -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         ScoringView(result.form.exam, result.summary, result.scoring)
-        Text(if (vm.savedId != null) "Saved to your exam history." else "Saving…", style = MaterialTheme.typography.bodySmall)
+        Text(stringResource(if (vm.savedId != null) R.string.exam_saved else R.string.exam_saving), style = MaterialTheme.typography.bodySmall)
         val refs = result.missedRefs.filter { it.startsWith("g:") || it.startsWith("v:") }
         if (refs.isNotEmpty()) {
             val added = vm.added
             Button(onClick = vm::addMissedToSrs, enabled = added == null) {
-                Text("Add missed grammar & words to SRS (${refs.size})")
+                Text(stringResource(R.string.exam_add_missed, refs.size))
             }
             added?.let {
                 Text(
-                    if (it == 0) "Nothing new to add (already in your reviews, or the packs aren't installed)." else "Added $it items to your reviews.",
+                    if (it == 0) stringResource(R.string.exam_nothing_to_add) else stringResource(R.string.exam_added_items, it),
                     style = MaterialTheme.typography.bodyMedium,
                 )
             }
         }
-        vm.savedId?.let { id -> OutlinedButton(onClick = { onReview(id) }) { Text("Review answers") } }
-        TextButton(onClick = onExit) { Text("Done") }
+        vm.savedId?.let { id -> OutlinedButton(onClick = { onReview(id) }) { Text(stringResource(R.string.exam_review_answers)) } }
+        TextButton(onClick = onExit) { Text(stringResource(R.string.action_done)) }
     }
 }

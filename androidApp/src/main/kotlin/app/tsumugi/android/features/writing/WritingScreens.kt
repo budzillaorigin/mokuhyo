@@ -1,5 +1,14 @@
 package app.tsumugi.android.features.writing
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -60,8 +69,10 @@ fun WritingCanvas(
     inked: List<List<Point>> = emptyList(),
     hint: List<Point>? = null,
     error: Boolean = false,
+    contentDescription: String? = null,
     onStroke: (List<Point>) -> Unit,
 ) {
+    val description = contentDescription ?: stringResource(R.string.writing_canvas_description, inked.size)
     var current by remember { mutableStateOf<List<Point>>(emptyList()) }
     val ink = MaterialTheme.colorScheme.onSurface
     val guide = MaterialTheme.colorScheme.outlineVariant
@@ -70,6 +81,8 @@ fun WritingCanvas(
         modifier
             .aspectRatio(1f)
             .border(1.dp, if (error) Color(0xFFC62828) else guide)
+            // A freehand canvas has no TalkBack gesture equivalent; describe it so the screen reader user knows what it is.
+            .semantics { this.contentDescription = description }
             .pointerInput(Unit) {
                 val scale = UNITS / size.width
                 detectDragGestures(
@@ -114,6 +127,7 @@ fun WritingPracticeScreen(kanji: List<String>, onDone: () -> Unit) {
     var error by remember { mutableStateOf(false) }
     var showTemplate by remember { mutableStateOf(true) }
     var missing by remember { mutableStateOf(false) }
+    val context = LocalContext.current
     val literal = kanji.getOrNull(index)
     LaunchedEffect(literal) {
         literal ?: return@LaunchedEffect
@@ -126,16 +140,16 @@ fun WritingPracticeScreen(kanji: List<String>, onDone: () -> Unit) {
     }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         if (literal == null) {
-            Text("Writing practice done.", style = MaterialTheme.typography.titleMedium)
-            Button(onClick = onDone) { Text("Done") }
+            Text(stringResource(R.string.writing_done), style = MaterialTheme.typography.titleMedium)
+            Button(onClick = onDone) { Text(stringResource(R.string.action_done)) }
             return@Column
         }
-        Text("${index + 1} of ${kanji.size}: $literal", style = MaterialTheme.typography.titleLarge.japanese())
+        Text(buildAnnotatedString { append(stringResource(R.string.writing_progress, index + 1, kanji.size)); append(ja(literal)) }, style = MaterialTheme.typography.titleLarge.japanese())
         if (missing) {
-            Text("No stroke data for $literal.")
+            Text(stringResource(R.string.writing_no_data, literal))
         } else {
             val s = session
-            FilterChip(selected = showTemplate, onClick = { showTemplate = !showTemplate }, label = { Text("Show template") })
+            FilterChip(selected = showTemplate, onClick = { showTemplate = !showTemplate }, label = { Text(stringResource(R.string.writing_show_template)) })
             WritingCanvas(
                 Modifier.fillMaxWidth(),
                 template = template,
@@ -150,21 +164,23 @@ fun WritingPracticeScreen(kanji: List<String>, onDone: () -> Unit) {
                 error = !result.accepted
                 if (result.accepted) {
                     inked = inked + listOf(template[result.index])
-                    feedback = if (ws.done) "Done! Rating: ${ws.suggestedRating}/4" else null
+                    feedback = if (ws.done) context.getString(R.string.writing_done_rating, ws.suggestedRating) else null
                 } else {
-                    feedback = when (result.problem) {
-                        StrokeProblem.WRONG_DIRECTION -> "Wrong direction"
-                        StrokeProblem.WRONG_ORDER -> "Wrong stroke order"
-                        StrokeProblem.WRONG_POSITION -> "Right shape, wrong place"
-                        StrokeProblem.TOO_SHORT -> "Too short"
-                        else -> "Not quite — try again"
-                    } + if (ws.failuresOnCurrent >= WritingSession.HINT_AFTER_FAILURES) " (hint shown)" else ""
+                    feedback = context.getString(
+                        when (result.problem) {
+                            StrokeProblem.WRONG_DIRECTION -> R.string.writing_wrong_direction
+                            StrokeProblem.WRONG_ORDER -> R.string.writing_wrong_order
+                            StrokeProblem.WRONG_POSITION -> R.string.writing_wrong_position
+                            StrokeProblem.TOO_SHORT -> R.string.writing_too_short
+                            else -> R.string.writing_try_again
+                        },
+                    ) + if (ws.failuresOnCurrent >= WritingSession.HINT_AFTER_FAILURES) context.getString(R.string.writing_hint_shown) else ""
                 }
             }
-            feedback?.let { Text(it, color = if (error) Color(0xFFC62828) else MaterialTheme.colorScheme.tertiary) }
+            feedback?.let { Text(it, Modifier.semantics { liveRegion = LiveRegionMode.Polite }, color = if (error) Color(0xFFC62828) else MaterialTheme.colorScheme.tertiary) }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(onClick = { index = index }) { Text("Restart") }
-                Button(onClick = { index++ }, enabled = session?.done == true || missing) { Text(if (index < kanji.lastIndex) "Next kanji" else "Finish") }
+                OutlinedButton(onClick = { index = index }) { Text(stringResource(R.string.writing_restart)) }
+                Button(onClick = { index++ }, enabled = session?.done == true || missing) { Text(stringResource(if (index < kanji.lastIndex) R.string.writing_next_kanji else R.string.action_finish)) }
             }
         }
     }
@@ -183,9 +199,9 @@ fun HandwritingSearchScreen(onPick: (String) -> Unit) {
     }
     Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (candidates.isEmpty()) Text("Draw a kanji below", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (candidates.isEmpty()) Text(stringResource(R.string.writing_draw_below), color = MaterialTheme.colorScheme.onSurfaceVariant)
             candidates.forEach { c ->
-                AssistChip(onClick = { onPick(c.kanji) }, label = { Text(c.kanji, style = MaterialTheme.typography.headlineSmall.japanese()) })
+                AssistChip(onClick = { onPick(c.kanji) }, label = { JaText(c.kanji, style = MaterialTheme.typography.headlineSmall) })
             }
         }
         WritingCanvas(Modifier.fillMaxWidth(), inked = strokes) { stroke ->
@@ -193,9 +209,9 @@ fun HandwritingSearchScreen(onPick: (String) -> Unit) {
             recognize()
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            OutlinedButton(onClick = { strokes = strokes.dropLast(1); recognize() }, enabled = strokes.isNotEmpty()) { Text("Undo stroke") }
-            OutlinedButton(onClick = { strokes = emptyList(); candidates = emptyList() }) { Text("Clear") }
+            OutlinedButton(onClick = { strokes = strokes.dropLast(1); recognize() }, enabled = strokes.isNotEmpty()) { Text(stringResource(R.string.writing_undo_stroke)) }
+            OutlinedButton(onClick = { strokes = emptyList(); candidates = emptyList() }) { Text(stringResource(R.string.writing_clear)) }
         }
-        Text("Strokes: ${strokes.size}", style = MaterialTheme.typography.labelMedium)
+        Text(stringResource(R.string.writing_strokes, strokes.size), style = MaterialTheme.typography.labelMedium)
     }
 }

@@ -1,5 +1,16 @@
 package app.tsumugi.android.features.dictionary
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -72,12 +83,12 @@ fun DictionaryGate(content: @Composable (DictionaryRepository) -> Unit) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 CircularProgressIndicator()
                 Spacer(Modifier.height(12.dp))
-                Text("Preparing dictionary…")
+                Text(stringResource(R.string.dict_preparing))
             }
         }
         DictionaryState.NotInstalled -> Box(Modifier.fillMaxSize().padding(24.dp), Alignment.Center) {
             Text(
-                "The dictionary pack isn't installed in this build.\n\nBuild it with `uv run packs/build_all.py` in tools/, then rebuild the app.",
+                stringResource(R.string.dict_missing),
                 style = MaterialTheme.typography.bodyLarge,
             )
         }
@@ -99,11 +110,12 @@ fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
                     value = query,
                     onValueChange = { vm.query.value = it },
                     modifier = Modifier.weight(1f),
-                    placeholder = { Text("漢字, かな, romaji, English, or a sentence") },
+                    placeholder = { Text(stringResource(R.string.dict_placeholder)) },
                     singleLine = true,
                     textStyle = MaterialTheme.typography.bodyLarge.japanese(),
                 )
-                TextButton(onClick = nav.openRadicals) { Text("部首") }
+                val radicalsLabel = stringResource(R.string.title_radicals)
+                TextButton(onClick = nav.openRadicals, Modifier.semantics { contentDescription = radicalsLabel }) { JaText("部首") }
             }
             if (results.mode == SearchMode.SENTENCE) {
                 Row(Modifier.horizontalScroll(rememberScrollState()).padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -111,13 +123,13 @@ fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
                         AssistChip(
                             onClick = { t.entryId?.let(nav.openEntry) },
                             enabled = t.entryId != null,
-                            label = { Text(t.surface, style = MaterialTheme.typography.bodyLarge.japanese()) },
+                            label = { JaText(t.surface, style = MaterialTheme.typography.bodyLarge) },
                         )
                     }
                 }
             }
             if (query.isNotBlank() && results.hits.isEmpty() && results.query == query.trim()) {
-                Text("No matches", Modifier.padding(24.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(stringResource(R.string.dict_no_matches), Modifier.padding(24.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             LazyColumn(Modifier.fillMaxSize()) {
                 items(results.hits, key = { it.entry.id }) { hit -> SearchHitRow(hit) { nav.openEntry(hit.entry.id) } }
@@ -132,9 +144,9 @@ private fun SearchHitRow(hit: SearchHit, onClick: () -> Unit) {
         modifier = Modifier.clickable(onClick = onClick),
         headlineContent = {
             Row(verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(hit.entry.headword, style = MaterialTheme.typography.titleLarge.japanese())
+                JaText(hit.entry.headword, style = MaterialTheme.typography.titleLarge)
                 if (hit.entry.reading != hit.entry.headword) {
-                    Text(hit.entry.reading, style = MaterialTheme.typography.bodyMedium.japanese(), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    JaText(hit.entry.reading, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
         },
@@ -148,7 +160,7 @@ private fun SearchHitRow(hit: SearchHit, onClick: () -> Unit) {
         },
         trailingContent = {
             Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                if (hit.entry.isCommon) Tag("common")
+                if (hit.entry.isCommon) Tag(stringResource(R.string.dict_common))
                 jlptLabel(hit.entry.jlpt)?.let { Tag(it) }
             }
         },
@@ -167,7 +179,7 @@ private fun <T> Loaded(load: suspend (DictionaryRepository) -> T?, key: Any, con
         val v = value
         when {
             v != null -> content(v)
-            loaded -> Text("Not found", Modifier.padding(24.dp))
+            loaded -> Text(stringResource(R.string.dict_not_found), Modifier.padding(24.dp))
             else -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
         }
     }
@@ -182,8 +194,8 @@ fun EntryScreen(id: Long, nav: DictionaryNav) {
             FuriganaText(detail.furigana)
             EntryActions(e)
             FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                if (e.isCommon) Tag("common")
-                jlptLabel(e.jlpt)?.let { Tag("$it (unofficial)") }
+                if (e.isCommon) Tag(stringResource(R.string.dict_common))
+                jlptLabel(e.jlpt)?.let { Tag(stringResource(R.string.dict_unofficial, it)) }
             }
             if (detail.pitch.isNotEmpty()) {
                 Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -192,7 +204,10 @@ fun EntryScreen(id: Long, nav: DictionaryNav) {
             }
             if (e.kanji.size > 1 || e.kana.size > 1) {
                 Text(
-                    "Also: " + (e.kanji.drop(1).map { it.text } + e.kana.drop(1).map { it.text }).joinToString("、"),
+                    buildAnnotatedString {
+                        append(stringResource(R.string.dict_also))
+                        append(ja((e.kanji.drop(1).map { it.text } + e.kana.drop(1).map { it.text }).joinToString("、")))
+                    },
                     style = MaterialTheme.typography.bodyMedium.japanese(),
                 )
             }
@@ -209,39 +224,39 @@ fun EntryScreen(id: Long, nav: DictionaryNav) {
                 }
             }
             if (detail.kanji.isNotEmpty()) {
-                Section("Kanji")
+                Section(stringResource(R.string.kind_kanji))
                 detail.kanji.forEach { k ->
                     Card(Modifier.fillMaxWidth().clickable { nav.openKanji(k.literal) }) {
                         Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Text(k.literal, style = MaterialTheme.typography.displaySmall.japanese())
+                            JaText(k.literal, style = MaterialTheme.typography.displaySmall)
                             Spacer(Modifier.width(12.dp))
                             Column {
                                 Text(k.meanings.take(4).joinToString(", "), fontWeight = FontWeight.Medium)
-                                Text((k.onyomi + k.kunyomi).take(6).joinToString("、"), style = MaterialTheme.typography.bodyMedium.japanese())
+                                JaText((k.onyomi + k.kunyomi).take(6).joinToString("、"), style = MaterialTheme.typography.bodyMedium)
                             }
                         }
                     }
                 }
             }
             if (detail.conjugations.isNotEmpty()) {
-                Section("Conjugation")
+                Section(stringResource(R.string.dict_conjugation))
                 detail.conjugations.forEach { c ->
                     Row(Modifier.fillMaxWidth()) {
                         Text(c.label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Text(c.text, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge.japanese())
+                        JaText(c.text, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
                     }
                     HorizontalDivider()
                 }
             }
             if (detail.sentences.isNotEmpty()) {
-                Section("Examples")
+                Section(stringResource(R.string.dict_examples))
                 detail.sentences.forEach { s ->
                     Column {
-                        Text(s.japanese, style = MaterialTheme.typography.bodyLarge.japanese())
+                        JaText(s.japanese, style = MaterialTheme.typography.bodyLarge)
                         Text(s.english, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
-                Text("Examples: Tatoeba (CC BY 2.0 FR)", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
+                Text(stringResource(R.string.dict_examples_credit), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
             }
         }
     }
@@ -253,42 +268,41 @@ fun KanjiScreen(literal: String, nav: DictionaryNav) {
     Loaded(load = { it.kanji(literal) }, key = literal) { k: KanjiDetail ->
         val info = k.info
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (k.strokes.isNotEmpty()) StrokeOrderView(k.strokes, Modifier.size(180.dp))
-                else Text(info.literal, style = MaterialTheme.typography.displayLarge.japanese())
-                Spacer(Modifier.width(16.dp))
+            FlowRow(verticalArrangement = Arrangement.spacedBy(8.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                if (k.strokes.isNotEmpty()) StrokeOrderView(k.strokes, Modifier.size(180.dp), contentDescription = stringResource(R.string.dict_stroke_order_description, info.literal, info.strokeCount))
+                else JaText(info.literal, style = MaterialTheme.typography.displayLarge)
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     Text(info.keyword, style = MaterialTheme.typography.titleLarge)
-                    Text("${info.strokeCount} strokes", style = MaterialTheme.typography.bodyMedium)
-                    info.grade?.let { Text(if (it <= 6) "Jōyō grade $it" else if (it == 8) "Jōyō (secondary)" else "Jinmeiyō", style = MaterialTheme.typography.bodyMedium) }
-                    jlptLabel(info.jlpt)?.let { Text("JLPT $it (unofficial)", style = MaterialTheme.typography.bodyMedium) }
+                    Text(stringResource(R.string.dict_strokes, info.strokeCount), style = MaterialTheme.typography.bodyMedium)
+                    info.grade?.let { Text(if (it <= 6) stringResource(R.string.dict_joyo_grade, it) else if (it == 8) stringResource(R.string.dict_joyo_secondary) else stringResource(R.string.dict_jinmeiyo), style = MaterialTheme.typography.bodyMedium) }
+                    jlptLabel(info.jlpt)?.let { Text(stringResource(R.string.dict_unofficial, "JLPT $it"), style = MaterialTheme.typography.bodyMedium) }
                     info.heisig6?.let { Text("Heisig #$it", style = MaterialTheme.typography.bodyMedium) }
-                    if (k.strokes.isNotEmpty()) Text("Tap to replay", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
+                    if (k.strokes.isNotEmpty()) Text(stringResource(R.string.dict_tap_replay), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
                 }
             }
             Text(info.meanings.joinToString(", "), style = MaterialTheme.typography.bodyLarge)
-            if (info.onyomi.isNotEmpty()) LabeledJa("On", info.onyomi.joinToString("、"))
-            if (info.kunyomi.isNotEmpty()) LabeledJa("Kun", info.kunyomi.joinToString("、"))
-            if (info.nanori.isNotEmpty()) LabeledJa("Names", info.nanori.joinToString("、"))
+            if (info.onyomi.isNotEmpty()) LabeledJa(stringResource(R.string.dict_onyomi), info.onyomi.joinToString("、"))
+            if (info.kunyomi.isNotEmpty()) LabeledJa(stringResource(R.string.dict_kunyomi), info.kunyomi.joinToString("、"))
+            if (info.nanori.isNotEmpty()) LabeledJa(stringResource(R.string.dict_nanori), info.nanori.joinToString("、"))
             if (k.components.isNotEmpty()) {
-                Section("Components")
+                Section(stringResource(R.string.dict_components))
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    k.components.forEach { c -> AssistChip(onClick = { nav.openKanji(c) }, label = { Text(c, style = MaterialTheme.typography.titleMedium.japanese()) }) }
+                    k.components.forEach { c -> AssistChip(onClick = { nav.openKanji(c) }, label = { JaText(c, style = MaterialTheme.typography.titleMedium) }) }
                 }
             }
             if (k.words.isNotEmpty()) {
-                Section("Words")
+                Section(stringResource(R.string.dict_words))
                 k.words.forEach { w ->
                     Row(Modifier.fillMaxWidth().clickable { nav.openEntry(w.id) }.padding(vertical = 6.dp)) {
-                        Text(w.headword, Modifier.width(110.dp), style = MaterialTheme.typography.bodyLarge.japanese())
+                        JaText(w.headword, Modifier.widthIn(min = 110.dp).padding(end = 8.dp), style = MaterialTheme.typography.bodyLarge)
                         Column(Modifier.weight(1f)) {
-                            Text(w.reading, style = MaterialTheme.typography.bodySmall.japanese(), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            JaText(w.reading, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             Text(w.glossPreview, maxLines = 1, style = MaterialTheme.typography.bodyMedium)
                         }
                     }
                 }
             }
-            Text("Stroke order: KanjiVG (CC BY-SA 3.0) · KANJIDIC2 (EDRDG, CC BY-SA 4.0)", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
+            Text(stringResource(R.string.dict_kanji_credit), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
         }
     }
 }
@@ -305,10 +319,10 @@ fun RadicalSearchScreen(nav: DictionaryNav) {
 
         Column(Modifier.fillMaxSize()) {
             val kanji = result?.kanji.orEmpty()
-            Row(Modifier.horizontalScroll(rememberScrollState()).padding(8.dp).height(56.dp), verticalAlignment = Alignment.CenterVertically) {
-                if (selected.isEmpty()) Text("Pick radicals to find a kanji", Modifier.padding(8.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Row(Modifier.horizontalScroll(rememberScrollState()).padding(8.dp).heightIn(min = 56.dp), verticalAlignment = Alignment.CenterVertically) {
+                if (selected.isEmpty()) Text(stringResource(R.string.dict_pick_radicals), Modifier.padding(8.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
                 kanji.take(120).forEach { k ->
-                    Text(k.literal, Modifier.clickable { nav.openKanji(k.literal) }.padding(8.dp), style = MaterialTheme.typography.headlineMedium.japanese())
+                    JaText(k.literal, Modifier.clickable { nav.openKanji(k.literal) }.padding(8.dp), style = MaterialTheme.typography.headlineMedium)
                 }
             }
             HorizontalDivider()
@@ -320,7 +334,7 @@ fun RadicalSearchScreen(nav: DictionaryNav) {
                 radicals.forEach { r ->
                     if (r.strokeCount != lastCount) {
                         lastCount = r.strokeCount
-                        Box(Modifier.size(40.dp), Alignment.Center) { Text("${r.strokeCount}", color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.Bold) }
+                        Box(Modifier.sizeIn(minWidth = 40.dp, minHeight = 40.dp), Alignment.Center) { Text("${r.strokeCount}", color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.Bold) }
                     }
                     val isSelected = r.radical in selected
                     val enabled = isSelected || selected.isEmpty() || r.radical in result?.compatibleRadicals.orEmpty()
@@ -328,7 +342,7 @@ fun RadicalSearchScreen(nav: DictionaryNav) {
                         selected = isSelected,
                         enabled = enabled,
                         onClick = { selected = if (isSelected) selected - r.radical else selected + r.radical },
-                        label = { Text(r.display, style = MaterialTheme.typography.titleMedium.japanese()) },
+                        label = { JaText(r.display, style = MaterialTheme.typography.titleMedium) },
                     )
                 }
             }
@@ -338,13 +352,13 @@ fun RadicalSearchScreen(nav: DictionaryNav) {
 
 @Composable
 private fun Section(title: String) {
-    Text(title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+    Text(title, Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
 }
 
 @Composable
 private fun LabeledJa(label: String, value: String) {
     Row {
-        Text(label, Modifier.width(64.dp), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text(value, style = MaterialTheme.typography.bodyLarge.japanese())
+        Text(label, Modifier.widthIn(min = 64.dp).padding(end = 8.dp), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        JaText(value, style = MaterialTheme.typography.bodyLarge)
     }
 }

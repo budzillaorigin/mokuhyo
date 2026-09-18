@@ -1,5 +1,8 @@
 package app.tsumugi.android.features.reader
 
+import app.tsumugi.android.ui.JaText
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -36,21 +39,21 @@ fun ScanScreen(onLookup: (String) -> Unit) {
     var status by remember { mutableStateOf<String?>(null) }
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         uri ?: return@rememberLauncherForActivityResult
-        status = "Reading the photo…"
+        status = context.getString(R.string.scan_reading)
         scope.launch {
             lines = runCatching { Ocr.recognize(context, uri).map { it.text } }.getOrElse { emptyList() }
-            status = if (lines.isEmpty()) "No Japanese text found." else null
+            status = if (lines.isEmpty()) context.getString(R.string.scan_none) else null
         }
     }
     Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Button(onClick = { picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) { Text("Choose a photo") }
-        Text("Text is recognized on your device. Tap a line to look it up.", style = MaterialTheme.typography.bodySmall)
+        Button(onClick = { picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) { Text(stringResource(R.string.scan_choose)) }
+        Text(stringResource(R.string.scan_hint), style = MaterialTheme.typography.bodySmall)
         status?.let { Text(it) }
         LazyColumn {
             items(lines) { line ->
                 ListItem(
                     modifier = Modifier.clickable { onLookup(line) },
-                    headlineContent = { Text(line, style = MaterialTheme.typography.titleMedium.japanese()) },
+                    headlineContent = { JaText(line, style = MaterialTheme.typography.titleMedium) },
                 )
             }
         }

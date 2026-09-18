@@ -1,5 +1,16 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.ui.PlayLabel
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.app.Application
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -45,8 +56,6 @@ import app.tsumugi.exam.opi.InterviewerLine
 import app.tsumugi.exam.opi.OpiRating
 import app.tsumugi.exam.opi.OpiSession
 import kotlinx.coroutines.launch
-
-const val EXAM_DISCLAIMER = "Unofficial practice; not affiliated with DLI, ACTFL or JLPT. Ratings are estimates."
 
 class OpiViewModel(app: Application) : AndroidViewModel(app) {
     private val graph = (app as TsumugiApplication).graph
@@ -152,35 +161,38 @@ fun OpiScreen(key: String, onOpenAiSettings: () -> Unit) {
 @Composable
 private fun OpiStart(vm: OpiViewModel, onOpenAiSettings: () -> Unit) {
     var level by remember { mutableStateOf(IlrLevel.L1) }
-    Text("OPI practice interview", style = MaterialTheme.typography.headlineSmall)
-    Notice(EXAM_DISCLAIMER)
+    Text(stringResource(R.string.practice_opi), style = MaterialTheme.typography.headlineSmall)
+    Notice(stringResource(R.string.exam_disclaimer))
     Text(
-        "An interviewer asks questions out loud: warm-up, level checks, probes, a role-play and a wind-down (15–30 minutes). " +
-            "Answer by holding the mic, or type. The transcript stays hidden until the end.",
+        stringResource(R.string.opi_intro),
     )
     vm.aiUnavailable?.let {
         Notice(
-            "No AI model: questions come from the scripted banks and you'll rate yourself with the ILR checklist at the end. $it",
-            actionLabel = "Open AI settings", onAction = onOpenAiSettings,
+            stringResource(R.string.opi_no_model, it),
+            actionLabel = stringResource(R.string.ai_open_settings), onAction = onOpenAiSettings,
         )
     }
-    Text("Starting level (ILR)", style = MaterialTheme.typography.titleSmall)
+    Text(stringResource(R.string.opi_starting_level), style = MaterialTheme.typography.titleSmall)
     Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         IlrLevel.lowerRange.forEach { l -> FilterChip(level == l, { level = l }, { Text(l.label) }) }
     }
-    if (vm.missing) Notice(PRACTICE_PACK_MISSING)
-    Button(onClick = { vm.start(level) }, enabled = !vm.busy) { Text("Start interview") }
+    if (vm.missing) PracticePackMissing()
+    Button(onClick = { vm.start(level) }, enabled = !vm.busy) { Text(stringResource(R.string.opi_start)) }
     if (vm.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
 }
 
-private fun OpiPhase.label() = when (this) {
-    OpiPhase.WARMUP -> "Warm-up"
-    OpiPhase.LEVEL_CHECK -> "Level check"
-    OpiPhase.PROBE -> "Probe"
-    OpiPhase.ROLEPLAY -> "Role-play"
-    OpiPhase.WINDDOWN -> "Wind-down"
-}
+@Composable
+private fun OpiPhase.label() = stringResource(
+    when (this) {
+        OpiPhase.WARMUP -> R.string.opi_phase_warmup
+        OpiPhase.LEVEL_CHECK -> R.string.opi_phase_level_check
+        OpiPhase.PROBE -> R.string.opi_phase_probe
+        OpiPhase.ROLEPLAY -> R.string.title_roleplay
+        OpiPhase.WINDDOWN -> R.string.opi_phase_winddown
+    },
+)
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun OpiInterview(vm: OpiViewModel) {
     val voices = rememberVoices()
@@ -200,26 +212,26 @@ private fun OpiInterview(vm: OpiViewModel) {
             FilterChip(selected = p == phase, onClick = {}, label = { Text(p.label()) }, enabled = p.ordinal <= phase.ordinal)
         }
     }
-    Text("Question ${vm.asked.size}", style = MaterialTheme.typography.titleMedium)
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedButton(onClick = { line?.let { scope.launch { voices.say(it.japanese, "male") } } }) { Text("▶ Repeat question") }
-        TextButton(onClick = { showText = !showText }) { Text(if (showText) "Hide text" else "Show text") }
+    Text(stringResource(R.string.opi_question, vm.asked.size), style = MaterialTheme.typography.titleMedium)
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        OutlinedButton(onClick = { line?.let { scope.launch { voices.say(it.japanese, "male") } } }) { PlayLabel(stringResource(R.string.opi_repeat)) }
+        TextButton(onClick = { showText = !showText }) { Text(stringResource(if (showText) R.string.opi_hide_text else R.string.opi_show_text)) }
     }
-    if (ttsMissing) Text("No Japanese voice is installed, so the question is shown as text.", style = MaterialTheme.typography.bodySmall)
+    if (ttsMissing) Text(stringResource(R.string.opi_no_voice), style = MaterialTheme.typography.bodySmall)
     if ((showText || ttsMissing) && line != null) {
-        Text(line.japanese, style = MaterialTheme.typography.titleMedium.japanese())
+        JaText(line.japanese, style = MaterialTheme.typography.titleMedium)
         if (line.engine != null) AiBadge(line.engine)
     }
     if (vm.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
     SpeakOrType(input, enabled = !vm.busy && line != null, onSubmit = { text, _ -> vm.answer(text) })
-    OutlinedButton(onClick = { confirmEnd = true }, enabled = !vm.busy) { Text("End interview") }
+    OutlinedButton(onClick = { confirmEnd = true }, enabled = !vm.busy) { Text(stringResource(R.string.opi_end)) }
     if (confirmEnd) {
         AlertDialog(
             onDismissRequest = { confirmEnd = false },
-            title = { Text("End the interview?") },
-            text = { Text("The rating will use what you've said so far.") },
-            confirmButton = { TextButton(onClick = { confirmEnd = false; voices.stop(); vm.end() }) { Text("End") } },
-            dismissButton = { TextButton(onClick = { confirmEnd = false }) { Text("Keep going") } },
+            title = { Text(stringResource(R.string.opi_end_title)) },
+            text = { Text(stringResource(R.string.opi_end_text)) },
+            confirmButton = { TextButton(onClick = { confirmEnd = false; voices.stop(); vm.end() }) { Text(stringResource(R.string.opi_end_confirm)) } },
+            dismissButton = { TextButton(onClick = { confirmEnd = false }) { Text(stringResource(R.string.opi_keep_going)) } },
         )
     }
 }
@@ -228,10 +240,10 @@ private fun OpiInterview(vm: OpiViewModel) {
 private fun OpiResults(vm: OpiViewModel) {
     val rating = vm.rating
     val session = vm.session
-    Text("Results", style = MaterialTheme.typography.headlineSmall)
-    Notice(EXAM_DISCLAIMER)
+    Text(stringResource(R.string.opi_results), style = MaterialTheme.typography.headlineSmall)
+    Notice(stringResource(R.string.exam_disclaimer))
     if (rating == null || vm.busy) {
-        Text("Rating the interview…")
+        Text(stringResource(R.string.opi_rating))
         LinearProgressIndicator(Modifier.fillMaxWidth())
         return
     }
@@ -240,14 +252,17 @@ private fun OpiResults(vm: OpiViewModel) {
     } else {
         RatingView(rating)
     }
-    if (vm.saved) Text("Saved to your exam history.", style = MaterialTheme.typography.bodySmall)
+    if (vm.saved) Text(stringResource(R.string.exam_saved), style = MaterialTheme.typography.bodySmall)
     HorizontalDivider()
-    Text("Transcript", style = MaterialTheme.typography.titleMedium)
+    Text(stringResource(R.string.opi_transcript), style = MaterialTheme.typography.titleMedium)
     val english = vm.asked.associate { it.japanese to it.english }
     session?.transcript?.forEach { (speaker, text) ->
         Column {
             Text(
-                (if (speaker == Speaker.PARTNER) "Interviewer: " else "You: ") + text,
+                buildAnnotatedString {
+                    append(stringResource(if (speaker == Speaker.PARTNER) R.string.opi_interviewer else R.string.opi_you))
+                    append(ja(text))
+                },
                 style = MaterialTheme.typography.bodyMedium.japanese(),
                 color = if (speaker == Speaker.PARTNER) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.primary,
             )
@@ -260,38 +275,43 @@ private fun OpiResults(vm: OpiViewModel) {
 @Composable
 fun RatingView(rating: OpiRating) {
     Text(
-        rating.ilr?.let { "Estimated ILR ${it.label}" + (rating.actfl?.let { a -> " (≈ ACTFL $a)" } ?: "") } ?: "Not rated",
+        (rating.ilr?.let { stringResource(R.string.exam_ilr_estimate, it.label) + (rating.actfl?.let { a -> " (≈ ACTFL $a)" } ?: "") } ?: stringResource(R.string.opi_not_rated)),
         style = MaterialTheme.typography.titleLarge,
     )
     if (rating.engine != null) AiBadge(rating.engine)
-    listOf("Functions" to rating.functions, "Accuracy" to rating.accuracy, "Vocabulary" to rating.vocabulary, "Fluency" to rating.fluency)
-        .forEach { (name, v) -> v?.let { Text("$name: $it / 5") } }
+    listOf(
+        R.string.opi_functions to rating.functions, R.string.opi_accuracy to rating.accuracy,
+        R.string.opi_vocabulary to rating.vocabulary, R.string.pron_fluency to rating.fluency,
+    ).forEach { (name, v) -> v?.let { Text("${stringResource(name)}: $it / 5") } }
     if (rating.rationale.isNotBlank()) Text(rating.rationale, style = MaterialTheme.typography.bodyMedium)
-    if (rating.strengths.isNotEmpty()) Text("Strengths: " + rating.strengths.joinToString("; "), style = MaterialTheme.typography.bodySmall)
-    if (rating.nextSteps.isNotEmpty()) Text("Next steps: " + rating.nextSteps.joinToString("; "), style = MaterialTheme.typography.bodySmall)
+    if (rating.strengths.isNotEmpty()) Text(stringResource(R.string.opi_strengths) + rating.strengths.joinToString("; "), style = MaterialTheme.typography.bodySmall)
+    if (rating.nextSteps.isNotEmpty()) Text(stringResource(R.string.opi_next_steps) + rating.nextSteps.joinToString("; "), style = MaterialTheme.typography.bodySmall)
 }
 
 @Composable
 private fun SelfRating(checklist: List<Pair<IlrLevel, String>>, onRate: (Set<String>) -> Unit) {
     val checked = remember { mutableStateListOf<String>() }
-    Text("Rate yourself", style = MaterialTheme.typography.titleMedium)
+    Text(stringResource(R.string.opi_rate_yourself), style = MaterialTheme.typography.titleMedium)
     Text(
-        "No AI rating is available. Tick every statement that describes how you spoke. Your level is the highest one " +
-            "where you ticked everything (and everything below).",
+        stringResource(R.string.opi_self_hint),
         style = MaterialTheme.typography.bodySmall,
     )
-    if (checklist.isEmpty()) Text("The installed practice pack has no self-rating checklist.")
+    if (checklist.isEmpty()) Text(stringResource(R.string.opi_no_checklist))
     checklist.groupBy { it.first }.forEach { (level, items) ->
         Text("ILR ${level.label}", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
         items.forEach { (_, statement) ->
             Row(
-                Modifier.fillMaxWidth().clickable { if (statement in checked) checked.remove(statement) else checked.add(statement) },
+                Modifier.fillMaxWidth().heightIn(min = 48.dp).toggleable(
+                    value = statement in checked,
+                    role = Role.Checkbox,
+                    onValueChange = { on -> if (on) checked.add(statement) else checked.remove(statement) },
+                ),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Checkbox(statement in checked, { on -> if (on) checked.add(statement) else checked.remove(statement) })
+                Checkbox(statement in checked, onCheckedChange = null)
                 Text(statement, style = MaterialTheme.typography.bodyMedium)
             }
         }
     }
-    Button(onClick = { onRate(checked.toSet()) }) { Text("Save my rating") }
+    Button(onClick = { onRate(checked.toSet()) }) { Text(stringResource(R.string.opi_save_rating)) }
 }

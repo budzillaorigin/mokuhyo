@@ -1,5 +1,15 @@
 package app.tsumugi.android.features.study
 
+import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.ui.ja
+import app.tsumugi.android.ui.localized
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -65,11 +75,12 @@ fun ItemGlyph(text: String, kind: ItemKind, modifier: Modifier = Modifier) {
         modifier.fillMaxWidth().background(kindColor(kind), RoundedCornerShape(16.dp)).padding(vertical = 28.dp),
         contentAlignment = Alignment.Center,
     ) {
-        Text(
+        JaText(
             text,
+            Modifier.padding(horizontal = 12.dp).semantics { heading() },
             color = Color.White,
             fontSize = if (text.length <= 2) 88.sp else if (text.length <= 4) 56.sp else 36.sp,
-            style = MaterialTheme.typography.displayLarge.japanese(),
+            style = MaterialTheme.typography.displayLarge,
             textAlign = TextAlign.Center,
         )
     }
@@ -85,6 +96,8 @@ fun AnswerField(mode: AnswerMode, enabled: Boolean, resetKey: Any, onSubmit: (St
     val focus = remember { FocusRequester() }
     LaunchedEffect(resetKey) { runCatching { focus.requestFocus() } }
     val reading = mode == AnswerMode.READING
+    val answerLabel = stringResource(if (reading) R.string.answer_reading_label else R.string.answer_meaning_label)
+    val answerHint = stringResource(if (reading) R.string.answer_reading_hint else R.string.answer_meaning_hint)
     fun submit() {
         val text = if (reading) Romaji.finalize(value.text) else value.text
         if (text.isNotBlank()) onSubmit(text.trim())
@@ -98,8 +111,10 @@ fun AnswerField(mode: AnswerMode, enabled: Boolean, resetKey: Any, onSubmit: (St
             } else v
         },
         enabled = enabled,
-        modifier = Modifier.fillMaxWidth().focusRequester(focus),
-        placeholder = { Text(if (reading) "答え (reading)" else "Answer (meaning)") },
+        // Readings are typed in romaji and shown as kana; tell TalkBack which kind of answer is expected.
+        modifier = Modifier.fillMaxWidth().focusRequester(focus).semantics { contentDescription = "$answerLabel. $answerHint" },
+        label = { Text(answerLabel) },
+        placeholder = { Text(stringResource(if (reading) R.string.answer_reading_placeholder else R.string.answer_meaning_placeholder)) },
         singleLine = true,
         textStyle = MaterialTheme.typography.headlineSmall.japanese().copy(textAlign = TextAlign.Center),
         keyboardOptions = KeyboardOptions(
@@ -131,37 +146,37 @@ fun PathItemContent(detail: PathItemDetail, onSaveStory: (String) -> Unit, onOpe
 
     Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
         ItemGlyph(item.display, item.kind)
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(item.keyword, style = MaterialTheme.typography.headlineSmall)
-            Text("Level ${item.level}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            detail.stage?.let { Text(it.label, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.tertiary) }
+            Text(stringResource(R.string.title_level, item.level), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            detail.stage?.let { Text(it.localized(), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.tertiary) }
         }
-        if (item.meanings.size > 1) Text("Also: " + item.meanings.drop(1).take(6).joinToString(", "), style = MaterialTheme.typography.bodyMedium)
+        if (item.meanings.size > 1) Text(stringResource(R.string.dict_also) + item.meanings.drop(1).take(6).joinToString(", "), style = MaterialTheme.typography.bodyMedium)
         if (item.readings.isNotEmpty()) {
-            Text("Readings", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
-            Text(item.readings.joinToString("、"), style = MaterialTheme.typography.titleLarge.japanese())
+            Text(stringResource(R.string.path_readings), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+            JaText(item.readings.joinToString("、"), style = MaterialTheme.typography.titleLarge)
         }
         if (strokes.isNotEmpty()) StrokeOrderView(strokes, Modifier.size(140.dp))
         if (detail.components.isNotEmpty()) {
-            Text(if (item.kind == ItemKind.VOCAB) "Kanji" else "Radicals", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+            Text(stringResource(if (item.kind == ItemKind.VOCAB) R.string.kind_kanji else R.string.path_radicals), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 detail.components.forEach { c ->
-                    AssistChip(onClick = { onOpenItem?.invoke(c.id) }, label = { Text("${c.display}  ${c.keyword}", style = MaterialTheme.typography.bodyLarge.japanese()) })
+                    AssistChip(onClick = { onOpenItem?.invoke(c.id) }, label = { Text(buildAnnotatedString { append(ja(c.display)); append("  ${c.keyword}") }, style = MaterialTheme.typography.bodyLarge.japanese()) })
                 }
             }
         }
         if (detail.usedIn.isNotEmpty()) {
-            Text("Used in", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+            Text(stringResource(R.string.path_used_in), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 detail.usedIn.take(12).forEach { c ->
-                    AssistChip(onClick = { onOpenItem?.invoke(c.id) }, label = { Text(c.display, style = MaterialTheme.typography.bodyLarge.japanese()) })
+                    AssistChip(onClick = { onOpenItem?.invoke(c.id) }, label = { JaText(c.display, style = MaterialTheme.typography.bodyLarge) })
                 }
             }
         }
         entry?.let { e ->
             e.sentences.take(3).forEach { s ->
                 Column {
-                    Text(s.japanese, style = MaterialTheme.typography.bodyLarge.japanese())
+                    JaText(s.japanese, style = MaterialTheme.typography.bodyLarge)
                     Text(s.english, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
@@ -175,19 +190,20 @@ private fun MyStoryEditor(itemId: String, initial: String, onSave: (String) -> U
     var story by remember(itemId) { mutableStateOf(initial) }
     var saved by remember(itemId) { mutableStateOf(initial) }
     Column {
-        Text("My story", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+        Text(stringResource(R.string.path_my_story), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
         Text(
-            "Write your own mnemonic from the parts above — the one you make up sticks best.",
+            stringResource(R.string.path_my_story_hint),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         OutlinedTextField(
             value = story,
             onValueChange = { story = it },
-            modifier = Modifier.fillMaxWidth().height(120.dp),
+            modifier = Modifier.fillMaxWidth().heightIn(min = 120.dp),
+            label = { Text(stringResource(R.string.path_my_story)) },
         )
         if (story != saved) {
-            TextButton(onClick = { onSave(story); saved = story }) { Text("Save story") }
+            TextButton(onClick = { onSave(story); saved = story }) { Text(stringResource(R.string.path_save_story)) }
         }
     }
 }

@@ -1,5 +1,11 @@
 package app.tsumugi.android.features.exams
 
+import app.tsumugi.android.ui.JaText
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,17 +23,17 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import app.tsumugi.android.features.practice.EXAM_DISCLAIMER
 import app.tsumugi.android.features.practice.percent
 import app.tsumugi.exam.AttemptScoring
 import app.tsumugi.exam.ExamKind
 import app.tsumugi.exam.jlpt.JlptItemType
 
+@Composable
 private fun groupLabel(group: String) = when (group) {
-    "language" -> "Language knowledge"
-    "reading" -> "Reading"
-    "listening" -> "Listening"
-    "language_reading" -> "Language knowledge + Reading"
+    "language" -> stringResource(R.string.exam_group_language)
+    "reading" -> stringResource(R.string.exam_group_reading)
+    "listening" -> stringResource(R.string.exam_group_listening)
+    "language_reading" -> stringResource(R.string.exam_group_language_reading)
     else -> group.replace('_', ' ').replaceFirstChar { it.uppercase() }
 }
 
@@ -43,7 +49,7 @@ fun ScoringView(exam: ExamKind, summary: String, scoring: AttemptScoring) {
             exam.isDlpt -> DlptScores(scoring)
             exam == ExamKind.OPI -> OpiScores(scoring)
         }
-        Text(EXAM_DISCLAIMER, style = MaterialTheme.typography.bodySmall)
+        Text(stringResource(R.string.exam_disclaimer), style = MaterialTheme.typography.bodySmall)
     }
 }
 
@@ -55,56 +61,56 @@ private fun JlptScores(s: AttemptScoring) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(groupLabel(g.group), Modifier.weight(1f), style = MaterialTheme.typography.titleSmall)
                     Text(
-                        "${g.scaled} / ${g.scaledMax} " + if (g.metMinimum) "✓" else "✗ below minimum",
+                        "${g.scaled} / ${g.scaledMax} " + if (g.metMinimum) "✓" else stringResource(R.string.exam_below_minimum),
                         color = if (g.metMinimum) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.error,
                     )
                 }
-                ScoreBar(g.scaled, g.scaledMax, g.minimum)
-                Text("${g.correct} / ${g.administered} correct · minimum ${g.minimum}", style = MaterialTheme.typography.bodySmall)
+                ScoreBar(g.scaled, g.scaledMax, g.minimum, stringResource(R.string.exam_score_bar_description, groupLabel(g.group), g.scaled, g.scaledMax, g.minimum))
+                Text(stringResource(R.string.exam_group_detail, g.correct, g.administered, g.minimum), style = MaterialTheme.typography.bodySmall)
             }
         }
         if (s.total != null) {
             Text(
-                "Total ${s.total} / ${s.totalMax ?: 180}" + (s.passMark?.let { " · pass mark $it" } ?: ""),
+                stringResource(R.string.exam_total, s.total ?: 0, s.totalMax ?: 180) + (s.passMark?.let { stringResource(R.string.exam_pass_mark, it) } ?: ""),
                 style = MaterialTheme.typography.titleMedium,
             )
         }
         when {
-            !s.complete -> Text("Partial form (a drill, or the bank was short), so scaled scores are only indicative.", style = MaterialTheme.typography.bodySmall)
-            s.passed == true -> Text("Pass", style = MaterialTheme.typography.headlineSmall, color = Color(0xFF2E7D32))
-            s.passed == false -> Text("Not yet", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.error)
+            !s.complete -> Text(stringResource(R.string.exam_partial), style = MaterialTheme.typography.bodySmall)
+            s.passed == true -> Text(stringResource(R.string.exam_pass), style = MaterialTheme.typography.headlineSmall, color = Color(0xFF2E7D32))
+            s.passed == false -> Text(stringResource(R.string.exam_not_yet), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.error)
         }
-        Text("Scaled scores use a documented linear approximation, not the official equating.", style = MaterialTheme.typography.bodySmall)
+        Text(stringResource(R.string.exam_scaling_note), style = MaterialTheme.typography.bodySmall)
     }
-    TallyTable("By item type", s.byType.map { typeLabel(it.key) to it })
+    TallyTable(stringResource(R.string.exam_by_type), s.byType.map { typeLabel(it.key) to it })
     WeakAreas(s.weakAreas.map(::typeLabel))
-    if (s.meanTimeMs > 0) Text("Mean time per item: ${s.meanTimeMs / 1000} s", style = MaterialTheme.typography.bodySmall)
+    if (s.meanTimeMs > 0) Text(stringResource(R.string.exam_mean_time, (s.meanTimeMs / 1000).toInt()), style = MaterialTheme.typography.bodySmall)
 }
 
 @Composable
 private fun DlptScores(s: AttemptScoring) {
     val text = when {
-        s.ilr != null && s.ilrConfident -> "Estimated ILR ${s.ilr}"
-        s.ilr != null -> "Estimated ILR ${s.ilr} (low confidence: few items per level on this form)"
-        s.ilrProvisional != null -> "Provisional ≈ ILR ${s.ilrProvisional} (not enough items for a sustained estimate)"
-        else -> "Below ILR 0+ on this form"
+        s.ilr != null && s.ilrConfident -> stringResource(R.string.exam_ilr_estimate, s.ilr.toString())
+        s.ilr != null -> stringResource(R.string.exam_ilr_low_confidence, s.ilr.toString())
+        s.ilrProvisional != null -> stringResource(R.string.exam_ilr_provisional, s.ilrProvisional.toString())
+        else -> stringResource(R.string.exam_ilr_below)
     }
     Text(text, style = MaterialTheme.typography.titleMedium)
     Text(
-        "Rule: the highest level with ≥ 70% correct, sustained over ≥ 20 items, with consistent performance below it.",
+        stringResource(R.string.exam_ilr_rule),
         style = MaterialTheme.typography.bodySmall,
     )
-    TallyTable("By ILR level", s.byLevel.map { "ILR ${it.key}" to it })
-    TallyTable("By text type", s.byType.map { it.key.replace('_', ' ') to it })
-    if (s.meanTimeMs > 0) Text("Mean time per item: ${s.meanTimeMs / 1000} s", style = MaterialTheme.typography.bodyMedium)
+    TallyTable(stringResource(R.string.exam_by_level), s.byLevel.map { "ILR ${it.key}" to it })
+    TallyTable(stringResource(R.string.exam_by_text_type), s.byType.map { it.key.replace('_', ' ') to it })
+    if (s.meanTimeMs > 0) Text(stringResource(R.string.exam_mean_time, (s.meanTimeMs / 1000).toInt()), style = MaterialTheme.typography.bodyMedium)
     WeakAreas(s.weakAreas.map { it.replace('_', ' ') })
 }
 
 @Composable
 private fun OpiScores(s: AttemptScoring) {
-    Text(s.ilr?.let { "ILR $it" } ?: "Not rated", style = MaterialTheme.typography.titleMedium)
+    Text(s.ilr?.let { "ILR $it" } ?: stringResource(R.string.opi_not_rated), style = MaterialTheme.typography.titleMedium)
     s.byType.forEach { Text("${it.key.replaceFirstChar { c -> c.uppercase() }}: ${it.correct} / ${it.total}") }
-    if (s.weakAreas.isNotEmpty()) Text("Next steps: " + s.weakAreas.joinToString("; "), style = MaterialTheme.typography.bodySmall)
+    if (s.weakAreas.isNotEmpty()) Text(stringResource(R.string.opi_next_steps) + s.weakAreas.joinToString("; "), style = MaterialTheme.typography.bodySmall)
 }
 
 @Composable
@@ -113,25 +119,25 @@ private fun TallyTable(title: String, rows: List<Pair<String, AttemptScoring.Tal
     Text(title, style = MaterialTheme.typography.titleSmall)
     rows.forEach { (label, t) ->
         Row(Modifier.fillMaxWidth()) {
-            Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-            Text("${t.correct}/${t.total}", Modifier.width(56.dp), style = MaterialTheme.typography.bodyMedium)
-            Text(if (t.total == 0) "–" else percent(t.correct.toDouble() / t.total), Modifier.width(48.dp), style = MaterialTheme.typography.bodyMedium)
+            JaText(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+            Text("${t.correct}/${t.total}", Modifier.widthIn(min = 56.dp), style = MaterialTheme.typography.bodyMedium)
+            Text(if (t.total == 0) "–" else percent(t.correct.toDouble() / t.total), Modifier.widthIn(min = 48.dp), style = MaterialTheme.typography.bodyMedium)
         }
     }
 }
 
 @Composable
 private fun WeakAreas(areas: List<String>) {
-    if (areas.isNotEmpty()) Text("Work on: " + areas.joinToString(", "), style = MaterialTheme.typography.bodyMedium)
+    if (areas.isNotEmpty()) Text(stringResource(R.string.exam_work_on) + areas.joinToString(", "), style = MaterialTheme.typography.bodyMedium)
 }
 
 /** A horizontal score bar with a tick at the sectional minimum. */
 @Composable
-private fun ScoreBar(value: Int, max: Int, minimum: Int) {
+private fun ScoreBar(value: Int, max: Int, minimum: Int, description: String) {
     val fill = MaterialTheme.colorScheme.primary
     val track = MaterialTheme.colorScheme.surfaceVariant
     val tick = MaterialTheme.colorScheme.error
-    Canvas(Modifier.fillMaxWidth().height(14.dp)) {
+    Canvas(Modifier.fillMaxWidth().height(14.dp).semantics { contentDescription = description }) {
         val r = CornerRadius(size.height / 2)
         drawRoundRect(track, cornerRadius = r)
         if (max > 0) {

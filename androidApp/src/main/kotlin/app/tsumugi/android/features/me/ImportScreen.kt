@@ -1,5 +1,9 @@
 package app.tsumugi.android.features.me
 
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
+import app.tsumugi.android.R
 import android.content.Context
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -50,57 +54,56 @@ fun ImportScreen() {
     var busy by remember { mutableStateOf(false) }
     var message by remember { mutableStateOf<String?>(null) }
     var token by remember { mutableStateOf("") }
-    var wkStatus by remember { mutableStateOf(if (graph.imports.wanikani.isConnected()) "Connected" else "Not connected") }
+    var wkStatus by remember { mutableStateOf(context.getString(if (graph.imports.wanikani.isConnected()) R.string.import_wk_connected else R.string.import_wk_not_connected)) }
 
     fun run(label: String, block: suspend () -> String) {
         busy = true
-        message = "$label…"
+        message = context.getString(R.string.status_working, label)
         scope.launch {
-            message = runCatching { block() }.getOrElse { "$label failed: ${it.message ?: it::class.simpleName}" }
+            message = runCatching { block() }.getOrElse { context.getString(R.string.status_failed, label, it.message ?: it::class.simpleName.orEmpty()) }
             busy = false
         }
     }
 
     val ankiPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri ?: return@rememberLauncherForActivityResult
-        run("Importing Anki deck") {
+        run(context.getString(R.string.import_anki_importing)) {
             val file = copyToCache(context, uri, "import.apkg")
             val r = graph.imports.importAnki(file.path)
             buildString {
-                append("Imported ${r.notes} notes, ${r.cards} cards and ${r.reviews} reviews")
-                if (r.nihongoSharkNotes > 0) append(" (${r.nihongoSharkNotes} NihongoShark kanji with your stories)")
-                append(".")
+                append(context.getString(R.string.import_anki_result, r.notes, r.cards, r.reviews))
+                if (r.nihongoSharkNotes > 0) append(context.getString(R.string.import_anki_nihongoshark, r.nihongoSharkNotes))
                 if (r.warnings.isNotEmpty()) append("\n" + r.warnings.take(5).joinToString("\n"))
             }
         }
     }
     val exportPicker = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { uri ->
         uri ?: return@rememberLauncherForActivityResult
-        run("Exporting") {
+        run(context.getString(R.string.import_exporting)) {
             val out = File(context.cacheDir, "export.apkg")
             graph.imports.exportAnki(out.path)
             withContext(Dispatchers.IO) {
                 context.contentResolver.openOutputStream(uri)?.use { stream -> out.inputStream().use { it.copyTo(stream) } }
             }
-            "Exported to the chosen file. Open it with Anki (desktop or AnkiDroid)."
+            context.getString(R.string.import_exported)
         }
     }
     val listPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri ?: return@rememberLauncherForActivityResult
-        run("Importing word list") {
+        run(context.getString(R.string.import_list_importing)) {
             val file = copyToCache(context, uri, "wordlist.txt")
-            val r = graph.imports.importWordList(file.path, "Imported list")
-            "Imported ${r.imported} words (${r.resolved} matched to the dictionary, ${r.skipped} skipped)."
+            val r = graph.imports.importWordList(file.path, context.getString(R.string.import_list_default_name))
+            context.getString(R.string.import_list_result, r.imported, r.resolved, r.skipped)
         }
     }
 
     val bunproPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri ?: return@rememberLauncherForActivityResult
-        run("Importing Bunpro progress") {
+        run(context.getString(R.string.import_bunpro_importing)) {
             val file = copyToCache(context, uri, "bunpro.csv")
-            val r = graph.imports.importBunpro(file.path) ?: return@run "The grammar pack isn't installed."
-            "Matched ${r.matched} of ${r.rows} grammar points." +
-                if (r.unmatched.isNotEmpty()) " Not matched: ${r.unmatched.take(8).joinToString("、")}${if (r.unmatched.size > 8) "…" else ""}" else ""
+            val r = graph.imports.importBunpro(file.path) ?: return@run context.getString(R.string.grammar_pack_missing)
+            context.getString(R.string.import_bunpro_result, r.matched, r.rows) +
+                if (r.unmatched.isNotEmpty()) context.getString(R.string.import_bunpro_unmatched, r.unmatched.take(8).joinToString("、") + if (r.unmatched.size > 8) "…" else "") else ""
         }
     }
 
@@ -110,17 +113,17 @@ fun ImportScreen() {
     val bankPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri ?: return@rememberLauncherForActivityResult
         bankErrors = emptyList()
-        run("Importing exam item bank") {
+        run(context.getString(R.string.import_bank_importing)) {
             val text = withContext(Dispatchers.IO) { context.contentResolver.openInputStream(uri)!!.use { it.readBytes().decodeToString() } }
             val exams = graph.exams()
             when (val r = exams.importBank(text)) {
                 is BankImportResult.Imported -> {
                     banks = exams.userBanks()
-                    "Imported bank “${r.bank.removePrefix(ExamService.USER_PREFIX)}”: ${r.items} items, ${r.passages} passages."
+                    context.getString(R.string.import_bank_result, r.bank.removePrefix(ExamService.USER_PREFIX), r.items, r.passages)
                 }
                 is BankImportResult.Invalid -> {
                     bankErrors = r.errors
-                    "The bank wasn't imported: ${r.errors.size} problem${if (r.errors.size == 1) "" else "s"} found."
+                    context.resources.getQuantityString(R.plurals.import_bank_invalid, r.errors.size, r.errors.size)
                 }
             }
         }
@@ -130,68 +133,66 @@ fun ImportScreen() {
         if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         message?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
         bankErrors.take(50).forEach { Text("• $it", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
-        if (bankErrors.size > 50) Text("…and ${bankErrors.size - 50} more.", style = MaterialTheme.typography.bodySmall)
+        if (bankErrors.size > 50) Text(stringResource(R.string.import_more_errors, bankErrors.size - 50), style = MaterialTheme.typography.bodySmall)
 
-        Text("Anki", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
-        Text("Import any .apkg (including NihongoShark decks: your myStory notes come along). Review history is kept.", style = MaterialTheme.typography.bodySmall)
-        Button(onClick = { ankiPicker.launch(arrayOf("*/*")) }, enabled = !busy) { Text("Import .apkg") }
-        OutlinedButton(onClick = { exportPicker.launch("tsumugi.apkg") }, enabled = !busy) { Text("Export everything to .apkg") }
-
-        HorizontalDivider()
-        Text("Word lists", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
-        Text("imiwa? exports or any CSV/TSV of word, reading, meaning.", style = MaterialTheme.typography.bodySmall)
-        Button(onClick = { listPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text("Import word list") }
+        Text("Anki", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text(stringResource(R.string.import_anki_hint), style = MaterialTheme.typography.bodySmall)
+        Button(onClick = { ankiPicker.launch(arrayOf("*/*")) }, enabled = !busy) { Text(stringResource(R.string.import_anki_button)) }
+        OutlinedButton(onClick = { exportPicker.launch("tsumugi.apkg") }, enabled = !busy) { Text(stringResource(R.string.import_export_button)) }
 
         HorizontalDivider()
-        Text("Exam item banks", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text(stringResource(R.string.title_word_lists), Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text(stringResource(R.string.import_list_hint), style = MaterialTheme.typography.bodySmall)
+        Button(onClick = { listPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text(stringResource(R.string.import_list_button)) }
+
+        HorizontalDivider()
+        Text(stringResource(R.string.import_banks), Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         Text(
-            "Import your own JLPT or DLPT practice items (JSON, format in docs/CONTENT_PACKS.md). Every problem is listed if the file doesn't validate.",
+            stringResource(R.string.import_banks_hint),
             style = MaterialTheme.typography.bodySmall,
         )
-        Button(onClick = { bankPicker.launch(arrayOf("application/json", "text/*", "*/*")) }, enabled = !busy) { Text("Import exam item bank (JSON)") }
+        Button(onClick = { bankPicker.launch(arrayOf("application/json", "text/*", "*/*")) }, enabled = !busy) { Text(stringResource(R.string.import_bank_button)) }
         banks.forEach { b ->
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("${b.title} · ${b.items.size} items", Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+                Text(stringResource(R.string.import_bank_row, b.title, b.items.size), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
                 TextButton(onClick = {
-                    run("Removing bank") {
+                    run(context.getString(R.string.import_bank_removing)) {
                         val exams = graph.exams()
                         exams.deleteBank(b.bank)
                         banks = exams.userBanks()
-                        "Removed “${b.title}”."
+                        context.getString(R.string.import_bank_removed, b.title)
                     }
-                }, enabled = !busy) { Text("Remove") }
+                }, enabled = !busy) { Text(stringResource(R.string.action_remove)) }
             }
         }
 
         HorizontalDivider()
-        Text("Bunpro",style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
-        Text("Import a CSV export of your Bunpro grammar (title + SRS level). Only your progress is imported.", style = MaterialTheme.typography.bodySmall)
-        Button(onClick = { bunproPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text("Import Bunpro CSV") }
+        Text("Bunpro", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text(stringResource(R.string.import_bunpro_hint), style = MaterialTheme.typography.bodySmall)
+        Button(onClick = { bunproPicker.launch(arrayOf("text/*", "*/*")) }, enabled = !busy) { Text(stringResource(R.string.import_bunpro_button)) }
 
         HorizontalDivider()
-        Text("WaniKani", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+        Text("WaniKani", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         Text(
-            "Paste a Personal Access Token (WaniKani → Settings → API tokens). It's stored in the Android Keystore and only " +
-                "sent to api.wanikani.com. Progress maps onto the kanji path; mnemonics are never copied.",
+            stringResource(R.string.import_wk_hint),
             style = MaterialTheme.typography.bodySmall,
         )
-        Text("Status: $wkStatus", style = MaterialTheme.typography.bodyMedium)
-        OutlinedTextField(token, { token = it }, Modifier.fillMaxWidth(), label = { Text("API v2 token") }, singleLine = true, visualTransformation = PasswordVisualTransformation())
+        Text(stringResource(R.string.import_wk_status, wkStatus), style = MaterialTheme.typography.bodyMedium)
+        OutlinedTextField(token, { token = it }, Modifier.fillMaxWidth(), label = { Text(stringResource(R.string.import_wk_token)) }, singleLine = true, visualTransformation = PasswordVisualTransformation())
         Button(onClick = {
-            run("Connecting to WaniKani") {
+            run(context.getString(R.string.import_wk_connecting)) {
                 val user = graph.imports.connectWaniKani(token)
                 token = ""
-                wkStatus = "Connected as ${user.username} (level ${user.level})"
+                wkStatus = context.getString(R.string.import_wk_connected_as, user.username, user.level)
                 wkStatus
             }
-        }, enabled = !busy && token.isNotBlank()) { Text("Connect") }
+        }, enabled = !busy && token.isNotBlank()) { Text(stringResource(R.string.import_wk_connect)) }
         OutlinedButton(onClick = {
-            run("Importing from WaniKani") {
-                val r = graph.imports.importWaniKani { p -> message = p } ?: return@run "The kanji path pack isn't installed."
-                "Imported: ${r.matchedToPath} items on the path, ${r.wanikaniOnlyItems} WaniKani-only, ${r.reviewsImported} reviews. " +
-                    "Your WaniKani level is ${r.wanikaniLevel}."
+            run(context.getString(R.string.import_wk_importing)) {
+                val r = graph.imports.importWaniKani { p -> message = p } ?: return@run context.getString(R.string.path_pack_missing)
+                context.getString(R.string.import_wk_result, r.matchedToPath, r.wanikaniOnlyItems, r.reviewsImported, r.wanikaniLevel)
             }
-        }, enabled = !busy && graph.imports.wanikani.isConnected()) { Text("Import progress") }
+        }, enabled = !busy && graph.imports.wanikani.isConnected()) { Text(stringResource(R.string.import_wk_import)) }
     }
 }
 
