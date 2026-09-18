@@ -132,8 +132,14 @@ class BackupService(
             withContext(Dispatchers.IO) {
                 db.transaction {
                     for ((c, row) in batch) {
-                        if (applier.apply(c, row, affected)) {
+                        // Count real changes: the merge rules report reviews and union rows as applied even when
+                        // they were already here (INSERT OR IGNORE), so compare the row before and after.
+                        val before = current(c)
+                        val touched = LinkedHashSet<String>()
+                        applier.apply(c, row, touched)
+                        if (current(c) != before) {
                             applied++
+                            affected += touched
                             if (c.table == TableSpec.setting.name) settings += c.key
                         }
                     }
@@ -144,6 +150,11 @@ class BackupService(
         affected.forEach { srs.recomputeCard(it) }
         return RestoreResult(applied, changes.size - applied, affected.size, settings)
     }
+
+    /** The local state a change would touch: the row, or the card's suspended flag. */
+    private fun current(c: Change): Any? =
+        if (c.table == TableSpec.CARD_FLAGS) db.srsQueries.cardById(c.key).executeAsOneOrNull()?.suspended
+        else TableSpec.all[c.table]?.read(driver, c.key)
 
     /** Suspended cards in the card_flags wire shape (only the learner's suspend choice syncs; FSRS state is rebuilt). */
     private fun cardFlags(): List<JsonObject> =

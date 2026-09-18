@@ -1,5 +1,5 @@
--- User database v4 → v5 (BRIEF_V2 G-03, G-04, G-07, G-12, G-16; DECISIONS D-110…D-118). Named 4.sqm because a
--- parallel change adds 3.sqm; renumber together if needed. Everything here is device-local: no sync triggers.
+-- User database v4 → v5 (BRIEF_V2 G-03, G-04, G-07, G-12, G-16; DECISIONS D-110…D-118). Everything here is device-local:
+-- no sync triggers, not in SyncTables. databases/4.db is the v4 snapshot this migration starts from.
 
 ALTER TABLE reader_doc ADD COLUMN ruby TEXT;
 

@@ -177,7 +177,7 @@ class PodcastService(
             q.podcastById(podcastId).executeAsOneOrNull()?.let {
                 q.updatePodcast(parsed.title.ifEmpty { it.title }, parsed.author ?: it.author, parsed.imageUrl ?: it.image_url, now(), podcastId)
             }
-            parsed.items.filter { it.enclosure != null }.forEachIndexed { ord, item ->
+            parsed.items.filter { it.enclosure != null }.distinctBy { it.guid ?: it.enclosure!!.url }.forEachIndexed { ord, item ->
                 val enc = item.enclosure!!
                 val guid = item.guid ?: enc.url
                 val id = episodeId(podcastId, guid)

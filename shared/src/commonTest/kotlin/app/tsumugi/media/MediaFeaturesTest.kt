@@ -190,8 +190,9 @@ class MediaFeaturesTest {
         assertTrue(script[2].text in q.choices)
         assertEquals(q.choices.toSet().size, q.choices.size)
         assertTrue(pick.answer(2, script[2].text).correct)
+        assertEquals(1 to 1, pick.score)
         assertFalse(pick.answer(2, q.choices.first { it != script[2].text }).correct)
-        assertEquals(1 to 2, pick.score)
+        assertEquals(0 to 1, pick.score, "a second answer replaces the first")
     }
 
     @Test
@@ -224,7 +225,7 @@ class MediaFeaturesTest {
         assertNotNull(done.mediaHash)
 
         // A refresh adds the new episode on top and keeps the download.
-        xml = FEED.replace("<item>", NEW_ITEM + "<item>")
+        xml = FEED.replaceFirst("<item>", NEW_ITEM + "<item>")
         val refreshed = podcasts.refresh(p.id)
         assertEquals(3, refreshed.size)
         assertEquals("第3回 天気", refreshed[0].title)

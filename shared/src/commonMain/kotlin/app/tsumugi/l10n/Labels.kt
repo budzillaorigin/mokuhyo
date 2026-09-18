@@ -95,6 +95,7 @@ object Labels {
         put("kind.WRITING", "Writing", "書き取り")
         put("kind.MINIMAL_PAIR", "Minimal pair", "ミニマルペア")
         put("kind.CUSTOM", "Card", "カード")
+        put("kind.KANA", "Kana", "かな")
 
         put("direction.RECOGNITION", "Recognition", "認識")
         put("direction.RECALL", "Recall", "想起")

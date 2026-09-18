@@ -34,7 +34,7 @@ Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optio
 | `streak_freeze` | `day` | insert-only (union, D-106) |
 | `card` | `id` | **not synced**: rows are created from items/reviews; `suspended` syncs as a `setting`-like LWW field via the `card_flags` change type |
 
-Not synced: `app_meta` and `device_setting` (device-local: AI engine, model, endpoint URLs and audio engine, rule 16), `daily_stats` (derived from each device's own review log by triggers), `card.blocked_reason` (derived from the installed packs), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings (unless the user turns on "include recordings", which uses blobs).
+Not synced: `app_meta` and `device_setting` (device-local: AI engine, model, endpoint URLs and audio engine, rule 16), `daily_stats` (derived from each device's own review log by triggers), `card.blocked_reason` (derived from the installed packs), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings and personal-card pictures (unless the learner turns on recordings sync on that device, which uses blobs; see "Blobs" below), and the Phase 10 device-local tables (`recording`, `user_image`, `subtitle_cache`, `media_clip`, `podcast_feed`, `podcast_episode`, `reader_question`, `content_review_verdict`).
 
 ## Change record (wire format)
 
@@ -78,6 +78,15 @@ All under `/v1`, JSON, `Authorization: Bearer <access JWT>` except auth and heal
 Server extras beyond the table above:
 - `GET /auth/verify?token=`: email verification link.
 - `DELETE /blobs/{id}`.
+
+## Blobs: opt-in recordings and pictures (DECISIONS D-111)
+
+The client uses the blob endpoints only when the device setting `sync.recordings` is on (default off). The server needs nothing special: blobs are opaque.
+- File blobs: `rec-<recording id>` and `img-<picture id>`, holding the file bytes.
+- Manifest blob per device: `man-<server device id>`, holding JSON `{version: 1, updatedAt, recordings: [{id, kind, ref, fileName, mime, durationMs, referenceKey, origin, createdAt}], images: [{id, fileName, mime, origin, createdAt}], deleted: [id…]}`. It lists the files this device recorded and uploaded, plus every deletion it has seen.
+- One round: upload new local files → delete the blobs of deleted files → publish the manifest → read the other devices' manifests (found through `GET /devices`) → delete local copies of anything listed as deleted → download what's missing.
+- End-to-end encryption: a blob id becomes `e-` + the sealer's keyed hash of the plain id, and the bytes are XChaCha20-Poly1305 (nonce ‖ ciphertext).
+- Limits: 20 MB per blob and a per-user quota (`TSUMUGI_MAX_BLOB_BYTES`, `TSUMUGI_BLOB_QUOTA_BYTES`). A file that doesn't fit is reported, and the rest still syncs.
 - `/leaderboard?period=day|week|month`.
 - `accepted` in the push response counts every valid change, including duplicates of already-stored ones, so the client can mark all of them synced.
 

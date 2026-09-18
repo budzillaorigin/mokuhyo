@@ -208,7 +208,9 @@ def _ingest_kana(root: Path, entries: list[dict], reviewer: str, on: str, dry_ru
     if not mnemonics.exists():
         return [f"kana_mnemonic: {mnemonics} not found; skipped {len(entries)} verdicts"]
     source = mnemonics.read_text(encoding="utf-8")
-    reviewed = set(re.findall(r'^\s*"([^"]+)",\s*$', reviewed_file.read_text(encoding="utf-8"), re.M)) if reviewed_file.exists() else set()
+    reviewed: set[str] = set()
+    if reviewed_file.exists():
+        reviewed = set(re.findall(r'^\s*"([^"]+)",\s*$', reviewed_file.read_text(encoding="utf-8"), re.MULTILINE))
     for v in entries:
         kana, verdict = v["id"], v["verdict"]
         line = re.compile(r'("' + re.escape(kana) + r'" to ")((?:[^"\\]|\\.)*)(")')
@@ -217,7 +219,7 @@ def _ingest_kana(root: Path, entries: list[dict], reviewer: str, on: str, dry_ru
             continue
         if verdict == "edit" and v.get("edits", {}).get("mnemonic"):
             new_text = _kotlin_string(v["edits"]["mnemonic"])
-            source = line.sub(lambda m: m.group(1) + new_text + m.group(3), source, count=1)
+            source = line.sub(lambda m, text=new_text: m.group(1) + text + m.group(3), source, count=1)
         if verdict in ("accept", "edit"):
             reviewed.add(kana)
             report.append(f"kana_mnemonic {kana}: {verdict}")
