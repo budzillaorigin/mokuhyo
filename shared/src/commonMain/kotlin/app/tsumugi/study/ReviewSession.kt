@@ -30,6 +30,8 @@ enum class AnswerMode {
     CLOZE,
     /** Grammar: put shuffled chunks of a sentence in order. */
     BUILD,
+    /** Kanji: draw it from memory, compare with the reference, then grade yourself (BRIEF §5.7 raw mode). */
+    WRITING,
 }
 
 data class ReviewPrompt(
@@ -48,6 +50,7 @@ data class ReviewPrompt(
             CardDirection.READING -> "Reading"
             CardDirection.RECALL -> "Recall"
             CardDirection.CLOZE, CardDirection.GHOST -> if (mode == AnswerMode.BUILD) "Build the sentence" else "Fill the gap"
+            CardDirection.WRITING -> "Write it"
             else -> "Recognition"
         }
 
@@ -56,7 +59,8 @@ data class ReviewPrompt(
         get() = when {
             exercise != null && mode == AnswerMode.BUILD -> exercise.example.english
             exercise != null -> exercise.prompt
-            card.direction == CardDirection.RECALL -> item.meanings.joinToString(", ")
+            card.direction == CardDirection.RECALL || card.direction == CardDirection.WRITING ->
+                item.meanings.joinToString(", ") + (item.reading?.let { " ($it)" } ?: "")
             else -> item.primaryText
         }
 
@@ -72,6 +76,7 @@ data class ReviewPrompt(
             AnswerMode.SELF_GRADED -> if (card.direction == CardDirection.RECALL) listOf(item.primaryText) else item.meanings
             AnswerMode.CLOZE -> listOfNotNull(exercise?.example?.answer)
             AnswerMode.BUILD -> listOfNotNull(exercise?.example?.japanese)
+            AnswerMode.WRITING -> listOf(item.primaryText)
         }
 }
 
@@ -170,7 +175,7 @@ class ReviewSession(
             AnswerMode.MEANING -> AnswerChecker.checkMeaning(answer, item.meanings, item.synonyms)
             AnswerMode.READING -> AnswerChecker.checkReading(answer, item.acceptedReadings)
             AnswerMode.CLOZE, AnswerMode.BUILD -> grammar?.check(prompt.exercise ?: return, answer) ?: return
-            AnswerMode.SELF_GRADED -> return
+            AnswerMode.SELF_GRADED, AnswerMode.WRITING -> return
         }
         if (check.verdict == Verdict.WRONG_KIND) {
             _state.value = asking.copy(hint = "That's a valid reading, but not the one we're looking for.")
@@ -183,10 +188,10 @@ class ReviewSession(
         _state.value = ReviewState.Answered(prompt, answer, check.verdict, check.matched, queue.size, done(), canUndo = !prompt.practice)
     }
 
-    /** Self-graded prompt: show the answer. */
+    /** Self-graded and writing prompts: show the answer (for writing, after drawing). */
     fun reveal() {
         val asking = _state.value as? ReviewState.Asking ?: return
-        if (asking.prompt.mode != AnswerMode.SELF_GRADED) return
+        if (asking.prompt.mode != AnswerMode.SELF_GRADED && asking.prompt.mode != AnswerMode.WRITING) return
         _state.value = ReviewState.Revealed(asking.prompt, asking.remaining, asking.done)
     }
 
@@ -288,6 +293,7 @@ class ReviewSession(
             CardDirection.MEANING -> AnswerMode.MEANING
             CardDirection.READING -> AnswerMode.READING
             CardDirection.CLOZE, CardDirection.GHOST -> AnswerMode.CLOZE
+            CardDirection.WRITING -> AnswerMode.WRITING
             else -> AnswerMode.SELF_GRADED
         }
 

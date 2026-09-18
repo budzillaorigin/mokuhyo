@@ -43,6 +43,8 @@ class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clo
         /** Epoch-ms start of vacation mode; absent = off. Streaks don't break while on vacation. */
         const val VACATION_SINCE = "streak.vacationSince"
         const val REMINDERS_ENABLED = "notifications.enabled"
+        /** Add a writing card (draw the kanji) to new kanji lessons. */
+        const val WRITING_CARDS = "writing.cardsEnabled"
         /** Remind once at least this many reviews are due. */
         const val REMINDER_THRESHOLD = "notifications.threshold"
         /** Quiet hours, minutes after local midnight. */

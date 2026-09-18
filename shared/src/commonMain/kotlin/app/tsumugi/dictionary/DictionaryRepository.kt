@@ -277,6 +277,11 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         q.strokesFor(literal).executeAsList().map { KanjiStroke(it.ord.toInt(), it.path, it.type) }
     }
 
+    /** Every KanjiVG character's stroke paths, in order (handwriting recognizer templates; loaded once). */
+    suspend fun allStrokePaths(): Map<String, List<String>> = io {
+        q.allStrokes().executeAsList().groupBy({ it.kanji }, { it.path })
+    }
+
     private fun kanjiInfo(literals: List<String>): List<KanjiInfo> {
         if (literals.isEmpty()) return emptyList()
         val rows = q.kanjiByLiteral(literals).executeAsList().associateBy { it.literal }

@@ -217,6 +217,9 @@ SELECT radical FROM kanji_component WHERE kanji = ?;
 strokesFor:
 SELECT * FROM stroke WHERE kanji = ? ORDER BY ord;
 
+allStrokes:
+SELECT kanji, path FROM stroke ORDER BY kanji, ord;
+
 wordsWithKanji:
 SELECT entry_id FROM kanji_word WHERE kanji = ? ORDER BY rank LIMIT ?;
 

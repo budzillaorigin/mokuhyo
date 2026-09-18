@@ -24,6 +24,7 @@ import app.tsumugi.study.ReviewSession
 import app.tsumugi.study.StatsService
 import app.tsumugi.study.TodayPlan
 import app.tsumugi.study.TodayPlanner
+import app.tsumugi.study.WritingService
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
@@ -51,6 +52,15 @@ class AppGraph(val platform: PlatformServices) {
         val srs = configuredSrs()
         val grammarLeft = grammar()?.lessonQueue(3)?.size ?: 0
         return planner.plan(srs.dueCount(), path()?.status(), grammarLeft)
+    }
+
+    private var writingService: WritingService? = null
+
+    /** Writing practice and handwriting search, or null without the dictionary pack (it holds KanjiVG). */
+    suspend fun writing(): WritingService? {
+        val dictionary = dictionary() ?: return null
+        val srs = configuredSrs()
+        return lock.withLock { writingService ?: WritingService(dictionary, srs).also { writingService = it } }
     }
 
     /** Next grammar lesson batch (1–3 points) or empty when the pack is missing or everything is learned. */

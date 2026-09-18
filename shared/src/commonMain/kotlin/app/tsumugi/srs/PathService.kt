@@ -136,10 +136,15 @@ class PathService(
         return items.filter { it.level == level }.map { LevelEntry(it, stages[it.id]) }
     }
 
-    /** Lesson finished: the items join the user's collection and their cards enter the review queue. */
+    /**
+     * Lesson finished: the items join the user's collection and their cards enter the review queue. Kanji also
+     * get a writing card when the learner turned writing cards on.
+     */
     suspend fun completeLessons(lessons: List<PathItem>) {
-        srs.addItems(lessons.map { it.toNewItem() })
-        srs.introduce(lessons.flatMap { item -> directionsFor(item.kind).map { SrsRepository.cardId(item.id, it) } })
+        val writing = settings.bool(SettingsRepository.WRITING_CARDS, false)
+        fun directions(item: PathItem) = directionsFor(item.kind) + if (writing && item.kind == ItemKind.KANJI) listOf(CardDirection.WRITING) else emptyList()
+        srs.addItems(lessons.map { it.toNewItem().copy(directions = directions(it)) })
+        srs.introduce(lessons.flatMap { item -> directions(item).map { SrsRepository.cardId(item.id, it) } })
     }
 
     suspend fun skipToLevel(level: Int) = settings.put(SettingsRepository.PATH_LEVEL_FLOOR, level.toString())
