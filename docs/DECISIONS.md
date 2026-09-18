@@ -182,10 +182,15 @@ Item banks carry both `source`, which records where the item came from, and `ver
   - `files/tmp` and `files/tts`: scratch space.
   - `app.tsumugi.secrets.xml`: encrypted with a Keystore key that never leaves the device, so a restored copy couldn't be decrypted anyway.
 
-  After a restore the user signs in to sync again. The restored DB keeps the old `device_id`, which is fine when a phone replaces another. Running both phones at once would share one sync identity, which is a known limitation.
+  After a restore the user signs in to sync again. The restored database gets a fresh device id (D-039), so two phones restored from one backup never share a sync identity.
 - **Release build:** stays unminified, since most of the size is packs and native code, which R8 doesn't shrink. `proguard-rules.pro` already keeps the `LlamaNative`/`WhisperNative` JNI entry points and the `Sink.onPiece` callback, so turning R8 on later can't break them silently.
 - **Launcher icon:** an adaptive vector spool of thread (紡ぐ, "to spin"): indigo background, cream flanges, a vermilion thread body and a loose end. It includes a monochrome layer for Android 13 themed icons, and a matching status-bar icon for reminders. Everything is drawn with paths, with no font rendering.
 - **Reduced motion:** when "Remove animations" is on (`ANIMATOR_DURATION_SCALE == 0`), `StrokeOrderView` shows the finished character with no motion, and tapping it doesn't animate.
+
+### D-039: A restored database gets a new device id (2026-09-18)
+The user database travels in OS backups (iCloud, Android backup and device transfer), and with it the `device_id` that tags reviews and breaks sync ties. `DeviceState` now mirrors the id in the Keychain/Keystore secret store. That store never moves to another device: iOS uses `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`, and Android's secrets file is excluded from backups and transfers. At launch, a stored id without the matching secret means the database was restored from elsewhere, and a new id is issued.
+
+History is kept. Past reviews still carry the old id, which is correct because that device made them. Reinstalling on the same iPhone keeps the id, since the Keychain survives. An Android reinstall restored from a backup gets a new id, which is harmless.
 
 ---
 

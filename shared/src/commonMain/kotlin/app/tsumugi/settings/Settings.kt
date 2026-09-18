@@ -1,6 +1,7 @@
 package app.tsumugi.settings
 
 import app.tsumugi.db.TsumugiDatabase
+import app.tsumugi.platform.Secrets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
@@ -61,13 +62,29 @@ class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clo
     }
 }
 
-/** Device-local state that never syncs. */
-class DeviceState(private val db: TsumugiDatabase) {
+/**
+ * Device-local state that never syncs.
+ *
+ * The user database is included in OS backups and device transfers, so a restored copy would carry the old
+ * phone's device id. Two devices sharing one id breaks sync (last-writer-wins tie-breaks and change tracking are
+ * per device). The id is therefore mirrored in [secrets] (Keychain `ThisDeviceOnly` / Android Keystore file
+ * excluded from backup), which never moves to another device. A stored id with no matching secret means this
+ * database came from somewhere else, and a fresh id is issued (DECISIONS D-039).
+ */
+class DeviceState(private val db: TsumugiDatabase, private val secrets: Secrets? = null) {
     private val q get() = db.metaQueries
 
     /** Stable random id of this install; tags reviews so sync can tell devices apart. */
     val deviceId: String by lazy {
-        q.get(DEVICE_ID).executeAsOneOrNull() ?: Uuid.random().toString().also { q.put(DEVICE_ID, it) }
+        val stored = q.get(DEVICE_ID).executeAsOneOrNull()
+        val claimed = secrets?.get(SECRET_KEY)
+        when {
+            stored != null && (secrets == null || claimed == stored) -> stored
+            else -> Uuid.random().toString().also {
+                q.put(DEVICE_ID, it)
+                secrets?.put(SECRET_KEY, it)
+            }
+        }
     }
 
     fun get(key: String): String? = q.get(key).executeAsOneOrNull()
@@ -75,5 +92,6 @@ class DeviceState(private val db: TsumugiDatabase) {
 
     private companion object {
         const val DEVICE_ID = "device_id"
+        const val SECRET_KEY = "device.id"
     }
 }

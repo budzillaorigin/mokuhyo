@@ -56,7 +56,7 @@ class AppGraph(val platform: PlatformServices) {
 
     private val userDriver by lazy { platform.userDatabaseDriver() }
     val userDatabase: TsumugiDatabase by lazy { TsumugiDatabase(userDriver) }
-    val device: DeviceState by lazy { DeviceState(userDatabase) }
+    val device: DeviceState by lazy { DeviceState(userDatabase, platform.secrets) }
     val settings: SettingsRepository by lazy { SettingsRepository(userDatabase) }
     val srs: SrsRepository by lazy { SrsRepository(userDatabase, device.deviceId) }
     val stats: StatsService by lazy { StatsService(userDatabase, srs, settings) }
