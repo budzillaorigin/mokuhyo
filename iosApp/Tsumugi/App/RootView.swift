@@ -13,6 +13,7 @@ enum Route: Hashable {
     case pathItem(String)
     case settings
     case licenses
+    case importExport
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -60,6 +61,7 @@ struct TabStack<Root: View>: View {
                     case .pathItem(let id): PathItemView(id: id)
                     case .settings: SettingsView()
                     case .licenses: LicensesView()
+                    case .importExport: ImportView()
                     }
                 }
         }

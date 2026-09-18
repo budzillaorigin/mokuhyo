@@ -5,6 +5,9 @@ import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.db.SqlSchema
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import app.tsumugi.db.TsumugiDatabase
+import app.tsumugi.integrations.anki.RawSqliteSchema
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.darwin.Darwin
 import kotlinx.cinterop.ExperimentalForeignApi
 import okio.FileSystem
 import okio.Path
@@ -42,6 +45,17 @@ actual class PlatformServices {
     }
 
     actual fun userDatabaseDriver(): SqlDriver = NativeSqliteDriver(TsumugiDatabase.Schema, "tsumugi.db")
+
+    actual fun openSqlite(path: String): SqlDriver {
+        val p = path.toPath()
+        return NativeSqliteDriver(RawSqliteSchema, p.name, onConfiguration = { config ->
+            config.copy(extendedConfig = config.extendedConfig.copy(basePath = p.parent.toString()))
+        })
+    }
+
+    actual val secrets: Secrets by lazy { SecretStore() }
+
+    actual fun httpEngine(): HttpClientEngine = Darwin.create()
 
     actual fun packDriver(schema: SqlSchema<QueryResult.Value<Unit>>, fileName: String): SqlDriver {
         val packsDir = (dataDir / "packs").toString()

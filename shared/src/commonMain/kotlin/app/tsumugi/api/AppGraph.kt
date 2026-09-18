@@ -5,6 +5,7 @@ import app.tsumugi.content.PackStatus
 import app.tsumugi.db.TsumugiDatabase
 import app.tsumugi.dictionary.DictionaryRepository
 import app.tsumugi.dictionary.db.DictionaryDatabase
+import app.tsumugi.integrations.ImportService
 import app.tsumugi.path.db.PathDatabase
 import app.tsumugi.platform.PlatformServices
 import app.tsumugi.settings.DeviceState
@@ -33,6 +34,7 @@ class AppGraph(val platform: PlatformServices) {
     val settings: SettingsRepository by lazy { SettingsRepository(userDatabase) }
     val srs: SrsRepository by lazy { SrsRepository(userDatabase, device.deviceId) }
     val stats: StatsService by lazy { StatsService(userDatabase, srs, settings) }
+    val imports: ImportService by lazy { ImportService(this) }
 
     private val lock = Mutex()
     private var dictionaryRepository: DictionaryRepository? = null

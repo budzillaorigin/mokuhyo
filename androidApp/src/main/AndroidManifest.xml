@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Only for the explicitly online features: integrations (WaniKani, Bunpro), sync, model downloads. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".TsumugiApplication"
         android:allowBackup="true"

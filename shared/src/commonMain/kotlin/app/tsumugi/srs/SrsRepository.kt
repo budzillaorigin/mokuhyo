@@ -120,6 +120,8 @@ class SrsRepository(
         itemIds.chunked(CHUNK).flatMap { q.cardsForItems(it).executeAsList() }.map { it.toStudyCard() }
     }
 
+    suspend fun allItemIds(): List<String> = io { q.allItemIds().executeAsList() }
+
     suspend fun card(id: String): StudyCard? = io { q.cardById(id).executeAsOneOrNull()?.toStudyCard() }
 
     suspend fun dueCards(limit: Int = 500, now: Instant = clock.now()): List<StudyCard> = io {

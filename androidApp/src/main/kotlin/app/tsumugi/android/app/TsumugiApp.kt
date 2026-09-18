@@ -26,6 +26,7 @@ import app.tsumugi.android.features.dictionary.DictionarySearchScreen
 import app.tsumugi.android.features.dictionary.EntryScreen
 import app.tsumugi.android.features.dictionary.KanjiScreen
 import app.tsumugi.android.features.dictionary.RadicalSearchScreen
+import app.tsumugi.android.features.me.ImportScreen
 import app.tsumugi.android.features.me.LicensesScreen
 import app.tsumugi.android.features.me.MeDestination
 import app.tsumugi.android.features.me.MeScreen
@@ -84,7 +85,7 @@ fun TsumugiApp() {
                     is Route.PathLevel -> PathLevelScreen(route.level, onOpenItem = { nav.push(Route.PathItem(it)) })
                     is Route.PathItem -> PathItemScreen(route.id, onOpenItem = { nav.push(Route.PathItem(it)) })
                     Route.Settings -> SettingsScreen()
-                    Route.Import -> ComingSoonScreen("Import & export")
+                    Route.Import -> ImportScreen()
                     Route.Licenses -> LicensesScreen()
                 }
             }

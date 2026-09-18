@@ -107,6 +107,9 @@ SELECT * FROM item WHERE kind = ? AND deleted = 0 ORDER BY level, created_at;
 itemsBySourceRef:
 SELECT * FROM item WHERE source = ? AND ref_id IN ? AND deleted = 0;
 
+allItemIds:
+SELECT id FROM item WHERE deleted = 0 ORDER BY created_at;
+
 itemCount:
 SELECT kind, COUNT(*) FROM item WHERE deleted = 0 GROUP BY kind;
 

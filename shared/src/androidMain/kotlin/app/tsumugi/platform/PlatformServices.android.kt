@@ -7,6 +7,9 @@ import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.db.SqlSchema
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import app.tsumugi.db.TsumugiDatabase
+import app.tsumugi.integrations.anki.RawSqliteSchema
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.okhttp.OkHttp
 import okio.FileSystem
 import okio.Path
 import okio.Path.Companion.toOkioPath
@@ -34,6 +37,12 @@ actual class PlatformServices(private val context: Context) {
 
     actual fun packDriver(schema: SqlSchema<QueryResult.Value<Unit>>, fileName: String): SqlDriver =
         AndroidSqliteDriver(schema, context, (dataDir / "packs" / fileName).toString())
+
+    actual fun openSqlite(path: String): SqlDriver = AndroidSqliteDriver(RawSqliteSchema, context, path)
+
+    actual val secrets: Secrets by lazy { SecretStore(context) }
+
+    actual fun httpEngine(): HttpClientEngine = OkHttp.create()
 }
 
 actual fun normalizeNfc(text: String): String = Normalizer.normalize(text, Normalizer.Form.NFC)
