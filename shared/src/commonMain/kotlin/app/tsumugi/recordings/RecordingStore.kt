@@ -107,6 +107,13 @@ class RecordingStore(
     val dir: Path = dataDir / DIR
     private val q get() = db.mediaQueries
 
+    /**
+     * Swift-friendly alias of [newRecording]: Kotlin/Native renames `new…` methods for Objective-C memory
+     * conventions, and `extension` is a Swift keyword.
+     */
+    @Throws(Exception::class)
+    suspend fun startRecording(fileExtension: String = "m4a"): PendingRecording = newRecording(fileExtension)
+
     /** A new id and the file path to record into (the directory exists afterwards). */
     @Throws(Exception::class)
     suspend fun newRecording(extension: String = "m4a"): PendingRecording = io {

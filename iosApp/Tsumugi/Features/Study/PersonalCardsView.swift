@@ -112,7 +112,7 @@ struct PersonalCardsView: View {
 
     /// Downscales to 1600 px and writes a JPEG into the shared image store (off the main actor), then indexes it.
     private static func savePicture(_ image: UIImage, graph: AppGraph) async throws -> String {
-        let pending = try await graph.images.newImage(extension: "jpg")
+        let pending = try await graph.images.startImage(fileExtension: "jpg")
         let path = pending.path
         let ok = await Task.detached(priority: .userInitiated) { () -> Bool in
             let maxSide: CGFloat = 1600

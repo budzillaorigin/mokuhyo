@@ -39,6 +39,10 @@ class ImageStore(
     val dir: Path = dataDir / DIR
     private val q get() = db.mediaQueries
 
+    /** Swift-friendly alias of [newImage] (see [RecordingStore.startRecording]). */
+    @Throws(Exception::class)
+    suspend fun startImage(fileExtension: String = "jpg"): PendingRecording = newImage(fileExtension)
+
     @Throws(Exception::class)
     suspend fun newImage(extension: String = "jpg"): PendingRecording = io {
         ensureDir()

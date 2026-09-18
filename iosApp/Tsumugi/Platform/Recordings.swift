@@ -32,8 +32,8 @@ enum RecordingSaver {
         kind: RecordingKind,
         ref: String?,
         referenceKey: String?
-    ) async throws -> Recording {
-        let pending = try await graph.recordings.newRecording(extension: "wav")
+    ) async throws -> Recording_ {
+        let pending = try await graph.recordings.startRecording(fileExtension: "wav")
         let path = pending.path
         let data = WavFile.data(samples: samples)
         try await Task.detached(priority: .utility) {
