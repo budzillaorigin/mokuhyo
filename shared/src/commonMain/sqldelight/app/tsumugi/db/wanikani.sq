@@ -1,0 +1,61 @@
+-- WaniKani sync state (device-local, never synced; BRIEF §8.3: each device may pull, idempotent by external id).
+
+-- Which Tsumugi item a WaniKani subject maps to ("k:語", "v:1358280", or "wk:<subject id>").
+CREATE TABLE wanikani_subject (
+    subject_id INTEGER NOT NULL PRIMARY KEY,
+    item_id TEXT NOT NULL,
+    subject_type TEXT NOT NULL
+);
+
+-- Last SRS stage seen per assignment, so re-imports turn stage changes into single reviews.
+CREATE TABLE wanikani_assignment (
+    assignment_id INTEGER NOT NULL PRIMARY KEY,
+    subject_id INTEGER NOT NULL,
+    srs_stage INTEGER NOT NULL,
+    data_updated_at TEXT
+);
+
+-- Reviews waiting to be posted back to WaniKani (optional two-way sync, off by default).
+CREATE TABLE wanikani_review_queue (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    subject_id INTEGER NOT NULL,
+    incorrect_meaning INTEGER NOT NULL,
+    incorrect_reading INTEGER NOT NULL,
+    created_at INTEGER NOT NULL
+);
+
+putSubject:
+INSERT OR REPLACE INTO wanikani_subject(subject_id, item_id, subject_type) VALUES (?, ?, ?);
+
+subjectById:
+SELECT * FROM wanikani_subject WHERE subject_id = ?;
+
+subjectForItem:
+SELECT subject_id FROM wanikani_subject WHERE item_id = ? LIMIT 1;
+
+mappedSubjectIds:
+SELECT subject_id FROM wanikani_subject;
+
+assignmentById:
+SELECT * FROM wanikani_assignment WHERE assignment_id = ?;
+
+putAssignment:
+INSERT OR REPLACE INTO wanikani_assignment(assignment_id, subject_id, srs_stage, data_updated_at) VALUES (?, ?, ?, ?);
+
+enqueueReview:
+INSERT INTO wanikani_review_queue(subject_id, incorrect_meaning, incorrect_reading, created_at) VALUES (?, ?, ?, ?);
+
+queuedReviews:
+SELECT * FROM wanikani_review_queue ORDER BY created_at, id;
+
+dequeueReview:
+DELETE FROM wanikani_review_queue WHERE id = ?;
+
+queueSize:
+SELECT COUNT(*) FROM wanikani_review_queue;
+
+clearAll {
+    DELETE FROM wanikani_subject;
+    DELETE FROM wanikani_assignment;
+    DELETE FROM wanikani_review_queue;
+}
