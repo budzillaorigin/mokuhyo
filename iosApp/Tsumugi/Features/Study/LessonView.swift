@@ -78,7 +78,7 @@ struct LessonView: View {
             let modeLabel = s.question.mode == .reading
                 ? String(localized: "quiz.reading", defaultValue: "Reading")
                 : String(localized: "Meaning")
-            Text(verbatim: "\(s.question.item.kind.label) · \(modeLabel)")
+            Text(verbatim: "\(SharedText.kind(s.question.item.kind)) · \(modeLabel)")
             ItemGlyph(text: s.question.item.display, kind: s.question.item.kind)
             AnswerField(mode: s.question.mode) { model.submit($0) }
                 .id("\(s.question.item.id)-\(s.question.direction)-\(s.remaining)")

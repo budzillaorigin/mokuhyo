@@ -118,7 +118,7 @@ struct PathLevelView: View {
                                         .buttonStyle(.plain)
                                 }
                             } header: {
-                                Text("\(kind.label) (\(group.filter { $0.stage != nil }.count)/\(group.count))")
+                                Text("\(SharedText.kind(kind)) (\(group.filter { $0.stage != nil }.count)/\(group.count))")
                                     .font(.headline).frame(maxWidth: .infinity, alignment: .leading).padding(.top, 8)
                             }
                         }
@@ -137,14 +137,14 @@ struct PathLevelView: View {
         let started = entry.stage != nil
         return VStack(spacing: 2) {
             Text(entry.item.display).font(.japanese(size: 22)).lineLimit(1).minimumScaleFactor(0.5)
-            Text(entry.stage?.label ?? "—").font(.caption2)
+            Text(entry.stage.map { SharedText.stage($0) } ?? "—").font(.caption2)
         }
         .foregroundStyle(started ? AnyShapeStyle(.white) : AnyShapeStyle(.primary))
         .frame(maxWidth: .infinity, minHeight: 56)
         .background(started ? AnyShapeStyle(entry.item.kind.color) : AnyShapeStyle(.quaternary.opacity(0.5)), in: RoundedRectangle(cornerRadius: 10))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(entry.item.display)
-        .accessibilityValue(entry.stage?.label ?? String(localized: "Not started"))
+        .accessibilityValue(entry.stage.map { SharedText.stage($0) } ?? String(localized: "Not started"))
     }
 }
 

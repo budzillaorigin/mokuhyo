@@ -6,7 +6,8 @@ import Speech
 
 /// Microphone capture as 16 kHz mono Float32 in [-1, 1], the format the shared speech code expects
 /// (BRIEF §5.10). An AVAudioEngine input tap feeds an AVAudioConverter; samples collect in memory only.
-/// Recordings never leave the device and are never written to disk.
+/// Samples collect in memory; screens that keep a take write it with `RecordingSaver` (G-03, Application Support,
+/// excluded from backups). Nothing leaves the device unless the learner turns on recordings sync.
 final class AudioCapture: @unchecked Sendable {
     static let sampleRate = 16_000.0
 

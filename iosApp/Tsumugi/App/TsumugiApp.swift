@@ -49,8 +49,12 @@ final class AppModel {
     let graph = AppGraph(platform: PlatformServices())
     /// The newest document imported from the share extension; RootView opens it in a reader sheet.
     var sharedDocument: SharedDocument?
+    /// Text sent to "Look up in Tsumugi" (the Action extension); RootView opens the dictionary on it.
+    var sharedLookup: SharedLookup?
 
     init() {
+        // G-14: shared-core labels (stages, kinds, Today blocks…) follow the app's language.
+        SharedText.setLanguage()
         // Native engines are platform code; the shared AiService builds models on top of them (tools/models/README.md).
         graph.ai.llmBridge = LlamaBridge()
         graph.ai.sttBridge = WhisperBridge()
@@ -66,7 +70,8 @@ final class AppModel {
 
     /// Imports items waiting in the share inbox into the reader and opens the newest one.
     func importSharedItems() async {
-        let ids = await ShareInbox.importPending(graph: graph)
-        if let last = ids.last { sharedDocument = SharedDocument(id: last) }
+        let result = await ShareInbox.importPending(graph: graph)
+        if let last = result.documents.last { sharedDocument = SharedDocument(id: last) }
+        if let lookup = result.lookups.last { sharedLookup = SharedLookup(text: lookup) }
     }
 }

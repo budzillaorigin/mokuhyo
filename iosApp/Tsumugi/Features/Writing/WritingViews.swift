@@ -100,6 +100,8 @@ struct WritingPracticeView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
     let kanji: [String]
+    /// Today's writing block (G-01) records itself when the last kanji is done; elsewhere "Done" just closes.
+    var onFinished: (() -> Void)?
 
     @State private var index = 0
     @State private var session: WritingSession?
@@ -119,7 +121,10 @@ struct WritingPracticeView: View {
             VStack(alignment: .leading, spacing: 12) {
                 if index >= kanji.count {
                     Text("Writing practice done.").font(.headline)
-                    Button("Done") { dismiss() }.buttonStyle(.borderedProminent)
+                    Button("Done") {
+                        if let onFinished { onFinished() } else { dismiss() }
+                    }
+                    .buttonStyle(.borderedProminent)
                 } else {
                     Text("\(index + 1) of \(kanji.count): \(kanji[index])").font(.japanese(size: 22))
                     if missing {

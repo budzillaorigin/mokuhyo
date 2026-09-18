@@ -76,8 +76,10 @@ struct OnboardingView: View {
 
     private func finish(openImport: Bool) {
         let level = Int32(suggestedLevel)
+        // G-13: how many kanji the learner knew; nil when the check was skipped. Zero starts Today with the kana course.
+        let known: KotlinInt? = answers.isEmpty ? nil : KotlinInt(int: Int32(answers.values.filter { $0 }.count))
         Task {
-            try? await app.graph.onboarding.finish(goal: goal, budgetMinutes: Int32(budget), startLevel: level)
+            try? await app.graph.onboarding.finish(goal: goal, budgetMinutes: Int32(budget), startLevel: level, kanjiKnown: known)
             onDone(openImport)
         }
     }

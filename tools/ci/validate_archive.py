@@ -3,8 +3,8 @@
     python3 tools/ci/validate_archive.py build/Tsumugi.xcarchive
 
 Catches what an unsigned CI compile never exercised and would otherwise surface at the owner's first
-upload: usage strings, export-compliance and ATS keys, the compiled app icon, embedded extensions and native
-frameworks, privacy manifests, bundled licenses and content packs, document types, and the App Group in every
+upload: usage strings, export-compliance and ATS keys, the compiled app icon, embedded extensions (widget, share,
+action) with a privacy manifest each, the project's four shipping targets, native frameworks, privacy manifests, bundled licenses and content packs, document types, and the App Group in every
 target's entitlements file. Standard library only; `xcrun assetutil` is used when available (macOS).
 Exits 1 with a list of every problem found.
 """
@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import plistlib
+import re
 import shutil
 import subprocess
 import sys
@@ -30,11 +31,15 @@ USAGE_STRINGS = [
 EXTENSIONS = {
     "TsumugiWidget.appex": "com.apple.widgetkit-extension",
     "TsumugiShare.appex": "com.apple.share-services",
+    "TsumugiAction.appex": "com.apple.ui-services",
 }
+# The shipping targets in the Xcode project (the test bundle aside): the app and its three extensions.
+SHIPPING_TARGETS = ["Tsumugi", "TsumugiWidget", "TsumugiShare", "TsumugiAction"]
 NATIVE_FRAMEWORKS = ["llama.framework", "whisper.framework"]
 DOCUMENT_TYPES = ["org.idpf.epub-container", "app.tsumugi.subrip", "app.tsumugi.webvtt", "app.tsumugi.apkg",
                   "app.tsumugi.item-bank", "public.json"]
-ENTITLEMENTS = ["Tsumugi.entitlements", "TsumugiWidget.entitlements", "TsumugiShare.entitlements"]
+ENTITLEMENTS = ["Tsumugi.entitlements", "TsumugiWidget.entitlements", "TsumugiShare.entitlements",
+                "TsumugiAction.entitlements"]
 
 problems: list[str] = []
 
@@ -103,6 +108,20 @@ def check_extensions(app: Path) -> None:
         check((appex / "PrivacyInfo.xcprivacy").is_file(), f"{name}: PrivacyInfo.xcprivacy missing")
 
 
+def check_targets() -> None:
+    """The project declares exactly the four shipping targets (plus the unit-test bundle), each embedded above."""
+    pbx = REPO / "iosApp" / "Tsumugi.xcodeproj" / "project.pbxproj"
+    if not check(pbx.is_file(), f"missing {pbx}"):
+        return
+    text = pbx.read_text(encoding="utf-8")
+    declared = sorted(set(re.findall(r"isa = PBXNativeTarget;.*?\n\s*name = (\w+);", text, flags=re.S)))
+    expected = sorted(SHIPPING_TARGETS + ["TsumugiTests"])
+    check(declared == expected, f"project.pbxproj targets are {declared}, expected {expected}")
+    shipping = [t for t in declared if t != "TsumugiTests"]
+    check(len(shipping) == 4, f"expected 4 shipping targets, found {len(shipping)}: {shipping}")
+    print(f"  targets: {declared}")
+
+
 def check_frameworks(app: Path) -> None:
     for name in NATIVE_FRAMEWORKS:
         fw = app / "Frameworks" / name
@@ -145,6 +164,7 @@ def main() -> None:
     info = check_app_info(app)
     check_icon(app, info)
     check_extensions(app)
+    check_targets()
     check_frameworks(app)
     check_resources(app)
     check_entitlements()

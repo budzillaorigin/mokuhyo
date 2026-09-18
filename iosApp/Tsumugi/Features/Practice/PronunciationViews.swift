@@ -110,6 +110,8 @@ struct PronunciationPracticeView: View {
     @State private var note: String?
     @State private var report: PronunciationReport?
     @State private var working = false
+    /// The saved take, for side-by-side playback with the model audio (G-03).
+    @State private var recordingId: String?
 
     var body: some View {
         ScrollView {
@@ -133,6 +135,7 @@ struct PronunciationPracticeView: View {
                 if let heard { Text("Heard: \(heard)").font(.japanese(size: 16)) }
                 if let note { Text(note).font(.caption).foregroundStyle(.secondary) }
                 if working { ProgressView() }
+                if let recordingId { SideBySideView(recordingId: recordingId) }
                 if let report { PronunciationPanel(report: report) }
                 Text("This is heuristic feedback from speech recognition and a pitch tracker, not a phoneme-level assessment. Accents come from the dictionary pack when installed.")
                     .font(.caption2).foregroundStyle(.secondary)
@@ -152,9 +155,12 @@ struct PronunciationPracticeView: View {
         working = true
         note = nil
         heard = nil
+        recordingId = nil
         let target = sentence
         let graph = app.graph
         Task {
+            let key = ReferenceClip.companion.tts(text: target).key
+            recordingId = (try? await RecordingSaver.save(samples, graph: graph, kind: .sentence, ref: target, referenceKey: key))?.id
             let out = await SpeechToText.transcribe(samples, graph: graph)
             if let error = out.error {
                 note = error + " Scoring pitch and fluency only."

@@ -5,29 +5,38 @@ import SwiftUI
 struct MeView: View {
     @Environment(AppModel.self) private var app
     @State private var stats: StatsSnapshot?
+    @State private var developer = false
 
     var body: some View {
         List {
             if let stats {
                 Section("Progress") {
-                    Text("Streak: \(stats.streak.current) days (longest \(stats.streak.longest))")
+                    StreakCard(streak: stats.streak) { await refresh() }
+                        .listRowInsets(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
                     Toggle("Vacation mode", isOn: Binding(
                         get: { stats.streak.onVacation },
                         set: { on in Task { try? await app.graph.stats.setVacation(on: on); await refresh() } }
                     ))
                     Heatmap(days: stats.heatmap.map { Int($0.count) }).frame(height: 90)
                     ForEach(stats.stageList, id: \.stage) { s in
-                        LabeledContent(s.stage.label, value: "\(s.count)")
+                        LabeledContent(SharedText.stage(s.stage), value: "\(s.count)")
                     }
                     ForEach(stats.accuracyList, id: \.kind) { a in
-                        LabeledContent("\(a.kind.label) accuracy (30 d)", value: "\(Int(a.accuracy.ratio * 100))% of \(a.accuracy.total)")
+                        LabeledContent("\(SharedText.kind(a.kind)) accuracy (30 d)", value: "\(Int(a.accuracy.ratio * 100))% of \(a.accuracy.total)")
                     }
                 }
             }
+            ConversationPatternsCard()
             Section {
+                NavigationLink("Leaderboard", value: Route.leaderboard)
+                NavigationLink("Export (CSV, PDF report, backup)", value: Route.export)
                 NavigationLink("Import & export", value: Route.importExport)
                 NavigationLink("Sync", value: Route.sync)
                 NavigationLink("Settings", value: Route.settings)
+                NavigationLink("Integrations (Notion, Anki)", value: Route.integrations)
+                if developer {
+                    NavigationLink("Content review", value: Route.contentReview)
+                }
                 NavigationLink("AI & speech (models, server, VOICEVOX)", value: Route.aiSettings)
                 NavigationLink("Licenses", value: Route.licenses)
             }
@@ -38,6 +47,7 @@ struct MeView: View {
 
     private func refresh() async {
         stats = try? await app.graph.stats.snapshot(heatmapDays: 140)
+        developer = (try? await app.graph.deviceSettings.bool(key: SettingsView.developerKey, default: false))?.boolValue ?? false
     }
 }
 
@@ -61,7 +71,11 @@ private struct Heatmap: View {
 }
 
 struct SettingsView: View {
+    /// Device-local switch for the in-app content review (G-16).
+    static let developerKey = "dev.contentReview"
+
     @Environment(AppModel.self) private var app
+    @State private var developer = false
     @State private var batch = 5.0
     @State private var retention = 0.9
     @State private var optimizing = false
@@ -104,11 +118,29 @@ struct SettingsView: View {
             Section("AI") {
                 NavigationLink("AI & speech", value: Route.aiSettings)
             }
+            RecordingsSyncSection()
+            Section("Integrations") {
+                NavigationLink("Notion and AnkiConnect", value: Route.integrations)
+            }
+            Section {
+                Toggle("Content review tools", isOn: Binding(
+                    get: { developer },
+                    set: { on in
+                        developer = on
+                        Task { try? await app.graph.deviceSettings.put(key: Self.developerKey, value: on ? "true" : "false") }
+                    }
+                ))
+            } header: {
+                Text("Developer")
+            } footer: {
+                Text("Shows Me → Content review, where AI-drafted pack content is accepted, edited or rejected for the build scripts. This device only.")
+            }
         }
         .navigationTitle("Settings")
         .task {
             batch = Double((try? await app.graph.settings.lessonBatchSize())?.intValue ?? 5)
             retention = (try? await app.graph.settings.desiredRetention())?.doubleValue ?? 0.9
+            developer = (try? await app.graph.deviceSettings.bool(key: Self.developerKey, default: false))?.boolValue ?? false
         }
         .task { for await p in app.graph.recomputeProgress { recompute = p } }
     }
@@ -182,6 +214,70 @@ struct LicensesView: View {
                 return
             }
             lines = text.components(separatedBy: "\n").filter { !$0.isEmpty && !($0.hasPrefix("|") && $0.contains("---")) }
+        }
+    }
+}
+
+/// Opt-in recordings and pictures sync (G-03, D-111): off by default and per device. Uses the sync server's blob
+/// store; nothing is uploaded until the learner turns it on here.
+struct RecordingsSyncSection: View {
+    @Environment(AppModel.self) private var app
+    @State private var enabled = false
+    @State private var bytes: Int64?
+    @State private var syncing = false
+    @State private var progress: Double?
+    @State private var message: String?
+
+    var body: some View {
+        Section {
+            Toggle("Sync my recordings and pictures", isOn: Binding(get: { enabled }, set: { set($0) }))
+            if let bytes {
+                LabeledContent("On this device", value: ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file))
+            }
+            if enabled {
+                Button(syncing ? "Syncing…" : "Sync recordings now") { syncNow() }.disabled(syncing)
+                if let progress { ProgressView(value: progress) }
+            }
+            if let message { Text(message).font(.caption) }
+        } header: {
+            Text("Recordings")
+        } footer: {
+            Text("Off by default. When on, this device uploads your recordings and card pictures to your own sync server (encrypted when end-to-end encryption is on) and downloads the ones made on your other devices. Each device decides for itself.")
+        }
+        .task { await load() }
+    }
+
+    private func load() async {
+        enabled = (try? await app.graph.recordingSync.isEnabled())?.boolValue ?? false
+        bytes = (try? await app.graph.recordings.totalBytes())?.int64Value
+    }
+
+    private func set(_ on: Bool) {
+        enabled = on
+        let sync = app.graph.recordingSync
+        Task { try? await sync.setEnabled(on: on) }
+    }
+
+    private func syncNow() {
+        syncing = true
+        message = nil
+        progress = nil
+        let sync = app.graph.recordingSync
+        Task {
+            do {
+                let r = try await sync.sync { p in
+                    let fraction = p.total > 0 ? Double(p.done) / Double(p.total) : 0
+                    Task { @MainActor in progress = fraction }
+                }
+                var text = String(localized: "\(Int(r.uploaded)) uploaded, \(Int(r.downloaded)) downloaded, \(Int(r.deleted)) deleted.")
+                if !r.failures.isEmpty { text += " " + r.failures.prefix(3).joined(separator: "; ") }
+                message = text
+            } catch {
+                message = String(localized: "Couldn't sync recordings: \(error.localizedDescription)")
+            }
+            syncing = false
+            progress = nil
+            await load()
         }
     }
 }

@@ -1,7 +1,8 @@
 import Foundation
 import Shared
 
-/// Items shared to "Read in Tsumugi" (the TsumugiShare extension). The extension can't open the database, so it
+/// Items shared to "Read in Tsumugi" (the TsumugiShare extension) and text sent to "Look up in Tsumugi" (the
+/// TsumugiAction extension, kind "lookup"). The extension can't open the database, so it
 /// writes one small JSON file per shared item into the App Group container; the app imports them into the reader
 /// when it launches or becomes active. File format: must match `InboxItem` in TsumugiShare/ShareViewController.swift.
 /// Without the App Group entitlement (e.g. unsigned CI builds) the container is unavailable and this does nothing.
@@ -21,12 +22,19 @@ enum ShareInbox {
         var attempts: Int?
     }
 
-    /// Imports every pending item and returns the new reader document ids, oldest first.
-    static func importPending(graph: AppGraph) async -> [String] {
+    struct Result {
+        /// New reader document ids, oldest first.
+        var documents: [String] = []
+        /// Texts to look up in the dictionary, oldest first.
+        var lookups: [String] = []
+    }
+
+    /// Imports every pending item: shared text and links go into the reader, lookups are returned for the dictionary.
+    static func importPending(graph: AppGraph) async -> Result {
         guard !running,
               let dir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?
                   .appendingPathComponent(folder, isDirectory: true)
-        else { return [] }
+        else { return Result() }
         running = true
         defer { running = false }
 
@@ -34,13 +42,13 @@ enum ShareInbox {
         let files = ((try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil)) ?? [])
             .filter { $0.pathExtension == "json" }
             .sorted { $0.lastPathComponent < $1.lastPathComponent }
-        guard !files.isEmpty else { return [] }
+        guard !files.isEmpty else { return Result() }
 
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
-        var ids: [String] = []
+        var out = Result()
         for file in files {
             guard let data = try? Data(contentsOf: file), var item = try? decoder.decode(Item.self, from: data) else {
                 try? FileManager.default.removeItem(at: file)
@@ -51,6 +59,12 @@ enum ShareInbox {
                 try? FileManager.default.removeItem(at: file)
                 continue
             }
+            if item.kind == "lookup" {
+                // A lookup never touches the network: it opens the offline dictionary.
+                out.lookups.append(String(value.prefix(200)))
+                try? FileManager.default.removeItem(at: file)
+                continue
+            }
             do {
                 let id: String
                 if item.kind == "url" || isWebUrl(value) {
@@ -58,7 +72,7 @@ enum ShareInbox {
                 } else {
                     id = try await graph.reader.importText(text: value, title: item.title)
                 }
-                ids.append(id)
+                out.documents.append(id)
                 try? FileManager.default.removeItem(at: file)
             } catch {
                 // Usually offline: keep the item for the next activation, up to maxAttempts.
@@ -71,7 +85,7 @@ enum ShareInbox {
                 }
             }
         }
-        return ids
+        return out
     }
 
     /// Shared plain text that is just one http(s) link is read as a web page.
@@ -81,6 +95,12 @@ enum ShareInbox {
         }
         return (scheme == "http" || scheme == "https") && url.host != nil
     }
+}
+
+/// Text from the Action extension to look up (sheet item).
+struct SharedLookup: Identifiable, Equatable {
+    let text: String
+    var id: String { text }
 }
 
 /// A reader document opened from the share inbox (sheet item).
