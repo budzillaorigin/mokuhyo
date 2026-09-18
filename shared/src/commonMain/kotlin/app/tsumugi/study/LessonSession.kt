@@ -80,6 +80,7 @@ class LessonSession(
     }
 
     /** After quiz feedback: next question, or finish the batch. */
+    @Throws(Exception::class)
     suspend fun next() {
         if (_state.value !is LessonState.QuizFeedback) return
         val q = quiz.firstOrNull()

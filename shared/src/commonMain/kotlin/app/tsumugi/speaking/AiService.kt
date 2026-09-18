@@ -78,6 +78,7 @@ class AiService(
     private var cachedModel: Pair<AiConfig, LanguageModel?>? = null
     private var cachedRecognizer: Pair<AiConfig, SpeechRecognizer?>? = null
 
+    @Throws(Exception::class)
     suspend fun config(): AiConfig = AiConfig(
         llm = enumOr(settings.get(LLM), LlmEngine.NONE),
         localModelId = settings.get(LOCAL_MODEL),
@@ -91,6 +92,7 @@ class AiService(
         voicevoxSpeaker = settings.int(VOICEVOX_SPEAKER, 3),
     )
 
+    @Throws(Exception::class)
     suspend fun save(config: AiConfig) {
         settings.put(LLM, config.llm.name)
         config.localModelId?.let { settings.put(LOCAL_MODEL, it) }
@@ -117,11 +119,13 @@ class AiService(
         }
 
     /** Lists the endpoint's models (GET /v1/models) so settings can offer a picker and prove the URL works. */
+    @Throws(Exception::class)
     suspend fun probeEndpoint(url: String, apiKey: String?): Result<List<String>> = runCatching {
         OpenAICompatibleModel(platform.httpEngine(), url, apiKey, "").probe()
     }
 
     /** The configured model, or null (the gateway then uses fallbacks). */
+    @Throws(Exception::class)
     suspend fun model(): LanguageModel? {
         val config = config()
         return lock.withLock {
@@ -129,12 +133,14 @@ class AiService(
         }
     }
 
+    @Throws(Exception::class)
     suspend fun gateway(): AiGateway {
         val model = model()
         return AiGateway({ model }, context = ValidationContext(isKnownJapanese))
     }
 
     /** Why AI features are off, or null when a model is configured. Shown with a link to AI settings. */
+    @Throws(Exception::class)
     suspend fun unavailableReason(): String? {
         val config = config()
         return when (config.llm) {
@@ -149,6 +155,7 @@ class AiService(
     }
 
     /** Recognizer for the configured engine, or null when the app should use the OS recognizer. */
+    @Throws(Exception::class)
     suspend fun recognizer(): SpeechRecognizer? {
         val config = config()
         return lock.withLock {
@@ -157,6 +164,7 @@ class AiService(
     }
 
     /** VOICEVOX when configured; null means the app speaks with the OS voices. */
+    @Throws(Exception::class)
     suspend fun synthesizer(): Synthesizer? {
         val config = config()
         if (config.tts != TtsEngine.VOICEVOX || config.voicevoxUrl.isBlank()) return null
@@ -164,6 +172,7 @@ class AiService(
     }
 
     /** Frees the on-device model (memory warnings, leaving the speaking screens). */
+    @Throws(Exception::class)
     suspend fun unload() {
         llmBridge?.unload()
         lock.withLock { cachedModel = null }

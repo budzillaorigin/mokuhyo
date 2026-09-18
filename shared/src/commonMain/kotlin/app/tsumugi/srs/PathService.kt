@@ -85,10 +85,13 @@ class PathService(
         }
     }
 
+    @Throws(Exception::class)
     suspend fun items(): List<PathItem> = loaded().first
 
+    @Throws(Exception::class)
     suspend fun item(id: String): PathItem? = loaded().first.firstOrNull { it.id == id }
 
+    @Throws(Exception::class)
     suspend fun status(): PathStatus {
         val (_, tree) = loaded()
         val stages = srs.stages()
@@ -104,6 +107,7 @@ class PathService(
     }
 
     /** Next lessons in path order (radicals → kanji → vocab, lower levels first). */
+    @Throws(Exception::class)
     suspend fun lessonQueue(limit: Int = Int.MAX_VALUE): List<PathItem> {
         val (items, tree) = loaded()
         val byId = items.associateBy { it.id }
@@ -112,6 +116,7 @@ class PathService(
         return tree.availableLessons(stages, level, manualUnlocks()).take(limit).mapNotNull { byId[it.id] }
     }
 
+    @Throws(Exception::class)
     suspend fun detail(id: String): PathItemDetail? {
         val (items, _) = loaded()
         val byId = items.associateBy { it.id }
@@ -127,9 +132,11 @@ class PathService(
         )
     }
 
+    @Throws(Exception::class)
     suspend fun saveMyStory(itemId: String, story: String) = srs.saveNote(itemId, myStory = story)
 
     /** Items of one level with their current stage (null = not started), for the level grid. */
+    @Throws(Exception::class)
     suspend fun level(level: Int): List<LevelEntry> {
         val (items, _) = loaded()
         val stages = srs.stages()
@@ -140,6 +147,7 @@ class PathService(
      * Lesson finished: the items join the user's collection and their cards enter the review queue. Kanji also
      * get a writing card when the learner turned writing cards on.
      */
+    @Throws(Exception::class)
     suspend fun completeLessons(lessons: List<PathItem>) {
         val writing = settings.bool(SettingsRepository.WRITING_CARDS, false)
         fun directions(item: PathItem) = directionsFor(item.kind) + if (writing && item.kind == ItemKind.KANJI) listOf(CardDirection.WRITING) else emptyList()
@@ -147,8 +155,10 @@ class PathService(
         srs.introduce(lessons.flatMap { item -> directions(item).map { SrsRepository.cardId(item.id, it) } })
     }
 
+    @Throws(Exception::class)
     suspend fun skipToLevel(level: Int) = settings.put(SettingsRepository.PATH_LEVEL_FLOOR, level.toString())
 
+    @Throws(Exception::class)
     suspend fun unlockManually(itemId: String) {
         val current = manualUnlocks()
         settings.put(SettingsRepository.PATH_MANUAL_UNLOCKS, json.encodeToString((current + itemId).toList()))

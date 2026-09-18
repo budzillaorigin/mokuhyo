@@ -11,20 +11,28 @@ import kotlin.uuid.Uuid
 class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clock = Clock.System) {
     private val q get() = db.userQueries
 
+    @Throws(Exception::class)
     suspend fun get(key: String): String? = withContext(Dispatchers.IO) { q.settingValue(key).executeAsOneOrNull() }
 
+    @Throws(Exception::class)
     suspend fun put(key: String, value: String) = withContext(Dispatchers.IO) {
         q.putSetting(key, value, clock.now().toEpochMilliseconds())
     }
 
+    @Throws(Exception::class)
     suspend fun int(key: String, default: Int): Int = get(key)?.toIntOrNull() ?: default
+    @Throws(Exception::class)
     suspend fun bool(key: String, default: Boolean): Boolean = get(key)?.toBooleanStrictOrNull() ?: default
 
+    @Throws(Exception::class)
     suspend fun lessonBatchSize(): Int = int(LESSON_BATCH_SIZE, DEFAULT_LESSON_BATCH)
+    @Throws(Exception::class)
     suspend fun setLessonBatchSize(size: Int) = put(LESSON_BATCH_SIZE, size.coerceIn(1, 50).toString())
 
     /** Target recall probability for FSRS (0.7–0.99). Takes effect for the next scheduled review. */
+    @Throws(Exception::class)
     suspend fun desiredRetention(): Double = get(DESIRED_RETENTION)?.toDoubleOrNull() ?: DEFAULT_RETENTION
+    @Throws(Exception::class)
     suspend fun setDesiredRetention(value: Double) = put(DESIRED_RETENTION, value.coerceIn(0.7, 0.99).toString())
 
     companion object Keys {

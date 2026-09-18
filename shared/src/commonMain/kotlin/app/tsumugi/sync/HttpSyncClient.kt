@@ -34,19 +34,23 @@ class HttpSyncClient(
 
     // --- Auth ---------------------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     suspend fun register(request: RegisterRequest): RegisterResponse =
         call(HttpMethod.Post, "/auth/register", RegisterRequest.serializer(), request, RegisterResponse.serializer(), auth = false)
 
+    @Throws(Exception::class)
     suspend fun login(request: LoginRequest): TokenResponse =
         call(HttpMethod.Post, "/auth/login", LoginRequest.serializer(), request, TokenResponse.serializer(), auth = false)
             .also { save(it) }
 
+    @Throws(Exception::class)
     suspend fun refresh(): TokenResponse {
         val refresh = tokens.refreshToken ?: throw SyncException("Not signed in", 401)
         return call(HttpMethod.Post, "/auth/refresh", RefreshRequest.serializer(), RefreshRequest(refresh), TokenResponse.serializer(), auth = false, retry = false)
             .also { save(it) }
     }
 
+    @Throws(Exception::class)
     suspend fun logout() {
         tokens.refreshToken?.let { refresh ->
             runCatching { send(HttpMethod.Post, "/auth/logout", SyncJson.encodeToString(RefreshRequest.serializer(), RefreshRequest(refresh)), auth = false, retry = false) }
@@ -57,29 +61,37 @@ class HttpSyncClient(
 
     // --- Account and devices ------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     suspend fun account(): SyncAccountInfo = call(HttpMethod.Get, "/account", null, null, SyncAccountInfo.serializer())
 
+    @Throws(Exception::class)
     suspend fun updateAccount(patch: AccountPatch): SyncAccountInfo =
         call(HttpMethod.Patch, "/account", AccountPatch.serializer(), patch, SyncAccountInfo.serializer())
 
+    @Throws(Exception::class)
     suspend fun devices(): List<DeviceInfo> = call(HttpMethod.Get, "/devices", null, null, ListSerializer(DeviceInfo.serializer()))
 
+    @Throws(Exception::class)
     suspend fun removeDevice(id: String) {
         check(send(HttpMethod.Delete, "/devices/$id", null))
     }
 
+    @Throws(Exception::class)
     suspend fun putPacks(deviceId: String, packs: Map<String, String>) {
         check(send(HttpMethod.Put, "/devices/$deviceId/packs", SyncJson.encodeToString(DevicePacks.serializer(), DevicePacks(packs))))
     }
 
+    @Throws(Exception::class)
     suspend fun leaderboard(period: String = "week"): List<LeaderboardRow> =
         call(HttpMethod.Get, "/leaderboard?period=$period", null, null, ListSerializer(LeaderboardRow.serializer()))
 
     // --- Sync ---------------------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     override suspend fun push(changes: List<Change>): PushResponse =
         call(HttpMethod.Post, "/sync/push", PushRequest.serializer(), PushRequest(changes), PushResponse.serializer())
 
+    @Throws(Exception::class)
     override suspend fun pull(since: Long, limit: Int): PullResponse =
         call(HttpMethod.Get, "/sync/pull?since=$since&limit=$limit", null, null, PullResponse.serializer())
 
@@ -107,6 +119,7 @@ class HttpSyncClient(
     }
 
     private suspend fun send(method: HttpMethod, path: String, json: String?, auth: Boolean = true, retry: Boolean = true): HttpResponse {
+        @Throws(Exception::class)
         suspend fun once(): HttpResponse = http.request(root + path) {
             this.method = method
             if (auth) tokens.accessToken?.let { header(HttpHeaders.Authorization, "Bearer $it") }

@@ -20,5 +20,6 @@ data class Morpheme(
 
 /** Splits Japanese text into morphemes. Identical results on every platform (pure Kotlin + a content pack). */
 interface MorphologicalAnalyzer {
+    @Throws(Exception::class)
     suspend fun analyze(text: String): List<Morpheme>
 }

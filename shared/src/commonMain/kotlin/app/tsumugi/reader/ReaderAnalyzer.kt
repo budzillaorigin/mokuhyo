@@ -130,11 +130,13 @@ class ReaderAnalyzer(
     // --- Reading view ------------------------------------------------------------------------------------
 
     /** Paragraphs [from, from + count) fully analyzed, for lazy rendering. */
+    @Throws(Exception::class)
     suspend fun page(body: String, from: Int, count: Int, ruby: List<RubyHint> = emptyList()): List<ReaderParagraph> {
         val known = stages()
         return paragraphs(body).drop(from).take(count).map { paragraph(body, it, ruby, known) }
     }
 
+    @Throws(Exception::class)
     suspend fun paragraph(body: String, range: IntRange, ruby: List<RubyHint> = emptyList(), known: Map<String, Stage>? = null): ReaderParagraph {
         val stageMap = known ?: stages()
         val patterns = patterns()
@@ -181,6 +183,7 @@ class ReaderAnalyzer(
      * The average maps to 0+ (< 0.5), 1 (< 1.0), 1+ (< 1.5), 2 (< 2.0), 2+ (< 2.5), else 3. This is a rough
      * signal for picking texts, not a DLPT rating.
      */
+    @Throws(Exception::class)
     suspend fun analyze(body: String, sampleChars: Int = DEFAULT_SAMPLE): ReaderAnalysis {
         val sample = if (body.length <= sampleChars) body else body.substring(0, sampleChars).substringBeforeLast('\n', body.substring(0, sampleChars))
         val known = stages()
@@ -216,6 +219,7 @@ class ReaderAnalyzer(
     }
 
     /** Analyzes a stored document and saves the estimates on it. */
+    @Throws(Exception::class)
     suspend fun analyzeAndSave(repo: ReaderRepository, document: ReaderDocument): ReaderAnalysis =
         analyze(document.body).also { repo.saveAnalysis(document.id, it) }
 
@@ -225,6 +229,7 @@ class ReaderAnalyzer(
      * Adds the token's word to reviews with the sentence as its context (Yomikiri-style one-tap mining).
      * Returns the item id, or null for tokens that aren't dictionary words.
      */
+    @Throws(Exception::class)
     suspend fun mine(
         token: ReaderToken,
         sentence: ReaderSentence,
@@ -237,6 +242,7 @@ class ReaderAnalyzer(
     }
 
     /** [mine] with the app's dictionary and collection. */
+    @Throws(Exception::class)
     suspend fun mine(token: ReaderToken, sentence: ReaderSentence, dictionary: DictionaryRepository, collection: CollectionService): String? =
         mine(token, sentence, { dictionary.entry(it)?.entry }, { e, context -> collection.addToReviews(e, context) })
 

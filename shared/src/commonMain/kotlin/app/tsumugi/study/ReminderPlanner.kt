@@ -30,6 +30,7 @@ class ReminderPlanner(
     private val clock: Clock = Clock.System,
     private val zone: () -> TimeZone = { TimeZone.currentSystemDefault() },
 ) {
+    @Throws(Exception::class)
     suspend fun next(): Reminder? = withContext(Dispatchers.IO) {
         if (!settings.bool(SettingsRepository.REMINDERS_ENABLED, true)) return@withContext null
         val threshold = settings.int(SettingsRepository.REMINDER_THRESHOLD, DEFAULT_THRESHOLD)

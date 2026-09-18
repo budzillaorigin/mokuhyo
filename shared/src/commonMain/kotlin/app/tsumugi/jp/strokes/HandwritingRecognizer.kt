@@ -11,6 +11,7 @@ import kotlin.math.min
 
 /** Where recognition templates come from: kanji → its strokes (KanjiVG polylines, 109×109 space). */
 fun interface StrokeTemplateSource {
+    @Throws(Exception::class)
     suspend fun candidates(strokeCounts: IntRange): Map<String, List<List<Point>>>
 }
 
@@ -21,6 +22,7 @@ fun interface StrokeTemplateSource {
 class SvgTemplateSource(private val load: suspend () -> Map<String, List<String>>) : StrokeTemplateSource {
     private var cache: Map<String, List<List<Point>>>? = null
 
+    @Throws(Exception::class)
     override suspend fun candidates(strokeCounts: IntRange): Map<String, List<List<Point>>> {
         val all = cache ?: load().mapValues { (_, paths) -> paths.map { SvgPath.flatten(it, step = 3f) } }.also { cache = it }
         return all.filterValues { it.size in strokeCounts }
@@ -47,6 +49,7 @@ class HandwritingRecognizer(private val source: StrokeTemplateSource) {
 
     private class Template(val kanji: String, val strokes: List<FloatArray>)
 
+    @Throws(Exception::class)
     suspend fun recognize(strokes: List<List<Point>>, limit: Int = 10): List<Candidate> {
         val drawn = strokes.filter { it.isNotEmpty() }
         if (drawn.isEmpty()) return emptyList()
@@ -65,6 +68,7 @@ class HandwritingRecognizer(private val source: StrokeTemplateSource) {
     }
 
     /** Loads and prepares every template once (the first query pays for it). */
+    @Throws(Exception::class)
     suspend fun warmUp() {
         templates()
     }

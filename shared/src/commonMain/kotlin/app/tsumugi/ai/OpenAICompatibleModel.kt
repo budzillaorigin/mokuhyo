@@ -47,6 +47,7 @@ class OpenAICompatibleModel(
     /** Strongest structured-output mode the server has accepted so far. */
     private var mode = StructuredMode.JSON_SCHEMA
 
+    @Throws(Exception::class)
     override suspend fun complete(request: CompletionRequest): CompletionResult {
         while (true) {
             val useMode = if (request.jsonSchema == null) StructuredMode.NONE else mode
@@ -72,6 +73,7 @@ class OpenAICompatibleModel(
     }
 
     /** GET /v1/models: the model ids the server offers (used when saving endpoint settings). */
+    @Throws(Exception::class)
     suspend fun probe(): List<String> {
         val response = try {
             http.get("$baseUrl/models") { auth() }

@@ -46,6 +46,7 @@ class WhisperRecognizer(
     private val modelPath: String? = null,
     private val modelName: String = "Whisper",
 ) : SpeechRecognizer {
+    @Throws(Exception::class)
     override suspend fun transcribe(pcm16kMono: ShortArray, language: String): Transcript {
         if (!bridge.isLoaded()) {
             val path = modelPath ?: throw AiException("speech model is not downloaded")
@@ -90,6 +91,7 @@ class WhisperEndpointRecognizer(
     private val http = HttpClient(engine) { expectSuccess = false }
     private val base = OpenAICompatibleModel.normalize(baseUrl)
 
+    @Throws(Exception::class)
     override suspend fun transcribe(pcm16kMono: ShortArray, language: String): Transcript {
         val wav = Wav.encode(pcm16kMono, SAMPLE_RATE)
         val response = try {
@@ -132,6 +134,7 @@ class VoicevoxSynthesizer(engine: HttpClientEngine, baseUrl: String, private val
     private val http = HttpClient(engine) { expectSuccess = false }
     private val base = baseUrl.trim().trimEnd('/')
 
+    @Throws(Exception::class)
     override suspend fun synthesize(text: String, voice: String?, speed: Double): ByteArray? {
         val speakerId = voice?.toIntOrNull() ?: speaker
         return try {

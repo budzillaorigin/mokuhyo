@@ -39,6 +39,7 @@ class CollectionService(
      * looking at it. A word that is also on the kanji path uses the path item, so progress isn't split.
      * [context] is an optional example/mined sentence stored with the item.
      */
+    @Throws(Exception::class)
     suspend fun addToReviews(entry: DictionaryEntry, context: String? = null): String {
         val pathItem = path()?.item("v:${entry.id}")
         if (pathItem != null) {
@@ -62,34 +63,43 @@ class CollectionService(
     }
 
     /** True when the word is already studied, either as an added word or on the kanji path. */
+    @Throws(Exception::class)
     suspend fun isInReviews(entryId: Long): Boolean =
         srs.cardsForItems(listOf(itemId(entryId), "v:$entryId")).any { it.fsrs.state != app.tsumugi.srs.CardState.NEW }
 
     // --- Word lists -----------------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     suspend fun lists(): List<WordListSummary> = io {
         lists.lists().executeAsList().map { WordListSummary(it.id, it.name, it.size.toInt()) }
     }
 
+    @Throws(Exception::class)
     suspend fun createList(name: String): String = io {
         val now = clock.now().toEpochMilliseconds()
         Uuid.random().toString().also { lists.insertList(it, name.trim().ifEmpty { "Word list" }, now, now) }
     }
 
+    @Throws(Exception::class)
     suspend fun renameList(listId: String, name: String) = io { lists.renameList(name, clock.now().toEpochMilliseconds(), listId) }
 
+    @Throws(Exception::class)
     suspend fun deleteList(listId: String) = io { lists.deleteList(clock.now().toEpochMilliseconds(), listId) }
 
+    @Throws(Exception::class)
     suspend fun addToList(listId: String, entry: EntrySummary) = io {
         lists.putListEntry(listId, "jmdict:${entry.id}", entry.headword, entry.reading, entry.glossPreview, clock.now().toEpochMilliseconds())
     }
 
+    @Throws(Exception::class)
     suspend fun removeFromList(listId: String, ref: String) = io { lists.removeListEntry(clock.now().toEpochMilliseconds(), listId, ref) }
 
+    @Throws(Exception::class)
     suspend fun entries(listId: String): List<WordListEntry> = io {
         lists.listEntries(listId).executeAsList().map { WordListEntry(it.ref, it.text, it.reading, it.gloss) }
     }
 
+    @Throws(Exception::class)
     suspend fun listsContaining(entryId: Long): List<String> = io { lists.listsContaining("jmdict:$entryId").executeAsList() }
 
     private suspend fun <T> io(block: suspend () -> T): T = withContext(Dispatchers.IO) { block() }

@@ -51,6 +51,7 @@ class LatticeTokenizer(private val db: TokenizerDatabase) : MorphologicalAnalyze
     private var tables: Tables? = null
     private val cache = HashMap<String, List<Entry>>()
 
+    @Throws(Exception::class)
     override suspend fun analyze(text: String): List<Morpheme> = withContext(Dispatchers.IO) {
         val t = loaded()
         val out = ArrayList<Morpheme>()

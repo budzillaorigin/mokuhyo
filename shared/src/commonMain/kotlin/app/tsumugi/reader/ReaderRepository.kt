@@ -68,6 +68,7 @@ class ReaderRepository(private val db: TsumugiDatabase, private val clock: Clock
     private val q get() = db.readerQueries
 
     /** Saves an imported text; re-importing the same URL replaces the earlier copy. Returns the document id. */
+    @Throws(Exception::class)
     suspend fun save(text: ImportedText): String = io {
         val existing = text.sourceUrl?.let { q.docBySourceUrl(it).executeAsOneOrNull() }
         val id = existing?.id ?: Uuid.random().toString()
@@ -79,6 +80,7 @@ class ReaderRepository(private val db: TsumugiDatabase, private val clock: Clock
         id
     }
 
+    @Throws(Exception::class)
     suspend fun documents(): List<ReaderDocumentSummary> = io {
         q.docList().executeAsList().map {
             ReaderDocumentSummary(
@@ -88,6 +90,7 @@ class ReaderRepository(private val db: TsumugiDatabase, private val clock: Clock
         }
     }
 
+    @Throws(Exception::class)
     suspend fun document(id: String): ReaderDocument? = io {
         q.docById(id).executeAsOneOrNull()?.let {
             ReaderDocument(
@@ -97,29 +100,37 @@ class ReaderRepository(private val db: TsumugiDatabase, private val clock: Clock
         }
     }
 
+    @Throws(Exception::class)
     suspend fun delete(id: String) = io { q.deleteDoc(id) }
 
+    @Throws(Exception::class)
     suspend fun setProgress(id: String, offset: Int) = io { q.updateProgress(offset.toLong(), id) }
 
+    @Throws(Exception::class)
     suspend fun saveAnalysis(id: String, analysis: ReaderAnalysis) = io {
         q.updateAnalysis(analysis.jlptEstimate?.toLong(), analysis.ilrEstimate, analysis.knownRatio, id)
     }
 
     // --- Feeds --------------------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     suspend fun addFeed(url: String, title: String): ReaderFeed = io {
         q.insertFeed(Uuid.random().toString(), url, title, clock.now().toEpochMilliseconds())
         q.feedByUrl(url).executeAsOne().let { ReaderFeed(it.id, it.url, it.title, it.added_at, it.last_fetched_at) }
     }
 
+    @Throws(Exception::class)
     suspend fun feeds(): List<ReaderFeed> = io {
         q.feeds().executeAsList().map { ReaderFeed(it.id, it.url, it.title, it.added_at, it.last_fetched_at) }
     }
 
+    @Throws(Exception::class)
     suspend fun renameFeed(id: String, title: String) = io { q.renameFeed(title, id) }
 
+    @Throws(Exception::class)
     suspend fun markFetched(id: String) = io { q.markFeedFetched(clock.now().toEpochMilliseconds(), id) }
 
+    @Throws(Exception::class)
     suspend fun deleteFeed(id: String) = io { q.deleteFeed(id) }
 
     private suspend fun <T> io(block: suspend () -> T): T = withContext(Dispatchers.IO) { block() }

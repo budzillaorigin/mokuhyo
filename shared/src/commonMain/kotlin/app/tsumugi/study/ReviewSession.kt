@@ -167,6 +167,7 @@ class ReviewSession(
     val isEmpty: Boolean get() = results.isEmpty() && queue.isEmpty()
 
     /** Typed answer for MEANING/READING prompts. */
+    @Throws(Exception::class)
     suspend fun submit(answer: String) {
         val asking = _state.value as? ReviewState.Asking ?: return
         val prompt = asking.prompt
@@ -196,6 +197,7 @@ class ReviewSession(
     }
 
     /** Self-graded prompt: record the rating and move on. */
+    @Throws(Exception::class)
     suspend fun grade(rating: Rating) {
         val revealed = _state.value as? ReviewState.Revealed ?: return
         record(revealed.prompt, rating, null, rating != Rating.AGAIN)
@@ -205,11 +207,13 @@ class ReviewSession(
     }
 
     /** After feedback: go to the next card. */
+    @Throws(Exception::class)
     suspend fun next() {
         if (_state.value is ReviewState.Answered) advance()
     }
 
     /** Take back the last answer (e.g. a typo): the review is removed and the same card is asked again. */
+    @Throws(Exception::class)
     suspend fun undo() {
         val answered = _state.value as? ReviewState.Answered ?: return
         val outcome = lastOutcome ?: return
@@ -235,6 +239,7 @@ class ReviewSession(
     }
 
     /** End now and show the summary. */
+    @Throws(Exception::class)
     suspend fun finish() {
         queue.clear()
         _state.value = ReviewState.Finished(summary())
@@ -300,6 +305,7 @@ class ReviewSession(
         private val CardDirection.isGrammar: Boolean get() = this == CardDirection.CLOZE || this == CardDirection.GHOST
 
         /** A session over everything due now (up to [limit] cards). Grammar cards need [grammar] for exercises. */
+        @Throws(Exception::class)
         suspend fun start(
             srs: SrsRepository,
             grammar: GrammarService? = null,

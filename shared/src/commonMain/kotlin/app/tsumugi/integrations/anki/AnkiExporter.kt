@@ -39,6 +39,7 @@ class AnkiExporter(
 ) {
     private val json = Json { ignoreUnknownKeys = true }
 
+    @Throws(Exception::class)
     suspend fun export(itemIds: Collection<String>, deckName: String = "Tsumugi"): ByteArray = withContext(Dispatchers.IO) {
         val q = db.srsQueries
         val items = itemIds.distinct().chunked(500).flatMap { q.itemsByIds(it).executeAsList() }

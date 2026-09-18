@@ -25,6 +25,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
 
     // --- Search ----------------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     suspend fun search(rawQuery: String, limit: Int = 40): SearchResults = io {
         val query = normalizeNfc(rawQuery.trim())
         when {
@@ -151,6 +152,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
     // --- Tokenizing (sentence mode, reader) ------------------------------------------------------------
 
     /** Greedy longest-match segmentation of Japanese text into dictionary words (deinflection-aware). */
+    @Throws(Exception::class)
     suspend fun tokenize(text: String): List<Token> = io { tokenizeBlocking(normalizeNfc(text)) }
 
     internal fun tokenizeBlocking(text: String): List<Token> {
@@ -194,6 +196,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
 
     // --- Entries ----------------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     suspend fun entry(id: Long): EntryDetail? = io {
         val entry = entries(listOf(id)).firstOrNull() ?: return@io null
         val headword = entry.headword
@@ -211,9 +214,11 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         EntryDetail(entry, furigana, pitch, kanji, sentences, conjugations)
     }
 
+    @Throws(Exception::class)
     suspend fun summaries(ids: List<Long>): List<EntrySummary> = io { summariesInOrder(ids) }
 
     /** Downstep positions (Kanjium; 0 = heiban) for a written form and its hiragana reading; empty when unknown. */
+    @Throws(Exception::class)
     suspend fun pitchAccents(word: String, reading: String): List<Int> = io {
         (q.pitchFor(word, reading).executeAsOneOrNull() ?: q.pitchFor(reading, reading).executeAsOneOrNull())
             ?.let(Pitch::parse).orEmpty()
@@ -271,6 +276,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
 
     // --- Kanji ------------------------------------------------------------------------------------------
 
+    @Throws(Exception::class)
     suspend fun kanji(literal: String): KanjiDetail? = io {
         val info = kanjiInfo(listOf(literal)).firstOrNull() ?: return@io null
         val components = q.componentsOf(literal).executeAsList()
@@ -279,11 +285,13 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         KanjiDetail(info, components, strokes, words)
     }
 
+    @Throws(Exception::class)
     suspend fun strokes(literal: String): List<KanjiStroke> = io {
         q.strokesFor(literal).executeAsList().map { KanjiStroke(it.ord.toInt(), it.path, it.type) }
     }
 
     /** Every KanjiVG character's stroke paths, in order (handwriting recognizer templates; loaded once). */
+    @Throws(Exception::class)
     suspend fun allStrokePaths(): Map<String, List<String>> = io {
         q.allStrokes().executeAsList().groupBy({ it.kanji }, { it.path })
     }
@@ -294,11 +302,13 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         return literals.mapNotNull { rows[it] }.map { it.toInfo() }
     }
 
+    @Throws(Exception::class)
     suspend fun radicals(): List<Radical> = io {
         q.allRadicals().executeAsList().map { Radical(it.radical, it.stroke_count.toInt(), it.display, it.name) }
     }
 
     /** Kanji containing every selected radical, plus the radicals that could still narrow the result. */
+    @Throws(Exception::class)
     suspend fun kanjiByRadicals(selected: Set<String>): RadicalSearchResult = io {
         if (selected.isEmpty()) return@io RadicalSearchResult(emptyList(), q.allRadicals().executeAsList().map { it.radical }.toSet())
         val kanji = q.kanjiWithAllRadicals(selected, selected.size.toLong()).executeAsList().map {
@@ -314,6 +324,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         RadicalSearchResult(kanji, compatible)
     }
 
+    @Throws(Exception::class)
     suspend fun packInfo(): Map<String, String> = io {
         listOf("pack_version", "jmdict_version", "kanjidic2_version", "kanjivg_version", "tatoeba_sentences")
             .associateWith { q.metaValue(it).executeAsOneOrNull().orEmpty() }

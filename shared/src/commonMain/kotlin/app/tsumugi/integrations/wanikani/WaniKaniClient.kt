@@ -60,20 +60,26 @@ class WaniKaniClient(
     private val limiterLock = Mutex()
     private val recent = ArrayDeque<Instant>()
 
+    @Throws(Exception::class)
     suspend fun user(): WkUser = decode(WkResource.serializer(WkUser.serializer()), get("$baseUrl/user")).data
 
+    @Throws(Exception::class)
     suspend fun subjects(ids: Collection<Long>): WkPage<WkSubject> =
         if (ids.isEmpty()) WkPage(emptyList(), null) else collection("subjects", WkSubject.serializer(), "ids" to ids.joinToString(","))
 
+    @Throws(Exception::class)
     suspend fun assignments(updatedAfter: String? = null): WkPage<WkAssignment> =
         collection("assignments", WkAssignment.serializer(), "started" to "true", "updated_after" to updatedAfter)
 
+    @Throws(Exception::class)
     suspend fun reviewStatistics(updatedAfter: String? = null): WkPage<WkReviewStatistic> =
         collection("review_statistics", WkReviewStatistic.serializer(), "updated_after" to updatedAfter)
 
+    @Throws(Exception::class)
     suspend fun studyMaterials(updatedAfter: String? = null): WkPage<WkStudyMaterial> =
         collection("study_materials", WkStudyMaterial.serializer(), "updated_after" to updatedAfter)
 
+    @Throws(Exception::class)
     suspend fun levelProgressions(): WkPage<WkLevelProgression> =
         collection("level_progressions", WkLevelProgression.serializer())
 
@@ -81,6 +87,7 @@ class WaniKaniClient(
      * POST /reviews. Returns the HTTP status: 2xx = accepted, 401/403 = the token can't write (read-only),
      * 422 = WaniKani rejected this review (e.g. not available for review), anything else = try again later.
      */
+    @Throws(Exception::class)
     suspend fun postReview(subjectId: Long, incorrectMeaning: Int, incorrectReading: Int, createdAt: Instant): Int {
         val body = json.encodeToString(
             WkReviewBody.serializer(),
@@ -90,6 +97,7 @@ class WaniKaniClient(
     }
 
     /** PUT /study_materials/:id with the user's own notes/synonyms. Returns the HTTP status. */
+    @Throws(Exception::class)
     suspend fun updateStudyMaterial(id: Long, update: WkStudyMaterialUpdate): Int {
         val body = json.encodeToString(WkStudyMaterialBody.serializer(), WkStudyMaterialBody(update))
         return send(HttpMethod.Put, "$baseUrl/study_materials/$id", body).status.value

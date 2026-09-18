@@ -125,6 +125,7 @@ object AozoraImporter {
 
 /** Downloads Aozora works on the user's request. */
 class AozoraService(private val web: UrlImporter, private val repo: ReaderRepository) {
+    @Throws(Exception::class)
     suspend fun catalogue(zipUrl: String = CATALOGUE_URL): List<AozoraWork> {
         val (bytes, _) = web.fetch(zipUrl)
         val csv = Zip.read(bytes).entries.firstOrNull { it.key.endsWith(".csv") }?.value
@@ -132,6 +133,7 @@ class AozoraService(private val web: UrlImporter, private val repo: ReaderReposi
         return AozoraImporter.parseCatalogue(csv.decodeToString())
     }
 
+    @Throws(Exception::class)
     suspend fun import(work: AozoraWork): String {
         val (bytes, _) = web.fetch(work.textUrl)
         val text = if (work.textUrl.endsWith(".zip")) AozoraImporter.textFromZip(bytes, work.textUrl)

@@ -68,6 +68,7 @@ object FeedParser {
 class FeedService(private val repo: ReaderRepository, private val web: UrlImporter) {
 
     /** Subscribes to [url] after checking it parses as a feed; returns the feed with its current items. */
+    @Throws(Exception::class)
     suspend fun add(url: String): Pair<ReaderFeed, List<FeedItem>> {
         val parsed = FeedParser.parse(web.fetchText(url))
         if (parsed.items.isEmpty() && parsed.title.isEmpty()) throw ImportException("That URL doesn't look like an RSS or Atom feed")
@@ -76,8 +77,10 @@ class FeedService(private val repo: ReaderRepository, private val web: UrlImport
         return feed to parsed.items
     }
 
+    @Throws(Exception::class)
     suspend fun feeds(): List<ReaderFeed> = repo.feeds()
 
+    @Throws(Exception::class)
     suspend fun items(feed: ReaderFeed): List<FeedItem> {
         val parsed = FeedParser.parse(web.fetchText(feed.url))
         repo.markFetched(feed.id)
@@ -85,6 +88,7 @@ class FeedService(private val repo: ReaderRepository, private val web: UrlImport
     }
 
     /** Fetches the item's article and saves it as a document; returns the document id. */
+    @Throws(Exception::class)
     suspend fun importItem(item: FeedItem): String {
         val text = runCatching { web.import(item.link, SourceKind.RSS) }.getOrElse {
             // Some feeds carry the whole article in the item; fall back to it rather than failing.
@@ -94,5 +98,6 @@ class FeedService(private val repo: ReaderRepository, private val web: UrlImport
         return repo.save(text.copy(title = item.title.ifEmpty { text.title }))
     }
 
+    @Throws(Exception::class)
     suspend fun remove(feedId: String) = repo.deleteFeed(feedId)
 }

@@ -44,6 +44,7 @@ class LocalLlamaModel(
     override val isLocal: Boolean = true
     private val engineLabel = "on-device ${modelInfo.name}"
 
+    @Throws(Exception::class)
     override suspend fun complete(request: CompletionRequest): CompletionResult {
         ensureLoaded()
         val prompt = chatMl(request.messages)

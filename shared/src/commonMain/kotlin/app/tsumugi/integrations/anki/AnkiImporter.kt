@@ -85,6 +85,7 @@ class AnkiImporter(
 ) {
     private val json = Json { ignoreUnknownKeys = true; encodeDefaults = true }
 
+    @Throws(Exception::class)
     suspend fun import(apkg: ByteArray): AnkiImportResult {
         val (pkg, collection) = withContext(Dispatchers.IO) {
             val pkg = AnkiPackage.read(apkg)

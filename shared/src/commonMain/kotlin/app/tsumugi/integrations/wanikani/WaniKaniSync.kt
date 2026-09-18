@@ -82,6 +82,7 @@ class WaniKaniSync(
         user.integration(KIND).executeAsOneOrNull()?.let { json.decodeFromString(WaniKaniConfig.serializer(), it.config) }
 
     /** Validates [token] against /user, then stores it and the integration row. Throws [WaniKaniException] on 401. */
+    @Throws(Exception::class)
     suspend fun connect(token: String): WkUser {
         val client = clientFactory(token.trim())
         val me = try { client.user() } finally { client.close() }
@@ -90,12 +91,14 @@ class WaniKaniSync(
         return me
     }
 
+    @Throws(Exception::class)
     suspend fun disconnect() = io {
         secrets.remove(TOKEN_KEY)
         user.removeIntegration(KIND)
         wk.clearAll()
     }
 
+    @Throws(Exception::class)
     suspend fun setPostReviews(enabled: Boolean) = io {
         val current = config() ?: return@io
         saveConfig(current.copy(postReviews = enabled, readOnly = if (enabled) false else current.readOnly), cursors(), lastSync())
@@ -105,6 +108,7 @@ class WaniKaniSync(
      * Imports progress: assignments seed FSRS history, stage changes since the last import become single
      * reviews, the user's study materials become notes. Incremental through `updated_after` cursors.
      */
+    @Throws(Exception::class)
     suspend fun import(pathItems: List<PathItem>, progress: (String) -> Unit = {}): WaniKaniImportResult {
         val token = secrets.get(TOKEN_KEY) ?: throw WaniKaniException(401, "WaniKani is not connected")
         val client = clientFactory(token)
@@ -173,6 +177,7 @@ class WaniKaniSync(
      * Queues a Tsumugi review of a WaniKani subject for posting (offline-safe; sent by [flushQueue]).
      * No-op (returns false) unless the user turned two-way sync on and the token isn't known to be read-only.
      */
+    @Throws(Exception::class)
     suspend fun postReview(subjectId: Long, incorrectMeaning: Int, incorrectReading: Int, at: Instant = clock.now()): Boolean = io {
         val cfg = config() ?: return@io false
         if (!cfg.postReviews || cfg.readOnly) return@io false
@@ -181,11 +186,13 @@ class WaniKaniSync(
     }
 
     /** [postReview] by Tsumugi item id; false when the item didn't come from WaniKani. */
+    @Throws(Exception::class)
     suspend fun postReviewForItem(itemId: String, incorrectMeaning: Int, incorrectReading: Int, at: Instant = clock.now()): Boolean {
         val subject = io { wk.subjectForItem(itemId).executeAsOneOrNull() } ?: return false
         return postReview(subject, incorrectMeaning, incorrectReading, at)
     }
 
+    @Throws(Exception::class)
     suspend fun queuedReviewCount(): Int = io { wk.queueSize().executeAsOne().toInt() }
 
     /**
@@ -193,6 +200,7 @@ class WaniKaniSync(
      * failure so order is kept; a 401/403 marks the token read-only and turns two-way sync off.
      * Returns how many reviews were accepted.
      */
+    @Throws(Exception::class)
     suspend fun flushQueue(): Int {
         val token = secrets.get(TOKEN_KEY) ?: return 0
         val queued = io { wk.queuedReviews().executeAsList() }

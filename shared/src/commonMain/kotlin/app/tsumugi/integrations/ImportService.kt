@@ -32,6 +32,7 @@ class ImportService(private val graph: AppGraph) {
     }
 
     /** Imports an Anki .apkg (legacy or modern). Cards with review history keep it; new cards await lessons. */
+    @Throws(Exception::class)
     suspend fun importAnki(apkgPath: String): AnkiImportResult {
         val bytes = withContext(Dispatchers.IO) { fs.read(apkgPath.toPath()) { readByteArray() } }
         prepareDirs()
@@ -39,6 +40,7 @@ class ImportService(private val graph: AppGraph) {
     }
 
     /** Exports items (all started items when [itemIds] is empty) to an .apkg at [outPath]; returns the path. */
+    @Throws(Exception::class)
     suspend fun exportAnki(outPath: String, itemIds: List<String> = emptyList(), deckName: String = "Tsumugi"): String {
         prepareDirs()
         val ids = itemIds.ifEmpty { graph.srs.allItemIds() }
@@ -48,6 +50,7 @@ class ImportService(private val graph: AppGraph) {
     }
 
     /** Imports an imiwa export (or any word/reading/meaning list) into a new word list, matched to JMdict. */
+    @Throws(Exception::class)
     suspend fun importWordList(filePath: String, listName: String): ListImportResult {
         val text = withContext(Dispatchers.IO) { fs.read(filePath.toPath()) { readUtf8() } }
         val words = ImiwaImporter.parse(text)
@@ -60,9 +63,11 @@ class ImportService(private val graph: AppGraph) {
         }
     }
 
+    @Throws(Exception::class)
     suspend fun connectWaniKani(token: String): WkUser = wanikani.connect(token)
 
     /** Imports a Bunpro CSV/TSV export; returns null when the grammar pack isn't installed. */
+    @Throws(Exception::class)
     suspend fun importBunpro(filePath: String): BunproImportResult? {
         val grammar = graph.grammar() ?: return null
         val text = withContext(Dispatchers.IO) { fs.read(filePath.toPath()) { readUtf8() } }
@@ -70,6 +75,7 @@ class ImportService(private val graph: AppGraph) {
     }
 
     /** Imports WaniKani progress onto the kanji path; returns null when the path pack isn't installed. */
+    @Throws(Exception::class)
     suspend fun importWaniKani(progress: (String) -> Unit = {}): WaniKaniImportResult? {
         val path = graph.path() ?: return null
         return wanikani.import(path.items(), progress)

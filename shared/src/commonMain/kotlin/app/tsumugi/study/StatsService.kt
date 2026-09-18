@@ -58,6 +58,7 @@ class StatsService(
     private val clock: Clock = Clock.System,
     private val zone: () -> TimeZone = { TimeZone.currentSystemDefault() },
 ) {
+    @Throws(Exception::class)
     suspend fun snapshot(heatmapDays: Int = 365): StatsSnapshot = withContext(Dispatchers.IO) {
         val tz = zone()
         val now = clock.now()
@@ -92,11 +93,13 @@ class StatsService(
         StatsSnapshot(streak(tz, today), perDay[today] ?: 0, heatmap, accuracy, stages, forecast)
     }
 
+    @Throws(Exception::class)
     suspend fun streak(): Streak = withContext(Dispatchers.IO) {
         val tz = zone()
         streak(tz, clock.now().toLocalDateTime(tz).date)
     }
 
+    @Throws(Exception::class)
     suspend fun setVacation(on: Boolean) {
         settings.put(SettingsRepository.VACATION_SINCE, if (on) clock.now().toEpochMilliseconds().toString() else "")
     }

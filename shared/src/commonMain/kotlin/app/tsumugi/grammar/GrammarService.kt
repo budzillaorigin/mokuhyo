@@ -93,19 +93,23 @@ class GrammarService(
     private val json = Json { ignoreUnknownKeys = true }
     private val q get() = pack.grammarQueries
 
+    @Throws(Exception::class)
     suspend fun levels(): List<Int> = io { q.allPoints().executeAsList().map { it.jlpt.toInt() }.distinct() }
 
+    @Throws(Exception::class)
     suspend fun points(jlpt: Int): List<GrammarPointStatus> {
         val points = io { q.pointsAtLevel(jlpt.toLong()).executeAsList().map { it.toPoint() } }
         val stages = srs.stages()
         return points.map { GrammarPointStatus(it, stages[it.itemId]) }
     }
 
+    @Throws(Exception::class)
     suspend fun point(id: String): GrammarPointDetail? {
         val point = io { q.pointsByIds(listOf(id)).executeAsOneOrNull()?.toPoint() } ?: return null
         return GrammarPointDetail(point, examples(id), srs.stages()[point.itemId], srs.note(point.itemId).myStory)
     }
 
+    @Throws(Exception::class)
     suspend fun examples(pointId: String): List<GrammarExample> = io {
         q.examplesFor(pointId).executeAsList().map {
             GrammarExample(it.ja, it.en, it.blank_start.toInt(), it.blank_end.toInt(), it.source)
@@ -113,11 +117,13 @@ class GrammarService(
     }
 
     /** Every point's detection patterns, for finding grammar in reader sentences. Invalid regexes are skipped. */
+    @Throws(Exception::class)
     suspend fun detectionPatterns(): List<Pair<String, Regex>> = io {
         q.allPatterns().executeAsList().mapNotNull { row -> runCatching { row.point_id to Regex(row.regex) }.getOrNull() }
     }
 
     /** Normalized title/alias → point, for matching imports (Bunpro) to our points. */
+    @Throws(Exception::class)
     suspend fun titleIndex(): Map<String, GrammarPoint> = io {
         val points = q.allPoints().executeAsList().map { it.toPoint() }
         val byId = points.associateBy { it.id }
@@ -128,12 +134,14 @@ class GrammarService(
     }
 
     /** Next points to learn: easiest level first, in teaching order, skipping ones already started. */
+    @Throws(Exception::class)
     suspend fun lessonQueue(limit: Int): List<GrammarPoint> {
         val started = srs.stages().keys
         return io { q.allPoints().executeAsList() }.map { it.toPoint() }.filter { it.itemId !in started }.take(limit)
     }
 
     /** Adds points to reviews (one cloze card each) and introduces them. */
+    @Throws(Exception::class)
     suspend fun learn(points: List<GrammarPoint>) {
         srs.addItems(points.map { p ->
             NewItem(
@@ -146,6 +154,7 @@ class GrammarService(
     }
 
     /** A fresh exercise for a review: a random example, cloze or (when chunkable) sentence building. */
+    @Throws(Exception::class)
     suspend fun exercise(pointId: String, random: Random = Random.Default): GrammarExercise? {
         val point = io { q.pointsByIds(listOf(pointId)).executeAsOneOrNull()?.toPoint() } ?: return null
         val examples = examples(pointId).ifEmpty { return null }
@@ -162,6 +171,7 @@ class GrammarService(
      * Cloze answers: exact match (romaji converts, katakana folds) is correct; another valid form of the same
      * construction (matches the point's patterns and shares a dictionary form) is accepted as CLOSE.
      */
+    @Throws(Exception::class)
     suspend fun check(exercise: GrammarExercise, answer: String): CheckResult {
         if (exercise.kind == ExerciseKind.BUILD) {
             val ok = normalize(answer) == normalize(exercise.example.japanese)
@@ -183,6 +193,7 @@ class GrammarService(
      * A miss spawns the point's ghost card: an extra card on the learning steps (10 min, then 1 day). A retired
      * ghost is revived with a lapse so it drops back to short intervals.
      */
+    @Throws(Exception::class)
     suspend fun spawnGhost(itemId: String) {
         val cardId = SrsRepository.cardId(itemId, CardDirection.GHOST)
         val existing = srs.card(cardId)
@@ -203,6 +214,7 @@ class GrammarService(
     }
 
     /** Two correct ghost answers in a row graduate it off the learning steps; then it retires (suspended). */
+    @Throws(Exception::class)
     suspend fun ghostAnswered(cardId: String, correct: Boolean) {
         if (correct && srs.card(cardId)?.fsrs?.state == CardState.REVIEW) srs.setSuspended(cardId, true)
     }

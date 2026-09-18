@@ -57,6 +57,7 @@ class TodayPlanner(
     private val clock: Clock = Clock.System,
     private val zone: () -> TimeZone = { TimeZone.currentSystemDefault() },
 ) {
+    @Throws(Exception::class)
     suspend fun plan(
         dueReviews: Int,
         path: PathStatus?,

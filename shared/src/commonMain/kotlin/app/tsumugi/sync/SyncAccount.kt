@@ -47,11 +47,13 @@ class SyncAccount(
         return cachedClient ?: HttpSyncClient(engineFactory(), url, tokens).also { cachedClient = it }
     }
 
+    @Throws(Exception::class)
     suspend fun register(serverUrl: String, email: String, password: String, displayName: String?): String {
         useServer(serverUrl)
         return client()!!.register(RegisterRequest(email, password, displayName)).userId
     }
 
+    @Throws(Exception::class)
     suspend fun login(serverUrl: String, email: String, password: String, deviceName: String, platform: String): SyncAccountInfo {
         useServer(serverUrl)
         val c = client()!!
@@ -60,12 +62,14 @@ class SyncAccount(
         return c.account()
     }
 
+    @Throws(Exception::class)
     suspend fun logout() {
         client()?.logout()
         sealer = null
     }
 
     /** Turns on end-to-end encryption with a new salt. Existing synced data is re-pushed sealed by the caller. */
+    @Throws(Exception::class)
     suspend fun enableE2e(passphrase: String) {
         val c = client() ?: throw SyncException("Not signed in")
         val salt = E2eKeys.newSalt()
@@ -79,6 +83,7 @@ class SyncAccount(
      * Unlocks E2E for this session. Returns false for a wrong passphrase (checked against the local verifier;
      * on a new device, the first pull fails to decrypt instead).
      */
+    @Throws(Exception::class)
     suspend fun unlockE2e(passphrase: String): Boolean {
         val c = client() ?: throw SyncException("Not signed in")
         val salt = c.account().e2eSalt ?: return false

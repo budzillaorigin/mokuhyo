@@ -59,6 +59,7 @@ class SyncEngine(
     fun pendingChanges(): Int = q.unsyncedCount().executeAsOne().toInt()
 
     /** Push local changes, then pull and merge remote ones. */
+    @Throws(Exception::class)
     suspend fun sync(): SyncResult = lock.withLock {
         _status.value = _status.value.copy(state = SyncState.SYNCING, error = null)
         try {
@@ -74,8 +75,10 @@ class SyncEngine(
         }
     }
 
+    @Throws(Exception::class)
     suspend fun push(): Int = lock.withLock { pushLocked() }
 
+    @Throws(Exception::class)
     suspend fun pull(): Int = lock.withLock { pullLocked().first }
 
     // --- Push ---------------------------------------------------------------------------------------------

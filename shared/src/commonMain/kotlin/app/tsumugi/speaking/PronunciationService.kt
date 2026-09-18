@@ -19,6 +19,7 @@ class PronunciationService(
     private val dictionary: suspend () -> DictionaryRepository?,
 ) {
     /** Word targets for [sentence]; particles attach to the preceding word, punctuation is dropped. */
+    @Throws(Exception::class)
     suspend fun targets(sentence: String): List<WordTarget> {
         val morphemes = analyzer()?.analyze(sentence).orEmpty()
         val dict = dictionary()
@@ -40,6 +41,7 @@ class PronunciationService(
      * Scores one recording. [pcm16k] is 16 kHz mono in [-1, 1]; [transcript] is what the recognizer heard (any script;
      * converted to kana through the tokenizer); [segments] are recognizer timestamps when available.
      */
+    @Throws(Exception::class)
     suspend fun analyze(sentence: String, transcript: String?, pcm16k: FloatArray, segments: List<Pair<LongRange, String>>? = null): PronunciationReport {
         val targets = targets(sentence)
         val heard = transcript?.let { kanaOf(it) }
@@ -47,10 +49,12 @@ class PronunciationService(
     }
 
     /** Shadowing: compare the learner's recording with the model audio (both 16 kHz mono). */
+    @Throws(Exception::class)
     suspend fun shadowing(reference: FloatArray, attempt: FloatArray): ShadowingReport =
         withContext(Dispatchers.Default) { PronunciationAnalyzer.shadowingCompare(reference, attempt) }
 
     /** Reading of arbitrary text in hiragana (via the tokenizer when installed). */
+    @Throws(Exception::class)
     suspend fun kanaOf(text: String): String {
         val morphemes = analyzer()?.analyze(text) ?: return Kana.toHiragana(text)
         return morphemes.joinToString("") { Kana.toHiragana(it.pronunciation ?: it.reading ?: it.surface) }

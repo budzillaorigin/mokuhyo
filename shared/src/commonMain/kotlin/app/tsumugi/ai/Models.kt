@@ -8,6 +8,7 @@ package app.tsumugi.ai
 interface LanguageModel {
     val id: String
     val isLocal: Boolean
+    @Throws(Exception::class)
     suspend fun complete(request: CompletionRequest): CompletionResult
 }
 
@@ -38,10 +39,12 @@ data class Transcript(val text: String, val segments: List<TranscriptSegment>, v
 
 interface SpeechRecognizer {
     /** [pcm16kMono]: 16 kHz, mono, signed 16-bit samples. */
+    @Throws(Exception::class)
     suspend fun transcribe(pcm16kMono: ShortArray, language: String = "ja"): Transcript
 }
 
 interface Synthesizer {
     /** WAV bytes, or null to mean "use the platform TTS instead". */
+    @Throws(Exception::class)
     suspend fun synthesize(text: String, voice: String? = null, speed: Double = 1.0): ByteArray?
 }

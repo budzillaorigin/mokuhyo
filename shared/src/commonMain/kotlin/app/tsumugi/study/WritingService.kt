@@ -21,17 +21,21 @@ class WritingService(private val dictionary: DictionaryRepository, private val s
     val recognizer: HandwritingRecognizer by lazy { HandwritingRecognizer(SvgTemplateSource { dictionary.allStrokePaths() }) }
 
     /** The kanji's strokes as polylines in KanjiVG's 109×109 space, or empty when KanjiVG doesn't have it. */
+    @Throws(Exception::class)
     suspend fun template(kanji: String): List<List<Point>> = dictionary.strokes(kanji).map { SvgPath.flatten(it.path) }
 
     /** A guided (template-visible) session for one character. */
+    @Throws(Exception::class)
     suspend fun guided(kanji: String, strictness: Strictness = Strictness.NORMAL): WritingSession? =
         template(kanji).takeIf { it.isNotEmpty() }?.let { WritingSession(it, strictness) }
 
     /** Raw ("no template") check for a writing review; the learner then confirms a rating. */
+    @Throws(Exception::class)
     suspend fun checkRaw(kanji: String, strokes: List<List<Point>>): RawResult? =
         template(kanji).takeIf { it.isNotEmpty() }?.let { RawWritingChecker.check(it, strokes) }
 
     /** Today's writing block: a few kanji the learner already knows (Guru or better), least practised first. */
+    @Throws(Exception::class)
     suspend fun practiceSet(count: Int = 3): List<String> {
         val stages = srs.stages()
         return stages.filter { (id, stage) -> id.startsWith("k:") && stage >= Stage.GURU }

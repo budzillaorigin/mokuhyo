@@ -70,6 +70,7 @@ class OpiSession(
     private val englishForScripted = mutableMapOf<String, String>()
 
     /** The interviewer's next line, or null once the interview is over. */
+    @Throws(Exception::class)
     suspend fun next(): InterviewerLine? {
         if (finished) return null
         val input = OpiInterviewerTurn.Input(phase, actflFor(workingLevel), history.toList(), turnsInPhase)
@@ -104,6 +105,7 @@ class OpiSession(
         finished = true
     }
 
+    @Throws(Exception::class)
     suspend fun rate(): OpiRating {
         finished = true
         if (history.none { it.speaker == Speaker.LEARNER }) return OpiRating(null, null, needsSelfRating = true)

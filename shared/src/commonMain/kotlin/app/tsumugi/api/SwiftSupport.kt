@@ -95,6 +95,7 @@ object SwiftSupport {
     fun deleteModel(ai: AiService, model: ModelInfo): String? =
         runCatching { ai.models?.delete(model) }.exceptionOrNull()?.let { it.message ?: "couldn't delete the model" }
 
+    @Throws(Exception::class)
     suspend fun probe(ai: AiService, url: String, apiKey: String?): ProbeOutcome =
         ai.probeEndpoint(url, apiKey?.takeIf { it.isNotBlank() }).fold(
             onSuccess = { ProbeOutcome(it, null) },
@@ -105,6 +106,7 @@ object SwiftSupport {
      * Transcribes 16 kHz mono samples in [-1, 1] with the configured engine. Null means "no engine configured here;
      * use the OS recognizer".
      */
+    @Throws(Exception::class)
     suspend fun transcribe(ai: AiService, samples: FloatArray): SttOutcome? {
         val recognizer = ai.recognizer() ?: return null
         val pcm = ShortArray(samples.size) { (samples[it].coerceIn(-1f, 1f) * 32767f).toInt().toShort() }
@@ -119,6 +121,7 @@ object SwiftSupport {
     }
 
     /** VOICEVOX audio written to a WAV file in the app's data folder; null means "use the system voice". */
+    @Throws(Exception::class)
     suspend fun synthesizeToFile(graph: AppGraph, text: String, speed: Double): String? = try {
         graph.ai.synthesizer()?.synthesize(text, null, speed)?.let { bytes ->
             val dir = graph.platform.dataDir / "tts"
@@ -133,6 +136,7 @@ object SwiftSupport {
         null
     }
 
+    @Throws(Exception::class)
     suspend fun analyzePronunciation(graph: AppGraph, sentence: String, transcript: String?, samples: FloatArray): PronunciationReport? = try {
         graph.pronunciation.analyze(sentence, transcript, samples, null)
     } catch (e: CancellationException) {
@@ -141,6 +145,7 @@ object SwiftSupport {
         null
     }
 
+    @Throws(Exception::class)
     suspend fun explainItem(
         ai: AiService,
         level: String,
@@ -159,9 +164,11 @@ object SwiftSupport {
         }
     }
 
+    @Throws(Exception::class)
     suspend fun dlpt(exams: ExamService, listening: Boolean, minutes: Int): ExamSession =
         exams.dlpt(if (listening) ExamKind.DLPT_LISTENING else ExamKind.DLPT_READING, minutes, kotlin.time.Clock.System.now().toEpochMilliseconds())
 
+    @Throws(Exception::class)
     suspend fun opi(graph: AppGraph, startLevel: String): OpiSession? = graph.opi(IlrLevel.parse(startLevel) ?: IlrLevel.L1)
 
     fun opiStartLevels(): List<String> = IlrLevel.lowerRange.map { it.label }
@@ -182,10 +189,12 @@ object SwiftSupport {
 
     fun ilrLabel(rating: OpiRating): String? = rating.ilr?.label
 
+    @Throws(Exception::class)
     suspend fun saveOpi(exams: ExamService, session: OpiSession, rating: OpiRating): String =
         exams.saveOpi(session.startedAt, session.transcript.map { it.first.name to it.second }, rating)
 
     /** Transcript of a saved OPI attempt. */
+    @Throws(Exception::class)
     suspend fun opiAttemptTranscript(exams: ExamService, attemptId: String): List<TranscriptLine> =
         exams.opiTranscript(attemptId).map { TranscriptLine(it.first == Speaker.LEARNER.name, it.second) }
 

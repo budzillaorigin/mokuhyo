@@ -34,6 +34,7 @@ class BunproImporter(
     private val srs: SrsRepository,
     private val clock: Clock = Clock.System,
 ) {
+    @Throws(Exception::class)
     suspend fun import(text: String): BunproImportResult {
         val rows = parse(text)
         val index = grammar.titleIndex()

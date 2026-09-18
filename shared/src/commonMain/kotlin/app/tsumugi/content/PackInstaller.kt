@@ -50,6 +50,7 @@ class PackInstaller(
      * Ensures [file] is installed, copying the bundled copy if it is newer. Safe to call on every launch and
      * from several places at once: installs are serialized process-wide.
      */
+    @Throws(Exception::class)
     suspend fun ensureInstalled(file: String): PackStatus = installLock.withLock { withContext(Dispatchers.IO) {
         val installed = installedVersion(file)
         val bundled = bundledManifest()?.packs?.firstOrNull { it.file == file }

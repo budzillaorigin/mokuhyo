@@ -75,6 +75,7 @@ class AppGraph(val platform: PlatformServices) {
     private var syncEngine: SyncEngine? = null
 
     /** The sync engine for the signed-in account, or null when sync isn't set up. */
+    @Throws(Exception::class)
     suspend fun sync(): SyncEngine? {
         val client = syncAccount.client() ?: return null
         val srs = configuredSrs()
@@ -85,6 +86,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** Syncs now if configured; failures are reported through [SyncEngine.status], never thrown at callers. */
+    @Throws(Exception::class)
     suspend fun syncIfConfigured() {
         runCatching { sync()?.sync() }
     }
@@ -96,6 +98,7 @@ class AppGraph(val platform: PlatformServices) {
     private val planner: TodayPlanner by lazy { TodayPlanner(userDatabase, settings) }
 
     /** Today's plan (BRIEF §5.6) from the current queue, path and grammar state. */
+    @Throws(Exception::class)
     suspend fun today(): TodayPlan {
         val srs = configuredSrs()
         val grammarLeft = grammar()?.lessonQueue(3)?.size ?: 0
@@ -106,6 +109,7 @@ class AppGraph(val platform: PlatformServices) {
     private var tokenizer: LatticeTokenizer? = null
 
     /** The IPADIC lattice analyzer (BRIEF §5.2), or null when the tokenizer pack isn't installed. */
+    @Throws(Exception::class)
     suspend fun analyzer(): MorphologicalAnalyzer? = lock.withLock {
         tokenizer ?: openPack(PackInstaller.TOKENIZER) {
             LatticeTokenizer(TokenizerDatabase(platform.packDriver(TokenizerDatabase.Schema, PackInstaller.TOKENIZER)))
@@ -113,6 +117,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** Writing practice and handwriting search, or null without the dictionary pack (it holds KanjiVG). */
+    @Throws(Exception::class)
     suspend fun writing(): WritingService? {
         val dictionary = dictionary() ?: return null
         val srs = configuredSrs()
@@ -120,12 +125,14 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** Next grammar lesson batch (1–3 points) or empty when the pack is missing or everything is learned. */
+    @Throws(Exception::class)
     suspend fun grammarLessons(): List<GrammarPoint> = grammar()?.lessonQueue((settings.int(SettingsRepository.DAILY_BUDGET_MINUTES, TodayPlanner.DEFAULT_BUDGET) / 20).coerceIn(1, 3)).orEmpty()
 
     private var practiceRepository: PracticeRepository? = null
     private var examService: ExamService? = null
 
     /** Speaking/listening practice pack (scenarios, OPI banks, dialogues, minimal pairs), or null when missing. */
+    @Throws(Exception::class)
     suspend fun practice(): PracticeRepository? = lock.withLock {
         practiceRepository ?: openPack(PackInstaller.PRACTICE) {
             PracticeRepository(PracticeDatabase(platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE)))
@@ -133,6 +140,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** Exam simulators. Works without the exam pack too (imported banks, history), so never null. */
+    @Throws(Exception::class)
     suspend fun exams(): ExamService {
         lock.withLock { examService }?.let { return it }
         val pack = lock.withLock { openPack(PackInstaller.EXAM) { ExamDatabase(platform.packDriver(ExamDatabase.Schema, PackInstaller.EXAM)) } }
@@ -143,6 +151,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** A role-play for [scenarioId] with the configured model (or scripted turns), or null without the pack. */
+    @Throws(Exception::class)
     suspend fun roleplay(scenarioId: String): RoleplaySession? {
         val practice = practice() ?: return null
         val scenario = practice.scenario(scenarioId) ?: return null
@@ -150,6 +159,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** An OPI practice interview starting at [startLevel]; scripted banks come from the practice pack. */
+    @Throws(Exception::class)
     suspend fun opi(startLevel: IlrLevel = IlrLevel.L1): OpiSession? {
         val practice = practice() ?: return null
         val banks = IlrLevel.lowerRange.associateWith { practice.opiBank(it.label) }.filterValues { it.questions.isNotEmpty() }
@@ -158,6 +168,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** A 25-minute speaking session at the learner's JLPT level (from settings, default N4). */
+    @Throws(Exception::class)
     suspend fun pomodoro(jlpt: Int = 4): PomodoroSession? = PomodoroSession.build(practice(), jlpt)
 
     private val lock = Mutex()
@@ -170,6 +181,7 @@ class AppGraph(val platform: PlatformServices) {
      * The dictionary, installing the bundled pack on first use. Returns null when no dictionary pack is
      * available, so screens can show an honest "dictionary not installed" state.
      */
+    @Throws(Exception::class)
     suspend fun dictionary(): DictionaryRepository? = lock.withLock {
         dictionaryRepository ?: openPack(PackInstaller.DICTIONARY) {
             DictionaryRepository(DictionaryDatabase(platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY)))
@@ -177,6 +189,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** The 60-level kanji path, or null when the path pack isn't installed. */
+    @Throws(Exception::class)
     suspend fun path(): PathService? {
         val srs = configuredSrs()
         return lock.withLock {
@@ -187,6 +200,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** SRS repository with the user's scheduler settings (fitted FSRS weights, desired retention) applied. */
+    @Throws(Exception::class)
     suspend fun configuredSrs(): SrsRepository {
         if (!schedulerLoaded) {
             srs.scheduler = FsrsScheduler(schedulerParameters())
@@ -196,6 +210,7 @@ class AppGraph(val platform: PlatformServices) {
     }
 
     /** The grammar pack service, or null when the grammar pack isn't installed. */
+    @Throws(Exception::class)
     suspend fun grammar(): GrammarService? {
         val srs = configuredSrs()
         return lock.withLock {
@@ -205,8 +220,10 @@ class AppGraph(val platform: PlatformServices) {
         }
     }
 
+    @Throws(Exception::class)
     suspend fun startReviews(limit: Int = 500): ReviewSession = ReviewSession.start(configuredSrs(), grammar(), limit)
 
+    @Throws(Exception::class)
     suspend fun startLessons(): LessonSession? {
         val path = path() ?: return null
         val batch = path.lessonQueue(settings.lessonBatchSize())

@@ -50,18 +50,21 @@ class RoleplaySession(
         private set
 
     /** The partner's opening line. */
+    @Throws(Exception::class)
     suspend fun start(): ConversationLine {
         if (lines.isNotEmpty()) return lines.first()
         return partnerTurn()
     }
 
     /** Adds the learner's line and returns the partner's reply. */
+    @Throws(Exception::class)
     suspend fun reply(text: String): ConversationLine {
         lines += ConversationLine(Speaker.LEARNER, text.trim())
         return partnerTurn()
     }
 
     /** Corrections and a natural rewrite for a learner line; runs only when asked, to keep turns fast on-device. */
+    @Throws(Exception::class)
     suspend fun feedback(text: String): TurnFeedback {
         val register = when (scenario.register) {
             Register.CASUAL -> NaturalRewrite.Register.CASUAL

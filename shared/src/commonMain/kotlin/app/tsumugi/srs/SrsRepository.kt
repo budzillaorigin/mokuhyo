@@ -79,6 +79,7 @@ class SrsRepository(
     // --- Items and cards ----------------------------------------------------------------------------------
 
     /** Adds or refreshes items and creates their cards (as NEW, i.e. awaiting a lesson). Idempotent. */
+    @Throws(Exception::class)
     suspend fun addItems(items: List<NewItem>) = io {
         val now = clock.now().toEpochMilliseconds()
         db.transaction {
@@ -100,6 +101,7 @@ class SrsRepository(
     }
 
     /** Marks cards as introduced (lesson done): their first review becomes due after the first learning step. */
+    @Throws(Exception::class)
     suspend fun introduce(cardIds: List<String>) = io {
         val now = clock.now()
         db.transaction {
@@ -110,29 +112,38 @@ class SrsRepository(
         }
     }
 
+    @Throws(Exception::class)
     suspend fun item(id: String): StudyItem? = io { q.itemById(id).executeAsOneOrNull()?.toStudyItem() }
 
+    @Throws(Exception::class)
     suspend fun items(ids: Collection<String>): Map<String, StudyItem> = io {
         ids.chunked(CHUNK).flatMap { q.itemsByIds(it).executeAsList() }.associate { it.id to it.toStudyItem() }
     }
 
+    @Throws(Exception::class)
     suspend fun cardsForItems(itemIds: Collection<String>): List<StudyCard> = io {
         itemIds.chunked(CHUNK).flatMap { q.cardsForItems(it).executeAsList() }.map { it.toStudyCard() }
     }
 
+    @Throws(Exception::class)
     suspend fun allItemIds(): List<String> = io { q.allItemIds().executeAsList() }
 
+    @Throws(Exception::class)
     suspend fun card(id: String): StudyCard? = io { q.cardById(id).executeAsOneOrNull()?.toStudyCard() }
 
+    @Throws(Exception::class)
     suspend fun dueCards(limit: Int = 500, now: Instant = clock.now()): List<StudyCard> = io {
         q.dueCards(now.toEpochMilliseconds(), limit.toLong()).executeAsList().map { it.toStudyCard() }
     }
 
+    @Throws(Exception::class)
     suspend fun dueCount(now: Instant = clock.now()): Int = io { q.dueCount(now.toEpochMilliseconds()).executeAsOne().toInt() }
 
     /** Cards still awaiting a lesson (imported NEW cards), in level order. */
+    @Throws(Exception::class)
     suspend fun newCards(limit: Int): List<StudyCard> = io { q.newCards(limit.toLong()).executeAsList().map { it.toStudyCard() } }
 
+    @Throws(Exception::class)
     suspend fun setSuspended(cardId: String, suspended: Boolean) = io {
         q.setSuspended(if (suspended) 1 else 0, clock.now().toEpochMilliseconds(), cardId)
     }
@@ -141,6 +152,7 @@ class SrsRepository(
      * Stage per started item: the lowest stage among its answer cards (an item is Guru only when both its
      * meaning and reading are). Items with no introduced card are absent.
      */
+    @Throws(Exception::class)
     suspend fun stages(): Map<String, Stage> = io {
         q.allStartedCards().executeAsList()
             .filter { it.direction != CardDirection.GHOST.name }
@@ -152,6 +164,7 @@ class SrsRepository(
 
     data class ReviewOutcome(val reviewId: String, val before: StudyCard, val after: StudyCard)
 
+    @Throws(Exception::class)
     suspend fun review(
         cardId: String,
         rating: Rating,
@@ -175,6 +188,7 @@ class SrsRepository(
     }
 
     /** Undo the last answer of a session: removes the (not yet synced) review and restores the card. */
+    @Throws(Exception::class)
     suspend fun undo(outcome: ReviewOutcome) = io {
         db.transaction {
             q.deleteReview(outcome.reviewId)
@@ -183,6 +197,7 @@ class SrsRepository(
     }
 
     /** Adds reviews from another system (idempotent by external id) and replays the affected cards. */
+    @Throws(Exception::class)
     suspend fun importReviews(reviews: List<ImportedReview>) = io {
         db.transaction {
             for (r in reviews) {
@@ -196,15 +211,18 @@ class SrsRepository(
     }
 
     /** Rebuilds a card's FSRS state from its reviews (sync merge, parameter changes). */
+    @Throws(Exception::class)
     suspend fun recomputeCard(cardId: String) = io { db.transaction { writeCard(cardId, recompute(cardId)) } }
 
     /** Rebuilds every card, e.g. after the optimizer produced new weights. */
+    @Throws(Exception::class)
     suspend fun recomputeAll() = io {
         db.transaction {
             q.allReviews().executeAsList().map { it.card_id }.distinct().forEach { writeCard(it, recompute(it)) }
         }
     }
 
+    @Throws(Exception::class)
     suspend fun reviewLogForOptimizer(): List<ReviewLogEntry> = io {
         q.allReviews().executeAsList()
             .filter { it.rating in 1L..4L }
@@ -236,11 +254,13 @@ class SrsRepository(
     data class UserNote(val myStory: String, val synonyms: List<String>)
 
     /** The user's note for an item, which may exist before the item is started (written during a lesson). */
+    @Throws(Exception::class)
     suspend fun note(itemId: String): UserNote = io {
         val n = q.noteFor(itemId).executeAsOneOrNull()
         UserNote(n?.my_story.orEmpty(), n?.synonyms?.let(::decode).orEmpty())
     }
 
+    @Throws(Exception::class)
     suspend fun saveNote(itemId: String, myStory: String? = null, synonyms: List<String>? = null) = io {
         val existing = q.noteFor(itemId).executeAsOneOrNull()
         q.putNote(

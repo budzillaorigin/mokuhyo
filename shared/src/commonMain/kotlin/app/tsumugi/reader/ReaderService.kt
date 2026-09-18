@@ -20,6 +20,7 @@ class ReaderService(private val graph: AppGraph) {
     private var analyzerCache: ReaderAnalyzer? = null
 
     /** Tokenizing/analysis needs the dictionary pack; null without it. */
+    @Throws(Exception::class)
     suspend fun analyzer(): ReaderAnalyzer? {
         analyzerCache?.let { return it }
         val dictionary = graph.dictionary() ?: return null
@@ -28,28 +29,38 @@ class ReaderService(private val graph: AppGraph) {
             .also { analyzerCache = it }
     }
 
+    @Throws(Exception::class)
     suspend fun documents(): List<ReaderDocumentSummary> = repository.documents()
 
+    @Throws(Exception::class)
     suspend fun document(id: String): ReaderDocument? = repository.document(id)
 
+    @Throws(Exception::class)
     suspend fun importText(text: String, title: String? = null): String = saveAndAnalyze(TextImporter.import(text, title))
 
+    @Throws(Exception::class)
     suspend fun importUrl(url: String): String = saveAndAnalyze(web.import(url.trim()))
 
+    @Throws(Exception::class)
     suspend fun importEpub(path: String): String {
         val bytes = withContext(Dispatchers.IO) { graph.platform.fileSystem.read(path.toPath()) { readByteArray() } }
         return saveAndAnalyze(EpubImporter.import(bytes, path.substringAfterLast('/')))
     }
 
+    @Throws(Exception::class)
     suspend fun importFeedItem(item: FeedItem): String = feeds.importItem(item).also { analyzeLater(it) }
 
+    @Throws(Exception::class)
     suspend fun importAozora(work: AozoraWork): String = aozora.import(work).also { analyzeLater(it) }
 
+    @Throws(Exception::class)
     suspend fun delete(id: String) = repository.delete(id)
 
+    @Throws(Exception::class)
     suspend fun setProgress(id: String, offset: Int) = repository.setProgress(id, offset)
 
     /** Adds a tapped word to reviews with its sentence as context (sentence mining, BRIEF §5.8). */
+    @Throws(Exception::class)
     suspend fun mine(token: ReaderToken, sentence: ReaderSentence): String? {
         val analyzer = analyzer() ?: return null
         val dictionary = graph.dictionary() ?: return null

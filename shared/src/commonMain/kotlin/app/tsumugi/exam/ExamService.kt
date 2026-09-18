@@ -56,12 +56,14 @@ class ExamService(
     private var blueprintCache: JlptBlueprints? = null
     private var userBankCache: List<ExamBankFile>? = null
 
+    @Throws(Exception::class)
     suspend fun blueprints(): JlptBlueprints? = io {
         blueprintCache ?: pack?.examQueries?.meta(BLUEPRINT_KEY)?.executeAsOneOrNull()
             ?.let { runCatching { JlptBlueprints.parse(it) }.getOrNull() }
             ?.also { blueprintCache = it }
     }
 
+    @Throws(Exception::class)
     suspend fun coverage(): List<ExamCoverage> = io {
         val counts = mutableMapOf<Pair<ExamKind, String>, MutableMap<String, Int>>()
         pack?.examQueries?.coverage()?.executeAsList()?.forEach { row ->
@@ -75,18 +77,21 @@ class ExamService(
         counts.map { (k, v) -> ExamCoverage(k.first, k.second, v) }.sortedWith(compareBy({ it.exam.ordinal }, { it.level }))
     }
 
+    @Throws(Exception::class)
     suspend fun jlptMock(level: Int, seed: Long = clock.now().toEpochMilliseconds()): ExamSession? {
         val bp = blueprints()?.level(level) ?: return null
         val (pool, passages) = pool(ExamKind.JLPT, listOf("N$level"))
         return ExamSession(ExamAssembler.jlptMock(level, bp, pool, passages, Random(seed)), bp, clock)
     }
 
+    @Throws(Exception::class)
     suspend fun jlptSection(level: Int, sectionId: String, seed: Long = clock.now().toEpochMilliseconds()): ExamSession? {
         val bp = blueprints()?.level(level) ?: return null
         val (pool, passages) = pool(ExamKind.JLPT, listOf("N$level"))
         return ExamSession(ExamAssembler.jlptSection(level, bp, sectionId, pool, passages, Random(seed)), bp, clock)
     }
 
+    @Throws(Exception::class)
     suspend fun jlptTypeDrill(level: Int, type: String, seed: Long = clock.now().toEpochMilliseconds()): ExamSession? {
         val bp = blueprints()?.level(level) ?: return null
         val (pool, passages) = pool(ExamKind.JLPT, listOf("N$level"))
@@ -94,12 +99,14 @@ class ExamService(
     }
 
     /** DLPT reading or listening; [minutes] = 180 (full length), 60 or 30. */
+    @Throws(Exception::class)
     suspend fun dlpt(exam: ExamKind, minutes: Int, seed: Long = clock.now().toEpochMilliseconds()): ExamSession {
         val (pool, passages) = pool(exam, app.tsumugi.exam.dlpt.IlrLevel.lowerRange.map { it.label })
         return ExamSession(ExamAssembler.dlpt(exam, minutes, pool, passages, Random(seed)), null, clock)
     }
 
     /** Stores a finished attempt; returns its id. */
+    @Throws(Exception::class)
     suspend fun save(result: ExamResult): String = io {
         val id = kotlin.uuid.Uuid.random().toString()
         q.insertAttempt(
@@ -116,6 +123,7 @@ class ExamService(
      * Stores an OPI practice interview: the transcript (JSON list of {speaker, text}) in `answers`, the rating in
      * `scoring` (factor scores as 1–5 tallies, next steps as weak areas). Always labeled a practice estimate.
      */
+    @Throws(Exception::class)
     suspend fun saveOpi(startedAt: Instant, transcript: List<Pair<String, String>>, rating: OpiRating): String = io {
         val id = kotlin.uuid.Uuid.random().toString()
         val lines = JsonArray(transcript.map { (speaker, text) -> JsonObject(mapOf("speaker" to JsonPrimitive(speaker), "text" to JsonPrimitive(text))) })
@@ -136,6 +144,7 @@ class ExamService(
     }
 
     /** Transcript of a stored OPI interview as (speaker, text), speaker = "LEARNER" | "PARTNER". */
+    @Throws(Exception::class)
     suspend fun opiTranscript(id: String): List<Pair<String, String>> = io {
         val row = q.attemptById(id).executeAsOneOrNull() ?: return@io emptyList()
         runCatching {
@@ -146,11 +155,13 @@ class ExamService(
         }.getOrDefault(emptyList())
     }
 
+    @Throws(Exception::class)
     suspend fun history(exam: ExamKind? = null, limit: Int = 50): List<AttemptSummary> = io {
         val rows = if (exam == null) q.allAttempts(limit.toLong()).executeAsList() else q.attempts(exam.name, limit.toLong()).executeAsList()
         rows.mapNotNull { summaryOf(it.id, it.exam, it.level, it.mode, it.submitted_at, it.summary, it.scoring) }
     }
 
+    @Throws(Exception::class)
     suspend fun attempt(id: String): AttemptReview? {
         val row = io { q.attemptById(id).executeAsOneOrNull() } ?: return null
         val summary = summaryOf(row.id, row.exam, row.level, row.mode, row.submitted_at, row.summary, row.scoring) ?: return null
@@ -164,6 +175,7 @@ class ExamService(
      * Adds the grammar points ("g:") and dictionary words ("v:") behind missed items to reviews. Returns how many
      * were added; refs that aren't in the installed packs are skipped.
      */
+    @Throws(Exception::class)
     suspend fun addToSrs(refs: List<String>): Int {
         var added = 0
         val grammarRefs = refs.filter { it.startsWith("g:") }.map { it.removePrefix("g:") }
@@ -187,6 +199,7 @@ class ExamService(
     }
 
     /** Imports a user item bank (JSON). Invalid banks are rejected with every problem listed. */
+    @Throws(Exception::class)
     suspend fun importBank(text: String): BankImportResult {
         val bank = runCatching { json.decodeFromString(ExamBankFile.serializer(), text) }.getOrElse {
             return BankImportResult.Invalid(listOf("Not an item bank: ${it.message?.take(200)}"))
@@ -199,12 +212,14 @@ class ExamService(
         return BankImportResult.Imported(id, bank.passages.size, bank.items.size)
     }
 
+    @Throws(Exception::class)
     suspend fun userBanks(): List<ExamBankFile> = io {
         userBankCache ?: q.banks().executeAsList()
             .mapNotNull { runCatching { json.decodeFromString(ExamBankFile.serializer(), it.json) }.getOrNull() }
             .also { userBankCache = it }
     }
 
+    @Throws(Exception::class)
     suspend fun deleteBank(id: String) {
         io { q.deleteBank(id) }
         userBankCache = null

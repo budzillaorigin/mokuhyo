@@ -55,6 +55,7 @@ object ImiwaImporter {
      * Creates a word list named [listName] with [words]. [resolve] maps a word to a dictionary ref
      * (e.g. "jmdict:1358280") when it can be found; unresolved words are kept as text refs.
      */
+    @Throws(Exception::class)
     suspend fun importToList(
         db: TsumugiDatabase,
         listName: String,
@@ -88,6 +89,7 @@ object ImiwaImporter {
     }
 
     /** CSV (RFC 4180, header `word,reading,meaning`) of a word list, e.g. for imiwa or a spreadsheet. */
+    @Throws(Exception::class)
     suspend fun exportCsv(db: TsumugiDatabase, listId: String): String = withContext(Dispatchers.IO) {
         buildString {
             append("word,reading,meaning\r\n")

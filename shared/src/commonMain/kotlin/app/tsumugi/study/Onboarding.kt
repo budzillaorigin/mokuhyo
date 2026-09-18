@@ -23,12 +23,14 @@ data class PlacementQuestion(val item: PathItem, val band: Int)
  */
 class Onboarding(private val settings: SettingsRepository, private val path: suspend () -> PathService?) {
 
+    @Throws(Exception::class)
     suspend fun isDone(): Boolean = settings.bool(DONE, false)
 
     /**
      * 12 kanji spread over the path (levels 1–60 in bands of 5). "Know it" answers are counted per band; the
      * suggested level is the start of the first band where the learner knew fewer than half.
      */
+    @Throws(Exception::class)
     suspend fun placementQuestions(seed: Long): List<PlacementQuestion> {
         val random = Random(seed)
         val items = path()?.items().orEmpty().filter { it.kind == ItemKind.KANJI }
@@ -51,6 +53,7 @@ class Onboarding(private val settings: SettingsRepository, private val path: sus
     }
 
     /** Saves the choices; [startLevel] > 1 skips earlier path levels (their items can still be unlocked by hand). */
+    @Throws(Exception::class)
     suspend fun finish(goal: LearningGoal, budgetMinutes: Int, startLevel: Int) {
         settings.put(GOAL, goal.name)
         settings.put(SettingsRepository.DAILY_BUDGET_MINUTES, budgetMinutes.toString())
@@ -58,6 +61,7 @@ class Onboarding(private val settings: SettingsRepository, private val path: sus
         settings.put(DONE, "true")
     }
 
+    @Throws(Exception::class)
     suspend fun goal(): LearningGoal = settings.get(GOAL)?.let { runCatching { LearningGoal.valueOf(it) }.getOrNull() } ?: LearningGoal.GENERAL
 
     companion object {

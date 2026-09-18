@@ -33,17 +33,20 @@ class ImportException(message: String) : Exception(message)
 class UrlImporter(engine: HttpClientEngine) {
     private val http = HttpClient(engine) { expectSuccess = false }
 
+    @Throws(Exception::class)
     suspend fun fetch(url: String): Pair<ByteArray, String?> {
         val response = http.get(url) { header("User-Agent", USER_AGENT) }
         if (!response.status.isSuccess()) throw ImportException("HTTP ${response.status.value} for $url")
         return response.body<ByteArray>() to response.headers["Content-Type"]
     }
 
+    @Throws(Exception::class)
     suspend fun fetchText(url: String): String {
         val (bytes, type) = fetch(url)
         return normalizeNfc(decodeText(bytes, detectCharset(bytes, type)))
     }
 
+    @Throws(Exception::class)
     suspend fun import(url: String, kind: SourceKind = SourceKind.URL): ImportedText {
         val html = fetchText(url)
         val article = WebArticleExtractor.extract(html)

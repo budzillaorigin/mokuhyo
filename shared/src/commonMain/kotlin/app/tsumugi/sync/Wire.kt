@@ -75,7 +75,9 @@ internal val SyncJson = Json {
 
 /** What the sync engine needs from a server: the real [HttpSyncClient], or an in-memory fake in tests. */
 interface SyncTransport {
+    @Throws(Exception::class)
     suspend fun push(changes: List<Change>): PushResponse
+    @Throws(Exception::class)
     suspend fun pull(since: Long, limit: Int): PullResponse
 }
 

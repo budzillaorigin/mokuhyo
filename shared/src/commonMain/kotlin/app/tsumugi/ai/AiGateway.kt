@@ -61,6 +61,7 @@ class AiGateway(
     private val settings: AiSettings = AiSettings(),
     private val context: ValidationContext = ValidationContext(),
 ) {
+    @Throws(Exception::class)
     suspend fun <I, O> run(task: PromptTask<I, O>, input: I): AiResult<O> {
         val lm = model() ?: return fallbackOr(task, input, "no AI model is set up")
         val base = task.messages(input)

@@ -90,6 +90,7 @@ class PomodoroSession(
          * Builds a mixed queue at [jlpt] from the practice pack: roughly one role-play, then alternating listening,
          * repeat and pick-a-word activities with minimal pairs sprinkled in. Returns null without the pack.
          */
+        @Throws(Exception::class)
         suspend fun build(practice: PracticeRepository?, jlpt: Int, random: Random = Random.Default, work: Duration = 25.minutes, clock: Clock = Clock.System): PomodoroSession? {
             practice ?: return null
             val scenarios = practice.scenarios(jlpt).ifEmpty { practice.scenarios() }
