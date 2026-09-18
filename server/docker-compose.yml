@@ -1,0 +1,49 @@
+# Self-hosted Tsumugi sync: `cp .env.example .env`, edit it, then `docker compose up -d`.
+# With a domain pointed at this machine, `docker compose --profile tls up -d` adds Caddy for automatic HTTPS.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tsumugi
+      POSTGRES_USER: tsumugi
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tsumugi -d tsumugi"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  server:
+    build:
+      context: ..
+      dockerfile: server/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      TSUMUGI_DB: postgres://tsumugi:${POSTGRES_PASSWORD}@postgres:5432/tsumugi
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "${TSUMUGI_PORT:-8080}:8080"
+
+  caddy:
+    image: caddy:2
+    profiles: ["tls"]
+    restart: unless-stopped
+    command: caddy reverse-proxy --from ${TSUMUGI_DOMAIN:?set TSUMUGI_DOMAIN in .env for TLS} --to server:8080
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+    depends_on:
+      - server
+
+volumes:
+  pgdata:
+  caddy_data:
