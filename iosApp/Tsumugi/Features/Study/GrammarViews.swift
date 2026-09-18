@@ -47,6 +47,8 @@ struct GrammarLevelView: View {
                         Text(p.point.meaning).font(.caption).foregroundStyle(.secondary)
                     }
                     Spacer()
+                    // F-20: the installed pack has no example sentence for this point, so it's held out of reviews.
+                    if p.noExamples { TagView(String(localized: "No examples yet")) }
                     if let stage = p.stage { Text(stage.label).font(.caption2) }
                 }
             }

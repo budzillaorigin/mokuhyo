@@ -23,6 +23,8 @@ struct ExamHubView: View {
     @State private var running: RunningExam?
     @State private var message: String?
     @State private var loading = false
+    @State private var loadError: String?
+    @State private var building = false
 
     static var disclaimer: String {
         String(localized: "Unofficial practice; not affiliated with the JLPT (JEES/Japan Foundation), DLI or ACTFL. Scores and ratings are estimates.")
@@ -33,6 +35,16 @@ struct ExamHubView: View {
             Section {
                 Text(Self.disclaimer).font(.caption)
                 if let message { Text(message).font(.caption).foregroundStyle(.orange) }
+                if building {
+                    HStack {
+                        ProgressView()
+                        Text("Building the test…").font(.caption)
+                    }
+                }
+                if let loadError {
+                    Label(loadError, systemImage: "exclamationmark.triangle").font(.caption).foregroundStyle(.red)
+                    Button("Retry") { Task { await load() } }
+                }
             }
             jlptSection
             dlptSection
@@ -142,7 +154,14 @@ struct ExamHubView: View {
     private func load() async {
         loading = true
         defer { loading = false }
-        guard let service = try? await app.graph.exams() else { return }
+        let service: ExamService
+        do {
+            service = try await app.graph.exams()
+            loadError = nil
+        } catch {
+            loadError = String(localized: "Couldn't open the exams: \(error.localizedDescription)")
+            return
+        }
         exams = service
         let blueprints = try? await service.blueprints()
         hasBlueprints = blueprints != nil
@@ -167,10 +186,19 @@ struct ExamHubView: View {
     }
 
     private func start(_ build: @escaping (ExamService) async throws -> ExamSession?) {
-        guard let exams else { return }
+        guard let exams, !building else { return }
         message = nil
+        building = true
         Task {
-            guard let session = try? await build(exams) else {
+            defer { building = false }
+            let built: ExamSession?
+            do {
+                built = try await build(exams)
+            } catch {
+                message = String(localized: "Couldn't build that test: \(error.localizedDescription)")
+                return
+            }
+            guard let session = built else {
                 message = String(localized: "Couldn't build that test from the installed items.")
                 return
             }

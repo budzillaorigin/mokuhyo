@@ -12,6 +12,12 @@ import llama
 /// - KV-cache reuse: when a new prompt starts with the tokens already evaluated (a growing conversation),
 ///   only the new suffix is decoded.
 ///
+/// Cancellation (F-10, tools/models/README.md, DECISIONS D-057/D-073): every `generate` gets an increasing id.
+/// `cancel()` and `unload()` stop every generation issued so far, and only those: the id they cancel through is a
+/// high-water mark that is never reset, so a late cancel from a timed-out call can't stop the next call, and a new
+/// call is never blocked behind a runaway one. The mark is checked inside the queued job, before the prompt and
+/// before every token. A stopped generation ends with `onDone(nil, "cancelled…")`, never with its partial text.
+///
 /// The pinned llama.xcframework (tools/models/fetch_ios_frameworks.sh) ships no iOS Simulator slice, so
 /// simulator builds compile without `llama` and report that on-device inference is unavailable.
 final class LlamaBridge: NSObject, LocalLlmBridge, @unchecked Sendable {
@@ -19,7 +25,10 @@ final class LlamaBridge: NSObject, LocalLlmBridge, @unchecked Sendable {
     private let loadedFlag = LockedFlag()
     private let queue = DispatchQueue(label: "app.tsumugi.llama", qos: .userInitiated)
     private let lock = NSLock()
-    private var cancelled = false
+    /// Last generation id handed out, and the highest id that has been cancelled (both under [lock]).
+    private var issued: UInt64 = 0
+    private var cancelledThrough: UInt64 = 0
+    private var cancelReason = "cancelled"
 
     #if canImport(llama)
     private var model: OpaquePointer?
@@ -81,8 +90,9 @@ final class LlamaBridge: NSObject, LocalLlmBridge, @unchecked Sendable {
         onDone: @escaping (String?, String?) -> Void
     ) {
         #if canImport(llama)
-        setCancelled(false)
+        let id = nextGeneration()
         queue.async { [self] in
+            if let reason = cancelled(id) { onDone(nil, reason); return }
             guard let model, let context else { onDone(nil, "No model loaded"); return }
             let vocab = llama_model_get_vocab(model)
             let tokens = tokenize(vocab: vocab, text: prompt)
@@ -115,7 +125,8 @@ final class LlamaBridge: NSObject, LocalLlmBridge, @unchecked Sendable {
             var text = ""
             var pending: [UInt8] = []
             for _ in 0..<Int(maxTokens) {
-                if isCancelled() { break }
+                // Stopped (cancel, unload, memory warning): report the contract's "cancelled…", never partial text.
+                if let reason = cancelled(id) { onDone(nil, reason); return }
                 let token = llama_sampler_sample(chain, context, -1) // also accepts the token
                 if llama_vocab_is_eog(vocab, token) { break }
                 pending += piece(vocab: vocab, token: token)
@@ -136,7 +147,7 @@ final class LlamaBridge: NSObject, LocalLlmBridge, @unchecked Sendable {
                 var next = token
                 let ok = withUnsafeMutablePointer(to: &next) { llama_decode(context, llama_batch_get_one($0, 1)) == 0 }
                 cached.append(token)
-                if !ok { onDone(text, "Decoding failed after \(text.count) characters"); return }
+                if !ok { onDone(nil, "Decoding failed after \(text.count) characters"); return }
             }
             onDone(text, nil)
         }
@@ -145,22 +156,33 @@ final class LlamaBridge: NSObject, LocalLlmBridge, @unchecked Sendable {
         #endif
     }
 
-    func cancel() { setCancelled(true) }
+    func cancel() { cancelIssued(reason: "cancelled") }
 
+    /// Stops any generation (it reports "cancelled: unloaded"), then frees the model after it on the work queue.
     func unload() {
         #if canImport(llama)
-        setCancelled(true)
+        cancelIssued(reason: "cancelled: unloaded")
         queue.async { [self] in freeAll() }
         #endif
     }
 
-    private func setCancelled(_ value: Bool) {
-        lock.lock(); cancelled = value; lock.unlock()
+    private func nextGeneration() -> UInt64 {
+        lock.lock(); defer { lock.unlock() }
+        issued += 1
+        return issued
     }
 
-    private func isCancelled() -> Bool {
+    /// Cancels every generation issued so far (queued or running); later ones are unaffected.
+    private func cancelIssued(reason: String) {
         lock.lock(); defer { lock.unlock() }
-        return cancelled
+        cancelledThrough = issued
+        cancelReason = reason
+    }
+
+    /// The contract's "cancelled…" error when generation [id] was stopped, else nil.
+    private func cancelled(_ id: UInt64) -> String? {
+        lock.lock(); defer { lock.unlock() }
+        return id <= cancelledThrough ? cancelReason : nil
     }
 
     #if canImport(llama)

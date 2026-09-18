@@ -89,12 +89,26 @@ final class RoleplayModel {
     private(set) var goalReached = false
     private(set) var feedback: [Int: TurnFeedback] = [:]
     private(set) var feedbackBusy: Int?
+    private(set) var feedbackError: [Int: String] = [:]
+    /// Couldn't open the scenario (F-33); the view offers Retry.
+    private(set) var loadError: String?
+    /// Why the partner's last turn failed (the session's `modelFailure`); shown as a banner with Retry (D-057).
+    private(set) var modelFailure: String?
 
     @ObservationIgnored private var session: RoleplaySession?
 
     func load(graph: AppGraph, scenarioId: String, voice: VoicePlayer) async {
         guard session == nil else { return }
-        guard let s = try? await graph.roleplay(scenarioId: scenarioId) else {
+        loadError = nil
+        let opened: RoleplaySession?
+        do {
+            opened = try await graph.roleplay(scenarioId: scenarioId)
+        } catch {
+            loadError = error.localizedDescription
+            loaded = true
+            return
+        }
+        guard let s = opened else {
             missing = true
             loaded = true
             return
@@ -110,34 +124,52 @@ final class RoleplayModel {
         vocabulary = sc.vocabulary.map { (text: $0.text, reading: $0.reading) }
         scenarioIsAi = sc.isAiGenerated
         loaded = true
-        busy = true
-        if let first = try? await s.start() {
-            append(first)
-            busy = false
-            await voice.sayPartner(first.japanese, graph: graph)
-        }
-        busy = false
+        await partnerTurn(graph: graph, voice: voice) { try await s.start() }
     }
 
     func send(_ text: String, graph: AppGraph, voice: VoicePlayer) async {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard let session, !trimmed.isEmpty, !busy else { return }
-        busy = true
+        guard let session, !trimmed.isEmpty, !busy, modelFailure == nil else { return }
         lines.append(ChatLine(id: lines.count, learner: true, japanese: trimmed, english: "", hint: "", engine: nil))
-        let reply = try? await session.reply(text: trimmed)
+        await partnerTurn(graph: graph, voice: voice) { try await session.reply(text: trimmed) }
+    }
+
+    /// Asks the model again for the partner turn that failed.
+    func retry(graph: AppGraph, voice: VoicePlayer) async {
+        guard let session, !busy else { return }
+        await partnerTurn(graph: graph, voice: voice) { try await session.retry() }
+    }
+
+    /// Runs one partner turn: a line is shown and spoken; a model failure becomes the banner instead of a scripted line.
+    private func partnerTurn(graph: AppGraph, voice: VoicePlayer, _ turn: () async throws -> ConversationLine?) async {
+        guard let session else { return }
+        busy = true
+        modelFailure = nil
+        var line: ConversationLine?
+        do {
+            line = try await turn()
+            if line == nil { modelFailure = session.modelFailure ?? String(localized: "The partner didn't answer.") }
+        } catch {
+            modelFailure = error.localizedDescription
+        }
         goalReached = session.goalReached
         busy = false
-        if let reply {
-            append(reply)
-            await voice.sayPartner(reply.japanese, graph: graph)
+        // retry() after a thrown error returns the partner line already on screen; don't show it twice.
+        let alreadyShown = line != nil && lines.last.map { !$0.learner && $0.japanese == line?.japanese } == true
+        if let line, !alreadyShown {
+            append(line)
+            await voice.sayPartner(line.japanese, graph: graph)
         }
     }
 
     func requestFeedback(for line: ChatLine) async {
-        guard let session, feedback[line.id] == nil else { return }
+        guard let session, feedback[line.id] == nil, feedbackBusy == nil else { return }
         feedbackBusy = line.id
-        if let fb = try? await session.feedback(text: line.japanese) {
-            feedback[line.id] = fb
+        feedbackError[line.id] = nil
+        do {
+            feedback[line.id] = try await session.feedback(text: line.japanese)
+        } catch {
+            feedbackError[line.id] = error.localizedDescription
         }
         feedbackBusy = nil
     }
@@ -175,6 +207,15 @@ struct RoleplayView: View {
         Group {
             if !model.loaded {
                 ProgressView()
+            } else if let error = model.loadError {
+                ContentUnavailableView {
+                    Label("Couldn't open this role-play", systemImage: "exclamationmark.bubble")
+                } description: {
+                    Text(error)
+                } actions: {
+                    Button("Retry") { Task { await model.load(graph: app.graph, scenarioId: scenarioId, voice: voice) } }
+                        .buttonStyle(.borderedProminent)
+                }
             } else if model.missing {
                 ContentUnavailableView("Scenario unavailable", systemImage: "questionmark.bubble", description: Text("This scenario isn't in the installed practice pack."))
             } else {
@@ -205,6 +246,24 @@ struct RoleplayView: View {
                             bubble(line).id(line.id)
                         }
                         if model.busy { ProgressView().frame(maxWidth: .infinity) }
+                        if let failure = model.modelFailure, !model.busy {
+                            VStack(alignment: .leading, spacing: 6) {
+                                Label("The partner couldn't answer", systemImage: "exclamationmark.bubble")
+                                    .font(.subheadline.weight(.semibold))
+                                Text(failure).font(.caption)
+                                HStack {
+                                    Button("Retry") {
+                                        let graph = app.graph
+                                        Task { await model.retry(graph: graph, voice: voice) }
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    NavigationLink("AI settings", value: Route.aiSettings).font(.caption)
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(10)
+                            .background(Color.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+                        }
                         if model.goalReached {
                             Label("Goal reached! Keep going or try another scenario.", systemImage: "flag.checkered")
                                 .font(.subheadline.weight(.semibold)).foregroundStyle(.green)
@@ -306,7 +365,7 @@ struct RoleplayView: View {
                 } label: {
                     Image(systemName: "arrow.up.circle.fill").font(.title2)
                 }
-                .disabled(input.trimmingCharacters(in: .whitespaces).isEmpty || model.busy)
+                .disabled(input.trimmingCharacters(in: .whitespaces).isEmpty || model.busy || model.modelFailure != nil)
                 .accessibilityLabel("Send")
             }
             HStack {
@@ -361,6 +420,10 @@ private struct TurnFeedbackSheet: View {
                     content(fb)
                 } else if model.feedbackBusy == line.id {
                     ProgressView("Checking your sentence…")
+                } else if let error = model.feedbackError[line.id] {
+                    Label("Couldn't check this sentence: \(error)", systemImage: "exclamationmark.triangle")
+                        .font(.subheadline).foregroundStyle(.red)
+                    Button("Retry") { Task { await model.requestFeedback(for: line) } }.buttonStyle(.bordered)
                 } else {
                     ProgressView()
                 }
@@ -444,7 +507,12 @@ private struct TurnFeedbackSheet: View {
             let out = await SpeechToText.transcribe(samples, graph: graph)
             attempt = out.error == nil ? out.text : nil
             if let error = out.error { note = error + " Scoring pitch and fluency only." }
-            report = try? await SwiftSupport.shared.analyzePronunciation(graph: graph, sentence: target, transcript: out.error == nil ? out.text : nil, samples: kotlinFloats(samples))
+            let outcome = try? await SwiftSupport.shared.analyzePronunciation(graph: graph, sentence: target, transcript: out.error == nil ? out.text : nil, samples: kotlinFloats(samples))
+            report = outcome?.report
+            if report == nil {
+                note = [note, "Couldn't analyze the recording" + (outcome?.error.map { ": \($0)" } ?? "") + ". Try again."]
+                    .compactMap { $0 }.joined(separator: " ")
+            }
             working = false
         }
     }

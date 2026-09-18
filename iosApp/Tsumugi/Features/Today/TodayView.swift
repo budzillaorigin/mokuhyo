@@ -7,6 +7,7 @@ struct TodayView: View {
     @State private var plan: TodayPlan?
     @State private var status: PathStatus?
     @State private var stats: StatsSnapshot?
+    @State private var recompute: RecomputeProgress?
 
     private let budgets = [10, 20, 40, 60]
 
@@ -16,6 +17,11 @@ struct TodayView: View {
                 Text(verbatim: "今日").font(.japanese(size: 40, weight: .semibold, relativeTo: .largeTitle))
                     .accessibilityAddTraits(.isHeader)
                     .japaneseSpeech()
+                if let recompute, recompute.running {
+                    RecomputeBanner(progress: recompute)
+                        .padding()
+                        .background(.quaternary.opacity(0.4), in: RoundedRectangle(cornerRadius: 12))
+                }
                 if let stats {
                     Text("🔥 \(stats.streak.current)-day streak · \(stats.reviewsToday) answers today").font(.headline)
                 }
@@ -54,6 +60,7 @@ struct TodayView: View {
         }
         .navigationTitle("Today")
         .task { await refresh() }
+        .task { for await p in app.graph.recomputeProgress { recompute = p } }
         .refreshable { await refresh() }
     }
 

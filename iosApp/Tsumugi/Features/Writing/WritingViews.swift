@@ -36,7 +36,9 @@ struct WritingCanvas: View {
             .frame(width: side, height: side)
             .overlay(Rectangle().stroke(error ? Color.red : Color.secondary.opacity(0.4)))
             .contentShape(Rectangle())
-            .gesture(
+            // F-25: the stroke gesture wins over an enclosing ScrollView, and while a stroke is in progress the
+            // canvas reports it (WritingActiveKey) so the scroll view can stop scrolling (`locksScrollWhileWriting`).
+            .highPriorityGesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { v in current.append(CGPoint(x: v.location.x / scale, y: v.location.y / scale)) }
                     .onEnded { _ in
@@ -46,12 +48,42 @@ struct WritingCanvas: View {
             )
         }
         .aspectRatio(1, contentMode: .fit)
+        .preference(key: WritingActiveKey.self, value: !current.isEmpty)
         // Direct interaction lets VoiceOver users draw strokes with a finger instead of swiping between elements.
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text("Writing area"))
         .accessibilityValue(Text("\(inked.count) strokes drawn"))
         .accessibilityHint(Text("Draw each stroke with one finger."))
         .accessibilityAddTraits(.allowsDirectInteraction)
+    }
+}
+
+/// True while a stroke is being drawn on a [WritingCanvas] inside the view.
+struct WritingActiveKey: PreferenceKey {
+    static let defaultValue = false
+
+    static func reduce(value: inout Bool, nextValue: () -> Bool) {
+        value = value || nextValue()
+    }
+}
+
+extension View {
+    /// Apply to a ScrollView that contains a [WritingCanvas]: scrolling is disabled while a stroke is drawn, so a
+    /// vertical stroke is never taken over by the scroll view (F-25).
+    func locksScrollWhileWriting() -> some View {
+        modifier(WritingScrollLock())
+    }
+}
+
+private struct WritingScrollLock: ViewModifier {
+    @State private var drawing = false
+
+    func body(content: Content) -> some View {
+        content
+            .scrollDisabled(drawing)
+            .onPreferenceChange(WritingActiveKey.self) { value in
+                Task { @MainActor in drawing = value }
+            }
     }
 }
 
@@ -110,6 +142,7 @@ struct WritingPracticeView: View {
             }
             .padding()
         }
+        .locksScrollWhileWriting()
         .navigationTitle("Writing")
         .task(id: index) { await load() }
     }

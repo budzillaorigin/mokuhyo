@@ -20,9 +20,18 @@ struct AiSettingsView: View {
 
     @State private var apiKey = ""
     @State private var hasKey = false
+    /// One key per endpoint (F-12, rule 14): the STT and TTS servers never receive the LLM key.
+    @State private var sttKey = ""
+    @State private var hasSttKey = false
+    @State private var ttsKey = ""
+    @State private var hasTtsKey = false
     @State private var probing = false
     @State private var probe: ProbeOutcome?
+    @State private var voicevoxProbing = false
+    @State private var voicevoxProbe: String?
+    @State private var voicevoxOk = false
     @State private var status: String?
+    @State private var loadError: String?
     @State private var voice = VoicePlayer()
 
     private var llmChoices: [EngineChoice] { SwiftSupport.shared.llmChoices() }
@@ -31,7 +40,13 @@ struct AiSettingsView: View {
 
     var body: some View {
         Form {
-            if !loaded {
+            if let loadError {
+                Section {
+                    Label("Couldn't load AI settings: \(loadError)", systemImage: "exclamationmark.triangle")
+                        .foregroundStyle(.red)
+                    Button("Retry") { Task { await load() } }
+                }
+            } else if !loaded {
                 ProgressView()
             } else {
                 statusSection
@@ -143,6 +158,16 @@ struct AiSettingsView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .onSubmit { save() }
+                SecureField(hasSttKey ? "Whisper API key (saved; type to replace)" : "Whisper API key (optional)", text: $sttKey)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .onSubmit { save() }
+                if hasSttKey {
+                    Button("Remove Whisper key", role: .destructive) {
+                        app.graph.ai.sttEndpointKey = nil
+                        hasSttKey = false
+                    }
+                }
             }
         } header: {
             Text("Speech recognition")
@@ -165,6 +190,24 @@ struct AiSettingsView: View {
                     .onSubmit { save() }
                 Stepper("Speaker ID: \(voicevoxSpeaker)", value: $voicevoxSpeaker, in: 0...200)
                     .onChange(of: voicevoxSpeaker) { _, _ in save() }
+                SecureField(hasTtsKey ? "VOICEVOX key (saved; type to replace)" : "VOICEVOX key (optional, for a proxy)", text: $ttsKey)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .onSubmit { save() }
+                HStack {
+                    Button(voicevoxProbing ? "Testing…" : "Test") { testVoicevox() }
+                        .disabled(voicevoxProbing || voicevoxUrl.trimmingCharacters(in: .whitespaces).isEmpty)
+                    Spacer()
+                    if hasTtsKey {
+                        Button("Remove key", role: .destructive) {
+                            app.graph.ai.ttsEndpointKey = nil
+                            hasTtsKey = false
+                        }
+                    }
+                }
+                if let voicevoxProbe {
+                    Text(voicevoxProbe).font(.caption).foregroundStyle(voicevoxOk ? Color.green : Color.red)
+                }
             }
             Button(voice.isSpeaking ? "Stop" : "Play a sample") {
                 if voice.isSpeaking {
@@ -183,7 +226,15 @@ struct AiSettingsView: View {
     }
 
     private func load() async {
-        guard !loaded, let config = try? await app.graph.ai.config() else { return }
+        guard !loaded else { return }
+        loadError = nil
+        let config: AiConfig
+        do {
+            config = try await app.graph.ai.config()
+        } catch {
+            loadError = error.localizedDescription
+            return
+        }
         let s = SwiftSupport.shared
         llm = s.llmKey(config: config)
         localModelId = config.localModelId
@@ -196,6 +247,8 @@ struct AiSettingsView: View {
         voicevoxUrl = config.voicevoxUrl
         voicevoxSpeaker = Int(config.voicevoxSpeaker)
         hasKey = app.graph.ai.endpointKey != nil
+        hasSttKey = app.graph.ai.sttEndpointKey != nil
+        hasTtsKey = app.graph.ai.ttsEndpointKey != nil
         status = try? await app.graph.ai.unavailableReason()
         loaded = true
     }
@@ -213,10 +266,44 @@ struct AiSettingsView: View {
             apiKey = ""
             hasKey = true
         }
+        let whisperKey = sttKey.trimmingCharacters(in: .whitespaces)
+        if !whisperKey.isEmpty {
+            app.graph.ai.sttEndpointKey = whisperKey
+            sttKey = ""
+            hasSttKey = true
+        }
+        let voicevoxKey = ttsKey.trimmingCharacters(in: .whitespaces)
+        if !voicevoxKey.isEmpty {
+            app.graph.ai.ttsEndpointKey = voicevoxKey
+            ttsKey = ""
+            hasTtsKey = true
+        }
         let ai = app.graph.ai
         Task {
             try? await ai.save(config: config)
             status = try? await ai.unavailableReason()
+        }
+    }
+
+    /// VOICEVOX "Test": `GET /version` within 3 s (D-050), with the TTS key only.
+    private func testVoicevox() {
+        save()
+        let url = voicevoxUrl.trimmingCharacters(in: .whitespaces)
+        let ai = app.graph.ai
+        voicevoxProbing = true
+        voicevoxProbe = nil
+        Task {
+            do {
+                let ok = try await ai.probeVoicevox(url: url).boolValue
+                voicevoxOk = ok
+                voicevoxProbe = ok
+                    ? String(localized: "VOICEVOX answered. Tap “Play a sample” to hear it.")
+                    : String(localized: "No VOICEVOX engine answered at that address within 3 seconds.")
+            } catch {
+                voicevoxOk = false
+                voicevoxProbe = String(localized: "Couldn't reach VOICEVOX: \(error.localizedDescription)")
+            }
+            voicevoxProbing = false
         }
     }
 
@@ -249,11 +336,10 @@ private struct ModelListSection: View {
     @State private var models: [ModelInfo] = []
     @State private var recommendedId: String?
     @State private var installed: Set<String> = []
-    @State private var partial: [String: Int64] = [:]
-    @State private var progress: [String: String] = [:]
-    @State private var fraction: [String: Double] = [:]
-    @State private var tasks: [String: Task<Void, Never>] = [:]
+    @State private var partial: Set<String> = []
+    @State private var note: [String: String] = [:]
     @State private var available = true
+    private var downloads: ModelDownloads { ModelDownloads.shared }
 
     var body: some View {
         Section {
@@ -268,9 +354,17 @@ private struct ModelListSection: View {
         } header: {
             Text(title)
         } footer: {
-            Text("Downloads are checked with SHA-256. Cancel pauses; downloading again resumes.")
+            Text("Downloads continue in the background and are checked with SHA-256. Cancel pauses; downloading again resumes.")
         }
         .task { refresh() }
+        .onChange(of: downloads.installCount) { _, _ in
+            refresh()
+            if let id = downloads.lastInstalled, installed.contains(id), models.contains(where: { $0.id == id }),
+               selectedId == nil, recommendedId != id {
+                selectedId = id
+                onSelect()
+            }
+        }
     }
 
     @ViewBuilder
@@ -293,17 +387,21 @@ private struct ModelListSection: View {
             if Double(model.minRamGb) > app.graph.ai.deviceRamGb {
                 Text("This device may not have enough memory for it.").font(.caption).foregroundStyle(.orange)
             }
-            if let text = progress[model.id] {
-                if let f = fraction[model.id] { ProgressView(value: f) }
+            let state = downloads.status[model.id]
+            let active = state?.active == true
+            if let state {
+                if let f = state.fraction { ProgressView(value: f) }
+                Text(state.text).font(.caption).foregroundStyle(state.failed ? Color.red : Color.primary)
+            } else if let text = note[model.id] {
                 Text(text).font(.caption)
-            } else if !isInstalled, let bytes = partial[model.id], bytes > 0 {
-                Text("Paused at \(ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file))").font(.caption)
+            } else if !isInstalled, partial.contains(model.id) {
+                Text("Paused").font(.caption)
             }
             HStack {
-                if tasks[model.id] != nil {
-                    Button("Cancel") { tasks[model.id]?.cancel() }.buttonStyle(.bordered)
+                if active {
+                    Button("Cancel") { downloads.pause(model.id) }.buttonStyle(.bordered)
                 } else if !isInstalled {
-                    Button((partial[model.id] ?? 0) > 0 ? "Resume download" : "Download") { download(model) }.buttonStyle(.borderedProminent)
+                    Button(partial.contains(model.id) ? "Resume download" : "Download") { download(model) }.buttonStyle(.borderedProminent)
                 }
                 if isInstalled && !isSelected {
                     Button("Use this model") {
@@ -313,7 +411,7 @@ private struct ModelListSection: View {
                     .buttonStyle(.borderedProminent)
                 }
                 Spacer()
-                if tasks[model.id] == nil && (isInstalled || (partial[model.id] ?? 0) > 0) {
+                if !active && (isInstalled || partial.contains(model.id)) {
                     Button("Delete", role: .destructive) { delete(model) }.buttonStyle(.bordered)
                 }
             }
@@ -331,59 +429,27 @@ private struct ModelListSection: View {
         models = SwiftSupport.shared.models(ai: ai, speech: speech)
         recommendedId = SwiftSupport.shared.recommended(ai: ai, speech: speech)?.id
         installed = Set(models.filter { manager.isInstalled(model: $0) }.map(\.id))
-        var sizes: [String: Int64] = [:]
-        for m in models { sizes[m.id] = manager.bytesOnDisk(model: m) }
-        partial = sizes
+        partial = Set(models.filter { !installed.contains($0.id) && downloads.hasPartial($0) }.map(\.id))
     }
 
+    /// Background URLSession download (F-13): keeps going when the app is in the background or suspended.
     private func download(_ model: ModelInfo) {
-        guard let manager = app.graph.ai.models else { return }
-        let id = model.id
-        progress[id] = "Starting…"
-        tasks[id] = Task {
-            var finished = false
-            for await p in manager.download(model: model, progressStepBytes: 1 << 20) {
-                switch onEnum(of: p) {
-                case .downloading(let d):
-                    fraction[id] = d.fraction
-                    progress[id] = "\(ByteCountFormatter.string(fromByteCount: d.bytesDone, countStyle: .file)) of \(ByteCountFormatter.string(fromByteCount: d.bytesTotal, countStyle: .file))"
-                case .verifying:
-                    fraction[id] = nil
-                    progress[id] = "Verifying…"
-                case .done:
-                    finished = true
-                    progress[id] = nil
-                    fraction[id] = nil
-                case .failed(let f):
-                    finished = true
-                    fraction[id] = nil
-                    progress[id] = "Failed: \(f.message)"
-                }
-            }
-            if !finished {
-                progress[id] = nil
-                fraction[id] = nil
-            }
-            tasks[id] = nil
-            refresh()
-            if installed.contains(id) && selectedId == nil && recommendedId != id {
-                selectedId = id
-                onSelect()
-            }
-        }
+        note[model.id] = nil
+        downloads.start(model)
     }
 
     private func delete(_ model: ModelInfo) {
         let ai = app.graph.ai
         let id = model.id
-        if selectedId == id {
-            Task { try? await ai.unload() }
+        Task {
+            await downloads.discard(id)
+            if selectedId == id { try? await ai.unload() }
+            if let error = SwiftSupport.shared.deleteModel(ai: ai, model: model) {
+                note[id] = String(localized: "Couldn't delete: \(error)")
+            } else {
+                note[id] = nil
+            }
+            refresh()
         }
-        if let error = SwiftSupport.shared.deleteModel(ai: ai, model: model) {
-            progress[id] = "Couldn't delete: \(error)"
-        } else {
-            progress[id] = nil
-        }
-        refresh()
     }
 }

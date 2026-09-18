@@ -5,17 +5,44 @@ struct PathLevelsView: View {
     @Environment(AppModel.self) private var app
     @State private var status: PathStatus?
     @State private var missing = false
+    @State private var loadError: String?
+    /// The level the learner asked to go back to; confirmed before anything changes (rule 11, D-041).
+    @State private var resetTarget: Int?
+    @State private var resetError: String?
 
     var body: some View {
         Group {
             if missing {
                 ContentUnavailableView("Kanji path not installed", systemImage: "square.grid.3x3", description: Text("This build has no kanji-path pack."))
+            } else if let loadError {
+                ContentUnavailableView {
+                    Label("Couldn't load the kanji path", systemImage: "exclamationmark.triangle")
+                } description: {
+                    Text(loadError)
+                } actions: {
+                    Button("Retry") { Task { await load() } }.buttonStyle(.borderedProminent)
+                }
             } else if let status {
-                List(1...Int(status.maxLevel), id: \.self) { level in
-                    NavigationLink(value: Route.pathLevel(level)) {
-                        VStack(alignment: .leading) {
-                            Text("Level \(level)")
-                            Text(caption(level, status)).font(.caption).foregroundStyle(.secondary)
+                List {
+                    if let resetError {
+                        Text(resetError).font(.caption).foregroundStyle(.red)
+                    }
+                    ForEach(1...Int(status.maxLevel), id: \.self) { level in
+                        NavigationLink(value: Route.pathLevel(level)) {
+                            VStack(alignment: .leading) {
+                                Text("Level \(level)")
+                                Text(caption(level, status)).font(.caption).foregroundStyle(.secondary)
+                            }
+                        }
+                        .swipeActions {
+                            if level < Int(status.currentLevel) {
+                                Button("Reset here") { resetTarget = level }.tint(.orange)
+                            }
+                        }
+                        .contextMenu {
+                            if level < Int(status.currentLevel) {
+                                Button("Reset to level \(level)…") { resetTarget = level }
+                            }
                         }
                     }
                 }
@@ -24,10 +51,42 @@ struct PathLevelsView: View {
             }
         }
         .navigationTitle("Kanji path")
-        .task {
-            let path = try? await app.graph.path()
+        .task { await load() }
+        .confirmationDialog(
+            "Reset to level \(resetTarget ?? 1)?",
+            isPresented: Binding(get: { resetTarget != nil }, set: { if !$0 { resetTarget = nil } }),
+            titleVisibility: .visible
+        ) {
+            Button("Reset to level \(resetTarget ?? 1)", role: .destructive) {
+                if let level = resetTarget { reset(to: level) }
+            }
+            Button("Cancel", role: .cancel) { resetTarget = nil }
+        } message: {
+            Text("Lessons above this level close again, on all your synced devices. Items you already learned keep their reviews. Your level only goes back down when you ask for it here.")
+        }
+    }
+
+    private func load() async {
+        loadError = nil
+        do {
+            let path = try await app.graph.path()
             missing = path == nil
-            status = try? await path?.status()
+            status = try await path?.status()
+        } catch {
+            loadError = error.localizedDescription
+        }
+    }
+
+    private func reset(to level: Int) {
+        resetTarget = nil
+        resetError = nil
+        Task {
+            do {
+                try await app.graph.path()?.resetToLevel(level: Int32(level))
+                await load()
+            } catch {
+                resetError = String(localized: "Couldn't reset: \(error.localizedDescription)")
+            }
         }
     }
 
