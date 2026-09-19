@@ -47,12 +47,15 @@ class RoleplaySession(
     private val gateway: AiGateway,
     private val level: String = "N${scenario.jlpt}",
 ) {
-    private val scriptedTask = RoleplayTurn { input -> scriptedReply(input.history.count { it.speaker == Speaker.LEARNER }) }
     private val modelTask = RoleplayTurn()
     private val lines = mutableListOf<ConversationLine>()
     private val corrections = HashMap<String, CorrectSentence.Output>()
     private val startedAt = kotlin.time.Clock.System.now().toEpochMilliseconds()
     private var saved: ConversationRecord? = null
+
+    /** Scripted mode: the next scripted partner turn, and how many times the current reply has been asked again. */
+    private var scriptIndex = 0
+    private var misses = 0
 
     val transcript: List<ConversationLine> get() = lines.toList()
     var goalReached: Boolean = false
@@ -132,15 +135,7 @@ class RoleplaySession(
             history = history,
         )
         val line = if (scriptedMode) {
-            // The scripted fallback counts learner turns, so it always sees the whole history.
-            when (val result = gateway.run(scriptedTask, base)) {
-                is AiResult.Ok -> partnerLine(result.value, result.engine)
-                is AiResult.Fallback -> partnerLine(result.value, null)
-                is AiResult.Unavailable -> {
-                    goalReached = true
-                    ConversationLine(Speaker.PARTNER, "ありがとうございました。", "Thank you very much.")
-                }
-            }
+            scriptedLine()
         } else {
             when (val result = gateway.run(modelTask, base.copy(history = window(base)))) {
                 is AiResult.Ok -> partnerLine(result.value, result.engine)
@@ -173,13 +168,33 @@ class RoleplaySession(
         return ContextWindow.fitLatest(input.history, fixed, budget) { ContextWindow.estimateTokens(it.text) + TURN_OVERHEAD }
     }
 
-    private fun scriptedReply(learnerTurns: Int): RoleplayTurn.Output? {
-        val turn = scripted.getOrNull(learnerTurns) ?: return null
-        return RoleplayTurn.Output(turn.partnerJa, turn.partnerEn, turn.sampleAnswer, goalReached = learnerTurns >= scripted.lastIndex)
+    /**
+     * The next scripted partner line (no model configured). The learner's reply is matched loosely against the
+     * previous turn's acceptable answers ([ScriptedMatcher]); an off-topic reply gets one "say that again" with the
+     * sample answer as the hint, then the conversation moves on regardless so the learner is never stuck (D-223).
+     */
+    private fun scriptedLine(): ConversationLine {
+        val reply = lines.lastOrNull()?.takeIf { it.speaker == Speaker.LEARNER }
+        val previous = scripted.getOrNull(scriptIndex - 1)
+        if (reply != null && previous != null && misses < MAX_MISSES && !ScriptedMatcher.matches(reply.japanese, previous.acceptableAnswers)) {
+            misses++
+            return ConversationLine(Speaker.PARTNER, CLARIFY_JA, CLARIFY_EN, previous.sampleAnswer)
+        }
+        misses = 0
+        val turn = scripted.getOrNull(scriptIndex) ?: run {
+            goalReached = true
+            return ConversationLine(Speaker.PARTNER, "ありがとうございました。", "Thank you very much.")
+        }
+        scriptIndex++
+        if (scriptIndex > scripted.lastIndex) goalReached = true
+        return ConversationLine(Speaker.PARTNER, turn.partnerJa, turn.partnerEn, turn.sampleAnswer)
     }
 
     private companion object {
         /** Role label and line break per transcript line. */
         const val TURN_OVERHEAD = 8
+        const val MAX_MISSES = 1
+        const val CLARIFY_JA = "すみません、もう一度お願いします。"
+        const val CLARIFY_EN = "Sorry, could you say that again?"
     }
 }

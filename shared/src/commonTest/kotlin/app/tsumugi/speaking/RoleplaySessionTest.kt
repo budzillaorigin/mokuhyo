@@ -108,4 +108,30 @@ class RoleplaySessionTest {
         assertEquals(3, ContextWindow.estimateTokens("食べる"))
         assertEquals(2, ContextWindow.estimateTokens("abcd"))
     }
+
+    @Test
+    fun scriptedOffTopicReplyGetsOneClarificationThenMovesOn() = runTest {
+        val session = RoleplaySession(scenario, scripted, AiGateway({ null }))
+        session.start()
+        val clarify = assertNotNull(session.reply("明日は雨が降るでしょう。"))
+        assertEquals("すみません、もう一度お願いします。", clarify.japanese)
+        assertEquals("こんにちは。", clarify.hint)
+        // A second miss doesn't trap the learner: the scene moves on.
+        assertEquals("ご注文は？", assertNotNull(session.reply("えっと……")).japanese)
+    }
+
+    @Test
+    fun scriptedMatchIgnoresKanaScriptAndPunctuation() = runTest {
+        val session = RoleplaySession(scenario, scripted, AiGateway({ null }))
+        session.start()
+        assertEquals("ご注文は？", assertNotNull(session.reply("コンニチハ")).japanese)
+    }
+
+    @Test
+    fun matcherAcceptsVariantsAndRejectsOffTopic() {
+        assertTrue(ScriptedMatcher.matches("コーヒーを一つください", listOf("コーヒーをください。")))
+        assertTrue(ScriptedMatcher.matches("こーひーください！", listOf("コーヒーをください。")))
+        assertFalse(ScriptedMatcher.matches("駅はどこですか", listOf("コーヒーをください。")))
+        assertFalse(ScriptedMatcher.matches("  。 ", listOf("コーヒーをください。")))
+    }
 }
