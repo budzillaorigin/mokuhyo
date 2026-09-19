@@ -592,7 +592,7 @@ struct MediaPlayerView: View {
     }
 
     private func isOneTarget(_ index: Int) -> Bool {
-        oneTarget.contains { $0.cueIndex?.intValue == Int32(index) }
+        oneTarget.contains { $0.cueIndex?.intValue == index }
     }
 
     private func start(_ target: Pick) {
