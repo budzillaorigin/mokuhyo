@@ -27,8 +27,8 @@ class ContentReviewTest {
         d.execute(null, "INSERT INTO exam_item VALUES ('x-q1', 'b', 'JLPT', 'N4', 'vocab', NULL, 1, '語彙', '[\"a\",\"b\",\"c\",\"d\"]', 0, 'ok', '', '[]', 'llm', 1)", 0)
     }
     private val practice = inMemoryDriver(PracticeDatabase.Schema).also { d ->
-        d.execute(null, "INSERT INTO dialogue VALUES ('d1', 1, 'At the station', 5, 'travel', '[]', 'llm')", 0)
-        d.execute(null, "INSERT INTO dialogue_line VALUES ('d1', 1, 'A', 'すみません。', 'Excuse me.', '[]', '[]')", 0)
+        d.execute(null, "INSERT INTO dialogue VALUES ('d1', 1, 'At the station', 5, 'travel', '[]', 'llm', 'scripted')", 0)
+        d.execute(null, "INSERT INTO dialogue_line VALUES ('d1', 1, 'A', 'すみません。', 'Excuse me.', '[]', '[]', '[]', 0)", 0)
     }
 
     private val service = ContentReviewService(db, {

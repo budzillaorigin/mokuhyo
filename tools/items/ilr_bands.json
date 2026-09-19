@@ -1,12 +1,14 @@
 {
-  "note": "Per-ILR-level passage bands for DLPT practice passages, checked by tools/items/gen_dlpt.py and packs/build_exam.py. Derived from the public ILR reading/listening descriptors (govtilr.org, public domain): 0+/1 signs, notices, short simple narrative; 1+ routine social and simple factual texts; 2 news, factual reporting, straightforward instructions; 2+/3 editorial, argument, hypothesis, abstract topics, idiom and nuance. Measures: chars = non-whitespace characters (listening: all script lines joined); kanjiDensity = kanji / non-whitespace characters; abstractRatio = abstract-lexicon hits (longest-first, non-overlapping substring matches) / approximate tokens (script-run segmentation: runs of kanji, hiragana, katakana, latin or digits; punctuation ignored). Bands are deliberately wide: they flag gross mismatches, not fine grading. Signs (0+) are short and kanji-heavy, so density is not monotonic at the bottom of the scale.",
+  "note": "Per-ILR-level passage bands for DLPT practice passages, checked by tools/items/gen_dlpt.py and packs/build_exam.py. Derived from the public ILR reading/listening descriptors (govtilr.org, public domain): 0+/1 signs, notices, short simple narrative; 1+ routine social and simple factual texts; 2 news, factual reporting, straightforward instructions; 2+/3 editorial, argument, hypothesis, abstract topics, idiom and nuance; 3+/4 (upper range, BRIEF_V2 G-08) dense argument, academic and literary register, allusion, irony and implied stance. The upper-range bands are provisional (drafted passages only) and wider at the bottom for kanji density and abstract ratio because literary texts are kana-heavy and concrete. Measures: chars = non-whitespace characters (listening: all script lines joined); kanjiDensity = kanji / non-whitespace characters; abstractRatio = abstract-lexicon hits (longest-first, non-overlapping substring matches) / approximate tokens (script-run segmentation: runs of kanji, hiragana, katakana, latin or digits; punctuation ignored). Bands are deliberately wide: they flag gross mismatches, not fine grading. Signs (0+) are short and kanji-heavy, so density is not monotonic at the bottom of the scale.",
   "levels": {
     "0+": {"minChars": 8, "maxChars": 160, "kanjiDensity": [0.05, 0.75], "abstractRatio": [0.0, 0.02]},
     "1": {"minChars": 60, "maxChars": 300, "kanjiDensity": [0.1, 0.55], "abstractRatio": [0.0, 0.03]},
     "1+": {"minChars": 150, "maxChars": 450, "kanjiDensity": [0.15, 0.55], "abstractRatio": [0.0, 0.04]},
     "2": {"minChars": 250, "maxChars": 700, "kanjiDensity": [0.22, 0.55], "abstractRatio": [0.0, 0.06]},
     "2+": {"minChars": 350, "maxChars": 900, "kanjiDensity": [0.25, 0.55], "abstractRatio": [0.02, 0.12]},
-    "3": {"minChars": 450, "maxChars": 1200, "kanjiDensity": [0.28, 0.6], "abstractRatio": [0.02, 0.2]}
+    "3": {"minChars": 450, "maxChars": 1200, "kanjiDensity": [0.28, 0.6], "abstractRatio": [0.02, 0.2]},
+    "3+": {"minChars": 600, "maxChars": 1600, "kanjiDensity": [0.22, 0.6], "abstractRatio": [0.01, 0.25]},
+    "4": {"minChars": 700, "maxChars": 2000, "kanjiDensity": [0.22, 0.62], "abstractRatio": [0.01, 0.3]}
   },
   "abstractLexicon": [
     "概念", "観点", "視点", "論点", "前提", "仮説", "仮定", "論理", "矛盾", "本質",

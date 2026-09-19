@@ -30,7 +30,7 @@ EXAM_PACK_VERSION = "1"
 
 EXAMS = {"JLPT", "DLPT_READING", "DLPT_LISTENING"}
 JLPT_LEVELS = {"N5", "N4", "N3", "N2", "N1"}
-ILR_LEVELS = {"0+", "1", "1+", "2", "2+", "3"}
+ILR_LEVELS = {"0+", "1", "1+", "2", "2+", "3", "3+", "4"}  # 3+/4: upper-range banks (G-08)
 DLPT_TYPES = {"main_idea", "detail", "inference", "purpose", "vocabulary_in_context", "tone"}
 
 

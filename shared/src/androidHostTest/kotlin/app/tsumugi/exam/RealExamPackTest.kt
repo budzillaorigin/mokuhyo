@@ -3,9 +3,12 @@ package app.tsumugi.exam
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import app.tsumugi.db.TsumugiDatabase
 import app.tsumugi.exam.db.ExamDatabase
+import app.tsumugi.exam.dlpt.DlptRange
 import app.tsumugi.exam.dlpt.IlrLevel
 import app.tsumugi.exam.opi.OpiSession
 import app.tsumugi.ai.AiGateway
+import app.tsumugi.practice.DialogueStyle
+import app.tsumugi.practice.DrillPlayback
 import app.tsumugi.practice.PracticeRepository
 import app.tsumugi.practice.db.PracticeDatabase
 import app.tsumugi.srs.SrsRepository
@@ -51,6 +54,19 @@ class RealExamPackTest {
             val dlpt = service.dlpt(ExamKind.DLPT_READING, 60, seed = 1)
             assertTrue(dlpt.totalCount >= 10)
             assertTrue(dlpt.form.items.all { f -> f.item.passageId == null || f.item.passageId in dlpt.form.passages })
+            // Upper range (G-08): only 3/3+/4 items, and the text-type filter (§6.16) narrows the form.
+            val upper = service.dlpt(ExamKind.DLPT_READING, 60, seed = 1, range = DlptRange.UPPER)
+            if (coverage.any { it.exam == ExamKind.DLPT_READING && it.level == "4" }) {
+                assertTrue(upper.totalCount >= 10, "upper-range form has ${upper.totalCount} items")
+                assertTrue(upper.form.items.all { IlrLevel.parse(it.item.level) in IlrLevel.upperRange })
+            }
+            val types = service.dlptTextTypes(ExamKind.DLPT_READING)
+            println("RealExamPackTest DLPT reading text types: $types")
+            if (types.any { it.first == "liaison" }) {
+                val liaison = service.dlpt(ExamKind.DLPT_READING, 60, seed = 1, textTypes = setOf("liaison"))
+                assertTrue(liaison.totalCount > 0)
+                assertTrue(liaison.form.items.all { liaison.form.passages.getValue(it.item.passageId!!).textType == "liaison" })
+            }
         }
     }
 
@@ -67,6 +83,22 @@ class RealExamPackTest {
             turns++
         }
         assertEquals(OpiSession.PLAN.values.sum(), turns)
+        val probe = session.probeMap()
+        assertEquals(turns, probe.turns.size)
+        // Natural dialogues carry filler spans; drill sets load and plan (BRIEF_V2 §6.10).
+        val natural = practice.dialogues().filter { it.style == DialogueStyle.NATURAL }
+        if (natural.isNotEmpty()) {
+            val d = assertNotNull(practice.dialogue(natural.first().id))
+            assertTrue(d.lines.any { it.fillers.isNotEmpty() })
+            assertTrue(d.lines.all { l -> l.segments().joinToString("") { it.text } == l.japanese })
+        }
+        val sets = practice.drillSets()
+        println("RealExamPackTest drill sets: ${sets.size}, natural dialogues: ${natural.size}")
+        sets.firstOrNull()?.let { s ->
+            val set = assertNotNull(practice.drillSet(s.id))
+            assertTrue(set.items.isNotEmpty())
+            assertTrue(DrillPlayback.plan(set).totalMs > 0)
+        }
         val pomodoro = assertNotNull(PomodoroSession.build(practice, 4, Random(1)))
         assertTrue(pomodoro.activities.size >= 8, "queue ${pomodoro.activities.size}")
     }

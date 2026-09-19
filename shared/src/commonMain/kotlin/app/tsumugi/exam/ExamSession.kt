@@ -327,7 +327,7 @@ class ExamSession(
             val ilr = when {
                 estimate.level != null -> "ILR ${estimate.level.label}" + if (estimate.confident) "" else " (low confidence)"
                 estimate.provisional != null -> "≈ ILR ${estimate.provisional.label} (provisional)"
-                else -> "below ILR ${IlrLevel.lowerRange.first().label}"
+                else -> "below ILR ${app.tsumugi.exam.dlpt.DlptRange.ofFormLevel(form.level).levels.first().label}"
             }
             scoring to "${form.exam.title} · $ilr · $correct/${answers.size}"
         }

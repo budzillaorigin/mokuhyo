@@ -31,7 +31,8 @@ CREATE TABLE scenario (
 
 -- Scripted fallback conversation used when no language model is available (BRIEF §3.5).
 -- partner_ja/partner_en: what the partner says; intent: what the learner is expected to do next;
--- sample_answer: one acceptable learner reply.
+-- sample_answer: one acceptable learner reply. accept: JSON string array of other acceptable replies (varied
+-- wording, shorter/longer answers) so a fallback matcher isn't tied to the sample line (BRIEF_V2 Appendix A).
 CREATE TABLE scripted_turn (
     scenario_id TEXT NOT NULL,
     ord INTEGER NOT NULL,
@@ -39,10 +40,13 @@ CREATE TABLE scripted_turn (
     partner_en TEXT NOT NULL,
     intent TEXT NOT NULL,
     sample_answer TEXT NOT NULL,
+    accept TEXT NOT NULL,
     PRIMARY KEY (scenario_id, ord)
 ) WITHOUT ROWID;
 
 -- OPI practice question bank by ILR level. phase: WARM_UP | LEVEL_CHECK | PROBE | ROLE_PLAY | WIND_DOWN.
+-- domain: DLI-style topic domain (BRIEF_V2 §6.16): personal | family | work | daily_life | travel | current_events |
+-- hypothetical | abstract | situation, or '' when untagged.
 CREATE TABLE opi_question (
     ilr TEXT NOT NULL,
     ord INTEGER NOT NULL,
@@ -51,6 +55,7 @@ CREATE TABLE opi_question (
     prompt_en TEXT NOT NULL,
     note TEXT NOT NULL,
     source TEXT NOT NULL,
+    domain TEXT NOT NULL,
     PRIMARY KEY (ilr, ord)
 ) WITHOUT ROWID;
 
@@ -62,7 +67,9 @@ CREATE TABLE opi_checklist (
     PRIMARY KEY (ilr, ord)
 ) WITHOUT ROWID;
 
--- Two-speaker listening dialogues (BRIEF §5.9). speakers: JSON [{"id":"A","name":"…","voice":"female","age":"adult"}].
+-- Two-speaker listening dialogues (BRIEF §5.9). speakers: JSON [{"id":"A","name":"…","voice":"female","age":"adult",
+-- "hint":"…"}] (hint: optional delivery note for the renderer/reviewer). style: scripted | natural (BRIEF_V2 §6.10:
+-- unscripted-sounding speech with fillers, backchannels, restarts and overlaps).
 CREATE TABLE dialogue (
     id TEXT NOT NULL PRIMARY KEY,
     ord INTEGER NOT NULL,
@@ -70,11 +77,14 @@ CREATE TABLE dialogue (
     jlpt INTEGER NOT NULL,
     topic TEXT NOT NULL,
     speakers TEXT NOT NULL,
-    source TEXT NOT NULL
+    source TEXT NOT NULL,
+    style TEXT NOT NULL
 );
 
 -- gaps: JSON [{"text":"…","start":n,"end":n,"entryId":123}] (UTF-16 offsets into ja).
 -- chunks: JSON string array whose concatenation equals ja (for "order the chunks").
+-- fillers: JSON [[start,end],…] UTF-16 spans of fillers/disfluencies (えっと, あの, restarts) the transcript greys.
+-- overlap: 1 when the line starts before the previous one ends (backchannels, interruptions).
 CREATE TABLE dialogue_line (
     dialogue_id TEXT NOT NULL,
     ord INTEGER NOT NULL,
@@ -83,6 +93,8 @@ CREATE TABLE dialogue_line (
     en TEXT NOT NULL,
     gaps TEXT NOT NULL,
     chunks TEXT NOT NULL,
+    fillers TEXT NOT NULL,
+    overlap INTEGER NOT NULL,
     PRIMARY KEY (dialogue_id, ord)
 ) WITHOUT ROWID;
 
@@ -114,6 +126,32 @@ CREATE TABLE minimal_pair (
     rank INTEGER NOT NULL
 );
 CREATE INDEX minimal_pair_category ON minimal_pair(category, rank);
+
+-- Speaking drill sets (BRIEF_V2 §6.10, Swotter format): prompt → pause → model answer → repeat.
+-- kind: grammar (grammar-pack examples) | dialogue (listening-dialogue lines). source: the set's provenance
+-- ("derived" when every item is human-translated Tatoeba text, "llm" when any item is AI-drafted).
+CREATE TABLE drill_set (
+    id TEXT NOT NULL PRIMARY KEY,
+    ord INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    jlpt INTEGER NOT NULL,
+    kind TEXT NOT NULL,
+    description TEXT NOT NULL,
+    source TEXT NOT NULL
+);
+
+-- prompt_en: the cue (spoken with system TTS or shown); answer_ja: the model answer; audio_key: the pre-rendered clip
+-- of the answer (grammar/<point>/<ord> or dialogue/<id>/<ord>, docs/CONTENT_PACKS.md); ref: g:<point id> or d:<dialogue id>.
+CREATE TABLE drill_item (
+    set_id TEXT NOT NULL,
+    ord INTEGER NOT NULL,
+    prompt_en TEXT NOT NULL,
+    answer_ja TEXT NOT NULL,
+    audio_key TEXT NOT NULL,
+    ref TEXT NOT NULL,
+    source TEXT NOT NULL,
+    PRIMARY KEY (set_id, ord)
+) WITHOUT ROWID;
 
 metaValue:
 SELECT value FROM pack_meta WHERE key = ?;
@@ -151,6 +189,18 @@ SELECT * FROM dialogue_line WHERE dialogue_id = ? ORDER BY ord;
 dialogueQuestions:
 SELECT * FROM dialogue_question WHERE dialogue_id = ? ORDER BY ord;
 
+allDrillSets:
+SELECT * FROM drill_set ORDER BY ord;
+
+drillSetsAtLevel:
+SELECT * FROM drill_set WHERE jlpt = ? ORDER BY ord;
+
+drillSetById:
+SELECT * FROM drill_set WHERE id = ?;
+
+drillItems:
+SELECT * FROM drill_item WHERE set_id = ? ORDER BY ord;
+
 minimalPairs:
 SELECT * FROM minimal_pair ORDER BY rank LIMIT ?;
 
@@ -183,3 +233,9 @@ INSERT INTO dialogue_question VALUES ?;
 
 insertPair:
 INSERT INTO minimal_pair VALUES ?;
+
+insertDrillSet:
+INSERT INTO drill_set VALUES ?;
+
+insertDrillItem:
+INSERT INTO drill_item VALUES ?;

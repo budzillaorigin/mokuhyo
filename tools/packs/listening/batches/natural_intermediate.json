@@ -1,0 +1,3281 @@
+{
+ "source": "llm",
+ "dialogues": [
+  {
+   "id": "nat-n3-move-in-together",
+   "title": "Should we share a flat?",
+   "jlpt": 3,
+   "topic": "home",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "綾",
+     "voice": "female",
+     "age": "young",
+     "hint": "upbeat, persuasive, quick"
+    },
+    {
+     "id": "B",
+     "name": "拓海",
+     "voice": "male",
+     "age": "young",
+     "hint": "laid-back, a little reluctant"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{あのさ、}前に言ってたルームシェアの話、{まあ、}本気で考えてみたんだけど。",
+     "en": "So, about that flat-share idea we talked about, I've actually been thinking about it seriously.",
+     "gaps": [
+      "本気"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "うん。",
+     "en": "Uh-huh.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "家賃、今一人で七万払ってるじゃん。二人なら{その、}一人五万くらいで、もっと広いとこ住めるなって。",
+     "en": "I'm paying seventy thousand in rent on my own right now. With two of us it'd be about fifty each, and we could get somewhere bigger.",
+     "gaps": [
+      "家賃"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}お金は助かるんだけど…{なんか}俺、朝めっちゃ早いじゃん。五時とかに起きるし。",
+     "en": "Hmm, the money would help, but… I get up really early, you know. Like five o'clock.",
+     "gaps": [
+      "助かる"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "知ってる。でも私、夜型だから、逆にちょうどいいかなって。お風呂もキッチンも、使う時間がかぶらないし。",
+     "en": "I know. But I'm a night owl, so I figure that actually works. We'd never need the bath or the kitchen at the same time.",
+     "gaps": [
+      "キッチン",
+      "時間"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あー、そういう考え方もあるか。",
+     "en": "Ah, I guess that's one way to see it.",
+     "gaps": [
+      "考え方"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "でしょ？ {で、}問題は家事なんだよね。拓海、{その、}片付けとか…",
+     "en": "Right? So the real problem is housework. Takumi, tidying up and stuff…",
+     "gaps": [
+      "家事"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "いや、するよ？ するする。{た、}たまに。",
+     "en": "Hey, I do it! I do. …Sometimes.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "ほら、それ。だから当番表作ろうよ。週ごとに交代で。",
+     "en": "See, that. So let's make a chore rota. We swap every week.",
+     "gaps": [
+      "当番",
+      "交代"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}当番表か…{まあ、}それならいいけど。あ、でも一個だけ条件ある。",
+     "en": "Hmm, a rota… Well, that's fine. Oh, but I've got one condition.",
+     "gaps": [
+      "条件"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "なに？",
+     "en": "What?",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "友達呼ぶときは、前の日までに言うこと。急に来られるの、{なんか}落ち着かないんだよね。",
+     "en": "If you have friends over, tell me by the day before. People turning up out of nowhere kind of stresses me out.",
+     "gaps": [
+      "友達",
+      "急"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "それは全然いいよ。{じゃあ、}来月、一緒に物件見に行く？",
+     "en": "That's totally fine. So, want to go look at some places together next month?",
+     "gaps": [
+      "来月",
+      "物件"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うん、}行こ行こ。{あ、}でも契約はまだ決めないからね。見るだけ。",
+     "en": "Yeah, let's go. Oh, but I'm not signing anything yet. Just looking.",
+     "gaps": [
+      "契約"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why does Aya see their different sleeping habits as a plus?",
+     "choices": [
+      "Takumi could wake her up for work",
+      "They could split the rent more fairly",
+      "They wouldn't need the bathroom or kitchen at the same time",
+      "She could do the housework while he sleeps"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "What does Takumi ask of Aya?",
+     "choices": [
+      "To give him notice before friends come over",
+      "To take on more of the tidying",
+      "To pay a bigger share of the rent",
+      "To sign the lease next month"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What have they agreed to do next?",
+     "choices": [
+      "Sign a contract for a larger flat",
+      "Make the chore rota before anything else",
+      "Invite friends to help them choose",
+      "View some places without committing"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-first-date",
+   "title": "The first date that went wrong",
+   "jlpt": 3,
+   "topic": "social",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "翔太",
+     "voice": "male",
+     "age": "young",
+     "hint": "dramatic, exaggerated despair"
+    },
+    {
+     "id": "B",
+     "name": "莉子",
+     "voice": "female",
+     "age": "young",
+     "hint": "amused, teasing, reassuring"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{いや、}聞いてよ。昨日の初デート、もう最悪だった。",
+     "en": "Listen to this. My first date yesterday was an absolute disaster.",
+     "gaps": [
+      "最悪"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、マジで？ 何があったの？",
+     "en": "Wait, seriously? What happened?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{えっと、}まず、予約してたレストランが、{その、}店の工事で休みだったの。",
+     "en": "Well, first, the restaurant I'd booked was closed for building work.",
+     "gaps": [
+      "予約",
+      "工事"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "うわ。",
+     "en": "Oof.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "で、しょうがないから近くのラーメン屋入ったんだけど、彼女、{なんか}白い服着てて…",
+     "en": "So we had no choice and went into a ramen place nearby, but she was wearing, like, a white outfit…",
+     "gaps": [
+      "近く"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あー、スープ飛んだ？",
+     "en": "Ah, soup splashed?",
+     "gaps": [
+      "スープ"
+     ],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "飛んだ。しかも俺のじゃなくて、隣のおじさんの。",
+     "en": "It did. And not from mine — from the guy sitting next to us.",
+     "gaps": [
+      "隣"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{え、}ちょっと待って、それ翔太のせいじゃないじゃん。",
+     "en": "Wait a sec, that's not even your fault.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "そうなんだけど、{まあ、}空気がね…で、帰りに{雨、あ、}大雨が降ってきて、傘一本しかなくて。",
+     "en": "I know, but the mood… And then on the way back it started pouring, and we only had one umbrella.",
+     "gaps": [
+      "空気",
+      "傘"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、それ逆にいい感じじゃない？ 相合傘でしょ？",
+     "en": "Hey, isn't that actually kind of nice? Sharing an umbrella?",
+     "gaps": [
+      "逆"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}俺もそう思ったんだけど、{その、}彼女が『私は走るから大丈夫』って、駅まで走ってっちゃった。",
+     "en": "That's what I thought too, but she said 'I'll just run, it's fine' and ran off to the station.",
+     "gaps": [
+      "駅"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}それは…{なんか}照れてただけかもよ？ その後、連絡は？",
+     "en": "Hmm, maybe she was just shy? Did you hear from her after?",
+     "gaps": [
+      "連絡"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{それが、}今朝メッセージが来て、『昨日は楽しかったです、また行きましょう』って。",
+     "en": "Well, this morning she messaged me: 'I had fun yesterday, let's go again.'",
+     "gaps": [
+      "今朝"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、じゃあ全然最悪じゃないじゃん！",
+     "en": "Then it wasn't a disaster at all!",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{まあ、}そうなんだよね。だから次は、ちゃんと天気予報見てから誘うわ。",
+     "en": "Yeah, I guess so. So next time I'll check the weather forecast before I ask her out.",
+     "gaps": [
+      "天気予報"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why did they end up eating ramen?",
+     "choices": [
+      "The restaurant was fully booked",
+      "The place he had reserved was shut",
+      "She said she wanted something cheap",
+      "It was raining too hard to go far"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What does Riko suggest about the woman running to the station?",
+     "choices": [
+      "She was angry about her clothes",
+      "She had a train to catch",
+      "She may simply have felt shy",
+      "She didn't want to share with a stranger"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "How did the date really turn out?",
+     "choices": [
+      "She wants to see him again",
+      "She stopped replying to him",
+      "He decided not to ask her out again",
+      "They made up after an argument"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-new-year-plans",
+   "title": "Whose parents for New Year?",
+   "jlpt": 3,
+   "topic": "family",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "大輔",
+     "voice": "male",
+     "age": "adult",
+     "hint": "easygoing, a bit careful"
+    },
+    {
+     "id": "B",
+     "name": "奈々",
+     "voice": "female",
+     "age": "adult",
+     "hint": "warm, candid, practical"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{あのさ、}お正月のことなんだけど、そろそろ決めないと。",
+     "en": "So, about New Year — we really need to decide.",
+     "gaps": [
+      "正月"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、そうだね。新幹線の切符、早く取らないと高くなるし。",
+     "en": "Oh, right. Bullet train tickets get pricier if we don't book early.",
+     "gaps": [
+      "新幹線",
+      "切符"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{で、}去年はうちの実家だったじゃん。だから今年は、{まあ、}普通に考えたら奈々の実家かなって。",
+     "en": "Last year we went to my parents'. So this year, normally, it'd be your parents' place.",
+     "gaps": [
+      "去年",
+      "実家"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}それがね…うちの母が、{なんか}今年は旅行に行くって言ってて。",
+     "en": "Hmm, well… my mum says she's going on a trip this year.",
+     "gaps": [
+      "旅行"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "え、お正月に？",
+     "en": "What, over New Year?",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "そう、父と二人で温泉だって。だから、うちに帰っても誰もいないの。",
+     "en": "Yeah, a hot spring with my dad, just the two of them. So there'd be nobody home.",
+     "gaps": [
+      "温泉"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "なるほど。{じゃあ、}また俺の実家？ {いや、}うちの親は喜ぶと思うけど、二年連続は疲れない？",
+     "en": "I see. So my parents' again? I mean, they'd be happy, but wouldn't two years in a row wear you out?",
+     "gaps": [
+      "連続"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{まあ、}正直ちょっとね。お義母さん優しいけど、ずっと気を使うし。",
+     "en": "Honestly, a bit. Your mum's lovely, but I'm on my best behaviour the whole time.",
+     "gaps": [
+      "正直"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "だよね。{じゃあ、}こういうのは？ 元日だけうちの実家に顔出して、二日からは二人でどっか行くの。",
+     "en": "Figured. So how about this: we drop by my parents' just on New Year's Day, and from the second we go somewhere, just us.",
+     "gaps": [
+      "元日"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、それいい！ {えっと、}遠くじゃなくて、近場の温泉とか？",
+     "en": "Oh, I like that! Not far, maybe a hot spring nearby?",
+     "gaps": [
+      "近場"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そうそう。うちの親も、一日会えれば満足すると思うし。",
+     "en": "Exactly. My parents will be happy enough seeing us for a day.",
+     "gaps": [
+      "満足"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{じゃあ、}私、今夜宿調べとくね。大輔はお母さんに電話しといて。",
+     "en": "Then I'll look up places to stay tonight. You call your mum.",
+     "gaps": [
+      "今夜",
+      "宿"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "了解。{あ、}お土産も何か考えなきゃな。",
+     "en": "Got it. Oh, we'll need to think of a gift to bring, too.",
+     "gaps": [
+      "土産"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why aren't they going to Nana's parents' this year?",
+     "choices": [
+      "Train tickets would cost too much",
+      "They went there last year",
+      "Nana finds the visit tiring",
+      "Her parents will be away themselves"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "What do they finally decide?",
+     "choices": [
+      "A short visit to his parents, then a trip for two",
+      "The whole holiday at Daisuke's parents' home",
+      "Joining Nana's parents at a hot spring",
+      "Waiting until ticket prices drop to choose"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What is Daisuke going to do?",
+     "choices": [
+      "Search for somewhere to stay",
+      "Phone his mother",
+      "Book the train tickets",
+      "Buy a present tonight"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-farewell-party",
+   "title": "A farewell party on a budget",
+   "jlpt": 3,
+   "topic": "work",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "小林",
+     "voice": "female",
+     "age": "adult",
+     "hint": "friendly senior colleague, thinking aloud"
+    },
+    {
+     "id": "B",
+     "name": "森",
+     "voice": "male",
+     "age": "young",
+     "hint": "helpful junior, polite-casual"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{えっと、}山田さんの送別会なんだけど、予算、一人三千円でって言われちゃって。",
+     "en": "So, about Yamada-san's farewell party — they told us the budget is three thousand yen a head.",
+     "gaps": [
+      "送別会",
+      "予算"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "三千円ですか。{うーん、}飲み放題つけたら、それだけで終わっちゃいますね。",
+     "en": "Three thousand? Hmm, an all-you-can-drink plan would eat that up by itself.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "そうなのよ。{で、}花束も買わなきゃいけないし。",
+     "en": "Exactly. And we need to buy flowers too.",
+     "gaps": [
+      "花束"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あの、}会社の会議室でやるのはどうですか？ 料理は{その、}ケータリング頼んで。",
+     "en": "What about doing it in a meeting room at work? We could get the food catered.",
+     "gaps": [
+      "会議室",
+      "料理"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あー、}会議室か。でも山田さん、お酒好きじゃない？ 会社だと飲めないし…",
+     "en": "Ah, a meeting room. But Yamada-san loves a drink, doesn't she? We can't drink at the office…",
+     "gaps": [
+      "酒"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、そっか。",
+     "en": "Oh, right.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "{なんか}寂しい感じになっちゃうかなって。",
+     "en": "I feel like it'd end up a bit sad.",
+     "gaps": [
+      "寂しい"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{じゃあ、}駅前の居酒屋はどうですか？ 平日なら個室が安くなるって聞きましたよ。",
+     "en": "Then how about the izakaya by the station? I heard their private rooms are cheaper on weekdays.",
+     "gaps": [
+      "居酒屋",
+      "個室",
+      "平日"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "え、ほんと？ 山田さんの最後の日、金曜だよね。",
+     "en": "Really? Her last day's a Friday, isn't it.",
+     "gaps": [
+      "金曜"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{金曜は、あ、}金曜はダメかもしれません。安いのは月曜から木曜だけで…",
+     "en": "Friday might not work. The discount's only Monday to Thursday…",
+     "gaps": [
+      "月曜"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{じゃあ、}木曜にしよう。最終日の前の日のほうが、{まあ、}本人もゆっくりできるし。",
+     "en": "Then let's do Thursday. The day before her last day, she can relax more anyway.",
+     "gaps": [
+      "最終日",
+      "本人"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "そうですね。花束は、{その、}予算から出します？",
+     "en": "Makes sense. Do we take the flowers out of the budget?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "ううん、花束は別で、一人五百円ずつ集めよう。森くん、居酒屋の予約お願いできる？",
+     "en": "No, let's collect five hundred yen each separately for the flowers. Mori-kun, could you book the izakaya?",
+     "gaps": [
+      "予約"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、今日中に電話しときます。",
+     "en": "Sure, I'll call them today.",
+     "gaps": [
+      "今日中"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why is Kobayashi unenthusiastic about the meeting room?",
+     "choices": [
+      "It would cost more than an izakaya",
+      "Yamada couldn't enjoy a drink there",
+      "It's too small for the whole team",
+      "It's already booked on Friday"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Why do they choose Thursday rather than Friday?",
+     "choices": [
+      "Yamada is busy on her last day",
+      "Mori can only phone on Thursday",
+      "The meeting room is free that day",
+      "The cheaper room rate doesn't apply on Friday"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "How will the flowers be paid for?",
+     "choices": [
+      "Out of the three-thousand-yen budget",
+      "Added to the drinks plan",
+      "A separate collection from everyone",
+      "Mori will pay and be repaid later"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-bike-repair",
+   "title": "Fix it or buy new?",
+   "jlpt": 3,
+   "topic": "shopping",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "店主",
+     "voice": "male",
+     "age": "senior",
+     "hint": "kindly, unhurried, craftsman's pride"
+    },
+    {
+     "id": "B",
+     "name": "高橋",
+     "voice": "female",
+     "age": "adult",
+     "hint": "polite-casual, a little anxious about cost"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "すみません、{あの、}この自転車なんですけど、ブレーキから{なんか}変な音がして…",
+     "en": "Excuse me, it's this bike — the brakes are making a strange noise…",
+     "gaps": [
+      "自転車",
+      "音"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "はいはい、ちょっと見せてくださいね。{うーん、}{あー、}これはブレーキだけじゃないなあ。",
+     "en": "Sure, let me have a look. Hmm… ah, it's not just the brakes.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "え、そうなんですか？",
+     "en": "Oh, really?",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "チェーンも錆びてるし、タイヤも前後ともだいぶ減ってますね。全部直すと、{まあ、}一万五千円くらいかな。",
+     "en": "The chain's rusty, and both tyres, front and back, are pretty worn. Fixing everything would be about fifteen thousand.",
+     "gaps": [
+      "タイヤ",
+      "前後"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "一万五千…{えっと、}新しいのって、いくらぐらいします？",
+     "en": "Fifteen thousand… um, how much is a new one?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "安いのなら二万ちょっとからありますよ。{ただ、}{その、}お客さんのこれ、フレームはいいやつなんですよ。",
+     "en": "Cheap ones start at a bit over twenty thousand. But this one of yours, the frame's a really good one.",
+     "gaps": [
+      "フレーム"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、これ、父からもらったんです。もう十年以上乗ってて。",
+     "en": "Oh, my father gave it to me. I've been riding it over ten years.",
+     "gaps": [
+      "父",
+      "以上"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "なるほどね。{いや、}大事に乗ってたんだなって、見れば分かりますよ。",
+     "en": "I see. I can tell you've looked after it.",
+     "gaps": [
+      "大事"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}でも正直、通勤で毎日使うんで、また壊れたら困るなって。",
+     "en": "Hmm, but honestly, I use it every day to get to work, so I'd be stuck if it broke again.",
+     "gaps": [
+      "通勤",
+      "毎日"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ちゃんと直せば、あと五年は大丈夫ですよ。安い新品より長持ちすると思いますけどね。",
+     "en": "Fix it properly and it'll be fine for another five years. I'd say it'll outlast a cheap new one.",
+     "gaps": [
+      "新品",
+      "長持ち"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "そうなんですね。{じゃあ、}直してもらおうかな。{あ、}何日くらいかかります？",
+     "en": "I see. Then I'll get it fixed. Oh, how many days will it take?",
+     "gaps": [
+      "何日"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "部品を取り寄せるんで、{えっと、}木曜の夕方ですね。",
+     "en": "I have to order parts, so… Thursday evening.",
+     "gaps": [
+      "部品",
+      "夕方"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "木曜か…{その、}通勤どうしよう。",
+     "en": "Thursday… how will I get to work, though.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{あ、}よかったら、うちの貸し自転車使ってください。お代はいいですから。",
+     "en": "Oh, if you like, use one of our loan bikes. No charge.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "え、いいんですか？ 助かります！",
+     "en": "Really? That's a big help!",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why does the owner lean towards repairing the bike?",
+     "choices": [
+      "A new bike would take longer to arrive",
+      "The repair costs under half the new price",
+      "Her father asked him to keep it running",
+      "Its frame is good enough to outlast a cheap bike"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "What was the customer's main concern?",
+     "choices": [
+      "Being stuck if it broke down again",
+      "Upsetting her father by replacing it",
+      "The brakes being dangerous to ride",
+      "Not having time to bring it back"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "How will she get to work until Thursday?",
+     "choices": [
+      "By renting a bike for a small fee",
+      "By riding her father's bike",
+      "On a shop bike, free of charge",
+      "By buying a cheap new bike"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-old-friend-call",
+   "title": "A call after thirteen years",
+   "jlpt": 3,
+   "topic": "social",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "和也",
+     "voice": "male",
+     "age": "adult",
+     "hint": "awkward at first, then warm"
+    },
+    {
+     "id": "B",
+     "name": "里美",
+     "voice": "female",
+     "age": "adult",
+     "hint": "surprised, bright, chatty"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{あ、}もしもし、里美？ {えっと、}俺、和也。高校の…",
+     "en": "Hello, Satomi? Um, it's me, Kazuya. From high school…",
+     "gaps": [
+      "高校"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、和也？ うそ、久しぶり！ 何年ぶり？",
+     "en": "Kazuya? No way, it's been ages! How many years?",
+     "gaps": [
+      "久しぶり"
+     ],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "{たぶん、}卒業以来だから…十二年？ {いや、}十三年か。",
+     "en": "Since graduation, so… twelve years? No, thirteen.",
+     "gaps": [
+      "卒業"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "えー、そんなに！ {で、}どうしたの急に？",
+     "en": "Wow, that long! So what's up, out of the blue?",
+     "gaps": [
+      "急"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}{その、}実は来月、仕事でそっちに転勤になって。",
+     "en": "Well, actually, I'm being transferred to your area for work next month.",
+     "gaps": [
+      "仕事",
+      "転勤"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "へえ！",
+     "en": "Oh wow!",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "で、そっちに知り合い、里美しかいなくてさ。{まあ、}ちょっと心細くて、電話しちゃった。",
+     "en": "And you're the only person I know there. I felt a bit lost, so I called.",
+     "gaps": [
+      "知り合い"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "なにそれ、全然いいよ。{あ、}でも私、今は市内じゃなくて、{えっと、}ちょっと離れた町に住んでるんだよね。",
+     "en": "Don't be silly, that's fine. Oh, but I don't live in the city now — I'm in a town a bit further out.",
+     "gaps": [
+      "市内",
+      "町"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "あ、そうなんだ。",
+     "en": "Oh, really.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "うん。結婚して、子どもが生まれてから引っ越したの。",
+     "en": "Yeah. I got married, and we moved after the baby was born.",
+     "gaps": [
+      "結婚"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "え、結婚したの！ おめでとう。{いや、}ほんと、{なんか}時間経ってるな。",
+     "en": "You got married! Congratulations. Wow, a lot of time really has passed.",
+     "gaps": [
+      "時間"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "でしょ？ {じゃあ、}引っ越しが落ち着いたら、うちにご飯食べに来てよ。夫も喜ぶと思う。",
+     "en": "Right? So once you've settled in, come over for dinner. My husband would love it.",
+     "gaps": [
+      "夫"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "いいの？ {じゃあ、}お言葉に甘えて。{あ、}俺の番号、登録しといて。",
+     "en": "Really? Then I'll take you up on it. Oh, save my number.",
+     "gaps": [
+      "番号",
+      "登録"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "了解。{あ、}そうだ、高校のみんなにも声かけてみようか？",
+     "en": "Will do. Oh, I know — shall I get in touch with the others from school too?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}それはまた今度で。まずは{その、}新しい生活に慣れてからかな。",
+     "en": "Nah, maybe another time. I think I'll get used to my new life first.",
+     "gaps": [
+      "生活"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why did Kazuya call Satomi now?",
+     "choices": [
+      "He wants to organise a school reunion",
+      "He heard she had got married",
+      "He is looking for a job near her town",
+      "He's moving to her area and knows nobody else"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "What has changed in Satomi's life?",
+     "choices": [
+      "She married and moved out of the city",
+      "She was transferred for work",
+      "She moved into the city centre",
+      "She went back to her hometown"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What does Kazuya say about contacting their old classmates?",
+     "choices": [
+      "Satomi should invite them all now",
+      "He'd rather wait until he has settled in",
+      "He'll call them himself next month",
+      "He isn't interested in seeing them"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-futsal-loss",
+   "title": "After the futsal match",
+   "jlpt": 3,
+   "topic": "sports",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "翼",
+     "voice": "male",
+     "age": "young",
+     "hint": "frustrated, apologetic, casual-polite to an older teammate"
+    },
+    {
+     "id": "B",
+     "name": "大樹",
+     "voice": "male",
+     "age": "adult",
+     "hint": "calm team captain, gruff but kind"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{いや、}悔しいっすね。三対二って、{なんか}勝てた試合でしたよ。",
+     "en": "Man, that stings. Three–two… we could've won that game.",
+     "gaps": [
+      "試合"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{まあ、}な。前半は完全にうちのペースだったしな。",
+     "en": "Yeah. The first half was totally ours.",
+     "gaps": [
+      "前半",
+      "完全"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そうそう。",
+     "en": "Exactly.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "でも後半、みんな足止まってたろ。{正直、}体力の問題だと思うよ。",
+     "en": "But in the second half everyone's legs went. Honestly, I think it's about fitness.",
+     "gaps": [
+      "後半",
+      "体力"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あー、}俺も最後、全然走れなかったです。{あの、}二点目は、{俺の、}完全に俺のミスで…",
+     "en": "Yeah, I couldn't run at all by the end. And the second goal, that was totally my mistake…",
+     "gaps": [
+      "最後"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{いや、}あれは一人のせいじゃないって。",
+     "en": "Nah, that wasn't down to one person.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "でも…",
+     "en": "But…",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "それより、次どうするか考えようぜ。練習、週二回に増やすか？",
+     "en": "More importantly, let's think about next time. Should we go up to two practices a week?",
+     "gaps": [
+      "練習"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{うーん、}二回はきつい人もいると思います。仕事ある人多いし。",
+     "en": "Hmm, twice would be tough for some people. Lots of them have jobs.",
+     "gaps": [
+      "仕事"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "だよな。{じゃあ、}練習は週一のままで、最初の三十分、走るメニュー入れるか。",
+     "en": "True. Then we keep it at once a week, and put running drills in the first thirty minutes.",
+     "gaps": [
+      "最初",
+      "メニュー"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "あ、それいいっすね。あと、交代ももっと早めにしたほうがいいかなって。",
+     "en": "Oh, that's good. And I reckon we should make substitutions earlier, too.",
+     "gaps": [
+      "交代"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "確かに。今日、ベンチのやつ、ほとんど出てなかったもんな。",
+     "en": "True. The guys on the bench hardly played today.",
+     "gaps": [
+      "ベンチ"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{はい、}{その、}次の試合、再来週ですよね。それまでに{なんか}…",
+     "en": "Yeah, the next game's the week after next, right? Before then we should…",
+     "gaps": [
+      "再来週"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "おう。{じゃ、}とりあえず今日はラーメン行こうぜ。反省会はそこで。",
+     "en": "Yeah. Anyway, let's go for ramen today. We'll do the post-mortem there.",
+     "gaps": [
+      "反省"
+     ],
+     "overlap": true
+    }
+   ],
+   "questions": [
+    {
+     "question": "According to Daiki, why did they lose?",
+     "choices": [
+      "Tsubasa gave away the second goal",
+      "They ran out of energy in the second half",
+      "The substitutes came on too late",
+      "They only practise once a week"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What change to practice do they settle on?",
+     "choices": [
+      "Moving to two sessions a week",
+      "Adding a practice match before the next game",
+      "Starting each weekly session with running",
+      "Spending time reviewing mistakes after training"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "How does Tsubasa feel about the result?",
+     "choices": [
+      "He blames himself for a goal",
+      "He thinks the captain picked the wrong players",
+      "He's relieved the first half went well",
+      "He's annoyed that the bench didn't play"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-utility-bills",
+   "title": "Splitting the electricity bill",
+   "jlpt": 3,
+   "topic": "home",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "沙織",
+     "voice": "female",
+     "age": "young",
+     "hint": "hesitant to bring it up, then relieved"
+    },
+    {
+     "id": "B",
+     "name": "真紀",
+     "voice": "female",
+     "age": "adult",
+     "hint": "calm, generous, matter-of-fact"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{ねえ、}今月の電気代、見た？ {なんか}すごいことになってるんだけど。",
+     "en": "Hey, did you see this month's electricity bill? It's kind of crazy.",
+     "gaps": [
+      "電気代"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "見た見た。一万二千円でしょ。{まあ、}エアコン毎日つけてたしね。",
+     "en": "Yeah, I saw. Twelve thousand, right? Well, we had the air-con on every day.",
+     "gaps": [
+      "毎日"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{で、}{その、}言いにくいんだけど…真紀さん、在宅で、昼間もずっとエアコン使ってるじゃない？",
+     "en": "So, um, this is awkward, but… you work from home, and you use the air-con all day too, right?",
+     "gaps": [
+      "在宅",
+      "昼間"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あー、}うん、それはそうだね。",
+     "en": "Ah, yeah, that's true.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "だから、半分ずつっていうのは{ちょっと}…{なんか}私ばっかり損してる気がして。",
+     "en": "So splitting it half and half feels… like I'm the one losing out.",
+     "gaps": [
+      "半分",
+      "損"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "分かる。{えっと、}じゃあ、どうしようか。私が七割とか？",
+     "en": "I get it. So what should we do? I pay seventy percent?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}七割は多すぎるよ。夜は私も使ってるし。",
+     "en": "No, seventy's too much. I use it at night too.",
+     "gaps": [
+      "夜"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{じゃあ、}六割。で、ガス代と水道代は、今まで通り半分ずつ。",
+     "en": "Then sixty. And gas and water stay half each, like before.",
+     "gaps": [
+      "水道"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うん、それなら{まあ、}公平かなって。{あ、}ネット代は？",
+     "en": "Yeah, that seems fair. Oh, what about the internet?",
+     "gaps": [
+      "公平"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ネットは、{その、}仕事で使ってるの私だから、私が全部払うよ。",
+     "en": "The internet — I'm the one using it for work, so I'll pay all of it.",
+     "gaps": [
+      "全部"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "え、いいの？ {なんか}逆に悪いな。",
+     "en": "Really? Now I feel bad the other way.",
+     "gaps": [
+      "逆"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "いいっていいって。その代わり、お風呂掃除、ちょっと多めにお願いしてもいい？",
+     "en": "It's fine, it's fine. In return, could you do the bath cleaning a bit more often?",
+     "gaps": [
+      "代わり",
+      "掃除"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あ、}はい、喜んで。",
+     "en": "Oh, sure, happily.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why does Saori think an even split of the electricity is unfair?",
+     "choices": [
+      "She uses the air conditioner only at night",
+      "Maki runs the air conditioner all day at home",
+      "The bill rose because of the internet",
+      "Maki pays less for gas and water"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "How will they share the electricity bill from now on?",
+     "choices": [
+      "Half each, as before",
+      "Maki pays seventy percent",
+      "Maki pays all of it",
+      "Maki pays sixty percent"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "What does Maki ask for in return?",
+     "choices": [
+      "That Saori clean the bath more often",
+      "That Saori use less air conditioning",
+      "That Saori pay the water bill",
+      "That Saori pay part of the internet"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-wedding-gift",
+   "title": "Choosing a wedding present",
+   "jlpt": 3,
+   "topic": "shopping",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "陽介",
+     "voice": "male",
+     "age": "young",
+     "hint": "relaxed, a little clueless"
+    },
+    {
+     "id": "B",
+     "name": "彩",
+     "voice": "female",
+     "age": "young",
+     "hint": "decisive, lively"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{で、}田中の結婚祝い、何にする？ {なんか}二人で一緒に買おうって話だったよね。",
+     "en": "So, what are we getting Tanaka for the wedding? We said we'd buy something together, right?",
+     "gaps": [
+      "結婚祝い"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "うん。予算は一人一万くらいで{いいかな、}いいよね？",
+     "en": "Yeah. About ten thousand each for the budget — that's fine, right?",
+     "gaps": [
+      "予算"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うん。{えっと、}俺はさ、{その、}ペアのグラスとかどうかなって。",
+     "en": "Yeah. I was thinking maybe a pair of glasses?",
+     "gaps": [
+      "グラス"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あー、}グラスね。でもグラスって、けっこうもらうらしいよ。うちの姉も、結婚したとき五つぐらいもらったって。",
+     "en": "Ah, glasses. But apparently people get loads of those. My sister got about five sets when she got married.",
+     "gaps": [
+      "姉"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "マジで？",
+     "en": "Seriously?",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "マジで。{だから、なんか}かぶらないもののほうがいいかなって。",
+     "en": "Seriously. So I think something they won't get twice would be better.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{じゃあ、}カタログギフト？ 好きなもの選べるし。",
+     "en": "A catalogue gift, then? They can pick what they like.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}それは{ちょっと}味気なくない？ せっかく友達なんだし。",
+     "en": "Hmm, isn't that a bit impersonal? We're his friends, after all.",
+     "gaps": [
+      "友達"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あ、}そういえば、田中、前にコーヒーにはまってるって言ってたな。{毎朝、あ、}休みの日は毎朝、豆から挽いてるって。",
+     "en": "Oh, come to think of it, Tanaka said he's into coffee. On his days off he grinds the beans himself every morning.",
+     "gaps": [
+      "豆"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、それいいじゃん！ {じゃあ、}ちょっといいコーヒーメーカーは？",
+     "en": "Oh, that's great! So how about a nice coffee maker?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}そこまでやってるなら、もう持ってるんじゃない？",
+     "en": "Nah, if he's that into it, he probably already has one.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "{あー、}確かに。{じゃあ、}ペアのマグカップと、珍しい豆のセットは？ それなら、かぶっても困らないし。",
+     "en": "Ah, true. Then how about matching mugs and a set of unusual beans? Even if someone else gives beans, it's no problem.",
+     "gaps": [
+      "珍しい"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "いいね、それ。{じゃあ、}週末、駅前のコーヒー屋さん見に行こうか。",
+     "en": "Nice. Let's go check out the coffee shop by the station at the weekend.",
+     "gaps": [
+      "週末"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why does Aya reject the glasses?",
+     "choices": [
+      "They're over the budget",
+      "Couples tend to receive lots of them",
+      "Tanaka already has some",
+      "Her sister gave glasses and regretted it"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Why do they drop the coffee maker idea?",
+     "choices": [
+      "Tanaka most likely owns one already",
+      "It costs more than ten thousand yen",
+      "It feels too impersonal",
+      "Tanaka only drinks coffee on days off"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What do they decide to buy?",
+     "choices": [
+      "A catalogue gift",
+      "A pair of glasses and some beans",
+      "A coffee maker",
+      "Mugs and a selection of rare beans"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "id": "nat-n3-craft-shop",
+   "title": "Selling crafts online",
+   "jlpt": 3,
+   "topic": "money",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "恵子",
+     "voice": "female",
+     "age": "adult",
+     "hint": "enthusiastic but unsure of herself"
+    },
+    {
+     "id": "B",
+     "name": "浩二",
+     "voice": "male",
+     "age": "adult",
+     "hint": "encouraging, practical, a bit bossy"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{ねえ、}前に作ってた刺繍のブローチ、{その、}ネットで売ってみようかなって思ってて。",
+     "en": "Hey, those embroidered brooches I was making — I'm thinking of trying to sell them online.",
+     "gaps": [
+      "刺繍"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "へえ、いいじゃん。あれ、すごくきれいだったし。",
+     "en": "Oh, nice. They were really pretty.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "でも{なんか}、値段のつけ方が全然分からなくて。材料は一個三百円くらいなんだけど。",
+     "en": "But I have no idea how to price them. The materials are about three hundred yen each.",
+     "gaps": [
+      "値段",
+      "材料"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}作るのにどれくらいかかるの？",
+     "en": "Hmm, how long does one take to make?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{えっと、}一個二時間くらい？",
+     "en": "Um, about two hours each?",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "二時間！ {じゃあ、}千円とかで売ったら、{その、}時給にしたら全然だよ。",
+     "en": "Two hours! Then if you sell them for a thousand, that's nothing as an hourly wage.",
+     "gaps": [
+      "時給"
+     ],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "そうなんだけど、高くしたら売れないかなって。",
+     "en": "I know, but I worry they won't sell if they're expensive.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "{いや、}手作りのって、安すぎると逆に{なんか}安っぽく見えるらしいよ。二千五百円ぐらいでもいいんじゃない？",
+     "en": "Actually, they say if handmade stuff is too cheap it looks tacky. Couldn't you charge around two and a half thousand?",
+     "gaps": [
+      "手作り",
+      "逆"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "二千五百円か…{まあ、}最初はちょっと勇気いるな。",
+     "en": "Two and a half thousand… that takes some nerve at first.",
+     "gaps": [
+      "勇気"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あ、}そうだ、写真。{写真が、あ、}ネットは写真で決まるからさ、俺、カメラ貸そうか？",
+     "en": "Oh, right, photos. Online it's all about the photos, so want to borrow my camera?",
+     "gaps": [
+      "写真"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "え、ほんと？ 助かる！",
+     "en": "Really? That'd be great!",
+     "gaps": [
+      "助かる"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ただ、最初からあんまり数作りすぎないほうがいいよ。在庫になると困るし。",
+     "en": "But don't make too many at first. You don't want to be stuck with stock.",
+     "gaps": [
+      "在庫"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{うん、}{じゃあ、}とりあえず十個だけ作って、二千円で出してみる。売れたら値段上げればいいし。",
+     "en": "OK, then I'll make just ten for now and list them at two thousand. If they sell, I can raise the price.",
+     "gaps": [
+      "値段"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "おう、いいと思う。{あ、}最初の一個は俺が買うからね。",
+     "en": "Yeah, sounds good. Oh, and I'm buying the first one.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "What price does Keiko decide to start with?",
+     "choices": [
+      "One thousand yen, to attract buyers",
+      "Two thousand five hundred, as Koji said",
+      "Three hundred plus the cost of her time",
+      "Two thousand, with a rise if they sell"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "Why does Koji think pricing too low is a mistake?",
+     "choices": [
+      "It can make handmade goods look cheap",
+      "It wouldn't cover the materials",
+      "Other sellers would copy her designs",
+      "Buyers would expect larger orders"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What does Koji offer to do?",
+     "choices": [
+      "Buy the first ten brooches",
+      "Lend her his camera",
+      "Keep her unsold stock",
+      "Make some of the brooches"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-reorganisation",
+   "title": "Rumours of a merger",
+   "jlpt": 2,
+   "topic": "work",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "佐々木",
+     "voice": "female",
+     "age": "adult",
+     "hint": "lowered voice, conspiratorial but kind"
+    },
+    {
+     "id": "B",
+     "name": "中村",
+     "voice": "male",
+     "age": "adult",
+     "hint": "curious, slightly anxious"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{ねえ、}聞いた？ 来月から営業と企画、統合されるらしいよ。",
+     "en": "Hey, did you hear? Apparently sales and planning are being merged from next month.",
+     "gaps": [
+      "営業",
+      "統合"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あー、}噂にはなってたけど、本当だったんだ。",
+     "en": "Ah, there were rumours, but it's actually true, then.",
+     "gaps": [
+      "噂"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{うん、}{なんか}今朝、部長が{その、}ちょっと深刻な顔で会議室に入ってったから、{たぶん}それかなって。",
+     "en": "Yeah, this morning the department head went into the meeting room looking pretty serious, so I figured that's it.",
+     "gaps": [
+      "部長",
+      "深刻"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{え、}じゃあ、上田課長は？ 課長が二人になっちゃうじゃん。",
+     "en": "Wait, then what about Ueda, our section chief? We'd have two chiefs.",
+     "gaps": [
+      "課長"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そこなのよ。{まあ、}上田さん、前から海外の新規事業やりたいって言ってたから、{もしかしたら}そっちに行くのかもって。",
+     "en": "That's the thing. Well, Ueda-san has always said she wanted to do the new overseas business, so maybe she'll move there.",
+     "gaps": [
+      "新規",
+      "事業"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "へえ、それなら本人的には、むしろ希望通りじゃない？",
+     "en": "Huh, then for her that's actually what she wanted, isn't it?",
+     "gaps": [
+      "希望"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そうそう。",
+     "en": "Exactly.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "ただ、俺らの仕事の{やり方、}進め方はけっこう変わりそうだよね。企画の人たちって、{なんか}資料すごい細かいし。",
+     "en": "But how we do our work is probably going to change a lot. The planning people are super detailed with their documents.",
+     "gaps": [
+      "資料"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{うーん、}それは慣れかな。むしろ営業の現場の声が企画に直接届くようになるのは、悪くないと思うけどな。",
+     "en": "Hmm, you'll get used to that. If anything, having the voices from the sales floor reach planning directly doesn't seem bad to me.",
+     "gaps": [
+      "現場",
+      "直接"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "確かにね。{まあ、}正直、誰が上に来るかで全然違うけどね。",
+     "en": "True. Though honestly, it all depends on who ends up above us.",
+     "gaps": [
+      "正直"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あ、}それ、{その、}企画の森さんじゃないかって話もあるよ。",
+     "en": "Oh, there's talk it might be Mori-san from planning.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "え、森さん？ あの人なら{まあ、}話分かるし、安心かも。",
+     "en": "Mori-san? She's reasonable, so that might be reassuring.",
+     "gaps": [
+      "安心"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ただ、これ、まだ正式発表の前だから、{ね、}ここだけの話で。",
+     "en": "But this is before the official announcement, so keep it between us.",
+     "gaps": [
+      "正式",
+      "発表"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "分かってるって。{あ、}{やば、}会議始まる。",
+     "en": "I know, I know. Oh, shoot, the meeting's starting.",
+     "gaps": [
+      "会議"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "How does Nakamura see Ueda's possible move?",
+     "choices": [
+      "As a demotion she'll resent",
+      "As a sign she'll lead the merged team",
+      "As a way to avoid having two chiefs for ever",
+      "As probably what she wanted anyway"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "What is Sasaki's overall view of the merger?",
+     "choices": [
+      "Mildly positive about sales feedback reaching planning",
+      "Worried about planning's detailed paperwork",
+      "Anxious because the department head looked serious",
+      "Opposed unless Mori becomes the new boss"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What does Sasaki ask Nakamura to do?",
+     "choices": [
+      "Ask the department head directly",
+      "Keep it quiet until it's announced",
+      "Tell Mori about the rumour",
+      "Get to the meeting early"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-job-hunting",
+   "title": "Advice from a senpai",
+   "jlpt": 2,
+   "topic": "school",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "石井",
+     "voice": "female",
+     "age": "young",
+     "hint": "earnest university student, polite to her senpai, anxious"
+    },
+    {
+     "id": "B",
+     "name": "岡田",
+     "voice": "male",
+     "age": "adult",
+     "hint": "relaxed recent graduate, reassuring"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "先輩、{あの、}今ちょっとだけいいですか？ 就活のことで相談があって。",
+     "en": "Senpai, um, do you have a minute? I wanted to ask your advice about job hunting.",
+     "gaps": [
+      "就活",
+      "相談"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "おう、いいよ。どうした？",
+     "en": "Sure. What's up?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{えっと、}{その、}志望業界がまだ決まってなくて。周りはもうインターンとか行ってるのに、{なんか}焦っちゃって。",
+     "en": "Well, I still haven't decided which industry I want. Everyone around me is already doing internships, and I'm panicking.",
+     "gaps": [
+      "志望",
+      "業界",
+      "周り"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あー、}分かる分かる。{俺も、}俺も三年の夏はそんな感じだったよ。",
+     "en": "Ah, I get it. I was the same in the summer of third year.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "え、先輩もですか？",
+     "en": "Really, you too?",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "うん。で、そのときにやってよかったのが、{業界を、あ、}業界を絞る前に、自分が何をしてるときに楽しいかを書き出すこと。",
+     "en": "Yeah. And what helped me then was, before narrowing down industries, writing out what I'm doing when I'm enjoying myself.",
+     "gaps": [
+      "書き出す"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "なるほど。",
+     "en": "I see.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "{あと、}インターンは{まあ、}数じゃないから。一つ行って合わなかったら、それも収穫だし。",
+     "en": "And internships aren't about numbers. If you do one and it doesn't suit you, that's still something gained.",
+     "gaps": [
+      "収穫"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "でも、{その、}エントリーシートに書くことがなくて…サークルも途中でやめちゃったし。",
+     "en": "But I've got nothing to write on my application forms… I even quit my club halfway.",
+     "gaps": [
+      "途中"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{いや、}やめた理由をちゃんと説明できれば、マイナスにはならないよ。{むしろ}何を考えて決めたかのほうが見られてるから。",
+     "en": "No, if you can properly explain why you quit, it won't count against you. They look more at how you thought it through.",
+     "gaps": [
+      "理由",
+      "説明"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そうなんですね…{なんか}ちょっと気が楽になりました。",
+     "en": "Oh, really… I feel a bit better now.",
+     "gaps": [
+      "楽"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{じゃあ、}今度、うちの会社の説明会あるから、よかったら来る？ 雰囲気だけでも。",
+     "en": "Well, my company has an information session soon — want to come? Even just to get a feel for it.",
+     "gaps": [
+      "説明会",
+      "雰囲気"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "え、いいんですか！ ぜひ行きたいです。",
+     "en": "Really? I'd love to go.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "おう。{じゃ、}日程、あとで送るわ。",
+     "en": "Sure. I'll send you the dates later.",
+     "gaps": [
+      "日程"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What does Okada recommend doing before choosing an industry?",
+     "choices": [
+      "Signing up for as many internships as possible",
+      "Listing the activities she enjoys",
+      "Asking friends which industries they chose",
+      "Attending company information sessions"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What is Okada's view of Ishii quitting her club?",
+     "choices": [
+      "She should leave it off her forms",
+      "It shows a lack of commitment",
+      "It's fine if she explains her reasoning",
+      "She should write about internships instead"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "How does Ishii feel by the end?",
+     "choices": [
+      "Less pressured than before",
+      "Still behind everyone else",
+      "Worried about her entry sheet",
+      "Unsure whether to go to the session"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-cram-school",
+   "title": "To cram or not to cram",
+   "jlpt": 2,
+   "topic": "family",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "井上",
+     "voice": "female",
+     "age": "adult",
+     "hint": "friendly mother, polite-casual, a little worried"
+    },
+    {
+     "id": "B",
+     "name": "西村",
+     "voice": "male",
+     "age": "adult",
+     "hint": "thoughtful father, measured, polite"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{あの、}西村さんのところって、もう塾、行かせてます？",
+     "en": "Um, Nishimura-san, have you started sending your kid to cram school yet?",
+     "gaps": [
+      "塾"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}それがまだなんですよ。{妻とも、}妻とも話してるんですけど、{なんか}決めきれなくて。",
+     "en": "Hmm, not yet, actually. I've been talking it over with my wife, but we can't quite decide.",
+     "gaps": [
+      "妻"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うちもなんです。クラスの半分くらいはもう通ってるって、{その、}子どもが言うんですよね。",
+     "en": "Same here. My kid says about half the class goes already.",
+     "gaps": [
+      "半分"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あー、}うちも言われました。『みんな行ってる』って。",
+     "en": "Ah, we heard that too. 'Everyone goes.'",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "そうそう。",
+     "en": "Right, right.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "{でも、}正直、週三回で月三万って、なかなかですよね。",
+     "en": "But honestly, thirty thousand a month for three times a week is a lot.",
+     "gaps": [
+      "正直"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "それに、本人が本当に行きたいのかっていうのも、{なんか}気になってて。うちの子、サッカーも続けたいって言ってるんですよ。",
+     "en": "And I'm also not sure whether he really wants to go. My son says he wants to keep up football too.",
+     "gaps": [
+      "本人",
+      "本当"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "あー、分かります。",
+     "en": "Oh, I understand.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "{だから、}{まあ、}とりあえず夏期講習だけ行かせてみようかなって。合わなかったらやめればいいし。",
+     "en": "So, I'm thinking of just trying the summer course for now. If it doesn't suit him, he can stop.",
+     "gaps": [
+      "講習"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あ、}それいいですね。お試しみたいな感じで。",
+     "en": "Oh, that's a good idea. Like a trial.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "ええ。{あと、}{その、}駅前の塾は、授業の前に自習室が使えるらしくて。",
+     "en": "Yes. Also, apparently the one by the station lets kids use a study room before class.",
+     "gaps": [
+      "授業"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "へえ、それは助かりますね。{家だと、}家だとどうしてもスマホ見ちゃうから。",
+     "en": "Oh, that's helpful. At home they always end up looking at their phones.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "ですよね。{じゃあ、}今度一緒に説明会に行ってみます？",
+     "en": "Exactly. Then shall we go to an information session together sometime?",
+     "gaps": [
+      "説明会"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ぜひ。{あ、}でも夏期講習の申し込み、{たしか、}今月末までだったような…",
+     "en": "Definitely. Oh, but I think the summer course sign-up closes at the end of this month…",
+     "gaps": [
+      "申し込み"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、そうなんですか。{じゃあ、}のんびりしてられないですね。",
+     "en": "Oh, is that right? Then we can't take our time.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "What does Nishimura plan to do?",
+     "choices": [
+      "Enrol his son three times a week",
+      "Wait until his son gives up football",
+      "Let his son try a short course first",
+      "Choose whichever school classmates attend"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "Besides the cost, what makes Nishimura hesitate?",
+     "choices": [
+      "Doubt that his son really wants to go",
+      "His wife's opposition to cram school",
+      "The school being far from the station",
+      "Worry that half the class is ahead"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What does the end of the conversation imply?",
+     "choices": [
+      "The information session is this month",
+      "The study room is only for enrolled students",
+      "The summer course is already full",
+      "They need to decide soon because of a deadline"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-noise-problem",
+   "title": "A polite word about the noise",
+   "jlpt": 2,
+   "topic": "home",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "田村",
+     "voice": "male",
+     "age": "senior",
+     "hint": "soft-spoken, very polite, nervous"
+    },
+    {
+     "id": "B",
+     "name": "松本",
+     "voice": "female",
+     "age": "adult",
+     "hint": "apologetic, sincere, keen to fix it"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{あの、}夜分にすみません。下の階の田村と申します。",
+     "en": "Excuse me for calling so late. I'm Tamura, from the floor below.",
+     "gaps": [
+      "夜分"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、はい。{えっと、}何か…",
+     "en": "Oh, yes. Um, is something…",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}{その、}大したことじゃないんですが、最近、夜の十一時過ぎぐらいに、ドンドンって音が響くことがありまして。",
+     "en": "Oh, it's nothing serious, but recently, sometime after eleven at night, there's been a thumping sound coming through.",
+     "gaps": [
+      "最近",
+      "響く"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、すみません！ {えっと、}たぶん息子だと思います。まだ三歳で、夜なかなか寝なくて…",
+     "en": "Oh, I'm so sorry! That's probably my son. He's only three, and he won't settle at night…",
+     "gaps": [
+      "息子"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ああ、なるほど。",
+     "en": "Ah, I see.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}お子さんなら仕方ないですよ。{ただ、}私、朝が早い仕事なもので、{その、}できれば十時以降だけでも、少し気をつけていただけると…",
+     "en": "Well, with a small child it can't be helped. It's just that I start work early, so if you could take a little care, even just after ten…",
+     "gaps": [
+      "仕方ない",
+      "以降"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "もちろんです。気づかなくて、本当に申し訳ありません。{あの、}実は、リビングに防音のマットを敷こうかって、ちょうど夫と話してたところなんです。",
+     "en": "Of course. I'm really sorry I didn't notice. Actually, my husband and I were just talking about putting a soundproof mat in the living room.",
+     "gaps": [
+      "防音"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{ああ、}それはありがたいです。",
+     "en": "Oh, that would be very kind.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "{あと、}寝る前は、{なるべく}寝室で遊ばせるようにしますね。寝室なら、田村さんのお部屋の真上じゃないので。",
+     "en": "And before bed, I'll try to have him play in the bedroom. The bedroom isn't directly above your place.",
+     "gaps": [
+      "寝室"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そうですか。いや、そこまでしていただかなくても…",
+     "en": "Is that so? Oh, you really needn't go that far…",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "いえいえ、お互い様ですから。{もし、}また気になったら、遠慮なくおっしゃってください。",
+     "en": "Not at all, we're neighbours. If it bothers you again, please don't hesitate to say.",
+     "gaps": [
+      "遠慮"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ありがとうございます。{いや、}正直、言いに来るの、ちょっと緊張してたんですよ。",
+     "en": "Thank you. To be honest, I was a bit nervous about coming to say it.",
+     "gaps": [
+      "緊張"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ですよね。わざわざありがとうございました。",
+     "en": "I can imagine. Thank you for taking the trouble.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "What exactly does Tamura ask for?",
+     "choices": [
+      "More care with noise after ten o'clock",
+      "That the noise stop altogether",
+      "That they lay a mat in the living room",
+      "That the child sleep in another room"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "Which idea had the Matsumotos already been considering before Tamura came?",
+     "choices": [
+      "Having their son play in the bedroom",
+      "Putting their son to bed before ten",
+      "Soundproofing the living room floor",
+      "Asking the neighbours if the noise was a problem"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "How did Tamura feel about coming upstairs?",
+     "choices": [
+      "Irritated after many sleepless nights",
+      "Anxious about raising the subject",
+      "Sure the family would be defensive",
+      "Embarrassed about complaining about a child"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-aging-parent",
+   "title": "Who looks after Mum?",
+   "jlpt": 2,
+   "topic": "family",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "健一",
+     "voice": "male",
+     "age": "adult",
+     "hint": "defensive older brother, softens"
+    },
+    {
+     "id": "B",
+     "name": "由美",
+     "voice": "female",
+     "age": "adult",
+     "hint": "frustrated younger sister, direct"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{で、}母さんのことなんだけど。{あの、}また台所で転んだって、近所の人から電話があって。",
+     "en": "So, about Mum. A neighbour called to say she fell in the kitchen again.",
+     "gaps": [
+      "台所",
+      "近所"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、また？ だから言ったじゃん、一人暮らしはもう限界だって。",
+     "en": "What, again? I told you, living alone has reached its limit.",
+     "gaps": [
+      "一人暮らし",
+      "限界"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "いや、分かってるよ。{でも、}本人が家を出たくないって言ってるんだから、{その、}無理やり施設ってわけにも…",
+     "en": "I know. But she says she doesn't want to leave the house, so we can't just force her into a home…",
+     "gaps": [
+      "施設"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "施設なんて誰も言ってないでしょ。{ただ、}週一で様子見に行くだけじゃ足りないって話。",
+     "en": "Nobody said a home. I'm saying checking on her once a week isn't enough.",
+     "gaps": [
+      "様子"
+     ],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "{そりゃ、}俺だって、できることなら毎日行きたいよ。でも、片道二時間だぞ。",
+     "en": "Well, I'd go every day if I could. But it's two hours each way.",
+     "gaps": [
+      "片道"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "分かってる。{だから、}{なんか}、私が近くに住んでるからって、負担が全部こっちに来てる感じがするの。",
+     "en": "I know. That's why it feels like, just because I live nearby, the whole burden falls on me.",
+     "gaps": [
+      "負担"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あー、}…それは、ごめん。そこまで考えてなかった。",
+     "en": "Ah… sorry. I hadn't thought about it like that.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "{で、}提案なんだけど、平日は訪問介護を頼んで、その費用は兄さんが多めに出す、っていうのはどう？",
+     "en": "So here's my proposal: on weekdays we get a home-care service, and you pay more of the cost. How about that?",
+     "gaps": [
+      "提案",
+      "介護",
+      "費用"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{うーん、}{お金は、}お金はいいよ、それで。{ただ、}母さん、知らない人を家に入れるの、嫌がるかもな。",
+     "en": "Hmm, the money's fine by me. But Mum might not like having strangers in the house.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "そこは、{まあ、}最初は私も一緒にいるようにするから。",
+     "en": "I'll make sure I'm there too at first.",
+     "gaps": [
+      "最初"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "分かった。{あと、}週末は、月に二回は俺が行くよ。{その、}泊まりで。",
+     "en": "OK. And I'll come at least two weekends a month. Staying over.",
+     "gaps": [
+      "週末"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ほんとに？ {いや、}それ、すごく助かる。",
+     "en": "Really? That would help so much.",
+     "gaps": [
+      "助かる"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{じゃあ、}今度の日曜、{母さん、}母さんも入れて三人で話そう。",
+     "en": "Then let's talk it over this Sunday, the three of us, with Mum.",
+     "gaps": [
+      "日曜"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What is Yumi's underlying complaint?",
+     "choices": [
+      "Kenichi wants to put their mother in a home",
+      "Their mother won't accept any help",
+      "Kenichi only visits once a week",
+      "The care falls on her because she lives close by"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "What do they agree about the cost of care?",
+     "choices": [
+      "They'll split it evenly",
+      "Kenichi will pay the larger share",
+      "Their mother will pay from her savings",
+      "The money will go towards a care home"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What will Kenichi do in addition?",
+     "choices": [
+      "Stay with their mother two weekends a month",
+      "Visit every weekday after work",
+      "Be there when the carers first come",
+      "Call the neighbour each week"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-remote-work",
+   "title": "Office or home?",
+   "jlpt": 2,
+   "topic": "work",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "美穂",
+     "voice": "female",
+     "age": "young",
+     "hint": "animated, opinionated, quick"
+    },
+    {
+     "id": "B",
+     "name": "隆",
+     "voice": "male",
+     "age": "adult",
+     "hint": "dry, reasonable, a little smug"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{そういえば、}隆さんの会社、完全に出社に戻ったんだって？",
+     "en": "By the way, I heard your company went fully back to the office?",
+     "gaps": [
+      "完全",
+      "出社"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "そうなんだよ。四月から週五で。{まあ、}最初は面倒だなって思ってたんだけど。",
+     "en": "Yeah. Five days a week since April. Well, at first I thought it'd be a pain.",
+     "gaps": [
+      "面倒"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "え、過去形？",
+     "en": "Wait, past tense?",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "{うん、}{いや、}意外と悪くなくて。{その、}隣の席の人にちょっと聞けば済むことが、在宅だとメールで半日待ちとかだったじゃん。",
+     "en": "Yeah, it's surprisingly not bad. Things you could sort out by asking the person next to you used to mean half a day waiting on email when we were remote.",
+     "gaps": [
+      "意外",
+      "在宅",
+      "半日"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あー、}それはあるかも。",
+     "en": "Ah, that's true.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "でも私は{無理、}絶対無理だな。通勤一時間半だよ？ 往復三時間って、{なんか}人生もったいなくない？",
+     "en": "But I could never do it. My commute's an hour and a half. Three hours round trip — isn't that a waste of your life?",
+     "gaps": [
+      "通勤",
+      "往復",
+      "人生"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{まあ、}それは距離によるよね。俺は二十分だから。",
+     "en": "Well, that depends on distance. Mine's twenty minutes.",
+     "gaps": [
+      "距離"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "でしょ。それに、うちの部署、{その、}一人で集中する作業が多いから、家のほうがはかどるんだよね。",
+     "en": "Right. Plus, my department does a lot of work where you concentrate alone, so I get more done at home.",
+     "gaps": [
+      "部署",
+      "集中",
+      "作業"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "なるほどね。",
+     "en": "I see.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "ただ、美穂ちゃん、前に、在宅だと{なんか}孤独だって言ってなかった？",
+     "en": "But Miho, didn't you say before that working from home was lonely?",
+     "gaps": [
+      "孤独"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あ、}それは…{まあ、}言った。だから今は、週一だけオフィスに行くようにしてる。",
+     "en": "Ah, that… yeah, I said that. So now I make a point of going to the office once a week.",
+     "gaps": [
+      "オフィス"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ほら、結局そこなんだって。{たぶん}一番いいのは、選べることなんだよ。",
+     "en": "See, that's the point. What's best is probably being able to choose.",
+     "gaps": [
+      "結局"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{うーん、}悔しいけど、それは同意。",
+     "en": "Hmm, I hate to say it, but I agree.",
+     "gaps": [
+      "同意"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "How has Takashi's attitude to working in the office changed?",
+     "choices": [
+      "He still finds it a nuisance",
+      "He likes it more than he expected",
+      "He now wants to work from home again",
+      "He only minds it because of the commute"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What has Miho started doing, and why?",
+     "choices": [
+      "Working in cafés to cut her commute",
+      "Going into the office weekly because remote work felt lonely",
+      "Asking colleagues by email instead of waiting",
+      "Moving closer to work to save time"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What do they finally agree on?",
+     "choices": [
+      "Having the choice matters most",
+      "The office suits most people better",
+      "Remote work is best for focused tasks",
+      "A short commute makes the office worthwhile"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-missing-group",
+   "title": "Four guests missing",
+   "jlpt": 2,
+   "topic": "travel",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "吉田",
+     "voice": "female",
+     "age": "adult",
+     "hint": "tour guide on the phone, flustered, fast"
+    },
+    {
+     "id": "B",
+     "name": "小川",
+     "voice": "male",
+     "age": "adult",
+     "hint": "colleague, calm, takes charge"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "もしもし、小川さん？ {あの、}吉田です。ちょっとまずいことになってて。",
+     "en": "Hello, Ogawa-san? It's Yoshida. Something's gone a bit wrong.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "どうしました？",
+     "en": "What's happened?",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "{えっと、}{その、}お寺の見学のあと、自由時間にしたんですけど、集合時間になっても四人戻ってこなくて。",
+     "en": "Well, after the temple tour I gave them free time, but four people didn't come back by the meeting time.",
+     "gaps": [
+      "見学",
+      "集合"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "四人ですか。{えっと、}同じグループの方たちですか？",
+     "en": "Four? Are they all together?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "はい、ご夫婦二組で。{携帯、}携帯に電話しても、{なんか}電源が切れてるみたいで…",
+     "en": "Yes, two couples. And when I call their mobiles, the phones seem to be switched off…",
+     "gaps": [
+      "夫婦",
+      "電源"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}もしかして、参道のお土産屋さんのほうに行ってません？ あそこ、裏道が分かりにくくて、よく迷う人がいるんですよ。",
+     "en": "Hmm, could they have gone to the souvenir shops on the approach road? The back streets there are confusing, and people often get lost.",
+     "gaps": [
+      "参道",
+      "裏道"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あ、}そういえば、お昼のとき、甘いもの食べたいって{話して、}言ってました。",
+     "en": "Oh, come to think of it, at lunch they said they wanted something sweet.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "{じゃあ、}たぶんそこですね。吉田さんは、残りのお客様とバスで待っててください。",
+     "en": "Then that's probably it. You wait on the bus with the rest of the guests.",
+     "gaps": [
+      "残り"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "でも、次の旅館のチェックインが四時なんですよ。",
+     "en": "But check-in at the next inn is at four.",
+     "gaps": [
+      "旅館"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "それは僕が旅館に電話して、三十分遅れるって伝えておきます。{で、}僕、今ちょうど近くにいるんで、探しに行きます。",
+     "en": "I'll call the inn and tell them we'll be thirty minutes late. And I'm nearby right now, so I'll go look for them.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "え、いいんですか？ 助かります！ {あ、}四人とも赤い帽子かぶってます。",
+     "en": "Really? Thank you so much! Oh, all four are wearing red hats.",
+     "gaps": [
+      "帽子"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "了解です。見つかったらすぐ連絡します。{あの、}その間、お客様に事情を説明しといてください。",
+     "en": "Got it. I'll call as soon as I find them. Meanwhile, please explain the situation to the guests.",
+     "gaps": [
+      "事情",
+      "説明"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "分かりました。{えっと、}本当にすみません。",
+     "en": "Understood. I'm really sorry.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why does Ogawa think the missing guests are near the souvenir shops?",
+     "choices": [
+      "Their phones showed they were there",
+      "They had wanted a sweet snack, and people get lost there",
+      "They had been seen there at lunchtime",
+      "The temple tour ended right next to them"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What will happen about the inn?",
+     "choices": [
+      "Yoshida will phone to cancel",
+      "Check-in will be moved to four o'clock",
+      "The bus will go ahead without the four",
+      "Ogawa will warn them the group is running late"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "What is Yoshida's job while Ogawa searches?",
+     "choices": [
+      "Keeping the other guests informed on the bus",
+      "Searching the back streets herself",
+      "Calling the missing guests again",
+      "Phoning the inn about the delay"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-night-shift",
+   "title": "A break on the night shift",
+   "jlpt": 2,
+   "topic": "health",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "遠藤",
+     "voice": "female",
+     "age": "adult",
+     "hint": "experienced nurse, tired but warm, gently teasing"
+    },
+    {
+     "id": "B",
+     "name": "林",
+     "voice": "male",
+     "age": "young",
+     "hint": "junior nurse, earnest, self-critical"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{はあ、}やっと休憩だね。林くん、夕飯食べた？",
+     "en": "Phew, finally a break. Hayashi-kun, have you eaten?",
+     "gaps": [
+      "休憩"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{いや、}まだです。{さっき、}三〇五号室のナースコールが続いちゃって。",
+     "en": "No, not yet. Room 305 kept pressing the call button.",
+     "gaps": [
+      "号室"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あー、}佐藤さんね。{なんか}夜になると不安になっちゃうみたいで。",
+     "en": "Ah, Mrs Sato. She seems to get anxious once it's night.",
+     "gaps": [
+      "不安"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "そうなんですよ。{その、}用事があるっていうより、{たぶん}誰かと話したいだけなんですよね。",
+     "en": "Exactly. It's less that she needs something and more that she just wants someone to talk to.",
+     "gaps": [
+      "用事"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うん。",
+     "en": "Mm.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "B",
+     "ja": "{でも、}僕、忙しいとつい、そっけない対応しちゃって。ちょっと反省してます。",
+     "en": "But when I'm busy I end up being curt with her. I feel a bit bad about it.",
+     "gaps": [
+      "対応",
+      "反省"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{まあ、}夜勤で全員にゆっくり付き合うのは無理だよ。{ただ、}最初に『何時ごろまた来ますね』って言っとくと、落ち着く人、けっこう多いよ。",
+     "en": "Well, on nights you can't spend time with everyone. But if you tell them at the start, 'I'll come back around such-and-such a time', a lot of people settle down.",
+     "gaps": [
+      "夜勤",
+      "全員"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あ、}なるほど。{待つ、}先が見えると待てるってことですね。",
+     "en": "Ah, I see. If they know when, they can wait.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "そうそう。{あ、}そういえば、林くん、来月から日勤に戻るんだっけ？",
+     "en": "Right. Oh, by the way, you're going back to day shifts next month, aren't you?",
+     "gaps": [
+      "日勤"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、一応。でも、正直、夜勤のほうが、{なんか}患者さんとじっくり話せる気がして、ちょっと寂しいです。",
+     "en": "Yes, supposedly. But honestly, it feels like on nights I can really talk with patients, so I'm a bit sad.",
+     "gaps": [
+      "患者",
+      "寂しい"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "へえ、意外。{じゃあ、}さっきの佐藤さんのことも、ほんとは気になってたんだ。",
+     "en": "Oh, that's a surprise. So you really were worried about Mrs Sato earlier.",
+     "gaps": [
+      "意外"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{まあ、}そうですね。{じゃあ、}食べたら、さっきのやり方、早速試してみます。",
+     "en": "Well, yes. So after I eat, I'll try what you said right away.",
+     "gaps": [
+      "早速"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うん。{あ、}これ、差し入れのおにぎり。一個あげる。",
+     "en": "Good. Oh, here — someone brought rice balls. Have one.",
+     "gaps": [
+      "差し入れ"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What does Hayashi think the patient in room 305 really wants?",
+     "choices": [
+      "Help with something she needs",
+      "Someone to keep her company",
+      "To be moved to a quieter room",
+      "Her medication earlier in the night"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What does Endo advise?",
+     "choices": [
+      "Spend longer with each patient",
+      "Ask another nurse to answer her calls",
+      "Say when you will next come by",
+      "Visit her before she starts calling"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "How does Hayashi feel about moving to days?",
+     "choices": [
+      "A little sad to lose the time to talk with patients",
+      "Relieved to escape the busy nights",
+      "Nervous about working with new staff",
+      "Glad he'll finally eat on time"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-feedback",
+   "title": "Gentle feedback on a presentation",
+   "jlpt": 2,
+   "topic": "work",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "木村",
+     "voice": "male",
+     "age": "adult",
+     "hint": "kind manager, soft, choosing words carefully"
+    },
+    {
+     "id": "B",
+     "name": "藤井",
+     "voice": "female",
+     "age": "young",
+     "hint": "junior employee, polite, tense then receptive"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "藤井さん、ちょっといいかな。{あ、}大した話じゃないから、座って。",
+     "en": "Fujii-san, got a minute? Oh, it's nothing big, have a seat.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "はい。{えっと、}{何か、}何かありましたか？",
+     "en": "Yes. Um, is something wrong?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}昨日のプレゼン、{その、}資料はすごくよくできてたよ。データの整理も丁寧だったし。",
+     "en": "No, no. Yesterday's presentation — the materials were really well done. The data was neatly organised, too.",
+     "gaps": [
+      "資料",
+      "整理",
+      "丁寧"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとうございます。",
+     "en": "Thank you.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "{ただ、}{なんていうか、}結論が最後までなかなか出てこなかったかなって。先方の部長、途中で時計見てたの、気づいた？",
+     "en": "Only, how to put it, the conclusion didn't really come out until the very end. Did you notice their department head checking his watch halfway through?",
+     "gaps": [
+      "結論",
+      "先方"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{あ、}…はい、気づいてました。{その、}焦って、{余計に、}余計に説明が長くなっちゃって。",
+     "en": "Ah… yes, I noticed. I panicked, and that made my explanation even longer.",
+     "gaps": [
+      "余計"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うんうん。",
+     "en": "Mm-hm.",
+     "gaps": [],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "だから、次からは、最初の一分で結論と、お願いしたいことを言っちゃおう。細かいデータは、聞かれたら出せばいいから。",
+     "en": "So from next time, let's say the conclusion and what we're asking for in the first minute. You can bring out the detailed data if they ask.",
+     "gaps": [
+      "最初"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "でも、{あの、}根拠を先に見せないと、納得してもらえないかなって…",
+     "en": "But, um, I thought if I didn't show the evidence first, they wouldn't be convinced…",
+     "gaps": [
+      "根拠",
+      "納得"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "その気持ちは分かる。{ただ、}忙しい人ほど、先に結論が分かったほうが、根拠も落ち着いて聞けるんだよ。",
+     "en": "I understand that feeling. But the busier people are, the more calmly they can listen to the evidence once they know the conclusion.",
+     "gaps": [
+      "気持ち"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "なるほど…確かに、自分が聞く側だったらそうかもしれません。",
+     "en": "I see… If I were the one listening, that might be true.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "{じゃあ、}来週の{会議、}社内会議で、一回練習してみようか。{僕が、}僕が先方の部長役やるから。",
+     "en": "So, at next week's internal meeting, let's try it once for practice. I'll play their department head.",
+     "gaps": [
+      "社内"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "え、はい、お願いします。{ちょっと、}緊張しますけど。",
+     "en": "Oh, yes, please. I'll be a bit nervous, though.",
+     "gaps": [
+      "緊張"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What is Kimura's main criticism of the presentation?",
+     "choices": [
+      "The data was badly organised",
+      "She spoke too quickly out of nerves",
+      "She ran over the time she was given",
+      "Her main point came far too late"
+     ],
+     "answer": 3
+    },
+    {
+     "question": "Why had Fujii put the evidence first?",
+     "choices": [
+      "She believed the client wouldn't be persuaded otherwise",
+      "Kimura had told her to last time",
+      "The client's manager had asked for data",
+      "She wanted to fill the time available"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What is planned for next week?",
+     "choices": [
+      "Fujii will present to the client again",
+      "A rehearsal with Kimura playing the client",
+      "Kimura will give the presentation himself",
+      "Fujii will send the data to the client in advance"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "nat-n2-ai-jobs",
+   "title": "Will AI take our jobs?",
+   "jlpt": 2,
+   "topic": "news",
+   "style": "natural",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "翔",
+     "voice": "male",
+     "age": "young",
+     "hint": "easily alarmed, casual"
+    },
+    {
+     "id": "B",
+     "name": "恵美",
+     "voice": "female",
+     "age": "adult",
+     "hint": "level-headed, wry"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "{ねえ、}今朝のニュース見た？ 大手の銀行が、{その、}事務作業の三割を人工知能に任せるって。",
+     "en": "Hey, did you see the news this morning? A major bank is handing thirty percent of its office work to AI.",
+     "gaps": [
+      "大手",
+      "事務",
+      "人工知能"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "見た見た。{で、}人員を五年で二千人減らすって話でしょ。",
+     "en": "Yeah, I saw. And they'll cut two thousand staff over five years, right?",
+     "gaps": [
+      "人員"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そうそう。{いや、}正直ちょっと怖くなった。俺の仕事も、データの入力とかチェックばっかりだし。",
+     "en": "Exactly. Honestly, it scared me a bit. My job's all data entry and checking too.",
+     "gaps": [
+      "入力"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{うーん、}でもさ、記事、最後まで読んだ？",
+     "en": "Hmm, but did you read the article to the end?",
+     "gaps": [
+      "記事"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{いや、}見出しだけ…",
+     "en": "No, just the headline…",
+     "gaps": [
+      "見出し"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "やっぱり。{あの、}減らすって言っても、ほとんどは定年で自然に辞める分で、{その、}残った人は窓口とかに移るらしいよ。",
+     "en": "Thought so. Even though they say cuts, most of it's people retiring naturally, and the rest will apparently move to things like the customer counters.",
+     "gaps": [
+      "定年",
+      "窓口"
+     ],
+     "overlap": true
+    },
+    {
+     "speaker": "A",
+     "ja": "へえ、そうなんだ。{じゃあ、}クビになるわけじゃないんだ。",
+     "en": "Huh, really. So nobody's getting fired.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "{まあ、}今回はね。{ただ、}{仕事の、}仕事の中身は確実に変わるよね。",
+     "en": "Well, this time. But what the work involves is definitely going to change.",
+     "gaps": [
+      "中身",
+      "確実"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{なんか}それって、結局、人間にしかできないことをやれってことでしょ？ それが何なのか、いまいち分かんないんだよね。",
+     "en": "Isn't that basically saying do what only humans can do? I don't really get what that is.",
+     "gaps": [
+      "人間"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "{えっと、}例えば、お客さんの話をちゃんと聞くとか、{その、}判断に責任を持つとか？",
+     "en": "Um, like really listening to customers, or taking responsibility for decisions?",
+     "gaps": [
+      "判断",
+      "責任"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "{あー、}なるほどね。{じゃあ、}俺も、前から気になってた資格の勉強、{その、}始めてみようかな。",
+     "en": "Ah, I see. Then maybe I'll start studying for that qualification I've been curious about.",
+     "gaps": [
+      "資格"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "いいじゃん。でも、まずはニュースを最後まで読むとこからね。",
+     "en": "Good idea. But first, start by reading the news to the end.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "What had Sho misunderstood about the news?",
+     "choices": [
+      "He thought the bank was closing branches",
+      "He thought the job cuts meant people being fired",
+      "He thought his own company was involved",
+      "He thought the change would happen this year"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "According to Emi, what kind of work will remain for people?",
+     "choices": [
+      "Checking the data the system produces",
+      "Training the new software",
+      "Listening to customers and owning decisions",
+      "Handling data entry that machines get wrong"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "What does Emi's last remark suggest?",
+     "choices": [
+      "Sho should read properly before worrying",
+      "Sho should give up on the qualification",
+      "Sho should find a job at a bank",
+      "Sho should stop following the news"
+     ],
+     "answer": 0
+    }
+   ]
+  }
+ ]
+}

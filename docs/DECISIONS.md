@@ -1036,6 +1036,81 @@ Every grammar example on a grammar point page and in grammar lessons gets a ▶ 
 - "Mine this line" isn't offered for dictionary sentence hits yet; mining happens in the player, where the line's timing and file are known.
 - The pair-audio note under minimal pairs says which audio plays: the pre-rendered pack or TTS with its caveat.
 
+### D-220: Phase 12 listening/speaking/exam content is Claude-drafted in batch files; re-runs merge, never duplicate (2026-09-18)
+- Owner decision: Claude drafts the launch content directly. Everything is `source: "llm"`, `verified: false` and badged (rules 10, 19). New scenarios and dialogues live in `tools/packs/{speaking,listening}/batches/*.json` in the same entry format as the JSON the build reads. DLPT passages go in new bank files.
+- `author_scenarios.py` and `author_dialogues.py` now merge (shared code in `tools/packs/practice_authoring.py`): script entries, then batches, then entries only in the JSON. An authored entry replaces its JSON copy unless a reviewer touched that copy (`source: "verified"`, `reviewed` or `rejected` from `review.py --ingest`), which is kept unless `--force`. The same id in two sources is an error. The old scripts overwrote the JSON, which would have wiped review verdicts.
+- `draft --endpoint URL --model NAME` (Ollama on the owner's GPU machine) drafts through the stdlib client in `gen_dlpt.chat`. Each draft is validated with the build's own checks, JMdict included, gets an unused id (`slug`, then `-2`, `-3` …), is appended to `batches/llm-drafts.json` and merged. `build_practice.py --check FILE…` validates batches without building.
+
+### D-221: Appendix A content fixes (2026-09-18)
+- **hotel:** the scenario is a check-in from start to finish, so its last reply お世話になります was correct for an *arriving* guest. The audit read it as a departure. The closing is now 「どうぞごゆっくりお過ごしくださいませ。」 → sample 「ありがとうございます。よろしくお願いします。」, with お世話になります kept as an accepted alternative. The departing-guest case now has its own scenario, `travel-hotel-checkout`, which closes with お世話になりました. The review of all 30 scenarios found seven that ended without a partner closing line, plus lines that only fit the sample answer; those are fixed too.
+- **n3-environment** is now a real dialogue: two coworkers (佐藤/木村) on the company shop's plastic-bag charge, with a disagreement and a decision (10 lines, retitled "The plastic bag charge").
+- **Comprehension questions:** all 45 original dialogues were reworked to 2–3 questions each (94 in total). The questions ask about reasons, changes of plan, decisions and implication. Every distractor comes from the audio (the rejected option, the time before it changed, the other speaker's thing) and the key is paraphrased. Lines were edited in 15 dialogues to plant a change of plan or a grounded distractor (n5-morning, -shop-apples, -weekend, -station, -restaurant, -birthday, -library, -weather, -phone-number, -bus, -hobby; n4-lost-wallet, -gift, -recycling, -homestay), plus n3-environment.
+- New batches follow the same bar (the spec every author got). Reviewers should still look at a few loosely grounded distractors the agents flagged themselves (for example in `nat-n5-new-cat` and `n4-broken-heater`).
+
+### D-222: Natural dialogue style and filler markup (BRIEF_V2 §6.10, 2026-09-18)
+- `style: "natural"` (default `scripted`). Natural dialogues have 8–18 lines, at least 3 marked fillers, backchannels as their own short lines, and interruptions (the line ends with …, and the next has `overlap: true`).
+- Markup: `{…}` around a filler, hesitation or abandoned restart, e.g. `{えっと、}明日{、あ、}明後日`. Braces don't nest. The build strips them and stores the spans as `dialogue_line.fillers` (`[[start,end],…]`, UTF-16, like gap offsets). The spoken and stored text keeps the fillers, because the audio says them. Gap words must be outside fillers. Markup in a scripted dialogue is an error. Backchannels are content, so they aren't braced.
+- Speakers get an optional `hint` (delivery note). `render_audio.py` still picks voices by voice/age; the hint is for reviewers and a future per-line style.
+- Schema (practice pack version 1 → 2): `dialogue.style`, `dialogue_line.fillers`, `dialogue_line.overlap`, `scripted_turn.accept`, `opi_question.domain`, and the drill tables. Shared models: `DialogueStyle`, `DialogueLine.fillers/overlap/segments()/withoutFillers`, `Speaker.hint`, `Dialogue(Summary).style`.
+- Listening dialogues now allow N5–N1 (was N5–N3).
+
+### D-223: Variable scenario length and flexible fallback answers (2026-09-18)
+- Scenarios have 4–12 scripted turns (was 6–10, and all 30 had exactly 6). Across the 90: 4×5, 5×10, 6×14, 7×14, 8×14, 9×11, 10×11, 11×6, 12×5.
+- Every turn carries `accept`: 2–3 other acceptable learner replies. It's stored in `scripted_turn.accept` and exposed as `ScriptedTurn.accept` / `acceptableAnswers`.
+- Categories are now a closed set: the old six (daily, health, travel, work, official, social) plus business, admin, military, family, school and culture. An optional `partnerNotes` (English) is appended to the generated system prompt.
+- **For the coordinator:** the scripted fallback's matching lives in shared code, not tools. `RoleplaySession.scriptedReply` advances by counting learner turns and never looks at what the learner said; the sample answer is only a hint. A matcher that checks the reply against `acceptableAnswers` (and re-prompts on a miss) would go there. The data is ready; the session logic is unchanged here.
+
+### D-224: Speaking drill sets (Swotter format, BRIEF_V2 §6.10, 2026-09-18)
+- Built deterministically by `build_practice.py`; no LLM step.
+  - 22 grammar sets (N5 5, N4 5, N3 5, N2 4, N1 3), 10 sentences each. Points are spread evenly over the level in order, and each uses its first example with ord 0/1, 6–40 characters and an English translation.
+  - 9 dialogue-line sets (scripted N5–N1, natural N5–N2), 12 lines each. Lines are 6–32 characters with no fillers or overlaps, taken round robin over the level's dialogues.
+  - The grammar sets need `grammar.sqlite`; without it they are skipped with a warning (honest empty state).
+- The cue is the English line, and the model answer points at an existing audio key (`grammar/<point>/0`, `dialogue/<id>/<ord>`). No new audio set is needed, and all 220 grammar answers are already in the published grammar pack.
+- A set's `source` is `derived` when all its items are Tatoeba (human-translated), else `llm`. Each item keeps its own source for the badge.
+- Timing is shared (`DrillPlayback`, `DrillTiming`, `DrillCursor`): prompt → answer pause → model answer → repeat pause → 800 ms gap.
+  - Answer pause, PROPORTIONAL (default): answer length × 1.5 + 1 s, clamped to 1.5–15 s. FIXED: 4 s.
+  - Repeat pause: answer length × 1.2 + 0.5 s.
+  - Presets SHORT/DEFAULT/LONG.
+  - The answer length is the clip's `ms` from the audio pack when installed, otherwise estimated at about 7.5 morae/s (kanji ≈ 2 morae).
+- The hands-free player (screen-off audio, headset skip/back via `DrillCursor`) is left to the platform agents.
+
+### D-225: DLPT upper range, ILR 3+ and 4 (G-08, 2026-09-18)
+- `ilr_bands.json` gains 3+ (600–1,600 chars, kanji 0.22–0.60, abstract 0.01–0.25) and 4 (700–2,000, 0.22–0.62, 0.01–0.30). They are provisional and wide at the bottom because literary passages are kana-heavy and concrete. The drafted passages measure 3+ 674–916 chars, 4 780–1,085. `IlrBandData.kt` is regenerated from this file.
+- `gen_dlpt.py` accepts 3+/4 (id slug `3p`/`4`). Upper-range passages must have 2–4 items and an upper-range text type:
+  - reading: editorial, academic, essay, literary, commentary
+  - listening: lecture, discussion, commentary, interview, speech
+
+  It also has level guides and draft text types for 3+/4, and `liaison` at 2–3. `build_exam.py` accepts the levels.
+- New banks, all passing `validate --strict` with 0 errors and 0 warnings:
+  - `dlpt_reading_upper.json`: 30 passages each at 3+ and 4, 6 per text type, 184 items
+  - `dlpt_listening_upper.json`: 10 scripts each at 3+ and 4, 61 items
+  - `dlpt_liaison.json`: military/liaison at 2, 2+ and 3; 9 reading + 6 listening, 44 items; fictional units, towns and people
+- Upper-range items are almost all main idea, inference, tone, purpose and vocabulary-in-context; only 5 of 245 are detail items.
+
+### D-226: Upper-range DLPT forms in the exam engine (2026-09-18)
+- `IlrLevel.upperRange = [3, 3+, 4]`, `IlrLevel.tested`, and `DlptRange { LOWER, UPPER }` mirror the DLPT5 split: the upper-range test is for examinees who reach 3 on the lower range.
+- `ExamAssembler.dlpt(…, range, textTypes)` spreads items over the range's levels. `ExamService.dlpt(exam, minutes, seed, range, textTypes)` fetches only the range's levels.
+- Upper-range forms store `ExamForm.level = "UPPER"` (lower range stays `""`), so a resumed attempt keeps its range. The "below ILR …" summary uses the range's floor (3).
+- `IlrEstimator` already ordered all levels; `OpiSession` stays lower-range (no typical answer lengths above 3).
+
+### D-227: DLPT text-type filter (§6.16, 2026-09-18)
+- `textTypes` (a set; empty = all) keeps items whose passage text type is in the set; items without a passage drop out when a filter is set. Levels the filter empties are skipped, and shortfalls say where the bank ran short.
+- `ExamAssembler.textTypeCounts` / `ExamService.dlptTextTypes(exam, range)` list the options with item counts, most first. For Swift: `SwiftSupport.dlptFiltered(…, upper, textTypes)` and `dlptTextTypes(…)` → `DlptTextTypeCount`.
+
+### D-228: DLI topic domains in the OPI bank (§6.16, 2026-09-18)
+- Every OPI question has a domain: personal, family, work, daily_life, travel, current_events, hypothetical, abstract, or situation (role-plays). There are 34 new questions (62 → 96). The build requires ILR 2, 2+ and 3 to cover all five DLI domains (family, work, current events, hypotheticals, abstract); 0+–1+ cover the ones that fit.
+- The scripted interview prefers a question from a domain not used yet, so an interview samples several domains. `OpiDomain` is in shared, and `OpiQuestion.domain` is null when untagged.
+
+### D-229: "Level check → probe" visualizer data (§6.16, 2026-09-18)
+- `OpiSession.turns` logs each question: phase, domain (scripted only), target level (probes aim one above the working level), working level before and after, answer length and outcome. `OpiSession.probeMap()` → `OpiProbeMap.from(turns)`, pure.
+- Outcomes use the adaptation's own heuristic against the question's target level: SUSTAINED at the typical length or more, PARTIAL at half or more, BREAKDOWN below half, and NOT_RATED for warm-up, role-play and wind-down.
+- The map gives:
+  - floor: the highest sustained target
+  - ceiling: the lowest target that broke down
+  - breakdowns, per-level tallies and the working-level track for a line chart
+  - domains asked, and the DLI domains missed
+- It is practice feedback from answer length, not a rating (like the adaptation, D-029). The chart itself is for the platform agents.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

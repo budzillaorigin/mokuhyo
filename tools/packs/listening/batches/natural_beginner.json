@@ -1,0 +1,571 @@
+{
+  "source": "llm",
+  "dialogues": [
+    {
+      "id": "nat-n5-lunch-choice",
+      "title": "What should we eat for lunch?",
+      "jlpt": 5,
+      "topic": "food",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "美咲", "voice": "female", "age": "young", "hint": "cheerful, quick"},
+        {"id": "B", "name": "健太", "voice": "male", "age": "young", "hint": "laid-back, slow"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{ねえ、}お昼、何食べる？", "en": "Hey, what do you want for lunch?", "gaps": ["昼"]},
+        {"speaker": "B", "ja": "{うーん、}ラーメンは？", "en": "Hmm, how about ramen?", "gaps": ["ラーメン"]},
+        {"speaker": "A", "ja": "{えー、}ラーメンは昨日食べたよ。", "en": "Ugh, I had ramen yesterday.", "gaps": ["昨日"]},
+        {"speaker": "B", "ja": "あ、そっか。", "en": "Oh, right.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "{なんか、}駅の前に新しいすし屋が…", "en": "There's this new sushi place in front of the station...", "gaps": ["駅", "前"]},
+        {"speaker": "B", "ja": "あー、でも、すしは高いよ。", "en": "Ah, but sushi's expensive.", "gaps": ["高い"], "overlap": true},
+        {"speaker": "A", "ja": "{まあ、}そうだね。{じゃあ、}カレーは？", "en": "Well, true. Then how about curry?", "gaps": ["カレー"]},
+        {"speaker": "B", "ja": "カレー、{昨日、あ、}おとといの晩ご飯だった。", "en": "Curry... I had it yesterday, uh, the day before yesterday for dinner.", "gaps": ["晩ご飯"]},
+        {"speaker": "A", "ja": "{もう、}じゃあ、そばは？安いし、近いし。", "en": "Geez. Then soba? It's cheap, and it's close.", "gaps": ["そば", "安い", "近い"]},
+        {"speaker": "B", "ja": "うん、そば、いいね。そうしよう。", "en": "Yeah, soba sounds good. Let's do that.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "What do they finally decide to eat?", "choices": ["Ramen", "Sushi", "Curry", "Soba noodles"], "answer": 3},
+        {"question": "Why does Kenta reject the new sushi place?", "choices": ["He ate sushi two days ago", "He thinks it costs too much", "It is far from the station", "Misaki had sushi yesterday"], "answer": 1}
+      ]
+    },
+    {
+      "id": "nat-n5-tv-remote",
+      "title": "Where is the remote?",
+      "jlpt": 5,
+      "topic": "home",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "翔", "voice": "male", "age": "young", "hint": "sleepy, mumbling"},
+        {"id": "B", "name": "由美", "voice": "female", "age": "young", "hint": "brisk, a little annoyed"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あのさ、}テレビの、{あれ、}リモコン、知らない？", "en": "Hey, do you know where the TV... uh, the remote is?", "gaps": ["テレビ", "リモコン"]},
+        {"speaker": "B", "ja": "リモコン？テーブルの上は？", "en": "The remote? What about on the table?", "gaps": ["テーブル", "上"]},
+        {"speaker": "A", "ja": "ない。{さっき、}見たけど。", "en": "It's not there. I looked earlier.", "gaps": []},
+        {"speaker": "B", "ja": "{じゃあ、}ソファーの下…", "en": "Then under the sofa...", "gaps": ["ソファー", "下"]},
+        {"speaker": "A", "ja": "下も見た。", "en": "I looked under it too.", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "{うーん、}あ、昨日の夜、リモコン持って台所に行ったよね？", "en": "Hmm... oh, last night you went to the kitchen holding the remote, didn't you?", "gaps": ["夜", "台所"]},
+        {"speaker": "A", "ja": "え、そう？{ああ、}アイス…", "en": "Huh, did I? Oh... the ice cream...", "gaps": ["アイス"]},
+        {"speaker": "B", "ja": "うん。", "en": "Yeah.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "{あ、}あった！冷蔵庫の中！", "en": "Oh, found it! Inside the fridge!", "gaps": ["冷蔵庫", "中"]},
+        {"speaker": "B", "ja": "{もう、}なんで冷蔵庫なの…", "en": "Honestly, why the fridge...", "gaps": []}
+      ],
+      "questions": [
+        {"question": "Where was the remote in the end?", "choices": ["On the table", "Under the sofa", "In the refrigerator", "Next to the TV"], "answer": 2},
+        {"question": "What most likely happened last night?", "choices": ["Shou carried the remote along when he went for ice cream", "Yumi hid the remote under the sofa", "Shou watched TV in the kitchen", "Yumi left the remote on the table"], "answer": 0}
+      ]
+    },
+    {
+      "id": "nat-n5-sunday-picnic",
+      "title": "Planning a Sunday picnic",
+      "jlpt": 5,
+      "topic": "leisure",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "陽子", "voice": "female", "age": "adult", "hint": "warm, excited"},
+        {"id": "B", "name": "大輔", "voice": "male", "age": "adult", "hint": "relaxed, a bit sleepy"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{ねえ、}日曜日、公園でピクニックしない？", "en": "Hey, want to have a picnic in the park on Sunday?", "gaps": ["日曜日", "公園", "ピクニック"]},
+        {"speaker": "B", "ja": "{あ、}いいね。どこの公園？", "en": "Oh, nice. Which park?", "gaps": []},
+        {"speaker": "A", "ja": "{えっと、}川の近くの、大きい公園。", "en": "Um, the big park near the river.", "gaps": ["川", "大きい"]},
+        {"speaker": "B", "ja": "あー、はいはい。", "en": "Ah, yeah, yeah.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "お弁当、わたしが作るね。{それで、}大輔は…", "en": "I'll make the lunch boxes. And you, Daisuke...", "gaps": ["弁当"]},
+        {"speaker": "B", "ja": "飲み物？", "en": "Drinks?", "gaps": ["飲み物"], "overlap": true},
+        {"speaker": "A", "ja": "うん、飲み物と、{あと、}果物。", "en": "Yeah, drinks and, um, fruit.", "gaps": ["果物"]},
+        {"speaker": "B", "ja": "オッケー。{えっと、}朝は何時に行く？", "en": "OK. Um, what time do we go in the morning?", "gaps": ["朝", "何時"]},
+        {"speaker": "A", "ja": "{うーん、}十時は？", "en": "Hmm, how about ten?", "gaps": []},
+        {"speaker": "B", "ja": "十時、ちょっと早いなあ。十一時にしない？", "en": "Ten's a little early. Can we make it eleven?", "gaps": ["早い"]},
+        {"speaker": "A", "ja": "{まあ、}いいよ。じゃあ、十一時ね。", "en": "Well, OK. Eleven, then.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "What will Daisuke bring?", "choices": ["The lunch boxes", "Drinks and fruit", "Only drinks", "Nothing; Yoko brings everything"], "answer": 1},
+        {"question": "What time do they finally agree on, and whose idea was it?", "choices": ["Ten, Yoko's idea", "Ten, Daisuke's idea", "Eleven, Yoko's idea", "Eleven, Daisuke's idea"], "answer": 3}
+      ]
+    },
+    {
+      "id": "nat-n5-school-day",
+      "title": "How was school today?",
+      "jlpt": 5,
+      "topic": "family",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "母", "voice": "female", "age": "adult", "hint": "gentle, attentive"},
+        {"id": "B", "name": "光", "voice": "male", "age": "young", "hint": "excited child, talks fast"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "おかえり。{えっと、}今日、学校どうだった？", "en": "Welcome home. So, how was school today?", "gaps": ["学校"]},
+        {"speaker": "B", "ja": "{あのね、あのね、}今日、体育でサッカーしたの！", "en": "Guess what, guess what, we played soccer in P.E. today!", "gaps": ["体育", "サッカー"]},
+        {"speaker": "A", "ja": "へえ。", "en": "Oh, wow.", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "{それで、}ぼく、{一回、あ、}二回、ゴールした！", "en": "And I scored one... no, two goals!", "gaps": ["ゴール"]},
+        {"speaker": "A", "ja": "すごいね！", "en": "That's great!", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "でも、{その、}お弁当、ちょっと残しちゃった。", "en": "But, um, I left some of my lunch.", "gaps": ["弁当"]},
+        {"speaker": "A", "ja": "え、どうして？", "en": "Huh, why?", "gaps": []},
+        {"speaker": "B", "ja": "{なんか、}おなかが痛くて…", "en": "My tummy kind of hurt...", "gaps": ["おなか"]},
+        {"speaker": "A", "ja": "え、大丈夫？", "en": "Oh no, are you OK?", "gaps": ["大丈夫"], "overlap": true},
+        {"speaker": "B", "ja": "うん、もう大丈夫。{あ、}おやつある？", "en": "Yeah, I'm fine now. Oh, is there a snack?", "gaps": ["おやつ"]},
+        {"speaker": "A", "ja": "{もう、}元気だね。", "en": "Well, you're clearly feeling fine.", "gaps": ["元気"]}
+      ],
+      "questions": [
+        {"question": "Why didn't Hikaru finish his lunch?", "choices": ["He was busy playing soccer", "His stomach was hurting", "He wanted to save room for a snack", "He was too excited about his goals"], "answer": 1},
+        {"question": "How is Hikaru at the end of the conversation?", "choices": ["Still sick and wants to lie down", "Upset about the soccer game", "Worried about his leftover lunch", "Feeling better and hungry for a snack"], "answer": 3}
+      ]
+    },
+    {
+      "id": "nat-n5-math-homework",
+      "title": "Asking about homework",
+      "jlpt": 5,
+      "topic": "school",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "愛", "voice": "female", "age": "young", "hint": "worried, fast"},
+        {"id": "B", "name": "田中", "voice": "male", "age": "young", "hint": "calm, a little teasing"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あ、}田中くん、{ちょっと、}宿題のことなんだけど…", "en": "Oh, Tanaka, um, about the homework...", "gaps": ["宿題"]},
+        {"speaker": "B", "ja": "うん。", "en": "Yeah.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "数学の宿題、{何ページ、えっと、}何ページまで？", "en": "The math homework, up to... um, up to which page?", "gaps": ["数学"]},
+        {"speaker": "B", "ja": "{えっと、}三十ページまで。", "en": "Um, up to page thirty.", "gaps": []},
+        {"speaker": "A", "ja": "え、三十？二十五じゃない？", "en": "What, thirty? Wasn't it twenty-five?", "gaps": []},
+        {"speaker": "B", "ja": "ううん、先生、三十って言ったよ。", "en": "Nope, the teacher said thirty.", "gaps": ["先生"]},
+        {"speaker": "A", "ja": "{うわ、}多い…", "en": "Ugh, that's a lot...", "gaps": ["多い"]},
+        {"speaker": "B", "ja": "{でも、}問題は簡単だよ。", "en": "But the problems are easy.", "gaps": ["問題", "簡単"]},
+        {"speaker": "A", "ja": "本当？{じゃあ、}今日、図書館で一緒に…", "en": "Really? Then today, at the library, together...", "gaps": ["図書館", "一緒"]},
+        {"speaker": "B", "ja": "あ、ごめん、今日はバイト。明日は？", "en": "Oh, sorry, I have my part-time job today. How about tomorrow?", "gaps": ["明日"], "overlap": true},
+        {"speaker": "A", "ja": "うん、明日の放課後ね。", "en": "OK, tomorrow after school.", "gaps": ["放課後"]}
+      ],
+      "questions": [
+        {"question": "Why is Ai surprised?", "choices": ["The homework goes further than she thought", "The problems look very hard", "Tanaka can't study with her today", "The teacher changed the homework"], "answer": 0},
+        {"question": "When will they study together?", "choices": ["Today at the library", "Tonight after his job", "Tomorrow after school", "They won't study together"], "answer": 2}
+      ]
+    },
+    {
+      "id": "nat-n5-borrow-bike",
+      "title": "Can I borrow your bike?",
+      "jlpt": 5,
+      "topic": "family",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "妹", "voice": "female", "age": "young", "hint": "pleading, sweet"},
+        {"id": "B", "name": "兄", "voice": "male", "age": "young", "hint": "sleepy, grumpy"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{ねえ、}お兄ちゃん、自転車貸して。", "en": "Hey, big brother, lend me your bike.", "gaps": ["自転車"]},
+        {"speaker": "B", "ja": "{えー、}なんで？", "en": "Ugh, why?", "gaps": []},
+        {"speaker": "A", "ja": "{あの、}友達の家に行くの。", "en": "Um, I'm going to my friend's house.", "gaps": ["友達", "家"]},
+        {"speaker": "B", "ja": "{自分の、}お前の自転車は？", "en": "What about your own... your bike?", "gaps": []},
+        {"speaker": "A", "ja": "タイヤが…", "en": "The tire...", "gaps": ["タイヤ"]},
+        {"speaker": "B", "ja": "あー、パンクか。", "en": "Ah, a flat, huh.", "gaps": ["パンク"], "overlap": true},
+        {"speaker": "A", "ja": "うん。{だから、}お願い！五時に返すから。", "en": "Yeah. So please! I'll bring it back at five.", "gaps": []},
+        {"speaker": "B", "ja": "{うーん、}いいけど、六時に塾があるから、それまでに返してね。", "en": "Hmm, fine, but I have cram school at six, so bring it back before then.", "gaps": ["塾"]},
+        {"speaker": "A", "ja": "うん、大丈夫！ありがとう！", "en": "Sure, no problem! Thanks!", "gaps": ["大丈夫"]},
+        {"speaker": "B", "ja": "{あ、}あと、鍵、玄関にあるから。", "en": "Oh, and the key's by the front door.", "gaps": ["鍵", "玄関"]}
+      ],
+      "questions": [
+        {"question": "Why does the sister want her brother's bike?", "choices": ["Her own bike has a flat tire", "She lost her bike key", "His bike is faster", "She has cram school at six"], "answer": 0},
+        {"question": "What condition does the brother give?", "choices": ["She must fix her own tire first", "She must take him to cram school", "She must have it back before six", "She must leave the key at her friend's house"], "answer": 2}
+      ]
+    },
+    {
+      "id": "nat-n5-new-cat",
+      "title": "The new kitten",
+      "jlpt": 5,
+      "topic": "pets",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "山田", "voice": "female", "age": "adult", "hint": "delighted, chatty"},
+        {"id": "B", "name": "木村", "voice": "male", "age": "adult", "hint": "curious, calm"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あのね、}先週、猫を飼い始めたの。", "en": "Guess what, I got a cat last week.", "gaps": ["先週", "猫"]},
+        {"speaker": "B", "ja": "え、ほんと？", "en": "Oh, really?", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "うん。{その、}まだ小さい白い猫。", "en": "Yeah. Um, a little white one, still small.", "gaps": ["小さい", "白い"]},
+        {"speaker": "B", "ja": "へえ、かわいい。名前は？", "en": "Aw, cute. What's its name?", "gaps": ["名前"]},
+        {"speaker": "A", "ja": "{えっと、}「ゆき」。", "en": "Um, Yuki. (\"Snow\")", "gaps": []},
+        {"speaker": "B", "ja": "あ、白いから？", "en": "Oh, because it's white?", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "そうそう。{でも、}夜、ぜんぜん寝ないの。", "en": "Exactly. But it doesn't sleep at all at night.", "gaps": ["夜"]},
+        {"speaker": "B", "ja": "{あー、}子猫はそうだよね。", "en": "Ah, kittens are like that.", "gaps": ["子猫"]},
+        {"speaker": "A", "ja": "{それで、}朝、わたしの顔の上に…", "en": "And in the morning, right on my face...", "gaps": ["朝", "顔"]},
+        {"speaker": "B", "ja": "乗るの？", "en": "It climbs on you?", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "うん、毎朝。{もう、}眠くて。", "en": "Yep, every morning. I'm so sleepy.", "gaps": ["毎朝"]}
+      ],
+      "questions": [
+        {"question": "Why is the cat called Yuki?", "choices": ["Because of its color", "Because it is so small", "Because it sleeps so much", "Because it came last week"], "answer": 0},
+        {"question": "What problem does Yamada have with the cat?", "choices": ["She can't decide on a name", "It wakes her up every morning", "It sleeps all day long", "It is too small to play"], "answer": 1}
+      ]
+    },
+    {
+      "id": "nat-n5-yesterday-movie",
+      "title": "The movie I saw yesterday",
+      "jlpt": 5,
+      "topic": "entertainment",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "翼", "voice": "male", "age": "young", "hint": "enthusiastic, animated"},
+        {"id": "B", "name": "花", "voice": "female", "age": "young", "hint": "dry, a bit skeptical"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あ、}昨日、映画見たよ。", "en": "Oh, I saw a movie yesterday.", "gaps": ["昨日", "映画"]},
+        {"speaker": "B", "ja": "へえ、何の映画？", "en": "Oh? What movie?", "gaps": []},
+        {"speaker": "A", "ja": "{えっと、}犬の映画。{なんか、}犬が、{その、}家に帰る話。", "en": "Um, a dog movie. It's, like, a story about a dog going back home.", "gaps": ["犬", "話"]},
+        {"speaker": "B", "ja": "あー、あれ？おもしろかった？", "en": "Ah, that one? Was it good?", "gaps": []},
+        {"speaker": "A", "ja": "うん、すごく。{でも、}ちょっと長かった。三時間。", "en": "Yeah, really. But it was a bit long. Three hours.", "gaps": ["時間"]},
+        {"speaker": "B", "ja": "三時間？{うわ、}長い。", "en": "Three hours? Wow, that's long.", "gaps": ["長い"], "overlap": true},
+        {"speaker": "A", "ja": "{それで、}最後に、{ぼく、}泣いちゃった。", "en": "And at the end, I, uh, cried.", "gaps": ["最後"]},
+        {"speaker": "B", "ja": "えー、翼くんが？", "en": "What, you, Tsubasa?", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "うん。{あの、}花ちゃんも見る？今度の土曜日、一緒に…", "en": "Yeah. Um, do you want to see it too, Hana? This Saturday, together...", "gaps": ["今度", "土曜日"]},
+        {"speaker": "B", "ja": "{うーん、}長い映画はちょっと…{でも、}いいよ。", "en": "Hmm, long movies aren't really my thing... but sure.", "gaps": ["映画"], "overlap": true}
+      ],
+      "questions": [
+        {"question": "What is the movie about?", "choices": ["A dog that finds its way home", "A family who buys a dog", "A boy who cries a lot", "A long trip on a Saturday"], "answer": 0},
+        {"question": "How does Hana respond to the invitation?", "choices": ["She refuses because it is too long", "She says she has already seen it", "She suggests a shorter movie", "She agrees, though she isn't keen on long movies"], "answer": 3}
+      ]
+    },
+    {
+      "id": "nat-n5-new-classmate",
+      "title": "Meeting a new classmate",
+      "jlpt": 5,
+      "topic": "school",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "林", "voice": "female", "age": "young", "hint": "shy, soft-spoken"},
+        {"id": "B", "name": "石川", "voice": "male", "age": "young", "hint": "friendly, polite, upbeat"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あの、}すみません、この席、空いてますか。", "en": "Um, excuse me, is this seat free?", "gaps": ["席"]},
+        {"speaker": "B", "ja": "{あ、}はい、どうぞ。", "en": "Oh, yes, go ahead.", "gaps": []},
+        {"speaker": "A", "ja": "ありがとうございます。{えっと、}林です。今日から、このクラスです。", "en": "Thank you. Um, I'm Hayashi. I'm in this class from today.", "gaps": ["クラス"]},
+        {"speaker": "B", "ja": "あ、石川です。よろしく。{えっと、}林さんは、どこから…", "en": "Oh, I'm Ishikawa. Nice to meet you. So, where are you from...", "gaps": []},
+        {"speaker": "A", "ja": "大阪から来ました。", "en": "I came from Osaka.", "gaps": ["大阪"], "overlap": true},
+        {"speaker": "B", "ja": "へえ、大阪！{僕、あ、}私も、去年まで大阪に住んでいました。", "en": "Oh, Osaka! I, uh, I also lived in Osaka until last year.", "gaps": ["去年"]},
+        {"speaker": "A", "ja": "え、本当ですか。", "en": "Oh, really?", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "はい。{あの、}大阪のどこですか。", "en": "Yes. Um, where in Osaka?", "gaps": []},
+        {"speaker": "A", "ja": "{えっと、}駅の近くです。{でも、}東京は初めてで…", "en": "Um, near the station. But this is my first time in Tokyo, so...", "gaps": ["近く", "初めて"]},
+        {"speaker": "B", "ja": "{あ、}じゃあ、今度、学校の近くの店、案内しますよ。", "en": "Oh, then next time I'll show you the shops near school.", "gaps": ["今度", "店", "案内"]},
+        {"speaker": "A", "ja": "うれしいです。ありがとうございます。", "en": "I'd love that. Thank you.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "What do Hayashi and Ishikawa have in common?", "choices": ["Both are new to the class", "Both live near the station", "Both have lived in Osaka", "Both grew up in Tokyo"], "answer": 2},
+        {"question": "What does Ishikawa offer to do?", "choices": ["Show her around the shops near school", "Take her to the station in Osaka", "Introduce her to the class", "Find her a different seat"], "answer": 0}
+      ]
+    },
+    {
+      "id": "nat-n5-curry-no-onion",
+      "title": "Curry without onions",
+      "jlpt": 5,
+      "topic": "food",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "父", "voice": "male", "age": "adult", "hint": "cheerful, easygoing"},
+        {"id": "B", "name": "恵", "voice": "female", "age": "young", "hint": "practical, slightly exasperated"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{よし、}カレー作ろう。{えっと、}肉、ある？", "en": "Right, let's make curry. Um, do we have meat?", "gaps": ["カレー", "肉"]},
+        {"speaker": "B", "ja": "うん、肉はある。じゃがいもと、にんじんも。", "en": "Yeah, there's meat. Potatoes and carrots too.", "gaps": ["じゃがいも", "にんじん"]},
+        {"speaker": "A", "ja": "玉ねぎは？", "en": "Onions?", "gaps": ["玉ねぎ"]},
+        {"speaker": "B", "ja": "{えっと、}玉ねぎ…{あれ、}ない。", "en": "Um, onions... huh, there aren't any.", "gaps": ["玉ねぎ"]},
+        {"speaker": "A", "ja": "え、ない？", "en": "What, none?", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "うん、昨日、お母さんが…", "en": "Yeah, yesterday Mom...", "gaps": ["昨日"]},
+        {"speaker": "A", "ja": "{あ、}スープに使ったんだ。", "en": "Oh, she used them in soup.", "gaps": ["スープ"], "overlap": true},
+        {"speaker": "B", "ja": "{じゃあ、}わたし、スーパーに買いに行こうか。", "en": "Then should I go buy some at the supermarket?", "gaps": ["スーパー"]},
+        {"speaker": "A", "ja": "{うーん、}いいよ、いいよ。今日は玉ねぎなしで作ろう。", "en": "Hmm, nah, it's fine. Let's make it without onions today.", "gaps": ["今日"]},
+        {"speaker": "B", "ja": "えー、玉ねぎがないカレー？{まあ、}いっか。", "en": "What, curry with no onions? Well, whatever.", "gaps": []},
+        {"speaker": "A", "ja": "うん、{その、}次はちゃんと買っておくから。", "en": "Yeah, um, I'll make sure to buy some next time.", "gaps": ["次"]}
+      ],
+      "questions": [
+        {"question": "Why are there no onions?", "choices": ["The daughter forgot to buy them", "Dad already put them in the curry", "They were left at the supermarket", "Mom used them up making soup"], "answer": 3},
+        {"question": "What do they decide to do?", "choices": ["Go to the supermarket for onions", "Make the curry without onions", "Make soup instead of curry", "Wait for Mom to come home"], "answer": 1}
+      ]
+    },
+    {
+      "id": "nat-n4-coffee-machine",
+      "title": "At the office coffee machine",
+      "jlpt": 4,
+      "topic": "work",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "佐藤", "voice": "female", "age": "adult", "hint": "friendly, brisk"},
+        {"id": "B", "name": "中村", "voice": "male", "age": "adult", "hint": "tired, low voice"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あ、}中村さん、おはようございます。{なんか、}眠そうですね。", "en": "Oh, morning, Nakamura. You look kind of sleepy.", "gaps": []},
+        {"speaker": "B", "ja": "{ああ、}おはようございます。昨日、遅くまで会議の資料を…", "en": "Ah, morning. Last night I was up late on the materials for the meeting...", "gaps": ["会議", "資料"]},
+        {"speaker": "A", "ja": "あー、明日の会議の？", "en": "Ah, for tomorrow's meeting?", "gaps": ["明日"], "overlap": true},
+        {"speaker": "B", "ja": "そうなんです。{えっと、}まだ終わってなくて。", "en": "That's right. Um, and it's still not done.", "gaps": []},
+        {"speaker": "A", "ja": "大変ですね。{あ、}このコーヒー、ボタンを押しても…{あれ？}出ない。", "en": "That's rough. Oh, this coffee, even when I press the button... huh? Nothing.", "gaps": ["ボタン"]},
+        {"speaker": "B", "ja": "{あ、}それ、壊れてるんですよ。先週から。", "en": "Oh, that one's broken. Since last week.", "gaps": ["先週"]},
+        {"speaker": "A", "ja": "え、そうなんですか。", "en": "Oh, really?", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "{はい、}二階の機械は使えますよ。", "en": "Yeah, the machine on the second floor works.", "gaps": ["二階", "機械"]},
+        {"speaker": "A", "ja": "{じゃあ、}中村さんの分も、買ってきましょうか。", "en": "Then shall I get one for you too?", "gaps": ["分"]},
+        {"speaker": "B", "ja": "{え、}いいんですか。{じゃあ、あ、}砂糖なしでお願いします。", "en": "Oh, are you sure? Then, uh, no sugar, please.", "gaps": ["砂糖"]},
+        {"speaker": "A", "ja": "はい。資料も、手伝いましょうか？午後、時間ありますから。", "en": "Sure. Shall I help with the materials too? I have time this afternoon.", "gaps": ["午後", "時間"]},
+        {"speaker": "B", "ja": "本当ですか。助かります。", "en": "Really? That'd be a huge help.", "gaps": ["本当"]}
+      ],
+      "questions": [
+        {"question": "Why is Nakamura so tired?", "choices": ["The meeting yesterday ran very late", "He climbed the stairs from the second floor", "He stayed up working on documents for a meeting", "He hasn't had any coffee since last week"], "answer": 2},
+        {"question": "What is Sato going to do right after this?", "choices": ["Try to fix the broken machine", "Get coffee for both of them from another floor", "Buy some sugar for Nakamura", "Go to the meeting in his place"], "answer": 1},
+        {"question": "What else does Sato offer?", "choices": ["To attend tomorrow's meeting for him", "To call someone about the machine", "To buy him lunch", "To help him finish the documents"], "answer": 3}
+      ]
+    },
+    {
+      "id": "nat-n4-train-ticket",
+      "title": "Buying a ticket at the station",
+      "jlpt": 4,
+      "topic": "travel",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "客", "voice": "female", "age": "senior", "hint": "hesitant, polite, a bit slow"},
+        {"id": "B", "name": "駅員", "voice": "male", "age": "adult", "hint": "polite, clear, patient"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あの、}すみません、桜台までの切符は、どこで買えますか。", "en": "Um, excuse me, where can I buy a ticket to Sakuradai?", "gaps": ["切符"]},
+        {"speaker": "B", "ja": "{はい、}桜台ですね。こちらの機械でも買えますよ。", "en": "Yes, Sakuradai. You can buy one at this machine as well.", "gaps": ["機械"]},
+        {"speaker": "A", "ja": "{ええと、}機械はちょっと、よくわからなくて…", "en": "Well, machines are a bit... I don't really understand them...", "gaps": []},
+        {"speaker": "B", "ja": "{あ、}では、ここでどうぞ。", "en": "Ah, then please buy it here.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "お願いします。{あの、}急行は止まりますか。", "en": "Thank you. Um, does the express stop there?", "gaps": ["急行"]},
+        {"speaker": "B", "ja": "{えー、}急行は止まりません。普通電車で、四十分ぐらいです。", "en": "Er, the express doesn't stop there. It's about forty minutes on a local train.", "gaps": ["普通", "電車"]},
+        {"speaker": "A", "ja": "四十分…{じゃあ、}次の電車は何時ですか。", "en": "Forty minutes... Then what time is the next train?", "gaps": ["次", "何時"]},
+        {"speaker": "B", "ja": "十時十五分です。三番線から出ます。", "en": "Ten fifteen. It leaves from platform three.", "gaps": ["番線"]},
+        {"speaker": "A", "ja": "三番線…{あ、}階段は…", "en": "Platform three... oh, the stairs...", "gaps": ["階段"]},
+        {"speaker": "B", "ja": "エレベーターもありますよ。あちらです。", "en": "There's an elevator too. It's over there.", "gaps": ["エレベーター"], "overlap": true},
+        {"speaker": "A", "ja": "{まあ、}助かります。ありがとうございます。", "en": "Oh, that helps a lot. Thank you very much.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "Why does the woman buy her ticket from the staff member?", "choices": ["The ticket machine is out of order", "She finds the ticket machine confusing", "She needs a special express ticket", "The staff member told her to"], "answer": 1},
+        {"question": "How will she get to Sakuradai?", "choices": ["Express train, about 40 minutes", "Express train, about 15 minutes", "Local train, about 15 minutes", "Local train, about 40 minutes"], "answer": 3},
+        {"question": "Why is she relieved at the end?", "choices": ["She doesn't have to use the stairs", "The next train leaves right away", "The express stops at her station", "The ticket was cheaper than expected"], "answer": 0}
+      ]
+    },
+    {
+      "id": "nat-n4-overslept-call",
+      "title": "Running late for the movie",
+      "jlpt": 4,
+      "topic": "daily life",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "拓也", "voice": "male", "age": "young", "hint": "out of breath, apologetic"},
+        {"id": "B", "name": "真理", "voice": "female", "age": "young", "hint": "irritated, then forgiving"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{もしもし、あ、}真理？ごめん、{今、}今、駅に着いた。", "en": "Hello, uh, Mari? Sorry, I just got to the station now.", "gaps": ["駅"]},
+        {"speaker": "B", "ja": "え、今？約束、十時だったよね。", "en": "What, just now? We said ten, didn't we?", "gaps": ["約束"]},
+        {"speaker": "A", "ja": "{うん、}ごめん、{その、}目覚まし時計が…", "en": "Yeah, sorry, my, um, alarm clock...", "gaps": ["目覚まし時計"]},
+        {"speaker": "B", "ja": "鳴らなかったの？", "en": "It didn't go off?", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "{いや、}鳴ったんだけど、止めて、また寝ちゃって。", "en": "No, it did, but I turned it off and fell back asleep.", "gaps": []},
+        {"speaker": "B", "ja": "{もう、}映画、十時半からだよ。", "en": "Seriously. The movie starts at ten thirty.", "gaps": ["映画"]},
+        {"speaker": "A", "ja": "{あと、}あと二十分ぐらいで…", "en": "I'll be there in about twenty more...", "gaps": []},
+        {"speaker": "B", "ja": "間に合わないじゃん。", "en": "You won't make it, then.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "{だから、}先に入ってて。チケット、送るから。", "en": "So go in ahead of me. I'll send you the ticket.", "gaps": ["先", "チケット"]},
+        {"speaker": "B", "ja": "{うーん、}わかった。じゃあ、ポップコーンは拓也のおごりね。", "en": "Hmm, fine. But then the popcorn's on you, Takuya.", "gaps": ["ポップコーン"]},
+        {"speaker": "A", "ja": "はい、もちろんです…", "en": "Yes, of course...", "gaps": []}
+      ],
+      "questions": [
+        {"question": "Why is Takuya late?", "choices": ["His alarm clock didn't ring", "He switched off his alarm and slept again", "He got on the wrong train", "He thought they were meeting at ten thirty"], "answer": 1},
+        {"question": "What does Takuya ask Mari to do?", "choices": ["Wait for him at the station", "Buy the popcorn first", "Buy the tickets herself", "Go into the theater without him"], "answer": 3},
+        {"question": "How will Takuya make it up to Mari?", "choices": ["By paying for her popcorn", "By paying for her movie ticket", "By treating her to lunch", "By choosing a later movie"], "answer": 0}
+      ]
+    },
+    {
+      "id": "nat-n4-beach-rain",
+      "title": "Rain ruins the beach plan",
+      "jlpt": 4,
+      "topic": "leisure",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "大樹", "voice": "male", "age": "young", "hint": "disappointed, whiny"},
+        {"id": "B", "name": "さくら", "voice": "female", "age": "young", "hint": "upbeat, quick to bounce back"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あー、}見て、雨。{明日も、あ、}週末ずっと雨だって。", "en": "Ugh, look, rain. Tomorrow too... I mean, they say it'll rain all weekend.", "gaps": ["雨", "週末"]},
+        {"speaker": "B", "ja": "え、ほんと？海、行けないじゃん。", "en": "What, really? Then we can't go to the beach.", "gaps": ["海"], "overlap": true},
+        {"speaker": "A", "ja": "{うん、}天気予報で言ってた。", "en": "Yeah, the weather forecast said so.", "gaps": ["天気予報"]},
+        {"speaker": "B", "ja": "{えー、}新しい水着、買ったのに…", "en": "No way, and I bought a new swimsuit...", "gaps": ["水着"]},
+        {"speaker": "A", "ja": "{まあ、}来週は晴れるらしいよ。", "en": "Well, apparently it'll be sunny next week.", "gaps": ["来週"]},
+        {"speaker": "B", "ja": "{来週、}来週は、わたし、アルバイトが…", "en": "Next week... next week I have my part-time job...", "gaps": ["アルバイト"]},
+        {"speaker": "A", "ja": "{あ、}そっか。{じゃあ、}再来週は？", "en": "Oh, right. Then the week after?", "gaps": ["再来週"]},
+        {"speaker": "B", "ja": "{うーん、}たぶん大丈夫。{でも、}今週末はどうする？", "en": "Hmm, probably OK. But what do we do this weekend?", "gaps": ["大丈夫"]},
+        {"speaker": "A", "ja": "{えっと、}水族館とか…", "en": "Um, like, the aquarium or...", "gaps": ["水族館"]},
+        {"speaker": "B", "ja": "いいね！水族館なら、雨でも大丈夫だし、魚も見られるし。", "en": "Nice! The aquarium's fine even in the rain, and we get to see fish.", "gaps": ["魚"], "overlap": true},
+        {"speaker": "A", "ja": "{じゃあ、}決まり。", "en": "Then it's settled.", "gaps": ["決まり"]}
+      ],
+      "questions": [
+        {"question": "Why can't they go to the beach next week?", "choices": ["It will rain all week", "Sakura has to work", "Daiki has other plans", "Sakura needs a new swimsuit"], "answer": 1},
+        {"question": "What do they end up planning for this weekend?", "choices": ["Going to the beach anyway", "Shopping for swimsuits", "An indoor outing to see fish", "Staying home because of the rain"], "answer": 2}
+      ]
+    },
+    {
+      "id": "nat-n4-garbage-day",
+      "title": "Asking a neighbor about garbage day",
+      "jlpt": 4,
+      "topic": "home",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "小川", "voice": "male", "age": "young", "hint": "polite, unsure, careful"},
+        {"id": "B", "name": "鈴木", "voice": "female", "age": "senior", "hint": "kind, chatty, unhurried"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{あの、}すみません。先週、となりに引っ越してきた小川です。", "en": "Um, excuse me. I'm Ogawa; I moved in next door last week.", "gaps": ["先週", "となり"]},
+        {"speaker": "B", "ja": "{あら、}こんにちは。鈴木です。", "en": "Oh, hello. I'm Suzuki.", "gaps": []},
+        {"speaker": "A", "ja": "{えっと、}ごみの日を教えていただけませんか。", "en": "Um, could you tell me which days are garbage days?", "gaps": ["ごみ"]},
+        {"speaker": "B", "ja": "{ええ、}燃えるごみは、月曜日と木曜日です。", "en": "Sure. Burnable garbage is Mondays and Thursdays.", "gaps": ["月曜日", "木曜日"]},
+        {"speaker": "A", "ja": "月曜と木曜…", "en": "Monday and Thursday...", "gaps": []},
+        {"speaker": "B", "ja": "{それから、}瓶と缶は、{第、あ、}毎週水曜日ね。", "en": "And bottles and cans are, um, every Wednesday.", "gaps": ["瓶", "缶", "水曜日"]},
+        {"speaker": "A", "ja": "なるほど。", "en": "I see.", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "朝八時までに、あそこの電柱の前に出してください。", "en": "Put it out by eight in the morning, in front of that utility pole over there.", "gaps": ["朝", "電柱", "前"]},
+        {"speaker": "A", "ja": "八時まで…{あの、}前の晩に出してもいいですか。", "en": "By eight... um, is it OK to put it out the night before?", "gaps": ["晩"]},
+        {"speaker": "B", "ja": "{うーん、}それは、ちょっと。カラスが来るから。", "en": "Hmm, that's not really a good idea. The crows come.", "gaps": ["カラス"]},
+        {"speaker": "A", "ja": "{あ、}そうなんですね。わかりました。ありがとうございます。", "en": "Oh, I see. Understood. Thank you very much.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "Which schedule is correct?", "choices": ["Burnable: Mon and Thu; bottles and cans: Wed", "Burnable: Wed; bottles and cans: Mon and Thu", "Burnable: Mon and Wed; bottles and cans: Thu", "Burnable: Thu only; bottles and cans: Mon"], "answer": 0},
+        {"question": "What does Suzuki advise Ogawa not to do?", "choices": ["Put cans out on Mondays", "Take garbage out before eight", "Put garbage out the evening before", "Leave garbage by his own front door"], "answer": 2},
+        {"question": "Why does she give that advice?", "choices": ["The truck only comes at eight", "It is only a rule for cans", "The pole area is too small", "Birds would get into the garbage"], "answer": 3}
+      ]
+    },
+    {
+      "id": "nat-n4-grandson-job",
+      "title": "Grandma asks about the part-time job",
+      "jlpt": 4,
+      "topic": "family",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "祖母", "voice": "female", "age": "senior", "hint": "slow, affectionate"},
+        {"id": "B", "name": "蓮", "voice": "male", "age": "young", "hint": "casual, patient"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{ねえ、}蓮、アルバイト、始めたんだって？", "en": "Say, Ren, I heard you started a part-time job?", "gaps": ["アルバイト"]},
+        {"speaker": "B", "ja": "{うん、}先月から。駅前のパン屋で。", "en": "Yeah, since last month. At the bakery by the station.", "gaps": ["先月", "駅前", "パン屋"]},
+        {"speaker": "A", "ja": "{まあ、}パン屋さん。{その、}朝は早いの？", "en": "Oh my, a bakery. Do you have to start early in the morning?", "gaps": ["朝"]},
+        {"speaker": "B", "ja": "{えっと、}六時から。{でも、}週に三日だけ。", "en": "Um, from six. But only three days a week.", "gaps": ["週"]},
+        {"speaker": "A", "ja": "六時！{大変、}大丈夫？", "en": "Six! That's hard... are you all right?", "gaps": ["大丈夫"], "overlap": true},
+        {"speaker": "B", "ja": "大丈夫だよ。{なんか、}もう慣れた。", "en": "I'm fine. I've kind of gotten used to it.", "gaps": []},
+        {"speaker": "A", "ja": "{そう、}お店の人は、優しい？", "en": "I see. Are the people at the shop kind?", "gaps": ["優しい"]},
+        {"speaker": "B", "ja": "うん、店長がすごく優しくて、{その、}売れなかったパンを…", "en": "Yeah, the manager's really nice, and, um, the bread that didn't sell...", "gaps": ["店長"]},
+        {"speaker": "A", "ja": "もらえるの？", "en": "You get to take it?", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "そう。{だから、}今度、ばあちゃんにも持ってくるね。", "en": "Yep. So next time I'll bring you some too, Grandma.", "gaps": ["今度"]},
+        {"speaker": "A", "ja": "{あら、}うれしい。でも、勉強もちゃんとしなさいよ。", "en": "Oh, how lovely. But make sure you keep up with your studies too.", "gaps": ["勉強"]},
+        {"speaker": "B", "ja": "わかってるって。", "en": "I know, I know.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "What is a nice perk of Ren's job?", "choices": ["He can start late in the morning", "He only works on weekends", "The manager lets him study at work", "He can take home unsold bread"], "answer": 3},
+        {"question": "How does Grandma feel by the end?", "choices": ["Happy, but she reminds him not to neglect school", "Upset that he starts work so early", "Worried that the manager is strict", "Sad that he has no time to visit her"], "answer": 0}
+      ]
+    },
+    {
+      "id": "nat-n4-compare-phones",
+      "title": "Choosing between two phones",
+      "jlpt": 4,
+      "topic": "shopping",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "店員", "voice": "female", "age": "adult", "hint": "polite, helpful, steady"},
+        {"id": "B", "name": "森", "voice": "male", "age": "adult", "hint": "indecisive, thinking aloud"}
+      ],
+      "lines": [
+        {"speaker": "B", "ja": "{あの、}すみません、この二つ、何が違うんですか。", "en": "Um, excuse me, what's the difference between these two?", "gaps": ["違う"]},
+        {"speaker": "A", "ja": "{はい、}こちらの黒いほうは、カメラがとてもいいんです。", "en": "Certainly. This black one has a very good camera.", "gaps": ["黒い", "カメラ"]},
+        {"speaker": "B", "ja": "へえ。", "en": "Huh.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "{で、}白いほうは、カメラは普通ですが、電池が長く使えます。", "en": "And the white one has an ordinary camera, but the battery lasts a long time.", "gaps": ["白い", "普通", "電池"]},
+        {"speaker": "B", "ja": "{なるほど、}値段は…", "en": "I see, and the price...", "gaps": ["値段"]},
+        {"speaker": "A", "ja": "黒いほうが八万円で、白いほうが五万円です。", "en": "The black one is 80,000 yen and the white one is 50,000 yen.", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "{うーん、}写真はあまり撮らないんですよね。{でも、}ゲームはよくします。", "en": "Hmm, I don't really take many photos. But I play games a lot.", "gaps": ["写真", "ゲーム"]},
+        {"speaker": "A", "ja": "{それなら、}白いほうがいいと思いますよ。ゲームは電池をたくさん使いますから。", "en": "In that case, I think the white one is better. Games use a lot of battery.", "gaps": ["電池"]},
+        {"speaker": "B", "ja": "{そうですね、あ、}色は、ほかにありますか。", "en": "Right, oh, does it come in other colors?", "gaps": ["色"]},
+        {"speaker": "A", "ja": "白いほうは、青もございます。", "en": "The white model also comes in blue.", "gaps": ["青"]},
+        {"speaker": "B", "ja": "{じゃあ、}青いのをください。", "en": "Then I'll take the blue one.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "Which phone does Mori buy?", "choices": ["The black model with the good camera", "The cheaper model, in blue", "The white model, in white", "The black model, in blue"], "answer": 1},
+        {"question": "Why does the clerk recommend that model?", "choices": ["He takes a lot of photos", "It is 30,000 yen cheaper", "Its battery suits someone who plays games", "It is the only one that comes in blue"], "answer": 2}
+      ]
+    },
+    {
+      "id": "nat-n4-teacher-present",
+      "title": "A birthday present for the teacher",
+      "jlpt": 4,
+      "topic": "school",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "優子", "voice": "female", "age": "young", "hint": "thoughtful, gentle"},
+        {"id": "B", "name": "誠", "voice": "male", "age": "young", "hint": "quick, joking"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{ねえ、}来週、山口先生の誕生日だよね。", "en": "Hey, Mr. Yamaguchi's birthday is next week, right?", "gaps": ["来週", "誕生日"]},
+        {"speaker": "B", "ja": "{あ、}そうだ。クラスで何かあげる？", "en": "Oh, that's right. Should the class give him something?", "gaps": ["クラス"]},
+        {"speaker": "A", "ja": "うん。{なんか、}花とか…", "en": "Yeah. Something like flowers...", "gaps": ["花"]},
+        {"speaker": "B", "ja": "花？{うーん、}すぐ枯れちゃうじゃん。", "en": "Flowers? Hmm, they die so fast.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "{じゃあ、}ハンカチは？", "en": "Then how about a handkerchief?", "gaps": ["ハンカチ"]},
+        {"speaker": "B", "ja": "ハンカチ、去年もあげたよ。", "en": "We gave him a handkerchief last year too.", "gaps": ["去年"]},
+        {"speaker": "A", "ja": "{あ、}そっか…", "en": "Oh, right...", "gaps": []},
+        {"speaker": "B", "ja": "{そうだ、}先生、コーヒー好きだよね。毎朝飲んでるし。", "en": "I know, he likes coffee, right? He drinks it every morning.", "gaps": ["コーヒー", "毎朝"]},
+        {"speaker": "A", "ja": "{あ、}いいね！きれいなカップと、{その、}コーヒー豆。", "en": "Oh, nice! A pretty cup and, um, coffee beans.", "gaps": ["カップ"], "overlap": true},
+        {"speaker": "B", "ja": "それ、いい。{じゃあ、}みんなから、{五百、}三百円ずつ集めよう。", "en": "That's good. So let's collect, um, three hundred yen from everyone.", "gaps": []},
+        {"speaker": "A", "ja": "うん、わたし、明日みんなに言うね。", "en": "OK, I'll tell everyone tomorrow.", "gaps": ["明日"]}
+      ],
+      "questions": [
+        {"question": "What will the class give the teacher?", "choices": ["A bunch of flowers", "A new handkerchief", "A nice cup with coffee beans", "A card from the whole class"], "answer": 2},
+        {"question": "Why do they decide against the handkerchief?", "choices": ["It would not last long", "It costs more than 300 yen each", "The teacher doesn't like them", "They already gave him one last year"], "answer": 3},
+        {"question": "What will Yuko do tomorrow?", "choices": ["Buy the cup", "Tell the class about the plan", "Give the teacher the present", "Ask the teacher what he wants"], "answer": 1}
+      ]
+    },
+    {
+      "id": "nat-n4-lost-station",
+      "title": "Lost in a big station",
+      "jlpt": 4,
+      "topic": "travel",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "健", "voice": "male", "age": "young", "hint": "flustered, rushed"},
+        {"id": "B", "name": "愛子", "voice": "female", "age": "adult", "hint": "calm, guiding"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "{もしもし、}愛子さん？{あの、}今、駅にいるんですけど、{えっと、}南口がわからなくて…", "en": "Hello, Aiko? Um, I'm at the station now, but, uh, I can't find the south exit...", "gaps": ["駅", "南口"]},
+        {"speaker": "B", "ja": "{あー、}この駅、大きいからね。今、何が見える？", "en": "Ah, this station's huge. What can you see right now?", "gaps": ["大きい"]},
+        {"speaker": "A", "ja": "{えっと、}本屋と、{その、}大きい時計…", "en": "Um, a bookstore, and, uh, a big clock...", "gaps": ["本屋", "時計"]},
+        {"speaker": "B", "ja": "あ、時計？", "en": "Oh, a clock?", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "はい、青い時計です。", "en": "Yes, a blue clock.", "gaps": ["青い"]},
+        {"speaker": "B", "ja": "{じゃあ、}そこは北口だね。", "en": "Then you're at the north exit.", "gaps": ["北口"]},
+        {"speaker": "A", "ja": "え、北口？{えっと、}反対ですか。", "en": "What, the north exit? Um, so I'm on the opposite side?", "gaps": ["反対"]},
+        {"speaker": "B", "ja": "{うん、}{時計を後ろに、}時計の前からまっすぐ行って…", "en": "Yeah. With the clock behind... go straight ahead from the clock...", "gaps": ["まっすぐ"]},
+        {"speaker": "A", "ja": "はい。", "en": "OK.", "gaps": [], "overlap": true},
+        {"speaker": "B", "ja": "二つ目の角を右。{そうしたら、}南口の階段が見えるよ。", "en": "Turn right at the second corner. Then you'll see the stairs for the south exit.", "gaps": ["角", "右", "階段"]},
+        {"speaker": "A", "ja": "二つ目を右…わかりました。{あ、}五分ぐらいで着きます。", "en": "Right at the second one... got it. Oh, I'll be there in about five minutes.", "gaps": []},
+        {"speaker": "B", "ja": "{うん、}改札の前で待ってるね。", "en": "OK, I'll wait in front of the ticket gates.", "gaps": ["改札"]}
+      ],
+      "questions": [
+        {"question": "What does Ken need to do?", "choices": ["Go straight from the clock, then right at the second corner", "Wait by the blue clock for Aiko", "Take the stairs beside the bookstore", "Go back through the ticket gates"], "answer": 0},
+        {"question": "What mistake has Ken made?", "choices": ["He got off at the wrong station", "He is on the opposite side of the station", "He went into the bookstore by mistake", "He arrived five minutes late"], "answer": 1}
+      ]
+    },
+    {
+      "id": "nat-n4-hot-spring-trip",
+      "title": "A weekend at a hot spring",
+      "jlpt": 4,
+      "topic": "travel",
+      "style": "natural",
+      "speakers": [
+        {"id": "A", "name": "高橋", "voice": "female", "age": "adult", "hint": "relaxed, contented"},
+        {"id": "B", "name": "松本", "voice": "male", "age": "adult", "hint": "curious, enthusiastic"}
+      ],
+      "lines": [
+        {"speaker": "B", "ja": "{あ、}高橋さん、週末、温泉に行ったんでしょ？どうだった？", "en": "Oh, Takahashi, you went to a hot spring this weekend, right? How was it?", "gaps": ["週末", "温泉"]},
+        {"speaker": "A", "ja": "{うん、}すごくよかった。{なんか、}山の中の小さい旅館で。", "en": "Yeah, it was great. It was this little inn up in the mountains.", "gaps": ["山", "旅館"]},
+        {"speaker": "B", "ja": "へえ、いいなあ。", "en": "Oh, lucky you.", "gaps": [], "overlap": true},
+        {"speaker": "A", "ja": "{それで、}部屋から、{その、}川が見えて…", "en": "And from the room, um, you could see a river...", "gaps": ["部屋", "川"]},
+        {"speaker": "B", "ja": "{え、}露天風呂も？", "en": "Oh, was there an outdoor bath too?", "gaps": ["露天風呂"], "overlap": true},
+        {"speaker": "A", "ja": "あった。{でも、}夜は寒くて、長く入れなかった。", "en": "There was. But it was cold at night, so I couldn't stay in long.", "gaps": ["夜"]},
+        {"speaker": "B", "ja": "{あー、}十一月だもんね。料理は？", "en": "Ah, it is November. What about the food?", "gaps": ["料理"]},
+        {"speaker": "A", "ja": "料理が一番よかった！魚がすごくおいしくて。", "en": "The food was the best part! The fish was amazing.", "gaps": ["一番", "魚"]},
+        {"speaker": "B", "ja": "{いくら、あ、}高かった？", "en": "How much... oh, was it expensive?", "gaps": []},
+        {"speaker": "A", "ja": "{えっと、}一泊一万五千円。{まあ、}ちょっと高いけど。", "en": "Um, fifteen thousand yen a night. A bit pricey, I guess.", "gaps": ["一泊", "高い"]},
+        {"speaker": "B", "ja": "{でも、}いいね。今度、場所教えて。", "en": "Still, sounds good. Tell me where it is sometime.", "gaps": ["今度", "場所"]},
+        {"speaker": "A", "ja": "うん、あとで地図、送るね。", "en": "Sure, I'll send you a map later.", "gaps": ["地図"]}
+      ],
+      "questions": [
+        {"question": "What did Takahashi enjoy most?", "choices": ["The outdoor bath", "The view of the river", "The meals", "The low price"], "answer": 2},
+        {"question": "Why couldn't she stay long in the outdoor bath?", "choices": ["It was too cold at night", "She wanted to see the river", "Dinner was about to start", "It cost extra to use"], "answer": 0},
+        {"question": "What will Takahashi do for Matsumoto?", "choices": ["Book a room for him", "Send him a map later", "Take him there next time", "Tell him the price"], "answer": 1}
+      ]
+    }
+  ]
+}

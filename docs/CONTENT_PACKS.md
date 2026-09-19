@@ -17,8 +17,8 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | `IlrBandData.kt` (not a pack): ILR bands + abstract lexicon for the difficulty score, generated from `items/ilr_bands.json` | `packs/gen_ilr_bands.py` (`--check` verifies) | 11 | ✅ |
 | `kanji-path.sqlite` (60 levels: 243 radicals, 2,599 kanji, 7,242 words) | `packs/build_kanji_path.py` | 2 | ✅ |
 | `grammar.sqlite` (N5–N1: 829 points, 5,116 Tatoeba examples; matched in order n3, n4, n5, n2, n1 so harder points don't take easier points' sentences) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ |
-| `exam.sqlite`: JLPT blueprints + 4 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 100 passages / 306 items, AI-drafted) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 | ✅ |
-| `practice.sqlite`: 30 scenarios, 62 OPI questions, 45 dialogues, 630 minimal pairs | `packs/build_practice.py` | 6 | ✅ |
+| `exam.sqlite`: JLPT blueprints + 7 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 195 passages / 595 items, AI-drafted: core 0+–3 100/306, upper range 3+/4 80/245, liaison 2–3 15/44) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 / 12 | ✅ |
+| `practice.sqlite`: 90 scenarios (699 scripted turns), 96 OPI questions with DLI domains, 125 dialogues (40 natural), 31 drill sets (325 items), 630 minimal pairs | `packs/build_practice.py` | 6 / 12 | ✅ |
 | `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples (on-demand downloads, not bundled) | `packs/render_audio.py` | 10 | ✅ (grammar partial) |
 
 ## dictionary.sqlite
@@ -79,8 +79,8 @@ Today's immersion block matches texts to the learner with this score (`ScoredImm
     {
       "id": "dr-2-news-001",             // unique across all banks
       "exam": "DLPT_READING",            // JLPT | DLPT_READING | DLPT_LISTENING
-      "level": "2",                      // JLPT: "N5".."N1"; DLPT: "0+","1","1+","2","2+","3"
-      "textType": "news",                // free tag used in reports: sign, notice, email, narrative, news, editorial, dialogue, announcement, ...
+      "level": "2",                      // JLPT: "N5".."N1"; DLPT: "0+","1","1+","2","2+","3", upper range "3+","4"
+      "textType": "news",                // free tag used in reports and the DLPT text-type filter: sign, notice, email, narrative, news, editorial, liaison, academic, literary, lecture, ...
       "title": "Local election turnout",  // English, shown in reviews only
       "body": "…",                        // Japanese text (NFC). Listening passages leave body empty and use script.
       "script": [ {"speaker": "A", "voice": "female", "text": "…"} ],  // listening only; rendered with on-device TTS
@@ -128,12 +128,79 @@ Validation (`packs/build_exam.py`, also run on user imports): ids unique; `answe
 - `items/gen_jlpt.py generate`: deterministic, about 40 s, reads the built packs.
 - `items/gen_jlpt.py validate`: prints the coverage table.
 - `gen_jlpt.py draft` and `gen_dlpt.py draft`: draft more items through any OpenAI-compatible endpoint (e.g. the owner's Ollama); output is `source: "llm"`.
-- `items/gen_dlpt.py validate [--strict]`: checks the ILR bands in `items/ilr_bands.json` and warns when the key is the longest choice in more than 40% of a level's items.
+- `items/gen_dlpt.py validate [--strict]`: checks the ILR bands in `items/ilr_bands.json` and warns when the key is the longest choice in more than 40% of a level's items. Upper-range (3+/4) passages must have 2–4 items and an upper-range text type (reading: editorial, academic, essay, literary, commentary; listening: lecture, discussion, commentary, interview, speech). The 3+/4 bands are provisional (drafted passages only). Banks: `dlpt_reading.json` + `dlpt_listening.json` (core 0+–3), `dlpt_reading_upper.json` (30 passages each at 3+ and 4, 184 items), `dlpt_listening_upper.json` (10 scripts each at 3+ and 4, 61 items), `dlpt_liaison.json` (military/liaison text type at 2, 2+ and 3: 9 reading + 6 listening, 44 items).
 - `items/review.py`: human review. It sets `verified: true` and adds `reviewed {by, on}` (DECISIONS D-034).
 - **Measures used by the band checks:**
   - Length is non-space characters.
   - Kanji density is kanji / characters.
   - The abstract ratio is abstract-lexicon hits per token run.
+
+## Practice pack (`practice.sqlite`, Phase 12 content)
+
+Built by `packs/build_practice.py` from `packs/speaking/scenarios.json`, `packs/speaking/opi.json` and
+`packs/listening/dialogues.json`, plus the drill sets it derives. Everything drafted is `source: "llm"` and shows the
+AI badge until reviewed (rule 10); `items/review.py --ingest` flips entries to `verified` in those JSON files.
+
+**Current build (2026-09-18):**
+
+| Content | Count | Notes |
+|---|---|---|
+| Role-play scenarios | 90 (699 scripted turns) | 30 original + 60 new (business 10, admin 10, military 10, travel 10, family 8, medical 7, culture 4, school 1). Turns 4–12: 4×5, 5×10, 6×14, 7×14, 8×14, 9×11, 10×11, 11×6, 12×5. Every turn has 2–3 `accept` alternatives |
+| OPI questions | 96 over ILR 0+–3 | every question has a DLI-style domain; 2, 2+ and 3 each cover family, work, current events, hypotheticals and abstract topics |
+| Listening dialogues | 125 (1,214 lines, 1,434 gap targets, 306 questions) | scripted: N5 14, N4 23, N3 26, N2 12, N1 10; natural: N5 10, N4 10, N3 10, N2 10 (493 lines, 73 overlapping) |
+| Drill sets | 31 (325 items) | grammar: N5 5, N4 5, N3 5, N2 4, N1 3 (10 sentences each, ord-0 Tatoeba examples); dialogue lines: scripted N5–N1 and natural N5–N2 (12 each; natural N2 9) |
+| Minimal pairs | 630 | unchanged |
+
+### Source files and re-runs
+
+- `speaking/author_scenarios.py` and `listening/author_dialogues.py` merge three sources into the JSON: the entries
+  written in the script, then `batches/*.json` (same entry format as the JSON; the Phase 12 launch batches are
+  `scenarios_business_admin`, `scenarios_family_medical`, `scenarios_military_travel`, `natural_beginner`,
+  `natural_intermediate`, `scripted_n4_n3`, `scripted_n2_n1`), then entries only in the JSON. **Re-runs never
+  duplicate ids**: an authored entry replaces its JSON copy unless a reviewer touched that copy (`source: "verified"`,
+  `reviewed` or `rejected`), which is kept unless `--force`; the same id in two sources is an error.
+- `… draft --endpoint URL --model NAME` drafts more through any OpenAI-compatible endpoint (the owner's Ollama),
+  validates each draft with the build's own checks (JMdict included), gives it an unused id, appends it to
+  `batches/llm-drafts.json` and merges:
+
+```bash
+uv run python packs/listening/author_dialogues.py draft --endpoint http://<lan-ip>:11434/v1 --model qwen2.5:14b \
+    --level 3 --style natural --count 5 [--topic "..."]
+uv run python packs/speaking/author_scenarios.py draft --endpoint http://<lan-ip>:11434/v1 --model qwen2.5:14b \
+    --level 2 --category business --turns 9 --count 5
+uv run python packs/build_practice.py --check packs/listening/batches/new.json   # validate a batch, write nothing
+uv run python packs/test_practice_authoring.py                                   # markup, merge and draft tests
+```
+
+### Formats
+
+- **Scenario:** `{id, titleEn, titleJa, jlpt, ilr, category, setting, learnerRole, partnerRole, register, goals[2–4],
+  vocabulary[≥3 JMdict forms], phrases[≥2], partnerNotes?, turns[4–12]: {partnerJa, partnerEn, intent, sample,
+  accept[]}}`. Categories: daily, health, travel, work, business, official, admin, military, family, social, school,
+  culture. The build writes the LLM system prompt from the fields (role, setting, register, level, goals, vocabulary,
+  then `partnerNotes`). `accept` → `scripted_turn.accept` (JSON array) → `ScriptedTurn.accept`.
+- **OPI question:** `[phase, promptJa, promptEn, note, domain]`; domain ∈ personal, family, work, daily_life, travel,
+  current_events, hypothetical, abstract, situation (role-plays). The build fails if ILR 2, 2+ or 3 lacks one of the
+  five DLI domains.
+- **Dialogue:** `{id, title, jlpt 1–5, topic, style: scripted|natural, speakers[2]: {id, name, voice, age, hint?},
+  lines: {speaker, ja, en, gaps[], overlap?}, questions: {question, choices, answer}}`. Scripted dialogues have 6–12
+  lines, natural ones 8–18. `hint` is a delivery note for the renderer and reviewers.
+- **Filler markup (natural style):** fillers, hesitations and abandoned restarts are wrapped in braces in `ja`:
+  `{えっと、}明日{、あ、}明後日なんだけど`. Braces don't nest; a natural dialogue needs at least 3 spans; the markup
+  is an error in a scripted dialogue. The build strips the braces (the stored and spoken `ja` keeps the words) and
+  stores the spans as `dialogue_line.fillers`, JSON `[[start, end], …]` in UTF-16 units. `DialogueLine.segments()`
+  splits a line into filler / non-filler runs for greying, and `withoutFillers` drops them. Gap words must occur
+  outside the fillers (the first such occurrence is used). `overlap: true` → `dialogue_line.overlap = 1`: the line
+  starts before the previous one ends (backchannels such as うん。/へえ。 are their own short lines, and
+  interruptions end the previous line with …).
+- **Drill sets** (`drill_set`, `drill_item`; BRIEF_V2 §6.10, Swotter format): derived at build time, no LLM step.
+  Grammar sets take, per level, points spread evenly in order, each with its first rendered example (ord 0 or 1,
+  6–40 characters, with an English translation). Dialogue sets take lines of 6–32 characters without fillers or
+  overlaps, round robin over one (style, level) group of dialogues. Items: `prompt_en` (the cue), `answer_ja`,
+  `audio_key` (an existing `grammar/…` or `dialogue/…` clip), `ref` (`g:<point>` / `d:<dialogue>`), `source`. A set
+  is `derived` when every item is Tatoeba text, `llm` when any is AI-drafted. Playback timing is shared:
+  `DrillPlayback.plan(set, DrillTiming)` → prompt, answer pause (fixed, or proportional to the answer's clip length
+  or estimate), model answer, repeat pause, gap; `DrillCursor` steps through it for a hands-free player.
 
 ## Audio packs (`audio-<set>.zip`, BRIEF_V2 §5.6)
 
@@ -207,7 +274,18 @@ Total: 3,711 clips, 75 MB, about 3.2 hours of audio. Rendering took 2 h 39 min o
 
 **Voice change (2026-09-19, D-170):** re-rendered the 40 clips that used 青山龍星 with the lower 玄野武宏 variant: 20 exam lines in 6 two-male scripts and 20 dialogue lines in 6 dialogues (4 with a senior male, 2 with two males). Every other clip came from the cache: exam 20 rendered / 1,012 cached (3.08 s per clip, 73 s wall), dialogues 20 / 270 (1.09 s per clip, 24 s wall), about 100 s in all. Pitch, minimal pairs and grammar never used him (つむぎ only; grammar is 829 clips, first example per point, all even ords), so they weren't rebuilt and their zips are byte-identical. New sizes: exam 47.1 MB, dialogues 5.2 MB.
 
-**Left to render:** grammar examples 2..n. `render_audio.py grammar` renders the second example per point (+829 clips, ~35 min here); `--grammar-all` renders the other 6,774 (~4.5 h here, minutes with a VOICEVOX GPU build). Both reuse the cache.
+**Left to render (Phase 12, not run here; the coordinator renders):**
+- `dialogues`: 1,214 lines now (was 290). The 80 new dialogues add 924 lines, and the question rework edited lines in
+  16 original dialogues (n5-morning, n5-shop-apples, n5-weekend, n5-station, n5-restaurant, n5-birthday, n5-library,
+  n5-weather, n5-phone-number, n5-bus, n5-hobby, n4-lost-wallet, n4-gift, n4-recycling, n4-homestay, n3-environment),
+  so those lines re-render too; everything else comes from the cache. Natural dialogues render like any other
+  dialogue: the fillers are in the text and are spoken; the app overlaps `overlap` lines at playback.
+- `exam`: the upper-range listening bank (20 scripts) and the liaison bank (6 scripts) add 191 lines, long ones
+  (3+/4 scripts are 800–1,100 characters).
+- Drill sets need no set of their own: every answer is a `grammar/<point>/0` or `dialogue/<id>/<ord>` clip (all 220
+  grammar answers use ord 0, already in the published grammar pack) and the English cues use system TTS.
+
+**Also left to render:** grammar examples 2..n. `render_audio.py grammar` renders the second example per point (+829 clips, ~35 min here); `--grammar-all` renders the other 6,774 (~4.5 h here, minutes with a VOICEVOX GPU build). Both reuse the cache.
 
 ### Moving rendered audio between machines
 

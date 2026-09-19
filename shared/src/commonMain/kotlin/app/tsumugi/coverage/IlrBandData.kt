@@ -22,6 +22,8 @@ object IlrBandData {
         IlrBand("2", 250, 700, 0.22, 0.55, 0.0, 0.06),
         IlrBand("2+", 350, 900, 0.25, 0.55, 0.02, 0.12),
         IlrBand("3", 450, 1200, 0.28, 0.6, 0.02, 0.2),
+        IlrBand("3+", 600, 1600, 0.22, 0.6, 0.01, 0.25),
+        IlrBand("4", 700, 2000, 0.22, 0.62, 0.01, 0.3),
     )
 
     val abstractLexicon: List<String> = listOf(
