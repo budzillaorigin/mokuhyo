@@ -25,9 +25,8 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | `exam.sqlite`: JLPT blueprints + 4 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 100 passages / 306 items, AI-drafted) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 | ✅ |
 | `practice.sqlite`: 30 scenarios, 62 OPI questions, 45 dialogues, 630 minimal pairs | `packs/build_practice.py` | 6 | ✅ |
 | `tracks.sqlite`: 7 interest/domain tracks, 2629 words, 84 scenarios, 54 dialogues, 458 drills | `packs/build_tracks.py` from `packs/tracks/*.json` | 12 | ✅ (AI-drafted, badge on) |
-| `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples (on-demand downloads, not bundled) | `packs/render_audio.py` | 10 | ✅ (grammar partial) |
 | `readers.sqlite`: graded readers, 6 levels (N6 "level 0" … N1): 120 stories with read-along lines, vocabulary lists, comprehension questions and genre tasks (AI-drafted) | `packs/readers/build_readers.py` from `packs/readers/stories/*.json` | 12 | ✅ |
-| `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples, graded readers (on-demand downloads, not bundled) | `packs/render_audio.py` | 10 | ✅ (grammar partial, readers not rendered yet) |
+| `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples, graded readers, track dialogues and performances (7,820 clips, 213 MB; pitch + minimal pairs bundled, the rest on-demand downloads) | `packs/render_audio.py` | 10 / 12 | ✅ (grammar partial: 1 example per point) |
 
 ## dictionary.sqlite
 
@@ -113,7 +112,7 @@ The §6.5 targets were: Gaming ~140 kanji / 600 words, Business 30 situations, S
 - **`readings`:** `{id, title, ilr, genre, body, questions: [{question, choices, answer}]}`. Length and kanji density are checked against `items/ilr_bands.json`.
 - **`links`:** `{title, url (https), note}`. Link only.
 
-**Ids** are `<track>-<kind>-NNN` (a-z, 0-9, `-`). They are unique across tracks and never equal a practice-pack id, so audio keys `dialogue/<id>/<ord>` can't collide.
+**Ids** are `<track>-<kind>-NNN` (a-z, 0-9, `-`). They are unique across tracks and never equal a practice-pack id, so audio keys `dialogue/<id>/<ord>` can't collide. Track dialogue and performance audio ships in `audio-tracks.zip` (see Audio packs; D-240).
 
 ### Validator
 
@@ -411,7 +410,7 @@ uv run python packs/test_practice_authoring.py                                  
 
 ## Audio packs (`audio-<set>.zip`, BRIEF_V2 §5.6)
 
-Pre-rendered VOICEVOX speech for the audio the app promises to keep consistent (CLAUDE.md rule 20). Built by `tools/packs/render_audio.py` into `content/packs/` (git-ignored). The packs are **not bundled**: they're installed on demand from a URL the learner sets, or from a file picked in Files (DECISIONS D-095..D-097). Without a pack the app falls back to system TTS, except the pitch test, which stays hidden.
+Pre-rendered VOICEVOX speech for the audio the app promises to keep consistent (CLAUDE.md rule 20). Built by `tools/packs/render_audio.py` into `content/packs/` (git-ignored). Only `audio-pitch.zip` and `audio-minimal-pairs.zip` are bundled in the app (Android `bundlePacks`, the Xcode "Bundle Content Packs" phase, D-097/D-180). The other sets are installed on demand from a URL the learner sets, or from a file picked in Files (D-095, D-096). Without a pack the app falls back to system TTS, except the pitch test, which stays hidden.
 
 ### Format
 
@@ -433,6 +432,7 @@ The app builds keys only with `app.tsumugi.audio.AudioKeys` and looks them up wi
 | `minimal-pairs` | `pair/<id>/a`, `pair/<id>/b` | `practice.sqlite` `minimal_pair`; PITCH pairs spoken with が |
 | `pitch` | `pitch/<item id>` (`p<JMdict id>`) | built by the renderer from dictionary words with one Kanjium accent; spoken as reading + が |
 | `grammar` | `grammar/<point id>/<ord>` | `grammar.sqlite` `grammar_example`; default 2 per point, `--grammar-all` for all |
+| `tracks` | `dialogue/<track dialogue id>/<ord>`, `perform/<drill id>/<line index>` | `tracks.sqlite` `track_dialogue_line`, and every line (both roles) of each `perform` drill's `lines`. Dialogue keys are the practice keys: track ids are prefixed, so they never collide, and the app looks a `dialogue/…` key up in the dialogues pack, then the tracks pack (D-240). Track scenario partner lines aren't rendered (system TTS, like practice role-plays) |
 | `readers` | `reader/<story id>/<sentence index>` | `readers.sqlite` `reader_sentence`, one clip per reader sentence. 春日部つむぎ narrates; speech (a line opening with 「, optionally after the speaker's name) goes to the cast voice: female 四国めたん, male 玄野武宏, a second or older man the lower 玄野武宏 (D-205). The speaker-name prefix isn't spoken. Speed: level 0 0.85, N5 0.9, N4 0.95 |
 
 ### How to render
@@ -453,6 +453,7 @@ uv run python packs/render_audio.py grammar --grammar-all    # every grammar exa
 uv run python packs/render_audio.py exam --endpoint http://<lan-ip>:50021   # engine on another PC
 uv run python packs/render_audio.py readers                 # graded readers (needs content/packs/readers.sqlite)
 uv run python packs/render_audio.py readers --dry-run       # count the read-along lines
+uv run python packs/render_audio.py tracks                  # track dialogues + performances (needs content/packs/tracks.sqlite)
 ```
 
 **Re-running is safe and cheap.** Clips are cached in `tools/.cache/audio/clips/`, keyed by a hash of engine version, voice, text or kana, accent, speed/pitch/intonation and encoder settings. A re-run renders only what's new, for example after the banks grow. An interrupted run resumes where it stopped. Per-key speed/pitch/intonation overrides go in `tools/packs/audio/overrides.json`. To publish, upload `audio-manifest.json` and the zips to the same folder.
@@ -484,19 +485,22 @@ Total: 3,711 clips, 75 MB, about 3.2 hours of audio. Rendering took 2 h 39 min o
 
 **Voice change (2026-09-19, D-170):** re-rendered the 40 clips that used 青山龍星 with the lower 玄野武宏 variant: 20 exam lines in 6 two-male scripts and 20 dialogue lines in 6 dialogues (4 with a senior male, 2 with two males). Every other clip came from the cache: exam 20 rendered / 1,012 cached (3.08 s per clip, 73 s wall), dialogues 20 / 270 (1.09 s per clip, 24 s wall), about 100 s in all. Pitch, minimal pairs and grammar never used him (つむぎ only; grammar is 829 clips, first example per point, all even ords), so they weren't rebuilt and their zips are byte-identical. New sizes: exam 47.1 MB, dialogues 5.2 MB.
 
-**Left to render (Phase 12, not run here; the coordinator renders):**
-- `dialogues`: 1,214 lines now (was 290). The 80 new dialogues add 924 lines, and the question rework edited lines in
-  16 original dialogues (n5-morning, n5-shop-apples, n5-weekend, n5-station, n5-restaurant, n5-birthday, n5-library,
-  n5-weather, n5-phone-number, n5-bus, n5-hobby, n4-lost-wallet, n4-gift, n4-recycling, n4-homestay, n3-environment),
-  so those lines re-render too; everything else comes from the cache. Natural dialogues render like any other
-  dialogue: the fillers are in the text and are spoken; the app overlaps `overlap` lines at playback.
-- `exam`: the upper-range listening bank (20 scripts) and the liaison bank (6 scripts) add 191 lines, long ones
-  (3+/4 scripts are 800–1,100 characters).
-- Drill sets need no set of their own: every answer is a `grammar/<point>/0` or `dialogue/<id>/<ord>` clip (all 220
-  grammar answers use ord 0, already in the published grammar pack) and the English cues use system TTS.
+### Phase 12 render (2026-09-19, same engine and machine)
+
+| Set | Clips | Zip size | Audio | Rendered / cached | Seconds per clip | Wall time | Notes |
+|---|---|---|---|---|---|---|---|
+| `tracks` (new) | 601: 422 dialogue lines (54 dialogues) + 179 performance lines (20 scripts) | 14.6 MB | 36.8 min | 599 / 2 | 2.93 | 29 min | 7 tracks; つむぎ 264, 玄野武宏 228 (+77 lower variant), めたん 32 |
+| `dialogues` | 1,214 lines (125 dialogues; was 290) | 34.8 MB | 88.6 min | 964 / 250 | 4.09 | 66 min | 80 new dialogues (natural ones included: fillers spoken, overlaps are separate clips the app overlays) + edited lines in 16 originals |
+| `exam` | 1,223 lines (was 1,032) | 68.8 MB | 177.3 min | 191 / 1,032 | 11.22 | 36 min | upper-range (3+/4) and liaison listening scripts; long lines |
+| `readers` (new) | 2,393 lines (120 stories) | 71.9 MB | 183.9 min | 2,367 / 26 | 2.59 | 102 min | |
+| `pitch`, `minimal-pairs`, `grammar` | 300, 1,260, 829 | 2.1, 6.6, 14.4 MB | | not re-run | | | unchanged, byte-identical to the 2026-09-18 build |
+
+Rendered 4,121 new clips in 3 h 53 min of wall time (other agents shared the CPU). **All sets now:** 7,820 clips, 213 MB, about 9.0 hours of audio. Bundled: pitch + minimal pairs, 8.6 MB (1,560 clips). Downloads: dialogues, exam, grammar, readers, tracks, 204.6 MB (6,260 clips). Nothing was skipped.
+
+Drill sets need no set of their own: every answer is a `grammar/<point>/0` or `dialogue/<id>/<ord>` clip (all 220 grammar answers use ord 0, already in the grammar pack), and the English cues use system TTS.
 
 **Also left to render:** grammar examples 2..n. `render_audio.py grammar` renders the second example per point (+829 clips, ~35 min here); `--grammar-all` renders the other 6,774 (~4.5 h here, minutes with a VOICEVOX GPU build). Both reuse the cache.
 
 ### Moving rendered audio between machines
 
-`tools/packs/audio_release.py publish` uploads `content/packs/audio-*.zip` and `audio-manifest.json` to a pre-release of this repo, tagged `audio-packs-<date>`, and pins their hashes in `tools/packs/audio.lock`. `… fetch` downloads and verifies them on another machine, e.g. the Mac. The current release is `audio-packs-2026-09-19` ("Audio packs (VOICEVOX) 2026-09-19", republished the same day after the voice change; the earlier release under that tag was deleted): pitch 300, minimal pairs 1,260, dialogues 290, exam 1,032, grammar 829 clips (the first example per point). Its notes carry the VOICEVOX credits. `publish` compares GitHub's asset digest, not just the size, so a same-day re-render replaces the changed files. This is for the owner's machines only. Learners install packs from Files or from a URL they type in Settings → Audio packs; there is no default download URL (D-096).
+`tools/packs/audio_release.py publish` uploads `content/packs/audio-*.zip` and `audio-manifest.json` to a pre-release of this repo, tagged `audio-packs-<date>`, and pins their hashes in `tools/packs/audio.lock`. `… fetch` downloads and verifies them on another machine, e.g. the Mac. The current release is `audio-packs-2026-09-19` ("Audio packs (VOICEVOX) 2026-09-19"). It was republished the same day after the voice change (the earlier release under that tag was deleted), then updated in place with the Phase 12 render: pitch 300, minimal pairs 1,260, dialogues 1,214, exam 1,223, grammar 829 (the first example per point), readers 2,393 and tracks 601 clips. Its notes carry the VOICEVOX credits. `publish` compares GitHub's asset digest, not just the size, so a same-day re-render replaces the changed files. This is for the owner's machines only. Learners install packs from Files or from a URL they type in Settings → Audio packs; there is no default download URL (D-096).

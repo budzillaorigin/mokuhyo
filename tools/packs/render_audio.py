@@ -5,6 +5,7 @@
     uv run python packs/render_audio.py grammar --grammar-all        # every grammar example
     uv run python packs/render_audio.py exam --dry-run               # count clips, render nothing
     uv run python packs/render_audio.py readers                      # graded readers, sentence by sentence
+    uv run python packs/render_audio.py tracks                       # interest-track dialogues and performances
     uv run python packs/render_audio.py pitch --endpoint http://<lan-ip>:50021
 
 Sets and clip keys (the app looks clips up by these; see shared `app.tsumugi.audio.AudioKeys`):
@@ -15,6 +16,8 @@ Sets and clip keys (the app looks clips up by these; see shared `app.tsumugi.aud
     pitch          pitch/<item id>                              pitch-accent test items (built here, items.json)
     grammar        grammar/<point id>/<example ord>             grammar.sqlite example sentences
     readers        reader/<story id>/<sentence index>            readers.sqlite read-along lines (one clip per sentence)
+    tracks         dialogue/<track dialogue id>/<line ord>      tracks.sqlite dialogues (ids carry the track prefix)
+                   perform/<drill id>/<line index>             tracks.sqlite memorize-and-perform scripts, both roles
 
 Each clip is synthesized with /audio_query (or /accent_phrases for single words) + /synthesis, encoded to
 AAC-LC .m4a (24 kHz mono, 48 kbps; D-091) with ffmpeg, and cached in tools/.cache/audio by a hash of everything
@@ -34,6 +37,11 @@ Phase 12 content (DECISIONS D-222, D-224):
   distinct voices from the allocator as before; speaker `hint`s are for reviewers and aren't used here.
 - Drill sets add no set: their model answers point at existing keys (grammar/<point>/0, dialogue/<id>/<ord>), and
   the English cues are spoken with system TTS. Rendering `grammar` (default 2 per point) and `dialogues` covers them.
+
+Tracks (D-240): track dialogues keep the practice key `dialogue/<id>/<ord>` (track ids are prefixed, so they never
+collide, D-210) but ship in their own `audio-tracks.zip`; the app looks a dialogue key up in the dialogues pack, then
+the tracks pack. Performance scripts get `perform/<drill id>/<line index>`, every line (the learner's lines are the
+model delivery). Track scenario partner lines stay on system TTS, like the practice role-plays.
 """
 
 from __future__ import annotations
@@ -60,7 +68,7 @@ from pathlib import Path
 
 from common import CACHE, PACKS, log, nfc, to_hiragana
 
-SETS = ("exam", "dialogues", "minimal-pairs", "pitch", "grammar", "readers")
+SETS = ("exam", "dialogues", "minimal-pairs", "pitch", "grammar", "readers", "tracks")
 FORMAT = 1  # index.json layout version; the app refuses packs with a newer major format
 RENDER_STYLE = "1"  # bump to invalidate every cached clip (e.g. a change to the stylized contour)
 
@@ -219,22 +227,57 @@ def exam_clips(packs: Path) -> list[Clip]:
     return clips
 
 
+def script_clips(prefix: str, script_id: str, speakers: list[dict], jlpt, lines) -> list[Clip]:
+    """Clips for one two-speaker script: voices allocated in declared speaker order, so A/B are stable."""
+    alloc = Allocator()
+    for sp in speakers:
+        alloc.voice(sp["id"], sp.get("voice"), sp.get("age"))
+    clips = []
+    for ord_, speaker, ja in lines:
+        text = nfc(ja)  # unstripped, as the first builds hashed it
+        if not text.strip():
+            continue
+        info = next((s for s in speakers if s["id"] == speaker), {})
+        v = alloc.voice(speaker, info.get("voice"), info.get("age"))
+        speed = round(speed_for(str(jlpt if jlpt is not None else "")) + v.speed, 3)
+        clips.append(Clip(f"{prefix}/{script_id}/{ord_}", v.character, text, speed=speed, pitch=v.pitch))
+    return clips
+
+
 def dialogue_clips(packs: Path) -> list[Clip]:
     db = sqlite3.connect(packs / "practice.sqlite")
     clips: list[Clip] = []
-    speakers = {d: json.loads(s) for d, s in db.execute("SELECT id, speakers FROM dialogue")}
-    jlpt = dict(db.execute("SELECT id, jlpt FROM dialogue"))
-    allocs: dict[str, Allocator] = {}
+    lines: dict[str, list] = defaultdict(list)
     for did, ord_, speaker, ja in db.execute("SELECT dialogue_id, ord, speaker, ja FROM dialogue_line ORDER BY dialogue_id, ord"):
-        alloc = allocs.get(did)
-        if alloc is None:
-            alloc = allocs[did] = Allocator()
-            for sp in speakers.get(did, []):  # allocate in declared order so A/B are stable
-                alloc.voice(sp["id"], sp.get("voice"), sp.get("age"))
-        info = next((s for s in speakers.get(did, []) if s["id"] == speaker), {})
-        v = alloc.voice(speaker, info.get("voice"), info.get("age"))
-        speed = round(speed_for(str(jlpt.get(did, ""))) + v.speed, 3)
-        clips.append(Clip(f"dialogue/{did}/{ord_}", v.character, nfc(ja), speed=speed, pitch=v.pitch))
+        lines[did].append((ord_, speaker, ja))
+    meta = {d: (json.loads(s), j) for d, s, j in db.execute("SELECT id, speakers, jlpt FROM dialogue")}
+    for did in sorted(lines):
+        speakers, jlpt = meta.get(did, ([], None))
+        clips += script_clips("dialogue", did, speakers, jlpt, lines[did])
+    db.close()
+    return clips
+
+
+def track_clips(packs: Path) -> list[Clip]:
+    """tracks.sqlite (build_tracks.py): dialogue lines under the practice key scheme, and every line of each
+    memorize-and-perform script as perform/<drill id>/<index into payload.lines>. Scenarios are skipped (TTS)."""
+    path = packs / "tracks.sqlite"
+    if not path.exists():
+        log(f"tracks: {path} is missing; build it with packs/build_tracks.py first")
+        return []
+    db = sqlite3.connect(path)
+    clips: list[Clip] = []
+    lines: dict[str, list] = defaultdict(list)
+    for did, ord_, speaker, ja in db.execute(
+        "SELECT dialogue_id, ord, speaker, ja FROM track_dialogue_line ORDER BY dialogue_id, ord"
+    ):
+        lines[did].append((ord_, speaker, ja))
+    for did, speakers, jlpt in db.execute("SELECT id, speakers, jlpt FROM track_dialogue ORDER BY id"):
+        clips += script_clips("dialogue", did, json.loads(speakers), jlpt, lines.get(did, []))
+    for drill_id, jlpt, payload in db.execute("SELECT id, jlpt, payload FROM track_drill WHERE type = 'perform' ORDER BY id"):
+        p = json.loads(payload)
+        script = [(i, ln["speaker"], ln["ja"]) for i, ln in enumerate(p.get("lines", []))]
+        clips += script_clips("perform", drill_id, p.get("speakers", []), jlpt, script)
     db.close()
     return clips
 
@@ -723,6 +766,12 @@ def main() -> None:
             if not clips:
                 continue
             meta["stories"] = len({c.key.split("/")[1] for c in clips})
+        elif name == "tracks":
+            clips = track_clips(args.packs_dir)
+            if not clips:
+                continue
+            meta["dialogues"] = len({c.key.split("/")[1] for c in clips if c.key.startswith("dialogue/")})
+            meta["performances"] = len({c.key.split("/")[1] for c in clips if c.key.startswith("perform/")})
         else:
             per = None if args.grammar_all else args.grammar_per_point
             clips = grammar_clips(args.packs_dir, per)

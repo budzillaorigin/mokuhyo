@@ -4,26 +4,36 @@ package app.tsumugi.audio
  * The pre-rendered audio sets (BRIEF_V2 §5.6, D-090). Each ships as `audio-<id>.zip`, built by
  * `tools/packs/render_audio.py`, and is installed on demand (or bundled, D-097).
  */
-enum class AudioSet(val id: String, internal val keyPrefix: String) {
-    EXAM("exam", "exam"),
-    DIALOGUES("dialogues", "dialogue"),
-    MINIMAL_PAIRS("minimal-pairs", "pair"),
-    PITCH("pitch", "pitch"),
-    GRAMMAR("grammar", "grammar"),
-    READERS("readers", "reader"),
+enum class AudioSet(val id: String, internal val keyPrefixes: List<String>) {
+    EXAM("exam", listOf("exam")),
+    DIALOGUES("dialogues", listOf("dialogue")),
+    MINIMAL_PAIRS("minimal-pairs", listOf("pair")),
+    PITCH("pitch", listOf("pitch")),
+    GRAMMAR("grammar", listOf("grammar")),
+    READERS("readers", listOf("reader")),
+
+    /**
+     * Interest-track audio (`tracks.sqlite`, D-240): track dialogues keep the ordinary [AudioKeys.dialogue] key,
+     * because track ids are prefixed and never equal a practice id (D-210, D-214), so the shared dialogue screens
+     * look them up unchanged; memorize-and-perform lines use [AudioKeys.performance].
+     */
+    TRACKS("tracks", listOf("dialogue", "perform")),
     ;
 
     /** File name of the pack archive, e.g. `audio-pitch.zip`. */
     val fileName: String get() = "audio-$id.zip"
 
+    /** True when [key]'s first segment is one this set's archive may contain. */
+    fun owns(key: String): Boolean = key.substringBefore('/') in keyPrefixes
+
     companion object {
         fun fromId(id: String): AudioSet? = entries.firstOrNull { it.id == id }
 
-        /** The set a clip key belongs to, from its first segment. */
-        fun ofKey(key: String): AudioSet? {
-            val prefix = key.substringBefore('/')
-            return entries.firstOrNull { it.keyPrefix == prefix }
-        }
+        /** The primary set a clip key belongs to, from its first segment (`dialogue/…` → [DIALOGUES]). */
+        fun ofKey(key: String): AudioSet? = entries.firstOrNull { it.owns(key) }
+
+        /** Every set that may hold [key], primary first: `dialogue/…` is in [DIALOGUES] or [TRACKS]. */
+        fun candidatesOf(key: String): List<AudioSet> = entries.filter { it.owns(key) }
     }
 }
 
@@ -42,6 +52,8 @@ enum class PairSide(internal val code: String) { A("a"), B("b") }
  * | pitch | `pitch/<item id>` | `items.json` in the pitch pack ([PitchTestItem.id]) |
  * | grammar | `grammar/<point id>/<ord>` | `grammar_example(point_id, ord)` |
  * | readers | `reader/<story id>/<sentence index>` | `readers.sqlite` `reader_sentence(story_id, idx)` |
+ * | tracks | `dialogue/<track dialogue id>/<ord>` | `tracks.sqlite` `track_dialogue_line(dialogue_id, ord)` |
+ * | tracks | `perform/<drill id>/<line index>` | `tracks.sqlite` `track_drill` of type perform, 0-based `lines` index |
  */
 object AudioKeys {
     /** One line of an exam listening script. [ownerId] is the passage id, or the item id for per-item scripts. */
@@ -50,7 +62,11 @@ object AudioKeys {
     /** Every line of an exam script, in order. */
     fun examScript(ownerId: String, lineCount: Int): List<String> = List(lineCount) { exam(ownerId, it) }
 
+    /** A practice or track dialogue line (ids never collide: track ids carry their track prefix, D-210). */
     fun dialogue(dialogueId: String, lineOrd: Int): String = "dialogue/$dialogueId/$lineOrd"
+
+    /** One line of a memorize-and-perform script: [lineIndex] is the index into `PerformDrill.lines`, both speakers. */
+    fun performance(drillId: String, lineIndex: Int): String = "perform/$drillId/$lineIndex"
 
     fun minimalPair(pairId: Long, side: PairSide): String = "pair/$pairId/${side.code}"
 

@@ -134,6 +134,31 @@ class AudioPackRepositoryTest {
     }
 
     @Test
+    fun trackDialoguesResolveFromTheTracksPack() = runTest {
+        // D-240: track dialogues keep dialogue/<id>/<ord> keys (the shared screens build them), but ship in
+        // audio-tracks.zip next to the perform/<drill>/<line> clips.
+        val repo = repo()
+        val dialogues = TestZip.pack("dialogues", mapOf(AudioKeys.dialogue("n5-morning", 0) to "practice".encodeToByteArray()))
+        val tracks = TestZip.pack("tracks", mapOf(
+            AudioKeys.dialogue("business-dl-001", 0) to "track".encodeToByteArray(),
+            AudioKeys.performance("performing-perf-001", 2) to "perform".encodeToByteArray(),
+        ))
+        assertNull(repo.clip(AudioKeys.dialogue("business-dl-001", 0)))
+        assertEquals(AudioSet.TRACKS, repo.installFrom(Buffer().write(tracks)).set)
+        assertContentEquals("track".encodeToByteArray(), fs.read(repo.clip(AudioKeys.dialogue("business-dl-001", 0))!!) { readByteArray() })
+        assertContentEquals("perform".encodeToByteArray(), fs.read(repo.clip(AudioKeys.performance("performing-perf-001", 2))!!) { readByteArray() })
+        assertNull(repo.clip(AudioKeys.dialogue("n5-morning", 0)), "dialogues pack not installed")
+        repo.installFrom(Buffer().write(dialogues))
+        assertContentEquals("practice".encodeToByteArray(), fs.read(repo.clip(AudioKeys.dialogue("n5-morning", 0))!!) { readByteArray() })
+        assertNotNull(repo.clip(AudioKeys.dialogue("business-dl-001", 0)), "still found in the tracks pack")
+        val foreign = TestZip.pack("tracks", mapOf(AudioKeys.reader("gr-n5-001", 0) to "x".encodeToByteArray()))
+        assertFailsWith<PackInstallException> { repo.installFrom(Buffer().write(foreign)) }
+        val performInDialogues = TestZip.pack("dialogues", mapOf(AudioKeys.performance("p", 0) to "x".encodeToByteArray()))
+        assertFailsWith<PackInstallException> { repo.installFrom(Buffer().write(performInDialogues)) }
+        assertTrue(leftovers().isEmpty())
+    }
+
+    @Test
     fun notEnoughSpaceFailsBeforeWriting() = runTest {
         val repo = repo(free = 10)
         assertFailsWith<PackInstallException> { repo.installFrom(Buffer().write(FIXTURE), entry(FIXTURE)) }
