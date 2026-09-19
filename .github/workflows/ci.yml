@@ -1,9 +1,12 @@
 name: CI
 
+# Automatic runs are paused (owner decision, 2026-09-18): the account's Actions minutes ran out, and macOS minutes
+# count 10x. Run it by hand from the Actions tab (or `gh workflow run CI --ref v2`) when you want a check.
+# To resume automatic runs, restore:
+#   push:
+#     branches: [main, v2]
+#   pull_request:
 on:
-  push:
-    branches: [main, v2]
-  pull_request:
   workflow_dispatch:
 
 concurrency:

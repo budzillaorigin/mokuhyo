@@ -771,6 +771,9 @@ Learn → Kana lists both scripts' lessons with progress, runs each lesson (kana
 - **Kana (G-13):** stroke practice reuses the writing canvas (`WritingPracticeScreen` with the lesson's kana; KanjiVG covers kana), which shows its honest "no stroke data" state without the dictionary pack. Onboarding passes `kanjiKnown` = the number of "I know it" answers, or null when the check was skipped.
 - **Content review (G-16):** the Me entry is hidden unless the device setting `dev.contentReview` is on (Settings → Developer; rule 16: a developer tool on one phone shouldn't appear on the others). Reject requires a note. The verdicts JSON goes out through the share sheet.
 
+### D-140: CI runs only on demand (2026-09-18)
+The GitHub account ran out of Actions minutes: the repo is private, and macOS runner minutes count 10×. The owner chose to pause automatic CI and verify iOS builds on the Mac, so `.github/workflows/ci.yml` now triggers only on `workflow_dispatch`. Swift written after this point is compiled for the first time on the owner's Mac. Every Swift interop spot a change isn't sure about is listed in `docs/PROGRESS.md` under "iOS: unverified since CI paused", so the first Mac build can be triaged quickly. Android and shared code are still built and tested locally on every change.
+
 ---
 
 ## Open decisions (BRIEF.md §14)
