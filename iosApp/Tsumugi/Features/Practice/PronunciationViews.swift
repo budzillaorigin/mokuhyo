@@ -160,7 +160,7 @@ struct PronunciationPracticeView: View {
         let graph = app.graph
         Task {
             let key = ReferenceClip.companion.tts(text: target).key
-            recordingId = (try? await RecordingSaver.save(samples, graph: graph, kind: .sentence, ref: target, referenceKey: key))?.id
+            recordingId = (try? await RecordingSaver.save(samples, graph: graph, kind: .sentence, ref: target, referenceKey: key))
             let out = await SpeechToText.transcribe(samples, graph: graph)
             if let error = out.error {
                 note = error + " Scoring pitch and fluency only."

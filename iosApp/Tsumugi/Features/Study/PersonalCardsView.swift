@@ -94,7 +94,7 @@ struct PersonalCardsView: View {
                 }
                 var recordingId: String?
                 if let take {
-                    recordingId = try await RecordingSaver.save(take, graph: graph, kind: .free, ref: nil, referenceKey: nil).id
+                    recordingId = try await RecordingSaver.save(take, graph: graph, kind: .free, ref: nil, referenceKey: nil)
                 }
                 _ = try await graph.personalCards.create(
                     word: w, reading: r.isEmpty ? nil : r, meaning: m.isEmpty ? nil : m, note: n,

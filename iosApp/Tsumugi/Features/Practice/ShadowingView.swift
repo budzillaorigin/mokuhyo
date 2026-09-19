@@ -134,7 +134,7 @@ struct ShadowingView: View {
             if let reference = await clip.referenceSamples(line.japanese) {
                 shadowing = try? await graph.pronunciation.shadowing(reference: kotlinFloats(reference), attempt: kotlinFloats(samples))
             }
-            recordingId = (try? await RecordingSaver.save(samples, graph: graph, kind: .sentence, ref: line.japanese, referenceKey: clip.referenceKey(line.japanese)))?.id
+            recordingId = (try? await RecordingSaver.save(samples, graph: graph, kind: .sentence, ref: line.japanese, referenceKey: clip.referenceKey(line.japanese)))
             working = false
         }
     }

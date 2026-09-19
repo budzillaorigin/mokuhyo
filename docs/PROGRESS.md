@@ -98,6 +98,49 @@ The user database uses SQLDelight migrations now (`migrations/1.sqm`, `2.sqm`, v
 - Background model downloads on iOS verify the file in a second pass after it arrives.
 - Strings added in Phase 9 aren't in `Localizable.xcstrings` yet. They fall back to English.
 
+### iOS: unverified since CI paused
+CI stopped running on push at D-140. The last CI compile got as far as `Platform/Recordings.swift`. Swift that compiled up to `ccce711` (Phase 9) is trusted. Everything below was written after that and has only been checked by reading it against the Kotlin sources (Kotlin/Native + SKIE 0.10.14 naming rules). The Kotlin framework itself did build for iOS in that last run.
+
+**Swift files changed since `ccce711`:**
+- App: `App/RootView.swift`, `App/TsumugiApp.swift`, `UI/SharedText.swift` (new).
+- Today: `Features/Today/TodayView.swift`.
+- Study: `ReviewView.swift`, `ReviewModes.swift` (new), `KanaCourseView.swift` (new), `PersonalCardsView.swift` (new), `GrammarViews.swift`, `LessonView.swift`, `PathViews.swift`, `ReviewsHomeView.swift`, `StudyComponents.swift`.
+- Practice: `FreeTalkView.swift` (new), `PodcastViews.swift` (new), `ShadowingView.swift` (new), `MediaPlayerView.swift`, `PracticeHubView.swift`, `PronunciationViews.swift`, `RoleplayViews.swift`.
+- Reader: `ReaderViews.swift`, `ReadingQuestionsSheet.swift` (new).
+- Me: `MeView.swift`, `MotivationViews.swift`, `ContentReviewView.swift`, `ExportView.swift`, `IntegrationsView.swift` (the last four are new).
+- Other features: `Features/OnboardingView.swift`, `Features/Writing/WritingViews.swift`.
+- Platform: `Recordings.swift` (new), `MediaDecoding.swift` (new), `AudioCapture.swift`, `ShareInbox.swift`, `VoicePlayer.swift`.
+- Action extension (new target, doesn't link `Shared`): `TsumugiAction/ActionViewController.swift`.
+
+**Fixed in the audit (not yet compiled):**
+- `RecordingSaver.save` returns the recording id. The Kotlin `Recording` clashes with SQLDelight's table class `app.tsumugi.db.Recording`, so Swift never spells `Recording_` now.
+- `MeView.swift` reads the developer switch with `deviceSettings.get(key:) == "true"`. It no longer calls `bool(key:default:)`, because `default` is a C keyword in the Objective-C header.
+- `ConversationPatternsCard.label` takes `Shared.ErrorType`, module-qualified so it can't resolve to Swift's old `ErrorType` name.
+- `ReaderPitch.overlay` has `@Throws` like every other exported `suspend fun`.
+
+**Interop spots that are still uncertain (check these first if the build fails):**
+- Default arguments: SKIE 0.10.14's default-argument interop is off (there's no `skie {}` block in `shared/build.gradle.kts`), so every Swift call passes every Kotlin parameter. The audit checked each new call. A "missing argument" error means a call was missed.
+- Nested and sealed types that Swift spells out: `ReviewStateAsking` (the same form as `ReviewStateRevealed` and `ReviewStateAnswered`, which compiled) and `LeaderboardStateFailed(message:)` (`LeaderboardView.load`). The `onEnum(of:)` case names are `TodayLaunch` → `.reviews/.lessons/.kana/.grammar/.immersion/.shadowing/.speaking/.writing`, `LeaderboardState` → `.notSignedIn/.optedOut/.encrypted/.failed/.rows`, and `ReadingQuestionsResult` → `.ready/.unavailable`.
+- Enum cases that are only ever read through SKIE: `QuizMode.type` / `.pick` (a case named `type`), `FreezeResult.noFreezesLeft`, `ErrorType.wordChoice`, `AnswerMode.meaningChoice/.fillHint/.production/.minimalPair`, `DownloadState.done/.failed`.
+- Properties with keyword-like names: `TodayBlock.optional` (`TodayView.blockRow`).
+- Companion constants: `FocusTimer.companion.OPTIONS_MINUTES` (a `List<Int>`, read as `[KotlinInt]`) and `ClipService.companion.DEFAULT_PADDING_MS`. `MediaPlayback.shared.SPEED_*` follows the `FsrsOptimizer.shared.MIN_REVIEWS` pattern that compiled.
+- Suspend functions that return primitives, which Swift sees boxed: `exportReviewCsv` / `exportBackup` (`KotlinInt`, read with `Int(truncating:)`), `recordings.totalBytes()` (`KotlinLong`), and `isOptedIn`, `isEnabled` and `fileExists` (`KotlinBoolean`). `stats.freeze(day:)` returns a Kotlin enum that Swift switches on directly.
+- Kotlin interfaces implemented in Swift: `PcmDecoder: NSObject, PcmWindowReader` (`durationMs() -> Int64`, `read(startMs:endMs:onDone:)` with `(KotlinFloatArray?, String?) -> Void`), in the same shape as `WhisperBridge`.
+- Overloads: `SwiftSupport.reviewQueue(graph:)` and `reviewQueue(service:kind:)`. `ReaderToken.showFurigana(mode:learnerJlpt:)` (a member) sits next to the new extension `showFurigana(mode:level:)`.
+- The new `TsumugiAction` target in the pbxproj: IDs `7A5E…80`–`8B` are all defined and referenced consistently, and the settings mirror `TsumugiShare`. It hasn't been built yet.
+- Strict concurrency is `complete` in Swift 5 mode, so Sendable problems (for example `UIImage` captured in `Task.detached` in `PersonalCardsView.savePicture`) appear as warnings, not errors.
+
+**What to run first on the Mac:**
+1. `bash tools/models/fetch_ios_frameworks.sh`. It fetches llama/whisper. The app also builds without them.
+2. Build for the simulator. The Kotlin framework is built by the Xcode "Compile Kotlin Framework" phase (`./gradlew :shared:embedAndSignAppleFrameworkForXcode`), so a JDK 21 must be on `PATH` / `JAVA_HOME` for Xcode:
+   ```sh
+   xcodebuild build -project iosApp/Tsumugi.xcodeproj -scheme Tsumugi \
+     -destination 'platform=iOS Simulator,name=iPhone 16' CODE_SIGNING_ALLOWED=NO 2>&1 \
+     | tee build/xcodebuild.log | grep -E "error:|warning: .*/iosApp/|BUILD (SUCCEEDED|FAILED)"
+   ```
+   Use any installed iPhone simulator (`xcrun simctl list devices available`). Then run CI's full check: `xcodebuild test` with the same arguments plus `-resultBundlePath build/TestResults.xcresult`, and the unsigned Release `xcodebuild archive … -destination generic/platform=iOS` followed by `python3 tools/ci/validate_archive.py build/Tsumugi.xcarchive` (see `.github/workflows/ci.yml`).
+3. If a Swift name doesn't resolve, look it up in the generated header `shared/build/xcode-frameworks/Debug/iphonesimulator*/Shared.framework/Headers/Shared.h` (its `swift_name` attributes) or in SKIE's Swift files next to it. Don't guess the name.
+
 ---
 
 ## Phase 8: Release hardening

@@ -47,7 +47,8 @@ struct MeView: View {
 
     private func refresh() async {
         stats = try? await app.graph.stats.snapshot(heatmapDays: 140)
-        developer = (try? await app.graph.deviceSettings.bool(key: SettingsView.developerKey, default: false))?.boolValue ?? false
+        // `get` rather than `bool(key:default:)`: a Kotlin parameter named `default` is a C keyword in the Objective-C header.
+        developer = (try? await app.graph.deviceSettings.get(key: SettingsView.developerKey)) == "true"
     }
 }
 
@@ -140,7 +141,7 @@ struct SettingsView: View {
         .task {
             batch = Double((try? await app.graph.settings.lessonBatchSize())?.intValue ?? 5)
             retention = (try? await app.graph.settings.desiredRetention())?.doubleValue ?? 0.9
-            developer = (try? await app.graph.deviceSettings.bool(key: Self.developerKey, default: false))?.boolValue ?? false
+            developer = (try? await app.graph.deviceSettings.get(key: Self.developerKey)) == "true"
         }
         .task { for await p in app.graph.recomputeProgress { recompute = p } }
     }

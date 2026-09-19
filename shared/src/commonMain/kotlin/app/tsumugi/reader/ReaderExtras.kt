@@ -95,6 +95,7 @@ object ReaderPitch {
      * Pitch for each dictionary word in [tokens]. [lookup] is `(word, reading) → Kanjium accents`, normally
      * [app.tsumugi.dictionary.DictionaryRepository.pitchAccents]. Lookups are batched per distinct word.
      */
+    @Throws(Exception::class)
     suspend fun overlay(tokens: List<ReaderToken>, lookup: suspend (String, String) -> List<Int>): List<TokenPitch> {
         val cache = HashMap<Pair<String, String>, List<Int>>()
         return tokens.filter { it.isWord && it.reading != null && Kana.isJapanese(it.surface) }.map { t ->

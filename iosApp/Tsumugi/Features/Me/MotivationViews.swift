@@ -247,7 +247,8 @@ struct ConversationPatternsCard: View {
         }
     }
 
-    static func label(_ type: ErrorType) -> String {
+    /// Module-qualified so `ErrorType` can't be confused with Swift's old name for `Error`.
+    static func label(_ type: Shared.ErrorType) -> String {
         switch type {
         case .particle: String(localized: "Particles")
         case .conjugation: String(localized: "Conjugation")

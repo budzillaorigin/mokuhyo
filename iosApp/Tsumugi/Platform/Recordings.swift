@@ -24,7 +24,8 @@ enum WavFile {
 
 /// Keeps a microphone take as a recording on disk (BRIEF_V2 G-03, D-110): the shared store hands out the path, the
 /// file is written off the main actor, then `register` indexes it. Recordings live under Application Support and
-/// are excluded from backups by the shared store.
+/// are excluded from backups by the shared store. Returns the recording id: the Kotlin `Recording` class collides with
+/// SQLDelight's `db.Recording` table class, so Swift never spells its exported name (`Recording_`).
 enum RecordingSaver {
     static func save(
         _ samples: [Float],
@@ -32,7 +33,7 @@ enum RecordingSaver {
         kind: RecordingKind,
         ref: String?,
         referenceKey: String?
-    ) async throws -> Recording_ {
+    ) async throws -> String {
         let pending = try await graph.recordings.startRecording(fileExtension: "wav")
         let path = pending.path
         let data = WavFile.data(samples: samples)
@@ -40,9 +41,10 @@ enum RecordingSaver {
             try data.write(to: URL(fileURLWithPath: path), options: .atomic)
         }.value
         let ms = Int64(Double(samples.count) / AudioCapture.sampleRate * 1000)
-        return try await graph.recordings.register(
+        let recording = try await graph.recordings.register(
             pending: pending, kind: kind, ref: ref, durationMs: ms, mime: "audio/wav", referenceKey: referenceKey
         )
+        return recording.id
     }
 }
 
@@ -242,9 +244,9 @@ struct AddMyRecordingButton: View {
         let id = itemId
         Task {
             do {
-                let rec = try await RecordingSaver.save(samples, graph: graph, kind: .card, ref: id, referenceKey: nil)
-                _ = try await graph.personalCards.addAudioSide(itemId: id, recordingId: rec.id)
-                savedId = rec.id
+                let recId = try await RecordingSaver.save(samples, graph: graph, kind: .card, ref: id, referenceKey: nil)
+                _ = try await graph.personalCards.addAudioSide(itemId: id, recordingId: recId)
+                savedId = recId
             } catch {
                 self.error = String(localized: "Couldn't save the recording: \(error.localizedDescription)")
             }
