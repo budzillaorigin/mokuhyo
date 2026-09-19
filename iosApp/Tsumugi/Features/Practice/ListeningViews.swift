@@ -107,6 +107,7 @@ private enum ListenMode: String, CaseIterable, Identifiable {
 }
 
 private struct DialoguePlayer: View {
+    @Environment(AppModel.self) private var app
     let repo: PracticeRepository
     let dialogueId: String
 
@@ -207,14 +208,22 @@ private struct DialoguePlayer: View {
     private func play(_ lines: [DialogueData.Line]) {
         stop()
         let speed = Float(rate)
+        let graph = app.graph
+        let id = dialogueId
+        let title = data?.title
         playTask = Task {
+            let started = Date()
             repeat {
                 for line in lines {
                     if Task.isCancelled { break }
                     playing = line.id
-                    await voice.say(line.japanese, voice: line.voice, rate: speed)
+                    // Pre-rendered dialogue audio when installed (rule 20); line ids are the pack's line ords.
+                    await voice.say(line.japanese, key: PackAudio.dialogueKey(dialogueId: id, line: line.id), graph: graph, voice: line.voice, rate: speed)
                 }
             } while loopLine && lines.count == 1 && !Task.isCancelled
+            // Listening time goes into the immersion log (D-194); the shared log drops stretches under 15 s.
+            let seconds = Int64(Date().timeIntervalSince(started))
+            _ = try? await graph.immersion.report(source: .dialogue, mode: .active, elapsedSeconds: seconds, ref: id, title: title)
             // A cancelled run was replaced by a newer one (or stopped); leave the state to that.
             if !Task.isCancelled {
                 playing = nil

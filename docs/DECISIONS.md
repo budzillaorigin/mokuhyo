@@ -1036,6 +1036,42 @@ Every grammar example on a grammar point page and in grammar lessons gets a ▶ 
 - "Mine this line" isn't offered for dictionary sentence hits yet; mining happens in the player, where the line's timing and file are known.
 - The pair-audio note under minimal pairs says which audio plays: the pre-rendered pack or TTS with its caveat.
 
+### D-190: iOS plays pack clips through the existing players, keyed by the shared `AudioKeys` (rule 20, 2026-09-18)
+- `PackAudio.path(key, graph)` asks `SwiftSupport.audioClipPath` (the shared `AudioPackRepository.clip(key)` as a plain path string, so Swift never handles an okio `Path`). A nil path means system TTS, always.
+- `VoicePlayer.say(_:key:graph:voice:rate:)` and `sayLines(_:graph:rate:)` try the clip first. `PackClipPlayer` is a second `ClipPlayer` for shadowing: its reference samples are the decoded clip, and the stored reference key is `pack:<key>`, which `SideBySideView` now plays too.
+- Keys: exam lines use the item id when the item has its own script, else the passage id, and the 0-based script index (D-092). Dialogue lines use their ord, which equals their index in the loaded dialogue. Grammar examples use their position in `GrammarService.examples(pointId)`. Shadowing lines have no ord, so it's recovered by matching the sentence against that list. Minimal pairs go through `SwiftSupport.pairClipKey`, because `PairSide` clashes with `study.PairSide`.
+- Strict exam modes still play once: `session.audioPlayed` is recorded before any audio starts, whichever source plays it.
+- `graph.audio.ensureBundled()` runs at launch in a detached task. It's a no-op until a build bundles packs (D-097).
+
+### D-191: Media locators and the on-demand clip cache (§6.2, 2026-09-18)
+- The shared sentence bank stores an opaque `locator` per media item. On iOS it's `home:<path relative to NSHomeDirectory>` for files inside the container (podcast downloads, lyrics audio), because the container's absolute path can change across installs. For files picked in Files it's `bookmark:<base64 bookmark data>`, which is resolved and opened with its security scope when a clip is needed. `MediaLocator` in `Platform/MediaLibrary.swift` is the only code that writes or reads it.
+- Dictionary hits cut their clip (`ClipCutter`, the Phase 10 path) and grab their frame (`AVAssetImageGenerator`) on first use, into `Caches/sentence-clips/` keyed by a hash of locator and span. The system may purge the folder; clips are then cut again. A file that moved or was deleted shows "open it in the media player again", which re-indexes it with a fresh locator.
+- "Mine" on a dictionary hit passes the hit's padded clip span to `mineLine`, which pads again (250 ms each side). The extra half-second is harmless and keeps Swift from knowing the padding rule.
+
+### D-192: Lyrics audio is copied into Application Support (§6.3, 2026-09-18)
+A song's audio file is copied to `Application Support/lyrics/<uuid>.<ext>` (excluded from backup), and the song's `audioLocator` is its `home:` locator (D-191). A security-scoped bookmark would break when the learner moves the file, and a song has to play every time it's opened. Deleting the song deletes the copy. The media hash is computed on the copy, so Whisper alignment is cached per song.
+
+### D-193: Reader annotations use tap-to-select over tokens (§6.4, 2026-09-18)
+The reader lays out tokens, not a text view, so there's no system text selection. In annotate mode (the pencil button), the first tap selects a word, and a second tap extends the selection to another word, before or after it. The panel then offers highlight, box, note, or grammar. Grammar offers the grammar points detected in the sentences covered. Offsets are the tokens' body offsets, as the shared `ReaderAnnotations.add` expects. Rendering is per token: highlight fills it, box strokes it, grammar underlines it, and a note shows a dot. Detached annotations appear only in the Notes list.
+
+### D-194: What the iOS screens log as immersion (§6.11, 2026-09-18)
+- **Reader:** a ticket from open (or reappearing) until leaving the screen, ACTIVE, with the document id and title. Background time is closed by `stopAll()` when the app backgrounds.
+- **Media player:** only time actually played, counted from the player's periodic observer, including background audio. It's reported with `report()` on leaving, on opening another file, and on backgrounding. Podcast episodes log PODCAST; other files log MEDIA; both ACTIVE.
+- **Dialogues and lyrics:** played time as DIALOGUE / MEDIA, ACTIVE.
+- The shared log drops stretches under 15 s and caps one at 6 h.
+
+### D-195: Coverage and 1T for Whisper subtitles go through SRT text (§6.1, 2026-09-18)
+`subtitleCoverage` and `oneTargetCues` take subtitle text. Loaded .srt/.vtt files pass their own text. Generated cues are written back as SRT by `SwiftSupport.cuesToSrt`, so the cue indexes and times of 1T lines match the player. The player indexes the cues into the sentence bank, measures coverage and finds 1T lines in one cancellable task, right after subtitles load (or when "Analyze" is tapped).
+
+### D-196: "I know these" is an optional onboarding step after the kanji check (§6.1, 2026-09-18)
+Pages of 40 words from `KnownWords.frequencyBatch`, most frequent first, with only words the learner doesn't know yet. Tapped words are marked known with source ONBOARDING, then the next page loads. "Done" or "Mark these and finish" ends the step. Without the dictionary pack the first page is empty, and the step skips itself.
+
+### D-197: Swift bridges added for Phase 11 and audio packs (2026-09-18)
+Additions to `SwiftSupport`/`SwiftBridges.kt`, adapters only: `audioClipPath`, `pairClipKey`, `audioSetIds`, `audioPacks`, `audioProgress`, `installAudioFile`, `fetchAudioManifest`, `downloadAudioPack`, `removeAudioPack` (flat `AudioPackRow`/`AudioManifestRow`/`AudioProgressRow`, because the shared types have a `set` property and a nested `Phase` enum), `immersionDays` / `addManualImmersion` / `recentImmersionSessions` (ISO dates, never kotlinx `LocalDate`), `sentencesForEntry` (the sealed `OnlineExamplesResult` flattened into `SentenceSearchRows`), `cuesToSrt`, `alignLyrics` (the `PcmWindowReader` callback decoder as a `PcmSource`), and `coverageWordsTo95` (`TextCoverage.newWordsTo95` starts with `new`, which the Objective-C export renames).
+
+### D-198: The Immersion Kit switch lives in Settings → Example sentences; results are text only (§6.2, 2026-09-18)
+The toggle (off by default, per device, D-162) sits in Settings with the terms note. The dictionary links there while it's off. When on, the dictionary shows the returned lines as text, with translation and source title, under the service's name. Their images and sound are not loaded: that would mean more requests to a service with no published terms, and streaming with no timeout the app controls (rule 13). Online lines can't be mined (D-161).
+
 ---
 
 ## Open decisions (BRIEF.md §14)

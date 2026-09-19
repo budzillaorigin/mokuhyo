@@ -33,6 +33,58 @@ None. The app module now compiles against Okio (already shipped via `shared`) be
 ./gradlew :androidApp:assembleDebug -Ptsumugi.native=false
 ```
 
+## Phase 11 (iOS UI) and audio packs on iOS (2026-09-18)
+
+The SwiftUI screens for everything in the two Phase 11 shared-core sections below, plus rule 20 audio on iOS. Decisions D-190…D-198. **Not compiled:** CI is paused (D-140) and there's no Xcode here. Every new interop spot is listed under "iOS: unverified since CI paused". The Kotlin bridge additions compile (`:shared:compileCommonMainKotlinMetadata`).
+
+### What was built (`iosApp/Tsumugi`)
+- **Audio packs (rule 20):**
+  - `ensureBundled()` runs at launch.
+  - `Platform/PackAudio.swift`: `PackAudio.path(key)`, `VoicePlayer.say(_:key:graph:)` / `sayLines(_:graph:)`, and `PackClipPlayer`, which plays pack clips and falls back to TTS.
+  - Pack clips play in: exam listening (strict play-once unchanged) and attempt review, dialogues, minimal pairs, grammar examples (a play button per example), and shadowing. Side-by-side playback plays `pack:` references.
+  - **Settings → Audio packs** (`Features/Settings/AudioPacksView.swift`): installed sets with size, clip count, version and credits; install from Files (copied out of the security scope off the main actor, then `installFile`); install from a typed server URL (`fetchManifest` → `download`, device-local, no default, D-096). Progress for each phase, Cancel, Retry, and Remove.
+- **Media decks and Core decks** (`Features/Decks/DeckViews.swift`, Learn → Decks):
+  - Create a deck from a library text, an EPUB, subtitles or pasted text, and from the media player's subtitles or the reader's menu. The preview shows words for 80/90/95/98%, JLPT/ILR, coverage, kanji and study-order words, with progress and Cancel.
+  - Save, optionally with "study this deck". Then a deck list and a detail view with words (swipe Known / Not known), kanji, grammar links, rename and delete.
+  - Lesson controls: study this deck, interleave or deck only, stop. The Core 2k/6k/10k decks are paged by frequency, with known counts and "covers X% of your media".
+- **Coverage overlay:**
+  - `UI/CoverageUI.swift` builds the localized "You know X% of the words · Y% of the kanji · N new words to reach 95%" sentence and a difficulty badge (JLPT · ILR · score).
+  - Reader: a card at the top of each text.
+  - Media player: a card after subtitles load.
+  - Library: a Recent / Coverage sort, per-row known % and difficulty badge, and "Measure coverage of N more texts" (`profileLibrary`, progress and Cancel).
+- **Mark known:**
+  - The dictionary entry has "I know this word" (and Undo). The reader popup has Known / Not known; marked words stop being coloured as unknown and coverage refreshes.
+  - Onboarding has an optional "Words you already know" step, pages of 40 from the frequency list (D-196).
+- **1T sentences:**
+  - Reader: "Highlight one-new-word sentences" (mint; the target word stronger), plus a list with Mine and Show (scrolls to the sentence).
+  - Media player: "Lines with one new word", each with Mine and a jump to the line, and highlighted in the cue list.
+- **Sentence bank:**
+  - Media player: indexes cues after .srt/.vtt load or Whisper generation, with a stored locator (D-191). "Mine line" cuts the clip and grabs a frame, then `attachMedia`.
+  - Dictionary entry: a "Sentences" section grouped by source (your media per title, Tatoeba, Immersion Kit). Library lines play their clip (cut on demand and cached) and show a frame thumbnail from `AVAssetImageGenerator`. "Mine" makes a word card or a sentence card.
+  - Settings → Example sentences: the Immersion Kit toggle, off by default, with the terms note. Its results are text only (D-198).
+- **Lyrics** (Practice → Lyrics, `Features/Practice/LyricsViews.swift`):
+  - A songs list with an honest empty state. Import audio (copied into Application Support, D-192) plus an .lrc/.txt file or pasted lyrics.
+  - Karaoke view: line and word highlight from `Karaoke.at`, tap a line to seek, "Align with Whisper" (progress, Cancel), cloze mode (pauses when a hidden word is sung, then type it or show it), and LRC export via the share sheet.
+  - Line study (press and hold a line): tap words for the dictionary, grammar notes, your own translation, or an AI translation with its badge.
+- **Immersion log** (Me):
+  - The reader logs a ticket while the text is open. The media player, lyrics and dialogues report the time actually played; podcasts log as PODCAST. Open tickets are stopped on backgrounding (D-194).
+  - Me has an immersion card (today against the target, heat-map) and a roadmap card (the stage, its milestones with progress, rule-11 persistent).
+  - Immersion log screen: daily target, 20-week heat-map, active/passive totals, minutes per source, manual entry, and recent sessions (swipe to delete).
+- **Reader** (`ReaderViews.swift`, `ReaderExtrasViews.swift`):
+  - Annotations: pencil mode, tap the first and last word, then highlight / box / note / grammar (D-193). A Notes list covers edit, delete and detached annotations.
+  - "Words in this text" (every popup records the lookup) with remove, "Add all to reviews" and Drill (context cards: type the reading, type the meaning, or self-check).
+  - Screenshot import: PhotosPicker for up to 30 pictures → the existing Vision OCR → `importScreenshots`, with per-picture progress and Cancel. The pictures show as a page strip.
+  - Guide links on every grammar point, opened in the browser.
+- **Strings:** 310 new `Localizable.xcstrings` keys with Japanese. Every new async screen has an error + Retry state (F-33).
+
+### Deferred
+- Online (Immersion Kit) lines show no image or audio (D-198).
+- The reader's furigana ("above my level") still ignores words marked known (the shared Deferred item below). The reader only stops colouring words the learner marked in this session.
+- Lyrics translations and cloze picks aren't in the LRC export (shared, D-163).
+
+### How to check
+On the Mac, build as described in "iOS: unverified since CI paused", fix any interop names from the list there, then run the Phase 11 items in `docs/QA.md`.
+
 ---
 
 ## Phase 11 (shared core, part 1): media decks, coverage, known words, difficulty, 1T (2026-09-18)
@@ -239,6 +291,76 @@ CI stopped running on push at D-140. The last CI compile got as far as `Platform
    ```
    Use any installed iPhone simulator (`xcrun simctl list devices available`). Then run CI's full check: `xcodebuild test` with the same arguments plus `-resultBundlePath build/TestResults.xcresult`, and the unsigned Release `xcodebuild archive … -destination generic/platform=iOS` followed by `python3 tools/ci/validate_archive.py build/Tsumugi.xcarchive` (see `.github/workflows/ci.yml`).
 3. If a Swift name doesn't resolve, look it up in the generated header `shared/build/xcode-frameworks/Debug/iphonesimulator*/Shared.framework/Headers/Shared.h` (its `swift_name` attributes) or in SKIE's Swift files next to it. Don't guess the name.
+
+
+**Phase 11 iOS UI and audio packs (D-190…D-198), not yet compiled. Check these first if the build fails.**
+
+New files:
+- `Platform/PackAudio.swift`, `Platform/MediaLibrary.swift`, `UI/CoverageUI.swift`
+- `Features/Settings/AudioPacksView.swift`, `Features/Decks/DeckViews.swift`
+- `Features/Dictionary/SentenceBankViews.swift`, `Features/Reader/ReaderExtrasViews.swift`
+- `Features/Practice/LyricsViews.swift`, `Features/Me/ImmersionViews.swift`
+
+Changed files:
+- `ReaderViews.swift` (library and reader rewritten), `MediaPlayerView.swift`, `EntryView.swift`, `OnboardingView.swift`
+- `GrammarViews.swift`, `ListeningViews.swift`, `MinimalPairsView.swift`, `ShadowingView.swift`
+- `ExamRunnerView.swift`, `AttemptReviewView.swift`, `Recordings.swift`, `MeView.swift`, `RootView.swift`, `PracticeHubView.swift`, `TsumugiApp.swift`
+
+The uncertain spots:
+- **`KotlinLong(longLong:)`:** the boxed-`Long` initializer, used to build `[KotlinLong]` for `markKnown` / `markUnknown` / `mineLine(entryId:)`. Earlier code only ever built `KotlinInt(int:)` and `KotlinBoolean(bool:)`. Call sites:
+  - `DeckViews.swift:562`, `:702`
+  - `SentenceBankViews.swift:46`
+  - `OnboardingView.swift:179`
+  - `ReaderViews.swift:812`, `:816`
+  - `MediaLibrary.swift:143`
+
+  If the initializer is spelled differently, use `KotlinLong(value:)`, or add a bridge that takes `[Int64]`.
+- **Progress closures with boxed primitives** (`(Double) -> Unit` → `(KotlinDouble) -> Void`, read with `.doubleValue`):
+  - `DeckViews.swift:370`, which feeds the four `vocabularyFor…` calls
+  - `ReaderViews.swift:471` (`documentCoverage`), `:491` (`oneTargetSentences`)
+  - `MediaPlayerView.swift:401` (`subtitleCoverage`), `:408` (`oneTargetCues`)
+
+  `profileLibrary { done, total in … }` gets `KotlinInt`s, read with `Int(truncating:)` (`ReaderViews.swift:173`). All of these rely on a trailing closure after a SKIE async call.
+- **Object-typed progress closures:**
+  - `sentenceBank.index(…) { p in p.done / p.total }` (`MediaPlayerView.swift:394`)
+  - `alignLyrics(…) { p in p.fraction }` (`LyricsViews.swift:607`)
+- **Suspend functions returning primitives, assumed boxed:**
+  - `addDocumentWordsToReviews` → `KotlinInt` (`ReaderExtrasViews.swift:89`)
+  - `immersion.targetMinutes()` → `KotlinInt` (`ImmersionViews.swift:279`)
+  - `onlineExamples.enabled()` → `KotlinBoolean` (`SentenceBankViews.swift:302`)
+
+  Suspend `Unit` functions (`markKnown`, `activate`, `setMode`, `deactivate`, `delete`, `setTargetMinutes`, `removeAudioPack`) are assumed to return `Void`.
+- **The `new…` getter:** `TextCoverage.newWordsTo95` is never read from Swift. `SwiftSupport.coverageWordsTo95` wraps it (`CoverageUI.swift:10`).
+- **Kotlin enum members read through SKIE Swift enums:**
+  - `CoreDeck.id` / `.title` (`DeckViews.swift:69`, `:180`, `:670`)
+  - `RoadmapStage.number` (`ImmersionViews.swift:133`, `:141`)
+- **Enum case names:**
+  - `LyricsTiming` `.lrcWords/.lrcLines/.aligned` (`LyricsViews.swift:67`). The `NONE` case is deliberately never named.
+  - `DeckLessonMode.interleave/.deckOnly`
+  - `MilestoneMeasure.knownWords/.immersionHours/.readerComprehension/.opiLevel` (`ImmersionViews.swift:39`, `:48`, `:54`)
+  - `ReferenceKind.packAudio` (`Recordings.swift:203`)
+  - `ClozeState.close` (a case named `close`; `LyricsViews.swift:466`)
+  - `AnnotationKind.box/.highlight/.note/.grammar`
+  - `ImmersionOrigin.reader/.media/.podcast/.dialogue/.manual`
+  - `MediaKind.video/.audio`, `CueSource.file/.generated` (`MediaPlayerView.swift:114`)
+  - `MineKind.vocab/.sentence`, `WordState.known/.learning`
+- **Keyword argument label:** `reader.screenshots.screenshotFile(extension: "jpg")` (`ReaderExtrasViews.swift:513`), where the Kotlin parameter is named `extension`.
+- **Overloads:** `vocabulary.recordLookup(documentId:token:sentence:gloss:)` next to the 8-argument overload (`ReaderViews.swift:904`).
+- **Types with members of clashing types:** `ClozeAnswer.verdict` has the clashing `Verdict` type. Swift reads only `accepted` / `expected` (`LyricsViews.swift:532`). `ClozeSession.score` and `ContextDrill.score` are `Pair`s and are never read.
+- **Objects and companions:**
+  - `AudioKeys.shared.exam/dialogue/grammar(…)` (`PackAudio.swift:16`–`24`)
+  - `ReferenceClip.companion.pack(audioKey:)` (`PackAudio.swift:95`)
+  - `GuidesLibrary.shared.forGrammarPoint(pointId:topics:)` (`GrammarViews.swift:166`)
+  - `Karaoke.shared.at(lines:positionMs:)` (`LyricsViews.swift:546`)
+- **Nullable `Long`/`Int`/`Double` fields read boxed:**
+  - `SentenceHit.clip?.thumbnailMs?.int64Value` (`SentenceBankViews.swift:235`)
+  - `OneTargetSentence.cueIndex?.intValue` / `.startMs?.int64Value` (`MediaPlayerView.swift:367`, `:595`)
+  - `Milestone.current?.doubleValue` (`ImmersionViews.swift:48`)
+  - `MineDraft.thumbnailMs?.int64Value` (`MediaLibrary.swift:153`)
+- **StateFlow with an optional element:** `for await p in app.graph.audio.progress` (`AudioPacksView.swift:106`), the same pattern as `recomputeProgress`.
+- **Data-class initializer from Swift:** `ScreenshotPage(image:ocrText:)` (`ReaderExtrasViews.swift:518`).
+- **Decoding a pack clip:** `PcmDecoder.read` → `KotlinFloatArray.get(index:)` (`PackAudio.swift:118`).
+- **Other APIs:** `AVAssetImageGenerator.image(at:)` (iOS 16+), `URL.bookmarkData(options: .minimalBookmark…)` for Files-picked media, and two `.sheet(item:)` modifiers plus one `.fileImporter` per view. SwiftUI honours only one file importer per view, so `DecksHomeView` shares one.
 
 ---
 

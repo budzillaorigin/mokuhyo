@@ -30,12 +30,21 @@ final class MediaModel {
     var loopB: Int64?
     /// The quiz plays one cue and pauses at its end.
     var stopAtMs: Int64?
+    /// How the sentence bank finds this file again (D-191), and whether it has pictures.
+    private(set) var locator: String?
+    private(set) var kind: MediaKind = .video
+    /// The Japanese subtitles as text (a loaded .srt/.vtt, or SRT written from Whisper cues) for coverage and 1T.
+    private(set) var japaneseText: String?
+    private(set) var japaneseSource: CueSource = .file
 
     @ObservationIgnored private(set) var kotlinCues: [Cue] = []
     @ObservationIgnored private var englishCues: [Cue] = []
     @ObservationIgnored private var observer: Any?
     @ObservationIgnored private var scopedURL: URL?
     @ObservationIgnored private var hash: String?
+    /// Seconds actually played since the last report to the immersion log (D-194).
+    @ObservationIgnored private var playedSeconds: Double = 0
+    @ObservationIgnored private var lastTick: Date?
 
     func open(media url: URL, title: String? = nil) {
         release()
@@ -45,6 +54,10 @@ final class MediaModel {
         claimAudio()
         mediaURL = url
         mediaName = title ?? url.lastPathComponent
+        locator = MediaLocator.make(for: url)
+        kind = MediaLocator.kind(of: url)
+        japaneseText = nil
+        japaneseSource = .file
         hash = nil
         kotlinCues = []
         englishCues = []
@@ -87,6 +100,8 @@ final class MediaModel {
         } else {
             kotlinCues = parsed
             jaName = url.lastPathComponent
+            japaneseText = text
+            japaneseSource = .file
         }
         rebuild()
         return nil
@@ -95,6 +110,8 @@ final class MediaModel {
     /// Generated (Whisper) subtitles become the Japanese track.
     func useGenerated(_ generated: GeneratedSubtitles) {
         kotlinCues = generated.cues
+        japaneseText = SwiftSupport.shared.cuesToSrt(cues: generated.cues)
+        japaneseSource = .generated
         jaName = generated.fromCache
             ? String(localized: "Generated with \(generated.engine) (cached)")
             : String(localized: "Generated with \(generated.engine)")
@@ -111,6 +128,13 @@ final class MediaModel {
 
     private func tick(_ ms: Int64) {
         positionMs = ms
+        if player.rate > 0 {
+            let now = Date()
+            if let lastTick { playedSeconds += min(1, max(0, now.timeIntervalSince(lastTick))) }
+            lastTick = now
+        } else {
+            lastTick = nil
+        }
         if let stop = stopAtMs, ms >= stop {
             player.pause()
             stopAtMs = nil
@@ -122,6 +146,14 @@ final class MediaModel {
         guard !kotlinCues.isEmpty else { currentIndex = nil; return }
         let i = Int(Subtitles.shared.indexAt(cues: kotlinCues, positionMs: ms))
         currentIndex = (i < cues.count && cues[i].startMs <= ms && cues[i].endMs > ms) ? i : nil
+    }
+
+    /// Seconds played since the last call, for the immersion log.
+    func takePlayedSeconds() -> Int64 {
+        let seconds = Int64(playedSeconds)
+        playedSeconds = 0
+        lastTick = nil
+        return seconds
     }
 
     func seek(ms: Int64) {
@@ -211,6 +243,16 @@ struct MediaPlayerView: View {
     @State private var genProgress: Double?
     @State private var clipping = false
     @State private var quizActive = false
+    @Environment(\.scenePhase) private var scenePhase
+    // Phase 11: sentence bank, coverage, 1T lines, mining, decks (BRIEF_V2 §6.1, §6.2, §6.11)
+    @State private var analysisTask: Task<Void, Never>?
+    @State private var analysisLabel: String?
+    @State private var analysisProgress: Double?
+    @State private var coverage: DocumentCoverage?
+    @State private var oneTarget: [OneTargetSentence] = []
+    @State private var minedTargets: Set<Int64> = []
+    @State private var creatingDeck: DeckSource?
+    @State private var mining = false
 
     private var subtitleTypes: [UTType] {
         [UTType(filenameExtension: "srt"), UTType(filenameExtension: "vtt")].compactMap { $0 } + [.plainText, .data]
@@ -248,6 +290,7 @@ struct MediaPlayerView: View {
                 .buttonStyle(.bordered)
                 .font(.caption)
                 if model.mediaName != nil { subtitleTools }
+                analysisView
                 if let ja = model.jaName { Text("Japanese: \(ja)").font(.caption2).foregroundStyle(.secondary) }
                 if let en = model.enName { Text("English: \(en)").font(.caption2).foregroundStyle(.secondary) }
                 if let message { Text(message).font(.caption).foregroundStyle(.orange) }
@@ -268,6 +311,8 @@ struct MediaPlayerView: View {
             }
         }
         .onDisappear {
+            flushImmersion()
+            analysisTask?.cancel()
             model.pauseAndReleaseAudio()
             generating?.cancel()
             if let episodeId {
@@ -277,6 +322,151 @@ struct MediaPlayerView: View {
             }
         }
         .task(id: model.currentIndex) { await tokenizeCurrent() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .background { flushImmersion() }
+        }
+        .sheet(item: $creatingDeck) { source in
+            NavigationStack { DeckPreviewView(source: source) { _ in creatingDeck = nil } }.environment(app)
+        }
+    }
+
+    /// Played time goes into the immersion log (§6.11, D-194): podcasts as PODCAST, everything else as MEDIA.
+    private func flushImmersion() {
+        let seconds = model.takePlayedSeconds()
+        guard seconds > 0 else { return }
+        let graph = app.graph
+        let title = model.mediaName
+        let source: ImmersionOrigin = episodeId != nil ? .podcast : .media
+        let ref = episodeId ?? model.mediaName
+        Task { _ = try? await graph.immersion.report(source: source, mode: .active, elapsedSeconds: seconds, ref: ref, title: title) }
+    }
+
+    /// Coverage, the 1T lines, and deck/mining actions once Japanese subtitles are loaded.
+    @ViewBuilder
+    private var analysisView: some View {
+        if let analysisLabel, analysisTask != nil {
+            CancellableProgress(label: analysisLabel, fraction: analysisProgress) {
+                analysisTask?.cancel()
+                analysisTask = nil
+                self.analysisLabel = nil
+            }
+        }
+        if let coverage { CoverageCard(coverage: coverage) }
+        if model.japaneseText != nil && analysisTask == nil {
+            HStack {
+                Button("Make a deck from these subtitles") { makeDeck() }
+                if coverage == nil { Button("Analyze") { analyzeSubtitles() } }
+            }
+            .buttonStyle(.bordered)
+            .font(.caption)
+        }
+        if !oneTarget.isEmpty && !quizActive {
+            DisclosureGroup("Lines with one new word (\(oneTarget.count.formatted()))") {
+                ForEach(oneTarget, id: \.entryId) { s in
+                    OneTargetRow(sentence: s, mined: minedTargets.contains(s.entryId), mine: { mineTarget(s) }, jump: {
+                        if let start = s.startMs?.int64Value { model.seek(ms: start) }
+                    })
+                }
+            }
+            .font(.subheadline)
+        }
+    }
+
+    /// Indexes the cues for the dictionary's sentence search, then measures coverage and finds 1T lines (rule 15:
+    /// shared code on Dispatchers.IO, progress and Cancel here).
+    private func analyzeSubtitles() {
+        guard let text = model.japaneseText, !model.kotlinCues.isEmpty else { return }
+        let graph = app.graph
+        let player = model
+        let cues = model.kotlinCues
+        let title = model.mediaName ?? ""
+        let kind = model.kind
+        let locator = model.locator
+        let source = model.japaneseSource
+        analysisTask?.cancel()
+        coverage = nil
+        oneTarget = []
+        analysisTask = Task {
+            do {
+                let hash = try await player.mediaHash(graph: graph)
+                analysisLabel = String(localized: "Indexing lines for the dictionary…")
+                analysisProgress = 0
+                _ = try await graph.sentenceBank.index(mediaId: hash, title: title, kind: kind, locator: locator, cues: cues, source: source) { p in
+                    let f = p.total > 0 ? Double(p.done) / Double(p.total) : 0
+                    Task { @MainActor in analysisProgress = f }
+                }
+                try Task.checkCancellation()
+                analysisLabel = String(localized: "Measuring coverage…")
+                analysisProgress = nil
+                coverage = try await graph.coverage.subtitleCoverage(mediaKey: hash, subtitles: text) { p in
+                    let f = p.doubleValue
+                    Task { @MainActor in analysisProgress = f }
+                }
+                try Task.checkCancellation()
+                analysisLabel = String(localized: "Finding lines with one new word…")
+                analysisProgress = nil
+                oneTarget = try await graph.coverage.oneTargetCues(subtitles: text, limit: 30) { p in
+                    let f = p.doubleValue
+                    Task { @MainActor in analysisProgress = f }
+                }
+            } catch {
+                if !Task.isCancelled && !(error is CancellationError) {
+                    message = String(localized: "Couldn't analyze the subtitles: \(error.localizedDescription)")
+                }
+            }
+            analysisTask = nil
+            analysisLabel = nil
+            analysisProgress = nil
+        }
+    }
+
+    private func makeDeck() {
+        guard let text = model.japaneseText else { return }
+        let graph = app.graph
+        let player = model
+        let title = model.mediaName ?? String(localized: "Subtitles")
+        Task {
+            let hash = try? await player.mediaHash(graph: graph)
+            creatingDeck = .subtitles(title: title, text: text, mediaKey: hash)
+        }
+    }
+
+    private func mineTarget(_ s: OneTargetSentence) {
+        Task {
+            do {
+                if try await app.graph.coverage.mineOneTarget(sentence: s) != nil {
+                    minedTargets.insert(s.entryId)
+                } else {
+                    message = String(localized: "That word isn't in the dictionary pack.")
+                }
+            } catch {
+                message = String(localized: "Couldn't add it: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    /// "Mine this line" (§6.2, D-161): a sentence card with the cut audio and, for video, a frame.
+    private func mineLine(_ cue: CueData) {
+        guard let url = model.mediaURL else { return }
+        mining = true
+        message = nil
+        let graph = app.graph
+        let player = model
+        let title = model.mediaName ?? url.lastPathComponent
+        let kind = model.kind
+        Task {
+            do {
+                let mediaId = (try? await player.mediaHash(graph: graph)) ?? url.lastPathComponent
+                let line = LineMiner.Line(
+                    kind: .sentence, mediaId: mediaId, mediaTitle: title, mediaKind: kind, startMs: cue.startMs, endMs: cue.endMs,
+                    sentence: cue.japanese, wordStart: 0, wordEnd: 0, reading: nil, meanings: [], translation: cue.english, entryId: nil
+                )
+                message = try await LineMiner.mine(line, source: url, graph: graph)
+            } catch {
+                message = String(localized: "Couldn't mine this line: \(error.localizedDescription)")
+            }
+            mining = false
+        }
     }
 
     private var controls: some View {
@@ -320,6 +510,9 @@ struct MediaPlayerView: View {
                 Button(clipping ? "Saving…" : "Save clip") { saveClip(model.cues[i]) }
                     .buttonStyle(.bordered).font(.caption)
                     .disabled(clipping)
+                Button(mining ? "Mining…" : "Mine line") { mineLine(model.cues[i]) }
+                    .buttonStyle(.bordered).font(.caption)
+                    .disabled(mining)
             }
         }
     }
@@ -393,9 +586,13 @@ struct MediaPlayerView: View {
                 }
                 .buttonStyle(.plain)
                 .padding(.vertical, 2)
-                .background(model.currentIndex == cue.id ? Color.accentColor.opacity(0.12) : Color.clear)
+                .background(model.currentIndex == cue.id ? Color.accentColor.opacity(0.12) : (isOneTarget(cue.id) ? Color.mint.opacity(0.12) : Color.clear))
             }
         }
+    }
+
+    private func isOneTarget(_ index: Int) -> Bool {
+        oneTarget.contains { $0.cueIndex?.intValue == Int32(index) }
     }
 
     private func start(_ target: Pick) {
@@ -409,10 +606,15 @@ struct MediaPlayerView: View {
         switch pick {
         case .media:
             cancelGeneration()
+            flushImmersion()
+            analysisTask?.cancel()
+            coverage = nil
+            oneTarget = []
             quizActive = false
             model.open(media: url)
         case .japanese:
             message = model.loadSubtitles(from: url, english: false)
+            if message == nil { analyzeSubtitles() }
         case .english:
             message = model.loadSubtitles(from: url, english: true)
         }
@@ -429,6 +631,7 @@ struct MediaPlayerView: View {
             }
             if let hash = try? await player.mediaHash(graph: graph), let cached = try? await graph.subtitles.cached(mediaHash: hash, language: "ja") {
                 player.useGenerated(cached)
+                if !cached.cues.isEmpty { analyzeSubtitles() }
             }
         }
     }
@@ -449,7 +652,7 @@ struct MediaPlayerView: View {
                     Task { @MainActor in genProgress = fraction }
                 }
                 player.useGenerated(result)
-                if result.cues.isEmpty { message = String(localized: "No speech was recognized in this file.") }
+                if result.cues.isEmpty { message = String(localized: "No speech was recognized in this file.") } else { analyzeSubtitles() }
             } catch is CancellationError {
                 message = String(localized: "Subtitle generation cancelled.")
             } catch {

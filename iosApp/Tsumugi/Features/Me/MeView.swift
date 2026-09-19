@@ -26,6 +26,9 @@ struct MeView: View {
                     }
                 }
             }
+            // BRIEF_V2 §6.11: minutes against the daily target, and the four-stage roadmap.
+            ImmersionSummaryCard()
+            RoadmapCard()
             ConversationPatternsCard()
             Section {
                 NavigationLink("Leaderboard", value: Route.leaderboard)
@@ -119,6 +122,14 @@ struct SettingsView: View {
             Section("AI") {
                 NavigationLink("AI & speech", value: Route.aiSettings)
             }
+            Section {
+                NavigationLink("Audio packs", value: Route.audioPacks)
+            } header: {
+                Text("Audio")
+            } footer: {
+                Text("Pre-rendered voices for exam listening, dialogues, minimal pairs and grammar examples.")
+            }
+            ImmersionKitSettingsSection()
             RecordingsSyncSection()
             Section("Integrations") {
                 NavigationLink("Notion and AnkiConnect", value: Route.integrations)

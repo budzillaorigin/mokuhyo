@@ -99,3 +99,18 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] Android: import an EPUB, open it: the coverage card shows known words, kanji and "N new words to reach 95%" with a difficulty badge. "Create deck" → preview → save → "Study this deck" → Start lessons shows deck words. The library's "Most readable" sort puts the easiest documents first.
 - [ ] Android: a fresh install with the kanji check answered "I know it" at least once offers "Already know some words?"; mark a batch known and check the Core 2k deck counts them.
 - [ ] Android: in the reader, 1T sentences are tinted with the new word underlined; the 1T tab mines one. Annotate: tap two words, choose Highlight, then Note; the Notes tab lists both.
+
+
+## Phase 11 on iOS: decks, coverage, mark known, audio packs
+- [ ] Settings → Audio packs lists the five sets as not installed. Install `audio-pitch.zip` from Files: progress shows, then the clip count, size and VOICEVOX credit appear. Remove it: the system voice is used again.
+- [ ] Type your server's audio folder URL (a fresh install has none filled in) and tap "Show available packs". Download one, cancel halfway (the old version stays), then download it fully.
+- [ ] With the exam pack installed, a JLPT listening item plays the VOICEVOX voices, still only once in strict mode. Dialogues, minimal pairs and grammar examples play pack audio when it's installed, and the system voice otherwise.
+- [ ] Import an EPUB and open it: the coverage card shows known %, kanji % and words to 95%, with an N/ILR badge. Library → Coverage sorts by it, and "Measure coverage" fills in the rest with progress.
+- [ ] Load a video with an .srt: the coverage card appears, "Lines with one new word" lists lines, and Mine adds the word. "Make a deck from these subtitles" → preview → Save with "Study this deck": the next lessons include deck words.
+- [ ] Learn → Decks: Core 2k/6k/10k show counts. Swipe a word to Known: its deck counts and coverage update.
+- [ ] Dictionary entry: tap "I know this word", then Undo. The Sentences section groups your media, Tatoeba and Immersion Kit (only when it's turned on in Settings → Example sentences).
+- [ ] Onboarding on a fresh install: after the kanji check, "Words you already know" pages through common words. Skipping works.
+- [ ] Reader: tap the pencil, tap two words, then Highlight. Add a note. Notes lists both. Words in this text → Drill.
+- [ ] Reader library → Screenshots: pick 2 pictures. Progress shows per picture, and the document opens with its page strip.
+- [ ] A grammar point shows its Guides links, and they open in Safari.
+- [ ] Me: the Immersion card and the Roadmap card show. Log time by hand, change the daily target, and delete an entry.

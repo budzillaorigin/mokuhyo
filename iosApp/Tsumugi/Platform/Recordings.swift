@@ -48,8 +48,8 @@ enum RecordingSaver {
     }
 }
 
-/// Where model audio for a sentence comes from. Today it is the system voice; the pre-rendered audio pack
-/// (rule 20, §5.6) plugs in here later as another implementation, without touching the screens.
+/// Where model audio for a sentence comes from: the system voice (`TtsClipPlayer`), or the pre-rendered audio pack
+/// with the system voice as fallback (`PackClipPlayer` in PackAudio.swift; rule 20, §5.6).
 @MainActor
 protocol ClipPlayer: AnyObject {
     /// Plays the model audio for [sentence] and returns when it ends.
@@ -200,6 +200,10 @@ struct SideBySideView: View {
         switch reference.kind {
         case .tts:
             await voice.say(reference.value)
+        case .packAudio:
+            // A pre-rendered clip (rule 20); the pack may have been removed since the recording was made.
+            if let path = PackAudio.path(reference.value, graph: app.graph), await voice.play(file: path) { return }
+            note = String(localized: "The model audio isn't available on this device yet.")
         default:
             note = String(localized: "The model audio isn't available on this device yet.")
         }

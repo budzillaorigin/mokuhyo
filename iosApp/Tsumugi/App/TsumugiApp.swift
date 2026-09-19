@@ -34,6 +34,8 @@ struct TsumugiApp: App {
             if phase == .background {
                 let graph = model.graph
                 Task {
+                    // Reader or player stretches still open end here (D-167, D-194).
+                    _ = try? await graph.immersion.stopAll()
                     await Reminders.reschedule(graph: graph)
                     await WidgetSnapshot.write(graph: graph)
                 }
@@ -65,6 +67,11 @@ final class AppModel {
         let appGraph = graph
         Task.detached(priority: .utility) {
             SwiftSupport.shared.cleanSynthesized(graph: appGraph)
+        }
+        // Audio packs the build bundles (D-097) are installed once per version; a no-op when none are bundled.
+        // The install itself runs on Dispatchers.IO in the shared code (rule 15).
+        Task.detached(priority: .utility) {
+            _ = try? await appGraph.audio.ensureBundled()
         }
     }
 

@@ -7,17 +7,20 @@ struct ShadowLine: Hashable, Identifiable {
     let english: String
     let pointTitle: String
     let aiGenerated: Bool
+    /// The grammar point the sentence exemplifies; its pack clip is `grammar/<pointId>/<ord>` (rule 20).
+    var pointId: String = ""
     var id: String { japanese }
 
-    init(japanese: String, english: String, pointTitle: String, aiGenerated: Bool) {
+    init(japanese: String, english: String, pointTitle: String, aiGenerated: Bool, pointId: String = "") {
         self.japanese = japanese
         self.english = english
         self.pointTitle = pointTitle
         self.aiGenerated = aiGenerated
+        self.pointId = pointId
     }
 
     init(_ s: ShadowingSentence) {
-        self.init(japanese: s.japanese, english: s.english, pointTitle: s.pointTitle, aiGenerated: s.aiGenerated)
+        self.init(japanese: s.japanese, english: s.english, pointTitle: s.pointTitle, aiGenerated: s.aiGenerated, pointId: s.pointId)
     }
 }
 
@@ -30,7 +33,7 @@ struct ShadowingView: View {
     var onFinished: () -> Void = {}
 
     @State private var index = 0
-    @State private var player = TtsClipPlayer()
+    @State private var player = PackClipPlayer()
     @State private var recorder = Recorder()
     @State private var working = false
     @State private var heard: String?
@@ -61,6 +64,11 @@ struct ShadowingView: View {
         }
         .navigationTitle("Shadowing")
         .navigationBarTitleDisplayMode(.inline)
+        .task {
+            // Grammar examples come from the pre-rendered pack when it is installed (rule 20), else the system voice.
+            player.graph = app.graph
+            player.keys = await PackClipPlayer.grammarKeys(lines.map { (pointId: $0.pointId, japanese: $0.japanese) }, graph: app.graph)
+        }
         .onDisappear {
             player.stop()
             if recorder.isRecording { _ = recorder.stop() }
@@ -97,7 +105,7 @@ struct ShadowingView: View {
         Button(index < lines.count - 1 ? "Next sentence" : "Done") { advance() }
             .buttonStyle(.borderedProminent)
             .disabled(working)
-        Text("Heuristic feedback from speech recognition and a pitch tracker. The model voice is the system voice until the audio pack is installed.")
+        Text("Heuristic feedback from speech recognition and a pitch tracker. The model voice is the pre-rendered grammar audio when that pack is installed, otherwise the system voice.")
             .font(.caption2).foregroundStyle(.secondary)
     }
 

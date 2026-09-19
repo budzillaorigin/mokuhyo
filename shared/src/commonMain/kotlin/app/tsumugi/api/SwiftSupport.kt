@@ -51,6 +51,23 @@ import app.tsumugi.review.Verdict as ReviewVerdictKind
 import app.tsumugi.speech.PronunciationAnalyzer
 import app.tsumugi.study.FocusTimer
 import app.tsumugi.study.TodayBlockKind
+import app.tsumugi.audio.AudioInstallProgress
+import app.tsumugi.audio.AudioKeys
+import app.tsumugi.audio.AudioSet
+import app.tsumugi.audio.InstalledAudioPack
+import app.tsumugi.audio.PairSide as AudioPairSide
+import app.tsumugi.coverage.TextCoverage
+import app.tsumugi.immersion.ImmersionMode
+import app.tsumugi.immersion.ImmersionOrigin
+import app.tsumugi.immersion.ImmersionSession
+import app.tsumugi.lyrics.LyricsSong
+import app.tsumugi.media.Cue
+import app.tsumugi.media.OnlineExamplesResult
+import kotlinx.datetime.DatePeriod
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.minus
+import kotlinx.datetime.toLocalDateTime
 
 /** A picker option: [key] is the enum name, stable across releases. */
 data class EngineChoice(val key: String, val label: String, val detail: String)
@@ -473,4 +490,101 @@ object SwiftSupport {
         val verdict = ReviewVerdictKind.of(verdictCode) ?: throw IllegalArgumentException("unknown verdict $verdictCode")
         return service.decide(candidate, verdict, notes, edits).verdict.code
     }
+
+    // --- Audio packs (rule 20, D-095/D-096) and Phase 11 screens: thin adapters, types in SwiftBridges.kt (D-197) ---
+
+    /** The installed pre-rendered clip for [key] as a file path, or null: play system TTS instead. */
+    fun audioClipPath(graph: AppGraph, key: String): String? = graph.audio.clip(key)?.toString()
+
+    /** `pair/<id>/a|b` without Swift naming the clashing `PairSide` enum. */
+    fun pairClipKey(pairId: Long, sideA: Boolean): String = AudioKeys.minimalPair(pairId, if (sideA) AudioPairSide.A else AudioPairSide.B)
+
+    /** Every audio set id in display order ("exam", "dialogues", "minimal-pairs", "pitch", "grammar"). */
+    fun audioSetIds(): List<String> = AudioSet.entries.map { it.id }
+
+    fun audioPacks(graph: AppGraph): List<AudioPackRow> = graph.audio.installed().map(::audioRow)
+
+    fun audioProgress(progress: AudioInstallProgress): AudioProgressRow =
+        AudioProgressRow(progress.set, progress.phase.name, progress.bytesDone, progress.bytesTotal, progress.fraction)
+
+    /** Installs a picked `audio-<set>.zip` the platform copied to [path] (verified by structure and clip sizes). */
+    @Throws(Exception::class)
+    suspend fun installAudioFile(graph: AppGraph, path: String): AudioPackRow = audioRow(graph.audio.installFile(path.toPath(), null))
+
+    /** The packs a server offers at [baseUrl] (the folder holding `audio-manifest.json`, or its URL). */
+    @Throws(Exception::class)
+    suspend fun fetchAudioManifest(graph: AppGraph, baseUrl: String): List<AudioManifestRow> {
+        val installed = graph.audio.installed().associate { it.set.id to it.version }
+        return graph.audio.fetchManifest(baseUrl).packs.filter { AudioSet.fromId(it.set) != null }.map { e ->
+            AudioManifestRow(e, e.set, e.file, e.version, e.bytes, e.clips, e.audioSeconds, e.credits, installed[e.set])
+        }
+    }
+
+    /** Downloads and installs one pack; cancel the calling task to stop (the old version stays). */
+    @Throws(Exception::class)
+    suspend fun downloadAudioPack(graph: AppGraph, baseUrl: String, row: AudioManifestRow): AudioPackRow =
+        audioRow(graph.audio.download(baseUrl, row.entry))
+
+    @Throws(Exception::class)
+    suspend fun removeAudioPack(graph: AppGraph, setId: String) {
+        AudioSet.fromId(setId)?.let { graph.audio.remove(it) }
+    }
+
+    private fun audioRow(p: InstalledAudioPack) = AudioPackRow(p.set.id, p.version, p.clips, p.bytesOnDisk, p.credits)
+
+    /** Per-day immersion minutes for the heat-map, oldest first. */
+    @Throws(Exception::class)
+    suspend fun immersionDays(graph: AppGraph, days: Int): List<ImmersionDayRow> = graph.immersion.days(days).map { d ->
+        ImmersionDayRow(d.date.toString(), d.activeMinutes, d.passiveMinutes, d.totalMinutes, d.targetMinutes, d.targetMet, d.bySource)
+    }
+
+    /** A manual entry on [isoDate] (yyyy-MM-dd, today or earlier). */
+    @Throws(Exception::class)
+    suspend fun addManualImmersion(graph: AppGraph, isoDate: String, minutes: Int, active: Boolean, source: ImmersionOrigin, title: String?): ImmersionSession =
+        graph.immersion.addManual(LocalDate.parse(isoDate), minutes, if (active) ImmersionMode.ACTIVE else ImmersionMode.PASSIVE, source, title)
+
+    /** Logged sessions of the last [days] days, newest first. */
+    @Throws(Exception::class)
+    suspend fun recentImmersionSessions(graph: AppGraph, days: Int): List<ImmersionSession> {
+        val today = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+        return graph.immersion.sessions(today.minus(DatePeriod(days = (days - 1).coerceAtLeast(0))), today).sortedByDescending { it.startedAt }
+    }
+
+    /** Library lines, Tatoeba and (when on) the online source for a dictionary entry. */
+    @Throws(Exception::class)
+    suspend fun sentencesForEntry(graph: AppGraph, entryId: Long, word: String, reading: String?, limit: Int): SentenceSearchRows {
+        val r = graph.sentenceSearch.forEntry(entryId, word, reading, limit)
+        val online = r.online
+        return SentenceSearchRows(
+            library = r.library,
+            tatoeba = r.tatoeba,
+            online = (online as? OnlineExamplesResult.Found)?.hits.orEmpty(),
+            onlineEnabled = online !is OnlineExamplesResult.Disabled,
+            onlineFailure = (online as? OnlineExamplesResult.Failed)?.reason,
+            onlineSourceName = graph.onlineExamples.sourceName,
+        )
+    }
+
+    /** Cues as SRT text (Whisper subtitles fed to coverage and 1T search, which take subtitle text). */
+    fun cuesToSrt(cues: List<Cue>): String = buildString {
+        cues.forEachIndexed { i, c ->
+            append(i + 1).append('\n')
+            append(srtTime(c.startMs)).append(" --> ").append(srtTime(c.endMs)).append('\n')
+            append(c.text.trim()).append("\n\n")
+        }
+    }
+
+    private fun srtTime(ms: Long): String {
+        val t = ms.coerceAtLeast(0)
+        fun pad(v: Long, n: Int) = v.toString().padStart(n, '0')
+        return "${pad(t / 3_600_000, 2)}:${pad(t / 60_000 % 60, 2)}:${pad(t / 1000 % 60, 2)},${pad(t % 1000, 3)}"
+    }
+
+    /** Aligns plain lyrics with Whisper over the song's audio; cancel the calling task to stop. */
+    @Throws(Exception::class)
+    suspend fun alignLyrics(graph: AppGraph, songId: String, mediaHash: String, reader: PcmWindowReader, onProgress: (SubtitleProgress) -> Unit): LyricsSong =
+        graph.lyrics.align(songId, mediaHash, CallbackPcmSource(reader), onProgress)
+
+    /** `TextCoverage.newWordsTo95` (a `new…` getter is renamed by the Objective-C export). */
+    fun coverageWordsTo95(coverage: TextCoverage): Int = coverage.newWordsTo95
 }

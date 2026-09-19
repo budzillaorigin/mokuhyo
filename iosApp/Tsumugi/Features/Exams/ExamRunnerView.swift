@@ -139,7 +139,9 @@ struct ExamRunnerView: View {
         }
         let script = item.script.isEmpty ? (session.passage?.script ?? []) : item.script
         if !script.isEmpty {
-            audioButton(itemId: item.id, script: script)
+            // Clip keys follow the script's owner: the item for per-item scripts, else its passage (D-092).
+            let owner = item.script.isEmpty ? (session.passage?.id ?? item.id) : item.id
+            audioButton(itemId: item.id, owner: owner, script: script)
         }
         // JLPT questions are Japanese; DLPT questions and answers are English.
         let japanese = session.form.exam == .jlpt
@@ -169,14 +171,19 @@ struct ExamRunnerView: View {
         }
     }
 
-    private func audioButton(itemId: String, script: [ScriptLine]) -> some View {
+    private func audioButton(itemId: String, owner: String, script: [ScriptLine]) -> some View {
         let canPlay = session.canPlayAudio(itemId: itemId)
         return VStack(alignment: .leading, spacing: 4) {
             Button {
+                // Strict modes still play once: the session records the play before any audio starts.
                 session.audioPlayed(itemId: itemId)
                 bump()
-                let lines = script.map { (text: $0.text, voice: VoicePlayer.Voice(hint: $0.voice)) }
-                Task { await voice.sayLines(lines) }
+                // Pre-rendered VOICEVOX lines when the exam audio pack is installed, system TTS otherwise (rule 20).
+                let lines = script.enumerated().map { i, line in
+                    (text: line.text, voice: VoicePlayer.Voice(hint: line.voice), key: Optional(PackAudio.examKey(ownerId: owner, line: i)))
+                }
+                let graph = app.graph
+                Task { await voice.sayLines(lines, graph: graph) }
             } label: {
                 Label(voice.isSpeaking ? "Playing…" : "Play audio", systemImage: "speaker.wave.2.fill")
             }

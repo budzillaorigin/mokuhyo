@@ -127,8 +127,13 @@ private struct ReviewedItemView: View {
                             Text((line.speaker.isEmpty ? "" : "\(line.speaker): ") + line.text).font(.japanese(size: 15))
                         }
                         Button {
-                            let lines = script.map { (text: $0.text, voice: VoicePlayer.Voice(hint: $0.voice)) }
-                            Task { await voice.sayLines(lines) }
+                            // Same clips as the test itself (rule 20); the owner is the item or its passage (D-092).
+                            let owner = item.script.isEmpty ? (passage?.id ?? item.id) : item.id
+                            let lines = script.enumerated().map { i, line in
+                                (text: line.text, voice: VoicePlayer.Voice(hint: line.voice), key: Optional(PackAudio.examKey(ownerId: owner, line: i)))
+                            }
+                            let graph = app.graph
+                            Task { await voice.sayLines(lines, graph: graph) }
                         } label: {
                             Label("Play", systemImage: "speaker.wave.2")
                         }

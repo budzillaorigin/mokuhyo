@@ -46,6 +46,7 @@ private enum PairFilter: String, CaseIterable, Identifiable {
 }
 
 private struct MinimalPairsDrill: View {
+    @Environment(AppModel.self) private var app
     let repo: PracticeRepository
 
     @State private var filter = PairFilter.all
@@ -73,7 +74,7 @@ private struct MinimalPairsDrill: View {
                 if total > 0 {
                     Text("Score: \(right) / \(total)").font(.subheadline.monospacedDigit())
                 }
-                Text("Words are spoken by the device's Japanese voice; pitch pairs rely on it reading the kanji with the right accent.")
+                Text("Words play from the minimal-pairs audio pack, with the accent set per word, when it is installed. Otherwise the device's Japanese voice reads them, and pitch pairs rely on it reading the kanji with the right accent.")
                     .font(.caption2).foregroundStyle(.secondary)
             }
             .padding()
@@ -86,7 +87,7 @@ private struct MinimalPairsDrill: View {
     private func drill(_ pair: PairData) -> some View {
         Text(pair.category).font(.caption.weight(.semibold)).foregroundStyle(.secondary)
         Button {
-            Task { await voice.say(playA ? pair.a.text : pair.b.text, rate: 0.9) }
+            speak(pair, sideA: playA)
         } label: {
             Label("Play", systemImage: "speaker.wave.2.fill").frame(maxWidth: .infinity)
         }
@@ -101,8 +102,8 @@ private struct MinimalPairsDrill: View {
             Label(answered ? "Correct" : "That was \((playA ? pair.a : pair.b).text)", systemImage: answered ? "checkmark.circle" : "xmark.circle")
                 .foregroundStyle(answered ? .green : .red)
             HStack {
-                Button("Hear \(pair.a.text)") { Task { await voice.say(pair.a.text, rate: 0.9) } }
-                Button("Hear \(pair.b.text)") { Task { await voice.say(pair.b.text, rate: 0.9) } }
+                Button("Hear \(pair.a.text)") { speak(pair, sideA: true) }
+                Button("Hear \(pair.b.text)") { speak(pair, sideA: false) }
             }
             .buttonStyle(.bordered)
             Button("Next pair") { next() }.buttonStyle(.borderedProminent)
@@ -132,7 +133,15 @@ private struct MinimalPairsDrill: View {
         index = (index + 1) % max(1, pairs.count)
         playA = Bool.random()
         let pair = index < pairs.count ? pairs[index] : nil
-        if let pair { Task { await voice.say(playA ? pair.a.text : pair.b.text, rate: 0.9) } }
+        if let pair { speak(pair, sideA: playA) }
+    }
+
+    /// The pack clip `pair/<id>/a|b` (rule 20), else the system voice at 0.9×.
+    private func speak(_ pair: PairData, sideA: Bool) {
+        let graph = app.graph
+        let text = sideA ? pair.a.text : pair.b.text
+        let key = PackAudio.pairKey(pairId: pair.id, sideA: sideA)
+        Task { await voice.say(text, key: key, graph: graph, rate: 0.9) }
     }
 
     private func load() async {

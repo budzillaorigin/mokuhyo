@@ -1,6 +1,9 @@
 package app.tsumugi.api
 
+import app.tsumugi.audio.AudioPackEntry
+import app.tsumugi.immersion.SourceMinutes
 import app.tsumugi.media.PcmSource
+import app.tsumugi.media.SentenceHit
 import app.tsumugi.media.SubtitleGenerationException
 import app.tsumugi.reader.LearnerFurigana
 import app.tsumugi.reader.LearnerLevel
@@ -63,3 +66,54 @@ data class ReviewEntry(
 
 /** Unverified candidates and decided verdicts of one kind (content review list). */
 data class ReviewKindCount(val kind: ReviewKind, val total: Int, val decided: Int)
+
+// --- Phase 11 iOS UI and audio packs (D-197): flat rows, so Swift never spells nested, clashing or `set`-named members.
+
+/** An installed audio pack for Settings → Audio packs. [setId] is the set's id ("exam", "pitch", …). */
+data class AudioPackRow(
+    val setId: String,
+    val version: String,
+    val clips: Int,
+    val bytesOnDisk: Long,
+    val credits: List<String>,
+)
+
+/** One pack listed by a server's `audio-manifest.json`, with the version installed here (null = not installed). */
+data class AudioManifestRow(
+    val entry: AudioPackEntry,
+    val setId: String,
+    val file: String,
+    val version: String,
+    val bytes: Long,
+    val clips: Int,
+    val audioSeconds: Long,
+    val credits: List<String>,
+    val installedVersion: String?,
+)
+
+/** An audio install in progress; [phase] is "DOWNLOADING", "COPYING" or "EXTRACTING"; [bytesTotal] ≤ 0 = unknown. */
+data class AudioProgressRow(val setId: String, val phase: String, val bytesDone: Long, val bytesTotal: Long, val fraction: Double)
+
+/** One day of the immersion log, its date as ISO text (Swift never names kotlinx `LocalDate`). */
+data class ImmersionDayRow(
+    val date: String,
+    val activeMinutes: Int,
+    val passiveMinutes: Int,
+    val totalMinutes: Int,
+    val targetMinutes: Int,
+    val targetMet: Boolean,
+    val bySource: List<SourceMinutes>,
+)
+
+/**
+ * Dictionary sentence search as flat lists (the sealed `OnlineExamplesResult` flattened). [onlineEnabled] false: the
+ * optional source is off; [onlineFailure] set: it is on but didn't answer.
+ */
+data class SentenceSearchRows(
+    val library: List<SentenceHit>,
+    val tatoeba: List<SentenceHit>,
+    val online: List<SentenceHit>,
+    val onlineEnabled: Boolean,
+    val onlineFailure: String?,
+    val onlineSourceName: String,
+)

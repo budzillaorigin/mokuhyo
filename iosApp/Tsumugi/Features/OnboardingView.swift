@@ -57,6 +57,9 @@ struct OnboardingView: View {
                     } else {
                         ProgressView().onAppear { step = 3 }
                     }
+                case 3:
+                    // Optional (BRIEF_V2 §6.1 "I know these"): an intermediate learner isn't drilled on 猫.
+                    KnownWordsStep { step = 4 }
                 default:
                     Text("You're set").font(.title2.weight(.semibold))
                     Text("Kanji path starts at level \(suggestedLevel). Earlier items stay available if you want them.")
@@ -82,5 +85,108 @@ struct OnboardingView: View {
             try? await app.graph.onboarding.finish(goal: goal, budgetMinutes: Int32(budget), startLevel: level, kanjiKnown: known)
             onDone(openImport)
         }
+    }
+}
+
+/// Onboarding's optional "I know these" step (BRIEF_V2 §6.1, D-151): pages of the frequency list, most common first;
+/// the words tapped are marked known (synced), so lessons and coverage skip them. Skippable at any point.
+struct KnownWordsStep: View {
+    @Environment(AppModel.self) private var app
+    let onDone: () -> Void
+
+    @State private var batch: FrequencyBatch?
+    @State private var chosen: Set<Int64> = []
+    @State private var marked = 0
+    @State private var loading = false
+    @State private var failure: String?
+
+    private let columns = [GridItem(.adaptive(minimum: 88), spacing: 8)]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Words you already know").font(.title2.weight(.semibold))
+            Text("Tap the ones you know. They count as known, so lessons and coverage skip them. You can skip this.")
+            if let failure {
+                ErrorRetryView(message: failure) { Task { await load(after: batch?.nextAfter ?? 0) } }
+            } else if let batch {
+                if batch.words.isEmpty {
+                    Text("No more words to check.").foregroundStyle(.secondary)
+                } else {
+                    LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
+                        ForEach(batch.words, id: \.entryId) { w in
+                            let on = chosen.contains(w.entryId)
+                            Button {
+                                if on { chosen.remove(w.entryId) } else { chosen.insert(w.entryId) }
+                            } label: {
+                                VStack(spacing: 1) {
+                                    Text(w.headword).font(.japanese(size: 18)).lineLimit(1)
+                                    Text(w.reading).font(.japanese(size: 10)).foregroundStyle(.secondary).lineLimit(1)
+                                }
+                                .frame(maxWidth: .infinity, minHeight: 48)
+                                .padding(4)
+                                .background(on ? Color.accentColor.opacity(0.2) : Color.secondary.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel(Text("\(w.headword), \(w.gloss)"))
+                            .accessibilityAddTraits(on ? .isSelected : [])
+                        }
+                    }
+                    HStack {
+                        Button("Select all") { chosen = Set(batch.words.map(\.entryId)) }
+                        Button("Clear") { chosen = [] }
+                    }
+                    .font(.caption)
+                }
+                if marked > 0 { Text("\(marked.formatted()) words marked known so far.").font(.caption).foregroundStyle(.secondary) }
+                if !batch.exhausted && !batch.words.isEmpty {
+                    Button(loading ? "Saving…" : "Mark these and show more") { Task { await next() } }
+                        .buttonStyle(.borderedProminent)
+                        .disabled(loading)
+                }
+                Button(chosen.isEmpty ? "Done" : "Mark these and finish") {
+                    Task {
+                        await save()
+                        onDone()
+                    }
+                }
+                .buttonStyle(.bordered)
+                .disabled(loading)
+            } else {
+                ProgressView()
+            }
+        }
+        .task { if batch == nil { await load(after: 0) } }
+    }
+
+    private func load(after: Int32) async {
+        failure = nil
+        do {
+            let next = try await app.graph.knownWords.frequencyBatch(afterOrd: after, size: 40)
+            // Without the dictionary pack there's nothing to check: move on.
+            if next.words.isEmpty && batch == nil { onDone(); return }
+            batch = next
+            chosen = []
+        } catch {
+            failure = String(localized: "Couldn't load the word list: \(error.localizedDescription)")
+        }
+    }
+
+    private func save() async {
+        guard !chosen.isEmpty else { return }
+        loading = true
+        defer { loading = false }
+        do {
+            try await app.graph.knownWords.markKnown(entryIds: chosen.map { KotlinLong(longLong: $0) }, source: "ONBOARDING")
+            marked += chosen.count
+            chosen = []
+        } catch {
+            failure = String(localized: "Couldn't save: \(error.localizedDescription)")
+        }
+    }
+
+    private func next() async {
+        await save()
+        guard failure == nil, let after = batch?.nextAfter else { return }
+        await load(after: after)
     }
 }

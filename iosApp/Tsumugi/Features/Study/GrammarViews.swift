@@ -92,8 +92,12 @@ struct GrammarPointView: View {
 }
 
 struct GrammarPointContent: View {
+    @Environment(AppModel.self) private var app
     let point: GrammarPoint
     let examples: [GrammarExample]
+
+    @State private var voice = VoicePlayer()
+    @State private var playing: Int?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -112,11 +116,21 @@ struct GrammarPointContent: View {
                 ForEach(point.mistakes, id: \.self) { Text("• \($0)").font(.subheadline) }
             }
             SectionHeader("Examples")
-            ForEach(Array(examples.enumerated()), id: \.offset) { _, ex in
+            ForEach(Array(examples.enumerated()), id: \.offset) { i, ex in
                 VStack(alignment: .leading, spacing: 2) {
-                    (Text(ex.before) + Text(ex.answer).bold().foregroundColor(.accentColor) + Text(ex.after))
-                        .font(.japanese(size: 18))
-                        .japaneseSpeech()
+                    HStack(alignment: .firstTextBaseline) {
+                        (Text(ex.before) + Text(ex.answer).bold().foregroundColor(.accentColor) + Text(ex.after))
+                            .font(.japanese(size: 18))
+                            .japaneseSpeech()
+                        Spacer()
+                        Button {
+                            play(ex, index: i)
+                        } label: {
+                            Image(systemName: playing == i ? "speaker.wave.3.fill" : "speaker.wave.2")
+                        }
+                        .buttonStyle(.borderless)
+                        .accessibilityLabel(Text("Play example"))
+                    }
                     HStack {
                         Text(ex.english).font(.caption).foregroundStyle(.secondary)
                         if ex.isAiGenerated { AiBadge() }
@@ -125,6 +139,50 @@ struct GrammarPointContent: View {
             }
             if examples.contains(where: { !$0.isAiGenerated }) {
                 Text("Example sentences from Tatoeba (CC BY 2.0 FR).").font(.caption2).foregroundStyle(.tertiary)
+            }
+            GuideLinksSection(pointId: point.id)
+        }
+        .onDisappear { voice.stop() }
+    }
+
+    /// Example audio: the grammar pack clip `grammar/<point>/<ord>` when installed, else the system voice (rule 20).
+    private func play(_ ex: GrammarExample, index: Int) {
+        let graph = app.graph
+        let key = PackAudio.grammarKey(pointId: point.id, example: index)
+        playing = index
+        Task {
+            await voice.say(ex.japanese, key: key, graph: graph)
+            if playing == index { playing = nil }
+        }
+    }
+}
+
+/// Free explanations elsewhere for this grammar point (BRIEF_V2 §6.4 guides library, D-166). Links only: nothing is
+/// fetched or stored, and each opens in the browser.
+struct GuideLinksSection: View {
+    let pointId: String
+
+    var body: some View {
+        let links = GuidesLibrary.shared.forGrammarPoint(pointId: pointId, topics: [])
+        if !links.isEmpty {
+            VStack(alignment: .leading, spacing: 6) {
+                SectionHeader("Guides")
+                ForEach(links.prefix(6), id: \.id) { link in
+                    if let url = URL(string: link.url) {
+                        Link(destination: url) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(link.title).font(.subheadline)
+                                    Text(link.site).font(.caption).foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Image(systemName: "arrow.up.right.square").foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+                Text("Links to free explanations on other sites. They open in your browser and need a connection.")
+                    .font(.caption2).foregroundStyle(.tertiary)
             }
         }
     }

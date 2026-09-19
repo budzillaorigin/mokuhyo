@@ -53,6 +53,14 @@ enum Route: Hashable {
     case export
     case integrations
     case contentReview
+    // Phase 11 (BRIEF_V2 §6.1–§6.4, §6.11) and audio packs (§5.6)
+    case audioPacks
+    case decks
+    case deck(String)
+    case coreDeck(String)
+    case lyrics
+    case song(String)
+    case immersionLog
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -181,6 +189,13 @@ struct TabStack<Root: View>: View {
                     case .export: ExportView()
                     case .integrations: IntegrationsView()
                     case .contentReview: ContentReviewView()
+                    case .audioPacks: AudioPacksView()
+                    case .decks: DecksHomeView()
+                    case .deck(let id): DeckDetailView(deckId: id)
+                    case .coreDeck(let id): CoreDeckView(deckId: id)
+                    case .lyrics: LyricsListView()
+                    case .song(let id): KaraokeView(songId: id)
+                    case .immersionLog: ImmersionLogView()
                     }
                 }
         }
@@ -201,6 +216,9 @@ struct LearnHomeView: View {
             }
             NavigationLink(value: Route.library) {
                 LabeledContent("Reading", value: "Articles, books, feeds")
+            }
+            NavigationLink(value: Route.decks) {
+                LabeledContent("Decks", value: "Core 2k–10k · your media")
             }
             NavigationLink(value: Route.dictionary) {
                 LabeledContent("Dictionary", value: "JMdict · kanji · examples")

@@ -22,6 +22,7 @@ private struct EntryContent: View {
             VStack(alignment: .leading, spacing: 18) {
                 FuriganaText(segments: detail.furigana)
                 EntryActions(entry: e)
+                MarkKnownButton(entryId: e.id)
                 HStack {
                     if e.isCommon { TagView("common") }
                     if let n = jlptLabel(e.jlpt) { TagView("\(n) (unofficial)") }
@@ -81,16 +82,8 @@ private struct EntryContent: View {
                         }
                     }
                 }
-                if !detail.sentences.isEmpty {
-                    SectionHeader("Examples")
-                    ForEach(detail.sentences, id: \.id) { s in
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(s.japanese).font(.japanese(size: 17)).textSelection(.enabled).japaneseSpeech()
-                            Text(s.english).font(.subheadline).foregroundStyle(.secondary)
-                        }
-                    }
-                    Text("Examples: Tatoeba (CC BY 2.0 FR)").font(.caption2).foregroundStyle(.tertiary)
-                }
+                // Sentences from the learner's own media first, then Tatoeba, then the optional online source (§6.2).
+                EntrySentencesSection(entry: e)
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)

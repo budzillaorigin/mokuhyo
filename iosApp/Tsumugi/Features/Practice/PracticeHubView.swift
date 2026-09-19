@@ -43,6 +43,9 @@ struct PracticeHubView: View {
                 NavigationLink(value: Route.podcasts) {
                     LabeledContent("Podcasts", value: "RSS, downloads, transcripts")
                 }
+                NavigationLink(value: Route.lyrics) {
+                    LabeledContent("Lyrics", value: "Karaoke reading of your songs")
+                }
             }
             Section("Write") {
                 if levelKanji.isEmpty {
