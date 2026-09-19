@@ -4,6 +4,45 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. v2 Phases 9–14 are built. Ne
 
 ---
 
+## Mac build verification (2026-09-19)
+
+First build of the iOS app on a real Mac (XCODE_VERIFY_BRIEF.md). Full log with commands, first errors, diagnoses and timings: `docs/BUILD_LOG.md`.
+
+**Environment:** macOS 26.3.1, Xcode 26.2 (17C52), iOS 26.2 simulator runtime (no "iPhone 16" device, so the ladder used iPhone 17), Temurin JDK 21.0.12.1, Gradle 9.7.1, Kotlin 2.4.10 + SKIE 0.10.14, uv 0.12.17. `xcode-select` still points at CommandLineTools (needs the owner's `sudo`), so every `xcodebuild`/`xcrun` ran with `DEVELOPER_DIR` set. Packs rebuilt from `sources.lock` (same bytes), xcframeworks re-fetched from the cached, hash-verified zips (llama.cpp b11040, whisper.cpp b5130; F-44 pins are fine).
+
+**Rungs:**
+| Rung | Result |
+|---|---|
+| 1a Kotlin/Native compile (sim + device) | ✅ 1m 48s |
+| 1b `iosSimulatorArm64Test` | ❌ hung → fixed → ✅ 712 tests, 0 failures |
+| 2 `embedAndSignAppleFrameworkForXcode` | ✅ (with Xcode's env vars; static framework at `shared/build/xcode-frameworks/Debug/iphonesimulator`) |
+| 3 Simulator Debug build | ❌ 2 errors → fixed → ❌ 1 error → fixed → ✅ |
+| 4 `xcodebuild test` | ✅ 5 Swift tests (6 after the added one) |
+| 5 Launch smoke | ✅ onboarding screen, no crash, no `.ips`; たべる → 食べる |
+| 6 Device Release build (llama + whisper linked) | ✅ |
+| 7 Unsigned archive + `validate_archive.py` | ✅ "archive structure valid" |
+
+**Fixes (one commit each, no feature removed, no behaviour change):**
+- `456f816` shared: `PracticeReviewSource.scenarios()` ran a query from inside another query's cursor; the native SQLDelight driver's single reader connection deadlocked (JVM tolerated it). Rows are read first, then the turns query runs. Would also have hung the Content review screen on a device.
+- `9b82d83` shared + Android: two Kotlin types named `PairSide` (study data class, audio enum) collided in the ObjC export and the enum won the plain name on this build. The audio enum is now `MinimalPairSide`. Android still builds (`assembleDebug`).
+- `b831183` Swift: `MediaPlayerView.isOneTarget` compared `KotlinInt.intValue` (`Int`) with `Int32`.
+- `4c7b675` test: `DictionaryTests.readingSearchFindsVerb` (たべる → 食べる in the app bundle).
+
+**Archive:** `Tsumugi.app` 214 MB uncompressed (packs 167 MB, of which dictionary.sqlite 130 MB; native frameworks 12 MB; three extensions 0.4 MB). 14 MB over the 200 MB base target before thinning/compression; nothing removed. Icon, usage strings, privacy manifest, `LICENSES.md`, packs and the widget/share/action extensions are all in the archive.
+
+**Feature walk:** every tab and every hub link on Learn, Practice and Me was opened in the simulator (driven with `idb`; list in BUILD_LOG §4.2). No error, placeholder or missing-pack state appeared with the bundled packs. Second level checked: kanji path level → item, grammar N5 → point, dictionary search → entry, Settings → Licenses.
+
+**Owner: test on a physical iPhone, in this order** (`docs/QA.md` has the detailed steps):
+1. **First run:** install from Xcode (signing with your team), onboarding end to end including the kanji check and "I know these", then Today.
+2. **Dictionary:** たべる, 食べさせられなかった, English "cat", romaji; the entry's Listen buttons (system voice) and the pitch clips; Draw to search and Scan text with the camera.
+3. **SRS:** a lesson batch from Kanji path, a review session with all modes, undo, then the widget on the home screen.
+4. **AI with your LAN server:** Settings → AI & speech → own server (Tailscale/LAN URL), test connection, role-play and reader translation; then a local model download and llama on device (no simulator slice exists, so this was never run here); Whisper subtitle generation in the media player.
+5. Then the rest of QA.md (share extension, sync against your self-hosted server, audio packs from Files).
+
+**Deferred / owner decisions surfaced:** `sudo xcode-select -s …` on this Mac; SKIE analytics upload (on by default); `ITSAppUsesNonExemptEncryption = NO` remains your legal call; the 14 MB size overage.
+
+---
+
 ## Phase 14: email verification, self-hosting, owner decisions, Android Play-readiness (2026-09-19)
 
 BRIEF_V2 §8 Phase 14, scoped by the owner's decisions of 2026-09-19. Decisions D-310…D-319; BRIEF_V2 §9 items 2, 7 and 8 are recorded as decided in `docs/DECISIONS.md`.
