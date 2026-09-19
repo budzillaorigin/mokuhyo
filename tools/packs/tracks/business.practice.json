@@ -1,0 +1,3157 @@
+{
+ "scenarios": [
+  {
+   "id": "business-sc-001",
+   "titleEn": "Self-introduction on the first day",
+   "titleJa": "初出社の自己紹介",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "hr",
+   "setting": "It is your first morning at a small trading company. At the morning meeting the section chief asks you to introduce yourself to the team.",
+   "learnerRole": "A new employee on the first day",
+   "partnerRole": "The section chief (課長) leading the morning meeting",
+   "register": "polite",
+   "goals": [
+    "Say your name and where you are from",
+    "Say what you did before",
+    "Ask the team for guidance with the set phrase"
+   ],
+   "vocabulary": [
+    "自己紹介",
+    "出身",
+    "入社",
+    "営業",
+    "趣味",
+    "迷惑"
+   ],
+   "phrases": [
+    "本日からお世話になります。",
+    "ご迷惑をおかけすることもあるかと思いますが、",
+    "どうぞよろしくお願いいたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "皆さん、おはようございます。今日から新しい方が入社しました。では、自己紹介をお願いします。",
+     "partnerEn": "Good morning, everyone. A new person joined the company today. Please introduce yourself.",
+     "intent": "Greet everyone and say your name.",
+     "sample": "おはようございます。本日からお世話になります、リーと申します。"
+    },
+    {
+     "partnerJa": "リーさんはどちらのご出身ですか。",
+     "partnerEn": "Where are you from, Ms./Mr. Lee?",
+     "intent": "Say which country and city you are from.",
+     "sample": "シンガポールの出身です。"
+    },
+    {
+     "partnerJa": "日本に来る前は、どんな仕事をしていましたか。",
+     "partnerEn": "What kind of work did you do before coming to Japan?",
+     "intent": "Say you worked in sales at a hotel for three years.",
+     "sample": "ホテルで三年間、営業の仕事をしていました。"
+    },
+    {
+     "partnerJa": "そうですか。趣味は何ですか。",
+     "partnerEn": "I see. What are your hobbies?",
+     "intent": "Say your hobby is cooking.",
+     "sample": "趣味は料理です。週末によく作ります。"
+    },
+    {
+     "partnerJa": "いいですね。最後に一言お願いします。",
+     "partnerEn": "Nice. Finally, a few words, please.",
+     "intent": "Say you may cause trouble at first but will do your best, and ask for their guidance.",
+     "sample": "ご迷惑をおかけすることもあるかと思いますが、一生懸命がんばります。どうぞよろしくお願いいたします。"
+    },
+    {
+     "partnerJa": "ありがとうございました。皆さん、よろしくお願いしますね。",
+     "partnerEn": "Thank you. Everyone, please look after them.",
+     "intent": "Bow and thank everyone once more.",
+     "sample": "ありがとうございます。よろしくお願いいたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-002",
+   "titleEn": "Exchanging business cards",
+   "titleJa": "名刺交換",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "etiquette",
+   "setting": "You meet a manager from a client company for the first time in their lobby. Business cards are exchanged before anything else.",
+   "learnerRole": "A sales representative from a small design firm",
+   "partnerRole": "A purchasing manager at the client company",
+   "register": "keigo",
+   "goals": [
+    "Offer your card with your company and name",
+    "Receive the partner's card politely",
+    "Confirm how to read their name"
+   ],
+   "vocabulary": [
+    "名刺",
+    "頂戴",
+    "申す",
+    "株式会社",
+    "頂く"
+   ],
+   "phrases": [
+    "わたくし、○○の××と申します。",
+    "頂戴いたします。",
+    "失礼ですが、何とお読みすればよろしいでしょうか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はじめまして。本日はお越しいただきありがとうございます。",
+     "partnerEn": "How do you do. Thank you for coming today.",
+     "intent": "Offer your card with both hands, giving your company and name.",
+     "sample": "はじめまして。わたくし、株式会社ミドリデザインのキムと申します。よろしくお願いいたします。"
+    },
+    {
+     "partnerJa": "ご丁寧にありがとうございます。わたくし、こういう者です。",
+     "partnerEn": "Thank you, that's very kind. This is who I am (handing over a card).",
+     "intent": "Receive the card with the set phrase.",
+     "sample": "頂戴いたします。"
+    },
+    {
+     "partnerJa": "どうぞよろしくお願いいたします。",
+     "partnerEn": "I look forward to working with you.",
+     "intent": "Politely ask how to read their family name, 東海林.",
+     "sample": "失礼ですが、お名前は何とお読みすればよろしいでしょうか。"
+    },
+    {
+     "partnerJa": "「しょうじ」と読みます。よく聞かれるんですよ。",
+     "partnerEn": "It's read 'Shoji'. People often ask.",
+     "intent": "Repeat the name and say it is a beautiful name.",
+     "sample": "しょうじ様ですね。すてきなお名前ですね。"
+    },
+    {
+     "partnerJa": "ありがとうございます。では、どうぞこちらへ。",
+     "partnerEn": "Thank you. Well then, this way, please.",
+     "intent": "Thank them and follow.",
+     "sample": "ありがとうございます。失礼いたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-003",
+   "titleEn": "Taking a call for an absent colleague",
+   "titleJa": "不在の同僚あての電話を受ける",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "phone",
+   "setting": "The phone on your desk rings. A client asks for your colleague Mr. Tanaka, who is out visiting another customer until 3 p.m.",
+   "learnerRole": "An office worker answering the phone",
+   "partnerRole": "A caller from a client company",
+   "register": "keigo",
+   "goals": [
+    "Answer the phone with the company name",
+    "Explain that the colleague is out (without honorifics for your own colleague)",
+    "Offer to take a message",
+    "Repeat back the caller's name and number"
+   ],
+   "vocabulary": [
+    "外出",
+    "伝言",
+    "折り返し",
+    "戻る",
+    "承る",
+    "電話番号"
+   ],
+   "phrases": [
+    "お電話ありがとうございます。",
+    "あいにく田中は外出しております。",
+    "よろしければご伝言を承りますが。",
+    "念のため、お電話番号をお伺いしてもよろしいでしょうか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "（電話が鳴る）",
+     "partnerEn": "(The phone rings.)",
+     "intent": "Answer with a greeting and your company name (Sakura Trading).",
+     "sample": "お電話ありがとうございます。さくら商事でございます。"
+    },
+    {
+     "partnerJa": "わたくし、青葉工業の森と申します。いつもお世話になっております。",
+     "partnerEn": "This is Mori from Aoba Industries. Thank you for your continued business.",
+     "intent": "Return the standard greeting.",
+     "sample": "こちらこそ、いつもお世話になっております。"
+    },
+    {
+     "partnerJa": "営業部の田中様はいらっしゃいますか。",
+     "partnerEn": "Is Mr. Tanaka of the sales department in?",
+     "intent": "Apologize and say Tanaka is out and will be back around three.",
+     "sample": "申し訳ございません。あいにく田中は外出しておりまして、三時ごろ戻る予定です。"
+    },
+    {
+     "partnerJa": "そうですか。困りましたね。",
+     "partnerEn": "I see. That's a problem.",
+     "intent": "Offer to take a message or have him call back.",
+     "sample": "よろしければ、ご伝言を承りましょうか。それとも、戻りしだい折り返しお電話させましょうか。"
+    },
+    {
+     "partnerJa": "では、戻られたら折り返しお電話をいただけますか。",
+     "partnerEn": "Then could he call me back when he returns?",
+     "intent": "Agree and ask for their phone number.",
+     "sample": "かしこまりました。念のため、お電話番号をお伺いしてもよろしいでしょうか。"
+    },
+    {
+     "partnerJa": "〇三の、四五六七の、八九〇一です。",
+     "partnerEn": "It's 03-4567-8901.",
+     "intent": "Repeat the number back to confirm.",
+     "sample": "〇三の四五六七の八九〇一ですね。"
+    },
+    {
+     "partnerJa": "はい、そうです。",
+     "partnerEn": "Yes, that's right.",
+     "intent": "Repeat the caller's company and name, and give your own name.",
+     "sample": "青葉工業の森様ですね。わたくし、山口が承りました。"
+    },
+    {
+     "partnerJa": "よろしくお願いします。失礼いたします。",
+     "partnerEn": "Thank you. Goodbye.",
+     "intent": "Close the call politely.",
+     "sample": "お電話ありがとうございました。失礼いたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-004",
+   "titleEn": "Leaving a phone message",
+   "titleJa": "電話で伝言を頼む",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "phone",
+   "setting": "You call a supplier to confirm a delivery date, but the person in charge, Ms. Ito, is in a meeting. The receptionist offers to take a message.",
+   "learnerRole": "A purchasing staff member calling a supplier",
+   "partnerRole": "The receptionist at the supplier",
+   "register": "keigo",
+   "goals": [
+    "Ask for the person in charge by name",
+    "Leave a short, clear message",
+    "Say when you can be reached"
+   ],
+   "vocabulary": [
+    "担当",
+    "会議",
+    "納期",
+    "確認",
+    "お手数"
+   ],
+   "phrases": [
+    "伊藤様をお願いできますでしょうか。",
+    "では、ご伝言をお願いできますか。",
+    "お手数ですが、お伝えいただけますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "お電話ありがとうございます。みなと物産でございます。",
+     "partnerEn": "Thank you for calling. Minato Products speaking.",
+     "intent": "Give your company and name, and ask for Ms. Ito in sales.",
+     "sample": "いつもお世話になっております。ひかり電機のブラウンと申します。営業部の伊藤様をお願いできますでしょうか。"
+    },
+    {
+     "partnerJa": "申し訳ございません。伊藤はただいま会議中でございます。",
+     "partnerEn": "I'm very sorry. Ito is in a meeting right now.",
+     "intent": "Ask if you can leave a message.",
+     "sample": "そうですか。では、ご伝言をお願いできますか。"
+    },
+    {
+     "partnerJa": "はい、どうぞ。",
+     "partnerEn": "Yes, go ahead.",
+     "intent": "Say you want to confirm the delivery date for the order of the 10th.",
+     "sample": "十日にお願いした注文の納期を確認したいので、お手数ですがお伝えいただけますか。"
+    },
+    {
+     "partnerJa": "かしこまりました。十日のご注文の納期の件ですね。",
+     "partnerEn": "Certainly. It's about the delivery date for the order of the 10th.",
+     "intent": "Say you will be at your desk until 5 p.m. today.",
+     "sample": "はい。本日は五時まで席におりますので、よろしくお願いいたします。"
+    },
+    {
+     "partnerJa": "承知いたしました。伊藤に申し伝えます。",
+     "partnerEn": "Understood. I will pass it on to Ito.",
+     "intent": "Ask for the receptionist's name.",
+     "sample": "恐れ入りますが、お名前を伺ってもよろしいでしょうか。"
+    },
+    {
+     "partnerJa": "受付の中村と申します。",
+     "partnerEn": "I'm Nakamura at reception.",
+     "intent": "Thank them and end the call.",
+     "sample": "中村様ですね。ありがとうございます。失礼いたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-005",
+   "titleEn": "Calling a client to reschedule",
+   "titleJa": "取引先に日程変更をお願いする",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "phone",
+   "setting": "A meeting with a client is set for Thursday at 2 p.m., but your manager has an urgent business trip. You call the client to ask to move it.",
+   "learnerRole": "A project coordinator",
+   "partnerRole": "The client's contact person",
+   "register": "keigo",
+   "goals": [
+    "Apologize and explain the reason briefly",
+    "Ask to change the date",
+    "Propose two alternative times",
+    "Confirm the new appointment"
+   ],
+   "vocabulary": [
+    "日程",
+    "変更",
+    "出張",
+    "都合",
+    "候補",
+    "打ち合わせ"
+   ],
+   "phrases": [
+    "大変申し訳ないのですが、",
+    "日程を変更していただくことは可能でしょうか。",
+    "ご都合はいかがでしょうか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、北川です。",
+     "partnerEn": "Yes, Kitagawa speaking.",
+     "intent": "Identify yourself and say you are calling about Thursday's meeting.",
+     "sample": "お世話になっております。つばさシステムのパクです。木曜日の打ち合わせの件でお電話いたしました。"
+    },
+    {
+     "partnerJa": "ああ、木曜の二時ですね。どうされましたか。",
+     "partnerEn": "Ah, Thursday at two. What's the matter?",
+     "intent": "Apologize and explain your manager must go on an urgent business trip.",
+     "sample": "大変申し訳ないのですが、部長の鈴木に急な出張が入ってしまいまして。"
+    },
+    {
+     "partnerJa": "そうですか。それは大変ですね。",
+     "partnerEn": "I see. That must be hard.",
+     "intent": "Ask if the date can be changed.",
+     "sample": "勝手なお願いで恐縮ですが、日程を変更していただくことは可能でしょうか。"
+    },
+    {
+     "partnerJa": "ええ、大丈夫ですよ。いつがよろしいですか。",
+     "partnerEn": "Yes, that's fine. When would be good?",
+     "intent": "Offer two options: next Monday afternoon or Tuesday morning.",
+     "sample": "来週の月曜日の午後か、火曜日の午前中はいかがでしょうか。"
+    },
+    {
+     "partnerJa": "月曜は一日ふさがっていて……火曜の十時ならいけます。",
+     "partnerEn": "Monday I'm booked all day... Tuesday at ten works.",
+     "intent": "Accept Tuesday at 10 and confirm the place is the same.",
+     "sample": "では、火曜日の十時でお願いいたします。場所は前回と同じ御社の会議室でよろしいでしょうか。"
+    },
+    {
+     "partnerJa": "はい、同じ部屋を押さえておきます。",
+     "partnerEn": "Yes, I'll book the same room.",
+     "intent": "Thank them and say you will send a confirmation email.",
+     "sample": "ありがとうございます。念のため、後ほど確認のメールをお送りいたします。"
+    },
+    {
+     "partnerJa": "わかりました。では、火曜日にお待ちしております。",
+     "partnerEn": "Understood. We'll see you on Tuesday.",
+     "intent": "Apologize once more for the change and close.",
+     "sample": "このたびはご迷惑をおかけして申し訳ございませんでした。よろしくお願いいたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-006",
+   "titleEn": "Receiving a visitor at reception",
+   "titleJa": "受付で来客を迎える",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "visit",
+   "setting": "You are covering the front desk. A visitor arrives for a 10 o'clock appointment with Director Ono.",
+   "learnerRole": "An employee covering reception",
+   "partnerRole": "A visitor from another company",
+   "register": "keigo",
+   "goals": [
+    "Greet the visitor",
+    "Confirm name and appointment",
+    "Ask them to wait and contact the host"
+   ],
+   "vocabulary": [
+    "受付",
+    "約束",
+    "少々",
+    "応対",
+    "来客"
+   ],
+   "phrases": [
+    "いらっしゃいませ。",
+    "お約束でいらっしゃいますか。",
+    "少々お待ちいただけますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "失礼いたします。",
+     "partnerEn": "Excuse me.",
+     "intent": "Welcome the visitor.",
+     "sample": "いらっしゃいませ。"
+    },
+    {
+     "partnerJa": "山川商会の石井と申します。十時に小野部長とお約束をいただいております。",
+     "partnerEn": "I'm Ishii from Yamakawa & Co. I have a 10 o'clock appointment with Director Ono.",
+     "intent": "Confirm their company and name and that they have an appointment.",
+     "sample": "山川商会の石井様でいらっしゃいますね。お待ちしておりました。"
+    },
+    {
+     "partnerJa": "はい、よろしくお願いいたします。",
+     "partnerEn": "Yes, thank you.",
+     "intent": "Ask them to wait a moment while you call Ono (no honorific for your own boss).",
+     "sample": "ただいま小野を呼んでまいりますので、少々お待ちいただけますか。"
+    },
+    {
+     "partnerJa": "はい、わかりました。",
+     "partnerEn": "Yes, all right.",
+     "intent": "Offer them a seat on the sofa.",
+     "sample": "よろしければ、こちらにおかけになってお待ちください。"
+    },
+    {
+     "partnerJa": "ありがとうございます。",
+     "partnerEn": "Thank you.",
+     "intent": "Tell them Ono will come right away.",
+     "sample": "お待たせいたしました。小野はすぐにまいります。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-007",
+   "titleEn": "Guiding a guest to the meeting room",
+   "titleJa": "お客様を会議室へ案内する",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "etiquette",
+   "setting": "You walk a guest from the lobby to meeting room B on the fifth floor, using the elevator.",
+   "learnerRole": "An employee guiding a guest",
+   "partnerRole": "A guest from a client company",
+   "register": "keigo",
+   "goals": [
+    "Lead the way and say where you are going",
+    "Handle the elevator politely",
+    "Seat the guest in the place of honor"
+   ],
+   "vocabulary": [
+    "案内",
+    "会議室",
+    "足元",
+    "上座",
+    "エレベーター"
+   ],
+   "phrases": [
+    "ご案内いたします。",
+    "お足元にお気をつけください。",
+    "どうぞ奥の席へおかけください。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "本日はよろしくお願いいたします。",
+     "partnerEn": "Thank you for having me today.",
+     "intent": "Say you will show them to the fifth-floor meeting room.",
+     "sample": "こちらこそよろしくお願いいたします。五階の会議室へご案内いたします。"
+    },
+    {
+     "partnerJa": "ありがとうございます。",
+     "partnerEn": "Thank you.",
+     "intent": "Hold the elevator and invite them in first.",
+     "sample": "エレベーターはこちらです。どうぞお先にお乗りください。"
+    },
+    {
+     "partnerJa": "失礼します。",
+     "partnerEn": "Excuse me.",
+     "intent": "On arrival, warn them to watch their step and point out the room.",
+     "sample": "お足元にお気をつけください。こちらの会議室でございます。"
+    },
+    {
+     "partnerJa": "どちらに座ればよろしいでしょうか。",
+     "partnerEn": "Where should I sit?",
+     "intent": "Offer the seat at the back and say the person in charge will come soon.",
+     "sample": "どうぞ奥の席へおかけください。担当の者がすぐにまいります。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-008",
+   "titleEn": "Small talk before a meeting",
+   "titleJa": "会議前の雑談",
+   "jlpt": 4,
+   "ilr": "1+",
+   "category": "meeting",
+   "setting": "You and a client arrive early for a meeting and have a few minutes to chat while waiting for the others.",
+   "learnerRole": "A consultant waiting for a meeting to start",
+   "partnerRole": "A friendly client contact",
+   "register": "polite",
+   "goals": [
+    "Talk about the weather",
+    "Ask about the weekend",
+    "Answer a question about your life in Japan"
+   ],
+   "vocabulary": [
+    "天気",
+    "週末",
+    "雑談",
+    "季節",
+    "梅雨"
+   ],
+   "phrases": [
+    "今日は暑いですね。",
+    "週末はいかがでしたか。",
+    "おかげさまで、だいぶ慣れました。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "今日は朝から雨ですね。",
+     "partnerEn": "It has been raining since this morning, hasn't it?",
+     "intent": "Agree and mention the rainy season.",
+     "sample": "そうですね。もう梅雨に入ったんでしょうか。"
+    },
+    {
+     "partnerJa": "そうみたいですね。週末はどこかへ行きましたか。",
+     "partnerEn": "Seems so. Did you go anywhere on the weekend?",
+     "intent": "Say you went hiking near the city, and ask about their weekend.",
+     "sample": "はい、近くの山に登りました。週末はいかがでしたか。"
+    },
+    {
+     "partnerJa": "私は子どもとサッカーの試合を見に行きました。",
+     "partnerEn": "I went to see a soccer match with my kids.",
+     "intent": "React with interest and ask if it was fun.",
+     "sample": "いいですね。楽しかったですか。"
+    },
+    {
+     "partnerJa": "ええ、とても。ところで、日本の生活にはもう慣れましたか。",
+     "partnerEn": "Yes, very. By the way, have you gotten used to life in Japan?",
+     "intent": "Say you have mostly gotten used to it, thanks to everyone.",
+     "sample": "おかげさまで、だいぶ慣れました。"
+    },
+    {
+     "partnerJa": "日本の季節で、どれが一番好きですか。",
+     "partnerEn": "Which Japanese season do you like best?",
+     "intent": "Say you like autumn best and why.",
+     "sample": "秋が一番好きです。涼しくて、食べ物がおいしいからです。"
+    },
+    {
+     "partnerJa": "あ、皆さん来ましたね。では、始めましょうか。",
+     "partnerEn": "Oh, everyone's here. Shall we start?",
+     "intent": "Agree and get ready to begin.",
+     "sample": "はい、よろしくお願いします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-009",
+   "titleEn": "Asking a senior colleague for advice",
+   "titleJa": "先輩にアドバイスをもらう",
+   "jlpt": 4,
+   "ilr": "1+",
+   "category": "hr",
+   "setting": "You are in your second month. You find writing reports hard, so you ask a senior colleague for tips during a quiet moment.",
+   "learnerRole": "A junior employee",
+   "partnerRole": "A kind senior colleague (先輩)",
+   "register": "polite",
+   "goals": [
+    "Ask if the senior has a moment",
+    "Explain what you find difficult",
+    "Ask for concrete advice",
+    "Thank them"
+   ],
+   "vocabulary": [
+    "先輩",
+    "報告書",
+    "アドバイス",
+    "苦手",
+    "参考"
+   ],
+   "phrases": [
+    "今、少しよろしいですか。",
+    "ご相談したいことがあるんですが。",
+    "とても参考になりました。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "あ、どうしたの？",
+     "partnerEn": "Oh, what's up?",
+     "intent": "Ask if they have a moment.",
+     "sample": "先輩、今、少しよろしいですか。"
+    },
+    {
+     "partnerJa": "うん、いいよ。",
+     "partnerEn": "Sure.",
+     "intent": "Say you are not good at writing reports.",
+     "sample": "実は、報告書を書くのが苦手で、いつも時間がかかってしまうんです。"
+    },
+    {
+     "partnerJa": "ああ、最初はみんなそうだよ。どこが難しい？",
+     "partnerEn": "Ah, everyone is like that at first. What's difficult?",
+     "intent": "Say you don't know what to write first.",
+     "sample": "何から書けばいいか、よくわからないんです。"
+    },
+    {
+     "partnerJa": "まず結論を書くといいよ。それから理由と、次にやることね。",
+     "partnerEn": "Write the conclusion first. Then the reasons, and what you'll do next.",
+     "intent": "Repeat the order to check you understood.",
+     "sample": "結論、理由、次にやること、の順番ですね。"
+    },
+    {
+     "partnerJa": "そうそう。前に私が書いた報告書、見る？",
+     "partnerEn": "Right. Want to see a report I wrote before?",
+     "intent": "Say yes, you would like to use it as a reference.",
+     "sample": "ぜひ見せてください。参考にさせていただきます。"
+    },
+    {
+     "partnerJa": "じゃあ、あとでメールで送るね。",
+     "partnerEn": "Then I'll email it to you later.",
+     "intent": "Thank them warmly.",
+     "sample": "ありがとうございます。とても参考になりました。"
+    },
+    {
+     "partnerJa": "いつでも聞いてね。",
+     "partnerEn": "Ask me anytime.",
+     "intent": "Thank them and say you will do your best.",
+     "sample": "はい、がんばります。ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-010",
+   "titleEn": "Reporting progress to your manager",
+   "titleJa": "上司に進捗を報告する",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "report",
+   "setting": "Your manager asks how the preparation for a trade-show booth is going. Most tasks are on schedule, but the brochure printing is two days late.",
+   "learnerRole": "A staff member in charge of trade-show preparation",
+   "partnerRole": "The department manager (部長)",
+   "register": "polite",
+   "goals": [
+    "Give the conclusion first",
+    "Report what is on schedule and what is late",
+    "Explain the cause and your countermeasure",
+    "Say when you will report next"
+   ],
+   "vocabulary": [
+    "進捗",
+    "報告",
+    "予定",
+    "印刷",
+    "遅れ",
+    "対策"
+   ],
+   "phrases": [
+    "ご報告があります。",
+    "結論から申しますと、",
+    "予定より二日遅れております。",
+    "引き続き、ご報告いたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "展示会の準備はどうなっていますか。",
+     "partnerEn": "How is the trade-show preparation going?",
+     "intent": "Say you have a report and give the overall conclusion first.",
+     "sample": "ご報告いたします。結論から申しますと、ほぼ予定どおりに進んでおります。"
+    },
+    {
+     "partnerJa": "ほぼ、ということは、何か問題がありますか。",
+     "partnerEn": "'Almost' — so is there a problem?",
+     "intent": "Say the brochure printing is two days behind.",
+     "sample": "はい。パンフレットの印刷だけ、予定より二日遅れております。"
+    },
+    {
+     "partnerJa": "原因は何ですか。",
+     "partnerEn": "What's the cause?",
+     "intent": "Explain that the design revision took longer than expected.",
+     "sample": "デザインの修正に、思ったより時間がかかってしまいました。"
+    },
+    {
+     "partnerJa": "展示会に間に合いますか。",
+     "partnerEn": "Will it be ready in time for the show?",
+     "intent": "Say yes, the printer agreed to rush it, so it will arrive three days before.",
+     "sample": "はい。印刷会社に急いでもらえることになりましたので、展示会の三日前には届く予定です。"
+    },
+    {
+     "partnerJa": "ブースの設営のほうは？",
+     "partnerEn": "And the booth setup?",
+     "intent": "Say the booth setup is on schedule and the equipment has been reserved.",
+     "sample": "ブースの設営は予定どおりです。機材の予約もすでに済んでおります。"
+    },
+    {
+     "partnerJa": "わかりました。遅れの対策は、ほかに何かありますか。",
+     "partnerEn": "I see. Any other countermeasures for the delay?",
+     "intent": "Say you will also prepare a PDF version to show on tablets just in case.",
+     "sample": "念のため、タブレットで見せられるようにPDF版も用意しておきます。"
+    },
+    {
+     "partnerJa": "いいですね。そうしてください。",
+     "partnerEn": "Good. Please do that.",
+     "intent": "Say you will report again when the brochures arrive.",
+     "sample": "承知しました。パンフレットが届きましたら、改めてご報告いたします。"
+    },
+    {
+     "partnerJa": "よろしく頼みます。",
+     "partnerEn": "I'm counting on you.",
+     "intent": "Acknowledge and excuse yourself.",
+     "sample": "はい。失礼します。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-011",
+   "titleEn": "Passing on information (連絡)",
+   "titleJa": "上司に連絡する",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "report",
+   "setting": "A client just emailed you that their office will be closed next Friday for building maintenance. You pass this on to your team leader.",
+   "learnerRole": "A team member",
+   "partnerRole": "The team leader (リーダー)",
+   "register": "polite",
+   "goals": [
+    "Say you have something to pass on",
+    "State the fact clearly with the source",
+    "Mention its effect on your schedule"
+   ],
+   "vocabulary": [
+    "連絡",
+    "取引先",
+    "休業",
+    "点検",
+    "影響"
+   ],
+   "phrases": [
+    "ご連絡したいことがあります。",
+    "先ほど○○様からメールがありまして、",
+    "念のためお知らせします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、何ですか。",
+     "partnerEn": "Yes, what is it?",
+     "intent": "Say you have something to let them know.",
+     "sample": "一点、ご連絡したいことがあります。"
+    },
+    {
+     "partnerJa": "どうぞ。",
+     "partnerEn": "Go ahead.",
+     "intent": "Say the client, Hoshino Foods, emailed that they will be closed next Friday for building maintenance.",
+     "sample": "先ほど、ほしの食品の担当者からメールがありまして、来週の金曜日はビルの点検のため休業だそうです。"
+    },
+    {
+     "partnerJa": "来週の金曜ですか。何か影響はありますか。",
+     "partnerEn": "Next Friday? Does it affect anything?",
+     "intent": "Say the sample delivery planned for that day will need to move.",
+     "sample": "はい。その日にサンプルを届ける予定でしたので、日にちを変える必要があります。"
+    },
+    {
+     "partnerJa": "そうですね。どうするつもりですか。",
+     "partnerEn": "Right. What do you intend to do?",
+     "intent": "Say you will ask them about Thursday and let the leader know the result.",
+     "sample": "木曜日でもいいか先方に確認して、結果をまたご連絡します。"
+    },
+    {
+     "partnerJa": "わかりました。お願いします。",
+     "partnerEn": "Understood. Please do.",
+     "intent": "Acknowledge.",
+     "sample": "はい、承知しました。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-012",
+   "titleEn": "Consulting your manager (相談)",
+   "titleJa": "上司に相談する",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "report",
+   "setting": "A long-term customer has asked for a 10% discount on a large order. You are not allowed to decide discounts alone, so you consult your manager.",
+   "learnerRole": "A sales representative",
+   "partnerRole": "The sales manager (課長)",
+   "register": "polite",
+   "goals": [
+    "Ask for time to consult",
+    "Explain the situation and the customer's request",
+    "Give your own opinion",
+    "Ask for the manager's decision"
+   ],
+   "vocabulary": [
+    "相談",
+    "値引き",
+    "判断",
+    "注文",
+    "利益",
+    "条件"
+   ],
+   "phrases": [
+    "ご相談したいことがあるのですが、お時間よろしいでしょうか。",
+    "私としては、",
+    "課長のご判断をいただけますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "どうしました？",
+     "partnerEn": "What's up?",
+     "intent": "Ask if they have time for a consultation.",
+     "sample": "ご相談したいことがあるのですが、今お時間よろしいでしょうか。"
+    },
+    {
+     "partnerJa": "いいですよ。座ってください。",
+     "partnerEn": "Sure. Have a seat.",
+     "intent": "Explain that Kaede Hotel asked for a 10% discount.",
+     "sample": "ありがとうございます。実は、かえでホテル様から、今回の注文を一割値引きしてほしいと言われまして。"
+    },
+    {
+     "partnerJa": "一割ですか。注文はどのくらいの量ですか。",
+     "partnerEn": "Ten percent? How big is the order?",
+     "intent": "Say it is about three times their usual order.",
+     "sample": "いつもの約三倍の量です。"
+    },
+    {
+     "partnerJa": "なるほど。一割引くと、利益はどうなりますか。",
+     "partnerEn": "I see. If we take off 10%, what happens to profit?",
+     "intent": "Say profit would drop, but still stay in the black.",
+     "sample": "利益は少なくなりますが、赤字にはなりません。"
+    },
+    {
+     "partnerJa": "あなた自身はどう思いますか。",
+     "partnerEn": "What do you yourself think?",
+     "intent": "Give your opinion: offer 7% instead, with a condition.",
+     "sample": "私としては、一割ではなく七パーセントにして、そのかわり支払いを早めていただく、という条件はどうかと考えています。"
+    },
+    {
+     "partnerJa": "支払いを早める、ですか。面白いですね。",
+     "partnerEn": "Earlier payment? Interesting.",
+     "intent": "Explain why: it would help cash flow.",
+     "sample": "はい。早く入金していただければ、会社としても助かると思いまして。"
+    },
+    {
+     "partnerJa": "先方はそれで納得しそうですか。",
+     "partnerEn": "Do you think they'll accept that?",
+     "intent": "Say you think so, since they value a long relationship.",
+     "sample": "長いお付き合いですので、話せばご理解いただけると思います。"
+    },
+    {
+     "partnerJa": "わかりました。その条件で提案してみてください。",
+     "partnerEn": "All right. Try proposing it on those terms.",
+     "intent": "Confirm the decision.",
+     "sample": "承知しました。では、七パーセントで、支払いを早めていただく条件で提案します。"
+    },
+    {
+     "partnerJa": "結果が出たら教えてくださいね。",
+     "partnerEn": "Let me know the result.",
+     "intent": "Promise to report and thank them.",
+     "sample": "はい、必ずご報告します。ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-013",
+   "titleEn": "Asking for a deadline extension",
+   "titleJa": "締め切りの延長をお願いする",
+   "jlpt": 2,
+   "ilr": "2",
+   "category": "report",
+   "setting": "A translation you are doing for an outside client is due Friday, but the client sent 20 extra pages yesterday. You call to ask for more time.",
+   "learnerRole": "A freelance translator working for the client",
+   "partnerRole": "The client's project manager",
+   "register": "keigo",
+   "goals": [
+    "Explain the reason without blaming the client",
+    "Ask for a specific new deadline",
+    "Offer a partial delivery on the original date"
+   ],
+   "vocabulary": [
+    "締め切り",
+    "延長",
+    "追加",
+    "分量",
+    "納品",
+    "恐縮"
+   ],
+   "phrases": [
+    "大変恐縮なのですが、",
+    "締め切りを延ばしていただくことはできませんでしょうか。",
+    "できあがった分だけ先に納品いたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、翻訳の件ですね。何かありましたか。",
+     "partnerEn": "Yes, about the translation. Did something come up?",
+     "intent": "Mention that 20 pages were added yesterday.",
+     "sample": "はい。昨日二十ページ追加でいただいた件なのですが、"
+    },
+    {
+     "partnerJa": "ああ、急に増やしてしまってすみません。",
+     "partnerEn": "Ah, sorry for adding them so suddenly.",
+     "intent": "Say the amount makes Friday difficult for the whole thing.",
+     "sample": "いえ、とんでもないです。ただ、分量がかなり増えましたので、金曜日にすべてお渡しするのは難しい状況です。"
+    },
+    {
+     "partnerJa": "そうですか。どのくらいかかりそうですか。",
+     "partnerEn": "I see. How long do you think it'll take?",
+     "intent": "Ask if you could extend to next Tuesday.",
+     "sample": "大変恐縮なのですが、締め切りを来週の火曜日まで延長していただくことはできませんでしょうか。"
+    },
+    {
+     "partnerJa": "火曜ですか……。社内の確認があるので、少し厳しいですね。",
+     "partnerEn": "Tuesday... It's a bit tight because we have internal checks.",
+     "intent": "Offer to deliver the original part on Friday as planned.",
+     "sample": "でしたら、最初にいただいた分は予定どおり金曜日に納品いたします。追加分だけ火曜日にさせていただけないでしょうか。"
+    },
+    {
+     "partnerJa": "それなら助かります。先に確認を始められますから。",
+     "partnerEn": "That would help. We could start checking first.",
+     "intent": "Confirm the plan clearly.",
+     "sample": "ありがとうございます。では、元の分は金曜日、追加分は火曜日の午前中に納品いたします。"
+    },
+    {
+     "partnerJa": "はい、それでお願いします。",
+     "partnerEn": "Yes, let's do it that way.",
+     "intent": "Thank them and say you'll confirm by email.",
+     "sample": "ご理解いただき、ありがとうございます。念のため、メールでもお送りしておきます。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-014",
+   "titleEn": "Apologizing to a client for a mistake",
+   "titleJa": "取引先にミスをお詫びする",
+   "jlpt": 2,
+   "ilr": "2+",
+   "category": "sales",
+   "setting": "Your company sent a client the wrong quantity: 50 boxes instead of 500. The client's buyer is upset. You visit to apologize in person.",
+   "learnerRole": "The account manager responsible",
+   "partnerRole": "The client's purchasing manager",
+   "register": "keigo",
+   "goals": [
+    "Apologize sincerely without making excuses first",
+    "Explain the cause briefly",
+    "Present the remedy and prevention measures",
+    "Ask for continued business"
+   ],
+   "vocabulary": [
+    "お詫び",
+    "不手際",
+    "原因",
+    "再発",
+    "防止",
+    "至急"
+   ],
+   "phrases": [
+    "このたびは大変申し訳ございませんでした。",
+    "弊社の不手際で、",
+    "再発防止に努めてまいります。",
+    "今後ともよろしくお願い申し上げます。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "わざわざ来ていただいて……。正直、困りましたよ。",
+     "partnerEn": "Thank you for coming all this way... Honestly, it caused us trouble.",
+     "intent": "Bow and apologize sincerely.",
+     "sample": "このたびは弊社の不手際で、大変ご迷惑をおかけいたしました。誠に申し訳ございません。"
+    },
+    {
+     "partnerJa": "五百箱のはずが五十箱でしたからね。店頭に並べられなかったんです。",
+     "partnerEn": "It was supposed to be 500 boxes but was 50. We couldn't stock the shelves.",
+     "intent": "Acknowledge the damage you caused.",
+     "sample": "お店に商品が並ばず、お客様にもご迷惑をおかけしてしまったこと、本当に申し訳なく思っております。"
+    },
+    {
+     "partnerJa": "どうしてこんなことになったんですか。",
+     "partnerEn": "How did this happen?",
+     "intent": "Explain: a zero was dropped when entering the order, and the check missed it.",
+     "sample": "注文を入力する際に、数字を一桁まちがえてしまいました。さらに、確認の段階でも気づくことができませんでした。"
+    },
+    {
+     "partnerJa": "確認はしていなかったんですか。",
+     "partnerEn": "Weren't you checking?",
+     "intent": "Admit the check was insufficient, without excuses.",
+     "sample": "確認はしておりましたが、不十分でした。言い訳のしようもございません。"
+    },
+    {
+     "partnerJa": "で、残りの四百五十箱はいつ届きますか。",
+     "partnerEn": "So when will the remaining 450 boxes arrive?",
+     "intent": "Say they were shipped by express this morning and arrive tomorrow morning.",
+     "sample": "本日朝一番に至急便で発送いたしましたので、明日の午前中には届く予定です。"
+    },
+    {
+     "partnerJa": "明日の朝ですね。それなら何とかなります。",
+     "partnerEn": "Tomorrow morning. Then we can manage.",
+     "intent": "Say you will personally check the delivery tomorrow.",
+     "sample": "明日は私も伺って、納品に立ち会わせていただきます。"
+    },
+    {
+     "partnerJa": "今後、同じことが起きないようにしてもらえますか。",
+     "partnerEn": "Can you make sure this doesn't happen again?",
+     "intent": "Explain the prevention measure: two people will check every order.",
+     "sample": "はい。再発防止のため、今後はすべての注文を二人で確認する体制に改めました。"
+    },
+    {
+     "partnerJa": "わかりました。そこまでしてもらえるなら。",
+     "partnerEn": "All right, if you're going that far.",
+     "intent": "Thank them for understanding.",
+     "sample": "寛大なお言葉をいただき、ありがとうございます。"
+    },
+    {
+     "partnerJa": "御社とは長い付き合いですから。これからも頼みますよ。",
+     "partnerEn": "We've worked with you a long time. We're counting on you from here.",
+     "intent": "Ask for their continued business.",
+     "sample": "信頼を取り戻せるよう努めてまいります。今後ともよろしくお願い申し上げます。"
+    },
+    {
+     "partnerJa": "ええ。では、明日よろしく。",
+     "partnerEn": "Yes. See you tomorrow, then.",
+     "intent": "Apologize once more and take your leave.",
+     "sample": "本日はお時間をいただき、ありがとうございました。失礼いたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-015",
+   "titleEn": "Handling a customer complaint",
+   "titleJa": "クレームに対応する",
+   "jlpt": 2,
+   "ilr": "2+",
+   "category": "phone",
+   "setting": "You work at the customer center of a kitchen-appliance maker. A customer calls, angry that a rice cooker bought two weeks ago has stopped working.",
+   "learnerRole": "A customer-center operator",
+   "partnerRole": "An upset customer",
+   "register": "keigo",
+   "goals": [
+    "Listen and apologize for the inconvenience",
+    "Ask for product details step by step",
+    "Offer a solution under the warranty",
+    "Confirm contact details and next steps"
+   ],
+   "vocabulary": [
+    "苦情",
+    "故障",
+    "保証書",
+    "型番",
+    "交換",
+    "修理"
+   ],
+   "phrases": [
+    "ご不便をおかけして申し訳ございません。",
+    "恐れ入りますが、",
+    "お手元に保証書はございますでしょうか。",
+    "ただちに手配いたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "もしもし、二週間前に買った炊飯器がもう動かないんですけど！",
+     "partnerEn": "Hello, the rice cooker I bought two weeks ago already doesn't work!",
+     "intent": "Apologize for the inconvenience.",
+     "sample": "ご不便をおかけして、大変申し訳ございません。"
+    },
+    {
+     "partnerJa": "毎日使うものなのに、本当に困ってるんですよ。",
+     "partnerEn": "I use it every day, I'm really stuck.",
+     "intent": "Show understanding and say you will help right away.",
+     "sample": "毎日お使いになるものですから、さぞお困りのことと存じます。すぐに確認いたします。"
+    },
+    {
+     "partnerJa": "早くしてください。",
+     "partnerEn": "Please hurry.",
+     "intent": "Ask for the model number on the bottom of the unit.",
+     "sample": "恐れ入りますが、本体の底にある型番をお教えいただけますでしょうか。"
+    },
+    {
+     "partnerJa": "えーと、RC-五一〇って書いてあります。",
+     "partnerEn": "Um, it says RC-510.",
+     "intent": "Repeat and ask what exactly happens.",
+     "sample": "RC-五一〇でございますね。どのような状態か、詳しくお聞かせいただけますか。"
+    },
+    {
+     "partnerJa": "スイッチを押しても、ランプがつかないんです。",
+     "partnerEn": "Even when I press the switch, the lamp doesn't come on.",
+     "intent": "Ask if the plug is firmly in the outlet (politely).",
+     "sample": "念のためお伺いしますが、電源プラグはコンセントにしっかり入っておりますでしょうか。"
+    },
+    {
+     "partnerJa": "それは確認しました！ほかの電気製品は使えます。",
+     "partnerEn": "I checked that! Other appliances work.",
+     "intent": "Apologize for asking and conclude it is likely a fault.",
+     "sample": "失礼いたしました。それでは、本体の故障の可能性が高いと思われます。"
+    },
+    {
+     "partnerJa": "で、どうしてくれるんですか。",
+     "partnerEn": "So what are you going to do about it?",
+     "intent": "Ask if they have the warranty card.",
+     "sample": "お手元に保証書はございますでしょうか。"
+    },
+    {
+     "partnerJa": "箱の中にあると思います。",
+     "partnerEn": "I think it's in the box.",
+     "intent": "Explain that within the warranty you will exchange it for a new one free of charge.",
+     "sample": "ありがとうございます。保証期間内ですので、無料で新しい製品と交換させていただきます。"
+    },
+    {
+     "partnerJa": "修理じゃなくて交換ですね？それならいいです。",
+     "partnerEn": "An exchange, not a repair? Then that's fine.",
+     "intent": "Confirm and say a courier will pick up the old one and bring a new one.",
+     "sample": "はい、交換でございます。宅配業者が新しい製品をお届けし、その際に古いものをお引き取りいたします。"
+    },
+    {
+     "partnerJa": "いつ来るんですか。",
+     "partnerEn": "When will they come?",
+     "intent": "Say the earliest is the day after tomorrow and ask for their name and address.",
+     "sample": "最短で明後日のお届けになります。お名前とご住所をお伺いしてもよろしいでしょうか。"
+    },
+    {
+     "partnerJa": "佐々木です。住所は、登録してあるのと同じです。",
+     "partnerEn": "Sasaki. The address is the same as the registered one.",
+     "intent": "Confirm and say you will arrange it immediately.",
+     "sample": "佐々木様、ご登録のご住所でございますね。ただちに手配いたします。"
+    },
+    {
+     "partnerJa": "わかりました。よろしくお願いします。",
+     "partnerEn": "All right. Thank you.",
+     "intent": "Apologize again, give your name, and close.",
+     "sample": "このたびはご迷惑をおかけし、誠に申し訳ございませんでした。担当の小林が承りました。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-016",
+   "titleEn": "Running a short team meeting",
+   "titleJa": "短い会議の司会をする",
+   "jlpt": 2,
+   "ilr": "2",
+   "category": "meeting",
+   "setting": "You chair the 15-minute weekly meeting of a four-person team. The agenda: last week's results, this week's tasks, and the office move.",
+   "learnerRole": "The meeting chair",
+   "partnerRole": "A team member who participates (and speaks for the others)",
+   "register": "polite",
+   "goals": [
+    "Open the meeting and state the agenda and time limit",
+    "Call on people and keep to time",
+    "Summarize decisions",
+    "Close the meeting and confirm next steps"
+   ],
+   "vocabulary": [
+    "議題",
+    "司会",
+    "進行",
+    "決定",
+    "意見",
+    "移転"
+   ],
+   "phrases": [
+    "時間になりましたので、始めます。",
+    "本日の議題は三つです。",
+    "時間の都合上、",
+    "では、まとめます。",
+    "以上で終わります。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "（全員がそろう）",
+     "partnerEn": "(Everyone has gathered.)",
+     "intent": "Open the meeting and say it will take 15 minutes.",
+     "sample": "時間になりましたので、始めます。今日は十五分で終わらせたいと思います。"
+    },
+    {
+     "partnerJa": "はい、お願いします。",
+     "partnerEn": "Yes, please go ahead.",
+     "intent": "State the three agenda items.",
+     "sample": "本日の議題は三つです。先週の結果、今週の作業、それから事務所の移転についてです。"
+    },
+    {
+     "partnerJa": "わかりました。",
+     "partnerEn": "Understood.",
+     "intent": "Ask Mr. Okada to report last week's results.",
+     "sample": "では、まず岡田さん、先週の結果をお願いします。"
+    },
+    {
+     "partnerJa": "はい。先週は新規の契約が三件取れました。目標は四件だったので、一件足りませんでした。",
+     "partnerEn": "We got three new contracts last week. The target was four, so we were one short.",
+     "intent": "Thank him and ask for a brief comment on the reason.",
+     "sample": "ありがとうございます。足りなかった理由について、一言お願いできますか。"
+    },
+    {
+     "partnerJa": "一件は来月に延びただけなので、大丈夫だと思います。",
+     "partnerEn": "One was just postponed to next month, so I think it's fine.",
+     "intent": "Move on to this week's tasks.",
+     "sample": "わかりました。では、次に今週の作業に移ります。"
+    },
+    {
+     "partnerJa": "今週は見積書を二つ出す予定です。あと、展示会の資料も作ります。",
+     "partnerEn": "This week we plan to submit two quotes, and we'll also make trade-show materials.",
+     "intent": "Ask who will handle the trade-show materials.",
+     "sample": "展示会の資料は、どなたが担当しますか。"
+    },
+    {
+     "partnerJa": "それは私がやります。",
+     "partnerEn": "I'll do that.",
+     "intent": "Confirm and move to the third item, the office move.",
+     "sample": "では、岡田さんにお願いします。最後に、事務所の移転についてです。"
+    },
+    {
+     "partnerJa": "移転の日はもう決まったんですか。",
+     "partnerEn": "Has the moving date been decided?",
+     "intent": "Say it is decided for the last Saturday of next month, and ask for opinions on packing.",
+     "sample": "はい、来月の最後の土曜日に決定しました。荷物の準備について、何かご意見はありますか。"
+    },
+    {
+     "partnerJa": "一人ずつ段ボールを配ってもらえると助かります。",
+     "partnerEn": "It would help if boxes were handed out to each person.",
+     "intent": "Agree and say you will arrange it; note time is almost up.",
+     "sample": "いいですね。私が手配します。時間の都合上、そろそろまとめに入ります。"
+    },
+    {
+     "partnerJa": "はい。",
+     "partnerEn": "Okay.",
+     "intent": "Summarize the decisions.",
+     "sample": "では、まとめます。展示会の資料は岡田さん、段ボールの手配は私、移転は来月最後の土曜日です。"
+    },
+    {
+     "partnerJa": "ほかには特にありません。",
+     "partnerEn": "Nothing else in particular.",
+     "intent": "Close the meeting.",
+     "sample": "では、以上で終わります。お疲れさまでした。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-017",
+   "titleEn": "Giving your opinion in a meeting",
+   "titleJa": "会議で意見を述べる",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "meeting",
+   "setting": "In a meeting on reducing overtime, the chair asks for your view. You think a 'no-overtime day' each Wednesday would help.",
+   "learnerRole": "A team member",
+   "partnerRole": "The meeting chair",
+   "register": "polite",
+   "goals": [
+    "State your opinion with a softening phrase",
+    "Give a reason",
+    "Answer a follow-up question"
+   ],
+   "vocabulary": [
+    "残業",
+    "意見",
+    "提案",
+    "効果",
+    "理由"
+   ],
+   "phrases": [
+    "私は～と思います。",
+    "というのは、",
+    "例えば、",
+    "一つの案として、"
+   ],
+   "turns": [
+    {
+     "partnerJa": "残業を減らす方法について、何か意見はありますか。",
+     "partnerEn": "Does anyone have an opinion on how to reduce overtime?",
+     "intent": "Say you have one idea and propose a no-overtime Wednesday.",
+     "sample": "一つの案として、毎週水曜日を残業をしない日にしてはどうかと思います。"
+    },
+    {
+     "partnerJa": "なるほど。理由を聞かせてください。",
+     "partnerEn": "I see. Tell us your reasons.",
+     "intent": "Explain that fixing a day makes people plan their work.",
+     "sample": "というのは、日が決まっていると、みんなその日に合わせて仕事を計画するようになるからです。"
+    },
+    {
+     "partnerJa": "ほかの会社で、効果はあったんでしょうか。",
+     "partnerEn": "Has it been effective at other companies?",
+     "intent": "Say you read that a similar company cut overtime by 20%.",
+     "sample": "同じ業界の会社で、残業が二割減ったという記事を読んだことがあります。"
+    },
+    {
+     "partnerJa": "でも、急な仕事が入ったらどうしますか。",
+     "partnerEn": "But what if urgent work comes in?",
+     "intent": "Suggest that in that case people get permission from their manager.",
+     "sample": "その場合は、上司の許可をもらえば残業できる、というルールにすればいいと思います。"
+    },
+    {
+     "partnerJa": "なるほど、現実的ですね。",
+     "partnerEn": "I see, that's realistic.",
+     "intent": "Propose trying it for one month first.",
+     "sample": "まずは一か月、試してみてはいかがでしょうか。"
+    },
+    {
+     "partnerJa": "では、その提案を次回の会議で検討しましょう。",
+     "partnerEn": "Then let's consider that proposal at the next meeting.",
+     "intent": "Thank them and offer to prepare a simple plan.",
+     "sample": "ありがとうございます。次回までに簡単な案をまとめておきます。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-018",
+   "titleEn": "Disagreeing politely",
+   "titleJa": "角を立てずに反対する",
+   "jlpt": 2,
+   "ilr": "2+",
+   "category": "meeting",
+   "setting": "A senior colleague proposes cutting the customer-support phone line and moving everything to email to save costs. You think older customers would be hurt.",
+   "learnerRole": "A member of the planning team",
+   "partnerRole": "A senior colleague who made the proposal",
+   "register": "polite",
+   "goals": [
+    "Acknowledge the merit of the proposal first",
+    "Express a concern indirectly",
+    "Support your concern with data",
+    "Offer a compromise"
+   ],
+   "vocabulary": [
+    "反対",
+    "懸念",
+    "削減",
+    "高齢者",
+    "妥協",
+    "おっしゃる"
+   ],
+   "phrases": [
+    "おっしゃることはよくわかります。",
+    "ただ、一点気になるのが、",
+    "～という見方もできるのではないでしょうか。",
+    "例えば、～というのはいかがでしょう。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "コスト削減のために、電話窓口をやめて、メールだけにしようと思うんですが、どうですか。",
+     "partnerEn": "To cut costs, I'm thinking of closing the phone line and using email only. What do you think?",
+     "intent": "Acknowledge the cost merit first.",
+     "sample": "コストの面では、おっしゃることはよくわかります。"
+    },
+    {
+     "partnerJa": "でしょう？人件費がかなり減りますよ。",
+     "partnerEn": "Right? Personnel costs would drop a lot.",
+     "intent": "Raise one concern: elderly customers.",
+     "sample": "ただ、一点気になるのが、ご高齢のお客様への影響です。"
+    },
+    {
+     "partnerJa": "でも、今はみんなメールを使えるでしょう。",
+     "partnerEn": "But these days everyone can use email, right?",
+     "intent": "Cite data: 40% of phone inquiries come from customers over 70.",
+     "sample": "それが、電話のお問い合わせの約四割は七十歳以上のお客様なんです。"
+    },
+    {
+     "partnerJa": "え、そんなに多いんですか。",
+     "partnerEn": "What, that many?",
+     "intent": "Suggest losing those customers could cost more than it saves.",
+     "sample": "はい。もしそのお客様が離れてしまうと、削減できる分より損失のほうが大きくなる、という見方もできるのではないでしょうか。"
+    },
+    {
+     "partnerJa": "うーん、それは考えていませんでした。",
+     "partnerEn": "Hmm, I hadn't thought of that.",
+     "intent": "Offer a compromise: shorten phone hours instead of closing.",
+     "sample": "例えば、電話窓口をなくすのではなく、受付時間を短くするというのはいかがでしょう。"
+    },
+    {
+     "partnerJa": "時間を短くする、か。午前だけとか？",
+     "partnerEn": "Shorten the hours... like mornings only?",
+     "intent": "Say yes, and that email can cover the rest.",
+     "sample": "はい、午前中だけにして、残りはメールで対応すれば、コストもある程度下げられると思います。"
+    },
+    {
+     "partnerJa": "それなら、反対する人も少なそうですね。",
+     "partnerEn": "Then fewer people would object.",
+     "intent": "Offer to check the call data by time of day.",
+     "sample": "よろしければ、時間帯ごとの電話の件数を調べてみます。"
+    },
+    {
+     "partnerJa": "助かります。お願いします。",
+     "partnerEn": "That helps. Please do.",
+     "intent": "Accept and thank them for listening.",
+     "sample": "承知しました。ご検討いただき、ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-019",
+   "titleEn": "Presenting a proposal",
+   "titleJa": "企画を提案する",
+   "jlpt": 2,
+   "ilr": "2+",
+   "category": "sales",
+   "setting": "You present a proposal to a regional bakery chain: a loyalty app that lets customers reserve bread before visiting. The client's managing director listens and asks questions.",
+   "learnerRole": "A planner at a small IT company",
+   "partnerRole": "The bakery chain's managing director",
+   "register": "keigo",
+   "goals": [
+    "Introduce the purpose of the proposal",
+    "Explain the main features and benefits",
+    "Answer questions on cost and schedule",
+    "Ask for the next step"
+   ],
+   "vocabulary": [
+    "企画",
+    "提案",
+    "導入",
+    "費用",
+    "予約",
+    "売り上げ"
+   ],
+   "phrases": [
+    "本日は、～についてご提案させていただきます。",
+    "こちらの資料をご覧ください。",
+    "ご検討いただけますと幸いです。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "では、お願いします。",
+     "partnerEn": "Well then, please begin.",
+     "intent": "Thank them and state the topic of your proposal.",
+     "sample": "本日はお時間をいただき、ありがとうございます。御社向けのパン予約アプリについて、ご提案させていただきます。"
+    },
+    {
+     "partnerJa": "予約アプリ、ですか。",
+     "partnerEn": "A reservation app?",
+     "intent": "Explain the problem it solves: popular bread sells out and customers leave disappointed.",
+     "sample": "はい。人気のパンが売り切れてしまい、がっかりして帰られるお客様が多いと伺いました。"
+    },
+    {
+     "partnerJa": "確かに、夕方にはほとんど残っていませんね。",
+     "partnerEn": "True, almost nothing is left by evening.",
+     "intent": "Ask them to look at page 3 and explain the main feature.",
+     "sample": "こちらの資料の三ページをご覧ください。お客様はアプリで前日までにパンを予約し、お好きな時間に受け取ることができます。"
+    },
+    {
+     "partnerJa": "店の側にはどんな良いことがありますか。",
+     "partnerEn": "What's in it for the stores?",
+     "intent": "Explain two benefits: less waste and more accurate production.",
+     "sample": "作る量を前もって把握できますので、売れ残りが減り、売り上げも安定すると考えております。"
+    },
+    {
+     "partnerJa": "なるほど。費用はどのくらいですか。",
+     "partnerEn": "I see. How much does it cost?",
+     "intent": "Give the initial cost and monthly fee.",
+     "sample": "導入費用が八十万円、月々の利用料が三万円となっております。"
+    },
+    {
+     "partnerJa": "うちは十店舗ありますが、それで全部ですか。",
+     "partnerEn": "We have ten stores; is that for all of them?",
+     "intent": "Confirm it covers all ten stores.",
+     "sample": "はい、十店舗すべてでご利用いただける金額でございます。"
+    },
+    {
+     "partnerJa": "導入まで、どのくらいかかりますか。",
+     "partnerEn": "How long until it's introduced?",
+     "intent": "Say about three months, starting with a trial at one store.",
+     "sample": "約三か月を予定しております。まず一店舗で試験的に始め、問題がなければ全店に広げる形を考えております。"
+    },
+    {
+     "partnerJa": "年配のお客様でも使えますかね。",
+     "partnerEn": "Can older customers use it too?",
+     "intent": "Say the screens are simple, and phone reservations can also be recorded in the same system.",
+     "sample": "画面はできるだけ簡単にしております。また、お電話でのご予約も同じシステムに入力できますので、ご安心ください。"
+    },
+    {
+     "partnerJa": "わかりました。社内で相談してみます。",
+     "partnerEn": "Understood. We'll discuss it internally.",
+     "intent": "Ask them to consider it and offer a demo.",
+     "sample": "ぜひご検討いただけますと幸いです。よろしければ、次回は実際の画面をお見せするデモをご用意いたします。"
+    },
+    {
+     "partnerJa": "それはいいですね。来週あたり、どうですか。",
+     "partnerEn": "That sounds good. How about sometime next week?",
+     "intent": "Accept and say you will send some possible dates.",
+     "sample": "ありがとうございます。では、候補日をいくつかメールでお送りいたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-020",
+   "titleEn": "Negotiating a price",
+   "titleJa": "価格交渉",
+   "jlpt": 1,
+   "ilr": "3",
+   "category": "sales",
+   "setting": "You are the supplier of packaging materials. A long-time customer's purchasing chief says a competitor offered a 15% lower price and asks you to match it. Raw-material costs have actually risen.",
+   "learnerRole": "The supplier's sales manager",
+   "partnerRole": "The customer's purchasing chief (a tough negotiator)",
+   "register": "keigo",
+   "goals": [
+    "Show appreciation for the relationship",
+    "Explain your cost situation persuasively",
+    "Probe the conditions of the competitor's offer",
+    "Offer a conditional concession",
+    "Reach an agreement or a clear next step"
+   ],
+   "vocabulary": [
+    "交渉",
+    "単価",
+    "原材料",
+    "高騰",
+    "他社",
+    "品質",
+    "発注",
+    "譲歩"
+   ],
+   "phrases": [
+    "日頃より格別のお引き立てをいただき、",
+    "率直に申し上げますと、",
+    "差し支えなければ、",
+    "～という条件でしたら、",
+    "持ち帰って検討させていただけますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "早速ですが、来期の単価の件です。他社さんから、今より一割五分安い見積もりが来ておりまして。",
+     "partnerEn": "Let's get to it: next term's unit price. Another company has quoted us 15% below the current price.",
+     "intent": "Thank them for their long patronage before responding.",
+     "sample": "日頃より格別のお引き立てをいただき、誠にありがとうございます。貴重な情報をお聞かせいただき、恐縮です。"
+    },
+    {
+     "partnerJa": "長いお付き合いですから、できれば御社と続けたいんですよ。ただ、この差は大きい。",
+     "partnerEn": "We've been together a long time, so we'd like to continue with you. But this gap is big.",
+     "intent": "Say frankly that matching 15% is very difficult given rising material costs.",
+     "sample": "率直に申し上げますと、原材料の高騰が続いておりまして、一割五分の値下げは正直なところ非常に厳しい状況です。"
+    },
+    {
+     "partnerJa": "高騰と言っても、どのくらいなんですか。",
+     "partnerEn": "When you say 'rising', by how much?",
+     "intent": "Give a figure: paper pulp costs up about 20% over the past year.",
+     "sample": "主原料のパルプが、この一年でおよそ二割上がっております。"
+    },
+    {
+     "partnerJa": "それはうちも承知しています。それでも他社さんはこの値段を出してきたわけで。",
+     "partnerEn": "We know that. Even so, the other company came out with this price.",
+     "intent": "Politely ask about the conditions of the competitor's quote.",
+     "sample": "差し支えなければ、先方のお見積もりの条件をお伺いできますでしょうか。例えば、最低発注量や納期などはいかがでしょうか。"
+    },
+    {
+     "partnerJa": "……一回の発注が今の倍、納期は三週間だそうです。",
+     "partnerEn": "...Per order, double the current volume, and three weeks' lead time.",
+     "intent": "Point out that your current terms are small lots and one-week delivery.",
+     "sample": "さようでございますか。弊社の場合は、現在の小ロットでの発注に、一週間での納品で対応させていただいております。"
+    },
+    {
+     "partnerJa": "確かに、一週間で届くのはありがたいですが。",
+     "partnerEn": "True, one-week delivery is helpful, but...",
+     "intent": "Mention quality: your defect rate is very low and they have never had a line stoppage.",
+     "sample": "また、品質面でも、これまで御社の生産ラインを止めるような不良は一度もございませんでした。"
+    },
+    {
+     "partnerJa": "それは評価しています。でも、上からは数字を求められていましてね。",
+     "partnerEn": "We value that. But my superiors want numbers.",
+     "intent": "Show you understand their position.",
+     "sample": "ご担当として、社内で数字をお示しにならなければならないお立場は、重々承知しております。"
+    },
+    {
+     "partnerJa": "何とか歩み寄れませんか。",
+     "partnerEn": "Can't we meet halfway somehow?",
+     "intent": "Offer a conditional concession: 5% off if they commit to annual volume.",
+     "sample": "でしたら、一年間の発注量をお約束いただけるという条件で、五パーセントの値下げでしたら、何とかご用意できるかと存じます。"
+    },
+    {
+     "partnerJa": "五パーセントですか。一割五分との差は、まだ大きいですよ。",
+     "partnerEn": "Five percent? That's still far from fifteen.",
+     "intent": "Offer an extra: free storage of stock in your warehouse.",
+     "sample": "加えて、弊社の倉庫で在庫をお預かりし、必要な分だけお届けするサービスを無償でおつけいたします。御社の保管費用の削減にもなるかと存じます。"
+    },
+    {
+     "partnerJa": "保管費用ね……。うちの倉庫はいつも一杯なので、それは正直助かります。",
+     "partnerEn": "Storage costs... Our warehouse is always full, so honestly that helps.",
+     "intent": "Summarize the total value of the offer.",
+     "sample": "値下げ分と保管費用を合わせますと、実質的には一割近いご負担の軽減になると試算しております。"
+    },
+    {
+     "partnerJa": "なるほど。数字で示してもらえると、上にも説明しやすいですね。",
+     "partnerEn": "I see. If you show it in numbers, it's easier to explain upstairs.",
+     "intent": "Offer to send a written estimate with the calculation.",
+     "sample": "では、試算の内訳を記した正式なお見積書を、明日中にお送りいたします。"
+    },
+    {
+     "partnerJa": "ただ、七パーセントまで何とかなりませんか。",
+     "partnerEn": "Still, can't you somehow go to seven percent?",
+     "intent": "Say you can't decide alone; ask to take it back to consider.",
+     "sample": "私の一存ではお答えいたしかねますので、一度持ち帰って検討させていただけますでしょうか。"
+    },
+    {
+     "partnerJa": "わかりました。今週中にお返事いただけますか。",
+     "partnerEn": "All right. Can you reply within this week?",
+     "intent": "Promise a reply by Friday.",
+     "sample": "承知いたしました。金曜日までに必ずご回答いたします。"
+    },
+    {
+     "partnerJa": "よろしくお願いします。こちらも前向きに考えますので。",
+     "partnerEn": "Thank you. We'll think about it positively too.",
+     "intent": "Thank them and close the negotiation politely.",
+     "sample": "前向きにご検討いただけるとのこと、心より感謝申し上げます。引き続きよろしくお願い申し上げます。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-021",
+   "titleEn": "Visiting a client's office",
+   "titleJa": "取引先を訪問する",
+   "jlpt": 2,
+   "ilr": "2",
+   "category": "visit",
+   "setting": "You arrive at a client's office for a 2 p.m. meeting to introduce your new successor. You speak to the receptionist, then greet the client.",
+   "learnerRole": "A sales representative visiting with a new colleague",
+   "partnerRole": "The receptionist, then the client's section chief",
+   "register": "keigo",
+   "goals": [
+    "Announce yourself at reception",
+    "Greet the client and thank them for their time",
+    "Introduce your colleague (humble forms for your side)",
+    "Leave politely at the end"
+   ],
+   "vocabulary": [
+    "訪問",
+    "後任",
+    "紹介",
+    "お邪魔",
+    "異動",
+    "貴重"
+   ],
+   "phrases": [
+    "二時にお約束をいただいております、○○の××と申します。",
+    "本日は貴重なお時間をいただき、ありがとうございます。",
+    "ご紹介いたします。",
+    "本日はこれで失礼いたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。",
+     "partnerEn": "Welcome.",
+     "intent": "Give your company and name, and say you have a 2 p.m. appointment with Section Chief Hirano.",
+     "sample": "お世話になっております。ことぶき印刷のガルシアと申します。二時に営業課の平野様とお約束をいただいております。"
+    },
+    {
+     "partnerJa": "ことぶき印刷のガルシア様ですね。ただいまお呼びいたしますので、少々お待ちください。",
+     "partnerEn": "Mr./Ms. Garcia of Kotobuki Printing. I'll call him now; please wait a moment.",
+     "intent": "Thank the receptionist.",
+     "sample": "ありがとうございます。よろしくお願いいたします。"
+    },
+    {
+     "partnerJa": "（平野課長が来る）お待たせしました。どうぞ、お入りください。",
+     "partnerEn": "(Chief Hirano arrives.) Sorry to keep you waiting. Please come in.",
+     "intent": "Say 'excuse me' as you enter and thank them for their time.",
+     "sample": "お邪魔いたします。本日は貴重なお時間をいただき、ありがとうございます。"
+    },
+    {
+     "partnerJa": "いえいえ。そちらの方は？",
+     "partnerEn": "Not at all. And this person?",
+     "intent": "Explain that you are being transferred and introduce your successor, Kondo.",
+     "sample": "実は、私が来月から大阪支社へ異動することになりまして。後任の近藤をご紹介いたします。"
+    },
+    {
+     "partnerJa": "そうでしたか。それは寂しくなりますね。",
+     "partnerEn": "Is that so? We'll miss you.",
+     "intent": "Thank them for their support so far.",
+     "sample": "恐れ入ります。平野様にはこれまで大変お世話になりました。"
+    },
+    {
+     "partnerJa": "近藤さん、よろしくお願いします。",
+     "partnerEn": "Mr./Ms. Kondo, nice to meet you.",
+     "intent": "Say Kondo is experienced and has been briefed on everything.",
+     "sample": "近藤は印刷の経験も長く、これまでの経緯もすべて引き継いでおりますので、ご安心ください。"
+    },
+    {
+     "partnerJa": "それは心強いですね。今の案件もそのまま進めてもらえますか。",
+     "partnerEn": "That's reassuring. Can the current project continue as is?",
+     "intent": "Say yes, you'll handle it together until the end of the month.",
+     "sample": "はい。今月末までは私も近藤と一緒に担当させていただきます。"
+    },
+    {
+     "partnerJa": "わかりました。では、今後ともよろしくお願いします。",
+     "partnerEn": "Understood. Please continue to look after us.",
+     "intent": "Ask for continued business on behalf of your company.",
+     "sample": "こちらこそ、今後とも変わらぬお付き合いのほど、よろしくお願い申し上げます。"
+    },
+    {
+     "partnerJa": "お気をつけてお帰りください。",
+     "partnerEn": "Please take care on your way back.",
+     "intent": "Take your leave politely.",
+     "sample": "ありがとうございます。本日はこれで失礼いたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-022",
+   "titleEn": "A job interview",
+   "titleJa": "採用面接",
+   "jlpt": 2,
+   "ilr": "2+",
+   "category": "hr",
+   "setting": "You are interviewing for a position in the overseas-sales department of a mid-sized machinery maker. The interviewer is the department manager.",
+   "learnerRole": "A job applicant",
+   "partnerRole": "The interviewer (department manager)",
+   "register": "keigo",
+   "goals": [
+    "Introduce yourself briefly",
+    "Explain your motivation for applying",
+    "Describe a strength with an example",
+    "Answer a question about a weakness honestly",
+    "Ask a question of your own"
+   ],
+   "vocabulary": [
+    "面接",
+    "志望",
+    "動機",
+    "長所",
+    "短所",
+    "経験",
+    "御社",
+    "貢献"
+   ],
+   "phrases": [
+    "本日はよろしくお願いいたします。",
+    "御社を志望した理由は、",
+    "前職では、",
+    "～を生かして、御社に貢献したいと考えております。",
+    "一つ質問してもよろしいでしょうか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "どうぞ、おかけください。",
+     "partnerEn": "Please have a seat.",
+     "intent": "Thank them and sit down with the set phrase.",
+     "sample": "失礼いたします。本日はよろしくお願いいたします。"
+    },
+    {
+     "partnerJa": "では、まず簡単に自己紹介をお願いします。",
+     "partnerEn": "First, please introduce yourself briefly.",
+     "intent": "Give your name, nationality, and current job in two sentences.",
+     "sample": "グエン・ミンと申します。ベトナム出身で、現在は日本の貿易会社で輸出の事務を担当しております。"
+    },
+    {
+     "partnerJa": "当社を志望した動機を教えてください。",
+     "partnerEn": "Tell us your motivation for applying to our company.",
+     "intent": "Say you want to help sell their machines in Southeast Asia.",
+     "sample": "御社の機械は品質が高く、東南アジアでも評価されていると伺いました。現地の言葉と市場を知っている強みを生かして、販売の拡大に貢献したいと考えております。"
+    },
+    {
+     "partnerJa": "今の仕事では、どんな経験をしましたか。",
+     "partnerEn": "What experience have you gained in your current job?",
+     "intent": "Describe handling shipping documents and negotiating with Vietnamese customers.",
+     "sample": "輸出書類の作成に加えて、ベトナムのお客様との納期や価格の調整も担当してまいりました。"
+    },
+    {
+     "partnerJa": "あなたの長所は何ですか。",
+     "partnerEn": "What is your strength?",
+     "intent": "Say you are persistent, with an example.",
+     "sample": "粘り強いところです。前職で、支払いの遅れていたお客様と何度も話し合い、最終的に全額を回収したことがあります。"
+    },
+    {
+     "partnerJa": "では、短所は？",
+     "partnerEn": "And your weakness?",
+     "intent": "Admit you sometimes take on too much, and how you deal with it.",
+     "sample": "一人で仕事を抱えこんでしまうところです。最近は早めに上司に相談するよう心がけております。"
+    },
+    {
+     "partnerJa": "出張が多い仕事ですが、大丈夫ですか。",
+     "partnerEn": "The job involves a lot of business travel. Is that all right?",
+     "intent": "Say yes, you welcome it.",
+     "sample": "はい、問題ございません。現地のお客様と直接お会いできる機会は、むしろありがたいと思っております。"
+    },
+    {
+     "partnerJa": "日本語で商談をした経験はありますか。",
+     "partnerEn": "Have you negotiated business in Japanese?",
+     "intent": "Say yes, with Japanese makers, and mention your JLPT N2.",
+     "sample": "はい、日本のメーカーとの打ち合わせは日本語で行っております。日本語能力試験はN2を持っております。"
+    },
+    {
+     "partnerJa": "五年後、どのように働いていたいですか。",
+     "partnerEn": "How do you want to be working in five years?",
+     "intent": "Say you want to lead a sales team for Southeast Asia.",
+     "sample": "東南アジア向けの営業チームをまとめる立場で、新しい市場を開拓していきたいと考えております。"
+    },
+    {
+     "partnerJa": "いつから働けますか。",
+     "partnerEn": "When can you start?",
+     "intent": "Say two months from now, after handing over your current work.",
+     "sample": "現在の仕事の引き継ぎがございますので、二か月後から勤務可能です。"
+    },
+    {
+     "partnerJa": "わかりました。最後に、何か質問はありますか。",
+     "partnerEn": "I see. Finally, do you have any questions?",
+     "intent": "Ask about training for new employees.",
+     "sample": "一つ質問してもよろしいでしょうか。入社後は、どのような研修がございますか。"
+    },
+    {
+     "partnerJa": "最初の一か月は工場で製品について学んでもらいます。",
+     "partnerEn": "For the first month you'd learn about the products at the factory.",
+     "intent": "React positively.",
+     "sample": "製品を実際に見て学べるのは、大変ありがたいです。"
+    },
+    {
+     "partnerJa": "では、本日の面接は以上です。お疲れさまでした。",
+     "partnerEn": "That concludes today's interview. Thank you for your time.",
+     "intent": "Thank them, stand, and leave politely.",
+     "sample": "本日はお時間をいただき、誠にありがとうございました。失礼いたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-023",
+   "titleEn": "Declining an after-work invitation",
+   "titleJa": "飲み会の誘いを断る",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "etiquette",
+   "setting": "It is Friday evening. A friendly coworker of the same age invites you for drinks, but you already have plans.",
+   "learnerRole": "An office worker",
+   "partnerRole": "A coworker of the same age",
+   "register": "casual",
+   "goals": [
+    "Thank them for the invitation",
+    "Decline softly with a reason",
+    "Suggest another time"
+   ],
+   "vocabulary": [
+    "飲み会",
+    "誘う",
+    "用事",
+    "残念",
+    "今度"
+   ],
+   "phrases": [
+    "誘ってくれてありがとう。",
+    "ごめん、今日はちょっと……。",
+    "また今度誘ってね。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "お疲れ！今日、みんなで飲みに行くんだけど、一緒にどう？",
+     "partnerEn": "Good work today! We're all going for drinks tonight. Want to come?",
+     "intent": "Thank them for the invitation.",
+     "sample": "お疲れさま。誘ってくれてありがとう。"
+    },
+    {
+     "partnerJa": "駅前の新しい店だよ。",
+     "partnerEn": "It's the new place by the station.",
+     "intent": "Decline softly: you have plans tonight.",
+     "sample": "ごめん、今日はちょっと用事があって……。"
+    },
+    {
+     "partnerJa": "そっか、残念。",
+     "partnerEn": "Oh, too bad.",
+     "intent": "Say you'd like to go next time and ask them to invite you again.",
+     "sample": "本当に残念。また今度誘ってね。"
+    },
+    {
+     "partnerJa": "うん、じゃあ来週また声かけるね。",
+     "partnerEn": "Sure, I'll ask again next week.",
+     "intent": "Say thanks and wish them a good time.",
+     "sample": "ありがとう。楽しんでね！"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-024",
+   "titleEn": "A year-end party toast",
+   "titleJa": "忘年会の乾杯のあいさつ",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "etiquette",
+   "setting": "At the department's year-end party, the organizer suddenly asks you to give the toast. You are a mid-level employee.",
+   "learnerRole": "An employee asked to give the toast",
+   "partnerRole": "The party organizer (幹事)",
+   "register": "polite",
+   "goals": [
+    "Accept the request modestly",
+    "Look back on the year briefly",
+    "Thank everyone",
+    "Lead the toast"
+   ],
+   "vocabulary": [
+    "忘年会",
+    "乾杯",
+    "幹事",
+    "一年間",
+    "来年"
+   ],
+   "phrases": [
+    "僭越ながら、乾杯の音頭をとらせていただきます。",
+    "今年一年、本当にお疲れさまでした。",
+    "それでは、グラスをお持ちください。",
+    "乾杯！"
+   ],
+   "turns": [
+    {
+     "partnerJa": "では、乾杯のあいさつを、アリさんにお願いしたいと思います！",
+     "partnerEn": "And now we'd like to ask Ali to give the toast!",
+     "intent": "Accept modestly with the set phrase.",
+     "sample": "えっ、私ですか。では、僭越ながら、乾杯の音頭をとらせていただきます。"
+    },
+    {
+     "partnerJa": "（拍手）",
+     "partnerEn": "(Applause.)",
+     "intent": "Look back on the year: a busy year with a big new project.",
+     "sample": "今年は新しいプロジェクトが始まり、本当に忙しい一年でした。"
+    },
+    {
+     "partnerJa": "（みんなうなずいている）",
+     "partnerEn": "(Everyone is nodding.)",
+     "intent": "Thank everyone and the organizer.",
+     "sample": "皆さんのおかげで、無事に乗り切ることができました。今日の準備をしてくださった幹事の皆さんにも感謝します。"
+    },
+    {
+     "partnerJa": "（グラスを手に取る）",
+     "partnerEn": "(People pick up their glasses.)",
+     "intent": "Ask everyone to hold their glasses and wish for a good next year.",
+     "sample": "それでは、グラスをお持ちください。今年一年の労をねぎらい、来年のさらなる発展を願って、"
+    },
+    {
+     "partnerJa": "（全員がグラスを上げる）",
+     "partnerEn": "(Everyone raises their glass.)",
+     "intent": "Lead the toast.",
+     "sample": "乾杯！"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-025",
+   "titleEn": "Asking for paid leave",
+   "titleJa": "有給休暇を申請する",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "hr",
+   "setting": "Your sister is getting married abroad next month. You ask your section chief for three days of paid leave.",
+   "learnerRole": "An employee",
+   "partnerRole": "The section chief (課長)",
+   "register": "polite",
+   "goals": [
+    "Ask for leave with dates and reason",
+    "Explain how your work will be covered",
+    "Thank the manager"
+   ],
+   "vocabulary": [
+    "有給休暇",
+    "申請",
+    "休み",
+    "結婚式",
+    "引き継ぎ",
+    "迷惑"
+   ],
+   "phrases": [
+    "少しお時間よろしいでしょうか。",
+    "休みをいただきたいのですが。",
+    "ご迷惑をおかけしますが、よろしくお願いします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、何でしょう。",
+     "partnerEn": "Yes, what is it?",
+     "intent": "Ask if they have a moment.",
+     "sample": "課長、少しお時間よろしいでしょうか。"
+    },
+    {
+     "partnerJa": "どうぞ。",
+     "partnerEn": "Go ahead.",
+     "intent": "Ask for paid leave from the 14th to the 16th next month.",
+     "sample": "来月の十四日から十六日まで、有給休暇をいただきたいのですが。"
+    },
+    {
+     "partnerJa": "三日間ですね。何かあるんですか。",
+     "partnerEn": "Three days. Is something happening?",
+     "intent": "Explain it is your sister's wedding in your home country.",
+     "sample": "はい。国で姉の結婚式がありまして。"
+    },
+    {
+     "partnerJa": "それはおめでとうございます。仕事のほうは大丈夫ですか。",
+     "partnerEn": "Congratulations. Will your work be all right?",
+     "intent": "Say Mr. Hayashi will cover and you'll finish the handover beforehand.",
+     "sample": "はい。林さんにお願いしてあります。休みの前に引き継ぎを済ませておきます。"
+    },
+    {
+     "partnerJa": "わかりました。では、システムから申請しておいてください。",
+     "partnerEn": "All right. Please submit the request through the system.",
+     "intent": "Say you'll apply today, and apologize for the inconvenience.",
+     "sample": "ありがとうございます。今日中に申請します。ご迷惑をおかけしますが、よろしくお願いします。"
+    },
+    {
+     "partnerJa": "いいえ、楽しんできてくださいね。",
+     "partnerEn": "Not at all. Enjoy yourself.",
+     "intent": "Thank them.",
+     "sample": "ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-026",
+   "titleEn": "Onboarding a new hire",
+   "titleJa": "新入社員に仕事を教える",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "hr",
+   "setting": "You have been assigned as mentor to a new employee who started today. You show them around and explain the basic rules of the office.",
+   "learnerRole": "A mentor (senior employee)",
+   "partnerRole": "A nervous new employee",
+   "register": "polite",
+   "goals": [
+    "Welcome the new hire and put them at ease",
+    "Explain attendance and daily reporting rules",
+    "Explain where things are",
+    "Encourage them to ask questions"
+   ],
+   "vocabulary": [
+    "新入社員",
+    "指導",
+    "出勤",
+    "日報",
+    "遠慮",
+    "備品"
+   ],
+   "phrases": [
+    "今日から指導を担当する○○です。",
+    "わからないことがあったら、遠慮なく聞いてください。",
+    "最初は覚えることが多いけど、少しずつで大丈夫です。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "本日からお世話になります。よろしくお願いいたします。",
+     "partnerEn": "I start today. I look forward to working with you.",
+     "intent": "Welcome them and say you'll be their mentor.",
+     "sample": "ようこそ。今日から指導を担当するマリアです。よろしくお願いします。"
+    },
+    {
+     "partnerJa": "緊張しています……。",
+     "partnerEn": "I'm nervous...",
+     "intent": "Reassure them.",
+     "sample": "最初はみんなそうですよ。少しずつで大丈夫です。"
+    },
+    {
+     "partnerJa": "朝は何時に来ればいいですか。",
+     "partnerEn": "What time should I come in the morning?",
+     "intent": "Explain work starts at 9 and they should arrive by 8:50.",
+     "sample": "始業は九時ですが、八時五十分までには出勤してください。"
+    },
+    {
+     "partnerJa": "わかりました。遅れそうなときは？",
+     "partnerEn": "Understood. And if I'm going to be late?",
+     "intent": "Explain they should call the section chief before 9.",
+     "sample": "九時前に、課長に電話で連絡してください。メールより電話のほうがいいです。"
+    },
+    {
+     "partnerJa": "はい。ほかに毎日することはありますか。",
+     "partnerEn": "Okay. Anything else I do every day?",
+     "intent": "Explain the daily report submitted by 6 p.m.",
+     "sample": "毎日、帰る前に日報を書いてください。その日にしたことと、明日の予定を六時までに出します。"
+    },
+    {
+     "partnerJa": "ペンやノートはどこにありますか。",
+     "partnerEn": "Where are pens and notebooks?",
+     "intent": "Say supplies are in the cabinet by the copier and should be written in the list.",
+     "sample": "備品はコピー機の横の棚にあります。使ったら、そこのリストに名前を書いてください。"
+    },
+    {
+     "partnerJa": "お昼はどうすればいいですか。",
+     "partnerEn": "What should I do for lunch?",
+     "intent": "Explain lunch is 12 to 1 and invite them to eat together today.",
+     "sample": "お昼は十二時から一時までです。今日は一緒に食べに行きましょう。"
+    },
+    {
+     "partnerJa": "ありがとうございます！",
+     "partnerEn": "Thank you!",
+     "intent": "Tell them to ask anything without hesitation.",
+     "sample": "わからないことがあったら、遠慮なく聞いてくださいね。"
+    },
+    {
+     "partnerJa": "はい、がんばります。",
+     "partnerEn": "Yes, I'll do my best.",
+     "intent": "Say you'll start by setting up their computer.",
+     "sample": "じゃあ、まずはパソコンの設定から始めましょう。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-027",
+   "titleEn": "Explaining a procedure to a part-timer",
+   "titleJa": "アルバイトに作業手順を説明する",
+   "jlpt": 4,
+   "ilr": "1+",
+   "category": "hr",
+   "setting": "You are the shift leader at a café. A new part-timer, a university student, asks how to close the register at the end of the day.",
+   "learnerRole": "The shift leader",
+   "partnerRole": "A new part-time worker",
+   "register": "casual",
+   "goals": [
+    "Explain steps in order with まず／次に／最後に",
+    "Check that they understood",
+    "Warn about a common mistake"
+   ],
+   "vocabulary": [
+    "手順",
+    "レジ",
+    "締める",
+    "数える",
+    "店長"
+   ],
+   "phrases": [
+    "まず、",
+    "次に、",
+    "最後に、",
+    "ここまで大丈夫？",
+    "気をつけてね。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "すみません、レジの締め方を教えてもらえますか。",
+     "partnerEn": "Excuse me, could you show me how to close the register?",
+     "intent": "Agree and give the first step: print the day's total.",
+     "sample": "いいよ。まず、このボタンを押して、今日の合計を印刷してね。"
+    },
+    {
+     "partnerJa": "はい、出ました。",
+     "partnerEn": "Okay, it printed.",
+     "intent": "Give the next step: count the cash in the drawer.",
+     "sample": "次に、レジの中のお金を全部数えて。"
+    },
+    {
+     "partnerJa": "千円札から数えればいいですか。",
+     "partnerEn": "Should I start counting from the 1,000-yen bills?",
+     "intent": "Say yes, bills first, then coins, and write the numbers on this sheet.",
+     "sample": "うん、お札から数えて、それから小銭ね。数はこの紙に書いて。"
+    },
+    {
+     "partnerJa": "わかりました。",
+     "partnerEn": "Got it.",
+     "intent": "Check that they are following so far.",
+     "sample": "ここまで大丈夫？"
+    },
+    {
+     "partnerJa": "はい、大丈夫です。",
+     "partnerEn": "Yes, I'm fine.",
+     "intent": "Give the last step: compare with the printout and put the money in the safe.",
+     "sample": "最後に、印刷した金額と比べて、合っていたらお金を金庫に入れて。"
+    },
+    {
+     "partnerJa": "もし合わなかったら、どうしますか。",
+     "partnerEn": "What if it doesn't match?",
+     "intent": "Say to count again, and if still wrong, tell the manager, not fix it yourself.",
+     "sample": "もう一回数えて。それでも合わなかったら、自分で直さないで、店長に言ってね。"
+    },
+    {
+     "partnerJa": "はい。気をつけます。",
+     "partnerEn": "Okay, I'll be careful.",
+     "intent": "Warn them about the common mistake of forgetting to lock the safe.",
+     "sample": "あと、金庫のかぎを閉め忘れる人が多いから、気をつけてね。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-028",
+   "titleEn": "Confirming an order by phone",
+   "titleJa": "電話で注文内容を確認する",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "phone",
+   "setting": "A restaurant customer faxed an order for disposable kitchen supplies, but part of it is hard to read. You call to confirm the details.",
+   "learnerRole": "An order-desk staff member at a wholesaler",
+   "partnerRole": "The restaurant's manager who placed the order",
+   "register": "keigo",
+   "goals": [
+    "Explain why you are calling",
+    "Confirm items, quantities, and delivery date one by one",
+    "Repeat the final order to avoid mistakes"
+   ],
+   "vocabulary": [
+    "注文",
+    "内容",
+    "数量",
+    "配達",
+    "確認",
+    "復唱"
+   ],
+   "phrases": [
+    "ご注文の内容を確認させていただきたく、お電話いたしました。",
+    "～でお間違いないでしょうか。",
+    "復唱いたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、レストランあおぞらです。",
+     "partnerEn": "Hello, Restaurant Aozora.",
+     "intent": "Give your company and name, and ask for the manager, Mr. Ueda.",
+     "sample": "お世話になっております。ミナミ商店のオマルと申します。店長の上田様はいらっしゃいますか。"
+    },
+    {
+     "partnerJa": "私が上田です。",
+     "partnerEn": "I'm Ueda.",
+     "intent": "Say you are calling to confirm the order you received by fax.",
+     "sample": "本日ファックスでいただいたご注文の内容を確認させていただきたく、お電話いたしました。"
+    },
+    {
+     "partnerJa": "ああ、何か問題でも？",
+     "partnerEn": "Oh, is there some problem?",
+     "intent": "Say part of the fax was hard to read.",
+     "sample": "いえ、一部の文字が読みにくかったものですから、念のためと思いまして。"
+    },
+    {
+     "partnerJa": "それはすみません。どこですか。",
+     "partnerEn": "Sorry about that. Which part?",
+     "intent": "Ask whether the paper napkins are 20 or 30 packs.",
+     "sample": "紙ナプキンの数量ですが、二十パックと三十パックのどちらでしょうか。"
+    },
+    {
+     "partnerJa": "三十パックです。",
+     "partnerEn": "Thirty packs.",
+     "intent": "Confirm the other item: 10 boxes of plastic gloves.",
+     "sample": "三十パックですね。それから、使い捨て手袋が十箱でお間違いないでしょうか。"
+    },
+    {
+     "partnerJa": "はい、それで合っています。",
+     "partnerEn": "Yes, that's correct.",
+     "intent": "Ask about the delivery date: is Thursday morning okay?",
+     "sample": "かしこまりました。配達は木曜日の午前中でよろしいでしょうか。"
+    },
+    {
+     "partnerJa": "できれば十時より前にお願いします。ランチの準備があるので。",
+     "partnerEn": "Before ten if possible. We have lunch prep.",
+     "intent": "Accept and repeat the full order.",
+     "sample": "承知いたしました。では、復唱いたします。紙ナプキン三十パック、使い捨て手袋十箱、木曜日の十時までの配達でございます。"
+    },
+    {
+     "partnerJa": "はい、よろしくお願いします。",
+     "partnerEn": "Yes, thank you.",
+     "intent": "Thank them and close.",
+     "sample": "ご注文ありがとうございました。失礼いたします。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-029",
+   "titleEn": "Video-call troubleshooting",
+   "titleJa": "オンライン会議のトラブル",
+   "jlpt": 4,
+   "ilr": "1+",
+   "category": "meeting",
+   "setting": "Just before an online team meeting, your coworker's audio isn't coming through. You talk casually to sort it out.",
+   "learnerRole": "A team member already in the video call",
+   "partnerRole": "A coworker having trouble joining",
+   "register": "casual",
+   "goals": [
+    "Tell them you can't hear them",
+    "Suggest checking the mute and microphone",
+    "Confirm it is working"
+   ],
+   "vocabulary": [
+    "音声",
+    "画面",
+    "マイク",
+    "聞こえる",
+    "共有"
+   ],
+   "phrases": [
+    "声が聞こえないよ。",
+    "ミュートになってない？",
+    "今、聞こえる！",
+    "画面、見えてる？"
+   ],
+   "turns": [
+    {
+     "partnerJa": "（口は動いているが、声が聞こえない）",
+     "partnerEn": "(Their mouth moves but no sound comes through.)",
+     "intent": "Tell them you can't hear their voice.",
+     "sample": "もしもし、声が聞こえないよ。"
+    },
+    {
+     "partnerJa": "（チャットで）え、聞こえない？",
+     "partnerEn": "(In chat) What, you can't hear me?",
+     "intent": "Ask if they're on mute.",
+     "sample": "ミュートになってない？"
+    },
+    {
+     "partnerJa": "ミュートは外してるんだけど……。あ、これでどう？",
+     "partnerEn": "I've turned off mute... Oh, how about now?",
+     "intent": "Say you can hear them now.",
+     "sample": "あ、今、聞こえる！大丈夫。"
+    },
+    {
+     "partnerJa": "よかった。マイクがイヤホンのほうになってた。",
+     "partnerEn": "Great. The mic was set to the earphones.",
+     "intent": "Say you'll share your screen and ask if they can see it.",
+     "sample": "よかった。じゃあ、画面を共有するね。見えてる？"
+    },
+    {
+     "partnerJa": "うん、ちゃんと見えてる。",
+     "partnerEn": "Yes, I can see it fine.",
+     "intent": "Say let's start then.",
+     "sample": "オッケー。じゃあ、始めよう。"
+    }
+   ]
+  },
+  {
+   "id": "business-sc-030",
+   "titleEn": "Farewell speech on transfer",
+   "titleJa": "異動の送別のあいさつ",
+   "jlpt": 1,
+   "ilr": "3",
+   "category": "etiquette",
+   "setting": "At your farewell gathering, the department head gives you a warm send-off before your transfer to the Fukuoka branch and invites you to speak. You give a formal farewell speech.",
+   "learnerRole": "An employee being transferred",
+   "partnerRole": "The department head (部長) acting as host",
+   "register": "keigo",
+   "goals": [
+    "Thank the host and everyone formally",
+    "Recall a meaningful episode",
+    "Express resolve for the new post",
+    "Close with good wishes for everyone"
+   ],
+   "vocabulary": [
+    "送別会",
+    "転勤",
+    "赴任",
+    "感謝",
+    "糧",
+    "鞭撻"
+   ],
+   "phrases": [
+    "このたび、福岡支店へ転勤することになりました。",
+    "在任中は、ひとかたならぬご指導をいただき、",
+    "ここでの経験を糧に、",
+    "皆様のますますのご活躍を心よりお祈り申し上げます。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "では、この五年間、部を支えてくれたロペスさんから、一言いただきたいと思います。",
+     "partnerEn": "Now we'd like a few words from Ms./Mr. Lopez, who has supported this department for five years.",
+     "intent": "Thank the department head and everyone for this gathering, and announce your transfer.",
+     "sample": "部長、過分なお言葉をいただき、ありがとうございます。また、本日はお忙しい中、このような会を開いていただき、心より御礼申し上げます。このたび、福岡支店へ転勤することになりました。"
+    },
+    {
+     "partnerJa": "（皆、静かに聞いている）",
+     "partnerEn": "(Everyone listens quietly.)",
+     "intent": "Recall a hard moment (e.g. your first big mistake) and how the team helped you.",
+     "sample": "入社二年目に大きな失敗をし、途方に暮れておりました折、皆様が夜遅くまで一緒に対応してくださったことは、今でも忘れられません。"
+    },
+    {
+     "partnerJa": "（うなずく人もいる）",
+     "partnerEn": "(Some people nod.)",
+     "intent": "Express gratitude and resolve for the new post.",
+     "sample": "在任中は、ひとかたならぬご指導をいただき、感謝の念に堪えません。ここで学んだことを糧に、新天地でも精一杯努めてまいります。"
+    },
+    {
+     "partnerJa": "（拍手の準備をしている）",
+     "partnerEn": "(People get ready to applaud.)",
+     "intent": "Ask for their continued guidance and close with wishes for everyone's success and health.",
+     "sample": "今後とも変わらぬご指導ご鞭撻のほど、よろしくお願い申し上げます。最後になりましたが、皆様のますますのご活躍とご健康を心よりお祈り申し上げます。本当にありがとうございました。"
+    }
+   ]
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "business-dl-001",
+   "title": "Where is the meeting?",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "office",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "山本",
+     "voice": "female",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "トム",
+     "voice": "male",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "山本さん、すみません。午後の会議は何時からですか。",
+     "en": "Excuse me, Ms. Yamamoto. What time does the afternoon meeting start?",
+     "gaps": [
+      "会議"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "二時からですよ。三階の会議室です。",
+     "en": "From two. It's in the third-floor meeting room.",
+     "gaps": [
+      "会議室"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "三階ですね。何か持っていくものはありますか。",
+     "en": "Third floor. Is there anything I should bring?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "昨日配った資料を持ってきてください。",
+     "en": "Please bring the materials handed out yesterday.",
+     "gaps": [
+      "資料"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、資料はまだ机の上にあります。すぐ準備します。",
+     "en": "Oh, the materials are still on my desk. I'll get ready right away.",
+     "gaps": [
+      "準備"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "お願いします。五分前には来てくださいね。",
+     "en": "Thanks. Please come five minutes early.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "Where is the meeting?",
+     "choices": [
+      "On the second floor",
+      "On the third floor",
+      "On the fifth floor"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What should Tom bring?",
+     "choices": [
+      "His computer",
+      "A report he writes today",
+      "The materials handed out yesterday"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "business-dl-002",
+   "title": "A call for Mr. Sato",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "phone",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "受付",
+     "voice": "female",
+     "age": "young"
+    },
+    {
+     "id": "B",
+     "name": "木村",
+     "voice": "male",
+     "age": "adult"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "お電話ありがとうございます。ひまわり建設でございます。",
+     "en": "Thank you for calling. Himawari Construction.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "わかば不動産の木村と申します。佐藤様はいらっしゃいますか。",
+     "en": "This is Kimura from Wakaba Real Estate. Is Mr. Sato available?",
+     "gaps": [
+      "不動産"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "申し訳ございません。佐藤はただいま外出しております。",
+     "en": "I'm very sorry. Sato is out at the moment.",
+     "gaps": [
+      "外出"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "何時ごろお戻りになりますか。",
+     "en": "Around what time will he be back?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "四時には戻る予定です。戻りましたら、折り返しお電話いたしましょうか。",
+     "en": "He is expected back by four. Shall I have him call you back when he returns?",
+     "gaps": [
+      "予定",
+      "折り返し"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "いえ、こちらからまた四時過ぎにかけ直します。",
+     "en": "No, I'll call again after four.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "かしこまりました。木村様からお電話があったことを、佐藤に伝えておきます。",
+     "en": "Certainly. I'll tell Sato that you called.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "よろしくお願いします。失礼します。",
+     "en": "Thank you. Goodbye.",
+     "gaps": [
+      "失礼"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What will happen next?",
+     "choices": [
+      "Mr. Sato will call Mr. Kimura at four",
+      "Mr. Kimura will call again after four",
+      "Mr. Kimura will visit the office"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Why can't Mr. Sato take the call?",
+     "choices": [
+      "He is out of the office",
+      "He is in a meeting",
+      "He is on holiday"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "business-dl-003",
+   "title": "The late report",
+   "jlpt": 3,
+   "ilr": "2",
+   "topic": "reporting",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "課長",
+     "voice": "male",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "リン",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "リンさん、先週頼んだ調査の報告書、どうなっていますか。",
+     "en": "Lin, how is the survey report I asked for last week?",
+     "gaps": [
+      "調査",
+      "報告書"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "申し訳ありません。まだ半分しかできていません。",
+     "en": "I'm very sorry. Only half is done.",
+     "gaps": [
+      "半分"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "締め切りは明日ですよ。何か問題がありましたか。",
+     "en": "The deadline is tomorrow. Was there a problem?",
+     "gaps": [
+      "締め切り"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "アンケートの回答が予定より少なくて、追加で集めていました。",
+     "en": "We got fewer questionnaire responses than planned, so I was collecting more.",
+     "gaps": [
+      "回答",
+      "追加"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そういうことは、早めに言ってください。遅れるとわかった時点で、相談してほしかったです。",
+     "en": "Please tell me such things early. I wanted you to consult me as soon as you knew it would be late.",
+     "gaps": [
+      "相談"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、以後気をつけます。金曜日までお時間をいただけないでしょうか。",
+     "en": "Yes, I'll be careful from now on. Could I have until Friday?",
+     "gaps": [
+      "以後"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "わかりました。その代わり、明日の朝、途中までの内容を見せてください。",
+     "en": "All right. In return, show me what you have so far tomorrow morning.",
+     "gaps": [
+      "途中",
+      "内容"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "承知しました。明日の九時までにお送りします。",
+     "en": "Understood. I'll send it by nine tomorrow.",
+     "gaps": [
+      "承知"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why is the report late?",
+     "choices": [
+      "Lin was sick",
+      "There were too few survey responses",
+      "The manager changed the topic"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What is the manager unhappy about?",
+     "choices": [
+      "That Lin did not consult him earlier",
+      "That the report is too long",
+      "That Lin asked a coworker for help"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What will Lin do tomorrow morning?",
+     "choices": [
+      "Submit the finished report",
+      "Collect more responses",
+      "Send the partial report"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "business-dl-004",
+   "title": "A visitor at reception",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "visit",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "受付",
+     "voice": "male",
+     "age": "young"
+    },
+    {
+     "id": "B",
+     "name": "高橋",
+     "voice": "female",
+     "age": "adult"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "いらっしゃいませ。",
+     "en": "Welcome.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "ほのか食品の高橋と申します。三時に企画部の松本様とお約束をしております。",
+     "en": "I'm Takahashi from Honoka Foods. I have a three o'clock appointment with Mr. Matsumoto in planning.",
+     "gaps": [
+      "企画",
+      "約束"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "高橋様ですね。お待ちしておりました。こちらに会社名とお名前をご記入いただけますか。",
+     "en": "Ms. Takahashi. We've been expecting you. Could you write your company name and your name here?",
+     "gaps": [
+      "記入"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい。……これでよろしいですか。",
+     "en": "Yes. ...Is this all right?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "ありがとうございます。こちらの入館証をお付けください。",
+     "en": "Thank you. Please wear this visitor's pass.",
+     "gaps": [
+      "入館"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "わかりました。",
+     "en": "All right.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "松本はすぐにまいりますので、あちらのソファーで少々お待ちください。",
+     "en": "Matsumoto will be right here, so please wait a moment on that sofa.",
+     "gaps": [
+      "少々"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとうございます。",
+     "en": "Thank you.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "What does the receptionist ask Ms. Takahashi to do first?",
+     "choices": [
+      "Show her business card",
+      "Write her company name and name",
+      "Call Mr. Matsumoto herself"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Where will she wait?",
+     "choices": [
+      "On a sofa",
+      "In the meeting room",
+      "At the elevator"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "business-dl-005",
+   "title": "Borrowing a senior's help",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "coworkers",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "先輩",
+     "voice": "male",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "アナ",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "先輩、コピー機が動かないんですが……。",
+     "en": "Excuse me, the copier isn't working...",
+     "gaps": [
+      "先輩",
+      "コピー機"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ああ、また紙がつまったかな。ちょっと見せて。",
+     "en": "Ah, maybe the paper jammed again. Let me see.",
+     "gaps": [
+      "紙"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "すみません、忙しいのに。",
+     "en": "Sorry, when you're busy.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "大丈夫。ほら、ここに紙が一枚残ってたよ。",
+     "en": "No problem. Look, one sheet was stuck here.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、動きました！ありがとうございます。",
+     "en": "Oh, it's working! Thank you.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "次からは、この横のふたを開けてみてね。",
+     "en": "Next time, try opening this side cover.",
+     "gaps": [
+      "ふた"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What was wrong with the copier?",
+     "choices": [
+      "It had no power",
+      "A sheet of paper was stuck",
+      "It was out of ink"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "business-dl-006",
+   "title": "Price talks",
+   "jlpt": 2,
+   "ilr": "2+",
+   "topic": "sales",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "購買部長",
+     "voice": "male",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "営業担当",
+     "voice": "female",
+     "age": "adult"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "お見積もり、拝見しました。正直なところ、もう少し何とかなりませんか。",
+     "en": "I've looked at your quote. Honestly, can't you do something more?",
+     "gaps": [
+      "見積もり"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ご期待に沿えず申し訳ございません。今回の価格は、原材料費の値上がりを反映したものでして。",
+     "en": "I'm sorry not to meet your expectations. This price reflects the rise in material costs.",
+     "gaps": [
+      "価格",
+      "反映"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "それはわかりますが、予算がもう決まっているんですよ。",
+     "en": "I understand, but our budget is already fixed.",
+     "gaps": [
+      "予算"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "でしたら、数量を増やしていただければ、単価を三パーセントほど下げることは可能です。",
+     "en": "In that case, if you increase the quantity, we could lower the unit price by about three percent.",
+     "gaps": [
+      "数量",
+      "単価"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "数量を増やす、ですか。保管する場所が問題ですね。",
+     "en": "Increase the quantity? Storage space is the issue.",
+     "gaps": [
+      "保管"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "納品を二回に分けることもできますので、一度にお届けする量は今と変わりません。",
+     "en": "We can also split the delivery in two, so each delivery would be the same size as now.",
+     "gaps": [
+      "納品"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "なるほど、それなら検討の余地がありますね。",
+     "en": "I see. Then there's room to consider it.",
+     "gaps": [
+      "検討",
+      "余地"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとうございます。では、その条件で改めてお見積もりをお送りいたします。",
+     "en": "Thank you. We'll send a revised quote on those terms.",
+     "gaps": [
+      "条件"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why is the price higher than before?",
+     "choices": [
+      "Delivery costs rose",
+      "Material costs rose",
+      "The product was improved"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What solves the storage problem?",
+     "choices": [
+      "Splitting the delivery in two",
+      "Renting a warehouse",
+      "Ordering less"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What will the sales representative do next?",
+     "choices": [
+      "Visit the factory",
+      "Cancel the order",
+      "Send a new quote"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "business-dl-007",
+   "title": "Checking before an interview",
+   "jlpt": 2,
+   "ilr": "2",
+   "topic": "hr",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "人事",
+     "voice": "female",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "ラジ",
+     "voice": "male",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "ラジさん、明日の面接の件でお電話しました。",
+     "en": "Raj, I'm calling about tomorrow's interview.",
+     "gaps": [
+      "面接"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、お世話になっております。十時からでよろしいでしょうか。",
+     "en": "Yes, thank you. It's from ten, correct?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "それが、面接官の都合で、十一時に変更させていただきたいのですが。",
+     "en": "Actually, due to the interviewer's schedule, we'd like to change it to eleven.",
+     "gaps": [
+      "都合",
+      "変更"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "十一時ですね。問題ございません。",
+     "en": "Eleven. That's no problem.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "ありがとうございます。当日は、履歴書のほかに卒業証明書もお持ちください。",
+     "en": "Thank you. On the day, please bring your graduation certificate as well as your résumé.",
+     "gaps": [
+      "履歴書",
+      "当日"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "卒業証明書ですね。承知いたしました。場所は本社の受付でよろしいですか。",
+     "en": "The graduation certificate. Understood. Is the place the head-office reception?",
+     "gaps": [
+      "本社"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "はい。受付で名前をおっしゃっていただければ、ご案内します。",
+     "en": "Yes. Give your name at reception and we'll show you in.",
+     "gaps": [
+      "案内"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "わかりました。明日はよろしくお願いいたします。",
+     "en": "Understood. I look forward to tomorrow.",
+     "gaps": []
+    }
+   ],
+   "questions": [
+    {
+     "question": "What time is the interview now?",
+     "choices": [
+      "Ten o'clock",
+      "Eleven o'clock",
+      "One o'clock"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What extra document must Raj bring?",
+     "choices": [
+      "A graduation certificate",
+      "A passport",
+      "A letter of recommendation"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "business-dl-008",
+   "title": "A merger announcement",
+   "jlpt": 1,
+   "ilr": "3",
+   "topic": "management",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "社長",
+     "voice": "male",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "記者",
+     "voice": "female",
+     "age": "adult"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "今回の経営統合の狙いについて、改めてお聞かせいただけますか。",
+     "en": "Could you explain again the aim of this business integration?",
+     "gaps": [
+      "経営",
+      "統合"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "一言で申し上げれば、国内市場の縮小に備え、両社の強みを持ち寄ることにあります。",
+     "en": "In a word, it is to prepare for the shrinking domestic market by combining the strengths of both companies.",
+     "gaps": [
+      "縮小"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "統合に伴い、人員削減は避けられないとの見方もありますが。",
+     "en": "Some say staff cuts will be unavoidable with the integration.",
+     "gaps": [
+      "人員",
+      "削減"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "現時点で、雇用に手をつける考えは一切ございません。むしろ海外事業で人材が不足しているのが実情です。",
+     "en": "At present we have no intention whatsoever of touching employment. In fact, the reality is that we lack people in overseas business.",
+     "gaps": [
+      "雇用",
+      "人材"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "取引先への影響はいかがでしょうか。",
+     "en": "What about the effect on business partners?",
+     "gaps": [
+      "影響"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "既存の契約は全て引き継ぎます。ご不安を与えることのないよう、丁寧に説明を重ねてまいります。",
+     "en": "All existing contracts will be carried over. We will keep explaining carefully so as not to cause concern.",
+     "gaps": [
+      "既存",
+      "契約"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "最後に、統合後の目標をお聞かせください。",
+     "en": "Finally, please tell us your goals after the integration.",
+     "gaps": [
+      "目標"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "五年以内に海外売上比率を五割に引き上げることを目指します。",
+     "en": "We aim to raise the share of overseas sales to 50% within five years.",
+     "gaps": [
+      "比率"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What is the main reason for the integration?",
+     "choices": [
+      "To prepare for a shrinking domestic market",
+      "To reduce the number of employees",
+      "To leave overseas markets"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What does the president say about jobs?",
+     "choices": [
+      "Some staff will be cut next year",
+      "There are no plans to cut jobs",
+      "New hiring will stop"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What is the five-year goal?",
+     "choices": [
+      "Doubling domestic sales",
+      "Merging with a third company",
+      "Making overseas sales half of all sales"
+     ],
+     "answer": 2
+    }
+   ]
+  }
+ ]
+}

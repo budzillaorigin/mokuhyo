@@ -4,6 +4,75 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 12 (tracks): interest and domain tracks (2026-09-19)
+
+BRIEF_V2 §6.5: seven tracks, each with a word list, kanji subset, scenarios, dialogues and drills, selectable in onboarding and switchable any time. Decisions D-210…D-219. Other Phase 12 content (graded readers, more dialogues, scenarios and ILR items) is built by other agents. Platform UI is not built yet; the hooks are listed below.
+
+### What was built
+- **Pack:** `tracks.sqlite`, with `tracks.sq` as its schema (`TracksDatabase`, `PackInstaller.TRACKS`).
+  - Built by `tools/packs/build_tracks.py` from `tools/packs/tracks/*.json` and wired into `build_all.py`.
+  - Subcommands: `validate` lists every problem; `resolve` fills JMdict ids; `draft --endpoint URL --model NAME` extends a track through any OpenAI-compatible endpoint, appending only items that validate and never reusing ids.
+- **Content:** drafted by Claude (owner decision). All of it is `source: "llm"`, `verified: false`, with the badge on:
+
+| Track | Levels | Words | Kanji | Scenarios (turns) | Dialogues | Drills | Other |
+|---|---|---|---|---|---|---|---|
+| Gaming & VTuber (`gaming`) | N5–N2 | 478 | 142 (explicit, with hints) | 10 (67) | 10 | 40: 20 fill-in, 20 meaning | – |
+| Business & keigo (`business`) | N4–N1 | 253 | 150 (derived) | 30 (223) | 8 | 84: 14 email templates, 70 keigo | – |
+| Family & household (`family`) | N5–N2, ILR 0+–2 | 266 | 150 (derived) | 10 (68) | 10 | 40: 20 fill-in, 20 usage yes/no | – |
+| Daily-life admin (`daily-life`) | N5–N2 | 267 | 150 (derived) | 12 (74) | 8 | 24: 24 fill-in | 12 situations / 51 can-do; 8 cultural tasks |
+| Native schoolchild vocabulary (`schoolchild`) | N4–N1 | 912 | 249 (derived) | 4 (26) | 4 | 230: 70 fill-in, 40 meaning, 60 synonym/antonym, 60 usage yes/no | – |
+| Military & liaison (`military`) | N3–N1, ILR 2–3 | 271 | 150 (derived) | 12 (104) | 8 | 20: 20 meaning | 14 ILR readings; 5 links |
+| Performing culture (`performing`) | N5–N2 | 182 | 150 (derived) | 6 (40) | 6 | 20: 20 performances | – |
+| **Total** | | **2629** | **1141** | **84 (602)** | **54** | **458** | 12 situations / 51 can-do; 8 tasks; 14 readings; 5 links |
+
+- **Size targets:**
+  - Gaming: 142 kanji (target ~140) with our own breakdowns and memory hints, and 478 words (target 600, so 80%).
+  - Business: all 30 situations.
+  - Schoolchild: 912 words (83% of the 1,100-style target).
+  - Military: ILR 2–3 throughout, with fictional briefings, and JMSDF/JASDF/JGSDF/MOD pages as links only.
+- **Shared (`app.tsumugi.tracks`):**
+  - `TrackRepository`: tracks, words, lessons, kanji, scenarios and dialogues (as the practice models), drills, situations, tasks, readings and links.
+  - `TrackService`: selection as a synced setting, the onboarding API, lessons mixed into Today, and can-do checks.
+  - Drill models with checking: `KeigoDrill` (via `KeigoRules`), `EmailDrill`, `FillInDrill`, `SynonymDrill`, `UsageDrill`, `MeaningDrill`, `PerformDrill`, plus `PerformanceSession` (memorize-and-perform).
+  - `AnswerText.normalize` for comparing typed answers.
+- **Minimal hooks:**
+  - `AppGraph.trackRepository()`, `AppGraph.tracks`, `AppGraph.dialogue(id)`.
+  - `roleplay(id)` falls back to track scenarios.
+  - `startLessons()` and `today()` mix in and count track words.
+  - `LessonSession.batch`.
+- **No user-DB migration.** Selections (`tracks.selected`) and can-do ticks (`tracks.canDo`) are synced settings.
+
+### UI hooks for the platform agents
+- **Onboarding step:** `graph.tracks.onboardingOptions()` returns a `TrackSummary` per track (title, `levelLabel`, `description`, `counts`, `wordsLeft`, `selected`). Save with `chooseInOnboarding(ids)`.
+- **Settings or Learn → Tracks:** `tracks()`, `select`/`deselect`/`switchTo`. A track page uses `trackRepository()?.lessons(id)`, `kanji(id)` (show `breakdown`/`hint` for gaming), `scenarios(id)` (open with `graph.roleplay(scenario.id)`), `dialogues(id)` (open with `graph.dialogue(id)` in the existing listening screen), `drills(id, type)`, `situations(id)` (tick with `tracks.setCanDo(situation.canDoId(i), done)`), `tasks(id)`, `readings(id)` and `links(id)`.
+- **Drill screens:**
+  - Keigo and fill-in: typed `check(text)`; fill-in can show `choices`.
+  - Email: render `segments` with a field or chips per `Slot`, then `check(slot, text)`.
+  - Synonym and meaning: `check(index)`. Usage: `check(saysCorrect)`.
+  - Perform: `PerformanceSession(drill)`, then `prompts()`, `deliver(line, sttTranscript)` or `selfRate`, and `nextRound()`. Show `staging` and each line's `stage`.
+- **Badge:** everything with `isAiGenerated` shows the AI-generated badge.
+- **Today:** nothing to do. Lessons already include track words when a track is selected.
+
+### Tests
+- `TracksTest` (11): pack rows to models (scenarios and dialogues as practice models, unknown drill types skipped); selection as a synced setting; Today mixing (half the batch, path items complete on the path, track words join reviews, known words skipped, fills the batch without a path, empty when done); round-robin across tracks; can-do; no pack (honest empty states); keigo rules (special and regular, suru nouns, お/ご, forms); keigo check (kana, katakana, punctuation, rule forms, humble rejected); email, fill-in and choice drills; memorize-and-perform fading; lesson splitting.
+- `RealTracksPackTest` (androidHostTest, real pack): every row loads, every drill parses and accepts its model answer, every performance can be completed, and the keigo rules agree with the authored answers. Before the rules were extended, they disagreed on 3 of 60 rule-covered drills (お気に召す, 承る, 存じておる); those forms were added.
+- `build_tracks.py draft` was smoke-tested against a fake endpoint: an unknown word and a malformed drill were rejected, and ids advanced.
+
+### Deferred
+- `tools/items/review.py` and the in-app review (G-16) don't read track files yet. The badge stays on until they do (another agent's file). Everything else about review is ready: items carry `source`/`verified`.
+- `render_audio.py` doesn't render track dialogues yet (another agent's file), so they use TTS; the clip keys `dialogue/<id>/<ord>` already fit. Performances have no audio.
+- Whether tracks ship in the base app or as downloads (BRIEF_V2 §9 item 7). The pack is 1.5 MB and is bundled like the others.
+- An AI check of a performed line through the gateway (the session exposes the transcript and the script).
+- Gaming words: 478 of the 600 target. Extend with `draft gaming --kind words`.
+
+### How to run
+```
+cd tools && uv run python packs/build_tracks.py      # or packs/build_all.py
+./gradlew :shared:compileCommonMainKotlinMetadata :shared:verifySqlDelightMigration :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
+---
+
 ## Phase 11 (Android UI): immersion pipeline and audio packs (2026-09-18)
 
 The Android screens for everything Phase 11 built in the shared core, plus pre-rendered audio (rule 20). Decisions D-180…D-189. iOS is being built in parallel by another agent.

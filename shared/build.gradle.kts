@@ -92,6 +92,11 @@ sqldelight {
             packageName.set("app.tsumugi.practice.db")
             srcDirs.setFrom("src/commonMain/sqldelightPractice")
         }
+        // Read-only interest/domain tracks pack (BRIEF_V2 §6.5), built by tools/packs/build_tracks.py.
+        create("TracksDatabase") {
+            packageName.set("app.tsumugi.tracks.db")
+            srcDirs.setFrom("src/commonMain/sqldelightTracks")
+        }
         // Read-only morphological-analysis pack (mecab-ipadic), built by tools/packs/build_tokenizer.py.
         create("TokenizerDatabase") {
             packageName.set("app.tsumugi.tokenizer.db")

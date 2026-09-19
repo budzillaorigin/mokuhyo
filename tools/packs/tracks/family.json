@@ -1,0 +1,2590 @@
+{
+ "track": "family",
+ "format": 1,
+ "titleEn": "Family & household",
+ "titleJa": "家族と家庭",
+ "description": "Household life, relatives, childcare, cooking and chores, and the etiquette of visiting a Japanese partner's family.",
+ "inspiredBy": "Japanese In-Law (structure and pedagogy only; no content used)",
+ "jlpt": [
+  5,
+  2
+ ],
+ "source": "llm",
+ "verified": false,
+ "license": "CC BY-SA 4.0",
+ "attribution": "Tsumugi contributors",
+ "words": [
+  {"text": "家族", "reading": "かぞく", "topic": "immediate family", "gloss": "family", "id": 1192150},
+  {"text": "両親", "reading": "りょうしん", "topic": "immediate family", "gloss": "parents", "id": 1602710},
+  {"text": "父", "reading": "ちち", "topic": "immediate family", "gloss": "father", "note": "humble: your own father, when talking to others", "id": 1497610},
+  {"text": "母", "reading": "はは", "topic": "immediate family", "gloss": "mother", "note": "humble: your own mother, when talking to others", "id": 1514990},
+  {"text": "お父さん", "reading": "おとうさん", "topic": "immediate family", "gloss": "father", "note": "someone else's father; also how you address your own", "id": 1002590},
+  {"text": "お母さん", "reading": "おかあさん", "topic": "immediate family", "gloss": "mother", "note": "someone else's mother; also how you address your own", "id": 1002650},
+  {"text": "兄", "reading": "あに", "topic": "immediate family", "gloss": "older brother", "note": "humble: your own", "id": 1249900},
+  {"text": "姉", "reading": "あね", "topic": "immediate family", "gloss": "older sister", "note": "humble: your own", "id": 1307630},
+  {"text": "お兄さん", "reading": "おにいさん", "topic": "immediate family", "gloss": "older brother", "note": "someone else's; or addressing your own", "id": 1001830},
+  {"text": "お姉さん", "reading": "おねえさん", "topic": "immediate family", "gloss": "older sister", "note": "someone else's; or addressing your own", "id": 1001990},
+  {"text": "弟", "reading": "おとうと", "topic": "immediate family", "gloss": "younger brother", "id": 1581930},
+  {"text": "妹", "reading": "いもうと", "topic": "immediate family", "gloss": "younger sister", "id": 1524590},
+  {"text": "兄弟", "reading": "きょうだい", "topic": "immediate family", "gloss": "siblings", "id": 1249960},
+  {"text": "子供", "reading": "こども", "topic": "immediate family", "gloss": "child; children", "id": 1307850},
+  {"text": "息子", "reading": "むすこ", "topic": "immediate family", "gloss": "son", "note": "humble: your own", "id": 1404390},
+  {"text": "娘", "reading": "むすめ", "topic": "immediate family", "gloss": "daughter", "note": "humble: your own", "id": 1531190},
+  {"text": "親", "reading": "おや", "topic": "immediate family", "gloss": "parent", "id": 1365040},
+  {"text": "親子", "reading": "おやこ", "topic": "immediate family", "gloss": "parent and child", "id": 1365170},
+  {"text": "父親", "reading": "ちちおや", "topic": "immediate family", "gloss": "father", "id": 1497680},
+  {"text": "母親", "reading": "ははおや", "topic": "immediate family", "gloss": "mother", "id": 1515120},
+  {"text": "夫", "reading": "おっと", "topic": "spouses", "gloss": "husband", "note": "neutral: your own husband", "id": 1496480},
+  {"text": "妻", "reading": "つま", "topic": "spouses", "gloss": "wife", "note": "neutral: your own wife", "id": 1294330},
+  {"text": "夫婦", "reading": "ふうふ", "topic": "spouses", "gloss": "married couple", "id": 1583640},
+  {"text": "主人", "reading": "しゅじん", "topic": "spouses", "gloss": "husband", "note": "your own husband (traditional)", "id": 1579780},
+  {"text": "家内", "reading": "かない", "topic": "spouses", "gloss": "wife", "note": "humble: your own wife", "id": 1192420},
+  {"text": "旦那", "reading": "だんな", "topic": "spouses", "gloss": "husband", "note": "casual", "id": 1418410},
+  {"text": "奥さん", "reading": "おくさん", "topic": "spouses", "gloss": "wife", "note": "someone else's wife", "id": 1179330},
+  {"text": "ご主人", "reading": "ごしゅじん", "topic": "spouses", "gloss": "husband", "note": "honorific: someone else's husband", "id": 1270390},
+  {"text": "奥様", "reading": "おくさま", "topic": "spouses", "gloss": "wife", "note": "very polite: someone else's wife", "id": 1179630},
+  {"text": "ご両親", "reading": "ごりょうしん", "topic": "honorific family terms", "gloss": "(your/their) parents", "note": "honorific", "id": 1878110},
+  {"text": "お子さん", "reading": "おこさん", "topic": "honorific family terms", "gloss": "(your/their) child", "note": "honorific", "id": 1002000},
+  {"text": "息子さん", "reading": "むすこさん", "topic": "honorific family terms", "gloss": "(your/their) son", "note": "honorific", "id": 1404400},
+  {"text": "娘さん", "reading": "むすめさん", "topic": "honorific family terms", "gloss": "(your/their) daughter", "note": "honorific", "id": 1531200},
+  {"text": "お嬢さん", "reading": "おじょうさん", "topic": "honorific family terms", "gloss": "(your/their) daughter; young lady", "note": "honorific", "id": 1002170},
+  {"text": "祖父", "reading": "そふ", "topic": "grandparents & relatives", "gloss": "grandfather", "note": "humble: your own", "id": 1396840},
+  {"text": "祖母", "reading": "そぼ", "topic": "grandparents & relatives", "gloss": "grandmother", "note": "humble: your own", "id": 1396860},
+  {"text": "おじいさん", "reading": "おじいさん", "topic": "grandparents & relatives", "gloss": "grandfather; old man", "id": 1002320},
+  {"text": "おばあさん", "reading": "おばあさん", "topic": "grandparents & relatives", "gloss": "grandmother; old woman", "id": 1002330},
+  {"text": "孫", "reading": "まご", "topic": "grandparents & relatives", "gloss": "grandchild", "id": 1406230},
+  {"text": "伯父", "reading": "おじ", "topic": "grandparents & relatives", "gloss": "uncle (parent's older brother)", "id": 1607070},
+  {"text": "叔母", "reading": "おば", "topic": "grandparents & relatives", "gloss": "aunt (parent's younger sister)", "id": 1607100},
+  {"text": "従兄弟", "reading": "いとこ", "topic": "grandparents & relatives", "gloss": "cousin", "id": 1335290},
+  {"text": "甥", "reading": "おい", "topic": "grandparents & relatives", "gloss": "nephew", "id": 1179140},
+  {"text": "姪", "reading": "めい", "topic": "grandparents & relatives", "gloss": "niece", "id": 1532940},
+  {"text": "甥っ子", "reading": "おいっこ", "topic": "grandparents & relatives", "gloss": "nephew", "note": "affectionate", "id": 2138500},
+  {"text": "親戚", "reading": "しんせき", "topic": "grandparents & relatives", "gloss": "relative", "id": 1365230},
+  {"text": "親類", "reading": "しんるい", "topic": "grandparents & relatives", "gloss": "relative; kin", "id": 1365420},
+  {"text": "親族", "reading": "しんぞく", "topic": "grandparents & relatives", "gloss": "relatives (formal)", "id": 1365270},
+  {"text": "身内", "reading": "みうち", "topic": "grandparents & relatives", "gloss": "family; close relatives", "id": 1365800},
+  {"text": "先祖", "reading": "せんぞ", "topic": "grandparents & relatives", "gloss": "ancestor", "id": 1388030},
+  {"text": "長男", "reading": "ちょうなん", "topic": "grandparents & relatives", "gloss": "eldest son", "id": 1430080},
+  {"text": "長女", "reading": "ちょうじょ", "topic": "grandparents & relatives", "gloss": "eldest daughter", "id": 1430040},
+  {"text": "次男", "reading": "じなん", "topic": "grandparents & relatives", "gloss": "second son", "id": 1316710},
+  {"text": "末っ子", "reading": "すえっこ", "topic": "grandparents & relatives", "gloss": "youngest child", "id": 1584380},
+  {"text": "一人っ子", "reading": "ひとりっこ", "topic": "grandparents & relatives", "gloss": "only child", "id": 1727720},
+  {"text": "義理", "reading": "ぎり", "topic": "in-laws", "gloss": "in-law (by marriage); duty", "id": 1225920},
+  {"text": "義父", "reading": "ぎふ", "topic": "in-laws", "gloss": "father-in-law", "id": 1225860},
+  {"text": "義母", "reading": "ぎぼ", "topic": "in-laws", "gloss": "mother-in-law", "id": 1225880},
+  {"text": "舅", "reading": "しゅうと", "topic": "in-laws", "gloss": "father-in-law", "note": "traditional", "id": 1571280},
+  {"text": "姑", "reading": "しゅうとめ", "topic": "in-laws", "gloss": "mother-in-law", "note": "traditional", "id": 1266770},
+  {"text": "義兄", "reading": "ぎけい", "topic": "in-laws", "gloss": "brother-in-law (older)", "id": 1225790},
+  {"text": "義姉", "reading": "ぎし", "topic": "in-laws", "gloss": "sister-in-law (older)", "id": 1225800},
+  {"text": "嫁", "reading": "よめ", "topic": "in-laws", "gloss": "bride; daughter-in-law", "id": 1191680},
+  {"text": "婿", "reading": "むこ", "topic": "in-laws", "gloss": "son-in-law; groom", "id": 1531160},
+  {"text": "実家", "reading": "じっか", "topic": "in-laws", "gloss": "parents' home; family home", "id": 1320900},
+  {"text": "親孝行", "reading": "おやこうこう", "topic": "in-laws", "gloss": "being good to one's parents", "id": 1365160},
+  {"text": "家", "reading": "いえ", "topic": "home & rooms", "gloss": "house; home", "id": 1191730},
+  {"text": "部屋", "reading": "へや", "topic": "home & rooms", "gloss": "room", "id": 1499320},
+  {"text": "台所", "reading": "だいどころ", "topic": "home & rooms", "gloss": "kitchen", "id": 1412640},
+  {"text": "居間", "reading": "いま", "topic": "home & rooms", "gloss": "living room", "id": 1231720},
+  {"text": "寝室", "reading": "しんしつ", "topic": "home & rooms", "gloss": "bedroom", "id": 1360140},
+  {"text": "玄関", "reading": "げんかん", "topic": "home & rooms", "gloss": "entrance hall", "id": 1263400},
+  {"text": "風呂", "reading": "ふろ", "topic": "home & rooms", "gloss": "bath", "id": 1500100},
+  {"text": "トイレ", "reading": "トイレ", "topic": "home & rooms", "gloss": "toilet", "id": 1084810},
+  {"text": "お手洗い", "reading": "おてあらい", "topic": "home & rooms", "gloss": "restroom", "note": "polite", "id": 1002100},
+  {"text": "洗面所", "reading": "せんめんじょ", "topic": "home & rooms", "gloss": "washroom", "id": 1391070},
+  {"text": "廊下", "reading": "ろうか", "topic": "home & rooms", "gloss": "corridor", "id": 1560670},
+  {"text": "階段", "reading": "かいだん", "topic": "home & rooms", "gloss": "stairs", "id": 1203090},
+  {"text": "窓", "reading": "まど", "topic": "home & rooms", "gloss": "window", "id": 1401400},
+  {"text": "庭", "reading": "にわ", "topic": "home & rooms", "gloss": "garden; yard", "id": 1436130},
+  {"text": "ベランダ", "reading": "ベランダ", "topic": "home & rooms", "gloss": "balcony", "id": 1119940},
+  {"text": "和室", "reading": "わしつ", "topic": "home & rooms", "gloss": "Japanese-style room", "id": 1562110},
+  {"text": "畳", "reading": "たたみ", "topic": "home & rooms", "gloss": "tatami mat", "id": 1356750},
+  {"text": "押し入れ", "reading": "おしいれ", "topic": "home & rooms", "gloss": "closet (for futons)", "id": 1589110},
+  {"text": "襖", "reading": "ふすま", "topic": "home & rooms", "gloss": "sliding paper door", "id": 1181720},
+  {"text": "障子", "reading": "しょうじ", "topic": "home & rooms", "gloss": "paper screen", "id": 1352090},
+  {"text": "床の間", "reading": "とこのま", "topic": "home & rooms", "gloss": "alcove", "id": 1349400},
+  {"text": "仏壇", "reading": "ぶつだん", "topic": "home & rooms", "gloss": "family Buddhist altar", "id": 1502200},
+  {"text": "座布団", "reading": "ざぶとん", "topic": "home & rooms", "gloss": "floor cushion", "id": 1291980},
+  {"text": "布団", "reading": "ふとん", "topic": "home & rooms", "gloss": "futon", "id": 1496890},
+  {"text": "こたつ", "reading": "こたつ", "topic": "home & rooms", "gloss": "heated low table", "id": 1194360},
+  {"text": "靴箱", "reading": "くつばこ", "topic": "home & rooms", "gloss": "shoe cupboard", "id": 2029430},
+  {"text": "スリッパ", "reading": "スリッパ", "topic": "home & rooms", "gloss": "slippers", "id": 1073900},
+  {"text": "家具", "reading": "かぐ", "topic": "home & rooms", "gloss": "furniture", "id": 1191870},
+  {"text": "棚", "reading": "たな", "topic": "home & rooms", "gloss": "shelf", "id": 1416700},
+  {"text": "冷蔵庫", "reading": "れいぞうこ", "topic": "appliances", "gloss": "refrigerator", "id": 1557110},
+  {"text": "洗濯機", "reading": "せんたくき", "topic": "appliances", "gloss": "washing machine", "id": 1390990},
+  {"text": "掃除機", "reading": "そうじき", "topic": "appliances", "gloss": "vacuum cleaner", "id": 1596390},
+  {"text": "電子レンジ", "reading": "でんしレンジ", "topic": "appliances", "gloss": "microwave oven", "id": 1443380},
+  {"text": "炊飯器", "reading": "すいはんき", "topic": "appliances", "gloss": "rice cooker", "id": 1372360},
+  {"text": "アイロン", "reading": "アイロン", "topic": "appliances", "gloss": "iron", "id": 1014590},
+  {"text": "家事", "reading": "かじ", "topic": "chores", "gloss": "housework", "id": 1191980},
+  {"text": "掃除", "reading": "そうじ", "topic": "chores", "gloss": "cleaning", "id": 1399790},
+  {"text": "洗濯", "reading": "せんたく", "topic": "chores", "gloss": "laundry; washing", "id": 1390980},
+  {"text": "洗濯物", "reading": "せんたくもの", "topic": "chores", "gloss": "laundry (the clothes)", "id": 1391020},
+  {"text": "手伝う", "reading": "てつだう", "topic": "chores", "gloss": "to help", "id": 1328190},
+  {"text": "片付ける", "reading": "かたづける", "topic": "chores", "gloss": "to tidy up", "id": 1511790},
+  {"text": "洗う", "reading": "あらう", "topic": "chores", "gloss": "to wash", "id": 1390930},
+  {"text": "干す", "reading": "ほす", "topic": "chores", "gloss": "to hang out to dry", "id": 1603510},
+  {"text": "畳む", "reading": "たたむ", "topic": "chores", "gloss": "to fold", "id": 1356780},
+  {"text": "拭く", "reading": "ふく", "topic": "chores", "gloss": "to wipe", "id": 1357240},
+  {"text": "取り込む", "reading": "とりこむ", "topic": "chores", "gloss": "to take in (laundry)", "id": 1326720},
+  {"text": "散らかす", "reading": "ちらかす", "topic": "chores", "gloss": "to make a mess", "id": 1303420},
+  {"text": "皿洗い", "reading": "さらあらい", "topic": "chores", "gloss": "washing the dishes", "id": 1299690},
+  {"text": "ごみ", "reading": "ごみ", "topic": "chores", "gloss": "rubbish; garbage", "id": 1369900},
+  {"text": "整理", "reading": "せいり", "topic": "chores", "gloss": "sorting; putting in order", "id": 1376250},
+  {"text": "分担", "reading": "ぶんたん", "topic": "chores", "gloss": "division of work", "id": 1503950},
+  {"text": "当番", "reading": "とうばん", "topic": "chores", "gloss": "turn (on duty)", "id": 1449220},
+  {"text": "家計", "reading": "かけい", "topic": "chores", "gloss": "household budget", "id": 1191910},
+  {"text": "節約", "reading": "せつやく", "topic": "chores", "gloss": "saving; economizing", "id": 1386350},
+  {"text": "料理", "reading": "りょうり", "topic": "cooking", "gloss": "cooking; dish", "id": 1554310},
+  {"text": "手料理", "reading": "てりょうり", "topic": "cooking", "gloss": "home cooking", "id": 1328420},
+  {"text": "献立", "reading": "こんだて", "topic": "cooking", "gloss": "menu (for a meal)", "id": 1258500},
+  {"text": "作る", "reading": "つくる", "topic": "cooking", "gloss": "to make", "id": 1597890},
+  {"text": "切る", "reading": "きる", "topic": "cooking", "gloss": "to cut", "id": 1384830},
+  {"text": "焼く", "reading": "やく", "topic": "cooking", "gloss": "to grill; to bake", "id": 1350600},
+  {"text": "煮る", "reading": "にる", "topic": "cooking", "gloss": "to simmer", "id": 1322540},
+  {"text": "炒める", "reading": "いためる", "topic": "cooking", "gloss": "to stir-fry", "id": 1568920},
+  {"text": "揚げる", "reading": "あげる", "topic": "cooking", "gloss": "to deep-fry", "id": 2864817},
+  {"text": "茹でる", "reading": "ゆでる", "topic": "cooking", "gloss": "to boil", "id": 1571470},
+  {"text": "下ごしらえ", "reading": "したごしらえ", "topic": "cooking", "gloss": "preparation (of ingredients)", "id": 1186630},
+  {"text": "味付け", "reading": "あじつけ", "topic": "cooking", "gloss": "seasoning", "id": 1526980},
+  {"text": "味見", "reading": "あじみ", "topic": "cooking", "gloss": "tasting", "id": 1722300},
+  {"text": "盛り付ける", "reading": "もりつける", "topic": "cooking", "gloss": "to arrange food on a plate", "id": 1848860},
+  {"text": "並べる", "reading": "ならべる", "topic": "cooking", "gloss": "to line up; to set out", "id": 1508390},
+  {"text": "食卓", "reading": "しょくたく", "topic": "cooking", "gloss": "dining table", "id": 1358530},
+  {"text": "包丁", "reading": "ほうちょう", "topic": "kitchen & tableware", "gloss": "kitchen knife", "id": 1515530},
+  {"text": "まな板", "reading": "まないた", "topic": "kitchen & tableware", "gloss": "cutting board", "id": 1604140},
+  {"text": "鍋", "reading": "なべ", "topic": "kitchen & tableware", "gloss": "pot", "id": 1459720},
+  {"text": "フライパン", "reading": "フライパン", "topic": "kitchen & tableware", "gloss": "frying pan", "id": 1111160},
+  {"text": "箸", "reading": "はし", "topic": "kitchen & tableware", "gloss": "chopsticks", "id": 1476410},
+  {"text": "茶碗", "reading": "ちゃわん", "topic": "kitchen & tableware", "gloss": "rice bowl", "id": 1597530},
+  {"text": "皿", "reading": "さら", "topic": "kitchen & tableware", "gloss": "plate", "id": 1299680},
+  {"text": "調味料", "reading": "ちょうみりょう", "topic": "kitchen & tableware", "gloss": "seasoning; condiment", "id": 1429290},
+  {"text": "醤油", "reading": "しょうゆ", "topic": "kitchen & tableware", "gloss": "soy sauce", "id": 1595020},
+  {"text": "砂糖", "reading": "さとう", "topic": "kitchen & tableware", "gloss": "sugar", "id": 1291600},
+  {"text": "塩", "reading": "しお", "topic": "kitchen & tableware", "gloss": "salt", "id": 1576630},
+  {"text": "ご飯", "reading": "ごはん", "topic": "meals", "gloss": "cooked rice; meal", "id": 1270590},
+  {"text": "味噌汁", "reading": "みそしる", "topic": "meals", "gloss": "miso soup", "id": 1527050},
+  {"text": "漬物", "reading": "つけもの", "topic": "meals", "gloss": "pickles", "id": 1433700},
+  {"text": "お茶", "reading": "おちゃ", "topic": "meals", "gloss": "tea", "id": 1002430},
+  {"text": "弁当", "reading": "べんとう", "topic": "meals", "gloss": "boxed lunch", "id": 1513060},
+  {"text": "朝ご飯", "reading": "あさごはん", "topic": "meals", "gloss": "breakfast", "id": 1586330},
+  {"text": "おやつ", "reading": "おやつ", "topic": "meals", "gloss": "snack", "id": 1589430},
+  {"text": "お代わり", "reading": "おかわり", "topic": "meals", "gloss": "second helping", "id": 1612800},
+  {"text": "残す", "reading": "のこす", "topic": "meals", "gloss": "to leave (food)", "id": 1600260},
+  {"text": "買い物", "reading": "かいもの", "topic": "groceries", "gloss": "shopping", "id": 1589730},
+  {"text": "スーパー", "reading": "スーパー", "topic": "groceries", "gloss": "supermarket", "id": 1066710},
+  {"text": "八百屋", "reading": "やおや", "topic": "groceries", "gloss": "greengrocer", "id": 1476960},
+  {"text": "野菜", "reading": "やさい", "topic": "groceries", "gloss": "vegetable", "id": 1537370},
+  {"text": "果物", "reading": "くだもの", "topic": "groceries", "gloss": "fruit", "id": 1193060},
+  {"text": "肉", "reading": "にく", "topic": "groceries", "gloss": "meat", "id": 1463520},
+  {"text": "魚", "reading": "さかな", "topic": "groceries", "gloss": "fish", "id": 1578010},
+  {"text": "卵", "reading": "たまご", "topic": "groceries", "gloss": "egg", "id": 1549140},
+  {"text": "牛乳", "reading": "ぎゅうにゅう", "topic": "groceries", "gloss": "milk", "id": 1231590},
+  {"text": "豆腐", "reading": "とうふ", "topic": "groceries", "gloss": "tofu", "id": 1450070},
+  {"text": "米", "reading": "こめ", "topic": "groceries", "gloss": "rice (uncooked)", "id": 1508750},
+  {"text": "値段", "reading": "ねだん", "topic": "groceries", "gloss": "price", "id": 1600160},
+  {"text": "特売", "reading": "とくばい", "topic": "groceries", "gloss": "special sale", "id": 1455250},
+  {"text": "賞味期限", "reading": "しょうみきげん", "topic": "groceries", "gloss": "best-before date", "id": 1351980},
+  {"text": "買い置き", "reading": "かいおき", "topic": "groceries", "gloss": "stocking up", "id": 1753010},
+  {"text": "レジ袋", "reading": "レジぶくろ", "topic": "groceries", "gloss": "plastic shopping bag", "id": 1648050},
+  {"text": "赤ちゃん", "reading": "あかちゃん", "topic": "babies & childcare", "gloss": "baby", "id": 1383260},
+  {"text": "育児", "reading": "いくじ", "topic": "babies & childcare", "gloss": "childcare", "id": 1160630},
+  {"text": "子育て", "reading": "こそだて", "topic": "babies & childcare", "gloss": "child-rearing", "id": 1307790},
+  {"text": "抱っこ", "reading": "だっこ", "topic": "babies & childcare", "gloss": "carrying (a child) in one's arms", "id": 1516410},
+  {"text": "おむつ", "reading": "おむつ", "topic": "babies & childcare", "gloss": "nappy; diaper", "id": 1270830},
+  {"text": "離乳食", "reading": "りにゅうしょく", "topic": "babies & childcare", "gloss": "baby food", "id": 1821580},
+  {"text": "昼寝", "reading": "ひるね", "topic": "babies & childcare", "gloss": "nap", "id": 1426370},
+  {"text": "泣く", "reading": "なく", "topic": "babies & childcare", "gloss": "to cry", "id": 1229840},
+  {"text": "世話", "reading": "せわ", "topic": "babies & childcare", "gloss": "care; looking after", "id": 1374300},
+  {"text": "面倒を見る", "reading": "めんどうをみる", "topic": "babies & childcare", "gloss": "to look after", "id": 2134390},
+  {"text": "預ける", "reading": "あずける", "topic": "babies & childcare", "gloss": "to leave (a child) in someone's care", "id": 1544990},
+  {"text": "保育園", "reading": "ほいくえん", "topic": "babies & childcare", "gloss": "daycare centre", "id": 1513300},
+  {"text": "幼稚園", "reading": "ようちえん", "topic": "babies & childcare", "gloss": "kindergarten", "id": 1545260},
+  {"text": "迎え", "reading": "むかえ", "topic": "babies & childcare", "gloss": "pick-up; meeting", "id": 1253180},
+  {"text": "送り迎え", "reading": "おくりむかえ", "topic": "babies & childcare", "gloss": "dropping off and picking up", "id": 1709670},
+  {"text": "遊ぶ", "reading": "あそぶ", "topic": "raising kids", "gloss": "to play", "id": 1542160},
+  {"text": "叱る", "reading": "しかる", "topic": "raising kids", "gloss": "to scold", "id": 1319580},
+  {"text": "褒める", "reading": "ほめる", "topic": "raising kids", "gloss": "to praise", "id": 1603550},
+  {"text": "甘やかす", "reading": "あまやかす", "topic": "raising kids", "gloss": "to spoil (a child)", "id": 1213470},
+  {"text": "躾", "reading": "しつけ", "topic": "raising kids", "gloss": "discipline; upbringing", "id": 1573410},
+  {"text": "成長", "reading": "せいちょう", "topic": "raising kids", "gloss": "growth", "id": 1375790},
+  {"text": "反抗期", "reading": "はんこうき", "topic": "raising kids", "gloss": "rebellious phase", "id": 1680250},
+  {"text": "お小遣い", "reading": "おこづかい", "topic": "raising kids", "gloss": "pocket money", "id": 2408310},
+  {"text": "保護者", "reading": "ほごしゃ", "topic": "raising kids", "gloss": "parent; guardian", "id": 1513630},
+  {"text": "小学校", "reading": "しょうがっこう", "topic": "school-age kids", "gloss": "elementary school", "id": 1347870},
+  {"text": "通う", "reading": "かよう", "topic": "school-age kids", "gloss": "to attend (regularly)", "id": 1432850},
+  {"text": "宿題", "reading": "しゅくだい", "topic": "school-age kids", "gloss": "homework", "id": 1337270},
+  {"text": "ランドセル", "reading": "ランドセル", "topic": "school-age kids", "gloss": "school backpack", "id": 1140220},
+  {"text": "塾", "reading": "じゅく", "topic": "school-age kids", "gloss": "cram school", "id": 1337780},
+  {"text": "習い事", "reading": "ならいごと", "topic": "school-age kids", "gloss": "lessons (after school)", "id": 1642710},
+  {"text": "入学式", "reading": "にゅうがくしき", "topic": "school-age kids", "gloss": "entrance ceremony", "id": 1465910},
+  {"text": "運動会", "reading": "うんどうかい", "topic": "school-age kids", "gloss": "sports day", "id": 1172940},
+  {"text": "授業参観", "reading": "じゅぎょうさんかん", "topic": "school-age kids", "gloss": "open class day for parents", "id": 2222720},
+  {"text": "正月", "reading": "しょうがつ", "topic": "new year & obon", "gloss": "New Year", "id": 1377030},
+  {"text": "大晦日", "reading": "おおみそか", "topic": "new year & obon", "gloss": "New Year's Eve", "id": 1413190},
+  {"text": "年末", "reading": "ねんまつ", "topic": "new year & obon", "gloss": "end of the year", "id": 1469210},
+  {"text": "帰省", "reading": "きせい", "topic": "new year & obon", "gloss": "going home (for the holidays)", "id": 1221390},
+  {"text": "おせち料理", "reading": "おせちりょうり", "topic": "new year & obon", "gloss": "New Year's food", "id": 1270460},
+  {"text": "お年玉", "reading": "おとしだま", "topic": "new year & obon", "gloss": "New Year's money gift", "id": 1270580},
+  {"text": "年賀状", "reading": "ねんがじょう", "topic": "new year & obon", "gloss": "New Year's card", "id": 1468250},
+  {"text": "初詣", "reading": "はつもうで", "topic": "new year & obon", "gloss": "first shrine visit of the year", "id": 1342720},
+  {"text": "お盆", "reading": "おぼん", "topic": "new year & obon", "gloss": "Obon festival", "id": 1002690},
+  {"text": "墓参り", "reading": "はかまいり", "topic": "new year & obon", "gloss": "visiting a grave", "id": 1584020},
+  {"text": "集まる", "reading": "あつまる", "topic": "new year & obon", "gloss": "to gather", "id": 1333550},
+  {"text": "誕生日", "reading": "たんじょうび", "topic": "celebrations", "gloss": "birthday", "id": 1419110},
+  {"text": "お祝い", "reading": "おいわい", "topic": "celebrations", "gloss": "celebration; congratulatory gift", "id": 1612770},
+  {"text": "七五三", "reading": "しちごさん", "topic": "celebrations", "gloss": "festival for children aged 7, 5 and 3", "id": 1319310},
+  {"text": "成人式", "reading": "せいじんしき", "topic": "celebrations", "gloss": "coming-of-age ceremony", "id": 1764080},
+  {"text": "還暦", "reading": "かんれき", "topic": "celebrations", "gloss": "60th birthday", "id": 1215160},
+  {"text": "結婚式", "reading": "けっこんしき", "topic": "celebrations", "gloss": "wedding", "id": 1254810},
+  {"text": "披露宴", "reading": "ひろうえん", "topic": "celebrations", "gloss": "wedding reception", "id": 1483500},
+  {"text": "結納", "reading": "ゆいのう", "topic": "celebrations", "gloss": "betrothal gift exchange", "id": 1254970},
+  {"text": "お土産", "reading": "おみやげ", "topic": "gifts", "gloss": "souvenir; gift", "id": 1002500},
+  {"text": "手土産", "reading": "てみやげ", "topic": "gifts", "gloss": "gift brought when visiting", "id": 1647790},
+  {"text": "お中元", "reading": "おちゅうげん", "topic": "gifts", "gloss": "midsummer gift", "id": 1270540},
+  {"text": "お歳暮", "reading": "おせいぼ", "topic": "gifts", "gloss": "year-end gift", "id": 1612670},
+  {"text": "和菓子", "reading": "わがし", "topic": "gifts", "gloss": "Japanese sweets", "id": 1562020},
+  {"text": "葬式", "reading": "そうしき", "topic": "memorials & funerals", "gloss": "funeral", "id": 1402160},
+  {"text": "法事", "reading": "ほうじ", "topic": "memorials & funerals", "gloss": "Buddhist memorial service", "id": 1805140},
+  {"text": "法要", "reading": "ほうよう", "topic": "memorials & funerals", "gloss": "Buddhist memorial service (formal)", "id": 1627580},
+  {"text": "四十九日", "reading": "しじゅうくにち", "topic": "memorials & funerals", "gloss": "49th-day memorial", "id": 1766940},
+  {"text": "命日", "reading": "めいにち", "topic": "memorials & funerals", "gloss": "anniversary of a death", "id": 1532120},
+  {"text": "喪服", "reading": "もふく", "topic": "memorials & funerals", "gloss": "mourning clothes", "id": 1399340},
+  {"text": "香典", "reading": "こうでん", "topic": "memorials & funerals", "gloss": "condolence money", "id": 1283090},
+  {"text": "御仏前", "reading": "ごぶつぜん", "topic": "memorials & funerals", "gloss": "offering (written on the envelope)", "id": 2122540},
+  {"text": "焼香", "reading": "しょうこう", "topic": "memorials & funerals", "gloss": "burning incense", "id": 1619180},
+  {"text": "線香", "reading": "せんこう", "topic": "memorials & funerals", "gloss": "incense stick", "id": 1391840},
+  {"text": "冥福", "reading": "めいふく", "topic": "memorials & funerals", "gloss": "happiness in the next world", "id": 1531310},
+  {"text": "ご愁傷様", "reading": "ごしゅうしょうさま", "topic": "memorials & funerals", "gloss": "my condolences", "category": "keigo", "note": "formal set phrase", "id": 2407660},
+  {"text": "お邪魔します", "reading": "おじゃまします", "topic": "visiting etiquette", "gloss": "excuse me for intruding (entering a home)", "note": "said when entering someone's home", "id": 1002050},
+  {"text": "つまらない物ですが", "reading": "つまらないものですが", "topic": "visiting etiquette", "gloss": "it's only a small thing, but...", "note": "humble phrase when giving a gift", "id": 2140470},
+  {"text": "お構いなく", "reading": "おかまいなく", "topic": "visiting etiquette", "gloss": "please don't go to any trouble", "id": 1001900},
+  {"text": "遠慮", "reading": "えんりょ", "topic": "visiting etiquette", "gloss": "holding back; reserve", "id": 1178450},
+  {"text": "遠慮なく", "reading": "えんりょなく", "topic": "visiting etiquette", "gloss": "without hesitation", "id": 1178460},
+  {"text": "気を遣う", "reading": "きをつかう", "topic": "visiting etiquette", "gloss": "to be considerate; to worry about", "id": 1591980},
+  {"text": "気遣い", "reading": "きづかい", "topic": "visiting etiquette", "gloss": "consideration; concern", "id": 1222140},
+  {"text": "お世話になる", "reading": "おせわになる", "topic": "visiting etiquette", "gloss": "to be indebted; to be looked after", "id": 1002260},
+  {"text": "お世話様", "reading": "おせわさま", "topic": "visiting etiquette", "gloss": "thank you for your help", "id": 2151620},
+  {"text": "恐れ入ります", "reading": "おそれいります", "topic": "visiting etiquette", "gloss": "I'm sorry to trouble you; thank you", "note": "very polite", "id": 2863193},
+  {"text": "お陰様で", "reading": "おかげさまで", "topic": "visiting etiquette", "gloss": "thanks to you (fine, thank you)", "id": 1270220},
+  {"text": "お久しぶり", "reading": "おひさしぶり", "topic": "visiting etiquette", "gloss": "long time no see", "id": 2222180},
+  {"text": "失礼します", "reading": "しつれいします", "topic": "visiting etiquette", "gloss": "excuse me", "id": 2276200},
+  {"text": "よろしくお願いします", "reading": "よろしくおねがいします", "topic": "visiting etiquette", "gloss": "please treat me well; nice to meet you", "id": 2133750},
+  {"text": "明けましておめでとうございます", "reading": "あけましておめでとうございます", "topic": "visiting etiquette", "gloss": "Happy New Year", "id": 1532270},
+  {"text": "いただきます", "reading": "いただきます", "topic": "mealtime & daily greetings", "gloss": "(said before eating)", "id": 1410800},
+  {"text": "ご馳走様", "reading": "ごちそうさま", "topic": "mealtime & daily greetings", "gloss": "thank you for the meal (said after eating)", "id": 1270520},
+  {"text": "お粗末様", "reading": "おそまつさま", "topic": "mealtime & daily greetings", "gloss": "it was nothing (reply to thanks for a meal)", "note": "said by the host", "id": 2871687},
+  {"text": "ただいま", "reading": "ただいま", "topic": "mealtime & daily greetings", "gloss": "I'm home", "id": 1538960},
+  {"text": "お帰りなさい", "reading": "おかえりなさい", "topic": "mealtime & daily greetings", "gloss": "welcome home", "id": 1001740},
+  {"text": "行ってきます", "reading": "いってきます", "topic": "mealtime & daily greetings", "gloss": "I'm off (and will be back)", "id": 2020140},
+  {"text": "行ってらっしゃい", "reading": "いってらっしゃい", "topic": "mealtime & daily greetings", "gloss": "see you later (take care)", "id": 2088750},
+  {"text": "お休みなさい", "reading": "おやすみなさい", "topic": "mealtime & daily greetings", "gloss": "good night", "id": 1001780},
+  {"text": "お先に", "reading": "おさきに", "topic": "mealtime & daily greetings", "gloss": "before you; ahead (of you)", "id": 1002280},
+  {"text": "お大事に", "reading": "おだいじに", "topic": "mealtime & daily greetings", "gloss": "take care (of yourself)", "id": 1002390}
+ ],
+ "scenarios": [
+  {
+   "id": "family-sc-001",
+   "titleEn": "First visit to your partner's parents",
+   "titleJa": "恋人の両親の家へ初訪問",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "in-laws",
+   "register": "polite",
+   "setting": "You arrive at your partner Kenta's family home for the first time. His mother, Kazuko, opens the door and shows you into the living room.",
+   "learnerRole": "Emma, Kenta's partner, meeting his parents for the first time",
+   "partnerRole": "Kazuko, Kenta's mother (60s)",
+   "goals": [
+    "Introduce yourself politely",
+    "Use the right phrase when entering the house",
+    "Decline fuss politely",
+    "Talk briefly about your job"
+   ],
+   "vocabulary": [
+    "お邪魔します",
+    "失礼します",
+    "スリッパ",
+    "居間",
+    "座布団",
+    "お構いなく",
+    "よろしくお願いします"
+   ],
+   "phrases": [
+    "はじめまして。〜と申します。",
+    "お邪魔します。",
+    "どうぞお構いなく。",
+    "こちらこそ、よろしくお願いいたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃい。遠いところ、よく来てくれましたね。",
+     "partnerEn": "Welcome. Thank you for coming all this way.",
+     "intent": "Greet her, give your name humbly and say the phrase for entering a home.",
+     "sample": "はじめまして、エマと申します。お邪魔します。"
+    },
+    {
+     "partnerJa": "どうぞ、このスリッパを使ってくださいね。",
+     "partnerEn": "Please use these slippers.",
+     "intent": "Thank her as you step inside.",
+     "sample": "ありがとうございます。失礼します。"
+    },
+    {
+     "partnerJa": "さあ、居間へどうぞ。座布団に座ってください。",
+     "partnerEn": "Come into the living room. Please sit on the cushion.",
+     "intent": "Thank her and say something nice about the house.",
+     "sample": "ありがとうございます。すてきなお宅ですね。"
+    },
+    {
+     "partnerJa": "まあ、古い家ですよ。お茶を入れますから、ちょっと待っていてね。",
+     "partnerEn": "Oh, it's an old house. I'll make some tea, so wait a moment.",
+     "intent": "Tell her politely not to go to any trouble.",
+     "sample": "どうぞお構いなく。"
+    },
+    {
+     "partnerJa": "健太から、エマさんのことはいろいろ聞いていますよ。お仕事は何をしているの？",
+     "partnerEn": "Kenta has told me a lot about you. What do you do for work?",
+     "intent": "Say (humbly) that you teach at an English school.",
+     "sample": "英語学校で教師をしております。"
+    },
+    {
+     "partnerJa": "そう。これからも健太のこと、よろしくお願いしますね。",
+     "partnerEn": "I see. Please keep looking after Kenta.",
+     "intent": "Reply that the pleasure is yours and that you're happy to meet her.",
+     "sample": "こちらこそ、よろしくお願いいたします。今日はお会いできてうれしいです。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-002",
+   "titleEn": "Handing over a gift",
+   "titleJa": "手土産を渡す",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "in-laws",
+   "register": "polite",
+   "setting": "Once you are seated in your partner's parents' living room, you give his mother the sweets you brought from your home country.",
+   "learnerRole": "the visiting partner",
+   "partnerRole": "the partner's mother",
+   "goals": [
+    "Hand over a gift with the humble set phrase",
+    "Explain what the gift is",
+    "Respond to thanks"
+   ],
+   "vocabulary": [
+    "手土産",
+    "つまらない物ですが",
+    "気を遣う",
+    "お土産"
+   ],
+   "phrases": [
+    "つまらないものですが、どうぞ。",
+    "お口に合うといいんですが。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "今日はゆっくりしていってくださいね。",
+     "partnerEn": "Please make yourself at home today.",
+     "intent": "Hand over your gift with the humble gift-giving phrase.",
+     "sample": "あの、これ、つまらないものですが、どうぞ。"
+    },
+    {
+     "partnerJa": "あら、そんなに気を遣わなくてもいいのに。何かしら。",
+     "partnerEn": "Oh, you didn't need to go to such trouble. What is it?",
+     "intent": "Say it's sweets from your country and you hope she likes them.",
+     "sample": "私の国のお菓子です。お口に合うといいんですが。"
+    },
+    {
+     "partnerJa": "まあ、うれしい。お父さんも甘いものが大好きなのよ。",
+     "partnerEn": "Oh, how lovely. Dad loves sweet things too.",
+     "intent": "Say you heard that from your partner.",
+     "sample": "はい、健太さんから聞きました。"
+    },
+    {
+     "partnerJa": "じゃあ、後でみんなでいただきましょうね。",
+     "partnerEn": "Then let's all have some later.",
+     "intent": "Agree happily.",
+     "sample": "はい、ぜひ。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-003",
+   "titleEn": "Helping in the kitchen",
+   "titleJa": "台所で手伝う",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "cooking",
+   "register": "polite",
+   "setting": "Your mother-in-law starts making dinner. You offer to help, get a cutting job, taste the miso soup and set the table.",
+   "learnerRole": "the son- or daughter-in-law",
+   "partnerRole": "the mother-in-law",
+   "goals": [
+    "Offer help",
+    "Ask how to do a task",
+    "Compliment the cooking",
+    "Ask where things are"
+   ],
+   "vocabulary": [
+    "手伝う",
+    "包丁",
+    "まな板",
+    "味噌汁",
+    "味見",
+    "皿",
+    "箸",
+    "棚"
+   ],
+   "phrases": [
+    "何かお手伝いしましょうか。",
+    "〜を使ってもいいですか。",
+    "〜はどこにありますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "さあ、晩ご飯の準備をしなくちゃ。",
+     "partnerEn": "Right, I need to get dinner ready.",
+     "intent": "Offer to help.",
+     "sample": "何かお手伝いしましょうか。"
+    },
+    {
+     "partnerJa": "あら、いいの？じゃあ、この大根を切ってくれる？",
+     "partnerEn": "Oh, really? Then could you cut this daikon?",
+     "intent": "Ask how big the pieces should be.",
+     "sample": "はい。どのぐらいの大きさに切ればいいですか。"
+    },
+    {
+     "partnerJa": "味噌汁に入れるから、薄く切ってちょうだい。包丁はそこにあるわよ。",
+     "partnerEn": "It's for the miso soup, so slice it thinly. The knife is over there.",
+     "intent": "Say you understand and ask if you may use this cutting board.",
+     "sample": "わかりました。このまな板を使ってもいいですか。"
+    },
+    {
+     "partnerJa": "ええ、どうぞ。あら、上手ね。家でもよく料理するの？",
+     "partnerEn": "Yes, go ahead. Oh, you're good at this. Do you cook a lot at home?",
+     "intent": "Say you cook sometimes, but only simple things.",
+     "sample": "ときどきします。でも、簡単なものばかりです。"
+    },
+    {
+     "partnerJa": "じゃあ、この味噌汁、ちょっと味見してみて。",
+     "partnerEn": "Then have a little taste of this miso soup.",
+     "intent": "Taste it and compliment it.",
+     "sample": "とてもおいしいです。だしがよく効いていますね。"
+    },
+    {
+     "partnerJa": "うちの味なのよ。今度、作り方を教えてあげるわね。",
+     "partnerEn": "It's our family's flavour. I'll teach you how to make it sometime.",
+     "intent": "Accept eagerly.",
+     "sample": "ぜひ教えてください。"
+    },
+    {
+     "partnerJa": "じゃあ、お皿を並べてくれる？お箸も出してね。",
+     "partnerEn": "Then could you set out the plates? Put out the chopsticks too.",
+     "intent": "Ask which shelf the plates are on.",
+     "sample": "はい。お皿はどの棚にありますか。"
+    },
+    {
+     "partnerJa": "右の棚の上の段よ。ありがとう、助かるわ。",
+     "partnerEn": "The top shelf on the right. Thanks, that's a big help.",
+     "intent": "Say it's nothing.",
+     "sample": "いいえ、これぐらい何でもないです。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-004",
+   "titleEn": "Offering and declining more food",
+   "titleJa": "お代わりをすすめられる",
+   "jlpt": 5,
+   "ilr": "0+",
+   "category": "meals",
+   "register": "polite",
+   "setting": "Dinner at your in-laws'. Your mother-in-law keeps offering more food; accept once, then decline politely.",
+   "learnerRole": "the guest",
+   "partnerRole": "the mother-in-law (host)",
+   "goals": [
+    "Accept a small second helping",
+    "Say the food is delicious",
+    "Decline politely because you are full",
+    "Thank the host for the meal"
+   ],
+   "vocabulary": [
+    "お代わり",
+    "いただきます",
+    "遠慮",
+    "ご馳走様"
+   ],
+   "phrases": [
+    "少しだけお願いします。",
+    "もうおなかいっぱいです。",
+    "ご馳走様でした。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "もっと食べてね。ご飯のお代わりは？",
+     "partnerEn": "Eat more. Would you like more rice?",
+     "intent": "Accept, but only a little.",
+     "sample": "じゃあ、少しだけお願いします。"
+    },
+    {
+     "partnerJa": "はい、どうぞ。この煮物も食べてね。",
+     "partnerEn": "Here you are. Have some of this simmered dish too.",
+     "intent": "Take some and say it is delicious.",
+     "sample": "いただきます。とてもおいしいです。"
+    },
+    {
+     "partnerJa": "よかった。天ぷらもまだあるわよ。",
+     "partnerEn": "Good. There's still some tempura too.",
+     "intent": "Decline politely: you are full.",
+     "sample": "ありがとうございます。でも、もうおなかいっぱいです。"
+    },
+    {
+     "partnerJa": "そう？遠慮しないでね。",
+     "partnerEn": "Really? Don't hold back.",
+     "intent": "Say you are not holding back and thank her for the meal.",
+     "sample": "遠慮していません。本当にご馳走様でした。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-005",
+   "titleEn": "A phone call from your mother-in-law",
+   "titleJa": "義母からの電話",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "in-laws",
+   "register": "polite",
+   "setting": "Your mother-in-law calls to ask about your family's plans to come home for Obon next month.",
+   "learnerRole": "the son- or daughter-in-law",
+   "partnerRole": "the mother-in-law, calling from the countryside",
+   "goals": [
+    "Answer the phone politely",
+    "Give dates and length of stay",
+    "Reassure her about her son",
+    "End the call politely"
+   ],
+   "vocabulary": [
+    "お盆",
+    "墓参り",
+    "泊まる",
+    "気遣い",
+    "失礼します"
+   ],
+   "phrases": [
+    "〜日に伺う予定です。",
+    "〜させていただこうと思っています。",
+    "お体に気をつけてください。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "もしもし、和子です。今、ちょっといいかしら。",
+     "partnerEn": "Hello, it's Kazuko. Do you have a moment?",
+     "intent": "Greet her and say it's fine.",
+     "sample": "あ、お義母さん。こんにちは。はい、大丈夫です。"
+    },
+    {
+     "partnerJa": "来月のお盆のことなんだけど、いつごろこっちに来られる？",
+     "partnerEn": "It's about Obon next month. When can you come here?",
+     "intent": "Say you plan to visit on the 13th.",
+     "sample": "十三日に伺う予定です。"
+    },
+    {
+     "partnerJa": "そう、よかった。何日ぐらい泊まれるの？",
+     "partnerEn": "Oh good. How many nights can you stay?",
+     "intent": "Say you'd like to stay three nights.",
+     "sample": "三泊させていただこうと思っています。"
+    },
+    {
+     "partnerJa": "お墓参りは十四日にするつもりなの。一緒に行けるわよね。",
+     "partnerEn": "We're planning to visit the grave on the 14th. You can come with us, can't you?",
+     "intent": "Say yes, of course you'll go together.",
+     "sample": "はい、もちろんご一緒します。"
+    },
+    {
+     "partnerJa": "それから、健太は最近ちゃんとご飯を食べてる？忙しいみたいだけど。",
+     "partnerEn": "And is Kenta eating properly lately? He seems busy.",
+     "intent": "Reassure her that he is well and eating properly.",
+     "sample": "はい、元気にしています。毎日しっかり食べていますよ。"
+    },
+    {
+     "partnerJa": "それなら安心ね。何か欲しいものがあったら言ってね。",
+     "partnerEn": "That's a relief. Tell me if there's anything you want.",
+     "intent": "Thank her and say there's nothing in particular, so she needn't worry.",
+     "sample": "ありがとうございます。特にありませんので、お気遣いなく。"
+    },
+    {
+     "partnerJa": "じゃあ、また連絡するわね。体に気をつけてね。",
+     "partnerEn": "Well, I'll be in touch. Take care of yourself.",
+     "intent": "Wish her good health too and end the call politely.",
+     "sample": "お義母さんもお体に気をつけてください。失礼します。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-006",
+   "titleEn": "New Year's visit",
+   "titleJa": "お正月の挨拶",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "family events",
+   "register": "keigo",
+   "setting": "On January 2nd you and your children visit your spouse's parents. Your father-in-law greets you at the door.",
+   "learnerRole": "the son- or daughter-in-law",
+   "partnerRole": "the father-in-law",
+   "goals": [
+    "Give the formal New Year greeting",
+    "Thank him humbly for the children's New Year money",
+    "Accept an invitation to the first shrine visit"
+   ],
+   "vocabulary": [
+    "明けましておめでとうございます",
+    "正月",
+    "おせち料理",
+    "お年玉",
+    "初詣",
+    "お世話になる"
+   ],
+   "phrases": [
+    "明けましておめでとうございます。",
+    "本年もどうぞよろしくお願いいたします。",
+    "ご一緒させてください。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "おお、よく来たね。寒かっただろう。",
+     "partnerEn": "Ah, you made it. You must be cold.",
+     "intent": "Give the formal New Year greeting.",
+     "sample": "明けましておめでとうございます。今年もどうぞよろしくお願いいたします。"
+    },
+    {
+     "partnerJa": "おめでとう。こちらこそよろしく。さあ、上がって。",
+     "partnerEn": "Happy New Year. Likewise. Come on in.",
+     "intent": "Say the entering phrase and offer the gift for everyone.",
+     "sample": "お邪魔します。これ、皆さんでどうぞ。"
+    },
+    {
+     "partnerJa": "ありがとう。おせちを用意してあるから、一緒に食べよう。",
+     "partnerEn": "Thank you. We've got osechi ready, so let's eat together.",
+     "intent": "Say you've been looking forward to it.",
+     "sample": "ありがとうございます。お義母さんのおせち料理、楽しみにしていました。"
+    },
+    {
+     "partnerJa": "子どもたちには、お年玉を用意してあるんだ。",
+     "partnerEn": "I've got some New Year money ready for the kids.",
+     "intent": "Thank him humbly on behalf of the children.",
+     "sample": "いつもすみません。子どもたちも喜びます。"
+    },
+    {
+     "partnerJa": "明日は初詣に行くけど、一緒に来るかい？",
+     "partnerEn": "We're going on the first shrine visit tomorrow. Will you come along?",
+     "intent": "Accept politely.",
+     "sample": "はい、ぜひご一緒させてください。"
+    },
+    {
+     "partnerJa": "じゃあ、朝十時に出よう。今夜はゆっくり休みなさい。",
+     "partnerEn": "Then let's leave at ten. Get some rest tonight.",
+     "intent": "Thank him for having you.",
+     "sample": "ありがとうございます。お世話になります。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-007",
+   "titleEn": "Talking childcare with grandma",
+   "titleJa": "祖母と子育ての相談",
+   "jlpt": 2,
+   "ilr": "2",
+   "category": "childcare",
+   "register": "polite",
+   "setting": "You are going back to work and your one-year-old will start daycare. Your mother-in-law has opinions, and also offers to help with pick-ups.",
+   "learnerRole": "the parent (the mother-in-law's son- or daughter-in-law)",
+   "partnerRole": "the grandmother (mother-in-law)",
+   "goals": [
+    "Explain the daycare plan calmly",
+    "Accept help with pick-ups",
+    "Make a polite request about snacks",
+    "Pass on allergy information"
+   ],
+   "vocabulary": [
+    "保育園",
+    "預ける",
+    "迎え",
+    "孫",
+    "面倒を見る",
+    "甘やかす",
+    "夕ご飯"
+   ],
+   "phrases": [
+    "〜ことにしました。",
+    "〜ていただけますか。",
+    "一つだけお願いがあるんですが。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "来月から仕事に戻るんですって？翔太はどうするの？",
+     "partnerEn": "I hear you're going back to work next month. What about Shota?",
+     "intent": "Explain that you've decided to leave him at a nearby daycare from April.",
+     "sample": "はい。四月から近くの保育園に預けることにしました。"
+    },
+    {
+     "partnerJa": "保育園ね。まだ一歳なのに、かわいそうじゃない？",
+     "partnerEn": "Daycare, hm. Isn't that a shame when he's only one?",
+     "intent": "Explain calmly that many children start at one and the staff are very attentive.",
+     "sample": "最近は一歳から通う子も多いですし、先生方もとても丁寧なんです。"
+    },
+    {
+     "partnerJa": "そう……。お迎えは何時なの？",
+     "partnerEn": "I see... What time is pick-up?",
+     "intent": "Say it's by six, but on busy days you may not make it.",
+     "sample": "六時までです。ただ、忙しい日は間に合わないかもしれません。"
+    },
+    {
+     "partnerJa": "それなら、私が迎えに行ってもいいわよ。",
+     "partnerEn": "In that case, I could pick him up.",
+     "intent": "Thank her and ask if you could rely on her just on Tuesdays and Thursdays.",
+     "sample": "本当ですか。助かります。火曜日と木曜日だけお願いしてもいいですか。"
+    },
+    {
+     "partnerJa": "もちろん。孫の面倒を見るのは楽しいもの。",
+     "partnerEn": "Of course. Looking after my grandson is fun.",
+     "intent": "Say you have one request: no sweets before dinner.",
+     "sample": "ありがとうございます。一つだけお願いがあるんですが、夕ご飯の前にお菓子はあげないでいただけますか。"
+    },
+    {
+     "partnerJa": "あら、少しぐらいならいいじゃない。",
+     "partnerEn": "Oh, surely a little is fine.",
+     "intent": "Explain politely that he leaves his dinner if he has sweets.",
+     "sample": "そうなんですが、お菓子を食べると夕ご飯を残してしまうので……。"
+    },
+    {
+     "partnerJa": "わかったわ。甘やかしすぎないように気をつけるわね。",
+     "partnerEn": "All right. I'll be careful not to spoil him too much.",
+     "intent": "Thank her and mention he has an egg allergy.",
+     "sample": "ありがとうございます。あと、卵のアレルギーがあるので、それだけ注意してください。"
+    },
+    {
+     "partnerJa": "卵ね。メモしておくわ。ほかに気をつけることは？",
+     "partnerEn": "Eggs, got it. I'll write it down. Anything else to watch out for?",
+     "intent": "Say you will write out his daily routine and give it to her.",
+     "sample": "毎日の流れを紙に書いてお渡しします。"
+    },
+    {
+     "partnerJa": "助かるわ。お父さんにも見せておくわね。",
+     "partnerEn": "That helps. I'll show it to Grandpa too.",
+     "intent": "Say you'll bring Shota over this weekend.",
+     "sample": "今週末、一度翔太を連れて伺いますね。"
+    },
+    {
+     "partnerJa": "楽しみに待ってるわ。",
+     "partnerEn": "I'll look forward to it.",
+     "intent": "Close with sincere thanks.",
+     "sample": "本当にありがとうございます。よろしくお願いします。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-008",
+   "titleEn": "Splitting the chores",
+   "titleJa": "家事の分担",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "chores",
+   "register": "casual",
+   "setting": "Friday evening at home. Your spouse suggests cleaning the house together this weekend.",
+   "learnerRole": "one spouse",
+   "partnerRole": "the other spouse",
+   "goals": [
+    "Agree to share the housework",
+    "Choose a task",
+    "Offer to do the laundry",
+    "Check the rubbish collection day"
+   ],
+   "vocabulary": [
+    "掃除",
+    "家事",
+    "分担",
+    "風呂",
+    "洗濯",
+    "干す",
+    "ごみ",
+    "ベランダ"
+   ],
+   "phrases": [
+    "〜しようか。",
+    "〜をやるよ。",
+    "〜んだっけ？"
+   ],
+   "turns": [
+    {
+     "partnerJa": "ねえ、今週末、家の掃除しない？部屋が散らかってきたし。",
+     "partnerEn": "Hey, shall we clean the house this weekend? The rooms are getting messy.",
+     "intent": "Agree and suggest splitting the housework.",
+     "sample": "そうだね。家事を分担しようか。"
+    },
+    {
+     "partnerJa": "うん。じゃあ、お風呂とトイレ、どっちがいい？",
+     "partnerEn": "Okay. So, the bath or the toilet, which do you want?",
+     "intent": "Choose the bath.",
+     "sample": "お風呂をやるよ。"
+    },
+    {
+     "partnerJa": "ありがとう。私はトイレと玄関をやるね。洗濯はどうする？",
+     "partnerEn": "Thanks. I'll do the toilet and the entrance. What about laundry?",
+     "intent": "Say you'll wash and hang it out in the morning.",
+     "sample": "朝、洗濯して干しておくよ。"
+    },
+    {
+     "partnerJa": "助かる。雨が降りそうだったら、ベランダじゃなくて中に干してね。",
+     "partnerEn": "Great. If it looks like rain, hang it inside, not on the balcony.",
+     "intent": "Agree, and ask which day the rubbish goes out.",
+     "sample": "わかった。ごみは何曜日に出すんだっけ？"
+    },
+    {
+     "partnerJa": "燃えるごみは月曜日と木曜日だよ。",
+     "partnerEn": "Burnable rubbish is Monday and Thursday.",
+     "intent": "Say you'll put it out on Monday morning.",
+     "sample": "じゃあ、月曜日の朝、僕が出すね。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-009",
+   "titleEn": "Condolences at a memorial service",
+   "titleJa": "法事でのお悔やみ",
+   "jlpt": 2,
+   "ilr": "2",
+   "category": "family events",
+   "register": "keigo",
+   "setting": "You attend the 49th-day memorial service for your spouse's grandmother at a temple. Your spouse's uncle, the chief mourner, greets arriving guests.",
+   "learnerRole": "the grandson- or granddaughter-in-law",
+   "partnerRole": "the uncle, son of the deceased",
+   "goals": [
+    "Offer formal condolences",
+    "Hand over the offering envelope",
+    "Ask discreetly how to offer incense",
+    "Accept the invitation to the meal"
+   ],
+   "vocabulary": [
+    "法事",
+    "四十九日",
+    "御仏前",
+    "焼香",
+    "冥福",
+    "法要"
+   ],
+   "phrases": [
+    "心よりお悔やみ申し上げます。",
+    "心ばかりですが、御仏前にお供えください。",
+    "ご冥福をお祈りいたします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "本日はお忙しいところ、ありがとうございます。",
+     "partnerEn": "Thank you for coming today despite your busy schedule.",
+     "intent": "Thank him for the invitation and offer your condolences formally.",
+     "sample": "本日はお招きいただき、ありがとうございます。心よりお悔やみ申し上げます。"
+    },
+    {
+     "partnerJa": "遠くから、わざわざありがとうございます。母もきっと喜んでいると思います。",
+     "partnerEn": "Thank you for coming so far. I'm sure Mother would be pleased.",
+     "intent": "Hand over the envelope with the set phrase.",
+     "sample": "心ばかりですが、御仏前にお供えください。"
+    },
+    {
+     "partnerJa": "ご丁寧にありがとうございます。この後、お焼香をお願いいたします。",
+     "partnerEn": "That's very kind. Please offer incense afterwards.",
+     "intent": "Say it's your first time and ask quietly how to do it.",
+     "sample": "はい。初めてなので、やり方を教えていただけますか。"
+    },
+    {
+     "partnerJa": "前の方と同じようにすれば大丈夫ですよ。一回か二回で結構です。",
+     "partnerEn": "Just do as the person before you does. Once or twice is fine.",
+     "intent": "Thank him.",
+     "sample": "わかりました。ありがとうございます。"
+    },
+    {
+     "partnerJa": "法要の後、皆で食事をしますので、ぜひご一緒に。",
+     "partnerEn": "After the service we'll all have a meal together, so please join us.",
+     "intent": "Accept humbly.",
+     "sample": "ありがとうございます。ご一緒させていただきます。"
+    },
+    {
+     "partnerJa": "母は、あなたのことをよく話していましたよ。",
+     "partnerEn": "Mother often spoke about you.",
+     "intent": "Say she was always kind to you, and pray for her peace.",
+     "sample": "おばあ様にはいつも優しくしていただきました。ご冥福をお祈りいたします。"
+    }
+   ]
+  },
+  {
+   "id": "family-sc-010",
+   "titleEn": "Staying over at the in-laws'",
+   "titleJa": "義理の実家に泊まる",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "in-laws",
+   "register": "polite",
+   "setting": "You are spending the night at your spouse's parents' house. In the evening your mother-in-law explains the bath and bedding, and in the morning she greets you.",
+   "learnerRole": "the son- or daughter-in-law",
+   "partnerRole": "the mother-in-law",
+   "goals": [
+    "Handle the bath etiquette",
+    "Talk about the futon and blankets",
+    "Offer to help with breakfast",
+    "Politely decline an offer to do your laundry",
+    "Say good night and good morning"
+   ],
+   "vocabulary": [
+    "風呂",
+    "洗面所",
+    "布団",
+    "和室",
+    "押し入れ",
+    "洗濯物",
+    "お構いなく",
+    "お休みなさい"
+   ],
+   "phrases": [
+    "お先に失礼します。",
+    "お気遣いありがとうございます。",
+    "ぐっすり眠れました。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "お風呂、沸いたわよ。先に入って。",
+     "partnerEn": "The bath is ready. You go first.",
+     "intent": "Politely suggest she go first.",
+     "sample": "いえ、どうぞお先に入ってください。"
+    },
+    {
+     "partnerJa": "いいのいいの、お客さんが先よ。タオルは洗面所に置いてあるから。",
+     "partnerEn": "No, no, guests go first. There's a towel in the washroom.",
+     "intent": "Accept and thank her.",
+     "sample": "では、お先に失礼します。ありがとうございます。"
+    },
+    {
+     "partnerJa": "お湯はそのままにしておいてね。後でみんな入るから。",
+     "partnerEn": "Leave the water in the tub. Everyone will use it later.",
+     "intent": "Confirm you won't drain the water.",
+     "sample": "わかりました。お湯は抜かないようにします。"
+    },
+    {
+     "partnerJa": "お布団は和室に敷いておいたわ。寒くない？",
+     "partnerEn": "I've laid out your futon in the tatami room. Not cold?",
+     "intent": "Say it's fine and warm.",
+     "sample": "大丈夫です。とても暖かいです。"
+    },
+    {
+     "partnerJa": "毛布が足りなかったら、押し入れにあるから使ってね。",
+     "partnerEn": "If you need more blankets, there are some in the closet.",
+     "intent": "Thank her.",
+     "sample": "ありがとうございます。助かります。"
+    },
+    {
+     "partnerJa": "明日の朝ご飯は七時ごろでいいかしら。",
+     "partnerEn": "Is breakfast around seven tomorrow all right?",
+     "intent": "Agree and offer to help.",
+     "sample": "はい。私にも何か手伝わせてください。"
+    },
+    {
+     "partnerJa": "じゃあ、お味噌汁をお願いしようかな。",
+     "partnerEn": "Then maybe I'll ask you to do the miso soup.",
+     "intent": "Accept cheerfully.",
+     "sample": "はい、がんばります。"
+    },
+    {
+     "partnerJa": "朝はゆっくりでいいのよ。自分の家だと思ってね。",
+     "partnerEn": "Take your time in the morning. Think of this as your own home.",
+     "intent": "Thank her for her consideration.",
+     "sample": "お気遣いありがとうございます。"
+    },
+    {
+     "partnerJa": "洗濯物があったら、一緒に洗うから出しておいてね。",
+     "partnerEn": "If you have laundry, put it out and I'll wash it with ours.",
+     "intent": "Decline politely: it's only a little.",
+     "sample": "少しだけなので、大丈夫です。どうぞお構いなく。"
+    },
+    {
+     "partnerJa": "遠慮しなくていいのに。じゃあ、おやすみなさい。",
+     "partnerEn": "You needn't be shy. Well, good night.",
+     "intent": "Say good night.",
+     "sample": "おやすみなさい。"
+    },
+    {
+     "partnerJa": "おはよう。よく眠れた？",
+     "partnerEn": "Good morning. Did you sleep well?",
+     "intent": "Say good morning and that you slept soundly.",
+     "sample": "おはようございます。はい、ぐっすり眠れました。"
+    },
+    {
+     "partnerJa": "それはよかった。さあ、ご飯にしましょう。",
+     "partnerEn": "Good. Now, let's eat.",
+     "intent": "Say the phrase before eating.",
+     "sample": "いただきます。"
+    }
+   ]
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "family-dl-001",
+   "title": "Dinner at the in-laws'",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "meals",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "和子",
+     "voice": "female",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "エマ",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "エマさん、嫌いな食べ物はある？",
+     "en": "Emma, is there any food you don't like?"
+    },
+    {
+     "speaker": "B",
+     "ja": "いいえ、何でも食べられます。",
+     "en": "No, I can eat anything."
+    },
+    {
+     "speaker": "A",
+     "ja": "よかった。今日はすき焼きにしたのよ。",
+     "en": "Good. I made sukiyaki today."
+    },
+    {
+     "speaker": "B",
+     "ja": "わあ、すき焼き、大好きです。",
+     "en": "Wow, I love sukiyaki."
+    },
+    {
+     "speaker": "A",
+     "ja": "お肉がたくさんあるから、遠慮しないでね。",
+     "en": "There's lots of meat, so don't hold back.",
+     "gaps": [
+      "遠慮"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとうございます。いただきます。",
+     "en": "Thank you. Itadakimasu.",
+     "gaps": [
+      "いただきます"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "お代わりもあるわよ。",
+     "en": "There are second helpings too.",
+     "gaps": [
+      "お代わり"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ご馳走様でした。とてもおいしかったです。",
+     "en": "Thank you for the meal. It was delicious.",
+     "gaps": [
+      "ご馳走様"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What did the mother-in-law cook?",
+     "choices": [
+      "Tempura",
+      "Sukiyaki",
+      "Curry",
+      "Sushi"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Is there any food Emma can't eat?",
+     "choices": [
+      "No, she can eat anything",
+      "Yes, meat",
+      "Yes, raw egg"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "family-dl-002",
+   "title": "Who makes dinner tonight?",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "chores",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "健太",
+     "voice": "male",
+     "age": "young"
+    },
+    {
+     "id": "B",
+     "name": "美咲",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "今日の夕飯、僕が作るよ。",
+     "en": "I'll make dinner tonight."
+    },
+    {
+     "speaker": "B",
+     "ja": "ほんと？ありがとう。じゃあ、私は洗濯物を畳むね。",
+     "en": "Really? Thanks. Then I'll fold the laundry.",
+     "gaps": [
+      "洗濯物"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "冷蔵庫に何がある？",
+     "en": "What's in the fridge?",
+     "gaps": [
+      "冷蔵庫"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "卵と豆腐と、ねぎがあるよ。",
+     "en": "There are eggs, tofu and spring onions.",
+     "gaps": [
+      "豆腐"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "じゃあ、麻婆豆腐にしようかな。ご飯は炊いてある？",
+     "en": "Then maybe I'll make mapo tofu. Is the rice cooked?"
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、まだだ。炊飯器のスイッチ、入れておくね。",
+     "en": "Oh, not yet. I'll switch on the rice cooker.",
+     "gaps": [
+      "炊飯器"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "助かる。皿洗いは後で一緒にやろう。",
+     "en": "Thanks. Let's do the dishes together later.",
+     "gaps": [
+      "皿洗い"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "うん、そうしよう。",
+     "en": "Yeah, let's."
+    }
+   ],
+   "questions": [
+    {
+     "question": "Who is cooking dinner?",
+     "choices": [
+      "Kenta",
+      "Misaki",
+      "Both of them",
+      "Nobody; they order delivery"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What had not been done yet?",
+     "choices": [
+      "Buying tofu",
+      "Starting the rice cooker",
+      "Folding the laundry"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "family-dl-003",
+   "title": "Grandpa and the homework",
+   "jlpt": 5,
+   "ilr": "0+",
+   "topic": "school-age kids",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "おじいちゃん",
+     "voice": "male",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "陽太",
+     "voice": "male",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "陽太、今日は学校で何をしたの？",
+     "en": "Yota, what did you do at school today?",
+     "gaps": [
+      "学校"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "体育でサッカーをしたよ。それから、宿題もあるんだ。",
+     "en": "We played soccer in PE. And I've got homework.",
+     "gaps": [
+      "宿題"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そうか。宿題はもう終わった？",
+     "en": "I see. Have you finished your homework yet?"
+    },
+    {
+     "speaker": "B",
+     "ja": "まだ。おじいちゃん、手伝って。",
+     "en": "Not yet. Grandpa, help me."
+    },
+    {
+     "speaker": "A",
+     "ja": "いいよ。でも、先に手を洗っておいで。おやつもあるよ。",
+     "en": "Okay. But go and wash your hands first. There's a snack too.",
+     "gaps": [
+      "おやつ"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "やった！すぐ洗ってくる。",
+     "en": "Yay! I'll go wash them now."
+    }
+   ],
+   "questions": [
+    {
+     "question": "What did Yota do in PE?",
+     "choices": [
+      "Baseball",
+      "Soccer",
+      "Swimming"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What does Grandpa tell him to do first?",
+     "choices": [
+      "Do his homework",
+      "Eat his snack",
+      "Wash his hands"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "family-dl-004",
+   "title": "Planning the Obon visit",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "family events",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "和子",
+     "voice": "female",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "ダニエル",
+     "voice": "male",
+     "age": "adult"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "もしもし、ダニエルさん？和子です。",
+     "en": "Hello, Daniel? It's Kazuko."
+    },
+    {
+     "speaker": "B",
+     "ja": "あ、お義母さん、こんばんは。いつもお世話になっております。",
+     "en": "Oh, good evening, Mother. Thank you for everything, as always.",
+     "gaps": [
+      "世話"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "お盆はこっちに帰ってこられそう？",
+     "en": "Do you think you can come back here for Obon?",
+     "gaps": [
+      "お盆"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、十二日から三日間、休みが取れました。",
+     "en": "Yes, I got three days off from the 12th."
+    },
+    {
+     "speaker": "A",
+     "ja": "よかった。親戚もみんな集まるのよ。",
+     "en": "Great. All the relatives are getting together too.",
+     "gaps": [
+      "親戚"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "そうですか。何か持っていくものはありますか。",
+     "en": "Really? Is there anything I should bring?"
+    },
+    {
+     "speaker": "A",
+     "ja": "何もいらないわよ。気を遣わないでね。",
+     "en": "You don't need anything. Don't go to any trouble."
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとうございます。美咲さんと相談して、お土産を選びます。",
+     "en": "Thank you. I'll talk with Misaki and choose a gift.",
+     "gaps": [
+      "お土産"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "じゃあ、墓参りの時間はまた連絡するわね。",
+     "en": "Then I'll let you know the time for the grave visit later.",
+     "gaps": [
+      "墓参り"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、お待ちしています。失礼します。",
+     "en": "Okay, I'll wait to hear from you. Goodbye."
+    }
+   ],
+   "questions": [
+    {
+     "question": "How long can Daniel stay?",
+     "choices": [
+      "One day",
+      "Three days from the 12th",
+      "A week"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Who will gather at the house?",
+     "choices": [
+      "Daniel's coworkers",
+      "The neighbours",
+      "All the relatives"
+     ],
+     "answer": 2
+    },
+    {
+     "question": "What will Daniel do before the visit?",
+     "choices": [
+      "Choose a gift with Misaki",
+      "Book a hotel",
+      "Call the temple"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "family-dl-005",
+   "title": "Osechi at New Year",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "family events",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "誠",
+     "voice": "male",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "ソフィア",
+     "voice": "female",
+     "age": "adult"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "明けましておめでとう。",
+     "en": "Happy New Year."
+    },
+    {
+     "speaker": "B",
+     "ja": "明けましておめでとうございます。本年もよろしくお願いいたします。",
+     "en": "Happy New Year. I look forward to your kindness again this year."
+    },
+    {
+     "speaker": "A",
+     "ja": "さあ、おせち料理を食べよう。妻が三日かけて作ったんだ。",
+     "en": "Come, let's eat the osechi. My wife spent three days making it.",
+     "gaps": [
+      "おせち料理"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "三日もですか。黒豆がつやつやで、とてもきれいですね。",
+     "en": "Three whole days? The black beans are so glossy and pretty."
+    },
+    {
+     "speaker": "A",
+     "ja": "黒豆には、一年間まめに働けるようにという願いがあるんだよ。",
+     "en": "Black beans carry the wish that you'll work diligently all year."
+    },
+    {
+     "speaker": "B",
+     "ja": "そうなんですか。知りませんでした。",
+     "en": "Is that so? I didn't know that."
+    },
+    {
+     "speaker": "A",
+     "ja": "それから、これは子どもたちへのお年玉だ。",
+     "en": "And this is New Year money for the children.",
+     "gaps": [
+      "お年玉"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとうございます。子どもたちもきっと喜びます。",
+     "en": "Thank you. I'm sure the children will be delighted."
+    }
+   ],
+   "questions": [
+    {
+     "question": "Who made the osechi?",
+     "choices": [
+      "The father-in-law",
+      "The mother-in-law",
+      "Sofia",
+      "It was bought at a shop"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What wish do the black beans carry?",
+     "choices": [
+      "Long life",
+      "A good harvest",
+      "Working diligently all year"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "family-dl-006",
+   "title": "Getting ready for a memorial service",
+   "jlpt": 2,
+   "ilr": "2",
+   "topic": "memorials",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "健太",
+     "voice": "male",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "リサ",
+     "voice": "female",
+     "age": "adult"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "来週の土曜日、祖父の三回忌の法事があるんだ。",
+     "en": "Next Saturday there's the third-anniversary memorial service for my grandfather.",
+     "gaps": [
+      "法事"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "三回忌って、亡くなって三年たったってこと？",
+     "en": "Does 'sankaiki' mean three years since he passed away?"
+    },
+    {
+     "speaker": "A",
+     "ja": "いや、亡くなって満二年だよ。数え方がちょっと違うんだ。",
+     "en": "No, it's two full years. The counting is a bit different."
+    },
+    {
+     "speaker": "B",
+     "ja": "そうなんだ。何を着ていけばいい？",
+     "en": "I see. What should I wear?"
+    },
+    {
+     "speaker": "A",
+     "ja": "黒っぽい服なら大丈夫。喪服じゃなくてもいいよ。",
+     "en": "Dark clothes are fine. It doesn't have to be formal mourning wear.",
+     "gaps": [
+      "喪服"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "香典みたいなものは必要？",
+     "en": "Do we need something like condolence money?",
+     "gaps": [
+      "香典"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "法事のときは「御仏前」って書いた袋を使うんだ。僕が用意しておくよ。",
+     "en": "For memorial services you use an envelope marked 'gobutsuzen'. I'll prepare it.",
+     "gaps": [
+      "御仏前"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとう。焼香のやり方も、前の日に練習させてね。",
+     "en": "Thanks. Let me practise how to offer incense the day before, too.",
+     "gaps": [
+      "焼香"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うん。お寺でお経を聞いたあと、親戚で食事をするから、長くなるよ。",
+     "en": "Sure. After the sutras at the temple, the relatives eat together, so it'll be a long day.",
+     "gaps": [
+      "親戚"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "わかった。子どもたちのおやつも持っていこう。",
+     "en": "Got it. Let's bring snacks for the kids too."
+    }
+   ],
+   "questions": [
+    {
+     "question": "How many full years ago did the grandfather die?",
+     "choices": [
+      "One",
+      "Two",
+      "Three"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What will Kenta prepare?",
+     "choices": [
+      "The offering envelope",
+      "Black clothes for Lisa",
+      "Snacks for the children"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "What happens after the sutras?",
+     "choices": [
+      "Everyone goes home",
+      "They visit the grave",
+      "The relatives have a meal"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "family-dl-007",
+   "title": "Learning a family recipe",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "cooking",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "春江",
+     "voice": "female",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "マルコ",
+     "voice": "male",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "マルコさん、このごぼう、洗ってくれる？",
+     "en": "Marco, could you wash this burdock root?"
+    },
+    {
+     "speaker": "B",
+     "ja": "はい。皮はむきますか。",
+     "en": "Sure. Should I peel it?",
+     "gaps": [
+      "皮"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ううん、包丁の背でこするだけでいいのよ。",
+     "en": "No, just scrape it with the back of the knife.",
+     "gaps": [
+      "包丁"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "なるほど。それから、どう切りますか。",
+     "en": "I see. Then how should I cut it?"
+    },
+    {
+     "speaker": "A",
+     "ja": "細く切って、にんじんと一緒に炒めるの。きんぴらにするから。",
+     "en": "Cut it into thin strips and stir-fry it with carrot. We're making kinpira."
+    },
+    {
+     "speaker": "B",
+     "ja": "味付けは醤油と砂糖ですか。",
+     "en": "Is the seasoning soy sauce and sugar?",
+     "gaps": [
+      "味付け",
+      "醤油"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そう。最後にごまを振って、できあがり。ちょっと味見してみて。",
+     "en": "Right. Sprinkle sesame at the end and it's done. Have a taste.",
+     "gaps": [
+      "味見"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "甘辛くて、おいしいです。今度、家でも作ってみます。",
+     "en": "Sweet and salty, delicious. I'll try making it at home."
+    }
+   ],
+   "questions": [
+    {
+     "question": "How is the burdock prepared?",
+     "choices": [
+      "Peeled with a peeler",
+      "Scraped with the back of the knife",
+      "Not washed at all"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What is the seasoning?",
+     "choices": [
+      "Soy sauce and sugar",
+      "Salt and vinegar",
+      "Miso"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "family-dl-008",
+   "title": "A school morning",
+   "jlpt": 5,
+   "ilr": "0+",
+   "topic": "school-age kids",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "お母さん",
+     "voice": "female",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "さくら",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "さくら、起きて。もう七時だよ。",
+     "en": "Sakura, get up. It's already seven."
+    },
+    {
+     "speaker": "B",
+     "ja": "えー、まだ眠い……。",
+     "en": "Aww, I'm still sleepy..."
+    },
+    {
+     "speaker": "A",
+     "ja": "早く顔を洗って。朝ご飯、できてるよ。",
+     "en": "Hurry and wash your face. Breakfast is ready.",
+     "gaps": [
+      "朝ご飯"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "今日のお弁当、何？",
+     "en": "What's in my lunch today?",
+     "gaps": [
+      "弁当"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "卵焼きとから揚げ。ランドセル、忘れないでね。",
+     "en": "Rolled omelette and fried chicken. Don't forget your school bag.",
+     "gaps": [
+      "ランドセル"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はーい。行ってきます！",
+     "en": "Okay. I'm off!",
+     "gaps": [
+      "行ってきます"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What time is it?",
+     "choices": [
+      "Six",
+      "Seven",
+      "Eight"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What is in Sakura's lunch?",
+     "choices": [
+      "Rice balls",
+      "Sandwiches",
+      "Rolled omelette and fried chicken"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "id": "family-dl-009",
+   "title": "Good night at the in-laws'",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "home",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "茂",
+     "voice": "male",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "アナ",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "アナさん、疲れたでしょう。今日はもう休みなさい。",
+     "en": "Ana, you must be tired. Go and rest now."
+    },
+    {
+     "speaker": "B",
+     "ja": "ありがとうございます。今日は本当にお世話になりました。",
+     "en": "Thank you. You've been so kind to me today.",
+     "gaps": [
+      "世話"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "いやいや。布団は二階の和室に敷いてあるからね。",
+     "en": "Not at all. Your futon is laid out in the tatami room upstairs.",
+     "gaps": [
+      "布団",
+      "和室"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい。お手洗いは一階ですか。",
+     "en": "Okay. Is the restroom on the ground floor?",
+     "gaps": [
+      "お手洗い"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そう、階段を下りて右だよ。夜は廊下が暗いから、電気をつけてね。",
+     "en": "Yes, down the stairs on the right. The hallway is dark at night, so turn on the light.",
+     "gaps": [
+      "廊下"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "わかりました。では、おやすみなさい。",
+     "en": "Understood. Good night, then."
+    },
+    {
+     "speaker": "A",
+     "ja": "おやすみ。明日の朝はゆっくりでいいよ。",
+     "en": "Good night. No need to get up early tomorrow."
+    }
+   ],
+   "questions": [
+    {
+     "question": "Where is Ana's futon?",
+     "choices": [
+      "In the tatami room upstairs",
+      "In the living room",
+      "On the ground floor"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "Where is the restroom?",
+     "choices": [
+      "Upstairs",
+      "Down the stairs on the right",
+      "Outside"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "id": "family-dl-010",
+   "title": "Choosing a gift for the in-laws",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "gifts",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "美咲",
+     "voice": "female",
+     "age": "young"
+    },
+    {
+     "id": "B",
+     "name": "トム",
+     "voice": "male",
+     "age": "young"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "日曜日、うちの実家に行くけど、手土産どうしようか。",
+     "en": "We're going to my parents' on Sunday. What should we bring?",
+     "gaps": [
+      "実家",
+      "手土産"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "お義母さん、甘いもの好きだよね。和菓子はどう？",
+     "en": "Your mum likes sweet things, right? How about Japanese sweets?",
+     "gaps": [
+      "和菓子"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "いいね。でも、父は最近甘いものを控えているから……。",
+     "en": "Good idea. But Dad has been cutting down on sweets lately..."
+    },
+    {
+     "speaker": "B",
+     "ja": "じゃあ、果物は？季節のものなら喜ばれそう。",
+     "en": "Then fruit? Something in season would go down well.",
+     "gaps": [
+      "果物"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "それがいい。駅前の果物屋さんで、梨を買っていこう。",
+     "en": "That's it. Let's buy pears at the fruit shop by the station."
+    },
+    {
+     "speaker": "B",
+     "ja": "あと、甥っ子たちにも何か持っていく？",
+     "en": "And should we bring something for your nephews?",
+     "gaps": [
+      "甥っ子"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "うん、お菓子を少し。それと、スーツじゃなくていいからね。",
+     "en": "Yes, a few sweets. And you don't need to wear a suit."
+    },
+    {
+     "speaker": "B",
+     "ja": "よかった。でも、きちんとした服で行くよ。",
+     "en": "Phew. But I'll still dress neatly."
+    }
+   ],
+   "questions": [
+    {
+     "question": "What will they buy for the parents?",
+     "choices": [
+      "Japanese sweets",
+      "Pears",
+      "Flowers"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Who else will get something?",
+     "choices": [
+      "The nephews",
+      "The neighbours",
+      "Tom's coworkers"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "Why not sweets?",
+     "choices": [
+      "Her mother dislikes them",
+      "They are too expensive",
+      "Her father is cutting down on sweets"
+     ],
+     "answer": 2
+    }
+   ]
+  }
+ ],
+ "drills": [
+  {
+   "id": "family-fi-001",
+   "type": "fill_in",
+   "topic": "chores",
+   "jlpt": 5,
+   "sentence": "毎朝、（　　）物を干します。",
+   "answers": [
+    "洗濯"
+   ],
+   "choices": [
+    "洗濯",
+    "料理",
+    "掃除"
+   ],
+   "en": "Every morning I hang out the laundry.",
+   "explanation": "洗濯物 = laundry (the washed clothes).",
+   "word": "洗濯"
+  },
+  {
+   "id": "family-fi-002",
+   "type": "fill_in",
+   "topic": "family terms",
+   "jlpt": 5,
+   "sentence": "（会社の人に）私の（　　）は料理が上手です。",
+   "answers": [
+    "母"
+   ],
+   "choices": [
+    "母",
+    "お母様",
+    "お母さん",
+    "ご母堂"
+   ],
+   "en": "(To a coworker) My mother is a good cook.",
+   "explanation": "When talking about your own mother to someone outside the family, use the humble 母.",
+   "word": "母"
+  },
+  {
+   "id": "family-fi-003",
+   "type": "fill_in",
+   "topic": "family terms",
+   "jlpt": 4,
+   "sentence": "山田さんの（　　）はお元気ですか。",
+   "answers": [
+    "ご主人"
+   ],
+   "choices": [
+    "ご主人",
+    "主人",
+    "夫",
+    "家内"
+   ],
+   "en": "Is Mrs Yamada's husband well?",
+   "explanation": "Someone else's husband is ご主人; 主人 and 夫 are for your own husband.",
+   "word": "ご主人"
+  },
+  {
+   "id": "family-fi-004",
+   "type": "fill_in",
+   "topic": "in-laws",
+   "jlpt": 3,
+   "sentence": "妻の母、つまり私の（　　）は、毎年梅干しを漬けています。",
+   "answers": [
+    "義母"
+   ],
+   "choices": [
+    "義母",
+    "叔母",
+    "祖母",
+    "姪"
+   ],
+   "en": "My wife's mother, that is, my mother-in-law, makes pickled plums every year.",
+   "explanation": "Your spouse's mother is your 義母 (mother-in-law).",
+   "word": "義母"
+  },
+  {
+   "id": "family-fi-005",
+   "type": "fill_in",
+   "topic": "relatives",
+   "jlpt": 3,
+   "sentence": "兄の娘は、私の（　　）です。",
+   "answers": [
+    "姪"
+   ],
+   "choices": [
+    "姪",
+    "甥",
+    "孫",
+    "従兄弟"
+   ],
+   "en": "My older brother's daughter is my niece.",
+   "explanation": "A sibling's daughter is 姪; a sibling's son is 甥.",
+   "word": "姪"
+  },
+  {
+   "id": "family-fi-006",
+   "type": "fill_in",
+   "topic": "home",
+   "jlpt": 4,
+   "sentence": "日本の家では、（　　）で靴を脱ぎます。",
+   "answers": [
+    "玄関"
+   ],
+   "choices": [
+    "玄関",
+    "台所",
+    "寝室",
+    "廊下"
+   ],
+   "en": "In Japanese homes, you take off your shoes in the entrance hall.",
+   "explanation": "Shoes come off in the 玄関, the entrance area.",
+   "word": "玄関"
+  },
+  {
+   "id": "family-fi-007",
+   "type": "fill_in",
+   "topic": "etiquette",
+   "jlpt": 5,
+   "sentence": "食事の前に「（　　）」と言います。",
+   "answers": [
+    "いただきます"
+   ],
+   "choices": [
+    "いただきます",
+    "ご馳走様",
+    "お邪魔します",
+    "ただいま"
+   ],
+   "en": "Before a meal you say 'itadakimasu'.",
+   "explanation": "いただきます before eating; ご馳走様 after.",
+   "word": "いただきます"
+  },
+  {
+   "id": "family-fi-008",
+   "type": "fill_in",
+   "topic": "etiquette",
+   "jlpt": 5,
+   "sentence": "友達の家に上がるとき、「（　　）」と言います。",
+   "answers": [
+    "お邪魔します"
+   ],
+   "choices": [
+    "お邪魔します",
+    "行ってきます",
+    "お帰りなさい",
+    "いただきます"
+   ],
+   "en": "When you enter a friend's home, you say 'ojama shimasu'.",
+   "explanation": "お邪魔します is the set phrase for entering someone else's home.",
+   "word": "お邪魔します"
+  },
+  {
+   "id": "family-fi-009",
+   "type": "fill_in",
+   "topic": "cooking",
+   "jlpt": 4,
+   "sentence": "にんじんを（　　）で細く切ります。",
+   "answers": [
+    "包丁"
+   ],
+   "choices": [
+    "包丁",
+    "鍋",
+    "茶碗",
+    "箸"
+   ],
+   "en": "I cut the carrot into thin strips with a knife.",
+   "explanation": "You cut with a 包丁 (kitchen knife).",
+   "word": "包丁"
+  },
+  {
+   "id": "family-fi-010",
+   "type": "fill_in",
+   "topic": "cooking",
+   "jlpt": 3,
+   "sentence": "味噌汁の（　　）をしてから、塩を少し足しました。",
+   "answers": [
+    "味見"
+   ],
+   "choices": [
+    "味見",
+    "献立",
+    "盛り付け",
+    "食卓"
+   ],
+   "en": "I tasted the miso soup, then added a little salt.",
+   "explanation": "味見 = tasting while cooking; you taste, then adjust the salt.",
+   "word": "味見"
+  },
+  {
+   "id": "family-fi-011",
+   "type": "fill_in",
+   "topic": "childcare",
+   "jlpt": 3,
+   "sentence": "朝、子どもを（　　）に預けてから、会社に行きます。",
+   "answers": [
+    "保育園"
+   ],
+   "choices": [
+    "保育園",
+    "小学校",
+    "運動会",
+    "塾"
+   ],
+   "en": "In the morning I drop my child off at daycare, then go to work.",
+   "explanation": "Parents leave (預ける) small children at a 保育園 while they work.",
+   "word": "保育園"
+  },
+  {
+   "id": "family-fi-012",
+   "type": "fill_in",
+   "topic": "family events",
+   "jlpt": 4,
+   "sentence": "お正月に、子どもたちは親戚から（　　）をもらいます。",
+   "answers": [
+    "お年玉"
+   ],
+   "choices": [
+    "お年玉",
+    "香典",
+    "喪服",
+    "お歳暮"
+   ],
+   "en": "At New Year, children receive money gifts from relatives.",
+   "explanation": "お年玉 is New Year money given to children.",
+   "word": "お年玉"
+  },
+  {
+   "id": "family-fi-013",
+   "type": "fill_in",
+   "topic": "family events",
+   "jlpt": 3,
+   "sentence": "夏休みに、家族で母の（　　）に帰省しました。",
+   "answers": [
+    "実家"
+   ],
+   "choices": [
+    "実家",
+    "親戚",
+    "会社",
+    "玄関"
+   ],
+   "en": "In the summer holidays our family went back to my mother's family home.",
+   "explanation": "実家 = the home you (or your parent) grew up in.",
+   "word": "実家"
+  },
+  {
+   "id": "family-fi-014",
+   "type": "fill_in",
+   "topic": "family events",
+   "jlpt": 2,
+   "sentence": "祖父の（　　）で、親戚がお寺に集まりました。",
+   "answers": [
+    "法事"
+   ],
+   "choices": [
+    "法事",
+    "運動会",
+    "授業参観",
+    "入学式"
+   ],
+   "en": "The relatives gathered at the temple for my grandfather's memorial service.",
+   "explanation": "A 法事 is a Buddhist memorial service held at a temple or home.",
+   "word": "法事"
+  },
+  {
+   "id": "family-fi-015",
+   "type": "fill_in",
+   "topic": "childcare",
+   "jlpt": 2,
+   "sentence": "子どもを（　　）すぎると、わがままになりますよ。",
+   "answers": [
+    "甘やかし"
+   ],
+   "choices": [
+    "甘やかし",
+    "叱り",
+    "手伝い",
+    "育て"
+   ],
+   "en": "If you spoil children too much, they become selfish.",
+   "explanation": "甘やかす (to spoil) + すぎる → 甘やかしすぎる.",
+   "word": "甘やかす"
+  },
+  {
+   "id": "family-fi-016",
+   "type": "fill_in",
+   "topic": "chores",
+   "jlpt": 3,
+   "sentence": "雨が降ってきたから、洗濯物を（　　）ください。",
+   "answers": [
+    "取り込んで"
+   ],
+   "choices": [
+    "取り込んで",
+    "干して",
+    "洗って",
+    "散らかして"
+   ],
+   "en": "It's started raining, so please bring in the laundry.",
+   "explanation": "取り込む = to take (laundry) in from outside.",
+   "word": "取り込む"
+  },
+  {
+   "id": "family-fi-017",
+   "type": "fill_in",
+   "topic": "chores",
+   "jlpt": 3,
+   "sentence": "うちでは、ごみ出しは夫の（　　）です。",
+   "answers": [
+    "当番"
+   ],
+   "choices": [
+    "当番",
+    "家計",
+    "節約",
+    "献立"
+   ],
+   "en": "In our house, taking out the rubbish is my husband's job.",
+   "explanation": "当番 = the person whose turn/duty it is.",
+   "word": "当番"
+  },
+  {
+   "id": "family-fi-018",
+   "type": "fill_in",
+   "topic": "etiquette",
+   "jlpt": 3,
+   "sentence": "「お茶をいれましょうか。」「どうぞ、お（　　）なく。」",
+   "answers": [
+    "構い"
+   ],
+   "choices": [
+    "構い",
+    "邪魔",
+    "世話",
+    "疲れ"
+   ],
+   "en": "'Shall I make some tea?' 'Please don't go to any trouble.'",
+   "explanation": "お構いなく is the set phrase for 'don't trouble yourself'."
+  },
+  {
+   "id": "family-fi-019",
+   "type": "fill_in",
+   "topic": "gifts",
+   "jlpt": 3,
+   "sentence": "夫の実家に行くとき、駅でお菓子の（　　）を買いました。",
+   "answers": [
+    "手土産"
+   ],
+   "choices": [
+    "手土産",
+    "お年玉",
+    "香典",
+    "お小遣い"
+   ],
+   "en": "On the way to my husband's parents' house I bought sweets at the station as a gift.",
+   "explanation": "手土産 is a small gift you bring when visiting.",
+   "word": "手土産"
+  },
+  {
+   "id": "family-fi-020",
+   "type": "fill_in",
+   "topic": "family events",
+   "jlpt": 2,
+   "sentence": "娘は七歳なので、今年は（　　）のお祝いをします。",
+   "answers": [
+    "七五三"
+   ],
+   "choices": [
+    "七五三",
+    "還暦",
+    "成人式",
+    "結納"
+   ],
+   "en": "My daughter is seven, so we'll celebrate Shichi-Go-San this year.",
+   "explanation": "七五三 celebrates children aged 3, 5 and 7; 還暦 is a 60th birthday.",
+   "word": "七五三"
+  },
+  {
+   "id": "family-use-001",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 3,
+   "word": "母",
+   "sentence": "（取引先の人に）母がよろしくと申しておりました。",
+   "correct": true,
+   "explanation": "Talking to an outsider about your own mother, the humble 母 is right."
+  },
+  {
+   "id": "family-use-002",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 4,
+   "word": "お母さん",
+   "sentence": "（就職の面接で）私のお母さんは看護師です。",
+   "correct": false,
+   "explanation": "In a formal setting, an adult calls their own mother 母, not お母さん."
+  },
+  {
+   "id": "family-use-003",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 4,
+   "word": "ご主人",
+   "sentence": "私のご主人は銀行で働いています。",
+   "correct": false,
+   "explanation": "ご主人 is honorific for someone else's husband; say 主人 or 夫 for your own."
+  },
+  {
+   "id": "family-use-004",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 4,
+   "word": "ご主人",
+   "sentence": "ご主人は、いつもお帰りが遅いんですか。",
+   "correct": true,
+   "explanation": "Asking about the listener's husband: ご主人 is correct."
+  },
+  {
+   "id": "family-use-005",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 3,
+   "word": "家内",
+   "sentence": "家内がいつもお世話になっております。",
+   "correct": true,
+   "explanation": "家内 is a humble word for one's own wife, fitting here."
+  },
+  {
+   "id": "family-use-006",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 3,
+   "word": "奥様",
+   "sentence": "昨日のパーティーで、部長の奥様にお会いしました。",
+   "correct": true,
+   "explanation": "奥様 is very polite for someone else's wife, e.g. a superior's."
+  },
+  {
+   "id": "family-use-007",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 4,
+   "word": "息子さん",
+   "sentence": "うちの息子さんは、今年大学生になりました。",
+   "correct": false,
+   "explanation": "息子さん is for someone else's son; say うちの息子 for your own."
+  },
+  {
+   "id": "family-use-008",
+   "type": "usage",
+   "topic": "family terms",
+   "jlpt": 4,
+   "word": "お子さん",
+   "sentence": "お子さんはおいくつですか。",
+   "correct": true,
+   "explanation": "Asking about the listener's child: お子さん is right."
+  },
+  {
+   "id": "family-use-009",
+   "type": "usage",
+   "topic": "relatives",
+   "jlpt": 3,
+   "word": "甥",
+   "sentence": "姉の息子は、私の甥です。",
+   "correct": true,
+   "explanation": "A sibling's son is your 甥 (nephew)."
+  },
+  {
+   "id": "family-use-010",
+   "type": "usage",
+   "topic": "relatives",
+   "jlpt": 3,
+   "word": "姪",
+   "sentence": "弟の息子は、私の姪です。",
+   "correct": false,
+   "explanation": "A sibling's son is 甥; 姪 is a sibling's daughter."
+  },
+  {
+   "id": "family-use-011",
+   "type": "usage",
+   "topic": "etiquette",
+   "jlpt": 4,
+   "word": "お邪魔します",
+   "sentence": "友達の家から帰るとき、玄関で「お邪魔します」と言った。",
+   "correct": false,
+   "explanation": "When leaving, say お邪魔しました (past); お邪魔します is for entering."
+  },
+  {
+   "id": "family-use-012",
+   "type": "usage",
+   "topic": "etiquette",
+   "jlpt": 5,
+   "word": "いただきます",
+   "sentence": "ご飯を全部食べ終わってから、「いただきます」と言った。",
+   "correct": false,
+   "explanation": "いただきます is said before eating; after the meal you say ご馳走様でした."
+  },
+  {
+   "id": "family-use-013",
+   "type": "usage",
+   "topic": "etiquette",
+   "jlpt": 4,
+   "word": "ご馳走様",
+   "sentence": "義母の手料理を食べ終わって、「ご馳走様でした」と言った。",
+   "correct": true,
+   "explanation": "ご馳走様でした thanks the host after the meal."
+  },
+  {
+   "id": "family-use-014",
+   "type": "usage",
+   "topic": "etiquette",
+   "jlpt": 3,
+   "word": "お構いなく",
+   "sentence": "お茶を出してもらうとき、「どうぞお構いなく」と言った。",
+   "correct": true,
+   "explanation": "お構いなく politely tells the host not to go to trouble."
+  },
+  {
+   "id": "family-use-015",
+   "type": "usage",
+   "topic": "etiquette",
+   "jlpt": 3,
+   "word": "遠慮",
+   "sentence": "遠慮しないで、たくさん召し上がってください。",
+   "correct": true,
+   "explanation": "A host urging a guest not to hold back: a natural use of 遠慮."
+  },
+  {
+   "id": "family-use-016",
+   "type": "usage",
+   "topic": "family events",
+   "jlpt": 3,
+   "word": "帰省",
+   "sentence": "毎日、会社から帰省して晩ご飯を作ります。",
+   "correct": false,
+   "explanation": "帰省 means returning to one's hometown for the holidays, not coming home from work every day."
+  },
+  {
+   "id": "family-use-017",
+   "type": "usage",
+   "topic": "childcare",
+   "jlpt": 2,
+   "word": "甘やかす",
+   "sentence": "祖父母は、どうしても孫を甘やかしがちだ。",
+   "correct": true,
+   "explanation": "Grandparents spoiling grandchildren is a typical use of 甘やかす."
+  },
+  {
+   "id": "family-use-018",
+   "type": "usage",
+   "topic": "chores",
+   "jlpt": 3,
+   "word": "片付ける",
+   "sentence": "部屋を片付けたので、床に物がたくさん散らかっている。",
+   "correct": false,
+   "explanation": "After tidying (片付ける), things should not be scattered on the floor; the sentence contradicts itself."
+  },
+  {
+   "id": "family-use-019",
+   "type": "usage",
+   "topic": "childcare",
+   "jlpt": 3,
+   "word": "預ける",
+   "sentence": "仕事の間、子どもを母に預けています。",
+   "correct": true,
+   "explanation": "預ける = leave in someone's care; natural for childcare."
+  },
+  {
+   "id": "family-use-020",
+   "type": "usage",
+   "topic": "family events",
+   "jlpt": 2,
+   "word": "冥福",
+   "sentence": "結婚式で、新郎新婦のご冥福をお祈りしました。",
+   "correct": false,
+   "explanation": "冥福 is happiness in the afterlife, used only for the deceased; at a wedding you wish the couple 幸せ."
+  }
+ ],
+ "ilr": "0+-2"
+}

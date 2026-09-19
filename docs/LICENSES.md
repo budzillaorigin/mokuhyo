@@ -94,6 +94,8 @@ Listed in `content/models/manifest.json`; the in-app model manager shows each mo
 | OPI practice questions and self-rating statements | CC BY-SA 4.0 | Statements paraphrase the public-domain ILR skill level descriptions (https://www.govtilr.org) |
 | Minimal pairs | derived from JMdict (CC BY-SA 4.0, EDRDG) and Kanjium pitch data | computed by `build_practice.py`, no new text |
 | JLPT blueprints (`tools/items/jlpt_blueprints.json`) | facts | Published test structure from https://www.jlpt.jp; no official items are used |
+| Interest and domain tracks (`tools/packs/tracks/*.json` → `tracks.sqlite`): word lists, gaming kanji breakdowns and memory hints, scenarios, dialogues, drills, can-do statements, cultural tasks, ILR readings | CC BY-SA 4.0 | Tsumugi contributors; original, AI-drafted (`source: "llm"`), badge on until reviewed. Word ids, readings, JLPT tags, pitch and derived kanji subsets come from JMdict/KANJIDIC2/KRADFILE (CC BY-SA 4.0, EDRDG) and Kanjium through the dictionary pack. The military track's people, units and events are fictional |
+| Official defence pages (JMSDF https://www.mod.go.jp/msdf/, JASDF https://www.mod.go.jp/asdf/, JGSDF https://www.mod.go.jp/gsdf/, MOD press releases https://www.mod.go.jp/j/press/) | link only | Listed as outbound links in the military track; no text is fetched, stored or copied |
 | JLPT / DLPT item banks (`tools/items/bank/`) | CC BY-SA 4.0 | Tsumugi contributors; rule-generated items from JMdict/Tatoeba/grammar packs keep their sources' attribution; AI-drafted items carry the badge until reviewed. Not affiliated with JLPT, DLI or ACTFL |
 
 ## Pre-rendered audio (VOICEVOX)
@@ -134,7 +136,8 @@ These resources shaped Tsumugi's structure, pedagogy or feature ideas (BRIEF_V2 
 | Tae Kim's Guide, Imabi, Wasabi, Sakubi, Kanshudo, JLPT Sensei, Japanese with Anime, NHK Easy Japanese / News Web Easy | websites | Guides library: outbound links with our own titles and tags (D-166); nothing is fetched, stored or copied |
 | Nihongo Alive: Listen & Learn from Real-Life Conversations | textbook + audio | Natural dialogues with fillers |
 | 日本語NOW! Nihongo Now!: Performing Japanese Culture | textbook | Performing-culture track, memorize-and-perform mode |
-| 生活者としての外国人向け 私らしく暮らすための日本語ワークブック (Bunka-cho) | workbook | Daily-life admin track, can-do statements (content only if its license is confirmed CC BY; not ingested today) |
+| 生活者としての外国人向け 私らしく暮らすための日本語ワークブック and the 「生活者としての外国人」 curriculum / 教材例集 (Bunka-cho) | workbook, curriculum | Daily-life admin track: situation list and can-do statements as a format. Not CC BY (see "Bunka-cho license check" below), so nothing is ingested |
+| つながるひろがる にほんごでのくらし (Bunka-cho / MEXT learning site) | website | Daily-life situations. Its terms forbid reproduction beyond private use (see below), so nothing is ingested |
 | にほんごで文化体験 | textbook | Cultural experience tasks |
 | Yomimono | web textbook | Module structure: kanji → vocab → grammar → quiz |
 | JPDB.io | web app | Media decks, coverage, known-words import, frequency decks |
@@ -149,3 +152,16 @@ These resources shaped Tsumugi's structure, pedagogy or feature ideas (BRIEF_V2 
 | USJETAA Japanese Reading Group | community | Reading-circle mode |
 | Lorenzi's Jisho | web dictionary | Inflection breakdown, component shortcuts |
 | WaniKani, Bunpro, NativShark, Skritter, Lingopie | apps (BRIEF v1) | Feature ideas only; imports talk to the learner's own account, and no mnemonics or write-ups are copied |
+
+### Bunka-cho license check (BRIEF_V2 §6.5 and §7, checked 2026-09-19, DECISIONS D-219)
+
+- **つながるひろがる にほんごでのくらし** (https://tsunagarujp.mext.go.jp/terms-of-use, 利用規約 dated 令和2年6月1日):
+  - 第4条: the site's content (videos, illustrations, scripts, vocabulary and grammar lists) is copyright 文部科学省.
+  - 第6条: 「本サイト上のコンテンツの全部または一部について、私的使用以外の目的で転載・複製することは認めない」. Use for education, and quotation within what the law allows, needs 「出典 文部科学省」.
+  - This is **not CC BY**. Because the terms state their own conditions, MEXT's general CC BY 4.0-compatible website terms (https://www.mext.go.jp/b_menu/1351168.htm) don't apply.
+  - **Result: inspiration only.** No text, scripts or lists are used.
+- **「生活者としての外国人」 curriculum, 教材例集 and workbook** (https://www.bunka.go.jp/seisaku/kokugo_nihongo/kyoiku/nihongo_curriculum/toriatsukai.html):
+  - Copyright belongs to 文化庁 except where another holder is named.
+  - Illustrations and photos may be reused in Japanese-teaching materials with attribution. Commercial reuse needs each rights holder's consent, and modified illustrations are not allowed.
+  - This is **not CC BY**. bunka.go.jp's general terms defer to MEXT's CC BY 4.0-compatible terms (https://www.bunka.go.jp/bunkacho_homepage/), but those terms exclude content with separately stated conditions and third-party material.
+  - **Result: inspiration only.** The daily-life track is entirely original. Ingesting any of it later needs written permission, or a CC BY notice on that specific material.

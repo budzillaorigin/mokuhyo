@@ -46,6 +46,12 @@ class LessonSession(
     /** A kanji-path lesson batch: finishing it completes the items on [path]. */
     constructor(path: PathService, items: List<PathItem>, random: Random = Random.Default) : this(items, random, { path.completeLessons(it) })
 
+    /** The items of this batch in teaching order (another source can merge them into a larger batch, D-213). */
+    val batch: List<PathItem> get() = items
+
+    /** Runs this batch's completion for [done] when a merged session finishes (TrackService.mixInto). */
+    internal suspend fun completeItems(done: List<PathItem>) = complete(done)
+
     private val quiz = ArrayDeque<LessonQuestion>()
     private val _state = MutableStateFlow<LessonState>(LessonState.Presenting(items, 0))
     val state: StateFlow<LessonState> = _state.asStateFlow()

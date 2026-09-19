@@ -1,0 +1,2911 @@
+{
+ "track": "daily-life",
+ "format": 1,
+ "titleEn": "Daily-life admin",
+ "titleJa": "生活の手続き",
+ "description": "City hall, health insurance, hospital, bank, garbage rules, disaster notices and school letters, with can-do statements per situation and cultural experience tasks.",
+ "inspiredBy": "生活者としての外国人 workbook; にほんごで文化体験; つながるひろがる にほんごでのくらし (inspiration only: their terms don't allow reuse, see docs/LICENSES.md)",
+ "jlpt": [
+  5,
+  2
+ ],
+ "source": "llm",
+ "verified": false,
+ "license": "CC BY-SA 4.0",
+ "attribution": "Tsumugi contributors",
+ "words": [
+  {"text": "市役所", "reading": "しやくしょ", "id": 1308760, "gloss": "municipal office; city hall", "topic": "city hall"},
+  {"text": "区役所", "reading": "くやくしょ", "gloss": "ward office", "topic": "city hall", "id": 1244270},
+  {"text": "窓口", "reading": "まどぐち", "gloss": "service counter; window", "topic": "city hall", "id": 1401420},
+  {"text": "住所", "reading": "じゅうしょ", "gloss": "address", "topic": "city hall", "id": 1334080},
+  {"text": "引っ越し", "reading": "ひっこし", "gloss": "moving house", "topic": "city hall", "id": 1601880},
+  {"text": "手続き", "reading": "てつづき", "gloss": "procedure; paperwork", "topic": "city hall", "id": 1598350},
+  {"text": "書類", "reading": "しょるい", "gloss": "documents; forms", "topic": "city hall", "id": 1344200},
+  {"text": "用紙", "reading": "ようし", "gloss": "form (blank sheet)", "topic": "city hall", "id": 1546290},
+  {"text": "記入", "reading": "きにゅう", "gloss": "filling in (a form)", "topic": "city hall", "id": 1223330},
+  {"text": "氏名", "reading": "しめい", "gloss": "full name (on forms)", "topic": "city hall", "id": 1311060},
+  {"text": "生年月日", "reading": "せいねんがっぴ", "gloss": "date of birth", "topic": "city hall", "id": 1379410},
+  {"text": "国籍", "reading": "こくせき", "gloss": "nationality", "topic": "city hall", "id": 1286780},
+  {"text": "番号札", "reading": "ばんごうふだ", "gloss": "numbered ticket (queue)", "topic": "city hall", "id": 1732520},
+  {"text": "届け出", "reading": "とどけで", "gloss": "report; notification (to an office)", "topic": "city hall", "id": 1457240},
+  {"text": "申請", "reading": "しんせい", "gloss": "application (official)", "topic": "city hall", "id": 1363130},
+  {"text": "住民票", "reading": "じゅうみんひょう", "gloss": "certificate of residence", "topic": "city hall", "id": 1334240},
+  {"text": "転入届", "reading": "てんにゅうとどけ", "gloss": "moving-in notification", "topic": "city hall", "id": 1441310},
+  {"text": "転出届", "reading": "てんしゅつとどけ", "gloss": "moving-out notification", "topic": "city hall", "id": 2210920},
+  {"text": "在留カード", "reading": "ざいりゅうカード", "gloss": "residence card", "topic": "city hall", "id": 2737510},
+  {"text": "在留期間", "reading": "ざいりゅうきかん", "gloss": "period of stay", "topic": "city hall", "id": 2845979},
+  {"text": "マイナンバー", "reading": "マイナンバー", "gloss": "My Number (personal ID number)", "topic": "city hall", "id": 2702940},
+  {"text": "身分証明書", "reading": "みぶんしょうめいしょ", "gloss": "identification document", "topic": "city hall", "id": 1365820},
+  {"text": "証明書", "reading": "しょうめいしょ", "gloss": "certificate", "topic": "city hall", "id": 1351700},
+  {"text": "本人", "reading": "ほんにん", "gloss": "the person in question; oneself", "topic": "city hall", "id": 1522750},
+  {"text": "代理人", "reading": "だいりにん", "gloss": "proxy; agent", "topic": "city hall", "id": 1412470},
+  {"text": "世帯", "reading": "せたい", "gloss": "household", "topic": "city hall", "id": 1374170},
+  {"text": "世帯主", "reading": "せたいぬし", "gloss": "head of household", "topic": "city hall", "id": 1374180},
+  {"text": "印鑑", "reading": "いんかん", "gloss": "personal seal (hanko)", "topic": "city hall", "id": 1168120},
+  {"text": "署名", "reading": "しょめい", "gloss": "signature", "topic": "city hall", "id": 1343640},
+  {"text": "手数料", "reading": "てすうりょう", "gloss": "fee; handling charge", "topic": "city hall", "id": 1327980},
+  {"text": "保険", "reading": "ほけん", "gloss": "insurance", "topic": "insurance & pension", "id": 1513440},
+  {"text": "健康保険", "reading": "けんこうほけん", "gloss": "health insurance", "topic": "insurance & pension", "id": 1256270},
+  {"text": "国民健康保険", "reading": "こくみんけんこうほけん", "gloss": "National Health Insurance", "topic": "insurance & pension", "id": 1657500},
+  {"text": "保険証", "reading": "ほけんしょう", "gloss": "insurance card", "topic": "insurance & pension", "id": 1513490},
+  {"text": "保険料", "reading": "ほけんりょう", "gloss": "insurance premium", "topic": "insurance & pension", "id": 1513510},
+  {"text": "年金", "reading": "ねんきん", "gloss": "pension", "topic": "insurance & pension", "id": 1468540},
+  {"text": "国民年金", "reading": "こくみんねんきん", "gloss": "National Pension", "topic": "insurance & pension", "id": 1657530},
+  {"text": "加入", "reading": "かにゅう", "gloss": "joining; enrollment", "topic": "insurance & pension", "id": 1190430},
+  {"text": "脱退", "reading": "だったい", "gloss": "withdrawal (from a scheme)", "topic": "insurance & pension", "id": 1416570},
+  {"text": "支払い", "reading": "しはらい", "gloss": "payment", "topic": "insurance & pension", "id": 1594480},
+  {"text": "納付", "reading": "のうふ", "gloss": "payment (of taxes, premiums)", "topic": "insurance & pension", "id": 1470110},
+  {"text": "納付書", "reading": "のうふしょ", "gloss": "payment slip", "topic": "insurance & pension", "id": 1945130},
+  {"text": "期限", "reading": "きげん", "gloss": "deadline; time limit", "topic": "insurance & pension", "id": 1220560},
+  {"text": "口座振替", "reading": "こうざふりかえ", "gloss": "automatic bank transfer (direct debit)", "topic": "insurance & pension", "id": 2799690},
+  {"text": "免除", "reading": "めんじょ", "gloss": "exemption", "topic": "insurance & pension", "id": 1533200},
+  {"text": "扶養", "reading": "ふよう", "gloss": "support (of dependants)", "topic": "insurance & pension", "id": 1496990},
+  {"text": "自己負担", "reading": "じこふたん", "gloss": "out-of-pocket share", "topic": "insurance & pension", "id": 1936890},
+  {"text": "税金", "reading": "ぜいきん", "gloss": "tax", "topic": "insurance & pension", "id": 1382100},
+  {"text": "住民税", "reading": "じゅうみんぜい", "gloss": "resident tax", "topic": "insurance & pension", "id": 1334220},
+  {"text": "所得", "reading": "しょとく", "gloss": "income", "topic": "insurance & pension", "id": 1343360},
+  {"text": "病院", "reading": "びょういん", "gloss": "hospital; clinic", "topic": "hospital & pharmacy", "id": 1490220},
+  {"text": "医者", "reading": "いしゃ", "gloss": "doctor", "topic": "hospital & pharmacy", "id": 1159980},
+  {"text": "薬", "reading": "くすり", "gloss": "medicine", "topic": "hospital & pharmacy", "id": 1538160},
+  {"text": "熱", "reading": "ねつ", "gloss": "fever", "topic": "hospital & pharmacy", "id": 1467710},
+  {"text": "咳", "reading": "せき", "gloss": "cough", "topic": "hospital & pharmacy", "id": 1204300},
+  {"text": "頭痛", "reading": "ずつう", "gloss": "headache", "topic": "hospital & pharmacy", "id": 1450890},
+  {"text": "吐き気", "reading": "はきけ", "gloss": "nausea", "topic": "hospital & pharmacy", "id": 1444120},
+  {"text": "下痢", "reading": "げり", "gloss": "diarrhea", "topic": "hospital & pharmacy", "id": 1186540},
+  {"text": "怪我", "reading": "けが", "gloss": "injury", "topic": "hospital & pharmacy", "id": 1200220},
+  {"text": "受付", "reading": "うけつけ", "gloss": "reception desk", "topic": "hospital & pharmacy", "id": 1588060},
+  {"text": "予約", "reading": "よやく", "gloss": "appointment; reservation", "topic": "hospital & pharmacy", "id": 1543750},
+  {"text": "診察", "reading": "しんさつ", "gloss": "medical examination", "topic": "hospital & pharmacy", "id": 1365460},
+  {"text": "診察券", "reading": "しんさつけん", "gloss": "patient registration card", "topic": "hospital & pharmacy", "id": 1705630},
+  {"text": "問診票", "reading": "もんしんひょう", "gloss": "medical questionnaire", "topic": "hospital & pharmacy", "id": 2236510},
+  {"text": "症状", "reading": "しょうじょう", "gloss": "symptom", "topic": "hospital & pharmacy", "id": 1351030},
+  {"text": "検査", "reading": "けんさ", "gloss": "test; examination", "topic": "hospital & pharmacy", "id": 1257890},
+  {"text": "内科", "reading": "ないか", "gloss": "internal medicine", "topic": "hospital & pharmacy", "id": 1457830},
+  {"text": "外科", "reading": "げか", "gloss": "surgery (department)", "topic": "hospital & pharmacy", "id": 1203380},
+  {"text": "小児科", "reading": "しょうにか", "gloss": "pediatrics", "topic": "hospital & pharmacy", "id": 1348200},
+  {"text": "歯科", "reading": "しか", "gloss": "dentistry", "topic": "hospital & pharmacy", "id": 1313110},
+  {"text": "入院", "reading": "にゅういん", "gloss": "hospitalization", "topic": "hospital & pharmacy", "id": 1465720},
+  {"text": "救急車", "reading": "きゅうきゅうしゃ", "gloss": "ambulance", "topic": "hospital & pharmacy", "id": 1229100},
+  {"text": "アレルギー", "reading": "アレルギー", "gloss": "allergy", "topic": "hospital & pharmacy", "id": 1019740},
+  {"text": "薬局", "reading": "やっきょく", "gloss": "pharmacy", "topic": "hospital & pharmacy", "id": 1538200},
+  {"text": "処方箋", "reading": "しょほうせん", "gloss": "prescription", "topic": "hospital & pharmacy", "id": 1655680},
+  {"text": "飲み薬", "reading": "のみぐすり", "gloss": "oral medicine", "topic": "hospital & pharmacy", "id": 1169860},
+  {"text": "錠剤", "reading": "じょうざい", "gloss": "tablet; pill", "topic": "hospital & pharmacy", "id": 1357120},
+  {"text": "食後", "reading": "しょくご", "gloss": "after meals", "topic": "hospital & pharmacy", "id": 1358450},
+  {"text": "食前", "reading": "しょくぜん", "gloss": "before meals", "topic": "hospital & pharmacy", "id": 1358520},
+  {"text": "副作用", "reading": "ふくさよう", "gloss": "side effect", "topic": "hospital & pharmacy", "id": 1500400},
+  {"text": "銀行", "reading": "ぎんこう", "gloss": "bank", "topic": "bank & post", "id": 1243490},
+  {"text": "口座", "reading": "こうざ", "gloss": "bank account", "topic": "bank & post", "id": 1276150},
+  {"text": "通帳", "reading": "つうちょう", "gloss": "bankbook", "topic": "bank & post", "id": 1433490},
+  {"text": "キャッシュカード", "reading": "キャッシュカード", "gloss": "cash card", "topic": "bank & post", "id": 1041430},
+  {"text": "暗証番号", "reading": "あんしょうばんごう", "gloss": "PIN", "topic": "bank & post", "id": 1154610},
+  {"text": "預ける", "reading": "あずける", "gloss": "to deposit; to leave with", "topic": "bank & post", "id": 1544990},
+  {"text": "引き出す", "reading": "ひきだす", "gloss": "to withdraw (money)", "topic": "bank & post", "id": 1601660},
+  {"text": "振り込む", "reading": "ふりこむ", "gloss": "to transfer (money into an account)", "topic": "bank & post", "id": 1361210},
+  {"text": "振込", "reading": "ふりこみ", "gloss": "bank transfer", "topic": "bank & post", "id": 1602960},
+  {"text": "残高", "reading": "ざんだか", "gloss": "balance", "topic": "bank & post", "id": 1304590},
+  {"text": "送金", "reading": "そうきん", "gloss": "remittance", "topic": "bank & post", "id": 1402750},
+  {"text": "両替", "reading": "りょうがえ", "gloss": "currency exchange", "topic": "bank & post", "id": 1553820},
+  {"text": "郵便局", "reading": "ゆうびんきょく", "gloss": "post office", "topic": "bank & post", "id": 1542430},
+  {"text": "切手", "reading": "きって", "gloss": "postage stamp", "topic": "bank & post", "id": 1385070},
+  {"text": "小包", "reading": "こづつみ", "gloss": "parcel", "topic": "bank & post", "id": 1593290},
+  {"text": "宛先", "reading": "あてさき", "gloss": "address (of recipient)", "topic": "bank & post", "id": 1586500},
+  {"text": "差出人", "reading": "さしだしにん", "gloss": "sender", "topic": "bank & post", "id": 1593760},
+  {"text": "郵便番号", "reading": "ゆうびんばんごう", "gloss": "postal code", "topic": "bank & post", "id": 1542480},
+  {"text": "速達", "reading": "そくたつ", "gloss": "express mail", "topic": "bank & post", "id": 1405030},
+  {"text": "書留", "reading": "かきとめ", "gloss": "registered mail", "topic": "bank & post", "id": 1589960},
+  {"text": "伝票", "reading": "でんぴょう", "gloss": "slip; waybill", "topic": "bank & post", "id": 1442410},
+  {"text": "着払い", "reading": "ちゃくばらい", "gloss": "cash on delivery (paid by recipient)", "topic": "bank & post", "id": 1423230},
+  {"text": "不在", "reading": "ふざい", "gloss": "absence (not at home)", "topic": "bank & post", "id": 1492460},
+  {"text": "再配達", "reading": "さいはいたつ", "gloss": "redelivery", "topic": "bank & post", "id": 2143700},
+  {"text": "アパート", "reading": "アパート", "gloss": "apartment", "topic": "housing & utilities", "id": 1017760},
+  {"text": "家賃", "reading": "やちん", "gloss": "rent", "topic": "housing & utilities", "id": 1192270},
+  {"text": "不動産屋", "reading": "ふどうさんや", "gloss": "real-estate agent", "topic": "housing & utilities", "id": 1494230},
+  {"text": "大家", "reading": "おおや", "gloss": "landlord", "topic": "housing & utilities", "id": 1413140},
+  {"text": "間取り", "reading": "まどり", "gloss": "floor plan", "topic": "housing & utilities", "id": 1215490},
+  {"text": "敷金", "reading": "しききん", "gloss": "security deposit", "topic": "housing & utilities", "id": 1497040},
+  {"text": "礼金", "reading": "れいきん", "gloss": "key money", "topic": "housing & utilities", "id": 1557500},
+  {"text": "管理費", "reading": "かんりひ", "gloss": "maintenance fee", "topic": "housing & utilities", "id": 2612860},
+  {"text": "保証人", "reading": "ほしょうにん", "gloss": "guarantor", "topic": "housing & utilities", "id": 1513820},
+  {"text": "契約", "reading": "けいやく", "gloss": "contract", "topic": "housing & utilities", "id": 1250190},
+  {"text": "更新", "reading": "こうしん", "gloss": "renewal", "topic": "housing & utilities", "id": 1279370},
+  {"text": "解約", "reading": "かいやく", "gloss": "cancellation (of a contract)", "topic": "housing & utilities", "id": 1199300},
+  {"text": "退去", "reading": "たいきょ", "gloss": "moving out", "topic": "housing & utilities", "id": 1411370},
+  {"text": "電気", "reading": "でんき", "gloss": "electricity", "topic": "housing & utilities", "id": 1443000},
+  {"text": "ガス", "reading": "ガス", "gloss": "gas", "topic": "housing & utilities", "id": 1040060},
+  {"text": "水道", "reading": "すいどう", "gloss": "water supply", "topic": "housing & utilities", "id": 1371920},
+  {"text": "料金", "reading": "りょうきん", "gloss": "charge; fee", "topic": "housing & utilities", "id": 1554280},
+  {"text": "光熱費", "reading": "こうねつひ", "gloss": "utility costs", "topic": "housing & utilities", "id": 1273110},
+  {"text": "開通", "reading": "かいつう", "gloss": "opening (of a line/service)", "topic": "housing & utilities", "id": 1202850},
+  {"text": "引き落とし", "reading": "ひきおとし", "gloss": "automatic debit", "topic": "housing & utilities", "id": 1950210},
+  {"text": "検針", "reading": "けんしん", "gloss": "meter reading", "topic": "housing & utilities", "id": 1257970},
+  {"text": "隣", "reading": "となり", "gloss": "next door; neighbor", "topic": "housing & utilities", "id": 1555830},
+  {"text": "騒音", "reading": "そうおん", "gloss": "noise", "topic": "housing & utilities", "id": 1403060},
+  {"text": "ごみ", "reading": "ごみ", "gloss": "garbage", "topic": "garbage", "id": 1369900},
+  {"text": "袋", "reading": "ふくろ", "gloss": "bag", "topic": "garbage", "id": 1411070},
+  {"text": "出す", "reading": "だす", "gloss": "to put out (garbage)", "topic": "garbage", "id": 1338180},
+  {"text": "分別", "reading": "ぶんべつ", "gloss": "sorting (garbage)", "topic": "garbage", "id": 1504200},
+  {"text": "燃えるごみ", "reading": "もえるごみ", "gloss": "burnable garbage", "topic": "garbage", "id": 2842183},
+  {"text": "燃えないごみ", "reading": "もえないごみ", "gloss": "non-burnable garbage", "topic": "garbage", "id": 2842184},
+  {"text": "資源ごみ", "reading": "しげんごみ", "gloss": "recyclable garbage", "topic": "garbage", "id": 2112630},
+  {"text": "粗大ごみ", "reading": "そだいごみ", "gloss": "oversized garbage", "topic": "garbage", "id": 1397030},
+  {"text": "生ごみ", "reading": "なまごみ", "gloss": "kitchen waste", "topic": "garbage", "id": 1378640},
+  {"text": "可燃", "reading": "かねん", "gloss": "burnable; combustible", "topic": "garbage", "id": 1191030},
+  {"text": "不燃", "reading": "ふねん", "gloss": "non-burnable", "topic": "garbage", "id": 1494510},
+  {"text": "缶", "reading": "かん", "gloss": "can", "topic": "garbage", "id": 1214540},
+  {"text": "瓶", "reading": "びん", "gloss": "bottle (glass)", "topic": "garbage", "id": 1491120},
+  {"text": "ペットボトル", "reading": "ペットボトル", "gloss": "plastic (PET) bottle", "topic": "garbage", "id": 1924950},
+  {"text": "段ボール", "reading": "だんボール", "gloss": "cardboard", "topic": "garbage", "id": 1419930},
+  {"text": "古紙", "reading": "こし", "gloss": "wastepaper", "topic": "garbage", "id": 1659930},
+  {"text": "キャップ", "reading": "キャップ", "gloss": "cap (of a bottle)", "topic": "garbage", "id": 1041620},
+  {"text": "ラベル", "reading": "ラベル", "gloss": "label", "topic": "garbage", "id": 1139720},
+  {"text": "リサイクル", "reading": "リサイクル", "gloss": "recycling", "topic": "garbage", "id": 1141350},
+  {"text": "収集", "reading": "しゅうしゅう", "gloss": "collection (of garbage)", "topic": "garbage", "id": 1594720},
+  {"text": "回収", "reading": "かいしゅう", "gloss": "collection; pickup", "topic": "garbage", "id": 1199470},
+  {"text": "ごみ置き場", "reading": "ごみおきば", "gloss": "garbage collection point", "topic": "garbage", "id": 2137950},
+  {"text": "指定", "reading": "してい", "gloss": "designated (e.g. bag)", "topic": "garbage", "id": 1309910},
+  {"text": "地震", "reading": "じしん", "gloss": "earthquake", "topic": "disasters & notices", "id": 1421210},
+  {"text": "台風", "reading": "たいふう", "gloss": "typhoon", "topic": "disasters & notices", "id": 1596780},
+  {"text": "火事", "reading": "かじ", "gloss": "fire", "topic": "disasters & notices", "id": 1193950},
+  {"text": "大雨", "reading": "おおあめ", "gloss": "heavy rain", "topic": "disasters & notices", "id": 1413070},
+  {"text": "揺れ", "reading": "ゆれ", "gloss": "shaking", "topic": "disasters & notices", "id": 1545700},
+  {"text": "震度", "reading": "しんど", "gloss": "seismic intensity", "topic": "disasters & notices", "id": 1366380},
+  {"text": "余震", "reading": "よしん", "gloss": "aftershock", "topic": "disasters & notices", "id": 1544290},
+  {"text": "津波", "reading": "つなみ", "gloss": "tsunami", "topic": "disasters & notices", "id": 1432220},
+  {"text": "洪水", "reading": "こうずい", "gloss": "flood", "topic": "disasters & notices", "id": 1279930},
+  {"text": "土砂崩れ", "reading": "どしゃくずれ", "gloss": "landslide", "topic": "disasters & notices", "id": 1445350},
+  {"text": "警報", "reading": "けいほう", "gloss": "warning (official)", "topic": "disasters & notices", "id": 1252520},
+  {"text": "注意報", "reading": "ちゅういほう", "gloss": "advisory", "topic": "disasters & notices", "id": 1426560},
+  {"text": "避難", "reading": "ひなん", "gloss": "evacuation", "topic": "disasters & notices", "id": 1484660},
+  {"text": "避難所", "reading": "ひなんじょ", "gloss": "evacuation shelter", "topic": "disasters & notices", "id": 1751840},
+  {"text": "避難場所", "reading": "ひなんばしょ", "gloss": "evacuation site", "topic": "disasters & notices", "id": 2399950},
+  {"text": "避難指示", "reading": "ひなんしじ", "gloss": "evacuation order", "topic": "disasters & notices", "id": 2831515},
+  {"text": "避難訓練", "reading": "ひなんくんれん", "gloss": "evacuation drill", "topic": "disasters & notices", "id": 1484670},
+  {"text": "防災", "reading": "ぼうさい", "gloss": "disaster prevention", "topic": "disasters & notices", "id": 1520360},
+  {"text": "停電", "reading": "ていでん", "gloss": "power outage", "topic": "disasters & notices", "id": 1435020},
+  {"text": "断水", "reading": "だんすい", "gloss": "water outage", "topic": "disasters & notices", "id": 1419660},
+  {"text": "非常食", "reading": "ひじょうしょく", "gloss": "emergency food", "topic": "disasters & notices", "id": 2161400},
+  {"text": "懐中電灯", "reading": "かいちゅうでんとう", "gloss": "flashlight", "topic": "disasters & notices", "id": 1200600},
+  {"text": "備蓄", "reading": "びちく", "gloss": "stockpile", "topic": "disasters & notices", "id": 1485710},
+  {"text": "安否", "reading": "あんぴ", "gloss": "safety (whether someone is safe)", "topic": "disasters & notices", "id": 1154230},
+  {"text": "消防署", "reading": "しょうぼうしょ", "gloss": "fire station", "topic": "disasters & notices", "id": 1350370},
+  {"text": "お知らせ", "reading": "おしらせ", "gloss": "notice; letter home", "topic": "school letters", "id": 1002420},
+  {"text": "保護者", "reading": "ほごしゃ", "gloss": "parent; guardian", "topic": "school letters", "id": 1513630},
+  {"text": "担任", "reading": "たんにん", "gloss": "homeroom teacher", "topic": "school letters", "id": 1418200},
+  {"text": "連絡帳", "reading": "れんらくちょう", "gloss": "contact notebook (school-home)", "topic": "school letters", "id": 2730970},
+  {"text": "持ち物", "reading": "もちもの", "gloss": "things to bring", "topic": "school letters", "id": 1605240},
+  {"text": "弁当", "reading": "べんとう", "gloss": "boxed lunch", "topic": "school letters", "id": 1513060},
+  {"text": "水筒", "reading": "すいとう", "gloss": "water bottle", "topic": "school letters", "id": 1371910},
+  {"text": "上履き", "reading": "うわばき", "gloss": "indoor shoes", "topic": "school letters", "id": 1354470},
+  {"text": "名札", "reading": "なふだ", "gloss": "name tag", "topic": "school letters", "id": 1531510},
+  {"text": "給食", "reading": "きゅうしょく", "gloss": "school lunch", "topic": "school letters", "id": 1230250},
+  {"text": "給食費", "reading": "きゅうしょくひ", "gloss": "school lunch fee", "topic": "school letters", "id": 2751170},
+  {"text": "行事", "reading": "ぎょうじ", "gloss": "event", "topic": "school letters", "id": 1281930},
+  {"text": "遠足", "reading": "えんそく", "gloss": "school trip; excursion", "topic": "school letters", "id": 1178260},
+  {"text": "運動会", "reading": "うんどうかい", "gloss": "sports day", "topic": "school letters", "id": 1172940},
+  {"text": "授業参観", "reading": "じゅぎょうさんかん", "gloss": "open class for parents", "topic": "school letters", "id": 2222720},
+  {"text": "保護者会", "reading": "ほごしゃかい", "gloss": "parents' meeting", "topic": "school letters", "id": 2741500},
+  {"text": "懇談", "reading": "こんだん", "gloss": "parent-teacher conference", "topic": "school letters", "id": 1289900},
+  {"text": "欠席", "reading": "けっせき", "gloss": "absence", "topic": "school letters", "id": 1254020},
+  {"text": "遅刻", "reading": "ちこく", "gloss": "being late", "topic": "school letters", "id": 1422050},
+  {"text": "早退", "reading": "そうたい", "gloss": "leaving early", "topic": "school letters", "id": 1400310},
+  {"text": "登校", "reading": "とうこう", "gloss": "going to school", "topic": "school letters", "id": 1444760},
+  {"text": "下校", "reading": "げこう", "gloss": "leaving school", "topic": "school letters", "id": 1184920},
+  {"text": "提出", "reading": "ていしゅつ", "gloss": "submission", "topic": "school letters", "id": 1436410},
+  {"text": "締め切り", "reading": "しめきり", "gloss": "deadline", "topic": "school letters", "id": 1594590},
+  {"text": "学級閉鎖", "reading": "がっきゅうへいさ", "gloss": "class closure (e.g. flu)", "topic": "school letters", "id": 1931970},
+  {"text": "駅", "reading": "えき", "gloss": "station", "topic": "transport", "id": 1175140},
+  {"text": "切符", "reading": "きっぷ", "gloss": "ticket", "topic": "transport", "id": 1385170},
+  {"text": "自転車", "reading": "じてんしゃ", "gloss": "bicycle", "topic": "transport", "id": 1318290},
+  {"text": "乗り換え", "reading": "のりかえ", "gloss": "transfer (trains)", "topic": "transport", "id": 1600460},
+  {"text": "改札", "reading": "かいさつ", "gloss": "ticket gate", "topic": "transport", "id": 1200840},
+  {"text": "運賃", "reading": "うんちん", "gloss": "fare", "topic": "transport", "id": 1172820},
+  {"text": "定期券", "reading": "ていきけん", "gloss": "commuter pass", "topic": "transport", "id": 1435510},
+  {"text": "時刻表", "reading": "じこくひょう", "gloss": "timetable", "topic": "transport", "id": 1316230},
+  {"text": "終電", "reading": "しゅうでん", "gloss": "last train", "topic": "transport", "id": 1332960},
+  {"text": "各駅停車", "reading": "かくえきていしゃ", "gloss": "local train", "topic": "transport", "id": 1204900},
+  {"text": "快速", "reading": "かいそく", "gloss": "rapid train", "topic": "transport", "id": 1200080},
+  {"text": "急行", "reading": "きゅうこう", "gloss": "express train", "topic": "transport", "id": 1228690},
+  {"text": "遅延", "reading": "ちえん", "gloss": "delay", "topic": "transport", "id": 1422030},
+  {"text": "運休", "reading": "うんきゅう", "gloss": "service suspension", "topic": "transport", "id": 1172730},
+  {"text": "停留所", "reading": "ていりゅうじょ", "gloss": "bus stop", "topic": "transport", "id": 1435080},
+  {"text": "整理券", "reading": "せいりけん", "gloss": "numbered ticket (bus)", "topic": "transport", "id": 1376260},
+  {"text": "駐輪場", "reading": "ちゅうりんじょう", "gloss": "bicycle parking", "topic": "transport", "id": 1427000},
+  {"text": "運転免許証", "reading": "うんてんめんきょしょう", "gloss": "driver's license", "topic": "transport", "id": 1667510},
+  {"text": "警察", "reading": "けいさつ", "gloss": "police", "topic": "transport", "id": 1252390},
+  {"text": "交番", "reading": "こうばん", "gloss": "police box", "topic": "transport", "id": 1272500},
+  {"text": "落とし物", "reading": "おとしもの", "gloss": "lost item", "topic": "transport", "id": 1589250},
+  {"text": "忘れ物", "reading": "わすれもの", "gloss": "item left behind", "topic": "transport", "id": 1519230},
+  {"text": "届ける", "reading": "とどける", "gloss": "to hand in; to report", "topic": "transport", "id": 1457210},
+  {"text": "遺失物", "reading": "いしつぶつ", "gloss": "lost property (formal)", "topic": "transport", "id": 1159330},
+  {"text": "電話番号", "reading": "でんわばんごう", "gloss": "phone number", "topic": "phone contracts", "id": 1443940},
+  {"text": "携帯電話", "reading": "けいたいでんわ", "gloss": "mobile phone", "topic": "phone contracts", "id": 1250690},
+  {"text": "スマートフォン", "reading": "スマートフォン", "gloss": "smartphone", "topic": "phone contracts", "id": 2304550},
+  {"text": "充電", "reading": "じゅうでん", "gloss": "charging (battery)", "topic": "phone contracts", "id": 1334390},
+  {"text": "プラン", "reading": "プラン", "gloss": "plan", "topic": "phone contracts", "id": 1115900},
+  {"text": "月額", "reading": "げつがく", "gloss": "monthly amount", "topic": "phone contracts", "id": 1255520},
+  {"text": "割引", "reading": "わりびき", "gloss": "discount", "topic": "phone contracts", "id": 1606950},
+  {"text": "機種変更", "reading": "きしゅへんこう", "gloss": "changing phone model", "topic": "phone contracts", "id": 2783180},
+  {"text": "端末", "reading": "たんまつ", "gloss": "device; handset", "topic": "phone contracts", "id": 1418950},
+  {"text": "回線", "reading": "かいせん", "gloss": "line (telecom)", "topic": "phone contracts", "id": 1199570},
+  {"text": "通信", "reading": "つうしん", "gloss": "data communication", "topic": "phone contracts", "id": 1433330},
+  {"text": "容量", "reading": "ようりょう", "gloss": "data allowance; capacity", "topic": "phone contracts", "id": 1545450},
+  {"text": "名義", "reading": "めいぎ", "gloss": "name (on a contract)", "topic": "phone contracts", "id": 1531410},
+  {"text": "本人確認", "reading": "ほんにんかくにん", "gloss": "identity verification", "topic": "phone contracts", "id": 2828131},
+  {"text": "分割払い", "reading": "ぶんかつばらい", "gloss": "installment payment", "topic": "phone contracts", "id": 1503300},
+  {"text": "一括", "reading": "いっかつ", "gloss": "lump sum", "topic": "phone contracts", "id": 1161470},
+  {"text": "違約金", "reading": "いやくきん", "gloss": "cancellation penalty", "topic": "phone contracts", "id": 1158980},
+  {"text": "請求書", "reading": "せいきゅうしょ", "gloss": "bill; invoice", "topic": "phone contracts", "id": 1381330},
+  {"text": "明細", "reading": "めいさい", "gloss": "itemized statement", "topic": "phone contracts", "id": 1532440},
+  {"text": "祭り", "reading": "まつり", "gloss": "festival", "topic": "culture", "id": 1604130},
+  {"text": "浴衣", "reading": "ゆかた", "gloss": "yukata (summer kimono)", "topic": "culture", "id": 1584990},
+  {"text": "屋台", "reading": "やたい", "gloss": "food stall", "topic": "culture", "id": 1182720},
+  {"text": "花火", "reading": "はなび", "gloss": "fireworks", "topic": "culture", "id": 1194580},
+  {"text": "温泉", "reading": "おんせん", "gloss": "hot spring", "topic": "culture", "id": 1183450},
+  {"text": "銭湯", "reading": "せんとう", "gloss": "public bath", "topic": "culture", "id": 1392420},
+  {"text": "湯船", "reading": "ゆぶね", "gloss": "bathtub", "topic": "culture", "id": 1448650},
+  {"text": "脱衣所", "reading": "だついじょ", "gloss": "changing room (bath)", "topic": "culture", "id": 1581570},
+  {"text": "茶道", "reading": "さどう", "gloss": "tea ceremony", "topic": "culture", "id": 1422770},
+  {"text": "抹茶", "reading": "まっちゃ", "gloss": "powdered green tea", "topic": "culture", "id": 1525220},
+  {"text": "和菓子", "reading": "わがし", "gloss": "Japanese sweets", "topic": "culture", "id": 1562020},
+  {"text": "正座", "reading": "せいざ", "gloss": "sitting formally on the knees", "topic": "culture", "id": 1595990},
+  {"text": "神社", "reading": "じんじゃ", "gloss": "Shinto shrine", "topic": "culture", "id": 1364670},
+  {"text": "鳥居", "reading": "とりい", "gloss": "torii gate", "topic": "culture", "id": 1430280},
+  {"text": "参拝", "reading": "さんぱい", "gloss": "visit to worship (shrine/temple)", "topic": "culture", "id": 1302570},
+  {"text": "手水", "reading": "ちょうず", "gloss": "water for purifying hands", "topic": "culture", "id": 1649630},
+  {"text": "賽銭", "reading": "さいせん", "gloss": "offertory money", "topic": "culture", "id": 1573140},
+  {"text": "お守り", "reading": "おまもり", "gloss": "amulet; charm", "topic": "culture", "id": 1002060},
+  {"text": "おみくじ", "reading": "おみくじ", "gloss": "fortune slip", "topic": "culture", "id": 1270440},
+  {"text": "花見", "reading": "はなみ", "gloss": "cherry-blossom viewing", "topic": "culture", "id": 1194660},
+  {"text": "盆踊り", "reading": "ぼんおどり", "gloss": "Bon festival dance", "topic": "culture", "id": 1523780},
+  {"text": "初詣", "reading": "はつもうで", "gloss": "first shrine visit of the year", "topic": "culture", "id": 1342720},
+  {"text": "おせち", "reading": "おせち", "gloss": "New Year food", "topic": "culture", "id": 2122790},
+  {"text": "年賀状", "reading": "ねんがじょう", "gloss": "New Year's card", "topic": "culture", "id": 1468250}
+ ],
+ "scenarios": [
+  {
+   "id": "daily-life-sc-001",
+   "titleEn": "Registering your new address",
+   "titleJa": "市役所で転入届を出す",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "city hall",
+   "setting": "You have just moved into a new city and go to the residents' section of city hall to file a moving-in notification.",
+   "learnerRole": "a foreign resident who moved in last week",
+   "partnerRole": "a clerk at the residents' counter",
+   "register": "polite",
+   "goals": [
+    "Say you want to file a moving-in notification",
+    "Show your residence card",
+    "Give your new address",
+    "Ask for a copy of your certificate of residence"
+   ],
+   "vocabulary": [
+    "転入届",
+    "在留カード",
+    "住所",
+    "住民票",
+    "用紙",
+    "記入"
+   ],
+   "phrases": [
+    "転入届を出したいんですが。",
+    "これが在留カードです。",
+    "住民票を一通お願いします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "こんにちは。今日はどうされましたか。",
+     "partnerEn": "Hello. How can I help you today?",
+     "intent": "Say you moved here and want to file a moving-in notification.",
+     "sample": "先週引っ越してきたので、転入届を出したいんですが。"
+    },
+    {
+     "partnerJa": "かしこまりました。在留カードをお持ちですか。",
+     "partnerEn": "Certainly. Do you have your residence card?",
+     "intent": "Hand over your residence card.",
+     "sample": "はい、これです。"
+    },
+    {
+     "partnerJa": "ありがとうございます。では、この用紙に新しい住所を記入してください。",
+     "partnerEn": "Thank you. Please fill in your new address on this form.",
+     "intent": "Ask whether you should write in katakana or in kanji.",
+     "sample": "名前はカタカナで書けばいいですか。"
+    },
+    {
+     "partnerJa": "はい、カタカナで大丈夫です。前の住所もお願いします。",
+     "partnerEn": "Yes, katakana is fine. Your previous address too, please.",
+     "intent": "Say you have written everything.",
+     "sample": "全部書きました。これでいいですか。"
+    },
+    {
+     "partnerJa": "はい、大丈夫です。ほかに何か必要な書類はありますか。",
+     "partnerEn": "Yes, that's fine. Do you need any other documents?",
+     "intent": "Ask for one copy of the certificate of residence.",
+     "sample": "住民票を一通お願いします。"
+    },
+    {
+     "partnerJa": "では、番号札を持ってお待ちください。呼ばれたらこちらへどうぞ。",
+     "partnerEn": "Then please wait with this number ticket. Come here when called.",
+     "intent": "Thank the clerk and confirm you will wait.",
+     "sample": "わかりました。ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-002",
+   "titleEn": "Joining National Health Insurance",
+   "titleJa": "国民健康保険に加入する",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "health insurance",
+   "setting": "After registering your address you move to the insurance counter to enroll in National Health Insurance.",
+   "learnerRole": "a newly arrived resident without company insurance",
+   "partnerRole": "a clerk at the insurance and pension counter",
+   "register": "polite",
+   "goals": [
+    "Say you want to enroll",
+    "Ask when the insurance card arrives",
+    "Ask about the premium and how to pay"
+   ],
+   "vocabulary": [
+    "国民健康保険",
+    "加入",
+    "保険証",
+    "保険料",
+    "口座振替"
+   ],
+   "phrases": [
+    "国民健康保険に加入したいです。",
+    "保険証はいつ届きますか。",
+    "口座振替にできますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "次の方、どうぞ。本日はどのようなご用件でしょうか。",
+     "partnerEn": "Next, please. What can I do for you today?",
+     "intent": "Say you want to join National Health Insurance.",
+     "sample": "国民健康保険に加入したいんですが。"
+    },
+    {
+     "partnerJa": "会社の健康保険には入っていらっしゃいませんか。",
+     "partnerEn": "You are not in a company health insurance plan?",
+     "intent": "Explain you are a student / not employed by a company.",
+     "sample": "はい、学生なので会社の保険はありません。"
+    },
+    {
+     "partnerJa": "わかりました。保険証は一週間ほどで郵便で届きます。",
+     "partnerEn": "I see. The insurance card will arrive by post in about a week.",
+     "intent": "Ask how much the premium is.",
+     "sample": "保険料は毎月いくらぐらいですか。"
+    },
+    {
+     "partnerJa": "前の年の所得によって変わりますが、最初は納付書をお送りします。",
+     "partnerEn": "It depends on last year's income, but first we'll send you a payment slip.",
+     "intent": "Ask whether you can pay by automatic bank transfer.",
+     "sample": "口座振替にすることはできますか。"
+    },
+    {
+     "partnerJa": "はい、できます。こちらの申込書に口座の情報を書いてください。",
+     "partnerEn": "Yes. Please write your account details on this application form.",
+     "intent": "Say you will fill it in and thank them.",
+     "sample": "わかりました。書きます。ありがとうございます。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-003",
+   "titleEn": "Seeing a doctor for a cold",
+   "titleJa": "風邪で病院に行く",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "hospital",
+   "setting": "You have had a fever and a cough for two days and visit a small clinic for internal medicine.",
+   "learnerRole": "a patient visiting the clinic for the first time",
+   "partnerRole": "a receptionist, then the doctor",
+   "register": "polite",
+   "goals": [
+    "Say it is your first visit",
+    "Describe your symptoms and how long you have had them",
+    "Mention an allergy",
+    "Understand the doctor's advice"
+   ],
+   "vocabulary": [
+    "診察",
+    "保険証",
+    "問診票",
+    "症状",
+    "熱",
+    "咳",
+    "アレルギー"
+   ],
+   "phrases": [
+    "初めてなんですが。",
+    "おとといから熱があります。",
+    "咳が止まりません。",
+    "薬のアレルギーがあります。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "こんにちは。こちらは初めてですか。",
+     "partnerEn": "Hello. Is this your first time here?",
+     "intent": "Say yes and hand over your insurance card.",
+     "sample": "はい、初めてです。保険証はこれです。"
+    },
+    {
+     "partnerJa": "では、この問診票に記入して、お待ちください。",
+     "partnerEn": "Then please fill in this questionnaire and wait.",
+     "intent": "Ask whether you can write the answers in English.",
+     "sample": "英語で書いてもいいですか。"
+    },
+    {
+     "partnerJa": "日本語か英語、どちらでも大丈夫ですよ。",
+     "partnerEn": "Japanese or English, either is fine.",
+     "intent": "Thank the receptionist.",
+     "sample": "ありがとうございます。"
+    },
+    {
+     "partnerJa": "（診察室で）今日はどうしましたか。",
+     "partnerEn": "(In the exam room) What seems to be the problem today?",
+     "intent": "Say you have had a fever and a cough since the day before yesterday.",
+     "sample": "おとといから熱があって、咳も出ます。"
+    },
+    {
+     "partnerJa": "熱は何度ぐらいですか。",
+     "partnerEn": "About how high is your fever?",
+     "intent": "Say it was 38 degrees this morning.",
+     "sample": "今朝は三十八度でした。"
+    },
+    {
+     "partnerJa": "喉も痛いですか。何か薬のアレルギーはありますか。",
+     "partnerEn": "Does your throat hurt too? Do you have any drug allergies?",
+     "intent": "Say your throat hurts a little and that you are allergic to penicillin.",
+     "sample": "喉は少し痛いです。ペニシリンのアレルギーがあります。"
+    },
+    {
+     "partnerJa": "わかりました。風邪ですね。三日分の薬を出しますから、ゆっくり休んでください。",
+     "partnerEn": "I see. It's a cold. I'll prescribe three days of medicine, so rest well.",
+     "intent": "Ask whether you can go to work tomorrow.",
+     "sample": "明日、仕事に行ってもいいですか。"
+    },
+    {
+     "partnerJa": "熱が下がるまでは、休んだほうがいいですよ。",
+     "partnerEn": "You'd better rest until the fever goes down.",
+     "intent": "Say you understand and thank the doctor.",
+     "sample": "わかりました。ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-004",
+   "titleEn": "Picking up medicine",
+   "titleJa": "薬局で薬をもらう",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "pharmacy",
+   "setting": "You take the prescription from the clinic to the pharmacy next door.",
+   "learnerRole": "a patient with a prescription",
+   "partnerRole": "a pharmacist",
+   "register": "polite",
+   "goals": [
+    "Hand in the prescription",
+    "Understand how to take the medicine",
+    "Ask about side effects"
+   ],
+   "vocabulary": [
+    "処方箋",
+    "薬局",
+    "食後",
+    "副作用",
+    "錠剤"
+   ],
+   "phrases": [
+    "処方箋をお願いします。",
+    "一日何回飲みますか。",
+    "副作用はありますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "こんにちは。処方箋をお預かりします。",
+     "partnerEn": "Hello. I'll take your prescription.",
+     "intent": "Hand it over and say please.",
+     "sample": "はい、お願いします。"
+    },
+    {
+     "partnerJa": "お薬は二種類です。こちらの錠剤は一日三回、食後に一錠ずつ飲んでください。",
+     "partnerEn": "There are two kinds. Take one of these tablets three times a day after meals.",
+     "intent": "Ask how to take the other medicine.",
+     "sample": "もう一つの薬はどうやって飲みますか。"
+    },
+    {
+     "partnerJa": "こちらは咳が出るときだけ、一日二回までです。",
+     "partnerEn": "This one is only when you're coughing, up to twice a day.",
+     "intent": "Ask whether there are side effects.",
+     "sample": "副作用はありますか。"
+    },
+    {
+     "partnerJa": "少し眠くなることがありますので、飲んだ後は運転しないでください。",
+     "partnerEn": "It may make you a little sleepy, so please don't drive after taking it.",
+     "intent": "Say you understand and ask how much it costs.",
+     "sample": "わかりました。おいくらですか。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-005",
+   "titleEn": "Opening a bank account",
+   "titleJa": "銀行で口座を作る",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "bank",
+   "setting": "You need a bank account to receive your salary and go to a branch of a local bank.",
+   "learnerRole": "a new employee who needs an account",
+   "partnerRole": "a bank clerk",
+   "register": "polite",
+   "goals": [
+    "Say you want to open an account",
+    "Show ID and explain your purpose",
+    "Set a PIN",
+    "Ask when the cash card will arrive"
+   ],
+   "vocabulary": [
+    "口座",
+    "通帳",
+    "キャッシュカード",
+    "暗証番号",
+    "身分証明書",
+    "印鑑"
+   ],
+   "phrases": [
+    "口座を作りたいんですが。",
+    "給料の振込に使います。",
+    "カードはいつ届きますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。本日はどのようなご用件でしょうか。",
+     "partnerEn": "Welcome. What can I do for you today?",
+     "intent": "Say you want to open a new account.",
+     "sample": "新しく口座を作りたいんですが。"
+    },
+    {
+     "partnerJa": "かしこまりました。身分証明書と印鑑はお持ちですか。",
+     "partnerEn": "Certainly. Do you have ID and a personal seal?",
+     "intent": "Show your residence card and say you have no seal and ask if a signature is fine.",
+     "sample": "在留カードはあります。印鑑はないんですが、サインでもいいですか。"
+    },
+    {
+     "partnerJa": "はい、サインでも大丈夫です。口座は何にお使いになりますか。",
+     "partnerEn": "Yes, a signature is fine. What will you use the account for?",
+     "intent": "Say it is for receiving your salary.",
+     "sample": "会社の給料の振込に使います。"
+    },
+    {
+     "partnerJa": "会社のお名前とお電話番号も、こちらにお書きください。",
+     "partnerEn": "Please also write your company's name and phone number here.",
+     "intent": "Say you have written them.",
+     "sample": "はい、書きました。"
+    },
+    {
+     "partnerJa": "では、こちらの機械で四桁の暗証番号を入力してください。",
+     "partnerEn": "Now please enter a four-digit PIN on this machine.",
+     "intent": "Say you have entered it.",
+     "sample": "入力しました。"
+    },
+    {
+     "partnerJa": "通帳は今日お渡しします。キャッシュカードは一週間ほどでご自宅に郵送します。",
+     "partnerEn": "We'll give you the bankbook today. The cash card will be mailed to your home in about a week.",
+     "intent": "Ask if you can use the account before the card arrives.",
+     "sample": "カードが届く前でも、口座は使えますか。"
+    },
+    {
+     "partnerJa": "はい、通帳があれば窓口でお引き出しいただけます。",
+     "partnerEn": "Yes, with the bankbook you can withdraw at the counter.",
+     "intent": "Thank the clerk.",
+     "sample": "わかりました。ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-006",
+   "titleEn": "Sending a parcel home",
+   "titleJa": "郵便局で小包を送る",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "post office",
+   "setting": "You want to send a box of gifts to your family abroad from the post office.",
+   "learnerRole": "a customer sending a parcel",
+   "partnerRole": "a post office clerk",
+   "register": "polite",
+   "goals": [
+    "Say where you want to send the parcel",
+    "Say what is inside",
+    "Choose a shipping method by price and time"
+   ],
+   "vocabulary": [
+    "小包",
+    "伝票",
+    "宛先",
+    "差出人",
+    "郵便局"
+   ],
+   "phrases": [
+    "これをアメリカに送りたいです。",
+    "中身はお菓子と本です。",
+    "一番安い方法でお願いします。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。お荷物ですか。",
+     "partnerEn": "Welcome. Is this a package?",
+     "intent": "Say you want to send this box abroad.",
+     "sample": "はい、この小包を国に送りたいんですが。"
+    },
+    {
+     "partnerJa": "どちらの国ですか。中身は何でしょうか。",
+     "partnerEn": "Which country? What is inside?",
+     "intent": "Name the country and the contents.",
+     "sample": "カナダです。中身はお菓子と本です。"
+    },
+    {
+     "partnerJa": "航空便なら一週間ぐらい、船便なら二か月ぐらいかかります。",
+     "partnerEn": "By air it takes about a week, by sea about two months.",
+     "intent": "Ask the price of each.",
+     "sample": "それぞれいくらですか。"
+    },
+    {
+     "partnerJa": "航空便は四千円、船便は二千円ぐらいです。",
+     "partnerEn": "Air is about 4,000 yen, sea about 2,000 yen.",
+     "intent": "Choose air mail.",
+     "sample": "じゃあ、航空便でお願いします。"
+    },
+    {
+     "partnerJa": "では、この伝票に宛先と差出人を書いてください。",
+     "partnerEn": "Then please write the recipient and sender on this waybill.",
+     "intent": "Ask whether the address should be in English.",
+     "sample": "宛先は英語で書いてもいいですか。"
+    },
+    {
+     "partnerJa": "はい、英語で大丈夫です。国の名前は大きく書いてくださいね。",
+     "partnerEn": "Yes, English is fine. Please write the country name large.",
+     "intent": "Say you understand and hand it over after writing.",
+     "sample": "わかりました。書きました。お願いします。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-007",
+   "titleEn": "Asking a neighbor about garbage day",
+   "titleJa": "ごみの出し方を聞く",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "garbage",
+   "setting": "On your first morning in a new apartment you see a neighbor at the garbage collection point and ask about the rules.",
+   "learnerRole": "a new resident",
+   "partnerRole": "an older neighbor",
+   "register": "polite",
+   "goals": [
+    "Greet the neighbor and introduce yourself",
+    "Ask which days each type of garbage goes out",
+    "Ask where to get designated bags"
+   ],
+   "vocabulary": [
+    "燃えるごみ",
+    "資源ごみ",
+    "ごみ置き場",
+    "分別",
+    "袋"
+   ],
+   "phrases": [
+    "燃えるごみは何曜日ですか。",
+    "ペットボトルはどうすればいいですか。",
+    "指定の袋はどこで買えますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "おはようございます。新しく越してこられた方ですか。",
+     "partnerEn": "Good morning. Are you the one who just moved in?",
+     "intent": "Greet and introduce yourself.",
+     "sample": "おはようございます。二〇三号室に引っ越してきたリーです。よろしくお願いします。"
+    },
+    {
+     "partnerJa": "こちらこそ。ごみの出し方はもう聞きましたか。",
+     "partnerEn": "Likewise. Have you heard how to put out garbage yet?",
+     "intent": "Say not yet and ask which day burnable garbage goes out.",
+     "sample": "いいえ、まだです。燃えるごみは何曜日ですか。"
+    },
+    {
+     "partnerJa": "燃えるごみは月曜と木曜。朝八時までにここに出してね。",
+     "partnerEn": "Burnable is Monday and Thursday. Put it here by 8 a.m.",
+     "intent": "Ask about plastic bottles and cans.",
+     "sample": "ペットボトルや缶はどうすればいいですか。"
+    },
+    {
+     "partnerJa": "それは資源ごみだから、水曜日。キャップとラベルは外してね。",
+     "partnerEn": "Those are recyclables, so Wednesday. Take off the caps and labels.",
+     "intent": "Ask where to buy the designated bags.",
+     "sample": "わかりました。指定の袋はどこで買えますか。"
+    },
+    {
+     "partnerJa": "駅前のスーパーで売ってますよ。市役所でカレンダーももらえるわよ。",
+     "partnerEn": "The supermarket by the station sells them. You can also get a calendar at city hall.",
+     "intent": "Thank the neighbor warmly.",
+     "sample": "親切にありがとうございます。助かりました。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-008",
+   "titleEn": "An evacuation warning",
+   "titleJa": "避難指示が出たとき",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "disaster",
+   "setting": "A strong typhoon is approaching. An evacuation order is announced for your area and you go out to ask a neighborhood association volunteer what to do.",
+   "learnerRole": "a resident who is unsure what the announcement means",
+   "partnerRole": "a neighborhood volunteer in a rain jacket",
+   "register": "polite",
+   "goals": [
+    "Ask what the announcement said",
+    "Ask where the evacuation shelter is",
+    "Ask what to bring",
+    "Say you will contact your family"
+   ],
+   "vocabulary": [
+    "避難指示",
+    "避難所",
+    "警報",
+    "停電",
+    "懐中電灯",
+    "非常食"
+   ],
+   "phrases": [
+    "今の放送は何と言っていましたか。",
+    "避難所はどこですか。",
+    "何を持って行けばいいですか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "大丈夫ですか。この地域に避難指示が出ましたよ。",
+     "partnerEn": "Are you okay? An evacuation order has been issued for this area.",
+     "intent": "Say you did not understand the announcement well and ask what it said.",
+     "sample": "すみません、放送がよくわからなかったんですが、何と言っていましたか。"
+    },
+    {
+     "partnerJa": "大雨の警報が出ていて、川の近くの人はすぐ避難してください、ということです。",
+     "partnerEn": "There's a heavy-rain warning, and people near the river should evacuate right away.",
+     "intent": "Ask where the shelter is.",
+     "sample": "避難所はどこですか。"
+    },
+    {
+     "partnerJa": "この道をまっすぐ行った小学校の体育館です。歩いて十分ぐらいです。",
+     "partnerEn": "It's the gym of the elementary school straight down this road. About ten minutes' walk.",
+     "intent": "Ask what you should bring.",
+     "sample": "何を持って行けばいいですか。"
+    },
+    {
+     "partnerJa": "水と非常食、懐中電灯、それから常備薬があれば持ってきてください。",
+     "partnerEn": "Water, emergency food, a flashlight, and any regular medicine you take.",
+     "intent": "Ask whether you can bring your pet.",
+     "sample": "犬がいるんですが、一緒に行ってもいいですか。"
+    },
+    {
+     "partnerJa": "ペットは入り口の近くの別の場所になりますが、大丈夫ですよ。",
+     "partnerEn": "Pets go in a separate area near the entrance, but it's fine.",
+     "intent": "Ask what to do if the power goes out.",
+     "sample": "停電したら、どうすればいいですか。"
+    },
+    {
+     "partnerJa": "避難所には発電機がありますから、心配しないでください。",
+     "partnerEn": "The shelter has a generator, so don't worry.",
+     "intent": "Say you will contact your family first and then go.",
+     "sample": "わかりました。家族に連絡してから、すぐ行きます。"
+    },
+    {
+     "partnerJa": "気をつけて。暗くなる前に来てくださいね。",
+     "partnerEn": "Take care. Please come before it gets dark.",
+     "intent": "Thank the volunteer.",
+     "sample": "ありがとうございます。すぐ準備します。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-009",
+   "titleEn": "Asking about a school letter",
+   "titleJa": "学校のお知らせについて聞く",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "school",
+   "setting": "Your child brought home a letter about a school excursion. You call the homeroom teacher to check some details.",
+   "learnerRole": "a parent",
+   "partnerRole": "the child's homeroom teacher",
+   "register": "polite",
+   "goals": [
+    "Say who you are",
+    "Ask about the things to bring",
+    "Ask what happens if it rains",
+    "Confirm the deadline for the permission form"
+   ],
+   "vocabulary": [
+    "お知らせ",
+    "遠足",
+    "持ち物",
+    "弁当",
+    "水筒",
+    "締め切り"
+   ],
+   "phrases": [
+    "〇〇の母です。",
+    "お知らせについて伺いたいんですが。",
+    "雨の場合はどうなりますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "はい、第二小学校三年一組、担任の森です。",
+     "partnerEn": "Hello, this is Mori, homeroom teacher of Year 3 Class 1, Daini Elementary.",
+     "intent": "Say you are Ken's mother and want to ask about the letter.",
+     "sample": "いつもお世話になっております。ケンの母です。遠足のお知らせについて伺いたいんですが。"
+    },
+    {
+     "partnerJa": "はい、どうぞ。",
+     "partnerEn": "Yes, go ahead.",
+     "intent": "Ask whether the lunch should be a boxed lunch from home.",
+     "sample": "持ち物に「お弁当」とありますが、家から持って行くんですか。"
+    },
+    {
+     "partnerJa": "はい、お弁当と水筒をお願いします。おやつは三百円までです。",
+     "partnerEn": "Yes, a boxed lunch and water bottle, please. Snacks up to 300 yen.",
+     "intent": "Ask what happens if it rains.",
+     "sample": "雨の場合はどうなりますか。"
+    },
+    {
+     "partnerJa": "雨の場合は、次の日に延期になります。その日も、お弁当が必要です。",
+     "partnerEn": "If it rains, it's postponed to the next day. Lunch is needed that day too.",
+     "intent": "Ask when the permission slip is due.",
+     "sample": "参加の用紙はいつまでに出せばいいですか。"
+    },
+    {
+     "partnerJa": "金曜日までに連絡帳と一緒に出してください。",
+     "partnerEn": "Please hand it in with the contact notebook by Friday.",
+     "intent": "Confirm and thank the teacher.",
+     "sample": "金曜日までですね。わかりました。ありがとうございました。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-010",
+   "titleEn": "Renting an apartment",
+   "titleJa": "不動産屋で部屋を探す",
+   "jlpt": 3,
+   "ilr": "2",
+   "category": "housing",
+   "setting": "You visit a real-estate agent near the station to find a one-room apartment and ask about moving-in costs and utilities.",
+   "learnerRole": "a person looking for an apartment",
+   "partnerRole": "a real-estate agent",
+   "register": "polite",
+   "goals": [
+    "Give your budget and preferred area",
+    "Ask about deposit, key money and fees",
+    "Ask whether a guarantor is needed",
+    "Ask how to start utilities"
+   ],
+   "vocabulary": [
+    "家賃",
+    "敷金",
+    "礼金",
+    "保証人",
+    "間取り",
+    "管理費",
+    "契約"
+   ],
+   "phrases": [
+    "家賃は六万円以内がいいです。",
+    "敷金と礼金はいくらですか。",
+    "保証人がいないんですが。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。お部屋をお探しですか。",
+     "partnerEn": "Welcome. Are you looking for a place?",
+     "intent": "Say yes, a one-room place near the station.",
+     "sample": "はい、駅の近くでワンルームを探しています。"
+    },
+    {
+     "partnerJa": "ご予算はどのくらいでしょうか。",
+     "partnerEn": "What is your budget?",
+     "intent": "Say rent under 60,000 yen including maintenance fee.",
+     "sample": "管理費込みで、家賃は六万円以内がいいです。"
+    },
+    {
+     "partnerJa": "それでしたら、こちらはいかがでしょう。駅から徒歩七分、家賃五万五千円、管理費三千円です。",
+     "partnerEn": "Then how about this one? Seven minutes from the station, rent 55,000, maintenance 3,000.",
+     "intent": "Ask about the deposit and key money.",
+     "sample": "敷金と礼金はいくらですか。"
+    },
+    {
+     "partnerJa": "敷金が一か月分、礼金はありません。",
+     "partnerEn": "The deposit is one month's rent; no key money.",
+     "intent": "Ask whether you can see the room.",
+     "sample": "いいですね。部屋を見ることはできますか。"
+    },
+    {
+     "partnerJa": "はい、今日の午後でしたらご案内できます。",
+     "partnerEn": "Yes, I can show you this afternoon.",
+     "intent": "Ask whether a guarantor is necessary, saying you do not have one in Japan.",
+     "sample": "日本に保証人がいないんですが、大丈夫でしょうか。"
+    },
+    {
+     "partnerJa": "保証会社を使えば大丈夫です。家賃の半月分ほどかかりますが。",
+     "partnerEn": "It's fine if you use a guarantor company. It costs about half a month's rent.",
+     "intent": "Say that is fine and ask about the contract period.",
+     "sample": "それで大丈夫です。契約は何年ですか。"
+    },
+    {
+     "partnerJa": "二年契約で、その後は更新になります。",
+     "partnerEn": "It's a two-year contract, then renewal.",
+     "intent": "Ask how to start electricity, gas and water.",
+     "sample": "電気やガス、水道の手続きはどうすればいいですか。"
+    },
+    {
+     "partnerJa": "電気と水道はネットか電話で申し込めます。ガスは開栓に立ち会いが必要です。",
+     "partnerEn": "Electricity and water can be applied for online or by phone. Gas needs you present when it's turned on.",
+     "intent": "Ask whether they can help you with the gas appointment.",
+     "sample": "ガスの予約を手伝っていただけますか。"
+    },
+    {
+     "partnerJa": "もちろんです。ご契約の日に一緒にお電話しましょう。",
+     "partnerEn": "Of course. Let's call together on the day you sign.",
+     "intent": "Thank them and say you'd like to see the room this afternoon.",
+     "sample": "ありがとうございます。では、午後に部屋を見せてください。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-011",
+   "titleEn": "Getting a mobile phone contract",
+   "titleJa": "携帯電話の契約をする",
+   "jlpt": 3,
+   "ilr": "1+",
+   "category": "mobile phone",
+   "setting": "You go to a mobile phone shop to get a new contract with a cheaper plan.",
+   "learnerRole": "a customer",
+   "partnerRole": "a shop staff member",
+   "register": "polite",
+   "goals": [
+    "Say you want a new contract",
+    "Compare plans by price and data",
+    "Ask about cancellation fees",
+    "Show ID"
+   ],
+   "vocabulary": [
+    "契約",
+    "プラン",
+    "月額",
+    "容量",
+    "違約金",
+    "本人確認"
+   ],
+   "phrases": [
+    "新しく契約したいんですが。",
+    "一番安いプランはどれですか。",
+    "途中で解約したら、違約金はかかりますか。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "いらっしゃいませ。本日はどのようなご用件ですか。",
+     "partnerEn": "Welcome. What can I help you with today?",
+     "intent": "Say you want a new contract.",
+     "sample": "新しく携帯の契約をしたいんですが。"
+    },
+    {
+     "partnerJa": "かしこまりました。データはどのくらいお使いになりますか。",
+     "partnerEn": "Certainly. How much data do you use?",
+     "intent": "Say not much, mostly Wi-Fi at home.",
+     "sample": "家ではWi-Fiなので、あまり使いません。"
+    },
+    {
+     "partnerJa": "それでしたら、こちらの三ギガのプランが月額千五百円でおすすめです。",
+     "partnerEn": "Then this 3 GB plan at 1,500 yen a month is a good choice.",
+     "intent": "Ask what happens if you go over the data.",
+     "sample": "三ギガを超えたら、どうなりますか。"
+    },
+    {
+     "partnerJa": "速度は遅くなりますが、追加料金はかかりません。",
+     "partnerEn": "The speed drops, but there's no extra charge.",
+     "intent": "Ask about cancellation fees.",
+     "sample": "途中で解約したら、違約金はかかりますか。"
+    },
+    {
+     "partnerJa": "このプランは違約金はございません。",
+     "partnerEn": "This plan has no cancellation fee.",
+     "intent": "Say you will take it.",
+     "sample": "じゃあ、そのプランにします。"
+    },
+    {
+     "partnerJa": "では、本人確認のため、在留カードかパスポートをお願いします。",
+     "partnerEn": "Then for identity verification, your residence card or passport, please.",
+     "intent": "Hand over your residence card.",
+     "sample": "はい、在留カードです。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sc-012",
+   "titleEn": "Reporting a lost wallet at a police box",
+   "titleJa": "交番で財布をなくしたと届ける",
+   "jlpt": 4,
+   "ilr": "1",
+   "category": "lost item",
+   "setting": "You realize your wallet is gone after getting off the bus and go to the nearest police box.",
+   "learnerRole": "a person who has lost a wallet",
+   "partnerRole": "a police officer",
+   "register": "polite",
+   "goals": [
+    "Say what you lost and when",
+    "Describe the item",
+    "Give your contact details"
+   ],
+   "vocabulary": [
+    "交番",
+    "財布",
+    "落とし物",
+    "電話番号",
+    "届ける"
+   ],
+   "phrases": [
+    "財布をなくしてしまいました。",
+    "黒い革の財布です。",
+    "見つかったら連絡をください。"
+   ],
+   "turns": [
+    {
+     "partnerJa": "どうしましたか。",
+     "partnerEn": "What's the matter?",
+     "intent": "Say you lost your wallet.",
+     "sample": "すみません、財布をなくしてしまいました。"
+    },
+    {
+     "partnerJa": "いつ、どこでなくしましたか。",
+     "partnerEn": "When and where did you lose it?",
+     "intent": "Say probably on the bus about an hour ago.",
+     "sample": "一時間ぐらい前に、たぶんバスの中で落としたと思います。"
+    },
+    {
+     "partnerJa": "どんな財布ですか。中には何が入っていましたか。",
+     "partnerEn": "What kind of wallet? What was inside?",
+     "intent": "Describe: black leather, about 10,000 yen and a cash card.",
+     "sample": "黒い革の財布で、一万円ぐらいとキャッシュカードが入っていました。"
+    },
+    {
+     "partnerJa": "バス会社にも連絡しておきましょう。こちらの用紙に、お名前と電話番号を書いてください。",
+     "partnerEn": "Let's contact the bus company too. Please write your name and phone number on this form.",
+     "intent": "Say you've written them.",
+     "sample": "はい、書きました。"
+    },
+    {
+     "partnerJa": "カードはすぐに銀行に連絡して止めたほうがいいですよ。",
+     "partnerEn": "You'd better call your bank right away and stop the card.",
+     "intent": "Say you will call the bank now.",
+     "sample": "そうですね。今すぐ銀行に電話します。"
+    },
+    {
+     "partnerJa": "見つかったら、こちらから電話しますね。",
+     "partnerEn": "If it's found, we'll call you.",
+     "intent": "Thank the officer politely.",
+     "sample": "よろしくお願いします。ありがとうございました。"
+    }
+   ]
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "daily-life-dl-001",
+   "title": "Getting a certificate of residence",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "city hall",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "窓口の職員",
+     "voice": "female",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "マリア",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "questions": [
+    {
+     "question": "Why does Maria need the certificate?",
+     "choices": [
+      "To open a bank account",
+      "To submit to her company",
+      "To rent an apartment"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "How much is the fee?",
+     "choices": [
+      "100 yen",
+      "200 yen",
+      "300 yen",
+      "It is free"
+     ],
+     "answer": 2
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "次の方、どうぞ。",
+     "en": "Next, please.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "すみません、住民票がほしいんですが。",
+     "en": "Excuse me, I'd like a certificate of residence.",
+     "gaps": [
+      "住民票"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "何通必要ですか。",
+     "en": "How many copies do you need?",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "一通お願いします。会社に出します。",
+     "en": "One, please. It's for my company.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "では、この用紙に記入してください。在留カードも見せてください。",
+     "en": "Then please fill in this form. And show me your residence card.",
+     "gaps": [
+      "用紙",
+      "在留カード"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、これです。",
+     "en": "Here it is.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "手数料は三百円です。番号札を持って、少々お待ちください。",
+     "en": "The fee is 300 yen. Please take a number ticket and wait a moment.",
+     "gaps": [
+      "手数料",
+      "番号札"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "わかりました。ありがとうございます。",
+     "en": "Understood. Thank you.",
+     "gaps": []
+    }
+   ]
+  },
+  {
+   "id": "daily-life-dl-002",
+   "title": "At the clinic reception",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "hospital",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "受付",
+     "voice": "female",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "トム",
+     "voice": "male",
+     "age": "adult"
+    }
+   ],
+   "questions": [
+    {
+     "question": "What are Tom's symptoms?",
+     "choices": [
+      "Fever and cough",
+      "Headache and nausea",
+      "Stomachache and diarrhea",
+      "A cut on his hand"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "About how long will he wait?",
+     "choices": [
+      "30 minutes",
+      "10 minutes",
+      "One hour"
+     ],
+     "answer": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "すみません、予約はしていないんですが、診察してもらえますか。",
+     "en": "Excuse me, I don't have an appointment, but can I see a doctor?",
+     "gaps": [
+      "予約",
+      "診察"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "はい、大丈夫ですよ。保険証はお持ちですか。",
+     "en": "Yes, that's fine. Do you have your insurance card?",
+     "gaps": [
+      "保険証"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい、どうぞ。",
+     "en": "Yes, here you are.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "今日はどうされましたか。",
+     "en": "What brings you in today?",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "昨日から頭痛がひどくて、少し吐き気もあります。",
+     "en": "I've had a bad headache since yesterday and a little nausea.",
+     "gaps": [
+      "頭痛",
+      "吐き気"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "わかりました。こちらの問診票にご記入ください。今、三人お待ちです。",
+     "en": "I see. Please fill in this questionnaire. There are three people waiting now.",
+     "gaps": [
+      "問診票"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "どのくらい待ちますか。",
+     "en": "How long will I wait?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "三十分ぐらいだと思います。",
+     "en": "About thirty minutes, I think.",
+     "gaps": []
+    }
+   ]
+  },
+  {
+   "id": "daily-life-dl-003",
+   "title": "Oversized garbage",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "garbage",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "清掃センター",
+     "voice": "male",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "アナ",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "questions": [
+    {
+     "question": "Where should Ana put the chair?",
+     "choices": [
+      "At the garbage collection point",
+      "In front of her entrance",
+      "At the convenience store",
+      "At the cleaning center"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What must she do before putting it out?",
+     "choices": [
+      "Call again on Tuesday",
+      "Cut it into small pieces",
+      "Buy and attach a disposal ticket"
+     ],
+     "answer": 2
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "もしもし、古いいすを捨てたいんですが、どうすればいいですか。",
+     "en": "Hello, I want to throw away an old chair. What should I do?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "いすは粗大ごみになりますので、事前の申し込みが必要です。",
+     "en": "A chair counts as oversized garbage, so you need to apply in advance.",
+     "gaps": [
+      "粗大ごみ"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "そうなんですか。料金はかかりますか。",
+     "en": "Is that so? Is there a charge?",
+     "gaps": [
+      "料金"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "はい、いす一つで四百円です。コンビニで処理券を買って、いすに貼ってください。",
+     "en": "Yes, 400 yen for one chair. Buy a disposal ticket at a convenience store and stick it on the chair.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "いつ出せばいいですか。",
+     "en": "When should I put it out?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "一番早い収集は来週の水曜日です。朝八時までに出してください。",
+     "en": "The earliest collection is next Wednesday. Please put it out by 8 a.m.",
+     "gaps": [
+      "収集"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "ごみ置き場に出してもいいですか。",
+     "en": "Can I put it at the garbage point?",
+     "gaps": [
+      "ごみ置き場"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "いえ、粗大ごみは玄関の前に出してください。",
+     "en": "No, please put oversized garbage in front of your entrance.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "わかりました。では、水曜日でお願いします。",
+     "en": "Understood. Wednesday, please.",
+     "gaps": []
+    }
+   ]
+  },
+  {
+   "id": "daily-life-dl-004",
+   "title": "Earthquake at the office",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "disaster",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "佐々木",
+     "voice": "male",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "リン",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "questions": [
+    {
+     "question": "What did the news say?",
+     "choices": [
+      "There is no tsunami risk",
+      "A tsunami is coming",
+      "Everyone must evacuate"
+     ],
+     "answer": 0
+    },
+    {
+     "question": "Why can't Lin reach her family?",
+     "choices": [
+      "Her phone battery is dead",
+      "The phone lines are not connecting",
+      "She lost her phone",
+      "There is a power outage"
+     ],
+     "answer": 1
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "今の揺れ、大きかったですね。",
+     "en": "That shaking just now was big, wasn't it?",
+     "gaps": [
+      "揺れ"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "震度四だそうです。津波の心配はないとニュースで言っていました。",
+     "en": "They say it was seismic intensity 4. The news said there's no tsunami risk.",
+     "gaps": [
+      "震度",
+      "津波"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "よかった。電車は止まっていますか。",
+     "en": "Good. Are the trains stopped?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "点検のため、しばらく運休するそうです。",
+     "en": "They'll be suspended for a while for inspections.",
+     "gaps": [
+      "運休"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "家族に安否を知らせたいんですが、電話がつながりません。",
+     "en": "I want to let my family know I'm safe, but I can't get through by phone.",
+     "gaps": [
+      "安否"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "災害用の伝言サービスか、メッセージアプリを使うといいですよ。",
+     "en": "You should use the disaster message service or a messaging app.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "そうします。余震もあるかもしれませんね。",
+     "en": "I'll do that. There might be aftershocks too.",
+     "gaps": [
+      "余震"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ええ、しばらく机の近くにいて、気をつけましょう。",
+     "en": "Yes, let's stay near our desks for a while and be careful.",
+     "gaps": []
+    }
+   ]
+  },
+  {
+   "id": "daily-life-dl-005",
+   "title": "A note from the teacher",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "school",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "ジョン",
+     "voice": "male",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "エミ",
+     "voice": "female",
+     "age": "adult"
+    }
+   ],
+   "questions": [
+    {
+     "question": "Who will go to the school?",
+     "choices": [
+      "Emi",
+      "John",
+      "Both of them",
+      "Neither of them"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What must adults bring?",
+     "choices": [
+      "A boxed lunch",
+      "Slippers",
+      "A name tag"
+     ],
+     "answer": 1
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "A",
+     "ja": "エミ、学校からお知らせが来たよ。授業参観って何？",
+     "en": "Emi, a letter came from school. What's 'jugyō sankan'?",
+     "gaps": [
+      "お知らせ",
+      "授業参観"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "保護者が教室で授業を見る日よ。来週の金曜日ね。",
+     "en": "It's a day when parents watch a class in the classroom. Next Friday.",
+     "gaps": [
+      "保護者"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "そのあとの保護者会にも出たほうがいいのかな。",
+     "en": "Should we also attend the parents' meeting afterwards?",
+     "gaps": [
+      "保護者会"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "できれば出てほしいって書いてあるわ。私は仕事だから、あなたが行ける？",
+     "en": "It says they'd like us to attend if possible. I'm working, so can you go?",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "うん、休みを取るよ。上履きが必要って書いてあるけど、僕も？",
+     "en": "Yeah, I'll take time off. It says indoor shoes are needed. Me too?",
+     "gaps": [
+      "上履き"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "そう、大人もスリッパを持って行くの。",
+     "en": "Yes, adults bring slippers too.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "わかった。出欠の紙は連絡帳に入れておくね。",
+     "en": "Got it. I'll put the attendance form in the contact notebook.",
+     "gaps": [
+      "連絡帳"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "daily-life-dl-006",
+   "title": "Transferring money at the bank",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "bank",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "銀行員",
+     "voice": "male",
+     "age": "young"
+    },
+    {
+     "id": "B",
+     "name": "アリ",
+     "voice": "male",
+     "age": "adult"
+    }
+   ],
+   "questions": [
+    {
+     "question": "What is Ali paying?",
+     "choices": [
+      "His phone bill",
+      "His rent",
+      "His health insurance"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "Why is there a 220-yen fee?",
+     "choices": [
+      "The transfer is to another bank",
+      "It is after business hours",
+      "He used a bankbook",
+      "It is a weekend"
+     ],
+     "answer": 0
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "すみません、家賃を振り込みたいんですが、ATMの使い方がわからなくて。",
+     "en": "Excuse me, I want to transfer my rent, but I don't know how to use the ATM.",
+     "gaps": [
+      "家賃"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "お手伝いします。キャッシュカードはお持ちですか。",
+     "en": "I'll help. Do you have your cash card?",
+     "gaps": [
+      "キャッシュカード"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "はい。大家さんの口座番号はこれです。",
+     "en": "Yes. This is my landlord's account number.",
+     "gaps": [
+      "大家"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "では、画面の「お振込み」を押して、カードを入れてください。",
+     "en": "Then press 'Transfer' on the screen and insert your card.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "暗証番号を入れました。",
+     "en": "I've entered my PIN.",
+     "gaps": [
+      "暗証番号"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "次に銀行名と支店名を選んで、口座番号を入力します。",
+     "en": "Next choose the bank and branch name, and enter the account number.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "手数料はいくらですか。",
+     "en": "How much is the fee?",
+     "gaps": [
+      "手数料"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ほかの銀行への振込ですので、二百二十円です。",
+     "en": "Since it's to another bank, 220 yen.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "わかりました。これで大丈夫ですね。ありがとうございました。",
+     "en": "I see. That's all set. Thank you very much.",
+     "gaps": []
+    }
+   ]
+  },
+  {
+   "id": "daily-life-dl-007",
+   "title": "Redelivery of a parcel",
+   "jlpt": 4,
+   "ilr": "1",
+   "topic": "post office",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "配達員",
+     "voice": "male",
+     "age": "adult"
+    },
+    {
+     "id": "B",
+     "name": "サラ",
+     "voice": "female",
+     "age": "young"
+    }
+   ],
+   "questions": [
+    {
+     "question": "When will the parcel be delivered?",
+     "choices": [
+      "Today after 7 p.m.",
+      "Tomorrow morning",
+      "Tomorrow between 7 and 9 p.m."
+     ],
+     "answer": 2
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "もしもし、不在票が入っていたので、再配達をお願いしたいんですが。",
+     "en": "Hello, there was a missed-delivery slip, so I'd like to ask for redelivery.",
+     "gaps": [
+      "再配達"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "ありがとうございます。伝票の番号をお願いします。",
+     "en": "Thank you. The slip number, please.",
+     "gaps": [
+      "伝票"
+     ]
+    },
+    {
+     "speaker": "B",
+     "ja": "一二三四の五六七八です。",
+     "en": "It's 1234-5678.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "ご希望の日と時間はありますか。",
+     "en": "Do you have a preferred day and time?",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "明日の夜、七時以降にお願いします。",
+     "en": "Tomorrow evening, after seven, please.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "かしこまりました。明日の十九時から二十一時にお届けします。",
+     "en": "Certainly. We'll deliver tomorrow between 19:00 and 21:00.",
+     "gaps": []
+    }
+   ]
+  },
+  {
+   "id": "daily-life-dl-008",
+   "title": "A problem with the hot water",
+   "jlpt": 3,
+   "ilr": "1+",
+   "topic": "housing",
+   "speakers": [
+    {
+     "id": "A",
+     "name": "大家さん",
+     "voice": "female",
+     "age": "senior"
+    },
+    {
+     "id": "B",
+     "name": "ケビン",
+     "voice": "male",
+     "age": "young"
+    }
+   ],
+   "questions": [
+    {
+     "question": "What is the problem?",
+     "choices": [
+      "The electricity is off",
+      "There is no hot water",
+      "The neighbor is noisy",
+      "The rent went up"
+     ],
+     "answer": 1
+    },
+    {
+     "question": "What does the landlord suggest for tonight?",
+     "choices": [
+      "Stay at a hotel",
+      "Boil water on the stove",
+      "Use the nearby public bath"
+     ],
+     "answer": 2
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "B",
+     "ja": "こんばんは、二〇一号室のケビンです。遅くにすみません。",
+     "en": "Good evening, it's Kevin from room 201. Sorry to call so late.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "あら、どうしたの。",
+     "en": "Oh, what's wrong?",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "昨日からお湯が出ないんです。ガスの料金は払っているんですが。",
+     "en": "No hot water since yesterday. I've paid the gas bill, though.",
+     "gaps": [
+      "料金"
+     ]
+    },
+    {
+     "speaker": "A",
+     "ja": "それは困ったわね。給湯器の画面に何か出ている？",
+     "en": "That's a problem. Is anything showing on the water heater's screen?",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "赤いランプがついていて、数字が出ています。",
+     "en": "A red light is on and a number is displayed.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "じゃあ、明日の午前中に修理の人に行ってもらうわ。",
+     "en": "Then I'll have a repair person go tomorrow morning.",
+     "gaps": []
+    },
+    {
+     "speaker": "B",
+     "ja": "明日は仕事なんですが、部屋に入ってもらってもいいです。",
+     "en": "I'm working tomorrow, but it's fine if they go into the room.",
+     "gaps": []
+    },
+    {
+     "speaker": "A",
+     "ja": "わかった。今夜は近くの銭湯を使ってね。",
+     "en": "Okay. Use the public bath nearby tonight.",
+     "gaps": [
+      "銭湯"
+     ]
+    }
+   ]
+  }
+ ],
+ "drills": [
+  {
+   "id": "daily-life-fi-001",
+   "type": "fill_in",
+   "topic": "city hall",
+   "jlpt": 4,
+   "sentence": "引っ越したら、十四日以内に市役所に（　　）を出してください。",
+   "answers": [
+    "転入届"
+   ],
+   "choices": [
+    "転入届",
+    "年賀状",
+    "処方箋",
+    "請求書"
+   ],
+   "word": "転入届",
+   "en": "Within 14 days of moving, submit a moving-in notification to city hall.",
+   "explanation": "A moving-in notification (転入届) must be filed within 14 days."
+  },
+  {
+   "id": "daily-life-fi-002",
+   "type": "fill_in",
+   "topic": "city hall",
+   "jlpt": 4,
+   "sentence": "窓口で（　　）を取って、お待ちください。",
+   "answers": [
+    "番号札"
+   ],
+   "choices": [
+    "番号札",
+    "名札",
+    "切手",
+    "定期券"
+   ],
+   "word": "番号札",
+   "en": "Take a number ticket at the counter and wait.",
+   "explanation": "At city hall you take a 番号札 to queue."
+  },
+  {
+   "id": "daily-life-fi-003",
+   "type": "fill_in",
+   "topic": "city hall",
+   "jlpt": 3,
+   "sentence": "住所が変わったときは、（　　）の裏にも新しい住所を書いてもらいます。",
+   "answers": [
+    "在留カード"
+   ],
+   "choices": [
+    "在留カード",
+    "キャッシュカード",
+    "定期券",
+    "診察券"
+   ],
+   "word": "在留カード",
+   "en": "When your address changes, the new address is also written on the back of your residence card.",
+   "explanation": "The residence card records the address on its back."
+  },
+  {
+   "id": "daily-life-fi-004",
+   "type": "fill_in",
+   "topic": "city hall",
+   "jlpt": 3,
+   "sentence": "本人が来られない場合は、（　　）が委任状を持って来てください。",
+   "answers": [
+    "代理人"
+   ],
+   "choices": [
+    "代理人",
+    "保証人",
+    "差出人",
+    "世帯主"
+   ],
+   "word": "代理人",
+   "en": "If the person cannot come, a proxy must bring a letter of authorization.",
+   "explanation": "代理人 is someone acting on your behalf with a 委任状."
+  },
+  {
+   "id": "daily-life-fi-005",
+   "type": "fill_in",
+   "topic": "insurance",
+   "jlpt": 3,
+   "sentence": "（　　）を忘れると、病院で医療費を全額払うことになります。",
+   "answers": [
+    "保険証"
+   ],
+   "choices": [
+    "保険証",
+    "通帳",
+    "連絡帳",
+    "住民票"
+   ],
+   "word": "保険証",
+   "en": "If you forget your insurance card, you pay the full medical cost at the hospital.",
+   "explanation": "Without the insurance card you pay 100% at the clinic."
+  },
+  {
+   "id": "daily-life-fi-006",
+   "type": "fill_in",
+   "topic": "insurance",
+   "jlpt": 3,
+   "sentence": "保険料は、納付書で払うか、（　　）で毎月払うことができます。",
+   "answers": [
+    "口座振替"
+   ],
+   "choices": [
+    "口座振替",
+    "着払い",
+    "両替",
+    "一括"
+   ],
+   "word": "口座振替",
+   "en": "Premiums can be paid with a payment slip or monthly by automatic bank transfer.",
+   "explanation": "口座振替 is the standard term for direct debit from a bank account."
+  },
+  {
+   "id": "daily-life-fi-007",
+   "type": "fill_in",
+   "topic": "insurance",
+   "jlpt": 2,
+   "sentence": "収入が少ない人は、年金の保険料の（　　）を申請できます。",
+   "answers": [
+    "免除"
+   ],
+   "choices": [
+    "免除",
+    "脱退",
+    "割引",
+    "解約"
+   ],
+   "word": "免除",
+   "en": "People with low income can apply for exemption from pension premiums.",
+   "explanation": "The official term for being excused from payment is 免除."
+  },
+  {
+   "id": "daily-life-fi-008",
+   "type": "fill_in",
+   "topic": "hospital",
+   "jlpt": 4,
+   "sentence": "この薬は一日三回、（　　）に飲んでください。",
+   "answers": [
+    "食後"
+   ],
+   "choices": [
+    "食後",
+    "食前",
+    "毎朝",
+    "夜中"
+   ],
+   "word": "食後",
+   "en": "Take this medicine three times a day after meals.",
+   "explanation": "Three times a day matches the three meals; 食後 is the usual instruction."
+  },
+  {
+   "id": "daily-life-fi-009",
+   "type": "fill_in",
+   "topic": "hospital",
+   "jlpt": 4,
+   "sentence": "子どもが熱を出したので、（　　）に連れて行きました。",
+   "answers": [
+    "小児科"
+   ],
+   "choices": [
+    "小児科",
+    "歯科",
+    "外科",
+    "薬局"
+   ],
+   "word": "小児科",
+   "en": "My child had a fever, so I took them to the pediatrician.",
+   "explanation": "Pediatrics (小児科) is the department for children."
+  },
+  {
+   "id": "daily-life-fi-010",
+   "type": "fill_in",
+   "topic": "hospital",
+   "jlpt": 3,
+   "sentence": "薬を飲んで眠くなるのは、この薬の（　　）です。",
+   "answers": [
+    "副作用"
+   ],
+   "choices": [
+    "副作用",
+    "症状",
+    "処方箋",
+    "検査"
+   ],
+   "word": "副作用",
+   "en": "Getting sleepy after taking it is a side effect of this medicine.",
+   "explanation": "An unwanted effect of a drug is a 副作用."
+  },
+  {
+   "id": "daily-life-fi-011",
+   "type": "fill_in",
+   "topic": "bank",
+   "jlpt": 3,
+   "sentence": "キャッシュカードを使うときは、四桁の（　　）を入力します。",
+   "answers": [
+    "暗証番号"
+   ],
+   "choices": [
+    "暗証番号",
+    "電話番号",
+    "郵便番号",
+    "口座"
+   ],
+   "word": "暗証番号",
+   "en": "When using a cash card you enter a four-digit PIN.",
+   "explanation": "A PIN is 暗証番号."
+  },
+  {
+   "id": "daily-life-fi-012",
+   "type": "fill_in",
+   "topic": "bank",
+   "jlpt": 4,
+   "sentence": "ATMでお金を（　　）ときは、手数料がかかることがあります。",
+   "answers": [
+    "引き出す"
+   ],
+   "choices": [
+    "引き出す",
+    "預ける",
+    "届ける",
+    "送る"
+   ],
+   "word": "引き出す",
+   "en": "When you withdraw money at an ATM, there may be a fee.",
+   "explanation": "Withdrawing money from an account is 引き出す."
+  },
+  {
+   "id": "daily-life-fi-013",
+   "type": "fill_in",
+   "topic": "post office",
+   "jlpt": 4,
+   "sentence": "急ぎの手紙なので、（　　）で送りたいです。",
+   "answers": [
+    "速達"
+   ],
+   "choices": [
+    "速達",
+    "船便",
+    "書留",
+    "着払い"
+   ],
+   "word": "速達",
+   "en": "It's an urgent letter, so I want to send it express.",
+   "explanation": "Urgent = 速達 (express). 書留 is registered, not faster."
+  },
+  {
+   "id": "daily-life-fi-014",
+   "type": "fill_in",
+   "topic": "post office",
+   "jlpt": 3,
+   "sentence": "荷物が届いたとき家にいなかったので、（　　）を頼みました。",
+   "answers": [
+    "再配達"
+   ],
+   "choices": [
+    "再配達",
+    "再発行",
+    "回収",
+    "送金"
+   ],
+   "word": "再配達",
+   "en": "I wasn't home when the parcel came, so I asked for redelivery.",
+   "explanation": "Redelivery after a missed delivery is 再配達."
+  },
+  {
+   "id": "daily-life-fi-015",
+   "type": "fill_in",
+   "topic": "garbage",
+   "jlpt": 4,
+   "sentence": "（　　）は月曜日と木曜日の朝八時までに出してください。",
+   "answers": [
+    "燃えるごみ"
+   ],
+   "choices": [
+    "燃えるごみ",
+    "粗大ごみ",
+    "花火",
+    "非常食"
+   ],
+   "word": "燃えるごみ",
+   "en": "Put out burnable garbage by 8 a.m. on Mondays and Thursdays.",
+   "explanation": "Burnable garbage is typically collected twice a week."
+  },
+  {
+   "id": "daily-life-fi-016",
+   "type": "fill_in",
+   "topic": "garbage",
+   "jlpt": 3,
+   "sentence": "ペットボトルはキャップと（　　）を外して、中を洗ってから出してください。",
+   "answers": [
+    "ラベル"
+   ],
+   "choices": [
+    "ラベル",
+    "袋",
+    "伝票",
+    "名札"
+   ],
+   "word": "ラベル",
+   "en": "Remove the cap and label from PET bottles and rinse them before putting them out.",
+   "explanation": "Bottle labels (ラベル) are removed for recycling."
+  },
+  {
+   "id": "daily-life-fi-017",
+   "type": "fill_in",
+   "topic": "garbage",
+   "jlpt": 3,
+   "sentence": "古いソファーは（　　）なので、事前に申し込んでください。",
+   "answers": [
+    "粗大ごみ"
+   ],
+   "choices": [
+    "粗大ごみ",
+    "生ごみ",
+    "資源ごみ",
+    "燃えないごみ"
+   ],
+   "word": "粗大ごみ",
+   "en": "An old sofa is oversized garbage, so apply in advance.",
+   "explanation": "Large furniture is 粗大ごみ and needs a reservation."
+  },
+  {
+   "id": "daily-life-fi-018",
+   "type": "fill_in",
+   "topic": "garbage",
+   "jlpt": 3,
+   "sentence": "ごみは市の（　　）の袋に入れて出してください。",
+   "answers": [
+    "指定"
+   ],
+   "choices": [
+    "指定",
+    "予約",
+    "契約",
+    "提出"
+   ],
+   "word": "指定",
+   "en": "Put garbage out in the city's designated bags.",
+   "explanation": "指定の袋 = designated bags."
+  },
+  {
+   "id": "daily-life-fi-019",
+   "type": "fill_in",
+   "topic": "disaster",
+   "jlpt": 3,
+   "sentence": "大雨（　　）が出ているので、川に近づかないでください。",
+   "answers": [
+    "警報"
+   ],
+   "choices": [
+    "警報",
+    "予報",
+    "電報",
+    "情報"
+   ],
+   "word": "警報",
+   "en": "A heavy-rain warning has been issued, so stay away from rivers.",
+   "explanation": "Official weather warnings are 警報 (大雨警報)."
+  },
+  {
+   "id": "daily-life-fi-020",
+   "type": "fill_in",
+   "topic": "disaster",
+   "jlpt": 3,
+   "sentence": "地震のときは、近くの小学校が（　　）になります。",
+   "answers": [
+    "避難所"
+   ],
+   "choices": [
+    "避難所",
+    "交番",
+    "駐輪場",
+    "区役所"
+   ],
+   "word": "避難所",
+   "en": "In an earthquake, the nearby elementary school becomes the evacuation shelter.",
+   "explanation": "Schools often serve as 避難所."
+  },
+  {
+   "id": "daily-life-fi-021",
+   "type": "fill_in",
+   "topic": "disaster",
+   "jlpt": 2,
+   "sentence": "台風で電気が止まったときのために、（　　）と電池を用意しておきましょう。",
+   "answers": [
+    "懐中電灯"
+   ],
+   "choices": [
+    "懐中電灯",
+    "充電",
+    "花火",
+    "水筒"
+   ],
+   "word": "懐中電灯",
+   "en": "In case the power goes out in a typhoon, prepare a flashlight and batteries.",
+   "explanation": "A flashlight (懐中電灯) is the standard power-outage item."
+  },
+  {
+   "id": "daily-life-fi-022",
+   "type": "fill_in",
+   "topic": "school",
+   "jlpt": 4,
+   "sentence": "明日は遠足です。お弁当と（　　）を忘れないでください。",
+   "answers": [
+    "水筒"
+   ],
+   "choices": [
+    "水筒",
+    "上履き",
+    "印鑑",
+    "定期券"
+   ],
+   "word": "水筒",
+   "en": "Tomorrow is the excursion. Don't forget your lunch and water bottle.",
+   "explanation": "On an excursion children bring a lunch and water bottle."
+  },
+  {
+   "id": "daily-life-fi-023",
+   "type": "fill_in",
+   "topic": "school",
+   "jlpt": 3,
+   "sentence": "子どもが熱を出したので、今日は（　　）させます。",
+   "answers": [
+    "欠席"
+   ],
+   "choices": [
+    "欠席",
+    "出席",
+    "登校",
+    "遠足"
+   ],
+   "word": "欠席",
+   "en": "My child has a fever, so they will be absent today.",
+   "explanation": "Being absent from school is 欠席."
+  },
+  {
+   "id": "daily-life-fi-024",
+   "type": "fill_in",
+   "topic": "school",
+   "jlpt": 3,
+   "sentence": "参加する人は、この用紙を十日までに担任に（　　）してください。",
+   "answers": [
+    "提出"
+   ],
+   "choices": [
+    "提出",
+    "回収",
+    "記入",
+    "延期"
+   ],
+   "word": "提出",
+   "en": "If participating, submit this form to the homeroom teacher by the 10th.",
+   "explanation": "Handing in a form is 提出する."
+  }
+ ],
+ "situations": [
+  {
+   "id": "daily-life-sit-001",
+   "titleEn": "City hall: moving-in registration",
+   "titleJa": "市役所：転入届",
+   "canDo": [
+    {
+     "en": "I can say that I want to register my new address.",
+     "ja": "新しい住所の届け出をしたいと言える。"
+    },
+    {
+     "en": "I can take a numbered ticket and wait to be called.",
+     "ja": "番号札を取って、呼ばれるまで待てる。"
+    },
+    {
+     "en": "I can fill in my name, date of birth and address on a form.",
+     "ja": "用紙に氏名・生年月日・住所を記入できる。"
+    },
+    {
+     "en": "I can show my residence card when asked.",
+     "ja": "頼まれたら在留カードを見せられる。"
+    },
+    {
+     "en": "I can ask for a copy of my certificate of residence.",
+     "ja": "住民票の写しがほしいと頼める。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-002",
+   "titleEn": "Health insurance enrollment",
+   "titleJa": "健康保険の加入",
+   "canDo": [
+    {
+     "en": "I can say that I want to join National Health Insurance.",
+     "ja": "国民健康保険に加入したいと言える。"
+    },
+    {
+     "en": "I can understand when I will receive my insurance card.",
+     "ja": "保険証がいつ届くか聞いてわかる。"
+    },
+    {
+     "en": "I can ask how much the monthly premium is.",
+     "ja": "毎月の保険料がいくらか聞ける。"
+    },
+    {
+     "en": "I can ask to pay by automatic bank transfer.",
+     "ja": "口座振替で払いたいと頼める。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-003",
+   "titleEn": "Seeing a doctor",
+   "titleJa": "病院で診察を受ける",
+   "canDo": [
+    {
+     "en": "I can tell the reception it is my first visit and show my insurance card.",
+     "ja": "受付で初めてだと言って、保険証を出せる。"
+    },
+    {
+     "en": "I can fill in a simple medical questionnaire.",
+     "ja": "簡単な問診票に記入できる。"
+    },
+    {
+     "en": "I can describe my symptoms and when they started.",
+     "ja": "症状と、いつから始まったかを説明できる。"
+    },
+    {
+     "en": "I can say that I have an allergy.",
+     "ja": "アレルギーがあると言える。"
+    },
+    {
+     "en": "I can understand simple instructions from the doctor.",
+     "ja": "医者の簡単な指示がわかる。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-004",
+   "titleEn": "At the pharmacy",
+   "titleJa": "薬局で",
+   "canDo": [
+    {
+     "en": "I can hand in a prescription and wait.",
+     "ja": "処方箋を出して待てる。"
+    },
+    {
+     "en": "I can understand when and how often to take my medicine.",
+     "ja": "薬をいつ、何回飲むかがわかる。"
+    },
+    {
+     "en": "I can ask about side effects.",
+     "ja": "副作用について質問できる。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-005",
+   "titleEn": "Opening a bank account",
+   "titleJa": "銀行口座を作る",
+   "canDo": [
+    {
+     "en": "I can say that I want to open an account.",
+     "ja": "口座を作りたいと言える。"
+    },
+    {
+     "en": "I can show the documents the bank needs.",
+     "ja": "銀行が必要な書類を見せられる。"
+    },
+    {
+     "en": "I can choose and enter a PIN.",
+     "ja": "暗証番号を決めて入力できる。"
+    },
+    {
+     "en": "I can ask when the cash card will arrive.",
+     "ja": "キャッシュカードがいつ届くか聞ける。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-006",
+   "titleEn": "Sending a parcel",
+   "titleJa": "小包を送る",
+   "canDo": [
+    {
+     "en": "I can say where and how I want to send a parcel.",
+     "ja": "どこへ、どうやって送りたいか言える。"
+    },
+    {
+     "en": "I can fill in the recipient and sender on a waybill.",
+     "ja": "伝票に宛先と差出人を書ける。"
+    },
+    {
+     "en": "I can say what is inside the parcel.",
+     "ja": "中身が何か言える。"
+    },
+    {
+     "en": "I can ask about delivery time and price.",
+     "ja": "届く日と料金を聞ける。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-007",
+   "titleEn": "Garbage day rules",
+   "titleJa": "ごみの出し方",
+   "canDo": [
+    {
+     "en": "I can read a garbage calendar and find the day for each type.",
+     "ja": "ごみのカレンダーを読んで、種類ごとの日がわかる。"
+    },
+    {
+     "en": "I can sort garbage into burnable, non-burnable and recyclables.",
+     "ja": "燃えるごみ・燃えないごみ・資源ごみに分別できる。"
+    },
+    {
+     "en": "I can ask a neighbor where the collection point is.",
+     "ja": "隣の人にごみ置き場の場所を聞ける。"
+    },
+    {
+     "en": "I can ask how to throw away oversized garbage.",
+     "ja": "粗大ごみの出し方を聞ける。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-008",
+   "titleEn": "Disaster warning and evacuation",
+   "titleJa": "災害の警報と避難",
+   "canDo": [
+    {
+     "en": "I can recognize the words for warning, advisory and evacuation order.",
+     "ja": "警報・注意報・避難指示という言葉がわかる。"
+    },
+    {
+     "en": "I can find the nearest evacuation shelter on a map.",
+     "ja": "地図で一番近い避難所を探せる。"
+    },
+    {
+     "en": "I can ask someone where to evacuate.",
+     "ja": "どこへ避難すればいいか人に聞ける。"
+    },
+    {
+     "en": "I can tell my family or workplace that I am safe.",
+     "ja": "家族や職場に無事だと伝えられる。"
+    },
+    {
+     "en": "I can list what to prepare for an emergency.",
+     "ja": "非常時のために準備する物を言える。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-009",
+   "titleEn": "Reading a school letter",
+   "titleJa": "学校のお知らせを読む",
+   "canDo": [
+    {
+     "en": "I can find the date, time and place of a school event.",
+     "ja": "学校の行事の日時と場所を見つけられる。"
+    },
+    {
+     "en": "I can understand a list of things to bring.",
+     "ja": "持ち物のリストがわかる。"
+    },
+    {
+     "en": "I can find the submission deadline for a form.",
+     "ja": "書類の締め切りを見つけられる。"
+    },
+    {
+     "en": "I can write a short note in the contact notebook.",
+     "ja": "連絡帳に短いメモを書ける。"
+    },
+    {
+     "en": "I can tell the school my child will be absent.",
+     "ja": "子どもが欠席すると学校に伝えられる。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-010",
+   "titleEn": "Renting an apartment and utilities",
+   "titleJa": "部屋を借りる・電気やガスの手続き",
+   "canDo": [
+    {
+     "en": "I can tell an agent my budget and the area I want.",
+     "ja": "不動産屋に予算と希望の場所を言える。"
+    },
+    {
+     "en": "I can ask about rent, deposit and key money.",
+     "ja": "家賃・敷金・礼金について聞ける。"
+    },
+    {
+     "en": "I can ask to start electricity, gas and water.",
+     "ja": "電気・ガス・水道の使用開始を頼める。"
+    },
+    {
+     "en": "I can report a problem in the room to the landlord.",
+     "ja": "部屋の問題を大家さんに伝えられる。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-011",
+   "titleEn": "Mobile phone contract",
+   "titleJa": "携帯電話の契約",
+   "canDo": [
+    {
+     "en": "I can say that I want a new contract or to change models.",
+     "ja": "新しい契約か機種変更をしたいと言える。"
+    },
+    {
+     "en": "I can compare plans by monthly price and data.",
+     "ja": "月額と容量でプランを比べられる。"
+    },
+    {
+     "en": "I can ask about cancellation fees.",
+     "ja": "違約金について聞ける。"
+    },
+    {
+     "en": "I can show ID for identity verification.",
+     "ja": "本人確認のために身分証明書を見せられる。"
+    }
+   ]
+  },
+  {
+   "id": "daily-life-sit-012",
+   "titleEn": "Reporting a lost item at a police box",
+   "titleJa": "交番で落とし物を届ける",
+   "canDo": [
+    {
+     "en": "I can say that I lost something and when.",
+     "ja": "何をいつなくしたか言える。"
+    },
+    {
+     "en": "I can describe the color, size and contents of the item.",
+     "ja": "物の色・大きさ・中身を説明できる。"
+    },
+    {
+     "en": "I can give my name and phone number for contact.",
+     "ja": "連絡のために名前と電話番号を伝えられる。"
+    },
+    {
+     "en": "I can hand in something I found.",
+     "ja": "拾った物を届けられる。"
+    }
+   ]
+  }
+ ],
+ "tasks": [
+  {
+   "id": "daily-life-task-001",
+   "titleEn": "A summer festival",
+   "titleJa": "夏祭りに行く",
+   "place": "a neighborhood summer festival at a shrine",
+   "before": [
+    "Find the date and time on a local poster or website.",
+    "Learn the names of three festival foods you want to try.",
+    "Decide whether to wear a yukata and practice how to say where you bought or borrowed it."
+   ],
+   "during": [
+    "Buy something at a food stall and ask the price in Japanese.",
+    "Ask a stall keeper or a local what the best event of the night is.",
+    "Watch the fireworks or the portable-shrine procession and note three things you hear people say."
+   ],
+   "after": [
+    "Write five sentences in Japanese about what you ate and saw.",
+    "Tell a friend or classmate about the festival in one minute."
+   ],
+   "phrases": [
+    "これ、一つください。",
+    "いくらですか。",
+    "花火は何時からですか。",
+    "浴衣、似合いますね。",
+    "ごみはどこに捨てればいいですか。"
+   ],
+   "etiquette": [
+    "Take your trash home or use the festival's garbage points; do not leave it on the street.",
+    "Do not block the path when stopping to eat or take photos.",
+    "Queue patiently at stalls and have small change ready."
+   ]
+  },
+  {
+   "id": "daily-life-task-002",
+   "titleEn": "A first visit to an onsen",
+   "titleJa": "はじめての温泉",
+   "place": "a hot-spring inn or day-use onsen",
+   "before": [
+    "Check whether the onsen allows tattoos and what the bath hours are.",
+    "Learn the signs 男湯, 女湯 and 脱衣所.",
+    "Pack a small towel, or plan to rent one."
+   ],
+   "during": [
+    "Wash your body at the shower area before entering the bath.",
+    "Enter the water slowly and keep your small towel out of the water.",
+    "Ask staff one question in Japanese, e.g. about the water or the hours."
+   ],
+   "after": [
+    "Note how the rules differed from bathing at home.",
+    "Write a short review of the onsen in Japanese (three to five sentences)."
+   ],
+   "phrases": [
+    "タオルを借りられますか。",
+    "お風呂は何時までですか。",
+    "入れ墨があっても入れますか。",
+    "気持ちいいですね。",
+    "いいお湯でした。"
+   ],
+   "etiquette": [
+    "Wash before you soak; the bath water is shared.",
+    "Do not put towels or hair in the water.",
+    "Dry off lightly before returning to the changing room.",
+    "Keep your voice low and do not swim."
+   ]
+  },
+  {
+   "id": "daily-life-task-003",
+   "titleEn": "Joining a tea ceremony",
+   "titleJa": "茶道を体験する",
+   "place": "a tea-ceremony experience class",
+   "before": [
+    "Learn the words 抹茶, 和菓子 and 正座.",
+    "Wear clean socks and simple clothing.",
+    "Practice the phrases for before and after drinking."
+   ],
+   "during": [
+    "Bow and greet the host when you enter the room.",
+    "Eat the sweet first, then receive the bowl with both hands.",
+    "Turn the bowl slightly before drinking and after finishing, as the host shows you."
+   ],
+   "after": [
+    "Describe the taste of the tea and the sweet in Japanese.",
+    "List three movements you learned and what they mean to you."
+   ],
+   "phrases": [
+    "お先にいただきます。",
+    "お点前ちょうだいいたします。",
+    "結構なお点前でした。",
+    "足がしびれました。",
+    "とてもおいしかったです。"
+   ],
+   "etiquette": [
+    "Remove rings or watches that could scratch the bowl.",
+    "It is fine to tell the host if you cannot sit in seiza for long.",
+    "Admire the bowl, but hold it low and with both hands."
+   ]
+  },
+  {
+   "id": "daily-life-task-004",
+   "titleEn": "Visiting a shrine",
+   "titleJa": "神社に参拝する",
+   "place": "a local Shinto shrine",
+   "before": [
+    "Look up the basic order: torii, purification, offering, prayer.",
+    "Prepare a few coins for the offering box.",
+    "Learn the words 鳥居, 手水, 賽銭 and おみくじ."
+   ],
+   "during": [
+    "Bow once at the torii and walk along the side of the path.",
+    "Purify your hands and mouth at the water basin.",
+    "At the hall, offer a coin, bow twice, clap twice, pray, and bow once more."
+   ],
+   "after": [
+    "Draw an omikuji and try to read its main result.",
+    "Explain the visiting steps to someone else in Japanese."
+   ],
+   "phrases": [
+    "お守りを一つください。",
+    "おみくじはどこで引けますか。",
+    "写真を撮ってもいいですか。",
+    "これは何のお守りですか。"
+   ],
+   "etiquette": [
+    "The middle of the path is traditionally for the deity; walk to the side.",
+    "Do not drink directly from the purification ladle.",
+    "Check signs before taking photos of buildings or ceremonies."
+   ]
+  },
+  {
+   "id": "daily-life-task-005",
+   "titleEn": "A neighborhood sentō",
+   "titleJa": "銭湯に行く",
+   "place": "a neighborhood public bathhouse",
+   "before": [
+    "Find the opening hours and the entry fee.",
+    "Bring a towel, soap and shampoo, or plan to buy them there.",
+    "Learn the words 銭湯, 湯船 and 脱衣所."
+   ],
+   "during": [
+    "Pay at the front desk and ask for a towel if you need one.",
+    "Use a locker, then wash at a shower seat before soaking.",
+    "Say a short greeting to someone if the chance comes naturally."
+   ],
+   "after": [
+    "Compare the sentō with an onsen in a few Japanese sentences.",
+    "Note one new word you saw on a sign and look it up."
+   ],
+   "phrases": [
+    "大人一人お願いします。",
+    "石けんは売っていますか。",
+    "ロッカーの鍵はどこですか。",
+    "お先に失礼します。"
+   ],
+   "etiquette": [
+    "Rinse your seat and bucket after using them.",
+    "Do not leave your things on a shower seat to reserve it.",
+    "Keep long hair tied up and out of the water."
+   ]
+  },
+  {
+   "id": "daily-life-task-006",
+   "titleEn": "Cherry-blossom viewing",
+   "titleJa": "花見をする",
+   "place": "a park during cherry-blossom season",
+   "before": [
+    "Check the blossom forecast and pick a date with friends.",
+    "Plan food and drinks and bring bags for garbage.",
+    "Learn a few words for flowers and weather."
+   ],
+   "during": [
+    "Find a place without blocking paths or damaging tree roots.",
+    "Invite someone to join you or chat with a nearby group briefly.",
+    "Take a photo and describe the blossoms in Japanese."
+   ],
+   "after": [
+    "Write a short message to your friends thanking them for coming.",
+    "Describe the day in five Japanese sentences."
+   ],
+   "phrases": [
+    "桜がきれいですね。",
+    "ここ、座ってもいいですか。",
+    "よかったら、一緒にどうぞ。",
+    "ごみは持って帰りましょう。"
+   ],
+   "etiquette": [
+    "Do not shake or break the branches.",
+    "Follow park rules about sheets, music and closing time.",
+    "Take all garbage home or sort it at the park's collection points."
+   ]
+  },
+  {
+   "id": "daily-life-task-007",
+   "titleEn": "Joining a Bon dance",
+   "titleJa": "盆踊りに参加する",
+   "place": "a summer Bon dance in a local park",
+   "before": [
+    "Find when and where the dance takes place.",
+    "Watch a video of a common Bon dance to learn the basic moves.",
+    "Learn what お盆 means for families."
+   ],
+   "during": [
+    "Join the circle and copy the people in front of you.",
+    "Ask someone to teach you a step you do not understand.",
+    "Say thank you to the person who helped you."
+   ],
+   "after": [
+    "Write about how it felt to dance with strangers.",
+    "Explain the purpose of Bon to a friend in simple Japanese."
+   ],
+   "phrases": [
+    "入ってもいいですか。",
+    "踊り方を教えてください。",
+    "もう一回お願いします。",
+    "楽しかったです。ありがとうございました。"
+   ],
+   "etiquette": [
+    "Anyone may join; it is fine to make mistakes.",
+    "Move in the same direction as the circle.",
+    "Remember that Bon is also a time to honor ancestors."
+   ]
+  },
+  {
+   "id": "daily-life-task-008",
+   "titleEn": "New Year: hatsumōde and osechi",
+   "titleJa": "お正月：初詣とおせち",
+   "place": "a shrine at New Year and a family meal",
+   "before": [
+    "Learn the greetings for the end and the start of the year.",
+    "Find out what three osechi dishes mean.",
+    "Write a New Year's card to someone."
+   ],
+   "during": [
+    "Visit a shrine in the first days of January and pray for the year.",
+    "Try osechi and ask what each dish means.",
+    "Greet people with the correct New Year expression."
+   ],
+   "after": [
+    "Write your goals for the year in Japanese.",
+    "Explain two osechi dishes and their meanings."
+   ],
+   "phrases": [
+    "あけましておめでとうございます。",
+    "今年もよろしくお願いします。",
+    "よいお年を。",
+    "これは何という料理ですか。",
+    "どういう意味がありますか。"
+   ],
+   "etiquette": [
+    "Say よいお年を before the New Year and あけましておめでとう after it, not the other way round.",
+    "Crowds are large at popular shrines; be patient and follow staff directions.",
+    "Old charms are usually returned to the shrine to be burned, not thrown away."
+   ]
+  }
+ ]
+}

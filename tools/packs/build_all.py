@@ -17,6 +17,7 @@ import build_kanjivg
 import build_practice
 import build_sentences
 import build_tokenizer
+import build_tracks
 from common import load_lock, log, source, source_entry, update_sources, write_manifest
 
 
@@ -42,6 +43,7 @@ def main() -> None:
     build_kanji_path.main()
     build_grammar.main()
     build_practice.main()
+    build_tracks.main([])
     build_tokenizer.main()
     build_exam.main()
     write_manifest()
