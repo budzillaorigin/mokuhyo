@@ -16,6 +16,17 @@ class AudioKeysTest {
         assertEquals("pair/480/b", AudioKeys.minimalPair(480, PairSide.B))
         assertEquals("pitch/p1401000", AudioKeys.pitch("p1401000"))
         assertEquals("grammar/n1-aete/1", AudioKeys.grammar("n1-aete", 1))
+        assertEquals("reader/gr-n4-012/7", AudioKeys.reader("gr-n4-012", 7))
+        assertEquals(listOf("reader/gr-n6-001/0", "reader/gr-n6-001/1"), AudioKeys.readerStory("gr-n6-001", 2))
+    }
+
+    @Test
+    fun readerKeysBelongToTheReadersSet() {
+        // render_audio.py writes reader/<story id>/<reader_sentence.idx> into audio-readers.zip.
+        assertEquals(AudioSet.READERS, AudioSet.ofKey(AudioKeys.reader("gr-n1-020", 0)))
+        assertEquals("audio-readers.zip", AudioSet.READERS.fileName)
+        assertEquals(AudioSet.READERS, AudioSet.fromId("readers"))
+        assertEquals("reader/gr-n3-004/12.m4a", AudioKeys.relativePath(AudioKeys.reader("gr-n3-004", 12)))
     }
 
     @Test

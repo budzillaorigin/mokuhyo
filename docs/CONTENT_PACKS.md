@@ -26,6 +26,8 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | `practice.sqlite`: 30 scenarios, 62 OPI questions, 45 dialogues, 630 minimal pairs | `packs/build_practice.py` | 6 | ✅ |
 | `tracks.sqlite`: 7 interest/domain tracks, 2629 words, 84 scenarios, 54 dialogues, 458 drills | `packs/build_tracks.py` from `packs/tracks/*.json` | 12 | ✅ (AI-drafted, badge on) |
 | `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples (on-demand downloads, not bundled) | `packs/render_audio.py` | 10 | ✅ (grammar partial) |
+| `readers.sqlite`: graded readers, 6 levels (N6 "level 0" … N1): 120 stories with read-along lines, vocabulary lists, comprehension questions and genre tasks (AI-drafted) | `packs/readers/build_readers.py` from `packs/readers/stories/*.json` | 12 | ✅ |
+| `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples, graded readers (on-demand downloads, not bundled) | `packs/render_audio.py` | 10 | ✅ (grammar partial, readers not rendered yet) |
 
 ## dictionary.sqlite
 
@@ -189,6 +191,87 @@ Function words (particles, auxiliaries, copulas) never count as words. Kanji den
 
 Today's immersion block matches texts to the learner with this score (`ScoredImmersionDifficulty`: distance between the learner's JLPT level and the text's continuous band position, harder texts × 1.5, −0.5 when 90%+ of the words are known).
 
+## readers.sqlite (graded readers, BRIEF_V2 §6.4, DECISIONS D-200…D-209)
+
+Graded stories at six levels with read-along audio, vocabulary lists, comprehension questions and genre-based tasks. Schema: `shared/src/commonMain/sqldelightReaders/app/tsumugi/readers/db/readers.sq` (the builder executes its CREATE statements). The app reads it through `ReaderService.graded` (`PackReaderRepository`, `GradedReaderService`).
+
+### Pipeline (`tools/packs/readers/`)
+
+| File | What it is |
+|---|---|
+| `stories/*.json` | the story sources, one file per batch (`{"batch", "level", "license", "attribution", "passages": […]}`) |
+| `levels.json` | levels, length ranges, text-score bands, coverage rules, question language, skim speed, audio speed, summary length |
+| `tasks.json` | genre task templates (prediction, skim/scan, close reading, output), Japanese and English |
+| `readers_lib.py` | shared code: the reader's sentence split, lemma grouping and dictionary resolution on `tools/items/lattice.py`, the §6.4 score, read-along voices |
+| `validate_readers.py` | the gate (below); `--fix` fills vocabulary `entryId`/`gloss` from JMdict and NFC-normalizes; `--report` prints one line of measures per story |
+| `draft_readers.py` | drafts more stories through an OpenAI-compatible endpoint (D-208) |
+| `build_readers.py` | validates everything, then writes `content/packs/readers.sqlite`; run by `build_all.py` after the exam pack |
+
+```bash
+cd tools
+uv run python packs/readers/validate_readers.py --report          # all stories; exit 1 on any error
+uv run python packs/readers/build_readers.py                      # → content/packs/readers.sqlite
+uv run python packs/readers/draft_readers.py --endpoint http://localhost:11434/v1 --model qwen2.5:14b --level N4 --count 5
+```
+
+The readers scripts read `dictionary.sqlite`, `tokenizer.sqlite` and `grammar.sqlite` from `content/packs`. In a git worktree without built packs they read the main checkout's; `--packs DIR` overrides.
+
+### Story format
+
+```jsonc
+{
+  "id": "gr-n4-007",                 // gr-<level>-NNN, unique across all files, never reused
+  "level": "N4",                     // N6 (level 0) | N5 | N4 | N3 | N2 | N1
+  "genre": "email",                  // news | recipe | ad | manga | essay | email | notice | editorial | academic | story
+  "topic": "work",                   // short English tag
+  "title": "…", "titleEn": "…",
+  "body": "…\n…",                    // NFC, paragraphs separated by one newline, standard orthography
+  "cast": [{"name": "ケン", "voice": "male"}],   // required when the body has speech; voice female | male | male-senior
+  "names": ["みどり町"],             // other proper nouns, neutral for coverage
+  "vocabulary": [{"word": "傘", "reading": "かさ", "entryId": 1301940, "gloss": "umbrella"}],   // 3–15
+  "questions": [{"type": "detail", "stem": "…", "choices": ["…", "…", "…", "…"], "answer": 2, "explanation": "…"}],
+  "source": "llm",                   // llm | verified
+  "verified": false                  // set by tools/items/review.py or an in-app verdict
+}
+```
+
+Manga-style dialogue is written `名前「…」`, one line per turn. Question stems and choices are Japanese from N3 and English below; explanations are English.
+
+### The gate (`validate_readers.py`)
+
+- Schema, NFC, unique ids, answer keys in range, 3–5 questions depending on the level, and 3–15 vocabulary items. Every vocabulary item must be a real JMdict id and must occur in the body.
+- **Length** (non-whitespace characters): N6 300–500 · N5 300–650 · N4 400–850 · N3 550–1,100 · N2 700–1,400 · N1 850–1,500.
+- **Coverage (D-202):** at least 95% of the words are within the level, counting glossed words, and at least 90% without them.
+  - A word is within the level when its JLPT tag is at the level or easier. An untagged word also counts when it is within the level's slice of the frequency list (N6 800, N5 1,000, N4 2,000, N3 3,500, N2 6,000), when it is JMdict-common (N2, N1), or at N1 when it is any word the dictionary resolves.
+  - Particles, auxiliaries, grammar words, interjections, affixes, numbers and names don't count.
+- **Difficulty (D-203):** the §6.4 text score, reimplemented in Python, must fall in the level's band: N6 0–14 · N5 0–18 · N4 6–26 · N3 14–38 · N2 24–52 · N1 34–100. `RealReadersPackTest` checks the build's scores against the app's `DifficultyScorer`.
+
+### Genre tasks (D-204)
+
+Each story gets its genre's four tasks from `reader_task`, with `{title}`, `{seconds}`, `{min}` and `{max}` filled in.
+- **Prediction:** a question to answer from the title, before reading.
+- **Skim/scan:** a task with a timer. The time is characters ÷ (level `skimCpm` × genre rate) × 60, rounded up to 5 s, at least 20 s.
+- **Close reading:** two prompts, followed by the story's comprehension questions.
+- **Output:** a summary in Japanese, or a reply or opinion. The learner's model grades it with `grade_reading_summary`; the grade is labeled AI-generated, and without a model it is unavailable.
+
+Quiz results are `exam_attempt` rows (`GRADED_READER`). They feed the roadmap's graded-reader milestone (D-206).
+
+### Counts (build of 2026-09-18)
+
+- **Stories:** 120, 20 per level (N6, N5, N4, N3, N2, N1). All are `source: "llm"` and unreviewed.
+- **Read-along lines:** 2,393, one audio clip each.
+- **Stories per genre:** story 15, manga 13, news 13, editorial 12, email 12, essay 12, notice 12, academic 11, ad 10, recipe 10.
+- **Government/military (DLPT):** N2 `gr-n2-001`, `002`, `003`; N1 `gr-n1-002`, `003`, `011`, `014`.
+- **Mean app text score per level:** N6 8.0 · N5 10.8 · N4 18.4 · N3 24.5 · N2 36.1 · N1 58.8. All 120 are within 3 points of the build's score; the mean difference is −0.01 (`RealReadersPackTest`).
+- **Validator:** 0 errors, 0 warnings.
+
+### Adding more stories
+
+1. **Draft:** run `draft_readers.py --endpoint … --model … --level N3 --count 10 [--genre news] [--topic …]`. Passing stories land in a new `stories/<level>-draft-<date>.json` with the next free ids. Failures go to `tools/.cache/readers-rejected/`. You can also write a batch file by hand.
+2. **Validate:** run `validate_readers.py --fix --report stories/<file>.json` until it is clean.
+3. **Review:** run `uv run python items/review.py packs/readers/stories/<file>.json`, or use the in-app Content review and then `review.py --ingest`. Unreviewed stories keep the AI-generated badge.
+4. **Rebuild:** run `build_readers.py` (or `build_all.py`), then render the new audio with `render_audio.py readers`. It renders only the new lines.
+
 ## Exam item banks (`tools/items/bank/*.json`, also the user-import format)
 
 `tools/items/jlpt_blueprints.json` holds the published JLPT structure (sections, item types, counts, timings, pass marks). It is facts only and is edited by hand when the JLPT changes. Item banks are JSON files that `packs/build_exam.py` validates and loads into `exam.sqlite`. Users can import a bank in the same format from Me → Import.
@@ -350,6 +433,7 @@ The app builds keys only with `app.tsumugi.audio.AudioKeys` and looks them up wi
 | `minimal-pairs` | `pair/<id>/a`, `pair/<id>/b` | `practice.sqlite` `minimal_pair`; PITCH pairs spoken with が |
 | `pitch` | `pitch/<item id>` (`p<JMdict id>`) | built by the renderer from dictionary words with one Kanjium accent; spoken as reading + が |
 | `grammar` | `grammar/<point id>/<ord>` | `grammar.sqlite` `grammar_example`; default 2 per point, `--grammar-all` for all |
+| `readers` | `reader/<story id>/<sentence index>` | `readers.sqlite` `reader_sentence`, one clip per reader sentence. 春日部つむぎ narrates; speech (a line opening with 「, optionally after the speaker's name) goes to the cast voice: female 四国めたん, male 玄野武宏, a second or older man the lower 玄野武宏 (D-205). The speaker-name prefix isn't spoken. Speed: level 0 0.85, N5 0.9, N4 0.95 |
 
 ### How to render
 
@@ -367,6 +451,8 @@ uv run python packs/render_audio.py all --dry-run            # clip counts per s
 uv run python packs/render_audio.py pitch minimal-pairs dialogues exam grammar
 uv run python packs/render_audio.py grammar --grammar-all    # every grammar example (7,603)
 uv run python packs/render_audio.py exam --endpoint http://<lan-ip>:50021   # engine on another PC
+uv run python packs/render_audio.py readers                 # graded readers (needs content/packs/readers.sqlite)
+uv run python packs/render_audio.py readers --dry-run       # count the read-along lines
 ```
 
 **Re-running is safe and cheap.** Clips are cached in `tools/.cache/audio/clips/`, keyed by a hash of engine version, voice, text or kana, accent, speed/pitch/intonation and encoder settings. A re-run renders only what's new, for example after the banks grow. An interrupted run resumes where it stopped. Per-key speed/pitch/intonation overrides go in `tools/packs/audio/overrides.json`. To publish, upload `audio-manifest.json` and the zips to the same folder.

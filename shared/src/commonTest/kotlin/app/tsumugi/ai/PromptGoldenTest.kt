@@ -4,6 +4,7 @@ import app.tsumugi.ai.prompts.CorrectSentence
 import app.tsumugi.ai.prompts.ExplainGrammarInSentence
 import app.tsumugi.ai.prompts.FreeTalkTurn
 import app.tsumugi.ai.prompts.GradeProduction
+import app.tsumugi.ai.prompts.GradeReadingSummary
 import app.tsumugi.ai.prompts.GenerateReadingQuestions
 import app.tsumugi.ai.prompts.JlptExplainItem
 import app.tsumugi.ai.prompts.NaturalRewrite
@@ -201,6 +202,19 @@ class PromptGoldenTest {
             "paraphrase uses the word itself",
             listOf("Do not use the word itself"),
         ) { out -> assertTrue(out.example.contains("ドキドキ")) },
+        Golden(
+            GradeReadingSummary(),
+            GradeReadingSummary.Input(
+                passage = "今日は朝から雨でした。ゆいさんは傘がないケンさんと、一つの傘で学校まで歩きました。",
+                summary = "ゆいさんとケンさんは、一つの傘で学校に行きました。",
+                level = "N5",
+                instruction = "Retell the story in Japanese, in about 30–80 characters.",
+            ),
+            """{"content":2,"accuracy":2,"language":2,"corrected":"","feedback":"Clear and accurate: you kept the main event, sharing one umbrella on the way to school."}""",
+            """{"content":2,"accuracy":2,"language":2,"corrected":"","feedback":"とても良いです。"}""",
+            "feedback is not English",
+            listOf("N5 learner", "Retell the story", "Learner's summary: ゆいさんとケンさんは"),
+        ) { out -> assertEquals(6, out.total) },
     )
 
     @Test
@@ -209,7 +223,7 @@ class PromptGoldenTest {
             listOf(
                 "correct_sentence", "natural_rewrite", "roleplay_turn", "explain_grammar_in_sentence", "translate_sentence",
                 "generate_reading_questions", "suggest_mnemonic", "opi_interviewer_turn", "opi_rate", "jlpt_explain_item",
-                "free_talk_turn", "grade_production", "paraphrase_word_ja",
+                "free_talk_turn", "grade_production", "paraphrase_word_ja", "grade_reading_summary",
             ),
             PromptLibrary.names,
         )

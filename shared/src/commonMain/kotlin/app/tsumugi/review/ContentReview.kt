@@ -257,6 +257,34 @@ class PracticeReviewSource(private val driver: SqlDriver) : ReviewSource {
     }
 }
 
+/**
+ * Graded-reader stories still unverified in readers.sqlite (Phase 12). Title and body are editable; the display lists
+ * the questions with their keys, so the owner checks them in the same pass. `review.py --ingest` applies verdicts to
+ * the story files in tools/packs/readers/stories.
+ */
+class ReadersReviewSource(private val driver: SqlDriver) : ReviewSource {
+    override val kinds = setOf(ReviewKind.READER_PASSAGE)
+
+    override suspend fun candidates(): List<ReviewCandidate> = withContext(Dispatchers.IO) {
+        driver.rows("SELECT id, level, genre, title, title_en, body, source FROM reader_story WHERE source = 'llm' AND verified = 0 ORDER BY jlpt DESC, ord") { c ->
+            List(7) { c.getString(it)!! }
+        }.map { row ->
+            val (id, level, genre, title, titleEn) = row
+            val body = row[5]
+            val source = row[6]
+            val questions = driver.rows("SELECT stem, choices, answer FROM reader_question WHERE story_id = '${id.replace("'", "''")}' ORDER BY ord") { c ->
+                val choices = jsonList(c.getString(1))
+                val key = c.getLong(2)!!.toInt()
+                "Q: ${c.getString(0)}\n" + choices.mapIndexed { i, ch -> (if (i == key) "  * " else "    ") + ch }.joinToString("\n")
+            }
+            ReviewCandidate(
+                ReviewKind.READER_PASSAGE, id, "$level · $genre · $title ($titleEn)", mapOf("title" to title, "body" to body),
+                questions.joinToString("\n\n"), source,
+            )
+        }
+    }
+}
+
 /** The kana course's mnemonics (compiled into the app; `tools/items/review.py` records verdicts for them in a sidecar). */
 object KanaMnemonicReviewSource : ReviewSource {
     override val kinds = setOf(ReviewKind.KANA_MNEMONIC)

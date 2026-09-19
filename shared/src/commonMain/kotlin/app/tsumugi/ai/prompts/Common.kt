@@ -25,6 +25,7 @@ object PromptLibrary {
         FreeTalkTurn(),
         GradeProduction(),
         ParaphraseWordJa(),
+        GradeReadingSummary(),
     )
 
     val names: List<String> get() = all.map { it.name }

@@ -1072,6 +1072,83 @@ Additions to `SwiftSupport`/`SwiftBridges.kt`, adapters only: `audioClipPath`, `
 ### D-198: The Immersion Kit switch lives in Settings → Example sentences; results are text only (§6.2, 2026-09-18)
 The toggle (off by default, per device, D-162) sits in Settings with the terms note. The dictionary links there while it's off. When on, the dictionary shows the returned lines as text, with translation and source title, under the service's name. Their images and sound are not loaded: that would mean more requests to a service with no published terms, and streaming with no timeout the app controls (rule 13). Online lines can't be mined (D-161).
 
+### D-200: Graded readers are their own pack, `readers.sqlite` (§6.4, Phase 12, 2026-09-18)
+- A new read-only pack with its own schema file, `shared/src/commonMain/sqldelightReaders/…/readers.sq` (the single source of truth; `tools/packs/readers/build_readers.py` executes its CREATE statements), a `ReadersDatabase` entry in `shared/build.gradle.kts` and `PackInstaller.READERS`. Tables: `reader_level`, `reader_story`, `reader_sentence` (read-along lines), `reader_vocab`, `reader_question`, `reader_task` (genre templates), `pack_meta`.
+- **Why not tables in `practice.sqlite` or `exam.sqlite`:** stories are rebuilt on their own cadence (every review pass, every `draft_readers.py` run), and they need only the dictionary and tokenizer packs. A separate file keeps a story edit from changing another pack's version, so installed copies of the other packs aren't replaced. The bundling (`bundlePacks`, the Xcode phase) and `write_manifest` already take every `*.sqlite`.
+- `PackReaderRepository` implements the Phase 10 `ReaderPackRepository` over the pack. `ReaderService.packs` now defaults to it, and it is itself the honest empty state while the pack isn't installed. The pack id is `graded`, so a story opens as the reader document `pack://graded/<story id>`.
+
+### D-201: Six reader levels; level 0 is N6 and uses the N5 list (§6.4, 2026-09-18)
+- The levels are N6 ("level 0"), N5, N4, N3, N2 and N1. They're defined in `tools/packs/readers/levels.json` and copied into `reader_level`. The app's level number is 6 for level 0, and 5…1 for the others (`GradedPassageSummary.jlpt`).
+- Level 0 has no JLPT list of its own. It uses the N5 list, with shorter texts (300–500 characters, against 300–650 for N5), a lower score band (0–14) and a shorter target sentence length.
+- Length bands in non-whitespace characters: N6 300–500, N5 300–650, N4 400–850, N3 550–1,100, N2 700–1,400, N1 850–1,500. This stays inside BRIEF_V2's 300–1,500 range.
+- Question language: English stems and choices below N3, Japanese from N3. Explanations are always English.
+
+### D-202: What "95% of tokens within level" means (§6.4, 2026-09-18)
+- Stories are tokenized the way the app's reader does it: the tools' lattice port (`tools/items/lattice.py`) and the `LatticeReaderTokenizer` grouping (auxiliaries and conjunctive て absorbed). Lemmas resolve to JMdict ids by the rule in `DictionaryRepository.entriesForLemmas`.
+- **Words that count:** content words. Particles, auxiliaries, dictionary function words, 非自立 grammar words (〜ている, 〜てしまう, こと), interjections and greetings, prefixes, suffixes, numbers and number words (四月, 三人), 〜ください, names (IPADIC proper nouns, the cast, and a story's `names` list) and symbols are neutral.
+- **A word is in level when any of these holds:**
+  - (a) its JLPT tag in `dictionary.sqlite` is at the level or easier, taking the easiest tag among homograph entries with the same form and reading;
+  - (b) it has no tag and is within the level's slice of the frequency list (`freq_word`): 800 words at N6, 1,000 at N5, 2,000 at N4, 3,500 at N3, 6,000 at N2. The tags miss basics such as 母 and りんご;
+  - (c) N2 and N1 only: it has no tag and is JMdict-common;
+  - (d) N1 only: it is any word the dictionary resolves (N1 has no upper vocabulary bound);
+  - (e) it is in the story's glossed vocabulary list.
+- A potential verb the analyzer leaves as its own lemma (聞き取れる) is looked up as its dictionary verb, for coverage only.
+- **Thresholds:** at least 95% of words with glossed words counted, and at least 90% without them, so glossing can't carry a text that is above its level.
+
+### D-203: The build reimplements the §6.4 score in Python, and a host test watches for drift (§6.4, 2026-09-18)
+- `readers_lib.Analyzer.measure` ports the whole `DifficultyScorer` text score:
+  - the reader's sentence split for sentence length;
+  - `TextProfiler`'s Japanese-character and kanji counts;
+  - the abstract measure (the same lexicon from `ilr_bands.json`);
+  - JLPT band coverage over the resolved entries;
+  - the weights, cut points and round-half-up.
+- The allowed text-score band per level (`levels.json` `textScore`) is the level's label band widened by about one neighbouring band: N6 0–14, N5 0–18, N4 6–26, N3 14–38, N2 24–52, N1 34–100. The DLPT-calibrated cut points (D-156) are provisional, and a strict label match rejected natural texts at band edges. The value stored in `reader_story.text_score` is the build's.
+- `RealReadersPackTest` (androidHostTest, skipped without packs) profiles every built story with the app's own `TextProfiler` and `DifficultyScorer`. It requires at least 90% of stories to be within 3 points of the build's score. It also checks that the read-along lines equal `ReaderAnalyzer.sentences`.
+
+### D-204: Genre tasks are per-genre templates; the summary is graded by the learner's model (§6.4 genre-based tasks, 2026-09-18)
+- `tools/packs/readers/tasks.json` holds, for each of the ten genres (news, recipe, ad, manga, essay, email, notice, editorial, academic, story):
+  - a prediction question;
+  - a skim/scan task (what to find, and a rate);
+  - two close-reading prompts, followed by the story's own comprehension questions;
+  - a post-reading output task: a summary in Japanese, or a reply for emails and an opinion for ads and editorials.
+- Every template is in our own words, in Japanese and English. The app shows the Japanese from N3 and the English below. Placeholders `{title}`, `{seconds}`, `{min}` and `{max}` are filled per story.
+- **Skim timer:** characters ÷ (the level's `skimCpm` × the genre's rate) × 60, rounded up to 5 s, at least 20 s. Stored as `reader_story.skim_seconds`.
+- **Output grading:** the new `grade_reading_summary` prompt scores content, accuracy and language 0–2 each and gives English feedback. It goes through `AiGateway` with a golden test. The result carries `source = "llm"`, and without a model it is `Unavailable(reason)`. No grade is ever faked (rules 9, 10).
+- The templates carry `source: "llm"` like the stories. Structure follows the Routledge genre-based reader (pedagogy only, listed under "Inspiration" in LICENSES).
+
+### D-205: Read-along audio is one clip per reader sentence; narration and speech get different voices (§6.4, rule 20, 2026-09-18)
+- **Clips:** the `readers` set of `render_audio.py` renders every `reader_sentence` row as `reader/<story id>/<idx>` (`AudioKeys.reader`, `AudioSet.READERS`, `audio-readers.zip`). The rows are the reader's own sentences (terminators 。！？!? plus closing brackets), so a clip is exactly one highlightable sentence. The renderer reads the sentences from the pack, never re-splitting them, so keys can't drift.
+- **Voices:**
+  - Narration is 春日部つむぎ.
+  - A sentence that opens with 「 (optionally after `Name` or `Name：` from the cast) is speech. A quote spanning several sentences keeps its speaker.
+  - The speaker is the prefixed name. Failing that, it is the cast member named most recently before the quote, then the first cast member.
+  - Cast voices: female → 四国めたん first; male → 玄野武宏; a second male or `male-senior` → the lower 玄野武宏 variant (D-170). The name prefix isn't spoken.
+- **Speed:** level 0 0.85, N5 0.9, N4 0.95, else 1.0.
+- The coordinator renders the set; this phase only makes it renderable (`render_audio.py readers`).
+
+### D-206: Graded-reader quiz results are `exam_attempt` rows; the roadmap reads them (§6.11 hook, rule 11, 2026-09-18)
+- **Storage:** a submitted quiz is an immutable `exam_attempt` row, so it syncs by union like other attempts and needs no migration. Fields: exam `GRADED_READER`, mode `READER`, level = the reader level, answers `[{itemId, choice, correct}]`, scoring `{correct, total, storyId}`.
+- **Exam history:** `allAttempts` now excludes `GRADED_READER`, so exam history and reports don't fill up with reader quizzes. `ExamService.summaryOf` already skipped unknown kinds.
+- **The roadmap measure:** `GradedReaderScores.comprehensionPercent()` is the share correct on the latest attempt of each of the 20 most recently answered stories. It returns null until three different stories have been answered. `AppGraph.roadmap.comprehension` uses it, so the "80% on graded-reader questions" milestone (D-168) becomes measurable; while it's null it still doesn't block.
+- The reached stage stays a persisted MAX fact (rule 11), so a lower quiz score never moves a learner back.
+
+### D-207: Read-along timing is all-or-nothing from the clip durations (§6.4, 2026-09-18)
+- `ReadAlongTrack.of(story, clipMs)` lays the story's clips end to end, using the `ms` in the installed pack's `index.json`. Each line gets `startMs`/`endMs`, with `lineAt(position)` for highlighting and `lineAtOffset` for tap-to-play.
+- If any line's clip is missing (no pack, or a pack rendered before a story changed), the whole track is untimed: no highlight timing at all, and the reader falls back to TTS without highlighting. A partial track would highlight the wrong sentence.
+
+### D-208: The launch set was drafted by Claude; more come from the owner's endpoint through the same gate (owner, rule 19, 2026-09-18)
+- The owner decided Claude drafts the launch content directly: 120 stories, 20 per level. They are written in parallel batches to `tools/packs/readers/stories/*.json` and checked with `validate_readers.py`.
+- Every story is `source: "llm"`, `verified: false` and shows the badge. Review paths:
+  - `tools/items/review.py tools/packs/readers/stories/<file>.json` (bank-style: accept sets `verified: true`);
+  - the in-app content review (`ReadersReviewSource`, kind `reader_passage`, editable title and body), whose verdicts `review.py --ingest` applies to the story files (the reader-passage source now points at `stories/`).
+- **More stories:** `draft_readers.py --endpoint URL --model NAME --level L --count N` samples the level's JLPT words and grammar-pack points into the prompt. It resolves and validates each reply, sends the validator's errors back up to `--attempts` times, and writes passing stories to a new batch file with the next free ids, so ids are never reused. Failures go to `tools/.cache/readers-rejected/`.
+- Requests have a timeout. An API key, if any, comes from the environment variable named by `--api-key-env`.
+
+### D-209: Standard orthography, no build-time furigana, and the JLPT-list quirks (§6.4, 2026-09-18)
+- **Orthography:** stories use standard orthography with ordinary kanji, even at level 0, not all-hiragana or spaced text. The lattice tokenizer mis-segments spaced kana, and the reader already adds learner-aware furigana (D-114/D-136), which covers level 0 (no known kanji means ruby everywhere). `reader_story.ruby` exists for hand-authored ruby but is empty for the launch set.
+- **Tag quirks:** the JLPT tags in `dictionary.sqlite` leave some basics untagged or rate them higher than textbooks do (父, 誕生日, 子 N4, ありがとう N3). The frequency-list rule (D-202 b), the neutral interjections and number words, and glossing handle most of them. Authors wrote around the rest.
+- **The `names` field:** it lists proper nouns that aren't in the cast (people, places, shops), so unknown-to-the-dictionary names don't count against coverage.
+
 ### D-210: Tracks ship as their own pack, `tracks.sqlite`, with `tracks.sq` as the schema (§6.5, 2026-09-19)
 - Seven tracks (gaming, business, family, daily-life, schoolchild, military, performing) live in `tools/packs/tracks/<track>.json` (plus optional part files `<track>.<part>.json` whose lists are appended, so two authors can work on one track). `tools/packs/build_tracks.py` validates them and writes `content/packs/tracks.sqlite`; `build_all.py` runs it after `build_practice.py`.
 - A separate pack rather than new tables in `practice.sqlite`: other agents extend the practice sources in parallel, a track pack can later become a download (BRIEF_V2 §9 item 7), and `tracks.sqlite` is picked up by the existing bundling globs (`*.sqlite`) with no Gradle/Xcode change. SQLDelight database `TracksDatabase` (`sqldelightTracks/…/tracks.sq`, the single source of truth; the builder executes its CREATE statements), `PackInstaller.TRACKS`.

@@ -200,6 +200,14 @@ data class GradedPassageSummary(
     val ilr: String?,
     val length: Int,
     val source: String,
+    /** Graded-reader pack (Phase 12): "N6" (level 0) … "N1"; [jlpt] is 6 for level 0. */
+    val level: String? = null,
+    val genre: String? = null,
+    val topic: String? = null,
+    val titleEn: String? = null,
+    /** The §6.4 text score and its label ("N4 · ILR 1") at build time. */
+    val textScore: Int? = null,
+    val label: String? = null,
 )
 
 data class GradedPassage(
@@ -211,8 +219,8 @@ data class GradedPassage(
 )
 
 /**
- * Where graded passages come from. Phase 12 adds a pack-backed implementation (a read-only SQLite pack like the
- * others); until then [EmptyReaderPacks] gives the reader an honest empty state (rule 9).
+ * Where graded passages come from: [PackReaderRepository] over readers.sqlite (Phase 12, D-200), which is itself an
+ * honest empty state while the pack isn't installed; [EmptyReaderPacks] for tests and previews (rule 9).
  */
 interface ReaderPackRepository {
     @Throws(Exception::class)

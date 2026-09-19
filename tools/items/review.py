@@ -11,6 +11,7 @@ off `verified`.
 
 Run: uv run python items/review.py packs/grammar/n5.json [--reviewer NAME]
      uv run python items/review.py items/bank/dlpt_reading.json [--reviewer NAME]
+     uv run python items/review.py packs/readers/stories/n4.json [--reviewer NAME]   # graded readers (bank-style)
 
 Verdicts made on the phone (Me → Content review, BRIEF_V2 G-16, DECISIONS D-118) are applied with:
      uv run python items/review.py --ingest verdicts.json [--reviewer NAME] [--dry-run]
@@ -191,7 +192,7 @@ def _sources(root: Path, kind: str) -> list[tuple[Path, str]]:
     if kind == "scenario":
         return [(root / "packs" / "speaking" / "scenarios.json", "scenarios")]
     if kind == "reader_passage":
-        return [(f, "passages") for f in sorted((root / "packs" / "readers").glob("*.json"))]
+        return [(f, "passages") for f in sorted((root / "packs" / "readers" / "stories").glob("*.json"))]
     return []
 
 

@@ -1,7 +1,8 @@
 -- Exam attempts (BRIEF §4 ExamAttempt, §5.11) and user-imported item banks.
 
--- exam: JLPT | DLPT_READING | DLPT_LISTENING | OPI. level: "N3", ILR "2" (target band) or "" for OPI/mixed.
--- mode: MOCK | SECTION | TYPE | SLICE_30 | SLICE_60 | FULL | PRACTICE | INTERVIEW.
+-- exam: JLPT | DLPT_READING | DLPT_LISTENING | OPI | GRADED_READER. level: "N3", ILR "2" (target band) or "" for
+-- OPI/mixed; graded readers use the reader level ("N6" = level 0 … "N1").
+-- mode: MOCK | SECTION | TYPE | SLICE_30 | SLICE_60 | FULL | PRACTICE | INTERVIEW | READER.
 -- answers: JSON array of {itemId, choice, correct, timeMs}. scoring: JSON of the result (JLPT score groups,
 -- ILR estimate, or the OPI rating). summary: one line for lists ("N3 · 112/180 · pass", "ILR 2 (provisional)").
 -- Immutable once submitted; syncs by union like reviews.
@@ -47,8 +48,9 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 attempts:
 SELECT * FROM exam_attempt WHERE exam = ? ORDER BY submitted_at DESC LIMIT ?;
 
+-- Graded-reader quizzes share the table (exam = 'GRADED_READER', DECISIONS D-206) but aren't exams.
 allAttempts:
-SELECT * FROM exam_attempt ORDER BY submitted_at DESC LIMIT ?;
+SELECT * FROM exam_attempt WHERE exam != 'GRADED_READER' ORDER BY submitted_at DESC LIMIT ?;
 
 attemptById:
 SELECT * FROM exam_attempt WHERE id = ?;

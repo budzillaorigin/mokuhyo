@@ -1,0 +1,2215 @@
+{
+  "batch": "n4",
+  "level": "N4",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Tsumugi contributors (AI-drafted)",
+  "passages": [
+    {
+      "id": "gr-n4-001",
+      "level": "N4",
+      "genre": "news",
+      "topic": "public library",
+      "title": "図書館が夜も開くようになります",
+      "titleEn": "The library will open in the evening",
+      "body": "みどり市の図書館は、来月一日から、夜九時まで開くことになりました。\n今までは、午後六時に閉まっていました。そのため、会社で働いている人や高校生は、あまり利用することができませんでした。去年、市が町の人に質問をしたところ、夜も本を借りたいという意見がいちばん多かったそうです。\n開いている時間が長くなるので、図書館の中も少し変わります。二階には、静かに勉強できる部屋が新しく作られました。三十人まで使うことができて、予約はいりません。また、入り口の近くには、夜でも本を返せる箱が置かれます。\n図書館の山田館長は「仕事の帰りに、気軽に寄ってほしいです。夜の図書館は静かで、とても気持ちがいいですよ。」と話しています。\nでも、夜六時からは、子どもだけで来ることはできません。中学生までの子どもは、家族といっしょに来るようにしてください。\nまた、毎月最初の金曜日の夜には、大人のための本の集まりも開かれる予定です。好きな本について、ほかの人と自由に話すことができます。",
+      "names": [
+        "みどり市"
+      ],
+      "cast": [
+        {
+          "name": "山田",
+          "voice": "male-senior"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "中学生",
+          "reading": "ちゅうがくせい",
+          "entryId": 1423660,
+          "gloss": "junior high school student; middle school pupil"
+        },
+        {
+          "word": "集まり",
+          "reading": "あつまり",
+          "entryId": 1609050,
+          "gloss": "gathering; meeting; assembly"
+        },
+        {
+          "word": "館長",
+          "reading": "かんちょう",
+          "entryId": 1216240,
+          "gloss": "director (of a library or museum)"
+        },
+        {
+          "word": "気軽",
+          "reading": "きがる",
+          "entryId": 1222110,
+          "gloss": "casual; without hesitation; feel free"
+        },
+        {
+          "word": "利用",
+          "reading": "りよう",
+          "entryId": 1549660,
+          "gloss": "use; utilization; utilisation"
+        },
+        {
+          "word": "意見",
+          "reading": "いけん",
+          "entryId": 1156530,
+          "gloss": "opinion; view; comment"
+        },
+        {
+          "word": "予約",
+          "reading": "よやく",
+          "entryId": 1543750,
+          "gloss": "reservation; appointment; booking"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "What is this news article mainly about?",
+          "choices": [
+            "The library is closing for a month.",
+            "The library will stay open until 9 p.m.",
+            "The library is moving to a new building.",
+            "The library will lend books to high schools."
+          ],
+          "answer": 1,
+          "explanation": "The first line says the Midori City library will be open until nine at night (夜九時まで開くことになりました) from next month."
+        },
+        {
+          "type": "detail",
+          "stem": "Why couldn't working people use the library very much before?",
+          "choices": [
+            "It was too far from the station.",
+            "It had too few books.",
+            "It closed at 6 p.m.",
+            "It was always full of students."
+          ],
+          "answer": 2,
+          "explanation": "The second paragraph says it closed at 6 p.m. (午後六時に閉まっていました), so people working at companies could not use it much."
+        },
+        {
+          "type": "detail",
+          "stem": "What must children up to junior high school age do after 6 p.m.?",
+          "choices": [
+            "Come with a family member.",
+            "Reserve the study room.",
+            "Leave before 7 p.m.",
+            "Show a student card."
+          ],
+          "answer": 0,
+          "explanation": "The article says children cannot come alone after six, and children up to junior high should come with their family (家族といっしょに来る)."
+        },
+        {
+          "type": "detail",
+          "stem": "What will be placed near the entrance?",
+          "choices": [
+            "A new computer.",
+            "A room for thirty people.",
+            "A map of the city.",
+            "A box for returning books at night."
+          ],
+          "answer": 3,
+          "explanation": "The third paragraph says a box where you can return books even at night (夜でも本を返せる箱) will be placed near the entrance."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-002",
+      "level": "N4",
+      "genre": "recipe",
+      "topic": "cooking",
+      "title": "十五分でできる親子どん",
+      "titleEn": "Chicken and egg rice bowl in fifteen minutes",
+      "body": "今日は、忙しい日でもかんたんに作れる親子どんを紹介します。とり肉と卵を使うので、親子という名前がついています。十五分ぐらいでできますよ。\n使うもの（二人分）：ご飯二はい、とり肉二百グラム、玉ねぎ半分、卵三つ、水百ミリリットル、しょうゆスプーン二はい、さとうスプーン一ぱい\n作りましょう\n一、野菜をうすく切ります。とり肉は、食べやすい大きさに切っておきます。\n二、なべに水としょうゆとさとうを入れて、火をつけます。\n三、わいたら、野菜ととり肉を入れて、五分ぐらい煮ます。\n四、卵を割って、はしで軽くまぜます。あまり長い時間まぜないようにしてください。\n五、そこに卵を入れたら、火を弱くして、一分ぐらい待ちます。\n六、大きい茶わんにご飯を入れて、その上からかけたら、もう食べられます。\n卵が全部かたくなる前に、火を止めてください。少しやわらかいほうが、もっとおいしいと思います。\n一人で食べる時は、全部を半分にしてください。時間がない朝や、疲れて帰ってきた夜にも、ぜひ作ってみてくださいね。",
+      "vocabulary": [
+        {
+          "word": "親子",
+          "reading": "おやこ",
+          "gloss": "parent and child",
+          "entryId": 1365170
+        },
+        {
+          "word": "どん",
+          "reading": "どん",
+          "gloss": "rice bowl dish (short for どんぶり)",
+          "entryId": 1562970
+        },
+        {
+          "word": "玉ねぎ",
+          "reading": "たまねぎ",
+          "gloss": "onion",
+          "entryId": 1240670
+        },
+        {
+          "word": "なべ",
+          "reading": "なべ",
+          "gloss": "pot; saucepan",
+          "entryId": 1459720
+        },
+        {
+          "word": "煮る",
+          "reading": "にる",
+          "entryId": 1322540,
+          "gloss": "to boil; to simmer; to stew"
+        },
+        {
+          "word": "割る",
+          "reading": "わる",
+          "gloss": "to break (an egg); to crack",
+          "entryId": 1208000
+        },
+        {
+          "word": "まぜる",
+          "reading": "まぜる",
+          "gloss": "to mix; to stir",
+          "entryId": 1290310
+        },
+        {
+          "word": "わく",
+          "reading": "わく",
+          "entryId": 1606680,
+          "gloss": "to grow hot (e.g. water); to boil"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "How long does this dish take to make?",
+          "choices": [
+            "About five minutes.",
+            "About one hour.",
+            "About fifteen minutes.",
+            "About thirty minutes."
+          ],
+          "answer": 2,
+          "explanation": "The introduction says you can make it in about fifteen minutes (十五分ぐらいでできます)."
+        },
+        {
+          "type": "sequence",
+          "stem": "What do you do right after the water in the pot boils?",
+          "choices": [
+            "Put in the onion and chicken.",
+            "Add the eggs.",
+            "Put the rice in a bowl.",
+            "Cut the onion."
+          ],
+          "answer": 0,
+          "explanation": "Step three says that when it boils (わいたら), you add the vegetable (the onion) and the chicken and cook for about five minutes."
+        },
+        {
+          "type": "detail",
+          "stem": "What should you be careful about when mixing the eggs?",
+          "choices": [
+            "Use a hot bowl.",
+            "Add sugar first.",
+            "Mix them for a long time.",
+            "Don't mix them too much."
+          ],
+          "answer": 3,
+          "explanation": "Step four says あまり長い時間まぜないようにしてください: be careful not to mix them for too long."
+        },
+        {
+          "type": "inference",
+          "stem": "Why does the recipe say to turn off the heat before the eggs get completely hard?",
+          "choices": [
+            "To save gas.",
+            "Because slightly soft eggs taste better.",
+            "Because the pot might break.",
+            "So the rice stays cold."
+          ],
+          "answer": 1,
+          "explanation": "The point section says slightly soft eggs are more delicious (少しやわらかいほうが、おいしく食べられます)."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-003",
+      "level": "N4",
+      "genre": "ad",
+      "topic": "bicycle rental",
+      "title": "海の町を自転車で走りませんか",
+      "titleEn": "Why not ride a bicycle around the seaside town?",
+      "body": "海の町を自転車で走りませんか。\nさくら駅の前にある自転車屋うみかぜでは、一日千円で自転車を借りることができます。駅から海までは、歩くと四十分かかりますが、自転車なら十五分で着きます。道が平らなので、自転車にあまり乗らない人でも安心です。\n料金：二時間五百円、一日千円。子ども用の自転車は半分の料金です。\n電気の力で走る自転車もあります。こちらは一日千五百円です。坂が多い山のほうへ行きたい人は、ぜひ使ってみてください。山の上から見る海は、とてもきれいですよ。\n営業時間：朝八時から夕方六時まで。水曜日は休みです。\n自転車を返す時間に遅れてしまった時は、三十分ごとに百円をいただきます。時間に気をつけてください。\n雨の日は、雨の時に着る服を無料で貸します。また、乗る前には、店にある安全なぼうしをかぶるようにしてください。\nこの広告を見せてくださった方には、町の地図と冷たいお茶を一本あげます。家族や友だちと、ぜひ来てください。みんなで待っています。",
+      "names": [
+        "さくら駅",
+        "うみかぜ"
+      ],
+      "vocabulary": [
+        {
+          "word": "平ら",
+          "reading": "たいら",
+          "entryId": 1506930,
+          "gloss": "flat; level; even"
+        },
+        {
+          "word": "料金",
+          "reading": "りょうきん",
+          "entryId": 1554280,
+          "gloss": "fee; charge; fare"
+        },
+        {
+          "word": "営業",
+          "reading": "えいぎょう",
+          "entryId": 1173430,
+          "gloss": "business; trade; operations"
+        },
+        {
+          "word": "坂",
+          "reading": "さか",
+          "entryId": 1297110,
+          "gloss": "slope; incline; hill"
+        },
+        {
+          "word": "無料",
+          "reading": "むりょう",
+          "entryId": 1531040,
+          "gloss": "free (of charge); gratuitous"
+        },
+        {
+          "word": "広告",
+          "reading": "こうこく",
+          "entryId": 1278510,
+          "gloss": "advertisement; advertising"
+        },
+        {
+          "word": "かぶる",
+          "reading": "かぶる",
+          "entryId": 1484330,
+          "gloss": "to put on (one's head); to wear; to have on"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "How much does a child's bicycle cost for one day?",
+          "choices": [
+            "500 yen.",
+            "1,000 yen.",
+            "1,500 yen.",
+            "It is free."
+          ],
+          "answer": 0,
+          "explanation": "A day costs 1,000 yen, and children's bicycles are half the price (半分の料金), so 500 yen."
+        },
+        {
+          "type": "detail",
+          "stem": "When is the shop closed?",
+          "choices": [
+            "On rainy days.",
+            "On Sundays.",
+            "After 8 p.m. every day.",
+            "On Wednesdays."
+          ],
+          "answer": 3,
+          "explanation": "The business hours line says 水曜日はお休みです: the shop is closed on Wednesdays."
+        },
+        {
+          "type": "detail",
+          "stem": "Who is the electric bicycle recommended for?",
+          "choices": [
+            "Small children.",
+            "People who want to go toward the hilly mountain area.",
+            "People who only ride for two hours.",
+            "People who ride on rainy days."
+          ],
+          "answer": 1,
+          "explanation": "The ad recommends it for people who want to go toward the mountains, where there are many slopes (坂が多い山のほう)."
+        },
+        {
+          "type": "detail",
+          "stem": "What do you get if you show this advertisement?",
+          "choices": [
+            "A free helmet.",
+            "One extra hour of riding.",
+            "A town map and a cold tea.",
+            "A raincoat to keep."
+          ],
+          "answer": 2,
+          "explanation": "The last paragraph says people who show the ad get a town map and one cold tea (町の地図と冷たいお茶を一本)."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-004",
+      "level": "N4",
+      "genre": "manga",
+      "topic": "family and smartphones",
+      "title": "おじいちゃんのメッセージ",
+      "titleEn": "Grandpa's message",
+      "body": "ミカ「おじいちゃん、新しい電話の使い方はもう覚えた？」\n健二「うん、だいたいわかったよ。今朝、友だちにメッセージを送ってみたんだ。」\nミカ「すごい！なんて書いたの？」\n健二「今日の午後、いっしょに公園を散歩しませんか、と書いたんだよ。」\nミカ「返事は来た？」\n健二「それが、まだ来ないんだ。少しさびしいなあ。」\nミカは、祖父の電話を見せてもらいました。\nミカ「あっ、これ、友だちじゃなくて、駅の前のすし屋に送ってるよ。」\n健二「えっ、本当か。名前が似ていたから、まちがえてしまったんだな。」\nその時、電話が鳴りました。店からの返事でした。\nミカ「読むね。『散歩はできませんが、今晩の予約ならできます。』と書いてあるよ。」\n健二「おもしろい店だなあ。じゃあ、今晩はみんなで食べに行こう。」\nミカ「やった！まちがえてくれて、よかった！」\n健二「友だちには、明日もう一度送るよ。今度は、ミカがとなりで見ていてくれ。」\nミカ「いいよ。でも、その前に、今晩はおいしいものをたくさん食べようね。」",
+      "cast": [
+        {
+          "name": "ミカ",
+          "voice": "female"
+        },
+        {
+          "name": "健二",
+          "voice": "male-senior"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "おじいちゃん",
+          "reading": "おじいちゃん",
+          "entryId": 2007470,
+          "gloss": "grandpa; granddad"
+        },
+        {
+          "word": "使い方",
+          "reading": "つかいかた",
+          "entryId": 1305950,
+          "gloss": "way of using (something); way to use; how to use"
+        },
+        {
+          "word": "メッセージ",
+          "reading": "めっせーじ",
+          "entryId": 1133570,
+          "gloss": "message"
+        },
+        {
+          "word": "すし",
+          "reading": "すし",
+          "entryId": 1595650,
+          "gloss": "sushi"
+        },
+        {
+          "word": "返事",
+          "reading": "へんじ",
+          "entryId": 1512220,
+          "gloss": "reply; answer; response"
+        },
+        {
+          "word": "似る",
+          "reading": "にる",
+          "entryId": 1314600,
+          "gloss": "to resemble; to look like; to be like"
+        },
+        {
+          "word": "予約",
+          "reading": "よやく",
+          "entryId": 1543750,
+          "gloss": "reservation; appointment; booking"
+        },
+        {
+          "word": "鳴る",
+          "reading": "なる",
+          "entryId": 1532910,
+          "gloss": "to sound; to ring; to resound"
+        },
+        {
+          "word": "散歩",
+          "reading": "さんぽ",
+          "entryId": 1303620,
+          "gloss": "walk; stroll"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "Who did Grandpa actually send his message to?",
+          "choices": [
+            "His friend.",
+            "Mika.",
+            "A park near the station.",
+            "A sushi restaurant."
+          ],
+          "answer": 3,
+          "explanation": "Mika says he sent it to the sushi restaurant in front of the station (駅の前のすし屋に送ってる), not his friend."
+        },
+        {
+          "type": "detail",
+          "stem": "Why did Grandpa make the mistake?",
+          "choices": [
+            "His phone was broken.",
+            "The names were similar.",
+            "Mika gave him the wrong number.",
+            "He could not read the screen."
+          ],
+          "answer": 1,
+          "explanation": "Grandpa says 名前が似ていたから、まちがえてしまった: the names were similar, so he got it wrong."
+        },
+        {
+          "type": "detail",
+          "stem": "What will the family do tonight?",
+          "choices": [
+            "Walk in the park.",
+            "Visit Grandpa's friend.",
+            "Go and eat sushi.",
+            "Practice using the smartphone."
+          ],
+          "answer": 2,
+          "explanation": "After the restaurant's reply, Grandpa says 今晩はみんなで食べに行こう: let's all go and eat there (at the sushi restaurant) tonight."
+        },
+        {
+          "type": "inference",
+          "stem": "Why does Mika thank Grandpa for making a mistake?",
+          "choices": [
+            "Because it led to a sushi dinner.",
+            "Because she wanted to teach him.",
+            "Because his friend was busy.",
+            "Because she does not like walking."
+          ],
+          "answer": 0,
+          "explanation": "The mistake led to the family going out for sushi tonight, which makes Mika happy (やった！)."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-005",
+      "level": "N4",
+      "genre": "essay",
+      "topic": "life in Japan",
+      "title": "静かな電車の中で",
+      "titleEn": "On a quiet train",
+      "body": "日本に来て、もうすぐ一年になります。はじめて東京の電車に乗った日のことは、今でもよく覚えています。\n朝の電車は人でいっぱいでしたが、とても静かでした。電話で話す人は一人もいませんでした。私の国では、電車の中で友だちと大きな声で話したり、音楽を聞いたりする人が多いので、とてもびっくりしました。\nはじめは、この静かさが少しこわいと思いました。みんな疲れていて、楽しくないように見えたからです。\nでも、毎日乗っているうちに、考え方が変わりました。静かな電車の中では、本を読んだり、その日の予定を考えたりすることができます。私は、毎朝三十分、電車の中で日本語の小説を読むようにしています。最初は一ページ読むのに十分もかかりましたが、今は漢字も少しずつわかるようになりました。\n先週、となりに座っていたおばあさんが、私の本を見て、にっこり笑ってくれました。何も話しませんでしたが、心があたたかくなりました。\n今、私にとって電車の中は、小さな図書館のような場所です。国に帰っても、この時間を大切にしたいと思います。",
+      "vocabulary": [
+        {
+          "word": "小説",
+          "reading": "しょうせつ",
+          "entryId": 1348430,
+          "gloss": "novel; story; (work of) fiction"
+        },
+        {
+          "word": "予定",
+          "reading": "よてい",
+          "entryId": 1543240,
+          "gloss": "plans; arrangement; schedule"
+        },
+        {
+          "word": "にっこり",
+          "reading": "にっこり",
+          "entryId": 1632320,
+          "gloss": "sweetly (smiling); broadly (grinning)"
+        },
+        {
+          "word": "考え方",
+          "reading": "かんがえかた",
+          "entryId": 1281090,
+          "gloss": "way of thinking; point of view; opinion"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "What surprised the writer on the first train ride in Tokyo?",
+          "choices": [
+            "The train was late.",
+            "The train was very quiet.",
+            "People were singing.",
+            "The train was empty."
+          ],
+          "answer": 1,
+          "explanation": "The writer says the morning train was full but very quiet (とても静かでした), which was surprising."
+        },
+        {
+          "type": "detail",
+          "stem": "How did the writer feel about the quiet at first?",
+          "choices": [
+            "It was a little scary.",
+            "It was relaxing.",
+            "It was funny.",
+            "It was the same as at home."
+          ],
+          "answer": 0,
+          "explanation": "The third paragraph says 少しこわいと思いました: the writer thought it was a little scary, because everyone looked tired."
+        },
+        {
+          "type": "detail",
+          "stem": "What does the writer do on the train every morning now?",
+          "choices": [
+            "Talks with friends.",
+            "Listens to music.",
+            "Sleeps.",
+            "Reads a Japanese novel."
+          ],
+          "answer": 3,
+          "explanation": "The writer reads a Japanese novel for thirty minutes every morning (日本語の小説を読むようにしています)."
+        },
+        {
+          "type": "gist",
+          "stem": "What does the writer now think of time on the train?",
+          "choices": [
+            "It is a waste of time.",
+            "It is too crowded to enjoy.",
+            "It is like being in a small library.",
+            "It is the best time to make friends."
+          ],
+          "answer": 2,
+          "explanation": "The last paragraph says the train is now like a small library (小さな図書館のような場所) for the writer, and a time to treasure."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-006",
+      "level": "N4",
+      "genre": "email",
+      "topic": "homestay",
+      "title": "ホームステイの前のメール",
+      "titleEn": "An email before a homestay",
+      "body": "件名：来月からお世話になるラウラです\n鈴木様\nはじめまして。来月から二週間、そちらでお世話になるラウラ・ガルシアと申します。スペインの大学で日本語を勉強している二十歳の学生です。\n今度、日本の家族といっしょに生活できることになって、とてもうれしく思っています。日本語はまだ上手ではありませんが、毎日たくさん話すようにしたいです。\nいくつか質問があります。\n一つ目は、空港からみなさんの家までの行き方です。空港に着くのは午後三時ごろですが、そこから電車で行ったらいいでしょうか。バスのほうが便利ですか。\n二つ目は、食べ物のことです。私は魚が大好きですが、卵を食べると、体が悪くなってしまいます。ご迷惑をかけてしまいますが、気をつけていただけると、うれしいです。\n三つ目は、お土産のことです。ご家族は何人いらっしゃいますか。スペインのお菓子を持って行きたいと思っています。\n最後に、私は料理が好きなので、ぜひ一度、スペインの料理を作らせてください。\n忙しいところすみませんが、お返事を待っています。どうぞよろしくお願いいたします。\nラウラ・ガルシア",
+      "names": [
+        "ラウラ・ガルシア",
+        "ラウラ",
+        "鈴木",
+        "スペイン"
+      ],
+      "vocabulary": [
+        {
+          "word": "件名",
+          "reading": "けんめい",
+          "gloss": "subject (of an email)",
+          "entryId": 1255960
+        },
+        {
+          "word": "お世話",
+          "reading": "おせわ",
+          "gloss": "care; help (お世話になる: to be looked after)",
+          "entryId": 2144410
+        },
+        {
+          "word": "申す",
+          "reading": "もうす",
+          "gloss": "to be called (humble); to say (humble)",
+          "entryId": 1363090
+        },
+        {
+          "word": "迷惑",
+          "reading": "めいわく",
+          "gloss": "trouble; bother; inconvenience",
+          "entryId": 1532800
+        },
+        {
+          "word": "土産",
+          "reading": "みやげ",
+          "gloss": "souvenir; present brought by a visitor",
+          "entryId": 1445360
+        },
+        {
+          "word": "よろしく",
+          "reading": "よろしく",
+          "gloss": "please treat me well; best regards",
+          "entryId": 1224890
+        },
+        {
+          "word": "生活",
+          "reading": "せいかつ",
+          "entryId": 1378860,
+          "gloss": "life; living"
+        },
+        {
+          "word": "返事",
+          "reading": "へんじ",
+          "entryId": 1512220,
+          "gloss": "reply; answer; response"
+        }
+      ],
+      "questions": [
+        {
+          "type": "purpose",
+          "stem": "What is the main purpose of Laura's email?",
+          "choices": [
+            "To ask to change the dates of her stay.",
+            "To complain about Japanese food.",
+            "To introduce herself and ask some questions before her stay.",
+            "To invite the Suzuki family to Spain."
+          ],
+          "answer": 2,
+          "explanation": "Laura introduces herself (ラウラ・ガルシアと申します) and then writes いくつか質問があります, asking three questions before her homestay."
+        },
+        {
+          "type": "detail",
+          "stem": "What happens when Laura eats eggs?",
+          "choices": [
+            "She feels very happy.",
+            "She gets hungry again quickly.",
+            "She cannot sleep.",
+            "She becomes unwell."
+          ],
+          "answer": 3,
+          "explanation": "She writes 卵を食べると、体が悪くなってしまいます: eating eggs makes her body feel bad."
+        },
+        {
+          "type": "detail",
+          "stem": "What does Laura want to bring for the family?",
+          "choices": [
+            "Sweets from Spain.",
+            "Fish from Spain.",
+            "A Spanish cookbook.",
+            "Photos of her university."
+          ],
+          "answer": 0,
+          "explanation": "In the third question she says スペインのお菓子を持って行きたい: she wants to bring Spanish sweets."
+        },
+        {
+          "type": "detail",
+          "stem": "What does Laura offer to do during her stay?",
+          "choices": [
+            "Meet the family at the airport.",
+            "Cook a Spanish dish for them.",
+            "Teach them Spanish.",
+            "Clean the house every day."
+          ],
+          "answer": 1,
+          "explanation": "She likes cooking and asks them to let her make Spanish food once (スペインの料理を作らせてください)."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-007",
+      "level": "N4",
+      "genre": "notice",
+      "topic": "apartment water work",
+      "title": "水が止まります",
+      "titleEn": "The water will be turned off",
+      "body": "お知らせ：水が止まります\nさくらアパートに住んでいるみなさんへ\n建物の古い水道を新しくするため、次の日に工事をします。\n日：10月12日（土曜日）午前九時から午後三時まで\nこの時間は、台所、おふろ、トイレの水が使えません。前の日までに、大きい入れ物に水を入れておいてください。トイレを使いたい時は、となりの公園のトイレを使ってください。\nまた、その日は、一階の入り口の前に大きな車が止まります。自転車を入り口の前に置かないようにしてください。\n雨がたくさん降った時は、工事は次の日曜日に変わります。変わる時は、前の日の夕方六時までに、入り口にお知らせの紙をはります。\n朝から午後まで、少し大きな音がします。小さい子どもがいる家には、ご迷惑をかけてしまいますが、どうぞよろしくお願いします。\nわからないことがあったら、管理人の田中まで連絡してください。管理人の部屋は一階にあります。月曜日から金曜日の午前十時から午後五時までいます。",
+      "names": [
+        "さくらアパート",
+        "さくら",
+        "田中"
+      ],
+      "vocabulary": [
+        {
+          "word": "工事",
+          "reading": "こうじ",
+          "gloss": "construction work; repair work",
+          "entryId": 1278130
+        },
+        {
+          "word": "水道",
+          "reading": "すいどう",
+          "gloss": "water pipes; water supply",
+          "entryId": 1371920
+        },
+        {
+          "word": "入れ物",
+          "reading": "いれもの",
+          "gloss": "container",
+          "entryId": 1587840
+        },
+        {
+          "word": "迷惑",
+          "reading": "めいわく",
+          "gloss": "trouble; bother; inconvenience",
+          "entryId": 1532800
+        },
+        {
+          "word": "よろしく",
+          "reading": "よろしく",
+          "gloss": "please (be understanding); best regards",
+          "entryId": 1224890
+        },
+        {
+          "word": "管理",
+          "reading": "かんり",
+          "gloss": "management (管理人: building manager)",
+          "entryId": 1214200
+        },
+        {
+          "word": "建物",
+          "reading": "たてもの",
+          "entryId": 1257540,
+          "gloss": "building"
+        },
+        {
+          "word": "はる",
+          "reading": "はる",
+          "gloss": "to put up (a notice); to stick",
+          "entryId": 1341000
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "What can't residents do from 9 a.m. to 3 p.m. on the work day?",
+          "choices": [
+            "Use water in the kitchen, bath or toilet.",
+            "Use the stairs.",
+            "Park their cars in front of the building.",
+            "Go into the park next door."
+          ],
+          "answer": 0,
+          "explanation": "The notice says 台所、おふろ、トイレの水が使えません during that time."
+        },
+        {
+          "type": "detail",
+          "stem": "What should residents do by the day before?",
+          "choices": [
+            "Move their bicycles to the park.",
+            "Call the manager.",
+            "Put water in a large container.",
+            "Close all their windows."
+          ],
+          "answer": 2,
+          "explanation": "It says 前の日までに、大きい入れ物に水を入れておいてください: fill a big container with water by the day before."
+        },
+        {
+          "type": "detail",
+          "stem": "What happens if it rains a lot?",
+          "choices": [
+            "The work stops at noon.",
+            "The work moves to the next Sunday.",
+            "The work is cancelled.",
+            "The work starts earlier."
+          ],
+          "answer": 1,
+          "explanation": "The notice says 雨がたくさん降った時は、工事は次の日曜日に変わります."
+        },
+        {
+          "type": "purpose",
+          "stem": "Why are residents asked not to leave bicycles in front of the entrance?",
+          "choices": [
+            "Children play there.",
+            "The entrance is being painted.",
+            "The manager's room is there.",
+            "A large vehicle will stop there."
+          ],
+          "answer": 3,
+          "explanation": "The line before the request says 一階の入り口の前に大きな車が止まります: a big vehicle will stop in front of the entrance."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-008",
+      "level": "N4",
+      "genre": "editorial",
+      "topic": "local shops",
+      "title": "町の小さな店を大切に",
+      "titleEn": "Let's take care of our town's small shops",
+      "body": "最近、この町でも、駅の近くに大きなスーパーができました。何でも安く買えるし、夜遅くまで開いているので、とても便利です。\nでも、そのスーパーができてから、駅の前の古い通りにある小さな店が、三つも閉まってしまいました。\n私たちは、町の小さな店をもっと大切にするべきだと思います。理由は二つあります。\n一つ目は、小さな店の人は、町の人をよく知っていることです。一人で住んでいるお年寄りが何日も買い物に来ないと、店の人が心配して、家まで見に行くこともあります。大きな店では、なかなかできないことです。\n二つ目は、町の元気のためです。店が閉まって、通りが暗くなると、人が歩かなくなります。人が歩かない町は、さびしいだけでなく、危ないです。\nもちろん、全部の買い物を小さな店でするのは、難しいでしょう。値段も少し高いことが多いです。\nでも、一週間に一度だけでいいのです。野菜や魚だけでも、近くの店で買ってみませんか。店の人と短い話をするだけで、町は少しずつ変わっていくはずです。",
+      "vocabulary": [
+        {
+          "word": "スーパー",
+          "reading": "すーぱー",
+          "gloss": "supermarket",
+          "entryId": 1066710
+        },
+        {
+          "word": "通り",
+          "reading": "とおり",
+          "gloss": "street; road",
+          "entryId": 1432920
+        },
+        {
+          "word": "年寄り",
+          "reading": "としより",
+          "gloss": "old person; the elderly (お年寄り)",
+          "entryId": 1598750
+        },
+        {
+          "word": "値段",
+          "reading": "ねだん",
+          "entryId": 1600160,
+          "gloss": "price; cost"
+        },
+        {
+          "word": "理由",
+          "reading": "りゆう",
+          "entryId": 1550140,
+          "gloss": "reason; grounds; pretext"
+        },
+        {
+          "word": "べき",
+          "reading": "べき",
+          "gloss": "should; ought to",
+          "entryId": 1011430
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "What happened after the big supermarket opened?",
+          "choices": [
+            "The small shops got more customers.",
+            "The old street became brighter.",
+            "The station moved.",
+            "Three small shops closed."
+          ],
+          "answer": 3,
+          "explanation": "The second paragraph says 小さな店が、三つも閉まってしまいました after the supermarket opened."
+        },
+        {
+          "type": "detail",
+          "stem": "What is the writer's first reason for supporting small shops?",
+          "choices": [
+            "They are cheaper than the supermarket.",
+            "The shop staff know local people and may check on them.",
+            "They stay open late at night.",
+            "They sell everything a family needs."
+          ],
+          "answer": 1,
+          "explanation": "The first reason is that small-shop staff know the townspeople well; they may even visit an elderly person who hasn't come for days."
+        },
+        {
+          "type": "gist",
+          "stem": "What does the writer suggest readers do?",
+          "choices": [
+            "Buy some things at local shops once a week.",
+            "Stop using the supermarket.",
+            "Open their own shops.",
+            "Walk around the town at night."
+          ],
+          "answer": 0,
+          "explanation": "The last paragraph says 一週間に一度だけでいい and asks readers to try buying vegetables or fish at nearby shops."
+        },
+        {
+          "type": "inference",
+          "stem": "Why does the writer think it is bad when people stop walking in a street?",
+          "choices": [
+            "The street becomes noisy.",
+            "Prices go up.",
+            "The town becomes lonely and dangerous.",
+            "The supermarket closes too."
+          ],
+          "answer": 2,
+          "explanation": "The writer says 人が歩かない町は、さびしいだけでなく、危ないです: such a town is not only lonely but also dangerous."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-009",
+      "level": "N4",
+      "genre": "academic",
+      "topic": "sleep and memory",
+      "title": "ねると、よく覚えられる",
+      "titleEn": "Sleep helps you remember",
+      "body": "ある大学で、ねることと覚えることの関係を調べる研究が行われました。\nこの研究では、大学生四十人に、知らない外国語の言葉を二十覚えてもらいました。そのあと、学生を半分ずつ、AとBに分けました。Aの学生は、夜十一時にねて、朝七時に起きました。Bの学生は、朝まで起きていて、ねませんでした。\n次の日の昼、両方の学生に、同じテストをしました。すると、Aの学生は、だいたい十五の言葉を覚えていましたが、Bの学生は九つしか覚えていませんでした。\n研究をした先生によると、人の頭は、ねている時に、その日に覚えたことを整理しているそうです。そのため、ねないと、新しいことがうまく頭に残らないのです。ねる時間が短くても、まったくねないよりはいいそうです。\nテストの前の日に、朝まで勉強する学生は少なくありません。でも、この研究からわかるように、それはあまりいいやり方ではないようです。\n勉強したら、しっかりねる。これが、いちばん簡単な覚え方なのでしょう。",
+      "vocabulary": [
+        {
+          "word": "関係",
+          "reading": "かんけい",
+          "entryId": 1215810,
+          "gloss": "relation; relationship; connection"
+        },
+        {
+          "word": "研究",
+          "reading": "けんきゅう",
+          "entryId": 1258520,
+          "gloss": "research; study; investigation"
+        },
+        {
+          "word": "分ける",
+          "reading": "わける",
+          "gloss": "to divide; to split",
+          "entryId": 1503000
+        },
+        {
+          "word": "整理",
+          "reading": "せいり",
+          "gloss": "sorting; putting in order",
+          "entryId": 1376250
+        },
+        {
+          "word": "まったく",
+          "reading": "まったく",
+          "gloss": "(not) at all",
+          "entryId": 1394800
+        },
+        {
+          "word": "両方",
+          "reading": "りょうほう",
+          "entryId": 1554010,
+          "gloss": "both; both sides; both parties"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "How many words did the students try to learn?",
+          "choices": [
+            "Forty.",
+            "Twenty.",
+            "Fifteen.",
+            "Nine."
+          ],
+          "answer": 1,
+          "explanation": "The students were asked to learn twenty words (言葉を二十覚えてもらいました). Forty is the number of students."
+        },
+        {
+          "type": "detail",
+          "stem": "About how many words did the students in group B remember?",
+          "choices": [
+            "Fifteen.",
+            "Twenty.",
+            "Eleven.",
+            "Nine."
+          ],
+          "answer": 3,
+          "explanation": "Group B stayed up all night and remembered only nine (九つしか覚えていませんでした)."
+        },
+        {
+          "type": "detail",
+          "stem": "According to the teacher, what does the brain do while we sleep?",
+          "choices": [
+            "It forgets old things.",
+            "It learns new languages.",
+            "It organizes what we learned that day.",
+            "It stops working completely."
+          ],
+          "answer": 2,
+          "explanation": "The teacher says the brain puts in order (整理している) what we learned that day while we sleep."
+        },
+        {
+          "type": "gist",
+          "stem": "What is the main message of this text?",
+          "choices": [
+            "Sleeping after studying helps you remember.",
+            "Studying all night before a test is best.",
+            "Foreign languages are hard to learn.",
+            "Morning is the best time to study."
+          ],
+          "answer": 0,
+          "explanation": "The text ends with 勉強したら、しっかりねる: after studying, sleep well; that is the easiest way to remember."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-010",
+      "level": "N4",
+      "genre": "story",
+      "topic": "neighbors and music",
+      "title": "となりのピアノ",
+      "titleEn": "The piano next door",
+      "body": "ユリのアパートのとなりの部屋から、毎晩ピアノの音が聞こえてきます。いつも同じ曲で、いつも同じところでまちがえます。\nはじめは気にしませんでしたが、一か月たっても、まだ同じところでまちがえています。仕事で疲れて帰ってきた夜は、ユリは少しいらいらしてしまいました。\nある日曜日、ユリは文句を言いに、となりの部屋へ行きました。ドアを開けたのは、白いかみの森さんというおじいさんでした。\n森さんは「うるさくて、すみません。」と、先に頭を下げました。\n森さんの話を聞いて、ユリはおどろきました。来月、孫の結婚式があって、その結婚式でピアノをひくと約束したそうです。でも、ピアノを習い始めたのは、三か月前でした。\n森さんは、少し笑って言いました。「七十五歳で始めるのは、やっぱりおそすぎましたね。」\nユリは、子どものころ、十年ピアノを習っていました。気がつくと、ユリは「私が少し教えましょうか。」と言っていました。\nそれから毎週日曜日、ユリは森さんの部屋でピアノを教えました。\n一か月後、森さんから写真が届きました。結婚式でピアノをひく森さんと、うれしそうに笑う孫の写真でした。写真の後ろには、「一回もまちがえませんでした。」と書いてありました。\nその夜から、となりの部屋からは、新しい曲が聞こえてくるようになりました。今度は、ユリも楽しみに聞いています。",
+      "cast": [
+        {
+          "name": "ユリ",
+          "voice": "female"
+        },
+        {
+          "name": "森",
+          "voice": "male-senior"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "曲",
+          "reading": "きょく",
+          "gloss": "piece of music; song",
+          "entryId": 1239700
+        },
+        {
+          "word": "孫",
+          "reading": "まご",
+          "gloss": "grandchild",
+          "entryId": 1406230
+        },
+        {
+          "word": "文句",
+          "reading": "もんく",
+          "gloss": "complaint",
+          "entryId": 1505260
+        },
+        {
+          "word": "いらいら",
+          "reading": "いらいら",
+          "gloss": "getting irritated; annoyed",
+          "entryId": 1587700
+        },
+        {
+          "word": "届く",
+          "reading": "とどく",
+          "gloss": "to arrive (of a letter or package); to be delivered",
+          "entryId": 1457200
+        },
+        {
+          "word": "約束",
+          "reading": "やくそく",
+          "entryId": 1538130,
+          "gloss": "promise; agreement; arrangement"
+        },
+        {
+          "word": "おどろく",
+          "reading": "おどろく",
+          "entryId": 1238680,
+          "gloss": "to be surprised; to be taken aback; to be amazed"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "Why did Yuri begin to feel irritated?",
+          "choices": [
+            "The piano was very loud after midnight.",
+            "Mr. Mori was rude to her.",
+            "The same mistake continued even after a month.",
+            "There was a party next door."
+          ],
+          "answer": 2,
+          "explanation": "The second paragraph says that even after a month the player still made mistakes in the same place, and on tiring nights Yuri got irritated (いらいらしてしまいました)."
+        },
+        {
+          "type": "detail",
+          "stem": "Why was Mr. Mori practicing the piano?",
+          "choices": [
+            "He promised to play at his grandchild's wedding.",
+            "He wanted to become a piano teacher.",
+            "His doctor told him to.",
+            "He was going to play in a concert hall."
+          ],
+          "answer": 0,
+          "explanation": "Mori had promised to play the piano at his grandchild's wedding (孫の結婚式…ピアノをひくと約束した)."
+        },
+        {
+          "type": "inference",
+          "stem": "Why was Yuri able to help Mr. Mori?",
+          "choices": [
+            "She works as a music teacher.",
+            "She had the same piano at home.",
+            "She knew his grandchild.",
+            "She took piano lessons for ten years as a child."
+          ],
+          "answer": 3,
+          "explanation": "The story says ユリは、子どものころ、十年ピアノを習っていました, so she could teach him."
+        },
+        {
+          "type": "detail",
+          "stem": "What was written on the back of the photo?",
+          "choices": [
+            "Please come to the wedding.",
+            "He did not make a single mistake.",
+            "Thank you for the lessons.",
+            "He wants to learn a new song."
+          ],
+          "answer": 1,
+          "explanation": "The back of the photo said 一回もまちがえませんでした: he didn't make even one mistake."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-011",
+      "level": "N4",
+      "genre": "news",
+      "topic": "town shopping bus",
+      "title": "山の町に買い物バス",
+      "titleEn": "A shopping bus for a mountain town",
+      "body": "山の上にあるひかり町で、来月から、買い物のためのバスが走ることになりました。\n町には店が少なく、いちばん近いスーパーまで車で三十分かかります。車を運転しないお年寄りは、買い物に行くのがとても大変でした。\n新しいバスは、毎週火曜日と金曜日に走ります。町の中の八か所に止まって、となりの町のスーパーまで、町の人を連れて行きます。バスは小さくて、十五人まで乗ることができます。お金は一回二百円です。七十歳より上の人は、お金がいりません。\n町の役所で働く佐藤さんは「バスの中で、町の人どうしが話す時間も楽しんでほしいです。」と話しています。\n先週、はじめてバスを走らせてみた時には、二十人ぐらいが乗りました。乗った人の中で、八十二歳の高橋さんは「今までは、息子に買い物をたのんでいました。これからは、自分で好きな物を選べます。」と、うれしそうに話していました。\n町では、利用する人が多かったら、バスが走る日をもっと多くすることも考えているそうです。",
+      "names": [
+        "ひかり町"
+      ],
+      "cast": [
+        {
+          "name": "佐藤",
+          "voice": "male"
+        },
+        {
+          "name": "高橋",
+          "voice": "female"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "スーパー",
+          "reading": "すーぱー",
+          "gloss": "supermarket",
+          "entryId": 1066710
+        },
+        {
+          "word": "年寄り",
+          "reading": "としより",
+          "gloss": "old person; the elderly (お年寄り)",
+          "entryId": 1598750
+        },
+        {
+          "word": "役所",
+          "reading": "やくしょ",
+          "gloss": "town office; government office",
+          "entryId": 1538020
+        },
+        {
+          "word": "運転",
+          "reading": "うんてん",
+          "entryId": 1172830,
+          "gloss": "driving (a car)"
+        },
+        {
+          "word": "連れる",
+          "reading": "つれる",
+          "gloss": "to take (someone) along",
+          "entryId": 1559290
+        },
+        {
+          "word": "息子",
+          "reading": "むすこ",
+          "entryId": 1404390,
+          "gloss": "son"
+        },
+        {
+          "word": "利用",
+          "reading": "りよう",
+          "entryId": 1549660,
+          "gloss": "use; utilization; utilisation"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "Why was shopping hard for older people in Hikari Town?",
+          "choices": [
+            "The nearest supermarket is thirty minutes away by car, and they don't drive.",
+            "The shops in town are too expensive.",
+            "The roads are closed in winter.",
+            "The supermarket is only open on Tuesdays."
+          ],
+          "answer": 0,
+          "explanation": "The second paragraph says the nearest supermarket is thirty minutes by car, so elderly people who don't drive found shopping very hard."
+        },
+        {
+          "type": "detail",
+          "stem": "How much does a 75-year-old pay to ride the bus?",
+          "choices": [
+            "200 yen.",
+            "100 yen.",
+            "70 yen.",
+            "Nothing."
+          ],
+          "answer": 3,
+          "explanation": "A ride costs 200 yen, but 七十歳より上の人は、お金がいりません: people over seventy don't pay."
+        },
+        {
+          "type": "detail",
+          "stem": "What does Ms. Takahashi say will change for her?",
+          "choices": [
+            "She will visit her son more often.",
+            "She can choose the things she likes by herself.",
+            "She will learn to drive.",
+            "She will work at the supermarket."
+          ],
+          "answer": 1,
+          "explanation": "She says she used to ask her son to shop, but now 自分で好きな物を選べます: she can choose what she likes herself."
+        },
+        {
+          "type": "inference",
+          "stem": "What may the town do if many people use the bus?",
+          "choices": [
+            "Build a new supermarket.",
+            "Make the ride more expensive.",
+            "Run the bus on more days.",
+            "Stop the bus in the town center."
+          ],
+          "answer": 2,
+          "explanation": "The last line says the town is thinking of making more days when the bus runs (バスが走る日をもっと多くする) if many people use it."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-012",
+      "level": "N4",
+      "genre": "recipe",
+      "topic": "rice balls",
+      "title": "おいしいおにぎりを作ろう",
+      "titleEn": "Let's make tasty rice balls",
+      "body": "今度の日曜日、山や公園に出かけませんか。お弁当には、おにぎりがいちばんです。今日は、おいしいおにぎりを作るための、大切なことを紹介します。\n用意するもの（四つ分）：温かいご飯を茶わん二はい、塩を少し、のりを二まい、中に入れる物（焼いた魚など）\n一、まず、手に水を少しつけます。それから、塩を少しつけます。\n二、ご飯を手に取って、まん中に焼いた魚などを入れます。\n三、手で、三角の形にします。強くにぎると、ご飯がかたくなってしまいます。やさしく、三回ぐらいで形を作るようにしましょう。\n四、最後に、のりをまきます。\nご飯は、熱いうちに作ってください。冷たいご飯だと、形がうまく作れません。手が熱い時は、少し水をつけるといいですよ。\n朝早く作る時は、食べる前にまいたほうがおいしいです。\n夏は、食べ物が悪くなりやすいので、中に入れる物に気をつけてください。焼いていない魚などは、使わないほうがいいです。\n作ったら、冷たい所には置かないでください。友だちや家族と外で食べるご飯は、いつもよりおいしいですよ。",
+      "vocabulary": [
+        {
+          "word": "弁当",
+          "reading": "べんとう",
+          "gloss": "boxed lunch (お弁当)",
+          "entryId": 1513060
+        },
+        {
+          "word": "おにぎり",
+          "reading": "おにぎり",
+          "gloss": "rice ball",
+          "entryId": 1001620
+        },
+        {
+          "word": "のり",
+          "reading": "のり",
+          "gloss": "nori; dried seaweed sheet",
+          "entryId": 1267400
+        },
+        {
+          "word": "三角",
+          "reading": "さんかく",
+          "gloss": "triangle",
+          "entryId": 1299970
+        },
+        {
+          "word": "にぎる",
+          "reading": "にぎる",
+          "gloss": "to squeeze; to press with the hand",
+          "entryId": 1152720
+        },
+        {
+          "word": "まく",
+          "reading": "まく",
+          "gloss": "to wrap (around)",
+          "entryId": 1211200
+        },
+        {
+          "word": "用意",
+          "reading": "ようい",
+          "entryId": 1546220,
+          "gloss": "preparation; arrangements; provision"
+        },
+        {
+          "word": "塩",
+          "reading": "しお",
+          "entryId": 1576630,
+          "gloss": "salt; common salt; table salt"
+        }
+      ],
+      "questions": [
+        {
+          "type": "sequence",
+          "stem": "What do you put on your hands before taking the rice?",
+          "choices": [
+            "A little oil.",
+            "Only salt.",
+            "A little water, then a little salt.",
+            "Nothing at all."
+          ],
+          "answer": 2,
+          "explanation": "Step one says to put a little water on your hands first (手に水を少しつけます), and then a little salt."
+        },
+        {
+          "type": "detail",
+          "stem": "What happens if you squeeze the rice too hard?",
+          "choices": [
+            "It falls apart.",
+            "It gets cold.",
+            "It becomes salty.",
+            "It becomes hard."
+          ],
+          "answer": 3,
+          "explanation": "Step three says 強くにぎると、ご飯がかたくなってしまいます: if you squeeze hard, the rice becomes hard."
+        },
+        {
+          "type": "detail",
+          "stem": "Why should you use hot rice?",
+          "choices": [
+            "Cold rice does not keep its shape well.",
+            "Hot rice has more salt.",
+            "Hot rice keeps the nori dry.",
+            "Cold rice is bad for your stomach."
+          ],
+          "answer": 0,
+          "explanation": "The text says 冷たいご飯だと、形がうまく作れません: with cold rice you can't make the shape well."
+        },
+        {
+          "type": "detail",
+          "stem": "What should you avoid putting inside in summer?",
+          "choices": [
+            "Grilled fish.",
+            "Fish that has not been cooked.",
+            "Too much salt.",
+            "Warm rice."
+          ],
+          "answer": 1,
+          "explanation": "In summer food goes bad easily, so 焼いていない魚などは、使わないほうがいい: don't use uncooked fish."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-013",
+      "level": "N4",
+      "genre": "ad",
+      "topic": "Japanese class",
+      "title": "日本語教室に来ませんか",
+      "titleEn": "Come to our Japanese class",
+      "body": "日本に住んでいる外国の方へ\nみどり町の公民館で、毎週土曜日に日本語教室を開いています。町に住んでいる人が、ボランティアで日本語を教えています。\nこの教室では、教科書の勉強だけでなく、毎日の生活で使う日本語を練習します。たとえば、病院でどこが痛いかを話す練習や、駅で電車の乗り方を聞く練習などをします。\n時間：土曜日の午前十時から十一時半まで\n場所：みどり町公民館の二階\nお金：いりません。教科書も貸します。\nひらがなを勉強したことがない人から、日本語で仕事をしている人まで、だれでも来ることができます。日本語の力によって、小さいクラスで勉強します。\n子どもといっしょに来ても大丈夫です。となりの部屋で、子どもが遊べるようにしています。\n毎月一回、みんなでお茶を飲んだり、日本の料理を作ったりする日もあります。日本人の友だちを作りたい人も、ぜひ来てください。\n前に連絡をする必要はありません。はじめての日は、名前と住所がわかる物を持ってきてください。",
+      "names": [
+        "みどり町"
+      ],
+      "vocabulary": [
+        {
+          "word": "公民館",
+          "reading": "こうみんかん",
+          "gloss": "community center",
+          "entryId": 1274780
+        },
+        {
+          "word": "ボランティア",
+          "reading": "ぼらんてぃあ",
+          "gloss": "volunteer",
+          "entryId": 1124300
+        },
+        {
+          "word": "教科書",
+          "reading": "きょうかしょ",
+          "gloss": "textbook",
+          "entryId": 1237020
+        },
+        {
+          "word": "生活",
+          "reading": "せいかつ",
+          "entryId": 1378860,
+          "gloss": "life; living"
+        },
+        {
+          "word": "練習",
+          "reading": "れんしゅう",
+          "entryId": 1559160,
+          "gloss": "practice; training; drill"
+        },
+        {
+          "word": "必要",
+          "reading": "ひつよう",
+          "entryId": 1487660,
+          "gloss": "necessary; needed; essential"
+        },
+        {
+          "word": "住所",
+          "reading": "じゅうしょ",
+          "entryId": 1334080,
+          "gloss": "address (of a home, business, etc.); residence; domicile"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "Who is this advertisement for?",
+          "choices": [
+            "Japanese children who need help with homework.",
+            "People from other countries living in Japan who want to learn Japanese.",
+            "Volunteers who want to teach English.",
+            "Tourists visiting Midori Town for a day."
+          ],
+          "answer": 1,
+          "explanation": "The first line is 日本に住んでいる外国の方へ: to foreign people living in Japan, and it invites them to a Japanese class."
+        },
+        {
+          "type": "detail",
+          "stem": "How much does the class cost?",
+          "choices": [
+            "It is free.",
+            "500 yen a week.",
+            "It depends on your level.",
+            "Only the textbook costs money."
+          ],
+          "answer": 0,
+          "explanation": "The ad says お金：いりません, and textbooks are lent for free too."
+        },
+        {
+          "type": "detail",
+          "stem": "What can parents do if they come with children?",
+          "choices": [
+            "They must leave the children at home.",
+            "The children join the Japanese class.",
+            "The children can play in the next room.",
+            "They must pay a little more."
+          ],
+          "answer": 2,
+          "explanation": "It says children can come too, and となりの部屋で、子どもが遊べるようにしています."
+        },
+        {
+          "type": "detail",
+          "stem": "What should you bring on your first day?",
+          "choices": [
+            "A textbook.",
+            "A photo of yourself.",
+            "Some money for tea.",
+            "Something that shows your name and address."
+          ],
+          "answer": 3,
+          "explanation": "The last line says to bring something that shows your name and address (名前と住所がわかる物)."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-014",
+      "level": "N4",
+      "genre": "manga",
+      "topic": "lost at the zoo",
+      "title": "まいごになったのは、だれ？",
+      "titleEn": "Who got lost?",
+      "body": "小林「どうしたの？一人？」\nソウタ「お父さんが、まいごになっちゃったんです。」\n小林「えっ、お父さんが？」\nソウタ「はい。さるを見ていたら、いなくなりました。お父さんは、いつもどこかへ行ってしまうんです。」\n小林「そう。じゃあ、お父さんの名前と、何色の服を着ているか教えてくれる？」\nソウタ「名前は大野こうじです。青いぼうしをかぶって、黒いかばんを持っています。」\n小林「わかった。放送で呼んでみるね。ここでいっしょに待っていようか。」\nソウタは、いすに座って、ジュースを飲みながら待ちました。\n放送のあと五分ぐらいで、青いぼうしの男の人が、走ってきました。\n大野「ソウタ！ここにいたのか。よかった！」\nソウタ「お父さん、だめだよ。いなくなったら、動かないで待つって約束したでしょう。」\n大野「ごめん、ごめん。ライオンを見ていたら、ソウタがいなくて、本当にびっくりしたんだよ。」\n小林「ふふふ。二人とも見つかって、よかったですね。」\nソウタ「ありがとうございました。今度は、お父さんと手をつないで歩きます。」\n大野「そうだね。お父さんがまいごにならないように、しっかり手を持っていてね。」",
+      "names": [
+        "こうじ"
+      ],
+      "cast": [
+        {
+          "name": "小林",
+          "voice": "female"
+        },
+        {
+          "name": "ソウタ",
+          "voice": "male"
+        },
+        {
+          "name": "大野",
+          "voice": "male"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "まいご",
+          "reading": "まいご",
+          "gloss": "lost child; getting lost",
+          "entryId": 1532750
+        },
+        {
+          "word": "かぶる",
+          "reading": "かぶる",
+          "gloss": "to wear (on the head)",
+          "entryId": 1484330
+        },
+        {
+          "word": "つなぐ",
+          "reading": "つなぐ",
+          "gloss": "to hold (hands); to connect",
+          "entryId": 1251900
+        },
+        {
+          "word": "放送",
+          "reading": "ほうそう",
+          "gloss": "announcement (over a speaker); broadcast",
+          "entryId": 1516750
+        },
+        {
+          "word": "約束",
+          "reading": "やくそく",
+          "entryId": 1538130,
+          "gloss": "promise; agreement; arrangement"
+        },
+        {
+          "word": "ジュース",
+          "reading": "じゅーす",
+          "gloss": "juice",
+          "entryId": 1065950
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "What was Sota looking at when his father disappeared?",
+          "choices": [
+            "The lions.",
+            "The giraffes.",
+            "The birds.",
+            "The monkeys."
+          ],
+          "answer": 3,
+          "explanation": "Sota says さるを見ていたら、いなくなりました: his father disappeared while he was looking at the monkeys. (His father was looking at the lions.)"
+        },
+        {
+          "type": "detail",
+          "stem": "How did Ms. Kobayashi try to find Sota's father?",
+          "choices": [
+            "She called him on the phone.",
+            "She made an announcement.",
+            "She walked around the zoo.",
+            "She asked the other visitors."
+          ],
+          "answer": 1,
+          "explanation": "She says 放送で呼んでみるね: she will call him over the announcement system."
+        },
+        {
+          "type": "detail",
+          "stem": "What had Sota and his father promised each other?",
+          "choices": [
+            "If they got separated, they would stay where they were and wait.",
+            "They would go home before five o'clock.",
+            "They would see the lions first.",
+            "Sota would always wear a blue hat."
+          ],
+          "answer": 0,
+          "explanation": "Sota reminds his father: いなくなったら、動かないで待つって約束したでしょう."
+        },
+        {
+          "type": "inference",
+          "stem": "What is funny about this story?",
+          "choices": [
+            "The staff member is Sota's mother.",
+            "The father finds Sota before the announcement.",
+            "Sota talks as if his father were the lost child.",
+            "Sota was looking at the lions, not the monkeys."
+          ],
+          "answer": 2,
+          "explanation": "Sota says his father got lost and scolds him for not waiting, as if the father were the child; the father even jokes that Sota should hold his hand so he won't get lost."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-015",
+      "level": "N4",
+      "genre": "essay",
+      "topic": "letters to grandmother",
+      "title": "祖母への手紙",
+      "titleEn": "Letters to my grandmother",
+      "body": "去年の春から、私は一か月に一度、祖母に手紙を書くようにしています。\n祖母は、いなかで一人で住んでいます。電話はあまり好きではありません。ある日、祖母から手紙が届きました。そこには、庭の花がさいたことや、近所のねこに子どもが生まれたことが、ていねいな字で書いてありました。最後には、ときどきはあなたの字も見たいです、と書いてありました。\n私はすぐにペンを持ちましたが、なかなか書けませんでした。いつもパソコンで書いているので、漢字をたくさん忘れてしまっていたのです。辞書を何回も引きながら、一時間かけて、やっと短い手紙を書きました。\nそれから、毎月手紙を書いています。手紙を書くと、自分の一か月をゆっくり思い出すことができます。電話とちがって、返事が来るまで時間がかかります。でも、ポストを開けて、祖母の字を見つけた時は、本当にうれしいです。\n今では、私の字も少しきれいになりました。手紙は、遠くに住む祖母と私をつなぐ、大切な糸のようなものだと思います。",
+      "vocabulary": [
+        {
+          "word": "届く",
+          "reading": "とどく",
+          "gloss": "to arrive (of a letter); to be delivered",
+          "entryId": 1457200
+        },
+        {
+          "word": "つなぐ",
+          "reading": "つなぐ",
+          "gloss": "to connect; to link",
+          "entryId": 1251900
+        },
+        {
+          "word": "祖母",
+          "reading": "そぼ",
+          "entryId": 1396860,
+          "gloss": "grandmother"
+        },
+        {
+          "word": "いなか",
+          "reading": "いなか",
+          "entryId": 1442750,
+          "gloss": "rural area; countryside; the sticks"
+        },
+        {
+          "word": "ていねい",
+          "reading": "ていねい",
+          "entryId": 1427360,
+          "gloss": "polite; courteous; civil"
+        },
+        {
+          "word": "辞書",
+          "reading": "じしょ",
+          "entryId": 1318970,
+          "gloss": "dictionary; lexicon"
+        },
+        {
+          "word": "糸",
+          "reading": "いと",
+          "entryId": 1311450,
+          "gloss": "thread; yarn; string"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "Why did the writer start writing letters to their grandmother?",
+          "choices": [
+            "Her letter said she wanted to see the writer's handwriting sometimes.",
+            "The writer's teacher gave it as homework.",
+            "The grandmother's phone was broken.",
+            "The writer wanted to practice using a pen."
+          ],
+          "answer": 0,
+          "explanation": "The grandmother's letter ended by saying ときどきはあなたの字も見たいです: she would like to see the writer's handwriting sometimes."
+        },
+        {
+          "type": "detail",
+          "stem": "Why was it hard to write the first letter?",
+          "choices": [
+            "The writer had no paper.",
+            "The writer did not know the address.",
+            "The writer had forgotten many kanji from always using a computer.",
+            "The writer was too busy with work."
+          ],
+          "answer": 2,
+          "explanation": "The writer usually writes on a computer, so they had forgotten a lot of kanji (漢字をたくさん忘れてしまっていた)."
+        },
+        {
+          "type": "detail",
+          "stem": "How long did it take to write the first short letter?",
+          "choices": [
+            "Ten minutes.",
+            "One day.",
+            "One month.",
+            "One hour."
+          ],
+          "answer": 3,
+          "explanation": "The writer used a dictionary many times and took one hour (一時間かけて) to write a short letter."
+        },
+        {
+          "type": "gist",
+          "stem": "What does the writer compare the letters to?",
+          "choices": [
+            "A small library.",
+            "An important thread connecting the writer and the grandmother.",
+            "A long trip to the countryside.",
+            "A garden full of flowers."
+          ],
+          "answer": 1,
+          "explanation": "The last sentence says letters are like 大切な糸: an important thread that connects the writer and the grandmother, who lives far away."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-016",
+      "level": "N4",
+      "genre": "email",
+      "topic": "sick day at work",
+      "title": "今日のお休みについて",
+      "titleEn": "About today's sick day",
+      "body": "件名：今日のお休みについて\n中村課長\nおはようございます。木村です。\n朝早く、すみません。昨日の夜から熱が出てしまい、今朝もまだ三十八度あります。申し訳ありませんが、今日は会社を休ませていただけないでしょうか。\n今日の午後二時に、みなみ会社の山本さんと会う予定がありました。さっき、山本さんに電話をして、来週の火曜日に変えていただきました。\nまた、明日の会議で使う紙は、もう作ってあります。私の机の右の引き出しに入っていますので、必要でしたら使ってください。\n今週の仕事は、ほとんど終わっています。わからないことがあったら、となりの席の林さんに聞いてください。林さんには、昨日のうちに話してあります。\n午後に病院へ行って、何の病気かわかったら、またご連絡します。今日は薬を飲んで、家でゆっくり休みます。熱が下がったら、明日は会社に行くつもりです。明日の会議には、ぜひ出たいと思っています。\nご迷惑をかけて、すみません。どうぞよろしくお願いいたします。\n木村",
+      "names": [
+        "中村",
+        "木村",
+        "みなみ",
+        "山本",
+        "林"
+      ],
+      "vocabulary": [
+        {
+          "word": "件名",
+          "reading": "けんめい",
+          "gloss": "subject (of an email)",
+          "entryId": 1255960
+        },
+        {
+          "word": "課長",
+          "reading": "かちょう",
+          "gloss": "section manager",
+          "entryId": 1195840
+        },
+        {
+          "word": "申し訳",
+          "reading": "もうしわけ",
+          "gloss": "apology (申し訳ありません: I am very sorry)",
+          "entryId": 1363050
+        },
+        {
+          "word": "迷惑",
+          "reading": "めいわく",
+          "gloss": "trouble; bother; inconvenience",
+          "entryId": 1532800
+        },
+        {
+          "word": "よろしく",
+          "reading": "よろしく",
+          "gloss": "please (be understanding); best regards",
+          "entryId": 1224890
+        },
+        {
+          "word": "引き出し",
+          "reading": "ひきだし",
+          "gloss": "drawer",
+          "entryId": 1601650
+        },
+        {
+          "word": "会議",
+          "reading": "かいぎ",
+          "entryId": 1198360,
+          "gloss": "meeting; conference; session"
+        },
+        {
+          "word": "熱",
+          "reading": "ねつ",
+          "gloss": "fever",
+          "entryId": 1467710
+        }
+      ],
+      "questions": [
+        {
+          "type": "purpose",
+          "stem": "Why did Kimura write this email?",
+          "choices": [
+            "To report that he finished this week's work.",
+            "To ask for the day off because he has a fever.",
+            "To cancel a meeting with Mr. Nakamura.",
+            "To invite his boss to a meeting at Minami Company."
+          ],
+          "answer": 1,
+          "explanation": "He has had a fever since last night (熱が出てしまい) and asks 今日は会社を休ませていただけないでしょうか."
+        },
+        {
+          "type": "detail",
+          "stem": "What happened to the 2 p.m. meeting with Mr. Yamamoto?",
+          "choices": [
+            "It was cancelled.",
+            "Mr. Hayashi will go instead.",
+            "It will be held by phone.",
+            "It was moved to next Tuesday."
+          ],
+          "answer": 3,
+          "explanation": "Kimura called Mr. Yamamoto and had it changed to next Tuesday (来週の火曜日に変えていただきました)."
+        },
+        {
+          "type": "detail",
+          "stem": "Where are the papers for tomorrow's meeting?",
+          "choices": [
+            "In the right drawer of Kimura's desk.",
+            "At Kimura's home.",
+            "With Mr. Yamamoto.",
+            "On Mr. Nakamura's desk."
+          ],
+          "answer": 0,
+          "explanation": "He writes 私の机の右の引き出しに入っています: they are in the right drawer of his desk."
+        },
+        {
+          "type": "detail",
+          "stem": "Who should Mr. Nakamura ask if he has questions about Kimura's work?",
+          "choices": [
+            "Mr. Yamamoto.",
+            "Kimura's doctor.",
+            "Mr. Hayashi, who sits next to Kimura.",
+            "Someone at Minami Company."
+          ],
+          "answer": 2,
+          "explanation": "The email says to ask となりの席の林さん, whom Kimura already told yesterday."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-017",
+      "level": "N4",
+      "genre": "notice",
+      "topic": "garbage rules",
+      "title": "ごみの出し方が変わります",
+      "titleEn": "The garbage rules are changing",
+      "body": "お知らせ：ごみの出し方が変わります\n来月から、あおば市のごみの出し方が少し変わります。\n一、燃えるごみ（台所のごみ、紙など）：今までと同じで、月曜日と木曜日です。\n二、プラスチック：今までは、ほかのごみといっしょに出していました。来月からは、毎週水曜日に出してください。\n三、びんとかん：毎月第二と第四金曜日です。中を水で軽く洗ってから出してください。\nごみは、朝八時までに、決められた場所に出してください。夜のうちに出すと、鳥やねこがごみを外に出してしまうことがあります。そうすると、道がとてもきたなくなるので、夜は出さないでください。\n新しいごみ袋は、市の役所や町の店で買うことができます。古いものも、今月の終わりまでは使えます。\n大きいごみは、前の日までに電話で申し込んでください。いすや机などは、一つ五百円です。\n新しい出し方を書いた紙は、来週、みなさんの家に送ります。台所など、よく見える所にはっておいてください。\nわからないことがあったら、市の役所に聞いてください。みんなで、町をきれいにしましょう。",
+      "names": [
+        "あおば市"
+      ],
+      "vocabulary": [
+        {
+          "word": "燃える",
+          "reading": "もえる",
+          "gloss": "to burn (燃えるごみ: burnable garbage)",
+          "entryId": 1469570
+        },
+        {
+          "word": "プラスチック",
+          "reading": "ぷらすちっく",
+          "gloss": "plastic",
+          "entryId": 1115670
+        },
+        {
+          "word": "びん",
+          "reading": "びん",
+          "gloss": "bottle; glass jar",
+          "entryId": 1512360
+        },
+        {
+          "word": "かん",
+          "reading": "かん",
+          "gloss": "can; tin",
+          "entryId": 1214540
+        },
+        {
+          "word": "役所",
+          "reading": "やくしょ",
+          "gloss": "city office; government office",
+          "entryId": 1538020
+        },
+        {
+          "word": "申し込む",
+          "reading": "もうしこむ",
+          "gloss": "to apply; to make a request",
+          "entryId": 1362890
+        },
+        {
+          "word": "袋",
+          "reading": "ふくろ",
+          "gloss": "bag",
+          "entryId": 1411070
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "What will change from next month?",
+          "choices": [
+            "The day for burnable garbage.",
+            "The day for bottles and cans.",
+            "Plastic will be put out separately on Wednesdays.",
+            "Garbage must be put out by 9 a.m."
+          ],
+          "answer": 2,
+          "explanation": "Plastic used to go out with other garbage, but from next month it goes out every Wednesday (毎週水曜日に出してください). Burnable garbage stays the same."
+        },
+        {
+          "type": "detail",
+          "stem": "By what time must garbage be put out?",
+          "choices": [
+            "By 8 a.m.",
+            "The night before.",
+            "By noon.",
+            "By 8 p.m."
+          ],
+          "answer": 0,
+          "explanation": "The notice says ごみは、朝八時までに…出してください."
+        },
+        {
+          "type": "detail",
+          "stem": "Why should garbage not be put out at night?",
+          "choices": [
+            "The garbage trucks come early.",
+            "It is too dark to find the place.",
+            "It is noisy for neighbors.",
+            "Birds and cats may pull it out and make the street dirty."
+          ],
+          "answer": 3,
+          "explanation": "At night, birds and cats may take the garbage out, and the road becomes very dirty (道がとてもきたなくなる)."
+        },
+        {
+          "type": "detail",
+          "stem": "Until when can the old garbage bags be used?",
+          "choices": [
+            "Until next week.",
+            "Until the end of this month.",
+            "Until the end of next month.",
+            "They cannot be used anymore."
+          ],
+          "answer": 1,
+          "explanation": "The notice says 古いものも、今月の終わりまでは使えます."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-018",
+      "level": "N4",
+      "genre": "editorial",
+      "topic": "phones while walking",
+      "title": "歩く時は前を見よう",
+      "titleEn": "Look ahead when you walk",
+      "body": "最近、駅や道で、電話の画面を見ながら歩いている人をよく見ます。私は、これはとても危ないことだと思います。\n先月、私が駅の階段を下りていた時、前から電話を見ながら上ってくる男の人がいました。その人は前を見ていなかったので、私とぶつかってしまいました。私は、もう少しで階段から落ちるところでした。\n画面を見ながら歩くと、目の前のことに気がつきにくくなります。見える所が、いつもよりとてもせまくなるそうです。特に、お年寄りや小さい子ども、目が見えない人にとっては、とても危ないです。\nもちろん、電話はとても便利な物です。地図を見たり、電車の時間を調べたりするのは、悪いことではありません。でも、そういう時は、道のはしに止まってから見ればいいのです。止まって見ても、かかる時間は少しだけです。\n歩く時は、前を見る。子どもの時に教えられたこのかんたんなことを、大人の私たちがもう一度思い出すべきではないでしょうか。私も、これからは気をつけたいと思います。",
+      "vocabulary": [
+        {
+          "word": "画面",
+          "reading": "がめん",
+          "gloss": "screen",
+          "entryId": 1197610
+        },
+        {
+          "word": "ぶつかる",
+          "reading": "ぶつかる",
+          "gloss": "to bump into; to collide with",
+          "entryId": 1011180
+        },
+        {
+          "word": "年寄り",
+          "reading": "としより",
+          "gloss": "old person; the elderly (お年寄り)",
+          "entryId": 1598750
+        },
+        {
+          "word": "階段",
+          "reading": "かいだん",
+          "entryId": 1203090,
+          "gloss": "stairs; stairway; staircase"
+        },
+        {
+          "word": "せまい",
+          "reading": "せまい",
+          "gloss": "narrow",
+          "entryId": 1237680
+        },
+        {
+          "word": "はし",
+          "reading": "はし",
+          "gloss": "edge; side (of a road)",
+          "entryId": 1237410
+        },
+        {
+          "word": "べき",
+          "reading": "べき",
+          "gloss": "should; ought to",
+          "entryId": 1011430
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "What is the writer's main opinion?",
+          "choices": [
+            "Walking while looking at a phone is dangerous.",
+            "Phones should not be used in stations.",
+            "Children should not have phones.",
+            "Maps on phones are not useful."
+          ],
+          "answer": 0,
+          "explanation": "The writer says in the first paragraph that walking while looking at a phone screen is very dangerous (とても危ないこと), and the rest supports this."
+        },
+        {
+          "type": "detail",
+          "stem": "What happened to the writer last month?",
+          "choices": [
+            "The writer dropped their phone on the stairs.",
+            "The writer got lost using a phone map.",
+            "A man looking at his phone bumped into the writer on the station stairs.",
+            "A child fell down the stairs."
+          ],
+          "answer": 2,
+          "explanation": "A man came up the stairs looking at his phone and bumped into the writer (私とぶつかってしまいました)."
+        },
+        {
+          "type": "detail",
+          "stem": "What does the writer suggest you do when you need to check a map?",
+          "choices": [
+            "Ask someone for directions.",
+            "Stop at the side of the road first.",
+            "Look at the phone only on the stairs.",
+            "Leave the phone at home."
+          ],
+          "answer": 1,
+          "explanation": "The writer says 道のはしに止まってから見ればいい: stop at the edge of the road and then look."
+        },
+        {
+          "type": "detail",
+          "stem": "Who does the writer say is in special danger?",
+          "choices": [
+            "Station staff.",
+            "Drivers.",
+            "Young adults.",
+            "Older people, small children and people who cannot see."
+          ],
+          "answer": 3,
+          "explanation": "The third paragraph says it is especially dangerous for お年寄りや小さい子ども、目が見えない人."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-019",
+      "level": "N4",
+      "genre": "academic",
+      "topic": "color and taste",
+      "title": "色で味が変わる？",
+      "titleEn": "Does color change taste?",
+      "body": "ある大学で、色と味の関係を調べる実験が行われました。\n実験では、五十人の学生に、三つのコップに入ったジュースを飲んでもらいました。三つとも、全部同じ飲み物でした。でも、色だけが違いました。一つは赤、一つは緑、もう一つは色がありませんでした。\n飲んだあとで、学生に、どれがいちばん甘いと思うか聞きました。すると、半分より多い学生が、赤がいちばん甘いと答えました。緑は、すっぱいと答えた学生が多かったそうです。\nこの実験から、人は口だけで味を決めているのではないことがわかります。目で見た色からも、味を考えているのです。\nどうして赤は甘いと思うのでしょうか。赤い色を見ると、よくできた甘いくだものを思い出すからだと考えられています。\n料理が上手な人は、味だけでなく、色にも気をつけます。同じ料理でも、きれいに見えると、本当においしいと思うのです。料理をする時は、野菜の色なども考えてみるといいでしょう。家族や友だちも、きっと喜んでくれますよ。",
+      "vocabulary": [
+        {
+          "word": "実験",
+          "reading": "じっけん",
+          "gloss": "experiment",
+          "entryId": 1320970
+        },
+        {
+          "word": "ジュース",
+          "reading": "じゅーす",
+          "gloss": "juice",
+          "entryId": 1065950
+        },
+        {
+          "word": "すっぱい",
+          "reading": "すっぱい",
+          "gloss": "sour",
+          "entryId": 1304280
+        },
+        {
+          "word": "関係",
+          "reading": "かんけい",
+          "entryId": 1215810,
+          "gloss": "relation; relationship; connection"
+        },
+        {
+          "word": "味",
+          "reading": "あじ",
+          "entryId": 1526960,
+          "gloss": "flavor; flavour; taste"
+        },
+        {
+          "word": "くだもの",
+          "reading": "くだもの",
+          "entryId": 1193060,
+          "gloss": "fruit"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "How were the three drinks different?",
+          "choices": [
+            "They had different tastes.",
+            "They were different temperatures.",
+            "There was a different amount in each cup.",
+            "Only their colors were different."
+          ],
+          "answer": 3,
+          "explanation": "The text says all three were the same drink, and 色だけが違いました: only the color was different."
+        },
+        {
+          "type": "detail",
+          "stem": "Which drink did more than half of the students think was the sweetest?",
+          "choices": [
+            "The green one.",
+            "The red one.",
+            "The one with no color.",
+            "They all tasted the same."
+          ],
+          "answer": 1,
+          "explanation": "半分より多い学生が、赤がいちばん甘いと答えました: more than half answered that the red one was sweetest."
+        },
+        {
+          "type": "gist",
+          "stem": "What does this experiment show?",
+          "choices": [
+            "We judge taste partly with our eyes.",
+            "Red drinks have more sugar.",
+            "Students cannot taste well.",
+            "Green food is bad for us."
+          ],
+          "answer": 0,
+          "explanation": "The text says we don't decide taste only with our mouth; 目で見た色からも、味を考えている."
+        },
+        {
+          "type": "detail",
+          "stem": "Why do people think red things are sweet?",
+          "choices": [
+            "Red is a warm color.",
+            "Red drinks are usually cold.",
+            "Red reminds them of ripe, sweet fruit.",
+            "Red food is expensive."
+          ],
+          "answer": 2,
+          "explanation": "Seeing red makes people remember well-grown sweet fruit (よくできた甘いくだもの), researchers think."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n4-020",
+      "level": "N4",
+      "genre": "story",
+      "topic": "a lost wallet",
+      "title": "ねこの絵",
+      "titleEn": "The cat drawing",
+      "body": "金曜日の夜、ケンタは電車の中で財布を落としてしまいました。家に帰ってから気がつきましたが、もう遅い時間でした。財布の中には、お金だけでなく、大切な家族の写真も入っていました。\n次の日の朝、駅から電話がありました。財布が届いているそうです。ケンタは急いで駅へ行きました。\n駅員の石田さんは、財布を渡しながら「若い女の人が持ってきてくれましたよ。名前は言わないで、帰ってしまいました。」と言いました。\nそして、小さな紙もくれました。「これも、その人からです。」\n紙には、かわいいねこの絵と、次は落とさないでくださいね、という短い言葉が書いてありました。ケンタは、お礼を言いたいと思いましたが、どうすることもできませんでした。\n月曜日、ケンタの会社に、新しい人が来ました。みさきという名前の、明るい女の人でした。\n昼休み、ケンタはみさきのノートを見て、びっくりしました。ノートのすみに、あの紙と同じねこの絵がかいてあったのです。\nケンタは「あの、金曜日の夜、電車で財布を拾ってくれませんでしたか。」と聞きました。\nみさきは少しおどろいてから、笑って「あの財布、あなたのだったんですね。」と言いました。\nその日の帰り、ケンタはみさきに、駅の前の店でケーキをごちそうしました。そして、今度は財布をしっかりかばんに入れて、二人で駅まで歩きました。",
+      "cast": [
+        {
+          "name": "ケンタ",
+          "voice": "male"
+        },
+        {
+          "name": "石田",
+          "voice": "male-senior"
+        },
+        {
+          "name": "みさき",
+          "voice": "female"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "財布",
+          "reading": "さいふ",
+          "entryId": 1296970,
+          "gloss": "wallet; purse; coin purse"
+        },
+        {
+          "word": "届く",
+          "reading": "とどく",
+          "gloss": "to be delivered; to be handed in",
+          "entryId": 1457200
+        },
+        {
+          "word": "駅員",
+          "reading": "えきいん",
+          "gloss": "station staff member",
+          "entryId": 1175150
+        },
+        {
+          "word": "渡す",
+          "reading": "わたす",
+          "entryId": 1444610,
+          "gloss": "to hand over; to give"
+        },
+        {
+          "word": "拾う",
+          "reading": "ひろう",
+          "entryId": 1332570,
+          "gloss": "to pick up; to gather"
+        },
+        {
+          "word": "すみ",
+          "reading": "すみ",
+          "gloss": "corner",
+          "entryId": 1246440
+        },
+        {
+          "word": "ごちそう",
+          "reading": "ごちそう",
+          "gloss": "treating (someone) to food",
+          "entryId": 1593590
+        },
+        {
+          "word": "お礼",
+          "reading": "おれい",
+          "entryId": 1270810,
+          "gloss": "thanks; gratitude"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "What was in Kenta's wallet besides money?",
+          "choices": [
+            "His ID card.",
+            "A photo of his family.",
+            "A train ticket.",
+            "His house key."
+          ],
+          "answer": 1,
+          "explanation": "The first paragraph says the wallet held not only money but also an important family photo (大切な家族の写真)."
+        },
+        {
+          "type": "detail",
+          "stem": "Who took the wallet to the station?",
+          "choices": [
+            "Mr. Ishida.",
+            "One of Kenta's friends.",
+            "A young woman who did not give her name.",
+            "A child on the train."
+          ],
+          "answer": 2,
+          "explanation": "Mr. Ishida says a young woman brought it and left without giving her name (名前は言わないで)."
+        },
+        {
+          "type": "inference",
+          "stem": "How did Kenta realize that Misaki had found his wallet?",
+          "choices": [
+            "Her notebook had the same cat drawing as the note.",
+            "Mr. Ishida told him her name.",
+            "She was wearing the same clothes.",
+            "She asked him about his wallet first."
+          ],
+          "answer": 0,
+          "explanation": "Kenta saw the same cat drawing as on the note (あの紙と同じねこの絵) in the corner of Misaki's notebook."
+        },
+        {
+          "type": "detail",
+          "stem": "What did Kenta do on the way home that day?",
+          "choices": [
+            "He bought a new wallet.",
+            "He went back to the station to thank Mr. Ishida.",
+            "He drew a cat for Misaki.",
+            "He treated Misaki to cake."
+          ],
+          "answer": 3,
+          "explanation": "The last paragraph says ケンタはみさきに…ケーキをごちそうしました: he treated her to cake at a shop by the station."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    }
+  ]
+}
