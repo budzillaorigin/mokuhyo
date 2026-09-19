@@ -42,6 +42,13 @@ internal class ChangeApplier(
             }
             else -> {
                 val spec = TableSpec.all[c.table] ?: return false
+                if (spec.merge == MergeRule.UNION_TOMBSTONE) {
+                    // Other append-only logs with a tombstone (immersion sessions, D-167): union, earliest tombstone wins.
+                    if (row == null) return false
+                    spec.write(driver, row, orIgnore = true)
+                    spec.tombstoneOf(row)?.let { spec.applyTombstone(driver, c.key, it) }
+                    return true
+                }
                 if (spec.merge == MergeRule.UNION) {
                     if (row != null) spec.write(driver, row, orIgnore = true)
                     return row != null

@@ -102,6 +102,17 @@ import app.tsumugi.coverage.TextProfileStore
 import app.tsumugi.coverage.TextProfiler
 import app.tsumugi.decks.DeckLessons
 import app.tsumugi.decks.MediaDeckService
+import app.tsumugi.dictionary.Token
+import app.tsumugi.exam.ExamKind
+import app.tsumugi.immersion.ImmersionLog
+import app.tsumugi.immersion.RoadmapService
+import app.tsumugi.lyrics.LyricsService
+import app.tsumugi.media.ImmersionKitSource
+import app.tsumugi.media.OnlineExamples
+import app.tsumugi.media.SentenceBank
+import app.tsumugi.media.SentenceMiner
+import app.tsumugi.media.SentenceSearch
+import app.tsumugi.reader.LatticeReaderTokenizer
 
 /** Progress of a background rebuild of every card (after new FSRS weights). */
 data class RecomputeProgress(val done: Int, val total: Int, val running: Boolean) {
@@ -193,7 +204,9 @@ class AppGraph(val platform: PlatformServices) {
     fun resetSync() {
         syncEngine = null
     }
-    private val planner: TodayPlanner by lazy { TodayPlanner(userDatabase, settings) }
+    private val planner: TodayPlanner by lazy {
+        TodayPlanner(userDatabase, settings).also { it.immersionProgress = { immersion.targetProgress() } }
+    }
     private val todayCandidates by lazy {
         TodayCandidateSource(userDatabase, srs, { reader.documents() }, { practice() }, { grammar() }, { dictionary() != null })
     }
@@ -552,6 +565,45 @@ class AppGraph(val platform: PlatformServices) {
     /** Lessons from a deck, interleaved with the kanji path (a synced setting). */
     val deckLessons: DeckLessons by lazy {
         DeckLessons(userDatabase, settings, knowledge, { dictionary() }) { entry, context -> configuredSrs(); collection.addToReviews(entry, context) }
+    }
+
+    // --- Phase 11 immersion pipeline (BRIEF_V2 §6.2, §6.3, §6.11; DECISIONS D-160…D-169) ----------------------
+
+    /** The immersion log: automatic (reader, media) and manual minutes, the daily target, the heat-map rows. */
+    val immersion: ImmersionLog by lazy { ImmersionLog(userDatabase, device.deviceId, settings) }
+
+    /** The four-stage roadmap (§6.11), measured in known words, immersion hours, comprehension and the OPI estimate. */
+    val roadmap: RoadmapService by lazy {
+        RoadmapService(
+            immersion, pathProgress,
+            // Known = Guru+ in SRS or marked known (the known-words module, D-151).
+            knownWords = { configuredSrs(); knowledge.snapshot().knownWordCount },
+            opiLevel = { exams().history(ExamKind.OPI, 1).firstOrNull()?.scoring?.ilr?.let { IlrLevel.parse(it) } },
+        )
+    }
+
+    /** Sentence bank over the learner's own media (subtitle cues, tokenized and indexed). */
+    val sentenceBank: SentenceBank by lazy { SentenceBank(userDatabase, { readerTokens(it) }) }
+
+    /** The optional Immersion Kit example source: OFF by default, per device, never cached into packs. */
+    val onlineExamples: OnlineExamples by lazy { OnlineExamples(ImmersionKitSource(platform.httpEngine()), deviceSettings) }
+
+    /** Dictionary sentence search: library lines first, then Tatoeba, then the online source when on. */
+    val sentenceSearch: SentenceSearch by lazy { SentenceSearch(sentenceBank, { dictionary() }, onlineExamples) }
+
+    /** "Mine this line": sentence or word cards with the clip audio and frame attached. */
+    val sentenceMiner: SentenceMiner by lazy { SentenceMiner(userDatabase, srs, recordings, images) }
+
+    /** Lyrics and karaoke reading over audio files the learner owns. */
+    val lyrics: LyricsService by lazy {
+        LyricsService(userDatabase, { reader.analyzer() }, subtitles, { SwiftSupport.translate(ai, it) }, { grammar() })
+    }
+
+    /** Reader tokens (lattice analyzer with dictionary ids; the dictionary's tokenizer without it), or null. */
+    private suspend fun readerTokens(text: String): List<Token>? {
+        val dictionary = dictionary() ?: return null
+        val morphology = analyzer() ?: return dictionary.tokenize(text)
+        return LatticeReaderTokenizer(morphology) { dictionary.entriesForLemmas(it) }.tokenize(text)
     }
 
     /** Rebuilds every card from its reviews with the current scheduler, reporting [recomputeProgress]. */

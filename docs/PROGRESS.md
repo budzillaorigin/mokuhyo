@@ -41,6 +41,34 @@ BRIEF_V2 §6.1, §6.4 (difficulty score) and §6.11 (1T mining). Decisions D-150
 - The reader's own `known` flag (furigana "above my level", `reader_doc.known_ratio`) still reads SRS stages only, so words marked known don't hide furigana yet. The coverage overlay does include them.
 - Without the path pack, Today shows no lessons block for deck lessons (D-154).
 - The Wikipedia-based frequency list (D-152).
+## Phase 11: Immersion pipeline, shared core part 1 (BRIEF_V2 §6.2, §6.3, §6.4 annotations/vocab, §6.11) (2026-09-18)
+
+Shared code and tests only; the platform screens are next. Decisions D-160…D-169. The media decks, coverage, difficulty score, frequency decks, known words and 1T mining are a parallel part of Phase 11.
+
+### What was built
+- **Sentence bank (§6.2):** `AppGraph.sentenceBank` indexes every cue of a media item with subtitles (`index(mediaId, title, kind, locator, cues, source, onProgress)`) by JMdict id and lemma. `AppGraph.sentenceSearch.forEntry(entryId, word, reading)` returns library lines, then Tatoeba, then optional online lines, each tagged with its source. Library hits carry `ClipSpan(start, end, thumbnailMs)` for on-demand extraction.
+- **Mine this line:** `AppGraph.sentenceMiner.mineLine(SENTENCE|VOCAB, …)` → `MineDraft` (the platform cuts the audio and grabs the frame) → `attachMedia(draft, durationMs, imageWritten)` → `render(itemId)` (sentence split around the highlighted word, audio/picture paths, TTS fallback).
+- **Immersion Kit (optional):** `AppGraph.onlineExamples`, off by default per device, v2 API, session-only memory cache, never stored (docs/INTEGRATIONS.md).
+- **Lyrics & karaoke (§6.3):** `AppGraph.lyrics`: import audio + `.lrc` (line or enhanced word LRC) or plain lyrics; `align(songId, mediaHash, pcm)` via Whisper segments; `Karaoke.at(lines, positionMs)`; per-line translation (learner's or labeled AI); `lineStudy` (tap words, grammar notes); cloze (`setCloze`/`autoCloze`/`clozeSession`), LRC export. Device-local.
+- **Immersion log and roadmap (§6.11):** `AppGraph.immersion` (start/stop tickets, `report`, `addManual`, `delete`, `days`, daily target), synced by union + tombstone. The Today immersion block completes when the target is met; `stats.immersionHeatmap(days)`. `AppGraph.roadmap.status()`: four stages, milestones in known words, hours, graded-reader score (Phase 12 hook) and OPI; the reached stage never drops (rule 11).
+- **Reader (§6.4):** `reader.annotations` (box, highlight, note, grammar span; synced per row by document key, re-anchored by quote), `reader.importScreenshots(pages)` with page images, `reader.vocabulary` (auto list of looked-up words, context-card `drill`), `reader.addDocumentWordsToReviews`, and `GuidesLibrary` (about 90 curated links, link-only).
+
+### Schema
+`migrations/6.sqm` → schema v7 (`databases/6.db` is the v6 snapshot, generated after the decks migration merged): `immersion_session` and `reader_annotation` (synced; triggers in `immersion.sq` / `readerNotes.sq`), plus the device-local `media_index`, `media_cue`, `media_cue_token`, `lyrics_song`, `reader_doc_meta` and `reader_doc_vocab`. Renumbered from `5.sqm` at merge time, as planned in D-169.
+
+### Tests
+`ImmersionTest` (5), `LyricsTest` (9), `SentenceBankTest` (5), `AnnotationsTest` (5), host `GuidesGrammarIdsTest`, and the v5 → v6 part of `UserDbMigrationTest`.
+
+### UI hooks for the platform agents
+- Media player: after loading or generating subtitles, call `sentenceBank.index(…)`. Play a hit's `clip` span; the frame is at `thumbnailMs`. "Mine this line" → `sentenceMiner.mineLine` → cut audio into `draft.audio.path`, frame into `draft.image?.path` → `attachMedia`. Log with `immersion.start(MEDIA, ACTIVE|PASSIVE, mediaId, title)` / `stop(ticket)`.
+- Dictionary entry: a "Sentences" section from `sentenceSearch.forEntry`, grouped by `SentenceSource`; an Immersion Kit toggle (`onlineExamples.setEnabled`) with its label.
+- Reader: `immersion.start(READER, ACTIVE, docId, title)` on open, `stop` on leave; `vocabulary.recordLookup(docId, token, sentence, gloss)` on every word popup; annotation tools over a selection (`annotations.add/update/delete/forDocument`); a "Words" tab with Drill; screenshot import (OCR each picture into `screenshots.screenshotFile()`, then `importScreenshots`), showing `screenshots.pageImages(docId)`; guides from `GuidesLibrary.forGrammarPoint(pointId)` open in the browser.
+- Lyrics: a songs list, import (audio file + .lrc/.txt picker), "Align with Whisper" with progress and cancel, a karaoke view driven by `Karaoke.at`, cloze mode, per-line English with the AI badge when `aiTranslated`. The empty state says that there's no streaming or downloading: the songs are the learner's own files.
+- Me: immersion heat-map and per-source breakdown (`immersion.days(n)`), manual entry, daily target setting, the roadmap card (`roadmap.status()`); the Today immersion block reads the target automatically. Podcasts log `PODCAST`, dialogues `DIALOGUE`.
+
+### Deferred
+- Translations and cloze picks aren't in the LRC export. Word-level Whisper timestamps aren't used (segment level, even spread by morae).
+- Graded-reader comprehension feeds the roadmap once Phase 12 ships graded readers (`roadmap.comprehension`).
 
 ---
 

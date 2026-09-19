@@ -47,7 +47,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(6L, TsumugiDatabase.Schema.version)
+        assertEquals(7L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -103,6 +103,19 @@ class UserDbMigrationTest {
         assertEquals(beforeDecks + 3, driver.long("SELECT count(*) FROM change_log"))
         assertEquals("d11467640", driver.string("SELECT row_key FROM change_log WHERE table_name = 'media_deck_word'"))
         assertEquals(listOf(1358280L), db.decksQueries.knownWordIds().executeAsList().map { it.entry_id })
+
+        // v6 -> v7 (6.sqm, D-160…D-169): the immersion log and reader annotations sync; the sentence bank, lyrics,
+        // document extras and per-document word lists are device-local.
+        db.immersionQueries.insertImmersion("i1", "2026-09-18", "MEDIA", "ACTIVE", 0, 600, null, null, "d", 0)
+        db.immersionQueries.tombstoneImmersion(5, "i1")
+        db.readerNotesQueries.putAnnotation("a1", "url:x", "HIGHLIGHT", 0, 1, "猫", "", null, null, 0, 0)
+        assertEquals(2L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'immersion_session'"))
+        assertEquals(1L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'reader_annotation'"))
+        db.immersionQueries.putMediaIndex("m", "t", "VIDEO", null, "FILE", 0, 0)
+        db.readerNotesQueries.insertDocVocab("doc", "text:猫|ねこ", "猫", "ねこ", "cat", null, "猫だ", 0, 1, 0, 0)
+        db.immersionQueries.putSong("s", "t", null, "x", null, "NONE", "[]", 0, 0)
+        assertEquals(3L, driver.long("SELECT count(*) FROM change_log WHERE table_name IN ('immersion_session', 'reader_annotation')"))
+        assertEquals(0L, driver.long("SELECT count(*) FROM change_log WHERE table_name IN ('media_index', 'reader_doc_vocab', 'lyrics_song')"))
     }
 
     private fun SqlDriver.string(sql: String): String? =

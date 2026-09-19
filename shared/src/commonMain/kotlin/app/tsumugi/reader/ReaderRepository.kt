@@ -10,7 +10,8 @@ import kotlinx.serialization.json.Json
 import kotlin.time.Clock
 import kotlin.uuid.Uuid
 
-enum class SourceKind { PASTE, URL, RSS, AOZORA, EPUB, PACK }
+/** SCREENSHOT: OCR of screenshots, with the pictures kept as page images (BRIEF_V2 §6.4). */
+enum class SourceKind { PASTE, URL, RSS, AOZORA, EPUB, PACK, SCREENSHOT }
 
 /** A text ready to be saved as a reader document (the output of every importer). */
 data class ImportedText(
