@@ -15,6 +15,7 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | same file, `sentence`/`sentence_word` tables (Tatoeba) + frequency ranks | `packs/build_sentences.py` | 1 | ✅ |
 | same file, `freq_word` table: 10,000-word frequency list behind Core 2k/6k/10k and the "I know these" bands | `packs/build_decks.py` | 11 | ✅ |
 | same file, `onomatopoeia` / `onomatopoeia_theme` tables: 1,334 JMdict on-mim words in 12 themes × 3 types, 1,309 with our feel line (1,307 also in Japanese), 502 with Tatoeba examples, one SVG glyph per theme | `packs/build_onomatopoeia.py` from `packs/onomatopoeia/*.json` | 12 | ✅ |
+| same file, `kanji_element` / `kanji_component_role` / `phonetic_series` tables: KanjiVG component trees (33,489 kanji→element rows), part roles (1,002 phonetic, 6,366 semantic, 5,882 form-only) and 316 sound series over 1,305 kanji, all `derived` until reviewed | `packs/build_phonetics.py` (series in `packs/phonetics/series.json`) | 13 | ✅ |
 | `IlrBandData.kt` (not a pack): ILR bands + abstract lexicon for the difficulty score, generated from `items/ilr_bands.json` | `packs/gen_ilr_bands.py` (`--check` verifies) | 11 | ✅ |
 | `kanji-path.sqlite` (60 levels: 243 radicals, 2,599 kanji, 7,242 words) | `packs/build_kanji_path.py` | 2 | ✅ |
 | `grammar.sqlite` (N5–N1: 829 points, 5,116 Tatoeba examples; matched in order n3, n4, n5, n2, n1 so harder points don't take easier points' sentences) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ |
@@ -161,6 +162,35 @@ Schema: `shared/src/commonMain/sqldelightDictionary/app/tsumugi/dictionary/db/on
   - 502 words have examples; the rest show gloss and feel only.
   - Themes: sounds 320, movement 183, manner 162, appearance 140, voice 116, texture 106, state 91, feelings 88, body 46, eating 44, pain 20, weather 18.
   - `pack_meta`: `onomatopoeia`, `onomatopoeia_with_feel`, `onomatopoeia_with_feel_ja`, `onomatopoeia_with_examples`.
+
+### Kanji explorer, functional components and sound series (Phase 13, DECISIONS D-280…D-283)
+
+Schema: `shared/src/commonMain/sqldelightDictionary/app/tsumugi/dictionary/db/kanjiParts.sq`. `tools/packs/build_phonetics.py`
+needs the dictionary's `kanji` table (KANJIDIC2) and the pinned KanjiVG zip; it replaces only these three tables and
+takes about a minute (most of it the VACUUM). `build_all.py` runs it after `build_onomatopoeia.py`.
+
+- **`kanji_element`**: every named element of each kanji's KanjiVG tree at its shallowest depth (1 = a direct part), with
+  the position of the direct part it sits in. The explorer reads it both ways (a kanji's parts; kanji using a part), and
+  component search matches typed parts against it and KRADFILE.
+- **`kanji_component_role`**: SEMANTIC / PHONETIC / FORM for each direct part of every kanji with a KanjiVG tree
+  (PHONETIC only through a sound series), with evidence JSON (`match` same/related/shared, `reading`, KanjiVG's `kvgPhon`/`kvgRadical`), the series id
+  and `source`.
+- **`phonetic_series`**: the phonetic part, the shared readings, the members with their on'yomi and how they matched, and
+  `source` (`derived` until the series is reviewed).
+- **The heuristic** (D-281): a part that is a kanji and shares an on'yomi with the kanji (same, or equal after folding
+  voicing and a final long vowel) is phonetic; a part that isn't a kanji is phonetic for the kanji sharing its most
+  common reading when at least three do. KanjiVG's `kvg:radical` part is never phonetic unless it is also `kvg:phon`.
+  With a phonetic, the other parts are semantic; otherwise the radical is semantic and the rest form-only.
+- **Review** (D-282): `tools/packs/phonetics/series.json` holds one entry per series (`id`, `members` as one string,
+  `readings` space-separated, `source`). `items/review.py packs/phonetics/series.json` (kind `phonetic_series`) accepts,
+  edits or rejects a whole family; a rejected series leaves the pack. A rebuild re-derives only unreviewed series.
+- **Commands:** `uv run python packs/build_phonetics.py` (derive, merge into series.json, write the tables),
+  `packs/build_phonetics.py status` (counts and agreement with KanjiVG's `kvg:phon`), `--dictionary PATH --kanjivg ZIP`
+  for other inputs. Tests: `uv run python packs/test_build_phonetics.py` (known families 青 方 反 同 交 召 令 包 on the
+  real inputs, skipped without them).
+- **Build of 2026-09-18:** 316 series, 1,305 kanji, 0 reviewed; the heuristic agrees with KanjiVG's own `kvg:phon` on
+  744 of 1,183 marked studied kanji and adds 593 unmarked ones. `pack_meta`: `phonetic_series`,
+  `phonetic_series_verified`, `component_roles`, `kanji_elements`.
 
 ## grammar.sqlite: Japanese explanations (`grammar_point_ja`; Phase 12, DECISIONS D-233)
 
@@ -438,6 +468,7 @@ stored as NFC. Afterwards, run the validator that `--ingest` names for each file
 | `drill_item` | the grammar example or dialogue line the drill copies | `g:<point>:<reviewKey(sentence)>`, `d:<dialogue>:<line>` | `source: "verified"` on that example or line | `drill_item.source` (and `drill_set.source` once none is `llm`) |
 | `reader_passage` | `packs/readers/stories/*.json` | story id | `source: "verified"` and `verified: true` | `reader_story.source`/`verified` |
 | `onomatopoeia` | `packs/onomatopoeia/entries.json` | JMdict entry id | `source: "verified"` | `onomatopoeia.source` |
+| `phonetic_series` | `packs/phonetics/series.json` (derived by `build_phonetics.py`, not AI) | the phonetic part | `source: "verified"` (from `derived`); a reject drops the series from the pack (D-282) | `phonetic_series.source`, `kanji_component_role.source` |
 | `track_word` | `packs/tracks/<track>[.<part>].json` `words[]` | `<track>:<JMdict id>` | `source: "verified"` and `verified: true` | `track_word.source` |
 | `track_kanji` | same, `kanji[]` (explicit subsets only; derived ones are `derived`) | `<track>:<kanji>` | same | `track_kanji.source` |
 | `track_scenario`, `track_dialogue`, `track_drill`, `track_situation`, `track_task`, `track_reading` | same, `scenarios[]`, `dialogues[]`, `drills[]`, `situations[]`, `tasks[]`, `readings[]` | item id | same | `source` of the matching `track_*` table |
@@ -447,7 +478,7 @@ stored as NFC. Afterwards, run the validator that `--ingest` names for each file
 `review.py` (`review_key`) and in `shared/.../review/ContentReviewSources.kt` (`reviewKey`). The app can edit these
 fields: grammar `title`, `structure`, `meaning`, `nuance`; `meaning_ja`, `nuance_ja`; exam `title`/`body` and
 `stem`/`explanation`; dialogue `title`, `topic`; scenario `titleEn`, `titleJa`, `setting`, `learnerRole`,
-`partnerRole`; OPI `ja`, `en`, `note`; drill `en`; reader `title`, `body`; onomatopoeia `feel`, `feel_ja`; track word
+`partnerRole`; OPI `ja`, `en`, `note`; drill `en`; reader `title`, `body`; onomatopoeia `feel`, `feel_ja`; sound series `members`, `readings`; track word
 `gloss`, `note`; track kanji `keyword`, `breakdown`, `hint`; track drills their string fields (`explanation`, `en`,
 `sentence`, …); track tasks `titleEn`, `titleJa`, `place`; track readings `title`, `body`. Other fields are edited in
 the terminal.
@@ -467,6 +498,7 @@ uv run python items/review.py packs/tracks/business.json                # every 
 uv run python items/review.py packs/speaking/opi.json
 uv run python items/review.py packs/onomatopoeia/entries.json
 uv run python items/review.py packs/readers/stories/n4.json
+uv run python items/review.py packs/phonetics/series.json               # derived sound series
 ```
 
 Tests: `uv run python items/test_review_ingest.py` and `items/test_review_kinds.py`. The second one ingests a verdict of

@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
  * Offline dictionary over the read-only dictionary pack (JMdict, KANJIDIC2, KRADFILE, KanjiVG, Tatoeba…).
  * All lookups are local; nothing here touches the network.
  */
-class DictionaryRepository(private val db: DictionaryDatabase) {
+class DictionaryRepository(internal val db: DictionaryDatabase) {
 
     private val q get() = db.dictionaryQueries
 
@@ -28,11 +28,22 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
     @Throws(Exception::class)
     suspend fun search(rawQuery: String, limit: Int = 40): SearchResults = io {
         val query = normalizeNfc(rawQuery.trim())
-        when {
+        val results = when {
             query.isEmpty() -> SearchResults.EMPTY
             Kana.isJapanese(query) -> searchJapanese(query, limit)
             else -> searchLatin(query, limit)
         }
+        withFrequencyRanks(results)
+    }
+
+    /** Adds each hit's frequency-list position (one query; packs without the list leave it null). */
+    private fun withFrequencyRanks(results: SearchResults): SearchResults {
+        if (results.hits.isEmpty()) return results
+        val ords = runCatching {
+            q.freqOrdsFor(results.hits.map { it.entry.id }.distinct()).executeAsList().associate { it.entry_id to it.ord.toInt() }
+        }.getOrDefault(emptyMap())
+        if (ords.isEmpty()) return results
+        return results.copy(hits = results.hits.map { h -> ords[h.entry.id]?.let { h.copy(frequencyRank = it) } ?: h })
     }
 
     private fun searchJapanese(query: String, limit: Int): SearchResults {
@@ -43,7 +54,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
                 val summaries = summariesById(tokens.mapNotNull { it.entryId }.distinct())
                 val hits = tokens.mapNotNull { t ->
                     t.entryId?.let { summaries[it] }?.let { e ->
-                        SearchHit(e, if (t.deinflection.isEmpty()) MatchKind.EXACT else MatchKind.DEINFLECTED, t.deinflection)
+                        SearchHit(e, if (t.deinflection.isEmpty()) MatchKind.EXACT else MatchKind.DEINFLECTED, t.deinflection, t.dictionaryForm, t.surface)
                     }
                 }.distinctBy { it.entry.id }
                 return SearchResults(query, SearchMode.SENTENCE, hits, tokens)
@@ -77,7 +88,7 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
             .mapNotNull { m ->
                 summaries[m.entryId]?.let {
                     val kind = if (m.deinflection.reasons.isEmpty()) MatchKind.EXACT else MatchKind.DEINFLECTED
-                    SearchHit(it, kind, m.deinflection.reasons)
+                    SearchHit(it, kind, m.deinflection.reasons, m.deinflection.term, text)
                 }
             }
     }

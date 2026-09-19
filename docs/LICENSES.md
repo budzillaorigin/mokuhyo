@@ -110,6 +110,13 @@ Listed in `content/models/manifest.json`; the in-app model manager shows each mo
 | Onomatopoeia theme glyphs (12 SVGs in `tools/packs/onomatopoeia/themes.json`) | CC BY-SA 4.0 | Original drawings for Tsumugi, one per theme (not per word) |
 | Monolingual word paraphrases (`paraphrase_word_ja`) | the learner's own | Generated on the learner's device (or their own endpoint) on demand, cached locally, labeled AI-generated; nothing is shipped |
 
+## Kanji explorer and functional components (Phase 13)
+
+| Content | License | Notes |
+|---|---|---|
+| KanjiVG component trees (`kanji_element` in `dictionary.sqlite`) | CC BY-SA 3.0 | Ulrich Apel, KanjiVG project (attribution as for KanjiVG above). Flattened by `tools/packs/build_phonetics.py` |
+| Functional components and sound series (`kanji_component_role`, `phonetic_series` in `dictionary.sqlite`; `tools/packs/phonetics/series.json`) | CC BY-SA 4.0 | Tsumugi contributors, derived by a heuristic over KanjiVG (CC BY-SA 3.0; its `kvg:radical`/`kvg:phon` marks are used as evidence and tie-breakers) and KANJIDIC2 on'yomi (EDRDG, CC BY-SA 4.0). Labeled "derived" until reviewed. No Outlier Linguistics text or component analysis is used |
+
 ## Pre-rendered audio (VOICEVOX)
 
 The audio packs (`audio-<set>.zip`: exam listening, dialogues, minimal pairs, pitch-accent test, grammar examples, graded-reader read-along) are synthesized at build time with the VOICEVOX engine (BRIEF_V2 §5.6, DECISIONS D-090). They are optional downloads. The voices' terms allow commercial and non-commercial use of the generated audio **with a credit line**, and forbid use that damages the characters' or voice providers' image, political or religious use, deception, and training new voice models on the audio. The credit lines below are required and are shown here, on the in-app Licenses screen.
@@ -158,12 +165,17 @@ These resources shaped Tsumugi's structure, pedagogy or feature ideas (BRIEF_V2 
 | Japanese Graph | web app | Kanji graph view |
 | コツ Pitch Accent Minimal Pairs Test (kotu.io) | web app | Pitch-accent perception test format |
 | Onomato Project | web app | Onomatopoeia module (our data comes from JMdict's `on-mim` tag) |
-| Ulangi | open-source app | Reflex and Atom game mechanics (no code used) |
+| Ulangi | open-source app, **GPL-3.0** | Reflex and Atom game ideas only. Its license was checked before anything else and its code was not read (see "Ulangi license check" below) |
 | Japanese Swotter | podcast | Drill-set format (prompt → pause → answer) |
 | Refold | methodology | Immersion roadmap and log, 1T mining |
 | USJETAA Japanese Reading Group | community | Reading-circle mode |
 | Lorenzi's Jisho | web dictionary | Inflection breakdown, component shortcuts |
 | WaniKani, Bunpro, NativShark, Skritter, Lingopie | apps (BRIEF v1) | Feature ideas only; imports talk to the learner's own account, and no mnemonics or write-ups are copied |
+
+### Ulangi license check (BRIEF_V2 §6.9, checked 2026-09-18, DECISIONS D-287)
+
+- **What was checked:** the GitHub license API for `ulangi/ulangi` (which now redirects to https://github.com/subconcept-labs/ulangi): `license.spdx_id` = **GPL-3.0**, and the LICENSE file is the GNU General Public License v3 (https://github.com/subconcept-labs/ulangi/blob/master/LICENSE). Only the license endpoint and the repository metadata were fetched.
+- **Result:** GPL-3.0 code can't be linked into the apps (CLAUDE.md rule 5), so **none of Ulangi's code, assets or word lists were read or used.** Reflex (timed word ↔ meaning true/false with streak scoring) and Atom (kana assembly under time) were written from the one-line descriptions in BRIEF_V2 §6.9 only (`shared/.../study/games/Games.kt`).
 
 ### Bunka-cho license check (BRIEF_V2 §6.5 and §7, checked 2026-09-19, DECISIONS D-219)
 

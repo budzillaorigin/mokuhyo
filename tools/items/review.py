@@ -16,6 +16,8 @@ and how its flag flips are listed in docs/CONTENT_PACKS.md "Reviewing content" (
                                                                  d:<dialogue>:<line>   example or line
   reader_passage    packs/readers/stories/*.json                story id              source "verified" + verified
   onomatopoeia      packs/onomatopoeia/entries.json             JMdict entry id       source "verified"
+  phonetic_series   packs/phonetics/series.json                 phonetic component    source "verified" (was
+                    (derived by packs/build_phonetics.py, D-282)                      "derived", not "llm")
   track_*           packs/tracks/<track>[.<part>].json          item id, or           source "verified" + verified
                     (word, kanji, scenario, dialogue, drill,    <track>:<JMdict id>
                     situation, task, reading)                   / <track>:<kanji>
@@ -282,6 +284,11 @@ def _ono_entries(_path: Path, doc: dict) -> Iterator[Entry]:
             yield str(e["id"]), doc["entries"], i
 
 
+def _show_series(e: dict, _doc: dict) -> str:
+    return _join(f"{e.get('id')}  ·  {e.get('readings', '')}", f"Members: {' '.join(e.get('members', ''))}",
+                 "Derived from KanjiVG component trees and KANJIDIC2 on'yomi (build_phonetics.py).")
+
+
 # tracks ----------------------------------------------------------------------------------------------------
 
 def _track_name(path: Path, doc: dict) -> str:
@@ -338,6 +345,9 @@ KINDS: dict[str, Kind] = {k.code: k for k in [
          ("title", "body"), _show_reader, "uv run python packs/readers/validate_readers.py"),
     Kind("onomatopoeia", _one("packs", "onomatopoeia", "entries.json"), _ono_entries, "source", ("feel", "feel_ja"),
          _show_onomatopoeia, "uv run python packs/build_onomatopoeia.py"),
+    Kind("phonetic_series", _one("packs", "phonetics", "series.json"), _by_id("series"), "source", ("members", "readings"),
+         _show_series, "uv run python packs/build_phonetics.py",
+         pending_fn=lambda _d, e: e.get("source") == "derived" and not e.get("exclude") and "rejected" not in e),
     _track("track_word", _track_words, ("gloss", "note")),
     _track("track_kanji", _track_kanji, ("keyword", "breakdown", "hint")),
     _track("track_scenario", _by_id("scenarios"), ("titleEn", "titleJa", "setting", "learnerRole", "partnerRole"),
@@ -430,6 +440,8 @@ def kinds_for(path: Path, data: dict) -> list[str]:
         return ["opi_question"]
     if "entries" in data:
         return ["onomatopoeia"]
+    if "series" in data:
+        return ["phonetic_series"]
     raise SystemExit(f"{path}: not a reviewable source file (see docs/CONTENT_PACKS.md \"Reviewing content\")")
 
 

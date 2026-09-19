@@ -97,6 +97,18 @@ import app.tsumugi.review.ExamReviewSource
 import app.tsumugi.review.GrammarReviewSource
 import app.tsumugi.review.KanaMnemonicReviewSource
 import app.tsumugi.review.OnomatopoeiaReviewSource
+import app.tsumugi.review.PhoneticSeriesReviewSource
+import app.tsumugi.dictionary.InstantSearch
+import app.tsumugi.dictionary.InstantSearchState
+import app.tsumugi.dictionary.SearchResults
+import app.tsumugi.kanji.KanjiBookmarks
+import app.tsumugi.kanji.KanjiExplorer
+import app.tsumugi.pitch.PitchTestService
+import app.tsumugi.reader.ReaderGrammar
+import app.tsumugi.study.games.AtomGame
+import app.tsumugi.study.games.GameScores
+import app.tsumugi.study.games.GameWordSource
+import app.tsumugi.study.games.ReflexGame
 import app.tsumugi.review.PracticeReviewSource
 import app.tsumugi.review.ReadersReviewSource
 import app.tsumugi.readers.db.ReadersDatabase
@@ -352,7 +364,8 @@ class AppGraph(val platform: PlatformServices) {
 
     /** A 25-minute speaking session at the learner's JLPT level (from settings, default N4). */
     @Throws(Exception::class)
-    suspend fun pomodoro(jlpt: Int = 4): PomodoroSession? = PomodoroSession.build(practice(), jlpt)
+    suspend fun pomodoro(jlpt: Int = 4): PomodoroSession? =
+        PomodoroSession.build(practice(), jlpt, gameWords = runCatching { gameWords.words() }.getOrDefault(emptyList()))
 
     /**
      * The dictionary, installing the bundled pack on first use. Returns null when no dictionary pack is
@@ -575,7 +588,7 @@ class AppGraph(val platform: PlatformServices) {
             openPack(PackInstaller.PRACTICE) { platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE) }?.let { add(PracticeReviewSource(it)) }
             openPack(PackInstaller.READERS) { platform.packDriver(ReadersDatabase.Schema, PackInstaller.READERS) }?.let { add(ReadersReviewSource(it)) }
             openPack(PackInstaller.TRACKS) { platform.packDriver(TracksDatabase.Schema, PackInstaller.TRACKS) }?.let { add(TracksReviewSource(it)) }
-            openPack(PackInstaller.DICTIONARY) { platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY) }?.let { add(OnomatopoeiaReviewSource(it)) }
+            openPack(PackInstaller.DICTIONARY) { platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY) }?.let { add(OnomatopoeiaReviewSource(it)); add(PhoneticSeriesReviewSource(it)) }
             add(KanaMnemonicReviewSource)
         }.also { reviewSources = it }
     })
@@ -672,6 +685,53 @@ class AppGraph(val platform: PlatformServices) {
             OnomatopoeiaRepository(DictionaryDatabase(platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY)))
         }
     }
+
+    // --- Phase 13: pitch test, kanji explorer, dictionary polish, mini-games, reader grammar (BRIEF_V2 §6.7, §6.9,
+    // §6.15, §6.16; D-280…D-289) -------------------------------------------------------------------------------------
+
+    /**
+     * The pitch-accent perception test, or null without the pitch audio pack: the screen is hidden then (rule 20,
+     * D-284). Answers sync by union; "say it" goes through the pronunciation panel's analyzer.
+     */
+    @Throws(Exception::class)
+    suspend fun pitchTest(): PitchTestService? {
+        val items = runCatching { audio.pitchItems() }.getOrDefault(emptyList())
+        if (items.isEmpty()) return null
+        return PitchTestService(userDatabase, device.deviceId, items, pronunciation, { minimalPairDrill() })
+    }
+
+    private val explorerSlot = PackSlot<KanjiExplorer>()
+
+    /** The kanji explorer (graph, functional components, sound series, component search), or null without the dictionary. */
+    @Throws(Exception::class)
+    suspend fun kanjiExplorer(): KanjiExplorer? = explorerSlot.get { dictionary()?.let { KanjiExplorer(it.db, it) } }
+
+    /** "Bookmark to SRS" from the explorer. */
+    val kanjiBookmarks: KanjiBookmarks by lazy { KanjiBookmarks(srs) { path() } }
+
+    /**
+     * Instant-as-you-type search for a dictionary screen; [onChange] gets every state (off the main thread). Close it
+     * when the screen goes away. Without the dictionary pack every query returns no results.
+     */
+    fun instantSearch(onChange: ((InstantSearchState) -> Unit)? = null): InstantSearch =
+        InstantSearch({ dictionary()?.search(it) ?: SearchResults.EMPTY }, onChange = onChange)
+
+    /** Mini-game scores (weekly challenge points). */
+    val games: GameScores by lazy { GameScores(userDatabase, device.deviceId) }
+
+    /** Words for Reflex and Atom: the learner's started vocabulary, topped up from the frequency list. */
+    val gameWords: GameWordSource by lazy { GameWordSource(srs, { dictionary() }) }
+
+    /** A standalone Reflex round, or null when there aren't enough words (no dictionary and few studied words). */
+    @Throws(Exception::class)
+    suspend fun reflex(): ReflexGame? = gameWords.words().takeIf { it.size >= ReflexGame.MIN_WORDS }?.let { ReflexGame(it) }
+
+    /** A standalone Atom round, or null without words. */
+    @Throws(Exception::class)
+    suspend fun atom(): AtomGame? = AtomGame(gameWords.words()).takeIf { !it.finished }
+
+    /** Grammar constructions of reader sentences, with one-line explanations and "practice this point". */
+    val readerGrammar: ReaderGrammar by lazy { ReaderGrammar({ grammar() }, explanations, srs) }
 
     /** Reader tokens (lattice analyzer with dictionary ids; the dictionary's tokenizer without it), or null. */
     private suspend fun readerTokens(text: String): List<Token>? {

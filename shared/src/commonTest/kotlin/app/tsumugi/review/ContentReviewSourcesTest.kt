@@ -138,6 +138,21 @@ class ContentReviewSourcesTest {
     }
 
     @Test
+    fun derivedSoundSeriesAreListedByPhonetic() = runTest {
+        val d = inMemoryDriver(DictionaryDatabase.Schema)
+        d.sql(
+            "INSERT INTO phonetic_series VALUES ('青', '[\"セイ\",\"ショウ\"]', '[{\"k\":\"青\",\"on\":[\"セイ\",\"ショウ\"],\"match\":\"self\"},{\"k\":\"清\",\"on\":[\"セイ\"],\"match\":\"same\"}]', 2, 'derived')",
+            "INSERT INTO phonetic_series VALUES ('方', '[\"ホウ\"]', '[{\"k\":\"方\",\"on\":[\"ホウ\"],\"match\":\"self\"}]', 1, 'verified')",
+        )
+        val c = PhoneticSeriesReviewSource(d).candidates().single()
+        assertEquals(ReviewKind.PHONETIC_SERIES to "青", c.kind to c.id)
+        assertEquals(mapOf("members" to "青清", "readings" to "セイ ショウ"), c.fields)
+        assertEquals("derived", c.source)
+        assertTrue("清  セイ  (same)" in c.display, c.display)
+        assertTrue(PhoneticSeriesReviewSource(inMemoryDriver(ExamDatabase.Schema)).candidates().isEmpty(), "older packs: nothing, no error")
+    }
+
+    @Test
     fun grammarJapaneseExplanationsAndExamples() = runTest {
         val all = GrammarReviewSource(grammar).candidates()
         assertEquals(listOf(ReviewKind.GRAMMAR_POINT to "n5-ga", ReviewKind.GRAMMAR_JA to "n5-wa"), all.map { it.kind to it.id })

@@ -53,6 +53,16 @@ class PronunciationService(
         return withContext(Dispatchers.Default) { PronunciationAnalyzer.analyze(targets, heard, pcm16k, segments) }
     }
 
+    /**
+     * Scores a recording against explicit [targets], without the tokenizer: the pitch test's "now say it" link, where
+     * the word and its accent are known exactly (BRIEF_V2 §6.7, D-285).
+     */
+    @Throws(Exception::class)
+    suspend fun analyzeTargets(targets: List<WordTarget>, transcript: String?, pcm16k: FloatArray, segments: List<Pair<LongRange, String>>? = null): PronunciationReport {
+        val heard = transcript?.let { kanaOf(it) }
+        return withContext(Dispatchers.Default) { PronunciationAnalyzer.analyze(targets, heard, pcm16k, segments) }
+    }
+
     /** Shadowing: compare the learner's recording with the model audio (both 16 kHz mono). */
     @Throws(Exception::class)
     suspend fun shadowing(reference: FloatArray, attempt: FloatArray): ShadowingReport =

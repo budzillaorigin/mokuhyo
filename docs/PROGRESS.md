@@ -4,6 +4,65 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 13 (shared + data): pitch test, kanji explorer, sound series, dictionary polish, mini-games, reader grammar (2026-09-18)
+
+BRIEF_V2 §6.7, §6.9, §6.15, §6.16. Decisions D-280…D-289. Shared core, the phonetics builder and the review kind only; the platform screens come next. The translation workbench, thesaurus/collocations/writing studio and poetry/reading circle are a parallel branch.
+
+### Content counts (dictionary pack, main checkout `content/packs`, rebuilt 2026-09-18)
+- **Sound series:** 316 series (声符 families) over 1,305 kanji, all `derived` (0 reviewed yet). Known families come out whole: 青 → 情 請 清 精 静 晴 錆, 方 → 放 防 訪 房 芳 妨 坊 紡 肪, 反 → 阪 販 版 坂 板 飯, 交 → 校 効 較 絞 郊 鮫.
+- **Part roles:** 1,002 phonetic, 6,366 semantic, 5,882 form-only (every kanji with a KanjiVG tree; phonetic only through a series).
+- **KanjiVG component trees:** 33,489 kanji→element rows.
+- **Agreement with KanjiVG's own `kvg:phon` marks** on studied kanji: 744 of 1,183 agree; 593 phonetics KanjiVG doesn't mark.
+- `tools/packs/phonetics/series.json` is the reviewable source (kind `phonetic_series`).
+
+### What was built
+- **§6.7 Pitch-accent perception test** (`app.tsumugi.pitch`, D-284/D-285):
+  - Question types: pattern (平板/頭高/中高/尾高), downstep mora (0…n, options drawn with ↑/↓), and which word of a same-kana group (箸/橋/端).
+  - Five adaptive levels over mora length and question type, moved by a 3-up/1-down staircase. The next session starts where the last one ended. Draws lean towards weak patterns and don't repeat the last 8 items.
+  - Stats per pattern, per mora length, per question type and per confusable pattern pair.
+  - Perception → production: `production(item, pcm, transcript?, referencePcm?)` scores the learner saying the word + が against its known accent (`PronunciationService.analyzeTargets`, new), with a shadowing comparison against the clip when the platform decodes it.
+  - Minimal pairs (practice pack, on FSRS) are the fourth drill type (`PitchDrill.MINIMAL_PAIRS` → `minimalPairDrill()`).
+  - Only the pitch audio pack's items are used; `AppGraph.pitchTest()` is null without the pack (rule 20). Answers go to `pitch_test_result` (union sync).
+- **§6.15 Kanji explorer** (`app.tsumugi.kanji`, D-283): `neighborhood(kanji, maxNodes, coloring)` (parts, sound-series siblings, kanji that use it, words), `wordNeighborhood(entryId)` to re-center on a word, JLPT or frequency color buckets, `hidden` count, and `layout()`: a deterministic force layout in shared (tested for determinism). `KanjiBookmarks.bookmark(info)` adds a kanji to SRS (the path item, or `k:<kanji>`).
+- **§6.15 Functional components and sound series** (D-281/D-282): `tools/packs/build_phonetics.py` derives the three dictionary-pack tables (schema: `kanjiParts.sq`); `KanjiExplorer.components(kanji)` (role, reading, match, series, "derived" flag), `series(phonetic)`, `seriesOf(kanji)`, `allSeries()`. Review kind `phonetic_series` in `review.py` and `PhoneticSeriesReviewSource` in the app.
+- **§6.15 Dictionary polish** (D-288):
+  - `SearchHit.inflection`: "食べさせられなかった = 食べる + causative + passive + negative + past", from the Deinflector's rule chain.
+  - `SearchHit.frequencyRank` and `SearchHit.chips` (common, JLPT, #rank).
+  - `InstantSearch`: debounced (120 ms) as-you-type search with cancellation; only the latest query publishes. The real-pack lookup budget holds (3.2 ms per lookup on the host).
+  - `KanjiExplorer.componentSearch("氵 青")` and `componentQuery(kanji)`: component-combination shortcuts over KanjiVG elements and KRADFILE.
+- **§6.9 Mini-games** (`app.tsumugi.study.games`, D-286/D-287): **Reflex** (timed word ↔ meaning true/false, streak multiplier and speed bonus) and **Atom** (build the reading from mora tiles with look-alike decoys, under time). Both are `Activity` types in the Pomodoro queue (`Activity.Reflex`, `Activity.Atom`) and standalone (`AppGraph.reflex()`, `atom()`). Words come from the learner's started vocabulary, topped up from the frequency list. Rounds go to `game_score` (union sync). The weekly challenge's sixth slot now alternates with "score 1,500 points in Reflex and Atom". **Ulangi is GPL-3.0**: only its license was checked; no code was read (LICENSES.md).
+- **§6.16 Grammar in the reader** (D-289): the analyzer already returned only `grammarPointIds` per sentence. `ReaderGrammar.constructions(sentence)` now adds match spans (F-39 filter), a one-line explanation in the monolingual language when set (with the AI badge flag and "Japanese missing"), the learner's stage, and `practice(pointId)` (add to SRS and return the first exercise, or a fresh exercise).
+- **Schema:** user DB migration **`8.sqm`** (v8 → v9: `pitch_test_result`, `game_score`, both insert-only and union-synced) with the `databases/8.db` snapshot generated first. **Another Phase 13 branch may also add an `8.sqm`; the coordinator renumbers at merge.** Dictionary-pack tables in `kanjiParts.sq`.
+
+### UI hooks for the platform agents (AppGraph)
+- `pitchTest(): PitchTestService?` (null = hide the module) → `drills()`, `start(drill?)` → `PitchTestSession.next()` (play `question.clipKey` with `audio.clip`, show `question.options`), `answer(optionId, responseMs)` → `PitchFeedback` (marks, next level); `stats()`; `production(item, pcm16k, transcript, referencePcm)` for the "now say it" button; `minimalPairDrill()`.
+- `kanjiExplorer(): KanjiExplorer?` → `neighborhood(kanji, maxNodes, GraphColoring)`, `wordNeighborhood(entryId)`, `KanjiNeighborhood.layout()`, `components(kanji)`, `seriesOf(kanji)`, `allSeries()`, `componentSearch(text)`, `componentQuery(kanji)`. Show "derived" on roles and series where `derived` is true.
+- `kanjiBookmarks.bookmark(KanjiInfo)` / `isBookmarked(kanji)`.
+- `instantSearch(onChange)` → `update(text)` per keystroke, `submit(text)`, `close()`; results carry `inflection` and `chips`.
+- `games` (`record(result)`, `best`, `recent`, `weekPoints`), `gameWords`, `reflex()`, `atom()`; Pomodoro activities `Activity.Reflex` / `Activity.Atom` expose `game()`. Android and iOS Pomodoro screens have a placeholder "Next" branch for them until the game screens exist.
+- `readerGrammar.constructions(sentence)` / `practice(pointId)` → `GrammarPracticeResult` (AddedToReviews with the first exercise, Exercise, Unavailable).
+- Content review lists `PHONETIC_SERIES` automatically (both screens iterate `ReviewKind.entries`).
+
+### Tests
+- Shared (`testAndroidHostTest`): `KanjiExplorerTest` (roles and fallbacks, series, capped one-hop graph, colors, component search, deterministic layout, bookmark), `DictionaryPolishTest` (inflection chip, every Deinflector reason labeled, frequency/common chips, instant search debounce and stale-lookup cancellation), `PitchTestTest` (patterns and marks, staircase, level-driven questions, weak-pattern weighting, session storage and stats, pair confusions, production link), `GamesTest` (Reflex scoring/timeouts, Atom assembly, weekly challenge, Pomodoro queue), `ReaderGrammarTest` (spans with the F-39 filter, monolingual one-liners, practice action), `Phase13SyncTest` (union merge of answers and scores), `ContentReviewSourcesTest.derivedSoundSeriesAreListedByPhonetic`, `UserDbMigrationTest` (v8 → v9), `RealPhase13PackTest` (real pack: known families, roles, graph under 100 ms, component search, inflection chip, ranks).
+- Tools: `packs/test_build_phonetics.py` (fold/match, tree parsing, heuristic roles, merge keeps reviews, known families on the real inputs), `items/test_review_kinds.py` (`test_phonetic_series_review`, and the kind sets of Kotlin and Python still match).
+
+### Deferred
+- Platform screens (graph view, pitch test, games, reader grammar panel, dictionary chips) — the hooks above are ready.
+- Reviewing the 316 derived sound series (owner, through the app or `review.py`).
+- Weekly challenge copy for games in other UI languages beyond EN/JA.
+
+### How to run
+```bash
+cd tools
+uv run python packs/build_phonetics.py            # rebuild the three tables into content/packs/dictionary.sqlite
+uv run python packs/test_build_phonetics.py
+uv run python items/test_review_kinds.py
+./gradlew --no-daemon :shared:verifySqlDelightMigration :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
+---
+
 ## Phase 12 (Android UI): readers, tracks, courses, onomatopoeia, drill sets, OPI map, DLPT filters (2026-09-18)
 
 The Android screens for the Phase 12 shared hooks. Decisions D-250…D-259. iOS is being built in parallel by another agent.

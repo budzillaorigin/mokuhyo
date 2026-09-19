@@ -37,6 +37,7 @@ enum class ReviewKind(val code: String, val label: String) {
     DRILL_ITEM("drill_item", "Speaking drill line"),
     READER_PASSAGE("reader_passage", "Graded passage"),
     ONOMATOPOEIA("onomatopoeia", "Onomatopoeia feel"),
+    PHONETIC_SERIES("phonetic_series", "Sound series (derived)"),
     TRACK_WORD("track_word", "Track word"),
     TRACK_KANJI("track_kanji", "Track kanji hint"),
     TRACK_SCENARIO("track_scenario", "Track role-play"),

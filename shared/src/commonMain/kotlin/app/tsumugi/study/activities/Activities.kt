@@ -7,10 +7,14 @@ import app.tsumugi.practice.MinimalPair
 import app.tsumugi.practice.PracticeRepository
 import app.tsumugi.practice.Scenario
 import app.tsumugi.practice.Speaker
+import app.tsumugi.study.games.AtomGame
+import app.tsumugi.study.games.GameWord
+import app.tsumugi.study.games.ReflexGame
 import kotlin.random.Random
 import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Instant
 
 /**
@@ -45,6 +49,28 @@ sealed interface Activity {
     /** Listen to a whole short dialogue, then answer its comprehension questions. */
     data class StoryTime(val dialogue: Dialogue) : Activity {
         override val title get() = "Story time: ${dialogue.title}"
+    }
+
+    /**
+     * A round of Reflex (BRIEF_V2 §6.9): timed word ↔ meaning true/false with streak scoring. The UI runs [game], reports
+     * `complete(null, result.score)` and stores the round with `AppGraph.games.record` (weekly challenge points).
+     */
+    data class Reflex(val words: List<GameWord>, val roundLength: Duration = POMODORO_ROUND) : Activity {
+        override val title get() = "Reflex"
+
+        fun game(random: Random = Random.Default, clock: Clock = Clock.System) = ReflexGame(words, random, clock, roundLength)
+    }
+
+    /** A round of Atom (BRIEF_V2 §6.9): build readings from kana tiles under time. Reported like [Reflex]. */
+    data class Atom(val words: List<GameWord>, val roundLength: Duration = POMODORO_ROUND) : Activity {
+        override val title get() = "Atom"
+
+        fun game(random: Random = Random.Default, clock: Clock = Clock.System) = AtomGame(words, random, clock, roundLength)
+    }
+
+    companion object {
+        /** A game round inside a Pomodoro block is shorter than a standalone one. */
+        val POMODORO_ROUND: Duration = 45.seconds
     }
 }
 
@@ -88,11 +114,23 @@ class PomodoroSession(
     companion object {
         /**
          * Builds a mixed queue at [jlpt] from the practice pack: roughly one role-play, then alternating listening,
-         * repeat and pick-a-word activities with minimal pairs sprinkled in. Returns null without the pack.
+         * repeat and pick-a-word activities with minimal pairs sprinkled in. With [gameWords] (at least
+         * [ReflexGame.MIN_WORDS]), a Reflex round goes in the middle of the queue and an Atom round near the end (§6.9).
+         * Returns null without the pack, unless the game words alone make a (games-only) queue.
          */
         @Throws(Exception::class)
-        suspend fun build(practice: PracticeRepository?, jlpt: Int, random: Random = Random.Default, work: Duration = 25.minutes, clock: Clock = Clock.System): PomodoroSession? {
-            practice ?: return null
+        suspend fun build(
+            practice: PracticeRepository?,
+            jlpt: Int,
+            random: Random = Random.Default,
+            work: Duration = 25.minutes,
+            clock: Clock = Clock.System,
+            gameWords: List<GameWord> = emptyList(),
+        ): PomodoroSession? {
+            val games = gameWords.size >= ReflexGame.MIN_WORDS
+            if (practice == null) {
+                return if (games) PomodoroSession(listOf(Activity.Reflex(gameWords), Activity.Atom(gameWords)), work, clock = clock) else null
+            }
             val scenarios = practice.scenarios(jlpt).ifEmpty { practice.scenarios() }
             val dialogues = practice.dialogues(jlpt).ifEmpty { practice.dialogues() }.shuffled(random).take(4)
                 .mapNotNull { practice.dialogue(it.id) }
@@ -113,6 +151,10 @@ class PomodoroSession(
                 pairs.getOrNull(i * 2)?.let { queue += Activity.WhatDoYouHear(it, random.nextBoolean()) }
                 pairs.getOrNull(i * 2 + 1)?.let { queue += Activity.WhatDoYouHear(it, random.nextBoolean()) }
                 if (dialogue.questions.isNotEmpty() && i % 2 == 1) queue += Activity.StoryTime(dialogue)
+            }
+            if (games) {
+                queue.add(queue.size / 2, Activity.Reflex(gameWords))
+                queue.add((queue.size - 1).coerceAtLeast(0), Activity.Atom(gameWords))
             }
             return PomodoroSession(queue, work, clock = clock)
         }

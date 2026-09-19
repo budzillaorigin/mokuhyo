@@ -227,6 +227,18 @@ class GrammarService(
         return GrammarPointDetail(point, examples(id), srs.stages()[point.itemId], srs.note(point.itemId).myStory)
     }
 
+    /** Points by id, in the order given (unknown ids are skipped). One query, for lists like the reader's grammar panel. */
+    @Throws(Exception::class)
+    suspend fun pointsByIds(ids: List<String>): List<GrammarPoint> = io {
+        if (ids.isEmpty()) return@io emptyList()
+        val byId = q.pointsByIds(ids.distinct()).executeAsList().map { it.toPoint() }.associateBy { it.id }
+        ids.mapNotNull { byId[it] }
+    }
+
+    /** Point ids among [ids] that have at least one example sentence, so an exercise can be built. */
+    @Throws(Exception::class)
+    suspend fun withExamples(ids: Collection<String>): Set<String> = io { ids.filter { q.examplesFor(it).executeAsList().isNotEmpty() }.toSet() }
+
     @Throws(Exception::class)
     suspend fun examples(pointId: String): List<GrammarExample> = io {
         q.examplesFor(pointId).executeAsList().map {

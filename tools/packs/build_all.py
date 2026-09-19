@@ -17,6 +17,7 @@ import build_grammar
 import build_kanji_path
 import build_kanjivg
 import build_onomatopoeia
+import build_phonetics
 import build_practice
 import build_sentences
 import build_tokenizer
@@ -47,6 +48,7 @@ def main() -> None:
     build_sentences.main()
     build_decks.main()
     build_onomatopoeia.main([])  # needs the dictionary and its Tatoeba sentences
+    build_phonetics.main([])  # needs the dictionary's kanji table and KanjiVG
     build_kanji_path.main()
     build_grammar.main()
     build_practice.main()
