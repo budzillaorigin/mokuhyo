@@ -31,6 +31,14 @@ cd ..
 ls -la content/packs                  # *.sqlite + manifest.json
 ```
 
+Then fetch the rendered VOICEVOX audio packs (rendering needs a VOICEVOX engine, so the Mac downloads them instead):
+
+```bash
+cd tools && uv run python packs/audio_release.py fetch && cd ..   # ~75 MB from this repo's audio-packs-* release
+```
+
+Both steps need GitHub access to this private repo: `export GH_TOKEN=…` or `gh auth login`. The pitch and minimal-pairs packs (8.7 MB) are bundled into the app. The other audio sets are installed in the app from Settings → Audio packs (D-096, D-097).
+
 The first run downloads about 100 MB of sources into `tools/.cache`, which is git-ignored. Every source is pinned in `tools/packs/sources.lock` (URL, release tag or commit, sha256) and checked on use, so two builds of the same commit use the same data (F-38). To move to newer upstream data, run `uv run python packs/build_all.py --update-sources` (or name individual sources), review the lock diff and commit it. Tatoeba only publishes its latest weekly export, so a fresh checkout whose cache is empty fails with a hash mismatch once Tatoeba has moved on. The fix is the same deliberate update. Both apps bundle whatever is in `content/packs` at build time. If a pack is missing, the app shows an honest "not installed" state rather than failing.
 
 Size budget: the bundled packs are about 155 MB raw. The App Store compresses the IPA, and the dictionary compresses to about 46 MB with gzip. Check the result against the < 200 MB base target in step 4 below.

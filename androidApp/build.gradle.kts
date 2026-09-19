@@ -108,7 +108,10 @@ abstract class BundlePacks : DefaultTask() {
 }
 
 val bundlePacks = tasks.register<BundlePacks>("bundlePacks") {
-    packs.from(rootProject.fileTree("content/packs") { include("*.sqlite", "manifest.json") })
+    // Audio: only the small pitch and minimal-pairs sets ship inside the APK (D-097); the rest are downloads.
+    packs.from(rootProject.fileTree("content/packs") {
+        include("*.sqlite", "manifest.json", "audio-manifest.json", "audio-pitch.zip", "audio-minimal-pairs.zip")
+    })
     licenses.set(rootProject.layout.projectDirectory.file("docs/LICENSES.md"))
     modelsManifest.set(rootProject.layout.projectDirectory.file("content/models/manifest.json"))
 }
