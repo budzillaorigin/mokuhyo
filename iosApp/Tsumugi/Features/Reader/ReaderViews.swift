@@ -732,15 +732,14 @@ struct ReaderView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(s.text).font(.japanese(size: 17))
                 if !s.grammarPointIds.isEmpty {
-                    Text("Grammar in this sentence").font(.caption.weight(.semibold))
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(s.grammarPointIds.prefix(8), id: \.self) { id in
-                                NavigationLink(id.split(separator: "-").dropFirst().joined(separator: " "), value: Route.grammarPoint(id))
-                                    .buttonStyle(.bordered)
-                            }
+                    // BRIEF_V2 §6.16 (D-304): constructions with explanations and "practice this point".
+                    DisclosureGroup("Grammar in this sentence") {
+                        ScrollView {
+                            ReaderGrammarPanel(sentence: s)
                         }
+                        .frame(maxHeight: 260)
                     }
+                    .font(.caption.weight(.semibold))
                 }
                 translationView(s)
                 HStack {

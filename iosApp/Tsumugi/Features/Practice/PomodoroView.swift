@@ -124,6 +124,12 @@ private struct ActivityView: View {
     @State private var note: String?
     @State private var working = false
     @State private var answers: [Int: Int] = [:]
+    @State private var reflexGame: ReflexGame?
+    @State private var atomGame: AtomGame?
+    @State private var gameMissing = false
+    @State private var gameResult: GameResult?
+    @State private var gameBest = 0
+    @State private var gameSaveError: String?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -186,18 +192,53 @@ private struct ActivityView: View {
                 StoryTimeView(lines: lines, questions: questions, voice: voice) { right in
                     onDone(right, nil)
                 }
-            // Phase 13 mini-games (§6.9): the game screens come with the UI pass; until then the queue can skip them.
-            case .reflex(let a):
-                Text(a.title).font(.headline)
-                Button("Next") { onDone(nil, nil) }.buttonStyle(.borderedProminent)
-            case .atom(let a):
-                Text(a.title).font(.headline)
-                Button("Next") { onDone(nil, nil) }.buttonStyle(.borderedProminent)
+            // Phase 13 mini-games (§6.9, D-303): a short round, stored like a standalone one, then the next activity.
+            case .reflex:
+                gameActivity(reflex: true)
+            case .atom:
+                gameActivity(reflex: false)
             }
         }
         .onDisappear {
             voice.stop()
             if recorder.isRecording { _ = recorder.stop() }
+        }
+    }
+
+    /// Reflex or Atom inside the session: the round, then its result and Next (the score goes to the session).
+    @ViewBuilder
+    private func gameActivity(reflex: Bool) -> some View {
+        if let gameResult {
+            GameResultCard(result: gameResult, best: gameBest, saveError: gameSaveError)
+            Button("Next") { onDone(nil, Int(gameResult.score)) }.buttonStyle(.borderedProminent)
+        } else if reflex, let reflexGame {
+            ReflexPlayView(game: reflexGame) { result in finishGame(result) }
+        } else if !reflex, let atomGame {
+            AtomPlayView(game: atomGame) { result in finishGame(result) }
+        } else if gameMissing {
+            Text("There aren't enough words for this game yet.").font(.subheadline).foregroundStyle(.secondary)
+            Button("Next") { onDone(nil, nil) }.buttonStyle(.borderedProminent)
+        } else {
+            ProgressView()
+                .onAppear {
+                    if reflex {
+                        reflexGame = SwiftSupport.shared.pomodoroReflex(activity: activity)
+                        gameMissing = reflexGame == nil
+                    } else {
+                        atomGame = SwiftSupport.shared.pomodoroAtom(activity: activity)
+                        gameMissing = atomGame == nil
+                    }
+                }
+        }
+    }
+
+    private func finishGame(_ result: GameResult) {
+        let g = graph
+        Task {
+            let saved = await GameRecorder.save(result, graph: g)
+            gameBest = saved.best
+            gameSaveError = saved.error
+            gameResult = result
         }
     }
 

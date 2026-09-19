@@ -53,6 +53,8 @@ private struct KanjiContent: View {
                         }
                     }
                 }
+                // Phase 13 (BRIEF_V2 §6.15, D-301): the graph, functional components, sound family, bookmark to SRS.
+                KanjiExplorerSection(literal: info.literal)
                 if !k.words.isEmpty {
                     SectionHeader("Words")
                     ForEach(k.words, id: \.id) { w in

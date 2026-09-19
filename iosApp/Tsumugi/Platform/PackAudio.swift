@@ -103,11 +103,12 @@ final class PackClipPlayer: ClipPlayer {
 
     /// The clip decoded to 16 kHz mono for the shadowing comparison, else the rendered system voice.
     func referenceSamples(_ sentence: String) async -> [Float]? {
-        if let path = clipPath(sentence), let samples = await Self.decode(path: path) { return samples }
+        if let path = clipPath(sentence), let samples = await Self.decodeClip(path: path) { return samples }
         return await tts.referenceSamples(sentence)
     }
 
-    private static func decode(path: String) async -> [Float]? {
+    /// A pack clip decoded to 16 kHz mono (the pitch test's "say it" comparison uses it too), or nil.
+    static func decodeClip(path: String) async -> [Float]? {
         guard let decoder = try? await PcmDecoder.open(url: URL(fileURLWithPath: path)) else { return nil }
         let end = decoder.durationMs()
         guard end > 0 else { return nil }

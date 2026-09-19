@@ -81,6 +81,8 @@ private struct EntryContent: View {
                 }
                 // Sentences from the learner's own media first, then Tatoeba, then the optional online source (§6.2).
                 EntrySentencesSection(entry: e)
+                // §6.13: thesaurus clusters listing this word, and its collocations (D-306).
+                EntryExpressionsSection(entryId: e.id)
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)

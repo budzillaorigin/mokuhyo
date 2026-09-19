@@ -30,6 +30,8 @@ struct MeView: View {
             ImmersionSummaryCard()
             RoadmapCard()
             ConversationPatternsCard()
+            // BRIEF_V2 §6.12: the translation skill line (D-305).
+            TranslationSkillCard()
             Section {
                 NavigationLink("Leaderboard", value: Route.leaderboard)
                 NavigationLink("Export (CSV, PDF report, backup)", value: Route.export)

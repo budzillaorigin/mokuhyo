@@ -4,6 +4,70 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 13 (iOS UI): pitch test, kanji explorer, dictionary polish, games, reader grammar, translation, thesaurus + writing studio, poetry + reading circle (2026-09-19)
+
+The SwiftUI screens for every Phase 13 shared hook. Decisions D-300…D-309.
+
+**Not compiled.** CI is paused (D-140) and there's no Xcode here. Every new interop spot is listed under "iOS: unverified since CI paused". The new `SwiftSupport`/`SwiftBridges.kt` adapters do compile (`:shared:compileCommonMainKotlinMetadata`).
+
+### What was built (`iosApp/Tsumugi`)
+- **Pitch-accent test** (Practice → Listen, shown only with the pitch audio pack):
+  - Drills: the adaptive mix, pattern, downstep and word pairs, plus minimal pairs, which opens the existing drill.
+  - Each question plays its pack clip and shows ↑↓ marks and feedback.
+  - "Say it" is the perception → production check, with the pronunciation and shadowing panels.
+  - Stats per pattern, mora length and question type, plus the confused pairs. D-300.
+- **Kanji explorer** (Learn, and "Explore graph" on every kanji page):
+  - A `Canvas` graph from the shared layout: tap to re-center with Back, focus mode, JLPT or frequency colouring with a legend, and a node cap of 15–50 with the hidden count.
+  - A detail with component roles, the sound family ("derived" badges), "Find kanji with these parts" and Bookmark to SRS.
+  - Component search and a sound-family list. D-301.
+- **Dictionary polish:**
+  - Instant results through the shared `InstantSearch`.
+  - The inflection chip and the common / JLPT / #rank chips.
+  - Shortcuts: Parts, "Explore X" and "Kanji with the parts of X". D-302.
+- **Mini-games** (Practice → Games):
+  - Reflex and Atom, standalone and in the Pomodoro queue (the placeholders are gone).
+  - Every round is saved. The hub shows best scores, this week's points and recent rounds. D-303.
+- **Reader grammar:** the sentence panel lists constructions with spans, one-line explanations (AI badge) and "Practice this point", which adds the point to reviews and opens an exercise checked by shared. D-304.
+- **Translation workbench** (Learn → Language arts, Practice → Translate):
+  - Passages by genre and direction, and the learner's own text.
+  - Written mode, and sight mode with a timer and the recognizer: English on-device for J→E (D-308).
+  - The labeled AI grade with a diff, or the rubric self-assessment without a model.
+  - History with delete, and the **skill line on Me** (Swift Charts). D-305.
+- **Thesaurus and writing studio:**
+  - Emotion and scene clusters with expressions and Tatoeba examples.
+  - "Expressions" and collocations on dictionary entries.
+  - The studio: synced drafts with autosave, corrections, the register check with rewrites, thesaurus suggestions and readability.
+  - "Write it in the studio" from graded-reader tasks. D-306.
+- **Poetry corner and reading circle:**
+  - Poems by theme with vocabulary, paraphrase, gloss and note (AI badge, never on the poem) and the Aozora source card with the colophon.
+  - The solo reading circle over pack texts or library documents: record each sentence, explain it in English (typed or spoken), per-sentence dictionary and grammar help, and saved sessions. D-307.
+- **Strings and states:**
+  - 387 new `Localizable.xcstrings` keys with Japanese.
+  - Every new async screen has an error + Retry state (F-33) and an honest empty state when its pack is missing.
+
+### Shared additions (adapters only)
+- **`SwiftSupport`:**
+  - Pitch test: `pitchDrillCodes`, `pitchStart`, `pitchModeCode`, `pitchStats`, `pitchProduction`.
+  - Kanji explorer: `explorerGraph`, `kanjiComponentRoles`, `bookmarkKanji`, `isKanjiBookmarked`.
+  - Dictionary: `hitInflection`, `hitChips`.
+  - Games: `pomodoroReflex`/`pomodoroAtom`, the `reflex…`/`atom…` millisecond readers, `atomTap`/`atomUndo`/`atomSkip`, `gameResultCode`, `recordGame`, `gameBest`, `gameRecent`, `gameWeekPoints`.
+  - Reader grammar: `readerConstructions`, `practiceGrammarPoint`, `checkGrammarExercise`, `grammarExerciseKind`.
+  - Translation: `translationGenreCodes`, `translationPassages`, `passageDirectionCode`, `passageRegister`, `importTranslationPassage`, `translationRubric`, `gradeTranslation`, `selfAssessTranslation`, `translationHistory`, `translationSkill`.
+  - Thesaurus: `thesaurusClusters`, `clusterIsEmotion`, `clusterDescription`, `expressionRegister`, `collocationPatternCode`, `clustersForEntry`.
+  - Writing studio: `createStudioDraft`, `updateStudioDraft`, `draftRegisterCode`, `studioCorrections`, `studioRegister`, `studioRewrite`, `studioDraftForReaderTask`, `gradeStudioReaderTask`.
+  - Reading circle: `circleHelp`, `recordingFilePath`.
+- **`SwiftBridges.kt`:** the rows these return (`PitchStatsRows`, `ExplorerGraphRows`, `ConstructionRow`, `GrammarPracticeRow`, `TranslationGradeRow`, `TranslationAttemptRow`, `TranslationSkillRows`, `CorrectionRow`, `RegisterRows`, `RewriteRow`, `CircleHelpRows`, …). No logic moved to Swift.
+
+### Deferred
+- **Dictionary search:** no Retry for a failed lookup. `InstantSearch` has no error channel; opening the pack still has Retry (D-302).
+- **Poems:** the Aozora ruby shows as a list, not as furigana over the poem lines (D-307).
+- **Out of scope:** the shared reading circle (Phase 14). Android parity is another agent's work, and this change doesn't touch `androidApp/`.
+
+### How to check
+On the Mac, build as described in "iOS: unverified since CI paused". Fix any interop names from the Phase 13 list there, then walk through the screens above: Learn → Language arts / Kanji explorer, Practice → Pitch-accent test / Games / Translate, and Me → Translation.
+
+---
+
 ## Phase 13 (shared + data): translation workbench, thesaurus + collocations + writing studio, poetry corner + reading circle (2026-09-19)
 
 BRIEF_V2 §6.12, §6.13, §6.14. Decisions D-270…D-279. This covers the shared core, the content, the builders and the
@@ -912,6 +976,67 @@ The uncertain spots:
 - **`[KotlinInt]` built in Swift** for `submitGradedQuiz(choices:)` (`GradedReaderViews.swift:597`), the `KotlinInt(int:)` pattern that compiled before.
 - **Platform APIs new to the app:** `MPRemoteCommandCenter` targets with a non-isolated handler that hops to the main actor (`DrillPlayer.swift:292`), `MPNowPlayingInfoCenter`, `AVAudioPlayer(data:fileTypeHint:)` with an in-memory WAV (`:250`), Swift Charts (`OpiProbeMapView.swift`, `BasicChartSymbolShape` in a ternary at `:132`, `AxisMarks(values:)` with `value.as(Int.self)`), `Canvas` stroking with `.foreground` shading (`SvgGlyph.swift`), a `@unchecked Sendable` lock-guarded glyph cache, and `nonisolated static func seed()` on a `@MainActor` class (`CourseViews.swift:155`).
 - **Strict concurrency (warnings, not errors, in Swift 5 mode):** Kotlin objects (`ExamService`, `GradedStory`, `DrillSet`) captured in `Task` closures, and the `@MainActor` action closures captured by the remote-command handlers.
+
+**Phase 13 iOS UI (D-300…D-309), not yet compiled. Check these first if the build fails.**
+
+**Files:**
+- New:
+  - `Features/Pitch/PitchTestViews.swift`, `Features/Games/GameViews.swift`
+  - `Features/Kanji/KanjiExplorerViews.swift`, `Features/Reader/ReaderGrammarViews.swift`
+  - `Features/Linguist/TranslationViews.swift`, `ThesaurusViews.swift`, `WritingStudioViews.swift`, `PoetryViews.swift`, `ReadingCircleViews.swift`
+- Changed:
+  - `RootView.swift`, `PracticeHubView.swift`, `MeView.swift`, `PomodoroView.swift`
+  - `DictionarySearchView.swift` (rewritten), `KanjiView.swift`, `EntryView.swift`, `ReaderViews.swift`, `GradedReaderViews.swift`
+  - `Platform/PackAudio.swift`, `Platform/AudioCapture.swift`
+
+The new adapters compile, and their Swift spellings follow from the Kotlin parameter names.
+
+The uncertain spots:
+- **Suspend functions returning primitives, assumed boxed** (`KotlinBoolean` / `KotlinInt`, read with `.boolValue` / `.intValue`):
+  - `available()` on thesaurus, poetry and the workbench (`ThesaurusViews.swift:109`, `PoetryViews.swift:65`, `TranslationViews.swift:124`)
+  - `isKanjiBookmarked` (`KanjiExplorerViews.swift:583`)
+  - `gameBest` / `gameWeekPoints` (`GameViews.swift:88`–`:90`, `:142`)
+- **Suspend `Unit` functions called as `Void`:**
+  - `readingCircle.delete(session:)` (`ReadingCircleViews.swift:148`)
+  - `writingStudio.delete(id:)` (`WritingStudioViews.swift:118`)
+  - `translationWorkbench.delete(id:)` (`TranslationViews.swift:747`, called with `_ =` because its Kotlin return type is inferred from SQLDelight)
+- **SKIE sealed-interface existential as a parameter:** `SwiftSupport.pomodoroReflex(activity:)` / `pomodoroAtom(activity:)` take `any Activity` (`PomodoroView.swift:225`, `:228`). The `case .reflex:` / `.atom:` branches of `onEnum(of:)` no longer bind their value.
+- **Kotlin callback crossing threads:** `graph.instantSearch { [weak self] state in Task { @MainActor … } }` passes a trailing closure for `onChange: ((InstantSearchState) -> Unit)?` (`DictionarySearchView.swift:25`). Expect Sendable warnings only.
+- **Computed getters and mutable `var`s with private setters, read directly:**
+  - Pitch session and question: `PitchTestSession.level/streak/correct/answered` (`PitchTestViews.swift:191`), `PitchQuestion.expected` (`:220`) and `.clipKey`, `PitchFeedback.chosenMarks` (`:254`, `String?`)
+  - Rows: `PitchStatRow.percent` / `PitchPairRow.percent` (`:123`, `:442`)
+  - Games: `ReflexGame.finished/score/streak` and `AtomGame.finished` (`GameViews.swift:288`–`:327`)
+  - Kanji: `SoundSeries.family` (`KanjiExplorerViews.swift:741`)
+  - Grammar exercise: `GrammarExercise.prompt/marked/pointHint`, `GrammarExample.isAiGenerated` (`ReaderGrammarViews.swift:214`, `:243`, `:260`)
+  - Writing studio: `StudioDraft.readerStoryId` (`WritingStudioViews.swift:79`, `:234`)
+  - Reading circle: `CircleSession.finished/doneCount` (`ReadingCircleViews.swift:135`), `CircleEntry.done/explained` (`:296`–`:337`)
+- **Members with plain names that could be renamed:**
+  - `CircleEntry.read` (`ReadingCircleViews.swift:296`)
+  - `session.entry(idx:)` (`:275`, `:400`, `:415`)
+  - `repo.cluster(id:)` (`ThesaurusViews.swift:255`)
+  - `PoemSummary.themes`, `AozoraSource.born/died/colophon/cardUrl` (`PoetryViews.swift`)
+- **Nullable boxed fields:**
+  - `ThesaurusExpression.entryId?.int64Value` (`ThesaurusViews.swift:236`)
+  - `DifficultyScore.knownWordRatio?.doubleValue` (`WritingStudioViews.swift:445`)
+  - `ReaderDocumentSummary.author` (`String?`, `ReadingCircleViews.swift:133`)
+- **`[KotlinInt]` lists from rows:** `ConstructionRow.spanStarts/spanEnds`, applied as UTF-16 offsets through `NSString` (`ReaderGrammarViews.swift:31`).
+- **Kotlin data classes built from Swift for error paths:** `RewriteRow(...)` and `SummaryGradeRow(...)` (`WritingStudioViews.swift:545`, `:560`).
+- **Default arguments passed explicitly:**
+  - `repo.collocations(entryId:limit:)` (`ThesaurusViews.swift:343`)
+  - `componentSearch(input:limit:)` (`KanjiExplorerViews.swift:703`)
+  - `service.recent(limit:)` and `service.item(id:)` (`PitchTestViews.swift:483`–`:485`)
+  - `graph.recordings.startRecording(fileExtension:)`, then `readingCircle.attachReading` / `attachExplanationRecording(session:idx:pending:durationMs:)` (`ReadingCircleViews.swift:466`–`:474`)
+- **Nullable Kotlin arrays:** `pitchProduction(… reference: KotlinFloatArray?)` (`PitchTestViews.swift:371`). The decoder is a `@MainActor` static, `PackClipPlayer.decodeClip(path:)`, called from a main-actor Task (`:367`).
+- **Types read directly from shared:**
+  - Translation: `TranslationCriterion` from `translationRubric()` (`TranslationViews.swift:480`) and `TranslationPassage` members (`title`, `text`, `keyPoints`, `hasReference`, `isAiGenerated` …). Direction and register come only through adapters.
+  - Kanji: `ComponentSearchResult.kanji` as `[KanjiInfo]` (`KanjiExplorerViews.swift:703`).
+- **SwiftUI and platform APIs:**
+  - `Text.foregroundStyle(_:)` chained with `.underline()` / `.strikethrough()` in the diff (iOS 17 `Text` overloads, `TranslationViews.swift:624`–`:640`).
+  - Swift Charts `LineMark`/`PointMark` with a `Date` x-axis (`TranslationViews.swift:796`).
+  - `.navigationDestination(item:)` (`GradedReaderViews.swift:668`).
+  - A nested `NavigationStack` in the circle help sheet (`ReadingCircleViews.swift:205`–`:213`).
+  - `String(localized: "register.literary", defaultValue: "Literary")` (`ThesaurusViews.swift:13`).
+- **Speech:** `SpeechToText.transcribeEnglish` uses `SFSpeechRecognizer(locale: en-US)` with `requiresOnDeviceRecognition` (`AudioCapture.swift`, D-308).
 
 ---
 

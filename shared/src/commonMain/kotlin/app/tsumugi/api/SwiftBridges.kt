@@ -190,3 +190,215 @@ data class OpiProbeRows(
     val domains: List<String>,
     val missingDomains: List<String>,
 )
+
+// --- Phase 13 iOS UI (D-300…D-309): flat rows, so Swift never spells sealed, nested or enum-keyed types, `Pair`s,
+// `IntRange`s, `Duration`s, or members named `register` (a C keyword in the Objective-C header). ---------------------
+
+/** One line of the pitch-test stats: [label] is a pattern (平板 …), a mora count ("3") or a question type code. */
+data class PitchStatRow(val key: String, val label: String, val attempts: Int, val correct: Int) {
+    /** 0…100, or -1 without attempts. */
+    val percent: Int get() = if (attempts == 0) -1 else (correct * 100 + attempts / 2) / attempts
+}
+
+/** A confusable pattern pair: answers expecting one of them, and how often the other one was chosen. */
+data class PitchPairRow(val a: String, val b: String, val attempts: Int, val confusions: Int) {
+    val percent: Int get() = if (attempts == 0) -1 else (confusions * 100 + attempts / 2) / attempts
+}
+
+/** `PitchStats` flattened: total, per pattern, per mora length, per question type, pairs, and the next start level. */
+data class PitchStatsRows(
+    val total: PitchStatRow,
+    val byPattern: List<PitchStatRow>,
+    val byMoraCount: List<PitchStatRow>,
+    val byMode: List<PitchStatRow>,
+    val pairs: List<PitchPairRow>,
+    val level: Int,
+)
+
+/**
+ * A node of the kanji explorer graph with its layout position (0…1 on both axes). [kindCode] KANJI | COMPONENT |
+ * CONTAINER | SERIES | WORD; [roleCode] SEMANTIC | PHONETIC | FORM or ""; [bucket] 0…4, 5 = unknown; [entryId] -1 for
+ * characters.
+ */
+data class ExplorerNodeRow(
+    val id: String,
+    val label: String,
+    val kindCode: String,
+    val isFocus: Boolean,
+    val bucket: Int,
+    val roleCode: String,
+    val reading: String,
+    val gloss: String,
+    val entryId: Long,
+    val x: Double,
+    val y: Double,
+)
+
+/** An edge; [kindCode] PART | USED_IN | SOUND | WORD. */
+data class ExplorerEdgeRow(val from: String, val to: String, val kindCode: String)
+
+/** A laid-out one-hop graph. [hidden] neighbors were left out by the node cap. */
+data class ExplorerGraphRows(val focusId: String, val nodes: List<ExplorerNodeRow>, val edges: List<ExplorerEdgeRow>, val hidden: Int)
+
+/** One direct part of a kanji with its role ([roleCode] SEMANTIC | PHONETIC | FORM, "" = unknown for older packs). */
+data class ComponentRoleRow(
+    val component: String,
+    val roleCode: String,
+    val position: String,
+    val reading: String,
+    val match: String,
+    val seriesId: String,
+    val derived: Boolean,
+)
+
+/** A stored game round. [gameCode] REFLEX | ATOM. */
+data class GameScoreEntryRow(val gameCode: String, val score: Int, val correct: Int, val total: Int, val bestStreak: Int, val day: String)
+
+/** Atom after a tap. [resultCode] PLACED | WRONG | SOLVED | TIMED_OUT. */
+data class AtomTapRow(val resultCode: String, val assembled: List<String>, val points: Int, val mistakes: Int, val score: Int)
+
+/**
+ * A grammar construction in a reader sentence. [spanStarts]/[spanEnds] are offsets in the sentence text (end
+ * exclusive). [stageCode] is the SRS stage name or "" when not in reviews. [practiceCode] ADD_TO_REVIEWS | EXERCISE | NONE.
+ */
+data class ConstructionRow(
+    val pointId: String,
+    val title: String,
+    val structure: String,
+    val jlpt: Int,
+    val explanation: String,
+    val japanese: Boolean,
+    val aiGenerated: Boolean,
+    val japaneseMissing: Boolean,
+    val spanStarts: List<Int>,
+    val spanEnds: List<Int>,
+    val stageCode: String,
+    val practiceCode: String,
+)
+
+/**
+ * "Practice this point" flattened. [outcomeCode] ADDED | EXERCISE | UNAVAILABLE. [exerciseKind] CLOZE | BUILD |
+ * FILL_HINT | MEANING_CHOICE | PRODUCTION, "" without an exercise.
+ */
+data class GrammarPracticeRow(
+    val outcomeCode: String,
+    val exercise: app.tsumugi.grammar.GrammarExercise?,
+    val exerciseKind: String,
+    val reason: String,
+)
+
+/** A checked answer: [accepted] and the expected answer to show. */
+data class ExerciseCheckRow(val accepted: Boolean, val expected: String)
+
+data class TranslationIssueRow(val kind: String, val attemptSpan: String, val referenceSpan: String, val note: String)
+
+/** [kindCode] SAME | MISSING | EXTRA. */
+data class DiffSegmentRow(val kindCode: String, val text: String)
+
+/**
+ * `TranslationGradeResult` flattened. [graded] true: an AI grade (always labeled, never official), saved as
+ * [attemptId]. False: [reason] says why; the learner self-assesses on the rubric. [hasDiff] false when there is no
+ * reference (imported text) or no attempt.
+ */
+data class TranslationGradeRow(
+    val graded: Boolean,
+    val reason: String,
+    val attemptId: String,
+    val accuracy: Int,
+    val completeness: Int,
+    val registerScore: Int,
+    val naturalness: Int,
+    val percent: Int,
+    val feedback: String,
+    val better: String,
+    val issues: List<TranslationIssueRow>,
+    val engine: String,
+    val hasDiff: Boolean,
+    val diff: List<DiffSegmentRow>,
+    /** 0…100 share of the reference the attempt also has (a rough overlap, not a grade). */
+    val overlapPercent: Int,
+)
+
+/** A stored attempt. [directionCode] JE | EJ; [sight] spoken; [aiGraded] shows the badge; [timeLimitMs] -1 = untimed. */
+data class TranslationAttemptRow(
+    val id: String,
+    val passageId: String,
+    val directionCode: String,
+    val genre: String,
+    val level: String,
+    val sight: Boolean,
+    val sourceText: String,
+    val attemptText: String,
+    val durationMs: Long,
+    val timeLimitMs: Long,
+    val overTime: Boolean,
+    val aiGraded: Boolean,
+    val accuracy: Int,
+    val completeness: Int,
+    val registerScore: Int,
+    val naturalness: Int,
+    val score: Int,
+    val feedback: String,
+    val better: String,
+    val engine: String,
+    val createdAt: Long,
+)
+
+data class SkillPointRow(val index: Int, val day: String, val score: Int, val genre: String, val directionCode: String, val aiGraded: Boolean)
+
+data class LabeledScoreRow(val key: String, val score: Int)
+
+/** The translation skill line on Me. [trend] is only meaningful when [hasTrend] (ten attempts or more). */
+data class TranslationSkillRows(
+    val points: List<SkillPointRow>,
+    val daily: List<LabeledScoreRow>,
+    val recentByDirection: List<LabeledScoreRow>,
+    val recentByGenre: List<LabeledScoreRow>,
+    val hasTrend: Boolean,
+    val trend: Int,
+    val attempts: Int,
+)
+
+data class CorrectionEditRow(val original: String, val replacement: String, val reason: String)
+
+/**
+ * One sentence's correction (labeled AI-generated when [engine] is set), or [unavailable] says why there is none.
+ * Offsets are in the draft text.
+ */
+data class CorrectionRow(
+    val start: Int,
+    val end: Int,
+    val sentence: String,
+    val corrected: String,
+    val isCorrect: Boolean,
+    val unsure: Boolean,
+    val explanation: String,
+    val edits: List<CorrectionEditRow>,
+    val engine: String,
+    val unavailable: String,
+)
+
+/** A sentence of the register check. [registerCode] CASUAL | POLITE | FORMAL, or "" for a fragment. */
+data class RegisterSentenceRow(val start: Int, val end: Int, val text: String, val registerCode: String, val markers: List<String>, val outlier: Boolean)
+
+/** `RegisterReport` flattened; codes are "" when nothing was classified. */
+data class RegisterRows(
+    val sentences: List<RegisterSentenceRow>,
+    val dominantCode: String,
+    val expectedCode: String,
+    val casual: Int,
+    val polite: Int,
+    val formal: Int,
+    val mixed: Boolean,
+)
+
+/** A register rewrite (labeled when [engine] is set), or [unavailable]. */
+data class RewriteRow(val sentence: String, val rewrite: String, val notes: String, val engine: String, val unavailable: String)
+
+/** A dictionary word of a circle sentence ([entryId] -1 when none). */
+data class CircleTokenRow(val surface: String, val start: Int, val end: Int, val entryId: Long, val dictionaryForm: String, val reading: String)
+
+data class CircleGrammarRow(val pointId: String, val title: String)
+
+/** Help for one circle sentence; [available] false without the dictionary pack. */
+data class CircleHelpRows(val available: Boolean, val tokens: List<CircleTokenRow>, val grammar: List<CircleGrammarRow>)

@@ -191,20 +191,38 @@ enum SpeechToText {
         if let outcome = try? await SwiftSupport.shared.transcribe(ai: graph.ai, samples: kotlinFloats(samples)) {
             return Output(text: outcome.text, engine: outcome.engine, error: outcome.error)
         }
-        return await system(samples)
+        return await system(samples, english: false)
     }
 
-    private static func system(_ samples: [Float]) async -> Output {
+    /// English speech (sight translation J→E, D-308): Apple's recognizer with en-US, strictly on-device. The Whisper
+    /// engine in Settings → AI is set up for Japanese, so it isn't used here; audio never leaves the device.
+    static func transcribeEnglish(_ samples: [Float]) async -> Output {
+        guard samples.count > Int(AudioCapture.sampleRate * 0.2) else {
+            return Output(text: "", engine: "", error: "That recording was too short. Hold the button while you speak.")
+        }
+        return await system(samples, english: true)
+    }
+
+    private static func system(_ samples: [Float], english: Bool) async -> Output {
         let status = await withCheckedContinuation { (c: CheckedContinuation<SFSpeechRecognizerAuthorizationStatus, Never>) in
             SFSpeechRecognizer.requestAuthorization { c.resume(returning: $0) }
         }
         guard status == .authorized else {
+            if english {
+                return Output(text: "", engine: "", error: "Speech recognition is off for Tsumugi. Allow it in the Settings app, or type your translation instead.")
+            }
             return Output(text: "", engine: "", error: "Speech recognition is off for Tsumugi. Allow it in the Settings app, pick Whisper in Settings → AI, or type your answer.")
         }
-        guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP")), recognizer.isAvailable else {
+        guard let recognizer = SFSpeechRecognizer(locale: Locale(identifier: english ? "en-US" : "ja-JP")), recognizer.isAvailable else {
+            if english {
+                return Output(text: "", engine: "", error: "English speech recognition isn't available on this device. Type your translation instead.")
+            }
             return Output(text: "", engine: "", error: "Japanese speech recognition isn't available on this device. Download a Whisper model in Settings → AI, or type your answer.")
         }
         guard recognizer.supportsOnDeviceRecognition else {
+            if english {
+                return Output(text: "", engine: "", error: "This device can't recognize English offline. Type your translation instead.")
+            }
             return Output(text: "", engine: "", error: "This device can't recognize Japanese offline. Download a Whisper model in Settings → AI, or type your answer.")
         }
         guard let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: AudioCapture.sampleRate, channels: 1, interleaved: false),

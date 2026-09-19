@@ -625,6 +625,9 @@ private struct StoryTasksPanel: View {
     @State private var grading = false
     @State private var grade: SummaryGradeRow?
     @State private var gradeError: String?
+    @State private var studioDraftId: String?
+    @State private var openingStudio = false
+    @State private var studioError: String?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -654,8 +657,35 @@ private struct StoryTasksPanel: View {
                 }
             }
             if let t = data.output { outputBlock(t) }
+            // §6.4 output task in the writing studio (D-306): one synced draft per story, carrying the task.
+            VStack(alignment: .leading, spacing: 4) {
+                Button(openingStudio ? "Opening…" : "Write it in the studio") { openStudio() }
+                    .buttonStyle(.bordered)
+                    .disabled(openingStudio)
+                if let studioError { ErrorRetryView(message: studioError) { openStudio() } }
+            }
         }
+        .navigationDestination(item: $studioDraftId) { id in WritingDraftView(draftId: id) }
         .onDisappear { skimTask?.cancel() }
+    }
+
+    private func openStudio() {
+        openingStudio = true
+        studioError = nil
+        let graph = app.graph
+        let id = story.id
+        Task {
+            defer { openingStudio = false }
+            do {
+                if let d = try await SwiftSupport.shared.studioDraftForReaderTask(graph: graph, storyId: id) {
+                    studioDraftId = d.id
+                } else {
+                    studioError = String(localized: "This story isn't in the installed pack.")
+                }
+            } catch {
+                studioError = String(localized: "Couldn't open the draft: \(error.localizedDescription)")
+            }
+        }
     }
 
     private func prompt(_ t: StoryData.TaskPrompt) -> some View {

@@ -78,6 +78,34 @@ enum Route: Hashable {
     case onomatopoeiaQuiz(String)
     case drillSets
     case drillSet(String)
+    // Phase 13 (BRIEF_V2 §6.7, §6.9, §6.12–§6.16)
+    case pitchTest
+    /// A `PitchDrill` code, or "" for the adaptive mix.
+    case pitchSession(String)
+    case pitchStats
+    /// `k:<kanji>`, `w:<entry id>`, or "" to pick a kanji first.
+    case kanjiExplorer(String)
+    /// Typed components ("氵 青"), or "".
+    case componentSearch(String)
+    case soundSeries
+    case games
+    case reflex
+    case atom
+    case translation
+    case translationPassage(String)
+    case translationImported(text: String, title: String)
+    case translationHistory
+    case thesaurus
+    case thesaurusCluster(String)
+    case writingStudio
+    case writingDraft(String)
+    case poetry
+    /// A theme id, or "" for every poem.
+    case poemTheme(String)
+    case poem(String)
+    case readingCircle
+    /// A circle text id (`doc:<id>` for a library document); starts or resumes its session.
+    case circleSession(String)
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -228,6 +256,28 @@ struct TabStack<Root: View>: View {
                     case .onomatopoeiaQuiz(let theme): OnomatopoeiaQuizView(themeId: theme)
                     case .drillSets: DrillSetsView()
                     case .drillSet(let id): DrillSetPlayerView(setId: id)
+                    case .pitchTest: PitchTestHomeView()
+                    case .pitchSession(let drill): PitchSessionView(drillCode: drill)
+                    case .pitchStats: PitchStatsView()
+                    case .kanjiExplorer(let focus): KanjiExplorerView(focusId: focus)
+                    case .componentSearch(let query): ComponentSearchView(initialQuery: query)
+                    case .soundSeries: SoundSeriesListView()
+                    case .games: GamesHomeView()
+                    case .reflex: ReflexGameView()
+                    case .atom: AtomGameView()
+                    case .translation: TranslationHomeView()
+                    case .translationPassage(let id): TranslationPassageView(passageId: id)
+                    case .translationImported(let text, let title): TranslationPassageView(importedText: text, title: title)
+                    case .translationHistory: TranslationHistoryView()
+                    case .thesaurus: ThesaurusHomeView()
+                    case .thesaurusCluster(let id): ThesaurusClusterView(clusterId: id)
+                    case .writingStudio: WritingStudioView()
+                    case .writingDraft(let id): WritingDraftView(draftId: id)
+                    case .poetry: PoetryHomeView()
+                    case .poemTheme(let theme): PoemListView(themeId: theme)
+                    case .poem(let id): PoemView(poemId: id)
+                    case .readingCircle: ReadingCircleHomeView()
+                    case .circleSession(let textId): CircleSessionView(textId: textId)
                     }
                 }
         }
@@ -267,8 +317,31 @@ struct LearnHomeView: View {
             NavigationLink(value: Route.dictionary) {
                 LabeledContent("Dictionary", value: "JMdict · kanji · examples")
             }
+            NavigationLink(value: Route.kanjiExplorer("")) {
+                LabeledContent("Kanji explorer", value: "Parts, sound families, words")
+            }
             NavigationLink(value: Route.radicals) {
                 LabeledContent("Radical search", value: "Find a kanji by its parts")
+            }
+            NavigationLink(value: Route.componentSearch("")) {
+                LabeledContent("Search by components", value: "氵 + 青 → 清")
+            }
+            Section("Language arts") {
+                NavigationLink(value: Route.thesaurus) {
+                    LabeledContent("Expression thesaurus", value: "Feelings, scenes, collocations")
+                }
+                NavigationLink(value: Route.writingStudio) {
+                    LabeledContent("Writing studio", value: "Drafts, corrections, register")
+                }
+                NavigationLink(value: Route.translation) {
+                    LabeledContent("Translation workbench", value: "J→E and E→J passages")
+                }
+                NavigationLink(value: Route.poetry) {
+                    LabeledContent("Poetry corner", value: "Modern poems, public domain")
+                }
+                NavigationLink(value: Route.readingCircle) {
+                    LabeledContent("Reading circle", value: "Read aloud, explain in English")
+                }
             }
             NavigationLink(value: Route.handwriting) {
                 LabeledContent("Draw to search", value: "Handwrite a kanji")

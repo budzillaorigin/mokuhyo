@@ -6,6 +6,8 @@ struct PracticeHubView: View {
     @Environment(AppModel.self) private var app
     @State private var levelKanji: [String] = []
     @State private var pathLevel: Int?
+    /// The pitch-accent test shows only with the pitch audio pack (rule 20, D-284).
+    @State private var pitchAvailable = false
 
     var body: some View {
         List {
@@ -37,6 +39,11 @@ struct PracticeHubView: View {
                 NavigationLink(value: Route.dialogues) {
                     LabeledContent("Dialogues", value: "Listen, fill gaps, order")
                 }
+                if pitchAvailable {
+                    NavigationLink(value: Route.pitchTest) {
+                        LabeledContent("Pitch-accent test", value: "Hear it, name the pattern")
+                    }
+                }
                 NavigationLink(value: Route.minimalPairs) {
                     LabeledContent("Minimal pairs", value: "Train your ear")
                 }
@@ -63,6 +70,16 @@ struct PracticeHubView: View {
                     LabeledContent("Draw to search", value: "Handwrite a kanji")
                 }
             }
+            Section("Games") {
+                NavigationLink(value: Route.games) {
+                    LabeledContent("Reflex and Atom", value: "Quick word games")
+                }
+            }
+            Section("Translate") {
+                NavigationLink(value: Route.translation) {
+                    LabeledContent("Translation workbench", value: "Written and sight translation")
+                }
+            }
             Section("Exams") {
                 NavigationLink(value: Route.exams) {
                     LabeledContent("Exam simulators", value: "JLPT · DLPT · OPI")
@@ -73,7 +90,10 @@ struct PracticeHubView: View {
             }
         }
         .navigationTitle("Practice")
-        .task { await loadWriting() }
+        .task {
+            await loadWriting()
+            pitchAvailable = (try? await app.graph.pitchTest()) != nil
+        }
     }
 
     private func loadWriting() async {

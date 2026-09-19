@@ -1635,6 +1635,116 @@ Nothing here can be compiled until the owner builds on a Mac (D-140), so the Pha
 - **Added:** `ReaderGrammar.constructions(sentence)` returns each point with its match spans (the F-39 rule applied again on the sentence's tokens: a match may not cut into a word; an inflected word protects only its stem), a one-line explanation (the first sentence of the meaning, at most 90 characters) in the language monolingual mode asks for, from our own Japanese text when set (D-232/D-233), with the AI badge flag and "Japanese missing" when the pack has none, the learner's stage, and whether an exercise can be built.
 - **Practice this point:** a point not in reviews is added (one cloze card, introduced now) and its first exercise returned; a point already in reviews gets a fresh exercise; with no example sentence the result says so. `GrammarService` gains `pointsByIds` and `withExamples` for this.
 
+### D-300: Pitch-accent test on iOS: shown only with the pitch pack; minimal pairs open the existing drill (§6.7, iOS, 2026-09-19)
+- Practice → Listen lists "Pitch-accent test" only when `pitchTest()` isn't nil. The home and stats screens still show an honest "pitch audio pack needed" state, with a link to Audio packs (rule 20).
+- The drill list is the adaptive mix plus `pitchDrillCodes`. MINIMAL_PAIRS opens the existing Minimal pairs screen instead of a new session.
+- Each question plays its pack clip on arrival, can be replayed, and times the response from when it appears.
+  - Pattern options show 平板… with an English name. Downstep options draw the ↑↓ marks. Word-pair options show the word and its gloss.
+  - After an answer, the screen shows the word, reading and gloss, the marks of what was played and of what was chosen, and any level change.
+- "Say it" (perception → production) records the learner and transcribes the take. It decodes the pack clip (`PackClipPlayer.decodeClip`) as the shadowing reference and calls `pitchProduction`. The result shows expected vs heard marks with the existing pronunciation and shadowing panels.
+- Stats list the total, then per pattern, per mora length and per question type, then the confused pairs and the last 20 answers.
+
+### D-301: Kanji explorer on iOS: the shared layout on a Canvas, tap to re-center, a node cap (§6.15, iOS, 2026-09-19)
+- **The graph:** `explorerGraph` returns the capped one-hop graph with the shared deterministic layout (D-283), scaled to a 360 pt panel. A `Canvas` draws the edges by kind: parts solid, used-in dashed, sound series thick orange, words thin grey.
+  - Characters are circles and words are rounded rects. The focus is larger, and a coloured dot marks a component's role.
+  - Labels are buttons at the same positions. A tap re-centers the graph (`k:` / `w:` ids) and pushes the node onto a Back stack.
+- **Controls:**
+  - Colour by JLPT or frequency, with a legend.
+  - A node cap from 15 to 50, persisted per device, and a "+N more not shown" count.
+  - Focus mode is display-only: it keeps the edges touching the centre and hides words around a kanji.
+- **The detail** (also on every kanji page, under "Explore graph"):
+  - roles as 意符 / 音符 / 形 with the reading and match, badged "derived" until reviewed;
+  - the sound family with members and on'yomi, badged "derived" too;
+  - "Find kanji with these parts" (`componentQuery`), Bookmark to SRS (`bookmarkKanji`), and Details.
+- **Other screens:** Learn → Search by components is debounced and lists the parts no kanji uses. The sound-family list opens each family in the explorer.
+
+### D-302: Dictionary polish on iOS: the shared instant search, chips, component shortcuts (§6.15, iOS, 2026-09-19)
+- The search field feeds `InstantSearch` on every keystroke (`update`), and the search key calls `submit`. The view closes it on disappear. Debounce, cancellation and "only the latest query publishes" stay in shared. The callback hops to the main actor.
+- The old list stays visible while a lookup runs, with a "Searching…" row.
+- **Rows** show the inflection chip (`hitInflection`, e.g. 食べさせられなかった = 食べる + causative + passive + negative + past) and the common / JLPT / #rank chips (`hitChips`). The old ← deinflection line appears only when there is no chip.
+- **Component shortcuts:** a toolbar "Parts" link to the component search. For a single-kanji query there are also "Explore X" and "Kanji with the parts of X" rows.
+- **No search Retry:** `InstantSearch` has no error channel, so a lookup that throws shows no results. `DictionaryGate` still offers Retry when the pack fails to open.
+
+### D-303: Reflex and Atom on iOS: a UI timer over shared times; every round saved (§6.9, iOS, 2026-09-19)
+- **Timing:** a 0.1 s timer reads the shared remaining times (`reflexCardRemainingMs`, `atomPuzzleRemainingMs`, the round's remaining time).
+  - At 0, a Reflex card calls `timeout()` and an Atom puzzle calls `atomSkip`. The round ends when `finished` is true.
+  - No timing or scoring rule lives in Swift.
+- **Atom:** placed tiles grey out and a wrong tap turns the tile red. Undo and Skip are available.
+- **Where they run:** Practice → Games → Reflex / Atom stand alone. When there aren't enough words, an honest state says to learn some words or install the dictionary.
+- **Pomodoro:** the Pomodoro's `Activity.Reflex` / `Activity.Atom` run the same play views (`pomodoroReflex` / `pomodoroAtom`), which replaced the placeholders. They report the score to the session.
+- **Scores:** every finished round is stored with `recordGame` (weekly challenge points). The Games hub shows each game's best score, this week's points and the last five rounds.
+
+### D-304: Grammar in the reader on iOS: constructions in the sentence panel, practice in a sheet (§6.16, iOS, 2026-09-19)
+- The sentence panel's "Grammar in this sentence" is now a DisclosureGroup around `ReaderGrammarPanel`. It is height-capped so the reader stays visible.
+- Each construction shows:
+  - its title, structure, JLPT and stage tags;
+  - the sentence with the matched spans underlined;
+  - the one-line explanation in Japanese or English;
+  - the AI badge when the text is unreviewed, and a note when Japanese was wanted but is missing.
+- "Practice this point" (the label reads "Add and practice" when the point isn't in reviews yet) calls `practiceGrammarPoint`. It then opens an exercise sheet:
+  - typed cloze, fill-with-hint or production;
+  - sentence building with the existing `BuildAnswer`;
+  - meaning choice, where the index is the answer.
+- Answers are checked by the shared checker (`checkGrammarExercise`). The unavailable reason shows when no exercise can be built.
+
+### D-305: Translation workbench on iOS, and the skill line on Me (§6.12, iOS, 2026-09-19)
+- **Entry points:** Learn → Language arts and Practice → Translate.
+  - A direction picker (All / J→E / E→J) and genre chips. Pack passages carry the AI badge until reviewed.
+  - Without the linguist pack there's an honest empty state. "Translate your own text" (graded against the source) still works.
+- **Written and sight modes:**
+  - Written mode times the attempt from the first keystroke.
+  - In sight mode the passage stays hidden until Start, then a countdown runs from `timeLimitMs`. Going over time is shown, never blocked (D-271). The transcript is editable before grading.
+- **The AI grade** shows the engine badge and "Practice feedback, not an official score." It adds the four rubric scores with each level's description, the score out of 100, the feedback, the issues and a better version.
+- **Without a model** the screen shows the reason, the reference, the diff and four 0–4 pickers from `TranslationRubric`. Nothing is saved until "Save my scores".
+- **The diff:** missing words green and underlined, extra words red and struck through, with a legend and an overlap figure labeled "a rough word match, not a grade".
+- **History:** newest first. Swipe-to-delete tombstones on every device after a confirmation.
+- **On Me:** `TranslationSkillCard` draws a Swift Charts line of daily averages (0–100). It adds recent averages per direction and genre, the trend (from ten attempts on) and the count.
+
+### D-306: Thesaurus, collocations and the writing studio on iOS (§6.13, iOS, 2026-09-19)
+- **The thesaurus** (Learn → Expression thesaurus) has an Emotion/Scene picker and debounced search. An honest empty state shows when the dictionary pack lacks the tables.
+  - Cluster pages list expressions with reading, JMdict gloss, nuance, register and ●○○ strength.
+  - Drafted examples and clusters carry the AI badge; Tatoeba examples don't. A linked expression opens its entry.
+- **On the dictionary entry,** `EntryExpressionsSection` shows the clusters listing the word and up to 30 collocations grouped NV / AN / AV, each with its count and an example, linking to the other word. The section hides when both are empty.
+- **Drafts:** a list of synced drafts (new, swipe delete with confirmation, reader-task drafts tagged). The editor autosaves 0.8 s after the last change and on leaving, with a target-register picker.
+- **On-demand tools**, each with loading and error+retry:
+  - corrections at a chosen JLPT level (AI badge per sentence, or the reason);
+  - the rule-based register check, where outliers get "Rewrite as <target>" (AI);
+  - thesaurus suggestions, linking to clusters;
+  - readability.
+- **Graded readers:** the Tasks tab's "Write it in the studio" opens the story's single draft with the task. "Grade with the story's rubric" saves the draft, then grades it (labeled AI).
+
+### D-307: Poetry corner and solo reading circle on iOS (§6.14, iOS, 2026-09-19)
+- **Poetry:**
+  - Themes with counts, plus "All poems".
+  - A poem shows its Aozora text untouched (stanza breaks kept, no badge).
+  - Vocabulary, paraphrase, English gloss and note each carry the AI badge until reviewed. Vocabulary opens a dictionary lookup.
+  - The Aozora ruby is a folded "Readings in the text" list, not furigana over wrapped poem lines, so a reading is never misplaced.
+- **Source card:** every poem and circle text shows author and dates, work, orthography, "Public domain (Aozora Bunko)", the colophon and the card link (D-276).
+- **Reading circle home:** saved sessions (progress, finished mark, delete with confirmation), the pack texts, and the learner's library documents (`doc:<id>`). Without the linguist pack it says so and still offers library documents.
+- **A session:**
+  - It starts or resumes with `start` and goes one sentence at a time from `position`.
+  - Read aloud: recorded as a WAV in the recording store and playable back.
+  - Explain in English: typed and/or spoken.
+  - "Done with this sentence" unlocks only with a reading and an explanation.
+  - Per-sentence help (dictionary words, grammar points) is a sheet, with an honest message without the dictionary pack.
+
+### D-308: Sight translation J→E uses Apple's on-device English recognizer (§6.12, iOS, 2026-09-19)
+- **The problem:** in J→E sight translation the learner speaks English, but the configured Whisper engine is set up for Japanese.
+- **The fix:** J→E uses `SpeechToText.transcribeEnglish`: Apple's recognizer with `en-US` and `requiresOnDeviceRecognition = true`. E→J keeps `SpeechToText.transcribe`. The Japanese path is unchanged apart from taking the locale as a parameter.
+- **Offline:** audio never leaves the device (rule 1). Without on-device English, or with speech permission off, the screen says so and asks the learner to type the translation.
+
+### D-309: Phase 13 iOS: adapters, navigation and strings (iOS, 2026-09-19)
+- **Adapters:** every Phase 13 call Swift makes that needs one goes through `SwiftSupport` adapters and flat rows in `SwiftBridges.kt`.
+  - Enums in and out are code strings. `Duration`s become milliseconds, and `Pair`s / `IntRange`s become lists.
+  - Sealed results (`TranslationGradeResult`, `GrammarPracticeResult`, `SummaryGradeResult`) and the nested prompt outputs (`GradeTranslation.Output`, `CorrectSentence.Output`) are flattened.
+  - Members named `register` (a C keyword) or `description` are read through adapters.
+  - No logic moved: checking, scoring, timing, layout and the register rules stay in shared.
+- **Navigation:**
+  - Learn gets Kanji explorer, Search by components and a "Language arts" section: thesaurus, writing studio, translation, poetry, reading circle.
+  - Practice gets the pitch test (only with its pack), Games and Translate.
+  - Me gets the translation skill card.
+- **Strings:** 387 new `Localizable.xcstrings` keys with Japanese. The register label "Literary" has its own key (`register.literary`) so it doesn't share the genre's translation.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

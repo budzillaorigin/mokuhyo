@@ -801,4 +801,398 @@ object SwiftSupport {
             missingDomains = map.missingDliDomains.map { it.title },
         )
     }
+
+    // --- Phase 13 iOS UI (D-300…D-309) --------------------------------------------------------------------------
+    // Adapters only, as in Phase 12: every parameter explicit, enums in and out as code strings, sealed and nested
+    // results flattened into the rows in SwiftBridges.kt. No checking, scoring, timing or layout logic lives here.
+
+    // Pitch-accent perception test (§6.7)
+
+    /** Drill types that can run now: PATTERN_TEST | DOWNSTEP_TEST | WORD_PAIRS | MINIMAL_PAIRS. */
+    @Throws(Exception::class)
+    suspend fun pitchDrillCodes(service: app.tsumugi.pitch.PitchTestService): List<String> = service.drills().map { it.name }
+
+    /** A test session; [drillCode] "" = the adaptive mix, else a `PitchDrill` name (not MINIMAL_PAIRS). */
+    @Throws(Exception::class)
+    suspend fun pitchStart(service: app.tsumugi.pitch.PitchTestService, drillCode: String): app.tsumugi.pitch.PitchTestSession =
+        service.start(app.tsumugi.pitch.PitchDrill.entries.firstOrNull { it.name == drillCode && it != app.tsumugi.pitch.PitchDrill.MINIMAL_PAIRS }, kotlin.random.Random.Default)
+
+    /** PATTERN | DOWNSTEP | WORD_PAIR. */
+    fun pitchModeCode(question: app.tsumugi.pitch.PitchQuestion): String = question.mode.name
+
+    /** Every stored answer, flattened for the stats screen. */
+    @Throws(Exception::class)
+    suspend fun pitchStats(service: app.tsumugi.pitch.PitchTestService): PitchStatsRows {
+        val s = service.stats(0L)
+        fun row(key: String, label: String, t: app.tsumugi.pitch.PitchTally) = PitchStatRow(key, label, t.attempts, t.correct)
+        return PitchStatsRows(
+            total = row("total", "", s.total),
+            byPattern = app.tsumugi.pitch.AccentPattern.entries.mapNotNull { p -> s.byPattern[p]?.let { row(p.name, "${p.ja} · ${p.en}", it) } },
+            byMoraCount = s.byMoraCount.map { (n, t) -> row(n.toString(), n.toString(), t) },
+            byMode = app.tsumugi.pitch.PitchQuestionMode.entries.mapNotNull { m -> s.byMode[m]?.let { row(m.name, m.name, it) } },
+            pairs = s.pairs.map { PitchPairRow(it.a.ja, it.b.ja, it.attempts, it.confusions) },
+            level = s.level,
+        )
+    }
+
+    /**
+     * "Now say it": scores the learner's take of [item] against its known accent. [transcript] "" = none;
+     * [reference] the decoded pack clip for the shadowing comparison, or null.
+     */
+    @Throws(Exception::class)
+    suspend fun pitchProduction(
+        service: app.tsumugi.pitch.PitchTestService,
+        item: app.tsumugi.audio.PitchTestItem,
+        samples: FloatArray,
+        transcript: String,
+        reference: FloatArray?,
+    ): app.tsumugi.pitch.PitchProductionResult? = service.production(item, samples, transcript.ifBlank { null }, reference)
+
+    // Kanji explorer (§6.15)
+
+    /**
+     * The laid-out one-hop graph around [focusId] (`k:<kanji>` or `w:<entry id>`; a bare kanji works too), capped at
+     * [maxNodes], colored by frequency when [byFrequency], else by JLPT. The layout runs off the main thread.
+     */
+    @Throws(Exception::class)
+    suspend fun explorerGraph(explorer: app.tsumugi.kanji.KanjiExplorer, focusId: String, maxNodes: Int, byFrequency: Boolean): ExplorerGraphRows? {
+        val coloring = if (byFrequency) app.tsumugi.kanji.GraphColoring.FREQUENCY else app.tsumugi.kanji.GraphColoring.JLPT
+        val hood = if (focusId.startsWith("w:")) {
+            focusId.removePrefix("w:").toLongOrNull()?.let { explorer.wordNeighborhood(it, maxNodes, coloring) }
+        } else {
+            explorer.neighborhood(focusId.removePrefix("k:"), maxNodes, coloring)
+        } ?: return null
+        val positions = withContext(Dispatchers.Default) { hood.layout(app.tsumugi.kanji.ForceLayout.DEFAULT_ITERATIONS) }.associateBy { it.id }
+        return ExplorerGraphRows(
+            hood.focusId,
+            hood.nodes.map { n ->
+                val p = positions[n.id]
+                ExplorerNodeRow(
+                    n.id, n.label, n.kind.name, n.isFocus, n.colorBucket, n.role?.name.orEmpty(), n.reading, n.gloss, n.entryId ?: -1L,
+                    p?.x ?: 0.5, p?.y ?: 0.5,
+                )
+            },
+            hood.edges.map { ExplorerEdgeRow(it.from, it.to, it.kind.name) },
+            hood.hidden,
+        )
+    }
+
+    /** A kanji's direct parts with their roles (the "derived" flag set until reviewed). */
+    @Throws(Exception::class)
+    suspend fun kanjiComponentRoles(explorer: app.tsumugi.kanji.KanjiExplorer, literal: String): List<ComponentRoleRow> =
+        explorer.components(literal).filter { it.component != literal }.map {
+            ComponentRoleRow(it.component, it.role?.name.orEmpty(), it.position, it.reading.orEmpty(), it.match.orEmpty(), it.seriesId.orEmpty(), it.derived)
+        }
+
+    /** Bookmarks [literal] to SRS ("Bookmark to SRS"); the item id, or null when the kanji isn't in the dictionary. */
+    @Throws(Exception::class)
+    suspend fun bookmarkKanji(graph: AppGraph, literal: String): String? {
+        val info = graph.dictionary()?.kanji(literal)?.info ?: return null
+        return graph.kanjiBookmarks.bookmark(info)
+    }
+
+    @Throws(Exception::class)
+    suspend fun isKanjiBookmarked(graph: AppGraph, literal: String): Boolean = graph.kanjiBookmarks.isBookmarked(literal)
+
+    // Dictionary polish (§6.15)
+
+    /** "食べさせられなかった = 食べる + causative + passive + negative + past", or "" for an unconjugated hit. */
+    fun hitInflection(hit: app.tsumugi.dictionary.SearchHit): String = hit.inflection?.text.orEmpty()
+
+    /** "common", "N5", "#123" in display order. */
+    fun hitChips(hit: app.tsumugi.dictionary.SearchHit): List<String> = hit.chips.labels
+
+    // Mini-games (§6.9)
+
+    /** The Reflex round of a Pomodoro activity, or null when [activity] isn't one. */
+    fun pomodoroReflex(activity: app.tsumugi.study.activities.Activity): app.tsumugi.study.games.ReflexGame? =
+        (activity as? app.tsumugi.study.activities.Activity.Reflex)?.game(kotlin.random.Random.Default, Clock.System)
+
+    /** The Atom round of a Pomodoro activity, or null when [activity] isn't one. */
+    fun pomodoroAtom(activity: app.tsumugi.study.activities.Activity): app.tsumugi.study.games.AtomGame? =
+        (activity as? app.tsumugi.study.activities.Activity.Atom)?.game(kotlin.random.Random.Default, Clock.System)
+
+    fun reflexRemainingMs(game: app.tsumugi.study.games.ReflexGame): Long = game.remaining.inWholeMilliseconds
+
+    fun reflexRoundMs(game: app.tsumugi.study.games.ReflexGame): Long = game.roundLength.inWholeMilliseconds
+
+    /** Time left on the current card (0 without one). */
+    fun reflexCardRemainingMs(game: app.tsumugi.study.games.ReflexGame): Long =
+        game.current?.let { (it.deadline - Clock.System.now()).inWholeMilliseconds.coerceAtLeast(0) } ?: 0L
+
+    fun reflexCardLimitMs(card: app.tsumugi.study.games.ReflexCard): Long = card.timeLimit.inWholeMilliseconds
+
+    fun atomRemainingMs(game: app.tsumugi.study.games.AtomGame): Long = game.remaining.inWholeMilliseconds
+
+    fun atomRoundMs(game: app.tsumugi.study.games.AtomGame): Long = game.roundLength.inWholeMilliseconds
+
+    /** Time left on the current puzzle (0 without one). */
+    fun atomPuzzleRemainingMs(game: app.tsumugi.study.games.AtomGame): Long =
+        game.current?.let { (it.deadline - Clock.System.now()).inWholeMilliseconds.coerceAtLeast(0) } ?: 0L
+
+    fun atomPuzzleLimitMs(puzzle: app.tsumugi.study.games.AtomPuzzle): Long = puzzle.timeLimit.inWholeMilliseconds
+
+    fun atomTap(game: app.tsumugi.study.games.AtomGame, tileId: Int): AtomTapRow? = game.tap(tileId)?.let(::atomRow)
+
+    fun atomUndo(game: app.tsumugi.study.games.AtomGame): AtomTapRow? = game.undo()?.let(::atomRow)
+
+    /** The puzzle's time ran out, or the learner skipped it: no points. */
+    fun atomSkip(game: app.tsumugi.study.games.AtomGame): AtomTapRow? = game.giveUp(app.tsumugi.study.games.AtomTapResult.TIMED_OUT)?.let(::atomRow)
+
+    private fun atomRow(s: app.tsumugi.study.games.AtomState) = AtomTapRow(s.result.name, s.assembled, s.points, s.mistakes, s.score)
+
+    /** REFLEX | ATOM. */
+    fun gameResultCode(result: app.tsumugi.study.games.GameResult): String = result.game.name
+
+    @Throws(Exception::class)
+    suspend fun recordGame(graph: AppGraph, result: app.tsumugi.study.games.GameResult): String? = graph.games.record(result)
+
+    @Throws(Exception::class)
+    suspend fun gameBest(graph: AppGraph, gameCode: String): Int = graph.games.best(app.tsumugi.study.games.GameKind.valueOf(gameCode))
+
+    @Throws(Exception::class)
+    suspend fun gameRecent(graph: AppGraph, gameCode: String, limit: Int): List<GameScoreEntryRow> =
+        graph.games.recent(app.tsumugi.study.games.GameKind.valueOf(gameCode), limit).map {
+            GameScoreEntryRow(it.game.name, it.score, it.correct, it.total, it.bestStreak, it.day)
+        }
+
+    /** Both games' points this ISO week (the weekly challenge counts them). */
+    @Throws(Exception::class)
+    suspend fun gameWeekPoints(graph: AppGraph): Int = graph.games.weekPoints(Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date)
+
+    // Grammar in the reader (§6.16)
+
+    @Throws(Exception::class)
+    suspend fun readerConstructions(graph: AppGraph, sentence: app.tsumugi.reader.ReaderSentence): List<ConstructionRow> =
+        graph.readerGrammar.constructions(sentence).map { c ->
+            ConstructionRow(
+                c.pointId, c.title, c.structure, c.jlpt, c.explanation, c.language == app.tsumugi.courses.ExplanationLanguage.JAPANESE,
+                c.aiGenerated, c.japaneseMissing, c.spans.map { it.first }, c.spans.map { it.last + 1 }, c.stage?.name.orEmpty(),
+                c.practiceAction.name,
+            )
+        }
+
+    /** "Practice this point": adds it to reviews (first time) and returns an exercise, or why there is none. */
+    @Throws(Exception::class)
+    suspend fun practiceGrammarPoint(graph: AppGraph, pointId: String): GrammarPracticeRow =
+        when (val r = graph.readerGrammar.practice(pointId)) {
+            is app.tsumugi.reader.GrammarPracticeResult.AddedToReviews ->
+                GrammarPracticeRow("ADDED", r.exercise, r.exercise?.kind?.name.orEmpty(), if (r.exercise == null) app.tsumugi.reader.ReaderGrammar.NO_EXAMPLES else "")
+            is app.tsumugi.reader.GrammarPracticeResult.Exercise -> GrammarPracticeRow("EXERCISE", r.exercise, r.exercise.kind.name, "")
+            is app.tsumugi.reader.GrammarPracticeResult.Unavailable -> GrammarPracticeRow("UNAVAILABLE", null, "", r.reason)
+        }
+
+    /** Checks an answer to a grammar exercise with the shared checker (MEANING_CHOICE takes the choice index as text). */
+    @Throws(Exception::class)
+    suspend fun checkGrammarExercise(graph: AppGraph, exercise: app.tsumugi.grammar.GrammarExercise, answer: String): ExerciseCheckRow {
+        val service = graph.grammar() ?: return ExerciseCheckRow(false, exercise.example.answer)
+        val r = service.check(exercise, answer)
+        return ExerciseCheckRow(r.accepted, r.matched ?: exercise.example.answer)
+    }
+
+    fun grammarExerciseKind(exercise: app.tsumugi.grammar.GrammarExercise): String = exercise.kind.name
+
+    // Translation workbench (§6.12)
+
+    /** Genre codes in display order (news, technical, legal, literary, dialogue, military). */
+    fun translationGenreCodes(): List<String> = app.tsumugi.translation.TranslationGenre.entries.map { it.code }
+
+    /** Passages of [genre] ("" = all) and [directionCode] (JE | EJ, "" = both). */
+    @Throws(Exception::class)
+    suspend fun translationPassages(graph: AppGraph, genre: String, directionCode: String): List<app.tsumugi.translation.TranslationPassage> =
+        graph.translationWorkbench.passages(genre.ifEmpty { null }, directionCode.takeIf { it.isNotEmpty() }?.let { app.tsumugi.translation.TranslationDirection.of(it) })
+
+    /** JE | EJ. */
+    fun passageDirectionCode(passage: app.tsumugi.translation.TranslationPassage): String = passage.direction.code
+
+    /** `TranslationPassage.register` (a C keyword as a member name in the Objective-C header). */
+    fun passageRegister(passage: app.tsumugi.translation.TranslationPassage): String = passage.register
+
+    /** The learner's own text (direction detected from the script), graded against the source. */
+    fun importTranslationPassage(graph: AppGraph, text: String, title: String, genre: String): app.tsumugi.translation.TranslationPassage =
+        graph.translationWorkbench.importPassage(text, title, genre.ifEmpty { "news" }, null)
+
+    fun translationRubric(): List<app.tsumugi.translation.TranslationCriterion> = app.tsumugi.translation.TranslationRubric.criteria
+
+    /** Grades a written or spoken ([sight]) attempt with the learner's model; saved when graded. */
+    @Throws(Exception::class)
+    suspend fun gradeTranslation(
+        graph: AppGraph,
+        passage: app.tsumugi.translation.TranslationPassage,
+        attempt: String,
+        sight: Boolean,
+        durationMs: Long,
+    ): TranslationGradeRow {
+        val mode = if (sight) app.tsumugi.translation.TranslationMode.SIGHT else app.tsumugi.translation.TranslationMode.WRITTEN
+        val r = graph.translationWorkbench.grade(passage, attempt, mode, durationMs)
+        val diff = r.diff
+        val segments = diff?.segments?.map { DiffSegmentRow(it.kind.name, it.text) }.orEmpty()
+        val overlap = diff?.let { (it.overlap * 100).toInt() } ?: 0
+        return when (r) {
+            is app.tsumugi.translation.TranslationGradeResult.Graded -> TranslationGradeRow(
+                true, "", r.attempt.id, r.grade.accuracy, r.grade.completeness, r.grade.register, r.grade.naturalness, r.grade.percent,
+                r.grade.feedback, r.grade.better, r.grade.issues.map { TranslationIssueRow(it.kind, it.attemptSpan, it.referenceSpan, it.note) },
+                r.engine, diff != null, segments, overlap,
+            )
+            is app.tsumugi.translation.TranslationGradeResult.Unavailable -> TranslationGradeRow(
+                false, r.reason, "", 0, 0, 0, 0, 0, "", "", emptyList(), "", diff != null, segments, overlap,
+            )
+        }
+    }
+
+    /** Saves a self-assessed attempt (four 0–4 scores on the rubric). */
+    @Throws(Exception::class)
+    suspend fun selfAssessTranslation(
+        graph: AppGraph,
+        passage: app.tsumugi.translation.TranslationPassage,
+        attempt: String,
+        sight: Boolean,
+        durationMs: Long,
+        accuracy: Int,
+        completeness: Int,
+        registerScore: Int,
+        naturalness: Int,
+    ): TranslationAttemptRow {
+        val mode = if (sight) app.tsumugi.translation.TranslationMode.SIGHT else app.tsumugi.translation.TranslationMode.WRITTEN
+        return attemptRow(graph.translationWorkbench.selfAssess(passage, attempt, mode, durationMs, accuracy, completeness, registerScore, naturalness))
+    }
+
+    /** Attempts on [passageId], or every live attempt when it is "". Newest last, as stored. */
+    @Throws(Exception::class)
+    suspend fun translationHistory(graph: AppGraph, passageId: String): List<TranslationAttemptRow> =
+        graph.translationWorkbench.history(passageId.ifEmpty { null }).map(::attemptRow)
+
+    /** The skill line on Me. */
+    @Throws(Exception::class)
+    suspend fun translationSkill(graph: AppGraph): TranslationSkillRows {
+        val s = graph.translationWorkbench.skillLine()
+        return TranslationSkillRows(
+            points = s.points.mapIndexed { i, p -> SkillPointRow(i, p.day, p.score, p.genre, p.direction.code, p.aiGraded) },
+            daily = s.daily.map { LabeledScoreRow(it.first, it.second) },
+            recentByDirection = s.recentByDirection.map { (d, v) -> LabeledScoreRow(d.code, v) },
+            recentByGenre = s.recentByGenre.map { (g, v) -> LabeledScoreRow(g, v) },
+            hasTrend = s.trend != null,
+            trend = s.trend ?: 0,
+            attempts = s.attempts,
+        )
+    }
+
+    private fun attemptRow(a: app.tsumugi.translation.TranslationAttempt) = TranslationAttemptRow(
+        a.id, a.passageId, a.direction.code, a.genre, a.level, a.mode == app.tsumugi.translation.TranslationMode.SIGHT, a.sourceText,
+        a.attemptText, a.durationMs, a.timeLimitMs ?: -1L, a.overTime, a.isAiGraded, a.accuracy, a.completeness, a.register,
+        a.naturalness, a.score, a.grade?.feedback.orEmpty(), a.grade?.better.orEmpty(), a.engine.orEmpty(), a.createdAt,
+    )
+
+    // Thesaurus and collocations (§6.13)
+
+    /** Clusters of [kindCode] (EMOTION | SCENE, "" = both). */
+    @Throws(Exception::class)
+    suspend fun thesaurusClusters(repo: app.tsumugi.thesaurus.ThesaurusRepository, kindCode: String): List<app.tsumugi.thesaurus.ExpressionCluster> =
+        repo.clusters(app.tsumugi.thesaurus.ClusterKind.entries.firstOrNull { it.name == kindCode })
+
+    fun clusterIsEmotion(cluster: app.tsumugi.thesaurus.ExpressionCluster): Boolean = cluster.kind == app.tsumugi.thesaurus.ClusterKind.EMOTION
+
+    /** `ExpressionCluster.description` (a `description` member collides with NSObject's in the Objective-C export). */
+    fun clusterDescription(cluster: app.tsumugi.thesaurus.ExpressionCluster): String = cluster.description
+
+    /** casual | neutral | formal | literary (`register` is a C keyword as a member name). */
+    fun expressionRegister(expression: app.tsumugi.thesaurus.ThesaurusExpression): String = expression.register
+
+    /** NV | AN | AV. */
+    fun collocationPatternCode(pair: app.tsumugi.thesaurus.CollocationPair): String = pair.pattern.name
+
+    /** The clusters that list the dictionary entry [entryId] (the entry's "expressions" link). */
+    @Throws(Exception::class)
+    suspend fun clustersForEntry(repo: app.tsumugi.thesaurus.ThesaurusRepository, entryId: Long): List<app.tsumugi.thesaurus.ExpressionCluster> {
+        val ids = repo.clustersForEntry(entryId).toSet()
+        if (ids.isEmpty()) return emptyList()
+        return repo.clusters(null).filter { it.id in ids }
+    }
+
+    // Writing studio (§6.13)
+
+    private fun speechRegister(code: String): app.tsumugi.writing.SpeechRegister? =
+        app.tsumugi.writing.SpeechRegister.entries.firstOrNull { it.name == code }
+
+    /** A new free-writing draft; [registerCode] CASUAL | POLITE | FORMAL, or "" for none. */
+    @Throws(Exception::class)
+    suspend fun createStudioDraft(graph: AppGraph, title: String, body: String, registerCode: String): app.tsumugi.writing.StudioDraft =
+        graph.writingStudio.createDraft(title, body, speechRegister(registerCode))
+
+    @Throws(Exception::class)
+    suspend fun updateStudioDraft(graph: AppGraph, id: String, title: String, body: String, registerCode: String): app.tsumugi.writing.StudioDraft? =
+        graph.writingStudio.update(id, title, body, speechRegister(registerCode))
+
+    fun draftRegisterCode(draft: app.tsumugi.writing.StudioDraft): String = draft.targetRegister?.name.orEmpty()
+
+    /** Corrections sentence by sentence (up to 20) at [level] ("N3"). */
+    @Throws(Exception::class)
+    suspend fun studioCorrections(graph: AppGraph, text: String, level: String): List<CorrectionRow> =
+        graph.writingStudio.corrections(text, level, 20).map { c ->
+            val o = c.result
+            CorrectionRow(
+                c.start, c.end, c.sentence, o?.corrected.orEmpty(), o?.isCorrect ?: false, o?.isUnsure ?: false, o?.explanation.orEmpty(),
+                o?.edits.orEmpty().map { CorrectionEditRow(it.original, it.replacement, it.reason) }, c.engine.orEmpty(), c.unavailable.orEmpty(),
+            )
+        }
+
+    /** The rule-based register check against [targetCode] ("" = the draft's dominant register). */
+    fun studioRegister(graph: AppGraph, text: String, targetCode: String): RegisterRows {
+        val r = graph.writingStudio.registerCheck(text, speechRegister(targetCode))
+        val outliers = r.outliers.map { it.start }.toSet()
+        val counts = r.counts
+        return RegisterRows(
+            r.sentences.map { RegisterSentenceRow(it.start, it.end, it.text, it.register?.name.orEmpty(), it.markers, it.register != null && it.start in outliers) },
+            r.dominant?.name.orEmpty(), r.expected?.name.orEmpty(),
+            counts[app.tsumugi.writing.SpeechRegister.CASUAL] ?: 0, counts[app.tsumugi.writing.SpeechRegister.POLITE] ?: 0,
+            counts[app.tsumugi.writing.SpeechRegister.FORMAL] ?: 0, r.mixed,
+        )
+    }
+
+    /** One sentence rewritten in [registerCode] by the learner's model. */
+    @Throws(Exception::class)
+    suspend fun studioRewrite(graph: AppGraph, sentence: String, registerCode: String): RewriteRow {
+        val register = speechRegister(registerCode) ?: app.tsumugi.writing.SpeechRegister.POLITE
+        val r = graph.writingStudio.rewrite(sentence, register)
+        return RewriteRow(r.sentence, r.rewrite.orEmpty(), r.notes, r.engine.orEmpty(), r.unavailable.orEmpty())
+    }
+
+    /** The draft for a graded reader story's output task (reopened, or started with the task), or null. */
+    @Throws(Exception::class)
+    suspend fun studioDraftForReaderTask(graph: AppGraph, storyId: String): app.tsumugi.writing.StudioDraft? =
+        graph.reader.graded.story(storyId)?.let { graph.writingStudio.draftForReaderTask(it) }
+
+    /** Grades a reader-task draft with the story's summary rubric, flattened like [gradeReaderSummary]. */
+    @Throws(Exception::class)
+    suspend fun gradeStudioReaderTask(graph: AppGraph, draft: app.tsumugi.writing.StudioDraft): SummaryGradeRow? =
+        when (val r = graph.writingStudio.gradeReaderTask(draft)) {
+            is app.tsumugi.reader.SummaryGradeResult.Graded -> SummaryGradeRow(
+                true, r.grade.content, r.grade.accuracy, r.grade.language, r.grade.total, r.grade.corrected, r.grade.feedback, r.engine, "",
+            )
+            is app.tsumugi.reader.SummaryGradeResult.Unavailable -> SummaryGradeRow(false, 0, 0, 0, 0, "", "", "", r.reason)
+            null -> null
+        }
+
+    // Reading circle (§6.14)
+
+    /** Dictionary tokens and grammar points of sentence [idx]; [CircleHelpRows.available] false without the dictionary. */
+    @Throws(Exception::class)
+    suspend fun circleHelp(graph: AppGraph, reading: app.tsumugi.poetry.CircleReading, idx: Int): CircleHelpRows {
+        val help = graph.readingCircle.help(reading, idx) ?: return CircleHelpRows(false, emptyList(), emptyList())
+        val offset = help.sentence.start
+        return CircleHelpRows(
+            true,
+            help.sentence.tokens.filter { it.entryId != null }.map {
+                CircleTokenRow(it.surface, it.start - offset, it.end - offset, it.entryId ?: -1L, it.dictionaryForm.orEmpty(), it.reading.orEmpty())
+            },
+            help.grammar.map { CircleGrammarRow(it.first, it.second) },
+        )
+    }
+
+    /** The file of recording [recordingId], or "" when it isn't on this device. */
+    @Throws(Exception::class)
+    suspend fun recordingFilePath(graph: AppGraph, recordingId: String): String {
+        val rec = graph.recordings.recording(recordingId) ?: return ""
+        return if (graph.recordings.fileExists(rec)) graph.recordings.pathOf(rec) else ""
+    }
 }
