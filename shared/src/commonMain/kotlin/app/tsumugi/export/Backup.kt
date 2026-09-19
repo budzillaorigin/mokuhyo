@@ -179,7 +179,7 @@ class BackupService(
         internal val ORDER: List<TableSpec> = listOf(
             TableSpec.item, TableSpec.itemRelation, TableSpec.note, TableSpec.setting, TableSpec.wordList,
             TableSpec.wordListEntry, TableSpec.pathProgress, TableSpec.pathUnlock, TableSpec.examAttempt, TableSpec.review,
-            TableSpec.immersionSession, TableSpec.readerAnnotation,
+            TableSpec.immersionSession, TableSpec.readerAnnotation, TableSpec.grammarMastery,
         )
     }
 }

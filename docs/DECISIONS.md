@@ -1072,6 +1072,78 @@ Additions to `SwiftSupport`/`SwiftBridges.kt`, adapters only: `audioClipPath`, `
 ### D-198: The Immersion Kit switch lives in Settings → Example sentences; results are text only (§6.2, 2026-09-18)
 The toggle (off by default, per device, D-162) sits in Settings with the terms note. The dictionary links there while it's off. When on, the dictionary shows the returned lines as text, with translation and source title, under the service's name. Their images and sound are not loaded: that would mean more requests to a service with no published terms, and streaming with no timeout the app controls (rule 13). Online lines can't be mined (D-161).
 
+### D-230: Course modules are derived from existing data, split evenly in path order (§6.6, 2026-09-18)
+`app.tsumugi.courses.CourseBuilder` builds each JLPT level's course from content the app already ships. No course pack is needed.
+- **Content per level.** Kanji and words are the kanji-path items with that JLPT tag, in path order. Grammar points come from the grammar pack at that level. Path items without a JLPT tag belong to no course.
+- **Modules.** A level has one module per 8 grammar points. Its kanji, words and grammar are split evenly and contiguously across the modules. Each module runs kanji → vocab → grammar → quiz → mock section (Yomimono's order).
+- **Quiz.** Each module quizzes one kanji item type (kanji_reading/orthography), one vocabulary type (context/paraphrase/usage/word_formation) and one grammar type (grammar_form/sentence_assembly/text_grammar). The types rotate through those the exam bank actually has for the level. The quiz runs as `ExamService.jlptTypeDrill`. A type counts as passed after any attempt at the level with at least 5 items of it at 80% or more.
+- **Mock.** Modules take the level's blueprint sections in turn, run as `ExamService.jlptSection`. A section counts as passed after a MOCK or SECTION attempt at the level answers at least half the section's blueprint items at the level's pass rate (pass mark / 180). Attempts don't store a section id, so the check uses the per-type tallies.
+- **Learned.** A kanji or word counts as learned at Guru+ or when marked known (`LearnerKnowledge`).
+- **Progress.** The progress bar is the mean of four fractions: kanji learned, words learned, grammar mastered and sections passed. That keeps N1's 1,500 words from drowning out its 189 grammar points.
+- **Default level.** The view opens on the synced `course.level` setting, or else on the level matching the path level (`LearnerLevel.jlptForPathLevel`).
+
+### D-231: Grammar mastery is its own synced table, LWW on the flag; migration 8.sqm (§6.6, 2026-09-18)
+The checkbox is independent of SRS: ticking it creates no card, and reviews never tick it. It is a fact the learner states, so it's stored as `grammar_mastery(point_id, mastered, updated_at)`. Rows are only ever added, and unticking writes `mastered = 0` with a newer time. It syncs last-writer-wins (a later untick on one device beats an earlier tick on another), like `known_word`, and it's part of the JSON backup. Only mastery counts toward the course. SRS stage is shown next to it.
+- **Migration.** `8.sqm` migrates v8 → v9 and adds `grammar_mastery` with its sync triggers and the device-local `ai_paraphrase` cache (D-234). `databases/8.db` was generated from this branch's schema before the change.
+- **Placeholder.** SQLDelight rejects gaps in migration numbers, so this branch carries a placeholder no-op `7.sqm` with `databases/7.db` identical to `8.db`. When the parallel branch's real `7.sqm` merges, replace the placeholder and regenerate `8.db` after it. `UserDbMigrationTest` expects schema version 9.
+
+### D-232: Monolingual mode is one synced setting: the easiest level shown Japanese-only (§6.6, 2026-09-18)
+- **Setting.** `monolingual.fromLevel` holds a JLPT level: 0 or absent means off, 2 means N2 and N1, and 3–5 turn it on earlier. It's off by default. Turning it on starts at N2, the brief's default, and the learner can move it earlier.
+- **Which level decides.** Content with a JLPT level uses its own level, so N2 grammar is in Japanese when the setting is 2. Untagged words use the learner's course level.
+- **API.** `MonolingualSettings.languageFor(level, learnerLevel)` gives the rule, and `Explanations` returns the right-language text. An explicit "show English" or "explain in Japanese" call exists for the toggle.
+
+### D-233: Our own Japanese grammar explanations, all 829 points, in a separate pack table (§6.6, 2026-09-18)
+- **Coverage.** The brief needs Japanese explanations for N2/N1 at minimum (381 points). All 829 were written, so "optionally earlier" works too. N5–N3 use easy Japanese.
+- **Authorship.** Claude drafted them directly (owner decision), in its own words from our English explanations. No textbook or grammar-dictionary text was used.
+- **Sources.** `meaning_ja` is at most 45 characters, 国語辞典-style. `nuance_ja` is at most 150 characters, in だ・である style. Both sit next to the English in `tools/packs/grammar/n*.json`, with their own `ja_source` ("llm"). `items/review.py` flips only `source`, which covers the English the reviewer saw, so reviewing the English doesn't un-badge the Japanese. Adding the ja fields to review.py is a follow-up outside this change.
+- **Tooling.** `packs/grammar_ja.py` has four commands: `status`, `check`, `merge` for draft files, and `draft --endpoint --model` for Ollama and similar. Each fills only points without Japanese, so re-runs never duplicate.
+- **Pack.** The text ships in a new `grammar_point_ja` table, not new `grammar_point` columns, so the generated `Grammar_point` class, and every platform screen using it, stays unchanged. Packs without the table return null, and the UI then shows English with a "no Japanese yet" note (`japaneseMissing`).
+
+### D-234: Word glosses in Japanese: an LLM paraphrase on demand, cached per device (§6.6, 2026-09-18)
+JMdict has no Japanese glosses, so we ask the model for one.
+- **Prompt.** A new prompt, `paraphrase_word_ja`, returns a 国語辞典-style definition, an example sentence and a note. The English glosses only pick the sense.
+- **Validation.** The definition must be Japanese, with no Latin words, at most 120 characters, and must not contain the headword; for kana words the check folds katakana. The example must use the word, or its stem for conjugating words. It has a golden test.
+- **Cache.** Results are cached in the device-local `ai_paraphrase` table (not synced, like other model output), so each word is generated once. `forgetParaphrase` drops a bad one.
+- **Without a model.** The result is the English glosses plus an `unavailableReason`, never a silent downgrade (rule 1). List screens pass `generate = false` so a list never fires one model call per row.
+- **Labeling.** Everything Japanese here carries the AI badge with the engine name.
+
+### D-235: Onomatopoeia data: JMdict on-mim, 12 themes, 3 types, our own feel lines (§6.8, 2026-09-18)
+- **Word list.** The list is every JMdict entry with an `on-mim` sense (1,340 in the current pack), ordered by frequency (`entry.rank`). Excluded:
+  - 3 entries whose on-mim sense is tagged `vulg` or `X`.
+  - 3 more marked `exclude` by hand (explicit content).
+  - That leaves 1,334.
+- **Glosses.** Each word shows the first on-mim sense's glosses. Theme, type and feel describe that sense.
+- **Themes.** weather, sounds, voice, feelings, pain, body, eating, movement, texture, appearance, manner, state. These are the brief's six plus voice, body, eating, appearance, manner and state, because a sixth of the list otherwise fits nowhere.
+- **Types.** 擬音語 (sound, voices included), 擬態語 (state or manner) and 擬情語 (feeling).
+- **Feel lines.** Claude drafted the classification and feel lines for all 1,340 entries with parallel helper agents (owner decision). 1,309 have an English feel line and 1,307 a Japanese one. The top 720 by frequency all have both. Obscure, dialect or explicit entries were left without one.
+- **Constraints.** A feel line is ASCII, at most 100 characters, and never contains the word, because it is the quiz's scene prompt. The builder re-checks every line against the word's kana forms and katakana/hiragana variants.
+- **Unclassified words.** Words without an entry, such as new JMdict releases, get a rule-based theme and type from gloss keywords (`source = "rule"`, no badge, no feel) until `build_onomatopoeia.py draft --endpoint --model` or `merge` adds one.
+
+### D-236: Onomatopoeia lives in the dictionary pack, schema in its own .sq; glyphs are pack data (§6.8, 2026-09-18)
+- **Tables.** The data goes into two new tables in `dictionary.sqlite`, `onomatopoeia` and `onomatopoeia_theme`. The examples reference the pack's own `sentence` table, so no second copy of Tatoeba is needed, and there's no new pack to install or bundle.
+- **Schema.** The single source of truth is `sqldelightDictionary/.../onomatopoeia.sq`. `build_onomatopoeia.py` executes its CREATE statements and replaces only those two tables, after `build_decks.py`, in `build_all.py`.
+- **Glyphs.** Each of the 12 themes has one original SVG glyph, stored as a string in `onomatopoeia_theme.svg`. They use viewBox 64×64 and `stroke="currentColor"`, so they follow light and dark mode. The platforms render them with their SVG support; Compose can parse the path data.
+- **Older packs.** Dictionary packs built before this lack the tables. Every repository call then returns empty, and `available()` is false, so the UI shows an honest empty state.
+
+### D-237: Onomatopoeia examples and quiz rules (§6.8, 2026-09-18)
+- **Example selection.** Up to 3 Tatoeba sentences of at most 40 characters that literally contain one of the word's forms, shortest-to-ideal first. The first source is the pack's word index. When that has too few (it misses most mimetic words), the builder searches the sentence text for forms of 3 or more characters (shorter ones match inside other words).
+- **Example coverage.** 502 words have examples. The rest show gloss and feel only. The pack's sentence table is a Tatoeba subset (112k), so adding sentences would be a `build_sentences.py` change.
+- **Quiz kinds.** The quiz asks "which word fits this scene?" (the feel line) and "which scene fits this word?". Only words with a feel line take part.
+- **Distractors.** Distractors never share a reading (kana folded) or any gloss with the target, so two kinds of drizzle can't both be right. One distractor comes from the same theme when possible, to keep it from being trivial. A target with too few safe distractors gives no question rather than an ambiguous one.
+
+### D-238: Content-drafting scripts share one OpenAI-compatible client (2026-09-18)
+`tools/packs/llm_draft.py` provides `chat_json(endpoint, model, system, user)`, which asks for `response_format: json_object` and takes the outermost JSON object. The key comes from an environment variable (`--api-key-env`, default `LLM_API_KEY`) and goes only to that endpoint (rule 14). `grammar_ja.py draft` and `build_onomatopoeia.py draft` take `--endpoint URL --model NAME --limit N`. They save after every item, so an interrupted run keeps its work, and they validate with the same checks as `merge`.
+
+### D-239: Course and onomatopoeia hooks on AppGraph (2026-09-18)
+New composition-root members for the platform UIs:
+- `courses`: `CourseService`, with `overview()`, `course(level)`, `remaining(level)`, `setMastered`, `courseLevel`/`setCourseLevel`.
+- `grammarMastery`.
+- `monolingual`: `MonolingualSettings`.
+- `explanations`: `Explanations`, with `grammar(point)`, `word(request)`, `paraphrase`, `forgetParaphrase`.
+- `onomatopoeia()`: `OnomatopoeiaRepository?`, with `themes()`, `words(theme, type, withFeelOnly)`, `search`, `detail`, `quiz(count, kind, theme, seed)`.
+
+Every public suspend function is `@Throws(Exception::class)`. Class names are unique across packages, and none starts with new/copy/init/alloc. No platform UI was built here.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

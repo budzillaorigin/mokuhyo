@@ -253,12 +253,19 @@ internal class TableSpec(
             listOf("id"), "updated_at", MergeRule.LWW,
         )
 
+        /** Grammar mastery checkboxes (BRIEF_V2 §6.6, D-231): rows only ever added; the flag is LWW, like known_word. */
+        val grammarMastery = TableSpec(
+            "grammar_mastery", listOf("point_id" to T, "mastered" to I, "updated_at" to I),
+            listOf("point_id"), "updated_at", MergeRule.LWW,
+        )
+
         /** Card rows don't sync; only the user-set suspended flag does, as its own change type. */
         const val CARD_FLAGS = "card_flags"
 
         val all = listOf(
             item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt, pathProgress, pathUnlock,
             conversation, todayBlockDone, streakFreeze, mediaDeck, mediaDeckWord, knownWord, immersionSession, readerAnnotation,
+            grammarMastery,
         ).associateBy { it.name }
     }
 }

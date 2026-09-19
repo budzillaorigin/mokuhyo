@@ -96,6 +96,17 @@ Listed in `content/models/manifest.json`; the in-app model manager shows each mo
 | JLPT blueprints (`tools/items/jlpt_blueprints.json`) | facts | Published test structure from https://www.jlpt.jp; no official items are used |
 | JLPT / DLPT item banks (`tools/items/bank/`) | CC BY-SA 4.0 | Tsumugi contributors; rule-generated items from JMdict/Tatoeba/grammar packs keep their sources' attribution; AI-drafted items carry the badge until reviewed. Not affiliated with JLPT, DLI or ACTFL |
 
+## Courses, monolingual mode and onomatopoeia (Phase 12)
+
+| Content | License | Notes |
+|---|---|---|
+| Japanese grammar explanations (`meaning_ja` / `nuance_ja` in `tools/packs/grammar/n*.json`, `grammar_point_ja` in `grammar.sqlite`) | CC BY-SA 4.0 | Tsumugi contributors. Written for Tsumugi by an LLM (Claude, owner decision) in its own words from our English explanations. No textbook, grammar dictionary or website text is used. They show the "AI-generated" badge until reviewed (`ja_source`) |
+| Onomatopoeia word list and glosses (`onomatopoeia` table in `dictionary.sqlite`) | CC BY-SA 4.0 | JMdict entries tagged `on-mim` (EDRDG; attribution as for JMdict above) |
+| Onomatopoeia example sentences | CC BY 2.0 FR | The Tatoeba sentences already in the dictionary pack (attribution as above) |
+| Onomatopoeia themes, types and "feel" lines (`tools/packs/onomatopoeia/entries.json`) | CC BY-SA 4.0 | Tsumugi contributors. Written for Tsumugi by an LLM (Claude) in its own words; badge until reviewed. Nothing from the Onomato Project is used |
+| Onomatopoeia theme glyphs (12 SVGs in `tools/packs/onomatopoeia/themes.json`) | CC BY-SA 4.0 | Original drawings for Tsumugi, one per theme (not per word) |
+| Monolingual word paraphrases (`paraphrase_word_ja`) | the learner's own | Generated on the learner's device (or their own endpoint) on demand, cached locally, labeled AI-generated; nothing is shipped |
+
 ## Pre-rendered audio (VOICEVOX)
 
 The audio packs (`audio-<set>.zip`: exam listening, dialogues, minimal pairs, pitch-accent test, grammar examples) are synthesized at build time with the VOICEVOX engine (BRIEF_V2 §5.6, DECISIONS D-090). They are optional downloads. The voices' terms allow commercial and non-commercial use of the generated audio **with a credit line**, and forbid use that damages the characters' or voice providers' image, political or religious use, deception, and training new voice models on the audio. The credit lines below are required and are shown here, on the in-app Licenses screen.

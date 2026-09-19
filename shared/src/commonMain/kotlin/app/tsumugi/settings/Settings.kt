@@ -63,6 +63,13 @@ class SettingsRepository(private val db: TsumugiDatabase, private val clock: Clo
         /** Quiet hours, minutes after local midnight. */
         const val QUIET_START_MINUTE = "notifications.quietStart"
         const val QUIET_END_MINUTE = "notifications.quietEnd"
+        /**
+         * Monolingual mode (BRIEF_V2 §6.6, D-232): the easiest JLPT level (1–5) whose explanations and glosses are
+         * shown in Japanese only; absent or "0" = off. "2" = N2 and N1 (the default when turned on).
+         */
+        const val MONOLINGUAL_FROM_LEVEL = "monolingual.fromLevel"
+        /** The JLPT level (1–5) the learner's course view opens on; absent = derived from the path level (D-230). */
+        const val COURSE_LEVEL = "course.level"
     }
 }
 

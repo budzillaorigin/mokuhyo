@@ -1,0 +1,4 @@
+-- PLACEHOLDER (no-op), user database v7 -> v8. SQLDelight rejects gaps in migration numbers, and 7.sqm is reserved
+-- for a parallel Phase 12 branch (DECISIONS D-231). When the branches merge, replace this file with that branch's 7.sqm,
+-- regenerate databases/8.db from the schema after it, and keep 8.sqm (grammar mastery, AI paraphrase cache) as is.
+-- databases/7.db is the same v7 snapshot as databases/8.db until then.
