@@ -607,7 +607,7 @@ Speech at 48 kbps AAC-LC is about 6 KB per spoken word and 55 KB for a 9-second 
 
 ### D-093: Pitch-test and minimal-pair accents are set explicitly, never predicted (2026-09-18)
 - **Word items are spoken from their kana reading.** The reading goes through `/accent_phrases?is_kana=true` with the accent mark on the last mora, which forces one accent phrase and means the engine never reads the kanji. The phrase's `accent` is then set from Kanjium: the downstep, or the phrase's mora count for 平板, which is how VOICEVOX expresses "no fall". `/mora_pitch` recomputes the pitches.
-- **Stylized fallback:** the engine's contour often doesn't show the Tokyo high/low pattern clearly on short words. At every voiced high/low boundary the step must be at least 0.06 log-F0 (~1 semitone) in the right direction. If it isn't, the mora pitches are replaced by a two-level contour at the engine's own register, 0.17 log-F0 (~3 semitones) apart, with slight declination; devoiced morae stay devoiced. In the first full render, 149 of the 300 pitch items needed this.
+- **Stylized fallback:** the engine's contour often doesn't show the Tokyo high/low pattern clearly on short words. At every voiced high/low boundary the step must be at least 0.10 log-F0 (~1.7 semitones) in the right direction. If it isn't, the mora pitches are replaced by a two-level contour at the engine's own register, 0.17 log-F0 (~3 semitones) apart, with slight declination; devoiced morae stay devoiced. In the first full render, 165 of the 300 pitch items and 350 of the 1,260 minimal-pair clips needed this. With a 0.06 margin, an F0 check of rendered clips found a too-shallow fall, so the margin is 0.10.
 - **Carrier particle:** pitch items, and the PITCH category of minimal pairs, are spoken with が (`はしが`), because 平板 and 尾高 only differ on the following particle. The other minimal-pair categories are the bare word, with its accent set when Kanjium has one.
 - **One voice:** all word items use 春日部つむぎ, so only the accent differs between the two sides of a pair.
 
@@ -642,7 +642,7 @@ The sync server's per-user blob store isn't used: packs are shared, public build
 **Owner:** choose where the packs are published, and whether the app should ship with a default URL.
 
 ### D-097: Bundle the pitch and minimal-pair audio in the app? (2026-09-18) — OPEN, owner decision
-- **Recommendation:** bundle `audio-pitch.zip` and `audio-minimal-pairs.zip` (sizes in CONTENT_PACKS.md, about 9 MB together). The pitch test (§6.7) and minimal-pair drills would then work out of the box and offline. Exam, dialogue and grammar audio stay downloads.
+- **Recommendation:** bundle `audio-pitch.zip` and `audio-minimal-pairs.zip` (2.1 MB + 6.6 MB = 8.7 MB). The pitch test (§6.7) and minimal-pair drills would then work out of the box and offline. Exam, dialogue and grammar audio stay downloads.
 - **Already supported:** `AudioPackRepository.ensureBundled()` installs any set the bundle carries as `packs/audio-manifest.json` + `packs/audio-<set>.zip`, once per version. It is a no-op today.
 - **To enable:** add the two zips and `audio-manifest.json` to the Xcode "Bundle Content Packs" phase and the Android `bundlePacks` task, then call `graph.audio.ensureBundled()` at startup next to the pack installs.
 - This isn't done yet, because it changes app size and the build phases, which other agents own.
@@ -662,8 +662,8 @@ The sync server's per-user blob store isn't used: packs are shared, public build
   - Grammar examples alternate つむぎ (even ord) and 玄野武宏 (odd ord).
 - **Speed:** 0.9 for N5 / DLPT 0+ / practice jlpt 5, 0.95 for N4 / DLPT 1 / jlpt 4, 1.0 above. Word items use 0.95. Any key can be overridden in `tools/packs/audio/overrides.json` (`{"<key>": {"speed": 0.9, "pitch": 0.0, "intonation": 1.1}}`).
 - **Cache:** clips live in `tools/.cache/audio/clips/`, keyed by a SHA-256 of engine version, voice id, text/kana, accent, carrier, speed/pitch/intonation, encoder args and a style version. A re-run renders only new or changed clips. An interrupted run resumes, and the zip is rebuilt from the cache in seconds.
-- **Grammar subset:** the default is 2 examples per point (1,658 clips). `--grammar-all` renders all 7,603.
-- **Finishing on the GPU machine:** install the VOICEVOX GPU engine build (DirectML or NVIDIA), start it, and run `render_audio.py grammar --grammar-all --endpoint http://<pc>:50021`. Copy `tools/.cache/audio` over first to reuse the clips already rendered. Measured on the Snapdragon X Plus (x64 emulation, CPU) in the first run: see CONTENT_PACKS.md.
+- **Grammar subset:** the default is 2 examples per point (1,658 clips). `--grammar-all` renders all 7,603. The first build on this machine rendered 1 per point (829, `--grammar-per-point 1`) to bound render time.
+- **Finishing on the GPU machine:** install the VOICEVOX GPU engine build (DirectML or NVIDIA), start it, and run `render_audio.py grammar --grammar-all --endpoint http://<pc>:50021`. Copy `tools/.cache/audio` over first to reuse the clips already rendered. On the Snapdragon X Plus (x64 emulation, CPU) the first build took 2 h 39 min for 3,409 new clips: 1.4–1.6 s per word and 2.4–4.8 s per sentence or exam line. Per-set numbers are in CONTENT_PACKS.md.
 
 ---
 
