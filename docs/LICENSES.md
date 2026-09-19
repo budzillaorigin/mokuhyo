@@ -105,10 +105,9 @@ The audio packs (`audio-<set>.zip`: exam listening, dialogues, minimal pairs, pi
 | VOICEVOX (software) | all audio packs | VOICEVOX | Engine terms: "ご利用の際は VOICEVOX を利用したことがわかるクレジット表記が必要です" — https://voicevox.hiroshiba.jp/term/ |
 | 春日部つむぎ (8) | female speakers, pitch-accent and minimal-pair words, grammar examples | **VOICEVOX:春日部つむぎ** | https://tsumugi-official.studio.site/rule (character page: https://voicevox.hiroshiba.jp/product/kasukabe_tsumugi/) |
 | 四国めたん (2) | second female speaker, narrators and announcements | **VOICEVOX:四国めたん** | https://zunko.jp/con_ongen_kiyaku.html ("アプリなどでの利用の場合は、アプリの紹介画面などに記載をお願いします") |
-| 玄野武宏 (11) | male speakers, grammar examples | **VOICEVOX:玄野武宏** | https://www.virvoxproject.com/voicevoxの利用規約 (VirVox Project; example credit "VOICEVOX:玄野武宏(CV:ガロ)") |
-| 青山龍星 (13) | second or older male speaker, narrators | **VOICEVOX:青山龍星** | https://www.virvoxproject.com/voicevoxの利用規約. **Condition:** when a company or sole proprietor (or an individual under contract with one) publishes a work using 青山龍星, prior application to ななはぴ (https://v.seventhh.com/contact/) is required, paid or not; credit removal is not offered. See DECISIONS D-098. |
+| 玄野武宏 (11) | male speakers (a second male speaker is the same voice, slightly lower and slower), grammar examples | **VOICEVOX:玄野武宏** | https://www.virvoxproject.com/voicevoxの利用規約 (VirVox Project; example credit "VOICEVOX:玄野武宏(CV:ガロ)") |
 
-Credits: VOICEVOX:春日部つむぎ, VOICEVOX:四国めたん, VOICEVOX:玄野武宏, VOICEVOX:青山龍星
+Credits: VOICEVOX:春日部つむぎ, VOICEVOX:四国めたん, VOICEVOX:玄野武宏
 
 Each pack's `index.json` also lists the credit lines for the voices it actually uses. Text spoken in the packs comes from the exam, practice and grammar content above, under those licenses.
 

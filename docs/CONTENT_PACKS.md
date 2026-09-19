@@ -187,7 +187,9 @@ uv run python packs/render_audio.py exam --endpoint http://<lan-ip>:50021   # en
 | 春日部つむぎ | 8 | female speakers, pitch and minimal-pair words, even grammar examples |
 | 四国めたん | 2 | second female speaker, narrators and announcements |
 | 玄野武宏 | 11 | male speakers, odd grammar examples |
-| 青山龍星 | 13 | second or older male speaker, narrator when めたん is taken |
+| 玄野武宏, pitchScale −0.05, speedScale −0.05 | 11 | second male speaker in a script, or a speaker marked `age: "senior"` |
+
+玄野武宏 is the only male character (D-170). 青山龍星 was dropped on 2026-09-19 because his terms require companies and sole proprietors to apply to ななはぴ before publishing. 玄野武宏's other styles (喜び, ツンギレ, 悲しみ) are emotional, so a second male voice is the same ノーマル style, slightly lower and slower. The offsets are added to the level speed (e.g. 0.95 → 0.9) and are part of the clip hash.
 
 Credit lines are in `docs/LICENSES.md`, which the Licenses screen renders, and in each pack's `index.json` (D-098).
 
@@ -203,8 +205,10 @@ Credit lines are in `docs/LICENSES.md`, which the Licenses screen renders, and i
 
 Total: 3,711 clips, 75 MB, about 3.2 hours of audio. Rendering took 2 h 39 min of wall time on the CPU while other work shared the machine; an idle machine was about twice as fast in the smoke tests. Rendering scales with audio length, roughly 0.65 s per second of speech here.
 
+**Voice change (2026-09-19, D-170):** re-rendered the 40 clips that used 青山龍星 with the lower 玄野武宏 variant: 20 exam lines in 6 two-male scripts and 20 dialogue lines in 6 dialogues (4 with a senior male, 2 with two males). Every other clip came from the cache: exam 20 rendered / 1,012 cached (3.08 s per clip, 73 s wall), dialogues 20 / 270 (1.09 s per clip, 24 s wall), about 100 s in all. Pitch, minimal pairs and grammar never used him (つむぎ only; grammar is 829 clips, first example per point, all even ords), so they weren't rebuilt and their zips are byte-identical. New sizes: exam 47.1 MB, dialogues 5.2 MB.
+
 **Left to render:** grammar examples 2..n. `render_audio.py grammar` renders the second example per point (+829 clips, ~35 min here); `--grammar-all` renders the other 6,774 (~4.5 h here, minutes with a VOICEVOX GPU build). Both reuse the cache.
 
 ### Moving rendered audio between machines
 
-`tools/packs/audio_release.py publish` uploads `content/packs/audio-*.zip` and `audio-manifest.json` to a pre-release of this repo, tagged `audio-packs-<date>`, and pins their hashes in `tools/packs/audio.lock`. `… fetch` downloads and verifies them on another machine, e.g. the Mac. The current release is `audio-packs-2026-09-19`: pitch 300, minimal pairs 1,260, dialogues 290, exam 1,032, grammar 829 clips (the first example per point). Its notes carry the VOICEVOX credits. This is for the owner's machines only; how learners get audio packs in the app is D-096.
+`tools/packs/audio_release.py publish` uploads `content/packs/audio-*.zip` and `audio-manifest.json` to a pre-release of this repo, tagged `audio-packs-<date>`, and pins their hashes in `tools/packs/audio.lock`. `… fetch` downloads and verifies them on another machine, e.g. the Mac. The current release is `audio-packs-2026-09-19` ("Audio packs (VOICEVOX) 2026-09-19", republished the same day after the voice change; the earlier release under that tag was deleted): pitch 300, minimal pairs 1,260, dialogues 290, exam 1,032, grammar 829 clips (the first example per point). Its notes carry the VOICEVOX credits. `publish` compares GitHub's asset digest, not just the size, so a same-day re-render replaces the changed files. This is for the owner's machines only. Learners install packs from Files or from a URL they type in Settings → Audio packs; there is no default download URL (D-096).

@@ -579,7 +579,7 @@ An audit of `androidApp/` and `shared/src/androidMain` found no `HttpURLConnecti
 
 ### D-090: Pre-rendered VOICEVOX audio packs for the consistency-critical audio (2026-09-18, BRIEF_V2 §5.6, rule 20; revises D-030)
 - **What is pre-rendered:** exam listening (JLPT + DLPT scripts), practice dialogues, minimal pairs, the pitch-accent test (§6.7) and grammar examples. Each set is one `content/packs/audio-<set>.zip`, built by `tools/packs/render_audio.py` against a local VOICEVOX engine and listed in `content/packs/audio-manifest.json`. Audio packs are build outputs: git-ignored, never committed.
-- **Engine and voices:** VOICEVOX Engine 0.25.2, Windows CPU build (x64, runs under emulation on the owner's Snapdragon PC), installed under `%LOCALAPPDATA%\voicevox_engine`. Owner-approved characters, style ノーマル: 春日部つむぎ (id 8), 四国めたん (2), 玄野武宏 (11), 青山龍星 (13). The renderer resolves ids by name, so another engine version with different ids still works.
+- **Engine and voices:** VOICEVOX Engine 0.25.2, Windows CPU build (x64, runs under emulation on the owner's Snapdragon PC), installed under `%LOCALAPPDATA%\voicevox_engine`. Owner-approved characters, style ノーマル: 春日部つむぎ (id 8), 四国めたん (2), 玄野武宏 (11). 青山龍星 (13) was approved at first and dropped on 2026-09-19 (D-170). The renderer resolves ids by name, so another engine version with different ids still works.
 - **Fallback:** a clip that isn't installed falls back to system TTS (`AppGraph.audio.clip(key) == null`). The exception is the pitch test, which is hidden without its pack, because system TTS can't guarantee an accent (§6.7).
 - D-030 stays true for user-created content: the learner's own cards and imported texts are still spoken at play time.
 
@@ -633,13 +633,14 @@ Speech at 48 kbps AAC-LC is about 6 KB per spoken word and 55 KB for a 9-second 
 - **Picked files without a manifest entry** get version `sha256:<prefix>`.
 - **Progress:** `AudioPackRepository.progress` reports each phase: DOWNLOADING, COPYING or EXTRACTING.
 
-### D-096: Audio packs are hosted by the owner, not GitHub (2026-09-18) — OPEN, owner decision
+### D-096: No default download URL for audio packs; learners install from Files or a URL they type (2026-09-18, decided 2026-09-19)
 The repository is private, so release assets aren't publicly downloadable, and the base IPA must stay under 200 MB. The app supports two install paths:
 - **From a URL the learner sets:** `fetchManifest(baseUrl)` reads `<baseUrl>/audio-manifest.json`, then `download(baseUrl, entry)` fetches `<baseUrl>/<file>` with `NetTimeouts.DOWNLOAD`. Any static file host works: the owner's own web server, a NAS, or a static route beside the self-hosted sync server (e.g. a Caddy `file_server` for `/audio/*`).
 - **From Files / the document picker:** `installFrom(source)` or `installFile(path)`.
 
 The sync server's per-user blob store isn't used: packs are shared, public build outputs, not user data. The URL is device-local configuration (rule 16). UI agents will wire both paths.
-**Owner:** choose where the packs are published, and whether the app should ship with a default URL.
+
+**Decision (owner, 2026-09-19): no default download URL for now.** The app ships with the URL field in Settings → Audio packs empty. Learners install a pack either by picking a zip in Files or by typing a URL they host themselves. The `audio-packs-<date>` GitHub pre-release (`tools/packs/audio_release.py`) stays a transfer between the owner's machines, not a learner download. **Revisit in Phase 14:** public hosting and whether the app ships with a default URL.
 
 ### D-097: Bundle the pitch and minimal-pair audio in the app? (2026-09-18) — OPEN, owner decision
 - **Recommendation:** bundle `audio-pitch.zip` and `audio-minimal-pairs.zip` (2.1 MB + 6.6 MB = 8.7 MB). The pitch test (§6.7) and minimal-pair drills would then work out of the box and offline. Exam, dialogue and grammar audio stay downloads.
@@ -648,17 +649,17 @@ The sync server's per-user blob store isn't used: packs are shared, public build
 - This isn't done yet, because it changes app size and the build phases, which other agents own.
 
 ### D-098: VOICEVOX credit obligations (2026-09-18)
-- **Credit text:** `docs/LICENSES.md` lists "VOICEVOX" and each character's exact credit line, which the in-app Licenses screen renders: VOICEVOX:春日部つむぎ, VOICEVOX:四国めたん, VOICEVOX:玄野武宏, VOICEVOX:青山龍星. Each pack's `index.json.credits` names the voices it actually uses, and `AudioPackRepository.credits()` returns the credits for the installed sets.
+- **Credit text:** `docs/LICENSES.md` lists "VOICEVOX" and each character's exact credit line, which the in-app Licenses screen renders: VOICEVOX:春日部つむぎ, VOICEVOX:四国めたん, VOICEVOX:玄野武宏. Each pack's `index.json.credits` names the voices it actually uses, and `AudioPackRepository.credits()` returns the credits for the installed sets.
 - **四国めたん:** the terms ask for the credit "アプリの紹介画面など", i.e. in the app's introduction or listing. **Owner action:** add the credit line to the App Store / Play description, not only the Licenses screen.
-- **青山龍星:** if a company, a sole proprietor, or an individual under contract with one publishes a work using this voice, prior application to ななはぴ (https://v.seventhh.com/contact/) is required, paid or not. **Owner action:** before a commercial release, either apply, or re-render with `POOLS["male"]`/`["narrator"]` limited to 玄野武宏. Both are one-line changes, followed by a re-run of the affected sets.
+- **青山龍星 (no longer used):** if a company, a sole proprietor, or an individual under contract with one publishes a work using this voice, prior application to ななはぴ is required, paid or not. The owner chose to drop the voice instead (D-170), so no application is needed and no pack credits him.
 - **Prohibited uses:** the terms forbid using the audio to train voice models, and forbid uses that harm the characters' image. Nothing in Tsumugi does either.
 - The 春日部つむぎ terms page is script-rendered and couldn't be read as text. The credit line recorded here is the one the engine ships in the character's policy (`/speaker_info`): 「VOICEVOX:春日部つむぎ」とクレジットを記載すれば、商用・非商用で利用可能です。
 
 ### D-099: Voice allocation, speeds, caching and finishing renders on a faster machine (2026-09-18)
 - **Voices per script:** each speaker gets a character by voice hint, distinct within the script where the pool allows:
   - female: つむぎ, then めたん.
-  - male: 玄野武宏, then 青山龍星. A dialogue speaker marked `age: "senior"` gets 青山龍星 first.
-  - narrator (or no hint): めたん, then 青山龍星.
+  - male: 玄野武宏, then 玄野武宏 lower and slower (D-170). A dialogue speaker marked `age: "senior"` gets the lower variant first.
+  - narrator (or no hint): めたん, then つむぎ, then 玄野武宏, then his lower variant.
   - Grammar examples alternate つむぎ (even ord) and 玄野武宏 (odd ord).
 - **Speed:** 0.9 for N5 / DLPT 0+ / practice jlpt 5, 0.95 for N4 / DLPT 1 / jlpt 4, 1.0 above. Word items use 0.95. Any key can be overridden in `tools/packs/audio/overrides.json` (`{"<key>": {"speed": 0.9, "pitch": 0.0, "intonation": 1.1}}`).
 - **Cache:** clips live in `tools/.cache/audio/clips/`, keyed by a SHA-256 of engine version, voice id, text/kana, accent, carrier, speed/pitch/intonation, encoder args and a style version. A re-run renders only new or changed clips. An interrupted run resumes, and the zip is rebuilt from the cache in seconds.
@@ -967,6 +968,16 @@ A text profile covers at most `TextProfiler.MAX_CHARS` = 250,000 characters, abo
 - The Phase 11 immersion tables are in `migrations/5.sqm` (schema v6; `databases/5.db` is the v5 snapshot). **The parallel Phase 11 agent also adds a `5.sqm`**: whichever merges second renumbers its migration to `6.sqm` and regenerates the snapshot before it. The tables and triggers live in their own `.sq` files (`immersion.sq`, `readerNotes.sq`) so the rename touches only the migration.
 - Screenshot import: `SourceKind.SCREENSHOT`. `ScreenshotImport.importPages(pages)` joins each page's OCR text with blank lines and keeps each picture (an `ImageStore` image, so it follows recordings sync) as a page image: `reader_doc_meta.page_images` JSON `[{imageId, start, end}]`, read back with `pageImages(docId)`.
 - New device setting: `examples.immersionKit`. New synced setting: `immersion.dailyMinutes`.
+
+### D-170: 玄野武宏 is the only male voice; a second male speaker is the same voice lower and slower (owner, 2026-09-19)
+- **Why:** 青山龍星's terms require companies and sole proprietors to apply to ななはぴ before publishing (D-098). The owner replaced him everywhere with 玄野武宏 (ノーマル, id 11). The female voices, 春日部つむぎ and 四国めたん, are unchanged.
+- **Two male speakers in one script:** 玄野武宏's other styles in engine 0.25.2 (`/speakers`: 喜び 39, ツンギレ 40, 悲しみ 41) are emotional, so none fits neutral exam or dialogue lines. The second male, or a dialogue speaker marked `age: "senior"`, is 玄野武宏 ノーマル with pitchScale −0.05 and speedScale −0.05. The speed offset is added to the level speed, e.g. N4 0.95 → 0.90. `render_audio.Voice` holds the offsets, and `POOLS` is:
+  - male: 玄野武宏, then the lower variant;
+  - male-senior: the lower variant, then 玄野武宏;
+  - narrator: めたん, つむぎ, 玄野武宏, then the lower variant.
+- **Pack format unchanged:** `index.json` still records the character (`voice: "玄野武宏"`). The offsets are in the clip hash, so the variant gets its own cached clips.
+- **Re-render:** the new mapping gives a different voice only to the 40 clips that used 青山龍星. Exam: 20 lines in 6 scripts, each with two male speakers. Dialogues: 20 lines in 6 dialogues, 4 with a senior male and 2 with two males. Those 40 were rendered in about 100 s. Every other clip came from the cache. Pitch, minimal pairs and grammar never used him, and are byte-identical. Credits in every pack's `index.json` and in the manifest now list only つむぎ, めたん and 玄野武宏.
+- **Release:** republished as `audio-packs-2026-09-19`, titled "Audio packs (VOICEVOX) 2026-09-19". It has the same date tag as the superseded release, which was deleted along with its tag before publishing. `audio_release.publish` now also compares GitHub's asset `digest`, because a same-size file under a reused tag would otherwise be skipped.
 
 ---
 

@@ -51,7 +51,7 @@ import kotlin.uuid.Uuid
  * Installs are atomic: the archive is verified (SHA-256 + size against the manifest entry when there is one, via
  * [PackInstaller.installFrom]; structure and every entry's size always), extracted into a `.part` folder, and
  * swapped in with a rename. A failed or cancelled install leaves the previous version untouched. Sources:
- * - [download]: the owner's own server or the sync server's blob store (a URL the learner configures, D-096).
+ * - [download]: a static file host at a URL the learner types in Settings; there is no default URL (D-096).
  * - [installFrom] / [installFile]: a file picked in Files / the Android document picker.
  * - [ensureBundled]: sets shipped inside the app, if a build bundles any (D-097).
  *

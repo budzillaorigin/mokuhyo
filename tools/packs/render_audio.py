@@ -60,16 +60,31 @@ BITRATE = "48k"
 ENCODER_ARGS = ["-ac", "1", "-ar", str(SAMPLE_RATE), "-c:a", "aac", "-b:a", BITRATE,
                 "-map_metadata", "-1", "-fflags", "+bitexact", "-flags:a", "+bitexact", "-movflags", "+faststart"]
 
-# Approved characters (owner, 2026-09-18), ノーマル style. Ids are resolved by name at run time.
-TSUMUGI, METAN, RYUSEI, TAKEHIRO = "春日部つむぎ", "四国めたん", "青山龍星", "玄野武宏"
-CHARACTERS = (TSUMUGI, METAN, RYUSEI, TAKEHIRO)
+# Approved characters (owner, 2026-09-18; 青山龍星 dropped 2026-09-19, D-170), ノーマル style. Ids are resolved by
+# name at run time.
+TSUMUGI, METAN, TAKEHIRO = "春日部つむぎ", "四国めたん", "玄野武宏"
+CHARACTERS = (TSUMUGI, METAN, TAKEHIRO)
 STYLE = "ノーマル"
-# Voice hint → characters in order of preference. The first speaker with a hint gets the first free character.
+
+
+@dataclass(frozen=True)
+class Voice:
+    """A character plus a delivery offset. 玄野武宏 is the only male character, so a second male speaker in a
+    script is the same character slightly lower and slower (D-170); his other styles are emotional, not neutral."""
+
+    character: str
+    pitch: float = 0.0  # added to Clip.pitch (VOICEVOX pitchScale)
+    speed: float = 0.0  # added to Clip.speed (VOICEVOX speedScale)
+
+
+V_TSUMUGI, V_METAN, V_TAKEHIRO = Voice(TSUMUGI), Voice(METAN), Voice(TAKEHIRO)
+V_TAKEHIRO_LOW = Voice(TAKEHIRO, pitch=-0.05, speed=-0.05)  # second or older male speaker
+# Voice hint → voices in order of preference. The first speaker with a hint gets the first free voice.
 POOLS = {
-    "female": [TSUMUGI, METAN],
-    "male": [TAKEHIRO, RYUSEI],
-    "male-senior": [RYUSEI, TAKEHIRO],
-    "narrator": [METAN, RYUSEI, TSUMUGI, TAKEHIRO],
+    "female": [V_TSUMUGI, V_METAN],
+    "male": [V_TAKEHIRO, V_TAKEHIRO_LOW],
+    "male-senior": [V_TAKEHIRO_LOW, V_TAKEHIRO],
+    "narrator": [V_METAN, V_TSUMUGI, V_TAKEHIRO, V_TAKEHIRO_LOW],
 }
 WORD_VOICE = TSUMUGI  # pitch and minimal-pair items: one voice, so only the accent differs
 CARRIER = "が"  # particle after pitch-test words, so 平板 and 尾高 differ audibly
@@ -145,12 +160,12 @@ def load_overrides(path: Path | None) -> dict[str, dict]:
 
 
 class Allocator:
-    """Maps a script's speakers to characters: consistent within a script, distinct where the pool allows."""
+    """Maps a script's speakers to voices: consistent within a script, distinct where the pool allows."""
 
     def __init__(self) -> None:
-        self.by_speaker: dict[str, str] = {}
+        self.by_speaker: dict[str, Voice] = {}
 
-    def voice(self, speaker: str, hint: str | None, age: str | None = None) -> str:
+    def voice(self, speaker: str, hint: str | None, age: str | None = None) -> Voice:
         if speaker in self.by_speaker:
             return self.by_speaker[speaker]
         hint = (hint or "narrator").lower()
@@ -180,8 +195,8 @@ def exam_clips(packs: Path) -> list[Clip]:
             text = nfc(line.get("text", "")).strip()
             if not text:
                 continue
-            voice = alloc.voice(line.get("speaker", ""), line.get("voice"))
-            clips.append(Clip(f"exam/{owner}/{i}", voice, text, speed=speed))
+            v = alloc.voice(line.get("speaker", ""), line.get("voice"))
+            clips.append(Clip(f"exam/{owner}/{i}", v.character, text, speed=round(speed + v.speed, 3), pitch=v.pitch))
     db.close()
     return clips
 
@@ -199,8 +214,9 @@ def dialogue_clips(packs: Path) -> list[Clip]:
             for sp in speakers.get(did, []):  # allocate in declared order so A/B are stable
                 alloc.voice(sp["id"], sp.get("voice"), sp.get("age"))
         info = next((s for s in speakers.get(did, []) if s["id"] == speaker), {})
-        voice = alloc.voice(speaker, info.get("voice"), info.get("age"))
-        clips.append(Clip(f"dialogue/{did}/{ord_}", voice, nfc(ja), speed=speed_for(str(jlpt.get(did, "")))))
+        v = alloc.voice(speaker, info.get("voice"), info.get("age"))
+        speed = round(speed_for(str(jlpt.get(did, ""))) + v.speed, 3)
+        clips.append(Clip(f"dialogue/{did}/{ord_}", v.character, nfc(ja), speed=speed, pitch=v.pitch))
     db.close()
     return clips
 
