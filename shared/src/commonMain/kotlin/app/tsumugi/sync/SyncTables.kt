@@ -259,13 +259,32 @@ internal class TableSpec(
             listOf("point_id"), "updated_at", MergeRule.LWW,
         )
 
+        /** Pitch-accent test answers (BRIEF_V2 §6.7, D-284): written once, merged by union like exam attempts. */
+        val pitchTestResult = TableSpec(
+            "pitch_test_result",
+            listOf(
+                "id" to T, "item_id" to T, "mode" to T, "expected" to T, "answer" to T, "correct" to I, "pattern" to T,
+                "mora_count" to I, "level" to I, "response_ms" to I, "answered_at" to I, "device_id" to T,
+            ),
+            listOf("id"), "answered_at", MergeRule.UNION,
+        )
+        /** Mini-game rounds (BRIEF_V2 §6.9, D-286): written once, merged by union; the weekly challenge sums them. */
+        val gameScore = TableSpec(
+            "game_score",
+            listOf(
+                "id" to T, "game" to T, "score" to I, "correct" to I, "total" to I, "best_streak" to I, "duration_ms" to I,
+                "day" to T, "played_at" to I, "device_id" to T,
+            ),
+            listOf("id"), "played_at", MergeRule.UNION,
+        )
+
         /** Card rows don't sync; only the user-set suspended flag does, as its own change type. */
         const val CARD_FLAGS = "card_flags"
 
         val all = listOf(
             item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt, pathProgress, pathUnlock,
             conversation, todayBlockDone, streakFreeze, mediaDeck, mediaDeckWord, knownWord, immersionSession, readerAnnotation,
-            grammarMastery,
+            grammarMastery, pitchTestResult, gameScore,
         ).associateBy { it.name }
     }
 }

@@ -8,6 +8,7 @@ import app.tsumugi.immersion.ImmersionTargetProgress
 import app.tsumugi.l10n.AppLocale
 import app.tsumugi.l10n.L10n
 import app.tsumugi.l10n.Labels
+import app.tsumugi.study.games.GameScores
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.PathStatus
 import app.tsumugi.srs.SrsRepository
@@ -89,7 +90,7 @@ enum class LearningPhase(val label: String, val levels: IntRange) {
 }
 
 /** What a weekly challenge counts. Block challenges count finished Today blocks (`today_block_done`). */
-enum class ChallengeKind { STUDY_DAYS, REVIEWS, NEW_ITEMS, BLOCKS, IMMERSION_DAYS, SPEAKING_BLOCKS }
+enum class ChallengeKind { STUDY_DAYS, REVIEWS, NEW_ITEMS, BLOCKS, IMMERSION_DAYS, SPEAKING_BLOCKS, GAME_POINTS }
 
 data class WeeklyChallenge(val title: String, val progress: Int, val goal: Int, val kind: ChallengeKind = ChallengeKind.STUDY_DAYS) {
     val complete: Boolean get() = progress >= goal
@@ -361,7 +362,13 @@ class TodayPlanner(
                 ChallengeKind.SPEAKING_BLOCKS, "challenge.speaking", 3,
                 blocks().count { it.block == TodayBlockKind.SPEAKING.name || it.block == TodayBlockKind.SHADOWING.name },
             )
-            else -> challenge(ChallengeKind.NEW_ITEMS, "challenge.newItems", 25, reviews().filter { it.isLesson() }.distinctItems())
+            // The sixth slot alternates between new items and mini-game points (BRIEF_V2 §6.9, D-287), so the other
+            // weeks keep their challenge.
+            else -> if ((weekIndex / 6) % 2 == 0) {
+                challenge(ChallengeKind.NEW_ITEMS, "challenge.newItems", 25, reviews().filter { it.isLesson() }.distinctItems())
+            } else {
+                challenge(ChallengeKind.GAME_POINTS, "challenge.games", GAME_POINTS_GOAL, GameScores.weekPoints(db, today))
+            }
         }
     }
 
@@ -393,6 +400,8 @@ class TodayPlanner(
 
     companion object {
         const val DEFAULT_BUDGET = 20
+        /** Weekly mini-game points goal: about five good rounds of Reflex or Atom. */
+        const val GAME_POINTS_GOAL = 1500
         val BUDGET_OPTIONS = listOf(10, 20, 40, 60)
         const val REVIEWS_PER_MINUTE = 6.0
         const val MINUTES_PER_LESSON = 1.5

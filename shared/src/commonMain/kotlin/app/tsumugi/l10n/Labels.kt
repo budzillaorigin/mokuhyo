@@ -173,6 +173,7 @@ object Labels {
         put("challenge.blocks", "Finish {0} Today blocks this week", "今週「今日」のブロックを{0}個終える")
         put("challenge.immersion", "Finish the immersion block on {0} days", "{0}日間、多読・多聴ブロックを終える")
         put("challenge.speaking", "Finish {0} speaking or shadowing blocks", "会話かシャドーイングのブロックを{0}回終える")
+        put("challenge.games", "Score {0} points in Reflex and Atom this week", "今週リフレックスとアトムで{0}点取る")
 
         // Reminders.
         put("reminder.title", "Reviews are ready", "復習の時間です")

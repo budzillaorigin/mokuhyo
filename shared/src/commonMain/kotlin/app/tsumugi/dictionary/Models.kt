@@ -87,7 +87,31 @@ data class FrequencyEntry(val ord: Int, val entryId: Long, val count: Int)
 
 enum class MatchKind { EXACT, DEINFLECTED, PREFIX, ENGLISH }
 
-data class SearchHit(val entry: EntrySummary, val match: MatchKind, val deinflection: List<String> = emptyList())
+/**
+ * One search result. [deinflection] is the Deinflector's rule chain (dictionary form outward) and [term] the dictionary
+ * form it reached, for conjugated hits; [surface] is what was searched. [frequencyRank] is the word's place on the
+ * frequency list (1 = most frequent; null when not on it), for the "common" and rank chips (BRIEF_V2 §6.15).
+ */
+data class SearchHit(
+    val entry: EntrySummary,
+    val match: MatchKind,
+    val deinflection: List<String> = emptyList(),
+    val term: String? = null,
+    val surface: String? = null,
+    val frequencyRank: Int? = null,
+) {
+    /** "食べさせられなかった = 食べる + causative + passive + negative + past", or null for unconjugated hits. */
+    val inflection: InflectionBreakdown? get() = surface?.let { InflectionBreakdown.of(it, term ?: entry.headword, deinflection) }
+
+    /** Chips under the result row: common, JLPT level, frequency rank (only when ranked). */
+    val chips: ResultChips get() = ResultChips(entry.isCommon, entry.jlpt, frequencyRank)
+}
+
+/** The badges of a result row. [frequencyRank] 1 = most frequent word of the frequency list. */
+data class ResultChips(val common: Boolean, val jlpt: Int?, val frequencyRank: Int?) {
+    /** "common", "N5", "#123" in display order. */
+    val labels: List<String> get() = listOfNotNull(if (common) "common" else null, jlpt?.let { "N$it" }, frequencyRank?.let { "#$it" })
+}
 
 enum class SearchMode { EMPTY, JAPANESE, ROMAJI, ENGLISH, SENTENCE }
 

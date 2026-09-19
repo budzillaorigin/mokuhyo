@@ -186,6 +186,13 @@ private struct ActivityView: View {
                 StoryTimeView(lines: lines, questions: questions, voice: voice) { right in
                     onDone(right, nil)
                 }
+            // Phase 13 mini-games (§6.9): the game screens come with the UI pass; until then the queue can skip them.
+            case .reflex(let a):
+                Text(a.title).font(.headline)
+                Button("Next") { onDone(nil, nil) }.buttonStyle(.borderedProminent)
+            case .atom(let a):
+                Text(a.title).font(.headline)
+                Button("Next") { onDone(nil, nil) }.buttonStyle(.borderedProminent)
             }
         }
         .onDisappear {

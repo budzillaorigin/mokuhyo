@@ -350,6 +350,40 @@ def test_interactive_review_of_the_new_kinds() -> None:
         assert s["source"] == "verified" and s["verified"] is True
 
 
+def test_phonetic_series_review() -> None:
+    """Derived sound series (D-282): accept, edit and reject flip series.json, and a rebuild keeps the verdicts."""
+    import build_phonetics as bph
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tools = Path(tmp) / "tools"
+        target = tools / "packs/phonetics/series.json"
+        target.parent.mkdir(parents=True)
+        shutil.copyfile(TOOLS / "packs/phonetics/series.json", target)
+        pending = entry_ids(tools, "phonetic_series")
+        assert len(pending) >= 3 and "青" in pending, pending
+        others = [p for p in pending if p != "青"]
+        vfile = write_verdicts(
+            Path(tmp) / "verdicts.json",
+            {"kind": "phonetic_series", "id": "青", "verdict": "accept"},
+            {"kind": "phonetic_series", "id": others[0], "verdict": "edit", "edits": {"readings": "テスト"}},
+            {"kind": "phonetic_series", "id": others[1], "verdict": "reject", "notes": "not a family"},
+        )
+        report = review.ingest(vfile, root=tools)
+        assert any("build_phonetics.py" in line for line in report), report
+        by = {e["id"]: e for e in read(target)["series"]}
+        assert by["青"]["source"] == "verified" and by["青"]["reviewed"]["by"] == "owner"
+        assert by[others[0]]["readings"] == "テスト" and by[others[0]]["source"] == "verified"
+        assert "rejected" in by[others[1]] and by[others[1]]["source"] == "derived"
+        assert set(entry_ids(tools, "phonetic_series")) == set(pending) - {"青", others[0], others[1]}
+        # A re-derivation that changed every series keeps the reviewed ones and drops the rejected one from the pack.
+        data = read(target)
+        derived = {e["id"]: {**e, "members": e["members"][:2]} for e in data["series"] if not bph.reviewed(e)}
+        bph.merge_series(data, derived)
+        kept = {e["id"]: e for e in data["series"]}
+        assert kept["青"]["members"] == by["青"]["members"]
+        assert others[1] not in {e["id"] for e in bph.pack_series(data)}
+
+
 def test_every_kind_of_the_app_is_known() -> None:
     """The kinds ContentReview.kt exports (ReviewKind.code) are exactly the ones review.py ingests."""
     kt = (TOOLS.parent / "shared/src/commonMain/kotlin/app/tsumugi/review/ContentReview.kt").read_text(encoding="utf-8")

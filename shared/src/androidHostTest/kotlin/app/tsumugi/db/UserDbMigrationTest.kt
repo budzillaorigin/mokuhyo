@@ -47,7 +47,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(8L, TsumugiDatabase.Schema.version)
+        assertEquals(9L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -125,6 +125,14 @@ class UserDbMigrationTest {
         assertEquals(2L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'grammar_mastery'"))
         assertEquals(0L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'ai_paraphrase'"))
         assertEquals(emptyList(), db.coursesQueries.masteredPointIds().executeAsList())
+
+        // v8 -> v9 (8.sqm, D-284/D-286): pitch-test answers and game scores are insert-only facts that sync by union.
+        db.pitchTestQueries.insertPitchResult("r1", "p1", "PATTERN", "HEIBAN", "ODAKA", 0, "HEIBAN", 2, 1, 900, 5, "d")
+        db.pitchTestQueries.insertPitchResult("r1", "p1", "PATTERN", "HEIBAN", "HEIBAN", 1, "HEIBAN", 2, 1, 900, 6, "d")
+        db.gamesQueries.insertGameScore("g1", "REFLEX", 120, 12, 14, 7, 60_000, "2026-09-18", 5, "d")
+        assertEquals(1L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'pitch_test_result'"))
+        assertEquals(1L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'game_score'"))
+        assertEquals("ODAKA", driver.string("SELECT answer FROM pitch_test_result WHERE id = 'r1'"), "insert-only: the first answer stays")
     }
 
     private fun SqlDriver.string(sql: String): String? =

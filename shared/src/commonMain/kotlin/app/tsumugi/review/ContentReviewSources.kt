@@ -62,6 +62,36 @@ class OnomatopoeiaReviewSource(private val driver: SqlDriver) : ReviewSource {
 }
 
 /**
+ * Sound series derived by `tools/packs/build_phonetics.py` (`source = 'derived'` in the dictionary pack's
+ * `phonetic_series`, Phase 13, D-282). Not AI content, but labeled "derived" until a human confirms the family. The
+ * members (one string of kanji, head first) and readings (space-separated on'yomi) are editable; the display lists
+ * each member's on'yomi and how it matched. `review.py --ingest` applies verdicts to tools/packs/phonetics/series.json by
+ * the phonetic component.
+ */
+class PhoneticSeriesReviewSource(private val driver: SqlDriver) : ReviewSource {
+    override val kinds = setOf(ReviewKind.PHONETIC_SERIES)
+
+    override suspend fun candidates(): List<ReviewCandidate> = withContext(Dispatchers.IO) {
+        if (!driver.hasTable("phonetic_series")) return@withContext emptyList()
+        driver.rows("SELECT phonetic, readings, members FROM phonetic_series WHERE source = 'derived' ORDER BY size DESC, phonetic") { c ->
+            val id = c.getString(0)!!
+            val readings = jsonList(c.getString(1))
+            val members = (runCatching { Json.parseToJsonElement(c.getString(2)!!) as? JsonArray }.getOrNull() ?: JsonArray(emptyList()))
+                .mapNotNull { it as? JsonObject }
+            ReviewCandidate(
+                ReviewKind.PHONETIC_SERIES, id, "$id · ${readings.joinToString("・")} · ${members.size} kanji",
+                mapOf("members" to members.joinToString("") { it.str("k") }, "readings" to readings.joinToString(" ")),
+                blocks(
+                    section("Members", members.map { m -> "${m.str("k")}  ${jsonList(m["on"]?.toString()).joinToString("・")}  (${m.str("match")})" }),
+                    "Derived from KanjiVG component trees and KANJIDIC2 on'yomi; not reviewed yet.",
+                ),
+                "derived",
+            )
+        }
+    }
+}
+
+/**
  * Everything in tracks.sqlite still `source = 'llm'` (Phase 12 interest and domain tracks): words, kanji hints,
  * role-plays, dialogues, drills, can-do situations, cultural tasks and ILR readings. Ids are the source ids, or
  * `<track>:<JMdict id>` for words and `<track>:<kanji>` for kanji. `review.py --ingest` applies verdicts to
