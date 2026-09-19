@@ -20,6 +20,13 @@ struct DictionaryTests {
         #expect(results.hits.first?.entry.headword == "食べる")
     }
 
+    /// The launch smoke check in XCODE_VERIFY_BRIEF.md §2: a plain hiragana reading finds the verb.
+    @Test func readingSearchFindsVerb() async throws {
+        guard let repo = await Self.repository() else { return }
+        let results = try await repo.search(rawQuery: "たべる", limit: 40)
+        #expect(results.hits.first?.entry.headword == "食べる")
+    }
+
     @Test func englishAndRomajiSearch() async throws {
         guard let repo = await Self.repository() else { return }
         let cat = try await repo.search(rawQuery: "cat", limit: 40)
