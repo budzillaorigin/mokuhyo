@@ -15,7 +15,7 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | SKIE (runtime + Swift bridging) | shared (iOS) | Apache-2.0 | © Touchlab — https://github.com/touchlab/SKIE |
 | FSRS-6 algorithm (ported to Kotlin in `shared/srs/Fsrs.kt`, `FsrsOptimizer.kt`) | shared | MIT | Algorithm ported from py-fsrs, © Open Spaced Repetition — https://github.com/open-spaced-repetition/py-fsrs |
 | kotlinx-datetime | shared | Apache-2.0 | © JetBrains s.r.o. — https://github.com/Kotlin/kotlinx-datetime |
-| Okio | shared | Apache-2.0 | © Square, Inc. — https://github.com/square/okio |
+| Okio | shared, androidApp | Apache-2.0 | © Square, Inc. — https://github.com/square/okio |
 | Google ML Kit Text Recognition v2, Japanese (bundled model) | androidApp | ML Kit Terms of Service (free, on-device, no API key) | https://developers.google.com/ml-kit/terms — used for camera/photo OCR only (BRIEF §3.2) |
 | AndroidX Activity, Lifecycle, Jetpack Compose (UI, Material 3) | androidApp | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx |
 | AndroidX WorkManager (work-runtime 2.11.2, with its transitive AndroidX Room, Startup and Concurrent libraries) | androidApp | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx/releases/work — background model downloads (F-13) |

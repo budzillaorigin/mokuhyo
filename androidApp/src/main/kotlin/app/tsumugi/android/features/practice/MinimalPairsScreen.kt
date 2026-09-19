@@ -1,5 +1,9 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.audio.AudioKeys
+import app.tsumugi.audio.AudioSet
+import app.tsumugi.audio.PairSide as AudioPairSide
+
 import app.tsumugi.android.ui.PlayLabel
 import app.tsumugi.android.ui.JaText
 import androidx.compose.ui.res.stringResource
@@ -77,7 +81,9 @@ fun MinimalPairsScreen() {
     val target: PairWord? = pair?.let { if (playA) it.a else it.b }
     fun play() {
         // Pitch pairs share their kana, so speak the written form to get the right accent from the voice.
-        target?.let { w -> scope.launch { voices.say(if (category == MinimalPairCategory.PITCH) w.text else w.reading) } }
+        // Rule 20: the pre-rendered pair clip (accent set explicitly, D-093) when installed, else TTS.
+        val p = pair
+        target?.let { w -> scope.launch { voices.sayClip(p?.let { AudioKeys.minimalPair(it.id, if (playA) AudioPairSide.A else AudioPairSide.B) }, if (category == MinimalPairCategory.PITCH) w.text else w.reading) } }
     }
     LaunchedEffect(pair, playA) { if (pair != null) play() }
 
@@ -131,9 +137,19 @@ fun MinimalPairsScreen() {
                 }
             }
         }
-        Text(
-            stringResource(R.string.pairs_tts_note),
-            style = MaterialTheme.typography.bodySmall,
-        )
+        PairAudioNote()
+    }
+}
+
+/** Where the pair audio comes from: the bundled pre-rendered pack (D-097), or TTS with its caveat. */
+@Composable
+fun PairAudioNote() {
+    val graph = rememberGraph()
+    var packed by remember { mutableStateOf<Boolean?>(null) }
+    LaunchedEffect(Unit) { packed = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { graph.audio.isInstalled(AudioSet.MINIMAL_PAIRS) } }
+    when (packed) {
+        true -> Text(stringResource(R.string.pairs_pack_note), style = MaterialTheme.typography.bodySmall)
+        false -> Text(stringResource(R.string.pairs_tts_note), style = MaterialTheme.typography.bodySmall)
+        null -> Unit
     }
 }

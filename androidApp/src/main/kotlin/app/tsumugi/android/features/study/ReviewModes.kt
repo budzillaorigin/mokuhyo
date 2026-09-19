@@ -124,12 +124,16 @@ private fun spoken(prompt: MinimalPairPrompt, a: Boolean): String {
     return if (prompt.pair.a.reading == prompt.pair.b.reading) side.text else side.reading
 }
 
+/** The pair's pre-rendered clip key (rule 20); TTS plays when the pack lacks it. */
+private fun pairKey(prompt: MinimalPairPrompt, a: Boolean): String =
+    app.tsumugi.audio.AudioKeys.minimalPair(prompt.pair.pairId, if (a) app.tsumugi.audio.PairSide.A else app.tsumugi.audio.PairSide.B)
+
 /** MINIMAL_PAIR: hear one word (TTS until the audio pack, rule 20), pick A or B. */
 @Composable
 fun MinimalPairAnswer(prompt: MinimalPairPrompt, voices: Voices, resetKey: Any, enabled: Boolean, onSubmit: (String) -> Unit) {
     val scope = rememberCoroutineScope()
-    fun play() = scope.launch { voices.say(spoken(prompt, prompt.playA)) }
-    LaunchedEffect(resetKey) { voices.say(spoken(prompt, prompt.playA)) }
+    fun play() = scope.launch { voices.sayClip(pairKey(prompt, prompt.playA), spoken(prompt, prompt.playA)) }
+    LaunchedEffect(resetKey) { voices.sayClip(pairKey(prompt, prompt.playA), spoken(prompt, prompt.playA)) }
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(stringResource(R.string.pairs_question), style = MaterialTheme.typography.titleMedium)
         OutlinedButton(onClick = { play() }) { PlayLabel(stringResource(R.string.play_again)) }
@@ -138,7 +142,7 @@ fun MinimalPairAnswer(prompt: MinimalPairPrompt, voices: Voices, resetKey: Any, 
                 Text("${key.uppercase()} · ${side.text}（${side.reading}）", style = MaterialTheme.typography.titleMedium.japanese())
             }
         }
-        Text(stringResource(R.string.pairs_tts_note), style = MaterialTheme.typography.bodySmall)
+        app.tsumugi.android.features.practice.PairAudioNote()
     }
 }
 
@@ -149,7 +153,7 @@ fun MinimalPairReveal(prompt: MinimalPairPrompt, voices: Voices) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         listOf(true to prompt.pair.a, false to prompt.pair.b).forEach { (isA, side) ->
             val played = isA == prompt.playA
-            OutlinedButton(onClick = { scope.launch { voices.say(spoken(prompt, isA)) } }, modifier = Modifier.fillMaxWidth()) {
+            OutlinedButton(onClick = { scope.launch { voices.sayClip(pairKey(prompt, isA), spoken(prompt, isA)) } }, modifier = Modifier.fillMaxWidth()) {
                 Text(
                     "${if (isA) "A" else "B"} · ${side.text}（${side.reading}）${if (side.gloss.isNotBlank()) " — ${side.gloss}" else ""}" +
                         if (played) "  ${stringResource(R.string.pairs_played)}" else "",

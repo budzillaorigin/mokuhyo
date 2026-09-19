@@ -99,6 +99,12 @@ import app.tsumugi.android.features.study.KanaCourseScreen
 import app.tsumugi.android.features.study.KanaLessonScreen
 import app.tsumugi.android.features.study.KanaPlacementScreen
 import kotlinx.coroutines.launch
+import androidx.compose.ui.unit.dp
+import app.tsumugi.android.features.decks.CoreDeckScreen
+import app.tsumugi.android.features.decks.CreateDeckScreen
+import app.tsumugi.android.features.decks.DeckDetailScreen
+import app.tsumugi.android.features.decks.DeckNav
+import app.tsumugi.android.features.decks.DecksScreen
 
 /**
  * Content handed to the app by another app: the share sheet ("Read in Tsumugi"), the text-selection menu ("Look up"),
@@ -128,6 +134,15 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
         openEntry = { nav.push(Route.Entry(it)) },
         openKanji = { nav.push(Route.Kanji(it)) },
         openRadicals = { nav.push(Route.Radicals) },
+    )
+    val deckNav = DeckNav(
+        create = { nav.push(Route.CreateDeck(it)) },
+        openDeck = { nav.push(Route.Deck(it)) },
+        openCore = { nav.push(Route.CoreDeck(it)) },
+        openEntry = { nav.push(Route.Entry(it)) },
+        openGrammar = { nav.push(Route.GrammarPoint(it)) },
+        startLessons = { nav.push(Route.Lessons) },
+        openKnownWords = { nav.push(Route.KnownWords) },
     )
     BackHandler(enabled = nav.canGoBack) { nav.back() }
     val application = LocalContext.current.applicationContext as TsumugiApplication
@@ -242,7 +257,10 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     is Route.Lookup -> DictionarySearchScreen(dictionaryNav, route.query)
                     Route.Scan -> ScanScreen(onLookup = { nav.push(Route.Lookup(it)) })
                     Route.Library -> ReaderLibraryScreen(onOpen = { nav.push(Route.Read(it)) }, onFeeds = { nav.push(Route.Feeds) }, onAozora = { nav.push(Route.Aozora) })
-                    is Route.Read -> ReaderScreen(route.docId, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) }, onOpenAiSettings = { nav.push(Route.AiSettings) })
+                    is Route.Read -> ReaderScreen(
+                        route.docId, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) },
+                        onOpenAiSettings = { nav.push(Route.AiSettings) }, onCreateDeck = { nav.push(Route.CreateDeck(it)) },
+                    )
                     Route.Feeds -> FeedsScreen(onOpenDoc = { nav.push(Route.Read(it)) })
                     Route.Aozora -> AozoraScreen(onOpenDoc = { nav.push(Route.Read(it)) })
                     is Route.WritingPractice -> WritingPracticeScreen(route.kanji, onDone = {
@@ -259,7 +277,20 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     Route.PathLevels -> PathLevelsScreen(onOpenLevel = { nav.push(Route.PathLevel(it)) })
                     is Route.PathLevel -> PathLevelScreen(route.level, onOpenItem = { nav.push(Route.PathItem(it)) })
                     is Route.PathItem -> PathItemScreen(route.id, onOpenItem = { nav.push(Route.PathItem(it)) })
-                    Route.Settings -> SettingsScreen(onOpenAi = { nav.push(Route.AiSettings) }, onOpenIntegrations = { nav.push(Route.Integrations) })
+                    Route.Settings -> SettingsScreen(onOpenAi = { nav.push(Route.AiSettings) }, onOpenIntegrations = { nav.push(Route.Integrations) }, onOpenAudio = { nav.push(Route.AudioPacks) })
+                    Route.AudioPacks -> app.tsumugi.android.features.me.AudioPacksScreen()
+                    Route.Decks -> DecksScreen(deckNav)
+                    is Route.CreateDeck -> CreateDeckScreen(route.source, deckNav, onSaved = { id -> nav.back(); nav.push(Route.Deck(id)) })
+                    is Route.Deck -> DeckDetailScreen(route.id, deckNav, onDeleted = nav::back)
+                    is Route.CoreDeck -> CoreDeckScreen(route.id, deckNav)
+                    Route.KnownWords -> Box(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
+                        app.tsumugi.android.features.decks.KnownWordsStep(onDone = nav::back, source = app.tsumugi.coverage.KnownWords.SOURCE_MANUAL)
+                    }
+                    Route.Songs -> app.tsumugi.android.features.lyrics.SongsScreen(onOpen = { nav.push(Route.Song(it)) })
+                    is Route.Song -> app.tsumugi.android.features.lyrics.SongScreen(
+                        route.id, onLookup = { nav.push(Route.Lookup(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) },
+                        onOpenAiSettings = { nav.push(Route.AiSettings) },
+                    )
                     Route.WordLists -> WordListsScreen(onOpen = { nav.push(Route.WordList(it)) })
                     Route.Grammar -> GrammarLevelsScreen(onOpenLevel = { nav.push(Route.GrammarLevel(it)) }, onLessons = { nav.push(Route.GrammarLessons) })
                     is Route.GrammarLevel -> GrammarLevelScreen(route.level, onOpenPoint = { nav.push(Route.GrammarPoint(it)) })
@@ -275,7 +306,7 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     Route.Dialogues -> DialogueListScreen(onOpen = { nav.push(Route.DialoguePlayer(it)) })
                     is Route.DialoguePlayer -> DialoguePlayerScreen(route.id)
                     Route.MinimalPairs -> MinimalPairsScreen()
-                    Route.Media -> MediaPlayerScreen(onLookup = { nav.push(Route.Lookup(it)) }, onPodcasts = { nav.push(Route.Podcasts) })
+                    Route.Media -> MediaPlayerScreen(onLookup = { nav.push(Route.Lookup(it)) }, onPodcasts = { nav.push(Route.Podcasts) }, onCreateDeck = { nav.push(Route.CreateDeck(it)) })
                     Route.Podcasts -> PodcastsScreen(onOpen = { nav.push(Route.Podcast(it)) })
                     is Route.Podcast -> PodcastScreen(route.id, onPlay = { nav.push(Route.Episode(it)) })
                     is Route.Episode -> EpisodeScreen(route.id, onLookup = { nav.push(Route.Lookup(it)) })
@@ -345,6 +376,7 @@ private fun LearnHome(push: (Route) -> Unit) {
             Triple(R.string.title_kanji_path, R.string.learn_path_sub, Route.PathLevels),
             Triple(R.string.title_grammar, R.string.learn_grammar_sub, Route.Grammar),
             Triple(R.string.title_reading, R.string.learn_reading_sub, Route.Library),
+            Triple(R.string.title_decks, R.string.learn_decks_sub, Route.Decks),
             Triple(R.string.title_dictionary, R.string.learn_dictionary_sub, Route.Dictionary),
             Triple(R.string.title_radicals, R.string.learn_radicals_sub, Route.Radicals),
             Triple(R.string.title_draw_search, R.string.learn_draw_sub, Route.Handwriting),
@@ -414,4 +446,9 @@ private fun routeTitle(route: Route, tab: Tab): String = when (route) {
     is Route.FreeTalk -> stringResource(R.string.practice_free_talk)
     Route.Podcasts, is Route.Podcast -> stringResource(R.string.title_podcasts)
     is Route.Episode -> stringResource(R.string.title_episode)
+    Route.AudioPacks -> stringResource(R.string.title_audio_packs)
+    Route.Decks, is Route.Deck, is Route.CoreDeck -> stringResource(R.string.title_decks)
+    is Route.CreateDeck -> stringResource(R.string.deck_create)
+    Route.KnownWords -> stringResource(R.string.known_step_title)
+    Route.Songs, is Route.Song -> stringResource(R.string.title_songs)
 }

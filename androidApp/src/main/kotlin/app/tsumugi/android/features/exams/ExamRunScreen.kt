@@ -1,5 +1,8 @@
 package app.tsumugi.android.features.exams
 
+import app.tsumugi.android.platform.VoiceLine
+import app.tsumugi.audio.AudioKeys
+
 import app.tsumugi.android.ui.PlayLabel
 import app.tsumugi.android.ui.JaText
 import app.tsumugi.android.ui.ja
@@ -374,7 +377,8 @@ private fun Runner(vm: ExamRunViewModel, session: ExamSession, spec: ExamSpec) {
                         onClick = {
                             session.audioPlayed(audioKey)
                             vm.changed()
-                            scope.launch { voices.sayAll(script.map { it.text to it.voice }) }
+                            // Rule 20: the pre-rendered line (exam/<owner>/<index into the script>) when installed, else TTS.
+                            scope.launch { voices.sayAllClips(script.mapIndexed { i, l -> VoiceLine(AudioKeys.exam(audioKey, i), l.text, l.voice) }) }
                         },
                         enabled = canPlay,
                     ) { PlayLabel(stringResource(R.string.exam_play_audio)) }

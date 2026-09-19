@@ -136,6 +136,9 @@ fun MeScreen(onOpen: (MeDestination) -> Unit) {
                 }
             }
             WeeklyPatternsCard(patterns, recurring, onFreeTalk = { onOpen(MeDestination.FREE_TALK) })
+            // §6.11: the immersion roadmap and log.
+            app.tsumugi.android.features.immersion.RoadmapCard()
+            app.tsumugi.android.features.immersion.ImmersionCard()
             Text(stringResource(R.string.me_last_weeks), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
             val days = s.heatmap.takeLast(140)
             val heatmapDescription = heatmapLabel(days)

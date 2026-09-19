@@ -36,6 +36,8 @@ class TsumugiApplication : Application() {
         graph.ai.llmBridge = LlamaJni(this)
         graph.ai.sttBridge = WhisperJni(this)
         graph.ai.deviceRamGb = deviceRamGb()
+        // D-097: the pitch and minimal-pair audio ship in the APK; extract them once per version (rule 15: off main).
+        appScope.launch { runCatching { graph.audio.ensureBundled() } }
     }
 
     @Suppress("DEPRECATION") // TRIM_MEMORY_RUNNING_LOW is still delivered to foreground apps.

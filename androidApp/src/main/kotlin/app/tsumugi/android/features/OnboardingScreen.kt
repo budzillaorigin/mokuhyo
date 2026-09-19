@@ -1,6 +1,7 @@
 package app.tsumugi.android.features
 
 import app.tsumugi.android.ui.JaText
+import app.tsumugi.android.features.decks.KnownWordsStep
 import app.tsumugi.android.ui.localized
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -97,6 +98,19 @@ fun OnboardingScreen(onDone: (openImport: Boolean) -> Unit) {
                     TextButton(onClick = { answers.clear(); step = 3 }) { Text(stringResource(R.string.onboarding_skip)) }
                 }
             }
+            3 -> {
+                // §6.1 "I know these": optional, offered to non-beginners (anyone who knew a kanji, or skipped the check).
+                val offer = answers.isEmpty() || answers.values.any { it }
+                if (!offer) {
+                    LaunchedEffect(Unit) { step = 5 }
+                } else {
+                    Text(stringResource(R.string.known_offer_title), style = MaterialTheme.typography.headlineSmall)
+                    Text(stringResource(R.string.known_offer_body))
+                    Button(onClick = { step = 4 }) { Text(stringResource(R.string.known_offer_yes)) }
+                    TextButton(onClick = { step = 5 }) { Text(stringResource(R.string.onboarding_skip)) }
+                }
+            }
+            4 -> KnownWordsStep(onDone = { step = 5 }, doneLabel = stringResource(R.string.action_next))
             else -> {
                 val level = if (answers.isEmpty()) 1 else graph.onboarding.suggestedLevel(answers)
                 Text(stringResource(R.string.onboarding_done_title), style = MaterialTheme.typography.headlineSmall)

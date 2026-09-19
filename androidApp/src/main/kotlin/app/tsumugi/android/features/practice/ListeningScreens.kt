@@ -1,5 +1,8 @@
 package app.tsumugi.android.features.practice
 
+import app.tsumugi.android.platform.VoiceLine
+import app.tsumugi.audio.AudioKeys
+
 import app.tsumugi.android.ui.PlayLabel
 import androidx.annotation.StringRes
 import app.tsumugi.android.ui.JaText
@@ -131,6 +134,10 @@ fun DialoguePlayerScreen(id: String) {
 @Composable
 private fun DialoguePlayer(dialogue: Dialogue) {
     val voices = rememberVoices()
+    // §6.11: time on a dialogue counts as (active) immersion.
+    app.tsumugi.android.features.immersion.ImmersionTracker(
+        app.tsumugi.immersion.ImmersionOrigin.DIALOGUE, app.tsumugi.immersion.ImmersionMode.ACTIVE, dialogue.id, dialogue.title,
+    )
     var mode by remember { mutableStateOf(ListenMode.LISTEN) }
     var rate by remember { mutableFloatStateOf(1f) }
     val modes = ListenMode.entries.filter { m ->
@@ -170,6 +177,10 @@ private fun DialoguePlayer(dialogue: Dialogue) {
 
 private fun voiceOf(dialogue: Dialogue, line: DialogueLine): String? = dialogue.speaker(line.speaker)?.voice
 
+/** The pre-rendered clip key of a line (rule 20): `dialogue/<id>/<ord>`, where ord is the line's 0-based position. */
+private fun lineKey(dialogue: Dialogue, line: DialogueLine): String? =
+    dialogue.lines.indexOf(line).takeIf { it >= 0 }?.let { AudioKeys.dialogue(dialogue.id, it) }
+
 @Composable
 private fun ListenView(dialogue: Dialogue, voices: Voices, rate: Float) {
     val graph = rememberGraph()
@@ -202,7 +213,7 @@ private fun ListenView(dialogue: Dialogue, voices: Voices, rate: Float) {
                 for (i in range) {
                     playing = i
                     val line = dialogue.lines[i]
-                    voices.say(line.japanese, voiceOf(dialogue, line), rate)
+                    voices.sayClip(lineKey(dialogue, line), line.japanese, voiceOf(dialogue, line), rate)
                 }
             } finally {
                 playing = -1
@@ -276,7 +287,7 @@ private fun GapFillView(dialogue: Dialogue, voices: Voices, rate: Float) {
                     JaText(prompt, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
                     val playLabel = stringResource(R.string.listen_play_line, i + 1)
                     IconButton(
-                        onClick = { scope.launch { voices.say(line.japanese, voiceOf(dialogue, line), rate) } },
+                        onClick = { scope.launch { voices.sayClip(lineKey(dialogue, line), line.japanese, voiceOf(dialogue, line), rate) } },
                         modifier = Modifier.semantics { contentDescription = playLabel },
                     ) { Text("▶") }
                 }
@@ -320,7 +331,7 @@ private fun OrderView(dialogue: Dialogue, voices: Voices, rate: Float) {
     val correct = complete && picked.map { line.chunks[it] } == line.chunks
     Text(stringResource(R.string.listen_order_hint, index + 1, lines.size), style = MaterialTheme.typography.bodyMedium)
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Button(onClick = { scope.launch { voices.say(line.japanese, voiceOf(dialogue, line), rate) } }) { PlayLabel(stringResource(R.string.listen_play)) }
+        Button(onClick = { scope.launch { voices.sayClip(lineKey(dialogue, line), line.japanese, voiceOf(dialogue, line), rate) } }) { PlayLabel(stringResource(R.string.listen_play)) }
         OutlinedButton(onClick = { picked = emptyList() }) { Text(stringResource(R.string.listen_reset)) }
     }
     Card(Modifier.fillMaxWidth()) {
@@ -342,7 +353,7 @@ private fun QuestionsView(dialogue: Dialogue, voices: Voices, rate: Float) {
     val scope = rememberCoroutineScope()
     val chosen = remember { mutableStateMapOf<Int, Int>() }
     Button(onClick = {
-        scope.launch { voices.sayAll(dialogue.lines.map { it.japanese to voiceOf(dialogue, it) }, rate) }
+        scope.launch { voices.sayAllClips(dialogue.lines.map { VoiceLine(lineKey(dialogue, it), it.japanese, voiceOf(dialogue, it)) }, rate) }
     }) { PlayLabel(stringResource(R.string.listen_play_dialogue)) }
     dialogue.questions.forEachIndexed { qi, q ->
         JaText("${qi + 1}. ${q.question}", style = MaterialTheme.typography.titleSmall)

@@ -60,6 +60,8 @@ fun EntryActions(entry: DictionaryEntry) {
             enabled = inReviews == false,
         ) { Text(stringResource(if (inReviews == true) R.string.collection_in_reviews else R.string.action_add_to_reviews)) }
         OutlinedButton(onClick = { picking = true }) { Text(stringResource(R.string.collection_add_to_list)) }
+        // §6.1 "mark known": counts for coverage and decks without an SRS item.
+        app.tsumugi.android.features.decks.MarkKnownButton(entry.id)
     }
     note?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
     if (picking) {

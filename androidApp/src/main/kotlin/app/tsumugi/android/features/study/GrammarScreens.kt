@@ -4,6 +4,7 @@ import app.tsumugi.android.ui.JaText
 import app.tsumugi.android.ui.ja
 import app.tsumugi.android.ui.localized
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.semantics
@@ -109,6 +110,8 @@ fun GrammarPointScreen(id: String) {
     val d = detail ?: return Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         GrammarPointContent(d.point, d.examples)
+        // §6.4 guides library: link-only explanations elsewhere, opened in the browser.
+        app.tsumugi.android.features.reader.GuideLinks(d.point.id)
         if (d.stage == null) {
             Button(onClick = { scope.launch { graph.grammar()?.learn(listOf(d.point)); detail = graph.grammar()?.point(id) } }) { Text(stringResource(R.string.action_add_to_reviews)) }
         } else {
@@ -135,8 +138,11 @@ fun GrammarPointContent(point: GrammarPoint, examples: List<GrammarExample>) {
             point.mistakes.forEach { Text("• $it", style = MaterialTheme.typography.bodyMedium) }
         }
         Text(stringResource(R.string.dict_examples), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
-        examples.forEach { ex ->
-            Column {
+        val voices = app.tsumugi.android.platform.rememberVoices()
+        val scope = rememberCoroutineScope()
+        examples.forEachIndexed { ord, ex ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
                 Text(
                     ja(
                         buildAnnotatedString {
@@ -151,6 +157,13 @@ fun GrammarPointContent(point: GrammarPoint, examples: List<GrammarExample>) {
                     Text(ex.english, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (ex.isAiGenerated) AiBadge()
                 }
+            }
+            // Rule 20: the pre-rendered example (grammar/<point>/<ord>) when the grammar audio pack is installed.
+            val playLabel = stringResource(R.string.grammar_play_example, ord + 1)
+            androidx.compose.material3.IconButton(
+                onClick = { scope.launch { voices.sayClip(app.tsumugi.audio.AudioKeys.grammar(point.id, ord), ex.japanese) } },
+                modifier = Modifier.semantics { contentDescription = playLabel },
+            ) { Text("▶") }
             }
         }
         if (examples.any { !it.isAiGenerated }) {

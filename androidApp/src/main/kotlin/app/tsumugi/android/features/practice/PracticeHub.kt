@@ -41,6 +41,7 @@ fun PracticeHubScreen(push: (Route) -> Unit) {
         HubRow(stringResource(R.string.title_dialogues), stringResource(R.string.practice_dialogues_sub)) { push(Route.Dialogues) }
         HubRow(stringResource(R.string.title_media), stringResource(R.string.practice_media_sub)) { push(Route.Media) }
         HubRow(stringResource(R.string.title_podcasts), stringResource(R.string.practice_podcasts_sub)) { push(Route.Podcasts) }
+        HubRow(stringResource(R.string.title_songs), stringResource(R.string.practice_songs_sub)) { push(Route.Songs) }
         HubRow(stringResource(R.string.title_minimal_pairs), stringResource(R.string.practice_pairs_sub)) { push(Route.MinimalPairs) }
 
         SectionTitle(stringResource(R.string.practice_write))

@@ -33,6 +33,8 @@ class Voices(context: Context, private val graph: AppGraph) {
     private val ready = CompletableDeferred<Boolean>()
     private val pending = ConcurrentHashMap<String, CompletableDeferred<Unit>>()
     private var player: MediaPlayer? = null
+    /** Ends the file playback in progress (stop() must release a waiting [playFile] too). */
+    private var fileDone: (() -> Unit)? = null
 
     private val tts: TextToSpeech = TextToSpeech(appContext) { status ->
         val ok = status == TextToSpeech.SUCCESS && runCatching { tts.setLanguage(Locale.JAPAN) >= TextToSpeech.LANG_AVAILABLE }.getOrDefault(false)
@@ -126,9 +128,28 @@ class Voices(context: Context, private val graph: AppGraph) {
         for ((text, voice) in lines) say(text, voice, rate)
     }
 
+    /** Whether the pre-rendered clip for [key] is installed (rule 20). One file-exists check, off the main thread. */
+    suspend fun hasClip(key: String?): Boolean = key != null && withContext(Dispatchers.IO) { graph.audio.clip(key) != null }
+
+    /**
+     * Plays the pre-rendered clip for [key] ([app.tsumugi.audio.AudioKeys]) when its audio pack is installed, else
+     * speaks [text] (rule 20: system TTS / VOICEVOX is the fallback). Suspends until done; cancelling stops it.
+     */
+    suspend fun sayClip(key: String?, text: String, voice: String? = null, rate: Float = 1f) {
+        val clip = key?.let { k -> withContext(Dispatchers.IO) { graph.audio.clip(k) } }
+        if (clip != null && playFile(clip.toString(), rate)) return
+        say(text, voice, rate)
+    }
+
+    /** [sayClip] for each line in order: exam scripts and dialogues, clip by clip, with TTS for any missing line. */
+    suspend fun sayAllClips(lines: List<VoiceLine>, rate: Float = 1f) {
+        for (line in lines) sayClip(line.key, line.text, line.voice, rate)
+    }
+
     fun stop() {
         tts.stop()
         player?.let { runCatching { it.stop() } }
+        fileDone?.invoke()
         pending.values.forEach { it.complete(Unit) }
         pending.clear()
     }
@@ -157,31 +178,43 @@ class Voices(context: Context, private val graph: AppGraph) {
             File.createTempFile("tts", ".wav", appContext.cacheDir).apply { writeBytes(wav) }
         }
         try {
-            withContext(Dispatchers.Main) {
-                suspendCancellableCoroutine { cont ->
-                    val mp = MediaPlayer()
-                    player = mp
-                    mp.setOnCompletionListener { if (cont.isActive) cont.resume(Unit) }
-                    mp.setOnErrorListener { _, _, _ -> if (cont.isActive) cont.resume(Unit); true }
-                    try {
-                        mp.setDataSource(file.path)
-                        mp.prepare()
-                        mp.start()
-                    } catch (e: Exception) {
-                        if (cont.isActive) cont.resume(Unit)
-                    }
-                    cont.invokeOnCancellation { runCatching { mp.stop() } }
-                }
-            }
+            playFile(file.path, 1f)
         } finally {
-            withContext(Dispatchers.Main) {
-                player?.release()
-                player = null
-            }
             file.delete()
         }
     }
+
+    /** Plays an audio file through the stoppable player; false when it couldn't be opened (the caller falls back). */
+    private suspend fun playFile(path: String, rate: Float): Boolean = try {
+        withContext(Dispatchers.Main) {
+            suspendCancellableCoroutine { cont ->
+                val mp = MediaPlayer()
+                player = mp
+                fileDone = { if (cont.isActive) cont.resume(true) }
+                mp.setOnCompletionListener { if (cont.isActive) cont.resume(true) }
+                mp.setOnErrorListener { _, _, _ -> if (cont.isActive) cont.resume(false); true }
+                try {
+                    mp.setDataSource(path)
+                    mp.prepare()
+                    if (rate != 1f) mp.playbackParams = mp.playbackParams.setSpeed(rate)
+                    mp.start()
+                } catch (e: Exception) {
+                    if (cont.isActive) cont.resume(false)
+                }
+                cont.invokeOnCancellation { runCatching { mp.stop() } }
+            }
+        }
+    } finally {
+        withContext(kotlinx.coroutines.NonCancellable + Dispatchers.Main) {
+            fileDone = null
+            player?.release()
+            player = null
+        }
+    }
 }
+
+/** One line to play: its pre-rendered clip [key] (null = TTS only), the text, and the TTS voice hint. */
+data class VoiceLine(val key: String?, val text: String, val voice: String? = null)
 
 /** A [Voices] tied to the composition; shut down when the screen leaves. */
 @Composable

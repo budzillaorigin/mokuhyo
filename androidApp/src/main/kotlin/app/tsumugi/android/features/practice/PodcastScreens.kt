@@ -212,6 +212,7 @@ fun EpisodeScreen(id: String, onLookup: (String) -> Unit) {
                         generate = { onProgress -> graph.podcasts.transcript(e.id, graph.subtitles, MediaPcmSource(context, uri), onProgress) },
                         startPositionMs = e.positionMs,
                         onPosition = { ms -> graph.podcasts.setPosition(e.id, ms) },
+                        origin = app.tsumugi.immersion.ImmersionOrigin.PODCAST,
                     )
                 }
                 MediaStudio(source, emptyList(), emptyList(), onLookup)

@@ -60,6 +60,16 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import app.tsumugi.android.R
+import app.tsumugi.android.features.decks.CoverageOverlay
+import app.tsumugi.android.features.decks.DeckSource
+import app.tsumugi.android.features.immersion.ImmersionTracker
+import app.tsumugi.android.platform.cuesToSrt
+import app.tsumugi.immersion.ImmersionMode
+import app.tsumugi.immersion.ImmersionOrigin
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import app.tsumugi.android.app.displayName
 import app.tsumugi.android.platform.ClipCutter
 import app.tsumugi.android.platform.MediaPcmSource
@@ -100,6 +110,8 @@ class StudioSource(
     val generate: suspend (onProgress: (SubtitleProgress) -> Unit) -> GeneratedSubtitles,
     val startPositionMs: Long = 0,
     val onPosition: (suspend (Long) -> Unit)? = null,
+    /** How playing time is logged (§6.11): MEDIA for the player, PODCAST for episodes. */
+    val origin: ImmersionOrigin = ImmersionOrigin.MEDIA,
 )
 
 /**
@@ -108,7 +120,7 @@ class StudioSource(
  * an A-B loop, save a line as a listening card with its audio, and the hide-subtitle quiz.
  */
 @Composable
-fun MediaPlayerScreen(onLookup: (String) -> Unit, onPodcasts: () -> Unit) {
+fun MediaPlayerScreen(onLookup: (String) -> Unit, onPodcasts: () -> Unit, onCreateDeck: (DeckSource) -> Unit = {}) {
     val context = LocalContext.current
     val graph = rememberGraph()
     var media by rememberSaveable { mutableStateOf<String?>(null) }
@@ -117,12 +129,15 @@ fun MediaPlayerScreen(onLookup: (String) -> Unit, onPodcasts: () -> Unit) {
     var jaCues by remember { mutableStateOf<List<Cue>>(emptyList()) }
     var enCues by remember { mutableStateOf<List<Cue>>(emptyList()) }
     var error by remember { mutableStateOf<String?>(null) }
+    // Cues of a media item reopened from "Your media" (the sentence bank keeps them, D-160).
+    var bankCues by remember { mutableStateOf<List<Cue>>(emptyList()) }
 
     val mediaPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri ?: return@rememberLauncherForActivityResult
         // Keep read access across restarts of the screen (the URI is saved in rememberSaveable).
         runCatching { context.contentResolver.takePersistableUriPermission(uri, android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION) }
         media = uri.toString()
+        bankCues = emptyList()
     }
     val jaPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri -> uri?.let { jaSubs = it.toString() } }
     val enPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri -> uri?.let { enSubs = it.toString() } }
@@ -148,7 +163,13 @@ fun MediaPlayerScreen(onLookup: (String) -> Unit, onPodcasts: () -> Unit) {
         error?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
         val uriString = media
         if (uriString == null) {
-            Notice(stringResource(R.string.media_intro))
+            Notice(stringResource(R.string.media_intro_v2))
+            MyMediaList(onOpen = { locator, cues ->
+                media = locator
+                jaSubs = null
+                enSubs = null
+                bankCues = cues
+            })
         } else {
             val uri = Uri.parse(uriString)
             val source = remember(uriString) {
@@ -157,7 +178,7 @@ fun MediaPlayerScreen(onLookup: (String) -> Unit, onPodcasts: () -> Unit) {
                 val key: suspend () -> String = { cachedKey ?: mediaHash(context, uri).also { cachedKey = it } }
                 StudioSource(uri, title, key, generate = { onProgress -> graph.subtitles.generate(key(), MediaPcmSource(context, uri), "ja", onProgress) })
             }
-            MediaStudio(source, jaCues, enCues, onLookup)
+            MediaStudio(source, jaCues.ifEmpty { bankCues }, enCues, onLookup, onCreateDeck)
         }
     }
 }
@@ -171,7 +192,7 @@ private fun time(ms: Long): String {
 @OptIn(UnstableApi::class)
 @kotlin.OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun MediaStudio(source: StudioSource, loadedJa: List<Cue>, enCues: List<Cue>, onLookup: (String) -> Unit) {
+fun MediaStudio(source: StudioSource, loadedJa: List<Cue>, enCues: List<Cue>, onLookup: (String) -> Unit, onCreateDeck: ((DeckSource) -> Unit)? = null) {
     val context = LocalContext.current
     val graph = rememberGraph()
     val scope = rememberCoroutineScope()
@@ -232,6 +253,13 @@ fun MediaStudio(source: StudioSource, loadedJa: List<Cue>, enCues: List<Cue>, on
     }
     val jaCues = loadedJa.ifEmpty { generated?.cues.orEmpty() }
     val dual = remember(jaCues, enCues) { Subtitles.dual(jaCues, enCues) }
+
+    // Phase 11: immersion log while playing, the sentence bank, coverage and 1T lines (§6.1, §6.2, §6.11).
+    ImmersionTracker(source.origin, ImmersionMode.ACTIVE, source.uri.toString(), source.title, active = playing)
+    var mediaKey by remember(source.uri) { mutableStateOf<String?>(null) }
+    LaunchedEffect(source.uri) { mediaKey = runCatching { source.key() }.getOrNull() }
+    val srt = remember(jaCues) { if (jaCues.isEmpty()) null else cuesToSrt(jaCues) }
+    val oneT = rememberOneTargetCues(srt)
 
     // Hide-subtitle quiz.
     var quizMode by remember { mutableStateOf<QuizMode?>(null) }
@@ -329,6 +357,16 @@ fun MediaStudio(source: StudioSource, loadedJa: List<Cue>, enCues: List<Cue>, on
         Text(stringResource(R.string.media_add_subs), style = MaterialTheme.typography.bodySmall)
         return
     }
+    BankIndexer(source, jaCues, fromFile = loadedJa.isNotEmpty(), mediaKey)
+    val key = mediaKey
+    if (srt != null && key != null) {
+        CoverageOverlay(
+            key = key to srt.length,
+            load = { p -> graph.coverage.subtitleCoverage(key, srt, p) },
+            onCreateDeck = onCreateDeck?.let { create -> { create(DeckSource.Subtitles(source.title, srt, key)) } },
+        )
+    }
+    OneTargetStatus(oneT)
 
     if (quiz != null) {
         QuizPanel(
@@ -359,11 +397,23 @@ fun MediaStudio(source: StudioSource, loadedJa: List<Cue>, enCues: List<Cue>, on
                         )
                     }
                     if (showEn) current.english?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
-                    TextButton(onClick = {
-                        val line = current
-                        clipStatus = context.getString(R.string.clip_saving)
-                        scope.launch { clipStatus = saveClip(context, graph, source, line) }
-                    }) { Text(stringResource(R.string.clip_save)) }
+                    val target = oneT.byCue[index]
+                    target?.let { t -> Text(stringResource(R.string.onet_line, t.target), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.tertiary) }
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        TextButton(onClick = {
+                            val line = current
+                            clipStatus = context.getString(R.string.clip_saving)
+                            scope.launch { clipStatus = saveClip(context, graph, source, line) }
+                        }) { Text(stringResource(R.string.clip_save)) }
+                        // §6.2 "Mine this line": audio + frame on a Yomikiri-style card (a VOCAB card for the 1T word).
+                        TextButton(onClick = {
+                            val line = current
+                            val k = mediaKey ?: return@TextButton
+                            player.pause()
+                            clipStatus = context.getString(R.string.mine_working)
+                            scope.launch { clipStatus = mineLine(context, graph, source, k, line, target) }
+                        }, enabled = mediaKey != null) { Text(stringResource(if (target != null) R.string.mine_word else R.string.mine_line)) }
+                    }
                 }
                 clipStatus?.let { Text(it, Modifier.semantics { liveRegion = LiveRegionMode.Polite }, style = MaterialTheme.typography.bodySmall) }
             }
@@ -373,8 +423,23 @@ fun MediaStudio(source: StudioSource, loadedJa: List<Cue>, enCues: List<Cue>, on
     Text(stringResource(R.string.media_all_lines), Modifier.semantics { heading() }, style = MaterialTheme.typography.titleSmall)
     val jumpLabel = stringResource(R.string.media_jump)
     dual.forEachIndexed { i, d ->
+        val t = oneT.byCue[i]
+        val span = t?.let { targetInCue(d.japanese, it) }
         Text(
-            buildAnnotatedString { append("${time(d.startMs)}  "); if (quiz == null) append(ja(d.japanese)) else append("…") },
+            buildAnnotatedString {
+                append("${time(d.startMs)}  ")
+                if (quiz != null) {
+                    append("…")
+                } else if (span != null) {
+                    // §6.11: a line with exactly one new word, the word marked.
+                    append(ja(d.japanese.substring(0, span.first)))
+                    withStyle(SpanStyle(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary, textDecoration = TextDecoration.Underline)) { append(ja(d.japanese.substring(span.first, span.last + 1))) }
+                    append(ja(d.japanese.substring(span.last + 1)))
+                    append("  ·1T")
+                } else {
+                    append(ja(d.japanese))
+                }
+            },
             Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(onClickLabel = jumpLabel) { seekToCue(i) }.padding(vertical = 12.dp),
             style = MaterialTheme.typography.bodyMedium.japanese(),
             color = if (d == current) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,

@@ -86,3 +86,29 @@ fun DeveloperOptions() {
         Switch(on, onCheckedChange = null)
     }
 }
+
+/**
+ * The optional Immersion Kit example source (BRIEF_V2 §6.2, D-162): off by default on every device, with the terms
+ * note. Nothing is requested while it's off; results are shown live and never stored.
+ */
+@Composable
+fun ImmersionKitToggle() {
+    val graph = rememberGraph()
+    val scope = rememberCoroutineScope()
+    var on by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { on = runCatching { graph.onlineExamples.enabled() }.getOrDefault(false) }
+    Text(stringResource(R.string.settings_examples), style = MaterialTheme.typography.titleMedium)
+    Row(
+        Modifier.fillMaxWidth().heightIn(min = 48.dp).toggleable(value = on, role = Role.Switch) { v ->
+            on = v
+            scope.launch { runCatching { graph.onlineExamples.setEnabled(v) } }
+        },
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(stringResource(R.string.settings_immersion_kit, graph.onlineExamples.sourceName))
+            Text(stringResource(R.string.settings_immersion_kit_terms), style = MaterialTheme.typography.bodySmall)
+        }
+        Switch(on, onCheckedChange = null)
+    }
+}

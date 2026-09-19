@@ -103,7 +103,12 @@ fun ShadowingScreen(sentences: List<ShadowingSentence>, onDone: () -> Unit) {
             }, enabled = !finishing) { Text(stringResource(R.string.action_done)) }
             return@Column
         }
-        val clip: ClipPlayer = remember(sentence.japanese) { TtsClipPlayer(context, voices, sentence.japanese) }
+        var clip: ClipPlayer by remember(sentence.japanese) { mutableStateOf(TtsClipPlayer(context, voices, sentence.japanese)) }
+        // Rule 20: a grammar example with pre-rendered audio (grammar/<point>/<ord>) plays the pack clip instead.
+        LaunchedEffect(sentence.japanese) {
+            val ord = runCatching { graph.grammar()?.examples(sentence.pointId)?.indexOfFirst { it.japanese == sentence.japanese } }.getOrNull() ?: -1
+            if (ord >= 0) clip = app.tsumugi.android.platform.clipPlayerFor(context, graph, voices, app.tsumugi.audio.AudioKeys.grammar(sentence.pointId, ord), sentence.japanese)
+        }
         LaunchedEffect(index) {
             report = null; shadow = null; message = null; saved = null
         }
@@ -331,6 +336,7 @@ fun RecordingsScreen() {
                         side = when {
                             s?.referencePath != null -> FileClipPlayer(context, s.referencePath!!, s.reference!!)
                             s?.reference?.kind == ReferenceKind.TTS -> TtsClipPlayer(context, voices, s.reference!!.value)
+                            s?.reference?.kind == ReferenceKind.PACK_AUDIO -> graph.audio.clip(s.reference!!.value)?.let { FileClipPlayer(context, it.toString(), s.reference!!) }
                             else -> null
                         }
                     }

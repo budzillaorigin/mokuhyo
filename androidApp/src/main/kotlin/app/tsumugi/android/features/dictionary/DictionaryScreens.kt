@@ -254,16 +254,8 @@ fun EntryScreen(id: Long, nav: DictionaryNav) {
                     HorizontalDivider()
                 }
             }
-            if (detail.sentences.isNotEmpty()) {
-                Section(stringResource(R.string.dict_examples))
-                detail.sentences.forEach { s ->
-                    Column {
-                        JaText(s.japanese, style = MaterialTheme.typography.bodyLarge)
-                        Text(s.english, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    }
-                }
-                Text(stringResource(R.string.dict_examples_credit), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline)
-            }
+            // §6.2: my media first, then Tatoeba, then Immersion Kit when turned on.
+            SentencesSection(e.id, e.headword, e.reading, detail.sentences)
         }
     }
 }

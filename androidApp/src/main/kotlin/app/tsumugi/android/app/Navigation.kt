@@ -58,6 +58,16 @@ sealed interface Route {
     data object Recordings : Route
     data object ContentReview : Route
     data object PersonalCard : Route
+    data object AudioPacks : Route
+
+    // Phase 11: media decks, known words, lyrics (BRIEF_V2 §6.1, §6.3)
+    data object Decks : Route
+    data class CreateDeck(val source: app.tsumugi.android.features.decks.DeckSource, val nonce: Long = System.nanoTime()) : Route
+    data class Deck(val id: String) : Route
+    data class CoreDeck(val id: String) : Route
+    data object KnownWords : Route
+    data object Songs : Route
+    data class Song(val id: String) : Route
 
     // Kana course (G-13)
     data object Kana : Route

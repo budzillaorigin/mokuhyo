@@ -73,6 +73,8 @@ dependencies {
     implementation(libs.androidx.media3.transformer)
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.mlkit.text.recognition.japanese)
+    // Okio types appear in shared APIs the app calls (audio pack paths and installs, D-095); already in the APK via shared.
+    implementation(libs.okio)
     debugImplementation(libs.androidx.compose.ui.tooling)
 }
 

@@ -4,6 +4,37 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 11 (Android UI): immersion pipeline and audio packs (2026-09-18)
+
+The Android screens for everything Phase 11 built in the shared core, plus pre-rendered audio (rule 20). Decisions D-180…D-189. iOS is being built in parallel by another agent.
+
+### What was built (androidApp only)
+- **Audio packs (rule 20):** bundled pitch and minimal-pair packs install at startup (`ensureBundled`). Exam listening (`exam/<owner>/<line>`, play-once kept in strict modes), dialogues, minimal pairs (practice and reviews), grammar examples (new ▶ per example) and matching shadowing sentences play pre-rendered clips and fall back to TTS. Settings → Audio packs: installed sets with sizes, versions and voice credits; install from a file (SAF) or a typed server URL (no default URL, D-096), with progress and cancel; remove.
+- **Media decks:** Learn → Decks (create from text, EPUB or subtitles; from any reader document or the player's coverage card), preview with coverage, 80/90/95/98% targets, JLPT/ILR, kanji and grammar, save, deck page with "Study this deck" (interleave or deck only), Core 2k/6k/10k with "covers X% of your media".
+- **Coverage:** overlay on reader documents and in the media player, difficulty badges, library sort by coverage with background profiling, and "Your media" (sentence-bank media sorted by coverage, reopened with their cues).
+- **Known words:** "Mark known" on dictionary entries, reader words and deck rows; an optional onboarding step "I know these" through frequency bands for non-beginners, also reachable from Decks.
+- **1T:** highlighted in the reader (with a 1T tab) and in the player's subtitle list, with "Mine".
+- **Sentence bank:** the player indexes subtitles after loading or generating them; dictionary entries show Sentences from my media (clip playback, video frames), Tatoeba and, when turned on, Immersion Kit; "Mine this line" cuts the audio, grabs a frame and attaches both. Immersion Kit switch (off by default) with the terms note in Settings.
+- **Lyrics:** Practice → Songs: import audio + LRC or plain lyrics, alignment with progress and cancel, karaoke view (line and word highlight, tap a word for the dictionary), per-line translation (own or AI with badge), grammar notes, cloze mode (auto or per-word picks), .lrc export.
+- **Immersion log:** reader, media player, podcasts, songs and dialogues log automatically; Me has the roadmap card and the immersion card (heat-map, by source, manual entry, daily target).
+- **Reader:** annotations (tap-to-select, highlight/box/note/grammar span, Notes tab), Words tab with drill and "add all to reviews", screenshot import (Photo Picker → ML Kit OCR → `importScreenshots`, page pictures shown), guide links on grammar points.
+- Strings in `values` and `values-ja` (293 new).
+
+### Shared additions
+None. The app module now compiles against Okio (already shipped via `shared`) because audio-pack APIs expose Okio types.
+
+### Deferred
+- Online (Immersion Kit) lines don't play audio or show pictures (D-185), and dictionary sentence hits can't be mined yet (D-189).
+- Reader tokens still color by SRS stage only; words marked known don't change the reader's "known" styling (shared deferral above).
+- Nothing here was run on a device yet: only `:androidApp:assembleDebug` was verified.
+
+### How to run
+```
+./gradlew :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
+---
+
 ## Phase 11 (shared core, part 1): media decks, coverage, known words, difficulty, 1T (2026-09-18)
 
 BRIEF_V2 §6.1, §6.4 (difficulty score) and §6.11 (1T mining). Decisions D-150…D-159. Platform UI is not built yet; the hooks are listed below.
@@ -638,3 +669,12 @@ cd tools && uv sync && uv run ruff check .
 | Personal picture/audio cards (G-12) | | ✅ |
 | Kana course, placement check, onboarding kanji count (G-13) | | ✅ |
 | Content review behind a developer toggle (G-16) | | ✅ |
+| Audio packs: pre-rendered exam/dialogue/pair/grammar audio with TTS fallback, Settings → Audio packs (D-180) | | ✅ |
+| Media decks, Core 2k/6k/10k, deck lessons (§6.1) | | ✅ |
+| Coverage overlay, difficulty badge, library sort, "Your media" (§6.1, §6.4) | | ✅ |
+| Mark known + onboarding "I know these" (§6.1) | | ✅ |
+| Sentence bank: dictionary sentences from my media, clips + frames, mine this line, Immersion Kit switch (§6.2) | | ✅ |
+| Lyrics: songs, alignment, karaoke, translation, grammar notes, cloze (§6.3) | | ✅ |
+| Immersion log + roadmap on Me, automatic logging (§6.11) | | ✅ |
+| 1T sentences in the reader and player (§6.11) | | ✅ |
+| Reader: annotations, Words tab + drill, screenshot import, guide links (§6.4) | | ✅ |
