@@ -32,9 +32,12 @@ Self-hostable sync between a learner's devices (BRIEF §3.6, §8). Sync is optio
 | `conversation` | `id` | union (written once when the conversation ends; no audio paths, D-101) |
 | `today_block_done` | `(day, block)` | insert-only (union, D-100) |
 | `streak_freeze` | `day` | insert-only (union, D-106) |
+| `media_deck` | `id` | LWW by `updated_at`, `deleted` tombstone (D-150) |
+| `media_deck_word` | `(deck_id, entry_id)` | LWW by `updated_at`, `deleted` tombstone (D-150) |
+| `known_word` | `entry_id` | rows only ever added (a union of words); the `known` flag is LWW by `updated_at` (D-151) |
 | `card` | `id` | **not synced**: rows are created from items/reviews; `suspended` syncs as a `setting`-like LWW field via the `card_flags` change type |
 
-Not synced: `app_meta` and `device_setting` (device-local: AI engine, model, endpoint URLs and audio engine, rule 16), `daily_stats` (derived from each device's own review log by triggers), `card.blocked_reason` (derived from the installed packs), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings and personal-card pictures (unless the learner turns on recordings sync on that device, which uses blobs; see "Blobs" below), and the Phase 10 device-local tables (`recording`, `user_image`, `subtitle_cache`, `media_clip`, `podcast_feed`, `podcast_episode`, `reader_question`, `content_review_verdict`).
+Not synced: `app_meta` and `device_setting` (device-local: AI engine, model, endpoint URLs and audio engine, rule 16), `daily_stats` (derived from each device's own review log by triggers), `card.blocked_reason` (derived from the installed packs), `integration` (tokens stay on each device), `session`, reader documents (fetched content stays on the device, BRIEF §4), recordings and personal-card pictures (unless the learner turns on recordings sync on that device, which uses blobs; see "Blobs" below), and the Phase 10 device-local tables (`recording`, `user_image`, `subtitle_cache`, `media_clip`, `podcast_feed`, `podcast_episode`, `reader_question`, `content_review_verdict`), and `text_profile` (Phase 11: tokenized word counts of the device's own documents and media; coverage is always computed locally, D-153).
 
 ## Change record (wire format)
 

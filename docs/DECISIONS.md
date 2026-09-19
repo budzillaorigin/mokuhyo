@@ -864,6 +864,54 @@ Learn → Kana lists both scripts' lessons with progress, runs each lesson (kana
 ### D-140: CI runs only on demand (2026-09-18)
 The GitHub account ran out of Actions minutes: the repo is private, and macOS runner minutes count 10×. The owner chose to pause automatic CI and verify iOS builds on the Mac, so `.github/workflows/ci.yml` now triggers only on `workflow_dispatch`. Swift written after this point is compiled for the first time on the owner's Mac. Every Swift interop spot a change isn't sure about is listed in `docs/PROGRESS.md` under "iOS: unverified since CI paused", so the first Mac build can be triaged quickly. Android and shared code are still built and tested locally on every change.
 
+### D-150: Media decks: one word list per media, ordered by in-media × global frequency, synced (§6.1, 2026-09-18)
+- Any text becomes a `MediaVocabulary`: a reader document, an EPUB, a subtitle file (cues joined, one per line), a transcript or pasted text. Tokenizing uses the reader's analyzer (lattice tokenizer, dictionary lemmas, grammar detection), so decks, the reader and coverage agree on word boundaries. The learner previews the list, and `save` makes it a deck.
+- Order: score = occurrences in the media × (1 + log10(1 + Tatoeba count)), halved for words JMdict doesn't mark common. The global part comes from `entry.rank`. Ties go to more occurrences, then the more common word.
+- Function words (particles, auxiliaries, copulas, kana-only grammar expressions; `WordStats.isFunctionWord`) are left out of decks and never count in coverage: they are taught by the grammar path, and a beginner has no SRS item for は. Decks keep at most 5,000 content words.
+- Stats are stored as JSON on the deck, so every device shows the same numbers: unique words, word occurrences, words needed for 80/90/95/98% coverage from scratch, the §6.4 JLPT/ILR estimate, and kanji and grammar counts. The kanji list keeps its counts, and grammar keeps point ids.
+- Sync: `media_deck` and `media_deck_word` use LWW with a `deleted` flag. Saving a deck for a source that already has one (same kind and ref) tombstones the old deck. The text itself is never stored in the deck. Coverage of a synced deck is computed on each device from the stored word counts.
+
+### D-151: Known words: `known_word` table, and imports count through SRS (§6.1, 2026-09-18)
+- `known_word(entry_id, text, known, source, updated_at)`: rows are only ever added (a union of words), and the `known` flag is last-writer-wins, so "unmark" works across devices. The brief says "synced by union"; a pure union couldn't undo a mis-tap. Sources: MANUAL, ONBOARDING, IMPORT.
+- Imports need no extra step. WaniKani, Anki and Bunpro already create SRS items, and `KnowledgeSnapshot` counts an item at Guru or above as known (Apprentice = learning). Items are matched by JMdict id (`jmdict:<id>`, path `v:<id>`) and by written form for items without one (WaniKani-only `wk:` words, Anki notes whose primary text is the word). Bunpro imports grammar, so it adds no words.
+- Kanji are known when their kanji item is at Guru or above, or when they appear in a known word. Someone who has marked 学校 known reads 学 and 校 in it, and an intermediate learner who onboards with "I know these" would otherwise show 0% kanji.
+- Onboarding API: `KnownWords.frequencyBatch(afterOrd, size)` returns the next words of the frequency list the learner doesn't know yet, with a cursor. `markKnown` and `markUnknown` take lists of ids, and `bands()` gives known counts per 1,000-word band.
+
+### D-152: Core 2k/6k/10k come from Tatoeba + JMdict, stored in the dictionary pack (§6.1, 2026-09-18)
+- The Japanese Wikipedia dump BRIEF_V2 §7 mentions is several GB and needs a morphological pass over millions of sentences. That's too large for this machine and pipeline, so the list uses what the dictionary build already pins in `sources.lock`: Tatoeba's indexed corpus counts (recovered from `entry.rank`) and JMdict's common flags.
+- One table, `freq_word(ord, entry_id, count)`, in `dictionary.sqlite` (built by `tools/packs/build_decks.py`). Core decks are its prefixes. No new pack means no bundling change on either platform. Packs built before this step have no table: the queries return empty and the UI shows no Core decks.
+- Current build: 10,000 words, lowest Tatoeba count 4, 253 function words skipped. Tatoeba favours conversational, first-person language (彼, 私, 君 rank high), which suits learners. A Wikipedia- or subtitle-based list can replace it later with the same table.
+
+### D-153: Coverage is computed locally from cached profiles and a fingerprinted knowledge snapshot (§6.1, 2026-09-18)
+- Tokenizing is the expensive step and happens once per text. The result is a `TextProfile` (word, kanji and grammar counts plus surface measures), stored in the device-local `text_profile` table under `doc:<id>`, `media:<hash>` or `text:<fingerprint>`, and re-profiled when the text's fingerprint (length and hash) changes. Profiles never sync; they're derived from the device's own documents.
+- The learner side is a `KnowledgeSnapshot` built in one pass: stages of all started cards, the word and kanji items, and the known words. It is cached until the `knowledgeFingerprint` query changes (count and last time of reviews, items and known words). Any review, undo, lesson, import, sync pull or mark invalidates it with no listener wiring, and nothing else pays for a rebuild.
+- Coverage figures are word occurrences, not unique words. "N new words to reach 95%" counts unknown and learning words, most frequent first. The kanji percentage is also by occurrence.
+- The library sort (`librarySortedByCoverage`) uses stored profiles only. Unprofiled documents come last, and `profileLibrary(onProgress)` fills them in the background.
+
+### D-154: Deck lessons go through the existing lesson session; Today counts them without planner changes (§6.1, 2026-09-18)
+- Synced settings `decks.lessonDeck` (a media deck id, or `core2k`/`core6k`/`core10k`) and `decks.lessonMode` (OFF, INTERLEAVE, DECK_ONLY). `DeckLessons.activate(deckId)` defaults to INTERLEAVE.
+- `AppGraph.startLessons()` asks `DeckLessons.startSession(path, batch)` first. It alternates path items and deck words, path first, then fills from whichever list has more. Deck words become `PathItem`s (`jmdict:<id>`, kind VOCAB), so the lesson screens work unchanged. `LessonSession` gained a primary constructor with a completion callback (the path constructor is kept). Finished deck words go through `CollectionService.addToReviews` with their media sentence as context, and a word that is on the kanji path uses the path item.
+- Today: `DeckLessons.adjust(status)` adds deck lessons to `PathStatus.availableLessons`, or replaces them in DECK_ONLY mode. This needs no TodayPlanner or `TodayLaunch` change, because adding a `TodayLaunch` case would break the exhaustive `when` in the Android app. Limitation: without the path pack, Today has no lessons block, and deck lessons start from the deck screen.
+
+### D-155: Today's immersion block uses the §6.4 score (2026-09-18)
+`AppGraph.today()` sets `planner.difficulty = coverage.immersionDifficulty()`, a `ScoredImmersionDifficulty` over every profiled reader document. The mismatch is the distance between the learner's JLPT level and the text's continuous band position, with harder texts counting 1.5×, minus half a level when 90% or more of the words are known. Dialogues and unprofiled documents fall back to `SimpleImmersionDifficulty` (D-100). TodayPlanner itself is unchanged.
+
+### D-156: Difficulty score formula and calibration (§6.4, 2026-09-18)
+- The formula is in `docs/CONTENT_PACKS.md` "Difficulty score". The text score has four components: JLPT band coverage 0.20, sentence length 0.45, kanji density 0.05, abstract vocabulary 0.30. Labels come from cut points. The learner's score blends in the unknown-word share.
+- Weights and cut points were calibrated on the 60 DLPT reading passages with the real packs. Kanji density is flat across the bank (0+ signs are the densest), so it gets 0.05. JLPT band coverage runs 0.32–0.47 without a clear trend (signs use specialized words). Sentence length and abstract vocabulary separate the levels. Result: means rise from level 1 upward, 0+ and 1 are within about a point of each other, 98% of pairs two or more levels apart are in order, and 59/60 labels are within one step. `DifficultyCalibrationTest` asserts these properties and prints the table.
+- The bank passages are AI-drafted and unreviewed, so the calibration is provisional: re-run the test when the bank is reviewed or grows.
+
+### D-157: 1T sentences: exactly one unknown content word, one sentence per target (§6.11, 2026-09-18)
+- A sentence is 1T when exactly one distinct content word is UNKNOWN (no SRS item, not marked known). Learning words count as not unknown: they're already being studied. Function words and tokens with no dictionary entry (names, numbers, symbols) never make a sentence unknown. At least two content words are required, so a lone word isn't offered as a sentence.
+- Ranking: 2 × ln(1 + occurrences of the target in the text) + a global-frequency weight (Tatoeba, halved for uncommon words) − a small penalty outside 8–30 Japanese characters. Only the best sentence per target is kept.
+- `oneTargetSentences(documentId)` for reader documents and `oneTargetCues(subtitles)` for SRT/VTT (with cue index and times) re-tokenize the text in one pass with progress. `mineOneTarget` adds the target with the sentence as context, through `CollectionService.addToReviews`.
+
+### D-158: ILR band data is a generated Kotlin file (§6.4, 2026-09-18)
+`tools/items/ilr_bands.json` stays the one source of truth for the DLPT item gates and the app. `tools/packs/gen_ilr_bands.py` writes `shared/.../coverage/IlrBandData.kt` (bands plus the abstract lexicon), and `--check` fails when it's stale. A Kotlin file rather than a pack table, because the score must work before any pack is installed, and the data is 150 short strings.
+
+### D-159: Long texts are profiled up to 250,000 characters (2026-09-18)
+A text profile covers at most `TextProfiler.MAX_CHARS` = 250,000 characters, about one light-novel volume, cut at a line break. The profile and the deck stats carry `sampled = true` so the UI can say "first 250k characters". Profiling runs on `Dispatchers.IO` a paragraph at a time, with progress every 8 paragraphs and a cancellation check (rule 15).
+
 ---
 
 ## Open decisions (BRIEF.md §14)

@@ -211,12 +211,35 @@ internal class TableSpec(
             listOf("day"), "created_at", MergeRule.UNION,
         )
 
+        /** Media decks (BRIEF_V2 §6.1, D-150): LWW with a `deleted` tombstone flag. */
+        val mediaDeck = TableSpec(
+            "media_deck",
+            listOf(
+                "id" to T, "title" to T, "source_kind" to T, "source_ref" to T, "word_count" to I, "token_count" to I,
+                "kanji" to T, "grammar" to T, "stats" to T, "created_at" to I, "updated_at" to I, "deleted" to I,
+            ),
+            listOf("id"), "updated_at", MergeRule.LWW,
+        )
+        val mediaDeckWord = TableSpec(
+            "media_deck_word",
+            listOf(
+                "deck_id" to T, "entry_id" to I, "ord" to I, "text" to T, "reading" to T, "count" to I, "score" to ColumnType.REAL,
+                "context" to T, "updated_at" to I, "deleted" to I,
+            ),
+            listOf("deck_id", "entry_id"), "updated_at", MergeRule.LWW,
+        )
+        /** Words marked known: rows are only ever added (a union of words); the known flag is LWW (D-151). */
+        val knownWord = TableSpec(
+            "known_word", listOf("entry_id" to I, "text" to T, "known" to I, "source" to T, "updated_at" to I),
+            listOf("entry_id"), "updated_at", MergeRule.LWW,
+        )
+
         /** Card rows don't sync; only the user-set suspended flag does, as its own change type. */
         const val CARD_FLAGS = "card_flags"
 
         val all = listOf(
             item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt, pathProgress, pathUnlock,
-            conversation, todayBlockDone, streakFreeze,
+            conversation, todayBlockDone, streakFreeze, mediaDeck, mediaDeckWord, knownWord,
         ).associateBy { it.name }
     }
 }

@@ -1,0 +1,81 @@
+-- User database v5 → v6 (BRIEF_V2 §6.1, §6.4, §6.11; DECISIONS D-150…D-159). databases/5.db is the v5 snapshot this
+-- migration starts from. media_deck, media_deck_word and known_word sync (LWW; triggers below); text_profile is a
+-- device-local cache of tokenized texts.
+
+CREATE TABLE media_deck (
+    id TEXT NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    source_kind TEXT NOT NULL,
+    source_ref TEXT,
+    word_count INTEGER NOT NULL,
+    token_count INTEGER NOT NULL,
+    kanji TEXT NOT NULL,
+    grammar TEXT NOT NULL,
+    stats TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE media_deck_word (
+    deck_id TEXT NOT NULL,
+    entry_id INTEGER NOT NULL,
+    ord INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    reading TEXT,
+    count INTEGER NOT NULL,
+    score REAL NOT NULL,
+    context TEXT,
+    updated_at INTEGER NOT NULL,
+    deleted INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (deck_id, entry_id)
+);
+CREATE INDEX media_deck_word_order ON media_deck_word(deck_id, ord);
+
+CREATE TABLE known_word (
+    entry_id INTEGER NOT NULL PRIMARY KEY,
+    text TEXT NOT NULL,
+    known INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    updated_at INTEGER NOT NULL
+);
+
+CREATE TABLE text_profile (
+    source_key TEXT NOT NULL PRIMARY KEY,
+    fingerprint TEXT NOT NULL,
+    profile TEXT NOT NULL,
+    created_at INTEGER NOT NULL
+);
+
+CREATE TRIGGER sync_media_deck_insert AFTER INSERT ON media_deck
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('media_deck', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_media_deck_update AFTER UPDATE ON media_deck
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('media_deck', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_media_deck_word_insert AFTER INSERT ON media_deck_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at)
+    VALUES ('media_deck_word', new.deck_id || char(31) || new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_media_deck_word_update AFTER UPDATE ON media_deck_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at)
+    VALUES ('media_deck_word', new.deck_id || char(31) || new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_known_word_insert AFTER INSERT ON known_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('known_word', new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_known_word_update AFTER UPDATE ON known_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('known_word', new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;

@@ -47,7 +47,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(5L, TsumugiDatabase.Schema.version)
+        assertEquals(6L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -93,5 +93,18 @@ class UserDbMigrationTest {
         assertTrue(db.contentReviewQueries.allVerdicts().executeAsList().isEmpty())
         driver.exec("INSERT INTO recording(id, kind, file_name, mime, duration_ms, size_bytes, origin_device, created_at) VALUES ('r', 'FREE', 'r.m4a', 'audio/mp4', 1, 1, 'd', 0)")
         assertEquals(0L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'recording'"))
+
+        // v5 -> v6 (5.sqm, D-150…D-159): media decks and known words sync; text profiles stay on the device.
+        val beforeDecks = driver.long("SELECT count(*) FROM change_log")!!
+        db.decksQueries.insertDeck("d1", "Episode 1", "SUBTITLES", "hash", 1, 3, "[]", "[]", "{}", 0, 0)
+        db.decksQueries.insertDeckWordIfAbsent("d1", 1467640, 0, "猫", "ねこ", 3, 3.0, null, 0)
+        db.decksQueries.insertKnownIfAbsent(1358280, "食べる", 1, "MANUAL", 0)
+        db.decksQueries.putProfile("doc:x", "1:1", "{}", 0)
+        assertEquals(beforeDecks + 3, driver.long("SELECT count(*) FROM change_log"))
+        assertEquals("d11467640", driver.string("SELECT row_key FROM change_log WHERE table_name = 'media_deck_word'"))
+        assertEquals(listOf(1358280L), db.decksQueries.knownWordIds().executeAsList().map { it.entry_id })
     }
+
+    private fun SqlDriver.string(sql: String): String? =
+        executeQuery(null, sql, { c -> QueryResult.Value(if (c.next().value) c.getString(0) else null) }, 0).value
 }
