@@ -253,6 +253,8 @@ private fun OpiResults(vm: OpiViewModel) {
         RatingView(rating)
     }
     if (vm.saved) Text(stringResource(R.string.exam_saved), style = MaterialTheme.typography.bodySmall)
+    // §6.16: where the interview checked the floor, where it probed above it, and where speech broke down.
+    session?.let { OpiProbeMapView(it.probeMap()) }
     HorizontalDivider()
     Text(stringResource(R.string.opi_transcript), style = MaterialTheme.typography.titleMedium)
     val english = vm.asked.associate { it.japanese to it.english }

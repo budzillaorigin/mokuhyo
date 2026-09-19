@@ -111,6 +111,8 @@ fun OnboardingScreen(onDone: (openImport: Boolean) -> Unit) {
                 }
             }
             4 -> KnownWordsStep(onDone = { step = 5 }, doneLabel = stringResource(R.string.action_next))
+            // §6.5: optional interest tracks; the step skips itself when the tracks pack has none.
+            5 -> app.tsumugi.android.features.tracks.TracksOnboardingStep(onDone = { step = 6 })
             else -> {
                 val level = if (answers.isEmpty()) 1 else graph.onboarding.suggestedLevel(answers)
                 Text(stringResource(R.string.onboarding_done_title), style = MaterialTheme.typography.headlineSmall)

@@ -286,6 +286,47 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     Route.KnownWords -> Box(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
                         app.tsumugi.android.features.decks.KnownWordsStep(onDone = nav::back, source = app.tsumugi.coverage.KnownWords.SOURCE_MANUAL)
                     }
+                    // Phase 12 (BRIEF_V2 §6.4–§6.10)
+                    Route.GradedReaders -> app.tsumugi.android.features.readers.GradedLibraryScreen(onOpen = { nav.push(Route.GradedStory(it)) })
+                    is Route.GradedStory -> app.tsumugi.android.features.readers.GradedStoryScreen(
+                        route.id, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenAiSettings = { nav.push(Route.AiSettings) },
+                    )
+                    Route.Tracks -> app.tsumugi.android.features.tracks.TracksScreen(onOpen = { nav.push(Route.Track(it)) })
+                    is Route.Track -> app.tsumugi.android.features.tracks.TrackScreen(
+                        route.id,
+                        onOpenScenario = { nav.push(Route.Roleplay(it)) },
+                        onOpenDialogue = { nav.push(Route.DialoguePlayer(it)) },
+                        onOpenDrills = { trackId, type -> nav.push(Route.TrackDrills(trackId, type)) },
+                        onOpenPerformance = { nav.push(Route.Performance(it)) },
+                        onOpenKanji = { nav.push(Route.Kanji(it)) },
+                        onOpenEntry = { nav.push(Route.Entry(it)) },
+                        onStartLessons = { nav.push(Route.Lessons) },
+                    )
+                    is Route.TrackDrills -> app.tsumugi.android.features.tracks.TrackDrillsScreen(route.trackId, route.type)
+                    is Route.Performance -> app.tsumugi.android.features.tracks.PerformanceScreen(route.drillId, route.toString())
+                    Route.Courses -> app.tsumugi.android.features.courses.CoursesScreen(onOpenLevel = { nav.push(Route.Course(it)) })
+                    is Route.Course -> app.tsumugi.android.features.courses.CourseScreen(
+                        route.level,
+                        onStartExam = { nav.push(Route.ExamRun(it)) },
+                        onOpenGrammar = { nav.push(Route.GrammarPoint(it)) },
+                        onOpenKanji = { nav.push(Route.Kanji(it)) },
+                        onOpenEntry = { nav.push(Route.Entry(it)) },
+                        onOpenRemaining = { nav.push(Route.CourseRemaining(it)) },
+                    )
+                    is Route.CourseRemaining -> app.tsumugi.android.features.courses.CourseRemainingScreen(
+                        route.level,
+                        onOpenGrammar = { nav.push(Route.GrammarPoint(it)) },
+                        onOpenKanji = { nav.push(Route.Kanji(it)) },
+                        onOpenEntry = { nav.push(Route.Entry(it)) },
+                        onStartExam = { nav.push(Route.ExamRun(it)) },
+                    )
+                    Route.Onomatopoeia -> app.tsumugi.android.features.onomatopoeia.OnomatopoeiaScreen(
+                        onOpenWord = { nav.push(Route.OnomatopoeiaWord(it)) }, onQuiz = { nav.push(Route.OnomatopoeiaQuiz()) },
+                    )
+                    is Route.OnomatopoeiaWord -> app.tsumugi.android.features.onomatopoeia.OnomatopoeiaWordScreen(route.entryId, onOpenEntry = { nav.push(Route.Entry(it)) })
+                    is Route.OnomatopoeiaQuiz -> app.tsumugi.android.features.onomatopoeia.OnomatopoeiaQuizScreen(route.toString())
+                    Route.DrillSets -> app.tsumugi.android.features.practice.DrillSetsScreen(onOpen = { nav.push(Route.DrillSetPlayer(it)) })
+                    is Route.DrillSetPlayer -> app.tsumugi.android.features.practice.DrillSetPlayerScreen(route.id)
                     Route.Songs -> app.tsumugi.android.features.lyrics.SongsScreen(onOpen = { nav.push(Route.Song(it)) })
                     is Route.Song -> app.tsumugi.android.features.lyrics.SongScreen(
                         route.id, onLookup = { nav.push(Route.Lookup(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) },
@@ -375,7 +416,11 @@ private fun LearnHome(push: (Route) -> Unit) {
             Triple(R.string.title_kana, R.string.learn_kana_sub, Route.Kana),
             Triple(R.string.title_kanji_path, R.string.learn_path_sub, Route.PathLevels),
             Triple(R.string.title_grammar, R.string.learn_grammar_sub, Route.Grammar),
+            Triple(R.string.title_courses, R.string.learn_courses_sub, Route.Courses),
             Triple(R.string.title_reading, R.string.learn_reading_sub, Route.Library),
+            Triple(R.string.title_graded_readers, R.string.learn_graded_sub, Route.GradedReaders),
+            Triple(R.string.title_tracks, R.string.learn_tracks_sub, Route.Tracks),
+            Triple(R.string.title_onomatopoeia, R.string.learn_onomatopoeia_sub, Route.Onomatopoeia),
             Triple(R.string.title_decks, R.string.learn_decks_sub, Route.Decks),
             Triple(R.string.title_dictionary, R.string.learn_dictionary_sub, Route.Dictionary),
             Triple(R.string.title_radicals, R.string.learn_radicals_sub, Route.Radicals),
@@ -451,4 +496,15 @@ private fun routeTitle(route: Route, tab: Tab): String = when (route) {
     is Route.CreateDeck -> stringResource(R.string.deck_create)
     Route.KnownWords -> stringResource(R.string.known_step_title)
     Route.Songs, is Route.Song -> stringResource(R.string.title_songs)
+    Route.GradedReaders, is Route.GradedStory -> stringResource(R.string.title_graded_readers)
+    Route.Tracks -> stringResource(R.string.title_tracks)
+    is Route.Track -> stringResource(R.string.title_track)
+    is Route.TrackDrills -> stringResource(R.string.title_track_drills)
+    is Route.Performance -> stringResource(R.string.title_performance)
+    Route.Courses -> stringResource(R.string.title_courses)
+    is Route.Course -> stringResource(R.string.title_course, route.level)
+    is Route.CourseRemaining -> stringResource(R.string.title_course_remaining, route.level)
+    Route.Onomatopoeia, is Route.OnomatopoeiaWord -> stringResource(R.string.title_onomatopoeia)
+    is Route.OnomatopoeiaQuiz -> stringResource(R.string.title_onomatopoeia_quiz)
+    Route.DrillSets, is Route.DrillSetPlayer -> stringResource(R.string.title_drill_sets)
 }

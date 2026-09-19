@@ -1,5 +1,8 @@
 package app.tsumugi.android.features.exams
 
+import app.tsumugi.exam.dlpt.DlptRange
+import androidx.compose.runtime.mutableStateMapOf
+
 import app.tsumugi.android.ui.JaText
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -78,8 +81,14 @@ sealed interface ExamSpec {
         override val strict get() = false
     }
 
-    data class Dlpt(val exam: ExamKind, val minutes: Int) : ExamSpec {
-        override val title get() = "${exam.title} · ${if (minutes >= 180) "full length" else "$minutes min"}"
+    /** [range]/[textTypes]: the upper-range form and the text-type filter (BRIEF_V2 §6.16, G-08; empty = all types). */
+    data class Dlpt(
+        val exam: ExamKind,
+        val minutes: Int,
+        val range: DlptRange = DlptRange.LOWER,
+        val textTypes: Set<String> = emptySet(),
+    ) : ExamSpec {
+        override val title get() = "${exam.title}${if (range == DlptRange.UPPER) " (upper)" else ""} · ${if (minutes >= 180) "full length" else "$minutes min"}"
         override val strict get() = true
     }
 
@@ -96,7 +105,8 @@ fun ExamSpec.displayTitle(): String = when (this) {
     is ExamSpec.JlptMock -> stringResource(R.string.exam_title_mock, level)
     is ExamSpec.JlptSection -> "N$level · $sectionTitle"
     is ExamSpec.JlptType -> "N$level · " + (JlptItemType.of(type)?.english ?: type)
-    is ExamSpec.Dlpt -> "${exam.title} · " + if (minutes >= 180) stringResource(R.string.exam_full_length) else stringResource(R.string.minutes_short, minutes)
+    is ExamSpec.Dlpt -> exam.title + (if (range == DlptRange.UPPER) " " + stringResource(R.string.dlpt_upper_short) else "") + " · " +
+        (if (minutes >= 180) stringResource(R.string.exam_full_length) else stringResource(R.string.minutes_short, minutes))
     is ExamSpec.Resume -> title
 }
 
@@ -114,7 +124,17 @@ fun ExamHubScreen(onStart: (ExamSpec) -> Unit, onOpi: () -> Unit, onOpenAttempt:
     var error by remember { mutableStateOf<String?>(null) }
     var attempt by remember { mutableIntStateOf(0) }
     var confirmDiscard by remember { mutableStateOf(false) }
+    var dlptRange by remember { mutableStateOf(DlptRange.LOWER) }
+    val dlptTypes = remember { mutableStateMapOf<ExamKind, Set<String>>() }
+    var dlptTextTypes by remember { mutableStateOf<Map<ExamKind, List<Pair<String, Int>>>>(emptyMap()) }
     val scope = rememberCoroutineScope()
+    LaunchedEffect(dlptRange, loaded) {
+        if (!loaded) return@LaunchedEffect
+        dlptTextTypes = runCatching {
+            val exams = graph.exams()
+            listOf(ExamKind.DLPT_READING, ExamKind.DLPT_LISTENING).associateWith { exams.dlptTextTypes(it, dlptRange) }
+        }.getOrDefault(emptyMap())
+    }
     // Re-read on every return to the hub, so a finished or abandoned attempt updates the resume card.
     LaunchedEffect(attempt) {
         error = null
@@ -171,16 +191,48 @@ fun ExamHubScreen(onStart: (ExamSpec) -> Unit, onOpi: () -> Unit, onOpenAttempt:
         HorizontalDivider()
         SectionTitle(stringResource(R.string.exam_dlpt_title))
         Text(stringResource(R.string.exam_dlpt_hint), style = MaterialTheme.typography.bodySmall)
+        // §6.16 / G-08: lower (0+–3) or upper (3–4) range, and an optional text-type filter per test.
+        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            DlptRange.entries.forEach { r ->
+                FilterChip(
+                    dlptRange == r, { dlptRange = r; dlptTypes.clear() },
+                    { Text(stringResource(if (r == DlptRange.UPPER) R.string.dlpt_range_upper else R.string.dlpt_range_lower)) },
+                    Modifier.semantics { role = Role.RadioButton },
+                )
+            }
+        }
         listOf(ExamKind.DLPT_READING, ExamKind.DLPT_LISTENING).forEach { kind ->
-            val available = coverage.filter { it.exam == kind }.sumOf { it.total }
+            val available = coverage.filter { it.exam == kind && it.level in dlptRange.labels }.sumOf { it.total }
             Text(stringResource(R.string.exam_kind_items, kind.title, available), style = MaterialTheme.typography.titleSmall)
             if (available == 0) {
-                Text(stringResource(R.string.exam_dlpt_none), style = MaterialTheme.typography.bodySmall)
+                Text(
+                    stringResource(if (dlptRange == DlptRange.UPPER) R.string.dlpt_upper_none else R.string.exam_dlpt_none),
+                    style = MaterialTheme.typography.bodySmall,
+                )
             } else {
+                val types = dlptTextTypes[kind].orEmpty()
+                val picked = dlptTypes[kind].orEmpty()
+                if (types.isNotEmpty()) {
+                    Text(stringResource(R.string.dlpt_text_types), style = MaterialTheme.typography.labelLarge)
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        FilterChip(picked.isEmpty(), { dlptTypes[kind] = emptySet() }, { Text(stringResource(R.string.filter_all)) })
+                        types.forEach { (type, count) ->
+                            FilterChip(
+                                type in picked,
+                                { dlptTypes[kind] = if (type in picked) picked - type else picked + type },
+                                { Text("${dlptTextTypeLabel(type)} · $count") },
+                            )
+                        }
+                    }
+                    if (picked.isNotEmpty()) {
+                        val items = types.filter { it.first in picked }.sumOf { it.second }
+                        Text(stringResource(R.string.dlpt_filtered_items, items), style = MaterialTheme.typography.bodySmall)
+                    }
+                }
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     listOf(180, 60, 30).forEach { minutes ->
                         val label = if (minutes >= 180) stringResource(R.string.exam_dlpt_full) else stringResource(R.string.minutes_short, minutes)
-                        OutlinedButton(onClick = { onStart(ExamSpec.Dlpt(kind, minutes)) }) { Text(label) }
+                        OutlinedButton(onClick = { onStart(ExamSpec.Dlpt(kind, minutes, dlptRange, picked)) }) { Text(label) }
                     }
                 }
             }
@@ -244,4 +296,40 @@ private fun ResumeCard(a: InProgressAttempt, onResume: () -> Unit, onDiscard: ()
             }
         }
     }
+}
+
+/** A DLPT passage text type in the UI language; unknown types (newer banks) show as written. */
+@Composable
+fun dlptTextTypeLabel(type: String): String {
+    val id = when (type) {
+        "commentary" -> R.string.dlpt_tt_commentary
+        "editorial" -> R.string.dlpt_tt_editorial
+        "essay" -> R.string.dlpt_tt_essay
+        "liaison" -> R.string.dlpt_tt_liaison
+        "announcement" -> R.string.dlpt_tt_announcement
+        "literary" -> R.string.dlpt_tt_literary
+        "academic" -> R.string.dlpt_tt_academic
+        "news" -> R.string.dlpt_tt_news
+        "discussion" -> R.string.dlpt_tt_discussion
+        "notice" -> R.string.dlpt_tt_notice
+        "interview" -> R.string.dlpt_tt_interview
+        "conversation" -> R.string.dlpt_tt_conversation
+        "lecture" -> R.string.dlpt_tt_lecture
+        "voicemail" -> R.string.dlpt_tt_voicemail
+        "sign" -> R.string.dlpt_tt_sign
+        "narrative" -> R.string.dlpt_tt_narrative
+        "email" -> R.string.dlpt_tt_email
+        "column" -> R.string.dlpt_tt_column
+        "broadcast" -> R.string.dlpt_tt_broadcast
+        "schedule" -> R.string.dlpt_tt_schedule
+        "report" -> R.string.dlpt_tt_report
+        "instructions" -> R.string.dlpt_tt_instructions
+        "speech" -> R.string.dlpt_tt_speech
+        "memo" -> R.string.dlpt_tt_memo
+        "letter" -> R.string.dlpt_tt_letter
+        "label" -> R.string.dlpt_tt_label
+        "briefing" -> R.string.dlpt_tt_briefing
+        else -> null
+    }
+    return id?.let { stringResource(it) } ?: type.replace('_', ' ')
 }

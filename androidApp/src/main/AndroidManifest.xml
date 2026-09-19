@@ -9,6 +9,10 @@
     <!-- Model downloads keep running in the background as a WorkManager foreground worker (F-13). -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <!-- Hands-free speaking drills keep playing with the screen off (DrillPlaybackService, BRIEF_V2 §6.10). The wake
+         lock keeps the pauses between prompts on time while the screen is off; it is held only while a drill plays. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Model downloads warn before using a metered (mobile data) connection. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Speaking practice: recordings stay on the device (see platform/AudioCapture.kt). -->
@@ -113,6 +117,12 @@
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
             tools:node="merge" />
+
+        <!-- Hands-free drill-set playback: notification + media session controls (platform/DrillPlayer.kt). -->
+        <service
+            android:name=".platform.DrillPlaybackService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
     </application>
 
 </manifest>

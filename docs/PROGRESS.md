@@ -4,6 +4,58 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 12 (Android UI): readers, tracks, courses, onomatopoeia, drill sets, OPI map, DLPT filters (2026-09-18)
+
+The Android screens for the Phase 12 shared hooks. Decisions D-250…D-259. iOS is being built in parallel by another agent.
+
+### What was built (androidApp only)
+- **Graded readers** (Learn → Graded readers):
+  - The library groups stories by level, N6 "Level 0" to N1. It has genre chips, a difficulty badge and an AI badge.
+  - The story view has four tabs:
+    - **Read:** read-along from the readers audio pack, which highlights the spoken sentence. Without the pack, each sentence has a TTS ▶.
+    - **Words:** the story's vocabulary list.
+    - **Quiz:** the comprehension quiz (`submitQuiz`).
+    - **Tasks:** the prediction question, skim/scan with a timer, close reading, and a Japanese summary graded by the model (`gradeSummary`, with the AI badge).
+- **Tracks:**
+  - An optional onboarding step, and Learn → Tracks for selecting or switching tracks.
+  - A track page with tabs for words, kanji, scenarios (open in role-play), dialogues (open in the listening player), drills, can-do checklists, cultural tasks, readings and links.
+  - Drill screens for keigo, email templates with inline slots, fill-in, synonym/antonym, usage ○/×, meaning, and perform mode. In perform mode the prompts fade over rounds, and each line is spoken to the recognizer or self-rated.
+- **Courses** (Learn → JLPT courses):
+  - The overview shows N5–N1 progress bars.
+  - Each level's course has modules with step bars. Quiz steps open a JLPT type drill and mock steps open a JLPT section.
+  - Grammar points have mastery checkboxes, also on the grammar point screen.
+  - A "one book to pass" view lists what remains.
+- **Monolingual mode:**
+  - Settings has a switch and a "from level" picker.
+  - Grammar points show the Japanese explanation, with an English chip.
+  - Dictionary entries show the cached Japanese paraphrase, or a "Write one with AI" button. It's labeled AI and never generated on lists.
+- **Onomatopoeia** (Learn):
+  - Theme tiles with the SVG glyphs, a type filter and search.
+  - A word detail with the feel line, glosses and Tatoeba examples, each read by TTS.
+  - The two-way quiz.
+- **Drill sets** (Practice → Drill sets): a hands-free player that runs prompt → pause → model answer → repeat.
+  - Pause presets (short, default, long, fixed 3/5/8 s) and repeat on/off.
+  - Skip and back.
+  - Screen-off playback through a `mediaPlayback` foreground service with a MediaSession: headset, lock-screen and notification controls.
+- **Natural dialogues:** fillers are greyed via `segments()`, and overlapping lines are shown side by side.
+- **OPI:** the results screen has a probe map: level-check and probe turns by level and outcome, the working-level line, breakdowns, and domains covered and missing.
+- **DLPT:** the exam hub has a lower/upper range picker and a text-type filter with item counts.
+- Strings are in `values`/`values-ja` (`strings.xml` plus `strings_p12{a,b,c}.xml`).
+
+### Shared additions
+None.
+
+### Deferred
+- **Graded readers:** no furigana in the story view (the pack's ruby hints aren't used yet).
+- **Drill player:** no audio focus, and no POST_NOTIFICATIONS prompt of its own. Without the permission it still plays; the notification is just hidden.
+- **Overlapping dialogue lines** still play one after the other.
+- **Not run on a device:** only `:androidApp:assembleDebug` was verified.
+
+### How to run
+```
+./gradlew --no-daemon :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
 ## Phase 12: listening, speaking and exam content (2026-09-18)
 
 BRIEF_V2 §8 Phase 12, §6.10, §6.16, G-08 and the Appendix A content findings. Decisions D-220…D-229. The content was drafted by Claude (owner decision), so everything is `source: "llm"` / unverified with the AI badge until reviewed (rules 10, 19). The graded readers and tracks are separate Phase 12 work.
@@ -1074,3 +1126,11 @@ cd tools && uv sync && uv run ruff check .
 | Immersion log + roadmap on Me, automatic logging (§6.11) | | ✅ |
 | 1T sentences in the reader and player (§6.11) | | ✅ |
 | Reader: annotations, Words tab + drill, screenshot import, guide links (§6.4) | | ✅ |
+| Graded readers: library, read-along, words, quiz, genre tasks, AI summary grading (§6.4) | | ✅ |
+| Tracks: onboarding step, select/switch, track page, keigo/email/fill-in/synonym/usage/meaning drills, perform mode (§6.5) | | ✅ |
+| JLPT courses: modules, progress, mastery checkboxes, "one book to pass" (§6.6) | | ✅ |
+| Monolingual mode: setting, Japanese grammar explanations, AI word paraphrase on demand (§6.6) | | ✅ |
+| Onomatopoeia: themes with glyphs, filter, search, detail, quiz (§6.8) | | ✅ |
+| Drill sets: hands-free player, pause presets, screen-off playback (§6.10) | | ✅ (foreground service + MediaSession) |
+| Natural dialogues: greyed fillers, overlapping lines side by side (§6.10) | | ✅ |
+| OPI probe map; DLPT range and text-type filter (§6.16) | | ✅ |

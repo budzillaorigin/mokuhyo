@@ -114,3 +114,18 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] Reader library → Screenshots: pick 2 pictures. Progress shows per picture, and the document opens with its page strip.
 - [ ] A grammar point shows its Guides links, and they open in Safari.
 - [ ] Me: the Immersion card and the Roadmap card show. Log time by hand, change the daily target, and delete an entry.
+
+## Phase 12 on Android: readers, tracks, courses, onomatopoeia, drill sets
+- [ ] Learn → Graded readers: the levels run from Level 0 to N1 with counts, and the genre chips filter the list. Open a story: it has a difficulty badge and the AI badge. Without the readers audio pack, each sentence's ▶ reads it with TTS. Install `audio-readers.zip`: Play all highlights each sentence as it's spoken, and tapping a sentence plays from there.
+- [ ] In a story, answer the quiz: the score shows, and after three stories the roadmap's comprehension figure appears on Me. In Tasks, start the skim timer (the text hides when it ends), then write a Japanese summary and grade it. With a model, the scores and feedback show with the AI badge. Without one, a clear reason and an "Open AI settings" action show.
+- [ ] A fresh install shows the tracks step in onboarding; pick Business. Learn → Tracks shows it selected. "Switch to only this" on Gaming changes the selection, and Today's lessons include Gaming words.
+- [ ] On a track page, open a scenario (role-play starts) and a dialogue (the listening player opens). Tick a can-do statement, sync, and check it's ticked on the second device.
+- [ ] Business → keigo drills: type the answer in katakana or with 。 and it still counts. For an email drill, fill every slot and check it: the model email shows.
+- [ ] Performing → a performance: speak your line and it's checked against the script. Self-rate a line. Pass a round: the prompts fade (half → initial → cue only), and after the cue-only round the session finishes.
+- [ ] Learn → JLPT courses: N5–N1 bars show. Open N4: tick a grammar point's mastery box, and the module bar moves. The quiz step opens a type drill, the mock step opens a section, and "What remains" lists what's left. Sync: the tick shows on the second device.
+- [ ] Settings → monolingual mode on, from N3: an N2 grammar point shows the Japanese explanation (English chip to switch). An N2 word's entry offers "Write one with AI"; the result is badged, and reopening the entry shows it cached. Word lists never trigger a model call.
+- [ ] Learn → Onomatopoeia: 12 theme tiles show their glyphs in light and dark mode. Filter by 擬情語, search きらきら, open it: feel line, glosses and examples, and ▶ reads them. The quiz works both ways and reveals each option after answering.
+- [ ] Practice → Drill sets: open a grammar set, choose Short, press Play, and lock the screen. The prompt, pause, answer and repeat keep their timing. Headset and lock-screen next/previous work, and the notification's pause stops it. Finishing removes the notification.
+- [ ] A natural dialogue (N4 natural): fillers show in grey, and an overlap pair sits side by side.
+- [ ] Finish an OPI interview: the probe map shows circles and diamonds by level, colored by outcome, with breakdown questions listed and the domains covered and missing. TalkBack reads a summary of the chart.
+- [ ] Exams → DLPT: switch to the upper range; the counts change. Pick "Editorial" and start a 30-min reading: every passage is an editorial.

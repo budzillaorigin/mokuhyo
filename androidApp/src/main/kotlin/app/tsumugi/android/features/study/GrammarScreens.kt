@@ -108,8 +108,15 @@ fun GrammarPointScreen(id: String) {
     var detail by remember(id) { mutableStateOf<GrammarPointDetail?>(null) }
     LaunchedEffect(id) { detail = graph.grammar()?.point(id) }
     val d = detail ?: return Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
+    // §6.6 monolingual mode: our Japanese explanation when the setting asks for it, with an English toggle.
+    val explanation = app.tsumugi.android.features.courses.rememberGrammarExplanation(d.point)
+    var showEnglish by remember(id) { mutableStateOf(false) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        GrammarPointContent(d.point, d.examples)
+        GrammarPointContent(d.point, d.examples, if (showEnglish) null else explanation)
+        if (explanation?.language == app.tsumugi.courses.ExplanationLanguage.JAPANESE) {
+            androidx.compose.material3.FilterChip(showEnglish, { showEnglish = !showEnglish }, { Text(stringResource(R.string.mono_show_english)) })
+        }
+        app.tsumugi.android.features.courses.GrammarMasteryRow(d.point.id)
         // §6.4 guides library: link-only explanations elsewhere, opened in the browser.
         app.tsumugi.android.features.reader.GuideLinks(d.point.id)
         if (d.stage == null) {
@@ -122,7 +129,7 @@ fun GrammarPointScreen(id: String) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun GrammarPointContent(point: GrammarPoint, examples: List<GrammarExample>) {
+fun GrammarPointContent(point: GrammarPoint, examples: List<GrammarExample>, explanation: app.tsumugi.courses.GrammarExplanation? = null) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         JaText(point.title, Modifier.semantics { heading() }, style = MaterialTheme.typography.displaySmall)
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -130,9 +137,8 @@ fun GrammarPointContent(point: GrammarPoint, examples: List<GrammarExample>) {
             if (point.source != ItemSource.VERIFIED) AiBadge()
             point.textbooks.forEach { (book, chapter) -> Tag("$book $chapter") }
         }
-        Text(point.meaning, style = MaterialTheme.typography.titleMedium)
         JaText(point.structure, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.primary)
-        Text(point.nuance, style = MaterialTheme.typography.bodyMedium)
+        app.tsumugi.android.features.courses.GrammarExplanationText(point, explanation)
         if (point.mistakes.isNotEmpty()) {
             Text(stringResource(R.string.grammar_watch_out), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.secondary)
             point.mistakes.forEach { Text("• $it", style = MaterialTheme.typography.bodyMedium) }

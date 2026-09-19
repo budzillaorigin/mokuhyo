@@ -133,7 +133,7 @@ class ExamRunViewModel(app: Application, private val spec: ExamSpec) : AndroidVi
             is ExamSpec.JlptMock -> exams.jlptMock(spec.level, seed)
             is ExamSpec.JlptSection -> exams.jlptSection(spec.level, spec.sectionId, seed)
             is ExamSpec.JlptType -> exams.jlptTypeDrill(spec.level, spec.type, seed)
-            is ExamSpec.Dlpt -> exams.dlpt(spec.exam, spec.minutes, seed)
+            is ExamSpec.Dlpt -> exams.dlpt(spec.exam, spec.minutes, seed, spec.range, spec.textTypes)
             is ExamSpec.Resume -> exams.resume()
         }
     }

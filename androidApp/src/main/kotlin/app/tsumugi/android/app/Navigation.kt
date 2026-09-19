@@ -69,6 +69,22 @@ sealed interface Route {
     data object Songs : Route
     data class Song(val id: String) : Route
 
+    // Phase 12: graded readers, tracks, courses, onomatopoeia, drill sets (BRIEF_V2 §6.4–§6.10)
+    data object GradedReaders : Route
+    data class GradedStory(val id: String) : Route
+    data object Tracks : Route
+    data class Track(val id: String) : Route
+    data class TrackDrills(val trackId: String, val type: String, val nonce: Long = System.nanoTime()) : Route
+    data class Performance(val drillId: String, val nonce: Long = System.nanoTime()) : Route
+    data object Courses : Route
+    data class Course(val level: Int) : Route
+    data class CourseRemaining(val level: Int) : Route
+    data object Onomatopoeia : Route
+    data class OnomatopoeiaWord(val entryId: Long) : Route
+    data class OnomatopoeiaQuiz(val nonce: Long = System.nanoTime()) : Route
+    data object DrillSets : Route
+    data class DrillSetPlayer(val id: String) : Route
+
     // Kana course (G-13)
     data object Kana : Route
     data class KanaLesson(val id: String) : Route

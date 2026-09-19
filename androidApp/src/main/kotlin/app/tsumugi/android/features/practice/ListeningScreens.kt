@@ -67,6 +67,14 @@ import app.tsumugi.jp.FuriganaSegment
 import app.tsumugi.jp.Kana
 import app.tsumugi.practice.Dialogue
 import app.tsumugi.practice.DialogueLine
+import app.tsumugi.practice.DialogueStyle
+import app.tsumugi.android.ui.ja
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxHeight
 import app.tsumugi.practice.DialogueSummary
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -120,7 +128,8 @@ fun DialoguePlayerScreen(id: String) {
     var dialogue by remember { mutableStateOf<Dialogue?>(null) }
     var loaded by remember { mutableStateOf(false) }
     LaunchedEffect(id) {
-        dialogue = graph.practice()?.dialogue(id)
+        // Track dialogues (Phase 12, D-214) open in the same player: graph.dialogue falls back to the tracks pack.
+        dialogue = graph.dialogue(id)
         loaded = true
     }
     val d = dialogue
@@ -154,6 +163,7 @@ private fun DialoguePlayer(dialogue: Dialogue) {
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
                 Tag("N${dialogue.jlpt}")
                 Text(dialogue.topic, style = MaterialTheme.typography.bodySmall)
+                if (dialogue.style == DialogueStyle.NATURAL) Tag(stringResource(R.string.listen_natural))
                 if (dialogue.isAiGenerated) AiBadge()
             }
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -231,9 +241,15 @@ private fun ListenView(dialogue: Dialogue, voices: Voices, rate: Float) {
         Button(onClick = { play(0, single = false) }) { PlayLabel(stringResource(R.string.listen_play_all)) }
         OutlinedButton(onClick = { job?.cancel(); voices.stop() }) { Text(stringResource(R.string.listen_stop)) }
     }
-    dialogue.lines.forEachIndexed { i, line ->
+    if (dialogue.style == DialogueStyle.NATURAL && showJa) {
+        Text(stringResource(R.string.listen_natural_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+    @Composable
+    fun LineCard(i: Int, modifier: Modifier) {
+        val line = dialogue.lines[i]
         val speaker = dialogue.speaker(line.speaker)
         Card(
+            modifier,
             colors = CardDefaults.cardColors(
                 containerColor = if (i == playing) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
             ),
@@ -243,7 +259,11 @@ private fun ListenView(dialogue: Dialogue, voices: Voices, rate: Float) {
                     Text(speaker?.name ?: line.speaker, style = MaterialTheme.typography.labelMedium)
                     if (showJa) {
                         val segments = readings[i]
-                        if (furigana && segments != null) FuriganaLine(segments) else JaText(line.japanese, style = MaterialTheme.typography.bodyLarge)
+                        when {
+                            furigana && segments != null -> FuriganaLine(segments)
+                            line.fillers.isNotEmpty() -> FillerLine(line)
+                            else -> JaText(line.japanese, style = MaterialTheme.typography.bodyLarge)
+                        }
                     }
                     if (showEn) Text(line.english, style = MaterialTheme.typography.bodySmall)
                     if (!showJa && !showEn) Text("…", style = MaterialTheme.typography.bodyLarge)
@@ -253,6 +273,41 @@ private fun ListenView(dialogue: Dialogue, voices: Voices, rate: Float) {
             }
         }
     }
+    // §6.10: a line marked overlap starts before the previous one ends, so the two are shown side by side.
+    var i = 0
+    while (i < dialogue.lines.size) {
+        val next = dialogue.lines.getOrNull(i + 1)
+        if (next != null && next.overlap) {
+            val overlapLabel = stringResource(R.string.listen_overlap)
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(overlapLabel, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    LineCard(i, Modifier.weight(1f).fillMaxHeight())
+                    LineCard(i + 1, Modifier.weight(1f).fillMaxHeight())
+                }
+            }
+            i += 2
+        } else {
+            LineCard(i, Modifier.fillMaxWidth())
+            i += 1
+        }
+    }
+}
+
+/** A natural-style line with its fillers, hesitations and restarts greyed (§6.10, `DialogueLine.segments`). */
+@Composable
+private fun FillerLine(line: DialogueLine) {
+    val grey = MaterialTheme.colorScheme.outline
+    Text(
+        ja(
+            buildAnnotatedString {
+                line.segments().forEach { seg ->
+                    if (seg.isFiller) withStyle(SpanStyle(color = grey)) { append(seg.text) } else append(seg.text)
+                }
+            },
+        ),
+        style = MaterialTheme.typography.bodyLarge.japanese(),
+    )
 }
 
 @OptIn(ExperimentalLayoutApi::class)

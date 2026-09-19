@@ -78,6 +78,8 @@ fun SettingsScreen(onOpenAi: () -> Unit = {}, onOpenIntegrations: () -> Unit = {
         HorizontalDivider()
         ImmersionKitToggle()
         HorizontalDivider()
+        app.tsumugi.android.features.courses.MonolingualSettingsSection()
+        HorizontalDivider()
         LanguagePicker()
         HorizontalDivider()
         DeveloperOptions()

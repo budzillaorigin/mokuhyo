@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Phase 12 (Android): onomatopoeia module and hands-free drill sets. -->
+<resources>
+    <!-- Onomatopoeia (BRIEF_V2 §6.8) -->
+    <string name="ono_missing">The onomatopoeia list comes with the dictionary pack, and the installed one doesn\'t have it yet. Update the dictionary pack to browse sound and feeling words.</string>
+    <string name="ono_type_giongo">sound</string>
+    <string name="ono_type_gitaigo">state or manner</string>
+    <string name="ono_type_gijougo">feeling</string>
+    <string name="ono_intro">Words that imitate sounds, movements and feelings, grouped by theme. The feel lines are our own; glosses come from JMdict.</string>
+    <string name="ono_quiz">Take the quiz</string>
+    <string name="ono_themes">Themes</string>
+    <string name="ono_search">Search (kana or English)</string>
+    <string name="ono_no_words">No words match.</string>
+    <string name="ono_count">%1$d words</string>
+    <string name="ono_theme_count">%1$d words</string>
+    <string name="ono_play_word">Play %1$s</string>
+    <string name="ono_no_voice">No Japanese voice is installed, so audio is off. Add one in Android Settings → Text-to-speech.</string>
+    <string name="ono_feel">What it feels like</string>
+    <string name="ono_glosses">Dictionary meanings</string>
+    <string name="ono_gloss_credit">Glosses: JMdict (EDRDG, CC BY-SA 4.0)</string>
+    <string name="ono_no_examples">No example sentences for this word yet.</string>
+    <string name="ono_play_example">Play example %1$d</string>
+    <string name="ono_examples_credit">Examples: Tatoeba (CC BY 2.0 FR)</string>
+    <string name="ono_open_dictionary">Open in the dictionary</string>
+    <string name="ono_quiz_mixed">Mixed</string>
+    <string name="ono_quiz_word_for_scene">Word for the scene</string>
+    <string name="ono_quiz_scene_for_word">Scene for the word</string>
+    <string name="ono_all_themes">All themes</string>
+    <string name="ono_quiz_empty">Not enough described words for a quiz with these settings. Try another theme.</string>
+    <string name="ono_quiz_score">%1$d of %2$d right</string>
+    <string name="ono_quiz_progress">Question %1$d of %2$d</string>
+    <string name="ono_quiz_ask_scene">Which scene fits this word?</string>
+    <string name="ono_quiz_ask_word">Which word fits this scene?</string>
+    <string name="ono_quiz_right">Right</string>
+    <string name="ono_quiz_wrong">The answer was %1$s.</string>
+
+    <!-- Speaking drill sets (BRIEF_V2 §6.10) -->
+    <string name="drillset_title">Speaking drills</string>
+    <string name="drillset_channel">Speaking drill playback</string>
+    <string name="drillset_intro">Hands-free: hear the English, say it in Japanese in the pause, hear the model answer, then repeat it.</string>
+    <string name="drillset_none">No drill sets at this level.</string>
+    <string name="drillset_kind_grammar">Grammar</string>
+    <string name="drillset_kind_dialogue">Dialogue</string>
+    <string name="drillset_empty_set">This set has no items.</string>
+    <string name="drillset_pause_length">Pause length</string>
+    <string name="drillset_timing_short">Short</string>
+    <string name="drillset_timing_default">Normal</string>
+    <string name="drillset_timing_long">Long</string>
+    <string name="drillset_timing_fixed">%1$d s</string>
+    <string name="drillset_repeat">Pause to repeat the model answer</string>
+    <string name="drillset_load">Load this set</string>
+    <string name="drillset_progress">Item %1$d of %2$d · about %3$d min left</string>
+    <string name="drillset_finished">Set finished. Well done.</string>
+    <string name="drillset_play">Play</string>
+    <string name="drillset_play_again">Play again</string>
+    <string name="drillset_pause_button">Pause</string>
+    <string name="drillset_previous">Back</string>
+    <string name="drillset_next">Skip</string>
+    <string name="drillset_item_of">Item %1$d of %2$d</string>
+    <string name="drillset_background_note">Playback keeps going with the screen off. Use the notification, lock screen or headset buttons to pause and skip.</string>
+    <string name="drillset_clips">%1$d of %2$d answers use the recorded audio pack; the rest use the device voice.</string>
+    <string name="drillset_no_english_voice">No English voice is installed, so the English cue isn\'t spoken. Read it on screen, or add an English voice in Android Settings → Text-to-speech.</string>
+    <string name="drillset_items">Items</string>
+    <string name="drillset_step_prompt">Listen</string>
+    <string name="drillset_step_answer_pause">Your turn: say it in Japanese</string>
+    <string name="drillset_step_answer">Model answer</string>
+    <string name="drillset_step_repeat">Repeat it</string>
+    <string name="drillset_step_gap">Next item</string>
+</resources>

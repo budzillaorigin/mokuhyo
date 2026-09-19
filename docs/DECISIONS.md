@@ -1347,6 +1347,88 @@ New composition-root members for the platform UIs:
 
 Every public suspend function is `@Throws(Exception::class)`. Class names are unique across packages, and none starts with new/copy/init/alloc. No platform UI was built here.
 
+### D-250: Phase 12 on Android: where the screens live (§6.4–§6.10, §6.16, 2026-09-18)
+- **Learn** gets JLPT courses, Graded readers, Tracks and Onomatopoeia. **Practice → Speak** gets Drill sets.
+- The DLPT range and text-type pickers sit on the existing exam hub. The OPI probe map sits on the existing OPI results.
+- Onboarding gets an optional tracks step after "I know these". It's hidden when the tracks pack is missing.
+- Track scenarios open in the existing role-play screen (`graph.roleplay`), and track dialogues open in the existing dialogue player. The player now loads through `graph.dialogue(id)`, which falls back to the tracks pack (D-214).
+- Each new screen shows an honest empty state when its pack is missing, and `ErrorState` when loading fails (F-33).
+- Strings live in `values/strings_p12{a,b,c}.xml` plus the Japanese copies. Names are prefixed per feature so parallel work never collides.
+
+### D-251: Graded-reader read-along on Android (§6.4, D-205/D-207, 2026-09-18)
+- The story view uses one list of sentence rows, which keeps the paragraph breaks.
+- **Readers audio pack installed** (`readAlong().timed`): Play all plays the pack clips in order through `Voices.sayClip` and highlights the row being spoken. Tapping a row plays from that sentence on.
+- **No pack:** the text is plain, with a TTS ▶ on every sentence.
+- Cast voices are passed to TTS only as "male"/"female" hints.
+- The Words tab opens dictionary entries. The Quiz tab calls `submitQuiz`.
+- Genre tasks:
+  - The prediction and close-reading notes stay on screen only and aren't graded.
+  - Skim/scan shows the text only while its timer runs, then asks which items were found.
+  - The Japanese summary goes to `gradeSummary` and always shows the AI badge. When no model is available, the result says why.
+- Unverified stories show the AI badge.
+- There's no furigana in the story view yet, although the pack has ruby hints.
+
+### D-252: Track page and drill runner (§6.5, D-215, 2026-09-18)
+- A track page is one screen with scrollable tabs: Words, Kanji, Speak & listen, Drills, Can-do & tasks, Reading. Tabs with no content are hidden.
+- Words say that lessons join Today automatically while the track is selected. The page offers Select and Start lessons.
+- Links open externally with `ACTION_VIEW`. When no app can open one, the row says so.
+- `TrackDrillsScreen(trackId, type)` runs one drill type in order. Only the first answer to each drill counts. An email drill counts as right only when every blank is right, and it then shows the whole model email.
+- PERFORM drills go to their own screen instead (D-253).
+
+### D-253: Perform mode on Android (§6.5, D-217, 2026-09-18)
+- The learner picks one of their lines at a time, and only that line gets the mic (`SpeakOrType`), so only one recognizer is ever open. The transcript or typed text goes to `PerformanceSession.deliver`.
+- Self-rating (`selfRate`) appears only after "Check against the script".
+- Partner lines are spoken with TTS. Performances have no pack audio.
+- The session lives in a ViewModel keyed by the route's nonce. A version counter recomposes the view after each mutation of the session.
+
+### D-254: Courses and monolingual mode on Android (§6.6, D-230–D-234, 2026-09-18)
+- Opening a level from the courses overview saves it as the course level.
+- In a course:
+  - Quiz steps launch `ExamSpec.JlptType`, and mock steps launch `ExamSpec.JlptSection`.
+  - Grammar rows carry the mastery checkbox. A tick shows at once, then the course rebuilds in the background. A failed save undoes the tick and shows an error.
+- Monolingual mode: Settings has a switch and a "from level" picker. A grammar point shows the Japanese explanation with an "English" chip, and says so when the Japanese text is missing.
+- Dictionary entries read only the cached paraphrase (`generate = false`). The learner writes one with "Write one with AI", which carries the badge and engine, and "Wrong? Rewrite" drops the cache and asks again. List screens never generate.
+
+### D-255: Onomatopoeia glyphs render through a minimal SVG subset (§6.8, D-236, 2026-09-18)
+- `ui/SvgGlyph` reads only `<path d>`, `<circle>` and `<rect>`, plus stroke width, caps and joins, dash arrays and `rotate(a cx cy)`. Paths are parsed with Compose's `PathParser`, and everything is stroked in the current text color (`currentColor`).
+- Input over 16 KB or with more than 64 shapes is dropped. A parse error draws nothing, and the renderer never throws.
+- There's no WebView and no SVG library (no new dependency). The pack's 12 glyphs use nothing beyond this subset.
+
+### D-256: The hands-free drill player keeps playing with the screen off (§6.10, D-224, 2026-09-18)
+- The player (`platform/DrillPlayer`) runs at process level and walks `DrillPlayback.plan` with a `DrillCursor`:
+  - English cues are spoken by their own en-US TTS. With no English voice installed, the cue is shown for the step's length instead.
+  - Answers play the pack clip, whose real length feeds the plan, or TTS.
+  - Silences are `delay`s.
+- `DrillPlaybackService` is a `mediaPlayback` foreground service. It uses the framework `MediaSession` (headset and lock-screen play/pause/next/previous) and a MediaStyle notification.
+- A partial wake lock, capped at 2 hours, is held only while playing, so the pauses keep time with the screen off.
+- Media3's session module wasn't added, so there's no new dependency or license entry.
+- Pausing leaves a notification with Play. Stopping or finishing removes it.
+- Not done: the player doesn't request audio focus, and it doesn't prompt for POST_NOTIFICATIONS. Without that permission it still plays; the notification is just hidden.
+
+### D-257: The OPI probe map is drawn in Compose, after the rating (§6.16, D-229, 2026-09-18)
+- Each question is placed at the level it aimed at:
+  - circle = level check, diamond = probe, small ring = other phases
+  - colored green (sustained), amber (partial) or red (breakdown)
+- A line shows the working level after each answer. The chart also has a text description for TalkBack.
+- Below the chart:
+  - the floor and ceiling in one sentence
+  - per-level tallies as stacked bars
+  - the questions where speech broke down
+  - the domains covered, and the DLI domains still missing
+- It says plainly that this is practice feedback based on answer length, not a rating.
+
+### D-258: DLPT range and text-type filter on the exam hub (§6.16, G-08, D-226/D-227, 2026-09-18)
+- `ExamSpec.Dlpt` now carries `range` and `textTypes`, and the runner passes both to `ExamService.dlpt`.
+- The hub has a Lower/Upper range chip. Each test's available count uses the coverage rows for that range's ILR labels.
+- Text-type chips come from `dlptTextTypes(exam, range)`, with their item counts. None selected means all types.
+- Text types are named through a string table (27 known codes). Unknown codes from newer banks show as written.
+
+### D-259: Natural dialogues on Android (§6.10, D-222, 2026-09-18)
+- Natural-style dialogues get a "Natural speech" tag and a note.
+- Lines with filler spans render `DialogueLine.segments()` with the fillers in the outline color.
+- A line marked `overlap` is shown side by side with the line before it, under an "Overlapping" label. Playback is still sequential.
+- Gap-fill, ordering and questions are unchanged.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

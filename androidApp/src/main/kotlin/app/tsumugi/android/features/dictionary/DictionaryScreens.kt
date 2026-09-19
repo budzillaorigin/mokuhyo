@@ -217,7 +217,12 @@ fun EntryScreen(id: Long, nav: DictionaryNav) {
                     style = MaterialTheme.typography.bodyMedium.japanese(),
                 )
             }
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            // §6.6 monolingual mode: the Japanese paraphrase (AI, labeled, generated only on request); English folds away.
+            var showEnglish by remember(e.id) { mutableStateOf(true) }
+            app.tsumugi.android.features.courses.JapaneseGlossCard(
+                e, englishShown = showEnglish, onToggleEnglish = { showEnglish = !showEnglish }, onJapanese = { showEnglish = !it },
+            )
+            if (showEnglish) Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 e.senses.forEachIndexed { i, s ->
                     Column {
                         if (s.partsOfSpeech.isNotEmpty() && (i == 0 || s.partsOfSpeech != e.senses[i - 1].partsOfSpeech)) {
