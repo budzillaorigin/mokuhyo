@@ -9,7 +9,8 @@ build_practice.py reads and items/review.py writes verdicts into:
 3. entries already in the JSON file.
 
 Merging never duplicates an id: an authored entry replaces the JSON copy unless a human has reviewed that copy
-(source "verified", or "reviewed"/"rejected" set by items/review.py), which is kept unless --force. Entries found
+(source "verified", or "reviewed"/"rejected" set by items/review.py, on the entry or on one of its dialogue lines),
+which is kept unless --force. Entries found
 only in the JSON file are kept, after the authored ones. The same id in two authored sources is an error.
 
 `draft` asks any OpenAI-compatible endpoint (e.g. the owner's Ollama) for new entries, validates each with the
@@ -37,7 +38,11 @@ REVIEW_KEYS = ("reviewed", "rejected")
 
 
 def reviewed(entry: dict) -> bool:
-    return entry.get("source") == "verified" or any(k in entry for k in REVIEW_KEYS)
+    """A human touched this entry: verified, reviewed or rejected, itself or (as a drill item, D-247) one of its lines."""
+    lines = entry.get("lines") if isinstance(entry.get("lines"), list) else []
+    return entry.get("source") == "verified" or any(k in entry for k in REVIEW_KEYS) or any(
+        isinstance(ln, dict) and (ln.get("source") == "verified" or any(k in ln for k in REVIEW_KEYS)) for ln in lines
+    )
 
 
 def load_batches(batch_dir: Path, key: str) -> list[tuple[str, dict]]:

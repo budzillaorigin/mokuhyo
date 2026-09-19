@@ -4,6 +4,17 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 12: content review covers every AI-drafted type (2026-09-18)
+
+The AI-generated badge can now be cleared on everything Phase 12 drafted. Decisions D-245…D-249; the table of kinds is in docs/CONTENT_PACKS.md "Reviewing content".
+- **`tools/items/review.py`** reviews, in the terminal (accept, edit, reject, skip) and through `--ingest`, all of these: track words, kanji hints, scenarios, dialogues, drills, situations, tasks and readings; the Japanese grammar explanations (`grammar_ja`, flips `ja_source`); onomatopoeia feel lines; graded readers (now `source` and `verified` both flip); OPI questions; speaking-drill lines (`drill_item`, on the grammar example or dialogue line they copy); dialogues and scenarios, natural ones included; and every exam bank, DLPT upper-range and liaison included. Kana mnemonics are unchanged from Phase 10.
+- **In-app Content review** lists all of these from the installed packs, with stable ids and enough detail to judge each item on the phone. The new sources are `TracksReviewSource` and `OnomatopoeiaReviewSource`, plus `grammar_point_ja`, OPI questions and drill items. Rule-generated exam items are no longer listed.
+- **Builders** carry the flags through. OPI questions can hold their own `source`. A point's own grammar examples, and dialogue drill lines, become `verified` once reviewed. Review keys stay out of track drill payloads. Re-merging the author scripts keeps a dialogue with a reviewed line.
+- **Tests:** `tools/items/test_review_kinds.py` (4) ingests every kind into copies of the real sources and re-validates them; `test_review_ingest.py` (3) passes; `ContentReviewSourcesTest` (7) and `ContentReviewTest` pass.
+- **Not done:** the packs weren't rebuilt (nothing is reviewed yet). The genre task templates in `readers/tasks.json` still aren't reviewable.
+
+---
+
 ## Phase 12: listening, speaking and exam content (2026-09-18)
 
 BRIEF_V2 §8 Phase 12, §6.10, §6.16, G-08 and the Appendix A content findings. Decisions D-220…D-229. The content was drafted by Claude (owner decision), so everything is `source: "llm"` / unverified with the AI badge until reviewed (rules 10, 19). The graded readers and tracks are separate Phase 12 work.
@@ -178,7 +189,7 @@ BRIEF_V2 §6.5: seven tracks, each with a word list, kanji subset, scenarios, di
 - `build_tracks.py draft` was smoke-tested against a fake endpoint: an unknown word and a malformed drill were rejected, and ids advanced.
 
 ### Deferred
-- `tools/items/review.py` and the in-app review (G-16) don't read track files yet. The badge stays on until they do (another agent's file). Everything else about review is ready: items carry `source`/`verified`.
+- ~~`tools/items/review.py` and the in-app review (G-16) don't read track files yet.~~ Done (D-245…D-249). The badge stays on until they do (another agent's file). Everything else about review is ready: items carry `source`/`verified`.
 - `render_audio.py` doesn't render track dialogues yet (another agent's file), so they use TTS; the clip keys `dialogue/<id>/<ord>` already fit. Performances have no audio.
 - Whether tracks ship in the base app or as downloads (BRIEF_V2 §9 item 7). The pack is 1.5 MB and is bundled like the others.
 - An AI check of a performed line through the gateway (the session exposes the transcript and the script).
@@ -268,7 +279,7 @@ BRIEF_V2 §6.6 (structured JLPT courses and monolingual mode) and §6.8 (onomato
 
 ### Deferred
 - **Platform UI.** None was built here: the course view, mastery checkboxes, monolingual toggle, onomatopoeia browser and quiz.
-- **Review tooling.** `tools/items/review.py` doesn't show or verify `meaning_ja`/`nuance_ja` or onomatopoeia entries yet. It's outside this change's scope (tools/packs only), so the badge stays on for all of them.
+- ~~**Review tooling.** `tools/items/review.py` doesn't show or verify `meaning_ja`/`nuance_ja` or onomatopoeia entries yet.~~ Done (D-248). It's outside this change's scope (tools/packs only), so the badge stays on for all of them.
 - **Onomatopoeia examples.** 832 words have no example sentence. The pack's Tatoeba subset has none containing them, and adding sentences is a `build_sentences.py` change.
 - **Video links.** User-attachable video links per grammar point (§6.6) aren't built.
 

@@ -52,6 +52,8 @@ def apply(point: dict, meaning: str, nuance: str, source: str = "llm") -> None:
     point["meaning_ja"] = nfc(meaning.strip())
     point["nuance_ja"] = nfc(nuance.strip())
     point["ja_source"] = source
+    if source != "verified":  # new text needs a new review (items/review.py --kind grammar_ja)
+        point.pop("ja_reviewed", None)
 
 
 def cmd_status(_args) -> None:

@@ -1347,6 +1347,37 @@ New composition-root members for the platform UIs:
 
 Every public suspend function is `@Throws(Exception::class)`. Class names are unique across packages, and none starts with new/copy/init/alloc. No platform UI was built here.
 
+### D-245: One review registry covers every AI-drafted content type (G-16, rule 10, 2026-09-18)
+`tools/items/review.py` now describes each content kind once: its source files, how to find each item and its stable id, which flag an accept flips, which fields may be edited, how to show it, and which validator re-checks the file. The interactive loop and `--ingest` both use that description, so a type the app can list is also a type the terminal can review. The 18 kinds are `grammar_point`, `grammar_ja`, `exam_passage`, `exam_item`, `dialogue`, `scenario`, `opi_question`, `drill_item`, `reader_passage`, `onomatopoeia`, eight `track_*` kinds, and `kana_mnemonic`. A test checks that the kind codes in `ReviewKind` and in `review.py` are the same set. Reject is available in the terminal too, and records `rejected {by, on, notes}` as the app does. Edits and review notes are stored as NFC, because the bank and reader validators check that every string is NFC. The Phase 10 verdicts format (version 1) is unchanged. The table of kinds is in docs/CONTENT_PACKS.md "Reviewing content".
+
+### D-246: Tracks and graded readers flip both `source` and `verified` (2026-09-18)
+Track items and reader stories carry both fields in their sources (`"source": "llm", "verified": false`). The track validator requires `source: "verified"` whenever `verified` is true, and the readers build counts either flag. An accept therefore sets `source: "verified"` and `verified: true`. Setting only one would leave the file inconsistent (Phase 10 ingest flipped only `source` for readers, while the interactive review flipped only `verified`). Exam banks keep D-034: `verified` flips and `source` stays as provenance. Grammar points, dialogues, scenarios, OPI questions and onomatopoeia entries have no `verified` field and flip `source`.
+- **Track ids.** Words and kanji have no id in the sources, so their stable ids are `<track>:<JMdict id>` and `<track>:<kanji>`. Every other track item uses its own id, which is unique across tracks. Part files (`<track>.<part>.json`) are searched along with the main file, and a changed file is written back with `build_tracks.save`, so word lists stay one per line.
+- **Review keys never reach the pack.** `reviewed` and `rejected` are left out of a track drill's payload, like `source` and `verified`.
+
+### D-247: Id-less content gets derived keys; OPI questions and drill lines carry their own flag (2026-09-18)
+- **OPI questions** are compact arrays in `opi.json` and have no id. Their id is `<ilr>:<reviewKey(prompt_ja)>`, where `reviewKey` is FNV-1a 32 over the UTF-8 NFC text, as 8 hex digits. It's written the same way in Kotlin and Python. Keying by text instead of position means inserting a question doesn't shift the ids of the others. A reviewed question becomes an object `{phase, ja, en, note, domain, source, reviewed}`. `build_practice.py` accepts both forms and writes that question's own `source`. Before this change, every question took the file's `source`, so no single question could lose its badge.
+- **Speaking-drill items** copy either a grammar point's own example or a dialogue line, and the drill-set ids depend on how the build spreads examples across sets. Their review ids are therefore `g:<point>:<reviewKey(sentence)>` and `d:<dialogue>:<line index>`. The flag is stored on the thing copied: `source: "verified"` on the example in `examples[]` or on the dialogue line. `build_grammar.py` now marks a point's own examples `verified` when the point or the example has been reviewed (they used to stay `llm` forever). `build_practice.py` marks a dialogue drill item `verified` when its line is. Items from a verified point or dialogue are verified with it and aren't listed separately. Tatoeba items were never AI content.
+- **Author scripts respect line reviews.** `practice_authoring.reviewed()` also counts a reviewed or rejected line, so re-merging the author scripts keeps that dialogue's reviewed copy.
+
+### D-248: Japanese grammar explanations and onomatopoeia feel lines are reviewed apart from their neighbours (2026-09-18)
+- **Grammar.** `grammar_ja` reviews `meaning_ja`/`nuance_ja`, flips `ja_source` and records `ja_reviewed`/`ja_rejected`, so reviewing the Japanese text never verifies the English point, or the other way round. `grammar_ja.py merge --overwrite` puts `ja_source` back to `llm` and drops `ja_reviewed`.
+- **Onomatopoeia.** `onomatopoeia` reviews an entry of `entries.json` by JMdict id. Only the feel lines (`feel`, `feel_ja`) are editable in the app, and the theme and type change in the terminal. Accepting flips `source` to `verified`. Rule-classified words (`source: "rule"`) have no drafted text and are never listed. `build_onomatopoeia.py merge --overwrite` resets the entry to `llm` and drops `reviewed`.
+
+### D-249: The app lists every kind from the installed packs, with the full context (2026-09-18)
+`ContentReviewService` gains `TracksReviewSource` (tracks.sqlite) and `OnomatopoeiaReviewSource` (the dictionary pack), which `AppGraph.contentReview()` opens on their own read-only connections. `GrammarReviewSource` adds `grammar_point_ja` rows, and `PracticeReviewSource` adds OPI questions and drill items. Tables that an older pack lacks are skipped. The display is meant to be enough to judge an item on the phone:
+- dialogues: speaker names, style, every line with its translation, and the questions with the key marked;
+- scenarios: goals, phrases and the scripted turns;
+- exam passages: the listening script; exam items: their passage;
+- grammar points: their examples, marked AI or Tatoeba;
+- Japanese explanations: the English text beside them;
+- onomatopoeia: JMdict glosses, variants and Tatoeba examples;
+- readers: vocabulary and each answer's explanation;
+- track drills: the payload, without derived JMdict ids;
+- situations and tasks: their can-do lists and steps.
+
+The exam queue now lists only `source = 'llm'` items. The 1,878 rule-generated JLPT items (`generated`) aren't AI content and used to fill the queue. The `ReviewKind` enum grows, and both platform screens iterate `ReviewKind.entries`, so they need no change. `ContentReviewSourcesTest` covers each new kind, the id formats, the display, and the export. `tools/items/test_review_kinds.py` ingests a verdict of every kind into copies of the real sources and re-runs each builder's validation.
+
 ---
 
 ## Open decisions (BRIEF.md §14)

@@ -139,7 +139,7 @@ The §6.5 targets were: Gaming ~140 kanji / 600 words, Business 30 situations, S
   - New items get fresh ids and are resolved against JMdict. Only items that pass the full validator are appended.
   - Re-runs add items without duplicating ids.
   - The key, if any, comes from `$TSUMUGI_LLM_KEY`.
-- **Review:** everything stays `source: "llm"` with the badge until it's reviewed. `tools/items/review.py` doesn't read track files yet (deferred, see PROGRESS).
+- **Review:** everything stays `source: "llm"` with the badge until it's reviewed with `tools/items/review.py` or the in-app Content review, which set `source: "verified"` and `verified: true` on the item (see "Reviewing content" below, D-246).
 
 ### Onomatopoeia (`onomatopoeia`, `onomatopoeia_theme`; Phase 12, DECISIONS D-235…D-237)
 
@@ -336,7 +336,7 @@ Validation (`packs/build_exam.py`, also run on user imports): ids unique; `answe
 - `items/gen_jlpt.py validate`: prints the coverage table.
 - `gen_jlpt.py draft` and `gen_dlpt.py draft`: draft more items through any OpenAI-compatible endpoint (e.g. the owner's Ollama); output is `source: "llm"`.
 - `items/gen_dlpt.py validate [--strict]`: checks the ILR bands in `items/ilr_bands.json` and warns when the key is the longest choice in more than 40% of a level's items. Upper-range (3+/4) passages must have 2–4 items and an upper-range text type (reading: editorial, academic, essay, literary, commentary; listening: lecture, discussion, commentary, interview, speech). The 3+/4 bands are provisional (drafted passages only). Banks: `dlpt_reading.json` + `dlpt_listening.json` (core 0+–3), `dlpt_reading_upper.json` (30 passages each at 3+ and 4, 184 items), `dlpt_listening_upper.json` (10 scripts each at 3+ and 4, 61 items), `dlpt_liaison.json` (military/liaison text type at 2, 2+ and 3: 9 reading + 6 listening, 44 items).
-- `items/review.py`: human review. It sets `verified: true` and adds `reviewed {by, on}` (DECISIONS D-034).
+- `items/review.py`: human review. It sets `verified: true` and adds `reviewed {by, on}` (DECISIONS D-034); see "Reviewing content".
 - **Measures used by the band checks:**
   - Length is non-space characters.
   - Kanji density is kanji / characters.
@@ -408,6 +408,69 @@ uv run python packs/test_practice_authoring.py                                  
   is `derived` when every item is Tatoeba text, `llm` when any is AI-drafted. Playback timing is shared:
   `DrillPlayback.plan(set, DrillTiming)` → prompt, answer pause (fixed, or proportional to the answer's clip length
   or estimate), model answer, repeat pause, gap; `DrillCursor` steps through it for a hands-free player.
+
+## Reviewing content (CLAUDE.md rule 10, v2 rule 19, BRIEF_V2 G-16; DECISIONS D-034, D-118, D-245…D-249)
+
+Everything an LLM drafted ships with `source: "llm"` and the "AI-generated" badge. Only `tools/items/review.py` removes
+the badge: it flips a flag in the source file, and the rebuilt pack carries that flag into the app. There are two
+ways in:
+
+- **Terminal:** `uv run python items/review.py <source file> [--kind KIND] [--reviewer NAME]` walks the unreviewed
+  items of one file. For each one you can **a**ccept, **e**dit (in `$EDITOR`, then accept), **r**eject with a note,
+  **s**kip or **q**uit. A bank passage and its items are reviewed together.
+- **Phone:** turn on Me → Content review (developer toggle). It lists every unreviewed item from the installed packs,
+  with enough detail to judge it: lines, questions with the key marked, glosses, example sentences, scripted turns,
+  and the English text next to a Japanese explanation. Export the verdicts, then apply them with
+  `uv run python items/review.py --ingest verdicts.json [--dry-run]`.
+
+Either way, **accept** (or edit, then accept) sets the flag in the table below and adds `reviewed {by, on, notes?}`.
+**Reject** adds `rejected {by, on, notes}` and leaves the item unverified, so the author can redo it. Edits are
+stored as NFC. Afterwards, run the validator that `--ingest` names for each file it changed, then rebuild the pack.
+
+| Kind (`kind` in verdicts) | Source file | Stable id | Accept sets | Pack column that drops the badge |
+|---|---|---|---|---|
+| `grammar_point` | `packs/grammar/n*.json` `points[]` | point id | `source: "verified"` (the point's own examples follow) | `grammar_point.source`, `grammar_example.source` |
+| `grammar_ja` | same points, `meaning_ja`/`nuance_ja` | point id | `ja_source: "verified"`, `ja_reviewed` (the English text is untouched) | `grammar_point_ja.source` |
+| `exam_passage`, `exam_item` | `items/bank/*.json`: JLPT, DLPT core, DLPT upper range (`dlpt_*_upper.json`), liaison (`dlpt_liaison.json`) | passage / item id | `verified: true`; `source` stays as provenance (D-034) | `exam_passage.verified`, `exam_item.verified` |
+| `dialogue` | `packs/listening/dialogues.json` (scripted and natural; the batches are merged here) | dialogue id | `source: "verified"` | `dialogue.source` |
+| `scenario` | `packs/speaking/scenarios.json` (the batches are merged here) | scenario id | `source: "verified"` | `scenario.source` |
+| `opi_question` | `packs/speaking/opi.json` `levels[].questions[]` | `<ilr>:<reviewKey(prompt)>` | the compact array becomes `{phase, ja, en, note, domain, source: "verified"}` | `opi_question.source` |
+| `drill_item` | the grammar example or dialogue line the drill copies | `g:<point>:<reviewKey(sentence)>`, `d:<dialogue>:<line>` | `source: "verified"` on that example or line | `drill_item.source` (and `drill_set.source` once none is `llm`) |
+| `reader_passage` | `packs/readers/stories/*.json` | story id | `source: "verified"` and `verified: true` | `reader_story.source`/`verified` |
+| `onomatopoeia` | `packs/onomatopoeia/entries.json` | JMdict entry id | `source: "verified"` | `onomatopoeia.source` |
+| `track_word` | `packs/tracks/<track>[.<part>].json` `words[]` | `<track>:<JMdict id>` | `source: "verified"` and `verified: true` | `track_word.source` |
+| `track_kanji` | same, `kanji[]` (explicit subsets only; derived ones are `derived`) | `<track>:<kanji>` | same | `track_kanji.source` |
+| `track_scenario`, `track_dialogue`, `track_drill`, `track_situation`, `track_task`, `track_reading` | same, `scenarios[]`, `dialogues[]`, `drills[]`, `situations[]`, `tasks[]`, `readings[]` | item id | same | `source` of the matching `track_*` table |
+| `kana_mnemonic` | `shared/.../kana/KanaMnemonics.kt` | the kana | listed in `KanaMnemonicsReviewed.kt` (generated) | compiled into the app |
+
+`reviewKey(text)` is FNV-1a 32 over the UTF-8 bytes of the NFC text, written as 8 hex digits. It's the same function in
+`review.py` (`review_key`) and in `shared/.../review/ContentReviewSources.kt` (`reviewKey`). The app can edit these
+fields: grammar `title`, `structure`, `meaning`, `nuance`; `meaning_ja`, `nuance_ja`; exam `title`/`body` and
+`stem`/`explanation`; dialogue `title`, `topic`; scenario `titleEn`, `titleJa`, `setting`, `learnerRole`,
+`partnerRole`; OPI `ja`, `en`, `note`; drill `en`; reader `title`, `body`; onomatopoeia `feel`, `feel_ja`; track word
+`gloss`, `note`; track kanji `keyword`, `breakdown`, `hint`; track drills their string fields (`explanation`, `en`,
+`sentence`, …); track tasks `titleEn`, `titleJa`, `place`; track readings `title`, `body`. Other fields are edited in
+the terminal.
+
+Re-running a drafting script never undoes a review. The practice author scripts keep a reviewed or rejected copy, and
+that includes a dialogue with a reviewed line. `grammar_ja.py merge --overwrite` and `build_onomatopoeia.py merge
+--overwrite` reset the flag to `llm` and drop the old review record, because the text is new.
+
+Terminal examples:
+
+```bash
+uv run python items/review.py packs/grammar/n3.json                     # English grammar points
+uv run python items/review.py packs/grammar/n3.json --kind grammar_ja   # their Japanese explanations
+uv run python items/review.py packs/grammar/n3.json --kind drill_item   # examples used as speaking drills
+uv run python items/review.py items/bank/dlpt_reading_upper.json        # a passage with its items
+uv run python items/review.py packs/tracks/business.json                # every kind in the file, words first
+uv run python items/review.py packs/speaking/opi.json
+uv run python items/review.py packs/onomatopoeia/entries.json
+uv run python items/review.py packs/readers/stories/n4.json
+```
+
+Tests: `uv run python items/test_review_ingest.py` and `items/test_review_kinds.py`. The second one ingests a verdict of
+every kind into copies of the real source files and re-runs each builder's validation on the result.
 
 ## Audio packs (`audio-<set>.zip`, BRIEF_V2 §5.6)
 
