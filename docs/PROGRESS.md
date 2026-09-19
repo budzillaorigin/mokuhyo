@@ -160,6 +160,88 @@ cd tools && uv run python packs/build_tracks.py      # or packs/build_all.py
 
 ---
 
+## Phase 12: courses, monolingual mode, onomatopoeia (shared + content, 2026-09-18)
+
+BRIEF_V2 §6.6 (structured JLPT courses and monolingual mode) and §6.8 (onomatopoeia), in the shared core and packs. Decisions D-230…D-239. There's no platform UI yet; the hooks are listed below. All the new text is AI-drafted by Claude (owner decision): `source = "llm"`, and the badge stays on until reviewed.
+
+### Content counts
+| Content | Count | Where |
+|---|---|---|
+| Japanese grammar explanations (`meaning_ja` + `nuance_ja`) | **829 / 829** points: N5 127, N4 148, N3 173, N2 192, N1 189 (the brief's minimum was the 381 N2+N1) | `tools/packs/grammar/n*.json` → `grammar.sqlite` `grammar_point_ja` |
+| Onomatopoeia words (JMdict on-mim) | **1,334** (1,340, minus 6 explicit entries) | `dictionary.sqlite` `onomatopoeia` |
+| …with our English feel line | **1,309**; the 720 most frequent all have one (the brief asked for 600) | `tools/packs/onomatopoeia/entries.json` |
+| …with a Japanese feel line | **1,307** | same |
+| …with Tatoeba examples (up to 3) | **502** | pack `sentence` table |
+| Themes, with one original SVG glyph each | **12**: sounds 320, movement 183, manner 162, appearance 140, voice 116, texture 106, state 91, feelings 88, body 46, eating 44, pain 20, weather 18 | `tools/packs/onomatopoeia/themes.json` |
+| Types | 擬音語 / 擬態語 / 擬情語 | — |
+| Course modules from the real packs | N5 16 (79 kanji, 479 words, 127 grammar, 3 sections) · N4 19 (166, 448, 148, 3) · N3 22 (367, 1,169, 173, 3) · N2 24 (367, 890, 192, 2) · N1 24 (1,151, 1,501, 189, 2) | derived at run time |
+
+### What was built
+- **Courses (`app.tsumugi.courses`).**
+  - `CourseBuilder` (pure) and `CourseService`. Each JLPT level becomes modules of kanji → vocab → grammar → quiz → mock section.
+  - Modules are derived from the kanji-path items with that JLPT tag, the grammar points at that level, the exam bank's item types (module quizzes) and the blueprint sections (mocks).
+  - There's a per-level progress bar (`overview()`) and a "one book to pass" list (`remaining(level)`): unlearned kanji and words, unmastered grammar points, and mock sections not yet passed.
+- **Grammar mastery checkbox.** `GrammarMasteryStore` keeps a checkbox per grammar point that is independent of SRS. It lives in the new `grammar_mastery` table, synced LWW on the flag, and is included in the JSON backup.
+- **Monolingual mode.**
+  - `MonolingualSettings` holds the synced `monolingual.fromLevel`. It's off by default and starts at N2 when turned on, or earlier if the learner chooses.
+  - `Explanations.grammar(point)` returns our Japanese explanation from the pack, or English with `japaneseMissing`.
+  - `Explanations.word(request)` returns the JMdict glosses, or the new `paraphrase_word_ja` LLM paraphrase. The paraphrase is labeled and cached in the device-local `ai_paraphrase` table. Without a model it falls back to English with `unavailableReason`.
+- **Onomatopoeia (`app.tsumugi.onomatopoeia`).**
+  - `OnomatopoeiaRepository` provides themes with glyphs and counts, filtering by theme and type, search, and detail with examples.
+  - `OnomatopoeiaQuiz` asks "pick the word for the scene" and "pick the scene for the word". Its distractors never share a reading or gloss with the answer.
+- **Schema.**
+  - User DB `7.sqm` (v7 → v8) adds `grammar_mastery` and `ai_paraphrase`. `databases/7.db` is its starting snapshot. It was renumbered from 8 at merge, and the no-op placeholder was dropped (D-231).
+  - The grammar pack gets `grammar_point_ja`. The dictionary pack gets `onomatopoeia` and `onomatopoeia_theme`, whose schema is `onomatopoeia.sq`.
+- **Tools.**
+  - `packs/grammar_ja.py` (status/check/merge/draft).
+  - `packs/build_onomatopoeia.py` (build/status/merge/draft), wired into `build_all.py` after `build_decks.py`.
+  - `packs/llm_draft.py`, the shared OpenAI-compatible client (`--endpoint URL --model NAME`).
+  - Re-runs only add missing ids or fields.
+
+### Hooks for the platform UIs (AppGraph)
+- **`courses`:**
+  - `courseLevel()` / `setCourseLevel(n)`.
+  - `overview()` returns `List<LevelProgress>` for N5…N1, each with `progress.fraction` / `percent`.
+  - `course(level)` returns a `JlptCourse`: `modules` (each with `steps`, `nextStep`, `kanji`, `words`, `grammar`, `quiz`, `mock`), `currentModule`, `progress` and `sections`.
+  - `remaining(level)` returns a `LevelRemaining`.
+  - `setMastered(pointId, bool)` / `masteredIds()`.
+  - A quiz step launches `exams().jlptTypeDrill(level, type)`, and a mock step launches `exams().jlptSection(level, sectionId)`.
+- **`monolingual`:** `fromLevel()` / `setFromLevel(n or null)` / `enabled()` / `setEnabled(bool)` / `languageFor(level, learnerLevel)`.
+- **`explanations`:**
+  - `grammar(point)` and `grammar(point, language)` return a `GrammarExplanation` with `language`, `meaning`, `nuance`, `aiGenerated` and `japaneseMissing`.
+  - `word(ParaphraseRequest, learnerLevel, generate)` returns a `WordExplanation` with `language`, `glosses`, `paraphrase`, `example`, `note`, `engine`, `cached` and `unavailableReason`. Lists pass `generate = false`.
+  - `paraphrase(...)` / `forgetParaphrase(...)`.
+- **`onomatopoeia()`** returns an `OnomatopoeiaRepository`, or null when there's no dictionary pack:
+  - `available()`.
+  - `themes()` returns theme `svg` strings (viewBox 64, `currentColor`).
+  - `words(theme, type, withFeelOnly)`, `search(q)`.
+  - `detail(entryId)` includes `examples`.
+  - `quiz(count, kind, theme, seed)` returns `OnomatopoeiaQuestion` values with `prompt`, `promptJa`, `choices`, `options`, `answer` and `isCorrect(i)`.
+  - Show the badge when `word.aiGenerated`.
+
+### Tests
+- **commonTest:**
+  - `CourseBuilderTest` (9 tests).
+  - `MonolingualAndMasteryTest` (5): mastery LWW sync across two devices, cached paraphrase, the setting.
+  - `OnomatopoeiaTest` (5): quiz ambiguity rules, repository, empty state for older packs.
+  - `PromptGoldenTest`: `paraphrase_word_ja`, a good answer plus a bad English one and a circular one.
+- **androidHostTest:**
+  - `UserDbMigrationTest`: v7 → v8 markers.
+  - `RealPhase12PackTest`: the real packs, with courses for all five levels, ja explanations for every N2/N1 point, and 600+ described onomatopoeia plus a 30-question quiz.
+
+### Deferred
+- **Platform UI.** None was built here: the course view, mastery checkboxes, monolingual toggle, onomatopoeia browser and quiz.
+- **Review tooling.** `tools/items/review.py` doesn't show or verify `meaning_ja`/`nuance_ja` or onomatopoeia entries yet. It's outside this change's scope (tools/packs only), so the badge stays on for all of them.
+- **Onomatopoeia examples.** 832 words have no example sentence. The pack's Tatoeba subset has none containing them, and adding sentences is a `build_sentences.py` change.
+- **Video links.** User-attachable video links per grammar point (§6.6) aren't built.
+
+### How to run
+```
+cd tools && uv run python packs/build_grammar.py && uv run python packs/build_onomatopoeia.py   # or packs/build_all.py
+uv run python packs/grammar_ja.py status && uv run python packs/build_onomatopoeia.py status
+./gradlew :shared:compileCommonMainKotlinMetadata :shared:verifySqlDelightMigration :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
 ## Phase 11 (Android UI): immersion pipeline and audio packs (2026-09-18)
 
 The Android screens for everything Phase 11 built in the shared core, plus pre-rendered audio (rule 20). Decisions D-180…D-189. iOS is being built in parallel by another agent.

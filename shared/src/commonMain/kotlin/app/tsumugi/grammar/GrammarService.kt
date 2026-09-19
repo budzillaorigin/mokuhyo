@@ -114,6 +114,12 @@ data class GhostSpawn(
     val revived: Boolean,
 )
 
+/**
+ * A point's own Japanese explanation for monolingual mode (BRIEF_V2 §6.6, D-233), from the pack's `grammar_point_ja`.
+ * LLM-drafted until reviewed ([source]); the UI shows the badge.
+ */
+data class GrammarJapanese(val pointId: String, val meaning: String, val nuance: String, val source: ItemSource)
+
 data class GrammarPointDetail(val point: GrammarPoint, val examples: List<GrammarExample>, val stage: Stage?, val myNote: String)
 
 /** A textbook the grammar pack has a chapter mapping for (numbers only, no book content; DECISIONS D-104). */
@@ -190,6 +196,23 @@ class GrammarService(
         val (ok, missing) = cards.partition { it.itemId.removePrefix("g:") in withExamples }
         srs.setBlocked(missing.filter { it.blockedReason != SrsRepository.BLOCK_NO_EXAMPLES }.map { it.id }, SrsRepository.BLOCK_NO_EXAMPLES)
         srs.setBlocked(ok.filter { it.blockedReason == SrsRepository.BLOCK_NO_EXAMPLES }.map { it.id }, null)
+    }
+
+    /**
+     * The point's Japanese explanation, or null when the pack has none for it (or predates the table: packs built
+     * before Phase 12). Monolingual mode then falls back to English and says so.
+     */
+    @Throws(Exception::class)
+    suspend fun japanese(pointId: String): GrammarJapanese? = io {
+        runCatching { q.japaneseFor(pointId).executeAsOneOrNull() }.getOrNull()?.let {
+            GrammarJapanese(it.point_id, it.meaning_ja, it.nuance_ja, if (it.source == "verified") ItemSource.VERIFIED else ItemSource.LLM)
+        }
+    }
+
+    /** Point ids at [jlpt] that have a Japanese explanation (empty for packs without the table). */
+    @Throws(Exception::class)
+    suspend fun japaneseIds(jlpt: Int): Set<String> = io {
+        runCatching { q.japaneseAtLevel(jlpt.toLong()).executeAsList().map { it.point_id }.toSet() }.getOrDefault(emptySet())
     }
 
     /** Point ids whose cards are held out of reviews because the pack has no example yet ("no examples yet"). */

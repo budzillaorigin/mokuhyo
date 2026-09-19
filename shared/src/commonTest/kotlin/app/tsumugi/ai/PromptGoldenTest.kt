@@ -10,6 +10,7 @@ import app.tsumugi.ai.prompts.NaturalRewrite
 import app.tsumugi.ai.prompts.OpiInterviewerTurn
 import app.tsumugi.ai.prompts.OpiPhase
 import app.tsumugi.ai.prompts.OpiRate
+import app.tsumugi.ai.prompts.ParaphraseWordJa
 import app.tsumugi.ai.prompts.PromptLibrary
 import app.tsumugi.ai.prompts.RoleplayTurn
 import app.tsumugi.ai.prompts.Speaker
@@ -184,6 +185,22 @@ class PromptGoldenTest {
             "construction is not in the answer",
             listOf("did not find 〜ておく"),
         ) { out -> assertEquals(0, out.grammar) },
+        Golden(
+            ParaphraseWordJa(),
+            ParaphraseWordJa.Input("曖昧", "あいまい", listOf("vague", "ambiguous", "unclear"), listOf("adj-na"), level = "N2"),
+            """{"paraphrase":"はっきりしていなくて、いくつもの意味にとれる様子。","example":"彼の返事は曖昧だった。","note":"態度や表現について使うことが多い。"}""",
+            """{"paraphrase":"vague; ambiguous","example":"It was vague.","note":""}""",
+            "paraphrase is not Japanese",
+            listOf("Japanese-only", "Word: 曖昧 (あいまい)", "vague; ambiguous; unclear", "N2 learner"),
+        ) { out -> assertEquals("はっきりしていなくて、いくつもの意味にとれる様子。", out.paraphrase) },
+        Golden(
+            ParaphraseWordJa(),
+            ParaphraseWordJa.Input("ドキドキ", "ドキドキ", listOf("thump-thump", "pit-a-pat", "with a pounding heart"), listOf("adv"), level = "N1"),
+            """{"paraphrase":"緊張や期待で、心臓が速く強く打つ様子。","example":"発表の前は胸がドキドキした。","note":""}""",
+            """{"paraphrase":"胸がどきどきする様子。","example":"胸がドキドキした。","note":""}""",
+            "paraphrase uses the word itself",
+            listOf("Do not use the word itself"),
+        ) { out -> assertTrue(out.example.contains("ドキドキ")) },
     )
 
     @Test
@@ -192,7 +209,7 @@ class PromptGoldenTest {
             listOf(
                 "correct_sentence", "natural_rewrite", "roleplay_turn", "explain_grammar_in_sentence", "translate_sentence",
                 "generate_reading_questions", "suggest_mnemonic", "opi_interviewer_turn", "opi_rate", "jlpt_explain_item",
-                "free_talk_turn", "grade_production",
+                "free_talk_turn", "grade_production", "paraphrase_word_ja",
             ),
             PromptLibrary.names,
         )

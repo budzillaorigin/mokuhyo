@@ -1,0 +1,29 @@
+-- User database v7 -> v8 (BRIEF_V2 6.6; DECISIONS D-231, D-234): grammar mastery checkboxes (synced, last writer wins on
+-- the flag) and the device-local AI paraphrase cache. databases/7.db is the schema snapshot this migration starts from
+-- (generated before this change, when the schema was still v7 on this branch; the coordinator renumbers alongside any 7.sqm).
+
+CREATE TABLE grammar_mastery (
+    point_id TEXT NOT NULL PRIMARY KEY,
+    mastered INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL
+);
+
+CREATE TRIGGER sync_grammar_mastery_insert AFTER INSERT ON grammar_mastery
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('grammar_mastery', new.point_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_grammar_mastery_update AFTER UPDATE ON grammar_mastery
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('grammar_mastery', new.point_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+
+CREATE TABLE ai_paraphrase (
+    kind TEXT NOT NULL,
+    ref TEXT NOT NULL,
+    value TEXT NOT NULL,
+    engine TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    PRIMARY KEY (kind, ref)
+) WITHOUT ROWID;

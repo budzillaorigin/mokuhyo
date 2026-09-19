@@ -3,6 +3,10 @@ package app.tsumugi.api
 import app.tsumugi.audio.AudioPackRepository
 import app.tsumugi.content.PackInstaller
 import app.tsumugi.content.PackStatus
+import app.tsumugi.courses.CourseService
+import app.tsumugi.courses.Explanations
+import app.tsumugi.courses.GrammarMasteryStore
+import app.tsumugi.courses.MonolingualSettings
 import app.tsumugi.db.TsumugiDatabase
 import app.tsumugi.dictionary.DictionaryRepository
 import app.tsumugi.dictionary.db.DictionaryDatabase
@@ -10,6 +14,7 @@ import app.tsumugi.exam.ExamService
 import app.tsumugi.exam.db.ExamDatabase
 import app.tsumugi.exam.dlpt.IlrLevel
 import app.tsumugi.exam.opi.OpiSession
+import app.tsumugi.onomatopoeia.OnomatopoeiaRepository
 import app.tsumugi.practice.PracticeRepository
 import app.tsumugi.practice.db.PracticeDatabase
 import app.tsumugi.speaking.AiService
@@ -623,6 +628,32 @@ class AppGraph(val platform: PlatformServices) {
     /** Lyrics and karaoke reading over audio files the learner owns. */
     val lyrics: LyricsService by lazy {
         LyricsService(userDatabase, { reader.analyzer() }, subtitles, { SwiftSupport.translate(ai, it) }, { grammar() })
+    }
+
+    // --- Phase 12: JLPT courses, monolingual mode, onomatopoeia (BRIEF_V2 §6.6/§6.8, D-230…D-239) --------------------
+
+    /** Grammar mastery checkboxes (independent of SRS, synced LWW). */
+    val grammarMastery: GrammarMasteryStore by lazy { GrammarMasteryStore(userDatabase) }
+
+    /** Course view per JLPT level: modules, progress bars, "one book to pass". */
+    val courses: CourseService by lazy {
+        CourseService(settings, grammarMastery, knowledge, { path() }, { grammar() }, { exams() })
+    }
+
+    /** Monolingual mode setting (synced). */
+    val monolingual: MonolingualSettings by lazy { MonolingualSettings(settings) }
+
+    /** Right-language explanations: our Japanese grammar text, cached LLM paraphrases for words. */
+    val explanations: Explanations by lazy { Explanations(userDatabase, monolingual, { grammar() }, { ai.gateway() }) }
+
+    private val onomatopoeiaSlot = PackSlot<OnomatopoeiaRepository>()
+
+    /** The onomatopoeia module (dictionary pack tables), or null when the dictionary pack isn't installed. */
+    @Throws(Exception::class)
+    suspend fun onomatopoeia(): OnomatopoeiaRepository? = onomatopoeiaSlot.get {
+        openPack(PackInstaller.DICTIONARY) {
+            OnomatopoeiaRepository(DictionaryDatabase(platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY)))
+        }
     }
 
     /** Reader tokens (lattice analyzer with dictionary ids; the dictionary's tokenizer without it), or null. */

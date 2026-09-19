@@ -53,6 +53,16 @@ CREATE TABLE grammar_alias (
     PRIMARY KEY (alias, point_id)
 ) WITHOUT ROWID;
 
+-- Japanese-only explanations for monolingual mode (BRIEF_V2 §6.6, DECISIONS D-233), from the meaning_ja/nuance_ja
+-- fields of tools/packs/grammar/n*.json. source: "llm" (drafted, badge shown) | "verified". Points without a row
+-- fall back to English. Packs built before Phase 12 lack this table.
+CREATE TABLE grammar_point_ja (
+    point_id TEXT NOT NULL PRIMARY KEY,
+    meaning_ja TEXT NOT NULL,
+    nuance_ja TEXT NOT NULL,
+    source TEXT NOT NULL
+) WITHOUT ROWID;
+
 metaValue:
 SELECT value FROM pack_meta WHERE key = ?;
 
@@ -88,6 +98,16 @@ INSERT INTO grammar_pattern VALUES ?;
 
 insertAlias:
 INSERT INTO grammar_alias VALUES ?;
+
+japaneseFor:
+SELECT * FROM grammar_point_ja WHERE point_id = ?;
+
+japaneseAtLevel:
+SELECT grammar_point_ja.* FROM grammar_point_ja JOIN grammar_point ON grammar_point.id = grammar_point_ja.point_id
+WHERE grammar_point.jlpt = ?;
+
+insertJapanese:
+INSERT INTO grammar_point_ja VALUES ?;
 
 insertMeta:
 INSERT OR REPLACE INTO pack_meta(key, value) VALUES (?, ?);

@@ -35,7 +35,10 @@
      "en": "So in other words, tomorrow is a day off."
     }
    ],
-   "order": 1
+   "order": 1,
+   "meaning_ja": "前に述べた事実から、当然そうなるという結論。道理で〜だ。",
+   "nuance_ja": "理由がわかって「だからそうなのか」と納得するときに使う。自分の想像ではなく、事実から自然に出てくる結論を言うので、「〜のだろう」より確かな言い方である。「つまり」と言いかえる意味でも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wake-dewa-nai",
@@ -69,7 +72,10 @@
      "en": "It doesn't mean I understood everything."
     }
    ],
-   "order": 2
+   "order": 2,
+   "meaning_ja": "必ずしも〜というのではない。〜と言い切れるわけではない。",
+   "nuance_ja": "相手が考えそうな結論を、全部ではなく一部だけ打ち消す言い方である。はっきり「違う」と言うより柔らかい。話し言葉では「〜わけじゃない」になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wake-ga-nai",
@@ -102,7 +108,10 @@
      "en": "There's no way a child could understand such a hard problem."
     }
    ],
-   "order": 3
+   "order": 3,
+   "meaning_ja": "〜する可能性がまったくない。絶対に〜ない。",
+   "nuance_ja": "理由を考えて、話し手が強く否定する言い方である。「〜はずがない」より気持ちが強く、会話では「〜わけない」とも言う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wake-ni-wa-ikanai",
@@ -136,7 +145,10 @@
      "en": "I promised, so I have to go."
     }
    ],
-   "order": 4
+   "order": 4,
+   "meaning_ja": "事情や常識から考えて、〜することはできない。",
+   "nuance_ja": "能力の問題ではなく、立場や責任、周りの事情のためにできないことを表す。「〜ないわけにはいかない」は「しなければならない」「するしかない」という意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hazu-ga-nai",
@@ -170,7 +182,10 @@
      "en": "You can't possibly buy it at such a low price."
     }
    ],
-   "order": 5
+   "order": 5,
+   "meaning_ja": "〜ということはありえない。〜であるはずがない。",
+   "nuance_ja": "知っていることや根拠から考えて、そうではないと判断する。「〜わけがない」より少し客観的に聞こえる。「〜はずだ」は反対に、そうなると強く思っていることを表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hazu-datta",
@@ -205,7 +220,10 @@
      "en": "It wasn't supposed to be like this."
     }
    ],
-   "order": 6
+   "order": 6,
+   "meaning_ja": "〜する予定だった、〜と思っていたのに、実際はそうならなかった。",
+   "nuance_ja": "予定や予想が外れたことを、残念な気持ちや驚きとともに言うことが多い。「〜はずだ」が今の強い予想を表すのに対して、過去の予想をふり返って、それが実現しなかったことを表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-ni-shite-iru",
@@ -238,7 +256,10 @@
      "en": "I've made it a habit not to look at my phone before bed."
     }
    ],
-   "order": 7
+   "order": 7,
+   "meaning_ja": "自分で決めて、習慣として続けている。",
+   "nuance_ja": "自分で決めた個人的なルールや習慣を表す。「〜ことになっている」は、ほかの人や組織が決めたルールや予定を表すので、決めた人が違う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-ni-natte-iru",
@@ -271,7 +292,10 @@
      "en": "The meeting is supposed to start at three."
     }
    ],
-   "order": 8
+   "order": 8,
+   "meaning_ja": "規則や予定、習慣としてそう決まっている。",
+   "nuance_ja": "自分ではなく、ほかの人や組織、社会が決めたルールや予定を言う。だれが決めたかをはっきり言わないので、柔らかく丁寧に聞こえる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-ni-naru",
@@ -304,7 +328,10 @@
      "en": "An hour a day means 365 hours of study in a year."
     }
    ],
-   "order": 9
+   "order": 9,
+   "meaning_ja": "自分の意志とは関係なく、そう決まる。結果として〜になる。",
+   "nuance_ja": "話し手ではなく、周りの事情やほかの人の判断で決まったように表す。自分で決めたことでも、控えめに言うために使うことがある。「それは〜という意味になる」と結論を言うときにも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-da",
@@ -338,7 +365,10 @@
      "en": "If there's something you don't understand, ask right away."
     }
    ],
-   "order": 10
+   "order": 10,
+   "meaning_ja": "〜するのがいちばんよい。〜しなさい。",
+   "nuance_ja": "経験のある人が、相手に強く勧めたり忠告したりするときに使う。「〜たほうがいい」よりはっきりした言い方で、目上の人に使うと説教のように聞こえる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-wa-nai",
@@ -371,7 +401,10 @@
      "en": "There's no need to hurry like that."
     }
    ],
-   "order": 11
+   "order": 11,
+   "meaning_ja": "〜する必要はない。〜しなくてもいい。",
+   "nuance_ja": "相手を安心させたり、励ましたりするときによく使う。「〜なくてもいい」より、「そこまでしなくていい」という気持ちが強い。「〜ことだ」が勧めるのとは反対の意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-kara",
@@ -404,7 +437,10 @@
      "en": "It got this name because you can see Mount Fuji."
     }
    ],
-   "order": 12
+   "order": 12,
+   "meaning_ja": "〜という事実から。〜ことが理由や根拠となって。",
+   "nuance_ja": "判断や名前、結果のもとになった事実を示す。名前の由来や、物事の理由を説明するときによく使う。書き言葉的で、改まった言い方である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-ni",
@@ -436,7 +472,10 @@
      "en": "To my joy, I passed the exam."
     }
    ],
-   "order": 13
+   "order": 13,
+   "meaning_ja": "とても〜なことに。〜と感じるのは、次のことだ。",
+   "nuance_ja": "文の初めに置き、あとに言うことへの話し手の気持ちを先に表す。「驚いた」「うれしい」「残念な」「困った」など、気持ちを表す言葉につく。書き言葉的で、少し改まった言い方である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-you-to-suru",
@@ -469,7 +508,10 @@
      "en": "He won't say anything."
     }
    ],
-   "order": 14
+   "order": 14,
+   "meaning_ja": "〜しようと努力する。今にも〜しそうになる。",
+   "nuance_ja": "何かをしようとする努力や、動作が始まる直前の時を表す。「〜ようとした」の形では、うまくいかなかったり、途中で止まったりしたことが多い。「〜てみる」は試すことに注目するが、こちらは努力に注目する。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-you-ni-iu",
@@ -502,7 +544,10 @@
      "en": "The doctor warned me not to drink alcohol."
     }
    ],
-   "order": 15
+   "order": 15,
+   "meaning_ja": "〜してほしいと、人に頼んだり注意したりする。",
+   "nuance_ja": "頼みや命令の内容を、間接的に伝える言い方である。「言う」のほかに「頼む」「注意する」「伝える」なども使える。「『〜しろ』と言う」のように命令をそのまま言うより柔らかい。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-you-ni",
@@ -536,7 +581,10 @@
      "en": "I'll write it down so I don't forget."
     }
    ],
-   "order": 16
+   "order": 16,
+   "meaning_ja": "〜という状態や結果になるために。",
+   "nuance_ja": "目的が動作ではなく、状態や結果であるときに使う。可能動詞や「〜ない」の形、自分の意志で決められない動詞につくことが多い。「〜ために」は意志の動詞につき、前と後ろの主語が同じになる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-you-ni-suru",
@@ -570,7 +618,10 @@
      "en": "From now on I'll try to go to bed early."
     }
    ],
-   "order": 17
+   "order": 17,
+   "meaning_ja": "〜するように心がける。いつも〜するよう努力する。",
+   "nuance_ja": "何かをする、またはしないように、続けて努力することを表す。「〜ようにしている」は今続けている習慣を言う。「〜ようとする」は一回の試みを表すので違う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-you-ni-naru",
@@ -603,7 +654,10 @@
      "en": "If you practise, you'll be able to swim."
     }
    ],
-   "order": 18
+   "order": 18,
+   "meaning_ja": "以前はそうでなかったことが、だんだん〜する状態になる。",
+   "nuance_ja": "能力や習慣が少しずつ変わることを表す。可能動詞につくと「できるようになる」という意味になる。やめることを言うときは「〜ないようになる」より「〜なくなる」のほうがよく使われる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-you-ni-mieru",
@@ -636,7 +690,10 @@
      "en": "This painting looks like a photograph."
     }
    ],
-   "order": 19
+   "order": 19,
+   "meaning_ja": "見たところ〜だと感じられる。〜らしく見える。",
+   "nuance_ja": "見た感じから受ける印象を言い、本当はそうではない可能性もふくむ。「〜そうだ」は見た様子から予想する言い方で、こちらのほうが少し客観的である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-marude-you-da",
@@ -668,7 +725,10 @@
      "en": "Today is as hot as summer."
     }
    ],
-   "order": 20
+   "order": 20,
+   "meaning_ja": "本当はそうではないが、〜にとてもよく似ている。",
+   "nuance_ja": "「まるで」がたとえを強めて、本物のように感じられることを表す。様子を生き生きと表現するときによく使う。「みたいだ」は話し言葉的である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-yotte",
@@ -702,7 +762,10 @@
      "en": "The trains stopped because of the typhoon."
     }
    ],
-   "order": 21
+   "order": 21,
+   "meaning_ja": "〜に応じて。〜という手段で。〜が原因で。",
+   "nuance_ja": "いろいろな使い方がある。「〜によって違う」という違いの意味、手段、原因、受け身の文で動作をした人を表す。改まった言い方で、会話では「〜で」「〜次第」を使うこともある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-yoru",
@@ -735,7 +798,10 @@
      "en": "They announced the results of the survey."
     }
    ],
-   "order": 22
+   "order": 22,
+   "meaning_ja": "〜が原因の。〜がした。〜にもとづいた。",
+   "nuance_ja": "「〜によって」が名詞を説明する形で、ニュースや書き言葉でよく使う。原因や、動作をした人、手段を表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-yoru-to",
@@ -770,7 +836,10 @@
      "en": "According to my friend, that shop is cheap."
     }
    ],
-   "order": 23
+   "order": 23,
+   "meaning_ja": "〜から得た情報では。〜の話では。",
+   "nuance_ja": "情報がどこから来たかを示す。後ろはほとんど「〜そうだ」「〜らしい」「〜ということだ」など、伝聞の形になる。「〜によれば」は少し改まった言い方である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-tsuite",
@@ -804,7 +873,10 @@
      "en": "I read a book about the environment."
     }
    ],
-   "order": 24
+   "order": 24,
+   "meaning_ja": "〜のことを。〜を話題にして。",
+   "nuance_ja": "話したり、考えたり、調べたりする内容を示す。いちばん一般的な言い方で、「〜に関して」はより改まっていて、仕事や論文に合う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-kanshite",
@@ -836,7 +908,10 @@
      "en": "Nothing is known yet about the accident."
     }
    ],
-   "order": 25
+   "order": 25,
+   "meaning_ja": "〜に関係のあることについて。",
+   "nuance_ja": "「〜について」の改まった言い方で、お知らせや報告、論文などでよく使う。名詞を説明するときは「〜に関する」の形になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-taishite",
@@ -870,7 +945,10 @@
      "en": "There is a lot of opposition to this opinion."
     }
    ],
-   "order": 26
+   "order": 26,
+   "meaning_ja": "〜に向けて。〜を相手に。〜とは反対に。",
+   "nuance_ja": "行動や気持ちが向かう相手を示す。また、二つのことを比べて違いを示すときにも使う。「〜について」が話題を示すのに対して、相手や対象に向かうことを強く表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-totte",
@@ -903,7 +981,10 @@
      "en": "Studying abroad was a good experience for him."
     }
    ],
-   "order": 27
+   "order": 27,
+   "meaning_ja": "〜の立場から見ると。〜から考えると。",
+   "nuance_ja": "だれの立場で判断するかを示し、後ろには「大切だ」「難しい」などの評価が来る。だれかのために何かをすることを言うときは使わず、「〜のために」を使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toshite",
@@ -937,7 +1018,10 @@
      "en": "This room is used as a meeting room."
     }
    ],
-   "order": 28
+   "order": 28,
+   "meaning_ja": "〜の立場で。〜という資格や役割で。",
+   "nuance_ja": "人が行動するときの立場や役割、物がどのように見られているかを表す。「〜としても」「〜としては」の形で、その立場を強めることもある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-uchi-ni",
@@ -971,7 +1055,10 @@
      "en": "While we were talking, we gradually became friends."
     }
    ],
-   "order": 29
+   "order": 29,
+   "meaning_ja": "〜の状態が続いている間に。〜が変わる前に。",
+   "nuance_ja": "状態が変わる前に、その間に何かをすることを表す。また、「〜ているうちに」の形で、しているあいだに、いつのまにか変化が起きたことも表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-nai-uchi-ni",
@@ -1003,7 +1090,10 @@
      "en": "We left the park before it got dark."
     }
    ],
-   "order": 30
+   "order": 30,
+   "meaning_ja": "〜が起こる前に。まだ〜しない間に。",
+   "nuance_ja": "困ったことや、よくない変化が起こる前に、早く何かをしようという気持ちを表す。雨が降り出す、人が来るなど、話し手の力で止められないことにつくことが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-aida",
@@ -1037,7 +1127,10 @@
      "en": "I listened to music the whole time I was on the train."
     }
    ],
-   "order": 31
+   "order": 31,
+   "meaning_ja": "〜の期間中ずっと。",
+   "nuance_ja": "ある期間の初めから終わりまで、動作や状態が続くことを表す。後ろには「〜ている」や「ずっと」など、続く意味の言葉が来る。「〜間に」は期間の中のある時に一回起こることを表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-aida-ni",
@@ -1070,7 +1163,10 @@
      "en": "I want to get a driver's licence during the summer holidays."
     }
    ],
-   "order": 32
+   "order": 32,
+   "meaning_ja": "〜の期間中のある時に。",
+   "nuance_ja": "ある期間の中の一つの時点で、何かが起こることを表す。後ろには終わる動作が来ることが多い。「〜うちに」は、状態が変わる前にするという気持ちが強い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-saichuu",
@@ -1103,7 +1199,10 @@
      "en": "I'm right in the middle of thinking, so wait a moment."
     }
    ],
-   "order": 33
+   "order": 33,
+   "meaning_ja": "ちょうど〜しているとき。〜がいちばん盛んなとき。",
+   "nuance_ja": "何かが一番盛んに行われているときに、別のことが起きて邪魔されることを言う場合が多い。「〜ているときに」より、その場の様子が強く伝わる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tochuu-de",
@@ -1135,7 +1234,10 @@
      "en": "There's a convenience store on the way to the station."
     }
    ],
-   "order": 34
+   "order": 34,
+   "meaning_ja": "目的地や物事の終わりに着く前の、途中の所や時点で。",
+   "nuance_ja": "移動や物事がまだ終わっていないことを表す。「途中で」は、そこで何かが起きたり、止まったりすることを言う。「途中に」は、道のそばにある場所を言うときに使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tabi-ni",
@@ -1168,7 +1270,10 @@
      "en": "Whenever she travels, she brings back souvenirs."
     }
    ],
-   "order": 35
+   "order": 35,
+   "meaning_ja": "〜するときはいつも。〜するごとに毎回。",
+   "nuance_ja": "あることが起こると、そのたびに必ず別のことも起こることを表す。思い出す、驚くなど、毎回同じ気持ちや結果になることによく使う。「〜と必ず」と近いが、少し書き言葉的である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-goto-ni",
@@ -1201,7 +1306,10 @@
      "en": "There are new words on every page."
     }
    ],
-   "order": 36
+   "order": 36,
+   "meaning_ja": "〜のたびに。一定の量や時間の区切りで毎回。",
+   "nuance_ja": "時間や数量につくと、その間隔で繰り返すことを表す。動詞につくと「〜するたびに」の意味になる。「〜おきに」は間にあるすき間を数えるので、数によっては意味が変わる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-oki-ni",
@@ -1233,7 +1341,10 @@
      "en": "Please take the medicine every six hours."
     }
    ],
-   "order": 37
+   "order": 37,
+   "meaning_ja": "〜の間をあけて。一つずつとばして。",
+   "nuance_ja": "繰り返すことの間にあるすき間を数える。「一日おき」は一日あけて、二日に一回という意味になる。時間や距離が細かい場合は、「〜ごとに」と同じ意味になることもある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-irai",
@@ -1266,7 +1377,10 @@
      "en": "I haven't driven since that accident."
     }
    ],
-   "order": 38
+   "order": 38,
+   "meaning_ja": "〜してから今までずっと。",
+   "nuance_ja": "過去のある出来事のあと、同じ状態が今まで続いていることを表す。少し改まった言い方で、会話では「〜てからずっと」をよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-hajimete",
@@ -1298,7 +1412,10 @@
      "en": "Only after living alone did I learn how hard housework is."
     }
    ],
-   "order": 39
+   "order": 39,
+   "meaning_ja": "〜して、そのときにやっと。〜してからでないと〜ない。",
+   "nuance_ja": "ある経験をしたあとで、初めて何かに気づいたり、できるようになったりすることを表す。それまではわからなかったという気持ちがこもる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tatotan",
@@ -1331,7 +1448,10 @@
      "en": "The instant I opened the door, the cat ran out."
     }
    ],
-   "order": 40
+   "order": 40,
+   "meaning_ja": "〜したすぐあとに。〜したと同時に。",
+   "nuance_ja": "ある動作のすぐあとに、予想しなかったことが起きたことを表す。驚きを表すので、後ろには話し手が自分の意志でする動作は来ない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kato-omottara",
@@ -1363,7 +1483,10 @@
      "en": "The baby was crying a moment ago and is already laughing."
     }
    ],
-   "order": 41
+   "order": 41,
+   "meaning_ja": "〜したと思ったら、すぐに。〜したかと思うと、もう。",
+   "nuance_ja": "ある変化が起きたすぐあとに、驚くような別の変化が起きたことを表す。ほかの人や物の様子に使い、話し手自身の動作には使わない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ta-bakari",
@@ -1396,7 +1519,10 @@
      "en": "I only bought this car last year."
     }
    ],
-   "order": 42
+   "order": 42,
+   "meaning_ja": "〜してから、まだ少ししか時間がたっていない。",
+   "nuance_ja": "話し手が「まだ時間がたっていない」と感じていることを表すので、実際には時間がたっていても使える。「〜たところ」は、動作が終わった直後であることを客観的に言う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ta-tokoro",
@@ -1429,7 +1555,10 @@
      "en": "When I looked into it, I found a mistake."
     }
    ],
-   "order": 43
+   "order": 43,
+   "meaning_ja": "〜してみたら、その結果。",
+   "nuance_ja": "何かをしたあとで、その結果がわかったことを表す。結果は予想と違うことも多い。報告や改まった話でよく使う。「〜たところだ」の「したばかり」という意味とは別である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tokoro-datta",
@@ -1462,7 +1591,10 @@
      "en": "I almost forgot an important appointment."
     }
    ],
-   "order": 44
+   "order": 44,
+   "meaning_ja": "もう少しで〜しそうだったが、実際はしなかった。",
+   "nuance_ja": "よくないことがもう少しで起こりそうだったが、避けられたときによく使う。「もう少しで」「危なく」と一緒に使うことが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tokoro-e",
@@ -1494,7 +1626,10 @@
      "en": "Just when I was in trouble, the teacher came to help me."
     }
    ],
-   "order": 45
+   "order": 45,
+   "meaning_ja": "ちょうど〜しているときに。ちょうど〜の場面に。",
+   "nuance_ja": "ある場面に、だれかが来たり、何かが起きたりすることを表す。邪魔が入るという意味になることが多い。「来る」「電話がかかってくる」などとよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tokoro-wo",
@@ -1526,7 +1661,10 @@
      "en": "The police caught the culprit as he was running away."
     }
    ],
-   "order": 46
+   "order": 46,
+   "meaning_ja": "〜している場面を。",
+   "nuance_ja": "ある場面を、見る、見つける、助けるなどの動作の対象として示す。見られて困る場面によく使う。「お忙しいところを」のように、丁寧なあいさつの決まった言い方にも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-bakari-ka",
@@ -1559,7 +1697,10 @@
      "en": "Not only did she not apologise, she even complained."
     }
    ],
-   "order": 47
+   "order": 47,
+   "meaning_ja": "〜だけでなく、さらに。",
+   "nuance_ja": "一つ目のことに加えて、もっと程度が大きいことや、驚くことを付け加える。後ろには「も」「さえ」「まで」が来ることが多い。「〜だけでなく」より書き言葉的である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-bakari-de-naku",
@@ -1592,7 +1733,10 @@
      "en": "He is good not only at studying but also at sports."
     }
    ],
-   "order": 48
+   "order": 48,
+   "meaning_ja": "〜だけではなく、その上に。",
+   "nuance_ja": "「〜だけでなく」と同じ意味で、少し改まった言い方である。後ろの部分には「も」がつくことが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-dake-de-naku",
@@ -1627,7 +1771,10 @@
      "en": "Don't just watch; please actually try it."
     }
    ],
-   "order": 49
+   "order": 49,
+   "meaning_ja": "〜だけではなく、ほかにも。",
+   "nuance_ja": "もう一つのことを付け加える、いちばん普通の言い方である。「〜ばかりか」と違い、後ろに命令や頼みの文を続けることもできる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ue-ni",
@@ -1660,7 +1807,10 @@
      "en": "I got lost, and on top of that it started to rain."
     }
    ],
-   "order": 50
+   "order": 50,
+   "meaning_ja": "〜であり、それに加えて。",
+   "nuance_ja": "同じ方向のことを付け加える。よいことにはよいこと、悪いことには悪いことを重ねる。「〜し」や「〜だけでなく」より書き言葉的である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ue-de",
@@ -1693,7 +1843,10 @@
      "en": "What matters in learning a foreign language is keeping at it every day."
     }
    ],
-   "order": 51
+   "order": 51,
+   "meaning_ja": "〜してから、それをもとに。〜するときに。",
+   "nuance_ja": "た形につくと、必要なことを先にしてから次のことをすることを表す。辞書形や名詞につくと、「〜するときに」「〜するために」という意味になる。改まった言い方である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ijou-wa",
@@ -1725,7 +1878,10 @@
      "en": "Now that I've decided to do it, I'll see it through."
     }
    ],
-   "order": 52
+   "order": 52,
+   "meaning_ja": "〜のだから、当然。",
+   "nuance_ja": "ある事実や決定があるのだから、当然そうするべきだという話し手の判断を表す。後ろには義務や決意が来る。「〜からには」と近く、少し改まった言い方である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kara-ni-wa",
@@ -1758,7 +1914,10 @@
      "en": "Now that I've accepted it, I'll take responsibility for it."
     }
    ],
-   "order": 53
+   "order": 53,
+   "meaning_ja": "〜のだから、当然最後まで。",
+   "nuance_ja": "何かをしたり決めたりしたのだから、最後までやろうという強い気持ちを表す。後ろには決意、義務、強い頼みなどが来る。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kara-koso",
@@ -1791,7 +1950,10 @@
      "en": "It's exactly because you're busy that rest is important."
     }
    ],
-   "order": 54
+   "order": 54,
+   "meaning_ja": "ほかでもなく、〜という理由だから。",
+   "nuance_ja": "理由を強く示して、それこそが本当の理由だと言う。意外な理由を言うときによく使う。文の終わりは「〜のだ」になることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kara-to-itte",
@@ -1824,7 +1986,10 @@
      "en": "Being tired doesn't mean you can skip your homework."
     }
    ],
-   "order": 55
+   "order": 55,
+   "meaning_ja": "〜という理由だけで、必ず〜とは言えない。",
+   "nuance_ja": "ある理由から考えられそうな結論を打ち消す。文の終わりは「〜わけではない」「〜とは限らない」など、否定の形になることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wari-ni",
@@ -1857,7 +2022,10 @@
      "en": "My score was low considering how much I studied."
     }
    ],
-   "order": 56
+   "order": 56,
+   "meaning_ja": "〜から予想されることと比べると。",
+   "nuance_ja": "ある条件から考えられる程度と、実際の結果が違うことを表す。よい意味でも悪い意味でも使える。「〜にしては」と近いが、「〜わりに」は形容詞や程度を表す言葉にも自由につく。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kuse-ni",
@@ -1891,7 +2059,10 @@
      "en": "He's bad at it, yet he always shows off."
     }
    ],
-   "order": 57
+   "order": 57,
+   "meaning_ja": "〜なのに。〜という立場でありながら。",
+   "nuance_ja": "「〜のに」と同じく逆のことを言うが、相手を責めたり、ばかにしたりする気持ちが強い。主語はふつう他人である。場面によっては失礼に聞こえるので注意が必要である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-monono",
@@ -1924,7 +2095,10 @@
      "en": "Although I said I'd go, I don't really want to."
     }
    ],
-   "order": 58
+   "order": 58,
+   "meaning_ja": "〜ことは事実だが、しかし。",
+   "nuance_ja": "前のことは認めながら、そこから予想されることにはならないことを表す。書き言葉的で、改まった言い方である。後ろには問題や、まだ終わっていない結果が来ることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-mono-da",
@@ -1957,7 +2131,10 @@
      "en": "You should listen to people until they finish."
     }
    ],
-   "order": 59
+   "order": 59,
+   "meaning_ja": "〜するのが当然だ。昔はよく〜した。",
+   "nuance_ja": "一般的な真理や、自然な傾向、社会の常識として当然することを表す。た形につくと、昔よく繰り返したことをなつかしく思い出す言い方になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-mono-reason",
@@ -1991,7 +2168,10 @@
      "en": "It was so tasty that I ate the whole thing."
     }
    ],
-   "order": 60
+   "order": 60,
+   "meaning_ja": "〜のだから（言い訳として）。",
+   "nuance_ja": "理由を言い訳や自分の正当化として言う。「もん」は話し言葉的で、子どもっぽく聞こえることもある。「〜ものだから」は丁寧な会話でも使えるが、失敗の理由を説明する感じがある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koto-ka",
@@ -2023,7 +2203,10 @@
      "en": "How long I've waited to see you!"
     }
    ],
-   "order": 61
+   "order": 61,
+   "meaning_ja": "どんなに〜だろう。本当に〜だ。",
+   "nuance_ja": "強い気持ちを表す言い方で、「どんなに」「どれほど」「何度」などと一緒に使う。書き言葉的で、感情がこもった表現である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ppoi",
@@ -2057,7 +2240,10 @@
      "en": "Did you see a person in dark clothes?"
     }
    ],
-   "order": 62
+   "order": 62,
+   "meaning_ja": "〜のように見える。〜の感じがある。よく〜する。",
+   "nuance_ja": "何かに似た感じがあることや、そうなりやすい傾向を表す。話し言葉的で、少し悪い意味で使うことが多い。色につくと「その色に近い」という意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-rashii-typical",
@@ -2090,7 +2276,10 @@
      "en": "She's dressed like a proper student."
     }
    ],
-   "order": 63
+   "order": 63,
+   "meaning_ja": "〜にふさわしい性質をよく持っている。いかにも〜だ。",
+   "nuance_ja": "名詞について、そのものらしい理想的な特徴があることを表す。同じ形の伝聞の「〜らしい」は普通形につき、「聞いた話では〜のようだ」という別の意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-rashii",
@@ -2124,7 +2313,10 @@
      "en": "I hear it's going to snow tomorrow."
     }
    ],
-   "order": 64
+   "order": 64,
+   "meaning_ja": "聞いたことや様子から考えると、〜のようだ。",
+   "nuance_ja": "人から聞いた情報や、間接的な根拠から判断したことを伝える。話し手は自分の判断として責任を持たない感じがある。伝聞の「〜そうだ」より柔らかく、「〜ようだ」より確かさが低い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-gachi",
@@ -2157,7 +2349,10 @@
      "en": "When I'm busy, I tend to skip meals."
     }
    ],
-   "order": 65
+   "order": 65,
+   "meaning_ja": "〜することが多い。〜になりやすい。",
+   "nuance_ja": "よくない傾向がよくあることを表すことが多い。「〜っぽい」は性質を、「〜気味」は少しその状態であることを表すのと比べて、回数の多さを言う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-gimi",
@@ -2190,7 +2385,10 @@
      "en": "I'm a bit overweight, so I'm on a diet."
     }
    ],
-   "order": 66
+   "order": 66,
+   "meaning_ja": "少し〜の様子がある。〜の傾向が少しある。",
+   "nuance_ja": "体や気持ちの、あまりよくない状態が少しあることを表す。程度が軽いことを言うので、「〜がち」のように回数が多いという意味はない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-darake",
@@ -2222,7 +2420,10 @@
      "en": "The room is so full of rubbish there's nowhere to step."
     }
    ],
-   "order": 67
+   "order": 67,
+   "meaning_ja": "よくないものがたくさんある。〜でいっぱいだ。",
+   "nuance_ja": "よくないものが一面についていたり、たくさんあったりすることを表す。「いっぱい」はよい意味にも悪い意味にも使えるが、こちらは悪い意味で使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-muke",
@@ -2255,7 +2456,10 @@
      "en": "There's also an English explanation for foreigners."
     }
    ],
-   "order": 68
+   "order": 68,
+   "meaning_ja": "〜を対象に作った。〜に合っている。",
+   "nuance_ja": "「〜向け」は、ある人たちのために作られたことを表す。「〜向き」は、もともとその人たちに合っていることを表す。どちらも「の」をつけて名詞を説明する。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kke",
@@ -2287,7 +2491,10 @@
      "en": "Did I already return this book?"
     }
    ],
-   "order": 69
+   "order": 69,
+   "meaning_ja": "〜だったかな（忘れたことを確かめる）。",
+   "nuance_ja": "忘れたことや、はっきり覚えていないことを、相手に確かめるときに使う。話し言葉で、親しい相手に使う。丁寧に言うときは「〜でしたっけ」になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tte",
@@ -2321,7 +2528,10 @@
      "en": "He said he can't come."
     }
    ],
-   "order": 70
+   "order": 70,
+   "meaning_ja": "〜と。〜という。〜は。〜そうだ。",
+   "nuance_ja": "話し言葉で、引用の「と」、名前の「という」、話題の「は」の代わりに使う。文の終わりにつくと、聞いた話を伝える意味にもなる。親しい相手とのくだけた会話で使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toka",
@@ -2354,7 +2564,10 @@
      "en": "Apparently a new shop has opened in front of the station."
     }
    ],
-   "order": 71
+   "order": 71,
+   "meaning_ja": "〜と聞いた。〜というような話だ。",
+   "nuance_ja": "聞いた話を、くわしくは知らないという感じで、あいまいに伝える。はっきり言いたくないときに、言い方を柔らかくするためにも使う。物を並べる「〜とか〜とか」とは使い方が違う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toiu",
@@ -2388,7 +2601,10 @@
      "en": "The forecast says it will rain tomorrow."
     }
    ],
-   "order": 72
+   "order": 72,
+   "meaning_ja": "〜という名前の。〜という内容の。",
+   "nuance_ja": "名前や内容を後ろの名詞につなげる。知らない人や物の名前を言うときや、話や知らせの内容を説明するときによく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toiu-koto-da",
@@ -2422,7 +2638,10 @@
      "en": "I'm told the manager is off today."
     }
    ],
-   "order": 73
+   "order": 73,
+   "meaning_ja": "〜そうだ（伝聞）。つまり〜という意味だ。",
+   "nuance_ja": "聞いたことを、客観的に少し改まった形で伝える。また、前の話からわかる結論を言うときにも使い、その場合は前に「つまり」が来ることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toiu-no-wa",
@@ -2455,7 +2674,10 @@
      "en": "Is it true that he isn't coming?"
     }
    ],
-   "order": 74
+   "order": 74,
+   "meaning_ja": "〜と呼ばれるものは。〜の意味は。",
+   "nuance_ja": "言葉や考えを取り上げて、その意味を説明するときに使う。後ろは「〜ということだ」「〜のことだ」で終わることが多い。くだけた言い方は「〜って」である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-towa",
@@ -2488,7 +2710,10 @@
      "en": "'Ishin denshin' means understanding each other without words."
     }
    ],
-   "order": 75
+   "order": 75,
+   "meaning_ja": "〜というものは。まさか〜とは。",
+   "nuance_ja": "名詞について、その言葉の意味を改まって説明したり考えたりするときに使う。文につくと、「こんなことが起こるなんて」という強い驚きを表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-towa-kagiranai",
@@ -2521,7 +2746,10 @@
      "en": "What the teacher says isn't always right."
     }
    ],
-   "order": 76
+   "order": 76,
+   "meaning_ja": "いつも〜だとは言えない。〜でない場合もある。",
+   "nuance_ja": "一般的にそう思われていることに、例外があることを言う。「必ずしも」「いつも」とよく一緒に使う。「〜わけではない」は結論をもっと広く打ち消す言い方である。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toiu-yori",
@@ -2553,7 +2781,10 @@
      "en": "This is more of an experiment than cooking."
     }
    ],
-   "order": 77
+   "order": 77,
+   "meaning_ja": "〜と言うより、〜と言ったほうが正しい。",
+   "nuance_ja": "前の言い方より、後ろの言い方のほうが合っていると言い直すときに使う。後ろに「むしろ」が来ることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-to-itte-mo",
@@ -2586,7 +2817,10 @@
      "en": "I can speak Japanese, but only at an everyday conversation level."
     }
    ],
-   "order": 78
+   "order": 78,
+   "meaning_ja": "〜とは言うが、実際は大したことはない。",
+   "nuance_ja": "前に言ったことから相手が大きく期待しないよう、実際の程度を付け加えて制限する。後ろには「それほどではない」という内容が来る。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toiu-to",
@@ -2622,7 +2856,10 @@
      "en": "That reminds me, tomorrow is his birthday."
     }
    ],
-   "order": 79
+   "order": 79,
+   "meaning_ja": "〜の話が出たので言うと。〜から思い浮かぶのは。",
+   "nuance_ja": "ある話題から、それに関係することを思い出して話すときに使う。「〜といえば」は会話で、話題を広げたり変えたりするときによく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-okage-de",
@@ -2655,7 +2892,10 @@
      "en": "It finished early thanks to everyone's help."
     }
    ],
-   "order": 80
+   "order": 80,
+   "meaning_ja": "〜が助けになって、よい結果になった。",
+   "nuance_ja": "よい結果の原因を示し、感謝の気持ちを表す。悪い結果に使うと、皮肉になる。悪い結果の原因を言うときは、ふつう「〜せいで」を使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-sei-de",
@@ -2688,7 +2928,10 @@
      "en": "Don't blame others for your failures."
     }
    ],
-   "order": 81
+   "order": 81,
+   "meaning_ja": "〜が原因で、悪い結果になった。",
+   "nuance_ja": "悪い結果の原因を示し、その原因を責める気持ちを表す。よい結果のときは「〜おかげで」を使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-sei-ka",
@@ -2721,7 +2964,10 @@
      "en": "Maybe it's lack of sleep, but I can't focus on work."
     }
    ],
-   "order": 82
+   "order": 82,
+   "meaning_ja": "はっきりしないが、〜が原因かもしれない。",
+   "nuance_ja": "話し手がはっきりわからない理由を、「たぶんそのせいだろう」と示す。悪い結果に使うことが多いが、そうでない場合もある。原因と決めつけないので、「〜せいで」より柔らかい。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hodo",
@@ -2755,7 +3001,10 @@
      "en": "I'm dead tired."
     }
    ],
-   "order": 83
+   "order": 83,
+   "meaning_ja": "〜するくらいに。程度がとても高いことを例で示す。",
+   "nuance_ja": "例を使って、程度がどのくらいかを表す。「死ぬほど」のように大げさに言うこともある。「〜くらい」より少し書き言葉的で、程度が高い感じがある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kurai",
@@ -2789,7 +3038,10 @@
      "en": "The view was unbelievably beautiful."
     }
    ],
-   "order": 84
+   "order": 84,
+   "meaning_ja": "〜するほどに。少なくとも〜程度は。",
+   "nuance_ja": "「〜ほど」と同じように例で程度を表すが、より話し言葉的である。「それくらいできる」のように、程度が低くて簡単だという気持ちを表すこともある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hodo-nai",
@@ -2822,7 +3074,10 @@
      "en": "I'm not as tall as my older brother."
     }
    ],
-   "order": 85
+   "order": 85,
+   "meaning_ja": "〜と比べると、それほど〜ではない。",
+   "nuance_ja": "二つのものを比べて、前のものは後ろのものの程度に届かないことを表す。肯定で比べるときは「〜より」を使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hodo-wa-nai",
@@ -2854,7 +3109,10 @@
      "en": "Nothing is as important as health."
     }
    ],
-   "order": 86
+   "order": 86,
+   "meaning_ja": "〜がいちばん〜だ。〜より〜なものはない。",
+   "nuance_ja": "ほかのどれよりも程度がいちばん高いことを、強い気持ちで言う。話し手の主観的な評価を表すことが多い。「ほど」の代わりに「くらい」も使える。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hodo-da",
@@ -2886,7 +3144,10 @@
      "en": "His Japanese is so good you'd mistake him for a native."
     }
    ],
-   "order": 87
+   "order": 87,
+   "meaning_ja": "〜するくらいの程度だ。",
+   "nuance_ja": "文の終わりで、程度がどのくらい大きいかを、具体的な例で表す。前の文でまず状態を言い、それがどれほどかを付け加える形が多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ba-hodo",
@@ -2919,7 +3180,10 @@
      "en": "The fresher vegetables are, the tastier they are."
     }
    ],
-   "order": 88
+   "order": 88,
+   "meaning_ja": "一方の程度が変わると、それにつれてもう一方の程度も変わること。",
+   "nuance_ja": "同じ動詞や形容詞を「〜ば」と「〜ほど」でくり返して使う。二つのことがいっしょに変わっていく様子を表す。書き言葉では「ば」の部分を省いて「〜ほど」だけでも同じ意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-tsurete",
@@ -2953,7 +3217,10 @@
      "en": "As the town grew, transport became more convenient."
     }
    ],
-   "order": 89
+   "order": 89,
+   "meaning_ja": "一方が変わるのに合わせて、もう一方も少しずつ変わること。",
+   "nuance_ja": "前にも後にも変化を表す言葉が来て、一回だけの動作には使わない。「〜にしたがって」「〜とともに」と近いが、自然に少しずつ変わっていく様子を言うときは「〜につれて」がいちばん自然だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-shitagatte",
@@ -2987,7 +3254,10 @@
      "en": "As the economy developed, life became more affluent."
     }
    ],
-   "order": 90
+   "order": 90,
+   "meaning_ja": "①一方の変化に合わせて、もう一方も変わること。②決まりや指示のとおりにすること。",
+   "nuance_ja": "①の意味では「〜につれて」とほぼ同じだが、少しかたい。②の意味では「規則」「指示」「案内」などの名詞について、それに従って行動することを表す。「〜につれて」には②の使い方はない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-to-tomo-ni",
@@ -3020,7 +3290,10 @@
      "en": "I moved to Tokyo at the same time as I graduated."
     }
    ],
-   "order": 91
+   "order": 91,
+   "meaning_ja": "①〜といっしょに。②〜と同時に。③一方の変化に合わせて。",
+   "nuance_ja": "人といっしょに何かをする、二つのことが同時に起こる、一方が変わるともう一方も変わる、という意味がある。「〜といっしょに」よりかたい言い方で、あいさつやスピーチ、書き言葉でよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-shika-nai",
@@ -3053,7 +3326,10 @@
      "en": "Now that we've come this far, all we can do is try our best."
     }
    ],
-   "order": 92
+   "order": 92,
+   "meaning_ja": "ほかに方法がなく、それをするだけだということ。",
+   "nuance_ja": "ほかの道がなく、しかたなくそうするという気持ちがある。話し言葉でも書き言葉でも使える。「〜ほかない」はもっと書き言葉的で、「〜ざるをえない」はさらにかたく、義務感が強い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hoka-nai",
@@ -3085,7 +3361,10 @@
      "en": "You have no option but to solve it yourself."
     }
    ],
-   "order": 93
+   "order": 93,
+   "meaning_ja": "ほかに方法がないので、そうするしかないこと。",
+   "nuance_ja": "「〜しかない」とほぼ同じ意味だが、より書き言葉的でかたい。「〜ほかはない」「〜よりほかない」「〜ほかしかたがない」という形もある。あきらめて受け入れる気持ちがある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-kagiru",
@@ -3118,7 +3397,10 @@
      "en": "When you have a cold, it's best not to push yourself."
     }
    ],
-   "order": 94
+   "order": 94,
+   "meaning_ja": "〜がいちばんよい。〜するのが最もよい。",
+   "nuance_ja": "話す人が、ある場面では何がいちばんよいかを自分の意見として言う表現だ。客観的な事実ではなく、自分の経験や好みにもとづく判断である。「〜ないに限る」の形で「しないのがいちばんだ」という意味にもなる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-kagirazu",
@@ -3151,7 +3433,10 @@
      "en": "Not just in Japan, populations are ageing in many countries."
     }
    ],
-   "order": 95
+   "order": 95,
+   "meaning_ja": "〜だけでなく、それ以外のものも。",
+   "nuance_ja": "前に出した例だけではなく、もっと広い範囲に当てはまることを表す。後ろには「〜も」「〜でも」が来ることが多い。「〜だけでなく」より少しかたい言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kagiri",
@@ -3183,7 +3468,10 @@
      "en": "I'll reply as soon as I possibly can."
     }
    ],
-   "order": 96
+   "order": 96,
+   "meaning_ja": "①〜の間は。〜という条件が続くなら。②〜の範囲では。",
+   "nuance_ja": "ある状態が続く間は後のことも変わらない、という条件を表す。「〜ない限り」は「〜しなければ」という意味になる。「知っている限り」は知識の範囲、「できる限り」はできるだけという意味だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-sae",
@@ -3217,7 +3505,10 @@
      "en": "He couldn't even write his own name."
     }
    ],
-   "order": 97
+   "order": 97,
+   "meaning_ja": "極端な例を出して、ほかはもちろんだという気持ちを表す。〜も。",
+   "nuance_ja": "ふつうなら当然できることさえできない、という形で、状況がどれほどかを強調する。否定の文でよく使う。「〜でも」「〜まで」に似ているが、「〜さえ」のほうが少しかたい。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-sae-ba",
@@ -3250,7 +3541,10 @@
      "en": "As long as the weather is good, you can see Mount Fuji."
     }
    ],
-   "order": 98
+   "order": 98,
+   "meaning_ja": "それ一つだけが満たされれば、ほかは問題なく結果が出ること。",
+   "nuance_ja": "必要な条件はそれだけで十分だ、という気持ちを表す。名詞には「〜さえ〜ば」、動詞には「ます形の語幹＋さえすれば」を使う。よい結果が来ることが多いが、「〜さえなければ」のように残念な気持ちも表せる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-koso",
@@ -3283,7 +3577,10 @@
      "en": "This time, I'll definitely try not to be late."
     }
    ],
-   "order": 99
+   "order": 99,
+   "meaning_ja": "ほかではなく、まさにそれだと強く示す。",
+   "nuance_ja": "大事なものを一つ取り上げて強める。「今年こそ」「次こそ」のように、強い決心を言うときによく使う。「こちらこそ」は、相手の言葉に対して自分のほうもそうだと返す言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-demo",
@@ -3316,7 +3613,10 @@
      "en": "Please come and visit any time."
     }
    ],
-   "order": 100
+   "order": 100,
+   "meaning_ja": "①極端な例を出して、〜も。②軽く例を出して、〜など。③疑問詞について、どれも。",
+   "nuance_ja": "「子どもでもわかる」のように極端な例を出す使い方、「お茶でも」のように決めずに軽くさそう使い方、「いつでも」「だれでも」のように全部を表す使い方がある。②はさそいや提案をやわらかくする。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-nanka",
@@ -3350,7 +3650,10 @@
      "en": "I can't believe he came first!"
     }
    ],
-   "order": 101
+   "order": 101,
+   "meaning_ja": "①〜など。②軽く見る気持ちや、おどろきを表す。",
+   "nuance_ja": "話し言葉で使う。自分のことに使うとけんそんになり、人やものに使うと軽く見る気持ちやきらいな気持ちが出る。「なんて」は文の終わりの普通形について、意外だという気持ちも表す。例をあげる「など」のくだけた形でもある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-nado",
@@ -3382,7 +3685,10 @@
      "en": "Someone like me could never do it."
     }
    ],
-   "order": 102
+   "order": 102,
+   "meaning_ja": "いくつかの例を示し、ほかにもあることを表す。",
+   "nuance_ja": "例をあげるときの中立的な言い方で、書き言葉でも丁寧な会話でも使える。自分について「私などには」と言うと、けんそんの気持ちになる。「なんか」は「など」のくだけた言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wa-mochiron",
@@ -3415,7 +3721,10 @@
      "en": "I'm busy on weekdays, not to mention weekends."
     }
    ],
-   "order": 103
+   "order": 103,
+   "meaning_ja": "〜は言うまでもなく当然で、さらにほかのものも。",
+   "nuance_ja": "まず当たり前のものを出し、それに加えてほかのものもそうだと言う。後ろには「〜も」「〜まで」がよく来る。「〜はもとより」はもっとかたい言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-mo-ba-mo",
@@ -3447,7 +3756,10 @@
      "en": "This job has fun times and hard times."
     }
    ],
-   "order": 104
+   "order": 104,
+   "meaning_ja": "〜もするし、〜もする。二つのことを並べて示す。",
+   "nuance_ja": "同じような二つのことを並べて、両方そうだと言う。否定の形では「〜もなければ〜もない」となり、どちらもないという意味になる。よいことにも悪いことにも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-kurabete",
@@ -3480,7 +3792,10 @@
      "en": "The younger brother is short compared with the older one."
     }
    ],
-   "order": 105
+   "order": 105,
+   "meaning_ja": "〜と比べると。〜を基準にすると。",
+   "nuance_ja": "二つのものをはっきり比べて、ちがいを示す。「〜より」だけよりも比べていることがはっきりし、少しかたい。「〜に比べると」の形もよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-kuwaete",
@@ -3513,7 +3828,10 @@
      "en": "Transport costs are paid in addition to the salary."
     }
    ],
-   "order": 106
+   "order": 106,
+   "meaning_ja": "〜だけでなく、さらにそれに足して。",
+   "nuance_ja": "すでにあるものに、同じような別のものが加わることを表す。「〜だけでなく」よりかたく、ニュースや書き言葉でよく使う。後ろには「〜も」が来ることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ippou-de",
@@ -3547,7 +3865,10 @@
      "en": "While exports are increasing, imports are falling."
     }
    ],
-   "order": 107
+   "order": 107,
+   "meaning_ja": "〜である反対に。〜のと並んで、別の面では。",
+   "nuance_ja": "ちがう二つのことや、一つのことの二つの面を並べて示す。対照的な内容が来ることが多い。書き言葉的な言い方で、「〜反面」とちがって、別々のものを比べるときにも使える。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hanmen",
@@ -3579,7 +3900,10 @@
      "en": "He is kind, but at the same time timid."
     }
    ],
-   "order": 108
+   "order": 108,
+   "meaning_ja": "同じものが持っている、反対の二つの面を示す。",
+   "nuance_ja": "一つのものごとによい面と悪い面の両方があると言うときに使う。「〜一方で」は別々の二つのことも比べられるが、「〜反面」は同じものの二つの面にしか使わない。書き言葉的だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kawari-ni",
@@ -3611,7 +3935,10 @@
      "en": "I attended the meeting in place of the manager."
     }
    ],
-   "order": 109
+   "order": 109,
+   "meaning_ja": "①〜をしないで、ほかのことを。②〜のお返しとして。",
+   "nuance_ja": "①はあることの代わりに別のことをする意味で、②は何かをしてもらう代わりにこちらも何かをする、という交換の意味だ。人や物が別の人や物に代わる意味もある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-kawatte",
@@ -3643,7 +3970,10 @@
      "en": "There are factories where robots work instead of people."
     }
    ],
-   "order": 110
+   "order": 110,
+   "meaning_ja": "〜の代わりに。〜の役目を別の人が引き受けて。",
+   "nuance_ja": "ある人やものの代わりに、別の人やものがその役目をすることを表す。「〜のかわりに」よりかたい言い方で、あいさつや式などでよく使う。新しいものが古いものに取って代わる意味にもなる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-mushiro",
@@ -3675,7 +4005,10 @@
      "en": "If anything, walking is faster than the train."
     }
    ],
-   "order": 111
+   "order": 111,
+   "meaning_ja": "二つを比べて、どちらかと言えば後のほうが。",
+   "nuance_ja": "ふつう思われていることよりも、別のほうが本当に近い、またはよいと言うときに使う。「〜より、むしろ〜」「〜というより、むしろ〜」の形が多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toshitara",
@@ -3708,7 +4041,10 @@
      "en": "If we go tomorrow, what time should we leave?"
     }
    ],
-   "order": 112
+   "order": 112,
+   "meaning_ja": "〜だと仮に考えた場合。もし〜なら。",
+   "nuance_ja": "実際はそうではない、またははっきりしないことを仮に考えて、その後を考える。「としたら」は話し言葉でよく使い、「とすれば」「とすると」は理屈で考える感じが強く、少しかたい。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-shite-wa",
@@ -3741,7 +4077,10 @@
      "en": "He knows difficult words for a child."
     }
    ],
-   "order": 113
+   "order": 113,
+   "meaning_ja": "〜から考えてふつう予想されることとはちがって。",
+   "nuance_ja": "ある事実から予想されることと実際の結果がちがうときに使う。前にはその人やものについての具体的な事実が来る。「〜わりに」は「年のわりに」のように程度を表す言葉も受けるが、「〜にしては」は具体的な事実を受けることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-shite-mo",
@@ -3775,7 +4114,10 @@
      "en": "Whether you go or not, please decide soon."
     }
    ],
-   "order": 114
+   "order": 114,
+   "meaning_ja": "〜ということを認めても、それでも。",
+   "nuance_ja": "前のことが本当だとしても、後のことは変わらないと言う。後には話す人の意見や不満が来ることが多い。「〜にしても〜にしても」の形では「どちらの場合でも」という意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tatoe-temo",
@@ -3808,7 +4150,10 @@
      "en": "Even if it's a parent, there are things I can't forgive."
     }
    ],
-   "order": 115
+   "order": 115,
+   "meaning_ja": "もし〜という場合になっても。",
+   "nuance_ja": "「たとえ」を前につけて、極端な場合を仮に考えても結果は変わらないことを強く言う。後には強い決心や変わらない事実が来る。「〜ても」だけより気持ちが強い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ikura-temo",
@@ -3840,7 +4185,10 @@
      "en": "No matter how busy I am, I eat breakfast."
     }
    ],
-   "order": 116
+   "order": 116,
+   "meaning_ja": "どれだけ〜しても。程度がどんなに大きくても。",
+   "nuance_ja": "どんなに努力しても、どんなに程度が大きくても、結果が変わらないことを表す。「どんなに〜ても」とほぼ同じ意味だ。期待した結果にならない不満がこもることが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tatte",
@@ -3874,7 +4222,10 @@
      "en": "No matter how much you ask, the answer's no."
     }
    ],
-   "order": 117
+   "order": 117,
+   "meaning_ja": "〜ても。〜でも。くだけた言い方。",
+   "nuance_ja": "「〜ても」のくだけた話し言葉で、親しい人との会話で使う。い形容詞は「〜くたって」、名詞やな形容詞は「〜だって」の形になる。名詞の後の「だって」は「〜も」「〜でも」の意味にもなる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ba-noni",
@@ -3908,7 +4259,10 @@
      "en": "If you want to go, why don't you just go?"
     }
    ],
-   "order": 118
+   "order": 118,
+   "meaning_ja": "そうしていたらよかったのに、という残念な気持ちや願い。",
+   "nuance_ja": "「〜ばよかった」は自分がしなかったことへのこうかいを表す。「〜ばいいのに」は、ほかの人のしていることに対して、そうすればいいという軽い不満やアドバイスを表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tara-dou",
@@ -3941,7 +4295,10 @@
      "en": "Why not get it checked at a hospital?"
     }
    ],
-   "order": 119
+   "order": 119,
+   "meaning_ja": "〜してはどうか、と相手にすすめる言い方。",
+   "nuance_ja": "相手にやわらかく提案するときに使う。「〜たらどう？」は親しい人に、「〜たらいかがですか」は目上の人に使う丁寧な形だ。言い方によっては少し押しつけるように聞こえることもある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-to-ii",
@@ -3973,7 +4330,10 @@
      "en": "I wish I had more time."
     }
    ],
-   "order": 120
+   "order": 120,
+   "meaning_ja": "〜になればうれしい、という願い。",
+   "nuance_ja": "自分や相手のことについて、そうなってほしいという希望を表す。「〜といいですね」は相手の気持ちに寄りそう言い方になる。「〜といいのに」は、そうならないだろうという残念な気持ちがこもる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-beki-da",
@@ -4006,7 +4366,10 @@
      "en": "You shouldn't speak ill of others."
     }
    ],
-   "order": 121
+   "order": 121,
+   "meaning_ja": "そうするのが正しい。当然〜しなければならない。",
+   "nuance_ja": "何が正しいか、どうするのが当然かを、話す人の強い意見として言う。「〜たほうがいい」より強く、目上の人に直接使うと失礼になることがある。「〜べきではない」はしてはいけないという意味だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-chigainai",
@@ -4039,7 +4402,10 @@
      "en": "After practising this much, you'll surely pass."
     }
    ],
-   "order": 122
+   "order": 122,
+   "meaning_ja": "きっと〜だ。まちがいなく〜だと思う。",
+   "nuance_ja": "何かの理由や感じから、強く確信していることを表す。「だろう」や「かもしれない」よりずっと確かさが高い。「〜に決まっている」より書き言葉的で、少し落ち着いた言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-kimatte-iru",
@@ -4071,7 +4437,10 @@
      "en": "He's certain to be late again."
     }
    ],
-   "order": 123
+   "order": 123,
+   "meaning_ja": "必ず〜だ。当然〜だ。",
+   "nuance_ja": "話す人が自分の考えで強く言い切る表現で、会話でよく使う。「〜に違いない」より主観的で気持ちが強く、くだけている。話し言葉では「〜に決まってる」とよく言う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-osore-ga-aru",
@@ -4103,7 +4472,10 @@
      "en": "If things go on like this, an accident could happen."
     }
    ],
-   "order": 124
+   "order": 124,
+   "meaning_ja": "悪いことが起こる可能性がある。",
+   "nuance_ja": "よくないことが起こるかもしれないと注意をうながす表現だ。かたい言い方で、ニュースや天気予報、公的なお知らせでよく使う。よいことには使わない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kamoshirenai-note",
@@ -4136,7 +4508,10 @@
      "en": "That story might be true."
     }
    ],
-   "order": 125
+   "order": 125,
+   "meaning_ja": "〜の可能性がある。そうなるかどうかはっきりしない。",
+   "nuance_ja": "確かさは半分くらいか、それより低い。「〜おそれがある」は悪いことにしか使わないが、「〜かもしれない」はよいことにも悪いことにも使える。「〜に違いない」のような強い確信はない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kiga-suru",
@@ -4168,7 +4543,10 @@
      "en": "I have a feeling I forgot to lock the door."
     }
    ],
-   "order": 126
+   "order": 126,
+   "meaning_ja": "はっきりした理由はないが、なんとなくそう感じる。",
+   "nuance_ja": "話す人のぼんやりした感じや予感を表す。「〜と思う」よりやわらかく、自信がない気持ちが出る。「〜ような気がする」の形でよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kiru",
@@ -4201,7 +4579,10 @@
      "en": "You can see more stars than you could count."
     }
    ],
-   "order": 127
+   "order": 127,
+   "meaning_ja": "①最後まで全部〜する。②完全に〜の状態になる。",
+   "nuance_ja": "「〜きる」は動作を終わりまでする、またはすっかりその状態になることを表す。「〜きれない」は量が多すぎるなどの理由で最後までできないことを表し、「数えきれない」のように、とても多いという意味にもなる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kakeru",
@@ -4235,7 +4616,10 @@
      "en": "I left a book I was halfway through on the train."
     }
    ],
-   "order": 128
+   "order": 128,
+   "meaning_ja": "①〜し始めて、途中である。②もう少しで〜しそうになる。",
+   "nuance_ja": "動作を始めたが、まだ終わっていない状態を表す。名詞の前では「〜かけの」の形になる。「死にかける」のように、もう少しでそうなるところだったという意味にもなる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-dasu",
@@ -4267,7 +4651,10 @@
      "en": "Everyone burst out laughing at once."
     }
    ],
-   "order": 129
+   "order": 129,
+   "meaning_ja": "急に〜し始める。",
+   "nuance_ja": "ある動作やできごとが、急に、思いがけず始まることを表す。「〜始める」はふつうの言い方で、自分の意志で始めることにも使えるが、「〜出す」は急に起こる感じが強い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-bakari-iru",
@@ -4300,7 +4687,10 @@
      "en": "She's always complaining."
     }
    ],
-   "order": 130
+   "order": 130,
+   "meaning_ja": "いつも〜だけして、ほかのことをしない。",
+   "nuance_ja": "同じことばかりしている様子を、よくないと思って言う表現だ。不満や注意の気持ちがこもる。「〜ばかりだ」は、悪い方向へ変わり続けるという別の意味なので注意する。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-bakari-da",
@@ -4333,7 +4723,10 @@
      "en": "My worries only kept increasing."
     }
    ],
-   "order": 131
+   "order": 131,
+   "meaning_ja": "ある方向へ変わり続けるだけだ。",
+   "nuance_ja": "状態が一つの方向へどんどん進んでいくことを表し、ふつうは悪い変化に使う。「〜一方だ」と近いが、「〜ばかりだ」のほうが話す人の心配や不満が強く出る。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ippou-da",
@@ -4366,7 +4759,10 @@
      "en": "His grades kept getting worse."
     }
    ],
-   "order": 132
+   "order": 132,
+   "meaning_ja": "ある方向への変化が止まらず、ますます進む。",
+   "nuance_ja": "変化が一つの方向へずっと続いていることを表す。悪い変化に使うことが多いが、よい変化にも使える。書き言葉的な言い方で、「〜ばかりだ」より客観的に聞こえる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-mama",
@@ -4398,7 +4794,10 @@
      "en": "This town is just as it used to be."
     }
    ],
-   "order": 133
+   "order": 133,
+   "meaning_ja": "前の状態が変わらずに続いていること。",
+   "nuance_ja": "ある状態のまま、別のことをする様子を表す。「電気をつけたまま」のように、本当は変えるべきだったという気持ちがあることが多い。「そのまま」「昔のまま」のようにも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-zu-ni",
@@ -4431,7 +4830,10 @@
      "en": "He went home without saying anything."
     }
    ],
-   "order": 134
+   "order": 134,
+   "meaning_ja": "〜しないで。",
+   "nuance_ja": "「〜ないで」のかたい言い方で、書き言葉やあらたまった話でよく使う。「する」は「せずに」になる。「〜ないでください」のようなお願いの形には使えない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-zu-ni-sumu",
@@ -4464,7 +4866,10 @@
      "en": "Apparently if you take the medicine, you won't need surgery."
     }
    ],
-   "order": 135
+   "order": 135,
+   "meaning_ja": "しなければならないと思っていたことを、しなくてよくなる。",
+   "nuance_ja": "予想していたいやなことやたいへんなことをしなくてよくなり、ほっとした気持ちを表す。「〜ないで済む」も同じ意味で、「〜ずに済む」のほうが少しかたい。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-nagara",
@@ -4499,7 +4904,10 @@
      "en": "Unfortunately, I can't go today."
     }
    ],
-   "order": 136
+   "order": 136,
+   "meaning_ja": "〜のに。〜けれども。",
+   "nuance_ja": "同じ人やものについて、合わないように見える二つのことを結ぶ。「〜しながら」の「同時に」という意味とはちがう。「残念ながら」のような決まった言い方も多い。「〜ながらも」は書き言葉的だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-furi-wo-suru",
@@ -4531,7 +4939,10 @@
      "en": "Don't pretend to understand; ask questions."
     }
    ],
-   "order": 137
+   "order": 137,
+   "meaning_ja": "本当はそうではないのに、そうであるように見せる。",
+   "nuance_ja": "事実とちがうことを、まるで本当のように行動で見せることを表す。「寝たふり」「知らないふり」のように使う。人をだますためだけでなく、気をつかってそうすることもある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tsumori-de",
@@ -4563,7 +4974,10 @@
      "en": "I meant to help but ended up getting in the way."
     }
    ],
-   "order": 138
+   "order": 138,
+   "meaning_ja": "〜という気持ちで。〜と思って。",
+   "nuance_ja": "ある考えや目的を持って行動することを表す。実際とはちがうことが多く、「冗談のつもりで言ったのに」のように、相手の受け取り方とずれる場面でよく使う。「〜になったつもりで」は、そうなったと思って、という意味だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tagaru",
@@ -4594,7 +5008,10 @@
      "en": "She wants to study abroad."
     }
    ],
-   "order": 139
+   "order": 139,
+   "meaning_ja": "ほかの人が〜したいという様子を見せる。",
+   "nuance_ja": "日本語では、ほかの人の気持ちを「〜たい」で直接言えないので、外から見える様子として「〜たがる」を使う。今の様子には「〜たがっている」を使う。目上の人に使うと失礼に聞こえることがある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-zurai",
@@ -4626,7 +5043,10 @@
      "en": "The writing is small and hard to read."
     }
    ],
-   "order": 140
+   "order": 140,
+   "meaning_ja": "気持ちの上で、または体の感じとして〜しにくい。",
+   "nuance_ja": "心理的な理由や体の不便さで、することがたいへんだと感じるときに使う。「〜にくい」は物の性質などで客観的にむずかしいことにも使えるが、「〜づらい」は話す人の感じ方が中心だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-yougaa-nai",
@@ -4658,7 +5078,10 @@
      "en": "If you don't get it after all this, I have no way to teach you."
     }
    ],
-   "order": 141
+   "order": 141,
+   "meaning_ja": "〜する方法がない。〜したくてもできない。",
+   "nuance_ja": "やろうとしても、そのための方法や手段が何もないことを表す。「連絡のしようがない」のように名詞の形にもなる。「しようがない」は、どうにもならないという意味でも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-shouganai",
@@ -4691,7 +5114,10 @@
      "en": "I want to see him so badly."
     }
    ],
-   "order": 142
+   "order": 142,
+   "meaning_ja": "とても〜だ。その気持ちや感じをおさえられない。",
+   "nuance_ja": "強い気持ちや体の感じを、自分ではどうにもできないことを表す。話し言葉では「〜てしょうがない」、少しかたいと「〜てしかたがない」を使う。主に話す人自身のことに使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-tamaranai",
@@ -4724,7 +5150,10 @@
      "en": "Today was unbearably hot."
     }
    ],
-   "order": 143
+   "order": 143,
+   "meaning_ja": "がまんできないほど〜だ。",
+   "nuance_ja": "がまんできないほど強い気持ちや体の感じを表す。「〜てしょうがない」と近いが、感じの強さがより強調される。「会いたくてたまらない」のように強い願いにも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-naranai",
@@ -4757,7 +5186,10 @@
      "en": "I can't stop regretting that day."
     }
    ],
-   "order": 144
+   "order": 144,
+   "meaning_ja": "自然にそう感じて、止められない。",
+   "nuance_ja": "心配や不安などの気持ちが自然にわいてきて、おさえられないことを表す。「〜てしょうがない」より書き言葉的で、かたい。「〜気がしてならない」の形もよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-kamawanai",
@@ -4789,7 +5221,10 @@
      "en": "You may use a dictionary."
     }
    ],
-   "order": 145
+   "order": 145,
+   "meaning_ja": "〜してもいい。〜しても問題ない。",
+   "nuance_ja": "許可をあたえたり、求めたりするときに使う。「〜てもいい」より少し丁寧でかたい。「〜てもかまいませんか」の形で、相手に許可を聞くことが多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-moraitai",
@@ -4822,7 +5257,10 @@
      "en": "I'd like you to speak a little more slowly."
     }
    ],
-   "order": 146
+   "order": 146,
+   "meaning_ja": "相手に〜してほしいという願い。",
+   "nuance_ja": "ほかの人に何かをしてほしいという気持ちを表す。「〜ていただきたい」は丁寧な形で、仕事でよく使う。「〜てほしい」と近いが、「〜てほしい」のほうが気持ちをそのまま言う感じが強い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-sasete-morau",
@@ -4854,7 +5292,10 @@
      "en": "May I use this photo?"
     }
    ],
-   "order": 147
+   "order": 147,
+   "meaning_ja": "相手の許可をもらって〜する。〜させてください。",
+   "nuance_ja": "自分がすることを、相手の許しを受けてするという形で、へりくだって言う表現だ。「〜させていただきます」は仕事の場面でとてもよく使う。使いすぎると回りくどく聞こえることもある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-tsuide-ni",
@@ -4886,7 +5327,10 @@
      "en": "I posted a letter while I was out for a walk."
     }
    ],
-   "order": 148
+   "order": 148,
+   "meaning_ja": "何かをする機会を利用して、別のこともいっしょに。",
+   "nuance_ja": "もともとの目的の行動があり、それをする機会に、別のこともするという意味だ。大事なのは前の行動で、後の行動はついでにすることになる。人にたのむときにもよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-toori-ni",
@@ -4919,7 +5363,10 @@
      "en": "If you follow the map, you'll find it right away."
     }
    ],
-   "order": 149
+   "order": 149,
+   "meaning_ja": "〜と同じように。〜のとおりに。",
+   "nuance_ja": "言われたこと、計画、予想などと同じ形で何かをすることを表す。動詞には「〜とおり」、名詞には「〜のとおり」か「〜どおり」がつく。「予定どおり」「思いどおり」のような言い方も多い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wo-chuushin-ni",
@@ -4951,7 +5398,10 @@
      "en": "I'm studying with a focus on grammar."
     }
    ],
-   "order": 150
+   "order": 150,
+   "meaning_ja": "〜をいちばん大事な部分として。〜が中心になって。",
+   "nuance_ja": "あるものごとの中心や主な部分を示す。「若者を中心に人気がある」のように、それがいちばん多いが、ほかにも広がっていることを表す。「〜を中心として」も同じ意味だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wo-hajime",
@@ -4984,7 +5434,10 @@
      "en": "Japanese food, starting with sushi, is popular abroad too."
     }
    ],
-   "order": 151
+   "order": 151,
+   "meaning_ja": "〜を代表的な例として、ほかにも。",
+   "nuance_ja": "グループの中から代表的なものを一つ出し、ほかのものもふくめて言う。後ろには「〜など」「全員」「多くの」などが来ることが多い。あらたまった場面でよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wo-moto-ni",
@@ -5016,7 +5469,10 @@
      "en": "I painted a picture based on an old photo."
     }
    ],
-   "order": 152
+   "order": 152,
+   "meaning_ja": "〜を材料や根拠にして。",
+   "nuance_ja": "あるものを材料やもととして、別のものを作ることを表す。作品や計画、判断などによく使う。「〜に基づいて」は決まりや事実にしたがう意味が強いが、「〜をもとに」は材料として使う感じが強い。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wo-tooshite",
@@ -5048,7 +5504,10 @@
      "en": "You can talk to people all over the world via the internet."
     }
    ],
-   "order": 153
+   "order": 153,
+   "meaning_ja": "①〜を手段や仲立ちにして。②ある期間の間ずっと。",
+   "nuance_ja": "人や方法を間に入れて何かをすることや、ある期間のはじめから終わりまでずっと、という意味を表す。「〜を通じて」もほぼ同じ意味だが、少しかたい。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-watatte",
@@ -5082,7 +5541,10 @@
      "en": "A decade of research finally ended."
     }
    ],
-   "order": 154
+   "order": 154,
+   "meaning_ja": "ある時間や場所、範囲の全体に広がって。",
+   "nuance_ja": "時間、場所、回数などの大きな範囲全体に、ことが続いたり広がったりすることを表す。名詞の前では「〜にわたる」の形になる。範囲が大きいことを強調するかたい言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kara-nikakete",
@@ -5114,7 +5576,10 @@
      "en": "Cherry blossoms bloom around March to April."
     }
    ],
-   "order": 155
+   "order": 155,
+   "meaning_ja": "〜から〜までの、だいたいの間や場所で。",
+   "nuance_ja": "時間や場所の大まかな範囲を表す。「〜から〜まで」ははじめと終わりがはっきりしているが、「〜から〜にかけて」はその間のどこかで起こるという感じで、はっきりしない。天気予報でよく使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-oite",
@@ -5146,7 +5611,10 @@
      "en": "In modern society, smartphones are indispensable."
     }
    ],
-   "order": 156
+   "order": 156,
+   "meaning_ja": "〜で。場所、時間、分野などを示すかたい言い方。",
+   "nuance_ja": "「〜で」のかたい言い方で、式や会議、書き言葉で使う。場所だけでなく、時代や分野にも使う。名詞の前では「〜における」の形になる。ふつうの会話ではあまり使わない。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-oujite",
@@ -5178,7 +5646,10 @@
      "en": "I want work that suits my abilities."
     }
    ],
-   "order": 157
+   "order": 157,
+   "meaning_ja": "〜に合わせて。〜によって変えて。",
+   "nuance_ja": "条件や相手の希望などに合わせて、内容を変えることを表す。「〜によって」と近いが、それにふさわしく合わせるという気持ちが強い。名詞の前では「〜に応じた」の形になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-wo-kikkake-ni",
@@ -5210,7 +5681,10 @@
      "en": "Getting ill made me quit smoking."
     }
    ],
-   "order": 158
+   "order": 158,
+   "meaning_ja": "〜が始まりのきっかけとなって。",
+   "nuance_ja": "あるできごとが、何かを始めたり変わったりするきっかけになったことを表す。「〜を機に」はかたい言い方で、「〜がきっかけで」も同じ意味で使える。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kara-miru-to",
@@ -5242,7 +5716,10 @@
      "en": "From my point of view, that plan is impossible."
     }
    ],
-   "order": 159
+   "order": 159,
+   "meaning_ja": "〜の立場から考えると。〜から判断すると。",
+   "nuance_ja": "ある人の立場や、目に見える様子をもとに判断することを表す。「〜からすると」「〜から言うと」も近い意味で使う。「顔色からすると」のように、何かの様子から推測するときにも使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-seikaku",
@@ -5274,7 +5751,10 @@
      "en": "That's our teacher—she knows everything."
     }
    ],
-   "order": 160
+   "order": 160,
+   "meaning_ja": "思ったとおり、やはり。評判どおりだとほめる気持ち。",
+   "nuance_ja": "期待どおりのことをした人をほめるときに使う。「さすがに」の形では、どんな人でもこれは無理だ、限度をこえている、という意味になることが多い。目上の人に直接使うと失礼に聞こえることもある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-sekkaku",
@@ -5306,7 +5786,10 @@
      "en": "It rained on my precious day off."
     }
    ],
-   "order": 161
+   "order": 161,
+   "meaning_ja": "わざわざ苦労して。めったにない、大事な機会なので。",
+   "nuance_ja": "努力や大事な機会がむだになって残念だという気持ちを表すことが多い。「せっかく〜のに」の形でよく使う。「せっかくだから」は、この機会をむだにしないようにしようという気持ちを表す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-douse",
@@ -5338,7 +5821,10 @@
      "en": "If we're doing it anyway, let's stay at the best hotel."
     }
    ],
-   "order": 162
+   "order": 162,
+   "meaning_ja": "何をしても結果は同じだという、あきらめの気持ち。",
+   "nuance_ja": "結果は変わらないと思って、投げやりに言う話し言葉だ。自分や人を低く見る気持ちが出ることもある。「どうせなら」は、同じことをするのならもっとよくしよう、という前向きな意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ja-nai-ka",
@@ -5371,7 +5857,10 @@
      "en": "Let's all join forces and do our best."
     }
    ],
-   "order": 163
+   "order": 163,
+   "meaning_ja": "①〜だろう、と同意を求める。②気づかせる。③さそう。",
+   "nuance_ja": "相手に同意を求めたり、相手が気づくべきことを強く言ったりするときに使う。責める気持ちが出ることもある。書き言葉では「〜ようではないか」の形で、大勢にいっしょにしようと呼びかける意味になる。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-no-darou-ka",
@@ -5403,7 +5892,10 @@
      "en": "Why do people fight, I wonder?"
     }
    ],
-   "order": 164
+   "order": 164,
+   "meaning_ja": "〜なのかどうか、と疑問に思う気持ち。",
+   "nuance_ja": "相手に答えを求めるのではなく、自分で考えたり、うたがったりする気持ちを表す。書き言葉や、考えながら話すときによく使う。会話では「〜のかな」がくだけた言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-de-sae",
@@ -5436,7 +5928,10 @@
      "en": "It's a story that even adults find scary."
     }
    ],
-   "order": 165
+   "order": 165,
+   "meaning_ja": "極端な例を出して、〜も。",
+   "nuance_ja": "「〜さえ」の使い方の一つで、名詞には「〜でさえ」、動詞には「〜ことさえ」の形をとる。「専門家でさえ」のように、できるはずの人でもできないと言って、程度を強調する。書き言葉的だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-dake",
@@ -5468,7 +5963,10 @@
      "en": "He said everything he wanted and left."
     }
    ],
-   "order": 166
+   "order": 166,
+   "meaning_ja": "〜できる限り全部。〜したいと思う分だけ。",
+   "nuance_ja": "可能な限り、また望むだけ全部、という意味を表す。「できるだけ」「好きなだけ」「食べたいだけ」などの形で使う。限られた量を表す「〜だけ」とはちがい、量の多さや限度を示す。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-hodo-no-koto-demo-nai",
@@ -5501,7 +5999,10 @@
      "en": "It's not worth getting angry over."
     }
    ],
-   "order": 167
+   "order": 167,
+   "meaning_ja": "そうするほど大事なことではない。",
+   "nuance_ja": "心配したり、何かをしたりするほど重大ではないと言うときに使う。ことを軽く見て、相手を安心させるときにもよく使う。「〜ほどでもない」は少しくだけた言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-kurai-nara",
@@ -5534,7 +6035,10 @@
      "en": "If you're going to throw it away, give it to me."
     }
    ],
-   "order": 168
+   "order": 168,
+   "meaning_ja": "〜のようないやなことをするなら、むしろほかのほうがいい。",
+   "nuance_ja": "前のことをとてもいやだと強く否定し、後のほうがまだよいと言う。後ろには「〜ほうがいい」「〜ほうがましだ」がよく来る。話す人の強い気持ちが出る表現だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-te-kara-denai-to",
@@ -5566,7 +6070,10 @@
      "en": "You mustn't eat until you've washed your hands."
     }
    ],
-   "order": 169
+   "order": 169,
+   "meaning_ja": "先に〜してからでなければ、次のことはできない。",
+   "nuance_ja": "あることを先にすませないと、後のことは実現しないという条件を表す。後には「〜できない」「むずかしい」など否定的な内容が来る。「〜てからでなければ」は少しかたい言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-nai-koto-wa-nai",
@@ -5599,7 +6106,10 @@
      "en": "I could go, but it's a bit far."
     }
    ],
-   "order": 170
+   "order": 170,
+   "meaning_ja": "〜ないというわけではない。〜の可能性はある。",
+   "nuance_ja": "二回否定して、全くできないわけではないと、少し消極的に認める表現だ。「できるが、あまり気が進まない」という気持ちがこもることが多い。「〜ないこともない」も同じ意味で使う。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-nai-to",
@@ -5633,7 +6143,10 @@
      "en": "I've got to go to bed early."
     }
    ],
-   "order": 171
+   "order": 171,
+   "meaning_ja": "〜しなければならない。くだけた言い方。",
+   "nuance_ja": "「〜ないといけない」の後ろを省いたくだけた話し言葉だ。文の終わりに使い、自分にやるべきことを言い聞かせるような感じがある。「〜なきゃ」「〜なくちゃ」も同じような言い方だ。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ni-mukatte",
@@ -5665,7 +6178,10 @@
      "en": "I'm working hard every day towards my dream."
     }
    ],
-   "order": 172
+   "order": 172,
+   "meaning_ja": "〜の方向へ。〜を相手や目標として。",
+   "nuance_ja": "動きの方向や、話しかける相手、行動の目標を表す。「目標に向かって」のように、目指すものに近づく意味でも使う。目上の人に「〜に向かって」言うと、反抗的に聞こえることがある。",
+   "ja_source": "llm"
   },
   {
    "id": "n3-ga-suru",
@@ -5697,7 +6213,10 @@
      "en": "This soup has a strange taste."
     }
    ],
-   "order": 173
+   "order": 173,
+   "meaning_ja": "音、におい、味、感じなどを感じる。",
+   "nuance_ja": "「声」「音」「におい」「味」「感じ」「気」などの名詞について、自然に感じられることを表す。感じる人は主語にならず、感じられるものが「が」で示される。「〜を感じる」より自然な言い方だ。",
+   "ja_source": "llm"
   }
  ]
 }

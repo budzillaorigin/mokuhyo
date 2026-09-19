@@ -14,12 +14,14 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | same file, `stroke` table (KanjiVG) | `packs/build_kanjivg.py` | 1 | ✅ |
 | same file, `sentence`/`sentence_word` tables (Tatoeba) + frequency ranks | `packs/build_sentences.py` | 1 | ✅ |
 | same file, `freq_word` table: 10,000-word frequency list behind Core 2k/6k/10k and the "I know these" bands | `packs/build_decks.py` | 11 | ✅ |
+| same file, `onomatopoeia` / `onomatopoeia_theme` tables: 1,334 JMdict on-mim words in 12 themes × 3 types, 1,309 with our feel line (1,307 also in Japanese), 502 with Tatoeba examples, one SVG glyph per theme | `packs/build_onomatopoeia.py` from `packs/onomatopoeia/*.json` | 12 | ✅ |
 | `IlrBandData.kt` (not a pack): ILR bands + abstract lexicon for the difficulty score, generated from `items/ilr_bands.json` | `packs/gen_ilr_bands.py` (`--check` verifies) | 11 | ✅ |
 | `kanji-path.sqlite` (60 levels: 243 radicals, 2,599 kanji, 7,242 words) | `packs/build_kanji_path.py` | 2 | ✅ |
 | `grammar.sqlite` (N5–N1: 829 points, 5,116 Tatoeba examples; matched in order n3, n4, n5, n2, n1 so harder points don't take easier points' sentences) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ |
 | `exam.sqlite`: JLPT blueprints + 7 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 195 passages / 595 items, AI-drafted: core 0+–3 100/306, upper range 3+/4 80/245, liaison 2–3 15/44) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 / 12 | ✅ |
 | `practice.sqlite`: 90 scenarios (699 scripted turns), 96 OPI questions with DLI domains, 125 dialogues (40 natural), 31 drill sets (325 items), 630 minimal pairs | `packs/build_practice.py` | 6 / 12 | ✅ |
 
+| `grammar.sqlite` (N5–N1: 829 points, 5,116 Tatoeba examples; matched in order n3, n4, n5, n2, n1 so harder points don't take easier points' sentences; 829 Japanese explanations in `grammar_point_ja` for monolingual mode) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 / 12 | ✅ |
 | `exam.sqlite`: JLPT blueprints + 4 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 100 passages / 306 items, AI-drafted) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 | ✅ |
 | `practice.sqlite`: 30 scenarios, 62 OPI questions, 45 dialogues, 630 minimal pairs | `packs/build_practice.py` | 6 | ✅ |
 | `tracks.sqlite`: 7 interest/domain tracks, 2629 words, 84 scenarios, 54 dialogues, 458 drills | `packs/build_tracks.py` from `packs/tracks/*.json` | 12 | ✅ (AI-drafted, badge on) |
@@ -136,6 +138,35 @@ The §6.5 targets were: Gaming ~140 kanji / 600 words, Business 30 situations, S
   - Re-runs add items without duplicating ids.
   - The key, if any, comes from `$TSUMUGI_LLM_KEY`.
 - **Review:** everything stays `source: "llm"` with the badge until it's reviewed. `tools/items/review.py` doesn't read track files yet (deferred, see PROGRESS).
+
+### Onomatopoeia (`onomatopoeia`, `onomatopoeia_theme`; Phase 12, DECISIONS D-235…D-237)
+
+Schema: `shared/src/commonMain/sqldelightDictionary/app/tsumugi/dictionary/db/onomatopoeia.sq`. `tools/packs/build_onomatopoeia.py` runs after `build_decks.py`, replaces only these two tables, and takes about 3 minutes (the example search and the VACUUM of the 127 MB pack).
+
+- **Words.** Every JMdict entry with an `on-mim` sense, most frequent first (`ord`). Vulgar or X-rated senses are left out, as are entries marked `exclude` in `entries.json`. `text` is the first kana form, and `variants` holds the other kana and kanji forms (JSON). `gloss` holds the first on-mim sense's glosses (JMdict, CC BY-SA 4.0).
+- **Our data** (`tools/packs/onomatopoeia/`):
+  - `themes.json`: 12 themes (id, English and Japanese title, blurb, SVG glyph).
+  - `entries.json`: per JMdict id, `theme`, `type` (giongo/gitaigo/gijougo), `feel` (ASCII, at most 100 characters, never containing the word: it's the quiz prompt), optional `feel_ja` (at most 40 characters), `source` ("llm" until reviewed), and optional `exclude`.
+  - Words missing from `entries.json` get a rule-based theme and type (`source = "rule"`, no feel).
+- **Examples.** Up to 3 Tatoeba sentence ids (JSON) from the pack's `sentence` table, at most 40 characters, containing one of the word's forms. They come from the word index, or from a literal search for forms of 3 or more characters.
+- **Adding more.**
+  - `build_onomatopoeia.py merge drafts.json` merges hand-written or agent-written drafts.
+  - `build_onomatopoeia.py draft --endpoint http://localhost:11434/v1 --model qwen3:8b --limit 100` drafts the missing feel lines through any OpenAI-compatible endpoint.
+  - Both validate every line and add only missing ids or feel lines.
+  - `status` prints the counts.
+- **Current build (2026-09-18).**
+  - 1,334 words (1,340 on-mim entries, minus 3 vulg/X and 3 excluded by hand), 1,309 with a feel line and 1,307 with a Japanese one. The 720 most frequent all have both.
+  - 502 words have examples; the rest show gloss and feel only.
+  - Themes: sounds 320, movement 183, manner 162, appearance 140, voice 116, texture 106, state 91, feelings 88, body 46, eating 44, pain 20, weather 18.
+  - `pack_meta`: `onomatopoeia`, `onomatopoeia_with_feel`, `onomatopoeia_with_feel_ja`, `onomatopoeia_with_examples`.
+
+## grammar.sqlite: Japanese explanations (`grammar_point_ja`; Phase 12, DECISIONS D-233)
+
+Monolingual mode shows our own Japanese explanation of a grammar point instead of the English one.
+- **Sources.** `meaning_ja` (at most 45 characters, 国語辞典-style) and `nuance_ja` (at most 150 characters, だ・である) sit next to the English fields in `tools/packs/grammar/n*.json`. They have their own provenance, `ja_source` ("llm" until reviewed).
+- **Pack.** `build_grammar.py` writes them to `grammar_point_ja(point_id, meaning_ja, nuance_ja, source)`, and `pack_meta.points_ja` holds the count.
+- **Tooling.** `packs/grammar_ja.py` has four commands, `status`, `check`, `merge <drafts.json>` and `draft --endpoint URL --model NAME [--level N3]`. It only fills points without Japanese.
+- **Current sources.** 829 of 829 points: N5 127, N4 148, N3 173, N2 192, N1 189. Claude drafted them directly (owner decision), and they carry the badge until reviewed.
 
 ## Difficulty score (BRIEF_V2 §6.4, DECISIONS D-156)
 

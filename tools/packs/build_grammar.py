@@ -143,7 +143,7 @@ def main() -> None:
     sentences = load_tatoeba()
     words = dictionary_words()
     db = open_pack(GRAMMAR_PACK, GRAMMAR_SQ)
-    reset_tables(db, {"grammar_point", "grammar_example", "grammar_pattern", "grammar_alias"}, GRAMMAR_SQ)
+    reset_tables(db, {"grammar_point", "grammar_example", "grammar_pattern", "grammar_alias", "grammar_point_ja"}, GRAMMAR_SQ)
     ids = {p["id"] for p in points}
     aliases_file = SOURCES / "aliases.json"
     aliases = json.loads(aliases_file.read_text(encoding="utf-8")) if aliases_file.exists() else {}
@@ -155,6 +155,7 @@ def main() -> None:
 
     used: set[int] = set()  # prefer a different sentence for each point
     tatoeba_total = 0
+    ja_total = 0
     for p in points:
         regexes = [re.compile(x) for x in p["patterns"]]
         db.execute(
@@ -168,6 +169,12 @@ def main() -> None:
         db.executemany(
             "INSERT INTO grammar_pattern VALUES (?,?,?)", ((p["id"], i, x) for i, x in enumerate(p["patterns"]))
         )
+        if p.get("meaning_ja") and p.get("nuance_ja"):  # monolingual mode (D-233); own provenance, see grammar_ja.py
+            db.execute(
+                "INSERT INTO grammar_point_ja VALUES (?,?,?,?)",
+                (p["id"], nfc(p["meaning_ja"]), nfc(p["nuance_ja"]), p.get("ja_source", "llm")),
+            )
+            ja_total += 1
         examples = []
         for sid, ja, en in sentences:
             if len(examples) >= MAX_TATOEBA_EXAMPLES:
@@ -195,9 +202,12 @@ def main() -> None:
             ((p["id"], i, *ex) for i, ex in enumerate(examples)),
         )
 
-    set_meta(db, pack="grammar", pack_version=GRAMMAR_PACK_VERSION, points=str(len(points)), textbooks=dumps(books))
+    set_meta(
+        db, pack="grammar", pack_version=GRAMMAR_PACK_VERSION, points=str(len(points)), textbooks=dumps(books),
+        points_ja=str(ja_total),
+    )
     finish_pack(db)
-    log(f"grammar: {len(points)} points, {tatoeba_total} Tatoeba examples")
+    log(f"grammar: {len(points)} points, {tatoeba_total} Tatoeba examples, {ja_total} with Japanese explanations")
 
 
 if __name__ == "__main__":

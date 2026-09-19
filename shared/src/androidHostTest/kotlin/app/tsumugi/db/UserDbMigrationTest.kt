@@ -47,7 +47,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(7L, TsumugiDatabase.Schema.version)
+        assertEquals(8L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -116,6 +116,15 @@ class UserDbMigrationTest {
         db.immersionQueries.putSong("s", "t", null, "x", null, "NONE", "[]", 0, 0)
         assertEquals(3L, driver.long("SELECT count(*) FROM change_log WHERE table_name IN ('immersion_session', 'reader_annotation')"))
         assertEquals(0L, driver.long("SELECT count(*) FROM change_log WHERE table_name IN ('media_index', 'reader_doc_vocab', 'lyrics_song')"))
+
+        // v7 -> v8 (7.sqm, D-231/D-234): grammar mastery syncs (one marker per real change); the paraphrase cache doesn't.
+        db.coursesQueries.insertMasteryIfAbsent("n2-sai", 1, 10)
+        db.coursesQueries.updateMastery(1, 11, "n2-sai") // unchanged flag: no new marker
+        db.coursesQueries.updateMastery(0, 12, "n2-sai")
+        db.coursesQueries.putParaphrase("word_ja", "jmdict:1", "{}", "test", 0)
+        assertEquals(2L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'grammar_mastery'"))
+        assertEquals(0L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'ai_paraphrase'"))
+        assertEquals(emptyList(), db.coursesQueries.masteredPointIds().executeAsList())
     }
 
     private fun SqlDriver.string(sql: String): String? =
