@@ -19,6 +19,10 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | `grammar.sqlite` (N5–N1: 829 points, 5,116 Tatoeba examples; matched in order n3, n4, n5, n2, n1 so harder points don't take easier points' sentences) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ |
 | `exam.sqlite`: JLPT blueprints + 7 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 195 passages / 595 items, AI-drafted: core 0+–3 100/306, upper range 3+/4 80/245, liaison 2–3 15/44) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 / 12 | ✅ |
 | `practice.sqlite`: 90 scenarios (699 scripted turns), 96 OPI questions with DLI domains, 125 dialogues (40 natural), 31 drill sets (325 items), 630 minimal pairs | `packs/build_practice.py` | 6 / 12 | ✅ |
+
+| `exam.sqlite`: JLPT blueprints + 4 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 100 passages / 306 items, AI-drafted) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 | ✅ |
+| `practice.sqlite`: 30 scenarios, 62 OPI questions, 45 dialogues, 630 minimal pairs | `packs/build_practice.py` | 6 | ✅ |
+| `tracks.sqlite`: 7 interest/domain tracks, 2629 words, 84 scenarios, 54 dialogues, 458 drills | `packs/build_tracks.py` from `packs/tracks/*.json` | 12 | ✅ (AI-drafted, badge on) |
 | `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples (on-demand downloads, not bundled) | `packs/render_audio.py` | 10 | ✅ (grammar partial) |
 
 ## dictionary.sqlite
@@ -43,6 +47,95 @@ Size: ~127 MB raw, ~46 MB gzip. 218k entries, 10k kanji, 80k strokes, 112k examp
 - Function words (first sense only `prt`/`aux*`/`cop`, with optional `exp`/`conj`, or a kana-only `exp`) are left out: they are grammar, and coverage never counts them (`WordStats.isFunctionWord`, same rule).
 - Current build: 10,000 words, all with Tatoeba hits (lowest count 4), 253 function words skipped. `pack_meta`: `freq_words`, `freq_words_with_tatoeba`, `freq_decks`.
 - The Japanese Wikipedia dump BRIEF_V2 §7 mentions isn't used (D-152). Packs built before Phase 11 lack the table; the app then shows no Core decks (an honest empty state) and the "I know these" flow returns nothing.
+
+## tracks.sqlite: interest and domain tracks (BRIEF_V2 §6.5, DECISIONS D-210…D-219)
+
+A track is a themed word list (JMdict ids), a kanji subset, role-play scenarios, two-speaker dialogues and drills. Some tracks add can-do situations, cultural tasks, ILR reading passages or link-only references. Learners pick tracks in onboarding and can switch any time. Track words join Today's lessons alongside the main path, taking up to half of each batch (D-213).
+
+Schema: `shared/src/commonMain/sqldelightTracks/app/tsumugi/tracks/db/tracks.sq` (`TracksDatabase`, `PackInstaller.TRACKS`). Sources: `tools/packs/tracks/<track>.json`, plus optional part files `<track>.<part>.json` whose lists are appended to the main file's. Builder and validator: `tools/packs/build_tracks.py`, run by `build_all.py` after `build_practice.py`.
+
+```bash
+cd tools
+uv run python packs/build_tracks.py                     # validate every track and build content/packs/tracks.sqlite
+uv run python packs/build_tracks.py validate [track…]   # validate only; lists every problem and prints counts
+uv run python packs/build_tracks.py resolve [track…]    # fill JMdict ids + glosses for words written as text + reading
+uv run python packs/build_tracks.py build gaming        # a pack with only some tracks (testing)
+# Options: --dictionary PATH (or $TSUMUGI_DICTIONARY) to use another checkout's dictionary pack, --out PATH.
+```
+
+### Launch counts (2026-09-19, all `source: "llm"`, badge on until reviewed)
+
+| Track | Levels | Words | Kanji | Scenarios (turns) | Dialogues | Drills | Other |
+|---|---|---|---|---|---|---|---|
+| Gaming & VTuber (`gaming`) | N5–N2 | 478 | 142 (explicit, with hints) | 10 (67) | 10 | 40: 20 fill-in, 20 meaning | – |
+| Business & keigo (`business`) | N4–N1 | 253 | 150 (derived) | 30 (223) | 8 | 84: 14 email templates, 70 keigo | – |
+| Family & household (`family`) | N5–N2, ILR 0+–2 | 266 | 150 (derived) | 10 (68) | 10 | 40: 20 fill-in, 20 usage yes/no | – |
+| Daily-life admin (`daily-life`) | N5–N2 | 267 | 150 (derived) | 12 (74) | 8 | 24: 24 fill-in | 12 situations / 51 can-do; 8 cultural tasks |
+| Native schoolchild vocabulary (`schoolchild`) | N4–N1 | 912 | 249 (derived) | 4 (26) | 4 | 230: 70 fill-in, 40 meaning, 60 synonym/antonym, 60 usage yes/no | – |
+| Military & liaison (`military`) | N3–N1, ILR 2–3 | 271 | 150 (derived) | 12 (104) | 8 | 20: 20 meaning | 14 ILR readings; 5 links |
+| Performing culture (`performing`) | N5–N2 | 182 | 150 (derived) | 6 (40) | 6 | 20: 20 performances | – |
+| **Total** | | **2629** | **1141** | **84 (602)** | **54** | **458** | 12 situations / 51 can-do; 8 tasks; 14 readings; 5 links |
+
+The §6.5 targets were: Gaming ~140 kanji / 600 words, Business 30 situations, Schoolchild a 1,100-style bank. Gaming has 142 kanji and 478 words (80% of 600). Business has all 30 situations. Schoolchild has 912 words (83% of 1,100).
+
+### Source format (one file per track)
+
+- **Header:**
+  - `track` (the file stem), `titleEn`, `titleJa`, `description`, `inspiredBy`.
+  - `jlpt: [easiest, hardest]`. Every item's level must be inside it.
+  - Optional `ilr: "2-3"`. When present, every scenario, dialogue and reading needs an ILR inside the range.
+  - Optional `kanjiLimit`.
+  - `source`, `verified`, `license`, `attribution`.
+- **`words`:** `{text, reading, id, gloss, topic, category, note}`.
+  - `id` is a JMdict id; `resolve` fills it.
+  - `category` is `""` or `yojijukugo`, `kanyouku`, `kotowaza`, `onomatopoeia`, `synonym`, `antonym` or `keigo`.
+  - Lessons are consecutive words of one topic, 8 per lesson.
+  - Pitch and JLPT come from the dictionary pack.
+- **`kanji`:** explicit list (the gaming track), `{kanji, keyword, components, breakdown, hint}`.
+  - Every kanji must occur in one of the track's words.
+  - Without the list, the builder derives the subset: kanji used by the words, most-used first, up to `kanjiLimit` (default 150), with KANJIDIC2 keywords and KRADFILE components.
+- **`scenarios`:** the practice-pack format (`tools/packs/speaking/scenarios.json`) with 3–16 scripted turns.
+- **`dialogues`:** the practice-pack format with 4–16 lines, voice hints and 1+ questions; `ilr` is optional.
+- **`drills`:** each has `id`, `type` and optional `topic`/`jlpt`.
+  - `keigo`: `{plain, target: sonkeigo|kenjogo|teineigo, form: dictionary|masu|past|masu-past|te, sentence with one （　　）, en, answers[], explanation, verb?}`. The builder adds `verbReading`/`verbClass` from JMdict.
+  - `email`: `{title, situation, subject, body with ｛1｝…｛n｝, blanks: [{answers, choices?, hint}], en?}`.
+  - `fill_in`: `{sentence with one （　　）, answers, choices?, word?, en, explanation}`. With choices, exactly one answer is a choice.
+  - `synonym`: `{relation: synonym|antonym, word, choices (3–5), answer, explanation}`.
+  - `usage`: `{word, sentence, correct: bool, explanation}`.
+  - `meaning`: `{word, choices, answer, explanation}`.
+  - `perform`: `{title, titleJa, setting, register, speakers[2], learner, staging[], lines: [{speaker, ja, en, stage?}]}`.
+- **`situations`:** `{id, titleEn, titleJa, canDo: [{en, ja}] (2–8)}`.
+- **`tasks`:** `{id, titleEn, titleJa, place, before[], during[], after[], phrases[], etiquette[]}`.
+- **`readings`:** `{id, title, ilr, genre, body, questions: [{question, choices, answer}]}`. Length and kanji density are checked against `items/ilr_bands.json`.
+- **`links`:** `{title, url (https), note}`. Link only.
+
+**Ids** are `<track>-<kind>-NNN` (a-z, 0-9, `-`). They are unique across tracks and never equal a practice-pack id, so audio keys `dialogue/<id>/<ord>` can't collide.
+
+### Validator
+
+`validate`/`build` check every item and list every problem, not just the first:
+- **JMdict:** each word's id exists and has that form and reading, with no duplicate entries in a track. Scenario vocabulary, dialogue gaps and drill words are exact JMdict headwords, and every gap occurs in its line.
+- **Text:** all Japanese is NFC.
+- **Answer keys:** indexes are in range; choices are distinct; one blank per fill-in or keigo sentence; email slots are numbered in order; fill-in choices contain exactly one answer.
+- **Ids:** unique, with the track prefix.
+- **Levels:** JLPT and ILR inside the track's range; ILR readings inside their band.
+- **Structure:** turn and line counts; two speakers with voice hints; the learner has 2+ lines in a performance.
+
+`shared/src/androidHostTest/.../RealTracksPackTest` then loads the built pack with the app's models. It checks that every drill accepts its own model answer, that every performance can be completed, and that the keigo rules agree with the authored answers (≤ 10% disagreement; the disagreements are printed).
+
+### Adding more
+
+- **By hand:** edit the JSON, run `resolve` for new words, then `validate`.
+- **Through an LLM** (e.g. Ollama on the GPU box):
+  ```
+  uv run python packs/build_tracks.py draft gaming --kind words --count 40 --endpoint http://HOST:11434/v1 --model qwen2.5:14b
+  uv run python packs/build_tracks.py draft business --kind drills --type keigo --count 20 --endpoint … --model …
+  ```
+  `--kind` is `words`, `scenarios`, `dialogues` or `drills`.
+  - New items get fresh ids and are resolved against JMdict. Only items that pass the full validator are appended.
+  - Re-runs add items without duplicating ids.
+  - The key, if any, comes from `$TSUMUGI_LLM_KEY`.
+- **Review:** everything stays `source: "llm"` with the badge until it's reviewed. `tools/items/review.py` doesn't read track files yet (deferred, see PROGRESS).
 
 ## Difficulty score (BRIEF_V2 §6.4, DECISIONS D-156)
 

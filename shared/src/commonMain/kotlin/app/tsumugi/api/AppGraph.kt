@@ -113,6 +113,10 @@ import app.tsumugi.media.SentenceBank
 import app.tsumugi.media.SentenceMiner
 import app.tsumugi.media.SentenceSearch
 import app.tsumugi.reader.LatticeReaderTokenizer
+import app.tsumugi.practice.Dialogue
+import app.tsumugi.tracks.TrackRepository
+import app.tsumugi.tracks.TrackService
+import app.tsumugi.tracks.db.TracksDatabase
 
 /** Progress of a background rebuild of every card (after new FSRS weights). */
 data class RecomputeProgress(val done: Int, val total: Int, val running: Boolean) {
@@ -216,7 +220,7 @@ class AppGraph(val platform: PlatformServices) {
     suspend fun today(): TodayPlan {
         val srs = configuredSrs()
         val grammarLeft = grammar()?.lessonQueue(3)?.size ?: 0
-        val status = deckLessons.adjust(path()?.status()) // deck lessons count as lessons (D-154)
+        val status = tracks.adjust(deckLessons.adjust(path()?.status())) // deck (D-154) and track (D-213) lessons count
         planner.difficulty = coverage.immersionDifficulty() // §6.4 score (D-155)
         val kana = kana()
         val kanaLessons = if (kana.needed(settings)) kana.lessonQueue(settings, KANA_LESSONS_AHEAD).size else 0
@@ -251,6 +255,7 @@ class AppGraph(val platform: PlatformServices) {
     private val dictionarySlot = PackSlot<DictionaryRepository>()
     private val pathSlot = PackSlot<PathService>()
     private val grammarSlot = PackSlot<GrammarService>()
+    private val tracksSlot = PackSlot<TrackRepository>()
 
     /** The IPADIC lattice analyzer (BRIEF §5.2), or null when the tokenizer pack isn't installed. */
     @Throws(Exception::class)
@@ -283,6 +288,23 @@ class AppGraph(val platform: PlatformServices) {
         }
     }
 
+    /** A listening dialogue by id from the practice pack or the tracks pack (same model and screens, D-214). */
+    @Throws(Exception::class)
+    suspend fun dialogue(id: String): Dialogue? = practice()?.dialogue(id) ?: trackRepository()?.dialogue(id)
+
+    /** The interest/domain tracks pack (BRIEF_V2 §6.5), or null when it isn't installed. */
+    @Throws(Exception::class)
+    suspend fun trackRepository(): TrackRepository? = tracksSlot.get {
+        openPack(PackInstaller.TRACKS) {
+            TrackRepository(TracksDatabase(platform.packDriver(TracksDatabase.Schema, PackInstaller.TRACKS)))
+        }
+    }
+
+    /** Track selection (synced), track lessons mixed into Today's lessons, can-do checks (D-210…D-219). */
+    val tracks: TrackService by lazy {
+        TrackService(settings, knowledge, { trackRepository() }, { dictionary() }) { entry, context -> configuredSrs(); collection.addToReviews(entry, context) }
+    }
+
     /** Exam simulators. Works without the exam pack too (imported banks, history), so never null. */
     @Throws(Exception::class)
     suspend fun exams(): ExamService = examSlot.get {
@@ -294,9 +316,12 @@ class AppGraph(val platform: PlatformServices) {
     /** A role-play for [scenarioId] with the configured model (or scripted turns), or null without the pack. */
     @Throws(Exception::class)
     suspend fun roleplay(scenarioId: String): RoleplaySession? {
-        val practice = practice() ?: return null
-        val scenario = practice.scenario(scenarioId) ?: return null
-        return RoleplaySession(scenario, practice.scriptedTurns(scenarioId), ai.gateway())
+        practice()?.let { practice ->
+            practice.scenario(scenarioId)?.let { return RoleplaySession(it, practice.scriptedTurns(scenarioId), ai.gateway()) }
+        }
+        val tracks = trackRepository() ?: return null // track scenarios use the same screens (D-214)
+        val scenario = tracks.scenario(scenarioId) ?: return null
+        return RoleplaySession(scenario, tracks.scriptedTurns(scenarioId), ai.gateway())
     }
 
     /** An OPI practice interview starting at [startLevel]; scripted banks come from the practice pack. */
@@ -373,10 +398,11 @@ class AppGraph(val platform: PlatformServices) {
 
     @Throws(Exception::class)
     suspend fun startLessons(): LessonSession? {
-        deckLessons.startSession(path(), settings.lessonBatchSize())?.let { return it } // an active deck (D-154)
-        val path = path() ?: return null
-        val batch = path.lessonQueue(settings.lessonBatchSize())
-        return if (batch.isEmpty()) null else LessonSession(path, batch)
+        val size = settings.lessonBatchSize()
+        val baseSize = size - tracks.share(size) // selected tracks take up to half the batch (D-213)
+        val base = deckLessons.startSession(path(), baseSize) // an active deck (D-154)
+            ?: path()?.let { path -> path.lessonQueue(baseSize).takeIf { it.isNotEmpty() }?.let { LessonSession(path, it) } }
+        return tracks.mixInto(base, size)
     }
 
     private suspend fun schedulerParameters(): FsrsParameters {

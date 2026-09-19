@@ -1149,6 +1149,57 @@ The toggle (off by default, per device, D-162) sits in Settings with the terms n
 
 ---
 
+### D-210: Tracks ship as their own pack, `tracks.sqlite`, with `tracks.sq` as the schema (§6.5, 2026-09-19)
+- Seven tracks (gaming, business, family, daily-life, schoolchild, military, performing) live in `tools/packs/tracks/<track>.json` (plus optional part files `<track>.<part>.json` whose lists are appended, so two authors can work on one track). `tools/packs/build_tracks.py` validates them and writes `content/packs/tracks.sqlite`; `build_all.py` runs it after `build_practice.py`.
+- A separate pack rather than new tables in `practice.sqlite`: other agents extend the practice sources in parallel, a track pack can later become a download (BRIEF_V2 §9 item 7), and `tracks.sqlite` is picked up by the existing bundling globs (`*.sqlite`) with no Gradle/Xcode change. SQLDelight database `TracksDatabase` (`sqldelightTracks/…/tracks.sq`, the single source of truth; the builder executes its CREATE statements), `PackInstaller.TRACKS`.
+- Every item id starts with its track id (`business-keigo-001`), and the builder refuses ids that collide with the practice sources, so audio keys (`dialogue/<id>/<ord>`) and review ids never clash.
+- Nothing needed a user-DB migration: selections and can-do marks are synced settings.
+
+### D-211: Launch content is drafted by Claude directly; the `draft` command extends it through the owner's endpoint (owner decision, 2026-09-19)
+- The launch set was written by Claude (parallel authoring agents working to one spec). Every item is `source: "llm"`, `verified: false` and shows the AI-generated badge (rules 10 and 19). Only the gaming kanji hints, breakdowns and all Japanese text are ours; word ids, readings, JLPT tags, pitch and derived kanji come from JMdict/KANJIDIC2/Kanjium through the dictionary pack.
+- `build_tracks.py draft <track> --kind words|scenarios|dialogues|drills [--type …] --count N --endpoint URL --model NAME` asks any OpenAI-compatible endpoint (e.g. Ollama on the GPU box) for more items, stamps them `llm`, gives new items fresh ids (`<track>-<kind>-NNN`, never reused), resolves words to JMdict, and appends only the items that pass the full validator. A key, if the endpoint needs one, comes from `$TSUMUGI_LLM_KEY` (rule 14); the request has a timeout (rule 13).
+- Books that inspired tracks are structure only (LICENSES "Inspiration, no content used").
+
+### D-212: Word lists are JMdict ids validated against the dictionary pack; kanji subsets are explicit (gaming) or derived (2026-09-19)
+- Authors write `text` + `reading`; `build_tracks.py resolve` fills the JMdict id (the most common entry whose forms include both, skipping entries already on the list) and an empty gloss, and reports misses and ambiguities. The build fails when an id is missing, when the entry lacks that form/reading, or on a duplicate entry within a track. Scenario vocabulary, dialogue gaps and drill words must be exact JMdict headwords.
+- Pitch (`accents`) and JLPT come from the dictionary pack at build time, never from the authors.
+- Gaming has an explicit ~140-kanji list with our own component breakdown and memory hint per kanji (no Kanji Adventures, WaniKani or Heisig text). The other tracks get a derived subset: the kanji used by the track's words, most-used first, capped at 150 (`kanjiLimit` in the header overrides, schoolchild 250), with KANJIDIC2 keyword and KRADFILE components (`source: "derived"`).
+- Sizes: the schoolchild bank landed above the 1,100-style target's 60% (912 words); gaming has 478 words (the §6.5 target is 600) and 142 kanji. Counts are in CONTENT_PACKS and PROGRESS.
+
+### D-213: Track words join Today's lessons next to the path, up to half of each batch (2026-09-19)
+- `TrackService.selected()` is a synced setting (`tracks.selected`, JSON array in choice order). With a track selected, `AppGraph.startLessons()` builds the path (or active deck, D-154) batch for `size − share(size)` items, where `share = min(size / 2, track words left)`, and `TrackService.mixInto` interleaves the track words path-first, filling the whole batch when the path has nothing. Several selected tracks alternate round-robin; a word on two tracks comes once.
+- Track words become `jmdict:<id>` lesson items (`DeckLessons.toLessonItem`) and join reviews through `CollectionService.addToReviews`; path items still complete on the path. Words the learner knows or already studies (the Phase 11 `LearnerKnowledge` snapshot) are skipped.
+- Today counts them with `TrackService.adjust` on top of the path's available lessons (the planner itself is unchanged). The hooks are `LessonSession.batch` and an internal `completeItems`.
+
+### D-214: Track scenarios and dialogues reuse the practice models and screens (2026-09-19)
+- `track_scenario`/`track_dialogue` have the practice columns plus `track_id` (and `ilr` for dialogues); `TrackRepository` returns `practice.Scenario`, `ScriptedTurn`, `Dialogue` and `DialogueSummary`.
+- `AppGraph.roleplay(id)` falls back to the tracks pack when the practice pack doesn't have the id; `AppGraph.dialogue(id)` does the same for listening. Turn counts vary (3–16 turns, 4–16 lines); speakers carry the same voice hints as the practice pack.
+- Audio: track dialogues use TTS until `render_audio.py` learns the tracks pack. That's deferred because it's another agent's file; the clip keys already fit `dialogue/<id>/<ord>`.
+
+### D-215: Drill types are payload JSON with typed models and on-device checking (2026-09-19)
+- `track_drill(type, payload)`; `DrillPayloads` parses `keigo`, `email`, `fill_in`, `synonym` (with `relation` synonym/antonym), `usage`, `meaning` and `perform` into `KeigoDrill`, `EmailDrill`, `FillInDrill`, `SynonymDrill`, `UsageDrill`, `MeaningDrill` and `PerformDrill`. Unknown types from a newer pack are skipped, not errors.
+- Typed answers are compared after `AnswerText.normalize`: NFC, trimmed, spaces and Japanese/ASCII punctuation dropped, katakana folded to hiragana (rule 7: a comparison key only, never stored). Choice drills compare indexes; usage drills compare the yes/no judgement.
+- Email templates use ｛1｝…｛n｝ slots; `EmailDrill.segments` gives the text/slot runs for inline blanks.
+
+### D-216: The keigo check is rule-based conjugation plus the authored answer list (2026-09-19)
+- `KeigoRules.forms(plain, reading, class, target, form)`: a table of special verbs (いらっしゃる, おっしゃる, 召し上がる, ご覧になる, なさる, ご存じだ, くださる, お気に召す; 参る, 伺う, 承る, おる, 申す/申し上げる, いただく, 拝見する, いたす, 存じる/存じ上げる/存じておる, お目にかかる, 拝聴する, 差し上げる, 拝借する, 拝読する, 承知する, ござる) plus the regular patterns (お＋連用形＋になる, 〜れる/られる, お＋連用形＋する/いたす, ご/お＋漢語＋になる/なさる/する/いたす, 漢語＋なさる/される), conjugated with the existing `Conjugator` to the blank's form (dictionary, ます, past, ました, て). Verbs with special forms (行く, 言う, 見る …) get no regular forms, so お行きになる never passes.
+- `KeigoDrill.check` accepts the authored answers or any rule form. The builder stores the verb's reading and inflection class from JMdict, so the rules also produce kana spellings.
+- `RealTracksPackTest` runs the rules against every keigo drill in the built pack and fails if they disagree with more than 10% of the drills they cover. The first run found 3 of 60 (お気に召す, 承る, 存じておる), and those forms were added to the table.
+
+### D-217: Memorize-and-perform fades prompts in four steps; checking is on-device (2026-09-19)
+- `PerformanceSession`: the learner plays one speaker. Partner lines always show; the learner's lines fade FULL → HALF (the first half of each phrase) → INITIAL (the first character) → CUE_ONLY (the English and the staging cue only). Hidden characters become ○, and punctuation stays.
+- A round passes when every learner line was delivered at ≥ 0.8 similarity (the same kana-folded edit distance as the subtitle quiz; the transcript comes from the platform STT or typing) or self-rated "I said it". A passed round fades one step; a missed round repeats. Passing CUE_ONLY finishes the performance. An optional AI check is left to the platform UI through the existing gateway.
+
+### D-218: Can-do statements and cultural tasks; the selection API for onboarding (2026-09-19)
+- Situations (`track_situation`) hold 2–8 can-do statements (en + ja). The learner's ticks are a synced setting, `tracks.canDo`, a JSON array of `<situation id>/<index>` keys (`TrackService.setCanDo` / `canDoDone`).
+- Cultural experience tasks (`track_task`) are before/during/after steps, phrases and etiquette. Military ILR readings (`track_reading`) are validated against the `ilr_bands.json` length and kanji-density bands. `track_link` holds link-only references: JMSDF/JASDF/JGSDF/MOD press pages are linked, never copied.
+- Onboarding: `TrackService.onboardingOptions()` (every track with counts and words left) and `chooseInOnboarding(ids)`. `select`/`deselect`/`switchTo` let the learner change tracks any time. The picker UI is the platform agents' job.
+
+### D-219: Bunka-cho daily-life materials are inspiration only (license check, 2026-09-19)
+- **つながるひろがる にほんごでのくらし (tsunagarujp.mext.go.jp, now run by MEXT):** its 利用規約 (令和2年6月1日) 第4条 gives copyright to 文部科学省, and 第6条 forbids 転載・複製 for anything but private use. Educational use and quotation are allowed only within what the law permits, with 「出典 文部科学省」. That is not CC BY, and the terms state their own rules, so MEXT's general CC BY 4.0-compatible website terms don't apply. Nothing was ingested.
+- **「生活者としての外国人」 curriculum materials and 教材例集 (bunka.go.jp):** the 著作権について page says 文化庁 holds copyright except where marked. Illustrations and photos may be used for Japanese-teaching materials with attribution, but commercial reuse needs each rights holder's consent, and modification is prohibited. That is not CC BY either. The general bunka.go.jp terms point to MEXT's CC BY 4.0-compatible terms but exclude content that states separate conditions and third-party material, so we treat the workbook as inspiration only.
+- The daily-life track is therefore entirely original. If the owner wants to ingest Bunka-cho text later, it needs written permission or a CC BY notice on the specific material. Recorded in LICENSES.
+
 ## Open decisions (BRIEF.md §14)
 
 | # | Decision | Status |

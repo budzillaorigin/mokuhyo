@@ -200,6 +200,7 @@ class PackInstaller(
         const val TOKENIZER = "tokenizer.sqlite"
         const val EXAM = "exam.sqlite"
         const val PRACTICE = "practice.sqlite"
+        const val TRACKS = "tracks.sqlite"
 
         /** One install per file per process, however many AppGraph/PackInstaller instances exist. */
         private val locksGuard = Mutex()
