@@ -31,18 +31,73 @@ class AuthService(private val db: Db, private val config: Config, private val ma
                 throw ApiException(409, "an account with this email already exists")
             }
             update(
-                "INSERT INTO users(id, email, password_hash, display_name, verify_token, created_at) VALUES (?,?,?,?,?,?)",
-                userId, email, hash, req.displayName?.trim()?.take(40), verifyToken, now(),
+                "INSERT INTO users(id, email, password_hash, display_name, verify_token, verify_expires_at, verify_sent_at, created_at) " +
+                    "VALUES (?,?,?,?,?,?,?,?)",
+                userId, email, hash, req.displayName?.trim()?.take(40), verifyToken,
+                now() + config.verifyTokenTtl.inWholeMilliseconds, now(), now(),
             )
             update("INSERT INTO seq_counters(user_id, last_seq) VALUES (?, 0)", userId)
         }
-        mail.sendVerification(email, "${config.publicUrl}/v1/auth/verify?token=$verifyToken")
+        mail.sendVerification(email, verifyLink(verifyToken))
         return userId
     }
 
-    suspend fun verifyEmail(token: String): Boolean = db.tx {
-        update("UPDATE users SET email_verified = 1, verify_token = NULL WHERE verify_token = ?", token) > 0
+    /** Confirms the email behind a verification link. Links are single-use and expire after [Config.verifyTokenTtl]. */
+    suspend fun verifyEmail(token: String): VerifyOutcome {
+        if (token.isBlank()) return VerifyOutcome.INVALID
+        return db.tx {
+            // A row with a null expiry predates expiring links (V2 migration grandfathers those accounts anyway).
+            val expiresAt = queryOne("SELECT COALESCE(verify_expires_at, 0) FROM users WHERE verify_token = ?", token) { it.getLong(1) }
+            when {
+                expiresAt == null -> VerifyOutcome.INVALID
+                expiresAt != 0L && expiresAt < now() -> VerifyOutcome.EXPIRED
+                else -> {
+                    update("UPDATE users SET email_verified = 1, verify_token = NULL, verify_expires_at = NULL WHERE verify_token = ?", token)
+                    VerifyOutcome.VERIFIED
+                }
+            }
+        }
     }
+
+    /**
+     * Sends a fresh verification link (replacing the old one), at most once per [Config.verifyResendInterval].
+     * Only a signed-in account can ask, so this can't be used to mail arbitrary addresses.
+     */
+    suspend fun resendVerification(userId: String) {
+        val token = token()
+        val email = db.tx {
+            val row = queryOne("SELECT email, email_verified, COALESCE(verify_sent_at, 0) FROM users WHERE id = ?", userId) {
+                Triple(it.getString(1), it.getInt(2) != 0, it.getLong(3))
+            } ?: unauthorized("unknown user")
+            if (row.second) throw ApiException(409, "this email is already confirmed", ErrorCodes.ALREADY_VERIFIED)
+            val waitMs = row.third + config.verifyResendInterval.inWholeMilliseconds - now()
+            if (waitMs > 0) {
+                throw ApiException(429, "a verification email was sent recently; try again in ${(waitMs + 999) / 1000} s", ErrorCodes.RESEND_TOO_SOON)
+            }
+            update(
+                "UPDATE users SET verify_token = ?, verify_expires_at = ?, verify_sent_at = ? WHERE id = ?",
+                token, now() + config.verifyTokenTtl.inWholeMilliseconds, now(), userId,
+            )
+            row.first
+        }
+        mail.sendVerification(email, verifyLink(token))
+    }
+
+    /** Throws 403 `email_unverified` when this server requires a confirmed email and the account hasn't one. */
+    suspend fun requireVerified(userId: String) {
+        if (!config.requireEmailVerification) return
+        val verified = db.tx { queryOne("SELECT email_verified FROM users WHERE id = ?", userId) { it.getInt(1) != 0 } }
+            ?: unauthorized("unknown user")
+        if (!verified) {
+            throw ApiException(
+                403,
+                "confirm your email address to sync: open the link we sent, or resend it from the app",
+                ErrorCodes.EMAIL_UNVERIFIED,
+            )
+        }
+    }
+
+    private fun verifyLink(token: String) = "${config.publicUrl.trimEnd('/')}/v1/auth/verify?token=$token"
 
     suspend fun login(req: LoginRequest): TokenResponse {
         val email = req.email.trim().lowercase()
@@ -133,6 +188,8 @@ class AuthService(private val db: Db, private val config: Config, private val ma
             MessageDigest.getInstance("SHA-256").digest(value.toByteArray()).joinToString("") { "%02x".format(it) }
     }
 }
+
+enum class VerifyOutcome { VERIFIED, EXPIRED, INVALID }
 
 fun now(): Long = System.currentTimeMillis()
 

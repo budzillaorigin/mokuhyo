@@ -5,9 +5,15 @@ class AccountService(private val db: Db, private val config: Config) {
 
     suspend fun account(userId: String): Account = db.tx {
         queryOne(
-            "SELECT id, email, display_name, e2e_enabled, e2e_salt, leaderboard_opt_in FROM users WHERE id = ?",
+            "SELECT id, email, display_name, e2e_enabled, e2e_salt, leaderboard_opt_in, email_verified FROM users WHERE id = ?",
             userId,
-        ) { Account(it.getString(1), it.getString(2), it.getString(3), it.getInt(4) != 0, it.getString(5), it.getInt(6) != 0) }
+        ) {
+            Account(
+                it.getString(1), it.getString(2), it.getString(3), it.getInt(4) != 0, it.getString(5), it.getInt(6) != 0,
+                emailVerified = it.getInt(7) != 0,
+                emailVerificationRequired = config.requireEmailVerification,
+            )
+        }
             ?: unauthorized("unknown user")
     }
 

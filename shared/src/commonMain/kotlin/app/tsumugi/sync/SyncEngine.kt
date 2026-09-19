@@ -27,6 +27,11 @@ data class SyncStatus(
     /** Local changes not yet pushed. */
     val pending: Int = 0,
     val error: String? = null,
+    /**
+     * The last sync failed because the server needs the account's email confirmed first (D-310). The apps show
+     * "Check your email to finish setting up sync" instead of [error].
+     */
+    val needsEmailVerification: Boolean = false,
 )
 
 data class SyncResult(val pushed: Int, val pulled: Int, val cardsRecomputed: Int)
@@ -85,7 +90,12 @@ class SyncEngine(
             _status.value = SyncStatus(SyncState.IDLE, now, pendingChanges(), null)
             SyncResult(pushed, pulled, recomputed)
         } catch (e: Exception) {
-            _status.value = _status.value.copy(state = SyncState.ERROR, pending = pendingChanges(), error = e.message ?: e::class.simpleName)
+            _status.value = _status.value.copy(
+                state = SyncState.ERROR,
+                pending = pendingChanges(),
+                error = e.message ?: e::class.simpleName,
+                needsEmailVerification = e is EmailNotVerifiedException,
+            )
             throw e
         }
     }

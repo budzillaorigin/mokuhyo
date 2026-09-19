@@ -25,11 +25,14 @@ services:
     env_file: .env
     environment:
       TSUMUGI_DB: postgres://tsumugi:${POSTGRES_PASSWORD}@postgres:5432/tsumugi
+      # Inside the container the server always listens on 8080; TSUMUGI_PORT only picks the host port below.
+      TSUMUGI_PORT: "8080"
     depends_on:
       postgres:
         condition: service_healthy
     ports:
-      - "${TSUMUGI_PORT:-8080}:8080"
+      # TSUMUGI_BIND=127.0.0.1 keeps the plain-http port off the network (behind Caddy or `tailscale serve`).
+      - "${TSUMUGI_BIND:-0.0.0.0}:${TSUMUGI_PORT:-8080}:8080"
 
   caddy:
     image: caddy:2

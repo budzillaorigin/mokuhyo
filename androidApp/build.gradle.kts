@@ -5,6 +5,16 @@ plugins {
 
 val nativeEnabled = providers.gradleProperty("tsumugi.native").orNull?.toBoolean() ?: true
 
+/**
+ * Release signing (docs/RELEASE.md §7): a Gradle property (put it in ~/.gradle/gradle.properties, never in this repo)
+ * or an environment variable, e.g. `tsumugi.release.storeFile` / `TSUMUGI_RELEASE_STORE_FILE`. With no keystore
+ * configured the release APK/AAB is built unsigned.
+ */
+fun releaseSetting(name: String, env: String): String? =
+    providers.gradleProperty("tsumugi.release.$name").orElse(providers.environmentVariable(env)).orNull?.takeIf { it.isNotBlank() }
+
+val releaseStoreFile = releaseSetting("storeFile", "TSUMUGI_RELEASE_STORE_FILE")
+
 android {
     namespace = "app.tsumugi.android"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -13,8 +23,9 @@ android {
         applicationId = "app.tsumugi.android"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "0.0.1"
+        // Play needs a higher versionCode for every upload: `-Ptsumugi.versionCode=2` (or raise the default here).
+        versionCode = providers.gradleProperty("tsumugi.versionCode").orNull?.toInt() ?: 1
+        versionName = providers.gradleProperty("tsumugi.versionName").orNull ?: "0.0.1"
     }
 
     buildFeatures {
@@ -27,13 +38,34 @@ android {
         noCompress += "sqlite"
     }
 
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = file(releaseStoreFile)
+                storePassword = releaseSetting("storePassword", "TSUMUGI_RELEASE_STORE_PASSWORD")
+                keyAlias = releaseSetting("keyAlias", "TSUMUGI_RELEASE_KEY_ALIAS")
+                keyPassword = releaseSetting("keyPassword", "TSUMUGI_RELEASE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // Not minified: the APK is sideloaded (docs/RELEASE.md §7) and most of its size is native code and
-            // content packs, which R8 wouldn't shrink. proguard-rules.pro keeps the JNI bridges if this is ever turned on.
+            // Not minified (D-316): most of the size is native code and content packs, which R8 wouldn't shrink, and
+            // keep rules for kotlinx-serialization, Ktor, SQLDelight and ML Kit aren't verified on a device.
+            // proguard-rules.pro already keeps the JNI bridges for when this is turned on.
             isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            // Unsigned when no keystore is configured (see releaseSetting above).
+            signingConfig = signingConfigs.findByName("release")
         }
+    }
+
+    // App Bundle (`bundleRelease`, for Play). Both UI languages stay in the base module: the per-app language
+    // setting (Android 13+) can switch to a language the device doesn't use, whose split wouldn't be installed.
+    bundle {
+        language { enableSplit = false }
     }
 
     // On-device LLM + STT: llama.cpp and whisper.cpp built from pinned sources (src/main/cpp/CMakeLists.txt).

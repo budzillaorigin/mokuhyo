@@ -113,6 +113,8 @@ The server uses:
 
 Fair-use limits are environment configuration. There's no hosted instance yet; the app asks for a server URL. Choosing and running a hosted instance is an owner decision (open decision 2).
 
+*Phase 14:* email verification is now required before sync (D-310), and sync stays self-hosted only (D-313).
+
 ### D-029: Exam scoring is a documented approximation (2026-09-18)
 **JLPT:** the JLPT equates scores per sitting and publishes no tables. Each score group is scaled linearly: `round(correct / administered × max)`. Groups are 0–60 each; N4/N5 language + reading is combined at 0–120. Pass marks and sectional minimums (19, or 38 for the combined group) follow jlpt.jp. A drill that leaves out a whole group is scored but never reported as a pass.
 
@@ -1827,6 +1829,63 @@ Nothing here can be compiled until the owner builds on a Mac (D-140), so the Pha
   - Me gets the translation skill card.
 - **Strings:** 387 new `Localizable.xcstrings` keys with Japanese. The register label "Literary" has its own key (`register.literary`) so it doesn't share the genre's translation.
 
+### D-310: Email verification is required before sync (BRIEF_V2 Phase 14, server, 2026-09-19)
+- **Replaces** the "sent but not required" part of D-028.
+- **Server flag:** `Config.requireEmailVerification` (`TSUMUGI_REQUIRE_EMAIL_VERIFICATION`). The default is `true`, which is the production setting (`.env.example`, docker compose). `make dev` sets `false`. A single-user server can set `false` instead of configuring SMTP.
+- **What's gated:** `POST /sync/push`, `GET /sync/pull`, `PUT|GET|DELETE /blobs/{id}`, `PUT /devices/{id}/packs` and `GET /leaderboard` answer **403** with `{"error", "code": "email_unverified"}` for an unverified account. Registering, signing in (password or passkey), refreshing, `GET|PATCH /account`, the device list and passkey registration still work, so the app can sign in and explain what's missing.
+- **Account:** `GET /account` adds `emailVerified` and `emailVerificationRequired`.
+- **Errors:** `ErrorBody` gained an optional `code`; `ApiException` carries it. Codes: `email_unverified`, `resend_too_soon`, `already_verified` (`ErrorCodes`).
+- **No SMTP:** the link is logged (`LogMailer`), as before; the server warns at startup when verification is required and SMTP isn't set.
+- Tests: `EmailVerificationTest` (7). The test helper `signUp` now confirms the email through the recorded link, so every other server test runs with verification on.
+
+### D-311: Every account has an email; passkeys don't change that (Phase 14, server, 2026-09-19)
+- **Question:** should passkey-only accounts need an email at all?
+- **Answer: there are no passkey-only accounts.** `POST /auth/register` needs an email and password; a passkey is added afterwards by a signed-in account (`/auth/passkey/register/*` is authenticated). So every account has an email, it's the account's name and recovery path, and verification applies whichever way the learner signs in. The gate is checked per request against the user, so a passkey sign-in on an unverified account can't sync either.
+- **Existing accounts:** migration `V2__email_verification.sql` marks every account that exists at upgrade time as verified. They were created when verification was optional (D-028), and a self-hoster's server may have no SMTP, so blocking them on upgrade would only break sync. New accounts need the link.
+
+### D-312: Verification links expire; resend is signed-in and rate limited (Phase 14, server, 2026-09-19)
+- **Expiry:** links work for 48 hours (`verifyTokenTtl`, `TSUMUGI_VERIFY_TOKEN_TTL_HOURS`) and once. `GET /auth/verify` answers a plain-text page: 200 confirmed, **410** expired ("open Sync and tap Resend email"), 404 unknown or used.
+- **Resend:** `POST /auth/verify/resend` needs the access token, so it can only mail the account's own address, never an arbitrary one. It issues a new token (the old link stops working) and is limited to one email per 2 minutes per account (`verifyResendInterval`, `TSUMUGI_VERIFY_RESEND_SECONDS`): **429** `resend_too_soon` with the wait in the message. A verified account gets **409** `already_verified`.
+- **Schema:** `users.verify_expires_at` and `users.verify_sent_at` (V2, both vendors). The token stays stored as before.
+
+### D-313: Sync is self-hosted only; no public instance, no pricing (BRIEF_V2 §9 item 2, owner, 2026-09-19)
+- **Decision (owner):** there is no public hosted instance and no pricing for now. Each learner runs their own server, or uses the owner's privately (or a friend's or family member's).
+- **Consequences:** the "Hosted instance" of BRIEF_V2 Phase 14 isn't built. `server/README.md` is now a guide to running it privately: Tailscale-only (the simplest), a domain with Caddy TLS, or the home network; SMTP or the log or the dev flag for verification; backups, upgrades and migrations; pointing the app at it. The apps' sync intro no longer mentions "a hosted one". Fair-use limits stay plain configuration.
+- **Compose fixes found while writing the guide:** the container now always listens on 8080 (`TSUMUGI_PORT` in `.env` used to change the in-container port too, which broke the port mapping), and `TSUMUGI_BIND` (default `0.0.0.0`) lets the plain-http port be published on `127.0.0.1` only, behind Caddy or `tailscale serve`.
+
+### D-314: Leaderboard and shared reading circles come later (BRIEF_V2 §9 item 8, owner, 2026-09-19)
+- **Decision (owner):** both are later than v2. Nothing new is built in Phase 14.
+- **Leaderboard:** the existing opt-in client (D-107) stays as it is: off by default (`social.leaderboardOptIn` false), never contacted until the learner opts in, and it only ranks accounts on the learner's own private server. There's no public leaderboard. The server endpoint now also requires a verified email (D-310).
+- **Reading circle:** stays solo (D-278). No shared circles, no server tables for them.
+
+### D-315: Text packs ship in the app; large audio sets are optional downloads (BRIEF_V2 §9 item 7, owner, 2026-09-19)
+- **Decision (owner):** confirmed as already built. Verified in both build scripts (the Xcode "Bundle Content Packs" phase and the Android `bundlePacks` task) on 2026-09-19:
+  - **In the app:** every `content/packs/*.sqlite`: dictionary 130.1 MB, tokenizer 24.9, exam 3.2, kanji-path 2.1, grammar 1.7, tracks 1.5, practice 1.4, readers 0.7, linguist 0.7 (about 166 MB raw), plus `audio-pitch.zip` (2.1 MB) and `audio-minimal-pairs.zip` (6.6 MB) (D-097).
+  - **Optional downloads** (Settings → Audio packs, from Files or a URL the learner hosts, D-096): readers 72.0 MB, exam 68.8, dialogues 34.8, tracks 14.6, grammar 14.4, about 205 MB together.
+- **New tracks, readers and other text content** go into the bundled `.sqlite` packs; new audio goes into a downloadable set unless a screen can't work without it.
+- **Play:** the text packs fit in the App Bundle's base module (Play's 200 MB compressed-download limit for the base; the dictionary compresses to about 46 MB). If the base ever gets too big, Play Asset Delivery is the fallback, not bundling less text.
+
+### D-316: Android release build: not minified, signed from local properties, App Bundle ready (Phase 14, Android, 2026-09-19)
+- **R8:** `isMinifyEnabled = false` and `isShrinkResources = false` for release. Most of the size is native code and content packs, which R8 doesn't shrink, and only the JNI keep rules are verified (`proguard-rules.pro`); kotlinx-serialization, Ktor, SQLDelight and ML Kit would need their rules checked on a device. Turning it on is a later, device-tested change.
+- **Signing:** a `release` signing config is created only when `tsumugi.release.storeFile` (a Gradle property, e.g. in `~/.gradle/gradle.properties`) or `TSUMUGI_RELEASE_STORE_FILE` is set, with `storePassword`, `keyAlias`, `keyPassword` the same way. Nothing is committed. Without it, `assembleRelease`/`bundleRelease` produce unsigned outputs (upload those to Play only after signing them).
+- **Versions:** `-Ptsumugi.versionCode=N` and `-Ptsumugi.versionName=x.y.z` override the defaults (1, 0.0.1); Play needs a higher `versionCode` for every upload.
+- **App Bundle:** `bundleRelease` works with the stock AGP setup. Language splits are off (`bundle.language.enableSplit = false`): the Android 13+ per-app language setting can pick a language the device doesn't use, and its split wouldn't be installed. The strings are tiny.
+
+### D-317: Privacy policy and Play Data safety draft (Phase 14, both stores, 2026-09-19)
+- `docs/PRIVACY.md` is one policy for both stores, written from what the code does: no analytics, no accounts of the app's own, on-device AI by default, and every network use listed with where it goes (optional sync to a server the learner chooses, recordings sync off by default, the learner's own AI endpoints, model/audio downloads, WaniKani, Notion, AnkiConnect, reader fetches, Immersion Kit off by default).
+- **ML Kit (Android):** Google's text-recognition library reports diagnostics and usage (device and app info, a per-installation id, performance metrics, input/output sizes; not images or text) to Google, per Google's ML Kit data-disclosure page. The policy and the Data safety draft disclose it. **Owner:** decide whether that's acceptable; the alternative is replacing ML Kit OCR on Android (no drop-in on-device alternative with Japanese is in the repo today).
+- The Data safety draft and content-rating notes are in `docs/RELEASE.md` §7.
+
+### D-318: Android permissions audit and target SDK for Play (Phase 14, Android, 2026-09-19)
+- **Target SDK:** Google Play requires new apps and updates to target Android 16 (API 36) from 31 August 2026 (extension available to 1 November 2026); existing apps must target API 35 to stay available to new users. The app targets 36 and compiles against 37, so it complies. Checked at developer.android.com/google/play/requirements/target-sdk on 2026-09-19.
+- **Permissions**, each one used: `INTERNET` (the explicit online features), `POST_NOTIFICATIONS` (reminders and download progress, asked after the first session), `FOREGROUND_SERVICE` + `FOREGROUND_SERVICE_DATA_SYNC` (model downloads as a WorkManager foreground worker), `FOREGROUND_SERVICE_MEDIA_PLAYBACK` + `WAKE_LOCK` (hands-free drills with the screen off), `ACCESS_NETWORK_STATE` (the metered-connection warning before model downloads), `RECORD_AUDIO` (speaking practice). None removed. The merged manifest's library additions are listed in RELEASE.md §7.
+
+### D-319: The apps show "Check your email to finish setting up sync" (Phase 14, shared + apps, 2026-09-19)
+- **Shared:** `SyncException` is now open and carries the server's `code`. A 403 `email_unverified` from any call becomes `EmailNotVerifiedException` (message "Check your email to finish setting up sync"); other failures keep status and code (`syncFailure`). `SyncStatus.needsEmailVerification` is set when a sync fails that way and cleared by the next good sync; queued changes wait. `SyncAccountInfo` reads `emailVerified` / `emailVerificationRequired` (defaults for older servers: verified, not required) with `needsEmailVerification`. `SyncAccount.resendVerification()` / `HttpSyncClient.resendVerification()` call the resend endpoint.
+- **Android:** the Sync screen shows the message, a hint and **Resend email** when the status needs verification, and maps the exception to the message wherever an action fails with it. The "Create account" button now needs 10 characters, matching the server's minimum (it allowed 8, and the server refused 8–9).
+- **iOS:** the same message, hint and button in `SyncView`, the 10-character minimum, four new `Localizable.xcstrings` keys with Japanese, and the sync intro re-keyed without "hosted". Not compiled (CI paused); listed in PROGRESS.
+- Tests: `HttpSyncClientTest` (typed error, resend 429 code, account flags), `SyncMergeTest.unverifiedEmailIsFlaggedInTheStatus`.
+
 ---
 
 ## Open decisions (BRIEF.md §14)
@@ -1834,9 +1893,17 @@ Nothing here can be compiled until the owner builds on a Mac (D-140), so the Pha
 | # | Decision | Status |
 |---|---|---|
 | 1 | Final name / bundle ID | Open. Placeholder `Tsumugi` / `app.tsumugi.*` |
-| 2 | Pricing, hosted-sync cap | Open |
+| 2 | Pricing, hosted-sync cap | **Decided 2026-09-19: self-hosted only, no public instance, no pricing** (D-313) |
 | 3 | Default on-device LLM | Qwen2.5-1.5B-Instruct Q4_K_M recommended (Apache-2.0, 4 GB RAM); 7B for 12 GB devices. Benchmark with `tools/models/eval_ja.py` on real devices still open |
 | 4 | WaniKani review posting default | Open. Assume off |
 | 5 | Tokenizer lexicon | **Decided: IPADIC** (D-023) |
 | 6 | N1/N2 grammar at v1 | Open |
-| 7 | Leaderboard at v1 | Open |
+| 7 | Leaderboard at v1 | **Decided 2026-09-19: later**; the opt-in client stays off by default (D-314) |
+
+## Open decisions (BRIEF_V2.md §9)
+
+| # | Decision | Status |
+|---|---|---|
+| 2 | Pricing and hosted-sync fair-use cap | **Decided (owner, 2026-09-19): self-hosted only.** No public hosted instance and no pricing; each learner runs their own server or uses the owner's privately. Fair-use limits stay configuration (D-313) |
+| 7 | Which tracks ship in the base app vs as downloadable packs | **Decided (owner, 2026-09-19):** the text packs (tracks, readers, linguist and the rest) ship in the app; all large audio sets are optional downloads, which was already the case (verified, D-315) |
+| 8 | Leaderboard and shared reading circles: v2 or later | **Decided (owner, 2026-09-19): later.** The opt-in leaderboard client stays off by default; no shared circles are built (D-314) |

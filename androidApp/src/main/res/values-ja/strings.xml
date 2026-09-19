@@ -573,6 +573,11 @@
     <string name="status_working">%1$s…</string>
     <string name="stroke_replay">筆順を再生</string>
     <string name="sync_account_created">アカウントを作成しました。ログインしてください。</string>
+    <string name="sync_check_email">同期の設定を完了するには、メールを確認してください。</string>
+    <string name="sync_check_email_hint">サーバーから届いたメールのリンクを開いてから、「今すぐ同期」をタップしてください。待っている間もこの端末のデータは失われません。</string>
+    <string name="sync_resend_email">メールを再送</string>
+    <string name="sync_resending">再送</string>
+    <string name="sync_email_resent">送信しました。メールのリンクを開いてから「今すぐ同期」をタップしてください。</string>
     <string name="sync_create_account">アカウントを作成</string>
     <string name="sync_creating_account">アカウントを作成中</string>
     <string name="sync_e2e">エンドツーエンド暗号化</string>
@@ -580,7 +585,7 @@
     <string name="sync_e2e_on">暗号化を有効にしました。</string>
     <string name="sync_email">メールアドレス</string>
     <string name="sync_enabling_e2e">暗号化を有効にしています</string>
-    <string name="sync_intro">同期すると、復習・メモ・リストを複数の端末でそろえられます。同期は任意です。プロジェクトのserver/フォルダで`docker compose up`を実行して自分のサーバーを立てるか、ホスティングされたサーバーを使ってください。</string>
+    <string name="sync_intro">同期すると、復習・メモ・リストを複数の端末でそろえられます。同期は任意です。プロジェクトのserver/フォルダで`docker compose up`を実行して自分のサーバーを立てるか、友人や家族が運用しているサーバーを使ってください。</string>
     <string name="sync_now">今すぐ同期</string>
     <string name="sync_passphrase">パスフレーズ</string>
     <string name="sync_password">パスワード</string>

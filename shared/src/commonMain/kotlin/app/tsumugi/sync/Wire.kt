@@ -51,7 +51,14 @@ data class SyncAccountInfo(
     val e2eEnabled: Boolean = false,
     val e2eSalt: String? = null,
     val leaderboardOptIn: Boolean = false,
-)
+    /** Whether the account's email is confirmed. Servers before Phase 14 don't send it; they never required it. */
+    val emailVerified: Boolean = true,
+    /** Whether this server refuses sync until the email is confirmed (D-310). */
+    val emailVerificationRequired: Boolean = false,
+) {
+    /** True when sync is blocked until the learner opens the link in their email. */
+    val needsEmailVerification: Boolean get() = emailVerificationRequired && !emailVerified
+}
 
 @Serializable
 data class AccountPatch(
@@ -81,7 +88,41 @@ interface SyncTransport {
     suspend fun pull(since: Long, limit: Int): PullResponse
 }
 
-class SyncException(message: String, val status: Int? = null) : Exception(message)
+/**
+ * A failed sync request. [status] is the HTTP status, and [code] the server's machine-readable reason when it sent
+ * one (docs/SYNC_PROTOCOL.md "Errors").
+ */
+open class SyncException(message: String, val status: Int? = null, val code: String? = null) : Exception(message)
+
+/**
+ * The server requires a confirmed email before this account can sync (403 `email_unverified`, D-310). The apps show
+ * "Check your email to finish setting up sync" with a Resend button ([SyncAccount.resendVerification]).
+ */
+class EmailNotVerifiedException : SyncException("Check your email to finish setting up sync", 403, CODE) {
+    companion object {
+        const val CODE = "email_unverified"
+    }
+}
+
+/** Stable error codes the sync server sends in `{"error", "code"}` bodies. */
+object SyncErrorCodes {
+    const val EMAIL_UNVERIFIED = EmailNotVerifiedException.CODE
+    /** 429 on resend: an email went out moments ago. */
+    const val RESEND_TOO_SOON = "resend_too_soon"
+    /** 409 on resend: the email is already confirmed. */
+    const val ALREADY_VERIFIED = "already_verified"
+}
+
+@Serializable internal data class ErrorBody(val error: String? = null, val code: String? = null)
+
+/** The typed exception for a non-2xx response with body [text]. */
+internal fun syncFailure(what: String, status: Int, text: String): SyncException {
+    val body = runCatching { SyncJson.decodeFromString(ErrorBody.serializer(), text) }.getOrNull()
+    return when (body?.code) {
+        SyncErrorCodes.EMAIL_UNVERIFIED -> EmailNotVerifiedException()
+        else -> SyncException("$what failed: $status ${body?.error ?: text}", status, body?.code)
+    }
+}
 
 /**
  * The server's per-user blob store (docs/SYNC_PROTOCOL.md `/blobs/{id}`): opaque bytes, 20 MB each, a per-user

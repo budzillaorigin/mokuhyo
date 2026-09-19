@@ -26,6 +26,10 @@ data class Account(
     val e2eEnabled: Boolean,
     val e2eSalt: String?,
     val leaderboardOptIn: Boolean,
+    /** Whether the email address is confirmed. */
+    val emailVerified: Boolean = false,
+    /** Whether this server refuses sync until it is ([Config.requireEmailVerification]). */
+    val emailVerificationRequired: Boolean = false,
 )
 
 @Serializable
@@ -58,9 +62,20 @@ data class Change(
 
 @Serializable data class LeaderboardEntry(val displayName: String, val reviews: Int, val streak: Int)
 @Serializable data class Health(val status: String, val version: String)
-@Serializable data class ErrorBody(val error: String)
+/** Every error response. [code] is a stable machine-readable reason for the ones clients act on (see [ErrorCodes]). */
+@Serializable data class ErrorBody(val error: String, val code: String? = null)
 
-class ApiException(val status: Int, override val message: String) : RuntimeException(message)
+class ApiException(val status: Int, override val message: String, val code: String? = null) : RuntimeException(message)
+
+/** Stable error codes (docs/SYNC_PROTOCOL.md "Errors"). */
+object ErrorCodes {
+    /** 403 on sync, blobs, packs and leaderboard: the account's email isn't confirmed yet. */
+    const val EMAIL_UNVERIFIED = "email_unverified"
+    /** 429 on resend: a verification email went out less than the resend interval ago. */
+    const val RESEND_TOO_SOON = "resend_too_soon"
+    /** 409 on resend: nothing to do. */
+    const val ALREADY_VERIFIED = "already_verified"
+}
 
 fun badRequest(message: String): Nothing = throw ApiException(400, message)
 fun unauthorized(message: String = "unauthorized"): Nothing = throw ApiException(401, message)

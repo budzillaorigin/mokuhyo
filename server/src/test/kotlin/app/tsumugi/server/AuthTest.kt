@@ -31,7 +31,7 @@ class AuthTest {
 
     @Test
     fun emailVerificationLink() = serverTest { client ->
-        client.signUp("verify@example.com")
+        client.signUp("verify@example.com", verify = false)
         val link = RecordingMailer.sent.last { it.first == "verify@example.com" }.second
         assertEquals(200, client.get(link.substringAfter("8080")).status.value)
         assertEquals(404, client.get(link.substringAfter("8080")).status.value, "links are single-use")

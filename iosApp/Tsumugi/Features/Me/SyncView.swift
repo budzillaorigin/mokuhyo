@@ -16,7 +16,7 @@ struct SyncView: View {
     var body: some View {
         Form {
             Section {
-                Text("Sync keeps your reviews, notes and lists in step across devices. It's optional; run your own server with `docker compose up` from the project's server/ folder, or use a hosted one.")
+                Text("Sync keeps your reviews, notes and lists in step across devices. It's optional; run your own server with `docker compose up` from the project's server/ folder, or use one that a friend or family member runs for you.")
                     .font(.footnote)
                 if let message { Text(message).font(.subheadline) }
             }
@@ -26,14 +26,27 @@ struct SyncView: View {
                     TextField("Email", text: $email).textInputAutocapitalization(.never).keyboardType(.emailAddress)
                     SecureField("Password", text: $password)
                     Button("Sign in") { signIn() }.disabled(server.isEmpty || email.isEmpty || password.isEmpty)
-                    Button("Create account") { register() }.disabled(server.isEmpty || email.isEmpty || password.count < 8)
+                    Button("Create account") { register() }.disabled(server.isEmpty || email.isEmpty || password.count < 10)
                 }
             } else {
                 Section("Status") {
                     Text("Server: \(app.graph.syncAccount.baseUrl ?? "")")
                     if let status {
                         Text("\(String(describing: status.state).lowercased()) · \(status.pending) changes waiting")
-                        if let error = status.error { Text(error).foregroundStyle(.red).font(.caption) }
+                        if status.needsEmailVerification {
+                            // Phase 14 (D-310): the server wants the email confirmed before it syncs.
+                            Text("Check your email to finish setting up sync.").font(.subheadline.weight(.semibold))
+                            Text("Open the link the server sent to your address, then tap Sync now. Nothing on this device is lost while you wait.")
+                                .font(.caption)
+                            Button("Resend email") {
+                                run("Resending") {
+                                    try await app.graph.syncAccount.resendVerification()
+                                    return String(localized: "Sent. Open the link in the email, then tap Sync now.")
+                                }
+                            }
+                        } else if let error = status.error {
+                            Text(error).foregroundStyle(.red).font(.caption)
+                        }
                     }
                     Button("Sync now") {
                         run("Syncing") {

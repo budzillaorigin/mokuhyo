@@ -32,6 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import app.tsumugi.android.TsumugiApplication
+import app.tsumugi.sync.EmailNotVerifiedException
 import app.tsumugi.sync.SyncEngine
 import kotlinx.coroutines.launch
 
@@ -54,7 +55,12 @@ fun SyncScreen() {
     val context = LocalContext.current
     fun run(label: String, block: suspend () -> String?) {
         message = context.getString(R.string.status_working, label)
-        scope.launch { message = runCatching { block() }.getOrElse { context.getString(R.string.status_failed, label, it.message.orEmpty()) } }
+        scope.launch {
+            message = runCatching { block() }.getOrElse {
+                if (it is EmailNotVerifiedException) context.getString(R.string.sync_check_email)
+                else context.getString(R.string.status_failed, label, it.message.orEmpty())
+            }
+        }
     }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -82,12 +88,26 @@ fun SyncScreen() {
                         account.register(server.trim(), email.trim(), password, null)
                         context.getString(R.string.sync_account_created)
                     }
-                }, enabled = server.isNotBlank() && email.isNotBlank() && password.length >= 8) { Text(stringResource(R.string.sync_create_account)) }
+                }, enabled = server.isNotBlank() && email.isNotBlank() && password.length >= 10) { Text(stringResource(R.string.sync_create_account)) }
             }
         } else {
             val status = engine?.status?.collectAsState()?.value
             Text(stringResource(R.string.sync_server, account.baseUrl.orEmpty()), style = MaterialTheme.typography.bodyMedium)
-            status?.let { Text(stringResource(R.string.sync_status, it.state.name.lowercase(), it.pending) + (it.error?.let { e -> " · $e" } ?: "")) }
+            status?.let {
+                val error = if (it.needsEmailVerification) null else it.error
+                Text(stringResource(R.string.sync_status, it.state.name.lowercase(), it.pending) + (error?.let { e -> " · $e" } ?: ""))
+            }
+            if (status?.needsEmailVerification == true) {
+                // Phase 14 (D-310): the server wants the email confirmed before it syncs.
+                Text(stringResource(R.string.sync_check_email), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+                Text(stringResource(R.string.sync_check_email_hint), style = MaterialTheme.typography.bodySmall)
+                OutlinedButton(onClick = {
+                    run(context.getString(R.string.sync_resending)) {
+                        account.resendVerification()
+                        context.getString(R.string.sync_email_resent)
+                    }
+                }) { Text(stringResource(R.string.sync_resend_email)) }
+            }
             Button(onClick = { run(context.getString(R.string.sync_syncing)) { graph.sync()?.sync()?.let { context.getString(R.string.sync_result, it.pushed, it.pulled) } } }) { Text(stringResource(R.string.sync_now)) }
             HorizontalDivider()
             Text(stringResource(R.string.sync_e2e), style = MaterialTheme.typography.titleSmall)

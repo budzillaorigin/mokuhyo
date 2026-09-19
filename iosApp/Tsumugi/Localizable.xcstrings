@@ -2331,6 +2331,16 @@
         }
       }
     },
+    "Check your email to finish setting up sync." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期の設定を完了するには、メールを確認してください。"
+          }
+        }
+      }
+    },
     "Checked against your target: %@" : {
       "localizations" : {
         "ja" : {
@@ -10361,6 +10371,16 @@
         }
       }
     },
+    "Open the link the server sent to your address, then tap Sync now. Nothing on this device is lost while you wait." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーから届いたメールのリンクを開いてから、「今すぐ同期」をタップしてください。待っている間もこの端末のデータは失われません。"
+          }
+        }
+      }
+    },
     "OPI simulator" : {
       "localizations" : {
         "ja" : {
@@ -12091,6 +12111,16 @@
         }
       }
     },
+    "Resend email" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールを再送"
+          }
+        }
+      }
+    },
     "RSS, downloads, transcripts" : {
       "localizations" : {
         "ja" : {
@@ -13611,6 +13641,16 @@
         }
       }
     },
+    "Sent. Open the link in the email, then tap Sync now." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "送信しました。メールのリンクを開いてから「今すぐ同期」をタップしてください。"
+          }
+        }
+      }
+    },
     "Sentence card" : {
       "localizations" : {
         "ja" : {
@@ -14831,12 +14871,12 @@
         }
       }
     },
-    "Sync keeps your reviews, notes and lists in step across devices. It's optional; run your own server with `docker compose up` from the project's server/ folder, or use a hosted one." : {
+    "Sync keeps your reviews, notes and lists in step across devices. It's optional; run your own server with `docker compose up` from the project's server/ folder, or use one that a friend or family member runs for you." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "同期を使うと、復習・メモ・リストを複数の端末でそろえられます。同期は任意です。プロジェクトの server/ フォルダで `docker compose up` を実行して自分のサーバーを立てるか、ホスト型のサーバーを使ってください。"
+            "value" : "同期を使うと、復習・メモ・リストを複数の端末でそろえられます。同期は任意です。プロジェクトの server/ フォルダで `docker compose up` を実行して自分のサーバーを立てるか、友人や家族が運用しているサーバーを使ってください。"
           }
         }
       }

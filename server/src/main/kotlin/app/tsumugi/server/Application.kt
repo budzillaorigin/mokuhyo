@@ -10,6 +10,7 @@ import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.createApplicationPlugin
 import io.ktor.server.application.install
+import io.ktor.server.application.log
 import io.ktor.server.auth.Authentication
 import io.ktor.server.auth.authenticate
 import io.ktor.server.auth.jwt.JWTPrincipal
@@ -28,6 +29,8 @@ import io.ktor.server.request.receive
 import io.ktor.server.request.receiveChannel
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondBytes
+import io.ktor.server.response.respondText
+import io.ktor.http.withCharset
 import io.ktor.server.routing.delete
 import io.ktor.server.routing.get
 import io.ktor.server.routing.patch
@@ -57,11 +60,14 @@ fun Application.tsumugi(config: Config, mailer: Mailer = config.smtp?.let(::Smtp
     val sync = SyncService(db, config)
     val accounts = AccountService(db, config)
     val passkeys = PasskeyService(db, config, auth)
+    if (config.requireEmailVerification && config.smtp == null) {
+        log.warn("Email verification is required but SMTP isn't configured: verification links are written to this log.")
+    }
 
     install(ContentNegotiation) { json(ServerJson) }
     install(BodyLimit) { maxBytes = config.maxBodyBytes }
     install(StatusPages) {
-        exception<ApiException> { call, e -> call.respond(HttpStatusCode.fromValue(e.status), ErrorBody(e.message)) }
+        exception<ApiException> { call, e -> call.respond(HttpStatusCode.fromValue(e.status), ErrorBody(e.message, e.code)) }
         exception<SerializationException> { call, e -> call.respond(HttpStatusCode.BadRequest, ErrorBody("malformed JSON: ${e.message}")) }
         exception<io.ktor.server.plugins.BadRequestException> { call, e ->
             call.respond(HttpStatusCode.BadRequest, ErrorBody(e.cause?.message ?: e.message ?: "bad request"))
@@ -95,8 +101,13 @@ fun Application.tsumugi(config: Config, mailer: Mailer = config.smtp?.let(::Smtp
                 route("/auth") {
                     post("/register") { call.respond(HttpStatusCode.Created, RegisterResponse(auth.register(call.receive()))) }
                     get("/verify") {
-                        val ok = auth.verifyEmail(call.request.queryParameters["token"].orEmpty())
-                        call.respond(if (ok) HttpStatusCode.OK else HttpStatusCode.NotFound, if (ok) "Email confirmed." else "Link invalid or already used.")
+                        // Opened in a browser from the email, so the answer is plain text.
+                        val (status, text) = when (auth.verifyEmail(call.request.queryParameters["token"].orEmpty())) {
+                            VerifyOutcome.VERIFIED -> HttpStatusCode.OK to "Email confirmed. You can go back to Tsumugi and sync."
+                            VerifyOutcome.EXPIRED -> HttpStatusCode.Gone to "This link has expired. In Tsumugi, open Sync and tap Resend email."
+                            VerifyOutcome.INVALID -> HttpStatusCode.NotFound to "Link invalid or already used."
+                        }
+                        call.respondText(text, ContentType.Text.Plain.withCharset(Charsets.UTF_8), status)
                     }
                     post("/login") { call.respond(auth.login(call.receive())) }
                     post("/refresh") { call.respond(auth.refresh(call.receive<RefreshRequest>().refreshToken)) }
@@ -107,6 +118,10 @@ fun Application.tsumugi(config: Config, mailer: Mailer = config.smtp?.let(::Smtp
                     post("/passkey/login/options") { call.respond(passkeys.loginOptions(call.receive())) }
                     post("/passkey/login/verify") { call.respond(passkeys.loginVerify(call.receive())) }
                     authenticate("access") {
+                        post("/verify/resend") {
+                            auth.resendVerification(call.userId())
+                            call.respond(HttpStatusCode.NoContent)
+                        }
                         post("/passkey/register/options") { call.respond(passkeys.registerOptions(call.userId())) }
                         post("/passkey/register/verify") {
                             passkeys.registerVerify(call.userId(), call.receive())
@@ -125,32 +140,43 @@ fun Application.tsumugi(config: Config, mailer: Mailer = config.smtp?.let(::Smtp
                         call.respond(HttpStatusCode.NoContent)
                     }
                     put("/devices/{id}/packs") {
+                        auth.requireVerified(call.userId())
                         accounts.setPacks(call.userId(), call.parameters["id"]!!, call.receive<PacksRequest>().packs)
                         call.respond(HttpStatusCode.NoContent)
                     }
 
-                    post("/sync/push") { call.respond(sync.push(call.userId(), call.deviceId(), call.receive<PushRequest>().changes)) }
+                    post("/sync/push") {
+                        auth.requireVerified(call.userId())
+                        call.respond(sync.push(call.userId(), call.deviceId(), call.receive<PushRequest>().changes))
+                    }
                     get("/sync/pull") {
+                        auth.requireVerified(call.userId())
                         val since = call.request.queryParameters["since"]?.toLongOrNull() ?: 0
                         val limit = call.request.queryParameters["limit"]?.toIntOrNull() ?: SyncService.DEFAULT_PULL
                         call.respond(sync.pull(call.userId(), since, limit))
                     }
 
                     put("/blobs/{id}") {
+                        auth.requireVerified(call.userId())
                         val bytes = call.receiveChannel().toByteArray()
                         accounts.putBlob(call.userId(), call.parameters["id"]!!, call.request.contentType().toString(), bytes)
                         call.respond(HttpStatusCode.NoContent)
                     }
                     get("/blobs/{id}") {
+                        auth.requireVerified(call.userId())
                         val (type, bytes) = accounts.getBlob(call.userId(), call.parameters["id"]!!)
                         call.respondBytes(bytes, runCatching { ContentType.parse(type) }.getOrDefault(ContentType.Application.OctetStream))
                     }
                     delete("/blobs/{id}") {
+                        auth.requireVerified(call.userId())
                         accounts.deleteBlob(call.userId(), call.parameters["id"]!!)
                         call.respond(HttpStatusCode.NoContent)
                     }
 
-                    get("/leaderboard") { call.respond(sync.leaderboard(call.request.queryParameters["period"] ?: "week")) }
+                    get("/leaderboard") {
+                        auth.requireVerified(call.userId())
+                        call.respond(sync.leaderboard(call.request.queryParameters["period"] ?: "week"))
+                    }
                 }
             }
         }

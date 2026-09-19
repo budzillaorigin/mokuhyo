@@ -220,3 +220,20 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] **Reading circle, sessions:** resume one from Your sessions, delete one, and read a library document. Sync, and check that the session is on the second device.
 - [ ] **Airplane mode:** everything above works, except model-graded results when your model is a server.
 - [ ] **Japanese UI:** every new string shows in Japanese.
+
+## Phase 14: email verification and self-hosting 🌐
+- [ ] **Self-hosted setup:** follow `server/README.md` on a spare machine or VPS, with Option A (Tailscale + `tailscale serve`) or Option B (Caddy on a domain). `curl https://<your address>/v1/health` answers `{"status":"ok",…}`.
+- [ ] **Create an account:** Me → Sync, enter the server URL, an email and a password of 10+ characters, then Create account. With SMTP set, the email arrives. Without it, `docker compose logs server | grep "verification link"` shows the link.
+- [ ] **Unverified:** sign in before opening the link.
+  - Sign-in works, and the Sync screen shows "Check your email to finish setting up sync" with Resend email.
+  - Sync now shows the same message, not a raw error.
+  - Do a few reviews: the pending count goes up and nothing is lost.
+- [ ] **Resend:** tap Resend email right away; it says to try again shortly (rate limit). After 2 minutes it sends a new email, and the first link now says "Link invalid or already used."
+- [ ] **Verify:** open the newest link in a browser ("Email confirmed…"), then Sync now. The pending reviews go up and the message disappears. A second device signs in and receives them.
+- [ ] **Expired link** (optional, on a test server with `TSUMUGI_VERIFY_TOKEN_TTL_HOURS=0`): the link says it has expired, and Resend email fixes it.
+- [ ] **Single-user server:** with `TSUMUGI_REQUIRE_EMAIL_VERIFICATION=false`, a new account syncs without opening the link.
+- [ ] **Upgrade an existing server** (README "Upgrades and migrations"): the log shows the V2 migration, and accounts created before the upgrade keep syncing without a link.
+- [ ] **Backup and restore:** restore a `make backup` dump into a fresh install (README "Backups"), then sign in and sync. Nothing is duplicated.
+- [ ] **Recordings sync stays off:** on a fresh install, signed in, recordings sync is off, and nothing uploads until you turn it on for that device.
+- [ ] **Japanese UI:** the new sync message, hint and button show in Japanese in both apps.
+- [ ] **Android release build (optional):** with a keystore set up as in RELEASE.md §7, `assembleRelease` gives a signed APK that installs and runs, and `bundleRelease` gives an `.aab`.

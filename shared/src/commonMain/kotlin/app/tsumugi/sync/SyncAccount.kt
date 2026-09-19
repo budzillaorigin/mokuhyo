@@ -62,6 +62,13 @@ class SyncAccount(
         return c.account()
     }
 
+    /** Emails a fresh verification link (rate limited by the server). */
+    @Throws(Exception::class)
+    suspend fun resendVerification() {
+        val c = client() ?: throw SyncException("Not signed in")
+        c.resendVerification()
+    }
+
     @Throws(Exception::class)
     suspend fun logout() {
         client()?.logout()

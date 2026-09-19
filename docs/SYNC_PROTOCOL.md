@@ -74,12 +74,12 @@ All under `/v1`, JSON, `Authorization: Bearer <access JWT>` except auth and heal
 
 | Method | Path | Body → Response |
 |---|---|---|
-| POST | `/auth/register` | `{email, password, displayName?}` → `{userId}` (email verification if SMTP is configured) |
+| POST | `/auth/register` | `{email, password, displayName?}` → `{userId}`. Sends the verification link (by SMTP, or to the server log) |
 | POST | `/auth/login` | `{email, password, deviceName, platform}` → `{accessToken, refreshToken, deviceId, expiresIn}` |
 | POST | `/auth/refresh` | `{refreshToken}` → new pair (refresh tokens rotate; reuse revokes the family) |
 | POST | `/auth/logout` | `{refreshToken}` → 204 |
 | POST | `/auth/passkey/register/options` · `/verify`, `/auth/passkey/login/options` · `/verify` | WebAuthn ceremonies |
-| GET | `/account` | → `{userId, email, displayName, e2eEnabled, e2eSalt, leaderboardOptIn}` |
+| GET | `/account` | → `{userId, email, displayName, e2eEnabled, e2eSalt, leaderboardOptIn, emailVerified, emailVerificationRequired}` |
 | PATCH | `/account` | `{displayName?, e2eEnabled?, e2eSalt?, leaderboardOptIn?}` |
 | GET | `/devices` · DELETE `/devices/{id}` | device registry (`{id, name, platform, lastSeenAt, packs}`) |
 | PUT | `/devices/{id}/packs` | `{packs: {file: version}}` |
@@ -90,8 +90,21 @@ All under `/v1`, JSON, `Authorization: Bearer <access JWT>` except auth and heal
 | GET | `/health` | `{status: "ok", version}` |
 
 Server extras beyond the table above:
-- `GET /auth/verify?token=`: email verification link.
+- `GET /auth/verify?token=`: email verification link (plain text: 200 confirmed, 410 expired, 404 unknown or used). Links expire after 48 hours and work once (D-312).
+- `POST /auth/verify/resend` (signed in): mails a fresh link and invalidates the old one; at most one per 2 minutes (429 `resend_too_soon`), 409 `already_verified`.
 - `DELETE /blobs/{id}`.
+
+## Errors and email verification (Phase 14, D-310)
+
+Error responses are `{"error": "<message>", "code": "<code>"}`; `code` is present only for the cases clients act on:
+
+| Status | Code | When |
+|---|---|---|
+| 403 | `email_unverified` | Sync push/pull, blobs, `PUT /devices/{id}/packs` or the leaderboard, on a server with `TSUMUGI_REQUIRE_EMAIL_VERIFICATION=true` (the default), before the account's email is confirmed |
+| 429 | `resend_too_soon` | `POST /auth/verify/resend` within the resend interval |
+| 409 | `already_verified` | `POST /auth/verify/resend` on a confirmed account |
+
+Sign-in, refresh and `GET /account` keep working for an unverified account, so the app can show why sync waits. The shared client turns `email_unverified` into `EmailNotVerifiedException` and sets `SyncStatus.needsEmailVerification`; the apps show "Check your email to finish setting up sync" with a Resend button. Local changes stay queued until the first sync after the link is opened. Accounts that existed before the requirement are marked verified by the V2 migration (D-311).
 
 ## Blobs: opt-in recordings and pictures (DECISIONS D-111)
 

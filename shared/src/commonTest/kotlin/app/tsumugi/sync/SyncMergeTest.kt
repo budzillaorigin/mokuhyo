@@ -360,4 +360,32 @@ class SyncMergeTest {
         b.sync()
         assertEquals(1, seen.size, "nothing new, no call")
     }
+
+    @Test
+    fun unverifiedEmailIsFlaggedInTheStatus() = runTest {
+        // Phase 14 (D-310): the server refuses sync until the email is confirmed; the status says so, so the
+        // apps can show "Check your email to finish setting up sync" rather than a raw error.
+        var verified = false
+        val gate = object : SyncTransport {
+            override suspend fun push(changes: List<Change>): PushResponse =
+                if (verified) server.push(changes) else throw EmailNotVerifiedException()
+            override suspend fun pull(since: Long, limit: Int): PullResponse =
+                if (verified) server.pull(since, limit) else throw EmailNotVerifiedException()
+        }
+        val driver = inMemoryDriver(TsumugiDatabase.Schema)
+        val db = TsumugiDatabase(driver)
+        val srs = SrsRepository(db, "device-v", clock)
+        srs.addItems(listOf(water))
+        val engine = SyncEngine(driver, db, srs, "device-v", gate, null, clock)
+
+        assertFailsWith<EmailNotVerifiedException> { engine.sync() }
+        assertTrue(engine.status.value.needsEmailVerification)
+        assertEquals(SyncState.ERROR, engine.status.value.state)
+        assertTrue(engine.pendingChanges() > 0, "nothing is lost while waiting")
+
+        verified = true
+        engine.sync()
+        assertFalse(engine.status.value.needsEmailVerification)
+        assertEquals(0, engine.pendingChanges())
+    }
 }

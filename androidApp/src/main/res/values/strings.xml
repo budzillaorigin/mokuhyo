@@ -577,6 +577,11 @@
     <string name="status_working">%1$s…</string>
     <string name="stroke_replay">Replay stroke order</string>
     <string name="sync_account_created">Account created. Now sign in.</string>
+    <string name="sync_check_email">Check your email to finish setting up sync.</string>
+    <string name="sync_check_email_hint">Open the link the server sent to your address, then tap Sync now. Nothing on this device is lost while you wait.</string>
+    <string name="sync_resend_email">Resend email</string>
+    <string name="sync_resending">Resending</string>
+    <string name="sync_email_resent">Sent. Open the link in the email, then tap Sync now.</string>
     <string name="sync_create_account">Create account</string>
     <string name="sync_creating_account">Creating account</string>
     <string name="sync_e2e">End-to-end encryption</string>
@@ -584,7 +589,7 @@
     <string name="sync_e2e_on">Encryption on.</string>
     <string name="sync_email">Email</string>
     <string name="sync_enabling_e2e">Enabling encryption</string>
-    <string name="sync_intro">Sync keeps your reviews, notes and lists in step across devices. It\'s optional; run your own server with `docker compose up` from the project\'s server/ folder, or use a hosted one.</string>
+    <string name="sync_intro">Sync keeps your reviews, notes and lists in step across devices. It\'s optional; run your own server with `docker compose up` from the project\'s server/ folder, or use one that a friend or family member runs for you.</string>
     <string name="sync_now">Sync now</string>
     <string name="sync_passphrase">Passphrase</string>
     <string name="sync_password">Password</string>

@@ -4,8 +4,9 @@ GRADLE := ../gradlew -p ..
 .PHONY: dev test up down logs backup
 
 # Zero-setup local server on http://localhost:8080 with a SQLite file (no Docker, no Postgres).
+# Email verification is off in dev; the production default is on (TSUMUGI_REQUIRE_EMAIL_VERIFICATION).
 dev:
-	TSUMUGI_DB=sqlite:./dev.db TSUMUGI_JWT_SECRET=dev-only-secret-dev-only-secret-dev-only $(GRADLE) :server:run
+	TSUMUGI_DB=sqlite:./dev.db TSUMUGI_REQUIRE_EMAIL_VERIFICATION=false TSUMUGI_JWT_SECRET=dev-only-secret-dev-only-secret-dev-only $(GRADLE) :server:run
 
 test:
 	$(GRADLE) :server:test

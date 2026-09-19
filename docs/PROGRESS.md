@@ -1,6 +1,63 @@
 # Progress
 
-Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Phase 10 in progress.** The owner asked for v2 phases to run without per-phase stops; device QA and the TestFlight archive are the owner's, on the Mac (`docs/QA.md`, `docs/RELEASE.md`). The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+Current phase: **v2 (BRIEF_V2.md) on branch `v2`. v2 Phases 9–14 are built. Next: the owner's Mac build, device QA and TestFlight.** The owner asked for v2 phases to run without per-phase stops; device QA and the TestFlight archive are the owner's, on the Mac (`docs/QA.md`, `docs/RELEASE.md`). The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+
+---
+
+## Phase 14: email verification, self-hosting, owner decisions, Android Play-readiness (2026-09-19)
+
+BRIEF_V2 §8 Phase 14, scoped by the owner's decisions of 2026-09-19. Decisions D-310…D-319; BRIEF_V2 §9 items 2, 7 and 8 are recorded as decided in `docs/DECISIONS.md`.
+
+**Owner decisions:**
+- **Sync (item 2):** self-hosted only. No public instance and no pricing (D-313). The hosted instance in the Phase 14 brief isn't built.
+- **Social (item 8):** the leaderboard and shared reading circles come later. The opt-in leaderboard client stays off by default, and the reading circle stays solo (D-314).
+- **Pack size (item 7):** the text packs ship in the app, and the large audio sets are optional downloads. This was already true; verified in both build scripts, with the sizes in D-315.
+
+### What was built
+- **Server: email verification is required before sync** (D-310…D-312):
+  - Unverified accounts get 403 `email_unverified` on sync push/pull, blobs, the pack registry and the leaderboard. Sign-in (password or passkey), refresh and `GET /account` still work; the account now reports `emailVerified` and `emailVerificationRequired`.
+  - The flag is `TSUMUGI_REQUIRE_EMAIL_VERIFICATION`: true by default (production and `.env.example`), false in `make dev`. Without SMTP the link is still logged, and the server warns at startup.
+  - Links expire after 48 hours and work once (410 when expired). `POST /v1/auth/verify/resend` (signed in) mails a new link, at most once per 2 minutes (429 `resend_too_soon`; 409 `already_verified`).
+  - There are no passkey-only accounts (a passkey is added to an email account), so every account has an email to verify (D-311).
+  - Migration `V2__email_verification.sql` (SQLite and Postgres) adds `verify_expires_at` and `verify_sent_at`, and marks accounts that existed before the upgrade as verified.
+  - Error bodies gained an optional `code`.
+- **Shared client** (D-319): `EmailNotVerifiedException` (a typed `SyncException` with `code`), `SyncStatus.needsEmailVerification`, `SyncAccountInfo.needsEmailVerification`, and `resendVerification()` on `HttpSyncClient` and `SyncAccount`.
+- **Apps:** the Sync screens show "Check your email to finish setting up sync" with a hint and a **Resend email** button (Android `values`/`values-ja`; iOS `SyncView.swift` and `Localizable.xcstrings`). The sync intro no longer mentions "a hosted one". "Create account" now needs 10 characters, the server's minimum (it allowed 8).
+- **Recordings sync** is confirmed off by default and per device (G-03, D-111). `RecordingsTest.syncIsOffByDefaultAndDoesNothing` now also asserts `isEnabled()` is false on a fresh device.
+- **Self-hosting guide:** `server/README.md` rewritten for running it privately: Tailscale-only (the simplest), a domain with Caddy TLS, or the home network; SMTP, the log, or the dev flag for verification; backups and restore; upgrades and migrations; pointing the app at it.
+  - Compose fixes: the container always listens on 8080 (a custom `TSUMUGI_PORT` in `.env` used to break the port mapping), and the new `TSUMUGI_BIND` publishes the port on `127.0.0.1` only, behind Caddy or `tailscale serve`.
+- **Android Play-readiness** (D-316…D-318, `docs/RELEASE.md` §7 "Android (Play, optional)"):
+  - The release build stays unminified, is signed only from a keystore named in `~/.gradle/gradle.properties` or the environment (never committed), and takes `-Ptsumugi.versionCode`/`versionName`.
+  - `bundleRelease` builds an App Bundle, with language splits off so the per-app language setting always works.
+  - Target SDK 36 meets Play's requirement for new apps and updates from 31 August 2026 (checked on developer.android.com).
+  - The permissions audit found every permission used; WorkManager and AndroidX Core add `RECEIVE_BOOT_COMPLETED` and an internal signature permission. Nothing was removed.
+  - The Data safety draft, content-rating notes, and Play Console steps are in RELEASE.md §7.
+  - The privacy policy draft for both stores is `docs/PRIVACY.md`.
+- **Docs:** `docs/SYNC_PROTOCOL.md` has an "Errors and email verification" section and the new endpoint and account fields. `docs/RELEASE.md` §5 (privacy label: email, recordings sync), §7 and §8 are updated. `docs/QA.md` has a Phase 14 section.
+
+### Tests
+- **Server:** `./gradlew --no-daemon :server:test`: 28 tests, including `EmailVerificationTest` (7):
+  - unverified → sync, blobs and packs rejected with `email_unverified`;
+  - verifying unlocks sync, even with the same access token;
+  - resend rate-limited, signed-in only, and replacing the old link;
+  - expired links (410); the dev flag; config parsing.
+  - The shared `signUp` helper now verifies through the recorded link, so every other server test runs with verification on.
+  - `PostgresIntegrationTest` was **skipped**: Docker isn't available on this machine. The SQLite tests ran, and the V2 Postgres migration is plain `ALTER TABLE … ADD COLUMN` / `UPDATE`; CI (or any machine with Docker) runs it.
+- **Shared:** `:shared:testAndroidHostTest`: 728 tests, 0 failures. New: `HttpSyncClientTest.unverifiedEmailBecomesATypedError`, `otherErrorsKeepTheirStatusWithoutACode`, `accountReportsWhetherVerificationBlocksSync`, and `SyncMergeTest.unverifiedEmailIsFlaggedInTheStatus`.
+- **Android:** `:androidApp:assembleDebug`, `:androidApp:assembleRelease` and `:androidApp:bundleRelease` with `-Ptsumugi.native=false` all build. Release outputs are unsigned without a keystore: 62 MB APK and 38 MB AAB in a worktree without built packs.
+
+### Deferred and owner items
+- **ML Kit diagnostics (Android):** Google's text-recognition library sends Google diagnostics and usage data. The privacy policy and Data safety draft disclose it. The owner decides whether to keep it (D-317).
+- **Play's AI-generated content policy** expects a way to report offensive AI output. There's no in-app report button yet (RELEASE.md §7).
+- **R8 minification** stays off until a minified build is tested on a device.
+- **Before any store submission:** the privacy policy needs a contact line and a public URL.
+- **Not built (owner decisions):** the hosted instance, the public leaderboard and shared reading circles.
+- **iOS:** `SyncView.swift` isn't compiled (CI paused). Its spots are under "iOS: unverified since CI paused".
+
+### How to run
+- Server: `cd server && make dev` (verification off), or `make test`. To try the verification flow, run with `TSUMUGI_REQUIRE_EMAIL_VERIFICATION=true` and take the link from the log.
+- Android release: `./gradlew --no-daemon :androidApp:assembleRelease :androidApp:bundleRelease -Ptsumugi.native=false`; signing setup in RELEASE.md §7.
+- QA: `docs/QA.md` → "Phase 14: email verification and self-hosting".
 
 ---
 
@@ -901,7 +958,7 @@ The user database uses SQLDelight migrations now (`migrations/1.sqm`, `2.sqm`, v
 
 ### Known gaps carried forward
 - Aozora ruby isn't kept with saved documents yet (G-07).
-- The server leaderboard still counts reviews that were later undone. The leaderboard comes in Phase 14.
+- The server leaderboard still counts reviews that were later undone. The leaderboard was deferred past v2 by the owner (D-314).
 - Background model downloads on iOS verify the file in a second pass after it arrives.
 - Strings added in Phase 9 aren't in `Localizable.xcstrings` yet. They fall back to English.
 
@@ -1097,6 +1154,12 @@ The uncertain spots:
   - A nested `NavigationStack` in the circle help sheet (`ReadingCircleViews.swift:205`–`:213`).
   - `String(localized: "register.literary", defaultValue: "Literary")` (`ThesaurusViews.swift:13`).
 - **Speech:** `SpeechToText.transcribeEnglish` uses `SFSpeechRecognizer(locale: en-US)` with `requiresOnDeviceRecognition` (`AudioCapture.swift`, D-308).
+
+**Phase 14 iOS (D-319), not yet compiled. Check these first if the build fails.** One file changed, `Features/Me/SyncView.swift`:
+- `status.needsEmailVerification`: a Kotlin `Boolean` property of the data class `SyncStatus`, read as a Swift `Bool` like `status.pending` next to it.
+- `try await app.graph.syncAccount.resendVerification()`: a `@Throws` suspend fun returning `Unit`, in the same shape as `logout()` a few lines below.
+- `String(localized: "Sent. Open the link in the email, then tap Sync now.")` returned from the `run` closure (`String?`).
+- The sync intro text changed, so its `Localizable.xcstrings` key changed with it (old key removed, new key with Japanese added).
 
 ---
 

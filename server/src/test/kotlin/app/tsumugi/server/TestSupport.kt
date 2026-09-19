@@ -34,8 +34,12 @@ fun serverTest(config: Config = testConfig(), block: suspend ApplicationTestBuil
 object RecordingMailer : Mailer {
     val sent = mutableListOf<Pair<String, String>>()
     override fun sendVerification(email: String, link: String) {
-        sent += email to link
+        synchronized(sent) { sent += email to link }
     }
+
+    /** The path (from `/v1`) of the newest verification link sent to [email]. */
+    fun lastPath(email: String): String =
+        synchronized(sent) { sent.last { it.first == email.trim().lowercase() }.second }.let { "/v1" + it.substringAfter("/v1") }
 }
 
 suspend fun HttpClient.postJson(path: String, body: Any, token: String? = null): HttpResponse = post(path) {
@@ -60,8 +64,15 @@ suspend fun HttpClient.patchJson(path: String, body: Any, token: String): HttpRe
 
 suspend fun HttpClient.deleteAuth(path: String, token: String): HttpResponse = delete(path) { bearerAuth(token) }
 
-suspend fun HttpClient.signUp(email: String, device: String = "phone", password: String = "correct horse battery"): TokenResponse {
+/** Registers, confirms the email through the link the server "sent" (verification is on by default), and logs in. */
+suspend fun HttpClient.signUp(
+    email: String,
+    device: String = "phone",
+    password: String = "correct horse battery",
+    verify: Boolean = true,
+): TokenResponse {
     postJson("/v1/auth/register", RegisterRequest(email, password, email.substringBefore('@')))
+    if (verify) assertEquals(200, get(RecordingMailer.lastPath(email)).status.value, "verify $email")
     val response = postJson("/v1/auth/login", LoginRequest(email, password, device, "ios"))
     assertEquals(200, response.status.value, "login")
     return response.body()

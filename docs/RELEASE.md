@@ -140,10 +140,12 @@ Size audit: in App Store Connect → the build → App Store File Sizes, check t
   - Confirm with the current eCFR text of 15 CFR 740.17 and the BIS encryption pages, or an export-control adviser, because the rules are amended from time to time.
 - **Privacy nutrition label:**
   - *Without sync*, no data is collected: everything stays on the device.
-  - *With sync enabled* (self-hosted or a server the owner runs), declare it as follows. None of it is used for tracking.
+  - *With sync enabled* (always a server the learner chooses: their own, or one the owner or a friend runs privately; there is no public instance, D-313), declare it as follows. None of it is used for tracking.
     - "User Content: Other User Content" and "Identifiers: User ID", both linked to the user and used for App Functionality.
-    - Email if the sync server uses email sign-in.
-  - Recordings never leave the device, unless the learner points speech recognition at their own Whisper server.
+    - "Contact Info: Email Address": every sync account has one, and it must be verified before syncing (D-310, D-311).
+    - "User Content: Audio Data" and "Photos": only with recordings sync, which is off by default and per device.
+  - Recordings otherwise never leave the device, unless the learner points speech recognition at their own Whisper server.
+  - The privacy policy URL for App Store Connect: publish `docs/PRIVACY.md` (the same policy serves Play).
 - **Privacy manifest.** `iosApp/Tsumugi/PrivacyInfo.xcprivacy` is bundled with the app. It declares no tracking, no tracking domains and no collected data types, because nothing is collected unless the learner turns on self-hosted sync. The nutrition label above covers the sync case. It lists these required-reason APIs:
 
   | API category | Reason | Why |
@@ -183,7 +185,9 @@ After the upload finishes processing, go to App Store Connect → TestFlight:
 3. Run the QA pass on the TestFlight build, because Release optimizations differ from Debug.
 4. Use it daily for a week (crash-free soak). Crashes appear under TestFlight → Crashes, and in Xcode → Organizer → Crashes.
 
-## 7. Android (sideload only)
+## 7. Android (sideload; Play optional)
+
+For now the Android app is sideloaded. Everything needed to publish on Google Play later is prepared under "Android (Play, optional)" at the end of this section.
 
 ```bash
 ./gradlew :androidApp:assembleDebug          # native llama/whisper build takes a few minutes the first time
@@ -200,7 +204,7 @@ adb install -r androidApp/build/outputs/apk/debug/androidApp-debug.apk
 
 Check a build with `ls -lh androidApp/build/outputs/apk/debug/`. For a per-folder breakdown, open the APK in Android Studio (Build → Analyze APK).
 
-A release build (`./gradlew :androidApp:assembleRelease`) is not minified (`proguard-rules.pro` keeps the JNI bridges in case that changes). It is unsigned unless you add a signing config, and an unsigned APK can't be installed. For sideloading, the debug APK is the one to use.
+A release build (`./gradlew :androidApp:assembleRelease`) is not minified (D-316). It is unsigned unless you configure a keystore (below), and an unsigned APK can't be installed. For sideloading without a keystore, the debug APK is the one to use.
 
 **Language.** The UI is in English and Japanese. It follows the phone's language, and on Android 13+ it can be set per app: Settings → Apps → Tsumugi → Language.
 
@@ -212,6 +216,79 @@ A release build (`./gradlew :androidApp:assembleRelease`) is not minified (`prog
 
 **Backups.** Android backups (Google or device-to-device) include your reviews, settings and imported media. They leave out the content packs and downloaded models, which are re-created from the APK or downloaded again. They also leave out stored API tokens, so after a restore, sign in to sync and reconnect WaniKani again.
 
+### Android (Play, optional)
+
+Prepared in Phase 14 (D-316…D-318). Nothing here is needed for sideloading.
+
+**Build types.**
+- `release` is **not minified** (`isMinifyEnabled = false`, `isShrinkResources = false`). Most of the size is native code and content packs, which R8 doesn't shrink. `proguard-rules.pro` keeps the JNI bridges (`LlamaNative`, `WhisperNative`, the `Sink` callback), but kotlinx-serialization, Ktor, SQLDelight and ML Kit rules aren't verified on a device, so minification stays off until someone tests a minified build end to end.
+- `-Ptsumugi.versionCode=N` and `-Ptsumugi.versionName=x.y.z` set the version (defaults 1 and 0.0.1). Every Play upload needs a higher `versionCode`.
+
+**Signing (never committed).** Create an upload keystore once, outside the repository:
+
+```bash
+keytool -genkeypair -v -keystore ~/keys/tsumugi-upload.jks -alias upload \
+  -keyalg RSA -keysize 4096 -validity 10000
+```
+
+Then add to `~/.gradle/gradle.properties` (your user-level Gradle file, not the repo's `gradle.properties`):
+
+```properties
+tsumugi.release.storeFile=/Users/you/keys/tsumugi-upload.jks
+tsumugi.release.storePassword=…
+tsumugi.release.keyAlias=upload
+tsumugi.release.keyPassword=…
+```
+
+or the environment variables `TSUMUGI_RELEASE_STORE_FILE`, `TSUMUGI_RELEASE_STORE_PASSWORD`, `TSUMUGI_RELEASE_KEY_ALIAS`, `TSUMUGI_RELEASE_KEY_PASSWORD` (for CI secrets). With neither set, release outputs are unsigned. Back the keystore up: with Play App Signing, Google holds the app signing key and this is only the upload key, which Google can reset; a sideloaded build signed with it can only be updated by the same key.
+
+**Build.**
+
+```bash
+./gradlew --no-daemon :androidApp:assembleRelease   # APK: androidApp/build/outputs/apk/release/
+./gradlew --no-daemon :androidApp:bundleRelease     # App Bundle for Play: androidApp/build/outputs/bundle/release/androidApp-release.aab
+```
+
+Verified on 2026-09-19 with `-Ptsumugi.native=false` and no keystore, in a checkout without built packs: `androidApp-release-unsigned.apk` (62 MB, mostly the ML Kit model) and `androidApp-release.aab` (38 MB). A real upload needs `content/packs` built and the native libraries on (drop `-Ptsumugi.native=false`). The bundle keeps both UI languages in the base module (`bundle.language.enableSplit = false`), because the Android 13+ per-app language setting can pick a language the device doesn't use.
+
+**Size and packs (D-315).** The text packs (dictionary, tokenizer, exam, kanji path, grammar, tracks, practice, readers, linguist: about 166 MB raw) and the pitch and minimal-pairs audio (8.7 MB) are in the base module. The large audio sets (readers, exam, dialogues, tracks, grammar: about 205 MB) are optional downloads in Settings → Audio packs, not in the bundle. Play limits the base module's compressed download to 200 MB; the dictionary compresses to about 46 MB, so the base should be well under. Check the "download size" Play Console reports for the first upload. If it's ever too big, the fallback is Play Asset Delivery for the dictionary, not dropping text packs.
+
+**Target SDK.** The app targets API 36 (Android 16) and compiles against 37. Google Play requires new apps and updates to target API 36 from 31 August 2026 (extension to 1 November 2026 on request); existing apps must target API 35 to stay visible to new users on newer Android versions (developer.android.com/google/play/requirements/target-sdk, checked 2026-09-19). Raise `android-targetSdk` (currently `"36"`) in `gradle/libs.versions.toml` each year when Play moves the requirement, and re-test the behaviour changes of that Android version.
+
+**Permissions audit (D-318).** Every permission is used:
+
+| Permission | Why |
+|---|---|
+| `INTERNET` | Only the explicit online features: sync, model and audio downloads, WaniKani, Notion, the reader's web import, the learner's own AI servers |
+| `POST_NOTIFICATIONS` | Review reminders and download progress; asked after the first review session, not at launch |
+| `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_DATA_SYNC` | Model downloads run as a WorkManager foreground worker (`ModelDownloadWorker`) |
+| `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, `WAKE_LOCK` | Hands-free drill sets keep playing with the screen off (`DrillPlaybackService`); the wake lock is held only while a drill plays |
+| `ACCESS_NETWORK_STATE` | Warns before downloading a model over a metered connection |
+| `RECORD_AUDIO` | Speaking, shadowing and pronunciation practice; recordings stay on the device |
+| `RECEIVE_BOOT_COMPLETED` | Added by WorkManager to reschedule its work after a reboot |
+| `app.tsumugi.android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` | Added by AndroidX Core; a signature permission internal to the app |
+
+No camera, location, contacts, storage or phone permissions: Scan text and screenshot OCR use the system photo picker, which needs no permission. In the Play Console (App content → Foreground service permissions), declare the two foreground-service types with a short video of a model download and of a hands-free drill with the screen off.
+
+**Data safety form (draft).** Answers for Play Console → App content → Data safety, matching `docs/PRIVACY.md`:
+- *Does the app collect or share user data?* **Yes**, because of two optional features and one library:
+  - **Sync (optional).** The data goes to a server the user chooses (their own or one a friend runs), not to the developer, and there's no public server. Google counts data sent off the device by the app as collected, so declare it conservatively: **Personal info → Email address** (account management), **App activity → Other user-generated content** (study data: reviews, notes, lists; app functionality), **Audio → Voice or sound recordings** and **Photos** (only with recordings sync). Collection is **optional** (the user signs in), it is **not shared** with third parties, and it's **encrypted in transit** when the server uses HTTPS (Caddy or `tailscale serve`; a LAN-only server may use plain http, so answer "encrypted in transit" only if you require HTTPS). The user can have it deleted: they ask the server's operator, or delete it on their own server.
+  - **ML Kit text recognition** (Scan text). Per Google's ML Kit data-disclosure page, the library sends Google **App info and performance → Diagnostics** and **Device or other IDs** (a per-installation id), for analytics/diagnostics of the library, encrypted in transit, not shared further. Declare these as collected by the app. The images and recognized text stay on the device. **Owner:** decide whether to keep ML Kit (D-317).
+  - **Your own AI server, WaniKani, Notion:** the user supplies the endpoint or token and the data goes to that service at their request; Google treats user-initiated transfers to a service the user chose as not "shared". Mention them in the privacy policy (done), not as collection.
+- *Security practices:* data encrypted in transit (see the sync caveat), users can request deletion, no independent security review.
+- *Ads:* none. *Analytics or tracking SDKs:* none of the app's own.
+- *Privacy policy URL:* the published `docs/PRIVACY.md`.
+
+**Content rating (IARC questionnaire notes).**
+- Category: **Reference, News, or Educational**.
+- Violence, sexuality, language, controlled substances, gambling: **none** in the app's own content. Some bundled example sentences come from Tatoeba and some items are AI-drafted with an "AI-generated" badge; they're study sentences, reviewed through `tools/items/review.py`, but the owner should spot-check before answering "no crude language".
+- User interaction: **no** communication between users (sync is only between one learner's devices; the leaderboard and shared circles aren't offered, D-314). No location sharing. No digital purchases.
+- Unrestricted internet: the reader fetches a web page's **text** when the user types or shares a URL; it isn't a browser. Answer as on iOS (no unrestricted web access), and revisit if a web view is ever added.
+- **Generative AI.** The on-device tutor and the optional user endpoint generate text. Play's AI-generated content policy expects a way for users to report offensive output. The app labels AI output ("AI-generated") but has no in-app report button yet; **Owner:** add one (it can open an email or save the flagged text for review) before a Play submission, or confirm the policy doesn't apply.
+- Expect **Everyone / PEGI 3 / USK 0**.
+
+**Play Console, first time (Owner).** Create a developer account and complete identity verification. Newer personal accounts must run a closed test with at least 12 testers for 14 days before they can publish to production. Enable Play App Signing and upload the first `.aab` to Internal testing. Fill in App content (privacy policy, Data safety, content rating, target audience: not designed for children, foreground-service declarations). Use the store listing assets in English and Japanese, and add the VOICEVOX credit lines to the description (D-098). Don't use WaniKani, Bunpro and similar names in the title or short description.
+
 ## 8. Sync server (optional)
 
-See `server/README.md` and `docs/SYNC_PROTOCOL.md`. `docker compose -f server/docker-compose.yml up -d` runs the server with Postgres. Point the app at it in Me → Sync. Running a public hosted instance is open decision 2.
+See `server/README.md` and `docs/SYNC_PROTOCOL.md`. Sync is self-hosted only (D-313): there's no public instance. `server/README.md` covers running it privately (Tailscale, Caddy TLS, or the home network), SMTP or the log for email verification, backups and upgrades. Point the app at it in Me → Sync. Accounts must confirm their email before they can sync (D-310); on a single-user server set `TSUMUGI_REQUIRE_EMAIL_VERIFICATION=false` instead of configuring SMTP.

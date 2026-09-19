@@ -16,6 +16,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -90,5 +91,47 @@ class HttpSyncClientTest {
         val t = HttpSyncClient(engine, "https://sync.example", tokens).login(LoginRequest("a@b.c", "pw", "iPhone", "ios"))
         assertEquals("dev-1", t.deviceId)
         assertEquals("a", tokens.accessToken)
+    }
+
+    @Test
+    fun unverifiedEmailBecomesATypedError() = runTest {
+        val engine = MockEngine { req ->
+            when (req.url.encodedPath) {
+                "/v1/auth/verify/resend" -> respond(
+                    """{"error":"a verification email was sent recently; try again in 90 s","code":"resend_too_soon"}""",
+                    HttpStatusCode.TooManyRequests, json,
+                )
+                else -> respond("""{"error":"confirm your email address to sync","code":"email_unverified"}""", HttpStatusCode.Forbidden, json)
+            }
+        }
+        val client = HttpSyncClient(engine, "https://sync.example", MemoryTokens("a", "r"))
+        val pushError = assertFailsWith<EmailNotVerifiedException> { client.push(emptyList()) }
+        assertEquals(403, pushError.status)
+        assertEquals(SyncErrorCodes.EMAIL_UNVERIFIED, pushError.code)
+        assertFailsWith<EmailNotVerifiedException> { client.getBlob("rec-1") }
+
+        val resend = assertFailsWith<SyncException> { client.resendVerification() }
+        assertFalse(resend is EmailNotVerifiedException)
+        assertEquals(SyncErrorCodes.RESEND_TOO_SOON, resend.code)
+        assertEquals(429, resend.status)
+    }
+
+    @Test
+    fun otherErrorsKeepTheirStatusWithoutACode() = runTest {
+        val engine = MockEngine { respond("plain failure", HttpStatusCode.InternalServerError) }
+        val error = assertFailsWith<SyncException> { HttpSyncClient(engine, "https://sync.example", MemoryTokens("a", "r")).pull(0, 10) }
+        assertEquals(500, error.status)
+        assertEquals(null, error.code)
+        assertTrue("plain failure" in error.message.orEmpty())
+    }
+
+    @Test
+    fun accountReportsWhetherVerificationBlocksSync() = runTest {
+        var body = """{"userId":"u","email":"a@b.c","emailVerified":false,"emailVerificationRequired":true}"""
+        val engine = MockEngine { respond(body, HttpStatusCode.OK, json) }
+        val client = HttpSyncClient(engine, "https://sync.example", MemoryTokens("a", "r"))
+        assertTrue(client.account().needsEmailVerification)
+        body = """{"userId":"u","email":"a@b.c"}"""
+        assertFalse(client.account().needsEmailVerification, "an older server never required it")
     }
 }

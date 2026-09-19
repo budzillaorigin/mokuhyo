@@ -97,6 +97,7 @@ class RecordingsTest {
     @Test
     fun syncIsOffByDefaultAndDoesNothing() = runTest {
         val a = Device("a")
+        assertFalse(a.sync.isEnabled(), "recordings sync is opt-in per device (G-03, re-checked in Phase 14)")
         a.recordings.save(ByteArray(10), RecordingKind.FREE, null, 500)
         val result = a.sync.sync()
         assertFalse(result.enabled)

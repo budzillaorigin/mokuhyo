@@ -2,7 +2,9 @@ package app.tsumugi.server
 
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * All server configuration, read from environment variables (one `.env` file with docker compose).
@@ -30,6 +32,15 @@ data class Config(
     /** Requests per minute per user (or per IP when anonymous). */
     val rateLimitPerMinute: Int = 600,
     val allowRegistration: Boolean = true,
+    /**
+     * Accounts must confirm their email before they can sync (BRIEF_V2 Phase 14, D-310). On by default, which is
+     * the production setting; `make dev` turns it off, and a single-user server without SMTP may too.
+     */
+    val requireEmailVerification: Boolean = true,
+    /** How long a verification link works. */
+    val verifyTokenTtl: Duration = 48.hours,
+    /** The shortest gap between two verification emails for one account (the resend rate limit). */
+    val verifyResendInterval: Duration = 2.minutes,
 ) {
     data class Smtp(val host: String, val port: Int, val username: String?, val password: String?, val from: String)
 
@@ -65,6 +76,9 @@ data class Config(
                 maxBlobBytes = get("TSUMUGI_MAX_BLOB_BYTES")?.toLong() ?: defaults.maxBlobBytes,
                 rateLimitPerMinute = get("TSUMUGI_RATE_LIMIT_PER_MINUTE")?.toInt() ?: defaults.rateLimitPerMinute,
                 allowRegistration = get("TSUMUGI_ALLOW_REGISTRATION")?.toBooleanStrictOrNull() ?: defaults.allowRegistration,
+                requireEmailVerification = get("TSUMUGI_REQUIRE_EMAIL_VERIFICATION")?.toBooleanStrictOrNull() ?: defaults.requireEmailVerification,
+                verifyTokenTtl = get("TSUMUGI_VERIFY_TOKEN_TTL_HOURS")?.toLong()?.hours ?: defaults.verifyTokenTtl,
+                verifyResendInterval = get("TSUMUGI_VERIFY_RESEND_SECONDS")?.toLong()?.seconds ?: defaults.verifyResendInterval,
             )
         }
     }

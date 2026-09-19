@@ -56,6 +56,15 @@ class HttpSyncClient(
             .also { save(it) }
     }
 
+    /**
+     * Asks the server to email a fresh verification link (D-312). Throws [SyncException] with code
+     * [SyncErrorCodes.RESEND_TOO_SOON] when one went out moments ago, or [SyncErrorCodes.ALREADY_VERIFIED].
+     */
+    @Throws(Exception::class)
+    suspend fun resendVerification() {
+        check(send(HttpMethod.Post, "/auth/verify/resend", null))
+    }
+
     @Throws(Exception::class)
     suspend fun logout() {
         tokens.refreshToken?.let { refresh ->
@@ -159,7 +168,7 @@ class HttpSyncClient(
         val json = if (requestSerializer != null && body != null) SyncJson.encodeToString(requestSerializer, body) else null
         val response = send(method, path, json, auth, retry)
         val text = response.bodyAsText()
-        if (response.status.value !in 200..299) throw SyncException("${method.value} $path failed: ${response.status.value} $text", response.status.value)
+        if (response.status.value !in 200..299) throw syncFailure("${method.value} $path", response.status.value, text)
         return SyncJson.decodeFromString(responseSerializer, text)
     }
 
@@ -179,6 +188,6 @@ class HttpSyncClient(
     }
 
     private suspend fun check(response: HttpResponse) {
-        if (response.status.value !in 200..299) throw SyncException("Request failed: ${response.status.value} ${response.bodyAsText()}", response.status.value)
+        if (response.status.value !in 200..299) throw syncFailure("Request", response.status.value, response.bodyAsText())
     }
 }
