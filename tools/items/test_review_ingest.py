@@ -118,7 +118,8 @@ def test_dry_run_changes_nothing_and_foreign_files_are_refused() -> None:
         vfile = root / "v.json"
         write(vfile, verdicts({"kind": "grammar_point", "id": "n5-wa", "verdict": "accept"}))
         report = review.ingest(vfile, root=tools, dry_run=True)
-        assert report == ["grammar_point n5-wa: accepted"], report
+        assert report[0] == "grammar_point n5-wa: accepted", report
+        assert report[1:] == ["re-validate: uv run python packs/grammar/validate.py"], report
         assert (tools / "packs" / "grammar" / "n5.json").read_text(encoding="utf-8") == before
 
         write(vfile, {"format": "something-else", "verdicts": []})

@@ -270,24 +270,37 @@ def build_scenarios(db, dic: Dictionary) -> tuple[int, int]:
 
 # ---------------------------------------------------------------- OPI
 
+OPI_KEYS = ("phase", "ja", "en", "note", "domain")
+
+
+def opi_question(q, default_source: str) -> tuple[str, str, str, str, str, str]:
+    """(phase, ja, en, note, domain, source) of an OPI question: a compact array [phase, ja, en, note, domain?], or an
+    object with those keys plus `source` once items/review.py has reviewed it (D-247)."""
+    if isinstance(q, dict):
+        require(all(isinstance(q.get(k), str) for k in OPI_KEYS[:4]), f"OPI question {q}: needs {OPI_KEYS[:4]}")
+        return q["phase"], q["ja"], q["en"], q["note"], q.get("domain", ""), q.get("source", default_source)
+    require(isinstance(q, list) and 4 <= len(q) <= 5, f"OPI question {q}: needs [phase, ja, en, note, domain?]")
+    return q[0], q[1], q[2], q[3], q[4] if len(q) > 4 else "", default_source
+
+
 def build_opi(db) -> tuple[int, int]:
     doc = json.loads(OPI.read_text(encoding="utf-8"))
-    source = doc.get("source", "llm")
+    default_source = doc.get("source", "llm")
     n_q = n_c = 0
     levels = [lv["ilr"] for lv in doc["levels"]]
     require(sorted(levels, key=ILR_LEVELS.index) == ILR_LEVELS, f"OPI levels must be exactly {ILR_LEVELS}")
     for lv in doc["levels"]:
         ilr = lv["ilr"]
-        phases = {q[0] for q in lv["questions"]}
+        questions = [opi_question(q, default_source) for q in lv["questions"]]
+        phases = {q[0] for q in questions}
         require(phases == PHASES, f"OPI {ilr}: every phase needs at least one question (have {sorted(phases)})")
-        domains = {q[4] for q in lv["questions"] if len(q) > 4}
+        domains = {q[4] for q in questions if q[4]}
         missing = DLI_DOMAINS - domains
         if ILR_LEVELS.index(ilr) >= ILR_LEVELS.index("2"):
             require(not missing, f"OPI {ilr}: no questions in the DLI domains {sorted(missing)}")
-        for i, q in enumerate(lv["questions"]):
-            phase, ja, en, note = q[:4]
-            domain = q[4] if len(q) > 4 else ""
+        for i, (phase, ja, en, note, domain, source) in enumerate(questions):
             require(domain == "" or domain in OPI_DOMAINS, f"OPI {ilr} q{i}: bad domain {domain!r}")
+            require(source in ("llm", "verified"), f"OPI {ilr} q{i}: bad source {source!r}")
             db.execute(
                 "INSERT INTO opi_question VALUES (?,?,?,?,?,?,?,?)",
                 (ilr, i, phase, japanese(ja, f"OPI {ilr} q{i}"), en, note, source, domain),
@@ -641,9 +654,12 @@ def dialogue_drills(dic: Dictionary) -> list[dict]:
             for d, ok in per_dialogue:
                 if depth < len(ok) and len(picked) < DIALOGUE_DRILL_SIZE:
                     i, ln = ok[depth]
+                    source = d.get("source", doc.get("source", "llm"))
+                    if d["lines"][i].get("source") == "verified":  # reviewed on its own as a drill item (D-247)
+                        source = "verified"
                     picked.append({
                         "prompt": ln["en"], "answer": ln["ja"], "audioKey": f"dialogue/{d['id']}/{i}",
-                        "ref": f"d:{d['id']}", "source": d.get("source", doc.get("source", "llm")),
+                        "ref": f"d:{d['id']}", "source": source,
                     })
             depth += 1
         if len(picked) < DIALOGUE_DRILL_SIZE // 2:

@@ -70,6 +70,8 @@ KEIGO_TARGETS = {"sonkeigo", "kenjogo", "teineigo"}
 KEIGO_FORMS = {"dictionary", "masu", "past", "masu-past", "te"}
 # Id infix per drill type, as in the launch sources (business-keigo-001, gaming-fi-001 …).
 DRILL_ID_KIND = {"keigo": "keigo", "email": "email", "fill_in": "fi", "synonym": "syn", "usage": "use", "meaning": "mean", "perform": "perf"}
+# Drill keys that aren't payload: review bookkeeping (items/review.py) never reaches the pack.
+DRILL_META = ("id", "type", "topic", "jlpt", "source", "verified", "reviewed", "rejected")
 ID_LISTS = ("scenarios", "dialogues", "drills", "situations", "tasks", "readings")
 TURNS = (3, 16)
 # A derived kanji subset keeps the most-used kanji of the word list (a header "kanjiLimit" overrides).
@@ -511,7 +513,7 @@ class Track:
         require(kind in DRILL_TYPES, f"{where}: unknown drill type")
         did = self.new_id(d.get("id"), where)
         jlpt = self.jlpt(d["jlpt"], where) if d.get("jlpt") is not None else None
-        payload = {k: v for k, v in d.items() if k not in ("id", "type", "topic", "jlpt", "source", "verified", "reviewed")}
+        payload = {k: v for k, v in d.items() if k not in DRILL_META}
         getattr(self, f"drill_{kind}")(payload, where)
         self.rows["track_drill"].append((did, self.id, i, kind, d.get("topic", ""), jlpt, dumps(payload), self.source(d, where)))
 

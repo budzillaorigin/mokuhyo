@@ -239,6 +239,8 @@ def merge_into(data: dict, drafts: list[dict], overwrite: bool, source: str = "l
         elif overwrite or (not old.get("feel") and clean["feel"]):
             old.update({k: v for k, v in clean.items() if v or overwrite})
             old["source"] = source
+            if source != "verified":  # new text needs a new review (items/review.py)
+                old.pop("reviewed", None)
             filled += 1
     return added, filled
 

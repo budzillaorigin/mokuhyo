@@ -96,10 +96,12 @@ import app.tsumugi.review.ContentReviewService
 import app.tsumugi.review.ExamReviewSource
 import app.tsumugi.review.GrammarReviewSource
 import app.tsumugi.review.KanaMnemonicReviewSource
+import app.tsumugi.review.OnomatopoeiaReviewSource
 import app.tsumugi.review.PracticeReviewSource
 import app.tsumugi.review.ReadersReviewSource
 import app.tsumugi.readers.db.ReadersDatabase
 import app.tsumugi.review.ReviewSource
+import app.tsumugi.review.TracksReviewSource
 import app.tsumugi.srs.StudyItem
 import okio.Path.Companion.toPath
 import app.tsumugi.coverage.CoverageService
@@ -572,6 +574,8 @@ class AppGraph(val platform: PlatformServices) {
             openPack(PackInstaller.EXAM) { platform.packDriver(ExamDatabase.Schema, PackInstaller.EXAM) }?.let { add(ExamReviewSource(it)) }
             openPack(PackInstaller.PRACTICE) { platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE) }?.let { add(PracticeReviewSource(it)) }
             openPack(PackInstaller.READERS) { platform.packDriver(ReadersDatabase.Schema, PackInstaller.READERS) }?.let { add(ReadersReviewSource(it)) }
+            openPack(PackInstaller.TRACKS) { platform.packDriver(TracksDatabase.Schema, PackInstaller.TRACKS) }?.let { add(TracksReviewSource(it)) }
+            openPack(PackInstaller.DICTIONARY) { platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY) }?.let { add(OnomatopoeiaReviewSource(it)) }
             add(KanaMnemonicReviewSource)
         }.also { reviewSources = it }
     })

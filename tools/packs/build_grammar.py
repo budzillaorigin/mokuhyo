@@ -99,6 +99,11 @@ def utf16_offsets(text: str, start: int, end: int) -> tuple[int, int]:
     return u16(text[:start]), u16(text[:end])
 
 
+def example_source(point: dict, ex: dict) -> str:
+    """A point's own example is "llm" until reviewed: with its point, or on its own as a drill item (D-247)."""
+    return "verified" if "verified" in (point.get("source"), ex.get("source")) else "llm"
+
+
 def source_order(path: Path) -> tuple[int, int, str]:
     """Matching order of the source files. Each Tatoeba sentence goes to the first point that claims it, so N3–N5
     keep their original order (n3, n4, n5) and the harder levels come after (n2, then n1): adding N2/N1 never
@@ -196,7 +201,7 @@ def main() -> None:
             ja = nfc(ex["ja"])
             m = next((m for r in regexes for m in r.finditer(ja) if m.end() > m.start()), None)
             if m:
-                examples.append((ja, ex["en"], *utf16_offsets(ja, m.start(), m.end()), "llm", None))
+                examples.append((ja, ex["en"], *utf16_offsets(ja, m.start(), m.end()), example_source(p, ex), None))
         db.executemany(
             "INSERT INTO grammar_example VALUES (?,?,?,?,?,?,?,?)",
             ((p["id"], i, *ex) for i, ex in enumerate(examples)),
