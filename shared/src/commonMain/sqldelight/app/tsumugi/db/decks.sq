@@ -1,0 +1,177 @@
+-- Media decks, known words and text profiles (BRIEF_V2 §6.1, §6.4, §6.11; DECISIONS D-150…D-159).
+-- media_deck, media_deck_word and known_word sync (docs/SYNC_PROTOCOL.md); text_profile is a device-local cache.
+
+-- A per-media vocabulary deck built from a reader document, EPUB, subtitle file, transcript or pasted text.
+-- source_kind: DOCUMENT | EPUB | SUBTITLES | TRANSCRIPT | TEXT. source_ref: the reader document id or media hash
+-- (null for pasted text). kanji / grammar: JSON arrays (kanji by frequency in the media; grammar point ids).
+-- stats: JSON MediaDeckStats (unique words, words needed for 80/90/95/98% coverage, JLPT/ILR estimate). The
+-- body is not stored: coverage of the learner is computed locally from the word list.
+CREATE TABLE media_deck (
+    id TEXT NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    source_kind TEXT NOT NULL,
+    source_ref TEXT,
+    word_count INTEGER NOT NULL,
+    token_count INTEGER NOT NULL,
+    kanji TEXT NOT NULL,
+    grammar TEXT NOT NULL,
+    stats TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted INTEGER NOT NULL DEFAULT 0
+);
+
+-- The deck's words in study order (ord 0 first): frequency in the media × global frequency. count = tokens in
+-- the media; context = the first sentence the word appears in (for the lesson and the mined card).
+CREATE TABLE media_deck_word (
+    deck_id TEXT NOT NULL,
+    entry_id INTEGER NOT NULL,
+    ord INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    reading TEXT,
+    count INTEGER NOT NULL,
+    score REAL NOT NULL,
+    context TEXT,
+    updated_at INTEGER NOT NULL,
+    deleted INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (deck_id, entry_id)
+);
+CREATE INDEX media_deck_word_order ON media_deck_word(deck_id, ord);
+
+-- Words the learner marked known (or unknown again) without an SRS item: onboarding bands, "mark known" in the
+-- reader. Rows are never deleted; the known flag is last-writer-wins (D-151). source: MANUAL | ONBOARDING | IMPORT.
+CREATE TABLE known_word (
+    entry_id INTEGER NOT NULL PRIMARY KEY,
+    text TEXT NOT NULL,
+    known INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    updated_at INTEGER NOT NULL
+);
+
+-- Device-local: the tokenized word/kanji/grammar counts of a text (TextProfile JSON), keyed by "doc:<id>",
+-- "deck:<id>" or "media:<hash>". fingerprint = length and hash of the text it was built from, so an edited
+-- document is re-profiled. Never synced: it is derived from the device's own documents.
+CREATE TABLE text_profile (
+    source_key TEXT NOT NULL PRIMARY KEY,
+    fingerprint TEXT NOT NULL,
+    profile TEXT NOT NULL,
+    created_at INTEGER NOT NULL
+);
+
+-- Sync triggers (same shape as sync.sq; composite keys joined with char(31)) -------------------------------
+CREATE TRIGGER sync_media_deck_insert AFTER INSERT ON media_deck
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('media_deck', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_media_deck_update AFTER UPDATE ON media_deck
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('media_deck', new.id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_media_deck_word_insert AFTER INSERT ON media_deck_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at)
+    VALUES ('media_deck_word', new.deck_id || char(31) || new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_media_deck_word_update AFTER UPDATE ON media_deck_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at)
+    VALUES ('media_deck_word', new.deck_id || char(31) || new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_known_word_insert AFTER INSERT ON known_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('known_word', new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+CREATE TRIGGER sync_known_word_update AFTER UPDATE ON known_word
+WHEN coalesce((SELECT applying FROM sync_state WHERE id = 1), 0) = 0
+BEGIN
+    INSERT INTO change_log(table_name, row_key, op, created_at) VALUES ('known_word', new.entry_id, 'UPSERT', CAST(strftime('%s', 'now') AS INTEGER) * 1000);
+END;
+
+-- Media decks ---------------------------------------------------------------------------------------------
+
+insertDeck:
+INSERT INTO media_deck(id, title, source_kind, source_ref, word_count, token_count, kanji, grammar, stats, created_at, updated_at, deleted)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0);
+
+decks:
+SELECT * FROM media_deck WHERE deleted = 0 ORDER BY created_at DESC;
+
+deckById:
+SELECT * FROM media_deck WHERE id = ? AND deleted = 0;
+
+deckBySource:
+SELECT * FROM media_deck WHERE source_kind = ? AND source_ref = ? AND deleted = 0 LIMIT 1;
+
+renameDeck:
+UPDATE media_deck SET title = ?, updated_at = ? WHERE id = ?;
+
+deleteDeck:
+UPDATE media_deck SET deleted = 1, updated_at = ? WHERE id = ?;
+
+-- Plain INSERT OR IGNORE + UPDATE (no UPSERT syntax on Android 8–10 SQLite).
+insertDeckWordIfAbsent:
+INSERT OR IGNORE INTO media_deck_word(deck_id, entry_id, ord, text, reading, count, score, context, updated_at, deleted)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0);
+
+updateDeckWord:
+UPDATE media_deck_word SET ord = ?, text = ?, reading = ?, count = ?, score = ?, context = ?, updated_at = ?, deleted = 0
+WHERE deck_id = ? AND entry_id = ?;
+
+deckWords:
+SELECT * FROM media_deck_word WHERE deck_id = ? AND deleted = 0 ORDER BY ord;
+
+deleteDeckWords:
+UPDATE media_deck_word SET deleted = 1, updated_at = ? WHERE deck_id = ? AND deleted = 0;
+
+-- Known words ---------------------------------------------------------------------------------------------
+
+insertKnownIfAbsent:
+INSERT OR IGNORE INTO known_word(entry_id, text, known, source, updated_at) VALUES (?, ?, ?, ?, ?);
+
+updateKnown:
+UPDATE known_word SET text = ?, known = ?, source = ?, updated_at = ? WHERE entry_id = ? AND known != ?;
+
+knownWordIds:
+SELECT entry_id, text FROM known_word WHERE known = 1;
+
+knownWordRows:
+SELECT * FROM known_word ORDER BY updated_at DESC;
+
+knownCount:
+SELECT count(*) FROM known_word WHERE known = 1;
+
+-- Learner-knowledge inputs --------------------------------------------------------------------------------
+
+-- Word-like and kanji items with their written form: JMdict-keyed items by id, the rest (WaniKani-only, Anki
+-- notes) matched to text by primary_text.
+knowledgeItems:
+SELECT id, kind, primary_text FROM item WHERE deleted = 0 AND kind IN ('VOCAB', 'CUSTOM', 'KANJI');
+
+-- Cheap change detector for the cached knowledge snapshot: any review, undo, import, sync pull or mark changes it.
+knowledgeFingerprint:
+SELECT
+    (SELECT count(*) FROM review WHERE deleted_at IS NULL) AS reviews,
+    (SELECT coalesce(max(ts), 0) FROM review) AS last_review,
+    (SELECT count(*) FROM item) AS items,
+    (SELECT coalesce(max(updated_at), 0) FROM item) AS last_item,
+    (SELECT count(*) FROM known_word WHERE known = 1) AS known,
+    (SELECT coalesce(max(updated_at), 0) FROM known_word) AS last_known;
+
+-- Text profiles -------------------------------------------------------------------------------------------
+
+putProfile:
+INSERT OR REPLACE INTO text_profile(source_key, fingerprint, profile, created_at) VALUES (?, ?, ?, ?);
+
+profileFor:
+SELECT * FROM text_profile WHERE source_key = ?;
+
+profilesWithPrefix:
+SELECT * FROM text_profile WHERE source_key LIKE ? || '%';
+
+deleteProfile:
+DELETE FROM text_profile WHERE source_key = ?;

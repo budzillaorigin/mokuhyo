@@ -54,6 +54,37 @@ data class EntrySummary(
     val jlpt: Int?,
 )
 
+/**
+ * Frequency and word-class signals of one entry (media decks and coverage, BRIEF_V2 §6.1). [rank] is the pack's
+ * rank: lower is more common (common/JLPT buckets minus the Tatoeba count, tools/packs/build_sentences.py).
+ */
+data class WordStats(val entryId: Long, val rank: Long, val jlpt: Int?, val isCommon: Boolean, val isFunctionWord: Boolean) {
+    /** Tatoeba sentences containing the word, recovered from [rank] (0 when it has none). */
+    val tatoebaCount: Int get() = (RANK_FREQ_SPAN - (rank % RANK_BUCKET)).coerceAtLeast(0).toInt()
+
+    companion object {
+        private const val RANK_BUCKET = 1_000_000L
+        private const val RANK_FREQ_SPAN = 999_999L
+
+        /** Parts of speech of function words; must match FUNCTION_POS in tools/packs/build_decks.py. */
+        val FUNCTION_POS = setOf("prt", "aux", "aux-v", "aux-adj", "cop")
+
+        /**
+         * Particles, auxiliaries and copulas (a first sense made only of those, plus exp/conj), and kana-only
+         * grammar expressions (ですか, だろう). They are grammar, not vocabulary: coverage and decks skip them.
+         */
+        fun isFunctionWord(pos: List<String>, hasKanji: Boolean): Boolean {
+            if (pos.isEmpty()) return false
+            val set = pos.toSet()
+            if (set.any { it in FUNCTION_POS } && set.all { it in FUNCTION_POS || it == "exp" || it == "conj" }) return true
+            return set == setOf("exp") && !hasKanji
+        }
+    }
+}
+
+/** One word of the frequency list: [ord] 1 = most frequent; [count] = Tatoeba sentences containing it. */
+data class FrequencyEntry(val ord: Int, val entryId: Long, val count: Int)
+
 enum class MatchKind { EXACT, DEINFLECTED, PREFIX, ENGLISH }
 
 data class SearchHit(val entry: EntrySummary, val match: MatchKind, val deinflection: List<String> = emptyList())

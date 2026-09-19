@@ -38,10 +38,14 @@ sealed interface LessonState {
  * batch introduces the items' cards into the review queue.
  */
 class LessonSession(
-    private val path: PathService,
     private val items: List<PathItem>,
-    private val random: Random = Random.Default,
+    private val random: Random,
+    /** Called once with every item when the quiz is done: joins them to the collection and the review queue. */
+    private val complete: suspend (List<PathItem>) -> Unit,
 ) {
+    /** A kanji-path lesson batch: finishing it completes the items on [path]. */
+    constructor(path: PathService, items: List<PathItem>, random: Random = Random.Default) : this(items, random, { path.completeLessons(it) })
+
     private val quiz = ArrayDeque<LessonQuestion>()
     private val _state = MutableStateFlow<LessonState>(LessonState.Presenting(items, 0))
     val state: StateFlow<LessonState> = _state.asStateFlow()
@@ -85,7 +89,7 @@ class LessonSession(
         if (_state.value !is LessonState.QuizFeedback) return
         val q = quiz.firstOrNull()
         if (q == null) {
-            path.completeLessons(items)
+            complete(items)
             _state.value = LessonState.Complete(items)
         } else {
             _state.value = LessonState.Quizzing(q, quiz.size - 1)

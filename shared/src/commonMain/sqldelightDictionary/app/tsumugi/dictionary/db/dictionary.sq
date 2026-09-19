@@ -143,6 +143,16 @@ CREATE TABLE sentence_word (
     PRIMARY KEY (entry_id, sentence_id)
 ) WITHOUT ROWID;
 
+-- Frequency list behind the Core 2k/6k/10k decks and the onboarding "I know these" bands (BRIEF_V2 §6.1), built by
+-- tools/packs/build_decks.py from Tatoeba token counts plus JMdict common flags (DECISIONS D-152). ord 1 = most
+-- frequent; Core Nk = ord <= N. count = Tatoeba sentences containing the word. Packs built before Phase 11 lack it.
+CREATE TABLE freq_word (
+    ord INTEGER NOT NULL PRIMARY KEY,
+    entry_id INTEGER NOT NULL,
+    count INTEGER NOT NULL
+);
+CREATE INDEX freq_word_entry ON freq_word(entry_id);
+
 metaValue:
 SELECT value FROM pack_meta WHERE key = ?;
 
@@ -279,3 +289,26 @@ INSERT INTO sentence VALUES ?;
 
 insertSentenceWord:
 INSERT INTO sentence_word VALUES ?;
+
+-- Global frequency and function-word signals for media decks and coverage (BRIEF_V2 §6.1): rank, the first
+-- sense's parts of speech, and whether the word has a kanji form.
+wordStatsByIds:
+SELECT e.id, e.rank, e.jlpt, e.is_common,
+    coalesce((SELECT pos FROM sense WHERE entry_id = e.id AND ord = 0), '') AS pos,
+    EXISTS (SELECT 1 FROM entry_kanji WHERE entry_id = e.id) AS has_kanji
+FROM entry e WHERE e.id IN ?;
+
+freqWordsAfter:
+SELECT ord, entry_id, count FROM freq_word WHERE ord > ? ORDER BY ord LIMIT ?;
+
+freqOrdsFor:
+SELECT entry_id, ord FROM freq_word WHERE entry_id IN ?;
+
+freqWordsUpTo:
+SELECT ord, entry_id, count FROM freq_word WHERE ord <= ? ORDER BY ord;
+
+freqWordCount:
+SELECT count(*) FROM freq_word;
+
+insertFreqWord:
+INSERT INTO freq_word VALUES ?;

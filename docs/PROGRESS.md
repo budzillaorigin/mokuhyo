@@ -4,6 +4,46 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 11 (shared core, part 1): media decks, coverage, known words, difficulty, 1T (2026-09-18)
+
+BRIEF_V2 §6.1, §6.4 (difficulty score) and §6.11 (1T mining). Decisions D-150…D-159. Platform UI is not built yet; the hooks are listed below.
+
+### What was built (`shared/…/coverage/`, `shared/…/decks/`)
+- **Media decks** (`MediaDeckService`): `vocabularyForDocument/Text/Subtitles/Epub` → `MediaVocabulary` (words in study order, kanji with counts, grammar point ids, stats: unique words, words for 80/90/95/98%, JLPT/ILR) → `save` → synced `media_deck` + `media_deck_word`. `decks()`, `deck(id)`, `deckWords`, `rename`, `delete`.
+- **Coverage overlay** (`CoverageService`): `documentCoverage(id)`, `subtitleCoverage(mediaKey, srt)` and `textCoverage(text)` return `DocumentCoverage` (TextCoverage `summary` = "You know X% of the words · Y% of the kanji · N new words to reach 95%", plus the difficulty). `librarySortedByCoverage()` and `profileLibrary(onProgress)` fill in the rest.
+- **Learner knowledge** (`LearnerKnowledge`): a snapshot of SRS stages (Guru+ known, Apprentice learning) plus `known_word`, cached behind a fingerprint query.
+- **Known words** (`KnownWords`): `markKnown`, `markUnknown`, `frequencyBatch(afterOrd, size)` for the onboarding "I know these" flow, and `bands()`.
+- **Core decks**: `frequencyDecks()` (Core 2k/6k/10k with known counts and "covers X% of your media") and `frequencyDeckWords`. Every media deck also reports `libraryCoverage`.
+- **Deck lessons** (`DeckLessons`): `activate(deckId, mode)`, INTERLEAVE or DECK_ONLY. `AppGraph.startLessons()` mixes deck words with path items, and Today counts them via `adjust`.
+- **Difficulty score** (`DifficultyScorer`, formula in `docs/CONTENT_PACKS.md`) replaces `SimpleImmersionDifficulty` in Today (`ScoredImmersionDifficulty`).
+- **1T sentences**: `oneTargetSentences(documentId)`, `oneTargetCues(srt)` (with cue index and times), and `mineOneTarget`.
+
+### Schema and packs
+- User DB `5.sqm` (v5 → v6) with the `databases/5.db` snapshot: `media_deck`, `media_deck_word` and `known_word` (synced, triggers, in `SyncTables` and `SYNC_PROTOCOL.md`), plus the device-local `text_profile`.
+- `dictionary.sqlite` gains `freq_word` (`tools/packs/build_decks.py`, run by `build_all.py` after `build_sentences.py`): **10,000 words** (Core 2k/6k/10k = its prefixes), all with Tatoeba hits (lowest count 4), 253 function words left out. Owner: rebuild packs (`uv run python packs/build_all.py`, or just `packs/build_decks.py` on an existing dictionary pack).
+- `IlrBandData.kt` is generated from `tools/items/ilr_bands.json` by `tools/packs/gen_ilr_bands.py` (`--check` in CI).
+
+### Tests
+- `CoverageTest` (11): profiles, snapshot matching (jmdict/v:/wk:/anki:, marks, kanji), overlay and words-to-95%, cache invalidation by reviews and marks, library sort, 1T in documents and cues, the difficulty ordering, the abstract measure, the immersion matcher, frequency batches.
+- `MediaDeckTest` (5): document, subtitles and text decks, save/replace/delete, Core decks with library coverage, and deck lessons (interleave, completion with context, skip known, Today adjust).
+- `Phase11SyncTest`: decks, words and known words sync, the known flag is LWW, deck delete propagates, profiles stay local.
+- `UserDbMigrationTest`: extended to v6.
+- `DifficultyCalibrationTest` (real packs): DLPT means per ILR level 0+ 14.4 · 1 15.5 · 1+ 22.8 · 2 41.2 · 2+ 51.0 · 3 57.3; 98% of pairs two or more levels apart in order; 59/60 labels within one step. It also checks that the real pack has the 10,000-word Core list.
+
+### UI hooks for the platform agents (all on `AppGraph`)
+- `coverage`: overlay on the reader and player (`documentCoverage`, `subtitleCoverage`, with progress), the library sort, 1T highlight lists (`oneTargetSentences`, `oneTargetCues`) and "Mine" (`mineOneTarget`).
+- `decks`: "Create deck" from a document, EPUB path, subtitles or text (preview `MediaVocabulary` → `save`), the deck list and detail, and Core decks.
+- `deckLessons`: "Study this deck" (`activate`) and a mode switch.
+- `knownWords`: "Mark known" on reader words, and onboarding batches.
+- All new suspend APIs are `@Throws`.
+
+### Deferred
+- The reader's own `known` flag (furigana "above my level", `reader_doc.known_ratio`) still reads SRS stages only, so words marked known don't hide furigana yet. The coverage overlay does include them.
+- Without the path pack, Today shows no lessons block for deck lessons (D-154).
+- The Wikipedia-based frequency list (D-152).
+
+---
+
 ## Phase 9: Stabilize (BRIEF_V2 §4) (2026-09-18)
 
 Every P0 and P1 item (F-01…F-34) is fixed, along with most P2 items (F-35…F-45). Decisions are D-040…D-085.

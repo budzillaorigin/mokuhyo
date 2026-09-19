@@ -38,6 +38,9 @@ jobs:
       - name: App icon matches the Android launcher vector
         working-directory: tools
         run: uv run --group assets python assets/render_icon.py --check
+      - name: IlrBandData.kt matches items/ilr_bands.json
+        working-directory: tools
+        run: uv run python packs/gen_ilr_bands.py --check
       - name: Item bank tests
         working-directory: tools
         run: uv run python items/test_gen_jlpt.py

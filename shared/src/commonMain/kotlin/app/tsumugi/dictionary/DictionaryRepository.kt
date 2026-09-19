@@ -361,6 +361,46 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         RadicalSearchResult(kanji, compatible)
     }
 
+    // --- Frequency (BRIEF_V2 §6.1; DECISIONS D-152) ---------------------------------------------------------
+
+    /** Global frequency and function-word signals for [ids], one query per [SQL_CHUNK] ids. */
+    @Throws(Exception::class)
+    suspend fun wordStats(ids: Collection<Long>): Map<Long, WordStats> = io {
+        ids.distinct().chunked(SQL_CHUNK).flatMap { chunk -> q.wordStatsByIds(chunk).executeAsList() }.associate { row ->
+            val pos = PackCodec.strings(row.pos)
+            row.id to WordStats(row.id, row.rank, row.jlpt?.toInt(), row.is_common != 0L, WordStats.isFunctionWord(pos, row.has_kanji))
+        }
+    }
+
+    /**
+     * The frequency list behind the Core decks (ord 1 = most frequent): [limit] words after [afterOrd]. Empty when
+     * the installed pack predates the list (tools/packs/build_decks.py), so callers show an honest empty state.
+     */
+    @Throws(Exception::class)
+    suspend fun frequencyWords(afterOrd: Int, limit: Int): List<FrequencyEntry> = io {
+        runCatching { q.freqWordsAfter(afterOrd.toLong(), limit.toLong()).executeAsList() }.getOrDefault(emptyList())
+            .map { FrequencyEntry(it.ord.toInt(), it.entry_id, it.count.toInt()) }
+    }
+
+    /** The first [n] words of the frequency list (Core 2k = 2000). */
+    @Throws(Exception::class)
+    suspend fun frequencyWordsUpTo(n: Int): List<FrequencyEntry> = io {
+        runCatching { q.freqWordsUpTo(n.toLong()).executeAsList() }.getOrDefault(emptyList())
+            .map { FrequencyEntry(it.ord.toInt(), it.entry_id, it.count.toInt()) }
+    }
+
+    /** Size of the frequency list; 0 when the pack has none. */
+    @Throws(Exception::class)
+    suspend fun frequencyWordCount(): Int = io { runCatching { q.freqWordCount().executeAsOne().toInt() }.getOrDefault(0) }
+
+    /** Frequency-list position of each of [ids] that is on the list. */
+    @Throws(Exception::class)
+    suspend fun frequencyOrds(ids: Collection<Long>): Map<Long, Int> = io {
+        runCatching {
+            ids.distinct().chunked(SQL_CHUNK).flatMap { q.freqOrdsFor(it).executeAsList() }.associate { it.entry_id to it.ord.toInt() }
+        }.getOrDefault(emptyMap())
+    }
+
     @Throws(Exception::class)
     suspend fun packInfo(): Map<String, String> = io {
         listOf("pack_version", "jmdict_version", "kanjidic2_version", "kanjivg_version", "tatoeba_sentences")

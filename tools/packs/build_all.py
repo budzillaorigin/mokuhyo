@@ -8,6 +8,7 @@
 
 import argparse
 
+import build_decks
 import build_dictionary
 import build_exam
 import build_grammar
@@ -37,6 +38,7 @@ def main() -> None:
     build_dictionary.main()
     build_kanjivg.main()
     build_sentences.main()
+    build_decks.main()
     build_kanji_path.main()
     build_grammar.main()
     build_practice.main()

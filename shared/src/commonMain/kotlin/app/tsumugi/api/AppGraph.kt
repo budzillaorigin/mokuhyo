@@ -94,6 +94,13 @@ import app.tsumugi.review.PracticeReviewSource
 import app.tsumugi.review.ReviewSource
 import app.tsumugi.srs.StudyItem
 import okio.Path.Companion.toPath
+import app.tsumugi.coverage.CoverageService
+import app.tsumugi.coverage.KnownWords
+import app.tsumugi.coverage.LearnerKnowledge
+import app.tsumugi.coverage.TextProfileStore
+import app.tsumugi.coverage.TextProfiler
+import app.tsumugi.decks.DeckLessons
+import app.tsumugi.decks.MediaDeckService
 
 /** Progress of a background rebuild of every card (after new FSRS weights). */
 data class RecomputeProgress(val done: Int, val total: Int, val running: Boolean) {
@@ -189,7 +196,8 @@ class AppGraph(val platform: PlatformServices) {
     suspend fun today(): TodayPlan {
         val srs = configuredSrs()
         val grammarLeft = grammar()?.lessonQueue(3)?.size ?: 0
-        val status = path()?.status()
+        val status = deckLessons.adjust(path()?.status()) // deck lessons count as lessons (D-154)
+        planner.difficulty = coverage.immersionDifficulty() // §6.4 score (D-155)
         val kana = kana()
         val kanaLessons = if (kana.needed(settings)) kana.lessonQueue(settings, KANA_LESSONS_AHEAD).size else 0
         return planner.plan(srs.dueCount(), status, grammarLeft, todayCandidates.collect(status?.currentLevel), kanaLessons = kanaLessons)
@@ -345,6 +353,7 @@ class AppGraph(val platform: PlatformServices) {
 
     @Throws(Exception::class)
     suspend fun startLessons(): LessonSession? {
+        deckLessons.startSession(path(), settings.lessonBatchSize())?.let { return it } // an active deck (D-154)
         val path = path() ?: return null
         val batch = path.lessonQueue(settings.lessonBatchSize())
         return if (batch.isEmpty()) null else LessonSession(path, batch)
@@ -504,6 +513,39 @@ class AppGraph(val platform: PlatformServices) {
             add(KanaMnemonicReviewSource)
         }.also { reviewSources = it }
     })
+
+    // --- Phase 11: media decks, coverage, known words, difficulty, 1T (BRIEF_V2 §6.1/§6.4/§6.11, D-150…D-159) ------
+
+    /** What the learner knows (SRS Guru+ and marked words), cached until a review, import, sync or mark. */
+    val knowledge: LearnerKnowledge by lazy { LearnerKnowledge(userDatabase, srs) }
+
+    private val textProfiler: TextProfiler by lazy {
+        TextProfiler({ reader.analyzer() }, { ids -> dictionary()?.wordStats(ids).orEmpty() })
+    }
+
+    /** Coverage overlay, library sort by coverage, §6.4 difficulty and 1T sentences. */
+    val coverage: CoverageService by lazy {
+        CoverageService(
+            knowledge, textProfiler, TextProfileStore(userDatabase), { reader.documents() }, { reader.document(it) },
+            mine = { entryId, sentence -> dictionary()?.entry(entryId)?.entry?.let { collection.addToReviews(it, sentence) } },
+        )
+    }
+
+    /** "Mark known" and the onboarding "I know these" frequency bands. */
+    val knownWords: KnownWords by lazy { KnownWords(userDatabase, knowledge, dictionary = { dictionary() }) }
+
+    /** Media decks from documents, EPUBs, subtitles and text, plus the Core frequency decks. */
+    val decks: MediaDeckService by lazy {
+        MediaDeckService(
+            userDatabase, knowledge, textProfiler, coverage, { dictionary() }, { reader.document(it) },
+            { path -> kotlinx.coroutines.withContext(Dispatchers.Default) { platform.fileSystem.read(path.toPath()) { readByteArray() } } },
+        )
+    }
+
+    /** Lessons from a deck, interleaved with the kanji path (a synced setting). */
+    val deckLessons: DeckLessons by lazy {
+        DeckLessons(userDatabase, settings, knowledge, { dictionary() }) { entry, context -> configuredSrs(); collection.addToReviews(entry, context) }
+    }
 
     /** Rebuilds every card from its reviews with the current scheduler, reporting [recomputeProgress]. */
     fun recomputeAllInBackground(): Job {
