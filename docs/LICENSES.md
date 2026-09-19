@@ -94,22 +94,23 @@ Listed in `content/models/manifest.json`; the in-app model manager shows each mo
 | OPI practice questions and self-rating statements | CC BY-SA 4.0 | Statements paraphrase the public-domain ILR skill level descriptions (https://www.govtilr.org) |
 | Minimal pairs | derived from JMdict (CC BY-SA 4.0, EDRDG) and Kanjium pitch data | computed by `build_practice.py`, no new text |
 | JLPT blueprints (`tools/items/jlpt_blueprints.json`) | facts | Published test structure from https://www.jlpt.jp; no official items are used |
+| Graded readers: stories, questions, genre task templates (`tools/packs/readers/`, `readers.sqlite`) | CC BY-SA 4.0 | Tsumugi contributors; AI-drafted (launch set drafted by Claude, later batches by the owner's model), shown with the "AI-generated" badge until human-reviewed. Vocabulary glosses from JMdict (EDRDG, CC BY-SA 4.0). Genre structure inspired by the Routledge genre-based reader; no content from it |
 | JLPT / DLPT item banks (`tools/items/bank/`) | CC BY-SA 4.0 | Tsumugi contributors; rule-generated items from JMdict/Tatoeba/grammar packs keep their sources' attribution; AI-drafted items carry the badge until reviewed. Not affiliated with JLPT, DLI or ACTFL |
 
 ## Pre-rendered audio (VOICEVOX)
 
-The audio packs (`audio-<set>.zip`: exam listening, dialogues, minimal pairs, pitch-accent test, grammar examples) are synthesized at build time with the VOICEVOX engine (BRIEF_V2 §5.6, DECISIONS D-090). They are optional downloads. The voices' terms allow commercial and non-commercial use of the generated audio **with a credit line**, and forbid use that damages the characters' or voice providers' image, political or religious use, deception, and training new voice models on the audio. The credit lines below are required and are shown here, on the in-app Licenses screen.
+The audio packs (`audio-<set>.zip`: exam listening, dialogues, minimal pairs, pitch-accent test, grammar examples, graded-reader read-along) are synthesized at build time with the VOICEVOX engine (BRIEF_V2 §5.6, DECISIONS D-090). They are optional downloads. The voices' terms allow commercial and non-commercial use of the generated audio **with a credit line**, and forbid use that damages the characters' or voice providers' image, political or religious use, deception, and training new voice models on the audio. The credit lines below are required and are shown here, on the in-app Licenses screen.
 
 | Voice (style ノーマル, engine speaker id) | Used for | Required credit | Terms |
 |---|---|---|---|
 | VOICEVOX (software) | all audio packs | VOICEVOX | Engine terms: "ご利用の際は VOICEVOX を利用したことがわかるクレジット表記が必要です" — https://voicevox.hiroshiba.jp/term/ |
-| 春日部つむぎ (8) | female speakers, pitch-accent and minimal-pair words, grammar examples | **VOICEVOX:春日部つむぎ** | https://tsumugi-official.studio.site/rule (character page: https://voicevox.hiroshiba.jp/product/kasukabe_tsumugi/) |
-| 四国めたん (2) | second female speaker, narrators and announcements | **VOICEVOX:四国めたん** | https://zunko.jp/con_ongen_kiyaku.html ("アプリなどでの利用の場合は、アプリの紹介画面などに記載をお願いします") |
-| 玄野武宏 (11) | male speakers (a second male speaker is the same voice, slightly lower and slower), grammar examples | **VOICEVOX:玄野武宏** | https://www.virvoxproject.com/voicevoxの利用規約 (VirVox Project; example credit "VOICEVOX:玄野武宏(CV:ガロ)") |
+| 春日部つむぎ (8) | female speakers, pitch-accent and minimal-pair words, grammar examples, graded-reader narration | **VOICEVOX:春日部つむぎ** | https://tsumugi-official.studio.site/rule (character page: https://voicevox.hiroshiba.jp/product/kasukabe_tsumugi/) |
+| 四国めたん (2) | second female speaker, narrators and announcements, female speech in graded readers | **VOICEVOX:四国めたん** | https://zunko.jp/con_ongen_kiyaku.html ("アプリなどでの利用の場合は、アプリの紹介画面などに記載をお願いします") |
+| 玄野武宏 (11) | male speakers (a second male speaker is the same voice, slightly lower and slower), grammar examples, male speech in graded readers | **VOICEVOX:玄野武宏** | https://www.virvoxproject.com/voicevoxの利用規約 (VirVox Project; example credit "VOICEVOX:玄野武宏(CV:ガロ)") |
 
 Credits: VOICEVOX:春日部つむぎ, VOICEVOX:四国めたん, VOICEVOX:玄野武宏
 
-Each pack's `index.json` also lists the credit lines for the voices it actually uses. Text spoken in the packs comes from the exam, practice and grammar content above, under those licenses.
+Each pack's `index.json` also lists the credit lines for the voices it actually uses. Text spoken in the packs comes from the exam, practice, grammar and graded-reader content above, under those licenses.
 
 ## Inspiration, no content used
 

@@ -4,6 +4,51 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 12 (content): graded readers (2026-09-18)
+
+BRIEF_V2 §6.4 "Graded readers with audio" and the genre-based tasks, §8 Phase 12. Decisions D-200…D-209. This is the shared core, the content pipeline and the launch content; the reader screens (iOS and Android) are not built yet.
+
+### What was built
+- **Pipeline** (`tools/packs/readers/`):
+  - `draft_readers.py`: drafts stories through any OpenAI-compatible endpoint (`--endpoint URL --model NAME`, e.g. Ollama on a GPU machine), against the level's JLPT words and grammar-pack points. Each draft is validated and sent back to the model with the errors. Re-runs add new ids and never reuse one.
+  - `validate_readers.py`: the gate. It checks coverage (95% of words within level, 90% without glosses), length, NFC, answer keys, unique ids and the §6.4 score band.
+  - `build_readers.py`: builds `readers.sqlite`, and is wired into `build_all.py`; `write_manifest` picks it up.
+  - `levels.json`, `tasks.json` and `readers_lib.py`: the level rules, the genre task templates and the shared code (details in `docs/CONTENT_PACKS.md` "readers.sqlite").
+- **Launch content:** 120 stories, 20 per level (N6 level 0, N5, N4, N3, N2, N1), with 2,393 read-along lines. Genres: story 15, manga 13, news 13, editorial 12, email 12, essay 12, notice 12, academic 11, ad 10, recipe 10. Seven are government or military texts for DLPT learners (3 at N2, 4 at N1). The validator reports 0 errors and 0 warnings. All are AI-drafted by Claude (owner's decision): `source: "llm"`, `verified: false`, badge on until reviewed.
+- **Genre tasks:** 10 genres, each with a prediction question, a timed skim/scan, two close-reading prompts and an output task, in Japanese and English.
+- **Audio:** a `readers` set in `render_audio.py`, one clip per reader sentence (`reader/<story>/<idx>`). 春日部つむぎ narrates; speech uses the cast voices, 四国めたん for women and 玄野武宏 for men. **Not rendered yet**; the command is below.
+- **Shared** (`app.tsumugi.reader`):
+  - `PackReaderRepository` over readers.sqlite implements `ReaderPackRepository`, and `ReaderService.packs` now defaults to it. It adds `levels()` and `story(id)` → `GradedStory`: the passage, vocabulary list, questions, `ReaderTaskSet` with filled prompts and timer, cast, and read-along lines.
+  - `ReadAlongTrack`: timings from the readers audio pack's clip durations; untimed unless every line has a clip.
+  - `GradedReaderScores`: quiz attempts stored as `exam_attempt` rows (`GRADED_READER`, no migration). It feeds `RoadmapService.comprehension` (null until three stories have been answered).
+  - `GradedReaderService`: the apps' entry point, `graph.reader.graded`. The output task is graded by the new `grade_reading_summary` prompt and labeled AI-generated.
+  - `ReadersReviewSource`: the stories appear in the in-app content review.
+  - `AudioKeys.reader`, `AudioSet.READERS`, the `ReadersDatabase` SQLDelight entry, `PackInstaller.READERS` and `AppGraph.readersPack()`.
+- `review.py --ingest` now applies `reader_passage` verdicts to `tools/packs/readers/stories/*.json`, and `review.py <story file>` reviews a batch interactively. Android got the `audio_set_readers` label so the Audio packs screen can name the new set.
+
+### Tests
+- `GradedReadersTest` (9): levels and stories, a story with its tasks, lines and clip keys, the pack document, the empty state, read-along timing (all or nothing), quizzes feeding the roadmap hook, reader quizzes kept out of exam history, the review source, and placeholders.
+- `AudioKeysTest.readerKeysBelongToTheReadersSet`.
+- `PromptGoldenTest`: a `grade_reading_summary` golden case.
+- `RealReadersPackTest` (androidHostTest; skipped without packs): read-along lines equal `ReaderAnalyzer.sentences`, and the build's text scores agree with `DifficultyScorer`.
+
+### Deferred
+- Reader UI on iOS and Android: the level list, story view with the AI badge, read-along player, tasks with the skim timer, quiz and summary grading.
+- Rendering `audio-readers.zip`, for the coordinator (see below).
+- Human review of the 120 stories.
+
+### How to run
+```bash
+cd tools
+uv run python packs/readers/validate_readers.py --report
+uv run python packs/readers/build_readers.py               # or packs/build_all.py
+uv run python packs/render_audio.py readers --dry-run      # clip count
+uv run python packs/render_audio.py readers                # VOICEVOX engine on 127.0.0.1:50021 (or --endpoint)
+./gradlew :shared:testAndroidHostTest --tests "app.tsumugi.reader.*" -Ptsumugi.native=false
+```
+
+---
+
 ## Phase 11 (Android UI): immersion pipeline and audio packs (2026-09-18)
 
 The Android screens for everything Phase 11 built in the shared core, plus pre-rendered audio (rule 20). Decisions D-180…D-189. iOS is being built in parallel by another agent.

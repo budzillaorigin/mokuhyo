@@ -257,5 +257,6 @@ fun setLabel(context: android.content.Context, set: AudioSet): String = context.
         AudioSet.MINIMAL_PAIRS -> R.string.audio_set_pairs
         AudioSet.PITCH -> R.string.audio_set_pitch
         AudioSet.GRAMMAR -> R.string.audio_set_grammar
+        AudioSet.READERS -> R.string.audio_set_readers
     },
 )

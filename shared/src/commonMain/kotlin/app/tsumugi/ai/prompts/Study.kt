@@ -264,3 +264,71 @@ class JlptExplainItem(private val fallbackHook: ((Input) -> Output?)? = null) : 
 
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
 }
+
+/**
+ * `grade_reading_summary`: grades the learner's Japanese summary of a graded reader (the genre task's post-reading
+ * output, BRIEF_V2 §6.4, DECISIONS D-204). The grade is AI-generated and labeled as such (rule 10).
+ */
+class GradeReadingSummary : PromptTask<GradeReadingSummary.Input, GradeReadingSummary.Output> {
+    data class Input(
+        val passage: String,
+        val summary: String,
+        val level: String = "N4",
+        /** What the task asked for, e.g. "Summarize the article in Japanese, in about 80–160 characters." */
+        val instruction: String = "",
+    )
+
+    @Serializable
+    data class Output(
+        /** 0 = misses the main points, 1 = some of them, 2 = the main points. */
+        val content: Int,
+        /** 0 = says things the text doesn't, 1 = a small slip, 2 = faithful. */
+        val accuracy: Int,
+        /** 0 = hard to follow, 1 = understandable with errors, 2 = clear for the level. */
+        val language: Int,
+        /** A lightly corrected version of the summary ("" when it needs no change). */
+        val corrected: String = "",
+        /** One to three sentences in English. */
+        val feedback: String,
+    ) {
+        val total: Int get() = content + accuracy + language
+    }
+
+    override val name = "grade_reading_summary"
+    override val serializer: KSerializer<Output> = Output.serializer()
+    override val temperature = 0.1
+    override val maxTokens = 500
+    override val schema = JsonSchema.Obj(
+        listOf(
+            "content" to JsonSchema.Integer,
+            "accuracy" to JsonSchema.Integer,
+            "language" to JsonSchema.Integer,
+            "corrected" to JsonSchema.Str(maxLength = 600),
+            "feedback" to JsonSchema.Str(maxLength = 500),
+        ),
+    )
+
+    override fun messages(input: Input): List<ChatMessage> = listOf(
+        system(
+            "Task: grade a ${input.level} learner's Japanese summary of a Japanese text they just read.",
+            "Score three things from 0 to 2: content (does it give the text's main points), accuracy (does it say only " +
+                "what the text says), language (is the Japanese clear for a ${input.level} learner; small slips are fine).",
+            "corrected is the learner's summary with the fewest changes that fix its Japanese, or \"\" if it needs none.",
+            "feedback is one to three sentences in English: what is good and what to add or fix.",
+        ),
+        user(
+            buildString {
+                if (input.instruction.isNotBlank()) append("Task given to the learner: ").append(input.instruction).append('\n')
+                append("Text:\n").append(input.passage).append("\n\n")
+                append("Learner's summary: ").append(input.summary)
+            },
+        ),
+    )
+
+    override fun validate(input: Input, output: Output, context: ValidationContext): List<String> = issues(
+        listOf(output.content, output.accuracy, output.language).takeIf { s -> s.any { it !in 0..2 } }?.let { "scores must be 0 to 2" },
+        Validation.requireEnglish("feedback", output.feedback),
+        Validation.length("feedback", output.feedback, min = 10, max = 500),
+        output.corrected.takeIf { it.isNotBlank() }?.let { Validation.requireJapanese("corrected", it) },
+    )
+}

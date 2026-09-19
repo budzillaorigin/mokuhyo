@@ -92,6 +92,12 @@ sqldelight {
             packageName.set("app.tsumugi.practice.db")
             srcDirs.setFrom("src/commonMain/sqldelightPractice")
         }
+        // Read-only graded-reader pack (stories, read-along lines, questions, genre tasks), built by
+        // tools/packs/readers/build_readers.py.
+        create("ReadersDatabase") {
+            packageName.set("app.tsumugi.readers.db")
+            srcDirs.setFrom("src/commonMain/sqldelightReaders")
+        }
         // Read-only morphological-analysis pack (mecab-ipadic), built by tools/packs/build_tokenizer.py.
         create("TokenizerDatabase") {
             packageName.set("app.tsumugi.tokenizer.db")

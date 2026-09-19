@@ -1,0 +1,3206 @@
+{
+  "batch": "n2",
+  "level": "N2",
+  "license": "CC BY-SA 4.0",
+  "attribution": "Tsumugi contributors (AI-drafted)",
+  "passages": [
+    {
+      "id": "gr-n2-001",
+      "level": "N2",
+      "genre": "news",
+      "topic": "military",
+      "title": "大雨の被災地で自衛隊が救助活動",
+      "titleEn": "Self-Defense Forces carry out rescue work in a flood-hit area",
+      "body": "ある県の山間部で記録的な大雨が続いたことを受け、県知事は十五日、防衛省に対して自衛隊の災害派遣を要請した。これに伴い、陸上自衛隊の部隊およそ三百人が同じ日の夜から被災地に入り、孤立した地域の住民の救助にあたっている。\n県によると、今回の大雨では複数の地区で川の水があふれ、山の土砂が崩れて道路をふさいだ。そのため、少なくとも四つの集落で車による移動ができなくなり、約二百人が自宅などに取り残されているという。電話がつながりにくい地域もあり、住民の安否の確認にはまだ時間がかかっている。\n自衛隊はヘリコプターを使って、高齢者や病気の人を優先的に安全な場所へ運んでいる。ヘリコプターが降りられない集落には、隊員が歩いて向かい、一軒ずつ家を回って住民の様子を確かめている。足が不自由な人は、隊員が背負って運ぶこともあるという。同時に、重い機械を使って道路の土砂を片付ける作業も進めている。また、避難所には水や食料、毛布などを届けており、いくつかの避難所では、隊員が用意したお風呂を住民が利用できるようになった。\n一方、雨はすでにやんだものの、土砂が崩れた場所の近くでは地面が弱くなっており、再び崩れるおそれがある。このため、作業は安全を確認しながら慎重に進めざるを得ない状況だ。防衛省は、必要に応じて隊員の数を増やす方針を示している。\n避難所で生活しているある男性は「道が通れなくなって不安だったが、隊員の姿を見て少し安心した。早く家に帰れるようになってほしい」と話した。\n県は今後、住宅の被害の状況を調べたうえで、家に戻れない被災者のために仮設住宅を準備する予定だ。専門家は、同じような大雨による被害が各地で増えていることから、自治体と自衛隊が普段から訓練などを通じて協力の方法を確かめておくことが重要だと話している。",
+      "cast": [
+        {
+          "name": "男性",
+          "voice": "male-senior"
+        }
+      ],
+      "names": [
+        "防衛省",
+        "陸上自衛隊",
+        "自衛隊"
+      ],
+      "vocabulary": [
+        {
+          "word": "派遣",
+          "reading": "はけん",
+          "entryId": 1471130,
+          "gloss": "dispatch; despatch; deployment"
+        },
+        {
+          "word": "要請",
+          "reading": "ようせい",
+          "entryId": 1546780,
+          "gloss": "appeal; call for something; request"
+        },
+        {
+          "word": "伴う",
+          "reading": "ともなう",
+          "entryId": 1478370,
+          "gloss": "to accompany; to go hand in hand with; to be consequent upon"
+        },
+        {
+          "word": "孤立",
+          "reading": "こりつ",
+          "entryId": 1266860,
+          "gloss": "isolation; being cut off"
+        },
+        {
+          "word": "防衛",
+          "reading": "ぼうえい",
+          "entryId": 1520200,
+          "gloss": "defense; defence; protection"
+        },
+        {
+          "word": "災害",
+          "reading": "さいがい",
+          "entryId": 1295100,
+          "gloss": "calamity; disaster; misfortune"
+        },
+        {
+          "word": "土砂",
+          "reading": "どしゃ",
+          "entryId": 1624160,
+          "gloss": "sediment; earth and sand"
+        },
+        {
+          "word": "集落",
+          "reading": "しゅうらく",
+          "entryId": 1333800,
+          "gloss": "settlement; village; community"
+        },
+        {
+          "word": "安否",
+          "reading": "あんぴ",
+          "entryId": 1154230,
+          "gloss": "safety; welfare; well-being"
+        },
+        {
+          "word": "優先",
+          "reading": "ゆうせん",
+          "entryId": 1539390,
+          "gloss": "preference; priority; precedence"
+        },
+        {
+          "word": "背負う",
+          "reading": "せおう",
+          "entryId": 1472860,
+          "gloss": "to carry on one's back"
+        },
+        {
+          "word": "避難",
+          "reading": "ひなん",
+          "entryId": 1484660,
+          "gloss": "taking refuge; finding shelter; evacuation"
+        },
+        {
+          "word": "慎重",
+          "reading": "しんちょう",
+          "entryId": 1361110,
+          "gloss": "careful; cautious; prudent"
+        },
+        {
+          "word": "被災者",
+          "reading": "ひさいしゃ",
+          "entryId": 1484450,
+          "gloss": "person affected by a disaster; afflicted person; victim"
+        },
+        {
+          "word": "仮設住宅",
+          "reading": "かせつじゅうたく",
+          "entryId": 2615990,
+          "gloss": "temporary dwelling; temporary housing"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "この記事は主に何について伝えているか。",
+          "choices": [
+            "大雨の原因と今後の天気の予想",
+            "大雨の被災地で自衛隊が行っている活動",
+            "避難所で起きている住民どうしの問題",
+            "防衛省が新しく作った災害対策の制度"
+          ],
+          "answer": 1,
+          "explanation": "The whole article reports the dispatch of the Self-Defense Forces and their rescue, road-clearing and supply work in the flooded area. A weather forecast, disputes in shelters and a new system are not discussed."
+        },
+        {
+          "type": "detail",
+          "stem": "自衛隊がヘリコプターで優先的に運んでいるのはだれか。",
+          "choices": [
+            "県の職員や医師",
+            "取材に来た記者",
+            "高齢者や病気の人",
+            "子どもがいる家族"
+          ],
+          "answer": 2,
+          "explanation": "Paragraph 3 says 高齢者や病気の人を優先的に安全な場所へ運んでいる. The other groups are not mentioned as priorities."
+        },
+        {
+          "type": "inference",
+          "stem": "作業を慎重に進めなければならないのはなぜか。",
+          "choices": [
+            "地面が弱くなっていて、また土砂が崩れるおそれがあるから",
+            "雨がまだ強く降り続いているから",
+            "隊員の数が足りず、交代できないから",
+            "住民が避難所に移ることを嫌がっているから"
+          ],
+          "answer": 0,
+          "explanation": "Paragraph 4: the rain has stopped (雨はすでにやんだものの) but the ground has become weak and may collapse again, so the work must be careful. The rain is not continuing, and staff shortages or unwilling residents are not mentioned."
+        },
+        {
+          "type": "detail",
+          "stem": "最後の段落で、専門家は何が重要だと述べているか。",
+          "choices": [
+            "被災者がすぐに自宅へ戻れるようにすること",
+            "災害のたびに自衛隊の人数を減らすこと",
+            "ヘリコプターの数を全国で増やすこと",
+            "自治体と自衛隊が普段から協力の方法を確かめておくこと"
+          ],
+          "answer": 3,
+          "explanation": "The expert says it is important that local governments and the SDF check how to cooperate in normal times, through drills and so on (普段から訓練などを通じて協力の方法を確かめておく). The other choices are not what the expert says."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-002",
+      "level": "N2",
+      "genre": "editorial",
+      "topic": "government",
+      "title": "予算案をめぐる議論に求められるもの",
+      "titleEn": "What the budget debate needs",
+      "body": "政府は先月、来年度の予算案をまとめた。総額は過去最大となり、社会保障費や防衛費、子育て支援のための費用がいずれも増えている。この予算案をめぐって、国会では与党と野党の間で激しい議論が続いている。\n予算が膨らんだ理由の一つは、高齢化に伴う医療や介護の費用の増加である。加えて、少子化対策を強化するという政府の方針や、周辺の安全保障環境の変化を理由とした防衛費の増額も大きい。どの分野も国民の暮らしや安全に関わるものであり、単純に削ればよいという話ではない。ここまでは、多くの人が認めるところだろう。\nしかし、問題はそのお金をどこから持ってくるかである。国の借金はすでに非常に大きく、今回の予算案でも歳入の三割近くを国債に頼っている。政府は、経済が成長すれば税収も自然に増えると説明しているものの、その予測は甘すぎるという声は少なくない。今の支出のつけを将来の子どもたちに回しているのではないかという懸念が出るのも当然だろう。\n一方で、増税には国民の強い反発が考えられる。物価が上がり続ける中、人々の暮らしの負担をさらに重くすることには慎重にならざるを得ない。だからこそ、政府には、どの支出が本当に必要なのか、そしてなぜ今必要なのかを、国民に丁寧に説明する責任がある。お金を何に使うのかがはっきりしなければ、国民の納得は得られないだろう。\n野党にも注文がある。政府の案の問題点を批判するだけでなく、どこを削り、どこに使うのかという具体的な代わりの案を示すべきだ。そうでなければ、議論は対立を大きくするだけで終わってしまう。\n予算は、国がこれから何を大切にしていくのかを示す計画である。政府と国会は、次の選挙のことばかり考えるのではなく、十年後、二十年後の社会を見据えた議論を行ってほしい。",
+      "names": [
+        "国会"
+      ],
+      "vocabulary": [
+        {
+          "word": "来年度",
+          "reading": "らいねんど",
+          "entryId": 2013930,
+          "gloss": "next year; next fiscal year"
+        },
+        {
+          "word": "防衛",
+          "reading": "ぼうえい",
+          "entryId": 1520200,
+          "gloss": "defense; defence; protection"
+        },
+        {
+          "word": "与党",
+          "reading": "よとう",
+          "entryId": 1544870,
+          "gloss": "ruling party; government party; party in power"
+        },
+        {
+          "word": "野党",
+          "reading": "やとう",
+          "entryId": 1537580,
+          "gloss": "opposition party; the opposition"
+        },
+        {
+          "word": "膨らむ",
+          "reading": "ふくらむ",
+          "entryId": 1519990,
+          "gloss": "to expand; to swell (out); to get big"
+        },
+        {
+          "word": "伴う",
+          "reading": "ともなう",
+          "entryId": 1478370,
+          "gloss": "to accompany; to go hand in hand with; to be consequent upon"
+        },
+        {
+          "word": "介護",
+          "reading": "かいご",
+          "entryId": 1198060,
+          "gloss": "nursing; care; caregiving"
+        },
+        {
+          "word": "少子化",
+          "reading": "しょうしか",
+          "entryId": 2011350,
+          "gloss": "declining birth rate; decline in the number of children; sub-replacement fertility"
+        },
+        {
+          "word": "歳入",
+          "reading": "さいにゅう",
+          "entryId": 1294970,
+          "gloss": "annual revenue (government); annual income (government); budget receipts"
+        },
+        {
+          "word": "国債",
+          "reading": "こくさい",
+          "entryId": 1286390,
+          "gloss": "national debt; national securities; government bonds"
+        },
+        {
+          "word": "懸念",
+          "reading": "けねん",
+          "entryId": 1257720,
+          "gloss": "worry; fear; anxiety"
+        },
+        {
+          "word": "反発",
+          "reading": "はんぱつ",
+          "entryId": 1480890,
+          "gloss": "backlash; opposition"
+        },
+        {
+          "word": "負担",
+          "reading": "ふたん",
+          "entryId": 1498130,
+          "gloss": "burden; load; responsibility"
+        },
+        {
+          "word": "選挙",
+          "reading": "せんきょ",
+          "entryId": 1392190,
+          "gloss": "election"
+        },
+        {
+          "word": "見据える",
+          "reading": "みすえる",
+          "entryId": 1259750,
+          "gloss": "to keep in view; to look ahead to"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "筆者の主張に最も近いものはどれか。",
+          "choices": [
+            "防衛費を減らして、子育て支援にもっとお金を使うべきだ",
+            "すぐに増税をして、国の借金を減らすべきだ",
+            "政府も野党も、将来を見据えて責任ある議論をするべきだ",
+            "経済が成長すれば問題はないので、今の予算案で十分だ"
+          ],
+          "answer": 2,
+          "explanation": "The writer asks the government to explain its spending, asks the opposition to offer concrete alternatives, and ends by asking both to debate with the society of ten or twenty years later in view. The writer says cutting is not simple, is cautious about tax rises, and doubts the growth forecast."
+        },
+        {
+          "type": "detail",
+          "stem": "予算が増えた理由として、本文で挙げられていないものはどれか。",
+          "choices": [
+            "高齢化による医療や介護の費用の増加",
+            "少子化対策の強化",
+            "安全保障環境の変化による防衛費の増額",
+            "道路や橋などの工事の増加"
+          ],
+          "answer": 3,
+          "explanation": "Paragraph 2 lists medical and care costs from aging, stronger measures against the falling birthrate, and higher defense spending. Road and bridge construction is never mentioned."
+        },
+        {
+          "type": "vocabulary",
+          "stem": "「支出のつけを将来の子どもたちに回している」とは、どういう意味か。",
+          "choices": [
+            "今使ったお金を、後の時代の人に払わせていること",
+            "子どもたちのために、今お金をためていること",
+            "子どもたちの教育に、多くのお金を使っていること"
+          ],
+          "answer": 0,
+          "explanation": "つけを回す means leaving someone else to pay the bill later. The sentence follows the point that the budget relies on government bonds (borrowing), so future generations will pay. Saving money or spending on education is not the meaning."
+        },
+        {
+          "type": "detail",
+          "stem": "筆者が野党に求めていることは何か。",
+          "choices": [
+            "政府の案にすべて賛成すること",
+            "批判だけでなく、具体的な代わりの案を示すこと",
+            "次の選挙のことを第一に考えること",
+            "増税に反対する国民の声を集めること"
+          ],
+          "answer": 1,
+          "explanation": "Paragraph 5: the opposition should not only criticize but show concrete alternatives (具体的な代わりの案を示すべきだ). The writer does not ask them to agree with everything, and warns against thinking only of the next election."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-003",
+      "level": "N2",
+      "genre": "notice",
+      "topic": "government",
+      "title": "防災訓練の実施について",
+      "titleEn": "Notice of a city disaster and civil-defense drill",
+      "body": "市民の皆様へ\n市では、大きな地震や、ミサイルの発射などの緊急事態に備えるため、国や県と協力して、以下のとおり防災訓練を行います。訓練の当日は、屋外のスピーカーや携帯電話の緊急速報メールで訓練用の情報が流れます。実際の災害ではありませんので、落ち着いて行動してください。\n日時は十月二十日(日曜日)の午前九時から十一時までです。雨の場合も実施しますが、大雨などの警報が出た場合は中止とし、前日の夕方までに市のホームページでお知らせします。\n会場は市立第一中学校のグラウンドと、その周辺の地区です。\n訓練は次の順番で行います。まず、九時ちょうどに地震が起きたことを知らせるサイレンが鳴ります。サイレンが聞こえたら、その場で頭を守り、机の下などに入ってください。\n次に、九時十五分ごろ、ミサイルが発射されたと想定した情報が流れます。屋外にいる方は、近くの丈夫な建物か地下に移動してください。近くに建物がない場合は、物陰に身を隠すか、地面に伏せて頭を守ってください。屋内にいる方は、窓から離れてください。\nその後、九時半から、各地区の集合場所に集まり、地区ごとに中学校まで歩いて移動します。\n中学校のグラウンドでは、消防による消火器の使い方の説明や、自衛隊による炊き出しの見学、けがをした人を手当てする方法の教室などを行います。参加は自由ですが、一人でも多くの方にご参加いただきますよう、お願いいたします。\nなお、当日の午前中は、中学校周辺の道路が通行止めになります。車でお越しいただくことはできませんので、ご注意ください。また、車いすを使用している方など、移動に手助けが必要な方は、十月十日までに市役所の危機管理課までご連絡ください。当日は担当者がお手伝いいたします。\n問い合わせ先:市役所危機管理課",
+      "names": [
+        "市立第一中学校",
+        "危機管理課",
+        "自衛隊"
+      ],
+      "vocabulary": [
+        {
+          "word": "緊急",
+          "reading": "きんきゅう",
+          "entryId": 1241850,
+          "gloss": "urgency; emergency"
+        },
+        {
+          "word": "防災",
+          "reading": "ぼうさい",
+          "entryId": 1520360,
+          "gloss": "disaster preparedness; prevention of damage resulting from a natural disaster; protection against disaster"
+        },
+        {
+          "word": "携帯",
+          "reading": "けいたい",
+          "entryId": 1250680,
+          "gloss": "mobile phone (short for 携帯電話); carrying"
+        },
+        {
+          "word": "速報",
+          "reading": "そくほう",
+          "entryId": 1405070,
+          "gloss": "news flash; prompt report; bulletin"
+        },
+        {
+          "word": "災害",
+          "reading": "さいがい",
+          "entryId": 1295100,
+          "gloss": "calamity; disaster; misfortune"
+        },
+        {
+          "word": "警報",
+          "reading": "けいほう",
+          "entryId": 1252520,
+          "gloss": "warning; alarm; alert"
+        },
+        {
+          "word": "想定",
+          "reading": "そうてい",
+          "entryId": 1399630,
+          "gloss": "hypothesis; supposition; assumption"
+        },
+        {
+          "word": "物陰",
+          "reading": "ものかげ",
+          "entryId": 1502410,
+          "gloss": "place hidden from view; cover; shelter"
+        },
+        {
+          "word": "伏せる",
+          "reading": "ふせる",
+          "entryId": 1500220,
+          "gloss": "to lie face down; to get down"
+        },
+        {
+          "word": "炊き出し",
+          "reading": "たきだし",
+          "entryId": 1596820,
+          "gloss": "food distribution (esp. cooked rice)"
+        },
+        {
+          "word": "手当て",
+          "reading": "てあて",
+          "entryId": 1598240,
+          "gloss": "treatment (of an injury); first aid"
+        },
+        {
+          "word": "通行止め",
+          "reading": "つうこうどめ",
+          "entryId": 1433190,
+          "gloss": "closure (of a road); suspension of traffic"
+        },
+        {
+          "word": "危機",
+          "reading": "きき",
+          "entryId": 1218450,
+          "gloss": "crisis; critical situation; emergency"
+        }
+      ],
+      "questions": [
+        {
+          "type": "purpose",
+          "stem": "このお知らせの主な目的は何か。",
+          "choices": [
+            "地震が起きたときの被害の状況を報告すること",
+            "中学校のグラウンドの工事について説明すること",
+            "屋外のスピーカーの使い方を教えること",
+            "訓練の内容を知らせ、市民に参加を呼びかけること"
+          ],
+          "answer": 3,
+          "explanation": "The notice explains the date, place and steps of the drill and asks as many people as possible to take part (一人でも多くの方にご参加いただきますよう). It does not report damage, construction or how to use the speakers."
+        },
+        {
+          "type": "detail",
+          "stem": "当日、雨が降った場合はどうなるか。",
+          "choices": [
+            "雨でも行うが、警報が出たら中止になる",
+            "雨が降ったら必ず中止になる",
+            "次の日曜日に延期される",
+            "会場を体育館に変えて行う"
+          ],
+          "answer": 0,
+          "explanation": "The notice says 雨の場合も実施します, but the drill is cancelled if a warning is issued. Postponement or a change of venue is not mentioned."
+        },
+        {
+          "type": "sequence",
+          "stem": "訓練で最初に行うことはどれか。",
+          "choices": [
+            "地区ごとに中学校まで歩いて移動する",
+            "サイレンを聞いて、その場で頭を守る",
+            "丈夫な建物や地下に移動する",
+            "消火器の使い方の説明を聞く"
+          ],
+          "answer": 1,
+          "explanation": "The order is: at 9:00 the earthquake siren and protecting your head (まず), then the missile alert at about 9:15, then walking to the school from 9:30, where the fire-extinguisher demonstration takes place."
+        },
+        {
+          "type": "detail",
+          "stem": "移動に手助けが必要な人は、どうすればよいか。",
+          "choices": [
+            "当日、集合場所で担当者に声をかける",
+            "車で直接中学校へ行く",
+            "十月十日までに危機管理課に連絡する",
+            "訓練には参加しないで家にいる"
+          ],
+          "answer": 2,
+          "explanation": "People who need help, such as wheelchair users, are asked to contact the crisis management section by October 10. Cars cannot be used because of road closures, and nothing tells them to wait until the day or stay home."
+        },
+        {
+          "type": "inference",
+          "stem": "訓練の当日、携帯電話に緊急速報メールが届いたら、どうするのがよいか。",
+          "choices": [
+            "訓練用の情報なので、落ち着いて訓練どおりに行動する",
+            "本当の災害なので、すぐに市の外へ逃げる",
+            "市役所に電話をして、本当かどうか確かめる",
+            "メールは無視して、普段どおりに過ごす"
+          ],
+          "answer": 0,
+          "explanation": "Paragraph 2 says the messages that day are drill information, not a real disaster, so people should act calmly (落ち着いて行動してください) and follow the drill. Ignoring them or fleeing the city is wrong."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-004",
+      "level": "N2",
+      "genre": "essay",
+      "topic": "work",
+      "title": "通勤のない生活で気づいたこと",
+      "titleEn": "What I noticed after I stopped commuting",
+      "body": "在宅勤務を始めてから、もうすぐ三年になる。最初のうちは、満員電車に乗らなくて済むことがただうれしかった。毎日往復で二時間近くかかっていた通勤の時間がなくなり、その分を睡眠や家事に使えるようになったのである。\nところが、半年ほどたったころから、何となく気分が晴れない日が増えてきた。仕事は順調に進んでいるにもかかわらず、一日の終わりに疲れだけが残るのだ。原因を考えてみると、仕事と生活の境目がなくなっていたことに気づいた。朝起きてすぐパソコンを開き、夜になっても何となくメールを確認してしまう。家にいる時間は長くなったものの、心から休んでいる時間はむしろ減っていたのである。\n同じ時期に在宅勤務を始めた友人に話してみると、彼女も似たような悩みを抱えていた。彼女の場合は、食事の時間が不規則になり、昼ご飯を食べ忘れることさえあったという。私たちは、自由な働き方には、自分で自分を管理する力が必要なのだと話し合った。\nそこで、私はいくつかのルールを作ることにした。まず、仕事を始める前に、家の近くを十五分ほど散歩する。これは以前の通勤の代わりであり、頭を仕事に切り替えるための習慣だ。次に、仕事用の机を寝室から居間の隅に移した。そして、夕方六時になったら、パソコンを閉じて引き出しにしまうことにした。\nこうした小さな工夫によって、生活には少しずつリズムが戻ってきた。散歩の途中で近所の人とあいさつを交わすようになったのも、思いがけない収穫だった。\n通勤は無駄な時間だとずっと思っていたが、実は仕事と家庭を分ける大切な役割を果たしていたのかもしれない。働き方が変わるのに伴って、自分に合った区切りを意識的に作っていく必要があるのだと思う。いつかまた会社に通う日が来たとしても、朝の散歩だけは続けていきたいと考えている。",
+      "vocabulary": [
+        {
+          "word": "勤務",
+          "reading": "きんむ",
+          "entryId": 1241070,
+          "gloss": "service; duty; work"
+        },
+        {
+          "word": "往復",
+          "reading": "おうふく",
+          "entryId": 1179760,
+          "gloss": "making a round trip; going and returning; coming and going"
+        },
+        {
+          "word": "境目",
+          "reading": "さかいめ",
+          "entryId": 1236030,
+          "gloss": "borderline; boundary"
+        },
+        {
+          "word": "悩み",
+          "reading": "なやみ",
+          "entryId": 1469850,
+          "gloss": "trouble; troubles; worry"
+        },
+        {
+          "word": "不規則",
+          "reading": "ふきそく",
+          "entryId": 1491840,
+          "gloss": "irregular; unsystematic; unsteady"
+        },
+        {
+          "word": "切り替える",
+          "reading": "きりかえる",
+          "entryId": 1591780,
+          "gloss": "to change; to switch; to change over (to)"
+        },
+        {
+          "word": "寝室",
+          "reading": "しんしつ",
+          "entryId": 1360140,
+          "gloss": "bedroom"
+        },
+        {
+          "word": "居間",
+          "reading": "いま",
+          "entryId": 1231720,
+          "gloss": "living room (Western style); sitting room"
+        },
+        {
+          "word": "工夫",
+          "reading": "くふう",
+          "entryId": 1278220,
+          "gloss": "devising (a way); contriving; inventing"
+        },
+        {
+          "word": "交わす",
+          "reading": "かわす",
+          "entryId": 1590750,
+          "gloss": "to exchange (messages, greetings, arguments, etc.)"
+        },
+        {
+          "word": "収穫",
+          "reading": "しゅうかく",
+          "entryId": 1330510,
+          "gloss": "gain; fruitful result; harvest"
+        },
+        {
+          "word": "果たす",
+          "reading": "はたす",
+          "entryId": 1192850,
+          "gloss": "to accomplish; to achieve; to carry out"
+        },
+        {
+          "word": "伴う",
+          "reading": "ともなう",
+          "entryId": 1478370,
+          "gloss": "to accompany; to go hand in hand with; to be consequent upon"
+        },
+        {
+          "word": "区切り",
+          "reading": "くぎり",
+          "entryId": 1244180,
+          "gloss": "break; dividing point; boundary"
+        },
+        {
+          "word": "意識的",
+          "reading": "いしきてき",
+          "entryId": 1759970,
+          "gloss": "conscious; deliberate; intentional"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "筆者が最も伝えたいことは何か。",
+          "choices": [
+            "在宅勤務は疲れるので、会社に戻ったほうがよい",
+            "働き方に合わせて、仕事と生活を分ける工夫が必要だ",
+            "通勤の時間は睡眠に使うのがいちばんよい",
+            "近所の人とあいさつをすることが健康によい"
+          ],
+          "answer": 1,
+          "explanation": "The last paragraph concludes that as work styles change we must consciously make our own boundaries (区切り). The writer does not suggest returning to the office, and the other points are minor details."
+        },
+        {
+          "type": "detail",
+          "stem": "筆者の気分が晴れなかった原因は何か。",
+          "choices": [
+            "仕事がうまく進まなかったこと",
+            "食事の時間が不規則になったこと",
+            "睡眠の時間が短くなったこと",
+            "仕事と生活の区別がなくなっていたこと"
+          ],
+          "answer": 3,
+          "explanation": "Paragraph 2: work was going well (順調に進んでいるにもかかわらず), and the cause was that the boundary between work and life had disappeared (境目がなくなっていた). Irregular meals were the friend's problem, and sleep time actually increased."
+        },
+        {
+          "type": "purpose",
+          "stem": "筆者が仕事の前に散歩をするのは何のためか。",
+          "choices": [
+            "運動不足を解消するため",
+            "近所の人と知り合うため",
+            "気持ちを仕事に切り替えるため",
+            "友人と話す時間を作るため"
+          ],
+          "answer": 2,
+          "explanation": "Paragraph 4 says the walk replaces the commute and is a habit to switch the mind to work (頭を仕事に切り替えるための習慣). Meeting neighbours was an unexpected side benefit, not the purpose."
+        },
+        {
+          "type": "reference",
+          "stem": "「思いがけない収穫」とは、何を指しているか。",
+          "choices": [
+            "散歩の途中で近所の人とあいさつするようになったこと",
+            "居間に仕事用の机を移したこと",
+            "夕方六時に仕事を終えるようにしたこと",
+            "通勤の時間を家事に使えるようになったこと"
+          ],
+          "answer": 0,
+          "explanation": "The phrase refers to the same sentence: starting to greet neighbours on the walk was an unexpected gain. The other items are rules the writer planned or benefits mentioned earlier."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-005",
+      "level": "N2",
+      "genre": "email",
+      "topic": "business",
+      "title": "打ち合わせ日程変更のお願い",
+      "titleEn": "Request to reschedule a meeting",
+      "body": "株式会社みどり商会\n営業部 山本様\nいつも大変お世話になっております。東西商事の佐藤でございます。\n来週十二日(水)午後二時からお約束しておりました新商品の打ち合わせの件で、ご連絡いたしました。\n大変申し訳ございませんが、弊社の工場で製造ラインに不具合が見つかり、その修理のため、担当の技術者が当日急に出張することになりました。新商品の仕様については、技術者から直接ご説明するのがよいと考えておりますので、打ち合わせの日程を変更させていただけないでしょうか。技術者の出張は二日ほどで終わる予定です。\nこちらの都合で大変恐縮ですが、以下の日時のうち、ご都合のよい日をお知らせいただけますと幸いです。\n・十四日(金)午前十時から\n・十七日(月)午後三時から\n・十八日(火)午後一時から\nいずれの日も、弊社の会議室をご用意いたします。もちろん、こちらから御社に伺うことも可能ですので、ご遠慮なくお申し付けください。また、インターネットを使った打ち合わせをご希望の場合も、準備いたします。\nなお、先日お送りした見積書につきましては、今回の件による変更はございません。ただ、商品説明の資料の中で、製品の重さの数字に誤りがありましたので、その部分を修正いたしました。最新版をこのメールに添付いたしましたので、打ち合わせの前にご確認いただければ幸いです。古い資料は、お手数ですが処分していただけますようお願いいたします。\n新商品の発売は予定どおり来年の春を考えております。御社のお店でのご紹介の方法についても、打ち合わせの際にご相談させていただければと存じます。\n直前のご連絡となり、ご迷惑をおかけしますことを心よりおわび申し上げます。今後ともどうぞよろしくお願いいたします。\n東西商事株式会社 営業部 佐藤健一",
+      "names": [
+        "みどり商会",
+        "山本",
+        "東西商事",
+        "佐藤",
+        "健一",
+        "佐藤健一"
+      ],
+      "vocabulary": [
+        {
+          "word": "打ち合わせ",
+          "reading": "うちあわせ",
+          "entryId": 1588140,
+          "gloss": "(preparatory) meeting; briefing session; (making) advance arrangements"
+        },
+        {
+          "word": "弊社",
+          "reading": "へいしゃ",
+          "entryId": 1508280,
+          "gloss": "our company; our firm"
+        },
+        {
+          "word": "不具合",
+          "reading": "ふぐあい",
+          "entryId": 1492030,
+          "gloss": "flaw; defect; problem"
+        },
+        {
+          "word": "出張",
+          "reading": "しゅっちょう",
+          "entryId": 1339660,
+          "gloss": "business trip; official trip"
+        },
+        {
+          "word": "仕様",
+          "reading": "しよう",
+          "entryId": 1305500,
+          "gloss": "specifications"
+        },
+        {
+          "word": "恐縮",
+          "reading": "きょうしゅく",
+          "entryId": 1236740,
+          "gloss": "feeling sorry (for imposing on someone)"
+        },
+        {
+          "word": "御社",
+          "reading": "おんしゃ",
+          "entryId": 1270380,
+          "gloss": "your company"
+        },
+        {
+          "word": "申し付ける",
+          "reading": "もうしつける",
+          "entryId": 1363020,
+          "gloss": "to instruct; to tell to do; to ask to do"
+        },
+        {
+          "word": "見積",
+          "reading": "みつもり",
+          "entryId": 1604590,
+          "gloss": "estimate; estimation; valuation"
+        },
+        {
+          "word": "添付",
+          "reading": "てんぷ",
+          "entryId": 1440880,
+          "gloss": "attaching (documents, etc.); appending; affixing"
+        },
+        {
+          "word": "処分",
+          "reading": "しょぶん",
+          "entryId": 1342490,
+          "gloss": "disposal; throwing away; selling off"
+        },
+        {
+          "word": "直前",
+          "reading": "ちょくぜん",
+          "entryId": 1431330,
+          "gloss": "just before; just prior to"
+        }
+      ],
+      "questions": [
+        {
+          "type": "purpose",
+          "stem": "このメールの主な目的は何か。",
+          "choices": [
+            "新商品の値段が変わったことを知らせること",
+            "工場の見学に招待すること",
+            "打ち合わせの日程を変えてもらうようお願いすること",
+            "新商品の発売を延期することを伝えること"
+          ],
+          "answer": 2,
+          "explanation": "Sato writes 打ち合わせの日程を変更させていただけないでしょうか and offers three new dates. The quote is unchanged and the launch is still planned for next spring."
+        },
+        {
+          "type": "detail",
+          "stem": "日程を変更しなければならなくなった理由は何か。",
+          "choices": [
+            "担当の技術者が、工場の不具合を直すため出張することになったから",
+            "佐藤さんが体の調子を悪くしたから",
+            "会議室が使えなくなったから",
+            "新商品の資料がまだできていないから"
+          ],
+          "answer": 0,
+          "explanation": "A fault was found on the factory production line and the engineer in charge must travel there that day to repair it. Illness or the meeting room are not mentioned; the materials were corrected and attached."
+        },
+        {
+          "type": "detail",
+          "stem": "見積書について、正しいものはどれか。",
+          "choices": [
+            "金額が少し高くなった",
+            "新しいものをこのメールに添付した",
+            "打ち合わせの当日に渡す予定だ",
+            "今回の件による変更はない"
+          ],
+          "answer": 3,
+          "explanation": "The email says 見積書につきましては、今回の件による変更はございません. What was corrected and attached is the product materials, not the quote."
+        },
+        {
+          "type": "detail",
+          "stem": "添付した資料では、どこを直したか。",
+          "choices": [
+            "新商品の発売の時期",
+            "製品の重さの数字",
+            "打ち合わせの場所",
+            "商品の値段"
+          ],
+          "answer": 1,
+          "explanation": "Sato says there was an error in the product weight figure (製品の重さの数字に誤り) and that part was corrected. The launch time, place and price did not change."
+        },
+        {
+          "type": "inference",
+          "stem": "このメールを読んだ山本さんが、次にすると考えられることはどれか。",
+          "choices": [
+            "十二日の午後二時に東西商事へ行く",
+            "工場の技術者に直接電話をかける",
+            "新しい見積書を作って送る",
+            "示された日時の中から都合のよい日を返事する"
+          ],
+          "answer": 3,
+          "explanation": "Sato asks Yamamoto to say which of the listed dates suits him (ご都合のよい日をお知らせいただけますと幸いです). The 12th is cancelled, and Yamamoto has no reason to call the engineer or write a quote."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-006",
+      "level": "N2",
+      "genre": "story",
+      "topic": "light fiction",
+      "title": "傘に結ばれた手紙",
+      "titleEn": "The note tied to an umbrella",
+      "body": "駅の忘れ物センターで働き始めて、もうすぐ一年になる。毎日届く忘れ物の数は想像していたよりずっと多く、中でもいちばん多いのは傘だ。雨の日の翌日には、棚が色とりどりの傘でいっぱいになる。\nその日、私は持ち主が現れないまま保管の期間が過ぎた傘を整理していた。黒い傘を一本ずつ確認していると、古い傘の持つところに、小さな紙が細いひもで結ばれているのに気づいた。開いてみると、子どもらしい字で「この傘を見つけた人へ。おじいちゃんの大切な傘です。どうか返してください。」と書かれていた。\n紙の裏には住所も電話番号もなく、「みどり町 さくら」という名前だけがあった。規則では、期間が過ぎた忘れ物は処分することになっている。しかし、私はどうしてもその傘を捨てる気になれず、先輩の木村さんに相談した。\n木村さんはしばらく傘を見つめてから、口を開いた。\n「規則は規則だけど、一週間くらいなら待ってもいいだろう。駅の掲示板に張り紙を出してみたらどうかな。」\n私はすぐに張り紙を作り、みどり町の駅にも同じものを張ってもらった。けれども、三日たっても、五日たっても、だれも来なかった。やはり無理だったのかとあきらめかけた六日目の夕方、小学生くらいの女の子が、年配の男性の手を引いて窓口にやって来た。\n「張り紙を見ました。私がさくらです。」\n女の子の後ろで、おじいさんは深く頭を下げた。そして傘を受け取ると、持つところを何度もなでながら、静かに話し始めた。\n「これは、亡くなった妻が初めてくれた贈り物なんです。電車に忘れたと気づいたときには、もう遅くてね。孫が、手紙を付けておけばきっと誰かが見つけてくれると言って、ずっと前に結んでおいてくれたんですよ。」\n二人が帰った後、木村さんは、たまには規則より大事なこともあるね、と笑った。私は少し空いた棚を見ながら、忘れ物の一つ一つに持ち主の小さな物語があることを、改めて感じていた。",
+      "cast": [
+        {
+          "name": "木村",
+          "voice": "male-senior"
+        },
+        {
+          "name": "女の子",
+          "voice": "female"
+        },
+        {
+          "name": "おじいさん",
+          "voice": "male-senior"
+        }
+      ],
+      "names": [
+        "みどり町",
+        "さくら"
+      ],
+      "vocabulary": [
+        {
+          "word": "忘れ物",
+          "reading": "わすれもの",
+          "entryId": 1519230,
+          "gloss": "lost article; thing left behind"
+        },
+        {
+          "word": "棚",
+          "reading": "たな",
+          "entryId": 1416700,
+          "gloss": "shelf; ledge; rack"
+        },
+        {
+          "word": "保管",
+          "reading": "ほかん",
+          "entryId": 1513320,
+          "gloss": "charge; custody; safekeeping"
+        },
+        {
+          "word": "整理",
+          "reading": "せいり",
+          "entryId": 1376250,
+          "gloss": "sorting; arrangement; organization"
+        },
+        {
+          "word": "結ぶ",
+          "reading": "むすぶ",
+          "entryId": 1254670,
+          "gloss": "to tie; to bind; to link"
+        },
+        {
+          "word": "規則",
+          "reading": "きそく",
+          "entryId": 1223021,
+          "gloss": "rule; regulation"
+        },
+        {
+          "word": "処分",
+          "reading": "しょぶん",
+          "entryId": 1342490,
+          "gloss": "disposal; throwing away; selling off"
+        },
+        {
+          "word": "掲示板",
+          "reading": "けいじばん",
+          "entryId": 1250630,
+          "gloss": "bulletin board; display board; notice board"
+        },
+        {
+          "word": "張り紙",
+          "reading": "はりがみ",
+          "entryId": 1427820,
+          "gloss": "poster; notice (stuck on a wall)"
+        },
+        {
+          "word": "年配",
+          "reading": "ねんぱい",
+          "entryId": 1469090,
+          "gloss": "elderly; older (person)"
+        },
+        {
+          "word": "窓口",
+          "reading": "まどぐち",
+          "entryId": 1401420,
+          "gloss": "counter; window; teller window"
+        },
+        {
+          "word": "贈り物",
+          "reading": "おくりもの",
+          "entryId": 1589030,
+          "gloss": "present; gift"
+        },
+        {
+          "word": "孫",
+          "reading": "まご",
+          "entryId": 1406230,
+          "gloss": "grandchild"
+        },
+        {
+          "word": "改めて",
+          "reading": "あらためて",
+          "entryId": 1200740,
+          "gloss": "anew; once again"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "傘に結ばれていた紙には、何が書かれていたか。",
+          "choices": [
+            "持ち主の住所と電話番号",
+            "傘を買った店の名前",
+            "大切な傘なので返してほしいというお願い",
+            "傘を見つけた人へのお礼の言葉"
+          ],
+          "answer": 2,
+          "explanation": "The note said it was grandpa's precious umbrella and asked the finder to please return it (どうか返してください). There was no address or phone number, only the name."
+        },
+        {
+          "type": "inference",
+          "stem": "「私」が木村さんに相談したのはなぜか。",
+          "choices": [
+            "規則では処分することになっているが、どうしても捨てられなかったから",
+            "傘の持ち主の住所を調べてほしかったから",
+            "傘が壊れていて、直し方がわからなかったから",
+            "木村さんの傘ではないかと思ったから"
+          ],
+          "answer": 0,
+          "explanation": "The rules say items past the storage period are disposed of, but the narrator could not bring herself to throw it away (捨てる気になれず), so she asked her senior for advice."
+        },
+        {
+          "type": "sequence",
+          "stem": "女の子とおじいさんが窓口に来たのはいつか。",
+          "choices": [
+            "張り紙を出したその日",
+            "張り紙を出して三日目",
+            "張り紙を出して五日目",
+            "張り紙を出して六日目の夕方"
+          ],
+          "answer": 3,
+          "explanation": "Nobody came after three days or five days; they came on the evening of the sixth day (六日目の夕方), just as the narrator was about to give up."
+        },
+        {
+          "type": "inference",
+          "stem": "紙はいつ、どうして傘に結ばれたと考えられるか。",
+          "choices": [
+            "傘をなくした後で、おじいさんが駅で結んだ",
+            "傘をなくす前に、なくしたときのために孫が結んでおいた",
+            "木村さんが、持ち主を探すために結んだ",
+            "おじいさんの妻が、傘をあげるときに結んだ"
+          ],
+          "answer": 1,
+          "explanation": "The grandfather says his grandchild tied the note long before (ずっと前に結んでおいてくれた), saying someone would surely find it if it had a letter. So it was tied in advance, in case the umbrella was lost."
+        },
+        {
+          "type": "gist",
+          "stem": "話の最後に、「私」はどんなことを感じたか。",
+          "choices": [
+            "規則は必ず守らなければならない",
+            "傘は忘れ物の中でいちばん多い",
+            "忘れ物にはそれぞれ持ち主の物語がある",
+            "忘れ物センターの仕事はもうやめたい"
+          ],
+          "answer": 2,
+          "explanation": "The last sentence says she felt again that each lost item has its owner's small story (持ち主の小さな物語). The number of umbrellas is a detail from the start, and she does not want to quit."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-007",
+      "level": "N2",
+      "genre": "manga",
+      "topic": "work",
+      "title": "画面が映らない日",
+      "titleEn": "The day the screen went dark",
+      "body": "取引先との大事な会議の前日、夕方六時。営業部の部屋には、まだ何人かの社員が残って仕事をしていた。\n中村「課長、明日の会議で使う新しい管理システムの説明資料を確認していただけますか。」\n課長「ああ、見せてくれ。……うん、よくまとまっているね。ただ、細かい数字や表が多すぎて、先方には伝わりにくいかもしれないな。」\n中村「そうでしょうか。できるだけ詳しく説明したほうが、製品の性能を信頼していただけると思ったんですが。」\n課長「気持ちはわかるよ。でも、相手が本当に知りたいのは、このシステムを導入すると自分たちの仕事がどう変わるのか、ということなんだ。伝えたいことを三つに絞ってごらん。それ以外の細かい点は、質問が出たときに答えればいい。」\n翌朝、会議が始まる三十分前になって、同じ課の林が慌てた様子で走ってきた。\n林「中村さん、大変です。会議室のプロジェクターが故障していて、画面がまったく映らないそうです。修理の担当者が来るのは午後になるみたいです。」\n中村「えっ、今からですか。資料は全部パソコンの中に入っているのに……。」\n課長「落ち着いて。昨日話した三つのポイントは覚えているだろう。紙とペンさえあれば十分だよ。」\n会議が始まると、中村はホワイトボードに大きく三つの言葉を書いた。作業時間が半分になること、入力のミスが減ること、そして、特別な研修なしでその日から誰でも使えることだ。\n会議が終わった後、三人は会議室の片付けをしながら話していた。\n林「先方の部長、すごく喜んでいましたね。質問もたくさん出ましたし、来月もう一度詳しい話を聞きたいそうですよ。」\n中村「画面が使えなかったにもかかわらず、こんなにうまくいくなんて、正直思ってもいませんでした。」\n課長「資料がどんなに立派でも、伝えたいことがはっきりしていなければ、相手には届かない。今日はそれが身にしみてわかったんじゃないか。」\n中村「はい。次からは、まず一番伝えたいことを決めてから、それに合わせて資料を作るようにします。」\n林「じゃあ、今回の成功はプロジェクターが壊れたおかげですね。」\n課長「まあ、それは先方には言わないでおこう。」",
+      "cast": [
+        {
+          "name": "中村",
+          "voice": "female"
+        },
+        {
+          "name": "課長",
+          "voice": "male-senior"
+        },
+        {
+          "name": "林",
+          "voice": "male"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "取引",
+          "reading": "とりひき",
+          "entryId": 1599120,
+          "gloss": "transactions; dealings; business"
+        },
+        {
+          "word": "システム",
+          "reading": "システム",
+          "entryId": 1060300,
+          "gloss": "system"
+        },
+        {
+          "word": "先方",
+          "reading": "せんぽう",
+          "entryId": 1388600,
+          "gloss": "other party; other side"
+        },
+        {
+          "word": "性能",
+          "reading": "せいのう",
+          "entryId": 1375470,
+          "gloss": "ability; performance; efficiency"
+        },
+        {
+          "word": "導入",
+          "reading": "どうにゅう",
+          "entryId": 1453790,
+          "gloss": "introduction; bringing in; installation"
+        },
+        {
+          "word": "絞る",
+          "reading": "しぼる",
+          "entryId": 1594520,
+          "gloss": "to narrow down; to focus on"
+        },
+        {
+          "word": "慌てる",
+          "reading": "あわてる",
+          "entryId": 1278830,
+          "gloss": "to become confused (disconcerted, disorganized, disorganised); to be flustered; to panic"
+        },
+        {
+          "word": "故障",
+          "reading": "こしょう",
+          "entryId": 1267180,
+          "gloss": "fault; trouble; breakdown"
+        },
+        {
+          "word": "ポイント",
+          "reading": "ポイント",
+          "entryId": 1124860,
+          "gloss": "point (of a story, argument, etc.); key point; important part"
+        },
+        {
+          "word": "入力",
+          "reading": "にゅうりょく",
+          "entryId": 1466850,
+          "gloss": "input; (data) entry; typing"
+        },
+        {
+          "word": "研修",
+          "reading": "けんしゅう",
+          "entryId": 1258660,
+          "gloss": "training (esp. in-service); induction course"
+        },
+        {
+          "word": "片付け",
+          "reading": "かたづけ",
+          "entryId": 1511780,
+          "gloss": "tidying up; clearing away"
+        },
+        {
+          "word": "しみる",
+          "reading": "しみる",
+          "entryId": 1391120,
+          "gloss": "to be keenly felt (身にしみる: to really sink in)"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "課長は、中村さんの資料について何を心配したか。",
+          "choices": [
+            "細かい数字や表が多くて、相手に伝わりにくいこと",
+            "資料のページが足りないこと",
+            "製品の性能についての説明が少ないこと",
+            "資料を作るのに時間がかかりすぎたこと"
+          ],
+          "answer": 0,
+          "explanation": "The section chief says there are too many detailed numbers and tables, so it may be hard for the client to follow (先方には伝わりにくい). He does not say it is too short or lacks performance details."
+        },
+        {
+          "type": "detail",
+          "stem": "会議の前に、どんな問題が起きたか。",
+          "choices": [
+            "取引先の部長が来られなくなった",
+            "中村さんのパソコンが壊れた",
+            "資料を印刷する時間がなくなった",
+            "会議室のプロジェクターが故障して、画面が映らなかった"
+          ],
+          "answer": 3,
+          "explanation": "Hayashi reports that the projector in the meeting room is broken and nothing shows on the screen. The laptop itself was fine; the files just could not be shown."
+        },
+        {
+          "type": "inference",
+          "stem": "会議がうまくいった一番の理由は何だと考えられるか。",
+          "choices": [
+            "修理の担当者がすぐに来てくれたから",
+            "伝えたいことを三つに絞って話したから",
+            "林さんが代わりに説明したから",
+            "細かい数字をすべて説明したから"
+          ],
+          "answer": 1,
+          "explanation": "Following the chief's advice, Nakamura wrote just three key points on the whiteboard, and the client was pleased. The repair person was coming only in the afternoon, and Nakamura herself presented."
+        },
+        {
+          "type": "purpose",
+          "stem": "この経験から、中村さんが学んだことは何か。",
+          "choices": [
+            "プロジェクターは前の日に必ず確認すること",
+            "資料はできるだけ詳しく作ること",
+            "まず一番伝えたいことを決めてから資料を作ること",
+            "会議では質問に答えないほうがよいこと"
+          ],
+          "answer": 2,
+          "explanation": "Nakamura says that from now on she will first decide what she most wants to convey and then make the materials to match. The opposite (more detail) is what she believed before."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-008",
+      "level": "N2",
+      "genre": "academic",
+      "topic": "science",
+      "title": "睡眠と記憶の関係",
+      "titleEn": "How sleep and memory are connected",
+      "body": "私たちは一日の約三分の一を眠って過ごしている。かつて睡眠は、単に体と脳を休ませるための時間だと考えられていた。しかし近年の研究によって、睡眠が記憶を定着させるうえで重要な役割を果たしていることが明らかになってきた。\n記憶は、情報を覚える段階、それを保存する段階、そして必要なときに思い出す段階に分けて考えることができる。このうち、睡眠が特に深く関わっているのは、保存の段階だとされる。起きている間に得た情報は、最初は不安定な状態で脳の中に置かれている。眠っている間に、脳はその情報を整理し、長く残る形に変えていくと考えられているのである。\nある実験では、大学生を二つのグループに分け、夜に同じ単語のリストを覚えてもらった。一方のグループは普段どおりに眠り、もう一方のグループは朝まで起きていた。その後、両方のグループに二日間しっかり休んでもらってからテストを行ったところ、眠ったグループの方が明らかに多くの単語を思い出すことができた。休みを取った後でも差が残ったことから、覚えた日の夜の睡眠が特に大切だと考えられる。\nまた、睡眠の長さだけでなく質も重要である。眠りには深い眠りと浅い眠りがあり、一晩の間にそれが何度か繰り返される。研究によると、事実や知識の記憶には夜の前半の深い眠りが、楽器の演奏のように体で覚える技術には明け方の浅い眠りが、それぞれ関係している可能性があるという。\nこうした結果は、試験の前に徹夜で勉強することが必ずしも効果的ではないことを示している。もちろん、睡眠をとりさえすれば記憶が良くなるわけではなく、覚える段階での努力も欠かせない。とはいえ、学んだ内容を確実に自分のものにするためには、十分な睡眠をとることが大切だと言えるだろう。",
+      "vocabulary": [
+        {
+          "word": "かつて",
+          "reading": "かつて",
+          "entryId": 1581210,
+          "gloss": "once; before; formerly"
+        },
+        {
+          "word": "睡眠",
+          "reading": "すいみん",
+          "entryId": 1372370,
+          "gloss": "sleep"
+        },
+        {
+          "word": "脳",
+          "reading": "のう",
+          "entryId": 1470380,
+          "gloss": "brain"
+        },
+        {
+          "word": "定着",
+          "reading": "ていちゃく",
+          "entryId": 1435730,
+          "gloss": "becoming fixed; taking hold (of a memory)"
+        },
+        {
+          "word": "果たす",
+          "reading": "はたす",
+          "entryId": 1192850,
+          "gloss": "to accomplish; to achieve; to carry out"
+        },
+        {
+          "word": "段階",
+          "reading": "だんかい",
+          "entryId": 1419950,
+          "gloss": "stage; step; phase"
+        },
+        {
+          "word": "保存",
+          "reading": "ほぞん",
+          "entryId": 1513940,
+          "gloss": "preservation; conservation; storage"
+        },
+        {
+          "word": "不安定",
+          "reading": "ふあんてい",
+          "entryId": 1491190,
+          "gloss": "instability; insecurity; crankiness"
+        },
+        {
+          "word": "実験",
+          "reading": "じっけん",
+          "entryId": 1320970,
+          "gloss": "experiment; experimentation"
+        },
+        {
+          "word": "繰り返す",
+          "reading": "くりかえす",
+          "entryId": 1247030,
+          "gloss": "to repeat; to do over again"
+        },
+        {
+          "word": "明け方",
+          "reading": "あけがた",
+          "entryId": 1532300,
+          "gloss": "dawn; daybreak"
+        },
+        {
+          "word": "徹夜",
+          "reading": "てつや",
+          "entryId": 1437700,
+          "gloss": "staying up all night"
+        },
+        {
+          "word": "欠く",
+          "reading": "かく",
+          "entryId": 1253900,
+          "gloss": "to lack (欠かせない: indispensable)"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "この文章の内容に最も合うものはどれか。",
+          "choices": [
+            "睡眠は体を休ませるためだけの時間である",
+            "長く眠れば眠るほど、記憶力は良くなる",
+            "記憶を良くするには、覚える努力は必要ない",
+            "睡眠は、覚えたことを記憶として残すのに大切な役割を持つ"
+          ],
+          "answer": 3,
+          "explanation": "The text explains that sleep plays an important role in fixing memories. It says the old view (rest only) was incomplete, that quality matters as well as length, and that effort when learning is still essential."
+        },
+        {
+          "type": "detail",
+          "stem": "睡眠が特に深く関わっているとされるのは、記憶のどの段階か。",
+          "choices": [
+            "情報を覚える段階",
+            "情報を保存する段階",
+            "情報を思い出す段階"
+          ],
+          "answer": 1,
+          "explanation": "Paragraph 2: 睡眠が特に深く関わっているのは、保存の段階だとされる. The brain organizes information during sleep into a lasting form."
+        },
+        {
+          "type": "inference",
+          "stem": "実験で、テストの前に両方のグループに二日間休んでもらったのはなぜだと考えられるか。",
+          "choices": [
+            "単語をもう一度覚える時間を作るため",
+            "眠ったグループの方が疲れていたため",
+            "テストの日の疲れや眠さが結果に影響しないようにするため",
+            "大学の授業が休みだったため"
+          ],
+          "answer": 2,
+          "explanation": "Because both groups were rested before the test, the difference could not come from tiredness on the test day. The text says the gap remained even after rest, so the sleep on the night of learning mattered."
+        },
+        {
+          "type": "detail",
+          "stem": "楽器の演奏のように体で覚える技術と関係がある可能性があるのは、どの眠りか。",
+          "choices": [
+            "明け方の浅い眠り",
+            "夜の前半の深い眠り",
+            "昼間の短い眠り",
+            "夜中の深い眠り"
+          ],
+          "answer": 0,
+          "explanation": "Paragraph 4: skills learned with the body, like playing an instrument, may be related to light sleep near dawn (明け方の浅い眠り); deep sleep in the first half of the night relates to facts and knowledge."
+        },
+        {
+          "type": "inference",
+          "stem": "試験の前の徹夜について、筆者はどう考えているか。",
+          "choices": [
+            "時間を有効に使えるので、勧めたい",
+            "覚えたことが残りにくいので、必ずしも良い方法ではない",
+            "睡眠とは関係がないので、問題はない",
+            "深い眠りが増えるので、効果的だ"
+          ],
+          "answer": 1,
+          "explanation": "The last paragraph says these results show that staying up all night before an exam is not necessarily effective (必ずしも効果的ではない), because sleep is needed to fix what was learned."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-009",
+      "level": "N2",
+      "genre": "news",
+      "topic": "environment",
+      "title": "商店街で持ち帰り容器の貸し出し始まる",
+      "titleEn": "Shopping street starts lending take-out containers",
+      "body": "ある市の商店街で今月から、持ち帰りの料理を入れる容器を客に貸し出す取り組みが始まった。使い捨てのプラスチック容器を減らすことが目的で、市と商店街の店が協力して進めている。\n仕組みはこうだ。客は参加している店で料理を買う際、百円を預けて、繰り返し使える丈夫な容器に料理を入れてもらう。食べ終わった容器は、洗わずに商店街のどの参加店に返してもよく、返すと百円が戻ってくる。集められた容器は、市が頼んだ専門の会社がまとめて洗い、再び店に届ける。現在、弁当屋や総菜店など二十三の店が参加している。\n容器は軽くて割れにくい素材で作られており、電子レンジで温めることもできる。大きさは三種類あり、料理に合わせて店が選ぶ。一つの容器は二百回ほど使える設計で、使えなくなった容器は回収して新しい容器の材料にするという。\n市によると、市内の家庭から出る燃えるごみのうち、プラスチックの容器や包装は重さで約一割を占めている。ごみの量が減るのに伴って、ごみを燃やすための費用も抑えられると期待されている。\n始まってから二週間で、貸し出された容器はおよそ三千個に上り、そのうち九割近くが返された。容器を利用したある女性は「最初は面倒だと思ったが、家でごみが出ないので気持ちがいい」と話していた。\n一方で、問題もある。容器を返し忘れる客が一定の割合でいるほか、洗うための費用を誰が払うのかをめぐって、店の間で意見が分かれているという。現在は市がその費用を出しているものの、来年以降も続けられるかどうかは決まっていない。また、容器が戻ってこないと、店が新しい容器を買わざるを得なくなるという声もある。\n市の担当者は「半年ほど続けて結果を調べ、ほかの地区にも広げるかどうかを判断したい」と話している。",
+      "cast": [
+        {
+          "name": "女性",
+          "voice": "female"
+        },
+        {
+          "name": "担当者",
+          "voice": "male"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "容器",
+          "reading": "ようき",
+          "entryId": 1545370,
+          "gloss": "container; receptacle; vessel"
+        },
+        {
+          "word": "貸し出す",
+          "reading": "かしだす",
+          "entryId": 1411130,
+          "gloss": "to lend; to loan; to let out on hire"
+        },
+        {
+          "word": "使い捨て",
+          "reading": "つかいすて",
+          "entryId": 1597750,
+          "gloss": "throwaway; disposable; single-use"
+        },
+        {
+          "word": "仕組み",
+          "reading": "しくみ",
+          "entryId": 1594180,
+          "gloss": "structure; construction; arrangement"
+        },
+        {
+          "word": "預ける",
+          "reading": "あずける",
+          "entryId": 1544990,
+          "gloss": "to leave (in someone's keeping); to put (in someone's care); to place (in someone's custody)"
+        },
+        {
+          "word": "総菜",
+          "reading": "そうざい",
+          "entryId": 1399580,
+          "gloss": "small dish (served as a part of an ordinary household meal); side dish"
+        },
+        {
+          "word": "素材",
+          "reading": "そざい",
+          "entryId": 1397220,
+          "gloss": "ingredient; (raw) material; resource"
+        },
+        {
+          "word": "回収",
+          "reading": "かいしゅう",
+          "entryId": 1199470,
+          "gloss": "collection; recovery; withdrawal"
+        },
+        {
+          "word": "包装",
+          "reading": "ほうそう",
+          "entryId": 1515510,
+          "gloss": "packing; wrapping"
+        },
+        {
+          "word": "占める",
+          "reading": "しめる",
+          "entryId": 1389460,
+          "gloss": "to account for; to make up; to take up"
+        },
+        {
+          "word": "伴う",
+          "reading": "ともなう",
+          "entryId": 1478370,
+          "gloss": "to accompany; to go hand in hand with; to be consequent upon"
+        },
+        {
+          "word": "抑える",
+          "reading": "おさえる",
+          "entryId": 2836285,
+          "gloss": "to keep within limits (e.g. spending); to restrain (e.g. emotions); to control"
+        },
+        {
+          "word": "面倒",
+          "reading": "めんどう",
+          "entryId": 1533550,
+          "gloss": "trouble; bother"
+        },
+        {
+          "word": "割合",
+          "reading": "わりあい",
+          "entryId": 1606810,
+          "gloss": "rate; ratio; percentage"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "この記事は主に何について伝えているか。",
+          "choices": [
+            "商店街で始まった、料理の容器を貸し出す取り組み",
+            "市内のごみの量が増えている原因",
+            "プラスチック容器を作る新しい会社",
+            "商店街の店が値段を上げた理由"
+          ],
+          "answer": 0,
+          "explanation": "The article reports a new scheme in which shops lend reusable take-out containers, with how it works, results so far and problems. Rising waste, a manufacturer or price rises are not the topic."
+        },
+        {
+          "type": "detail",
+          "stem": "食べ終わった容器は、どうすればよいか。",
+          "choices": [
+            "家で洗ってから、買った店に返す",
+            "燃えるごみとして捨てる",
+            "洗わずに、参加しているどの店に返してもよい",
+            "市役所に持って行く"
+          ],
+          "answer": 2,
+          "explanation": "Paragraph 2: 洗わずに商店街のどの参加店に返してもよく. Customers need not wash it or return it to the same shop; a company hired by the city does the washing."
+        },
+        {
+          "type": "detail",
+          "stem": "客が店に預ける百円について、正しいものはどれか。",
+          "choices": [
+            "容器を洗うための費用として使われる",
+            "新しい容器を買うために使われる",
+            "市に寄付される",
+            "容器を返すと戻ってくる"
+          ],
+          "answer": 3,
+          "explanation": "Customers leave 100 yen and get it back when they return the container (返すと百円が戻ってくる). The washing cost is currently paid by the city."
+        },
+        {
+          "type": "inference",
+          "stem": "この取り組みの今後について、記事から考えられることはどれか。",
+          "choices": [
+            "来年から全国に広がることが決まっている",
+            "費用の問題があり、続けられるかどうかはまだわからない",
+            "客が容器を返さないため、来月でやめることになった",
+            "ほかの地区ではすでに同じ取り組みが始まっている"
+          ],
+          "answer": 1,
+          "explanation": "The city pays for washing now, but whether it can continue next year is undecided, and the city will judge after about six months whether to expand. Nothing says it is ending or already elsewhere."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-010",
+      "level": "N2",
+      "genre": "editorial",
+      "topic": "travel",
+      "title": "観光と住民の暮らし",
+      "titleEn": "Tourism and residents' daily lives",
+      "body": "海外からの観光客が再び増えている。古い町並みで知られるある町では、昨年の観光客の数が過去最高を記録した。観光による収入は地域の経済を支えており、店や旅館にとっては喜ぶべきことだろう。\nしかし、その一方で、住民の生活への影響が問題になっている。朝から夕方まで道が観光客でいっぱいになり、地元の人が路線バスに乗れないことも珍しくない。家の前で勝手に写真を撮られたり、ごみを捨てられたりすることに悩む人もいる。こうした状況をめぐって、住民の間では不満の声が高まっている。\nこれに対して、町はいくつかの対策を打ち出した。観光客向けのバスを別に走らせることや、特に混雑する地区では通ってよい時間を決めること、そして町に泊まる人に少額の税を払ってもらうことなどである。集めたお金は、道の掃除やトイレの整備、観光客に守ってほしいマナーを外国語で案内する看板づくりなどに使うという。\nこうした取り組みに対しては、観光客が減ってしまうのではないかと心配する店もある。確かに、観光は町にとって欠かせない産業である。しかし、住民の暮らしが守られなければ、町の魅力そのものが失われてしまうのではないか。古い建物だけでなく、そこで人々が普段どおりに暮らしている姿こそが、観光客を引きつけている町の魅力であるはずだ。\n大切なのは、観光客の数を増やすことだけを目標にしないことだ。どれだけ多くの人が来たかではなく、訪れた人と住民の双方が満足できたかどうかを基準に、観光のあり方を考え直すべきではないだろうか。\nもちろん、観光客の側にも、その土地の暮らしを尊重する姿勢が求められる。訪れる町は、誰かが毎日生活している場所でもあるということを、私たちは忘れてはならない。",
+      "vocabulary": [
+        {
+          "word": "町並み",
+          "reading": "まちなみ",
+          "entryId": 1604000,
+          "gloss": "townscape; street (of stores and houses); (look of) stores and houses on street"
+        },
+        {
+          "word": "地元",
+          "reading": "じもと",
+          "entryId": 1421060,
+          "gloss": "home area; home town"
+        },
+        {
+          "word": "路線",
+          "reading": "ろせん",
+          "entryId": 1560040,
+          "gloss": "route (bus, train, air, etc.); line"
+        },
+        {
+          "word": "勝手",
+          "reading": "かって",
+          "entryId": 1346190,
+          "gloss": "without permission; as one pleases"
+        },
+        {
+          "word": "不満",
+          "reading": "ふまん",
+          "entryId": 1494970,
+          "gloss": "dissatisfaction; discontent; displeasure"
+        },
+        {
+          "word": "高まる",
+          "reading": "たかまる",
+          "entryId": 1283220,
+          "gloss": "to rise; to swell; to intensify"
+        },
+        {
+          "word": "混雑",
+          "reading": "こんざつ",
+          "entryId": 1290390,
+          "gloss": "congestion; crush; crowding"
+        },
+        {
+          "word": "少額",
+          "reading": "しょうがく",
+          "entryId": 1348960,
+          "gloss": "small sum (of money); small amount"
+        },
+        {
+          "word": "整備",
+          "reading": "せいび",
+          "entryId": 1376240,
+          "gloss": "upkeep; improvement (of facilities)"
+        },
+        {
+          "word": "欠く",
+          "reading": "かく",
+          "entryId": 1253900,
+          "gloss": "to lack (欠かせない: indispensable)"
+        },
+        {
+          "word": "魅力",
+          "reading": "みりょく",
+          "entryId": 1528150,
+          "gloss": "charm; fascination; glamour"
+        },
+        {
+          "word": "訪れる",
+          "reading": "おとずれる",
+          "entryId": 1518080,
+          "gloss": "to visit; to call on"
+        },
+        {
+          "word": "双方",
+          "reading": "そうほう",
+          "entryId": 1398940,
+          "gloss": "both parties; both sides"
+        },
+        {
+          "word": "あり方",
+          "reading": "ありかた",
+          "entryId": 1586810,
+          "gloss": "the way (something) ought to be"
+        },
+        {
+          "word": "尊重",
+          "reading": "そんちょう",
+          "entryId": 1406460,
+          "gloss": "respect; esteem; regard"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "筆者の主張に最も近いものはどれか。",
+          "choices": [
+            "観光客を増やすことが、町にとって何より大切だ",
+            "観光は住民の迷惑になるので、やめるべきだ",
+            "観光客向けの税は高くするべきだ",
+            "観光客の数ではなく、住民と観光客の双方の満足を基準にすべきだ"
+          ],
+          "answer": 3,
+          "explanation": "Paragraph 5: tourism should be judged not by how many came but by whether both visitors and residents were satisfied. The writer calls tourism an essential industry, so does not want it stopped, and says nothing about raising the tax."
+        },
+        {
+          "type": "detail",
+          "stem": "町が打ち出した対策として、本文に書かれていないものはどれか。",
+          "choices": [
+            "一日に町に入れる観光客の数を決めること",
+            "観光客向けのバスを別に走らせること",
+            "混雑する地区で通ってよい時間を決めること",
+            "町に泊まる人に少額の税を払ってもらうこと"
+          ],
+          "answer": 0,
+          "explanation": "Paragraph 3 lists separate buses for tourists, set times for crowded districts, and a small tax on overnight visitors. A daily cap on visitor numbers is not mentioned."
+        },
+        {
+          "type": "inference",
+          "stem": "住民の暮らしが守られないと「町の魅力そのものが失われてしまう」と筆者が考えるのはなぜか。",
+          "choices": [
+            "住民が店を閉めてしまうから",
+            "古い建物が壊されてしまうから",
+            "人々が普段どおりに暮らす姿も、町の魅力の一部だから",
+            "観光客向けのバスが走らなくなるから"
+          ],
+          "answer": 2,
+          "explanation": "The writer says it is not only the old buildings but people living their ordinary lives there that attract visitors (普段どおりに暮らしている姿こそが…魅力). The other reasons are not given."
+        },
+        {
+          "type": "purpose",
+          "stem": "最後の段落で、筆者は何を伝えようとしているか。",
+          "choices": [
+            "町は観光客のために生活を変えるべきだ",
+            "観光客も、訪れる土地の暮らしを尊重すべきだ",
+            "外国からの観光客は減らすべきだ",
+            "観光客は古い町並みを見に行くべきだ"
+          ],
+          "answer": 1,
+          "explanation": "The final paragraph turns to visitors: they too must respect local life, remembering that the town is somewhere people live every day. The other choices go against or beyond the text."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-011",
+      "level": "N2",
+      "genre": "recipe",
+      "topic": "food",
+      "title": "失敗しない肉じゃがの作り方",
+      "titleEn": "Nikujaga you can't get wrong",
+      "body": "寒い季節になると、温かい煮物が恋しくなる。今回は、家庭料理の定番である肉じゃがを、初めての人でも失敗しにくい方法で紹介したい。大切なのは、材料を炒めてから煮ることと、火を止めてからしばらく置いておくことの二つである。\n材料(四人分):じゃがいも四個、薄く切った牛肉二百グラム、玉ねぎ一個、にんじん一本、水四百ミリリットル、砂糖大さじ二、しょうゆ大さじ三、みりん大さじ二、油大さじ一。\n作り方\n一、じゃがいもは皮をむいて四つに切り、水に五分ほどつけておく。こうしておくと、表面の余分なでんぷんが取れて、煮ている間に形が崩れにくくなる。\n二、玉ねぎは一センチほどの幅に切り、にんじんはじゃがいもより小さく切る。にんじんは火が通るのに時間がかかるため、小さく切っておくと、ほかの野菜と同時に柔らかくなるのである。牛肉は食べやすい大きさに切っておく。\n三、鍋に油を入れて中くらいの火で温め、牛肉を炒める。肉の色が変わったら、玉ねぎ、にんじん、じゃがいもの順に加えて、全体に油が回るまで炒める。\n四、水と砂糖、みりんを加え、沸騰したら表面に浮いてくる白い泡を取る。しょうゆは、この段階では半分だけ入れるのがこつだ。最初から全部入れると、肉が硬くなりやすいからである。\n五、小さめのふたを材料の上に直接のせて、少し弱い火で十五分ほど煮る。じゃがいもにはしがすっと通るようになったら、残りのしょうゆを加えて、さらに五分煮る。\n六、火を止めたら、ふたをしたまま十分以上置いておく。煮物は冷めていく間に味が中までしみるため、少し時間を置くだけで、ずっとおいしくなる。\n食べる直前にもう一度温めれば出来上がりだ。残った場合は、次の日にはさらに味がしみておいしくなるので、翌日のお弁当のおかずにもおすすめである。",
+      "vocabulary": [
+        {
+          "word": "煮物",
+          "reading": "にもの",
+          "entryId": 1322630,
+          "gloss": "nimono; food cooked by boiling or stewing"
+        },
+        {
+          "word": "恋しい",
+          "reading": "こいしい",
+          "entryId": 1558760,
+          "gloss": "yearned for; longed for; missed"
+        },
+        {
+          "word": "定番",
+          "reading": "ていばん",
+          "entryId": 1638070,
+          "gloss": "standard item; usual thing; (a) classic"
+        },
+        {
+          "word": "肉じゃが",
+          "reading": "にくじゃが",
+          "entryId": 1463530,
+          "gloss": "nikujaga; meat and potato stew"
+        },
+        {
+          "word": "炒める",
+          "reading": "いためる",
+          "entryId": 1568920,
+          "gloss": "to fry; to saute; to stir-fry"
+        },
+        {
+          "word": "みりん",
+          "reading": "みりん",
+          "entryId": 1527080,
+          "gloss": "mirin; type of sweet rice wine used in cooking"
+        },
+        {
+          "word": "余分",
+          "reading": "よぶん",
+          "entryId": 1544520,
+          "gloss": "extra; excess; surplus"
+        },
+        {
+          "word": "でんぷん",
+          "reading": "でんぷん",
+          "entryId": 1442710,
+          "gloss": "starch"
+        },
+        {
+          "word": "崩れる",
+          "reading": "くずれる",
+          "entryId": 1516270,
+          "gloss": "to collapse; to crumble"
+        },
+        {
+          "word": "沸騰",
+          "reading": "ふっとう",
+          "entryId": 1501720,
+          "gloss": "boiling; seething"
+        },
+        {
+          "word": "泡",
+          "reading": "あわ",
+          "entryId": 1517510,
+          "gloss": "bubble; foam; froth"
+        },
+        {
+          "word": "こつ",
+          "reading": "こつ",
+          "entryId": 1288540,
+          "gloss": "knack; skill; trick"
+        },
+        {
+          "word": "硬い",
+          "reading": "かたい",
+          "entryId": 1257110,
+          "gloss": "hard; solid; tough"
+        },
+        {
+          "word": "しみる",
+          "reading": "しみる",
+          "entryId": 1391120,
+          "gloss": "to soak in (of flavour); to permeate"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "筆者がこの作り方で特に大切だと言っていることは何か。",
+          "choices": [
+            "よい牛肉を使うことと、しょうゆを多めに入れること",
+            "材料を炒めてから煮ることと、火を止めた後しばらく置いておくこと",
+            "強い火で短い時間で煮ることと、すぐに食べること",
+            "野菜をすべて同じ大きさに切ること"
+          ],
+          "answer": 1,
+          "explanation": "The introduction says the two key points are frying the ingredients before simmering, and leaving the pot for a while after turning off the heat. The other choices contradict the steps (low heat, resting, different sizes)."
+        },
+        {
+          "type": "purpose",
+          "stem": "じゃがいもを水に五分ほどつけておくのは何のためか。",
+          "choices": [
+            "皮をむきやすくするため",
+            "早く柔らかくするため",
+            "色をきれいにするため",
+            "煮ている間に形が崩れにくくなるようにするため"
+          ],
+          "answer": 3,
+          "explanation": "Step 1: soaking removes extra starch from the surface, so the potatoes are less likely to fall apart while simmering (形が崩れにくくなる). Peeling, speed and colour are not mentioned."
+        },
+        {
+          "type": "inference",
+          "stem": "にんじんをじゃがいもより小さく切るのはなぜか。",
+          "choices": [
+            "火が通るのに時間がかかるので、ほかの野菜と同時に柔らかくなるように",
+            "子どもが食べやすいように",
+            "味がしみすぎないように",
+            "見た目をきれいにするために"
+          ],
+          "answer": 0,
+          "explanation": "Step 2 explains that carrots take longer to cook, so cutting them small lets them soften at the same time as the other vegetables."
+        },
+        {
+          "type": "sequence",
+          "stem": "しょうゆはどのように入れるか。",
+          "choices": [
+            "最初に肉を炒めるときに全部入れる",
+            "火を止めた後で全部入れる",
+            "沸騰した後に半分入れ、じゃがいもが柔らかくなったら残りを入れる",
+            "水と一緒に全部入れる"
+          ],
+          "answer": 2,
+          "explanation": "Step 4 says to add only half at that stage (after boiling and skimming), and step 5 says to add the rest when a chopstick goes easily into the potatoes. Adding it all at first makes the meat tough."
+        },
+        {
+          "type": "detail",
+          "stem": "肉じゃがが残った場合について、筆者は何と言っているか。",
+          "choices": [
+            "早く捨てたほうがよい",
+            "冷たいまま食べるのがよい",
+            "もう一度しょうゆを足すとよい",
+            "次の日はさらに味がしみておいしくなる"
+          ],
+          "answer": 3,
+          "explanation": "The last paragraph says leftovers taste even better the next day because the flavour soaks in further, so they are good for a packed lunch."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-012",
+      "level": "N2",
+      "genre": "ad",
+      "topic": "leisure",
+      "title": "週末農業体験プラン 参加者募集",
+      "titleEn": "Weekend farming plan: participants wanted",
+      "body": "都会の暮らしに疲れていませんか。土に触れ、自分の手で野菜を育てる喜びを、週末だけ味わってみませんか。\nひかり農園では、今年も週末農業体験プランの参加者を募集しています。このプランは、四月から九月までの半年間、月に二回、土曜日か日曜日に農園に通って、野菜作りを一から学んでいただくものです。\n畑の準備から種まき、水やり、草取り、そして収穫まで、経験豊かなスタッフが丁寧にお教えしますので、農業の経験がまったくない方でも安心してご参加いただけます。昨年の参加者の約八割が、畑仕事は初めてという方でした。\n育てる野菜は、トマト、きゅうり、なす、じゃがいもなど、季節に合わせた十種類以上です。収穫した野菜は、すべてお持ち帰りいただけます。また、毎回の作業の後には、とれたての野菜を使った昼食をみんなで楽しみます。\n道具や作業用の手袋はすべて農園でご用意しますので、汚れてもよい服装でお越しください。最寄りの駅から農園までは、無料の送迎バスを運行しています。\n農園は、駅からバスで二十分ほどの山のふもとにあり、晴れた日には畑から遠くの海まで見渡すことができます。作業の合間には、農園で飼っているヤギやにわとりとふれあうこともでき、お子様にも大人気です。\n参加費は、半年間で一人三万円(昼食代を含む)です。ご家族での参加も大歓迎で、小学生以下のお子様は無料です。定員は三十組で、申し込みの早い順に受け付けます。\n申し込みは三月十五日まで、農園のホームページか電話で受け付けています。三月一日には、無料の説明会を農園で開きますので、興味のある方はどうぞお気軽にお越しください。\n自然の中で汗を流し、自分で育てた野菜を味わう。そんな特別な週末を、私たちと一緒に過ごしてみませんか。",
+      "names": [
+        "ひかり農園"
+      ],
+      "vocabulary": [
+        {
+          "word": "触れる",
+          "reading": "ふれる",
+          "entryId": 1357990,
+          "gloss": "to touch; to feel"
+        },
+        {
+          "word": "味わう",
+          "reading": "あじわう",
+          "entryId": 1527010,
+          "gloss": "to taste; to savor; to savour"
+        },
+        {
+          "word": "体験",
+          "reading": "たいけん",
+          "entryId": 1409420,
+          "gloss": "(practical) experience; personal experience; hands-on experience"
+        },
+        {
+          "word": "募集",
+          "reading": "ぼしゅう",
+          "entryId": 1514830,
+          "gloss": "recruitment; invitation; selection"
+        },
+        {
+          "word": "種まき",
+          "reading": "たねまき",
+          "entryId": 1686640,
+          "gloss": "sowing seeds; planting seeds; scattering seeds"
+        },
+        {
+          "word": "草取り",
+          "reading": "くさとり",
+          "entryId": 1401990,
+          "gloss": "weeding"
+        },
+        {
+          "word": "収穫",
+          "reading": "しゅうかく",
+          "entryId": 1330510,
+          "gloss": "harvest; crop; ingathering"
+        },
+        {
+          "word": "最寄り",
+          "reading": "もより",
+          "entryId": 1293750,
+          "gloss": "nearest; closest"
+        },
+        {
+          "word": "送迎",
+          "reading": "そうげい",
+          "entryId": 1402770,
+          "gloss": "pick-up and drop-off (transport)"
+        },
+        {
+          "word": "見渡す",
+          "reading": "みわたす",
+          "entryId": 1259920,
+          "gloss": "to look out over; to survey (scene); to take an extensive view of"
+        },
+        {
+          "word": "合間",
+          "reading": "あいま",
+          "entryId": 1284670,
+          "gloss": "interval; break; pause"
+        },
+        {
+          "word": "定員",
+          "reading": "ていいん",
+          "entryId": 1435400,
+          "gloss": "fixed number (of people); prescribed number (of regular personnel, students, etc.); quota"
+        },
+        {
+          "word": "申し込み",
+          "reading": "もうしこみ",
+          "entryId": 1605140,
+          "gloss": "application; entry; request"
+        },
+        {
+          "word": "受け付ける",
+          "reading": "うけつける",
+          "entryId": 1329690,
+          "gloss": "to accept; to receive (an application); to take up"
+        },
+        {
+          "word": "気軽",
+          "reading": "きがる",
+          "entryId": 1222110,
+          "gloss": "carefree; buoyant; lighthearted"
+        }
+      ],
+      "questions": [
+        {
+          "type": "purpose",
+          "stem": "この広告の目的は何か。",
+          "choices": [
+            "週末に野菜作りを体験するプランの参加者を集めること",
+            "農園でとれた野菜を売ること",
+            "農園で働くスタッフを募集すること",
+            "送迎バスの時間が変わったことを知らせること"
+          ],
+          "answer": 0,
+          "explanation": "The ad says ひかり農園 is recruiting participants (参加者を募集しています) for its weekend farming plan and explains the details. Selling vegetables or hiring staff is not the aim."
+        },
+        {
+          "type": "detail",
+          "stem": "参加費について、正しいものはどれか。",
+          "choices": [
+            "一回の参加ごとに三万円かかる",
+            "昼食代は別に払わなければならない",
+            "半年間で一人三万円で、小学生以下は無料だ",
+            "家族で参加すると全員が無料になる"
+          ],
+          "answer": 2,
+          "explanation": "The fee is 30,000 yen per person for the six months, including lunch, and children of primary-school age or younger are free. It is not per visit, and families are welcome but not free."
+        },
+        {
+          "type": "detail",
+          "stem": "参加者が自分で用意しなければならないものは何か。",
+          "choices": [
+            "作業用の手袋",
+            "汚れてもよい服",
+            "畑で使う道具",
+            "野菜の種"
+          ],
+          "answer": 1,
+          "explanation": "Tools and work gloves are all provided by the farm, so participants only need to come in clothes that can get dirty (汚れてもよい服装でお越しください)."
+        },
+        {
+          "type": "inference",
+          "stem": "農業の経験がない人について、広告から考えられることはどれか。",
+          "choices": [
+            "説明会に必ず出なければならない",
+            "参加できるのは家族連れだけだ",
+            "別の初心者向けのプランに申し込む必要がある",
+            "去年も多くの参加者が初めてだったので、安心して参加できる"
+          ],
+          "answer": 3,
+          "explanation": "The ad says experienced staff teach carefully so beginners can join with confidence, and about 80% of last year's participants were new to farm work. The information session is optional."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-013",
+      "level": "N2",
+      "genre": "notice",
+      "topic": "community",
+      "title": "中央図書館休館のお知らせ",
+      "titleEn": "Notice: the central library will close for renovation",
+      "body": "市立中央図書館をご利用の皆様へ\n中央図書館は、建物が古くなったことに伴う改修工事のため、下記の期間、休館いたします。皆様には大変ご不便をおかけしますが、ご理解とご協力をお願いいたします。\n一、休館期間\n来年の一月十日から六月三十日まで(予定)です。工事の進み具合によっては、期間が延びる場合があります。その際は、図書館のホームページと市の広報誌でお知らせします。\n二、本の返却について\n休館中は、図書館の建物に入ることはできません。借りている本は、正面玄関の横に置く返却ポストに返してください。ただし、CDやDVDは壊れるおそれがあるため、返却ポストには入れず、市内の分館の窓口に返してください。\n三、休館中の貸し出しについて\n休館中も、中央図書館の本を、東分館と西分館の二か所で受け取ることができます。インターネットで予約した本が分館に届くと、メールでお知らせします。なお、分館は中央図書館より開館時間が短いので、ご注意ください。\n四、返却期限の延長について\n休館の前に借りた本の返却期限は、自動的に七月十四日まで延長されます。特別な手続きは必要ありません。\n五、新しくなる図書館について\n工事の後には、子ども向けの読書スペースが今の二倍に広がるほか、パソコンを使って勉強や仕事ができる席を新しく設けます。また、車いすの方も利用しやすいように、入口の段差をなくし、エレベーターを設置します。\n六、臨時の読書コーナーについて\n休館中は、市役所の一階にある市民ホールの一部を使って、臨時の読書コーナーを開きます。ここでは、新聞や雑誌を読むことができますが、本の貸し出しや受け取りは行いませんので、ご注意ください。開いている時間は、平日の午前九時から午後五時までです。\n休館中のお問い合わせは、東分館までお願いいたします。",
+      "names": [
+        "市立中央図書館",
+        "中央図書館",
+        "東分館",
+        "西分館"
+      ],
+      "vocabulary": [
+        {
+          "word": "改修",
+          "reading": "かいしゅう",
+          "entryId": 1200880,
+          "gloss": "repair; improvement"
+        },
+        {
+          "word": "伴う",
+          "reading": "ともなう",
+          "entryId": 1478370,
+          "gloss": "to accompany; to go hand in hand with; to be consequent upon"
+        },
+        {
+          "word": "休館",
+          "reading": "きゅうかん",
+          "entryId": 1836050,
+          "gloss": "closure (of a library, museum, etc.)"
+        },
+        {
+          "word": "延びる",
+          "reading": "のびる",
+          "entryId": 1358870,
+          "gloss": "to be extended; to be prolonged"
+        },
+        {
+          "word": "広報誌",
+          "reading": "こうほうし",
+          "entryId": 1935090,
+          "gloss": "PR brochure; public relations magazine"
+        },
+        {
+          "word": "返却",
+          "reading": "へんきゃく",
+          "entryId": 1512180,
+          "gloss": "return (of something borrowed or entrusted); returning; giving back"
+        },
+        {
+          "word": "分館",
+          "reading": "ぶんかん",
+          "entryId": 1503330,
+          "gloss": "annex (to a building); annexe"
+        },
+        {
+          "word": "延長",
+          "reading": "えんちょう",
+          "entryId": 1176510,
+          "gloss": "extension; elongation; prolongation"
+        },
+        {
+          "word": "手続き",
+          "reading": "てつづき",
+          "entryId": 1598350,
+          "gloss": "procedure; process; proceedings"
+        },
+        {
+          "word": "スペース",
+          "reading": "スペース",
+          "entryId": 1072810,
+          "gloss": "space; room"
+        },
+        {
+          "word": "設ける",
+          "reading": "もうける",
+          "entryId": 1386000,
+          "gloss": "to prepare; to provide"
+        },
+        {
+          "word": "段差",
+          "reading": "だんさ",
+          "entryId": 1419960,
+          "gloss": "step; difference in floor level"
+        },
+        {
+          "word": "設置",
+          "reading": "せっち",
+          "entryId": 1386050,
+          "gloss": "installation; setting up"
+        },
+        {
+          "word": "臨時",
+          "reading": "りんじ",
+          "entryId": 1555610,
+          "gloss": "temporary; provisional; interim"
+        },
+        {
+          "word": "コーナー",
+          "reading": "コーナー",
+          "entryId": 1049110,
+          "gloss": "corner; section (area set aside for something)"
+        }
+      ],
+      "questions": [
+        {
+          "type": "purpose",
+          "stem": "このお知らせの主な目的は何か。",
+          "choices": [
+            "新しい図書館の建設計画について意見を集めること",
+            "図書館の開館時間が変わることを知らせること",
+            "工事による休館と、休館中のサービスについて知らせること",
+            "市民ホールで開くイベントを案内すること"
+          ],
+          "answer": 2,
+          "explanation": "The notice announces the closure for renovation and explains returns, borrowing, due-date extensions and the temporary corner during the closure. It does not ask for opinions or advertise an event."
+        },
+        {
+          "type": "detail",
+          "stem": "休館中にDVDを返したいときは、どうすればよいか。",
+          "choices": [
+            "市内の分館の窓口に返す",
+            "正面玄関の横の返却ポストに入れる",
+            "市民ホールの臨時コーナーに持って行く",
+            "図書館が開くまで待つ"
+          ],
+          "answer": 0,
+          "explanation": "Item 2: CDs and DVDs may break, so they should not go in the return box but to a branch library counter (分館の窓口)."
+        },
+        {
+          "type": "detail",
+          "stem": "休館の前に借りた本について、正しいものはどれか。",
+          "choices": [
+            "一月十日までに返さなければならない",
+            "手続きをしなくても、返却期限が七月十四日まで延びる",
+            "期限を延ばすには分館で手続きが必要だ",
+            "休館中は返すことができない"
+          ],
+          "answer": 1,
+          "explanation": "Item 4: the due date is automatically extended to July 14 and no special procedure is needed (特別な手続きは必要ありません). Books can be returned to the return box during the closure."
+        },
+        {
+          "type": "inference",
+          "stem": "休館中にインターネットで予約した本は、どこで受け取れるか。",
+          "choices": [
+            "中央図書館の正面玄関",
+            "市役所の市民ホール",
+            "自宅に送ってもらえる",
+            "東分館か西分館"
+          ],
+          "answer": 3,
+          "explanation": "Item 3 says central library books can be picked up at the east and west branches, with an email when they arrive. Item 6 says the temporary corner at city hall does not handle pickups."
+        },
+        {
+          "type": "detail",
+          "stem": "工事の後の図書館について、本文に書かれていないものはどれか。",
+          "choices": [
+            "子ども向けの読書スペースが広くなる",
+            "エレベーターが設置される",
+            "開館時間が長くなる",
+            "パソコンを使える席ができる"
+          ],
+          "answer": 2,
+          "explanation": "Item 5 mentions a doubled children's reading space, new seats for computer work, removing the entrance step and adding a lift. Longer opening hours are not mentioned."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-014",
+      "level": "N2",
+      "genre": "essay",
+      "topic": "culture",
+      "title": "手書きの年賀状",
+      "titleEn": "Handwritten New Year's cards",
+      "body": "今年も年賀状の季節がやってきた。といっても、ここ数年、私が出す年賀状の数は減る一方だ。友人の多くは携帯電話のメッセージで新年のあいさつを済ませるようになり、紙の年賀状をやり取りするのは、親戚や昔の恩師など、ごく限られた人たちだけになった。\n正直に言えば、年賀状を書くのは面倒だと思うこともある。住所を調べ、一枚一枚にひと言を書き添えるには、それなりの時間がかかる。携帯電話なら一瞬で送れるのに、なぜわざわざ紙に書くのかと聞かれれば、うまく答える自信はない。\nそれでも私が年賀状をやめられないのは、ある一枚のはがきがきっかけである。大学を卒業して数年たったころ、仕事がうまくいかず、自信をなくしていた時期があった。そんな年の正月、中学時代の担任の先生から届いた年賀状に、「あなたらしく、ゆっくり進めばいい」と、少し震えた字で書かれていたのだ。\n印刷されたあいさつの横に添えられた、たった一行の手書きの言葉。それを読んだとき、なぜか涙が出そうになった。先生は、何年も会っていない私のことを覚えていて、私のためだけにその言葉を選んでくれたのだ。そう思うと、胸が温かくなった。その年賀状は、今も机の引き出しに大切にしまってあり、仕事で落ち込んだときには、ときどき取り出して読み返している。\nメールやメッセージは便利で、すぐに届く。しかし、手書きの文字には、書いた人の時間と気持ちがそのまま残っている。字の形やペンの強さから、相手の様子が伝わってくることもある。\n効率を考えれば、年賀状はもう必要ないのかもしれない。しかし、手間がかかるからこそ伝わるものもあるはずだ。今年も私は、数は少なくても、一枚ずつ心を込めて書こうと思っている。",
+      "cast": [
+        {
+          "name": "先生",
+          "voice": "male-senior"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "年賀状",
+          "reading": "ねんがじょう",
+          "entryId": 1468250,
+          "gloss": "New Year's card"
+        },
+        {
+          "word": "携帯",
+          "reading": "けいたい",
+          "entryId": 1250680,
+          "gloss": "mobile phone (short for 携帯電話); carrying"
+        },
+        {
+          "word": "メッセージ",
+          "reading": "メッセージ",
+          "entryId": 1133570,
+          "gloss": "message"
+        },
+        {
+          "word": "親戚",
+          "reading": "しんせき",
+          "entryId": 1365230,
+          "gloss": "relative; relation; kin"
+        },
+        {
+          "word": "恩師",
+          "reading": "おんし",
+          "entryId": 1183160,
+          "gloss": "teacher (to whom one owes a debt of gratitude); mentor; one's former teacher"
+        },
+        {
+          "word": "書き添える",
+          "reading": "かきそえる",
+          "entryId": 1589940,
+          "gloss": "to add; to write a postscript"
+        },
+        {
+          "word": "それなり",
+          "reading": "それなり",
+          "entryId": 1007030,
+          "gloss": "in itself; as it is; in its own way"
+        },
+        {
+          "word": "わざわざ",
+          "reading": "わざわざ",
+          "entryId": 1606710,
+          "gloss": "expressly; especially; specially"
+        },
+        {
+          "word": "自信",
+          "reading": "じしん",
+          "entryId": 1317970,
+          "gloss": "self-confidence; confidence (in oneself)"
+        },
+        {
+          "word": "震える",
+          "reading": "ふるえる",
+          "entryId": 1366310,
+          "gloss": "to shiver; to shake; to quake"
+        },
+        {
+          "word": "添える",
+          "reading": "そえる",
+          "entryId": 1596490,
+          "gloss": "to add; to attach"
+        },
+        {
+          "word": "落ち込む",
+          "reading": "おちこむ",
+          "entryId": 1548570,
+          "gloss": "to feel down; to feel sad; to be depressed"
+        },
+        {
+          "word": "効率",
+          "reading": "こうりつ",
+          "entryId": 1275210,
+          "gloss": "efficiency"
+        },
+        {
+          "word": "手間",
+          "reading": "てま",
+          "entryId": 1327410,
+          "gloss": "time and effort; trouble"
+        },
+        {
+          "word": "込める",
+          "reading": "こめる",
+          "entryId": 1288790,
+          "gloss": "to put into (心を込める: to put one's heart into)"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "筆者が最も言いたいことは何か。",
+          "choices": [
+            "年賀状は時間がかかるので、やめたほうがよい",
+            "手間がかかっても、手書きだからこそ伝わる気持ちがある",
+            "メッセージで新年のあいさつをするのは失礼だ",
+            "昔の先生には毎年あいさつをしなければならない"
+          ],
+          "answer": 1,
+          "explanation": "The last paragraph: even if cards are not needed for efficiency, some things are conveyed precisely because they take effort (手間がかかるからこそ伝わるものもある). The writer does not call messages rude or cards a duty."
+        },
+        {
+          "type": "detail",
+          "stem": "筆者が年賀状をやめられなくなったきっかけは何か。",
+          "choices": [
+            "友人から年賀状を出すように頼まれたこと",
+            "年賀状を書く仕事をしていたこと",
+            "携帯電話を持っていなかったこと",
+            "自信をなくしていたときに、先生から手書きの言葉をもらったこと"
+          ],
+          "answer": 3,
+          "explanation": "Paragraph 3: when work was going badly and the writer had lost confidence, a card from the junior-high homeroom teacher carried a handwritten line of encouragement."
+        },
+        {
+          "type": "inference",
+          "stem": "筆者が涙が出そうになったのはなぜか。",
+          "choices": [
+            "先生が自分を覚えていて、自分のために言葉を選んでくれたと感じたから",
+            "先生の字が震えていて、病気だとわかったから",
+            "印刷されたあいさつしか書かれていなかったから",
+            "何年も先生に年賀状を出していなかったから"
+          ],
+          "answer": 0,
+          "explanation": "Paragraph 4 says the teacher remembered the writer after years and chose those words just for them, which warmed their heart. The text never says the teacher was ill."
+        },
+        {
+          "type": "vocabulary",
+          "stem": "「年賀状の数は減る一方だ」とは、どういう意味か。",
+          "choices": [
+            "年賀状の数が、年によって増えたり減ったりしている",
+            "年賀状の数が、急に半分になった",
+            "年賀状の数が、ずっと減り続けている",
+            "年賀状の数は、もうこれ以上減らない"
+          ],
+          "answer": 2,
+          "explanation": "～一方だ means something keeps moving in one direction; here the number of cards keeps going down year after year."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-015",
+      "level": "N2",
+      "genre": "email",
+      "topic": "education",
+      "title": "推薦状のお願い",
+      "titleEn": "Asking for a letter of recommendation",
+      "body": "経済学部 田中先生\n突然のご連絡、失礼いたします。経済学部三年の山田花子です。今年の四月から、先生のゼミでお世話になっております。\n本日は、推薦状のお願いがあってご連絡いたしました。\n私は来年の夏から一年間、海外の大学に留学したいと考えており、大学の交換留学プログラムに応募する予定です。応募には、指導を受けている先生の推薦状が一通必要とされています。ゼミでの私の研究の様子を最もよくご存じなのは田中先生だと考え、ぜひ先生にお願いしたいと思いました。\n留学先では、環境政策と地域経済の関係について学びたいと考えています。ゼミの発表で扱った、地方の小さな町がごみを減らすことで経済的な効果を上げた例について、さらに詳しく調べることが目標です。帰国した後は、留学先で学んだことをもとにゼミでの研究を続け、卒業論文にまとめたいと考えております。\n応募の締め切りは十一月三十日で、推薦状は先生から直接、大学の国際交流センターへ提出していただく形になっております。先生もお仕事が多い時期に大変恐縮ですが、十一月二十日ごろまでにご準備いただくことは可能でしょうか。\nもしお引き受けいただける場合は、留学の計画書と成績証明書をお渡ししたいと思います。また、必要でしたら、一度研究室に伺って、留学の目的について直接ご説明いたします。推薦状の書式は、国際交流センターのホームページから印刷できるようになっておりますが、念のため、このメールにも添付いたしました。\nなお、ご都合が難しい場合も、正直にお知らせいただければ幸いです。その場合は、ほかの先生にご相談したいと思います。\n勝手なお願いで申し訳ございませんが、どうぞよろしくお願いいたします。\n経済学部三年 山田花子",
+      "names": [
+        "経済学部",
+        "田中",
+        "山田花子",
+        "山田",
+        "花子",
+        "国際交流センター"
+      ],
+      "vocabulary": [
+        {
+          "word": "ゼミ",
+          "reading": "ゼミ",
+          "entryId": 1075160,
+          "gloss": "seminar"
+        },
+        {
+          "word": "推薦状",
+          "reading": "すいせんじょう",
+          "entryId": 1371190,
+          "gloss": "letter of invitation; letter of recommendation; reference"
+        },
+        {
+          "word": "応募",
+          "reading": "おうぼ",
+          "entryId": 1180030,
+          "gloss": "application; subscription; entry (competition, raffle, etc.)"
+        },
+        {
+          "word": "指導",
+          "reading": "しどう",
+          "entryId": 1309950,
+          "gloss": "guidance; leadership; instruction"
+        },
+        {
+          "word": "政策",
+          "reading": "せいさく",
+          "entryId": 1375950,
+          "gloss": "political measures; policy"
+        },
+        {
+          "word": "卒業論文",
+          "reading": "そつぎょうろんぶん",
+          "entryId": 1699960,
+          "gloss": "graduation thesis"
+        },
+        {
+          "word": "締め切り",
+          "reading": "しめきり",
+          "entryId": 1594590,
+          "gloss": "deadline; closing; cut-off"
+        },
+        {
+          "word": "提出",
+          "reading": "ていしゅつ",
+          "entryId": 1436410,
+          "gloss": "presentation (of documents); submission (of an application, report, etc.); production (e.g. of evidence)"
+        },
+        {
+          "word": "恐縮",
+          "reading": "きょうしゅく",
+          "entryId": 1236740,
+          "gloss": "feeling (much) obliged; being (very) grateful; being thankful"
+        },
+        {
+          "word": "引き受け",
+          "reading": "ひきうけ",
+          "entryId": 1613400,
+          "gloss": "undertaking; underwriting; acceptance"
+        },
+        {
+          "word": "成績証明書",
+          "reading": "せいせきしょうめいしょ",
+          "entryId": 1939970,
+          "gloss": "transcript of results; report of results"
+        },
+        {
+          "word": "書式",
+          "reading": "しょしき",
+          "entryId": 1344060,
+          "gloss": "prescribed form (of writing); format"
+        },
+        {
+          "word": "念のため",
+          "reading": "ねんのため",
+          "entryId": 1469350,
+          "gloss": "just to make sure; just to be sure; for confirmation"
+        },
+        {
+          "word": "添付",
+          "reading": "てんぷ",
+          "entryId": 1440880,
+          "gloss": "attaching (documents, etc.); appending; affixing"
+        }
+      ],
+      "questions": [
+        {
+          "type": "purpose",
+          "stem": "このメールの主な目的は何か。",
+          "choices": [
+            "留学の説明会の日程を知らせること",
+            "ゼミの発表の内容について質問すること",
+            "卒業論文の締め切りを延ばしてもらうこと",
+            "留学に応募するための推薦状を書いてもらうこと"
+          ],
+          "answer": 3,
+          "explanation": "Yamada writes 推薦状のお願いがあってご連絡いたしました: she needs a recommendation letter for the exchange programme. The other choices are not requests she makes."
+        },
+        {
+          "type": "detail",
+          "stem": "推薦状は、どのように提出することになっているか。",
+          "choices": [
+            "山田さんが自分で国際交流センターに持って行く",
+            "田中先生が直接国際交流センターに提出する",
+            "留学先の大学に郵便で送る",
+            "メールで山田さんに送る"
+          ],
+          "answer": 1,
+          "explanation": "The email says 推薦状は先生から直接、大学の国際交流センターへ提出していただく形. Yamada does not submit it herself."
+        },
+        {
+          "type": "detail",
+          "stem": "山田さんが留学先で学びたいことは何か。",
+          "choices": [
+            "環境政策と地域経済の関係",
+            "外国語の教え方",
+            "大きな会社の経営",
+            "海外の大学の歴史"
+          ],
+          "answer": 0,
+          "explanation": "She writes 環境政策と地域経済の関係について学びたい, building on a case she presented in the seminar."
+        },
+        {
+          "type": "inference",
+          "stem": "田中先生が推薦状を引き受けた場合、山田さんは次に何をすると考えられるか。",
+          "choices": [
+            "ほかの先生に相談する",
+            "応募をやめる",
+            "留学の計画書と成績証明書を先生に渡す",
+            "推薦状の書式を国際交流センターにもらいに行く"
+          ],
+          "answer": 2,
+          "explanation": "She says that if he accepts, she will hand over her study plan and transcript. Consulting another teacher is only if he cannot, and the form is already attached."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-016",
+      "level": "N2",
+      "genre": "story",
+      "topic": "light fiction",
+      "title": "終点の町",
+      "titleEn": "The town at the end of the line",
+      "body": "仕事の帰り、僕はいつものように電車の座席に座ると、すぐに眠ってしまった。ここ一か月、新しい商品の準備で、毎晩帰りが遅かったのだ。\n目を覚ますと、電車は止まっていて、車内には誰もいなかった。窓の外は真っ暗で、見覚えのない小さな駅の明かりだけが見えた。慌ててホームに降りると、駅の名前を書いた看板には、聞いたこともない町の名前があった。どうやら、終点まで来てしまったらしい。\n改札に向かうと、年配の駅員が一人、ストーブの前でお茶を飲んでいた。\n「お客さん、寝過ごしましたね。残念ですが、今日の上りの電車はもう終わりましたよ。」\n駅員はそう言って、申し訳なさそうに笑った。僕がタクシーを呼べないかと尋ねると、駅員は首を横に振った。この町には、夜に走るタクシーはないのだという。ホテルもなく、泊まれるところは駅の前の古い旅館が一軒だけだった。\n駅員に教えてもらった旅館は、歩いて三分ほどのところにあった。夜遅くの突然の客であるにもかかわらず、旅館のおかみさんは嫌な顔一つせず、温かい味噌汁とご飯を用意してくれた。\n翌朝、目を覚まして窓を開けると、目の前に海が広がっていた。昨夜は暗くて何も見えなかったが、駅は海のすぐそばにあったのだ。朝日を受けて光る海を見ていると、ここ数週間の疲れが、少しずつ溶けていくような気がした。\n始発の電車に乗るために駅へ行くと、昨夜の駅員がホームを掃除していた。\n「よく眠れましたか。この町は何もないところですが、朝の海だけは自慢なんですよ。」\n会社には少し遅れると連絡を入れ、僕は電車の窓から遠ざかっていく海を眺めた。寝過ごしたことは失敗だったが、悪い失敗ではなかった。次の休みには、今度は自分の意思でこの駅まで来てみようと思った。",
+      "cast": [
+        {
+          "name": "駅員",
+          "voice": "male-senior"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "座席",
+          "reading": "ざせき",
+          "entryId": 1291880,
+          "gloss": "seat (esp. in public places or places with assigned seating); seating"
+        },
+        {
+          "word": "見覚え",
+          "reading": "みおぼえ",
+          "entryId": 1604400,
+          "gloss": "memory (of having seen something or someone before); remembrance; recollection"
+        },
+        {
+          "word": "慌てる",
+          "reading": "あわてる",
+          "entryId": 1278830,
+          "gloss": "to become confused (disconcerted, disorganized, disorganised); to be flustered; to panic"
+        },
+        {
+          "word": "終点",
+          "reading": "しゅうてん",
+          "entryId": 1332950,
+          "gloss": "terminus; last stop (e.g. train)"
+        },
+        {
+          "word": "改札",
+          "reading": "かいさつ",
+          "entryId": 1200840,
+          "gloss": "ticket gate"
+        },
+        {
+          "word": "寝過ごす",
+          "reading": "ねすごす",
+          "entryId": 1611100,
+          "gloss": "to oversleep; to sleep past one's stop"
+        },
+        {
+          "word": "尋ねる",
+          "reading": "たずねる",
+          "entryId": 1369940,
+          "gloss": "to ask; to enquire; to inquire"
+        },
+        {
+          "word": "旅館",
+          "reading": "りょかん",
+          "entryId": 1553130,
+          "gloss": "ryokan; traditional Japanese inn"
+        },
+        {
+          "word": "翌朝",
+          "reading": "よくあさ",
+          "entryId": 1585000,
+          "gloss": "next morning"
+        },
+        {
+          "word": "溶ける",
+          "reading": "とける",
+          "entryId": 1546070,
+          "gloss": "to melt; to liquefy; to soften (e.g. through heat)"
+        },
+        {
+          "word": "始発",
+          "reading": "しはつ",
+          "entryId": 1307610,
+          "gloss": "first departure (of the day); first train; first bus"
+        },
+        {
+          "word": "自慢",
+          "reading": "じまん",
+          "entryId": 1318680,
+          "gloss": "pride (in one's achievements, possessions, etc.); self-praise; boast"
+        },
+        {
+          "word": "遠ざかる",
+          "reading": "とおざかる",
+          "entryId": 1177830,
+          "gloss": "to go away; to become more distant; to fade away"
+        },
+        {
+          "word": "眺める",
+          "reading": "ながめる",
+          "entryId": 1428830,
+          "gloss": "to look at; to gaze at; to watch"
+        },
+        {
+          "word": "意思",
+          "reading": "いし",
+          "entryId": 1156610,
+          "gloss": "intention; wish; purpose"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "「僕」が知らない駅に来てしまったのはなぜか。",
+          "choices": [
+            "違う方向の電車に乗ってしまったから",
+            "仕事でその町に行く必要があったから",
+            "電車の中で眠ってしまい、終点まで来てしまったから",
+            "駅員に教えられた駅で降りたから"
+          ],
+          "answer": 2,
+          "explanation": "He fell asleep on the train after weeks of late nights and woke up at the terminus (終点まで来てしまったらしい). He did not take the wrong train or go there for work."
+        },
+        {
+          "type": "detail",
+          "stem": "その夜、「僕」はどこに泊まったか。",
+          "choices": [
+            "駅の前の古い旅館",
+            "駅の近くのホテル",
+            "駅員の家",
+            "駅の待合室"
+          ],
+          "answer": 0,
+          "explanation": "There was no hotel; the only place to stay was an old inn in front of the station, which the station worker told him about. He stayed there and was given miso soup and rice."
+        },
+        {
+          "type": "inference",
+          "stem": "「僕」が「悪い失敗ではなかった」と思ったのはなぜか。",
+          "choices": [
+            "会社に遅れずに行けたから",
+            "旅館の料金がとても安かったから",
+            "駅員に仕事を手伝ってもらえたから",
+            "思いがけず美しい海を見て、疲れが取れたように感じたから"
+          ],
+          "answer": 3,
+          "explanation": "In the morning he found the sea right by the station, and watching it he felt weeks of fatigue melting away. He was actually late for work, and nothing is said about price or help with work."
+        },
+        {
+          "type": "inference",
+          "stem": "最後に「僕」はどうしようと考えているか。",
+          "choices": [
+            "もう電車の中では寝ないようにする",
+            "次の休みに、自分から進んでこの町を訪ねる",
+            "この町に引っ越して住む",
+            "会社を辞めて旅に出る"
+          ],
+          "answer": 1,
+          "explanation": "The last sentence: next holiday he wants to come to this station again, this time by his own choice (自分の意思で). Moving or quitting his job is not mentioned."
+        },
+        {
+          "type": "vocabulary",
+          "stem": "「寝過ごしましたね」の「寝過ごす」とは、どういう意味か。",
+          "choices": [
+            "眠っていて、降りるはずの駅を過ぎてしまうこと",
+            "夜遅くまで起きていること",
+            "よく眠って元気になること",
+            "眠る時間が短すぎること"
+          ],
+          "answer": 0,
+          "explanation": "寝過ごす means to sleep past the right time; here he slept past his stop and ended up at the last station."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-017",
+      "level": "N2",
+      "genre": "manga",
+      "topic": "family",
+      "title": "両親への贈り物",
+      "titleEn": "A gift for our parents",
+      "body": "両親の結婚三十周年を来月に控えて、姉の美咲と弟の大輔は、二人に旅行を贈る計画を立てていた。休日の午後、二人は駅前の喫茶店で、パソコンの画面をのぞき込みながら相談を始めた。二人とも普段は仕事が忙しく、直接会って相談するのは半年ぶりだった。\n美咲「お父さんとお母さん、どこに行きたいと思う?温泉がいいかな、それとも思い切って海外かな。」\n大輔「海外は、お父さんが飛行機が苦手だから無理だと思うよ。前に、十時間以上も狭い席に座っているのは耐えられないって言ってたし。」\n美咲「そうだったね。じゃあ、国内の温泉にしよう。お母さんは昔から山の景色が好きだから、山の中の静かな宿がいいんじゃない?」\n大輔「賛成。でも、予算はどうする?僕はまだ働き始めたばかりだから、あまりたくさんは出せないんだけど。」\n美咲「私が少し多めに出すから、心配しないで。その代わり、宿を探したり、電車の切符を予約したりするのはお願いね。」\n大輔「わかった。……あ、この宿はどうかな。部屋ごとに小さな露天風呂が付いていて、夕食には地元でとれた山菜や川魚の料理が出るんだって。」\n美咲「すてき。駅から宿までの送迎もあるみたいだし、乗り換えも一回だけだから、ここなら二人とも疲れずに行けそうだね。」\n大輔「じゃあ、この宿で決まりだね。予約が埋まらないうちに、今夜のうちに申し込んでおくよ。」\nその夜、二人は夕食の後で、宿の写真を見せながら両親に旅行の計画を打ち明けた。\n母「まあ、ありがとう。でも、あなたたちにそんなにお金を使わせるなんて、なんだか申し訳ないわ。」\n美咲「いいの。子どものころから今まで、いつも心配ばかりかけてきたんだから、たまには二人に恩返しさせてよ。」\n父「……実は、その宿は、三十年前に新婚旅行で泊まったところなんだ。」\n大輔「えっ、本当に?そんな話、今まで一度も聞いたことがなかったよ。」\n母「三十年前と同じ宿に泊まれるなんて。偶然とはいえ、本当にうれしいわね。」\n父は照れくさそうに窓の外を眺めていたが、三十年前の旅行を懐かしく思い出しているのか、その横顔はどこかうれしそうだった。",
+      "cast": [
+        {
+          "name": "美咲",
+          "voice": "female"
+        },
+        {
+          "name": "大輔",
+          "voice": "male"
+        },
+        {
+          "name": "母",
+          "voice": "female"
+        },
+        {
+          "name": "父",
+          "voice": "male-senior"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "周年",
+          "reading": "しゅうねん",
+          "entryId": 1331240,
+          "gloss": "anniversary (counter for years)"
+        },
+        {
+          "word": "控える",
+          "reading": "ひかえる",
+          "entryId": 1279060,
+          "gloss": "to be just ahead of (an event)"
+        },
+        {
+          "word": "思い切る",
+          "reading": "おもいきる",
+          "entryId": 1309320,
+          "gloss": "to take the plunge (思い切って: boldly)"
+        },
+        {
+          "word": "耐える",
+          "reading": "たえる",
+          "entryId": 1211310,
+          "gloss": "to bear; to stand; to endure"
+        },
+        {
+          "word": "露天風呂",
+          "reading": "ろてんぶろ",
+          "entryId": 1560180,
+          "gloss": "open-air bath; rotenburo; rotemburo"
+        },
+        {
+          "word": "地元",
+          "reading": "じもと",
+          "entryId": 1421060,
+          "gloss": "home area; home town"
+        },
+        {
+          "word": "山菜",
+          "reading": "さんさい",
+          "entryId": 1302860,
+          "gloss": "edible wild plants"
+        },
+        {
+          "word": "送迎",
+          "reading": "そうげい",
+          "entryId": 1402770,
+          "gloss": "pick-up and drop-off (transport)"
+        },
+        {
+          "word": "埋まる",
+          "reading": "うまる",
+          "entryId": 1584340,
+          "gloss": "to be filled up; to be fully booked"
+        },
+        {
+          "word": "打ち明ける",
+          "reading": "うちあける",
+          "entryId": 1588130,
+          "gloss": "to confide; to reveal; to disclose"
+        },
+        {
+          "word": "恩返し",
+          "reading": "おんがえし",
+          "entryId": 1183280,
+          "gloss": "paying back a favour; repayment (of an obligation, kindness, etc.)"
+        },
+        {
+          "word": "新婚",
+          "reading": "しんこん",
+          "entryId": 1361820,
+          "gloss": "newly-wed; newly married"
+        },
+        {
+          "word": "偶然",
+          "reading": "ぐうぜん",
+          "entryId": 1246270,
+          "gloss": "coincidence; chance; accident"
+        },
+        {
+          "word": "照れくさい",
+          "reading": "てれくさい",
+          "entryId": 1350900,
+          "gloss": "embarrassing; awkward"
+        },
+        {
+          "word": "横顔",
+          "reading": "よこがお",
+          "entryId": 1180670,
+          "gloss": "profile; face in profile; face seen from the side"
+        }
+      ],
+      "questions": [
+        {
+          "type": "detail",
+          "stem": "二人が海外旅行をやめたのはなぜか。",
+          "choices": [
+            "予算が足りなかったから",
+            "母が温泉に行きたがっていたから",
+            "休みが短すぎたから",
+            "父が長い時間飛行機に乗るのが苦手だから"
+          ],
+          "answer": 3,
+          "explanation": "Daisuke says their father dislikes flying and once said he could not stand sitting in a narrow seat for over ten hours. Budget and holidays are not the reason."
+        },
+        {
+          "type": "detail",
+          "stem": "大輔が担当することになったのは何か。",
+          "choices": [
+            "旅行の費用を多めに出すこと",
+            "宿を探したり、切符を予約したりすること",
+            "両親に計画を話すこと",
+            "両親を駅まで送ること"
+          ],
+          "answer": 1,
+          "explanation": "Misaki will pay more, and in return asks Daisuke to find the inn and book the train tickets (宿を探したり、電車の切符を予約したりするのはお願いね)."
+        },
+        {
+          "type": "detail",
+          "stem": "二人が選んだ宿について、会話に出てこないものはどれか。",
+          "choices": [
+            "部屋ごとに露天風呂が付いている",
+            "夕食に地元の山菜や川魚が出る",
+            "部屋から海が見える",
+            "駅から送迎がある"
+          ],
+          "answer": 2,
+          "explanation": "They mention a private open-air bath, local mountain vegetables and river fish, and a pick-up from the station. A sea view is not mentioned; the inn is in the mountains."
+        },
+        {
+          "type": "inference",
+          "stem": "父が照れくさそうにしていたのはなぜだと考えられるか。",
+          "choices": [
+            "子どもたちが選んだ宿が、三十年前に新婚旅行で泊まった宿だったから",
+            "子どもたちにお金を出させるのが恥ずかしかったから",
+            "旅行に行きたくないと言えなかったから",
+            "飛行機が苦手なことを知られてしまったから"
+          ],
+          "answer": 0,
+          "explanation": "The father reveals the inn is where they stayed on their honeymoon thirty years ago, which the children did not know; he looks embarrassed but happy as he remembers that trip."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-018",
+      "level": "N2",
+      "genre": "academic",
+      "topic": "environment",
+      "title": "ヒートアイランド現象とは",
+      "titleEn": "What is the urban heat island effect?",
+      "body": "都市の気温が周りの郊外よりも高くなる現象を、ヒートアイランド現象と呼ぶ。地図の上で気温の高い地域を色で示すと、都市の部分が海に浮かぶ島のように見えることから、この名前が付けられた。日本の大都市では、この百年の間に平均気温がおよそ三度上がったとされ、これは地球全体の気温の上がり方を大きく上回っている。\nこの現象の主な原因は、大きく三つに分けられる。一つ目は、地面の変化である。土や草に覆われた地面は、水分が蒸発する際に熱を奪うため、温度が上がりにくい。ところが、都市ではその多くがアスファルトやコンクリートに変わり、昼間にためた熱を夜になってもなかなか放さない。\n二つ目は、人の活動から出る熱である。エアコンや自動車、工場などから出る熱は、都市の空気を直接温めている。特に夏は、エアコンの使用が増えるのに伴って外に出される熱も増え、それがさらに気温を上げるという悪い循環が生じている。\n三つ目は、建物が集まっていることである。高い建物が並ぶと風が通りにくくなり、熱が都市の中にこもってしまう。海からの涼しい風が、海岸沿いに建てられた高層の建物によって止められ、内陸の地域の気温が上がっている例も報告されている。\nヒートアイランド現象は、夜になっても気温が下がらない日を増やし、熱中症の危険を高めるなど、人々の健康にも影響を与えている。また、夜に眠れない人が増えることで、生活の質が下がることも指摘されている。\n対策としては、建物の屋上や壁を植物で覆う方法や、雨水が地面にしみ込む道路の利用、風の通り道を考えた街づくりなどが進められている。ただし、一つの方法だけで大きな効果を上げるのは難しく、さまざまな対策を組み合わせていくことが求められている。",
+      "vocabulary": [
+        {
+          "word": "郊外",
+          "reading": "こうがい",
+          "entryId": 1282490,
+          "gloss": "suburb; residential area on the outskirt of a city; commuter belt"
+        },
+        {
+          "word": "現象",
+          "reading": "げんしょう",
+          "entryId": 1263750,
+          "gloss": "phenomenon"
+        },
+        {
+          "word": "上回る",
+          "reading": "うわまわる",
+          "entryId": 1352770,
+          "gloss": "to exceed (esp. figures: profits, unemployment rate, etc.); to surpass; to be more than"
+        },
+        {
+          "word": "覆う",
+          "reading": "おおう",
+          "entryId": 1588840,
+          "gloss": "to cover; to hide; to conceal"
+        },
+        {
+          "word": "蒸発",
+          "reading": "じょうはつ",
+          "entryId": 1356960,
+          "gloss": "evaporation"
+        },
+        {
+          "word": "奪う",
+          "reading": "うばう",
+          "entryId": 1416340,
+          "gloss": "to take (by force); to take away; to snatch"
+        },
+        {
+          "word": "伴う",
+          "reading": "ともなう",
+          "entryId": 1478370,
+          "gloss": "to accompany; to go hand in hand with; to be consequent upon"
+        },
+        {
+          "word": "循環",
+          "reading": "じゅんかん",
+          "entryId": 1341340,
+          "gloss": "circulation; rotation; cycle"
+        },
+        {
+          "word": "生じる",
+          "reading": "しょうじる",
+          "entryId": 1378650,
+          "gloss": "to arise; to occur"
+        },
+        {
+          "word": "こもる",
+          "reading": "こもる",
+          "entryId": 1593430,
+          "gloss": "to be trapped inside (of heat or air)"
+        },
+        {
+          "word": "内陸",
+          "reading": "ないりく",
+          "entryId": 1459500,
+          "gloss": "inland"
+        },
+        {
+          "word": "熱中症",
+          "reading": "ねっちゅうしょう",
+          "entryId": 2097700,
+          "gloss": "heatstroke"
+        },
+        {
+          "word": "指摘",
+          "reading": "してき",
+          "entryId": 1309940,
+          "gloss": "pointing out; remark"
+        },
+        {
+          "word": "しみ込む",
+          "reading": "しみこむ",
+          "entryId": 1391140,
+          "gloss": "to soak into; to sink into; to seep into"
+        },
+        {
+          "word": "組み合わせる",
+          "reading": "くみあわせる",
+          "entryId": 1397480,
+          "gloss": "to put together; to combine; to join together"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "この文章は主に何について説明しているか。",
+          "choices": [
+            "ヒートアイランド現象の原因と影響、そして対策",
+            "地球全体の気温が上がっている理由",
+            "エアコンの正しい使い方",
+            "都市に高い建物を建てる方法"
+          ],
+          "answer": 0,
+          "explanation": "The text defines the heat island effect, gives three causes, describes health effects, and lists countermeasures. Global warming, air-conditioner use and building methods are only parts of the explanation."
+        },
+        {
+          "type": "detail",
+          "stem": "「ヒートアイランド」という名前が付けられた理由は何か。",
+          "choices": [
+            "海に近い都市でよく起きるから",
+            "島の気温が都市より高いから",
+            "気温の高い都市の部分が、地図の上で島のように見えるから",
+            "最初に島で発見された現象だから"
+          ],
+          "answer": 2,
+          "explanation": "Paragraph 1: when warm areas are coloured on a map, the city looks like an island floating in the sea, hence the name."
+        },
+        {
+          "type": "detail",
+          "stem": "土や草に覆われた地面の温度が上がりにくいのはなぜか。",
+          "choices": [
+            "昼間に熱をためて夜に放すから",
+            "建物の影になっているから",
+            "風がよく通るから",
+            "水分が蒸発するときに熱を奪うから"
+          ],
+          "answer": 3,
+          "explanation": "Paragraph 2 says such ground takes away heat when its water evaporates (水分が蒸発する際に熱を奪う). Storing heat and releasing it at night is what asphalt and concrete do."
+        },
+        {
+          "type": "reference",
+          "stem": "「悪い循環」とは、どのようなことを指しているか。",
+          "choices": [
+            "建物が増えて、風が通らなくなること",
+            "エアコンを使うと外に熱が出て気温が上がり、さらにエアコンが使われること",
+            "夜に眠れない人が増えて、生活の質が下がること",
+            "雨水が地面にしみ込まなくなること"
+          ],
+          "answer": 1,
+          "explanation": "In paragraph 3, more air-conditioner use releases more heat outside, which raises the temperature further, which leads to even more air-conditioner use. The other choices are separate points."
+        },
+        {
+          "type": "inference",
+          "stem": "対策について、筆者はどのように考えているか。",
+          "choices": [
+            "植物で建物を覆えば、問題はほぼ解決する",
+            "対策はまだ一つも行われていない",
+            "一つの方法だけでは難しく、いくつかを組み合わせる必要がある",
+            "対策よりも、郊外に住むことを勧めるべきだ"
+          ],
+          "answer": 2,
+          "explanation": "The last paragraph says it is hard to get a big effect from one method alone, so various measures must be combined (組み合わせていくことが求められている)."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-019",
+      "level": "N2",
+      "genre": "news",
+      "topic": "work",
+      "title": "機械会社が週休三日制を試験導入へ",
+      "titleEn": "Machinery company to trial a four-day work week",
+      "body": "ある県の中堅の機械会社は今月、社員が一週間に三日休むことができる週休三日制を、十月から試験的に導入すると発表した。人手不足が続く中、働きやすい環境を作ることで、優秀な人を集めるのがねらいだ。\n対象となるのは、工場の生産ラインを除く事務や設計、営業などの部署で働く社員のうち、希望する人である。社員は二つの型から一つを選ぶ。一つは、一日の労働時間を二時間延ばす代わりに、給料は今までと変わらない型である。もう一つは、労働時間を短くする代わりに、給料も一割ほど減る型だ。\n会社によると、今年の春に社員に対して行った調査では、約六割が週休三日制に興味があると答えた。特に、子育てや親の介護をしている社員からは、平日に家族のための時間が取れるようになるという期待の声が多かったという。\n一方で、問題もある。休みの日が社員によって異なるため、取引先からの問い合わせにすぐ対応できなくなるおそれがある。また、仕事が特定の社員に偏るのではないかと心配する声も出ている。このため会社は、仕事の内容を部署の中で共有する仕組みを作り、誰が休んでも対応できるようにするという。\n同じような制度は、大企業を中心に少しずつ広がっている。国も、多様な働き方を進める立場から、こうした制度を取り入れる会社を支援する方針を示している。先に導入した会社の中には、会議を減らすなど仕事のやり方を見直した結果、社員一人あたりの生産性が上がったところもある。ただし、休みが増えた分、残りの日の仕事が忙しくなり、かえって疲れるようになったという社員の声もある。制度をうまく運用するには、さらに工夫が必要だとされる。\n人事部の担当者は「半年間の結果を見て、全社員に広げるかどうかを判断したい」と話している。",
+      "cast": [
+        {
+          "name": "担当者",
+          "voice": "male"
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "中堅",
+          "reading": "ちゅうけん",
+          "entryId": 1424090,
+          "gloss": "mid-sized; mid-level"
+        },
+        {
+          "word": "導入",
+          "reading": "どうにゅう",
+          "entryId": 1453790,
+          "gloss": "introduction; bringing in; installation"
+        },
+        {
+          "word": "人手不足",
+          "reading": "ひとでぶそく",
+          "entryId": 1368010,
+          "gloss": "labour shortage; shortage of workers"
+        },
+        {
+          "word": "優秀",
+          "reading": "ゆうしゅう",
+          "entryId": 1539230,
+          "gloss": "superior; excellent; brilliant"
+        },
+        {
+          "word": "部署",
+          "reading": "ぶしょ",
+          "entryId": 1603140,
+          "gloss": "one's post; one's station; department"
+        },
+        {
+          "word": "労働",
+          "reading": "ろうどう",
+          "entryId": 1606450,
+          "gloss": "labor; labour; work"
+        },
+        {
+          "word": "介護",
+          "reading": "かいご",
+          "entryId": 1198060,
+          "gloss": "nursing; care; caregiving"
+        },
+        {
+          "word": "取引",
+          "reading": "とりひき",
+          "entryId": 1599120,
+          "gloss": "transactions; dealings; business"
+        },
+        {
+          "word": "対応",
+          "reading": "たいおう",
+          "entryId": 1409840,
+          "gloss": "dealing with; responding to"
+        },
+        {
+          "word": "偏る",
+          "reading": "かたよる",
+          "entryId": 1590420,
+          "gloss": "to be unevenly concentrated; to be lopsided"
+        },
+        {
+          "word": "共有",
+          "reading": "きょうゆう",
+          "entryId": 1235240,
+          "gloss": "joint ownership; co-ownership; sharing (e.g. a viewpoint)"
+        },
+        {
+          "word": "仕組み",
+          "reading": "しくみ",
+          "entryId": 1594180,
+          "gloss": "structure; construction; arrangement"
+        },
+        {
+          "word": "多様",
+          "reading": "たよう",
+          "entryId": 1408100,
+          "gloss": "diverse; various"
+        },
+        {
+          "word": "生産性",
+          "reading": "せいさんせい",
+          "entryId": 1379030,
+          "gloss": "productivity"
+        },
+        {
+          "word": "運用",
+          "reading": "うんよう",
+          "entryId": 1173090,
+          "gloss": "operation; running (of a system)"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "この記事は主に何を伝えているか。",
+          "choices": [
+            "国が週休三日制を法律で決めたこと",
+            "ある会社が週休三日制を試験的に始めること",
+            "工場の生産ラインで人が足りなくなっていること",
+            "社員の給料が一割下がること"
+          ],
+          "answer": 1,
+          "explanation": "The article reports that a mid-sized machinery company will trial a four-day work week from October. The government only supports such systems, and the pay cut applies to just one optional type."
+        },
+        {
+          "type": "detail",
+          "stem": "社員が選べる二つの型について、正しいものはどれか。",
+          "choices": [
+            "どちらの型を選んでも、給料は変わらない",
+            "どちらの型でも、一日の労働時間は同じだ",
+            "給料を変えない型では、労働時間が短くなる",
+            "労働時間を短くする型では、給料も減る"
+          ],
+          "answer": 3,
+          "explanation": "Type 1: two more hours a day with the same pay. Type 2: shorter working hours with about 10% less pay. So only the shorter-hours type reduces pay."
+        },
+        {
+          "type": "detail",
+          "stem": "この制度の対象になるのはどんな社員か。",
+          "choices": [
+            "工場の生産ライン以外の部署で働き、希望する社員",
+            "子育てや介護をしているすべての社員",
+            "工場の生産ラインで働く社員",
+            "入社して一年以上の社員"
+          ],
+          "answer": 0,
+          "explanation": "Paragraph 2: employees in office, design, sales and similar departments, excluding the factory production line, who wish to take part. Carers expressed interest but are not a separate target group."
+        },
+        {
+          "type": "purpose",
+          "stem": "会社が仕事の内容を部署の中で共有する仕組みを作るのは、何のためか。",
+          "choices": [
+            "会議の数を増やすため",
+            "社員の給料を決めるため",
+            "誰が休んでも取引先などに対応できるようにするため",
+            "新しい社員を集めるため"
+          ],
+          "answer": 2,
+          "explanation": "Because days off differ between employees, client enquiries might not be handled quickly, so the company will share work within departments so that it can respond whoever is off (誰が休んでも対応できるように)."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    },
+    {
+      "id": "gr-n2-020",
+      "level": "N2",
+      "genre": "editorial",
+      "topic": "society",
+      "title": "地方の交通を誰が支えるのか",
+      "titleEn": "Who will keep rural transport running?",
+      "body": "地方で、バスや鉄道の路線が次々となくなっている。利用する人が減ったことに伴い、多くのバス会社は赤字が続き、運転手の不足も深刻になっている。会社としては、利用者の少ない路線を減らさざるを得ないのが実情だろう。\nしかし、路線がなくなって最も困るのは、自分で車を運転できない人たちである。特に高齢者にとって、バスは病院や買い物に行くための大切な足だ。家族に送ってもらえる人ばかりではなく、外に出る機会が減ったことで、体が弱ってしまう人もいるという。また、通学に路線バスを使っている高校生にとっても、バスがなくなれば、家族の送り迎えに頼るか、学校の近くに下宿するしかなくなる。公共交通の問題は、単なる会社の経営の問題ではなく、地域の暮らしそのものの問題なのである。\nこうした中、各地で新しい取り組みも始まっている。予約があったときだけ小さな車を走らせる方法や、地域の住民が運転手となって近所の人を運ぶ仕組みなどである。国も、運転手がいなくても走る自動運転のバスを、地方で実際に使う実験を進めている。\nただし、こうした方法にも限界はある。予約の手続きが難しいと感じる高齢者は少なくないし、住民が運転手を務める仕組みは、担い手が年を取れば続けることが難しくなる。技術だけで問題がすべて解決するわけではない。自動運転のバスも、費用や安全の面で、多くの地域で使えるようになるまでには、まだ時間がかかりそうだ。\n大切なのは、地域の交通を誰が、どのように支えていくのかを、住民自身が考えることではないだろうか。路線がなくなってから困るのではなく、普段から意識してバスや電車を利用することも、一つの支え方である。自治体と会社、そして住民が話し合い、それぞれの地域に合った形を探していくことが求められている。",
+      "vocabulary": [
+        {
+          "word": "路線",
+          "reading": "ろせん",
+          "entryId": 1560040,
+          "gloss": "route (bus, train, air, etc.); line"
+        },
+        {
+          "word": "伴う",
+          "reading": "ともなう",
+          "entryId": 1478370,
+          "gloss": "to accompany; to go hand in hand with; to be consequent upon"
+        },
+        {
+          "word": "赤字",
+          "reading": "あかじ",
+          "entryId": 1383440,
+          "gloss": "(being in) the red; deficit"
+        },
+        {
+          "word": "深刻",
+          "reading": "しんこく",
+          "entryId": 1362730,
+          "gloss": "serious; severe; grave"
+        },
+        {
+          "word": "実情",
+          "reading": "じつじょう",
+          "entryId": 1595260,
+          "gloss": "real condition; actual circumstances; actual state of affairs"
+        },
+        {
+          "word": "高齢者",
+          "reading": "こうれいしゃ",
+          "entryId": 1657250,
+          "gloss": "old person; elderly person; senior citizen"
+        },
+        {
+          "word": "弱る",
+          "reading": "よわる",
+          "entryId": 1324650,
+          "gloss": "to weaken; to grow weak; to wane"
+        },
+        {
+          "word": "送り迎え",
+          "reading": "おくりむかえ",
+          "entryId": 1709670,
+          "gloss": "seeing someone off and later welcoming them back; taking someone to and fro"
+        },
+        {
+          "word": "下宿",
+          "reading": "げしゅく",
+          "entryId": 1185290,
+          "gloss": "boarding; lodging; board and lodging"
+        },
+        {
+          "word": "経営",
+          "reading": "けいえい",
+          "entryId": 1251130,
+          "gloss": "management; administration; operation"
+        },
+        {
+          "word": "仕組み",
+          "reading": "しくみ",
+          "entryId": 1594180,
+          "gloss": "structure; construction; arrangement"
+        },
+        {
+          "word": "限界",
+          "reading": "げんかい",
+          "entryId": 1264650,
+          "gloss": "limit; bound"
+        },
+        {
+          "word": "担い手",
+          "reading": "にないて",
+          "entryId": 1638080,
+          "gloss": "bearer; carrier"
+        },
+        {
+          "word": "務める",
+          "reading": "つとめる",
+          "entryId": 2872052,
+          "gloss": "to serve as; to act as; to fill (the position of)"
+        },
+        {
+          "word": "支え",
+          "reading": "ささえ",
+          "entryId": 1310080,
+          "gloss": "support; stay; prop"
+        }
+      ],
+      "questions": [
+        {
+          "type": "gist",
+          "stem": "筆者の主張に最も近いものはどれか。",
+          "choices": [
+            "赤字の路線は、すぐにすべてなくすべきだ",
+            "自動運転の技術があれば、地方の交通の問題は解決する",
+            "地域の交通をどう支えるか、住民も一緒に考えるべきだ",
+            "高齢者は車の運転をやめるべきだ"
+          ],
+          "answer": 2,
+          "explanation": "The final paragraph says what matters is that residents themselves think about who will support local transport and how, together with local governments and companies. The writer says technology alone will not solve everything."
+        },
+        {
+          "type": "detail",
+          "stem": "路線がなくなって最も困るのは、どんな人たちか。",
+          "choices": [
+            "自分で車を運転できない人たち",
+            "バス会社で働く人たち",
+            "都市に住んでいる人たち",
+            "観光に来た人たち"
+          ],
+          "answer": 0,
+          "explanation": "Paragraph 2: 路線がなくなって最も困るのは、自分で車を運転できない人たち, such as elderly people and high-school students."
+        },
+        {
+          "type": "detail",
+          "stem": "新しい取り組みの限界として、本文に挙げられているものはどれか。",
+          "choices": [
+            "小さな車は事故が多いこと",
+            "国が実験に反対していること",
+            "バスの料金が高くなりすぎること",
+            "住民が運転手を務める仕組みは、担い手が年を取ると続けにくいこと"
+          ],
+          "answer": 3,
+          "explanation": "Paragraph 4 lists booking being hard for elderly people and resident-driver schemes becoming hard to continue as the drivers age. Accidents, government opposition and fares are not mentioned; the state is running trials."
+        },
+        {
+          "type": "purpose",
+          "stem": "筆者が「普段から意識してバスや電車を利用すること」を挙げているのは、何を伝えるためか。",
+          "choices": [
+            "バスや電車は車より安全だということ",
+            "住民も利用することで、地域の交通を支えられるということ",
+            "路線がなくなるのは住民の責任だということ",
+            "運転手の不足はすぐに解決できるということ"
+          ],
+          "answer": 1,
+          "explanation": "The writer calls regular use of buses and trains 一つの支え方, one way residents can support transport before routes disappear. The writer does not blame residents or claim the driver shortage is easy to fix."
+        }
+      ],
+      "source": "llm",
+      "verified": false
+    }
+  ]
+}

@@ -10,6 +10,7 @@ enum class AudioSet(val id: String, internal val keyPrefix: String) {
     MINIMAL_PAIRS("minimal-pairs", "pair"),
     PITCH("pitch", "pitch"),
     GRAMMAR("grammar", "grammar"),
+    READERS("readers", "reader"),
     ;
 
     /** File name of the pack archive, e.g. `audio-pitch.zip`. */
@@ -40,6 +41,7 @@ enum class PairSide(internal val code: String) { A("a"), B("b") }
  * | minimal-pairs | `pair/<pair id>/a` or `/b` | `minimal_pair.id`, side a = `text_a` |
  * | pitch | `pitch/<item id>` | `items.json` in the pitch pack ([PitchTestItem.id]) |
  * | grammar | `grammar/<point id>/<ord>` | `grammar_example(point_id, ord)` |
+ * | readers | `reader/<story id>/<sentence index>` | `readers.sqlite` `reader_sentence(story_id, idx)` |
  */
 object AudioKeys {
     /** One line of an exam listening script. [ownerId] is the passage id, or the item id for per-item scripts. */
@@ -55,6 +57,12 @@ object AudioKeys {
     fun pitch(itemId: String): String = "pitch/$itemId"
 
     fun grammar(pointId: String, exampleOrd: Int): String = "grammar/$pointId/$exampleOrd"
+
+    /** One read-along line of a graded reader: [sentenceIndex] is `reader_sentence.idx` (0-based, in body order). */
+    fun reader(storyId: String, sentenceIndex: Int): String = "reader/$storyId/$sentenceIndex"
+
+    /** Every read-along line of a story, in order. */
+    fun readerStory(storyId: String, sentenceCount: Int): List<String> = List(sentenceCount) { reader(storyId, it) }
 
     /**
      * Relative file path of a clip inside an installed set's folder: the key's segments, each escaped to

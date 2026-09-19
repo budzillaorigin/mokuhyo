@@ -1,0 +1,139 @@
+-- Read-only graded-reader pack (content/packs/readers.sqlite, BRIEF_V2 §6.4, DECISIONS D-200..D-209), built by
+-- tools/packs/readers/build_readers.py, which executes the CREATE statements in this file verbatim.
+-- source: "llm" (AI-drafted, awaiting review; the UI shows the AI-generated badge) | "verified" (reviewed with
+-- tools/items/review.py). verified mirrors a bank-style review (1 = reviewed). JSON columns hold arrays/objects.
+
+CREATE TABLE pack_meta (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+-- The six reader levels. level: "N6" (level 0) … "N1". jlpt: 6 for N6, else 5..1. text_score_*: the allowed
+-- §6.4 text-score band. summary_*: target length (characters) of the post-reading summary.
+CREATE TABLE reader_level (
+    level TEXT NOT NULL PRIMARY KEY,
+    ord INTEGER NOT NULL,
+    label TEXT NOT NULL,
+    jlpt INTEGER NOT NULL,
+    ilr TEXT NOT NULL,
+    text_score_min INTEGER NOT NULL,
+    text_score_max INTEGER NOT NULL,
+    summary_min INTEGER NOT NULL,
+    summary_max INTEGER NOT NULL,
+    question_language TEXT NOT NULL
+);
+
+-- One graded story. genre: news | recipe | ad | manga | essay | email | notice | editorial | academic | story.
+-- chars: non-whitespace characters. text_score/label: the §6.4 difficulty at build time (tools reimplementation of
+-- DifficultyScorer). coverage: share of words within the level (glossed words included). cast: JSON
+-- [{"name":"ケン","voice":"male"}]. ruby: JSON [{"start":n,"base":"…","reading":"…"}] (authoritative furigana, usually
+-- empty: the reader adds furigana itself). skim_seconds: the skim/scan timer.
+CREATE TABLE reader_story (
+    id TEXT NOT NULL PRIMARY KEY,
+    ord INTEGER NOT NULL,
+    level TEXT NOT NULL,
+    jlpt INTEGER NOT NULL,
+    genre TEXT NOT NULL,
+    topic TEXT NOT NULL,
+    title TEXT NOT NULL,
+    title_en TEXT NOT NULL,
+    body TEXT NOT NULL,
+    chars INTEGER NOT NULL,
+    text_score INTEGER NOT NULL,
+    label TEXT NOT NULL,
+    ilr TEXT NOT NULL,
+    coverage REAL NOT NULL,
+    cast_json TEXT NOT NULL,
+    ruby TEXT NOT NULL,
+    skim_seconds INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    verified INTEGER NOT NULL
+);
+CREATE INDEX reader_story_level ON reader_story(jlpt, ord);
+
+-- Read-along lines: the reader's sentences (ReaderAnalyzer.sentences), in order. start_offset/end_offset: UTF-16
+-- offsets into body, trimmed. speaker: "" for narration, else a cast name. voice: narration | female | male |
+-- male-senior. Audio clip key: reader/<story_id>/<idx> (AudioKeys.reader).
+CREATE TABLE reader_sentence (
+    story_id TEXT NOT NULL,
+    idx INTEGER NOT NULL,
+    start_offset INTEGER NOT NULL,
+    end_offset INTEGER NOT NULL,
+    speaker TEXT NOT NULL,
+    voice TEXT NOT NULL,
+    PRIMARY KEY (story_id, idx)
+) WITHOUT ROWID;
+
+-- The story's vocabulary list: JMdict entry, the form used in the story, its reading and an English gloss.
+CREATE TABLE reader_vocab (
+    story_id TEXT NOT NULL,
+    ord INTEGER NOT NULL,
+    entry_id INTEGER NOT NULL,
+    word TEXT NOT NULL,
+    reading TEXT NOT NULL,
+    gloss TEXT NOT NULL,
+    PRIMARY KEY (story_id, ord)
+) WITHOUT ROWID;
+
+-- Comprehension (close-reading) questions. type: gist | detail | inference | vocabulary | purpose | sequence |
+-- reference. lang: "ja" (N3 and up) or "en". choices: JSON string array; answer: 0-based index.
+-- explanation: English.
+CREATE TABLE reader_question (
+    story_id TEXT NOT NULL,
+    ord INTEGER NOT NULL,
+    type TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    stem TEXT NOT NULL,
+    choices TEXT NOT NULL,
+    answer INTEGER NOT NULL,
+    explanation TEXT NOT NULL,
+    PRIMARY KEY (story_id, ord)
+) WITHOUT ROWID;
+
+-- Genre task templates (tools/packs/readers/tasks.json). kind: PREDICTION | SKIM | CLOSE | OUTPUT. prompt_ja and
+-- prompt_en: the instruction; {seconds}, {title}, {min} and {max} are filled in by the app. detail: JSON, e.g.
+-- {"find":["who","what"]} for SKIM, {"rubric":[…]} for OUTPUT.
+CREATE TABLE reader_task (
+    genre TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    ord INTEGER NOT NULL,
+    prompt_ja TEXT NOT NULL,
+    prompt_en TEXT NOT NULL,
+    detail TEXT NOT NULL,
+    PRIMARY KEY (genre, kind, ord)
+) WITHOUT ROWID;
+
+metaValue:
+SELECT value FROM pack_meta WHERE key = ?;
+
+levels:
+SELECT * FROM reader_level ORDER BY ord;
+
+storyCounts:
+SELECT level, count(*) AS stories FROM reader_story GROUP BY level;
+
+allStories:
+SELECT id, ord, level, jlpt, genre, topic, title, title_en, chars, text_score, label, ilr, source, verified
+FROM reader_story ORDER BY jlpt DESC, ord;
+
+storiesAtJlpt:
+SELECT id, ord, level, jlpt, genre, topic, title, title_en, chars, text_score, label, ilr, source, verified
+FROM reader_story WHERE jlpt = ? ORDER BY ord;
+
+storyById:
+SELECT * FROM reader_story WHERE id = ?;
+
+sentences:
+SELECT * FROM reader_sentence WHERE story_id = ? ORDER BY idx;
+
+vocabulary:
+SELECT * FROM reader_vocab WHERE story_id = ? ORDER BY ord;
+
+questions:
+SELECT * FROM reader_question WHERE story_id = ? ORDER BY ord;
+
+tasks:
+SELECT * FROM reader_task WHERE genre = ? ORDER BY kind, ord;
+
+unverified:
+SELECT id, level, title, title_en, body, source FROM reader_story WHERE source = 'llm' AND verified = 0 ORDER BY jlpt DESC, ord;

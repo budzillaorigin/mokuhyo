@@ -92,6 +92,8 @@ import app.tsumugi.review.ExamReviewSource
 import app.tsumugi.review.GrammarReviewSource
 import app.tsumugi.review.KanaMnemonicReviewSource
 import app.tsumugi.review.PracticeReviewSource
+import app.tsumugi.review.ReadersReviewSource
+import app.tsumugi.readers.db.ReadersDatabase
 import app.tsumugi.review.ReviewSource
 import app.tsumugi.srs.StudyItem
 import okio.Path.Companion.toPath
@@ -281,6 +283,14 @@ class AppGraph(val platform: PlatformServices) {
         openPack(PackInstaller.PRACTICE) {
             PracticeRepository(PracticeDatabase(platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE)))
         }
+    }
+
+    private val readersSlot = PackSlot<ReadersDatabase>()
+
+    /** The graded-reader pack (Phase 12), or null while it isn't installed; apps use [ReaderService.graded]. */
+    @Throws(Exception::class)
+    suspend fun readersPack(): ReadersDatabase? = readersSlot.get {
+        openPack(PackInstaller.READERS) { ReadersDatabase(platform.packDriver(ReadersDatabase.Schema, PackInstaller.READERS)) }
     }
 
     /** Exam simulators. Works without the exam pack too (imported banks, history), so never null. */
@@ -530,6 +540,7 @@ class AppGraph(val platform: PlatformServices) {
             openPack(PackInstaller.GRAMMAR) { platform.packDriver(GrammarDatabase.Schema, PackInstaller.GRAMMAR) }?.let { add(GrammarReviewSource(it)) }
             openPack(PackInstaller.EXAM) { platform.packDriver(ExamDatabase.Schema, PackInstaller.EXAM) }?.let { add(ExamReviewSource(it)) }
             openPack(PackInstaller.PRACTICE) { platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE) }?.let { add(PracticeReviewSource(it)) }
+            openPack(PackInstaller.READERS) { platform.packDriver(ReadersDatabase.Schema, PackInstaller.READERS) }?.let { add(ReadersReviewSource(it)) }
             add(KanaMnemonicReviewSource)
         }.also { reviewSources = it }
     })
@@ -579,6 +590,8 @@ class AppGraph(val platform: PlatformServices) {
             // Known = Guru+ in SRS or marked known (the known-words module, D-151).
             knownWords = { configuredSrs(); knowledge.snapshot().knownWordCount },
             opiLevel = { exams().history(ExamKind.OPI, 1).firstOrNull()?.scoring?.ilr?.let { IlrLevel.parse(it) } },
+            // Graded-reader quizzes (Phase 12, D-206): null until three stories are answered.
+            comprehension = { reader.graded.comprehensionPercent() },
         )
     }
 

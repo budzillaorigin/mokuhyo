@@ -4,6 +4,7 @@
     uv run python packs/render_audio.py all                          # every set (grammar: 2 examples per point)
     uv run python packs/render_audio.py grammar --grammar-all        # every grammar example
     uv run python packs/render_audio.py exam --dry-run               # count clips, render nothing
+    uv run python packs/render_audio.py readers                      # graded readers, sentence by sentence
     uv run python packs/render_audio.py pitch --endpoint http://<lan-ip>:50021
 
 Sets and clip keys (the app looks clips up by these; see shared `app.tsumugi.audio.AudioKeys`):
@@ -13,6 +14,7 @@ Sets and clip keys (the app looks clips up by these; see shared `app.tsumugi.aud
     minimal-pairs  pair/<pair id>/a|b                           practice.sqlite minimal pairs
     pitch          pitch/<item id>                              pitch-accent test items (built here, items.json)
     grammar        grammar/<point id>/<example ord>             grammar.sqlite example sentences
+    readers        reader/<story id>/<sentence index>            readers.sqlite read-along lines (one clip per sentence)
 
 Each clip is synthesized with /audio_query (or /accent_phrases for single words) + /synthesis, encoded to
 AAC-LC .m4a (24 kHz mono, 48 kbps; D-091) with ffmpeg, and cached in tools/.cache/audio by a hash of everything
@@ -50,7 +52,7 @@ from pathlib import Path
 
 from common import CACHE, PACKS, log, nfc, to_hiragana
 
-SETS = ("exam", "dialogues", "minimal-pairs", "pitch", "grammar")
+SETS = ("exam", "dialogues", "minimal-pairs", "pitch", "grammar", "readers")
 FORMAT = 1  # index.json layout version; the app refuses packs with a newer major format
 RENDER_STYLE = "1"  # bump to invalidate every cached clip (e.g. a change to the stylized contour)
 
@@ -85,6 +87,14 @@ POOLS = {
     "male": [V_TAKEHIRO, V_TAKEHIRO_LOW],
     "male-senior": [V_TAKEHIRO_LOW, V_TAKEHIRO],
     "narrator": [V_METAN, V_TSUMUGI, V_TAKEHIRO, V_TAKEHIRO_LOW],
+}
+# Graded readers (D-205): 春日部つむぎ narrates; quoted speech goes to a different voice, so a female speaker is
+# めたん first, a male one 玄野武宏 (the lower variant for a second or older man, D-170).
+READER_NARRATOR = V_TSUMUGI
+READER_POOLS = {
+    "female": [V_METAN, V_TSUMUGI],
+    "male": [V_TAKEHIRO, V_TAKEHIRO_LOW],
+    "male-senior": [V_TAKEHIRO_LOW, V_TAKEHIRO],
 }
 WORD_VOICE = TSUMUGI  # pitch and minimal-pair items: one voice, so only the accent differs
 CARRIER = "が"  # particle after pitch-test words, so 平板 and 尾高 differ audibly
@@ -179,7 +189,7 @@ class Allocator:
 
 def speed_for(level: str) -> float:
     """Slower delivery for beginner levels (JLPT N5/N4, DLPT 0+/1, practice jlpt 5/4)."""
-    return {"N5": 0.9, "N4": 0.95, "5": 0.9, "4": 0.95, "0+": 0.9, "1": 0.95}.get(level, 1.0)
+    return {"N6": 0.85, "N5": 0.9, "N4": 0.95, "5": 0.9, "4": 0.95, "0+": 0.9, "1": 0.95}.get(level, 1.0)
 
 
 def exam_clips(packs: Path) -> list[Clip]:
@@ -250,6 +260,51 @@ def grammar_clips(packs: Path, per_point: int | None) -> list[Clip]:
     for pid, ord_, ja in db.execute(sql + " ORDER BY point_id, ord", params):
         voice = TSUMUGI if ord_ % 2 == 0 else TAKEHIRO
         clips.append(Clip(f"grammar/{pid}/{ord_}", voice, nfc(ja)))
+    db.close()
+    return clips
+
+
+def utf16_slice(text: str, start: int, end: int) -> str:
+    """text[start:end] with UTF-16 offsets (what the pack stores, like Kotlin String indices)."""
+    units = text.encode("utf-16-le")
+    return units[start * 2:end * 2].decode("utf-16-le")
+
+
+def reader_clips(packs: Path) -> list[Clip]:
+    """One clip per read-along line of readers.sqlite (tools/packs/readers/build_readers.py): the narration voice for
+    narration, the story's cast voices for quoted speech (a "Name：" or "Name" prefix before 「 isn't spoken)."""
+    path = packs / "readers.sqlite"
+    if not path.exists():
+        log(f"readers: {path} is missing; build it with packs/readers/build_readers.py first")
+        return []
+    db = sqlite3.connect(path)
+    clips: list[Clip] = []
+    stories = {sid: (level, body, json.loads(cast)) for sid, level, body, cast in
+               db.execute("SELECT id, level, body, cast_json FROM reader_story")}
+    allocs: dict[str, dict[str, Voice]] = {}
+    rows = db.execute("SELECT story_id, idx, start_offset, end_offset, speaker, voice FROM reader_sentence "
+                      "ORDER BY story_id, idx")
+    for sid, idx, start, end, speaker, hint in rows:
+        level, body, cast = stories[sid]
+        text = nfc(utf16_slice(body, start, end)).strip()
+        if speaker and text.startswith(speaker):
+            rest = text[len(speaker):].lstrip().removeprefix("：").removeprefix(":").lstrip()
+            if rest.startswith(("「", "『")):
+                text = rest
+        if not any(c.isalnum() for c in text):
+            continue
+        if not speaker:
+            v = READER_NARRATOR
+        else:
+            voices = allocs.setdefault(sid, {})
+            if not voices:  # allocate in cast order so voices are stable across re-renders
+                for member in cast:
+                    pool = READER_POOLS.get(member.get("voice", "female"), READER_POOLS["female"])
+                    taken = set(voices.values())
+                    voices[member["name"]] = next((c for c in pool if c not in taken), pool[0])
+            v = voices.get(speaker) or READER_POOLS.get(hint, READER_POOLS["female"])[0]
+        speed = round(speed_for(level) + v.speed, 3)
+        clips.append(Clip(f"reader/{sid}/{idx}", v.character, text, speed=speed, pitch=v.pitch))
     db.close()
     return clips
 
@@ -619,7 +674,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("sets", nargs="+", choices=(*SETS, "all"))
     ap.add_argument("--endpoint", default="http://127.0.0.1:50021", help="VOICEVOX engine URL")
-    ap.add_argument("--packs-dir", type=Path, default=PACKS, help="where exam/practice/grammar/dictionary packs are")
+    ap.add_argument("--packs-dir", type=Path, default=PACKS,
+                    help="where exam/practice/grammar/readers/dictionary packs are")
     ap.add_argument("--out-dir", type=Path, default=PACKS, help="where audio-<set>.zip is written")
     ap.add_argument("--cache-dir", type=Path, default=CACHE, help="clip cache root (tools/.cache)")
     ap.add_argument("--ffmpeg", help="ffmpeg executable (default: $FFMPEG, PATH, tools/.cache/ffmpeg)")
@@ -654,6 +710,11 @@ def main() -> None:
             for it in items:
                 cells[f"{PATTERN_JA[it['pattern']]}{it['moraCount']}"] += 1
             meta["cells"] = dict(sorted(cells.items()))
+        elif name == "readers":
+            clips = reader_clips(args.packs_dir)
+            if not clips:
+                continue
+            meta["stories"] = len({c.key.split("/")[1] for c in clips})
         else:
             per = None if args.grammar_all else args.grammar_per_point
             clips = grammar_clips(args.packs_dir, per)

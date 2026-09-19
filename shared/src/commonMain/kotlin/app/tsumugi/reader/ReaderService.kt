@@ -94,8 +94,27 @@ class ReaderService(private val graph: AppGraph) {
     /** Comprehension questions (AI-generated, cached per document). */
     val questions: ReadingQuestionService by lazy { ReadingQuestionService(graph.userDatabase, { graph.ai.gateway() }) }
 
-    /** Graded passage packs; empty until Phase 12 installs one (the app sets this when a pack is present). */
-    var packs: ReaderPackRepository = EmptyReaderPacks
+    /**
+     * Graded readers (Phase 12, BRIEF_V2 §6.4): levels and stories from readers.sqlite, read-along timings from the
+     * readers audio pack, quiz scores for the roadmap, and the post-reading summary graded by the model.
+     */
+    val graded: GradedReaderService by lazy {
+        GradedReaderService(
+            PackReaderRepository { graph.readersPack() },
+            GradedReaderScores(graph.userDatabase, { graph.device.deviceId }),
+            clipMs = { graph.audio.index(app.tsumugi.audio.AudioSet.READERS)?.clips?.mapValues { it.value.ms } },
+            gateway = { graph.ai.gateway() },
+        )
+    }
+
+    private var packsOverride: ReaderPackRepository? = null
+
+    /** Graded passage packs: the readers pack (an honest empty state while it isn't installed); tests may replace it. */
+    var packs: ReaderPackRepository
+        get() = packsOverride ?: graded.repository
+        set(value) {
+            packsOverride = value
+        }
 
     /** Paragraphs [from, from + count) of [document], with its own ruby as authoritative readings. */
     @Throws(Exception::class)

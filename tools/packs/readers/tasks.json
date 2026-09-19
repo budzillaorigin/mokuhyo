@@ -1,0 +1,102 @@
+{
+  "note": "Genre task templates for graded readers (BRIEF_V2 §6.4 'genre-based tasks', DECISIONS D-204). Structure and pedagogy only, in our own words. Each genre has a pre-reading prediction question, a timed skim/scan task, close-reading prompts (the story's own comprehension questions follow them) and a post-reading output task (a summary in Japanese, graded by the learner's model and labeled AI-generated). Placeholders: {title} story title, {seconds} skim timer, {min}/{max} summary length in characters. 'rate' scales the level's skim speed (levels.json skimCpm): below 1 gives more time. The app shows prompt_ja from N3 up and prompt_en below. source: llm (drafted with the stories, badge until reviewed).",
+  "source": "llm",
+  "verified": false,
+  "rubric": [
+    {"id": "content", "en": "Covers the main points of the text", "ja": "本文の要点が入っている"},
+    {"id": "accuracy", "en": "Says nothing the text does not say", "ja": "本文と合わない内容がない"},
+    {"id": "language", "en": "Japanese that is clear at the learner's level", "ja": "レベルに合った分かりやすい日本語"}
+  ],
+  "genres": {
+    "news": {
+      "prediction": {"ja": "「{title}」という見出しから、どんなニュースだと思いますか。いつ、どこで、何が起きたか予想してください。", "en": "From the headline \"{title}\", what do you think happened? Guess when, where and what."},
+      "skim": {"ja": "{seconds}秒で記事をざっと読んで、「いつ・どこで・だれが・何をしたか」を見つけてください。", "en": "Skim the article in {seconds} seconds and find when, where, who and what happened.", "rate": 1.0, "find": ["when", "where", "who", "what"]},
+      "close": [
+        {"ja": "記事の最初の段落と最後の段落を比べてください。記事がいちばん伝えたいことは何ですか。", "en": "Compare the first and last paragraphs. What is the article's main point?"},
+        {"ja": "事実を書いている文と、だれかの意見を伝えている文を分けてみましょう。", "en": "Sort the sentences that report facts from the ones that report someone's opinion."}
+      ],
+      "output": {"ja": "この記事の内容を、日本語で{min}〜{max}字ぐらいにまとめてください。", "en": "Summarize the article in Japanese, in about {min}–{max} characters."}
+    },
+    "recipe": {
+      "prediction": {"ja": "「{title}」を作るには、どんな材料や道具が必要だと思いますか。", "en": "What ingredients and tools do you think you need to make \"{title}\"?"},
+      "skim": {"ja": "{seconds}秒で材料と作り方の順番をさがしてください。", "en": "In {seconds} seconds, find the ingredients and the order of the steps.", "rate": 1.2, "find": ["ingredients", "steps"]},
+      "close": [
+        {"ja": "作り方の中で、時間や温度、量を表すことばに印をつけてください。", "en": "Mark every word that gives a time, a temperature or an amount."},
+        {"ja": "失敗しないために、どこに気をつければいいですか。", "en": "Which step do you have to be careful with, and why?"}
+      ],
+      "output": {"ja": "作り方を、友だちに説明するつもりで日本語で{min}〜{max}字ぐらいにまとめてください。", "en": "Explain how to make it to a friend, in Japanese, in about {min}–{max} characters."}
+    },
+    "ad": {
+      "prediction": {"ja": "「{title}」という広告は、だれに何を売ろうとしていると思いますか。", "en": "Who do you think the ad \"{title}\" is for, and what is it selling?"},
+      "skim": {"ja": "{seconds}秒で、値段・期間・場所など大事な情報を見つけてください。", "en": "In {seconds} seconds, find the key facts: price, dates, place.", "rate": 1.3, "find": ["price", "dates", "place"]},
+      "close": [
+        {"ja": "広告が読む人に「したい」と思わせるために使っていることばはどれですか。", "en": "Which words are meant to make the reader want it?"},
+        {"ja": "小さく書いてある条件や注意はありますか。", "en": "Are there conditions or small print the reader should notice?"}
+      ],
+      "output": {"ja": "この広告を見て、行きたい（買いたい）かどうか、理由といっしょに日本語で{min}〜{max}字ぐらいで書いてください。", "en": "Would you go or buy? Say why, in Japanese, in about {min}–{max} characters."}
+    },
+    "manga": {
+      "prediction": {"ja": "「{title}」という題から、どんな人たちのどんな会話だと思いますか。", "en": "From the title \"{title}\", who do you think is talking, and about what?"},
+      "skim": {"ja": "{seconds}秒で、だれが話しているか、どこにいるかをつかんでください。", "en": "In {seconds} seconds, work out who is talking and where they are.", "rate": 1.2, "find": ["speakers", "place"]},
+      "close": [
+        {"ja": "話している人の気持ちが分かるせりふをさがしてください。", "en": "Find the lines that show how the speakers feel."},
+        {"ja": "ていねいな話し方とくだけた話し方の違いに気をつけて読みましょう。だれがどちらを使っていますか。", "en": "Notice polite and casual speech. Who uses which, and why?"}
+      ],
+      "output": {"ja": "この会話で何があったか、話していない人に伝えるつもりで日本語で{min}〜{max}字ぐらいにまとめてください。", "en": "Tell someone who wasn't there what happened in the conversation, in Japanese, in about {min}–{max} characters."}
+    },
+    "essay": {
+      "prediction": {"ja": "「{title}」という題から、書いた人はどんなことを考えていると思いますか。", "en": "From the title \"{title}\", what do you think the writer is thinking about?"},
+      "skim": {"ja": "{seconds}秒で、書いた人がいちばん言いたいことが書いてある文をさがしてください。", "en": "In {seconds} seconds, find the sentence where the writer says what matters most to them.", "rate": 1.0, "find": ["main point"]},
+      "close": [
+        {"ja": "書いた人の考えが変わったところはありますか。何がきっかけでしたか。", "en": "Does the writer's view change anywhere? What causes it?"},
+        {"ja": "例として書かれている体験と、そこから言いたいことを分けてみましょう。", "en": "Separate the experiences the writer gives as examples from the point they make with them."}
+      ],
+      "output": {"ja": "書いた人の考えと、それについてのあなたの意見を日本語で{min}〜{max}字ぐらいで書いてください。", "en": "Give the writer's view and your own opinion of it, in Japanese, in about {min}–{max} characters."}
+    },
+    "email": {
+      "prediction": {"ja": "「{title}」という件名のメールには、どんな用事が書いてあると思いますか。", "en": "What do you think an email with the subject \"{title}\" is asking or telling?"},
+      "skim": {"ja": "{seconds}秒で、だれからだれへのメールか、何をしてほしいのかを見つけてください。", "en": "In {seconds} seconds, find who wrote to whom and what they want the reader to do.", "rate": 1.2, "find": ["sender", "recipient", "request"]},
+      "close": [
+        {"ja": "返事をする前に確かめなければならないこと（日にち、時間、締め切りなど）はありますか。", "en": "What must the reader check before replying (dates, times, deadlines)?"},
+        {"ja": "メールの言葉づかいから、二人はどんな関係だと分かりますか。", "en": "What does the language of the email tell you about how the two people know each other?"}
+      ],
+      "output": {"ja": "このメールへの返事を日本語で{min}〜{max}字ぐらいで書いてください。", "en": "Write a reply to this email in Japanese, in about {min}–{max} characters."}
+    },
+    "notice": {
+      "prediction": {"ja": "「{title}」というお知らせは、だれに何を知らせるものだと思いますか。", "en": "Who do you think the notice \"{title}\" is for, and what does it announce?"},
+      "skim": {"ja": "{seconds}秒で、日時・場所・しなければならないことを見つけてください。", "en": "In {seconds} seconds, find the date and time, the place, and what people must do.", "rate": 1.3, "find": ["date", "place", "action"]},
+      "close": [
+        {"ja": "「〜てください」「〜ないでください」など、お願いや禁止の表現をさがしてください。", "en": "Find the requests and prohibitions (〜てください, 〜ないでください and the like)."},
+        {"ja": "このお知らせに当てはまらない人はいますか。", "en": "Is anyone the notice does not apply to?"}
+      ],
+      "output": {"ja": "このお知らせの大事な点を、家族や同僚に伝えるつもりで日本語で{min}〜{max}字ぐらいにまとめてください。", "en": "Pass on the key points to a family member or colleague, in Japanese, in about {min}–{max} characters."}
+    },
+    "editorial": {
+      "prediction": {"ja": "「{title}」という社説は、どんな問題について、どんな立場で書かれていると思いますか。", "en": "What issue do you think the editorial \"{title}\" is about, and which side does it take?"},
+      "skim": {"ja": "{seconds}秒で、筆者の主張が書かれている段落を見つけてください。", "en": "In {seconds} seconds, find the paragraph where the writer states their position.", "rate": 0.9, "find": ["claim"]},
+      "close": [
+        {"ja": "筆者は主張の理由をいくつ挙げていますか。それぞれ一言で言ってください。", "en": "How many reasons does the writer give? Name each in a few words."},
+        {"ja": "反対の意見にふれている部分はありますか。筆者はそれにどう答えていますか。", "en": "Does the writer mention the other side? How do they answer it?"}
+      ],
+      "output": {"ja": "筆者の主張と理由をまとめ、あなたが賛成か反対かを日本語で{min}〜{max}字ぐらいで書いてください。", "en": "Summarize the writer's claim and reasons, then say whether you agree, in Japanese, in about {min}–{max} characters."}
+    },
+    "academic": {
+      "prediction": {"ja": "「{title}」という文章から、どんな問いや説明が出てくると思いますか。知っていることを思い出してください。", "en": "What question or explanation do you expect from \"{title}\"? Recall what you already know about it."},
+      "skim": {"ja": "{seconds}秒で、文章の問いと結論を見つけてください。", "en": "In {seconds} seconds, find the question the text asks and its conclusion.", "rate": 0.9, "find": ["question", "conclusion"]},
+      "close": [
+        {"ja": "専門的なことばが説明されているところをさがし、自分のことばで言いかえてください。", "en": "Find where technical terms are explained and restate them in your own words."},
+        {"ja": "「しかし」「つまり」「たとえば」などのことばに注意して、文章の組み立てを図にしてみましょう。", "en": "Use signposts such as しかし, つまり and たとえば to sketch how the text is organized."}
+      ],
+      "output": {"ja": "この文章の問い・根拠・結論を日本語で{min}〜{max}字ぐらいにまとめてください。", "en": "Summarize the question, the evidence and the conclusion in Japanese, in about {min}–{max} characters."}
+    },
+    "story": {
+      "prediction": {"ja": "「{title}」という題から、どんな話だと思いますか。だれが出てきて、何が起きそうですか。", "en": "From the title \"{title}\", what kind of story do you expect? Who is in it and what might happen?"},
+      "skim": {"ja": "{seconds}秒で、登場人物と場所をつかんでください。", "en": "In {seconds} seconds, find the characters and where the story takes place.", "rate": 1.1, "find": ["characters", "place"]},
+      "close": [
+        {"ja": "話の中で、いちばん大きく変わったことは何ですか。", "en": "What changes most over the course of the story?"},
+        {"ja": "登場人物の気持ちが分かることばや行動をさがしてください。", "en": "Find the words or actions that show how the characters feel."}
+      ],
+      "output": {"ja": "話のあらすじを日本語で{min}〜{max}字ぐらいで書いてください。", "en": "Retell the story in Japanese, in about {min}–{max} characters."}
+    }
+  }
+}

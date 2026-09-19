@@ -7,6 +7,8 @@
 """
 
 import argparse
+import sys
+from pathlib import Path
 
 import build_decks
 import build_dictionary
@@ -17,7 +19,10 @@ import build_kanjivg
 import build_practice
 import build_sentences
 import build_tokenizer
-from common import load_lock, log, source, source_entry, update_sources, write_manifest
+from common import PACKS, load_lock, log, source, source_entry, update_sources, write_manifest
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "readers"))
+import build_readers
 
 
 def main() -> None:
@@ -44,6 +49,7 @@ def main() -> None:
     build_practice.main()
     build_tokenizer.main()
     build_exam.main()
+    build_readers.build(PACKS, PACKS)  # graded readers; needs the dictionary and tokenizer packs above
     write_manifest()
 
 
