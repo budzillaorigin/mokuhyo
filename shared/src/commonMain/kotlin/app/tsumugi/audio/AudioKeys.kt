@@ -37,8 +37,11 @@ enum class AudioSet(val id: String, internal val keyPrefixes: List<String>) {
     }
 }
 
-/** Which word of a minimal pair. */
-enum class PairSide(internal val code: String) { A("a"), B("b") }
+/**
+ * Which word of a minimal pair. Named so it never shares a simple name with [app.tsumugi.study.PairSide]: the
+ * Objective-C export flattens packages, and whichever type loses the coin toss is exported as `PairSide_`.
+ */
+enum class MinimalPairSide(internal val code: String) { A("a"), B("b") }
 
 /**
  * Clip keys, the one contract between the renderer and the app (D-092). UI code builds keys only through these
@@ -68,7 +71,7 @@ object AudioKeys {
     /** One line of a memorize-and-perform script: [lineIndex] is the index into `PerformDrill.lines`, both speakers. */
     fun performance(drillId: String, lineIndex: Int): String = "perform/$drillId/$lineIndex"
 
-    fun minimalPair(pairId: Long, side: PairSide): String = "pair/$pairId/${side.code}"
+    fun minimalPair(pairId: Long, side: MinimalPairSide): String = "pair/$pairId/${side.code}"
 
     fun pitch(itemId: String): String = "pitch/$itemId"
 

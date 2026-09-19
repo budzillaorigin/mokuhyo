@@ -14,8 +14,8 @@ class AudioKeysTest {
         assertEquals(listOf("exam/dl-0p-announcement-001/0", "exam/dl-0p-announcement-001/1"),
             AudioKeys.examScript("dl-0p-announcement-001", 2))
         assertEquals("dialogue/n5-morning/3", AudioKeys.dialogue("n5-morning", 3))
-        assertEquals("pair/480/a", AudioKeys.minimalPair(480, PairSide.A))
-        assertEquals("pair/480/b", AudioKeys.minimalPair(480, PairSide.B))
+        assertEquals("pair/480/a", AudioKeys.minimalPair(480, MinimalPairSide.A))
+        assertEquals("pair/480/b", AudioKeys.minimalPair(480, MinimalPairSide.B))
         assertEquals("pitch/p1401000", AudioKeys.pitch("p1401000"))
         assertEquals("grammar/n1-aete/1", AudioKeys.grammar("n1-aete", 1))
         assertEquals("reader/gr-n4-012/7", AudioKeys.reader("gr-n4-012", 7))
@@ -51,7 +51,7 @@ class AudioKeysTest {
     fun keysMapToTheirSet() {
         assertEquals(AudioSet.EXAM, AudioSet.ofKey(AudioKeys.exam("x", 0)))
         assertEquals(AudioSet.DIALOGUES, AudioSet.ofKey(AudioKeys.dialogue("x", 0)))
-        assertEquals(AudioSet.MINIMAL_PAIRS, AudioSet.ofKey(AudioKeys.minimalPair(1, PairSide.A)))
+        assertEquals(AudioSet.MINIMAL_PAIRS, AudioSet.ofKey(AudioKeys.minimalPair(1, MinimalPairSide.A)))
         assertEquals(AudioSet.PITCH, AudioSet.ofKey(AudioKeys.pitch("p1")))
         assertEquals(AudioSet.GRAMMAR, AudioSet.ofKey(AudioKeys.grammar("x", 0)))
         assertNull(AudioSet.ofKey("lyrics/1"))

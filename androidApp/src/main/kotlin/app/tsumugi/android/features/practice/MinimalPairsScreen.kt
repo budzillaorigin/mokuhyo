@@ -2,7 +2,7 @@ package app.tsumugi.android.features.practice
 
 import app.tsumugi.audio.AudioKeys
 import app.tsumugi.audio.AudioSet
-import app.tsumugi.audio.PairSide as AudioPairSide
+import app.tsumugi.audio.MinimalPairSide
 
 import app.tsumugi.android.ui.PlayLabel
 import app.tsumugi.android.ui.JaText
@@ -83,7 +83,7 @@ fun MinimalPairsScreen() {
         // Pitch pairs share their kana, so speak the written form to get the right accent from the voice.
         // Rule 20: the pre-rendered pair clip (accent set explicitly, D-093) when installed, else TTS.
         val p = pair
-        target?.let { w -> scope.launch { voices.sayClip(p?.let { AudioKeys.minimalPair(it.id, if (playA) AudioPairSide.A else AudioPairSide.B) }, if (category == MinimalPairCategory.PITCH) w.text else w.reading) } }
+        target?.let { w -> scope.launch { voices.sayClip(p?.let { AudioKeys.minimalPair(it.id, if (playA) MinimalPairSide.A else MinimalPairSide.B) }, if (category == MinimalPairCategory.PITCH) w.text else w.reading) } }
     }
     LaunchedEffect(pair, playA) { if (pair != null) play() }
 

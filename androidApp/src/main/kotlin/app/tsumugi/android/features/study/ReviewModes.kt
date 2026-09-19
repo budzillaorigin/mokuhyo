@@ -126,7 +126,7 @@ private fun spoken(prompt: MinimalPairPrompt, a: Boolean): String {
 
 /** The pair's pre-rendered clip key (rule 20); TTS plays when the pack lacks it. */
 private fun pairKey(prompt: MinimalPairPrompt, a: Boolean): String =
-    app.tsumugi.audio.AudioKeys.minimalPair(prompt.pair.pairId, if (a) app.tsumugi.audio.PairSide.A else app.tsumugi.audio.PairSide.B)
+    app.tsumugi.audio.AudioKeys.minimalPair(prompt.pair.pairId, if (a) app.tsumugi.audio.MinimalPairSide.A else app.tsumugi.audio.MinimalPairSide.B)
 
 /** MINIMAL_PAIR: hear one word (TTS until the audio pack, rule 20), pick A or B. */
 @Composable

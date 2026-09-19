@@ -55,7 +55,7 @@ import app.tsumugi.audio.AudioInstallProgress
 import app.tsumugi.audio.AudioKeys
 import app.tsumugi.audio.AudioSet
 import app.tsumugi.audio.InstalledAudioPack
-import app.tsumugi.audio.PairSide as AudioPairSide
+import app.tsumugi.audio.MinimalPairSide
 import app.tsumugi.coverage.TextCoverage
 import app.tsumugi.immersion.ImmersionMode
 import app.tsumugi.immersion.ImmersionOrigin
@@ -515,8 +515,8 @@ object SwiftSupport {
     /** The installed pre-rendered clip for [key] as a file path, or null: play system TTS instead. */
     fun audioClipPath(graph: AppGraph, key: String): String? = graph.audio.clip(key)?.toString()
 
-    /** `pair/<id>/a|b` without Swift naming the clashing `PairSide` enum. */
-    fun pairClipKey(pairId: Long, sideA: Boolean): String = AudioKeys.minimalPair(pairId, if (sideA) AudioPairSide.A else AudioPairSide.B)
+    /** `pair/<id>/a|b` from a Bool, so Swift never spells the side enum. */
+    fun pairClipKey(pairId: Long, sideA: Boolean): String = AudioKeys.minimalPair(pairId, if (sideA) MinimalPairSide.A else MinimalPairSide.B)
 
     /** Every audio set id in display order ("exam", "dialogues", "minimal-pairs", "pitch", "grammar"). */
     fun audioSetIds(): List<String> = AudioSet.entries.map { it.id }
