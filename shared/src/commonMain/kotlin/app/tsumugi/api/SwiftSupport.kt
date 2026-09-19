@@ -606,4 +606,199 @@ object SwiftSupport {
 
     /** `TextCoverage.newWordsTo95` (a `new…` getter is renamed by the Objective-C export). */
     fun coverageWordsTo95(coverage: TextCoverage): Int = coverage.newWordsTo95
+
+    // --- Phase 12 iOS UI (D-260…D-269) --------------------------------------------------------------------------
+    // Adapters only: no default arguments, no nullable primitives or enums as parameters, no sealed/nested results.
+
+    /** Graded stories at [jlpt] (6 = level 0 … 1), or every level when [jlpt] is 0. */
+    @Throws(Exception::class)
+    suspend fun gradedStories(graph: AppGraph, jlpt: Int): List<app.tsumugi.reader.GradedPassageSummary> =
+        graph.reader.graded.stories(jlpt.takeIf { it > 0 })
+
+    /** The read-along lines of [story] with their text and timings (untimed without the readers audio pack). */
+    @Throws(Exception::class)
+    suspend fun readAlongPlan(graph: AppGraph, story: app.tsumugi.reader.GradedStory): ReadAlongPlan {
+        val track = graph.reader.graded.readAlong(story)
+        return ReadAlongPlan(
+            story.id, track.timed, track.totalMs,
+            track.lines.map { t ->
+                ReadAlongRow(
+                    t.line.index, t.line.start, t.line.end, story.text(t.line), t.line.speaker, t.line.voice, t.line.clipKey,
+                    t.startMs ?: -1L, t.endMs ?: -1L,
+                )
+            },
+        )
+    }
+
+    /** Scores and stores a graded-reader quiz; [choices] has one index per question, -1 = unanswered. */
+    @Throws(Exception::class)
+    suspend fun submitGradedQuiz(graph: AppGraph, story: app.tsumugi.reader.GradedStory, choices: List<Int>): app.tsumugi.reader.ReaderQuizResult =
+        graph.reader.graded.submitQuiz(story, choices.map { c -> c.takeIf { it >= 0 } })
+
+    /** The post-reading summary graded by the learner's model (AI-generated), or why it couldn't be. */
+    @Throws(Exception::class)
+    suspend fun gradeReaderSummary(graph: AppGraph, story: app.tsumugi.reader.GradedStory, summary: String): SummaryGradeRow =
+        when (val r = graph.reader.graded.gradeSummary(story, summary)) {
+            is app.tsumugi.reader.SummaryGradeResult.Graded -> SummaryGradeRow(
+                true, r.grade.content, r.grade.accuracy, r.grade.language, r.grade.total, r.grade.corrected, r.grade.feedback, r.engine, "",
+            )
+            is app.tsumugi.reader.SummaryGradeResult.Unavailable -> SummaryGradeRow(false, 0, 0, 0, 0, "", "", "", r.reason)
+        }
+
+    /** A track's drills of one type code ("keigo", "email", …), or all of them when [typeCode] is "". */
+    @Throws(Exception::class)
+    suspend fun trackDrills(repo: app.tsumugi.tracks.TrackRepository, trackId: String, typeCode: String): List<app.tsumugi.tracks.TrackDrill> =
+        repo.drills(trackId, app.tsumugi.tracks.DrillType.of(typeCode))
+
+    /** A track's word lessons at the default size. */
+    @Throws(Exception::class)
+    suspend fun trackLessons(repo: app.tsumugi.tracks.TrackRepository, trackId: String): List<app.tsumugi.tracks.TrackLesson> =
+        repo.lessons(trackId, app.tsumugi.tracks.TrackRepository.DEFAULT_LESSON_SIZE)
+
+    fun drillTypeCode(drill: app.tsumugi.tracks.TrackDrill): String = drill.type.code
+
+    /** `Track.description` (a `description` member collides with NSObject's in the Objective-C export). */
+    fun trackDescription(summary: app.tsumugi.tracks.TrackSummary): String = summary.track.description
+
+    /** The email body as text runs and slots, in order. */
+    fun emailSegments(drill: app.tsumugi.tracks.EmailDrill): List<EmailSegmentRow> = drill.segments.map {
+        when (it) {
+            is app.tsumugi.tracks.EmailSegment.Text -> EmailSegmentRow(it.text, -1)
+            is app.tsumugi.tracks.EmailSegment.Slot -> EmailSegmentRow("", it.blank)
+        }
+    }
+
+    /** The fill-in sentence around its blank: [before, after]. */
+    fun fillInParts(drill: app.tsumugi.tracks.FillInDrill): List<String> = listOf(drill.parts.first, drill.parts.second)
+
+    /** [target label (尊敬語 …), form code (dictionary | masu | past | masu-past | te)]. */
+    fun keigoPrompt(drill: app.tsumugi.tracks.KeigoDrill): List<String> = listOf(drill.target.labelJa, drill.form.code)
+
+    /** A memorize-and-perform session starting at the full script. */
+    fun performanceSession(drill: app.tsumugi.tracks.PerformDrill): app.tsumugi.tracks.PerformanceSession =
+        app.tsumugi.tracks.PerformanceSession(drill, app.tsumugi.tracks.FadeLevel.FULL)
+
+    /** The session's fade step: 0 full, 1 half, 2 initial, 3 cue only. */
+    fun performanceStep(session: app.tsumugi.tracks.PerformanceSession): Int = session.level.ordinal
+
+    /**
+     * The hands-free plan for [set]: [preset] "short" | "default" | "long", the answer pause fixed or proportional,
+     * the repeat pause on or off. Answer lengths come from the installed audio packs' clip durations when present.
+     */
+    @Throws(Exception::class)
+    suspend fun drillPlan(graph: AppGraph, set: app.tsumugi.practice.DrillSet, preset: String, repeatPause: Boolean, fixedPause: Boolean): app.tsumugi.practice.DrillPlan {
+        val base = when (preset) {
+            "short" -> app.tsumugi.practice.DrillTiming.SHORT
+            "long" -> app.tsumugi.practice.DrillTiming.LONG
+            else -> app.tsumugi.practice.DrillTiming.DEFAULT
+        }
+        val timing = base.copy(
+            repeat = repeatPause,
+            pauseMode = if (fixedPause) app.tsumugi.practice.DrillTiming.PauseMode.FIXED else app.tsumugi.practice.DrillTiming.PauseMode.PROPORTIONAL,
+        )
+        val ms = HashMap<String, Long>()
+        for (s in listOf(AudioSet.GRAMMAR, AudioSet.DIALOGUES)) {
+            graph.audio.index(s)?.clips?.forEach { (key, info) -> if (info.ms > 0) ms[key] = info.ms }
+        }
+        return app.tsumugi.practice.DrillPlayback.plan(set, timing) { item -> ms[item.audioKey]?.takeIf { graph.audio.clip(item.audioKey) != null } }
+    }
+
+    fun drillCursor(plan: app.tsumugi.practice.DrillPlan, start: Int): app.tsumugi.practice.DrillCursor =
+        app.tsumugi.practice.DrillCursor(plan, start)
+
+    /** `DrillSetSummary.description` (a `description` member collides with NSObject's in the Objective-C export). */
+    fun drillSetDescription(summary: app.tsumugi.practice.DrillSetSummary): String = summary.description
+
+    /** PROMPT | ANSWER_PAUSE | ANSWER | REPEAT_PAUSE | GAP. */
+    fun drillStepCode(step: app.tsumugi.practice.DrillStep): String = step.kind.name
+
+    /** Items in the plan's set (Swift never reads `DrillPlan.set`, a `set`-named member). */
+    fun drillPlanItems(plan: app.tsumugi.practice.DrillPlan): List<app.tsumugi.practice.DrillItem> = plan.set.items
+
+    /** The three onomatopoeia types for the filter. */
+    fun onomatopoeiaTypes(): List<OnomatopoeiaTypeRow> =
+        app.tsumugi.onomatopoeia.OnomatopoeiaType.entries.map { OnomatopoeiaTypeRow(it.name, it.labelJa, it.labelEn) }
+
+    fun onomatopoeiaTypeCode(word: app.tsumugi.onomatopoeia.OnomatopoeiaWord): String = word.type.name
+
+    fun onomatopoeiaTypeLabel(word: app.tsumugi.onomatopoeia.OnomatopoeiaWord): String = word.type.labelJa
+
+    /** Words of [theme] ("" = all) and [typeCode] ("" = all types). */
+    @Throws(Exception::class)
+    suspend fun onomatopoeiaWords(repo: app.tsumugi.onomatopoeia.OnomatopoeiaRepository, theme: String, typeCode: String, withFeelOnly: Boolean): List<app.tsumugi.onomatopoeia.OnomatopoeiaWord> =
+        repo.words(theme.ifEmpty { null }, app.tsumugi.onomatopoeia.OnomatopoeiaType.of(typeCode), withFeelOnly)
+
+    /** A quiz: [kindCode] WORD_FOR_SCENE | SCENE_FOR_WORD ("" = mixed), [theme] "" = all themes. */
+    @Throws(Exception::class)
+    suspend fun onomatopoeiaQuiz(repo: app.tsumugi.onomatopoeia.OnomatopoeiaRepository, count: Int, kindCode: String, theme: String, seed: Long): List<app.tsumugi.onomatopoeia.OnomatopoeiaQuestion> =
+        repo.quiz(count, app.tsumugi.onomatopoeia.OnomatopoeiaQuizKind.entries.firstOrNull { it.name == kindCode }, theme.ifEmpty { null }, seed)
+
+    fun onomatopoeiaQuizIsScene(question: app.tsumugi.onomatopoeia.OnomatopoeiaQuestion): Boolean =
+        question.kind == app.tsumugi.onomatopoeia.OnomatopoeiaQuizKind.WORD_FOR_SCENE
+
+    /** Monolingual mode's easiest Japanese-only level (1–5), or 0 when it's off. */
+    @Throws(Exception::class)
+    suspend fun monolingualFromLevel(graph: AppGraph): Int = graph.monolingual.fromLevel() ?: 0
+
+    /** 0 turns monolingual mode off; 1–5 = that JLPT level and harder in Japanese only. */
+    @Throws(Exception::class)
+    suspend fun setMonolingualFromLevel(graph: AppGraph, level: Int) = graph.monolingual.setFromLevel(level.takeIf { it in 1..5 })
+
+    /** [point]'s explanation in the language the setting asks for, or in English when [english] is true. */
+    @Throws(Exception::class)
+    suspend fun grammarExplanation(graph: AppGraph, point: app.tsumugi.grammar.GrammarPoint, english: Boolean): app.tsumugi.courses.GrammarExplanation =
+        if (english) {
+            graph.explanations.grammar(point, app.tsumugi.courses.ExplanationLanguage.ENGLISH)
+        } else {
+            graph.explanations.grammar(point)
+        }
+
+    /** [point]'s explanation in Japanese whatever the setting says (the "日本語で" toggle). */
+    @Throws(Exception::class)
+    suspend fun grammarExplanationJapanese(graph: AppGraph, point: app.tsumugi.grammar.GrammarPoint): app.tsumugi.courses.GrammarExplanation =
+        graph.explanations.grammar(point, app.tsumugi.courses.ExplanationLanguage.JAPANESE)
+
+    fun explanationIsJapanese(explanation: app.tsumugi.courses.GrammarExplanation): Boolean =
+        explanation.language == app.tsumugi.courses.ExplanationLanguage.JAPANESE
+
+    /**
+     * A word's gloss in the right language. [jlpt] 0 = untagged (the course level decides). [generate] false = cache
+     * only (lists). [japanese] true = the paraphrase whatever the setting says (the "explain in Japanese" button).
+     */
+    @Throws(Exception::class)
+    suspend fun wordExplanation(
+        graph: AppGraph, entryId: Long, word: String, reading: String, glosses: List<String>, jlpt: Int, generate: Boolean, japanese: Boolean,
+    ): app.tsumugi.courses.WordExplanation {
+        val request = app.tsumugi.courses.ParaphraseRequest(word, reading, glosses, emptyList(), entryId.takeIf { it > 0 }, jlpt.takeIf { it in 1..5 })
+        return if (japanese) {
+            graph.explanations.paraphrase(request, "N${request.jlpt ?: graph.courses.courseLevel()}", generate)
+        } else {
+            graph.explanations.word(request, graph.courses.courseLevel(), generate)
+        }
+    }
+
+    /** Drops a cached paraphrase the learner flagged, so the next request asks the model again. */
+    @Throws(Exception::class)
+    suspend fun forgetWordParaphrase(graph: AppGraph, entryId: Long, word: String, reading: String) =
+        graph.explanations.forgetParaphrase(app.tsumugi.courses.ParaphraseRequest(word, reading, emptyList(), emptyList(), entryId.takeIf { it > 0 }, null))
+
+    /** The "level check → probe" map after an interview, flattened for the chart. */
+    fun opiProbeMap(session: OpiSession): OpiProbeRows {
+        val map = session.probeMap()
+        return OpiProbeRows(
+            floor = map.floor?.label.orEmpty(),
+            ceiling = map.ceiling?.label.orEmpty(),
+            turns = map.turns.map { t ->
+                OpiProbeTurnRow(
+                    t.index, opiPhaseTitle(t.phase), t.isProbe, t.isLevelCheck, t.question, t.domain?.title.orEmpty(),
+                    t.targetLevel.label, t.targetLevel.ordinal, t.levelBefore.label, t.levelAfter?.label.orEmpty(),
+                    t.levelAfter?.ordinal ?: -1, t.answerLength ?: -1, t.outcome.name,
+                )
+            },
+            levels = map.byLevel.map { OpiProbeLevelRow(it.level.label, it.level.ordinal, it.sustained, it.partial, it.breakdown) },
+            levelLabels = IlrLevel.entries.map { it.label },
+            domains = map.domains.map { it.title },
+            missingDomains = map.missingDliDomains.map { it.title },
+        )
+    }
 }

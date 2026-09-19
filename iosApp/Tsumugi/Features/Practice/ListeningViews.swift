@@ -55,6 +55,12 @@ struct DialogueData {
         let end: Int
     }
 
+    /// A run of a line: fillers are greyed in natural-style transcripts (BRIEF_V2 §6.10, D-222).
+    struct Segment {
+        let text: String
+        let filler: Bool
+    }
+
     struct Line: Identifiable {
         let id: Int
         let speakerName: String
@@ -63,6 +69,15 @@ struct DialogueData {
         let english: String
         let gaps: [GapData]
         let chunks: [String]
+        var segments: [Segment] = []
+        /// Starts before the previous line ends (a backchannel or an interruption): shown beside it.
+        var overlap = false
+
+        /// The line without its fillers (natural style), or the line itself.
+        var withoutFillers: String {
+            guard segments.contains(where: { $0.filler }) else { return japanese }
+            return segments.filter { !$0.filler }.map(\.text).joined().trimmingCharacters(in: .whitespaces)
+        }
 
         /// The line with its first gap blanked out (gap offsets are UTF-16, like NSString).
         var gapped: String? {
@@ -86,6 +101,20 @@ struct DialogueData {
     let aiGenerated: Bool
     let lines: [Line]
     let questions: [Question]
+    var natural = false
+
+    /// Lines grouped for display: an overlapping line joins the group of the line it overlaps.
+    var groups: [[Line]] {
+        var out: [[Line]] = []
+        for line in lines {
+            if line.overlap, !out.isEmpty {
+                out[out.count - 1].append(line)
+            } else {
+                out.append([line])
+            }
+        }
+        return out
+    }
 }
 
 struct DialoguePlayerView: View {
@@ -121,6 +150,7 @@ private struct DialoguePlayer: View {
     @State private var showJapanese = true
     @State private var showEnglish = false
     @State private var loopLine = false
+    @State private var showFillers = true
 
     var body: some View {
         Group {
@@ -142,6 +172,7 @@ private struct DialoguePlayer: View {
             VStack(alignment: .leading, spacing: 14) {
                 HStack {
                     Text("N\(d.jlpt) · \(d.topic)").font(.caption).foregroundStyle(.secondary)
+                    if d.natural { TagView(String(localized: "Natural speech")) }
                     if d.aiGenerated { AIBadge() }
                 }
                 Picker("Mode", selection: $mode) {
@@ -178,31 +209,63 @@ private struct DialoguePlayer: View {
         HStack {
             Toggle("Japanese", isOn: $showJapanese).toggleStyle(.button)
             Toggle("English", isOn: $showEnglish).toggleStyle(.button)
+            if d.natural { Toggle("Fillers", isOn: $showFillers).toggleStyle(.button) }
         }
         .font(.caption)
-        ForEach(d.lines) { line in
-            VStack(alignment: .leading, spacing: 3) {
-                Text(line.speakerName).font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
-                if showJapanese {
-                    Text(line.japanese).font(.japanese(size: 19)).japaneseSpeech()
-                } else {
-                    Text("• • •").foregroundStyle(.secondary)
-                        .accessibilityLabel(Text("Japanese hidden"))
-                }
-                if showEnglish { Text(line.english).font(.caption) }
-                HStack(spacing: 14) {
-                    Button { play([line]) } label: { Image(systemName: "play.circle") }
-                        .accessibilityLabel("Play line")
-                    NavigationLink(value: Route.pronunciation(line.japanese)) {
-                        Label("Shadow", systemImage: "mic")
-                    }
-                }
-                .font(.subheadline)
-            }
-            .padding(8)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(playing == line.id ? Color.accentColor.opacity(0.15) : Color.clear, in: RoundedRectangle(cornerRadius: 8))
+        if d.natural {
+            Text("Unscripted-sounding speech: fillers and restarts are grey; lines spoken over each other sit side by side.")
+                .font(.caption).foregroundStyle(.secondary)
         }
+        ForEach(Array(d.groups.enumerated()), id: \.offset) { _, group in
+            if group.count > 1 {
+                HStack(alignment: .top, spacing: 6) {
+                    ForEach(group) { line in lineView(line) }
+                }
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel(Text("Overlapping lines"))
+            } else if let line = group.first {
+                lineView(line)
+            }
+        }
+    }
+
+    /// The transcript text of [line]: fillers greyed (or hidden) in natural dialogues.
+    private func transcript(_ line: DialogueData.Line) -> Text {
+        guard line.segments.contains(where: { $0.filler }) else { return Text(line.japanese) }
+        if !showFillers { return Text(line.withoutFillers) }
+        return line.segments.reduce(Text(verbatim: "")) { acc, seg in
+            acc + (seg.filler ? Text(seg.text).foregroundColor(.secondary) : Text(seg.text))
+        }
+    }
+
+    private func lineView(_ line: DialogueData.Line) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            HStack(spacing: 4) {
+                Text(line.speakerName).font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
+                if line.overlap {
+                    Image(systemName: "arrow.left.and.right").font(.caption2).foregroundStyle(.secondary)
+                        .accessibilityLabel(Text("Overlaps the previous line"))
+                }
+            }
+            if showJapanese {
+                transcript(line).font(.japanese(size: 19)).japaneseSpeech()
+            } else {
+                Text("• • •").foregroundStyle(.secondary)
+                    .accessibilityLabel(Text("Japanese hidden"))
+            }
+            if showEnglish { Text(line.english).font(.caption) }
+            HStack(spacing: 14) {
+                Button { play([line]) } label: { Image(systemName: "play.circle") }
+                    .accessibilityLabel("Play line")
+                NavigationLink(value: Route.pronunciation(line.japanese)) {
+                    Label("Shadow", systemImage: "mic")
+                }
+            }
+            .font(.subheadline)
+        }
+        .padding(8)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(playing == line.id ? Color.accentColor.opacity(0.15) : Color.clear, in: RoundedRectangle(cornerRadius: 8))
     }
 
     private func play(_ lines: [DialogueData.Line]) {
@@ -242,7 +305,9 @@ private struct DialoguePlayer: View {
     private func load() async {
         guard data == nil else { return }
         defer { loaded = true }
-        guard let d = try? await repo.dialogue(id: dialogueId) else { return }
+        // The practice pack first, then the tracks pack (D-214): same model, same screen.
+        guard let found = try? await app.graph.dialogue(id: dialogueId) else { return }
+        let d = found
         var lines: [DialogueData.Line] = []
         for (i, l) in d.lines.enumerated() {
             let speaker = d.speaker(id: l.speaker)
@@ -253,13 +318,18 @@ private struct DialoguePlayer: View {
                 japanese: l.japanese,
                 english: l.english,
                 gaps: l.gaps.map { DialogueData.GapData(text: $0.text, start: Int($0.start), end: Int($0.end)) },
-                chunks: l.chunks
+                chunks: l.chunks,
+                segments: l.segments().map { DialogueData.Segment(text: $0.text, filler: $0.isFiller) },
+                overlap: l.overlap
             ))
         }
         let questions = d.questions.enumerated().map { i, q in
             DialogueData.Question(id: i, question: q.question, choices: q.choices, answer: Int(q.answer))
         }
-        data = DialogueData(title: d.title, jlpt: Int(d.jlpt), topic: d.topic, aiGenerated: d.isAiGenerated, lines: lines, questions: questions)
+        data = DialogueData(
+            title: d.title, jlpt: Int(d.jlpt), topic: d.topic, aiGenerated: d.isAiGenerated, lines: lines, questions: questions,
+            natural: d.style == .natural
+        )
     }
 }
 

@@ -20,6 +20,9 @@ struct PracticeHubView: View {
                 NavigationLink(value: Route.scenarios) {
                     LabeledContent("Role-play scenarios", value: "Shop, station, doctor…")
                 }
+                NavigationLink(value: Route.drillSets) {
+                    LabeledContent("Speaking drills", value: "Hands-free, screen off")
+                }
                 NavigationLink(value: Route.pronunciation("")) {
                     LabeledContent("Pronunciation check", value: "Mora, pitch, fluency")
                 }

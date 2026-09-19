@@ -60,6 +60,9 @@ struct OnboardingView: View {
                 case 3:
                     // Optional (BRIEF_V2 §6.1 "I know these"): an intermediate learner isn't drilled on 猫.
                     KnownWordsStep { step = 4 }
+                case 4:
+                    // Interest and domain tracks (BRIEF_V2 §6.5, D-218): optional, changeable any time.
+                    TrackOnboardingStep { step = 5 }
                 default:
                     Text("You're set").font(.title2.weight(.semibold))
                     Text("Kanji path starts at level \(suggestedLevel). Earlier items stay available if you want them.")

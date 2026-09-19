@@ -61,6 +61,23 @@ enum Route: Hashable {
     case lyrics
     case song(String)
     case immersionLog
+    // Phase 12 (BRIEF_V2 §6.4–§6.10, §6.16)
+    case gradedReaders
+    case gradedStory(String)
+    case tracks
+    case track(String)
+    case trackDrills(trackId: String, type: String)
+    case trackDrill(String)
+    case courses
+    case course(Int)
+    case courseRemaining(Int)
+    case onomatopoeia
+    case onomatopoeiaTheme(String)
+    case onomatopoeiaWord(Int64)
+    /// A theme id, or "" for all themes.
+    case onomatopoeiaQuiz(String)
+    case drillSets
+    case drillSet(String)
 }
 
 /// Tab bar from BRIEF.md §6: Today · Reviews · Learn · Practice · Me.
@@ -196,6 +213,21 @@ struct TabStack<Root: View>: View {
                     case .lyrics: LyricsListView()
                     case .song(let id): KaraokeView(songId: id)
                     case .immersionLog: ImmersionLogView()
+                    case .gradedReaders: GradedLibraryView()
+                    case .gradedStory(let id): GradedStoryView(storyId: id)
+                    case .tracks: TracksView()
+                    case .track(let id): TrackPageView(trackId: id)
+                    case .trackDrills(let trackId, let type): TrackDrillsView(trackId: trackId, type: type)
+                    case .trackDrill(let id): TrackDrillView(drillId: id)
+                    case .courses: CoursesView()
+                    case .course(let level): CourseLevelView(level: level)
+                    case .courseRemaining(let level): CourseRemainingView(level: level)
+                    case .onomatopoeia: OnomatopoeiaHomeView()
+                    case .onomatopoeiaTheme(let id): OnomatopoeiaThemeView(themeId: id)
+                    case .onomatopoeiaWord(let id): OnomatopoeiaDetailView(entryId: id)
+                    case .onomatopoeiaQuiz(let theme): OnomatopoeiaQuizView(themeId: theme)
+                    case .drillSets: DrillSetsView()
+                    case .drillSet(let id): DrillSetPlayerView(setId: id)
                     }
                 }
         }
@@ -211,11 +243,23 @@ struct LearnHomeView: View {
             NavigationLink(value: Route.pathLevels) {
                 LabeledContent("Kanji path", value: "60 levels")
             }
+            NavigationLink(value: Route.courses) {
+                LabeledContent("JLPT courses", value: "Modules, mastery, what's left")
+            }
             NavigationLink(value: Route.grammar) {
                 LabeledContent("Grammar", value: "JLPT N5–N1")
             }
+            NavigationLink(value: Route.gradedReaders) {
+                LabeledContent("Graded readers", value: "Stories by level, with audio")
+            }
             NavigationLink(value: Route.library) {
                 LabeledContent("Reading", value: "Articles, books, feeds")
+            }
+            NavigationLink(value: Route.tracks) {
+                LabeledContent("Tracks", value: "Gaming, business, family…")
+            }
+            NavigationLink(value: Route.onomatopoeia) {
+                LabeledContent("Onomatopoeia", value: "擬音語・擬態語・擬情語")
             }
             NavigationLink(value: Route.decks) {
                 LabeledContent("Decks", value: "Core 2k–10k · your media")
