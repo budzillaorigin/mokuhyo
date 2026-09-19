@@ -1,5 +1,6 @@
 package app.tsumugi.api
 
+import app.tsumugi.audio.AudioPackRepository
 import app.tsumugi.content.PackInstaller
 import app.tsumugi.content.PackStatus
 import app.tsumugi.db.TsumugiDatabase
@@ -127,6 +128,12 @@ private const val KANA_LESSONS_AHEAD = 30
 class AppGraph(val platform: PlatformServices) {
 
     val packs = PackInstaller(platform)
+
+    /**
+     * Pre-rendered VOICEVOX audio (BRIEF_V2 §5.6, rule 20): `audio.clip(AudioKeys.exam(id, line))` is a file to
+     * play, or null to fall back to system TTS. Packs are downloaded or picked, never required (D-095..D-097).
+     */
+    val audio: AudioPackRepository by lazy { AudioPackRepository(platform) }
 
     private val userDriver by lazy { platform.userDatabaseDriver() }
     val userDatabase: TsumugiDatabase by lazy { TsumugiDatabase(userDriver) }

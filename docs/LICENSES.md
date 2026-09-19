@@ -54,6 +54,8 @@ Every dependency and data asset used by Tsumugi, with its license and attributio
 | Pillow (renders the iOS app icon, `tools/assets/render_icon.py`; `assets` dependency group) | MIT-CMU (HPND) | https://github.com/python-pillow/Pillow — https://github.com/python-pillow/Pillow/blob/main/LICENSE |
 | sqlite-jdbc (xerial), via SQLDelight sqlite-driver — tests only | Apache-2.0 | https://github.com/xerial/sqlite-jdbc |
 | Ktor client mock engine — tests only | Apache-2.0 | https://github.com/ktorio/ktor |
+| VOICEVOX Engine 0.25.2 (Windows CPU build; renders the audio packs, `tools/packs/render_audio.py`) | LGPL-3.0 (engine code); the bundled VOICEVOX CORE and voice libraries under their own terms (see "Pre-rendered audio" below) | https://github.com/VOICEVOX/voicevox_engine — runs on the build machine only; nothing of it is linked into or shipped with the apps, only the audio it renders |
+| FFmpeg 8.1 (BtbN static `winarm64-lgpl` build; encodes the audio packs to AAC) | LGPL-2.1+ (this build has no GPL components) | https://ffmpeg.org · https://github.com/BtbN/FFmpeg-Builds — build machine only, run as a separate program, never linked into the apps |
 
 ## Data and content (dictionary pack)
 
@@ -93,6 +95,22 @@ Listed in `content/models/manifest.json`; the in-app model manager shows each mo
 | Minimal pairs | derived from JMdict (CC BY-SA 4.0, EDRDG) and Kanjium pitch data | computed by `build_practice.py`, no new text |
 | JLPT blueprints (`tools/items/jlpt_blueprints.json`) | facts | Published test structure from https://www.jlpt.jp; no official items are used |
 | JLPT / DLPT item banks (`tools/items/bank/`) | CC BY-SA 4.0 | Tsumugi contributors; rule-generated items from JMdict/Tatoeba/grammar packs keep their sources' attribution; AI-drafted items carry the badge until reviewed. Not affiliated with JLPT, DLI or ACTFL |
+
+## Pre-rendered audio (VOICEVOX)
+
+The audio packs (`audio-<set>.zip`: exam listening, dialogues, minimal pairs, pitch-accent test, grammar examples) are synthesized at build time with the VOICEVOX engine (BRIEF_V2 §5.6, DECISIONS D-090). They are optional downloads. The voices' terms allow commercial and non-commercial use of the generated audio **with a credit line**, and forbid use that damages the characters' or voice providers' image, political or religious use, deception, and training new voice models on the audio. The credit lines below are required and are shown here, on the in-app Licenses screen.
+
+| Voice (style ノーマル, engine speaker id) | Used for | Required credit | Terms |
+|---|---|---|---|
+| VOICEVOX (software) | all audio packs | VOICEVOX | Engine terms: "ご利用の際は VOICEVOX を利用したことがわかるクレジット表記が必要です" — https://voicevox.hiroshiba.jp/term/ |
+| 春日部つむぎ (8) | female speakers, pitch-accent and minimal-pair words, grammar examples | **VOICEVOX:春日部つむぎ** | https://tsumugi-official.studio.site/rule (character page: https://voicevox.hiroshiba.jp/product/kasukabe_tsumugi/) |
+| 四国めたん (2) | second female speaker, narrators and announcements | **VOICEVOX:四国めたん** | https://zunko.jp/con_ongen_kiyaku.html ("アプリなどでの利用の場合は、アプリの紹介画面などに記載をお願いします") |
+| 玄野武宏 (11) | male speakers, grammar examples | **VOICEVOX:玄野武宏** | https://www.virvoxproject.com/voicevoxの利用規約 (VirVox Project; example credit "VOICEVOX:玄野武宏(CV:ガロ)") |
+| 青山龍星 (13) | second or older male speaker, narrators | **VOICEVOX:青山龍星** | https://www.virvoxproject.com/voicevoxの利用規約. **Condition:** when a company or sole proprietor (or an individual under contract with one) publishes a work using 青山龍星, prior application to ななはぴ (https://v.seventhh.com/contact/) is required, paid or not; credit removal is not offered. See DECISIONS D-098. |
+
+Credits: VOICEVOX:春日部つむぎ, VOICEVOX:四国めたん, VOICEVOX:玄野武宏, VOICEVOX:青山龍星
+
+Each pack's `index.json` also lists the credit lines for the voices it actually uses. Text spoken in the packs comes from the exam, practice and grammar content above, under those licenses.
 
 ## Inspiration, no content used
 

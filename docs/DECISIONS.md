@@ -126,6 +126,8 @@ Short slices get a "provisional" estimate, and 10+ items at the estimated level 
 ### D-030: Listening audio is rendered on device at play time (2026-09-18)
 BRIEF §5.11 asks for TTS rendering at build time. The build machine has no licensed Japanese voices, and shipping audio would add hundreds of MB. Exam and dialogue scripts are therefore stored as `(speaker, voice, text)` lines and spoken with the OS voices, or with VOICEVOX when the learner configures it. Two voices are picked by gender hint. Strict exam modes allow one play. Pre-rendered audio can come later as an optional pack.
 
+> **Revised by D-090 (v2, BRIEF_V2 §5.6):** exam listening, dialogues, minimal pairs, the pitch-accent test and grammar examples now come from pre-rendered VOICEVOX audio packs when installed. Play-time TTS remains the fallback and the path for user-created content.
+
 ### D-031: OPI adaptation without a model uses answer length (2026-09-18)
 **Scripted mode:** without an LLM the interviewer asks scripted bank questions. The working level moves up when an answer is at least the next level's typical length, and down when it's under half the current level's typical length (breakdown). This is a crude, documented stand-in for "sustained speech".
 
@@ -574,6 +576,94 @@ An audit of `androidApp/` and `shared/src/androidMain` found no `HttpURLConnecti
 - **Recompute banner:** `AppGraph.recomputeProgress` shows as a banner with progress on Today, Reviews and the path while cards are rebuilt.
 - **No examples yet:** grammar lists show a "No examples yet" tag for `GrammarPointStatus.noExamples` (D-045).
 - **Optimizer:** the Android app has no FSRS optimizer screen, so no UI saves weights and nothing calls `graph.setFsrsWeights` yet. A future optimizer screen must use it and not write the setting directly.
+
+### D-090: Pre-rendered VOICEVOX audio packs for the consistency-critical audio (2026-09-18, BRIEF_V2 §5.6, rule 20; revises D-030)
+- **What is pre-rendered:** exam listening (JLPT + DLPT scripts), practice dialogues, minimal pairs, the pitch-accent test (§6.7) and grammar examples. Each set is one `content/packs/audio-<set>.zip`, built by `tools/packs/render_audio.py` against a local VOICEVOX engine and listed in `content/packs/audio-manifest.json`. Audio packs are build outputs: git-ignored, never committed.
+- **Engine and voices:** VOICEVOX Engine 0.25.2, Windows CPU build (x64, runs under emulation on the owner's Snapdragon PC), installed under `%LOCALAPPDATA%\voicevox_engine`. Owner-approved characters, style ノーマル: 春日部つむぎ (id 8), 四国めたん (2), 玄野武宏 (11), 青山龍星 (13). The renderer resolves ids by name, so another engine version with different ids still works.
+- **Fallback:** a clip that isn't installed falls back to system TTS (`AppGraph.audio.clip(key) == null`). The exception is the pitch test, which is hidden without its pack, because system TTS can't guarantee an accent (§6.7).
+- D-030 stays true for user-created content: the learner's own cards and imported texts are still spoken at play time.
+
+### D-091: Audio format is AAC-LC in .m4a, 24 kHz mono, 48 kbps, not Opus (2026-09-18)
+BRIEF_V2 §5.6 says Opus. One file per clip has to play natively on both platforms with the players the apps already use:
+- **Android:** MediaPlayer/Media3 play Ogg/Opus (API 21+) and AAC/MP4.
+- **iOS:** AVAudioPlayer plays Opus only inside CAF. Ogg/Opus support isn't documented as reliable on iOS 17. Opus would therefore need two containers (CAF for iOS, Ogg for Android), which means two packs or a transcode on device.
+- **AAC-LC in MP4:** plays everywhere with no extra code.
+
+Speech at 48 kbps AAC-LC is about 6 KB per spoken word and 55 KB for a 9-second exam line. The size gap to Opus at 24–32 kbps (~35%) is a few MB per set. Encoding uses FFmpeg's native `aac` encoder with `-fflags +bitexact`, no metadata and `+faststart`, from a static LGPL build (build tooling only; see LICENSES). If a later iOS version plays Ogg/Opus natively, `ENCODER_ARGS` and `index.json.codec` are the only things to change.
+
+### D-092: Audio pack layout and clip keys (2026-09-18)
+- **Keys** (renderer ↔ app contract; `app.tsumugi.audio.AudioKeys` builds them, `AudioKeysTest` pins them):
+  - `exam/<passage or item id>/<line index>`: 0-based index into the script JSON, empty lines included.
+  - `dialogue/<dialogue id>/<ord>`
+  - `pair/<pair id>/a|b`
+  - `pitch/<item id>`
+  - `grammar/<point id>/<ord>`
+- **Archive:** an uncompressed (stored) zip, since audio doesn't compress, with fixed timestamps and sorted entries. The same input gives a byte-identical zip.
+  - `index.json` holds `format` (1), `set`, codec info, engine version, `credits` (the voices actually used) and `clips: {key: {file, bytes, ms, voice, text, downstep?, display?}}`.
+  - Audio entries are named by content hash (`clips/<16 hex>.m4a`), so identical clips are stored once.
+  - The pitch pack also has `items.json` (D-094).
+- **Manifest:** `audio-manifest.json` lists `{file, set, version (<format>-<sha256 prefix>), sha256, bytes, clips, audioSeconds, credits}`. Every entry is also a valid `PackFile`.
+- **Build log:** `audio-build-log.jsonl` in content/packs, one line per set built, with counts, sizes, rendered vs cached clips, seconds per clip and how many contours were stylized.
+
+### D-093: Pitch-test and minimal-pair accents are set explicitly, never predicted (2026-09-18)
+- **Word items are spoken from their kana reading.** The reading goes through `/accent_phrases?is_kana=true` with the accent mark on the last mora, which forces one accent phrase and means the engine never reads the kanji. The phrase's `accent` is then set from Kanjium: the downstep, or the phrase's mora count for 平板, which is how VOICEVOX expresses "no fall". `/mora_pitch` recomputes the pitches.
+- **Stylized fallback:** the engine's contour often doesn't show the Tokyo high/low pattern clearly on short words. At every voiced high/low boundary the step must be at least 0.10 log-F0 (~1.7 semitones) in the right direction. If it isn't, the mora pitches are replaced by a two-level contour at the engine's own register, 0.17 log-F0 (~3 semitones) apart, with slight declination; devoiced morae stay devoiced. In the first full render, 165 of the 300 pitch items and 350 of the 1,260 minimal-pair clips needed this. With a 0.06 margin, an F0 check of rendered clips found a too-shallow fall, so the margin is 0.10.
+- **Carrier particle:** pitch items, and the PITCH category of minimal pairs, are spoken with が (`はしが`), because 平板 and 尾高 only differ on the following particle. The other minimal-pair categories are the bare word, with its accent set when Kanjium has one.
+- **One voice:** all word items use 春日部つむぎ, so only the accent differs between the two sides of a pair.
+
+### D-094: Pitch-accent test items are built with the pitch pack (2026-09-18, §6.7)
+- **Candidates:** `render_audio.py` picks common or JLPT-tagged JMdict words of 2–4 morae with a pure-kana reading and exactly one Kanjium accent. Words listed with two accents have no single right answer, so they are skipped.
+- **Pass 1** takes whole same-kana groups with different accents (箸/橋/端), most common first.
+- **Pass 2** adds single members of larger groups.
+- **Pass 3** fills cells no homophone group can fill with single words. 尾高 at 3–4 morae is rare among homophones.
+- **Balance:** at most 28 items per pattern × length cell, 300 items in all.
+  - First build: 平板 28/28/28, 頭高 28/28/28, 中高 –/28/28, 尾高 28/28/20 (2/3/4 morae).
+  - 尾高 at 4 morae runs out of eligible words at 20.
+- **Item fields:** id `p<JMdict id>` (stable across rebuilds), text, reading, moraCount, downstep, pattern, group, gloss, `spoken` (reading + が), `confusableWith` (other items in the group) and `source = "kanjium"`.
+- The list ships as `items.json` inside `audio-pitch.zip`, not as a separate table. The test needs the audio anyway, and `AudioPackRepository.pitchItems()` returns only items whose clip is present.
+
+### D-095: The app extracts audio packs on install and resolves keys to plain files (2026-09-18)
+- **Location:** `AudioPackRepository` (`AppGraph.audio`) extracts `audio-<set>.zip` into `dataDir/audio/<set>/`. On iOS that's Application Support, and the folders are excluded from backup because the audio can be downloaded again.
+- **Why extract:** AVAudioPlayer and MediaPlayer need a file path. A stored zip would allow reading in place, but that would need a custom player data source on each platform.
+- **Clip paths:** each clip is written at a path derived from its key (`AudioKeys.relativePath`, segments escaped to `[A-Za-z0-9._-]`). `clip(key)` is then one file-exists check, with no index to parse on the main thread. A key shared by several clips is simply written twice.
+- **Installs are serialized and atomic.**
+  - With a manifest entry (download, bundled copy, or a picked file whose entry is known), bytes are verified by size and SHA-256. Bundled and picked copies go through `PackInstaller.installFrom` (free-space check, `.part` file, atomic rename, progress). Downloads hash while streaming.
+  - Always: the index must parse; `format` must be ≤ 1; the set must be known and match the entry; every key must belong to the set; every extracted entry's size must match the index.
+  - Extraction goes into `<set>.<uuid>.part/`. The live folder is renamed aside, the new one renamed in, and the old one deleted. A failure or cancellation leaves the previous version in place, and stale `.part`/`.old` folders are removed on the next install.
+- **Picked files without a manifest entry** get version `sha256:<prefix>`.
+- **Progress:** `AudioPackRepository.progress` reports each phase: DOWNLOADING, COPYING or EXTRACTING.
+
+### D-096: Audio packs are hosted by the owner, not GitHub (2026-09-18) — OPEN, owner decision
+The repository is private, so release assets aren't publicly downloadable, and the base IPA must stay under 200 MB. The app supports two install paths:
+- **From a URL the learner sets:** `fetchManifest(baseUrl)` reads `<baseUrl>/audio-manifest.json`, then `download(baseUrl, entry)` fetches `<baseUrl>/<file>` with `NetTimeouts.DOWNLOAD`. Any static file host works: the owner's own web server, a NAS, or a static route beside the self-hosted sync server (e.g. a Caddy `file_server` for `/audio/*`).
+- **From Files / the document picker:** `installFrom(source)` or `installFile(path)`.
+
+The sync server's per-user blob store isn't used: packs are shared, public build outputs, not user data. The URL is device-local configuration (rule 16). UI agents will wire both paths.
+**Owner:** choose where the packs are published, and whether the app should ship with a default URL.
+
+### D-097: Bundle the pitch and minimal-pair audio in the app? (2026-09-18) — OPEN, owner decision
+- **Recommendation:** bundle `audio-pitch.zip` and `audio-minimal-pairs.zip` (2.1 MB + 6.6 MB = 8.7 MB). The pitch test (§6.7) and minimal-pair drills would then work out of the box and offline. Exam, dialogue and grammar audio stay downloads.
+- **Already supported:** `AudioPackRepository.ensureBundled()` installs any set the bundle carries as `packs/audio-manifest.json` + `packs/audio-<set>.zip`, once per version. It is a no-op today.
+- **To enable:** add the two zips and `audio-manifest.json` to the Xcode "Bundle Content Packs" phase and the Android `bundlePacks` task, then call `graph.audio.ensureBundled()` at startup next to the pack installs.
+- This isn't done yet, because it changes app size and the build phases, which other agents own.
+
+### D-098: VOICEVOX credit obligations (2026-09-18)
+- **Credit text:** `docs/LICENSES.md` lists "VOICEVOX" and each character's exact credit line, which the in-app Licenses screen renders: VOICEVOX:春日部つむぎ, VOICEVOX:四国めたん, VOICEVOX:玄野武宏, VOICEVOX:青山龍星. Each pack's `index.json.credits` names the voices it actually uses, and `AudioPackRepository.credits()` returns the credits for the installed sets.
+- **四国めたん:** the terms ask for the credit "アプリの紹介画面など", i.e. in the app's introduction or listing. **Owner action:** add the credit line to the App Store / Play description, not only the Licenses screen.
+- **青山龍星:** if a company, a sole proprietor, or an individual under contract with one publishes a work using this voice, prior application to ななはぴ (https://v.seventhh.com/contact/) is required, paid or not. **Owner action:** before a commercial release, either apply, or re-render with `POOLS["male"]`/`["narrator"]` limited to 玄野武宏. Both are one-line changes, followed by a re-run of the affected sets.
+- **Prohibited uses:** the terms forbid using the audio to train voice models, and forbid uses that harm the characters' image. Nothing in Tsumugi does either.
+- The 春日部つむぎ terms page is script-rendered and couldn't be read as text. The credit line recorded here is the one the engine ships in the character's policy (`/speaker_info`): 「VOICEVOX:春日部つむぎ」とクレジットを記載すれば、商用・非商用で利用可能です。
+
+### D-099: Voice allocation, speeds, caching and finishing renders on a faster machine (2026-09-18)
+- **Voices per script:** each speaker gets a character by voice hint, distinct within the script where the pool allows:
+  - female: つむぎ, then めたん.
+  - male: 玄野武宏, then 青山龍星. A dialogue speaker marked `age: "senior"` gets 青山龍星 first.
+  - narrator (or no hint): めたん, then 青山龍星.
+  - Grammar examples alternate つむぎ (even ord) and 玄野武宏 (odd ord).
+- **Speed:** 0.9 for N5 / DLPT 0+ / practice jlpt 5, 0.95 for N4 / DLPT 1 / jlpt 4, 1.0 above. Word items use 0.95. Any key can be overridden in `tools/packs/audio/overrides.json` (`{"<key>": {"speed": 0.9, "pitch": 0.0, "intonation": 1.1}}`).
+- **Cache:** clips live in `tools/.cache/audio/clips/`, keyed by a SHA-256 of engine version, voice id, text/kana, accent, carrier, speed/pitch/intonation, encoder args and a style version. A re-run renders only new or changed clips. An interrupted run resumes, and the zip is rebuilt from the cache in seconds.
+- **Grammar subset:** the default is 2 examples per point (1,658 clips). `--grammar-all` renders all 7,603. The first build on this machine rendered 1 per point (829, `--grammar-per-point 1`) to bound render time.
+- **Finishing on the GPU machine:** install the VOICEVOX GPU engine build (DirectML or NVIDIA), start it, and run `render_audio.py grammar --grammar-all --endpoint http://<pc>:50021`. Copy `tools/.cache/audio` over first to reuse the clips already rendered. On the Snapdragon X Plus (x64 emulation, CPU) the first build took 2 h 39 min for 3,409 new clips: 1.4–1.6 s per word and 2.4–4.8 s per sentence or exam line. Per-set numbers are in CONTENT_PACKS.md.
 
 ### D-100: Today blocks by budget, with launch payloads and a real review cap (G-01, 2026-09-18)
 - **Blocks by budget:** 10 min: reviews, lessons, grammar. 20 min adds immersion (5 min) and shadowing (3 sentences). 40 min adds the speaking moment (optional; immersion 8 min, shadowing 4). 60 min adds writing (3 kanji, optional; immersion 10 min, shadowing 5). Optional blocks don't count toward `plannedMinutes`. The 60-minute plan has all six block kinds (acceptance: "Today runs all six blocks").

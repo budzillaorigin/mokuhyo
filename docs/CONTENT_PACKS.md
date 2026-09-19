@@ -17,6 +17,7 @@ uv run python packs/build_all.py      # ~1 min after the first download (~100 MB
 | `grammar.sqlite` (N5–N1: 829 points, 5,116 Tatoeba examples; matched in order n3, n4, n5, n2, n1 so harder points don't take easier points' sentences) | `packs/build_grammar.py` from `packs/grammar/n*.json` | 3 / 7 | ✅ |
 | `exam.sqlite`: JLPT blueprints + 4 banks (2,368 JLPT items: 1,878 rule-generated, 490 AI-drafted; DLPT 100 passages / 306 items, AI-drafted) | `packs/build_exam.py` from `items/jlpt_blueprints.json` and `items/bank/*.json` | 7 | ✅ |
 | `practice.sqlite`: 30 scenarios, 62 OPI questions, 45 dialogues, 630 minimal pairs | `packs/build_practice.py` | 6 | ✅ |
+| `audio-<set>.zip`: VOICEVOX audio for exam, dialogues, minimal pairs, pitch test, grammar examples (on-demand downloads, not bundled) | `packs/render_audio.py` | 10 | ✅ (grammar partial) |
 
 ## dictionary.sqlite
 
@@ -101,3 +102,73 @@ Validation (`packs/build_exam.py`, also run on user imports): ids unique; `answe
   - Length is non-space characters.
   - Kanji density is kanji / characters.
   - The abstract ratio is abstract-lexicon hits per token run.
+
+## Audio packs (`audio-<set>.zip`, BRIEF_V2 §5.6)
+
+Pre-rendered VOICEVOX speech for the audio the app promises to keep consistent (CLAUDE.md rule 20). Built by `tools/packs/render_audio.py` into `content/packs/` (git-ignored). The packs are **not bundled**: they're installed on demand from a URL the learner sets, or from a file picked in Files (DECISIONS D-095..D-097). Without a pack the app falls back to system TTS, except the pitch test, which stays hidden.
+
+### Format
+
+- **Archive:** `audio-<set>.zip`, stored (uncompressed) and deterministic.
+  - `index.json`: `{format: 1, set, codec: "aac-lc", container: "m4a", sampleRate: 24000, channels: 1, bitrate, engine, credits: ["VOICEVOX:…"], clips: {key: {file, bytes, ms, voice, text, downstep?, display?}}}`.
+  - `clips/<content hash>.m4a`: AAC-LC, 24 kHz mono, 48 kbps (D-091). Identical clips are stored once.
+  - `items.json`: pitch pack only. The pitch-accent test items (D-094): `{id, entryId, text, reading, moraCount, downstep, pattern, group, gloss, spoken, confusableWith, source}`.
+- **`audio-manifest.json`:** `{format, packs: [{file, set, version, sha256, bytes, clips, audioSeconds, credits}]}`. Upload it next to the zips; the app reads it to download and verify them.
+- **`audio-build-log.jsonl`:** one line per set per run, with counts, size, rendered vs cached clips, seconds per clip, and stylized contours.
+
+### Clip keys
+
+The app builds keys only with `app.tsumugi.audio.AudioKeys` and looks them up with `AppGraph.audio.clip(key)`, which returns a file path or null (fall back to TTS).
+
+| Set | Key | Source |
+|---|---|---|
+| `exam` | `exam/<passage or item id>/<line index>` | `exam_passage.script`, `exam_item.script` (JLPT listening + DLPT listening), 0-based line |
+| `dialogues` | `dialogue/<dialogue id>/<ord>` | `practice.sqlite` `dialogue_line` |
+| `minimal-pairs` | `pair/<id>/a`, `pair/<id>/b` | `practice.sqlite` `minimal_pair`; PITCH pairs spoken with が |
+| `pitch` | `pitch/<item id>` (`p<JMdict id>`) | built by the renderer from dictionary words with one Kanjium accent; spoken as reading + が |
+| `grammar` | `grammar/<point id>/<ord>` | `grammar.sqlite` `grammar_example`; default 2 per point, `--grammar-all` for all |
+
+### How to render
+
+1. **Install the engine (once).**
+   - Download the Windows CPU `.vvpp` from the VOICEVOX/voicevox_engine releases (0.25.2 used). A `.vvpp` is a zip.
+   - Unpack it to `%LOCALAPPDATA%\voicevox_engine`.
+   - Start it: `run.exe --host 127.0.0.1 --port 50021`.
+   - Check it answers: `curl http://127.0.0.1:50021/version`.
+   - On a GPU machine, use the DirectML or NVIDIA build instead; the script doesn't change.
+2. **Install ffmpeg (once).** Any ffmpeg with the native `aac` encoder works: on PATH, `$FFMPEG`, or a static build unpacked under `tools/.cache/ffmpeg/`. This machine uses BtbN's `winarm64-lgpl` build.
+3. **Render.** From `tools/`:
+
+```bash
+uv run python packs/render_audio.py all --dry-run            # clip counts per set
+uv run python packs/render_audio.py pitch minimal-pairs dialogues exam grammar
+uv run python packs/render_audio.py grammar --grammar-all    # every grammar example (7,603)
+uv run python packs/render_audio.py exam --endpoint http://<lan-ip>:50021   # engine on another PC
+```
+
+**Re-running is safe and cheap.** Clips are cached in `tools/.cache/audio/clips/`, keyed by a hash of engine version, voice, text or kana, accent, speed/pitch/intonation and encoder settings. A re-run renders only what's new, for example after the banks grow. An interrupted run resumes where it stopped. Per-key speed/pitch/intonation overrides go in `tools/packs/audio/overrides.json`. To publish, upload `audio-manifest.json` and the zips to the same folder.
+
+### Voices
+
+| Character (style ノーマル) | Id | Used for |
+|---|---|---|
+| 春日部つむぎ | 8 | female speakers, pitch and minimal-pair words, even grammar examples |
+| 四国めたん | 2 | second female speaker, narrators and announcements |
+| 玄野武宏 | 11 | male speakers, odd grammar examples |
+| 青山龍星 | 13 | second or older male speaker, narrator when めたん is taken |
+
+Credit lines are in `docs/LICENSES.md`, which the Licenses screen renders, and in each pack's `index.json` (D-098).
+
+### Build (2026-09-18, VOICEVOX Engine 0.25.2 CPU, x64 emulation on Snapdragon X Plus)
+
+| Set | Clips | Zip size | Audio | Rendered / cached | Seconds per clip | Wall time | Notes |
+|---|---|---|---|---|---|---|---|
+| `pitch` | 300 | 2.1 MB | 4.1 min | 300 / 0 | 1.58 | 8 min | 165 contours stylized (D-093); cells 平板 28/28/28, 頭高 28/28/28, 中高 –/28/28, 尾高 28/28/20 |
+| `minimal-pairs` | 1,260 (630 pairs) | 6.6 MB | 15.4 min | 975 / 285 | 1.38 | 22 min | 350 contours stylized; words without a Kanjium accent use the engine's accent |
+| `dialogues` | 290 lines (45 dialogues) | 5.2 MB | 12.9 min | 290 / 0 | 2.98 | 14 min | |
+| `exam` | 1,032 lines (166 passage scripts + 71 item scripts) | 47.1 MB | 120.9 min | 1,022 / 10 | 4.81 | 82 min | JLPT + DLPT listening |
+| `grammar` | 829 of 7,603 (1 per point) | 14.4 MB | 35.5 min | 822 / 7 | 2.37 | 32 min | **partial**: default is 2 per point (1,658), `--grammar-all` 7,603 |
+
+Total: 3,711 clips, 75 MB, about 3.2 hours of audio. Rendering took 2 h 39 min of wall time on the CPU while other work shared the machine; an idle machine was about twice as fast in the smoke tests. Rendering scales with audio length, roughly 0.65 s per second of speech here.
+
+**Left to render:** grammar examples 2..n. `render_audio.py grammar` renders the second example per point (+829 clips, ~35 min here); `--grammar-all` renders the other 6,774 (~4.5 h here, minutes with a VOICEVOX GPU build). Both reuse the cache.

@@ -33,3 +33,8 @@ content/packs/manifest.json
 # Native inference (tools/models/fetch_ios_frameworks.sh, CMake build dir)
 iosApp/Frameworks/
 androidApp/.cxx/
+
+# Pre-rendered audio packs (tools/packs/render_audio.py): build outputs, never committed
+content/packs/*.zip
+content/packs/audio-manifest.json
+content/packs/audio-build-log.jsonl
