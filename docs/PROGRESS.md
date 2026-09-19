@@ -66,6 +66,66 @@ The SwiftUI screens for every Phase 13 shared hook. Decisions D-300…D-309.
 ### How to check
 On the Mac, build as described in "iOS: unverified since CI paused". Fix any interop names from the Phase 13 list there, then walk through the screens above: Learn → Language arts / Kanji explorer, Practice → Pitch-accent test / Games / Translate, and Me → Translation.
 
+## Phase 13 (Android UI): pitch test, kanji explorer, dictionary polish, games, reader grammar, translation, thesaurus, writing studio, poetry, reading circle (2026-09-19)
+
+These are the Compose screens for every Phase 13 shared hook, covering BRIEF_V2 §6.7, §6.9 and §6.12–§6.16. Decisions are D-290…D-299. iOS is being built in parallel by another agent.
+
+### What was built (androidApp only)
+- **Pitch-accent test** (Practice → Listen). The row appears only when the pitch audio pack is installed.
+  - A hub shows the level, the drills and the stats.
+  - An adaptive session plays the pack clips, with no TTS fallback. It shows the ↑/↓ marks and the level moves.
+  - A "Say it" production panel calls `production(...)`.
+  - Stats break down by pattern, mora length and question type, and list confusable pairs.
+  - Minimal pairs are a drill inside the module.
+- **Mini-games** (Practice → Games):
+  - The hub shows best scores and the weekly-challenge meter.
+  - Reflex (60 s) and Atom (90 s) play standalone, and in the Pomodoro queue (45 s) where the placeholder used to be.
+  - Scores are saved to `game_score` on the app scope.
+- **Kanji explorer** (Learn):
+  - A Canvas graph from the shared deterministic layout, with tap to select and a second tap to re-center.
+  - Focus mode, JLPT/frequency colouring with a legend, a node cap with the hidden count, and a TalkBack node list.
+  - The kanji page gains component roles with the "derived" badge, the sound family, "Explore graph", component search and bookmark to SRS.
+  - New screens for sound families and component search, plus a word graph from entries.
+- **Dictionary polish:**
+  - Results as you type through `InstantSearch`.
+  - The inflection breakdown chip, common/JLPT/#rank chips, and the "Kanji built from" shortcut.
+  - Entries show collocations by pattern, thesaurus cluster links and "Explore its kanji".
+- **Reader grammar:** the sentence panel underlines constructions and shows the one-line explanation, which is monolingual-aware and badged. "Practice this point" handles every result inline.
+- **Translation workbench** (Practice → Translate and read aloud):
+  - Passages filter by genre, direction and level, and you can import your own text.
+  - Written mode, and a sight mode with a timer and speech capture in the target language.
+  - Results show the labeled AI grade with rubric bars, issues, a better version and a diff. Without a model, the self-assessment rubric replaces the grade.
+  - History with delete, and a skill-line chart card on Me.
+- **Expression thesaurus** (Learn): clusters by emotion or scene with search. A cluster's detail has expressions, glosses and Tatoeba examples.
+- **Writing studio** (Practice → Write):
+  - Synced drafts with autosave.
+  - On-demand checks: register (with an AI rewrite), thesaurus suggestions, readability and AI corrections.
+  - The graded reader's output task opens its draft, and the draft can be graded.
+- **Poetry corner** (Learn): themes and poems with ruby. The vocabulary, paraphrase, gloss and note are badged, and the Aozora source notes are shown.
+- **Reading circle** (Practice → Translate and read aloud):
+  - Texts come from the pack or the library, and sessions are saved.
+  - Each sentence has a WAV recording of the reading, then an explanation, recorded or typed.
+  - Per-sentence help, recording playback, and completing or moving between sentences.
+- **Strings:** `values/strings_p13.xml` and `strings_p13{a,b,c,d}.xml`, with Japanese copies (474 keys, en/ja parity checked).
+- **Empty and error states:** each screen has an honest state when its pack is missing and `ErrorState` + Retry when loading fails (F-33).
+
+### Shared additions
+None (D-299).
+
+### Deferred
+- **Pitch test:** no answer-history list. The "Say it" reference-clip decode is best effort.
+- **Graph:** no pinch-zoom or pan, and re-centering replaces the route instead of stacking.
+- **Dictionary:** inflection step labels are English in the Japanese UI, because they are shared labels.
+- **Translation:** imported passages last only for the process (D-294). Live dictation without a configured recognizer can drop words at restart boundaries.
+- **Recordings:** reading-circle playback has no stop button or side-by-side comparison.
+- **Games:** no haptics.
+- **Not run on a device:** only `:androidApp:assembleDebug` was verified.
+
+### How to run
+```
+./gradlew --no-daemon :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
 ---
 
 ## Phase 13 (shared + data): translation workbench, thesaurus + collocations + writing studio, poetry corner + reading circle (2026-09-19)
@@ -1484,3 +1544,11 @@ cd tools && uv sync && uv run ruff check .
 | Drill sets: hands-free player, pause presets, screen-off playback (§6.10) | | ✅ (foreground service + MediaSession) |
 | Natural dialogues: greyed fillers, overlapping lines side by side (§6.10) | | ✅ |
 | OPI probe map; DLPT range and text-type filter (§6.16) | | ✅ |
+| Pitch-accent test: adaptive session from pack clips, stats, "Say it", minimal pairs as a drill (§6.7) | | ✅ (hidden without the pitch pack) |
+| Kanji explorer: Canvas graph, focus, JLPT/frequency colours, node cap, component roles, sound families, component search, bookmark (§6.15) | | ✅ |
+| Dictionary: as-you-type results, inflection chip, common/JLPT/rank chips, component shortcut, collocations and thesaurus links on entries (§6.13, §6.15) | | ✅ |
+| Mini-games: Reflex and Atom, standalone and in the Pomodoro queue, weekly challenge points (§6.9) | | ✅ |
+| Reader grammar: constructions highlighted, one-line explanation, practice this point (§6.16) | | ✅ |
+| Translation workbench: passages, written and sight modes, AI grade or self-assessment, diff, history, skill line on Me (§6.12) | | ✅ |
+| Expression thesaurus and writing studio (drafts, corrections, register, suggestions, readability, reader tasks) (§6.13) | | ✅ |
+| Poetry corner and solo reading circle (§6.14) | | ✅ |

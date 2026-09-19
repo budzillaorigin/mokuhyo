@@ -85,6 +85,31 @@ sealed interface Route {
     data object DrillSets : Route
     data class DrillSetPlayer(val id: String) : Route
 
+    // Phase 13: pitch test, kanji explorer, games, linguist modules (BRIEF_V2 §6.7, §6.9, §6.12–§6.15)
+    data object PitchTest : Route
+    data class PitchSession(val drill: app.tsumugi.pitch.PitchDrill, val nonce: Long = System.nanoTime()) : Route
+    data object PitchStats : Route
+    /** [center]: a kanji literal, or blank to pick one first. */
+    data class KanjiGraph(val center: String = "") : Route
+    data class WordGraph(val entryId: Long) : Route
+    data object SoundSeries : Route
+    data class ComponentSearch(val query: String = "") : Route
+    data object Games : Route
+    data class Reflex(val nonce: Long = System.nanoTime()) : Route
+    data class Atom(val nonce: Long = System.nanoTime()) : Route
+    data object Translation : Route
+    data class TranslationPassage(val id: String) : Route
+    data class TranslationRun(val passageId: String, val mode: app.tsumugi.translation.TranslationMode, val nonce: Long = System.nanoTime()) : Route
+    data object TranslationHistory : Route
+    data object Thesaurus : Route
+    data class ThesaurusCluster(val id: String) : Route
+    data object WritingStudio : Route
+    data class WritingDraft(val id: String) : Route
+    data object Poetry : Route
+    data class Poem(val id: String) : Route
+    data object ReadingCircle : Route
+    data class CircleSession(val textId: String) : Route
+
     // Kana course (G-13)
     data object Kana : Route
     data class KanaLesson(val id: String) : Route

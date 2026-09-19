@@ -1635,6 +1635,72 @@ Nothing here can be compiled until the owner builds on a Mac (D-140), so the Pha
 - **Added:** `ReaderGrammar.constructions(sentence)` returns each point with its match spans (the F-39 rule applied again on the sentence's tokens: a match may not cut into a word; an inflected word protects only its stem), a one-line explanation (the first sentence of the meaning, at most 90 characters) in the language monolingual mode asks for, from our own Japanese text when set (D-232/D-233), with the AI badge flag and "Japanese missing" when the pack has none, the learner's stage, and whether an exercise can be built.
 - **Practice this point:** a point not in reviews is added (one cloze card, introduced now) and its first exercise returned; a point already in reviews gets a fresh exercise; with no example sentence the result says so. `GrammarService` gains `pointsByIds` and `withExamples` for this.
 
+### D-290: Android pitch test plays pack clips only; "Say it" sits in the answer feedback (§6.7, rule 20, 2026-09-19)
+- The session plays `question.clipKey` from `graph.audio.clip(...)` through `FileClipPlayer`. There is no TTS fallback, because TTS can't guarantee the accent: a missing clip shows a message instead. The Practice hub row is hidden when `pitchTest()` is null, and the screens explain it if reached anyway.
+- The adaptive mix is the default drill. The minimal-pairs drill opens the existing minimal-pairs screen. `Route.PitchSession` takes a non-null `PitchDrill`, so the adaptive mix travels as `MINIMAL_PAIRS` and the session maps it back to `null`. That value never starts a real minimal-pairs session, because that row goes straight to the pairs screen.
+- After each answer, the feedback card shows the ↑/↓ marks for what was played and what was chosen, the level move, and a "Say it" panel. The panel records with the usual MicButton and calls `production(item, pcm, transcript, clip.pcm())`, then shows the verdict, the shadowing comparison and the pronunciation report.
+
+### D-291: Android mini-games are thin clients of ReflexGame/AtomGame; rounds save on the app scope (§6.9, 2026-09-19)
+- A 50 ms tick only redraws the clock and turns a passed deadline into `timeout()` / `giveUp()`. Scoring, streaks and time limits all come from shared.
+- One pair of play views, `ReflexPlay` and `AtomPlay`, serves both the standalone screens (60 s / 90 s rounds) and the Pomodoro queue (`QueuedGameRound`, 45 s, keyed on the activity so the queue's once-a-second recomposition doesn't restart it).
+- Finished rounds go to `graph.games.record` on `appScope`, so leaving the screen doesn't drop them. Rounds with no answers aren't stored, and the screen says so. In the queue a game reports `complete(null, score)`, so it doesn't count toward the session's accuracy.
+
+### D-292: The Android kanji explorer draws the shared layout and adds no logic (§6.15, D-283, 2026-09-19)
+- The graph scales `KanjiNeighborhood.layout()` onto a Compose Canvas. Colour buckets, the node cap and the hidden count come from `KanjiExplorer`. Focus mode filters the loaded graph to the nodes one edge from the center and re-runs the shared layout.
+- One tap selects a node and shows its card. A second tap re-centers there and replaces the route, so there is no back-stack entry per hop. A second tap on the center opens its kanji or word page, and a long press opens the card.
+- A node's kind is shown by shape and ring as well as by colour. A list of the same nodes, grouped by kind, is the TalkBack path.
+- Packs built before Phase 13 show the old KRADFILE parts on the kanji page, with a note.
+
+### D-293: Dictionary instant search on Android uses the shared `InstantSearch`, with its own error handling (§6.15, D-288, 2026-09-19)
+- `DictionaryViewModel` builds `InstantSearch` with the same lookup as `AppGraph.instantSearch` and catches lookup exceptions itself. Otherwise a throwing lookup inside the search scope would crash the app instead of showing the F-33 retry. Debounce and cancellation stay in shared.
+- The chips come from `SearchHit.inflection` and `SearchHit.chips`. The inflection step names are the shared English labels in both UI languages for now.
+- The component shortcut is a chip shown when the query is 2–6 kanji or radicals, optionally separated by +, spaces or 、. It only opens component search, so a false positive such as 日本 costs nothing.
+- Entry pages add "Explore its kanji" (word graph), the thesaurus clusters that list the word (`clustersForEntry`) and collocations by pattern with Tatoeba examples.
+
+### D-294: Translation workbench on Android: imports stay in memory; the skill line is a card on Me (§6.12, D-271/D-274, 2026-09-19)
+- `TranslationService.passage(id)` only knows pack passages, so imported passages live in an in-process holder (`ImportedPassages`). After a restart, a `user:` passage shows an honest "import it again" state. Its attempts stay in history, because an attempt stores its source text.
+- The skill line is a Me card that draws `skillLine().daily` as a 0–100 line on a Canvas, with a TalkBack summary, recent averages by direction and genre, and the trend. With no attempts the card points to the workbench, and if loading fails the card is hidden.
+- The rubric labels, questions and level texts are Android string resources keyed by `TranslationRubric.criteria[].key`, so the Japanese UI shows them in Japanese. Scores and percentages stay in shared.
+
+### D-295: Sight-translation capture, and grammar in the reader's sentence panel (§6.12, §6.16, D-289, 2026-09-19)
+- Sight mode doesn't use `SpeechInput`, which is Japanese-only and built for short turns: J→E is spoken in English, and a take can last up to 300 s.
+- `SightSpeech` records the whole take when a recognizer is configured, then transcribes it once in "en" or "ja". Otherwise the Android recognizer listens live in the target locale, restarts after each pause and joins the pieces. Capture stops when the timer ends.
+- The transcript stays editable, and the recorded duration is passed to `grade` / `selfAssess`.
+- The reader's sentence panel underlines every construction's spans, and tapping a point highlights its own spans. "Practice this point" handles each `GrammarPracticeResult`: a note when the point is added to reviews, an inline exercise checked by `GrammarService.check`, or the "no examples" note. Without the grammar pack, the panel falls back to the old point links.
+
+### D-296: Thesaurus and poetry on Android (§6.13, §6.14, D-272/D-277, 2026-09-19)
+- The thesaurus filters by emotion or scene and searches as you type, with a 200 ms debounce.
+- The AI badge marks LLM-sourced clusters and the drafted nuance and example. It never marks JMdict glosses or Tatoeba examples.
+- A missing dictionary pack and a pack built before the thesaurus tables each get their own honest notice.
+- Poems use the pack's ruby hints through a small wrapping `RubyText` that can be switched off. The poem text is never badged. The vocabulary, paraphrase, gloss and note are.
+- The Aozora source sits under the poem and under circle texts: author dates, orthography, the public-domain line, the colophon and the card link.
+
+### D-297: Writing studio and reading circle on Android (§6.13, §6.14, D-275/D-278, 2026-09-19)
+- Drafts autosave 800 ms after the last edit through `WritingStudio.update`, and the last writer wins, as in shared.
+- Every check runs only when tapped and is marked stale once the text changes. Register, suggestions and readability work offline.
+- Corrections, rewrites and the reader-task grade are badged. With no model, they point to AI settings.
+- The graded reader's output task opens its studio draft (`draftForReaderTask`).
+- Reading-circle audio is recorded at 16 kHz as WAV with `AudioRecorder`, saved through `recordings.newRecording("wav")`, and then `attachReading` / `attachExplanationRecording`. We don't use `ReadingCircle.startRecording()`, because its default `.m4a` path doesn't match WAV data.
+- The circle offers pack texts, saved sessions (resume, delete) and library documents (`doc:<id>`).
+
+### D-298: Where the Phase 13 screens live on Android (2026-09-19)
+- **Learn:** Kanji explorer (a blank center asks for a kanji; it links to Sound families and Component search), Expression thesaurus, Poetry corner.
+- **Practice:**
+  - **Listen:** Pitch-accent test, only with the pitch pack.
+  - **Write:** Writing studio.
+  - **Translate and read aloud** (new section): Translation workbench, Reading circle.
+  - **Games** (new section): Reflex and Atom.
+- **Me:** the translation skill-line card.
+- **Dictionary:** kanji and entry pages link to the graph, component search and thesaurus clusters through new `DictionaryNav` callbacks (with defaults).
+- Strings live in `values/strings_p13.xml` (titles and hub rows) and `strings_p13{a,b,c,d}.xml`, with the Japanese copies. Names are prefixed per feature (`pt_ gm_ kx_ dp_ tw_ rg_ th_ ws_ po_ rc_`).
+- Each screen shows an honest state when its pack is missing and `ErrorState` when loading fails (F-33).
+
+### D-299: Phase 13 on Android needed no shared changes (2026-09-19)
+- Every screen uses the Phase 13 AppGraph hooks as they are. Two gaps were closed on the platform side without adding logic:
+  - a local copy of the internal `codePointStrings` helper, to split a component query;
+  - WAV recordings created through `RecordingStore` for the reading circle (D-297).
+- A later shared pass could expose `codePointStrings`, and give `ReadingCircle.startRecording()` an extension parameter.
+
 ### D-300: Pitch-accent test on iOS: shown only with the pitch pack; minimal pairs open the existing drill (§6.7, iOS, 2026-09-19)
 - Practice → Listen lists "Pitch-accent test" only when `pitchTest()` isn't nil. The home and stats screens still show an honest "pitch audio pack needed" state, with a link to Audio packs (rule 20).
 - The drill list is the adaptive mix plus `pitchDrillCodes`. MINIMAL_PAIRS opens the existing Minimal pairs screen instead of a new session.

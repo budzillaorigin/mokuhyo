@@ -29,6 +29,9 @@ fun PracticeHubScreen(push: (Route) -> Unit) {
     val scope = rememberCoroutineScope()
     var writeMessage by remember { mutableStateOf<String?>(null) }
     val context = LocalContext.current
+    // §6.7 / rule 20: the pitch test is hidden without the pitch audio pack (AppGraph.pitchTest() == null).
+    var pitchAvailable by remember { mutableStateOf(false) }
+    androidx.compose.runtime.LaunchedEffect(Unit) { pitchAvailable = runCatching { graph.pitchTest() != null }.getOrDefault(false) }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp)) {
         SectionTitle(stringResource(R.string.practice_speak))
@@ -44,6 +47,7 @@ fun PracticeHubScreen(push: (Route) -> Unit) {
         HubRow(stringResource(R.string.title_podcasts), stringResource(R.string.practice_podcasts_sub)) { push(Route.Podcasts) }
         HubRow(stringResource(R.string.title_songs), stringResource(R.string.practice_songs_sub)) { push(Route.Songs) }
         HubRow(stringResource(R.string.title_minimal_pairs), stringResource(R.string.practice_pairs_sub)) { push(Route.MinimalPairs) }
+        if (pitchAvailable) HubRow(stringResource(R.string.title_pitch_test), stringResource(R.string.practice_pitch_sub)) { push(Route.PitchTest) }
 
         SectionTitle(stringResource(R.string.practice_write))
         HubRow(stringResource(R.string.practice_kanji_writing), stringResource(R.string.practice_kanji_writing_sub)) {
@@ -60,6 +64,14 @@ fun PracticeHubScreen(push: (Route) -> Unit) {
         }
         writeMessage?.let { Notice(it, actionLabel = stringResource(R.string.practice_open_path), onAction = { push(Route.PathLevels) }) }
         HubRow(stringResource(R.string.title_draw_search), stringResource(R.string.learn_draw_sub)) { push(Route.Handwriting) }
+        HubRow(stringResource(R.string.title_writing_studio), stringResource(R.string.practice_writing_studio_sub)) { push(Route.WritingStudio) }
+
+        SectionTitle(stringResource(R.string.practice_linguist))
+        HubRow(stringResource(R.string.title_translation), stringResource(R.string.practice_translation_sub)) { push(Route.Translation) }
+        HubRow(stringResource(R.string.title_reading_circle), stringResource(R.string.practice_reading_circle_sub)) { push(Route.ReadingCircle) }
+
+        SectionTitle(stringResource(R.string.title_games))
+        HubRow(stringResource(R.string.title_games), stringResource(R.string.practice_games_sub)) { push(Route.Games) }
 
         SectionTitle(stringResource(R.string.title_exams))
         HubRow(stringResource(R.string.practice_exams), stringResource(R.string.practice_exams_sub)) { push(Route.Exams) }

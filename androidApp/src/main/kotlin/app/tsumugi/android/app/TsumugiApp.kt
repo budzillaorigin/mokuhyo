@@ -134,6 +134,10 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
         openEntry = { nav.push(Route.Entry(it)) },
         openKanji = { nav.push(Route.Kanji(it)) },
         openRadicals = { nav.push(Route.Radicals) },
+        openKanjiGraph = { nav.push(Route.KanjiGraph(it)) },
+        openWordGraph = { nav.push(Route.WordGraph(it)) },
+        openComponentSearch = { nav.push(Route.ComponentSearch(it)) },
+        openCluster = { nav.push(Route.ThesaurusCluster(it)) },
     )
     val deckNav = DeckNav(
         create = { nav.push(Route.CreateDeck(it)) },
@@ -290,6 +294,7 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     Route.GradedReaders -> app.tsumugi.android.features.readers.GradedLibraryScreen(onOpen = { nav.push(Route.GradedStory(it)) })
                     is Route.GradedStory -> app.tsumugi.android.features.readers.GradedStoryScreen(
                         route.id, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenAiSettings = { nav.push(Route.AiSettings) },
+                        onOpenDraft = { nav.push(Route.WritingDraft(it)) },
                     )
                     Route.Tracks -> app.tsumugi.android.features.tracks.TracksScreen(onOpen = { nav.push(Route.Track(it)) })
                     is Route.Track -> app.tsumugi.android.features.tracks.TrackScreen(
@@ -327,6 +332,56 @@ fun TsumugiApp(incoming: Incoming? = null, onIncomingHandled: () -> Unit = {}) {
                     is Route.OnomatopoeiaQuiz -> app.tsumugi.android.features.onomatopoeia.OnomatopoeiaQuizScreen(route.toString())
                     Route.DrillSets -> app.tsumugi.android.features.practice.DrillSetsScreen(onOpen = { nav.push(Route.DrillSetPlayer(it)) })
                     is Route.DrillSetPlayer -> app.tsumugi.android.features.practice.DrillSetPlayerScreen(route.id)
+                    // Phase 13 (BRIEF_V2 §6.7, §6.9, §6.12–§6.15)
+                    Route.PitchTest -> app.tsumugi.android.features.pitch.PitchTestScreen(
+                        onStart = { nav.push(Route.PitchSession(it)) }, onStats = { nav.push(Route.PitchStats) },
+                        onMinimalPairs = { nav.push(Route.MinimalPairs) },
+                    )
+                    is Route.PitchSession -> app.tsumugi.android.features.pitch.PitchSessionScreen(
+                        route.drill, route.toString(), onStats = { nav.push(Route.PitchStats) }, onMinimalPairs = { nav.push(Route.MinimalPairs) },
+                    )
+                    Route.PitchStats -> app.tsumugi.android.features.pitch.PitchStatsScreen()
+                    is Route.KanjiGraph -> app.tsumugi.android.features.kanji.KanjiGraphScreen(
+                        route.center, onOpenKanji = { nav.push(Route.Kanji(it)) }, onOpenEntry = { nav.push(Route.Entry(it)) },
+                        onRecenter = { nav.back(); nav.push(Route.KanjiGraph(it)) },
+                        onRecenterWord = { nav.back(); nav.push(Route.WordGraph(it)) },
+                        onOpenSeries = { nav.push(Route.SoundSeries) },
+                        onComponentSearch = { nav.push(Route.ComponentSearch(it)) },
+                    )
+                    is Route.WordGraph -> app.tsumugi.android.features.kanji.WordGraphScreen(
+                        route.entryId, onOpenKanji = { nav.push(Route.Kanji(it)) }, onOpenEntry = { nav.push(Route.Entry(it)) },
+                        onRecenter = { nav.back(); nav.push(Route.KanjiGraph(it)) },
+                        onRecenterWord = { nav.back(); nav.push(Route.WordGraph(it)) },
+                    )
+                    Route.SoundSeries -> app.tsumugi.android.features.kanji.SoundSeriesScreen(onOpenKanji = { nav.push(Route.Kanji(it)) })
+                    is Route.ComponentSearch -> app.tsumugi.android.features.kanji.ComponentSearchScreen(route.query, onOpenKanji = { nav.push(Route.Kanji(it)) })
+                    Route.Games -> app.tsumugi.android.features.games.GamesScreen(onReflex = { nav.push(Route.Reflex()) }, onAtom = { nav.push(Route.Atom()) })
+                    is Route.Reflex -> app.tsumugi.android.features.games.ReflexScreen(route.toString(), onDone = nav::back)
+                    is Route.Atom -> app.tsumugi.android.features.games.AtomScreen(route.toString(), onDone = nav::back)
+                    Route.Translation -> app.tsumugi.android.features.translation.TranslationScreen(
+                        onOpen = { nav.push(Route.TranslationPassage(it)) }, onHistory = { nav.push(Route.TranslationHistory) },
+                    )
+                    is Route.TranslationPassage -> app.tsumugi.android.features.translation.TranslationPassageScreen(
+                        route.id, onStart = { id, mode -> nav.push(Route.TranslationRun(id, mode)) },
+                    )
+                    is Route.TranslationRun -> app.tsumugi.android.features.translation.TranslationRunScreen(
+                        route.passageId, route.mode, route.toString(), onOpenAiSettings = { nav.push(Route.AiSettings) }, onDone = nav::back,
+                    )
+                    Route.TranslationHistory -> app.tsumugi.android.features.translation.TranslationHistoryScreen(
+                        onOpenPassage = { nav.push(Route.TranslationPassage(it)) },
+                    )
+                    Route.Thesaurus -> app.tsumugi.android.features.thesaurus.ThesaurusScreen(onOpenCluster = { nav.push(Route.ThesaurusCluster(it)) })
+                    is Route.ThesaurusCluster -> app.tsumugi.android.features.thesaurus.ThesaurusClusterScreen(route.id, onOpenEntry = { nav.push(Route.Entry(it)) })
+                    Route.WritingStudio -> app.tsumugi.android.features.writing.WritingStudioScreen(onOpenDraft = { nav.push(Route.WritingDraft(it)) })
+                    is Route.WritingDraft -> app.tsumugi.android.features.writing.WritingDraftScreen(
+                        route.id, onOpenCluster = { nav.push(Route.ThesaurusCluster(it)) }, onOpenAiSettings = { nav.push(Route.AiSettings) },
+                    )
+                    Route.Poetry -> app.tsumugi.android.features.poetry.PoetryScreen(onOpenPoem = { nav.push(Route.Poem(it)) })
+                    is Route.Poem -> app.tsumugi.android.features.poetry.PoemScreen(route.id, onOpenEntry = { nav.push(Route.Entry(it)) })
+                    Route.ReadingCircle -> app.tsumugi.android.features.poetry.ReadingCircleScreen(onOpen = { nav.push(Route.CircleSession(it)) })
+                    is Route.CircleSession -> app.tsumugi.android.features.poetry.CircleSessionScreen(
+                        route.textId, onOpenEntry = { nav.push(Route.Entry(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) },
+                    )
                     Route.Songs -> app.tsumugi.android.features.lyrics.SongsScreen(onOpen = { nav.push(Route.Song(it)) })
                     is Route.Song -> app.tsumugi.android.features.lyrics.SongScreen(
                         route.id, onLookup = { nav.push(Route.Lookup(it)) }, onOpenGrammar = { nav.push(Route.GrammarPoint(it)) },
@@ -403,6 +458,8 @@ private fun TabRoot(tab: Tab, push: (Route) -> Unit) {
                     MeDestination.LEADERBOARD -> Route.Leaderboard
                     MeDestination.CONTENT_REVIEW -> Route.ContentReview
                     MeDestination.FREE_TALK -> Route.FreeTalk()
+                    MeDestination.TRANSLATION -> Route.Translation
+                    MeDestination.TRANSLATION_HISTORY -> Route.TranslationHistory
                 },
             )
         }
@@ -421,6 +478,9 @@ private fun LearnHome(push: (Route) -> Unit) {
             Triple(R.string.title_graded_readers, R.string.learn_graded_sub, Route.GradedReaders),
             Triple(R.string.title_tracks, R.string.learn_tracks_sub, Route.Tracks),
             Triple(R.string.title_onomatopoeia, R.string.learn_onomatopoeia_sub, Route.Onomatopoeia),
+            Triple(R.string.title_kanji_explorer, R.string.learn_kanji_explorer_sub, Route.KanjiGraph()),
+            Triple(R.string.title_thesaurus, R.string.learn_thesaurus_sub, Route.Thesaurus),
+            Triple(R.string.title_poetry, R.string.learn_poetry_sub, Route.Poetry),
             Triple(R.string.title_decks, R.string.learn_decks_sub, Route.Decks),
             Triple(R.string.title_dictionary, R.string.learn_dictionary_sub, Route.Dictionary),
             Triple(R.string.title_radicals, R.string.learn_radicals_sub, Route.Radicals),
@@ -507,4 +567,19 @@ private fun routeTitle(route: Route, tab: Tab): String = when (route) {
     Route.Onomatopoeia, is Route.OnomatopoeiaWord -> stringResource(R.string.title_onomatopoeia)
     is Route.OnomatopoeiaQuiz -> stringResource(R.string.title_onomatopoeia_quiz)
     Route.DrillSets, is Route.DrillSetPlayer -> stringResource(R.string.title_drill_sets)
+    Route.PitchTest, is Route.PitchSession -> stringResource(R.string.title_pitch_test)
+    Route.PitchStats -> stringResource(R.string.title_pitch_stats)
+    is Route.KanjiGraph -> route.center.ifBlank { stringResource(R.string.title_kanji_explorer) }
+    is Route.WordGraph -> stringResource(R.string.title_kanji_explorer)
+    Route.SoundSeries -> stringResource(R.string.title_sound_series)
+    is Route.ComponentSearch -> stringResource(R.string.title_component_search)
+    Route.Games -> stringResource(R.string.title_games)
+    is Route.Reflex -> stringResource(R.string.title_reflex)
+    is Route.Atom -> stringResource(R.string.title_atom)
+    Route.Translation, is Route.TranslationPassage, is Route.TranslationRun -> stringResource(R.string.title_translation)
+    Route.TranslationHistory -> stringResource(R.string.title_translation_history)
+    Route.Thesaurus, is Route.ThesaurusCluster -> stringResource(R.string.title_thesaurus)
+    Route.WritingStudio, is Route.WritingDraft -> stringResource(R.string.title_writing_studio)
+    Route.Poetry, is Route.Poem -> stringResource(R.string.title_poetry)
+    Route.ReadingCircle, is Route.CircleSession -> stringResource(R.string.title_reading_circle)
 }

@@ -139,6 +139,10 @@ fun MeScreen(onOpen: (MeDestination) -> Unit) {
             // §6.11: the immersion roadmap and log.
             app.tsumugi.android.features.immersion.RoadmapCard()
             app.tsumugi.android.features.immersion.ImmersionCard()
+            // §6.12: the translation skill line.
+            app.tsumugi.android.features.translation.TranslationSkillCard(
+                onOpenWorkbench = { onOpen(MeDestination.TRANSLATION) }, onOpenHistory = { onOpen(MeDestination.TRANSLATION_HISTORY) },
+            )
             Text(stringResource(R.string.me_last_weeks), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
             val days = s.heatmap.takeLast(140)
             val heatmapDescription = heatmapLabel(days)
@@ -169,6 +173,8 @@ enum class MeDestination(@StringRes val title: Int, @StringRes val subtitle: Int
     CONTENT_REVIEW(R.string.title_content_review, R.string.me_content_review_sub),
     LICENSES(R.string.title_licenses, R.string.me_licenses_sub),
     FREE_TALK(R.string.practice_free_talk, R.string.practice_free_talk_sub, listed = false),
+    TRANSLATION(R.string.title_translation, R.string.practice_translation_sub, listed = false),
+    TRANSLATION_HISTORY(R.string.title_translation_history, R.string.practice_translation_sub, listed = false),
 }
 
 /** Spoken summary of the heat-map for TalkBack. */

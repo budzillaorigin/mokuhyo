@@ -141,3 +141,82 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] Learn → Onomatopoeia: 12 tiles with drawn glyphs (not SF Symbols), search ざあざあ, filter a theme by 擬態語, open a word with examples, and take the quiz in both kinds.
 - [ ] Practice → Speaking drills: play a grammar set with the screen locked; the lock screen shows the cue and play/pause/next/previous work, and so do headset buttons. Change the pause length: the set restarts with the new timing.
 - [ ] A natural dialogue greys its fillers ("Fillers" hides them) and shows overlapping lines side by side. After an OPI interview, the probe map shows the level line, tallies and breakdowns. Exams → DLPT: switch to the upper range and pick a text type; the form uses only that type.
+
+## Phase 13 on Android: pitch test, kanji explorer, dictionary polish, games, reader grammar, translation, thesaurus, writing studio, poetry, reading circle
+- [ ] **Pitch test, no pack:** Practice has no pitch-test row.
+- [ ] **Pitch test, with the pitch audio pack:** Practice → Listen → Pitch-accent test.
+  - The hub shows the level, the drills (adaptive, pattern, downstep, which word, minimal pairs) and Stats.
+  - In a session, the clip plays by itself and replays on tap.
+  - Answering colours the options and shows the ↑↓ marks for what was played and what was chosen.
+  - Three right answers in a row raise the level, and a miss lowers it. A new session starts at the last level.
+  - The minimal-pairs drill opens the minimal-pairs screen.
+- [ ] **"Say it" after an answer:** record the word + が. The verdict, the shadowing card and the report show. With the microphone permission denied, an error shows.
+- [ ] **Pitch stats:** an empty state before any answers. After answers: accuracy by pattern, by mora length and by question type, and confusable pairs sorted by confusion rate.
+- [ ] **Games hub:** Practice → Games shows best scores, this week's points out of 1,500 with a bar, and recent rounds. On a fresh install without the dictionary pack, it shows the no-words notice.
+- [ ] **Reflex:**
+  - The card timer shrinks as the streak grows, and a timeout shows "Time's up".
+  - After 60 s the result card shows, with "New best!" when earned, and Play again works.
+  - Today's weekly-challenge game points go up.
+- [ ] **Atom:**
+  - Tapping tiles in order builds the word. A wrong tap turns red and counts as a mistake.
+  - Undo removes the last tile. Give up and a timeout both reveal the reading.
+  - The round ends at 90 s.
+- [ ] **Pomodoro:** a session that queues Reflex/Atom plays a 45 s round, then shows the score and Next. The break summary lists the score.
+- [ ] **Kanji explorer, graph:** Learn → Kanji explorer, type 青.
+  - The graph shows parts, the sound family, kanji that use it, and words.
+  - Tap selects a node, a second tap re-centers, and a long press opens the card.
+  - The JLPT/frequency toggle changes the colours and the legend. Focus mode hides second-hop nodes.
+  - Changing the cap from 15 to 50 changes the "N more not shown" note.
+  - The node list reads well with TalkBack.
+- [ ] **Kanji explorer, other screens:** Sound families lists families with the "derived" badge and a kanji filter. Component search for 氵青 finds 清 and 晴.
+- [ ] **Kanji page 晴:**
+  - The parts show roles, with 青 as sound and marked "derived". The sound-family card highlights 晴.
+  - "Explore graph" and "Kanji with these parts" work.
+  - "Add to reviews" turns into "In your reviews" and stays that way after reopening.
+- [ ] **Dictionary search:**
+  - Results update while you type, and the list never flashes empty.
+  - 食べさせられなかった shows "= 食べる + causative + passive + negative + past".
+  - Hits show common, JLPT and #rank chips.
+  - 氵青 shows the "Kanji built from" chip.
+- [ ] **Dictionary entry 雨:** it shows "Explore its kanji", expression-cluster chips that open the cluster, and collocations with pattern filters, examples and "Show all".
+- [ ] **Reader:** long-press a sentence.
+  - Constructions are underlined, and tapping one highlights its spans.
+  - The one-liner is Japanese in monolingual mode, with the AI badge or "Japanese missing" where either applies.
+  - "Add and practice" adds the point and shows an exercise. "Practice this point" gives a fresh, checkable exercise.
+- [ ] **Translation workbench, passage list:** Practice → Translation workbench.
+  - The genre, direction and level filters narrow the list, and AI-drafted passages carry the badge.
+  - Without the linguist pack, an honest notice shows and import still works.
+- [ ] **Translation, written mode with a model:** the score shows with the AI badge and engine, and "not an official score". The four rubric bars, the issues, a better version, the reference and the diff all show.
+- [ ] **Translation, written mode without a model:** the reason shows with a link to AI settings, then the reference, key points and diff, then the 0–4 self-assessment. Saving marks the result as self-assessed.
+- [ ] **Sight mode:**
+  - The microphone prompt appears, then the countdown.
+  - J→E is transcribed in English and E→J in Japanese.
+  - Capture stops when the time is up, and the transcript can be edited, then graded.
+  - Without a recognizer, a message shows and typing still works.
+- [ ] **Translation history:** expand an attempt and delete it with the confirmation dialog. It leaves the skill line on Me.
+- [ ] **Skill line on Me:** with no attempts, the card shows an empty state. With attempts, it shows the chart, the averages and the trend, and TalkBack reads a summary.
+- [ ] **Imported passage:** after an app restart, opening it from history says to import it again.
+- [ ] **Expression thesaurus:** Learn → Expression thesaurus.
+  - The emotion/scene chips and search work.
+  - In a cluster, a word opens the dictionary and ▶ plays an example.
+  - AI badges appear only on the drafted parts.
+- [ ] **Writing studio, drafts:** Practice → Writing studio. A new draft autosaves ("saving… / saved"). The target-register chips work, and deleting asks first.
+- [ ] **Writing studio, checks:**
+  - Check register shows outliers and "Rewrite as…" (badged), or points to AI settings when no model is set.
+  - Suggest expressions opens clusters. Readability works.
+  - Corrections go sentence by sentence and are badged.
+  - A check goes stale after an edit.
+- [ ] **Graded reader → Tasks → "Write it in the studio":** it opens the task draft with its prompt, reopening it returns the same draft, and Grade works.
+- [ ] **Poetry corner:** Learn → Poetry corner.
+  - Theme chips, and a poem with the readings switch.
+  - The vocabulary opens the dictionary. The paraphrase, gloss and note are badged, and the poem itself isn't.
+  - The source notes and the card link show.
+  - Without the linguist pack, a notice shows.
+- [ ] **Reading circle, a session:** Practice → Reading circle, pick a text.
+  - The microphone prompt appears. Record the reading and the explanation, or type the explanation.
+  - "Done" is disabled until both a reading and an explanation exist.
+  - Previous and next work, and ▶ plays the recordings.
+  - Help's word chips open the entry, and its grammar chips open the grammar point.
+- [ ] **Reading circle, sessions:** resume one from Your sessions, delete one, and read a library document. Sync, and check that the session is on the second device.
+- [ ] **Airplane mode:** everything above works, except model-graded results when your model is a server.
+- [ ] **Japanese UI:** every new string shows in Japanese.
