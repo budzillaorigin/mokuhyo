@@ -2,6 +2,14 @@ import Shared
 import SwiftUI
 import UniformTypeIdentifiers
 
+/// One DLPT text-type chip: items of that type in the chosen range, per test kind.
+struct DlptTypeOption: Identifiable {
+    let textType: String
+    var reading = 0
+    var listening = 0
+    var id: String { textType }
+}
+
 /// An exam in progress, presented full screen.
 struct RunningExam: Identifiable {
     let id = UUID()
@@ -26,6 +34,11 @@ struct ExamHubView: View {
     @State private var loadError: String?
     @State private var building = false
     @State private var inProgress: InProgressAttempt?
+    // DLPT range and text-type filter (BRIEF_V2 G-08, §6.16, D-226/D-227, D-268).
+    @State private var dlptUpper = false
+    @State private var dlptTypes: [DlptTypeOption] = []
+    @State private var dlptFilter: Set<String> = []
+    @State private var dlptTypesError: String?
 
     static var disclaimer: String {
         String(localized: "Unofficial practice; not affiliated with the JLPT (JEES/Japan Foundation), DLI or ACTFL. Scores and ratings are estimates.")
@@ -151,14 +164,50 @@ struct ExamHubView: View {
         Section {
             Text("\(dlptReading) reading and \(dlptListening) listening items in the bank. Passages are Japanese; questions and answers are English. Listening audio plays once, as on the real test.")
                 .font(.caption).foregroundStyle(.secondary)
+            Picker("Range", selection: $dlptUpper) {
+                Text("Lower range (ILR 0+–3)").tag(false)
+                Text("Upper range (ILR 3–4)").tag(true)
+            }
+            .pickerStyle(.segmented)
+            .onChange(of: dlptUpper) { _, _ in
+                dlptFilter = []
+                Task { await loadDlptTypes() }
+            }
+            if dlptUpper {
+                Text("The upper-range test is for examinees who reach ILR 3 on the lower range.")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+            if let dlptTypesError {
+                ErrorRetryView(message: dlptTypesError) { Task { await loadDlptTypes() } }
+            } else if !dlptTypes.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Text types (none selected = all)").font(.caption.weight(.semibold))
+                    FlowLayout(spacing: 6) {
+                        ForEach(dlptTypes) { option in
+                            let on = dlptFilter.contains(option.textType)
+                            Button {
+                                if on { dlptFilter.remove(option.textType) } else { dlptFilter.insert(option.textType) }
+                            } label: {
+                                Text(verbatim: "\(option.textType) · \(option.reading + option.listening)")
+                                    .font(.caption)
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(on ? .accentColor : .secondary)
+                            .accessibilityAddTraits(on ? .isSelected : [])
+                        }
+                    }
+                }
+            }
             ForEach([false, true], id: \.self) { listening in
-                let have = listening ? dlptListening : dlptReading
+                let have = dlptAvailable(listening: listening)
                 HStack {
                     Text(listening ? "Listening" : "Reading")
                     Spacer()
                     ForEach([180, 60, 30], id: \.self) { minutes in
                         Button(minutes == 180 ? "Full" : "\(minutes)′") {
-                            start { try await SwiftSupport.shared.dlpt(exams: $0, listening: listening, minutes: Int32(minutes)) }
+                            let upper = dlptUpper
+                            let types = Array(dlptFilter)
+                            start { try await SwiftSupport.shared.dlptFiltered(exams: $0, listening: listening, minutes: Int32(minutes), upper: upper, textTypes: types) }
                         }
                         .buttonStyle(.bordered)
                         .disabled(have == 0)
@@ -166,7 +215,37 @@ struct ExamHubView: View {
                 }
             }
         } header: {
-            Text("DLPT (ILR 0+–3)")
+            Text(dlptUpper ? "DLPT (ILR 3–4)" : "DLPT (ILR 0+–3)")
+        }
+    }
+
+    /// Items the filtered form can draw on: the chips' counts when the type list loaded, else the bank totals.
+    private func dlptAvailable(listening: Bool) -> Int {
+        if dlptTypes.isEmpty { return dlptUpper ? 0 : (listening ? dlptListening : dlptReading) }
+        let chosen = dlptTypes.filter { dlptFilter.isEmpty || dlptFilter.contains($0.textType) }
+        return chosen.reduce(0) { $0 + (listening ? $1.listening : $1.reading) }
+    }
+
+    /// Text types for both DLPT kinds in the chosen range, merged by name (reading and listening counts kept apart).
+    private func loadDlptTypes() async {
+        guard let exams else { return }
+        let upper = dlptUpper
+        do {
+            let reading = try await SwiftSupport.shared.dlptTextTypes(exams: exams, listening: false, upper: upper)
+            let listening = try await SwiftSupport.shared.dlptTextTypes(exams: exams, listening: true, upper: upper)
+            var merged: [String: DlptTypeOption] = [:]
+            for row in reading {
+                merged[row.textType, default: DlptTypeOption(textType: row.textType)].reading += Int(row.items)
+            }
+            for row in listening {
+                merged[row.textType, default: DlptTypeOption(textType: row.textType)].listening += Int(row.items)
+            }
+            guard upper == dlptUpper else { return }
+            dlptTypes = merged.values.sorted { ($0.reading + $0.listening, $1.textType) > ($1.reading + $1.listening, $0.textType) }
+            dlptTypesError = nil
+        } catch {
+            dlptTypes = []
+            dlptTypesError = String(localized: "Couldn't list the DLPT text types: \(error.localizedDescription)")
         }
     }
 
@@ -203,6 +282,7 @@ struct ExamHubView: View {
         dlptListening = listening
         history = (try? await service.history(exam: nil, limit: 50)) ?? []
         inProgress = try? await service.inProgress()
+        await loadDlptTypes()
     }
 
     /// Reopens the saved attempt; sections whose time ran out while away are already closed (shared ExamSession).

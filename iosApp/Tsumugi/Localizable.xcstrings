@@ -31,6 +31,26 @@
         }
       }
     },
+    "%@ characters" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@字"
+          }
+        }
+      }
+    },
+    "%@ characters (aim for %@–%@)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@字（目安%2$@〜%3$@字）"
+          }
+        }
+      }
+    },
     "%@ clips · version %@" : {
       "localizations" : {
         "ja" : {
@@ -111,6 +131,16 @@
         }
       }
     },
+    "%@ of %@ correct" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@問中%1$@問正解"
+          }
+        }
+      }
+    },
     "%@ of %@ known · %@ learning" : {
       "localizations" : {
         "ja" : {
@@ -121,12 +151,42 @@
         }
       }
     },
+    "%@ of %@ right" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@問中%1$@問正解"
+          }
+        }
+      }
+    },
     "%@ phase · about %lld min planned" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@フェーズ・予定は約%2$lld分"
+          }
+        }
+      }
+    },
+    "%@ right" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正解%@"
+          }
+        }
+      }
+    },
+    "%@ sustained, %@ partial, %@ breakdown" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "維持%1$@、部分的%2$@、崩れ%3$@"
           }
         }
       }
@@ -161,6 +221,16 @@
         }
       }
     },
+    "%@ words · %@ kanji · %@ role-plays · %@ dialogues · %@ drills" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語%1$@・漢字%2$@・ロールプレイ%3$@・会話%4$@・ドリル%5$@"
+          }
+        }
+      }
+    },
     "%@ words · %@ · %@%% known" : {
       "localizations" : {
         "ja" : {
@@ -177,6 +247,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@・%2$@件"
+          }
+        }
+      }
+    },
+    "%@ · %@ min" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@・%2$@分"
           }
         }
       }
@@ -201,12 +281,42 @@
         }
       }
     },
+    "%@%% of the words are at this level or glossed below." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語の%@%%がこのレベル以下か、下の語彙リストで説明されています。"
+          }
+        }
+      }
+    },
     "%@%% of words known" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "単語の%@%%を知っています"
+          }
+        }
+      }
+    },
+    "%@. %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@. %2$@"
+          }
+        }
+      }
+    },
+    "%@. %@ · %@ words" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@. %2$@・%3$@語"
           }
         }
       }
@@ -591,6 +701,16 @@
         }
       }
     },
+    "A track adds themed words, kanji, role-plays, dialogues and drills. Its words join your daily lessons next to the main path. You can change tracks any time in Learn → Tracks." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックを選ぶと、テーマ別の単語・漢字・ロールプレイ・会話・ドリルが加わります。単語はメインのパスと並んで毎日のレッスンに入ります。トラックは「学ぶ → トラック」でいつでも変えられます。"
+          }
+        }
+      }
+    },
     "AI" : {
       "localizations" : {
         "ja" : {
@@ -697,6 +817,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "API v2トークン"
+          }
+        }
+      }
+    },
+    "About %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」について"
+          }
+        }
+      }
+    },
+    "Abstract topics" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽象的な話題"
+          }
+        }
+      }
+    },
+    "Academic" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学術"
           }
         }
       }
@@ -881,6 +1031,16 @@
         }
       }
     },
+    "Add to my lessons" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レッスンに追加"
+          }
+        }
+      }
+    },
     "Add to reviews" : {
       "localizations" : {
         "ja" : {
@@ -961,6 +1121,36 @@
         }
       }
     },
+    "Advert" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "広告"
+          }
+        }
+      }
+    },
+    "After" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "事後"
+          }
+        }
+      }
+    },
+    "After reading: write" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読んだ後：書く"
+          }
+        }
+      }
+    },
     "Again" : {
       "localizations" : {
         "ja" : {
@@ -1007,6 +1197,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "すべて"
+          }
+        }
+      }
+    },
+    "All genres" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのジャンル"
           }
         }
       }
@@ -1141,12 +1341,32 @@
         }
       }
     },
+    "Answer hidden until it plays" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答えは再生されるまで隠れています"
+          }
+        }
+      }
+    },
     "Answer out loud." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "声に出して答えてください。"
+          }
+        }
+      }
+    },
+    "Answer the comprehension questions" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読解問題に答える"
           }
         }
       }
@@ -1217,6 +1437,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自分で運用しているOpenAI互換サーバー（Ollama（…/v1）、LM Studio、llama-server、vLLM）を使えます。キーはキーチェーンに保存され、このサーバーにだけ送信されます。"
+          }
+        }
+      }
+    },
+    "Any special interests?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特に興味のある分野は？"
           }
         }
       }
@@ -1371,6 +1601,26 @@
         }
       }
     },
+    "Before" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "事前"
+          }
+        }
+      }
+    },
+    "Before reading: predict" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読む前に：予想する"
+          }
+        }
+      }
+    },
     "Below the minimum" : {
       "localizations" : {
         "ja" : {
@@ -1421,6 +1671,36 @@
         }
       }
     },
+    "Breakdowns and memory hints" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部品と覚え方"
+          }
+        }
+      }
+    },
+    "Building the test…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テストを作成中…"
+          }
+        }
+      }
+    },
+    "Business emails" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビジネスメール"
+          }
+        }
+      }
+    },
     "By item type" : {
       "localizations" : {
         "ja" : {
@@ -1437,6 +1717,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "種類別"
+          }
+        }
+      }
+    },
+    "By target level" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目標レベル別"
           }
         }
       }
@@ -1521,12 +1811,32 @@
         }
       }
     },
+    "Ceiling" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上限"
+          }
+        }
+      }
+    },
     "Change picture" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "画像を変更"
+          }
+        }
+      }
+    },
+    "Chart of the working level after each answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "各回答後の作業レベルのグラフ"
           }
         }
       }
@@ -1557,6 +1867,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "もう一度確認して保存"
+          }
+        }
+      }
+    },
+    "Check answers" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答え合わせ"
           }
         }
       }
@@ -1731,6 +2051,16 @@
         }
       }
     },
+    "Close reading" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "精読"
+          }
+        }
+      }
+    },
     "Cloze mode" : {
       "localizations" : {
         "ja" : {
@@ -1881,6 +2211,16 @@
         }
       }
     },
+    "Content" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内容"
+          }
+        }
+      }
+    },
     "Content review" : {
       "localizations" : {
         "ja" : {
@@ -1917,6 +2257,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "続ける"
+          }
+        }
+      }
+    },
+    "Continue in the reader" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リーダーで続ける"
           }
         }
       }
@@ -1997,6 +2347,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正解（あなたの選択）"
+          }
+        }
+      }
+    },
+    "Correct usage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正しい使い方"
           }
         }
       }
@@ -2111,6 +2471,16 @@
         }
       }
     },
+    "Couldn't build that test: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "そのテストを作れませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't build the deck: %@" : {
       "localizations" : {
         "ja" : {
@@ -2121,12 +2491,32 @@
         }
       }
     },
+    "Couldn't build the quiz: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズを作れませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't change it: %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "変更できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't change your tracks: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックを変更できませんでした：%@"
           }
         }
       }
@@ -2201,6 +2591,26 @@
         }
       }
     },
+    "Couldn't get a paraphrase: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言い換えを取得できませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't grade the summary: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要約を採点できませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't import the song: %@" : {
       "localizations" : {
         "ja" : {
@@ -2221,12 +2631,42 @@
         }
       }
     },
+    "Couldn't list the DLPT text types: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DLPTの文章の種類を取得できませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't load sentences: %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "例文を読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the course: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コースを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the courses: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コースを読み込めませんでした：%@"
           }
         }
       }
@@ -2241,12 +2681,52 @@
         }
       }
     },
+    "Couldn't load the drill sets: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリルを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the drill: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリルを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the drills: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリルを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't load the episodes: %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "エピソードを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the explanation: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "説明を読み込めませんでした：%@"
           }
         }
       }
@@ -2311,6 +2791,16 @@
         }
       }
     },
+    "Couldn't load the onomatopoeia: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オノマトペを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't load the review queue: %@" : {
       "localizations" : {
         "ja" : {
@@ -2331,6 +2821,26 @@
         }
       }
     },
+    "Couldn't load the stories: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ストーリーを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the tracks: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックを読み込めませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't load the word list: %@" : {
       "localizations" : {
         "ja" : {
@@ -2341,12 +2851,42 @@
         }
       }
     },
+    "Couldn't load the word: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語を読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load the words: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語を読み込めませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't load this line: %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "この行を読み込めませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't load what's left: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残りを読み込めませんでした：%@"
           }
         }
       }
@@ -2421,12 +2961,62 @@
         }
       }
     },
+    "Couldn't open it in the reader: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リーダーで開けませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't open the drill set: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリルを開けませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't open the graded readers: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "多読ストーリーを開けませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't open the song: %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "曲を開けませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't open the story: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ストーリーを開けませんでした：%@"
+          }
+        }
+      }
+    },
+    "Couldn't open the track: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックを開けませんでした：%@"
           }
         }
       }
@@ -2457,6 +3047,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "クリップを再生できませんでした。"
+          }
+        }
+      }
+    },
+    "Couldn't prepare the drill: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリルを準備できませんでした：%@"
           }
         }
       }
@@ -2511,6 +3111,16 @@
         }
       }
     },
+    "Couldn't read the setting: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定を読み込めませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't record the block: %@" : {
       "localizations" : {
         "ja" : {
@@ -2561,6 +3171,16 @@
         }
       }
     },
+    "Couldn't save the checkbox: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チェックを保存できませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't save the clip: %@" : {
       "localizations" : {
         "ja" : {
@@ -2591,6 +3211,16 @@
         }
       }
     },
+    "Couldn't save the quiz: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズを保存できませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't save the recording: %@" : {
       "localizations" : {
         "ja" : {
@@ -2601,12 +3231,32 @@
         }
       }
     },
+    "Couldn't save the setting: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定を保存できませんでした：%@"
+          }
+        }
+      }
+    },
     "Couldn't save this attempt." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "この受験記録を保存できませんでした。"
+          }
+        }
+      }
+    },
+    "Couldn't save your tracks: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックを保存できませんでした：%@"
           }
         }
       }
@@ -2781,6 +3431,36 @@
         }
       }
     },
+    "Cues only" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キューだけ"
+          }
+        }
+      }
+    },
+    "Cultural experiences" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文化体験"
+          }
+        }
+      }
+    },
+    "Current events" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時事"
+          }
+        }
+      }
+    },
     "Current verdict: %@" : {
       "localizations" : {
         "ja" : {
@@ -2801,6 +3481,26 @@
         }
       }
     },
+    "DLPT (ILR 0+–3)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DLPT（ILR 0+〜3）"
+          }
+        }
+      }
+    },
+    "DLPT (ILR 3–4)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DLPT（ILR 3〜4）"
+          }
+        }
+      }
+    },
     "DLPT / OPI (ILR levels)" : {
       "localizations" : {
         "ja" : {
@@ -2817,6 +3517,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1日の学習時間"
+          }
+        }
+      }
+    },
+    "Daily life" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日常生活"
           }
         }
       }
@@ -2917,6 +3627,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ダウンロードを削除"
+          }
+        }
+      }
+    },
+    "Delivered" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言えました"
           }
         }
       }
@@ -3111,6 +3831,16 @@
         }
       }
     },
+    "Done: %@ of %@ right" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了：%2$@問中%1$@問正解"
+          }
+        }
+      }
+    },
     "Double-tap to look up this word." : {
       "localizations" : {
         "ja" : {
@@ -3251,12 +3981,62 @@
         }
       }
     },
+    "Drill not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリルが見つかりません"
+          }
+        }
+      }
+    },
+    "Drill set not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリルが見つかりません"
+          }
+        }
+      }
+    },
     "Drill these words in context" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "文脈でこれらの単語を練習"
+          }
+        }
+      }
+    },
+    "Drills" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドリル"
+          }
+        }
+      }
+    },
+    "During" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当日"
+          }
+        }
+      }
+    },
+    "Each level is a course of modules: kanji → vocabulary → grammar → quiz → mock section. The bar counts learned kanji and words, grammar you ticked as mastered, and mock sections passed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "各レベルは「漢字 → 語彙 → 文法 → クイズ → 模試セクション」のモジュールでできています。バーは覚えた漢字と単語、習得済みにした文法、合格した模試セクションを数えます。"
           }
         }
       }
@@ -3297,6 +4077,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "編集済み"
+          }
+        }
+      }
+    },
+    "Editorial" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "社説"
           }
         }
       }
@@ -3421,6 +4211,16 @@
         }
       }
     },
+    "English glosses" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語の語義"
+          }
+        }
+      }
+    },
     "English subs" : {
       "localizations" : {
         "ja" : {
@@ -3451,6 +4251,16 @@
         }
       }
     },
+    "Essay" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エッセイ"
+          }
+        }
+      }
+    },
     "Estimated ILR %@" : {
       "localizations" : {
         "ja" : {
@@ -3471,12 +4281,42 @@
         }
       }
     },
+    "Etiquette" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マナー"
+          }
+        }
+      }
+    },
     "Every answer you've given, oldest first, UTF-8 so spreadsheets show the Japanese." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "これまでのすべての解答を古い順に書き出します。UTF-8なので表計算ソフトでも日本語が表示されます。"
+          }
+        }
+      }
+    },
+    "Everything in the N%@ course is learned, mastered or passed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%@コースはすべて学習・習得・合格済みです。"
+          }
+        }
+      }
+    },
+    "Exactly what remains for N%@, in course order: %@ kanji, %@ words, %@ grammar points, %@ mock sections." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%1$@で残っているもの（コース順）：漢字%2$@、単語%3$@、文法%4$@、模試セクション%5$@。"
           }
         }
       }
@@ -3567,6 +4407,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "試験"
+          }
+        }
+      }
+    },
+    "Explain in Japanese" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語で説明"
           }
         }
       }
@@ -3711,6 +4561,16 @@
         }
       }
     },
+    "Family" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "家族"
+          }
+        }
+      }
+    },
     "Faster" : {
       "localizations" : {
         "ja" : {
@@ -3751,6 +4611,16 @@
         }
       }
     },
+    "Feel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "感じ"
+          }
+        }
+      }
+    },
     "Fetching the feed…" : {
       "localizations" : {
         "ja" : {
@@ -3781,12 +4651,42 @@
         }
       }
     },
+    "Fill in the blank" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空欄を埋める"
+          }
+        }
+      }
+    },
+    "Fillers" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィラー"
+          }
+        }
+      }
+    },
     "Find a kanji by its parts" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "部品から漢字を探す"
+          }
+        }
+      }
+    },
+    "Find: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "探すもの：%@"
           }
         }
       }
@@ -3827,6 +4727,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ブロックを完了"
+          }
+        }
+      }
+    },
+    "Finish the round" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この回を終える"
+          }
+        }
+      }
+    },
+    "First letters" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最初の文字だけ"
+          }
+        }
+      }
+    },
+    "Floor" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下限"
           }
         }
       }
@@ -3971,6 +4901,16 @@
         }
       }
     },
+    "From level" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "対象レベル"
+          }
+        }
+      }
+    },
     "From pasted text" : {
       "localizations" : {
         "ja" : {
@@ -4017,6 +4957,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今日は凍結中"
+          }
+        }
+      }
+    },
+    "Full script" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全文"
           }
         }
       }
@@ -4121,6 +5071,36 @@
         }
       }
     },
+    "Grade with AI" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIで採点"
+          }
+        }
+      }
+    },
+    "Graded readers" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "多読ストーリー"
+          }
+        }
+      }
+    },
+    "Graded readers not installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "多読ストーリーが入っていません"
+          }
+        }
+      }
+    },
     "Grading…" : {
       "localizations" : {
         "ja" : {
@@ -4147,6 +5127,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "文法 %1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Grammar at these levels is explained in Japanese (our own text), and words get a Japanese paraphrase written by your AI model when you open them. Both carry the AI-generated label. Syncs to your other devices." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このレベル以上の文法は日本語で説明し（独自の説明文）、単語は開いたときにAIモデルが日本語で言い換えます。どちらにもAI生成のラベルが付きます。ほかの端末と同期されます。"
           }
         }
       }
@@ -4191,12 +5181,32 @@
         }
       }
     },
+    "Grammar to master" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "習得する文法"
+          }
+        }
+      }
+    },
     "Guides" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "解説リンク"
+          }
+        }
+      }
+    },
+    "Half hidden" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "半分隠す"
           }
         }
       }
@@ -4227,6 +5237,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "「%@」を聞く"
+          }
+        }
+      }
+    },
+    "Hear the English, say it in Japanese in the pause, hear the model answer, repeat it. Works hands-free with the screen off." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語を聞いて、間に日本語で言い、模範解答を聞いてくり返します。画面を消してもハンズフリーで使えます。"
           }
         }
       }
@@ -4361,6 +5381,26 @@
         }
       }
     },
+    "Hypotheticals" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仮定の話"
+          }
+        }
+      }
+    },
+    "I can…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "できること"
+          }
+        }
+      }
+    },
     "I didn't" : {
       "localizations" : {
         "ja" : {
@@ -4411,12 +5451,42 @@
         }
       }
     },
+    "I missed it" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言えなかった"
+          }
+        }
+      }
+    },
+    "I said it" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言えた"
+          }
+        }
+      }
+    },
     "ILR estimate" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ILR推定"
+          }
+        }
+      }
+    },
+    "ILR readings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ILR読解"
           }
         }
       }
@@ -4581,6 +5651,16 @@
         }
       }
     },
+    "In my lessons · %@ words left" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レッスンに追加済み・残り%@語"
+          }
+        }
+      }
+    },
     "In reviews" : {
       "localizations" : {
         "ja" : {
@@ -4671,6 +5751,16 @@
         }
       }
     },
+    "Interests" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "興味・分野"
+          }
+        }
+      }
+    },
     "Internal integration token" : {
       "localizations" : {
         "ja" : {
@@ -4701,6 +5791,16 @@
         }
       }
     },
+    "Is 「%@」 used correctly?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」の使い方は正しい？"
+          }
+        }
+      }
+    },
     "It was %@" : {
       "localizations" : {
         "ja" : {
@@ -4717,6 +5817,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "項目"
+          }
+        }
+      }
+    },
+    "Item %@ of %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@問中%1$@問目"
           }
         }
       }
@@ -4747,6 +5857,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JLPT N5〜N1"
+          }
+        }
+      }
+    },
+    "JLPT courses" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JLPTコース"
           }
         }
       }
@@ -4797,6 +5917,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日本語字幕"
+          }
+        }
+      }
+    },
+    "Japanese-only explanations" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語だけの説明"
           }
         }
       }
@@ -4901,6 +6031,16 @@
         }
       }
     },
+    "Kanji to learn" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覚える漢字"
+          }
+        }
+      }
+    },
     "Kanji writing" : {
       "localizations" : {
         "ja" : {
@@ -4937,6 +6077,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "カタカナチェック"
+          }
+        }
+      }
+    },
+    "Keigo transformations" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敬語の言い換え"
           }
         }
       }
@@ -4997,6 +6147,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "訓読み"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言葉"
           }
         }
       }
@@ -5067,6 +6227,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新しい文法を学ぶ"
+          }
+        }
+      }
+    },
+    "Learn new words" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しい単語を学ぶ"
           }
         }
       }
@@ -5181,6 +6351,26 @@
         }
       }
     },
+    "Level 0" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベル0"
+          }
+        }
+      }
+    },
+    "Level check → probe" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベルチェック → プローブ"
+          }
+        }
+      }
+    },
     "Level estimate" : {
       "localizations" : {
         "ja" : {
@@ -5251,6 +6441,16 @@
         }
       }
     },
+    "Links" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リンク"
+          }
+        }
+      }
+    },
     "Links to free explanations on other sites. They open in your browser and need a connection." : {
       "localizations" : {
         "ja" : {
@@ -5267,6 +6467,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "聞く"
+          }
+        }
+      }
+    },
+    "Listen to the cue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キューを聞く"
           }
         }
       }
@@ -5401,6 +6611,16 @@
         }
       }
     },
+    "Long" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "長め"
+          }
+        }
+      }
+    },
     "Long vowels" : {
       "localizations" : {
         "ja" : {
@@ -5471,6 +6691,16 @@
         }
       }
     },
+    "Lower range (ILR 0+–3)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下位範囲（ILR 0+〜3）"
+          }
+        }
+      }
+    },
     "Lyrics" : {
       "localizations" : {
         "ja" : {
@@ -5511,6 +6741,26 @@
         }
       }
     },
+    "Make it %@ (%@)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@にしましょう（%2$@）"
+          }
+        }
+      }
+    },
+    "Manga" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マンガ"
+          }
+        }
+      }
+    },
     "Mark these and finish" : {
       "localizations" : {
         "ja" : {
@@ -5547,6 +6797,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "既知にしました。カバー率では新出語として数えません。"
+          }
+        }
+      }
+    },
+    "Mastered. Tap to untick." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "習得済み。タップでチェックを外します。"
+          }
+        }
+      }
+    },
+    "Match %@%% · you said: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致%1$@%%・あなたの発話：%2$@"
           }
         }
       }
@@ -5597,6 +6867,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "英語の意味"
+          }
+        }
+      }
+    },
+    "Meanings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "意味"
           }
         }
       }
@@ -5761,12 +7041,42 @@
         }
       }
     },
+    "Mixed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ミックス"
+          }
+        }
+      }
+    },
     "Mixed with the kanji path" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "漢字パスと混ぜる"
+          }
+        }
+      }
+    },
+    "Mock section" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模試セクション"
+          }
+        }
+      }
+    },
+    "Mock sections to pass" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合格する模試セクション"
           }
         }
       }
@@ -5801,12 +7111,42 @@
         }
       }
     },
+    "Model email" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールの見本"
+          }
+        }
+      }
+    },
     "Model name" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "モデル名"
+          }
+        }
+      }
+    },
+    "Module %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モジュール%@"
+          }
+        }
+      }
+    },
+    "Monolingual mode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語だけモード"
           }
         }
       }
@@ -5891,12 +7231,42 @@
         }
       }
     },
+    "N%@ and harder" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%@以上"
+          }
+        }
+      }
+    },
+    "N%@ · %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%1$@・%2$@"
+          }
+        }
+      }
+    },
     "N%lld grammar" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "N%lld文法"
+          }
+        }
+      }
+    },
+    "N1 only" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N1のみ"
           }
         }
       }
@@ -5917,6 +7287,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "名乗り"
+          }
+        }
+      }
+    },
+    "Narrated audio. Tap a sentence to start there." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ナレーション音声です。文をタップするとそこから再生します。"
+          }
+        }
+      }
+    },
+    "Natural speech" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自然な会話"
           }
         }
       }
@@ -6001,12 +7391,32 @@
         }
       }
     },
+    "New quiz" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいクイズ"
+          }
+        }
+      }
+    },
     "New session" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "新しいセッション"
+          }
+        }
+      }
+    },
+    "News" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ニュース"
           }
         }
       }
@@ -6051,6 +7461,16 @@
         }
       }
     },
+    "Next round" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の回へ"
+          }
+        }
+      }
+    },
     "Next sentence" : {
       "localizations" : {
         "ja" : {
@@ -6061,12 +7481,42 @@
         }
       }
     },
+    "Next sentence…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の文…"
+          }
+        }
+      }
+    },
     "Next steps" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "次のステップ"
+          }
+        }
+      }
+    },
+    "Next time, try: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次はこれを試しましょう：%@"
+          }
+        }
+      }
+    },
+    "Next: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次：%@"
           }
         }
       }
@@ -6141,6 +7591,26 @@
         }
       }
     },
+    "No content for N%@ is installed yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N%@の内容はまだインストールされていません。"
+          }
+        }
+      }
+    },
+    "No content installed for this level yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このレベルの内容はまだインストールされていません。"
+          }
+        }
+      }
+    },
     "No conversations yet. Free talk and role-plays you finish show up here with a level estimate and the mistakes that keep coming back." : {
       "localizations" : {
         "ja" : {
@@ -6177,6 +7647,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このテキストに辞書の単語が見つかりませんでした。"
+          }
+        }
+      }
+    },
+    "No drill sets at this level in the installed pack." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インストールされたパックにこのレベルのドリルはありません。"
+          }
+        }
+      }
+    },
+    "No drills of this kind" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この種類のドリルはありません"
+          }
+        }
+      }
+    },
+    "No example sentences for this word yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この語の例文はまだありません。"
           }
         }
       }
@@ -6247,6 +7747,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今はレッスンがありません。復習を続けると、前の項目がGuruになるたびに新しい項目が解放されます。"
+          }
+        }
+      }
+    },
+    "No level checks or probes were answered, so there's nothing to map yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベルチェックやプローブに答えていないため、まだ表示できるものがありません。"
           }
         }
       }
@@ -6331,6 +7841,16 @@
         }
       }
     },
+    "No onomatopoeia match that." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致するオノマトペはありません。"
+          }
+        }
+      }
+    },
     "No pairs of this kind in the installed pack." : {
       "localizations" : {
         "ja" : {
@@ -6381,6 +7901,16 @@
         }
       }
     },
+    "No stories of this kind at this level yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このレベルにはこの種類のストーリーがまだありません。"
+          }
+        }
+      }
+    },
     "No subtitle cues found in %@." : {
       "localizations" : {
         "ja" : {
@@ -6411,6 +7941,16 @@
         }
       }
     },
+    "No words of this type in this theme." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このテーマにこの種類の語はありません。"
+          }
+        }
+      }
+    },
     "No words to hide: cloze needs the dictionary pack." : {
       "localizations" : {
         "ja" : {
@@ -6437,6 +7977,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "インポートしたバンクはありません。"
+          }
+        }
+      }
+    },
+    "Normal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ふつう"
           }
         }
       }
@@ -6507,6 +8057,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未知に戻す"
+          }
+        }
+      }
+    },
+    "Not mastered. Tap to tick." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未習得。タップでチェックします。"
           }
         }
       }
@@ -6661,6 +8221,16 @@
         }
       }
     },
+    "Nothing left" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残りはありません"
+          }
+        }
+      }
+    },
     "Nothing logged in the last two weeks." : {
       "localizations" : {
         "ja" : {
@@ -6707,6 +8277,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "発話がありませんでした。"
+          }
+        }
+      }
+    },
+    "Notice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お知らせ"
           }
         }
       }
@@ -6771,6 +8351,16 @@
         }
       }
     },
+    "Official texts are linked, never copied. They open in your browser and need a connection." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公式の文書はリンクのみで、コピーはしていません。ブラウザで開き、ネット接続が必要です。"
+          }
+        }
+      }
+    },
     "Oldest on the left; the tallest bar is %lld reviews." : {
       "localizations" : {
         "ja" : {
@@ -6801,6 +8391,26 @@
         }
       }
     },
+    "One book to pass" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この一冊で合格"
+          }
+        }
+      }
+    },
+    "One book to pass: what's left for N%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この一冊で合格：N%@の残り"
+          }
+        }
+      }
+    },
     "One new word" : {
       "localizations" : {
         "ja" : {
@@ -6827,6 +8437,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自分のレベルより上だけ"
+          }
+        }
+      }
+    },
+    "Only this track" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このトラックだけにする"
+          }
+        }
+      }
+    },
+    "Onomatopoeia" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オノマトペ"
+          }
+        }
+      }
+    },
+    "Onomatopoeia not installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オノマトペが入っていません"
+          }
+        }
+      }
+    },
+    "Onomatopoeia quiz" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オノマトペクイズ"
           }
         }
       }
@@ -6871,6 +8521,26 @@
         }
       }
     },
+    "Open in reader" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リーダーで開く"
+          }
+        }
+      }
+    },
+    "Open in the dictionary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "辞書で開く"
+          }
+        }
+      }
+    },
     "Open media" : {
       "localizations" : {
         "ja" : {
@@ -6891,12 +8561,32 @@
         }
       }
     },
+    "Opening…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開いています…"
+          }
+        }
+      }
+    },
     "Optional" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "任意"
+          }
+        }
+      }
+    },
+    "Or rate yourself:" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "または自己評価："
           }
         }
       }
@@ -6951,6 +8641,26 @@
         }
       }
     },
+    "Overlapping lines" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重なった発話"
+          }
+        }
+      }
+    },
+    "Overlaps the previous line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前の発話に重なる"
+          }
+        }
+      }
+    },
     "Page %@" : {
       "localizations" : {
         "ja" : {
@@ -6967,6 +8677,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ページ画像はこの端末にありません"
+          }
+        }
+      }
+    },
+    "Partial" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分的"
           }
         }
       }
@@ -7171,6 +8891,76 @@
         }
       }
     },
+    "Pause" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一時停止"
+          }
+        }
+      }
+    },
+    "Pause length" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間の長さ"
+          }
+        }
+      }
+    },
+    "Pause to repeat after the answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答えの後にくり返す間を入れる"
+          }
+        }
+      }
+    },
+    "Pauses grow with the length of the answer unless you choose the same pause for every sentence. Changing the timing restarts the set." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「どの文も同じ間」を選ばない限り、間は答えの長さに合わせて伸びます。タイミングを変えるとセットは最初からになります。"
+          }
+        }
+      }
+    },
+    "Perform “%@”" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」を演じる"
+          }
+        }
+      }
+    },
+    "Performance learned: you played it from the cues alone." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パフォーマンス習得：キューだけで演じられました。"
+          }
+        }
+      }
+    },
+    "Performances" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パフォーマンス"
+          }
+        }
+      }
+    },
     "Period" : {
       "localizations" : {
         "ja" : {
@@ -7181,12 +8971,32 @@
         }
       }
     },
+    "Personal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "個人"
+          }
+        }
+      }
+    },
     "Personal card" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "自作カード"
+          }
+        }
+      }
+    },
+    "Phrases" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表現"
           }
         }
       }
@@ -7217,6 +9027,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "部首を選んで漢字を探す"
+          }
+        }
+      }
+    },
+    "Pick the antonym of" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "対義語を選びましょう"
+          }
+        }
+      }
+    },
+    "Pick the synonym of" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "類義語を選びましょう"
           }
         }
       }
@@ -7421,6 +9251,16 @@
         }
       }
     },
+    "Plays from this sentence." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この文から再生します。"
+          }
+        }
+      }
+    },
     "Plays one of the two words." : {
       "localizations" : {
         "ja" : {
@@ -7571,6 +9411,26 @@
         }
       }
     },
+    "Previous sentence" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前の文"
+          }
+        }
+      }
+    },
+    "Probe" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プローブ"
+          }
+        }
+      }
+    },
     "Progress" : {
       "localizations" : {
         "ja" : {
@@ -7671,6 +9531,26 @@
         }
       }
     },
+    "Question" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "質問"
+          }
+        }
+      }
+    },
+    "Question %@ · %@ · ILR %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "質問%1$@・%2$@・ILR %3$@"
+          }
+        }
+      }
+    },
     "Question %lld" : {
       "localizations" : {
         "ja" : {
@@ -7751,12 +9631,32 @@
         }
       }
     },
+    "Quiz" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズ"
+          }
+        }
+      }
+    },
     "Quiz done: %lld of %lld right." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイズ終了：%2$lld問中%1$lld問正解。"
+          }
+        }
+      }
+    },
+    "Quiz on this theme" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このテーマでクイズ"
           }
         }
       }
@@ -7771,12 +9671,32 @@
         }
       }
     },
+    "Quiz: %@ of %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズ：%2$@問中%1$@問"
+          }
+        }
+      }
+    },
     "Quiz: hide subtitles" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "クイズ：字幕を隠す"
+          }
+        }
+      }
+    },
+    "Quiz: scenes and words" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズ：場面と語"
           }
         }
       }
@@ -7807,6 +9727,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "部首"
+          }
+        }
+      }
+    },
+    "Range" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範囲"
           }
         }
       }
@@ -7861,12 +9791,32 @@
         }
       }
     },
+    "Read" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読む"
+          }
+        }
+      }
+    },
     "Read a web page" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Webページを読む"
+          }
+        }
+      }
+    },
+    "Read along" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声に合わせて読む"
           }
         }
       }
@@ -7987,6 +9937,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新しい順"
+          }
+        }
+      }
+    },
+    "Recipe" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レシピ"
           }
         }
       }
@@ -8191,6 +10151,16 @@
         }
       }
     },
+    "Repeat it" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "くり返す"
+          }
+        }
+      }
+    },
     "Repeat the question" : {
       "localizations" : {
         "ja" : {
@@ -8361,6 +10331,16 @@
         }
       }
     },
+    "Right or wrong usage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使い方の正誤"
+          }
+        }
+      }
+    },
     "Right shape, wrong place" : {
       "localizations" : {
         "ja" : {
@@ -8431,12 +10411,42 @@
         }
       }
     },
+    "Round %@ · %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@回目・%2$@"
+          }
+        }
+      }
+    },
+    "Round passed. The next round hides more of your lines." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この回は合格。次の回ではせりふをもっと隠します。"
+          }
+        }
+      }
+    },
     "Run `tools/items/review.py --ingest verdicts.json` on the export to apply it to the source files." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "書き出したファイルに`tools/items/review.py --ingest verdicts.json`を実行すると、ソースファイルに反映されます。"
+          }
+        }
+      }
+    },
+    "Same pause for every sentence" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どの文も同じ間"
           }
         }
       }
@@ -8561,12 +10571,42 @@
         }
       }
     },
+    "Say it" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "言う"
+          }
+        }
+      }
+    },
     "Say it again" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "もう一度言う"
+          }
+        }
+      }
+    },
+    "Say it from the cue." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キューを見て言いましょう。"
+          }
+        }
+      }
+    },
+    "Say it in Japanese" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語で言う"
           }
         }
       }
@@ -8631,12 +10671,32 @@
         }
       }
     },
+    "Scene for a word" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語に合う場面"
+          }
+        }
+      }
+    },
     "Scheduling" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュール"
+          }
+        }
+      }
+    },
+    "Score %@ / 6" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スコア %@／6"
           }
         }
       }
@@ -8711,12 +10771,42 @@
         }
       }
     },
+    "Search ざあざあ, sparkle…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ざあざあ、sparkle… で検索"
+          }
+        }
+      }
+    },
+    "Section" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セクション"
+          }
+        }
+      }
+    },
     "Select all" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "すべて選択"
+          }
+        }
+      }
+    },
+    "Selected tracks add their words to your daily lessons (up to half of each batch), next to the main path." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選んだトラックの単語は、メインのパスと並んで毎日のレッスンに入ります（各回の最大半分）。"
           }
         }
       }
@@ -8787,6 +10877,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "セッションの進み具合"
+          }
+        }
+      }
+    },
+    "Set finished. Play again or pick another set." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セット終了。もう一度再生するか、別のセットを選びましょう。"
           }
         }
       }
@@ -8921,6 +11021,16 @@
         }
       }
     },
+    "Short" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "短め"
+          }
+        }
+      }
+    },
     "Short vs. long vowel" : {
       "localizations" : {
         "ja" : {
@@ -8981,6 +11091,16 @@
         }
       }
     },
+    "Show in English" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英語で表示"
+          }
+        }
+      }
+    },
     "Show it" : {
       "localizations" : {
         "ja" : {
@@ -9017,6 +11137,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "お手本を表示"
+          }
+        }
+      }
+    },
+    "Show the Japanese as it plays" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生中に日本語を表示"
           }
         }
       }
@@ -9101,12 +11231,42 @@
         }
       }
     },
+    "Situation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "場面"
+          }
+        }
+      }
+    },
+    "Skim and scan" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すくい読み・探し読み"
+          }
+        }
+      }
+    },
     "Skip" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スキップ"
+          }
+        }
+      }
+    },
+    "Skip — main path only" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ（メインのパスのみ）"
           }
         }
       }
@@ -9131,6 +11291,16 @@
         }
       }
     },
+    "Slot %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空欄%@"
+          }
+        }
+      }
+    },
     "Slow" : {
       "localizations" : {
         "ja" : {
@@ -9147,6 +11317,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "遅く"
+          }
+        }
+      }
+    },
+    "Some lines need another go. The next round keeps the same prompts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度練習が必要なせりふがあります。次の回も同じ表示です。"
           }
         }
       }
@@ -9211,6 +11391,26 @@
         }
       }
     },
+    "Speaking drill" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スピーキングドリル"
+          }
+        }
+      }
+    },
+    "Speaking drills" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スピーキングドリル"
+          }
+        }
+      }
+    },
     "Speaking rate %@ morae/s · %lld long pauses" : {
       "localizations" : {
         "ja" : {
@@ -9261,6 +11461,16 @@
         }
       }
     },
+    "Speed %@×" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "速度 %@×"
+          }
+        }
+      }
+    },
     "Spelling" : {
       "localizations" : {
         "ja" : {
@@ -9287,6 +11497,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ステージ%@／4"
+          }
+        }
+      }
+    },
+    "Staging notes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "演出メモ"
           }
         }
       }
@@ -9321,6 +11541,16 @@
         }
       }
     },
+    "Start over" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最初から"
+          }
+        }
+      }
+    },
     "Start quiz" : {
       "localizations" : {
         "ja" : {
@@ -9337,6 +11567,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "定期的に話し、書き始めます：シャドーイング、練習相手との会話、添削してもらう短い文章。"
+          }
+        }
+      }
+    },
+    "Start the %@ timer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@のタイマーを開始"
           }
         }
       }
@@ -9377,6 +11617,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "状態"
+          }
+        }
+      }
+    },
+    "Step %@ of 4: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4段階中%1$@段階目：%2$@"
           }
         }
       }
@@ -9441,6 +11691,36 @@
         }
       }
     },
+    "Stories are written for each level: at least 95% of their words are at the level or easier. They were drafted by AI and are being reviewed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ストーリーはレベルごとに書かれ、単語の95%以上がそのレベル以下です。AIが下書きしたもので、現在確認中です。"
+          }
+        }
+      }
+    },
+    "Story" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物語"
+          }
+        }
+      }
+    },
+    "Story not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ストーリーが見つかりません"
+          }
+        }
+      }
+    },
     "Streak, study days, accuracy, items by stage and kind, exam trend and daily reviews." : {
       "localizations" : {
         "ja" : {
@@ -9487,6 +11767,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "画数：%lld"
+          }
+        }
+      }
+    },
+    "Structure inspired by %@; no content was copied." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "構成は%@を参考にしています。内容は一切コピーしていません。"
+          }
+        }
+      }
+    },
+    "Study on the kanji path (level %@)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "漢字パスで学ぶ（レベル%@）"
           }
         }
       }
@@ -9581,6 +11881,26 @@
         }
       }
     },
+    "Suggested version" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "修正例"
+          }
+        }
+      }
+    },
+    "Sustained" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "維持"
+          }
+        }
+      }
+    },
     "Sync" : {
       "localizations" : {
         "ja" : {
@@ -9647,6 +11967,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "同期中…"
+          }
+        }
+      }
+    },
+    "Synonyms and antonyms" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "類義語と対義語"
           }
         }
       }
@@ -9741,6 +12071,16 @@
         }
       }
     },
+    "Tasks" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タスク"
+          }
+        }
+      }
+    },
     "Tatoeba" : {
       "localizations" : {
         "ja" : {
@@ -9777,6 +12117,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "音声合成"
+          }
+        }
+      }
+    },
+    "Text types (none selected = all)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文章の種類（未選択＝すべて）"
           }
         }
       }
@@ -9931,6 +12281,16 @@
         }
       }
     },
+    "The installed dictionary pack was built before the onomatopoeia module. Rebuild it with `uv run python packs/build_all.py` in tools/." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インストールされている辞書パックはオノマトペ機能より前に作られています。tools/で`uv run python packs/build_all.py`を実行して作り直してください。"
+          }
+        }
+      }
+    },
     "The interviewer is speaking…" : {
       "localizations" : {
         "ja" : {
@@ -10011,6 +12371,16 @@
         }
       }
     },
+    "The readers audio pack isn't installed, so the system voice reads each sentence. Tap a sentence to start there." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "多読の音声パックが入っていないため、システムの音声が一文ずつ読みます。文をタップするとそこから再生します。"
+          }
+        }
+      }
+    },
     "The recorded audio isn't on this device; the system voice reads it instead." : {
       "localizations" : {
         "ja" : {
@@ -10041,6 +12411,16 @@
         }
       }
     },
+    "The story isn't in the installed pack any more." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このストーリーはインストールされたパックにもうありません。"
+          }
+        }
+      }
+    },
     "The text changed and this passage wasn't found again." : {
       "localizations" : {
         "ja" : {
@@ -10051,12 +12431,62 @@
         }
       }
     },
+    "The tracks pack isn't installed in this build, so there's nothing to pick yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビルドにはトラックのパックが入っていないため、まだ選べるものがありません。"
+          }
+        }
+      }
+    },
+    "The upper-range test is for examinees who reach ILR 3 on the lower range." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上位範囲のテストは、下位範囲でILR 3に達した受験者向けです。"
+          }
+        }
+      }
+    },
+    "Themed words, role-plays and drills that join your daily lessons." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "毎日のレッスンに加わる、テーマ別の単語・ロールプレイ・ドリルです。"
+          }
+        }
+      }
+    },
+    "There aren't enough described words here for a quiz yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クイズに使える説明付きの語がまだ足りません。"
+          }
+        }
+      }
+    },
     "There aren't enough items in the bank for that test yet." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "このテストに必要な問題がまだバンクに足りません。"
+          }
+        }
+      }
+    },
+    "There's no Japanese explanation for this point yet, so it's shown in English." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この文法にはまだ日本語の説明がないため、英語で表示しています。"
           }
         }
       }
@@ -10101,6 +12531,16 @@
         }
       }
     },
+    "This build has no graded-reader pack. Build it with `uv run python packs/readers/build_readers.py` in tools/ and rebuild the app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビルドには多読ストーリーのパックがありません。tools/で`uv run python packs/readers/build_readers.py`を実行し、アプリをビルドし直してください。"
+          }
+        }
+      }
+    },
     "This build has no kanji-path pack." : {
       "localizations" : {
         "ja" : {
@@ -10117,6 +12557,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このビルドにはスピーキング・リスニング用のパックが含まれていません。tools/ で `uv run packs/build_practice.py` を実行し、アプリをビルドし直してください。"
+          }
+        }
+      }
+    },
+    "This build has no tracks pack. Build it with `uv run python packs/build_tracks.py` in tools/ and rebuild the app." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビルドにはトラックのパックがありません。tools/で`uv run python packs/build_tracks.py`を実行し、アプリをビルドし直してください。"
           }
         }
       }
@@ -10171,6 +12621,16 @@
         }
       }
     },
+    "This drill type needs a newer app version." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この種類のドリルには新しいバージョンのアプリが必要です。"
+          }
+        }
+      }
+    },
     "This feed has no audio episodes." : {
       "localizations" : {
         "ja" : {
@@ -10187,6 +12647,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このファイルには音声トラックがありません。"
+          }
+        }
+      }
+    },
+    "This genre has no tasks in the installed pack." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インストールされたパックにはこのジャンルのタスクがありません。"
           }
         }
       }
@@ -10211,6 +12681,16 @@
         }
       }
     },
+    "This paraphrase is wrong" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この言い換えは間違っている"
+          }
+        }
+      }
+    },
     "This scenario isn't in the installed practice pack." : {
       "localizations" : {
         "ja" : {
@@ -10227,6 +12707,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "この曲はもうリストにありません。"
+          }
+        }
+      }
+    },
+    "This story has no glossed words." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このストーリーには説明付きの語はありません。"
+          }
+        }
+      }
+    },
+    "This story has no questions." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このストーリーには問題がありません。"
           }
         }
       }
@@ -10267,6 +12767,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今週の目標：%@"
+          }
+        }
+      }
+    },
+    "Tick what you can already do. Your ticks sync to your other devices." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もうできることにチェックしましょう。チェックはほかの端末と同期されます。"
           }
         }
       }
@@ -10401,12 +12911,62 @@
         }
       }
     },
+    "Topics: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "話題：%@"
+          }
+        }
+      }
+    },
     "Total" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "合計"
+          }
+        }
+      }
+    },
+    "Track" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラック"
+          }
+        }
+      }
+    },
+    "Track not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックが見つかりません"
+          }
+        }
+      }
+    },
+    "Tracks" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラック"
+          }
+        }
+      }
+    },
+    "Tracks not installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックが入っていません"
           }
         }
       }
@@ -10461,12 +13021,32 @@
         }
       }
     },
+    "Travel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "旅行"
+          }
+        }
+      }
+    },
     "Try again" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "もう一度"
+          }
+        }
+      }
+    },
+    "Try again next round" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の回でもう一度"
           }
         }
       }
@@ -10671,6 +13251,16 @@
         }
       }
     },
+    "Unscripted-sounding speech: fillers and restarts are grey; lines spoken over each other sit side by side." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自然な会話です。フィラーや言い直しは灰色で、重なった発話は横に並べて表示します。"
+          }
+        }
+      }
+    },
     "Unsure: the model isn't confident about this one, so no correction is shown as fact." : {
       "localizations" : {
         "ja" : {
@@ -10747,6 +13337,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新があります"
+          }
+        }
+      }
+    },
+    "Upper range (ILR 3–4)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上位範囲（ILR 3〜4）"
           }
         }
       }
@@ -10891,6 +13491,16 @@
         }
       }
     },
+    "What does this mean?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どういう意味？"
+          }
+        }
+      }
+    },
     "What was it? (optional)" : {
       "localizations" : {
         "ja" : {
@@ -10911,6 +13521,46 @@
         }
       }
     },
+    "What you found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "見つけたこと"
+          }
+        }
+      }
+    },
+    "Where it broke down" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩れた所"
+          }
+        }
+      }
+    },
+    "Where your answers held up and where they broke down, judged from answer length only. It's practice feedback, not a rating." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "答えが持ちこたえた所と崩れた所を、答えの長さだけで判断しています。評価ではなく練習用のフィードバックです。"
+          }
+        }
+      }
+    },
+    "Which scene fits this word?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この語に合う場面はどれ？"
+          }
+        }
+      }
+    },
     "Which word did you hear?" : {
       "localizations" : {
         "ja" : {
@@ -10927,6 +13577,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "どちらの単語が聞こえますか？"
+          }
+        }
+      }
+    },
+    "Which word fits this scene?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この場面に合う語はどれ？"
           }
         }
       }
@@ -10991,6 +13651,16 @@
         }
       }
     },
+    "Without a model your summary isn't graded. You can still write it and compare it with the text." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モデルがないと要約は採点されません。書いて本文と見比べることはできます。"
+          }
+        }
+      }
+    },
     "Without a model, questions come from scripted banks per level and you rate yourself with a checklist at the end." : {
       "localizations" : {
         "ja" : {
@@ -11041,6 +13711,16 @@
         }
       }
     },
+    "Word for a scene" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "場面に合う語"
+          }
+        }
+      }
+    },
     "Word list" : {
       "localizations" : {
         "ja" : {
@@ -11061,12 +13741,42 @@
         }
       }
     },
+    "Word not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語が見つかりません"
+          }
+        }
+      }
+    },
     "Words" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "単語"
+          }
+        }
+      }
+    },
+    "Words above the level, glossed for this story." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レベルより上の語を、このストーリー用に説明しています。"
+          }
+        }
+      }
+    },
+    "Words and glosses: JMdict (EDRDG, CC BY-SA 4.0). Examples: Tatoeba (CC BY 2.0 FR). Glyphs are our own." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語と語義：JMdict（EDRDG、CC BY-SA 4.0）。例文：Tatoeba（CC BY 2.0 FR）。アイコンは独自のものです。"
           }
         }
       }
@@ -11131,6 +13841,16 @@
         }
       }
     },
+    "Words to learn" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覚える単語"
+          }
+        }
+      }
+    },
     "Words to understand" : {
       "localizations" : {
         "ja" : {
@@ -11157,6 +13877,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このテキストを読みながら調べた単語がここに集まります。"
+          }
+        }
+      }
+    },
+    "Work" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仕事"
           }
         }
       }
@@ -11207,6 +13937,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "書き取り"
+          }
+        }
+      }
+    },
+    "Writing a Japanese paraphrase…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語の言い換えを作成中…"
           }
         }
       }
@@ -11271,12 +14011,32 @@
         }
       }
     },
+    "Wrong usage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間違った使い方"
+          }
+        }
+      }
+    },
     "You" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "あなた"
+          }
+        }
+      }
+    },
+    "You (%@)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなた（%@）"
           }
         }
       }
@@ -11341,6 +14101,16 @@
         }
       }
     },
+    "You play %@." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたは%@の役です。"
+          }
+        }
+      }
+    },
     "You said" : {
       "localizations" : {
         "ja" : {
@@ -11401,6 +14171,16 @@
         }
       }
     },
+    "Your answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの答え"
+          }
+        }
+      }
+    },
     "Your banks" : {
       "localizations" : {
         "ja" : {
@@ -11421,12 +14201,42 @@
         }
       }
     },
+    "Your guess" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの予想"
+          }
+        }
+      }
+    },
     "Your length ÷ model length: %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "あなたの長さ ÷ お手本の長さ：%@"
+          }
+        }
+      }
+    },
+    "Your level" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのレベル"
+          }
+        }
+      }
+    },
+    "Your line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのせりふ"
           }
         }
       }
@@ -11561,6 +14371,16 @@
         }
       }
     },
+    "dictionary form" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "辞書形"
+          }
+        }
+      }
+    },
     "imiwa? exports or any CSV/TSV of word, reading, meaning." : {
       "localizations" : {
         "ja" : {
@@ -11621,6 +14441,16 @@
         }
       }
     },
+    "past form" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "た形"
+          }
+        }
+      }
+    },
     "quiz.reading" : {
       "localizations" : {
         "ja" : {
@@ -11657,12 +14487,92 @@
         }
       }
     },
+    "–" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "–"
+          }
+        }
+      }
+    },
     "…and %@ more" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "…ほか%@語"
+          }
+        }
+      }
+    },
+    "…and %@ more." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…ほか%@件。"
+          }
+        }
+      }
+    },
+    "て form" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "て形"
+          }
+        }
+      }
+    },
+    "ました form" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ました形"
+          }
+        }
+      }
+    },
+    "ます form" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ます形"
+          }
+        }
+      }
+    },
+    "擬音語 imitate sounds, 擬態語 depict states and manners, 擬情語 depict feelings. Pick a theme, or test yourself." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "擬音語は音をまね、擬態語は様子や動きを、擬情語は気持ちを表します。テーマを選ぶか、クイズで試しましょう。"
+          }
+        }
+      }
+    },
+    "日本語で" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語で"
+          }
+        }
+      }
+    },
+    "日本語で説明" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本語で説明"
           }
         }
       }

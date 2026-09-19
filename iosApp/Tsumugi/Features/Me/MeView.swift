@@ -122,6 +122,14 @@ struct SettingsView: View {
             Section("AI") {
                 NavigationLink("AI & speech", value: Route.aiSettings)
             }
+            MonolingualSettingsSection()
+            Section {
+                NavigationLink("Tracks", value: Route.tracks)
+            } header: {
+                Text("Interests")
+            } footer: {
+                Text("Themed words, role-plays and drills that join your daily lessons.")
+            }
             Section {
                 NavigationLink("Audio packs", value: Route.audioPacks)
             } header: {

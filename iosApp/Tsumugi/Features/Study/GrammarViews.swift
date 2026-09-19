@@ -108,9 +108,9 @@ struct GrammarPointContent: View {
                 TagView("N\(point.jlpt)")
                 if point.source != .verified { AiBadge() }
             }
-            Text(point.meaning).font(.headline)
             Text(point.structure).font(.japanese(size: 17)).foregroundStyle(.tint).japaneseSpeech()
-            Text(point.nuance)
+            // Meaning and nuance in English, or in Japanese when monolingual mode covers this level (D-265).
+            GrammarExplanationView(point: point)
             if !point.mistakes.isEmpty {
                 SectionHeader("Watch out")
                 ForEach(point.mistakes, id: \.self) { Text("• \($0)").font(.subheadline) }

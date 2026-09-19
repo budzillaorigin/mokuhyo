@@ -4,6 +4,32 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 12 (iOS UI): readers, tracks, courses, monolingual, onomatopoeia, drills, DLPT/OPI (2026-09-18)
+
+The SwiftUI screens for every Phase 12 shared hook below. Decisions D-260…D-269. **Not compiled:** CI is paused (D-140) and there's no Xcode here; every new interop spot is listed under "iOS: unverified since CI paused". The Kotlin adapters added to `SwiftSupport`/`SwiftBridges.kt` compile (`:shared:compileCommonMainKotlinMetadata`).
+
+### What was built (`iosApp/Tsumugi`)
+- **Graded readers** (Learn → Graded readers): library by level with genre chips, a difficulty badge (label · score), length, the AI badge and the latest quiz result. Story page: Read (sentence-by-sentence read-along with highlighting, pack clips when the readers pack has every line, else the system voice; tap a sentence to start there; open in the full reader), Words (glossed vocabulary → dictionary), Quiz (stored for the roadmap), Tasks (prediction, skim timer, close reading, AI-graded summary with badge and engine, or the reason it wasn't graded). D-261.
+- **Tracks:** an optional onboarding step, Learn → Tracks (select, deselect, only this track) and Settings → Interests; a track page with word lessons, kanji (hints and breakdowns), drills by type, role-plays, dialogues, can-do ticks, cultural tasks, ILR readings and links. Drill screens for keigo, email slots, fill-in (typed or choices), synonym/antonym, meaning and usage, and memorize-and-perform with fading prompts, spoken (recognizer), typed or self-rated. D-262, D-263.
+- **Courses** (Learn → JLPT courses): a bar per level, modules with step progress and launches (kanji path, lessons, grammar mastery checkboxes, quiz item-type drills, mock sections in the exam runner), and "one book to pass". D-264.
+- **Monolingual mode:** Settings → Monolingual mode (toggle, from level). Grammar point views switch meaning/nuance to our Japanese text (Show in English / 日本語で説明); the dictionary entry paraphrases in Japanese (on open when the setting covers the word, else on tap), folds the English glosses, and can forget a bad paraphrase. Lists never generate. D-265.
+- **Onomatopoeia** (Learn → Onomatopoeia): theme tiles with the pack's SVG glyphs parsed into SwiftUI paths (system symbol fallback), search, a type filter, word detail with examples, and the scene ↔ word quiz. D-266.
+- **Speaking drills** (Practice → Speaking drills): a hands-free player with pause presets, fixed/proportional pauses, the repeat pause, previous/next, background playback with the screen off, lock-screen/headset controls and Now Playing. D-267.
+- **Natural dialogues:** fillers grey (toggle to hide), overlapping lines side by side; the dialogue screen now opens track dialogues too. **OPI:** the probe map (chart, tallies, breakdowns, domains) after the interview. **DLPT:** range picker and text-type chips on the exam hub. D-268, D-269.
+- **Strings:** 291 new `Localizable.xcstrings` keys with Japanese. Every new async screen has an error + Retry state (F-33) and an honest empty state when its pack is missing.
+
+### Shared additions (adapters only)
+`SwiftSupport`: `gradedStories`, `readAlongPlan`, `submitGradedQuiz`, `gradeReaderSummary`, `trackDrills`, `trackLessons`, `drillTypeCode`, `trackDescription`, `emailSegments`, `fillInParts`, `keigoPrompt`, `performanceSession`, `performanceStep`, `drillPlan`, `drillCursor`, `drillSetDescription`, `drillStepCode`, `drillPlanItems`, `onomatopoeiaTypes/TypeCode/TypeLabel/Words/Quiz/QuizIsScene`, `monolingualFromLevel`, `setMonolingualFromLevel`, `grammarExplanation`, `grammarExplanationJapanese`, `explanationIsJapanese`, `wordExplanation`, `forgetWordParaphrase`, `opiProbeMap`. `SwiftBridges.kt`: `ReadAlongRow/Plan`, `SummaryGradeRow`, `EmailSegmentRow`, `OnomatopoeiaTypeRow`, `OpiProbeRows/TurnRow/LevelRow`. No logic moved to Swift: checking, scoring, timing, fading and course progress all stay shared.
+
+### Deferred
+- Simultaneous playback of overlapping dialogue lines (sequential for now, D-269), the optional AI check of a performed line (D-263), and inline blanks inside the email text (D-263).
+- Android parity is another agent's work; this change doesn't touch `androidApp/`.
+
+### How to check
+On the Mac, build as described in "iOS: unverified since CI paused", fix any interop names from the Phase 12 list there, then run the Phase 12 items in `docs/QA.md`.
+
+---
+
 ## Phase 12: listening, speaking and exam content (2026-09-18)
 
 BRIEF_V2 §8 Phase 12, §6.10, §6.16, G-08 and the Appendix A content findings. Decisions D-220…D-229. The content was drafted by Claude (owner decision), so everything is `source: "llm"` / unverified with the AI badge until reviewed (rules 10, 19). The graded readers and tracks are separate Phase 12 work.
@@ -635,6 +661,25 @@ The uncertain spots:
 - **Data-class initializer from Swift:** `ScreenshotPage(image:ocrText:)` (`ReaderExtrasViews.swift:518`).
 - **Decoding a pack clip:** `PcmDecoder.read` → `KotlinFloatArray.get(index:)` (`PackAudio.swift:118`).
 - **Other APIs:** `AVAssetImageGenerator.image(at:)` (iOS 16+), `URL.bookmarkData(options: .minimalBookmark…)` for Files-picked media, and two `.sheet(item:)` modifiers plus one `.fileImporter` per view. SwiftUI honours only one file importer per view, so `DecksHomeView` shares one.
+
+
+**Phase 12 iOS UI (D-260…D-269), not yet compiled. Check these first if the build fails.**
+
+New files: `Features/Readers/GradedReaderViews.swift`, `Features/Tracks/TrackViews.swift`, `Features/Tracks/TrackDrillViews.swift`, `Features/Courses/CourseViews.swift`, `Features/Courses/MonolingualViews.swift`, `Features/Onomatopoeia/OnomatopoeiaViews.swift`, `Features/Practice/DrillSetViews.swift`, `Features/Practice/OpiProbeMapView.swift`, `Platform/DrillPlayer.swift`, `UI/SvgGlyph.swift`. Changed: `RootView.swift`, `EntryView.swift`, `ExamHubView.swift`, `MeView.swift`, `OnboardingView.swift`, `ListeningViews.swift`, `OpiView.swift`, `PracticeHubView.swift`, `GrammarViews.swift`. The new `SwiftSupport`/`SwiftBridges.kt` adapters compile (`:shared:compileCommonMainKotlinMetadata`); their Swift spellings follow from the Kotlin parameter names.
+
+The uncertain spots:
+- **A Kotlin interface array and downcasts.** `trackDrills` returns `List<TrackDrill>`, read as `[any TrackDrill]` (`TrackDrillViews.swift:70`) and cast with `as? KeigoDrill / EmailDrill / FillInDrill / SynonymDrill / MeaningDrill / UsageDrill / PerformDrill` (`:163`–`:183`). The interface's default-bodied `isAiGenerated` is read through the protocol (`:162`). If the existential or the casts don't compile, add a bridge per type (`asKeigo(drill) -> KeigoDrill?` …).
+- **`check` overloads, one per class:** `check(answer:)` (Keigo, FillIn: `:230`, `:356`), `check(blank:answer:)` (`:299`), `check(choice:)` (`:172`, `:178`), `check(saysCorrect:)` (`:430`). `PerformanceSession.deliver(lineIndex:given:)` / `selfRate(lineIndex:gotIt:)` (`:722`, `:728`), `prompts()`, `nextRound()`, `roundPassed`, `finished`.
+- **Members returning clashing types, never named:** `PerformDrill.speaker(id:)?.name/.voice` (`Speaker`, `:554`, `:679`), `TrackSummary.track` (`Track`, `TrackViews.swift:26`, `:595`), `AppGraph.dialogue(id:)` (`Dialogue`, `ListeningViews.swift:309`), `repo.scenarios(trackId:)` (`Scenario`, `TrackViews.swift` load).
+- **Kotlin members with plain names that could be renamed:** `Track.count(key:)` (`TrackViews.swift:33`–`:37`), `TrackSummary.selected` (`:39`), `GradedStory.body` (`GradedReaderViews.swift:371`), `TrackSituation.canDoId(index:)` (`TrackViews.swift:624`), `DrillCursor.current/advance()/skipItem()/previousItem()/remainingMs` (`DrillPlayer.swift:114`–`:314`). `description` members are read through `trackDescription` / `drillSetDescription` on purpose (D-260).
+- **Nullable boxed primitives:** `ReaderTask.seconds/minChars/maxChars?.intValue` (`GradedReaderViews.swift:365`–`:366`), `GradedPassageSummary.textScore?.intValue` (`:193`), `CourseMockSection/CourseQuizType.bestAccuracy?.doubleValue` (`CourseViews.swift:49`, `:121`), `CourseWord.entryId?.int64Value` (`:561`), `DictionaryEntry.jlpt?.intValue` (`EntryView.swift:45`).
+- **Suspend functions returning primitives, assumed boxed:** `courses.courseLevel()` → `KotlinInt` (`CourseViews.swift:213`), `SwiftSupport.monolingualFromLevel` → `KotlinInt` (`MonolingualViews.swift:41`), `OnomatopoeiaRepository.available()` → `KotlinBoolean` (`OnomatopoeiaViews.swift:144`). `setMastered`, `setCourseLevel`, `setMonolingualFromLevel`, `select`/`deselect`/`switchTo`/`chooseInOnboarding`/`setCanDo` are called with `_ =` or as `Void`.
+- **SKIE enums read directly:** `Dialogue.style == .natural` (`ListeningViews.swift:331`), `CourseGrammar.stage` (`Stage?`, `CourseViews.swift:22`), `ImmersionOrigin.reader` (`GradedReaderViews.swift:482`). Everything else comes back as a code string (D-260).
+- **Methods on data classes:** `DialogueLine.segments()` and `LineSegment.isFiller` (`ListeningViews.swift:322`), `DialogueLine.overlap`.
+- **Default arguments passed explicitly:** `scores.latestByStory(limit:)` (`GradedReaderViews.swift:179`), `jlptTypeDrill(level:type:seed:)` / `jlptSection(level:sectionId:seed:)` (`CourseViews.swift:340`, `:356`, `:488`).
+- **`[KotlinInt]` built in Swift** for `submitGradedQuiz(choices:)` (`GradedReaderViews.swift:597`), the `KotlinInt(int:)` pattern that compiled before.
+- **Platform APIs new to the app:** `MPRemoteCommandCenter` targets with a non-isolated handler that hops to the main actor (`DrillPlayer.swift:292`), `MPNowPlayingInfoCenter`, `AVAudioPlayer(data:fileTypeHint:)` with an in-memory WAV (`:250`), Swift Charts (`OpiProbeMapView.swift`, `BasicChartSymbolShape` in a ternary at `:132`, `AxisMarks(values:)` with `value.as(Int.self)`), `Canvas` stroking with `.foreground` shading (`SvgGlyph.swift`), a `@unchecked Sendable` lock-guarded glyph cache, and `nonisolated static func seed()` on a `@MainActor` class (`CourseViews.swift:155`).
+- **Strict concurrency (warnings, not errors, in Swift 5 mode):** Kotlin objects (`ExamService`, `GradedStory`, `DrillSet`) captured in `Task` closures, and the `@MainActor` action closures captured by the remote-command handlers.
 
 ---
 

@@ -22,6 +22,7 @@ struct OpiView: View {
     @State private var checklist: [ChecklistEntry] = []
     @State private var checked: Set<String> = []
     @State private var transcript: [TranscriptLine] = []
+    @State private var probe: ProbeMapData?
     @State private var savedId: String?
     @State private var saveError: String?
     @State private var recorder = Recorder()
@@ -157,6 +158,7 @@ struct OpiView: View {
                 saveButton(selfRating)
             }
         }
+        if let probe { OpiProbeMapView(data: probe) }
         transcriptView
     }
 
@@ -301,6 +303,7 @@ struct OpiView: View {
         rating = try? await session.rate()
         checklist = SwiftSupport.shared.opiChecklist(session: session)
         transcript = SwiftSupport.shared.opiTranscript(session: session)
+        probe = ProbeMapData(SwiftSupport.shared.opiProbeMap(session: session))
         busy = false
     }
 
@@ -326,6 +329,7 @@ struct OpiView: View {
         checked = []
         checklist = []
         transcript = []
+        probe = nil
         savedId = nil
         stage = .setup
     }

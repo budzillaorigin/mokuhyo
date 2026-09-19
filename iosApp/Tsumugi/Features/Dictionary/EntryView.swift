@@ -15,6 +15,8 @@ struct EntryView: View {
 
 private struct EntryContent: View {
     let detail: EntryDetail
+    /// A Japanese paraphrase is shown (monolingual mode, D-265): the English glosses fold away.
+    @State private var japaneseShown = false
 
     var body: some View {
         let e = detail.entry
@@ -38,19 +40,14 @@ private struct EntryContent: View {
                 if !others.isEmpty {
                     Text("Also: \(others.joined(separator: "、"))").font(.japanese(size: 15))
                 }
-                VStack(alignment: .leading, spacing: 10) {
-                    ForEach(Array(e.senses.enumerated()), id: \.offset) { i, sense in
-                        VStack(alignment: .leading, spacing: 2) {
-                            if !sense.partsOfSpeech.isEmpty && (i == 0 || sense.partsOfSpeech != e.senses[i - 1].partsOfSpeech) {
-                                Text(sense.partsOfSpeech.joined(separator: ", ")).font(.caption).foregroundStyle(.tint)
-                            }
-                            Text("\(i + 1). " + sense.glosses.joined(separator: "; "))
-                            let notes = sense.misc + sense.fields + sense.dialects + sense.info
-                            if !notes.isEmpty {
-                                Text(notes.joined(separator: " · ")).font(.caption2).foregroundStyle(.secondary)
-                            }
-                        }
-                    }
+                WordExplanationCard(
+                    entryId: e.id, word: e.headword, reading: e.reading,
+                    glosses: e.senses.first?.glosses ?? [], jlpt: e.jlpt.map { Int($0.intValue) } ?? 0
+                ) { japaneseShown = $0 }
+                if japaneseShown {
+                    DisclosureGroup("English glosses") { senses(e) }
+                } else {
+                    senses(e)
                 }
                 if !detail.kanji.isEmpty {
                     SectionHeader("Kanji")
@@ -87,6 +84,26 @@ private struct EntryContent: View {
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
+extension EntryContent {
+    /// JMdict senses with parts of speech and notes (English, CC BY-SA 4.0).
+    func senses(_ e: DictionaryEntry) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(Array(e.senses.enumerated()), id: \.offset) { i, sense in
+                VStack(alignment: .leading, spacing: 2) {
+                    if !sense.partsOfSpeech.isEmpty && (i == 0 || sense.partsOfSpeech != e.senses[i - 1].partsOfSpeech) {
+                        Text(sense.partsOfSpeech.joined(separator: ", ")).font(.caption).foregroundStyle(.tint)
+                    }
+                    Text("\(i + 1). " + sense.glosses.joined(separator: "; "))
+                    let notes = sense.misc + sense.fields + sense.dialects + sense.info
+                    if !notes.isEmpty {
+                        Text(notes.joined(separator: " · ")).font(.caption2).foregroundStyle(.secondary)
+                    }
+                }
+            }
         }
     }
 }

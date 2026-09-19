@@ -117,3 +117,76 @@ data class SentenceSearchRows(
     val onlineFailure: String?,
     val onlineSourceName: String,
 )
+
+// --- Phase 12 iOS UI (D-260…D-269): flat rows, so Swift never spells nested, sealed or clashing types. -----------
+
+/** One read-along sentence with its text and place in the story's audio ([startMs]/[endMs] -1 when untimed). */
+data class ReadAlongRow(
+    val index: Int,
+    val start: Int,
+    val end: Int,
+    val text: String,
+    val speaker: String,
+    val voice: String,
+    val clipKey: String,
+    val startMs: Long,
+    val endMs: Long,
+)
+
+/** A story's read-along: [timed] = every line has a pre-rendered clip (D-207); otherwise the system voice reads it. */
+data class ReadAlongPlan(val storyId: String, val timed: Boolean, val totalMs: Long, val lines: List<ReadAlongRow>)
+
+/**
+ * `SummaryGradeResult` flattened. [graded] true: the scores, [feedback] and [engine] are set (always AI-generated).
+ * False: [reason] says why nothing was graded.
+ */
+data class SummaryGradeRow(
+    val graded: Boolean,
+    val content: Int,
+    val accuracy: Int,
+    val language: Int,
+    val total: Int,
+    val corrected: String,
+    val feedback: String,
+    val engine: String,
+    val reason: String,
+)
+
+/** One run of an email drill's body: text ([blank] -1) or a slot ([blank] ≥ 0, [text] empty). */
+data class EmailSegmentRow(val text: String, val blank: Int)
+
+/** An onomatopoeia type for the filter: [code] is the enum name. */
+data class OnomatopoeiaTypeRow(val code: String, val labelJa: String, val labelEn: String)
+
+/** One turn of the OPI probe map. Levels are labels ("2+") with [targetRank]/[afterRank] for the chart (-1 = none). */
+data class OpiProbeTurnRow(
+    val index: Int,
+    val phaseTitle: String,
+    val isProbe: Boolean,
+    val isLevelCheck: Boolean,
+    val question: String,
+    /** English domain title ("Current events"), "" for model-written questions. */
+    val domain: String,
+    val target: String,
+    val targetRank: Int,
+    val before: String,
+    val after: String,
+    val afterRank: Int,
+    /** -1 when unanswered. */
+    val answerLength: Int,
+    /** SUSTAINED | PARTIAL | BREAKDOWN | NOT_RATED. */
+    val outcome: String,
+)
+
+data class OpiProbeLevelRow(val level: String, val rank: Int, val sustained: Int, val partial: Int, val breakdown: Int)
+
+/** `OpiProbeMap` flattened ([floor]/[ceiling] "" when none). [levelLabels] are every ILR label in rank order. */
+data class OpiProbeRows(
+    val floor: String,
+    val ceiling: String,
+    val turns: List<OpiProbeTurnRow>,
+    val levels: List<OpiProbeLevelRow>,
+    val levelLabels: List<String>,
+    val domains: List<String>,
+    val missingDomains: List<String>,
+)

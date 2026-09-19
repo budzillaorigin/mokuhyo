@@ -114,3 +114,15 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] Reader library → Screenshots: pick 2 pictures. Progress shows per picture, and the document opens with its page strip.
 - [ ] A grammar point shows its Guides links, and they open in Safari.
 - [ ] Me: the Immersion card and the Roadmap card show. Log time by hand, change the daily target, and delete an entry.
+
+## Phase 12 on iOS: readers, tracks, courses, monolingual, onomatopoeia, drills
+- [ ] Learn → Graded readers: switch levels (Level 0 … N1) and genre chips; each story shows its difficulty badge and the AI badge. Open one: Read along highlights each sentence as it's spoken (pack voices with `audio-readers.zip` installed, the system voice without it). Tap a sentence to start there. "Open in reader" opens it with lookups.
+- [ ] Story → Quiz: answer and check; the library then shows "Quiz: x of y". Tasks: the skim timer shows the text only while it runs; the summary grades with a model (badge and engine), and without one it says why.
+- [ ] Fresh install: onboarding offers tracks after "Words you already know"; pick Gaming. Learn → Tracks shows it selected; "Only this track" and the toggle work; Today's lessons include track words.
+- [ ] A track page: words open the dictionary, kanji show hints (gaming), a role-play and a dialogue open, can-do ticks survive a relaunch, links open Safari.
+- [ ] Drills: a keigo answer in kana passes; an email checks every slot and shows the model email; fill-in with choices; synonym, meaning and usage. Perform: say a line (or type, or "I said it") for every line of yours, then Next round: your lines fade; after the cue-only round it says the performance is learned.
+- [ ] Learn → JLPT courses: bars per level; open N5: the current module is expanded; tick a grammar point (the bar moves, reviews don't change); start a quiz drill and a mock section; "One book to pass" lists what's left.
+- [ ] Settings → Monolingual mode on (N2): an N2 grammar point shows Japanese with "Show in English". An N2 dictionary entry writes a Japanese paraphrase once (with a model) and folds the English; the list screens never show a spinner for it. Turn the mode off: English again, "Explain in Japanese" on tap.
+- [ ] Learn → Onomatopoeia: 12 tiles with drawn glyphs (not SF Symbols), search ざあざあ, filter a theme by 擬態語, open a word with examples, and take the quiz in both kinds.
+- [ ] Practice → Speaking drills: play a grammar set with the screen locked; the lock screen shows the cue and play/pause/next/previous work, and so do headset buttons. Change the pause length: the set restarts with the new timing.
+- [ ] A natural dialogue greys its fillers ("Fillers" hides them) and shows overlapping lines side by side. After an OPI interview, the probe map shows the level line, tallies and breakdowns. Exams → DLPT: switch to the upper range and pick a text type; the form uses only that type.

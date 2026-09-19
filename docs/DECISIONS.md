@@ -1347,6 +1347,55 @@ New composition-root members for the platform UIs:
 
 Every public suspend function is `@Throws(Exception::class)`. Class names are unique across packages, and none starts with new/copy/init/alloc. No platform UI was built here.
 
+### D-260: Phase 12 iOS screens go through flat Swift copies and a few `SwiftSupport` adapters (iOS, 2026-09-18)
+Nothing here can be compiled until the owner builds on a Mac (D-140), so the Phase 12 SwiftUI code stays on interop patterns that compiled before and routes everything else through adapters in `SwiftSupport` / `SwiftBridges.kt` (compiled with `:shared:compileCommonMainKotlinMetadata`):
+- **No defaults, no nullable primitives or enums as parameters.** `gradedStories(graph, jlpt)` (0 = all), `trackDrills(repo, trackId, typeCode)` ("" = all), `onomatopoeiaWords(repo, theme, typeCode, withFeelOnly)`, `onomatopoeiaQuiz(repo, count, kindCode, theme, seed)`, `setMonolingualFromLevel(graph, level)` (0 = off), `submitGradedQuiz(graph, story, choices)` (-1 = unanswered), `drillPlan(graph, set, preset, repeatPause, fixedPause)`, `wordExplanation(graph, entryId, word, reading, glosses, jlpt, generate, japanese)`.
+- **No sealed, nested or `Pair` results.** `SummaryGradeRow` (for `SummaryGradeResult`), `ReadAlongPlan`/`ReadAlongRow` (for `ReadAlongTrack`/`TimedLine`), `EmailSegmentRow` (for `EmailSegment.Text/Slot`), `fillInParts` (for `FillInDrill.parts`), `OpiProbeRows`/`OpiProbeTurnRow`/`OpiProbeLevelRow` (for `OpiProbeMap`, `LevelTally` and `levelTrack`).
+- **Risky member names.** `Track.description` and `DrillSetSummary.description` collide with NSObject's `description`, so Swift reads them through `trackDescription`/`drillSetDescription`. `DrillPlan.set` is never read (`drillPlanItems`). Enum values Swift would switch on come back as codes (`drillStepCode`, `drillTypeCode`, `onomatopoeiaTypeCode`, `keigoPrompt`, `performanceStep`).
+- **Clashing classes.** The tracks pack's `track` table generates a SQLDelight `Track` next to `app.tsumugi.tracks.Track`, so Swift never names either; screens copy into `TrackOption`/`TrackPage`. `Dialogue`, `Scenario` and `Speaker` stay unnamed as before.
+
+### D-261: Graded-reader read-along plays one sentence at a time and highlights it, pack or TTS (§6.4, iOS, 2026-09-18)
+- The story page (Learn → Graded readers → story) has Read, Words, Quiz and Tasks. Read lists the story's read-along sentences (paragraph breaks kept from the body offsets) and plays them in order from any tapped sentence.
+- With `ReadAlongPlan.timed` (every clip in the readers audio pack, D-207) each sentence plays its pre-rendered clip; otherwise every sentence uses the system voice (voice picked from the line's hint). Because playback goes sentence by sentence, the highlighted sentence is always the one being spoken, so the TTS fallback highlights too; D-207's all-or-nothing rule still decides pack vs TTS, so voices never mix within a story.
+- "Open in reader" opens the story as a reader document (`openPassage`) for lookups, annotations and the rest of the reader tools. Read-along time is logged to the immersion log like dialogues.
+- Quiz answers are scored and stored in shared code (D-206); the library shows each story's latest result. The Tasks tab has the prediction (free text, not graded), a skim timer that shows the text only while it runs, the close-reading prompts, and the output task graded by the model with the AI badge and engine, or the reason nothing was graded. Task templates always carry the badge (they're `llm`).
+
+### D-262: Tracks on iOS: an onboarding step after "words you know", Learn → Tracks, Settings → Interests (§6.5, iOS, 2026-09-18)
+- Onboarding step 4 (optional) is a multi-select of every track, saved with `chooseInOnboarding` ("Skip — main path only" saves nothing selected).
+- Learn → Tracks lists tracks with a toggle (select/deselect) and "Only this track" (`switchTo`). Settings links to the same screen.
+- A track page shows word lessons (entries open the dictionary), the kanji strip (gaming breakdowns and hints in a disclosure group, badged), drill types with counts, role-plays (open in the role-play screen, `roleplay(id)` falls back to the tracks pack), dialogues (the listening screen now loads through `AppGraph.dialogue(id)`, so track dialogues open too), can-do checklists (synced ticks), cultural tasks, ILR readings with their questions, and links (open in the browser; the only screen part that needs a connection).
+
+### D-263: Track drills run one at a time per type; email blanks are numbered, perform is its own screen (§6.5, iOS, 2026-09-18)
+- A drill type opens a session of its drills with a running score; each card checks in shared code (`check…`) and shows the expected answer and explanation.
+- Email templates show the body with ［1］…［n］ markers and one field (or chips when the blank has choices) per slot below it, rather than fields inline in wrapped text, which SwiftUI can't lay out reliably. After checking, the model email is shown.
+- Perform (memorize-and-perform, D-217) lists the performances; each opens `PerformView`: partner lines play with the system voice, the learner's lines show the faded prompt, and each is delivered by speaking (the existing `SpeechToText` path, 80% similarity in shared code), by typing, or by self-rating. "Next round" fades a passed round. The optional AI check stays deferred.
+
+### D-264: Course screens launch the existing study screens and exam forms (§6.6, iOS, 2026-09-18)
+- Learn → JLPT courses shows a bar per level; a level shows its modules (the current one expanded) with each step's progress. Step actions: kanji → the kanji-path level of the module's first unlearned kanji; vocabulary → Lessons; grammar → the points with the mastery checkbox (never touches SRS) and a link to the point; quiz → `jlptTypeDrill` per item type; mock → `jlptSection`. Tests open full screen in the existing exam runner.
+- "One book to pass" lists what remains in course order, with the same checkboxes and mock launches. Opening a level saves it as the course level.
+
+### D-265: Monolingual mode on iOS: a Settings section; grammar switches in place; words paraphrase only on the entry screen (§6.6, iOS, 2026-09-18)
+- Settings → Monolingual mode: a toggle (on = from N2) and "From level" (N1 only … N5 and harder), through `setMonolingualFromLevel`.
+- Every grammar point view (point page, lessons) shows meaning and nuance through `GrammarExplanationView`: Japanese when the setting covers the point's level, with "Show in English"; otherwise English with "日本語で説明". A point without Japanese text says so. Japanese text carries the AI badge until reviewed.
+- The dictionary entry shows a paraphrase card: when the setting covers the word it asks the model once on opening (then it's cached, D-234), and the English glosses fold into a disclosure group; otherwise "Explain in Japanese" asks on tap. "This paraphrase is wrong" forgets it. Lists never generate: nothing but the entry screen calls with `generate = true`.
+
+### D-266: Onomatopoeia glyphs are parsed in Swift, with a system symbol per theme as the fallback (§6.8, iOS, 2026-09-18)
+- iOS has no SVG view. `UI/SvgGlyph.swift` parses the subset the 12 pack glyphs use (path M/L/H/V/C/S/Q/T/A/Z, circle, ellipse, rect with rx, line, one rotate/translate/scale transform, stroke-dasharray) into SwiftUI paths drawn with the foreground colour at the glyph's stroke width. Any other element or command returns nil and the tile shows the theme's SF Symbol instead, so a glyph never draws half right.
+- Screens: theme tiles with counts, search (debounced), a theme list with the 擬音語/擬態語/擬情語 filter, word detail (feel lines in both languages, Tatoeba examples, dictionary link) and the quiz, which reveals every option's word or feel after answering.
+
+### D-267: The hands-free drill player keeps a silent loop under the whole run (§6.10, iOS, 2026-09-18)
+- `Platform/DrillPlayer.swift` plays the shared `DrillPlan` through `DrillCursor`: English cue (an English system voice), pause, model answer (audio-pack clip, else the Japanese system voice), repeat pause, gap.
+- **Background.** `UIBackgroundModes: audio` only keeps an app running while it plays audio, and the pauses are silence. A zero-volume looping silent WAV plays for the whole run, so the pauses keep running with the screen off. The session goes through `AudioSessionController` (`.playback`); an interruption or unplugged headphones pause the player.
+- **Controls.** Play/pause, previous item, next item, in the app and through `MPRemoteCommandCenter` (lock screen, headset). Now Playing shows the cue, the set title, and the elapsed and total time from the plan. Pausing mid-step restarts that step on resume.
+- **Timing.** Short/Normal/Long presets, "same pause for every sentence" (FIXED) and the repeat pause, stored per device; changing them rebuilds the plan (answer lengths from the installed packs' clip durations) and restarts the set.
+
+### D-268: The DLPT hub picks a range and filters by text type (G-08, §6.16, iOS, 2026-09-18)
+- A segmented range picker (lower ILR 0+–3 / upper 3–4) and text-type chips. The chips merge reading and listening types by name with their item counts; none selected means all. Reading/Listening buttons are enabled only when the filtered bank has items for that kind. Forms are built with `SwiftSupport.dlptFiltered`.
+
+### D-269: Natural dialogues grey their fillers and put overlaps side by side; the OPI probe map is a chart (§6.10, §6.16, iOS, 2026-09-18)
+- In natural-style dialogues, fillers and restarts (`segments()`) are grey, and a "Fillers" toggle hides them. A line marked `overlap` joins the previous line's row, shown side by side. Playback stays sequential: the pack renders each line as its own clip, and playing two at once would garble both.
+- After an OPI interview the rating screen shows the probe map: floor and ceiling, a Swift Charts step line of the working level with the level checks and probes marked by outcome (triangles are probes), a tally per target level, the questions where speech broke down, and the DLI domains asked and missed.
+
 ---
 
 ## Open decisions (BRIEF.md §14)
