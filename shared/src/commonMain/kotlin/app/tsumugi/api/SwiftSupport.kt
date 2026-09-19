@@ -83,6 +83,9 @@ data class AiExplanation(val explanation: String, val whyWrong: String, val keyP
 
 data class TranscriptLine(val learner: Boolean, val text: String)
 
+/** One DLPT text-type filter option: the passage text type and how many items have it. */
+data class DlptTextTypeCount(val textType: String, val items: Int)
+
 data class ChecklistEntry(val level: String, val statement: String)
 
 /** A pronunciation report, or why the recording couldn't be analyzed (F-33: an error, never a silent nil). */
@@ -348,6 +351,22 @@ object SwiftSupport {
     @Throws(Exception::class)
     suspend fun dlpt(exams: ExamService, listening: Boolean, minutes: Int): ExamSession =
         exams.dlpt(if (listening) ExamKind.DLPT_LISTENING else ExamKind.DLPT_READING, minutes, kotlin.time.Clock.System.now().toEpochMilliseconds())
+
+    /** DLPT form with the range (upper = ILR 3–4) and text-type filter (empty = all) (BRIEF_V2 G-08, §6.16). */
+    @Throws(Exception::class)
+    suspend fun dlptFiltered(exams: ExamService, listening: Boolean, minutes: Int, upper: Boolean, textTypes: List<String>): ExamSession =
+        exams.dlpt(
+            if (listening) ExamKind.DLPT_LISTENING else ExamKind.DLPT_READING, minutes, kotlin.time.Clock.System.now().toEpochMilliseconds(),
+            if (upper) app.tsumugi.exam.dlpt.DlptRange.UPPER else app.tsumugi.exam.dlpt.DlptRange.LOWER, textTypes.toSet(),
+        )
+
+    /** Text types for the DLPT filter chips: "type" to item count, most items first. */
+    @Throws(Exception::class)
+    suspend fun dlptTextTypes(exams: ExamService, listening: Boolean, upper: Boolean): List<DlptTextTypeCount> =
+        exams.dlptTextTypes(
+            if (listening) ExamKind.DLPT_LISTENING else ExamKind.DLPT_READING,
+            if (upper) app.tsumugi.exam.dlpt.DlptRange.UPPER else app.tsumugi.exam.dlpt.DlptRange.LOWER,
+        ).map { DlptTextTypeCount(it.first, it.second) }
 
     @Throws(Exception::class)
     suspend fun opi(graph: AppGraph, startLevel: String): OpiSession? = graph.opi(IlrLevel.parse(startLevel) ?: IlrLevel.L1)

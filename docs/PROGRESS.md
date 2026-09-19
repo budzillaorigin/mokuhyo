@@ -4,6 +4,96 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 12: listening, speaking and exam content (2026-09-18)
+
+BRIEF_V2 §8 Phase 12, §6.10, §6.16, G-08 and the Appendix A content findings. Decisions D-220…D-229. The content was drafted by Claude (owner decision), so everything is `source: "llm"` / unverified with the AI badge until reviewed (rules 10, 19). The graded readers and tracks are separate Phase 12 work.
+
+### Content (counts)
+
+| What | Before | Now |
+|---|---|---|
+| Role-play scenarios | 30, all exactly 6 turns | **90** (60 new: business 10, admin 10, military/liaison 10, travel 10, family 8, medical 7, culture 4, school 1), 4–12 turns, 699 scripted turns, 2–3 `accept` alternatives per turn |
+| Listening dialogues | 45 (N5–N3) | **125**: 40 natural (N5/N4/N3/N2 × 10) + 40 new scripted (N4 8, N3 10, N2 12, N1 10) + the 45 reworked; 1,214 lines, 1,434 gap targets, 306 questions |
+| Drill sets (new) | none | **31** sets / 325 items (22 grammar, 9 dialogue-line) |
+| OPI questions | 62 | **96**, every question tagged with a DLI-style domain |
+| DLPT passages / items | 100 / 306 (0+–3) | **195 / 595**: + ILR 3+/4 reading 60/184, ILR 3+/4 listening 20/61, military/liaison at 2–3 15/44 |
+
+### Fixes from Appendix A
+- The hotel closing was re-examined: the scenario is a check-in, so お世話になります fits an arriving guest. It now closes with よろしくお願いします (お世話になります is still accepted). The departing case is the new `travel-hotel-checkout` (お世話になりました). Seven other scenarios that ended without a partner closing line were fixed (D-221).
+- `n3-environment` is now a real two-person dialogue.
+- Comprehension questions were reworked across all 45 original dialogues, with distractors grounded in the audio. Lines were edited in 15 N5/N4 dialogues to support that.
+- The 30 original scenarios now range from 4 to 12 turns.
+- Scripted-fallback matching lives in shared `RoleplaySession` (it counts turns and ignores the reply). The `accept` data is ready; the matcher is left for the coordinator (D-223).
+
+### Tools
+- `packs/build_practice.py`:
+  - filler markup `{…}` → `dialogue_line.fillers`, plus `overlap`, `style` and speaker `hint`
+  - `scripted_turn.accept`, `opi_question.domain`
+  - drill sets
+  - N1–N5 dialogues, 4–12 scenario turns, a closed category set
+  - `--check FILE…`
+  - pack version 2
+- `packs/practice_authoring.py` + `speaking/author_scenarios.py` + `listening/author_dialogues.py`:
+  - merge script entries, `batches/*.json` and the JSON without duplicating ids, keeping reviewed copies
+  - `draft --endpoint URL --model NAME` appends validated endpoint drafts
+- `items/ilr_bands.json` has 3+/4 bands (and `IlrBandData.kt` is regenerated).
+- `items/gen_dlpt.py` handles 3+/4: ids, guides, text types, 2–4 items, upper-range text-type check, `liaison` at 2–3. `packs/build_exam.py` accepts 3+/4.
+- `packs/render_audio.py`: a docstring note only (see Audio).
+
+### Shared API
+- **Practice:**
+  - `DialogueStyle`, `DialogueLine.fillers/overlap/segments()/withoutFillers`, `FillerSpan`, `LineSegment`
+  - `Speaker.hint`, `Dialogue(Summary).style`
+  - `ScriptedTurn.accept/acceptableAnswers`
+  - `OpiDomain`, `OpiQuestion.domain`
+  - `DrillKind`, `DrillItem`, `DrillSet(Summary)`, `PracticeRepository.drillSets(level)/drillSet(id)`
+- **Drill timing:** `DrillTiming` (FIXED/PROPORTIONAL, presets), `DrillPlayback.plan(set, timing, answerMs)`, `DrillCursor` (advance/skip/back).
+- **Exam:**
+  - `IlrLevel.upperRange/tested`, `DlptRange`
+  - `ExamAssembler.dlpt(…, range, textTypes)`, `filterByTextType`, `textTypeCounts`
+  - `ExamService.dlpt(…, range, textTypes)`, `dlptTextTypes(exam, range)`
+  - `SwiftSupport.dlptFiltered/dlptTextTypes` + `DlptTextTypeCount`
+- **OPI:** `OpiSession.turns/probeMap()`, `OpiTurnRecord`, `OpiTurnOutcome`, `OpiProbeMap` (floor, ceiling, breakdowns, per-level tallies, level track, domains); the scripted interview rotates domains.
+
+### Tests
+- New shared tests:
+  - `DlptUpperRangeTest` (7): upper-range forms, the text-type filter and counts, the summary, service + import
+  - `OpiProbeMapTest` (5): outcomes, floor/ceiling, a session log with breakdowns, domain rotation
+  - `DrillPlaybackTest` (6): step order, proportional/fixed pauses, clip lengths, estimates, cursor
+  - `PracticeRepositoryTest` (+2): natural fillers/segments/overlap, drill sets; accept, domain, hint and style asserted
+- `RealExamPackTest` checks the real packs: an upper-range form, a liaison-filtered form, natural fillers, a drill-set plan and the probe map.
+- Tools:
+  - `items/test_gen_dlpt.py` 25/25 (5 new upper-range and liaison tests)
+  - `packs/test_practice_authoring.py` 7/7 (markup, merge, duplicate ids, drafting against a fake endpoint)
+  - `items/test_gen_jlpt.py` 13/13
+- Validators: `gen_dlpt.py validate --strict` on all five DLPT banks: 0 errors, 0 warnings. `build_practice.py --check` on every batch: 0 errors. `ruff`: clean.
+- Gradle (`:shared:compileCommonMainKotlinMetadata :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false`): green.
+
+### Packs rebuilt (main checkout `content/packs`)
+- `practice.sqlite`: 90 scenarios / 699 turns, OPI 96, 125 dialogues (natural 40, scripted 85) / 1,214 lines / 1,434 gaps / 306 questions, 31 drill sets / 325 items, 630 minimal pairs.
+- `exam.sqlite`: 7 banks, 401 passages, 2,963 items, 0 band warnings.
+
+### Audio (not rendered here)
+- `dialogues`: 1,214 lines, about 924 of them new plus the lines edited in 16 originals. `exam`: +191 lines of upper-range and liaison scripts. Drill sets reuse `grammar/<point>/0` and dialogue clips, and their English cues use system TTS.
+- Command: `uv run python packs/render_audio.py dialogues exam`. The cache keeps everything unchanged.
+
+### Deferred
+- Platform UI: the hands-free drill player (`UIBackgroundModes: audio`), greyed fillers in the transcript, overlap playback, the DLPT range and text-type pickers, and the probe-map chart.
+- A scripted-fallback matcher using `acceptableAnswers` (shared `RoleplaySession`, D-223).
+- Human review of all of the above in the review UI (G-16).
+- Upper-range ILR bands are provisional until reviewed passages exist.
+
+### How to run
+```bash
+cd tools
+uv run python packs/speaking/author_scenarios.py && uv run python packs/listening/author_dialogues.py   # merge
+uv run python packs/build_practice.py && uv run python packs/build_exam.py
+uv run python items/gen_dlpt.py validate --strict items/bank/dlpt_*.json
+uv run python packs/test_practice_authoring.py && uv run python items/test_gen_dlpt.py
+```
+
+---
+
 ## Phase 11 (Android UI): immersion pipeline and audio packs (2026-09-18)
 
 The Android screens for everything Phase 11 built in the shared core, plus pre-rendered audio (rule 20). Decisions D-180…D-189. iOS is being built in parallel by another agent.

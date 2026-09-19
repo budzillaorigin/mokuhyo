@@ -9,6 +9,7 @@ import app.tsumugi.ai.prompts.Speaker
 import app.tsumugi.ai.prompts.Turn
 import app.tsumugi.exam.dlpt.IlrLevel
 import app.tsumugi.practice.OpiBank
+import app.tsumugi.practice.OpiDomain
 import app.tsumugi.practice.OpiQuestion
 import kotlin.random.Random
 import kotlin.time.Clock
@@ -42,6 +43,10 @@ data class OpiRating(
  * Adaptation is a documented heuristic on answer length (a stand-in for "sustained speech at this level"): an answer
  * at least as long as the next level's typical answer moves the working level up; one under half the current
  * level's typical length counts as breakdown and moves it down.
+ *
+ * Scripted questions rotate through the DLI topic domains (family, work, current events, hypotheticals, abstract;
+ * BRIEF_V2 §6.16): an unused domain is preferred. Every question and answer is logged in [turns], and [probeMap]
+ * turns the log into the "level check → probe" picture shown after the interview.
  */
 class OpiSession(
     private val banks: Map<IlrLevel, OpiBank>,
@@ -57,6 +62,9 @@ class OpiSession(
     private var turnsInPhase = 0
     private var questionPhase = OpiPhase.WARMUP
     private val interviewerTask = OpiInterviewerTurn { input -> scripted(input.phase) }
+    private val usedDomains = mutableSetOf<OpiDomain>()
+    private val domainForScripted = mutableMapOf<String, OpiDomain>()
+    private val records = mutableListOf<OpiTurnRecord>()
 
     var phase: OpiPhase = OpiPhase.WARMUP
         private set
@@ -83,6 +91,14 @@ class OpiSession(
             }
         }
         val line = InterviewerLine(text, english, phase, engine)
+        records += OpiTurnRecord(
+            index = records.size,
+            phase = phase,
+            question = text,
+            domain = if (engine == null) domainForScripted[text] else null,
+            targetLevel = targetFor(phase),
+            levelBefore = workingLevel,
+        )
         questionPhase = phase
         history += Turn(Speaker.PARTNER, text)
         lines += Speaker.PARTNER to text
@@ -97,7 +113,30 @@ class OpiSession(
         history += Turn(Speaker.LEARNER, answer)
         lines += Speaker.LEARNER to answer
         // Judge the answer by the phase of the question it answers (the phase may already have moved on).
-        if (questionPhase == OpiPhase.LEVEL_CHECK || questionPhase == OpiPhase.PROBE) adapt(answer)
+        val judged = questionPhase == OpiPhase.LEVEL_CHECK || questionPhase == OpiPhase.PROBE
+        if (judged) adapt(answer)
+        val last = records.lastOrNull()
+        if (last != null && last.answerLength == null) {
+            val length = answer.count { !it.isWhitespace() }
+            records[records.lastIndex] = last.copy(
+                answerLength = length,
+                levelAfter = workingLevel,
+                outcome = if (judged) OpiTurnOutcome.judge(length, last.targetLevel) else OpiTurnOutcome.NOT_RATED,
+            )
+        }
+    }
+
+    /** Every interviewer question so far with the answer's length and outcome (the probe map's input). */
+    val turns: List<OpiTurnRecord> get() = records.toList()
+
+    /** The "level check → probe" picture for the results screen (BRIEF_V2 §6.16). */
+    fun probeMap(): OpiProbeMap = OpiProbeMap.from(records)
+
+    /** The level a question in [phase] aims at: probes one level above the working level, everything else at it. */
+    private fun targetFor(phase: OpiPhase): IlrLevel {
+        if (phase != OpiPhase.PROBE) return workingLevel
+        val index = IlrLevel.lowerRange.indexOf(workingLevel)
+        return IlrLevel.lowerRange[(index + 1).coerceAtMost(IlrLevel.lowerRange.lastIndex)]
     }
 
     /** Ends early (the learner stops); the rating uses what was said. */
@@ -167,10 +206,17 @@ class OpiSession(
         val aim = if (phase == OpiPhase.PROBE) (index + 1).coerceAtMost(IlrLevel.lowerRange.lastIndex) else index
         val order = IlrLevel.lowerRange.indices.sortedBy { kotlin.math.abs(it - aim) }.map { IlrLevel.lowerRange[it] }
         val question: OpiQuestion = order.firstNotNullOfOrNull { level ->
-            banks[level]?.phase(bankPhase)?.filter { it.promptJa !in asked }?.takeIf { it.isNotEmpty() }?.random(random)
+            val fresh = banks[level]?.phase(bankPhase)?.filter { it.promptJa !in asked }.orEmpty()
+            // Rotate topic domains: prefer a question from a domain not covered yet (untagged ones count as fresh).
+            val unusedDomain = fresh.filter { it.domain == null || it.domain !in usedDomains }
+            (unusedDomain.ifEmpty { fresh }).takeIf { it.isNotEmpty() }?.random(random)
         } ?: return null
         asked += question.promptJa
         englishForScripted[question.promptJa] = question.promptEn
+        question.domain?.let {
+            usedDomains += it
+            domainForScripted[question.promptJa] = it
+        }
         val next = if (turnsInPhase + 1 >= PLAN.getValue(phase)) OpiPhase.entries.getOrElse(phase.ordinal + 1) { phase } else phase
         return OpiInterviewerTurn.Output(question.promptJa, next, question.note)
     }

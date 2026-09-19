@@ -139,11 +139,30 @@ class ExamService(
         return session(ExamAssembler.jlptTypeDrill(level, bp, type, pool, passages, Random(seed)), bp)
     }
 
-    /** DLPT reading or listening; [minutes] = 180 (full length), 60 or 30. */
+    /**
+     * DLPT reading or listening; [minutes] = 180 (full length), 60 or 30. [range] picks the lower (0+–3) or upper
+     * (3–4) range; [textTypes] limits the form to those passage text types (empty = all, BRIEF_V2 §6.16).
+     */
     @Throws(Exception::class)
-    suspend fun dlpt(exam: ExamKind, minutes: Int, seed: Long = clock.now().toEpochMilliseconds()): ExamSession {
-        val (pool, passages) = pool(exam, app.tsumugi.exam.dlpt.IlrLevel.lowerRange.map { it.label })
-        return session(ExamAssembler.dlpt(exam, minutes, pool, passages, Random(seed)), null)
+    suspend fun dlpt(
+        exam: ExamKind,
+        minutes: Int,
+        seed: Long = clock.now().toEpochMilliseconds(),
+        range: app.tsumugi.exam.dlpt.DlptRange = app.tsumugi.exam.dlpt.DlptRange.LOWER,
+        textTypes: Set<String> = emptySet(),
+    ): ExamSession {
+        val (pool, passages) = pool(exam, range.labels)
+        return session(ExamAssembler.dlpt(exam, minutes, pool, passages, Random(seed), range, textTypes), null)
+    }
+
+    /** The text types available for a DLPT form in [range], with item counts (for the text-type filter chips). */
+    @Throws(Exception::class)
+    suspend fun dlptTextTypes(
+        exam: ExamKind,
+        range: app.tsumugi.exam.dlpt.DlptRange = app.tsumugi.exam.dlpt.DlptRange.LOWER,
+    ): List<Pair<String, Int>> {
+        val (pool, passages) = pool(exam, range.labels)
+        return ExamAssembler.textTypeCounts(pool, passages)
     }
 
     /** The unfinished attempt on this device, or null. Reads one row; the form's items aren't loaded. */

@@ -19,6 +19,30 @@ enum class IlrLevel(val label: String) {
 
         /** Levels the lower-range DLPT practice packs cover. */
         val lowerRange: List<IlrLevel> = listOf(L0_PLUS, L1, L1_PLUS, L2, L2_PLUS, L3)
+
+        /** Levels the upper-range DLPT practice forms cover (BRIEF_V2 G-08): 3 as the floor, then 3+ and 4. */
+        val upperRange: List<IlrLevel> = listOf(L3, L3_PLUS, L4)
+
+        /** Every level a DLPT practice bank item may carry. */
+        val tested: List<IlrLevel> = (lowerRange + upperRange).distinct()
+    }
+}
+
+/**
+ * Which DLPT practice form to build. The real DLPT5 has a lower-range test (0+–3) and an upper-range test (3–4) taken
+ * by examinees who score 3 on the lower range; the practice forms mirror that split.
+ */
+enum class DlptRange(val levels: List<IlrLevel>, val title: String) {
+    LOWER(IlrLevel.lowerRange, "Lower range (ILR 0+–3)"),
+    UPPER(IlrLevel.upperRange, "Upper range (ILR 3–4)"),
+    ;
+
+    /** The level labels the form draws from. */
+    val labels: List<String> get() = levels.map { it.label }
+
+    companion object {
+        /** The range of a stored form: [ExamForm.level] is "" for lower-range DLPT forms and "UPPER" for upper. */
+        fun ofFormLevel(level: String): DlptRange = entries.firstOrNull { it.name == level } ?: LOWER
     }
 }
 

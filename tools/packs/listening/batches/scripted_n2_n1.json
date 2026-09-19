@@ -1,0 +1,626 @@
+{
+  "source": "llm",
+  "dialogues": [
+    {
+      "id": "n2-client-visit-prep",
+      "title": "Getting ready for a client visit",
+      "jlpt": 2,
+      "topic": "work",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "課長", "voice": "male", "age": "adult", "hint": "calm, businesslike, slightly hurried"},
+        {"id": "B", "name": "山口", "voice": "female", "age": "young", "hint": "attentive, polite, a little flustered at the mistake"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "山口さん、明日の午後、取引先の皆様がいらっしゃるので、準備をお願いしたいんだけど。", "en": "Yamaguchi, our clients are coming tomorrow afternoon, so I'd like you to handle the preparations.", "gaps": ["取引先", "準備"]},
+        {"speaker": "B", "ja": "はい。会議室の予約はもう済ませてあります。", "en": "Yes. I've already booked the meeting room.", "gaps": ["会議室", "予約"]},
+        {"speaker": "A", "ja": "ありがとう。それから、先方に提出する資料なんだけど、売上のデータが先月のままになっていたよ。", "en": "Thanks. Also, the materials we're giving them still have last month's sales data.", "gaps": ["資料", "売上"]},
+        {"speaker": "B", "ja": "申し訳ありません。すぐに最新の数字に差し替えます。", "en": "I'm very sorry. I'll replace them with the latest figures right away.", "gaps": ["最新", "数字"]},
+        {"speaker": "A", "ja": "うん、それを最優先で頼む。印刷は明日の朝でも間に合うから。", "en": "Yes, make that your top priority. The printing can wait until tomorrow morning.", "gaps": ["最優先", "印刷"]},
+        {"speaker": "B", "ja": "承知しました。お茶菓子の手配はどうしましょうか。", "en": "Understood. What should I do about the tea and snacks?", "gaps": ["手配"]},
+        {"speaker": "A", "ja": "それは総務の佐々木さんに頼んであるから、心配しなくていいよ。", "en": "I've already asked Sasaki in general affairs, so don't worry about that.", "gaps": ["総務", "心配"]},
+        {"speaker": "B", "ja": "わかりました。あと、駅までのお迎えは必要でしょうか。", "en": "All right. And will someone need to meet them at the station?", "gaps": ["必要"]},
+        {"speaker": "A", "ja": "先方は車でいらっしゃるそうだから、駐車場の確保だけしておいてくれる？", "en": "They're coming by car, apparently, so could you just make sure there's parking for them?", "gaps": ["駐車場", "確保"]},
+        {"speaker": "B", "ja": "はい。では、資料の修正が終わりましたら、一度ご確認いただけますか。", "en": "Yes. Then once I've fixed the materials, could you check them over?", "gaps": ["修正", "確認"]},
+        {"speaker": "A", "ja": "もちろん。夕方までに送ってくれれば目を通しておくよ。", "en": "Of course. If you send them by early evening, I'll look through them.", "gaps": ["夕方"]}
+      ],
+      "questions": [
+        {"question": "What will Yamaguchi do first?", "choices": ["Book the meeting room for the visit", "Print the materials for the clients", "Put current figures into the materials", "Secure parking spaces for the clients"], "answer": 2},
+        {"question": "Which task has someone else already been asked to handle?", "choices": ["Securing the parking", "Preparing the refreshments", "Printing the materials", "Meeting the clients at the station"], "answer": 1},
+        {"question": "Why is no one needed at the station?", "choices": ["Sasaki from general affairs will go there", "The visit has been moved to the morning", "The section chief will greet them himself", "The visitors will be driving over"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n2-thesis-plan-feedback",
+      "title": "Feedback on a thesis plan",
+      "jlpt": 2,
+      "topic": "school",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "教授", "voice": "male", "age": "senior", "hint": "kind but direct, measured pace"},
+        {"id": "B", "name": "中村", "voice": "female", "age": "young", "hint": "earnest, a little nervous"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "中村さん、卒業論文の計画書、読ませてもらいました。", "en": "Nakamura, I've read your graduation thesis plan.", "gaps": ["卒業論文", "計画書"]},
+        {"speaker": "B", "ja": "ありがとうございます。いかがでしたでしょうか。", "en": "Thank you. What did you think?", "gaps": []},
+        {"speaker": "A", "ja": "テーマ自体は興味深いんだけど、少し範囲が広すぎるかな。", "en": "The theme itself is interesting, but the scope is a bit too broad, I think.", "gaps": ["興味深い", "範囲"]},
+        {"speaker": "B", "ja": "地方の人口と観光の関係、という点でしょうか。", "en": "You mean the relationship between regional population and tourism?", "gaps": ["地方", "人口", "観光"]},
+        {"speaker": "A", "ja": "そう。全国を対象にすると、一年ではとても調査しきれないと思うよ。", "en": "Right. If you cover the whole country, I don't think you can possibly finish the research in a year.", "gaps": ["全国", "対象", "調査"]},
+        {"speaker": "B", "ja": "では、地域を一つに絞ったほうがよろしいでしょうか。", "en": "Then would it be better to narrow it down to one region?", "gaps": ["地域"]},
+        {"speaker": "A", "ja": "うん、例えば君の出身地のように、実際に現地で話を聞ける所がいいね。", "en": "Yes. Somewhere like your hometown, where you can actually talk to people on site, would be good.", "gaps": ["出身地", "現地"]},
+        {"speaker": "B", "ja": "なるほど。アンケートも予定していたのですが、それはどうでしょう。", "en": "I see. I was also planning a questionnaire. What about that?", "gaps": ["予定"]},
+        {"speaker": "A", "ja": "悪くはないけど、どれだけ回答が集まるかを考えると、インタビュー中心のほうが現実的だろうね。", "en": "It's not bad, but considering how many responses you'd actually get, focusing on interviews is probably more realistic.", "gaps": ["回答", "中心", "現実的"]},
+        {"speaker": "B", "ja": "わかりました。これまでの研究の整理は、あれで足りていますか。", "en": "Understood. Is my review of earlier research sufficient as it is?", "gaps": ["研究", "整理"]},
+        {"speaker": "A", "ja": "そこはよく調べてあった。来週までに修正した計画書を出してください。", "en": "That part was well researched. Please hand in a revised plan by next week.", "gaps": ["修正"]}
+      ],
+      "questions": [
+        {"question": "What does the professor see as the main weakness of the plan?", "choices": ["It tries to cover too much for a one-year project", "The topic itself is not interesting enough", "The review of earlier research is too thin", "The questionnaire has too few questions"], "answer": 0},
+        {"question": "How does the professor suggest she gather her data?", "choices": ["Mainly through a nationwide questionnaire", "By talking to people in a single region she can visit", "Only by reviewing earlier studies", "Through a questionnaire sent to her hometown"], "answer": 1},
+        {"question": "What will the student do next?", "choices": ["Start interviews in her hometown this week", "Send out the questionnaire right away", "Add more earlier research to the plan", "Hand in a revised plan within a week"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n2-craft-brewery-interview",
+      "title": "Interview with a craft brewer",
+      "jlpt": 2,
+      "topic": "work",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "司会者", "voice": "female", "age": "adult", "hint": "bright radio-host tone, clear pace"},
+        {"id": "B", "name": "森", "voice": "male", "age": "adult", "hint": "relaxed, warm, a little shy"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "今日は、町で小さなビール工房を営んでいらっしゃる森さんにお越しいただきました。", "en": "Today we're joined by Mr. Mori, who runs a small beer workshop here in town.", "gaps": ["工房"]},
+        {"speaker": "B", "ja": "よろしくお願いします。", "en": "Nice to be here.", "gaps": []},
+        {"speaker": "A", "ja": "もともとは会社員だったそうですね。", "en": "I hear you were originally an office worker.", "gaps": ["会社員"]},
+        {"speaker": "B", "ja": "ええ、十年ほど営業の仕事をしていました。趣味で始めたビール造りに、すっかりはまってしまいまして。", "en": "Yes, I worked in sales for about ten years. Then I got completely hooked on brewing, which I'd started as a hobby.", "gaps": ["営業", "趣味"]},
+        {"speaker": "A", "ja": "会社を辞めることに、不安はありませんでしたか。", "en": "Weren't you anxious about quitting your company?", "gaps": ["不安"]},
+        {"speaker": "B", "ja": "もちろんありました。ただ、地元の農家さんが育てた麦を使えば、ここにしかない味が作れると思ったんです。", "en": "Of course I was. But I thought that with barley grown by local farmers, I could make a flavor you can't find anywhere else.", "gaps": ["地元", "農家", "麦"]},
+        {"speaker": "A", "ja": "なるほど。原料にこだわっていらっしゃるんですね。", "en": "I see. So you're particular about your ingredients.", "gaps": ["原料"]},
+        {"speaker": "B", "ja": "はい。そのぶん値段は大手の商品より高くなりますが、お客さんには産地の話も一緒に楽しんでほしいので。", "en": "Yes. That makes it pricier than the big brands, but I want customers to enjoy the story of where it comes from as well.", "gaps": ["値段", "大手", "産地"]},
+        {"speaker": "A", "ja": "今後の目標を教えてください。", "en": "Tell us about your goals for the future.", "gaps": ["目標"]},
+        {"speaker": "B", "ja": "規模を広げるより、今の品質を守りたいですね。来年は、工房の隣に小さな飲食スペースを作る予定です。", "en": "Rather than growing bigger, I want to protect the quality we have now. Next year I plan to open a small food and drink space next to the workshop.", "gaps": ["規模", "品質", "予定"]}
+      ],
+      "questions": [
+        {"question": "What made Mori decide to go into brewing full-time?", "choices": ["He had grown tired of working in sales", "A local farmer asked him to use his barley", "He saw a chance to make a flavor unique to the area", "He wanted to sell beer more cheaply than big brands"], "answer": 2},
+        {"question": "What are Mori's plans for next year?", "choices": ["Increase production to supply larger stores", "Add a small place to eat and drink by the workshop", "Cut his prices to compete with major brands", "Hand the workshop over to a local farmer"], "answer": 1}
+      ]
+    },
+    {
+      "id": "n2-hotel-group-booking",
+      "title": "Booking a hotel for a company group",
+      "jlpt": 2,
+      "topic": "travel",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "予約係", "voice": "female", "age": "adult", "hint": "smooth, very polite hotel keigo"},
+        {"id": "B", "name": "石井", "voice": "male", "age": "adult", "hint": "friendly but budget-conscious, slightly pushy"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "お電話ありがとうございます。ホテル青葉、予約係でございます。", "en": "Thank you for calling Hotel Aoba reservations.", "gaps": ["予約"]},
+        {"speaker": "B", "ja": "来月の十五日に、三十名ほどの団体で宿泊をお願いしたいのですが。", "en": "I'd like to book a stay for a group of about thirty on the fifteenth of next month.", "gaps": ["団体", "宿泊"]},
+        {"speaker": "A", "ja": "かしこまりました。十五日ですと、あいにく和室は満室でございまして、洋室でしたらご用意できます。", "en": "Certainly. On the fifteenth, unfortunately, the Japanese-style rooms are fully booked, but we can offer Western-style rooms.", "gaps": ["和室", "満室", "洋室"]},
+        {"speaker": "B", "ja": "洋室ですか。実は会社の研修旅行なので、できれば宴会場も使いたいんですが。", "en": "Western-style, huh. Actually it's a company training trip, so if possible we'd like to use a banquet hall too.", "gaps": ["研修", "宴会場"]},
+        {"speaker": "A", "ja": "宴会場は空いております。二十名様以上ですと、団体割引で一割お安くなります。", "en": "The banquet hall is available. For groups of twenty or more, there's a ten percent group discount.", "gaps": ["割引"]},
+        {"speaker": "B", "ja": "それはありがたいです。もう少し安くなりませんか。予算が厳しくて。", "en": "That's helpful. Can't you go a little lower? Our budget is tight.", "gaps": ["予算"]},
+        {"speaker": "A", "ja": "申し訳ございません、料金はこれ以上は…。ただ、夕食のコースを一つ下げていただければ、お一人様千円ほど抑えられますが。", "en": "I'm sorry, the rate itself can't go any lower... However, if you choose the next dinner course down, you could save about a thousand yen per person.", "gaps": ["料金", "夕食"]},
+        {"speaker": "B", "ja": "なるほど。では、その案で検討させてください。キャンセル料はいつからかかりますか。", "en": "I see. Let me consider it on that basis, then. From when do cancellation fees apply?", "gaps": ["検討"]},
+        {"speaker": "A", "ja": "七日前からでございます。人数の変更は三日前まで承ります。", "en": "From seven days before. Changes to the number of guests are accepted up to three days before.", "gaps": ["人数", "変更"]},
+        {"speaker": "B", "ja": "わかりました。社内で確認して、明日までにお返事します。", "en": "Understood. I'll check within the company and get back to you by tomorrow.", "gaps": ["社内", "返事"]}
+      ],
+      "questions": [
+        {"question": "How could Ishii bring the cost down further?", "choices": ["By switching to Japanese-style rooms", "By choosing a less expensive dinner", "By bringing ten more people", "By not using the banquet hall"], "answer": 1},
+        {"question": "Which statement matches what the hotel explained?", "choices": ["The group can change its numbers until three days before", "Cancellation fees start three days before the stay", "Groups of thirty or more get twenty percent off", "Japanese-style rooms can be added for a small fee"], "answer": 0},
+        {"question": "What will Ishii do next?", "choices": ["Confirm the booking on the spot", "Look for a hotel with Japanese-style rooms", "Change the number of guests to twenty", "Consult his company before replying"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n2-comparing-candidates",
+      "title": "Choosing between two candidates",
+      "jlpt": 2,
+      "topic": "work",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "高橋", "voice": "female", "age": "adult", "hint": "thoughtful, weighs things out loud"},
+        {"id": "B", "name": "松本", "voice": "male", "age": "adult", "hint": "practical, slightly skeptical"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "松本さん、昨日の面接の二人、どう思いました？", "en": "Matsumoto, what did you think of the two people we interviewed yesterday?", "gaps": ["面接"]},
+        {"speaker": "B", "ja": "そうですね。経験で言えば、断然、一人目の田村さんですよね。", "en": "Well, in terms of experience, the first one, Tamura, is far ahead.", "gaps": ["経験", "断然"]},
+        {"speaker": "A", "ja": "確かに。前の会社で営業を八年ですから、即戦力にはなると思います。", "en": "True. Eight years in sales at his last company, so he could contribute from day one.", "gaps": ["営業", "即戦力"]},
+        {"speaker": "B", "ja": "ただ、少し自分のやり方へのこだわりが強い印象を受けました。", "en": "But I got the impression he's rather attached to doing things his own way.", "gaps": ["印象"]},
+        {"speaker": "A", "ja": "ああ、それは私も感じました。うちのチームは協調性が大事ですからね。", "en": "Oh, I felt that too. Cooperation is important on our team.", "gaps": ["協調性"]},
+        {"speaker": "B", "ja": "二人目の岡田さんは経験は浅いですけど、質問への答え方が柔軟でしたね。", "en": "The second one, Okada, doesn't have much experience, but he answered questions flexibly.", "gaps": ["柔軟"]},
+        {"speaker": "A", "ja": "ええ。ただ、一から教えるとなると、一人前に育てるには時間がかかりますよ。", "en": "Yes. But if we teach him from scratch, it'll take time to bring him up to speed.", "gaps": ["一人前", "育てる"]},
+        {"speaker": "B", "ja": "来年の春に大きなプロジェクトが始まることを考えると、それまでに間に合うかどうか…。", "en": "Considering the big project starting next spring, I wonder whether he'd be ready in time...", "gaps": ["間に合う"]},
+        {"speaker": "A", "ja": "そうなんですよ。でも、長い目で見れば、岡田さんのほうがチームに合う気がします。", "en": "Exactly. But in the long run, I feel Okada would fit the team better.", "gaps": []},
+        {"speaker": "B", "ja": "じゃあ、岡田さんを推して、春までの研修計画も一緒に部長に提案しましょうか。", "en": "Then shall we recommend Okada and propose a training plan up to spring to the department head along with it?", "gaps": ["研修", "部長", "提案"]},
+        {"speaker": "A", "ja": "それがいいですね。", "en": "That sounds good.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "Whom do they decide to recommend, and why?", "choices": ["Tamura, because he could contribute at once", "Tamura, because of his long sales career", "Okada, because he seems adaptable and a good fit", "Okada, because he has more sales experience"], "answer": 2},
+        {"question": "What worries them about choosing Okada?", "choices": ["He is too attached to his own methods", "He may not be trained in time for the spring project", "He answered their questions too cautiously", "He cannot start work until next spring"], "answer": 1}
+      ]
+    },
+    {
+      "id": "n2-lease-renewal-rent",
+      "title": "Lease renewal and a rent increase",
+      "jlpt": 2,
+      "topic": "home",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "大家", "voice": "male", "age": "senior", "hint": "genial, a bit apologetic, unhurried"},
+        {"id": "B", "name": "小林", "voice": "female", "age": "adult", "hint": "polite but firm, negotiates carefully"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "小林さん、来月で契約の更新になりますが、どうされますか。", "en": "Ms. Kobayashi, your lease is up for renewal next month. What would you like to do?", "gaps": ["契約", "更新"]},
+        {"speaker": "B", "ja": "はい、引き続き住みたいと思っています。", "en": "I'd like to keep living here.", "gaps": ["引き続き"]},
+        {"speaker": "A", "ja": "それはよかった。ただ、実は次の契約から家賃を五千円上げさせていただきたいんです。", "en": "Good to hear. The thing is, from the next contract I'd like to raise the rent by five thousand yen.", "gaps": ["家賃"]},
+        {"speaker": "B", "ja": "五千円ですか…。正直、ちょっと厳しいですね。", "en": "Five thousand... Honestly, that's a bit hard for me.", "gaps": ["正直"]},
+        {"speaker": "A", "ja": "周りの相場も上がっていますし、税金も上がりましてね。", "en": "Rents around here have gone up, and so have my taxes, you see.", "gaps": ["相場", "税金"]},
+        {"speaker": "B", "ja": "事情はわかるんですが…。この部屋に住んで六年、一度も家賃を滞納したことはありませんし、エアコンも古いままなので…。", "en": "I understand your situation, but... I've lived here six years without once paying late, and the air conditioner is still the old one...", "gaps": ["事情", "滞納"]},
+        {"speaker": "A", "ja": "ああ、エアコンね。確かに、あれはもう寿命ですね。", "en": "Ah, the air conditioner. It's true, that one's at the end of its life.", "gaps": ["寿命"]},
+        {"speaker": "B", "ja": "例えば、エアコンを新しくしていただけるなら、値上げも考えさせていただきたいんですが。", "en": "If, say, you could replace the air conditioner, I'd be willing to consider the increase.", "gaps": ["値上げ"]},
+        {"speaker": "A", "ja": "なるほど。では、エアコンは交換して、値上げは三千円ということでどうでしょう。", "en": "I see. Then how about I replace the air conditioner and make the increase three thousand yen?", "gaps": ["交換"]},
+        {"speaker": "B", "ja": "それなら、納得です。ありがとうございます。", "en": "That I can accept. Thank you.", "gaps": ["納得"]}
+      ],
+      "questions": [
+        {"question": "What do they finally agree on?", "choices": ["A 5,000-yen increase and a new air conditioner", "No increase, given her record of paying on time", "A 3,000-yen increase with the old air conditioner", "A smaller increase and a new air conditioner"], "answer": 3},
+        {"question": "How does Kobayashi argue against the original increase?", "choices": ["She says rents nearby have actually fallen", "She points to her reliable payments and the aging air conditioner", "She says she cannot afford any increase at all", "She says the tax rise is not her responsibility"], "answer": 1}
+      ]
+    },
+    {
+      "id": "n2-childcare-subsidy",
+      "title": "Asking about childcare subsidies",
+      "jlpt": 2,
+      "topic": "official",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "職員", "voice": "female", "age": "adult", "hint": "clear, patient, formal counter tone"},
+        {"id": "B", "name": "大野", "voice": "male", "age": "adult", "hint": "polite, a little unsure of the procedures"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "次の方、どうぞ。本日はどのようなご用件でしょうか。", "en": "Next, please. How can I help you today?", "gaps": ["用件"]},
+        {"speaker": "B", "ja": "保育園の費用の補助について伺いたいんですが。", "en": "I'd like to ask about subsidies for daycare costs.", "gaps": ["保育園", "費用", "補助"]},
+        {"speaker": "A", "ja": "かしこまりました。お子様は何歳でいらっしゃいますか。", "en": "Certainly. How old is your child?", "gaps": []},
+        {"speaker": "B", "ja": "二歳です。今は妻が育児休業中で、来年の四月から預けたいと考えています。", "en": "Two. My wife is on childcare leave now, and we're thinking of putting our child in daycare from next April.", "gaps": ["育児休業"]},
+        {"speaker": "A", "ja": "三歳未満のお子様の場合は、世帯の所得によって補助の金額が変わります。", "en": "For children under three, the subsidy amount depends on household income.", "gaps": ["未満", "世帯", "所得"]},
+        {"speaker": "B", "ja": "そうなんですか。申請には何が必要でしょうか。", "en": "Is that so. What do I need to apply?", "gaps": ["申請"]},
+        {"speaker": "A", "ja": "申請書と、ご夫婦お二人分の所得を証明する書類が必要です。", "en": "The application form, plus documents proving the income of both of you.", "gaps": ["申請書", "証明", "書類"]},
+        {"speaker": "B", "ja": "妻の分は勤め先から取り寄せないといけませんね。締め切りはいつですか。", "en": "I'll have to get my wife's from her employer, then. When's the deadline?", "gaps": ["勤め先", "締め切り"]},
+        {"speaker": "A", "ja": "四月入園の場合、十一月末が締め切りです。ただ、書類がそろわない場合でも、先に申請書だけ出していただくことはできます。", "en": "For April entry, the deadline is the end of November. But even if you don't have all the documents yet, you can submit just the application form first.", "gaps": ["入園"]},
+        {"speaker": "B", "ja": "では、とりあえず今日は申請書だけ出して帰ります。", "en": "In that case, I'll just hand in the application form today for now.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "What does the father decide to do today?", "choices": ["Hand in every document, including proof of income", "Get his wife's income papers from her workplace", "Turn in only the form and bring the rest later", "Enroll his child in daycare for next April"], "answer": 2},
+        {"question": "What determines how much subsidy the family receives?", "choices": ["How much the household earns", "How long the wife's leave lasts", "Which month the child starts daycare", "Whether both parents submit forms together"], "answer": 0}
+      ]
+    },
+    {
+      "id": "n2-pharmacist-side-effects",
+      "title": "A new blood pressure medicine",
+      "jlpt": 2,
+      "topic": "health",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "薬剤師", "voice": "female", "age": "adult", "hint": "gentle, clear, reassuring"},
+        {"id": "B", "name": "西田", "voice": "male", "age": "senior", "hint": "slow, a little set in his ways"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "西田さん、今日から新しいお薬が一つ追加になっています。", "en": "Mr. Nishida, one new medicine has been added starting today.", "gaps": ["追加"]},
+        {"speaker": "B", "ja": "ああ、血圧の薬ですね。先生から聞いています。", "en": "Ah, the blood pressure one. The doctor told me.", "gaps": ["血圧"]},
+        {"speaker": "A", "ja": "はい。一日一回、朝食の後に飲んでください。", "en": "Yes. Please take it once a day, after breakfast.", "gaps": ["朝食"]},
+        {"speaker": "B", "ja": "前の薬は夜に飲んでいるんですが、一緒に夜じゃだめですか。", "en": "I take my other medicine at night. Can't I take them together at night?", "gaps": []},
+        {"speaker": "A", "ja": "この薬は、飲み始めにめまいが出ることがあるので、夜ですと、夜中にお手洗いに行く時にふらついて危ないんです。", "en": "This medicine can cause dizziness when you first start it, so if you take it at night, you might be unsteady going to the bathroom in the middle of the night, which is dangerous.", "gaps": ["夜中"]},
+        {"speaker": "B", "ja": "なるほど。ほかに気をつけることはありますか。", "en": "I see. Is there anything else I should be careful about?", "gaps": []},
+        {"speaker": "A", "ja": "グレープフルーツは薬の効き目を強めてしまうので、控えてください。", "en": "Grapefruit makes the medicine act more strongly, so please avoid it.", "gaps": ["効き目"]},
+        {"speaker": "B", "ja": "毎朝ジュースで飲んでいるんですが…。", "en": "But I drink it as juice every morning...", "gaps": ["毎朝"]},
+        {"speaker": "A", "ja": "では、ジュースはほかの果物のものに変えていただけますか。それから、足のむくみが続くようでしたら、ご連絡ください。", "en": "Then could you switch to juice made from other fruit? Also, if swelling in your legs continues, please contact us.", "gaps": ["果物", "連絡"]},
+        {"speaker": "B", "ja": "わかりました。むくみが出たら、すぐに薬をやめたほうがいいですか。", "en": "All right. If I get swelling, should I stop the medicine right away?", "gaps": []},
+        {"speaker": "A", "ja": "二、三日で治まれば心配いりません。続くようなら、ご自分の判断でやめずに、まずご相談ください。", "en": "If it settles in two or three days, there's nothing to worry about. If it continues, don't stop on your own; please consult us first.", "gaps": ["心配", "判断", "相談"]}
+      ],
+      "questions": [
+        {"question": "Why should he take the new medicine in the morning?", "choices": ["It must be taken on a full stomach", "Dizziness at night could make him fall", "It interferes with his evening medicine", "The doctor wants it taken with juice"], "answer": 1},
+        {"question": "What will he change about his mornings?", "choices": ["He will take both medicines then", "He will stop drinking juice entirely", "He will drink a different kind of juice", "He will eat grapefruit only at night"], "answer": 2},
+        {"question": "What should he do if the swelling does not go away?", "choices": ["Stop the medicine at once", "Start taking it at night instead", "Wait another few days and see", "Talk to the pharmacy before changing anything"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n2-festival-budget-cut",
+      "title": "Planning a festival on a smaller budget",
+      "jlpt": 2,
+      "topic": "community",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "会長", "voice": "male", "age": "senior", "hint": "gruff but reasonable, plain speech"},
+        {"id": "B", "name": "吉田", "voice": "female", "age": "adult", "hint": "organized, constructive, polite"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "吉田さん、夏祭りの件なんだが、市からの補助金が去年の半分になってしまってね。", "en": "Yoshida, about the summer festival: the city's subsidy has been cut to half of last year's.", "gaps": ["夏祭り", "補助金", "半分"]},
+        {"speaker": "B", "ja": "半分ですか。それは痛いですね。", "en": "Half? That hurts.", "gaps": []},
+        {"speaker": "A", "ja": "そこで、何を削るか相談したいんだ。", "en": "So I want to talk about what to cut.", "gaps": ["相談"]},
+        {"speaker": "B", "ja": "一番費用がかかっているのは、最後の花火ですよね。", "en": "The most expensive thing is the fireworks at the end, isn't it?", "gaps": ["費用", "花火"]},
+        {"speaker": "A", "ja": "うん。でも、花火は毎年楽しみにしている人が多いから、できれば残したい。", "en": "Yes. But lots of people look forward to the fireworks every year, so I'd like to keep them if we can.", "gaps": ["毎年"]},
+        {"speaker": "B", "ja": "では、舞台のゲストを見直すのはどうでしょう。去年はプロの歌手を二人呼びましたが、地元の高校の吹奏楽部に出てもらえば、出演料はほとんどかかりません。", "en": "Then how about rethinking the stage guests? Last year we brought in two professional singers, but if the local high school band performs, there's almost no appearance fee.", "gaps": ["舞台", "地元", "出演料"]},
+        {"speaker": "A", "ja": "それはいい考えだね。地域とのつながりも深まるし。", "en": "That's a good idea. It would strengthen ties with the community, too.", "gaps": ["地域"]},
+        {"speaker": "B", "ja": "あとは、商店街の各店舗に協力金をお願いする方法もありますが…。", "en": "There's also the option of asking each shop in the arcade for a contribution...", "gaps": ["商店街", "店舗"]},
+        {"speaker": "A", "ja": "今年は景気がよくないから、お店に負担をかけるのは避けたいな。", "en": "Business is bad this year, so I'd rather not put a burden on the shops.", "gaps": ["景気", "負担"]},
+        {"speaker": "B", "ja": "わかりました。では、さっそく高校に問い合わせてみます。", "en": "Understood. Then I'll get in touch with the high school right away.", "gaps": ["高校"]}
+      ],
+      "questions": [
+        {"question": "What do they decide to cut back on?", "choices": ["The fireworks at the end of the night", "Paid professional acts on the stage", "Contributions from local shops", "The high school band's performance"], "answer": 1},
+        {"question": "Why does the chairman not want to ask the shops for money?", "choices": ["The shops are struggling this year", "The city subsidy will cover the gap", "The fireworks matter more to residents", "The high school band costs almost nothing"], "answer": 0},
+        {"question": "What will Yoshida do next?", "choices": ["Cancel the professional singers", "Visit each shop in the arcade", "Ask the city for a larger subsidy", "Contact the local high school"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n2-furniture-delivery",
+      "title": "Rescheduling a furniture delivery",
+      "jlpt": 2,
+      "topic": "work",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "林", "voice": "female", "age": "adult", "hint": "efficient office manager, a little pressed for time"},
+        {"id": "B", "name": "係員", "voice": "male", "age": "adult", "hint": "courteous call-center keigo, steady pace"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "もしもし、先日オフィス家具を注文した林ですが、配達の日を変更していただきたいんです。", "en": "Hello, this is Hayashi. I ordered office furniture the other day, and I'd like to change the delivery date.", "gaps": ["家具", "注文", "配達"]},
+        {"speaker": "B", "ja": "林様ですね。ご注文を確認いたします。机が十台と椅子が十脚、今週の金曜日の配達でございますね。", "en": "Ms. Hayashi, let me check your order. Ten desks and ten chairs, for delivery this Friday, correct?", "gaps": ["確認"]},
+        {"speaker": "A", "ja": "はい。実は、その日にビルの工事が入ることになりまして。", "en": "Yes. It turns out there's going to be construction work in the building that day.", "gaps": ["工事"]},
+        {"speaker": "B", "ja": "かしこまりました。最短ですと来週の火曜日になりますが。", "en": "Certainly. The earliest we can do is next Tuesday.", "gaps": ["最短"]},
+        {"speaker": "A", "ja": "火曜日は午前中でしたら大丈夫です。", "en": "Tuesday is fine if it's in the morning.", "gaps": ["午前中"]},
+        {"speaker": "B", "ja": "申し訳ございません。火曜日は午後の便しか空いておりません。午前中をご希望でしたら、木曜日になります。", "en": "I'm very sorry, on Tuesday only the afternoon slot is free. If you'd prefer a morning, it would be Thursday.", "gaps": ["便", "希望"]},
+        {"speaker": "A", "ja": "木曜ですか…。水曜から新しい社員が来るので、できればその前に…。", "en": "Thursday... New employees start on Wednesday, so if possible, before that...", "gaps": ["社員"]},
+        {"speaker": "B", "ja": "でしたら、火曜日の午後になります。ただ、組み立ての作業が夕方までかかる可能性がございます。", "en": "In that case, Tuesday afternoon. However, the assembly work may run into the evening.", "gaps": ["作業", "可能性"]},
+        {"speaker": "A", "ja": "それでも構いません。火曜の午後でお願いします。", "en": "That's fine. Tuesday afternoon, please.", "gaps": []},
+        {"speaker": "B", "ja": "かしこまりました。搬入の際は必ずどなたかにお立ち会いいただく必要がございます。それから、エレベーターの使用許可をビルの管理会社から取っておいていただけますか。", "en": "Certainly. Someone must be present when the items are brought in. Also, could you get permission to use the elevator from the building management company?", "gaps": ["搬入", "使用", "許可"]},
+        {"speaker": "A", "ja": "わかりました。管理会社にはこちらから連絡しておきます。", "en": "Understood. I'll contact the management company myself.", "gaps": ["管理", "連絡"]}
+      ],
+      "questions": [
+        {"question": "When will the furniture be delivered?", "choices": ["This Friday as first planned", "Next Tuesday morning", "Next Tuesday afternoon", "Next Thursday morning"], "answer": 2},
+        {"question": "Why does Hayashi turn down Thursday?", "choices": ["The building has construction work that day", "She wants the furniture before new staff arrive", "No one can be present on Thursday", "Only an afternoon slot is free on Thursday"], "answer": 1},
+        {"question": "What does Hayashi need to arrange before the delivery?", "choices": ["Permission to use the building's elevator", "A time to assemble the desks herself", "A postponement of the construction work", "A second call to confirm the time slot"], "answer": 0}
+      ]
+    },
+    {
+      "id": "n2-travel-cancellation-policy",
+      "title": "Understanding a tour's cancellation policy",
+      "jlpt": 2,
+      "topic": "travel",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "係員", "voice": "female", "age": "adult", "hint": "professional travel-agency keigo, precise"},
+        {"id": "B", "name": "岡本", "voice": "male", "age": "adult", "hint": "cautious, asks follow-up questions"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "こちらが北海道五日間のツアーのお見積もりでございます。", "en": "Here is the quote for the five-day Hokkaido tour.", "gaps": ["見積もり"]},
+        {"speaker": "B", "ja": "ありがとうございます。実は、仕事の都合で日程が変わるかもしれなくて、キャンセルの規定を伺いたいんですが。", "en": "Thank you. Actually, my dates might change because of work, so I'd like to ask about the cancellation rules.", "gaps": ["都合", "日程", "規定"]},
+        {"speaker": "A", "ja": "かしこまりました。出発の二十日前までは無料でございます。それ以降は旅行代金の二十パーセント、前日ですと四十パーセントかかります。", "en": "Certainly. Up to twenty days before departure it's free. After that it's twenty percent of the tour price, and the day before, forty percent.", "gaps": ["出発", "無料", "代金"]},
+        {"speaker": "B", "ja": "当日だと？", "en": "And on the day itself?", "gaps": []},
+        {"speaker": "A", "ja": "当日は五十パーセント、ご連絡なく参加されなかった場合は全額となります。", "en": "Fifty percent on the day, and the full amount if you don't show up without contacting us.", "gaps": ["当日", "全額"]},
+        {"speaker": "B", "ja": "結構かかりますね。", "en": "That adds up.", "gaps": ["結構"]},
+        {"speaker": "A", "ja": "ご心配でしたら、こちらの自由度の高いプランもございます。料金は一万円ほど高くなりますが、出発の三日前まで無料で日程を変更できます。", "en": "If you're concerned, we also have this more flexible plan. It costs about ten thousand yen more, but you can change your dates free of charge up to three days before departure.", "gaps": ["料金", "変更"]},
+        {"speaker": "B", "ja": "変更だけですか。キャンセルは？", "en": "Only changes? What about cancelling?", "gaps": []},
+        {"speaker": "A", "ja": "キャンセルの場合は、通常のプランと同じ扱いになります。", "en": "Cancellations are treated the same as with the regular plan.", "gaps": ["通常", "扱い"]},
+        {"speaker": "B", "ja": "うーん、行けなくなるというより、日にちがずれる可能性のほうが高いので、そちらのほうが安心ですね。そちらでお願いします。", "en": "Hmm, it's more likely my dates will shift than that I won't be able to go at all, so that one's safer. I'll take that plan.", "gaps": ["可能性", "安心"]}
+      ],
+      "questions": [
+        {"question": "How much would Okamoto pay if he cancelled the day before departure?", "choices": ["Twenty percent of the price", "Forty percent of the price", "Half of the price", "The whole price"], "answer": 1},
+        {"question": "Which plan does Okamoto choose, and why?", "choices": ["The regular plan, since it is ten thousand yen cheaper", "The regular plan, since cancelling is free until twenty days out", "The flexible plan, since it lets him cancel free until three days out", "The flexible plan, since his trip is more likely to move than be called off"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n2-senior-advice-mistake",
+      "title": "Handling a mistake with a client",
+      "jlpt": 2,
+      "topic": "work",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "前田", "voice": "male", "age": "adult", "hint": "calm senior colleague, supportive but serious"},
+        {"id": "B", "name": "川口", "voice": "female", "age": "young", "hint": "anxious, apologetic, speaks quickly"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "川口さん、ちょっといい？さっき、丸山商事の担当の方から電話があったんだけど。", "en": "Kawaguchi, got a minute? The person in charge at Maruyama Trading called a moment ago.", "gaps": ["担当"]},
+        {"speaker": "B", "ja": "はい…もしかして、昨日お送りした見積書のことでしょうか。", "en": "Yes... Is it about the estimate I sent yesterday, by any chance?", "gaps": ["見積書"]},
+        {"speaker": "A", "ja": "うん。金額の桁が一つ違っていたらしいんだ。", "en": "Yes. Apparently the amount was off by a digit.", "gaps": ["金額", "桁"]},
+        {"speaker": "B", "ja": "えっ、本当ですか。申し訳ありません。すぐに訂正したものをメールで送ります。", "en": "What, really? I'm so sorry. I'll email a corrected version right away.", "gaps": ["訂正"]},
+        {"speaker": "A", "ja": "待って。メールだけで済ませるのはよくないと思うよ。先方はかなりご立腹だったから。", "en": "Wait. I don't think an email alone will do. They sounded quite upset.", "gaps": ["先方", "立腹"]},
+        {"speaker": "B", "ja": "では、どうすれば…。", "en": "Then what should I...", "gaps": []},
+        {"speaker": "A", "ja": "電話で直接お詫びして、それから訂正したものを持って、午後にでも伺ったほうがいい。", "en": "Apologize directly by phone, then take the corrected version and visit them, this afternoon if possible.", "gaps": ["直接", "午後"]},
+        {"speaker": "B", "ja": "わかりました。課長にも報告したほうがいいですよね。", "en": "Understood. I should report it to the section chief as well, shouldn't I?", "gaps": ["課長", "報告"]},
+        {"speaker": "A", "ja": "もちろん。むしろ、それを一番にしないと。後でほかの人から耳に入るほうがまずいから。", "en": "Of course. In fact, that has to come first. It's worse if he hears about it from someone else later.", "gaps": ["一番"]},
+        {"speaker": "B", "ja": "はい。すぐに課長のところへ行ってきます。", "en": "Right. I'll go see the section chief now.", "gaps": []},
+        {"speaker": "A", "ja": "それと、今後は送る前に、誰かにもう一度確認してもらう習慣をつけるといいよ。", "en": "And from now on, make a habit of having someone check things again before you send them.", "gaps": ["今後", "確認", "習慣"]}
+      ],
+      "questions": [
+        {"question": "What will Kawaguchi do first?", "choices": ["Call the client to apologize", "Tell the section chief what happened", "Email a corrected estimate", "Visit the client with the new estimate"], "answer": 1},
+        {"question": "Why does Maeda think an email alone is not enough?", "choices": ["The client asked her to come in person", "The chief must approve the new estimate first", "The client was clearly angry about the error", "The corrected figures still need checking"], "answer": 2},
+        {"question": "What does Maeda advise her to do from now on?", "choices": ["Have a colleague double-check before sending", "Always deliver estimates in person", "Report every estimate to the section chief", "Send estimates by post instead of email"], "answer": 0}
+      ]
+    },
+    {
+      "id": "n1-remote-work-productivity",
+      "title": "Does remote work raise productivity?",
+      "jlpt": 1,
+      "topic": "work",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "藤井", "voice": "male", "age": "senior", "hint": "economist, deliberate, academic tone"},
+        {"id": "B", "name": "三浦", "voice": "female", "age": "adult", "hint": "company executive, confident, courteous"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "在宅勤務で生産性が上がったという調査結果は多いですが、私は一概には言えないと考えています。", "en": "There are many surveys saying working from home raised productivity, but I don't think it can be stated so simply.", "gaps": ["在宅勤務", "生産性", "一概に"]},
+        {"speaker": "B", "ja": "と、おっしゃいますと？", "en": "Meaning?", "gaps": []},
+        {"speaker": "A", "ja": "個人で完結する作業は確かに効率が上がる。しかし、偶然の会話から生まれる発想というものは、数字に表れにくいんです。", "en": "Tasks one completes alone certainly become more efficient. But the ideas that come out of chance conversations are hard to capture in numbers.", "gaps": ["完結", "効率", "発想"]},
+        {"speaker": "B", "ja": "おっしゃることは理解できます。ただ、わが社では通勤がなくなった分、社員の満足度が目に見えて上がりまして、辞める人も減りました。", "en": "I understand your point. But at our company, with commuting gone, staff satisfaction rose visibly, and fewer people have quit.", "gaps": ["通勤", "満足度"]},
+        {"speaker": "A", "ja": "それ自体は歓迎すべきことです。問題は、それが長期的に見て、新人の育成にどう響くかです。", "en": "That in itself is welcome. The question is how it affects the development of new hires in the long term.", "gaps": ["歓迎", "長期的", "育成"]},
+        {"speaker": "B", "ja": "そこは痛いところを突かれました。実際、入社一、二年目の社員からは、誰に何を聞けばいいのかわからない、という声も上がっています。", "en": "You've hit a sore spot there. In fact, employees in their first year or two have said they don't know whom to ask about what.", "gaps": ["入社"]},
+        {"speaker": "A", "ja": "でしょう。ですから私は、完全在宅か完全出社かという二者択一ではなく、目的に応じて使い分けるべきだと思うんです。", "en": "Precisely. That's why I think, rather than an either-or choice between fully remote and fully in the office, we should use each according to the purpose.", "gaps": ["二者択一", "目的"]},
+        {"speaker": "B", "ja": "その点では意見が一致しますね。私どもも、週二日は全員が顔を合わせる日を設けることを検討しております。", "en": "On that we agree. We're also considering setting two days a week when everyone meets face to face.", "gaps": ["一致", "検討"]},
+        {"speaker": "A", "ja": "大事なのは日数という形式ではなく、何のために集まるのかを共有することでしょうね。", "en": "What matters is not the formality of how many days, but sharing an understanding of why you're gathering.", "gaps": ["形式", "共有"]},
+        {"speaker": "B", "ja": "おっしゃるとおりです。出社すること自体が目的になってしまっては、本末転倒ですから。", "en": "Exactly. If coming into the office becomes the goal in itself, that's putting the cart before the horse.", "gaps": ["本末転倒"]}
+      ],
+      "questions": [
+        {"question": "What is Fujii's overall view of remote work?", "choices": ["It clearly raises productivity for every kind of work", "Staff should return to the office full-time", "Its value depends on the task, so both should be combined", "It only causes problems for newly hired staff"], "answer": 2},
+        {"question": "What weakness does Miura concede about her company?", "choices": ["Staff satisfaction has begun to decline", "Newer employees struggle to find guidance", "More employees have been leaving the company", "Productivity figures have not improved"], "answer": 1},
+        {"question": "What does Miura mean at the end?", "choices": ["Coming in must serve a purpose, not become the purpose", "Two office days a week is the ideal number", "Remote work has now gone too far", "Rules on attendance matter more than goals"], "answer": 0}
+      ]
+    },
+    {
+      "id": "n1-novelist-multiple-viewpoints",
+      "title": "A novelist on writing from many viewpoints",
+      "jlpt": 1,
+      "topic": "culture",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "聞き手", "voice": "female", "age": "adult", "hint": "literary interviewer, curious, polished"},
+        {"id": "B", "name": "氷室", "voice": "male", "age": "adult", "hint": "novelist, reflective, dry humor"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "新作では、一つの事件を五人の登場人物の視点から描いていらっしゃいますね。", "en": "In your new novel, you depict a single incident from the viewpoints of five characters.", "gaps": ["事件", "登場人物", "視点"]},
+        {"speaker": "B", "ja": "ええ。同じ出来事でも、立場が違えば見え方がまるで違う。それを読者に体験してほしかったんです。", "en": "Yes. Even the same event looks entirely different depending on where you stand. I wanted readers to experience that.", "gaps": ["出来事", "立場", "読者"]},
+        {"speaker": "A", "ja": "執筆の際、最も苦労された点は何でしょう。", "en": "What was the hardest part of writing it?", "gaps": ["執筆", "苦労"]},
+        {"speaker": "B", "ja": "語り手ごとに文体を変えることですね。十代の少女と年老いた元刑事が、同じ語彙で語るはずがありませんから。", "en": "Changing the style for each narrator. A teenage girl and an aging former detective would never speak with the same vocabulary.", "gaps": ["文体", "刑事", "語彙"]},
+        {"speaker": "A", "ja": "読者の中には、結局誰が真実を語っているのかわからない、という声もあるようですが。", "en": "Some readers say that in the end they couldn't tell who was telling the truth.", "gaps": ["真実"]},
+        {"speaker": "B", "ja": "それは、ある意味で狙いどおりなんです。答えを一つに決めてしまうと、読者が考える余地がなくなってしまう。", "en": "In a sense, that's exactly what I was aiming for. If I settled on one answer, there'd be no room left for readers to think.", "gaps": ["狙い", "余地"]},
+        {"speaker": "A", "ja": "あえて結末をぼかした、と。", "en": "So you deliberately blurred the ending.", "gaps": ["結末"]},
+        {"speaker": "B", "ja": "ぼかしたというより、委ねたと言ってほしいですね。作者の手を離れた時点で、物語は読者のものですから。", "en": "I'd rather you said I entrusted it. Once a story leaves the author's hands, it belongs to the readers.", "gaps": ["作者", "物語"]},
+        {"speaker": "A", "ja": "次回作も、同じ手法をお考えですか。", "en": "Are you planning to use the same technique in your next work?", "gaps": ["手法"]},
+        {"speaker": "B", "ja": "いえ、二番煎じになるのは避けたいので、次は一人の視点に徹して書くつもりです。", "en": "No. I want to avoid rehashing myself, so next time I intend to write strictly from a single viewpoint.", "gaps": ["二番煎じ", "視点"]}
+      ],
+      "questions": [
+        {"question": "Why did the novelist leave it unclear who was telling the truth?", "choices": ["He himself never decided which narrator was honest", "He wanted to leave interpretation open to readers", "The five narrators' styles could not be reconciled", "Readers had asked him for an open ending"], "answer": 1},
+        {"question": "What did he find most difficult while writing?", "choices": ["Giving each narrator a distinct voice", "Researching how detectives actually work", "Deciding how the incident should end", "Keeping the timeline of events consistent"], "answer": 0},
+        {"question": "What does he say about his next book?", "choices": ["It will again use five narrators", "It will continue the same incident", "It will have a clearly stated ending", "It will keep to one character's perspective"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n1-redevelopment-plan",
+      "title": "A resident questions a redevelopment plan",
+      "jlpt": 1,
+      "topic": "community",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "岸本", "voice": "male", "age": "adult", "hint": "city councillor, formal, conciliatory"},
+        {"id": "B", "name": "大川", "voice": "female", "age": "senior", "hint": "long-time resident, sharp, dignified"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "本日は、駅前の再開発計画について、住民の皆様のご意見を伺いたく参りました。", "en": "I've come today to hear residents' opinions on the station-front redevelopment plan.", "gaps": ["再開発", "住民", "意見"]},
+        {"speaker": "B", "ja": "率直に申し上げて、あの商店街を取り壊して高層マンションを建てるというのは、町の顔をなくすようなものだと思います。", "en": "To be frank, tearing down that shopping street to build high-rise condos is like erasing the face of the town.", "gaps": ["率直", "商店街", "高層"]},
+        {"speaker": "A", "ja": "お気持ちはよくわかります。ただ、商店街の空き店舗は三割を超えており、このままでは衰退の一途をたどるのは目に見えております。", "en": "I understand how you feel. But over thirty percent of the shops are vacant, and it's plain that, as things stand, it will only keep declining.", "gaps": ["店舗", "衰退", "一途"]},
+        {"speaker": "B", "ja": "空き店舗が増えたのは、市が長年、手をこまぬいてきた結果ではありませんか。", "en": "Isn't the rise in empty shops the result of the city sitting on its hands for years?", "gaps": ["長年", "結果"]},
+        {"speaker": "A", "ja": "耳の痛いご指摘です。反省すべき点は多々あると認識しております。", "en": "That criticism stings. I recognize there is much we should reflect on.", "gaps": ["指摘", "反省", "認識"]},
+        {"speaker": "B", "ja": "再開発そのものに反対しているわけではないんです。ただ、住民の声が計画に反映されていないように感じられて。", "en": "It's not that I oppose redevelopment itself. I just feel residents' voices aren't reflected in the plan.", "gaps": ["反対", "反映"]},
+        {"speaker": "A", "ja": "そこで、低層階に既存の店舗が優先的に入居できる区画を設ける案を、計画に盛り込むことを検討しております。", "en": "That's why we're considering adding to the plan an option for sections on the lower floors where existing shops can move in with priority.", "gaps": ["既存", "優先的", "区画"]},
+        {"speaker": "B", "ja": "家賃が今の何倍にもなるなら、絵に描いた餅ですよ。", "en": "If the rent there is several times what they pay now, that's pie in the sky.", "gaps": ["家賃"]},
+        {"speaker": "A", "ja": "おっしゃるとおりです。家賃の補助についても、来月の説明会までに具体的な案をお示しします。", "en": "You're quite right. We'll present a concrete proposal on rent support by next month's briefing session as well.", "gaps": ["補助", "説明会", "具体的"]},
+        {"speaker": "B", "ja": "では、その説明会で改めて判断させていただきます。", "en": "Then I'll make up my mind again at that session.", "gaps": ["判断"]}
+      ],
+      "questions": [
+        {"question": "What is the resident's position on the plan?", "choices": ["She opposes any change to the shopping street", "She accepts it if the towers are made lower", "She is open to it if residents have a real say", "She wants the city to buy up the empty shops"], "answer": 2},
+        {"question": "What is she implying with her remark about rent?", "choices": ["The drawings of the plan look unrealistic", "Priority spaces mean little if shops cannot afford them", "The city has made similar promises in the past", "The vacant shops will never be filled again"], "answer": 1},
+        {"question": "What will the councillor bring to next month's session?", "choices": ["A revised design without high-rise condos", "Survey results from local residents", "A list of shops that will move in", "A specific plan for helping with rents"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n1-study-reliability",
+      "title": "How far can we trust a study?",
+      "jlpt": 1,
+      "topic": "science",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "相沢", "voice": "female", "age": "adult", "hint": "journalist, brisk, probing"},
+        {"id": "B", "name": "上田", "voice": "male", "age": "adult", "hint": "researcher, careful, precise wording"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "先日、朝食を抜くと成績が下がるという研究が話題になりましたが、先生はあの結果をどうご覧になりますか。", "en": "Recently a study saying that skipping breakfast lowers grades got a lot of attention. How do you view those results?", "gaps": ["成績", "研究", "話題"]},
+        {"speaker": "B", "ja": "興味深い結果ではありますが、あれをもって因果関係があるとまでは言えないでしょうね。", "en": "They're interesting results, but on that basis alone you can't go so far as to claim cause and effect.", "gaps": ["因果関係"]},
+        {"speaker": "A", "ja": "と言いますと？", "en": "What do you mean?", "gaps": []},
+        {"speaker": "B", "ja": "朝食をとる子どもの家庭は、そもそも生活習慣が整っている傾向にある。成績を左右しているのは、朝食そのものではなく、家庭の環境かもしれないわけです。", "en": "Families whose children eat breakfast tend to have orderly routines to begin with. What's influencing grades may be the home environment, not breakfast itself.", "gaps": ["生活習慣", "傾向", "左右"]},
+        {"speaker": "A", "ja": "なるほど。ただ、対象者は二千人と、かなり多かったようですが。", "en": "I see. But the sample was quite large, two thousand people.", "gaps": ["対象"]},
+        {"speaker": "B", "ja": "数が多ければ信頼できるというのは、よくある誤解です。偏った集団をいくら集めても、偏りは消えません。", "en": "That big numbers make a study reliable is a common misconception. However many people you gather from a skewed group, the skew doesn't disappear.", "gaps": ["誤解", "集団", "偏り"]},
+        {"speaker": "A", "ja": "では、報道する側としては、どう伝えるべきなのでしょう。", "en": "Then how should we in the media report it?", "gaps": ["報道"]},
+        {"speaker": "B", "ja": "関連があることと原因であることを混同しないことです。見出しで断定してしまうと、読者はそれを事実として受け止めてしまいますから。", "en": "Don't confuse being related with being the cause. If a headline states it as certain, readers will take it as fact.", "gaps": ["混同", "見出し", "断定"]},
+        {"speaker": "A", "ja": "耳が痛いですね。うちの記事も、まさにそういう見出しでした。", "en": "That hits home. Our article had exactly that kind of headline.", "gaps": ["記事"]},
+        {"speaker": "B", "ja": "責めているわけではありません。ただ、一つの研究で結論を急がず、追試の結果を待つ姿勢が大切だと思います。", "en": "I'm not blaming you. I just think it's important not to rush to conclusions from one study, and to wait for replications.", "gaps": ["結論", "追試", "姿勢"]}
+      ],
+      "questions": [
+        {"question": "What is the researcher's main criticism of the study's conclusion?", "choices": ["The link may come from family background rather than breakfast", "Two thousand participants were too few to be reliable", "Breakfast was shown to have no effect on grades", "The researchers had manipulated their data"], "answer": 0},
+        {"question": "What does the researcher say about the large number of participants?", "choices": ["It makes the findings fairly trustworthy", "It proves breakfast is related to grades", "It cannot correct a biased sample", "It should have been ten times larger"], "answer": 2},
+        {"question": "Why does the journalist say the comment hits home?", "choices": ["The researcher criticized her by name", "She herself often skips breakfast", "She had helped design the original study", "Her paper had presented the finding as certain"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n1-controversial-artwork",
+      "title": "Displaying a controversial painting",
+      "jlpt": 1,
+      "topic": "culture",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "学芸員", "voice": "female", "age": "adult", "hint": "museum curator, highly deferential keigo, tactful"},
+        {"id": "B", "name": "桐生", "voice": "male", "age": "senior", "hint": "donor, proud, guarded"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "桐生様、このたびはご寄贈いただいた作品の展示方法について、ご相談させていただきたく存じます。", "en": "Mr. Kiryu, I'd like to consult you about how we display the work you so kindly donated.", "gaps": ["寄贈", "作品", "展示"]},
+        {"speaker": "B", "ja": "何か問題でもありましたか。", "en": "Has there been some problem?", "gaps": []},
+        {"speaker": "A", "ja": "実は、戦時中の場面を描いたあの絵について、一部のお客様から不快だというお声が寄せられておりまして。", "en": "The fact is, some visitors have told us they find the painting of a wartime scene upsetting.", "gaps": ["場面", "不快"]},
+        {"speaker": "B", "ja": "不快、ですか。あの絵は、戦争の悲惨さを後世に伝えるために描かれたものです。見たくないものを隠すようなまねは、描いた父も望まないでしょう。", "en": "Upsetting? That painting was made to convey the horror of war to future generations. My father, who painted it, would never want it hidden just because people don't like to look.", "gaps": ["悲惨", "後世"]},
+        {"speaker": "A", "ja": "ごもっともでございます。私どもも、展示を取りやめるつもりは毛頭ございません。", "en": "You are quite right. We have not the slightest intention of withdrawing it.", "gaps": ["毛頭"]},
+        {"speaker": "B", "ja": "では、どうなさるおつもりですか。", "en": "Then what do you intend to do?", "gaps": []},
+        {"speaker": "A", "ja": "作品の隣に、制作当時の時代背景と作者の意図を説明するパネルを設け、入口にも注意書きを掲示してはどうかと考えております。", "en": "We're thinking of placing a panel beside the work explaining the historical background and the artist's intent, and posting a notice at the entrance.", "gaps": ["背景", "意図", "掲示"]},
+        {"speaker": "B", "ja": "説明を加えることで、かえって見る人の解釈を縛ってしまうのではありませんか。", "en": "Won't adding an explanation actually constrain how viewers interpret it?", "gaps": ["解釈"]},
+        {"speaker": "A", "ja": "そのご懸念はもっともです。ですので、解説は事実関係にとどめ、評価は見る方に委ねる形にしたいと存じます。", "en": "That concern is well founded. So we would keep the text to the facts and leave judgment to the viewer.", "gaps": ["懸念", "解説", "評価"]},
+        {"speaker": "B", "ja": "それならば、異存はありません。文面は事前に拝見できますか。", "en": "In that case, I have no objection. May I see the wording beforehand?", "gaps": ["異存", "文面", "事前"]},
+        {"speaker": "A", "ja": "もちろんでございます。来週中に案をお送りいたします。", "en": "Certainly. We will send you a draft within next week.", "gaps": []}
+      ],
+      "questions": [
+        {"question": "What does the curator propose?", "choices": ["Moving the painting to a less visible room", "Keeping it on view with factual context and a notice", "Adding the curator's own interpretation beside it", "Returning the painting to the donor's family"], "answer": 1},
+        {"question": "What is the donor's worry about the explanatory panel?", "choices": ["It might tell viewers what to think", "It might draw attention away from the painting", "It might upset visitors even more", "It might misstate his father's intentions"], "answer": 0},
+        {"question": "What does the donor ask for before agreeing fully?", "choices": ["A meeting with the visitors who complained", "A larger space for his father's work", "Removal of the notice at the entrance", "A chance to review the text in advance"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n1-four-day-week",
+      "title": "Negotiating a four-day work week",
+      "jlpt": 1,
+      "topic": "work",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "神田", "voice": "male", "age": "senior", "hint": "executive, composed, guarded"},
+        {"id": "B", "name": "須藤", "voice": "female", "age": "adult", "hint": "union representative, firm, well-prepared"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "週休三日制の導入については、会社としても前向きに考えております。", "en": "As a company, we are also considering the introduction of a three-day weekend positively.", "gaps": ["週休", "導入", "前向き"]},
+        {"speaker": "B", "ja": "ありがとうございます。ただ、確認させていただきたいのは賃金の扱いです。", "en": "Thank you. What I'd like to confirm, though, is how wages will be handled.", "gaps": ["賃金", "扱い"]},
+        {"speaker": "A", "ja": "労働時間が二割減る以上、給与もそれに応じて調整せざるを得ない、というのが経営側の考えです。", "en": "Management's view is that since working hours fall by twenty percent, pay has to be adjusted accordingly.", "gaps": ["労働時間", "給与", "調整"]},
+        {"speaker": "B", "ja": "それでは実質的な賃下げです。組合としては到底受け入れられません。", "en": "That is effectively a pay cut. The union cannot possibly accept that.", "gaps": ["実質的", "組合", "到底"]},
+        {"speaker": "A", "ja": "お気持ちはわかります。しかし、休みが増えて給与が据え置きでは、コストばかりが膨らんでしまう。", "en": "I understand. But with more days off and pay left unchanged, costs alone would balloon.", "gaps": ["据え置き"]},
+        {"speaker": "B", "ja": "試行した他社の例では、業務の無駄を見直したことで、生産性がむしろ上がったという報告もあります。", "en": "Other companies that tried it have reported that productivity actually rose because they cut out wasteful work.", "gaps": ["試行", "業務", "生産性"]},
+        {"speaker": "A", "ja": "それは承知しております。ただ、うちのように顧客対応が中心の部署では、そう一筋縄ではいかない。", "en": "I'm aware of that. But in departments like ours that center on dealing with customers, it isn't so straightforward.", "gaps": ["顧客", "一筋縄"]},
+        {"speaker": "B", "ja": "でしたら、まず一部の部署で半年間試行し、生産性が維持できれば給与は据え置く、という形ではいかがでしょう。", "en": "Then how about a six-month trial in some departments first, with pay unchanged if productivity is maintained?", "gaps": ["部署", "維持"]},
+        {"speaker": "A", "ja": "なるほど、結果を見てから判断するということですね。それなら取締役会にも諮りやすい。", "en": "I see, so we decide after seeing the results. That would be easier to put to the board.", "gaps": ["判断", "取締役会"]},
+        {"speaker": "B", "ja": "ただし、評価の基準は労使で事前に合意しておくことが条件です。", "en": "On condition, however, that labor and management agree on the evaluation criteria beforehand.", "gaps": ["基準", "労使", "合意"]},
+        {"speaker": "A", "ja": "異論はありません。次回までに、試行の対象となる部署の案をお持ちします。", "en": "No objection. By next time, I'll bring a proposal for which departments the trial would cover.", "gaps": ["異論", "対象"]}
+      ],
+      "questions": [
+        {"question": "What arrangement do the two sides reach?", "choices": ["A company-wide switch with a twenty percent pay cut", "A trial limited to customer-facing departments only", "A partial trial, with pay kept if output holds up", "A delay until more companies have tried it"], "answer": 2},
+        {"question": "Why is the executive reluctant to keep pay unchanged?", "choices": ["Other firms saw productivity fall", "The board has already rejected the idea", "The union is demanding a raise as well", "It would raise costs with nothing to offset them"], "answer": 3},
+        {"question": "What condition does the union representative attach?", "choices": ["How the trial is judged must be agreed in advance", "The trial must include every department", "Pay must stay the same whatever the results", "The board must approve the plan by next time"], "answer": 0}
+      ]
+    },
+    {
+      "id": "n1-informing-patient-family",
+      "title": "Whether to tell the patient's family",
+      "jlpt": 1,
+      "topic": "health",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "早川", "voice": "female", "age": "young", "hint": "junior doctor, earnest, troubled"},
+        {"id": "B", "name": "石田", "voice": "male", "age": "adult", "hint": "senior physician, calm, thoughtful"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "石田先生、三〇二号室の森本さんのご家族への説明の件なんですが。", "en": "Dr. Ishida, it's about explaining things to the family of Mr. Morimoto in room 302.", "gaps": ["家族", "説明"]},
+        {"speaker": "B", "ja": "ああ、検査の結果が出たんだったね。", "en": "Ah, the test results came back, didn't they.", "gaps": ["検査", "結果"]},
+        {"speaker": "A", "ja": "はい。予想以上に進行していました。ご本人は、家族にはまだ言わないでほしいとおっしゃっていて…。", "en": "Yes. It had progressed further than expected. And he himself has asked that his family not be told yet...", "gaps": ["予想", "進行", "本人"]},
+        {"speaker": "B", "ja": "うーん、それは悩ましいね。本人の意思を尊重するのが原則ではあるけれど。", "en": "Hmm, that's a difficult one. Respecting the patient's wishes is the principle, of course.", "gaps": ["意思", "尊重", "原則"]},
+        {"speaker": "A", "ja": "ただ、今後の治療方針を決めるには、ご家族の協力が欠かせません。奥様は毎日いらしていますし、いずれ気づかれると思うんです。", "en": "But we can't decide on the course of treatment without the family's cooperation. His wife comes every day, and I think she'll notice sooner or later.", "gaps": ["治療", "方針", "協力"]},
+        {"speaker": "B", "ja": "そうだね。隠し通そうとして、かえって信頼関係を損なうこともある。", "en": "True. Trying to keep it hidden can end up damaging trust.", "gaps": ["信頼関係", "損なう"]},
+        {"speaker": "A", "ja": "では、ご家族にお伝えしてもよろしいでしょうか。", "en": "Then may I go ahead and tell the family?", "gaps": []},
+        {"speaker": "B", "ja": "いや、それは早計だよ。まずはもう一度ご本人と話して、なぜ伝えたくないのか、その理由に耳を傾けるべきだろう。", "en": "No, that would be premature. First you should talk with him again and really listen to why he doesn't want them told.", "gaps": ["早計", "理由"]},
+        {"speaker": "A", "ja": "ご家族に心配をかけたくない、ということなのかもしれませんね。", "en": "Perhaps he just doesn't want to worry his family.", "gaps": ["心配"]},
+        {"speaker": "B", "ja": "それなら、伝え方次第で気持ちが変わる可能性もある。どう伝えるかを一緒に考えましょう、と提案してみたらどうかな。", "en": "In that case, how it's told might change his mind. Why not suggest to him that you think together about how to tell them?", "gaps": ["次第", "可能性", "提案"]},
+        {"speaker": "A", "ja": "わかりました。明日の回診の後、お時間をいただいてお話ししてみます。", "en": "Understood. After rounds tomorrow, I'll ask for some of his time and talk with him.", "gaps": ["回診"]}
+      ],
+      "questions": [
+        {"question": "What does Dr. Ishida advise the junior doctor to do?", "choices": ["Tell the wife today before she finds out", "Keep the results from the family for now", "Hear out the patient's reasons before deciding", "Let the wife decide what the patient is told"], "answer": 2},
+        {"question": "Why does Dr. Hayakawa lean toward telling the family?", "choices": ["Treatment decisions will need their involvement", "The patient has since changed his mind", "Hospital rules require the family to be told", "The wife has asked her directly about the results"], "answer": 0},
+        {"question": "What does Dr. Ishida suggest might change the patient's mind?", "choices": ["Being shown the full test results", "Hearing that his wife already suspects", "Being told it is the hospital's policy", "Planning together how the news is shared"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n1-plagiarism-or-influence",
+      "title": "Plagiarism or influence?",
+      "jlpt": 1,
+      "topic": "school",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "杉山", "voice": "female", "age": "senior", "hint": "professor, firm yet warm, measured"},
+        {"id": "B", "name": "野口", "voice": "male", "age": "young", "hint": "graduate student, defensive at first, then humbled"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "野口君、提出してくれた論文だけど、第三章の一部が、ある先行研究とかなり似ていたの。", "en": "Noguchi, about the paper you submitted: part of chapter three closely resembled an earlier study.", "gaps": ["提出", "論文"]},
+        {"speaker": "B", "ja": "えっ…。その論文は確かに読みましたが、写したつもりはありません。", "en": "What... I did read that paper, but I never meant to copy it.", "gaps": []},
+        {"speaker": "A", "ja": "疑っているわけじゃないのよ。ただ、構成も論の運び方も酷似していて、第三者が見たら盗用と受け取られかねない。", "en": "I'm not accusing you. But the structure and the flow of the argument are strikingly similar, and a third party could well take it as plagiarism.", "gaps": ["構成", "酷似", "盗用"]},
+        {"speaker": "B", "ja": "影響を受けたのは事実です。でも、学問は先人の成果の上に成り立つものですよね。", "en": "It's true I was influenced by it. But scholarship is built on the achievements of those who came before, isn't it?", "gaps": ["影響", "学問", "成果"]},
+        {"speaker": "A", "ja": "その通り。だからこそ、どこまでが先人の考えで、どこからが自分の考えなのか、その境界を明示するのが最低限の礼儀なの。", "en": "Exactly. That's why making clear where their ideas end and yours begin is the minimum courtesy.", "gaps": ["境界", "明示", "礼儀"]},
+        {"speaker": "B", "ja": "引用の仕方が足りなかった、ということでしょうか。", "en": "So you mean my citations were insufficient?", "gaps": ["引用"]},
+        {"speaker": "A", "ja": "最後に出典を一か所示すだけでは不十分ね。影響を受けた部分は、その都度明記すること。それと、あなた自身の主張がまだ弱い。", "en": "Listing the source once at the end isn't enough. Wherever you drew on it, state it each time. And your own argument is still weak.", "gaps": ["出典", "明記", "主張"]},
+        {"speaker": "B", "ja": "先行研究に頼りすぎていた、と。", "en": "So I leaned too heavily on the earlier research.", "gaps": []},
+        {"speaker": "A", "ja": "ええ。巨人の肩に乗るのはいいけれど、乗ったまま何も見ていないのでは意味がないでしょう。", "en": "Yes. Standing on the shoulders of giants is fine, but it's pointless if you don't look at anything from up there.", "gaps": ["巨人", "意味"]},
+        {"speaker": "B", "ja": "耳が痛いです。自分なりの視点を加えて、書き直します。", "en": "That stings. I'll rewrite it with a perspective of my own.", "gaps": ["視点"]},
+        {"speaker": "A", "ja": "締め切りは延ばすから、焦らずにね。", "en": "I'll extend the deadline, so don't rush.", "gaps": ["締め切り"]}
+      ],
+      "questions": [
+        {"question": "What is the professor's main concern?", "choices": ["He deliberately copied another scholar's work", "He should not rely on earlier studies at all", "He blurred the line between others' ideas and his own", "He listed his sources in the wrong format"], "answer": 2},
+        {"question": "What does the professor mean with the image of giants' shoulders?", "choices": ["Building on others is only worthwhile if you add your own view", "Great scholars should be quoted as often as possible", "Students should first master the most famous studies", "Earlier researchers deserve more credit than new ones"], "answer": 0},
+        {"question": "What will happen with the paper's deadline?", "choices": ["It stays the same as before", "He must resubmit by tomorrow", "It depends on the rewritten chapter", "He will be given more time"], "answer": 3}
+      ]
+    },
+    {
+      "id": "n1-old-wooden-house",
+      "title": "Saving an old wooden house",
+      "jlpt": 1,
+      "topic": "home",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "宮本", "voice": "male", "age": "adult", "hint": "architect, appreciative, candid"},
+        {"id": "B", "name": "千葉", "voice": "female", "age": "adult", "hint": "homeowner, sentimental but practical"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "拝見しましたが、築九十年とは思えないほど、柱も梁もしっかりしていますね。", "en": "I've had a look, and the pillars and beams are so solid you'd never think the house was ninety years old.", "gaps": ["柱", "梁"]},
+        {"speaker": "B", "ja": "祖父が建てた家なんです。できれば残したいんですが、冬は寒いし、地震も心配で。", "en": "My grandfather built it. I'd like to keep it if I can, but it's cold in winter, and I worry about earthquakes.", "gaps": ["祖父", "地震"]},
+        {"speaker": "A", "ja": "おっしゃるとおり、今の耐震基準は満たしていません。ただ、壁に補強を入れれば、構造はかなり改善できます。", "en": "As you say, it doesn't meet current earthquake standards. But reinforcing the walls would improve the structure considerably.", "gaps": ["耐震", "基準", "補強"]},
+        {"speaker": "B", "ja": "建て替えたほうが結局は安くつく、と言う業者さんもいたんですが…。", "en": "One contractor told me it would be cheaper in the end to tear it down and rebuild...", "gaps": ["業者"]},
+        {"speaker": "A", "ja": "費用だけを見れば、それも一理あります。建て替えなら、断熱も耐震も一から最新にできますから。", "en": "Looking at cost alone, there's something to that. With a rebuild, you could make the insulation and earthquake resistance state of the art from scratch.", "gaps": ["費用", "一理", "断熱"]},
+        {"speaker": "B", "ja": "でも、この家の雰囲気は、一度壊したら二度と取り戻せませんよね。", "en": "But once it's torn down, the atmosphere of this house can never be brought back.", "gaps": ["雰囲気"]},
+        {"speaker": "A", "ja": "ええ。この古材は、今では手に入らない質のものです。私としては、外観と骨組みを生かしつつ、内部に断熱と水回りの改修を施す案をお勧めしたい。", "en": "Indeed. This old timber is of a quality you can't get anymore. My recommendation would be to keep the exterior and the framework while insulating the interior and renovating the kitchen and bathroom.", "gaps": ["外観", "骨組み", "改修"]},
+        {"speaker": "B", "ja": "工期はどのくらいになりますか。", "en": "How long would the work take?", "gaps": ["工期"]},
+        {"speaker": "A", "ja": "建て替えより二か月ほど長くかかりますし、解体してみないとわからない部分もあるので、予算には一割ほど余裕を見ておいていただきたいです。", "en": "About two months longer than a rebuild, and there are parts we won't know about until we open things up, so I'd ask you to allow around ten percent extra in the budget.", "gaps": ["解体", "予算", "余裕"]},
+        {"speaker": "B", "ja": "わかりました。多少のことは覚悟の上です。その方向で、図面をお願いできますか。", "en": "Understood. I'm prepared for some of that. Could you draw up plans along those lines?", "gaps": ["覚悟", "図面"]}
+      ],
+      "questions": [
+        {"question": "What does the owner finally decide?", "choices": ["To rebuild the house to modern standards", "To reinforce the walls and change nothing else", "To rebuild using the old timber in a new design", "To keep the shell and modernize the inside"], "answer": 3},
+        {"question": "Why does the architect ask her to set aside extra money?", "choices": ["The work will take two months longer", "Hidden problems may appear once work begins", "Old timber of that quality is very expensive", "Insulation costs are expected to rise"], "answer": 1},
+        {"question": "What is the architect's view of rebuilding?", "choices": ["It makes financial sense but loses something irreplaceable", "It is the only way to make the house safe", "It would cost more than the renovation in the end", "It would take longer because of the old timber"], "answer": 0}
+      ]
+    },
+    {
+      "id": "n1-joint-statement-wording",
+      "title": "Negotiating the wording of a joint statement",
+      "jlpt": 1,
+      "topic": "politics",
+      "style": "scripted",
+      "speakers": [
+        {"id": "A", "name": "アルテア代表", "voice": "male", "age": "senior", "hint": "senior diplomat, formal, precise, unhurried"},
+        {"id": "B", "name": "ベルナ代表", "voice": "female", "age": "adult", "hint": "diplomat, courteous, quick to propose alternatives"}
+      ],
+      "lines": [
+        {"speaker": "A", "ja": "共同声明の第二項ですが、我が国としては「深い懸念を表明する」という表現は受け入れがたいと申し上げざるを得ません。", "en": "On paragraph two of the joint statement, I must say that my country finds the phrase 'express deep concern' difficult to accept.", "gaps": ["共同声明", "懸念", "表現"]},
+        {"speaker": "B", "ja": "貴国のお立場は承知しております。ただ、我が国の世論を考えますと、懸念にまったく触れない文面では国内の理解を得られません。", "en": "We understand your position. However, given public opinion in my country, wording that doesn't mention concern at all would not win understanding at home.", "gaps": ["世論", "国内", "理解"]},
+        {"speaker": "A", "ja": "「懸念」という言葉自体を排除せよとまでは申しておりません。「深い」という修飾が、特定の国を非難しているかのような印象を与えかねない、ということです。", "en": "I am not saying the word 'concern' itself must go. The issue is that the modifier 'deep' could give the impression of condemning a particular country.", "gaps": ["排除", "非難", "印象"]},
+        {"speaker": "B", "ja": "なるほど。では「深い」を削る代わりに、「双方が」という主語を加えるのはいかがでしょう。「双方が懸念を共有する」とすれば、一方的な非難とは読めません。", "en": "I see. Then instead of 'deep', how about adding 'both sides' as the subject? If it says 'both sides share concern', it can't be read as one-sided condemnation.", "gaps": ["双方", "主語", "一方的"]},
+        {"speaker": "A", "ja": "検討に値する案ですね。ただ、「共有する」ですと、我が国にも責任の一端があると認めたと受け取られる恐れがあります。", "en": "That proposal deserves consideration. However, 'share' risks being taken to mean we've admitted our country bears part of the responsibility.", "gaps": ["検討", "責任", "一端"]},
+        {"speaker": "B", "ja": "では、「双方が懸念に留意する」ではいかがでしょう。", "en": "Then how about 'both sides take note of the concern'?", "gaps": ["留意"]},
+        {"speaker": "A", "ja": "「留意する」であれば、踏み込みすぎず、かといって何も言っていないわけでもない。落としどころとしては妥当だと考えます。", "en": "'Take note' neither goes too far nor says nothing at all. As a compromise, I think it's reasonable.", "gaps": ["落としどころ", "妥当"]},
+        {"speaker": "B", "ja": "ありがとうございます。第三項の経済協力の部分は、原案どおりでよろしいですか。", "en": "Thank you. Is the economic cooperation section in paragraph three all right as originally drafted?", "gaps": ["協力", "原案"]},
+        {"speaker": "A", "ja": "そちらは異存ございません。ただし、最終的には本国の了承を得る必要がありますので、正式なお返事は明朝までお待ちください。", "en": "We have no objection there. However, in the end we need our government's approval, so please wait until tomorrow morning for a formal reply.", "gaps": ["本国", "了承", "正式"]},
+        {"speaker": "B", "ja": "承知いたしました。では、今夜中に修正案をお送りします。", "en": "Understood. Then we'll send the revised draft tonight.", "gaps": ["修正"]}
+      ],
+      "questions": [
+        {"question": "Which wording do the two diplomats settle on for now?", "choices": ["The statement expresses deep concern", "Both sides share the concern", "Both sides take note of the concern", "The concern is left out entirely"], "answer": 2},
+        {"question": "Why does Altea's representative reject the word for 'share'?", "choices": ["It sounds like condemning one particular country", "It could suggest his country accepts some blame", "It would not satisfy public opinion in Berna", "It did not appear in the original draft"], "answer": 1},
+        {"question": "What still has to happen before the text is final?", "choices": ["Altea's government must approve it", "Paragraph three must be rewritten", "Berna must consult its public", "Both sides must meet again tonight"], "answer": 0}
+      ]
+    }
+  ]
+}

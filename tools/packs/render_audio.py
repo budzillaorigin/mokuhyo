@@ -24,6 +24,14 @@ Word items (pitch, minimal pairs) are spoken from their kana reading, so the eng
 their accent is set explicitly: the accent phrase's `accent` is edited, pitches are recomputed with /mora_pitch,
 and if the engine's contour still doesn't show the Tokyo high/low pattern the mora pitches are replaced by a
 stylized contour that does (D-093). The accent is therefore guaranteed, not predicted.
+
+Phase 12 content (DECISIONS D-222, D-224):
+- Natural-style dialogues are ordinary `dialogues` clips: the line text already includes the fillers (their
+  {brace} markup is stripped by build_practice.py), so they are spoken. Each line is its own clip, overlaps
+  included; the app starts an `overlap` line before the previous clip ends. Two speakers of the same gender get
+  distinct voices from the allocator as before; speaker `hint`s are for reviewers and aren't used here.
+- Drill sets add no set: their model answers point at existing keys (grammar/<point>/0, dialogue/<id>/<ord>), and
+  the English cues are spoken with system TTS. Rendering `grammar` (default 2 per point) and `dialogues` covers them.
 """
 
 from __future__ import annotations

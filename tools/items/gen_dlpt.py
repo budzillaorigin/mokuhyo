@@ -32,14 +32,16 @@ BANDS_PATH = HERE / "ilr_bands.json"
 BLUEPRINTS_PATH = HERE / "jlpt_blueprints.json"
 
 EXAMS = ("JLPT", "DLPT_READING", "DLPT_LISTENING")
-DLPT_LEVELS = ("0+", "1", "1+", "2", "2+", "3")
+DLPT_LEVELS = ("0+", "1", "1+", "2", "2+", "3", "3+", "4")
+# The upper range (BRIEF_V2 G-08): own banks, 2–4 items per passage, restricted text types.
+UPPER_LEVELS = ("3+", "4")
 JLPT_LEVELS = ("N5", "N4", "N3", "N2", "N1")
 DLPT_TYPES = ("main_idea", "detail", "inference", "purpose", "vocabulary_in_context", "tone")
 VOICES = ("female", "male")
 ID_PREFIX = {"DLPT_READING": "dr", "DLPT_LISTENING": "dl"}
 # Ids write "+" as "p" so they stay safe in file names and URLs: dr-2p-editorial-001, dl-0p-announcement-002.
-LEVEL_SLUG = {"0+": "0p", "1": "1", "1+": "1p", "2": "2", "2+": "2p", "3": "3"}
-DLPT_PASSAGE_ID = re.compile(r"^(dr|dl)-(0p|1p|2p|0|1|2|3)-([a-z]+)-(\d{3})$")
+LEVEL_SLUG = {"0+": "0p", "1": "1", "1+": "1p", "2": "2", "2+": "2p", "3": "3", "3+": "3p", "4": "4"}
+DLPT_PASSAGE_ID = re.compile(r"^(dr|dl)-(0p|1p|2p|3p|0|1|2|3|4)-([a-z]+)-(\d{3})$")
 ITEM_ID = re.compile(r"^(?P<passage>.+)-q(?P<n>\d+)$")
 BANK_ID = re.compile(r"^(user:)?[a-z0-9][a-z0-9-]*$")
 
@@ -295,8 +297,11 @@ def validate_bank(
             report.error(where, "DLPT items need a passageId")
 
     for pid, n in per_passage.items():
-        if by_id[pid].get("exam") in ID_PREFIX and not 1 <= n <= 4:
-            report.warn(f"{name} {pid}", f"has {n} items (expected 1–4)")
+        p = by_id[pid]
+        lo = 2 if p.get("level") in UPPER_LEVELS else 1
+        if p.get("exam") in ID_PREFIX and not lo <= n <= 4:
+            report.warn(f"{name} {pid}", f"has {n} items (expected {lo}–4)")
+        _check_upper(f"{name} {pid}", p, report)
 
     for (exam, level), (longest, total) in sorted(longest_key_stats(items).items()):
         if total >= LONGEST_KEY_MIN_ITEMS and longest / total > LONGEST_KEY_MAX_SHARE:
@@ -305,6 +310,17 @@ def validate_bank(
                 f"the key is the longest choice in {longest}/{total} items; lengthen distractors "
                 f"(test-wise learners pick the longest option; keep it under {LONGEST_KEY_MAX_SHARE:.0%})",
             )
+
+
+def _check_upper(where: str, passage: dict, report: Report) -> None:
+    """ILR 3+/4 passages: only the upper-range text types (argument, academic and literary register)."""
+    level, exam = passage.get("level"), passage.get("exam")
+    if level not in UPPER_LEVELS or exam not in ID_PREFIX:
+        return
+    kind = "listening" if exam == "DLPT_LISTENING" else "reading"
+    allowed = TEXT_TYPES[kind][level]
+    if passage.get("textType") not in allowed:
+        report.warn(where, f"ILR {level} {kind} text type should be one of {allowed}")
 
 
 # With 4 choices a key that is uniquely longest ~25% of the time gives nothing away.
@@ -412,23 +428,32 @@ LEVEL_GUIDE = {
     "inference matter; beginning of abstract discussion.",
     "3": "Editorials, argumentative essays, hypotheses and abstract topics; idiom, nuance, implied meaning and "
     "the writer's tone must be understood.",
+    "3+": "Dense editorials, academic essays and literary prose: tightly argued, allusive, with concessions, "
+    "irony and qualifications the reader must weigh; much of the stance is implied rather than stated.",
+    "4": "Highly abstract or specialized argument, literary and philosophical prose, cultural allusion, "
+    "four-character idioms and classical echoes; the reader must follow the writer's reasoning, register "
+    "shifts and nuance as an educated native reader would.",
 }
 TEXT_TYPES = {
     "reading": {
         "0+": ["sign", "notice", "schedule"],
         "1": ["notice", "schedule", "email", "narrative"],
         "1+": ["email", "letter", "notice", "narrative", "announcement"],
-        "2": ["news", "instructions", "announcement", "report"],
-        "2+": ["news", "column", "report", "editorial"],
-        "3": ["editorial", "essay", "column"],
+        "2": ["news", "instructions", "announcement", "report", "liaison"],
+        "2+": ["news", "column", "report", "editorial", "liaison"],
+        "3": ["editorial", "essay", "column", "liaison"],
+        "3+": ["editorial", "academic", "essay", "literary", "commentary"],
+        "4": ["editorial", "academic", "essay", "literary", "commentary"],
     },
     "listening": {
         "0+": ["announcement", "voicemail"],
         "1": ["announcement", "voicemail", "conversation"],
         "1+": ["conversation", "voicemail", "announcement"],
-        "2": ["broadcast", "conversation", "interview", "briefing"],
-        "2+": ["interview", "broadcast", "discussion"],
-        "3": ["discussion", "interview", "commentary"],
+        "2": ["broadcast", "conversation", "interview", "briefing", "liaison"],
+        "2+": ["interview", "broadcast", "discussion", "liaison"],
+        "3": ["discussion", "interview", "commentary", "briefing"],
+        "3+": ["lecture", "discussion", "commentary", "interview"],
+        "4": ["lecture", "discussion", "commentary", "speech"],
     },
 }
 

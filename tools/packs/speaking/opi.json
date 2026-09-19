@@ -12,16 +12,21 @@
     "People who are used to learners often have trouble understanding me."
    ],
    "questions": [
-    ["WARM_UP", "こんにちは。お名前は？", "Hello. What is your name?", "Accept a one-word answer; model a full sentence back."],
-    ["WARM_UP", "お元気ですか。", "How are you?", "Memorized response expected."],
-    ["LEVEL_CHECK", "どこから来ましたか。", "Where are you from?", "Country name alone is fine at this level."],
-    ["LEVEL_CHECK", "今日は何曜日ですか。", "What day is it today?", "Checks memorized vocabulary."],
-    ["LEVEL_CHECK", "これは何ですか。", "What is this? (point to an object)", "Name an everyday object."],
-    ["PROBE", "家族は何人ですか。", "How many people are in your family?", "Probe for numbers and counters."],
-    ["PROBE", "朝ごはんに何を食べましたか。", "What did you eat for breakfast?", "Probe for a past-tense sentence (level 1)."],
-    ["ROLE_PLAY", "（お店で）いらっしゃいませ。何にしますか。", "(At a shop) Welcome. What would you like?", "Learner orders one item: 〜をください."],
-    ["WIND_DOWN", "日本語は楽しいですか。", "Is Japanese fun?", "Easy yes/no to finish."],
-    ["WIND_DOWN", "ありがとうございました。", "Thank you very much.", "Close with a set phrase."]
+    ["WARM_UP", "こんにちは。お名前は？", "Hello. What is your name?", "Accept a one-word answer; model a full sentence back.", "personal"],
+    ["WARM_UP", "お元気ですか。", "How are you?", "Memorized response expected.", "personal"],
+    ["LEVEL_CHECK", "どこから来ましたか。", "Where are you from?", "Country name alone is fine at this level.", "personal"],
+    ["LEVEL_CHECK", "今日は何曜日ですか。", "What day is it today?", "Checks memorized vocabulary.", "daily_life"],
+    ["LEVEL_CHECK", "これは何ですか。", "What is this? (point to an object)", "Name an everyday object.", "daily_life"],
+    ["LEVEL_CHECK", "兄弟がいますか。", "Do you have any brothers or sisters?", "Family — checks family words (兄・姉・弟・妹); はい／いいえ plus one word is fine.", "family"],
+    ["LEVEL_CHECK", "お仕事は何ですか。学生ですか。", "What is your job? Are you a student?", "Work — memorized job word (会社員, 学生, 先生) is enough.", "work"],
+    ["LEVEL_CHECK", "毎日、会社（学校）に行きますか。", "Do you go to work (school) every day?", "Work — yes/no with a verb; accept 〜に行きます.", "work"],
+    ["PROBE", "家族は何人ですか。", "How many people are in your family?", "Probe for numbers and counters.", "family"],
+    ["PROBE", "お母さんはどんな人ですか。", "What kind of person is your mother?", "Family — probes level 1: an adjective or short sentence of the learner's own.", "family"],
+    ["PROBE", "仕事（学校）は何時からですか。", "What time does work (school) start?", "Work — probes times and 〜から; a full sentence points to level 1.", "work"],
+    ["PROBE", "朝ごはんに何を食べましたか。", "What did you eat for breakfast?", "Probe for a past-tense sentence (level 1).", "daily_life"],
+    ["ROLE_PLAY", "（お店で）いらっしゃいませ。何にしますか。", "(At a shop) Welcome. What would you like?", "Learner orders one item: 〜をください.", "situation"],
+    ["WIND_DOWN", "日本語は楽しいですか。", "Is Japanese fun?", "Easy yes/no to finish.", "personal"],
+    ["WIND_DOWN", "ありがとうございました。", "Thank you very much.", "Close with a set phrase.", "personal"]
    ]
   },
   {
@@ -33,17 +38,23 @@
     "A native speaker used to foreigners can understand me, with some effort and repetition."
    ],
    "questions": [
-    ["WARM_UP", "自己紹介をしてください。", "Please introduce yourself.", "Name, origin, job or school."],
-    ["WARM_UP", "今日はどうやってここに来ましたか。", "How did you get here today?", "Transport vocabulary: 電車で, 車で."],
-    ["LEVEL_CHECK", "毎日、何時に起きますか。それから何をしますか。", "What time do you get up every day? What do you do next?", "Daily routine in sequence."],
-    ["LEVEL_CHECK", "週末はたいてい何をしますか。", "What do you usually do on weekends?", "Present-tense habits."],
-    ["LEVEL_CHECK", "あなたの町について教えてください。", "Tell me about your town.", "Simple descriptions with adjectives."],
-    ["PROBE", "先週の週末、何をしましたか。", "What did you do last weekend?", "Push for past narration in connected sentences (level 1+/2)."],
-    ["PROBE", "どうして日本語を勉強していますか。", "Why are you studying Japanese?", "Reasons with から; probes beyond memorized material."],
-    ["ROLE_PLAY", "（駅で）すみません、どうしましたか。", "(At a station) Excuse me, can I help?", "Learner asks how to get to a place and confirms."],
-    ["ROLE_PLAY", "（レストランで）ご注文はお決まりですか。", "(At a restaurant) Are you ready to order?", "Order two things and ask a simple question."],
-    ["WIND_DOWN", "今日はこのあと何をしますか。", "What will you do after this?", "Easy future plans."],
-    ["WIND_DOWN", "お疲れさまでした。", "Thank you for your effort.", "Close politely."]
+    ["WARM_UP", "自己紹介をしてください。", "Please introduce yourself.", "Name, origin, job or school.", "personal"],
+    ["WARM_UP", "今日はどうやってここに来ましたか。", "How did you get here today?", "Transport vocabulary: 電車で, 車で.", "daily_life"],
+    ["LEVEL_CHECK", "毎日、何時に起きますか。それから何をしますか。", "What time do you get up every day? What do you do next?", "Daily routine in sequence.", "daily_life"],
+    ["LEVEL_CHECK", "週末はたいてい何をしますか。", "What do you usually do on weekends?", "Present-tense habits.", "daily_life"],
+    ["LEVEL_CHECK", "あなたの町について教えてください。", "Tell me about your town.", "Simple descriptions with adjectives.", "personal"],
+    ["LEVEL_CHECK", "ご家族について教えてください。", "Please tell me about your family.", "Family — several short sentences: who, age, job, where they live.", "family"],
+    ["LEVEL_CHECK", "休みの日、家族とよく何をしますか。", "What do you often do with your family on days off?", "Family — habitual actions with と and 〜ます.", "family"],
+    ["LEVEL_CHECK", "どんな仕事（勉強）をしていますか。", "What kind of work (study) do you do?", "Work — 〜ています and simple description of tasks.", "work"],
+    ["LEVEL_CHECK", "あなたの職場（学校）はどんなところですか。", "What is your workplace (school) like?", "Work — describe place and people with adjectives and あります／います.", "work"],
+    ["PROBE", "先週の週末、何をしましたか。", "What did you do last weekend?", "Push for past narration in connected sentences (level 1+/2).", "daily_life"],
+    ["PROBE", "どうして日本語を勉強していますか。", "Why are you studying Japanese?", "Reasons with から; probes beyond memorized material.", "personal"],
+    ["PROBE", "子どものとき、家族とどこかへ旅行しましたか。どうでしたか。", "Did you travel anywhere with your family as a child? How was it?", "Family — probes 1+: short past narration with feelings.", "family"],
+    ["PROBE", "仕事（勉強）で大変なことは何ですか。どうしてですか。", "What is hard about your work (studies)? Why?", "Work — probes 1+: reason with から beyond a one-word answer.", "work"],
+    ["ROLE_PLAY", "（駅で）すみません、どうしましたか。", "(At a station) Excuse me, can I help?", "Learner asks how to get to a place and confirms.", "situation"],
+    ["ROLE_PLAY", "（レストランで）ご注文はお決まりですか。", "(At a restaurant) Are you ready to order?", "Order two things and ask a simple question.", "situation"],
+    ["WIND_DOWN", "今日はこのあと何をしますか。", "What will you do after this?", "Easy future plans.", "daily_life"],
+    ["WIND_DOWN", "お疲れさまでした。", "Thank you for your effort.", "Close politely.", "personal"]
    ]
   },
   {
@@ -55,16 +66,22 @@
     "My vocabulary for concrete topics is growing, but I still fall back on simple structures."
    ],
    "questions": [
-    ["WARM_UP", "最近、何か楽しいことがありましたか。", "Has anything fun happened lately?", "Warm, open question."],
-    ["LEVEL_CHECK", "あなたの仕事（勉強）について詳しく教えてください。", "Tell me about your work (studies) in detail.", "Sustained description of a familiar topic."],
-    ["LEVEL_CHECK", "初めて日本に来たときのことを話してください。", "Tell me about when you first came to Japan.", "Past narration with time words."],
-    ["LEVEL_CHECK", "あなたの国と日本の違いは何だと思いますか。", "What differences do you see between your country and Japan?", "Simple comparisons."],
-    ["PROBE", "もし一か月休みがあったら、何をしたいですか。", "If you had a month off, what would you want to do?", "Hypothetical — probing level 2."],
-    ["PROBE", "その理由を詳しく説明してください。", "Please explain your reason in detail.", "Push for extended explanation."],
-    ["ROLE_PLAY", "（ホテルで）お部屋に何か問題がございましたか。", "(At a hotel) Was there a problem with your room?", "Complication: the air conditioner is broken; ask for a solution."],
-    ["ROLE_PLAY", "（電話で）はい、山田歯科です。", "(Phone) Hello, Yamada Dental.", "Reschedule an appointment."],
-    ["WIND_DOWN", "日本でおすすめの場所はありますか。", "Any place in Japan you'd recommend?", "Comfortable topic to finish."],
-    ["WIND_DOWN", "今日はありがとうございました。", "Thank you for today.", "Close politely."]
+    ["WARM_UP", "最近、何か楽しいことがありましたか。", "Has anything fun happened lately?", "Warm, open question.", "personal"],
+    ["LEVEL_CHECK", "あなたの仕事（勉強）について詳しく教えてください。", "Tell me about your work (studies) in detail.", "Sustained description of a familiar topic.", "work"],
+    ["LEVEL_CHECK", "初めて日本に来たときのことを話してください。", "Tell me about when you first came to Japan.", "Past narration with time words.", "travel"],
+    ["LEVEL_CHECK", "あなたの国と日本の違いは何だと思いますか。", "What differences do you see between your country and Japan?", "Simple comparisons.", "travel"],
+    ["LEVEL_CHECK", "子どものころ、家族とよくしたことについて話してください。", "Talk about things you often did with your family as a child.", "Family — past habitual narration (〜たり〜たり, よく〜ました).", "family"],
+    ["LEVEL_CHECK", "最近、仕事（学校）であった出来事を一つ話してください。", "Tell me about something that happened recently at work (school).", "Work — connected past narration with a beginning and end.", "work"],
+    ["LEVEL_CHECK", "最近見たニュースを一つ、簡単に教えてください。", "Briefly tell me about one news story you saw recently.", "Current events (simple) — who/what/where; opinion not required yet.", "current_events"],
+    ["PROBE", "もし一か月休みがあったら、何をしたいですか。", "If you had a month off, what would you want to do?", "Hypothetical — probing level 2.", "hypothetical"],
+    ["PROBE", "その理由を詳しく説明してください。", "Please explain your reason in detail.", "Push for extended explanation.", "hypothetical"],
+    ["PROBE", "家族の中で、あなたに一番似ている人は誰ですか。どこが似ていますか。", "Who in your family is most like you? In what way?", "Family — probes 2: comparison and description in a paragraph.", "family"],
+    ["PROBE", "日本に来る外国人観光客が増えていますが、あなたの町ではどうですか。", "More foreign tourists are coming to Japan. What is it like in your town?", "Current events (simple) — probes 2: describe a change and its effects.", "current_events"],
+    ["PROBE", "もし日本で働くとしたら、どんな仕事をしてみたいですか。", "If you were to work in Japan, what kind of job would you like to try?", "Hypothetical — probes 2: 〜としたら with reasons and plans.", "hypothetical"],
+    ["ROLE_PLAY", "（ホテルで）お部屋に何か問題がございましたか。", "(At a hotel) Was there a problem with your room?", "Complication: the air conditioner is broken; ask for a solution.", "situation"],
+    ["ROLE_PLAY", "（電話で）はい、山田歯科です。", "(Phone) Hello, Yamada Dental.", "Reschedule an appointment.", "situation"],
+    ["WIND_DOWN", "日本でおすすめの場所はありますか。", "Any place in Japan you'd recommend?", "Comfortable topic to finish.", "travel"],
+    ["WIND_DOWN", "今日はありがとうございました。", "Thank you for today.", "Close politely.", "personal"]
    ]
   },
   {
@@ -76,17 +93,23 @@
     "Native speakers not used to foreigners can usually understand me, even when my grammar is imperfect."
    ],
    "questions": [
-    ["WARM_UP", "お仕事は今、忙しいですか。", "Is work busy at the moment?", "Warm-up."],
-    ["LEVEL_CHECK", "あなたの一日の仕事の流れを説明してください。", "Explain the flow of a typical workday.", "Sequenced, paragraph-length description."],
-    ["LEVEL_CHECK", "最近見たニュースで印象に残ったものを教えてください。", "Tell me about a recent news story that stuck with you.", "Concrete current events."],
-    ["LEVEL_CHECK", "今までで一番大変だった経験について話してください。", "Talk about the hardest experience you've had.", "Extended past narration."],
-    ["LEVEL_CHECK", "五年後、どんな生活をしていると思いますか。", "What do you think your life will be like in five years?", "Future time frame."],
-    ["PROBE", "在宅勤務のメリットとデメリットは何だと思いますか。", "What are the pros and cons of working from home?", "Supported opinion — probing level 3."],
-    ["PROBE", "その問題を解決するには、どうすればいいと思いますか。", "How do you think that problem could be solved?", "Abstract hypothesis."],
-    ["ROLE_PLAY", "（職場で）来週の会議の場所が変わったので、チームに説明してください。", "(At work) The meeting venue changed; explain to your team.", "Give instructions clearly and handle a question."],
-    ["ROLE_PLAY", "（店で）買った商品が壊れていました。店員と交渉してください。", "(At a shop) The item you bought is broken. Negotiate with the clerk.", "Complication with persuasion."],
-    ["WIND_DOWN", "日本語の勉強で工夫していることはありますか。", "Any tricks you use for studying Japanese?", "Comfortable close."],
-    ["WIND_DOWN", "お時間をいただき、ありがとうございました。", "Thank you for your time.", "Close politely."]
+    ["WARM_UP", "お仕事は今、忙しいですか。", "Is work busy at the moment?", "Warm-up.", "work"],
+    ["LEVEL_CHECK", "あなたの一日の仕事の流れを説明してください。", "Explain the flow of a typical workday.", "Sequenced, paragraph-length description.", "work"],
+    ["LEVEL_CHECK", "最近見たニュースで印象に残ったものを教えてください。", "Tell me about a recent news story that stuck with you.", "Concrete current events.", "current_events"],
+    ["LEVEL_CHECK", "今までで一番大変だった経験について話してください。", "Talk about the hardest experience you've had.", "Extended past narration.", "personal"],
+    ["LEVEL_CHECK", "五年後、どんな生活をしていると思いますか。", "What do you think your life will be like in five years?", "Future time frame.", "personal"],
+    ["LEVEL_CHECK", "あなたが大きな影響を受けた家族の一人について話してください。", "Talk about a family member who has had a big influence on you.", "Family — paragraph-length description plus past anecdotes.", "family"],
+    ["LEVEL_CHECK", "新しく入った同僚に、あなたの仕事のやり方を説明してください。", "Explain how you do your job to a newly joined colleague.", "Work — giving instructions in logical order with 〜てから, 〜たら.", "work"],
+    ["PROBE", "在宅勤務のメリットとデメリットは何だと思いますか。", "What are the pros and cons of working from home?", "Supported opinion — probing level 3.", "work"],
+    ["PROBE", "その問題を解決するには、どうすればいいと思いますか。", "How do you think that problem could be solved?", "Abstract hypothesis.", "hypothetical"],
+    ["PROBE", "子どものころと比べて、家族の過ごし方はどう変わったと思いますか。", "Compared with your childhood, how has the way families spend time changed?", "Family — probes 2+: compare time frames and explain causes.", "family"],
+    ["PROBE", "外国人観光客が増えることには、どんな良い点と問題点があると思いますか。", "What are the good points and problems of increasing numbers of foreign tourists?", "Current events — probes 2+: balanced opinion with examples.", "current_events"],
+    ["PROBE", "もし明日から仕事や学校に行かなくてもよくなったら、生活をどう変えますか。", "If from tomorrow you no longer had to go to work or school, how would you change your life?", "Hypothetical — probes 2+: sustained conditional reasoning.", "hypothetical"],
+    ["PROBE", "「働くこと」の意味は、人によってどう違うと思いますか。", "How do you think the meaning of \"working\" differs from person to person?", "Abstract — probes 2+/3: move beyond concrete examples to generalization.", "abstract"],
+    ["ROLE_PLAY", "（職場で）来週の会議の場所が変わったので、チームに説明してください。", "(At work) The meeting venue changed; explain to your team.", "Give instructions clearly and handle a question.", "situation"],
+    ["ROLE_PLAY", "（店で）買った商品が壊れていました。店員と交渉してください。", "(At a shop) The item you bought is broken. Negotiate with the clerk.", "Complication with persuasion.", "situation"],
+    ["WIND_DOWN", "日本語の勉強で工夫していることはありますか。", "Any tricks you use for studying Japanese?", "Comfortable close.", "personal"],
+    ["WIND_DOWN", "お時間をいただき、ありがとうございました。", "Thank you for your time.", "Close politely.", "personal"]
    ]
   },
   {
@@ -98,16 +121,22 @@
     "Errors in grammar or word choice sometimes appear in complex structures but rarely block understanding."
    ],
    "questions": [
-    ["WARM_UP", "最近、何か新しく始めたことはありますか。", "Have you started anything new lately?", "Warm-up."],
-    ["LEVEL_CHECK", "あなたの専門分野について、専門外の人にわかるように説明してください。", "Explain your field so that a non-specialist can understand.", "Precise explanation."],
-    ["LEVEL_CHECK", "日本の少子化について、どう考えますか。", "What do you think about Japan's declining birth rate?", "Social issue — supported opinion."],
-    ["PROBE", "反対の立場の人を説得するとしたら、どう話しますか。", "If you had to persuade someone with the opposite view, what would you say?", "Argumentation — probing level 3."],
-    ["PROBE", "もしその政策が失敗したら、どんな影響があると思いますか。", "If that policy failed, what effects would you expect?", "Hypothesis on an abstract topic."],
-    ["PROBE", "技術の進歩は人間関係をどう変えたと思いますか。", "How do you think technology has changed human relationships?", "Abstract discussion."],
-    ["ROLE_PLAY", "（会議で）予算削減の案に反対の意見を丁寧に述べてください。", "(Meeting) Politely state your opposition to a budget-cut plan.", "Formal register; diplomacy."],
-    ["ROLE_PLAY", "（取引先に）納期が遅れることを説明し、謝罪してください。", "(To a client) Explain and apologize for a delivery delay.", "Keigo under pressure."],
-    ["WIND_DOWN", "休みの日はどう過ごすのが好きですか。", "How do you like to spend days off?", "Relax back to a familiar topic."],
-    ["WIND_DOWN", "本日はありがとうございました。", "Thank you for today.", "Close."]
+    ["WARM_UP", "最近、何か新しく始めたことはありますか。", "Have you started anything new lately?", "Warm-up.", "personal"],
+    ["LEVEL_CHECK", "あなたの専門分野について、専門外の人にわかるように説明してください。", "Explain your field so that a non-specialist can understand.", "Precise explanation.", "work"],
+    ["LEVEL_CHECK", "日本の少子化について、どう考えますか。", "What do you think about Japan's declining birth rate?", "Social issue — supported opinion.", "current_events"],
+    ["LEVEL_CHECK", "親の世代と比べて、家族のあり方はどのように変わってきたと思いますか。", "Compared with your parents' generation, how do you think the shape of the family has changed?", "Family — extended comparison with social causes.", "family"],
+    ["LEVEL_CHECK", "職場で意見が対立したとき、どのように対応してきましたか。具体的な例を挙げてください。", "How have you handled disagreements at work? Please give a concrete example.", "Work — detailed narration plus reflection on the outcome.", "work"],
+    ["LEVEL_CHECK", "災害への備えについて、個人と自治体はそれぞれ何をすべきだと思いますか。", "Regarding disaster preparedness, what should individuals and local governments each do?", "Current events — structured opinion contrasting two actors.", "current_events"],
+    ["PROBE", "反対の立場の人を説得するとしたら、どう話しますか。", "If you had to persuade someone with the opposite view, what would you say?", "Argumentation — probing level 3.", "abstract"],
+    ["PROBE", "もしその政策が失敗したら、どんな影響があると思いますか。", "If that policy failed, what effects would you expect?", "Hypothesis on an abstract topic.", "hypothetical"],
+    ["PROBE", "技術の進歩は人間関係をどう変えたと思いますか。", "How do you think technology has changed human relationships?", "Abstract discussion.", "abstract"],
+    ["PROBE", "生成AIが多くの職場で使われるようになったことを、どう評価しますか。", "How do you assess the spread of generative AI in many workplaces?", "Current events — probes 3: weigh benefits and risks with support.", "current_events"],
+    ["PROBE", "もし親の介護が必要になったとしたら、仕事と両立するためにどのような支援があればいいと思いますか。", "If your parents came to need care, what kind of support would help you balance it with work?", "Hypothetical — probes 3: sustained conditional reasoning on a social issue.", "hypothetical"],
+    ["PROBE", "「働き方の自由」と「組織への責任」は、どのように両立できると思いますか。", "How can \"freedom in how we work\" and \"responsibility to the organization\" be reconciled?", "Abstract — probes 3: reconcile two competing values.", "abstract"],
+    ["ROLE_PLAY", "（会議で）予算削減の案に反対の意見を丁寧に述べてください。", "(Meeting) Politely state your opposition to a budget-cut plan.", "Formal register; diplomacy.", "situation"],
+    ["ROLE_PLAY", "（取引先に）納期が遅れることを説明し、謝罪してください。", "(To a client) Explain and apologize for a delivery delay.", "Keigo under pressure.", "situation"],
+    ["WIND_DOWN", "休みの日はどう過ごすのが好きですか。", "How do you like to spend days off?", "Relax back to a familiar topic.", "personal"],
+    ["WIND_DOWN", "本日はありがとうございました。", "Thank you for today.", "Close.", "personal"]
    ]
   },
   {
@@ -119,16 +148,21 @@
     "I can adjust my register, including keigo, to fit the situation."
    ],
    "questions": [
-    ["WARM_UP", "今日はお忙しい中、ありがとうございます。最近いかがですか。", "Thank you for making time today. How have you been?", "Warm-up in polite register."],
-    ["LEVEL_CHECK", "グローバル化が日本の地方に与える影響について、ご意見をお聞かせください。", "Please share your views on how globalization affects regional Japan.", "Extended, structured argument."],
-    ["LEVEL_CHECK", "AIの発展によって、教育はどう変わるべきだと思いますか。", "How should education change as AI develops?", "Abstract hypothesis with support."],
-    ["LEVEL_CHECK", "日米同盟の今後の課題は何だとお考えですか。", "What do you see as future challenges for the Japan–U.S. alliance?", "Professional/policy topic."],
-    ["PROBE", "その主張に対する最も強い反論は何でしょうか。それにどう答えますか。", "What is the strongest counterargument, and how would you answer it?", "Probing level 3+: handles counterargument."],
-    ["PROBE", "仮に法律でそれを禁止した場合、どのような問題が起こり得ますか。", "If it were banned by law, what problems might arise?", "Complex hypothesis."],
-    ["ROLE_PLAY", "（公式の場で）日本側の担当者に、計画の変更を説明し、理解を求めてください。", "(Formal setting) Explain a plan change to your Japanese counterpart and seek their understanding.", "Sonkeigo/kenjōgo, negotiation."],
-    ["ROLE_PLAY", "（記者会見で）事故について事実を説明し、質問に答えてください。", "(Press conference) State the facts about an incident and answer questions.", "Precision and register under pressure."],
-    ["WIND_DOWN", "日本語を使っていて、一番やりがいを感じるのはどんなときですか。", "When do you find using Japanese most rewarding?", "Comfortable close."],
-    ["WIND_DOWN", "本日は貴重なお時間をいただき、誠にありがとうございました。", "Thank you sincerely for your valuable time today.", "Formal close."]
+    ["WARM_UP", "今日はお忙しい中、ありがとうございます。最近いかがですか。", "Thank you for making time today. How have you been?", "Warm-up in polite register.", "personal"],
+    ["LEVEL_CHECK", "グローバル化が日本の地方に与える影響について、ご意見をお聞かせください。", "Please share your views on how globalization affects regional Japan.", "Extended, structured argument.", "current_events"],
+    ["LEVEL_CHECK", "AIの発展によって、教育はどう変わるべきだと思いますか。", "How should education change as AI develops?", "Abstract hypothesis with support.", "abstract"],
+    ["LEVEL_CHECK", "日米同盟の今後の課題は何だとお考えですか。", "What do you see as future challenges for the Japan–U.S. alliance?", "Professional/policy topic.", "current_events"],
+    ["LEVEL_CHECK", "高齢化が進む中で、これまで家族が担ってきた役割を、社会はどこまで引き受けるべきだとお考えですか。", "As society ages, to what extent should society take on roles that families have traditionally carried?", "Family — structured argument linking the private and public spheres.", "family"],
+    ["LEVEL_CHECK", "世代の異なる人々が働く組織をまとめるうえで、最も重要なことは何だとお考えですか。ご経験を踏まえてお聞かせください。", "What do you consider most important in leading an organization of people from different generations? Please draw on your experience.", "Work — professional discourse supported by concrete experience.", "work"],
+    ["LEVEL_CHECK", "観光客の急増が地域にもたらす利益と負担を、どのように両立させるべきでしょうか。", "How should the benefits and burdens that a surge of tourists brings to a region be balanced?", "Current events — weighs trade-offs and proposes policy-level measures.", "current_events"],
+    ["PROBE", "その主張に対する最も強い反論は何でしょうか。それにどう答えますか。", "What is the strongest counterargument, and how would you answer it?", "Probing level 3+: handles counterargument.", "abstract"],
+    ["PROBE", "仮に法律でそれを禁止した場合、どのような問題が起こり得ますか。", "If it were banned by law, what problems might arise?", "Complex hypothesis.", "hypothetical"],
+    ["PROBE", "仮に働く人の三割が完全に在宅勤務へ移行したとすれば、都市と地方の関係はどう変わるとお考えですか。", "Suppose thirty percent of workers moved fully to remote work: how do you think the relationship between cities and rural areas would change?", "Hypothetical — probes 3+: multi-step conditional reasoning about social consequences.", "hypothetical"],
+    ["PROBE", "「伝統を守ること」と「社会の変化に適応すること」は、本質的に対立するものだとお考えですか。", "Do you think \"preserving tradition\" and \"adapting to social change\" are fundamentally in conflict?", "Abstract — probes 3+: defines terms and argues a nuanced position.", "abstract"],
+    ["ROLE_PLAY", "（公式の場で）日本側の担当者に、計画の変更を説明し、理解を求めてください。", "(Formal setting) Explain a plan change to your Japanese counterpart and seek their understanding.", "Sonkeigo/kenjōgo, negotiation.", "situation"],
+    ["ROLE_PLAY", "（記者会見で）事故について事実を説明し、質問に答えてください。", "(Press conference) State the facts about an incident and answer questions.", "Precision and register under pressure.", "situation"],
+    ["WIND_DOWN", "日本語を使っていて、一番やりがいを感じるのはどんなときですか。", "When do you find using Japanese most rewarding?", "Comfortable close.", "personal"],
+    ["WIND_DOWN", "本日は貴重なお時間をいただき、誠にありがとうございました。", "Thank you sincerely for your valuable time today.", "Formal close.", "personal"]
    ]
   }
  ]
