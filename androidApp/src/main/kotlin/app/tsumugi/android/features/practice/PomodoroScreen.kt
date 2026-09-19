@@ -216,10 +216,9 @@ private fun ActivityView(activity: Activity, voices: Voices, input: SpeechInput,
             }
         }
         is Activity.RoleplayTurn -> RoleplayTurnView(activity, voices, input) { onDone(null, null) }
-        // Phase 13 mini-games (§6.9): the game screens come with the UI pass; until then the queue can skip them.
-        is Activity.Reflex, is Activity.Atom -> {
-            Text(activity.title, style = MaterialTheme.typography.titleMedium)
-            Button(onClick = { onDone(null, null) }) { Text(stringResource(R.string.action_next)) }
+        // Phase 13 mini-games (§6.9, D-291): a 45 s round, stored in game_score (weekly challenge), score to the queue.
+        is Activity.Reflex, is Activity.Atom -> app.tsumugi.android.features.games.QueuedGameRound(activity) { result ->
+            onDone(null, result.score)
         }
     }
 }

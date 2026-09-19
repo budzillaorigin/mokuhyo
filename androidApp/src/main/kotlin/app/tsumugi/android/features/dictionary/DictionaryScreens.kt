@@ -74,6 +74,11 @@ class DictionaryNav(
     val openEntry: (Long) -> Unit,
     val openKanji: (String) -> Unit,
     val openRadicals: () -> Unit,
+    // Phase 13 (§6.13, §6.15): the kanji graph, a word's graph, component search and a thesaurus cluster.
+    val openKanjiGraph: (String) -> Unit = {},
+    val openWordGraph: (Long) -> Unit = {},
+    val openComponentSearch: (String) -> Unit = {},
+    val openCluster: (String) -> Unit = {},
 )
 
 @Composable
@@ -103,9 +108,11 @@ fun DictionaryGate(content: @Composable (DictionaryRepository) -> Unit) {
 @Composable
 fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
     val vm: DictionaryViewModel = viewModel(key = initialQuery ?: "search")
-    LaunchedEffect(initialQuery) { if (initialQuery != null) vm.query.value = initialQuery }
+    // Only a fresh screen takes the handed-over query; coming back keeps what the learner typed since.
+    LaunchedEffect(initialQuery) { if (initialQuery != null && vm.query.value.isEmpty()) vm.setQuery(initialQuery) }
     val query by vm.query.collectAsStateWithLifecycle()
-    val results by vm.results.collectAsStateWithLifecycle()
+    val instant by vm.instant.collectAsStateWithLifecycle()
+    val results = instant.results
     val searchError by vm.searchError.collectAsStateWithLifecycle()
 
     DictionaryGate {
@@ -113,14 +120,26 @@ fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
             Row(Modifier.padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                 OutlinedTextField(
                     value = query,
-                    onValueChange = { vm.query.value = it },
+                    onValueChange = vm::setQuery,
                     modifier = Modifier.weight(1f),
                     placeholder = { Text(stringResource(R.string.dict_placeholder)) },
                     singleLine = true,
                     textStyle = MaterialTheme.typography.bodyLarge.japanese(),
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(imeAction = androidx.compose.ui.text.input.ImeAction.Search),
+                    keyboardActions = androidx.compose.foundation.text.KeyboardActions(onSearch = { vm.retrySearch() }),
                 )
                 val radicalsLabel = stringResource(R.string.title_radicals)
                 TextButton(onClick = nav.openRadicals, Modifier.semantics { contentDescription = radicalsLabel }) { JaText("部首") }
+            }
+            // Keeps the old list up while the next lookup runs; the bar only says one is under way.
+            if (instant.searching) androidx.compose.material3.LinearProgressIndicator(Modifier.fillMaxWidth().padding(horizontal = 16.dp).height(2.dp))
+            // §6.15 component-combination shortcut: "氵青", "木+目", "言 五 口" find kanji built from those parts.
+            if (looksLikeComponents(query)) {
+                AssistChip(
+                    onClick = { nav.openComponentSearch(query.trim()) },
+                    label = { Text(stringResource(R.string.dp_component_shortcut, query.trim())) },
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                )
             }
             if (results.mode == SearchMode.SENTENCE) {
                 Row(Modifier.horizontalScroll(rememberScrollState()).padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -134,7 +153,7 @@ fun DictionarySearchScreen(nav: DictionaryNav, initialQuery: String? = null) {
                 }
             }
             searchError?.let { ErrorState(stringResource(R.string.dict_search_failed, it), onRetry = vm::retrySearch, modifier = Modifier.padding(horizontal = 16.dp)) }
-            if (searchError == null && query.isNotBlank() && results.hits.isEmpty() && results.query == query.trim()) {
+            if (searchError == null && query.isNotBlank() && !instant.searching && results.hits.isEmpty() && instant.resultsFor == query) {
                 Text(stringResource(R.string.dict_no_matches), Modifier.padding(24.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             LazyColumn(Modifier.fillMaxSize()) {
@@ -157,20 +176,75 @@ private fun SearchHitRow(hit: SearchHit, onClick: () -> Unit) {
             }
         },
         supportingContent = {
-            Column {
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(hit.entry.glossPreview, maxLines = 2)
-                if (hit.match == MatchKind.DEINFLECTED) {
+                // §6.15: "食べさせられなかった = 食べる + causative + passive + negative + past" under conjugated hits.
+                val inflection = hit.inflection
+                if (inflection != null) {
+                    InflectionChip(inflection.surface, inflection.lemma, inflection.steps.map { it.label })
+                } else if (hit.match == MatchKind.DEINFLECTED && hit.deinflection.isNotEmpty()) {
                     Text("← " + hit.deinflection.joinToString(" ← "), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.tertiary)
                 }
-            }
-        },
-        trailingContent = {
-            Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                if (hit.entry.isCommon) Tag(stringResource(R.string.dict_common))
-                jlptLabel(hit.entry.jlpt)?.let { Tag(it) }
+                ResultChipsRow(hit.chips.common, hit.chips.jlpt, hit.chips.frequencyRank)
             }
         },
     )
+}
+
+/** The inflection breakdown of a conjugated hit, read as one phrase by TalkBack. */
+@Composable
+private fun InflectionChip(surface: String, lemma: String, steps: List<String>) {
+    val description = stringResource(R.string.dp_inflection_description, surface, lemma, steps.joinToString(", "))
+    androidx.compose.material3.Surface(
+        Modifier.semantics(mergeDescendants = true) { contentDescription = description },
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp),
+        color = MaterialTheme.colorScheme.tertiaryContainer,
+    ) {
+        Text(
+            buildAnnotatedString {
+                append(ja(surface))
+                append(" = ")
+                append(ja(lemma))
+                steps.forEach { append(" + "); append(it) }
+            },
+            Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onTertiaryContainer,
+        )
+    }
+}
+
+/** Common, JLPT (unofficial) and frequency-rank chips of a result row (`SearchHit.chips`). */
+@Composable
+private fun ResultChipsRow(common: Boolean, jlpt: Int?, frequencyRank: Int?) {
+    if (!common && jlpt == null && frequencyRank == null) return
+    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+        if (common) Tag(stringResource(R.string.dict_common))
+        jlptLabel(jlpt)?.let { Tag(it) }
+        frequencyRank?.let { rank ->
+            val label = stringResource(R.string.dp_rank_description, rank)
+            Tag("#$rank", Modifier.semantics { contentDescription = label })
+        }
+    }
+}
+
+/**
+ * True when the query reads as parts to combine rather than a word: two to six characters that are all kanji or CJK
+ * radicals, or any kanji joined with "+", "＋" or spaces. Words like 日本 also qualify; the shortcut is only a chip.
+ */
+internal fun looksLikeComponents(query: String): Boolean {
+    val text = query.trim()
+    if (text.isEmpty()) return false
+    val pieces = text.split(' ', '　', '+', '＋', '、', ',').filter { it.isNotEmpty() }
+    val chars = pieces.joinToString("").let { s -> generateSequence(0) { it + Character.charCount(s.codePointAt(it)) }.takeWhile { it < s.length }.map { s.codePointAt(it) }.toList() }
+    if (chars.size !in 2..6) return false
+    return chars.all { isHanOrRadical(it) }
+}
+
+private fun isHanOrRadical(cp: Int): Boolean {
+    val block = Character.UnicodeBlock.of(cp)
+    return Character.UnicodeScript.of(cp) == Character.UnicodeScript.HAN ||
+        block == Character.UnicodeBlock.CJK_RADICALS_SUPPLEMENT || block == Character.UnicodeBlock.KANGXI_RADICALS
 }
 
 @Composable
@@ -259,6 +333,8 @@ fun EntryScreen(id: Long, nav: DictionaryNav) {
                     HorizontalDivider()
                 }
             }
+            // §6.13 / §6.15: the word's graph, thesaurus expressions and collocations.
+            EntryLinksSection(e.id, hasKanji = detail.kanji.isNotEmpty(), nav = nav)
             // §6.2: my media first, then Tatoeba, then Immersion Kit when turned on.
             SentencesSection(e.id, e.headword, e.reading, detail.sentences)
         }
@@ -287,12 +363,14 @@ fun KanjiScreen(literal: String, nav: DictionaryNav) {
             if (info.onyomi.isNotEmpty()) LabeledJa(stringResource(R.string.dict_onyomi), info.onyomi.joinToString("、"))
             if (info.kunyomi.isNotEmpty()) LabeledJa(stringResource(R.string.dict_kunyomi), info.kunyomi.joinToString("、"))
             if (info.nanori.isNotEmpty()) LabeledJa(stringResource(R.string.dict_nanori), info.nanori.joinToString("、"))
-            if (k.components.isNotEmpty()) {
-                Section(stringResource(R.string.dict_components))
-                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    k.components.forEach { c -> AssistChip(onClick = { nav.openKanji(c) }, label = { JaText(c, style = MaterialTheme.typography.titleMedium) }) }
-                }
-            }
+            // §6.15: explore, bookmark, component roles and the sound series (KRADFILE parts when the pack predates them).
+            app.tsumugi.android.features.kanji.KanjiExplorerSections(
+                info = info,
+                fallbackComponents = k.components,
+                onOpenKanji = nav.openKanji,
+                onOpenGraph = nav.openKanjiGraph,
+                onComponentSearch = nav.openComponentSearch,
+            )
             if (k.words.isNotEmpty()) {
                 Section(stringResource(R.string.dict_words))
                 k.words.forEach { w ->

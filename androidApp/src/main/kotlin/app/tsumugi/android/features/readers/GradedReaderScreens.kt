@@ -208,7 +208,7 @@ private enum class StoryTab(@StringRes val label: Int) {
 
 /** One graded story: read-along, vocabulary, comprehension quiz and the genre tasks. */
 @Composable
-fun GradedStoryScreen(id: String, onOpenEntry: (Long) -> Unit, onOpenAiSettings: () -> Unit) {
+fun GradedStoryScreen(id: String, onOpenEntry: (Long) -> Unit, onOpenAiSettings: () -> Unit, onOpenDraft: (String) -> Unit = {}) {
     val graph = rememberGraph()
     var story by remember(id) { mutableStateOf<GradedStory?>(null) }
     var track by remember(id) { mutableStateOf<ReadAlongTrack?>(null) }
@@ -229,13 +229,13 @@ fun GradedStoryScreen(id: String, onOpenEntry: (Long) -> Unit, onOpenAiSettings:
         error != null -> ErrorState(stringResource(R.string.error_loading, error!!), onRetry = { attempt++ }, Modifier.padding(16.dp))
         !loaded -> LinearProgressIndicator(Modifier.fillMaxWidth().padding(16.dp))
         s == null -> Notice(stringResource(R.string.gr_story_missing), Modifier.padding(16.dp))
-        else -> StoryView(s, track ?: ReadAlongTrack.of(s) { null }, onOpenEntry, onOpenAiSettings)
+        else -> StoryView(s, track ?: ReadAlongTrack.of(s) { null }, onOpenEntry, onOpenAiSettings, onOpenDraft)
     }
 }
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun StoryView(story: GradedStory, track: ReadAlongTrack, onOpenEntry: (Long) -> Unit, onOpenAiSettings: () -> Unit) {
+private fun StoryView(story: GradedStory, track: ReadAlongTrack, onOpenEntry: (Long) -> Unit, onOpenAiSettings: () -> Unit, onOpenDraft: (String) -> Unit) {
     // §6.11: reading a graded story counts as active immersion.
     app.tsumugi.android.features.immersion.ImmersionTracker(
         app.tsumugi.immersion.ImmersionOrigin.READER, app.tsumugi.immersion.ImmersionMode.ACTIVE, story.id, story.title,
@@ -268,7 +268,7 @@ private fun StoryView(story: GradedStory, track: ReadAlongTrack, onOpenEntry: (L
                 StoryTab.READ -> ReadAlongView(story, track)
                 StoryTab.WORDS -> WordsView(story, onOpenEntry)
                 StoryTab.QUIZ -> QuizView(story)
-                StoryTab.TASKS -> TasksView(story, onOpenAiSettings)
+                StoryTab.TASKS -> TasksView(story, onOpenAiSettings, onOpenDraft)
             }
         }
     }
@@ -429,7 +429,7 @@ private fun TaskPrompt(task: ReaderTask) {
 }
 
 @Composable
-private fun TasksView(story: GradedStory, onOpenAiSettings: () -> Unit) {
+private fun TasksView(story: GradedStory, onOpenAiSettings: () -> Unit, onOpenDraft: (String) -> Unit) {
     val tasks = story.tasks
     tasks.prediction?.let { PredictionTask(it) }
     tasks.skim?.let { HorizontalDivider(); SkimTask(story, it) }
@@ -438,7 +438,7 @@ private fun TasksView(story: GradedStory, onOpenAiSettings: () -> Unit) {
         SectionTitle(stringResource(R.string.gr_task_close))
         tasks.close.forEach { CloseTask(it) }
     }
-    tasks.output?.let { HorizontalDivider(); OutputTask(story, it, onOpenAiSettings) }
+    tasks.output?.let { HorizontalDivider(); OutputTask(story, it, onOpenAiSettings, onOpenDraft) }
 }
 
 @Composable
@@ -522,7 +522,7 @@ private fun CloseTask(task: ReaderTask) {
 
 /** Post-reading output: a Japanese summary graded by the learner's model (always labeled AI, rule 10). */
 @Composable
-private fun OutputTask(story: GradedStory, task: ReaderTask, onOpenAiSettings: () -> Unit) {
+private fun OutputTask(story: GradedStory, task: ReaderTask, onOpenAiSettings: () -> Unit, onOpenDraft: (String) -> Unit) {
     val graph = rememberGraph()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -561,6 +561,17 @@ private fun OutputTask(story: GradedStory, task: ReaderTask, onOpenAiSettings: (
         ) { Text(stringResource(R.string.gr_task_grade)) }
         AiBadge()
     }
+    // §6.13: the output task can also be written as a saved draft in the writing studio (graded there too).
+    var draftError by remember { mutableStateOf<String?>(null) }
+    OutlinedButton(onClick = {
+        scope.launch {
+            draftError = null
+            runCatching { graph.writingStudio.draftForReaderTask(story) }
+                .onSuccess { onOpenDraft(it.id) }
+                .onFailure { draftError = it.readable() }
+        }
+    }) { Text(stringResource(R.string.ws_write_in_studio)) }
+    draftError?.let { Notice(stringResource(R.string.error_loading, it)) }
     if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
     when (val r = result) {
         is SummaryGradeResult.Graded -> Card(Modifier.fillMaxWidth()) {

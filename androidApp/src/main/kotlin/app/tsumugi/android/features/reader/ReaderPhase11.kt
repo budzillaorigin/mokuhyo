@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -589,16 +590,14 @@ fun ReaderScreen(
         sentencePanel?.let { s ->
             val target = oneTByStart[s.start]
             Card(Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(12.dp)) {
-                Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    JaText(s.text, style = MaterialTheme.typography.bodyLarge)
+                // §6.16: the panel scrolls, since constructions and an inline exercise can outgrow the screen.
+                Column(
+                    Modifier.heightIn(max = 460.dp).verticalScroll(rememberScrollState()).padding(14.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
                     if (target != null) OneTargetMine(target)
-                    if (s.grammarPointIds.isNotEmpty()) {
-                        Text(stringResource(R.string.reader_grammar_here), style = MaterialTheme.typography.titleSmall)
-                        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                            s.grammarPointIds.take(8).forEach { id -> TextButton(onClick = { onOpenGrammar(id) }) { Text(id.substringAfter('-').replace('-', ' ')) } }
-                        }
-                        Text(stringResource(R.string.reader_grammar_guides_hint), style = MaterialTheme.typography.labelSmall)
-                    }
+                    // The sentence with its grammar constructions underlined, explained and practicable (§6.16).
+                    SentenceGrammar(s, onOpenGrammar)
                     Text(stringResource(R.string.reader_no_translation), style = MaterialTheme.typography.labelSmall)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(onClick = { speech.speak(s.text, startOffset = s.start) }) { Text(stringResource(R.string.reader_listen)) }
