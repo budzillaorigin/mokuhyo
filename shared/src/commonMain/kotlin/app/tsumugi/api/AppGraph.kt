@@ -1,62 +1,140 @@
 package app.tsumugi.api
 
 import app.tsumugi.audio.AudioPackRepository
+import app.tsumugi.cards.PersonalCards
 import app.tsumugi.content.PackInstaller
 import app.tsumugi.content.PackStatus
 import app.tsumugi.courses.CourseService
 import app.tsumugi.courses.Explanations
 import app.tsumugi.courses.GrammarMasteryStore
 import app.tsumugi.courses.MonolingualSettings
+import app.tsumugi.coverage.CoverageService
+import app.tsumugi.coverage.KnownWords
+import app.tsumugi.coverage.LearnerKnowledge
+import app.tsumugi.coverage.TextProfileStore
+import app.tsumugi.coverage.TextProfiler
 import app.tsumugi.db.TsumugiDatabase
+import app.tsumugi.decks.DeckLessons
+import app.tsumugi.decks.MediaDeckService
 import app.tsumugi.dictionary.DictionaryRepository
+import app.tsumugi.dictionary.InstantSearch
+import app.tsumugi.dictionary.InstantSearchState
+import app.tsumugi.dictionary.SearchResults
+import app.tsumugi.dictionary.Token
 import app.tsumugi.dictionary.db.DictionaryDatabase
+import app.tsumugi.domain.ItemSource
+import app.tsumugi.exam.ExamKind
 import app.tsumugi.exam.ExamService
 import app.tsumugi.exam.db.ExamDatabase
 import app.tsumugi.exam.dlpt.IlrLevel
 import app.tsumugi.exam.opi.OpiSession
-import app.tsumugi.onomatopoeia.OnomatopoeiaRepository
-import app.tsumugi.practice.PracticeRepository
-import app.tsumugi.practice.db.PracticeDatabase
-import app.tsumugi.speaking.AiService
-import app.tsumugi.speaking.PronunciationService
-import app.tsumugi.speaking.RoleplaySession
-import app.tsumugi.study.activities.PomodoroSession
+import app.tsumugi.export.BackupService
+import app.tsumugi.export.DailyTotals
+import app.tsumugi.export.RestoreProgress
+import app.tsumugi.export.RestoreResult
+import app.tsumugi.export.ReviewCsvExporter
+import app.tsumugi.export.StudyReport
+import app.tsumugi.export.StudyReportBuilder
 import app.tsumugi.grammar.GrammarPoint
 import app.tsumugi.grammar.GrammarService
 import app.tsumugi.grammar.db.GrammarDatabase
+import app.tsumugi.immersion.ImmersionLog
+import app.tsumugi.immersion.RoadmapService
+import app.tsumugi.integrations.ImportService
+import app.tsumugi.integrations.ankiconnect.AnkiConnectPush
+import app.tsumugi.integrations.notion.NotionClient
+import app.tsumugi.integrations.notion.NotionDayStats
+import app.tsumugi.integrations.notion.NotionExport
+import app.tsumugi.integrations.notion.NotionPushResult
 import app.tsumugi.jp.tokenizer.LatticeTokenizer
 import app.tsumugi.jp.tokenizer.MorphologicalAnalyzer
-import app.tsumugi.tokenizer.db.TokenizerDatabase
-import app.tsumugi.integrations.ImportService
+import app.tsumugi.kana.KanaCourse
+import app.tsumugi.kanji.KanjiBookmarks
+import app.tsumugi.kanji.KanjiExplorer
+import app.tsumugi.linguist.db.LinguistDatabase
+import app.tsumugi.lyrics.LyricsService
+import app.tsumugi.media.ClipService
+import app.tsumugi.media.ImmersionKitSource
+import app.tsumugi.media.OnlineExamples
+import app.tsumugi.media.PodcastService
+import app.tsumugi.media.SentenceBank
+import app.tsumugi.media.SentenceMiner
+import app.tsumugi.media.SentenceSearch
+import app.tsumugi.media.SubtitleGenerator
+import app.tsumugi.onomatopoeia.OnomatopoeiaRepository
 import app.tsumugi.path.db.PathDatabase
+import app.tsumugi.pitch.PitchTestService
 import app.tsumugi.platform.PlatformServices
+import app.tsumugi.poetry.PoetryRepository
+import app.tsumugi.poetry.ReadingCircle
+import app.tsumugi.practice.Dialogue
+import app.tsumugi.practice.PracticeRepository
+import app.tsumugi.practice.db.PracticeDatabase
+import app.tsumugi.reader.LatticeReaderTokenizer
+import app.tsumugi.reader.ReaderGrammar
 import app.tsumugi.reader.ReaderService
-import app.tsumugi.sync.SyncAccount
-import app.tsumugi.sync.SyncEngine
+import app.tsumugi.reader.UrlImporter
+import app.tsumugi.readers.db.ReadersDatabase
+import app.tsumugi.recordings.ImageStore
+import app.tsumugi.recordings.RecordingKind
+import app.tsumugi.recordings.RecordingStore
+import app.tsumugi.recordings.RecordingSync
+import app.tsumugi.review.ContentReviewService
+import app.tsumugi.review.ExamReviewSource
+import app.tsumugi.review.GrammarReviewSource
+import app.tsumugi.review.KanaMnemonicReviewSource
+import app.tsumugi.review.LinguistReviewSource
+import app.tsumugi.review.OnomatopoeiaReviewSource
+import app.tsumugi.review.PhoneticSeriesReviewSource
+import app.tsumugi.review.PracticeReviewSource
+import app.tsumugi.review.ReadersReviewSource
+import app.tsumugi.review.ReviewSource
+import app.tsumugi.review.ThesaurusReviewSource
+import app.tsumugi.review.TracksReviewSource
 import app.tsumugi.settings.DeviceSettings
 import app.tsumugi.settings.DeviceState
 import app.tsumugi.settings.SettingsRepository
+import app.tsumugi.speaking.AiService
+import app.tsumugi.speaking.ConversationService
+import app.tsumugi.speaking.FreeTalkSession
+import app.tsumugi.speaking.PronunciationService
+import app.tsumugi.speaking.RoleplaySession
 import app.tsumugi.srs.FsrsParameters
 import app.tsumugi.srs.FsrsScheduler
 import app.tsumugi.srs.PathProgressStore
 import app.tsumugi.srs.PathService
 import app.tsumugi.srs.SrsRepository
+import app.tsumugi.srs.StudyItem
 import app.tsumugi.study.CollectionService
+import app.tsumugi.study.LearnerLevel
 import app.tsumugi.study.LessonSession
+import app.tsumugi.study.MinimalPairService
 import app.tsumugi.study.Onboarding
 import app.tsumugi.study.ReminderPlanner
 import app.tsumugi.study.ReviewSession
 import app.tsumugi.study.StatsService
-import app.tsumugi.study.LearnerLevel
-import app.tsumugi.study.MinimalPairService
 import app.tsumugi.study.TodayBlockKind
 import app.tsumugi.study.TodayCandidateSource
 import app.tsumugi.study.TodayPlan
 import app.tsumugi.study.TodayPlanner
-import app.tsumugi.speaking.ConversationService
-import app.tsumugi.speaking.FreeTalkSession
-import app.tsumugi.sync.LeaderboardService
 import app.tsumugi.study.WritingService
+import app.tsumugi.study.activities.PomodoroSession
+import app.tsumugi.study.games.AtomGame
+import app.tsumugi.study.games.GameScores
+import app.tsumugi.study.games.GameWordSource
+import app.tsumugi.study.games.ReflexGame
+import app.tsumugi.sync.LeaderboardService
+import app.tsumugi.sync.SyncAccount
+import app.tsumugi.sync.SyncEngine
+import app.tsumugi.thesaurus.ThesaurusRepository
+import app.tsumugi.tokenizer.db.TokenizerDatabase
+import app.tsumugi.tracks.TrackRepository
+import app.tsumugi.tracks.TrackService
+import app.tsumugi.tracks.db.TracksDatabase
+import app.tsumugi.translation.TranslationRepository
+import app.tsumugi.translation.TranslationService
+import app.tsumugi.writing.WritingStudio
+import kotlin.concurrent.Volatile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -68,76 +146,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
-import kotlin.concurrent.Volatile
-import app.tsumugi.cards.PersonalCards
-import app.tsumugi.domain.ItemSource
-import app.tsumugi.export.BackupService
-import app.tsumugi.export.DailyTotals
-import app.tsumugi.export.RestoreProgress
-import app.tsumugi.export.RestoreResult
-import app.tsumugi.export.ReviewCsvExporter
-import app.tsumugi.export.StudyReport
-import app.tsumugi.export.StudyReportBuilder
-import app.tsumugi.integrations.ankiconnect.AnkiConnectPush
-import app.tsumugi.integrations.notion.NotionClient
-import app.tsumugi.integrations.notion.NotionDayStats
-import app.tsumugi.integrations.notion.NotionExport
-import app.tsumugi.integrations.notion.NotionPushResult
-import app.tsumugi.kana.KanaCourse
-import app.tsumugi.media.ClipService
-import app.tsumugi.media.PodcastService
-import app.tsumugi.media.SubtitleGenerator
-import app.tsumugi.reader.UrlImporter
-import app.tsumugi.recordings.ImageStore
-import app.tsumugi.recordings.RecordingKind
-import app.tsumugi.recordings.RecordingStore
-import app.tsumugi.recordings.RecordingSync
-import app.tsumugi.review.ContentReviewService
-import app.tsumugi.review.ExamReviewSource
-import app.tsumugi.review.GrammarReviewSource
-import app.tsumugi.review.KanaMnemonicReviewSource
-import app.tsumugi.review.OnomatopoeiaReviewSource
-import app.tsumugi.review.PhoneticSeriesReviewSource
-import app.tsumugi.dictionary.InstantSearch
-import app.tsumugi.dictionary.InstantSearchState
-import app.tsumugi.dictionary.SearchResults
-import app.tsumugi.kanji.KanjiBookmarks
-import app.tsumugi.kanji.KanjiExplorer
-import app.tsumugi.pitch.PitchTestService
-import app.tsumugi.reader.ReaderGrammar
-import app.tsumugi.study.games.AtomGame
-import app.tsumugi.study.games.GameScores
-import app.tsumugi.study.games.GameWordSource
-import app.tsumugi.study.games.ReflexGame
-import app.tsumugi.review.PracticeReviewSource
-import app.tsumugi.review.ReadersReviewSource
-import app.tsumugi.readers.db.ReadersDatabase
-import app.tsumugi.review.ReviewSource
-import app.tsumugi.review.TracksReviewSource
-import app.tsumugi.srs.StudyItem
 import okio.Path.Companion.toPath
-import app.tsumugi.coverage.CoverageService
-import app.tsumugi.coverage.KnownWords
-import app.tsumugi.coverage.LearnerKnowledge
-import app.tsumugi.coverage.TextProfileStore
-import app.tsumugi.coverage.TextProfiler
-import app.tsumugi.decks.DeckLessons
-import app.tsumugi.decks.MediaDeckService
-import app.tsumugi.dictionary.Token
-import app.tsumugi.exam.ExamKind
-import app.tsumugi.immersion.ImmersionLog
-import app.tsumugi.immersion.RoadmapService
-import app.tsumugi.lyrics.LyricsService
-import app.tsumugi.media.ImmersionKitSource
-import app.tsumugi.media.OnlineExamples
-import app.tsumugi.media.SentenceBank
-import app.tsumugi.media.SentenceMiner
-import app.tsumugi.media.SentenceSearch
-import app.tsumugi.reader.LatticeReaderTokenizer
-import app.tsumugi.practice.Dialogue
-import app.tsumugi.tracks.TrackRepository
-import app.tsumugi.tracks.TrackService
-import app.tsumugi.tracks.db.TracksDatabase
 
 /** Progress of a background rebuild of every card (after new FSRS weights). */
 data class RecomputeProgress(val done: Int, val total: Int, val running: Boolean) {
@@ -588,7 +597,10 @@ class AppGraph(val platform: PlatformServices) {
             openPack(PackInstaller.PRACTICE) { platform.packDriver(PracticeDatabase.Schema, PackInstaller.PRACTICE) }?.let { add(PracticeReviewSource(it)) }
             openPack(PackInstaller.READERS) { platform.packDriver(ReadersDatabase.Schema, PackInstaller.READERS) }?.let { add(ReadersReviewSource(it)) }
             openPack(PackInstaller.TRACKS) { platform.packDriver(TracksDatabase.Schema, PackInstaller.TRACKS) }?.let { add(TracksReviewSource(it)) }
-            openPack(PackInstaller.DICTIONARY) { platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY) }?.let { add(OnomatopoeiaReviewSource(it)); add(PhoneticSeriesReviewSource(it)) }
+            openPack(PackInstaller.DICTIONARY) { platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY) }?.let {
+                add(OnomatopoeiaReviewSource(it)); add(PhoneticSeriesReviewSource(it)); add(ThesaurusReviewSource(it))
+            }
+            openPack(PackInstaller.LINGUIST) { platform.packDriver(LinguistDatabase.Schema, PackInstaller.LINGUIST) }?.let { add(LinguistReviewSource(it)) }
             add(KanaMnemonicReviewSource)
         }.also { reviewSources = it }
     })
@@ -686,6 +698,51 @@ class AppGraph(val platform: PlatformServices) {
         }
     }
 
+    // --- Phase 13: translation workbench, thesaurus + writing studio, poetry corner + reading circle (§6.12–§6.14) ---
+
+    private val linguistSlot = PackSlot<LinguistDatabase>()
+
+    /** The linguist pack (translation passages, poems, circle texts), or null while it isn't installed. */
+    @Throws(Exception::class)
+    suspend fun linguistPack(): LinguistDatabase? = linguistSlot.get {
+        openPack(PackInstaller.LINGUIST) { LinguistDatabase(platform.packDriver(LinguistDatabase.Schema, PackInstaller.LINGUIST)) }
+    }
+
+    /** Translation workbench (BRIEF_V2 §6.12, D-270…D-274): passages, sight/written grading, the skill line on Me. */
+    val translationWorkbench: TranslationService by lazy {
+        TranslationService(userDatabase, { linguistPack()?.let { TranslationRepository(it) } }, { ai.gateway() }, device.deviceId)
+    }
+
+    private val thesaurusSlot = PackSlot<ThesaurusRepository>()
+
+    /** Expression thesaurus and collocations (dictionary pack tables, D-272/D-273), or null without the dictionary pack. */
+    @Throws(Exception::class)
+    suspend fun thesaurus(): ThesaurusRepository? = thesaurusSlot.get {
+        openPack(PackInstaller.DICTIONARY) {
+            ThesaurusRepository(DictionaryDatabase(platform.packDriver(DictionaryDatabase.Schema, PackInstaller.DICTIONARY)))
+        }
+    }
+
+    /** Writing studio (BRIEF_V2 §6.13, D-275): synced drafts, corrections, register check, suggestions, readability. */
+    val writingStudio: WritingStudio by lazy {
+        WritingStudio(
+            userDatabase, { thesaurus() }, { reader.analyzer() }, { ai.gateway() }, { coverage.difficultyOf(it) },
+            gradeReaderSummary = { id, text -> reader.graded.story(id)?.let { reader.graded.gradeSummary(it, text) } },
+        )
+    }
+
+    /** Poetry corner (BRIEF_V2 §6.14, D-276/D-277), or null while the linguist pack isn't installed. */
+    @Throws(Exception::class)
+    suspend fun poetry(): PoetryRepository? = linguistPack()?.let { PoetryRepository(it) }
+
+    /** Solo reading circle (BRIEF_V2 §6.14, D-278): pack texts or library documents, sentence by sentence. */
+    val readingCircle: ReadingCircle by lazy {
+        ReadingCircle(
+            userDatabase, { poetry() }, recordings, { reader.analyzer() },
+            libraryDocument = { id -> reader.document(id)?.let { it.title to (it.body to it.ruby) } },
+            grammarTitle = { id -> grammar()?.point(id)?.point?.title },
+        )
+    }
     // --- Phase 13: pitch test, kanji explorer, dictionary polish, mini-games, reader grammar (BRIEF_V2 §6.7, §6.9,
     // §6.15, §6.16; D-280…D-289) -------------------------------------------------------------------------------------
 

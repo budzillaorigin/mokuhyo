@@ -10,6 +10,7 @@ import argparse
 import sys
 from pathlib import Path
 
+import build_collocations
 import build_decks
 import build_dictionary
 import build_exam
@@ -20,11 +21,15 @@ import build_onomatopoeia
 import build_phonetics
 import build_practice
 import build_sentences
+import build_thesaurus
 import build_tokenizer
 import build_tracks
+import build_translation
 from common import PACKS, load_lock, log, source, source_entry, update_sources, write_manifest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "readers"))
+sys.path.insert(0, str(Path(__file__).resolve().parent / "literature"))
+import build_literature
 import build_readers
 
 
@@ -48,14 +53,18 @@ def main() -> None:
     build_sentences.main()
     build_decks.main()
     build_onomatopoeia.main([])  # needs the dictionary and its Tatoeba sentences
+    build_thesaurus.build()  # expression clusters (dictionary pack tables), after the Tatoeba sentences
     build_phonetics.main([])  # needs the dictionary's kanji table and KanjiVG
     build_kanji_path.main()
     build_grammar.main()
     build_practice.main()
     build_tracks.main([])
     build_tokenizer.main()
+    build_collocations.build()  # PMI over tokenized Tatoeba; needs the tokenizer pack
     build_exam.main()
     build_readers.build(PACKS, PACKS)  # graded readers; needs the dictionary and tokenizer packs above
+    build_translation.build()  # linguist.sqlite: translation passages (+ Tatoeba pairs from the dictionary pack)
+    build_literature.build()  # linguist.sqlite: poems and reading-circle texts (Aozora, pinned)
     write_manifest()
 
 

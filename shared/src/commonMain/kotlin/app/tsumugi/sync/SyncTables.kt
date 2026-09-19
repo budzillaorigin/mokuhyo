@@ -259,6 +259,35 @@ internal class TableSpec(
             listOf("point_id"), "updated_at", MergeRule.LWW,
         )
 
+        /** Translation attempts (BRIEF_V2 §6.12, D-274): written once; a delete is a one-way tombstone, like reviews. */
+        val translationAttempt = TableSpec(
+            "translation_attempt",
+            listOf(
+                "id" to T, "passage_id" to T, "direction" to T, "genre" to T, "level" to T, "mode" to T, "source_text" to T,
+                "attempt_text" to T, "duration_ms" to I, "time_limit_ms" to I, "grader" to T, "accuracy" to I, "completeness" to I,
+                "register" to I, "naturalness" to I, "score" to I, "grade" to T, "engine" to T, "device_id" to T,
+                "created_at" to I, "deleted_at" to I,
+            ),
+            listOf("id"), "created_at", MergeRule.UNION_TOMBSTONE, tombstone = "deleted_at",
+        )
+        /** Writing-studio drafts (BRIEF_V2 §6.13, D-275): LWW with a `deleted` tombstone flag. */
+        val writingDraft = TableSpec(
+            "writing_draft",
+            listOf(
+                "id" to T, "title" to T, "body" to T, "task_ref" to T, "task_prompt" to T, "target_register" to T,
+                "created_at" to I, "updated_at" to I, "deleted" to I,
+            ),
+            listOf("id"), "updated_at", MergeRule.LWW,
+        )
+        /** Solo reading-circle sessions (BRIEF_V2 §6.14, D-278): LWW with a `deleted` tombstone flag. */
+        val circleSession = TableSpec(
+            "circle_session",
+            listOf(
+                "id" to T, "text_id" to T, "title" to T, "sentence_count" to I, "position" to I, "entries" to T,
+                "started_at" to I, "finished_at" to I, "updated_at" to I, "deleted" to I,
+            ),
+            listOf("id"), "updated_at", MergeRule.LWW,
+        )
         /** Pitch-accent test answers (BRIEF_V2 §6.7, D-284): written once, merged by union like exam attempts. */
         val pitchTestResult = TableSpec(
             "pitch_test_result",
@@ -284,7 +313,7 @@ internal class TableSpec(
         val all = listOf(
             item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt, pathProgress, pathUnlock,
             conversation, todayBlockDone, streakFreeze, mediaDeck, mediaDeckWord, knownWord, immersionSession, readerAnnotation,
-            grammarMastery, pitchTestResult, gameScore,
+            grammarMastery, pitchTestResult, gameScore, translationAttempt, writingDraft, circleSession,
         ).associateBy { it.name }
     }
 }

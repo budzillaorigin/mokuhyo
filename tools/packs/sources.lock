@@ -266,6 +266,519 @@
       "update": {
         "kind": "fixed"
       }
+    },
+    "aozora-catalogue": {
+      "url": "https://www.aozora.gr.jp/index_pages/list_person_all_extended_utf8.zip",
+      "file": "list_person_all_extended_utf8.zip",
+      "release": "rolling export",
+      "date": "2026-09-18",
+      "rolling": true,
+      "sha256": "a615fa6ddb6ef3e0ad598337f5d08f1570c3d2aa51cc5d43a62998ca904905be",
+      "license": "Aozora Bunko catalogue (public information; texts are public domain)",
+      "update": {
+        "kind": "rolling",
+        "url": "https://www.aozora.gr.jp/index_pages/list_person_all_extended_utf8.zip",
+        "file": "list_person_all_extended_utf8.zip"
+      },
+      "mirror": {
+        "repo": "budzillaorigin/tsumugi",
+        "tag": "sources-aozora-2026-09-18"
+      }
+    },
+    "aozora-000219": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/219_ruby_33151.zip",
+      "file": "219_ruby_33151.zip",
+      "release": "219_ruby_33151",
+      "date": "2010-11-02",
+      "sha256": "6039621bae7a87297c7559a53eba0bccafaab4d15373324e62cabc7b0dd5c064",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-000859": {
+      "url": "https://www.aozora.gr.jp/cards/000067/files/859_ruby_21655.zip",
+      "file": "859_ruby_21655.zip",
+      "release": "859_ruby_21655",
+      "date": "2018-12-18",
+      "sha256": "53cb64a0d3aa3e883f20371838b6809062f43fefcf5d97d14d2c6c4ea304247a",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045088": {
+      "url": "https://www.aozora.gr.jp/cards/000121/files/45088_txt_41208.zip",
+      "file": "45088_txt_41208.zip",
+      "release": "45088_txt_41208",
+      "date": "2010-12-09",
+      "sha256": "7e414471a45c74704c63c14f717db2f21782cdf98d7c9c66709b827b6347ae3b",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045102": {
+      "url": "https://www.aozora.gr.jp/cards/000121/files/45102_txt_41201.zip",
+      "file": "45102_txt_41201.zip",
+      "release": "45102_txt_41201",
+      "date": "2010-12-09",
+      "sha256": "f01f2167f16775e16a41c063076762d696a898c200b6048def7177c0558ed0a1",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045104": {
+      "url": "https://www.aozora.gr.jp/cards/000121/files/45104_txt_41217.zip",
+      "file": "45104_txt_41217.zip",
+      "release": "45104_txt_41217",
+      "date": "2010-12-09",
+      "sha256": "c340dc614d07880ef93abd70bf6a355f67885d43769a1a867ea3682caaaacba1",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-000542": {
+      "url": "https://www.aozora.gr.jp/cards/000013/files/542_ruby_471.zip",
+      "file": "542_ruby_471.zip",
+      "release": "542_ruby_471",
+      "date": "2011-02-15",
+      "sha256": "2fe0be0d48f2a2befd484995bcdec0becc1db1c3a423dd7ddef7916bee10bfd5",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045031": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45031_txt_41660.zip",
+      "file": "45031_txt_41660.zip",
+      "release": "45031_txt_41660",
+      "date": "2011-01-10",
+      "sha256": "33698a18207bd3ec6952f5c9db2f3fd7dc4deaebff5347c8ff461ec74b233c03",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045046": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45046_txt_41976.zip",
+      "file": "45046_txt_41976.zip",
+      "release": "45046_txt_41976",
+      "date": "2011-01-22",
+      "sha256": "eb6335143ed539cf14a918853f4c50bc284f752f2b0fab6551fbd98ad608fdb3",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045035": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45035_ruby_41661.zip",
+      "file": "45035_ruby_41661.zip",
+      "release": "45035_ruby_41661",
+      "date": "2011-01-10",
+      "sha256": "2f0e03598777a1bdc7d6f5259b105f97b1f0e2242c09949f5b7388530d78f39a",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-054139": {
+      "url": "https://www.aozora.gr.jp/cards/001749/files/54139_ruby_66932.zip",
+      "file": "54139_ruby_66932.zip",
+      "release": "54139_ruby_66932",
+      "date": "2019-01-29",
+      "sha256": "1e51c7b1f74f7a1837154461f08e77256406f77405e5f53075ed3dfdec0a37e4",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-053626": {
+      "url": "https://www.aozora.gr.jp/cards/000067/files/53626_ruby_44154.zip",
+      "file": "53626_ruby_44154.zip",
+      "release": "53626_ruby_44154",
+      "date": "2011-06-26",
+      "sha256": "14be43d2a412208ff25d17abd43a89893fde5da3ab751a59ca07d19437ae7773",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-046669": {
+      "url": "https://www.aozora.gr.jp/cards/001168/files/46669_ruby_25674.zip",
+      "file": "46669_ruby_25674.zip",
+      "release": "46669_ruby_25674",
+      "date": "2014-06-16",
+      "sha256": "99879162d53c7450bc8890b781ca9a39be6cc885c0b142214cc01e80012cccd1",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045096": {
+      "url": "https://www.aozora.gr.jp/cards/000121/files/45096_ruby_41213.zip",
+      "file": "45096_ruby_41213.zip",
+      "release": "45096_ruby_41213",
+      "date": "2010-12-09",
+      "sha256": "49112273d756dfe86050105bf8eae39efb0e11d9f2ccfa78494fd19382d46edb",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051328": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/51328_ruby_49558.zip",
+      "file": "51328_ruby_49558.zip",
+      "release": "51328_ruby_49558",
+      "date": "2013-01-24",
+      "sha256": "6d72dc1abb1490b6f9d666cc4444916e70f1577adba543054836aceb7ffdfba8",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051312": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/51312_ruby_45919.zip",
+      "file": "51312_ruby_45919.zip",
+      "release": "51312_ruby_45919",
+      "date": "2012-02-09",
+      "sha256": "55ba7104e52806b845e52466c35147b67e02c9782f4e43c540b08331f35f26cf",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-053612": {
+      "url": "https://www.aozora.gr.jp/cards/000067/files/53612_txt_44140.zip",
+      "file": "53612_txt_44140.zip",
+      "release": "53612_txt_44140",
+      "date": "2011-06-26",
+      "sha256": "f3c2b43d16991cc0bc025cb2cf4dee5cc15c456f94b82f6b80dd45053c8e8967",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-000011": {
+      "url": "https://www.aozora.gr.jp/cards/000013/files/11_ruby_20061.zip",
+      "file": "11_ruby_20061.zip",
+      "release": "11_ruby_20061",
+      "date": "2012-10-26",
+      "sha256": "7609c64be0dba34c02d0f849992a2f1193aad743d5af7288e257ad9b0f885626",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-046268": {
+      "url": "https://www.aozora.gr.jp/cards/000081/files/46268_txt_23613.zip",
+      "file": "46268_txt_23613.zip",
+      "release": "46268_txt_23613",
+      "date": "2006-07-26",
+      "sha256": "f1bac0d0ef5948a17a59cbc4258ab62b0ca3548b7ea62495bd1ac7120a77eb47",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-053384": {
+      "url": "https://www.aozora.gr.jp/cards/000081/files/53384_txt_43223.zip",
+      "file": "53384_txt_43223.zip",
+      "release": "53384_txt_43223",
+      "date": "2011-05-15",
+      "sha256": "f0a30a3f03fc970777e268282022d01b41c16a8a055d96bd493bccbbbb04beb0",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051322": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/51322_ruby_49561.zip",
+      "file": "51322_ruby_49561.zip",
+      "release": "51322_ruby_49561",
+      "date": "2018-12-27",
+      "sha256": "57f08927205515de21f19570d6f3374b4523732b64ef855c7b53ff4c0dae25ef",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-000894": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/894_ruby_5790.zip",
+      "file": "894_ruby_5790.zip",
+      "release": "894_ruby_5790",
+      "date": "2010-11-02",
+      "sha256": "050006ebe029bf0fe97c68f546ca863d827c4ae891b72d2c7e38b9310a683e1e",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045041": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45041_ruby_41732.zip",
+      "file": "45041_ruby_41732.zip",
+      "release": "45041_ruby_41732",
+      "date": "2011-01-22",
+      "sha256": "f1b02bec7a818c1b94d3f3d8da9f7b207444535a49ec177850a691cd99799b94",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-055904": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/55904_txt_70721.zip",
+      "file": "55904_txt_70721.zip",
+      "release": "55904_txt_70721",
+      "date": "2023-06-15",
+      "sha256": "f8805a79f416045130ec495aa0caa880acf135e691538ce684791f53c7483c6c",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-053597": {
+      "url": "https://www.aozora.gr.jp/cards/000067/files/53597_txt_44125.zip",
+      "file": "53597_txt_44125.zip",
+      "release": "53597_txt_44125",
+      "date": "2011-06-26",
+      "sha256": "252d9bb3ad61725fc716690f37f7e1dfe9cee9c7a6a8411a8264de42be5908db",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-055897": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/55897_txt_68211.zip",
+      "file": "55897_txt_68211.zip",
+      "release": "55897_txt_68211",
+      "date": "2019-05-28",
+      "sha256": "caae4c9e907f457917ed8dfc72618cde96d5c6509ad1f73071b40d18912dfae1",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-055769": {
+      "url": "https://www.aozora.gr.jp/cards/000106/files/55769_ruby_61968.zip",
+      "file": "55769_ruby_61968.zip",
+      "release": "55769_ruby_61968",
+      "date": "2017-06-13",
+      "sha256": "f8065c952f33ccaf411640b5e53e2c0fbcaca7a4891e8140dca8d4231dd78bc5",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051321": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/51321_ruby_49447.zip",
+      "file": "51321_ruby_49447.zip",
+      "release": "51321_ruby_49447",
+      "date": "2018-12-27",
+      "sha256": "ec7a8df24248ec4209d99498ecfa1b03017c143c4d19d72057f03cd8e7332385",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051326": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/51326_ruby_49439.zip",
+      "file": "51326_ruby_49439.zip",
+      "release": "51326_ruby_49439",
+      "date": "2013-01-23",
+      "sha256": "f2183ce87c6eb7c5dc9bc6878f419ebba1965658e18de0662404d0d7706f9c3a",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051308": {
+      "url": "https://www.aozora.gr.jp/cards/000026/files/51308_ruby_69290.zip",
+      "file": "51308_ruby_69290.zip",
+      "release": "51308_ruby_69290",
+      "date": "2019-09-27",
+      "sha256": "fb48f46781928b75f7d27ec2478e0cdf1aea8a74e90e57a8b3d7666ca70baabc",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-058734": {
+      "url": "https://www.aozora.gr.jp/cards/001749/files/58734_txt_63800.zip",
+      "file": "58734_txt_63800.zip",
+      "release": "58734_txt_63800",
+      "date": "2019-08-10",
+      "sha256": "8672b3304fffde767000068c87cad578d464e6ee5255d03c33ca37ae391a3a85",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045038": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45038_txt_41735.zip",
+      "file": "45038_txt_41735.zip",
+      "release": "45038_txt_41735",
+      "date": "2011-01-22",
+      "sha256": "9808eb3be9547756e98636a49d41390ca10a40c670445bb7c2a1d6d57f09772b",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045051": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45051_txt_41977.zip",
+      "file": "45051_txt_41977.zip",
+      "release": "45051_txt_41977",
+      "date": "2011-01-22",
+      "sha256": "9b87e67abcee07a1bfaba9f84569c81af8de275f8d22992908ab0aab604e7a72",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-001058": {
+      "url": "https://www.aozora.gr.jp/cards/000081/files/1058_ruby_4709.zip",
+      "file": "1058_ruby_4709.zip",
+      "release": "1058_ruby_4709",
+      "date": "2011-05-11",
+      "sha256": "d65e0acdd64bb46e6f98bd67618c1d544142e9784a7b8f376a1be0c6a744388a",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045030": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45030_ruby_41657.zip",
+      "file": "45030_ruby_41657.zip",
+      "release": "45030_ruby_41657",
+      "date": "2011-01-10",
+      "sha256": "46665c4d411ceeb05c195683ab34e03bec4226174bb5095edc02bebb518f1a13",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045050": {
+      "url": "https://www.aozora.gr.jp/cards/000136/files/45050_ruby_41972.zip",
+      "file": "45050_ruby_41972.zip",
+      "release": "45050_ruby_41972",
+      "date": "2011-01-22",
+      "sha256": "df8f39ece550643c2328e9fb44128746647d977f14e0243db1c63bc203ba30e4",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-055757": {
+      "url": "https://www.aozora.gr.jp/cards/000106/files/55757_ruby_60076.zip",
+      "file": "55757_ruby_60076.zip",
+      "release": "55757_ruby_60076",
+      "date": "2016-09-09",
+      "sha256": "58d5b683087ddf52f6a8430e76ca9b2252f3754081d55248396338deb3ba08c8",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-045630": {
+      "url": "https://www.aozora.gr.jp/cards/000081/files/45630_txt_23610.zip",
+      "file": "45630_txt_23610.zip",
+      "release": "45630_txt_23610",
+      "date": "2019-01-21",
+      "sha256": "8a9131529d6ec05df6e5e0861772a07b03b5592254246575040d506697ef4faf",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-000092": {
+      "url": "https://www.aozora.gr.jp/cards/000879/files/92_ruby_164.zip",
+      "file": "92_ruby_164.zip",
+      "release": "92_ruby_164",
+      "date": "2011-01-28",
+      "sha256": "3b9990dc830f79346242db7f37969a1c2c7dbb7fb9abe9915e8c89c83f8628c9",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-000799": {
+      "url": "https://www.aozora.gr.jp/cards/000148/files/799_ruby_6024.zip",
+      "file": "799_ruby_6024.zip",
+      "release": "799_ruby_6024",
+      "date": "2013-07-17",
+      "sha256": "bbcba67c68db31aca5d24d8cab5ec17a1c85f9730b183f14895bb0b6d5ae19b8",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-000637": {
+      "url": "https://www.aozora.gr.jp/cards/000121/files/637_ruby_4095.zip",
+      "file": "637_ruby_4095.zip",
+      "release": "637_ruby_4095",
+      "date": "2011-04-27",
+      "sha256": "012d58a394654cda6eb63c90ab730e457a4aa3b196cc5f5d163e18da3e41a7ac",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-054408": {
+      "url": "https://www.aozora.gr.jp/cards/001475/files/54408_ruby_46198.zip",
+      "file": "54408_ruby_46198.zip",
+      "release": "54408_ruby_46198",
+      "date": "2012-01-01",
+      "sha256": "b50bef07b5a2bb43ba5455980c60333951cb9e94f3c695decced4dd81e4c546f",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051034": {
+      "url": "https://www.aozora.gr.jp/cards/001475/files/51034_ruby_47929.zip",
+      "file": "51034_ruby_47929.zip",
+      "release": "51034_ruby_47929",
+      "date": "2012-09-28",
+      "sha256": "4f268444c99002f7451567314e91d66be48a8be01dbaea19fa539a8fe63d226d",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-043017": {
+      "url": "https://www.aozora.gr.jp/cards/000879/files/43017_ruby_17394.zip",
+      "file": "43017_ruby_17394.zip",
+      "release": "43017_ruby_17394",
+      "date": "2005-01-07",
+      "sha256": "e13d0dedff1f599ceb7da2276a42a2b5b2b022e7ab7608316bb506d0f063611c",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-046605": {
+      "url": "https://www.aozora.gr.jp/cards/000081/files/46605_ruby_29758.zip",
+      "file": "46605_ruby_29758.zip",
+      "release": "46605_ruby_29758",
+      "date": "2013-07-08",
+      "sha256": "fb4a85928dacee7d3ab0ac925c450fb61c3bc470935e1ea8ad7d16a3626d5c4d",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
+    },
+    "aozora-051089": {
+      "url": "https://www.aozora.gr.jp/cards/001475/files/51089_ruby_53315.zip",
+      "file": "51089_ruby_53315.zip",
+      "release": "51089_ruby_53315",
+      "date": "2014-04-23",
+      "sha256": "d6927d6421da497240d88cb0e1b84b89aeddfff85875304e4d0cd38a9d0d8fe2",
+      "license": "Public domain (Aozora Bunko; checked by build_literature.py)",
+      "update": {
+        "kind": "fixed"
+      }
     }
   }
 }

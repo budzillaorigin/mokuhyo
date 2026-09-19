@@ -47,6 +47,10 @@ enum class ReviewKind(val code: String, val label: String) {
     TRACK_TASK("track_task", "Track cultural task"),
     TRACK_READING("track_reading", "Track reading"),
     KANA_MNEMONIC("kana_mnemonic", "Kana mnemonic"),
+    TRANSLATION_PASSAGE("translation_passage", "Translation passage"),
+    EXPRESSION_CLUSTER("expression_cluster", "Expression cluster"),
+    POEM_ANNOTATION("poem_annotation", "Poem paraphrase and gloss"),
+    CIRCLE_TEXT("circle_text", "Reading-circle summary"),
     ;
 
     companion object {

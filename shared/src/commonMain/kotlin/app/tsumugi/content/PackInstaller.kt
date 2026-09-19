@@ -202,6 +202,7 @@ class PackInstaller(
         const val PRACTICE = "practice.sqlite"
         const val TRACKS = "tracks.sqlite"
         const val READERS = "readers.sqlite"
+        const val LINGUIST = "linguist.sqlite"
 
         /** One install per file per process, however many AppGraph/PackInstaller instances exist. */
         private val locksGuard = Mutex()

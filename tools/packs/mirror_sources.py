@@ -31,6 +31,12 @@ REPO = "budzillaorigin/tsumugi"
 UPLOADS = "https://uploads.github.com/repos/"
 
 NOTES = {
+    "aozora": (
+        "A frozen copy of the Aozora Bunko catalogue (list_person_all_extended_utf8.zip) pinned in "
+        "`tools/packs/sources.lock`. The poetry corner and the reading circle check every work's copyright flags and "
+        "each author's death date against it at build time (DECISIONS D-276); the catalogue is republished daily, so "
+        "the pinned copy lives here.\n\nSource: Aozora Bunko (https://www.aozora.gr.jp/). Not an app release."
+    ),
     "tatoeba": (
         "Frozen copies of the Tatoeba per-language exports pinned in `tools/packs/sources.lock`, so content packs "
         "rebuild reproducibly after Tatoeba publishes a newer weekly export.\n\n"

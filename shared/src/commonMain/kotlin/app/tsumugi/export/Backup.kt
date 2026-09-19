@@ -180,6 +180,7 @@ class BackupService(
             TableSpec.item, TableSpec.itemRelation, TableSpec.note, TableSpec.setting, TableSpec.wordList,
             TableSpec.wordListEntry, TableSpec.pathProgress, TableSpec.pathUnlock, TableSpec.examAttempt, TableSpec.review,
             TableSpec.immersionSession, TableSpec.readerAnnotation, TableSpec.grammarMastery,
+            TableSpec.translationAttempt, TableSpec.writingDraft, TableSpec.circleSession,
         )
     }
 }

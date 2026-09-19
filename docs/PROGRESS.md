@@ -4,6 +4,119 @@ Current phase: **v2 (BRIEF_V2.md) on branch `v2`. Phase 9 (stabilize) built; Pha
 
 ---
 
+## Phase 13 (shared + data): translation workbench, thesaurus + collocations + writing studio, poetry corner + reading circle (2026-09-19)
+
+BRIEF_V2 §6.12, §6.13, §6.14. Decisions D-270…D-279. This covers the shared core, the content, the builders and the
+review kinds; the platform screens come next. The launch content was drafted by Claude (owner decision): everything
+is `source: "llm"`, `verified: false`, with the badge on until reviewed.
+
+### Content counts (main checkout `content/packs`, built 2026-09-19)
+- **`linguist.sqlite`** (new pack, 0.7 MB):
+  - **84 translation passages**:
+    - 60 drafted: 10 per genre (news, technical, legal, literary, dialogue, military), 37 J→E and 23 E→J, levels
+      N4 3 / N3 14 / N2 27 / N1 16, each with a reference, key points, register and notes. They include 3
+      graded-reader excerpts and 4 Aozora excerpts (J→E, our own reference translations).
+    - 24 Tatoeba passages (4 pairs each, both directions, no badge).
+  - **48 poems** by 9 public-domain poets in 8 themes (sky 9, sea 9, moon 7, winter 7, spring 6, summer 6, rain 5,
+    autumn 4), each with vocabulary, a plain-Japanese paraphrase, an English gloss and a note.
+  - **8 reading-circle texts** (661 sentences) with English summaries. There are 45 Aozora works in all, each with
+    its colophon.
+- **`dictionary.sqlite`** (new tables):
+  - **42 expression clusters** (21 emotion, 21 scene), 555 expressions, 536 linked to JMdict, 683 Tatoeba examples,
+    75 flagged plain lemmas.
+  - **6,941 collocations** (NV 5,114, AN 1,017, AV 810) from PMI over the tokenized Tatoeba corpus, 6,107 with an
+    example.
+- **Public-domain check:** all 12 authors died before 1968, and every work is 著作権なし in the pinned catalogue.
+  The table is in `docs/LICENSES.md`. The catalogue is mirrored to the release `sources-aozora-2026-09-18`.
+
+### What was built
+- **Translation workbench** (`app.tsumugi.translation`):
+  - `TranslationService`: passages by genre and direction, `importPassage` for the learner's own text (no reference),
+    and `timeLimitMs` / `SightTimer` for timed sight translation. The platform records and transcribes; the service
+    takes the transcript.
+  - `grade(passage, attempt, mode, durationMs)` uses the new **`grade_translation`** prompt: accuracy, completeness,
+    register and naturalness 0–4 each, issues and a better version, always labeled and never an official score. It
+    has golden tests.
+  - `TranslationDiff` gives a word- or character-level diff offline. Without a model, `Unavailable(reason, diff)`
+    plus `TranslationRubric` and `selfAssess(...)` stand in.
+  - `history()`, `delete()` (tombstone) and `skillLine()`: points, daily averages, recent averages by direction and
+    genre, and the trend.
+- **Thesaurus and collocations** (`app.tsumugi.thesaurus.ThesaurusRepository`): `clusters(kind)`, `search`,
+  `cluster(id)` (expressions, JMdict glosses, Tatoeba examples), `clustersForLemmas`, `clustersForEntry`, and
+  `collocations(entryId)`.
+- **Writing studio** (`app.tsumugi.writing`):
+  - `WritingStudio` drafts: `createDraft`, `update`, `delete`, `drafts`, and `draftForReaderTask(story)` /
+    `gradeReaderTask` for the §6.4 output tasks.
+  - `corrections` uses `correct_sentence` sentence by sentence.
+  - `registerCheck` uses rules (`RegisterChecker`: casual, polite, formal, with the outliers).
+  - `rewrite(sentence, register)` uses `natural_rewrite`.
+  - `suggestions` flags plain words with their clusters, and `readability` gives the §6.4 score.
+- **Poetry corner** (`app.tsumugi.poetry.PoetryRepository`): `themes`, `poems(theme)`, and `poem(id)` with the poem,
+  ruby, vocabulary, paraphrase, gloss, note and its Aozora source (dates, colophon).
+- **Solo reading circle** (`app.tsumugi.poetry.ReadingCircle`):
+  - pack texts or `doc:<id>` from the library;
+  - `start` (resumes an unfinished session), `startRecording`, `attachReading`, `explain`,
+    `attachExplanationRecording`, `complete`, `moveTo`, `recordingsOf`, `help(reading, idx)` (dictionary tokens and
+    grammar points) and `delete`;
+  - `CircleSession` is pure, tested state.
+- **User DB `9.sqm`** (v9 → v10) adds `translation_attempt` (union + tombstone), `writing_draft` and
+  `circle_session` (LWW). They are in `SyncTables`, the JSON backup and `SYNC_PROTOCOL.md`. `databases/9.db` is the
+  merged v9 snapshot. The file was written as `8.sqm` on its branch and renumbered after the pitch-test/games
+  migration.
+- **Review:** four new kinds, `translation_passage`, `expression_cluster`, `poem_annotation` and `circle_text`, in
+  `review.py` KINDS and in `ReviewKind`, listed in the app by `LinguistReviewSource` / `ThesaurusReviewSource`.
+- **Tools:**
+  - `build_translation.py`, `build_thesaurus.py`, `build_collocations.py`, `literature/build_literature.py`
+    (+ `aozora.py`, `lock_works.py`), all run by `build_all.py`;
+  - `draft` subcommands (`--endpoint URL --model NAME`) that add validated items with new ids;
+  - `mirror_sources.py` knows the Aozora group.
+
+### UI hooks for the platform agents (AppGraph)
+- `translationWorkbench`, with `passages`, `passage`, `importPassage`, `timeLimitMs`, `grade`, `selfAssess`,
+  `history`, `delete`, `skillLine` and `available`. Show the AI badge on `TranslationPassage.isAiGenerated` and on
+  every `Graded` result. The rubric texts are in `TranslationRubric.criteria`. The **skill line on Me** is
+  `skillLine()`.
+- `thesaurus()`, with clusters, search, cluster detail and collocations. It is also a dictionary entry's "expressions"
+  link through `clustersForEntry` and a "collocations" tab through `collocations(entryId)`.
+- `writingStudio`: drafts, corrections, registerCheck, rewrite, suggestions and readability. The graded reader's
+  "Write it" button opens `draftForReaderTask(story)`.
+- `poetry()`, with themes, poems and poem. Show the colophon from `PoemDetail.work`, and badge the paraphrase, gloss,
+  note and vocabulary, not the poem.
+- `readingCircle`, with texts, reading, start, sessions, the recording and explanation calls, complete, moveTo and
+  help. Record audio with `startRecording()`, then `attachReading` / `attachExplanationRecording`.
+
+### Tests
+- **Shared (androidHostTest):**
+  - `TranslationWorkbenchTest`: diff, timer, import, grading with and without a model, the skill line, sync with
+    tombstone.
+  - `WritingStudioTest`: register rules, outliers, flags, thesaurus and collocations, draft sync, reader task,
+    corrections.
+  - `PoetryAndCircleTest`: poems, session flow and recordings, help, library texts, session sync, review source.
+  - `PromptGoldenTest`: `grade_translation`.
+  - `UserDbMigrationTest`: v9 → v10.
+- **Tools:** `items/test_review_linguist.py` (ingest of the four kinds into copies of the real sources plus
+  validation, interactive review, kind detection), with the existing `test_review_kinds.py` and ruff.
+
+### Deferred
+- Platform screens (Compose/SwiftUI) for all of the above.
+- The shared reading circle (groups, monthly text, shared notes) is Phase 14.
+- More content comes from the owner's endpoint through the `draft` commands and review.
+- The Wikipedia corpus for collocations stays out of scope (D-152).
+
+### How to run
+```bash
+cd tools
+uv run python packs/build_translation.py check && uv run python packs/build_translation.py
+uv run python packs/build_thesaurus.py check && uv run python packs/build_thesaurus.py
+uv run python packs/build_collocations.py                 # first run tokenizes Tatoeba (~8 min), then cached
+uv run python packs/literature/lock_works.py              # pin newly listed Aozora works
+uv run python packs/literature/build_literature.py check && uv run python packs/literature/build_literature.py
+uv run python items/test_review_linguist.py
+./gradlew --no-daemon :shared:verifySqlDelightMigration :shared:testAndroidHostTest -Ptsumugi.native=false
+```
+
+---
+
 ## Phase 13 (shared + data): pitch test, kanji explorer, sound series, dictionary polish, mini-games, reader grammar (2026-09-18)
 
 BRIEF_V2 §6.7, §6.9, §6.15, §6.16. Decisions D-280…D-289. Shared core, the phonetics builder and the review kind only; the platform screens come next. The translation workbench, thesaurus/collocations/writing studio and poetry/reading circle are a parallel branch.

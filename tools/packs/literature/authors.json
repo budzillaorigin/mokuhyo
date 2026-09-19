@@ -1,0 +1,17 @@
+{
+  "_comment": "Public-domain check per author (BRIEF_V2 §7, DECISIONS D-276). Japan's term is life+70 since 2018-12-30; authors who died in 1967 or earlier were already public domain under the old life+50 rule, so died < 1968 is the test. `died` is the Aozora catalogue's 没年月日 and is re-checked against the pinned catalogue on every build, together with 作品著作権フラグ = なし for the work and 人物著作権フラグ = なし for every person on it.",
+  "authors": [
+    {"name": "中原中也", "reading": "なかはら ちゅうや", "en": "Nakahara Chūya", "born": "1907-04-29", "died": "1937-10-22"},
+    {"name": "萩原朔太郎", "reading": "はぎわら さくたろう", "en": "Hagiwara Sakutarō", "born": "1886-11-01", "died": "1942-05-11"},
+    {"name": "宮沢賢治", "reading": "みやざわ けんじ", "en": "Miyazawa Kenji", "born": "1896-08-27", "died": "1933-09-21"},
+    {"name": "高村光太郎", "reading": "たかむら こうたろう", "en": "Takamura Kōtarō", "born": "1883-03-13", "died": "1956-04-02"},
+    {"name": "北原白秋", "reading": "きたはら はくしゅう", "en": "Kitahara Hakushū", "born": "1885-01-25", "died": "1942-11-02"},
+    {"name": "山村暮鳥", "reading": "やまむら ぼちょう", "en": "Yamamura Bochō", "born": "1884-01-10", "died": "1924-12-08"},
+    {"name": "三好達治", "reading": "みよし たつじ", "en": "Miyoshi Tatsuji", "born": "1900-08-23", "died": "1964-04-05"},
+    {"name": "八木重吉", "reading": "やぎ じゅうきち", "en": "Yagi Jūkichi", "born": "1898-02-09", "died": "1927-10-26"},
+    {"name": "新美南吉", "reading": "にいみ なんきち", "en": "Niimi Nankichi", "born": "1913-07-30", "died": "1943-03-22"},
+    {"name": "芥川竜之介", "reading": "あくたがわ りゅうのすけ", "en": "Akutagawa Ryūnosuke", "born": "1892-03-01", "died": "1927-07-24"},
+    {"name": "夏目漱石", "reading": "なつめ そうせき", "en": "Natsume Sōseki", "born": "1867-02-09", "died": "1916-12-09"},
+    {"name": "小川未明", "reading": "おがわ みめい", "en": "Ogawa Mimei", "born": "1882-04-07", "died": "1961-05-11"}
+  ]
+}

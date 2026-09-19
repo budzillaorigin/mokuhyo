@@ -103,6 +103,12 @@ sqldelight {
             packageName.set("app.tsumugi.readers.db")
             srcDirs.setFrom("src/commonMain/sqldelightReaders")
         }
+        // Read-only linguist pack (translation passages, poetry corner, reading-circle texts; BRIEF_V2 §6.12, §6.14),
+        // built by tools/packs/build_translation.py and tools/packs/literature/build_literature.py.
+        create("LinguistDatabase") {
+            packageName.set("app.tsumugi.linguist.db")
+            srcDirs.setFrom("src/commonMain/sqldelightLinguist")
+        }
         // Read-only morphological-analysis pack (mecab-ipadic), built by tools/packs/build_tokenizer.py.
         create("TokenizerDatabase") {
             packageName.set("app.tsumugi.tokenizer.db")

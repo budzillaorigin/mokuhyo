@@ -5,6 +5,7 @@ import app.tsumugi.ai.prompts.ExplainGrammarInSentence
 import app.tsumugi.ai.prompts.FreeTalkTurn
 import app.tsumugi.ai.prompts.GradeProduction
 import app.tsumugi.ai.prompts.GradeReadingSummary
+import app.tsumugi.ai.prompts.GradeTranslation
 import app.tsumugi.ai.prompts.GenerateReadingQuestions
 import app.tsumugi.ai.prompts.JlptExplainItem
 import app.tsumugi.ai.prompts.NaturalRewrite
@@ -215,6 +216,43 @@ class PromptGoldenTest {
             "feedback is not English",
             listOf("N5 learner", "Retell the story", "Learner's summary: ゆいさんとケンさんは"),
         ) { out -> assertEquals(6, out.total) },
+        Golden(
+            GradeTranslation(),
+            GradeTranslation.Input(
+                source = "市は来月から、深夜バスの運行を週末にも拡大すると発表した。",
+                attempt = "The city announced it will extend late-night buses to weekends starting next month.",
+                reference = "The city announced that, from next month, it will expand its late-night bus service to weekends as well.",
+                japaneseToEnglish = true,
+                genre = "news",
+                level = "N3",
+                keyPoints = listOf("from next month", "late-night bus service", "weekends as well"),
+                register = "neutral news English",
+            ),
+            """{"accuracy":4,"completeness":3,"register":4,"naturalness":4,"feedback":"Accurate and natural news English. You dropped 'as well' (にも), which tells readers weekday service already exists.","issues":[{"kind":"omission","attempt_span":"","reference_span":"as well","note":"にも means the weekends are added to existing service."}],"better":"The city announced it will extend late-night buses to weekends as well, starting next month."}""",
+            """{"accuracy":4,"completeness":4,"register":4,"naturalness":4,"feedback":"Perfect translation with no problems at all, well done.","issues":[{"kind":"mistranslation","attempt_span":"night trains","reference_span":"","note":"Wrong vehicle."}],"better":""}""",
+            "quotes words the learner didn't write",
+            listOf("Japanese-to-English translation", "not an official score", "Key points:\n- from next month", "Learner's translation:\nThe city announced"),
+        ) { out ->
+            assertEquals(15, out.total)
+            assertEquals(94, out.percent)
+            assertEquals("omission", out.issues.single().kind)
+        },
+        Golden(
+            GradeTranslation(),
+            GradeTranslation.Input(
+                source = "Please submit the form by Friday.",
+                attempt = "金曜日までに書類を出してください",
+                reference = "",
+                japaneseToEnglish = false,
+                genre = "technical",
+                level = "N4",
+                spoken = true,
+            ),
+            """{"accuracy":4,"completeness":4,"register":3,"naturalness":3,"feedback":"The meaning is right. For a written notice, 提出してください is the more usual verb than 出してください.","issues":[{"kind":"register","attempt_span":"出してください","reference_span":"","note":"提出する is the standard word for submitting forms."}],"better":"金曜日までに書類を提出してください。"}""",
+            """{"accuracy":4,"completeness":4,"register":3,"naturalness":3,"feedback":"The meaning is right and the register is fine for a notice.","issues":[],"better":"Please submit the form by Friday."}""",
+            "better is not Japanese",
+            listOf("English-to-Japanese", "There is no reference", "speech-to-text transcript"),
+        ) { out -> assertEquals(88, out.percent) },
     )
 
     @Test
@@ -223,7 +261,7 @@ class PromptGoldenTest {
             listOf(
                 "correct_sentence", "natural_rewrite", "roleplay_turn", "explain_grammar_in_sentence", "translate_sentence",
                 "generate_reading_questions", "suggest_mnemonic", "opi_interviewer_turn", "opi_rate", "jlpt_explain_item",
-                "free_talk_turn", "grade_production", "paraphrase_word_ja", "grade_reading_summary",
+                "free_talk_turn", "grade_production", "paraphrase_word_ja", "grade_reading_summary", "grade_translation",
             ),
             PromptLibrary.names,
         )

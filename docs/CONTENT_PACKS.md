@@ -192,6 +192,32 @@ takes about a minute (most of it the VACUUM). `build_all.py` runs it after `buil
   744 of 1,183 marked studied kanji and adds 593 unmarked ones. `pack_meta`: `phonetic_series`,
   `phonetic_series_verified`, `component_roles`, `kanji_elements`.
 
+### Expression thesaurus and collocations (Phase 13, DECISIONS D-272, D-273)
+
+Tables `expression_cluster`, `expression`, `expression_example`, `expression_plain` and `collocation`. The schema is
+`sqldelightDictionary/.../thesaurus.sq`. `build_thesaurus.py` and `build_collocations.py` each replace only their own
+tables, after the Tatoeba sentences and the tokenizer pack.
+
+- **Clusters** (`tools/packs/thesaurus/clusters/{emotions,scenes}.json`, drafted by Claude, `source: "llm"`, badge on):
+  - 42 clusters, 21 emotion (怒り, 安堵, 喜び … 焦り) and 21 scene (雨, 夜, 表情, 笑う … 時の流れ).
+  - 555 expressions with nuance, register (casual/neutral/formal/literary), strength 1–3 and a drafted example.
+  - 536 link to a JMdict entry. They match on text and reading, then without a trailing する; the entry's first-sense
+    glosses come with the link.
+  - 683 Tatoeba examples, at most 2 per expression and 45 characters each.
+  - 75 `plain` lemmas that the writing studio flags.
+- **Collocations**:
+  - Built from PMI over the whole tokenized Tatoeba export (`tools/items/lattice.py`), in three adjacent patterns:
+    - NV: noun + を/が/に/で/と/へ/から + verb;
+    - AN: い-adjective + noun, or な-adjective + な + noun;
+    - AV: adverb + verb.
+  - A pair needs a count of at least 3 and PMI of at least 1.0, and each word keeps its 25 strongest.
+  - Build of 2026-09-19: **6,941 pairs** (NV 5,114, AN 1,017, AV 810) from 98,349 sentences with a pattern; 6,107
+    have a short example sentence with English.
+  - The table adds well under 1 MB to the pack. The tokenized pairs are cached in `tools/.cache`.
+- **Adding more:** add a cluster to a clusters file (or
+  `build_thesaurus.py draft --id ID --ja 勇気 --en Courage --kind emotion --endpoint URL --model NAME`, which writes
+  `clusters/drafted.json`), then `build_thesaurus.py check` and rebuild. Ids are never reused.
+
 ## grammar.sqlite: Japanese explanations (`grammar_point_ja`; Phase 12, DECISIONS D-233)
 
 Monolingual mode shows our own Japanese explanation of a grammar point instead of the English one.
@@ -301,6 +327,63 @@ Quiz results are `exam_attempt` rows (`GRADED_READER`). They feed the roadmap's 
 2. **Validate:** run `validate_readers.py --fix --report stories/<file>.json` until it is clean.
 3. **Review:** run `uv run python items/review.py packs/readers/stories/<file>.json`, or use the in-app Content review and then `review.py --ingest`. Unreviewed stories keep the AI-generated badge.
 4. **Rebuild:** run `build_readers.py` (or `build_all.py`), then render the new audio with `render_audio.py readers`. It renders only the new lines.
+
+## linguist.sqlite: translation workbench, poetry corner, reading circle (BRIEF_V2 §6.12, §6.14; DECISIONS D-270…D-279)
+
+The schema is `shared/src/commonMain/sqldelightLinguist/app/tsumugi/linguist/db/linguist.sq`, and the builders
+execute its CREATE statements. It is built by `tools/packs/build_translation.py` (`translation_passage`) and
+`tools/packs/literature/build_literature.py` (`aozora_work`, `poem_theme`, `poem`, `poem_theme_member`,
+`circle_text`, `circle_sentence`). Each replaces only its own tables. About 0.7 MB.
+
+### Translation passages (`tools/packs/translation/passages/*.json`)
+- **60 passages drafted by Claude**, 10 per genre (news, technical, legal, literary, dialogue, military):
+  - 37 J→E and 23 E→J;
+  - levels N4 3, N3 14, N2 27, N1 16.
+  - Each has a reference translation, a register line, 3–5 key points (the grader's completeness list) and
+    translator's notes, with `source: "llm"` and `verified: false`.
+  - Among them: 3 graded-reader excerpts (`origin.kind: "reader"`) and 4 Aozora excerpts (`"aozora"`: 蜘蛛の糸,
+    夢十夜 第一夜, 蜜柑, 野ばら) with our own references. The builder checks each excerpt is an exact substring of its
+    source.
+- **24 Tatoeba passages** (`tatoeba-<genre>-NN`):
+  - built from the dictionary pack's sentence pairs, 4 sentences each, chosen by genre keyword;
+  - both directions, human translations (CC BY 2.0 FR), no badge.
+- **Sight-translation limit** (`sight_seconds`): J→E 20 s + 1 s per 2.5 characters, E→J 20 s + 1.2 s per word,
+  rounded up to 5 s, 30–300 s. This is the same as `SightTimer` in the app.
+- **Format:** `{id: tr-<genre>-NNN, direction: je|ej, genre, level: N5…N1, ilr, title, text, reference, register,
+  keyPoints[], notes, origin: {kind: original|reader|aozora, ref?}, source, verified}`. Japanese side 60–420
+  characters; English source 30–170 words.
+- **Adding more:**
+  - `build_translation.py draft --genre news --direction je --count 5 --endpoint URL --model NAME` writes validated
+    passages to `passages/drafted-<date>-<genre>-<dir>.json` with the next free ids.
+  - Or write passages by hand in the same format.
+  - Then run `build_translation.py check`.
+
+### Poetry corner and reading circle (`tools/packs/literature/`)
+- **Public domain first** (D-276):
+  - `authors.json` records every author's dates.
+  - Every build re-checks them against the pinned Aozora catalogue (`aozora-catalogue` in `sources.lock`, mirrored to
+    the release `sources-aozora-2026-09-18`).
+  - It requires 作品著作権フラグ なし for the work, 人物著作権フラグ なし for every person on it, and death before
+    1968. Any failure stops the build.
+  - Texts are fetched at build time from the pinned Aozora zips (`aozora-<work id>`) and never committed. Pin new
+    works with `uv run python packs/literature/lock_works.py`.
+- **Poems** (`poems/{a,b}.json`):
+  - 48 poems by 9 poets: 中原中也 16, 山村暮鳥 8, 萩原朔太郎 5, 八木重吉 5, 新美南吉 4, 宮沢賢治 4, 高村光太郎 2, 北原白秋 2,
+    三好達治 2.
+  - Themes (`themes.json`): sky 9, sea 9, moon 7, winter 7, spring 6, summer 6, rain 5, autumn 4.
+  - An entry names an Aozora work and, for collections, the `section` heading (`occurrence`, `replace` for gaiji,
+    `drop` for stray labels).
+  - Our annotations: `titleEn`, `vocabulary` (4–10 `{word, reading, gloss}`; the word as printed, checked against the
+    text), `paraphrase` (plain modern Japanese), `gloss` (English) and `note`, all `source: "llm"`.
+  - `build_literature.py draft --endpoint URL --model NAME` annotates new poems.
+- **Reading circle** (`circle.json`):
+  - 8 short stories in modern kana, 661 sentences: 蜘蛛の糸 65, 夢十夜 第一夜 72, 手袋を買いに 100, 金の輪 47,
+    野ばら 85, 蜜柑 59, やまなし 115, 月夜と眼鏡 118.
+  - Each has our English title, summary (`llm`) and a level.
+  - Sentences are split at build time with the reader's rule (`readers_lib.sentences`).
+- **Colophon:** every work's Aozora colophon (底本, 入力, 校正, the volunteers' note) is stored in
+  `aozora_work.colophon` and shown with the text.
+- **Check without building:** `uv run python packs/literature/build_literature.py check`.
 
 ## Exam item banks (`tools/items/bank/*.json`, also the user-import format)
 
@@ -439,7 +522,7 @@ uv run python packs/test_practice_authoring.py                                  
   `DrillPlayback.plan(set, DrillTiming)` → prompt, answer pause (fixed, or proportional to the answer's clip length
   or estimate), model answer, repeat pause, gap; `DrillCursor` steps through it for a hands-free player.
 
-## Reviewing content (CLAUDE.md rule 10, v2 rule 19, BRIEF_V2 G-16; DECISIONS D-034, D-118, D-245…D-249)
+## Reviewing content (CLAUDE.md rule 10, v2 rule 19, BRIEF_V2 G-16; DECISIONS D-034, D-118, D-245…D-249, D-279)
 
 Everything an LLM drafted ships with `source: "llm"` and the "AI-generated" badge. Only `tools/items/review.py` removes
 the badge: it flips a flag in the source file, and the rebuilt pack carries that flag into the app. There are two
@@ -473,6 +556,10 @@ stored as NFC. Afterwards, run the validator that `--ingest` names for each file
 | `track_kanji` | same, `kanji[]` (explicit subsets only; derived ones are `derived`) | `<track>:<kanji>` | same | `track_kanji.source` |
 | `track_scenario`, `track_dialogue`, `track_drill`, `track_situation`, `track_task`, `track_reading` | same, `scenarios[]`, `dialogues[]`, `drills[]`, `situations[]`, `tasks[]`, `readings[]` | item id | same | `source` of the matching `track_*` table |
 | `kana_mnemonic` | `shared/.../kana/KanaMnemonics.kt` | the kana | listed in `KanaMnemonicsReviewed.kt` (generated) | compiled into the app |
+| `translation_passage` | `packs/translation/passages/*.json` | passage id | `source: "verified"` and `verified: true` | `translation_passage.source`/`verified` |
+| `expression_cluster` | `packs/thesaurus/clusters/*.json` | cluster id | same | `expression_cluster.source`/`verified` |
+| `poem_annotation` | `packs/literature/poems/*.json` (the annotations; the poem is public domain) | poem id | same | `poem.source`/`verified` |
+| `circle_text` | `packs/literature/circle.json` `texts[]` (title and summary) | text id | same | `circle_text.source` |
 
 `reviewKey(text)` is FNV-1a 32 over the UTF-8 bytes of the NFC text, written as 8 hex digits. It's the same function in
 `review.py` (`review_key`) and in `shared/.../review/ContentReviewSources.kt` (`reviewKey`). The app can edit these
@@ -480,8 +567,9 @@ fields: grammar `title`, `structure`, `meaning`, `nuance`; `meaning_ja`, `nuance
 `stem`/`explanation`; dialogue `title`, `topic`; scenario `titleEn`, `titleJa`, `setting`, `learnerRole`,
 `partnerRole`; OPI `ja`, `en`, `note`; drill `en`; reader `title`, `body`; onomatopoeia `feel`, `feel_ja`; sound series `members`, `readings`; track word
 `gloss`, `note`; track kanji `keyword`, `breakdown`, `hint`; track drills their string fields (`explanation`, `en`,
-`sentence`, …); track tasks `titleEn`, `titleJa`, `place`; track readings `title`, `body`. Other fields are edited in
-the terminal.
+`sentence`, …); track tasks `titleEn`, `titleJa`, `place`; track readings `title`, `body`; translation passages `title`, `text`, `reference`, `notes`; clusters `en`,
+`description`; poems `titleEn`, `paraphrase`, `gloss`, `note`; circle texts `titleEn`, `summaryEn`. Other fields are
+edited in the terminal.
 
 Re-running a drafting script never undoes a review. The practice author scripts keep a reviewed or rejected copy, and
 that includes a dialogue with a reviewed line. `grammar_ja.py merge --overwrite` and `build_onomatopoeia.py merge
@@ -499,6 +587,10 @@ uv run python items/review.py packs/speaking/opi.json
 uv run python items/review.py packs/onomatopoeia/entries.json
 uv run python items/review.py packs/readers/stories/n4.json
 uv run python items/review.py packs/phonetics/series.json               # derived sound series
+uv run python items/review.py packs/translation/passages/news-legal.json # passages with references
+uv run python items/review.py packs/thesaurus/clusters/emotions.json    # expression clusters
+uv run python items/review.py packs/literature/poems/a.json             # poem annotations
+uv run python items/review.py packs/literature/circle.json              # reading-circle summaries
 ```
 
 Tests: `uv run python items/test_review_ingest.py` and `items/test_review_kinds.py`. The second one ingests a verdict of

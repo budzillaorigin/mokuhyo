@@ -1,0 +1,485 @@
+{
+ "source": "llm",
+ "passages": [
+  {
+   "id": "tr-news-001",
+   "direction": "je",
+   "genre": "news",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Shopping street lends takeout containers",
+   "text": "仕組みはこうだ。客は参加している店で料理を買う際、百円を預けて、繰り返し使える丈夫な容器に料理を入れてもらう。食べ終わった容器は、洗わずに商店街のどの参加店に返してもよく、返すと百円が戻ってくる。集められた容器は、市が頼んだ専門の会社がまとめて洗い、再び店に届ける。現在、弁当屋や総菜店など二十三の店が参加している。",
+   "reference": "Here is how it works. When customers buy food at a participating shop, they pay a 100-yen deposit and have the food put into a sturdy, reusable container. When they have finished eating, they can return the container unwashed to any participating shop on the shopping street, and their 100 yen is refunded. The collected containers are washed in bulk by a specialist company hired by the city and then delivered back to the shops. At present, 23 shops, including boxed-lunch shops and delis, are taking part.",
+   "register": "English news-report style: neutral, concise, past tense for events, attributed quotes",
+   "keyPoints": [
+    "百円を預けて = pay a 100-yen deposit (not 'pay 100 yen')",
+    "containers may be returned unwashed to ANY participating shop",
+    "市が頼んだ専門の会社 = a specialist company commissioned/hired by the city",
+    "23 shops, e.g. bento shops and prepared-food (sozai) shops"
+   ],
+   "notes": "仕組みはこうだ is a set-up phrase for an explanation: 'Here is how it works.' 入れてもらう means the shop puts the food in for the customer; 総菜店 can be rendered 'delis' or 'prepared-food shops'.",
+   "origin": {
+    "kind": "reader",
+    "ref": "gr-n2-009"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-002",
+   "direction": "je",
+   "genre": "news",
+   "level": "N1",
+   "ilr": "3",
+   "title": "Maritime security memorandum: background",
+   "text": "今回の覚書の背景には、周辺の海域で近年、密輸や違法な操業、さらには所属の不明な船舶による航行の妨害といった事案が相次いでいることがある。海上交通路は両国の貿易の大部分を支えており、ひとたび航行の安全が脅かされれば、エネルギーや食料の供給に深刻な影響が及びかねない。政府関係者によれば、広大な海域を一国の艦船や航空機だけで常時監視することには限界があり、協力の枠組みを整えることが急務となっていたという。",
+   "reference": "The memorandum comes against a backdrop of a string of incidents in the surrounding waters in recent years, including smuggling, illegal fishing and even obstruction of navigation by vessels of unknown registry. The sea lanes carry the bulk of the two countries' trade, and any threat to the safety of navigation could seriously disrupt supplies of energy and food. According to government officials, there are limits to how far any one country's ships and aircraft can keep such a vast area under constant watch, which had made it a matter of urgency to put a framework for cooperation in place.",
+   "register": "English news-report style: neutral, concise, past tense for events, attributed quotes; policy/security vocabulary",
+   "keyPoints": [
+    "〜の背景には…ことがある: 'comes against a backdrop of' / 'behind X lies Y'",
+    "違法な操業 = illegal fishing (operations), not generic 'illegal business'",
+    "所属の不明な船舶 = vessels of unknown registry/affiliation",
+    "〜かねない = could/risk (negative possibility)",
+    "〜という at the end keeps the claim attributed to government officials"
+   ],
+   "notes": "Keep the attribution: the final sentence is hearsay (政府関係者によれば…という), so avoid stating it as fact. ひとたび…れば is 'once/if ever'; 急務 is 'an urgent task/priority'.",
+   "origin": {
+    "kind": "reader",
+    "ref": "gr-n1-011"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-003",
+   "direction": "je",
+   "genre": "news",
+   "level": "N3",
+   "ilr": "2",
+   "title": "Heavy rain forecast for tomorrow",
+   "text": "気象台によると、あすは低気圧が近づくため、県内は昼過ぎから雨が強く降る見込みです。特に山沿いでは、夕方から夜にかけて、一時間に三十ミリ以上の激しい雨が降るおそれがあります。気象台は、土砂災害や川の増水に注意するよう呼びかけています。また、この雨の影響で、あさっての朝は一部の道路で渋滞が予想されるため、車で出かける人は時間に余裕を持って行動してください。",
+   "reference": "According to the local meteorological office, a low-pressure system approaching tomorrow is expected to bring heavy rain across the prefecture from early afternoon. In mountainous areas in particular, intense rain of more than 30 millimeters per hour may fall from the evening into the night. The office is urging people to watch out for landslides and rising rivers. The rain is also expected to cause congestion on some roads on the morning of the day after tomorrow, so drivers are advised to allow extra time.",
+   "register": "English broadcast weather report: plain, clear, present/future tense, advisory tone",
+   "keyPoints": [
+    "見込み = is expected to; おそれがある = there is a risk / may (hazard warning)",
+    "一時間に三十ミリ以上 = more than 30 mm per hour",
+    "土砂災害 = landslides/mudslides; 川の増水 = rising rivers",
+    "あさっての朝 = the morning of the day after tomorrow (not 'tomorrow morning')"
+   ],
+   "notes": "Broadcast です/ます becomes neutral English, not overly polite. The final imperative-like してください is public advice: 'drivers are advised to'.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-004",
+   "direction": "je",
+   "genre": "news",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Regional business sentiment improves",
+   "text": "東和地方銀行が十五日発表した九月の地域景気調査によると、県内企業の景況感は三か月ぶりに改善した。夏の観光客の増加で、宿泊業や飲食業を中心に売り上げが伸びたことが主な要因とみられる。一方、原材料価格の高止まりを受けて、製造業では「先行きが不透明だ」とする回答が四割を超えた。同行は「回復の動きは続いているものの、業種によってばらつきが大きい」と分析している。",
+   "reference": "Business sentiment among companies in the prefecture improved for the first time in three months, according to a September regional economic survey released on the 15th by Towa Regional Bank. The main factor is believed to be rising sales, led by the hotel and restaurant sectors, on the back of an increase in summer tourists. Meanwhile, with raw material prices remaining high, more than 40 percent of manufacturers said the outlook was uncertain. The bank said in its analysis that \"the recovery is continuing, but there are wide variations between industries.\"",
+   "register": "English news-report style: neutral, concise, past tense for events, attributed quotes; economic reporting vocabulary",
+   "keyPoints": [
+    "三か月ぶりに改善 = improved for the first time in three months",
+    "〜とみられる = is believed/thought to be (hedged)",
+    "高止まり = remaining (stubbornly) high",
+    "四割を超えた = more than 40 percent (of manufacturers' responses)",
+    "同行 = the bank (the same bank), not 'accompanied'"
+   ],
+   "notes": "景況感 is 'business sentiment'. 宿泊業や飲食業を中心に means the growth was led by these sectors, not limited to them.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-005",
+   "direction": "je",
+   "genre": "news",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "City launches shelter-status app service",
+   "text": "【報道発表資料】みなと市は、市民の防災意識を高めるため、十月一日から、市内全域の避難所の場所や混雑状況をスマートフォンで確認できるサービスを開始いたします。本サービスは無料でご利用いただけ、日本語のほか英語、中国語、韓国語、ベトナム語に対応しております。災害時には、各避難所の受け入れ可能人数をおおむね三十分ごとに更新する予定です。詳しくは、市防災課までお問い合わせください。",
+   "reference": "[Press Release] To raise disaster-preparedness awareness among residents, Minato City will launch a service on October 1 that lets users check the locations of evacuation shelters throughout the city, and how crowded they are, on their smartphones. The service is free of charge and is available in English, Chinese, Korean and Vietnamese as well as Japanese. During a disaster, the number of additional people each shelter can accept will be updated approximately every 30 minutes. For details, please contact the City Disaster Prevention Division.",
+   "register": "English press-release style: formal, third person, future tense for announced plans",
+   "keyPoints": [
+    "start date October 1",
+    "混雑状況 = how crowded (congestion status), not traffic congestion",
+    "four languages in addition to Japanese",
+    "受け入れ可能人数 = remaining capacity / number of people who can still be accepted",
+    "おおむね三十分ごと = approximately every 30 minutes"
+   ],
+   "notes": "Humble/polite forms (開始いたします, ご利用いただけ) are institutional courtesy; English press releases express this through a neutral formal tone rather than extra politeness words.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-006",
+   "direction": "je",
+   "genre": "news",
+   "level": "N1",
+   "ilr": "3",
+   "title": "Preliminary GDP figures show modest growth",
+   "text": "政府が公表した七月から九月期の国内総生産の速報値は、物価変動の影響を除いた実質で前期比〇・三％増、年率換算では一・二％増となり、二期連続のプラス成長となった。個人消費が底堅く推移したことに加え、設備投資も省力化関連を中心に伸びた。ただ、輸出は海外経済の減速を背景に伸び悩んでおり、民間のエコノミストの間では、年明け以降は成長が鈍化するとの見方が大勢を占める。賃上げの勢いが物価上昇に追いつくかどうかが、今後の景気を左右しそうだ。",
+   "reference": "Preliminary figures released by the government show that real gross domestic product, which strips out the effect of price changes, grew 0.3 percent in the July-September quarter from the previous quarter, or an annualized 1.2 percent, marking a second consecutive quarter of growth. Personal consumption held up well, and capital spending also rose, led by investment in labor-saving equipment. Exports, however, have stalled amid slowing overseas economies, and most private-sector economists expect growth to lose momentum from the start of next year. Whether wage increases can keep pace with rising prices is likely to determine the course of the economy.",
+   "register": "English financial/economic news style: precise figures, standard economic terminology",
+   "keyPoints": [
+    "速報値 = preliminary figures; 実質 = real (inflation-adjusted)",
+    "前期比〇・三％増 / 年率換算一・二％増 = 0.3% quarter-on-quarter, 1.2% annualized",
+    "二期連続のプラス成長 = second straight quarter of growth",
+    "省力化関連 = labor-saving investment",
+    "見方が大勢を占める = the prevailing/majority view is"
+   ],
+   "notes": "Do not confuse 前期比 (vs previous quarter) with 前年同期比 (year on year). 底堅く推移 is 'held firm/proved resilient'; 〜そうだ here is a journalistic judgment ('is likely to'), not hearsay.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-007",
+   "direction": "ej",
+   "genre": "news",
+   "level": "N3",
+   "ilr": "2",
+   "title": "Town summer festival returns",
+   "text": "The Kitayama Town summer festival will return this year for the first time in three years. It will be held on Saturday, August 3, from 4 p.m. to 9 p.m. in Chuo Park. There will be food stalls, a dance contest for children, and fireworks starting at 8:30 p.m. The town is asking visitors to come by train or bus because the parking lot next to the park will be closed. If it rains, the festival will be moved to the next day.",
+   "reference": "北山町の夏祭りが、今年、三年ぶりに開かれる。八月三日（土）の午後四時から九時まで、中央公園で行われる。屋台が並ぶほか、子どものダンス大会があり、午後八時半からは花火も打ち上げられる。公園の隣の駐車場は閉鎖されるため、町は、来場者に電車やバスを利用するよう呼びかけている。雨の場合は、翌日に延期される。",
+   "register": "Japanese news style, plain である/る forms, simple vocabulary",
+   "keyPoints": [
+    "三年ぶりに for 'for the first time in three years'",
+    "date/time format: 八月三日（土）午後四時から九時まで",
+    "花火が打ち上げられる / 花火を打ち上げる (fireworks are set off)",
+    "〜よう呼びかけている for 'is asking visitors to'",
+    "雨の場合は翌日に延期 (moved to the next day)"
+   ],
+   "notes": "Japanese news uses plain form (開かれる, 行われる), not です/ます. 'Will return' is best rendered as 三年ぶりに開かれる rather than a literal 戻ってくる.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-008",
+   "direction": "ej",
+   "genre": "news",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Signal failure halts commuter line",
+   "text": "Services on the Minato Line were suspended for about three hours on Monday morning after a signal failure near Aoba Station, affecting roughly 45,000 commuters. According to the operator, the problem began at around 6:40 a.m., when the control system stopped sending signals to trains between Aoba and Kawabe stations. Trains resumed at 9:50 a.m., but delays continued into the afternoon, and several schools postponed the start of classes. The company apologized and said it was investigating the cause. It added that it would inspect similar equipment along the entire line by the end of the month.",
+   "reference": "月曜日の朝、青葉駅付近で信号トラブルが発生し、みなと線は約三時間にわたって運転を見合わせた。通勤客約四万五千人に影響が出た。運行会社によると、午前六時四十分ごろ、青葉駅と川辺駅の間で運行管理システムが列車に信号を送らなくなった。午前九時五十分に運転を再開したが、午後になっても遅れが続き、複数の学校が授業の開始を繰り下げた。同社は謝罪したうえで、原因を調べているとし、今月末までに全線の同様の設備を点検する方針を示した。",
+   "register": "Japanese news style, plain である/た forms, standard railway terminology",
+   "keyPoints": [
+    "suspended = 運転を見合わせる (railway term), resumed = 運転を再開",
+    "roughly 45,000 = 約四万五千人",
+    "between Aoba and Kawabe stations = 青葉駅と川辺駅の間",
+    "postponed the start of classes = 授業の開始を繰り下げた / 遅らせた",
+    "said it would inspect = 点検する方針を示した / 点検するとしている"
+   ],
+   "notes": "Japanese reports often split the English opening sentence in two. Reported speech is marked with 〜とし / 〜としている rather than direct quotation.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-009",
+   "direction": "ej",
+   "genre": "news",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Electric kettle recall",
+   "text": "Sakuragi Home Electric announced on Tuesday that it will voluntarily recall about 12,000 electric kettles sold between March and June this year. According to the company, in rare cases the switch may fail to turn off after the water boils, which could cause the kettle to overheat. No injuries have been reported so far. Customers who own one of the affected kettles are asked to stop using it immediately and contact the company's customer center. The kettles will be replaced free of charge.",
+   "reference": "桜木ホーム電機は火曜日、今年三月から六月にかけて販売した電気ケトル約一万二千台を自主回収すると発表した。同社によると、まれに湯が沸いた後もスイッチが切れず、本体が過熱するおそれがあるという。これまでにけが人の報告はない。対象製品を持っている人は、直ちに使用を中止し、同社のお客様センターに連絡するよう求めている。製品は無償で交換する。",
+   "register": "Japanese news style, plain forms, standard recall-notice terminology",
+   "keyPoints": [
+    "voluntarily recall = 自主回収",
+    "about 12,000 = 約一万二千台 (counter 台)",
+    "may fail to turn off / could overheat = 切れず…過熱するおそれがある",
+    "No injuries reported = けが人の報告はない",
+    "free of charge = 無償で交換"
+   ],
+   "notes": "'In rare cases' is まれに; keep the hedging (おそれがある, 〜という). The customer-facing request is reported as 〜よう求めている in news style.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-news-010",
+   "direction": "ej",
+   "genre": "news",
+   "level": "N1",
+   "ilr": "3",
+   "title": "Central bank holds rates, signals spring hike",
+   "text": "The central bank left its key interest rate unchanged at 0.5 percent on Thursday, but signaled that it could raise borrowing costs as early as next spring if wage growth continues to outpace inflation. In a statement, the bank noted that household spending had proven more resilient than expected, while cautioning that a slowdown in overseas demand posed a downside risk to exports. Market participants had widely anticipated the decision, and the yen was little changed in afternoon trading. Some analysts, however, argued that further delay could leave the bank with less room to respond should prices accelerate.",
+   "reference": "中央銀行は木曜日、政策金利を〇・五％に据え置くことを決めた。ただ、賃金の伸びが物価上昇率を上回る状況が続けば、早ければ来春にも利上げに踏み切る可能性を示唆した。同行は声明で、家計の消費支出が想定以上に底堅く推移していると指摘する一方、海外需要の減速が輸出の下振れリスクになると警戒感を示した。今回の決定は市場でおおむね織り込み済みで、午後の取引で円相場はほぼ横ばいだった。もっとも、一部のアナリストからは、判断を先送りすれば、物価の上昇が加速した場合に対応の余地が狭まりかねないとの指摘も出ている。",
+   "register": "Japanese financial news style, である/た forms, standard monetary-policy terminology",
+   "keyPoints": [
+    "left unchanged = 据え置く; key interest rate = 政策金利",
+    "as early as next spring = 早ければ来春にも",
+    "outpace inflation = 物価上昇率を上回る",
+    "downside risk = 下振れリスク; widely anticipated = 織り込み済み",
+    "should prices accelerate (inverted conditional) = 物価の上昇が加速した場合"
+   ],
+   "notes": "'Raise borrowing costs' is simply 利上げ in Japanese. 'Little changed' is ほぼ横ばい. The hedged 'could leave … with less room' fits 〜かねない.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-001",
+   "direction": "je",
+   "genre": "legal",
+   "level": "N3",
+   "ilr": "2",
+   "title": "Notice to tenants: common areas",
+   "text": "入居者の皆様へ　共用部分の使用についてのお願い\n廊下や階段などの共用部分に、自転車や荷物を置くことは禁止されています。火事や地震のときに、避難の妨げとなるためです。十一月三十日までに、各自で片付けてください。期日を過ぎても置かれている物は、管理会社が撤去し、処分することがあります。なお、処分にかかった費用は、所有者にご負担いただきます。ご理解とご協力をお願いいたします。",
+   "reference": "To All Residents: Use of Common Areas\nPlacing bicycles or personal belongings in common areas such as hallways and stairways is prohibited, as they obstruct evacuation in the event of a fire or earthquake. Please remove any such items by November 30. Items still left after this date may be removed and disposed of by the management company, and the owner will be charged for the cost of disposal. We appreciate your understanding and cooperation.",
+   "register": "formal English notice from a property manager: polite, direct, impersonal",
+   "keyPoints": [
+    "共用部分 = common areas",
+    "deadline November 30",
+    "撤去し、処分することがあります = may be removed and disposed of (not 'will')",
+    "処分にかかった費用は所有者にご負担いただきます = the owner will bear the disposal cost",
+    "ご理解とご協力をお願いいたします as a closing courtesy, not literal 'please understand'"
+   ],
+   "notes": "〜ことがある here expresses a possible action, so use 'may'. The heading's お願い is a polite request; an English notice can simply title it by subject.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-002",
+   "direction": "je",
+   "genre": "legal",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Terms of service: suspension of use",
+   "text": "第八条（利用停止）\n当社は、利用者が次の各号のいずれかに該当すると判断した場合、事前に通知することなく、本サービスの全部または一部の利用を停止することができるものとします。一　登録情報に虚偽の内容が含まれていた場合。二　料金の支払いを二か月以上怠った場合。三　その他、当社が本サービスの利用を不適当と判断した場合。\n当社は、本条に基づく措置により利用者に生じた損害について、一切の責任を負わないものとします。",
+   "reference": "Article 8 (Suspension of Use)\nIf the Company determines that a User falls under any of the following items, the Company may, without prior notice, suspend the User's use of all or part of the Service: (1) the registration information contains false statements; (2) the User has failed to pay fees for two months or more; or (3) the Company otherwise determines that the User's use of the Service is inappropriate.\nThe Company shall not be liable for any damage incurred by a User as a result of measures taken under this Article.",
+   "register": "English terms-of-service style: defined capitalized terms, 'shall/may', enumerated items",
+   "keyPoints": [
+    "当社 = the Company, 利用者 = User, 本サービス = the Service (defined terms)",
+    "〜ことができるものとします = may (discretionary power)",
+    "事前に通知することなく = without prior notice",
+    "二か月以上 = two months or more",
+    "一切の責任を負わない = shall not be liable for any damage"
+   ],
+   "notes": "ものとします is a legal formula for 'shall'; do not translate it literally. 各号 are the numbered items; render as (1)-(3).",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-003",
+   "direction": "je",
+   "genre": "legal",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Work rules: annual paid leave",
+   "text": "第二十一条（年次有給休暇）\n会社は、六か月間継続して勤務し、所定労働日の八割以上出勤した従業員に対して、十日の年次有給休暇を与える。\n従業員が年次有給休暇を取得しようとするときは、原則として三日前までに所属長に届け出なければならない。ただし、会社は、事業の正常な運営を妨げる場合に限り、取得の時季を変更することができる。",
+   "reference": "Article 21 (Annual Paid Leave)\nThe Company shall grant ten days of annual paid leave to any employee who has worked continuously for six months and has attended work on at least 80 percent of the scheduled working days.\nAn employee who wishes to take annual paid leave shall, as a rule, notify their department manager at least three days in advance. However, the Company may change the timing of the leave only where taking it at the requested time would interfere with the normal operation of the business.",
+   "register": "English employment-regulation style: formal, 'shall/may', precise conditions",
+   "keyPoints": [
+    "六か月間継続して勤務 = continuous service of six months",
+    "所定労働日の八割以上 = at least 80% of scheduled working days",
+    "原則として三日前までに = as a rule, at least three days in advance",
+    "〜に限り = only where (restrictive condition)",
+    "時季を変更することができる = may change the timing (not 'cancel')"
+   ],
+   "notes": "与える in regulations is 'shall grant'. 所属長 is the head of the employee's unit: 'department manager' or 'supervisor'. Keep 'only where' so the employer's right stays narrow.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-004",
+   "direction": "je",
+   "genre": "legal",
+   "level": "N1",
+   "ilr": "3",
+   "title": "Contract clause: confidentiality",
+   "text": "第十二条（秘密保持）\n甲及び乙は、本契約の履行に関連して相手方から開示された技術上又は営業上の情報（以下「秘密情報」という。）を、相手方の書面による事前の承諾なく第三者に開示し、又は本契約の目的以外に使用してはならない。ただし、開示の時点で既に公知であった情報、又は開示後に自己の責めに帰すべき事由によらずに公知となった情報については、この限りでない。\n本条の義務は、本契約終了後も三年間存続する。",
+   "reference": "Article 12 (Confidentiality)\nNeither Party A nor Party B shall, without the prior written consent of the other party, disclose to any third party or use for any purpose other than the purpose of this Agreement any technical or business information disclosed by the other party in connection with the performance of this Agreement (hereinafter, \"Confidential Information\"). However, this shall not apply to information that was already publicly known at the time of disclosure, or that became publicly known after disclosure through no fault of the receiving party.\nThe obligations under this Article shall survive for three years after the termination of this Agreement.",
+   "register": "English contract drafting: 'shall', defined terms, 'hereinafter', provisos",
+   "keyPoints": [
+    "甲・乙 = Party A / Party B",
+    "書面による事前の承諾 = prior written consent",
+    "以下「秘密情報」という = hereinafter 'Confidential Information'",
+    "自己の責めに帰すべき事由によらずに = through no fault of the receiving party",
+    "この限りでない = this shall not apply; 存続する = shall survive"
+   ],
+   "notes": "This is a standard NDA structure; ただし…この限りでない is the proviso 'provided, however, that … shall not apply'. 自己 refers to the receiving party, so make that explicit in English.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-005",
+   "direction": "je",
+   "genre": "legal",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Minutes of a condominium board meeting",
+   "text": "第三回管理組合理事会議事録（令和八年六月十四日開催、出席理事七名中六名）\n議事一　外壁修繕工事について：理事長より、見積もりを依頼した三社の比較結果が報告された。審議の結果、費用と工期を総合的に勘案し、緑建設株式会社に発注することが賛成多数で可決された。\n議事二　駐輪場使用規則の改定について：一部の理事から、放置自転車の撤去手続きを明確にすべきとの意見が出された。改定案は次回理事会で示すこととし、継続審議とした。",
+   "reference": "Minutes of the Third Meeting of the Board of Directors of the Owners' Association (held June 14, 2026; six of seven directors present)\nItem 1: Exterior wall repair work. The Chair reported the results of a comparison of quotations obtained from three contractors. After deliberation, and taking into account both cost and construction schedule, a motion to award the contract to Midori Construction Co., Ltd. was approved by majority vote.\nItem 2: Revision of the bicycle parking rules. Some directors said the procedure for removing abandoned bicycles should be made clearer. It was decided that a draft revision would be presented at the next board meeting, and the item was carried over for further discussion.",
+   "register": "English meeting-minutes style: past tense, passive voice, formal and concise",
+   "keyPoints": [
+    "令和八年 = 2026 (Reiwa 8)",
+    "管理組合理事会 = board of directors of the owners' (management) association",
+    "総合的に勘案し = taking into account overall / on a comprehensive assessment",
+    "賛成多数で可決 = approved by majority vote",
+    "継続審議 = carried over / deferred for further discussion"
+   ],
+   "notes": "Japanese era years must be converted (Reiwa 1 = 2019). Minutes use passive and impersonal constructions in both languages; 理事長 is 'Chair' or 'President' of the board.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-006",
+   "direction": "je",
+   "genre": "legal",
+   "level": "N1",
+   "ilr": "3",
+   "title": "Consumer notice: cooling-off period",
+   "text": "クーリング・オフに関するお知らせ\n訪問販売により契約を締結された場合、お客様は、この書面を受領した日から起算して八日を経過するまでは、書面又は電磁的記録により、無条件で契約の申込みの撤回又は契約の解除を行うことができます。この場合、お客様が損害賠償又は違約金の支払いを請求されることはなく、既に商品が引き渡されているときは、その引取りに要する費用は販売業者の負担とします。また、既に支払われた代金は、速やかに全額返還いたします。",
+   "reference": "Notice Regarding the Cooling-Off Period\nIf you have entered into a contract through a door-to-door sale, you may unconditionally withdraw your application or cancel the contract, in writing or by electronic record, within eight days counting from the date you received this document. In that case, you will not be charged any damages or penalty, and if the goods have already been delivered, the seller will bear the cost of collecting them. Any payment you have already made will be refunded in full promptly.",
+   "register": "plain-English consumer notice: second person 'you', clear, legally accurate",
+   "keyPoints": [
+    "訪問販売 = door-to-door sales",
+    "受領した日から起算して八日 = eight days counting from (and including) the date of receipt",
+    "申込みの撤回又は契約の解除 = withdraw the application or cancel the contract",
+    "損害賠償又は違約金 = damages or penalty (cancellation fee)",
+    "引取りに要する費用は販売業者の負担 = the seller bears the collection cost"
+   ],
+   "notes": "The notice addresses the customer (お客様), so natural English uses 'you'. 無条件で is 'unconditionally / without giving a reason'; keep both remedies (withdrawal and cancellation).",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-007",
+   "direction": "ej",
+   "genre": "legal",
+   "level": "N3",
+   "ilr": "2",
+   "title": "Gym membership cancellation rules",
+   "text": "Membership Cancellation\nIf you wish to cancel your membership, please fill in a cancellation form at the front desk by the 10th of the month. Your membership will end on the last day of that month. Cancellations received after the 10th will take effect at the end of the following month. Membership fees that have already been paid cannot be refunded. Please note that you must return your member card when you cancel.",
+   "reference": "退会について\n退会を希望される方は、毎月十日までに受付で退会届にご記入ください。その月の末日をもって退会となります。十日を過ぎてから提出された場合は、翌月末での退会となります。お支払い済みの会費は返金できません。なお、退会の際には会員証を必ずご返却ください。",
+   "register": "polite written Japanese notice (です/ます with light keigo: ご記入ください, ご返却ください)",
+   "keyPoints": [
+    "cancel membership = 退会 (not キャンセル)",
+    "by the 10th = 十日まで(に)",
+    "end on the last day of that month = その月の末日をもって退会",
+    "after the 10th → end of the following month = 翌月末",
+    "fees paid cannot be refunded = お支払い済みの会費は返金できません"
+   ],
+   "notes": "Customer-facing notices use です/ます with honorific requests (〜ください, ご〜ください). 'Please note that' is naturally なお、.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-008",
+   "direction": "ej",
+   "genre": "legal",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Online shop privacy notice",
+   "text": "Privacy Notice\nWe collect your name, email address, and purchase history when you create an account. This information is used to process orders, respond to inquiries, and, if you agree, send you information about new products. We will not provide your personal information to third parties without your consent, except where required by law. You may request access to, correction of, or deletion of your personal information at any time by contacting our customer support team. Requests will normally be handled within 14 days.",
+   "reference": "個人情報の取り扱いについて\n当社は、アカウント作成時に、お客様の氏名、メールアドレス及び購入履歴を取得します。取得した情報は、ご注文の処理、お問い合わせへの対応、及びお客様の同意がある場合には新商品のご案内の送付に利用します。法令に基づく場合を除き、お客様の同意なく個人情報を第三者に提供することはありません。お客様は、カスタマーサポートにご連絡いただくことで、いつでもご自身の個人情報の開示、訂正又は削除を請求することができます。ご請求には、通常十四日以内に対応いたします。",
+   "register": "formal written Japanese privacy policy: です/ます, legal terms (取得, 第三者提供, 開示・訂正・削除)",
+   "keyPoints": [
+    "We = 当社 (subject made explicit); collect = 取得する",
+    "except where required by law = 法令に基づく場合を除き",
+    "third parties = 第三者; consent = 同意",
+    "access/correction/deletion = 開示・訂正・削除（の請求）",
+    "within 14 days = 十四日以内"
+   ],
+   "notes": "Japanese privacy notices use established terms from data-protection practice (取得, 利用目的, 開示請求). 'Access' to one's data is 開示, not アクセス.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-009",
+   "direction": "ej",
+   "genre": "legal",
+   "level": "N1",
+   "ilr": "3",
+   "title": "Contract clause: limitation of liability",
+   "text": "Article 15 (Limitation of Liability)\nExcept in cases of willful misconduct or gross negligence, the Contractor's aggregate liability for any damages arising out of or in connection with this Agreement shall not exceed the total fees actually paid by the Client during the twelve (12) months preceding the event giving rise to the claim. In no event shall either party be liable to the other for any indirect, incidental, or consequential damages, including lost profits, even if such party has been advised of the possibility of such damages.",
+   "reference": "第十五条（責任の制限）\n受託者の故意又は重大な過失による場合を除き、本契約に起因又は関連して生じた損害についての受託者の賠償責任の総額は、当該請求の原因となった事由が発生した日に先立つ十二か月間に委託者が現実に支払った委託料の総額を上限とする。\nいずれの当事者も、相手方に対し、間接損害、付随的損害、派生的損害（逸失利益を含む。）については、その発生の可能性について事前に知らされていた場合であっても、一切責任を負わないものとする。",
+   "register": "Japanese contract drafting: である調, 又は/及び, 〜ものとする, 当該",
+   "keyPoints": [
+    "willful misconduct or gross negligence = 故意又は重大な過失",
+    "arising out of or in connection with = 起因又は関連して生じた",
+    "shall not exceed = 〜を上限とする",
+    "indirect, incidental, or consequential damages = 間接損害、付随的損害、派生的（結果的）損害",
+    "lost profits = 逸失利益"
+   ],
+   "notes": "Use legal kanji conjunctions 又は/及び and the formula ものとする. Contractor/Client map to 受託者/委託者; 'twelve (12)' needs only 十二か月.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "tr-legal-010",
+   "direction": "ej",
+   "genre": "legal",
+   "level": "N2",
+   "ilr": "2+",
+   "title": "Notice to employees: overtime rights",
+   "text": "Notice to Employees: Your Rights Regarding Overtime\nUnder company rules, you may not be required to work more than 45 hours of overtime per month, except under the special conditions set out in the labor-management agreement. All overtime must be paid at no less than 125 percent of your regular hourly wage. If you believe these rules have been violated, you have the right to consult the Human Resources Department or the local labor standards office. You will not be treated unfavorably for making such a report.",
+   "reference": "従業員の皆様へ：時間外労働に関する権利について\n就業規則により、労使協定に定める特別な事情がある場合を除き、一か月の時間外労働は四十五時間を超えてはならないこととされています。時間外労働に対しては、通常の時間給の百二十五パーセント以上の割増賃金が支払われなければなりません。これらの規則に違反していると思われる場合、皆様は人事部又は所轄の労働基準監督署に相談することができます。なお、相談や申告を行ったことを理由に、不利益な取扱いを受けることはありません。",
+   "register": "formal Japanese workplace notice: です/ます with legal terminology (労使協定, 割増賃金, 不利益な取扱い)",
+   "keyPoints": [
+    "overtime = 時間外労働; labor-management agreement = 労使協定",
+    "45 hours per month = 一か月四十五時間",
+    "no less than 125 percent = 百二十五パーセント以上（の割増賃金）",
+    "local labor standards office = 所轄の労働基準監督署",
+    "not be treated unfavorably = 不利益な取扱いを受けない"
+   ],
+   "notes": "'You may not be required to work' is a limit on the employer, so render it as a ceiling (〜を超えてはならない) rather than a prohibition on the employee. Workplace notices address staff as 従業員の皆様.",
+   "origin": {
+    "kind": "original"
+   },
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}

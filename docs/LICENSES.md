@@ -117,6 +117,39 @@ Listed in `content/models/manifest.json`; the in-app model manager shows each mo
 | KanjiVG component trees (`kanji_element` in `dictionary.sqlite`) | CC BY-SA 3.0 | Ulrich Apel, KanjiVG project (attribution as for KanjiVG above). Flattened by `tools/packs/build_phonetics.py` |
 | Functional components and sound series (`kanji_component_role`, `phonetic_series` in `dictionary.sqlite`; `tools/packs/phonetics/series.json`) | CC BY-SA 4.0 | Tsumugi contributors, derived by a heuristic over KanjiVG (CC BY-SA 3.0; its `kvg:radical`/`kvg:phon` marks are used as evidence and tie-breakers) and KANJIDIC2 on'yomi (EDRDG, CC BY-SA 4.0). Labeled "derived" until reviewed. No Outlier Linguistics text or component analysis is used |
 
+## Translation workbench, expression thesaurus, poetry corner and reading circle (Phase 13)
+
+| Content | License | Notes |
+|---|---|---|
+| Translation passages and reference translations (`tools/packs/translation/passages/*.json`, `translation_passage` in `linguist.sqlite`) | CC BY-SA 4.0 | Tsumugi contributors. Written by an LLM (Claude, owner decision): invented texts with fictional people and organizations. The only non-invented source texts are excerpts from our own graded readers and Aozora Bunko (below). The reference translations are our own, including those of the Aozora excerpts; no published translation is used. AI-generated badge until reviewed |
+| Tatoeba translation passages (`tatoeba-*` rows) | CC BY 2.0 FR | Tatoeba sentence pairs from the dictionary pack, grouped by keyword (attribution as for Tatoeba above) |
+| Expression clusters (`tools/packs/thesaurus/clusters/*.json`, `expression_*` in `dictionary.sqlite`) | CC BY-SA 4.0 | Tsumugi contributors. Clusters, nuance lines and examples written by an LLM (Claude) in its own words. The glosses come from JMdict (EDRDG) and the example sentences from Tatoeba (CC BY 2.0 FR). Nothing from 日本語表現インフォ (hyogen.info) is used. Badge until reviewed |
+| Collocations (`collocation` in `dictionary.sqlite`) | CC BY 2.0 FR / CC BY-SA 4.0 | Counts and PMI computed by `tools/packs/build_collocations.py` from the Tatoeba corpus (CC BY 2.0 FR), with JMdict (EDRDG) lemmas; examples are Tatoeba sentences |
+| Modern poems and reading-circle texts (`poem.body`, `circle_text.body` in `linguist.sqlite`) | Public domain in Japan | Texts from Aozora Bunko (https://www.aozora.gr.jp/), fetched at build time from the files pinned in `tools/packs/sources.lock`. Aozora's files may be redistributed; each work's Aozora notes (底本, 入力, 校正 and "このファイルは、インターネットの図書館、青空文庫で作られました。入力、校正、制作にあたったのは、ボランティアの皆さんです。") are stored with it and shown under the text. Per-author check below |
+| Aozora Bunko catalogue (`list_person_all_extended_utf8.zip`, build input only) | Public catalogue data | Used at build time for the copyright checks, never shipped. A frozen copy is kept in this repository's release `sources-aozora-2026-09-18` |
+| Poem annotations: English titles, vocabulary, paraphrases, glosses and notes (`tools/packs/literature/poems/*.json`); reading-circle titles and summaries (`circle.json`) | CC BY-SA 4.0 | Tsumugi contributors. Written by an LLM (Claude) in its own words, badge until reviewed. No text from まほろばことば (mahoblog), textbooks or published translations |
+
+### Aozora Bunko public-domain check (DECISIONS D-276, checked 2026-09-19)
+
+Japan's copyright term became life + 70 years on 2018-12-30, for works still protected that day. Authors who died in 1967 or earlier were already in the public domain under the old life + 50 rule, so the test is **death before 1968**. Every build re-checks the rule against the pinned Aozora catalogue, together with 作品著作権フラグ = なし for each work and 人物著作権フラグ = なし for every person on it, and stops on any failure.
+
+| Author | Born – died | Works used | Result |
+|---|---|---|---|
+| 中原中也 | 1907-04-29 – 1937-10-22 | 16 poems (山羊の歌, 在りし日の歌 and single poems) | public domain |
+| 山村暮鳥 | 1884-01-10 – 1924-12-08 | 8 poems | public domain |
+| 萩原朔太郎 | 1886-11-01 – 1942-05-11 | 5 poems (月に吠える and single poems) | public domain |
+| 八木重吉 | 1898-02-09 – 1927-10-26 | 5 poems (秋の瞳, 貧しき信徒) | public domain |
+| 新美南吉 | 1913-07-30 – 1943-03-22 | 4 poems; 手袋を買いに | public domain |
+| 宮沢賢治 | 1896-08-27 – 1933-09-21 | 4 poems (incl. 永訣の朝, 〔雨ニモマケズ〕); やまなし | public domain |
+| 高村光太郎 | 1883-03-13 – 1956-04-02 | 2 poems (智恵子抄) | public domain |
+| 北原白秋 | 1885-01-25 – 1942-11-02 | 2 poems | public domain |
+| 三好達治 | 1900-08-23 – 1964-04-05 | 2 poems | public domain |
+| 芥川竜之介 | 1892-03-01 – 1927-07-24 | 蜘蛛の糸, 蜜柑 | public domain |
+| 夏目漱石 | 1867-02-09 – 1916-12-09 | 夢十夜 (第一夜) | public domain |
+| 小川未明 | 1882-04-07 – 1961-05-11 | 金の輪, 野ばら, 月夜と眼鏡 | public domain |
+
+Not used: 草野心平 (died 1988, protected until the end of 2058) and 金子みすゞ (her poems are not on Aozora Bunko).
+
 ## Pre-rendered audio (VOICEVOX)
 
 The audio packs (`audio-<set>.zip`: exam listening, dialogues, minimal pairs, pitch-accent test, grammar examples, graded-reader read-along) are synthesized at build time with the VOICEVOX engine (BRIEF_V2 §5.6, DECISIONS D-090). They are optional downloads. The voices' terms allow commercial and non-commercial use of the generated audio **with a credit line**, and forbid use that damages the characters' or voice providers' image, political or religious use, deception, and training new voice models on the audio. The credit lines below are required and are shown here, on the in-app Licenses screen.

@@ -26,6 +26,7 @@ object PromptLibrary {
         GradeProduction(),
         ParaphraseWordJa(),
         GradeReadingSummary(),
+        GradeTranslation(),
     )
 
     val names: List<String> get() = all.map { it.name }

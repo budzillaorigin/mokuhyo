@@ -3,7 +3,7 @@
 Walks through the items of a source file that are still unreviewed, shows each one, and lets the reviewer accept it,
 edit it in $EDITOR (then accept), reject it with a note, skip, or quit. Only this tool flips content to verified; the
 apps show an "AI-generated" badge on everything else. Every reviewable content type, its source file, its stable id
-and how its flag flips are listed in docs/CONTENT_PACKS.md "Reviewing content" (DECISIONS D-034, D-118, D-245…D-249):
+and how its flag flips are listed in docs/CONTENT_PACKS.md "Reviewing content" (DECISIONS D-034, D-118, D-245…D-249, D-279):
 
   kind              source file(s)                              id                    accept sets
   grammar_point     packs/grammar/n*.json  points[]             point id              source "verified"
@@ -23,6 +23,10 @@ and how its flag flips are listed in docs/CONTENT_PACKS.md "Reviewing content" (
                     situation, task, reading)                   / <track>:<kanji>
   kana_mnemonic     shared/.../kana/KanaMnemonics.kt            the kana              listed in
                                                                                       KanaMnemonicsReviewed.kt
+  translation_passage packs/translation/passages/*.json        passage id            source "verified" + verified
+  expression_cluster packs/thesaurus/clusters/*.json            cluster id            source "verified" + verified
+  poem_annotation   packs/literature/poems/*.json               poem id               source "verified" + verified
+  circle_text       packs/literature/circle.json  texts[]       text id               source "verified" + verified
 
 <text key> is reviewKey(): FNV-1a 32 of the UTF-8 NFC text, 8 hex digits (the same function in
 shared/.../review/ContentReviewSources.kt). A review adds `reviewed {by, on, notes?}` (grammar_ja: `ja_reviewed`); a
@@ -33,6 +37,8 @@ Run: uv run python items/review.py packs/grammar/n5.json [--kind grammar_ja] [--
      uv run python items/review.py packs/tracks/gaming.json [--kind track_word]
      uv run python items/review.py packs/listening/dialogues.json [--kind drill_item]
      uv run python items/review.py packs/speaking/opi.json | packs/onomatopoeia/entries.json | packs/readers/stories/n4.json
+     uv run python items/review.py packs/translation/passages/news-legal.json | packs/thesaurus/clusters/scenes.json
+     uv run python items/review.py packs/literature/poems/a.json | packs/literature/circle.json
 
 Verdicts made on the phone (Me → Content review) are applied with:
      uv run python items/review.py --ingest verdicts.json [--reviewer NAME] [--dry-run]
@@ -284,6 +290,46 @@ def _ono_entries(_path: Path, doc: dict) -> Iterator[Entry]:
             yield str(e["id"]), doc["entries"], i
 
 
+# Phase 13: translation passages, thesaurus clusters, poem annotations, reading-circle summaries (D-279) --------
+
+def _show_translation(p: dict, _doc: dict) -> str:
+    origin = p.get("origin") or {}
+    return _join(
+        f"{p['id']}  ·  {p.get('direction')}  ·  {p.get('genre')}  ·  {p.get('level')} / ILR {p.get('ilr')}  ·  {p.get('title')}",
+        f"Origin: {origin.get('kind')} {origin.get('ref', '')}".rstrip(),
+        "Text:\n" + p.get("text", ""),
+        "Reference:\n" + p.get("reference", ""),
+        f"Register: {p.get('register', '')}",
+        _lines("Key points", p.get("keyPoints", [])),
+        f"Notes: {p.get('notes', '')}",
+    )
+
+
+def _show_cluster(c: dict, _doc: dict) -> str:
+    return _join(
+        f"{c['id']}  ·  {c.get('kind')}  ·  {c.get('ja')} ({c.get('reading')})  ·  {c.get('en')}",
+        c.get("description", ""),
+        f"Flags: {'、'.join(c.get('plain', []))}",
+        *(f"  {e.get('text')}【{e.get('reading')}】 {e.get('register')} · {e.get('intensity')}\n    {e.get('nuance')}\n"
+          f"    • {(e.get('example') or {}).get('ja', '')}\n      {(e.get('example') or {}).get('en', '')}"
+          for e in c.get("expressions", [])),
+    )
+
+
+def _show_poem(p: dict, _doc: dict) -> str:
+    return _join(
+        f"{p['id']}  ·  {p.get('author')}  ·  {p.get('title')} ({p.get('titleEn')})  ·  Aozora {p.get('work')}",
+        "(the poem text is fetched from Aozora at build time)",
+        _lines("Vocabulary", [f"{v.get('word')}【{v.get('reading')}】 {v.get('gloss')}" for v in p.get("vocabulary", [])]),
+        "Paraphrase:\n" + p.get("paraphrase", ""),
+        "Gloss:\n" + p.get("gloss", ""),
+        f"Note: {p.get('note', '')}",
+    )
+
+
+def _show_circle(t: dict, _doc: dict) -> str:
+    return _join(f"{t['id']}  ·  {t.get('author')}  ·  {t.get('title')} ({t.get('titleEn')})  ·  {t.get('level')}",
+                 t.get("summaryEn", ""))
 def _show_series(e: dict, _doc: dict) -> str:
     return _join(f"{e.get('id')}  ·  {e.get('readings', '')}", f"Members: {' '.join(e.get('members', ''))}",
                  "Derived from KanjiVG component trees and KANJIDIC2 on'yomi (build_phonetics.py).")
@@ -357,6 +403,14 @@ KINDS: dict[str, Kind] = {k.code: k for k in [
     _track("track_situation", _by_id("situations"), ("titleEn", "titleJa")),
     _track("track_task", _by_id("tasks"), ("titleEn", "titleJa", "place")),
     _track("track_reading", _by_id("readings"), ("title", "body")),
+    Kind("translation_passage", _glob("packs", "translation", "passages", pattern="*.json"), _by_id("passages"), "both",
+         ("title", "text", "reference", "notes"), _show_translation, "uv run python packs/build_translation.py check"),
+    Kind("expression_cluster", _glob("packs", "thesaurus", "clusters", pattern="*.json"), _by_id("clusters"), "both",
+         ("en", "description"), _show_cluster, "uv run python packs/build_thesaurus.py check"),
+    Kind("poem_annotation", _glob("packs", "literature", "poems", pattern="*.json"), _by_id("poems"), "both",
+         ("titleEn", "paraphrase", "gloss", "note"), _show_poem, "uv run python packs/literature/build_literature.py check"),
+    Kind("circle_text", _one("packs", "literature", "circle.json"), _by_id("texts"), "both", ("titleEn", "summaryEn"),
+         _show_circle, "uv run python packs/literature/build_literature.py check"),
 ]}
 
 # Kept for callers of the Phase 10 API: the fields an in-app edit may change, per kind.
@@ -426,6 +480,14 @@ def kinds_for(path: Path, data: dict) -> list[str]:
                 "dialogues": "track_dialogue", "drills": "track_drill", "situations": "track_situation",
                 "tasks": "track_task", "readings": "track_reading"}
         return [kind for key, kind in keys.items() if data.get(key)]
+    if path.parent.name == "passages" and path.parent.parent.name == "translation":
+        return ["translation_passage"]
+    if "clusters" in data:
+        return ["expression_cluster"]
+    if "poems" in data:
+        return ["poem_annotation"]
+    if "texts" in data and path.name == "circle.json":
+        return ["circle_text"]
     if "points" in data:
         return ["grammar_point"]
     if "items" in data:

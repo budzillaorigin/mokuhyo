@@ -47,7 +47,7 @@ class UserDbMigrationTest {
         val markersBefore = driver.long("SELECT count(*) FROM change_log")!!
 
         TsumugiDatabase.Schema.migrate(driver, 1, TsumugiDatabase.Schema.version)
-        assertEquals(9L, TsumugiDatabase.Schema.version)
+        assertEquals(10L, TsumugiDatabase.Schema.version)
         val db = TsumugiDatabase(driver)
 
         // daily_stats backfilled from the log.
@@ -133,6 +133,18 @@ class UserDbMigrationTest {
         assertEquals(1L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'pitch_test_result'"))
         assertEquals(1L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'game_score'"))
         assertEquals("ODAKA", driver.string("SELECT answer FROM pitch_test_result WHERE id = 'r1'"), "insert-only: the first answer stays")
+
+        // v9 -> v10 (9.sqm, D-270/D-274/D-278): translation attempts (insert + tombstone), drafts and circle sessions sync.
+        db.workbenchQueries.insertAttempt("t1", "tr-news-001", "JE", "news", "N2", "WRITTEN", "本文", "text", 1000, null, "SELF", 3, 3, 2, 2, 63, null, null, "d", 20)
+        db.workbenchQueries.tombstoneAttempt(21, "t1")
+        db.workbenchQueries.tombstoneAttempt(22, "t1") // already tombstoned: no new marker
+        db.workbenchQueries.putDraft("w1", "日記", "今日は雨だった。", null, null, null, 20, 20)
+        db.workbenchQueries.deleteDraft(21, "w1")
+        db.workbenchQueries.putCircleSession("c1", "akutagawa-kumo-no-ito", "蜘蛛の糸", 30, 0, "[]", 20, null, 20)
+        assertEquals(2L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'translation_attempt'"))
+        assertEquals(2L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'writing_draft'"))
+        assertEquals(1L, driver.long("SELECT count(*) FROM change_log WHERE table_name = 'circle_session'"))
+        assertEquals(emptyList(), db.workbenchQueries.liveDrafts().executeAsList())
     }
 
     private fun SqlDriver.string(sql: String): String? =
