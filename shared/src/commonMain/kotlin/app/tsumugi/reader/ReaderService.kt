@@ -73,7 +73,10 @@ class ReaderService(private val graph: AppGraph) {
     suspend fun importAozora(work: AozoraWork): String = aozora.import(work).also { analyzeLater(it) }
 
     @Throws(Exception::class)
-    suspend fun delete(id: String) = repository.delete(id)
+    suspend fun delete(id: String) {
+        repository.delete(id)
+        vocabulary.forget(id)
+    }
 
     @Throws(Exception::class)
     suspend fun setProgress(id: String, offset: Int) = repository.setProgress(id, offset)
@@ -123,6 +126,29 @@ class ReaderService(private val graph: AppGraph) {
     suspend fun openPassage(passageId: String): String? {
         val passage = packs.passage(passageId) ?: return null
         return saveAndAnalyze(passage.toImportedText())
+    }
+
+    // --- Phase 11 (BRIEF_V2 §6.4) ---------------------------------------------------------------------------
+
+    /** Annotations: box, highlight, note, grammar span; synced per annotation (D-164). */
+    val annotations: ReaderAnnotations by lazy { ReaderAnnotations(graph.userDatabase) }
+
+    /** The automatic vocabulary list of each document and its context-card drill (D-165). */
+    val vocabulary: DocumentVocabulary by lazy { DocumentVocabulary(graph.userDatabase) }
+
+    /** Screenshot import: OCR text plus the pictures kept as page images. */
+    val screenshots: ScreenshotImport by lazy { ScreenshotImport(graph.userDatabase, repository, graph.images) }
+
+    /** Imports screenshots (the platform has OCR'd them) and analyzes the text; returns the document id. */
+    @Throws(Exception::class)
+    suspend fun importScreenshots(pages: List<ScreenshotPage>, title: String? = null): String =
+        screenshots.importPages(pages, title).also { analyzeLater(it) }
+
+    /** Adds every dictionary word of a document's list to reviews with its sentence as context. */
+    @Throws(Exception::class)
+    suspend fun addDocumentWordsToReviews(documentId: String): Int {
+        val dictionary = graph.dictionary() ?: return 0
+        return vocabulary.addAllToReviews(documentId, { dictionary.entry(it)?.entry }, { e, context -> graph.collection.addToReviews(e, context) })
     }
 
     private suspend fun saveAndAnalyze(text: ImportedText): String = repository.save(text).also { analyzeLater(it) }

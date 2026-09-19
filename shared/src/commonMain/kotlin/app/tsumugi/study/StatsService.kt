@@ -3,6 +3,8 @@ package app.tsumugi.study
 import app.tsumugi.db.TsumugiDatabase
 import app.tsumugi.domain.ItemKind
 import app.tsumugi.domain.Stage
+import app.tsumugi.immersion.ImmersionDay
+import app.tsumugi.immersion.ImmersionLog
 import app.tsumugi.settings.SettingsRepository
 import app.tsumugi.srs.SrsRepository
 import app.tsumugi.srs.StageCount
@@ -107,6 +109,16 @@ class StatsService(
         }
 
         StatsSnapshot(streak(tz, today), perDay[today] ?: 0, heatmap, accuracy, stages, forecast)
+    }
+
+    /**
+     * Immersion minutes per day for the heat-map (BRIEF_V2 §6.11), oldest first, zero days included, with the daily
+     * target so the UI can mark days that met it. Reads the synced `immersion_session` log.
+     */
+    @Throws(Exception::class)
+    suspend fun immersionHeatmap(days: Int = 365): List<ImmersionDay> {
+        val target = settings.int(ImmersionLog.TARGET_KEY, ImmersionLog.DEFAULT_TARGET_MINUTES)
+        return withContext(Dispatchers.IO) { ImmersionLog.dayRows(db, zone(), clock, days, target) }
     }
 
     @Throws(Exception::class)

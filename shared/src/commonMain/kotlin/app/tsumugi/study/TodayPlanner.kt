@@ -4,6 +4,7 @@ import app.tsumugi.db.ReviewsSince
 import app.tsumugi.db.TsumugiDatabase
 import app.tsumugi.domain.CardDirection
 import app.tsumugi.domain.ItemKind
+import app.tsumugi.immersion.ImmersionTargetProgress
 import app.tsumugi.l10n.AppLocale
 import app.tsumugi.l10n.L10n
 import app.tsumugi.l10n.Labels
@@ -135,6 +136,12 @@ class TodayPlanner(
     /** How immersion candidates are matched to the learner; the §6.4 difficulty score plugs in here (Phase 11). */
     var difficulty: ImmersionDifficulty = SimpleImmersionDifficulty
 
+    /**
+     * Minutes of immersion logged today against the daily target (BRIEF_V2 §6.11); null = no log wired. Meeting the
+     * target marks the immersion block done, so the immersion challenge counts logged immersion too.
+     */
+    var immersionProgress: (suspend () -> ImmersionTargetProgress)? = null
+
     @Throws(Exception::class)
     suspend fun plan(
         dueReviews: Int,
@@ -163,7 +170,8 @@ class TodayPlanner(
         val yesterday = recent.filter { it.ts in yesterdayStart until todayStart && it.correct != null }
         val yesterdayAccuracy = if (yesterday.isEmpty()) null else yesterday.count { it.correct == 1L }.toDouble() / yesterday.size
         val doneRows = db.studyQueries.blocksDoneOn(today.toString()).executeAsList().toSet()
-        fun recorded(kind: TodayBlockKind) = kind.name in doneRows
+        val immersionMet = immersionProgress?.invoke()?.met == true
+        fun recorded(kind: TodayBlockKind) = kind.name in doneRows || (kind == TodayBlockKind.IMMERSION && immersionMet)
 
         val blocks = ArrayList<TodayBlock>()
 
@@ -223,6 +231,7 @@ class TodayPlanner(
 
         // Blocks the plan sees finished become facts, so block challenges count them on every device.
         for (b in blocks) if (b.done && !recorded(b.kind) && b.kind in DERIVED_DONE) markDoneBlocking(b.kind, today)
+        if (immersionMet && TodayBlockKind.IMMERSION.name !in doneRows) markDoneBlocking(TodayBlockKind.IMMERSION, today)
 
         TodayPlan(today, budget, phase, blocks, blocks.filterNot { it.done || it.optional }.sumOf { it.minutes }, challenge(today, tz, budget, locale))
     }

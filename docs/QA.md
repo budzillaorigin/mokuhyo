@@ -85,3 +85,12 @@ Setup: build the packs (`uv run python packs/build_all.py`), fetch the iOS frame
 - [ ] Draw vertical strokes on the writing canvas. The page doesn't scroll.
 - [ ] Turn off Wi-Fi while an AI engine is set. The app falls back within seconds instead of hanging.
 - [ ] The notification permission is asked only after the first finished review session.
+
+## Phase 11: Immersion pipeline (sentence bank, lyrics, log, annotations)
+- [ ] Load a video with an .srt. Look up a word from it in the dictionary: lines from your media come first, then Tatoeba. Tap a line: the clip plays and a frame shows.
+- [ ] "Mine this line" as a sentence card and as a word card. In reviews the sentence shows the word highlighted, with the frame and the clip audio. When the audio cut fails, TTS reads the line.
+- [ ] Immersion Kit is off in a fresh install and nothing is requested. Turn it on: lines appear under an "Immersion Kit" label. In airplane mode they fail quietly and the other results stay.
+- [ ] Import a song you own with an enhanced .lrc: words highlight in time. Import plain lyrics, run "Align with Whisper" (progress, cancel), and check the lines follow the singing. Hide a word in cloze mode: it stays hidden until sung, and typing it in kana or romaji counts.
+- [ ] Read for a few minutes, watch a video and add a manual entry. The Me heat-map and per-source minutes show them, and the Today immersion block completes at the daily target. Sync to a second device: the minutes match. Delete the manual entry on one device and it disappears on both.
+- [ ] Highlight a phrase and add a note in an article. Open the same URL on a second device after sync: the annotation is there. Look up three words: the document's word list has them, and Drill shows each one inside its sentence.
+- [ ] Import two screenshots of a manga page: the OCR text becomes one document and each page shows its picture.

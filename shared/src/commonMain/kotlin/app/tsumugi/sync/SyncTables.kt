@@ -211,12 +211,31 @@ internal class TableSpec(
             listOf("day"), "created_at", MergeRule.UNION,
         )
 
+        /** Immersion log (BRIEF_V2 §6.11, D-167): written once; a delete is a one-way tombstone, like reviews. */
+        val immersionSession = TableSpec(
+            "immersion_session",
+            listOf(
+                "id" to T, "day" to T, "source" to T, "mode" to T, "started_at" to I, "duration_s" to I, "ref" to T,
+                "title" to T, "device_id" to T, "created_at" to I, "deleted_at" to I,
+            ),
+            listOf("id"), "created_at", MergeRule.UNION_TOMBSTONE, tombstone = "deleted_at",
+        )
+        /** Reader annotations (BRIEF_V2 §6.4, D-164): per-annotation rows, LWW, `deleted` tombstone. */
+        val readerAnnotation = TableSpec(
+            "reader_annotation",
+            listOf(
+                "id" to T, "doc_key" to T, "kind" to T, "start_offset" to I, "end_offset" to I, "quote" to T, "note" to T,
+                "color" to T, "grammar_id" to T, "created_at" to I, "updated_at" to I, "deleted" to I,
+            ),
+            listOf("id"), "updated_at", MergeRule.LWW,
+        )
+
         /** Card rows don't sync; only the user-set suspended flag does, as its own change type. */
         const val CARD_FLAGS = "card_flags"
 
         val all = listOf(
             item, itemRelation, review, note, setting, wordList, wordListEntry, examAttempt, pathProgress, pathUnlock,
-            conversation, todayBlockDone, streakFreeze,
+            conversation, todayBlockDone, streakFreeze, immersionSession, readerAnnotation,
         ).associateBy { it.name }
     }
 }

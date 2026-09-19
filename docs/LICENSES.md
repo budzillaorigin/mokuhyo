@@ -114,6 +114,7 @@ These resources shaped Tsumugi's structure, pedagogy or feature ideas (BRIEF_V2 
 | YOMUJP | website | Graded readers with audio, level scheme |
 | Japan Reader | app | Annotations, screenshot import, context drills |
 | Tofugu | website | Guides library (outbound links only), kana course method |
+| Tae Kim's Guide, Imabi, Wasabi, Sakubi, Kanshudo, JLPT Sensei, Japanese with Anime, NHK Easy Japanese / News Web Easy | websites | Guides library: outbound links with our own titles and tags (D-166); nothing is fetched, stored or copied |
 | Nihongo Alive: Listen & Learn from Real-Life Conversations | textbook + audio | Natural dialogues with fillers |
 | 日本語NOW! Nihongo Now!: Performing Japanese Culture | textbook | Performing-culture track, memorize-and-perform mode |
 | 生活者としての外国人向け 私らしく暮らすための日本語ワークブック (Bunka-cho) | workbook | Daily-life admin track, can-do statements (content only if its license is confirmed CC BY; not ingested today) |

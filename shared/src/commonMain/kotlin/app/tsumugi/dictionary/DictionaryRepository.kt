@@ -251,6 +251,12 @@ class DictionaryRepository(private val db: DictionaryDatabase) {
         EntryDetail(entry, furigana, pitch, kanji, sentences, conjugations)
     }
 
+    /** Tatoeba sentences linked to [entryId] (JLPT-tagged and short first), for sentence search (BRIEF_V2 §6.2). */
+    @Throws(Exception::class)
+    suspend fun exampleSentences(entryId: Long, limit: Int = MAX_SENTENCES): List<ExampleSentence> = io {
+        q.sentencesForEntry(entryId, limit.toLong()).executeAsList().map { ExampleSentence(it.id, it.ja, it.en, it.jlpt?.toInt()) }
+    }
+
     @Throws(Exception::class)
     suspend fun summaries(ids: List<Long>): List<EntrySummary> = io { summariesInOrder(ids) }
 

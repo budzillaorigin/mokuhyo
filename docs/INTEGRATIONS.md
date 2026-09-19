@@ -8,6 +8,7 @@ The optional online integrations: what each one sends, where it goes, and where 
 | Bunpro | import from a CSV/TSV export file | none (file) | none | none |
 | Notion | push | `api.notion.com` only | `notion.token` | `integration` row `NOTION` (database ids) |
 | AnkiConnect | push | the learner's desktop, e.g. `http://<lan-ip>:8765` | `ankiconnect.key` (optional) | device settings `ankiconnect.*` (LAN address, rule 16) |
+| Immersion Kit examples | read (search) | `apiv2.immersionkit.com` (+ its media on `us-southeast-1.linodeobjects.com`) | none (no key) | device setting `examples.immersionKit` (off by default) |
 | Recordings sync | both ways | the learner's own sync server (`/v1/blobs`) | the sync tokens | device setting `sync.recordings` (off by default) |
 
 ## Notion
@@ -67,3 +68,13 @@ Bunpro publishes no official, documented public API (checked 2026-09-18). An API
 ## Recordings and pictures (opt-in blob sync)
 
 Off by default, per device. When it's on, the learner's recordings and personal-card pictures are uploaded to their own sync server's blob store, sealed when end-to-end encryption is on. Each device publishes a small manifest, and the other devices download what's missing. Protocol details: D-111 and docs/SYNC_PROTOCOL.md "Blobs".
+
+## Immersion Kit (optional example sentences)
+
+Off by default, per device (Settings → Dictionary → "Example sentences from Immersion Kit"; device setting `examples.immersionKit`, rule 16). When it's on, the dictionary's sentence search sends the looked-up word, and nothing else, to Immersion Kit and shows the results live under an "Immersion Kit" label, after the learner's own media lines and Tatoeba (D-162).
+
+- **Endpoint (checked 2026-09-18):** `GET https://apiv2.immersionkit.com/search?q=<word>&showUrlInMedia=true`. No key. The older documented endpoint (`https://api.immersionkit.com/look_up_dictionary?keyword=…`, docs.immersionkit.com "Public API → Search") no longer returns data, and the v2 API was announced as its replacement with breaking changes (pagination, media file names). The client uses `showUrlInMedia=true` so `image`/`sound` come back as full URLs.
+- **Response fields used:** `examples[].sentence`, `translation`, `word_list` + `matched_indexes[{index, length}]` (the matched word, used for the highlight), `title` (deck slug, shown as "My Neighbor Totoro"), `id`, `image`, `sound`. Unknown fields are ignored; examples without a sentence are skipped.
+- **Terms:** we found no published terms of use, rate limits or attribution requirements, on the docs site or in the API. The media are clips of commercial anime, dramas and games that Immersion Kit hosts. Because of that the source ships **off**, results are **never cached into packs, the database or cards** (only an in-memory cache of 50 queries for the app session), online lines can't be mined into cards, and the source is labeled by name wherever it appears. If Immersion Kit publishes terms that forbid this use, remove the `OnlineExamples` wiring in `AppGraph`; sentence search works without it.
+- **Timeouts:** `NetTimeouts.API` (connect 5 s, request 30 s; rule 13). A failure shows as "Immersion Kit didn't answer" and never affects the library or Tatoeba results.
+
