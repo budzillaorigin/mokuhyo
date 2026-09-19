@@ -206,7 +206,13 @@ class ContentReviewService(
 // "llm" (or, for exam banks, `verified = 0`, D-034) and renders everything a reviewer needs on the phone into
 // [ReviewCandidate.display]. Kinds whose tables a pack predates are skipped, never an error.
 
-/** Runs a raw read on a pack driver (the pack schemas aren't ours to extend with queries here). */
+/**
+ * Runs a raw read on a pack driver (the pack schemas aren't ours to extend with queries here).
+ *
+ * [map] must only read the cursor. It must not issue another query on [this]: the native (iOS) driver hands out one
+ * reader connection per pack, so a nested query waits forever for the connection this cursor holds. Read the rows
+ * into a list first, then query per row (the JVM driver tolerates nesting, which is why this only shows on a device).
+ */
 internal fun <T> SqlDriver.rows(sql: String, map: (SqlCursor) -> T): List<T> =
     executeQuery(null, sql, { c ->
         val out = ArrayList<T>()
@@ -338,20 +344,27 @@ class PracticeReviewSource(private val driver: SqlDriver) : ReviewSource {
             )
         }
 
+    // Every column is read while the cursor is open; the turns query runs only after it closes, like dialogues()
+    // above. A query issued from inside another query's cursor deadlocks the native driver (see rows()).
     private fun scenarios(): List<ReviewCandidate> =
         driver.rows("SELECT id, jlpt, title_en, title_ja, setting, learner_role, partner_role, source, ilr, register, goals, phrases FROM scenario WHERE source = 'llm' ORDER BY ord") { c ->
-            val id = c.getString(0)!!
+            listOf(
+                c.getString(0)!!, c.getLong(1).toString(), c.getString(2), c.getString(3), c.getString(4), c.getString(5),
+                c.getString(6), c.getString(7)!!, c.getString(8), c.getString(9), c.getString(10), c.getString(11),
+            )
+        }.map { row ->
+            val id = row[0]!!
             ReviewCandidate(
-                ReviewKind.SCENARIO, id, "N${c.getLong(1)} · ${c.getString(2)}",
+                ReviewKind.SCENARIO, id, "N${row[1]} · ${row[2]}",
                 mapOf(
-                    "titleEn" to c.getString(2)!!, "titleJa" to c.getString(3)!!, "setting" to c.getString(4)!!,
-                    "learnerRole" to c.getString(5)!!, "partnerRole" to c.getString(6)!!,
+                    "titleEn" to row[2]!!, "titleJa" to row[3]!!, "setting" to row[4]!!,
+                    "learnerRole" to row[5]!!, "partnerRole" to row[6]!!,
                 ),
                 blocks(
-                    "ILR ${c.getString(8)} · ${c.getString(9)}", section("Goals", jsonList(c.getString(10))),
-                    section("Phrases", jsonList(c.getString(11))), section("Scripted turns", turns("scripted_turn", id)),
+                    "ILR ${row[8]} · ${row[9]}", section("Goals", jsonList(row[10])),
+                    section("Phrases", jsonList(row[11])), section("Scripted turns", turns("scripted_turn", id)),
                 ),
-                c.getString(7)!!,
+                row[7]!!,
             )
         }
 
