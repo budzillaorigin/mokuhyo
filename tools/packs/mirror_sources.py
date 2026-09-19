@@ -55,7 +55,8 @@ def _call(method: str, url: str, token: str, body: bytes | None = None, content_
         "Content-Type": content_type,
     })
     with urllib.request.urlopen(req, timeout=300) as resp:
-        return json.load(resp)
+        data = resp.read()
+    return json.loads(data) if data else None  # DELETE answers 204 with no body
 
 
 def ensure_release(repo: str, tag: str, group: str, token: str) -> dict:

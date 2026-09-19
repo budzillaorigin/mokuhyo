@@ -89,10 +89,11 @@ class AudioPackRepository(
 
     /** The pre-rendered clip for [key] ([AudioKeys]), or null: then play system TTS instead (rule 20). */
     fun clip(key: String): Path? {
-        val set = AudioSet.ofKey(key) ?: return null
         val relative = AudioKeys.relativePath(key) ?: return null
-        val path = setDir(set) / relative
-        return if (fs.exists(path)) path else null
+        // A dialogue key lives in the dialogues pack, or in the tracks pack for a track dialogue (D-240).
+        return AudioSet.candidatesOf(key).firstNotNullOfOrNull { set ->
+            (setDir(set) / relative).takeIf { fs.exists(it) }
+        }
     }
 
     fun isInstalled(set: AudioSet): Boolean = fs.exists(setDir(set) / META)
@@ -324,7 +325,7 @@ class AudioPackRepository(
             throw PackInstallException("Expected the ${expectedSet.id} audio pack, got ${set.id}")
         }
         val targets = index.clips.map { (key, info) ->
-            if (AudioSet.ofKey(key) != set) throw PackInstallException("Clip $key doesn't belong to the ${set.id} set")
+            if (!set.owns(key)) throw PackInstallException("Clip $key doesn't belong to the ${set.id} set")
             val relative = AudioKeys.relativePath(key) ?: throw PackInstallException("Malformed clip key \"$key\"")
             Triple(relative, info, key)
         }

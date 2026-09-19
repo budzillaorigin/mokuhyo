@@ -173,6 +173,8 @@ struct AudioPacksView: View {
         case "minimal-pairs": String(localized: "Minimal pairs")
         case "pitch": String(localized: "Pitch accent test")
         case "grammar": String(localized: "Grammar examples")
+        case "readers": String(localized: "Graded readers")
+        case "tracks": String(localized: "Interest tracks")
         default: id
         }
     }

@@ -2,7 +2,9 @@ package app.tsumugi.audio
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 /** The renderer (tools/packs/render_audio.py) writes exactly these keys; D-092. */
 class AudioKeysTest {
@@ -27,6 +29,22 @@ class AudioKeysTest {
         assertEquals("audio-readers.zip", AudioSet.READERS.fileName)
         assertEquals(AudioSet.READERS, AudioSet.fromId("readers"))
         assertEquals("reader/gr-n3-004/12.m4a", AudioKeys.relativePath(AudioKeys.reader("gr-n3-004", 12)))
+    }
+
+    @Test
+    fun trackKeysBelongToTheTracksSet() {
+        // render_audio.py `tracks` writes dialogue/<track dialogue id>/<ord> and perform/<drill id>/<line index>
+        // into audio-tracks.zip (D-240). Track ids are prefixed, so a dialogue key never names two dialogues.
+        assertEquals("perform/performing-perf-001/4", AudioKeys.performance("performing-perf-001", 4))
+        assertEquals("dialogue/business-dl-001/0", AudioKeys.dialogue("business-dl-001", 0))
+        assertEquals(AudioSet.TRACKS, AudioSet.ofKey(AudioKeys.performance("performing-perf-001", 0)))
+        assertEquals(AudioSet.DIALOGUES, AudioSet.ofKey(AudioKeys.dialogue("business-dl-001", 0)), "primary set")
+        assertEquals(listOf(AudioSet.DIALOGUES, AudioSet.TRACKS), AudioSet.candidatesOf(AudioKeys.dialogue("business-dl-001", 0)))
+        assertTrue(AudioSet.TRACKS.owns(AudioKeys.dialogue("x", 0)))
+        assertFalse(AudioSet.DIALOGUES.owns(AudioKeys.performance("x", 0)))
+        assertFalse(AudioSet.TRACKS.owns(AudioKeys.reader("x", 0)))
+        assertEquals("audio-tracks.zip", AudioSet.TRACKS.fileName)
+        assertEquals(AudioSet.TRACKS, AudioSet.fromId("tracks"))
     }
 
     @Test

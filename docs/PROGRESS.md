@@ -455,7 +455,7 @@ BRIEF_V2 §8 Phase 12, §6.10, §6.16, G-08 and the Appendix A content findings.
 - `practice.sqlite`: 90 scenarios / 699 turns, OPI 96, 125 dialogues (natural 40, scripted 85) / 1,214 lines / 1,434 gaps / 306 questions, 31 drill sets / 325 items, 630 minimal pairs.
 - `exam.sqlite`: 7 banks, 401 passages, 2,963 items, 0 band warnings.
 
-### Audio (not rendered here)
+### Audio (rendered 2026-09-19, see below and CONTENT_PACKS "Phase 12 render")
 - `dialogues`: 1,214 lines, about 924 of them new plus the lines edited in 16 originals. `exam`: +191 lines of upper-range and liaison scripts. Drill sets reuse `grammar/<point>/0` and dialogue clips, and their English cues use system TTS.
 - Command: `uv run python packs/render_audio.py dialogues exam`. The cache keeps everything unchanged.
 
@@ -476,7 +476,7 @@ BRIEF_V2 §6.4 "Graded readers with audio" and the genre-based tasks, §8 Phase 
   - `levels.json`, `tasks.json` and `readers_lib.py`: the level rules, the genre task templates and the shared code (details in `docs/CONTENT_PACKS.md` "readers.sqlite").
 - **Launch content:** 120 stories, 20 per level (N6 level 0, N5, N4, N3, N2, N1), with 2,393 read-along lines. Genres: story 15, manga 13, news 13, editorial 12, email 12, essay 12, notice 12, academic 11, ad 10, recipe 10. Seven are government or military texts for DLPT learners (3 at N2, 4 at N1). The validator reports 0 errors and 0 warnings. All are AI-drafted by Claude (owner's decision): `source: "llm"`, `verified: false`, badge on until reviewed.
 - **Genre tasks:** 10 genres, each with a prediction question, a timed skim/scan, two close-reading prompts and an output task, in Japanese and English.
-- **Audio:** a `readers` set in `render_audio.py`, one clip per reader sentence (`reader/<story>/<idx>`). 春日部つむぎ narrates; speech uses the cast voices, 四国めたん for women and 玄野武宏 for men. **Not rendered yet**; the command is below.
+- **Audio:** a `readers` set in `render_audio.py`, one clip per reader sentence (`reader/<story>/<idx>`). 春日部つむぎ narrates; speech uses the cast voices, 四国めたん for women and 玄野武宏 for men. Rendered on 2026-09-19: 2,393 clips, 71.9 MB, in release `audio-packs-2026-09-19`.
 - **Shared** (`app.tsumugi.reader`):
   - `PackReaderRepository` over readers.sqlite implements `ReaderPackRepository`, and `ReaderService.packs` now defaults to it. It adds `levels()` and `story(id)` → `GradedStory`: the passage, vocabulary list, questions, `ReaderTaskSet` with filled prompts and timer, cast, and read-along lines.
   - `ReadAlongTrack`: timings from the readers audio pack's clip durations; untimed unless every line has a clip.
