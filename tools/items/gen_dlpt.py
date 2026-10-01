@@ -247,8 +247,12 @@ def validate_bank(bank: dict, lang: str, skill: str, report: Report, bands: dict
 
 
 ENGLISH_CUES = frozenset(
-    ["the", "a", "an", "of", "to", "is", "are", "was", "were", "what", "which", "who", "whom", "whose", "why", "how", "when", "where", "does", "do", "did", "according", "would", "could", "should", "most", "best", "main", "mainly", "author", "speaker", "text", "passage", "article", "message", "announcement"]
+    ["the", "a", "an", "of", "to", "is", "are", "was", "were", "what", "which", "who", "whom", "whose", "why", "how", "when", "where", "does", "do", "did", "according", "would", "could", "should", "most", "best", "main", "mainly", "author", "speaker", "text", "passage", "article", "message", "announcement",
+     "this", "that", "these", "those", "can", "we", "it", "in", "from", "about", "for", "with", "by", "be", "has", "have", "infer", "suggest", "suggests", "means", "implies", "conclude", "purpose", "tone", "interview", "conversation", "dialogue", "report"]
 )
+
+# A vocabulary question quotes the tested word or phrase in the target language: «…», “…”, "…", 「…」, '…'.
+QUOTED = re.compile(r"«[^»]*»|“[^”]*”|\"[^\"]*\"|「[^」]*」|『[^』]*』|‘[^’]*’")
 
 
 def is_english(stem: str, choices: list[str]) -> bool:
@@ -257,7 +261,7 @@ def is_english(stem: str, choices: list[str]) -> bool:
     words = re.findall(r"[A-Za-z']+", stem.lower())
     if not ENGLISH_CUES.intersection(words):
         return False
-    text = " ".join([stem, *choices])
+    text = " ".join([QUOTED.sub(" ", stem), *choices])
     letters = [c for c in text if c.isalpha()]
     return sum(c.isascii() for c in letters) >= 0.85 * max(1, len(letters))
 

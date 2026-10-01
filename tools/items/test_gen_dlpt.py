@@ -80,6 +80,16 @@ def test_questions_must_be_english():
     assert any("in English" in e for e in run(b).errors)
 
 
+def test_english_questions_with_quoted_target_words_pass():
+    # Regression (Phase 6 fill): every Russian ILR 2+ reading draft was rejected — "we can infer that" had no cue
+    # word, and a vocabulary stem quoting «принимает решения» fell under the ASCII ratio.
+    assert g.is_english("From this interview, we can infer that...", ["rescue workers are always in good shape", "they are poorly paid"])
+    assert g.is_english("In context, the phrase «принимает решения» means...", ["saves lives", "gives orders", "finds people", "makes decisions"])
+    assert g.is_english("What does 「申し込み」 mean in this notice?", ["apply", "cancel", "pay", "wait"])
+    assert not g.is_english("Из этого интервью можно сделать вывод, что...", ["a", "b", "c", "d"])
+    assert not g.is_english("What is the main idea?", ["спасатели", "альпинисты", "горы", "погода"])
+
+
 def test_band_misses_are_warnings_unless_strict():
     b = es_bank()
     b["passages"][0]["level"] = "0+"
