@@ -31,16 +31,39 @@ enum class ModelKind { LLM, STT }
 @Serializable
 data class ModelFile(val name: String, val url: String, val sha256: String, val bytes: Long)
 
+/** Who made a weight file and under what terms (CLAUDE.md rule 13); shown in the model picker. */
+@Serializable
+data class Provenance(
+    val developer: String,
+    val country: String,
+    val license: String,
+    val source: String,
+    /** Who converted/quantized the original weights, when not the developer. */
+    val conversion: String = "",
+)
+
 @Serializable
 data class ModelInfo(
     val id: String,
     val name: String,
     val kind: ModelKind,
+    /** Hardware tier ("A"–"D", BRIEF §6.1) for LLMs; null for speech models. */
+    val tier: String? = null,
+    /** "default" for the tier's pick, "alternate" for a benchmarked alternative. */
+    val role: String = "default",
     val recommended: Boolean = false,
     val minRamGb: Int,
+    /** Dedicated VRAM that lets a discrete GPU run this model instead of [minRamGb] of system RAM. */
+    val minVramGb: Int = 0,
     val contextSize: Int = 0,
     val license: String,
+    /** Model family (for the rule-13 check of Ollama models and per-family prompt quirks). */
+    val family: String = "",
+    /** Shipped inside the installer instead of downloaded. */
+    val bundled: Boolean = false,
+    val note: String = "",
     val files: List<ModelFile>,
+    val provenance: Provenance? = null,
 ) {
     val totalBytes: Long get() = files.sumOf { it.bytes }
 }

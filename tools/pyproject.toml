@@ -6,6 +6,10 @@ requires-python = ">=3.12"
 dependencies = []
 
 [dependency-groups]
+assets = ["pillow>=12.0.0"]
+content = [
+    "wordfreq[cjk]>=3.1",
+]
 dev = ["ruff"]
 
 [tool.ruff]

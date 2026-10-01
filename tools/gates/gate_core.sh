@@ -10,5 +10,6 @@ echo "== gate_core: Python lint + tests"
 echo "== gate_core: licenses"
 (cd tools && uv run --locked python gates/check_licenses.py)
 echo "== gate_core: model provenance"
+(cd tools && uv run --locked python models/models_doc.py --check)
 (cd tools && uv run --locked python gates/check_provenance.py)
 echo "gate_core: PASS"

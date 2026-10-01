@@ -36,3 +36,32 @@ The account's Actions minutes ran out under Tsumugi (its D-entry of 2026-09-18 p
 rule 11 now requires three-OS CI on every push to main, so `ci.yml` runs on push again. To keep cost bounded the
 unattended run pushes once per phase (plus fixes), not per commit. If GitHub refuses the runs for billing, the gates
 are run locally on macOS and the Windows/Linux part is recorded as a known gap in PROGRESS.
+
+## D-006 Chat templates come from the GGUF (unattended default)
+Tsumugi formatted prompts as Qwen ChatML in Kotlin. The tier models use different templates (Phi-4, Mistral v7,
+EuroLLM ChatML, Granite), so `LocalLlmBridge.generate` now takes the message list and the native side applies the
+model's own `tokenizer.chat_template` via `llama_chat_apply_template`, falling back to ChatML.
+
+## D-007 Model catalog: bartowski Q4_K_M conversions, verified hashes (unattended default)
+Tier weights are the Q4_K_M GGUF conversions published by bartowski on Hugging Face (llama.cpp imatrix quants; the
+conversion is recorded in each entry's `provenance.conversion`, the developer/license are the original model's).
+SHA-256 and sizes were read from the Hugging Face LFS metadata on 2026-09-30. Licenses were checked on each model
+card: Phi-4-mini (MIT), Granite 3.3 2B/8B (Apache-2.0), EuroLLM-9B-Instruct (Apache-2.0; gated original, ungated
+GGUF), Mistral-7B v0.3 / Nemo / Small 3.2 (Apache-2.0), Phi-4 (MIT), Whisper (MIT). Context is 8192 tokens for every
+tier. Whisper `small` is bundled (`"bundled": true`), `large-v3-turbo` stays a Settings download (open decision 3,
+default: download).
+
+## D-008 macOS bundle version (unattended default)
+macOS refuses a CFBundleShortVersionString starting with 0, so while the product is 0.y.z the macOS bundle carries
+1.y.z; the app shows the real version from the `mokuhyo.version` system property set by the launcher.
+
+## D-009 Tier thresholds and Ollama screening (unattended default)
+`TierAdvisor` implements BRIEF §6.1's "typical hardware" column: A ≥ 8 GB RAM; B ≥ 16 GB RAM or ≥ 6 GB VRAM;
+C ≥ 32 GB RAM, ≥ 12 GB VRAM, or Apple Silicon ≥ 24 GB; D Apple Silicon ≥ 64 GB or ≥ 24 GB VRAM; each also needs 1.5×
+the download free on disk. The highest runnable tier is recommended. Ollama models are screened by name and GGUF
+architecture for rule 13 (a `qwen2` architecture under another name marks a derivative) but by name only for the
+Gemma/Llama license exclusion, because permissive models such as Mistral-Nemo report the `llama` architecture.
+
+## D-010 Lenient dependency locking (unattended default)
+Compose Desktop's Skia runtime artifact is per-OS, so a lockfile written on macOS can't match Windows or Linux
+exactly. Locks are LENIENT: they record the shipping set for the license gate without failing other OSes' builds.

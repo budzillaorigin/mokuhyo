@@ -1,0 +1,18 @@
+-- Learner identity (BRIEF §8.1). Single learner today; every record carries learnerId so instructor mode stays possible.
+CREATE TABLE learner (
+    id TEXT NOT NULL PRIMARY KEY,
+    displayName TEXT NOT NULL,
+    createdAt INTEGER NOT NULL
+);
+
+insertLearner:
+INSERT OR IGNORE INTO learner(id, displayName, createdAt) VALUES (?, ?, ?);
+
+renameLearner:
+UPDATE learner SET displayName = ? WHERE id = ?;
+
+learners:
+SELECT * FROM learner ORDER BY createdAt;
+
+learner:
+SELECT * FROM learner WHERE id = ?;

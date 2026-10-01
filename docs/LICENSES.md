@@ -28,6 +28,12 @@ Mokuhyo's own code is Apache-2.0 (`LICENSE`). Mokuhyo's original content (bluepr
 | `org.apache.pdfbox:*` | Apache PDFBox (pdfbox, fontbox, pdfbox-io) — PDF progress report | Apache-2.0 | © The Apache Software Foundation — https://pdfbox.apache.org |
 | `commons-logging:commons-logging` | Apache Commons Logging (via PDFBox) | Apache-2.0 | © The Apache Software Foundation — https://commons.apache.org/logging |
 | `org.slf4j:slf4j-api` | SLF4J API (via Ktor) | MIT | © QOS.ch — https://www.slf4j.org |
+| `org.jetbrains.compose.*:*` | Compose Multiplatform for Desktop (runtime, UI, foundation, animation, Material 3, Material icons) | Apache-2.0 | © JetBrains s.r.o. and the Android Open Source Project — https://github.com/JetBrains/compose-multiplatform |
+| `org.jetbrains.skiko:*` | Skiko (Skia bindings for Kotlin; bundles Skia, BSD-3-Clause) | Apache-2.0 | © JetBrains s.r.o. — https://github.com/JetBrains/skiko · Skia © Google LLC — https://skia.org |
+| `org.jetbrains.androidx.*:*`, `androidx.*:*` | AndroidX libraries used by Compose (lifecycle, savedstate, navigationevent, collection, annotation, arch core) | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx |
+| `org.jetbrains.runtime:jbr-api` | JetBrains Runtime API (optional window-decoration API used by Compose Desktop) | Apache-2.0 | © JetBrains s.r.o. — https://github.com/JetBrains/JetBrainsRuntimeApi |
+| `org.jetbrains.kotlinx:atomicfu*` | kotlinx atomicfu | Apache-2.0 | © JetBrains s.r.o. — https://github.com/Kotlin/kotlinx-atomicfu |
+| `org.jspecify:jspecify` | JSpecify annotations | Apache-2.0 | © The JSpecify Authors — https://jspecify.dev |
 | `empty` | Gradle lockfile placeholder line, not an artifact | — | — |
 
 Ported algorithms (code in this repo, original license kept):
@@ -47,6 +53,16 @@ Ported algorithms (code in this repo, original license kept):
 
 | id | Model | Developer (country) | License | Source |
 |---|---|---|---|---|
+| `phi-4-mini-instruct-q4km` | Phi-4-mini-instruct 3.8B | Microsoft (United States) | MIT | https://huggingface.co/microsoft/Phi-4-mini-instruct · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/microsoft_Phi-4-mini-instruct-GGUF |
+| `granite-3.3-2b-instruct-q4km` | IBM Granite 3.3 2B Instruct | IBM (United States) | Apache-2.0 | https://huggingface.co/ibm-granite/granite-3.3-2b-instruct · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/ibm-granite_granite-3.3-2b-instruct-GGUF |
+| `eurollm-9b-instruct-q4km` | EuroLLM-9B-Instruct | UTTER consortium (Unbabel, Instituto Superior Técnico, University of Edinburgh, et al.) (European Union) | Apache-2.0 | https://huggingface.co/utter-project/EuroLLM-9B-Instruct · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/EuroLLM-9B-Instruct-GGUF |
+| `granite-3.3-8b-instruct-q4km` | IBM Granite 3.3 8B Instruct | IBM (United States) | Apache-2.0 | https://huggingface.co/ibm-granite/granite-3.3-8b-instruct · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/ibm-granite_granite-3.3-8b-instruct-GGUF |
+| `mistral-7b-instruct-v0.3-q4km` | Mistral-7B-Instruct v0.3 | Mistral AI (France) | Apache-2.0 | https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3 · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/Mistral-7B-Instruct-v0.3-GGUF |
+| `mistral-nemo-instruct-2407-q4km` | Mistral-Nemo-Instruct-2407 12B | Mistral AI and NVIDIA (France / United States) | Apache-2.0 | https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407 · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF |
+| `phi-4-q4km` | Phi-4 14B | Microsoft (United States) | MIT | https://huggingface.co/microsoft/phi-4 · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/phi-4-GGUF |
+| `mistral-small-3.2-24b-instruct-2506-q4km` | Mistral-Small-3.2-24B-Instruct-2506 | Mistral AI (France) | Apache-2.0 | https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506 · GGUF Q4_K_M by bartowski (llama.cpp imatrix quantization of the original weights), https://huggingface.co/bartowski/mistralai_Mistral-Small-3.2-24B-Instruct-2506-GGUF |
+| `whisper-small` | Whisper small (multilingual) | OpenAI (United States) | MIT | https://github.com/openai/whisper · ggml conversion by the whisper.cpp project (ggml-org), https://huggingface.co/ggerganov/whisper.cpp |
+| `whisper-large-v3-turbo` | Whisper large-v3-turbo (multilingual) | OpenAI (United States) | MIT | https://github.com/openai/whisper · ggml conversion by the whisper.cpp project (ggml-org), https://huggingface.co/ggerganov/whisper.cpp |
 
 ## Voices (TTS; run out-of-process)
 

@@ -1,0 +1,88 @@
+-- Review queue (FSRS) per language: missed exam items, looked-up words, recurring speaking errors.
+CREATE TABLE review_item (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    kind TEXT NOT NULL,              -- WORD | ITEM | ERROR
+    ref TEXT NOT NULL,               -- dictionary entry id, exam item id, or error key
+    front TEXT NOT NULL,
+    back TEXT NOT NULL,
+    context TEXT,
+    createdAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE UNIQUE INDEX review_item_ref ON review_item(learnerId, lang, kind, ref);
+
+insertItem:
+INSERT OR IGNORE INTO review_item VALUES ?;
+
+itemByRef:
+SELECT * FROM review_item WHERE learnerId = ? AND lang = ? AND kind = ? AND ref = ?;
+
+itemsAll:
+SELECT * FROM review_item ORDER BY createdAt;
+
+tombstoneItem:
+UPDATE review_item SET deleted = ? WHERE id = ? AND deleted IS NULL;
+
+-- Current FSRS state; derived from the review log but stored for queue queries.
+CREATE TABLE card (
+    itemId TEXT NOT NULL PRIMARY KEY,
+    state TEXT NOT NULL,
+    step INTEGER,
+    stability REAL,
+    difficulty REAL,
+    due INTEGER NOT NULL,
+    lastReview INTEGER,
+    reps INTEGER NOT NULL DEFAULT 0,
+    lapses INTEGER NOT NULL DEFAULT 0
+);
+CREATE INDEX card_due ON card(due);
+
+upsertCard:
+INSERT OR REPLACE INTO card VALUES ?;
+
+cardFor:
+SELECT * FROM card WHERE itemId = ?;
+
+dueItems:
+SELECT review_item.*, card.due FROM review_item JOIN card ON card.itemId = review_item.id
+WHERE review_item.learnerId = ? AND review_item.lang = ? AND review_item.deleted IS NULL AND card.due <= ?
+ORDER BY card.due LIMIT ?;
+
+dueCount:
+SELECT count(*) FROM review_item JOIN card ON card.itemId = review_item.id
+WHERE review_item.learnerId = ? AND review_item.lang = ? AND review_item.deleted IS NULL AND card.due <= ?;
+
+itemCount:
+SELECT count(*) FROM review_item WHERE learnerId = ? AND lang = ? AND deleted IS NULL;
+
+cardsAll:
+SELECT * FROM card;
+
+-- Append-only review log. Undo = tombstone.
+CREATE TABLE review (
+    id TEXT NOT NULL PRIMARY KEY,
+    itemId TEXT NOT NULL,
+    at INTEGER NOT NULL,
+    rating INTEGER NOT NULL,
+    durationMs INTEGER NOT NULL DEFAULT 0,
+    deleted INTEGER
+);
+CREATE INDEX review_item_at ON review(itemId, at);
+
+insertReview:
+INSERT OR IGNORE INTO review VALUES ?;
+
+reviewsFor:
+SELECT * FROM review WHERE itemId = ? AND deleted IS NULL ORDER BY at;
+
+reviewsAll:
+SELECT * FROM review ORDER BY at;
+
+reviewCountSince:
+SELECT count(*) FROM review JOIN review_item ON review_item.id = review.itemId
+WHERE review_item.learnerId = ? AND review_item.lang = ? AND review.deleted IS NULL AND review.at >= ?;
+
+tombstoneReview:
+UPDATE review SET deleted = ? WHERE id = ? AND deleted IS NULL;

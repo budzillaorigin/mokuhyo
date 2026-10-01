@@ -11,6 +11,9 @@ plugins {
 // docs/LICENSES.md and refuses GPL code on the app classpath (CLAUDE.md rule 6). Refresh with
 // `./gradlew resolveAndLockAll --write-locks` after changing a dependency.
 subprojects {
+    // Lenient: Compose's Skia runtime is per-OS (skiko-awt-runtime-<os>-<arch>), so the lock written on one OS can't
+    // match another exactly. The lockfiles still record the full shipping set for the license gate.
+    dependencyLocking { lockMode.set(LockMode.LENIENT) }
     configurations.matching { it.name == "runtimeClasspath" || it.name == "jvmRuntimeClasspath" }.configureEach {
         resolutionStrategy.activateDependencyLocking()
     }

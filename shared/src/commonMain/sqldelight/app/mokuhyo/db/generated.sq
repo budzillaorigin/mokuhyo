@@ -1,0 +1,31 @@
+-- "Generated on this computer" bank (BRIEF §5.4): local-model output, labeled, kept out of shipped-bank statistics,
+-- deletable in bulk (tombstoned).
+CREATE TABLE generated_passage (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    skill TEXT NOT NULL,             -- READING | LISTENING | SPEAKING_TOPIC
+    level TEXT NOT NULL,
+    textType TEXT NOT NULL,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+    scriptJson TEXT NOT NULL DEFAULT '[]',
+    itemsJson TEXT NOT NULL DEFAULT '[]',
+    audioPath TEXT,
+    engine TEXT NOT NULL,
+    createdAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX generated_lang ON generated_passage(learnerId, lang, skill, level);
+
+insertGenerated:
+INSERT OR IGNORE INTO generated_passage VALUES ?;
+
+generated:
+SELECT * FROM generated_passage WHERE learnerId = ? AND lang = ? AND skill = ? AND deleted IS NULL ORDER BY createdAt DESC;
+
+generatedAll:
+SELECT * FROM generated_passage ORDER BY createdAt;
+
+tombstoneGenerated:
+UPDATE generated_passage SET deleted = ? WHERE learnerId = ? AND lang = ? AND deleted IS NULL;

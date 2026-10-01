@@ -1,0 +1,19 @@
+-- Key/value settings. `device` rows (model tier, audio devices, GPU choice, paths) stay on this computer; `learner`
+-- rows (UI language preferences, current language, review options) travel in the backup bundle.
+CREATE TABLE setting (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL,
+    scope TEXT NOT NULL DEFAULT 'device'   -- device | learner
+);
+
+put:
+INSERT OR REPLACE INTO setting VALUES (?, ?, ?);
+
+get:
+SELECT value FROM setting WHERE key = ?;
+
+all:
+SELECT * FROM setting ORDER BY key;
+
+remove:
+DELETE FROM setting WHERE key = ?;

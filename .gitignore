@@ -35,3 +35,9 @@ voices/models/
 .DS_Store
 Thumbs.db
 .claude/worktrees/
+
+# Staged installer resources (tools/release/stage_resources.py)
+desktopApp/resources/*/native/
+desktopApp/resources/common/models/
+desktopApp/resources/common/voices/
+desktopApp/resources/common/packs/

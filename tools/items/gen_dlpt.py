@@ -1,17 +1,22 @@
-"""DLPT practice item banks: validate and draft (BRIEF §5.11, docs/CONTENT_PACKS.md "Exam item banks").
+"""DLPT-style practice item banks for every language: validate, draft, second-opinion check, merge (BRIEF §5.3, §7).
 
-validate  Schema checks for exam item banks (any exam) plus, for DLPT passages, the ILR level bands in
-          items/ilr_bands.json (length, kanji density, abstract-vocabulary ratio). Schema problems are errors;
-          band misses are warnings unless --strict. Exits non-zero on errors.
+Banks live in items/bank/<lang>/reading.json and listening.json (schema: docs/CONTENT_PACKS.md "Exam item banks").
+Everything drafted is source="llm", verified=false and badged in the app until a human accepts it in review.py.
 
-draft     Drafts new DLPT passages + items through any OpenAI-compatible chat endpoint (Ollama, LM Studio,
-          llama-server, vLLM). Stdlib only, no API key. Everything drafted is source="llm", verified=false and
-          stays that way until a human accepts it in items/review.py (CLAUDE.md rule 10).
+  validate  Schema checks plus the ILR bands in items/ilr_bands.json (length, sentence length, rare-word ratio,
+            target-language purity). --strict turns band misses into errors.
+  draft     Drafts passages + English multiple-choice items through the §7.1 endpoint (primary model) into a
+            resumable staging file items/drafts/<lang>-<skill>.jsonl. Drafts that fail validation are retried.
+  check     Second opinion (LLM_CHECK_MODEL, gpt-oss:20b): answers each staged item without the key; items it gets
+            wrong or calls ambiguous fail. Run after draft, so the GPU swaps models once per batch.
+  merge     Moves checked drafts into the bank (atomic write; never partial).
+  fill      draft → check → merge until every ILR band has --per-band passages (resumable; the Phase 3/6 driver).
+  status    Counts per language, skill and band against the targets.
 
 Run (from tools/):
-  uv run python items/gen_dlpt.py validate items/bank/dlpt_reading.json items/bank/dlpt_listening.json
-  uv run python items/gen_dlpt.py draft --endpoint http://localhost:11434/v1 --model mistral-small3.2:24b-instruct-2506-q8_0 \\
-      --level 2 --count 3 --exam reading --out items/bank/dlpt_reading_drafts.json
+  uv run --group content python items/gen_dlpt.py status
+  uv run --group content python items/gen_dlpt.py fill --language es --skill reading --per-band 12
+  uv run --group content python items/gen_dlpt.py validate --strict --language es
 """
 
 from __future__ import annotations
@@ -19,88 +24,74 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
+import random
 import re
 import sys
+import tempfile
 import unicodedata
-import urllib.error
-import urllib.request
 from dataclasses import dataclass, field
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+
+import langtext  # noqa: E402
+import llm  # noqa: E402
+
 BANDS_PATH = HERE / "ilr_bands.json"
-BLUEPRINTS_PATH = HERE / "jlpt_blueprints.json"
+BANK_DIR = HERE / "bank"
+DRAFTS = HERE / "drafts"
 
-EXAMS = ("JLPT", "DLPT_READING", "DLPT_LISTENING")
-DLPT_LEVELS = ("0+", "1", "1+", "2", "2+", "3", "3+", "4")
-# The upper range (BRIEF_V2 G-08): own banks, 2–4 items per passage, restricted text types.
-UPPER_LEVELS = ("3+", "4")
-JLPT_LEVELS = ("N5", "N4", "N3", "N2", "N1")
-DLPT_TYPES = ("main_idea", "detail", "inference", "purpose", "vocabulary_in_context", "tone")
+SKILLS = ("reading", "listening")
+EXAM = {"reading": "DLPT_READING", "listening": "DLPT_LISTENING"}
+LEVELS = ("0+", "1", "1+", "2", "2+", "3")
+QUESTION_TYPES = ("main_idea", "detail", "inference", "purpose", "vocabulary_in_context", "tone")
 VOICES = ("female", "male")
-ID_PREFIX = {"DLPT_READING": "dr", "DLPT_LISTENING": "dl"}
-# Ids write "+" as "p" so they stay safe in file names and URLs: dr-2p-editorial-001, dl-0p-announcement-002.
-LEVEL_SLUG = {"0+": "0p", "1": "1", "1+": "1p", "2": "2", "2+": "2p", "3": "3", "3+": "3p", "4": "4"}
-DLPT_PASSAGE_ID = re.compile(r"^(dr|dl)-(0p|1p|2p|3p|0|1|2|3|4)-([a-z]+)-(\d{3})$")
-ITEM_ID = re.compile(r"^(?P<passage>.+)-q(?P<n>\d+)$")
-BANK_ID = re.compile(r"^(user:)?[a-z0-9][a-z0-9-]*$")
+LEVEL_SLUG = {"0+": "0p", "1": "1", "1+": "1p", "2": "2", "2+": "2p", "3": "3"}
+ID_RE = re.compile(r"^[a-z]{2}(-[A-Za-z]+)?-(dr|dl)-(0p|1p|2p|0|1|2|3)-[a-z_]+-\d{3}$")
+LICENSE = "CC BY-SA 4.0"
+ATTRIBUTION = "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)"
 
-KANJI = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u3005]")  # incl. 々
-# Approximate tokens: runs of one script. Crude, but stable and dependency-free.
-TOKEN_RUN = re.compile(
-    r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u3005]+|[\u3041-\u309f]+|[\u30a0-\u30ff\u31f0-\u31ff]+"
-    r"|[A-Za-z\uff21-\uff3a\uff41-\uff5a]+|[0-9\uff10-\uff19]+"
-)
+LANG_NAMES = {"ja": "Japanese", "es": "Spanish", "fr": "French", "de": "German", "pt-BR": "Brazilian Portuguese",
+              "ru": "Russian", "zh-Hans": "Mandarin Chinese (Simplified characters)", "ko": "Korean",
+              "ar": "Modern Standard Arabic", "fa": "Persian (Farsi, Iranian standard)", "id": "Indonesian"}
 
+# Paraphrases of the public ILR skill descriptions (US Government, public domain), used to steer drafting.
+ILR_READING = {
+    "0+": "can read numbers, isolated words and short phrases in very predictable contexts: signs, labels, schedules, menus, simple forms",
+    "1": "can read very simple connected texts on familiar everyday topics: short notices, simple messages, basic announcements and instructions",
+    "1+": "can get the main idea and some details of simple authentic texts: brief news items, straightforward instructions, personal letters",
+    "2": "can read simple authentic prose on familiar concrete subjects: factual news reports, routine letters and reports, descriptions of events and people",
+    "2+": "can follow more complex factual material and some opinion: news analysis, extended reports, feature articles, with some inference",
+    "3": "can read a variety of authentic prose on unfamiliar subjects, including abstract argument, editorials and analysis, inferring the author's purpose and tone",
+}
+ILR_LISTENING = {
+    "0+": "can understand a number of memorized utterances in areas of immediate need: short announcements, prices, times, simple requests",
+    "1": "can understand utterances about basic survival needs and simple everyday exchanges: announcements, voicemails, short conversations",
+    "1+": "can understand short conversations and simple broadcasts on familiar topics: news briefs, phone calls, instructions",
+    "2": "can understand conversations and broadcasts on routine social and work topics: news, interviews, factual reports",
+    "2+": "can understand most routine and some complex speech: discussions, analysis on the radio, interviews with opinion",
+    "3": "can understand the essentials of all speech in a standard dialect, including lectures, debates, commentary and argument on abstract topics",
+}
 
-# --- Text measures ---------------------------------------------------------------------------------------
-
-
-def passage_text(passage: dict) -> str:
-    """The Japanese text of a passage: body for reading, all script lines for listening."""
-    if passage.get("script"):
-        return "\n".join(line.get("text", "") for line in passage["script"])
-    return passage.get("body", "")
-
-
-def measure(text: str, lexicon: list[str]) -> dict:
-    compact = re.sub(r"\s+", "", text)
-    chars = len(compact)
-    kanji = len(KANJI.findall(compact))
-    tokens = len(TOKEN_RUN.findall(compact))
-    hits = 0
-    rest = compact
-    for word in sorted(lexicon, key=len, reverse=True):  # longest first, non-overlapping
-        n = rest.count(word)
-        if n:
-            hits += n
-            rest = rest.replace(word, "\0")
-    return {
-        "chars": chars,
-        "kanjiDensity": kanji / chars if chars else 0.0,
-        "abstractRatio": hits / tokens if tokens else 0.0,
-        "abstractHits": hits,
-        "tokens": tokens,
-    }
-
-
-def band_misses(passage: dict, bands: dict) -> list[str]:
-    band = bands["levels"].get(passage.get("level"))
-    if band is None:
-        return []
-    m = measure(passage_text(passage), bands["abstractLexicon"])
-    misses = []
-    if not band["minChars"] <= m["chars"] <= band["maxChars"]:
-        misses.append(f"length {m['chars']} outside {band['minChars']}–{band['maxChars']}")
-    lo, hi = band["kanjiDensity"]
-    if not lo <= m["kanjiDensity"] <= hi:
-        misses.append(f"kanji density {m['kanjiDensity']:.2f} outside {lo:.2f}–{hi:.2f}")
-    lo, hi = band["abstractRatio"]
-    if not lo <= m["abstractRatio"] <= hi:
-        misses.append(
-            f"abstract ratio {m['abstractRatio']:.3f} ({m['abstractHits']}/{m['tokens']}) outside {lo:.3f}–{hi:.3f}"
-        )
-    return misses
+TOPICS = [
+    "public transportation changes", "a local election", "a new hospital", "food prices", "a regional festival",
+    "a flood warning", "a university admissions change", "a new trade agreement", "renewable energy investment",
+    "a military exercise with an allied country", "a border crossing procedure", "disaster relief after an earthquake",
+    "a cyberattack on a public utility", "tourism recovery", "housing shortages in cities", "an aging population",
+    "a vaccination campaign", "a sports championship", "a museum exhibition", "a new metro line",
+    "water shortages in summer", "a factory closure", "a technology start-up", "smartphone use by children",
+    "a naval port visit", "humanitarian aid convoys", "an international summit", "inflation and interest rates",
+    "a new law on road safety", "forest fires", "air pollution in a capital city", "a strike by transport workers",
+    "a space launch", "fishing rights", "a historical anniversary", "migration and labor", "a peacekeeping mission",
+    "a refugee camp", "online education", "a community volunteer program", "a weather forecast for the weekend",
+    "a hotel reservation problem", "a lost passport", "a job interview", "a doctor's appointment", "renting an apartment",
+    "a company relocating", "agricultural drought", "a new airport terminal", "a debate on military service",
+    "freedom of the press", "artificial intelligence regulation", "corruption investigation", "energy subsidies",
+    "an evacuation of foreign nationals", "a joint search-and-rescue operation", "a cultural exchange program",
+    "the cost of weddings", "public library services", "electric cars", "a heat wave", "coastal erosion",
+]
 
 
 # --- Validation ------------------------------------------------------------------------------------------
@@ -118,360 +109,170 @@ class Report:
         self.warnings.append(f"{where}: {msg}")
 
 
-def load_bands(path: Path = BANDS_PATH) -> dict:
-    bands = json.loads(path.read_text(encoding="utf-8"))
-    missing = [lv for lv in DLPT_LEVELS if lv not in bands.get("levels", {})]
-    if missing:
-        raise SystemExit(f"{path}: missing levels {missing}")
-    return bands
+def load_bands() -> dict:
+    return json.loads(BANDS_PATH.read_text(encoding="utf-8"))
 
 
-def jlpt_types() -> dict[str, set[str]]:
-    """JLPT item types allowed per level ("N1".."N5"), from the blueprint file."""
-    if not BLUEPRINTS_PATH.exists():
-        return {}
-    data = json.loads(BLUEPRINTS_PATH.read_text(encoding="utf-8"))
-    return {
-        f"N{lv['level']}": {it["type"] for sec in lv["sections"] for it in sec["items"]}
-        for lv in data["levels"]
-    }
+def passage_text(p: dict) -> str:
+    if p.get("script"):
+        return "\n".join(line.get("text", "") for line in p["script"])
+    return p.get("body", "")
 
 
-def _strings(value, path: str = ""):
-    """Yield (path, string) for every string nested in value."""
-    if isinstance(value, str):
-        yield path, value
-    elif isinstance(value, dict):
-        for k, v in value.items():
-            yield from _strings(v, f"{path}.{k}" if path else k)
-    elif isinstance(value, list):
-        for i, v in enumerate(value):
-            yield from _strings(v, f"{path}[{i}]")
+def band_misses(p: dict, lang: str, bands: dict) -> list[str]:
+    band = bands["levels"].get(p.get("level"))
+    if band is None:
+        return [f"unknown level {p.get('level')}"]
+    m = langtext.measure(passage_text(p), lang)
+    out = []
+    words = m.scaled_tokens(lang)
+    lo, hi = band["words"]
+    if not lo <= words <= hi:
+        out.append(f"length {words:.0f} words outside {lo}–{hi}")
+    lo, hi = band["meanSentence"]
+    ms = m.mean_sentence / langtext.TOKEN_FACTOR.get(lang, 1.0)
+    if not lo <= ms <= hi:
+        out.append(f"mean sentence {ms:.1f} words outside {lo}–{hi}")
+    lo, hi = band["rareRatio"]
+    if not lo <= m.rare_ratio <= hi:
+        out.append(f"rare-word ratio {m.rare_ratio:.2f} outside {lo:.2f}–{hi:.2f}")
+    if m.purity < bands["purity"]:
+        out.append(f"only {m.purity:.0%} of letters are in the {lang} script")
+    return out
 
 
-def _nonempty_str(obj: dict, key: str) -> bool:
-    return isinstance(obj.get(key), str) and obj[key].strip() != ""
+def is_nfc(s: str) -> bool:
+    return unicodedata.normalize("NFC", s) == s
 
 
-def _check_script(where: str, script, report: Report) -> None:
-    if not isinstance(script, list) or not script:
-        report.error(where, "script must be a non-empty list")
-        return
-    for i, line in enumerate(script):
-        w = f"{where} script[{i}]"
-        if not isinstance(line, dict):
-            report.error(w, "line must be an object")
-            continue
-        for key in ("speaker", "text"):
-            if not _nonempty_str(line, key):
-                report.error(w, f"missing {key}")
-        if line.get("voice") not in VOICES:
-            report.error(w, f"voice must be one of {VOICES}")
-
-
-def validate_bank(
-    bank: dict, report: Report, bands: dict, seen_ids: set[str], name: str = "bank", types=None
-) -> None:
-    """Validate one bank dict, appending to report. seen_ids carries ids across banks (unique across all)."""
-    types = jlpt_types() if types is None else types
-    if not isinstance(bank, dict):
-        report.error(name, "top level must be an object")
-        return
-    if not isinstance(bank.get("bank"), str) or not BANK_ID.match(bank["bank"]):
-        report.error(name, "bank must be a lowercase id like 'dlpt-reading-core' (imports prefixed 'user:')")
-    for key in ("title", "license", "attribution"):
-        if not _nonempty_str(bank, key):
+def validate_bank(bank: dict, lang: str, skill: str, report: Report, bands: dict, strict: bool, name: str) -> None:
+    if bank.get("language") != lang:
+        report.error(name, f"language must be '{lang}'")
+    for key in ("bank", "title", "license", "attribution"):
+        if not isinstance(bank.get(key), str) or not bank[key].strip():
             report.error(name, f"missing {key}")
     passages = bank.get("passages", [])
-    items = bank.get("items")
-    if not isinstance(passages, list):
-        report.error(name, "passages must be a list")
-        passages = []
-    if not isinstance(items, list) or not items:
-        report.error(name, "items must be a non-empty list")
-        items = items if isinstance(items, list) else []
-
-    for path, s in _strings(bank):
-        if unicodedata.normalize("NFC", s) != s:
-            report.error(name, f"{path} is not NFC")
-
-    by_id: dict[str, dict] = {}
-    for i, p in enumerate(passages):
-        where = f"{name} passage[{i}]"
-        if not isinstance(p, dict):
-            report.error(where, "passage must be an object")
-            continue
-        pid = p.get("id")
-        if not isinstance(pid, str) or not pid:
-            report.error(where, "missing id")
-            continue
-        where = f"{name} {pid}"
-        if pid in seen_ids:
-            report.error(where, "duplicate id")
-        seen_ids.add(pid)
-        by_id[pid] = p
-        _check_common(where, p, report)
-        exam = p.get("exam")
-        if exam == "DLPT_LISTENING":
-            if p.get("body"):
-                report.error(where, "listening passages leave body empty and use script")
-            _check_script(where, p.get("script"), report)
-        else:
-            if not _nonempty_str(p, "body"):
-                report.error(where, "missing body")
-            if p.get("script"):
-                report.error(where, "only listening passages have a script")
-        if not _nonempty_str(p, "textType"):
-            report.error(where, "missing textType")
-        if not _nonempty_str(p, "title"):
-            report.error(where, "missing title")
-        if exam in ID_PREFIX:
-            m = DLPT_PASSAGE_ID.match(pid)
-            if not m:
-                report.warn(where, "id does not follow <dr|dl>-<level>-<texttype>-NNN")
-            elif m.group(1) != ID_PREFIX[exam] or m.group(2) != LEVEL_SLUG.get(p.get("level")):
-                report.warn(where, "id prefix/level does not match exam/level")
-            elif m.group(3) != p.get("textType"):
-                report.warn(where, "id text type does not match textType")
-            for miss in band_misses(p, bands):
-                report.warn(where, f"ILR {p.get('level')} band: {miss}")
-
-    per_passage: dict[str, int] = {pid: 0 for pid in by_id}
-    for i, it in enumerate(items):
-        where = f"{name} item[{i}]"
-        if not isinstance(it, dict):
-            report.error(where, "item must be an object")
-            continue
-        iid = it.get("id")
-        if not isinstance(iid, str) or not iid:
-            report.error(where, "missing id")
-            continue
-        where = f"{name} {iid}"
-        if iid in seen_ids:
-            report.error(where, "duplicate id")
-        seen_ids.add(iid)
-        _check_common(where, it, report)
-        exam, level = it.get("exam"), it.get("level")
-        if exam in ID_PREFIX:
-            if it.get("type") not in DLPT_TYPES:
-                report.error(where, f"type must be one of {DLPT_TYPES}")
-        elif exam == "JLPT" and types and it.get("type") not in types.get(level, set()):
-            report.error(where, f"type {it.get('type')!r} is not in the JLPT blueprint for {level}")
-        if not _nonempty_str(it, "stem"):
-            report.error(where, "missing stem")
-        choices = it.get("choices")
-        if not isinstance(choices, list) or not all(
-            isinstance(c, str) and c.strip() for c in choices or [None]
-        ):
-            report.error(where, "choices must be non-empty strings")
-        else:
-            allowed = (4,) if exam in ID_PREFIX else (3, 4)
-            if len(choices) not in allowed:
-                report.error(where, f"expected {' or '.join(map(str, allowed))} choices, got {len(choices)}")
-            if len({c.strip() for c in choices}) != len(choices):
-                report.error(where, "choices are not distinct")
-            ans = it.get("answer")
-            if not isinstance(ans, int) or isinstance(ans, bool) or not 0 <= ans < len(choices):
-                report.error(where, "answer must be a 0-based index into choices")
-        if exam in ID_PREFIX and not _nonempty_str(it, "explanation"):
-            report.error(where, "DLPT items need an English explanation")
-        if "script" in it:
-            _check_script(where, it["script"], report)
-        if "refs" in it and not (
-            isinstance(it["refs"], list) and all(isinstance(r, str) for r in it["refs"])
-        ):
-            report.error(where, "refs must be a list of strings")
-        pid = it.get("passageId")
-        if pid is not None:
-            p = by_id.get(pid)
-            if p is None:
-                report.error(where, f"passageId {pid!r} not found in this bank")
+    items = bank.get("items", [])
+    pids: dict[str, dict] = {}
+    for p in passages:
+        where = f"{name} {p.get('id')}"
+        pid = p.get("id", "")
+        if pid in pids:
+            report.error(where, "duplicate passage id")
+        pids[pid] = p
+        if not ID_RE.match(pid) or not pid.startswith(lang.split("-")[0]):
+            report.error(where, "id must look like '<lang>-dr-2-news-001'")
+        if p.get("exam") != EXAM[skill]:
+            report.error(where, f"exam must be {EXAM[skill]}")
+        if p.get("level") not in LEVELS:
+            report.error(where, f"level must be one of {LEVELS}")
+        if p.get("source") not in ("llm", "human", "verified"):
+            report.error(where, "source must be llm|human|verified")
+        if skill == "listening":
+            script = p.get("script")
+            if not isinstance(script, list) or not script:
+                report.error(where, "listening passages need a non-empty script")
             else:
-                per_passage[pid] += 1
-                if (p.get("exam"), p.get("level")) != (exam, level):
-                    report.error(where, "exam/level differ from its passage")
-                m = ITEM_ID.match(iid)
-                if exam in ID_PREFIX and (not m or m.group("passage") != pid):
-                    report.warn(where, "item id should be <passageId>-qN")
-        elif exam in ID_PREFIX:
-            report.error(where, "DLPT items need a passageId")
-
-    for pid, n in per_passage.items():
-        p = by_id[pid]
-        lo = 2 if p.get("level") in UPPER_LEVELS else 1
-        if p.get("exam") in ID_PREFIX and not lo <= n <= 4:
-            report.warn(f"{name} {pid}", f"has {n} items (expected {lo}–4)")
-        _check_upper(f"{name} {pid}", p, report)
-
-    for (exam, level), (longest, total) in sorted(longest_key_stats(items).items()):
-        if total >= LONGEST_KEY_MIN_ITEMS and longest / total > LONGEST_KEY_MAX_SHARE:
-            report.warn(
-                f"{name} {exam} {level}",
-                f"the key is the longest choice in {longest}/{total} items; lengthen distractors "
-                f"(test-wise learners pick the longest option; keep it under {LONGEST_KEY_MAX_SHARE:.0%})",
-            )
-
-
-def _check_upper(where: str, passage: dict, report: Report) -> None:
-    """ILR 3+/4 passages: only the upper-range text types (argument, academic and literary register)."""
-    level, exam = passage.get("level"), passage.get("exam")
-    if level not in UPPER_LEVELS or exam not in ID_PREFIX:
-        return
-    kind = "listening" if exam == "DLPT_LISTENING" else "reading"
-    allowed = TEXT_TYPES[kind][level]
-    if passage.get("textType") not in allowed:
-        report.warn(where, f"ILR {level} {kind} text type should be one of {allowed}")
-
-
-# With 4 choices a key that is uniquely longest ~25% of the time gives nothing away.
-LONGEST_KEY_MAX_SHARE = 0.4
-LONGEST_KEY_MIN_ITEMS = 10
-
-
-def longest_key_stats(items: list) -> dict[tuple[str, str], list[int]]:
-    """(exam, level) -> [items whose key is the uniquely longest choice, items checked]."""
-    stats: dict[tuple[str, str], list[int]] = {}
+                for i, line in enumerate(script):
+                    if not isinstance(line, dict) or not str(line.get("text", "")).strip():
+                        report.error(where, f"script[{i}] needs text")
+                    elif line.get("voice") not in VOICES:
+                        report.error(where, f"script[{i}] voice must be female|male")
+        elif not str(p.get("body", "")).strip():
+            report.error(where, "reading passages need a body")
+        for s in [p.get("body", ""), p.get("title", "")] + [x.get("text", "") for x in p.get("script", [])]:
+            if not is_nfc(s):
+                report.error(where, "text is not NFC")
+                break
+        if p.get("level") in LEVELS:
+            for miss in band_misses(p, lang, bands):
+                (report.error if strict else report.warn)(where, miss)
+    per_passage: dict[str, int] = {}
+    seen: set[str] = set()
     for it in items:
-        choices, ans = (it.get("choices"), it.get("answer")) if isinstance(it, dict) else (None, None)
-        if not isinstance(choices, list) or not isinstance(ans, int) or not 0 <= ans < len(choices):
+        where = f"{name} {it.get('id')}"
+        if it.get("id") in seen:
+            report.error(where, "duplicate item id")
+        seen.add(it.get("id"))
+        pid = it.get("passageId")
+        if pid not in pids:
+            report.error(where, f"unknown passage {pid}")
             continue
-        if not all(isinstance(c, str) for c in choices):
-            continue
-        lengths = [len(c) for c in choices]
-        s = stats.setdefault((it.get("exam"), it.get("level")), [0, 0])
-        s[1] += 1
-        if lengths[ans] == max(lengths) and lengths.count(max(lengths)) == 1:
-            s[0] += 1
-    return stats
+        per_passage[pid] = per_passage.get(pid, 0) + 1
+        if it.get("level") != pids[pid].get("level"):
+            report.error(where, "item level differs from its passage")
+        if it.get("type") not in QUESTION_TYPES:
+            report.error(where, f"type must be one of {QUESTION_TYPES}")
+        choices = it.get("choices")
+        if not isinstance(choices, list) or len(choices) != 4 or len({c.strip().lower() for c in choices}) != 4:
+            report.error(where, "needs exactly 4 distinct choices")
+        elif not isinstance(it.get("answer"), int) or not 0 <= it["answer"] < 4:
+            report.error(where, "answer must be 0–3")
+        stem = it.get("stem", "")
+        if not stem.strip():
+            report.error(where, "empty stem")
+        # Lower-range DLPT style: questions and choices in English.
+        english = " ".join([stem] + (choices or []))
+        if english and sum(c.isascii() for c in english if c.isalpha()) < 0.8 * max(1, sum(c.isalpha() for c in english)):
+            report.error(where, "stem and choices must be in English")
+    for pid, p in pids.items():
+        n = per_passage.get(pid, 0)
+        lo, hi = bands["levels"].get(p.get("level"), {}).get("itemsPerPassage", [1, 4])
+        if not lo <= n <= hi:
+            (report.error if strict else report.warn)(f"{name} {pid}", f"{n} items; level {p.get('level')} wants {lo}–{hi}")
 
 
-def _check_common(where: str, obj: dict, report: Report) -> None:
-    exam = obj.get("exam")
-    if exam not in EXAMS:
-        report.error(where, f"exam must be one of {EXAMS}")
-    levels = JLPT_LEVELS if exam == "JLPT" else DLPT_LEVELS
-    if obj.get("level") not in levels:
-        report.error(where, f"level must be one of {levels}")
-    if not _nonempty_str(obj, "source"):
-        report.error(where, "missing source")
-    if not isinstance(obj.get("verified"), bool):
-        report.error(where, "verified must be true or false")
-    elif obj["verified"] and obj.get("source") == "llm" and "reviewed" not in obj:
-        report.warn(where, "verified LLM content should carry reviewed {by, on} (use items/review.py)")
+def bank_path(lang: str, skill: str) -> Path:
+    return BANK_DIR / lang / f"{skill}.json"
 
 
-def summarize(bank: dict, bands: dict) -> str:
-    """Counts per level/text type/item type and answer-key balance, for eyeballing a bank."""
-    lines = [
-        f"{bank.get('bank')}: {len(bank.get('passages', []))} passages, {len(bank.get('items', []))} items"
-    ]
-    for lv in DLPT_LEVELS:
-        ps = [p for p in bank.get("passages", []) if p.get("level") == lv]
-        if not ps:
-            continue
-        ms = [measure(passage_text(p), bands["abstractLexicon"]) for p in ps]
-        tt: dict[str, int] = {}
-        for p in ps:
-            tt[p.get("textType", "?")] = tt.get(p.get("textType", "?"), 0) + 1
-        lines.append(
-            f"  {lv:>2}: {len(ps):2} passages · chars {min(m['chars'] for m in ms)}–{max(m['chars'] for m in ms)}"
-            f" · kanji {min(m['kanjiDensity'] for m in ms):.2f}–{max(m['kanjiDensity'] for m in ms):.2f}"
-            f" · abstract {min(m['abstractRatio'] for m in ms):.3f}–{max(m['abstractRatio'] for m in ms):.3f}"
-            f" · {', '.join(f'{k} {v}' for k, v in sorted(tt.items()))}"
-        )
-    types: dict[str, int] = {}
-    answers = [0, 0, 0, 0]
-    for it in bank.get("items", []):
-        types[it.get("type", "?")] = types.get(it.get("type", "?"), 0) + 1
-        if isinstance(it.get("answer"), int) and 0 <= it["answer"] < 4:
-            answers[it["answer"]] += 1
-    lines.append("  item types: " + ", ".join(f"{k} {v}" for k, v in sorted(types.items())))
-    lines.append("  answer keys A–D: " + " / ".join(map(str, answers)))
-    return "\n".join(lines)
+def load_bank(lang: str, skill: str) -> dict:
+    path = bank_path(lang, skill)
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    return {"bank": f"{lang.lower()}-{skill}-core", "language": lang, "title": f"{LANG_NAMES[lang]} {skill}: core bank",
+            "license": LICENSE, "attribution": ATTRIBUTION, "passages": [], "items": []}
+
+
+def write_atomic(path: Path, data: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+    os.replace(tmp, path)
 
 
 def cmd_validate(args) -> int:
-    bands = load_bands(args.bands)
-    report = Report()
-    seen: set[str] = set()
-    types = jlpt_types()
-    for path in args.files:
-        try:
-            bank = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as e:
-            report.error(str(path), f"cannot read: {e}")
-            continue
-        validate_bank(bank, report, bands, seen, name=path.name, types=types)
-        if not args.quiet and isinstance(bank, dict):
-            print(summarize(bank, bands))
-    for w in report.warnings:
-        print(f"warning: {w}")
-    for e in report.errors:
-        print(f"error: {e}")
-    print(f"{len(report.errors)} errors, {len(report.warnings)} warnings")
-    if report.errors or (args.strict and report.warnings):
-        return 1
-    return 0
+    bands = load_bands()
+    langs = langtext.LANGS if args.language == "all" else [args.language]
+    total_err = 0
+    for lang in langs:
+        for skill in SKILLS:
+            path = bank_path(lang, skill)
+            if not path.exists():
+                print(f"{lang} {skill}: no bank")
+                continue
+            report = Report()
+            validate_bank(json.loads(path.read_text(encoding="utf-8")), lang, skill, report, bands, args.strict, f"{lang}/{skill}")
+            for e in report.errors[: args.show]:
+                print("ERROR", e)
+            if args.show_warnings:
+                for w in report.warnings[: args.show]:
+                    print("warn ", w)
+            print(f"{lang} {skill}: {len(report.errors)} errors, {len(report.warnings)} warnings")
+            total_err += len(report.errors)
+    return 1 if total_err else 0
 
 
 # --- Drafting --------------------------------------------------------------------------------------------
 
-LEVEL_GUIDE = {
-    "0+": "Signs, labels, notices, short schedules or forms: isolated words and set phrases, a few short lines.",
-    "1": "Simple notices, short messages, very short simple narrative about everyday topics; concrete, "
-    "predictable content in simple sentences.",
-    "1+": "Short routine texts: personal letters and emails, simple announcements, short factual pieces with "
-    "some connected sentences; main ideas of simple factual material.",
-    "2": "Straightforward news and factual reporting, instructions and procedures, concrete descriptions; "
-    "connected paragraphs in standard written Japanese.",
-    "2+": "Longer reporting with some analysis, opinion columns, texts where the writer's stance and some "
-    "inference matter; beginning of abstract discussion.",
-    "3": "Editorials, argumentative essays, hypotheses and abstract topics; idiom, nuance, implied meaning and "
-    "the writer's tone must be understood.",
-    "3+": "Dense editorials, academic essays and literary prose: tightly argued, allusive, with concessions, "
-    "irony and qualifications the reader must weigh; much of the stance is implied rather than stated.",
-    "4": "Highly abstract or specialized argument, literary and philosophical prose, cultural allusion, "
-    "four-character idioms and classical echoes; the reader must follow the writer's reasoning, register "
-    "shifts and nuance as an educated native reader would.",
-}
-TEXT_TYPES = {
-    "reading": {
-        "0+": ["sign", "notice", "schedule"],
-        "1": ["notice", "schedule", "email", "narrative"],
-        "1+": ["email", "letter", "notice", "narrative", "announcement"],
-        "2": ["news", "instructions", "announcement", "report", "liaison"],
-        "2+": ["news", "column", "report", "editorial", "liaison"],
-        "3": ["editorial", "essay", "column", "liaison"],
-        "3+": ["editorial", "academic", "essay", "literary", "commentary"],
-        "4": ["editorial", "academic", "essay", "literary", "commentary"],
-    },
-    "listening": {
-        "0+": ["announcement", "voicemail"],
-        "1": ["announcement", "voicemail", "conversation"],
-        "1+": ["conversation", "voicemail", "announcement"],
-        "2": ["broadcast", "conversation", "interview", "briefing", "liaison"],
-        "2+": ["interview", "broadcast", "discussion", "liaison"],
-        "3": ["discussion", "interview", "commentary", "briefing"],
-        "3+": ["lecture", "discussion", "commentary", "interview"],
-        "4": ["lecture", "discussion", "commentary", "speech"],
-    },
-}
 
-
-def draft_schema(exam: str) -> dict:
-    line = {
-        "type": "object",
-        "properties": {
-            "speaker": {"type": "string"},
-            "voice": {"type": "string", "enum": list(VOICES)},
-            "text": {"type": "string"},
-        },
-        "required": ["speaker", "voice", "text"],
-    }
+def draft_schema(skill: str, n_items: int) -> dict:
     item = {
         "type": "object",
         "properties": {
-            "type": {"type": "string", "enum": list(DLPT_TYPES)},
+            "type": {"type": "string", "enum": list(QUESTION_TYPES)},
             "stem": {"type": "string"},
             "choices": {"type": "array", "items": {"type": "string"}, "minItems": 4, "maxItems": 4},
             "answer": {"type": "integer", "minimum": 0, "maximum": 3},
@@ -479,222 +280,333 @@ def draft_schema(exam: str) -> dict:
         },
         "required": ["type", "stem", "choices", "answer", "explanation"],
     }
-    passage = {"textType": {"type": "string"}, "title": {"type": "string"}}
-    if exam == "DLPT_LISTENING":
-        passage["script"] = {"type": "array", "items": line, "minItems": 1}
+    props: dict = {"title": {"type": "string"}, "items": {"type": "array", "items": item, "minItems": n_items, "maxItems": n_items}}
+    if skill == "reading":
+        props["body"] = {"type": "string"}
+        req = ["title", "body", "items"]
     else:
-        passage["body"] = {"type": "string"}
-    passage["items"] = {"type": "array", "items": item, "minItems": 1, "maxItems": 4}
-    return {"type": "object", "properties": passage, "required": list(passage)}
+        props["script"] = {"type": "array", "minItems": 1, "items": {"type": "object", "properties": {
+            "speaker": {"type": "string"}, "voice": {"type": "string", "enum": list(VOICES)}, "text": {"type": "string"}},
+            "required": ["speaker", "voice", "text"]}}
+        req = ["title", "script", "items"]
+    return {"type": "object", "properties": props, "required": req}
 
 
-def draft_messages(exam: str, level: str, text_type: str, bands: dict, avoid: list[str]) -> list[dict]:
-    band = bands["levels"][level]
-    kind = (
-        "listening script (announcement, message or conversation; 2 voices for dialogue)"
-        if exam == ("DLPT_LISTENING")
-        else "reading passage"
+def draft_messages(lang: str, skill: str, level: str, text_type: str, topic: str, band: dict, n_items: int,
+                   avoid: list[str], feedback: str | None) -> list[dict]:
+    name = LANG_NAMES[lang]
+    lo, hi = band["words"]
+    target = int((lo + hi) / 2)
+    desc = (ILR_READING if skill == "reading" else ILR_LISTENING)[level]
+    qtypes = ", ".join(band["questionTypes"])
+    form = (
+        f"Write the passage body in {name}." if skill == "reading" else
+        f"Write a listening script in {name}: a list of lines, each with a speaker label (in {name}), a voice "
+        f"('female' or 'male', alternate for different speakers) and the spoken text. Use natural spoken {name}."
     )
     system = (
-        "You write original practice material for a Japanese proficiency test on the ILR scale (DLPT-style). "
-        "Never copy or paraphrase real test items or published texts; everything must be fictional and original. "
-        "Japanese must be natural, grammatical, standard modern Japanese (NFC, full-width punctuation). "
-        "Questions and answer choices are in English. Each item has exactly 4 choices, exactly one of which is "
-        "correct according to the text; distractors are plausible but clearly contradicted or unsupported by "
-        "the text. The explanation (English) says why the key is right and why each distractor is wrong. "
-        "Reply with a single JSON object only."
+        "You write ORIGINAL practice material for foreign-language reading and listening proficiency tests that follow "
+        "the US Interagency Language Roundtable (ILR) scale, in the style of a multiple-choice test with English "
+        "questions about a target-language text. Never copy or imitate real test items or copyrighted text; invent "
+        "places, organizations and people when needed (but keep them plausible), and never include personal data. "
+        "The text must read like an authentic document of its type written by a native speaker for native speakers."
     )
-    user = (
-        f"Write one ILR level {level} {kind}. Text type: {text_type}.\n"
-        f"Level description: {LEVEL_GUIDE[level]}\n"
-        f"Length: {band['minChars']}–{band['maxChars']} Japanese characters in total "
-        f"(aim for the middle). Kanji should be about {band['kanjiDensity'][0]:.0%}–{band['kanjiDensity'][1]:.0%}"
-        " of characters.\n"
-        "Then write 1–4 multiple-choice items about it. Item types: "
-        + ", ".join(DLPT_TYPES)
-        + ". Vary the position of the correct answer.\n"
-        + (f"Do not reuse these topics: {'; '.join(avoid[-40:])}.\n" if avoid else "")
-        + "JSON fields: textType, title (short English), "
-        + ("script (list of {speaker, voice: female|male, text})" if exam == "DLPT_LISTENING" else "body")
-        + ", items (list of {type, stem, choices[4], answer (0-based), explanation})."
-    )
+    user = f"""Language: {name}
+ILR level: {level} — a reader/listener at this level {desc}.
+Text type: {text_type.replace('_', ' ')}
+Topic: {topic}
+Length: about {target} words (between {lo} and {hi} English-equivalent words); keep sentence length typical for the level.
+{form}
+Give it a short English title.
+
+Then write exactly {n_items} multiple-choice question(s) IN ENGLISH about the text:
+- question types to use (vary them): {qtypes}
+- each with exactly 4 English answer choices, one clearly correct according to the text, three plausible distractors
+  that a learner who misread the text might choose; no "all of the above"; answer is the 0-based index of the
+  correct choice; put the correct answer at varied positions
+- answerable only from the text, not from general knowledge; test understanding at ILR {level}
+- explanation (English): why the answer is right, quoting the relevant words of the text in {name}
+"""
+    if avoid:
+        user += "\nDo not reuse these titles or scenarios: " + "; ".join(avoid[-12:]) + "\n"
+    if feedback:
+        user += f"\nA previous draft was rejected: {feedback}. Fix that.\n"
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
-def chat(
-    endpoint: str, model: str, messages: list[dict], schema: dict | None, temperature: float, timeout: float
-):
-    url = endpoint.rstrip("/")
-    if not url.endswith("/chat/completions"):
-        url += "/chat/completions"
-    body = {"model": model, "messages": messages, "temperature": temperature, "stream": False}
-    if schema is not None:
-        body["response_format"] = {
-            "type": "json_schema",
-            "json_schema": {"name": "dlpt_passage", "schema": schema, "strict": False},
-        }
-    else:
-        body["response_format"] = {"type": "json_object"}
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(body).encode("utf-8"),
-        headers={"Content-Type": "application/json", "User-Agent": "tsumugi-tools"},
-    )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        data = json.load(resp)
-    content = data["choices"][0]["message"]["content"]
-    content = re.sub(r"^```(?:json)?\s*|\s*```$", "", content.strip())
-    return json.loads(content)
+def next_index(lang: str, skill: str, level: str, text_type: str, taken: set[str]) -> str:
+    prefix = f"{lang.split('-')[0]}-{'dr' if skill == 'reading' else 'dl'}-{LEVEL_SLUG[level]}-{text_type}-"
+    n = 1
+    while f"{prefix}{n:03d}" in taken:
+        n += 1
+    return f"{prefix}{n:03d}"
 
 
-def to_bank_entries(raw: dict, exam: str, level: str, pid: str) -> tuple[dict, list[dict]]:
-    """Turn a model reply into a passage + items in bank format, with provenance flags forced."""
-    nfc = lambda s: unicodedata.normalize("NFC", str(s)).strip()
-    text_type = re.sub(r"[^a-z]", "", str(raw.get("textType", "")).lower()) or "text"
-    passage = {
-        "id": pid,
-        "exam": exam,
-        "level": level,
-        "textType": text_type,
-        "title": nfc(raw.get("title", "")),
-        "body": "",
-        "source": "llm",
-        "verified": False,
-    }
-    if exam == "DLPT_LISTENING":
-        passage["script"] = [
-            {"speaker": nfc(ln.get("speaker", "")), "voice": ln.get("voice"), "text": nfc(ln.get("text", ""))}
-            for ln in raw.get("script", [])
-            if isinstance(ln, dict)
-        ]
-    else:
-        passage["body"] = nfc(raw.get("body", ""))
+def to_entries(raw: dict, lang: str, skill: str, level: str, text_type: str, pid: str, engine: str) -> tuple[dict, list[dict]]:
+    nfc = langtext.nfc
+    passage = {"id": pid, "exam": EXAM[skill], "language": lang, "level": level, "textType": text_type,
+               "title": nfc(raw.get("title", "").strip()), "body": nfc(raw.get("body", "").strip()) if skill == "reading" else "",
+               "script": [{"speaker": nfc(x["speaker"].strip()), "voice": x["voice"], "text": nfc(x["text"].strip())}
+                          for x in raw.get("script", [])] if skill == "listening" else [],
+               "source": "llm", "verified": False, "engine": engine,
+               "drafted": dt.date.today().isoformat()}
     items = []
-    for n, it in enumerate(raw.get("items", []), start=1):
-        if not isinstance(it, dict):
-            continue
-        items.append(
-            {
-                "id": f"{pid}-q{n}",
-                "exam": exam,
-                "level": level,
-                "type": it.get("type"),
-                "passageId": pid,
-                "stem": nfc(it.get("stem", "")),
-                "choices": [nfc(c) for c in it.get("choices", [])],
-                "answer": it.get("answer"),
-                "explanation": nfc(it.get("explanation", "")),
-                "source": "llm",
-                "verified": False,
-            }
-        )
+    rng = random.Random(pid)
+    for i, q in enumerate(raw.get("items", []), 1):
+        # Models favour one key position; reshuffle so keys are balanced (BRIEF §5.1).
+        choices = [nfc(c.strip()) for c in q["choices"]]
+        correct = choices[q["answer"]]
+        rng.shuffle(choices)
+        items.append({"id": f"{pid}-q{i}", "exam": EXAM[skill], "level": level, "type": q["type"], "passageId": pid,
+                      "stem": nfc(q["stem"].strip()), "choices": choices,
+                      "answer": choices.index(correct), "explanation": nfc(q.get("explanation", "").strip()),
+                      "source": "llm", "verified": False})
     return passage, items
 
 
-def next_id(exam: str, level: str, text_type: str, taken: set[str]) -> str:
-    n = 1
-    while True:
-        pid = f"{ID_PREFIX[exam]}-{LEVEL_SLUG[level]}-{text_type}-{n:03d}"
-        if pid not in taken:
-            return pid
-        n += 1
+def staging(lang: str, skill: str) -> Path:
+    return DRAFTS / f"{lang}-{skill}.jsonl"
 
 
-def cmd_draft(args) -> int:
-    exam = "DLPT_LISTENING" if args.exam == "listening" else "DLPT_READING"
-    bands = load_bands(args.bands)
-    out: Path = args.out or HERE / "bank" / f"dlpt_{args.exam}_drafts.json"
-    if out.exists():
-        bank = json.loads(out.read_text(encoding="utf-8"))
-    else:
-        bank = {
-            "bank": f"dlpt-{args.exam}-drafts",
-            "title": f"DLPT {args.exam}: unreviewed drafts",
-            "license": "CC BY-SA 4.0",
-            "attribution": "Tsumugi contributors (AI-drafted, pending review)",
-            "passages": [],
-            "items": [],
-        }
-    taken = {p["id"] for p in bank["passages"]} | {i["id"] for i in bank["items"]}
-    avoid = [p.get("title", "") for p in bank["passages"]]
-    types = TEXT_TYPES[args.exam][args.level]
-    added = 0
-    for k in range(args.count):
-        text_type = args.text_type or types[k % len(types)]
-        for attempt in range(1, args.retries + 2):
-            try:
-                raw = chat(
-                    args.endpoint,
-                    args.model,
-                    draft_messages(exam, args.level, text_type, bands, avoid),
-                    None if args.json_object else draft_schema(exam),
-                    args.temperature,
-                    args.timeout,
-                )
-            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, KeyError, IndexError) as e:
-                print(f"[{k + 1}/{args.count}] attempt {attempt}: request failed: {e}", file=sys.stderr)
-                continue
-            if not isinstance(raw, dict):
-                print(f"[{k + 1}/{args.count}] attempt {attempt}: reply is not an object", file=sys.stderr)
-                continue
-            text_type_out = re.sub(r"[^a-z]", "", str(raw.get("textType", "")).lower()) or text_type
-            pid = next_id(exam, args.level, text_type_out, taken)
-            passage, items = to_bank_entries({**raw, "textType": text_type_out}, exam, args.level, pid)
-            report = Report()
-            candidate = {**bank, "passages": [passage], "items": items}
-            validate_bank(candidate, report, bands, set(), name="draft", types={})
-            if report.errors:
-                print(f"[{k + 1}/{args.count}] attempt {attempt}: rejected:", file=sys.stderr)
-                for e in report.errors:
-                    print(f"  {e}", file=sys.stderr)
-                continue
-            for w in report.warnings:
-                print(f"  warning: {w}", file=sys.stderr)
-            bank["passages"].append(passage)
-            bank["items"].extend(items)
-            taken |= {pid} | {i["id"] for i in items}
-            avoid.append(passage["title"])
-            added += 1
-            print(f"[{k + 1}/{args.count}] {pid}: {passage['title']} ({len(items)} items)")
-            break
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(bank, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    stamp = dt.datetime.now(dt.UTC).isoformat(timespec="seconds")
-    print(f"{stamp}: added {added} of {args.count} drafts to {out} (source=llm, verified=false).")
-    print(f"Review with: uv run python items/review.py {out}")
-    return 0 if added == args.count else 1
+def read_staging(lang: str, skill: str) -> list[dict]:
+    path = staging(lang, skill)
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def write_staging(lang: str, skill: str, rows: list[dict]) -> None:
+    path = staging(lang, skill)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    tmp.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def draft_one(client: llm.Client, lang: str, skill: str, level: str, bands: dict, taken: set[str], avoid: list[str],
+              rng: random.Random, tries: int = 3) -> dict | None:
+    band = bands["levels"][level]
+    text_type = rng.choice(band["textTypes"][skill])
+    topic = rng.choice(TOPICS)
+    lo, hi = band["itemsPerPassage"]
+    n_items = hi if level != "0+" else rng.choice([lo, hi])
+    feedback = None
+    for _ in range(tries):
+        try:
+            raw = client.chat_json(draft_messages(lang, skill, level, text_type, topic, band, n_items, avoid, feedback),
+                                   draft_schema(skill, n_items), temperature=0.8, max_tokens=3000)
+        except (ValueError, KeyError, RuntimeError) as e:
+            if isinstance(e, llm.EndpointDown):
+                raise
+            feedback = f"invalid JSON ({e})"
+            continue
+        pid = next_index(lang, skill, level, text_type, taken)
+        try:
+            passage, items = to_entries(raw, lang, skill, level, text_type, pid, client.model)
+        except (KeyError, TypeError, AttributeError) as e:
+            feedback = f"missing fields ({e})"
+            continue
+        report = Report()
+        validate_bank({"bank": "x", "language": lang, "title": "x", "license": "x", "attribution": "x",
+                       "passages": [passage], "items": items}, lang, skill, report, bands, True, "draft")
+        if report.errors:
+            feedback = "; ".join(e.split(": ", 1)[-1] for e in report.errors[:4])
+            continue
+        taken.add(pid)
+        avoid.append(passage["title"])
+        return {"passage": passage, "items": items, "check": None}
+    return None
+
+
+def cmd_draft(args, client: llm.Client | None = None) -> int:
+    client = client or llm.Client.from_args(args.endpoint, args.model, args.check_model)
+    try:
+        client.ping()
+    except llm.EndpointDown as e:
+        print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
+        return 2
+    bands = load_bands()
+    rows = read_staging(args.language, args.skill)
+    bank = load_bank(args.language, args.skill)
+    taken = {p["id"] for p in bank["passages"]} | {r["passage"]["id"] for r in rows}
+    avoid = [p["title"] for p in bank["passages"] if p["level"] == args.ilr] + [r["passage"]["title"] for r in rows]
+    rng = random.Random(f"{args.language}{args.skill}{args.ilr}{len(taken)}")
+    made = 0
+    for _ in range(args.n):
+        try:
+            row = draft_one(client, args.language, args.skill, args.ilr, bands, taken, avoid, rng)
+        except llm.EndpointDown as e:
+            print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
+            write_staging(args.language, args.skill, rows)
+            return 2
+        if row:
+            rows.append(row)
+            made += 1
+            write_staging(args.language, args.skill, rows)  # resumable after every passage
+            print(f"  drafted {row['passage']['id']}: {row['passage']['title']}", flush=True)
+        else:
+            print(f"  gave up on one {args.language} {args.skill} {args.ilr} draft after 3 tries", flush=True)
+    print(f"{args.language} {args.skill} {args.ilr}: drafted {made}/{args.n}")
+    return 0
+
+
+# --- Second opinion --------------------------------------------------------------------------------------
+
+CHECK_SCHEMA = {"type": "object", "properties": {"answers": {"type": "array", "items": {"type": "object", "properties": {
+    "answer": {"type": "integer", "minimum": -1, "maximum": 3}, "ambiguous": {"type": "boolean"}},
+    "required": ["answer", "ambiguous"]}}}, "required": ["answers"]}
+
+
+def check_row(client: llm.Client, row: dict) -> tuple[bool, str]:
+    p = row["passage"]
+    text = passage_text(p) if not p.get("script") else "\n".join(f"{x['speaker']}: {x['text']}" for x in p["script"])
+    qs = "\n".join(
+        f"Q{i}. {it['stem']}\n" + "\n".join(f"  {j}) {c}" for j, c in enumerate(it["choices"]))
+        for i, it in enumerate(row["items"], 1)
+    )
+    messages = [
+        {"role": "system", "content": "You are checking practice test items. Answer each question using only the text. "
+                                      "Mark a question ambiguous if two choices could be correct or none is."},
+        {"role": "user", "content": f"Text ({LANG_NAMES.get(p['language'], p['language'])}):\n{text}\n\nQuestions:\n{qs}\n\n"
+                                    "For each question give the 0-based index of the correct choice (or -1 if none) and "
+                                    "whether it is ambiguous."},
+    ]
+    out = client.chat_json(messages, CHECK_SCHEMA, temperature=0.0, max_tokens=4000, model=client.fallback or client.model)
+    answers = out.get("answers", [])
+    problems = []
+    for i, it in enumerate(row["items"]):
+        a = answers[i] if i < len(answers) else {"answer": -1, "ambiguous": True}
+        if a.get("ambiguous"):
+            problems.append(f"q{i + 1} ambiguous")
+        elif a.get("answer") != it["answer"]:
+            problems.append(f"q{i + 1} checker chose {a.get('answer')} not {it['answer']}")
+    return (not problems), "; ".join(problems)
+
+
+def cmd_check(args, client: llm.Client | None = None) -> int:
+    client = client or llm.Client.from_args(args.endpoint, args.model, args.check_model)
+    rows = read_staging(args.language, args.skill)
+    done = 0
+    for row in rows:
+        if row.get("check") is not None:
+            continue
+        try:
+            ok, why = check_row(client, row)
+        except llm.EndpointDown as e:
+            print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
+            write_staging(args.language, args.skill, rows)
+            return 2
+        except (ValueError, RuntimeError) as e:
+            ok, why = False, f"checker failed: {e}"
+        row["check"] = {"ok": ok, "why": why, "model": client.fallback or client.model}
+        done += 1
+        write_staging(args.language, args.skill, rows)
+        print(f"  {'pass' if ok else 'FAIL'} {row['passage']['id']} {why}", flush=True)
+    print(f"{args.language} {args.skill}: checked {done}")
+    return 0
+
+
+def cmd_merge(args) -> int:
+    rows = read_staging(args.language, args.skill)
+    bank = load_bank(args.language, args.skill)
+    keep, moved, dropped = [], 0, 0
+    ids = {p["id"] for p in bank["passages"]}
+    for row in rows:
+        chk = row.get("check")
+        if chk is None:
+            keep.append(row)
+        elif chk["ok"] and row["passage"]["id"] not in ids:
+            row["passage"]["checkedBy"] = chk["model"]
+            bank["passages"].append(row["passage"])
+            bank["items"].extend(row["items"])
+            ids.add(row["passage"]["id"])
+            moved += 1
+        else:
+            dropped += 1
+    bank["passages"].sort(key=lambda p: (LEVELS.index(p["level"]), p["id"]))
+    order = {p["id"]: i for i, p in enumerate(bank["passages"])}
+    bank["items"].sort(key=lambda it: (order[it["passageId"]], it["id"]))
+    write_atomic(bank_path(args.language, args.skill), bank)
+    write_staging(args.language, args.skill, keep)
+    print(f"{args.language} {args.skill}: merged {moved}, dropped {dropped} that failed the check, {len(keep)} still staged")
+    return 0
+
+
+def counts(lang: str, skill: str) -> dict[str, int]:
+    bank = load_bank(lang, skill)
+    out = {lv: 0 for lv in LEVELS}
+    for p in bank["passages"]:
+        if p["level"] in out:
+            out[p["level"]] += 1
+    return out
+
+
+def cmd_fill(args) -> int:
+    client = llm.Client.from_args(args.endpoint, args.model, args.check_model)
+    try:
+        client.ping()
+    except llm.EndpointDown as e:
+        print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
+        return 2
+    langs = langtext.LANGS if args.language == "all" else args.language.split(",")
+    skills = SKILLS if args.skill == "both" else (args.skill,)
+    for lang in langs:
+        for skill in skills:
+            for _round in range(args.rounds):
+                have = counts(lang, skill)
+                staged = read_staging(lang, skill)
+                pending = {lv: sum(1 for r in staged if r["passage"]["level"] == lv and r.get("check") is None) for lv in LEVELS}
+                need = {lv: max(0, args.per_band - have[lv] - pending[lv]) for lv in LEVELS}
+                if not any(need.values()) and not any(pending.values()):
+                    break
+                for lv in LEVELS:
+                    if need[lv]:
+                        ns = argparse.Namespace(language=lang, skill=skill, ilr=lv, n=need[lv])
+                        rc = cmd_draft(ns, client)
+                        if rc:
+                            return rc
+                rc = cmd_check(argparse.Namespace(language=lang, skill=skill), client)
+                if rc:
+                    return rc
+                cmd_merge(argparse.Namespace(language=lang, skill=skill))
+            print(f"== {lang} {skill}: {counts(lang, skill)}", flush=True)
+    return 0
+
+
+def cmd_status(args) -> int:
+    print(f"{'lang':8} {'skill':10} " + " ".join(f"{lv:>4}" for lv in LEVELS) + "   items  verified")
+    for lang in langtext.LANGS:
+        for skill in SKILLS:
+            bank = load_bank(lang, skill)
+            c = counts(lang, skill)
+            print(f"{lang:8} {skill:10} " + " ".join(f"{c[lv]:>4}" for lv in LEVELS)
+                  + f"   {len(bank['items']):>5}  {sum(1 for p in bank['passages'] if p.get('verified'))}")
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
-    sys.stdout.reconfigure(encoding="utf-8")
-    parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("--bands", type=Path, default=BANDS_PATH)
-    sub = parser.add_subparsers(dest="cmd", required=True)
-
-    v = sub.add_parser("validate", help="validate item-bank JSON files")
-    v.add_argument("files", type=Path, nargs="+")
-    v.add_argument("--strict", action="store_true", help="fail on ILR band misses and other warnings")
-    v.add_argument("--quiet", action="store_true", help="skip the per-bank summary")
-    v.set_defaults(func=cmd_validate)
-
-    d = sub.add_parser("draft", help="draft passages + items with an OpenAI-compatible endpoint")
-    d.add_argument("--endpoint", required=True, help="base URL, e.g. http://localhost:11434/v1")
-    d.add_argument("--model", required=True)
-    d.add_argument("--level", required=True, choices=DLPT_LEVELS)
-    d.add_argument("--count", type=int, default=1)
-    d.add_argument("--exam", choices=("reading", "listening"), default="reading")
-    d.add_argument("--text-type", help="force a text type (default: rotate through the level's types)")
-    d.add_argument("--out", type=Path, help="bank file to append to (created if missing)")
-    d.add_argument("--temperature", type=float, default=0.7)
-    d.add_argument("--timeout", type=float, default=600)
-    d.add_argument("--retries", type=int, default=2)
-    d.add_argument(
-        "--json-object", action="store_true", help="use response_format json_object, not json_schema"
-    )
-    d.set_defaults(func=cmd_draft)
-
-    args = parser.parse_args(argv)
-    return args.func(args)
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    v = sub.add_parser("validate")
+    v.add_argument("--language", default="all")
+    v.add_argument("--strict", action="store_true")
+    v.add_argument("--show", type=int, default=20)
+    v.add_argument("--show-warnings", action="store_true")
+    for name in ("draft", "check", "merge", "fill"):
+        p = sub.add_parser(name)
+        p.add_argument("--language", required=True, help="BCP-47 code, comma list, or 'all' (fill)")
+        p.add_argument("--skill", required=True, choices=SKILLS + (("both",) if name == "fill" else ()))
+        if name == "draft":
+            p.add_argument("--ilr", required=True, choices=LEVELS)
+            p.add_argument("--n", type=int, default=1)
+        if name == "fill":
+            p.add_argument("--per-band", type=int, default=12)
+            p.add_argument("--rounds", type=int, default=3)
+        llm.add_args(p)
+    sub.add_parser("status")
+    args = ap.parse_args(argv)
+    return {"validate": cmd_validate, "draft": cmd_draft, "check": cmd_check, "merge": cmd_merge, "fill": cmd_fill,
+            "status": cmd_status}[args.cmd](args)
 
 
 if __name__ == "__main__":

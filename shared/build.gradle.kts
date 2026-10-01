@@ -40,6 +40,13 @@ kotlin {
 
 sqldelight {
     databases {
+        // The learner's own data (BRIEF §8.1): history, review queue, generated bank, settings. Append-only.
+        create("MokuhyoDatabase") {
+            packageName.set("app.mokuhyo.db")
+            srcDirs.setFrom("src/commonMain/sqldelight")
+            schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
+            verifyMigrations.set(true)
+        }
         // Read-only Japanese morphological-analysis pack (mecab-ipadic), built by tools/packs/build_tokenizer.py.
         create("TokenizerDatabase") {
             packageName.set("app.mokuhyo.lang.ja.tokenizer.db")

@@ -1,0 +1,141 @@
+-- Append-only history (CLAUDE.md rule 5): rows are never physically deleted; `deleted` is a tombstone timestamp.
+
+-- One Reading or Listening practice session or test form.
+CREATE TABLE attempt (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    modality TEXT NOT NULL,          -- READING | LISTENING
+    mode TEXT NOT NULL,              -- PRACTICE | TEST
+    bank TEXT NOT NULL DEFAULT 'shipped', -- shipped | local (generated on this computer; never in shipped stats)
+    startedAt INTEGER NOT NULL,
+    submittedAt INTEGER,
+    formJson TEXT NOT NULL,
+    answersJson TEXT NOT NULL DEFAULT '[]',
+    scoreJson TEXT,
+    ilrEstimate TEXT,
+    provisional INTEGER NOT NULL DEFAULT 1,
+    deleted INTEGER
+);
+CREATE INDEX attempt_lang ON attempt(learnerId, lang, modality, startedAt);
+
+upsertAttempt:
+INSERT OR REPLACE INTO attempt VALUES ?;
+
+insertAttemptIfAbsent:
+INSERT OR IGNORE INTO attempt VALUES ?;
+
+attempt:
+SELECT * FROM attempt WHERE id = ?;
+
+attempts:
+SELECT * FROM attempt WHERE learnerId = ? AND lang = ? AND deleted IS NULL ORDER BY startedAt DESC;
+
+attemptsAll:
+SELECT * FROM attempt ORDER BY startedAt;
+
+attemptsSince:
+SELECT * FROM attempt WHERE learnerId = ? AND lang = ? AND modality = ? AND deleted IS NULL AND startedAt >= ? ORDER BY startedAt DESC;
+
+tombstoneAttempt:
+UPDATE attempt SET deleted = ? WHERE id = ? AND deleted IS NULL;
+
+-- An OPI interview (practice or test) or a topic conversation.
+CREATE TABLE conversation (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    kind TEXT NOT NULL,              -- OPI | OPI_TEST | TOPIC
+    topic TEXT,
+    startedAt INTEGER NOT NULL,
+    endedAt INTEGER,
+    turnsJson TEXT NOT NULL DEFAULT '[]',
+    ratingJson TEXT,
+    rollingLevelJson TEXT,
+    audioDir TEXT,
+    deleted INTEGER
+);
+CREATE INDEX conversation_lang ON conversation(learnerId, lang, startedAt);
+
+upsertConversation:
+INSERT OR REPLACE INTO conversation VALUES ?;
+
+insertConversationIfAbsent:
+INSERT OR IGNORE INTO conversation VALUES ?;
+
+conversation:
+SELECT * FROM conversation WHERE id = ?;
+
+conversations:
+SELECT * FROM conversation WHERE learnerId = ? AND lang = ? AND deleted IS NULL ORDER BY startedAt DESC;
+
+conversationsAll:
+SELECT * FROM conversation ORDER BY startedAt;
+
+tombstoneConversation:
+UPDATE conversation SET deleted = ? WHERE id = ? AND deleted IS NULL;
+
+-- Audio kept with a conversation turn or an attempt (path is relative to the data dir).
+CREATE TABLE recording (
+    id TEXT NOT NULL PRIMARY KEY,
+    conversationId TEXT,
+    attemptId TEXT,
+    turnIndex INTEGER,
+    path TEXT NOT NULL,
+    durationMs INTEGER NOT NULL,
+    sha256 TEXT NOT NULL,
+    createdAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+
+insertRecording:
+INSERT OR IGNORE INTO recording VALUES ?;
+
+recordingsFor:
+SELECT * FROM recording WHERE conversationId = ? AND deleted IS NULL ORDER BY turnIndex, createdAt;
+
+recordingsAll:
+SELECT * FROM recording ORDER BY createdAt;
+
+-- ILR estimates over time per modality (READING | LISTENING | SPEAKING), the Home trend and the PDF report.
+CREATE TABLE ilr_estimate (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    modality TEXT NOT NULL,
+    at INTEGER NOT NULL,
+    value TEXT NOT NULL,             -- ILR label: 0+, 1, 1+, 2, 2+, 3
+    sourceKind TEXT NOT NULL,        -- ATTEMPT | CONVERSATION
+    sourceId TEXT NOT NULL,
+    confidence REAL NOT NULL,
+    provisional INTEGER NOT NULL DEFAULT 0,
+    deleted INTEGER
+);
+CREATE INDEX ilr_estimate_lang ON ilr_estimate(learnerId, lang, modality, at);
+
+insertEstimate:
+INSERT OR IGNORE INTO ilr_estimate VALUES ?;
+
+estimates:
+SELECT * FROM ilr_estimate WHERE learnerId = ? AND lang = ? AND deleted IS NULL ORDER BY at;
+
+estimatesAll:
+SELECT * FROM ilr_estimate ORDER BY at;
+
+-- A timed test in progress, so it survives a crash or quit (one per learner).
+CREATE TABLE exam_in_progress (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    state TEXT NOT NULL,
+    updatedAt INTEGER NOT NULL
+);
+
+saveInProgress:
+INSERT OR REPLACE INTO exam_in_progress VALUES ?;
+
+inProgress:
+SELECT * FROM exam_in_progress WHERE learnerId = ? AND lang = ? ORDER BY updatedAt DESC LIMIT 1;
+
+clearInProgress:
+DELETE FROM exam_in_progress WHERE id = ?;
