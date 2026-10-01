@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import platform
 import shutil
 import sys
@@ -33,7 +34,8 @@ VOICE_CACHE = REPO / "tools" / ".cache" / "voices"
 def os_arch() -> tuple[str, str, str]:
     """(native os-arch dir, Compose resources dir, our os id)."""
     sysname = {"Darwin": "macos", "Windows": "windows", "Linux": "linux"}[platform.system()]
-    machine = platform.machine().lower()
+    # MOKUHYO_ARCH=x86_64 stages an Intel Mac build from an Apple-silicon machine (tools/release/build_macos_x64.sh).
+    machine = os.environ.get("MOKUHYO_ARCH", platform.machine()).lower()
     arch = "arm64" if machine in ("arm64", "aarch64") else "x86_64"
     compose = f"{sysname}-{'arm64' if arch == 'arm64' else 'x64'}"
     return f"{sysname}-{arch}", compose, sysname
