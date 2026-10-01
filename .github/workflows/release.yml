@@ -51,9 +51,20 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - uses: ilammy/msvc-dev-cmd@v1
         if: runner.os == 'Windows'
-      - name: Vulkan SDK (Linux)
+      # Ubuntu 22.04 (the oldest supported glibc) has no glslc package; LunarG's prebuilt Linux SDK supplies it. If the
+      # download fails the Vulkan variant fails too and the job ships CPU only, with a warning.
+      - name: Packaging tools and Vulkan SDK (Linux)
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y libvulkan-dev glslc fakeroot dpkg-dev
+        run: |
+          sudo apt-get update && sudo apt-get install -y libvulkan-dev fakeroot dpkg-dev
+          V=1.4.309.0
+          if curl -fsSL --max-time 600 -o /tmp/vk.tar.xz "https://sdk.lunarg.com/sdk/download/$V/linux/vulkansdk-linux-x86_64-$V.tar.xz"; then
+            mkdir -p "$HOME/vulkan" && tar -xJf /tmp/vk.tar.xz -C "$HOME/vulkan"
+            echo "VULKAN_SDK=$HOME/vulkan/$V/x86_64" >> "$GITHUB_ENV"
+            echo "$HOME/vulkan/$V/x86_64/bin" >> "$GITHUB_PATH"
+          else
+            echo "::warning::Vulkan SDK download failed; the Linux build will ship CPU only"
+          fi
       - name: Vulkan SDK (Windows)
         if: runner.os == 'Windows'
         uses: humbletim/install-vulkan-sdk@v1.2

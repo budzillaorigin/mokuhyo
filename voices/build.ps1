@@ -12,7 +12,7 @@
 #   LICENSES\                  license texts + SOURCE.txt (exact source tarballs, for GPL-3 §6)
 # and its hashes under "artifacts" in voices\lock.json (voices\hash.py).
 #
-# Run from a "Developer PowerShell for VS 2022" (cl.exe on PATH, VCToolsRedistDir set), with Python 3 on PATH.
+# Run from a "Developer PowerShell for VS" (cl.exe on PATH, VCToolsRedistDir set), with Python 3 on PATH.
 # Environment: CMAKE ("cmake" on PATH, else "uvx --from cmake cmake"), JOBS (parallel jobs),
 #              MOKUHYO_VOICES_CLEAN=1 (wipe the CMake build dir first).
 $ErrorActionPreference = "Stop"
@@ -42,7 +42,8 @@ New-Item -ItemType Directory -Force -Path $buildDir | Out-Null
 
 $sw = [Diagnostics.Stopwatch]::StartNew()
 Write-Host "== configure ($platform)"
-& $cmakeExe @cmakeArgs -S $here -B $buildDir -G "Visual Studio 17 2022" -A $vsPlatform "-DMOKUHYO_PLATFORM=$platform"
+# No -G: CMake picks the newest installed Visual Studio (runner images move from VS 2022 to newer releases).
+& $cmakeExe @cmakeArgs -S $here -B $buildDir -A $vsPlatform "-DMOKUHYO_PLATFORM=$platform"
 if ($LASTEXITCODE -ne 0) { throw "configure failed" }
 Write-Host "== build (-j$jobs)"
 & $cmakeExe @cmakeArgs --build $buildDir --config Release -j $jobs
