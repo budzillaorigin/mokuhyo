@@ -139,3 +139,11 @@ nothing is downloaded or installed. App tags `vX.Y.Z[-pre]` count, content-pack 
 and pre-releases count while the installed build is 0.x or itself a pre-release. The repository is private, so until
 the owner makes it public the check reports "the release list isn't public yet". Making it public is a release decision
 left to the owner.
+
+## D-019 Phase 6 drafting budget (unattended default)
+On the §7.1 server, mistral-small3.2 drafts one passage in about 40 s (ILR 0+) to 2.5 min (ILR 3), and gpt-oss:20b
+checks each one, so filling every band to the §5.3 target (12 per band, 1,584 passages) would take more than a day of
+GPU time. The unattended run drafts to 5 per band for Phase 3, then spends a fixed budget of 8 hours in Phase 6
+topping up toward 12 (level-major, so every language gains at every level). Whatever is still short at the end is
+listed in docs/CONTENT_STATUS.md by gate_content, with the `gen_dlpt.py fill` command that closes it on the owner's
+GPU machine (BRIEF §11.2 Phase 6).

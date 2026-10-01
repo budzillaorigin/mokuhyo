@@ -1,0 +1,2054 @@
+{
+ "language": "id",
+ "profile": {
+  "language": "id",
+  "registerNotes": "Use Bapak/Ibu or Anda with the candidate; kamu only between friends in a role-play. Standard Indonesian (bahasa baku) in formal role-plays.",
+  "formalityMarkers": [
+   "Anda",
+   "Bapak/Ibu",
+   "kamu",
+   "bahasa baku vs informal"
+  ],
+  "levelCheckTopics": {
+   "0+": [
+    "name and greetings",
+    "numbers and prices",
+    "days and times",
+    "family members"
+   ],
+   "1": [
+    "daily routine",
+    "home and neighborhood",
+    "food and shopping",
+    "weekend activities",
+    "work or studies"
+   ],
+   "1+": [
+    "a recent trip",
+    "describing your hometown",
+    "a typical workday",
+    "plans for next year"
+   ],
+   "2": [
+    "a memorable event in detail",
+    "comparing two places you lived",
+    "explaining a process at work",
+    "a current event in your country"
+   ],
+   "2+": [
+    "advantages and disadvantages of a policy",
+    "how your profession has changed",
+    "a problem in your community and its causes"
+   ],
+   "3": [
+    "supporting an opinion on an abstract issue",
+    "hypothetical: what if your country changed a major policy",
+    "the role of technology in society",
+    "ethics of a professional decision"
+   ]
+  },
+  "rolePlaySeeds": [
+   "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+   "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+   "Report a lost passport at a police station (interviewer: police officer).",
+   "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+   "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+   "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+   "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+   "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ]
+ },
+ "questions": [
+  {
+   "id": "id-q-warmup-0+-01",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Selamat pagi, Ibu. Apakah Anda suka berjalan-jalan di taman?",
+   "english": "Good morning, Ma'am. Do you like to go for a walk in the park?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-0+-02",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Bapak, berapa banyak orang dalam keluarga Anda?",
+   "english": "Sir, how many people are in your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-0+-03",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Apakah Anda bekerja di rumah atau di kantor, Ibu?",
+   "english": "Do you work from home or in the office, Ma'am?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-0+-04",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Anda tinggal di kota besar atau di desa, Bapak?",
+   "english": "Do you live in a big city or in the countryside, Sir?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1-01",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Selamat pagi, Ibu. Apa hobby favoritmu?",
+   "english": "Good morning, Ma'am. What is your favorite hobby?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1-02",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Bapak, di mana kamu biasanya berlibur?",
+   "english": "Sir, where do you usually go on vacation?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1-03",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Ibu, berapa banyak adik beradikmu?",
+   "english": "Ma'am, how many siblings do you have?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1-04",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Anda suka makan di rumah atau di restoran?",
+   "english": "Do you prefer eating at home or at restaurants?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1+-01",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Bagaimana hari ini, Bapak? Apakah Anda sudah memiliki rencana untuk akhir pekan ini?",
+   "english": "How is your day so far, Sir? Do you already have plans for this weekend?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1+-02",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Ibu, bisa ceritakan tentang hari libur favorit Anda saat kecil?",
+   "english": "Ma'am, can you tell me about your favorite holiday when you were a child?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1+-03",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Anda bekerja di kantor atau dari rumah, Ibu? Apa yang Anda suka dari pekerjaan Anda?",
+   "english": "Do you work in an office or from home, Ma'am? What do you like about your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-warmup-1+-04",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Bapak, apakah Anda aktif dalam kegiatan komunitas setempat? Jika ya, bisa berbagi pengalaman Anda?",
+   "english": "Sir, are you active in local community activities? If so, can you share your experiences?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-0+-01",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Ibu, apa nama Anda?",
+   "english": "Madam, what is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-0+-02",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Bapak, berapa umur Anda?",
+   "english": "Sir, how old are you?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-0+-03",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Anda punya keluarga besar?",
+   "english": "Do you have a large family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-0+-04",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Apa pekerjaan Anda?",
+   "english": "What is your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-0+-05",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Apa yang Anda lakukan di akhir pekan?",
+   "english": "What do you do on the weekends?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-0+-06",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Anda tahu berita terbaru?",
+   "english": "Do you know the latest news?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1-01",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Ibu, apa hobi Anda?",
+   "english": "Ma'am, what are your hobbies?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1-02",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Bapak, Anda berapa kali pulang kampung dalam setahun?",
+   "english": "Sir, how often do you visit your hometown in a year?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1-03",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Ibu, apa yang Anda lakukan ketika Anda tidak bekerja?",
+   "english": "Ma'am, what do you do when you're not working?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1-04",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Bapak, Anda suka memasak? Apa yang bisa Anda masak?",
+   "english": "Sir, do you like to cook? What can you cook?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1-05",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Ibu, ada berita terbaru di kota Anda sekarang?",
+   "english": "Ma'am, is there any news in your city right now?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1-06",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Bapak, jika Anda bisa bepergian ke mana saja, Anda akan pergi ke mana?",
+   "english": "Sir, if you could travel anywhere, where would you go?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1+-01",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Pak, Bolehkah Anda menceritakan hari terakhir Anda? (Sir, Could you tell me about your last day?)",
+   "english": "Personal",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1+-02",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Ibu, Bagaimana hubungannya Anda dengan saudara Anda? (Madam, How is your relationship with your siblings?)",
+   "english": "Family",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1+-03",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Anda, Apakah Anda dapat menjelaskan tugas hariannya di pekerjaan Anda? (You, Can you explain your daily tasks at work?)",
+   "english": "Work",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1+-04",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Bapak, Bagaimana komunitas tempat Anda tinggal? (Sir, What is your neighborhood community like?)",
+   "english": "Community",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1+-05",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Ibu, Apa pendapat Anda tentang berita terbaru tentang perubahan iklim? (Madam, What is your opinion on the latest news about climate change?)",
+   "english": "Current Events",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-1+-06",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Anda, Dimana tempat last wisata yang Anda kunjungi, dan mengapa Anda suka? (You, What was the last tourist place you visited, and why did you like it?)",
+   "english": "Travel",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Ibu, apa yang Anda minum setiap pagi?",
+   "english": "Madam, what do you drink every morning?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Apakah Anda sering berhubungan dengan saudara Anda yang tinggal jauh?",
+   "english": "Do you often keep in touch with your siblings who live far away?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Bapak, bagaimana hari kerja Anda biasanya?",
+   "english": "Sir, what does your typical workday look like?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Apa yang bisa Anda lakukan untuk membantu lingkungan di sekitar Anda?",
+   "english": "What can you do to help the environment around you?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2-05",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Apa pendapat Anda tentang berita terkini tentang pembangunan infrastruktur di Indonesia?",
+   "english": "What is your opinion on the recent news about infrastructure development in Indonesia?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2-06",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Anda, jika Anda bisa bepergian ke mana saja di dunia ini, Anda akan pergi ke mana?",
+   "english": "If you could travel anywhere in the world, where would you go?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2+-01",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Ibu, apakah Anda bisa menggambarkan perasaan ketika Anda mencapai tujuan penting dalam hidup Anda?",
+   "english": "Madam, can you describe the feeling when you achieve an important goal in your life?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2+-02",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Bapak, bagaimana Anda meluangkan waktu dengan keluarga Anda saat liburan?",
+   "english": "Sir, how do you spend time with your family during holidays?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2+-03",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Anda, apakah Anda setuju dengan pernyataan bahwa kerja jarak jauh akan menjadi norma di masa depan?",
+   "english": "You, do you agree with the statement that remote work will become the norm in the future?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2+-04",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Ibu, bagaimana komunitas Anda beradaptasi dengan perubahan teknologi?",
+   "english": "Madam, how is your community adapting to technological changes?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2+-05",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Bapak, apakah Anda setuju dengan kebijakan baru pemerintah tentang pendidikan?",
+   "english": "Sir, do you agree with the new government policy on education?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-2+-06",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Anda, jika Anda bisa bepergian ke mana saja di Asia Tenggara, Anda akan memilih negara mana dan mengapa?",
+   "english": "You, if you could travel anywhere in Southeast Asia, which country would you choose and why?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-3-01",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Ibu, bagaimana pengalaman Anda dalam bekerja dengan tim yang beragam?",
+   "english": "Madam, how is your experience working with a diverse team?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-3-02",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Bapak, apakah Anda setuju dengan pernyataan bahwa teknologi telah meningkatkan kualitas hidup di kota-kota besar?",
+   "english": "Sir, do you agree with the statement that technology has improved the quality of life in big cities?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-3-03",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Anda, bagaimana Anda membantu tetangga Anda selama pandemi?",
+   "english": "You, how did you help your neighbors during the pandemic?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-3-04",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Ibu, apakah Anda percaya bahwa pendidikan anak usia dini penting bagi perkembangan mereka?",
+   "english": "Madam, do you believe that early childhood education is important for their development?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-3-05",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Bapak, jika Anda bisa mengunjungi satu negara di Asia Tenggara, negara mana Anda pilih dan mengapa?",
+   "english": "Sir, if you could visit one country in Southeast Asia, which country would you choose and why?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-level_check-3-06",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Anda, bagaimana pandangan Anda tentang dampak sosial media pada generasi muda?",
+   "english": "You, what is your opinion on the impact of social media on the younger generation?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-0+-01",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Bapak suka memasak? Silakan ceritakan langkah demi langkah cara membuat hidangan favorit Anda.",
+   "english": "Do you like to cook? Please describe step by step how to make your favorite dish.",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-0+-02",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Ibu bisa menceritakan perbedaan antara hidup di kota besar dan di desa?",
+   "english": "Can you explain the differences between living in a big city and in a village?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-0+-03",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Apakah Anda pernah ke luar negeri? Jika ya, ceritakan pengalaman Anda dan perbandingannya dengan Indonesia.",
+   "english": "Have you ever been abroad? If yes, describe your experience and compare it with Indonesia.",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-0+-04",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Bagaimana menurut Anda keamanan siber penting bagi masyarakat modern?",
+   "english": "How do you think cybersecurity is important for modern society?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1-01",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Ibu, bisa ceritakan harimu kemarin?",
+   "english": "Ma'am, can you describe your day yesterday?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1-02",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Bapak, ada berapa orang di keluargamu? Siapa yang paling pendiam?",
+   "english": "Sir, how many people are in your family? Who is the quietest?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1-03",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Anda bekerja di mana? Apakah Anda lebih suka bekerja di rumah atau di kantor? Mengapa?",
+   "english": "Where do you work? Do you prefer working from home or in the office? Why?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1-04",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Apa nama tempat tinggalmu? Apa yang kamu suka dan apa yang kamu tidak suka tentang tempat tinggalmu?",
+   "english": "What is the name of your neighborhood? What do you like and dislike about where you live?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1+-01",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Ibu, bisa ceritakan lebih detail tentang liburan terakhir Anda?",
+   "english": "Ma'am, can you narrate in detail about your last vacation?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1+-02",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Bapak, bandingkan pekerjaan Anda sekarang dengan pekerjaan pertama Anda.",
+   "english": "Sir, compare your current job with your first job.",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1+-03",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Seperti apa menurut Anda kehidupan di kota yang ramai dibandingkan dengan desa?",
+   "english": "In your opinion, how is life different in a busy city compared to a village?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-1+-04",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Anda, bagaimana menurut Anda teknologi telah mempengaruhi komunikasi antara keluarga?",
+   "english": "You, how do you think technology has affected communication between family members?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2-01",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Ibu, bisa Ceritakan tentang peristiwa bersejarah di Indonesia yang paling mempengaruhi Anda?",
+   "english": "Ma'am, can you narrate in detail about a historical event in Indonesia that has most influenced you?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2-02",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Bapak, bandingkan antara pekerjaan di sektor swasta dan pemerintah. Manakah yang lebih menarik bagi Anda?",
+   "english": "Sir, compare working in the private sector and the government sector. Which do you find more appealing?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2-03",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Anda, bagaimana purna tugas militer mempengaruhi kehidupan seseorang?",
+   "english": "You, how does military service affect someone's life after they are discharged?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2-04",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Ibu, bagaimana teknologi mempengaruhi komunikasi antarkeluarga menurut pendapat Anda?",
+   "english": "Ma'am, in your opinion, how has technology affected communication between family members?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2+-01",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Bapak, bisa Ceritakan detail tentang pengalaman termenarik Anda saat melayani di militer?",
+   "english": "Sir, can you narrate in detail about the most interesting experience you had while serving in the military?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2+-02",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Ibu, bagaimana pendapat Anda tentang pengaruh media sosial terhadap interaksi masyarakat saat ini?",
+   "english": "Ma'am, what is your opinion on the influence of social media on societal interactions today?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2+-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Anda, bagaimana perbedaan antara bekerja di perusahaan swasta dan bekerja di sektor pemerintah? Mana yang lebih menarik bagi Anda?",
+   "english": "You, what are the differences between working in the private sector and the government sector? Which do you find more appealing?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-2+-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Bapak, bagaimana pandangan Anda tentang peran pemerintah dalam mengatasi perubahan iklim?",
+   "english": "Sir, what is your view on the role of the government in addressing climate change?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-3-01",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Ibu, bagaimana pengalaman Anda dalam memimpin tim di tempat kerja? Bisa jelaskan dengan detail tentang tantangan yang Anda hadapi dan solusi yang Anda temukan.",
+   "english": "Ma'am, how is your experience leading a team at work? Can you explain in detail about the challenges you have faced and the solutions you have found?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-3-02",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Bapak, bagaimana Anda melihat peran komunitas dalam menjaga lingkungan hidup? Bisa bandingkan dengan beberapa tahun yang lalu.",
+   "english": "Sir, how do you see the role of the community in maintaining the environment? Can you compare it with several years ago?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-3-03",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Bagaimana pendapat Anda tentang pengaruh globalisasi terhadap budaya lokal? Bisa dukung dengan contoh.",
+   "english": "What is your opinion on the influence of globalization on local culture? Can you support it with examples?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-probe-3-04",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Jika Anda bisa memilih, Anda akan memilih hidup di negara berkembang atau negara maju? Mengapa?",
+   "english": "If you could choose, would you choose to live in a developing country or a developed country? Why?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-1-01",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Ibu, apakah Anda suka memasak?",
+   "english": "Ma'am, do you like cooking?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-1-02",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Bapak, berapa banyak anak yang ada di keluarga Anda?",
+   "english": "Sir, how many children are there in your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-1-03",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Anda bekerja di mana?",
+   "english": "Where do you work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-1-04",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Apakah Anda suka berbelanja di pasar tradisional?",
+   "english": "Do you like shopping at traditional markets?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-2-01",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Ibu, apa yang biasanya Bapak/Ibu lakukan untuk bersantai di akhir pekan?",
+   "english": "Ma'am/Sir, what do you usually do to relax on the weekend?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-2-02",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Anda, apakah Anda pernah pergi ke luar negeri? Bisa ceritakan pengalaman Anda?",
+   "english": "You, have you ever been abroad? Can you tell me about your experience?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-2-03",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Bapak/Ibu, bagaimana masyarakat di daerah Bapak/Ibu berpartisipasi dalam kegiatan sosial?",
+   "english": "Sir/Ma'am, how does the community in your area participate in social activities?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-q-winddown-2-04",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Anda, apakah Anda lebih suka rumah makan tradisional atau modern? Mengapa?",
+   "english": "You, do you prefer traditional or modern restaurants? Why?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "rolePlays": [
+  {
+   "id": "id-rp-0+-01",
+   "level": "0+",
+   "situation": "You are at a hotel and want to check in. The hotel says your reservation is not found.",
+   "interviewerRole": "Receptionist",
+   "opening": "Selamat pagi, Ibu. Apa yang bisa saya bantu?",
+   "english": "Good morning, Ma'am. How can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-0+-02",
+   "level": "0+",
+   "situation": "You need to buy a train ticket to Yogyakarta. The 10 am train is cancelled, and you want to take the next available train.",
+   "interviewerRole": "Ticket Agent",
+   "opening": "Selamat siang, Bapak. Apa yang bisa saya bantu?",
+   "english": "Good afternoon, Sir. How can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-0+-03",
+   "level": "0+",
+   "situation": "You lost your passport and need to report it to the police.",
+   "interviewerRole": "Police Officer",
+   "opening": "Selamat sore, Pak. Apa yang terjadi?",
+   "english": "Good afternoon, Sir. What happened?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-0+-04",
+   "level": "0+",
+   "situation": "You are trying to arrange a meeting with a colleague, but their schedule keeps changing.",
+   "interviewerRole": "Colleague",
+   "opening": "Hai kamu, aku sedang sibuk sekali nih. Apa yang ada?",
+   "english": "Hi, I'm really busy right now. What's up?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1-01",
+   "level": "1",
+   "situation": "You are trying to arrange a meeting with a colleague, but their schedule keeps changing.",
+   "interviewerRole": "Colleague",
+   "opening": "Maaf, saya sudah memutuskan untuk bertemu dengan klien saya besok pagi.",
+   "english": "I'm sorry, I've already decided to meet with my client tomorrow morning.",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1-02",
+   "level": "1",
+   "situation": "You need to brief a local official about a joint exercise that will close a road.",
+   "interviewerRole": "Town official",
+   "opening": "Bagaimana jika saya menjelaskan soal latihan bersama yang akan menutup jalan utama? Kapan latihan itu akan berlangsung?",
+   "english": "How about I explain about the joint exercise that will close the main road? When will the exercise take place?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1-03",
+   "level": "1",
+   "situation": "You are at a checkpoint and need to explain why your convoy must pass before noon.",
+   "interviewerRole": "Checkpoint officer",
+   "opening": "Saya ingin mengajukan permohonan untuk konvoi saya lewat di sini sebelum siang.",
+   "english": "I would like to request that our convoy pass through here before noon.",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1-04",
+   "level": "1",
+   "situation": "You are at a restaurant and would like to order food, but the waiter informs you that the dish you want is not available.",
+   "interviewerRole": "Waiter",
+   "opening": "Maaf, hidangan yang Anda minta saat ini tidak tersedia.",
+   "english": "I'm sorry, the dish you ordered is not available at the moment.",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1+-01",
+   "level": "1+",
+   "situation": "You are trying to persuade your landlord to fix a broken heater before winter. The landlord is reluctant because of the cost.",
+   "interviewerRole": "landlord",
+   "opening": "Selamat pagi, Pak. Ada yang bisa saya bantu?",
+   "english": "Good morning, Sir. How can I help you?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1+-02",
+   "level": "1+",
+   "situation": "You are at a restaurant and would like to order food, but the waiter informs you that the dish you want is not available. You need to choose something else quickly as you have a meeting to attend.",
+   "interviewerRole": "waiter",
+   "opening": "Selamat siang, Ibu. Ada yang bisa saya bantu?",
+   "english": "Good afternoon, Ma'am. How can I help you?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1+-03",
+   "level": "1+",
+   "situation": "You are at a military checkpoint and need to explain why your convoy must pass before noon. There are concerns about security.",
+   "interviewerRole": "checkpoint officer",
+   "opening": "Halo, sahabat. Apa yang menurutmu harus saya ketahui tentang konvoi ini?",
+   "english": "Hello, friend. What do you think I should know about this convoy?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-1+-04",
+   "level": "1+",
+   "situation": "You are at a police station to report a lost passport. The officer is busy and asks you to be brief.",
+   "interviewerRole": "police officer",
+   "opening": "Selamat pagi. Saya sangat sibuk hari ini. Silakan ringkas cerita Anda.",
+   "english": "Good morning. I am very busy today. Please be brief with your story.",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2-01",
+   "level": "2",
+   "situation": "You are checking into a hotel and there is a problem with your reservation. The hotel is fully booked due to a conference and your room was given to someone else. The receptionist should help you find a solution.",
+   "interviewerRole": "Receptionist",
+   "opening": "Selamat sore, Bapak/Ibu. Apakah Bapak/Ibu sudah memiliki reservasi di sini?",
+   "english": "Good afternoon. Do you have a reservation here?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2-02",
+   "level": "2",
+   "situation": "You want to buy a train ticket to Bandung. The 14:00 train is cancelled, and you want to take the next available train.",
+   "interviewerRole": "Ticket Agent",
+   "opening": "Selamat siang, Ibu/Bapak. Bagaimana saya bisa membantu Anda hari ini?",
+   "english": "Good afternoon. How can I help you today?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2-03",
+   "level": "2",
+   "situation": "You are at a military checkpoint and need to explain why your convoy must pass before noon. There are concerns about security.",
+   "interviewerRole": "Checkpoint Officer",
+   "opening": "Halt! Siapa dan mengapa Anda ingin melewati pos pemeriksaan ini?",
+   "english": "Halt! Who are you and why do you want to pass this checkpoint?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2-04",
+   "level": "2",
+   "situation": "You are at a restaurant and would like to order food, but the waiter informs you that the dish you want is not available. You need to choose something else quickly as you have a meeting to attend.",
+   "interviewerRole": "Waiter",
+   "opening": "Selamat malam. Apakah Anda sudah siap untuk memesan?",
+   "english": "Good evening. Are you ready to order?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2+-01",
+   "level": "2+",
+   "situation": "You are planning a joint military exercise with a local official. The exercise will require closing a main road for a few hours. The official is concerned about the impact on local traffic.",
+   "interviewerRole": "Town official",
+   "opening": "Selamat pagi, Bapak. Saya mengerti Bapak ingin melakukan latihan militer bersama, tapi penutupan jalan utama akan mengganggu lalu lintas di kota ini. Bagaimana Bapak bisa memastikan hal ini tidak akan menyebabkan masalah besar?",
+   "english": "Good morning, Sir. I understand you want to conduct a joint military exercise, but closing the main road will disrupt traffic in the city. How can you ensure this won't cause major problems?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2+-02",
+   "level": "2+",
+   "situation": "You are trying to arrange a meeting with a colleague, but their schedule keeps changing. You need to find a time that works for both of you.",
+   "interviewerRole": "Colleague",
+   "opening": "Maaf, saya tahu ini sudah kali ketiga kita mengubah waktu pertemuan. Tapi jadwal saya besok padat sekali. Apakah kita bisa bertemu di hari Selasa depan?",
+   "english": "I'm sorry, I know this is the third time we've changed the meeting time. But my schedule tomorrow is packed. Can we meet next Tuesday?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2+-03",
+   "level": "2+",
+   "situation": "You are interpreting for two delegations that have a misunderstanding. One delegation feels the other is not taking their concerns seriously.",
+   "interviewerRole": "Delegation leader",
+   "opening": "Saya mengerti ada kesalahpahaman antara kedua delegasi ini. Delegasi saya merasa delegasi Bapak tidak serius mempertimbangkan keprihatinan kita. Bagaimana kita bisa membahas hal ini lebih lanjut?",
+   "english": "I understand there is a misunderstanding between the two delegations. My delegation feels yours is not seriously considering our concerns. How can we discuss this further?",
+   "domain": "interpreter",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-2+-04",
+   "level": "2+",
+   "situation": "You are at a checkpoint with a convoy that needs to pass before noon due to a time-sensitive mission. The checkpoint officer is concerned about security.",
+   "interviewerRole": "Checkpoint officer",
+   "opening": "Maaf, saya harus mengetahui alasan mengapa konvoi Bapak harus lewat sebelum siang. Ada masalah keamanan yang harus kita pertimbangkan. Bapak bisa menjelaskan?",
+   "english": "Sorry, I need to know why your convoy must pass before noon. There are security issues we need to consider. Can you explain?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-3-01",
+   "level": "3",
+   "situation": "You are reporting a lost passport at a police station. The officer seems busy and wants you to come back later, but you need the report today to get an emergency passport.",
+   "interviewerRole": "police officer",
+   "opening": "Maaf, Bapak/Ibu, saya sangat sibuk hari ini. Apakah Bapak/Ibu bisa kembali besok?",
+   "english": "Sorry, Sir/Madam, I am very busy today. Could you come back tomorrow?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-3-02",
+   "level": "3",
+   "situation": "You are trying to persuade your landlord to fix a broken heater before winter. The landlord is hesitant because of the cost.",
+   "interviewerRole": "landlord",
+   "opening": "Saya tidak yakin, Pak/Ibu. Membuat perbaikan itu akan sangat mahal. Lihatlah, pemanas itu sudah lama rusak.",
+   "english": "I'm not sure, Sir/Madam. Fixing it will be very expensive. Look, the heater has been broken for a long time.",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-3-03",
+   "level": "3",
+   "situation": "You are interpreting for two military delegations that have a misunderstanding. The Indonesian delegation feels the foreign delegation is not taking their concerns about joint training safety seriously.",
+   "interviewerRole": "delegation leader (Indonesian side)",
+   "opening": "Saya khawatir, perlakuan terhadap keselamatan selama latihan bersama tidak dipahami dengan serius oleh delegasi luar.",
+   "english": "I am concerned that the foreign delegation does not take safety during joint training seriously.",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-rp-3-04",
+   "level": "3",
+   "situation": "You are at a hotel and fully booked due to a conference. Your room was given to someone else. The receptionist should help you find a solution. You need a room with good Wi-Fi because you are on an important assignment.",
+   "interviewerRole": "receptionist",
+   "opening": "Maaf, Pak/Ibu, kami sedang penuh karena ada konferensi besar. Kami telah memberikan kamar Anda kepada orang lain.",
+   "english": "I'm sorry, Sir/Madam, we are fully booked due to a big conference. We have given your room to someone else.",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "topics": [
+  {
+   "id": "id-topic-daily_life-01",
+   "domain": "daily_life",
+   "title": "Greetings",
+   "opener": "Selamat pagi, Bapak/Ibu/Anda. Bagaimana kabar Bapak/Ibu/Anda hari ini?",
+   "minLevel": "0+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-02",
+   "domain": "daily_life",
+   "title": "Family",
+   "opener": "Bapak/Ibu/Anda punya keluarga yang besar, kan? Bisa ceritakan sedikit tentang mereka?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-03",
+   "domain": "daily_life",
+   "title": "Housing",
+   "opener": "Bapak/Ibu/Anda tinggal di rumah atau apartemen? Bisa deskripsikan tempat tinggal Bapak/Ibu/Anda?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-04",
+   "domain": "daily_life",
+   "title": "Food",
+   "opener": "Apa masakan favorit Bapak/Ibu/Anda? Bisa ceritakan tentang masakan tersebut?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-05",
+   "domain": "daily_life",
+   "title": "Shopping",
+   "opener": "Bapak/Ibu/Anda suka berbelanja? Apa yang biasanya Bapak/Ibu/Anda beli saat berbelanja?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-06",
+   "domain": "daily_life",
+   "title": "Health",
+   "opener": "Bagaimana kesehatan Bapak/Ibu/Anda saat ini? Ada gangguan kesehatan yang Bapak/Ibu/Anda alami?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-07",
+   "domain": "daily_life",
+   "title": "Transport",
+   "opener": "Bagaimana transportasi yang biasanya Bapak/Ibu/Anda gunakan? Apa yang Bapak/Ibu/Anda sukai dan tidak sukai tentang transportasi itu?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-08",
+   "domain": "daily_life",
+   "title": "Weather",
+   "opener": "Bagaimana cuaca di daerah Bapak/Ibu/Anda saat ini? Apa yang Bapak/Ibu/Anda lakukan ketika cuaca tidak menyenangkan?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-09",
+   "domain": "daily_life",
+   "title": "Hobbies",
+   "opener": "Ada hobi apa saja yang Bapak/Ibu/Anda sukai? Bisa ceritakan lebih detail tentang hobi tersebut?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-10",
+   "domain": "daily_life",
+   "title": "Weekend Plans",
+   "opener": "Apa rencana Bapak/Ibu/Anda untuk akhir pekan ini? Ada aktivitas menarik yang Bapak/Ibu/Anda rencanakan?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-daily_life-11",
+   "domain": "daily_life",
+   "title": "Local Customs",
+   "opener": "Ada adat istiadat atau tradisi apa saja yang populer di daerah Bapak/Ibu/Anda? Bisa ceritakan lebih detail tentang tradisi tersebut?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-01",
+   "domain": "work_study",
+   "title": "Job Description",
+   "opener": "Bapak/Ibu/Anda bisa ceritakan tentang pekerjaan Bapak/Ibu/Anda sekarang? Apa tugas-tugas utama yang Bapak/Ibu/Anda lakukan?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-02",
+   "domain": "work_study",
+   "title": "Work Schedule",
+   "opener": "Bagaimana jadwal kerja Bapak/Ibu/Anda pada hari-hari kerja? Apakah ada perbedaan antara hari weekdays dan weekend?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-03",
+   "domain": "work_study",
+   "title": "Meeting",
+   "opener": "Bapak/Ibu/Anda sering mengikuti rapat di tempat kerja? Bisa ceritakan tentang rapat terakhir yang Bapak/Ibu/Anda ikuti?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-04",
+   "domain": "work_study",
+   "title": "Email Follow-up",
+   "opener": "Bagaimana cara Bapak/Ibu/Anda mengikuti suratan email yang belum dijawab? Bisa berikan contoh?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-05",
+   "domain": "work_study",
+   "title": "Education Background",
+   "opener": "Bapak/Ibu/Anda bisa menguraikan latar belakang pendidikan Bapak/Ibu/Anda? Dimana dan apa yang dipelajari?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-06",
+   "domain": "work_study",
+   "title": "Career Goals",
+   "opener": "Apa tujuan karir Bapak/Ibu/Anda? Bisa ceritakan tentang langkah-langkah yang Bapak/Ibu/Anda rencanakan untuk mencapai tujuan tersebut?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-07",
+   "domain": "work_study",
+   "title": "Workplace Relationships",
+   "opener": "Bagaimana hubungan Bapak/Ibu/Anda dengan rekan-rekan kerja Bapak/Ibu/Anda? Bisa berikan contoh interaksi seharian?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-08",
+   "domain": "work_study",
+   "title": "Training",
+   "opener": "Apakah Bapak/Ibu/Anda pernah mengikuti pelatihan atau kursus di tempat kerja? Bisa ceritakan pengalaman itu?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-09",
+   "domain": "work_study",
+   "title": "Project Management",
+   "opener": "Bapak/Ibu/Anda pernah terlibat dalam manajemen proyek? Bisa jelaskan tentang proyek tersebut dan peran Bapak/Ibu/Anda?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-10",
+   "domain": "work_study",
+   "title": "Work-Life Balance",
+   "opener": "Bagaimana Bapak/Ibu/Anda menyetimbangkan antara pekerjaan dan kehidupan pribadi? Ada tips yang bisa Bapak/Ibu/Anda beri?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-work_study-11",
+   "domain": "work_study",
+   "title": "Remote Work",
+   "opener": "Bapak/Ibu/Anda pernah bekerja dari rumah? Bisa ceritakan pengalaman Bapak/Ibu/Anda dengan bekerja jarak jauh?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-01",
+   "domain": "society",
+   "title": "Environmental Issues",
+   "opener": "Ibu, saya baru saja melihat berita tentang masalah lingkungan di kota kita. Apa pendapatmu mengenai polusi udara yang semakin parah?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-02",
+   "domain": "society",
+   "title": "Education Policy",
+   "opener": "Bapak, saya ingin mendiskusikan tentang kebijakan pendidikan baru yang akan dilaksanakan. Apa yang kalian pikirkan mengenai pendidikannya ini?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-03",
+   "domain": "society",
+   "title": "Local Elections",
+   "opener": "Ibu, dengan dekatnya pemilihan lokal, ada banyak isu yang hangat dibahas. Siapa kandidat yang kalian dukung dan mengapa?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-04",
+   "domain": "society",
+   "title": "Technology Adoption",
+   "opener": "Bapak, teknologi sedang berkembang dengan sangat cepat. Bagaimana pendapat kalian tentang penggunaan teknologi dalam kehidupan sehari-hari?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-05",
+   "domain": "society",
+   "title": "Healthcare Access",
+   "opener": "Ibu, saya khawatir tentang akses kesehatan di daerah kita. Apa pendapatmu tentang layanan kesehatan yang ada saat ini?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-06",
+   "domain": "society",
+   "title": "Cultural Preservation",
+   "opener": "Bapak, budaya lokal kita sangat kaya. Bagaimana kalian berpendapat tentang upaya pelestarian budaya di masa kini?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-07",
+   "domain": "society",
+   "title": "Urban Development",
+   "opener": "Ibu, kota kita sedang mengalami perkembangan pesat. Apa pendapatmu tentang proyek-proyek pembangunan baru ini?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-08",
+   "domain": "society",
+   "title": "Social Media Impact",
+   "opener": "Bapak, media sosial memiliki pengaruh besar pada generasi muda. Bagaimana kalian melihat dampaknya pada masyarakat?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-09",
+   "domain": "society",
+   "title": "Traffic Congestion",
+   "opener": "Ibu, macet di kota kita semakin parah. Apa pendapatmu tentang solusi untuk mengurangi kemacetan ini?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-10",
+   "domain": "society",
+   "title": "Education Reform",
+   "opener": "Bapak, reformasi pendidikan penting untuk masa depan anak-anak kita. Bagaimana kalian berpendapat tentang perubahan yang diperlukan?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-society-11",
+   "domain": "society",
+   "title": "Environmental Conservation",
+   "opener": "Ibu, pelestarian alam sangat penting. Apa yang kalian pikirkan tentang upaya pelestarian alam di daerah kita?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-01",
+   "domain": "travel_culture",
+   "title": "Airport Check-in",
+   "opener": "Ibu, saya ingin mengecek di mana saya harus mengantarkan bagasi saya. Bisa membantu saya?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-02",
+   "domain": "travel_culture",
+   "title": "Hotel Booking",
+   "opener": "Ibu, saya ingin membuat pemesanan untuk kamar di hotel Anda. Ada kamar yang tersedia untuk minggu depan?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-03",
+   "domain": "travel_culture",
+   "title": "Asking for Directions",
+   "opener": "Maaf, Bapak. Saya baru di sini. Bisa menunjukkan saya jalan ke museum terdekat?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-04",
+   "domain": "travel_culture",
+   "title": "Cultural Etiquette",
+   "opener": "Anda, saya ingin tahu tentang budaya setempat. Ada aturan-etiquette yang saya perlu ketahui saat berkunjung ke rumah orang Indonesia?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-05",
+   "domain": "travel_culture",
+   "title": "Festival Information",
+   "opener": "Ibu, saya ingin mengetahui lebih banyak tentang festival yang akan datang. Bisa ceritakan saya tentang festival itu?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-06",
+   "domain": "travel_culture",
+   "title": "Public Transportation",
+   "opener": "Maaf, Bapak. Saya ingin pergi ke pusat kota. Bagaimana saya bisa menggunakan transportasi umum untuk sampai ke sana?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-07",
+   "domain": "travel_culture",
+   "title": "Renting a Car",
+   "opener": "Ibu, saya ingin menyewa mobil. Ada syarat-syarat yang saya perlu mengetahui?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-08",
+   "domain": "travel_culture",
+   "title": "Local Cuisine",
+   "opener": "Anda, saya ingin mencoba makanan lokal. Ada restoran yang Anda rekomendasikan?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-09",
+   "domain": "travel_culture",
+   "title": "Shopping",
+   "opener": "Ibu, saya ingin berbelanja. Bisa menunjukkan saya toko terdekat yang menjual pakaian tradisional?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-10",
+   "domain": "travel_culture",
+   "title": "Haggling at Market",
+   "opener": "Saudara, berapa harga barang ini? Saya ingin menawar.",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-travel_culture-11",
+   "domain": "travel_culture",
+   "title": "Emergency Situations",
+   "opener": "Maaf, Bapak. Saya tidak merasa baik-baik saja. Dimana saya bisa mendapatkan bantuan darurat?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-01",
+   "domain": "military_garrison",
+   "title": "Basic Training Introduction",
+   "opener": "Ibu, saya baru saja bergabung dengan garnisun ini. Bisa jelaskan apa yang harus saya lakukan selama pelatihan dasar?",
+   "minLevel": "0+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-02",
+   "domain": "military_garrison",
+   "title": "Unit Assignment",
+   "opener": "Bapak, saya baru saja tiba di garnisun ini. Saya ingin tahu tentang satuan di mana saya akan bertugas.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-03",
+   "domain": "military_garrison",
+   "title": "Daily Routine",
+   "opener": "Anda, bisa ceritakan tentang rutinitas sehari-hari di garnisun ini?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-04",
+   "domain": "military_garrison",
+   "title": "Duty Roster",
+   "opener": "Ibu, saya ingin tahu tentang jadwal tugas di garnisun. Dimana saya bisa melihat jadwal itu?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-05",
+   "domain": "military_garrison",
+   "title": "Physical Training",
+   "opener": "Bapak, saya ingin tahu tentang latihan fisik yang dilakukan di garnisun. Berapa kali seminggu kita melakukannya?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-06",
+   "domain": "military_garrison",
+   "title": "Inspection Procedures",
+   "opener": "Anda, bisa menjelaskan prosedur inspeksi yang dilakukan di garnisun? Apa yang dicek selama inspeksi?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-07",
+   "domain": "military_garrison",
+   "title": "Rank Structure",
+   "opener": "Ibu, saya baru saja bergabung dengan garnisun ini. Bisa jelaskan tentang struktur pangkat di militer?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-08",
+   "domain": "military_garrison",
+   "title": "Leave Request",
+   "opener": "Bapak, saya ingin mengajukan permohonan izin untuk cuti. Siapa yang saya harus hubungi?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-09",
+   "domain": "military_garrison",
+   "title": "Emergency Protocol",
+   "opener": "Anda, bisa menjelaskan protokol darurat yang berlaku di garnisun? Apa yang harus kita lakukan jika terjadi emergensi?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-10",
+   "domain": "military_garrison",
+   "title": "Mess Hall Schedule",
+   "opener": "Ibu, saya ingin tahu tentang jadwal makan di kantin garnisun. Berapa kali sehari kantin tersebut buka?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_garrison-11",
+   "domain": "military_garrison",
+   "title": "Base Security",
+   "opener": "Bapak, bisa ceritakan tentang keamanan di garnisun? Apa yang harus kita lakukan untuk menjaga keamanan?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-01",
+   "domain": "military_operations",
+   "title": "Exercise Coordination",
+   "opener": "Ibu, apakah Anda dapat memberikan informasi tentang jadwal latihan yang akan datang? Saya perlu untuk menyesuaikan rencana tim saya.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-02",
+   "domain": "military_operations",
+   "title": "Logistics and Supply",
+   "opener": "Bapak, saya ingin menemui Anda tentang persediaan logistik. Apakah kita memiliki cukup bahan untuk latihan mendatang?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-03",
+   "domain": "military_operations",
+   "title": "Movement Orders",
+   "opener": "Anda, saya baru saja menerima perintah pindah baru. Apakah Anda bisa membantu saya memahami rinciannya?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-04",
+   "domain": "military_operations",
+   "title": "Airfield Operations",
+   "opener": "Ibu, saya memiliki beberapa pertanyaan tentang operasi lapangan terbang. Siapa yang saya hubungi untuk mendapatkan izin lepas landas?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-05",
+   "domain": "military_operations",
+   "title": "Communications Checks",
+   "opener": "Bapak, kita perlu melakukan pemeriksaan komunikasi sebelum latihan besok. Apakah semua saluran siap?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-06",
+   "domain": "military_operations",
+   "title": "Intelligence Briefing",
+   "opener": "Anda, saya ingin mendapatkan ringkasan intelijen tentang daerah operasi. Apakah Anda memiliki informasi terbaru?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-07",
+   "domain": "military_operations",
+   "title": "Joint Operations Planning",
+   "opener": "Ibu, kita perlu merencanakan operasi bersama dengan unit lain. Apakah Anda bisa membantu saya menyusun rencana?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-08",
+   "domain": "military_operations",
+   "title": "Crisis Management",
+   "opener": "Bapak, kita mengalami situasi darurat. Saya perlu Anda untuk membantu saya mengevaluasi dan merespons dengan cepat.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-09",
+   "domain": "military_operations",
+   "title": "Humanitarian Assistance",
+   "opener": "Anda, kita akan terlibat dalam misi bantuan kemanusiaan. Apakah Anda memiliki panduan tentang prosedur yang harus diikuti?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-10",
+   "domain": "military_operations",
+   "title": "Counterinsurgency Operations",
+   "opener": "Ibu, saya ingin membahas strategi operasi anti-pemberontakan. Apakah Anda memiliki pengalaman dalam bidang ini?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_operations-11",
+   "domain": "military_operations",
+   "title": "Cybersecurity Measures",
+   "opener": "Bapak, dengan semakin banyak ancaman siber, saya ingin memastikan semua sistem kami terlindungi. Apakah Anda memiliki saran?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-01",
+   "domain": "military_field",
+   "title": "Checkpoint Procedure",
+   "opener": "Ibu, saya ingin mengetahui prosedur untuk melalui titik pengendalian di jalan utama. Bisa Anda jelaskan?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-02",
+   "domain": "military_field",
+   "title": "Medical Evacuation Request",
+   "opener": "Bapak, saya memerlukan evakuasi medis untuk seorang prajurit yang terluka. Bagaimana cara melaporkan ini?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-03",
+   "domain": "military_field",
+   "title": "Casualty Report",
+   "opener": "Ibu, saya harus melaporkan korban jiwa akibat insiden di markas. Bagaimana format laporan yang benar?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-04",
+   "domain": "military_field",
+   "title": "Convoy Coordination",
+   "opener": "Bapak, saya ingin mengkoordinasi konvoi ke daerah terpencil. Siapa yang harus saya hubungi untuk izin?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-05",
+   "domain": "military_field",
+   "title": "Disaster Relief Planning",
+   "opener": "Ibu, saya berada di tim penanggulangan bencana. Bagaimana kita bisa merencanakan distribusi bantuan?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-06",
+   "domain": "military_field",
+   "title": "Evacuation of Civilians",
+   "opener": "Bapak, ada warga sipil yang perlu dievakuasi dari zona bahaya. Bagaimana langkah-langkah yang harus kita lakukan?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-07",
+   "domain": "military_field",
+   "title": "Weapon Maintenance Schedule",
+   "opener": "Ibu, saya butuh informasi tentang jadwal pemeliharaan senjata. Dimana saya bisa mendapatkan kalender ini?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-08",
+   "domain": "military_field",
+   "title": "Military Exercise Preparation",
+   "opener": "Bapak, kita akan melakukan latihan militer besar-besaran. Bagaimana kita bisa mempersiapkannya dengan baik?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-09",
+   "domain": "military_field",
+   "title": "Intelligence Sharing",
+   "opener": "Ibu, saya memiliki informasi rahasia yang harus dibagikan dengan unit lain. Siapa yang dapat saya hubungi untuk ini?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-10",
+   "domain": "military_field",
+   "title": "Logistics Supply Chain",
+   "opener": "Bapak, saya bertanggung jawab atas rantai pasok logistik. Bagaimana kita bisa memastikan aliran suplai tidak terputus?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-military_field-11",
+   "domain": "military_field",
+   "title": "Crisis Management",
+   "opener": "Ibu, kita sedang menghadapi krisis yang serius. Bagaimana tim manajemen krisis bisa bekerja sama dengan efektif?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-01",
+   "domain": "interpreter",
+   "title": "Arrival Instructions",
+   "opener": "Ibu, saya baru saja tiba di bandara. Bagaimana saya bisa menuju ke hotel yang telah disediakan?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-02",
+   "domain": "interpreter",
+   "title": "Restaurant Reservation",
+   "opener": "Anda, saya ingin reservasi meja di resto terdekat untuk jam 8 malam. Apakah itu mungkin?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-03",
+   "domain": "interpreter",
+   "title": "Conference Registration",
+   "opener": "Bapak, saya ingin mendaftar untuk konferensi ini. Bagaimana prosesnya?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-04",
+   "domain": "interpreter",
+   "title": "Sight Translation of Notice",
+   "opener": "Kamu, ada pemberitahuan di dinding ini. Bisa kamu jabarkan isinya dengan bahasa yang lebih sederhana?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-05",
+   "domain": "interpreter",
+   "title": "Relaying Commander's Intent",
+   "opener": "Ibu, saya perlu mengetahui niat komandan untuk misi ini. Bisa kamu jelaskan lagi?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-06",
+   "domain": "interpreter",
+   "title": "Cultural Brokering: Greetings",
+   "opener": "Anda, saya akan bertemu dengan klien Indonesia saya. Bagaimana cara terbaik untuk menyapa mereka?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-07",
+   "domain": "interpreter",
+   "title": "Clarifying Ambiguity: Contract Terms",
+   "opener": "Bapak, saya ada beberapa ketidakjelasan tentang ketentuan kontrak ini. Bisa kamu bantu saya jelaskan?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-08",
+   "domain": "interpreter",
+   "title": "Escort-Interpreter: Hospital Visit",
+   "opener": "Kamu, saya akan mengikuti pasien ke rumah sakit. Bisa kamu tolong menerjemahkan perbincangan dengan dokter?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-09",
+   "domain": "interpreter",
+   "title": "Cultural Brokering: Dining Etiquette",
+   "opener": "Ibu, saya akan hadir di undangan makan malam bisnis. Bisa kamu jelaskan etiket makan yang pantas?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-10",
+   "domain": "interpreter",
+   "title": "Sight Translation of Menu",
+   "opener": "Anda, saya ingin memesan makanan tetapi saya tidak mengerti menu ini. Bisa kamu bantu saya?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-interpreter-11",
+   "domain": "interpreter",
+   "title": "Relaying Feedback: Workshop Evaluation",
+   "opener": "Bapak, saya perlu mengumpulkan umpan balik dari peserta workshop ini. Bisa kamu tolong mengumpulkan komentar mereka?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-01",
+   "domain": "abstract",
+   "title": "Education Policy",
+   "opener": "Ibu, apa pendapat Anda tentang biaya pendidikan yang akan ditanggung oleh pemerintah? Apakah ini akan meningkatkan akses pendidikan atau justru akan menimbulkan masalah lain?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-02",
+   "domain": "abstract",
+   "title": "Environmental Ethics",
+   "opener": "Anda pernah berpikir tentang tanggung jawab kita terhadap lingkungan? Bagaimana menurut Anda kami bisa melakukan lebih banyak untuk melindungi bumi?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-03",
+   "domain": "abstract",
+   "title": "Social Media Impact",
+   "opener": "Bapak, bagaimana menurut Anda dampak media sosial terhadap hubungan sosial kita? Apakah Anda setuju dengan mereka yang mengatakan bahwa media sosial telah merusak hubungan kami?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-04",
+   "domain": "abstract",
+   "title": "Healthcare Reform",
+   "opener": "Ibu, apa pendapat Anda tentang reformasi sistem kesehatan? Bagaimana menurut Anda kami bisa membuat sistem kesehatan lebih baik untuk semua warga?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-05",
+   "domain": "abstract",
+   "title": "Artistic Expression",
+   "opener": "Anda pernah memikirkan tentang peran seni dalam masyarakat? Bagaimana menurut Anda seni dapat mempengaruhi perubahan sosial?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-06",
+   "domain": "abstract",
+   "title": "Technological Advancements",
+   "opener": "Bapak, bagaimana menurut Anda kemajuan teknologi telah mempengaruhi kehidupan kita? Apakah Anda pikir ada batasan yang harus kita tetapkan?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-07",
+   "domain": "abstract",
+   "title": "Cultural Identity",
+   "opener": "Ibu, bagaimana menurut Anda kita dapat menjaga identitas budaya kita di dunia yang semakin global? Apakah Anda pikir adaptasi ini penting?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-08",
+   "domain": "abstract",
+   "title": "Economic Inequality",
+   "opener": "Anda pernah berpikir tentang kesenjangan ekonomi di Indonesia? Bagaimana menurut Anda kita bisa mengurangi kesenjangan ini?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-09",
+   "domain": "abstract",
+   "title": "Political Participation",
+   "opener": "Bapak, bagaimana menurut Anda pentingnya partisipasi politik bagi warga negara? Bagaimana kita bisa mendorong lebih banyak orang untuk terlibat?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-10",
+   "domain": "abstract",
+   "title": "Moral Responsibility",
+   "opener": "Ibu, bagaimana menurut Anda kita bisa mengajar generasi muda tentang tanggung jawab moral? Apakah Anda pikir sekolah harus memiliki peran yang lebih besar?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-topic-abstract-11",
+   "domain": "abstract",
+   "title": "Urbanization Effects",
+   "opener": "Anda pernah memikirkan tentang dampak urbanisasi terhadap kehidupan tradisional? Bagaimana menurut Anda kita bisa menyelaraskan kedua hal ini?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "checklist": {
+  "0+": [
+   "I can greet people and say my name.",
+   "I can give numbers, prices, days and times.",
+   "I can answer very simple questions with memorized phrases."
+  ],
+  "1": [
+   "I can make simple sentences about myself, my family and my daily routine.",
+   "I can ask and answer simple questions about familiar topics.",
+   "I can handle basic needs: ordering food, buying a ticket, asking for directions."
+  ],
+  "1+": [
+   "I can describe places and people in connected sentences.",
+   "I can tell what happened on a recent trip or weekend.",
+   "I can handle routine situations even when something small goes wrong."
+  ],
+  "2": [
+   "I can narrate past, present and future events in paragraphs.",
+   "I can describe and explain concrete topics at work and in the news.",
+   "I can resolve a complication in a role-play, like a cancelled reservation."
+  ],
+  "2+": [
+   "I can often support my opinions with reasons and examples.",
+   "I can discuss some abstract topics, although I sometimes break down.",
+   "I can explain the causes and effects of a problem in my community."
+  ],
+  "3": [
+   "I can support and defend opinions on abstract and unfamiliar topics.",
+   "I can hypothesize about situations that did not happen.",
+   "I can speak at length with good control of grammar and vocabulary."
+  ]
+ }
+}
