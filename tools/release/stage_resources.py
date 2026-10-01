@@ -3,7 +3,10 @@
 - native/<variant>/  ← native/build/<os>-<arch>/<variant>/   (llama.cpp + whisper.cpp JNI library per variant)
 - models/            ← bundled weights from content/models/manifest.json ("bundled": true), downloaded and
                        SHA-256 verified (cached under tools/.cache/models)
-- voices/, packs/    ← added by Phase 2+ stagers when present (voices/bin, content/packs)
+- voices/piper/      ← voices/build/<os>-<arch>/piper/ (Piper voice service, a separate GPL program; voices/build.sh)
+  common/voices/     ← voices/manifest.json + each voice's files under <id>/, SHA-256 verified (voices/models/ if
+                       fetched there, else downloaded into tools/.cache/voices)
+- packs/             ← added by later stagers when present (content/packs)
 
 Compose's appResourcesRootDir layout: common/ for every OS, <os>-<arch>/ (macos-arm64, macos-x64, windows-x64,
 linux-x64) for one platform.
@@ -24,6 +27,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 RES = REPO / "desktopApp" / "resources"
 CACHE = REPO / "tools" / ".cache" / "models"
+VOICE_CACHE = REPO / "tools" / ".cache" / "voices"
 
 
 def os_arch() -> tuple[str, str, str]:
@@ -93,10 +97,52 @@ def stage_models() -> None:
             print(f"models: {f['name']} ({f['bytes'] / 1e6:.0f} MB)")
 
 
+def stage_voices(native_dir: str, compose_dir: str, with_voice_files: bool = True) -> bool:
+    """Piper (per OS) + voice files and manifest (common). Returns False when the Piper build is missing."""
+    src = REPO / "voices" / "build" / native_dir / "piper"
+    dest = RES / compose_dir / "voices" / "piper"
+    if dest.exists():
+        shutil.rmtree(dest)
+    exe = src / ("piper.exe" if native_dir.startswith("windows") else "piper")
+    have_piper = exe.is_file()
+    if have_piper:
+        shutil.copytree(src, dest, symlinks=False)  # copy2 keeps the executable bit
+        size = sum(f.stat().st_size for f in dest.rglob("*") if f.is_file())
+        print(f"voices: staged Piper into {dest.relative_to(REPO)} ({size / 1e6:.0f} MB)")
+    else:
+        print(f"voices: no Piper build at {src.relative_to(REPO)}; run voices/build.sh (OS voices only)")
+
+    common = RES / "common" / "voices"
+    manifest_path = REPO / "voices" / "manifest.json"
+    if common.exists():
+        shutil.rmtree(common)
+    if not with_voice_files or not manifest_path.exists():
+        return have_piper
+    common.mkdir(parents=True)
+    shutil.copy2(manifest_path, common / "manifest.json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    total = 0
+    for v in manifest["voices"]:
+        for f in v["files"]:
+            local = REPO / "voices" / "models" / v["id"] / f["name"]
+            if not (local.exists() and local.stat().st_size == f["bytes"] and sha256(local) == f["sha256"]):
+                local = VOICE_CACHE / v["id"] / f["name"]
+                fetch(f["url"], local, f["sha256"], f["bytes"])
+            target = common / v["id"] / f["name"]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(local, target)
+            total += f["bytes"]
+        print(f"voices: {v['id']}")
+    print(f"voices: {len(manifest['voices'])} voices ({total / 1e6:.0f} MB) into {common.relative_to(REPO)}")
+    return have_piper
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--skip-models", action="store_true", help="don't bundle model weights (CI smoke builds)")
+    ap.add_argument("--skip-voices", action="store_true", help="don't bundle voice files (CI smoke builds)")
     ap.add_argument("--require-native", action="store_true")
+    ap.add_argument("--require-voices", action="store_true", help="fail when the Piper build is missing")
     args = ap.parse_args()
     native_dir, compose_dir, _ = os_arch()
     n = stage_native(native_dir, compose_dir)
@@ -105,6 +151,9 @@ def main() -> int:
         return 1
     if not args.skip_models:
         stage_models()
+    if not stage_voices(native_dir, compose_dir, with_voice_files=not args.skip_voices) and args.require_voices:
+        print(f"no Piper build under voices/build/{native_dir}; run voices/build.sh first", file=sys.stderr)
+        return 1
     return 0
 
 
