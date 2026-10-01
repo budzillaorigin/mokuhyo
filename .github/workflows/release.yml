@@ -77,6 +77,8 @@ jobs:
             voices/build.sh
           fi
       - name: Stage resources (natives, voices, Whisper small, fonts, content packs)
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           (cd tools && uv run --locked python release/fetch_packs.py)
           (cd tools && uv run --locked python release/stage_fonts.py)
