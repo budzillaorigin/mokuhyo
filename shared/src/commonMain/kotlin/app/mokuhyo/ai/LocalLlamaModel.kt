@@ -11,7 +11,8 @@ import kotlin.coroutines.resumeWithException
  * Swift can implement it. Callbacks may arrive on any thread.
  *
  * - [load]: `onDone(null)` on success, `onDone(errorMessage)` on failure.
- * - [generate]: [prompt] is the fully formatted chat prompt (ChatML); [grammar] is a GBNF grammar or null.
+ * - [generate]: [messages] are formatted by the bridge with the model's own chat template (the GGUF's
+ *   `tokenizer.chat_template`, applied by llama.cpp), so any instruct model works; [grammar] is a GBNF grammar or null.
  *   `onToken` streams pieces; `onDone(fullText, null)` on success, `onDone(null, errorMessage)` on failure.
  *   Generation stops at any of [stop] (the stop string itself is not included in the text).
  * - [cancel]: stop the running generation; the bridge then calls `onDone(null, "cancelled")`.
@@ -26,7 +27,7 @@ interface LocalLlmBridge {
     fun isLoaded(): Boolean
     fun load(modelPath: String, contextSize: Int, onDone: (String?) -> Unit)
     fun generate(
-        prompt: String,
+        messages: List<ChatMessage>,
         grammar: String?,
         maxTokens: Int,
         temperature: Double,
@@ -63,8 +64,8 @@ class LoadedModelSlot {
 }
 
 /**
- * On-device model over [LocalLlmBridge]. Formats a ChatML prompt and turns [CompletionRequest.jsonSchema]
- * into a GBNF grammar so output is always valid JSON of the right shape (BRIEF §7.1).
+ * On-device model over [LocalLlmBridge]. The bridge applies the model's chat template; this class turns
+ * [CompletionRequest.jsonSchema] into a GBNF grammar so output is always valid JSON of the right shape.
  */
 class LocalLlamaModel(
     private val bridge: LocalLlmBridge,
@@ -85,12 +86,11 @@ class LocalLlamaModel(
             // No file known (the host app loaded it itself): use whatever is loaded, or fail honestly.
             !bridge.isLoaded() -> throw AiException("model ${modelInfo.id} is not downloaded")
         }
-        val prompt = chatMl(request.messages)
         val grammar = request.jsonSchema?.toGbnf()
-        val stop = (request.stop + IM_END).distinct()
+        val stop = request.stop.distinct()
         val text = suspendCancellableCoroutine { cont ->
             cont.invokeOnCancellation { bridge.cancel() }
-            bridge.generate(prompt, grammar, request.maxTokens, request.temperature, stop, onToken = {}) { full, error ->
+            bridge.generate(request.messages, grammar, request.maxTokens, request.temperature, stop, onToken = {}) { full, error ->
                 if (!cont.isActive) return@generate
                 when {
                     full != null -> cont.resume(full)
@@ -99,7 +99,7 @@ class LocalLlamaModel(
                 }
             }
         }
-        return CompletionResult(text.removeSuffix(IM_END).trim(), engineLabel, null)
+        return CompletionResult(text.trim(), engineLabel, null)
     }
 
     /**
@@ -121,16 +121,7 @@ class LocalLlamaModel(
     }
 
     companion object {
-        const val IM_START = "<|im_start|>"
-        const val IM_END = "<|im_end|>"
         const val DEFAULT_CONTEXT = 4096
 
-        /** ChatML: each turn wrapped in im_start/im_end, ending with an open assistant turn. */
-        fun chatMl(messages: List<ChatMessage>): String = buildString {
-            for (m in messages) {
-                append(IM_START).append(m.role.name.lowercase()).append('\n').append(m.content).append(IM_END).append('\n')
-            }
-            append(IM_START).append("assistant\n")
-        }
     }
 }

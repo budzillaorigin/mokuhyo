@@ -16,7 +16,7 @@ private val testModel = ModelInfo(
 )
 
 private class FakeLlmBridge(
-    var reply: String? = "{\"ok\":true}<|im_end|>",
+    var reply: String? = "{\"ok\":true}",
     var loadError: String? = null,
     var hold: Boolean = false,
     var error: String = "boom",
@@ -25,7 +25,7 @@ private class FakeLlmBridge(
     var loads = 0
     var unloads = 0
     var loadedWith: Pair<String, Int>? = null
-    var prompt: String? = null
+    var messages: List<ChatMessage>? = null
     var grammar: String? = null
     var stop: List<String> = emptyList()
     var cancelled = false
@@ -40,10 +40,10 @@ private class FakeLlmBridge(
     }
 
     override fun generate(
-        prompt: String, grammar: String?, maxTokens: Int, temperature: Double, stop: List<String>,
+        messages: List<ChatMessage>, grammar: String?, maxTokens: Int, temperature: Double, stop: List<String>,
         onToken: (String) -> Unit, onDone: (String?, String?) -> Unit,
     ) {
-        this.prompt = prompt
+        this.messages = messages
         this.grammar = grammar
         this.stop = stop
         if (hold) pending = onDone else onDone(reply, if (reply == null) error else null)
@@ -62,15 +62,6 @@ private class FakeLlmBridge(
 
 class LocalEnginesTest {
     @Test
-    fun chatMlFormat() {
-        val prompt = LocalLlamaModel.chatMl(listOf(ChatMessage(Role.SYSTEM, "sys"), ChatMessage(Role.USER, "こんにちは")))
-        assertEquals(
-            "<|im_start|>system\nsys<|im_end|>\n<|im_start|>user\nこんにちは<|im_end|>\n<|im_start|>assistant\n",
-            prompt,
-        )
-    }
-
-    @Test
     fun loadsThenGeneratesWithGrammar() = runTest {
         val bridge = FakeLlmBridge()
         val model = LocalLlamaModel(bridge, testModel, modelPath = "/models/q.gguf")
@@ -80,8 +71,8 @@ class LocalEnginesTest {
         assertEquals("{\"ok\":true}", result.text)
         assertEquals("on-device Phi test", result.engine)
         assertEquals(schema.toGbnf(), bridge.grammar)
-        assertEquals(listOf("\n\n", "<|im_end|>"), bridge.stop)
-        assertTrue(bridge.prompt!!.endsWith("<|im_start|>assistant\n"))
+        assertEquals(listOf("\n\n"), bridge.stop)
+        assertEquals(listOf(ChatMessage(Role.USER, "hi")), bridge.messages)
         assertTrue(model.isLocal)
     }
 
