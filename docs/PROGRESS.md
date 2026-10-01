@@ -127,7 +127,7 @@ Settings → "Check for updates" is wired in Phase 7.
 
 **Built**
 - Exam engine in `shared/.../exam/`: `Blueprint` (default 60-item, 180-minute full form, 8/10/10/12/10/10 items from
-  ILR 0+ to 3, 30/60-minute slices, D-0xx open decision 2), `ExamAssembler` (`test` and `practice`, balanced keys,
+  ILR 0+ to 3, 30/60-minute slices; D-020), `ExamAssembler` (`test` and `practice`, balanced keys,
   no passage repeated across the last 3 forms), `ExamSession` (timer, navigation, flag, per-passage play policy:
   listening plays once on tests, questions appear after the first play), scoring and ILR estimation (`Ilr`), resume
   after a crash (`DbProgressStore`).

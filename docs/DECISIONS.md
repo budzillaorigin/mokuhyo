@@ -147,3 +147,28 @@ GPU time. The unattended run drafts to 5 per band for Phase 3, then spends a fix
 topping up toward 12 (level-major, so every language gains at every level). Whatever is still short at the end is
 listed in docs/CONTENT_STATUS.md by gate_content, with the `gen_dlpt.py fill` command that closes it on the owner's
 GPU machine (BRIEF §11.2 Phase 6).
+
+## D-020 Exam blueprint and listening play policy — open decision 2 (unattended default)
+One default blueprint for every language (`tools/items/blueprints/default.json`): a full form is 60 items in 180
+minutes, 8/10/10/12/10/10 items from ILR 0+ to 3, with 30- and 60-minute slices scaled by minutes. Listening passages
+play once in tests and the questions appear after the first play; practice allows replays. Questions and choices are
+in English. The owner overrides per language with `tools/items/blueprints/<lang>.json` holding only the changed fields,
+from the public familiarization guides.
+
+## D-021 Final model per tier — open decision 1 (unattended default)
+Tier A Phi-4-mini, Tier B EuroLLM-9B-Instruct (alternates Granite-3.3-8B, Mistral-7B), Tier C Mistral-Nemo (alternate
+Phi-4), Tier D Mistral-Small-3.2, all Q4_K_M. EuroLLM-9B scored 0.76–0.79 on ja/es/ar in `eval_speaking.py` (above
+the 0.60 warning line). Gemma 3 and Llama 3.x stay out: their licenses aren't on the rule-6 list, and opting in is the
+owner's decision.
+
+## D-022 Whisper large-v3-turbo stays a download — open decision 3 (unattended default)
+The installer bundles Whisper small only. Large-v3-turbo (1.6 GB) is offered as a download in Settings → Speech for
+Tier C/D machines. Bundling it would roughly double every installer for a minority of learners.
+
+## D-023 Two macOS DMGs — open decision 5 (unattended default)
+Separate arm64 and x64 DMGs. A universal app would need lipo'd native libraries and a universal JRE from jpackage,
+which Compose Desktop doesn't produce. The release workflow builds both on their own runners.
+
+## D-024 Portuguese and Arabic variants — open decisions 6 and 7 (unattended default)
+Brazilian Portuguese only (`pt-BR`) and Modern Standard Arabic only (`ar`) at launch, as the brief assumes. Dialects
+and European Portuguese would be added later as separate languages through the `LanguageModule` contract.
