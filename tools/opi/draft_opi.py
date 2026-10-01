@@ -18,8 +18,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 
-import langtext  # noqa: E402
-import llm  # noqa: E402
+import langtext
+import llm
 
 PROFILES = HERE / "profiles.json"
 LEVELS = ["0+", "1", "1+", "2", "2+", "3"]

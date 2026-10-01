@@ -1,0 +1,32 @@
+{
+  "language": "fr",
+  "file": "dictionary.sqlite",
+  "bytes": 12558336,
+  "sha256": "ace8252bee3dedb8e16daa51f9f831ebad8231dec6a5ddc742b2348dd5fdabc2",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 14.4,
+  "max_entries": 40000,
+  "counts": {
+    "entries": 40000,
+    "senses": 56622,
+    "forms": 107079,
+    "examples": 9641,
+    "folds": 53197,
+    "links_resolved": 3769
+  },
+  "license": "CC BY-SA 3.0",
+  "attribution": "Definitions from English Wiktionary (https://en.wiktionary.org), © Wiktionary contributors, licensed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/); extracted by wiktextract (Tatu Ylonen) and published at https://kaikki.org. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://kaikki.org/dictionary/French/kaikki.org-dictionary-French.jsonl",
+      "file": "kaikki.org-dictionary-French.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "sha256": "be18e3c1f5d83532318935301ccdfc6cbb3fc60416080242a9335d3007d01162",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "name": "kaikki-french"
+    }
+  ]
+}

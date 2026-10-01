@@ -657,9 +657,430 @@
    "domain": "travel",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "es-q-probe-2-01",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "¿Cómo describiría la relación que tiene con sus vecinos? ¿Qué actividades suelen hacer juntos?",
+   "english": "How would you describe your relationship with your neighbors? What activities do you usually do together?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-2-02",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Imagínese que usted ha recibido una promoción en su trabajo. ¿Cuáles cree que serían los mayores desafíos en su nuevo puesto?",
+   "english": "Imagine you have received a promotion at work. What do you think would be the biggest challenges in your new position?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-2-03",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "¿Qué opina usted sobre la importancia de aprender un segundo idioma? ¿Cómo ha influido esto en su vida?",
+   "english": "What is your opinion on the importance of learning a second language? How has this influenced your life?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-2-04",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Si tuviera la oportunidad de viajar a cualquier país del mundo, ¿a cuál elegiría y por qué? ¿Qué le gustaría hacer allí?",
+   "english": "If you had the opportunity to travel to any country in the world, which would you choose and why? What would you like to do there?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-2+-01",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "¿Qué tipo de libros, películas o programas de televisión disfruta en su tiempo libre? ¿Podría explicarme qué le atrae a estos géneros o temas en particular?",
+   "english": "What types of books, movies, or TV shows do you enjoy in your free time? Could you explain what attracts you to these genres or topics in particular?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-2+-02",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Imagina que un amigo cercano está considerando cambiar de carrera. ¿Qué consejos le darías en base a tu propia experiencia laboral?",
+   "english": "Imagine that a close friend is considering changing careers. What advice would you give them based on your own work experience?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-2+-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "¿Cómo ha influido la tecnología en la vida diaria de las personas en su comunidad? ¿Cree que estos cambios han sido mayormente positivos o negativos?",
+   "english": "How has technology influenced the daily lives of people in your community? Do you think these changes have been mostly positive or negative?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-2+-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "En los últimos años, ha habido un aumento en los movimientos sociales que piden por un cambio climático. ¿Cuál es su opinión sobre este tema y qué cree que podría hacerse para abordarlo?",
+   "english": "In recent years, there has been an increase in social movements calling for climate change. What is your opinion on this topic and what do you think could be done to address it?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-3-01",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "¿Cómo describiría la dinámica de su familia extendida? ¿Qué tradiciones o costumbres familiares considera más valiosas y por qué?",
+   "english": "How would you describe the dynamics of your extended family? Which family traditions or customs do you consider most valuable and why?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-3-02",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Imagínese que ha recibido una asignación inesperada de fondos para un proyecto en su trabajo. ¿Cómo priorizaría el uso de estos fondos y por qué?",
+   "english": "Imagine that you have received an unexpected allocation of funds for a project at work. How would you prioritize the use of these funds and why?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-3-03",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "¿Qué papel cree usted que juegan los servicios comunitarios en el desarrollo personal y profesional de los jóvenes?",
+   "english": "What role do you believe community services play in the personal and professional development of young people?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-3-04",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "En los últimos años, ha habido un aumento en la popularidad de los alimentos orgánicos y localmente producidos. ¿Qué opina sobre este fenómeno y cómo afecta sus hábitos de compra?",
+   "english": "In recent years, there has been an increase in the popularity of organic and locally produced foods. What is your opinion on this phenomenon and how does it affect your shopping habits?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-1-01",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "¿Cómo es su familia?",
+   "english": "What is your family like?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-1-02",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "¿Dónde trabaja usted?",
+   "english": "Where do you work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-1-03",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "¿Participa usted en alguna actividad comunitaria?",
+   "english": "Do you participate in any community activities?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-1-04",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "¿Qué opina usted sobre el clima últimamente?",
+   "english": "What do you think about the weather lately?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-2-01",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "¿Qué le gusta hacer para relajarse después de un día largo de trabajo?",
+   "english": "What do you like to do to relax after a long day of work?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-2-02",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "¿Ha viajado a algún lugar interesante recientemente? Cuénteme sobre eso.",
+   "english": "Have you traveled to any interesting places recently? Tell me about it.",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-2-03",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "¿Cómo es su barrio? ¿Qué le gusta más de donde vive?",
+   "english": "What is your neighborhood like? What do you like most about where you live?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-winddown-2-04",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Si tuviera un día libre completamente libre, ¿qué haría?",
+   "english": "If you had a completely free day off, what would you do?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
   }
  ],
- "rolePlays": [],
+ "rolePlays": [
+  {
+   "id": "es-rp-0+-01",
+   "level": "0+",
+   "situation": "You are checking into a hotel. Your reservation has the wrong dates.",
+   "interviewerRole": "Receptionist",
+   "opening": "Bienvenido al Hotel Plaza. ¿En qué puedo ayudarle?",
+   "english": "Welcome to Hotel Plaza. How can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-0+-02",
+   "level": "0+",
+   "situation": "You need to buy a train ticket, but the train you wanted to take was cancelled.",
+   "interviewerRole": "Ticket agent",
+   "opening": "Buenos días. ¿A dónde se dirige?",
+   "english": "Good morning. Where are you heading?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-0+-03",
+   "level": "0+",
+   "situation": "You need to report a lost passport.",
+   "interviewerRole": "Police officer",
+   "opening": "Buenas tardes. ¿En qué puedo asistirle?",
+   "english": "Good afternoon. How can I assist you?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-0+-04",
+   "level": "0+",
+   "situation": "You are trying to arrange a meeting time with a colleague whose schedule keeps changing.",
+   "interviewerRole": "Colleague",
+   "opening": "Hola, ¿cómo estás? ¿En qué puedo ayudarte?",
+   "english": "Hi, how are you? How can I help you?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1-01",
+   "level": "1",
+   "situation": "You are trying to persuade your landlord to fix a broken heater before winter.",
+   "interviewerRole": "landlord",
+   "opening": "Buenos días, ¿en qué puedo ayudarle?",
+   "english": "Good morning, how can I help you?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1-02",
+   "level": "1",
+   "situation": "You are a liaison officer. You need to brief a local official about a joint exercise that will close a road.",
+   "interviewerRole": "town official",
+   "opening": "Buenas tardes, ¿cómo puedo ayudarle hoy?",
+   "english": "Good afternoon, how can I assist you today?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1-03",
+   "level": "1",
+   "situation": "You are at a checkpoint with your convoy. You need to explain why your convoy must pass before noon.",
+   "interviewerRole": "checkpoint officer",
+   "opening": "Deténgase, ¿cuál es el propósito de su convoy?",
+   "english": "Halt, what is the purpose of your convoy?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1-04",
+   "level": "1",
+   "situation": "You are at a restaurant with friends. You need to explain to the waiter that one of your friends has a food allergy.",
+   "interviewerRole": "waiter",
+   "opening": "Buenas noches, ¿qué les gustaría ordenar?",
+   "english": "Good evening, what would you like to order?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1+-01",
+   "level": "1+",
+   "situation": "You are at a restaurant with friends. You need to explain to the waiter that one of your friends has a food allergy.",
+   "interviewerRole": "Waiter",
+   "opening": "Buenas tardes, ¿qué les gustaría pedir hoy?",
+   "english": "Good afternoon, what would you like to order today?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1+-02",
+   "level": "1+",
+   "situation": "You are a liaison officer. There has been a misunderstanding between two delegations. Explain the situation to one of the delegation leaders.",
+   "interviewerRole": "Delegation Leader",
+   "opening": "Buenos días, ¿cómo puedo ayudarle?",
+   "english": "Good morning, how can I help you?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1+-03",
+   "level": "1+",
+   "situation": "You are at the market. You need to explain to the vendor that the fruit you bought was rotten.",
+   "interviewerRole": "Vendor",
+   "opening": "Buenos días, ¿en qué puedo ayudarle?",
+   "english": "Good morning, how can I help you?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-1+-04",
+   "level": "1+",
+   "situation": "You are at the hospital. You need to explain to the nurse that you had a bad reaction to a medication.",
+   "interviewerRole": "Nurse",
+   "opening": "Buenos días, ¿en qué puedo ayudarle?",
+   "english": "Good morning, how can I help you?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2-01",
+   "level": "2",
+   "situation": "You are at a conference and need to arrange a meeting with a colleague. They keep changing their schedule. You need to set a definite time.",
+   "interviewerRole": "Colleague",
+   "opening": "Hola, ¿cómo estás? He visto que has intentado organizar una reunión conmigo. Lamento mucho los cambios constantes en mi horario. ¿En qué puedo ayudarte hoy?",
+   "english": "Hello, how are you? I see that you've tried to schedule a meeting with me. I'm sorry for the constant changes in my schedule. How can I help you today?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2-02",
+   "level": "2",
+   "situation": "You are at a military checkpoint with your convoy. You need to explain to the officer why your convoy must pass before noon.",
+   "interviewerRole": "Checkpoint Officer",
+   "opening": "Buenos días, ¿en qué puedo ayudarle? Por favor, explíqueme el propósito de su convoy y por qué es necesario que pasen antes del mediodía.",
+   "english": "Good morning, how can I help you? Please explain the purpose of your convoy and why it is necessary for you to pass before noon.",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2-03",
+   "level": "2",
+   "situation": "You are at a restaurant with friends. One of your friends has a food allergy. You need to explain this to the waiter.",
+   "interviewerRole": "Waiter",
+   "opening": "Buenas tardes, ¿qué les gustaría ordenar? ¿Tienen alguna preferencia o necesidad especial?",
+   "english": "Good afternoon, what would you like to order? Do you have any preferences or special needs?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2-04",
+   "level": "2",
+   "situation": "You are a liaison officer. There has been a misunderstanding between two delegations. You need to explain the situation to one of the delegation leaders.",
+   "interviewerRole": "Delegation Leader",
+   "opening": "Buenos días, ¿en qué puedo ayudarle? He oído que ha habido algún problema entre las delegaciones. Por favor, cuénteme más.",
+   "english": "Good morning, how can I help you? I've heard there has been some issue between the delegations. Please tell me more.",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2+-01",
+   "level": "2+",
+   "situation": "You are planning a community event and need to reserve a local park. The official tells you the park is already reserved for the same date.",
+   "interviewerRole": "Town official",
+   "opening": "Buenos días, ¿en qué puedo ayudarle?",
+   "english": "Good morning, how can I help you?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2+-02",
+   "level": "2+",
+   "situation": "You are a military officer coordinating with a local unit. They are unsure about the purpose of a joint exercise that will temporarily close a road.",
+   "interviewerRole": "Local unit commander",
+   "opening": "Buenos días, Capitán. He escuchado que habrá un ejercicio conjunto que cerrará una carretera. ¿Podría explicarme más al respecto?",
+   "english": "Good morning, Captain. I've heard there will be a joint exercise that will close a road. Could you explain more about that?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2+-03",
+   "level": "2+",
+   "situation": "You are at a café with a friend and need to explain why you must leave early to attend a lecture.",
+   "interviewerRole": "Friend",
+   "opening": "Oye, ¿por qué tienes que irte tan temprano? Pensé que íbamos a pasar el día juntos.",
+   "english": "Hey, why do you have to leave so early? I thought we were going to spend the day together.",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-2+-04",
+   "level": "2+",
+   "situation": "You are a diplomat attending a reception. You need to explain to another diplomat why your country supports a particular policy.",
+   "interviewerRole": "Diplomat",
+   "opening": "Buenas tardes, he notado que su país apoya firmemente la política X. ¿Podría compartir conmigo las razones detrás de este apoyo?",
+   "english": "Good afternoon, I've noticed that your country strongly supports policy X. Could you share with me the reasons behind this support?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  }
+ ],
  "topics": [],
  "checklist": {
   "0+": [

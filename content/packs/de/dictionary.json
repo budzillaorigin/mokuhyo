@@ -1,0 +1,32 @@
+{
+  "language": "de",
+  "file": "dictionary.sqlite",
+  "bytes": 18632704,
+  "sha256": "242a8b0d722be8c47d4813b0de9404ac462d80c527db2292eea6e63f6151cd03",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 22.6,
+  "max_entries": 40000,
+  "counts": {
+    "entries": 40000,
+    "senses": 58511,
+    "forms": 174008,
+    "examples": 11275,
+    "folds": 110615,
+    "links_resolved": 7145
+  },
+  "license": "CC BY-SA 3.0",
+  "attribution": "Definitions from English Wiktionary (https://en.wiktionary.org), © Wiktionary contributors, licensed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/); extracted by wiktextract (Tatu Ylonen) and published at https://kaikki.org. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl",
+      "file": "kaikki.org-dictionary-German.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "sha256": "650a0f3a06c6fc4e957f85f246a84120316ac85809ab2ea3597819021eac57e4",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "name": "kaikki-german"
+    }
+  ]
+}

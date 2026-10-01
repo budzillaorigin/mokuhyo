@@ -1,0 +1,32 @@
+{
+  "language": "id",
+  "file": "dictionary.sqlite",
+  "bytes": 6012928,
+  "sha256": "a8df91a09730f4c22483f2147599099ce5991161843b03297022cd6d0bfa998b",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 2.4,
+  "max_entries": 40000,
+  "counts": {
+    "entries": 35695,
+    "senses": 51452,
+    "forms": 30064,
+    "examples": 2055,
+    "folds": 9354,
+    "links_resolved": 1487
+  },
+  "license": "CC BY-SA 3.0",
+  "attribution": "Definitions from English Wiktionary (https://en.wiktionary.org), © Wiktionary contributors, licensed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/); extracted by wiktextract (Tatu Ylonen) and published at https://kaikki.org. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://kaikki.org/dictionary/Indonesian/kaikki.org-dictionary-Indonesian.jsonl",
+      "file": "kaikki.org-dictionary-Indonesian.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "sha256": "d3587b5eea8c558991cc835887a82bb7cc82b8a8b43e918fed8dba27af3cca01",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "name": "kaikki-indonesian"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "language": "pt-BR",
+  "file": "dictionary.sqlite",
+  "bytes": 16347136,
+  "sha256": "1cf85b9dc3e54df85c8b427a85e70fcdbc1b542a1054a368a2a7a124c8fe80be",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 12.7,
+  "max_entries": 40000,
+  "counts": {
+    "entries": 40000,
+    "senses": 60334,
+    "forms": 174114,
+    "examples": 5221,
+    "folds": 62173,
+    "links_resolved": 3938
+  },
+  "license": "CC BY-SA 3.0",
+  "attribution": "Definitions from English Wiktionary (https://en.wiktionary.org), © Wiktionary contributors, licensed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/); extracted by wiktextract (Tatu Ylonen) and published at https://kaikki.org. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://kaikki.org/dictionary/Portuguese/kaikki.org-dictionary-Portuguese.jsonl",
+      "file": "kaikki.org-dictionary-Portuguese.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "sha256": "0067b22d52e706dfa374d03993c104797bf124b6e9da53ee4635c351b648a27c",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "name": "kaikki-portuguese"
+    }
+  ]
+}

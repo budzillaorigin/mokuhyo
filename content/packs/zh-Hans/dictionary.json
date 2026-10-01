@@ -1,0 +1,32 @@
+{
+  "language": "zh-Hans",
+  "file": "dictionary.sqlite",
+  "bytes": 23547904,
+  "sha256": "2305aa4ab23d748f73f7051ba4fe65c24e2bd2fbaa29bc5582d1862f37b88d35",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 6.2,
+  "max_entries": null,
+  "counts": {
+    "entries": 123910,
+    "senses": 199398,
+    "forms": 77861,
+    "examples": 0,
+    "folds": 124824,
+    "links_resolved": 0
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "CC-CEDICT, community maintained free Chinese-English dictionary, published by MDBG (https://www.mdbg.net/chinese/dictionary?page=cc-cedict), licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Based on CEDICT © 1997, 1998 Paul Andrew Denisowski. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+      "file": "cedict_1_0_ts_utf-8_mdbg.txt.gz",
+      "release": "rolling export",
+      "date": "2026-09-30",
+      "sha256": "58c442d8f100a8a56852832fdd4555a233b6d802b0bf01a5bdddf01561c0a326",
+      "license": "CC BY-SA 4.0 (MDBG)",
+      "name": "cc-cedict"
+    }
+  ]
+}

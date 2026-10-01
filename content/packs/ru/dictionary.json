@@ -1,0 +1,32 @@
+{
+  "language": "ru",
+  "file": "dictionary.sqlite",
+  "bytes": 30564352,
+  "sha256": "0a10666e033a5403258551d820859e3632cdd614aa9cba3c1f32fe9ef2607f61",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 23.8,
+  "max_entries": 40000,
+  "counts": {
+    "entries": 40000,
+    "senses": 64399,
+    "forms": 384431,
+    "examples": 14495,
+    "folds": 67746,
+    "links_resolved": 6622
+  },
+  "license": "CC BY-SA 3.0",
+  "attribution": "Definitions from English Wiktionary (https://en.wiktionary.org), © Wiktionary contributors, licensed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/); extracted by wiktextract (Tatu Ylonen) and published at https://kaikki.org. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://kaikki.org/dictionary/Russian/kaikki.org-dictionary-Russian.jsonl",
+      "file": "kaikki.org-dictionary-Russian.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "sha256": "eab01279fe888f4fedf044350e04f8f619dd34bbd325ca186b0017e595ad3b6b",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "name": "kaikki-russian"
+    }
+  ]
+}

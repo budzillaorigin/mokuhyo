@@ -1,0 +1,32 @@
+{
+  "language": "es",
+  "file": "dictionary.sqlite",
+  "bytes": 32849920,
+  "sha256": "1c356796ad1db4b13760d0d12235c115335172dbb2e006a5dc67c39b38bdd0f4",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 27.8,
+  "max_entries": 40000,
+  "counts": {
+    "entries": 40000,
+    "senses": 59485,
+    "forms": 289871,
+    "examples": 5931,
+    "folds": 151083,
+    "links_resolved": 5890
+  },
+  "license": "CC BY-SA 3.0",
+  "attribution": "Definitions from English Wiktionary (https://en.wiktionary.org), © Wiktionary contributors, licensed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/); extracted by wiktextract (Tatu Ylonen) and published at https://kaikki.org. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://kaikki.org/dictionary/Spanish/kaikki.org-dictionary-Spanish.jsonl",
+      "file": "kaikki.org-dictionary-Spanish.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "sha256": "a2cc93aee2b0ac24d869ec59e07ddef69d1379d54518f77b87c07a765139a2e6",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "name": "kaikki-spanish"
+    }
+  ]
+}

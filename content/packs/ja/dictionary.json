@@ -1,0 +1,32 @@
+{
+  "language": "ja",
+  "file": "dictionary.sqlite",
+  "bytes": 39985152,
+  "sha256": "7780463360de83ae4a9ae499e32fd5b81c92de7c442bf46ef02ff88393150ff0",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 18.0,
+  "max_entries": null,
+  "counts": {
+    "entries": 218776,
+    "senses": 253483,
+    "forms": 102803,
+    "examples": 0,
+    "folds": 113475,
+    "links_resolved": 0
+  },
+  "license": "CC BY-SA 4.0",
+  "attribution": "This dictionary uses the JMdict dictionary file, the property of the Electronic Dictionary Research and Development Group (EDRDG), used in conformance with the Group's licence (https://www.edrdg.org/edrdg/licence.html), CC BY-SA 4.0. JSON conversion by scriptin/jmdict-simplified. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260914172325/jmdict-eng-3.6.2%2B20260914172325.json.zip",
+      "file": "jmdict-eng-3.6.2+20260914172325.json.zip",
+      "release": "3.6.2+20260914172325",
+      "date": "2026-09-14",
+      "sha256": "420a315a911493473b04c3a5027e772f2b0474c325e5b13945a4e80a44cfe27f",
+      "license": "CC BY-SA 4.0 (EDRDG)",
+      "name": "jmdict-eng"
+    }
+  ]
+}

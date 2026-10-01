@@ -1,0 +1,32 @@
+{
+  "language": "fa",
+  "file": "dictionary.sqlite",
+  "bytes": 5406720,
+  "sha256": "329a5da275ffa11aca38792aba2f9e795b39dd61dd2384052bdb8865208f2c0b",
+  "pack_version": "2",
+  "schema_version": "1",
+  "built": "2026-10-01",
+  "build_seconds": 2.7,
+  "max_entries": 40000,
+  "counts": {
+    "entries": 16894,
+    "senses": 24744,
+    "forms": 29267,
+    "examples": 4790,
+    "folds": 38370,
+    "links_resolved": 1594
+  },
+  "license": "CC BY-SA 3.0",
+  "attribution": "Definitions from English Wiktionary (https://en.wiktionary.org), © Wiktionary contributors, licensed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/); extracted by wiktextract (Tatu Ylonen) and published at https://kaikki.org. Frequency ranks from wordfreq (Robyn Speer), data CC BY-SA 4.0.",
+  "sources": [
+    {
+      "url": "https://kaikki.org/dictionary/Persian/kaikki.org-dictionary-Persian.jsonl",
+      "file": "kaikki.org-dictionary-Persian.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "sha256": "f67a8687e38517a169185f4ab6d6082f23a5d33786f3020255075a61882719b6",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "name": "kaikki-persian"
+    }
+  ]
+}

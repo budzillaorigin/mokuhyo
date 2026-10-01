@@ -21,8 +21,9 @@ REPO = TOOLS.parent
 sys.path.insert(0, str(TOOLS))
 sys.path.insert(0, str(TOOLS / "items"))
 
-import gen_dlpt  # noqa: E402
-import langtext  # noqa: E402
+import gen_dlpt
+
+import langtext
 
 PACKS = REPO / "content" / "packs"
 BLUEPRINTS = TOOLS / "items" / "blueprints"

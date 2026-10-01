@@ -80,3 +80,24 @@ of VRAM) is retried once on the CPU.
 - x86_64 builds target x86-64-v3 (AVX2/FMA/F16C, CPUs from 2013 on). Older CPUs are unsupported.
 - The bridges free their models in a JVM shutdown hook: ggml's Metal backend asserts at process exit if model buffers
   are still alive.
+
+## D-012 Voices: bundled Piper built from source, per-voice license gate (unattended default)
+Piper 2023.11.14-2 is built from source per OS (`voices/build.sh|ps1`, every input hash-pinned in `voices/lock.json`;
+the release binaries for macOS are broken) and runs as a separate GPL-3 executable (espeak-ng inside) with one
+long-running `--json-input` process per voice, stopped after 2 minutes idle; timeouts and cancellation kill it. A
+small patch (`voices/patch_piper.cmake`) adds per-line `length_scale`, UTF-8 output paths on Windows, and closes the
+WAV before announcing it. Bundled voices (`voices/manifest.json`, 11): es davefx/sharvard, fr siwis/upmc,
+de thorsten, pt-BR faber/cadu, ru dmitri/denis, fa amir/ganji. `tools/voices/manifest.py` refuses any voice whose
+dataset licence isn't CC0/CC BY/CC BY-SA/Apache/MIT or whose base model is non-commercial.
+
+## D-013 Languages without a bundleable voice; base-model lineage (unattended default — OWNER REVIEW)
+No redistributable Piper voice exists for ja (Hi-Fi-CAPTAIN NC), ko (KSS NC; open decision 4), zh-Hans (huayan
+unknown, xiao_ya/chaowen NC lineage), ar (kareem: dataset repo has no licence) or id (news_tts: unclear dataset), and
+de_DE-kerstin was dropped (fine-tuned from CC BY-NC-SA RyanSpeech). These languages use the OS voice at run time
+(macOS: Kyoko, Yuna, Tingting, Majed, Damayanti are preinstalled; Windows needs the speech pack; Linux has none →
+text-first). Open decision 4 default (a) applies to ko, and the same rule to ja/zh/ar/id. Pre-rendered clip packs
+for those languages need a voice whose output may be redistributed; Apple's and Microsoft's system voices may not be
+used for distributed recordings, so shipped listening passages in these languages are spoken at run time.
+**Owner review:** most kept Piper voices were fine-tuned from `en_US-lessac`, whose Blizzard-2013 Lessac data is
+research-licensed. The voices' own datasets are CC0/CC BY/CC BY-SA and rhasspy publishes the voice files under MIT;
+whether the base model's licence carries into the fine-tune is unresolved. Kept, flagged here and in V1_SUMMARY.

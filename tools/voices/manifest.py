@@ -93,14 +93,6 @@ VOICES = [
         "genderSource": "dataset documentation: Thorsten Müller's own (male) voice",
     },
     {
-        "id": "de_DE-kerstin-low", "language": "de", "gender": "female", "quality": "low",
-        "path": "de/de_DE/kerstin/low", "datasetLicense": "CC0-1.0",
-        "dataset": "dataset-voice-kerstin", "datasetUrl": "https://github.com/rhasspy/dataset-voice-kerstin",
-        "baseModel": "en_US-ryan-low (RyanSpeech, CC BY-NC-SA 4.0)",
-        "genderSource": "dataset documentation (Kerstin, female speaker); the only female German voice with an "
-                        "allowed license, hence low quality",
-    },
-    {
         "id": "pt_BR-faber-medium", "language": "pt-BR", "gender": "male", "quality": "medium",
         "path": "pt/pt_BR/faber/medium", "datasetLicense": "CC0-1.0",
         "dataset": "faber (OHF-Voice voice-datasets)", "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
@@ -146,6 +138,7 @@ VOICES = [
 ]
 
 EXCLUDED = [
+    {"id": "de_DE-kerstin-low", "reason": "fine-tuned from en_US-ryan-low, whose RyanSpeech data is CC BY-NC-SA 4.0 (non-commercial base model, D-013)"},
     {"id": "ko_KR-kss-medium", "reason": "dataset KSS is CC BY-NC-SA 4.0 (non-commercial)"},
     {"id": "ja_JP-hi_fi_captain-medium", "reason": "dataset Hi-Fi-CAPTAIN is CC BY-NC-SA 4.0 (non-commercial)"},
     {"id": "zh_CN-xiao_ya-medium", "reason": "dataset BZNSYP (Data Baker) is non-commercial use only"},
@@ -202,6 +195,8 @@ def write() -> int:
     for v in VOICES:
         if v["datasetLicense"] not in ALLOWED:
             problems.append(f"{v['id']}: dataset license {v['datasetLicense']} is not redistributable")
+        if re.search(r"\bNC\b|non-commercial", v.get("baseModel", ""), re.IGNORECASE):
+            problems.append(f"{v['id']}: fine-tuned from a non-commercial base model ({v['baseModel']})")
             continue
         tree = http_json(f"{HF}/api/models/{HF_REPO}/tree/{revision}/{v['path']}")
         by_name = {Path(e["path"]).name: e for e in tree if e["type"] == "file"}

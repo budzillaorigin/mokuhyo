@@ -115,7 +115,47 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
     fun sttModel(): ModelInfo? = settings.get(Settings.Key.STT_MODEL_ID)?.let { models.model(it) }?.takeIf { modelFile(it) != null }
         ?: manifest.models.filter { it.kind == ModelKind.STT }.firstOrNull { modelFile(it) != null }
 
+    val conversations = app.mokuhyo.history.ConversationRepository(db)
+    private val opiCache = java.util.concurrent.ConcurrentHashMap<String, Result<app.mokuhyo.opi.OpiPack?>>()
+
+    /** The language's interview pack (profile, scripted bank, role-plays, topics), or null when not installed. */
+    fun opi(lang: String): app.mokuhyo.opi.OpiPack? = opiCache.getOrPut(lang) {
+        runCatching { packFile(lang, "opi.json")?.let { app.mokuhyo.opi.OpiPack.parse(it.readText()) } }
+    }.getOrNull()
+
+    /**
+     * The language model for speaking and generation: the learner's own Ollama when they turned that on (rule-13
+     * screened), else the downloaded tier model on the embedded llama.cpp, else none (scripted fallbacks).
+     */
+    fun languageModel(): app.mokuhyo.ai.LanguageModel? {
+        if (settings.bool(Settings.Key.USE_OLLAMA)) {
+            val name = settings.get(Settings.Key.OLLAMA_MODEL)
+            if (name != null && app.mokuhyo.ai.ModelPolicy.exclusion(name) == null) {
+                return app.mokuhyo.ai.OpenAICompatibleModel(Java.create(), app.mokuhyo.ai.OllamaDetector.DEFAULT_URL + "/v1", null, name)
+            }
+        }
+        val model = chosenModel() ?: return null
+        val file = modelFile(model) ?: return null
+        val bridge = runtime.llm() ?: return null
+        return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot) }
+    }
+
+    private val llamaSlot = app.mokuhyo.ai.LoadedModelSlot()
+    private val llamaModels = java.util.concurrent.ConcurrentHashMap<String, app.mokuhyo.ai.LanguageModel>()
+
+    /** One gateway for every AI task; reads the current model per call so settings changes apply. */
+    val gateway = app.mokuhyo.ai.AiGateway({ languageModel() }, app.mokuhyo.ai.AiSettings(timeoutMs = 180_000))
+
+    /** On-device Whisper, or null when the speech model or native runtime is missing. */
+    fun recognizer(): app.mokuhyo.ai.SpeechRecognizer? {
+        val m = sttModel() ?: return null
+        val file = modelFile(m) ?: return null
+        val bridge = runtime.stt() ?: return null
+        return app.mokuhyo.ai.WhisperRecognizer(bridge, file.absolutePath, m.name)
+    }
+
     fun close() {
+        SpeechProvider.close()
         opened.first.close()
     }
 
