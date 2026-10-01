@@ -1,0 +1,42 @@
+{
+  "note": "Per-language OPI profiles (BRIEF §4 opiProfile): register notes the interviewer and rater prompts use, formality markers, level-check topics and role-play seeds (English). Written by hand (source: Mokuhyo contributors); the question banks, role-plays and topics are drafted by tools/opi/draft_opi.py.",
+  "levelCheckTopics": {
+    "0+": ["name and greetings", "numbers and prices", "days and times", "family members"],
+    "1": ["daily routine", "home and neighborhood", "food and shopping", "weekend activities", "work or studies"],
+    "1+": ["a recent trip", "describing your hometown", "a typical workday", "plans for next year"],
+    "2": ["a memorable event in detail", "comparing two places you lived", "explaining a process at work", "a current event in your country"],
+    "2+": ["advantages and disadvantages of a policy", "how your profession has changed", "a problem in your community and its causes"],
+    "3": ["supporting an opinion on an abstract issue", "hypothetical: what if your country changed a major policy", "the role of technology in society", "ethics of a professional decision"]
+  },
+  "rolePlaySeeds": [
+    "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+    "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+    "Report a lost passport at a police station (interviewer: police officer).",
+    "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+    "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+    "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+    "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+    "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ],
+  "profiles": {
+    "ja": {"registerNotes": "Use polite です/ます form with the candidate throughout; keigo (尊敬語/謙譲語) only in the role-play when the role calls for it (e.g. a hotel clerk). Plain form only if the role-play is between friends.", "formalityMarkers": ["です/ます", "尊敬語", "謙譲語", "plain form"]},
+    "es": {"registerNotes": "Address the candidate as usted. In role-plays use tú only if the situation is between friends or peers who would use it. Standard, region-neutral Spanish.", "formalityMarkers": ["usted", "tú", "subjunctive in polite requests"]},
+    "fr": {"registerNotes": "Vouvoyez the candidate (vous). In role-plays use tu only between friends. Standard metropolitan French.", "formalityMarkers": ["vous", "tu", "conditionnel de politesse"]},
+    "de": {"registerNotes": "Siezen the candidate (Sie). In role-plays use du only between friends or close colleagues. Standard German.", "formalityMarkers": ["Sie", "du", "Konjunktiv II for polite requests"]},
+    "pt-BR": {"registerNotes": "Use você with the candidate, or o senhor/a senhora in formal role-plays (official, older person). Brazilian Portuguese.", "formalityMarkers": ["você", "o senhor/a senhora", "polite imperfect (gostaria)"]},
+    "ru": {"registerNotes": "Address the candidate with вы. In role-plays use ты only between friends. Standard Russian.", "formalityMarkers": ["вы", "ты", "name and patronymic"]},
+    "zh-Hans": {"registerNotes": "Polite standard Mandarin; use 您 for respect in formal role-plays, 你 otherwise. Simplified characters.", "formalityMarkers": ["您", "你", "请", "polite softeners like 麻烦您"]},
+    "ko": {"registerNotes": "Use 해요체 (polite informal) with the candidate; 합쇼체 (-습니다) in formal role-plays (officials, briefings). 반말 only between close friends in a role-play.", "formalityMarkers": ["해요체", "합쇼체", "반말", "honorific -시-"]},
+    "ar": {"registerNotes": "Modern Standard Arabic (فصحى) throughout, not a dialect. Address the candidate with polite forms (حضرتك is dialectal; prefer أنت with courtesy phrases).", "formalityMarkers": ["MSA vs dialect", "courtesy formulas (من فضلك، تفضل)", "case endings optional in speech"]},
+    "fa": {"registerNotes": "Address the candidate with شما and polite verb forms; colloquial Tehrani speech is acceptable in the interview, formal written forms in briefings.", "formalityMarkers": ["شما", "تو", "polite verbs (بفرمایید)", "colloquial vs written forms"]},
+    "id": {"registerNotes": "Use Bapak/Ibu or Anda with the candidate; kamu only between friends in a role-play. Standard Indonesian (bahasa baku) in formal role-plays.", "formalityMarkers": ["Anda", "Bapak/Ibu", "kamu", "bahasa baku vs informal"]}
+  },
+  "checklist": {
+    "0+": ["I can greet people and say my name.", "I can give numbers, prices, days and times.", "I can answer very simple questions with memorized phrases."],
+    "1": ["I can make simple sentences about myself, my family and my daily routine.", "I can ask and answer simple questions about familiar topics.", "I can handle basic needs: ordering food, buying a ticket, asking for directions."],
+    "1+": ["I can describe places and people in connected sentences.", "I can tell what happened on a recent trip or weekend.", "I can handle routine situations even when something small goes wrong."],
+    "2": ["I can narrate past, present and future events in paragraphs.", "I can describe and explain concrete topics at work and in the news.", "I can resolve a complication in a role-play, like a cancelled reservation."],
+    "2+": ["I can often support my opinions with reasons and examples.", "I can discuss some abstract topics, although I sometimes break down.", "I can explain the causes and effects of a problem in my community."],
+    "3": ["I can support and defend opinions on abstract and unfamiliar topics.", "I can hypothesize about situations that did not happen.", "I can speak at length with good control of grammar and vocabulary."]
+  }
+}

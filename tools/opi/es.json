@@ -1,0 +1,696 @@
+{
+ "language": "es",
+ "profile": {
+  "language": "es",
+  "registerNotes": "Address the candidate as usted. In role-plays use tú only if the situation is between friends or peers who would use it. Standard, region-neutral Spanish.",
+  "formalityMarkers": [
+   "usted",
+   "tú",
+   "subjunctive in polite requests"
+  ],
+  "levelCheckTopics": {
+   "0+": [
+    "name and greetings",
+    "numbers and prices",
+    "days and times",
+    "family members"
+   ],
+   "1": [
+    "daily routine",
+    "home and neighborhood",
+    "food and shopping",
+    "weekend activities",
+    "work or studies"
+   ],
+   "1+": [
+    "a recent trip",
+    "describing your hometown",
+    "a typical workday",
+    "plans for next year"
+   ],
+   "2": [
+    "a memorable event in detail",
+    "comparing two places you lived",
+    "explaining a process at work",
+    "a current event in your country"
+   ],
+   "2+": [
+    "advantages and disadvantages of a policy",
+    "how your profession has changed",
+    "a problem in your community and its causes"
+   ],
+   "3": [
+    "supporting an opinion on an abstract issue",
+    "hypothetical: what if your country changed a major policy",
+    "the role of technology in society",
+    "ethics of a professional decision"
+   ]
+  },
+  "rolePlaySeeds": [
+   "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+   "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+   "Report a lost passport at a police station (interviewer: police officer).",
+   "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+   "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+   "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+   "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+   "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ]
+ },
+ "questions": [
+  {
+   "id": "es-q-warmup-0+-01",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "¿Cómo te llamas?",
+   "english": "What is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-0+-02",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "¿De dónde eres?",
+   "english": "Where are you from?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-0+-03",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "¿Tienes familia?",
+   "english": "Do you have a family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-0+-04",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "¿Qué te gusta hacer en tu tiempo libre?",
+   "english": "What do you like to do in your free time?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1-01",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "¿Cómo describe su día típico?",
+   "english": "How would you describe your typical day?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1-02",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "¿Qué le gusta hacer cuando no está trabajando?",
+   "english": "What do you like to do when you're not working?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1-03",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "¿Cómo es su vecindario?",
+   "english": "What is your neighborhood like?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1-04",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "¿Ha visto alguna noticia interesante recientemente?",
+   "english": "Have you seen any interesting news recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1+-01",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "¿Cuál es su película favorita y por qué?",
+   "english": "What is your favorite movie and why?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1+-02",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "¿Cómo ayuda usted a su comunidad?",
+   "english": "How do you help your community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1+-03",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "¿Qué opina usted sobre la importancia del aprendizaje de idiomas?",
+   "english": "What is your opinion on the importance of language learning?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-warmup-1+-04",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Si usted pudiera viajar a cualquier lugar del mundo, ¿a dónde iría y qué le gustaría hacer allí?",
+   "english": "If you could travel anywhere in the world, where would you go and what would you like to do there?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-0+-01",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "¿Cómo se llama usted?",
+   "english": "What is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-0+-02",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "¿Dónde vive?",
+   "english": "Where do you live?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-0+-03",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "¿Tiene hermanos?",
+   "english": "Do you have siblings?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-0+-04",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "¿Qué hace en su trabajo?",
+   "english": "What do you do at your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-0+-05",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "¿Hay un parque cerca de su casa?",
+   "english": "Is there a park near your house?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-0+-06",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "¿Qué noticias ha visto recientemente?",
+   "english": "What news have you seen recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1-01",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "¿Qué le gusta hacer en su tiempo libre?",
+   "english": "What do you like to do in your free time?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1-02",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "¿Cómo es su día típico?",
+   "english": "What is your typical day like?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1-03",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "¿Tiene mascotas? ¿Puede describir una?",
+   "english": "Do you have pets? Can you describe one?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1-04",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "¿Qué tipo de trabajo le gustaría tener en el futuro?",
+   "english": "What kind of job would you like to have in the future?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1-05",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "¿Hay una biblioteca cerca de su casa?",
+   "english": "Is there a library near your house?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1-06",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "¿Qué piensa de las noticias recientes sobre el clima?",
+   "english": "What do you think about the recent news about the weather?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1+-01",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Por favor, cuénteme sobre un viaje que haya disfrutado.",
+   "english": "Please tell me about a trip you have enjoyed.",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1+-02",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "¿Qué tipo de noticas le interesan más?",
+   "english": "What type of news interests you the most?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1+-03",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "¿Cómo describiría su barrio?",
+   "english": "How would you describe your neighborhood?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1+-04",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "¿Qué opina acerca del aprendizaje de idiomas?",
+   "english": "What do you think about language learning?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1+-05",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Si pudiera cambiar una cosa en su trabajo, ¿qué sería?",
+   "english": "If you could change one thing about your job, what would it be?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-1+-06",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "¿Qué opina sobre el servicio militar?",
+   "english": "What do you think about military service?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "¿Podría describirme un evento familiar reciente que haya disfrutado?",
+   "english": "Could you describe a recent family event that you enjoyed?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "¿Qué tareas ha realizado en su trabajo esta semana?",
+   "english": "What tasks have you done at work this week?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "¿Cómo es la relación entre los vecinos en su comunidad?",
+   "english": "How are the relationships between neighbors in your community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "¿Qué opina sobre la noticia más importante de la semana pasada?",
+   "english": "What do you think about the most important news from last week?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2-05",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "¿Cuál ha sido su experiencia de viaje más memorable?",
+   "english": "What has been your most memorable travel experience?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2-06",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "¿Cómo sería un día perfecto para usted?",
+   "english": "What would a perfect day be like for you?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2+-01",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "¿Qué valores considera usted más importantes para criar a los niños en la sociedad actual?",
+   "english": "What values do you consider most important for raising children in today's society?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2+-02",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "¿Cómo maneja usted el estrés en el trabajo?",
+   "english": "How do you handle stress at work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2+-03",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "¿Qué opina usted sobre la participación de los ciudadanos en las decisiones locales?",
+   "english": "What is your opinion on citizen participation in local decisions?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2+-04",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "¿Qué medidas cree usted que son necesarias para proteger el medio ambiente?",
+   "english": "What measures do you think are necessary to protect the environment?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2+-05",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Si tuviera la oportunidad de viajar a cualquier país del mundo, ¿a cuál iría y por qué?",
+   "english": "If you had the opportunity to travel to any country in the world, which would you go to and why?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-2+-06",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "¿Qué opina usted sobre el servicio militar obligatorio?",
+   "english": "What is your opinion on mandatory military service?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-3-01",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "¿Cuál ha sido el logro más significativo en su vida y por qué?",
+   "english": "What has been the most significant achievement in your life and why?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-3-02",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "¿Cómo ha influido su familia en la persona que es hoy?",
+   "english": "How has your family influenced the person you are today?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-3-03",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "¿Qué habilidades cree usted que son esenciales para tener éxito en su trabajo?",
+   "english": "What skills do you think are essential to succeed in your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-3-04",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "¿Qué iniciativas comunitarias le gustaría ver en su vecindario?",
+   "english": "What community initiatives would you like to see in your neighborhood?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-3-05",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "¿Qué opina sobre el impacto de las redes sociales en la sociedad actual?",
+   "english": "What do you think about the impact of social media on today's society?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-level_check-3-06",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Si pudiera viajar en el tiempo, ¿a qué período histórico le gustaría visitar y por qué?",
+   "english": "If you could travel in time, which historical period would you like to visit and why?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-0+-01",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "¿Cómo se siente cuando está en casa después de un día largo de trabajo?",
+   "english": "How do you feel when you are at home after a long day of work?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-0+-02",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Cuénteme sobre la última vez que visitó a su familia. ¿Qué hicieron juntos?",
+   "english": "Tell me about the last time you visited your family. What did you do together?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-0+-03",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Describa un problema en su comunidad que le gustaría ver resuelto. ¿Por qué es importante para usted?",
+   "english": "Describe a problem in your community that you would like to see resolved. Why is it important to you?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-0+-04",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Hay una noticia reciente que ha llamado su atención. ¿Cuál es y por qué le interesa?",
+   "english": "There is a recent news item that has caught your attention. What is it and why does it interest you?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1-01",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "¿Puedes contarme sobre tu rutina diaria? ¿Qué haces después de despertarte?",
+   "english": "Can you tell me about your daily routine? What do you do after waking up?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1-02",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "¿Cómo es tu relación con tus hermanos? ¿Qué actividades disfrutan hacer juntos?",
+   "english": "How is your relationship with your siblings? What activities do you enjoy doing together?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1-03",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "¿Qué te gustaría mejorar en tu trabajo? ¿Por qué es importante para ti?",
+   "english": "What would you like to improve in your work? Why is it important to you?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1-04",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "¿Qué evento reciente en tu comunidad te llamó la atención? ¿Por qué?",
+   "english": "What recent event in your community caught your attention? Why?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1+-01",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "¿Puede describirme un momento en el que haya ayudado a alguien en su comunidad y cómo se sintió al respecto?",
+   "english": "Can you describe a moment when you helped someone in your community and how you felt about it?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1+-02",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "¿Cómo compara su vida actual con la vida que imaginaba tener cuando era niño?",
+   "english": "How does your current life compare to the life you imagined having when you were a child?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1+-03",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "¿Qué cambios recientes ha notado en su lugar de trabajo y cómo cree que afectarán su trabajo a largo plazo?",
+   "english": "What recent changes have you noticed at your workplace and how do you think they will affect your work in the long run?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-q-probe-1+-04",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "¿Puede explicar por qué cree que es importante para las personas viajar a otros países?",
+   "english": "Can you explain why you believe it's important for people to travel to other countries?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "rolePlays": [],
+ "topics": [],
+ "checklist": {
+  "0+": [
+   "I can greet people and say my name.",
+   "I can give numbers, prices, days and times.",
+   "I can answer very simple questions with memorized phrases."
+  ],
+  "1": [
+   "I can make simple sentences about myself, my family and my daily routine.",
+   "I can ask and answer simple questions about familiar topics.",
+   "I can handle basic needs: ordering food, buying a ticket, asking for directions."
+  ],
+  "1+": [
+   "I can describe places and people in connected sentences.",
+   "I can tell what happened on a recent trip or weekend.",
+   "I can handle routine situations even when something small goes wrong."
+  ],
+  "2": [
+   "I can narrate past, present and future events in paragraphs.",
+   "I can describe and explain concrete topics at work and in the news.",
+   "I can resolve a complication in a role-play, like a cancelled reservation."
+  ],
+  "2+": [
+   "I can often support my opinions with reasons and examples.",
+   "I can discuss some abstract topics, although I sometimes break down.",
+   "I can explain the causes and effects of a problem in my community."
+  ],
+  "3": [
+   "I can support and defend opinions on abstract and unfamiliar topics.",
+   "I can hypothesize about situations that did not happen.",
+   "I can speak at length with good control of grammar and vocabulary."
+  ]
+ }
+}
