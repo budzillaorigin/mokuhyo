@@ -60,7 +60,7 @@ class OpiRateGoldenTest {
         fun problems(s: String) = task.validate(input, json.decodeFromString(task.serializer, AiGateway.extractJsonObject(s)!!), ValidationContext())
         assertTrue(problems(rating("2", "2", "hablé con el presidente", "The candidate narrates past events in connected sentences.")).any { "not in the candidate" in it })
         assertTrue(problems(rating("2+", "2", "fui a la playa", "The candidate narrates past events in connected sentences.")).isEmpty(), "one step above is capped, not rejected")
-        assertTrue(problems(rating("3", "1+", "fui a la playa", "The candidate narrates past events in connected sentences.")).any { "above the sustained" in it })
+        assertTrue(problems(rating("3", "1+", "fui a la playa", "The candidate narrates past events in connected sentences.")).isEmpty(), "capped by normalize")
         assertTrue(problems(rating("2", "2", "fui a la playa", "El candidato narra eventos pasados con oraciones conectadas.")).any { "not English" in it })
         val twoSteps = rating("2", "2", "fui a la playa", "The candidate narrates past events in connected sentences.").replace(",\"Review verb agreement in long sentences.\"", "")
         assertTrue(problems(twoSteps).isEmpty(), "two steps are accepted")

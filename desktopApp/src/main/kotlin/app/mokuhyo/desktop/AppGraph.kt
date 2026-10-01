@@ -117,6 +117,7 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
         ?: manifest.models.filter { it.kind == ModelKind.STT }.firstOrNull { modelFile(it) != null }
 
     val conversations = app.mokuhyo.history.ConversationRepository(db)
+    val generated = app.mokuhyo.history.GeneratedBank(db)
     private val opiCache = java.util.concurrent.ConcurrentHashMap<String, Result<app.mokuhyo.opi.OpiPack?>>()
 
     /** The language's interview pack (profile, scripted bank, role-plays, topics), or null when not installed. */

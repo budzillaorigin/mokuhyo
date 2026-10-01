@@ -89,7 +89,14 @@ def clean(text: str, lang: str) -> str | None:
 
 
 def ask(client: llm.Client, system: str, user: str, schema: dict) -> dict:
-    return client.chat_json([{"role": "system", "content": system}, {"role": "user", "content": user}], schema, temperature=0.7, max_tokens=3000)
+    """One drafting call; a malformed reply yields an empty batch (the next round fills the gap)."""
+    try:
+        return client.chat_json([{"role": "system", "content": system}, {"role": "user", "content": user}], schema, temperature=0.7, max_tokens=3000)
+    except llm.EndpointDown:
+        raise
+    except (ValueError, RuntimeError) as e:
+        print(f"  skipped a batch: {e}", flush=True)
+        return {}
 
 
 SYSTEM = ("You write ORIGINAL practice material for oral proficiency interviews on the US ILR scale. Never copy real test "

@@ -163,6 +163,14 @@ private fun About(app: AppGraph) {
         Text("Free and open source (Apache-2.0). ${app.runtime.status}")
         Disclaimer()
     }
+    var dev by remember { mutableStateOf(app.settings.bool(Settings.Key.DEVELOPER)) }
+    SectionCard("Developer tools") {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Switch(dev, onCheckedChange = { dev = it; app.settings.put(Settings.Key.DEVELOPER, it.toString()) })
+            Text("Content review (for people checking AI-drafted content)")
+        }
+    }
+    if (dev) ContentReviewScreen(app)
     SectionCard("Third-party licenses") {
         Text(Resources.textOrNull("docs/LICENSES.md") ?: "docs/LICENSES.md is missing from this build.", fontFamily = FontFamily.Monospace,
             style = MaterialTheme.typography.bodySmall)

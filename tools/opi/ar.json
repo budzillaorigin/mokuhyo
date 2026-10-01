@@ -837,6 +837,26 @@
    "domain": "travel",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1+-06",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "كيف تقضي وقت فراغك؟ هل لديك هوايات أو أنشطة تفضلها؟",
+   "english": "How do you spend your free time? Do you have any hobbies or preferred activities?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-2-04",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "ما هو أكثر شيء يفرحك في أسرتك؟",
+   "english": "What is the thing that makes you happiest in your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [
@@ -1355,6 +1375,645 @@
    "title": "Art and Music",
    "opener": "أهلًا! هل يمكنك أن توصيني بأفضل الأماكن للتمتع بالفن والموسيقى المحلية في المدينة؟",
    "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-11",
+   "domain": "daily_life",
+   "title": "Commute to Work",
+   "opener": "أهلاً وسهلاً! كيف تقضي وقتك في الذهاب إلى عملك يومياً؟ هل تفضل المشي أم استخدام الوسطات الأخرى للنقل؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-10",
+   "domain": "work_study",
+   "title": "ProfessionalDevelopment",
+   "opener": "أنت الذين راغبون في تطوير مهاراتكم المهنية، ما هي الخطوات التي اتخذتموها في هذا الإتجاه؟ هل هناك دورات تدريبية أو شهادات ترغبون في الحصول عليها؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-11",
+   "domain": "work_study",
+   "title": "CareerAdvancement",
+   "opener": "أنت الذين يهدفون إلى تقدم في مسيرتهم المهنية، ما هي الاستراتيجيات التي استخدمتموها لتحقيق هذا الهدف؟ هل هناك مواضع أو وظائف معينة ترغبون في الوصول إليها؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-01",
+   "domain": "society",
+   "title": "Role of Media",
+   "opener": "ما هو رأيك في دور الوسائل الإعلامية في تشكيل الرأي العام في مجتمعنا؟ هل تعتقد أن هناك مسؤولية أكبر على وسائل الإعلام في نشر الأخبار الدقيقة؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-02",
+   "domain": "society",
+   "title": "Educational Reforms",
+   "opener": "ما هي الإصلاحات التي تعتقد أنها ضرورية لرفع مستوى التعليم في بلدنا؟ هل ترى أن هناك فوارق كبيرة بين المدارس في المناطق الحضرية والريفية؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-03",
+   "domain": "society",
+   "title": "Urbanization",
+   "opener": "كيف تأثير المدن المتنامية على المجتمعات الريفية؟ ما هي التحديات التي تطرحها الهجرة من الريف إلى المدن؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-04",
+   "domain": "society",
+   "title": "Environmental Protection",
+   "opener": "ما هي التدابير التي يجب اتخاذها لحماية البيئة في بلدنا؟ هل تعتقد أن التغيير المناخي هو قضية ملحة يجب معالجةها على المستوى الوطني؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-05",
+   "domain": "society",
+   "title": "Technological Advancements",
+   "opener": "كيف يمكن أن تساهم التقدم التكنولوجي في تحسين جودة الحياة في المجتمع؟ هل هناك أي تقنيات معينة تعتقد أنها يمكن أن تكون مفيدة بشكل خاص؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-06",
+   "domain": "society",
+   "title": "Cultural Preservation",
+   "opener": "ما هو رأيك في أهمية الحفاظ على التراث الثقافي في عصر العولمة؟ هل تعتقد أن هناك خطورة من فقدان بعض الجوانب الهامة من ثقافتنا؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-07",
+   "domain": "society",
+   "title": "Social Media Impact",
+   "opener": "كيف تؤثر وسائل التواصل الاجتماعي على التفاعلات الاجتماعية في مجتمعنا؟ هل تعتقد أن هذه الأدوات قد أنعمت أو معاناتنا في التواصل مع الآخرين؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-08",
+   "domain": "society",
+   "title": "Youth Employment",
+   "opener": "ما هي التحديات التي تواجهها الشباب في العثور على عمل في بلدنا؟ ما هي الحلول التي تقترحها لهذه المشكلة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-09",
+   "domain": "society",
+   "title": "Healthcare Systems",
+   "opener": "كيف يمكن تحسين نظام الرعاية الصحية في بلدنا؟ هل تعتقد أن هناك فوارق كبيرة في الوصول إلى الرعاية الصحية بين المناطق المختلفة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-10",
+   "domain": "society",
+   "title": "Women's Rights",
+   "opener": "ما هو رأيك في تقدم حقوق المرأة في مجتمعنا؟ هل تعتقد أن هناك أكثر من يجب القيام به لتحقيق المساواة الكاملة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-society-11",
+   "domain": "society",
+   "title": "Traffic Congestion",
+   "opener": "ما هي الحلول التي تقترحها لمشكلة ازدحام المرور في المدن الكبيرة؟ هل تعتقد أن النقل العام يمكن أن يكون جزءا من الإجابة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-10",
+   "domain": "travel_culture",
+   "title": "Navigation in New Cities",
+   "opener": "مرحباً، أنا في مدينة جديدة وأحتاج إلى مساعدة في التوجه. هل يمكنك أن تقترح طرقاً لتبسيط التوجه في مدينة غير مألوفة؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-01",
+   "domain": "military_garrison",
+   "title": "Unit Structure",
+   "opener": "كيف هو تنظيم الوحدة التي أنت فيها؟ هل يمكنك وصف الوحدات الفرعية والوظائف الأساسية لكل وحدة؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-02",
+   "domain": "military_garrison",
+   "title": "Daily Routine",
+   "opener": "ما هو روتينك اليومي في القاعدة؟ كيف تبدأ يومك وكيف تعتاد العمل خلال اليوم؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-03",
+   "domain": "military_garrison",
+   "title": "Duty Schedule",
+   "opener": "كيف يتم تنظيم جدولة الواجبات في الوحدة؟ هل يمكنك شرح كيفية تعيين الواجبات والحد الأدنى من المتطلبات؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-04",
+   "domain": "military_garrison",
+   "title": "Physical Training",
+   "opener": "ما هو نوع التدريب البدني الذي تقوم به بانتظام؟ كيف تم تصميم هذا التدريب لتعزيز اللياقة البدنية والقدرات العسكرية؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-05",
+   "domain": "military_garrison",
+   "title": "Inspection Preparation",
+   "opener": "كيف تستعد الوحدة فتشًا رسميًا؟ ما هي خطواتك لتحقيق الجاهزية والتأكد من الامتثال للمعايير المطلوبة؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-06",
+   "domain": "military_garrison",
+   "title": "Communication Systems",
+   "opener": "ما هي أنظمة التواصل المستخدمة في الوحدة؟ كيف تضمن هذه الأنظمة التواصل الفعال أثناء العمليات العسكرية؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-07",
+   "domain": "military_garrison",
+   "title": "Leave Request",
+   "opener": "كيف تطلب الإجازة من القاعدة؟ ما هي الإجراءات المطلوبة للحصول على الموافقة؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-08",
+   "domain": "military_garrison",
+   "title": "Emergency Drills",
+   "opener": "كيف تتم تدريبات الطوارئ في الوحدة؟ ما هي الخطوات التي تتخذها في حالة الطوارئ؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-09",
+   "domain": "military_garrison",
+   "title": "Supply Management",
+   "opener": "كيف يتم إدارة الإمدادات في الوحدة؟ من المسؤول عن طلب الإمدادات وتوزيعها؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-10",
+   "domain": "military_garrison",
+   "title": "Military Ranks",
+   "opener": "هل يمكنك شرح النظام الرتبي في قواتكم المسلحة؟ ما هي الرتب المختلفة وكيف يتم الترقية؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-01",
+   "domain": "military_operations",
+   "title": "Exercise Planning",
+   "opener": "أهلاً وسهلاً، نود أن نناقش مع حضرتك خطة التدريب القادم. هل يمكنك أن تقدم لنا تفاصيل حول الأهداف والتوقيتات؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-02",
+   "domain": "military_operations",
+   "title": "Logistics Coordination",
+   "opener": "لدينا بعض التحديات في تنسيق عمليات الإمدادات. هل يمكنك أن توضح لنا كيف نتحكم في هذه العملية بشكل أفضل؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-03",
+   "domain": "military_operations",
+   "title": "Airfield Operations",
+   "opener": "نود أن نناقش عمليات المطار. هل يمكنك أن تقدم لنا تحديثًا حول حالة المدرج والخدمات المتاحة؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-04",
+   "domain": "military_operations",
+   "title": "Communications Check",
+   "opener": "من أجل التأكد من فعالية اتصالاتنا، هل يمكنك أن تختبر معنا المعدات والتردبات؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-05",
+   "domain": "military_operations",
+   "title": "Briefing a Counterpart",
+   "opener": "نود أن نقدم لك، عزيزي الزميل، ملخصًا عن العمليات القادمة. هل يمكنك أن تخبرنا عن أي استفسارات لديك؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-06",
+   "domain": "military_operations",
+   "title": "Exercise Coordination",
+   "opener": "نود أن ننظم التدريب القادم معكم. هل يمكنك أن تخبرنا عن أفضل طريقة للاشتراك؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-07",
+   "domain": "military_operations",
+   "title": "Supply Chain Management",
+   "opener": "لدينا بعض المشكلات في إدارة سلسلة الإمدادات. هل يمكنك أن تقدم لنا المشورة حول كيفية تحسينها؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-08",
+   "domain": "military_operations",
+   "title": "Security Measures",
+   "opener": "نود أن نناقش التدابير الأمنية للمشروع القادم. هل يمكنك أن تخبرنا عن أي التوصيات التي لديك؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-09",
+   "domain": "military_operations",
+   "title": "Medical Evacuation Procedures",
+   "opener": "لدينا بعض المخاوف بشأن إجراءات الإخلاء الطبي. هل يمكنك أن تقدم لنا التوضيح اللازمة؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-10",
+   "domain": "military_operations",
+   "title": "Intelligence Sharing",
+   "opener": "نود أن نشارك معك بعض المعلومات الاستخباراتية. هل يمكنك أن تخبرنا عن أي تعليقات لديك؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_operations-11",
+   "domain": "military_operations",
+   "title": "Transportation Planning",
+   "opener": "لدينا بعض التحديات في تنظيم النقل. هل يمكنك أن تقدم لنا المشورة حول كيفية تحسين العملية؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-01",
+   "domain": "military_field",
+   "title": "Checkpoint Procedures",
+   "opener": "مرحباً، ما هو غرض زيارتك للمنطقة؟ هل يمكنك تقديم بطاقتك الشخصية؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-02",
+   "domain": "military_field",
+   "title": "Medical Evacuation Request",
+   "opener": "أنا أطلب إجلاء طبي فوري لجنود مصابون في مهمة. ما هي الإجراءات المطلوبة؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-03",
+   "domain": "military_field",
+   "title": "Disaster Relief Operations",
+   "opener": "ما هي الإجراءات المطلوبة للتغلب على الكوارث في منطقة متضررة؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-04",
+   "domain": "military_field",
+   "title": "Humanitarian Assistance",
+   "opener": "ما هي الخطوات اللازمة لتقديم المساعدات الإنسانية للمناطق المنكوبة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-05",
+   "domain": "military_field",
+   "title": "Military Exercise Planning",
+   "opener": "كيف يمكننا التخطيط لمناورات عسكرية بفعالية مع القوات متعددة الجنسيات؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-06",
+   "domain": "military_field",
+   "title": "Crisis Management",
+   "opener": "في حالة الأزمة، ما هي الاستراتيجيات التي يجب اتباعها لإدارة الوضع بشكل فعال؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-01",
+   "domain": "interpreter",
+   "title": "Conference-Interpreting",
+   "opener": "نحن نحتاج إلى مترجم في مؤتمرنا القادم. هل لديك الخبرة الكافية في هذا المجال؟ وما هو أكبر مؤتمر مترجمت فيه؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-02",
+   "domain": "interpreter",
+   "title": "Legal-Document Translation",
+   "opener": "لدينا بعض المستندات القانونية التي تحتاج إلى ترجمة. هل يمكنك تقديم هذه الخدمة؟ كيف تتعامل مع المصطلحات القانونية المعقدة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-03",
+   "domain": "interpreter",
+   "title": "Business-Negotiation Interpreting",
+   "opener": "سنقوم بمفاوضات مع شركاء أعمال أجانب قريباً. هل يمكنك مساعدة في الترجمة الفورية؟ ما هو نصيحتك للتعامل مع مواقف المفاوضات الصعبة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-04",
+   "domain": "interpreter",
+   "title": "Medical-Interpreting",
+   "opener": "نحن نبحث عن مترجم لإجراء طبي. ما هي الخبرة التي لديك في الترجمة الطبية؟ كيف تضمن دقة المعلومات الطبية في الترجمة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-05",
+   "domain": "interpreter",
+   "title": "Cultural-Event Interpreting",
+   "opener": "هناك حدث ثقافي قادمة نحتاج إلى مترجم له. هل يمكنك وصف الخبرة التي لديك في هذا المجال؟ كيف تتعامل مع المصطلحات الثقافية المحددة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-06",
+   "domain": "interpreter",
+   "title": "Literary-Translation",
+   "opener": "لدينا نص أدبي نود ترجمته. هل يمكنك تقديم هذا النوع من الترجمة؟ كيف تتعامل مع الأنماط الأدبية المختلفة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-07",
+   "domain": "interpreter",
+   "title": "Technical-Translation",
+   "opener": "لدينا بعض الوثائق الفنية التي تحتاج إلى ترجمة. ما هي الخبرة التي لديك في الترجمة الفنية؟ كيف تتمكن من فهم المصطلحات الفنية المعقدة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-08",
+   "domain": "interpreter",
+   "title": "Interpreting-for-the-Deaf",
+   "opener": "نحن نبحث عن مترجم للأشخاص الصم. ما هو تجربتك في هذا المجال؟ كيف تضمن دقة الترجمة في هذا السياق؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-09",
+   "domain": "interpreter",
+   "title": "Language-Instruction",
+   "opener": "نحن نبحث عن معلم للغة. ما هو تجربتك في التدريس؟ كيف تتمكن من شرح القواعد اللغوية المعقدة للطلاب؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-10",
+   "domain": "interpreter",
+   "title": "Cultural-Mediation",
+   "opener": "هناك بعض المشاكل الثقافية التي نحتاج إلى حلها. ما هو تجربتك في التوسط الثقافي؟ كيف تتعامل مع الفجوات الثقافية؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-interpreter-11",
+   "domain": "interpreter",
+   "title": "Interpreting-for-Law-Enforcement",
+   "opener": "نحن نبحث عن مترجم للتصدى للقوى العاملة. ما هو تجربتك في هذا المجال؟ كيف تضمن دقة الترجمة في هذه السياقات الحساسة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-01",
+   "domain": "abstract",
+   "title": "Education Reforms",
+   "opener": "ما هو رأيك في تغييرات يمكن أن تُطبق في نظام التعليم لتحسين الأداء الدراسي؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-02",
+   "domain": "abstract",
+   "title": "Environmental Policies",
+   "opener": "كيف تحل القضايا البيئية التي تواجه العالم اليوم؟ ما هي السياسات التي يجب أن نتخذها؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-03",
+   "domain": "abstract",
+   "title": "Role of Government",
+   "opener": "ما هي أهم دورات يتمثلها الحكومة في حياة المواطن؟ هل هناك دورات إضافية يجب أن تتولى مسؤوليتها؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-04",
+   "domain": "abstract",
+   "title": "Ethics in Technology",
+   "opener": "كيف يمكن أن تؤثر التكنولوجيا على الأخلاقيات في المجتمع؟ ما هي التحديات التي يمكن أن تعترضنا؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-05",
+   "domain": "abstract",
+   "title": "Globalization Impact",
+   "opener": "ما هي آثار العولمة على الثقافات المحلية؟ هل تعتقد أن العولمة لها تأثير إيجابي أم سلبي؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-06",
+   "domain": "abstract",
+   "title": "Social Media Influence",
+   "opener": "كيف تؤثر وسائل التواصل الاجتماعي على العلاقات البشرية؟ ما هي الفوائد والمعايب لها؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-07",
+   "domain": "abstract",
+   "title": "Future of Work",
+   "opener": "كيف تعتقد أن العمل سينتقل في السنوات المقبلة؟ ما هي المهارات التي سيكون من الضروري الحصول عليها؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-08",
+   "domain": "abstract",
+   "title": "Cultural Preservation",
+   "opener": "ما هي أهمية الحفاظ على الثقافة المحلية في عصر العولمة؟ ما هي الطرق التي يمكن من خلالها تحقيق ذلك؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-09",
+   "domain": "abstract",
+   "title": "Healthcare Systems",
+   "opener": "ما هي أفضل أنظمة الرعاية الصحية؟ كيف يمكن تحسين الرعاية الصحية في بلدنا؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-10",
+   "domain": "abstract",
+   "title": "Education for Future",
+   "opener": "ما هي المهارات والعلوم التي يجب أن يركز عليها التعليم لتحضير الطلاب لمستقبل غير مؤكد؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-abstract-11",
+   "domain": "abstract",
+   "title": "Technology and Privacy",
+   "opener": "كيف تؤثر التكنولوجية على الخصوصية الشخصية؟ ما هي التدابير التي يجب اتخاذها لحماية الخصوصية؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-11",
+   "domain": "travel_culture",
+   "title": "Tourist Attractions",
+   "opener": "هل زرت أي من المعالم السياحية في بلدنا؟ إذا كان الأمر كذلك، ما هو أكثرها إعجابًا بك؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_garrison-11",
+   "domain": "military_garrison",
+   "title": "Unit Movements",
+   "opener": "أنت على علم بأية حركات الوحدات المخطط لها هذا الشهر؟ هل هناك أي تغييرات في الجدول الزمني التي يجب أن أكون على علم بها؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-07",
+   "domain": "military_field",
+   "title": "Casualty Report",
+   "opener": "السلام عليكم، أنت مسؤول عن الإبلاغ عن الإصابات اليوم، ما هو العدد التقريبي للإصابات التي حصلت في العملية الأخيرة؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-08",
+   "domain": "military_field",
+   "title": "Convoy Coordination",
+   "opener": "مرحبًا، أنت المسؤول عن التنسيق اليوم. كم عدد المراكب في القرار التي ستنظمها اليوم؟ ما هو المحور الذي ستسلكه؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-09",
+   "domain": "military_field",
+   "title": "Equipment Inspection",
+   "opener": "أهلًا بيك، أنت المسؤول عن تفقد المعدات اليوم. هل يمكنك توضيح الإجراء الذي ستتبعه أثناء التفقد؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-10",
+   "domain": "military_field",
+   "title": "Intelligence Briefing",
+   "opener": "السلام عليكم، أنت مسؤول عن تقديم إحصاء الاستخبارات اليوم. ما هي المعلومات الأكثر أهمية التي يجب أن نكون على علم بها؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-military_field-11",
+   "domain": "military_field",
+   "title": "Patrol Debriefing",
+   "opener": "مرحبًا، أنت مسؤول عن تقديم إحصاء بعثة الدوريات. كيف كانت مهمتك اليوم؟ هل واجهت أي مشاكل؟",
+   "minLevel": "2+",
    "source": "llm",
    "verified": false
   }

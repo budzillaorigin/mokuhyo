@@ -25,6 +25,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -54,7 +55,10 @@ import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import app.mokuhyo.ai.AiResult
+import app.mokuhyo.ai.Tier
 import app.mokuhyo.db.Exam_in_progress
+import app.mokuhyo.exam.GeneratePassage
 import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.desktop.PassageAudio
@@ -140,6 +144,7 @@ private class DbProgressStore(private val app: AppGraph, private val lang: Strin
 @Composable
 private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, skill: Skill, start: (ExamSession) -> Unit) {
     var tab by remember { mutableIntStateOf(0) }
+    var generatedVersion by remember { mutableIntStateOf(0) }
     val title = if (skill == Skill.READING) "Reading" else "Listening"
     val levels = content.blueprint.section(skill).levels
     val counts = content.countsByLevel(skill)
@@ -169,12 +174,20 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
                         types.forEach { (t, n) -> DropdownMenuItem({ Text("${t.replace('_', ' ')} ($n questions)") }, { textType = t; menu = false }) }
                     }
                 }
+                var includeLocal by remember { mutableStateOf(false) }
+                val local = remember(module.code, skill, generatedVersion) { app.generated.load(app.learnerId, module.code, skill) }
+                if (local.first.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
+                    androidx.compose.material3.Checkbox(includeLocal, { includeLocal = it })
+                    Text("Include ${local.first.size} passages generated on this computer")
+                }
                 Button(onClick = {
                     val seen = app.history.practisedPassages(app.learnerId, module.code, skill)
-                    val form = ExamAssembler.practice(module.code, skill, level, textType, content.pool(skill), content.passages, seen, Random.Default)
+                    val c = if (includeLocal) content.withLocal(local.first, local.second) else content
+                    val form = ExamAssembler.practice(module.code, skill, level, textType, c.pool(skill), c.passages, seen, Random.Default)
                     if (!form.isEmpty) start(ExamSession(form, content.blueprint.section(skill).play))
                 }) { Text("Start practice") }
             }
+            GenerateMore(app, module, content, skill, level) { generatedVersion++ }
         } else {
             var length by remember { mutableStateOf(FormLength.SLICE_30) }
             val inProgress = remember(module.code) { app.db.historyQueries.inProgress(app.learnerId, module.code).executeAsOneOrNull() }
@@ -198,14 +211,82 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
                         Text("${l.title} — ${content.blueprint.section(skill).itemsFor(l).values.sum()} questions")
                     }
                 }
-                Button(onClick = {
+                // A listening test can only use passages this computer can play: pre-rendered clips, or any passage
+                // when a voice for the language is available (docs/LANGUAGES.md, D-013).
+                val canSpeak = remember(module.code) { app.speech.voicesFor(module.code).isNotEmpty() }
+                val pool = remember(module.code, skill, canSpeak) {
+                    if (skill == Skill.LISTENING && !canSpeak) content.pool(skill).filter { content.passages[it.passageId]?.audio != null } else content.pool(skill)
+                }
+                if (skill == Skill.LISTENING && !canSpeak) Text(
+                    if (pool.isEmpty()) "No voice for ${module.nameEnglish} is available on this computer, so listening tests can't run here. Practice still shows the transcripts."
+                    else "No voice for ${module.nameEnglish} on this computer: tests use only the ${pool.mapNotNull { it.passageId }.distinct().size} recordings that ship with the app.",
+                    color = MaterialTheme.colorScheme.error,
+                )
+                Button(enabled = pool.isNotEmpty(), onClick = {
                     val recent = app.history.recentTestPassages(app.learnerId, module.code, skill, content.blueprint.noRepeatForms)
-                    val form = ExamAssembler.test(content.blueprint, skill, length, content.pool(skill), content.passages, recent, Random.Default)
+                    val form = ExamAssembler.test(content.blueprint, skill, length, pool, content.passages, recent, Random.Default)
                     if (!form.isEmpty) start(ExamSession(form, content.blueprint.section(skill).play, store = DbProgressStore(app, module.code)).also { it.begin() })
                 }) { Text("Start test") }
                 Disclaimer()
             }
         }
+    }
+}
+
+/**
+ * "Generate more" (BRIEF §5.4): the local model drafts new passages for practice, checked like the shipped banks and
+ * saved to the "Generated on this computer" bank. Rate-limited by tier: Tier A reading only, one passage per request.
+ */
+@Composable
+private fun GenerateMore(app: AppGraph, module: LanguageModule, content: ExamContent, skill: Skill, level: String, done: () -> Unit) {
+    val scope = rememberCoroutineScope()
+    val tier = app.tier
+    val allowed = app.languageModel() != null && !(tier == Tier.A && skill == Skill.LISTENING)
+    var topic by remember { mutableStateOf("") }
+    var status by remember { mutableStateOf("") }
+    var busy by remember { mutableStateOf(false) }
+    var job by remember { mutableStateOf<kotlinx.coroutines.Job?>(null) }
+    val count = if (tier == Tier.A) 1 else 3
+    SectionCard("Generate more (ILR $level)") {
+        Text("Your AI model writes new ${if (skill == Skill.READING) "texts" else "recordings"} with questions. They're labelled “Generated on this computer”, " +
+            "kept out of your test statistics, and can be deleted all at once.", style = MaterialTheme.typography.bodySmall)
+        if (!allowed) Text(if (app.languageModel() == null) "Needs an AI model (Settings → AI)." else "Tier A generates reading passages only.", color = MaterialTheme.colorScheme.error)
+        OutlinedTextField(topic, { topic = it }, Modifier.fillMaxWidth(), label = { Text("Topic (optional, any language)") }, singleLine = true)
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+            Button(enabled = allowed && !busy, onClick = {
+                busy = true
+                job = scope.launch {
+                    var made = 0
+                    val types = content.blueprint.section(skill).textTypes[level].orEmpty().ifEmpty { listOf("news") }
+                    val factor = when (module.code) { "ja", "ko" -> 1.5; "zh-Hans" -> 1.2; "ar" -> 0.85; "ru" -> 0.9; else -> 1.0 }
+                    repeat(count) { i ->
+                        status = "Writing ${i + 1} of $count… (this can take a minute on a small model)"
+                        val input = GeneratePassage.Input(module.code, skill, level, types.random(), topic.ifBlank { listOf("daily life", "work", "travel", "the news", "a community event").random() },
+                            { t -> (module.segment(t).count { it.isWord } / factor).toInt() }, items = if (level == "0+") 1 else 3)
+                        val task = GeneratePassage()
+                        when (val r = withContext(Dispatchers.Default) { app.gateway.run(task, input) }) {
+                            is AiResult.Ok -> {
+                                val id = "local-${module.code}-${System.currentTimeMillis()}-$i"
+                                val (p, items) = task.toBank(input, r.value, id)
+                                app.generated.save(app.learnerId, p, items, r.engine)
+                                made++
+                            }
+                            else -> status = "One draft didn't pass the checks and was discarded."
+                        }
+                    }
+                    status = "Added $made passage${if (made == 1) "" else "s"}."
+                    busy = false
+                    done()
+                }
+            }) { Text("Generate ${if (count == 1) "a passage" else "$count passages"}") }
+            if (busy) TextButton(onClick = { job?.cancel(); busy = false; status = "Stopped." }) { Text("Cancel") }
+            val n = remember(module.code, status) { app.generated.count(app.learnerId, module.code) }
+            if (n > 0 && !busy) TextButton(onClick = { app.generated.deleteAll(app.learnerId, module.code); status = "Deleted all generated passages."; done() }) {
+                Text("Delete all $n generated")
+            }
+        }
+        if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
+        if (status.isNotEmpty()) Text(status, style = MaterialTheme.typography.bodySmall)
     }
 }
 

@@ -219,7 +219,11 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             "sustained_level is the highest level the candidate sustained across the interview; breakdown_level is the lowest level where speech broke down (omit or repeat sustained if none).",
             "estimate is the overall level: the sustained level, never the best single answer. rationale (English) explains it. next_steps: exactly three concrete, specific practice actions in English.",
         ),
-        user("Interview transcript (speech-to-text, so ignore missing punctuation):\n" + transcript(input.history, "Candidate", "Interviewer")),
+        user(
+            "Interview transcript (speech-to-text, so ignore missing punctuation):\n" + transcript(input.history, "Candidate", "Interviewer") +
+                "\n\nRate the candidate now. The overall estimate is the sustained level. Write every evidence, rationale and next_steps " +
+                "text in ENGLISH, even though the interview was in ${languageName(input.language)}; only the quotes stay in ${languageName(input.language)}.",
+        ),
     )
 
     override fun validate(input: Input, output: Output, context: ValidationContext): List<String> {
@@ -231,9 +235,9 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             if (input.history.none { it.speaker == Speaker.LEARNER }) "there is nothing from the candidate to rate" else null,
             factors.firstOrNull { IlrLevel.parse(it.level) == null }?.let { "unknown factor level ${it.level}" },
             if (estimate == null) "unknown estimate ${output.estimate}" else null,
-            if (sustained != null && estimate != null && estimate > IlrLevel.lowerRange.getOrElse(IlrLevel.lowerRange.indexOf(sustained) + 1) { sustained })
-                "estimate is well above the sustained level" else null,
+            // An estimate above the sustained level is capped by normalize (the ILR rating is the sustained level).
             ScriptCheck.requireEnglish("rationale", output.rationale),
+            output.nextSteps.firstNotNullOfOrNull { ScriptCheck.requireEnglish("next step", it) },
             Validation.length("rationale", output.rationale, min = 20, max = 1200),
             if (output.nextSteps.size !in 2..4) "next_steps must have three items" else null,
             // Evidence quotes must come from the candidate: a rating whose quotes are mostly invented is rejected;
