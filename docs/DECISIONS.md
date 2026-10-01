@@ -65,3 +65,18 @@ Gemma/Llama license exclusion, because permissive models such as Mistral-Nemo re
 ## D-010 Lenient dependency locking (unattended default)
 Compose Desktop's Skia runtime artifact is per-OS, so a lockfile written on macOS can't match Windows or Linux
 exactly. Locks are LENIENT: they record the shipping set for the license gate without failing other OSes' builds.
+
+## D-011 Native runtime layout (unattended default)
+One shared library `mokuhyo_native` holds the llama.cpp and whisper.cpp JNI surfaces on a single ggml (llama.cpp
+b11040, whisper.cpp b5130, hash-pinned in `native/lock.json`). Variants: `cpu` everywhere, `metal` on macOS,
+`vulkan` on Windows/Linux, under `<dir>/<variant>/`. Search order: `mokuhyo.native.dir`, the packaged app's
+`<resources>/native`, then `native/build/<os>-<arch>/` in a checkout; the first directory holding any variant is used
+for both attempts, so an installed app never mixes in a dev build. The GPU variant is tried first unless Settings →
+AI → "Use the CPU" is on; a JVM can't unload a library, so the CPU fallback covers a GPU variant that fails to load,
+and a GPU variant that loads without finding a device runs with 0 GPU layers. A GPU model load that fails (e.g. out
+of VRAM) is retried once on the CPU.
+- BLAS/Accelerate is off on macOS (Accelerate's new BLAS needs macOS 13.3; the build targets macOS 12).
+- No OpenMP; Linux and Windows link the C++ runtime statically; the Vulkan variant uses the system's Vulkan loader.
+- x86_64 builds target x86-64-v3 (AVX2/FMA/F16C, CPUs from 2013 on). Older CPUs are unsupported.
+- The bridges free their models in a JVM shutdown hook: ggml's Metal backend asserts at process exit if model buffers
+  are still alive.

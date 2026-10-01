@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 warnings.filterwarnings("ignore", category=SyntaxWarning)
 
-import wordfreq  # noqa: E402
+import wordfreq
 
 RARE_ZIPF = 3.0
 

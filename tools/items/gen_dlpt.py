@@ -36,8 +36,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 
-import langtext  # noqa: E402
-import llm  # noqa: E402
+import langtext
+import llm
 
 BANDS_PATH = HERE / "ilr_bands.json"
 BANK_DIR = HERE / "bank"
@@ -121,12 +121,13 @@ def passage_text(p: dict) -> str:
 
 def band_misses(p: dict, lang: str, bands: dict) -> list[str]:
     band = bands["levels"].get(p.get("level"))
+    skill = "listening" if p.get("exam") == "DLPT_LISTENING" else "reading"
     if band is None:
         return [f"unknown level {p.get('level')}"]
     m = langtext.measure(passage_text(p), lang)
     out = []
     words = m.scaled_tokens(lang)
-    lo, hi = band["words"]
+    lo, hi = band["words"][skill]
     if not lo <= words <= hi:
         out.append(f"length {words:.0f} words outside {lo}–{hi}")
     lo, hi = band["meanSentence"]
@@ -212,14 +213,29 @@ def validate_bank(bank: dict, lang: str, skill: str, report: Report, bands: dict
         if not stem.strip():
             report.error(where, "empty stem")
         # Lower-range DLPT style: questions and choices in English.
-        english = " ".join([stem] + (choices or []))
-        if english and sum(c.isascii() for c in english if c.isalpha()) < 0.8 * max(1, sum(c.isalpha() for c in english)):
+        if not is_english(stem, choices or []):
             report.error(where, "stem and choices must be in English")
     for pid, p in pids.items():
         n = per_passage.get(pid, 0)
         lo, hi = bands["levels"].get(p.get("level"), {}).get("itemsPerPassage", [1, 4])
         if not lo <= n <= hi:
             (report.error if strict else report.warn)(f"{name} {pid}", f"{n} items; level {p.get('level')} wants {lo}–{hi}")
+
+
+ENGLISH_CUES = frozenset(
+    ["the", "a", "an", "of", "to", "is", "are", "was", "were", "what", "which", "who", "whom", "whose", "why", "how", "when", "where", "does", "do", "did", "according", "would", "could", "should", "most", "best", "main", "mainly", "author", "speaker", "text", "passage", "article", "message", "announcement"]
+)
+
+
+def is_english(stem: str, choices: list[str]) -> bool:
+    """Stems are full English questions (at least one common English function word, mostly ASCII letters);
+    choices may be short but must be mostly ASCII letters too."""
+    words = re.findall(r"[A-Za-z']+", stem.lower())
+    if not ENGLISH_CUES.intersection(words):
+        return False
+    text = " ".join([stem, *choices])
+    letters = [c for c in text if c.isalpha()]
+    return sum(c.isascii() for c in letters) >= 0.85 * max(1, len(letters))
 
 
 def bank_path(lang: str, skill: str) -> Path:
@@ -295,7 +311,7 @@ def draft_schema(skill: str, n_items: int) -> dict:
 def draft_messages(lang: str, skill: str, level: str, text_type: str, topic: str, band: dict, n_items: int,
                    avoid: list[str], feedback: str | None) -> list[dict]:
     name = LANG_NAMES[lang]
-    lo, hi = band["words"]
+    lo, hi = band["words"][skill]
     target = int((lo + hi) / 2)
     desc = (ILR_READING if skill == "reading" else ILR_LISTENING)[level]
     qtypes = ", ".join(band["questionTypes"])
@@ -349,7 +365,7 @@ def to_entries(raw: dict, lang: str, skill: str, level: str, text_type: str, pid
                "script": [{"speaker": nfc(x["speaker"].strip()), "voice": x["voice"], "text": nfc(x["text"].strip())}
                           for x in raw.get("script", [])] if skill == "listening" else [],
                "source": "llm", "verified": False, "engine": engine,
-               "drafted": dt.date.today().isoformat()}
+               "drafted": dt.datetime.now(dt.UTC).date().isoformat()}
     items = []
     rng = random.Random(pid)
     for i, q in enumerate(raw.get("items", []), 1):
@@ -388,8 +404,7 @@ def draft_one(client: llm.Client, lang: str, skill: str, level: str, bands: dict
     band = bands["levels"][level]
     text_type = rng.choice(band["textTypes"][skill])
     topic = rng.choice(TOPICS)
-    lo, hi = band["itemsPerPassage"]
-    n_items = hi if level != "0+" else rng.choice([lo, hi])
+    n_items = 3 if level not in ("0+", "1") else rng.choice(band["itemsPerPassage"])
     feedback = None
     for _ in range(tries):
         try:

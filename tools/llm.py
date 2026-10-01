@@ -13,7 +13,6 @@ from __future__ import annotations
 import json
 import os
 import shutil
-import socket
 import subprocess
 import sys
 import time
@@ -121,7 +120,7 @@ class Client:
         base = self.endpoint.removesuffix("/v1")
         try:
             _http(base + "/api/tags", None, CONNECT_TIMEOUT_S)
-        except (urllib.error.URLError, TimeoutError, socket.timeout, ConnectionError) as e:
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             raise EndpointDown(f"drafting endpoint {self.endpoint} is unreachable: {e}", rerun_command()) from e
 
     def chat(self, messages: list[dict], *, json_schema: dict | None = None, temperature: float | None = None,
@@ -150,7 +149,7 @@ class Client:
                 last = e
                 detail = (e.read() if e.fp else str(e.msg).encode()).decode("utf-8", "replace")[:300]
                 self.log.append(f"HTTP {e.code} from {use}: {detail}")
-            except (urllib.error.URLError, TimeoutError, socket.timeout, ConnectionError) as e:
+            except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
                 last = e
                 self.log.append(f"network error from {use}: {e}")
         if use == self.model:

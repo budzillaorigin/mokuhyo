@@ -1,30 +1,289 @@
 {
-  "note": "Per-level checks for DLPT-style practice passages in every language (BRIEF §5.3). Lengths are in 'English-equivalent words': the validator counts wordfreq tokens and divides by langtext.TOKEN_FACTOR for the language. rareRatio is the share of tokens with Zipf frequency < 3.0. These are heuristics that keep drafts in the right neighbourhood; human review decides the final level. Text types follow the public ILR reading/listening descriptions.",
-  "levels": {
-    "0+": {"words": [6, 70], "meanSentence": [1, 14], "rareRatio": [0.0, 0.14], "itemsPerPassage": [1, 2],
-           "textTypes": {"reading": ["sign", "notice", "advertisement", "schedule", "menu", "form", "label"],
-                         "listening": ["announcement", "voicemail", "short_exchange", "advertisement"]},
-           "questionTypes": ["detail", "main_idea", "purpose"]},
-    "1":  {"words": [25, 130], "meanSentence": [3, 16], "rareRatio": [0.0, 0.15], "itemsPerPassage": [2, 3],
-           "textTypes": {"reading": ["short_message", "notice", "announcement", "instructions", "advertisement", "personal_letter"],
-                         "listening": ["announcement", "voicemail", "conversation", "instructions", "weather"]},
-           "questionTypes": ["detail", "main_idea", "purpose"]},
-    "1+": {"words": [60, 200], "meanSentence": [5, 20], "rareRatio": [0.0, 0.18], "itemsPerPassage": [3, 3],
-           "textTypes": {"reading": ["news_brief", "instructions", "personal_letter", "description", "announcement", "email"],
-                         "listening": ["news_brief", "conversation", "interview", "announcement", "phone_call"]},
-           "questionTypes": ["main_idea", "detail", "purpose", "inference"]},
-    "2":  {"words": [120, 320], "meanSentence": [7, 28], "rareRatio": [0.0, 0.24], "itemsPerPassage": [3, 3],
-           "textTypes": {"reading": ["news", "report", "letter", "biography", "factual_article", "event_description"],
-                         "listening": ["news", "interview", "report", "briefing", "conversation"]},
-           "questionTypes": ["main_idea", "detail", "inference", "purpose", "vocabulary_in_context"]},
-    "2+": {"words": [180, 420], "meanSentence": [9, 32], "rareRatio": [0.02, 0.3], "itemsPerPassage": [3, 3],
-           "textTypes": {"reading": ["news_analysis", "opinion", "extended_report", "interview", "feature"],
-                         "listening": ["news_analysis", "interview", "panel_discussion", "speech", "documentary"]},
-           "questionTypes": ["main_idea", "inference", "detail", "purpose", "vocabulary_in_context", "tone"]},
-    "3":  {"words": [240, 560], "meanSentence": [10, 40], "rareRatio": [0.03, 0.36], "itemsPerPassage": [3, 3],
-           "textTypes": {"reading": ["editorial", "argumentative_essay", "analysis", "speech", "commentary"],
-                         "listening": ["editorial_commentary", "lecture", "debate", "speech", "analysis"]},
-           "questionTypes": ["main_idea", "inference", "tone", "purpose", "vocabulary_in_context", "detail"]}
+ "note": "Per-level checks for DLPT-style practice passages in every language (BRIEF §5.3). Lengths (per skill; spoken passages run shorter) are in 'English-equivalent words': the validator counts wordfreq tokens and divides by langtext.TOKEN_FACTOR for the language. rareRatio is the share of tokens with Zipf frequency < 3.0. These are heuristics that keep drafts in the right neighbourhood; human review decides the final level. Text types follow the public ILR reading/listening descriptions. Tsumugi's Japanese bank (calibrated on Japanese character bands) was used to sanity-check the ranges.",
+ "levels": {
+  "0+": {
+   "meanSentence": [
+    1,
+    14
+   ],
+   "rareRatio": [
+    0.0,
+    0.14
+   ],
+   "itemsPerPassage": [
+    1,
+    2
+   ],
+   "textTypes": {
+    "reading": [
+     "sign",
+     "notice",
+     "advertisement",
+     "schedule",
+     "menu",
+     "form",
+     "label"
+    ],
+    "listening": [
+     "announcement",
+     "voicemail",
+     "short_exchange",
+     "advertisement"
+    ]
+   },
+   "questionTypes": [
+    "detail",
+    "main_idea",
+    "purpose"
+   ],
+   "words": {
+    "reading": [
+     6,
+     70
+    ],
+    "listening": [
+     6,
+     60
+    ]
+   }
   },
-  "purity": 0.85
+  "1": {
+   "meanSentence": [
+    3,
+    16
+   ],
+   "rareRatio": [
+    0.0,
+    0.15
+   ],
+   "itemsPerPassage": [
+    2,
+    3
+   ],
+   "textTypes": {
+    "reading": [
+     "short_message",
+     "notice",
+     "announcement",
+     "instructions",
+     "advertisement",
+     "personal_letter"
+    ],
+    "listening": [
+     "announcement",
+     "voicemail",
+     "conversation",
+     "instructions",
+     "weather"
+    ]
+   },
+   "questionTypes": [
+    "detail",
+    "main_idea",
+    "purpose"
+   ],
+   "words": {
+    "reading": [
+     15,
+     130
+    ],
+    "listening": [
+     15,
+     100
+    ]
+   }
+  },
+  "1+": {
+   "meanSentence": [
+    3,
+    20
+   ],
+   "rareRatio": [
+    0.0,
+    0.18
+   ],
+   "itemsPerPassage": [
+    2,
+    4
+   ],
+   "textTypes": {
+    "reading": [
+     "news_brief",
+     "instructions",
+     "personal_letter",
+     "description",
+     "announcement",
+     "email"
+    ],
+    "listening": [
+     "news_brief",
+     "conversation",
+     "interview",
+     "announcement",
+     "phone_call"
+    ]
+   },
+   "questionTypes": [
+    "main_idea",
+    "detail",
+    "purpose",
+    "inference"
+   ],
+   "words": {
+    "reading": [
+     50,
+     200
+    ],
+    "listening": [
+     40,
+     160
+    ]
+   }
+  },
+  "2": {
+   "meanSentence": [
+    3,
+    28
+   ],
+   "rareRatio": [
+    0.0,
+    0.24
+   ],
+   "itemsPerPassage": [
+    2,
+    4
+   ],
+   "textTypes": {
+    "reading": [
+     "news",
+     "report",
+     "letter",
+     "biography",
+     "factual_article",
+     "event_description"
+    ],
+    "listening": [
+     "news",
+     "interview",
+     "report",
+     "briefing",
+     "conversation"
+    ]
+   },
+   "questionTypes": [
+    "main_idea",
+    "detail",
+    "inference",
+    "purpose",
+    "vocabulary_in_context"
+   ],
+   "words": {
+    "reading": [
+     100,
+     320
+    ],
+    "listening": [
+     80,
+     260
+    ]
+   }
+  },
+  "2+": {
+   "meanSentence": [
+    3,
+    32
+   ],
+   "rareRatio": [
+    0.0,
+    0.3
+   ],
+   "itemsPerPassage": [
+    2,
+    4
+   ],
+   "textTypes": {
+    "reading": [
+     "news_analysis",
+     "opinion",
+     "extended_report",
+     "interview",
+     "feature"
+    ],
+    "listening": [
+     "news_analysis",
+     "interview",
+     "panel_discussion",
+     "speech",
+     "documentary"
+    ]
+   },
+   "questionTypes": [
+    "main_idea",
+    "inference",
+    "detail",
+    "purpose",
+    "vocabulary_in_context",
+    "tone"
+   ],
+   "words": {
+    "reading": [
+     150,
+     420
+    ],
+    "listening": [
+     110,
+     340
+    ]
+   }
+  },
+  "3": {
+   "meanSentence": [
+    3,
+    40
+   ],
+   "rareRatio": [
+    0.0,
+    0.36
+   ],
+   "itemsPerPassage": [
+    2,
+    4
+   ],
+   "textTypes": {
+    "reading": [
+     "editorial",
+     "argumentative_essay",
+     "analysis",
+     "speech",
+     "commentary"
+    ],
+    "listening": [
+     "editorial_commentary",
+     "lecture",
+     "debate",
+     "speech",
+     "analysis"
+    ]
+   },
+   "questionTypes": [
+    "main_idea",
+    "inference",
+    "tone",
+    "purpose",
+    "vocabulary_in_context",
+    "detail"
+   ],
+   "words": {
+    "reading": [
+     200,
+     560
+    ],
+    "listening": [
+     150,
+     420
+    ]
+   }
+  }
+ },
+ "purity": 0.85
 }

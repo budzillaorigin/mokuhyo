@@ -40,15 +40,15 @@ def render(manifest: dict) -> str:
         )
     out += [
         "",
-        "Weights are fetched from the GGUF/ggml conversions named in each entry's `provenance.conversion` "
-        "(conversion only; the developer and license are the original model's). The app verifies every file's "
-        "SHA-256 before use.",
+        ("Weights are fetched from the GGUF/ggml conversions named in each entry's `provenance.conversion` "
+         "(conversion only; the developer and license are the original model's). The app verifies every file's "
+         "SHA-256 before use."),
         "",
         "## Drafting models (tools/, not shipped)",
         "",
-        "The owner's Ollama server (BRIEF §7.1) runs the approved list in `tools/models/approved_models.json`: "
-        "`mistral-small3.2:24b-instruct-2506-q8_0` (Mistral AI, France, Apache-2.0) drafts all content and is the "
-        "reference grader; `gpt-oss:20b` (OpenAI, US, Apache-2.0) is the second-opinion checker.",
+        ("The owner's Ollama server (BRIEF §7.1) runs the approved list in `tools/models/approved_models.json`: "
+         "`mistral-small3.2:24b-instruct-2506-q8_0` (Mistral AI, France, Apache-2.0) drafts all content and is the "
+         "reference grader; `gpt-oss:20b` (OpenAI, US, Apache-2.0) is the second-opinion checker."),
         "",
     ]
     return "\n".join(out)

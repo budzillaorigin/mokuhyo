@@ -172,6 +172,17 @@ class LlamaJniBridge(
         worker.execute { free() }
     }
 
+    /**
+     * Frees the model and stops the worker, waiting up to [timeoutMs]. Call before the process exits: ggml's Metal
+     * backend asserts at exit if model buffers are still alive.
+     */
+    fun shutdown(timeoutMs: Long = 5_000) {
+        cancel()
+        runCatching { worker.execute { free() } }
+        worker.shutdown()
+        worker.awaitTermination(timeoutMs, java.util.concurrent.TimeUnit.MILLISECONDS)
+    }
+
     private fun ensureToken() {
         if (cancelToken == 0L) cancelToken = LlamaNative.nativeNewCancelToken()
     }
