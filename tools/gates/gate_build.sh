@@ -26,12 +26,8 @@ echo "== gate_build: package"
 $GRADLE :desktopApp:createDistributable :desktopApp:packageDistributionForCurrentOS --console=plain
 
 echo "== gate_build: packaged smoke"
-APP=desktopApp/build/compose/binaries/main/app
-case "$OS" in
-  macos) BIN="$APP/Mokuhyo.app/Contents/MacOS/Mokuhyo" ;;
-  windows) BIN="$APP/Mokuhyo/Mokuhyo.exe" ;;
-  linux) BIN="$APP/mokuhyo/bin/mokuhyo" ;;
-esac
+BIN=$(tools/gates/app_binary.sh)
+echo "launcher: $BIN"
 "$BIN" --smoke
 
 echo "== gate_build: license scan of the image"

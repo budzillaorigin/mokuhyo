@@ -15,9 +15,5 @@ for mid in ("phi-4-mini-instruct-q4km", "whisper-small"):
     fetch(f["url"], CACHE / f["name"], f["sha256"], f["bytes"])
 PY
 )
-case "$(uname -s)" in
-  Darwin) BIN=desktopApp/build/compose/binaries/main/app/Mokuhyo.app/Contents/MacOS/Mokuhyo ;;
-  MINGW*|MSYS*|CYGWIN*) BIN=desktopApp/build/compose/binaries/main/app/Mokuhyo/Mokuhyo.exe ;;
-  *) BIN=desktopApp/build/compose/binaries/main/app/mokuhyo/bin/mokuhyo ;;
-esac
+BIN=$(tools/gates/app_binary.sh)
 "$BIN" --smoke-opi --model "$PWD/$CACHE/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf" --whisper "$PWD/$CACHE/ggml-small.bin" "$@"

@@ -40,7 +40,8 @@ New-Item -ItemType Directory -Force -Path $buildDir, $outDir | Out-Null
 
 $sw = [Diagnostics.Stopwatch]::StartNew()
 Write-Host "== configure (windows-$arch $Variant)"
-& $cmakeExe @cmakeArgs -S $here -B $buildDir -G "Visual Studio 17 2022" -A $platform `
+# No -G: CMake picks the newest installed Visual Studio (runner images move from VS 2022 to newer releases).
+& $cmakeExe @cmakeArgs -S $here -B $buildDir -A $platform `
     "-DMOKUHYO_VARIANT=$Variant"
 if ($LASTEXITCODE -ne 0) { throw "configure failed" }
 Write-Host "== build (-j$jobs)"
