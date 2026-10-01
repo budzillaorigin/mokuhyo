@@ -1,0 +1,2545 @@
+{
+ "bank": "de-listening-core",
+ "language": "de",
+ "title": "German listening: core bank",
+ "license": "CC BY-SA 4.0",
+ "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
+ "passages": [
+  {
+   "id": "de-dl-0p-advertisement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Office Move Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Achtung, bitte beachten!"
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Wir ziehen um!"
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Unsere neue Anschrift lautet Musterstraße 12, 10115 Berlin."
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Ab dem 1. Juli sind wir dort für Sie erreichbar."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Wir freuen uns auf Ihren Besuch!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-0p-advertisement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Peacekeepers Wanted",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ankündigung",
+     "voice": "female",
+     "text": "Achtung, Achtung! Wir suchen Freiwillige für eine Friedensmission. Die Mission beginnt im Juli."
+    },
+    {
+     "speaker": "Ankündigung",
+     "voice": "male",
+     "text": "Bitte melden Sie sich bis zum 15. Juni. Wir brauchen Ihre Hilfe!"
+    },
+    {
+     "speaker": "Ankündigung",
+     "voice": "female",
+     "text": "Kontaktieren Sie uns unter der Nummer 123-456-7890."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-0p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Bank Announcement on Interest Rates",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Stimme",
+     "voice": "female",
+     "text": "Achtung, bitte hören Sie zu."
+    },
+    {
+     "speaker": "Stimme",
+     "voice": "male",
+     "text": "Die Inflation steigt an."
+    },
+    {
+     "speaker": "Stimme",
+     "voice": "female",
+     "text": "Die Zinssätze werden gesenkt."
+    },
+    {
+     "speaker": "Stimme",
+     "voice": "male",
+     "text": "Vielen Dank für Ihre Aufmerksamkeit."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Upcoming Satellite Launch",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ankündigung",
+     "voice": "female",
+     "text": "Hallo zusammen, wir möchten Sie informieren, dass unser neues Satellit, Stella, wird morgen starten."
+    },
+    {
+     "speaker": "Ankündigung",
+     "voice": "male",
+     "text": "Die Startzeit ist 14:00 Uhr."
+    },
+    {
+     "speaker": "Ankündigung",
+     "voice": "female",
+     "text": "Der Start wird von unserer Raumfahrtzentrum live übertragen."
+    },
+    {
+     "speaker": "Ankündigung",
+     "voice": "male",
+     "text": "Vielen Dank für Ihre Aufmerksamkeit."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Job Interview at a Bakery",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Guten Tag! Vielen Dank, dass Sie heute hier sind. Erzählen Sie uns etwas über sich."
+    },
+    {
+     "speaker": "Applicant",
+     "voice": "female",
+     "text": "Guten Tag! Ich heiße Anna. Ich liebe das Backen und den Umgang mit Menschen. Ich habe Erfahrung im Umgang mit Kunden."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das klingt gut. Warum möchten Sie in unserer Bäckerei arbeiten?"
+    },
+    {
+     "speaker": "Applicant",
+     "voice": "female",
+     "text": "Ich mag die Atmosphäre in einer Bäckerei. Es ist ein Ort, an dem Menschen zusammenkommen und sich freuen."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Vielen Dank, Anna. Wir werden uns bei Ihnen melden."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1-instructions-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "instructions",
+   "title": "How to Access Your Online Course",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sprachlehrer",
+     "voice": "male",
+     "text": "Willkommen zu Ihrem Online-Kurs!"
+    },
+    {
+     "speaker": "Sprachlehrer",
+     "voice": "male",
+     "text": "Um auf Ihren Kurs zuzugreifen, besuchen Sie bitte unsere Lernplattform."
+    },
+    {
+     "speaker": "Sprachlehrer",
+     "voice": "male",
+     "text": "Geben Sie Ihre Zugangsdaten ein und klicken Sie auf 'Anmelden'."
+    },
+    {
+     "speaker": "Sprachlehrer",
+     "voice": "male",
+     "text": "Sobald Sie angemeldet sind, sehen Sie Ihren Kurs auf der Startseite."
+    },
+    {
+     "speaker": "Sprachlehrer",
+     "voice": "male",
+     "text": "Viel Spaß beim Lernen!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1-instructions-002",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Library Card Renewal",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Bibliothekar",
+     "voice": "female",
+     "text": "Herzlich willkommen in der Stadtbibliothek!"
+    },
+    {
+     "speaker": "Bibliothekar",
+     "voice": "female",
+     "text": "Um Ihren Bibliotheksausweis zu verlängern, bringen Sie bitte zunächst Ihren alten Ausweis in die Bibliothek mit."
+    },
+    {
+     "speaker": "Bibliothekar",
+     "voice": "female",
+     "text": "Danach füllen Sie bitte ein kurzes Formular aus."
+    },
+    {
+     "speaker": "Bibliothekar",
+     "voice": "female",
+     "text": "Hier können Sie Ihren Ausweis verlängern. Vielen Dank!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Coastal Protection Meeting",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Wir möchten Sie zu einem wichtigen Meeting über unseren neuen Küstenschutzplan einladen."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Am Mittwoch, den 15. Juni, um 19 Uhr."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Das Meeting findet im Gemeindezentrum statt."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Wir diskutieren die Erosion an unserer Küste und die Maßnahmen, die wir ergreifen können."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Ihre Meinung ist uns wichtig. Wir freuen uns auf Ihre Teilnahme."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Für weitere Informationen rufen Sie bitte die Gemeindeverwaltung an."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Naval Port Visit Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Kapitän",
+     "voice": "male",
+     "text": "Guten Morgen, Leiter. Das Schiff läuft heute ein."
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "female",
+     "text": "Ah, gut. Wann legt es an?"
+    },
+    {
+     "speaker": "Kapitän",
+     "voice": "male",
+     "text": "Um 15:00 Uhr. Die Besatzung ist bereit und alles ist vorbereitet."
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "female",
+     "text": "Sehr gut. Wie lange bleibt es im Hafen?"
+    },
+    {
+     "speaker": "Kapitän",
+     "voice": "male",
+     "text": "Nur für eine Nacht. Es läuft morgen früh um 06:00 Uhr aus."
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "female",
+     "text": "Verstanden. Danke für die Information, Kapitän."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1p-news_brief-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Rising Rivers: Flood Warning Issued",
+   "body": "",
+   "script": [
+    {
+     "speaker": "ANNOUNCER (female)",
+     "voice": "female",
+     "text": "Achtung, Achtung. Hier ist eine wichtige Wetterwarnung."
+    },
+    {
+     "speaker": "ANNOUNCER (male)",
+     "voice": "male",
+     "text": "Aufgrund der aktuellen Wettervorhersagen wird eine Hochwasservorwarnung für unsere Region herausgegeben."
+    },
+    {
+     "speaker": "ANNOUNCER (female)",
+     "voice": "female",
+     "text": "Die Wettervorhersagen stimmen darin überein, dass schwere Regenfälle zu erwarten sind."
+    },
+    {
+     "speaker": "ANNOUNCER (male)",
+     "voice": "male",
+     "text": "Die Elbe und andere Flüsse könnten über die Ufer treten."
+    },
+    {
+     "speaker": "ANNOUNCER (female)",
+     "voice": "female",
+     "text": "Wir raten allen Anwohnern, sich auf mögliche Überschwemmungen vorzubereiten."
+    },
+    {
+     "speaker": "ANNOUNCER (male)",
+     "voice": "male",
+     "text": "Bitte halten Sie sich regelmäßig über die Wetterentwicklung auf dem Laufenden."
+    },
+    {
+     "speaker": "ANNOUNCER (female)",
+     "voice": "female",
+     "text": "Vielen Dank für Ihre Aufmerksamkeit."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1p-phone_call-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Lost Passport Call",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Guten Tag, hier ist das Bürgeramt. Wie kann ich Ihnen behilflich sein?"
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Guten Tag, ich habe meinen Reisepass verloren."
+    },
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Oh, das ist ärgerlich. Wann haben Sie Ihren Reisepass zum letzten Mal gesehen?"
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Ich war gestern am Flughafen, und seitdem habe ich ihn nicht mehr gesehen."
+    },
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Haben Sie bereits am Flughafen nachgefragt?"
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Ja, aber sie konnten ihn nicht finden. Deshalb rufe ich jetzt an."
+    },
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Ich verstehe. Ich werde einen Verlustbericht über den Reisepass erstellen. Bitte kommen Sie ins Bürgeramt, um einen neuen Antrag zu stellen."
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Danke, ich komme heute Nachmittag vorbei."
+    },
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Gut, bis später dann."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-briefing-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Press Freedom: A Critical Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Willkommen zur heutigen Besprechung. Heute sprechen wir über die Bedeutung der Pressefreiheit in einer demokratischen Gesellschaft."
+    },
+    {
+     "speaker": "Sprecher 1",
+     "voice": "male",
+     "text": "Danke. Eine freie Presse ist ein wesentlicher Bestandteil einer funktionierenden Demokratie. Sie ermöglicht es den Bürgern, über politische Prozesse und Entscheidungen informiert zu bleiben."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Können Sie ein konkretes Beispiel nennen?"
+    },
+    {
+     "speaker": "Sprecher 1",
+     "voice": "male",
+     "text": "Natürlich. Eine freie Presse ermöglicht es der Öffentlichkeit, fundierte Entscheidungen zu treffen, sei es bei Wahlen oder anderen wichtigen gesellschaftlichen Fragen."
+    },
+    {
+     "speaker": "Sprecher 2",
+     "voice": "female",
+     "text": "Es ist auch wichtig zu beachten, dass Pressefreiheit nicht nur den Journalisten zugutekommt, sondern der gesamten Gesellschaft. Sie fördert Transparenz und Verantwortlichkeit."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank für diese Einsichten. Lassen Sie uns fortfahren."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Drought Crisis in the Alps",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Anna",
+     "voice": "female",
+     "text": "Hast du die Nachrichten heute gehört, Thomas? Es wird immer schlimmer mit der Dürre in den Alpen."
+    },
+    {
+     "speaker": "Thomas",
+     "voice": "male",
+     "text": "Ja, ich habe gehört, dass die Situation sehr besorgniserregend ist. Wie wirkt sich das auf die Landwirtschaft aus?"
+    },
+    {
+     "speaker": "Anna",
+     "voice": "female",
+     "text": "Nun, die Bauern haben große Probleme. Die Milchproduktion ist stark zurückgegangen, und das Futter für das Vieh wird knapp."
+    },
+    {
+     "speaker": "Thomas",
+     "voice": "male",
+     "text": "Das ist ja schrecklich. Was kann man da tun?"
+    },
+    {
+     "speaker": "Anna",
+     "voice": "female",
+     "text": "Die Regierung hat Notfallmaßnahmen eingeleitet. Sie haben die Wasserverteilung umgestellt und die Bewässerung der Felder angepasst."
+    },
+    {
+     "speaker": "Thomas",
+     "voice": "male",
+     "text": "Das klingt gut, aber wird das reichen?"
+    },
+    {
+     "speaker": "Anna",
+     "voice": "female",
+     "text": "Ich hoffe es. Aber wir müssen auch langfristig denken. Vielleicht sollten wir über eine nachhaltigere Landwirtschaft nachdenken."
+    },
+    {
+     "speaker": "Thomas",
+     "voice": "male",
+     "text": "Da hast du recht. Es ist wichtig, dass wir die Umwelt schonen und gleichzeitig unsere Lebensmittelversorgung sichern."
+    },
+    {
+     "speaker": "Anna",
+     "voice": "female",
+     "text": "Genau. Und wir sollten auch über Wasseraufbereitung und -speicherung nachdenken, um besser auf solche Dürren vorbereitet zu sein."
+    },
+    {
+     "speaker": "Thomas",
+     "voice": "male",
+     "text": "Das sind alles wichtige Punkte. Ich hoffe, die Regierung hört auf uns und handelt entsprechend."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "interview",
+   "title": "Expanding Horizons: A Company's Move to Munich",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Willkommen zu unserem heutigen Interview. Heute sprechen wir mit Frau Müller von TechInnovate GmbH, einem führenden Softwareunternehmen. Herzlich willkommen, Frau Müller."
+    },
+    {
+     "speaker": "Gast",
+     "voice": "female",
+     "text": "Vielen Dank für die Einladung."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Frau Müller, ich höre, Ihr Unternehmen verlegt seinen Hauptsitz nach München. Können Sie uns mehr darüber erzählen?"
+    },
+    {
+     "speaker": "Gast",
+     "voice": "female",
+     "text": "Ja, das stimmt. Wir haben einen langfristigen Mietvertrag für ein Bürogebäude in der Innenstadt unterzeichnet. München bietet Zugang zu hochqualifizierten Fachkräften und bringt uns näher an unsere Kunden."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das klingt spannend. Wie wird dieser Umzug die Mitarbeiter beeinflussen?"
+    },
+    {
+     "speaker": "Gast",
+     "voice": "female",
+     "text": "Einige Mitarbeiter werden umziehen, aber wir bieten auch flexible Arbeitsmöglichkeiten an. Home-Office und hybride Arbeitsmodelle werden weiterhin eine Rolle spielen."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Vielen Dank für diese Einblicke, Frau Müller."
+    },
+    {
+     "speaker": "Gast",
+     "voice": "female",
+     "text": "Gern geschehen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "news",
+   "title": "Press Freedom Under Fire in European Country",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Willkommen zu den Nachrichten. Heute berichten wir über eine wichtige Entwicklung in der Tschechischen Republik."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "In Prag haben heute Journalisten und Bürger gegen ein neues Gesetz demonstriert."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Was hat diese Proteste ausgelöst?"
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Das umstrittene Medienkontrollgesetz, das diese Woche vom Parlament verabschiedet wurde."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Was besagt dieses Gesetz?"
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Das Gesetz gibt der Regierung mehr Kontrolle über die Medien und schränkt die Pressefreiheit ein."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Wie reagieren die Journalisten?"
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Sie sagen, dass das Gesetz die Demokratie gefährdet und dass sie weiterhin dagegen kämpfen werden."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank für diesen Bericht. Das war's von uns. Guten Tag!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-documentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "The Future of Green Energy: A Job Interview",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Guten Tag, Herr Müller. Vielen Dank, dass Sie heute hier sind. Wir freuen uns darauf, mehr über Ihre Erfahrung und Qualifikationen zu erfahren."
+    },
+    {
+     "speaker": "Candidate",
+     "voice": "female",
+     "text": "Guten Tag. Vielen Dank für die Einladung. Ich freue mich auch auf dieses Gespräch."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Können Sie uns mehr über Ihre Erfahrung in der Branche der erneuerbaren Energien erzählen?"
+    },
+    {
+     "speaker": "Candidate",
+     "voice": "female",
+     "text": "Natürlich. Ich habe fünf Jahre Erfahrung in der Branche, hauptsächlich im Bereich der Solarenergie. Derzeit arbeite ich an einem Projekt, das darauf abzielt, die Nutzung von Solarenergie in städtischen Gebieten zu fördern."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das klingt sehr interessant. Wie denken Sie, dass Sie unser Team bei der Erreichung dieser Ziele unterstützen können?"
+    },
+    {
+     "speaker": "Candidate",
+     "voice": "female",
+     "text": "Ich glaube, dass meine Erfahrung in der Projektleitung und meine Fähigkeit, den Überblick zu behalten und mehrere Projekte und Fristen gleichzeitig zu managen, unserem Team zugutekommen würden. Zudem habe ich ein starkes Netzwerk in der Branche, das ich nutzen kann, um unseren Einfluss zu erweitern."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das sind certainly wertvolle Fähigkeiten. Können Sie uns ein Beispiel für ein erfolgreiches Projekt geben, an dem Sie gearbeitet haben?"
+    },
+    {
+     "speaker": "Candidate",
+     "voice": "female",
+     "text": "Gerne. In meinem letzten Job habe ich ein Projekt geleitet, das darauf abzielte, die Energieeffizienz eines großen Bürogebäudes zu verbessern. Durch die Implementierung von Solarpanelen und anderen energieeffizienten Maßnahmen konnten wir den Energieverbrauch um 30 % reduzieren."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das ist beeindruckend. Haben Sie noch weitere Fragen an uns?"
+    },
+    {
+     "speaker": "Candidate",
+     "voice": "female",
+     "text": "Ja, ich hätte gerne mehr über die spezifischen Ziele und Projekte Ihres Teams in den nächsten Jahren erfahren."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Natürlich, ich kann Ihnen mehr darüber erzählen. Unser Hauptziel ist es, die Nutzung erneuerbarer Energien in unserer Region zu steigern und innovative Lösungen für die Energiewende zu entwickeln."
+    },
+    {
+     "speaker": "Candidate",
+     "voice": "female",
+     "text": "Das klingt sehr spannend. Vielen Dank für diese Informationen."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Gern geschehen. Vielen Dank für Ihr Interesse an unserer Stelle. Wir werden uns in Kürze bei Ihnen melden."
+    },
+    {
+     "speaker": "Candidate",
+     "voice": "female",
+     "text": "Vielen Dank für die Gelegenheit. Ich freue mich darauf, von Ihnen zu hören."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Cultural Exchange: Bridging Worlds",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Willkommen zu unserer Sendung. Heute sprechen wir mit Herrn Müller über das Kultur-Austauschprogramm, das er leitet."
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "male",
+     "text": "Vielen Dank für die Einladung. Es ist mir eine Freude, über unser Programm zu sprechen."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Und wie heißt das Programm, das Sie leiten?"
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "male",
+     "text": "Es heißt Brücken der Kulturen. Unser Ziel ist es, den kulturellen Austausch zwischen Deutschland und anderen Ländern zu fördern."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Das klingt faszinierend. Können Sie uns mehr über die Aktivitäten des Programms erzählen?"
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "male",
+     "text": "Natürlich. Die Teilnehmer nehmen an Workshops, Führungen und kulturellen Veranstaltungen teil. Sie werden mit den lokalen Bräuchen vertraut gemacht und haben die Möglichkeit, ihre eigene Kultur vorzustellen."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Welche Herausforderungen gibt es bei der Umsetzung des Programms?"
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "male",
+     "text": "Eine der Hauptherausforderungen ist die Finanzierung. Wir sind auf Spenden und Fördergelder angewiesen. Außerdem kann die Sprache manchmal eine Barriere sein, aber wir bieten Sprachkurse an, um dies zu überwinden."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Wie wählen Sie die Teilnehmer aus?"
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "male",
+     "text": "Wir suchen nach engagierten und offenen Menschen, die bereit sind, sich auf neue Kulturen einzulassen. Die Auswahl basiert auf Bewerbungen und persönlichen Gesprächen."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Vielen Dank für das Gespräch, Herr Müller. Das war sehr interessant."
+    },
+    {
+     "speaker": "Leiter",
+     "voice": "male",
+     "text": "Gern geschehen. Ich hoffe, wir konnten das Interesse unserer Zuhörer wecken."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Das war Herr Müller, der Leiter des Kultur-Austauschprogramms Brücken der Kulturen. Vielen Dank fürs Zuhören."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-panel_discussion-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Reviving the Past: A Historical Exhibition",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Willkommen zu unserer Diskussionsrunde über die neue Ausstellung 'Alltag im alten Rom' im Stadtmuseum. Heute haben wir Dr. Weber, den Kurator der Ausstellung, und Frau Schmidt, eine bekannte Archäologin, bei uns. Herzlich willkommen!"
+    },
+    {
+     "speaker": "Dr. Weber",
+     "voice": "male",
+     "text": "Vielen Dank. Ich bin wirklich begeistert, diese Ausstellung zu präsentieren. Sie bietet einen einzigartigen Einblick in das Leben im alten Rom."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Ja, es ist eine wunderbare Sammlung. Einige dieser ausgefallen Stücke sind aus anderen Museen ausgeliehen, was die Ausstellung wirklich besonders macht."
+    },
+    {
+     "speaker": "Dr. Weber",
+     "voice": "male",
+     "text": "Genau. Wir haben auch Artefakte aus verschiedenen römischen Provinzen, was wirklich faszinierend ist. Die Besucher können sehen, wie das Leben in verschiedenen Teilen des Reiches ausgesehen hat."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Das klingt faszinierend. Frau Schmidt, können Sie uns mehr über die Bedeutung dieser Ausstellung erzählen?"
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Natürlich. Diese Ausstellung hilft uns, die Vergangenheit zu verstehen und zu schätzen. Sie zeigt, wie das Leben vor Jahrhunderten war und wie es unser heutiges Leben beeinflusst hat."
+    },
+    {
+     "speaker": "Dr. Weber",
+     "voice": "male",
+     "text": "Und es ist nicht nur für Geschichtsinteressierte. Die Ausstellung ist so gestaltet, dass sie für jeden zugänglich und interessant ist, unabhängig vom Alter oder Hintergrund."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank beiden für diese spannende Diskussion. Wir freuen uns darauf, die Ausstellung zu besuchen!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Joint Search-and-Rescue Operation in the Alps",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Guten Morgen, meine Damen und Herren, heute möchte ich über eine erfolgreiche Such- und Rettungsaktion in den Alpen berichten."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Gestern haben wir eine erfolgreiche Such- und Rettungsaktion in den Alpen durchgeführt."
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Die Bergrettung war äußerst komplex und erforderte die Zusammenarbeit mehrerer Teams."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Die deutsche und die österreichische Rettungsmannschaft haben hervorragend zusammengearbeitet."
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Sie haben ihr Wissen und ihre Erfahrung eingebracht, um die vermisste Wanderin zu finden."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Die Wanderin wurde schließlich verletzt, aber lebendig gefunden und in ein nahegelegenes Krankenhaus gebracht."
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Diese Aktion zeigt einmal mehr die Bedeutung der internationalen Zusammenarbeit bei solchen Einsätzen."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Wir sind stolz auf das Ergebnis und dankbar für die Unterstützung unserer österreichischen Kollegen."
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Vielen Dank für Ihre Aufmerksamkeit. Gerne beantworte ich Ihre Fragen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "speech",
+   "title": "A Journey Through Time: Medieval Germany Exhibit",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Guten Tag und herzlich willkommen zu unserer heutigen Pressekonferenz."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Ich freue mich, Ihnen die Eröffnung unserer neuen Ausstellung \"Auf den Spuren des Mittelalters\" ankündigen zu dürfen."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Diese Ausstellung zeigt einzigartige Zeugnisse des mittelalterlichen Lebens, von handgefertigten Waffen bis hin zu kunstvoll verzierten Manuskripten."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Besuchen Sie die Nachbildung der Burg und staunen Sie über die handwerklichen Fähigkeiten unserer Vorfahren."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Die Ausstellung ist ab nächste Woche für alle Interessierten geöffnet."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Wir laden Sie herzlich ein, einen Blick in die faszinierende Welt des Mittelalters zu werfen."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Es gibt auch interaktive Elemente, bei denen die Besucher selbst Hand anlegen können, wie zum Beispiel das Schmieden eines kleinen Eisenteils."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank für Ihre Aufmerksamkeit und wir hoffen, Sie bald in unserer Ausstellung begrüßen zu dürfen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-3-analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Cyberattack on the Heidelberg Wasserwerke",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Guten Tag und herzlich willkommen zu unserer heutigen Diskussion über den jüngsten Cyberangriff auf das Wasserwerk in Heidelberg. Unser Gast ist Herr Müller, der technische Leiter des Heidelberg Wasserwerke."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Vielen Dank für die Einladung. Es ist wichtig, dass wir über diese ernsthafte Situation sprechen. Der Angriff hat mehrere unserer Systeme lahmgelegt und die Auswirkungen auf die Wasserversorgung der gesamten Stadt sind erheblich."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Können Sie uns mehr über die Art des Angriffs erzählen?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Es handelte sich um einen gezielten Angriff, der darauf abzielte, unsere Steuerungssysteme zu stören. Die Angreifer haben es geschafft, unsere Netzwerke zu infiltrieren und wichtige Daten zu manipulieren."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Wie hat das Wasserwerk auf diesen Angriff reagiert?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Sobald wir den Angriff entdeckt haben, haben wir sofort unsere Sicherheitsprotokolle aktiviert und begonnen, die betroffenen Systeme zu isolieren. Der Prozess der Erholung der Systeme ist jedoch komplex und dauert einige Zeit."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Was sind die wichtigsten Lehren, die wir aus diesem Vorfall ziehen können?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Es ist entscheidend, dass wir unsere Sicherheitsmaßnahmen ständig überprüfen und verbessern. Zudem müssen wir sicherstellen, dass unsere Mitarbeiter regelmäßig geschult werden, um solche Angriffe frühzeitig zu erkennen und zu verhindern."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank, Herr Müller, für Ihre Einschätzung. Das war eine sehr aufschlussreiche Diskussion."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Waiting Game: A Doctor's Appointment",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Heute möchte ich über ein Thema sprechen, das viele von uns betrifft: der Arztbesuch. Oder besser gesagt, das Warten auf den Arztbesuch."
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Ich war letzte Woche beim Arzt. Nicht wegen etwas Ernstem, aber es war nevertheless eine wichtige Vorsorgeuntersuchung."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Als ich in der Praxis ankam, wurde mir gesagt, dass ich zwar einen Termin hatte, aber erst in zwei Stunden dran wäre. Zwei Stunden! Das ist nicht ungewöhnlich, oder?"
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Das Problem liegt nicht bei den Ärzten selbst, sondern beim System, das sie zwingt, ihren Patientenstamm zu maximieren. Sie müssen so viele Patienten wie möglich durchschleusen, um wirtschaftlich überleben zu können."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Ich verstehe, dass die Ärzte unter enormem Druck stehen. Aber ist das wirklich die beste Lösung für die Patienten? Sollen wir uns damit abfinden, dass ein Arztbesuch automatisch mit stundenlangem Warten verbunden ist?"
+    },
+    {
+     "speaker": "Sprecherin",
+     "voice": "female",
+     "text": "Es ist an der Zeit, dass wir uns fragen, ob dieses System noch zeitgemäß ist. Warum können wir nicht ein effizienteres System finden, das sowohl den Ärzten als auch den Patienten gerecht wird?"
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Ich bin kein Experte für Gesundheitswesen, aber es scheint klar zu sein, dass es bessere Wege geben muss. Vielleicht ist es an der Zeit, dass wir als Gesellschaft über diese Probleme sprechen und nach Lösungen suchen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-3-lecture-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The Future of Energy Subsidies: A Policy Debate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Guten Tag und herzlich willkommen zu unserer heutigen Veranstaltung. Wir haben heute zwei Experten hier, um über ein sehr wichtiges Thema zu sprechen: die Zukunft der Energiesubventionen in Deutschland."
+    },
+    {
+     "speaker": "Experte 1",
+     "voice": "male",
+     "text": "Vielen Dank. Es ist ein Privileg, heute hier zu sein. Energiesubventionen sind ein komplexes Thema mit vielen Facetten. Sie können helfen, die Energiewende voranzutreiben, aber sie haben auch ihre Nachteile."
+    },
+    {
+     "speaker": "Experte 2",
+     "voice": "female",
+     "text": "Ganz meiner Meinung. Es gibt starke Argumente sowohl für als auch gegen diese Subventionen, und es ist wichtig, diese zu verstehen. Lassen Sie uns zunächst die Vorteile betrachten."
+    },
+    {
+     "speaker": "Experte 1",
+     "voice": "male",
+     "text": "Natürlich. Energiesubventionen können die Entwicklung und Nutzung erneuerbarer Energien fördern. Sie können auch die Energiekosten für Verbraucher senken und Arbeitsplätze in der Energiewirtschaft schaffen."
+    },
+    {
+     "speaker": "Experte 2",
+     "voice": "female",
+     "text": "Das ist richtig. Allerdings können Subventionen auch zu Marktverzerrungen führen und die Effizienz beeinträchtigen. Zudem können sie eine erhebliche Belastung für den Staatshaushalt darstellen."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Interessante Punkte. Könnten Sie uns mehr über die möglichen Lösungen erzählen, die diese Herausforderungen angehen?"
+    },
+    {
+     "speaker": "Experte 1",
+     "voice": "male",
+     "text": "Sicher. Eine Möglichkeit wäre, die Subventionen schrittweise zu reduzieren und durch andere Anreize zu ersetzen. Eine weitere Option wäre, die Subventionen auf bestimmte Bereiche zu konzentrieren, die besonders vielversprechend sind."
+    },
+    {
+     "speaker": "Experte 2",
+     "voice": "female",
+     "text": "Ich stimme zu. Es ist auch wichtig, die Subventionen regelmäßig zu überprüfen und sicherzustellen, dass sie ihre Ziele erreichen. Transparenz und Verantwortlichkeit sind hier entscheidend."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank für diese aufschlussreichen Einblicke. Das bringt uns zum Ende unserer heutigen Diskussion. Ich hoffe, Sie haben diese Debatte genauso informativ gefunden wie ich."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The Pioneers Project: A Giant Leap into Deep Space",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Willkommen zu unserer heutigen Vorlesung. Heute haben wir einen besonderen Gast, Dr. Müller, der uns über ein bahnbrechendes Projekt informieren wird. Dr. Müller, bitte beginnen Sie."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Vielen Dank. Heute möchte ich Ihnen das Pioneers-Projekt vorstellen, eine gemeinsame Initiative von Wissenschaftlern und Ingenieuren aus der ganzen Welt, um das tiefe All zu erforschen und nach außerirdischem Leben zu suchen."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Unser Ziel ist es, die Grenzen des Möglichen zu erweitern und Antworten auf einige der tiefgreifendsten Fragen der Menschheit zu finden. Das Projekt wird von der Europäischen Weltraumorganisation und mehreren internationalen Partnern unterstützt."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Ein Schlüsseltechnologien, die wir verwenden werden, sind Antimaterietriebwerke, die es uns ermöglichen, mit bisher unerreichten Geschwindigkeiten zu reisen. Diese Triebwerke werden es uns erlauben, in kürzerer Zeit größere Entfernungen zurückzulegen als je zuvor."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Zusätzlich werden wir fortschrittliche Teleskope und Sensoren einsetzen, um Daten von weit entfernten Sternen und Galaxien zu sammeln. Diese Daten werden uns helfen, unseren Horizont zu erweitern und neue Fragen zu stellen, die wir uns bisher noch nicht vorstellen konnten."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Das Pioneers-Projekt ist nicht nur eine wissenschaftliche Mission, sondern auch ein Symbol für die Zusammenarbeit und den Fortschritt der Menschheit. Wir sind zuversichtlich, dass unsere Arbeit zu bedeutenden Entdeckungen führen wird, die unser Verständnis des Universums revolutionieren werden."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank, Dr. Müller, für diese faszinierende Einführung. Wir freuen uns auf weitere Details in den kommenden Vorlesungen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-3-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "speech",
+   "title": "A New Era: The Launch of the Europa-I Mission",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Meine Damen und Herren, willkommen zur heutigen Pressekonferenz. Es ist mir eine große Freude, Ihnen heute Dr. Klaus Müller vorzustellen, den Leiter des Europa-I-Missionsprojekts."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Vielen Dank. Es ist mir eine Ehre, heute hier zu stehen und über die historische Bedeutung der Europa-I-Mission zu sprechen."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Vor genau einer Stunde ist unsere Rakete erfolgreich vom Weltraumbahnhof in Kourou, Französisch-Guayana, gestartet. Dies ist ein großer Schritt für die Wissenschaft und ein Meilenstein in unserer Erforschung des Weltalls."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Die Europa-I-Mission wird uns helfen, die Geheimnisse des Jupiter-Systems zu entschlüsseln. Unser Raumfahrzeug ist mit modernster Technologie ausgestattet und wird in der Lage sein, detaillierte Aufnahmen und Daten von den Jupitermonden zu sammeln."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Diese Mission ist das Ergebnis jahrelanger Forschung und internationaler Zusammenarbeit. Wir haben mit Wissenschaftlern und Ingenieuren aus ganz Europa und darüber hinaus zusammengearbeitet, um dieses ehrgeizige Projekt zu realisieren."
+    },
+    {
+     "speaker": "Dr. Müller",
+     "voice": "male",
+     "text": "Die Europa-I-Mission wird nicht nur unser Verständnis des Weltalls erweitern, sondern auch neue Möglichkeiten für zukünftige Erkundungen eröffnen. Wir sind zuversichtlich, dass die gewonnenen Daten uns helfen werden, die Bedingungen für Leben in unserem Sonnensystem besser zu verstehen."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank, Dr. Müller, für diese inspirierenden Worte. Wir sind gespannt auf die Ergebnisse dieser historischen Mission."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  }
+ ],
+ "items": [
+  {
+   "id": "de-dl-0p-advertisement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "de-dl-0p-advertisement-001",
+   "stem": "In the advertisement, what is the new address of the company?",
+   "choices": [
+    "Schlossstraße 3, 10178 Berlin",
+    "Bahnhofstraße 5, 10117 Berlin",
+    "Hauptstraße 8, 10119 Berlin",
+    "Musterstraße 12, 10115 Berlin"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'Musterstraße 12, 10115 Berlin' because the advertisement states 'Unsere neue Adresse lautet Musterstraße 12, 10115 Berlin.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-0p-advertisement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "purpose",
+   "passageId": "de-dl-0p-advertisement-001",
+   "stem": "What is the purpose of the advertisement?",
+   "choices": [
+    "To announce the company's relocation to a new office",
+    "To advertise a job opening at the company",
+    "To inform customers about a new product launch",
+    "To announce the company's expansion into new markets"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To announce the company's relocation to a new office' because the advertisement states 'Wir ziehen um!' and provides the new address.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-0p-advertisement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "de-dl-0p-advertisement-002",
+   "stem": "What is said about the duration of the peacekeeping mission?",
+   "choices": [
+    "It ends in December.",
+    "It is for one year.",
+    "It lasts for three months.",
+    "The length is not specified."
+   ],
+   "answer": 3,
+   "explanation": "The text does not mention the duration of the peacekeeping mission. The relevant part is: \"Wir suchen Freiwillige für eine Friedensmission.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-0p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "de-dl-0p-announcement-001",
+   "stem": "What is the purpose of this announcement?",
+   "choices": [
+    "To warn customers about potential job losses.",
+    "To advertise new banking services.",
+    "To announce a change in bank operating hours.",
+    "To inform customers about a decrease in interest rates."
+   ],
+   "answer": 3,
+   "explanation": "The purpose of this announcement is to inform customers about a decrease in interest rates. This is clearly stated in the text: \"Die Zinssätze werden gesenkt.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-announcement-001",
+   "stem": "What is the name of the satellite being launched?",
+   "choices": [
+    "B. Stella",
+    "D. Sol",
+    "C. Terra",
+    "A. Luna"
+   ],
+   "answer": 0,
+   "explanation": "The text says \"Unser neues Satellit, Stella, wird morgen starten.\" The name of the satellite is clearly stated as Stella.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dl-1-announcement-001",
+   "stem": "What is the main purpose of the announcement?",
+   "choices": [
+    "D. To explain the launch procedure",
+    "B. To announce a new satellite launch",
+    "C. To discuss the satellite's features",
+    "A. To inform about a delay in the launch"
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the announcement is to inform the public about the upcoming launch of a new satellite, as stated in \"Wir möchten Sie informieren, dass unser neues Satellit, Stella, wird morgen starten.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1-announcement-001",
+   "stem": "In the announcement, what does \"Startzeit\" refer to?",
+   "choices": [
+    "A. The time the satellite was built",
+    "C. The time the satellite will be launched",
+    "D. The time the satellite will orbit",
+    "B. The time the satellite will land"
+   ],
+   "answer": 1,
+   "explanation": "The term \"Startzeit\" refers to the time the satellite will be launched. The text says \"Die Startzeit ist 14:00 Uhr.\", indicating the launch time.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-conversation-001",
+   "stem": "What is the applicant's primary motivation for applying to the bakery?",
+   "choices": [
+    "They are looking for a high-paying job.",
+    "They want to work flexible hours.",
+    "They need a job close to their home.",
+    "They enjoy baking and working with people."
+   ],
+   "answer": 3,
+   "explanation": "The applicant states, \"Ich liebe das Backen und den Umgang mit Menschen.\" This indicates their primary motivation is their enjoyment of baking and interacting with people.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1-conversation-001",
+   "stem": "In the phrase \"Ich habe Erfahrung im Umgang mit Kunden,\" what does \"Umgang\" mean here?",
+   "choices": [
+    "Contact",
+    "Conflict",
+    "Training",
+    "Avoidance"
+   ],
+   "answer": 0,
+   "explanation": "In this context, \"Umgang\" refers to the applicant's experience with interacting or dealing with customers, which is essential for a job in a bakery.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-instructions-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-instructions-001",
+   "stem": "What does the word \"Kurs\" mean in this context?",
+   "choices": [
+    "a kind of certificate",
+    "a type of exam",
+    "a type of class",
+    "a kind of payment"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is \"a type of class\" because the context is about accessing an online course, and \"Kurs\" is used to refer to the class or course you want to access.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-instructions-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dl-1-instructions-001",
+   "stem": "What is the main purpose of the instructions?",
+   "choices": [
+    "to explain how to register for a course",
+    "to describe how to access an online course",
+    "to provide details about course content",
+    "to give information about course fees"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"to describe how to access an online course\" because the instructions are about logging in to the learning platform and accessing your course materials.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-instructions-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "de-dl-1-instructions-001",
+   "stem": "Why does the speaker mention \"Anmeldedaten\"?",
+   "choices": [
+    "to explain how to create a new course",
+    "to describe how to log in to the learning platform",
+    "to give information about course fees",
+    "to provide details about course content"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"to describe how to log in to the learning platform\" because the speaker mentions \"Anmeldedaten\" (login details) as part of the instructions for accessing your online course.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-instructions-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-instructions-002",
+   "stem": "What does the library ask you to do first?",
+   "choices": [
+    "Bring your old card to the library.",
+    "Fill out a form online.",
+    "Pay a renewal fee.",
+    "Contact the library by phone."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'Bring your old card to the library.' The text says 'Bringen Sie zuerst Ihren alten Ausweis in die Bibliothek.' This is the first instruction given.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-instructions-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1-instructions-002",
+   "stem": "What does 'verlängern' mean here?",
+   "choices": [
+    "To activate",
+    "To replace",
+    "To extend",
+    "To cancel"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'To extend.' The text says 'Sie können Ihren Ausweis hier verlängern.' In this context, 'verlängern' means to extend the validity of the library card.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dl-1p-announcement-001",
+   "stem": "What is the main topic of this announcement?",
+   "choices": [
+    "A celebration of local marine life",
+    "A protest against coastal development",
+    "A meeting to discuss a new coastal protection strategy",
+    "A fundraiser for beach cleanup"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is introduced in the first line: \"Wir möchten Sie zu einem wichtigen Meeting über unseren neuen Küstenschutzplan einladen.\" (We would like to invite you to an important meeting about our new coastal protection plan.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dl-1p-announcement-001",
+   "stem": "When is the meeting?",
+   "choices": [
+    "Tuesday, June 14th at 7 pm",
+    "Thursday, June 16th at 7 pm",
+    "Wednesday, June 15th at 7 pm",
+    "Friday, June 17th at 7 pm"
+   ],
+   "answer": 2,
+   "explanation": "The date and time are given as \"am Mittwoch, den 15. Juni, um 19 Uhr\" (on Wednesday, June 15th, at 7 pm).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1p-announcement-001",
+   "stem": "What does \"unseren neuen Küstenschutzplan\" mean here?",
+   "choices": [
+    "A new plan to protect the coast",
+    "A new coastal tourism campaign",
+    "A new fishing regulation",
+    "A new coastal housing development"
+   ],
+   "answer": 0,
+   "explanation": "\"Unseren neuen Küstenschutzplan\" refers to \"our new coastal protection plan,\" as stated in the first line of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dl-1p-conversation-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A naval officer's transfer to another base.",
+    "A discussion about naval port security protocols.",
+    "A ship's arrival and departure schedule.",
+    "The challenges of coordinating international naval exercises."
+   ],
+   "answer": 2,
+   "explanation": "The conversation revolves around the arrival and departure schedule of a ship, as indicated by phrases like 'Das Schiff kommt heute an' and 'Es segelt morgen früh aus.' The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dl-1p-conversation-001",
+   "stem": "What time does the ship arrive?",
+   "choices": [
+    "At 14:00.",
+    "At 16:00.",
+    "At 15:00.",
+    "At 17:00."
+   ],
+   "answer": 2,
+   "explanation": "The arrival time is clearly stated as 'um 15:00 Uhr' in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1p-conversation-001",
+   "stem": "What does 'andocken' mean here?",
+   "choices": [
+    "To dock.",
+    "To anchor.",
+    "To leave port.",
+    "To set sail."
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'andocken' means 'to dock.' The text states 'Das Schiff kommt heute an und dockt um 15:00 Uhr an,' indicating the ship's arrival and docking time.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-news_brief-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dl-1p-news_brief-001",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "The government is taking action to prevent flooding.",
+    "A severe storm is expected to hit the region.",
+    "People should prepare for possible flooding in the area.",
+    "Rivers in the area have already flooded."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that people should prepare for possible flooding. The announcer says, \"Wir raten allen Bewohnern, sich auf mögliche Überschwemmungen vorzubereiten.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-news_brief-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dl-1p-news_brief-001",
+   "stem": "According to the announcement, what is one of the rivers that may overflow?",
+   "choices": [
+    "The Main.",
+    "The Danube.",
+    "The Elbe.",
+    "The Rhine."
+   ],
+   "answer": 2,
+   "explanation": "The announcement mentions that the Elbe and other rivers may overflow. It says, \"Die Elbe und andere Flüsse könnten über die Ufer treten.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-news_brief-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1p-news_brief-001",
+   "stem": "In the announcement, what does \"übereinstimmen\" mean?",
+   "choices": [
+    "To prepare.",
+    "To differ.",
+    "To predict.",
+    "To agree."
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"übereinstimmen\" means to agree. The announcer says, \"Die Wettervorhersagen stimmen überein, dass schwere Regenfälle erwartet werden.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-phone_call-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dl-1p-phone_call-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A lost passport",
+    "A stolen driver's license",
+    "A lost wallet",
+    "A missing ID card"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a lost passport. The caller says \"Ich habe meinen Pass verloren\" and asks about \"die Suche nach meinem Pass\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-phone_call-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dl-1p-phone_call-001",
+   "stem": "Where did the caller last use their passport?",
+   "choices": [
+    "At the train station",
+    "At the border crossing",
+    "At the airport",
+    "At the hotel"
+   ],
+   "answer": 2,
+   "explanation": "The caller mentions \"ich war gestern am Flughafen\", indicating they last used their passport at the airport.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1p-phone_call-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1p-phone_call-001",
+   "stem": "In the phrase \"Ich brauche Hilfe bei der Suche nach meinem Pass\", what does \"der Suche\" mean here?",
+   "choices": [
+    "The issue",
+    "The need",
+    "The help",
+    "The search"
+   ],
+   "answer": 3,
+   "explanation": "Here, \"der Suche\" refers to the search for the passport. The caller is asking for help with finding their passport.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-briefing-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-briefing-001",
+   "stem": "What is the main topic of this briefing?",
+   "choices": [
+    "The role of social media in news dissemination",
+    "The impact of government regulations on journalism",
+    "The importance of press freedom in democratic societies",
+    "The economic challenges faced by traditional media"
+   ],
+   "answer": 2,
+   "explanation": "The briefing focuses on the concept of press freedom and its significance in democratic societies. This is evident from the opening statement by the Moderator: \"Heute sprechen wir über die Bedeutung der Pressefreiheit in einer demokratischen Gesellschaft.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-briefing-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-briefing-001",
+   "stem": "According to the briefing, what is one of the key benefits of press freedom?",
+   "choices": [
+    "It allows governments to control the flow of information",
+    "It reduces the influence of social media",
+    "It increases the profitability of media outlets",
+    "It enables the public to make informed decisions"
+   ],
+   "answer": 3,
+   "explanation": "The briefing states that press freedom enables the public to make informed decisions. This is mentioned by Sprecher 1: \"Eine freie Presse ermöglicht es der Öffentlichkeit, fundierte Entscheidungen zu treffen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-briefing-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-briefing-001",
+   "stem": "In the briefing, what does \"fundierte\" mean here?",
+   "choices": [
+    "Sensational",
+    "Simplified",
+    "Informed",
+    "Biased"
+   ],
+   "answer": 2,
+   "explanation": "The context of the briefing suggests that \"fundierte\" refers to decisions that are based on reliable information. Sprecher 1 says: \"Eine freie Presse ermöglicht es der Öffentlichkeit, fundierte Entscheidungen zu treffen.\" This implies that the decisions are well-informed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-conversation-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A new irrigation system being installed in the region.",
+    "The impact of a recent flood on local tourism.",
+    "The effects of a prolonged agricultural drought in the Alps.",
+    "The opening of a new ski resort despite the drought."
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the effects of a prolonged agricultural drought in the Alps. This is evident from the repeated mention of the drought (die Dürre) and its impact on agriculture (die Landwirtschaft) and the region (die Alpen).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-conversation-001",
+   "stem": "What is one specific effect of the drought mentioned in the conversation?",
+   "choices": [
+    "A rise in the number of wildfires in the region.",
+    "A significant drop in milk production.",
+    "The closure of several ski resorts.",
+    "Increased tourism due to the clear skies."
+   ],
+   "answer": 1,
+   "explanation": "One specific effect of the drought mentioned is 'die Milchproduktion ist stark zurückgegangen', which translates to 'milk production has dropped significantly'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-conversation-001",
+   "stem": "What does 'die Bewässerung' mean here?",
+   "choices": [
+    "The technique of storing water.",
+    "The act of watering crops.",
+    "The method of harvesting crops.",
+    "The process of drying crops."
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'die Bewässerung' refers to the act of watering crops. This is evident from the sentence 'Wir müssen die Bewässerung der Felder anpassen', which translates to 'We need to adapt the irrigation of the fields'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The history of Munich's economy",
+    "A company's reasons for moving to Munich",
+    "The challenges of remote work",
+    "The benefits of working from home"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 0. The interview focuses on 'TechInnovate GmbH' moving its headquarters to Munich, as mentioned in the first lines: 'Unser Unternehmen, TechInnovate GmbH, verlegt seinen Hauptsitz nach München.' The other choices are not the main topic, though they may be briefly mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-interview-001",
+   "stem": "Why is the company moving to Munich?",
+   "choices": [
+    "To attract top talent and be closer to clients",
+    "To take advantage of tax breaks",
+    "To reduce office space and save money",
+    "To expand their production facilities"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 0. The company mentions two main reasons for moving: attracting talent and being closer to clients. The text states: 'München bietet Zugang zu hochqualifizierten Fachkräften und bringt uns näher an unsere Kunden.' The other choices are not mentioned as reasons for the move.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-interview-001",
+   "stem": "In the phrase 'wir haben einen langfristigen Mietvertrag für ein Bürogebäude in der Innenstadt unterzeichnet', what does 'unterzeichnet' mean here?",
+   "choices": [
+    "Purchased",
+    "Renovated",
+    "Designed",
+    "Signed"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 0. The phrase 'unterzeichnet' refers to the action of signing the lease. The text states: 'wir haben einen langfristigen Mietvertrag... unterzeichnet,' which means they signed a long-term lease. The other choices do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-news-001",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "A protest against press restrictions in the Czech Republic",
+    "A journalist strike in Austria",
+    "A new law restricting press freedom in Germany",
+    "A political scandal in Switzerland"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the protest against press restrictions in the Czech Republic. The text mentions that \"Journalisten und Bürger versammelten sich in Prag, um gegen die neuen Mediengesetze zu protestieren\", indicating that the focus is on press freedom in the Czech Republic, not the other countries mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-news-001",
+   "stem": "What is the name of the new law mentioned in the report?",
+   "choices": [
+    "Medienkontrollgesetz",
+    "Medienfreiheitsgesetz",
+    "Pressefreiheitsgesetz",
+    "Informationsfreiheitsgesetz"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions that \"das umstrittene Medienkontrollgesetz\" was passed, so the name of the new law is Medienkontrollgesetz.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-news-001",
+   "stem": "What does \"umstritten\" mean here?",
+   "choices": [
+    "Controversial",
+    "Important",
+    "Unnecessary",
+    "New"
+   ],
+   "answer": 0,
+   "explanation": "The text states that \"das umstrittene Medienkontrollgesetz\" was passed. The context suggests that the law is controversial because it has led to protests, so \"umstritten\" means \"controversial\" here.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-documentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "de-dl-2p-documentary-001",
+   "stem": "What is the main idea of this conversation?",
+   "choices": [
+    "To interview a candidate for a position in the renewable energy sector.",
+    "To negotiate the salary and benefits for a new employee.",
+    "To debate the merits of different renewable energy sources.",
+    "To discuss the candidate's qualifications for a marketing position."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of this conversation is to interview a candidate for a position in the renewable energy sector. This is evident from the context of the interview, where the interviewer asks about the candidate's experience and skills in the field, as well as their understanding of the company's goals and projects. For example, the interviewer asks, 'Können Sie uns mehr über Ihre Erfahrung in der Branche der erneuerbaren Energien erzählen?' and 'Wie denken Sie, dass Sie unser Team bei der Erreichung dieser Ziele unterstützen können?'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-documentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "de-dl-2p-documentary-001",
+   "stem": "According to the candidate, what is one of the main goals of their current project?",
+   "choices": [
+    "To develop a new type of wind turbine.",
+    "To reduce the company's carbon footprint.",
+    "To increase the use of solar energy in urban areas.",
+    "To promote the use of electric vehicles."
+   ],
+   "answer": 2,
+   "explanation": "The candidate states that one of the main goals of their current project is 'die Nutzung von Solarenergie in städtischen Gebieten zu fördern.' This directly corresponds to choice (B), 'To increase the use of solar energy in urban areas.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-documentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2p-documentary-001",
+   "stem": "What does the candidate mean by the phrase 'den Überblick behalten'?",
+   "choices": [
+    "To keep track of multiple tasks and responsibilities.",
+    "To stay informed about industry trends.",
+    "To maintain a positive attitude.",
+    "To manage a team effectively."
+   ],
+   "answer": 0,
+   "explanation": "In the context of the interview, the candidate uses the phrase 'den Überblick behalten' to describe their ability to 'manage multiple projects and deadlines simultaneously.' This corresponds to choice (B), 'To keep track of multiple tasks and responsibilities.' The candidate states, 'Ich bin gut darin, den Überblick zu behalten und mehrere Projekte und Fristen gleichzeitig zu managen.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "de-dl-2p-interview-001",
+   "stem": "What is the name of the cultural exchange program discussed in the interview?",
+   "choices": [
+    "Brücken der Kulturen",
+    "Weltkulturen Verbinden",
+    "German Horizons",
+    "KulturAustausch Deutschland"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'Brücken der Kulturen'. This is explicitly stated in the interview: 'Interviewer: Und wie heißt das Programm, das Sie leiten?' 'Leiter: Es heißt Brücken der Kulturen.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2p-interview-001",
+   "stem": "In the phrase 'die Teilnehmer werden mit den lokalen Bräuchen vertraut gemacht', what does 'vertraut gemacht' mean here?",
+   "choices": [
+    "made angry",
+    "made familiar",
+    "made tired",
+    "made uncomfortable"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'made familiar'. This is evident in the context where the program introduces participants to local customs: 'die Teilnehmer werden mit den lokalen Bräuchen vertraut gemacht'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "purpose",
+   "passageId": "de-dl-2p-interview-001",
+   "stem": "Why does the interviewer ask about the challenges faced by the program?",
+   "choices": [
+    "To understand how the program can be improved",
+    "To discourage participation in the program",
+    "To criticize the program's management",
+    "To highlight the program's successes"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To understand how the program can be improved'. The interviewer asks, 'Welche Herausforderungen gibt es bei der Umsetzung des Programms?', indicating a desire to learn about difficulties to potentially improve the program.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-panel_discussion-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "de-dl-2p-panel_discussion-001",
+   "stem": "What is the main topic of the panel discussion?",
+   "choices": [
+    "The impact of tourism on historical sites",
+    "The importance of preserving historical artifacts",
+    "The financial struggles of modern museums",
+    "A new exhibition showcasing ancient Roman life"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the new exhibition showcasing ancient Roman life, as mentioned by Moderator: \"Willkommen zu unserer Diskussionsrunde über die neue Ausstellung 'Alltag im alten Rom' im Stadtmuseum.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-panel_discussion-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "de-dl-2p-panel_discussion-001",
+   "stem": "According to Dr. Weber, what is one of the unique aspects of the exhibition?",
+   "choices": [
+    "It includes interactive displays for children",
+    "It features artifacts from various Roman provinces",
+    "It focuses solely on Roman military history",
+    "It is the largest Roman exhibition ever held in Germany"
+   ],
+   "answer": 1,
+   "explanation": "Dr. Weber mentions that the exhibition features artifacts from various Roman provinces: \"Wir haben auch Artefakte aus verschiedenen römischen Provinzen, was wirklich faszinierend ist.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-panel_discussion-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2p-panel_discussion-001",
+   "stem": "In the context of the discussion, what does \"ausgeliehen\" mean?",
+   "choices": [
+    "Recently discovered",
+    "Replicated for the exhibition",
+    "Permanently donated",
+    "Temporarily borrowed"
+   ],
+   "answer": 3,
+   "explanation": "The word \"ausgeliehen\" is used by Frau Schmidt to describe the artifacts: \"Einige dieser ausgefallen Stücke sind aus anderen Museen ausgeliehen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "de-dl-2p-speech-001",
+   "stem": "What is the main topic of this speech?",
+   "choices": [
+    "A joint military exercise in the Alps",
+    "A new mountain climbing regulation",
+    "A recent successful search-and-rescue operation",
+    "The dangers of hiking in the Alps"
+   ],
+   "answer": 2,
+   "explanation": "The speech focuses on a recent successful search-and-rescue operation. This is evident from the repeated mention of the operation, the participants involved, and the outcome. For example, the speaker says, 'Gestern haben wir eine erfolgreiche Such- und Rettungsaktion in den Alpen durchgeführt.' (Yesterday, we conducted a successful search-and-rescue operation in the Alps.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-speech-001",
+   "stem": "What can be inferred about the relationship between the German and Austrian rescue teams?",
+   "choices": [
+    "They are rivals",
+    "They rarely work together",
+    "They collaborate well",
+    "They are competitors"
+   ],
+   "answer": 2,
+   "explanation": "The speech implies that the German and Austrian rescue teams collaborate well. The speaker mentions that 'Die deutsche und die österreichische Rettungsmannschaft haben hervorragend zusammengearbeitet.' (The German and Austrian rescue teams worked together excellently.) This suggests a positive and collaborative relationship.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2p-speech-001",
+   "stem": "In the phrase 'Die Bergrettung war äußerst komplex', what does 'komplex' mean here?",
+   "choices": [
+    "Straightforward",
+    "Complicated",
+    "Easy",
+    "Simple"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'komplex' means complicated. The speaker is describing the search-and-rescue operation as 'äußerst komplex' (extremely complicated), indicating that it was not simple or easy. The word 'komplex' is used to emphasize the difficulty and intricacy of the operation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "de-dl-2p-speech-002",
+   "stem": "What is the main purpose of the speech?",
+   "choices": [
+    "To announce the opening of a new museum exhibit",
+    "To explain the historical significance of medieval Germany",
+    "To discuss the challenges of preserving medieval artifacts",
+    "To invite the public to participate in a medieval reenactment"
+   ],
+   "answer": 0,
+   "explanation": "The speaker explicitly states, \"Ich freue mich, Ihnen heute die Eröffnung unserer neuen Ausstellung ankündigen zu dürfen,\" which means \"I am pleased to announce the opening of our new exhibition to you today.\" This indicates that the main purpose is to announce the exhibit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2p-speech-002",
+   "stem": "In the speech, what does \"Zeugnisse\" mean?",
+   "choices": [
+    "Testimonies",
+    "Artifacts",
+    "Documents",
+    "Receipts"
+   ],
+   "answer": 1,
+   "explanation": "The speaker uses the phrase \"Diese Ausstellung zeigt einzigartige Zeugnisse des mittelalterlichen Lebens,\" which translates to \"This exhibition shows unique artifacts of medieval life.\" Here, \"Zeugnisse\" refers to physical objects from the past, not written testimonies or documents.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "purpose",
+   "passageId": "de-dl-2p-speech-002",
+   "stem": "Why does the speaker mention \"Die Burg\"?",
+   "choices": [
+    "To introduce a guided tour of a medieval castle",
+    "To describe a specific artifact in the exhibit",
+    "To highlight a prominent feature of medieval architecture",
+    "To announce a reconstruction project of a historic castle"
+   ],
+   "answer": 2,
+   "explanation": "The speaker says, \"Besuchen Sie die Nachbildung der Burg und staunen Sie über die handwerklichen Fähigkeiten unserer Vorfahren,\" which means \"Visit the replica of the castle and marvel at the craftsmanship of our ancestors.\" This emphasizes the architectural significance of medieval castles, not a specific artifact or tour.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-analysis-001",
+   "stem": "What is the main topic of discussion?",
+   "choices": [
+    "A new water treatment technology",
+    "The impact of a cyberattack on a public utility",
+    "A planned expansion of the Heidelberg Wasserwerke",
+    "The history of water supply in Heidelberg"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the impact of a cyberattack on a public utility, specifically the Heidelberg Wasserwerke. This is evident from lines such as 'Angriff auf das Wasserwerk in Heidelberg' and 'die Auswirkungen auf die Wasserversorgung'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dl-3-analysis-001",
+   "stem": "What can be inferred about the scale of the cyberattack?",
+   "choices": [
+    "It was a large-scale attack affecting multiple systems",
+    "It was a test run for a larger attack",
+    "It was a minor incident with little impact",
+    "It was an isolated incident with no long-term effects"
+   ],
+   "answer": 0,
+   "explanation": "The scale of the cyberattack can be inferred as large-scale affecting multiple systems. This is supported by statements like 'mehrere Systeme lahmgelegt' and 'die Auswirkungen auf die Wasserversorgung der gesamten Stadt'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-analysis-001",
+   "stem": "What does 'Erholung' mean in the context of the text?",
+   "choices": [
+    "Prevention",
+    "Acceleration",
+    "Recovery",
+    "Destruction"
+   ],
+   "answer": 2,
+   "explanation": "'Erholung' in this context refers to the recovery of the systems after the cyberattack. This is clear from the phrase 'der Prozess der Erholung der Systeme'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-editorial_commentary-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The text criticizes the inefficiency of scheduling systems in doctor's offices.",
+    "The text discusses the benefits of modern medical technology.",
+    "The text describes the author's positive experience with a new doctor.",
+    "The text argues for increased funding for public healthcare."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the text is the criticism of the inefficiency of scheduling systems in doctor's offices. This is evident throughout the text, for example: \"Das Problem liegt nicht bei den Ärzten selbst, sondern beim System, das sie zwingt, ihren Patientenstamm zu maximieren.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dl-3-editorial_commentary-001",
+   "stem": "What can be inferred about the author's opinion on the current healthcare system?",
+   "choices": [
+    "The author is highly critical of the system and believes it needs significant reform.",
+    "The author believes the current system is fair and efficient.",
+    "The author is indifferent towards the current system.",
+    "The author thinks the system needs minor adjustments."
+   ],
+   "answer": 0,
+   "explanation": "The author's opinion on the current healthcare system can be inferred as highly critical and believing it needs significant reform. This is supported by statements such as: \"Es ist an der Zeit, dass wir uns fragen, ob dieses System noch zeitgemäß ist.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-editorial_commentary-001",
+   "stem": "What does \"Patientenstamm\" mean in this context?",
+   "choices": [
+    "The stream of patients coming in and out of the office.",
+    "The medical history of patients.",
+    "The physical condition of patients.",
+    "The list or database of patients registered with the practice."
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"Patientenstamm\" refers to the list or database of patients registered with the practice. The text states: \"das System, das sie zwingt, ihren Patientenstamm zu maximieren,\" indicating the management of a patient base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-lecture-001",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The role of government in regulating energy prices",
+    "The economic benefits of reducing energy subsidies",
+    "The debate around the future of energy subsidies in Germany",
+    "The environmental impact of renewable energy sources"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the lecture is the debate around the future of energy subsidies in Germany. This is evident from the speaker's opening statement: \"Heute möchten wir über die Zukunft der Energiesubventionen in Deutschland sprechen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dl-3-lecture-001",
+   "stem": "What can be inferred about the speaker's stance on energy subsidies?",
+   "choices": [
+    "The speaker is open to discussing the pros and cons of energy subsidies",
+    "The speaker thinks energy subsidies are crucial for economic growth",
+    "The speaker is strongly against all forms of energy subsidies",
+    "The speaker believes energy subsidies should be maintained for renewable energy only"
+   ],
+   "answer": 0,
+   "explanation": "The speaker's stance is open to discussing the pros and cons of energy subsidies. This is inferred from the statement: \"Es gibt starke Argumente sowohl für als auch gegen diese Subventionen, und es ist wichtig, diese zu verstehen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-lecture-001",
+   "stem": "In the phrase \"die Energiewende voranzutreiben\", what does \"voranzutreiben\" mean?",
+   "choices": [
+    "To delay",
+    "To oppose",
+    "To promote",
+    "To investigate"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"voranzutreiben\" means to promote. The speaker uses this phrase to discuss how energy subsidies can help advance the energy transition: \"Energiesubventionen können helfen, die Energiewende voranzutreiben.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-lecture-002",
+   "stem": "What is the main idea of the lecture?",
+   "choices": [
+    "The Pioneers Project is a collaborative effort to explore deep space and search for extraterrestrial life.",
+    "The Pioneers Project is focused on studying the effects of space travel on human physiology.",
+    "The Pioneers Project aims to develop new propulsion technologies for interstellar travel.",
+    "The Pioneers Project seeks to establish a permanent human settlement on Mars."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the lecture is that the Pioneers Project is a collaborative effort to explore deep space and search for extraterrestrial life. This is evident from the speaker's statement: \"Heute möchte ich Ihnen das Pioneers-Projekt vorstellen, eine gemeinsame Initiative von Wissenschaftlern und Ingenieuren aus der ganzen Welt, um das tiefe All zu erforschen und nach außerirdischem Leben zu suchen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "de-dl-3-lecture-002",
+   "stem": "According to the speaker, what is one of the key technologies that will be used in the Pioneers Project?",
+   "choices": [
+    "Solar sails",
+    "Nuclear propulsion systems",
+    "Ion thrusters",
+    "Antimatter engines"
+   ],
+   "answer": 3,
+   "explanation": "The speaker mentions that one of the key technologies that will be used in the Pioneers Project is antimatter engines. This is supported by the statement: \"Ein Schlüsseltechnologien, die wir verwenden werden, sind Antimaterietriebwerke, die es uns ermöglichen, mit bisher unerreichten Geschwindigkeiten zu reisen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-lecture-002",
+   "stem": "What does the speaker mean by \"unseren Horizont erweitern\"?",
+   "choices": [
+    "To broaden our understanding",
+    "To challenge our beliefs",
+    "To limit our vision",
+    "To narrow our focus"
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses the phrase \"unseren Horizont erweitern\" to mean broadening our understanding. This is clear from the context: \"Das Pioneers-Projekt wird uns helfen, unseren Horizont zu erweitern und neue Fragen zu stellen, die wir uns bisher noch nicht vorstellen konnten.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-speech-001",
+   "stem": "What is the main topic of the speech?",
+   "choices": [
+    "The technological advancements in satellite design",
+    "The environmental impact of space exploration",
+    "The economic benefits of international space cooperation",
+    "The historical significance of a recent space launch"
+   ],
+   "answer": 3,
+   "explanation": "The speech focuses on the Europa-I mission and its significance. The speaker mentions 'die historische Bedeutung' and 'die Europa-I-Mission', indicating that the main topic is the historical significance of this recent space launch.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dl-3-speech-001",
+   "stem": "What can be inferred about the speaker's attitude towards the Europa-I mission?",
+   "choices": [
+    "The speaker is indifferent about the mission.",
+    "The speaker is critical of the mission's goals.",
+    "The speaker is concerned about the mission's safety.",
+    "The speaker is enthusiastic and supportive of the mission."
+   ],
+   "answer": 3,
+   "explanation": "The speaker uses phrases like 'ein großer Schritt für die Wissenschaft' and 'ein Meilenstein in unserer Erforschung des Weltalls', which indicate enthusiasm and support for the mission.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-speech-001",
+   "stem": "'ein Meilenstein' in the speech refers to:",
+   "choices": [
+    "A significant achievement or event",
+    "A physical milestone marker on a road",
+    "A type of space technology",
+    "A historical artifact"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the speech, 'ein Meilenstein' is used metaphorically to refer to a significant achievement or event in space exploration, as indicated by the phrase 'ein Meilenstein in unserer Erforschung des Weltalls'.",
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}

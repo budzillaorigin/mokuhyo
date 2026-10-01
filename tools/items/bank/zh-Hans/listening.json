@@ -1,0 +1,2292 @@
+{
+ "bank": "zh-hans-listening-core",
+ "language": "zh-Hans",
+ "title": "Mandarin Chinese (Simplified characters) listening: core bank",
+ "license": "CC BY-SA 4.0",
+ "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
+ "passages": [
+  {
+   "id": "zh-dl-0p-advertisement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Apartment for Rent",
+   "body": "",
+   "script": [
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "出租一套两室一厅的公寓。"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "位于市中心，交通便利。"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "每月租金2500元。"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "水电费另计。"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "有意者请联系张先生。"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "电话：138-1234-5678。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-0p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Border Crossing Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "公告",
+     "voice": "female",
+     "text": "欢迎来到边境口岸。请排队等候。"
+    },
+    {
+     "speaker": "公告",
+     "voice": "male",
+     "text": "当轮到您时，请出示护照和登机牌。"
+    },
+    {
+     "speaker": "公告",
+     "voice": "female",
+     "text": "感谢您的配合。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-0p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Student Debate Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "大家好，欢迎参加本周五晚上关于义务兵役制辩论会。"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "辩论会于晚上七点半在学校礼堂开始。"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "请大家准时参加。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-0p-short_exchange-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Rocket Launch Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "各位观众大家好，欢迎收听今天的发射直播。"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "发射时间是下午三点十五分。"
+    },
+    {
+     "speaker": "观众",
+     "voice": "male",
+     "text": "请问发射时间是几点？"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "是下午三点十五分。"
+    },
+    {
+     "speaker": "观众",
+     "voice": "male",
+     "text": "好的，谢谢。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-0p-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Community Center Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "您好，我是社区中心的张主任。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "我们将在下周六下午两点举办一个关于照顾老年父母的工作坊。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "欢迎所有有兴趣的居民参加。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "地点在社区中心的多功能厅。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "再次感谢您的关注。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "祝您生活愉快！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1-instructions-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Urban Housing Shortage Notice",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "各位居民，大家好。"
+    },
+    {
+     "speaker": "男士",
+     "voice": "male",
+     "text": "我是市住房和城乡建设局的工作人员。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "我们想通知大家，目前我们城市的租房非常紧张。"
+    },
+    {
+     "speaker": "男士",
+     "voice": "male",
+     "text": "每天都有大量的人来我们城市工作和生活。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "然而，新建的住房还没有跟上需求。"
+    },
+    {
+     "speaker": "男士",
+     "voice": "male",
+     "text": "我们希望大家能够理解并配合。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "感谢大家的支持和耐心。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "International Summit Reminder",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "您好，我是国际贸易协会的张小姐。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "我打电话来是为了提醒大家下周一召开的国际峰会。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "请记住，会议将于下周一上午十点在市中心举行。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "我们将讨论促进国际贸易的策略。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "希望大家准时参加。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "谢谢。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1-voicemail-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Election Reminder",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "您好，这是关于市政厅选举的提醒。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "请记得在下周一前往投票。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "投票站设在市中心图书馆。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "感谢您的参与！"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "祝您度过愉快的一天！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Refugee Camp Relocation Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "各位难民朋友们，大家好!"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "我们有一个重要的通知要告诉大家。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "由于安全原因，难民营将迁移到更安全的地区。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "迁移将在两周后进行。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "我们将协助大家安置到新地点。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "请大家做好准备，并听从工作人员的指示。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "再次感谢大家的合作与理解。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "祝好！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Apartment Inquiry",
+   "body": "",
+   "script": [
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "您好，我是房东，对您想租我的房子很感兴趣。"
+    },
+    {
+     "speaker": "租客",
+     "voice": "female",
+     "text": "是的，我想了解一下房子的详细情况。"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "房子每月的租金是人民币5500元，需要交押金一个月。"
+    },
+    {
+     "speaker": "租客",
+     "voice": "female",
+     "text": "房子现在有空吗？"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "有空，您什么时候方便来看房？"
+    },
+    {
+     "speaker": "租客",
+     "voice": "female",
+     "text": "我明天下午有空，可以吗？"
+    },
+    {
+     "speaker": "房东",
+     "voice": "male",
+     "text": "可以，我们明天下午见。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "interview",
+   "title": "New Hospital Opening",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "新医院已经开业了，您能给我们介绍一下吗？"
+    },
+    {
+     "speaker": "先生",
+     "voice": "male",
+     "text": "是的，我们非常高兴地宣布，新医院已经开始运营了。我们提供全天候服务，确保患者随时都能得到帮助。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "医院的设备怎么样？"
+    },
+    {
+     "speaker": "先生",
+     "voice": "male",
+     "text": "我们的设备是最先进的。我们拥有最新的医疗技术和设备，确保为患者提供最好的治疗。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "医生和护士够吗？"
+    },
+    {
+     "speaker": "先生",
+     "voice": "male",
+     "text": "我们有足够的医护人员。我们聘请了经验丰富的医生和护士，确保患者得到最好的护理。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1p-news_brief-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "The Founding of the People's Republic of China Anniversary",
+   "body": "",
+   "script": [
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "各位听众大家好，欢迎收听新闻播报。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "今天是十月一日，是中国人民政治协商会议第一届全体会议开幕的纪念日。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "一九四九年十月一日，中国人民政治协商会议第一届全体会议在北京隆重召开。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "会议通过了《中国人民政治协商会议共同纲领》，选举产生了中央人民政府委员会，并决定以五星红旗为中华人民共和国国旗，以《义勇军进行曲》为国歌，将首都从北平改名为北京。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "今天，我们庆祝建国七十四周年。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "政府将举办各种庆祝活动，包括阅兵式、文艺演出和群众游行，以纪念这个重要的日子。"
+    },
+    {
+     "speaker": "播音员",
+     "voice": "female",
+     "text": "感谢您的收听，祝大家节日快乐！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1p-phone_call-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Factory Closure Notification",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女职员",
+     "voice": "female",
+     "text": "您好，这是工厂人事部门打来的电话。"
+    },
+    {
+     "speaker": "男职工",
+     "voice": "male",
+     "text": "你好，我是李华。"
+    },
+    {
+     "speaker": "女职员",
+     "voice": "female",
+     "text": "李华，我打电话是为了通知您一个重要的信息。"
+    },
+    {
+     "speaker": "男职工",
+     "voice": "male",
+     "text": "好的，请说。"
+    },
+    {
+     "speaker": "女职员",
+     "voice": "female",
+     "text": "由于最近的经济形势变化，工厂将暂时停业。"
+    },
+    {
+     "speaker": "男职工",
+     "voice": "male",
+     "text": "哦，什么时候重新开业呢？"
+    },
+    {
+     "speaker": "女职员",
+     "voice": "female",
+     "text": "我们预计两周后重新开业。"
+    },
+    {
+     "speaker": "男职工",
+     "voice": "male",
+     "text": "明白了，感谢您的通知。"
+    },
+    {
+     "speaker": "女职员",
+     "voice": "female",
+     "text": "不客气，如果您有任何问题，请随时联系我们。"
+    },
+    {
+     "speaker": "男职工",
+     "voice": "male",
+     "text": "好的，再见。"
+    },
+    {
+     "speaker": "女职员",
+     "voice": "female",
+     "text": "再见。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-briefing-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Mountain Rescue Collaboration",
+   "body": "",
+   "script": [
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "各位同事，大家好。今天我们召开这次会议，是为了讨论即将进行的联合搜救行动。"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "由于近期山区天气多变，我们将与林业搜救突击队联合展开搜救行动。"
+    },
+    {
+     "speaker": "救援队长",
+     "voice": "male",
+     "text": "是的，我们将协调行动计划，确保搜救行动高效进行。"
+    },
+    {
+     "speaker": "突击队长",
+     "voice": "female",
+     "text": "我们将发挥各自的优势，山地救援队熟悉地形，而我们擅长在森林中搜索。"
+    },
+    {
+     "speaker": "救援队长",
+     "voice": "male",
+     "text": "我们还将建立联合指挥中心，以便更好地协调和沟通。"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "希望通过这次联合行动，我们能够更快地找到失踪者，并确保他们的安全。"
+    },
+    {
+     "speaker": "突击队长",
+     "voice": "female",
+     "text": "同时，我们也将加强相互之间的培训和交流，提高整体救援能力。"
+    },
+    {
+     "speaker": "救援队长",
+     "voice": "male",
+     "text": "我们还将总结经验，为今后的搜救行动提供参考。"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "感谢大家的参与和支持。让我们共同努力，确保搜救行动成功。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "interview",
+   "title": "A Visit to the Dentist",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "大家好，欢迎收听本期的健康访谈。今天我们请到了市人民医院的牙科医生张明医生，还有他的一位患者李女士。张医生，李女士，感谢你们参加今天的节目。"
+    },
+    {
+     "speaker": "张医生",
+     "voice": "male",
+     "text": "不客气，很高兴来到这里。"
+    },
+    {
+     "speaker": "李女士",
+     "voice": "female",
+     "text": "是的，我很乐意分享我的经历。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "李女士，您最近去看了牙科医生，能和我们说说您的经历吗？"
+    },
+    {
+     "speaker": "李女士",
+     "voice": "female",
+     "text": "当然可以。上个星期，我感觉到有一颗牙有点疼，所以我决定去看牙医。张医生检查后发现我有一个蛀牙，需要做一个充填。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "张医生，您能解释一下充填的过程吗？"
+    },
+    {
+     "speaker": "张医生",
+     "voice": "male",
+     "text": "当然可以。首先，我们需要清除牙齿上的蛀牙部分。然后，我们会填入一种特殊的材料来替代被清除的部分。这次我们给李女士做了一个银汞合金充填。银汞合金充填是一种常见的牙科充填材料，它很耐用，而且相对便宜。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "李女士，您对这个过程的感受如何？"
+    },
+    {
+     "speaker": "李女士",
+     "voice": "female",
+     "text": "其实没有我想象中的那么疼。张医生用了局部麻醉，所以我几乎没有感觉到疼痛。整个过程大约花了30分钟，现在我的牙感觉好多了。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "听起来很成功。张医生，您有什么建议可以给我们的听众吗？"
+    },
+    {
+     "speaker": "张医生",
+     "voice": "male",
+     "text": "我认为定期检查牙齿非常重要。即使您没有感到疼痛，也应该每六个月去看一次牙医。此外，保持良好的口腔卫生习惯，比如每天刷牙两次，使用牙线，可以帮助预防蛀牙。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "谢谢您们的分享。希望我们的听众也能受益于这些信息。今天的访谈就到这里，再见！"
+    },
+    {
+     "speaker": "张医生",
+     "voice": "male",
+     "text": "再见！"
+    },
+    {
+     "speaker": "李女士",
+     "voice": "female",
+     "text": "再见！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "news",
+   "title": "Traditional Wedding Costs",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "大家好，欢迎收听我们的节目。今天我们来谈谈中国传统婚礼的费用问题。"
+    },
+    {
+     "speaker": "嘉宾",
+     "voice": "male",
+     "text": "谢谢邀请。确实，在中国，传统婚礼的费用越来越高，给很多年轻人带来了沉重的经济负担。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "能具体说说这些费用都包括什么吗？"
+    },
+    {
+     "speaker": "嘉宾",
+     "voice": "male",
+     "text": "当然可以。首先是婚宴，也就是婚礼宴席。在中国，婚宴通常要请很多亲戚和朋友，费用很高，有时甚至要花费几十万元。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "除了婚宴，还有其他费用吗？"
+    },
+    {
+     "speaker": "嘉宾",
+     "voice": "male",
+     "text": "是的，还有礼金和彩礼。礼金是宾客送给新人的钱，而彩礼是新郎一家给新娘一家的传统礼物。这些费用也让很多家庭感到压力很大。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "确实如此。感谢您的介绍。"
+    },
+    {
+     "speaker": "嘉宾",
+     "voice": "male",
+     "text": "不客气。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-news-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "news",
+   "title": "Green Energy Investment Boom",
+   "body": "",
+   "script": [
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "各位观众大家好，欢迎收看今日新闻。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "最近，我国可再生能源领域的投资增长迅速，成为经济增长的新亮点。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "根据最新数据显示，上半年全国可再生能源投资总额达到了1200亿元，同比增长了45%。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "其中，太阳能发电项目投资额最大，达到500亿元，占总投资额的42%。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "风能发电项目投资额也达到了350亿元，增长了30%。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "水能发电项目投资额为250亿元，增长了25%。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "值得一提的是，内蒙古自治区可再生能源投资增速最快，达到了230%。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "广东省和四川省的投资增速也超过了100%。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "专家表示，可再生能源的快速发展不仅有助于环境保护，还能促进经济增长和就业。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "回到您，新闻主播。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "感谢记者的报道。我们将继续关注可再生能源领域的发展。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "接下来，我们来看体育新闻。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "China's Coastline Under Threat",
+   "body": "",
+   "script": [
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "欢迎收听本台新闻分析节目。今天我们来谈谈中国沿海地区面临的海岸侵蚀问题。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "海岸侵蚀正在威胁中国的沿海地区，引发经济和生态方面的担忧。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "是的，海岸侵蚀不仅导致土地流失，还威胁到沿海城市和村庄的基础设施。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "根据生态环境部的数据，中国每年因海岸侵蚀损失数十亿元人民币。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "造成海岸侵蚀的因素有哪些呢？"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "主要有自然因素如风暴和海平面上升，以及人为因素如过度开发和不合理的海岸工程。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "面对这种情况，政府和科学家们采取了哪些措施呢？"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "政府已经意识到这个问题的严重性，并投资研究和创新的解决方案，如人工沙丘和植被恢复工程。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "但是，这些措施是否足够呢？"
+    },
+    {
+     "speaker": "记者",
+     "voice": "male",
+     "text": "专家表示，这是一个复杂的问题，需要综合的解决方案。他们呼吁加强国际合作，共同应对这个全球性的挑战。"
+    },
+    {
+     "speaker": "新闻主播",
+     "voice": "female",
+     "text": "感谢您的分析。我们将继续关注这个重要的话题。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Rising Cost of Modern Weddings in China",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "在中国，婚礼已经成为一个重要的社会活动，但近年来的成本急剧上升，给许多年轻夫妇带来了巨大的经济压力。"
+    },
+    {
+     "speaker": "专家",
+     "voice": "male",
+     "text": "婚礼成本在过去十年中急剧上升，主要原因是社会媒体和婚礼规划节目的影响。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "许多年轻人希望举办奢华的婚礼，以展示他们的社会地位和经济实力。"
+    },
+    {
+     "speaker": "专家",
+     "voice": "male",
+     "text": "然而，这种追求奢华的婚礼往往意味着巨额的开支，包括场地租赁、婚纱礼服、摄影和婚宴等。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "根据最近的调查，平均婚礼成本已经超过了人民币20万元，这一数字在大城市中可能更高。"
+    },
+    {
+     "speaker": "专家",
+     "voice": "male",
+     "text": "许多年轻夫妇发现自己面临巨大的经济压力，有些人甚至不得不借钱或依赖家庭支持来支付婚礼费用。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "专家建议，年轻夫妇应该根据自己的经济情况，选择更实惠的婚礼方式，避免过度消费。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "speech",
+   "title": "The Future of Renewable Energy",
+   "body": "",
+   "script": [
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "女士们，先生们，欢迎大家出席2023年全球可再生能源峰会。"
+    },
+    {
+     "speaker": "主持人",
+     "voice": "female",
+     "text": "今天，我们非常荣幸地邀请到国际能源署署长李明先生发表主旨演讲。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "谢谢主持人。女士们，先生们，同事们："
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "全球向可再生能源转型的趋势不可逆转。这是一个既定的事实，也是我们共同的责任。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "近年来，风能、太阳能、水能等可再生能源的发展速度超出了所有人的预期。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "这些清洁能源不仅有助于减少温室气体排放，还能够创造就业机会，推动经济增长。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "例如，在过去的十年中，全球可再生能源行业已经创造了数百万个就业岗位。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "国际社会应当携手合作，共同推动可再生能源的发展。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "只有通过国际合作，我们才能有效应对气候变化，确保全球能源安全。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "发达国家应当加大对发展中国家的支持力度，帮助其发展可再生能源，提高能源效率。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "同时，国际社会也应当加强政策对话，推动全球能源转型。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "让我们携手共进，共同推动可再生能源的发展，为子孙后代创造一个更加清洁、更加美好的世界。"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "谢谢大家。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "speech",
+   "title": "zh-dl-2p-speech-003-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "各位观众，大家好。欢迎收看今日新闻。"
+    },
+    {
+     "speaker": "经济学家 ( female)",
+     "voice": "female",
+     "text": "近期，中国经济面临一些挑战。特别是通货膨胀有所上升，这引起了政府的高度重视。"
+    },
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "为了应对这一情况，政府决定调整利率，以稳定经济。"
+    },
+    {
+     "speaker": "经济学家 ( female)",
+     "voice": "female",
+     "text": "通过调整利率，可以有效控制通货膨胀，同时促进经济的健康发展。"
+    },
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "具体来说，政府将采取哪些措施呢？"
+    },
+    {
+     "speaker": "经济学家 ( female)",
+     "voice": "female",
+     "text": "政府将分阶段调整利率，首先是提高存款利率，吸引更多储蓄，减少市场上的流动资金。"
+    },
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "这样做的目的是什么呢？"
+    },
+    {
+     "speaker": "经济学家 ( female)",
+     "voice": "female",
+     "text": "提高存款利率可以减少通货膨胀，因为减少了市场上的流动资金，从而降低了物价上涨的压力。"
+    },
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "接下来，政府还会采取哪些措施呢？"
+    },
+    {
+     "speaker": "经济学家 ( female)",
+     "voice": "female",
+     "text": "在第二阶段，政府将降低贷款利率，鼓励企业和个人投资，促进经济增长。"
+    },
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "这样做的目的是什么呢？"
+    },
+    {
+     "speaker": "经济学家 ( female)",
+     "voice": "female",
+     "text": "降低贷款利率可以刺激投资和消费，促进经济增长，同时保持物价的稳定。"
+    },
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "感谢经济学家的详细解释。我们将继续关注政府的经济政策和市场的变化。"
+    },
+    {
+     "speaker": "新闻主播 ( male)",
+     "voice": "male",
+     "text": "今天的新闻到此结束，谢谢收看。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-3-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "speech",
+   "title": "A Scientist's Warning on the Heat Wave",
+   "body": "",
+   "script": [
+    {
+     "speaker": "王教授",
+     "voice": "male",
+     "text": "各位同事，今天我要谈谈最近的热浪问题。全球变暖正在导致热浪的频率和强度增加，我们正在经历越来越多的极端高温事件。"
+    },
+    {
+     "speaker": "李教授",
+     "voice": "female",
+     "text": "王教授，你能具体说说这些热浪对我们的影响吗？"
+    },
+    {
+     "speaker": "王教授",
+     "voice": "male",
+     "text": "当然可以。热浪不仅会导致中暑和脱水等健康问题，还会影响我们的日常生活和工作。例如，高温会降低工人和学生的工作效率，甚至导致设备和基础设施损坏。"
+    },
+    {
+     "speaker": "赵教授",
+     "voice": "male",
+     "text": "听起来确实很严重。我们应该采取什么措施来应对这个问题呢？"
+    },
+    {
+     "speaker": "王教授",
+     "voice": "male",
+     "text": "我们需要采取多方面的行动来应对越来越严重的热浪问题。首先，我们需要提高公众意识，让更多人了解热浪的危害和预防措施。其次，我们需要加强基础设施建设，比如建设更多的避暑设施和绿地。最后，我们需要减少温室气体排放，以减缓全球变暖的进程。"
+    },
+    {
+     "speaker": "钱教授",
+     "voice": "female",
+     "text": "政府已经采取了一些措施来应对热浪问题，比如发布高温预警和开放公共场所的空调。这些措施是否足够呢？"
+    },
+    {
+     "speaker": "王教授",
+     "voice": "male",
+     "text": "尽管政府已经采取了一些措施，但我们仍然需要做得更多。例如，我们需要更精确的热浪预测系统，以便更好地准备和响应。此外，我们需要更多的研究来了解热浪的影响和应对策略。"
+    },
+    {
+     "speaker": "孙教授",
+     "voice": "male",
+     "text": "谢谢你的分享，王教授。我们需要立即行动起来，应对这个日益严重的问题。"
+    },
+    {
+     "speaker": "王教授",
+     "voice": "male",
+     "text": "是的，我们别无选择，只有通过共同努力，我们才能有效应对热浪问题，保护我们的健康和福祉。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  }
+ ],
+ "items": [
+  {
+   "id": "zh-dl-0p-advertisement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dl-0p-advertisement-001",
+   "stem": "What is the monthly rent for the apartment?",
+   "choices": [
+    "2000元",
+    "3000元",
+    "2500元",
+    "3500元"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the monthly rent is 2500元. The relevant part of the text is: “每月租金2500元”。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-0p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dl-0p-announcement-001",
+   "stem": "What should travelers do after they arrive at the border crossing?",
+   "choices": [
+    "Present their visa to the officer.",
+    "Show their passport to the officer.",
+    "Wait in line for their turn.",
+    "Fill out a customs form."
+   ],
+   "answer": 2,
+   "explanation": "The text states that travelers should 等待他们的轮到 (wait for their turn) after they arrive at the border crossing. There is no mention of showing a passport, filling out a customs form, or presenting a visa.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-0p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dl-0p-announcement-002",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "The date of the student debate",
+    "The location of the debate",
+    "The rules for attending the debate",
+    "A debate on military service"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the announcement is clearly stated as a debate on military service in the phrase 关于义务兵役制辩论会.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-0p-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dl-0p-announcement-002",
+   "stem": "What time does the debate start?",
+   "choices": [
+    "7:00 PM",
+    "8:00 PM",
+    "7:30 PM",
+    "8:30 PM"
+   ],
+   "answer": 2,
+   "explanation": "The announcement states that the debate starts at 7:30 PM with the phrase 辩论会于晚上七点半开始.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-0p-short_exchange-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dl-0p-short_exchange-001",
+   "stem": "What is the launch time mentioned in the announcement?",
+   "choices": [
+    "2:15 PM",
+    "3:45 PM",
+    "3:15 PM",
+    "2:45 PM"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 3:15 PM. The text states: 发射时间是下午三点十五分. This means the launch time is 3:15 PM in the afternoon.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-0p-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dl-0p-voicemail-001",
+   "stem": "What is the main topic of this announcement?",
+   "choices": [
+    "A new movie showing at the community center",
+    "A workshop on caring for elderly parents",
+    "A sports event for young athletes",
+    "An upcoming holiday celebration"
+   ],
+   "answer": 1,
+   "explanation": "The announcement mentions a workshop about taking care of elderly parents, specifically stating '照顾老年父母' and providing details about the time and location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-0p-voicemail-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-0p-voicemail-001",
+   "stem": "What does '老年' mean here?",
+   "choices": [
+    "A place to live",
+    "A stage of life",
+    "A kind of animal",
+    "A type of food"
+   ],
+   "answer": 1,
+   "explanation": "In the context of the announcement, '老年' refers to 'elderly' or 'old age,' as in '照顾老年父母' (caring for elderly parents).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-instructions-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dl-1-instructions-001",
+   "stem": "What is one of the problems the notice mentions?",
+   "choices": [
+    "The government is not helping",
+    "Rent prices are too low",
+    "People are moving out of the city",
+    "Not enough new apartments are being built"
+   ],
+   "answer": 3,
+   "explanation": "The notice mentions that 租房非常紧张 (rental housing is very tight), which implies that not enough new apartments are being built to meet the demand.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-instructions-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dl-1-instructions-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce new housing projects",
+    "To encourage people to move to the suburbs",
+    "To inform people about the housing shortage in the city",
+    "To complain about the government's policies"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the notice is to inform people about the 租房非常紧张 (very tight rental housing situation) in the city and to ask for understanding and cooperation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-instructions-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1-instructions-001",
+   "stem": "In the notice, what does 紧张 mean?",
+   "choices": [
+    "Stressful",
+    "Scarce",
+    "Uncomfortable",
+    "Expensive"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 紧张 means that there is a scarcity of rental housing, as indicated by the phrase 租房非常紧张.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dl-1-voicemail-001",
+   "stem": "What is the primary purpose of the upcoming summit?",
+   "choices": [
+    "To discuss environmental protection strategies",
+    "To address global health issues",
+    "To promote international trade",
+    "To celebrate cultural festivals"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is to promote international trade. The voicemail mentions that the summit will focus on '促进国际贸易', which translates to 'promote international trade'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1-voicemail-001",
+   "stem": "What does '会议' mean here?",
+   "choices": [
+    "Meeting",
+    "Gathering",
+    "Event",
+    "Summit"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is summit. The voicemail refers to the upcoming '国际峰会', which translates to 'international summit'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "zh-dl-1-voicemail-001",
+   "stem": "Why does the speaker mention the date and time?",
+   "choices": [
+    "To provide travel information",
+    "To announce the keynote speakers",
+    "To inform about the summit's duration",
+    "To remind participants of the event's schedule"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is to remind participants of the event's schedule. The speaker says '请记住，会议将于下周一上午十点在市中心举行', which translates to 'Please remember, the summit will be held next Monday at 10 AM in the city center'. This provides the specific date and time of the event.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dl-1-voicemail-002",
+   "stem": "What is the election for?",
+   "choices": [
+    "A school board",
+    "A state representative",
+    "A mayor",
+    "A city council"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C. The text says: 这是关于市政厅选举的提醒。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dl-1-voicemail-002",
+   "stem": "What is the main purpose of this message?",
+   "choices": [
+    "To explain how to register to vote",
+    "To announce the election results",
+    "To remind people to vote",
+    "To congratulate the winner"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is C. The text says: 这是关于市政厅选举的提醒。 请记得在下周一去投票。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1-voicemail-002",
+   "stem": "What does 选举 mean here?",
+   "choices": [
+    "A campaign",
+    "An election",
+    "A poll",
+    "A debate"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is C. In this context, 选举 refers to the process of voting for someone for a political position: 这是关于市政厅选举的提醒。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dl-1p-announcement-001",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "The refugee camp is requesting more volunteers.",
+    "The refugee camp is being moved to a safer location.",
+    "The refugee camp is closing permanently.",
+    "The refugee camp is celebrating its anniversary."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the refugee camp is being relocated to a safer area. The announcement states:  '难民营将搬迁到更安全的地区.' which means 'The refugee camp will be relocated to a safer area.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dl-1p-announcement-001",
+   "stem": "When will the relocation take place?",
+   "choices": [
+    "In two weeks.",
+    "Next year.",
+    "Next week.",
+    "Next month."
+   ],
+   "answer": 0,
+   "explanation": "The announcement specifies the relocation date as '两周后', which means 'in two weeks'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1p-announcement-001",
+   "stem": "What does '安置' mean here?",
+   "choices": [
+    "To close.",
+    "To open.",
+    "To celebrate.",
+    "To relocate."
+   ],
+   "answer": 3,
+   "explanation": "The word '安置' in this context means 'to relocate'. The announcement says: '我们将协助大家安置到新地点.', which means 'We will assist everyone in relocating to the new location.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dl-1p-conversation-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The process of renting an apartment.",
+    "The advantages of living in a downtown area.",
+    "The availability of parking spaces in an apartment building.",
+    "The history of the real estate market in the city."
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the process of renting an apartment. This is evident from the context of the conversation, such as discussing the monthly rent (每月租金), the security deposit (押金), and the availability of the apartment (房子现在有空).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dl-1p-conversation-001",
+   "stem": "What is the monthly rent for the apartment?",
+   "choices": [
+    "¥5,000",
+    "¥6,000",
+    "¥5,500",
+    "¥6,500"
+   ],
+   "answer": 2,
+   "explanation": "The monthly rent for the apartment is ¥5,500. This is explicitly stated in the conversation: 房子每月租金是5500元.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1p-conversation-001",
+   "stem": "What does 空 here mean?",
+   "choices": [
+    "free time",
+    "sky",
+    "unoccupied",
+    "empty"
+   ],
+   "answer": 2,
+   "explanation": "The word 空 here means unoccupied. In the context of the conversation, it refers to the availability of the apartment: 房子现在有空, which means the apartment is currently available or unoccupied.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dl-1p-interview-001",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The history of healthcare in the region",
+    "The cost of medical treatment",
+    "A new hospital's opening and its features",
+    "The shortage of doctors in the city"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated at the beginning of the interview: 新医院已经开业了. The rest of the interview discusses features and services of the new hospital, such as 设备齐全 and 24小时服务.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dl-1p-interview-001",
+   "stem": "What time does the new hospital start providing services each day?",
+   "choices": [
+    "It is open 24 hours a day",
+    "9 AM",
+    "6 AM",
+    "8 AM"
+   ],
+   "answer": 0,
+   "explanation": "The hospital provides 24小时服务, as stated by the male speaker. This means it is open all day and all night.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1p-interview-001",
+   "stem": "What does 设备齐全 mean here?",
+   "choices": [
+    "Recently renovated",
+    "Expensive",
+    "Well-staffed",
+    "Fully equipped"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 设备齐全 is used to describe the hospital's facilities, indicating that it has all the necessary equipment. This is confirmed by the female speaker's statement: 我们的设备是最先进的.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-news_brief-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dl-1p-news_brief-001",
+   "stem": "What is the main idea of this news brief?",
+   "choices": [
+    "The Chinese government invites people to a celebration for the People's Republic of China",
+    "The Chinese government celebrates the founding of the People's Republic of China",
+    "The Chinese government announces a new policy for the People's Republic of China",
+    "The Chinese government discusses the history of the People's Republic of China"
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the Chinese government celebrates the founding of the People's Republic of China. This is shown by the phrase 庆祝建国 in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-news_brief-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dl-1p-news_brief-001",
+   "stem": "When was the People's Republic of China founded?",
+   "choices": [
+    "September 1, 1950",
+    "October 1, 1949",
+    "October 1, 1950",
+    "September 1, 1949"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the People's Republic of China was founded on October 1, 1949, with the phrase 一九四九年十月一日.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-news_brief-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1p-news_brief-001",
+   "stem": "What does 庆祝 mean in this context?",
+   "choices": [
+    "To invite",
+    "To celebrate",
+    "To announce",
+    "To discuss"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 庆祝 means \"to celebrate.\" The text uses this word to describe what the Chinese government is doing for the founding of the People's Republic of China.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-phone_call-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dl-1p-phone_call-001",
+   "stem": "What is the main idea of this phone call?",
+   "choices": [
+    "A supplier is being told about a change in the factory's operating hours.",
+    "A manager is discussing a new project with an employee.",
+    "A customer is being notified about a delay in their order.",
+    "A worker is being informed about a temporary shutdown of the factory."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that a worker is being informed about a temporary shutdown of the factory. The caller states, \"工厂将暂时停业\", which translates to \"The factory will temporarily close\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-phone_call-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dl-1p-phone_call-001",
+   "stem": "When will the factory reopen?",
+   "choices": [
+    "Next month.",
+    "Next week.",
+    "In two weeks.",
+    "The text does not specify."
+   ],
+   "answer": 2,
+   "explanation": "The factory will reopen in two weeks. The caller says, \"我们预计两周后重新开业\", which translates to \"We expect to reopen in two weeks\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1p-phone_call-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1p-phone_call-001",
+   "stem": "What does \"暂时\" mean here?",
+   "choices": [
+    "Suddenly",
+    "Immediately",
+    "Temporarily",
+    "Permanently"
+   ],
+   "answer": 2,
+   "explanation": "Here, \"暂时\" means \"temporarily\". The caller says, \"工厂将暂时停业\", indicating that the closure is not permanent.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-briefing-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-briefing-001",
+   "stem": "What is the main purpose of this briefing?",
+   "choices": [
+    "To inform about a recent hiking accident.",
+    "To explain the challenges of mountain rescues.",
+    "To discuss the collaboration between two search-and-rescue teams.",
+    "To promote tourism in the region."
+   ],
+   "answer": 2,
+   "explanation": "The briefing focuses on the collaboration between the Mountain Rescue Team and the Forestry Search-and-Rescue Unit, as indicated by the repeated mentions of their joint efforts and coordination, such as '山地救援队和林业搜救突击队将联合展开搜救行动'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-briefing-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-briefing-001",
+   "stem": "Which organization is the Mountain Rescue Team coordinating with?",
+   "choices": [
+    "The Forestry Search-and-Rescue Unit.",
+    "The national guard.",
+    "The Red Cross.",
+    "The local police department."
+   ],
+   "answer": 0,
+   "explanation": "The text explicitly states that the Mountain Rescue Team is coordinating with the Forestry Search-and-Rescue Unit, as seen in '山地救援队和林业搜救突击队将联合展开搜救行动'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-briefing-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-briefing-001",
+   "stem": "What does '协调' mean here?",
+   "choices": [
+    "To conflict.",
+    "To ignore.",
+    "To compete.",
+    "To coordinate."
+   ],
+   "answer": 3,
+   "explanation": "'协调' in this context refers to the act of coordinating or working together, as seen in '两队将协调行动计划, 确保搜救行动的高效进行'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The importance of oral hygiene",
+    "A new dental clinic's opening",
+    "A recent dental procedure performed on a patient",
+    "The benefits of regular dental checkups"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is a recent dental procedure performed on a patient, as the patient describe her experience with a filling and the dentist explains the process. The other options are not the focus of the interview.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-interview-001",
+   "stem": "What type of tooth filling did the patient receive?",
+   "choices": [
+    "Gold",
+    "Ceramic",
+    "Composite resin",
+    "Amalgam"
+   ],
+   "answer": 3,
+   "explanation": "The patient received an amalgam filling, as stated by the dentist: '我们给您做了一个氨银合金填充物。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-interview-001",
+   "stem": "What does '氨银合金' mean here?",
+   "choices": [
+    "A kind of toothpaste",
+    "A material used for fillings",
+    "A brand of dental floss",
+    "A type of metal used in dental tools"
+   ],
+   "answer": 1,
+   "explanation": "Here, '氨银合金' refers to the material used for the patient's filling, as explained by the dentist: '氨银合金填充物是一种常见的牙科填充材料。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-news-001",
+   "stem": "What is the main idea of the interview?",
+   "choices": [
+    "The decline of traditional weddings in China.",
+    "The government's role in regulating wedding costs.",
+    "The popularity of Western-style weddings in China.",
+    "The high cost of traditional weddings in China."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is the high cost of traditional weddings in China, as indicated by the discussion of expenses such as 婚宴 (wedding banquets), 礼金 (gift money), and 彩礼 (bride price).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-news-001",
+   "stem": "According to the interview, what is one of the major expenses in a traditional Chinese wedding?",
+   "choices": [
+    "The bride's dress.",
+    "The wedding photography.",
+    "The wedding banquets.",
+    "The honeymoon."
+   ],
+   "answer": 2,
+   "explanation": "One of the major expenses mentioned is the wedding banquets, or 婚宴, which can cost tens of thousands of yuan.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-news-001",
+   "stem": "In the interview, what does 彩礼 mean?",
+   "choices": [
+    "A type of wedding dress.",
+    "A traditional wedding ceremony.",
+    "A traditional gift from the groom's family to the bride's family.",
+    "A special wedding cake."
+   ],
+   "answer": 2,
+   "explanation": "In this context, 彩礼 refers to the bride price, a traditional gift from the groom's family to the bride's family.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-news-002",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "The history of renewable energy",
+    "A new type of solar panel",
+    "Recent investments in green energy projects",
+    "Government policies on energy"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is recent investments in green energy projects, as indicated by the repeated mention of 投资 (investment) and various green energy projects such as 太阳能 (solar), 风能 (wind), and 水能 (hydropower).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-news-002",
+   "stem": "Which province saw the most significant increase in renewable energy investment?",
+   "choices": [
+    "Xinjiang",
+    "Guangdong",
+    "Inner Mongolia",
+    "Sichuan"
+   ],
+   "answer": 2,
+   "explanation": "The text states that 内蒙古 (Inner Mongolia) saw the most significant increase, with investments rising by 230%.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-news-002",
+   "stem": "In the text, what does 可再生能源 mean?",
+   "choices": [
+    "Fossil fuels",
+    "Nuclear energy",
+    "Renewable energy",
+    "Hydraulic energy"
+   ],
+   "answer": 2,
+   "explanation": "The text discusses investments in 可再生能源 (renewable energy) projects, which include 太阳能 (solar), 风能 (wind), and 水能 (hydropower).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "zh-dl-2p-news_analysis-001",
+   "stem": "What is the main point of this news analysis?",
+   "choices": [
+    "Coastal erosion in China is a complex issue with significant economic and environmental impacts.",
+    "China is successfully combating coastal erosion through innovative methods.",
+    "Tourism is the primary cause of coastal erosion in China.",
+    "The Chinese government has ignored the problem of coastal erosion for decades."
+   ],
+   "answer": 0,
+   "explanation": "The text discusses the causes, effects, and challenges of coastal erosion in China, highlighting its economic and environmental impacts. This is evident in sentences like  海岸侵蚀正在威胁中国的沿海地区，引发经济和生态方面的担忧 and  这是一个复杂的问题，需要综合的解决方案.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-news_analysis-001",
+   "stem": "What can be inferred about the Chinese government's response to coastal erosion?",
+   "choices": [
+    "The government has done little to address the problem.",
+    "The government is actively funding research and innovative solutions to address the issue.",
+    "The government has implemented strict regulations to prevent further erosion.",
+    "The government has focused solely on economic development at the expense of the environment."
+   ],
+   "answer": 1,
+   "explanation": "The text states  政府已经意识到这个问题的严重性，并投资研究和创新的解决方案，如人工沙丘和植被恢复工程. This indicates that the government is actively funding research and innovative solutions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2p-news_analysis-001",
+   "stem": "In the text, what does 综合的解决方案 mean?",
+   "choices": [
+    "A combination of different approaches or strategies.",
+    "A single, straightforward solution.",
+    "A temporary fix for the problem.",
+    "A solution that focuses solely on economic factors."
+   ],
+   "answer": 0,
+   "explanation": "The text uses the phrase 这是一个复杂的问题，需要综合的解决方案 to indicate that the problem is complex and requires a combination of different approaches or strategies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "zh-dl-2p-news_analysis-002",
+   "stem": "What is the main idea of this report?",
+   "choices": [
+    "The government is planning to regulate wedding costs.",
+    "Young couples are struggling to afford traditional weddings.",
+    "Wedding costs have risen significantly and are causing financial stress for many families.",
+    "People are opting for simpler weddings due to economic conditions."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that wedding costs have risen significantly and are causing financial stress. This is supported by statements like '婚礼成本在过去十年中急剧上升' and '许多年轻夫妇发现自己面临巨大的经济压力'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2p-news_analysis-002",
+   "stem": "What does '奢华' mean here?",
+   "choices": [
+    "Simple",
+    "Expensive and extravagant",
+    "Outdated",
+    "Traditional"
+   ],
+   "answer": 1,
+   "explanation": "Here, '奢华' refers to the high cost and extravagance of modern weddings, as seen in the context of discussing rising wedding costs and financial stress on families.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-news_analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "zh-dl-2p-news_analysis-002",
+   "stem": "What is one of the reasons given for the increase in wedding costs?",
+   "choices": [
+    "The desire for larger wedding venues.",
+    "The influence of social media and wedding planning shows.",
+    "The government's regulation of wedding industry prices.",
+    "The increasing popularity of traditional wedding customs."
+   ],
+   "answer": 1,
+   "explanation": "The text states '社交媒体和婚礼规划节目' as a reason for the increase in wedding costs, as these platforms showcase elaborate weddings that people aspire to.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "zh-dl-2p-speech-001",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "Nuclear energy is the most promising alternative to fossil fuels",
+    "Developing countries should prioritize economic growth over environmental concerns",
+    "The global shift towards renewable energy is inevitable and beneficial",
+    "The international community should focus on reducing energy consumption"
+   ],
+   "answer": 2,
+   "explanation": "The speaker emphasizes the inevitability and benefits of the global shift towards renewable energy, stating '全球向可再生能源转型的趋势不可逆转' and highlighting the positive impacts on the environment and economy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-speech-001",
+   "stem": "What can be inferred about the speaker's views on international cooperation?",
+   "choices": [
+    "The speaker believes that international cooperation should be limited to developed countries",
+    "The speaker is unsure about the role of international cooperation in renewable energy development",
+    "The speaker believes that international cooperation is essential for the success of renewable energy initiatives",
+    "The speaker thinks that international cooperation is unnecessary and may hinder progress"
+   ],
+   "answer": 2,
+   "explanation": "The speaker explicitly states the importance of international cooperation, saying '国际社会应当携手合作，共同推动可再生能源的发展' and '只有通过国际合作，我们才能有效应对气候变化'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2p-speech-001",
+   "stem": "What does '推动' mean here?",
+   "choices": [
+    "to ignore",
+    "to delay",
+    "to promote",
+    "to oppose"
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses '推动' to mean 'to promote' or 'to drive', as in '共同推动可再生能源的发展' and '推动全球能源转型'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "zh-dl-2p-speech-002",
+   "stem": "What is the main idea of this speech?",
+   "choices": [
+    "The government's strategy to combat inflation through interest rate adjustments",
+    "The benefits of low interest rates for consumers",
+    "The impact of global economic policies on domestic markets",
+    "The historical trends of inflation in China"
+   ],
+   "answer": 0,
+   "explanation": "The speaker discusses the government's plan to control inflation by adjusting interest rates, which is the central theme of the speech. The relevant words are: “为了应对通货膨胀，政府决定调整利率.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-speech-002",
+   "stem": "What can be inferred about the current economic situation in China?",
+   "choices": [
+    "The economy is experiencing rapid growth with no signs of slowing down",
+    "The economy is facing challenges due to rising inflation",
+    "Inflation is under control and interest rates are stable",
+    "Interest rates have been consistently low for the past decade"
+   ],
+   "answer": 1,
+   "explanation": "The speaker mentions that inflation is rising and the government is taking action to address it, indicating economic challenges. The relevant words are: “近期通货膨胀有所上升.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2p-speech-002",
+   "stem": "What does the speaker mean by 稳定经济 (stabilize the economy)?",
+   "choices": [
+    "To maintain economic balance and prevent fluctuations",
+    "To reduce government spending drastically",
+    "To encourage massive foreign investment",
+    "To increase economic growth rapidly"
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses 稳定经济 to refer to maintaining economic balance and preventing fluctuations, as part of the government's strategy to control inflation. The relevant words are: “通过调整利率来稳定经济。”}]},",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dl-3-speech-001",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "Global warming is causing more frequent and severe heat waves.",
+    "The heat wave is only affecting the northern regions of China.",
+    "The heat wave is a natural phenomenon that should be welcomed.",
+    "The government is doing enough to prevent heat wave-related deaths."
+   ],
+   "answer": 0,
+   "explanation": "The speaker clearly states that the heat wave is a result of global warming and that it is becoming more frequent and severe. This is the main idea of the speech. The speaker says: \"全球变暖正在导致热浪的频率和强度增加，我们正在经历越来越多的极端高温事件\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-3-speech-001",
+   "stem": "What does the speaker mean by \"应对\" in this context?",
+   "choices": [
+    "To celebrate",
+    "To ignore",
+    "To cause",
+    "To prepare for and deal with"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"应对\" means to prepare for and deal with the heat wave. The speaker says: \"我们需要采取行动来应对越来越严重的热浪问题\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dl-3-speech-001",
+   "stem": "What can be inferred about the speaker's view on the government's current actions?",
+   "choices": [
+    "The speaker thinks the government is doing too much.",
+    "The speaker thinks the government is doing enough.",
+    "The speaker thinks the government should not be involved.",
+    "The speaker thinks the government is not doing enough."
+   ],
+   "answer": 3,
+   "explanation": "The speaker implies that the government is not doing enough to address the heat wave issue. The speaker says: \"尽管政府已经采取了一些措施，但我们仍然需要做得更多\"",
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}

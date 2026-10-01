@@ -33,6 +33,6 @@ The owner's Ollama server (BRIEF §7.1) runs the approved list in `tools/models/
 
 | model | lang | score | tier | json | purity | register | agreement | median latency |
 |---|---|---|---|---|---|---|---|---|
-| `eurollm-9b-instruct-q4km` | ar | 0.81 | B | 1.00 | 0.88 | 0.93 | 0.45 | 2.1 s |
-| `eurollm-9b-instruct-q4km` | es | 0.76 | B | 1.00 | 0.85 | 0.68 | 0.50 | 1.7 s |
-| `eurollm-9b-instruct-q4km` | ja | 0.81 | B | 1.00 | 0.95 | 0.80 | 0.50 | 1.9 s |
+| `eurollm-9b-instruct-q4km` | ar | 0.78 | B | 1.00 | 0.82 | 0.82 | 0.45 | 2.2 s |
+| `eurollm-9b-instruct-q4km` | es | 0.76 | B | 1.00 | 0.88 | 0.72 | 0.45 | 28.4 s |
+| `eurollm-9b-instruct-q4km` | ja | 0.79 | B | 1.00 | 0.88 | 0.82 | 0.45 | 23.2 s |

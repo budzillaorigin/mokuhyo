@@ -818,6 +818,114 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-2-liaison-001",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "textType": "liaison",
+   "title": "Phone call: late-night noise from the training area",
+   "body": "",
+   "script": [
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "もしもし、潮見町役場住民生活課の佐藤と申します。北浜駐屯地の広報室でしょうか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "はい、広報室の中村です。いつもお世話になっております。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "お世話になっております。実は今朝、南地区の住民の方から、昨日の夜遅くまで演習場のほうから大きな音がしていたというお電話がありまして。何時ごろまで訓練をされていたか、確認させていただけますか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "申し訳ございません。昨日は夜間の移動訓練がありまして、予定では午後9時に終わるはずでした。ただ、途中で車両が1台故障しまして、最後の部隊が演習場を出たのは午後10時半ごろでした。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "そうでしたか。住民の方は、音そのものよりも、いつ終わるのか分からなかったのが不安だったとおっしゃっていました。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "ご迷惑をおかけしました。予定より遅れる場合には、町にもご連絡すべきでした。今後は、終了が30分以上遅れる見込みになった時点で、役場の当直にお電話するようにいたします。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "ありがとうございます。それから、今週の金曜日にも同じような訓練があると聞いているのですが。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "はい、金曜日は午後8時に終了の予定です。念のため、明日、南地区の自治会長さんにも私から直接ご説明に伺います。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "助かります。では、住民の方にはそのようにお伝えします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "language": "ja",
+   "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-2-liaison-002",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "textType": "liaison",
+   "title": "Radio news: SDF water supply in Okutani",
+   "body": "",
+   "script": [
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "次のニュースです。大雨の被害を受けた奥谷町では、昨日から自衛隊による給水支援が始まりました。現地から山下記者の報告です。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "はい、奥谷町の中央公民館の前に来ています。こちらでは今朝7時から、陸上自衛隊の給水車3台が並び、住民の方々がポリタンクや水のボトルを手に列を作っています。町では、浄水場が土砂で壊れたため、およそ1,200世帯で水道が止まっています。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "給水はいつまで続く見込みですか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "町によりますと、浄水場の復旧には少なくとも1週間かかる見通しで、その間、給水は毎日午前7時から午後6時まで行われます。また、自分で水を取りに来ることが難しいお年寄りの世帯には、隊員と町の職員が一緒に水を届けているということです。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "住民の方の様子はいかがですか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "水を受け取りに来た70代の女性は「水が出ないのがいちばんつらかった。本当に助かります」と話していました。一方で、町の山側の地区では道路がまだ通れないため、給水車が入れない場所も残っています。自衛隊は、明日からヘリコプターで水を運ぶことも検討しているということです。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "山下さん、ありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "language": "ja",
+   "engine": "tsumugi (pre-fork draft)"
+  },
+  {
    "id": "ja-dl-2p-broadcast-001",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -1039,6 +1147,114 @@
      "speaker": "高橋",
      "voice": "female",
      "text": "まず、データのバックアップを、ネットワークから切り離して保管しておくことです。これだけで、被害を受けても数日で診療を再開できる可能性が高まります。完璧な防御はありません。攻撃を受ける前提で、いかに早く立ち直るかを考えることが大切です。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "language": "ja",
+   "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-2p-liaison-001",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "textType": "liaison",
+   "title": "Coordination meeting: convoy and the school run",
+   "body": "",
+   "script": [
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "本日はお時間をいただき、ありがとうございます。さっそくですが、来月の車両移動の件です。資料では、午前7時半から8時半の間に、大型車両12台が市道中央線を通る計画になっていますね。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "はい。演習の開始時刻から逆算すると、その時間帯に出発する必要がありまして。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "ご事情は理解します。ただ、その時間帯は中央小学校の登校時間とちょうど重なります。あの道は歩道が狭く、保護者からも以前から懸念の声が出ています。子どもの安全を何より重視する立場から、市としては、このままの計画ではお受けしにくいというのが正直なところです。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "なるほど。時間をずらすとなると演習全体の日程に影響が出るので、私の判断ではすぐにはお答えできません。ただ、経路の変更であれば、検討の余地があると思います。例えば、県道を使って学校の前を避けられないか、基地に持ち帰って確認します。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "県道を使っていただけるなら、双方にとって現実的な妥協案になりそうです。距離は少し長くなりますか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "10分ほど余計にかかる計算ですが、出発を少し早めれば吸収できるかもしれません。それでも中央線を通らざるを得ない場合には、交差点ごとに誘導員を置き、車両の間隔を空けて通行させる案も併せてお示しします。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "分かりました。どちらの案になるにしても、保護者への説明は早めにしたいので、来週の金曜日までにお返事をいただけますか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "承知しました。市のご懸念はよく分かりましたので、金曜日までに必ずご連絡します。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "language": "ja",
+   "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-2p-liaison-002",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "textType": "liaison",
+   "title": "Radio interview: a base commander on community relations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "今日は、北浜駐屯地の石川司令にお話を伺います。司令に着任されて1年ですが、地域との関係で特に力を入れてきたことは何でしょうか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "着任した当初、私が一番気になったのは、駐屯地のことをよく知らないという住民の方が意外に多かったことです。騒音の苦情はあっても、中で何をしているのかが分からない。分からないから不安になる、ということだと思いました。そこで、月に一度の見学会を始め、隊員が地元の学校や祭りにも積極的に出ていくようにしました。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "反応はいかがでしたか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "見学会には、この1年で延べ2千人ほどが来てくださいました。ただ、正直に申し上げると、見学に来てくださるのは、もともと自衛隊に関心のある方が多い。本当に声を聞くべきなのは、来てくださらない方々なんです。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "そういった方々とは、どのように接点を持っているのですか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "自治会の会合に、こちらから出向いてお話を伺うようにしています。そこでは厳しいご意見もいただきます。ヘリの音で赤ちゃんが起きてしまう、という話を聞いたときには、数字の上での苦情の件数とは違う重みを感じました。"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "そうしたご意見は、実際の訓練に反映されているのでしょうか。"
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "すべてにお応えできるわけではありません。訓練の必要性は変わりませんから。ただ、飛行経路の見直しなど、できることはやってきたつもりです。できないことについても、なぜできないのかを説明する責任があると考えています。それが信頼の土台になると思っています。"
     }
    ],
    "source": "llm",
@@ -1288,222 +1504,6 @@
      "speaker": "杉山",
      "voice": "male",
      "text": "相手の立場に立って考えること、でしょうか。相手が自分の国で何を言われるかまで想像できなければ、合意は結べません。月並みですが、結局はこれに尽きると思います。"
-    }
-   ],
-   "source": "llm",
-   "verified": false,
-   "language": "ja",
-   "engine": "tsumugi (pre-fork draft)"
-  },
-  {
-   "id": "ja-dl-2-liaison-001",
-   "exam": "DLPT_LISTENING",
-   "level": "2",
-   "textType": "liaison",
-   "title": "Phone call: late-night noise from the training area",
-   "body": "",
-   "script": [
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "もしもし、潮見町役場住民生活課の佐藤と申します。北浜駐屯地の広報室でしょうか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "はい、広報室の中村です。いつもお世話になっております。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "お世話になっております。実は今朝、南地区の住民の方から、昨日の夜遅くまで演習場のほうから大きな音がしていたというお電話がありまして。何時ごろまで訓練をされていたか、確認させていただけますか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "申し訳ございません。昨日は夜間の移動訓練がありまして、予定では午後9時に終わるはずでした。ただ、途中で車両が1台故障しまして、最後の部隊が演習場を出たのは午後10時半ごろでした。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "そうでしたか。住民の方は、音そのものよりも、いつ終わるのか分からなかったのが不安だったとおっしゃっていました。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "ご迷惑をおかけしました。予定より遅れる場合には、町にもご連絡すべきでした。今後は、終了が30分以上遅れる見込みになった時点で、役場の当直にお電話するようにいたします。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "ありがとうございます。それから、今週の金曜日にも同じような訓練があると聞いているのですが。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "はい、金曜日は午後8時に終了の予定です。念のため、明日、南地区の自治会長さんにも私から直接ご説明に伺います。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "助かります。では、住民の方にはそのようにお伝えします。"
-    }
-   ],
-   "source": "llm",
-   "verified": false,
-   "language": "ja",
-   "engine": "tsumugi (pre-fork draft)"
-  },
-  {
-   "id": "ja-dl-2-liaison-002",
-   "exam": "DLPT_LISTENING",
-   "level": "2",
-   "textType": "liaison",
-   "title": "Radio news: SDF water supply in Okutani",
-   "body": "",
-   "script": [
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "次のニュースです。大雨の被害を受けた奥谷町では、昨日から自衛隊による給水支援が始まりました。現地から山下記者の報告です。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "はい、奥谷町の中央公民館の前に来ています。こちらでは今朝7時から、陸上自衛隊の給水車3台が並び、住民の方々がポリタンクや水のボトルを手に列を作っています。町では、浄水場が土砂で壊れたため、およそ1,200世帯で水道が止まっています。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "給水はいつまで続く見込みですか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "町によりますと、浄水場の復旧には少なくとも1週間かかる見通しで、その間、給水は毎日午前7時から午後6時まで行われます。また、自分で水を取りに来ることが難しいお年寄りの世帯には、隊員と町の職員が一緒に水を届けているということです。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "住民の方の様子はいかがですか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "水を受け取りに来た70代の女性は「水が出ないのがいちばんつらかった。本当に助かります」と話していました。一方で、町の山側の地区では道路がまだ通れないため、給水車が入れない場所も残っています。自衛隊は、明日からヘリコプターで水を運ぶことも検討しているということです。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "山下さん、ありがとうございました。"
-    }
-   ],
-   "source": "llm",
-   "verified": false,
-   "language": "ja",
-   "engine": "tsumugi (pre-fork draft)"
-  },
-  {
-   "id": "ja-dl-2p-liaison-001",
-   "exam": "DLPT_LISTENING",
-   "level": "2+",
-   "textType": "liaison",
-   "title": "Coordination meeting: convoy and the school run",
-   "body": "",
-   "script": [
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "本日はお時間をいただき、ありがとうございます。さっそくですが、来月の車両移動の件です。資料では、午前7時半から8時半の間に、大型車両12台が市道中央線を通る計画になっていますね。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "はい。演習の開始時刻から逆算すると、その時間帯に出発する必要がありまして。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "ご事情は理解します。ただ、その時間帯は中央小学校の登校時間とちょうど重なります。あの道は歩道が狭く、保護者からも以前から懸念の声が出ています。子どもの安全を何より重視する立場から、市としては、このままの計画ではお受けしにくいというのが正直なところです。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "なるほど。時間をずらすとなると演習全体の日程に影響が出るので、私の判断ではすぐにはお答えできません。ただ、経路の変更であれば、検討の余地があると思います。例えば、県道を使って学校の前を避けられないか、基地に持ち帰って確認します。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "県道を使っていただけるなら、双方にとって現実的な妥協案になりそうです。距離は少し長くなりますか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "10分ほど余計にかかる計算ですが、出発を少し早めれば吸収できるかもしれません。それでも中央線を通らざるを得ない場合には、交差点ごとに誘導員を置き、車両の間隔を空けて通行させる案も併せてお示しします。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "分かりました。どちらの案になるにしても、保護者への説明は早めにしたいので、来週の金曜日までにお返事をいただけますか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "承知しました。市のご懸念はよく分かりましたので、金曜日までに必ずご連絡します。"
-    }
-   ],
-   "source": "llm",
-   "verified": false,
-   "language": "ja",
-   "engine": "tsumugi (pre-fork draft)"
-  },
-  {
-   "id": "ja-dl-2p-liaison-002",
-   "exam": "DLPT_LISTENING",
-   "level": "2+",
-   "textType": "liaison",
-   "title": "Radio interview: a base commander on community relations",
-   "body": "",
-   "script": [
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "今日は、北浜駐屯地の石川司令にお話を伺います。司令に着任されて1年ですが、地域との関係で特に力を入れてきたことは何でしょうか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "着任した当初、私が一番気になったのは、駐屯地のことをよく知らないという住民の方が意外に多かったことです。騒音の苦情はあっても、中で何をしているのかが分からない。分からないから不安になる、ということだと思いました。そこで、月に一度の見学会を始め、隊員が地元の学校や祭りにも積極的に出ていくようにしました。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "反応はいかがでしたか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "見学会には、この1年で延べ2千人ほどが来てくださいました。ただ、正直に申し上げると、見学に来てくださるのは、もともと自衛隊に関心のある方が多い。本当に声を聞くべきなのは、来てくださらない方々なんです。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "そういった方々とは、どのように接点を持っているのですか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "自治会の会合に、こちらから出向いてお話を伺うようにしています。そこでは厳しいご意見もいただきます。ヘリの音で赤ちゃんが起きてしまう、という話を聞いたときには、数字の上での苦情の件数とは違う重みを感じました。"
-    },
-    {
-     "speaker": "A",
-     "voice": "female",
-     "text": "そうしたご意見は、実際の訓練に反映されているのでしょうか。"
-    },
-    {
-     "speaker": "B",
-     "voice": "male",
-     "text": "すべてにお応えできるわけではありません。訓練の必要性は変わりませんから。ただ、飛行経路の見直しなど、できることはやってきたつもりです。できないことについても、なぜできないのかを説明する責任があると考えています。それが信頼の土台になると思っています。"
     }
    ],
    "source": "llm",
@@ -2982,6 +2982,96 @@
    "verified": false
   },
   {
+   "id": "ja-dl-2-liaison-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-liaison-001",
+   "stem": "Why did the training end later than planned?",
+   "choices": [
+    "The U.S. unit changed its schedule at short notice.",
+    "Residents phoned to complain while it was underway.",
+    "The Friday session was moved forward to that night.",
+    "One of the vehicles broke down during the drill."
+   ],
+   "answer": 3,
+   "explanation": "Nakamura explains 「途中で車両が1台故障しまして」, so the last unit left around 10:30. No U.S. change or mid-drill complaints are mentioned; the call came the next morning, and Friday's session is still scheduled for Friday.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-liaison-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-liaison-001",
+   "stem": "What bothered the residents most?",
+   "choices": [
+    "The loudness of the vehicles passing their homes",
+    "The bright lights used during the night movement",
+    "Not knowing when the noise would finally stop",
+    "Not being told in advance that there was a drill"
+   ],
+   "answer": 2,
+   "explanation": "Sato relays that 「音そのものよりも、いつ終わるのか分からなかったのが不安だった」. That explicitly puts the noise itself second; lights and lack of advance notice are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-liaison-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-liaison-001",
+   "stem": "What will the base do from now on?",
+   "choices": [
+    "Finish all night training by 8 p.m. from now on",
+    "Phone the town's duty staff if the finish looks 30+ minutes late",
+    "Stop holding night drills near the southern district",
+    "Deliver a written notice to every household in the south district in advance"
+   ],
+   "answer": 1,
+   "explanation": "Nakamura promises 「終了が30分以上遅れる見込みになった時点で、役場の当直にお電話する」. The 8 p.m. finish applies only to this Friday, night drills are not stopped, and his extra step is a personal visit to the association head, not letters to households.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-liaison-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-liaison-002",
+   "stem": "Why is the town without running water?",
+   "choices": [
+    "Its water treatment plant was damaged by a landslide.",
+    "The water pipes froze and burst during the storm.",
+    "The town hall ordered water shut off as a precaution.",
+    "The roads to the mountain reservoir are all closed."
+   ],
+   "answer": 0,
+   "explanation": "The reporter says 「浄水場が土砂で壊れたため」 about 1,200 households have no water. Frozen pipes and a precautionary shutoff are not mentioned; closed roads explain why tankers cannot reach the mountain side, not the outage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-liaison-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-liaison-002",
+   "stem": "What is being considered for the mountain-side districts?",
+   "choices": [
+    "Flying water in by helicopter from tomorrow",
+    "Building a temporary road for the tankers",
+    "Moving residents to the central community hall",
+    "Extending the hours of supply to 9 p.m."
+   ],
+   "answer": 0,
+   "explanation": "The report ends 「ヘリコプターで水を運ぶことも検討している」 because tankers cannot get in. No new road, relocation or longer hours are mentioned; supply runs 7 a.m. to 6 p.m.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-2p-broadcast-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -3392,6 +3482,96 @@
    ],
    "answer": 0,
    "explanation": "She says there is no perfect defense, so hospitals should plan on being attacked (攻撃を受ける前提) and focus on quick recovery, beginning with backups kept off the network. Paying attackers is how attackers expect hospitals to act, not her advice, and she never suggests abandoning electronic records.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-liaison-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ja-dl-2p-liaison-001",
+   "stem": "What is the main issue discussed?",
+   "choices": [
+    "The city wants the exercise cancelled because the convoy is far too large.",
+    "The base asks the city to close the Chuo line to all other traffic while the convoy passes.",
+    "Parents have demanded that the school change its start time for the convoy.",
+    "The convoy's timing clashes with the school commute, so alternatives are explored."
+   ],
+   "answer": 3,
+   "explanation": "The city says the plan 「登校時間とちょうど重なります」 and it is 「お受けしにくい」, after which a prefectural-road route and traffic guides are proposed. Cancellation, road closure and changing school hours are never raised.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-liaison-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-liaison-001",
+   "stem": "Why does the liaison officer say he cannot answer at once about changing the departure time?",
+   "choices": [
+    "He believes the change is unnecessary if guides are posted at crossings.",
+    "The U.S. side must first approve any change to the convoy's timing.",
+    "It would affect the whole exercise schedule, which is beyond his authority.",
+    "He needs to hear directly from the parents before making a decision."
+   ],
+   "answer": 2,
+   "explanation": "He says 「演習全体の日程に影響が出るので、私の判断ではすぐにはお答えできません」. He does not dismiss the concern, the U.S. side is not mentioned, and it is the city, not he, who will talk to parents.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-liaison-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ja-dl-2p-liaison-001",
+   "stem": "What does the city ask for at the end?",
+   "choices": [
+    "A written apology to the parents of the elementary school",
+    "A reply by next Friday so parents can be informed early",
+    "Guides posted at every intersection whatever route is used",
+    "A new plan in which departure is moved to after 8:30"
+   ],
+   "answer": 1,
+   "explanation": "The city says 「保護者への説明は早めにしたいので、来週の金曜日までにお返事を」. No apology is sought; guides are the base's fallback idea for the Chuo line only; and moving departure later is not requested — the base even mentions leaving earlier.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-liaison-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-liaison-002",
+   "stem": "Why does the commander say the open-base tours are not enough?",
+   "choices": [
+    "Attendance was too low to make any difference to how residents view the base.",
+    "Those who come are mostly already interested, not the people he most needs to hear.",
+    "The tours raised new noise complaints from people who saw the helicopters up close.",
+    "Visitors were not allowed into the areas where the training actually takes place."
+   ],
+   "answer": 1,
+   "explanation": "He notes 「見学に来てくださるのは、もともと自衛隊に関心のある方が多い」 and 「本当に声を聞くべきなのは、来てくださらない方々」. Attendance (about 2,000) is not called low, and no new complaints or access limits are mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-liaison-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ja-dl-2p-liaison-002",
+   "stem": "What is his position on residents' requests?",
+   "choices": [
+    "He cannot meet them all, but does what he can and explains the rest.",
+    "He has changed the training to meet every request raised at meetings.",
+    "He treats complaint statistics as the only fair measure of the burden.",
+    "He considers the requests secondary, as training needs always come first."
+   ],
+   "answer": 0,
+   "explanation": "He says 「すべてにお応えできるわけではありません」 yet has reviewed flight routes and feels 「なぜできないのかを説明する責任がある」. He does not meet every request, he says the baby story carried weight 「数字…とは違う」, and he does not dismiss the requests.",
    "source": "llm",
    "verified": false
   },
@@ -3824,186 +4004,6 @@
    ],
    "answer": 0,
    "explanation": "He calls it 月並み (commonplace) but says it all comes down to this (これに尽きる). He does not present it as a secret, as a late lesson, or as outdated.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2-liaison-001-q1",
-   "exam": "DLPT_LISTENING",
-   "level": "2",
-   "type": "detail",
-   "passageId": "ja-dl-2-liaison-001",
-   "stem": "Why did the training end later than planned?",
-   "choices": [
-    "The U.S. unit changed its schedule at short notice.",
-    "Residents phoned to complain while it was underway.",
-    "The Friday session was moved forward to that night.",
-    "One of the vehicles broke down during the drill."
-   ],
-   "answer": 3,
-   "explanation": "Nakamura explains 「途中で車両が1台故障しまして」, so the last unit left around 10:30. No U.S. change or mid-drill complaints are mentioned; the call came the next morning, and Friday's session is still scheduled for Friday.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2-liaison-001-q2",
-   "exam": "DLPT_LISTENING",
-   "level": "2",
-   "type": "inference",
-   "passageId": "ja-dl-2-liaison-001",
-   "stem": "What bothered the residents most?",
-   "choices": [
-    "The loudness of the vehicles passing their homes",
-    "The bright lights used during the night movement",
-    "Not knowing when the noise would finally stop",
-    "Not being told in advance that there was a drill"
-   ],
-   "answer": 2,
-   "explanation": "Sato relays that 「音そのものよりも、いつ終わるのか分からなかったのが不安だった」. That explicitly puts the noise itself second; lights and lack of advance notice are not mentioned.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2-liaison-001-q3",
-   "exam": "DLPT_LISTENING",
-   "level": "2",
-   "type": "detail",
-   "passageId": "ja-dl-2-liaison-001",
-   "stem": "What will the base do from now on?",
-   "choices": [
-    "Finish all night training by 8 p.m. from now on",
-    "Phone the town's duty staff if the finish looks 30+ minutes late",
-    "Stop holding night drills near the southern district",
-    "Deliver a written notice to every household in the south district in advance"
-   ],
-   "answer": 1,
-   "explanation": "Nakamura promises 「終了が30分以上遅れる見込みになった時点で、役場の当直にお電話する」. The 8 p.m. finish applies only to this Friday, night drills are not stopped, and his extra step is a personal visit to the association head, not letters to households.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2-liaison-002-q1",
-   "exam": "DLPT_LISTENING",
-   "level": "2",
-   "type": "detail",
-   "passageId": "ja-dl-2-liaison-002",
-   "stem": "Why is the town without running water?",
-   "choices": [
-    "Its water treatment plant was damaged by a landslide.",
-    "The water pipes froze and burst during the storm.",
-    "The town hall ordered water shut off as a precaution.",
-    "The roads to the mountain reservoir are all closed."
-   ],
-   "answer": 0,
-   "explanation": "The reporter says 「浄水場が土砂で壊れたため」 about 1,200 households have no water. Frozen pipes and a precautionary shutoff are not mentioned; closed roads explain why tankers cannot reach the mountain side, not the outage.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2-liaison-002-q2",
-   "exam": "DLPT_LISTENING",
-   "level": "2",
-   "type": "detail",
-   "passageId": "ja-dl-2-liaison-002",
-   "stem": "What is being considered for the mountain-side districts?",
-   "choices": [
-    "Flying water in by helicopter from tomorrow",
-    "Building a temporary road for the tankers",
-    "Moving residents to the central community hall",
-    "Extending the hours of supply to 9 p.m."
-   ],
-   "answer": 0,
-   "explanation": "The report ends 「ヘリコプターで水を運ぶことも検討している」 because tankers cannot get in. No new road, relocation or longer hours are mentioned; supply runs 7 a.m. to 6 p.m.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2p-liaison-001-q1",
-   "exam": "DLPT_LISTENING",
-   "level": "2+",
-   "type": "main_idea",
-   "passageId": "ja-dl-2p-liaison-001",
-   "stem": "What is the main issue discussed?",
-   "choices": [
-    "The city wants the exercise cancelled because the convoy is far too large.",
-    "The base asks the city to close the Chuo line to all other traffic while the convoy passes.",
-    "Parents have demanded that the school change its start time for the convoy.",
-    "The convoy's timing clashes with the school commute, so alternatives are explored."
-   ],
-   "answer": 3,
-   "explanation": "The city says the plan 「登校時間とちょうど重なります」 and it is 「お受けしにくい」, after which a prefectural-road route and traffic guides are proposed. Cancellation, road closure and changing school hours are never raised.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2p-liaison-001-q2",
-   "exam": "DLPT_LISTENING",
-   "level": "2+",
-   "type": "inference",
-   "passageId": "ja-dl-2p-liaison-001",
-   "stem": "Why does the liaison officer say he cannot answer at once about changing the departure time?",
-   "choices": [
-    "He believes the change is unnecessary if guides are posted at crossings.",
-    "The U.S. side must first approve any change to the convoy's timing.",
-    "It would affect the whole exercise schedule, which is beyond his authority.",
-    "He needs to hear directly from the parents before making a decision."
-   ],
-   "answer": 2,
-   "explanation": "He says 「演習全体の日程に影響が出るので、私の判断ではすぐにはお答えできません」. He does not dismiss the concern, the U.S. side is not mentioned, and it is the city, not he, who will talk to parents.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2p-liaison-001-q3",
-   "exam": "DLPT_LISTENING",
-   "level": "2+",
-   "type": "detail",
-   "passageId": "ja-dl-2p-liaison-001",
-   "stem": "What does the city ask for at the end?",
-   "choices": [
-    "A written apology to the parents of the elementary school",
-    "A reply by next Friday so parents can be informed early",
-    "Guides posted at every intersection whatever route is used",
-    "A new plan in which departure is moved to after 8:30"
-   ],
-   "answer": 1,
-   "explanation": "The city says 「保護者への説明は早めにしたいので、来週の金曜日までにお返事を」. No apology is sought; guides are the base's fallback idea for the Chuo line only; and moving departure later is not requested — the base even mentions leaving earlier.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2p-liaison-002-q1",
-   "exam": "DLPT_LISTENING",
-   "level": "2+",
-   "type": "inference",
-   "passageId": "ja-dl-2p-liaison-002",
-   "stem": "Why does the commander say the open-base tours are not enough?",
-   "choices": [
-    "Attendance was too low to make any difference to how residents view the base.",
-    "Those who come are mostly already interested, not the people he most needs to hear.",
-    "The tours raised new noise complaints from people who saw the helicopters up close.",
-    "Visitors were not allowed into the areas where the training actually takes place."
-   ],
-   "answer": 1,
-   "explanation": "He notes 「見学に来てくださるのは、もともと自衛隊に関心のある方が多い」 and 「本当に声を聞くべきなのは、来てくださらない方々」. Attendance (about 2,000) is not called low, and no new complaints or access limits are mentioned.",
-   "source": "llm",
-   "verified": false
-  },
-  {
-   "id": "ja-dl-2p-liaison-002-q2",
-   "exam": "DLPT_LISTENING",
-   "level": "2+",
-   "type": "main_idea",
-   "passageId": "ja-dl-2p-liaison-002",
-   "stem": "What is his position on residents' requests?",
-   "choices": [
-    "He cannot meet them all, but does what he can and explains the rest.",
-    "He has changed the training to meet every request raised at meetings.",
-    "He treats complaint statistics as the only fair measure of the burden.",
-    "He considers the requests secondary, as training needs always come first."
-   ],
-   "answer": 0,
-   "explanation": "He says 「すべてにお応えできるわけではありません」 yet has reviewed flight routes and feels 「なぜできないのかを説明する責任がある」. He does not meet every request, he says the baby story carried weight 「数字…とは違う」, and he does not dismiss the requests.",
    "source": "llm",
    "verified": false
   },

@@ -1,0 +1,1520 @@
+{
+ "bank": "zh-hans-reading-core",
+ "language": "zh-Hans",
+ "title": "Mandarin Chinese (Simplified characters) reading: core bank",
+ "license": "CC BY-SA 4.0",
+ "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
+ "passages": [
+  {
+   "id": "zh-dr-0p-advertisement-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Get Vaccinated, Stay Healthy",
+   "body": "疫苗接种活动\n\n时间：2023年9月1日至9月15日\n\n地点：市立医院\n\n对象：18岁及以上人士\n\n预约电话：123-4567\n\n保持健康，从接种疫苗开始！",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-label-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "label",
+   "title": "Community Center Announcement",
+   "body": "社区中心公告\n\n亲爱的居民们：\n\n为了丰富老年人的精神生活，我们将在社区中心开设“银发俱乐部”。欢迎所有年满六十岁的老年人参加。俱乐部将提供各种活动，如书法、绘画、音乐欣赏和健身运动等。\n\n活动时间：每周一、三、五上午九点至十一点\n\n地点：社区中心二楼活动室\n\n我们期待您的加入！\n\n社区中心\n\n2023年3月1日",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-menu-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Menu for the Elderly",
+   "body": "早餐：8:00至9:00\n午餐：12:00至13:00\n晚餐：18:00至19:00\n\n老年人餐厅\n老年人专用",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-notice-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "notice",
+   "title": "Drought Warning",
+   "body": "农民朋友们：\n本地干旱严重，请节约用水。\n合理灌溉，确保丰收。\n村委会",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-schedule-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "schedule",
+   "title": "Interview Schedule",
+   "body": "面试安排\n\n日期：2023年10月15日\n时间：上午9:00\n地点：上海市中心大厦10楼\n请准时到达。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Temporary School Closure Due to Smog",
+   "body": "由于空气污染指数达到危险水平，学校将于明天临时关闭。所有学生和教职工请勿前往学校。学校将密切关注空气质量，并及时发布重新开放的通知。为了健康安全，请大家减少户外活动，必要时佩戴口罩。我们对给大家带来的不便深表歉意，并将继续努力为大家提供安全的学习环境。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Volunteer Program Guidelines",
+   "body": "社区志愿者项目\n\n我们社区将开展一项志愿者项目，帮助老年人。该项目每周六上午九点至十一点在社区中心举行。请于下周五前报名。我们需要热心的志愿者加入我们，为老年人提供帮助和陪伴。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-notice-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "notice",
+   "title": "Evacuation Notice for Foreign Nationals",
+   "body": "紧急撤离通知\n\n由于即将来临的热带风暴，请所有外籍人士立即撤离。前往市中心的收容所以便获得帮助。请携带必要的证件和物品。此通知适用于所有外籍人士，包括持有有效签证和居留许可的人士。请立即行动，以确保您的安全。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-personal_letter-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "personal_letter",
+   "title": "A Sailor's Greeting",
+   "body": "妹妹你好，我们的船今天到了。我在码头，马上就会回家。我想让你知道我们已经到了。妈妈最近好吗？我很快就会见到她。爱你的哥哥",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-short_message-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Urgent Aid Request",
+   "body": "紧急救援请求\n\n我们需要帮助将食物分配给灾区。如果您有时间或资源，请联系我们。请于周日前回复。感谢您的支持！",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Upcoming Electric Car Fair",
+   "body": "各位市民大家好！ 我们欣喜地宣布，首届电动汽车展览会将于本周六举行。活动时间为中午12点至晚上8点，地点位于市中心体育馆。这是了解电动汽车最新动态的绝佳机会。专家将介绍电动汽车的最新技术，观众可以亲眼目睹各种电动汽车模型。此外，还有互动环节，您可以向专家提问，获取更多关于电动汽车的信息。参观完全免费，欢迎全家人前来参与。我们期待您的光临！",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-email-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "email",
+   "title": "Help with a Lost Passport",
+   "body": "主题：协助办理新护照\n\n尊敬的张经理：\n\n您好！\n\n我是贵公司员工李华。我遇到了一些困难，恳请您能帮助我解决。昨天我在机场办理登机手续时，发现我的护照遗失了。我已经向机场工作人员询问过，他们建议我联系中国驻当地的大使馆。\n\n我查阅了大使馆的网站，发现办理新护照需要一定的时间和手续。由于我下个月有出差计划，我需要尽快办理新护照。因此，我希望您能协助我办理新护照，或者提供一些建议。\n\n感谢您的帮助！\n\n此致\n敬礼\n李华",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-email-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "email",
+   "title": "Problem with Hotel Reservation",
+   "body": "尊敬的客户：\n\n您好！\n\n我们已收到您关于酒店预订的邮件。在核查后，发现您的预订信息似乎存在问题。我们未能找到您的预订记录。为尽快为您确认预订，请提供更多信息，例如预订确认号码及姓名。\n\n对给您带来的不便，我们深表歉意。我们将全力解决此问题，确保您的住宿安排顺利。如有任何疑问或需要进一步协助，请随时与我们联系。\n\n感谢您的理解与耐心。\n\n此致\n敬礼\n酒店客服团队",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "How to Join Our Neighborhood Cleanup Team",
+   "body": "社区清洁队招募志愿者！\n\n为了打造更整洁、美丽的社区环境，我们正在招募志愿者加入清洁队。\n\n每周六上午九点，我们将在社区中心门口集合，共同清理街道、公园及社区中心周边区域。\n\n我们需要您的参与！无论年龄与背景，均可报名。所有清洁用品将由我们提供。\n\n让我们携手共同守护我们的家园。报名请联系王先生，联系电话：555-1234。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-instructions-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Investing in Solar Energy",
+   "body": "要投资太阳能项目，请按照以下步骤进行：首先，进行市场调研，了解当前太阳能行业的趋势和需求。其次，确定您的预算，并计算潜在的回报率。然后，寻找一家值得信赖的太阳能公司，并与其专业团队进行咨询。最后，签订合同并开始投资。请记住，投资太阳能项目需要耐心和长期的承诺。投资前，请务必咨询您的财务顾问。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-biography-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "biography",
+   "title": "Joint Military Drill in the South China Sea",
+   "body": "南海联合军事演习纪实\n\n作为一名中国人民解放军海军指挥官，我最近有幸参与了与马来西亚皇家海军的联合军事演习。这次代号为“海上合作-2023”的演习旨在加强两国军队之间的合作与信任，并提升应对共同安全挑战的能力。\n\n在为期两周的演习中，我们进行了多项联合行动。首先，我们进行了海上阻塞和清除行动，模拟了在战时保障航道安全的情景。接着，我们进行了两栖登陆和防空作战演练，展示了两国部队在复杂环境下协同作战的能力。此外，我们还进行了海上补给和通讯演练，确保在实际作战中能够有效地协调和支持。\n\n演习期间，我们遇到了一些挑战。例如，由于天气恶劣，某次两栖登陆演练不得不推迟。然而，通过密切合作和灵活调整，我们最终完成了所有预定任务。演习的最后一天，我们成功地进行了联合反潜演练，展示了两国海军在反潜作战方面的协同能力。\n\n这次联合军事演习不仅加强了中马两国军队之间的友谊，也为未来的合作奠定了坚实的基础。我相信，通过这样的国际合作，我们能够更好地应对地区安全挑战，维护南海的和平与稳定。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-factual_article-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "Coastal Erosion Threatens Local Communities",
+   "body": "沿海侵蚀威胁当地社区\n\n东海镇位于中国东北部沿海地区，近年来一直受到严重的海岸侵蚀问题的困扰。强风和巨浪不断侵蚀海岸线，导致许多农民已经被迫弃耕。据当地政府统计，过去十年间，该地区已经损失了超过2000亩的耕地。\n\n海岸侵蚀不仅影响了农业生产，还威胁到当地居民的住房安全。许多房屋已经出现严重的结构损坏，有些甚至已经倒塌。东海镇镇长李明表示，如果不采取有效的防护措施，未来几年可能会有更多的房屋受到威胁。\n\n为了应对这一问题，当地政府已经启动了几项防护工程，包括建设防护林和加固海堤。然而，由于资金和技术的限制，这些措施的效果仍然有限。专家呼吁，需要更多的资源和国际合作来解决这个日益严重的问题。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2p-interview-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Farming Through the Dry Spell",
+   "body": "记者：大家好，我是农业频道的记者张华。今天我们来到河北省某农村，这里正在经历严重的干旱。我们将采访几位农民，了解他们是如何应对这一挑战的。\n\n张师傅：大家好，我是张师傅。今年的干旱对我们的影响很大，我们的产量下降了三分之一。为了应对，我们选择了耐旱的作物品种，比如玉米和小麦，并且优化了灌溉系统，确保每一滴水都能高效利用。\n\n李大妈：我是李大妈。我们村里的很多农民都在实践因地制宜的方法。比如，我们根据本地土壤和气候条件调整种植计划，同时增加了覆盖作物的种植面积，以减少水分蒸发。\n\n王经理：我是王经理，经营着一家农业科技公司。我们正在推广智能灌溉技术，通过传感器和数据分析，精准控制灌溉时间和用水量。许多农民已经看到了显著的效果，在节约用水的同时提高了产量。\n\n记者：谢谢各位农民的分享。虽然干旱带来了挑战，但通过科学的管理和创新的技术，农民们正在努力保持农业生产的稳定。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2p-interview-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Addressing Climate Change at the Global Summit",
+   "body": "记者：各位来自世界各地的领导人，感谢你们参加这个全球气候峰会。能否请您简要介绍一下会议的主要成果？\n领导人A：当然可以。本次峰会的一个重要成果是各国承诺加强合作，并签署了《绿色倡议公约》。该公约旨在推动各国采取更加积极的行动以应对气候变化。\n记者：该公约的具体内容是什么？\n领导人B：公约的核心是鼓励各国在2030年前将温室气体排放量减少30%。此外，发达国家承诺提供资金和技术支持，帮助发展中国家实现这一目标。\n记者：除了该公约，峰会还有其他成果吗？\n领导人A：是的，我们还制定了具体的行动计划，包括推广可再生能源、保护森林和海洋生态系统，以及促进绿色技术创新。这些计划将帮助我们实现《巴黎协定》的目标。\n记者：各国是否达成了共识？\n领导人B：是的，我们达成了共识，即气候变化是全球性的挑战，需要全球共同应对。我们承诺继续合作，确保《绿色倡议公约》的有效实施。\n记者：本次峰会对未来的气候行动有什么影响？\n领导人A：本次峰会为未来的气候行动奠定了坚实的基础。通过《绿色倡议公约》和具体的行动计划，我们有信心能够更好地应对气候变化，并为未来世代创造一个更加可持续的世界。\n记者：谢谢各位领导人的分享。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2p-opinion-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "opinion",
+   "title": "The Role of Community Engagement in Vaccination Campaigns",
+   "body": "近期，全球多个国家和地区开展了大规模的疫苗接种活动，以应对新发传染病的威胁。在这些活动中，社区参与扮演了至关重要的角色。社区参与是疫苗接种活动成功的关键，因为它能够帮助提高公众的意识和接受度，从而促进疫苗接种的普及。\n\n首先，社区参与可以通过教育和宣传来提高公众的意识。社区领袖在动员和教育社区成员方面发挥着至关重要的作用。他们可以通过社区会议、宣传手册和社交媒体等渠道，向公众传递准确的疫苗信息，并解答他们的疑问。例如，在某些社区中，地方政府与社区组织合作，举办了疫苗接种知识讲座，邀请医疗专家现场解答居民的问题，从而有效地提高了疫苗接种的知晓率和接受度。\n\n其次，社区参与可以促进合作和协调。疫苗接种活动通常需要多个部门和组织的协作，如卫生部门、教育部门、地方政府和非政府组织等。社区参与可以促进这些部门和组织之间的合作，确保疫苗接种活动的顺利进行。例如，在某些社区中，学校和教堂等场所被用作临时疫苗接种点，以方便居民接种疫苗。这不仅提高了疫苗接种的便利性，还促进了社区内部的团结和合作。\n\n最后，社区参与可以帮助解决公众的顾虑和担忧。尽管疫苗接种对预防传染病具有重要意义，但一些人可能对疫苗的安全性和有效性持怀疑态度。社区参与可以帮助解决这些顾虑，通过向公众提供准确的信息和数据，并邀请医疗专家与公众直接对话，从而增强公众的信任和信心。例如，在某些社区中，社区组织与医疗机构合作，举办了疫苗接种问答会，邀请专家现场解答居民的问题，从而有效地缓解了居民的担忧和疑虑。\n\n综上所述，社区参与在疫苗接种活动中发挥着至关重要的作用。只有通过社区的共同努力，我们才能有效地提高疫苗接种率，从而更好地保护公众的健康和安全。因此，在未来的疫苗接种活动中，我们应该继续加强社区参与，以确保这些活动的成功和有效性。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-analysis-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Art of the Interview: Navigating the Modern Job Search",
+   "body": "近年來，求職市場競爭日益激烈，成功通過面試的關鍵在於理解雇主的需求與期望。首先，你需要深入了解該公司的使命、願景和價值觀，以便在面試中展示你如何與這些核心原則保持一致。這不僅體現在你的回答中，還體現在你提出的問題中。例如，你可以詢問公司如何實現其願景，或者如何評估員工的表現，這些問題能夠展現你對公司的理解和關注。\n其次，仔細閱讀職位描述，理解所需的技能和經驗。你需要掌握該職位所需的核心競爭力，並能夠在面試中清晰地展示這些技能。例如，如果職位要求具備項目管理經驗，你可以準備具體的例子來說明你過去如何成功管理項目。\n此外，了解面試官的背景和角色也很重要。如果可能，查閱面試官的領英資料，了解他們的職業背景和專業領域。這樣，你可以更有針對性地準備問題和回答，展示你對面試官工作的理解和尊重。\n最後，面試前的充分準備是成功的關鍵。這包括研究公司、理解職位描述，並準備相關的問題和回答。你可以通過模擬面試、練習回答常見問題來提高自己的信心和表現。記住，面試是一個雙向的過程，你也需要評估該公司是否適合你的職業發展。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-argumentative_essay-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "The Imperative of Transitioning to Electric Cars",
+   "body": "随着全球变暖和空气污染问题的日益严重，减少碳排放和改善空气质量已经成为各国政府和社会各界的共同目标。在这个背景下，电动汽车作为一种清洁、高效的交通工具，越来越受到人们的关注和青睐。然而，尽管电动汽车的销量在过去几年中有所增加，但在全球汽车市场中的占比仍然很低。因此，如何加快电动汽车的普及，是我们面临的一个重要课题。\n\n电动汽车的普及是减少空气污染和应对气候变化的关键一步。传统燃油汽车排放的二氧化碳和其他有害物质是导致空气污染和全球变暖的主要原因。而电动汽车由于使用清洁能源，几乎不排放任何有害物质，因此可以有效地减少污染和温室气体排放。根据相关研究，如果全球汽车市场中电动汽车的占比达到50%，那么交通领域的碳排放可以减少一半以上。\n\n然而，电动汽车的普及面临诸多挑战。首先，电动汽车的价格仍然较高，普通消费者难以承担。其次，充电基础设施的建设滞后，许多地区缺乏充电桩，给消费者带来不便。此外，电动汽车的续航里程有限，长途旅行时需要频繁充电，影响使用体验。这些问题需要政府、企业和社会各界的共同努力来解决。\n\n政府可以通过政策支持和资金投入来推动电动汽车的发展。例如，提供购车补贴，降低消费者的购车成本；加大对充电基础设施的投资，提高充电便利性；制定更严格的排放标准，促进传统燃油汽车的淘汰。企业可以加大研发投入，提高电动汽车的性能和降低生产成本，使其更具竞争力。社会各界也可以通过宣传和倡导，提高公众对电动汽车的认知和接受度。\n\n总之，电动汽车的普及是一项系统工程，需要多方协同努力。只有通过政府、企业和社会各界的共同推动，才能加快电动汽车的普及，为减少空气污染和应对气候变化做出贡献。让我们携手并进，共同推动电动汽车的发展，为创造一个更加清洁、绿色的未来而努力。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-commentary-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Drying Rivers and Empty Reservoirs: Confronting China's Summer Water Crisis",
+   "body": "随着气候变化和人口增长，中国夏季面临的缺水问题日益严峻。今年夏季，许多地区经历了前所未有的干旱，导致河流水位下降，水库水位锐减。据水利部统计，全国300多条河流断流，100多座水库干涸见底。这种严峻的形势给人民生活和生态环境造成了严重影响。\n\n缺水问题的成因复杂多样。首先，气候变化导致降水量减少，河流径流量下降。其次，人口增长和经济发展加剧了对水资源的需求，许多地区用水量超过了可持续的供水能力。此外，工业污染和农业排放也污染了水资源，进一步加剧了缺水问题。\n\n由于缺水，许多城市和农村地区面临用水紧张的局面。一些城市被迫实施水资源配给制度，限制居民和企业的用水量。农村地区的农民则面临灌溉用水不足的困境，影响农业生产和粮食安全。\n\n更令人担忧的是，长期的缺水问题对生态系统造成了严重影响。河流干涸导致水生物种栖息地减少，生物多样性下降。地下水超采导致地面下沉，土壤盐渍化加剧。这些生态问题不仅影响当前的水资源供应，还可能对未来的水安全构成威胁。\n\n为了应对缺水问题，政府正在采取多种措施。首先，政府正在建设大型跨流域调水工程，试图缓解缺水问题。其次，政府鼓励节水技术的应用和推广，提高用水效率。此外，政府还加强了水资源管理，制定严格的用水标准和监管措施。\n\n然而，专家指出，解决缺水问题需要更全面的策略。除了技术和管理措施，还需要加强公众意识，提倡节约用水的生活方式。同时，还需要加强国际合作，分享水资源管理的经验和技术，共同应对气候变化带来的挑战。\n\n总之，中国夏季面临的缺水问题需要引起高度重视。只有通过综合措施和全社会的共同努力，才能有效应对缺水问题，确保水资源的可持续利用，保障人民生活和生态环境的安全。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-editorial-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Reforming Passport Services: A Call for Efficiency and Empathy",
+   "body": "近期，我遭遇了护照遗失的问题，这让我深刻体会到现行护照服务系统的不足。作为一个经常出国的人，护照对我的重要性不言而喻。然而，当我遇到护照遗失这样的突发情况时，却发现现有的服务系统并不能提供及时、有效的帮助。\n\n首先，办理护照的流程过于繁琐。从报案到补办，每一步都需要大量的时间和精力。特别是在窗口服务环节，排队等待的时间往往超过办理手续的时间。这不仅影响了个人的时间安排，也大大降低了服务的效率。我们需要更高效的护照服务系统，简化办理流程，减少不必要的环节。\n\n其次，现行的护照服务缺乏人性化关怀。护照遗失本身就已经是一件让人焦虑的事情，而面对冷漠的服务态度和复杂的手续，这种焦虑感只会加剧。政府部门应当加强服务意识，增加人性化服务，比如提供专门的绿色通道或者热线咨询，让遇到突发情况的旅客能够得到及时的帮助和指导。\n\n此外，技术手段的应用也有待加强。例如，利用大数据和人工智能技术，可以更快速地核实个人信息，减少重复审核的环节。同时，建立一个全国性的护照信息共享平台，可以有效避免因信息不畅导致的重复办理和延误。\n\n最后，政府部门应当加强宣传和教育，提高公众的安全意识。通过多种渠道向公众宣传护照的重要性以及如何妥善保管护照，可以在一定程度上减少护照遗失的情况。同时，建立完善的应急预案，确保在突发情况下能够迅速响应和处理。\n\n总之，改善护照服务系统是一个系统工程，需要多方面的努力和配合。只有通过不断优化服务流程，提高服务质量，增强技术应用，才能真正提升护照服务的效率和水平，为广大旅客提供更加便捷、人性化的服务。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-speech-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "speech",
+   "title": "Expanding Horizons: The Future of Public Library Services",
+   "body": "各位同事，朋友们，大家好！今天，我想和大家谈谈关于公共图书馆服务的未来。在信息时代，图书馆必须与时俱进，以适应社会的不断变化。我们需要重新定义图书馆的角色，使其成为社区学习、文化和创新的中心。首先，我们需要让图书馆更贴近社区。这意味着图书馆应该成为社区活动的中心，举办各种讲座、工作坊和文化活动。例如，我们可以邀请作家进行读书分享会，组织儿童绘画比赛，或者举办社区讨论会。通过这些活动，图书馆可以成为社区交流和合作的平台。其次，我们需要利用数字技术来扩大图书馆的服务范围。随着互联网的普及，我们可以通过在线资源和数字图书馆为用户提供更多便利。例如，我们可以开发电子书借阅系统，提供在线学习课程，或者建立数字档案馆。这样，即使用户无法亲自到图书馆，也可以享受到丰富的资源和服务。此外，我们需要加强图书馆的国际交流与合作。在全球化的今天，图书馆不仅是书的仓库，更是文化交流的桥梁。我们可以通过与国际图书馆的合作，引进优质的外文资料，组织国际文化展览，或者举办多语言读书活动。这样，我们可以让用户接触到不同的文化，拓宽他们的国际视野。最后，我们需要关注弱势群体的需求。图书馆应该是一个开放包容的空间，为所有社区成员提供服务。我们可以提供无障碍设施，开展针对老年人和残障人士的读书活动，或者为低收入家庭提供免费的学习资源。通过这些努力，我们可以确保每个人都能享受到图书馆的服务。让我们共同努力，为公共图书馆的未来注入新的活力，使其成为社区发展的重要推动力！谢谢大家！",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  }
+ ],
+ "items": [
+  {
+   "id": "zh-dr-0p-advertisement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-advertisement-001",
+   "stem": "What does 疫苗接种 mean in the advertisement?",
+   "choices": [
+    "A disease",
+    "A doctor",
+    "A vaccine",
+    "A medicine"
+   ],
+   "answer": 2,
+   "explanation": "The word 疫苗接种 in the advertisement refers to 'vaccination'. The text is about a vaccination campaign, so the context supports this meaning. The relevant phrase in the text is 疫苗接种活动 (vaccination campaign).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-advertisement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "purpose",
+   "passageId": "zh-dr-0p-advertisement-001",
+   "stem": "Why does the advertisement mention the dates 9月1日 to 9月15日?",
+   "choices": [
+    "A. To indicate when the vaccination campaign will take place",
+    "B. To show the opening hours of the clinic",
+    "C. To list the dates of other health-related events",
+    "D. To provide a schedule for doctor's appointments"
+   ],
+   "answer": 0,
+   "explanation": "The dates 9月1日 to 9月15日 are mentioned to indicate the duration of the vaccination campaign. The relevant phrase in the text is 9月1日至9月15日 (September 1st to September 15th), which clearly states the time frame for the 疫苗接种活动 (vaccination campaign).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-label-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-label-001",
+   "stem": "What is the age requirement for joining the 'Silver Hair Club'?",
+   "choices": [
+    "Over 55.",
+    "Over 50.",
+    "Over 65.",
+    "Over 60."
+   ],
+   "answer": 3,
+   "explanation": "The text states '年满六十岁的老年人', which means 'people over 60 years old'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-menu-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-menu-001",
+   "stem": "What does  午餐 (wǔcān) mean here?",
+   "choices": [
+    "lunch",
+    "dinner",
+    "breakfast",
+    "snack"
+   ],
+   "answer": 0,
+   "explanation": "The word  午餐 (wǔcān) is typically used to mean 'lunch'. This is confirmed by its position in the menu, which lists it after 早餐 (zǎocān, breakfast) and before 晚餐 (wǎncān, dinner).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-notice-001",
+   "stem": "What does the notice tell farmers to do?",
+   "choices": [
+    "Ration their water usage.",
+    "Leave their fields fallow.",
+    "Ask neighbors to sell them water.",
+    "Buy seeds from the government."
+   ],
+   "answer": 0,
+   "explanation": "The notice says \"节约用水\", which means \"ration your water usage\". It does not mention buying seeds, asking neighbors, or leaving fields fallow.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-schedule-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-schedule-001",
+   "stem": "What time is the interview scheduled for?",
+   "choices": [
+    "9:00 AM",
+    "10:00 AM",
+    "9:30 AM",
+    "8:30 AM"
+   ],
+   "answer": 0,
+   "explanation": "The text states 面试时间为 9:00 AM, which means the interview time is 9:00 AM.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-announcement-001",
+   "stem": "What does 空气污染指数 mean in the text?",
+   "choices": [
+    "a weather forecast for the next day.",
+    "a type of air purifier.",
+    "a measure of the cleanliness of the air.",
+    "a government agency that monitors pollution."
+   ],
+   "answer": 2,
+   "explanation": "The text states that 空气污染指数 has 到达危险水平, which means it has reached a dangerous level. This indicates that it is a measure of the cleanliness of the air, as it can reach levels that are dangerous to health.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-announcement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To encourage students to wear masks to school.",
+    "To announce a temporary closure of the school due to air pollution.",
+    "To promote a new air purification system in the school.",
+    "To inform parents about the school's new curriculum."
+   ],
+   "answer": 1,
+   "explanation": "The announcement clearly states that 由于空气污染指数到达危险水平, 学校将于 tomorrow 临时关闭. This indicates that the main purpose is to announce a temporary closure of the school due to air pollution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-instructions-001",
+   "stem": "In the text below, what does “报名” mean?",
+   "choices": [
+    "to organize",
+    "to announce",
+    "to sign up",
+    "to volunteer"
+   ],
+   "answer": 2,
+   "explanation": "The text says “请在下周五前报名”, which means you need to sign up by next Friday. The word “报名” in this context means to register or sign up for the volunteer program.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-instructions-001",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "to explain how to cook healthy meals",
+    "to provide information about a volunteer program",
+    "to announce a new community center",
+    "to schedule a meeting for volunteers"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the text is to provide information about a volunteer program. It includes details about where and when to sign up, the schedule, and the aim of the program, which is to help the elderly in the community.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-notice-001",
+   "stem": "What is the reason for the evacuation?",
+   "choices": [
+    "a landslide",
+    "an earthquake",
+    "a flood",
+    "a tropical storm"
+   ],
+   "answer": 3,
+   "explanation": "The text states the reason is a tropical storm: \"由于即将来临的热带风暴\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1-notice-001",
+   "stem": "What does \"撤离\" mean here?",
+   "choices": [
+    "to evacuate",
+    "to stay",
+    "to warn",
+    "to prepare"
+   ],
+   "answer": 0,
+   "explanation": "The word \"撤离\" in the context of this notice means to evacuate: \"请所有外国人士立即撤离\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-notice-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "to request foreign nationals to evacuate immediately",
+    "to announce the cancellation of events due to a tropical storm",
+    "to provide safety tips for a tropical storm",
+    "to inform foreign nationals about a tropical storm"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to request foreign nationals to evacuate immediately: \"请所有外国人士立即撤离\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-personal_letter-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-personal_letter-001",
+   "stem": "In the letter, what is the sender's relationship to the recipient?",
+   "choices": [
+    "C. They are friends.",
+    "A. They are co-workers.",
+    "B. They are family members.",
+    "D. They are strangers."
+   ],
+   "answer": 2,
+   "explanation": "The sender refers to the recipient as 妹妹 (younger sister), indicating that they are family members. This is clear from the phrase 妹妹你好 (Hello younger sister).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-personal_letter-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1-personal_letter-001",
+   "stem": "In the letter, what does 码头 (mǎ tóu) refer to?",
+   "choices": [
+    "B. A park.",
+    "C. A naval port.",
+    "A. A market.",
+    "D. A school."
+   ],
+   "answer": 1,
+   "explanation": "The context of the letter mentions the ship's arrival and the sender being at the naval port, as indicated by the phrase 我们的船今天到了，我在码头 (Our ship arrived today, I am at the naval port).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-personal_letter-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "zh-dr-1-personal_letter-001",
+   "stem": "Why did the sender write this letter?",
+   "choices": [
+    "D. To describe their daily routine.",
+    "A. To invite the recipient to a party.",
+    "C. To ask the recipient for a favor.",
+    "B. To inform the recipient about their arrival."
+   ],
+   "answer": 3,
+   "explanation": "The sender explicitly states their purpose in the letter: 我想让你知道我们到了 (I want you to know that we have arrived).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-short_message-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-short_message-001",
+   "stem": "What is the main idea of this message?",
+   "choices": [
+    "A volunteer is asking for donations of money.",
+    "A volunteer is asking for help to distribute food.",
+    "A volunteer is asking for help to transport water.",
+    "A volunteer is asking for donations of food."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that a volunteer is asking for help to distribute food. This is clear from the phrase '需要帮助分配食物' in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-short_message-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-short_message-001",
+   "stem": "What is the deadline for responding to this aid request?",
+   "choices": [
+    "Friday",
+    "Monday",
+    "Sunday",
+    "Saturday"
+   ],
+   "answer": 2,
+   "explanation": "The deadline for responding is Sunday. This is stated in the text: '请于周日前回复'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-announcement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To advertise a sale on traditional Chinese vehicles.",
+    "To invite people to an event about electric cars.",
+    "To inform residents about an upcoming holiday.",
+    "To promote a new type of food at a local market."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to invite people to an event about electric cars. This is clear from the repeated mention of 活动 (activity) and 电动汽车 (electric cars), and the details provided about the event's date, time, and location: 本周六, 中午12点到晚上8点, 在市中心的体育馆 (This Saturday, from noon to 8 pm, at the gymnasium in the city center).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-announcement-001",
+   "stem": "What will visitors be able to do at the event?",
+   "choices": [
+    "Buy electric cars at a discount.",
+    "All of the above.",
+    "Learn about electric car technology.",
+    "Test drive electric cars."
+   ],
+   "answer": 2,
+   "explanation": "Visitors will be able to learn about electric car technology. The text states that 专家将介绍电动汽车的最新技术 (experts will introduce the latest technology of electric cars). There is no mention of test drives or discounts, so the other options are incorrect.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-announcement-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1p-announcement-001",
+   "stem": "What does 免费 (miǎn fèi) mean here?",
+   "choices": [
+    "Optional",
+    "Free of charge",
+    "Expensive",
+    "Limited time"
+   ],
+   "answer": 1,
+   "explanation": "Here, 免费 (miǎn fèi) means free of charge. The text states that 参观完全免费 (admission is completely free).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-email-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-email-001",
+   "stem": "What is the main purpose of the email?",
+   "choices": [
+    "To complain about the loss of important documents",
+    "To request assistance in replacing a lost passport",
+    "To inform the recipient about a recent trip",
+    "To ask for help finding a lost wallet"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the email is to request assistance in replacing a lost passport. This is evident from the phrases such as \"我的护照不见了\" (My passport is missing) and \"希望您能帮助我办理新护照\" (I hope you can help me get a new passport).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-email-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-email-001",
+   "stem": "Where did the sender lose their passport?",
+   "choices": [
+    "On the street",
+    "At home",
+    "At the airport",
+    "In a restaurant"
+   ],
+   "answer": 2,
+   "explanation": "The sender lost their passport at the airport, as indicated by the phrase \"在机场\" (at the airport).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-email-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1p-email-001",
+   "stem": "What does \"办理\" mean here?",
+   "choices": [
+    "To repair",
+    "To sell",
+    "To apply for",
+    "To celebrate"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"办理\" means \"to apply for,\" as the sender is asking for help to apply for a new passport. This is shown by the phrase \"办理新护照\" (get a new passport).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-email-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-email-002",
+   "stem": "What is the main idea of this email?",
+   "choices": [
+    "The sender's flight was delayed, so they need to change their reservation.",
+    "The hotel has lost the sender's reservation.",
+    "The sender is upset about the hotel's service.",
+    "The hotel is overbooked and cannot provide a room."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the hotel has lost the sender's reservation. This is clear from the sentence: “我们找不到您的预订记录.” The other options are not the main focus of the email.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-email-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-email-002",
+   "stem": "What does the sender ask the hotel to do?",
+   "choices": [
+    "Upgrade their room.",
+    "Find their lost luggage.",
+    "Confirm their reservation.",
+    "Cancel their reservation."
+   ],
+   "answer": 2,
+   "explanation": "The sender asks the hotel to confirm their reservation. This is stated directly in the sentence: “请确认我的预订。” The other options are not mentioned in the email.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-email-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1p-email-002",
+   "stem": "What does “确认” mean here?",
+   "choices": [
+    "To cancel",
+    "To confirm",
+    "To delay",
+    "To upgrade"
+   ],
+   "answer": 1,
+   "explanation": "The word “确认” in this context means 'to confirm.' This is clear from the sentence: “请确认我的预订.” The sender is asking the hotel to verify their reservation, not cancel, delay, or upgrade it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-instructions-001",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "Learn about local recycling laws.",
+    "Sign up to work in a factory.",
+    "Join a community cleanup program.",
+    "Buy cleaning supplies for a store."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that people should volunteer to join their community's cleanup team, as shown by phrases like 社区清洁队 'community cleanup team' and 报名参加 'sign up to join'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-instructions-001",
+   "stem": "Where should volunteers meet on Saturday mornings?",
+   "choices": [
+    "By the town's recycling bins.",
+    "At the local grocery store.",
+    "At the city park.",
+    "In front of the community center."
+   ],
+   "answer": 3,
+   "explanation": "The text states that volunteers should meet at 社区中心前面 'in front of the community center' on Saturday mornings.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-instructions-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1p-instructions-001",
+   "stem": "What does 保护 mean here?",
+   "choices": [
+    "To recycle",
+    "To protect",
+    "To gather",
+    "To clean"
+   ],
+   "answer": 1,
+   "explanation": "Here, 保护 means 'to protect'. The text says 让我们一起保护我们的社区 'Let's work together to protect our community'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-instructions-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-instructions-002",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The benefits of renewable energy",
+    "The environmental impact of fossil fuels",
+    "The history of solar energy",
+    "How to invest in solar energy projects"
+   ],
+   "answer": 3,
+   "explanation": "The text provides step-by-step instructions on how to invest in solar energy projects, which is the main idea. The other choices are not the focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-instructions-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-instructions-002",
+   "stem": "What is the first step in investing in solar energy projects?",
+   "choices": [
+    "Consult with an investment advisor",
+    "Find a reputable solar energy company",
+    "Conduct market research",
+    "Determine your budget"
+   ],
+   "answer": 2,
+   "explanation": "The first step mentioned in the text is 进行市场调查 (conduct market research). The other choices are not mentioned as the first step.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-instructions-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1p-instructions-002",
+   "stem": "What does 回报率 (huíbǎolǜ) mean here?",
+   "choices": [
+    "Return on investment",
+    "Risk assessment",
+    "Initial investment",
+    "Market trends"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 回报率 (huíbǎolǜ) refers to the return on investment. The text mentions 计算潜在的回报率 (calculate potential return on investment).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-biography-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-biography-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The Chinese military strengthens its capabilities through international cooperation",
+    "A Chinese military unit successfully completes a complex training mission",
+    "The Chinese military faces challenges during a joint exercise with a foreign ally",
+    "A Chinese military commander describes his experiences during a joint exercise with an allied country"
+   ],
+   "answer": 3,
+   "explanation": "The text focuses on a Chinese military commander's firsthand account of participating in a joint exercise with an allied country, describing the activities and outcomes. The other choices are either too narrow (B, C) or too broad (D).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-biography-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-biography-001",
+   "stem": "What did the Chinese and Malaysian forces practice during the joint exercise?",
+   "choices": [
+    "Conducting cyber warfare and intelligence gathering",
+    "Responding to natural disasters and conducting search and rescue operations",
+    "Conducting amphibious landings and air defense operations",
+    "Navigating difficult terrain and providing medical aid"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the forces practiced '两栖登陆和防空作战' (amphibious landings and air defense operations). The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-biography-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-biography-001",
+   "stem": "What does '协同' mean in this text?",
+   "choices": [
+    "Compromising",
+    "Competing",
+    "Cooperating",
+    "Negotiating"
+   ],
+   "answer": 2,
+   "explanation": "'协同' in this context refers to the Chinese and Malaysian forces working together during the joint exercise. The text states '中马两国部队协同作战' (Chinese and Malaysian forces cooperated in combat).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-factual_article-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-factual_article-001",
+   "stem": "What is the main topic of this article?",
+   "choices": [
+    "how to prevent coastal erosion",
+    "the history of coastal erosion",
+    "the effects of coastal erosion on a specific coastal area",
+    "the causes of coastal erosion in general"
+   ],
+   "answer": 2,
+   "explanation": "The article focuses on the effects of coastal erosion on the community of Donghai, mentioning specific impacts such as the loss of farmland and the threat to homes. Therefore, the correct answer is 'the effects of coastal erosion on a specific coastal area'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-factual_article-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-factual_article-001",
+   "stem": "What is one of the main reasons for the coastal erosion in Donghai?",
+   "choices": [
+    "deforestation",
+    "industrial pollution",
+    "overfishing",
+    "strong winds and waves"
+   ],
+   "answer": 3,
+   "explanation": "The article states that '强风和巨浪' (strong winds and waves) are one of the main reasons for the coastal erosion in Donghai.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-factual_article-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-factual_article-001",
+   "stem": "What does 退耕 (tuì gēng) mean here?",
+   "choices": [
+    "to sell farmland",
+    "to change farming techniques",
+    "to plant new crops",
+    "to abandon farming"
+   ],
+   "answer": 3,
+   "explanation": "In the context of the article, 退耕 (tuì gēng) refers to the fact that '许多农民已经被迫退耕' (many farmers have been forced to abandon farming) due to the loss of farmland caused by coastal erosion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-interview-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "zh-dr-2p-interview-001",
+   "stem": "What is the main idea of the interview?",
+   "choices": [
+    "The government is providing financial aid to affected farmers.",
+    "A new irrigation technology is being introduced to farmers.",
+    "Scientists are studying the long-term effects of drought on agriculture.",
+    "Farmers are discussing their strategies for dealing with drought."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that farmers are discussing their strategies for dealing with drought. This is evident throughout the interview as different farmers share their experiences and methods for coping with the dry spell, such as 选择耐旱的作物种类 (choosing drought-resistant crops) and 优化灌溉系统 (optimizing irrigation systems).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-interview-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dr-2p-interview-001",
+   "stem": "What can be inferred about the severity of the drought?",
+   "choices": [
+    "It is expected to end soon with the upcoming rainy season.",
+    "It has significantly affected agricultural production.",
+    "It has caused minor inconveniences for farmers.",
+    "It is the worst drought the region has ever experienced."
+   ],
+   "answer": 1,
+   "explanation": "The drought has significantly affected agricultural production. This can be inferred from statements like 我们的产量下降了三分之一 (our production has decreased by a third) and 许多农民面临着严重的经济损失 (many farmers are facing serious economic losses).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-interview-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2p-interview-001",
+   "stem": "What does 因地制宜 here mean?",
+   "choices": [
+    "To increase the use of chemical fertilizers.",
+    "To rely on government support.",
+    "To adapt strategies to local conditions.",
+    "To follow traditional farming methods."
+   ],
+   "answer": 2,
+   "explanation": "因地制宜 here means to adapt strategies to local conditions. This is clear from the context where farmers discuss tailoring their approaches to the specific challenges posed by the drought in their areas, such as 根据本地土壤和气候条件调整种植计划 (adjusting planting plans based on local soil and climate conditions).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-interview-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "zh-dr-2p-interview-002",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "Efforts to combat climate change and the outcomes of the summit.",
+    "The cultural exchange programs organized during the summit.",
+    "The personal experiences of the summit attendees.",
+    "The economic impact of the summit on the host city."
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the efforts to combat climate change and the outcomes of the summit. This is evident throughout the interview, with discussions on global cooperation, specific initiatives like the 'Green Initiative Pact', and the summit's achievements.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-interview-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "zh-dr-2p-interview-002",
+   "stem": "What is one of the key achievements mentioned at the summit?",
+   "choices": [
+    "The reduction of global carbon emissions by 50%.",
+    "The development of a new type of renewable energy source.",
+    "The establishment of a new international environmental organization.",
+    "The creation of the 'Green Initiative Pact'."
+   ],
+   "answer": 3,
+   "explanation": "One of the key achievements mentioned is the creation of the 'Green Initiative Pact'. The text states: 世界各国承诺加强合作，并签署了《绿色倡议公约》.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-interview-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2p-interview-002",
+   "stem": "What does 承诺 here mean?",
+   "choices": [
+    "To delay or postpone.",
+    "To promise or commit.",
+    "To suggest or recommend.",
+    "To deny or refuse."
+   ],
+   "answer": 1,
+   "explanation": "承诺 here means 'to promise or commit'. The text uses it to describe the countries' commitments to strengthening cooperation and signing the pact.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-opinion-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "zh-dr-2p-opinion-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "Vaccination campaigns should be led by medical professionals only.",
+    "Community engagement is essential for the success of vaccination campaigns.",
+    "Government funding is the most important factor in vaccination campaigns.",
+    "Vaccination campaigns are not effective in preventing disease outbreaks."
+   ],
+   "answer": 1,
+   "explanation": "The passage discusses how community engagement, through education, collaboration, and addressing concerns, is crucial for the success of vaccination campaigns. This is evident in sentences like 社区参与是疫苗接种活动成功的关键 and 只有通过社区的共同努力, 我们才能有效地提高疫苗接种率. The other choices are not the main focus of the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-opinion-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dr-2p-opinion-001",
+   "stem": "What can be inferred about the author's view on community leaders?",
+   "choices": [
+    "They should focus on other community issues instead.",
+    "They are only important for fundraising.",
+    "They are essential for the success of vaccination campaigns.",
+    "They should not be involved in vaccination campaigns."
+   ],
+   "answer": 2,
+   "explanation": "The author states that 社区领袖在动员和教育社区成员方面发挥着至关重要的作用, which implies that community leaders are essential for the success of vaccination campaigns. The other choices contradict the information given in the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2p-opinion-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2p-opinion-001",
+   "stem": "In the phrase 积极参与, what does 参与 mean here?",
+   "choices": [
+    "To ignore",
+    "To observe",
+    "To criticize",
+    "To participate"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 社区成员积极参与疫苗接种活动 suggests that community members are actively involved or participating in vaccination campaigns. The other choices do not fit the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-analysis-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "the role of body language in a successful job interview",
+    "how to prepare for technical questions in a job interview",
+    "how to succeed in a job interview by understanding the employer's perspective",
+    "the importance of dressing professionally for a job interview"
+   ],
+   "answer": 2,
+   "explanation": "The passage focuses on understanding the employer's perspective to succeed in a job interview. This is evident from the repeated emphasis on researching the company, understanding the job description, and aligning one's skills and experiences with the employer's needs. For example, the text states 你需要深入了解该公司的使命、愿景和价值观，以便在面试中展示你如何与这些核心原则保持一致。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-analysis-001",
+   "stem": "What can be inferred about the author's opinion on the importance of preparation for a job interview?",
+   "choices": [
+    "The author thinks that preparation is not as important as having good interpersonal skills",
+    "The author believes that preparation is crucial for a successful job interview",
+    "The author believes that preparation is only necessary for entry-level positions",
+    "The author thinks that preparation is less important than having the right qualifications"
+   ],
+   "answer": 1,
+   "explanation": "The author emphasizes the importance of preparation throughout the passage. For instance, the text states 面试前的充分准备是成功的关键。这包括研究公司、理解职位描述，并准备相关的问题和回答。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-analysis-001",
+   "stem": "What does the phrase '掌握核心竞争力' mean here?",
+   "choices": [
+    "to know the company's main competitors",
+    "to have a strong competitive advantage",
+    "to master the essential skills for the job",
+    "to understand the company's core competencies"
+   ],
+   "answer": 2,
+   "explanation": "The phrase '掌握核心竞争力' in this context refers to mastering the essential skills for the job. The text states 你需要掌握该职位所需的核心竞争力，并能够在面试中清晰地展示这些技能。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-argumentative_essay-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-argumentative_essay-001",
+   "stem": "What is the author's main point in this article?",
+   "choices": [
+    "Electric cars are only beneficial for urban areas.",
+    "Electric cars are too expensive for the average consumer.",
+    "Electric cars are not as fast as traditional cars.",
+    "Electric cars are a necessary solution to reduce air pollution and combat climate change."
+   ],
+   "answer": 3,
+   "explanation": "The author argues that electric cars are essential for reducing air pollution and mitigating climate change. This is evident throughout the text, such as in the sentence '电动汽车的普及是减少空气污染和应对气候变化的关键一步。' (The popularization of electric cars is a key step in reducing air pollution and addressing climate change.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-argumentative_essay-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-argumentative_essay-001",
+   "stem": "What can be inferred about the current state of electric car adoption?",
+   "choices": [
+    "Electric cars are already widely adopted by the majority of the population.",
+    "Electric cars are primarily used by wealthy individuals.",
+    "Electric cars are only used in specific regions with favorable policies.",
+    "Electric cars are not yet widely adopted, but their adoption is increasing."
+   ],
+   "answer": 3,
+   "explanation": "The author mentions that '尽管电动汽车的销量在过去几年中有所增加，但它们在全球汽车市场中的占比仍然很低。' (Although the sales of electric cars have increased in recent years, their share in the global automotive market remains low.), indicating that electric cars are not yet widely adopted but their adoption is on the rise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-argumentative_essay-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-argumentative_essay-001",
+   "stem": "What does the phrase '充电基础设施' refer to in this context?",
+   "choices": [
+    "The buildings where electric cars are manufactured.",
+    "The regulations governing the use of electric cars.",
+    "The network of charging stations for electric cars.",
+    "The technology used to power electric cars."
+   ],
+   "answer": 2,
+   "explanation": "The phrase '充电基础设施' refers to the network of charging stations for electric cars. This is clear from the sentence '建设充电基础设施是推广电动汽车的重要一环。' (Building charging infrastructure is a crucial step in promoting electric cars.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-commentary-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-commentary-001",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The text describes the causes of water shortages and proposes technical solutions.",
+    "The text suggests that water shortages are a temporary problem that will resolve with the next rainy season.",
+    "The text argues that water shortages are primarily caused by industrial pollution.",
+    "The text discusses the severe water shortages in China during summer and their impact on people and the environment."
+   ],
+   "answer": 3,
+   "explanation": "The text focuses on the severe water shortages in China during summer, their impact on people and the environment, and the need for immediate action. It mentions various factors contributing to the crisis, such as climate change, overuse, and pollution, and discusses the consequences like dried-up rivers, damaged ecosystems, and water rationing. The main idea is captured by choice 1, which encompasses these key points.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-commentary-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-commentary-001",
+   "stem": "According to the text, which of the following can be inferred about the Chinese government's response to water shortages?",
+   "choices": [
+    "The government has implemented strict water rationing measures nationwide.",
+    "The government has successfully resolved water shortages in the past using similar measures.",
+    "The government is investing in large-scale water diversion projects to address the crisis.",
+    "The government has ignored the warnings from environmental experts."
+   ],
+   "answer": 2,
+   "explanation": "The text mentions that the government is constructing large-scale water diversion projects to tackle the water shortages. This is evident in the sentence '政府正在建设大型跨流域调水工程，试图缓解缺水问题'. This supports choice 1 as the correct inference.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-commentary-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-commentary-001",
+   "stem": "In the text, what does '生态系统' mean here?",
+   "choices": [
+    "A complex network of living organisms and their interactions with each other and their environment.",
+    "A government agency responsible for managing water resources.",
+    "A method of farming that conserves water.",
+    "A type of technology used to purify water."
+   ],
+   "answer": 0,
+   "explanation": "The text uses '生态系统' to refer to the complex network of living organisms and their interactions with each other and their environment. This is evident in the sentence '水短缺导致河流干涸，生态系统受损'. Here, '生态系统' is used to describe the environment that is being harmed by the drying up of rivers, which aligns with choice 2.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-editorial-001",
+   "stem": "The main idea of this editorial is that...",
+   "choices": [
+    "travelers should be more careful with their passports",
+    "the government should invest more in passport technology",
+    "passport services need to be more efficient and customer-friendly",
+    "lost passports are a minor issue for most travelers"
+   ],
+   "answer": 2,
+   "explanation": "The editorial argues for improvements in passport services, specifically highlighting the need for efficiency and better customer service. This is evident in phrases like 我们需要更高效的护照服务系统 (We need a more efficient passport service system) and 增加人性化服务 (increase humanized service).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-editorial-001",
+   "stem": "From the editorial, we can infer that...",
+   "choices": [
+    "most travelers do not care about passport services",
+    "the government is currently doing enough to prevent passport loss",
+    "the author has personal experience with passport issues",
+    "passport services are not a priority for the government"
+   ],
+   "answer": 2,
+   "explanation": "The author's detailed description of the problems with passport services and the proposed solutions suggest personal experience or deep familiarity with the issues. The author states 我最近遇到了护照丢失的问题 (I recently encountered the problem of losing my passport), indicating personal experience.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-editorial-001",
+   "stem": "What does 窗口 (chuāng kǒu) mean here?",
+   "choices": [
+    "a physical window",
+    "a service counter",
+    "a government office",
+    "a time slot"
+   ],
+   "answer": 1,
+   "explanation": "In the context of the editorial, 窗口 refers to the service counters where passport services are provided. The author mentions 窗口服务 (window service), indicating the counters where people go to apply for or retrieve passports.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-speech-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-speech-001",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "The benefits of reading books for personal development",
+    "The role of public libraries in preserving cultural heritage",
+    "The history of public libraries in China",
+    "The need for public libraries to modernize and expand their services"
+   ],
+   "answer": 3,
+   "explanation": "The speaker emphasizes the need for public libraries to adapt to the digital age and cater to the evolving needs of the community, as seen in the phrases 图书馆必须与时俱进 (libraries must keep pace with the times) and 我们需要重新定义图书馆的角色 (we need to redefine the role of libraries).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-speech-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-speech-001",
+   "stem": "What can be inferred about the speaker's view on the current state of public library services?",
+   "choices": [
+    "They feel libraries should focus solely on preserving books",
+    "They believe libraries are becoming obsolete",
+    "They are satisfied with the current services",
+    "They think libraries need to do more to engage with the community"
+   ],
+   "answer": 3,
+   "explanation": "The speaker suggests that libraries need to do more to engage with the community, as indicated by the phrase 我们需要让图书馆更贴近社区 (we need to make libraries more close-knit with the community) and the mention of various outreach initiatives.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-speech-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-speech-001",
+   "stem": "In the phrase 图书馆不仅是书的仓库 (libraries are not just warehouses of books), what does 仓库 mean here?",
+   "choices": [
+    "A place for studying",
+    "A place for storing goods",
+    "A place for hosting events",
+    "A place for displaying art"
+   ],
+   "answer": 1,
+   "explanation": "Here, 仓库 refers to a place for storing goods, emphasizing that libraries should be more than just a place to store books. The speaker wants to expand the role of libraries beyond their traditional function.",
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}

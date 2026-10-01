@@ -1,0 +1,41 @@
+{
+ "language": "fr",
+ "exam": {
+  "file": "exam.json",
+  "sha256": "b3b340a35a781e9e865bff7e268654c6c55892a0164831a13afcc263f48f3268",
+  "bytes": 165863,
+  "passages": {
+   "reading": {
+    "0+": 5,
+    "1": 5,
+    "1+": 4,
+    "2": 5,
+    "2+": 4,
+    "3": 5
+   },
+   "listening": {
+    "0+": 5,
+    "1": 4,
+    "1+": 5,
+    "2": 3,
+    "2+": 4,
+    "3": 5
+   }
+  },
+  "items": {
+   "reading": 75,
+   "listening": 68
+  },
+  "listeningWithAudio": 26,
+  "listeningPassages": 26,
+  "license": "CC BY-SA 4.0",
+  "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)"
+ },
+ "opi": {
+  "file": "opi.json",
+  "sha256": "517d298b7530d2e2d269194a2701c6debb4eee0196585e7ef9fa11daa139ac71",
+  "questions": 80,
+  "rolePlays": 24,
+  "topics": 99
+ }
+}

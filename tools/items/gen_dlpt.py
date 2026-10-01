@@ -495,6 +495,7 @@ def draft_one(client: llm.Client, lang: str, skill: str, level: str, bands: dict
         taken.add(pid)
         avoid.append(passage["title"])
         return {"passage": passage, "items": items, "check": None}
+    print(f"    last problem: {feedback}", flush=True)
     return None
 
 

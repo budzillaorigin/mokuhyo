@@ -122,3 +122,95 @@ Settings → "Check for updates" is wired in Phase 7.
 
 **Run it:** `tools/gates/gate_lang.sh` (builds packs and voices' prerequisites: `voices/build.sh`,
 `python3 tools/voices/manifest.py --fetch`)
+
+## Phase 3 — Reading and Listening (DLPT-style) ✅
+
+**Built**
+- Exam engine in `shared/.../exam/`: `Blueprint` (default 60-item, 180-minute full form, 8/10/10/12/10/10 items from
+  ILR 0+ to 3, 30/60-minute slices, D-0xx open decision 2), `ExamAssembler` (`test` and `practice`, balanced keys,
+  no passage repeated across the last 3 forms), `ExamSession` (timer, navigation, flag, per-passage play policy:
+  listening plays once on tests, questions appear after the first play), scoring and ILR estimation (`Ilr`), resume
+  after a crash (`DbProgressStore`).
+- Reading and Listening screens (`desktopApp/.../ui/exam/SkillScreen.kt`): practice by level with feedback and
+  explanations, timed tests, results with the unofficial disclaimer, tap-to-define over the dictionary with "Add to
+  review" (`PassageText.kt`), reading aids, RTL for ar/fa; listening uses the pre-rendered Ogg Opus clip, else the
+  voice service at run time, and a test only draws passages this computer can play.
+- "Generate more" (`GeneratePassage`): the local model drafts a passage with the shipped-bank checks; it goes to the
+  "Generated on this computer" bank, labelled everywhere and excluded from estimates.
+- Content tools: `tools/items/gen_dlpt.py` drafts on the §7.1 server (mistral-small3.2), gpt-oss:20b checks every
+  item (answer key re-derived blind, ambiguity), failed drafts are dropped; `packs/build_packs.py` (strict validation
+  first) and `packs/render_audio.py` (Piper clips through the app's own voice service).
+
+**Content (all `source = "llm"`, badged, unreviewed except Japanese from Tsumugi)**
+
+| lang | reading passages / items | listening passages / items | listening clips |
+|---|---|---|---|
+| ja | 69 / 212 | 46 / 138 | OS voice |
+| es | 26 / 70 | 27 / 71 | 27 |
+| fr | 28 / 75 | 26 / 68 | 26 |
+| de | 28 / 76 | 25 / 68 | 25 |
+| pt-BR | 28 / 76 | 24 / 62 | 24 |
+| ru | 17 / 43 | 25 / 66 | 25 |
+| zh-Hans | 25 / 63 | 22 / 58 | OS voice |
+| ko | 23 / 59 | 25 / 65 | OS voice |
+| ar | 22 / 59 | 26 / 68 | OS voice |
+| fa | 24 / 63 | 21 / 54 | 21 |
+| id | 22 / 56 | 27 / 71 | OS voice |
+
+Drafted to 5 passages per band (D-019); the checker dropped 2–8 of 30 per bank. Phase 6 tops up toward 12.
+
+**Gate `tools/gates/gate_exam.sh` (macOS arm64): PASS**
+- `gen_dlpt.py validate --strict --language all`: 0 errors, 0 warnings in all 22 banks.
+- Packs build for all 11 languages. Full Reading and Listening forms assemble with every ILR band present and no
+  repeats in every language (35–57 of 60 items; shortfalls are reported per band and close as Phase 6 adds content).
+- Timed 60-minute forms in Japanese and Spanish taken end to end by a simulated ILR-2 learner: estimates recorded
+  READING 2 / LISTENING 2 in both.
+
+**Run it:** `tools/gates/gate_exam.sh`; app: Reading or Listening in the left rail.
+
+## Phase 4 — Speaking (OPI-style) ✅
+
+**Built**
+- `OpiSession` (`shared/.../opi/`): warm-up → level check → probes → role-play → wind-down, 19 interviewer turns in
+  test mode and 11 in practice; the working level adapts to answer length against per-language typical word counts;
+  the interviewer prompt is ordered for llama.cpp prompt-cache reuse; near-duplicate or echoed questions are rejected
+  (character-bigram similarity) and fall back to the scripted bank; a backward `next_phase` is clamped (D-017).
+- Rating (`OpiRate`): functions, context/content, accuracy and text type with verbatim evidence quotes, sustained and
+  breakdown levels, rationale, next steps; normalised (estimate capped at sustained, invented quotes dropped). No model
+  or a failed rating → the learner self-rates against the ILR descriptions. Topic conversation mode (`TopicSession`,
+  `GenerateTopics`).
+- Speaking screen: interview practice and test, topic conversation, recordings saved per turn (WAV), transcript,
+  rating with evidence, unofficial disclaimer; History plays recordings back.
+- OPI packs for all 11 languages (`tools/opi/<lang>.json` → `content/packs/<lang>/opi.json`): 80 scripted questions,
+  24 role-plays, 99 topics each, drafted by mistral-small3.2 via `tools/opi/draft_opi.py`, `source = "llm"`.
+- `eval_speaking.py` (60 prompts per language through the app's own prompts and validators) → `docs/MODELS.md`.
+
+**Gate `tools/gates/gate_speaking.sh` (macOS arm64, Apple M4): PASS**
+- Kotlin: sessions complete all five phases in all 11 languages against a mock model and the scripted fallback;
+  golden ratings validate 100 %; failure modes rejected (95 tests).
+- Eval, Tier B EuroLLM-9B on the §7.1 server: ja 0.79, es 0.76, ar 0.78 (JSON validity 1.00 everywhere; rating
+  agreement 0.45 is the weak spot). es/ja latencies in MODELS.md are inflated: that run shared the GPU with drafting.
+- Full OPI test through the embedded engine (EuroLLM-9B Q4_K_M on Metal, Piper/OS voice → Whisper small): es and ja
+  each 19 turns, rated 1+ with evidence quotes and next steps, 38-turn transcript and 19 recordings saved and verified
+  by SHA-256 on reload. About half the interviewer turns fell back to the scripted bank (mostly near-repeat
+  questions); quality note for owner QA: EuroLLM tends to stay on one topic the candidate mentioned.
+
+**Run it:** `tools/gates/gate_speaking.sh` (SKIP_EVAL=1 / SKIP_FULL=1 without the server or the 5.6 GB model).
+
+## Phase 5 — Data, backup, report ✅
+
+**Built**
+- History (every attempt and conversation, searchable, recordings playable), Home dashboard (ILR estimate per skill
+  with trend, next activity, review queue), Review (FSRS queue of missed items and looked-up words).
+- `.mokuhyo` bundle (`docs/BUNDLE_FORMAT.md`): MKHY container, optional XChaCha20 encryption in chunks, learner data,
+  recordings, settings (learner scope only), generated content; import merges (learner remap, review-item rekey,
+  tombstones propagate) and is idempotent.
+- PDF progress report (PDFBox, bundled Noto fonts, Arabic shaping and bidi), Report screen.
+
+**Gate `tools/gates/gate_data.sh`: PASS**
+- Bundle round trip plain and encrypted is lossless and merge-idempotent; PDF report renders for a fixture learner in
+  all 11 languages with no `.notdef` glyphs.
+- Cross-OS: CI jobs `fixture bundles` (Linux, macOS, Windows) write bundles and `cross-OS bundle import` imports each
+  on the other two OSes — green in CI run 36827787084.
+
+**Run it:** `tools/gates/gate_data.sh`; app: Settings → Backup, Report.

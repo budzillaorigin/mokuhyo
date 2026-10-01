@@ -1,0 +1,1349 @@
+{
+ "bank": "id-reading-core",
+ "language": "id",
+ "title": "Indonesian reading: core bank",
+ "license": "CC BY-SA 4.0",
+ "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
+ "passages": [
+  {
+   "id": "id-dr-0p-menu-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Forest Fire Safety Menu",
+   "body": "Hari Ini: Menu Makanan dan Minuman untuk Pemadam Kebakaran\nNasi Goreng, Sate Ayam, Es Teh, Es Jeruk",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-notice-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "notice",
+   "title": "Summer Water Restrictions",
+   "body": "Peringatan: Musim kemarau telah tiba. Air siap pakai akan dihilangkan. Air keran hanya untuk keperluan minum. Mohon gunakan dengan bijak. Terima kasih.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-schedule-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "schedule",
+   "title": "New Road Safety Law Schedule",
+   "body": "Undang-Undang Baru tentang Keselamatan Jalan Raya\nTanggal: 1 Januari 2023\nMulai berlaku: tiga bulan setelah tanggal tersebut\nTujuan: Meningkatkan keselamatan di jalan raya",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-sign-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Earthquake Relief Center",
+   "body": "PUSAT PENYALURAN BANTUAN GEMPA\n\nBuka dari pukul 8 pagi hingga 17.00\n\nUntuk mendapatkan makanan, air minum, dan obat-obatan\n\nMohon untuk berbaris dengan teratur\n\nTerima kasih atas kerjasama Anda",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-advertisement-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "A New Way to Drive",
+   "body": "Pindah ke mobil listrik sekarang dan nikmati manfaatnya! Kami menawarkan diskon 20% untuk mobil listrik baru kami. Mobil listrik kami hemat energi, ramah lingkungan, dan mudah dioperasikan. Jangan lewatkan kesempatan ini untuk mengurangi jejak karbon Anda. Datangi showroom kami hari ini juga!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-advertisement-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "New Bus Route Announcement",
+   "body": "Kami bangga mengumumkan rute bus terbaru kami mulai 15 Desember. Rute baru ini akan mempercepat perjalanan dari Stasiun Purwakarta ke Pasar Baru. Bus akan beroperasi setiap hari mulai pukul 6 pagi hingga 8 malam. Harganya terjangkau untuk semua penumpang. Nikmati perjalanan yang lebih nyaman dan cepat dengan kami!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-short_message-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Tourism Reopens on Java",
+   "body": "Pemerintah Jawa membuka kembali pariwisata. Semua wisatawan dapat kembali mengunjungi tempat-tempat menarik di sini. Namun, semua harus mematuhi peraturan yang berlaku. Jaga jarak, pakai masker, dan cuci tangan. Nikmati liburan yang aman dan menyenangkan!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "New Terminal at Kualanamu International Airport",
+   "body": "Terminal baru di Bandar Udara Internasional Kualanamu akan dibuka pada 15 Mei. Terminal baru ini dirancang untuk meningkatkan kenyamanan dan efisiensi bagi penumpang. Semua penerbangan akan dipindah ke terminal baru secara bertahap. Pada awalnya, hanya beberapa maskapai penerbangan yang akan menggunakan terminal baru, dan kemudian semua penerbangan akan dipindah secara total. Kami mengundang semua penumpang untuk menikmati fasilitas baru yang tersedia di terminal baru kami. Tim kami siap untuk membantu dalam proses transisi ini.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-description-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "description",
+   "title": "Bank Indonesia Raises Interest Rates",
+   "body": "Bank Indonesia telah menaikkan suku bunga untuk mengatasi inflasi yang meningkat. Pengumuman ini dilakukan setelah pertemuan Dewan Gubernur Bank Indonesia. Suku bunga dasar (BI Rate) sekarang adalah 4,5%. Naiknya suku bunga ini diharapkan bisa menahan inflasi dari semakin meningkat. Dengan naiknya suku bunga, biaya pinjaman akan lebih mahal. Ini bisa memengaruhi pembelian rumah, mobil, atau bisnis. Bank Indonesia juga berharap dengan naiknya suku bunga, investasi akan lebih banyak ke Indonesia. Ini karena uang asing akan mencari suku bunga yang lebih tinggi.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-description-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "description",
+   "title": "Indonesia Tightens Seat Belt Laws",
+   "body": "Pemerintah Indonesia telah menerapkan undang-undang baru tentang keselamatan lalu lintas. Undang-undang ini memerlukan semua penumpang mobil untuk selalu memakai sabuk pengaman. Hal ini berlaku baik untuk penumpang di bagian depan maupun belakang. Pelanggaran akan dikenakan denda hingga 500.000 rupiah. Tujuan utama dari undang-undang ini adalah untuk mengurangi jumlah korban luka-luka dan kematian dalam kecelakaan lalu lintas. Pemerintah berharap dengan adanya undang-undang ini, masyarakat akan lebih sadar tentang pentingnya keselamatan lalu lintas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-news_brief-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Youth Exchange Program Strengthens Ties Between Indonesia and Malaysia",
+   "body": "Program pertukaran budaya antara Indonesia dan Malaysia akan diperluas. Kementerian Pendidikan Indonesia dan Kementerian Pendidikan Malaysia telah setuju untuk menambah jumlah peserta program ini. Selain itu, program juga akan dilanjutkan selama satu bulan lagi. Peserta akan mengikuti bengkel budaya, belajar tentang kesenian dan tradisi masing-masing, serta berkunjung ke tempat-tempat bersejarah. Program ini diharapkan dapat memperkuat hubungan antara kedua negara. 'Kami berharap program ini dapat meningkatkan pemahaman dan persahabatan antara pemuda Indonesia dan Malaysia,' kata Menteri Pendidikan Indonesia. Program baru akan dimulai pada bulan Oktober ini.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-news_brief-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Indonesian Navy Ships Visit Timor-Leste",
+   "body": "Kapal-kapal angkatan laut Indonesia akan berlabuh di pelabuhan Dili, Timor-Leste, untuk latihan. Kegiatan ini akan berlangsung selama tiga hari, mulai hari Senin. Tujuan kunjungan ini adalah untuk meningkatkan kerja sama antara angkatan laut Indonesia dan Timor-Leste. Selain latihan, awak kapal juga akan mengikuti berbagai kegiatan sosial budaya dengan masyarakat setempat. Kegiatan ini diperkirakan akan berdampak positif bagi hubungan bilateral antara kedua negara.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-biography-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "biography",
+   "title": "The Return of the Komodo Dragons",
+   "body": "Taman Nasional Komodo, yang terletak di Pulau Komodo dan sekitarnya, terkenal dengan keanekaragaman hayatannya, terutama dengan kehadiran buaya Komodo. Buaya Komodo adalah reptil terbesar di dunia dan menjadi daya tarik utama bagi wisatawan dari seluruh dunia. Namun, selama pandemi COVID-19, jumlah wisatawan yang datang ke taman nasional ini mengalami penurunan yang signifikan. Turisme di Taman Nasional Komodo mulai pulih setelah penurunan yang terjadi selama pandemi. Pemerintah daerah dan pihak terkait telah melakukan berbagai upaya untuk mempromosikan wisata di daerah ini. Salah satunya adalah dengan mengadakan acara-acara khusus seperti festival budaya dan ekologi yang menarik perhatian wisatawan. Selain itu, pengelola taman nasional juga telah meningkatkan fasilitas dan pelayanan untuk memberikan pengalaman yang lebih baik bagi wisatawan. Dengan semakin banyaknya wisatawan yang datang, diharapkan bisnis-bisnis lokal yang terpengaruh oleh pandemi juga akan mulai pulih. Ini akan menolong masyarakat setempat yang bergantung pada industri pariwisata untuk penghasilan mereka. Dengan upaya-upaya yang dilakukan, diharapkan Taman Nasional Komodo akan kembali menjadi tujuan wisata yang populer seperti sebelum pandemi.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-event_description-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Youth Debate: Mandatory Military Service",
+   "body": "Debat tentang pelayanan militer wajib menjadi topik hangat di acara Debat Remaja Nasional. Dalam debat yang disiarkan secara langsung, dua peserta, seorang pemuda dan seorang gadis, memberikan argumen yang kuat untuk dan melawan pelayanan militer wajib. Pemuda itu berpendapat bahwa pelayanan militer wajib harus dibatalkan. Menurutnya, setiap individu harus memiliki kebebasan untuk memilih apakah mereka ingin bergabung dengan militer atau tidak. Selain itu, ia merasa pelayanan militer wajib akan membatasi kebebasan saya dan pilihan karier. Gadis itu, di sisi lain, berargumen bahwa pelayanan militer wajib sangat penting. Melalui pelayanan militer, kita dapat memahami nilai keberanian dan kesetiaan. Selain itu, ia mengatakan bahwa pelayanan militer wajib akan membantu menciptakan generasi muda yang lebih disiplin dan memiliki rasa tanggung jawab yang lebih besar. Penonton terlihat tertarik dan aktif mendengarkan argumen dari kedua sisi. Debat ini menunjukkan betapa pentingnya diskusi terbuka tentang isu-isu yang mempengaruhi generasi muda.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-event_description-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "event_description",
+   "title": "The Spectacular Launch of the New Satellite",
+   "body": "Satelit baru telah diluncurkan dari Pusat Pengembangan Penerbangan dan Antariksa Pangkalan Tinggi. Peluncuran ini terjadi pada pukul 12.00 waktu setempat. Acara peluncuran ini menarik perhatian banyak orang, termasuk para pejabat pemerintah, ilmuwan, dan warga lokal. Roket yang digunakan untuk meluncurkan satelit ini bernama Satria, yang telah dikembangkan oleh Badan Pengembangan Penerbangan dan Antariksa Nasional. Peluncuran berlangsung dengan lancar dan sempurna. Setelah peluncuran, para ilmuwan akan memantau satelit untuk memastikan semua sistem bekerja dengan baik. Satelit ini akan digunakan untuk berbagai kepentingan, seperti pencitraan bumi dan komunikasi. Warga lokal yang hadir sangat gembira dan bangga dengan keberhasilan peluncuran ini. Mereka berlomba-lomba mengambil gambar dan merekam video saat peluncuran. Para pejabat pemerintah juga memberikan ucapan selamat kepada tim yang telah bekerja keras untuk membuat peluncuran ini sukses.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-event_description-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Finding the Perfect Rental in Jakarta",
+   "body": "Saya baru saja pindah ke Jakarta dan memerlukan tempat tinggal. Oleh karena itu, saya mulai mencari di situs Lamudi.co.id, sebuah situs yang menawarkan berbagai pilihan apartemen di Jakarta.\n\nSetelah beberapa hari mencari, saya menemukan beberapa apartemen yang menarik. Saya menghubungi agen untuk melihat apartemen tersebut. Agen itu sangat ramah dan membantu saya dalam proses pencarian.\n\nSaya melihat beberapa apartemen dan akhirnya memilih satu yang saya sukai. Apartemen tersebut terletak di daerah strategis, dekat dengan stasiun MRT dan pusat perbelanjaan. Selain itu, fasilitas di apartemen tersebut juga lengkap, seperti kolam renang, gym, dan tempat parkir.\n\nSetelah memutuskan untuk menyewa apartemen tersebut, saya harus menandatangani kontrak sewa. Agen membantu saya memahami isi kontrak dan menjelaskan hak dan kewajiban saya sebagai penyewa.\n\nSaya sangat senang dengan apartemen baru saya. Meski ada banyak penyakit yang perlu diwaspadai saat menyewa apartemen, tetapi dengan penelitian yang matang dan bantuan dari agen yang profesional, saya dapat menemukan tempat tinggal yang nyaman di Jakarta.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-factual_article-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "The Thrilling Finale of the National Badminton Championship",
+   "body": "Pertandingan final Kejuaraan Bulu Tangkis Nasional tahun ini berlangsung di Jakarta pada hari Minggu lalu. Dwi Cobb, peserta dari Jawa Barat, berhasil mengalahkan lawannya, Bagas Maulana dari Jawa Timur, dalam pertandingan yang menggetarkan hati. Pertandingan pertama dimenangkan Dwi Cobb dengan skor tipis 21-19. Pertandingan kedua pun berlangsung sengit, tetapi akhirnya Dwi Cobb kembali berhasil memenangkannya dengan skor 21-18. Dengan kemenangan ini, Dwi Cobb menjadi juara Kejuaraan Bulu Tangkis Nasional tahun ini. Penonton yang hadir di tempat serta yang menonton melalui siaran langsung sangat terhibur dengan pertandingan final yang penuh aksi ini. Dwi Cobb juga mendapatkan hadiah uang sebesar 50 juta rupiah sebagai juara. Sedangkan Bagas Maulana sebagai runner-up mendapatkan hadiah uang sebesar 25 juta rupiah. Keduanya juga mendapat pujian dari juri atas prestasi mereka yang luar biasa dalam pertandingan ini. Kejuaraan Bulu Tangkis Nasional tahun depan akan diselenggarakan di Surabaya.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2p-opinion-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2+",
+   "textType": "opinion",
+   "title": "Collaboration in Crisis",
+   "body": "Operasi pencarian dan penyelamatan (SAR) adalah tugas yang kritis dan sensitif waktu. Ketika bencana melanda, setiap menit berharga, dan kerjasama antarnegara dapat menjadi faktor kunci dalam menyelamatkan nyawa. Contoh nyata kerjasama yang sukses adalah operasi SAR yang dilakukan oleh Indonesia dan Australia. Kedua negara ini telah bekerja sama dalam beberapa kali operasi, termasuk ketika kapal telah tenggelam di perairan utara Australia. Kerjasama ini tidak hanya meningkatkan efisiensi operasi tetapi juga meningkatkan peluang sukses dalam menyelamatkan korban. Indonesia dan Australia memiliki sumber daya, keahlian, dan teknologi yang berbeda tetapi saling melengkapi. Dengan berbagi kekuatan dan kelemahan mereka, mereka dapat menanggapi bencana dengan lebih efektif. Selain itu, kerjasama ini juga meningkatkan hubungan diplomatik antara kedua negara. Dalam operasi SAR, komunikasi yang baik dan kepercayaan saling menguntungkan. Ketika Indonesia dan Australia bekerja sama, mereka menunjukkan bahwa dengan kerja tim yang baik, bahkan bencana terbesar dapat diatasi. Operasi SAR yang sukses ini juga memberikan pelajaran berharga bagi negara lainnya. Kerjasama antarnegara tidak hanya tentang berbagi beban tetapi juga tentang berbagi solusi. Dalam dunia yang semakin terhubung, kerjasama seperti ini menjadi lebih penting untuk menanggapi bencana dengan cepat dan efektif.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-analysis-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Impact of Climate Change on Food Prices in Indonesia",
+   "body": "Meskipun Indonesia merupakan negara penghasil pangan yang besar, harga pangan masih menjadi isu yang sensitif bagi masyarakat. Gangguan iklim telah menyebabkan fluktuasi harga pangan yang signifikan di Indonesia. Fenomena ini tidak hanya berpengaruh pada keputusan pembelian konsumen, tetapi juga pada kemampuan pemerintah untuk menjamin keamanan pangan. Dalam artikel ini, kita akan membahas dampak perubahan iklim pada harga pangan dan cara untuk mengatasinya. Harga pangan di Indonesia terbentuk dari beberapa faktor, termasuk penawaran dan permintaan, biaya produksi, dan kebijakan pemerintah. Namun, dalam beberapa tahun terakhir, perubahan iklim telah menjadi faktor yang semakin berpengaruh. Perubahan iklim menyebabkan pola cuaca yang tidak terduga, seperti hujan lebat di musim kemarau atau kemarau di musim hujan. Hal ini menyebabkan kerusakan pada lahan pertanian dan menurunkan produktivitas. Sebagai contoh, banjir di Jawa Barat pada tahun 2021 telah merusak ribuan hektar sawah, menyebabkan penurunan produksi beras. Selain itu, peningkatan suhu global juga mempengaruhi pertumbuhan tanaman. Tanaman seperti padi dan jagung rentan terhadap stres panas, yang dapat menurunkan hasil panen. Dengan memperburuknya perubahan iklim, diharapkan fluktuasi harga pangan akan terus terjadi. Untuk mengatasi masalah ini, pemerintah dan masyarakat perlu bekerja sama. Pemerataan infrastruktur irigasi, penggunaan benih tanaman yang tahan terhadap stres cuaca, dan penerapan teknologi pertanian canggih dapat membantu menyesuaikan dengan perubahan iklim. Selain itu, pemerintah juga perlu memperkuat sistem early warning dan evakuasi untuk mengurangi kerusakan akibat bencana alam. Dalam menjamin keamanan pangan, pemerintah juga perlu memperbanyak cadangan pangan strategis. Cadangan ini dapat digunakan untuk menstabilkan harga pangan saat terjadi krisis. Selain itu, pemerintah juga perlu melakukan reformasi pada sistem distribusi pangan agar lebih efisien. Hal ini dapat mengurangi kerugian pada jalur distribusi dan memastikan pangan tiba dengan selamat di tangan konsumen. Masyarakat juga perlu berperan aktif dalam mengatasi masalah ini. Dengan mengoptimalkan penggunaan sumber daya dan mengurangi limbah pangan, masyarakat dapat membantu menstabilkan harga pangan. Selain itu, masyarakat juga perlu menyadari pentingnya diversifikasi pangan. Dengan mengkonsumsi berbagai jenis pangan, masyarakat dapat membantu menurunkan tekanan pada komoditas pangan tertentu yang rentan terhadap fluktuasi harga. Dalam kesimpulannya, perubahan iklim telah menyebabkan fluktuasi harga pangan yang signifikan di Indonesia. Untuk mengatasi masalah ini, pemerintah dan masyarakat perlu bekerja sama dalam meningkatkan ketangguhan sistem pangan. Dengan demikian, keamanan pangan dapat terjaga dan harga pangan dapat stabil.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-argumentative_essay-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "A Giant Leap for Indonesia: The Case for a Domestic Spaceport",
+   "body": "Pembukaan fasilitas peluncuran ruang angkasa nasional merupakan langkah maju yang besar bagi Indonesia. Bukan hanya sebagai tanda kemajuan teknologi, tetapi juga sebagai peluang untuk meningkatkan kemampuan teknologi dan ekonomi negara kita. Dengan adanya fasilitas sendiri, Indonesia tidak perlu lagi bergantung pada negara lain untuk meluncurkan satelit atau melakukan penelitian ruang angkasa. Ini akan mengekonomisikan biaya dan memberikan lebih banyak kemerdekaan dalam pengembangan program ruang angkasa kita.  Keuntungan pertama dari membangun fasilitas peluncuran ruang angkasa sendiri adalah peningkatan kemampuan teknologi. Dengan memiliki fasilitas ini, para ilmuwan dan insinyur Indonesia dapat melakukan lebih banyak penelitian dan pengembangan teknologi ruang angkasa. Hal ini akan mempercepat kemajuan teknologi di Indonesia dan meningkatkan daya saing kita di level global. Selain itu, fasilitas ini juga dapat menjadi pusat pendidikan dan pelatihan untuk generasi muda yang tertarik dengan ilmu pengetahuan ruang angkasa.  Keuntungan kedua adalah dampak positif terhadap ekonomi. Pembangunan fasilitas peluncuran ruang angkasa akan menciptakan lapangan kerja baru dan menyokong industri dukungan, seperti manufaktur, teknologi informasi, dan jasa. Ini akan menarik investasi asing dan meningkatkan pertumbuhan ekonomi daerah di sekitar fasilitas. Selain itu, dengan adanya fasilitas sendiri, Indonesia dapat menawarkan jasa peluncuran satelit kepada negara lain, yang akan menjadi sumber pendapatan baru.  Tentang tantangan, tentu saja ada beberapa tantangan yang harus diatasi. Biaya pembangunan dan pemeliharaan fasilitas peluncuran ruang angkasa sangat tinggi. Namun, manfaat jangka panjang yang akan diperoleh akan membayar biaya ini. Selain itu, perlu adanya dukungan dari pemerintah dan sektor swasta untuk memastikan keberhasilan proyek ini.  Dalam kesimpulannya, pembangunan fasilitas peluncuran ruang angkasa nasional adalah langkah yang harus diambil oleh Indonesia. Manfaat yang akan diperoleh, baik dalam bidang teknologi maupun ekonomi, akan memberikan dampak positif yang signifikan bagi negara kita. Dengan semangat dan dukungan yang kuat, Indonesia dapat menjadi pemain utama di bidang penjelajahan ruang angkasa di masa depan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-editorial-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "editorial",
+   "title": "The Urban Housing Crisis: A Call for Collective Action",
+   "body": "Krisis perumahan di kota-kota besar Indonesia semakin mendesak. Permintaan akan rumah yang layak terus meningkat, tetapi penawaran tetap keterlambat. Hal ini menyebabkan harga rumah melambung tinggi, membuat banyak keluarga sulit untuk memiliki tempat tinggal yang layak. Masalah ini tidak hanya terjadi di Jakarta, tetapi juga di kota-kota besar lainnya seperti Surabaya, Bandung, dan Medan. Krisis perumahan ini tidak hanya tentang jumlah rumah yang tidak mencukupi, tetapi juga tentang kualitasnya. Banyak rumah yang tersedia tidak memenuhi standar keselamatan dan kenyamanan. Perumahan di kota-kota besar bukan hanya masalah pemerintah, tetapi juga tanggung jawab kolektif masyarakat. Solusi yang efektif memerlukan kerjasama antara pemerintahan, sektor swasta, dan masyarakat. Pemerintah harus membuat kebijakan yang mendukung pembangunan perumahan yang terjangkau dan berkelas. Sektor swasta dapat membantu dengan investasi dalam proyek perumahan yang inovatif dan ramah lingkungan. Masyarakat juga dapat berperan dengan mengubah pola pemikiran dan prioritas dalam memilih tempat tinggal. Teknologi juga dapat menjadi bagian dari solusi dengan inovasi seperti rumah modulasi dan pemetaan data untuk mengidentifikasi area kosong. Selain itu, peningkatan fasilitas transportasi dan infrastruktur juga penting untuk memudahkan akses ke perumahan yang ada di luar kota. Krisis perumahan di kota-kota besar membutuhkan perhatian dan aksinya dari semua pihak. Dengan kerja sama yang erat dan komitmen yang kuat, krisis ini dapat dikurangi dan akhirnya diselesaikan. Setiap langkah yang diambil hari ini akan memastikan bahwa generasi masa depan memiliki tempat tinggal yang layak dan nyaman.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-speech-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "speech",
+   "title": "Food Security and the Inflation Challenge",
+   "body": "Saudara-saudara yang terhormat, Pada kesempatan ini, saya ingin membahas isu yang sangat penting bagi kita semua: kenaikan harga pangan dan tantangan yang dihadapi dalam memastikan keamanan pangan di Indonesia. Dalam beberapa bulan terakhir, kita telah melihat kenaikan signifikan dalam harga berbagai macam produk pangan. Hal ini tidak hanya mempengaruhi kesejahteraan keluarga, tetapi juga stabilitas ekonomi nasional. Pemerintah telah mengambil berbagai langkah untuk meningkatkan produksi domestik. Kita telah meningkatkan dukungan bagi petani, baik dalam bentuk bantuan teknis maupun akses ke modal. Kita juga berfokus pada pengembangan infrastruktur pertanian, seperti irigasi dan jaringan distribusi, untuk memastikan bahwa hasil pertanian dapat tiba dengan aman dan cepat ke pasaran. Selain itu, kita sedang bekerja keras untuk mengendalikan distribusi dan mengurangi inflasi. Ini meliputi pengawasan harga, pengaturan stok pangan strategis, dan kerjasama antara sector publik dan swasta dalam memastikan keamanan pangan. Kita juga sadar bahwa tantangan ini tidak hanya berlaku di tingkat nasional, tetapi juga global. Kita harus siap menghadapi variabilitas iklim, fluktuasi harga komoditas global, dan berbagai faktor lainnya yang dapat mempengaruhi ketersediaan pangan. Oleh karena itu, kita perlu untuk terus meningkatkan daya saing petani kita, meningkatkan produktivitas, dan memastikan bahwa kita memiliki akses yang stabil ke pasokan pangan. Dalam menghadapi tantangan ini, kerjasama antara pemerintah, sector swasta, dan masyarakat sangat penting. Kita harus bekerja sama untuk memastikan bahwa setiap warga negara kita memiliki akses ke pangan yang cukup dan terjangkau. Hanya dengan bekerja bersama-sama, kita bisa memastikan keamanan pangan dan kesejahteraan bagi seluruh rakyat Indonesia. Terima kasih.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  }
+ ],
+ "items": [
+  {
+   "id": "id-dr-0p-menu-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-menu-001",
+   "stem": "What is the purpose of 'makanan dan minuman' in the menu?",
+   "choices": [
+    "To provide food and drink to firefighters",
+    "To sell snacks to visitors",
+    "To offer meals to tourists",
+    "To serve food to the public"
+   ],
+   "answer": 0,
+   "explanation": "The menu is for a forest fire safety event, so the purpose of 'makanan dan minuman' is to provide food and drink to firefighters, as indicated by the context of the event.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-notice-001",
+   "stem": "What is the word for \"water\" in the notice?",
+   "choices": [
+    "panas",
+    "matahari",
+    "musim",
+    "air"
+   ],
+   "answer": 3,
+   "explanation": "The word for \"water\" in the notice is **air**. The notice mentions **air** putih and **air** keran, indicating that **air** refers to water. The other options refer to sun (**matahari**), heat (**panas**), and season (**musim**).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-schedule-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-schedule-001",
+   "stem": "When will the new road safety law go into effect?",
+   "choices": [
+    "In one month",
+    "Immediately",
+    "In six months",
+    "In three months"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the law will go into effect 'tiga bulan setelah tanggal ini', which means 'three months after this date'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-sign-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-sign-001",
+   "stem": "What does \"bantuan\" mean here?",
+   "choices": [
+    "a group of people",
+    "a kind of help",
+    "a type of food",
+    "a place to stay"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"a kind of help\", because the sign says \"Pusat Bantuan Gempa\", which means \"Earthquake Relief Center\", indicating that \"bantuan\" refers to help or aid. The other options are not mentioned or implied in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-advertisement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-advertisement-003",
+   "stem": "What discount does the advertisement offer on the new electric cars?",
+   "choices": [
+    "10%",
+    "15%",
+    "25%",
+    "20%"
+   ],
+   "answer": 3,
+   "explanation": "The advertisement states 'Diskon 20% untuk mobil listrik baru!' which means '20% discount for new electric cars!'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-advertisement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-advertisement-003",
+   "stem": "What is the main purpose of this advertisement?",
+   "choices": [
+    "To offer a discount on new electric cars",
+    "To explain how electric cars work",
+    "To inform about the benefits of electric cars",
+    "To announce a new law about electric cars"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to offer a discount on new electric cars, as indicated by the phrase 'Diskon 20% untuk mobil listrik baru!'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-advertisement-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1-advertisement-003",
+   "stem": "What does 'hemat energi' mean here?",
+   "choices": [
+    "Energy saving",
+    "Energy consuming",
+    "Energy wasting",
+    "Energy producing"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'hemat energi' is used to describe the electric cars, indicating that they save energy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-advertisement-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-advertisement-004",
+   "stem": "What is the word in the announcement that means \"new\" here?",
+   "choices": [
+    "terbaru",
+    "rute",
+    "bus",
+    "cepat"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is \"terbaru\". The text says \"rute bus terbaru\", which means \"the newest bus route\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-advertisement-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "id-dr-1-advertisement-004",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To inform about bus delays",
+    "To discuss bus fares",
+    "To advertise a bus company",
+    "To announce a new bus route"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is \"To announce a new bus route\". The text says \"Kami bangga untuk mengumumkan rute bus terbaru kami\", which means \"We are proud to announce our newest bus route\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-short_message-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-short_message-001",
+   "stem": "What is the main message of the text?",
+   "choices": [
+    "All tourist attractions are open again.",
+    "Java's tourism is now allowed to reopen.",
+    "Tourism will reopen in the next month.",
+    "Tourists must follow new safety guidelines."
+   ],
+   "answer": 1,
+   "explanation": "The main message is that tourism is now allowed to reopen, as stated in 'Pemerintah Jawa membuka kembali pariwisata.' The other choices are not mentioned or are incorrect according to the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-short_message-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1-short_message-001",
+   "stem": "What does 'peraturan' mean here?",
+   "choices": [
+    "Rules",
+    "Attractions",
+    "Safety",
+    "Visitors"
+   ],
+   "answer": 0,
+   "explanation": "The word 'peraturan' is used to mean 'rules' or 'regulations' in the context of the text: 'Semua harus patuhi peraturan yang berlaku.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-announcement-001",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "A new terminal at Kualanamu International Airport will open next month.",
+    "All flights will be moved to the new terminal immediately.",
+    "Passengers should expect significant delays during the transition.",
+    "The old terminal will be closed permanently."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is clearly stated in the first sentence: \"Terminal baru di Bandar Udara Internasional Kualanamu akan dibuka pada 15 Mei.\" The other options present details or inferences that are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-announcement-001",
+   "stem": "When will the new terminal at Kualanamu International Airport open?",
+   "choices": [
+    "On May 15th",
+    "On June 1st",
+    "On June 15th",
+    "On May 1st"
+   ],
+   "answer": 0,
+   "explanation": "The opening date is explicitly mentioned in the text: \"Terminal baru di Bandar Udara Internasional Kualanamu akan dibuka pada 15 Mei.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-announcement-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1p-announcement-001",
+   "stem": "In the text, what does \"pindah\" mean?",
+   "choices": [
+    "To open",
+    "To build",
+    "To close",
+    "To move"
+   ],
+   "answer": 3,
+   "explanation": "The word \"pindah\" is used in the context of moving flights to the new terminal: \"Semua penerbangan akan dipindah ke terminal baru.\" This indicates that \"pindah\" means \"to move\" in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-description-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-description-001",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The decision by Bank Indonesia to raise interest rates",
+    "The effects of inflation on the economy",
+    "The impact of interest rates on personal savings",
+    "The history of interest rate changes in Indonesia"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the text is the decision by Bank Indonesia to raise interest rates. This is clearly stated in the first sentence: \"Bank Indonesia telah menaikkan suku bunga.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-description-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-description-001",
+   "stem": "According to the text, what is the main reason for the increase in interest rates?",
+   "choices": [
+    "To encourage people to save more money",
+    "To combat the rising inflation rate",
+    "To increase the value of the Indonesian rupiah",
+    "To attract more foreign investment"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the main reason for the increase in interest rates is to combat the rising inflation rate: \"untuk mengatasi inflasi yang meningkat.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-description-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1p-description-001",
+   "stem": "What does the word \"menahan\" mean here?",
+   "choices": [
+    "To increase",
+    "To prevent",
+    "To decrease",
+    "To encourage"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"menahan\" means \"to prevent\" or \"to curb\". The text uses it to describe the goal of preventing inflation from getting worse: \"menahan inflasi dari semakin meningkat.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-description-002",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "A proposal to build more roads",
+    "A new tax on car ownership",
+    "A change in the speed limit for cars",
+    "A new rule about seat belts in Indonesia"
+   ],
+   "answer": 3,
+   "explanation": "The text discusses a new law about seat belts, specifically that they will now be required for all car passengers. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-description-002",
+   "stem": "What is the penalty for not wearing a seat belt under the new law?",
+   "choices": [
+    "A suspension of driving privileges",
+    "A fine of up to 500,000 rupiah",
+    "A fine of up to 1 million rupiah",
+    "A jail sentence of up to 6 months"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the penalty for not wearing a seat belt is a fine of up to 500,000 rupiah. The other options are not mentioned as penalties in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1p-description-002",
+   "stem": "In the text, what does 'penumpang' mean?",
+   "choices": [
+    "Driver",
+    "Pedestrian",
+    "Bicycle",
+    "Passenger"
+   ],
+   "answer": 3,
+   "explanation": "The text uses 'penumpang' to refer to those who are not driving the car, i.e., passengers. The other options are not correct in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-news_brief-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-news_brief-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The Indonesian and Malaysian governments are planning a new infrastructure project.",
+    "A new trade agreement has been signed between Indonesia and Malaysia.",
+    "A cultural exchange program between Indonesia and Malaysia is being expanded.",
+    "Indonesian and Malaysian students are organizing a joint protest."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that a cultural exchange program between Indonesia and Malaysia is being expanded. This is evident from the text stating that 'Program pertukaran budaya antara Indonesia dan Malaysia akan diperluas' and mentioning the involvement of students and educators from both countries.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-news_brief-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-news_brief-001",
+   "stem": "What is one of the activities planned for the exchange program?",
+   "choices": [
+    "Organizing a joint sports tournament.",
+    "Building a new school.",
+    "Attending cultural workshops.",
+    "Planting trees in local communities."
+   ],
+   "answer": 2,
+   "explanation": "One of the activities planned for the exchange program is attending cultural workshops. The text mentions that 'Peserta akan mengikuti bengkel budaya' and 'belajar tentang kesenian dan tradisi masing-masing'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-news_brief-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1p-news_brief-001",
+   "stem": "What does 'memperluas' mean here?",
+   "choices": [
+    "To expand",
+    "To cancel",
+    "To delay",
+    "To reduce"
+   ],
+   "answer": 0,
+   "explanation": "'Memperluas' means 'to expand' in this context. The text states that the exchange program 'akan diperluas', indicating that it will be expanded to include more participants and activities.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-news_brief-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-news_brief-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Indonesian navy ships are docking in Timor-Leste for maintenance.",
+    "Indonesian navy ships are delivering humanitarian aid to Timor-Leste.",
+    "Indonesian navy ships are participating in a joint military operation with Timor-Leste.",
+    "Indonesian navy ships are visiting Timor-Leste for training exercises."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is that Indonesian navy ships are visiting Timor-Leste for training exercises. This is supported by the text stating: 'Kapal-kapal angkatan laut Indonesia akan berlabuh di pelabuhan Dili untuk latihan.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-news_brief-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-news_brief-002",
+   "stem": "What is the name of the port in Timor-Leste where the Indonesian navy ships will dock?",
+   "choices": [
+    "Pelabuhan Jakarta",
+    "Pelabuhan Dili",
+    "Pelabuhan Surabaya",
+    "Pelabuhan Kupang"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is Pelabuhan Dili. The text explicitly mentions: 'Kapal-kapal angkatan laut Indonesia akan berlabuh di pelabuhan Dili.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-news_brief-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1p-news_brief-002",
+   "stem": "What does 'berlabuh' mean here?",
+   "choices": [
+    "To maintain",
+    "To sail",
+    "To dock",
+    "To train"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'to dock'. The text uses 'berlabuh' to indicate that the ships will dock at the port in Dili: 'Kapal-kapal angkatan laut Indonesia akan berlabuh di pelabuhan Dili.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-biography-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-biography-001",
+   "stem": "What is the Komodo National Park known for?",
+   "choices": [
+    "its ancient temples",
+    "its volcanic landscapes",
+    "its dense rainforests",
+    "its diverse wildlife"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the Komodo National Park is known for its diverse wildlife, specifically mentioning the Komodo dragons in the sentence 'Taman Nasional Komodo terkenal dengan keanekaragaman hayatannya, terutama dengan kehadiran buaya Komodo.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-biography-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-biography-001",
+   "stem": "In the text, what does the word 'pulih' mean here?",
+   "choices": [
+    "to protect",
+    "to destroy",
+    "to recover",
+    "to explore"
+   ],
+   "answer": 2,
+   "explanation": "The word 'pulih' is used in the context of tourism recovering, as seen in the sentence 'Turisme di Taman Nasional Komodo mulai pulih setelah penurunan yang terjadi selama pandemi.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-biography-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "purpose",
+   "passageId": "id-dr-2-biography-001",
+   "stem": "Why did the author mention the decline in tourism during the pandemic?",
+   "choices": [
+    "To discuss the impact of the pandemic on wildlife",
+    "To promote a specific tour package",
+    "To explain the current recovery of tourism",
+    "To criticize the government's handling of the pandemic"
+   ],
+   "answer": 2,
+   "explanation": "The author mentions the decline in tourism during the pandemic to provide context for the current recovery, as stated in the sentence 'Turisme di Taman Nasional Komodo mulai pulih setelah penurunan yang terjadi selama pandemi.' This sets the stage for discussing the positive developments in tourism.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-event_description-001",
+   "stem": "What is the main argument of the young man against mandatory military service?",
+   "choices": [
+    "It does not prepare soldiers for modern warfare.",
+    "It is too expensive for the government.",
+    "It is unfair because women are not required to serve.",
+    "It limits personal freedom and career choices."
+   ],
+   "answer": 3,
+   "explanation": "The young man argues that mandatory military service limits personal freedom and career choices, as stated in the text: \"saya merasa pelayanan militer wajib akan membatasi kebebasan saya dan pilihan karier.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-event_description-001",
+   "stem": "The woman says that \"melalui pelayanan militer, kita dapat memahami nilai keberanian dan kesetiaan\". What does \"kesetiaan\" mean here?",
+   "choices": [
+    "Intelligence",
+    "Courage",
+    "Loyalty",
+    "Strength"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"kesetiaan\" refers to loyalty, as the woman is discussing the values that military service can teach, specifically loyalty to one's country and fellow soldiers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dr-2-event_description-001",
+   "stem": "What can be inferred about the audience's reaction to the debate?",
+   "choices": [
+    "They were bored and uninterested.",
+    "They were engaged and considering both sides of the argument.",
+    "They were heavily in favor of the young man's argument.",
+    "They were heavily in favor of the young woman's argument."
+   ],
+   "answer": 1,
+   "explanation": "The text states that \"penonton terlihat tertarik dan aktif mendengarkan argumen dari kedua sisi,\" indicating that the audience was engaged and considering both sides of the argument.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-event_description-002",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The satellite will provide better weather forecasting for the region.",
+    "A new satellite was launched from the Pangkalan Tinggi Space Center.",
+    "The Indonesian Space Agency has developed a new rocket for future launches.",
+    "The local community was disappointed by the launch event."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that a new satellite was launched, as stated in the opening sentence: \"Satelit baru telah diluncurkan dari Pusat Pengembangan Penerbangan dan Antariksa Pangkalan Tinggi.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-event_description-002",
+   "stem": "What time did the launch take place?",
+   "choices": [
+    "At 10:00 AM local time.",
+    "At 8:00 AM local time.",
+    "At 12:00 PM local time.",
+    "At 2:00 PM local time."
+   ],
+   "answer": 2,
+   "explanation": "The launch time is specified as \"pada pukul 12.00 waktu setempat\" in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-event_description-002",
+   "stem": "What does \"menarik perhatian\" mean here?",
+   "choices": [
+    "To cause disappointment",
+    "To attract attention",
+    "To delay the event",
+    "To provide information"
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"menarik perhatian\" is used to describe how the launch event captured the interest of many people: \"Acara peluncuran ini menarik perhatian banyak orang.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-event_description-003",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The process of renting an apartment in Jakarta",
+    "The benefits of living in a high-rise apartment in Jakarta",
+    "The challenges of finding an affordable apartment in Jakarta",
+    "The history of apartment living in Jakarta"
+   ],
+   "answer": 0,
+   "explanation": "The text describes the steps taken by the narrator to rent an apartment in Jakarta, including searching online, visiting agencies, and signing a contract.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-event_description-003",
+   "stem": "What is the name of the website the narrator used to search for apartments?",
+   "choices": [
+    "Rumah.com",
+    "Mituru.com",
+    "Rumah123.com",
+    "Lamudi.co.id"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the narrator 'mulai mencari di situs Lamudi.co.id, sebuah situs yang menawarkan berbagai pilihan apartemen di Jakarta.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-event_description-003",
+   "stem": "In the text, what does 'penyakit' mean here?",
+   "choices": [
+    "A symptom",
+    "A problem",
+    "A cure",
+    "A disease"
+   ],
+   "answer": 1,
+   "explanation": "The text uses 'penyakit' to describe the issues or problems that can arise when renting an apartment, such as 'ada banyak penyakit yang perlu diwaspadai saat menyewa apartemen.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-factual_article-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-factual_article-001",
+   "stem": "The main idea of the passage is that...",
+   "choices": [
+    "Indonesia has many talented badminton players",
+    "badminton is the most popular sport in Indonesia",
+    "the National Badminton Championship was held in Jakarta this year",
+    "the final match of the National Badminton Championship was exciting and intense"
+   ],
+   "answer": 3,
+   "explanation": "Choice 2 is correct. The passage focuses on the exciting and intense final match of the National Badminton Championship. While the other choices may be true, they are not the main idea of the passage. The relevant words are 'perlawanan akhir yang menggetarkan hati' (the heart-stopping final match).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-factual_article-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-factual_article-001",
+   "stem": "What was the score of the final match?",
+   "choices": [
+    "20-18, 20-19",
+    "21-18, 21-19",
+    "20-19, 20-18",
+    "21-19, 21-18"
+   ],
+   "answer": 3,
+   "explanation": "Choice 1 is correct. The passage states that 'Dwi Cobb memenangkan pertandingan final dengan skor 21-19, 21-18' (Dwi Cobb won the final match with a score of 21-19, 21-18).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-factual_article-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-factual_article-001",
+   "stem": "In the passage, what does 'menggetarkan hati' mean?",
+   "choices": [
+    "boring",
+    "calm",
+    "unimportant",
+    "exciting"
+   ],
+   "answer": 3,
+   "explanation": "Choice 2 is correct. The phrase 'menggetarkan hati' is used to describe the final match, indicating that it was exciting. The relevant words are 'perlawanan akhir yang menggetarkan hati' (the heart-stopping final match).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2p-opinion-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dr-2p-opinion-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The passage argues that Indonesia should invest more in its own search-and-rescue infrastructure.",
+    "The passage describes the history of search-and-rescue operations in Indonesia.",
+    "The passage critiques the effectiveness of joint search-and-rescue operations.",
+    "The passage discusses the benefits of international cooperation in search-and-rescue operations."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that international cooperation in search-and-rescue operations is beneficial, as evidenced by the successful collaboration between Indonesia and Australia. The passage discusses the advantages of such cooperation, including shared resources, expertise, and technology, and how it leads to better outcomes in crisis situations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2p-opinion-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dr-2p-opinion-001",
+   "stem": "What can be inferred about the relationship between Indonesia and Australia based on the passage?",
+   "choices": [
+    "They are both struggling with ineffective search-and-rescue operations.",
+    "They have a strong and cooperative relationship.",
+    "They are competitors in the field of search-and-rescue operations.",
+    "They have a history of conflict and mistrust."
+   ],
+   "answer": 1,
+   "explanation": "The passage infers a strong and cooperative relationship between Indonesia and Australia. It mentions that they have worked together successfully in search-and-rescue operations, sharing resources, expertise, and technology, which indicates a positive and collaborative relationship.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2p-opinion-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2p-opinion-001",
+   "stem": "What does the word 'sink' mean as used in the phrase 'the ship had sunk'?",
+   "choices": [
+    "To drift",
+    "To submerge",
+    "To float",
+    "To capsize"
+   ],
+   "answer": 1,
+   "explanation": "The word 'sink' in the phrase 'the ship had sunk' means to submerge or go under water. The context is about a ship that has gone down in the ocean, which aligns with the meaning of submerging.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-analysis-001",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "Climate change has significantly affected food prices in Indonesia.",
+    "The Indonesian government has implemented successful policies to stabilize food prices.",
+    "The use of technology in agriculture has completely mitigated the effects of climate change on food prices.",
+    "Indonesia's food prices are determined solely by international market trends."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is stated explicitly in the text: \"Gangguan iklim telah menyebabkan fluktuasi harga pangan yang signifikan di Indonesia\" (Climate change has caused significant fluctuations in food prices in Indonesia).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-analysis-001",
+   "stem": "What can be inferred about the future of food prices in Indonesia?",
+   "choices": [
+    "Food prices will be determined by global economic trends.",
+    "Food prices will remain stable due to government intervention.",
+    "Food prices will continue to be affected by climate change.",
+    "Food prices will decrease as agricultural technology improves."
+   ],
+   "answer": 2,
+   "explanation": "The text implies that climate change will continue to affect food prices: \"Dengan memperburuknya perubahan iklim, diharapkan fluktuasi harga pangan akan terus terjadi\" (With the worsening of climate change, it is expected that fluctuations in food prices will continue to occur).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-analysis-001",
+   "stem": "The word \"fluktuasi\" here means",
+   "choices": [
+    "increase",
+    "variation",
+    "decrease",
+    "stability"
+   ],
+   "answer": 1,
+   "explanation": "The word \"fluktuasi\" is used to describe the changes in food prices: \"Gangguan iklim telah menyebabkan fluktuasi harga pangan yang signifikan\" (Climate change has caused significant fluctuations in food prices).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-argumentative_essay-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-argumentative_essay-001",
+   "stem": "What is the main argument of this essay?",
+   "choices": [
+    "Indonesia should collaborate with other countries to build a shared spaceport in Southeast Asia.",
+    "Indonesia should build a domestic spaceport to boost its economy and technological capabilities.",
+    "Space exploration is too expensive and should be left to more developed countries.",
+    "Indonesia should focus on improving its domestic infrastructure before investing in space exploration."
+   ],
+   "answer": 1,
+   "explanation": "The essay argues that building a domestic spaceport would bring significant economic and technological benefits to Indonesia, as seen in the phrases 'membangun fasilitas peluncuran ruang angkasa nasional' and 'meningkatkan kemampuan teknologi dan ekonomi Indonesia'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-argumentative_essay-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-argumentative_essay-001",
+   "stem": "What can be inferred about the author's view on Indonesia's current space capabilities?",
+   "choices": [
+    "The author thinks Indonesia's space capabilities are currently insufficient for interplanetary missions.",
+    "The author believes Indonesia has the potential to develop advanced space capabilities.",
+    "The author believes Indonesia should not invest in space capabilities at all.",
+    "The author thinks Indonesia's space capabilities are already advanced enough."
+   ],
+   "answer": 1,
+   "explanation": "The author implies that Indonesia has the potential to develop advanced space capabilities, as seen in the phrase 'meningkatkan kemampuan teknologi dan ekonomi Indonesia' and the discussion of benefits from having a domestic spaceport.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-argumentative_essay-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "id-dr-3-argumentative_essay-001",
+   "stem": "What is the tone of this essay?",
+   "choices": [
+    "Indifferent and neutral",
+    "Persuasive and optimistic",
+    "Cautious and skeptical",
+    "Critical and pessimistic"
+   ],
+   "answer": 1,
+   "explanation": "The essay aims to persuade the reader that building a domestic spaceport is beneficial, and it expresses optimism about the potential outcomes, as seen in phrases like 'langkah maju yang besar' and 'memberikan manfaat yang signifikan'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-editorial-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The housing shortage in cities is a complex issue requiring collective action and innovative solutions.",
+    "People should move to rural areas to alleviate the housing crisis in cities.",
+    "The government is solely responsible for solving the housing shortage in cities.",
+    "Private developers are exploiting the housing crisis for profit."
+   ],
+   "answer": 0,
+   "explanation": "The author argues that the housing shortage is a complex issue that requires collective action and innovative solutions, as stated in the phrase 'Perumahan di kota-kota besar bukan hanya masalah pemerintah, tetapi juga tanggung jawab kolektif masyarakat.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-editorial-001",
+   "stem": "What can be inferred about the author's view on the role of technology in addressing the housing crisis?",
+   "choices": [
+    "The author is unsure about the potential of technology in addressing the housing crisis.",
+    "The author thinks technology can provide innovative solutions to the housing crisis.",
+    "The author believes technology should replace human effort in solving the housing crisis.",
+    "The author believes technology is irrelevant in solving the housing crisis."
+   ],
+   "answer": 1,
+   "explanation": "The author suggests that technology can provide innovative solutions, as mentioned in 'Teknologi juga dapat menjadi bagian dari solusi dengan inovasi seperti rumah modulasi dan pemetaan data untuk mengidentifikasi area kosong.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-editorial-001",
+   "stem": "What does the word 'kolektif' mean here?",
+   "choices": [
+    "Private",
+    "Collective",
+    "Governmental",
+    "Individual"
+   ],
+   "answer": 1,
+   "explanation": "'Kolektif' in this context means 'collective', as in 'tanggung jawab kolektif masyarakat' (the collective responsibility of society).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-speech-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-speech-002",
+   "stem": "What is the central theme of the speech?",
+   "choices": [
+    "The need for Indonesia to increase its food exports",
+    "The government's strategies to address rising food prices",
+    "The impact of global climate change on Indonesian agriculture",
+    "The benefits of genetically modified crops for Indonesian farmers"
+   ],
+   "answer": 1,
+   "explanation": "The speaker discusses various strategies the government is implementing to address rising food prices, such as increasing domestic production, controlling distribution, and managing inflation. This is evident in lines like 'Pemerintah telah mengambil berbagai langkah untuk meningkatkan produksi domestik' and 'upaya untuk mengendalikan distribusi dan mengurangi inflasi'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-speech-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-speech-002",
+   "stem": "In the phrase 'Pemerintah telah mengambil berbagai langkah untuk meningkatkan produksi domestik', what does 'langkah' mean here?",
+   "choices": [
+    "Programs or initiatives",
+    "Steps or measures",
+    "Resources or funds",
+    "Policies or regulations"
+   ],
+   "answer": 1,
+   "explanation": "The word 'langkah' in this context refers to the actions or measures taken by the government. The sentence discusses the various steps the government has taken to increase domestic production.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-speech-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-speech-002",
+   "stem": "What can be inferred about the speaker's view on the role of the private sector in addressing food security?",
+   "choices": [
+    "The private sector should focus only on exports to earn foreign currency",
+    "The private sector should take full responsibility for food security",
+    "The private sector has no role in addressing food security",
+    "The private sector should collaborate with the government to ensure food security"
+   ],
+   "answer": 3,
+   "explanation": "The speaker implies that the private sector should work together with the government to ensure food security. This is suggested by the statement 'kerjasama antara sector publik dan swasta dalam memastikan keamanan pangan'.",
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}

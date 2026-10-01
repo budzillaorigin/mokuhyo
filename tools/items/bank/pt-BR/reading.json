@@ -1,0 +1,1799 @@
+{
+ "bank": "pt-br-reading-core",
+ "language": "pt-BR",
+ "title": "Brazilian Portuguese reading: core bank",
+ "license": "CC BY-SA 4.0",
+ "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
+ "passages": [
+  {
+   "id": "pt-dr-0p-menu-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Tech Start-Up Lunch Menu",
+   "body": "Inovação Digital\nSalada de Folhas Verdes\nSanduíche de Frango Grelhado\nSucos Naturais\nBiscoitos de Aveia\n\nLanche Rápido e Saudável",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-schedule-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "schedule",
+   "title": "Debate Schedule",
+   "body": "O debate sobre o serviço militar começa às 14:00 no auditório principal.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-sign-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Restricted Fishing Area",
+   "body": "Área de Preservação Ambiental\nProibida a pesca. Multa de R$ 500,00.\nProibido o uso de redes e apetrechos.\nRespeite a natureza e a vida aquática.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-sign-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Hotel Reservation Issue",
+   "body": "Hotel das Montanhas\n\nATENÇÃO: Sua reserva não foi encontrada. Verifique os dados e tente novamente. Obrigado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-sign-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Emergency Shelter",
+   "body": "Socorro de emergência após terremoto. Este abrigo está aberto a todos os afetados pelo terremoto. Ajudamos com água, comida e cobertores. Por favor, traga seus documentos de identificação. Agradecemos pela cooperação. Abrigado, seguro e alimentado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Water Supply Disruption",
+   "body": "Saneamento Fluminense informa que, devido a um ataque cibernético em nosso sistema informatizado, pode haver interrupções no fornecimento de água. Estamos trabalhando para resolver o problema o mais rápido possível. Pedimos desculpas pelo inconveniente e agradecemos sua compreensão.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "announcement",
+   "title": "International Education Conference",
+   "body": "Conferência Internacional de Educação\n\nVocê está convidado a participar da Conferência Internacional de Educação, que acontecerá em São Paulo, Brasil, de 15 a 17 de março. O evento tem como objetivo compartilhar conhecimentos e experiências na área da educação. Todos os educadores interessados estão convidados a participar. A conferência será realizada no Centro de Convenções Reunions São Paulo. Mais informações em breve. Não perca essa oportunidade de aprender e fazer networking com educadores de todo o mundo!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-notice-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "notice",
+   "title": "Evacuation Advisory",
+   "body": "Aviso de inundação iminente! Moradores das áreas baixas do Rio das Pedras, preparem-se para possíveis inundações nas próximas 24 horas. Utilizem este tempo para reunir suprimentos de emergência, como água, alimentos e remédios. Levem seus animais de estimação com vocês. Sigam as orientações das autoridades locais e evacuem para o abrigo designado no Centro Comunitário da Vila Nova, se necessário. Mantenham-se informados sobre as últimas notícias e orientações. Fiquem a salvo!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-notice-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "notice",
+   "title": "Preparing for Summer",
+   "body": "Prefeitura Municipal\n\nAviso aos Moradores\n\nDevido à escassez de chuva, estamos enfrentando uma falta de água. Para ajudar a economizar, siga estas dicas:\n\n- Tome banhos mais curtos.\n- Feche a torneira enquanto escova os dentes.\n- Use a máquina de lavar roupas apenas quando estiver cheia.\n\nAgradecemos sua colaboração.\n\nPrefeitura Municipal",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-short_message-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Port Visit Announcement",
+   "body": "Atenção, moradores! O navio Niterói estará atracado no porto amanhã. A tripulação visitará a cidade e participará de eventos culturais. Apresente-se no cais principal para dar as boas-vindas aos marinheiros. Não perca essa oportunidade única!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Naval Vessel Arrival",
+   "body": "Aviso à população: O navio naval Almirante Tamandaré chegará ao porto do Rio de Janeiro no próximo sábado, 10 de março. O navio estará atracado no cais da Marinha do Brasil por três dias. O Almirante Tamandaré é um navio-escola que representa a força e a tradição da Marinha do Brasil. Durante sua estadia, o navio estará aberto para visitas e haverá diversas atrações para o público, incluindo apresentações de música e dança. Essa é uma ótima oportunidade para conhecer mais sobre a história e a importância da Marinha em nosso país. Todos estão convidados a participar deste evento especial.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "How to Check Food Prices",
+   "body": "Como verificar os preços dos alimentos em diferentes lojas é uma ótima maneira de economizar dinheiro. Siga estas etapas: \n\n1. Faça uma lista dos itens que você precisa comprar. \n2. Verifique os anúncios de promoções semanais das lojas próximas. \n3. Compare os preços dos itens na sua lista em diferentes lojas. \n4. Visite as lojas para confirmar os preços e comprar os itens mais baratos. \n\nLembre-se de verificar os preços por unidade para garantir que você está obtendo o melhor negócio. Isso ajudará você a economizar dinheiro nas suas compras semanais.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-instructions-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Reporting Suspicious Activity",
+   "body": "Instruções para Relatar Atividades Suspeitas\n\nNosso compromisso é combater a corrupção e manter a integridade em todas as nossas operações. Se você suspeitar de alguma irregularidade, entre em contato com nosso departamento imediatamente. Sua informação é vital para nossas investigações.\n\nPara relatar uma atividade suspeita, forneça todas as informações que você tem sobre a situação. Isso inclui datas, horários, locais, nomes de pessoas envolvidas e qualquer outra informação relevante. Quanto mais detalhada a informação, melhor podemos investigar.\n\nLembre-se, todas as denúncias são confidenciais. Não precisamos que você se identifique, mas se desejar, podemos entrar em contato com você para obter mais informações. Juntos, podemos combater a corrupção e garantir um ambiente justo e transparente para todos.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-news_brief-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Brazil and France Strengthen Ties",
+   "body": "Brasil e França realizaram um exercício militar conjunto na semana passada. O exercício, chamado de 'Operação Cruzeiro do Sul', teve como objetivo fortalecer a cooperação mútua e a interoperabilidade entre as forças armadas dos dois países. As tropas brasileiras e francesas trabalharam juntas em diversas simulações de operações, incluindo ações de busca e salvamento, combate a incêndios florestais e respostas a desastres naturais. O exercício também incluiu treinamentos conjuntos em táticas de combate e logística militar. As autoridades de ambos os países destacaram a importância da parceria estratégica entre Brasil e França para a segurança regional e global.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-biography-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "biography",
+   "title": "The Journey of Compassion",
+   "body": "João Silva é um caminhoneiro que dedica sua vida a levar ajuda humanitária para comunidades afetadas por desastres naturais no Brasil. Trabalhando para a organização Caminhões de Esperança, João percorre milhares de quilômetros todos os meses, enfrentando estradas esburacadas e condições climáticas adversas. Seu mais recente destino foi a pequena cidade de Serrana, no interior de Minas Gerais, que havia sido devastada por enchentes. João carregava seu caminhão com alimentos, água potável, cobertores e kits de higiene para distribuir entre os moradores. Apesar dos desafios, João encontra satisfação em seu trabalho. 'Ver o alívio nos rostos das pessoas quando chegamos com a ajuda é o que me motiva a continuar', diz ele. Durante sua estadia em Serrana, João também ajudou a montar um abrigo temporário para famílias desalojadas. Sua compaixão e dedicação fazem dele um verdadeiro herói para muitas pessoas que enfrentam momentos difíceis.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-event_description-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Naval Parade in Rio de Janeiro",
+   "body": "O Comando da Marinha anunciou que realizará uma parada naval na Baía de Guanabara, no Rio de Janeiro, em 10 de julho. O evento marcará o aniversário da Marinha do Brasil e contará com a participação de diversos navios de guerra e submarinos. A parada naval ocorrerá no fim da manhã, começando às 11h, e será transmitida ao vivo pela televisão e pelo site da Marinha. O público poderá assistir ao desfile a partir das praias de Copacabana e Ipanema. Além dos navios, haverá apresentações de bandas militares e demonstrações de habilidades dos fuzileiros navais. A Marinha convida todos os cidadãos a participarem deste evento especial, que celebra a importância da força naval para o país. Para mais informações, visite o site oficial da Marinha ou ligue para o número de contato fornecido.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-factual_article-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "Earthquake Response in Minas Gerais",
+   "body": "Na manhã de ontem, um terremoto de magnitude 6,2 atingiu a região central de Minas Gerais, causando danos significativos a infraestruturas e deixando milhares de pessoas desabrigadas. O governo do estado de Minas Gerais, em parceria com organizações não governamentais, está coordenando esforços de socorro. Voluntários estão sendo organizados para ajudar na distribuição de suprimentos e na limpeza de áreas afetadas. Um dos principais desafios tem sido o acesso a áreas remotas afetadas pelo terremoto. Equipes de resgate estão trabalhando incessantemente para garantir que os necessitados recebam a ajuda necessária. A comunidade internacional também tem expressado solidariedade, oferecendo apoio e recursos para as vítimas do desastre.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-letter-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "letter",
+   "title": "New Hires at DevSul",
+   "body": "Prezados colegas,\r\n\r\nEspero que esta mensagem os encontre bem. Gostaria de apresentar a vocês os nossos novos colegas que se juntaram à DevSul esta semana.\r\n\r\nPrimeiramente, gostaria de apresentar a Ana Silva, nossa nova desenvolvedora. A Ana se formou na Universidade Federal do Rio Grande do Sul e tem experiência em desenvolvimento de software para aplicativos móveis. Ela vai trabalhar com a nossa equipe de desenvolvimento para melhorar a nossa plataforma.\r\n\r\nAlém disso, gostaria de apresentar o Carlos Mendes, nosso novo designer. O Carlos tem um portfólio impressionante e já trabalhou com várias startups de tecnologia. Ele vai ajudar a nossa equipe de design a criar interfaces mais intuitivas e atraentes para os nossos usuários.\r\n\r\nPor fim, gostaria de apresentar a Luís Oliveira, nossa nova gerente de projetos. O Luís tem experiência em gerenciamento de projetos ágeis e já trabalhou com várias empresas de tecnologia. Ele vai ajudar a nossa equipe a entregar projetos de forma mais eficiente e eficaz.\r\n\r\nPor favor, deem as boas-vindas aos nossos novos colegas. Estou certo de que eles vão contribuir muito para o sucesso da DevSul.\r\n\r\nAtenciosamente,\r\nJoão Pedro\r\nCEO, DevSul",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-extended_report-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "extended_report",
+   "title": "Evacuation of Foreign Nationals from São Tomé and Príncipe",
+   "body": "O governo brasileiro anunciou hoje que iniciará a evacuação de estrangeiros de São Tomé e Príncipe devido a uma erupção vulcânica iminente. A medida visa garantir a segurança dos cidadãos estrangeiros, incluindo brasileiros, que residem no país. A embaixada brasileira no país está trabalhando em estreita colaboração com as autoridades locais para garantir a segurança de todos os envolvidos. A evacuação começará amanhã e será realizada em colaboração com as autoridades locais e outras embaixadas. Os evacuados serão levados para um local seguro fora da zona de perigo. O governo brasileiro está monitorando de perto a situação e está pronto para fornecer assistência adicional, se necessário. A prioridade é garantir a segurança e o bem-estar de todos os envolvidos. A evacuação é uma medida preventiva e visa evitar qualquer risco à vida humana. O governo brasileiro está em contato constante com as famílias dos evacuados e fornecerá atualizações regulares sobre a situação. A evacuação é uma medida temporária e os evacuados serão autorizados a retornar assim que a situação se estabilizar. O governo brasileiro está comprometido em garantir a segurança e o bem-estar de todos os cidadãos estrangeiros em São Tomé e Príncipe.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-feature-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "feature",
+   "title": "The Decline of a Textile Giant",
+   "body": "A fábrica de tecidos Têxtil do Sul, que operou por mais de 50 anos na cidade de São Paulo, anunciou seu fechamento definitivo. A decisão foi tomada devido à queda constante na demanda por tecidos tradicionais nos últimos anos. A demanda por tecidos tradicionais tem caído constantemente nos últimos anos, e a fábrica não conseguiu se adaptar às mudanças no mercado. A Têxtil do Sul era uma das maiores empregadoras da região, e seu fechamento afetará diretamente mais de mil trabalhadores. A empresa tentou se modernizar e introduzir novas tecnologias, mas não foi suficiente para competir com as fábricas internacionais que oferecem preços mais baixos. Outras fábricas na região também estão enfrentando desafios semelhantes, e a tendência é que mais fábricas fechem as portas nos próximos anos. O governo estadual prometeu apoio aos trabalhadores afetados, incluindo programas de recolocação e treinamento para novas áreas. A comunidade local está preocupada com o impacto econômico do fechamento da fábrica, que era um dos principais empregadores da região. A Têxtil do Sul leaves a legacy of contributing to the development of the textile industry in the region, but its closure marks the end of an era for the local economy.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-interview-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Smog in São Paulo: A Growing Concern",
+   "body": "A prefeitura de São Paulo tem implementado várias medidas para reduzir a poluição do ar, como o rodízio de veículos e a expansão do transporte público. Recentemente, conversamos com o secretário municipal do Verde e do Meio Ambiente para discutir esses esforços e os desafios enfrentados. 'A qualidade do ar em São Paulo é um problema sério que afeta a saúde de milhões de pessoas', afirmou o secretário. 'Estamos no caminho certo, mas ainda há muito a ser feito.' Uma das iniciativas mais recentes é a ampliação do sistema de metrô e a criação de corredores exclusivos para ônibus. Além disso, a prefeitura tem trabalhado para modernizar a frota de ônibus e impor limites de emissão para veículos, estabelecendo um contingente para veículos mais poluentes. 'Precisamos de mais investimentos em tecnologias limpas e conscientização pública', destacou o secretário. 'A parceria com o governo estadual e federal é crucial para o sucesso dessas políticas.' Apesar dos esforços, a poluição do ar continua sendo um desafio significativo. A prefeitura reconhece a necessidade de monitoramento contínuo e ajustes nas políticas para garantir a eficácia a longo prazo.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Brazil's Electric Vehicle Revolution",
+   "body": "As mudanças no mercado e as preocupações ambientais estão impulsionando a adoção de veículos elétricos no Brasil. O governo brasileiro tem oferecido incentivos fiscais significativos para estimular a compra de carros elétricos, tornando-os mais acessíveis aos consumidores. Além disso, a crescente conscientização sobre a necessidade de reduzir as emissões de gases de efeito estero tem levado muitos brasileiros a considerar opções mais sustentáveis. \n\nAtualmente, o mercado de veículos elétricos no Brasil está em crescimento, com várias montadoras internacionais entrando no país para atender à demanda crescente. Projeções indicam que as vendas de veículos elétricos podem atingir 500.000 unidades anuais até 2025. Essa tendência é apoiada por investimentos em infraestrutura de carregamento, com estações de recarga sendo instaladas em cidades grandes e pequenas. \n\nNo entanto, ainda há desafios a serem superados. A infraestrutura de recarga em algumas regiões ainda é limitada, e o custo inicial dos veículos elétricos continua sendo um obstáculo para muitos consumidores. Apesar desses desafios, a expectativa é que o mercado de veículos elétricos no Brasil continue a crescer, impulsionado por políticas governamentais e pela demanda dos consumidores por opções mais ecológicas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "A Cúpula do Clima e o Futuro das Energias Renováveis",
+   "body": "A recente Cúpula do Clima reuniu líderes de diversos países e representantes de grandes empresas para discutir o futuro das energias renováveis. O evento, realizado em Genebra, marcou um momento crucial nas negociações climáticas globais. Países como Alemanha, França e Japão reafirmaram seus compromissos com a redução de emissões de carbono e anunciaram novas metas ambiciosas para a utilização de fontes de energia limpa. Além disso, grandes corporações prometeram investir bilhões em tecnologias verdes e projetos sustentáveis. Novas tecnologias, como baterias de alta capacidade e painéis solares mais eficientes, foram destacadas como essenciais para ajudar as nações a atingir suas metas. A cúpula também viu a criação de novas parcerias entre setores público e privado, visando acelerar a transição para uma economia de baixo carbono. Apesar dos avanços, especialistas alertam que muito ainda precisa ser feito para evitar os piores impactos das mudanças climáticas. A próxima década será decisiva para determinar se o mundo conseguirá manter o aumento da temperatura global dentro dos limites acordados no Acordo de Paris.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "A Chegada das Águas: Um Alerta Necessário",
+   "body": "A chegada das águas é um fenômeno natural que, quando mal gerido, pode se transformar em uma tragédia. As enchentes são eventos imprevisíveis que afetam diversas regiões do país, causando prejuízos materiais e colocando vidas em risco. No entanto, muitas comunidades ainda estão mal preparadas para lidar com essas situações, o que torna essencial a discussão sobre medidas preventivas. É comum ouvir relatos de pessoas que perdem tudo devido a inundações, desde suas casas até seus meios de subsistência. Esses casos não são apenas trágicos, mas também evitáveis com a implementação de estratégias adequadas. Investir em infraestrutura adequada, como sistemas de drenagem e barragens, é um passo crucial. Além disso, é essencial educar a população sobre os riscos e as medidas de segurança. Programas de conscientização podem ensinar comunidades a reconhecer sinais de alerta e a agir rapidamente. A prevenção também envolve o monitoramento constante dos níveis de água e a criação de planos de emergência. Quando as autoridades locais trabalham em conjunto com especialistas, é possível minimizar os danos causados pelas enchentes. A colaboração entre governo, organizações não governamentais e a população é fundamental. Cada um tem um papel a desempenhar na construção de uma sociedade mais resiliente. Em suma, a chegada das águas não deve ser vista como uma sentença, mas como um desafio que pode ser superado com planejamento e ação. É hora de agir e garantir que todas as comunidades estejam preparadas para enfrentar esse fenômeno natural com segurança e eficiência.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "Paralisação dos Transportes: Justiça ou Caos?",
+   "body": "A greve dos trabalhadores de transporte, embora legítima em sua causa, tem trazido um caos sem precedentes à nossa cidade. As ruas estão congestionadas, os cidadãos estão desamparados, e a economia está sofrendo. É inegável que os trabalhadores têm o direito de lutar por melhores salários e condições de trabalho, mas a paralisação total dos serviços de transporte está afetando negativamente toda a população.\n\nA situação atual não é sustentável. Os trabalhadores estão em greve há semanas, e não há um fim à vista. As negociações entre os sindicatos e as empresas de transporte estão estagnadas, e o governo parece estar ausente nessa discussão. É imperative que as partes envolvidas retornem à mesa de negociações, com a mediação do governo, para encontrar uma solução que atenda às necessidades dos trabalhadores sem paralisar a cidade.\n\nAlém dos impactos imediatos, a greve está tendo consequências a longo prazo. Empresas estão perdendo dinheiro, e os cidadãos estão perdendo a confiança nos serviços de transporte. A cidade precisa de um sistema de transporte confiável e eficiente para funcionar adequadamente, e essa greve está colocando tudo isso em risco.\n\nNão estou dizendo que os trabalhadores não merecem melhores condições. Eles merecem, e suas preocupações devem ser ouvidas. No entanto, a paralisação total dos serviços de transporte não é a solução. É preciso encontrar um meio-termo, uma forma de atender às demandas dos trabalhadores sem causar tanto transtorno à população.\n\nEm conclusão, embora compreenda a luta dos trabalhadores de transporte, acredito que a greve está causando mais mal do que bem. É hora de as partes envolvidas se unirem e encontrarem uma solução que beneficie a todos, não apenas a uma parte. A cidade não pode continuar nesse caos, e uma solução rápida e eficaz é urgente.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-commentary-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "commentary",
+   "title": "The Promise and Peril of the Mercosul-UE Agreement",
+   "body": "O acordo Mercosul-UE representa uma oportunidade para expandir nossos mercados e fortalecer os laços econômicos com a Europa. Com a redução de tarifas e a facilitação do comércio, as exportações brasileiras de produtos agrícolas e industriais devem aumentar significativamente. Além disso, o acordo pode atrair investimentos estrangeiros diretos, impulsionando o crescimento econômico e a geração de empregos. No entanto, não podemos ignorar os riscos ambientais associados a esse aumento do comércio. A pressão por produtos agrícolas pode levar ao desmatamento e à degradação de ecossistemas sensíveis, como a Amazônia. Além disso, a harmonização de padrões regulatórios pode resultar na adoção de normas que não são necessariamente benéficas para o meio ambiente. É crucial que os governos envolvidos implementem medidas rigorosas para mitigar esses impactos. Além disso, o acordo deve incluir cláusulas específicas para proteger os direitos trabalhistas e garantir que os benefícios sejam distribuídos equitativamente. A experiência passada mostra que os acordos de livre comércio muitas vezes favorecem os setores mais fortes, deixando para trás os mais vulneráveis. Portanto, é essencial que os trabalhadores e as comunidades locais estejam envolvidos no processo de implementação do acordo, garantindo que suas vozes sejam ouvidas e que suas preocupações sejam abordadas. Em conclusão, o acordo Mercosul-UE oferece uma oportunidade valiosa para o crescimento econômico, mas também apresenta desafios significativos que devem ser enfrentados de forma proativa e responsável.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-editorial-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial",
+   "title": "The Digital Siege on São Paulo's Water Supply",
+   "body": "Na madrugada desta quinta-feira, um ataque cibernético sem precedentes atingiu o sistema da SABESP, paralisando o fornecimento de água para milhões de residentes na cidade de São Paulo. O caos se instalou rapidamente, com hospitais, escolas e empresas sendo obrigados a fechar as portas ou operar com capacidade reduzida. Os hackers, que ainda não foram identificados, deixaram um rastro de mensagens indicando que o ataque era uma forma de protesto contra as políticas de privatização dos serviços públicos. \n\nA situação alarmante levou o governo do estado a declarar estado de emergência, mobilizando equipes de especialistas em cibersegurança para tentar restaurar os sistemas o mais rápido possível. No entanto, os técnicos enfrentam desafios significativos, pois os invasores implementaram mecanismos sofisticados para dificultar a recuperação dos dados. \n\nEnquanto isso, a população de São Paulo sofre com a falta de água, enfrentando filas intermináveis em pontos de distribuição e o risco de contaminação por doenças relacionadas ao consumo de água não tratada. A situação é ainda mais crítica em áreas periféricas, onde o acesso a recursos alternativos é limitado. \n\nO que ficou evidente é a falta de preparo das autoridades para lidar com ameaças cibernéticas desta magnitude. Investimentos em infraestrutura de segurança cibernética têm sido insuficientes, deixando o estado vulnerável a ataques desse tipo. É imperativo que as autoridades tomem medidas imediatas para fortalecer as defesas digitais e garantir que incidentes como este não se repitam no futuro. \n\nA recuperação total dos sistemas da SABESP pode levar dias, e as consequências deste ataque serão sentidas por muito tempo. Além dos prejuízos materiais, há um impacto profundo na confiança dos cidadãos nas instituições públicas e na capacidade do estado de proteger seus interesses. Este episódio deve servir como um chamado urgente para que o Brasil priorize a segurança cibernética e invista em tecnologias e treinamento para enfrentar as ameaças do século XXI.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-speech-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Rio Summit: A Call for Global Cooperation",
+   "body": "Boa tarde a todos. É com grande honra que me dirijo a vocês nesta Cúpula do Rio. Estamos aqui reunidos para discutir e enfrentar alguns dos desafios ambientais mais urgentes do nosso tempo. As mudanças climáticas, a perda de biodiversidade e a poluição são ameaças globais que não reconhecem fronteiras. É por isso que esta cúpula é uma plataforma para a cooperação global. Acredito firmemente que apenas através da colaboração internacional podemos esperar fazer progressos significativos. Os esforços atuais são insuficientes. Precisamos de ações urgentes e coordenadas para proteger o nosso planeta para as futuras gerações. Hoje, vamos ouvir de líderes de diversos setores, compartilhando suas perspectivas e estratégias para enfrentar estas questões. Vamos discutir políticas inovadoras, tecnologias emergentes e práticas sustentáveis que podem ser implementadas em nossas comunidades. Mas lembre-se, este é apenas o começo. A verdadeira mudança começa depois desta cúpula, quando voltarmos para os nossos países e colocarmos em prática o que aprendemos aqui. Cada um de nós tem um papel a desempenhar. Seja através da legislação, da educação, da inovação ou da conscientização pública, todos podemos contribuir para um futuro mais sustentável. Agradeço a todos os participantes por estarem aqui hoje. Vamos trabalhar juntos para transformar as palavras em ações e fazer desta Cúpula do Rio um marco na nossa jornada em direção a um mundo mais verde e justo. Obrigado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  }
+ ],
+ "items": [
+  {
+   "id": "pt-dr-0p-menu-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-menu-001",
+   "stem": "What is the name of the start-up?",
+   "choices": [
+    "Solutions Online",
+    "Inovação Digital",
+    "Web Creators",
+    "Tecno Futuro"
+   ],
+   "answer": 1,
+   "explanation": "The name of the start-up is mentioned at the top of the menu: \"Inovação Digital\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-schedule-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-schedule-001",
+   "stem": "When does the debate on military service start?",
+   "choices": [
+    "16:00",
+    "14:00",
+    "10:00",
+    "8:00"
+   ],
+   "answer": 1,
+   "explanation": "The text says Debate sobre o serviço militar começa às 14:00.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-schedule-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-0p-schedule-001",
+   "stem": "What does \"serviço militar\" mean here?",
+   "choices": [
+    "Military history",
+    "Military strategy",
+    "Military operation",
+    "Military service"
+   ],
+   "answer": 3,
+   "explanation": "The text is about a debate on military service, so \"serviço militar\" here means military service.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-sign-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-sign-001",
+   "stem": "What does the word \"proibido\" mean here?",
+   "choices": [
+    "allowed",
+    "forbidden",
+    "recommended",
+    "encouraged"
+   ],
+   "answer": 1,
+   "explanation": "The word \"proibido\" means \"forbidden\" here, as it is used to indicate that fishing is not allowed in this area. The sign states: \"Pesca proibida. Multa de R$ 500,00\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-sign-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-sign-001",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To inform about a fishing competition",
+    "To warn about forbidden fishing",
+    "To advertise a new fishing spot",
+    "To sell fishing equipment"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of this sign is \"to warn about forbidden fishing\". The sign clearly states \"Pesca proibida\" (Fishing forbidden) and mentions a fine for violating this rule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-sign-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-sign-002",
+   "stem": "What is the name of the hotel where the problem occurred?",
+   "choices": [
+    "Hotel do Centro",
+    "Hotel das Montanhas",
+    "Hotel da Praia",
+    "Hotel dos Sonhos"
+   ],
+   "answer": 1,
+   "explanation": "The name of the hotel is clearly stated as **Hotel das Montanhas** in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-sign-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-0p-sign-002",
+   "stem": "The phrase **'reserva não encontrada'** means here that",
+   "choices": [
+    "the reservation was found",
+    "the hotel is fully booked",
+    "the reservation was not made correctly",
+    "the reservation was canceled"
+   ],
+   "answer": 2,
+   "explanation": "The phrase **'reserva não encontrada'** indicates that the reservation was not found or made correctly, as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-sign-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-sign-003",
+   "stem": "What is the sign's main message?",
+   "choices": [
+    "The shelter is open to all people affected by the earthquake.",
+    "The shelter is now closed.",
+    "Food will be provided for three days.",
+    "People may stay here only for two days."
+   ],
+   "answer": 0,
+   "explanation": "The sign states that the shelter is open to all people affected by the earthquake, using the phrases 'aberto a todos afetados pelo terremoto' (open to all affected by the earthquake) and 'socorro de emergência' (emergency aid). It does not mention any restrictions on the duration of stay or the provision of food for three days.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-announcement-001",
+   "stem": "What happened to the computer system at Saneamento Fluminense?",
+   "choices": [
+    "It was upgraded.",
+    "It was accidentally shut down.",
+    "It was attacked by hackers.",
+    "It had a power outage."
+   ],
+   "answer": 2,
+   "explanation": "The text states that there was an \"ataque cibernético\", which means a cyberattack, on the computer system.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-announcement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To announce a change in billing procedures.",
+    "To alert customers about a disruption in water service.",
+    "To inform customers about a scheduled maintenance.",
+    "To promote a new water conservation initiative."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to alert customers about a disruption in water service due to a cyberattack, as stated in \"Informamos que devido a um ataque cibernético... pode haver interrupções no fornecimento de água.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-announcement-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-announcement-001",
+   "stem": "What does the word \"interrupções\" mean here?",
+   "choices": [
+    "Disruptions",
+    "Increases",
+    "Changes",
+    "Delays"
+   ],
+   "answer": 0,
+   "explanation": "The word \"interrupções\" means disruptions here, referring to the potential stops in water supply due to the cyberattack.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-announcement-002",
+   "stem": "What is the purpose of the conference?",
+   "choices": [
+    "To discuss political issues between countries",
+    "To promote tourism in Brazil",
+    "To teach new languages to attendees",
+    "To share knowledge and experiences in education"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the purpose of the conference is 'para compartilhar conhecimentos e experiências em educação' (to share knowledge and experiences in education). The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-announcement-002",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "Attendees should bring their own lunch",
+    "The conference is about education and will be held in Brazil",
+    "The conference will take place in Rio de Janeiro",
+    "The conference is only for Brazilian educators"
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the announcement is that there is a conference about education that will be held in Brazil. The other options are either not the main idea or not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-announcement-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-announcement-002",
+   "stem": "What does 'participantes' mean here?",
+   "choices": [
+    "Speakers",
+    "Volunteers",
+    "Organizers",
+    "Attendees"
+   ],
+   "answer": 3,
+   "explanation": "The word 'participantes' in the text refers to those who will be attending the conference, which is 'todos os educadores interessados' (all interested educators). Therefore, the correct answer is 'Attendees'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-notice-001",
+   "stem": "In the notice, what should people do with their pets?",
+   "choices": [
+    "Leave them alone at home.",
+    "Leave them with a pet-sitter.",
+    "Bring them to the evacuation shelter.",
+    "Take them to a neighbor's house."
+   ],
+   "answer": 2,
+   "explanation": "The notice states 'Leve seus animais de estimação com você' ('Take your pets with you').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about a community event.",
+    "To advise residents to prepare for a flood.",
+    "To announce a change in local regulations.",
+    "To promote a local business."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to advise residents to prepare for a flood, as indicated by 'Aviso de inundação iminente' ('Imminent flood warning') and instructions to gather supplies and evacuate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "pt-dr-1-notice-001",
+   "stem": "What is the purpose of the phrase 'Mantenha-se informado' in the notice?",
+   "choices": [
+    "To remind residents to stay updated on the situation.",
+    "To encourage residents to watch television.",
+    "To suggest residents call a hotline.",
+    "To promote a local news outlet."
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'Mantenha-se informado' ('Stay informed') reminds residents to stay updated on the situation, as it is followed by 'sobre as últimas notícias e instruções' ('about the latest news and instructions').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-notice-002",
+   "stem": "What is the main reason for the water shortage according to the notice?",
+   "choices": [
+    "The water pipes are broken.",
+    "The water treatment plant is closed.",
+    "There is not enough rain.",
+    "People are using too much water."
+   ],
+   "answer": 2,
+   "explanation": "The notice states that the water shortage is due to the lack of rain: “Devido à falta de chuva..”.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-notice-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a water shortage and provide instructions.",
+    "To encourage people to take longer showers.",
+    "To inform people about a new water park.",
+    "To advertise a new water-saving product."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the notice is to announce the water shortage and provide instructions on how to conserve water: “Devido à falta de chuva, estamos enfrentando uma escassez de água... Siga estas dicas para economizar água.”.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-short_message-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-short_message-001",
+   "stem": "What is the name of the ship visiting the port?",
+   "choices": [
+    "São Paulo",
+    "Niterói",
+    "Rio de Janeiro",
+    "Brasília"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is Niterói. The text states: 'O navio Niterói estará atracado no porto amanhã.' This indicates that the ship's name is Niterói.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-short_message-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-short_message-001",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To inform about a ship's arrival",
+    "To advertise a local restaurant",
+    "To announce a concert",
+    "To describe a historical event"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is to inform about a ship's arrival. The text mentions: 'O navio Niterói estará atracado no porto amanhã.' This is the main purpose of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-short_message-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-short_message-001",
+   "stem": "What does the word 'atracado' mean here?",
+   "choices": [
+    "Repaired",
+    "Departed",
+    "Docked",
+    "Sunk"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is docked. The text says: 'O navio Niterói estará atracado no porto amanhã.' This means the ship will be docked at the port tomorrow.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-announcement-001",
+   "stem": "What is the main purpose of the announcement?",
+   "choices": [
+    "To request volunteers for a naval event.",
+    "To advertise a naval museum exhibit.",
+    "To announce the arrival of a naval vessel to the port of Rio de Janeiro.",
+    "To inform the public about a new naval ship being built."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to announce the arrival of a naval vessel, as stated at the beginning of the text: 'Aviso à população: O navio naval Almirante Tamandaré chegará ao porto do Rio de Janeiro.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-announcement-001",
+   "stem": "What is the name of the naval vessel arriving?",
+   "choices": [
+    "Almirante Tamandaré",
+    "Marinha do Brasil",
+    "Rio de Janeiro",
+    "Navio Escolar"
+   ],
+   "answer": 0,
+   "explanation": "The name of the naval vessel is 'Almirante Tamandaré', as mentioned in the text: 'O navio naval Almirante Tamandaré.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-announcement-001",
+   "stem": "In the context of this text, what does 'atrações' mean?",
+   "choices": [
+    "Attractions",
+    "Attractiveness",
+    "Distractions",
+    "Attracts"
+   ],
+   "answer": 0,
+   "explanation": "'Atrações' in this context refers to things that will attract or interest people, specifically 'para o público', as in 'O navio estará aberto para visitas e haverá diversas atrações para o público.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-instructions-001",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "Where to find discounts on food items",
+    "How to prepare meals with lower-cost ingredients",
+    "How to compare food prices at different stores",
+    "What foods are currently on sale"
+   ],
+   "answer": 2,
+   "explanation": "The main idea is how to compare food prices at different stores. The text begins by saying 'Para verificar os preços dos alimentos em diferentes lojas,' which sets the purpose for the instructions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-instructions-001",
+   "stem": "What should you do first when checking food prices?",
+   "choices": [
+    "Check the weekly advertisements",
+    "Visit the stores in person",
+    "Make a list of the items you need",
+    "Use a price comparison website"
+   ],
+   "answer": 2,
+   "explanation": "The first step is to 'Faça uma lista dos itens que você precisa.' This is mentioned at the beginning of the instructions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-instructions-001",
+   "stem": "The phrase 'promoções semanais' most likely refers to",
+   "choices": [
+    "Weekly sales",
+    "Annual celebrations",
+    "Holiday specials",
+    "Daily discounts"
+   ],
+   "answer": 0,
+   "explanation": "'Promoções semanais' means 'weekly sales.' This is inferred from the context of checking food prices and the mention of 'anúncios' (advertisements), which often feature sales.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-instructions-002",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To discuss the penalties for corruption",
+    "To explain how to apply for a job",
+    "To describe how to report a crime",
+    "To give advice on how to avoid corruption"
+   ],
+   "answer": 2,
+   "explanation": "The text's main purpose is to explain how to report suspicious activity related to corruption. It provides specific steps to follow, such as 'Se você suspeitar de alguma irregularidade, entre em contato com nosso departamento' and 'Forneça todas as informações que você tem sobre a situação'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-instructions-002",
+   "stem": "What should you do if you suspect corruption?",
+   "choices": [
+    "Contact the department immediately",
+    "Wait for official confirmation",
+    "Keep it to yourself",
+    "Discuss it with your colleagues"
+   ],
+   "answer": 0,
+   "explanation": "The text instructs readers to 'entre em contato com nosso departamento imediatamente' if they suspect any irregularity.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-instructions-002",
+   "stem": "What does the phrase 'irregularidade' mean here?",
+   "choices": [
+    "A scheduled event",
+    "A routine procedure",
+    "A minor mistake",
+    "A suspected crime"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'irregularidade' refers to suspected crimes or corruption, as indicated by the sentence 'Se você suspeitar de alguma irregularidade, entre em contato com nosso departamento'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-news_brief-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-news_brief-001",
+   "stem": "What is the main idea of this news brief?",
+   "choices": [
+    "France has decided to withdraw its military from Brazil.",
+    "Brazil and France signed a new trade agreement.",
+    "A joint military exercise between Brazil and France was canceled.",
+    "Brazil and France conducted a joint military exercise to improve cooperation."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that Brazil and France conducted a joint military exercise. This is stated directly in the text: 'Brasil e França realizaram um exercício militar conjunto na última semana.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-news_brief-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-news_brief-001",
+   "stem": "Where did the military exercise take place?",
+   "choices": [
+    "In the northeastern region of Brazil.",
+    "The text does not specify the location.",
+    "In the city of Rio de Janeiro.",
+    "In the Amazon rainforest."
+   ],
+   "answer": 1,
+   "explanation": "The text does not provide specific details about the location of the military exercise. It only mentions that it was a joint exercise between Brazil and France.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-news_brief-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-news_brief-001",
+   "stem": "In the text, the phrase 'cooperação mútua' means:",
+   "choices": [
+    "Mutual cooperation",
+    "Military conflict",
+    "Economic competition",
+    "Political disagreement"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'cooperação mútua' in the text refers to the mutual cooperation between Brazil and France during the military exercise. The text states: 'O exercício visou fortalecer a cooperação mútua e a interoperabilidade entre as forças armadas dos dois países.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-biography-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-biography-001",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The role of the government in disaster relief efforts",
+    "The personal story of a truck driver delivering aid",
+    "The impact of natural disasters on Brazilian communities",
+    "The challenges faced by humanitarian aid convoys in Brazil"
+   ],
+   "answer": 1,
+   "explanation": "The text focuses on the personal journey of João Silva, a truck driver delivering aid to affected communities. It details his route, the challenges he faces, and his interactions with the people he helps, making this the main idea.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-biography-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-biography-001",
+   "stem": "What is the name of the organization that João works for?",
+   "choices": [
+    "Socorro Imediato",
+    "Ajuda Humanitária Brasil",
+    "Solidariedade em Ação",
+    "Caminhões de Esperança"
+   ],
+   "answer": 3,
+   "explanation": "The text states that João works for 'Caminhões de Esperança', which is mentioned as the organization coordinating the humanitarian aid convoys.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-biography-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-biography-001",
+   "stem": "The phrase 'estradas esburacadas' in this text refers to what?",
+   "choices": [
+    "Well-maintained roads",
+    "Roads under construction",
+    "Roads with heavy traffic",
+    "Roads with many potholes"
+   ],
+   "answer": 3,
+   "explanation": "The text describes the challenges João faces, including 'estradas esburacadas', which means roads with many potholes. This is evident in the context of the difficulties he encounters during his journey.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-event_description-001",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To invite foreign naval officers to a formal dinner",
+    "To announce a naval parade and provide details about it",
+    "To explain the history of naval parades in Brazil",
+    "To describe the military capabilities of the Brazilian Navy"
+   ],
+   "answer": 1,
+   "explanation": "The text focuses on announcing the naval parade and providing specific details about the event, such as the date, location, and activities involved. It does not delve into historical context, military capabilities, or social events.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-event_description-001",
+   "stem": "What is the date of the naval parade?",
+   "choices": [
+    "August 10th",
+    "July 10th",
+    "June 10th",
+    "September 10th"
+   ],
+   "answer": 1,
+   "explanation": "The text explicitly states that the naval parade will take place on July 10th. The phrase \"A parada naval ocorrerá em 10 de julho\" clearly indicates the date of the event.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-event_description-001",
+   "stem": "What does \"desfile\" mean in the text?",
+   "choices": [
+    "A parade",
+    "A ceremony",
+    "A celebration",
+    "A drill"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the text, \"desfile\" refers to the naval parade. The phrase \"desfile naval\" is used to describe the event, which involves ships and military personnel showcasing their capabilities.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-factual_article-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-factual_article-001",
+   "stem": "The main idea of the text is that...",
+   "choices": [
+    "international aid is needed to rebuild the damaged areas",
+    "relief efforts are being organized to help those affected by the earthquake",
+    "the local government has been slow to respond to the earthquake",
+    "the earthquake caused significant damage but no casualties"
+   ],
+   "answer": 1,
+   "explanation": "The text discusses the organization of relief efforts, including the distribution of supplies and the coordination of volunteers, which indicates that the main idea is about the response to the earthquake. It mentions 'O governo do estado de Minas Gerais, em parceria com organizações não governamentais, está coordenando esforços de socorro' and 'Voluntários estão sendo organizados para ajudar na distribuição de suprimentos e na limpeza de áreas afetadas', which shows the focus on relief efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-factual_article-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-factual_article-001",
+   "stem": "According to the text, what is one of the main challenges faced by relief workers?",
+   "choices": [
+    "lack of funding for relief efforts",
+    "accessing remote areas affected by the earthquake",
+    "communications breakdown with the local government",
+    "shortage of medical supplies"
+   ],
+   "answer": 1,
+   "explanation": "The text states 'Um dos principais desafios tem sido o acesso a áreas remotas afetadas pelo terremoto', which directly indicates that accessing remote areas is one of the main challenges faced by relief workers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-factual_article-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-factual_article-001",
+   "stem": "In the text, what does 'suprimentos' mean here?",
+   "choices": [
+    "supplies",
+    "volunteers",
+    "medical personnel",
+    "financial aid"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions 'Voluntários estão sendo organizados para ajudar na distribuição de suprimentos e na limpeza de áreas afetadas', which shows that 'suprimentos' refers to items or goods that are being distributed to help those affected by the earthquake.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-letter-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-letter-001",
+   "stem": "What is the main idea of this letter?",
+   "choices": [
+    "The new hires' job titles",
+    "What new hires are being introduced",
+    "When the new hires start working",
+    "The new hires' qualifications"
+   ],
+   "answer": 1,
+   "explanation": "The main idea is what new hires are being introduced. The letter describes the new hires and their roles, but does not focus on when they start, their job titles, or their qualifications.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-letter-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-letter-001",
+   "stem": "What is the name of the new developer?",
+   "choices": [
+    "Luís Oliveira",
+    "Carlos Mendes",
+    "Ana Silva",
+    "Maria Santos"
+   ],
+   "answer": 2,
+   "explanation": "The name of the new developer is Ana Silva. The letter states: 'Gostaria de apresentar a Ana Silva, nossa nova desenvolvedora.' The other names are not mentioned as new hires in the letter.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-letter-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-letter-001",
+   "stem": "What does 'equipe' mean here?",
+   "choices": [
+    "department",
+    "company",
+    "project",
+    "team"
+   ],
+   "answer": 3,
+   "explanation": "'Equipe' means 'team' here. The letter states: 'A Ana vai trabalhar com a nossa equipe de desenvolvimento.' This refers to the development team she will be working with.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-extended_report-001",
+   "stem": "What is the main idea of this report?",
+   "choices": [
+    "The Brazilian government is evacuating foreign nationals from São Tomé and Príncipe due to a hurricane.",
+    "The Brazilian government is evacuating foreign nationals from São Tomé and Príncipe due to a volcanic eruption.",
+    "The Brazilian government is evacuating foreign nationals from São Tomé and Príncipe due to a political crisis.",
+    "The Brazilian government is evacuating only Brazilian citizens from São Tomé and Príncipe due to a volcanic eruption."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the Brazilian government is evacuating foreign nationals from São Tomé and Príncipe due to a volcanic eruption. This is stated in the first sentence: \"O governo brasileiro anunciou hoje que iniciará a evacuação de estrangeiros de São Tomé e Príncipe devido a uma erupção vulcânica iminente.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-extended_report-001",
+   "stem": "What can be inferred about the Brazilian embassy in São Tomé and Príncipe?",
+   "choices": [
+    "It is located far from the affected area.",
+    "It has been closed due to the volcanic activity.",
+    "It is not involved in the evacuation process.",
+    "It is responsible for coordinating the evacuation."
+   ],
+   "answer": 3,
+   "explanation": "It can be inferred that the embassy is coordinating the evacuation. The text states: \"A embaixada brasileira no país está trabalhando em estreita colaboração com as autoridades locais para garantir a segurança de todos os envolvidos.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-extended_report-001",
+   "stem": "What does \"iminente\" mean here?",
+   "choices": [
+    "distant",
+    "impending",
+    "minor",
+    "unexpected"
+   ],
+   "answer": 1,
+   "explanation": "\"Iminente\" means \"impending\" in this context. The text uses it to describe the volcanic eruption: \"devido a uma erupção vulcânica iminente.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-feature-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-feature-001",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The factory closure is due to increased competition from international markets.",
+    "The factory closure is a result of a strategic decision to focus on digital transformation.",
+    "The factory closure is a result of poor management and lack of innovation.",
+    "The factory closure is due to a decline in demand for traditional textiles."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that the factory closure is due to a decline in demand for traditional textiles, as stated in the text: \"A demanda por tecidos tradicionais tem caído constantemente nos últimos anos.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-feature-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-feature-001",
+   "stem": "What can be inferred about the future of the textile industry in the region?",
+   "choices": [
+    "It will likely decline further as more factories close.",
+    "It will continue to thrive despite the closure of the factory.",
+    "It will be replaced by other industries such as technology and services.",
+    "It will shift towards digital transformation and innovation."
+   ],
+   "answer": 0,
+   "explanation": "The inference is that the textile industry in the region will likely decline further, as the text mentions that \"Outras fábricas na região também estão enfrentando desafios semelhantes\" and \"A tendência é que mais fábricas fechem as portas nos próximos anos.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-feature-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-feature-001",
+   "stem": "What does \"desafios\" mean here?",
+   "choices": [
+    "changes",
+    "trends",
+    "opportunities",
+    "challenges"
+   ],
+   "answer": 3,
+   "explanation": "The word \"desafios\" means \"challenges\" here, as it refers to the difficulties faced by other factories in the region: \"Outras fábricas na região também estão enfrentando desafios semelhantes.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-interview-001",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The measures taken by São Paulo to reduce air pollution",
+    "The health effects of air pollution on São Paulo's residents",
+    "The history of air pollution in Brazilian cities",
+    "The impact of traffic congestion on São Paulo's economy"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the interview is the measures taken by São Paulo to reduce air pollution. This is evident from the interviewee's discussion of specific policies and initiatives, such as the 'rodízio de veículos' (vehicle rotation scheme) and the expansion of public transportation. The text mentions these efforts explicitly: 'São Paulo tem implementado várias medidas para reduzir a poluição do ar, como o rodízio de veículos e a expansão do transporte público.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-interview-001",
+   "stem": "What can be inferred about the interviewee's opinion on the effectiveness of the current measures?",
+   "choices": [
+    "They believe the measures are highly effective and have solved the problem",
+    "They believe the measures are ineffective and should be abandoned",
+    "They think the measures are a good start but more needs to be done",
+    "They are unsure about the effectiveness of the measures"
+   ],
+   "answer": 2,
+   "explanation": "The interviewee suggests that while the current measures are a step in the right direction, more needs to be done. This is inferred from statements like 'Estamos no caminho certo, mas ainda há muito a ser feito' and 'Precisamos de mais investimentos em tecnologias limpas e conscientização pública.' These statements indicate a belief that the measures are a good start but not sufficient on their own.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-interview-001",
+   "stem": "What does the word 'contingente' mean here?",
+   "choices": [
+    "A specific location",
+    "A limited amount or number",
+    "A group of people",
+    "A type of vehicle"
+   ],
+   "answer": 1,
+   "explanation": "The word 'contingente' in this context refers to a limited amount or number. The text states 'impor limites de emissão para veículos e estabelecer um contingente para veículos mais poluentes', indicating that 'contingente' is used to describe a restriction or limit on the number of more polluting vehicles allowed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-news_analysis-001",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The Brazilian government is planning to ban all gasoline-powered vehicles by 2030.",
+    "Brazil is experiencing a surge in electric vehicle adoption due to government incentives and environmental concerns.",
+    "Electric vehicles are not suitable for Brazil's climate and infrastructure.",
+    "Electric vehicles are too expensive for the average Brazilian consumer."
+   ],
+   "answer": 1,
+   "explanation": "The text discusses the increasing adoption of electric vehicles in Brazil, mentioning government incentives and environmental concerns as key factors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-news_analysis-001",
+   "stem": "What can be inferred about the future of electric vehicles in Brazil?",
+   "choices": [
+    "The Brazilian government will stop supporting electric vehicle initiatives.",
+    "Electric vehicles will never become popular in Brazil due to high costs.",
+    "Gasoline-powered vehicles will always dominate the Brazilian market.",
+    "The market for electric vehicles is expected to grow significantly in the coming years."
+   ],
+   "answer": 3,
+   "explanation": "The text mentions that the market for electric vehicles is expected to grow significantly in the coming years, with projections of 500,000 units sold annually by 2025.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-news_analysis-001",
+   "stem": "What does the phrase \"no mercado\" mean here?",
+   "choices": [
+    "in the environment",
+    "in the government",
+    "in the future",
+    "in the marketplace"
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"no mercado\" refers to the marketplace or market conditions, as in \"As mudanças no mercado e as preocupações ambientais estão impulsionando a adoção de veículos elétricos no Brasil.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-news_analysis-002",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The history of climate change negotiations",
+    "The impact of climate change on global economies",
+    "The role of non-governmental organizations in the Climate Summit",
+    "The future of renewable energy and commitments made at the recent Climate Summit"
+   ],
+   "answer": 3,
+   "explanation": "The text primarily discusses the future of renewable energy and the commitments made by countries and companies at the recent Climate Summit. This is evident from the focus on the 'Cúpula do Clima' and the promises made regarding the use of renewable energy sources.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-news_analysis-002",
+   "stem": "What can be inferred about the role of technology in achieving renewable energy goals?",
+   "choices": [
+    "Technology is expected to play a crucial role in achieving renewable energy goals",
+    "Technology is too expensive for most countries to implement",
+    "Technology will replace the need for international cooperation",
+    "Technology is seen as a minor factor in achieving renewable energy goals"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions that 'novas tecnologias' will be essential in helping countries meet their renewable energy targets, indicating that technology is expected to play a crucial role.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-news_analysis-002",
+   "stem": "In the text, what does 'ambiciosas' mean here?",
+   "choices": [
+    "Ambitious",
+    "Unrealistic",
+    "Flexible",
+    "Modest"
+   ],
+   "answer": 0,
+   "explanation": "The text states that 'metas ambiciosas' were set by countries and companies, indicating that 'ambiciosas' here means 'ambitious'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-argumentative_essay-001",
+   "stem": "What is the main point of the author's argument?",
+   "choices": [
+    "The government should be solely responsible for flood management.",
+    "Investing in infrastructure and education is crucial for flood prevention.",
+    "Floods are inevitable and cannot be prevented.",
+    "People should rely on traditional methods to predict floods."
+   ],
+   "answer": 1,
+   "explanation": "The author argues for a comprehensive approach to flood prevention, emphasizing the importance of investing in infrastructure and education. This is evident in the text: 'É essencial investir em infraestrutura adequada e em educação para a população.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-argumentative_essay-001",
+   "stem": "What can be inferred about the author's view on the current state of flood preparedness?",
+   "choices": [
+    "The author believes that current measures are sufficient.",
+    "The author thinks that more needs to be done to prepare for floods.",
+    "The author is unsure about the effectiveness of current measures.",
+    "The author believes that floods are not a significant threat."
+   ],
+   "answer": 1,
+   "explanation": "The author implies that more needs to be done, stating 'No entanto, muitas comunidades ainda estão mal preparadas.' This suggests a need for improved measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-argumentative_essay-001",
+   "stem": "What does the word 'imprevisíveis' mean here?",
+   "choices": [
+    "Expected",
+    "Unpredictable",
+    "Unavoidable",
+    "Minor"
+   ],
+   "answer": 1,
+   "explanation": "The word 'imprevisíveis' is used to describe floods, indicating that they are 'Unpredictable'. The text states 'As enchentes são eventos imprevisíveis...', emphasizing the uncertainty of floods.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-argumentative_essay-002",
+   "stem": "What is the author's main argument about the transport workers' strike?",
+   "choices": [
+    "The strike is a justified response to the government's failure to address workers' concerns.",
+    "The strike causes more harm than good to the city and its residents.",
+    "The strike is a political maneuver to gain public support for the union.",
+    "The strike is necessary to achieve fair wages and better working conditions for all workers."
+   ],
+   "answer": 1,
+   "explanation": "The author argues that the strike causes significant disruptions to the city and its residents, stating that \"A greve dos trabalhadores de transporte, embora legítima em sua causa, tem trazido um caos sem precedentes à nossa cidade.\" The author emphasizes the negative impacts on the city and its residents, rather than supporting the strike as a justified response or a political maneuver.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-argumentative_essay-002",
+   "stem": "What can be inferred about the author's opinion on the government's role in resolving the strike?",
+   "choices": [
+    "The government should mediate a compromise between the workers and the companies.",
+    "The government should intervene to support the workers' demands.",
+    "The government is responsible for the strike due to its inaction.",
+    "The government should not intervene in the strike."
+   ],
+   "answer": 0,
+   "explanation": "The author implies that the government should play a role in resolving the strike by mediating a compromise. The text states \"É imperative que as partes envolvidas retornem à mesa de negociações, com a mediação do governo, para encontrar uma solução que atenda às necessidades dos trabalhadores sem paralisar a cidade.\" This suggests that the author believes the government should facilitate negotiations between the workers and the companies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-argumentative_essay-002",
+   "stem": "As used in the text, what does \"paralisação\" mean?",
+   "choices": [
+    "A halt",
+    "A sudden stop",
+    "A slowdown",
+    "A reduction"
+   ],
+   "answer": 0,
+   "explanation": "The word \"paralisação\" is used in the context of the strike causing a \"caos sem precedentes\" (unprecedented chaos) to the city. The author states that \"A paralisação dos transportes tem deixado milhares de cidadãos desamparados,\" indicating that the strike has resulted in a complete halt of transportation services, stranding thousands of citizens.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-commentary-001",
+   "stem": "What is the main point of the commentary?",
+   "choices": [
+    "The agreement is a step backward for regional integration in South America.",
+    "The agreement is a political maneuver with no real economic impact.",
+    "The agreement will primarily benefit industrialized nations at the expense of developing ones.",
+    "The agreement will bring economic benefits but also poses environmental threats."
+   ],
+   "answer": 3,
+   "explanation": "The author discusses both the economic advantages (benefícios econômicos) and the environmental concerns (ameaças ambientais) of the Mercosul-UE agreement throughout the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-commentary-001",
+   "stem": "What can be inferred about the author's opinion on the agreement?",
+   "choices": [
+    "The author believes the agreement will have no significant impact.",
+    "The author is indifferent to the agreement.",
+    "The author is cautiously optimistic about the agreement.",
+    "The author is strongly against the agreement."
+   ],
+   "answer": 2,
+   "explanation": "The author acknowledges the potential benefits (como uma oportunidade para expandir nossos mercados) but also expresses concerns (no entanto, não podemos ignorar os riscos ambientais).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "pt-dr-3-commentary-001",
+   "stem": "What is the tone of the commentary?",
+   "choices": [
+    "Unquestioningly supportive and positive.",
+    "Analytical and balanced.",
+    "Overly critical and negative.",
+    "Humorous and satirical."
+   ],
+   "answer": 1,
+   "explanation": "The author presents both the advantages and disadvantages of the agreement (O acordo Mercosul-UE representa uma oportunidade para expandir nossos mercados... no entanto, não podemos ignorar os riscos ambientais), maintaining an analytical and balanced tone.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-editorial-001",
+   "stem": "What is the main idea of the editorial?",
+   "choices": [
+    "To advocate for stricter international laws against cyber warfare.",
+    "To inform readers about a recent cyberattack on a public utility in São Paulo.",
+    "To discuss the long-term environmental effects of the water supply interruption.",
+    "To criticize the Brazilian government's response to the crisis."
+   ],
+   "answer": 1,
+   "explanation": "The editorial primarily focuses on describing the cyberattack on São Paulo's water supply (SABESP) and its immediate consequences, as seen in the opening sentence: 'Na madrugada desta quinta-feira, um ataque cibernético sem precedentes atingiu o sistema da SABESP, paralisando o fornecimento de água para milhões de residentes na cidade de São Paulo.' The other options are either too specific or not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-editorial-001",
+   "stem": "What can be inferred about the attackers' intentions?",
+   "choices": [
+    "To physically damage the water infrastructure.",
+    "To steal sensitive data from SABESP's database.",
+    "To test the vulnerability of Brazilian cybersecurity systems.",
+    "To disrupt the daily lives of São Paulo residents and draw attention to their cause."
+   ],
+   "answer": 3,
+   "explanation": "The text suggests that the attackers aimed to disrupt daily life and gain attention: 'Os hackers, que ainda não foram identificados, deixaram um rastro de mensagens indicando que o ataque era uma forma de protesto contra as políticas de privatização dos serviços públicos.' There is no mention of data theft, physical damage, or testing vulnerabilities.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "pt-dr-3-editorial-001",
+   "stem": "What is the tone of the editorial?",
+   "choices": [
+    "Alarmed and critical, with a sense of urgency.",
+    "Neutral and informative, presenting facts without opinions.",
+    "Optimistic, emphasizing the quick resolution of the issue.",
+    "Humorous, using satire to discuss a serious topic."
+   ],
+   "answer": 0,
+   "explanation": "The editorial expresses concern about the attack and its consequences, using phrases like 'situação alarmante' and 'é imperativo que as autoridades tomem medidas imediatas.' It also criticizes the lack of preparedness: 'O que ficou evidente é a falta de preparo das autoridades para lidar com ameaças cibernéticas desta magnitude.' The tone is not neutral, optimistic, or humorous.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-speech-001",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "The Rio Summit is a platform for countries to showcase their individual achievements.",
+    "The Rio Summit aims to foster global cooperation to address pressing environmental issues.",
+    "The Rio Summit is primarily focused on discussing economic policies and trade agreements.",
+    "The Rio Summit is an opportunity for businesses to network and expand their operations."
+   ],
+   "answer": 1,
+   "explanation": "The speaker explicitly states that the summit is a 'plataforma para a cooperação global' to tackle 'desafios ambientais urgentes' such as 'mudanças climáticas', 'perda de biodiversidade', and 'poluição'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-speech-001",
+   "stem": "What can be inferred about the speaker's view on the current state of global environmental efforts?",
+   "choices": [
+    "The speaker believes that current efforts are sufficient and only need minor adjustments.",
+    "The speaker feels that global environmental efforts are a distraction from more pressing economic issues.",
+    "The speaker thinks that global environmental efforts are on the right track but need more funding.",
+    "The speaker argues that current efforts are inadequate and urgent action is required."
+   ],
+   "answer": 3,
+   "explanation": "The speaker mentions that 'os esforços atuais são insuficientes' and emphasizes the need for 'ações urgentes e coordenadas' to address environmental challenges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-speech-001",
+   "stem": "In the phrase 'os desafios ambientais urgentes', what does 'urgentes' mean here?",
+   "choices": [
+    "requiring immediate attention",
+    "occurring at regular intervals",
+    "important but not immediate",
+    "predictable and manageable"
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses 'urgentes' to describe environmental challenges that require immediate action, as indicated by the phrase 'ações urgentes e coordenadas'.",
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}

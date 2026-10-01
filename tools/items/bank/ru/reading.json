@@ -1,0 +1,1040 @@
+{
+ "bank": "ru-reading-core",
+ "language": "ru",
+ "title": "Russian reading: core bank",
+ "license": "CC BY-SA 4.0",
+ "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
+ "passages": [
+  {
+   "id": "ru-dr-0p-advertisement-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Library Announcement",
+   "body": "Библиотека открыта в выходные дни. Часы работы: суббота с 10:00 до 17:00, воскресенье с 12:00 до 16:00. Приходите, читайте, учитесь!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-0p-form-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "form",
+   "title": "Tourist Survey",
+   "body": "Анкета: Ваш опыт\n\nЗдравствуйте!\n\nПожалуйста, заполните эту анкету, чтобы поделиться своим опытом и мнением о нашем туристическом сервисе. Ваши ответы помогут нам улучшить наши услуги.\n\nБлагодарим вас!\n\nТуристическая компания «Вокруг света»",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-0p-sign-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Office Closure Notice",
+   "body": "Внимание! Офис закрыт на время проверки. Приносим извинения за причиненные неудобства. Ближайшее открытие — в понедельник. Спасибо за понимание. Управление по противодействию коррупции.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-advertisement-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "Electric Car Sale",
+   "body": "Специальное предложение! Приобретайте электромобиль по особой цене 1 299 000 рублей. Этот современный и экологичный автомобиль идеален для города. Забудьте о высоких расходах на бензин и наслаждайтесь плавной и тихой ездой. Не упустите этот шанс! Предложение действует только до конца месяца. Посетите наш салон сегодня и получите дополнительные скидки. Ваш комфорт и удовлетворение - наше главное стремление.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Factory Announcement: Temporary Closure",
+   "body": "Внимание! Наш завод будет закрыт на одну неделю, начиная с 15 марта. Это необходимо для планового ремонта. В связи с этим, просим всех сотрудников не выходить на работу в этот период. Спасибо за понимание. Администрация завода.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "How to Join a Virtual Classroom",
+   "body": "Чтобы присоединиться к виртуальному классу, нажмите на ссылку в вашем письме. Откроется новое окно. Введите ваше имя и нажмите «Войти». Подождите, пока загрузится класс. Чтобы начать, нажмите «Начать занятие». Если возникнут проблемы, обратитесь к своему преподавателю.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-short_message-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "short_message",
+   "title": "New Art Showcase",
+   "body": "С 15 сентября по 15 октября в нашем музее пройдет выставка под названием \"Цвета осени\". Выставка включит работы пяти талантливых художников. Приходите и наслаждайтесь прекрасными картинами, вдохновленными осенней природой. Вход свободный. Музей открыт с 10:00 до 18:00 ежедневно, кроме понедельника. Мы ждем вас!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-short_message-002",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Wedding Budget",
+   "body": "Свадьба становится всё дороже. Главная причина — рост цен на услуги кейтеринга. Средняя стоимость свадебного банкета увеличилась на 15%. Но и другие расходы выросли. Например, цена на свадебное платье стала выше на 10%. Также растут цены на декорации и музыку. Но самое главное — свадьба должна быть запоминающейся. Поэтому многие пары готовы тратить больше на своё торжество.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1p-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Upcoming Charging Station Installation",
+   "body": "Городские власти сообщают, что в ближайшее время начнется установка зарядных станций для электромобилей. Первая станция появится в центральном парке, затем запланировано установка в других районах города. Это мероприятие направлено на поддержку экологичного транспорта и улучшение инфраструктуры для владельцев электромобилей. Установка станций будет проводиться в несколько этапов, чтобы обеспечить равномерное покрытие территории города. Городские власти призывают жителей использовать новые станции и вносить свой вклад в защиту окружающей среды.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1p-description-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "description",
+   "title": "A Modern Addition to the Skies",
+   "body": "Новый терминал аэропорта \"Волга\" открылся сегодня. Он предлагает пассажирам современные удобства и улучшенные услуги. Терминал оснащен новыми технологиями для обеспечения безопасности и комфорта. Здесь есть зона для деловых встреч, множество ресторанов и магазинов, а также удобные места для отдыха. Новый терминал способен обслуживать больше рейсов, что снизит задержки и улучшит опыт путешествий для всех пассажиров. \"Волга\" продолжает развиваться, предлагая лучшие условия для своих гостей.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1p-description-002",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "description",
+   "title": "City Expansion: New Metro Line Opens",
+   "body": "В нашем городе открыли новую линию метро. Она соединит северный и южный районы, что значительно улучшит транспортное сообщение. Теперь жители этих районов смогут быстрее и удобнее добираться до центра города и других частей города. Новая линия имеет пять станций, каждая из которых имеет современный дизайн и все необходимые удобства. Метро будет работать с 6:00 до 24:00, что позволяет пассажирам пользоваться им в любое время дня. Мы рады, что наш город продолжает развиваться и предлагать своим жителям лучшие условия для жизни.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1p-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Protecting Our City from Air Pollution",
+   "body": "Уважаемые жители столицы! Наша цель — уменьшить загрязнение воздуха в городе. Мы призываем вас сократить использование личных автомобилей. Оставьте машину дома и используйте общественный транспорт. Проверьте расписание автобусов, троллейбусов и трамваев и выберите удобный маршрут. Градоначальник объявил о запуске новых экологичных автобусов, которые будут курсировать по основным улицам. Также планируется увеличить число велосипедных дорожек, чтобы вы могли комфортно передвигаться на велосипедах. Вместе мы можем сделать наш город чище и здоровее. Спасибо за сотрудничество!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1p-personal_letter-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "personal_letter",
+   "title": "My First Trip on the New Metro Line",
+   "body": "Привет, Анна!\n\nЯ хотел(а) рассказать тебе о моей первой поездке на новой линии метро. Вчера я решил(а) попробовать новую линию и был(а) очень впечатлен(а). Станция, на которой я вошел(а), была красивой и современной, с большими окнами и ярким освещением. Видели танцевальную группу, которая выступала на станции. Это было весело!\n\nНовая линия очень удобная и быстро доставляет в центр города. Поезд был чистый и комфортный, и я легко нашел(а) место, где можно было сесть. В целом, я очень доволен(а) своей поездкой и планирую использовать новую линию метро снова в ближайшее время.\n\nС наилучшими пожеланиями,\n[Твое имя]",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-2-biography-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "biography",
+   "title": "A Chance Encounter",
+   "body": "Недавно я устроился на работу в театр, и всё благодаря случайной встрече. Однажды я обедал в кафе, где я часто бывал. Вдруг вошёл мужчина, которого я сразу узнал — это был известный режиссёр Иван Петрович. Он заглянул передохнуть после репетиции. Я не мог упустить такой шанс и подошёл к нему. Мы разговорились, и я рассказал ему о своём интересе к театру. Иван Петрович пригласил меня на репетицию, а потом предложил работу ассистента режиссёра. Теперь я работаю в театре и узнаю много нового о постановках спектаклей. Эта встреча изменила мою жизнь, и я очень благодарен судьбе за неё.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-2-biography-002",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "biography",
+   "title": "A Helping Hand",
+   "body": "Я — Ольга, жительница города Новороссийска. Я доброволец в местной программе помощи пожилым и инвалидам. Программа называется \"Доброта\". Я хочу дать руку помощи тем, кто не может себя обеспечить. Каждую неделю я навещаю пожилых людей и помогаю им по дому, готовлю еду и просто общаюсь с ними. Я чувствую, что это мой долг — помогать тем, кто в этом нуждается. Кроме того, я помогаю организовывать мероприятия для нашего сообщества, такие как благотворительные ярмарки и концерты. Это позволяет нам собрать деньги на продукты и медикаменты для тех, кто в них нуждается. Я очень ценю возможность быть частью этой программы и видеть, как она положительно влияет на нашу общину.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-2p-extended_report-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "extended_report",
+   "title": "A New Era in Space Exploration: The Launch of the Nadezhda Probe",
+   "body": "Вчера состоялся успешный запуск зонда Надежда с космодрома Байконур. Этот зонд, созданный российскими учеными, направлен к Венере для изучения ее атмосферы. Запуск прошел без сучка без задоринки, и зонд успешно вышел на заданную орбиту. Надежда оснащена самыми современными приборами, которые позволят провести детальное исследование атмосферы Венеры и получить ценные данные для будущих миссий. Важно отметить, что этот запуск является важным шагом в развитии российской космической программы. Планируется, что зонд будет передавать данные на Землю в течение нескольких лет. Ученые надеются, что полученная информация поможет им лучше понять климатические процессы на Венере и, возможно, найти ответы на вопросы о происхождении жизни во Вселенной. Этот запуск также демонстрирует потенциал российских технологий в области космических исследований. В будущем планируется проведение подобных миссий к другим планетам Солнечной системы. Успешный запуск зонда Надежда является важным достижением для российской науки и космонавтики.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-3-commentary-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "3",
+   "textType": "commentary",
+   "title": "A Bridge Between Cultures",
+   "body": "В последние годы программы культурного обмена стали популярными среди студентов со всего мира. Одной из таких программ стал обмен между российскими и американскими студентами, который прошел в этом году. Участники программы провели несколько недель, живя и учась вместе, изучая культуру и традиции друг друга. Этот обмен опытом позволил нам лучше понять друг друга и увидеть мир глазами другого человека. Мы собирались вместе каждый вечер, чтобы обсудить наши впечатления и впечатления друг друга. Я убежден, что такие программы обмена играют важную роль в укреплении взаимопонимания между народами. Они позволяют нам преодолеть стереотипы и предвзятости, которые могут существовать между разными культурами. Кроме того, такие программы способствуют развитию навыков межкультурной коммуникации, которые становятся все более важными в нашем глобализированном мире. В ходе этой программы мы посетили множество достопримечательностей и исторических мест, что позволило нам глубже понять культуру и историю наших партнеров. Мы также приняли участие в различных культурных мероприятиях, таких как фестивали, концерты и выставки. Эти мероприятия дали нам возможность не только насладиться культурой, но и активно участвовать в ней. В заключение хочу сказать, что программа культурного обмена между российскими и американскими студентами была удивительным опытом. Она позволила нам не только расширить свои знания о культуре и традициях другой страны, но и завести новых друзей и партнеров. Я уверен, что такой опыт будет полезен нам в будущем, как в личной, так и в профессиональной жизни.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  }
+ ],
+ "items": [
+  {
+   "id": "ru-dr-0p-advertisement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ru-dr-0p-advertisement-001",
+   "stem": "What is the main point of this announcement?",
+   "choices": [
+    "The library is hosting a special event.",
+    "The library is moving to a new location.",
+    "The library is offering new services.",
+    "The library is open on weekends."
+   ],
+   "answer": 3,
+   "explanation": "The main point of the announcement is that the library is open on weekends. The text states: \"Библиотека открыта по выходным\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-0p-advertisement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-0p-advertisement-001",
+   "stem": "What does \"по выходным\" mean here?",
+   "choices": [
+    "On weekends",
+    "During the week",
+    "In the evening",
+    "On holidays"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"по выходным\" refers to weekends. The text is announcing that the library is open on weekends.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-0p-form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ru-dr-0p-form-001",
+   "stem": "What is the purpose of the form?",
+   "choices": [
+    "To cancel a hotel reservation",
+    "To provide feedback on a tourist experience",
+    "To apply for a visa",
+    "To book a guided tour"
+   ],
+   "answer": 1,
+   "explanation": "The purpose of the form is to provide feedback on a tourist experience, as indicated by the phrase \"Ваш опыт\" (Your experience) and \"Отзыв\" (Feedback).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-0p-form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-0p-form-001",
+   "stem": "What does the phrase \"Ваш опыт\" mean here?",
+   "choices": [
+    "Your opinion",
+    "Your itinerary",
+    "Your experience",
+    "Your baggage"
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"Ваш опыт\" means \"Your experience\" in this context, as it is asking for feedback on a tourist experience.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-0p-sign-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ru-dr-0p-sign-001",
+   "stem": "What is the reason for the office closure?",
+   "choices": [
+    "The building is being cleaned.",
+    "An investigation is taking place.",
+    "A major event is happening.",
+    "The office is moving to a new location."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is (C) An investigation is taking place. The text states that the office is closed due to a проверка (investigation): «Офис закрыт на время проверки.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-advertisement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-advertisement-001",
+   "stem": "According to the advertisement, what is the price of the electric car?",
+   "choices": [
+    "1,399,000 rubles",
+    "1,499,000 rubles",
+    "1,599,000 rubles",
+    "1,299,000 rubles"
+   ],
+   "answer": 3,
+   "explanation": "The price of the electric car is given as 1,299,000 rubles in the text: «По специальной цене 1 299 000 рублей».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-advertisement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dr-1-advertisement-001",
+   "stem": "What is the main purpose of the advertisement?",
+   "choices": [
+    "To announce a new model of electric car",
+    "To compare electric cars with gasoline cars",
+    "To inform customers about a special offer on electric cars",
+    "To explain how electric cars work"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the advertisement is to inform customers about a special offer on electric cars, as indicated by the words «Специальное предложение» and «Покупайте электромобиль по специальной цене».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-announcement-001",
+   "stem": "Why will the factory be closed for one week?",
+   "choices": [
+    "To undergo maintenance.",
+    "To install new machinery.",
+    "To celebrate a holiday.",
+    "To change management."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the factory will be closed for 'плановый ремонт' (scheduled maintenance), so the correct answer is 'To undergo maintenance.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1-announcement-001",
+   "stem": "In the text, what does 'в связи с этим' mean?",
+   "choices": [
+    "Despite this.",
+    "Because of this.",
+    "Before this.",
+    "In addition to this."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'в связи с этим' is used to indicate a consequence or result, meaning 'Because of this.' The text uses it to explain the reason for the closure duration: 'В связи с этим, завод будет закрыт на одну неделю.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-instructions-001",
+   "stem": "The Russian word “ссылка” is used in the text. What is its meaning here?",
+   "choices": [
+    "A username",
+    "A link",
+    "A password",
+    "A code"
+   ],
+   "answer": 1,
+   "explanation": "The text says “нажмите на ссылку”, which translates to “click on the link”. So the context makes it clear that the word “ссылка” here means a link.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dr-1-instructions-001",
+   "stem": "What is the goal of the instructions?",
+   "choices": [
+    "To demonstrate how to join a virtual classroom",
+    "To show how to schedule a meeting",
+    "To describe how to create an online account",
+    "To explain how to download a video"
+   ],
+   "answer": 0,
+   "explanation": "The text begins with “Чтобы присоединиться к виртуальному классу”, which translates to “To join a virtual classroom”. So the instructions are about joining a virtual classroom.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ru-dr-1-instructions-001",
+   "stem": "Why does the author mention “нажмите на ссылку”?",
+   "choices": [
+    "To describe how to invite others to the virtual classroom",
+    "To tell the reader how to start the virtual classroom",
+    "To explain how to end the virtual classroom",
+    "To show how to share the virtual classroom"
+   ],
+   "answer": 1,
+   "explanation": "The text says “Чтобы присоединиться к виртуальному классу, нажмите на ссылку в вашем письме.”, which translates to “To join the virtual classroom, click on the link in your email.”. So the author mentions “нажмите на ссылку” to tell the reader how to start the virtual classroom.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-short_message-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-short_message-001",
+   "stem": "The text mentions that the museum exhibition will feature works by how many artists?",
+   "choices": [
+    "Fifteen artists",
+    "Five artists",
+    "Twenty artists",
+    "Ten artists"
+   ],
+   "answer": 1,
+   "explanation": "The text states 'Выставка будет включать работы пяти талантливых художников', so the correct answer is that the exhibition will feature works by five artists.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-short_message-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dr-1-short_message-001",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To inform readers about a new art exhibition",
+    "To recruit artists for a competition",
+    "To advertise a new museum location",
+    "To sell tickets for a museum event"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the text is 'С 15 сентября по 15 октября в нашем музее будет проходить выставка под названием \"Цвета осени\"', which announces a new art exhibition. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-short_message-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-short_message-002",
+   "stem": "What is the main reason for the increase in wedding costs?",
+   "choices": [
+    "The need for a larger venue.",
+    "The rising cost of catering.",
+    "The desire for unique decorations.",
+    "The high price of the wedding dress."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the main reason for the increase in wedding costs is the rising cost of catering, specifically mentioning 'из-за роста цен на услуги катернга'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-short_message-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1-short_message-002",
+   "stem": "What does 'торжество' mean here?",
+   "choices": [
+    "A dance performance.",
+    "A wedding dress.",
+    "A celebration or ceremony.",
+    "A type of food."
+   ],
+   "answer": 2,
+   "explanation": "In the context of the text, 'торжество' refers to the wedding ceremony or celebration, as indicated by the phrase 'свадебное торжество'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dr-1p-announcement-001",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "A new park will be built in the city.",
+    "The city is installing new street lights.",
+    "A new law about electric cars will be passed.",
+    "Electric car charging stations will be placed in various locations."
+   ],
+   "answer": 3,
+   "explanation": "The announcement is about the installation of electric car charging stations. The relevant words are \"установка зарядных станций для электромобилей\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dr-1p-announcement-001",
+   "stem": "Where will the first charging station be installed?",
+   "choices": [
+    "In the city center.",
+    "At the central park.",
+    "Near the city hall.",
+    "By the main railway station."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the first charging station will be installed \"в центральном парке\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-announcement-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1p-announcement-001",
+   "stem": "What does \"запланировано\" mean here?",
+   "choices": [
+    "Will happen in the future.",
+    "Already happened.",
+    "Not going to happen.",
+    "Happening now."
+   ],
+   "answer": 0,
+   "explanation": "The word \"запланировано\" is used to indicate that the installation of charging stations is scheduled for the future. The relevant words are \"запланировано установка зарядных станций\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-description-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dr-1p-description-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "Airlines are moving their operations to a different city due to overcrowding.",
+    "A new airport terminal has opened with advanced facilities and improved services.",
+    "The government is investing in new technology to track flights more efficiently.",
+    "The old airport terminal is being renovated to include more shops and restaurants."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that a new airport terminal has opened with advanced facilities and improved services, as stated in the beginning of the passage: 'Новый терминал аэропорта",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-description-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dr-1p-description-001",
+   "stem": "According to the text, what is one of the new features of the terminal?",
+   "choices": [
+    "A larger parking lot for private vehicles.",
+    "A dedicated area for business meetings.",
+    "More gates for international flights.",
+    "A new system for tracking luggage."
+   ],
+   "answer": 1,
+   "explanation": "The text mentions 'Зона для деловых встреч' as one of the new features of the terminal.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-description-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1p-description-001",
+   "stem": "In the text, what does 'удобства' mean here?",
+   "choices": [
+    "Facilities",
+    "Rules",
+    "Guides",
+    "Challenges"
+   ],
+   "answer": 0,
+   "explanation": "The word 'удобства' in this context refers to facilities or amenities, as in 'современные удобства' (modern facilities).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dr-1p-description-002",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The new metro line is the first in the city.",
+    "The new metro line is very expensive.",
+    "The new metro line will make travel easier for many people.",
+    "The new metro line is not popular."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that the new metro line is beneficial for the city and its residents, as it connects new areas and provides faster travel. This is supported by phrases like 'новую линию метро' (new metro line), 'соединит новые районы' (will connect new areas), and 'улучшит транспортное сообщение' (will improve transportation).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dr-1p-description-002",
+   "stem": "According to the text, where does the new metro line start and end?",
+   "choices": [
+    "It starts at the western district and ends at the city center.",
+    "It starts at the northern district and ends at the southern district.",
+    "It starts at the southern district and ends at the eastern district.",
+    "It starts at the city center and ends at the northern district."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the new metro line 'соединит северный и южный районы' (will connect the northern and southern districts).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1p-description-002",
+   "stem": "In the text, what does the phrase 'улучшит транспортное сообщение' mean here?",
+   "choices": [
+    "It will make transportation more convenient.",
+    "It will make transportation less frequent.",
+    "It will make transportation slower.",
+    "It will make transportation more expensive."
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'улучшит транспортное сообщение' means 'will improve transportation' in this context. The word 'улучшит' (will improve) indicates a positive change, and 'транспортное сообщение' (transportation) refers to the ease and efficiency of travel.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dr-1p-instructions-001",
+   "stem": "What is the main point of this text?",
+   "choices": [
+    "How to increase the number of parks in the city",
+    "How to encourage people to use public transportation more often",
+    "How to reduce the use of private cars in the city",
+    "How to plant more trees in the city streets"
+   ],
+   "answer": 2,
+   "explanation": "The main point of the text is to reduce the use of private cars in the city to combat air pollution. This is evident from the repeated emphasis on reducing car usage, such as 'меньше автомобилей' and 'оставьте машину дома'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dr-1p-instructions-001",
+   "stem": "What does the phrase 'проверьте расписание' refer to in this text?",
+   "choices": [
+    "The schedule of car maintenance",
+    "The schedule of tree-planting activities",
+    "The schedule of public transportation",
+    "The schedule of city events"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'проверьте расписание' refers to the schedule of public transportation. The text states 'проверьте расписание общественного транспорта', which indicates that it is about public transportation schedules.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-instructions-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "purpose",
+   "passageId": "ru-dr-1p-instructions-001",
+   "stem": "Why does the text mention 'новые экологичные автобусы'?",
+   "choices": [
+    "To inform about the age of the bus fleet",
+    "To encourage people to use more public transportation",
+    "To compare different types of buses",
+    "To advertise a new bus service"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions 'новые экологичные автобусы' to encourage people to use more public transportation. This is part of the overall goal to reduce car usage and combat air pollution, as stated in 'используйте общественный транспорт'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-personal_letter-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dr-1p-personal_letter-001",
+   "stem": "What is the main idea of the letter?",
+   "choices": [
+    "The writer provides information about the history of the metro system.",
+    "The writer complains about the poor service on the new metro line.",
+    "The writer describes their first experience using a new metro line.",
+    "The writer gives advice on how to navigate the new metro line."
+   ],
+   "answer": 2,
+   "explanation": "The letter focuses on the writer's personal experience of taking the new metro line for the first time, describing what they saw and felt.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-personal_letter-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dr-1p-personal_letter-001",
+   "stem": "What did the writer see at the new metro station?",
+   "choices": [
+    "A band playing music",
+    "A large crowd of people",
+    "Many colorful advertisements",
+    "A group of dancers performing"
+   ],
+   "answer": 3,
+   "explanation": "The writer mentions seeing a group of dancers performing at the new metro station: \"Видели танцевальную группу, которая выступала на станции.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1p-personal_letter-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1p-personal_letter-001",
+   "stem": "In the letter, the word \"удобный\" means:",
+   "choices": [
+    "Crowded",
+    "Expensive",
+    "Comfortable",
+    "Fast"
+   ],
+   "answer": 2,
+   "explanation": "The writer describes the new metro line as \"удобный\", meaning it is comfortable and convenient to use: \"Новая линия очень удобная и быстро доставляет в центр города.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-biography-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dr-2-biography-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "A man talks about his favorite actor.",
+    "A man recalls his first time attending a play.",
+    "A man explains how he got a job in a theater.",
+    "A man describes his unexpected meeting with a famous actor."
+   ],
+   "answer": 2,
+   "explanation": "The passage focuses on how the narrator got a job in a theater after meeting the director, Ivan Petrovich, by chance. The other options are not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-biography-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-biography-001",
+   "stem": "Where did the narrator first meet Ivan Petrovich?",
+   "choices": [
+    "In a theater.",
+    "At a job interview.",
+    "At a friend's house.",
+    "In a café."
+   ],
+   "answer": 3,
+   "explanation": "The narrator met Ivan Petrovich в кафе, as stated in the text: «Я встретил его в кафе, где я часто обедал.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-biography-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-biography-001",
+   "stem": "What does the phrase \"заглянул\" mean here?",
+   "choices": [
+    "Stopped by.",
+    "Looked carefully.",
+    "Peeked in.",
+    "Stared at."
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"заглянул\" in this context means that Ivan Petrovich stopped by the café briefly. The text says: «Он заглянул передохнуть после репетиции.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-biography-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dr-2-biography-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "A community program provides free meals to the elderly and disabled.",
+    "A woman named Olga describes her experiences as a volunteer in a community program.",
+    "A new community center opens in a small town.",
+    "A volunteer program helps people improve their job skills."
+   ],
+   "answer": 1,
+   "explanation": "The text focuses on Olga's experiences as a volunteer in a community program, describing her motivations, tasks, and the impact of the program on the community. The other options are not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-biography-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-biography-002",
+   "stem": "What does Olga say is her main motivation for volunteering?",
+   "choices": [
+    "She wants to learn new skills.",
+    "She feels it is her duty to help others.",
+    "She wants to gain work experience.",
+    "She enjoys meeting new people."
+   ],
+   "answer": 1,
+   "explanation": "Olga states that she volunteers because she feels it is her duty to help those in need. The text says: \"Я чувствую, что это мой долг — помогать тем, кто в этом нуждается.\" The other options are not mentioned as her main motivation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-biography-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-biography-002",
+   "stem": "In the text, the phrase \"дать руку помощи\" means...",
+   "choices": [
+    "To reach out to someone.",
+    "To lend a book or tool.",
+    "To give a handshake.",
+    "To offer support or assistance."
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"дать руку помощи\" is used to describe the act of providing support or assistance to others. The text says: \"Я хочу дать руку помощи тем, кто не может себя обеспечить.\" The other options do not accurately convey this meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2p-extended_report-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dr-2p-extended_report-001",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "The technical specifications of the Nadezhda probe",
+    "The successful launch of the Nadezhda probe and its mission",
+    "The history of space exploration in Russia",
+    "The international cooperation in space exploration"
+   ],
+   "answer": 1,
+   "explanation": "The passage focuses on the successful launch of the Nadezhda probe and its mission to study the atmosphere of Venus. The other options are not the main topic, although they may be mentioned briefly.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2p-extended_report-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dr-2p-extended_report-001",
+   "stem": "What can be inferred about the significance of the Nadezhda probe's mission?",
+   "choices": [
+    "It is a routine mission with no significant scientific value",
+    "It is a mission that will help establish a human colony on Venus",
+    "It is a mission that will test new propulsion technologies",
+    "It is a mission that will provide valuable data for future space exploration"
+   ],
+   "answer": 3,
+   "explanation": "The passage states that the Nadezhda probe is equipped with advanced instruments to study the atmosphere of Venus and that its mission will provide valuable data for future space exploration. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2p-extended_report-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2p-extended_report-001",
+   "stem": "What does the word \"запуск\" mean here?",
+   "choices": [
+    "Explosion",
+    "Crash",
+    "Launch",
+    "Landing"
+   ],
+   "answer": 2,
+   "explanation": "The word \"запуск\" is used to describe the event when the Nadezhda probe was sent into space. The relevant sentence is: \"Вчера состоялся успешный запуск зонда Надежда с космодрома Байконур.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-commentary-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dr-3-commentary-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The author believes that cultural exchange programs should be limited to European countries.",
+    "A cultural exchange program has been successful in fostering mutual understanding between Russian and American students.",
+    "Russian and American students have significant cultural differences.",
+    "Cultural exchange programs are a waste of time and resources."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 0. The main idea of the passage is that the cultural exchange program has been successful in fostering mutual understanding between Russian and American students. This is evident throughout the passage, such as in the sentence 'Этот обмен опытом позволил нам лучше понять друг друга и увидеть мир глазами другого человека.' The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-commentary-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dr-3-commentary-001",
+   "stem": "What can be inferred about the author's attitude towards cultural exchange programs?",
+   "choices": [
+    "The author believes that cultural exchange programs are crucial for fostering mutual understanding.",
+    "The author is skeptical about the benefits of cultural exchange programs.",
+    "The author thinks that cultural exchange programs are only beneficial for students from wealthy countries.",
+    "The author believes that cultural exchange programs should be limited to certain subjects."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 1. The author's attitude towards cultural exchange programs is positive and supportive. This can be inferred from the sentence 'Я убежден, что такие программы обмена играют важную роль в укреплении взаимопонимания между народами.' The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-commentary-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-3-commentary-001",
+   "stem": "What does the phrase 'собирались вместе' mean here?",
+   "choices": [
+    "They were arguing.",
+    "They were leaving.",
+    "They were gathered together.",
+    "They were separated."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 2. The phrase 'собирались вместе' means 'gathered together.' This is evident in the sentence 'Мы собирались вместе каждый вечер, чтобы обсудить наши впечатления и впечатления друг друга.' The other choices do not fit the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}

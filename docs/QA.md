@@ -34,3 +34,19 @@ machine before a release (BRIEF §10). Record results with date, OS version and 
 ## Data
 - [ ] PDF report fonts render for all 11 languages (open the PDF in the OS viewer).
 - [ ] `.mokuhyo` bundle exported on one OS imports on another and merges without duplicates.
+
+## Reading and listening
+- [ ] Practice at each level shows feedback and explanations; a 30-minute test runs to the end and shows an estimate
+      with the disclaimer; quitting mid-test and relaunching offers to resume.
+- [ ] Tap-to-define works with the mouse and with the keyboard (Tab to the passage, ←/→, Enter).
+- [ ] A listening test plays each clip once and shows the questions after the first play; Japanese, Chinese, Korean,
+      Arabic and Indonesian listening use the OS voice (none on Linux).
+- [ ] "Generate more" produces a passage labelled "Generated on this computer" that is excluded from estimates.
+
+## Speaking
+- [ ] An interview test runs 19 turns with the microphone and the model's voice; the rating shows evidence quotes.
+- [ ] Interview quality on Tier B: does the interviewer move between topics, or fixate on one the learner mentioned?
+- [ ] Recordings play back from History.
+
+## Updates
+- [ ] The update check is off by default; "Check now" reports the result (private repository: "isn't public yet").

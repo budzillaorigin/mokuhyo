@@ -1,0 +1,1418 @@
+{
+ "bank": "ko-reading-core",
+ "language": "ko",
+ "title": "Korean reading: core bank",
+ "license": "CC BY-SA 4.0",
+ "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
+ "passages": [
+  {
+   "id": "ko-dr-0p-advertisement-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Naval Port Visit Announcement",
+   "body": "해군 함정이 우리 항구에 방문합니다. 5월 15일 오전 10시에 도착할 예정입니다. 함정 관람과 선원과의 교류가 가능합니다. 여러분의 참석을 기대합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-advertisement-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "News for All",
+   "body": "자유로운 언론은 민주주의의 기초입니다. 지식은 힘입니다. 자유로운 언론을 지지하세요! 오늘의 뉴스를 확인하세요. 우리 신문은 매일 아침 배달됩니다. 구독하세요!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-form-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "form",
+   "title": "Drought Reporting Form",
+   "body": "가뭄 신고서\n신고자 성명: ______\n신고자 연락처: ______\n신고일시: ______\n가뭄 발생 지역: ______\n가뭄 기간: ______\n가뭄 심각도: ______\n기타 사항: ______",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-notice-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "notice",
+   "title": "Vaccination Notice for Children",
+   "body": "모든 아이들이 홍역 백신을 접종받도록 하세요.\n접종일: 5월 15일 (일요일)\n시간: 오전 9시부터 오후 1시까지\n장소: 공원 앞 보건소\n홍역은 위험한 질병입니다. 백신을 맞으면 아이들이 안전해집니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-sign-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Bank Notice",
+   "body": "인플레이션으로 인해 금리가 인상됩니다.\n신규 대출금리는 4.25%입니다.\n기존 대출금리는 3.75%에서 4.00%로 인상됩니다.\n변동금리는 3.50%에서 3.75%로 인상됩니다.\n이 변경은 2023년 3월 1일부터 적용됩니다.\n감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "instructions",
+   "title": "What to Do If You Lose Your Passport",
+   "body": "여권을 분실하셨나요? 먼저 대사관에 연락하시기 바랍니다. 그리고 경찰에 신고하시기 바랍니다. 경찰 신고서를 보관하시기 바랍니다. 새 여권을 발급받으려면 경찰 신고서가 필요합니다. 대사관은 여권 관련 문제로 도와드립니다. 대사관에 연락하시기 바랍니다. 여권 문제를 해결해 드리겠습니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-notice-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "notice",
+   "title": "New Health Center Opens",
+   "body": "새로운 건강센터가 우리 동네에 개장했습니다. 이 건강센터는 여러분의 건강 유지에 도움이 될 것입니다. 건강센터에는 약국도 있으며, 다양한 진료 서비스를 제공합니다. 건강센터는 매일 오전 9시부터 오후 6시까지 운영됩니다. 더 자세한 정보는 건강센터에 문의하시기 바랍니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-short_message-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Library Closure Notice",
+   "body": "안녕하세요, 모든 독자 여러분!\n\n도서관은 이번 주말에 새 책들을 진열할 예정입니다. 따라서 토요일과 일요일에 도서관은 휴관됩니다.\n\n새로운 책들을 더 잘 읽을 수 있도록 준비하고 있습니다. 다음 주 월요일부터 다시 개관합니다.\n\n도서관 이용에 불편을 드려 죄송합니다. 이해해 주셔서 감사합니다.\n\n도서관 관계자 드림",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-short_message-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Exchange Program Invitation",
+   "body": "저희 학교에서 한국 문화 교류 프로그램을 개최합니다. 이 프로그램은 한 달 동안 진행되며, 한국어와 한국 문화에 대해 배울 수 있는 좋은 기회입니다. 모든 수준의 학생이 참여할 수 있으며, 특별한 자격 조건이 없습니다. 관심 있는 분들은 교무실에 신청서를 제출해 주세요. 신청 마감일은 다음 주 금요일입니다. 저희는 여러분의 참여를 기대합니다!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-short_message-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Watering Restrictions Announced",
+   "body": "마을 주민 여러분, 오랜 가뭄 때문에 강물도 많이 줄었습니다. 따라서 마을에 물 사용을 줄여주세요. 매일 오전 9시부터 오후 4시까지 물 사용을 금지합니다. 이 규칙을 따라주시면 고맙겠습니다. 마을을 위해 함께 노력해주세요. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-instructions-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Earthquake Relief: How to Help",
+   "body": "지진이 발생한 후 많은 분들이 구호 활동에 참여하고 싶으실 것입니다. 지진 후 구호 활동에 참여하고 싶으시다면 다음 지침을 참고하시기 바랍니다. 먼저, 봉사자를 등록하시려면 구호 본부에서 신청서를 작성하시기 바랍니다. 구호 본부는 시청 근처에 위치하고 있습니다. 또한, 필요한 식량, 물, 의약품 등을 모금하고 있습니다. 이 물품들은 피해 지역으로 직접 전달될 것입니다. 또한, 피난민들을 위한 임시 주택을 건설하는 작업에도 참여할 수 있습니다. 이 작업에는 건축 경험이 있는 분들이 특히 필요합니다. 구호 활동에 참여하시기 전에 안전 수칙을 반드시 숙지하시기 바랍니다. 구호 본부에서 제공하는 안전 교육을 반드시 받으시기 바랍니다. 함께 노력하여 피해를 복구하고 피해자들을 지원해 나갑시다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-personal_letter-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "personal_letter",
+   "title": "A Sailor's Greeting",
+   "body": "안녕하세요, 가족 여러분! 저는 지금 외국 항구에 정박해 있습니다. 이 항구는 정말 아름다워요. 건물들이 색색이고, 바다도 청초해요. 오늘은 현지 해산물 요리를 먹었어요. 맛있었지만, 집으로 보내주신 김치와 고추장이 더 보고 싶어요. 현지 사람들은 다정하고 친절해요. 그들은 우리 배의 일과가 어떻게 되는지 물어보더군요. 나는 그들에게 우리 배의 일과를 설명해 주었어요. 이 경험을 나누고 싶어서 이 편지를 썼어요. 곧 집으로 돌아갈 거예요. 그때까지 건강하세요. 사랑을 담아, 김병장",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-letter-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "letter",
+   "title": "A Letter from the AI Ethics Committee",
+   "body": "안녕하세요, 여러분. 저는 인공지능 윤리 위원회 위원장 김민수입니다. 오늘은 중요한 안내를 드리기 위해 편지를 쓰게 되었습니다. 우리 위원회는 인공지능의 빠른 발전과 그 영향력을 고려하여, 새로운 인공지능 윤리 가이드라인을 제안합니다. 이 가이드라인은 인공지능이 사회에 미치는 영향을 최소화하고, 공정한 발전을 도모하는 것을 목표로 합니다. 주요 내용을 간단히 소개하면 다음과 같습니다. 첫째, 인공지능의 결정 과정을 투명하게 만드는 것입니다. 둘째, 인공지능이 개인정보에 접근하는 방법을 엄격히 규제하는 것입니다. 마지막으로, 인공지능 개발 과정에서 다양성과 포용성을 보장하는 것입니다. 이 가이드라인은 여러분의 일상과 직결되는 중요한 문제가 됩니다. 따라서 여러분의 의견을 듣고 싶습니다. 가이드라인 초안을 위원회 웹사이트에서 확인할 수 있으며, 의견을 제출할 수 있는 링크도 제공되어 있습니다. 여러분의 소중한 의견이 가이드라인 수립에 큰 도움이 될 것입니다. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-letter-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "letter",
+   "title": "Letter from the Agricultural Cooperative Chairman",
+   "body": "농협 중앙회 회장님께,\n\n안녕하세요, 평안남도 농업협동조합에서 온 편지입니다. 우리 지역에서 가뭄이 심해지면서 농민들이 큰 어려움을 겪고 있습니다. 이번 가뭄에 효과적으로 대응하기 위해 여러 가지 지원을 준비했습니다.\n\n우선, 물 공급을 확보하고 기술 지원 팀을 파견할 계획입니다. 물 부족으로 고통받는 농민들에게는 물 운반 차량을 제공하고, 농작물 관리에 필요한 기술 지도를 해 줄 것입니다. 또한, 가뭄에 강인한 작물 종자를 제공하고, 농민들이 새로운 기술을 배울 수 있는 교육 프로그램을 운영할 예정입니다.\n\n농협 중앙회에서도 우리 조합의 노력을 지원해 주시기 바랍니다. 농민들의 어려움을 이해해 주시고, 가능한 한 많은 도움을 주실 것을 부탁드립니다.\n\n감사합니다.\n\n평안남도 농업협동조합\n조합장 김철수 드림",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-news-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "news",
+   "title": "Seoul's Air Quality Alert",
+   "body": "오늘 서울의 공기 질이 매우 나쁩니다. 대기 질 지수가 150을 넘었습니다. 이는 건강에 해를 끼칠 수 있습니다. 특히 어린이, 노인, 호흡기 질환이 있는 사람들은 외부 활동에 더욱 주의해야 합니다. 정부는 오늘 저녁까지 미세먼지 주의를 발효했습니다. 시민들은 마스크를 착용하고 외부 활동을 줄이는 것이 좋습니다. 또한 창문을 닫고 실내 공기 청정기를 사용하는 것이 좋습니다. 공기 질이 개선되려면 비가 오거나 바람이 불어야 합니다. 하지만 이번 주에는 비가 오지 않을 전망입니다. 정부는 공기 질 개선을 위해 다양한 조치를 취하고 있습니다. 예를 들어, 공장에서의 배출 가스를 줄이거나 대중교통을 확대하고 있습니다. 하지만 여전히 많은 자동차가 도로에 있습니다. 시민들의 협력이 필요합니다. 대중교통을 이용하거나 자전거를 타는 것을 고려해 보세요. 함께 노력하면 서울의 공기 질을 개선할 수 있을 것입니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-report-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "report",
+   "title": "Seoul's New Metro Line Opens",
+   "body": "서울시는 새로운 지하철 노선 3호선의 개통을 발표했습니다. 이 노선은 총 4.2 킬로미터 길이로, 기존의 1호선과 2호선을 연결하여 출퇴근 시간 단축과 교통 체증을 완화할 것으로 기대됩니다. 새 노선은 주요 업무 지역과 주거지를 연결해 많은 시민들의 이동을 편리하게 할 것입니다. 또한, 이 노선은 최신 기술을 적용해 안전하고 편안한 여행 환경을 제공합니다. 지하철역은 현대적이고 접근성이 좋도록 설계되었으며, 장애인 및 노인 시민들을 위한 편의 시설도 갖추고 있습니다. 시장은 이 새로운 노선이 서울의 대중교통 시스템을 크게 향상시킬 것이라고 강조했습니다. 개통식은 내달 15일 예정이며, 시민들은 새로운 노선을 이용할 수 있을 것입니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2p-extended_report-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "extended_report",
+   "title": "Humanitarian Aid Reaches Remote Villages",
+   "body": "최근 몇 주 동안, 여러 인도주의적 원조 단체들이 산간 오지 마을들에 긴급 물품을 배달하기 위해 노력해왔다. 이 마을들은 최근의 홍수와 산사태로 인해 매우 큰 피해를 입었다. 도로가 매우 험하고 교통이 불편하기 때문에, 이 마을들에게 물품을 배달하는 것은 매우 어려운 작업이다. 그러나 원조 단체들은 이러한 어려움을 극복하기 위해 최선을 다하고 있다. 예를 들어, 일부 단체들은 헬리콥터를 사용하여 물품을 배달하고 있으며, 다른 단체들은 당나귀와 같은 가축을 사용하여 험난한 지형을 통과하고 있다. 또한, 원주민 가이드와 협력하여 안전한 경로를 찾고 있다. 이 원조 단체들의 노력 덕분에, 많은 마을들이 식량, 물, 의약품을 공급받을 수 있게 되었다. 그러나 여전히 많은 마을들이 도움이 필요하며, 원조 단체들은 계속 노력하고 있다. 원조 단체들은 또한 마을들의 장기적인 회복을 위해 노력하고 있다. 예를 들어, 일부 단체들은 마을들의 인프라를 개선하기 위해 노력하고 있으며, 다른 단체들은 마을 주민들에게 농업 기술과 같은 기술을 가르치고 있다. 이러한 노력들은 마을들이 다시 한번 자립할 수 있도록 돕기 위해 중요하다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2p-interview-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Rising Food Prices: A Grocer's Perspective",
+   "body": "최근 식품 가격이 급등하면서 소비자들의 불만이 높아지고 있습니다. 한 소규모 슈퍼마켓 주인인 김철수 씨는 이 문제에 대해 다음과 같이 설명했습니다.\n\n\"최근 몇 달 동안 식품 가격이 지속적으로 상승하고 있습니다. 특히 수송 비용 증가와 공급망의 중단으로 인해 일부 제품의 공급이 지연되고 있습니다. 예를 들어, 해외에서 수입하는 과일과 채소의 가격이 크게 올랐습니다. 또한, 기후 변화로 인한 농작물 수확량 감소도 가격 상승에 기여하고 있습니다.\"\n\n김철수 씨는 가격 인상이 그의 사업에도 큰 영향을 미치고 있다고 말했습니다. \"고객들이 가격 인상에 대한 불만을 표출하면서 매출이 감소하고 있습니다. 또한, 공급이 불안정해지면서 재고 관리가 어려워지고 있습니다. 우리는 가능한 한 가격 인상을 최소화하기 위해 노력하고 있지만, 결국 소비자에게 일부 부담이 가해질 수밖에 없습니다.\"\n\n그는 가격 인상을 완화하기 위한 몇 가지 조치를 취하고 있다고 말했습니다. \"우리는 지역 농장에서 직접 신선한 농산물을 공급받아 가격 경쟁력을 유지하고 있습니다. 또한, 고객들에게 할인 쿠폰과 적립 포인트를 제공하여 가격 부담을 줄이려고 노력하고 있습니다.\"\n\n김철수 씨는 앞으로의 전망에 대해 \"식품 가격이 안정화되기까지는 시간이 더 필요할 것 같습니다. 그러나 우리는 계속 노력하여 고객들에게 최선의 서비스를 제공하겠습니다.\"라고 말했습니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2p-news_analysis-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Korea Struggles with Prolonged Drought",
+   "body": "한국의 농업 분야는 장기간의 가뭄으로 인해 심각한 도전을 맞고 있다. 이번 여름의 가뭄은 전국적으로 강수량이 크게 줄어서, 농작물 수확량이 크게 감소했다. 특히, 곡물과 과일 작물은 가뭄의 영향을 가장 크게 받았다. 농부들은 수확량 감소로 인해 경제적 손실을 보고 있으며, 일부 지역에서는 농업 활동이 완전히 중단되기도 했다.\n\n기상청에 따르면, 이번 가뭄은 최근 10년 동안 가장 심한 것으로, 강수량이 평균보다 40% 이상 적었다. 이러한 기상 조건은 농작물 성장에 필수적인 토양 수분을 감소시켜, 작물 건강이 악화되었다. 농부들은 물 공급이 부족해 관개 시스템을 효과적으로 사용할 수 없었다.\n\n농업 분야는 가뭄에 대응하기 위해 다양한 조치를 취하고 있다. 일부 농부들은 가뭄에 강한 종자를 사용하기 시작했으며, 다른 농부들은 물 사용 효율성을 높이기 위해 첨단 관개 기술을 도입했다. 또한, 정부는 농부들에게 재정적 지원을 제공하고 있으며, 가뭄에 대한 보험 프로그램을 확대하고 있다.\n\n그러나 이러한 노력에도 불구하고, 농업 분야는 여전히 큰 도전을 맞고 있다. 가뭄이 지속될 경우, 농작물 수확량은 더욱 감소할 것이며, 이는 식량 공급과 농업 경제에 부정적인 영향을 미칠 수 있다. 전문가들은 기후 변화가 가뭄의 빈도를 증가시킬 수 있다고 경고하며, 농업 분야가 이러한 변화에 적응하기 위해 추가적인 조치가 필요하다고 강조한다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2p-opinion-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "opinion",
+   "title": "Are Smartphones Harming Our Children?",
+   "body": "최근 몇 년간 스마트폰 사용이 급증하면서, 아이들의 스마트폰 사용이 큰 문제로 대두되고 있습니다. 물론 스마트폰에는 장점도 있지만, 위험도 많습니다. 아이들이 스마트폰에 중독되거나, 수면 부족에 시달리거나, 부적절한 콘텐츠에 노출되는 경우가 많습니다. 또한, 스마트폰 사용이 아이들의 사회적 상호작용과 학업 성취도에 미치는 영향도 우려됩니다. 일부 학부모와 교육자는 스마트폰 사용을 완전히 금지하는 방법을 제안하지만, 이는 현실적으로 어려울 뿐만 아니라, 아이들이 디지털 세계에서 살아가는 데 필요한 기술을 익히는 것을 방해할 수 있습니다. 따라서, 스마트폰 사용을 완전히 금지하는 것보다 더 나은 방법이 필요합니다. 예를 들어, 아이들이 스마트폰을 사용할 시간을 제한하거나, 적절한 콘텐츠 필터링을 하는 등의 조치가 필요합니다. 또한, 학부모와 교사가 아이들에게 디지털 소양 교육을 제공하여, 아이들이 스마트폰을 안전하고 책임감 있게 사용하는 방법을 배울 수 있도록 도와야 합니다. 아이들의 스마트폰 사용을 관리하는 것은 쉬운 일이 아닙니다. 그러나 적절한 관리와 교육을 통해, 스마트폰이 아이들의 성장에 해를 끼치는 것을 최소화할 수 있을 것입니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "The Impact of Transport Workers' Strikes on Urban Life",
+   "body": "최근 대중교통 노조의 파업이 자주 발생하고 있다. 파업은 노동자들의 권리를 보호하는 중요한 수단이다. 그러나 파업이 도시 생활에 미치는 영향도 무시할 수 없다. 대중교통은 도시 생활의 핵심이다. 매일 수백만 명의 사람들이 대중교통을 이용해서 출퇴근하거나, 쇼핑을 하거나, 다른 도시로 이동한다. 대중교통이 중단되면 도시 생활 전체가 마비되기 쉽다. 예를 들어, 2021년에 버스와 지하철 노조의 파업이 발생했을 때, 많은 사람들이 출근을 포기하거나, 회사에 늦게 도착했다. 회사들은 생산성 저하로 인한 손실을 입었고, 소매업자들은 매출 감소에 시달렸다. 대중교통을 대체할 수 있는 다른 교통 수단은 한계가 있다. 자동차는 교통 체증을 유발하고, 택시는 비싸며, 자전거는 먼 거리에는 적합하지 않다. 또한, 파업은 환경에도 악영향을 미친다. 자동차 사용이 증가하면 대기가 오염되고, 이산화탄소 배출도 증가한다. 따라서 대중교통 노조의 파업은 도시 생활에 큰 혼란을 가져온다. 노동자들의 권리를 보호하는 것은 중요하지만, 파업이라는 수단은 신중하게 사용해야 한다. 교섭이 결렬되면 파업이라는 선택지밖에 없다. 그러나 파업 전에 다른 해결 방법을 모색하는 것이 필요하다. 예를 들어, 중재나 조정 같은 방법을 사용할 수 있다. 또한, 정부는 노동자들과 고용주의 관계를 개선하기 위해 노력해야 한다. 노동자들의 권리를 보호하면서도, 도시 생활의 원활한 운영을 위해 최선을 다해야 한다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "The Hidden Costs of Renting in Seoul",
+   "body": "최근 서울의 주택 가격이 급등하면서 많은 사람들이 전세나 월세로 집을 빌리고 있습니다. 그러나 집을 빌릴 때 고려해야 할 사항이 많습니다. 우선 보증금과 월세가 있습니다. 보증금은 집을 빌릴 때 지불해야 하는 큰 금액이고, 월세는 매월 지불해야 하는 금액입니다. 보증금과 월세의 비율은 다르기 때문에, 집주인과 협상할 때 신중해야 합니다. 또한, 보증금은 일반적으로 집값의 50%에서 80% 사이입니다. 따라서 많은 사람들이 보증금을 마련하기 어려워합니다. 월세는 일반적으로 보증금의 4%에서 6% 사이입니다. 따라서 월세는 보증금보다 적지만, 장기적으로는 더 많이 지불할 수 있습니다. 또한, 중개비도 별도로 지불해야 합니다. 중개비는 일반적으로 월세의 0.5배에서 1배 사이입니다. 따라서 중개비도 고려해야 합니다. 또한, 집주인은 집의 상태를 유지하기 위해 추가적인 비용을 지불할 수 있습니다. 예를 들어, 수도, 전기, 가스, 관리비 등을 지불해야 합니다. 이러한 비용들은 월세에 포함되지 않을 수 있으므로, 별도로 지불해야 합니다. 또한, 집주인이 집의 상태를 유지하기 위해 추가적인 비용을 지불할 수 있습니다. 예를 들어, 수도, 전기, 가스, 관리비 등을 지불해야 합니다. 이러한 비용들은 월세에 포함되지 않을 수 있으므로, 별도로 지불해야 합니다. 또한, 집주인이 집의 상태를 유지하기 위해 추가적인 비용을 지불할 수 있습니다. 예를 들어, 수도, 전기, 가스, 관리비 등을 지불해야 합니다. 이러한 비용들은 월세에 포함되지 않을 수 있으므로, 별도로 지불해야 합니다. 또한, 집주인이 집의 상태를 유지하기 위해 추가적인 비용을 지불할 수 있습니다. 예를 들어, 수도, 전기, 가스, 관리비 등을 지불해야 합니다. 이러한 비용들은 월세에 포함되지 않을 수 있으므로, 별도로 지불해야 합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "Urban Sprawl: A Solution or a Problem?",
+   "body": "도시의 주택 부족 문제는 전 세계적으로 심각한 과제다. 많은 도시에서 인구 증가와 함께 주택 수요가 급증하면서, 주택 가격이 급등하고 저소득층의 주택 접근성이 저하되는 문제가 발생하고 있다. 이에 대한 해결책으로 제시되는 것이 도시 확장이다. 그러나 이는 복잡한 문제다. 도시 확장을 통해 주택 수요를 충족시킬 수 있지만, 동시에 도시 혼잡과 환경 파괴를 악화시킬 수 있다. 따라서 도시 확장을 고려할 때, 주택 수요를 충족시키는 동시에 교통, 환경, 인프라 등의 문제를 해결해야 한다. 또한, 도시 확장을 통해 새로운 일자리와 경제적 기회를 창출할 수 있지만, 이는 기존 주민들의 삶의 질을 떨어뜨릴 수 있다. 따라서 도시 확장을 계획할 때는 기존 주민들의 의견을 반영하고, 그들의 삶의 질을 고려해야 한다. 도시 확장은 주택 부족 문제를 해결하는 하나의 방법일 수 있지만, 이는 신중한 고려와 계획이 필요한 복잡한 문제다. 도시 확장을 통해 주택 문제를 해결하려면, 단순히 주택 수를 늘리는 데 목적을 두기보다는, 지속 가능한 도시 개발을 통해 주택 문제를 해결하는 방안을 모색해야 한다. 이를 위해 정부는 주택 정책을 재검토하고, 도시 계획의 투명성과 참여를 증진시켜야 한다. 또한, 민간 부문과의 협력을 강화하여 주택 공급을 확대하고, 주택의 질을 향상시켜야 한다. 이렇게 하여 도시의 주택 부족 문제를 해결하고, 모든 시민이 안전하고 건강한 주택에 거주할 수 있는 환경을 조성해야 한다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  }
+ ],
+ "items": [
+  {
+   "id": "ko-dr-0p-advertisement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-advertisement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To advertise a naval port visit",
+    "To inform about a naval ship's departure",
+    "To promote a naval recruitment event",
+    "To announce a naval exercise"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to advertise a naval port visit, as indicated by the phrase '해군 함정이 방문합니다' ('a naval ship is visiting').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-advertisement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-advertisement-002",
+   "stem": "In the advertisement, what does “자유로운” mean?",
+   "choices": [
+    "beautiful",
+    "expensive",
+    "new",
+    "free"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is \"free\", because the advertisement says “자유로운 언론” (free press). The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-advertisement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-advertisement-002",
+   "stem": "What is the main idea of the advertisement?",
+   "choices": [
+    "to announce a new law",
+    "to encourage people to support a free press",
+    "to sell newspapers",
+    "to promote a new TV show"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"to encourage people to support a free press\", because the advertisement says “지식은 힘입니다. 자유로운 언론을 지지하세요!” (Knowledge is power. Support a free press!). The other choices are not the main idea of the advertisement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-form-001",
+   "stem": "What does the form ask for the name of the person completing it?",
+   "choices": [
+    "The person's surname.",
+    "The person's title.",
+    "The person's full name",
+    "The person's signature."
+   ],
+   "answer": 2,
+   "explanation": "The form asks for the person's full name with the phrase 이름 (name).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-form-001",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To report a drought.",
+    "To request financial assistance.",
+    "To order irrigation equipment.",
+    "To report a crop failure."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of this form is to report a drought, as indicated by the title 가뭄 신고서 (drought reporting form).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-notice-001",
+   "stem": "What does the notice say is the purpose of the vaccination campaign?",
+   "choices": [
+    "To prevent measles",
+    "To prevent chickenpox",
+    "To prevent flu",
+    "To prevent colds"
+   ],
+   "answer": 0,
+   "explanation": "The notice states that the purpose is \"홍역 예방\" ('prevent measles').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-0p-notice-001",
+   "stem": "What does \"접종\" mean here?",
+   "choices": [
+    "Eating healthy food",
+    "Getting a shot",
+    "Taking medicine",
+    "Drinking water"
+   ],
+   "answer": 1,
+   "explanation": "The notice says \"모든 아이들이 홍역 백신 접종을 받도록 하세요\" ('Have all children get the measles vaccine'), so \"접종\" means 'getting a shot'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-sign-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-sign-001",
+   "stem": "What is this sign about?",
+   "choices": [
+    "The bank's new opening hours",
+    "The bank's new services",
+    "The bank's new interest rates",
+    "The bank's new location"
+   ],
+   "answer": 2,
+   "explanation": "The sign mentions the words '금리' (interest rates) and '인상' (increase), indicating that the main topic is about changes in interest rates. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-instructions-001",
+   "stem": "What should you do first if you lose your passport?",
+   "choices": [
+    "Go to the hospital",
+    "Visit a friend",
+    "Contact the embassy",
+    "Call the police"
+   ],
+   "answer": 2,
+   "explanation": "The text says \"먼저 대사관에 연락하세요.\" which means \"First, contact the embassy.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ko-dr-1-instructions-001",
+   "stem": "Why should you keep the police report?",
+   "choices": [
+    "To visit a doctor",
+    "To report to your school",
+    "To get a new passport",
+    "To find your lost money"
+   ],
+   "answer": 2,
+   "explanation": "The text states \"새 여권을 받으려면 경찰 보고서를 보관하세요.\" which means \"Keep the police report to get a new passport.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-instructions-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-instructions-001",
+   "stem": "In the text, what does \"신고서\" mean?",
+   "choices": [
+    "A police report",
+    "A hospital bill",
+    "A friend's contact",
+    "A new passport"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions \"경찰 보고서를 보관하세요.\" which means \"Keep the police report.\" Here, \"신고서\" refers to the police report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-notice-001",
+   "stem": "What does the notice say the new health center has?",
+   "choices": [
+    "a restaurant",
+    "a dental clinic",
+    "a gym",
+    "a pharmacy"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is (A), a pharmacy. The notice says that the new health center has a 약국 (pharmacy).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-notice-001",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "to advertise jobs at a new health center",
+    "to announce the opening of a new health center",
+    "to explain how to use a new health center",
+    "to describe the history of a new health center"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is (A), to announce the opening of a new health center. The notice starts with '새로운 건강센터가 열렸습니다 (A new health center has opened).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-notice-001",
+   "stem": "In the notice, what does the word '진료' mean?",
+   "choices": [
+    "food",
+    "treatment",
+    "sleep",
+    "exercise"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is (A), treatment. The notice says that the new health center provides various 진료 (treatment) services.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-short_message-001",
+   "stem": "What is the reason for the library's closure?",
+   "choices": [
+    "staff training",
+    "a holiday",
+    "new books to be shelved",
+    "building repairs"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the library is closed for new books to be shelved: 새로운 책들이 배열될 예정입니다. It does not mention staff training, building repairs, or a holiday.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-short_message-001",
+   "stem": "What does 배열될 mean here?",
+   "choices": [
+    "to be painted",
+    "to be arranged",
+    "to be repaired",
+    "to be cleaned"
+   ],
+   "answer": 1,
+   "explanation": "The word 배열될 is used to describe the action of organizing new books: 새로운 책들이 배열될 예정입니다. The context indicates that it means to be arranged.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-short_message-002",
+   "stem": "What does the message say about the exchange program?",
+   "choices": [
+    "It will last for one month.",
+    "It will take place in Seoul.",
+    "It will focus on business Korean.",
+    "It will be held in the spring."
+   ],
+   "answer": 0,
+   "explanation": "The message states \"한 달 동안\" (for one month), indicating the duration of the exchange program. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ko-dr-1-short_message-002",
+   "stem": "What is the purpose of this message?",
+   "choices": [
+    "To inform about a cultural exchange program.",
+    "To promote a tourism package.",
+    "To announce a job opening.",
+    "To advertise a new language school."
+   ],
+   "answer": 0,
+   "explanation": "The message is inviting people to participate in a cultural exchange program, as indicated by \"문화 교류 프로그램\" (cultural exchange program). The other purposes are not relevant to the content of the message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-short_message-003",
+   "stem": "Why does the text say the village must 'reduce water use'?",
+   "choices": [
+    "The water is not safe to use.",
+    "It is illegal to use water from the river.",
+    "The village must save water for the next drought.",
+    "There is very little rain, and the river is not full."
+   ],
+   "answer": 3,
+   "explanation": "The text states '오래된 가뭄 때문에 강물도 많이 줄었습니다'. This means 'Because of the long drought, the river water also greatly decreased.' The village must 'reduce water use' because there is very little rain, and the river is not full.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-short_message-003",
+   "stem": "What does the word '물쓰기' mean here?",
+   "choices": [
+    "Water storage",
+    "Water distribution",
+    "Water conservation",
+    "Water use"
+   ],
+   "answer": 3,
+   "explanation": "The text says '마을에 물쓰기를 줄여주세요'. The word '물쓰기' here means 'water use'. The sentence translates to 'Please reduce water use in the village.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-instructions-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-instructions-002",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The history of earthquakes in this area",
+    "The types of damage caused by the earthquake",
+    "How to help with disaster relief after an earthquake",
+    "How to prepare for future earthquakes"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is how to help with disaster relief after an earthquake. The text says 지진 후 구호 활동에 참여하고 싶으시다면 다음 지침을 참고하시기 바랍니다. (If you want to participate in disaster relief after the earthquake, please refer to the following guidelines.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-instructions-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-instructions-002",
+   "stem": "According to the text, where should you go to register as a volunteer?",
+   "choices": [
+    "The local community center",
+    "The disaster relief headquarters",
+    "The nearest hospital",
+    "The city hall"
+   ],
+   "answer": 1,
+   "explanation": "The text states 봉사자를 등록하시려면 구호 본부에서 신청서를 작성하시기 바랍니다. (To register as a volunteer, please fill out an application form at the disaster relief headquarters.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-instructions-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1p-instructions-002",
+   "stem": "What does the text mean by '필요품 모금'?",
+   "choices": [
+    "Organizing food donations",
+    "Collecting money for relief efforts",
+    "Providing medical supplies",
+    "Gathering essential items for survivors"
+   ],
+   "answer": 3,
+   "explanation": "The text mentions 필요한 식품, 물, 의약품 등을 모금하고 있습니다. (We are collecting necessary food, water, medicine, etc.) This indicates that '필요품 모금' refers to gathering essential items for survivors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-personal_letter-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-personal_letter-002",
+   "stem": "What is the main topic of this letter?",
+   "choices": [
+    "A sailor's plan to desert the navy",
+    "A sailor's request for supplies to be delivered",
+    "A sailor's description of a visit to a foreign port",
+    "A sailor's complaints about life at sea"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the sailor's description of visiting a foreign port. The letter describes the port, the food, and the people the writer met, and expresses excitement about the experience. The text does not mention complaints, requests for supplies, or plans to desert the navy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-personal_letter-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-personal_letter-002",
+   "stem": "What did the writer eat in the foreign port?",
+   "choices": [
+    "Local seafood specialties",
+    "Traditional Korean food",
+    "American fast food",
+    "French pastries"
+   ],
+   "answer": 0,
+   "explanation": "The writer ate \"현지 해산물 특별\" or 'local seafood specialties'. The text does not mention traditional Korean food, American fast food, or French pastries.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-personal_letter-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1p-personal_letter-002",
+   "stem": "What does the writer mean by \"배의 일과가\"?",
+   "choices": [
+    "The ship's cargo",
+    "The ship's crew",
+    "The ship's route",
+    "The ship's schedule"
+   ],
+   "answer": 3,
+   "explanation": "\"배의 일과가\" refers to the ship's schedule. The writer mentions that they had to follow the ship's schedule during their visit to the port, indicating that it refers to the timing of activities or events related to the ship.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-letter-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-letter-001",
+   "stem": "What is the main purpose of this letter?",
+   "choices": [
+    "To announce new AI regulations that have already been implemented",
+    "To request funding for AI research",
+    "To explain the current state of AI development",
+    "To propose a new AI policy for public comment"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to propose a new policy, as shown by the phrases \"새로운 인공지능 윤리 정책을 제안합니다\" and \"여러분의 의견을 듣고 싶습니다\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-letter-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-letter-001",
+   "stem": "What is one of the key points of the proposed policy?",
+   "choices": [
+    "To limit AI use to military applications",
+    "To ban all AI development",
+    "To require transparency in AI decision-making processes",
+    "To mandate that all AI be open-source"
+   ],
+   "answer": 2,
+   "explanation": "The proposed policy includes \"인공지능의 결정 과정을 투명하게 만드는 것\" as a key point.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-letter-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-letter-001",
+   "stem": "What does \"윤리적\" mean here?",
+   "choices": [
+    "Legal",
+    "Financial",
+    "Technical",
+    "Ethical"
+   ],
+   "answer": 3,
+   "explanation": "\"윤리적\" here refers to the ethical considerations in AI policy, as seen in \"인공지능 윤리 정책\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-letter-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-letter-002",
+   "stem": "What is the main idea of this letter?",
+   "choices": [
+    "The cooperative is offering assistance to farmers affected by drought.",
+    "The cooperative is organizing a protest against the government.",
+    "The cooperative will provide financial support to all farmers.",
+    "The cooperative is planning to expand its irrigation systems."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that the cooperative is offering assistance to farmers affected by drought. This is evident from the repeated mentions of 지원 (support) and 가뭄 (drought), as well as the specific measures described, such as 물 공급 (water supply) and 기술 지원 (technical support).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-letter-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-letter-002",
+   "stem": "What is one of the specific ways the cooperative plans to help farmers?",
+   "choices": [
+    "By offering low-interest loans for purchasing new equipment.",
+    "By supplying water and offering technical support.",
+    "By organizing training workshops on drought-resistant crops.",
+    "By providing free seeds and fertilizers."
+   ],
+   "answer": 1,
+   "explanation": "The cooperative plans to help farmers by supplying water and offering technical support. The text states: \"우선, 물 공급을 확보하고 기술 지원 팀을 파견할 계획입니다.\" (First, we will secure water supply and dispatch a technical support team.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-letter-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-letter-002",
+   "stem": "In the text, what does \"대응\" mean?",
+   "choices": [
+    "To prepare",
+    "To prevent",
+    "To protest",
+    "To respond"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"대응\" means 'to respond'. The text states: \"이번 가뭄에 효과적으로 대응하기 위해 여러 가지 지원을 준비했습니다.\" (We have prepared various forms of support to effectively respond to this drought.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-news-001",
+   "stem": "What is the main purpose of this text?",
+   "choices": [
+    "To explain the causes of air pollution in Seoul.",
+    "To describe the history of air pollution in Seoul.",
+    "To inform residents about the current air quality situation in Seoul.",
+    "To promote new technologies for reducing air pollution."
+   ],
+   "answer": 2,
+   "explanation": "The text's main purpose is to inform residents about the current air quality situation in Seoul, as indicated by phrases like \"오늘 서울의 공기 질이 나쁩니다\" and \"대기 질 지수가 150을 초과했습니다\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-news-001",
+   "stem": "What is the air quality index (대기 질 지수) in Seoul today?",
+   "choices": [
+    "It is above 100.",
+    "It is not mentioned in the text.",
+    "It is exactly 100.",
+    "It is below 100."
+   ],
+   "answer": 0,
+   "explanation": "The text states \"대기 질 지수가 150을 초과했습니다\", which means the air quality index is above 100.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-news-001",
+   "stem": "In the text, what does \"대기 질\" mean?",
+   "choices": [
+    "Air quality",
+    "Water quality",
+    "Noise levels",
+    "Soil quality"
+   ],
+   "answer": 0,
+   "explanation": "In the text, \"대기 질\" refers to the quality of the air, as indicated by the context discussing air pollution and the air quality index.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-report-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-report-001",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "the history of Seoul's metro system",
+    "the environmental impact of public transportation",
+    "the challenges faced by commuters in Seoul",
+    "the features and benefits of a new metro line"
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the new metro line's features (e.g., '4.2 킬로미터 길이의 새로운 노선') and benefits (e.g., '통근 시간 단축 및 교통 체증 완화')",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-report-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-report-001",
+   "stem": "What is the length of the new metro line?",
+   "choices": [
+    "4.2 kilometers",
+    "3.5 kilometers",
+    "2.1 kilometers",
+    "5.0 kilometers"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the new metro line is '4.2 킬로미터 길이'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-report-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-report-001",
+   "stem": "What does '통근 시간' mean here?",
+   "choices": [
+    "shopping time",
+    "leisure time",
+    "commuting time",
+    "working hours"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions '통근 시간 단축', referring to the reduction of time spent traveling to and from work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-extended_report-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dr-2p-extended_report-001",
+   "stem": "What is the main idea of this article?",
+   "choices": [
+    "The government is providing free housing to villagers affected by recent floods.",
+    "Humanitarian aid organizations are working to deliver supplies to remote villages.",
+    "A new highway has been built to connect remote villages to the city.",
+    "Villagers are learning new farming techniques to improve their crops."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that humanitarian aid organizations are working to deliver supplies to remote villages. The article discusses the challenges of reaching remote villages and the efforts of aid organizations to overcome these challenges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-extended_report-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dr-2p-extended_report-001",
+   "stem": "What can be inferred about the condition of the roads leading to the remote villages?",
+   "choices": [
+    "The roads are poorly maintained and difficult to travel on.",
+    "The roads are well-maintained and easy to travel on.",
+    "The roads are in good condition but require a four-wheel-drive vehicle.",
+    "The roads are impassable and cannot be traveled on at all."
+   ],
+   "answer": 0,
+   "explanation": "The article states that '도로가 매우 험하고 교통이 불편하다' (the roads are very rough and traffic is inconvenient), which implies that the roads are poorly maintained and difficult to travel on.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-extended_report-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2p-extended_report-001",
+   "stem": "In the article, what does '원조' mean?",
+   "choices": [
+    "A type of vehicle used for transportation.",
+    "A government agency responsible for infrastructure.",
+    "A traditional festival celebrated in the villages.",
+    "Assistance or relief provided to those in need."
+   ],
+   "answer": 3,
+   "explanation": "'원조' in this context refers to assistance or relief provided to those in need. The article discusses the efforts of humanitarian aid organizations to deliver supplies to remote villages, which is an example of 원조.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-interview-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dr-2p-interview-001",
+   "stem": "What is the main idea of the interview?",
+   "choices": [
+    "A grocer discusses the reasons behind rising food prices and their impact on his business.",
+    "A grocer explains how to find the best deals on food despite rising prices.",
+    "A grocer describes the latest trends in food preferences among consumers.",
+    "A grocer talks about the benefits of buying food in bulk to save money."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the interview is that the grocer discusses the reasons behind rising food prices and their impact on his business. The text mentions specific factors such as increased transportation costs and supply chain disruptions, as well as the grocer's strategies to manage these challenges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-interview-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dr-2p-interview-001",
+   "stem": "What can be inferred about the current state of the food supply chain?",
+   "choices": [
+    "It is experiencing significant disruptions and delays.",
+    "It is functioning smoothly without any major issues.",
+    "It is largely unaffected by external factors such as weather conditions.",
+    "It is primarily affected by changes in consumer preferences."
+   ],
+   "answer": 0,
+   "explanation": "The inference that can be made is that the food supply chain is experiencing significant disruptions and delays. The text states that \"공급망이 중단되어 일부 제품의 공급이 지연되고 있습니다.\" (The supply chain has been disrupted, causing delays in the supply of some products.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-interview-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2p-interview-001",
+   "stem": "In the text, what does the phrase \"가격 인상\" refer to?",
+   "choices": [
+    "An increase in the cost of food items.",
+    "A fluctuation in food prices over a short period.",
+    "A decrease in the cost of food items.",
+    "A stabilization of food prices."
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"가격 인상\" refers to an increase in the cost of food items. The text mentions that \"최근 몇 달 동안 식품 가격이 지속적으로 상승하고 있습니다.\" (Food prices have been continuously rising over the past few months.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-news_analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dr-2p-news_analysis-002",
+   "stem": "What is the main topic of this news analysis?",
+   "choices": [
+    "The impact of drought on Korea's agricultural sector",
+    "The success of Korea's water conservation programs",
+    "The effects of climate change on urban areas",
+    "The government's response to recent floods"
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the consequences of drought on Korea's agricultural sector, discussing reduced crop yields, economic losses, and the challenges faced by farmers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-news_analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2p-news_analysis-002",
+   "stem": "In the text, what does '가뭄' refer to?",
+   "choices": [
+    "A prolonged period of dry weather",
+    "A period of heavy rainfall",
+    "A sudden drop in temperature",
+    "An increase in humidity"
+   ],
+   "answer": 0,
+   "explanation": "'가뭄' is used in the text to describe the prolonged period of dry weather that has been affecting Korea. The text mentions '이번 여름의 가뭄' (this summer's drought) and its impact on agriculture.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-news_analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dr-2p-news_analysis-002",
+   "stem": "What can be inferred about the future of Korea's agricultural sector if the drought continues?",
+   "choices": [
+    "It will become more profitable due to increased crop prices",
+    "It will face further challenges and potential economic losses",
+    "It will benefit from increased government subsidies",
+    "It will see an increase in crop yields due to improved farming techniques"
+   ],
+   "answer": 1,
+   "explanation": "The text discusses the current economic losses and challenges faced by farmers due to the drought. It can be inferred that if the drought continues, these issues will likely worsen, leading to further challenges and potential economic losses for the agricultural sector.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-opinion-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dr-2p-opinion-001",
+   "stem": "What is the main point of this article?",
+   "choices": [
+    "Children should not be allowed to use smartphones at all",
+    "Smartphones can negatively affect children's development if not properly managed",
+    "Smartphones help children develop important skills",
+    "Schools should ban smartphones to improve academic performance"
+   ],
+   "answer": 1,
+   "explanation": "The article discusses the potential negative impacts of smartphone use on children, such as addiction, sleep deprivation, and exposure to inappropriate content. It emphasizes the need for proper management rather than outright bans, as seen in the phrases \"스마트폰 사용을 완전히 금지하는 것보다 더 나은 방법\" and \"적절한 관리가 필요\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-opinion-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dr-2p-opinion-001",
+   "stem": "What can be inferred about the author's opinion on smartphone use by children?",
+   "choices": [
+    "The author thinks children should use smartphones only for educational purposes",
+    "The author wants to see smartphones banned in schools",
+    "The author believes smartphones are harmless for children",
+    "The author acknowledges some benefits but is primarily concerned about the risks"
+   ],
+   "answer": 3,
+   "explanation": "The author mentions that smartphones can help children learn and stay connected but also highlights significant risks such as \"중독\", \"수면 부족\", and \"부적절한 콘텐츠 노출\". This balanced view is seen in the phrase \"물론 스마트폰에는 장점도 있지만, 위험도 많습니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2p-opinion-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2p-opinion-001",
+   "stem": "What does the phrase \"스마트폰 사용을 완전히 금지하는 것보다 더 나은 방법\" mean in this context?",
+   "choices": [
+    "A better alternative to completely banning smartphones",
+    "A better way to completely ban smartphones",
+    "A worse method than completely banning smartphones",
+    "A more effective way to encourage smartphone use"
+   ],
+   "answer": 0,
+   "explanation": "The phrase suggests that instead of outright bans, there are more effective strategies to manage smartphone use, as indicated by the comparison with complete bans.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-argumentative_essay-001",
+   "stem": "What is the main point of the argument in this essay?",
+   "choices": [
+    "Public transportation is the most efficient way to travel in cities.",
+    "The government should provide better benefits for transport workers.",
+    "Transport workers' strikes cause significant disruptions to urban life and should be avoided.",
+    "Strikes by transport workers are justified because of low wages."
+   ],
+   "answer": 2,
+   "explanation": "The author argues that transport workers' strikes cause significant disruptions to urban life and should be avoided, as seen in the repeated emphasis on the negative impacts of strikes on city dwellers and the economy. For example, the text states '도시 생활의 핵심인 대중교통이 중단되면 도시 생활 전체가 마비되기 쉽다' (Disruption of public transportation, the core of urban life, can easily paralyze the entire urban lifestyle).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-argumentative_essay-001",
+   "stem": "What can be inferred about the author's views on alternative forms of transportation during strikes?",
+   "choices": [
+    "The author thinks that alternative forms of transportation are not a viable solution during strikes.",
+    "The author believes that alternative forms of transportation are always available and sufficient.",
+    "The author believes that alternative forms of transportation should be better regulated.",
+    "The author suggests that private vehicles should be used more often during strikes."
+   ],
+   "answer": 0,
+   "explanation": "The author implies that alternative forms of transportation are not a viable solution during strikes, as they cannot accommodate the large number of people who rely on public transportation. The text states '대중교통을 대체할 수 있는 다른 교통 수단은 한계가 있다' (Alternative means of transportation to replace public transportation have their limits).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-argumentative_essay-001",
+   "stem": "What does '교섭' mean here?",
+   "choices": [
+    "Negotiation",
+    "Strike",
+    "Union meeting",
+    "Protest"
+   ],
+   "answer": 0,
+   "explanation": "The word '교섭' is used in the context of labor disputes, referring to the process of negotiation between workers and management. The text states '교섭이 결렬되면 파업이라는 선택지 밖에 없다' (If negotiations fail, there is no choice but to go on strike).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-argumentative_essay-002",
+   "stem": "What is the main idea of the essay?",
+   "choices": [
+    "Renting an apartment in Seoul is always a good investment.",
+    "Renting an apartment in Seoul comes with significant hidden costs and challenges.",
+    "The government should build more luxury apartments to solve the housing crisis.",
+    "Young people should avoid living in Seoul due to high living costs."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that renting an apartment in Seoul has many hidden costs and challenges. The author discusses various issues such as '보증금' (deposit), '월세' (monthly rent), and additional fees, and concludes that '전세나 월세로 집을 빌릴 때 고려해야 할 사항이 많습니다' (There are many things to consider when renting a house either through 'jeonse' or 'wolse').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-argumentative_essay-002",
+   "stem": "What can be inferred about the author's opinion on renting in Seoul?",
+   "choices": [
+    "The author acknowledges the challenges but does not explicitly discourage renting.",
+    "The author is indifferent to the challenges of renting in Seoul.",
+    "The author believes renting in Seoul is overrated and not worth the hassle.",
+    "The author thinks renting is the best housing option in Seoul."
+   ],
+   "answer": 0,
+   "explanation": "The author acknowledges the challenges of renting in Seoul but does not explicitly discourage it. The text states '하지만 모든 것이 완벽하지는 않습니다' (But nothing is perfect) and discusses the challenges, but it does not say renting is not worth the hassle.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-argumentative_essay-002",
+   "stem": "In the text, what does '중개비' refer to?",
+   "choices": [
+    "The fee charged by an agent for finding a rental property.",
+    "The cost of utilities.",
+    "The deposit required by the landlord.",
+    "The monthly rent."
+   ],
+   "answer": 0,
+   "explanation": "'중개비' refers to the fee charged by an agent for finding a rental property. The text states '중개비도 별도로 지불해야 합니다' (You also have to pay the brokerage fee separately).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-argumentative_essay-003",
+   "stem": "The main idea of this article is that",
+   "choices": [
+    "housing shortages are not a significant problem in cities",
+    "cities should focus solely on vertical expansion to solve housing shortages",
+    "urban sprawl is the only solution to housing shortages in cities",
+    "urban sprawl is a complex issue that can both alleviate and exacerbate housing shortages"
+   ],
+   "answer": 3,
+   "explanation": "The article presents urban sprawl as having both benefits and drawbacks, stating that it can 'reduce housing shortages but also exacerbate urban congestion and environmental degradation'. This is the central idea of the article, with the author discussing the pros and cons of urban sprawl.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-argumentative_essay-003",
+   "stem": "According to the article, what can be inferred about the author's view on urban planning?",
+   "choices": [
+    "The author thinks urban planning should be carefully managed to balance the needs of housing and other urban issues.",
+    "The author believes urban planning should focus solely on vertical expansion.",
+    "The author believes urban planning is not important in solving housing shortages.",
+    "The author thinks urban planning should be left entirely to private developers."
+   ],
+   "answer": 0,
+   "explanation": "The author states that 'urban planning must carefully consider the balance between housing needs and other urban issues', implying that they believe urban planning should be managed to balance these needs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-argumentative_essay-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-argumentative_essay-003",
+   "stem": "In the article, the phrase '도시 확장을 고려할 때' most nearly means",
+   "choices": [
+    "when considering rural development",
+    "when ignoring urban issues",
+    "when focusing solely on housing",
+    "when considering urban sprawl"
+   ],
+   "answer": 3,
+   "explanation": "The phrase '도시 확장을 고려할 때' is used in the context of discussing the implications of urban expansion, which is the definition of urban sprawl. The article states '도시 확장을 고려할 때, 주택 수요를 충족시키는 동시에 교통, 환경, 인프라 등의 문제를 해결해야 한다', meaning that when considering urban sprawl, one must satisfy housing demand while also solving issues of traffic, environment, and infrastructure.",
+   "source": "llm",
+   "verified": false
+  }
+ ]
+}
