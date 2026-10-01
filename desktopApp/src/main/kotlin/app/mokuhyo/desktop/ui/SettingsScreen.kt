@@ -32,7 +32,7 @@ import app.mokuhyo.settings.Settings
 import io.ktor.client.engine.java.Java
 import kotlinx.coroutines.launch
 
-private enum class SettingsTab(val title: String) { LANGUAGES("Languages"), AI("AI"), SPEECH("Speech & audio"), PRIVACY("Privacy & updates"), ABOUT("About & licenses") }
+private enum class SettingsTab(val title: String) { LANGUAGES("Languages"), AI("AI"), SPEECH("Speech & audio"), BACKUP("Backup"), PRIVACY("Privacy & updates"), ABOUT("About & licenses") }
 
 @Composable
 fun SettingsScreen(app: AppGraph) {
@@ -53,6 +53,7 @@ fun SettingsScreen(app: AppGraph) {
                 SpeechModels(app)
                 AudioCheck(app)
             }
+            SettingsTab.BACKUP -> BackupSection(app)
             SettingsTab.PRIVACY -> PrivacySettings(app)
             SettingsTab.ABOUT -> About(app)
         }

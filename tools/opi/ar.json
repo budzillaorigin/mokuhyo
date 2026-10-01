@@ -1,0 +1,1394 @@
+{
+ "language": "ar",
+ "profile": {
+  "language": "ar",
+  "registerNotes": "Modern Standard Arabic (فصحى) throughout, not a dialect. Address the candidate with polite forms (حضرتك is dialectal; prefer أنت with courtesy phrases).",
+  "formalityMarkers": [
+   "MSA vs dialect",
+   "courtesy formulas (من فضلك، تفضل)",
+   "case endings optional in speech"
+  ],
+  "levelCheckTopics": {
+   "0+": [
+    "name and greetings",
+    "numbers and prices",
+    "days and times",
+    "family members"
+   ],
+   "1": [
+    "daily routine",
+    "home and neighborhood",
+    "food and shopping",
+    "weekend activities",
+    "work or studies"
+   ],
+   "1+": [
+    "a recent trip",
+    "describing your hometown",
+    "a typical workday",
+    "plans for next year"
+   ],
+   "2": [
+    "a memorable event in detail",
+    "comparing two places you lived",
+    "explaining a process at work",
+    "a current event in your country"
+   ],
+   "2+": [
+    "advantages and disadvantages of a policy",
+    "how your profession has changed",
+    "a problem in your community and its causes"
+   ],
+   "3": [
+    "supporting an opinion on an abstract issue",
+    "hypothetical: what if your country changed a major policy",
+    "the role of technology in society",
+    "ethics of a professional decision"
+   ]
+  },
+  "rolePlaySeeds": [
+   "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+   "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+   "Report a lost passport at a police station (interviewer: police officer).",
+   "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+   "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+   "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+   "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+   "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ]
+ },
+ "questions": [
+  {
+   "id": "ar-q-warmup-0+-01",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "ما اسمك؟",
+   "english": "What is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-0+-02",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "من أي بلد أنت؟",
+   "english": "Which country are you from?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-0+-03",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "هل لديك عائلة؟",
+   "english": "Do you have a family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-0+-04",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "ما هو عملك؟",
+   "english": "What is your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1-01",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "من فضلك، أخبرني عن هواياتك المفضلة؟",
+   "english": "Please, tell me about your favorite hobbies?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1-02",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "كيف تقضي وقت الفراغ مع عائلتك؟",
+   "english": "How do you spend your free time with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1-03",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "هل يمكنك وصف يوم عمل عادي لك؟",
+   "english": "Can you describe an ordinary workday for you?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1-04",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "ما هي خدمة المجتمع التي قد تفيد فيها؟",
+   "english": "What is a community service you could benefit from?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1+-01",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "كيف تقضي وقت فراغك عادةً؟",
+   "english": "How do you usually spend your free time?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1+-02",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "هل لديك أي أقارب يعيشون معك؟ أخبرني عنهم.",
+   "english": "Do you have any relatives living with you? Tell me about them.",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1+-03",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "هل لديك أي تجارب عمل سابقة؟ أخبرني عنها.",
+   "english": "Do you have any previous work experiences? Tell me about them.",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-warmup-1+-04",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "كيف تصف المجتمع الذي تعيش فيه؟",
+   "english": "How would you describe the community you live in?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-0+-01",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "مرحبا. كيف حالك اليوم؟",
+   "english": "Hello. How are you today?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-0+-02",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "هل لك أن تتحدث عن عائلةك؟",
+   "english": "Could you talk about your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-0+-03",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "هل يمكنك وصف مجتمعك أو حيك؟",
+   "english": "Can you describe your community or neighborhood?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-0+-04",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "هل لديك أي آراء حول الأحداث الحالية؟",
+   "english": "Do you have any opinions on current events?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-0+-05",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "هل سافرتَ إلى مكان مثير للاهتمام في الوقت الحاضر؟",
+   "english": "Have you traveled to an interesting place recently?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-0+-06",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "هل يمكنك وصف يومك النمطي في العمل؟",
+   "english": "Can you describe your typical workday?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1-01",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "ما هو اسمك؟",
+   "english": "What is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1-02",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "من أين أنت؟",
+   "english": "Where are you from?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1-03",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "هل لديك أشقاء؟ أخبرني عنهم.",
+   "english": "Do you have siblings? Tell me about them.",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1-04",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "أين تفضل أن تعيش؟ لماذا؟",
+   "english": "Where do you prefer to live? Why?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1-05",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "هل تقرأ الأخبار؟ ما الذي يجذب انتباهك؟",
+   "english": "Do you read the news? What catches your attention?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1-06",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "هل كنت في رحلة مؤخراً؟ أخبرني عنها.",
+   "english": "Have you been on a trip recently? Tell me about it.",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1+-01",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "ما هو هوايتك المفضلة؟ لخص لي بعض اللحظات الممتعة التي قضيتها في ممارستها.",
+   "english": "What is your favorite hobby? Summarize some enjoyable moments you spent practicing it.",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1+-02",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "ما هو العمل التطوعي الذي ترغب في المشاركة فيه؟ صف لي هذا العمل وسبب اهتمامك به.",
+   "english": "What is a volunteer work you would like to participate in? Describe this work and the reason for your interest.",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1+-03",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "ما هو الحدث الحالي الذي يستحوذ على اهتمامك في الوقت الحالي؟ صف لي رأيك فيه.",
+   "english": "What is the current event that has your attention at the moment? Describe your opinion about it.",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1+-04",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "إذا كنت ستسافر إلى أي بلد تريد زيارته؟ صف لي هذا البلد وأسباب اختيارك له.",
+   "english": "If you could travel to any country, which one would you visit? Describe this country and the reasons for your choice.",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-1+-05",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "ما هو دور التكنولوجيا في حياتنا اليوم؟ احك لي عن تأثيرها الإيجابي والسلبي.",
+   "english": "What is the role of technology in our lives today? Tell me about its positive and negative impacts.",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "كيف تصف بيئة عملك الحالية؟ وما الإجراءات التي تتخذها لتجنب التوتر في مكان العمل؟",
+   "english": "How would you describe your current work environment? And what steps do you take to avoid stress at work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "ما هو آخر كتاب قرأته؟ وما هي الفكرة الأساسية التي استحوذت على اهتمامك؟",
+   "english": "What was the last book you read? And what was the main idea that caught your interest?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "كيف تغيرت حياتك مع مرور الوقت؟ ما هي التحديات التي واجهتها وكيف تتوقع أن تكون حياتك في المستقبل؟",
+   "english": "How has your life changed over time? What challenges have you faced and how do you expect your life to be in the future?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "ما هو دور المجتمع في دعم التعليم؟ وما هي بعض المبادرات التي يمكنك اقتراحها لتحسين التعليم في مجتمعك؟",
+   "english": "What is the role of society in supporting education? And what are some initiatives you can suggest to improve education in your community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2-05",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "كيف يمكن للأفراد المساهمة في حماية البيئة؟ وما هي بعض العادات اليومية التي يمكنك اتباعها لتقليل تأثيرك البيئي؟",
+   "english": "How can individuals contribute to environmental protection? And what are some daily habits you can adopt to reduce your environmental impact?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2-06",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "كيف تغيرت تكنولوجيا الاتصالات حياتنا اليومية؟ وما هي بعض الفوائد والعيوب التي تراها في هذه التطورات؟",
+   "english": "How has communication technology changed our daily lives? And what are some of the advantages and disadvantages you see in these developments?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2+-01",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "ماذا تفكر في أهمية التعلم المستمر في الحياة؟",
+   "english": "What are your thoughts on the importance of lifelong learning?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2+-02",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "كيف تصف علاقتك مع أفراد عائلتك؟",
+   "english": "How would you describe your relationship with your family members?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2+-03",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "ما هو دورك في مكان عملك؟ ومانوع التحديات التي تواجهها هناك؟",
+   "english": "What is your role at your workplace? And what kind of challenges do you face there?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2+-04",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "ما هو رأيك في آخر قرار سياسي له تأثير على منطقةك؟",
+   "english": "What is your opinion on the latest political decision that has affected your region?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2+-05",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "إذا كان لديك فرصة للزيارة دولة واحدة فقط في العالم، أي دولة ستختار؟ ولماذا؟",
+   "english": "If you had the opportunity to visit only one country in the world, which one would you choose? And why?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-2+-06",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "كيف يمكن للجنود أن يحافظوا على توازن حياتهم الشخصية والعملية خلال فترة خدمتهم العسكرية؟",
+   "english": "How can soldiers maintain a balance between their personal and professional lives during their military service?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-3-01",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "كيف تقيّم مستوى التعليم في مجتمعك؟ هل هناك أي إصلاحات معينة توصى بها؟",
+   "english": "How do you evaluate the level of education in your community? Are there any specific reforms you would recommend?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-3-02",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "ما رأيك في تأثير وسائل التواصل الاجتماعي على العلاقات الشخصية؟",
+   "english": "What is your opinion on the impact of social media on personal relationships?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-3-03",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "كيف يمكنك أن تساهم في تحسين الخدمات الصحية في مجتمعك؟",
+   "english": "How can you contribute to improving healthcare services in your community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-3-04",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "ما هو دور الثقافة في تعزيز العلاقات الدولية؟",
+   "english": "What is the role of culture in promoting international relations?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-3-05",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "كيف يمكن تحسين بيئة العمل في المؤسسات العامة؟",
+   "english": "How can the work environment in public institutions be improved?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-level_check-3-06",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "ما هو تأثير السفر على فهم الثقافات الأخرى؟",
+   "english": "What is the impact of travel on understanding other cultures?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-0+-01",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "السلام عليكم، أخبرني عن يومك المعتاد. ما هي الأنشطة التي تقوم بها عادة؟",
+   "english": "Hello, please tell me about your typical day. What activities do you usually perform?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-0+-02",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "كيف تقضي وقت الفراغ مع عائلتك؟ أخبرني عن نشاط واحد التمتعه به معهم.",
+   "english": "How do you spend leisure time with your family? Tell me about one activity you enjoy with them.",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-0+-03",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "ما هو العمل الذي ترغبه أن تقوم به؟ لماذا؟",
+   "english": "What is the work that you would like to do? Why?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-0+-04",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "كيف تصف المجتمع الذي تعيش فيه؟ ما هي بعض التحديات التي يواجهها؟",
+   "english": "How would you describe the community you live in? What are some of the challenges it faces?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1-01",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "ما هي الأطباق التي تفضلها في وجباتك؟ هل يمكنك شرح سبب تفضيلك لها؟",
+   "english": "What are the dishes you prefer in your meals? Can you explain why you prefer them?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1-02",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "كيف تقضي وقت فراغك؟ هل لديك هواية، و ما هي؟",
+   "english": "How do you spend your leisure time? Do you have a hobby? What is it?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1-03",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "كيف تصف بيئة العمل التي تفضلها؟ ما هي بعض الخصائص التي تبحث عنها في مكان العمل؟",
+   "english": "How would you describe your ideal work environment? What are some of the characteristics you look for in a workplace?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1-04",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "ما هي بعض المشكلات التي تواجه مجتمعاتك؟ كيف يمكن حلها؟",
+   "english": "What are some of the issues facing your community? How can they be resolved?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1+-01",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "ما هو آخر كتاب قرأته؟ وصف القصة وماذا تعلمت منها؟",
+   "english": "What was the last book you read? Describe the story and what you learned from it.",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1+-02",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "كيف تقارن بين الحياة في المدينة والحياة في الريف؟ ما هي الفوائد والتحديات لكل منهما؟",
+   "english": "How would you compare life in the city with life in the countryside? What are the advantages and challenges of each?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1+-03",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "ما هو دور التكنولوجيا في تحسين التواصل بين الناس؟ هل هناك أي سلبيات؟",
+   "english": "What role does technology play in improving communication among people? Are there any drawbacks?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-1+-04",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "إذا كنت قائدًا عسكريًا، ما هي الخطوات التي ستتخذها لتعزيز معنويات الجنود؟",
+   "english": "If you were a military commander, what steps would you take to boost the morale of the soldiers?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2-01",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "كيف يمكنك مقارنة الحياة في المدينة بالحياة في الريف؟ ما هي الفوائد والتحديات التي تواجه كل منهما؟",
+   "english": "How would you compare life in the city with life in the countryside? What are the advantages and challenges of each?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2-02",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "ما هي بعض القضايا التي تواجه مجتمعاتنا اليوم؟ كيف يمكنك اقتراح حلول لهذه القضايا؟",
+   "english": "What are some of the issues facing our communities today? How can you propose solutions to these issues?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2-03",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "إذا كنت في وضع القيادة في الجيش، ما هي الخطوات التي ستتخذها لرفع معنويات الجنود؟",
+   "english": "If you were in a leadership position in the military, what steps would you take to boost the morale of the soldiers?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2-04",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "كيف يمكن أن تساهم التكنولوجيا في تحسين التواصل بين الناس؟ هل هناك أي سلبيات لهذه التكنولوجيا؟",
+   "english": "How can technology contribute to improving communication among people? Are there any drawbacks to this technology?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2+-01",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "انطبق على حياتك، كيف تغيرت رؤيتك للمجتمع منذ طفولتك؟",
+   "english": "Reflecting on your life, how has your view of society changed since your childhood?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2+-02",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "فكر في عملك الحالي. إذا كنت ستغير أي شيء واحد، ما سيكون؟ ولماذا؟",
+   "english": "Think about your current job. If you could change one thing, what would it be? And why?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2+-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "إذا كنت تتحدث إلى شخص من بلد آخر عن عاداتك الغذائية، كيف ستشرح أهمية بعض الأطباق في ثقافتك؟",
+   "english": "If you were speaking to someone from another country about your dietary habits, how would you explain the importance of certain dishes in your culture?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-2+-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "ما هي بعض التحديات التي تواجه المجتمع اليوم؟ كيف يمكنك أن تقترح حلولاً لهذه التحديات؟",
+   "english": "What are some of the challenges facing society today? How can you propose solutions to these challenges?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-3-01",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "كيف يمكن أن تتغير العادات الغذائية في مجتمعك على مر السنين؟ ما هي العوامل التي يمكن أن تساهم في هذه التغيرات؟",
+   "english": "How might dietary habits in your community change over the years? What factors could contribute to these changes?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-3-02",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "تخيل أنك تعمل في مجال الدبلوماسية. كيف ستشرح أهمية الحوار بين الثقافات إلى شريكك الدولي؟",
+   "english": "Imagine you work in diplomacy. How would you explain the importance of intercultural dialogue to your international partner?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-3-03",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "ما هو دور التعليم في تطوير المجتمع؟ كيف يمكن أن نتحسن هذا الدور؟",
+   "english": "What is the role of education in the development of the community? How can we improve this role?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-probe-3-04",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "إذا كنت قادرًا على حل مشكلة واحدة فقط في العالم، ما هي المشكلة التي ستختار؟ لماذا؟",
+   "english": "If you could solve only one problem in the world, which problem would you choose? Why?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-1-01",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "أنت تحب القراءة؟ ما هو الكتاب الأخير الذي قرأته؟",
+   "english": "Do you like reading? What is the last book you read?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-1-02",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "هل لديك أي شجار مع جيرانك؟",
+   "english": "Have you had any disputes with your neighbors?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-1-03",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "ما هو طعامك المفضل؟ هل أنت تفضل طهي الطعام أو تناول الطعام خارج المنزل؟",
+   "english": "What is your favorite food? Do you prefer cooking at home or eating out?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-1-04",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "هل يمكنك وصف يوم عادي لك في عملك؟",
+   "english": "Can you describe a typical day at your work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-2-01",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "كيف قضايت إجازتك الأخيرة؟",
+   "english": "How did you spend your last vacation?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-2-02",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "ما هو الإنجاز الذي تشعر بالفخر به في العمل؟",
+   "english": "What is an achievement at work that you feel proud of?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-q-winddown-2-03",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "إذا كان لديك الفرصة لزيارة أي بلد في العالم، أي بلد ستختار؟ لماذا؟",
+   "english": "If you had the chance to visit any country in the world, which country would you choose? Why?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "rolePlays": [
+  {
+   "id": "ar-rp-0+-01",
+   "level": "0+",
+   "situation": "Check into a hotel and solve a problem with the reservation.",
+   "interviewerRole": "Receptionist",
+   "opening": "مرحبًا، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Welcome, how can I help you today?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-0+-02",
+   "level": "0+",
+   "situation": "Buy a train ticket after the train you wanted was cancelled.",
+   "interviewerRole": "Ticket agent",
+   "opening": "أهلًا، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Hello, how can I help you today?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-0+-03",
+   "level": "0+",
+   "situation": "Report a lost passport at a police station.",
+   "interviewerRole": "Police officer",
+   "opening": "أهلًا، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Hello, how can I assist you today?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-0+-04",
+   "level": "0+",
+   "situation": "Arrange a meeting time with a colleague whose schedule keeps changing.",
+   "interviewerRole": "Colleague",
+   "opening": "أهلًا، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Hello, how can I help you today?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1-01",
+   "level": "1",
+   "situation": "You are a liaison officer who needs to explain to a local town official that a joint military exercise will close a main road for half a day. The official is concerned about the impact on local businesses.",
+   "interviewerRole": "Town official",
+   "opening": "مرحباً بك، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Welcome, how can I assist you today?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1-02",
+   "level": "1",
+   "situation": "You are an interpreter for a delegation from another country. There seems to be a misunderstanding between the two delegations about the agenda for the day. The leader of the other delegation is frustrated and wants an explanation.",
+   "interviewerRole": "Delegation leader",
+   "opening": "أنا آسف، وهناك بعض الارتباك حول جدول أعمال اليوم. هل يمكنك توضيح ما هو متوقع؟",
+   "english": "I'm sorry, and there is some confusion about today's agenda. Can you clarify what is expected?",
+   "domain": "interpreter",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1-03",
+   "level": "1",
+   "situation": "You are at a checkpoint with a military convoy. You need to explain to the checkpoint officer that your convoy must pass before noon due to an important mission.",
+   "interviewerRole": "Checkpoint officer",
+   "opening": "مرحباً، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Welcome, how can I assist you today?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1-04",
+   "level": "1",
+   "situation": "You are renting an apartment and the heater is broken. It is getting colder, and you need to persuade the landlord to fix it before winter sets in.",
+   "interviewerRole": "Landlord",
+   "opening": "مرحباً، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Welcome, how can I assist you today?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1+-01",
+   "level": "1+",
+   "situation": "You are a liaison officer who needs to explain to a local town official that a joint military exercise will close a main road for half a day. The official is concerned about the impact on local businesses.",
+   "interviewerRole": "Town official",
+   "opening": "مرحبًا بك، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Hello, how can I assist you today?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1+-02",
+   "level": "1+",
+   "situation": "You are an interpreter for a delegation from another country. There seems to be a misunderstanding between the two delegations about the agenda for the day. The leader of the other delegation is frustrated and wants an explanation.",
+   "interviewerRole": "Delegation leader",
+   "opening": "ما هو سبب هذا الخلط في البرنامج؟ لا نريد أن نضيع وقتنا.",
+   "english": "What is the reason for this confusion in the agenda? We do not want to waste our time.",
+   "domain": "interpreter",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1+-03",
+   "level": "1+",
+   "situation": "You are at a checkpoint with a military convoy. You need to explain to the checkpoint officer that your convoy must pass before noon due to an important mission.",
+   "interviewerRole": "Checkpoint officer",
+   "opening": "ما هو السبب الذي يجبرك على المرور قبل منتصف اليوم؟",
+   "english": "What is the reason that forces you to pass before noon?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-1+-04",
+   "level": "1+",
+   "situation": "You are renting an apartment and the heater is broken. It is getting colder, and you need to persuade the landlord to fix it before winter sets in.",
+   "interviewerRole": "Landlord",
+   "opening": "أهلًا وسهلًا، ما هو الأمر الذي تريد مناقشة؟",
+   "english": "Hello, what is the matter you want to discuss?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2-01",
+   "level": "2",
+   "situation": "You need to check into a hotel, but your reservation seems to have been lost. The receptionist is very busy.",
+   "interviewerRole": "Receptionist",
+   "opening": "مرحبا بكم، كيف يمكنني مساعدتك اليوم؟",
+   "english": "Hello, how can I help you today?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2-02",
+   "level": "2",
+   "situation": "You need to buy a train ticket, but the train you wanted to take has been cancelled. The ticket agent is trying to find an alternative.",
+   "interviewerRole": "Ticket Agent",
+   "opening": "أسف، القطار الذي كنت تريد ركوبـه قد تم إلغاؤه. هل يمكنك أن تاخذ القطار التالي؟",
+   "english": "I'm sorry, the train you wanted to take has been cancelled. Can you take the next one?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2-03",
+   "level": "2",
+   "situation": "You need to report a lost passport. The police officer is asking you for details about when and where you lost it.",
+   "interviewerRole": "Police Officer",
+   "opening": "هل يمكنك أن تتحدث عن كيف فقدت جواز سفرك؟",
+   "english": "Can you tell me how you lost your passport?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2-04",
+   "level": "2",
+   "situation": "You need to arrange a meeting time with a colleague, but their schedule keeps changing. The colleague is trying to find a suitable time.",
+   "interviewerRole": "Colleague",
+   "opening": "عذرا، ليّ تم تغيير جدولي مرة أخرى. هل يمكنك أن نمرر على الوقت الذي نلتقي فيه؟",
+   "english": "I'm sorry, my schedule has changed again. Can we rearrange our meeting time?",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2+-01",
+   "level": "2+",
+   "situation": "You are a military liaison explaining to a town official that a joint exercise will close a main road for half a day. The official is concerned about the impact on local businesses.",
+   "interviewerRole": "Town Official",
+   "opening": "مرحبًا بك، ما الذي يمكنني مساعدتك فيه اليوم؟",
+   "english": "Welcome, how can I assist you today?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2+-02",
+   "level": "2+",
+   "situation": "You are an interpreter for a delegation from another country. There seems to be a misunderstanding between the two delegations about the agenda for the day. The leader of the other delegation is frustrated and wants an explanation.",
+   "interviewerRole": "Delegation Leader",
+   "opening": "أنا أشعر بالارتباك من حول الجدول الزمني اليوم. هل يمكنك شرح ما حدث؟",
+   "english": "I am confused about the schedule today. Can you explain what happened?",
+   "domain": "interpreter",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2+-03",
+   "level": "2+",
+   "situation": "You are renting an apartment and the heater is broken. It is getting colder, and you need to persuade the landlord to fix it before winter sets in.",
+   "interviewerRole": "Landlord",
+   "opening": "ما المشكلة التي تريد مناقشتها؟",
+   "english": "What issue do you want to discuss?",
+   "domain": "daily_life",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-2+-04",
+   "level": "2+",
+   "situation": "You need to check into a hotel, but your reservation seems to have been lost. The receptionist is very busy.",
+   "interviewerRole": "Receptionist",
+   "opening": "مرحبًا بك في فندقنا. كيف يمكنني مساعدتك اليوم؟",
+   "english": "Welcome to our hotel. How can I assist you today?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-3-01",
+   "level": "3",
+   "situation": "You are at a checkpoint with a military convoy that needs to pass through before noon due to an urgent mission. The checkpoint officer is not aware of this urgency.",
+   "interviewerRole": "Checkpoint officer",
+   "opening": "مرحبا، ما هو الغرض من مرورك عبر هذا النقطه؟",
+   "english": "Hello, what is the purpose of your passage through this checkpoint?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-3-02",
+   "level": "3",
+   "situation": "You need to buy a train ticket, but the train you wanted to take has been cancelled. The ticket agent is trying to find an alternative.",
+   "interviewerRole": "Ticket agent",
+   "opening": "أسف، القطار الذي كنت تنوي ركوبته قد ألغي. ما هو وجهتك النهائية؟",
+   "english": "I'm sorry, the train you planned to take has been cancelled. What is your final destination?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-3-03",
+   "level": "3",
+   "situation": "You are organizing a joint military exercise with a foreign partner. You need to explain to them why it's important to maintain a strict schedule, as their recent delays have caused complications.",
+   "interviewerRole": "Foreign military partner",
+   "opening": "لماذا هو من المهم للغاية أن نلتزم بموعد محدد؟ هل من الممكن أن نكون مرنين قليلا في الجدول الزمني؟",
+   "english": "Why is it so important that we stick to a specific time? Is it possible to be a little flexible with the schedule?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-rp-3-04",
+   "level": "3",
+   "situation": "You are at a conference with a colleague from another department. You need to discuss a project, but they keep receiving calls and messages that interrupt the conversation.",
+   "interviewerRole": "Colleague from another department",
+   "opening": "أنا آسف حقا، ولكنني يجب أن آخذ هذا المكالمة. ما هو الذي كنت تقوله؟",
+   "english": "I'm really sorry, but I need to take this call. What were you saying?",
+   "domain": "interpreter",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "topics": [
+  {
+   "id": "ar-topic-daily_life-01",
+   "domain": "daily_life",
+   "title": "Morning Routine",
+   "opener": "صف صبحك للنا، ما هي أول شيء تفعله عندما تستيقظ؟ هل لديك روتين معين؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-02",
+   "domain": "daily_life",
+   "title": "Food Preferences",
+   "opener": "ما هي الأطعمة المفضلة لديك؟ هل تفضل الطهي المنزلي أم الطعام خارج المنزل؟",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-03",
+   "domain": "daily_life",
+   "title": "Weekly Shopping",
+   "opener": "كيف تقوم بالتسوق الأسبوعي؟ هل تفضل التسوق في الأسواق التقليدية أم في مراكز التسوق الحديثة؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-04",
+   "domain": "daily_life",
+   "title": "Weather and Activities",
+   "opener": "كيف يؤثر الطقس على أنشطةك اليومية؟ هل لديك أنشطة تفضلها في الطقس الحار أو البارد؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-05",
+   "domain": "daily_life",
+   "title": "Family Time",
+   "opener": "كيف تقضي الوقت مع عائلتك؟ هل لديك نشاطات عائلية تفضلها؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-06",
+   "domain": "daily_life",
+   "title": "Housing Preferences",
+   "opener": "ما هي الصفات التي تبحث عنها في المنزل أو الشقة؟ هل تفضل سكن في مدينة أم في الضواحي؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-07",
+   "domain": "daily_life",
+   "title": "Local Cuisine",
+   "opener": "ما هي الأطباق المحلية التي تفضلها؟ كيف تصف هذه الأطباق لشخص لم يذقها من قبل؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-08",
+   "domain": "daily_life",
+   "title": "Cultural Events",
+   "opener": "ما هو الحدث الثقافي الأخير الذي شاركت فيه؟ كيف كان هذا الخبرات؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-09",
+   "domain": "daily_life",
+   "title": "Environmental Concerns",
+   "opener": "ما هي المشاكل البيئية التي تهمك؟ ما هو دورك في حل هذه المشاكل؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-daily_life-10",
+   "domain": "daily_life",
+   "title": "Future Goals",
+   "opener": "ما هي الأهداف التي تسعى لتحقيقها في العام القادم؟ كيف تخطط لتحقيق هذه الأهداف؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-01",
+   "domain": "work_study",
+   "title": "WorkSchedule",
+   "opener": "هل يمكنك أن تخبرني عن جدولك اليومي في العمل؟ كم ساعة يعملون يوميًا؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-02",
+   "domain": "work_study",
+   "title": "MeetingPreparation",
+   "opener": "كيف تتحضر لمقابلة عمل؟ ما هي الخطوات التي تتخذها لضمان نجاحها؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-03",
+   "domain": "work_study",
+   "title": "EmailFollowUp",
+   "opener": "كيف تكتب بريدًا إلكترونيًا للتماس معلومات أو تحديث حول مشروع؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-04",
+   "domain": "work_study",
+   "title": "CareerGoals",
+   "opener": "ما هي أهدافك المهنية على المدى الطويل؟ كيف تخطط لتحقيقها؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-05",
+   "domain": "work_study",
+   "title": "EducationBackground",
+   "opener": "هل يمكنك أن تخبرني عن خلفيتك التعليمية؟ كيف ساهم هذا في مسيرتك المهنية؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-06",
+   "domain": "work_study",
+   "title": "ProjectCoordination",
+   "opener": "كيف تنسق بين مختلف الأجزاء المتخصصة في المشروع؟ ما هي الأدوات أو الطرق التي تستخدمها؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-07",
+   "domain": "work_study",
+   "title": "ClientInteractions",
+   "opener": "كيف تتعامل مع العملاء أو الزبائن؟ ما هي استراتيجياتك لبناء علاقات قوية معهم؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-08",
+   "domain": "work_study",
+   "title": "StressManagement",
+   "opener": "كيف تتعامل مع التوتر في العمل؟ ما هي تقنيات الإدارة التي تستخدمها؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-work_study-09",
+   "domain": "work_study",
+   "title": "WorkLifeBalance",
+   "opener": "كيف تحافظ على توازن بين العمل والحياة الشخصية؟ ما هي النصائح التي تقدمها للآخرين في هذا المجال؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-01",
+   "domain": "travel_culture",
+   "title": "Airport Navigation",
+   "opener": "مرحبًا! إذا كان لديك بعض الوقت، يمكنني أن أساعدك في معرفة كيفية التنقل في مطارنا، وأين يمكنك العثور على الخدمات المختلفة.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-02",
+   "domain": "travel_culture",
+   "title": "Hotel Amenities",
+   "opener": "أهلًا! هل يمكنك أن تخبرني عن الخدمات المتوفرة في فندقك؟ هل هناك مسبح أو مركز للياقة البدنية؟",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-03",
+   "domain": "travel_culture",
+   "title": "Cultural Etiquette",
+   "opener": "مرحبًا! إذا كنت في بلدنا لأول مرة، هل يمكنك أن تخبرني عن بعض العادات والتقاليد التي يجب أن تكون على دراية بها؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-04",
+   "domain": "travel_culture",
+   "title": "Transportation Options",
+   "opener": "أهلًا! ما هي خيارات النقل المتوفرة في المدينة التي تقيم فيها؟ هل يمكنك أن توصيني بأفضل طريقة للانتقال من مكان إلى آخر؟",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-05",
+   "domain": "travel_culture",
+   "title": "Local Cuisine",
+   "opener": "مرحبًا! هل يمكنك أن توصيني بأفضل مطاعم المدينة لتجربة المطبخ المحلي؟ ما هي الأطباق التي يجب أن أجربها؟",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-06",
+   "domain": "travel_culture",
+   "title": "Historical Sites",
+   "opener": "أهلًا! إذا كنت مهتمًا بالتاريخ، هناك العديد من المواقع التاريخية في المدينة. هل يمكنك أن توصيني بأفضل الأماكن لزيارتها؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-07",
+   "domain": "travel_culture",
+   "title": "Health and Safety",
+   "opener": "مرحبًا! هل يمكنك أن تخبرني عن بعض نصائح السلامة والصحة التي يجب مراعاتها أثناء الزيارة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-08",
+   "domain": "travel_culture",
+   "title": "Environmental Awareness",
+   "opener": "أهلًا! إذا كنت مهتمًا بالبيئة، هل يمكنك أن تخبرني عن بعض الممارسات الصديقة للبيئة التي يمكن أن أعمل بها أثناء وجودي في المدينة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-topic-travel_culture-09",
+   "domain": "travel_culture",
+   "title": "Art and Music",
+   "opener": "أهلًا! هل يمكنك أن توصيني بأفضل الأماكن للتمتع بالفن والموسيقى المحلية في المدينة؟",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "checklist": {
+  "0+": [
+   "I can greet people and say my name.",
+   "I can give numbers, prices, days and times.",
+   "I can answer very simple questions with memorized phrases."
+  ],
+  "1": [
+   "I can make simple sentences about myself, my family and my daily routine.",
+   "I can ask and answer simple questions about familiar topics.",
+   "I can handle basic needs: ordering food, buying a ticket, asking for directions."
+  ],
+  "1+": [
+   "I can describe places and people in connected sentences.",
+   "I can tell what happened on a recent trip or weekend.",
+   "I can handle routine situations even when something small goes wrong."
+  ],
+  "2": [
+   "I can narrate past, present and future events in paragraphs.",
+   "I can describe and explain concrete topics at work and in the news.",
+   "I can resolve a complication in a role-play, like a cancelled reservation."
+  ],
+  "2+": [
+   "I can often support my opinions with reasons and examples.",
+   "I can discuss some abstract topics, although I sometimes break down.",
+   "I can explain the causes and effects of a problem in my community."
+  ],
+  "3": [
+   "I can support and defend opinions on abstract and unfamiliar topics.",
+   "I can hypothesize about situations that did not happen.",
+   "I can speak at length with good control of grammar and vocabulary."
+  ]
+ }
+}

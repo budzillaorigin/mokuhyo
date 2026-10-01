@@ -22,6 +22,7 @@ import argparse
 import datetime as dt
 import json
 import random
+import re
 import statistics
 import subprocess
 import sys
@@ -67,7 +68,7 @@ def answers(client: llm.Client, lang: str, register: str, level: str, questions:
                                     f"opinions with reasons, occasional breakdown; 3: extended, abstract, accurate). Spoken style, no "
                                     f"translations.\n{qs}"},
     ], schema, temperature=0.8, max_tokens=3000)
-    return [langtext.nfc(a) for a in out["answers"]][: len(questions)]
+    return [langtext.nfc(re.sub(r"^\s*\d+[.)]\s*", "", a)) for a in out["answers"]][: len(questions)]
 
 
 def error_lines(client: llm.Client, lang: str, topics: list[dict]) -> list[str]:
@@ -80,7 +81,7 @@ def error_lines(client: llm.Client, lang: str, topics: list[dict]) -> list[str]:
                                     f"ILR 1+ with one or two typical learner errors (agreement, tense, particles/prepositions, word "
                                     f"choice).\n{listing}"},
     ], schema, temperature=0.8, max_tokens=3000)
-    return [langtext.nfc(x) for x in out["lines"]][: len(topics)]
+    return [langtext.nfc(re.sub(r"^\s*\d+[.)]\s*", "", x)) for x in out["lines"]][: len(topics)]
 
 
 def build_fixtures(client: llm.Client, lang: str) -> dict:
@@ -239,6 +240,7 @@ def main() -> int:
     ap.add_argument("--rebuild-fixtures", action="store_true")
     ap.add_argument("--limit", type=int, help="prompts per kind (smoke runs)")
     ap.add_argument("--no-pull", action="store_true")
+    ap.add_argument("--fixtures-only", action="store_true", help="build/cache the fixtures and stop")
     llm.add_args(ap)
     args = ap.parse_args()
     client = llm.Client.from_args(args.endpoint, args.model, args.check_model)
@@ -251,6 +253,10 @@ def main() -> int:
     models = GROUPS.get(args.models, args.models.split(","))
     for m in models:
         llm.check_approved(m.split(":Q")[0] if m.startswith("hf.co/") else m)
+    if args.fixtures_only:
+        for lang in langs:
+            fixtures(client, lang, args.rebuild_fixtures)
+        return 0
     if not args.no_pull:
         for m in models:
             if m.startswith("hf.co/"):

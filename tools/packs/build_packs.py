@@ -78,15 +78,24 @@ def build(lang: str, allow_empty: bool) -> dict:
     with os.fdopen(fd, "wb") as f:
         f.write(data)
     os.replace(tmp, out)
+    opi_src = TOOLS / "opi" / f"{lang}.json"
+    opi_info = None
+    if opi_src.exists():
+        opi = json.loads(opi_src.read_text(encoding="utf-8"))
+        opi_bytes = json.dumps(opi, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        (PACKS / lang / "opi.json").write_bytes(opi_bytes)
+        opi_info = {"file": "opi.json", "sha256": hashlib.sha256(opi_bytes).hexdigest(), "questions": len(opi["questions"]),
+                    "rolePlays": len(opi["rolePlays"]), "topics": len(opi["topics"])}
     stats = {s: gen_dlpt.counts(lang, s) for s in gen_dlpt.SKILLS}
     listening_ids = [p["id"] for p in banks["listening"]["passages"]]
     with_audio = sum(1 for p in listening_ids if p in pack["audio"])
     manifest = {"language": lang, "exam": {"file": "exam.json", "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
                 "passages": stats, "items": {s: len(banks[s]["items"]) for s in banks},
                 "listeningWithAudio": with_audio, "listeningPassages": len(listening_ids),
-                "license": gen_dlpt.LICENSE, "attribution": banks["reading"].get("attribution", "")}}
+                "license": gen_dlpt.LICENSE, "attribution": banks["reading"].get("attribution", "")}, "opi": opi_info}
     (PACKS / lang / "exam.manifest.json").write_text(json.dumps(manifest, indent=1, ensure_ascii=False), encoding="utf-8")
-    print(f"{lang}: exam.json {len(data) / 1e6:.1f} MB · reading {stats['reading']} · listening {stats['listening']} · audio {with_audio}/{len(listening_ids)}")
+    print(f"{lang}: exam.json {len(data) / 1e6:.1f} MB · reading {stats['reading']} · listening {stats['listening']} · "
+          f"audio {with_audio}/{len(listening_ids)} · opi {opi_info and (opi_info['questions'], opi_info['rolePlays'], opi_info['topics'])}")
     return manifest
 
 

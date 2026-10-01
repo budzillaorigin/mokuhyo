@@ -16,6 +16,7 @@ fun PlaceholderScreens(destination: Destination, app: AppGraph, navigate: (Desti
         Destination.SPEAKING -> SpeakingScreen(app)
         Destination.REVIEW -> ReviewScreen(app)
         Destination.HISTORY -> HistoryList(app)
+        Destination.REPORT -> ReportScreen(app)
         Destination.SETTINGS -> SettingsScreen(app)
         else -> Page(destination.title) {
             EmptyState("Nothing here yet", "This section needs the content packs for your language, which aren't installed in this build.")

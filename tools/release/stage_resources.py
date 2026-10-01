@@ -137,11 +137,34 @@ def stage_voices(native_dir: str, compose_dir: str, with_voice_files: bool = Tru
     return have_piper
 
 
+PACK_FILES = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite")
+
+
+def stage_packs() -> int:
+    """content/packs/<lang>/ → resources/common/packs/<lang>/ (exam, interview, dictionary, tokenizer, audio clips)."""
+    src = REPO / "content" / "packs"
+    dest = RES / "common" / "packs"
+    if dest.exists():
+        shutil.rmtree(dest)
+    n = 0
+    for lang_dir in sorted(p for p in src.glob("*") if p.is_dir()) if src.is_dir() else []:
+        for f in PACK_FILES:
+            if (lang_dir / f).is_file():
+                (dest / lang_dir.name).mkdir(parents=True, exist_ok=True)
+                shutil.copy2(lang_dir / f, dest / lang_dir.name / f)
+                n += 1
+        if (lang_dir / "audio").is_dir():
+            shutil.copytree(lang_dir / "audio", dest / lang_dir.name / "audio")
+    print(f"packs: staged {n} files into {dest.relative_to(REPO)}")
+    return n
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--skip-models", action="store_true", help="don't bundle model weights (CI smoke builds)")
     ap.add_argument("--skip-voices", action="store_true", help="don't bundle voice files (CI smoke builds)")
     ap.add_argument("--require-native", action="store_true")
+    ap.add_argument("--skip-packs", action="store_true", help="don't bundle content packs (CI smoke builds)")
     ap.add_argument("--require-voices", action="store_true", help="fail when the Piper build is missing")
     args = ap.parse_args()
     native_dir, compose_dir, _ = os_arch()
@@ -151,6 +174,8 @@ def main() -> int:
         return 1
     if not args.skip_models:
         stage_models()
+    if not getattr(args, "skip_packs", False):
+        stage_packs()
     if not stage_voices(native_dir, compose_dir, with_voice_files=not args.skip_voices) and args.require_voices:
         print(f"no Piper build under voices/build/{native_dir}; run voices/build.sh first", file=sys.stderr)
         return 1

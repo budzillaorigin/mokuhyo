@@ -103,27 +103,35 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
     override fun messages(input: Input): List<ChatMessage> {
         val lang = languageName(input.language)
         val aim = if (input.phase == OpiPhase.PROBE) IlrLevel.lowerRange.getOrElse(IlrLevel.lowerRange.indexOf(input.workingLevel) + 1) { IlrLevel.L3 } else input.workingLevel
+        // The system message and the transcript only grow between turns; everything that changes per turn comes last,
+        // so the engine reuses its cached prompt prefix (a long interview stays fast on small machines).
         return listOf(
             system(
                 "You are a friendly, professional interviewer running a practice oral proficiency interview in $lang. It is practice, not an official test.",
                 "Register: ${input.registerNotes}",
-                "Current phase: ${input.phase.wireName} (turn ${input.turnsInPhase + 1} of this phase). Working level hypothesis: ILR ${input.workingLevel.label} — ${IlrSpeaking.describe(input.workingLevel)}.",
-                "Aim this question at ILR ${aim.label}: ${IlrSpeaking.describe(aim)}.",
                 "Phases: warmup (easy personal questions), level_check (questions at the working level), probe (one level harder, to find where " +
                     "speech breaks down: ask to narrate, compare, support an opinion or hypothesize), roleplay (set up the situation and play your role), winddown (easy closing).",
-                input.rolePlay?.let { "Role-play to set up now: $it" } ?: "",
-                if (input.usedDomains.isNotEmpty()) "Topic areas already covered: ${input.usedDomains.joinToString()}. Prefer a new one." else "",
                 "Write utterance in natural $lang only (no English, no romanization). One question or prompt, short enough to say in one breath. Never correct the candidate.",
+                "Never repeat or rephrase a question you already asked, and never repeat the candidate's words back as your question; build on what they said or move to a new topic.",
                 "english is an English translation of your utterance. next_phase is the phase for the following turn: stay, or move forward when this phase has done its job; never go back.",
                 "topic is a two-to-five-word English label; domain is one of: ${DOMAINS.joinToString()}.",
             ),
-            user(if (input.history.isEmpty()) "Begin the interview." else "Interview so far:\n" + transcript(input.history, "Candidate", "Interviewer") + "\nYour next turn."),
+            user(
+                (if (input.history.isEmpty()) "The interview is starting.\n" else "Interview so far:\n" + transcript(input.history, "Candidate", "Interviewer") + "\n\n") +
+                    "Now: phase ${input.phase.wireName} (turn ${input.turnsInPhase + 1} of this phase). Working level hypothesis: ILR ${input.workingLevel.label} — " +
+                    "${IlrSpeaking.describe(input.workingLevel)}. Aim this question at ILR ${aim.label}: ${IlrSpeaking.describe(aim)}." +
+                    (input.rolePlay?.let { " Role-play to set up now: $it" } ?: "") +
+                    (if (input.usedDomains.isNotEmpty()) " Topic areas already covered: ${input.usedDomains.joinToString()}; prefer a new one." else "") +
+                    " Your next turn.",
+            ),
         )
     }
 
     override fun validate(input: Input, output: Output, context: ValidationContext): List<String> = issues(
         ScriptCheck.requireLanguage("utterance", output.utterance, input.language),
         Validation.length("utterance", output.utterance, max = 300),
+        input.history.firstOrNull { similar(it.text, output.utterance) }
+            ?.let { if (it.speaker == Speaker.PARTNER) "utterance repeats an earlier question (\"${it.text.take(60)}\")" else "utterance repeats the candidate's words" },
         if (output.nextPhase < input.phase) "next_phase goes back to an earlier phase" else null,
         if (output.english.isNotBlank()) ScriptCheck.requireEnglish("english", output.english) else null,
     )
@@ -131,6 +139,19 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
 
     companion object {
+        /**
+         * Near-duplicate questions: character-bigram Jaccard similarity ≥ 0.7 after folding. Works the same for spaced
+         * and unspaced scripts: "¿Qué te parece hacer un viaje a España?" ≈ "¿Qué te parece si hacemos un viaje a
+         * España?", but "お名前は何ですか" ≠ "お仕事は何ですか".
+         */
+        fun similar(a: String, b: String): Boolean {
+            fun bigrams(s: String) = s.lowercase().filter { it.isLetterOrDigit() }.windowed(2).toSet()
+            val x = bigrams(a)
+            val y = bigrams(b)
+            if (x.isEmpty() || y.isEmpty()) return a.trim() == b.trim()
+            return x.intersect(y).size.toDouble() / x.union(y).size >= 0.7
+        }
+
         val DOMAINS = listOf("personal", "family", "work", "community", "current_events", "travel", "military", "hypothetical", "abstract", "roleplay")
     }
 }
@@ -210,12 +231,17 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             if (input.history.none { it.speaker == Speaker.LEARNER }) "there is nothing from the candidate to rate" else null,
             factors.firstOrNull { IlrLevel.parse(it.level) == null }?.let { "unknown factor level ${it.level}" },
             if (estimate == null) "unknown estimate ${output.estimate}" else null,
-            if (sustained != null && estimate != null && estimate > sustained) "estimate is above the sustained level" else null,
+            if (sustained != null && estimate != null && estimate > IlrLevel.lowerRange.getOrElse(IlrLevel.lowerRange.indexOf(sustained) + 1) { sustained })
+                "estimate is well above the sustained level" else null,
             ScriptCheck.requireEnglish("rationale", output.rationale),
             Validation.length("rationale", output.rationale, min = 20, max = 1200),
-            if (output.nextSteps.size != 3) "next_steps must have exactly three items" else null,
-            // Evidence quotes must come from the candidate, not be invented.
-            factors.flatMap { it.quotes }.firstOrNull { q -> q.isNotBlank() && !looselyContains(candidate, q) }?.let { "quote not found in the candidate's speech: \"$it\"" },
+            if (output.nextSteps.size !in 2..4) "next_steps must have three items" else null,
+            // Evidence quotes must come from the candidate: a rating whose quotes are mostly invented is rejected;
+            // [normalize] drops the odd non-verbatim one.
+            factors.flatMap { it.quotes }.filter { it.isNotBlank() }.let { qs ->
+                val invented = qs.count { !looselyContains(candidate, it) }
+                if (qs.isNotEmpty() && invented * 2 > qs.size) "most quotes are not in the candidate's speech (e.g. \"${qs.first { !looselyContains(candidate, it) }}\")" else null
+            },
         )
     }
 
@@ -223,6 +249,17 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
 
     companion object {
         val LEVELS = IlrLevel.lowerRange.map { it.label }
+
+        /** Keeps only verbatim quotes, caps the estimate at the sustained level, keeps three next steps. */
+        fun normalize(input: Input, out: Output): Output {
+            val candidate = input.history.filter { it.speaker == Speaker.LEARNER }.joinToString(" ") { it.text }
+            fun clean(f: Factor) = f.copy(quotes = f.quotes.filter { it.isNotBlank() && looselyContains(candidate, it) })
+            val sustained = IlrLevel.parse(out.sustainedLevel)
+            val estimate = IlrLevel.parse(out.estimate)
+            val capped = if (sustained != null && estimate != null && estimate > sustained) sustained.label else out.estimate
+            return out.copy(functions = clean(out.functions), contextContent = clean(out.contextContent), accuracy = clean(out.accuracy),
+                textType = clean(out.textType), estimate = capped, nextSteps = out.nextSteps.take(3))
+        }
 
         private fun squash(s: String) = s.lowercase().filter { it.isLetterOrDigit() }
 

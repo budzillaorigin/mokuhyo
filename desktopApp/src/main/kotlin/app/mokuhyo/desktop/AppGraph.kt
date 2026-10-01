@@ -32,7 +32,8 @@ import kotlin.uuid.Uuid
 /** Everything the UI needs, created once at startup. Heavy pieces (native runtime, hardware probe) load lazily off the UI thread. */
 class AppGraph(val dataDir: File = AppDirs.ensure()) {
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
-    private val opened = DatabaseFactory.open(File(dataDir, "db/mokuhyo.sqlite"))
+    val dbFile = File(dataDir, "db/mokuhyo.sqlite")
+    private val opened = DatabaseFactory.open(dbFile)
     val db: MokuhyoDatabase = opened.second
     val settings = Settings(db)
 
@@ -153,6 +154,21 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
         val bridge = runtime.stt() ?: return null
         return app.mokuhyo.ai.WhisperRecognizer(bridge, file.absolutePath, m.name)
     }
+
+    val backup by lazy { app.mokuhyo.backup.Backup(dbFile, db, dataDir, learnerId, BuildInfo.version) }
+
+    fun reportBuilder() = app.mokuhyo.report.ReportBuilder(db, history, conversations, reviews)
+
+    /** Fonts for the PDF report: the installer's bundled copy, else the dev cache. */
+    fun fontsDir(): File? = listOfNotNull(Resources.dir?.let { File(it, "fonts") }, Resources.repoDir?.let { File(it, "tools/.cache/fonts") })
+        .firstOrNull { File(it, "NotoSansSC-wght.ttf").isFile }
+
+    /** What the backup lists as installed (the importing computer offers to fetch what it lacks). */
+    fun installedPacks() = app.mokuhyo.backup.Bundle.PacksList(
+        content = packsDir?.listFiles()?.filter { it.isDirectory }?.map { it.name }.orEmpty(),
+        voices = speech.let { s -> Languages.all.flatMap { l -> s.voicesFor(l.code).filter { it.engine == "piper" }.map { it.id } } },
+        models = manifest.models.filter { modelFile(it) != null }.map { it.id },
+    )
 
     fun close() {
         SpeechProvider.close()

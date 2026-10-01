@@ -47,7 +47,9 @@ object ScriptCheck {
 
     /** Very common function words: enough to tell Latin-script languages from English in a sentence or two. */
     private val stopwords = mapOf(
-        "en" to "the and of to is are was were you your what did do does in on at for with this that it be have has will would not".split(" ").toSet(),
+        "en" to ("the and of to is are was were you your what did do does in on at for with this that it be have has will would not " +
+            "a an about from by as or but into their they he she his her its which more some little than then there these those also only " +
+            "very can could should may might when where how why who").split(" ").toSet(),
         "es" to "el la los las de del que y en un una es por con para no se su al lo como más pero sus le ya o fue muy qué usted está".split(" ").toSet(),
         "fr" to "le la les de des du et en un une est que qui pour pas dans sur au avec ce il elle nous vous je ne se son sa".split(" ").toSet(),
         "de" to "der die das und ist nicht ein eine zu den von mit sich des auf für im dem auch es an als wir sie ich haben wird".split(" ").toSet(),
@@ -83,6 +85,14 @@ object ScriptCheck {
         if (text.isBlank()) return "$field is empty"
         val letters = text.filter { it.isLetter() }
         val latin = letters.count { it in 'a'..'z' || it in 'A'..'Z' }
-        return if (letters.isNotEmpty() && latin < letters.length * 0.8) "$field is not English" else null
+        if (letters.isNotEmpty() && latin < letters.length * 0.8) return "$field is not English"
+        // Same script as Spanish, French, …: compare function words.
+        val words = Regex("[\\p{L}']+").findAll(text.lowercase()).map { it.value }.toList()
+        if (words.size >= 4) {
+            val english = words.count { it in stopwords.getValue("en") }
+            val other = stopwords.filterKeys { it != "en" }.values.maxOf { set -> words.count { it in set } }
+            if (other > english) return "$field is not English"
+        }
+        return null
     }
 }

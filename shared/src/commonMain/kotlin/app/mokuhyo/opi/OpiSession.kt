@@ -25,6 +25,8 @@ data class OpiRating(
     /** No model: the learner rates themselves against the ILR checklist instead. */
     val selfRated: Boolean = false,
     val needsSelfRating: Boolean = false,
+    /** Why the model's rating was not available (diagnostics; shown in the self-rating prompt). */
+    val failure: String? = null,
 )
 
 /** Answers judged at a level hold up (SUSTAINED), partly (PARTIAL) or not (BREAKDOWN); others aren't rated. */
@@ -141,15 +143,17 @@ class OpiSession(
     suspend fun rate(): OpiRating {
         finished = true
         if (history.none { it.speaker == Speaker.LEARNER && it.text.isNotBlank() }) return OpiRating(null, needsSelfRating = true)
-        return when (val r = gateway.run(OpiRate(), OpiRate.Input(language, history.toList(), profile.registerNotes))) {
-            is AiResult.Ok -> r.value.let {
+        val input = OpiRate.Input(language, history.toList(), profile.registerNotes)
+        return when (val r = gateway.run(OpiRate(), input)) {
+            is AiResult.Ok -> OpiRate.normalize(input, r.value).let {
                 OpiRating(
                     estimate = it.estimate, sustained = it.sustainedLevel, breakdown = it.breakdownLevel,
                     factors = mapOf("functions" to it.functions, "context_content" to it.contextContent, "accuracy" to it.accuracy, "text_type" to it.textType),
                     rationale = it.rationale, nextSteps = it.nextSteps, engine = r.engine,
                 )
             }
-            else -> OpiRating(null, needsSelfRating = true)
+            is AiResult.Fallback -> OpiRating(null, needsSelfRating = true, failure = r.reason)
+            is AiResult.Unavailable -> OpiRating(null, needsSelfRating = true, failure = r.reason)
         }
     }
 
@@ -198,16 +202,22 @@ class OpiSession(
         }
     }
 
-    private fun pickRolePlay(): RolePlay? {
+    private fun pickRolePlay(exclude: Set<String> = emptySet()): RolePlay? {
         val aim = IlrLevel.lowerRange.indices.sortedBy { kotlin.math.abs(it - IlrLevel.lowerRange.indexOf(workingLevel)) }.map { IlrLevel.lowerRange[it].label }
-        return aim.firstNotNullOfOrNull { lv -> rolePlays.filter { it.level == lv }.randomOrNull(random) } ?: rolePlays.randomOrNull(random)
+        val fresh = rolePlays.filter { it.opening !in exclude }
+        return aim.firstNotNullOfOrNull { lv -> fresh.filter { it.level == lv }.randomOrNull(random) } ?: fresh.randomOrNull(random)
     }
 
     /** Scripted fallback: an unasked bank question for the phase near the working level, in an unused domain if possible. */
     private fun scripted(phase: OpiPhase): OpiInterviewerTurn.Output? {
-        if (phase == OpiPhase.ROLEPLAY && turnsInPhase == 0) rolePlay?.let { rp ->
-            asked += rp.opening
-            return OpiInterviewerTurn.Output(rp.opening, rp.english, nextFor(phase), "role-play", "roleplay")
+        if (phase == OpiPhase.ROLEPLAY) {
+            // The bank has role-play cards rather than follow-up questions: each role-play turn opens a fresh card.
+            val rp = (if (turnsInPhase == 0) rolePlay else null) ?: pickRolePlay(exclude = asked)
+            if (rp != null && rp.opening !in asked) {
+                rolePlay = rp
+                asked += rp.opening
+                return OpiInterviewerTurn.Output(rp.opening, rp.english, nextFor(phase), "role-play", "roleplay")
+            }
         }
         val index = IlrLevel.lowerRange.indexOf(workingLevel)
         val aim = if (phase == OpiPhase.PROBE) (index + 1).coerceAtMost(IlrLevel.lowerRange.lastIndex) else index

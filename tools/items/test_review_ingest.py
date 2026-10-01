@@ -1,8 +1,5 @@
-"""Tests for `review.py --ingest` (verdicts exported by the app's content review, BRIEF_V2 G-16, DECISIONS D-118).
-
-The tools project has no pytest; run with: uv run python items/test_review_ingest.py
-"""
-
+"""Tests for review.py: verdicts flip verified (with reviewer), rejects remove passages and their items, dry runs
+change nothing, foreign files are refused. Run: uv run python items/test_review_ingest.py"""
 from __future__ import annotations
 
 import json
@@ -10,158 +7,81 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
 
 import review
 
 
-def write(path: Path, data: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def setup(tmp: Path) -> None:
+    review.BANK = tmp / "bank"
+    review.OPI = tmp / "opi"
+    review.LOG = tmp / "log.jsonl"
+    (review.BANK / "es").mkdir(parents=True)
+    review.OPI.mkdir()
+    bank = {"bank": "es-reading-core", "language": "es", "title": "t", "license": "CC BY-SA 4.0", "attribution": "a",
+            "passages": [{"id": f"es-dr-2-news-00{i}", "exam": "DLPT_READING", "level": "2", "textType": "news", "title": "T", "body": "B",
+                          "source": "llm", "verified": False} for i in (1, 2)],
+            "items": [{"id": f"es-dr-2-news-00{i}-q1", "passageId": f"es-dr-2-news-00{i}", "exam": "DLPT_READING", "level": "2", "type": "detail",
+                       "stem": "S?", "choices": ["a", "b", "c", "d"], "answer": 0, "source": "llm", "verified": False} for i in (1, 2)]}
+    (review.BANK / "es" / "reading.json").write_text(json.dumps(bank), encoding="utf-8")
+    opi = {"language": "es", "profile": {}, "questions": [{"id": "es-q-1", "prompt": "¿Hola?", "verified": False}],
+           "rolePlays": [], "topics": [{"id": "es-topic-1", "title": "x", "verified": False}]}
+    (review.OPI / "es.json").write_text(json.dumps(opi), encoding="utf-8")
 
 
-def read(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
+def export(tmp: Path) -> Path:
+    f = tmp / "export.json"
+    f.write_text(json.dumps({"format": "mokuhyo-review/1", "reviewer": "Tester", "verdicts": [
+        {"language": "es", "kind": "exam", "id": "es-dr-2-news-001", "verdict": "accept"},
+        {"language": "es", "kind": "exam", "id": "es-dr-2-news-002", "verdict": "reject", "note": "ambiguous"},
+        {"language": "es", "kind": "opi", "id": "es-q-1", "verdict": "accept", "edits": {"prompt": "¿Hola, cómo está?"}},
+        {"language": "es", "kind": "opi", "id": "es-topic-1", "verdict": "reject"},
+    ]}), encoding="utf-8")
+    return f
 
 
-def make_tree(root: Path) -> Path:
-    """A miniature repo: tools/ sources plus the Kotlin kana files under shared/."""
-    tools = root / "tools"
-    write(tools / "packs" / "grammar" / "n5.json", {
-        "level": "N5", "source": "llm", "points": [
-            {"id": "n5-wa", "title": "は", "structure": "Noun + は", "meaning": "topic marker", "nuance": "Marks the topic.",
-             "mistakes": ["Using が"], "examples": []},
-            {"id": "n5-ga", "title": "が", "structure": "Noun + が", "meaning": "subject", "nuance": "x", "examples": []},
-        ],
-    })
-    write(tools / "items" / "bank" / "jlpt_generated.json", {
-        "bank": "jlpt_generated",
-        "passages": [{"id": "p1", "title": "お知らせ", "body": "本文", "source": "llm", "verified": False}],
-        "items": [
-            {"id": "p1-q1", "passageId": "p1", "stem": "何ですか。", "choices": ["a", "b", "c", "d"], "answer": 1,
-             "explanation": "old", "source": "llm", "verified": False},
-        ],
-    })
-    write(tools / "packs" / "listening" / "dialogues.json", {"source": "llm", "dialogues": [{"id": "d1", "title": "駅で", "topic": "travel"}]})
-    write(tools / "packs" / "speaking" / "scenarios.json", {"source": "llm", "scenarios": [{"id": "s1", "titleEn": "Shop", "titleJa": "店", "setting": "a shop"}]})
-    kana = root / "shared" / "src" / "commonMain" / "kotlin" / "app" / "tsumugi" / "kana"
-    kana.mkdir(parents=True)
-    (kana / "KanaMnemonics.kt").write_text(
-        'val hiragana = mapOf(\n    "あ" to "A \\"pin\\" through a bow.",\n    "い" to "Two drops.",\n)\n', encoding="utf-8")
-    (kana / "KanaMnemonicsReviewed.kt").write_text(
-        "package app.tsumugi.kana\n\ninternal val REVIEWED_KANA_MNEMONICS: Set<String> = setOf(\n)\n", encoding="utf-8")
-    return tools
+def test_ingest_applies_every_verdict_kind():
+    with tempfile.TemporaryDirectory() as t:
+        tmp = Path(t)
+        setup(tmp)
+        assert review.main(["ingest", str(export(tmp))]) == 0
+        bank = json.loads((review.BANK / "es" / "reading.json").read_text(encoding="utf-8"))
+        assert [p["id"] for p in bank["passages"]] == ["es-dr-2-news-001"]
+        assert bank["passages"][0]["verified"] and bank["passages"][0]["reviewedBy"] == "Tester"
+        assert [i["id"] for i in bank["items"]] == ["es-dr-2-news-001-q1"] and bank["items"][0]["verified"]
+        opi = json.loads((review.OPI / "es.json").read_text(encoding="utf-8"))
+        assert opi["questions"][0]["prompt"] == "¿Hola, cómo está?" and opi["questions"][0]["verified"]
+        assert opi["topics"] == []
+        assert len(review.LOG.read_text(encoding="utf-8").splitlines()) == 4
 
 
-def verdicts(*entries: dict) -> dict:
-    return {"format": "tsumugi-review-verdicts", "version": 1, "reviewer": "owner", "exportedAt": "2026-09-18T10:00:00Z",
-            "verdicts": [{"notes": "", "edits": {}, "decidedAt": "2026-09-18T09:00:00Z", **e} for e in entries]}
+def test_dry_run_changes_nothing_and_foreign_files_are_refused():
+    with tempfile.TemporaryDirectory() as t:
+        tmp = Path(t)
+        setup(tmp)
+        before = (review.BANK / "es" / "reading.json").read_text(encoding="utf-8")
+        assert review.main(["ingest", str(export(tmp)), "--dry-run"]) == 0
+        review.DRY_RUN = False
+        assert (review.BANK / "es" / "reading.json").read_text(encoding="utf-8") == before
+        bad = tmp / "bad.json"
+        bad.write_text(json.dumps({"format": "something-else"}), encoding="utf-8")
+        assert review.main(["ingest", str(bad)]) == 1
 
 
-def test_ingest_applies_every_verdict_kind() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        root = Path(tmp)
-        tools = make_tree(root)
-        vfile = root / "verdicts.json"
-        write(vfile, verdicts(
-            {"kind": "grammar_point", "id": "n5-wa", "verdict": "edit", "edits": {"meaning": "topic (as for …)", "examples": "[]"}},
-            {"kind": "exam_passage", "id": "p1", "verdict": "accept"},
-            {"kind": "exam_item", "id": "p1-q1", "verdict": "edit", "edits": {"explanation": "Line 1 says b."}, "notes": "clearer"},
-            {"kind": "dialogue", "id": "d1", "verdict": "reject", "notes": "unnatural"},
-            {"kind": "scenario", "id": "s1", "verdict": "accept"},
-            {"kind": "scenario", "id": "missing", "verdict": "accept"},
-            {"kind": "kana_mnemonic", "id": "あ", "verdict": "edit", "edits": {"mnemonic": 'A "new" $one'}},
-            {"kind": "kana_mnemonic", "id": "い", "verdict": "accept"},
-        ))
-        report = review.ingest(vfile, root=tools)
-
-        grammar = read(tools / "packs" / "grammar" / "n5.json")["points"]
-        wa = grammar[0]
-        assert wa["source"] == "verified", wa
-        assert wa["meaning"] == "topic (as for …)"
-        assert wa["reviewed"] == {"by": "owner", "on": "2026-09-18"}
-        assert "source" not in grammar[1], "untouched points stay as they were"
-        assert any("fields not applied: examples" in line for line in report), report
-
-        bank = read(tools / "items" / "bank" / "jlpt_generated.json")
-        assert bank["passages"][0]["verified"] is True and bank["passages"][0]["source"] == "llm", "D-034: banks flip verified"
-        item = bank["items"][0]
-        assert item["verified"] is True and item["explanation"] == "Line 1 says b."
-        assert item["reviewed"]["notes"] == "clearer"
-
-        d1 = read(tools / "packs" / "listening" / "dialogues.json")["dialogues"][0]
-        assert d1["rejected"] == {"by": "owner", "on": "2026-09-18", "notes": "unnatural"}
-        assert "source" not in d1 or d1["source"] != "verified"
-        s1 = read(tools / "packs" / "speaking" / "scenarios.json")["scenarios"][0]
-        assert s1["source"] == "verified"
-        assert any("missing: not found" in line for line in report), report
-
-        kana = root / "shared" / "src" / "commonMain" / "kotlin" / "app" / "tsumugi" / "kana"
-        kt = (kana / "KanaMnemonics.kt").read_text(encoding="utf-8")
-        assert '"あ" to "A \\"new\\" \\$one",' in kt, kt
-        assert '"い" to "Two drops.",' in kt
-        reviewed = (kana / "KanaMnemonicsReviewed.kt").read_text(encoding="utf-8")
-        assert '    "あ",\n    "い",\n' in reviewed, reviewed
-
-        # Ingesting again is harmless (idempotent) and a later accept clears a rejection.
-        write(vfile, verdicts({"kind": "dialogue", "id": "d1", "verdict": "accept"}))
-        review.ingest(vfile, root=tools)
-        d1 = read(tools / "packs" / "listening" / "dialogues.json")["dialogues"][0]
-        assert d1["source"] == "verified" and "rejected" not in d1
-
-
-def test_dry_run_changes_nothing_and_foreign_files_are_refused() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        root = Path(tmp)
-        tools = make_tree(root)
-        before = (tools / "packs" / "grammar" / "n5.json").read_text(encoding="utf-8")
-        vfile = root / "v.json"
-        write(vfile, verdicts({"kind": "grammar_point", "id": "n5-wa", "verdict": "accept"}))
-        report = review.ingest(vfile, root=tools, dry_run=True)
-        assert report[0] == "grammar_point n5-wa: accepted", report
-        assert report[1:] == ["re-validate: uv run python packs/grammar/validate.py"], report
-        assert (tools / "packs" / "grammar" / "n5.json").read_text(encoding="utf-8") == before
-
-        write(vfile, {"format": "something-else", "verdicts": []})
+def main() -> int:
+    tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
+    failed = 0
+    for t in tests:
         try:
-            review.ingest(vfile, root=tools)
-        except SystemExit as e:
-            assert "not a Tsumugi verdicts file" in str(e)
-        else:
-            raise AssertionError("a foreign file must be refused")
-
-
-def test_the_app_export_shape_is_accepted() -> None:
-    """The JSON ContentReviewService.exportJson writes (pretty-printed, all fields present)."""
-    with tempfile.TemporaryDirectory() as tmp:
-        root = Path(tmp)
-        tools = make_tree(root)
-        vfile = root / "app.json"
-        vfile.write_text("""{
-    "format": "tsumugi-review-verdicts",
-    "version": 1,
-    "reviewer": "owner",
-    "exportedAt": "2026-09-18T10:00:00Z",
-    "verdicts": [
-        {
-            "kind": "grammar_point",
-            "id": "n5-ga",
-            "verdict": "accept",
-            "notes": "",
-            "edits": {},
-            "decidedAt": "2026-09-17T08:00:00Z"
-        }
-    ]
-}""", encoding="utf-8")
-        review.ingest(vfile, reviewer="someone", root=tools)
-        ga = read(tools / "packs" / "grammar" / "n5.json")["points"][1]
-        assert ga["source"] == "verified" and ga["reviewed"] == {"by": "someone", "on": "2026-09-17"}
+            t()
+            print(f"ok  {t.__name__}")
+        except AssertionError as e:
+            failed += 1
+            print(f"FAIL {t.__name__}: {e}")
+    print(f"{len(tests) - failed}/{len(tests)} passed")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
-    sys.stdout.reconfigure(encoding="utf-8")
-    tests = [v for k, v in dict(globals()).items() if k.startswith("test_")]
-    for t in tests:
-        t()
-        print(f"ok  {t.__name__}")
-    print(f"{len(tests)} passed")
+    sys.exit(main())

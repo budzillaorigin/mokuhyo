@@ -2,7 +2,7 @@
  "language": "ja",
  "exam": {
   "file": "exam.json",
-  "sha256": "8ea85d5eb573bfd52504c6ce085c1d8fdc186dad37a388160830eac07d88e236",
+  "sha256": "f17bab741d7c6125aaf5b134af579e88f195375150c85fed6bce644748a47552",
   "bytes": 397119,
   "passages": {
    "reading": {
@@ -30,5 +30,12 @@
   "listeningPassages": 46,
   "license": "CC BY-SA 4.0",
   "attribution": "Tsumugi/Mokuhyo contributors (AI-drafted, pending review)"
+ },
+ "opi": {
+  "file": "opi.json",
+  "sha256": "5a41945bd9ecf8d635e0768b038605b91763a81b8250888702f21e84685ea413",
+  "questions": 80,
+  "rolePlays": 24,
+  "topics": 99
  }
 }

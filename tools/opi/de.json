@@ -1,0 +1,2053 @@
+{
+ "language": "de",
+ "profile": {
+  "language": "de",
+  "registerNotes": "Siezen the candidate (Sie). In role-plays use du only between friends or close colleagues. Standard German.",
+  "formalityMarkers": [
+   "Sie",
+   "du",
+   "Konjunktiv II for polite requests"
+  ],
+  "levelCheckTopics": {
+   "0+": [
+    "name and greetings",
+    "numbers and prices",
+    "days and times",
+    "family members"
+   ],
+   "1": [
+    "daily routine",
+    "home and neighborhood",
+    "food and shopping",
+    "weekend activities",
+    "work or studies"
+   ],
+   "1+": [
+    "a recent trip",
+    "describing your hometown",
+    "a typical workday",
+    "plans for next year"
+   ],
+   "2": [
+    "a memorable event in detail",
+    "comparing two places you lived",
+    "explaining a process at work",
+    "a current event in your country"
+   ],
+   "2+": [
+    "advantages and disadvantages of a policy",
+    "how your profession has changed",
+    "a problem in your community and its causes"
+   ],
+   "3": [
+    "supporting an opinion on an abstract issue",
+    "hypothetical: what if your country changed a major policy",
+    "the role of technology in society",
+    "ethics of a professional decision"
+   ]
+  },
+  "rolePlaySeeds": [
+   "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+   "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+   "Report a lost passport at a police station (interviewer: police officer).",
+   "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+   "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+   "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+   "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+   "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ]
+ },
+ "questions": [
+  {
+   "id": "de-q-warmup-0+-01",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Wie heißen Sie?",
+   "english": "What is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-0+-02",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Wo sind Sie geboren?",
+   "english": "Where were you born?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-0+-03",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Haben Sie Geschwister?",
+   "english": "Do you have siblings?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-0+-04",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Was machen Sie gerne in Ihrer Freizeit?",
+   "english": "What do you like to do in your free time?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1-01",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Wie lange leben Sie schon in Ihrer aktuellen Wohnung?",
+   "english": "How long have you lived in your current apartment?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1-02",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Welches Familienmitglied verbringen Sie am meisten Zeit mit?",
+   "english": "Which family member do you spend the most time with?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1-03",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Was gefällt Ihnen am meisten an Ihrem Job?",
+   "english": "What do you like most about your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1-04",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Gibt es ein Geschäft oder einen Markt in Ihrer Nachbarschaft, das/die Sie gerne besuchen?",
+   "english": "Is there a store or market in your neighborhood that you like to visit?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1+-01",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Erzählen Sie mir etwas über Ihr Zuhause. Wie ist es dort?",
+   "english": "Tell me something about your home. What is it like there?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1+-02",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Wie verbringen Sie normalerweise Ihre Wochenenden?",
+   "english": "How do you usually spend your weekends?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1+-03",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Haben Sie Haustiere? Wenn ja, welchen und wie heißt es?",
+   "english": "Do you have any pets? If so, what kind and what is its name?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-warmup-1+-04",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "Was ist das Interessanteste an Ihrer Arbeit?",
+   "english": "What is the most interesting thing about your work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-0+-01",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Wo wohnen Sie?",
+   "english": "Where do you live?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-0+-02",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Was machen Sie beruflich?",
+   "english": "What do you do for a living?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-0+-03",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Woher kommen Sie ursprünglich?",
+   "english": "Where are you originally from?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-0+-04",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Was halten Sie von den aktuellen Nachrichten?",
+   "english": "What do you think about the current news?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-0+-05",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Haben Sie schon einmal ein anderes Land besucht?",
+   "english": "Have you ever visited another country?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-0+-06",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "Was würden Sie tun, wenn Sie einen Tag lang unsichtbar wären?",
+   "english": "What would you do if you were invisible for a day?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1-01",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Wie verbringen Sie normalerweise Ihr Wochenende?",
+   "english": "How do you normally spend your weekend?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1-02",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Wer sind die Menschen, die Ihnen am nächsten stehen?",
+   "english": "Who are the people closest to you?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1-03",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Was machen Sie in Ihrer Freizeit?",
+   "english": "What do you do in your free time?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1-04",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Wie ist Ihr Verhältnis zu Ihren Nachbarn?",
+   "english": "What is your relationship with your neighbors like?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1-05",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Was war das letzte Buch, das Sie gelesen haben?",
+   "english": "What was the last book you read?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1-06",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "Was halten Sie von öffentlichen Verkehrsmitteln in Ihrer Stadt?",
+   "english": "What do you think about public transportation in your city?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1+-01",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Können Sie mir etwas über Ihre Hobbys erzählen? Was macht Ihnen besonders Spaß?",
+   "english": "Can you tell me about your hobbies? What do you especially enjoy doing?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1+-02",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Wie verbringen Sie normalerweise Ihre Abende, wenn Sie nicht arbeiten?",
+   "english": "How do you usually spend your evenings when you're not working?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1+-03",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Haben Sie Geschwister? Wie ist Ihr Verhältnis zu ihnen?",
+   "english": "Do you have siblings? What is your relationship with them like?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1+-04",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Was war Ihr erster Job und was haben Sie daraus gelernt?",
+   "english": "What was your first job and what did you learn from it?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1+-05",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Engagieren Sie sich in Ihrer Gemeinde? Wenn ja, wie?",
+   "english": "Are you involved in your community? If so, how?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-1+-06",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "Welche aktuelle Nachricht hat Sie in letzter Zeit am meisten beschäftigt, und warum?",
+   "english": "Which current news story has occupied you the most recently, and why?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Erzählen Sie mir etwas über Ihr letztes Wochenende. Was haben Sie unternommen?",
+   "english": "Tell me about your last weekend. What did you do?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Was sind Ihre Hobbys? Was machen Sie besonders gerne?",
+   "english": "What are your hobbies? What do you especially enjoy doing?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Sind Sie in Ihrer Gemeinde engagiert? Wenn ja, wie?",
+   "english": "Are you involved in your community? If so, how?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Was denken Sie über die öffentliche Verkehrsmittel in Ihrer Stadt?",
+   "english": "What do you think about public transportation in your city?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2-05",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Wie würden Sie Ihre Arbeit beschreiben? Welche Verantwortung haben Sie in Ihrem Job?",
+   "english": "How would you describe your job? What responsibilities do you have at work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2+-01",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Wie haben Sie den Übergang vom Schul- oder Studienleben ins Berufsleben erlebt?",
+   "english": "How did you experience the transition from school or student life to work life?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2+-02",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Was sind Ihrer Meinung nach die größten Herausforderungen im Zusammenleben in einer multikulturellen Gesellschaft?",
+   "english": "What do you think are the biggest challenges in living together in a multicultural society?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2+-03",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Wie halten Sie sich über aktuelle Ereignisse auf dem Laufenden?",
+   "english": "How do you keep up with current events?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2+-04",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Wenn Sie eine Woche lang in einer anderen Stadt in Deutschland leben könnten, welche Stadt wäre das und warum?",
+   "english": "If you could live in another city in Germany for a week, which city would it be and why?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2+-05",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Wie beeinflusst die Digitalisierung Ihrer Meinung nach den Alltag der Menschen?",
+   "english": "How do you think digitization influences people's everyday lives?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2+-06",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "Erzählen Sie mir von einer Tradition oder einem Fest, das in Ihrer Region gefeiert wird.",
+   "english": "Tell me about a tradition or festival celebrated in your region.",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-3-01",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Wie würden Sie Ihre Rolle in Ihrem Freundeskreis beschreiben?",
+   "english": "How would you describe your role in your circle of friends?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-3-02",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Was halten Sie von der Idee, dass Kinder bereits im Kindergarten eine Fremdsprache lernen sollten?",
+   "english": "What do you think about the idea that children should learn a foreign language as early as kindergarten?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-3-03",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Welche Änderungen würden Sie in Ihrem beruflichen Alltag vornehmen, wenn Sie die Möglichkeit dazu hätten?",
+   "english": "What changes would you make in your daily work routine if you had the opportunity?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-3-04",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Wie stehen Sie zu den aktuellen Debatten über Klimawandel und was können wir Ihrer Meinung nach tun, um ihn zu bekämpfen?",
+   "english": "What is your stance on the current debates about climate change and what do you think we can do to fight it?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-3-05",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Wenn Sie die Chance hätten, für ein Jahr in einem anderen Land zu leben, welches Land würden Sie wählen und warum?",
+   "english": "If you had the chance to live in another country for a year, which country would you choose and why?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-3-06",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "Stellen Sie sich vor, Sie wären für einen Tag der Kommandant einer Militärbasis. Welche Prioritäten würden Sie setzen?",
+   "english": "Imagine you were the commander of a military base for a day. What priorities would you set?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-0+-01",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Sie haben gerade ein neues Handy bekommen. Was machen Sie als Erstes damit?",
+   "english": "You just got a new cell phone. What do you do first with it?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-0+-02",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Wie verbringen Sie normalerweise das Wochenende mit Ihrer Familie?",
+   "english": "How do you usually spend the weekend with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-0+-03",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Was gefällt Ihnen am meisten an Ihrem Beruf?",
+   "english": "What do you like most about your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-0+-04",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "Was ist das letzte kulturelle Event, das Sie in Ihrer Gemeinde besucht haben?",
+   "english": "What was the last cultural event you attended in your community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1-01",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Wohin sind Sie in Ihrem letzten Urlaub gereist und was haben Sie dort gemacht?",
+   "english": "Where did you travel to on your last vacation and what did you do there?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1-02",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Wie verbringen Sie normalerweise einen regnerischen Sonntag?",
+   "english": "How do you usually spend a rainy Sunday?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1-03",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Was ist das Wichtigste an Ihrem Arbeitsplatz und warum?",
+   "english": "What is the most important thing about your workplace and why?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1-04",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "Was ist Ihrer Meinung nach das größte Problem in Ihrer Nachbarschaft und wie könnte man es lösen?",
+   "english": "What do you think is the biggest problem in your neighborhood and how could it be solved?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1+-01",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Erzählen Sie bitte ausführlich von einem besonderen Familienessen, das Sie in letzter Zeit erlebt haben. Wie haben Sie es vorbereitet und wer hat alles mitgeholfen?",
+   "english": "Narrate in detail about a special family meal that you experienced recently. How did you prepare it and who all helped?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1+-02",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Vergleichen Sie die Arbeitskultur in Ihrem Land mit der in einem anderen Land, das Sie kennen. Was sind die Hauptunterschiede und wie beeinflussen sie die Beziehungen am Arbeitsplatz?",
+   "english": "Compare the work culture in your country with that in another country you know. What are the main differences and how do they affect workplace relationships?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1+-03",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Wie könnte Ihre Gemeinde mehr Menschen dazu ermutigen, sich in lokale Projekte einzubringen? Geben Sie Beispiele und begründen Sie Ihre Ideen.",
+   "english": "How could your community encourage more people to get involved in local projects? Give examples and justify your ideas.",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-1+-04",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "Was denken Sie über den aktuellen Trend, dass immer mehr Menschen in Großstädten leben? Welche Vor- und Nachteile sehen Sie darin?",
+   "english": "What do you think about the current trend of more and more people living in big cities? What advantages and disadvantages do you see in this?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2-01",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Erzählen Sie bitte genau, wie Sie einen typischen Arbeitstag verbringen. Was sind Ihre Hauptaufgaben und wie organisieren Sie Ihre Zeit?",
+   "english": "Please narrate in detail how you spend a typical workday. What are your main tasks and how do you organize your time?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2-02",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Vergleichen Sie die Erziehungskonzepte Ihrer Eltern mit denen, die Sie bei Ihren Kindern anwenden oder anwenden würden. Was sind die größten Unterschiede und warum?",
+   "english": "Compare your parents' upbringing concepts with those you apply or would apply with your children. What are the biggest differences and why?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2-03",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Wie hat sich das Leben in Ihrem Gemeinde in den letzten zehn Jahren verändert? Geben Sie Beispiele für positive und negative Veränderungen.",
+   "english": "How has life in your community changed in the last ten years? Give examples of positive and negative changes.",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2-04",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "Was denken Sie über die aktuellen Diskussionen zur Energiepolitik? Welche Lösung halten Sie für die beste und warum?",
+   "english": "What do you think about the current discussions on energy policy? Which solution do you consider the best and why?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2+-01",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Erzählen Sie bitte detailliert von einer Herausforderung, die Sie in letzter Zeit im Berufsleben gemeistert haben. Wie sind Sie damit umgegangen und was haben Sie daraus gelernt?",
+   "english": "Please narrate in detail about a challenge you recently overcame in your professional life. How did you handle it and what did you learn from it?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2+-02",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Wie würde Ihre Gemeinde Ihrer Meinung nach mehr Menschen dazu motivieren können, sich für den Umweltschutz einzusetzen? Geben Sie konkrete Beispiele und begründen Sie Ihre Ideen.",
+   "english": "How could your community encourage more people to get involved in environmental protection? Give concrete examples and justify your ideas.",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2+-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Vergleichen Sie bitte die Bedeutung von Traditionen in Ihrer Familie mit der in einer anderen Familie, die Sie kennen. Was sind die Hauptunterschiede und wie wirken sie sich auf das Familienleben aus?",
+   "english": "Please compare the importance of traditions in your family with that in another family you know. What are the main differences and how do they affect family life?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-2+-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Was halten Sie von der aktuellen Debatte über die Digitalisierung im Bildungswesen? Welche Vor- und Nachteile sehen Sie darin?",
+   "english": "What is your opinion on the current debate about digitalization in the education system? What advantages and disadvantages do you see?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-3-01",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Wie haben Sie Ihre Entscheidung getroffen, Ihren aktuellen Beruf zu ergreifen? Könnten Sie die Faktoren, die Sie beeinflusst haben, im Detail erklären und vielleicht mit den Erwartungen vergleichen, die Sie anfangs hatten?",
+   "english": "How did you make the decision to pursue your current profession? Could you explain in detail the factors that influenced you and perhaps compare them with the expectations you had initially?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-3-02",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Stellen Sie sich vor, Sie wären der Bürgermeister Ihrer Gemeinde. Welche drei Initiativen würden Sie starten, um das Gemeinschaftsgefühl zu stärken? Erklären Sie Ihre Wahl und wie diese Initiativen umgesetzt werden könnten.",
+   "english": "Imagine you were the mayor of your community. What three initiatives would you start to strengthen the sense of community? Explain your choices and how these initiatives could be implemented?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-3-03",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "In einigen Ländern gibt es eine Diskussion über die Einführung einer vier-Tage-Arbeitswoche. Was halten Sie von dieser Idee? Könnten Sie die Vor- und Nachteile erläutern und eine fundierte Meinung dazu äußern?",
+   "english": "In some countries, there is a discussion about introducing a four-day work week. What do you think about this idea? Could you explain the advantages and disadvantages and express an informed opinion?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-probe-3-04",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Wenn Sie die Möglichkeit hätten, ein Jahr lang in einem anderen Land zu leben, welches Land würden Sie wählen und warum? Vergleichen Sie dieses Land mit Ihrem Heimatland in Bezug auf Kultur, Lebensweise und persönliche Interessen.",
+   "english": "If you had the opportunity to live in another country for a year, which country would you choose and why? Compare this country with your home country in terms of culture, lifestyle, and personal interests.",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-1-01",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Was mögen Sie an Ihrer Arbeit?",
+   "english": "What do you like about your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-1-02",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Gibt es einen Park in Ihrer Nähe?",
+   "english": "Is there a park near you?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-1-03",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Haben Sie das letzte Fußballspiel gesehen?",
+   "english": "Did you watch the last football game?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-1-04",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "Wohin würden Sie gerne in den Urlaub fahren?",
+   "english": "Where would you like to go on vacation?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-2-01",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Erzählen Sie mir von einem Buch, das Sie kürzlich gelesen haben und das Ihnen gefallen hat.",
+   "english": "Tell me about a book you recently read and enjoyed.",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-2-02",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Gibt es ein neues Gesetz oder eine neue Regelung, die Sie in letzter Zeit in den Nachrichten gesehen haben und die Sie interessant finden?",
+   "english": "Is there a new law or regulation that you have seen in the news recently and find interesting?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-2-03",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Wenn Sie einen Tag lang eine andere Berufsgruppe begleiten könnten, welche wäre das und warum?",
+   "english": "If you could accompany another professional group for a day, which would it be and why?",
+   "domain": "hypothetical",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-winddown-2-04",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "Wie ist das Wetter bei Ihnen gerade? Haben Sie Aktivitäten, die Sie im Winter oder im Sommer bevorzugen?",
+   "english": "What's the weather like where you are? Do you have activities you prefer in winter or summer?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-q-level_check-2-06",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Wie verbringen Sie normalerweise Ihre Wochenenden, und was tun Sie gerne in Ihrer Freizeit?",
+   "english": "How do you usually spend your weekends, and what do you like to do in your free time?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "rolePlays": [
+  {
+   "id": "de-rp-0+-01",
+   "level": "0+",
+   "situation": "You are at a hotel and need to check in. Unfortunately, the hotel is overbooked and you need to solve this problem.",
+   "interviewerRole": "Receptionist",
+   "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+   "english": "Good day! How can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-0+-02",
+   "level": "0+",
+   "situation": "You need to buy a train ticket, but the train you wanted to take has been cancelled.",
+   "interviewerRole": "Ticket Agent",
+   "opening": "Guten Tag! Was kann ich für Sie tun?",
+   "english": "Good day! What can I do for you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-0+-03",
+   "level": "0+",
+   "situation": "You need to report a lost passport at a police station.",
+   "interviewerRole": "Police Officer",
+   "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+   "english": "Good day! How can I help you?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-0+-04",
+   "level": "0+",
+   "situation": "You need to arrange a meeting time with a colleague whose schedule keeps changing.",
+   "interviewerRole": "Colleague",
+   "opening": "Hallo! Wie geht es dir? Ich habe gehört, du wolltest dich mit mir treffen.",
+   "english": "Hi! How are you? I heard you wanted to meet with me.",
+   "domain": "work_study",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1-01",
+   "level": "1",
+   "situation": "You are at a hotel and need to check in. Unfortunately, the hotel is overbooked and you need to solve this problem.",
+   "interviewerRole": "Receptionist",
+   "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+   "english": "Good day! How can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1-02",
+   "level": "1",
+   "situation": "You need to buy a train ticket, but the train you wanted to take has been cancelled.",
+   "interviewerRole": "Ticket Agent",
+   "opening": "Guten Tag! Was kann ich für Sie tun?",
+   "english": "Good day! What can I do for you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1-03",
+   "level": "1",
+   "situation": "You need to report a lost passport at a police station.",
+   "interviewerRole": "Police Officer",
+   "opening": "Guten Tag! Wie kann ich Ihnen weiterhelfen?",
+   "english": "Good day! How can I assist you further?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1-04",
+   "level": "1",
+   "situation": "You are organizing a joint military exercise with a German unit. You need to inform a local town official that a road will be closed during the exercise.",
+   "interviewerRole": "Town Official",
+   "opening": "Guten Tag! Was führt Sie zu mir?",
+   "english": "Good day! What brings you to me?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1+-01",
+   "level": "1+",
+   "situation": "You are planning a joint military exercise with a German unit. You need to persuade a local landlord to fix a broken heater in your barracks before winter.",
+   "interviewerRole": "Landlord",
+   "opening": "Guten Tag, wie kann ich Ihnen helfen?",
+   "english": "Good day, how can I help you?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1+-02",
+   "level": "1+",
+   "situation": "You are at a checkpoint with your convoy. You need to explain to the checkpoint officer why your convoy must pass before noon.",
+   "interviewerRole": "Checkpoint Officer",
+   "opening": "Hallo, was führt Sie zu dieser checkpoint?",
+   "english": "Hello, what brings you to this checkpoint?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1+-03",
+   "level": "1+",
+   "situation": "You are working as an interpreter for two delegations. There is a misunderstanding between them and you need to clarify the situation with one of the delegation leaders.",
+   "interviewerRole": "Delegation Leader",
+   "opening": "Guten Tag, ich verstehe nicht, was die andere Delegation sagt. Können Sie mir helfen?",
+   "english": "Good day, I do not understand what the other delegation is saying. Can you help me?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-1+-04",
+   "level": "1+",
+   "situation": "You are organizing a joint military exercise with a German unit. You need to inform a local town official that a road will be closed during the exercise.",
+   "interviewerRole": "Town Official",
+   "opening": "Guten Tag, wie kann ich Ihnen behilflich sein?",
+   "english": "Good day, how can I be of assistance to you?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2-01",
+   "level": "2",
+   "situation": "You are at a hotel and need to check in. Unfortunately, the hotel is overbooked and you need to solve this problem.",
+   "interviewerRole": "Receptionist",
+   "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+   "english": "Good day! How can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2-02",
+   "level": "2",
+   "situation": "You need to buy a train ticket, but the train you wanted to take has been cancelled.",
+   "interviewerRole": "Ticket agent",
+   "opening": "Hallo! Wie kann ich Ihnen heute helfen?",
+   "english": "Hello! How can I help you today?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2-03",
+   "level": "2",
+   "situation": "You need to report a lost passport at a police station.",
+   "interviewerRole": "Police officer",
+   "opening": "Guten Tag! Was kann ich für Sie tun?",
+   "english": "Good day! What can I do for you?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2-04",
+   "level": "2",
+   "situation": "You are organizing a joint military exercise with a German unit. You need to inform a local town official that a road will be closed during the exercise.",
+   "interviewerRole": "Town official",
+   "opening": "Guten Morgen! Sie wollten mich etwas Wichtiges mitteilen?",
+   "english": "Good morning! You wanted to tell me something important?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2+-01",
+   "level": "2+",
+   "situation": "You are planning a joint military exercise with a German unit. You need to persuade a local landlord to fix a broken heater in your barracks before winter.",
+   "interviewerRole": "Landlord",
+   "opening": "Guten Tag! Was kann ich für Sie tun?",
+   "english": "Good day! How can I help you?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2+-02",
+   "level": "2+",
+   "situation": "You are at a checkpoint with your convoy. You need to explain to the checkpoint officer why your convoy must pass before noon.",
+   "interviewerRole": "Checkpoint Officer",
+   "opening": "Halten Sie bitte an! Haben Sie Papiere für die Durchfahrt?",
+   "english": "Stop please! Do you have papers for the passage?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2+-03",
+   "level": "2+",
+   "situation": "You are working as an interpreter for two delegations. There is a misunderstanding between them and you need to clarify the situation with one of the delegation leaders.",
+   "interviewerRole": "Delegation Leader",
+   "opening": "Was ist das Problem? Können Sie das erklären?",
+   "english": "What is the problem? Can you explain that?",
+   "domain": "interpreter",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-2+-04",
+   "level": "2+",
+   "situation": "You are organizing a cultural exchange program and need to arrange a meeting time with a German colleague whose schedule keeps changing.",
+   "interviewerRole": "Colleague",
+   "opening": "Hallo! Ich habe nächste Woche einige Termine, aber mein Kalender ist voll. Wann möchtest du dich treffen?",
+   "english": "Hi! I have some appointments next week, but my calendar is full. When do you want to meet?",
+   "domain": "interpreter",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-3-01",
+   "level": "3",
+   "situation": "You are at a hotel and need to check in. Unfortunately, the hotel is overbooked and you need to solve this problem.",
+   "interviewerRole": "Receptionist",
+   "opening": "Guten Tag! Wie kann ich Ihnen helfen?",
+   "english": "Good day! How can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-3-02",
+   "level": "3",
+   "situation": "You need to buy a train ticket, but the train you wanted to take has been cancelled.",
+   "interviewerRole": "Ticket Agent",
+   "opening": "Guten Tag! Was kann ich für Sie tun?",
+   "english": "Good day! What can I do for you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-3-03",
+   "level": "3",
+   "situation": "You are reporting a lost passport at a police station.",
+   "interviewerRole": "Police Officer",
+   "opening": "Guten Tag! Wie kann ich Ihnen behilflich sein?",
+   "english": "Good day! How can I assist you?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-rp-3-04",
+   "level": "3",
+   "situation": "You are organizing a joint military exercise with a German unit. You need to persuade a local landlord to fix a broken heater in your barracks before winter.",
+   "interviewerRole": "Landlord",
+   "opening": "Guten Tag! Was möchten Sie besprechen?",
+   "english": "Good day! What would you like to discuss?",
+   "domain": "military_operations",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "topics": [
+  {
+   "id": "de-topic-daily_life-01",
+   "domain": "daily_life",
+   "title": "Introduction",
+   "opener": "Guten Tag! Ich möchte mich gerne vorstellen. Wie heißen Sie und woher kommen Sie?",
+   "minLevel": "0+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-02",
+   "domain": "daily_life",
+   "title": "Family",
+   "opener": "Erzählen Sie mir bitte etwas über Ihre Familie. Haben Sie Geschwister?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-03",
+   "domain": "daily_life",
+   "title": "Housing",
+   "opener": "Wie ist Ihre Wohnsituation? Wohnen Sie zur Miete oder besitzen Sie Ihr eigenes Haus?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-04",
+   "domain": "daily_life",
+   "title": "Food Preferences",
+   "opener": "Was ist Ihr Lieblingsessen? Essen Sie gerne auswärts oder kochen Sie selbst?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-05",
+   "domain": "daily_life",
+   "title": "Shopping Habits",
+   "opener": "Wie oft gehen Sie einkaufen? Haben Sie bestimmte Läden, die Sie bevorzugen?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-06",
+   "domain": "daily_life",
+   "title": "Health",
+   "opener": "Wie halten Sie sich fit? Treiben Sie regelmäßig Sport?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-07",
+   "domain": "daily_life",
+   "title": "Public Transport",
+   "opener": "Wie kommen Sie meistens zur Arbeit? Nutzen Sie öffentliche Verkehrsmittel?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-08",
+   "domain": "daily_life",
+   "title": "Weather",
+   "opener": "Wie ist das Wetter in Ihrer Heimatstadt? Bevorzugen Sie eine bestimmte Jahreszeit?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-09",
+   "domain": "daily_life",
+   "title": "Hobbies",
+   "opener": "Was machen Sie gerne in Ihrer Freizeit? Haben Sie ein bestimmtes Hobby?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-10",
+   "domain": "daily_life",
+   "title": "Weekend Plans",
+   "opener": "Was haben Sie dieses Wochenende vor? Haben Sie schon Pläne gemacht?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-daily_life-11",
+   "domain": "daily_life",
+   "title": "Local Events",
+   "opener": "Gibt es in Ihrer Stadt Veranstaltungen oder Feste, die Sie regelmäßig besuchen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-01",
+   "domain": "work_study",
+   "title": "Job Description",
+   "opener": "Guten Tag! Könnten Sie mir bitte genau beschreiben, was Ihre Aufgaben im Job sind?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-02",
+   "domain": "work_study",
+   "title": "Daily Routine",
+   "opener": "Wie sieht Ihr typischer Arbeitstag aus?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-03",
+   "domain": "work_study",
+   "title": "Work Schedule",
+   "opener": "Sie arbeiten in Schichten, nicht wahr? Können Sie mir mehr über Ihren Arbeitsplan erzählen?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-04",
+   "domain": "work_study",
+   "title": "Meeting Preparation",
+   "opener": "Wir haben morgen ein wichtiges Meeting. Könnten Sie bitte die Agenda und die wichtigsten Punkte vorbereiten?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-05",
+   "domain": "work_study",
+   "title": "Email Follow-up",
+   "opener": "Sie haben letzte Woche eine E-Mail an den Kunden geschickt. Wie war die Reaktion und was müssen wir als Nächstes tun?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-06",
+   "domain": "work_study",
+   "title": "Project Timeline",
+   "opener": "Wir müssen den Zeitplan für das neue Projekt besprechen. Könnten Sie die wichtigsten Meilensteine und Fristen nennen?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-07",
+   "domain": "work_study",
+   "title": "Education Background",
+   "opener": "Sie haben einen interessanten Werdegang. Könnten Sie mehr über Ihre Ausbildung und Ihre bisherigen Erfahrungen erzählen?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-08",
+   "domain": "work_study",
+   "title": "Career Goals",
+   "opener": "Wo sehen Sie sich in fünf Jahren beruflich? Was sind Ihre langfristigen Ziele?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-09",
+   "domain": "work_study",
+   "title": "Team Collaboration",
+   "opener": "Wie würden Sie die Zusammenarbeit in Ihrem Team beschreiben? Gibt es Bereiche, die verbessert werden könnten?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-10",
+   "domain": "work_study",
+   "title": "Conflict Resolution",
+   "opener": "Wie gehen Sie mit Konflikten am Arbeitsplatz um? Können Sie ein Beispiel aus Ihrer Erfahrung nennen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-work_study-11",
+   "domain": "work_study",
+   "title": "Professional Development",
+   "opener": "Was tun Sie, um sich beruflich weiterzuentwickeln? Gibt es Kurse oder Schulungen, die Sie in letzter Zeit besucht haben?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-01",
+   "domain": "society",
+   "title": "Recent Elections",
+   "opener": "Haben Sie die letzten Wahlen verfolgt? Was halten Sie von den Ergebnissen?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-02",
+   "domain": "society",
+   "title": "Immigration Policy",
+   "opener": "Was denken Sie über die aktuelle Einwanderungspolitik in Deutschland?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-03",
+   "domain": "society",
+   "title": "Climate Change",
+   "opener": "Wie wichtig ist Ihnen das Thema Klimawandel? Was sollten wir Ihrer Meinung nach tun?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-04",
+   "domain": "society",
+   "title": "Public Transportation",
+   "opener": "Nutzen Sie oft öffentliche Verkehrsmittel? Was könnte Ihrer Meinung nach verbessert werden?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-05",
+   "domain": "society",
+   "title": "Digitalization",
+   "opener": "Wie hat die Digitalisierung Ihr Leben beeinflusst?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-06",
+   "domain": "society",
+   "title": "Education System",
+   "opener": "Was halten Sie vom deutschen Bildungssystem? Gibt es etwas, das verbessert werden sollte?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-07",
+   "domain": "society",
+   "title": "Urbanization",
+   "opener": "Wohnen Sie lieber auf dem Land oder in der Stadt? Warum?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-08",
+   "domain": "society",
+   "title": "Cultural Events",
+   "opener": "Welche kulturellen Veranstaltungen haben Sie zuletzt besucht?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-09",
+   "domain": "society",
+   "title": "Recycling",
+   "opener": "Wie halten Sie es mit dem Recycling? Was könnte die Regierung tun, um die Menschen mehr zum Recyceln zu motivieren?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-10",
+   "domain": "society",
+   "title": "Healthcare",
+   "opener": "Was denken Sie über das deutsche Gesundheitssystem?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-society-11",
+   "domain": "society",
+   "title": "Youth Unemployment",
+   "opener": "Was sind Ihrer Meinung nach die Gründe für die Jugendarbeitslosigkeit in Deutschland?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-01",
+   "domain": "travel_culture",
+   "title": "Airport Security",
+   "opener": "Entschuldigung, Sie haben vergessen, Ihre Schuhe auszuziehen. Können Sie das bitte noch tun?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-02",
+   "domain": "travel_culture",
+   "title": "Hotel Check-in",
+   "opener": "Guten Tag, ich habe ein Zimmer reserviert. Mein Name ist Müller.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-03",
+   "domain": "travel_culture",
+   "title": "Asking for Directions",
+   "opener": "Entschuldigung, können Sie mir bitte sagen, wie ich zum Hauptbahnhof komme?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-04",
+   "domain": "travel_culture",
+   "title": "Cultural Etiquette",
+   "opener": "Ich möchte wissen, was die typischen Tischmanieren in Deutschland sind.",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-05",
+   "domain": "travel_culture",
+   "title": "Local Transportation",
+   "opener": "Können Sie mir erklären, wie das öffentliche Verkehrssystem hier funktioniert?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-06",
+   "domain": "travel_culture",
+   "title": "Tourist Attractions",
+   "opener": "Welche Sehenswürdigkeiten sollte ich in dieser Stadt unbedingt besuchen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-07",
+   "domain": "travel_culture",
+   "title": "Festivals and Events",
+   "opener": "Ich möchte mehr über die traditionellen Feste in dieser Region erfahren. Können Sie mir etwas erzählen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-08",
+   "domain": "travel_culture",
+   "title": "Dining Out",
+   "opener": "Können Sie mir ein gutes Restaurant empfehlen, in dem man regionale Spezialitäten probieren kann?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-09",
+   "domain": "travel_culture",
+   "title": "Shopping",
+   "opener": "Wo kann ich typische Souvenirs kaufen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-10",
+   "domain": "travel_culture",
+   "title": "Cultural Differences",
+   "opener": "Was sind die wichtigsten kulturellen Unterschiede zwischen Deutschland und meinem Land?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-travel_culture-11",
+   "domain": "travel_culture",
+   "title": "Historical Context",
+   "opener": "Können Sie mir etwas über die Geschichte dieser Stadt und ihre kulturelle Bedeutung erzählen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-01",
+   "domain": "military_garrison",
+   "title": "Rank Structure",
+   "opener": "Guten Morgen. Können Sie mir erklären, wie die Rangstruktur in unserem Militär aussieht? Ich bin noch neu hier und möchte mich besser orientieren.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-02",
+   "domain": "military_garrison",
+   "title": "Daily Routine",
+   "opener": "Wie sieht Ihr täglicher Ablauf auf der Basis aus? Was sind die wichtigsten Aufgaben, die Sie jeden Tag erledigen?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-03",
+   "domain": "military_garrison",
+   "title": "Unit Responsibilities",
+   "opener": "Sie sind doch in der Logistikabteilung, oder? Können Sie mir bitte sagen, welche Verantwortlichkeiten Ihre Einheit hat?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-04",
+   "domain": "military_garrison",
+   "title": "Base Facilities",
+   "opener": "Ich bin neu in der Kaserne. Können Sie mir bitte die wichtigsten Einrichtungen auf der Basis zeigen und erklären, wofür sie da sind?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-05",
+   "domain": "military_garrison",
+   "title": "Duty Roster",
+   "opener": "Ich habe gesehen, dass der Dienstplan geändert wurde. Können Sie mir sagen, warum und was sich für Sie geändert hat?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-06",
+   "domain": "military_garrison",
+   "title": "Physical Training",
+   "opener": "Wie oft trainieren Sie körperlich? Was sind die typischen Übungen, die Sie während des Training machen?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-07",
+   "domain": "military_garrison",
+   "title": "Inspection Preparation",
+   "opener": "Eine Inspektion steht an. Was müssen Sie und Ihre Einheit dafür vorbereiten?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-08",
+   "domain": "military_garrison",
+   "title": "Weekend Leave",
+   "opener": "Haben Sie dieses Wochenende frei? Was planen Sie zu tun, wenn Sie frei haben?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-09",
+   "domain": "military_garrison",
+   "title": "Mess Hall",
+   "opener": "Können Sie mir ein bisschen über die Mensa erzählen? Wie ist das Essen und was ist das Besondere daran?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-10",
+   "domain": "military_garrison",
+   "title": "Vehicle Maintenance",
+   "opener": "Sie sind doch für die Fahrzeugwartung zuständig, oder? Können Sie mir bitte die wichtigsten Schritte erklären, die bei der Wartung zu beachten sind?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_garrison-11",
+   "domain": "military_garrison",
+   "title": "Emergency Drills",
+   "opener": "Wie oft gibt es Notfallübungen hier auf der Basis? Was sind die typischen Szenarien, die geübt werden?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-01",
+   "domain": "military_operations",
+   "title": "Exercise Preparation",
+   "opener": "Guten Morgen! Könnten Sie mir bitte sagen, was für Vorbereitungen für die bevorstehende Übung nötig sind?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-02",
+   "domain": "military_operations",
+   "title": "Logistics Coordination",
+   "opener": "Hallo, ich brauche Ihre Hilfe bei der Koordination der Logistik für unsere nächste Mission. Können Sie mir die aktuellen Bestände der Ausrüstung nennen?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-03",
+   "domain": "military_operations",
+   "title": "Movement Orders",
+   "opener": "Guten Tag! Sie haben die Bewegungsbefehle für die nächste Operation erhalten. Könnten Sie mir die Details erklären?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-04",
+   "domain": "military_operations",
+   "title": "Airfield Operations",
+   "opener": "Hallo, ich habe einige Fragen zu den Flugplatzoperationen. Könnten Sie mir den aktuellen Flugplan und die Verfügbarkeit der Start- und Landebahnen mitteilen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-05",
+   "domain": "military_operations",
+   "title": "Communications Check",
+   "opener": "Guten Tag! Könnten wir einen Kommunikationscheck durchführen, um sicherzustellen, dass alle unsere Funkgeräte funktionieren?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-06",
+   "domain": "military_operations",
+   "title": "Briefing a Counterpart",
+   "opener": "Guten Morgen! Ich möchte Ihnen die Details der bevorstehenden Mission erklären. Haben Sie einen Moment Zeit?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-07",
+   "domain": "military_operations",
+   "title": "Supply Chain Management",
+   "opener": "Hallo, ich brauche Ihre Unterstützung beim Management der Lieferkette. Könnten Sie mir den aktuellen Status der Lieferungen mitteilen?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-08",
+   "domain": "military_operations",
+   "title": "Exercise Coordination",
+   "opener": "Guten Tag! Wir müssen die Koordination der bevorstehenden Übung besprechen. Könnten Sie mir Ihre Verfügbarkeit und Ihre Rolle in der Übung mitteilen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-09",
+   "domain": "military_operations",
+   "title": "Emergency Procedures",
+   "opener": "Hallo, ich möchte die Notfallverfahren für unsere nächste Operation besprechen. Könnten Sie mir die aktuellen Protokolle erklären?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-10",
+   "domain": "military_operations",
+   "title": "Equipment Maintenance",
+   "opener": "Guten Morgen! Ich brauche Ihre Hilfe bei der Wartung unserer Ausrüstung. Könnten Sie mir den aktuellen Wartungsplan mitteilen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_operations-11",
+   "domain": "military_operations",
+   "title": "Intelligence Sharing",
+   "opener": "Guten Tag! Ich möchte die Bedeutung des Austauschs von Geheimdienstinformationen in unserer nächsten Mission besprechen. Haben Sie einige Minuten Zeit?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-01",
+   "domain": "military_field",
+   "title": "checkpoint",
+   "opener": "Guten Tag! Ich bin der Kontrollpunktleiter. Können Sie bitte Ihren Ausweis zeigen und den Grund Ihres Besuchs erklären?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-02",
+   "domain": "military_field",
+   "title": "medical_evacuation_request",
+   "opener": "Hallo, ich bin Sanitäter und wir haben einen Notfall. Wir benötigen sofortige medizinische Evakuierung. Können Sie uns helfen?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-03",
+   "domain": "military_field",
+   "title": "casualty_report",
+   "opener": "Guten Morgen, ich muss einen Gefechtsbericht erstatten. Können Sie mir zuhören und die Information aufnehmen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-04",
+   "domain": "military_field",
+   "title": "convoy",
+   "opener": "Guten Tag, ich bin der Konvoi-Führer. Können Sie die Route und die Sicherheitsmaßnahmen für unseren heutigen Transport besprechen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-05",
+   "domain": "military_field",
+   "title": "disaster_relief",
+   "opener": "Hallo, wir sind hier, um beim Katastrophenschutz zu helfen. Können Sie uns sagen, wo wir am dringendsten gebraucht werden?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-06",
+   "domain": "military_field",
+   "title": "evacuation_of_civilians",
+   "opener": "Guten Tag, ich bin verantwortlich für die Evakuierung der Zivilisten. Können Sie mir helfen, einen Plan zu erstellen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-07",
+   "domain": "military_field",
+   "title": "intelligence_sharing",
+   "opener": "Guten Morgen, ich habe wichtige Informationen, die ich mit Ihnen teilen muss. Können wir uns in einem sicheren Raum unterhalten?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-08",
+   "domain": "military_field",
+   "title": "equipment_request",
+   "opener": "Hallo, ich bin für die Ausrüstung unserer Einheit verantwortlich. Können Sie mir helfen, eine Anforderung für neues Gerät zu erstellen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-09",
+   "domain": "military_field",
+   "title": "debriefing",
+   "opener": "Guten Tag, ich bin hier für die Nachbesprechung der gestrigen Mission. Können Sie mir Ihre Beobachtungen und Bewertung mitteilen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-10",
+   "domain": "military_field",
+   "title": "negotiation_with_local_authorities",
+   "opener": "Hallo, wir müssen mit den lokalen Behörden über den Zugang zu bestimmten Gebieten verhandeln. Können Sie uns bei diesen Verhandlungen unterstützen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-military_field-11",
+   "domain": "military_field",
+   "title": "tactical_briefing",
+   "opener": "Guten Morgen, ich bin hier für die taktische Besprechung unserer nächsten Mission. Können Sie mir die Details und den Plan erklären?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-01",
+   "domain": "interpreter",
+   "title": "escort-interpreter",
+   "opener": "Guten Morgen! Ich bin Herrn Müller von der deutschen Delegation. Könnten Sie mir bitte sagen, wohin wir als nächstes gehen?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-02",
+   "domain": "interpreter",
+   "title": "sight-translation",
+   "opener": "Könnten Sie diesen Aushang auf Englisch übersetzen, bitte? Es ist wichtig, dass ich den Inhalt verstehe.",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-03",
+   "domain": "interpreter",
+   "title": "commander's-intent",
+   "opener": "Sie sind der Dolmetscher für unsere Einheit. Könnten Sie bitte die Absichten des Kommandeurs an das andere Team weitergeben?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-04",
+   "domain": "interpreter",
+   "title": "clarifying-ambiguity",
+   "opener": "Ich verstehe diesen Satz in der Anweisung nicht. Könnten Sie bitte bei der Klärung helfen?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-05",
+   "domain": "interpreter",
+   "title": "cultural-brokering",
+   "opener": "Wir haben eine kulturelle Feierlichkeit geplant. Könnten Sie bitte erklären, was angemessene Geschenke für unsere Gäste wären?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-06",
+   "domain": "interpreter",
+   "title": "consecutive-interpreting",
+   "opener": "Herr Schmidt wird gleich eine Rede halten. Könnten Sie bitte als Dolmetscher fungieren und seine Rede ins Englische übersetzen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-07",
+   "domain": "interpreter",
+   "title": "simultaneous-interpreting",
+   "opener": "Sie werden während dieser Präsentation simultan dolmetschen. Bitte setzen Sie Ihre Kopfhörer auf und beginnen Sie, wenn der Redner startet.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-08",
+   "domain": "interpreter",
+   "title": "negotiation-interpreting",
+   "opener": "Wir beginnen jetzt mit den Verhandlungen. Sie werden als Dolmetscher zwischen uns und der anderen Partei fungieren. Bitte übersetzen Sie alles Wort für Wort.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-09",
+   "domain": "interpreter",
+   "title": "legal-interpreting",
+   "opener": "Sie sind als Dolmetscher im Gerichtssaal zugelassen. Bitte übersetzen Sie alles, was gesagt wird, genau und präzise.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-10",
+   "domain": "interpreter",
+   "title": "medical-interpreting",
+   "opener": "Sie werden als Dolmetscher zwischen dem Arzt und dem Patienten fungieren. Bitte stellen Sie sicher, dass alle medizinischen Termini korrekt übersetzt werden.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-interpreter-11",
+   "domain": "interpreter",
+   "title": "business-interpreting",
+   "opener": "Wir haben ein wichtiges Geschäftstreffen. Sie werden als Dolmetscher fungieren und sicherstellen, dass alle Informationen genau übertragen werden.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-01",
+   "domain": "abstract",
+   "title": "Art and Society",
+   "opener": "Was denken Sie, welche Rolle spielt Kunst in unserer Gesellschaft? Sollte der Staat mehr in die Kunst investieren?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-02",
+   "domain": "abstract",
+   "title": "Education System",
+   "opener": "Wie bewerten Sie unser Bildungssystem? Was würden Sie ändern, wenn Sie die Möglichkeit hätten?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-03",
+   "domain": "abstract",
+   "title": "Environmental Policies",
+   "opener": "Was halten Sie von den aktuellen Umweltpolitiken? Glauben Sie, dass die Regierung strengere Maßnahmen ergreifen sollte?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-04",
+   "domain": "abstract",
+   "title": "Ethics in Technology",
+   "opener": "Wie stehen Sie zu den ethischen Implikationen von Technologien wie künstlicher Intelligenz? Sollte es strengere Regulierungen geben?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-05",
+   "domain": "abstract",
+   "title": "Healthcare Reform",
+   "opener": "Was ist Ihre Meinung zur aktuellen Gesundheitsreform? Glauben Sie, dass die vorgeschlagenen Änderungen fair sind?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-06",
+   "domain": "abstract",
+   "title": "Hypothetical Scenario",
+   "opener": "Stellen Sie sich vor, Sie hätten die Macht, ein neues Gesetz einzuführen. Was wäre das und warum?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-07",
+   "domain": "abstract",
+   "title": "Future of Work",
+   "opener": "Wie sehen Sie die Zukunft der Arbeit? Werden Automatisierung und künstliche Intelligenz mehr Jobs vernichten als sie schaffen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-08",
+   "domain": "abstract",
+   "title": "Moral Dilemmas",
+   "opener": "Was würden Sie tun, wenn Sie Zeuge eines moralischen Dilemmas wären, bei dem keine Option perfekt ist?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-09",
+   "domain": "abstract",
+   "title": "Policy Argument",
+   "opener": "Argumentieren Sie für oder gegen die Einführung einer allgemeinen Grundsicherung in unserem Land.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-10",
+   "domain": "abstract",
+   "title": "Social Inequality",
+   "opener": "Wie würden Sie die soziale Ungleichheit in unserem Land reduzieren? Glauben Sie, dass mehr staatliche Eingriffe notwendig sind?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-topic-abstract-11",
+   "domain": "abstract",
+   "title": "Philosophical Question",
+   "opener": "Was denken Sie, was ist der Sinn des Lebens? Wie würde Ihre Antwort die Politik und Gesellschaft beeinflussen?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "checklist": {
+  "0+": [
+   "I can greet people and say my name.",
+   "I can give numbers, prices, days and times.",
+   "I can answer very simple questions with memorized phrases."
+  ],
+  "1": [
+   "I can make simple sentences about myself, my family and my daily routine.",
+   "I can ask and answer simple questions about familiar topics.",
+   "I can handle basic needs: ordering food, buying a ticket, asking for directions."
+  ],
+  "1+": [
+   "I can describe places and people in connected sentences.",
+   "I can tell what happened on a recent trip or weekend.",
+   "I can handle routine situations even when something small goes wrong."
+  ],
+  "2": [
+   "I can narrate past, present and future events in paragraphs.",
+   "I can describe and explain concrete topics at work and in the news.",
+   "I can resolve a complication in a role-play, like a cancelled reservation."
+  ],
+  "2+": [
+   "I can often support my opinions with reasons and examples.",
+   "I can discuss some abstract topics, although I sometimes break down.",
+   "I can explain the causes and effects of a problem in my community."
+  ],
+  "3": [
+   "I can support and defend opinions on abstract and unfamiliar topics.",
+   "I can hypothesize about situations that did not happen.",
+   "I can speak at length with good control of grammar and vocabulary."
+  ]
+ }
+}

@@ -378,6 +378,10 @@ Then write exactly {n_items} multiple-choice question(s) IN ENGLISH about the te
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
+# Languages where the drafting model's raw output benefits from a native-editor pass (script leaks, word order);
+# Latin-script and Cyrillic drafts are clean enough that the pass mostly costs time.
+PROOFREAD = {"ar", "fa", "ko", "zh-Hans", "ja"}
+
 PROOF_SCHEMA = {"type": "object", "properties": {"text": {"type": "string"}, "changes": {"type": "array", "items": {"type": "string"}}},
                 "required": ["text", "changes"]}
 
@@ -463,7 +467,9 @@ def draft_one(client: llm.Client, lang: str, skill: str, level: str, bands: dict
             feedback = f"invalid JSON ({e})"
             continue
         try:
-            if skill == "reading" and raw.get("body"):
+            if lang not in PROOFREAD:
+                pass
+            elif skill == "reading" and raw.get("body"):
                 raw["body"] = proofread(client, lang, raw["body"])
             elif skill == "listening" and raw.get("script"):
                 joined = "\n".join(x["text"] for x in raw["script"])

@@ -1,0 +1,111 @@
+name: Release
+
+# BRIEF §10: tag-triggered installers for Windows, macOS and Linux, with checksums. Releases are created as
+# pre-releases (never a public full release without the owner). Content packs are built on the owner's machine
+# (tools/release/publish_packs.py) and fetched here by SHA-256 from tools/release/packs.lock.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to (re)build, e.g. v0.1.0"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  installers:
+    name: installers (${{ matrix.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: windows-x64, os: windows-latest, gpu: vulkan }
+          - { name: macos-arm64, os: macos-14, gpu: metal }
+          - { name: macos-x64, os: macos-13, gpu: metal }
+          - { name: linux-x64, os: ubuntu-22.04, gpu: vulkan }
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: ilammy/msvc-dev-cmd@v1
+        if: runner.os == 'Windows'
+      - name: Vulkan SDK (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libvulkan-dev glslc fakeroot dpkg-dev
+      - name: Vulkan SDK (Windows)
+        if: runner.os == 'Windows'
+        uses: humbletim/install-vulkan-sdk@v1.2
+        with:
+          version: 1.4.309.0
+          cache: true
+      - name: Native libraries (cpu + ${{ matrix.gpu }})
+        run: |
+          if [ "$RUNNER_OS" = Windows ]; then
+            powershell -NoProfile -ExecutionPolicy Bypass -File native/build.ps1 -Variant cpu
+            powershell -NoProfile -ExecutionPolicy Bypass -File native/build.ps1 -Variant ${{ matrix.gpu }} || echo "::warning::GPU variant failed; shipping CPU only"
+          else
+            native/build.sh cpu
+            native/build.sh ${{ matrix.gpu }} || echo "::warning::GPU variant failed; shipping CPU only"
+          fi
+      - name: Voice service (Piper)
+        run: |
+          if [ "$RUNNER_OS" = Windows ]; then
+            powershell -NoProfile -ExecutionPolicy Bypass -File voices/build.ps1
+          else
+            voices/build.sh
+          fi
+      - name: Stage resources (natives, voices, Whisper small, fonts, content packs)
+        run: |
+          (cd tools && uv run --locked python release/fetch_packs.py)
+          (cd tools && uv run --locked python release/stage_fonts.py)
+          (cd tools && uv run --locked python release/stage_resources.py --require-native)
+      - name: Package
+        run: ./gradlew :desktopApp:packageDistributionForCurrentOS :desktopApp:createDistributable -Pmokuhyo.version=${TAG#v} --console=plain
+      - name: Smoke test the packaged app
+        run: |
+          BIN=$(tools/gates/app_binary.sh)
+          "$BIN" --smoke
+      - name: Collect artifacts
+        run: (cd tools && uv run --locked python release/collect.py --name ${{ matrix.name }} --version ${TAG#v} --out ../dist)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.name }}
+          path: dist/*
+          retention-days: 7
+
+  publish:
+    name: pre-release
+    needs: installers
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dist-*
+          path: dist
+          merge-multiple: true
+      - name: Checksums
+        run: cd dist && sha256sum * > SHA256SUMS && cat SHA256SUMS
+      - name: Create or update the pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --title "Mokuhyo $TAG (pre-release)" --notes-file docs/RELEASE_NOTES.md
+          gh release upload "$TAG" dist/* --clobber

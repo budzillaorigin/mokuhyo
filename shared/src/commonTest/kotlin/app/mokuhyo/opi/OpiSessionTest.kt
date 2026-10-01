@@ -128,3 +128,25 @@ class OpiSessionTest {
         assertEquals(2, t.exchanges.size)
     }
 }
+
+class InterviewerRepeatTest {
+    @Test
+    fun repeatedQuestionsAreRejected() {
+        val task = OpiInterviewerTurn()
+        val input = OpiInterviewerTurn.Input("es", "usted", OpiPhase.LEVEL_CHECK, IlrLevel.L2,
+            listOf(Turn(Speaker.PARTNER, "¿Qué te parece hacer un viaje a España?"), Turn(Speaker.LEARNER, "Me gustaría.")))
+        val repeat = OpiInterviewerTurn.Output("¿Qué te parece si hacemos un viaje a España?", "", OpiPhase.LEVEL_CHECK)
+        val fresh = OpiInterviewerTurn.Output("¿Cómo es un día normal en su trabajo?", "", OpiPhase.LEVEL_CHECK)
+        assertTrue(task.validate(input, repeat, app.mokuhyo.ai.ValidationContext()).any { "repeats" in it })
+        assertTrue(task.validate(input, fresh, app.mokuhyo.ai.ValidationContext()).isEmpty())
+    }
+}
+
+class SimilarQuestionsTest {
+    @Test
+    fun bigramSimilarity() {
+        assertTrue(OpiInterviewerTurn.similar("¿Qué te parece hacer un viaje a España?", "¿Qué te parece si hacemos un viaje a España?"))
+        assertTrue(!OpiInterviewerTurn.similar("お名前は何ですか。", "お仕事は何ですか。"))
+        assertTrue(!OpiInterviewerTurn.similar("¿Dónde vive usted?", "¿Dónde trabaja usted?"))
+    }
+}

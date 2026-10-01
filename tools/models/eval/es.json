@@ -1,0 +1,1627 @@
+{
+ "language": "es",
+ "registerNotes": "Address the candidate as usted. In role-plays use tú only if the situation is between friends or peers who would use it. Standard, region-neutral Spanish.",
+ "source": "llm",
+ "generatedBy": "mistral-small3.2:24b-instruct-2506-q8_0",
+ "interviewer": [
+  {
+   "id": "es-int-00",
+   "phase": "warmup",
+   "level": "0+",
+   "history": []
+  },
+  {
+   "id": "es-int-01",
+   "phase": "level_check",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describe su día típico?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi día típico... empieza temprano. Me despierto a las... seis. Tomo... ducha. Me visto. Desayuno... algo rápido. Como... cereal. Salgo de casa a las... siete y media. Trabajo es... cerca. Vivo cerca de trabajo. Trabajo hasta... cinco. Luego voy a... casa. Ceno. Veo... televisión. Me acuesto temprano. Dormir es... importante."
+    }
+   ]
+  },
+  {
+   "id": "es-int-02",
+   "phase": "probe",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Si usted pudiera viajar a cualquier lugar del mundo, ¿a dónde iría y qué le gustaría hacer allí?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Viajar, me gustar ir a Japón. Ver templo, comer sushi. También, montar bici en Kioto. Kioto tener casas antiguas, muy bonito. Querer probar kimono. Ver flor de cerezo. En primavera, Japón tener muchos cerezos. Muy lindo."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describiría su barrio?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi barrio tener muchas casas, calles pequeñas. No tener mucho tráfico. Gente caminar, montar bici. Haber tienda, escuela, parque para niños. Vecinos ser amables. Yo vivir aquí diez años. Conocer mucha gente. Es lugar tranquilo."
+    }
+   ]
+  },
+  {
+   "id": "es-int-03",
+   "phase": "roleplay",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cuál ha sido su experiencia de viaje más memorable?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi experiencia de viaje más memorable fue cuando fui a la montaña. Hice senderismo, vi animales salvajes y dormí en una cabaña. El paisaje era increíble y la cena en la cabaña estaba muy rica. Fue una experiencia única y emocionante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Podría describirme un evento familiar reciente que haya disfrutado?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, celebramos el cumpleaños de mi abuela en casa. Fuimos todos los familiares, hicimos una comida grande y cantamos. A mi abuela le gustó mucho y todos nos reímos mucho. Fue un día feliz y especial."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su barrio? ¿Qué le gusta más de donde vive?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi barrio es tranquilo y seguro. Tiene muchos árboles y parques pequeños. Lo que más me gusta es que hay una tienda cerca donde puedo comprar comida rápida. También, hay buenos restaurantes para salir a comer."
+    }
+   ]
+  },
+  {
+   "id": "es-int-04",
+   "phase": "winddown",
+   "level": "2+",
+   "history": []
+  },
+  {
+   "id": "es-int-05",
+   "phase": "warmup",
+   "level": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué habilidades cree usted que son esenciales para tener éxito en su trabajo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi trabajo, creo que las habilidades esenciales son la comunicación efectiva, la resolución de problemas y la adaptabilidad. La comunicación efectiva es clave para trabajar en equipo y transmitir ideas de manera clara. La resolución de problemas es importante para enfrentar desafíos y encontrar soluciones innovadoras. Y la adaptabilidad es necesaria en un mundo laboral que cambia constantemente, permitiendo ajustarse a nuevas situaciones y tecnologías."
+    }
+   ]
+  },
+  {
+   "id": "es-int-06",
+   "phase": "level_check",
+   "level": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿De dónde eres?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo... México. De México."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué noticias ha visto recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Noticias... ¿qué? No entender. Yo... casa. Trabajo. Cansado."
+    }
+   ]
+  },
+  {
+   "id": "es-int-07",
+   "phase": "probe",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer cuando no está trabajando?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cuando no trabajo, me gusta... leer. Libro es bueno. También me gusta... ver películas. Películas me gusta mucho. Yo no como... cocinar. Prefiero... comida rápida. Pero no es... saludable. Yo sé. Pero me gusta mucho. También gusta... dormir. Dormir es relajante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer en su tiempo libre?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta... practicar deportes. Yo juego... fútbol. Fútbol es... divertido. También me gusta... escuchar música. Música me relaja. Yo escucho... mucha música. También me gusta... hablar con amigos. Amigos son... importantes. Nos reímos mucho. También me gusta... aprender cosas nuevas. Internet es... útil para eso."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su vecindario?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi vecindario... es pequeño. Hay casas. Muchas casas. Tengo vecinos buenos. Ellos son... amables. Hay parque cerca. Yo... camino en parque. Es tranquilo. Yo como... en casa. Compramos comida en... tiendas. Tiendas están cerca. Yo feliz en vecindario."
+    }
+   ]
+  },
+  {
+   "id": "es-int-08",
+   "phase": "roleplay",
+   "level": "1+",
+   "history": []
+  },
+  {
+   "id": "es-int-09",
+   "phase": "winddown",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha viajado a algún lugar interesante recientemente? Cuénteme sobre eso."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, fui a la playa con mis amigos. El clima estaba perfecto y el agua estaba caliente. Nosotros nadamos, jugamos vóley y comimos mariscos. Fue un día muy relajado y divertido. Me encantó."
+    }
+   ]
+  },
+  {
+   "id": "es-int-10",
+   "phase": "warmup",
+   "level": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué valores considera usted más importantes para criar a los niños en la sociedad actual?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Para criar a los niños, creo que los valores más importantes son el respeto y la honestidad. En la sociedad actual, es muy importante que los niños aprendan a respetar a los demás, sin importar sus diferencias. Y la honestidad, porque es la base de la confianza. Si los niños son honestos, pueden tener buenas relaciones con los demás."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre la participación de los ciudadanos en las decisiones locales?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La participación de los ciudadanos en las decisiones locales es muy importante. Si la gente da sus opiniones, las autoridades pueden tomar mejores decisiones. Por ejemplo, si el gobierno quiere construir algo en el barrio, es bueno que los vecinos digan lo que piensan. Así, todos se sienten parte de la comunidad y las decisiones son más justas."
+    }
+   ]
+  },
+  {
+   "id": "es-int-11",
+   "phase": "level_check",
+   "level": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "En los últimos años, ha habido un aumento en la popularidad de los alimentos orgánicos y localmente producidos. ¿Qué opina sobre este fenómeno y cómo afecta sus hábitos de compra?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "El aumento en la popularidad de los alimentos orgánicos y localmente producidos es un fenómeno interesante. Creo que es una respuesta a la mayor conciencia sobre la salud y el medio ambiente. En mi caso, trato de comprar productos locales siempre que sea posible, ya que apoyo a los agricultores de mi comunidad y reduzco la huella de carbono. Sin embargo, a veces los productos orgánicos pueden ser más caros, lo que limita mis opciones."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué papel cree usted que juegan los servicios comunitarios en el desarrollo personal y profesional de los jóvenes?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Los servicios comunitarios juegan un papel crucial en el desarrollo personal y profesional de los jóvenes. Participar en estos servicios les permite adquirir nuevas habilidades, como el trabajo en equipo, la liderazgo y la empatía. Además, les da la oportunidad de conectar con su comunidad y entender las necesidades sociales. Esta experiencia puede ser muy enriquecedora y ayudar a los jóvenes a definir sus metas y valores."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina sobre el impacto de las redes sociales en la sociedad actual?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Creo que las redes sociales tienen un impacto significativo en la sociedad actual, tanto positivo como negativo. Por un lado, han facilitado la comunicación y el acceso a la información, permitiendo que las personas se conecten a nivel global. Sin embargo, también han contribuido a problemas como la adicción a la tecnología, la desinformación y la comparación social, que pueden afectar la salud mental de las personas."
+    }
+   ]
+  },
+  {
+   "id": "es-int-12",
+   "phase": "probe",
+   "level": "0+",
+   "history": []
+  },
+  {
+   "id": "es-int-13",
+   "phase": "roleplay",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer en su tiempo libre?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta... practicar deportes. Yo juego... fútbol. Fútbol es... divertido. También me gusta... escuchar música. Música me relaja. Yo escucho... mucha música. También me gusta... hablar con amigos. Amigos son... importantes. Nos reímos mucho. También me gusta... aprender cosas nuevas. Internet es... útil para eso."
+    }
+   ]
+  },
+  {
+   "id": "es-int-14",
+   "phase": "winddown",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo compara su vida actual con la vida que imaginaba tener cuando era niño?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "De niño, yo pensar vida sería diferente. Pensar estar en casa, tener familia. Pero ahora vivir solo, trabajar lejos. No tener mucho tiempo para familia. Pero, bueno, trabajo tener dinero. Puedo viajar, comprar cosas."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Puede explicar por qué cree que es importante para las personas viajar a otros países?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Viajar otros países importante porque gente ver mundo. Entender cultura, gente diferente. Hacer amigos. Aprender de otros. Sin viajar, solo saber de tu país. Con viajar, saber más. Hacer mundo más pequeño. Gente no tener miedo. Solo respeto."
+    }
+   ]
+  },
+  {
+   "id": "es-int-15",
+   "phase": "warmup",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Podría describirme un evento familiar reciente que haya disfrutado?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, celebramos el cumpleaños de mi abuela en casa. Fuimos todos los familiares, hicimos una comida grande y cantamos. A mi abuela le gustó mucho y todos nos reímos mucho. Fue un día feliz y especial."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su barrio? ¿Qué le gusta más de donde vive?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi barrio es tranquilo y seguro. Tiene muchos árboles y parques pequeños. Lo que más me gusta es que hay una tienda cerca donde puedo comprar comida rápida. También, hay buenos restaurantes para salir a comer."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describiría la relación que tiene con sus vecinos? ¿Qué actividades suelen hacer juntos?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La relación con mis vecinos es buena. A veces hablamos en el pasillo o en el parque. Hemos tenido barbacoas juntos y también hemos ayudado con tareas como cuidar las plantas. Es bueno tener vecinos amables y cercanos."
+    }
+   ]
+  },
+  {
+   "id": "es-int-16",
+   "phase": "level_check",
+   "level": "2+",
+   "history": []
+  },
+  {
+   "id": "es-int-17",
+   "phase": "probe",
+   "level": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué papel cree usted que juegan los servicios comunitarios en el desarrollo personal y profesional de los jóvenes?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Los servicios comunitarios juegan un papel crucial en el desarrollo personal y profesional de los jóvenes. Participar en estos servicios les permite adquirir nuevas habilidades, como el trabajo en equipo, la liderazgo y la empatía. Además, les da la oportunidad de conectar con su comunidad y entender las necesidades sociales. Esta experiencia puede ser muy enriquecedora y ayudar a los jóvenes a definir sus metas y valores."
+    }
+   ]
+  },
+  {
+   "id": "es-int-18",
+   "phase": "roleplay",
+   "level": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Hay un parque cerca de su casa?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "¿Parque? No. No parque. Casa cerca calle. Calle mucho coche. No parque."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo se siente cuando está en casa después de un día largo de trabajo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cansado. Muy cansado."
+    }
+   ]
+  },
+  {
+   "id": "es-int-19",
+   "phase": "winddown",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer cuando no está trabajando?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cuando no trabajo, me gusta... leer. Libro es bueno. También me gusta... ver películas. Películas me gusta mucho. Yo no como... cocinar. Prefiero... comida rápida. Pero no es... saludable. Yo sé. Pero me gusta mucho. También gusta... dormir. Dormir es relajante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describe su día típico?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi día típico... empieza temprano. Me despierto a las... seis. Tomo... ducha. Me visto. Desayuno... algo rápido. Como... cereal. Salgo de casa a las... siete y media. Trabajo es... cerca. Vivo cerca de trabajo. Trabajo hasta... cinco. Luego voy a... casa. Ceno. Veo... televisión. Me acuesto temprano. Dormir es... importante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su familia?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi familia... es pequeña. Hay... cuatro personas. Mi madre, mi padre, mi hermana y... yo. Mi madre es... ama de casa. Mi padre es... médico. Trabaja mucho. Mi hermana es... estudiante. Estudia en... universidad. Es... inteligente. Mi familia es... unida. Nos gusta... estar juntos. Hacemos... cosas juntos. Como... comer, ver películas, viajar. Yo amo... mi familia."
+    }
+   ]
+  }
+ ],
+ "topic": [
+  {
+   "id": "es-top-00",
+   "topic": "Weekend Plans",
+   "domain": "daily_life",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "El fin de semana está cerca. ¿Tiene planes especiales para este fin de semana?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sí, voy a ir a la playa con mi amigos. Hace mucho calor y nos gusta nadar."
+    }
+   ]
+  },
+  {
+   "id": "es-top-01",
+   "topic": "Local Culture",
+   "domain": "military_garrison",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Usted ha estado aquí por un tiempo. ¿Qué aspectos de la cultura local le han llamado la atención o le han resultado interesantes?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La comida es muy diferente de mi país. He probado mucho de la comida local y me gusta mucho, pero no entiendo las fiestas."
+    }
+   ]
+  },
+  {
+   "id": "es-top-02",
+   "topic": "Intelligence Sharing",
+   "domain": "military_operations",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Recibí nueva inteligencia que necesita ser compartida con su unidad. ¿Podría revisar estos informes conmigo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Claro, puedo revisar los informes. Pero no entiendo mucho de esto, creo que necesito más tiempo."
+    }
+   ]
+  },
+  {
+   "id": "es-top-03",
+   "topic": "Healthy Habits",
+   "domain": "daily_life",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Mantenerse saludable es importante. ¿Podría compartir algunas de sus costumbres saludables conmigo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Hago ejercicio todos los días. También, como mucha frutas y vegetales. Es muy importante para mi salud."
+    }
+   ]
+  },
+  {
+   "id": "es-top-04",
+   "topic": "Future Technology",
+   "domain": "abstract",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo cree usted que la inteligencia artificial cambiará nuestro mundo en los próximos 20 años?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La inteligencia artificial va a cambiar todo. Creo que en 20 años, todos los trabajos son hechos por máquinas."
+    }
+   ]
+  },
+  {
+   "id": "es-top-05",
+   "topic": "Checking In",
+   "domain": "travel_culture",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Buenos días, ¿en qué puedo ayudarle hoy?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Necesito ayuda con mi equipaje. No puedo encontrarlo."
+    }
+   ]
+  },
+  {
+   "id": "es-top-06",
+   "topic": "Shopping Habits",
+   "domain": "daily_life",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Usted parece ser una persona organizada. ¿Podría compartir sus hábitos de compra y cómo planea sus compras?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Compra online todas las semanas. Es más fácil y más rápido."
+    }
+   ]
+  },
+  {
+   "id": "es-top-07",
+   "topic": "Lost Luggage",
+   "domain": "travel_culture",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Buenos días, creo que he perdido mi equipaje. ¿Qué debo hacer?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "No sé qué hacer. Mi equipaje es perdido y necesito mi cosas."
+    }
+   ]
+  },
+  {
+   "id": "es-top-08",
+   "topic": "Conflict Resolution",
+   "domain": "military_garrison",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "En un entorno como este, los conflictos entre compañeros pueden surgir. ¿Cómo suele manejar esos situaciones?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Trato de hablar con la personas y entender sus problemas. Pero a veces es difícil controlar la situaciones."
+    }
+   ]
+  },
+  {
+   "id": "es-top-09",
+   "topic": "Airport Arrival",
+   "domain": "interpreter",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Buenos días. ¿Podría ayudarme a entender las instrucciones en la pantalla de llegadas? No estoy seguro de qué puerta de embarque tomar."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "No entiendo las instrucciones. ¿Qué puerta de embarque tomar?"
+    }
+   ]
+  },
+  {
+   "id": "es-top-10",
+   "topic": "Ethical Dilemma",
+   "domain": "abstract",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Imagina que encuentras una bolsa con dinero en la calle. ¿Qué haría usted y por qué?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Devolvería la bolsa a la policía. Es la cosa correcta que hacer."
+    }
+   ]
+  },
+  {
+   "id": "es-top-11",
+   "topic": "Airfield Operations",
+   "domain": "military_operations",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Usted está a cargo de las operaciones en la pista hoy, ¿correcto? ¿Podría informarme sobre el estado de las pistas y las zonas de estacionamiento?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Las pistas están despejadas, pero hay problemas con los zonas de estacionamiento."
+    }
+   ]
+  },
+  {
+   "id": "es-top-12",
+   "topic": "Moral Responsibility",
+   "domain": "abstract",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cuál cree usted que es la responsabilidad moral de los ciudadanos en una democracia?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Creo que los ciudadanos deben votar y participar en la democracia. También, deben informarse sobre las políticas."
+    }
+   ]
+  },
+  {
+   "id": "es-top-13",
+   "topic": "Political System",
+   "domain": "abstract",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué ventajas y desventajas ve usted en un sistema de gobierno parlamentario en comparación con un sistema presidencial?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Un sistema parlamentario tiene más debates y compromisos, mientras que un sistema presidencial es más decisivo. Ambos tienen sus ventajas y desventajas."
+    }
+   ]
+  },
+  {
+   "id": "es-top-14",
+   "topic": "Inspections",
+   "domain": "military_garrison",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Las inspecciones son una parte regular de la vida en la base. ¿Qué aspectos encuentra más desafiantes y por qué?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Los aspectos más desafiantes son los papeles y la organización. Necesito más tiempo para preparar y entender los procedimientos."
+    }
+   ]
+  },
+  {
+   "id": "es-top-15",
+   "topic": "Equipment Request",
+   "domain": "military_field",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Buenas tardes, necesito solicitar equipo adicional para mi unidad. ¿Podría ayudarme con eso?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Necesito equipo para mi unidad. ¿Qué debo hacer para solicitarlo?"
+    }
+   ]
+  },
+  {
+   "id": "es-top-16",
+   "topic": "Meeting Preparation",
+   "domain": "work_study",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Tenemos una reunión importante mañana. ¿Podría preparar un resumen de los puntos clave que debemos discutir?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Prepararé un resumen de los puntos clave. ¿Necesitas algo más?"
+    }
+   ]
+  },
+  {
+   "id": "es-top-17",
+   "topic": "Healthcare System",
+   "domain": "society",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué aspectos del sistema de salud de su país funcionan bien y cuáles necesitan mejoras?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "El sistema de salud en mi país es bueno, pero hay largas esperas para ver a los doctores. Necesita más médicos y hospitales."
+    }
+   ]
+  },
+  {
+   "id": "es-top-18",
+   "topic": "Hypothetical Scenario",
+   "domain": "abstract",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Si usted pudiera cambiar una ley o política en este país, ¿cuál sería y por qué?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cambiaría la política de inmigración. Creo que debería ser más fácil para las personas venir a este país."
+    }
+   ]
+  },
+  {
+   "id": "es-top-19",
+   "topic": "Briefing a Counterpart",
+   "domain": "military_operations",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Voy a dar una breve charla sobre nuestra próxima misión. Por favor, escuche y luego déme su opinión."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La charla es buena, pero necesito más detalles sobre la misión. ¿Cuándo vamos a empezar?"
+    }
+   ]
+  }
+ ],
+ "rating": [
+  {
+   "id": "es-rate-00",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿De dónde eres?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo... México. De México."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Hay un parque cerca de su casa?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "¿Parque? No. No parque. Casa cerca calle. Calle mucho coche. No parque."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Describa un problema en su comunidad que le gustaría ver resuelto. ¿Por qué es importante para usted?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Gente... mucha basura. En mi calle. Mal. Mal para... niños. No bueno. Yo quiero... limpio. Limpio calle. Limpio parque. No basura. Importante. Bueno para niños. Bueno para todos."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué noticias ha visto recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Noticias... ¿qué? No entender. Yo... casa. Trabajo. Cansado."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Tiene hermanos?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "No. Solo yo."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-01",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha visto alguna noticia interesante recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sí, he visto... noticias. Noticias son... sobre política. Política es... complicada. No entiendo todo. Pero es... interesante. También he visto... noticias sobre clima. Clima es... extraño últimamente. Mucho calor. Mucha lluvia. No me gusta. Prefiero... clima normal."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su familia?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi familia... es pequeña. Hay... cuatro personas. Mi madre, mi padre, mi hermana y... yo. Mi madre es... ama de casa. Mi padre es... médico. Trabaja mucho. Mi hermana es... estudiante. Estudia en... universidad. Es... inteligente. Mi familia es... unida. Nos gusta... estar juntos. Hacemos... cosas juntos. Como... comer, ver películas, viajar. Yo amo... mi familia."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer cuando no está trabajando?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cuando no trabajo, me gusta... leer. Libro es bueno. También me gusta... ver películas. Películas me gusta mucho. Yo no como... cocinar. Prefiero... comida rápida. Pero no es... saludable. Yo sé. Pero me gusta mucho. También gusta... dormir. Dormir es relajante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer en su tiempo libre?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta... practicar deportes. Yo juego... fútbol. Fútbol es... divertido. También me gusta... escuchar música. Música me relaja. Yo escucho... mucha música. También me gusta... hablar con amigos. Amigos son... importantes. Nos reímos mucho. También me gusta... aprender cosas nuevas. Internet es... útil para eso."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre el clima últimamente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "El clima... últimamente es... raro. Mucho calor. Demasiado calor. No me gusta. Prefiero... clima fresco. También ha habido... mucha lluvia. Lluvia es... buena para plantas, pero no para... pasear. El clima es... impredecible. No me gusta. Prefiero... clima estable. ¿Tú? ¿Cómo es clima donde tú vives?"
+    }
+   ]
+  },
+  {
+   "id": "es-rate-02",
+   "intendedLevel": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina acerca del aprendizaje de idiomas?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo pensar aprender idiomas no fácil. Necesitar mucho tiempo, práctica. Pero, muy bueno. Puedo hablar gente de otros países. Entender cultura. Hacer amigos. Yo aprender inglés, un poco francés. Querer aprender más."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Puede explicar por qué cree que es importante para las personas viajar a otros países?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Viajar otros países importante porque gente ver mundo. Entender cultura, gente diferente. Hacer amigos. Aprender de otros. Sin viajar, solo saber de tu país. Con viajar, saber más. Hacer mundo más pequeño. Gente no tener miedo. Solo respeto."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Si pudiera cambiar una cosa en su trabajo, ¿qué sería?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cambiar en mi trabajo, cambiar horario. Mi trabajo empezar muy temprano. Cinco de mañana. Yo tengo sueño. No puedo ver sol. Yo quiero empezar a ocho de la mañana. Mejor para mi salud."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Si usted pudiera viajar a cualquier lugar del mundo, ¿a dónde iría y qué le gustaría hacer allí?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Viajar, me gustar ir a Japón. Ver templo, comer sushi. También, montar bici en Kioto. Kioto tener casas antiguas, muy bonito. Querer probar kimono. Ver flor de cerezo. En primavera, Japón tener muchos cerezos. Muy lindo."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo compara su vida actual con la vida que imaginaba tener cuando era niño?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "De niño, yo pensar vida sería diferente. Pensar estar en casa, tener familia. Pero ahora vivir solo, trabajar lejos. No tener mucho tiempo para familia. Pero, bueno, trabajo tener dinero. Puedo viajar, comprar cosas."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-03",
+   "intendedLevel": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cuál ha sido su experiencia de viaje más memorable?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi experiencia de viaje más memorable fue cuando fui a la montaña. Hice senderismo, vi animales salvajes y dormí en una cabaña. El paisaje era increíble y la cena en la cabaña estaba muy rica. Fue una experiencia única y emocionante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha viajado a algún lugar interesante recientemente? Cuénteme sobre eso."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, fui a la playa con mis amigos. El clima estaba perfecto y el agua estaba caliente. Nosotros nadamos, jugamos vóley y comimos mariscos. Fue un día muy relajado y divertido. Me encantó."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué tareas ha realizado en su trabajo esta semana?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Esta semana en el trabajo, yo hice varias cosas. Primero, preparé un informe para mi jefe. También, ayudé a mi compañero con un proyecto. Además, tuve una reunión con un cliente importante. En general, fue una semana ocupada pero productiva."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Podría describirme un evento familiar reciente que haya disfrutado?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, celebramos el cumpleaños de mi abuela en casa. Fuimos todos los familiares, hicimos una comida grande y cantamos. A mi abuela le gustó mucho y todos nos reímos mucho. Fue un día feliz y especial."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Imagínese que usted ha recibido una promoción en su trabajo. ¿Cuáles cree que serían los mayores desafíos en su nuevo puesto?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Si yo recibiera una promoción, creo que el mayor desafío sería manejar más responsabilidades. También, tendría que aprender nuevas tareas y posiblemente manejar a más personas. Sería importante organizar bien mi tiempo y priorizar las tareas."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-04",
+   "intendedLevel": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre el servicio militar obligatorio?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sobre el servicio militar obligatorio, pienso que tiene aspectos positivos y negativos. Positivo, porque puede enseñar disciplina y responsabilidad a los jóvenes. Pero negativo, porque es obligar a las personas a hacer algo que quizás no quieren. Yo creo que es mejor si es un servicio voluntario. Así, las personas pueden decidir si quieren ayudar a su país de esta manera o no."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo maneja usted el estrés en el trabajo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Para manejar el estrés en el trabajo, primero intento identificar la causa del estrés. Por ejemplo, si tengo muchos proyectos, hago una lista y los organizo por prioridad. También me tomo descansos cortos durante el día para relajarme. Y si el estrés es muy grande, hablo con un amigo o un compañero de trabajo. A veces, solo hablar sobre el problema puede ajudarme a sentir mejor."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre la participación de los ciudadanos en las decisiones locales?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La participación de los ciudadanos en las decisiones locales es muy importante. Si la gente da sus opiniones, las autoridades pueden tomar mejores decisiones. Por ejemplo, si el gobierno quiere construir algo en el barrio, es bueno que los vecinos digan lo que piensan. Así, todos se sienten parte de la comunidad y las decisiones son más justas."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué medidas cree usted que son necesarias para proteger el medio ambiente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Para proteger el medio ambiente, creo que son necesarias varias medidas. Por ejemplo, los gobiernos deberían hacer leyes para reducir la contaminación. Las empresas también pueden ayudar reciclando y usando materiales ecológicos. Y los ciudadanos pueden hacer su parte reduciendo el uso del plástico y ahorrando energía. Todos debemos trabajar juntos para proteger nuestro planeta."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué tipo de libros, películas o programas de televisión disfruta en su tiempo libre? ¿Podría explicarme qué le atrae a estos géneros o temas en particular?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta ver películas de ciencia ficción. Me atrae este género porque me gusta pensar en el futuro y en cómo será la tecnología. Además, las películas de ciencia ficción a menudo tienen mensajes importantes sobre la sociedad y cómo tratamos a los demás. Por ejemplo, 'Star Trek' muestra un futuro donde todas las personas trabajan juntas para un objetivo común."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-05",
+   "intendedLevel": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "En los últimos años, ha habido un aumento en la popularidad de los alimentos orgánicos y localmente producidos. ¿Qué opina sobre este fenómeno y cómo afecta sus hábitos de compra?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "El aumento en la popularidad de los alimentos orgánicos y localmente producidos es un fenómeno interesante. Creo que es una respuesta a la mayor conciencia sobre la salud y el medio ambiente. En mi caso, trato de comprar productos locales siempre que sea posible, ya que apoyo a los agricultores de mi comunidad y reduzco la huella de carbono. Sin embargo, a veces los productos orgánicos pueden ser más caros, lo que limita mis opciones."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina sobre el impacto de las redes sociales en la sociedad actual?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Creo que las redes sociales tienen un impacto significativo en la sociedad actual, tanto positivo como negativo. Por un lado, han facilitado la comunicación y el acceso a la información, permitiendo que las personas se conecten a nivel global. Sin embargo, también han contribuido a problemas como la adicción a la tecnología, la desinformación y la comparación social, que pueden afectar la salud mental de las personas."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué iniciativas comunitarias le gustaría ver en su vecindario?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Me gustaría ver más iniciativas comunitarias enfocadas en la sostenibilidad. Por ejemplo, programas de reciclaje más eficientes y huertos comunitarios para promover la agricultura urbana. También sería beneficioso tener más espacios de encuentro para los vecinos, como centros culturales o parques con actividades al aire libre. Esto no solo mejoraría la calidad de vida, sino que también fortalecería los lazos entre los miembros de la comunidad."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué papel cree usted que juegan los servicios comunitarios en el desarrollo personal y profesional de los jóvenes?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Los servicios comunitarios juegan un papel crucial en el desarrollo personal y profesional de los jóvenes. Participar en estos servicios les permite adquirir nuevas habilidades, como el trabajo en equipo, la liderazgo y la empatía. Además, les da la oportunidad de conectar con su comunidad y entender las necesidades sociales. Esta experiencia puede ser muy enriquecedora y ayudar a los jóvenes a definir sus metas y valores."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo ha influido su familia en la persona que es hoy?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi familia ha influido en mí de muchas maneras. Desde pequeño, me enseñaron el valor del esfuerzo y la educación. Mis padres siempre me animaron a perseguir mis sueños y a ser independiente. También me inculcaron principios de respeto y solidaridad, que he llevado conmigo en todas las etapas de mi vida. Su apoyo incondicional ha sido fundamental en mi desarrollo personal y profesional, y siempre estaré agradecido por eso."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-06",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo se siente cuando está en casa después de un día largo de trabajo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cansado. Muy cansado."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿De dónde eres?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo... México. De México."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Dónde vive?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo... ciudad. Casa. Casa pequeña. Pared blanco. Puerta... color... no saber palabra. Pared blanco. Ventana... dos ventana. Uno grande. Uno pequeño."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué noticias ha visto recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Noticias... ¿qué? No entender. Yo... casa. Trabajo. Cansado."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Tiene hermanos?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "No. Solo yo."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-07",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer en su tiempo libre?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta... practicar deportes. Yo juego... fútbol. Fútbol es... divertido. También me gusta... escuchar música. Música me relaja. Yo escucho... mucha música. También me gusta... hablar con amigos. Amigos son... importantes. Nos reímos mucho. También me gusta... aprender cosas nuevas. Internet es... útil para eso."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha visto alguna noticia interesante recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sí, he visto... noticias. Noticias son... sobre política. Política es... complicada. No entiendo todo. Pero es... interesante. También he visto... noticias sobre clima. Clima es... extraño últimamente. Mucho calor. Mucha lluvia. No me gusta. Prefiero... clima normal."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su día típico?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi día típico es... igual que el otro día. Me levanto temprano. Hago... ejercicio. Corro en parque. Luego desayuno. Trabajo es... en oficina. Oficina es... ruidosa. Tomo... café mucho. Trabajar es... cansado. Después trabajo, voy a... casa. Hago... cena. Veo... televisión. Me acuesto temprano. Dormir es... necesario."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su vecindario?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi vecindario... es pequeño. Hay casas. Muchas casas. Tengo vecinos buenos. Ellos son... amables. Hay parque cerca. Yo... camino en parque. Es tranquilo. Yo como... en casa. Compramos comida en... tiendas. Tiendas están cerca. Yo feliz en vecindario."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describe su día típico?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi día típico... empieza temprano. Me despierto a las... seis. Tomo... ducha. Me visto. Desayuno... algo rápido. Como... cereal. Salgo de casa a las... siete y media. Trabajo es... cerca. Vivo cerca de trabajo. Trabajo hasta... cinco. Luego voy a... casa. Ceno. Veo... televisión. Me acuesto temprano. Dormir es... importante."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-08",
+   "intendedLevel": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Si pudiera cambiar una cosa en su trabajo, ¿qué sería?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cambiar en mi trabajo, cambiar horario. Mi trabajo empezar muy temprano. Cinco de mañana. Yo tengo sueño. No puedo ver sol. Yo quiero empezar a ocho de la mañana. Mejor para mi salud."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describiría su barrio?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi barrio tener muchas casas, calles pequeñas. No tener mucho tráfico. Gente caminar, montar bici. Haber tienda, escuela, parque para niños. Vecinos ser amables. Yo vivir aquí diez años. Conocer mucha gente. Es lugar tranquilo."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre la importancia del aprendizaje de idiomas?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Aprendizaje de idiomas muy importante. Gente viajar, trabajar otros países. Necesitar hablar idioma. También, entender cultura. Sin idioma, difícil. Gente no entender, no ayudar. Con idioma, todo más fácil."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Si usted pudiera viajar a cualquier lugar del mundo, ¿a dónde iría y qué le gustaría hacer allí?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Viajar, me gustar ir a Japón. Ver templo, comer sushi. También, montar bici en Kioto. Kioto tener casas antiguas, muy bonito. Querer probar kimono. Ver flor de cerezo. En primavera, Japón tener muchos cerezos. Muy lindo."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo ayuda usted a su comunidad?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Ayudar comunidad, yo hacer voluntario en biblioteca. Leer cuentos para niños. Enseñar inglés. También, ayudar limpiar parque. Gente venir, nosotros limpiar. Hacer barrio más bonito. Gente contenta. Yo contento también. Gente ayudar, ser mejor."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-09",
+   "intendedLevel": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Podría describirme un evento familiar reciente que haya disfrutado?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, celebramos el cumpleaños de mi abuela en casa. Fuimos todos los familiares, hicimos una comida grande y cantamos. A mi abuela le gustó mucho y todos nos reímos mucho. Fue un día feliz y especial."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué tareas ha realizado en su trabajo esta semana?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Esta semana en el trabajo, yo hice varias cosas. Primero, preparé un informe para mi jefe. También, ayudé a mi compañero con un proyecto. Además, tuve una reunión con un cliente importante. En general, fue una semana ocupada pero productiva."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su barrio? ¿Qué le gusta más de donde vive?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi barrio es tranquilo y seguro. Tiene muchos árboles y parques pequeños. Lo que más me gusta es que hay una tienda cerca donde puedo comprar comida rápida. También, hay buenos restaurantes para salir a comer."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Imagínese que usted ha recibido una promoción en su trabajo. ¿Cuáles cree que serían los mayores desafíos en su nuevo puesto?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Si yo recibiera una promoción, creo que el mayor desafío sería manejar más responsabilidades. También, tendría que aprender nuevas tareas y posiblemente manejar a más personas. Sería importante organizar bien mi tiempo y priorizar las tareas."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha viajado a algún lugar interesante recientemente? Cuénteme sobre eso."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, fui a la playa con mis amigos. El clima estaba perfecto y el agua estaba caliente. Nosotros nadamos, jugamos vóley y comimos mariscos. Fue un día muy relajado y divertido. Me encantó."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-10",
+   "intendedLevel": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre la participación de los ciudadanos en las decisiones locales?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La participación de los ciudadanos en las decisiones locales es muy importante. Si la gente da sus opiniones, las autoridades pueden tomar mejores decisiones. Por ejemplo, si el gobierno quiere construir algo en el barrio, es bueno que los vecinos digan lo que piensan. Así, todos se sienten parte de la comunidad y las decisiones son más justas."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Imagina que un amigo cercano está considerando cambiar de carrera. ¿Qué consejos le darías en base a tu propia experiencia laboral?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Si un amigo quiere cambiar de carrera, le diría que considere sus intereses y habilidades. Por ejemplo, si a mi amigo le gusta trabajar con las manos, quizás debería buscar una carrera en la que pueda usar esta habilidad. También le diría que hable con personas que ya trabajan en el campo que le interesa. Así, puede aprender más sobre el trabajo y decidir si es lo que quiere hacer."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo ha influido la tecnología en la vida diaria de las personas en su comunidad? ¿Cree que estos cambios han sido mayormente positivos o negativos?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La tecnología ha cambiado mucho la vida diaria en mi comunidad. Por un lado, ha hecho las cosas más fáciles. Por ejemplo, podemos comprar comida en línea y no tenemos que ir al mercado. Pero por otro lado, algunas personas se sienten aisladas porque pasan mucho tiempo en sus teléfonos. En general, creo que los cambios han sido positivos, pero debemos tener cuidado de no depender demasiado de la tecnología."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué tipo de libros, películas o programas de televisión disfruta en su tiempo libre? ¿Podría explicarme qué le atrae a estos géneros o temas en particular?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta ver películas de ciencia ficción. Me atrae este género porque me gusta pensar en el futuro y en cómo será la tecnología. Además, las películas de ciencia ficción a menudo tienen mensajes importantes sobre la sociedad y cómo tratamos a los demás. Por ejemplo, 'Star Trek' muestra un futuro donde todas las personas trabajan juntas para un objetivo común."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre el servicio militar obligatorio?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sobre el servicio militar obligatorio, pienso que tiene aspectos positivos y negativos. Positivo, porque puede enseñar disciplina y responsabilidad a los jóvenes. Pero negativo, porque es obligar a las personas a hacer algo que quizás no quieren. Yo creo que es mejor si es un servicio voluntario. Así, las personas pueden decidir si quieren ayudar a su país de esta manera o no."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-11",
+   "intendedLevel": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo ha influido su familia en la persona que es hoy?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi familia ha influido en mí de muchas maneras. Desde pequeño, me enseñaron el valor del esfuerzo y la educación. Mis padres siempre me animaron a perseguir mis sueños y a ser independiente. También me inculcaron principios de respeto y solidaridad, que he llevado conmigo en todas las etapas de mi vida. Su apoyo incondicional ha sido fundamental en mi desarrollo personal y profesional, y siempre estaré agradecido por eso."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Si pudiera viajar en el tiempo, ¿a qué período histórico le gustaría visitar y por qué?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Si pudiera viajar en el tiempo, me gustaría visitar el Renacimiento en Europa. Este período histórico fue una época de gran florecimiento cultural, artístico y científico. Me encantaría presenciar de primera mano el trabajo de grandes maîtres como Leonardo da Vinci y Miguel Ángel, y experimentar la energía y la creatividad de esa era. Además, sería fascinante ver cómo era la vida cotidiana en esa época."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cuál ha sido el logro más significativo en su vida y por qué?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "El logro más significativo en mi vida ha sido graduarme de la universidad. Fue un proceso difícil que requirió mucho esfuerzo y dedicación, pero valió la pena. Esta experiencia me enseñó la importancia de la perseverancia y me abrió muchas puertas en mi carrera profesional. Además, el sentido de logro que sentí al terminar fue indescriptible y me motivó a seguir buscando nuevos desafíos."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué iniciativas comunitarias le gustaría ver en su vecindario?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Me gustaría ver más iniciativas comunitarias enfocadas en la sostenibilidad. Por ejemplo, programas de reciclaje más eficientes y huertos comunitarios para promover la agricultura urbana. También sería beneficioso tener más espacios de encuentro para los vecinos, como centros culturales o parques con actividades al aire libre. Esto no solo mejoraría la calidad de vida, sino que también fortalecería los lazos entre los miembros de la comunidad."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina sobre el impacto de las redes sociales en la sociedad actual?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Creo que las redes sociales tienen un impacto significativo en la sociedad actual, tanto positivo como negativo. Por un lado, han facilitado la comunicación y el acceso a la información, permitiendo que las personas se conecten a nivel global. Sin embargo, también han contribuido a problemas como la adicción a la tecnología, la desinformación y la comparación social, que pueden afectar la salud mental de las personas."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-12",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo se siente cuando está en casa después de un día largo de trabajo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cansado. Muy cansado."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Describa un problema en su comunidad que le gustaría ver resuelto. ¿Por qué es importante para usted?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Gente... mucha basura. En mi calle. Mal. Mal para... niños. No bueno. Yo quiero... limpio. Limpio calle. Limpio parque. No basura. Importante. Bueno para niños. Bueno para todos."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué noticias ha visto recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Noticias... ¿qué? No entender. Yo... casa. Trabajo. Cansado."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Dónde vive?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo... ciudad. Casa. Casa pequeña. Pared blanco. Puerta... color... no saber palabra. Pared blanco. Ventana... dos ventana. Uno grande. Uno pequeño."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Hay un parque cerca de su casa?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "¿Parque? No. No parque. Casa cerca calle. Calle mucho coche. No parque."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-13",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer en su tiempo libre?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta... practicar deportes. Yo juego... fútbol. Fútbol es... divertido. También me gusta... escuchar música. Música me relaja. Yo escucho... mucha música. También me gusta... hablar con amigos. Amigos son... importantes. Nos reímos mucho. También me gusta... aprender cosas nuevas. Internet es... útil para eso."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su familia?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi familia... es pequeña. Hay... cuatro personas. Mi madre, mi padre, mi hermana y... yo. Mi madre es... ama de casa. Mi padre es... médico. Trabaja mucho. Mi hermana es... estudiante. Estudia en... universidad. Es... inteligente. Mi familia es... unida. Nos gusta... estar juntos. Hacemos... cosas juntos. Como... comer, ver películas, viajar. Yo amo... mi familia."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer cuando no está trabajando?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cuando no trabajo, me gusta... leer. Libro es bueno. También me gusta... ver películas. Películas me gusta mucho. Yo no como... cocinar. Prefiero... comida rápida. Pero no es... saludable. Yo sé. Pero me gusta mucho. También gusta... dormir. Dormir es relajante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha visto alguna noticia interesante recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sí, he visto... noticias. Noticias son... sobre política. Política es... complicada. No entiendo todo. Pero es... interesante. También he visto... noticias sobre clima. Clima es... extraño últimamente. Mucho calor. Mucha lluvia. No me gusta. Prefiero... clima normal."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describe su día típico?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi día típico... empieza temprano. Me despierto a las... seis. Tomo... ducha. Me visto. Desayuno... algo rápido. Como... cereal. Salgo de casa a las... siete y media. Trabajo es... cerca. Vivo cerca de trabajo. Trabajo hasta... cinco. Luego voy a... casa. Ceno. Veo... televisión. Me acuesto temprano. Dormir es... importante."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-14",
+   "intendedLevel": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina acerca del aprendizaje de idiomas?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo pensar aprender idiomas no fácil. Necesitar mucho tiempo, práctica. Pero, muy bueno. Puedo hablar gente de otros países. Entender cultura. Hacer amigos. Yo aprender inglés, un poco francés. Querer aprender más."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre la importancia del aprendizaje de idiomas?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Aprendizaje de idiomas muy importante. Gente viajar, trabajar otros países. Necesitar hablar idioma. También, entender cultura. Sin idioma, difícil. Gente no entender, no ayudar. Con idioma, todo más fácil."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Puede explicar por qué cree que es importante para las personas viajar a otros países?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Viajar otros países importante porque gente ver mundo. Entender cultura, gente diferente. Hacer amigos. Aprender de otros. Sin viajar, solo saber de tu país. Con viajar, saber más. Hacer mundo más pequeño. Gente no tener miedo. Solo respeto."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "Si usted pudiera viajar a cualquier lugar del mundo, ¿a dónde iría y qué le gustaría hacer allí?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Viajar, me gustar ir a Japón. Ver templo, comer sushi. También, montar bici en Kioto. Kioto tener casas antiguas, muy bonito. Querer probar kimono. Ver flor de cerezo. En primavera, Japón tener muchos cerezos. Muy lindo."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo ayuda usted a su comunidad?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Ayudar comunidad, yo hacer voluntario en biblioteca. Leer cuentos para niños. Enseñar inglés. También, ayudar limpiar parque. Gente venir, nosotros limpiar. Hacer barrio más bonito. Gente contenta. Yo contento también. Gente ayudar, ser mejor."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-15",
+   "intendedLevel": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Imagínese que usted ha recibido una promoción en su trabajo. ¿Cuáles cree que serían los mayores desafíos en su nuevo puesto?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Si yo recibiera una promoción, creo que el mayor desafío sería manejar más responsabilidades. También, tendría que aprender nuevas tareas y posiblemente manejar a más personas. Sería importante organizar bien mi tiempo y priorizar las tareas."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describiría la relación que tiene con sus vecinos? ¿Qué actividades suelen hacer juntos?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La relación con mis vecinos es buena. A veces hablamos en el pasillo o en el parque. Hemos tenido barbacoas juntos y también hemos ayudado con tareas como cuidar las plantas. Es bueno tener vecinos amables y cercanos."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cuál ha sido su experiencia de viaje más memorable?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi experiencia de viaje más memorable fue cuando fui a la montaña. Hice senderismo, vi animales salvajes y dormí en una cabaña. El paisaje era increíble y la cena en la cabaña estaba muy rica. Fue una experiencia única y emocionante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha viajado a algún lugar interesante recientemente? Cuénteme sobre eso."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, fui a la playa con mis amigos. El clima estaba perfecto y el agua estaba caliente. Nosotros nadamos, jugamos vóley y comimos mariscos. Fue un día muy relajado y divertido. Me encantó."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Podría describirme un evento familiar reciente que haya disfrutado?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Recientemente, celebramos el cumpleaños de mi abuela en casa. Fuimos todos los familiares, hicimos una comida grande y cantamos. A mi abuela le gustó mucho y todos nos reímos mucho. Fue un día feliz y especial."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-16",
+   "intendedLevel": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre la participación de los ciudadanos en las decisiones locales?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "La participación de los ciudadanos en las decisiones locales es muy importante. Si la gente da sus opiniones, las autoridades pueden tomar mejores decisiones. Por ejemplo, si el gobierno quiere construir algo en el barrio, es bueno que los vecinos digan lo que piensan. Así, todos se sienten parte de la comunidad y las decisiones son más justas."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué valores considera usted más importantes para criar a los niños en la sociedad actual?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Para criar a los niños, creo que los valores más importantes son el respeto y la honestidad. En la sociedad actual, es muy importante que los niños aprendan a respetar a los demás, sin importar sus diferencias. Y la honestidad, porque es la base de la confianza. Si los niños son honestos, pueden tener buenas relaciones con los demás."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué tipo de libros, películas o programas de televisión disfruta en su tiempo libre? ¿Podría explicarme qué le atrae a estos géneros o temas en particular?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta ver películas de ciencia ficción. Me atrae este género porque me gusta pensar en el futuro y en cómo será la tecnología. Además, las películas de ciencia ficción a menudo tienen mensajes importantes sobre la sociedad y cómo tratamos a los demás. Por ejemplo, 'Star Trek' muestra un futuro donde todas las personas trabajan juntas para un objetivo común."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo maneja usted el estrés en el trabajo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Para manejar el estrés en el trabajo, primero intento identificar la causa del estrés. Por ejemplo, si tengo muchos proyectos, hago una lista y los organizo por prioridad. También me tomo descansos cortos durante el día para relajarme. Y si el estrés es muy grande, hablo con un amigo o un compañero de trabajo. A veces, solo hablar sobre el problema puede ajudarme a sentir mejor."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina usted sobre el servicio militar obligatorio?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sobre el servicio militar obligatorio, pienso que tiene aspectos positivos y negativos. Positivo, porque puede enseñar disciplina y responsabilidad a los jóvenes. Pero negativo, porque es obligar a las personas a hacer algo que quizás no quieren. Yo creo que es mejor si es un servicio voluntario. Así, las personas pueden decidir si quieren ayudar a su país de esta manera o no."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-17",
+   "intendedLevel": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "Si pudiera viajar en el tiempo, ¿a qué período histórico le gustaría visitar y por qué?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Si pudiera viajar en el tiempo, me gustaría visitar el Renacimiento en Europa. Este período histórico fue una época de gran florecimiento cultural, artístico y científico. Me encantaría presenciar de primera mano el trabajo de grandes maîtres como Leonardo da Vinci y Miguel Ángel, y experimentar la energía y la creatividad de esa era. Además, sería fascinante ver cómo era la vida cotidiana en esa época."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo ha influido su familia en la persona que es hoy?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi familia ha influido en mí de muchas maneras. Desde pequeño, me enseñaron el valor del esfuerzo y la educación. Mis padres siempre me animaron a perseguir mis sueños y a ser independiente. También me inculcaron principios de respeto y solidaridad, que he llevado conmigo en todas las etapas de mi vida. Su apoyo incondicional ha sido fundamental en mi desarrollo personal y profesional, y siempre estaré agradecido por eso."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué iniciativas comunitarias le gustaría ver en su vecindario?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Me gustaría ver más iniciativas comunitarias enfocadas en la sostenibilidad. Por ejemplo, programas de reciclaje más eficientes y huertos comunitarios para promover la agricultura urbana. También sería beneficioso tener más espacios de encuentro para los vecinos, como centros culturales o parques con actividades al aire libre. Esto no solo mejoraría la calidad de vida, sino que también fortalecería los lazos entre los miembros de la comunidad."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué papel cree usted que juegan los servicios comunitarios en el desarrollo personal y profesional de los jóvenes?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Los servicios comunitarios juegan un papel crucial en el desarrollo personal y profesional de los jóvenes. Participar en estos servicios les permite adquirir nuevas habilidades, como el trabajo en equipo, la liderazgo y la empatía. Además, les da la oportunidad de conectar con su comunidad y entender las necesidades sociales. Esta experiencia puede ser muy enriquecedora y ayudar a los jóvenes a definir sus metas y valores."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué opina sobre el impacto de las redes sociales en la sociedad actual?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Creo que las redes sociales tienen un impacto significativo en la sociedad actual, tanto positivo como negativo. Por un lado, han facilitado la comunicación y el acceso a la información, permitiendo que las personas se conecten a nivel global. Sin embargo, también han contribuido a problemas como la adicción a la tecnología, la desinformación y la comparación social, que pueden afectar la salud mental de las personas."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-18",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Hay un parque cerca de su casa?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "¿Parque? No. No parque. Casa cerca calle. Calle mucho coche. No parque."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo se siente cuando está en casa después de un día largo de trabajo?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cansado. Muy cansado."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo se llama usted?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo...Yo... Carlos. Yo Carlos."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Dónde vive?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Yo... ciudad. Casa. Casa pequeña. Pared blanco. Puerta... color... no saber palabra. Pared blanco. Ventana... dos ventana. Uno grande. Uno pequeño."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué noticias ha visto recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Noticias... ¿qué? No entender. Yo... casa. Trabajo. Cansado."
+    }
+   ]
+  },
+  {
+   "id": "es-rate-19",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer en su tiempo libre?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "En mi tiempo libre, me gusta... practicar deportes. Yo juego... fútbol. Fútbol es... divertido. También me gusta... escuchar música. Música me relaja. Yo escucho... mucha música. También me gusta... hablar con amigos. Amigos son... importantes. Nos reímos mucho. También me gusta... aprender cosas nuevas. Internet es... útil para eso."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo es su día típico?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi día típico es... igual que el otro día. Me levanto temprano. Hago... ejercicio. Corro en parque. Luego desayuno. Trabajo es... en oficina. Oficina es... ruidosa. Tomo... café mucho. Trabajar es... cansado. Después trabajo, voy a... casa. Hago... cena. Veo... televisión. Me acuesto temprano. Dormir es... necesario."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Cómo describe su día típico?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Mi día típico... empieza temprano. Me despierto a las... seis. Tomo... ducha. Me visto. Desayuno... algo rápido. Como... cereal. Salgo de casa a las... siete y media. Trabajo es... cerca. Vivo cerca de trabajo. Trabajo hasta... cinco. Luego voy a... casa. Ceno. Veo... televisión. Me acuesto temprano. Dormir es... importante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Qué le gusta hacer cuando no está trabajando?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Cuando no trabajo, me gusta... leer. Libro es bueno. También me gusta... ver películas. Películas me gusta mucho. Yo no como... cocinar. Prefiero... comida rápida. Pero no es... saludable. Yo sé. Pero me gusta mucho. También gusta... dormir. Dormir es relajante."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "¿Ha visto alguna noticia interesante recientemente?"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "Sí, he visto... noticias. Noticias son... sobre política. Política es... complicada. No entiendo todo. Pero es... interesante. También he visto... noticias sobre clima. Clima es... extraño últimamente. Mucho calor. Mucha lluvia. No me gusta. Prefiero... clima normal."
+    }
+   ]
+  }
+ ]
+}
