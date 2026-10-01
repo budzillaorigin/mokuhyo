@@ -17,9 +17,13 @@ object Resources {
             ?: repoDir?.let { File(it, "desktopApp/resources/common") }?.takeIf { it.isDirectory }
     }
 
-    /** The repository root in development runs (null in the installed app). */
+    /**
+     * The repository root in development runs. Null in a packaged app unless `-Dmokuhyo.repo.dir` is given, so an
+     * installed app launched from inside a checkout never silently reads the checkout's packs or voices.
+     */
     val repoDir: File? by lazy {
-        System.getProperty("mokuhyo.repo.dir")?.let(::File)?.takeIf { it.isDirectory } ?: run {
+        System.getProperty("mokuhyo.repo.dir")?.let(::File)?.takeIf { it.isDirectory }
+            ?: if (System.getProperty("compose.application.resources.dir") != null) null else run {
             var d: File? = File("").absoluteFile
             while (d != null && !File(d, "settings.gradle.kts").exists()) d = d.parentFile
             d

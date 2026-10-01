@@ -28,6 +28,7 @@ import os
 import random
 import re
 import sys
+import time
 import tempfile
 import unicodedata
 from dataclasses import dataclass, field
@@ -633,7 +634,13 @@ def cmd_fill(args) -> int:
         return 2
     langs = list(langtext.LANGS) if args.language == "all" else args.language.split(",")
     skills = SKILLS if args.skill == "both" else (args.skill,)
+    # --hours: a drafting budget (D-019). When it runs out, drafting stops, everything staged is still checked and
+    # merged, and no further round starts; re-running the same command continues where it stopped.
+    deadline = time.monotonic() + args.hours * 3600 if args.hours else None
     for rnd in range(1, args.rounds + 1):
+        if deadline and time.monotonic() > deadline:
+            print("fill: drafting budget used up", flush=True)
+            break
         tasks = []
         for lv in LEVELS:  # level-major order: an interrupted run still leaves every language with every level
             for lang in langs:
@@ -650,6 +657,9 @@ def cmd_fill(args) -> int:
             break
         print(f"== round {rnd}: drafting {sum(t[3] for t in tasks)} passages in {len(tasks)} bands", flush=True)
         for lang, skill, lv, need in tasks:
+            if deadline and time.monotonic() > deadline:
+                print("fill: drafting budget used up; checking what was drafted", flush=True)
+                break
             rc = cmd_draft(argparse.Namespace(language=lang, skill=skill, ilr=lv, n=need), client)
             if rc:
                 return rc
@@ -693,6 +703,7 @@ def main(argv: list[str] | None = None) -> int:
         if name == "fill":
             p.add_argument("--per-band", type=int, default=12)
             p.add_argument("--rounds", type=int, default=3)
+            p.add_argument("--hours", type=float, default=0, help="drafting budget; 0 = none (D-019)")
         llm.add_args(p)
     sub.add_parser("status")
     args = ap.parse_args(argv)

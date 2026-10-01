@@ -3,17 +3,23 @@
 # headless smoke test. CI runs it on a fresh GitHub runner in release.yml.
 #
 #   powershell -File tools/gates/fresh_install_smoke.ps1 -Tag v0.1.0
-param([Parameter(Mandatory = $true)][string]$Tag, [string]$Name = "windows-x64")
+#   powershell -File tools/gates/fresh_install_smoke.ps1 -Tag main -Dir dist   # installers from a folder (dry run)
+param([Parameter(Mandatory = $true)][string]$Tag, [string]$Name = "windows-x64", [string]$Dir = "")
 $ErrorActionPreference = "Stop"
-$version = $Tag.TrimStart("v")
+$version = if ($Tag -match '^v\d') { $Tag.TrimStart("v") } else { "0.1.0" }
+if ($Dir) { $Dir = (Resolve-Path $Dir).Path }
 $asset = "Mokuhyo-$version-$Name.msi"
 $work = Join-Path $env:RUNNER_TEMP ([IO.Path]::GetRandomFileName())
 if (-not $env:RUNNER_TEMP) { $work = Join-Path $env:TEMP ([IO.Path]::GetRandomFileName()) }
 New-Item -ItemType Directory -Path $work | Out-Null
 Set-Location $work
 Write-Host "== fresh install: $asset"
-gh release download $Tag --pattern $asset --pattern SHA256SUMS
-if ($LASTEXITCODE -ne 0) { throw "download failed" }
+if ($Dir) {
+    Copy-Item (Join-Path $Dir $asset), (Join-Path $Dir "SHA256SUMS") .
+} else {
+    gh release download $Tag --pattern $asset --pattern SHA256SUMS
+    if ($LASTEXITCODE -ne 0) { throw "download failed" }
+}
 $want = (Select-String -Path SHA256SUMS -Pattern " $([regex]::Escape($asset))$").Line.Split(" ")[0]
 $got = (Get-FileHash $asset -Algorithm SHA256).Hash.ToLower()
 if ($want -ne $got) { throw "checksum mismatch: $got != $want" }

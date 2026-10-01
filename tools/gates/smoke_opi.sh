@@ -16,4 +16,5 @@ for mid in ("phi-4-mini-instruct-q4km", "whisper-small"):
 PY
 )
 BIN=$(tools/gates/app_binary.sh)
-"$BIN" --smoke-opi --model "$PWD/$CACHE/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf" --whisper "$PWD/$CACHE/ggml-small.bin" "$@"
+# The packaged app ignores the checkout unless told (Resources.repoDir); this smoke uses the checkout's packs.
+JAVA_TOOL_OPTIONS="-Dmokuhyo.repo.dir=$PWD" "$BIN" --smoke-opi --model "$PWD/$CACHE/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf" --whisper "$PWD/$CACHE/ggml-small.bin" "$@"

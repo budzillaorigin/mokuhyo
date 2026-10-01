@@ -9,8 +9,12 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Existing tag to (re)build, e.g. v0.1.0"
+        description: "Existing tag to (re)build, e.g. v0.1.0 (with dry_run: any branch, e.g. main)"
         required: true
+      dry_run:
+        description: "Build installers and run the fresh-install smoke from the artifacts; publish nothing"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,6 +40,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ env.TAG }}
+      - name: Version
+        run: |
+          case "$TAG" in v[0-9]*) echo "VERSION=${TAG#v}" >> "$GITHUB_ENV" ;; *) echo "VERSION=0.1.0" >> "$GITHUB_ENV" ;; esac
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -75,13 +82,13 @@ jobs:
           (cd tools && uv run --locked python release/stage_fonts.py)
           (cd tools && uv run --locked python release/stage_resources.py --require-native)
       - name: Package
-        run: ./gradlew :desktopApp:packageDistributionForCurrentOS :desktopApp:createDistributable -Pmokuhyo.version=${TAG#v} --console=plain
+        run: ./gradlew :desktopApp:packageDistributionForCurrentOS :desktopApp:createDistributable -Pmokuhyo.version=${VERSION} --console=plain
       - name: Smoke test the packaged app
         run: |
           BIN=$(tools/gates/app_binary.sh)
           "$BIN" --smoke
       - name: Collect artifacts
-        run: (cd tools && uv run --locked python release/collect.py --name ${{ matrix.name }} --version ${TAG#v} --out ../dist)
+        run: (cd tools && uv run --locked python release/collect.py --name ${{ matrix.name }} --version ${VERSION} --out ../dist)
       - uses: actions/upload-artifact@v4
         with:
           name: dist-${{ matrix.name }}
@@ -91,6 +98,7 @@ jobs:
   publish:
     name: pre-release
     needs: installers
+    if: ${{ !inputs.dry_run }}
     runs-on: ubuntu-latest
     env:
       TAG: ${{ github.event.inputs.tag || github.ref_name }}
@@ -112,7 +120,8 @@ jobs:
 
   fresh-install:
     name: fresh install (${{ matrix.name }})
-    needs: publish
+    needs: [installers, publish]
+    if: ${{ !cancelled() && needs.installers.result == 'success' && (inputs.dry_run || needs.publish.result == 'success') }}
     strategy:
       fail-fast: false
       matrix:
@@ -130,10 +139,20 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: tools/gates
-      - name: Install the published installer and launch it
+      # Dry run: the installers come from this run's artifacts instead of the release.
+      - uses: actions/download-artifact@v4
+        if: ${{ inputs.dry_run }}
+        with:
+          name: dist-${{ matrix.name }}
+          path: dist
+      - name: Checksums (dry run)
+        if: ${{ inputs.dry_run }}
+        shell: bash
+        run: cd dist && (sha256sum * 2>/dev/null || shasum -a 256 *) > SHA256SUMS
+      - name: Install the installer and launch it
         if: runner.os == 'Windows'
         shell: pwsh
-        run: tools/gates/fresh_install_smoke.ps1 -Tag $env:TAG -Name ${{ matrix.name }}
-      - name: Install the published installer and launch it
+        run: tools/gates/fresh_install_smoke.ps1 -Tag $env:TAG -Name ${{ matrix.name }} ${{ inputs.dry_run && '-Dir dist' || '' }}
+      - name: Install the installer and launch it
         if: runner.os != 'Windows'
-        run: tools/gates/fresh_install_smoke.sh "$TAG" ${{ matrix.name }}
+        run: FROM_DIR=${{ inputs.dry_run && 'dist' || '' }} tools/gates/fresh_install_smoke.sh "$TAG" ${{ matrix.name }}
