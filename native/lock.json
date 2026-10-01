@@ -1,0 +1,43 @@
+{
+  "libraries": [
+    {
+      "id": "llama.cpp",
+      "tag": "b11040",
+      "sha256": "5205d346d8a5cc005202128b68fe88afe11c1c4b9a004b9215af19d7046eab8f",
+      "url": "https://github.com/ggml-org/llama.cpp/archive/refs/tags/b11040.tar.gz",
+      "license": "MIT"
+    },
+    {
+      "id": "whisper.cpp",
+      "tag": "b5130",
+      "sha256": "a9ad0f82f30cb6ac5b627874895f89571dd64f7c49d0df3a38550fdb9325fe9b",
+      "url": "https://github.com/ggml-org/whisper.cpp/archive/refs/tags/b5130.tar.gz",
+      "license": "MIT"
+    },
+    {
+      "id": "ggml",
+      "tag": "b11040",
+      "sha256": "5205d346d8a5cc005202128b68fe88afe11c1c4b9a004b9215af19d7046eab8f",
+      "url": "https://github.com/ggml-org/llama.cpp/archive/refs/tags/b11040.tar.gz",
+      "license": "MIT",
+      "note": "vendored in llama.cpp b11040 (ggml/); whisper.cpp is built against this copy, not its own"
+    }
+  ],
+  "artifacts": {
+    "macos-arm64/cpu": {
+      "file": "libmokuhyo_native.dylib",
+      "sha256": "ba3ef18a03383fb4f5c2dae1c20e20ff64ee17e39838b12c3c9b75b5cc049cad",
+      "bytes": 3700000
+    },
+    "macos-arm64/metal": {
+      "file": "libmokuhyo_native.dylib",
+      "sha256": "249678099b9cb120d46f7f9a6fd7220c4362b368758daa81dcbcd38784973a0a",
+      "bytes": 5772608
+    },
+    "macos-x86_64/metal": {
+      "file": "libmokuhyo_native.dylib",
+      "sha256": "65dd09ecb65f1ca141c03fe6d4c0cbe4e1f41e37678d8bc8c085515c954f0ff4",
+      "bytes": 6401232
+    }
+  }
+}
