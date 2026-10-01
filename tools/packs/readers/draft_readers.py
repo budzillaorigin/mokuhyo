@@ -1,6 +1,6 @@
 """Draft more graded-reader stories through an OpenAI-compatible endpoint (BRIEF_V2 §6.4, CLAUDE.md rule 19).
 
-    uv run python packs/readers/draft_readers.py --endpoint http://localhost:11434/v1 --model qwen2.5:14b \\
+    uv run python packs/readers/draft_readers.py --endpoint http://localhost:11434/v1 --model mistral-small3.2:24b-instruct-2506-q8_0 \\
         --level N4 --count 5
     uv run python packs/readers/draft_readers.py --endpoint http://<lan-ip>:1234/v1 --model my-model \\
         --level N2 --count 3 --genre news --topic "disaster relief"

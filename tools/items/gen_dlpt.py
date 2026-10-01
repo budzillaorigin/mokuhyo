@@ -10,7 +10,7 @@ draft     Drafts new DLPT passages + items through any OpenAI-compatible chat en
 
 Run (from tools/):
   uv run python items/gen_dlpt.py validate items/bank/dlpt_reading.json items/bank/dlpt_listening.json
-  uv run python items/gen_dlpt.py draft --endpoint http://localhost:11434/v1 --model qwen2.5:14b \\
+  uv run python items/gen_dlpt.py draft --endpoint http://localhost:11434/v1 --model mistral-small3.2:24b-instruct-2506-q8_0 \\
       --level 2 --count 3 --exam reading --out items/bank/dlpt_reading_drafts.json
 """
 

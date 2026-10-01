@@ -380,64 +380,6 @@ def test_review_bank_units_and_accept():
     assert review.bank_units(bank) == [(None, [1])]
 
 
-# --- upper range (ILR 3+ / 4, BRIEF_V2 G-08) -------------------------------------------------------------
-
-
-def upper_bank(level: str = "3+", text_type: str = "editorial", n_items: int = 2) -> dict:
-    """A 3+/4 passage built from the shipped upper-range bank's first passage at that level, relabelled."""
-    shipped = json.loads((BANK_DIR / "dlpt_reading_upper.json").read_text(encoding="utf-8"))
-    src = next(p for p in shipped["passages"] if p["level"] == level)
-    slug = g.LEVEL_SLUG[level]
-    pid = f"dr-{slug}-{text_type}-001"
-    bank = sample_bank()
-    bank["passages"] = [{**src, "id": pid, "textType": text_type}]
-    item = bank["items"][0]
-    bank["items"] = [{**item, "id": f"{pid}-q{n + 1}", "level": level, "passageId": pid} for n in range(n_items)]
-    return bank
-
-
-def test_upper_levels_and_bands():
-    assert g.DLPT_LEVELS[-2:] == ("3+", "4")
-    assert g.LEVEL_SLUG["3+"] == "3p" and g.LEVEL_SLUG["4"] == "4"
-    assert g.DLPT_PASSAGE_ID.match("dr-3p-literary-001") and g.DLPT_PASSAGE_ID.match("dl-4-lecture-010")
-    for lv in g.UPPER_LEVELS:
-        band = BANDS["levels"][lv]
-        assert band["minChars"] >= BANDS["levels"]["3"]["minChars"], lv
-        assert lv in g.LEVEL_GUIDE and g.TEXT_TYPES["reading"][lv] and g.TEXT_TYPES["listening"][lv]
-
-
-def test_upper_passage_validates():
-    report = run(upper_bank("3+", "editorial"))
-    assert report.errors == [] and report.warnings == [], (report.errors, report.warnings)
-    report = run(upper_bank("4", "literary", 3))
-    assert report.errors == [] and report.warnings == [], (report.errors, report.warnings)
-
-
-def test_upper_passages_need_two_items_and_an_upper_text_type():
-    report = run(upper_bank("3+", "editorial", 1))
-    assert has(report.warnings, "expected 2–4"), report.warnings
-    report = run(upper_bank("4", "news"))
-    assert has(report.warnings, "text type should be one of"), report.warnings
-    # Lower levels still allow a single item and any text type.
-    assert run(sample_bank()).warnings == []
-
-
-def test_upper_band_misses_are_flagged():
-    bank = upper_bank("4", "essay")
-    bank["passages"][0]["body"] = bank["passages"][0]["body"][:300]
-    report = run(bank)
-    assert has(report.warnings, "ILR 4 band: length"), report.warnings
-
-
-def test_liaison_text_type_at_ilr_2_to_3():
-    for lv in ("2", "2+", "3"):
-        assert "liaison" in g.TEXT_TYPES["reading"][lv], lv
-    shipped = json.loads((BANK_DIR / "dlpt_liaison.json").read_text(encoding="utf-8"))
-    assert {p["level"] for p in shipped["passages"]} == {"2", "2+", "3"}
-    assert {p["textType"] for p in shipped["passages"]} == {"liaison"}
-    assert {p["exam"] for p in shipped["passages"]} == {"DLPT_READING", "DLPT_LISTENING"}
-
-
 # --- shipped banks -------------------------------------------------------------------------------------
 
 

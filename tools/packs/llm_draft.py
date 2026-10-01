@@ -37,6 +37,6 @@ def chat_json(endpoint: str, model: str, system: str, user: str, api_key_env: st
 
 def add_endpoint_args(parser) -> None:
     parser.add_argument("--endpoint", help="OpenAI-compatible base URL, e.g. http://localhost:11434/v1 (Ollama)")
-    parser.add_argument("--model", help="model name at the endpoint, e.g. qwen3:8b")
+    parser.add_argument("--model", help="model name at the endpoint, e.g. mistral-small3.2:24b-instruct-2506-q8_0")
     parser.add_argument("--api-key-env", default="LLM_API_KEY", help="environment variable holding the API key, if any")
     parser.add_argument("--limit", type=int, default=50, help="draft at most this many items per run")

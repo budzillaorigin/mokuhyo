@@ -1,12 +1,10 @@
 name: CI
 
-# Automatic runs are paused (owner decision, 2026-09-18): the account's Actions minutes ran out, and macOS minutes
-# count 10x. Run it by hand from the Actions tab (or `gh workflow run CI --ref v2`) when you want a check.
-# To resume automatic runs, restore:
-#   push:
-#     branches: [main, v2]
-#   pull_request:
+# CLAUDE.md rule 11: Linux on PRs; Windows, macOS and Linux on every push to main.
 on:
+  push:
+    branches: [main]
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -14,189 +12,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  packs:
-    name: Build content packs
-    runs-on: ubuntu-latest
+  core:
+    name: gate_core (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ${{ github.event_name == 'pull_request' && fromJSON('["ubuntu-latest"]') || fromJSON('["ubuntu-latest","macos-latest","windows-latest"]') }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
       - uses: astral-sh/setup-uv@v6
-      - name: Cache source downloads
-        uses: actions/cache@v4
-        with:
-          path: tools/.cache
-          # Sources are pinned (URL + sha256) in tools/packs/sources.lock and verified on use (F-38, D-066).
-          # The cache holds exactly the locked files, so it's keyed on the lock. Tatoeba only publishes its latest
-          # weekly export: if this cache is evicted after upstream moves on, the build fails with a hash mismatch
-          # and the fix is a deliberate `build_all.py --update-sources` commit.
-          key: pack-sources-${{ hashFiles('tools/packs/sources.lock') }}
-          restore-keys: pack-sources-
-      - name: Lint tools
-        working-directory: tools
-        run: |
-          uv sync --locked
-          uv run ruff check .
-      - name: App icon matches the Android launcher vector
-        working-directory: tools
-        run: uv run --group assets python assets/render_icon.py --check
-      - name: IlrBandData.kt matches items/ilr_bands.json
-        working-directory: tools
-        run: uv run python packs/gen_ilr_bands.py --check
-      - name: Item bank tests
-        working-directory: tools
-        run: uv run python items/test_gen_jlpt.py
-      - name: Build packs (from the pinned sources in packs/sources.lock)
-        working-directory: tools
-        run: uv run python packs/build_all.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Tatoeba mirror is a release of this private repo
-      - name: Validate JLPT item banks (with the vocabulary-level check)
-        working-directory: tools
-        run: uv run python items/gen_jlpt.py validate items/bank/jlpt_*.json --show-warnings 0
-      - uses: actions/upload-artifact@v4
-        with:
-          name: packs
-          path: content/packs/
-          retention-days: 7
-
-  shared-and-android:
-    name: Shared tests + Android debug build
-    needs: packs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: packs
-          path: content/packs/
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
-      - name: Shared tests (Android host, incl. real-pack smoke test)
-        run: ./gradlew :shared:allTests
-      - name: Install NDK + CMake for llama.cpp / whisper.cpp
-        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "ndk;29.0.14206865" "cmake;3.31.6" > /dev/null
-      - name: Cache native source downloads
-        uses: actions/cache@v4
-        with:
-          path: androidApp/.cxx
-          key: android-cxx-${{ hashFiles('androidApp/src/main/cpp/**') }}
-      - name: Android debug APK (with native inference)
-        run: ./gradlew :androidApp:assembleDebug -Ptsumugi.native=true
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: shared-test-reports
-          path: shared/build/reports/tests/
-      - uses: actions/upload-artifact@v4
-        with:
-          name: androidApp-debug
-          path: androidApp/build/outputs/apk/debug/*.apk
-
-  ios:
-    name: Shared iOS tests + iOS app build
-    needs: packs
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: packs
-          path: content/packs/
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
-      - name: Shared tests (iOS simulator)
-        run: ./gradlew :shared:iosSimulatorArm64Test
-      - name: Cache llama.cpp / whisper.cpp xcframeworks
-        uses: actions/cache@v4
-        with:
-          path: tools/.cache/frameworks
-          key: xcframeworks-${{ hashFiles('tools/models/fetch_ios_frameworks.sh') }}
-      - name: Fetch llama.cpp / whisper.cpp xcframeworks
-        run: bash tools/models/fetch_ios_frameworks.sh
-      - name: Pick an available iPhone simulator
-        id: sim
-        run: |
-          udid=$(xcrun simctl list devices available -j \
-            | python3 -c 'import json,sys; d=json.load(sys.stdin)["devices"]; print(next(x["udid"] for r in sorted(d, reverse=True) if "iOS" in r for x in d[r] if x["name"].startswith("iPhone")))')
-          echo "udid=$udid" >> "$GITHUB_OUTPUT"
-      - name: Build and test iOS app
-        run: |
-          mkdir -p build
-          status=0
-          xcodebuild test \
-            -project iosApp/Tsumugi.xcodeproj \
-            -scheme Tsumugi \
-            -destination "id=${{ steps.sim.outputs.udid }}" \
-            -resultBundlePath build/TestResults.xcresult \
-            CODE_SIGNING_ALLOWED=NO > build/xcodebuild.log 2>&1 || status=$?
-          grep -E "error:|warning: .*/iosApp/|Test (case|run)|✔|✘|passed|failed|Dictionary lookup" build/xcodebuild.log | head -300 || true
-          exit $status
-      # F-06: a Release archive for generic iOS, unsigned. It replaces the old Debug device build (it compiles the
-      # llama.cpp bridge the same way, since there's no simulator slice) and then proves the archive would be
-      # uploadable: usage strings, icon, extensions, frameworks, privacy manifests, licenses, packs.
-      - name: Archive for device (Release, unsigned)
-        run: |
-          status=0
-          xcodebuild archive \
-            -project iosApp/Tsumugi.xcodeproj \
-            -scheme Tsumugi \
-            -configuration Release \
-            -destination "generic/platform=iOS" \
-            -archivePath build/Tsumugi.xcarchive \
-            CODE_SIGNING_ALLOWED=NO > build/xcodebuild-archive.log 2>&1 || status=$?
-          grep -E "error:|warning: .*/iosApp/|ARCHIVE (SUCCEEDED|FAILED)" build/xcodebuild-archive.log | head -200 || true
-          exit $status
-      - name: Validate the archive
-        run: python3 tools/ci/validate_archive.py build/Tsumugi.xcarchive
-      - name: Test failures and crash reports
+      - name: gate_core
+        run: tools/gates/gate_core.sh
+      - name: Test reports
         if: failure()
-        run: |
-          xcrun xcresulttool get test-results tests --path build/TestResults.xcresult --format json > build/tests.json 2>/dev/null || true
-          python3 - <<'PY' || true
-          import json
-          def walk(n, path=""):
-              name = n.get("name", "")
-              if n.get("result") == "Failed" and n.get("nodeType") == "Test Case":
-                  print("FAILED:", path + name)
-              if n.get("nodeType") == "Failure Message":
-                  print("   ", name)
-              for c in n.get("children", []):
-                  walk(c, path + (name + " / " if n.get("nodeType") in ("Test Suite",) else ""))
-          for t in json.load(open("build/tests.json")).get("testNodes", []):
-              walk(t)
-          PY
-          mkdir -p build/crashes
-          cp ~/Library/Logs/DiagnosticReports/*Tsumugi* build/crashes/ 2>/dev/null || true
-          for f in build/crashes/*; do [ -f "$f" ] && head -c 6000 "$f"; done || true
-      - uses: actions/upload-artifact@v4
-        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: ios-build-logs
-          path: |
-            build/xcodebuild.log
-            build/xcodebuild-archive.log
-            build/TestResults.xcresult
-            build/crashes
-
-  server:
-    name: Sync server tests (SQLite + Postgres via Testcontainers)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
-      - name: Server tests
-        run: ./gradlew :server:test
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: server-test-reports
-          path: server/build/reports/tests/
+          name: test-reports-${{ matrix.os }}
+          path: "**/build/reports/tests/"

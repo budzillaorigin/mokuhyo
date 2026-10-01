@@ -6,35 +6,32 @@ local.properties
 *.iml
 .idea/
 
-# Xcode
-iosApp/**/xcuserdata/
-iosApp/**/*.xcworkspace/xcuserdata/
-DerivedData/
-*.xcuserstate
-
 # Python tools
 tools/.venv/
+tools/.env
 __pycache__/
 *.pyc
+.ruff_cache/
+tools/.cache/
+tools/logs/
 
 # Built content packs and downloaded models (reproducible from tools/)
-content/packs/*.sqlite
+content/packs/**/*.sqlite
+content/packs/**/*.zip
+content/packs/manifest.json
 content/models/*.gguf
 content/models/*.bin
+
+# Native builds (native/build.sh): fetched or built artifacts, hash-pinned in native/lock.json
+native/build/
+native/prebuilt/
+native/src/
+
+# Voice service binaries and voice weights (voices/fetch.py)
+voices/bin/
+voices/models/
 
 # OS
 .DS_Store
 Thumbs.db
-.ruff_cache/
-tools/.cache/
 .claude/worktrees/
-content/packs/manifest.json
-
-# Native inference (tools/models/fetch_ios_frameworks.sh, CMake build dir)
-iosApp/Frameworks/
-androidApp/.cxx/
-
-# Pre-rendered audio packs (tools/packs/render_audio.py): build outputs, never committed
-content/packs/*.zip
-content/packs/audio-manifest.json
-content/packs/audio-build-log.jsonl

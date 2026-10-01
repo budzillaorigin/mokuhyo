@@ -1,0 +1,1656 @@
+# Progress
+
+Current phase: **v2 (BRIEF_V2.md) on branch `v2`. v2 Phases 9–14 are built. Next: the owner's Mac build, device QA and TestFlight.** The owner asked for v2 phases to run without per-phase stops; device QA and the TestFlight archive are the owner's, on the Mac (`docs/QA.md`, `docs/RELEASE.md`). The owner asked for all phases to run back to back, without per-phase review stops. CI (`.github/workflows/ci.yml`) builds packs and runs the shared, Android and iOS builds and tests on every push. Repo: https://github.com/budzillaorigin/tsumugi (private).
+
+---
+
+## Mac build verification (2026-09-19)
+
+First build of the iOS app on a real Mac (XCODE_VERIFY_BRIEF.md). Full log with commands, first errors, diagnoses and timings: `docs/BUILD_LOG.md`.
+
+**Environment:** macOS 26.3.1, Xcode 26.2 (17C52), iOS 26.2 simulator runtime (no "iPhone 16" device, so the ladder used iPhone 17), Temurin JDK 21.0.12.1, Gradle 9.7.1, Kotlin 2.4.10 + SKIE 0.10.14, uv 0.12.17. `xcode-select` still points at CommandLineTools (needs the owner's `sudo`), so every `xcodebuild`/`xcrun` ran with `DEVELOPER_DIR` set. Packs rebuilt from `sources.lock` (same bytes), xcframeworks re-fetched from the cached, hash-verified zips (llama.cpp b11040, whisper.cpp b5130; F-44 pins are fine).
+
+**Rungs:**
+| Rung | Result |
+|---|---|
+| 1a Kotlin/Native compile (sim + device) | ✅ 1m 48s |
+| 1b `iosSimulatorArm64Test` | ❌ hung → fixed → ✅ 712 tests, 0 failures |
+| 2 `embedAndSignAppleFrameworkForXcode` | ✅ (with Xcode's env vars; static framework at `shared/build/xcode-frameworks/Debug/iphonesimulator`) |
+| 3 Simulator Debug build | ❌ 2 errors → fixed → ❌ 1 error → fixed → ✅ |
+| 4 `xcodebuild test` | ✅ 5 Swift tests (6 after the added one) |
+| 5 Launch smoke | ✅ onboarding screen, no crash, no `.ips`; たべる → 食べる |
+| 6 Device Release build (llama + whisper linked) | ✅ |
+| 7 Unsigned archive + `validate_archive.py` | ✅ "archive structure valid" |
+
+**Fixes (one commit each, no feature removed, no behaviour change):**
+- `456f816` shared: `PracticeReviewSource.scenarios()` ran a query from inside another query's cursor; the native SQLDelight driver's single reader connection deadlocked (JVM tolerated it). Rows are read first, then the turns query runs. Would also have hung the Content review screen on a device.
+- `9b82d83` shared + Android: two Kotlin types named `PairSide` (study data class, audio enum) collided in the ObjC export and the enum won the plain name on this build. The audio enum is now `MinimalPairSide`. Android still builds (`assembleDebug`).
+- `b831183` Swift: `MediaPlayerView.isOneTarget` compared `KotlinInt.intValue` (`Int`) with `Int32`.
+- `4c7b675` test: `DictionaryTests.readingSearchFindsVerb` (たべる → 食べる in the app bundle).
+
+**Archive:** `Tsumugi.app` 214 MB uncompressed (packs 167 MB, of which dictionary.sqlite 130 MB; native frameworks 12 MB; three extensions 0.4 MB). 14 MB over the 200 MB base target before thinning/compression; nothing removed. Icon, usage strings, privacy manifest, `LICENSES.md`, packs and the widget/share/action extensions are all in the archive.
+
+**Feature walk:** every tab and every hub link on Learn, Practice and Me was opened in the simulator (driven with `idb`; list in BUILD_LOG §4.2). No error, placeholder or missing-pack state appeared with the bundled packs. Second level checked: kanji path level → item, grammar N5 → point, dictionary search → entry, Settings → Licenses.
+
+**Owner: test on a physical iPhone, in this order** (`docs/QA.md` has the detailed steps):
+1. **First run:** install from Xcode (signing with your team), onboarding end to end including the kanji check and "I know these", then Today.
+2. **Dictionary:** たべる, 食べさせられなかった, English "cat", romaji; the entry's Listen buttons (system voice) and the pitch clips; Draw to search and Scan text with the camera.
+3. **SRS:** a lesson batch from Kanji path, a review session with all modes, undo, then the widget on the home screen.
+4. **AI with your LAN server:** Settings → AI & speech → own server (Tailscale/LAN URL), test connection, role-play and reader translation; then a local model download and llama on device (no simulator slice exists, so this was never run here); Whisper subtitle generation in the media player.
+5. Then the rest of QA.md (share extension, sync against your self-hosted server, audio packs from Files).
+
+**Deferred / owner decisions surfaced:** `sudo xcode-select -s …` on this Mac; SKIE analytics upload (on by default); `ITSAppUsesNonExemptEncryption = NO` remains your legal call; the 14 MB size overage.
+
+---
+
+## Phase 14: email verification, self-hosting, owner decisions, Android Play-readiness (2026-09-19)
+
+BRIEF_V2 §8 Phase 14, scoped by the owner's decisions of 2026-09-19. Decisions D-310…D-319; BRIEF_V2 §9 items 2, 7 and 8 are recorded as decided in `docs/DECISIONS.md`.
+
+**Owner decisions:**
+- **Sync (item 2):** self-hosted only. No public instance and no pricing (D-313). The hosted instance in the Phase 14 brief isn't built.
+- **Social (item 8):** the leaderboard and shared reading circles come later. The opt-in leaderboard client stays off by default, and the reading circle stays solo (D-314).
+- **Pack size (item 7):** the text packs ship in the app, and the large audio sets are optional downloads. This was already true; verified in both build scripts, with the sizes in D-315.
+
+### What was built
+- **Server: email verification is required before sync** (D-310…D-312):
+  - Unverified accounts get 403 `email_unverified` on sync push/pull, blobs, the pack registry and the leaderboard. Sign-in (password or passkey), refresh and `GET /account` still work; the account now reports `emailVerified` and `emailVerificationRequired`.
+  - The flag is `TSUMUGI_REQUIRE_EMAIL_VERIFICATION`: true by default (production and `.env.example`), false in `make dev`. Without SMTP the link is still logged, and the server warns at startup.
+  - Links expire after 48 hours and work once (410 when expired). `POST /v1/auth/verify/resend` (signed in) mails a new link, at most once per 2 minutes (429 `resend_too_soon`; 409 `already_verified`).
+  - There are no passkey-only accounts (a passkey is added to an email account), so every account has an email to verify (D-311).
+  - Migration `V2__email_verification.sql` (SQLite and Postgres) adds `verify_expires_at` and `verify_sent_at`, and marks accounts that existed before the upgrade as verified.
+  - Error bodies gained an optional `code`.
+- **Shared client** (D-319): `EmailNotVerifiedException` (a typed `SyncException` with `code`), `SyncStatus.needsEmailVerification`, `SyncAccountInfo.needsEmailVerification`, and `resendVerification()` on `HttpSyncClient` and `SyncAccount`.
+- **Apps:** the Sync screens show "Check your email to finish setting up sync" with a hint and a **Resend email** button (Android `values`/`values-ja`; iOS `SyncView.swift` and `Localizable.xcstrings`). The sync intro no longer mentions "a hosted one". "Create account" now needs 10 characters, the server's minimum (it allowed 8).
+- **Recordings sync** is confirmed off by default and per device (G-03, D-111). `RecordingsTest.syncIsOffByDefaultAndDoesNothing` now also asserts `isEnabled()` is false on a fresh device.
+- **Self-hosting guide:** `server/README.md` rewritten for running it privately: Tailscale-only (the simplest), a domain with Caddy TLS, or the home network; SMTP, the log, or the dev flag for verification; backups and restore; upgrades and migrations; pointing the app at it.
+  - Compose fixes: the container always listens on 8080 (a custom `TSUMUGI_PORT` in `.env` used to break the port mapping), and the new `TSUMUGI_BIND` publishes the port on `127.0.0.1` only, behind Caddy or `tailscale serve`.
+- **Android Play-readiness** (D-316…D-318, `docs/RELEASE.md` §7 "Android (Play, optional)"):
+  - The release build stays unminified, is signed only from a keystore named in `~/.gradle/gradle.properties` or the environment (never committed), and takes `-Ptsumugi.versionCode`/`versionName`.
+  - `bundleRelease` builds an App Bundle, with language splits off so the per-app language setting always works.
+  - Target SDK 36 meets Play's requirement for new apps and updates from 31 August 2026 (checked on developer.android.com).
+  - The permissions audit found every permission used; WorkManager and AndroidX Core add `RECEIVE_BOOT_COMPLETED` and an internal signature permission. Nothing was removed.
+  - The Data safety draft, content-rating notes, and Play Console steps are in RELEASE.md §7.
+  - The privacy policy draft for both stores is `docs/PRIVACY.md`.
+- **Docs:** `docs/SYNC_PROTOCOL.md` has an "Errors and email verification" section and the new endpoint and account fields. `docs/RELEASE.md` §5 (privacy label: email, recordings sync), §7 and §8 are updated. `docs/QA.md` has a Phase 14 section.
+
+### Tests
+- **Server:** `./gradlew --no-daemon :server:test`: 28 tests, including `EmailVerificationTest` (7):
+  - unverified → sync, blobs and packs rejected with `email_unverified`;
+  - verifying unlocks sync, even with the same access token;
+  - resend rate-limited, signed-in only, and replacing the old link;
+  - expired links (410); the dev flag; config parsing.
+  - The shared `signUp` helper now verifies through the recorded link, so every other server test runs with verification on.
+  - `PostgresIntegrationTest` was **skipped**: Docker isn't available on this machine. The SQLite tests ran, and the V2 Postgres migration is plain `ALTER TABLE … ADD COLUMN` / `UPDATE`; CI (or any machine with Docker) runs it.
+- **Shared:** `:shared:testAndroidHostTest`: 728 tests, 0 failures. New: `HttpSyncClientTest.unverifiedEmailBecomesATypedError`, `otherErrorsKeepTheirStatusWithoutACode`, `accountReportsWhetherVerificationBlocksSync`, and `SyncMergeTest.unverifiedEmailIsFlaggedInTheStatus`.
+- **Android:** `:androidApp:assembleDebug`, `:androidApp:assembleRelease` and `:androidApp:bundleRelease` with `-Ptsumugi.native=false` all build. Release outputs are unsigned without a keystore: 62 MB APK and 38 MB AAB in a worktree without built packs.
+
+### Deferred and owner items
+- **ML Kit diagnostics (Android):** Google's text-recognition library sends Google diagnostics and usage data. The privacy policy and Data safety draft disclose it. The owner decides whether to keep it (D-317).
+- **Play's AI-generated content policy** expects a way to report offensive AI output. There's no in-app report button yet (RELEASE.md §7).
+- **R8 minification** stays off until a minified build is tested on a device.
+- **Before any store submission:** the privacy policy needs a contact line and a public URL.
+- **Not built (owner decisions):** the hosted instance, the public leaderboard and shared reading circles.
+- **iOS:** `SyncView.swift` isn't compiled (CI paused). Its spots are under "iOS: unverified since CI paused".
+
+### How to run
+- Server: `cd server && make dev` (verification off), or `make test`. To try the verification flow, run with `TSUMUGI_REQUIRE_EMAIL_VERIFICATION=true` and take the link from the log.
+- Android release: `./gradlew --no-daemon :androidApp:assembleRelease :androidApp:bundleRelease -Ptsumugi.native=false`; signing setup in RELEASE.md §7.
+- QA: `docs/QA.md` → "Phase 14: email verification and self-hosting".
+
+---
+
+## Phase 13 (iOS UI): pitch test, kanji explorer, dictionary polish, games, reader grammar, translation, thesaurus + writing studio, poetry + reading circle (2026-09-19)
+
+The SwiftUI screens for every Phase 13 shared hook. Decisions D-300…D-309.
+
+**Not compiled.** CI is paused (D-140) and there's no Xcode here. Every new interop spot is listed under "iOS: unverified since CI paused". The new `SwiftSupport`/`SwiftBridges.kt` adapters do compile (`:shared:compileCommonMainKotlinMetadata`).
+
+### What was built (`iosApp/Tsumugi`)
+- **Pitch-accent test** (Practice → Listen, shown only with the pitch audio pack):
+  - Drills: the adaptive mix, pattern, downstep and word pairs, plus minimal pairs, which opens the existing drill.
+  - Each question plays its pack clip and shows ↑↓ marks and feedback.
+  - "Say it" is the perception → production check, with the pronunciation and shadowing panels.
+  - Stats per pattern, mora length and question type, plus the confused pairs. D-300.
+- **Kanji explorer** (Learn, and "Explore graph" on every kanji page):
+  - A `Canvas` graph from the shared layout: tap to re-center with Back, focus mode, JLPT or frequency colouring with a legend, and a node cap of 15–50 with the hidden count.
+  - A detail with component roles, the sound family ("derived" badges), "Find kanji with these parts" and Bookmark to SRS.
+  - Component search and a sound-family list. D-301.
+- **Dictionary polish:**
+  - Instant results through the shared `InstantSearch`.
+  - The inflection chip and the common / JLPT / #rank chips.
+  - Shortcuts: Parts, "Explore X" and "Kanji with the parts of X". D-302.
+- **Mini-games** (Practice → Games):
+  - Reflex and Atom, standalone and in the Pomodoro queue (the placeholders are gone).
+  - Every round is saved. The hub shows best scores, this week's points and recent rounds. D-303.
+- **Reader grammar:** the sentence panel lists constructions with spans, one-line explanations (AI badge) and "Practice this point", which adds the point to reviews and opens an exercise checked by shared. D-304.
+- **Translation workbench** (Learn → Language arts, Practice → Translate):
+  - Passages by genre and direction, and the learner's own text.
+  - Written mode, and sight mode with a timer and the recognizer: English on-device for J→E (D-308).
+  - The labeled AI grade with a diff, or the rubric self-assessment without a model.
+  - History with delete, and the **skill line on Me** (Swift Charts). D-305.
+- **Thesaurus and writing studio:**
+  - Emotion and scene clusters with expressions and Tatoeba examples.
+  - "Expressions" and collocations on dictionary entries.
+  - The studio: synced drafts with autosave, corrections, the register check with rewrites, thesaurus suggestions and readability.
+  - "Write it in the studio" from graded-reader tasks. D-306.
+- **Poetry corner and reading circle:**
+  - Poems by theme with vocabulary, paraphrase, gloss and note (AI badge, never on the poem) and the Aozora source card with the colophon.
+  - The solo reading circle over pack texts or library documents: record each sentence, explain it in English (typed or spoken), per-sentence dictionary and grammar help, and saved sessions. D-307.
+- **Strings and states:**
+  - 387 new `Localizable.xcstrings` keys with Japanese.
+  - Every new async screen has an error + Retry state (F-33) and an honest empty state when its pack is missing.
+
+### Shared additions (adapters only)
+- **`SwiftSupport`:**
+  - Pitch test: `pitchDrillCodes`, `pitchStart`, `pitchModeCode`, `pitchStats`, `pitchProduction`.
+  - Kanji explorer: `explorerGraph`, `kanjiComponentRoles`, `bookmarkKanji`, `isKanjiBookmarked`.
+  - Dictionary: `hitInflection`, `hitChips`.
+  - Games: `pomodoroReflex`/`pomodoroAtom`, the `reflex…`/`atom…` millisecond readers, `atomTap`/`atomUndo`/`atomSkip`, `gameResultCode`, `recordGame`, `gameBest`, `gameRecent`, `gameWeekPoints`.
+  - Reader grammar: `readerConstructions`, `practiceGrammarPoint`, `checkGrammarExercise`, `grammarExerciseKind`.
+  - Translation: `translationGenreCodes`, `translationPassages`, `passageDirectionCode`, `passageRegister`, `importTranslationPassage`, `translationRubric`, `gradeTranslation`, `selfAssessTranslation`, `translationHistory`, `translationSkill`.
+  - Thesaurus: `thesaurusClusters`, `clusterIsEmotion`, `clusterDescription`, `expressionRegister`, `collocationPatternCode`, `clustersForEntry`.
+  - Writing studio: `createStudioDraft`, `updateStudioDraft`, `draftRegisterCode`, `studioCorrections`, `studioRegister`, `studioRewrite`, `studioDraftForReaderTask`, `gradeStudioReaderTask`.
+  - Reading circle: `circleHelp`, `recordingFilePath`.
+- **`SwiftBridges.kt`:** the rows these return (`PitchStatsRows`, `ExplorerGraphRows`, `ConstructionRow`, `GrammarPracticeRow`, `TranslationGradeRow`, `TranslationAttemptRow`, `TranslationSkillRows`, `CorrectionRow`, `RegisterRows`, `RewriteRow`, `CircleHelpRows`, …). No logic moved to Swift.
+
+### Deferred
+- **Dictionary search:** no Retry for a failed lookup. `InstantSearch` has no error channel; opening the pack still has Retry (D-302).
+- **Poems:** the Aozora ruby shows as a list, not as furigana over the poem lines (D-307).
+- **Out of scope:** the shared reading circle (Phase 14). Android parity is another agent's work, and this change doesn't touch `androidApp/`.
+
+### How to check
+On the Mac, build as described in "iOS: unverified since CI paused". Fix any interop names from the Phase 13 list there, then walk through the screens above: Learn → Language arts / Kanji explorer, Practice → Pitch-accent test / Games / Translate, and Me → Translation.
+
+## Phase 13 (Android UI): pitch test, kanji explorer, dictionary polish, games, reader grammar, translation, thesaurus, writing studio, poetry, reading circle (2026-09-19)
+
+These are the Compose screens for every Phase 13 shared hook, covering BRIEF_V2 §6.7, §6.9 and §6.12–§6.16. Decisions are D-290…D-299. iOS is being built in parallel by another agent.
+
+### What was built (androidApp only)
+- **Pitch-accent test** (Practice → Listen). The row appears only when the pitch audio pack is installed.
+  - A hub shows the level, the drills and the stats.
+  - An adaptive session plays the pack clips, with no TTS fallback. It shows the ↑/↓ marks and the level moves.
+  - A "Say it" production panel calls `production(...)`.
+  - Stats break down by pattern, mora length and question type, and list confusable pairs.
+  - Minimal pairs are a drill inside the module.
+- **Mini-games** (Practice → Games):
+  - The hub shows best scores and the weekly-challenge meter.
+  - Reflex (60 s) and Atom (90 s) play standalone, and in the Pomodoro queue (45 s) where the placeholder used to be.
+  - Scores are saved to `game_score` on the app scope.
+- **Kanji explorer** (Learn):
+  - A Canvas graph from the shared deterministic layout, with tap to select and a second tap to re-center.
+  - Focus mode, JLPT/frequency colouring with a legend, a node cap with the hidden count, and a TalkBack node list.
+  - The kanji page gains component roles with the "derived" badge, the sound family, "Explore graph", component search and bookmark to SRS.
+  - New screens for sound families and component search, plus a word graph from entries.
+- **Dictionary polish:**
+  - Results as you type through `InstantSearch`.
+  - The inflection breakdown chip, common/JLPT/#rank chips, and the "Kanji built from" shortcut.
+  - Entries show collocations by pattern, thesaurus cluster links and "Explore its kanji".
+- **Reader grammar:** the sentence panel underlines constructions and shows the one-line explanation, which is monolingual-aware and badged. "Practice this point" handles every result inline.
+- **Translation workbench** (Practice → Translate and read aloud):
+  - Passages filter by genre, direction and level, and you can import your own text.
+  - Written mode, and a sight mode with a timer and speech capture in the target language.
+  - Results show the labeled AI grade with rubric bars, issues, a better version and a diff. Without a model, the self-assessment rubric replaces the grade.
+  - History with delete, and a skill-line chart card on Me.
+- **Expression thesaurus** (Learn): clusters by emotion or scene with search. A cluster's detail has expressions, glosses and Tatoeba examples.
+- **Writing studio** (Practice → Write):
+  - Synced drafts with autosave.
+  - On-demand checks: register (with an AI rewrite), thesaurus suggestions, readability and AI corrections.
+  - The graded reader's output task opens its draft, and the draft can be graded.
+- **Poetry corner** (Learn): themes and poems with ruby. The vocabulary, paraphrase, gloss and note are badged, and the Aozora source notes are shown.
+- **Reading circle** (Practice → Translate and read aloud):
+  - Texts come from the pack or the library, and sessions are saved.
+  - Each sentence has a WAV recording of the reading, then an explanation, recorded or typed.
+  - Per-sentence help, recording playback, and completing or moving between sentences.
+- **Strings:** `values/strings_p13.xml` and `strings_p13{a,b,c,d}.xml`, with Japanese copies (474 keys, en/ja parity checked).
+- **Empty and error states:** each screen has an honest state when its pack is missing and `ErrorState` + Retry when loading fails (F-33).
+
+### Shared additions
+None (D-299).
+
+### Deferred
+- **Pitch test:** no answer-history list. The "Say it" reference-clip decode is best effort.
+- **Graph:** no pinch-zoom or pan, and re-centering replaces the route instead of stacking.
+- **Dictionary:** inflection step labels are English in the Japanese UI, because they are shared labels.
+- **Translation:** imported passages last only for the process (D-294). Live dictation without a configured recognizer can drop words at restart boundaries.
+- **Recordings:** reading-circle playback has no stop button or side-by-side comparison.
+- **Games:** no haptics.
+- **Not run on a device:** only `:androidApp:assembleDebug` was verified.
+
+### How to run
+```
+./gradlew --no-daemon :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
+---
+
+## Phase 13 (shared + data): translation workbench, thesaurus + collocations + writing studio, poetry corner + reading circle (2026-09-19)
+
+BRIEF_V2 §6.12, §6.13, §6.14. Decisions D-270…D-279. This covers the shared core, the content, the builders and the
+review kinds; the platform screens come next. The launch content was drafted by Claude (owner decision): everything
+is `source: "llm"`, `verified: false`, with the badge on until reviewed.
+
+### Content counts (main checkout `content/packs`, built 2026-09-19)
+- **`linguist.sqlite`** (new pack, 0.7 MB):
+  - **84 translation passages**:
+    - 60 drafted: 10 per genre (news, technical, legal, literary, dialogue, military), 37 J→E and 23 E→J, levels
+      N4 3 / N3 14 / N2 27 / N1 16, each with a reference, key points, register and notes. They include 3
+      graded-reader excerpts and 4 Aozora excerpts (J→E, our own reference translations).
+    - 24 Tatoeba passages (4 pairs each, both directions, no badge).
+  - **48 poems** by 9 public-domain poets in 8 themes (sky 9, sea 9, moon 7, winter 7, spring 6, summer 6, rain 5,
+    autumn 4), each with vocabulary, a plain-Japanese paraphrase, an English gloss and a note.
+  - **8 reading-circle texts** (661 sentences) with English summaries. There are 45 Aozora works in all, each with
+    its colophon.
+- **`dictionary.sqlite`** (new tables):
+  - **42 expression clusters** (21 emotion, 21 scene), 555 expressions, 536 linked to JMdict, 683 Tatoeba examples,
+    75 flagged plain lemmas.
+  - **6,941 collocations** (NV 5,114, AN 1,017, AV 810) from PMI over the tokenized Tatoeba corpus, 6,107 with an
+    example.
+- **Public-domain check:** all 12 authors died before 1968, and every work is 著作権なし in the pinned catalogue.
+  The table is in `docs/LICENSES.md`. The catalogue is mirrored to the release `sources-aozora-2026-09-18`.
+
+### What was built
+- **Translation workbench** (`app.tsumugi.translation`):
+  - `TranslationService`: passages by genre and direction, `importPassage` for the learner's own text (no reference),
+    and `timeLimitMs` / `SightTimer` for timed sight translation. The platform records and transcribes; the service
+    takes the transcript.
+  - `grade(passage, attempt, mode, durationMs)` uses the new **`grade_translation`** prompt: accuracy, completeness,
+    register and naturalness 0–4 each, issues and a better version, always labeled and never an official score. It
+    has golden tests.
+  - `TranslationDiff` gives a word- or character-level diff offline. Without a model, `Unavailable(reason, diff)`
+    plus `TranslationRubric` and `selfAssess(...)` stand in.
+  - `history()`, `delete()` (tombstone) and `skillLine()`: points, daily averages, recent averages by direction and
+    genre, and the trend.
+- **Thesaurus and collocations** (`app.tsumugi.thesaurus.ThesaurusRepository`): `clusters(kind)`, `search`,
+  `cluster(id)` (expressions, JMdict glosses, Tatoeba examples), `clustersForLemmas`, `clustersForEntry`, and
+  `collocations(entryId)`.
+- **Writing studio** (`app.tsumugi.writing`):
+  - `WritingStudio` drafts: `createDraft`, `update`, `delete`, `drafts`, and `draftForReaderTask(story)` /
+    `gradeReaderTask` for the §6.4 output tasks.
+  - `corrections` uses `correct_sentence` sentence by sentence.
+  - `registerCheck` uses rules (`RegisterChecker`: casual, polite, formal, with the outliers).
+  - `rewrite(sentence, register)` uses `natural_rewrite`.
+  - `suggestions` flags plain words with their clusters, and `readability` gives the §6.4 score.
+- **Poetry corner** (`app.tsumugi.poetry.PoetryRepository`): `themes`, `poems(theme)`, and `poem(id)` with the poem,
+  ruby, vocabulary, paraphrase, gloss, note and its Aozora source (dates, colophon).
+- **Solo reading circle** (`app.tsumugi.poetry.ReadingCircle`):
+  - pack texts or `doc:<id>` from the library;
+  - `start` (resumes an unfinished session), `startRecording`, `attachReading`, `explain`,
+    `attachExplanationRecording`, `complete`, `moveTo`, `recordingsOf`, `help(reading, idx)` (dictionary tokens and
+    grammar points) and `delete`;
+  - `CircleSession` is pure, tested state.
+- **User DB `9.sqm`** (v9 → v10) adds `translation_attempt` (union + tombstone), `writing_draft` and
+  `circle_session` (LWW). They are in `SyncTables`, the JSON backup and `SYNC_PROTOCOL.md`. `databases/9.db` is the
+  merged v9 snapshot. The file was written as `8.sqm` on its branch and renumbered after the pitch-test/games
+  migration.
+- **Review:** four new kinds, `translation_passage`, `expression_cluster`, `poem_annotation` and `circle_text`, in
+  `review.py` KINDS and in `ReviewKind`, listed in the app by `LinguistReviewSource` / `ThesaurusReviewSource`.
+- **Tools:**
+  - `build_translation.py`, `build_thesaurus.py`, `build_collocations.py`, `literature/build_literature.py`
+    (+ `aozora.py`, `lock_works.py`), all run by `build_all.py`;
+  - `draft` subcommands (`--endpoint URL --model NAME`) that add validated items with new ids;
+  - `mirror_sources.py` knows the Aozora group.
+
+### UI hooks for the platform agents (AppGraph)
+- `translationWorkbench`, with `passages`, `passage`, `importPassage`, `timeLimitMs`, `grade`, `selfAssess`,
+  `history`, `delete`, `skillLine` and `available`. Show the AI badge on `TranslationPassage.isAiGenerated` and on
+  every `Graded` result. The rubric texts are in `TranslationRubric.criteria`. The **skill line on Me** is
+  `skillLine()`.
+- `thesaurus()`, with clusters, search, cluster detail and collocations. It is also a dictionary entry's "expressions"
+  link through `clustersForEntry` and a "collocations" tab through `collocations(entryId)`.
+- `writingStudio`: drafts, corrections, registerCheck, rewrite, suggestions and readability. The graded reader's
+  "Write it" button opens `draftForReaderTask(story)`.
+- `poetry()`, with themes, poems and poem. Show the colophon from `PoemDetail.work`, and badge the paraphrase, gloss,
+  note and vocabulary, not the poem.
+- `readingCircle`, with texts, reading, start, sessions, the recording and explanation calls, complete, moveTo and
+  help. Record audio with `startRecording()`, then `attachReading` / `attachExplanationRecording`.
+
+### Tests
+- **Shared (androidHostTest):**
+  - `TranslationWorkbenchTest`: diff, timer, import, grading with and without a model, the skill line, sync with
+    tombstone.
+  - `WritingStudioTest`: register rules, outliers, flags, thesaurus and collocations, draft sync, reader task,
+    corrections.
+  - `PoetryAndCircleTest`: poems, session flow and recordings, help, library texts, session sync, review source.
+  - `PromptGoldenTest`: `grade_translation`.
+  - `UserDbMigrationTest`: v9 → v10.
+- **Tools:** `items/test_review_linguist.py` (ingest of the four kinds into copies of the real sources plus
+  validation, interactive review, kind detection), with the existing `test_review_kinds.py` and ruff.
+
+### Deferred
+- Platform screens (Compose/SwiftUI) for all of the above.
+- The shared reading circle (groups, monthly text, shared notes) is Phase 14.
+- More content comes from the owner's endpoint through the `draft` commands and review.
+- The Wikipedia corpus for collocations stays out of scope (D-152).
+
+### How to run
+```bash
+cd tools
+uv run python packs/build_translation.py check && uv run python packs/build_translation.py
+uv run python packs/build_thesaurus.py check && uv run python packs/build_thesaurus.py
+uv run python packs/build_collocations.py                 # first run tokenizes Tatoeba (~8 min), then cached
+uv run python packs/literature/lock_works.py              # pin newly listed Aozora works
+uv run python packs/literature/build_literature.py check && uv run python packs/literature/build_literature.py
+uv run python items/test_review_linguist.py
+./gradlew --no-daemon :shared:verifySqlDelightMigration :shared:testAndroidHostTest -Ptsumugi.native=false
+```
+
+---
+
+## Phase 13 (shared + data): pitch test, kanji explorer, sound series, dictionary polish, mini-games, reader grammar (2026-09-18)
+
+BRIEF_V2 §6.7, §6.9, §6.15, §6.16. Decisions D-280…D-289. Shared core, the phonetics builder and the review kind only; the platform screens come next. The translation workbench, thesaurus/collocations/writing studio and poetry/reading circle are a parallel branch.
+
+### Content counts (dictionary pack, main checkout `content/packs`, rebuilt 2026-09-18)
+- **Sound series:** 316 series (声符 families) over 1,305 kanji, all `derived` (0 reviewed yet). Known families come out whole: 青 → 情 請 清 精 静 晴 錆, 方 → 放 防 訪 房 芳 妨 坊 紡 肪, 反 → 阪 販 版 坂 板 飯, 交 → 校 効 較 絞 郊 鮫.
+- **Part roles:** 1,002 phonetic, 6,366 semantic, 5,882 form-only (every kanji with a KanjiVG tree; phonetic only through a series).
+- **KanjiVG component trees:** 33,489 kanji→element rows.
+- **Agreement with KanjiVG's own `kvg:phon` marks** on studied kanji: 744 of 1,183 agree; 593 phonetics KanjiVG doesn't mark.
+- `tools/packs/phonetics/series.json` is the reviewable source (kind `phonetic_series`).
+
+### What was built
+- **§6.7 Pitch-accent perception test** (`app.tsumugi.pitch`, D-284/D-285):
+  - Question types: pattern (平板/頭高/中高/尾高), downstep mora (0…n, options drawn with ↑/↓), and which word of a same-kana group (箸/橋/端).
+  - Five adaptive levels over mora length and question type, moved by a 3-up/1-down staircase. The next session starts where the last one ended. Draws lean towards weak patterns and don't repeat the last 8 items.
+  - Stats per pattern, per mora length, per question type and per confusable pattern pair.
+  - Perception → production: `production(item, pcm, transcript?, referencePcm?)` scores the learner saying the word + が against its known accent (`PronunciationService.analyzeTargets`, new), with a shadowing comparison against the clip when the platform decodes it.
+  - Minimal pairs (practice pack, on FSRS) are the fourth drill type (`PitchDrill.MINIMAL_PAIRS` → `minimalPairDrill()`).
+  - Only the pitch audio pack's items are used; `AppGraph.pitchTest()` is null without the pack (rule 20). Answers go to `pitch_test_result` (union sync).
+- **§6.15 Kanji explorer** (`app.tsumugi.kanji`, D-283): `neighborhood(kanji, maxNodes, coloring)` (parts, sound-series siblings, kanji that use it, words), `wordNeighborhood(entryId)` to re-center on a word, JLPT or frequency color buckets, `hidden` count, and `layout()`: a deterministic force layout in shared (tested for determinism). `KanjiBookmarks.bookmark(info)` adds a kanji to SRS (the path item, or `k:<kanji>`).
+- **§6.15 Functional components and sound series** (D-281/D-282): `tools/packs/build_phonetics.py` derives the three dictionary-pack tables (schema: `kanjiParts.sq`); `KanjiExplorer.components(kanji)` (role, reading, match, series, "derived" flag), `series(phonetic)`, `seriesOf(kanji)`, `allSeries()`. Review kind `phonetic_series` in `review.py` and `PhoneticSeriesReviewSource` in the app.
+- **§6.15 Dictionary polish** (D-288):
+  - `SearchHit.inflection`: "食べさせられなかった = 食べる + causative + passive + negative + past", from the Deinflector's rule chain.
+  - `SearchHit.frequencyRank` and `SearchHit.chips` (common, JLPT, #rank).
+  - `InstantSearch`: debounced (120 ms) as-you-type search with cancellation; only the latest query publishes. The real-pack lookup budget holds (3.2 ms per lookup on the host).
+  - `KanjiExplorer.componentSearch("氵 青")` and `componentQuery(kanji)`: component-combination shortcuts over KanjiVG elements and KRADFILE.
+- **§6.9 Mini-games** (`app.tsumugi.study.games`, D-286/D-287): **Reflex** (timed word ↔ meaning true/false, streak multiplier and speed bonus) and **Atom** (build the reading from mora tiles with look-alike decoys, under time). Both are `Activity` types in the Pomodoro queue (`Activity.Reflex`, `Activity.Atom`) and standalone (`AppGraph.reflex()`, `atom()`). Words come from the learner's started vocabulary, topped up from the frequency list. Rounds go to `game_score` (union sync). The weekly challenge's sixth slot now alternates with "score 1,500 points in Reflex and Atom". **Ulangi is GPL-3.0**: only its license was checked; no code was read (LICENSES.md).
+- **§6.16 Grammar in the reader** (D-289): the analyzer already returned only `grammarPointIds` per sentence. `ReaderGrammar.constructions(sentence)` now adds match spans (F-39 filter), a one-line explanation in the monolingual language when set (with the AI badge flag and "Japanese missing"), the learner's stage, and `practice(pointId)` (add to SRS and return the first exercise, or a fresh exercise).
+- **Schema:** user DB migration **`8.sqm`** (v8 → v9: `pitch_test_result`, `game_score`, both insert-only and union-synced) with the `databases/8.db` snapshot generated first. **Another Phase 13 branch may also add an `8.sqm`; the coordinator renumbers at merge.** Dictionary-pack tables in `kanjiParts.sq`.
+
+### UI hooks for the platform agents (AppGraph)
+- `pitchTest(): PitchTestService?` (null = hide the module) → `drills()`, `start(drill?)` → `PitchTestSession.next()` (play `question.clipKey` with `audio.clip`, show `question.options`), `answer(optionId, responseMs)` → `PitchFeedback` (marks, next level); `stats()`; `production(item, pcm16k, transcript, referencePcm)` for the "now say it" button; `minimalPairDrill()`.
+- `kanjiExplorer(): KanjiExplorer?` → `neighborhood(kanji, maxNodes, GraphColoring)`, `wordNeighborhood(entryId)`, `KanjiNeighborhood.layout()`, `components(kanji)`, `seriesOf(kanji)`, `allSeries()`, `componentSearch(text)`, `componentQuery(kanji)`. Show "derived" on roles and series where `derived` is true.
+- `kanjiBookmarks.bookmark(KanjiInfo)` / `isBookmarked(kanji)`.
+- `instantSearch(onChange)` → `update(text)` per keystroke, `submit(text)`, `close()`; results carry `inflection` and `chips`.
+- `games` (`record(result)`, `best`, `recent`, `weekPoints`), `gameWords`, `reflex()`, `atom()`; Pomodoro activities `Activity.Reflex` / `Activity.Atom` expose `game()`. Android and iOS Pomodoro screens have a placeholder "Next" branch for them until the game screens exist.
+- `readerGrammar.constructions(sentence)` / `practice(pointId)` → `GrammarPracticeResult` (AddedToReviews with the first exercise, Exercise, Unavailable).
+- Content review lists `PHONETIC_SERIES` automatically (both screens iterate `ReviewKind.entries`).
+
+### Tests
+- Shared (`testAndroidHostTest`): `KanjiExplorerTest` (roles and fallbacks, series, capped one-hop graph, colors, component search, deterministic layout, bookmark), `DictionaryPolishTest` (inflection chip, every Deinflector reason labeled, frequency/common chips, instant search debounce and stale-lookup cancellation), `PitchTestTest` (patterns and marks, staircase, level-driven questions, weak-pattern weighting, session storage and stats, pair confusions, production link), `GamesTest` (Reflex scoring/timeouts, Atom assembly, weekly challenge, Pomodoro queue), `ReaderGrammarTest` (spans with the F-39 filter, monolingual one-liners, practice action), `Phase13SyncTest` (union merge of answers and scores), `ContentReviewSourcesTest.derivedSoundSeriesAreListedByPhonetic`, `UserDbMigrationTest` (v8 → v9), `RealPhase13PackTest` (real pack: known families, roles, graph under 100 ms, component search, inflection chip, ranks).
+- Tools: `packs/test_build_phonetics.py` (fold/match, tree parsing, heuristic roles, merge keeps reviews, known families on the real inputs), `items/test_review_kinds.py` (`test_phonetic_series_review`, and the kind sets of Kotlin and Python still match).
+
+### Deferred
+- Platform screens (graph view, pitch test, games, reader grammar panel, dictionary chips) — the hooks above are ready.
+- Reviewing the 316 derived sound series (owner, through the app or `review.py`).
+- Weekly challenge copy for games in other UI languages beyond EN/JA.
+
+### How to run
+```bash
+cd tools
+uv run python packs/build_phonetics.py            # rebuild the three tables into content/packs/dictionary.sqlite
+uv run python packs/test_build_phonetics.py
+uv run python items/test_review_kinds.py
+./gradlew --no-daemon :shared:verifySqlDelightMigration :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
+---
+
+## Phase 12 (Android UI): readers, tracks, courses, onomatopoeia, drill sets, OPI map, DLPT filters (2026-09-18)
+
+The Android screens for the Phase 12 shared hooks. Decisions D-250…D-259. iOS is being built in parallel by another agent.
+
+### What was built (androidApp only)
+- **Graded readers** (Learn → Graded readers):
+  - The library groups stories by level, N6 "Level 0" to N1. It has genre chips, a difficulty badge and an AI badge.
+  - The story view has four tabs:
+    - **Read:** read-along from the readers audio pack, which highlights the spoken sentence. Without the pack, each sentence has a TTS ▶.
+    - **Words:** the story's vocabulary list.
+    - **Quiz:** the comprehension quiz (`submitQuiz`).
+    - **Tasks:** the prediction question, skim/scan with a timer, close reading, and a Japanese summary graded by the model (`gradeSummary`, with the AI badge).
+- **Tracks:**
+  - An optional onboarding step, and Learn → Tracks for selecting or switching tracks.
+  - A track page with tabs for words, kanji, scenarios (open in role-play), dialogues (open in the listening player), drills, can-do checklists, cultural tasks, readings and links.
+  - Drill screens for keigo, email templates with inline slots, fill-in, synonym/antonym, usage ○/×, meaning, and perform mode. In perform mode the prompts fade over rounds, and each line is spoken to the recognizer or self-rated.
+- **Courses** (Learn → JLPT courses):
+  - The overview shows N5–N1 progress bars.
+  - Each level's course has modules with step bars. Quiz steps open a JLPT type drill and mock steps open a JLPT section.
+  - Grammar points have mastery checkboxes, also on the grammar point screen.
+  - A "one book to pass" view lists what remains.
+- **Monolingual mode:**
+  - Settings has a switch and a "from level" picker.
+  - Grammar points show the Japanese explanation, with an English chip.
+  - Dictionary entries show the cached Japanese paraphrase, or a "Write one with AI" button. It's labeled AI and never generated on lists.
+- **Onomatopoeia** (Learn):
+  - Theme tiles with the SVG glyphs, a type filter and search.
+  - A word detail with the feel line, glosses and Tatoeba examples, each read by TTS.
+  - The two-way quiz.
+- **Drill sets** (Practice → Drill sets): a hands-free player that runs prompt → pause → model answer → repeat.
+  - Pause presets (short, default, long, fixed 3/5/8 s) and repeat on/off.
+  - Skip and back.
+  - Screen-off playback through a `mediaPlayback` foreground service with a MediaSession: headset, lock-screen and notification controls.
+- **Natural dialogues:** fillers are greyed via `segments()`, and overlapping lines are shown side by side.
+- **OPI:** the results screen has a probe map: level-check and probe turns by level and outcome, the working-level line, breakdowns, and domains covered and missing.
+- **DLPT:** the exam hub has a lower/upper range picker and a text-type filter with item counts.
+- Strings are in `values`/`values-ja` (`strings.xml` plus `strings_p12{a,b,c}.xml`).
+
+### Shared additions
+None.
+
+### Deferred
+- **Graded readers:** no furigana in the story view (the pack's ruby hints aren't used yet).
+- **Drill player:** no audio focus, and no POST_NOTIFICATIONS prompt of its own. Without the permission it still plays; the notification is just hidden.
+- **Overlapping dialogue lines** still play one after the other.
+- **Not run on a device:** only `:androidApp:assembleDebug` was verified.
+
+### How to run
+```
+./gradlew --no-daemon :androidApp:assembleDebug -Ptsumugi.native=false
+```
+## Phase 12: content review covers every AI-drafted type (2026-09-18)
+
+The AI-generated badge can now be cleared on everything Phase 12 drafted. Decisions D-245…D-249; the table of kinds is in docs/CONTENT_PACKS.md "Reviewing content".
+- **`tools/items/review.py`** reviews, in the terminal (accept, edit, reject, skip) and through `--ingest`, all of these: track words, kanji hints, scenarios, dialogues, drills, situations, tasks and readings; the Japanese grammar explanations (`grammar_ja`, flips `ja_source`); onomatopoeia feel lines; graded readers (now `source` and `verified` both flip); OPI questions; speaking-drill lines (`drill_item`, on the grammar example or dialogue line they copy); dialogues and scenarios, natural ones included; and every exam bank, DLPT upper-range and liaison included. Kana mnemonics are unchanged from Phase 10.
+- **In-app Content review** lists all of these from the installed packs, with stable ids and enough detail to judge each item on the phone. The new sources are `TracksReviewSource` and `OnomatopoeiaReviewSource`, plus `grammar_point_ja`, OPI questions and drill items. Rule-generated exam items are no longer listed.
+- **Builders** carry the flags through. OPI questions can hold their own `source`. A point's own grammar examples, and dialogue drill lines, become `verified` once reviewed. Review keys stay out of track drill payloads. Re-merging the author scripts keeps a dialogue with a reviewed line.
+- **Tests:** `tools/items/test_review_kinds.py` (4) ingests every kind into copies of the real sources and re-validates them; `test_review_ingest.py` (3) passes; `ContentReviewSourcesTest` (7) and `ContentReviewTest` pass.
+- **Not done:** the packs weren't rebuilt (nothing is reviewed yet). The genre task templates in `readers/tasks.json` still aren't reviewable.
+
+## Phase 12 (iOS UI): readers, tracks, courses, monolingual, onomatopoeia, drills, DLPT/OPI (2026-09-18)
+
+The SwiftUI screens for every Phase 12 shared hook below. Decisions D-260…D-269. **Not compiled:** CI is paused (D-140) and there's no Xcode here; every new interop spot is listed under "iOS: unverified since CI paused". The Kotlin adapters added to `SwiftSupport`/`SwiftBridges.kt` compile (`:shared:compileCommonMainKotlinMetadata`).
+
+### What was built (`iosApp/Tsumugi`)
+- **Graded readers** (Learn → Graded readers): library by level with genre chips, a difficulty badge (label · score), length, the AI badge and the latest quiz result. Story page: Read (sentence-by-sentence read-along with highlighting, pack clips when the readers pack has every line, else the system voice; tap a sentence to start there; open in the full reader), Words (glossed vocabulary → dictionary), Quiz (stored for the roadmap), Tasks (prediction, skim timer, close reading, AI-graded summary with badge and engine, or the reason it wasn't graded). D-261.
+- **Tracks:** an optional onboarding step, Learn → Tracks (select, deselect, only this track) and Settings → Interests; a track page with word lessons, kanji (hints and breakdowns), drills by type, role-plays, dialogues, can-do ticks, cultural tasks, ILR readings and links. Drill screens for keigo, email slots, fill-in (typed or choices), synonym/antonym, meaning and usage, and memorize-and-perform with fading prompts, spoken (recognizer), typed or self-rated. D-262, D-263.
+- **Courses** (Learn → JLPT courses): a bar per level, modules with step progress and launches (kanji path, lessons, grammar mastery checkboxes, quiz item-type drills, mock sections in the exam runner), and "one book to pass". D-264.
+- **Monolingual mode:** Settings → Monolingual mode (toggle, from level). Grammar point views switch meaning/nuance to our Japanese text (Show in English / 日本語で説明); the dictionary entry paraphrases in Japanese (on open when the setting covers the word, else on tap), folds the English glosses, and can forget a bad paraphrase. Lists never generate. D-265.
+- **Onomatopoeia** (Learn → Onomatopoeia): theme tiles with the pack's SVG glyphs parsed into SwiftUI paths (system symbol fallback), search, a type filter, word detail with examples, and the scene ↔ word quiz. D-266.
+- **Speaking drills** (Practice → Speaking drills): a hands-free player with pause presets, fixed/proportional pauses, the repeat pause, previous/next, background playback with the screen off, lock-screen/headset controls and Now Playing. D-267.
+- **Natural dialogues:** fillers grey (toggle to hide), overlapping lines side by side; the dialogue screen now opens track dialogues too. **OPI:** the probe map (chart, tallies, breakdowns, domains) after the interview. **DLPT:** range picker and text-type chips on the exam hub. D-268, D-269.
+- **Strings:** 291 new `Localizable.xcstrings` keys with Japanese. Every new async screen has an error + Retry state (F-33) and an honest empty state when its pack is missing.
+
+### Shared additions (adapters only)
+`SwiftSupport`: `gradedStories`, `readAlongPlan`, `submitGradedQuiz`, `gradeReaderSummary`, `trackDrills`, `trackLessons`, `drillTypeCode`, `trackDescription`, `emailSegments`, `fillInParts`, `keigoPrompt`, `performanceSession`, `performanceStep`, `drillPlan`, `drillCursor`, `drillSetDescription`, `drillStepCode`, `drillPlanItems`, `onomatopoeiaTypes/TypeCode/TypeLabel/Words/Quiz/QuizIsScene`, `monolingualFromLevel`, `setMonolingualFromLevel`, `grammarExplanation`, `grammarExplanationJapanese`, `explanationIsJapanese`, `wordExplanation`, `forgetWordParaphrase`, `opiProbeMap`. `SwiftBridges.kt`: `ReadAlongRow/Plan`, `SummaryGradeRow`, `EmailSegmentRow`, `OnomatopoeiaTypeRow`, `OpiProbeRows/TurnRow/LevelRow`. No logic moved to Swift: checking, scoring, timing, fading and course progress all stay shared.
+
+### Deferred
+- Simultaneous playback of overlapping dialogue lines (sequential for now, D-269), the optional AI check of a performed line (D-263), and inline blanks inside the email text (D-263).
+- Android parity is another agent's work; this change doesn't touch `androidApp/`.
+
+### How to check
+On the Mac, build as described in "iOS: unverified since CI paused", fix any interop names from the Phase 12 list there, then run the Phase 12 items in `docs/QA.md`.
+
+---
+
+## Phase 12: listening, speaking and exam content (2026-09-18)
+
+BRIEF_V2 §8 Phase 12, §6.10, §6.16, G-08 and the Appendix A content findings. Decisions D-220…D-229. The content was drafted by Claude (owner decision), so everything is `source: "llm"` / unverified with the AI badge until reviewed (rules 10, 19). The graded readers and tracks are separate Phase 12 work.
+
+### Content (counts)
+
+| What | Before | Now |
+|---|---|---|
+| Role-play scenarios | 30, all exactly 6 turns | **90** (60 new: business 10, admin 10, military/liaison 10, travel 10, family 8, medical 7, culture 4, school 1), 4–12 turns, 699 scripted turns, 2–3 `accept` alternatives per turn |
+| Listening dialogues | 45 (N5–N3) | **125**: 40 natural (N5/N4/N3/N2 × 10) + 40 new scripted (N4 8, N3 10, N2 12, N1 10) + the 45 reworked; 1,214 lines, 1,434 gap targets, 306 questions |
+| Drill sets (new) | none | **31** sets / 325 items (22 grammar, 9 dialogue-line) |
+| OPI questions | 62 | **96**, every question tagged with a DLI-style domain |
+| DLPT passages / items | 100 / 306 (0+–3) | **195 / 595**: + ILR 3+/4 reading 60/184, ILR 3+/4 listening 20/61, military/liaison at 2–3 15/44 |
+
+### Fixes from Appendix A
+- The hotel closing was re-examined: the scenario is a check-in, so お世話になります fits an arriving guest. It now closes with よろしくお願いします (お世話になります is still accepted). The departing case is the new `travel-hotel-checkout` (お世話になりました). Seven other scenarios that ended without a partner closing line were fixed (D-221).
+- `n3-environment` is now a real two-person dialogue.
+- Comprehension questions were reworked across all 45 original dialogues, with distractors grounded in the audio. Lines were edited in 15 N5/N4 dialogues to support that.
+- The 30 original scenarios now range from 4 to 12 turns.
+- Scripted-fallback matching lives in shared `RoleplaySession` (it counts turns and ignores the reply). The `accept` data is ready; the matcher is left for the coordinator (D-223).
+
+### Tools
+- `packs/build_practice.py`:
+  - filler markup `{…}` → `dialogue_line.fillers`, plus `overlap`, `style` and speaker `hint`
+  - `scripted_turn.accept`, `opi_question.domain`
+  - drill sets
+  - N1–N5 dialogues, 4–12 scenario turns, a closed category set
+  - `--check FILE…`
+  - pack version 2
+- `packs/practice_authoring.py` + `speaking/author_scenarios.py` + `listening/author_dialogues.py`:
+  - merge script entries, `batches/*.json` and the JSON without duplicating ids, keeping reviewed copies
+  - `draft --endpoint URL --model NAME` appends validated endpoint drafts
+- `items/ilr_bands.json` has 3+/4 bands (and `IlrBandData.kt` is regenerated).
+- `items/gen_dlpt.py` handles 3+/4: ids, guides, text types, 2–4 items, upper-range text-type check, `liaison` at 2–3. `packs/build_exam.py` accepts 3+/4.
+- `packs/render_audio.py`: a docstring note only (see Audio).
+
+### Shared API
+- **Practice:**
+  - `DialogueStyle`, `DialogueLine.fillers/overlap/segments()/withoutFillers`, `FillerSpan`, `LineSegment`
+  - `Speaker.hint`, `Dialogue(Summary).style`
+  - `ScriptedTurn.accept/acceptableAnswers`
+  - `OpiDomain`, `OpiQuestion.domain`
+  - `DrillKind`, `DrillItem`, `DrillSet(Summary)`, `PracticeRepository.drillSets(level)/drillSet(id)`
+- **Drill timing:** `DrillTiming` (FIXED/PROPORTIONAL, presets), `DrillPlayback.plan(set, timing, answerMs)`, `DrillCursor` (advance/skip/back).
+- **Exam:**
+  - `IlrLevel.upperRange/tested`, `DlptRange`
+  - `ExamAssembler.dlpt(…, range, textTypes)`, `filterByTextType`, `textTypeCounts`
+  - `ExamService.dlpt(…, range, textTypes)`, `dlptTextTypes(exam, range)`
+  - `SwiftSupport.dlptFiltered/dlptTextTypes` + `DlptTextTypeCount`
+- **OPI:** `OpiSession.turns/probeMap()`, `OpiTurnRecord`, `OpiTurnOutcome`, `OpiProbeMap` (floor, ceiling, breakdowns, per-level tallies, level track, domains); the scripted interview rotates domains.
+
+### Tests
+- New shared tests:
+  - `DlptUpperRangeTest` (7): upper-range forms, the text-type filter and counts, the summary, service + import
+  - `OpiProbeMapTest` (5): outcomes, floor/ceiling, a session log with breakdowns, domain rotation
+  - `DrillPlaybackTest` (6): step order, proportional/fixed pauses, clip lengths, estimates, cursor
+  - `PracticeRepositoryTest` (+2): natural fillers/segments/overlap, drill sets; accept, domain, hint and style asserted
+- `RealExamPackTest` checks the real packs: an upper-range form, a liaison-filtered form, natural fillers, a drill-set plan and the probe map.
+- Tools:
+  - `items/test_gen_dlpt.py` 25/25 (5 new upper-range and liaison tests)
+  - `packs/test_practice_authoring.py` 7/7 (markup, merge, duplicate ids, drafting against a fake endpoint)
+  - `items/test_gen_jlpt.py` 13/13
+- Validators: `gen_dlpt.py validate --strict` on all five DLPT banks: 0 errors, 0 warnings. `build_practice.py --check` on every batch: 0 errors. `ruff`: clean.
+- Gradle (`:shared:compileCommonMainKotlinMetadata :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false`): green.
+
+### Packs rebuilt (main checkout `content/packs`)
+- `practice.sqlite`: 90 scenarios / 699 turns, OPI 96, 125 dialogues (natural 40, scripted 85) / 1,214 lines / 1,434 gaps / 306 questions, 31 drill sets / 325 items, 630 minimal pairs.
+- `exam.sqlite`: 7 banks, 401 passages, 2,963 items, 0 band warnings.
+
+### Audio (rendered 2026-09-19, see below and CONTENT_PACKS "Phase 12 render")
+- `dialogues`: 1,214 lines, about 924 of them new plus the lines edited in 16 originals. `exam`: +191 lines of upper-range and liaison scripts. Drill sets reuse `grammar/<point>/0` and dialogue clips, and their English cues use system TTS.
+- Command: `uv run python packs/render_audio.py dialogues exam`. The cache keeps everything unchanged.
+
+### Deferred
+- Platform UI: the hands-free drill player (`UIBackgroundModes: audio`), greyed fillers in the transcript, overlap playback, the DLPT range and text-type pickers, and the probe-map chart.
+- A scripted-fallback matcher using `acceptableAnswers` (shared `RoleplaySession`, D-223).
+- Human review of all of the above in the review UI (G-16).
+- Upper-range ILR bands are provisional until reviewed passages exist.
+## Phase 12 (content): graded readers (2026-09-18)
+
+BRIEF_V2 §6.4 "Graded readers with audio" and the genre-based tasks, §8 Phase 12. Decisions D-200…D-209. This is the shared core, the content pipeline and the launch content; the reader screens (iOS and Android) are not built yet.
+
+### What was built
+- **Pipeline** (`tools/packs/readers/`):
+  - `draft_readers.py`: drafts stories through any OpenAI-compatible endpoint (`--endpoint URL --model NAME`, e.g. Ollama on a GPU machine), against the level's JLPT words and grammar-pack points. Each draft is validated and sent back to the model with the errors. Re-runs add new ids and never reuse one.
+  - `validate_readers.py`: the gate. It checks coverage (95% of words within level, 90% without glosses), length, NFC, answer keys, unique ids and the §6.4 score band.
+  - `build_readers.py`: builds `readers.sqlite`, and is wired into `build_all.py`; `write_manifest` picks it up.
+  - `levels.json`, `tasks.json` and `readers_lib.py`: the level rules, the genre task templates and the shared code (details in `docs/CONTENT_PACKS.md` "readers.sqlite").
+- **Launch content:** 120 stories, 20 per level (N6 level 0, N5, N4, N3, N2, N1), with 2,393 read-along lines. Genres: story 15, manga 13, news 13, editorial 12, email 12, essay 12, notice 12, academic 11, ad 10, recipe 10. Seven are government or military texts for DLPT learners (3 at N2, 4 at N1). The validator reports 0 errors and 0 warnings. All are AI-drafted by Claude (owner's decision): `source: "llm"`, `verified: false`, badge on until reviewed.
+- **Genre tasks:** 10 genres, each with a prediction question, a timed skim/scan, two close-reading prompts and an output task, in Japanese and English.
+- **Audio:** a `readers` set in `render_audio.py`, one clip per reader sentence (`reader/<story>/<idx>`). 春日部つむぎ narrates; speech uses the cast voices, 四国めたん for women and 玄野武宏 for men. Rendered on 2026-09-19: 2,393 clips, 71.9 MB, in release `audio-packs-2026-09-19`.
+- **Shared** (`app.tsumugi.reader`):
+  - `PackReaderRepository` over readers.sqlite implements `ReaderPackRepository`, and `ReaderService.packs` now defaults to it. It adds `levels()` and `story(id)` → `GradedStory`: the passage, vocabulary list, questions, `ReaderTaskSet` with filled prompts and timer, cast, and read-along lines.
+  - `ReadAlongTrack`: timings from the readers audio pack's clip durations; untimed unless every line has a clip.
+  - `GradedReaderScores`: quiz attempts stored as `exam_attempt` rows (`GRADED_READER`, no migration). It feeds `RoadmapService.comprehension` (null until three stories have been answered).
+  - `GradedReaderService`: the apps' entry point, `graph.reader.graded`. The output task is graded by the new `grade_reading_summary` prompt and labeled AI-generated.
+  - `ReadersReviewSource`: the stories appear in the in-app content review.
+  - `AudioKeys.reader`, `AudioSet.READERS`, the `ReadersDatabase` SQLDelight entry, `PackInstaller.READERS` and `AppGraph.readersPack()`.
+- `review.py --ingest` now applies `reader_passage` verdicts to `tools/packs/readers/stories/*.json`, and `review.py <story file>` reviews a batch interactively. Android got the `audio_set_readers` label so the Audio packs screen can name the new set.
+
+### Tests
+- `GradedReadersTest` (9): levels and stories, a story with its tasks, lines and clip keys, the pack document, the empty state, read-along timing (all or nothing), quizzes feeding the roadmap hook, reader quizzes kept out of exam history, the review source, and placeholders.
+- `AudioKeysTest.readerKeysBelongToTheReadersSet`.
+- `PromptGoldenTest`: a `grade_reading_summary` golden case.
+- `RealReadersPackTest` (androidHostTest; skipped without packs): read-along lines equal `ReaderAnalyzer.sentences`, and the build's text scores agree with `DifficultyScorer`.
+
+### Deferred
+- Reader UI on iOS and Android: the level list, story view with the AI badge, read-along player, tasks with the skim timer, quiz and summary grading.
+- Rendering `audio-readers.zip`, for the coordinator (see below).
+- Human review of the 120 stories.
+
+### How to run
+```bash
+cd tools
+uv run python packs/speaking/author_scenarios.py && uv run python packs/listening/author_dialogues.py   # merge
+uv run python packs/build_practice.py && uv run python packs/build_exam.py
+uv run python items/gen_dlpt.py validate --strict items/bank/dlpt_*.json
+uv run python packs/test_practice_authoring.py && uv run python items/test_gen_dlpt.py
+
+## Phase 12 (tracks): interest and domain tracks (2026-09-19)
+
+BRIEF_V2 §6.5: seven tracks, each with a word list, kanji subset, scenarios, dialogues and drills, selectable in onboarding and switchable any time. Decisions D-210…D-219. Other Phase 12 content (graded readers, more dialogues, scenarios and ILR items) is built by other agents. Platform UI is not built yet; the hooks are listed below.
+
+### What was built
+- **Pack:** `tracks.sqlite`, with `tracks.sq` as its schema (`TracksDatabase`, `PackInstaller.TRACKS`).
+  - Built by `tools/packs/build_tracks.py` from `tools/packs/tracks/*.json` and wired into `build_all.py`.
+  - Subcommands: `validate` lists every problem; `resolve` fills JMdict ids; `draft --endpoint URL --model NAME` extends a track through any OpenAI-compatible endpoint, appending only items that validate and never reusing ids.
+- **Content:** drafted by Claude (owner decision). All of it is `source: "llm"`, `verified: false`, with the badge on:
+
+| Track | Levels | Words | Kanji | Scenarios (turns) | Dialogues | Drills | Other |
+|---|---|---|---|---|---|---|---|
+| Gaming & VTuber (`gaming`) | N5–N2 | 478 | 142 (explicit, with hints) | 10 (67) | 10 | 40: 20 fill-in, 20 meaning | – |
+| Business & keigo (`business`) | N4–N1 | 253 | 150 (derived) | 30 (223) | 8 | 84: 14 email templates, 70 keigo | – |
+| Family & household (`family`) | N5–N2, ILR 0+–2 | 266 | 150 (derived) | 10 (68) | 10 | 40: 20 fill-in, 20 usage yes/no | – |
+| Daily-life admin (`daily-life`) | N5–N2 | 267 | 150 (derived) | 12 (74) | 8 | 24: 24 fill-in | 12 situations / 51 can-do; 8 cultural tasks |
+| Native schoolchild vocabulary (`schoolchild`) | N4–N1 | 912 | 249 (derived) | 4 (26) | 4 | 230: 70 fill-in, 40 meaning, 60 synonym/antonym, 60 usage yes/no | – |
+| Military & liaison (`military`) | N3–N1, ILR 2–3 | 271 | 150 (derived) | 12 (104) | 8 | 20: 20 meaning | 14 ILR readings; 5 links |
+| Performing culture (`performing`) | N5–N2 | 182 | 150 (derived) | 6 (40) | 6 | 20: 20 performances | – |
+| **Total** | | **2629** | **1141** | **84 (602)** | **54** | **458** | 12 situations / 51 can-do; 8 tasks; 14 readings; 5 links |
+
+- **Size targets:**
+  - Gaming: 142 kanji (target ~140) with our own breakdowns and memory hints, and 478 words (target 600, so 80%).
+  - Business: all 30 situations.
+  - Schoolchild: 912 words (83% of the 1,100-style target).
+  - Military: ILR 2–3 throughout, with fictional briefings, and JMSDF/JASDF/JGSDF/MOD pages as links only.
+- **Shared (`app.tsumugi.tracks`):**
+  - `TrackRepository`: tracks, words, lessons, kanji, scenarios and dialogues (as the practice models), drills, situations, tasks, readings and links.
+  - `TrackService`: selection as a synced setting, the onboarding API, lessons mixed into Today, and can-do checks.
+  - Drill models with checking: `KeigoDrill` (via `KeigoRules`), `EmailDrill`, `FillInDrill`, `SynonymDrill`, `UsageDrill`, `MeaningDrill`, `PerformDrill`, plus `PerformanceSession` (memorize-and-perform).
+  - `AnswerText.normalize` for comparing typed answers.
+- **Minimal hooks:**
+  - `AppGraph.trackRepository()`, `AppGraph.tracks`, `AppGraph.dialogue(id)`.
+  - `roleplay(id)` falls back to track scenarios.
+  - `startLessons()` and `today()` mix in and count track words.
+  - `LessonSession.batch`.
+- **No user-DB migration.** Selections (`tracks.selected`) and can-do ticks (`tracks.canDo`) are synced settings.
+
+### UI hooks for the platform agents
+- **Onboarding step:** `graph.tracks.onboardingOptions()` returns a `TrackSummary` per track (title, `levelLabel`, `description`, `counts`, `wordsLeft`, `selected`). Save with `chooseInOnboarding(ids)`.
+- **Settings or Learn → Tracks:** `tracks()`, `select`/`deselect`/`switchTo`. A track page uses `trackRepository()?.lessons(id)`, `kanji(id)` (show `breakdown`/`hint` for gaming), `scenarios(id)` (open with `graph.roleplay(scenario.id)`), `dialogues(id)` (open with `graph.dialogue(id)` in the existing listening screen), `drills(id, type)`, `situations(id)` (tick with `tracks.setCanDo(situation.canDoId(i), done)`), `tasks(id)`, `readings(id)` and `links(id)`.
+- **Drill screens:**
+  - Keigo and fill-in: typed `check(text)`; fill-in can show `choices`.
+  - Email: render `segments` with a field or chips per `Slot`, then `check(slot, text)`.
+  - Synonym and meaning: `check(index)`. Usage: `check(saysCorrect)`.
+  - Perform: `PerformanceSession(drill)`, then `prompts()`, `deliver(line, sttTranscript)` or `selfRate`, and `nextRound()`. Show `staging` and each line's `stage`.
+- **Badge:** everything with `isAiGenerated` shows the AI-generated badge.
+- **Today:** nothing to do. Lessons already include track words when a track is selected.
+
+### Tests
+- `TracksTest` (11): pack rows to models (scenarios and dialogues as practice models, unknown drill types skipped); selection as a synced setting; Today mixing (half the batch, path items complete on the path, track words join reviews, known words skipped, fills the batch without a path, empty when done); round-robin across tracks; can-do; no pack (honest empty states); keigo rules (special and regular, suru nouns, お/ご, forms); keigo check (kana, katakana, punctuation, rule forms, humble rejected); email, fill-in and choice drills; memorize-and-perform fading; lesson splitting.
+- `RealTracksPackTest` (androidHostTest, real pack): every row loads, every drill parses and accepts its model answer, every performance can be completed, and the keigo rules agree with the authored answers. Before the rules were extended, they disagreed on 3 of 60 rule-covered drills (お気に召す, 承る, 存じておる); those forms were added.
+- `build_tracks.py draft` was smoke-tested against a fake endpoint: an unknown word and a malformed drill were rejected, and ids advanced.
+
+### Deferred
+- ~~`tools/items/review.py` and the in-app review (G-16) don't read track files yet.~~ Done (D-245…D-249). The badge stays on until they do (another agent's file). Everything else about review is ready: items carry `source`/`verified`.
+- `render_audio.py` doesn't render track dialogues yet (another agent's file), so they use TTS; the clip keys `dialogue/<id>/<ord>` already fit. Performances have no audio.
+- Whether tracks ship in the base app or as downloads (BRIEF_V2 §9 item 7). The pack is 1.5 MB and is bundled like the others.
+- An AI check of a performed line through the gateway (the session exposes the transcript and the script).
+- Gaming words: 478 of the 600 target. Extend with `draft gaming --kind words`.
+
+### How to run
+```
+cd tools && uv run python packs/build_tracks.py      # or packs/build_all.py
+./gradlew :shared:compileCommonMainKotlinMetadata :shared:verifySqlDelightMigration :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false
+uv run python packs/readers/validate_readers.py --report
+uv run python packs/readers/build_readers.py               # or packs/build_all.py
+uv run python packs/render_audio.py readers --dry-run      # clip count
+uv run python packs/render_audio.py readers                # VOICEVOX engine on 127.0.0.1:50021 (or --endpoint)
+./gradlew :shared:testAndroidHostTest --tests "app.tsumugi.reader.*" -Ptsumugi.native=false
+```
+
+---
+
+## Phase 12: courses, monolingual mode, onomatopoeia (shared + content, 2026-09-18)
+
+BRIEF_V2 §6.6 (structured JLPT courses and monolingual mode) and §6.8 (onomatopoeia), in the shared core and packs. Decisions D-230…D-239. There's no platform UI yet; the hooks are listed below. All the new text is AI-drafted by Claude (owner decision): `source = "llm"`, and the badge stays on until reviewed.
+
+### Content counts
+| Content | Count | Where |
+|---|---|---|
+| Japanese grammar explanations (`meaning_ja` + `nuance_ja`) | **829 / 829** points: N5 127, N4 148, N3 173, N2 192, N1 189 (the brief's minimum was the 381 N2+N1) | `tools/packs/grammar/n*.json` → `grammar.sqlite` `grammar_point_ja` |
+| Onomatopoeia words (JMdict on-mim) | **1,334** (1,340, minus 6 explicit entries) | `dictionary.sqlite` `onomatopoeia` |
+| …with our English feel line | **1,309**; the 720 most frequent all have one (the brief asked for 600) | `tools/packs/onomatopoeia/entries.json` |
+| …with a Japanese feel line | **1,307** | same |
+| …with Tatoeba examples (up to 3) | **502** | pack `sentence` table |
+| Themes, with one original SVG glyph each | **12**: sounds 320, movement 183, manner 162, appearance 140, voice 116, texture 106, state 91, feelings 88, body 46, eating 44, pain 20, weather 18 | `tools/packs/onomatopoeia/themes.json` |
+| Types | 擬音語 / 擬態語 / 擬情語 | — |
+| Course modules from the real packs | N5 16 (79 kanji, 479 words, 127 grammar, 3 sections) · N4 19 (166, 448, 148, 3) · N3 22 (367, 1,169, 173, 3) · N2 24 (367, 890, 192, 2) · N1 24 (1,151, 1,501, 189, 2) | derived at run time |
+
+### What was built
+- **Courses (`app.tsumugi.courses`).**
+  - `CourseBuilder` (pure) and `CourseService`. Each JLPT level becomes modules of kanji → vocab → grammar → quiz → mock section.
+  - Modules are derived from the kanji-path items with that JLPT tag, the grammar points at that level, the exam bank's item types (module quizzes) and the blueprint sections (mocks).
+  - There's a per-level progress bar (`overview()`) and a "one book to pass" list (`remaining(level)`): unlearned kanji and words, unmastered grammar points, and mock sections not yet passed.
+- **Grammar mastery checkbox.** `GrammarMasteryStore` keeps a checkbox per grammar point that is independent of SRS. It lives in the new `grammar_mastery` table, synced LWW on the flag, and is included in the JSON backup.
+- **Monolingual mode.**
+  - `MonolingualSettings` holds the synced `monolingual.fromLevel`. It's off by default and starts at N2 when turned on, or earlier if the learner chooses.
+  - `Explanations.grammar(point)` returns our Japanese explanation from the pack, or English with `japaneseMissing`.
+  - `Explanations.word(request)` returns the JMdict glosses, or the new `paraphrase_word_ja` LLM paraphrase. The paraphrase is labeled and cached in the device-local `ai_paraphrase` table. Without a model it falls back to English with `unavailableReason`.
+- **Onomatopoeia (`app.tsumugi.onomatopoeia`).**
+  - `OnomatopoeiaRepository` provides themes with glyphs and counts, filtering by theme and type, search, and detail with examples.
+  - `OnomatopoeiaQuiz` asks "pick the word for the scene" and "pick the scene for the word". Its distractors never share a reading or gloss with the answer.
+- **Schema.**
+  - User DB `7.sqm` (v7 → v8) adds `grammar_mastery` and `ai_paraphrase`. `databases/7.db` is its starting snapshot. It was renumbered from 8 at merge, and the no-op placeholder was dropped (D-231).
+  - The grammar pack gets `grammar_point_ja`. The dictionary pack gets `onomatopoeia` and `onomatopoeia_theme`, whose schema is `onomatopoeia.sq`.
+- **Tools.**
+  - `packs/grammar_ja.py` (status/check/merge/draft).
+  - `packs/build_onomatopoeia.py` (build/status/merge/draft), wired into `build_all.py` after `build_decks.py`.
+  - `packs/llm_draft.py`, the shared OpenAI-compatible client (`--endpoint URL --model NAME`).
+  - Re-runs only add missing ids or fields.
+
+### Hooks for the platform UIs (AppGraph)
+- **`courses`:**
+  - `courseLevel()` / `setCourseLevel(n)`.
+  - `overview()` returns `List<LevelProgress>` for N5…N1, each with `progress.fraction` / `percent`.
+  - `course(level)` returns a `JlptCourse`: `modules` (each with `steps`, `nextStep`, `kanji`, `words`, `grammar`, `quiz`, `mock`), `currentModule`, `progress` and `sections`.
+  - `remaining(level)` returns a `LevelRemaining`.
+  - `setMastered(pointId, bool)` / `masteredIds()`.
+  - A quiz step launches `exams().jlptTypeDrill(level, type)`, and a mock step launches `exams().jlptSection(level, sectionId)`.
+- **`monolingual`:** `fromLevel()` / `setFromLevel(n or null)` / `enabled()` / `setEnabled(bool)` / `languageFor(level, learnerLevel)`.
+- **`explanations`:**
+  - `grammar(point)` and `grammar(point, language)` return a `GrammarExplanation` with `language`, `meaning`, `nuance`, `aiGenerated` and `japaneseMissing`.
+  - `word(ParaphraseRequest, learnerLevel, generate)` returns a `WordExplanation` with `language`, `glosses`, `paraphrase`, `example`, `note`, `engine`, `cached` and `unavailableReason`. Lists pass `generate = false`.
+  - `paraphrase(...)` / `forgetParaphrase(...)`.
+- **`onomatopoeia()`** returns an `OnomatopoeiaRepository`, or null when there's no dictionary pack:
+  - `available()`.
+  - `themes()` returns theme `svg` strings (viewBox 64, `currentColor`).
+  - `words(theme, type, withFeelOnly)`, `search(q)`.
+  - `detail(entryId)` includes `examples`.
+  - `quiz(count, kind, theme, seed)` returns `OnomatopoeiaQuestion` values with `prompt`, `promptJa`, `choices`, `options`, `answer` and `isCorrect(i)`.
+  - Show the badge when `word.aiGenerated`.
+
+### Tests
+- **commonTest:**
+  - `CourseBuilderTest` (9 tests).
+  - `MonolingualAndMasteryTest` (5): mastery LWW sync across two devices, cached paraphrase, the setting.
+  - `OnomatopoeiaTest` (5): quiz ambiguity rules, repository, empty state for older packs.
+  - `PromptGoldenTest`: `paraphrase_word_ja`, a good answer plus a bad English one and a circular one.
+- **androidHostTest:**
+  - `UserDbMigrationTest`: v7 → v8 markers.
+  - `RealPhase12PackTest`: the real packs, with courses for all five levels, ja explanations for every N2/N1 point, and 600+ described onomatopoeia plus a 30-question quiz.
+
+### Deferred
+- **Platform UI.** None was built here: the course view, mastery checkboxes, monolingual toggle, onomatopoeia browser and quiz.
+- ~~**Review tooling.** `tools/items/review.py` doesn't show or verify `meaning_ja`/`nuance_ja` or onomatopoeia entries yet.~~ Done (D-248). It's outside this change's scope (tools/packs only), so the badge stays on for all of them.
+- **Onomatopoeia examples.** 832 words have no example sentence. The pack's Tatoeba subset has none containing them, and adding sentences is a `build_sentences.py` change.
+- **Video links.** User-attachable video links per grammar point (§6.6) aren't built.
+
+### How to run
+```
+cd tools && uv run python packs/build_grammar.py && uv run python packs/build_onomatopoeia.py   # or packs/build_all.py
+uv run python packs/grammar_ja.py status && uv run python packs/build_onomatopoeia.py status
+./gradlew :shared:compileCommonMainKotlinMetadata :shared:verifySqlDelightMigration :shared:testAndroidHostTest :androidApp:assembleDebug -Ptsumugi.native=false
+```
+## Phase 11 (Android UI): immersion pipeline and audio packs (2026-09-18)
+
+The Android screens for everything Phase 11 built in the shared core, plus pre-rendered audio (rule 20). Decisions D-180…D-189. iOS is being built in parallel by another agent.
+
+### What was built (androidApp only)
+- **Audio packs (rule 20):** bundled pitch and minimal-pair packs install at startup (`ensureBundled`). Exam listening (`exam/<owner>/<line>`, play-once kept in strict modes), dialogues, minimal pairs (practice and reviews), grammar examples (new ▶ per example) and matching shadowing sentences play pre-rendered clips and fall back to TTS. Settings → Audio packs: installed sets with sizes, versions and voice credits; install from a file (SAF) or a typed server URL (no default URL, D-096), with progress and cancel; remove.
+- **Media decks:** Learn → Decks (create from text, EPUB or subtitles; from any reader document or the player's coverage card), preview with coverage, 80/90/95/98% targets, JLPT/ILR, kanji and grammar, save, deck page with "Study this deck" (interleave or deck only), Core 2k/6k/10k with "covers X% of your media".
+- **Coverage:** overlay on reader documents and in the media player, difficulty badges, library sort by coverage with background profiling, and "Your media" (sentence-bank media sorted by coverage, reopened with their cues).
+- **Known words:** "Mark known" on dictionary entries, reader words and deck rows; an optional onboarding step "I know these" through frequency bands for non-beginners, also reachable from Decks.
+- **1T:** highlighted in the reader (with a 1T tab) and in the player's subtitle list, with "Mine".
+- **Sentence bank:** the player indexes subtitles after loading or generating them; dictionary entries show Sentences from my media (clip playback, video frames), Tatoeba and, when turned on, Immersion Kit; "Mine this line" cuts the audio, grabs a frame and attaches both. Immersion Kit switch (off by default) with the terms note in Settings.
+- **Lyrics:** Practice → Songs: import audio + LRC or plain lyrics, alignment with progress and cancel, karaoke view (line and word highlight, tap a word for the dictionary), per-line translation (own or AI with badge), grammar notes, cloze mode (auto or per-word picks), .lrc export.
+- **Immersion log:** reader, media player, podcasts, songs and dialogues log automatically; Me has the roadmap card and the immersion card (heat-map, by source, manual entry, daily target).
+- **Reader:** annotations (tap-to-select, highlight/box/note/grammar span, Notes tab), Words tab with drill and "add all to reviews", screenshot import (Photo Picker → ML Kit OCR → `importScreenshots`, page pictures shown), guide links on grammar points.
+- Strings in `values` and `values-ja` (293 new).
+
+### Shared additions
+None. The app module now compiles against Okio (already shipped via `shared`) because audio-pack APIs expose Okio types.
+
+### Deferred
+- Online (Immersion Kit) lines don't play audio or show pictures (D-185), and dictionary sentence hits can't be mined yet (D-189).
+- Reader tokens still color by SRS stage only; words marked known don't change the reader's "known" styling (shared deferral above).
+- Nothing here was run on a device yet: only `:androidApp:assembleDebug` was verified.
+
+### How to run
+```
+./gradlew :androidApp:assembleDebug -Ptsumugi.native=false
+```
+
+## Phase 11 (iOS UI) and audio packs on iOS (2026-09-18)
+
+The SwiftUI screens for everything in the two Phase 11 shared-core sections below, plus rule 20 audio on iOS. Decisions D-190…D-198. **Not compiled:** CI is paused (D-140) and there's no Xcode here. Every new interop spot is listed under "iOS: unverified since CI paused". The Kotlin bridge additions compile (`:shared:compileCommonMainKotlinMetadata`).
+
+### What was built (`iosApp/Tsumugi`)
+- **Audio packs (rule 20):**
+  - `ensureBundled()` runs at launch.
+  - `Platform/PackAudio.swift`: `PackAudio.path(key)`, `VoicePlayer.say(_:key:graph:)` / `sayLines(_:graph:)`, and `PackClipPlayer`, which plays pack clips and falls back to TTS.
+  - Pack clips play in: exam listening (strict play-once unchanged) and attempt review, dialogues, minimal pairs, grammar examples (a play button per example), and shadowing. Side-by-side playback plays `pack:` references.
+  - **Settings → Audio packs** (`Features/Settings/AudioPacksView.swift`): installed sets with size, clip count, version and credits; install from Files (copied out of the security scope off the main actor, then `installFile`); install from a typed server URL (`fetchManifest` → `download`, device-local, no default, D-096). Progress for each phase, Cancel, Retry, and Remove.
+- **Media decks and Core decks** (`Features/Decks/DeckViews.swift`, Learn → Decks):
+  - Create a deck from a library text, an EPUB, subtitles or pasted text, and from the media player's subtitles or the reader's menu. The preview shows words for 80/90/95/98%, JLPT/ILR, coverage, kanji and study-order words, with progress and Cancel.
+  - Save, optionally with "study this deck". Then a deck list and a detail view with words (swipe Known / Not known), kanji, grammar links, rename and delete.
+  - Lesson controls: study this deck, interleave or deck only, stop. The Core 2k/6k/10k decks are paged by frequency, with known counts and "covers X% of your media".
+- **Coverage overlay:**
+  - `UI/CoverageUI.swift` builds the localized "You know X% of the words · Y% of the kanji · N new words to reach 95%" sentence and a difficulty badge (JLPT · ILR · score).
+  - Reader: a card at the top of each text.
+  - Media player: a card after subtitles load.
+  - Library: a Recent / Coverage sort, per-row known % and difficulty badge, and "Measure coverage of N more texts" (`profileLibrary`, progress and Cancel).
+- **Mark known:**
+  - The dictionary entry has "I know this word" (and Undo). The reader popup has Known / Not known; marked words stop being coloured as unknown and coverage refreshes.
+  - Onboarding has an optional "Words you already know" step, pages of 40 from the frequency list (D-196).
+- **1T sentences:**
+  - Reader: "Highlight one-new-word sentences" (mint; the target word stronger), plus a list with Mine and Show (scrolls to the sentence).
+  - Media player: "Lines with one new word", each with Mine and a jump to the line, and highlighted in the cue list.
+- **Sentence bank:**
+  - Media player: indexes cues after .srt/.vtt load or Whisper generation, with a stored locator (D-191). "Mine line" cuts the clip and grabs a frame, then `attachMedia`.
+  - Dictionary entry: a "Sentences" section grouped by source (your media per title, Tatoeba, Immersion Kit). Library lines play their clip (cut on demand and cached) and show a frame thumbnail from `AVAssetImageGenerator`. "Mine" makes a word card or a sentence card.
+  - Settings → Example sentences: the Immersion Kit toggle, off by default, with the terms note. Its results are text only (D-198).
+- **Lyrics** (Practice → Lyrics, `Features/Practice/LyricsViews.swift`):
+  - A songs list with an honest empty state. Import audio (copied into Application Support, D-192) plus an .lrc/.txt file or pasted lyrics.
+  - Karaoke view: line and word highlight from `Karaoke.at`, tap a line to seek, "Align with Whisper" (progress, Cancel), cloze mode (pauses when a hidden word is sung, then type it or show it), and LRC export via the share sheet.
+  - Line study (press and hold a line): tap words for the dictionary, grammar notes, your own translation, or an AI translation with its badge.
+- **Immersion log** (Me):
+  - The reader logs a ticket while the text is open. The media player, lyrics and dialogues report the time actually played; podcasts log as PODCAST. Open tickets are stopped on backgrounding (D-194).
+  - Me has an immersion card (today against the target, heat-map) and a roadmap card (the stage, its milestones with progress, rule-11 persistent).
+  - Immersion log screen: daily target, 20-week heat-map, active/passive totals, minutes per source, manual entry, and recent sessions (swipe to delete).
+- **Reader** (`ReaderViews.swift`, `ReaderExtrasViews.swift`):
+  - Annotations: pencil mode, tap the first and last word, then highlight / box / note / grammar (D-193). A Notes list covers edit, delete and detached annotations.
+  - "Words in this text" (every popup records the lookup) with remove, "Add all to reviews" and Drill (context cards: type the reading, type the meaning, or self-check).
+  - Screenshot import: PhotosPicker for up to 30 pictures → the existing Vision OCR → `importScreenshots`, with per-picture progress and Cancel. The pictures show as a page strip.
+  - Guide links on every grammar point, opened in the browser.
+- **Strings:** 310 new `Localizable.xcstrings` keys with Japanese. Every new async screen has an error + Retry state (F-33).
+
+### Deferred
+- Online (Immersion Kit) lines show no image or audio (D-198).
+- The reader's furigana ("above my level") still ignores words marked known (the shared Deferred item below). The reader only stops colouring words the learner marked in this session.
+- Lyrics translations and cloze picks aren't in the LRC export (shared, D-163).
+
+### How to check
+On the Mac, build as described in "iOS: unverified since CI paused", fix any interop names from the list there, then run the Phase 11 items in `docs/QA.md`.
+
+---
+
+## Phase 11 (shared core, part 1): media decks, coverage, known words, difficulty, 1T (2026-09-18)
+
+BRIEF_V2 §6.1, §6.4 (difficulty score) and §6.11 (1T mining). Decisions D-150…D-159. Platform UI is not built yet; the hooks are listed below.
+
+### What was built (`shared/…/coverage/`, `shared/…/decks/`)
+- **Media decks** (`MediaDeckService`): `vocabularyForDocument/Text/Subtitles/Epub` → `MediaVocabulary` (words in study order, kanji with counts, grammar point ids, stats: unique words, words for 80/90/95/98%, JLPT/ILR) → `save` → synced `media_deck` + `media_deck_word`. `decks()`, `deck(id)`, `deckWords`, `rename`, `delete`.
+- **Coverage overlay** (`CoverageService`): `documentCoverage(id)`, `subtitleCoverage(mediaKey, srt)` and `textCoverage(text)` return `DocumentCoverage` (TextCoverage `summary` = "You know X% of the words · Y% of the kanji · N new words to reach 95%", plus the difficulty). `librarySortedByCoverage()` and `profileLibrary(onProgress)` fill in the rest.
+- **Learner knowledge** (`LearnerKnowledge`): a snapshot of SRS stages (Guru+ known, Apprentice learning) plus `known_word`, cached behind a fingerprint query.
+- **Known words** (`KnownWords`): `markKnown`, `markUnknown`, `frequencyBatch(afterOrd, size)` for the onboarding "I know these" flow, and `bands()`.
+- **Core decks**: `frequencyDecks()` (Core 2k/6k/10k with known counts and "covers X% of your media") and `frequencyDeckWords`. Every media deck also reports `libraryCoverage`.
+- **Deck lessons** (`DeckLessons`): `activate(deckId, mode)`, INTERLEAVE or DECK_ONLY. `AppGraph.startLessons()` mixes deck words with path items, and Today counts them via `adjust`.
+- **Difficulty score** (`DifficultyScorer`, formula in `docs/CONTENT_PACKS.md`) replaces `SimpleImmersionDifficulty` in Today (`ScoredImmersionDifficulty`).
+- **1T sentences**: `oneTargetSentences(documentId)`, `oneTargetCues(srt)` (with cue index and times), and `mineOneTarget`.
+
+### Schema and packs
+- User DB `5.sqm` (v5 → v6) with the `databases/5.db` snapshot: `media_deck`, `media_deck_word` and `known_word` (synced, triggers, in `SyncTables` and `SYNC_PROTOCOL.md`), plus the device-local `text_profile`.
+- `dictionary.sqlite` gains `freq_word` (`tools/packs/build_decks.py`, run by `build_all.py` after `build_sentences.py`): **10,000 words** (Core 2k/6k/10k = its prefixes), all with Tatoeba hits (lowest count 4), 253 function words left out. Owner: rebuild packs (`uv run python packs/build_all.py`, or just `packs/build_decks.py` on an existing dictionary pack).
+- `IlrBandData.kt` is generated from `tools/items/ilr_bands.json` by `tools/packs/gen_ilr_bands.py` (`--check` in CI).
+
+### Tests
+- `CoverageTest` (11): profiles, snapshot matching (jmdict/v:/wk:/anki:, marks, kanji), overlay and words-to-95%, cache invalidation by reviews and marks, library sort, 1T in documents and cues, the difficulty ordering, the abstract measure, the immersion matcher, frequency batches.
+- `MediaDeckTest` (5): document, subtitles and text decks, save/replace/delete, Core decks with library coverage, and deck lessons (interleave, completion with context, skip known, Today adjust).
+- `Phase11SyncTest`: decks, words and known words sync, the known flag is LWW, deck delete propagates, profiles stay local.
+- `UserDbMigrationTest`: extended to v6.
+- `DifficultyCalibrationTest` (real packs): DLPT means per ILR level 0+ 14.4 · 1 15.5 · 1+ 22.8 · 2 41.2 · 2+ 51.0 · 3 57.3; 98% of pairs two or more levels apart in order; 59/60 labels within one step. It also checks that the real pack has the 10,000-word Core list.
+
+### UI hooks for the platform agents (all on `AppGraph`)
+- `coverage`: overlay on the reader and player (`documentCoverage`, `subtitleCoverage`, with progress), the library sort, 1T highlight lists (`oneTargetSentences`, `oneTargetCues`) and "Mine" (`mineOneTarget`).
+- `decks`: "Create deck" from a document, EPUB path, subtitles or text (preview `MediaVocabulary` → `save`), the deck list and detail, and Core decks.
+- `deckLessons`: "Study this deck" (`activate`) and a mode switch.
+- `knownWords`: "Mark known" on reader words, and onboarding batches.
+- All new suspend APIs are `@Throws`.
+
+### Deferred
+- The reader's own `known` flag (furigana "above my level", `reader_doc.known_ratio`) still reads SRS stages only, so words marked known don't hide furigana yet. The coverage overlay does include them.
+- Without the path pack, Today shows no lessons block for deck lessons (D-154).
+- The Wikipedia-based frequency list (D-152).
+## Phase 11: Immersion pipeline, shared core part 1 (BRIEF_V2 §6.2, §6.3, §6.4 annotations/vocab, §6.11) (2026-09-18)
+
+Shared code and tests only; the platform screens are next. Decisions D-160…D-169. The media decks, coverage, difficulty score, frequency decks, known words and 1T mining are a parallel part of Phase 11.
+
+### What was built
+- **Sentence bank (§6.2):** `AppGraph.sentenceBank` indexes every cue of a media item with subtitles (`index(mediaId, title, kind, locator, cues, source, onProgress)`) by JMdict id and lemma. `AppGraph.sentenceSearch.forEntry(entryId, word, reading)` returns library lines, then Tatoeba, then optional online lines, each tagged with its source. Library hits carry `ClipSpan(start, end, thumbnailMs)` for on-demand extraction.
+- **Mine this line:** `AppGraph.sentenceMiner.mineLine(SENTENCE|VOCAB, …)` → `MineDraft` (the platform cuts the audio and grabs the frame) → `attachMedia(draft, durationMs, imageWritten)` → `render(itemId)` (sentence split around the highlighted word, audio/picture paths, TTS fallback).
+- **Immersion Kit (optional):** `AppGraph.onlineExamples`, off by default per device, v2 API, session-only memory cache, never stored (docs/INTEGRATIONS.md).
+- **Lyrics & karaoke (§6.3):** `AppGraph.lyrics`: import audio + `.lrc` (line or enhanced word LRC) or plain lyrics; `align(songId, mediaHash, pcm)` via Whisper segments; `Karaoke.at(lines, positionMs)`; per-line translation (learner's or labeled AI); `lineStudy` (tap words, grammar notes); cloze (`setCloze`/`autoCloze`/`clozeSession`), LRC export. Device-local.
+- **Immersion log and roadmap (§6.11):** `AppGraph.immersion` (start/stop tickets, `report`, `addManual`, `delete`, `days`, daily target), synced by union + tombstone. The Today immersion block completes when the target is met; `stats.immersionHeatmap(days)`. `AppGraph.roadmap.status()`: four stages, milestones in known words, hours, graded-reader score (Phase 12 hook) and OPI; the reached stage never drops (rule 11).
+- **Reader (§6.4):** `reader.annotations` (box, highlight, note, grammar span; synced per row by document key, re-anchored by quote), `reader.importScreenshots(pages)` with page images, `reader.vocabulary` (auto list of looked-up words, context-card `drill`), `reader.addDocumentWordsToReviews`, and `GuidesLibrary` (about 90 curated links, link-only).
+
+### Schema
+`migrations/6.sqm` → schema v7 (`databases/6.db` is the v6 snapshot, generated after the decks migration merged): `immersion_session` and `reader_annotation` (synced; triggers in `immersion.sq` / `readerNotes.sq`), plus the device-local `media_index`, `media_cue`, `media_cue_token`, `lyrics_song`, `reader_doc_meta` and `reader_doc_vocab`. Renumbered from `5.sqm` at merge time, as planned in D-169.
+
+### Tests
+`ImmersionTest` (5), `LyricsTest` (9), `SentenceBankTest` (5), `AnnotationsTest` (5), host `GuidesGrammarIdsTest`, and the v5 → v6 part of `UserDbMigrationTest`.
+
+### UI hooks for the platform agents
+- Media player: after loading or generating subtitles, call `sentenceBank.index(…)`. Play a hit's `clip` span; the frame is at `thumbnailMs`. "Mine this line" → `sentenceMiner.mineLine` → cut audio into `draft.audio.path`, frame into `draft.image?.path` → `attachMedia`. Log with `immersion.start(MEDIA, ACTIVE|PASSIVE, mediaId, title)` / `stop(ticket)`.
+- Dictionary entry: a "Sentences" section from `sentenceSearch.forEntry`, grouped by `SentenceSource`; an Immersion Kit toggle (`onlineExamples.setEnabled`) with its label.
+- Reader: `immersion.start(READER, ACTIVE, docId, title)` on open, `stop` on leave; `vocabulary.recordLookup(docId, token, sentence, gloss)` on every word popup; annotation tools over a selection (`annotations.add/update/delete/forDocument`); a "Words" tab with Drill; screenshot import (OCR each picture into `screenshots.screenshotFile()`, then `importScreenshots`), showing `screenshots.pageImages(docId)`; guides from `GuidesLibrary.forGrammarPoint(pointId)` open in the browser.
+- Lyrics: a songs list, import (audio file + .lrc/.txt picker), "Align with Whisper" with progress and cancel, a karaoke view driven by `Karaoke.at`, cloze mode, per-line English with the AI badge when `aiTranslated`. The empty state says that there's no streaming or downloading: the songs are the learner's own files.
+- Me: immersion heat-map and per-source breakdown (`immersion.days(n)`), manual entry, daily target setting, the roadmap card (`roadmap.status()`); the Today immersion block reads the target automatically. Podcasts log `PODCAST`, dialogues `DIALOGUE`.
+
+### Deferred
+- Translations and cloze picks aren't in the LRC export. Word-level Whisper timestamps aren't used (segment level, even spread by morae).
+- Graded-reader comprehension feeds the roadmap once Phase 12 ships graded readers (`roadmap.comprehension`).
+
+---
+
+## Phase 9: Stabilize (BRIEF_V2 §4) (2026-09-18)
+
+Every P0 and P1 item (F-01…F-34) is fixed, along with most P2 items (F-35…F-45). Decisions are D-040…D-085.
+
+### Release blockers (P0)
+- **F-01 App icon:** light, dark and tinted 1024 px variants, rendered from the Android vector (`tools/assets/render_icon.py`; CI checks they match).
+- **F-02 iOS local network:** `NSLocalNetworkUsageDescription`, plus ATS `NSAllowsLocalNetworking` and exceptions for `*.ts.net` / `*.home.arpa` in `iosApp/TsumugiInfo.plist`.
+- **F-03 Android cleartext:** allowed through `network_security_config.xml`; the hosts the app itself calls stay https-only.
+- **F-04 Path progress persisted:** `path_progress` (merged by taking the higher level) and `path_unlock` (merged by union); a confirmed "Reset to level N".
+- **F-05 Review undo:** tombstones instead of deletes; they sync, with a fast path for rows never pushed.
+- **F-06 CI archive:** CI archives an unsigned Release build, and `tools/ci/validate_archive.py` checks it: icon, usage strings, three targets, frameworks, privacy manifests, LICENSES and packs.
+
+### Serious (P1)
+- **F-07 Reviews tab (iOS):** queue by item kind, forecast and leeches.
+- **F-08 Reader translation:** a labeled `translate_sentence` result.
+- **F-09 Double submit:** blocked by a Mutex in the shared session and disabled controls on both apps.
+- **F-10 Cancellation:** per-generation ids on both native bridges; a cancelled call is never retried.
+- **F-11 Timeouts:** on every client, plus a 60 s "endpoint unreachable" cache.
+- **F-12 Keys:** one key per endpoint.
+- **F-13 Model downloads:** hashed while writing, with a 1.5× free-space check. They run in the background: a background URLSession on iOS, WorkManager on Android.
+- **F-14 iOS audio:** one `AudioSessionController`, with interruption and route-change handling and background audio.
+- **F-15 iOS backups:** packs, models and tts are excluded.
+- **F-16 Packs:** iOS opens them in place. Android copies with a verified hash, an atomic rename and progress.
+- **F-17 Stages:** stage lookup can no longer fail. The audit's crash couldn't happen through the database, but the code is hardened anyway.
+- **F-18 FSRS:** already matched py-fsrs 6.3.2; reference vectors added.
+- **F-19 Lesson counts:** count distinct items.
+- **F-20 Grammar cards:** undo retracts the ghost card it spawned; points without examples are held out of reviews.
+- **F-21 Pitch targets:** looked up by lemma, with conjugation rules.
+- **F-22 Shadowing DTW:** banded, two rows.
+- **F-23 Local model:** reloads on switch, trims history, and shows a failure banner instead of splicing in scripted turns.
+- **F-24 Exam attempts:** resumable and timed by wall clock on both apps.
+- **F-25 Writing canvas:** no longer hijacked by scrolling.
+- **F-26 Reader tokenizer:** the lattice tokenizer, run in the background with progress.
+- **F-27 Stats:** a materialized `daily_stats` table and an indexed stages query.
+- **F-28 Lesson order:** follows the pack.
+- **F-29 Android seed:** random per generation.
+- **F-30 VOICEVOX temp files:** unique per synthesis.
+- **F-31 Device settings:** device-local `device_setting` table; manual unlocks are per-item rows.
+- **F-32 Pack slots and scheduler:** each pack opens in its own slot, and new FSRS weights trigger a background recompute with progress.
+- **F-33 Error states:** error and retry on every async screen.
+- **F-34 Notification permission:** asked after the first review session, with an explanation.
+
+### P2
+- **F-35 Meaning answers:** accepted in any script.
+- **F-36 iOS furigana:** placed per segment.
+- **F-37 End-to-end sync:** hides keys behind HMAC ids (protocol v2).
+- **F-38 Pinned sources:** 18 sources pinned in `sources.lock`, with the Tatoeba exports mirrored to this repo's `sources-tatoeba-2026-09-12` release.
+- **F-39 Grammar highlighting:** matched on token boundaries.
+- **F-40 LicensesTests:** check the licenses file ships in the bundle.
+- **F-41 Whisper:** can be cancelled.
+- **F-42 File types:** document types and "Open with" on both platforms.
+- **F-43 Export compliance:** notes in RELEASE.md.
+- **F-44 Frameworks:** pins verified.
+- **F-45 License citations:** corrected, and an "Inspiration, no content used" section added.
+
+### Schema
+The user database uses SQLDelight migrations now (`migrations/1.sqm`, `2.sqm`, version 3). `verifySqlDelightMigration` runs in the build, and `UserDbMigrationTest` migrates real v1 data.
+
+### Regression tests (rule 17)
+- **Path and SRS:**
+  - `PathProgressTest` (4 tests, including `levelStaysPassedAfterLapsesAndLevelFiveLessonsStayAvailable`).
+  - `SyncMergeTest.{undoAfterPushConverges, undoBeforePushNeverLeavesTheDevice, undoDuringAPushTombstones, pathProgressMergesToTheHigherLevel, pulledSettingsAreReportedToTheApp}`.
+  - `ReviewSessionTest.{concurrentSubmitsRecordOneReview, wrapUpDuringSubmitIsDeferredNotLost}`.
+  - `UnlockTreeTest.{stageIsTotalForStartedCards, lessonOrderFollowsPackPosition}` and `SrsRepositoryTest.itemWithTwoLearningCardsHasAStage`.
+  - `FsrsTest` reference vectors for Hard and same-day reviews.
+  - `TodayPlannerTest.lessonCountsAreDistinctItems`.
+  - `GrammarServiceTest.{undoOfAMissRetractsTheGhostItSpawned, pointsWithoutExamplesAreHeldOutOfReviews}`.
+  - `materializedStatsMatchTheReviewLog`.
+  - `deviceSettingsNeverSync` and `UserDbMigrationTest`.
+- **Network, AI and models:**
+  - `TimeoutsTest` (6 tests) and `EndpointKeysTest` (3 tests).
+  - `ModelManagerTest.{hashesWhileWritingWithoutSecondPass, resumeRehashesThePartialFileOnce, corruptResumedPartIsCaughtByIncrementalHash, refusesToStartWithoutOneAndAHalfTimesTheSpace}` and `DownloadedModelInstallerTest` (4 tests).
+  - `PackInstallerTest` (9 tests).
+  - `LocalEnginesTest.{switchingModelsReloads, modelLoadedOutsideTheSlotIsReplaced, slotUnloadForgetsThePath}` and `RoleplaySessionTest` (5 tests).
+  - `cancellationIsNeverRetried`, `cancelledStatusBecomesAiCancelled`, `whisperCancellationStopsTheBridge` and `whisperCancelledStatusBecomesAiCancelled`.
+  - `SynthesizedAudioFilesTest` (3 tests).
+- **Speech and reader:**
+  - `PronunciationTargetsTest`: 食べます, 食べました, 高かった.
+  - `PronunciationTest.{rollingDtwMatchesTheFullMatrix, sixtySecondShadowingStaysSmallAndFast}`.
+  - `ReaderLatticeTest` (3 tests), `particleInsideAWordIsNotAGrammarHit` and `endingInsideAnAdjectiveIsNotTai`.
+  - `meaningsInAnyScriptMatch` and `meaningNormalizationFoldsCaseAndWidth`.
+- **Exams:** `ExamResumeTest` (5 tests).
+- **iOS:** `LicensesTests`.
+
+### Not yet verified (owner, on the Mac and iPhone)
+- The Phase 9 QA pass in `docs/QA.md` and the signed TestFlight archive (`docs/RELEASE.md` §4).
+- Export compliance: `ITSAppUsesNonExemptEncryption = NO` may be wrong, because end-to-end sync uses our own XChaCha20 (D-067). This is the owner's legal call.
+
+### Known gaps carried forward
+- Aozora ruby isn't kept with saved documents yet (G-07).
+- The server leaderboard still counts reviews that were later undone. The leaderboard was deferred past v2 by the owner (D-314).
+- Background model downloads on iOS verify the file in a second pass after it arrives.
+- Strings added in Phase 9 aren't in `Localizable.xcstrings` yet. They fall back to English.
+
+### iOS: unverified since CI paused
+CI stopped running on push at D-140. The last CI compile got as far as `Platform/Recordings.swift`. Swift that compiled up to `ccce711` (Phase 9) is trusted. Everything below was written after that and has only been checked by reading it against the Kotlin sources (Kotlin/Native + SKIE 0.10.14 naming rules). The Kotlin framework itself did build for iOS in that last run.
+
+**Swift files changed since `ccce711`:**
+- App: `App/RootView.swift`, `App/TsumugiApp.swift`, `UI/SharedText.swift` (new).
+- Today: `Features/Today/TodayView.swift`.
+- Study: `ReviewView.swift`, `ReviewModes.swift` (new), `KanaCourseView.swift` (new), `PersonalCardsView.swift` (new), `GrammarViews.swift`, `LessonView.swift`, `PathViews.swift`, `ReviewsHomeView.swift`, `StudyComponents.swift`.
+- Practice: `FreeTalkView.swift` (new), `PodcastViews.swift` (new), `ShadowingView.swift` (new), `MediaPlayerView.swift`, `PracticeHubView.swift`, `PronunciationViews.swift`, `RoleplayViews.swift`.
+- Reader: `ReaderViews.swift`, `ReadingQuestionsSheet.swift` (new).
+- Me: `MeView.swift`, `MotivationViews.swift`, `ContentReviewView.swift`, `ExportView.swift`, `IntegrationsView.swift` (the last four are new).
+- Other features: `Features/OnboardingView.swift`, `Features/Writing/WritingViews.swift`.
+- Platform: `Recordings.swift` (new), `MediaDecoding.swift` (new), `AudioCapture.swift`, `ShareInbox.swift`, `VoicePlayer.swift`.
+- Action extension (new target, doesn't link `Shared`): `TsumugiAction/ActionViewController.swift`.
+
+**Fixed in the audit (not yet compiled):**
+- `RecordingSaver.save` returns the recording id. The Kotlin `Recording` clashes with SQLDelight's table class `app.tsumugi.db.Recording`, so Swift never spells `Recording_` now.
+- `MeView.swift` reads the developer switch with `deviceSettings.get(key:) == "true"`. It no longer calls `bool(key:default:)`, because `default` is a C keyword in the Objective-C header.
+- `ConversationPatternsCard.label` takes `Shared.ErrorType`, module-qualified so it can't resolve to Swift's old `ErrorType` name.
+- `ReaderPitch.overlay` has `@Throws` like every other exported `suspend fun`.
+
+**Interop spots that are still uncertain (check these first if the build fails):**
+- Default arguments: SKIE 0.10.14's default-argument interop is off (there's no `skie {}` block in `shared/build.gradle.kts`), so every Swift call passes every Kotlin parameter. The audit checked each new call. A "missing argument" error means a call was missed.
+- Nested and sealed types that Swift spells out: `ReviewStateAsking` (the same form as `ReviewStateRevealed` and `ReviewStateAnswered`, which compiled) and `LeaderboardStateFailed(message:)` (`LeaderboardView.load`). The `onEnum(of:)` case names are `TodayLaunch` → `.reviews/.lessons/.kana/.grammar/.immersion/.shadowing/.speaking/.writing`, `LeaderboardState` → `.notSignedIn/.optedOut/.encrypted/.failed/.rows`, and `ReadingQuestionsResult` → `.ready/.unavailable`.
+- Enum cases that are only ever read through SKIE: `QuizMode.type` / `.pick` (a case named `type`), `FreezeResult.noFreezesLeft`, `ErrorType.wordChoice`, `AnswerMode.meaningChoice/.fillHint/.production/.minimalPair`, `DownloadState.done/.failed`.
+- Properties with keyword-like names: `TodayBlock.optional` (`TodayView.blockRow`).
+- Companion constants: `FocusTimer.companion.OPTIONS_MINUTES` (a `List<Int>`, read as `[KotlinInt]`) and `ClipService.companion.DEFAULT_PADDING_MS`. `MediaPlayback.shared.SPEED_*` follows the `FsrsOptimizer.shared.MIN_REVIEWS` pattern that compiled.
+- Suspend functions that return primitives, which Swift sees boxed: `exportReviewCsv` / `exportBackup` (`KotlinInt`, read with `Int(truncating:)`), `recordings.totalBytes()` (`KotlinLong`), and `isOptedIn`, `isEnabled` and `fileExists` (`KotlinBoolean`). `stats.freeze(day:)` returns a Kotlin enum that Swift switches on directly.
+- Kotlin interfaces implemented in Swift: `PcmDecoder: NSObject, PcmWindowReader` (`durationMs() -> Int64`, `read(startMs:endMs:onDone:)` with `(KotlinFloatArray?, String?) -> Void`), in the same shape as `WhisperBridge`.
+- Overloads: `SwiftSupport.reviewQueue(graph:)` and `reviewQueue(service:kind:)`. `ReaderToken.showFurigana(mode:learnerJlpt:)` (a member) sits next to the new extension `showFurigana(mode:level:)`.
+- The new `TsumugiAction` target in the pbxproj: IDs `7A5E…80`–`8B` are all defined and referenced consistently, and the settings mirror `TsumugiShare`. It hasn't been built yet.
+- Strict concurrency is `complete` in Swift 5 mode, so Sendable problems (for example `UIImage` captured in `Task.detached` in `PersonalCardsView.savePicture`) appear as warnings, not errors.
+
+**What to run first on the Mac:**
+1. `bash tools/models/fetch_ios_frameworks.sh`. It fetches llama/whisper. The app also builds without them.
+2. Build for the simulator. The Kotlin framework is built by the Xcode "Compile Kotlin Framework" phase (`./gradlew :shared:embedAndSignAppleFrameworkForXcode`), so a JDK 21 must be on `PATH` / `JAVA_HOME` for Xcode:
+   ```sh
+   xcodebuild build -project iosApp/Tsumugi.xcodeproj -scheme Tsumugi \
+     -destination 'platform=iOS Simulator,name=iPhone 16' CODE_SIGNING_ALLOWED=NO 2>&1 \
+     | tee build/xcodebuild.log | grep -E "error:|warning: .*/iosApp/|BUILD (SUCCEEDED|FAILED)"
+   ```
+   Use any installed iPhone simulator (`xcrun simctl list devices available`). Then run CI's full check: `xcodebuild test` with the same arguments plus `-resultBundlePath build/TestResults.xcresult`, and the unsigned Release `xcodebuild archive … -destination generic/platform=iOS` followed by `python3 tools/ci/validate_archive.py build/Tsumugi.xcarchive` (see `.github/workflows/ci.yml`).
+3. If a Swift name doesn't resolve, look it up in the generated header `shared/build/xcode-frameworks/Debug/iphonesimulator*/Shared.framework/Headers/Shared.h` (its `swift_name` attributes) or in SKIE's Swift files next to it. Don't guess the name.
+
+
+**Phase 11 iOS UI and audio packs (D-190…D-198), not yet compiled. Check these first if the build fails.**
+
+New files:
+- `Platform/PackAudio.swift`, `Platform/MediaLibrary.swift`, `UI/CoverageUI.swift`
+- `Features/Settings/AudioPacksView.swift`, `Features/Decks/DeckViews.swift`
+- `Features/Dictionary/SentenceBankViews.swift`, `Features/Reader/ReaderExtrasViews.swift`
+- `Features/Practice/LyricsViews.swift`, `Features/Me/ImmersionViews.swift`
+
+Changed files:
+- `ReaderViews.swift` (library and reader rewritten), `MediaPlayerView.swift`, `EntryView.swift`, `OnboardingView.swift`
+- `GrammarViews.swift`, `ListeningViews.swift`, `MinimalPairsView.swift`, `ShadowingView.swift`
+- `ExamRunnerView.swift`, `AttemptReviewView.swift`, `Recordings.swift`, `MeView.swift`, `RootView.swift`, `PracticeHubView.swift`, `TsumugiApp.swift`
+
+The uncertain spots:
+- **`KotlinLong(longLong:)`:** the boxed-`Long` initializer, used to build `[KotlinLong]` for `markKnown` / `markUnknown` / `mineLine(entryId:)`. Earlier code only ever built `KotlinInt(int:)` and `KotlinBoolean(bool:)`. Call sites:
+  - `DeckViews.swift:562`, `:702`
+  - `SentenceBankViews.swift:46`
+  - `OnboardingView.swift:179`
+  - `ReaderViews.swift:812`, `:816`
+  - `MediaLibrary.swift:143`
+
+  If the initializer is spelled differently, use `KotlinLong(value:)`, or add a bridge that takes `[Int64]`.
+- **Progress closures with boxed primitives** (`(Double) -> Unit` → `(KotlinDouble) -> Void`, read with `.doubleValue`):
+  - `DeckViews.swift:370`, which feeds the four `vocabularyFor…` calls
+  - `ReaderViews.swift:471` (`documentCoverage`), `:491` (`oneTargetSentences`)
+  - `MediaPlayerView.swift:401` (`subtitleCoverage`), `:408` (`oneTargetCues`)
+
+  `profileLibrary { done, total in … }` gets `KotlinInt`s, read with `Int(truncating:)` (`ReaderViews.swift:173`). All of these rely on a trailing closure after a SKIE async call.
+- **Object-typed progress closures:**
+  - `sentenceBank.index(…) { p in p.done / p.total }` (`MediaPlayerView.swift:394`)
+  - `alignLyrics(…) { p in p.fraction }` (`LyricsViews.swift:607`)
+- **Suspend functions returning primitives, assumed boxed:**
+  - `addDocumentWordsToReviews` → `KotlinInt` (`ReaderExtrasViews.swift:89`)
+  - `immersion.targetMinutes()` → `KotlinInt` (`ImmersionViews.swift:279`)
+  - `onlineExamples.enabled()` → `KotlinBoolean` (`SentenceBankViews.swift:302`)
+
+  Suspend `Unit` functions (`markKnown`, `activate`, `setMode`, `deactivate`, `delete`, `setTargetMinutes`, `removeAudioPack`) are assumed to return `Void`.
+- **The `new…` getter:** `TextCoverage.newWordsTo95` is never read from Swift. `SwiftSupport.coverageWordsTo95` wraps it (`CoverageUI.swift:10`).
+- **Kotlin enum members read through SKIE Swift enums:**
+  - `CoreDeck.id` / `.title` (`DeckViews.swift:69`, `:180`, `:670`)
+  - `RoadmapStage.number` (`ImmersionViews.swift:133`, `:141`)
+- **Enum case names:**
+  - `LyricsTiming` `.lrcWords/.lrcLines/.aligned` (`LyricsViews.swift:67`). The `NONE` case is deliberately never named.
+  - `DeckLessonMode.interleave/.deckOnly`
+  - `MilestoneMeasure.knownWords/.immersionHours/.readerComprehension/.opiLevel` (`ImmersionViews.swift:39`, `:48`, `:54`)
+  - `ReferenceKind.packAudio` (`Recordings.swift:203`)
+  - `ClozeState.close` (a case named `close`; `LyricsViews.swift:466`)
+  - `AnnotationKind.box/.highlight/.note/.grammar`
+  - `ImmersionOrigin.reader/.media/.podcast/.dialogue/.manual`
+  - `MediaKind.video/.audio`, `CueSource.file/.generated` (`MediaPlayerView.swift:114`)
+  - `MineKind.vocab/.sentence`, `WordState.known/.learning`
+- **Keyword argument label:** `reader.screenshots.screenshotFile(extension: "jpg")` (`ReaderExtrasViews.swift:513`), where the Kotlin parameter is named `extension`.
+- **Overloads:** `vocabulary.recordLookup(documentId:token:sentence:gloss:)` next to the 8-argument overload (`ReaderViews.swift:904`).
+- **Types with members of clashing types:** `ClozeAnswer.verdict` has the clashing `Verdict` type. Swift reads only `accepted` / `expected` (`LyricsViews.swift:532`). `ClozeSession.score` and `ContextDrill.score` are `Pair`s and are never read.
+- **Objects and companions:**
+  - `AudioKeys.shared.exam/dialogue/grammar(…)` (`PackAudio.swift:16`–`24`)
+  - `ReferenceClip.companion.pack(audioKey:)` (`PackAudio.swift:95`)
+  - `GuidesLibrary.shared.forGrammarPoint(pointId:topics:)` (`GrammarViews.swift:166`)
+  - `Karaoke.shared.at(lines:positionMs:)` (`LyricsViews.swift:546`)
+- **Nullable `Long`/`Int`/`Double` fields read boxed:**
+  - `SentenceHit.clip?.thumbnailMs?.int64Value` (`SentenceBankViews.swift:235`)
+  - `OneTargetSentence.cueIndex?.intValue` / `.startMs?.int64Value` (`MediaPlayerView.swift:367`, `:595`)
+  - `Milestone.current?.doubleValue` (`ImmersionViews.swift:48`)
+  - `MineDraft.thumbnailMs?.int64Value` (`MediaLibrary.swift:153`)
+- **StateFlow with an optional element:** `for await p in app.graph.audio.progress` (`AudioPacksView.swift:106`), the same pattern as `recomputeProgress`.
+- **Data-class initializer from Swift:** `ScreenshotPage(image:ocrText:)` (`ReaderExtrasViews.swift:518`).
+- **Decoding a pack clip:** `PcmDecoder.read` → `KotlinFloatArray.get(index:)` (`PackAudio.swift:118`).
+- **Other APIs:** `AVAssetImageGenerator.image(at:)` (iOS 16+), `URL.bookmarkData(options: .minimalBookmark…)` for Files-picked media, and two `.sheet(item:)` modifiers plus one `.fileImporter` per view. SwiftUI honours only one file importer per view, so `DecksHomeView` shares one.
+
+
+**Phase 12 iOS UI (D-260…D-269), not yet compiled. Check these first if the build fails.**
+
+New files: `Features/Readers/GradedReaderViews.swift`, `Features/Tracks/TrackViews.swift`, `Features/Tracks/TrackDrillViews.swift`, `Features/Courses/CourseViews.swift`, `Features/Courses/MonolingualViews.swift`, `Features/Onomatopoeia/OnomatopoeiaViews.swift`, `Features/Practice/DrillSetViews.swift`, `Features/Practice/OpiProbeMapView.swift`, `Platform/DrillPlayer.swift`, `UI/SvgGlyph.swift`. Changed: `RootView.swift`, `EntryView.swift`, `ExamHubView.swift`, `MeView.swift`, `OnboardingView.swift`, `ListeningViews.swift`, `OpiView.swift`, `PracticeHubView.swift`, `GrammarViews.swift`. The new `SwiftSupport`/`SwiftBridges.kt` adapters compile (`:shared:compileCommonMainKotlinMetadata`); their Swift spellings follow from the Kotlin parameter names.
+
+The uncertain spots:
+- **A Kotlin interface array and downcasts.** `trackDrills` returns `List<TrackDrill>`, read as `[any TrackDrill]` (`TrackDrillViews.swift:70`) and cast with `as? KeigoDrill / EmailDrill / FillInDrill / SynonymDrill / MeaningDrill / UsageDrill / PerformDrill` (`:163`–`:183`). The interface's default-bodied `isAiGenerated` is read through the protocol (`:162`). If the existential or the casts don't compile, add a bridge per type (`asKeigo(drill) -> KeigoDrill?` …).
+- **`check` overloads, one per class:** `check(answer:)` (Keigo, FillIn: `:230`, `:356`), `check(blank:answer:)` (`:299`), `check(choice:)` (`:172`, `:178`), `check(saysCorrect:)` (`:430`). `PerformanceSession.deliver(lineIndex:given:)` / `selfRate(lineIndex:gotIt:)` (`:722`, `:728`), `prompts()`, `nextRound()`, `roundPassed`, `finished`.
+- **Members returning clashing types, never named:** `PerformDrill.speaker(id:)?.name/.voice` (`Speaker`, `:554`, `:679`), `TrackSummary.track` (`Track`, `TrackViews.swift:26`, `:595`), `AppGraph.dialogue(id:)` (`Dialogue`, `ListeningViews.swift:309`), `repo.scenarios(trackId:)` (`Scenario`, `TrackViews.swift` load).
+- **Kotlin members with plain names that could be renamed:** `Track.count(key:)` (`TrackViews.swift:33`–`:37`), `TrackSummary.selected` (`:39`), `GradedStory.body` (`GradedReaderViews.swift:371`), `TrackSituation.canDoId(index:)` (`TrackViews.swift:624`), `DrillCursor.current/advance()/skipItem()/previousItem()/remainingMs` (`DrillPlayer.swift:114`–`:314`). `description` members are read through `trackDescription` / `drillSetDescription` on purpose (D-260).
+- **Nullable boxed primitives:** `ReaderTask.seconds/minChars/maxChars?.intValue` (`GradedReaderViews.swift:365`–`:366`), `GradedPassageSummary.textScore?.intValue` (`:193`), `CourseMockSection/CourseQuizType.bestAccuracy?.doubleValue` (`CourseViews.swift:49`, `:121`), `CourseWord.entryId?.int64Value` (`:561`), `DictionaryEntry.jlpt?.intValue` (`EntryView.swift:45`).
+- **Suspend functions returning primitives, assumed boxed:** `courses.courseLevel()` → `KotlinInt` (`CourseViews.swift:213`), `SwiftSupport.monolingualFromLevel` → `KotlinInt` (`MonolingualViews.swift:41`), `OnomatopoeiaRepository.available()` → `KotlinBoolean` (`OnomatopoeiaViews.swift:144`). `setMastered`, `setCourseLevel`, `setMonolingualFromLevel`, `select`/`deselect`/`switchTo`/`chooseInOnboarding`/`setCanDo` are called with `_ =` or as `Void`.
+- **SKIE enums read directly:** `Dialogue.style == .natural` (`ListeningViews.swift:331`), `CourseGrammar.stage` (`Stage?`, `CourseViews.swift:22`), `ImmersionOrigin.reader` (`GradedReaderViews.swift:482`). Everything else comes back as a code string (D-260).
+- **Methods on data classes:** `DialogueLine.segments()` and `LineSegment.isFiller` (`ListeningViews.swift:322`), `DialogueLine.overlap`.
+- **Default arguments passed explicitly:** `scores.latestByStory(limit:)` (`GradedReaderViews.swift:179`), `jlptTypeDrill(level:type:seed:)` / `jlptSection(level:sectionId:seed:)` (`CourseViews.swift:340`, `:356`, `:488`).
+- **`[KotlinInt]` built in Swift** for `submitGradedQuiz(choices:)` (`GradedReaderViews.swift:597`), the `KotlinInt(int:)` pattern that compiled before.
+- **Platform APIs new to the app:** `MPRemoteCommandCenter` targets with a non-isolated handler that hops to the main actor (`DrillPlayer.swift:292`), `MPNowPlayingInfoCenter`, `AVAudioPlayer(data:fileTypeHint:)` with an in-memory WAV (`:250`), Swift Charts (`OpiProbeMapView.swift`, `BasicChartSymbolShape` in a ternary at `:132`, `AxisMarks(values:)` with `value.as(Int.self)`), `Canvas` stroking with `.foreground` shading (`SvgGlyph.swift`), a `@unchecked Sendable` lock-guarded glyph cache, and `nonisolated static func seed()` on a `@MainActor` class (`CourseViews.swift:155`).
+- **Strict concurrency (warnings, not errors, in Swift 5 mode):** Kotlin objects (`ExamService`, `GradedStory`, `DrillSet`) captured in `Task` closures, and the `@MainActor` action closures captured by the remote-command handlers.
+
+**Phase 13 iOS UI (D-300…D-309), not yet compiled. Check these first if the build fails.**
+
+**Files:**
+- New:
+  - `Features/Pitch/PitchTestViews.swift`, `Features/Games/GameViews.swift`
+  - `Features/Kanji/KanjiExplorerViews.swift`, `Features/Reader/ReaderGrammarViews.swift`
+  - `Features/Linguist/TranslationViews.swift`, `ThesaurusViews.swift`, `WritingStudioViews.swift`, `PoetryViews.swift`, `ReadingCircleViews.swift`
+- Changed:
+  - `RootView.swift`, `PracticeHubView.swift`, `MeView.swift`, `PomodoroView.swift`
+  - `DictionarySearchView.swift` (rewritten), `KanjiView.swift`, `EntryView.swift`, `ReaderViews.swift`, `GradedReaderViews.swift`
+  - `Platform/PackAudio.swift`, `Platform/AudioCapture.swift`
+
+The new adapters compile, and their Swift spellings follow from the Kotlin parameter names.
+
+The uncertain spots:
+- **Suspend functions returning primitives, assumed boxed** (`KotlinBoolean` / `KotlinInt`, read with `.boolValue` / `.intValue`):
+  - `available()` on thesaurus, poetry and the workbench (`ThesaurusViews.swift:109`, `PoetryViews.swift:65`, `TranslationViews.swift:124`)
+  - `isKanjiBookmarked` (`KanjiExplorerViews.swift:583`)
+  - `gameBest` / `gameWeekPoints` (`GameViews.swift:88`–`:90`, `:142`)
+- **Suspend `Unit` functions called as `Void`:**
+  - `readingCircle.delete(session:)` (`ReadingCircleViews.swift:148`)
+  - `writingStudio.delete(id:)` (`WritingStudioViews.swift:118`)
+  - `translationWorkbench.delete(id:)` (`TranslationViews.swift:747`, called with `_ =` because its Kotlin return type is inferred from SQLDelight)
+- **SKIE sealed-interface existential as a parameter:** `SwiftSupport.pomodoroReflex(activity:)` / `pomodoroAtom(activity:)` take `any Activity` (`PomodoroView.swift:225`, `:228`). The `case .reflex:` / `.atom:` branches of `onEnum(of:)` no longer bind their value.
+- **Kotlin callback crossing threads:** `graph.instantSearch { [weak self] state in Task { @MainActor … } }` passes a trailing closure for `onChange: ((InstantSearchState) -> Unit)?` (`DictionarySearchView.swift:25`). Expect Sendable warnings only.
+- **Computed getters and mutable `var`s with private setters, read directly:**
+  - Pitch session and question: `PitchTestSession.level/streak/correct/answered` (`PitchTestViews.swift:191`), `PitchQuestion.expected` (`:220`) and `.clipKey`, `PitchFeedback.chosenMarks` (`:254`, `String?`)
+  - Rows: `PitchStatRow.percent` / `PitchPairRow.percent` (`:123`, `:442`)
+  - Games: `ReflexGame.finished/score/streak` and `AtomGame.finished` (`GameViews.swift:288`–`:327`)
+  - Kanji: `SoundSeries.family` (`KanjiExplorerViews.swift:741`)
+  - Grammar exercise: `GrammarExercise.prompt/marked/pointHint`, `GrammarExample.isAiGenerated` (`ReaderGrammarViews.swift:214`, `:243`, `:260`)
+  - Writing studio: `StudioDraft.readerStoryId` (`WritingStudioViews.swift:79`, `:234`)
+  - Reading circle: `CircleSession.finished/doneCount` (`ReadingCircleViews.swift:135`), `CircleEntry.done/explained` (`:296`–`:337`)
+- **Members with plain names that could be renamed:**
+  - `CircleEntry.read` (`ReadingCircleViews.swift:296`)
+  - `session.entry(idx:)` (`:275`, `:400`, `:415`)
+  - `repo.cluster(id:)` (`ThesaurusViews.swift:255`)
+  - `PoemSummary.themes`, `AozoraSource.born/died/colophon/cardUrl` (`PoetryViews.swift`)
+- **Nullable boxed fields:**
+  - `ThesaurusExpression.entryId?.int64Value` (`ThesaurusViews.swift:236`)
+  - `DifficultyScore.knownWordRatio?.doubleValue` (`WritingStudioViews.swift:445`)
+  - `ReaderDocumentSummary.author` (`String?`, `ReadingCircleViews.swift:133`)
+- **`[KotlinInt]` lists from rows:** `ConstructionRow.spanStarts/spanEnds`, applied as UTF-16 offsets through `NSString` (`ReaderGrammarViews.swift:31`).
+- **Kotlin data classes built from Swift for error paths:** `RewriteRow(...)` and `SummaryGradeRow(...)` (`WritingStudioViews.swift:545`, `:560`).
+- **Default arguments passed explicitly:**
+  - `repo.collocations(entryId:limit:)` (`ThesaurusViews.swift:343`)
+  - `componentSearch(input:limit:)` (`KanjiExplorerViews.swift:703`)
+  - `service.recent(limit:)` and `service.item(id:)` (`PitchTestViews.swift:483`–`:485`)
+  - `graph.recordings.startRecording(fileExtension:)`, then `readingCircle.attachReading` / `attachExplanationRecording(session:idx:pending:durationMs:)` (`ReadingCircleViews.swift:466`–`:474`)
+- **Nullable Kotlin arrays:** `pitchProduction(… reference: KotlinFloatArray?)` (`PitchTestViews.swift:371`). The decoder is a `@MainActor` static, `PackClipPlayer.decodeClip(path:)`, called from a main-actor Task (`:367`).
+- **Types read directly from shared:**
+  - Translation: `TranslationCriterion` from `translationRubric()` (`TranslationViews.swift:480`) and `TranslationPassage` members (`title`, `text`, `keyPoints`, `hasReference`, `isAiGenerated` …). Direction and register come only through adapters.
+  - Kanji: `ComponentSearchResult.kanji` as `[KanjiInfo]` (`KanjiExplorerViews.swift:703`).
+- **SwiftUI and platform APIs:**
+  - `Text.foregroundStyle(_:)` chained with `.underline()` / `.strikethrough()` in the diff (iOS 17 `Text` overloads, `TranslationViews.swift:624`–`:640`).
+  - Swift Charts `LineMark`/`PointMark` with a `Date` x-axis (`TranslationViews.swift:796`).
+  - `.navigationDestination(item:)` (`GradedReaderViews.swift:668`).
+  - A nested `NavigationStack` in the circle help sheet (`ReadingCircleViews.swift:205`–`:213`).
+  - `String(localized: "register.literary", defaultValue: "Literary")` (`ThesaurusViews.swift:13`).
+- **Speech:** `SpeechToText.transcribeEnglish` uses `SFSpeechRecognizer(locale: en-US)` with `requiresOnDeviceRecognition` (`AudioCapture.swift`, D-308).
+
+**Phase 14 iOS (D-319), not yet compiled. Check these first if the build fails.** One file changed, `Features/Me/SyncView.swift`:
+- `status.needsEmailVerification`: a Kotlin `Boolean` property of the data class `SyncStatus`, read as a Swift `Bool` like `status.pending` next to it.
+- `try await app.graph.syncAccount.resendVerification()`: a `@Throws` suspend fun returning `Unit`, in the same shape as `logout()` a few lines below.
+- `String(localized: "Sent. Open the link in the email, then tap Sync now.")` returned from the `run` closure (`String?`).
+- The sync intro text changed, so its `Localizable.xcstrings` key changed with it (old key removed, new key with Japanese added).
+
+---
+
+## Phase 8: Release hardening
+
+### Phase 8 (iOS) (2026-09-18)
+
+#### What was built
+- **Localization (en, ja):**
+  - `iosApp/Tsumugi/Localizable.xcstrings` is a String Catalog with Japanese for the UI chrome: tabs, titles, buttons, section headers, settings, empty states, the exam/OPI disclaimers, onboarding, and VoiceOver labels.
+  - Views that passed `String` chrome to `Text` now use `LocalizedStringKey` or `String(localized:)` (`SectionHeader`, badges, verdicts, score and feedback texts).
+  - Learning content is not translated (D-037).
+- **Accessibility:**
+  - Spoken names for icon-only buttons.
+  - Labels and values for the review answer field, session progress, path level cells, pronunciation scores, exam choices (selected trait), the question grid, the writing canvas (direct touch) and stroke order.
+  - `japaneseSpeech()` sets a Japanese locale on Japanese content so VoiceOver reads it with a Japanese voice. DLPT questions and answers, which are English, keep the English voice.
+  - Dynamic Type: the one fixed-size font (pronunciation score) and the fixed-height candidate strips now scale. Review grade buttons stack when they don't fit in one row.
+  - Reduce Motion: stroke order is drawn complete, and the role-play chat scrolls without animation.
+- **Share extension "Read in Tsumugi"** (new `TsumugiShare` target):
+  - Accepts text and one web URL, and writes one JSON file per item to `share-inbox/` in the App Group container.
+  - On launch or activation, the app imports pending items into the reader and opens the newest one (`Platform/ShareInbox.swift`).
+  - The extension doesn't link the Kotlin framework.
+- **Release settings:**
+  - `ITSAppUsesNonExemptEncryption = NO`.
+  - Privacy manifests for the app (UserDefaults CA92.1, file timestamp C617.1, system boot time 35F9.1), the widget and the share extension.
+  - The camera, microphone and speech-recognition usage strings are confirmed in Debug and Release. No photo-library string is needed (PhotosPicker).
+
+#### Deferred
+- Labels that come from the shared core are still English: SRS stages, item kinds, Today blocks, exam-mode and section titles, and OPI phases. Onboarding goals are the exception, because the Kotlin labels double as catalog keys.
+- Most status messages built in view models, such as import and sync results, are still English.
+- Japanese App Store listing text and screenshots (**Owner**).
+- The size audit, crash-free soak and TestFlight (see `docs/RELEASE.md`) need the owner's Apple account.
+- None of this is compiled locally (Windows). CI's macOS job is the first build of the new target and strings.
+
+#### How to check
+- Run `docs/QA.md` → "Accessibility and polish" and "Share extension" on a device.
+- Xcode → Product → Archive → Generate Privacy Report shows the three declared API reasons.
+
+### Phase 8 (Android) (2026-09-18)
+
+#### What was built
+- **Localization (en + ja):** about 660 string keys, in `res/values/strings.xml` and `res/values-ja/strings.xml`.
+  - Every screen's UI text is in resources: tabs, top-bar titles, buttons, section headers, settings, empty states, dialogs, onboarding, and the exam/OPI disclaimer. Status and error messages built in coroutines use `context.getString`.
+  - Shared enums (kind, stage, rating, goal, phase) are mapped in `ui/Labels.kt`.
+  - Android 13+ per-app language uses `res/xml/locales_config.xml`.
+  - Learning content is not translated (D-038).
+- **Accessibility:**
+  - `ja()` / `JaText` (`ui/Accessibility.kt`) tag Japanese learner text with a ja-JP locale span, so TalkBack reads it in Japanese. Applied to dictionary headwords, readings and examples, review prompts and answers, reader text and titles, exam passages, stems and choices, grammar points, dialogue and role-play lines, and transcripts.
+  - Content descriptions on every icon-only button (media controls, line replay, previous/next question, back).
+  - Semantics on custom controls:
+    - The review answer field says whether it wants the reading or the meaning.
+    - Stage bars read as one node each ("Guru: 12").
+    - The JLPT score bars, the pronunciation gauge and the sub-scores have spoken values.
+    - Exam and listening choices are a radio group (`selectable` + `Role.RadioButton`), and the question navigator has answered/unanswered state.
+    - The mic button and the drawing canvas have descriptions, and each reader word is one node read in Japanese.
+    - Section headings are marked as headings, and the review verdicts are live regions.
+  - Font scaling: fixed-size boxes that clipped at 200% are gone. That covers the stage-bar labels, the kanji-screen header, the dictionary label columns, the pitch-diagram morae, the tally tables and the pronunciation rows. Button rows that overflowed now wrap (`FlowRow`), and rating buttons are 2×2.
+  - Touch targets are at least 48dp: list rows, the self-rating checklist, the endpoint model picker, the vacation toggle.
+  - The stroke-order animation respects "Remove animations".
+- **Share target:** "Read in Tsumugi" (`ACTION_SEND` text/plain) imports shared text, or fetches a shared URL, into the reader and opens it. "Look up in Tsumugi" (`ACTION_PROCESS_TEXT`) opens the dictionary search.
+- **Release polish:**
+  - Adaptive vector launcher icon (a spool of thread) with a themed-icon layer, and a matching notification icon.
+  - `data_extraction_rules.xml` / `backup_rules.xml`: user data is backed up, while packs, models, scratch files and keystore-encrypted secrets are excluded.
+  - `proguard-rules.pro` with JNI keep rules. The release build is still unminified.
+  - APK size, language, sharing and backup notes in `docs/RELEASE.md` §7.
+
+#### Deferred
+- Platform error strings from `platform/AudioCapture.kt` and the native bridges are still English only. So are English strings produced by the shared core: Today block titles and details, reminder text, weekly-challenge titles.
+- Some rare long notes stay as they are: technical pack-missing hints mention file paths.
+- There's no in-app language picker. Android 13+ uses the system per-app setting. Older Android follows the system language.
+- There's no Glance widget (unchanged).
+
+#### How to run
+```bash
+./gradlew :androidApp:assembleDebug -Ptsumugi.native=false
+adb install -r androidApp/build/outputs/apk/debug/androidApp-debug.apk
+# Japanese UI: Settings → Apps → Tsumugi → Language → 日本語 (Android 13+), or set the phone to Japanese.
+# Share target: share a web page or selected text from Chrome → "Read in Tsumugi"; select text → ⋮ → "Look up in Tsumugi".
+```
+
+---
+
+## Phase 7: Exams (2026-09-18)
+
+### What was built
+- **Scoring core** (`shared/exam`), tested before any UI:
+  - JLPT blueprints (`tools/items/jlpt_blueprints.json`: published sections, item counts, timings, pass marks).
+  - Scaled scoring per score group with sectional minimums (D-029).
+  - DLPT ILR estimator (70% sustained over 20 items, with a floor for lower levels, and "provisional" for short slices).
+  - Form assembly that keeps each passage's questions together and prefers verified items.
+  - Timed `ExamSession`: strict sections that close when time runs out, and listening that plays once in mock mode.
+  - Attempts saved in `exam_attempt`, which syncs by union.
+  - Importing your own question banks, with validation.
+  - "Add missed items to SRS", for grammar points and dictionary words.
+- **OPI simulator** (`exam/opi/OpiSession`):
+  - Five phases: warm-up, level check, probe, role-play, wind-down.
+  - With a model, the interview and the rating go through `opi_interviewer_turn` / `opi_rate`, with ACTFL levels mapped to ILR.
+  - Without a model, questions come from the scripted bank per ILR level, the level adapts by answer length, and the learner rates themselves against the ILR checklist (D-031).
+- **Content** (`exam.sqlite`, built by `packs/build_exam.py`):
+  - JLPT: 2,368 items. 1,878 are rule-generated from JMdict, Tatoeba and the grammar packs by `items/gen_jlpt.py`; 490 are AI-drafted reading and listening items. There are enough items for one full mock at every level from N5 to N1.
+  - DLPT: 100 passages and 306 items across ILR 0+ to 3, AI-drafted, checked against per-level length, kanji-density and abstract-vocabulary bands (`items/ilr_bands.json`, `items/gen_dlpt.py`).
+  - `review.py` handles question banks (D-034). Both generators can draft more items through the owner's own OpenAI-compatible server.
+- **Grammar N2/N1:** 192 + 189 new points, 829 in total (5,116 Tatoeba examples). The Tatoeba matching order was fixed so N2/N1 points don't take N5–N3 sentences.
+- **UI on both apps:**
+  - Exams hub: JLPT level with the number of items available, full mock / section / item-type drills, DLPT at 180/60/30 minutes, OPI, history.
+  - Runner: countdown, question grid, passage pane with the bank markup rendered, audio button, strict modes.
+  - Results: scaled scores or ILR estimate, plus "Add missed to SRS".
+  - Attempt review with "Explain with AI" (labeled).
+  - Every exam screen carries the "unofficial practice; not affiliated with DLI/ACTFL/JLPT" disclaimer.
+
+### Verified
+- Exam scoring, assembly, session, service and OPI tests pass (37 tests).
+- `RealExamPackTest` builds JLPT mocks at all five levels, and a DLPT 60-minute form, from the real pack.
+- CI runs the Python item tests and bank validation.
+
+### Deferred
+- **Human review:** all AI-drafted items, dialogues, scenarios and N2/N1 grammar need a pass with `tools/items/review.py` (owner). Until then they show the "AI-generated" badge.
+- **Listening audio** uses on-device voices at play time rather than pre-rendered audio (D-030).
+- **Out-of-level vocabulary:** 476 validator warnings flag above-level words in JLPT items. They are worth cleaning during review.
+- **Upper range:** ILR 3+/4 passages are not written yet.
+
+---
+
+## Phase 6: On-device AI, speaking, listening (2026-09-18)
+
+### What was built
+- **AI core** (`shared/ai`):
+  - `AiGateway`: JSON-schema contract, timeout, one retry that feeds the problems back to the model, deterministic fallbacks, and output checks (wrong script, invented words, how much a correction may change).
+  - A prompt library of 10 tasks.
+  - `LocalLlamaModel` (ChatML + GBNF) and `OpenAICompatibleModel` (json_schema → json_object → prompt-only).
+  - Whisper local and endpoint recognizers, and VOICEVOX speech.
+  - `ModelManager`: resumable downloads with SHA-256 checks, offering only permissively licensed models (D-032).
+  - `tools/models/eval_ja.py` with 100 learner sentences.
+- **Native bridges:**
+  - llama.cpp b11040 and whisper.cpp b5130.
+  - iOS uses prebuilt xcframeworks, linked explicitly.
+  - Android builds them from source with CMake/NDK as arm64 JNI libraries.
+- **App wiring** (`shared/speaking`):
+  - `AiService`: engine choice, endpoint key kept in the Keychain/Keystore (D-033), model catalog bundled as `models-manifest.json`.
+  - `RoleplaySession`: model or scripted turns, with corrections and a natural version.
+  - `PronunciationService`: tokenizer plus Kanjium pitch targets.
+  - Pomodoro activities (`study/activities`).
+  - SRT/VTT subtitle parser (`media/Subtitles`).
+- **Speech analysis** (`shared/speech`): YIN pitch tracking, voice detection, mora alignment against the recognizer's transcript, per-word pitch verdicts (↑↓), a fluency score, and shadowing comparison with DTW. All of it is labeled heuristic.
+- **Practice pack** (`practice.sqlite`): 30 role-play scenarios with scripted fallbacks, 62 OPI questions plus ILR self-rating statements, 45 two-speaker dialogues with gaps, chunks and questions, and 630 minimal pairs derived from JMdict and Kanjium.
+- **UI on both apps:**
+  - A Practice tab (Speak / Listen / Write / Exams) with role-play, the pronunciation panel, listening dialogues (listen, gap-fill, order, questions), the minimal-pairs drill, a media player with dual subtitles and tap-to-look-up, Pomodoro sessions, and the OPI simulator.
+  - Settings → AI & speech: model manager, own server with "test connection", speech-recognition and voice engines.
+  - Platform details: D-035 (Android) and D-036 (iOS).
+
+### Verified
+- 360+ shared tests pass on the JVM and on the iOS simulator in CI, including the gateway, prompt golden tests, the model manager and YIN accuracy on synthetic signals.
+- The Android APK builds with native libraries in CI.
+- The iOS Swift for all the new screens compiled in CI; the link fix for whisper/llama is in the latest run.
+
+### Not yet verified
+- **Real hardware:** nothing has run on a real device or with real audio. That covers recording, speech recognition, pronunciation scores with a human voice, and loading a model and generating with it (llama has no iOS simulator slice). These are in `docs/QA.md` for the owner.
+- **Model choice:** the Japanese quality benchmark (`eval_ja.py`) hasn't been run against a real model; open decision 3.
+
+### Deferred
+- Free-talk mode.
+- For the media player: subtitle generation with on-device Whisper, "save clip to SRS", podcast RSS.
+- FSRS scheduling for minimal pairs.
+- Opt-in syncing of recordings.
+
+---
+
+## Phase 5: Sync (2026-09-18)
+
+### What was built
+- **Server** (`server/`):
+  - Ktor 3 + Postgres 16 (SQLite for dev and tests), Flyway migrations.
+  - Auth: Argon2id passwords, rotating refresh tokens with family revocation on reuse, and passkeys (WebAuthn).
+  - Device registry, and push/pull with per-user sequence numbers and idempotent re-push.
+  - Blobs with quota, an opt-in leaderboard (end-to-end-encrypted accounts are excluded), rate limiting and body-size caps.
+  - `docker compose up` stack (server, postgres, optional Caddy TLS), a Makefile, and a README for self-hosting (D-028).
+- **Client** (`shared/sync`):
+  - SQLite triggers write dirty-row markers (D-026).
+  - `SyncEngine`: reviews merge as a set union, cards are recomputed, everything else is last-writer-wins by (updated_at, deviceId), and tombstones propagate.
+  - `SyncAccount` stores tokens in the Keychain/Keystore and handles opt-in end-to-end encryption (Argon2id + XChaCha20-Poly1305 in pure Kotlin, D-025).
+- **Apps:** Me → Sync screen (server URL, sign in or create account, status, sync now, end-to-end passphrase, sign out). Sync runs when the app opens or becomes active, and after review sessions.
+- **Protocol:** `docs/SYNC_PROTOCOL.md` (v1).
+
+### Verified
+- **SyncMergeTest:** two devices with interleaved offline reviews end up with identical review sets and identical recomputed FSRS cards. Also covers last-writer-wins tie-breaks, tombstones, no echo, idempotent push, and end-to-end round trips.
+- **Crypto:** RFC test vectors pass.
+- **Server:** 21 tests pass on SQLite, including passkeys through webauthn4j's emulated authenticator. The Postgres Testcontainers test runs in CI.
+
+### Deferred
+- **Hosted instance:** none exists yet. This is open decision 2.
+- **Email verification:** sent but not required to sign in.
+- **Recordings sync:** the blob store exists but the app doesn't upload recordings yet. That comes with Phase 6 recordings, as an opt-in.
+
+---
+
+## Phase 4: Reading & writing (2026-09-18)
+
+### What was built
+- **Tokenizer:** a pure-Kotlin Viterbi analyzer over an IPADIC pack (`tokenizer.sqlite`, 25 MB). `TokenizerParityTest` gives 99.8% sentence parity with MeCab (D-023).
+- **Reader** (`shared/reader`):
+  - Importers for pasted text, web articles (readability extraction, Shift_JIS/EUC-JP), RSS/RDF/Atom feeds, the Aozora Bunko catalogue and texts, and EPUB.
+  - Paragraph/sentence/token view models with furigana modes (all, none, unknown words only).
+  - Known-word ratio and difficulty labels such as "≈ N3 / ILR 1+".
+  - Grammar detection per sentence from the grammar pack's patterns, and sentence mining that adds a word to reviews with its sentence as context.
+  - Documents stay on the device (D-027).
+- **Writing** (`shared/jp/strokes`):
+  - Skritter-style stroke grading (resampling, direction histograms, DTW, start/end checks) that catches wrong direction, order, shape and position, and shows a hint after 3 misses.
+  - A raw writing checker for reviews, a handwriting recognizer (D-024), and SVG stroke panels in the NihongoShark style.
+- **OCR:** iOS uses VisionKit live text plus Vision on photos; Android uses ML Kit (Japanese, bundled model, offline).
+- **Speech:** read-aloud with the system voice on both platforms (AVSpeechSynthesizer / TextToSpeech), with word highlighting.
+- **UI on both apps:**
+  - Learn → Reading: library, reader with tap-a-word popup, "Add to reviews", sentence panel with grammar and Listen, feeds, Aozora.
+  - Learn → Draw to search, and Learn → Scan text.
+  - Writing practice screens, plus writing cards in reviews (draw, check, compare with the animated stroke order, then rate). Turn writing cards on in Settings.
+
+### Verified
+- About 263 tests pass on the JVM, covering shared and server code, including stroke grading and recognition, reader importers and analysis, and tokenizer parity.
+- The Android APK builds (123 MB debug, including the dictionary and tokenizer packs and the ML Kit model).
+- iOS is verified by CI.
+
+### Deferred
+- **Share-sheet extensions:** "Read in Tsumugi" on iOS and ACTION_SEND on Android come with Phase 8 polish. For now, text is pasted into the reader.
+- **Sentence translation and comprehension questions** arrive with the Phase 6 AI runtime.
+- **Aozora ruby hints:** readings from Aozora's ruby markup aren't kept with saved documents yet. The reader shows furigana from the dictionary instead.
+
+---
+
+## Phase 3: Grammar + Today (2026-09-18)
+
+### What was built
+- **Grammar pack** (`content/packs/grammar.sqlite`), built by `tools/packs/build_grammar.py` from `tools/packs/grammar/n5.json`, `n4.json` and `n3.json`:
+  - 448 points: 127 N5, 148 N4, 173 N3.
+  - 3,486 Tatoeba example sentences with the construction's span marked.
+  - Explanations are LLM-drafted and labelled (D-019). `tools/items/review.py` flips reviewed points to `verified`.
+  - `aliases.json` maps other apps' titles onto our points for imports.
+- **`GrammarService`**:
+  - JLPT-ordered lessons.
+  - **Cloze reviews:** exact answers are correct; another valid conjugation of the same construction (checked with the deinflector and patterns) is accepted as "close".
+  - **Sentence-build reviews:** the sentence is split into phrase chunks.
+  - **Bunpro-style ghost cards:** a miss spawns an extra card on short intervals, retired after two correct answers.
+  - `ReviewSession` handles grammar cards alongside kanji and vocabulary.
+- **`TodayPlanner` (BRIEF §5.6):**
+  - **Blocks, in order:** reviews, then new kanji/vocab lessons, then grammar.
+  - **Budget:** 10, 20, 40 or 60 minutes.
+  - **Lesson count adapts:** to the budget, to yesterday's accuracy (fewer after a rough day), and to the review backlog (paused above 150 due).
+  - **Phases** follow path level: Foundations, Core, Intermediate, Advanced.
+  - **Weekly challenges** rotate every week.
+- **Bunpro CSV import** (D-020).
+- **iOS widgets** "Reviews due" and "Kanji of the day" (D-021).
+- **UI on both apps:** Learn → Grammar (levels, points with the AI badge, point page with examples), grammar lessons, cloze and sentence-build review screens, Today plan with budget picker and weekly challenge, Bunpro import.
+
+### Verified
+- Shared tests (Android host) pass, including `GrammarServiceTest` (cloze checking, ghost spawn and retirement through a real review session), `TodayPlannerTest` and `BunproImporterTest`.
+- The Android APK builds.
+- iOS builds and tests run in CI (see the latest run).
+
+### Deferred
+- Grammar "production" reviews (translate from English, graded by the on-device LLM) arrive with the AI runtime in Phase 6.
+- Textbook-order paths (Genki/Tobira chapter numbers) exist only where the source files carry them. A chapter-ordered path view is a small follow-up.
+
+---
+
+## Phase 2: SRS core + kanji path (2026-09-18)
+
+### What was built
+- **User DB** (`srs.sq`, `user.sq`, `meta.sq`): items, cards, the append-only review log, notes (myStory), settings, word lists, sessions and integrations. Ids are deterministic, which keeps sync convergent.
+- **FSRS-6** (`Fsrs.kt`, ported from py-fsrs, MIT):
+  - Matches py-fsrs's published interval sequence and memory-state numbers exactly.
+  - Learning steps 10 min → 1 day.
+  - Fuzz is derived deterministically, so replaying reviews gives the same result on every device.
+  - An on-device optimizer (`FsrsOptimizer`, Adam with exact gradients) fits the parameters.
+- **SRS layer:**
+  - `SrsRepository`: lessons recorded as reviews (D-018), undo, imports, replay.
+  - `AnswerChecker`: WaniKani-style, with typo tolerance, synonyms, and a hint when you give a valid reading of the wrong kind.
+  - `UnlockTree`, and stages over stability (D-017).
+- **Kanji path pack** (`kanji-path.sqlite`): 60 levels, 243 radicals, 2,599 kanji and 7,242 words, with our own keywords. `PathService` provides lessons, level progress, skip-to-level and manual unlock.
+- **Sessions:** `ReviewSession` and `LessonSession` state machines shared by both apps:
+  - Typed answers with a romaji→kana IME.
+  - Missed cards re-asked as unrecorded practice.
+  - Undo, wrap-up, and leech detection at 8 or more lapses.
+- **Stats and reminders:** `StatsService` covers streaks with vacation mode, a heat-map, accuracy by kind, stage distribution and a 7-day forecast. `ReminderPlanner` plus local notifications on both platforms (D-022).
+- **Integrations:**
+  - Anki `.apkg` import/export: legacy and modern zstd formats, NihongoShark decks with myStory, and an import → export → re-import round trip.
+  - imiwa word lists.
+  - WaniKani API v2 import onto the path, with optional posting of reviews back. The token lives in the Keychain/Keystore; mnemonics are never stored.
+- **UI on both apps:** Today, lessons, reviews, kanji path (level grid, item pages with stroke order and a myStory editor), dictionary "Add to reviews"/"Add to list", word lists, Me (stats, heat-map, vacation mode, settings, Licenses screen, Import & export).
+
+### Verified
+- About 190 shared tests pass on the Android host, including FSRS reference vectors, the optimizer on synthetic data, the Anki round trip, zstd vectors and WaniKani against a mock server.
+- The Android APK builds.
+- iOS: the app, the Kotlin/Native framework and the Swift tests (dictionary on the real pack, lookups under 5 ms on the simulator) passed in CI.
+
+### Deferred
+- **Your acceptance check** (import the NihongoShark deck and WaniKani token, then do a real review session on your iPhone) needs you and your devices.
+- **Real-deck checks:** the NihongoShark detection uses field-name keywords and should be checked against your actual deck. The `.anki21b` fixture is synthetic.
+
+---
+
+## Phase 1: Data engine (2026-09-18)
+
+### What was built
+- **Content pack builders** (`tools/packs/`):
+  - `build_dictionary.py`: JMdict, KANJIDIC2, KRADFILE/RADKFILE, JmdictFurigana, Kanjium pitch, and unofficial JLPT levels.
+  - `build_kanjivg.py`: stroke paths.
+  - `build_sentences.py`: Tatoeba sentences, a word→sentence index, and frequency ranks.
+  - `build_all.py`: runs all three plus `manifest.json`.
+  - Output: `content/packs/dictionary.sqlite`, 127 MB (46 MB compressed), built in about 1 minute.
+  - The schema is `shared/.../dictionary.sq` (single source; DECISIONS D-008).
+- **Japanese text engine** (`shared/jp`):
+  - `Deinflector`: rule table, 441 test forms including chained auxiliaries and colloquial contractions.
+  - `Conjugator`: 26 rows per verb or adjective, with a round-trip test against the deinflector (~800 checks).
+  - `Kana`, `Romaji` (full conversion plus an incremental IME for answer fields), `Mora`, `Pitch` (all four patterns), `Furigana` (fallback aligner).
+  - `strokes/SvgPath`: flattens KanjiVG path data into polylines for both apps.
+- **Dictionary** (`shared/dictionary`): `DictionaryRepository`.
+  - Search: kanji/kana/katakana-folded exact matches, deinflection checked against part of speech, prefix completion, romaji→kana, English reverse index, and sentence mode.
+  - Details: entry view data (furigana, pitch, kanji breakdown, conjugations, Tatoeba examples), kanji detail (strokes, components, words), radical search with live narrowing.
+  - `tokenize()` does dictionary longest-match (D-011).
+- **Packs at runtime**: `PackInstaller` copies bundled packs into app storage on first launch, keyed on the manifest version (D-013). `AppGraph` is the composition root both apps hold.
+- **Android**:
+  - Application-scoped `AppGraph`, Material 3 theme, and Japanese locale on Japanese text so shared Chinese/Japanese characters use Japanese glyph shapes.
+  - Per-tab back stacks, with global search from every tab.
+  - Dictionary search, entry, kanji (animated stroke order) and radical search screens.
+  - The Gradle `bundlePacks` task puts the pack in the APK (67 MB debug APK).
+- **iOS**: the same screens in SwiftUI.
+  - `NavigationStack` per tab, a global search button, and `Font.japanese` (Hiragino) for Japanese text.
+  - Furigana, pitch diagram, and animated stroke order (`TimelineView` + `Canvas`).
+  - A "Bundle Content Packs" build phase, and Swift tests for search plus the < 5 ms lookup budget.
+- **CI**: a `packs` job builds the real pack once and hands it to the Android and iOS jobs, so both run tests on real data.
+
+### Verified on the dev machine
+- `./gradlew :shared:allTests`: 81 tests green on the Android host, including `RealPackSmokeTest` against the real pack.
+  - 食べさせられなかった→食べる, cat→猫, kanji→漢字, sentence mode, 語 has 14 strokes, 言+口 radicals find 語.
+  - About 2.4 ms per lookup on the JVM (D-015).
+- `./gradlew :androidApp:assembleDebug` builds, with the pack bundled.
+
+### Not yet verified
+- iOS: Kotlin/Native compile, SKIE bridging of the new API, SwiftUI build, and Swift tests. The first macOS CI run will be the first compile.
+- Android UI on a device: there's no emulator for Windows on ARM (D-016).
+
+### Deferred
+- Handwriting search and camera OCR: Phase 4, as the brief schedules.
+- Word lists and "Add to SRS": Phase 2, along with the user-data model.
+- JMnedict (names): not bundled yet. It adds ~40 MB for names only; to be revisited with on-demand packs.
+
+---
+
+## Phase 0: Foundations (2026-09-18)
+
+### What was built
+- Repo layout from BRIEF.md §3.1: `shared/`, `androidApp/`, `iosApp/`, `server/`, `tools/`, `content/`, `docs/`, `.github/workflows/`.
+- `CLAUDE.md` copied verbatim from BRIEF.md §1.
+- **Gradle KMP build** (`gradle/libs.versions.toml`, wrapper 9.7.1): `shared` targets Android (`com.android.kotlin.multiplatform.library`), `iosArm64` and `iosSimulatorArm64`, with SKIE, SQLDelight (`TsumugiDatabase`, placeholder `app_meta` table), kotlinx-coroutines, kotlinx-serialization and Ktor client.
+- **Shared API:** `HelloUseCase` exposes a `Flow<Greeting>`. `SharedGraph` is the composition root both apps call. `Platform` and `DatabaseDriverFactory` are expect/actual on both platforms.
+- **Android app** (`app.tsumugi.android`): Compose shell with the five tabs (Today · Reviews · Learn · Practice · Me). Today renders the shared greeting; the other tabs show "Coming soon."
+- **iOS app** (`app.tsumugi.ios`, iOS 17+): `iosApp/Tsumugi.xcodeproj` with the same five-tab `TabView`. `TodayViewModel` (`@Observable`) iterates the SKIE-bridged flow. A "Compile Kotlin Framework" run-script phase builds `Shared.framework`. There's a shared scheme and one Swift Testing test.
+- **CI** (`.github/workflows/ci.yml`) has three jobs:
+  - Linux: shared tests plus `:androidApp:assembleDebug`, uploading the APK.
+  - macOS: shared iOS simulator tests plus `xcodebuild test`.
+  - Tools: `uv sync --locked` plus `ruff`.
+- **tools/**: uv project (`pyproject.toml`, `uv.lock`) with `packs/`, `items/` and `models/` folders.
+- Docs seeded: DECISIONS, LICENSES, CONTENT_PACKS, SYNC_PROTOCOL (stub), QA.
+
+### Verified on the dev machine (Windows 11 ARM64)
+- `./gradlew :shared:allTests`: `HelloUseCaseTest` passes on the Android host. iOS test tasks are skipped because Kotlin/Native can't target iOS from Windows.
+- `./gradlew :androidApp:assembleDebug`: builds `androidApp/build/outputs/apk/debug/androidApp-debug.apk`.
+- `uv sync` and `uv run ruff check .` pass.
+
+### Not yet verified (needs a Mac or the first CI run)
+- iOS: Kotlin/Native framework build, SKIE output, the hand-written Xcode project, the SwiftUI app launch and the Swift test.
+- Android app **launch**: the APK builds, but no emulator or device was available here.
+- CI itself: the repo has no GitHub remote yet.
+
+### Deferred
+- Empty module packages (`domain/`, `srs/`, `jp/`, …) get created with their first code (Phase 1+). Git doesn't track empty folders.
+- `TsumugiUITests` target: added with the first real UI flow (Phase 2).
+- `server/`: placeholder README only; the Ktor server is Phase 5.
+
+### How to run
+```bash
+# Shared tests + Android APK (any OS with JDK 21 + Android SDK 37)
+./gradlew :shared:allTests :androidApp:assembleDebug
+adb install androidApp/build/outputs/apk/debug/androidApp-debug.apk
+
+# iOS (macOS with Xcode 16+ and JDK 21)
+open iosApp/Tsumugi.xcodeproj   # pick an iPhone simulator, Run (Cmd-R), Test (Cmd-U)
+
+# Python tools
+cd tools && uv sync && uv run ruff check .
+```
+
+---
+
+## Android parity checklist
+
+| Feature | iOS | Android |
+|---|---|---|
+| Tab shell, global search | ✅ | ✅ |
+| Today plan | ✅ | ✅ |
+| Lessons / Reviews (kanji, vocab, grammar cloze/build, flashcards) | ✅ | ✅ |
+| Kanji path (levels, items, myStory) | ✅ | ✅ |
+| Grammar (levels, points, lessons) | ✅ | ✅ |
+| Dictionary (search, entry, kanji, radicals, add to reviews/lists) | ✅ | ✅ |
+| Word lists | ✅ | ✅ |
+| Stats (streak, heat-map, stages, accuracy) | ✅ | ✅ |
+| Import/export (Anki, imiwa, Bunpro, WaniKani) | ✅ | ✅ |
+| Reminders | ✅ | ✅ |
+| Widgets | ✅ | ✅ (Glance: due reviews + streak, G-15) |
+| Settings / Licenses | ✅ | ✅ |
+| AI & speech settings (engines, model downloads, own server, STT, VOICEVOX) | | ✅ |
+| Practice: role-play, pronunciation panel, OPI, Pomodoro session | | ✅ |
+| Listening: dialogues, minimal pairs, media player with dual subtitles | | ✅ (Media3 ExoPlayer, G-15) |
+| Exams: JLPT/DLPT hub, timed runner, results, attempt review, bank import | | ✅ |
+| Onboarding | — | ✅ |
+| Sync | Phase 5 | ✅ |
+| Localization (en + ja UI) | | ✅ (in-app language picker on all versions, shared-core labels via `L10n`, G-14/G-15) |
+| Accessibility (screen reader labels, Japanese speech for learner text, large fonts, 48dp targets, reduced motion) | | ✅ |
+| Share / text-selection entry points ("Read in Tsumugi", "Look up in Tsumugi") | | ✅ |
+| App icon, backup rules, release notes | | ✅ (sideload APK only) |
+| Today: every block launches its screen, shadowing block, focus timer from any block (G-01) | | ✅ |
+| Review modes: fill-in-with-hint, meaning choice, production (AI grade or self-grade), minimal pair (G-05, G-06) | | ✅ |
+| Free talk + weekly speaking patterns on Me (G-02) | | ✅ |
+| Recordings: add my recording, side-by-side playback, recordings sync switch (G-03) | | ✅ |
+| Media: subtitle generation (Whisper, progress/cancel), speed 0.7–1.2×, clip to SRS, hide-subtitle quiz, podcasts (G-04) | | ✅ |
+| Reader: furigana above my level, pitch overlay, comprehension questions (G-07) | | ✅ |
+| Integrations: Notion push, AnkiConnect (G-09) | | ✅ |
+| Export: reviews CSV, PDF report, JSON backup + merge restore (G-10) | | ✅ |
+| Streak freezes, weekly challenge, opt-in leaderboard (G-11) | | ✅ |
+| Personal picture/audio cards (G-12) | | ✅ |
+| Kana course, placement check, onboarding kanji count (G-13) | | ✅ |
+| Content review behind a developer toggle (G-16) | | ✅ |
+| Audio packs: pre-rendered exam/dialogue/pair/grammar audio with TTS fallback, Settings → Audio packs (D-180) | | ✅ |
+| Media decks, Core 2k/6k/10k, deck lessons (§6.1) | | ✅ |
+| Coverage overlay, difficulty badge, library sort, "Your media" (§6.1, §6.4) | | ✅ |
+| Mark known + onboarding "I know these" (§6.1) | | ✅ |
+| Sentence bank: dictionary sentences from my media, clips + frames, mine this line, Immersion Kit switch (§6.2) | | ✅ |
+| Lyrics: songs, alignment, karaoke, translation, grammar notes, cloze (§6.3) | | ✅ |
+| Immersion log + roadmap on Me, automatic logging (§6.11) | | ✅ |
+| 1T sentences in the reader and player (§6.11) | | ✅ |
+| Reader: annotations, Words tab + drill, screenshot import, guide links (§6.4) | | ✅ |
+| Graded readers: library, read-along, words, quiz, genre tasks, AI summary grading (§6.4) | | ✅ |
+| Tracks: onboarding step, select/switch, track page, keigo/email/fill-in/synonym/usage/meaning drills, perform mode (§6.5) | | ✅ |
+| JLPT courses: modules, progress, mastery checkboxes, "one book to pass" (§6.6) | | ✅ |
+| Monolingual mode: setting, Japanese grammar explanations, AI word paraphrase on demand (§6.6) | | ✅ |
+| Onomatopoeia: themes with glyphs, filter, search, detail, quiz (§6.8) | | ✅ |
+| Drill sets: hands-free player, pause presets, screen-off playback (§6.10) | | ✅ (foreground service + MediaSession) |
+| Natural dialogues: greyed fillers, overlapping lines side by side (§6.10) | | ✅ |
+| OPI probe map; DLPT range and text-type filter (§6.16) | | ✅ |
+| Pitch-accent test: adaptive session from pack clips, stats, "Say it", minimal pairs as a drill (§6.7) | | ✅ (hidden without the pitch pack) |
+| Kanji explorer: Canvas graph, focus, JLPT/frequency colours, node cap, component roles, sound families, component search, bookmark (§6.15) | | ✅ |
+| Dictionary: as-you-type results, inflection chip, common/JLPT/rank chips, component shortcut, collocations and thesaurus links on entries (§6.13, §6.15) | | ✅ |
+| Mini-games: Reflex and Atom, standalone and in the Pomodoro queue, weekly challenge points (§6.9) | | ✅ |
+| Reader grammar: constructions highlighted, one-line explanation, practice this point (§6.16) | | ✅ |
+| Translation workbench: passages, written and sight modes, AI grade or self-assessment, diff, history, skill line on Me (§6.12) | | ✅ |
+| Expression thesaurus and writing studio (drafts, corrections, register, suggestions, readability, reader tasks) (§6.13) | | ✅ |
+| Poetry corner and solo reading circle (§6.14) | | ✅ |

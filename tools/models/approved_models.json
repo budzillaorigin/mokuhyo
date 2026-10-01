@@ -1,0 +1,12 @@
+{
+  "note": "BRIEF §7.1: the only models tools/ may use for drafting, checking or evaluation. Add a model here (with developer and license) before using it. CLAUDE.md rule 13 applies.",
+  "models": [
+    {"tag": "mistral-small3.2:24b-instruct-2506-q8_0", "role": "primary drafting model; reference grader in eval_speaking.py", "developer": "Mistral AI", "country": "France", "license": "Apache-2.0"},
+    {"tag": "gpt-oss:20b", "role": "second-opinion validator; fallback after three primary failures", "developer": "OpenAI", "country": "United States", "license": "Apache-2.0"},
+    {"tag": "mistral-nemo:12b", "role": "app Tier C candidate (eval)", "developer": "Mistral AI / NVIDIA", "country": "France / United States", "license": "Apache-2.0"},
+    {"tag": "phi4:14b", "role": "Tier C alternate (eval)", "developer": "Microsoft", "country": "United States", "license": "MIT"},
+    {"tag": "granite3.3:8b", "role": "Tier B alternate (eval)", "developer": "IBM", "country": "United States", "license": "Apache-2.0"},
+    {"tag": "phi4-mini:3.8b", "role": "Tier A (eval)", "developer": "Microsoft", "country": "United States", "license": "MIT"},
+    {"tag": "hf.co/utter-project/EuroLLM-9B-Instruct-GGUF", "role": "Tier B default (eval; pulled from Hugging Face)", "developer": "UTTER consortium", "country": "European Union", "license": "Apache-2.0", "match": "prefix"}
+  ]
+}

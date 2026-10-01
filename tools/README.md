@@ -1,21 +1,24 @@
 # tools/
 
-Python scripts that build everything in `content/` reproducibly. Nothing in `content/` is hand-edited.
+Python scripts that build everything in `content/` reproducibly, draft content through the owner's LLM endpoint,
+and run the phase gates. Nothing in `content/` is hand-edited.
 
 ```bash
 cd tools
-uv sync                      # create .venv and install deps (once)
-uv run ruff check .          # lint
+uv sync                       # create .venv (once)
+uv run ruff check .           # lint
+uv run python run_tests.py    # every test_*.py
+gates/gate_core.sh            # (from the repo root: tools/gates/gate_core.sh) the per-phase gate
 ```
 
-| Folder | Purpose | Arrives in |
-|---|---|---|
-| `packs/` | Dictionary, strokes, kanji path, sentences, grammar pack builders | Phase 1–3 |
-| `items/` | JLPT/DLPT item generation, validation, human review tool | Phase 3, 7 |
-| `models/` | llama.cpp/whisper.cpp builds, Japanese model eval, handwriting classifier training | Phase 4, 6 |
-| `assets/` | `render_icon.py`: iOS app icon (light/dark/tinted) from the Android launcher vector (`uv run --group assets python assets/render_icon.py`) | Phase 9 |
-| `ci/` | `validate_archive.py`: structure checks on an `.xcarchive` (CI and RELEASE.md §4) | Phase 9 |
+Drafting endpoint: `LLM_ENDPOINT` / `LLM_MODEL` from the environment or `tools/.env` (defaults in `.env.example`,
+BRIEF §7.1). Only models in `models/approved_models.json` may be used (CLAUDE.md rule 13).
 
-Pack sources are pinned in `packs/sources.lock`. `uv run python packs/build_all.py --update-sources` re-pins them deliberately.
+| Folder | Purpose |
+|---|---|
+| `gates/` | `gate_*.sh` phase gates (BRIEF §11.1) and their checkers |
+| `items/` | DLPT-style item drafting (`gen_dlpt.py`), validation, human review tool (`review.py`) |
+| `packs/` | Pack builders (dictionary, tokenizer, exam), audio rendering, reader drafting |
+| `models/` | Model evaluation (`eval_speaking.py`, Phase 4), approved drafting models |
 
-Full command list: BRIEF.md Appendix B. Pack formats: `docs/CONTENT_PACKS.md`.
+The per-language cookbook (exact commands, expected minutes, adding a 12th language) lands with Phase 6.

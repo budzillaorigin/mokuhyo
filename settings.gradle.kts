@@ -1,4 +1,4 @@
-rootProject.name = "tsumugi"
+rootProject.name = "mokuhyo"
 
 pluginManagement {
     repositories {
@@ -17,5 +17,4 @@ dependencyResolutionManagement {
 }
 
 include(":shared")
-include(":androidApp")
-include(":server")
+include(":desktopApp")

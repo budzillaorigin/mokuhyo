@@ -10,7 +10,7 @@ LM Studio, vLLM) with the same system prompt and JSON schema the app uses, then 
 - the rate of valid JSON answers and mean latency.
 
 Usage:
-    uv run python models/eval_ja.py --base-url http://localhost:8080 --model qwen2.5-1.5b-instruct
+    uv run python models/eval_ja.py --base-url http://localhost:8080 --model phi4-mini:3.8b
     uv run python models/eval_ja.py --predictions preds.jsonl       # score saved {"id", "corrected", ...} lines
     uv run python models/eval_ja.py --self-test                     # scorer sanity checks, no model needed
 
