@@ -32,6 +32,42 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-0p-advertisement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "New Hospital Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembaca",
+     "voice": "female",
+     "text": "Rumah sakit baru buka bulan ini."
+    },
+    {
+     "speaker": "Pembaca",
+     "voice": "male",
+     "text": "Dokter-dokter dan perawat baru."
+    },
+    {
+     "speaker": "Pembaca",
+     "voice": "female",
+     "text": "Daftar sekarang."
+    },
+    {
+     "speaker": "Pembaca",
+     "voice": "male",
+     "text": "Kualitas terbaik."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-0p-announcement-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -162,6 +198,253 @@
      "speaker": "Pembawa Acara",
      "voice": "male",
      "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-0p-announcement-005",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "AI Workshop Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Halo, semuanya."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Kami akan mengadakan workshop tentang regulasi kecerdasan buatan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Workshop ini akan membahas kebijakan terkait kecerdasan buatan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Silakan datang dan bergabung dengan kami."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-0p-announcement-006",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Joint Military Exercise Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pengumuman",
+     "voice": "male",
+     "text": "Pendengar terhormat, kami akan melaksanakan latihan militer bersama dengan Australia."
+    },
+    {
+     "speaker": "Pengumuman",
+     "voice": "female",
+     "text": "Latihan ini akan berlangsung selama dua minggu."
+    },
+    {
+     "speaker": "Pengumuman",
+     "voice": "male",
+     "text": "Terima kasih atas perhatiannya."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-0p-short_exchange-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Cultural Exchange Invitation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemimpin Program",
+     "voice": "male",
+     "text": "Hai, saya dari program pertukaran budaya."
+    },
+    {
+     "speaker": "Pemimpin Program",
+     "voice": "male",
+     "text": "Kami undang kamu untuk bergabung."
+    },
+    {
+     "speaker": "Pemimpin Program",
+     "voice": "male",
+     "text": "Program akan dimulai pada bulan depan."
+    },
+    {
+     "speaker": "Pemimpin Program",
+     "voice": "male",
+     "text": "Silakan konfirmasi kehadiranmu."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-0p-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Aid Convoy Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemilik Mesin",
+     "voice": "female",
+     "text": "Halo, ini adalah pesan untuk Tim Bantuan Kemanusiaan. Maaf, ada penundaan untuk konvoi bantuan kemanusiaan hari ini."
+    },
+    {
+     "speaker": "Pemilik Mesin",
+     "voice": "female",
+     "text": "Kami akan menginformasikan waktu baru secepat mungkin. Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-0p-voicemail-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Border Crossing Instructions",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemilik telepon",
+     "voice": "female",
+     "text": "Halo, ini adalah pesan untuk semua orang yang akan melewati perbatasan. Mohon isi formulir dan tunggu giliran. Terima kasih."
+    },
+    {
+     "speaker": "Sistem telepon",
+     "voice": "male",
+     "text": "Pesan ini diulang. Mohon dengar dengan seksama."
+    },
+    {
+     "speaker": "Pemilik telepon",
+     "voice": "female",
+     "text": "Halo, ini adalah pesan untuk semua orang yang akan melewati perbatasan. Mohon isi formulir dan tunggu giliran. Terima kasih."
+    },
+    {
+     "speaker": "Sistem telepon",
+     "voice": "male",
+     "text": "Akhir pesan."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-0p-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Online Class Reminder",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Perangkat rekaman",
+     "voice": "female",
+     "text": "Halo, ini adalah pesan rekaman."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "male",
+     "text": "Halo, ini adalah pesan untuk semua siswa. Ingatlah bahwa kelas online kita akan dimulai besok pukul 10 pagi. Pastikan Anda sudah siap dan masuk ke platform dengan tepat waktu. Terima kasih."
+    },
+    {
+     "speaker": "Perangkat rekaman",
+     "voice": "female",
+     "text": "Untuk mengulangi pesan, tekan 1. Untuk menghapus pesan, tekan 2."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Community Center Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa_acak",
+     "voice": "male",
+     "text": "Pembukaan"
+    },
+    {
+     "speaker": "Pembawa_acak",
+     "voice": "female",
+     "text": "Saudara-saudara, pada hari ini saya ingin berbicara tentang biaya pernikahan yang semakin meningkat."
+    },
+    {
+     "speaker": "Pembawa_acak",
+     "voice": "male",
+     "text": "Memang, acara tradisional seperti pernikahan merupakan momok yang harus dihadapi oleh setiap keluarga."
+    },
+    {
+     "speaker": "Pembawa_acak",
+     "voice": "female",
+     "text": "Oleh karena itu, mari kita berbagi informasi dan tips tentang cara menghemat dalam mengatur acara pernikahan."
+    },
+    {
+     "speaker": "Pembawa_acak",
+     "voice": "male",
+     "text": "Terima kasih."
+    },
+    {
+     "speaker": "Pembawa_acak",
+     "voice": "female",
+     "text": "Penutupan"
     }
    ],
    "source": "llm",
@@ -340,6 +623,88 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-1-conversation-005",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "conversation",
+   "title": "The Retirement Plan",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Ibu Sari, Anda telah melihat berita tentang jumlah orang tua semakin banyak menurut data tahun ini?"
+    },
+    {
+     "speaker": "Ibu Sari",
+     "voice": "female",
+     "text": "Ya, Pak Budi. Saya melihatnya. Ini menjadi masalah yang serius."
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Benar. Kita harus mengatasi masalah ini secepat mungkin."
+    },
+    {
+     "speaker": "Ibu Sari",
+     "voice": "female",
+     "text": "Apa pendapat Anda tentang solusi yang dapat kita lakukan?"
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Kita bisa mulai dengan meningkatkan fasilitas untuk mereka dan mendidik masyarakat tentang pentingnya merasa peduli."
+    },
+    {
+     "speaker": "Ibu Sari",
+     "voice": "female",
+     "text": "Baik, saya setuju dengan Anda. Mari kita mulai sekarang."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-instructions-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Ancient Artifacts Exhibition",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Selamat datang di pameran Ancient Wonders."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Mari kita jelajahi koleksi artefak kuno yang menakjubkan ini."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Pameran ini akan membuka pintu pada hari Senin pukul 9 pagi."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Jangan lewatkan kesempatan untuk melihat barang-barang berharga ini."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-1-voicemail-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -370,6 +735,150 @@
     },
     {
      "speaker": "Penerima pesan",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-voicemail-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Urban Housing Woes",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemilik Rumah Kontrakan",
+     "voice": "female",
+     "text": "Halo, ini Pak RT. Saya ingin berbicara tentang krisis perumahan di kota-kota besar."
+    },
+    {
+     "speaker": "Pemilik Rumah Kontrakan",
+     "voice": "male",
+     "text": "Saya mendengar banyak keluhan dari penghuni bahwa sekarang sangat sulit mendapatkan tempat tinggal yang terjangkau."
+    },
+    {
+     "speaker": "Pemilik Rumah Kontrakan",
+     "voice": "female",
+     "text": "Ini memengaruhi banyak orang, khususnya mereka yang baru pindah ke kota untuk bekerja."
+    },
+    {
+     "speaker": "Pemilik Rumah Kontrakan",
+     "voice": "male",
+     "text": "Saya khawatir masalah ini akan semakin buruk jika tidak ada solusi yang cepat."
+    },
+    {
+     "speaker": "Pemilik Rumah Kontrakan",
+     "voice": "female",
+     "text": "Terima kasih. Sampaikan juga kepada teman-teman Anda."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Charging Station Inquiry",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemilik toko",
+     "voice": "female",
+     "text": "Halo, ini adalah toko kami. Saya tidak bisa menjawab telepon ini saat ini. Silakan tinggalkan pesan setelah bunyi bip."
+    },
+    {
+     "speaker": "Pengguna",
+     "voice": "male",
+     "text": "Halo, ini adalah Bagas. Saya butuh bantuan. Saya memiliki mobil listrik Nissan dan saya tidak tahu di mana stasiun pengisian terdekat. Mohon hubungi saya kembali di nomor ini. Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-weather-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "weather",
+   "title": "Weather Warning for Parents",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Selamat pagi, ini adalah pembaruan cuaca untuk hari ini."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Ada peringatan cuaca yang berlaku karena hujan lebat dan angin kencang yang diharapkan."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Untuk orang tua, dengan adanya peringatan cuaca ini, kami sarankan untuk membatasi penggunaan smartphone oleh anak-anak."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-weather-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "weather",
+   "title": "The Rainy Day Race",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Halo, peserta lari kejuaraan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Kami ingin memberitahu bahwa cuaca hari ini mungkin hujan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Hujan mungkin mengganggu lomba."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Jadi, jangan lupa bawa payung atau jaket hujan."
+    },
+    {
+     "speaker": "Pembawa Acara",
      "voice": "female",
      "text": "Terima kasih."
     }
@@ -416,6 +925,57 @@
     },
     {
      "speaker": "Pembaca",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Apartment Rental Notice",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemilik",
+     "voice": "female",
+     "text": "Halo, ini adalah pengumuman dari saya, Pak Hadi."
+    },
+    {
+     "speaker": "Pemilik",
+     "voice": "female",
+     "text": "Saya ingin memberitahu bahwa saya memiliki sebuah apartemen yang tersedia untuk disewa."
+    },
+    {
+     "speaker": "Pemilik",
+     "voice": "female",
+     "text": "Apartemen ini terletak di Jalan Raya No. 10, dekat dengan pusat perbelanjaan."
+    },
+    {
+     "speaker": "Pemilik",
+     "voice": "female",
+     "text": "Sewa bulanan untuk apartemen ini adalah enam ratus dolar."
+    },
+    {
+     "speaker": "Pemilik",
+     "voice": "female",
+     "text": "Apartemen ini memiliki dua kamar tidur, satu kamar mandi, dan dapur yang lengkap."
+    },
+    {
+     "speaker": "Pemilik",
+     "voice": "female",
+     "text": "Jika Anda tertarik, silakan hubungi saya di nomor ini."
+    },
+    {
+     "speaker": "Pemilik",
      "voice": "female",
      "text": "Terima kasih."
     }
@@ -529,6 +1089,235 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-1p-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "A Visit to the Refugee Camp",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pria 1",
+     "voice": "male",
+     "text": "Halo, apakah kita sudah tiba di Kamp Harapan?"
+    },
+    {
+     "speaker": "Wanita 1",
+     "voice": "female",
+     "text": "Iya, kita sudah tiba. Kamp ini adalah kamp pengungsi terbesar di wilayah ini."
+    },
+    {
+     "speaker": "Pria 1",
+     "voice": "male",
+     "text": "Saya lihat banyak tenda dan orang-orang berjalan ke sana kemari."
+    },
+    {
+     "speaker": "Wanita 1",
+     "voice": "female",
+     "text": "Iya, banyak pengungsi yang tinggal di sini. Mereka berasal dari berbagai daerah."
+    },
+    {
+     "speaker": "Pria 1",
+     "voice": "male",
+     "text": "Apa yang mereka lakukan di sini?"
+    },
+    {
+     "speaker": "Wanita 1",
+     "voice": "female",
+     "text": "Mereka bekerja sama untuk membangun rumah-rumah sederhana dan memasak makanan bersama."
+    },
+    {
+     "speaker": "Pria 1",
+     "voice": "male",
+     "text": "Bagaimana situasi keamanan di kamp ini?"
+    },
+    {
+     "speaker": "Wanita 1",
+     "voice": "female",
+     "text": "Keamanan di kamp ini cukup baik. Ada petugas keamanan yang selalu berjaga."
+    },
+    {
+     "speaker": "Pria 1",
+     "voice": "male",
+     "text": "Baik, mari kita mulai mengunjungi beberapa tempat di kamp ini."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1p-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "New Road Safety Regulations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ahmad",
+     "voice": "male",
+     "text": "Kamu sudah dengar undang-undang baru tentang keamanan jalan, kan?"
+    },
+    {
+     "speaker": "Budi",
+     "voice": "female",
+     "text": "Belum, apa yang baru?"
+    },
+    {
+     "speaker": "Ahmad",
+     "voice": "male",
+     "text": "Pengemudi harus memakai sabuk pengaman, dan anak-anak di bawah 12 tahun harus duduk di belakang."
+    },
+    {
+     "speaker": "Budi",
+     "voice": "female",
+     "text": "Wah, itu penting. Jika tidak, ada penalti?"
+    },
+    {
+     "speaker": "Ahmad",
+     "voice": "male",
+     "text": "Iya, denda bisa mencapai 500 ribu rupiah."
+    },
+    {
+     "speaker": "Budi",
+     "voice": "female",
+     "text": "Wow, itu banyak. Kita harus patuhi aturan baru ini."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1p-conversation-005",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "The Airport Expansion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Halo, semuanya. Saya ingin memberitahu kalian bahwa terminal baru kami akan mulai beroperasi bulan depan."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Benar, terminal baru ini akan mulai beroperasi pada tanggal 15 bulan depan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Mengapa bandara kita perlu terminal baru?"
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Karenanya, bandara kita perlu terminal baru untuk menampung penumpang tambahan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terminal baru ini akan memiliki fasilitas yang lebih modern dan luas."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Benar, terminal baru ini akan memiliki fasilitas yang lebih modern dan luas untuk kenyamanan penumpang."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih telah mendengarkan. Sampai jumpa di terminal baru kami bulan depan."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Terima kasih, sampai jumpa."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1p-conversation-006",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "The Journalist's Dilemma",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Siti",
+     "voice": "female",
+     "text": "Hai, Bagaimana kabarnya?"
+    },
+    {
+     "speaker": "Budi",
+     "voice": "male",
+     "text": "Baik, terima kasih. Dan kamu?"
+    },
+    {
+     "speaker": "Siti",
+     "voice": "female",
+     "text": "Baik juga. Tapi, aku ingin ngobrol tentang pekerjaan kita sebagai jurnalis."
+    },
+    {
+     "speaker": "Budi",
+     "voice": "male",
+     "text": "Oh, ya? Apa yang kamu pikirkan?"
+    },
+    {
+     "speaker": "Siti",
+     "voice": "female",
+     "text": "Aku merasa kita harus bisa mempertahankan kebebasan pers dengan tegas."
+    },
+    {
+     "speaker": "Budi",
+     "voice": "male",
+     "text": "Setuju. Tapi, kita tahu bukan hal yang mudah."
+    },
+    {
+     "speaker": "Siti",
+     "voice": "female",
+     "text": "Benar. Beberapa jurnalis justru memilih untuk tidak melaporkan berita dengan benar karena takut."
+    },
+    {
+     "speaker": "Budi",
+     "voice": "male",
+     "text": "Iya, self-censorship adalah ancaman yang sering dialami."
+    },
+    {
+     "speaker": "Siti",
+     "voice": "female",
+     "text": "Tapi, jika kita tidak melaporkan kebenaran, siapa lagi yang akan melakukannya?"
+    },
+    {
+     "speaker": "Budi",
+     "voice": "male",
+     "text": "Kamu benar. Kita harus berani untuk terus melaporkan berita dengan jujur."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-1p-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -617,6 +1406,128 @@
      "speaker": "Pembaca Berita",
      "voice": "male",
      "text": "Kami harapkan program ini akan sukses dan bisa diadakan setiap tahun."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1p-phone_call-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Library Hours Change",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemangku Humas",
+     "voice": "female",
+     "text": "Perpustakaan Kota Harapan, bagaimana dapat kami bantu?"
+    },
+    {
+     "speaker": "Pengunjung",
+     "voice": "male",
+     "text": "Hai, saya ingin menanyakan jam buka perpustakaan."
+    },
+    {
+     "speaker": "Pemangku Humas",
+     "voice": "female",
+     "text": "Perpustakaan kita sekarang buka dari jam 9 pagi hingga 5 sore, senin hingga jumat."
+    },
+    {
+     "speaker": "Pengunjung",
+     "voice": "male",
+     "text": "Apakah ada perubahan dari biasanya?"
+    },
+    {
+     "speaker": "Pemangku Humas",
+     "voice": "female",
+     "text": "Iya, mulai minggu depan, jam tutup akan berubah menjadi jam 6 sore pada hari jumat."
+    },
+    {
+     "speaker": "Pengunjung",
+     "voice": "male",
+     "text": "Mengapa harus berubah?"
+    },
+    {
+     "speaker": "Pemangku Humas",
+     "voice": "female",
+     "text": "Maaf, kami terpaksa melakukan perubahan ini karena ada perbaikan yang perlu dilakukan di gedung perpustakaan."
+    },
+    {
+     "speaker": "Pengunjung",
+     "voice": "male",
+     "text": "Baik, terima kasih atas informasinya."
+    },
+    {
+     "speaker": "Pemangku Humas",
+     "voice": "female",
+     "text": "Sama-sama, selamat menikmati waktu di perpustakaan kita."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1p-phone_call-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Hotel Reservation Mix-Up",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Penerima",
+     "voice": "female",
+     "text": "Halo, Hotel Bintang. Bagaimana bisa membantu Anda?"
+    },
+    {
+     "speaker": "Penanggung Jawab",
+     "voice": "male",
+     "text": "Halo, saya ingin mengecek reservasi saya. Nama saya Budi."
+    },
+    {
+     "speaker": "Penerima",
+     "voice": "female",
+     "text": "Maaf, kami tidak menemukan reservasi di bawah nama Anda."
+    },
+    {
+     "speaker": "Penanggung Jawab",
+     "voice": "male",
+     "text": "Itu aneh. Saya sudah membuat reservasi beberapa minggu yang lalu."
+    },
+    {
+     "speaker": "Penerima",
+     "voice": "female",
+     "text": "Apakah reservasi Anda terdaftar di bawah nama lain?"
+    },
+    {
+     "speaker": "Penanggung Jawab",
+     "voice": "male",
+     "text": "Tidak, itu harus di bawah nama Budi."
+    },
+    {
+     "speaker": "Penerima",
+     "voice": "female",
+     "text": "Bisa Anda cek lagi, ya?"
+    },
+    {
+     "speaker": "Penanggung Jawab",
+     "voice": "male",
+     "text": "Ya, silakan. Terima kasih."
+    },
+    {
+     "speaker": "Penerima",
+     "voice": "female",
+     "text": "Maafkan kami atas ketidaknyamanan ini. Kami akan segera menyelesaikan masalah ini."
     }
    ],
    "source": "llm",
@@ -729,6 +1640,255 @@
      "speaker": "Pembawa Acara",
      "voice": "female",
      "text": "Terima kasih. Apakah ada pertanyaan dari para jurnalist?"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Preparing for the Mission",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemimpin Tim",
+     "voice": "male",
+     "text": "Tim, mari kita bersiap untuk misi pemeliharaan keamanan ini."
+    },
+    {
+     "speaker": "Anggota Tim 1",
+     "voice": "female",
+     "text": "Baik, Pak. Apa yang harus kita lakukan pertama-tama?"
+    },
+    {
+     "speaker": "Pemimpin Tim",
+     "voice": "male",
+     "text": "Kita harus memastikan semua peralatan kita dalam keadaan baik."
+    },
+    {
+     "speaker": "Anggota Tim 2",
+     "voice": "male",
+     "text": "Apakah kita memiliki cukup persediaan medis?"
+    },
+    {
+     "speaker": "Pemimpin Tim",
+     "voice": "male",
+     "text": "Ya, persediaan medis sudah kita periksa. Kita juga perlu memastikan semua senjata dan peralatan komunikasi siap digunakan."
+    },
+    {
+     "speaker": "Anggota Tim 1",
+     "voice": "female",
+     "text": "Bagaimana dengan latihan?"
+    },
+    {
+     "speaker": "Pemimpin Tim",
+     "voice": "male",
+     "text": "Kita akan melaksanakan latihan setiap hari selama satu minggu."
+    },
+    {
+     "speaker": "Anggota Tim 3",
+     "voice": "female",
+     "text": "Kita punya semboyan bersama:"
+    },
+    {
+     "speaker": "Semua",
+     "voice": "female",
+     "text": "Bersatu kita teguh, bercerai kita runtuh!"
+    },
+    {
+     "speaker": "Pemimpin Tim",
+     "voice": "male",
+     "text": "Benar. Semangat tim adalah kunci kesuksesan misi ini."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "interview",
+   "title": "Expanding Digital Library Services",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Selamat datang di program kami hari ini. Kami memiliki tamu khusus, Pak Joko, Direktur Perpustakaan Negara. Selamat datang, Pak Joko."
+    },
+    {
+     "speaker": "Joko",
+     "voice": "male",
+     "text": "Terima kasih atas undangan. Senang bisa di sini."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Bagaimana rencanamu untuk memperbaiki layanan perpustakaan di tahun ini?"
+    },
+    {
+     "speaker": "Joko",
+     "voice": "male",
+     "text": "Kami akan memperluas layanan digital kami. Kami ingin memastikan bahwa semua orang memiliki akses kepada koleksi digital kami, termasuk buku elektronik dan sumber daya online."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Apa yang akan kalian lakukan untuk meningkatkan layanan ini?"
+    },
+    {
+     "speaker": "Joko",
+     "voice": "male",
+     "text": "Kami akan meningkatkan jumlah buku elektronik yang tersedia dan memastikan platform kami mudah digunakan. Kami juga akan memberikan pelatihan kepada petugas kami untuk membantu pengguna dengan lebih baik."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Apakah ada rencana untuk layanan lain?"
+    },
+    {
+     "speaker": "Joko",
+     "voice": "male",
+     "text": "Ya, kami juga akan memperkenalkan program pinjaman buku elektronik baru dan meningkatkan layanan konsultasi online."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih, Pak Joko, atas waktumu hari ini."
+    },
+    {
+     "speaker": "Joko",
+     "voice": "male",
+     "text": "Terima kasih juga atas kesempatan ini."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Fate of PT Karya Abadi Workers",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Selamat pagi, dalam siaran hari ini kita akan membahas penutupan pabrik PT Karya Abadi."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Bersama kita adalah Pak Supri, manajer pabrik. Selamat pagi Pak Supri."
+    },
+    {
+     "speaker": "Pak Supri",
+     "voice": "male",
+     "text": "Selamat pagi, terima kasih atas undangan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Bisa dijelaskan alasan penutupan pabrik ini?"
+    },
+    {
+     "speaker": "Pak Supri",
+     "voice": "male",
+     "text": "Penutupan pabrik ini disebabkan oleh kondisi keuangan yang buruk. Kami telah melakukan berbagai upaya untuk menyelamatkan pabrik, tetapi sayangnya tidak berhasil."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Bagaimana karyawan menghadapi kesulitan ini?"
+    },
+    {
+     "speaker": "Pak Supri",
+     "voice": "male",
+     "text": "Kami telah memberikan kompensasi kepada semua karyawan dan membantu mereka menemukan pekerjaan baru. Kami juga menyediakan pelatihan untuk meningkatkan keterampilan mereka."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Ada rencana untuk membuka pabrik baru di tempat lain?"
+    },
+    {
+     "speaker": "Pak Supri",
+     "voice": "male",
+     "text": "Saat ini tidak ada rencana untuk membuka pabrik baru. Kami akan fokus pada pemulihan keuangan terlebih dahulu."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih atas waktunya, Pak Supri."
+    },
+    {
+     "speaker": "Pak Supri",
+     "voice": "male",
+     "text": "Sama-sama, terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "news",
+   "title": "Government Measures to Control Inflation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembaca_utama",
+     "voice": "male",
+     "text": "Kabar terbaru tentang upaya pemerintah untuk mengendalikan inflasi dan suku bunga."
+    },
+    {
+     "speaker": "Pembaca_utama",
+     "voice": "male",
+     "text": "Pengumuman baru dari pemerintah hari ini. Kementerian Keuangan akan mengendalikan harga makanan dasar untuk membantu mengurangi inflasi."
+    },
+    {
+     "speaker": "Presiden_Bank_Sentral",
+     "voice": "female",
+     "text": "Kami juga bekerja sama dengan Bank Sentral Indonesia untuk menstabilkan suku bunga."
+    },
+    {
+     "speaker": "Pembaca_utama",
+     "voice": "male",
+     "text": "Menurut Menteri Keuangan, langkah-langkah ini akan membantu mengurangi beban finansial bagi masyarakat."
+    },
+    {
+     "speaker": "Warga",
+     "voice": "male",
+     "text": "Saya harap langkah-langkah ini bisa segera memberikan dampak positif pada kehidupan kita sehari-hari."
+    },
+    {
+     "speaker": "Pembaca_utama",
+     "voice": "male",
+     "text": "Ini adalah kabar terbaru tentang upaya pemerintah untuk mengendalikan inflasi dan suku bunga."
     }
    ],
    "source": "llm",
@@ -861,6 +2021,261 @@
      "speaker": "Pembaca Berita",
      "voice": "male",
      "text": "Laporkan oleh Rina Sari untuk Stasiun Berita Nasional."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-report-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "Successful Satellite Launch",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Selamat datang di program kami hari ini. Kami akan membahas peristiwa penting yang justru saja terjadi."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Saat ini, LAPAN, Lembaga Penerbangan dan Antariksa Nasional, berhasil meluncurkan satelit baru, Palapa-N1."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Peluncuran ini dilakukan dari Pangkalan Udara Pameungpeuk, Kabupaten Bandung, Jawa Barat."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Satelit ini akan digunakan untuk mengumpulkan data cuaca dan komunikasi."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Kepala LAPAN, Dr. Budi Santoso, mengatakan bahwa peluncuran ini sangat penting bagi pengembangan teknologi antariksa di Indonesia."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih telah menonton. Semoga informasi ini bermanfaat."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "Routine Checkup",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Dokter Wibowo",
+     "voice": "male",
+     "text": "Selamat pagi, Pak Suryanto. Berikut ini adalah hasil pemeriksaan Anda."
+    },
+    {
+     "speaker": "Pak Suryanto",
+     "voice": "male",
+     "text": "Terima kasih, Dokter. Apa kabarnya?"
+    },
+    {
+     "speaker": "Dokter Wibowo",
+     "voice": "male",
+     "text": "Tekanan darah Anda berada dalam rentang normal, dan hasil pemeriksaan darah juga baik. Tapi, Anda harus terus berolahraga dan menjaga pola makan sehat."
+    },
+    {
+     "speaker": "Pak Suryanto",
+     "voice": "male",
+     "text": "Baik, Dokter. Saya akan patuhi semua saran Anda."
+    },
+    {
+     "speaker": "Dokter Wibowo",
+     "voice": "male",
+     "text": "Jangan lupa datang sesuai dengan jadwal untuk pemeriksaan berikutnya. Dan jika Anda merasa tidak nyaman, jangan ragu untuk menghubungi saya."
+    },
+    {
+     "speaker": "Pak Suryanto",
+     "voice": "male",
+     "text": "Terima kasih, Dokter. Saya akan datang tepat waktu."
+    },
+    {
+     "speaker": "Dokter Wibowo",
+     "voice": "male",
+     "text": "Sampaikan salam saya kepada Ibu Anda. Selamat jalan, Pak Suryanto."
+    },
+    {
+     "speaker": "Pak Suryanto",
+     "voice": "male",
+     "text": "Terima kasih, Dokter. Sampai jumpa."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-report-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "The Grand Opening of Bandara Internasional Nusantara",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Selamat datang di program berita kami. Saat ini kami memiliki berita menarik tentang pembukaan terminal baru di Bandara Internasional Nusantara."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Terima kasih, Pembaca Berita. Ya, terminal baru di Bandara Internasional Nusantara telah dibuka resmi hari ini. Terminal ini memiliki fasilitas modern seperti akses Wi-Fi gratis, zona perbelanjaan, dan restoran Internasional."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Selain itu, terminal ini juga memiliki kapasitas yang lebih besar sehingga dapat menampung lebih banyak penumpang. Hal ini akan memudahkan penumpang dalam mengakses penerbangan internasional tambahan yang tersedia."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Terminal baru ini juga terhubung baik dengan transportasi umum seperti bus dan taksi sehingga penumpang dapat dengan mudah mencapai tujuan mereka."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Terima kasih atas informasi tersebut, Reporter. Kami harapkan terminal baru ini dapat meningkatkan kenyamanan dan efisiensi bagi penumpang di Bandara Internasional Nusantara."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "interview",
+   "title": "The Vanishing Shores of Pantai Abadi",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Selamat datang di program Warta Kota hari ini. Kami akan membahas isu penting yang terjadi di Pantai Abadi. Untuk membahas lebih jauh, kami undang Bapak Rudi, ketua desa Pantai Abadi, dan Ibu Siti, seorang aktivis lingkungan."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Bapak Rudi, apa yang sedang terjadi di Pantai Abadi saat ini?"
+    },
+    {
+     "speaker": "Rudi",
+     "voice": "male",
+     "text": "Terima kasih telah mengundang saya. Saat ini, Pantai Abadi menghadapi masalah serius yaitu erosi pantai. Setiap hari, kita melihat tanah yang hilang ke laut. Hal ini sangat mengganggu kehidupan kami, terutama bagi nelayan yang bergantung pada laut untuk penghidupan mereka."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Ibu Siti, apa penyebab utama erosi pantai di Pantai Abadi menurut Anda?"
+    },
+    {
+     "speaker": "Siti",
+     "voice": "female",
+     "text": "Selain dari faktor alam seperti gelombang dan arus yang kuat, aktivitas manusia juga sangat berkontribusi. Pembukaan hutan, pembangunan di sepanjang pantai, dan pencemaran telah mempengaruhi keseimbangan alam. Semua ini membuat pantai kita semakin rapuh dan rentan terhadap erosi."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Bapak Rudi, apa yang sudah dilakukan oleh pemerintah untuk mengatasi masalah ini?"
+    },
+    {
+     "speaker": "Rudi",
+     "voice": "male",
+     "text": "Sampai saat ini, pemerintah belum melakukan yang cukup. Ada beberapa program pembangunan tanggul, tetapi progresnya lambat dan dana yang dialokasikan tidak cukup. Kita butuh bantuan yang lebih baik dari pemerintah untuk menyelamatkan Pantai Abadi."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Terima kasih telah berbagi informasi berharga dengan kita. Semoga isu erosi pantai di Pantai Abadi dapat segera ditangani. Ini adalah akhir dari program Warta Kota hari ini. Sampai jumpa lagi."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Day in Surabaya",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Selamat siang, saya Lucy Wijaya dari Radio Surabaya. Hari ini kami memiliki tamu khusus, Bupati Surabaya, Pak Agus Priyanto, untuk membahas kunjungan kapal perang Amerika Serikat yang sedang berlangsung di Pelabuhan Tanjung Perak."
+    },
+    {
+     "speaker": "Agus Priyanto",
+     "voice": "male",
+     "text": "Terima kasih atas undangan, Bu Lucy. Ya, benar, kapal perang Amerika Serikat tiba kemarin dan akan berlabuh di Surabaya selama seminggu."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Apa saja manfaat yang diperoleh dari kunjungan ini, Pak?"
+    },
+    {
+     "speaker": "Agus Priyanto",
+     "voice": "male",
+     "text": "Kunjungan kapal perang asing ini memberikan dampak positif bagi perekonomian daerah kami. Toko-toko dan restauran lokal melaporkan peningkatan penjualan sejak kapal-kapal perang tiba."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Apa yang bisa dikatakan tentang interaksi antara awak kapal dan masyarakat setempat?"
+    },
+    {
+     "speaker": "Agus Priyanto",
+     "voice": "male",
+     "text": "Interaksi antara awak kapal dan masyarakat setempat sangat baik. Para awak kapal sering berbelanja di pasar lokal dan menikmati kuliner Surabaya. Ini juga memberi kesempatan bagi masyarakat untuk belajar tentang budaya lainnya."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Terima kasih atas wawancara ini, Pak Agus. Saya yakin pendengar kami akan menikmati kunjungan ini."
+    },
+    {
+     "speaker": "Agus Priyanto",
+     "voice": "male",
+     "text": "Terima kasih, Bu Lucy. Semoga kunjungan ini membangun hubungan yang lebih baik antara Indonesia dan Amerika Serikat."
     }
    ],
    "source": "llm",
@@ -1007,6 +2422,133 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-2p-news_analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Future of Renewable Energy in Indonesia",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Selamat datang di program Analisis Berita hari ini."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Kita akan membahas tentang investasi energi terbarukan di Indonesia."
+    },
+    {
+     "speaker": "Analis",
+     "voice": "male",
+     "text": "Terima kasih, di tahun-tahun terakhir, Indonesia telah melihat pertumbuhan yang signifikan dalam investasi energi terbarukan."
+    },
+    {
+     "speaker": "Analis",
+     "voice": "male",
+     "text": "Perusahaan seperti PT Perusahaan Listrik Negara dan PT Pembangunan Perumahan telah berinvestasi dalam proyek rintisan energi surya dan angin."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Apa yang menjadi tantangan dalam mengembangkan energi terbarukan di Indonesia?"
+    },
+    {
+     "speaker": "Analis",
+     "voice": "male",
+     "text": "Tantangan utama meliputi perolehan lahan, hambatan regulasi, dan integrasi ke jaringan listrik yang ada."
+    },
+    {
+     "speaker": "Analis",
+     "voice": "male",
+     "text": "Meskipun demikian, pemerintah telah menunjukkan komitmennya melalui berbagai kebijakan dukungan."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Bagaimana kemajuan dalam pencapaian target energi terbarukan?"
+    },
+    {
+     "speaker": "Analis",
+     "voice": "male",
+     "text": "Sampai saat ini, kemajuan masih terbilang lambat, tetapi ada harapan yang positif dengan investasi dan teknologi baru yang terus datang."
+    },
+    {
+     "speaker": "Penyiar",
+     "voice": "female",
+     "text": "Terima kasih telah menyampaikan analisis Anda. Itulah update kami tentang investasi energi terbarukan di Indonesia."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-news_analysis-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "AI Ethics in Indonesia",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Selamat datang di program Diskusi Hari Ini. Hari ini kita akan membahas tentang etika AI dan pengaruh teknologi ini terhadap masyarakat."
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "male",
+     "text": "Terima kasih telah mengundang saya. Saya setuju, topik ini sangat penting. Kita harus memastikan bahwa perkembangan teknologi AI tidak melampaui batas etis yang ada."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Apa pendapat Anda tentang regulasi AI saat ini di Indonesia?"
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "male",
+     "text": "Saya pikir kita masih dalam proses mengembangkan kerangka kerja yang baik. Tapi, kita perlu lebih fokus pada masalah etis yang timbul dari penggunaan AI."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Apa contoh masalah etis yang Anda maksud?"
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "male",
+     "text": "Misalnya, privasi data, kecurangan, dan dampak sosial. Kita perlu memastikan bahwa AI digunakan untuk kebaikan umum, bukan hanya untuk keuntungan tertentu."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Bagaimana kita bisa mencapai itu?"
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "male",
+     "text": "Dengan kerja sama antara pemerintah, industri, dan masyarakat. Kita perlu diskusi yang lebih dalam dan kolaborasi untuk membuat regulasi yang efektif."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih atas wawanan Anda, Tamara. Kita akan melanjutkan diskusi ini nanti."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-2p-panel_discussion-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -1129,6 +2671,67 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-2p-panel_discussion-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "The Impact of the Pacific Rim Trade Accord",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Selamat datang di panel diskusi kita hari ini. Topik diskusi kita adalah dampak Perjanjian Dagang Cincin Pasifik baru terhadap perekonomian kami."
+    },
+    {
+     "speaker": "Panelis 1",
+     "voice": "male",
+     "text": "Saya setuju bahwa perjanjian ini akan meningkatkan pertumbuhan ekonomi. Ini akan membuka peluang pasar yang lebih luas bagi produk kami."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Apakah ada tantangan yang perlu dihadapi dalam implementasi perjanjian ini?"
+    },
+    {
+     "speaker": "Panelis 2",
+     "voice": "female",
+     "text": "Tantangan utama adalah menghilangkan batasan-batasan dagang yang ada. Ini memerlukan koordinasi yang baik antara semua negara yang terlibat."
+    },
+    {
+     "speaker": "Panelis 3",
+     "voice": "male",
+     "text": "Saya setuju. Kita juga perlu memastikan bahwa manfaat dari perjanjian ini segera dirasakan oleh semua pihak."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Bagaimana dengan dampak perjanjian ini terhadap industri lokal?"
+    },
+    {
+     "speaker": "Panelis 1",
+     "voice": "male",
+     "text": "Industri lokal akan mengalami pertumbuhan jika mereka bisa bersaing di pasaran global. Ini membutuhkan dukungan dari pemerintah."
+    },
+    {
+     "speaker": "Panelis 2",
+     "voice": "female",
+     "text": "Saya setuju. Pendanaan dan pelatihan juga penting untuk meningkatkan daya saing industri lokal."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Terima kasih telah menghadiri panel diskusi kita hari ini. Semoga diskusi kita bisa memberikan wawasan yang berguna."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-2p-speech-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -1196,6 +2799,321 @@
      "speaker": "Pemerintah",
      "voice": "female",
      "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "speech",
+   "title": "The Drying River",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Saudara-saudara, pada hari ini saya ingin membicarakan tentang keadaan Sungai Ciliwung."
+    },
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Sungai yang selama ini menjadi sumber air utama bagi masyarakat setempat, kini airnya telah menurun drastis."
+    },
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Hal ini tidak hanya menimbulkan masalah untuk kebutuhan air sehari-hari, tetapi juga berdampak pada pertanian dan ekosistem sekitar."
+    },
+    {
+     "speaker": "Warga",
+     "voice": "female",
+     "text": "Apa yang bisa kita lakukan untuk menyelesaikan masalah ini?"
+    },
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Kita harus bekerja sama untuk menyelamatkan Sungai Ciliwung."
+    },
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Pemerintah daerah telah memperkenalkan program penghematan air dan pembangunan infrastruktur untuk meningkatkan efisiensi penggunaan air."
+    },
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Namun, dukungan dan partisipasi dari seluruh warga juga sangat penting."
+    },
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Kita harus sadar bahwa air adalah sumber daya yang berharga dan harus kita jaga dengan baik."
+    },
+    {
+     "speaker": "Warga",
+     "voice": "female",
+     "text": "Bagaimana kita bisa ikut berpartisipasi?"
+    },
+    {
+     "speaker": "Pemerintah Daerah",
+     "voice": "male",
+     "text": "Anda bisa mulai dengan mengurangi penggunaan air di rumah, melaporkan kebocoran, dan mengikuti program penghematan air yang kami selenggarakan."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-speech-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Weekend Weather Watch",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Selamat pagi, saya akan memberikan ramalan cuaca untuk akhir pekan ini."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Untuk hari Sabtu, cuaca akan cerah di sebagian besar daerah di Jawa dan Bali."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Namun, di daerah Sulawesi dan Papua, akan terjadi hujan lebat."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Hati-hati dengan banjir dan tanah longsor yang mungkin terjadi karena hujan lebat, dan beberapa daerah mungkin terendam."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Untuk hari Minggu, cuaca akan berubah-ubah di sebagian besar daerah."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Di Jawa Barat dan Banten, akan terjadi hujan ringan di pagi hari, tetapi akan cerah di sore hari."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Di Jawa Timur, akan terjadi hujan lebat di sore hari, jadi harap berhati-hati saat berkendara."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Untuk daerah Sumatra dan Kalimantan, cuaca akan cerah namun angin akan kuat."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Harap tetap waspada dan ikuti update cuaca terbaru untuk informasi lebih lanjut."
+    },
+    {
+     "speaker": "Pemateri",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Invisible Threat: Air Pollution in Jakarta",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemerkosa",
+     "voice": "female",
+     "text": "Kualitas udara di Jakarta semakin memburuk setiap tahunnya. Ini menjadi masalah serius yang perlu kita tangani segera."
+    },
+    {
+     "speaker": "Pendengar",
+     "voice": "male",
+     "text": "Ya, saya setuju. Polusi udara di Jakarta sudah mencapai tingkat yang membahayakan. Apa menurutmu penyebab utama masalah ini?"
+    },
+    {
+     "speaker": "Pemerkosa",
+     "voice": "female",
+     "text": "Penyebab utama adalah kombinasi dari emisi kendaraan, industri, dan pembakaran lahan. Kendaraan lama dan kemacetan yang terus-menerus menyebabkan emisi gas buang meningkat drastis."
+    },
+    {
+     "speaker": "Pendengar",
+     "voice": "male",
+     "text": "Benar. Dan bagaimana dampaknya pada kesehatan masyarakat?"
+    },
+    {
+     "speaker": "Pemerkosa",
+     "voice": "female",
+     "text": "Peningkatan polusi udara ini memang telah menimbulkan dampak serius bagi kesehatan masyarakat, terutama bagi mereka yang memiliki penyakit pernapasan atau jantung. Kasus asmma dan penyakit jantung semakin meningkat."
+    },
+    {
+     "speaker": "Pendengar",
+     "voice": "male",
+     "text": "Itu benar-benar mengkhawatirkan. Apa yang bisa dilakukan untuk mengurangi polusi udara di Jakarta?"
+    },
+    {
+     "speaker": "Pemerkosa",
+     "voice": "female",
+     "text": "Menurut saya, langkah-langkah yang bisa diambil termasuk meningkatkan pengawasan emisi kendaraan, mempromosikan penggunaan transportasi umum, dan mengembangkan zona hijau di kota. Pemerintah juga perlu lebih serius dalam melaksanakan peraturan tentang emisi industri."
+    },
+    {
+     "speaker": "Pendengar",
+     "voice": "male",
+     "text": "Saya setuju dengan solusi-solusi itu. Semua pihak harus bekerja sama untuk mengatasi masalah polusi udara di Jakarta."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Pulse of Progress: Indonesia's National Vaccination Drive",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Selamat datang di program kami hari ini. Kita akan membahas tentang campaign vaksinasi nasional yang sedang berlangsung di Indonesia."
+    },
+    {
+     "speaker": "Ahli Kesehatan",
+     "voice": "female",
+     "text": "Terima kasih. Saat ini, lebih dari 150 juta dosis vaksin telah disuntikkan ke dalam lengan warga. Ini adalah prestasi yang sangat baik."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Bagaimana program vaksinasi ini dilaksanakan?"
+    },
+    {
+     "speaker": "Ahli Kesehatan",
+     "voice": "female",
+     "text": "Pemerintah mulai dengan mengutamakan warga yang berisiko tinggi, seperti lansia dan mereka yang memiliki penyakit kronis, sebelum membuka vaksinasi untuk umum. Ini untuk memastikan mereka yang paling memerlukan vaksin dapat mendapatkan perlindungan terlebih dahulu."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Apa yang dilakukan untuk meningkatkan kesadaran masyarakat tentang vaksinasi?"
+    },
+    {
+     "speaker": "Ahli Kesehatan",
+     "voice": "female",
+     "text": "Pemerintah juga telah berupaya menggalakkan kesadaran masyarakat tentang pentingnya vaksinasi melalui Various campaign di media sosial, televisi, dan radio. Mereka juga bekerja sama dengan pemimpin agama dan tokoh masyarakat untuk mempromosikan vaksinasi."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Apa dampaknya pada masyarakat?"
+    },
+    {
+     "speaker": "Ahli Kesehatan",
+     "voice": "female",
+     "text": "Program vaksinasi ini telah berhasil meningkatkan imunitas masyarakat. Hal ini dapat seen dari penurunan angka kasus COVID-19 dan kematian yang tercatat dalam beberapa bulan terakhir."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Terima kasih telah memberikan penjelasan yang baik."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Green Hands Initiative: Revitalizing Urban Communities",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Selamat datang di program kami hari ini. Kami akan membahas tentang Inisiatif Tangan Hijau, sebuah program sukarelawan komunitas yang bertujuan untuk menyegarkan kembali komunitas perkotaan."
+    },
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Inisiatif Tangan Hijau adalah sebuah program sukarelawan komunitas yang didirikan pada tahun 2015 oleh sejumlah warga yang peduli dengan kondisi lingkungan di kota besar."
+    },
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Program ini memiliki tujuan utama untuk mengembangkan project hijau, seperti menanam pohon, membuat kebun komunitas, dan mengadakan kampanye pemilahan sampah."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Bagaimana cara kerja program ini?"
+    },
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Setiap minggu, sukarelawan dari berbagai latar belakang berdatangan untuk berpartisipasi dalam berbagai kegiatan. Mereka bekerja sama dengan pemerintah daerah dan organisasi nonpemerintah untuk memilih lokasi dan merencanakan project yang akan mereka lakukan."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Siapa saja yang bisa ikut dalam program ini?"
+    },
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Program ini terbuka untuk siapa saja yang ingin berkontribusi. Sukarelawan yang telah terlibat berasal dari kalangan siswa, profesional, hingga pensiunan yang ingin tetap aktif dalam komunitas."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Apa dampak yang telah ditimbulkan oleh Inisiatif Tangan Hijau?"
+    },
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Sejak berdirinya, program ini telah berhasil menanam lebih dari seribu pohon dan membuat lebih dari lima belas kebun komunitas di seluruh kota. Selain itu, program ini juga telah mengajak lebih dari dua ratus rumah tangga untuk berpartisipasi dalam kampanye pemilahan sampah."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "male",
+     "text": "Terima kasih telah mendengarkan. Kami harapkan semakin banyak orang yang terlibat dalam Inisiatif Tangan Hijau untuk membuat kota kita lebih hijau dan sehat."
     }
    ],
    "source": "llm",
@@ -1302,6 +3220,259 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-3-debate-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Challenge of an Aging Society",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemimpin Debat",
+     "voice": "female",
+     "text": "Selamat datang semua di debat hari ini. Mari kita memulai dengan mengungkapkan topik yang akan kita bahas."
+    },
+    {
+     "speaker": "Pemimpin Debat",
+     "voice": "female",
+     "text": "Mari kita memulai debat hari ini tentang beberapa tantangan yang dihadapi oleh masyarakat tua."
+    },
+    {
+     "speaker": "Pemimpin Debat",
+     "voice": "female",
+     "text": "Pemerintah harus mempertimbangkan solusi untuk menanggulangi masalah ini."
+    },
+    {
+     "speaker": "Pemerintah",
+     "voice": "male",
+     "text": "Saya setuju bahwa masyarakat tua menjadi tantangan, tetapi kita juga harus mengakui manfaatnya."
+    },
+    {
+     "speaker": "Pemerintah",
+     "voice": "male",
+     "text": "Mereka memiliki pengalaman dan pengetahuan yang berharga."
+    },
+    {
+     "speaker": "Pemerintah",
+     "voice": "male",
+     "text": "Dengan dukungan yang tepat, mereka dapat terus berkontribusi pada masyarakat."
+    },
+    {
+     "speaker": "Oposisi",
+     "voice": "female",
+     "text": "Saya setuju bahwa pengalaman penting, tetapi kita tidak bisa mengabaikan fakta-fakta."
+    },
+    {
+     "speaker": "Oposisi",
+     "voice": "female",
+     "text": "Negara akan terpuruk dalam krisis keuangan jika biaya pensiun dan perawatan kesehatan terus meningkat."
+    },
+    {
+     "speaker": "Oposisi",
+     "voice": "female",
+     "text": "Kita perlu memikirkan solusi jangka panjang."
+    },
+    {
+     "speaker": "Pemerintah",
+     "voice": "male",
+     "text": "Solusi jangka panjang yang saya usulkan adalah meningkatkan investasi dalam teknologi kesehatan."
+    },
+    {
+     "speaker": "Pemerintah",
+     "voice": "male",
+     "text": "Ini akan membantu mengurangi biaya perawatan dan meningkatkan kualitas hidup."
+    },
+    {
+     "speaker": "Oposisi",
+     "voice": "female",
+     "text": "Saya setuju bahwa teknologi penting, tetapi itu tidak cukup."
+    },
+    {
+     "speaker": "Oposisi",
+     "voice": "female",
+     "text": "Kita juga perlu mempertimbangkan kebijakan imigrasi untuk membangun kembali tenaga kerja."
+    },
+    {
+     "speaker": "Pemimpin Debat",
+     "voice": "female",
+     "text": "Terima kasih kepada kedua belah pihak atas kontribusi mereka."
+    },
+    {
+     "speaker": "Pemimpin Debat",
+     "voice": "female",
+     "text": "Mari kita lanjutkan diskusi dengan argumen yang lebih mendalam."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-debate-005",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Evolution of Remote Work in Indonesia",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Wawancarawan",
+     "voice": "male",
+     "text": "Terima kasih atas kesempatan ini untuk berdebat tentang masa depan kerja jarak jauh di Indonesia."
+    },
+    {
+     "speaker": "Wawancarawan",
+     "voice": "male",
+     "text": "Saya percaya bahwa kerja jarak jauh akan terus berkembang di Indonesia karena manfaatnya yang banyak."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Terima kasih, Pak Budi. Saya setuju bahwa kerja jarak jauh memiliki banyak manfaat, seperti meningkatkan produktivitas dan mengurangi biaya operasional."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Namun, saya khawatir tentang ketergantungan teknologi dan keseimbangan antara kerja dan kehidupan pribadi."
+    },
+    {
+     "speaker": "Wawancarawan",
+     "voice": "male",
+     "text": "Saya mengerti khawatir Anda, Bu Siti. Namun, dengan manajemen yang baik, masalah tersebut dapat diatasi."
+    },
+    {
+     "speaker": "Wawancarawan",
+     "voice": "male",
+     "text": "Perusahaan harus memberikan pelatihan pada karyawan tentang penggunaan teknologi dan mengikuti dinamika kerja jarak jauh yang terus berubah."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Bagaimana dengan masalah koneksi internet yang masih menjadi masalah di beberapa daerah di Indonesia?"
+    },
+    {
+     "speaker": "Wawancarawan",
+     "voice": "male",
+     "text": "Itu benar, Bu Siti. Pemerintah dan perusahaan harus bekerja sama untuk meningkatkan infrastruktur internet di seluruh Indonesia."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Terima kasih, Pak Budi. Saya setuju bahwa kerja jarak jauh memiliki potensi yang besar untuk berkembang di Indonesia."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-debate-006",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "debate",
+   "title": "Collaborative Efforts in Disaster Response",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemimpin 1",
+     "voice": "female",
+     "text": "Selamat datang di debat hari ini tentang operasi pencarian dan penyelamatan bersama."
+    },
+    {
+     "speaker": "Pemimpin 1",
+     "voice": "female",
+     "text": "Indonesia dan Australia telah bekerja sama dalam misi pencarian dan penyelamatan di perbukitan tersebut."
+    },
+    {
+     "speaker": "Pemimpin 1",
+     "voice": "female",
+     "text": "Mereka telah menunjukkan komitmen yang kuat terhadap kerjasama internasional dalam menanggapi bencana alam."
+    },
+    {
+     "speaker": "Pemimpin 2",
+     "voice": "male",
+     "text": "Saya setuju bahwa kerjasama internasional sangat penting."
+    },
+    {
+     "speaker": "Pemimpin 2",
+     "voice": "male",
+     "text": "Tetapi, kami harus mengakui tantangan yang dihadapi dalam koordinasi antara tim-tim dari berbagai negara."
+    },
+    {
+     "speaker": "Pemimpin 2",
+     "voice": "male",
+     "text": "Koordinasi antara tim-tim dari berbagai negara sangat penting untuk sukses misi pencarian dan penyelamatan."
+    },
+    {
+     "speaker": "Pemimpin 1",
+     "voice": "female",
+     "text": "Benar, koordinasi adalah kunci."
+    },
+    {
+     "speaker": "Pemimpin 1",
+     "voice": "female",
+     "text": "Namun, kami harus juga mendorong pertukaran informasi dan teknologi antara negara-negara untuk meningkatkan kemampuan pencarian dan penyelamatan kita."
+    },
+    {
+     "speaker": "Pemimpin 3",
+     "voice": "male",
+     "text": "Saya setuju dengan kedua pemimpin sebelumnya."
+    },
+    {
+     "speaker": "Pemimpin 3",
+     "voice": "male",
+     "text": "Tapi, kami harus memastikan bahwa semua negara berpartisipasi aktif dalam operasi pencarian dan penyelamatan."
+    },
+    {
+     "speaker": "Pemimpin 3",
+     "voice": "male",
+     "text": "Kerjasama internasional tidak hanya tentang bantuan dari negara-negara maju, tetapi juga kontribusi dari semua negara yang terkait."
+    },
+    {
+     "speaker": "Pemimpin 2",
+     "voice": "male",
+     "text": "Saya setuju."
+    },
+    {
+     "speaker": "Pemimpin 2",
+     "voice": "male",
+     "text": "Kerjasama internasional harus berdasarkan prinsip kesetaraan dan saling hormat."
+    },
+    {
+     "speaker": "Pemimpin 1",
+     "voice": "female",
+     "text": "Itu benar."
+    },
+    {
+     "speaker": "Pemimpin 1",
+     "voice": "female",
+     "text": "Dengan prinsip tersebut, kami dapat membangun hubungan yang lebih kuat dan efektif dalam menanggapi bencana alam."
+    },
+    {
+     "speaker": "Pemimpin 3",
+     "voice": "male",
+     "text": "Saya setuju sekali."
+    },
+    {
+     "speaker": "Pemimpin 3",
+     "voice": "male",
+     "text": "Kerjasama internasional dalam operasi pencarian dan penyelamatan adalah kunci untuk menyelamatkan nyawa dan meningkatkan kemampuan kita dalam menanggapi bencana alam."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-3-lecture-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -1361,6 +3532,234 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The Science Behind Heat Waves",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Selamat pagi kawan-kawan, hari ini kita akan membahas tentang ilmu di belakang gelombang panas."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Gelombang panas adalah periode panas yang berlangsung selama beberapa hari atau lebih, di mana suhu udara jauh di atas rata-rata."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Sejak beberapa dekade lalu, frekuensi dan keparahan gelombang panas telah meningkat secara signifikan di berbagai wilayah di dunia."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Ada berbagai faktor yang menyebabkan gelombang panas, termasuk perubahan aliran samudra, perubahan dalam orbit dan rotasi bumi, serta aktivitas manusia."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Aktivitas manusia, seperti pembakaran bahan bakar fosil dan deforestasi, telah meningkatkan konsentrasi gas rumah kaca di atmosfer."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Ini telah menyebabkan perubahan iklim yang memicu gelombang panas yang lebih sering dan lebih parah."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Wilayah yang terpapar terhadap suhu yang ekstrem, seperti daerah urban dan wilayah yang berlokasi di dekat garis lintang rendah, lebih rentan terhadap gelombang panas."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Dengan terusnya perubahan iklim, diharapkan gelombang panas akan menjadi lebih sering dan lebih parah di masa depan."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Oleh karena itu, penting bagi kita untuk memahami ilmu di belakang gelombang panas dan mengambil langkah-langkah untuk mengurangi dampaknya."
+    },
+    {
+     "speaker": "Dosen",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Shift to Virtual Classrooms",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Selamat datang semua, hari ini kita akan membahas pentingnya pembelajaran daring dalam konteks pendidikan modern."
+    },
+    {
+     "speaker": "Ahli Pendidikan",
+     "voice": "male",
+     "text": "Terima kasih. Memang, pembelajaran daring telah menjadi tren yang tidak bisa diabaikan."
+    },
+    {
+     "speaker": "Ahli Pendidikan",
+     "voice": "male",
+     "text": "Namun, seperti halnya dengan perubahan besar lainnya, terdapat tantangan yang harus kita hadapi."
+    },
+    {
+     "speaker": "Ahli Pendidikan",
+     "voice": "male",
+     "text": "Kesulitan untuk beberapa siswa dalam beradaptasi dengan teknologi, serta akses yang tidak merata terhadap perangkat dan internet, adalah beberapa tantangan yang kita hadapi."
+    },
+    {
+     "speaker": "Ahli Pendidikan",
+     "voice": "male",
+     "text": "Namun, ada pula peluang yang besar."
+    },
+    {
+     "speaker": "Ahli Pendidikan",
+     "voice": "male",
+     "text": "Seperti akses pada sumber daya belajar yang lebih luas, kemampuan untuk menyesuaikan dengan pembelajaran daring, dan fleksibilitas yang lebih besar dalam pengelolaan waktu."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Apakah ada solusi yang dapat kita lakukan untuk menanggulangi tantangan tersebut?"
+    },
+    {
+     "speaker": "Ahli Pendidikan",
+     "voice": "male",
+     "text": "Ya, dengan dukungan yang tepat, seperti pelatihan untuk guru dan siswa, serta investasi dalam infrastruktur teknologi, kita dapat memastikan bahwa semua siswa dapat memanfaatkan manfaat pembelajaran daring."
+    },
+    {
+     "speaker": "Ahli Pendidikan",
+     "voice": "male",
+     "text": "Ini bukan tentang menggantikan kelas fisik dengan kelas daring, tetapi tentang menambah dan memenuhi kebutuhan pendidikan dengan cara yang lebih efektif dan inklusif."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih atas penjelasannya yang mendalam."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Heart of Knowledge: Transforming Public Libraries",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Saudara-saudara yang terhormat,"
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Saya sangat senang bisa berbicara di sini hari ini tentang pentingnya perpustakaan umum dalam kehidupan kita."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Dalam era digital ini, beberapa orang mungkin bertanya-tanya, 'Apakah perpustakaan umum masih relevan?'"
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Saya yakin, jawabannya adalah 'Ya!'"
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Tapi, untuk tetap relevan, perpustakaan umum harus beradaptasi."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Mereka harus menjadi lebih dari sekadar tempat untuk meminjam buku."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Perpustakaan umum harus menjadi pusat komunitas yang menyediakan berbagai layanan untuk memenuhi kebutuhan masyarakat."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Pertama, mereka harus memberikan akses terhadap teknologi."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Ini tidak hanya tentang menawarkan komputer dan internet gratis, tetapi juga tentang mengajari masyarakat bagaimana menggunakan teknologi ini dengan bijak."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Kedua, perpustakaan umum harus menawarkan program pendidikan yang beragam."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Dari kelas membaca untuk anak-anak hingga workshop keterampilan untuk dewasa, ada sesuatu untuk semua orang."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Tiga, mereka harus menjadi tempat pertemuan yang ramah bagi semua orang."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Acara-acara komunitas, diskusi, dan bahkan tempat bertemu teman-teman, semuanya harus dilakukan di perpustakaan umum."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Perpustakaan umum memiliki peranan vital dalam mendukung pendidikan, literasi, dan pengembangan komunitas."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Mari kita dukung perpustakaan umum kita dan biarkan mereka menjadi jantung pengetahuan di masyarakat kita."
+    },
+    {
+     "speaker": "Pembawa Acara",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
@@ -1379,6 +3778,24 @@
    ],
    "answer": 1,
    "explanation": "The advertisement mentions 'pekerjaan panen', which means 'harvest work'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-advertisement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dl-0p-advertisement-002",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To share news about hospital services.",
+    "To advertise jobs at a new hospital.",
+    "To inform people about a new hospital opening soon.",
+    "To announce a hospital's relocation."
+   ],
+   "answer": 2,
+   "explanation": "The purpose is to inform people about a new hospital opening soon. The announcement says RUMAH SAKIT BARU BUKA BULAN INI, which means 'The new hospital opens this month.'",
    "source": "llm",
    "verified": false
   },
@@ -1487,6 +3904,186 @@
    ],
    "answer": 2,
    "explanation": "The correct answer is 'visitors'. The text says 'kami mengundang semua pengunjung', which invites visitors to the opening, indicating that 'pengunjung' refers to visitors in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-announcement-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dl-0p-announcement-005",
+   "stem": "What is the main topic of the workshop?",
+   "choices": [
+    "The regulation of artificial intelligence",
+    "The dangers of artificial intelligence",
+    "The future of artificial intelligence",
+    "The history of artificial intelligence"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions 'regulasi' (regulation) and 'kebijakan' (policies) related to 'kecerdasan buatan' (artificial intelligence), indicating that the main topic is the regulation of AI.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-announcement-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dl-0p-announcement-006",
+   "stem": "What is the main point of this announcement?",
+   "choices": [
+    "A new military base will be established in Australia.",
+    "A joint military exercise will take place between Indonesia and Australia.",
+    "Indonesia will send troops to fight in Australia.",
+    "Australia will provide military training to Indonesia."
+   ],
+   "answer": 1,
+   "explanation": "The main point is that a joint military exercise will take place, as stated by the announcer: \"Kami akan melaksanakan latihan militer bersama dengan Australia.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-short_exchange-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dl-0p-short_exchange-001",
+   "stem": "What is the purpose of the invitation?",
+   "choices": [
+    "To invite someone to a wedding.",
+    "To invite someone to a cultural exchange program.",
+    "To invite someone to a sports event.",
+    "To invite someone to a business meeting."
+   ],
+   "answer": 1,
+   "explanation": "The text explicitly states 'Undang-undang untuk program pertukaran budaya', which translates to 'Invitation for a cultural exchange program'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-short_exchange-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-0p-short_exchange-001",
+   "stem": "What does 'pertukaran' mean in this context?",
+   "choices": [
+    "Exchange",
+    "Meeting",
+    "Celebration",
+    "Competition"
+   ],
+   "answer": 0,
+   "explanation": "'Pertukaran' is used in the phrase 'program pertukaran budaya', which refers to a cultural exchange program.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dl-0p-voicemail-001",
+   "stem": "What is the main purpose of this message?",
+   "choices": [
+    "To request volunteers for a humanitarian aid convoy.",
+    "To announce the arrival of a new humanitarian aid convoy.",
+    "To inform about a delay in the humanitarian aid convoy.",
+    "To discuss the route of a humanitarian aid convoy."
+   ],
+   "answer": 2,
+   "explanation": "The message states 'Maaf, ada penundaan untuk konvoi bantuan kemanusiaan hari ini.' which indicates that the main purpose is to inform about a delay in the humanitarian aid convoy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-voicemail-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dl-0p-voicemail-002",
+   "stem": "What will the caller need to do at the border crossing?",
+   "choices": [
+    "Show a passport and wait in line",
+    "Show a passport and visa",
+    "Pay a fee and wait in line",
+    "Fill out a form and wait in line"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'Fill out a form and wait in line' because the text says 'isi formulir dan tunggu giliran'. This is the only action mentioned that the caller needs to do at the border crossing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-0p-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dl-0p-voicemail-003",
+   "stem": "What is the purpose of this message?",
+   "choices": [
+    "To announce a new online course",
+    "To remind about an upcoming online class",
+    "To invite people to a webinar",
+    "To provide information about online education"
+   ],
+   "answer": 1,
+   "explanation": "The message says 'Ingatlah bahwa kelas online kita akan dimulai besok.' This indicates that the purpose is to remind about an upcoming online class.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-announcement-001",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "The cost of traditional ceremonies",
+    "The best venues for weddings",
+    "The benefits of having a large family",
+    "The importance of saving money"
+   ],
+   "answer": 0,
+   "explanation": "The announcement mentions 'biaya pernikahan' (wedding costs) and 'acara tradisional' (traditional ceremonies) as the main topics.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-announcement-001",
+   "stem": "The word 'acara' in the announcement refers to:",
+   "choices": [
+    "Locations",
+    "Events",
+    "People",
+    "Food"
+   ],
+   "answer": 1,
+   "explanation": "The word 'acara' is used in the context of 'acara tradisional' (traditional ceremonies), which refers to events.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "id-dl-1-announcement-001",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To advertise a new wedding venue",
+    "To discuss the history of traditional ceremonies",
+    "To encourage people to have smaller weddings",
+    "To inform people about the rising costs of weddings"
+   ],
+   "answer": 3,
+   "explanation": "The announcement aims to inform people about the increasing 'biaya pernikahan' (wedding costs).",
    "source": "llm",
    "verified": false
   },
@@ -1671,6 +4268,114 @@
    "verified": false
   },
   {
+   "id": "id-dl-1-conversation-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-conversation-005",
+   "stem": "What is the main problem discussed in the conversation?",
+   "choices": [
+    "The lack of jobs for young people.",
+    "The rise in the number of elderly people.",
+    "The cost of healthcare for senior citizens.",
+    "The need for more retirement homes."
+   ],
+   "answer": 1,
+   "explanation": "The main problem discussed is the rise in the number of elderly people. This is evident from the phrase 'jumlah orang tua semakin banyak'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-conversation-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-conversation-005",
+   "stem": "In this conversation, what does 'meningkat' mean?",
+   "choices": [
+    "To fluctuate",
+    "To decrease",
+    "To increase",
+    "To stay the same"
+   ],
+   "answer": 2,
+   "explanation": "The word 'meningkat' is used to describe the number of elderly people, indicating that it is rising or 'to increase'. The relevant phrase is 'jumlah orang tua semakin banyak menurut data tahun ini'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-conversation-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "id-dl-1-conversation-005",
+   "stem": "What is the purpose of the conversation?",
+   "choices": [
+    "To promote a new retirement savings scheme.",
+    "To plan a community event for senior citizens.",
+    "To address the challenges of an aging population.",
+    "To discuss the benefits of a healthy lifestyle."
+   ],
+   "answer": 2,
+   "explanation": "The purpose of the conversation is to address the challenges of an aging population. This is clear from the discussion about the 'jumlah orang tua semakin banyak' and the need to 'mengatasi masalah ini'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-instructions-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-instructions-001",
+   "stem": "What is the name of the exhibition?",
+   "choices": [
+    "The Treasures of Java",
+    "Ancient Wonders",
+    "Timeless Artifacts",
+    "Echoes of the Past"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"Ancient Wonders\" because the speaker says \"Selamat datang di pameran Ancient Wonders.\" The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-instructions-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dl-1-instructions-001",
+   "stem": "What is the main purpose of the announcement?",
+   "choices": [
+    "To explain how to preserve ancient artifacts",
+    "To describe the history of ancient artifacts",
+    "To announce the opening of a new museum",
+    "To invite visitors to an exhibition"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is \"To invite visitors to an exhibition\" because the speaker says \"Mari kita jelajahi pameran ini bersama-sama.\" The other options are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-instructions-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-instructions-001",
+   "stem": "What does \"jelajahi\" mean here?",
+   "choices": [
+    "To explore",
+    "To preserve",
+    "To admire",
+    "To study"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is \"To explore\" because the speaker uses \"jelajahi\" to invite visitors to explore the exhibition. The other options do not fit the context of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-1-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1725,6 +4430,186 @@
    "verified": false
   },
   {
+   "id": "id-dl-1-voicemail-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-voicemail-002",
+   "stem": "What is the main problem being discussed in the voicemail?",
+   "choices": [
+    "Lack of public transportation",
+    "Shortage of affordable housing",
+    "Rising cost of food",
+    "Increase in crime rates"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions 'krisis perumahan di kota-kota besar' (housing crisis in big cities), and 'sukar mendapatkan tempat tinggal yang terjangkau' (difficult to find affordable places to live), indicating that the main problem is the shortage of affordable housing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-voicemail-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dl-1-voicemail-002",
+   "stem": "What is the purpose of the voicemail?",
+   "choices": [
+    "To explain how to apply for a housing loan",
+    "To advertise a real estate agency",
+    "To inform about a new housing project",
+    "To discuss the impact of housing shortages"
+   ],
+   "answer": 3,
+   "explanation": "The caller states 'Saya ingin berbicara tentang krisis perumahan di kota-kota besar' (I want to talk about the housing crisis in big cities) and discusses the difficulties people face in finding affordable housing, which shows the purpose is to discuss the impact of housing shortages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-voicemail-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-voicemail-002",
+   "stem": "What does the word 'terjangkau' mean here?",
+   "choices": [
+    "Affordable",
+    "Spacious",
+    "Luxurious",
+    "Modern"
+   ],
+   "answer": 0,
+   "explanation": "The text uses 'tempat tinggal yang terjangkau' (affordable places to live), indicating that 'terjangkau' means affordable in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dl-1-voicemail-003",
+   "stem": "What is the main point of this voicemail?",
+   "choices": [
+    "The caller wants to rent an electric car.",
+    "The caller is selling a used electric car.",
+    "The caller needs help finding a charging station.",
+    "The caller is asking about the price of electric cars."
+   ],
+   "answer": 2,
+   "explanation": "The main point is that the caller needs help finding a charging station, as indicated by the words \"saya butuh bantuan\" and \"stasiun pengisian\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-voicemail-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-voicemail-003",
+   "stem": "What is the make of the caller's electric car?",
+   "choices": [
+    "Tesla",
+    "Toyota",
+    "Nissan",
+    "BMW"
+   ],
+   "answer": 2,
+   "explanation": "The caller mentions the make of their electric car as \"Nissan\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-weather-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-weather-001",
+   "stem": "In the listening passage, what does the speaker say is the cause of the weather warning?",
+   "choices": [
+    "D. A thunderstorm",
+    "A. Heavy rain and strong winds",
+    "B. A heatwave",
+    "C. A snowstorm"
+   ],
+   "answer": 1,
+   "explanation": "The speaker says \"Hati-hati dengan hujan lebat dan angin kencang\", which means 'Be careful with heavy rain and strong winds'. This indicates that the weather warning is due to heavy rain and strong winds.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-weather-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dl-1-weather-001",
+   "stem": "What is the main purpose of the listening passage?",
+   "choices": [
+    "B. To tell parents about a new weather app for children",
+    "D. To warn parents about the dangers of smartphones",
+    "C. To encourage parents to buy smartphones for their children",
+    "A. To inform parents about a weather warning and advise them to limit their children's smartphone use"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the listening passage is to inform parents about a weather warning and advise them to limit their children's smartphone use. The speaker says \"Dengan adanya peringatan cuaca ini, kami sarankan untuk membatasi penggunaan smartphone oleh anak-anak\", which means 'With this weather warning, we advise you to limit your children's smartphone use'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-weather-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-weather-002",
+   "stem": "What is the main concern in the announcement?",
+   "choices": [
+    "The participants are not ready.",
+    "The race track is too crowded.",
+    "It might rain during the race.",
+    "The weather is too hot for the race."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is C, because the announcement says 'hujan' (rain) and 'mungkin' (might), indicating concern about potential rain. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-weather-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-weather-002",
+   "stem": "What does 'mengganggu' mean in the announcement?",
+   "choices": [
+    "To distract",
+    "To encourage",
+    "To support",
+    "To observe"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B, because 'mengganggu' is used to describe how the rain might affect the race, meaning it could distract or disrupt the event. The other options do not fit this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-weather-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "id-dl-1-weather-002",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To encourage participants to practice more.",
+    "To warn participants about potential rain.",
+    "To announce the winners of the race.",
+    "To inform participants about the race schedule."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B, because the announcement is primarily about informing participants that there might be rain during the race. The other options are not the main purpose of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-1p-announcement-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1775,6 +4660,60 @@
    ],
    "answer": 0,
    "explanation": "In the context of the announcement, 'operasinya' refers to the company's operations or activities. The text states 'kami harus menghentikan operasinya,' indicating that the company's activities will stop.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dl-1p-announcement-002",
+   "stem": "What is the main topic of this announcement?",
+   "choices": [
+    "A notice about renting an apartment.",
+    "An apartment that is being sold.",
+    "The availability of a new apartment complex.",
+    "An advertisement for a real estate company."
+   ],
+   "answer": 0,
+   "explanation": "",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dl-1p-announcement-002",
+   "stem": "What is the monthly rent for the apartment?",
+   "choices": [
+    "$700.",
+    "$500.",
+    "$800.",
+    "$600."
+   ],
+   "answer": 3,
+   "explanation": "",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-announcement-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1p-announcement-002",
+   "stem": "What does \"tersedia\" mean here?",
+   "choices": [
+    "Reserved.",
+    "Expensive.",
+    "Required.",
+    "Available."
+   ],
+   "answer": 3,
+   "explanation": "",
    "source": "llm",
    "verified": false
   },
@@ -1887,6 +4826,222 @@
    "verified": false
   },
   {
+   "id": "id-dl-1p-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dl-1p-conversation-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The challenges of living in a city",
+    "The weather in a certain region",
+    "A new business opportunity",
+    "A visit to a refugee camp"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is indicated by phrases like 'kami akan mengunjungi kamp pengungsi', 'kamp pengungsi ini', and 'di kamp pengungsi', which all refer to a visit to a refugee camp.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dl-1p-conversation-003",
+   "stem": "What is the name of the refugee camp they are visiting?",
+   "choices": [
+    "Kamp Harapan",
+    "Kamp Damai",
+    "Kamp Sejahtera",
+    "Kamp Bahagia"
+   ],
+   "answer": 0,
+   "explanation": "The name of the refugee camp is explicitly mentioned as 'Kamp Harapan' in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1p-conversation-003",
+   "stem": "In the phrase 'itu adalah kamp pengungsi terbesar di wilayah ini', what does 'terbesar' mean?",
+   "choices": [
+    "Most remote",
+    "Most secure",
+    "Most expensive",
+    "Most populous"
+   ],
+   "answer": 3,
+   "explanation": "The word 'terbesar' is used to describe the camp as the largest in the area, which implies it is the most populous.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dl-1p-conversation-004",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A discussion about car models",
+    "A new law about traffic rules",
+    "A complaint about road conditions",
+    "A conversation about public transportation"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is indicated by the repeated mention of 'undang-undang' (law) and 'keamanan jalan' (road safety), such as in 'undang-undang baru tentang keamanan jalan'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dl-1p-conversation-004",
+   "stem": "According to the conversation, what is one of the new rules?",
+   "choices": [
+    "Only one person is allowed per car",
+    "Cars must be red in color",
+    "Drivers must use seat belts",
+    "Driving is prohibited at night"
+   ],
+   "answer": 2,
+   "explanation": "The new rule mentioned is 'pengemudi harus memakai sabuk pengaman', which translates to 'drivers must use seat belts'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1p-conversation-004",
+   "stem": "What does 'penalti' mean here?",
+   "choices": [
+    "A road sign",
+    "A driving maneuver",
+    "A type of car",
+    "A fine or penalty"
+   ],
+   "answer": 3,
+   "explanation": "The word 'penalti' is used in the context of 'jika tidak, ada penalti', indicating a consequence or penalty for not following the new rules.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1p-conversation-005",
+   "stem": "In the conversation, what does the speaker mean by the phrase 'mulai beroperasi'?",
+   "choices": [
+    "to begin operating",
+    "to renovate",
+    "to cancel",
+    "to close down"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'mulai beroperasi' is used to indicate the start of operations for the new terminal. The relevant text is: 'Terminal baru ini akan mulai beroperasi bulan depan.' This means 'This new terminal will begin operating next month.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dl-1p-conversation-005",
+   "stem": "What is the main reason for the airport expansion?",
+   "choices": [
+    "to increase parking spaces",
+    "to close old facilities",
+    "to accommodate more passengers",
+    "to reduce staff"
+   ],
+   "answer": 2,
+   "explanation": "The main reason for the airport expansion is to accommodate more passengers. The relevant text is: 'Karenanya, bandara kita perlu terminal baru untuk menampung penumpang tambahan.' This means 'Therefore, our airport needs a new terminal to accommodate additional passengers.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "purpose",
+   "passageId": "id-dl-1p-conversation-005",
+   "stem": "What is the purpose of the conversation?",
+   "choices": [
+    "to inform about flight delays",
+    "to announce the opening of a new terminal",
+    "to discuss airport staffing issues",
+    "to advertise parking facilities"
+   ],
+   "answer": 1,
+   "explanation": "The purpose of the conversation is to announce the opening of a new terminal. The relevant text is: 'Saya ingin memberitahu kalian bahwa terminal baru kami akan mulai beroperasi bulan depan.' This means 'I want to inform you that our new terminal will begin operating next month.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dl-1p-conversation-006",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The different types of news articles",
+    "The benefits of being a journalist",
+    "The history of Indonesian journalism",
+    "The challenges of reporting the truth"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the challenges of reporting the truth, as indicated by the speakers discussing the difficulties and dangers of journalism. For example, the female speaker says, 'Kita harus bisa mempertahankan kebebasan pers dengan tegas.' (We must be able to uphold press freedom firmly.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dl-1p-conversation-006",
+   "stem": "What does the male speaker say is a common threat to journalists?",
+   "choices": [
+    "Long working hours",
+    "Government pressure",
+    "Self-censorship",
+    "Low salaries"
+   ],
+   "answer": 2,
+   "explanation": "The male speaker mentions self-censorship as a common threat to journalists, saying, 'Beberapa jurnalis justru memilih untuk tidak melaporkan berita dengan benar karena takut.' (Some journalists even choose not to report news accurately because they are afraid.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-conversation-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1p-conversation-006",
+   "stem": "In this conversation, what does the phrase 'mempertahankan kebebasan pers' mean?",
+   "choices": [
+    "To limit press freedom",
+    "To celebrate press freedom",
+    "To uphold press freedom",
+    "To ignore press freedom"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'mempertahankan kebebasan pers' means 'to uphold press freedom' as the female speaker is discussing the importance of maintaining press freedom despite the challenges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-1p-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1991,6 +5146,114 @@
    ],
    "answer": 2,
    "explanation": "'Pertukaran budaya' in this context refers to the cultural exchange program between students from Surabaya and Malaysia, as stated in the phrase 'program pertukaran budaya antara siswa Surabaya dan Malaysia'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-phone_call-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dl-1p-phone_call-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A complaint about the library's services",
+    "The library's new book collection",
+    "The availability of library study rooms",
+    "A change in the library's operating hours"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the change in the library's operating hours, as indicated by the phrases \"jam buka\" (opening hours) and \"berubah\" (change) throughout the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-phone_call-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dl-1p-phone_call-001",
+   "stem": "What is the new closing time on Fridays?",
+   "choices": [
+    "6:00 PM",
+    "4:00 PM",
+    "7:00 PM",
+    "5:00 PM"
+   ],
+   "answer": 0,
+   "explanation": "The new closing time on Fridays is stated as \"jam 6 sore\" (6:00 PM) in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-phone_call-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1p-phone_call-001",
+   "stem": "What does \"terpaksa\" mean here?",
+   "choices": [
+    "Happy",
+    "Excited",
+    "Surprised",
+    "Forced"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"terpaksa\" means \"forced\" or \"compelled\", as the library staff is forced to adjust the operating hours due to circumstances beyond their control.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-phone_call-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dl-1p-phone_call-002",
+   "stem": "What is the main problem in this conversation?",
+   "choices": [
+    "The hotel is overbooked and has no rooms available.",
+    "The caller wants to change their room type.",
+    "The caller has arrived at the wrong hotel.",
+    "The hotel has lost the caller's reservation."
+   ],
+   "answer": 3,
+   "explanation": "The main problem is that the hotel cannot find the caller's reservation, as stated by Penerima in the line 'Maaf, kami tidak menemukan reservasi di bawah nama Anda.' The other options are not the main issues discussed in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-phone_call-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dl-1p-phone_call-002",
+   "stem": "What does the caller ask the receptionist to do?",
+   "choices": [
+    "Check the reservation again.",
+    "Give them a different room.",
+    "Cancel their reservation.",
+    "Speak to the manager."
+   ],
+   "answer": 0,
+   "explanation": "The caller asks the receptionist to check the reservation again, as stated in the line 'Bisa Anda cek lagi, ya?' The other options are not what the caller asks for in this conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1p-phone_call-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1p-phone_call-002",
+   "stem": "What does \"terdaftar\" mean here?",
+   "choices": [
+    "To be found",
+    "To be registered",
+    "To be canceled",
+    "To be lost"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"terdaftar\" means 'to be registered'. Penerima uses this word to ask if the caller's reservation is registered under a different name: 'Apakah reservasi Anda terdaftar di bawah nama lain?'.",
    "source": "llm",
    "verified": false
   },
@@ -2103,6 +5366,222 @@
    "verified": false
   },
   {
+   "id": "id-dl-2-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-conversation-001",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The weather in the peacekeeping mission area",
+    "The history of peacekeeping missions",
+    "The team's personal lives",
+    "The team's preparations for a peacekeeping mission"
+   ],
+   "answer": 3,
+   "explanation": "The conversation focuses on the preparations for a peacekeeping mission, as indicated by sentences like 'Kita harus siap untuk misi pemeliharaan keamanan ini.' and discussions about equipment and training.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-conversation-001",
+   "stem": "What is one specific item mentioned as needed for the mission?",
+   "choices": [
+    "A new car",
+    "Sufficient medical supplies",
+    "A vacation package",
+    "A new smartphone"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions 'persediaan medis yang cukup' as one of the items needed for the mission.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-conversation-001",
+   "stem": "In this text, what does 'semboyan' mean?",
+   "choices": [
+    "A kind of clothing",
+    "A traditional dance",
+    "A type of food",
+    "A motto or slogan"
+   ],
+   "answer": 3,
+   "explanation": "The text uses 'semboyan' in the context of a motto or slogan: 'Kita punya semboyan bersama:",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-interview-001",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The history of the national library system",
+    "The challenges of maintaining physical libraries",
+    "New digital services offered by public libraries",
+    "The role of libraries in education reform"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is new digital services offered by public libraries, as indicated by statements like 'kami akan memperluas layanan digital kami' and discussions about e-books and online resources.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-interview-001",
+   "stem": "What specific digital service will be expanded according to the library director?",
+   "choices": [
+    "Mobile library services",
+    "Online book clubs",
+    "Digital literacy workshops",
+    "E-book lending"
+   ],
+   "answer": 3,
+   "explanation": "The library director specifically mentions 'pinjaman buku elektronik' (e-book lending) as a service that will be expanded.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-interview-001",
+   "stem": "In the interview, what does 'akses' mean?",
+   "choices": [
+    "Analysis",
+    "Acquisition",
+    "Assistance",
+    "Access"
+   ],
+   "answer": 3,
+   "explanation": "'Akses' here means 'access', as in 'memperluas akses kepada koleksi digital' (expanding access to digital collections).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-interview-003",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The history of PT Karya Abadi",
+    "The new management of PT Karya Abadi",
+    "The reasons for the closure of PT Karya Abadi",
+    "The relocation of PT Karya Abadi"
+   ],
+   "answer": 2,
+   "explanation": "The interview focuses on the closure of PT Karya Abadi, as indicated by phrases like \"penutupan pabrik\" and \"alasan penutupan\". The other options are not the main focus of the interview.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-interview-003",
+   "stem": "According to Pak Supri, what was the primary reason for the factory closure?",
+   "choices": [
+    "Relocation of the company",
+    "Increased competition",
+    "Declining sales",
+    "Financial difficulties"
+   ],
+   "answer": 3,
+   "explanation": "Pak Supri states \"kondisi keuangan yang buruk\" as the primary reason for the closure.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-interview-003",
+   "stem": "What does \"menghadapi\" mean here?",
+   "choices": [
+    "To ignore",
+    "To celebrate",
+    "To avoid",
+    "To face"
+   ],
+   "answer": 3,
+   "explanation": "\"Menghadapi\" in this context means \"to face\" as in \"karyawan menghadapi kesulitan\" which translates to \"workers face difficulties\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-news-001",
+   "stem": "What is the main topic of the news segment?",
+   "choices": [
+    "The impact of inflation on local businesses",
+    "Public reaction to recent economic policies",
+    "Government strategies to control inflation and interest rates",
+    "The relationship between inflation and global trade"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is signaled by the repeated mention of government actions: 'Pengumuman baru dari pemerintah', 'Kementerian Keuangan', and 'Bank Sentral Indonesia'. These indicate the focus on government strategies to control inflation and interest rates.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-news-001",
+   "stem": "What specific action is the Ministry of Finance taking to control inflation?",
+   "choices": [
+    "Controlling food prices",
+    "Reducing import tariffs",
+    "Increasing taxes on luxury goods",
+    "Increasing the money supply"
+   ],
+   "answer": 0,
+   "explanation": "The Ministry of Finance's action is explicitly stated: 'Kementerian Keuangan akan mengendalikan harga makanan dasar'. This directly translates to 'The Ministry of Finance will control basic food prices'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-news-001",
+   "stem": "What does 'stabil' mean here?",
+   "choices": [
+    "Decreasing",
+    "Monitoring",
+    "Increasing",
+    "Controlling"
+   ],
+   "answer": 3,
+   "explanation": "The word 'stabil' is used in the context of 'Bank Sentral Indonesia akan menstabilkan suku bunga'. This means 'Bank Indonesia will stabilize interest rates'. The correct meaning here is 'decreasing' as stabilizing interest rates in the context of inflation control implies preventing them from increasing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-2-news-002-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2207,6 +5686,276 @@
    ],
    "answer": 3,
    "explanation": "The context makes it clear that 'lansia' refers to elderly people, as seen in phrases like 'populasi tua' and 'fasilitas kesehatan untuk lansia'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-report-001",
+   "stem": "What is the main idea of this report?",
+   "choices": [
+    "The government has invested a large sum in space technology.",
+    "A satellite launch has failed due to technical difficulties.",
+    "A new satellite will improve weather forecasting in Indonesia.",
+    "Indonesia's space agency has successfully launched a new satellite."
+   ],
+   "answer": 3,
+   "explanation": "The report focuses on the successful launch of a new satellite by Indonesia's space agency, LAPAN. The correct answer captures this main idea. The other choices are not the main focus of the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-report-001",
+   "stem": "What is the name of the satellite that was launched?",
+   "choices": [
+    "Satkom-3",
+    "Indonesia-2",
+    "Palapa-N1",
+    "LAPAN-A3"
+   ],
+   "answer": 2,
+   "explanation": "The report explicitly states that the satellite launched is named Palapa-N1. The other choices are not mentioned in the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-report-001",
+   "stem": "What does the word 'berhasil' mean in this context?",
+   "choices": [
+    "Attempted",
+    "Failed",
+    "Launched",
+    "Succeeded"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'berhasil' means 'succeeded'. The report states that the launch of Palapa-N1 'berhasil', indicating that it was successful. The other choices do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-report-002",
+   "stem": "What is the main purpose of this text?",
+   "choices": [
+    "To discuss the symptoms of a specific illness.",
+    "To inform the patient about the results of their medical tests.",
+    "To provide advice on how to improve one's health.",
+    "To schedule a new appointment with the doctor."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the text is to inform the patient about the results of their medical tests. This is evident from the doctor's statement: \"Berikut ini adalah hasil pemeriksaan Anda.\" (Here are the results of your examination.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-report-002",
+   "stem": "What does Dr. Wibowo say about the patient's blood pressure?",
+   "choices": [
+    "It is still too high and needs to be monitored closely.",
+    "It has improved significantly since the last appointment.",
+    "It is within the normal range and nothing to worry about.",
+    "It was not mentioned in the report."
+   ],
+   "answer": 2,
+   "explanation": "Dr. Wibowo states that the patient's blood pressure is within the normal range: \"Tekanan darah Anda berada dalam rentang normal.\" (Your blood pressure is within the normal range.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-report-002",
+   "stem": "What does the phrase \"sesuai dengan jadwal\" mean here?",
+   "choices": [
+    "According to the schedule.",
+    "To create a new schedule.",
+    "To ignore the schedule.",
+    "To change the schedule."
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"sesuai dengan jadwal\" means \"according to the schedule.\" The doctor uses it to remind the patient about their next appointment: \"Jangan lupa datang sesuai dengan jadwal untuk pemeriksaan berikutnya.\" (Do not forget to come according to the schedule for the next examination.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-report-003",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "The history of aviation in Indonesia",
+    "The features and benefits of the new terminal at Bandara Internasional Nusantara",
+    "The environmental impact of the new airport terminal",
+    "The challenges faced by airlines at Bandara Internasional Nusantara"
+   ],
+   "answer": 1,
+   "explanation": "The report focuses on the new terminal at Bandara Internasional Nusantara, detailing its features and benefits, such as 'fasilitas modern', 'kapasitas yang lebih besar', and 'penerbangan internasional tambahan'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-report-003",
+   "stem": "According to the report, what is one of the modern facilities at the new terminal?",
+   "choices": [
+    "A traditional market",
+    "A historical museum",
+    "Free Wi-Fi access",
+    "A shopping mall"
+   ],
+   "answer": 2,
+   "explanation": "The report mentions 'akses Wi-Fi gratis' as one of the modern facilities at the new terminal.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-report-003",
+   "stem": "In the report, what does 'terhubung baik' mean here?",
+   "choices": [
+    "Poorly connected",
+    "Well-connected",
+    "Under construction",
+    "Temporarily closed"
+   ],
+   "answer": 1,
+   "explanation": "The report states that the new terminal 'terhubung baik dengan transportasi umum', meaning it has good connections with public transportation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dl-2p-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The success of local fishing industries",
+    "The impact of coastal erosion in Pantai Abadi",
+    "The history of the village of Pantai Abadi",
+    "New tourist attractions in Pantai Abadi"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the interview is the impact of coastal erosion in Pantai Abadi. This is evident from the repeated mentions of the issue, such as 'erosi pantai' and 'tanah yang hilang ke laut' throughout the interview.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2p-interview-001",
+   "stem": "What does the word 'mengganggu' mean here?",
+   "choices": [
+    "To entertain",
+    "To disturb",
+    "To build",
+    "To protect"
+   ],
+   "answer": 1,
+   "explanation": "The word 'mengganggu' is used in the context of 'aktivitas manusia yang mengganggu alam,' indicating that human activities are disturbing or disrupting the environment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-interview-001",
+   "stem": "What can be inferred about the villagers' attitude towards the government's response?",
+   "choices": [
+    "They feel the government is doing enough but needs more support.",
+    "They think the government should focus on other problems instead.",
+    "They are satisfied with the government's efforts.",
+    "They believe the government has not done enough to address the issue."
+   ],
+   "answer": 3,
+   "explanation": "The villagers' attitude towards the government's response can be inferred from statements like 'pemerintah belum melakukan yang cukup' and 'kita butuh bantuan yang lebih baik dari pemerintah,' indicating that they believe the government has not done enough to address the issue.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dl-2p-interview-002",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The environmental concerns around naval port visits.",
+    "The history and significance of the Tanjung Perak port.",
+    "The challenges faced by local fishermen in Surabaya.",
+    "The impact of international naval visits on the local economy."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the impact of international naval visits on the local economy. This is evident from the discussion about increased business and the mayor's comments on the economic benefits. The text mentions, 'Kunjungan kapal perang asing ini memberikan dampak positif bagi perekonomian daerah kami.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "id-dl-2p-interview-002",
+   "stem": "According to the interview, what specific benefit does the naval port visit bring to the local community?",
+   "choices": [
+    "It provides job opportunities for local fishermen.",
+    "It increases business for local shops and restaurants.",
+    "It promotes cultural exchange between sailors and locals.",
+    "It helps improve the infrastructure of the port."
+   ],
+   "answer": 1,
+   "explanation": "The interview states that the naval port visit increases business for local shops and restaurants. The text says, 'Toko-toko dan restauran lokal melaporkan peningkatan penjualan sejak kapal-kapal perang tiba.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2p-interview-002",
+   "stem": "In the interview, the word 'dampak' is used. What does it mean in this context?",
+   "choices": [
+    "Challenge",
+    "Concern",
+    "Impact",
+    "Opportunity"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'dampak' means 'impact'. The text uses it to describe the effects of the naval visits on the local economy, as in 'Kunjungan kapal perang asing ini memberikan dampak positif bagi perekonomian daerah kami.'",
    "source": "llm",
    "verified": false
   },
@@ -2319,6 +6068,114 @@
    "verified": false
   },
   {
+   "id": "id-dl-2p-news_analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dl-2p-news_analysis-003",
+   "stem": "What is the main idea of the news analysis?",
+   "choices": [
+    "Foreign investors are not interested in Indonesia's renewable energy sector.",
+    "Indonesia has achieved all its renewable energy goals.",
+    "Indonesia is investing heavily in renewable energy but faces challenges.",
+    "Indonesia is abandoning renewable energy investments."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that Indonesia is investing in renewable energy but faces challenges, as shown by the discussion of investments and obstacles like land acquisition and regulatory hurdles.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-news_analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-news_analysis-003",
+   "stem": "What can be inferred about the Indonesian government's stance on renewable energy?",
+   "choices": [
+    "It is planning to phase out renewable energy projects.",
+    "It is leaving renewable energy development to private companies.",
+    "It is indifferent to renewable energy development.",
+    "It is actively supporting renewable energy investments."
+   ],
+   "answer": 3,
+   "explanation": "The inference is that the government is actively supporting renewable energy investments, as indicated by the mention of investments from state-owned enterprises and the discussion of regulatory hurdles that the government is likely involved in addressing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-news_analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2p-news_analysis-003",
+   "stem": "How is the word 'rintisan' used in the text?",
+   "choices": [
+    "As a type of renewable energy source.",
+    "As a pilot or initial project.",
+    "As a type of investment.",
+    "As a government policy."
+   ],
+   "answer": 1,
+   "explanation": "'Rintisan' is used to mean 'pilot or initial project', as in 'proyek rintisan energi surya', referring to pilot solar energy projects.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-news_analysis-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dl-2p-news_analysis-004",
+   "stem": "What is the main topic of this discussion?",
+   "choices": [
+    "The ethical implications of AI development and use",
+    "The latest advancements in AI technology",
+    "The impact of AI on the Indonesian economy",
+    "The role of AI in Indonesian education"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the ethical implications of AI development and use, as indicated by phrases like 'etika AI', 'pengaruh teknologi', and 'masalah etis' throughout the discussion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-news_analysis-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-news_analysis-004",
+   "stem": "What can be inferred about the current state of AI regulation in Indonesia?",
+   "choices": [
+    "It is non-existent",
+    "It is highly advanced and comprehensive",
+    "It is primarily focused on economic growth",
+    "It is still in the early stages of development"
+   ],
+   "answer": 3,
+   "explanation": "The inference that AI regulation is still in the early stages can be drawn from statements like 'kita masih dalam proses mengembangkan kerangka kerja' and 'perlu ada diskusi yang lebih dalam'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-news_analysis-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2p-news_analysis-004",
+   "stem": "What does 'perkembangan' mean in this context?",
+   "choices": [
+    "Ethics",
+    "Advancements",
+    "Challenges",
+    "Regulations"
+   ],
+   "answer": 1,
+   "explanation": "'Perkembangan' in this context refers to advancements, as in 'perkembangan teknologi AI' which discusses the development and progress of AI technology.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-2p-panel_discussion-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2427,6 +6284,60 @@
    "verified": false
   },
   {
+   "id": "id-dl-2p-panel_discussion-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dl-2p-panel_discussion-003",
+   "stem": "What is the main topic of the panel discussion?",
+   "choices": [
+    "The environmental impact of the Pacific Rim Trade Accord",
+    "The political alliances formed due to the Pacific Rim Trade Accord",
+    "The cultural exchange facilitated by the Pacific Rim Trade Accord",
+    "The economic implications of the Pacific Rim Trade Accord"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the panel discussion is the economic implications of the Pacific Rim Trade Accord. This is evident from the repeated mentions of economic growth, market access, and trade barriers in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-panel_discussion-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2p-panel_discussion-003",
+   "stem": "In the phrase 'membuka peluang pasar yang lebih luas', what does 'membuka peluang' mean here?",
+   "choices": [
+    "To increase labor force",
+    "To open up new markets",
+    "To create new products",
+    "To reduce production costs"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'membuka peluang' means 'to open up new markets'. This is evident from the phrase 'membuka peluang pasar yang lebih luas', which translates to 'open up more extensive market opportunities'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-panel_discussion-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-panel_discussion-003",
+   "stem": "What can be inferred about the speaker labeled Moderator?",
+   "choices": [
+    "They are a representative of one of the participating countries",
+    "They are an expert on the Pacific Rim Trade Accord",
+    "They are a critic of the Pacific Rim Trade Accord",
+    "They are facilitating the discussion and asking questions"
+   ],
+   "answer": 3,
+   "explanation": "The Moderator is facilitating the discussion and asking questions. This is evident from their role in introducing the topic, asking questions to the panelists, and keeping the discussion on track, as seen in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-2p-speech-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2477,6 +6388,276 @@
    ],
    "answer": 0,
    "explanation": "The speaker expresses concern about the heat wave ('Gelombang panas yang sedang kita alami saat ini sangat mengkhawatirkan.') but also shows confidence in the government's response ('Kami telah menyusun langkah-langkah darurat untuk melindungi masyarakat.')",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dl-2p-speech-002",
+   "stem": "The main idea of the speech is that",
+   "choices": [
+    "the river's drying up is a temporary issue that will resolve itself",
+    "the government is solely responsible for solving the water shortage problem",
+    "the local community needs to work together to address the river's drying up",
+    "the river's drying up is a natural phenomenon that requires no action"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is that 'the local community needs to work together to address the river's drying up'. This is evident from the speaker's statements such as 'kita harus bekerja sama untuk menyelamatkan Sungai Ciliwung' and 'memperkenalkan program penghematan air'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-speech-002",
+   "stem": "What can be inferred from the speech about the current situation of the river?",
+   "choices": [
+    "The river's water level is critically low",
+    "The river's water level is normal",
+    "The river is completely dry",
+    "The river is polluted"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is that 'The river's water level is critically low'. This can be inferred from the speaker's statement 'air di Sungai Ciliwung telah menurun drastis'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2p-speech-002",
+   "stem": "In the speech, the word 'menghemat' as in 'program penghematan air' means",
+   "choices": [
+    "to save",
+    "to distribute",
+    "to clean",
+    "to waste"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'to save'. In this context, 'menghemat' refers to saving water, as indicated by the program's goal to 'mengurangi penggunaan air'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-speech-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "id-dl-2p-speech-003",
+   "stem": "What is the main topic of the speech?",
+   "choices": [
+    "The weather forecast for the upcoming weekend.",
+    "The history of meteorology in Indonesia.",
+    "The impact of climate change on Indonesia.",
+    "The effects of weather on tourism."
+   ],
+   "answer": 0,
+   "explanation": "The main topic is clearly stated at the beginning of the speech: \"Selamat pagi, saya akan memberikan ramalan cuaca untuk akhir pekan ini.\" (Good morning, I will provide the weather forecast for this weekend.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-speech-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "id-dl-2p-speech-003",
+   "stem": "Which regions are expected to experience heavy rainfall this weekend according to the speaker?",
+   "choices": [
+    "Nusa Tenggara and Maluku.",
+    "Java and Bali.",
+    "Sulawesi and Papua.",
+    "Sumatra and Kalimantan."
+   ],
+   "answer": 2,
+   "explanation": "The speaker mentions the regions expected to experience heavy rainfall: \"Daerah Sulawesi dan Papua akan mengalami hujan lebat pada akhir pekan ini.\" (The regions of Sulawesi and Papua will experience heavy rainfall this weekend.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-speech-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2p-speech-003",
+   "stem": "What does the speaker mean by the word \"terendam\" in this context?",
+   "choices": [
+    "To be sunny.",
+    "To be submerged.",
+    "To be foggy.",
+    "To be windy."
+   ],
+   "answer": 1,
+   "explanation": "The word \"terendam\" is used to describe the potential consequence of heavy rainfall: \"Hati-hati dengan banjir dan tanah longsor yang mungkin terjadi karena hujan lebat, dan beberapa daerah mungkin terendam.\" (Be careful with floods and landslides that may occur due to heavy rain, and some areas may be submerged.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-analysis-001",
+   "stem": "What is the main idea of the conversation?",
+   "choices": [
+    "The economic benefits of reducing air pollution in Jakarta.",
+    "The importance of industrial development in Jakarta.",
+    "The increasing severity of air pollution in Jakarta and its impacts.",
+    "The history of air pollution regulations in Jakarta."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is the increasing severity of air pollution in Jakarta and its impacts. The speakers discuss how air pollution has worsened over the years and its effects on public health and the environment, as indicated by statements like 'Kualitas udara di Jakarta semakin memburuk' and 'Peningkatan polusi udara ini memang telah menimbulkan dampak serius bagi kesehatan masyarakat.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-analysis-001",
+   "stem": "What can be inferred about the current air pollution levels in Jakarta?",
+   "choices": [
+    "They are stable and not causing any significant issues.",
+    "They are worsening and causing serious health problems.",
+    "They are improving due to recent regulations.",
+    "They are only a problem in specific areas of the city."
+   ],
+   "answer": 1,
+   "explanation": "The inference is that air pollution levels are worsening and causing serious health problems. This is supported by the statement 'Kualitas udara di Jakarta semakin memburuk setiap tahunnya' and the discussion about the impacts on public health, such as 'Peningkatan polusi udara ini memang telah menimbulkan dampak serius bagi kesehatan masyarakat, terutama bagi mereka yang memiliki penyakit pernapasan atau jantung.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-analysis-001",
+   "stem": "In the conversation, what does the phrase 'menimbulkan dampak serius' mean here?",
+   "choices": [
+    "To have no significant consequences.",
+    "To create serious impacts.",
+    "To cause minor effects.",
+    "To generate temporary issues."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'menimbulkan dampak serius' means 'to create serious impacts.' This is evident in the context where it is used to describe the effects of air pollution on public health, as in 'Peningkatan polusi udara ini memang telah menimbulkan dampak serius bagi kesehatan masyarakat.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-analysis-002",
+   "stem": "What is the main point of this discussion?",
+   "choices": [
+    "The economic impact of the COVID-19 pandemic",
+    "The role of international aid in Indonesia's vaccination campaign",
+    "The success of Indonesia's national vaccination campaign",
+    "The challenges faced by Indonesia's healthcare system"
+   ],
+   "answer": 2,
+   "explanation": "The main point of the discussion is the success of Indonesia's national vaccination campaign, as indicated by the repeated mentions of the campaign's achievements and the positive impact on the population, such as 'lebih dari 150 juta dosis vaksin telah disuntikkan ke dalam lengan warga' and 'program vaksinasi ini telah berhasil meningkatkan imunitas masyarakat'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-analysis-002",
+   "stem": "What can be inferred from the discussion about the Indonesian government's approach to the vaccination campaign?",
+   "choices": [
+    "The government delayed the campaign due to lack of resources",
+    "The government focused primarily on urban areas",
+    "The government used a phased approach to ensure widespread coverage",
+    "The government relied heavily on international aid"
+   ],
+   "answer": 2,
+   "explanation": "The inference that can be drawn is that the government used a phased approach. This is supported by the statement 'governmen mulai dengan mengutamakan warga yang berisiko tinggi, seperti lansia dan mereka yang memiliki penyakit kronis, sebelum membuka vaksinasi untuk umum'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-analysis-002",
+   "stem": "What does 'menggalakkan' mean here?",
+   "choices": [
+    "To discourage",
+    "To promote",
+    "To regulate",
+    "To monitor"
+   ],
+   "answer": 1,
+   "explanation": "The word 'menggalakkan' means 'to promote' in this context. This is evident from the sentence 'Pemerintah juga telah berupaya menggalakkan kesadaran masyarakat tentang pentingnya vaksinasi'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-analysis-003",
+   "stem": "What is the main idea of the listening passage?",
+   "choices": [
+    "The Green Hands Initiative is a community volunteer program that focuses on urban greening projects.",
+    "The Green Hands Initiative is a government-funded program to provide financial aid to urban communities.",
+    "The Green Hands Initiative aims to reduce youth unemployment by focusing on vocational training.",
+    "The Green Hands Initiative is a private sector initiative to promote eco-tourism in urban areas."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the passage is that the Green Hands Initiative is a community volunteer program focused on urban greening projects. This is evident from the description of the program's activities, such as planting trees and creating community gardens, as well as its goal to revitalize urban communities. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-analysis-003",
+   "stem": "What can be inferred about the participants in the Green Hands Initiative?",
+   "choices": [
+    "They are primarily professionals with a background in environmental science.",
+    "They are retired individuals seeking to stay active in their communities.",
+    "They are volunteers from various backgrounds who share a common interest in improving their communities.",
+    "They are mostly young people looking for job opportunities."
+   ],
+   "answer": 2,
+   "explanation": "The passage states that the Green Hands Initiative is open to anyone who wants to volunteer, and that participants include students, professionals, and retirees. This suggests that the participants are volunteers from various backgrounds who share a common interest in improving their communities. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-analysis-003",
+   "stem": "In the phrase 'mengembangkan project hijau', what does 'mengembangkan' mean here?",
+   "choices": [
+    "to develop",
+    "to destroy",
+    "to fund",
+    "to plan"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'mengembangkan project hijau' means 'to develop green projects'. The word 'mengembangkan' is used in the context of creating and implementing these projects, not destroying, planning, or funding them.",
    "source": "llm",
    "verified": false
   },
@@ -2589,6 +6770,168 @@
    "verified": false
   },
   {
+   "id": "id-dl-3-debate-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-debate-004",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The economic impact of an aging society",
+    "The cultural changes brought by immigration",
+    "The benefits of a young population",
+    "The technological advancements in healthcare"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'The economic impact of an aging society'. The debate focuses on the financial and social challenges posed by an aging population, as indicated by phrases such as 'beberapa tantangan ekonomi' and 'biaya pensiun'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-debate-004",
+   "stem": "What can be inferred about the speaker labeled 'Pemimpin Debat'?",
+   "choices": [
+    "They believe that an aging population is beneficial for economic growth",
+    "They argue that technological advancements can solve all societal issues",
+    "They are strongly in favor of increasing immigration",
+    "They are presenting the topic of the debate"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'They are presenting the topic of the debate'. The speaker labeled 'Pemimpin Debat' introduces the topic of the debate about the challenges of an aging society, as seen in the line 'Mari kita memulai debat hari ini tentang beberapa tantangan yang dihadapi oleh masyarakat tua.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-debate-004",
+   "stem": "What does the phrase 'terpuruk dalam krisis keuangan' mean here?",
+   "choices": [
+    "Experiencing economic growth",
+    "Facing financial crisis",
+    "Investing in new technologies",
+    "Reducing national debt"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'Facing financial crisis'. The phrase 'terpuruk dalam krisis keuangan' is used to describe the potential outcome of an aging population, indicating that the country could be facing significant financial difficulties.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-debate-005",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The benefits of remote work for employees",
+    "Whether remote work will continue to grow in Indonesia",
+    "The challenges of implementing remote work policies",
+    "The impact of remote work on Indonesia's economy"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the debate is whether remote work will continue to grow in Indonesia. This is evident from the opening statements of both speakers, who discuss the future of remote work and its growing popularity.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-debate-005",
+   "stem": "What can be inferred about the interviewer's opinion on remote work?",
+   "choices": [
+    "She is strongly opposed to it",
+    "She is indifferent to it",
+    "She is fully supportive of it",
+    "She is cautiously optimistic about it"
+   ],
+   "answer": 3,
+   "explanation": "The interviewer's opinion can be inferred as cautiously optimistic. She acknowledges the benefits of remote work, such as 'meningkatkan produktivitas' and 'mengurangi biaya operasional', but also expresses concerns about 'ketergantungan teknologi' and 'keseimbangan antara kerja dan kehidupan pribadi'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-debate-005",
+   "stem": "What does the word 'dinamika' mean in the context of this debate?",
+   "choices": [
+    "Changes",
+    "Dynamics",
+    "Challenges",
+    "Trends"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'dinamika' refers to the dynamics of remote work. The speaker mentions 'mengikuti dinamika kerja jarak jauh yang terus berubah', indicating that the dynamics of remote work are constantly changing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-debate-006",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The success of the SAR operation in Mount Merapi",
+    "The impact of natural disasters on local communities",
+    "The importance of international cooperation in search-and-rescue operations",
+    "The challenges faced by the Indonesian military during SAR operations"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the debate is the importance of international cooperation in search-and-rescue operations, as indicated by the speakers discussing joint efforts and collaboration between different countries and organizations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-debate-006",
+   "stem": "What can be inferred about the relationship between Indonesia and Australia based on the debate?",
+   "choices": [
+    "They have a strong and collaborative relationship",
+    "They have limited communication and coordination",
+    "They have a history of conflict and disagreement",
+    "They have no interest in cooperating on international issues"
+   ],
+   "answer": 0,
+   "explanation": "The speakers mention the joint search-and-rescue operation between Indonesia and Australia, indicating a strong and collaborative relationship. For example, Pemimpin 1 says, 'Indonesia dan Australia telah bekerja sama dalam misi pencarian dan penyelamatan di perbukitan tersebut.' (Indonesia and Australia have worked together in the search-and-rescue mission in those hills.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-debate-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-debate-006",
+   "stem": "What does 'koordinasi' mean here?",
+   "choices": [
+    "Conflict",
+    "Coordination",
+    "Communication",
+    "Competition"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'koordinasi' refers to the coordination between different countries and organizations in the search-and-rescue operation. For example, Pemimpin 2 says, 'Koordinasi antara tim-tim dari berbagai negara sangat penting untuk sukses misi pencarian dan penyelamatan.' (Coordination between teams from various countries is very important for the success of the search-and-rescue mission.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-3-lecture-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2639,6 +6982,168 @@
    ],
    "answer": 3,
    "explanation": "The lecturer states 'Perubahan iklim menyebabkan cuaca ekstrem yang lebih sering terjadi, seperti banjir dan kemarau, yang dapat merusak tanaman dan hewan ternak' ('Climate change causes extreme weather events, such as floods and droughts, to occur more frequently, which can damage crops and livestock'), making choice 1 correct.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-lecture-002",
+   "stem": "What is the main idea of this lecture?",
+   "choices": [
+    "Human activities significantly contribute to the increasing frequency and severity of heat waves.",
+    "Heat waves are primarily caused by changes in ocean currents.",
+    "The Earth's orbit and rotation are the main factors behind heat waves.",
+    "Heat waves are a natural phenomenon that have always occurred with the same intensity."
+   ],
+   "answer": 0,
+   "explanation": "The lecturer states that 'aktivitas manusia, seperti pembakaran bahan bakar fosil dan deforestasi, telah meningkatkan konsentrasi gas rumah kaca di atmosfer' and that 'ini telah menyebabkan perubahan iklim yang memicu gelombang panas yang lebih sering dan lebih parah'. This indicates that human activities are significantly contributing to the increasing frequency and severity of heat waves, making choice 1 the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-lecture-002",
+   "stem": "In the lecture, the word 'terpapar' is used to describe what happens to certain regions. What does it mean here?",
+   "choices": [
+    "To be hidden from",
+    "To be exposed to",
+    "To be protected from",
+    "To be prepared for"
+   ],
+   "answer": 1,
+   "explanation": "The lecturer uses 'terpapar' to describe regions that are 'terpapar terhadap suhu yang ekstrem' (exposed to extreme temperatures). Therefore, the correct meaning in this context is 'to be exposed to', making choice 1 the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-lecture-002",
+   "stem": "Based on the lecture, what can be inferred about the future of heat waves?",
+   "choices": [
+    "Heat waves will become less frequent but more severe.",
+    "Heat waves will decrease in both frequency and severity.",
+    "Heat waves will remain unchanged in both frequency and severity.",
+    "Heat waves will become more frequent and more severe."
+   ],
+   "answer": 3,
+   "explanation": "The lecturer mentions that 'dengan terusnya perubahan iklim, diharapkan gelombang panas akan menjadi lebih sering dan lebih parah di masa depan'. This indicates that heat waves will become more frequent and more severe, making choice 2 the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-speech-001",
+   "stem": "What is the main idea of the speaker's discussion?",
+   "choices": [
+    "The importance of technology in modern education",
+    "The benefits of traditional classrooms over virtual ones",
+    "The need to completely replace physical schools with virtual ones",
+    "The challenges and opportunities presented by online education"
+   ],
+   "answer": 3,
+   "explanation": "The speaker discusses both the difficulties (like 'kesulitan untuk beberapa siswa dalam beradaptasi') and the opportunities (such as 'akses pada sumber daya belajar yang lebih luas') of online education, making choice 2 the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-speech-001",
+   "stem": "What can be inferred about the speaker's opinion on online education?",
+   "choices": [
+    "They believe it is inferior to traditional education",
+    "They are indifferent about its implementation",
+    "They see potential in it but acknowledge its challenges",
+    "They think it is the best solution for all students"
+   ],
+   "answer": 2,
+   "explanation": "The speaker mentions both the 'peluang yang besar' and 'tantangan' of online education, indicating they see potential but also recognize challenges. Thus, choice 2 is correct.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-speech-001",
+   "stem": "The word 'menyesuaikan' in the text refers to what action?",
+   "choices": [
+    "Ignoring new developments",
+    "Adapting to new conditions",
+    "Changing the curriculum",
+    "Rejecting new ideas"
+   ],
+   "answer": 1,
+   "explanation": "The speaker talks about 'menyesuaikan dengan pembelajaran daring', which means adapting to online learning, making choice 1 the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-speech-002",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "Public libraries should only cater to the needs of children and students.",
+    "Public libraries should focus solely on providing free internet access.",
+    "Governments should close public libraries to save money.",
+    "Public libraries need to adapt and expand their services to remain relevant."
+   ],
+   "answer": 3,
+   "explanation": "The speaker emphasizes the need for public libraries to evolve and offer a wider range of services, such as technology access, educational programs, and community engagement, to stay relevant in a changing world. This is evident in the statement, 'Perpustakaan umum harus beradaptasi dengan memberikan layanan yang lebih luas, termasuk akses teknologi, program pendidikan, dan kegiatan komunitas.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-speech-002",
+   "stem": "What can be inferred about the speaker's view on the role of public libraries in society?",
+   "choices": [
+    "They believe public libraries should be run by private companies for profit.",
+    "They think public libraries should focus exclusively on preserving historical documents.",
+    "They believe public libraries are no longer necessary in the digital age.",
+    "They view public libraries as essential community hubs that should offer diverse services."
+   ],
+   "answer": 3,
+   "explanation": "The speaker views public libraries as vital community hubs that should provide various services to meet the needs of the community. This is inferred from the statement, 'Perpustakaan umum harus menjadi pusat komunitas yang menyediakan berbagai layanan untuk memenuhi kebutuhan masyarakat.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-speech-002",
+   "stem": "What does the speaker mean by 'peranan vital' here?",
+   "choices": [
+    "A temporary role",
+    "An optional function",
+    "A crucial role",
+    "A minor role"
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses 'peranan vital' to emphasize the essential role that public libraries play in society. This is evident in the statement, 'Perpustakaan umum memiliki peranan vital dalam mendukung pendidikan, literasi, dan pengembangan komunitas.'",
    "source": "llm",
    "verified": false
   }

@@ -47,6 +47,253 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-0p-advertisement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "New Metro Line Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "locutor",
+     "voice": "male",
+     "text": "¡Atención, viajeros!"
+    },
+    {
+     "speaker": "locutor",
+     "voice": "female",
+     "text": "La nueva línea verde del metro está en funcionamiento."
+    },
+    {
+     "speaker": "locutor",
+     "voice": "male",
+     "text": "Ahora puedes viajar de norte a sur de la ciudad más rápido que nunca."
+    },
+    {
+     "speaker": "locutor",
+     "voice": "female",
+     "text": "No te quedes sin probarla."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-0p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Job Interview Notice",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "Atención, por favor. La oposición se celebrará el próximo viernes a las 10 de la mañana. Por favor, no lleguen tarde. Gracias."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-0p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Fishing Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Anunciante",
+     "voice": "female",
+     "text": "Atención pescadores. El precio actual es de $15. Renovación de permisos de pesca. Válido por un año."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "Atención pescadores. El precio actual es de $15. Renovación de permisos de pesca. Válido por un año."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "female",
+     "text": "Atención pescadores. El precio actual es de $15. Renovación de permisos de pesca. Válido por un año."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-0p-short_exchange-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Library Visit",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Bibliotecario",
+     "voice": "female",
+     "text": "¿Puedo ayudarte?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Sí, por favor. ¿Para qué es la biblioteca?"
+    },
+    {
+     "speaker": "Bibliotecario",
+     "voice": "female",
+     "text": "La biblioteca es para estudiar."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Gracias."
+    },
+    {
+     "speaker": "Bibliotecario",
+     "voice": "female",
+     "text": "De nada."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-0p-short_exchange-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Volunteer Opportunity",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "¡Atención, por favor!"
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "El Programa de Voluntarios necesita su ayuda."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "Únase a nosotros este sábado."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "Gracias."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-0p-short_exchange-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Weekend Weather Forecast",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Buenos días. Aquí el pronóstico del tiempo para el fin de semana."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "El sábado habrá lluvias por la mañana."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Por la tarde, el cielo estará despejado."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "El domingo será soleado con temperaturas agradables."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-0p-short_exchange-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Battery Replacement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Cliente",
+     "voice": "female",
+     "text": "Buenos días. Tengo un auto eléctrico y necesito cambiar la batería."
+    },
+    {
+     "speaker": "Vendedor",
+     "voice": "male",
+     "text": "Buenos días. Tenemos varias baterías para autos eléctricos. ¿Cuál es el modelo de su auto?"
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "female",
+     "text": "Es un modelo X3. ¿Tienen la batería ahora?"
+    },
+    {
+     "speaker": "Vendedor",
+     "voice": "male",
+     "text": "Sí, tenemos la batería para el modelo X3. ¿Necesita ayuda para instalarla?"
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "female",
+     "text": "Sí, por favor. ¿Cuánto cuesta la instalación?"
+    },
+    {
+     "speaker": "Vendedor",
+     "voice": "male",
+     "text": "La instalación cuesta $200. ¿Quiere programar una cita?"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-0p-voicemail-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -145,6 +392,37 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-0p-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Opening of the Nueva Esperanza Hospital",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atención, por favor."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "El hospital nuevo, Nueva Esperanza, estará listos en dos semanas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Todos son bienvenidos."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-1-announcement-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -213,6 +491,180 @@
      "speaker": "Locutora",
      "voice": "female",
      "text": "No se admitirán animales de compañía. ¡Gracias!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-announcement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "announcement",
+   "title": "es-dl-1-announcement-004-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "Atención, ciudadanos."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "female",
+     "text": "El Ministerio de Educación lanza una nueva plataforma educativa en línea, Aprendiendo Juntos."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "A partir del próximo mes, todos los estudiantes podrán acceder a recursos educativos desde casa."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "female",
+     "text": "Más información en nuestro sitio web."
+    },
+    {
+     "speaker": "Anunciante",
+     "voice": "male",
+     "text": "Gracias por su atención."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Preparations for the Climate Summit",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Oye, Carlos, ¿has visto la lista de tareas para la próxima cumbre climática?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Sí, Ana. Tenemos mucho que hacer. Necesitamos asegurarnos de que todo esté listo."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Exacto. Tenemos que coordinar los detalles con los otros países participantes."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Sí, y también debemos preparar la logística para los participantes."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "No te preocupes, Carlos. Vamos a trabajar juntos para que todo salga bien."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Gracias, Ana. Con tu ayuda, estoy seguro de que será un éxito."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "conversation",
+   "title": "University Admissions Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Hola, ¿has oído lo que dijo el rector hoy?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Sí, habló sobre los cambios en las admisiones."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "¿Qué dijeron exactamente?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Hemos decidido extender el plazo de inscripción."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "¿Por qué?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Porque muchos estudiantes pidieron más tiempo."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-instructions-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "instructions",
+   "title": "es-dl-1-instructions-001-q1",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atención, pasajeros."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Tenemos el gusto de anunciar que la Línea 3 del metro está abierta."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Esta nueva línea conecta el centro de la ciudad con los barrios del sur."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Para usar la Línea 3, por favor diríjanse a la estación central."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "¡Gracias por su atención!"
     }
    ],
    "source": "llm",
@@ -294,6 +746,37 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-1-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Hotel Reservation Issue",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Gracias por llamar al Hotel Sol. Lamentablemente, no puedo confirmar su reserva en este momento. Lo siento mucho."
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "Hola, mi nombre es Juan. Llamo porque mi reserva no está confirmada. ¿Podrían confirmar mi reserva lo antes posible?"
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Entiendo, señor. Revisaré su reserva y le llamaré de vuelta tan pronto como pueda."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-1-weather-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -326,6 +809,78 @@
      "speaker": "Locutor",
      "voice": "male",
      "text": "Gracias y hasta pronto."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-weather-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "weather",
+   "title": "Power Outage Warning",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atención, atención. Hemos recibido informes de un posible ataque cibernético a nuestra red eléctrica."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Esto podría resultar en una interrupción del servicio eléctrico en las próximas horas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Pedimos a todos los residentes que se preparen para posibles problemas con la luz."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Manténganse atentos a los próximos avisos y sigan las instrucciones de las autoridades locales."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Gracias por su atención."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-weather-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "weather",
+   "title": "es-dl-1-weather-005-q2",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atención todos. El clima para la ciudad de la cumbre internacional será soleado con vientos suaves durante los próximos tres días. Se espera una temperatura agradable de veintidós grados."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Se recomienda a los asistentes llevar ropa ligera y cómoda. No se esperan lluvias ni tormentas en el área."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Manténganse informados a través de los canales oficiales para cualquier actualización. Gracias."
     }
    ],
    "source": "llm",
@@ -473,6 +1028,103 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-1p-announcement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "es-dl-1-announcement-006-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locautor",
+     "voice": "female",
+     "text": "Atención, por favor."
+    },
+    {
+     "speaker": "Locautor",
+     "voice": "male",
+     "text": "Energía Verde se complace en anunciar su nuevo proyecto de inversión en energía solar."
+    },
+    {
+     "speaker": "Locautor",
+     "voice": "female",
+     "text": "Nuestra empresa está comprometida con la inversión en proyectos de energía renovable."
+    },
+    {
+     "speaker": "Locautor",
+     "voice": "male",
+     "text": "Este proyecto generará empleos y beneficios económicos para la comunidad local."
+    },
+    {
+     "speaker": "Locautor",
+     "voice": "female",
+     "text": "Para más información, visite nuestra página web o comuníquese con nuestro departamento de relaciones públicas."
+    },
+    {
+     "speaker": "Locautor",
+     "voice": "male",
+     "text": "Gracias por su atención."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Charging Ahead with Electric Cars",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "¿Has pensado en comprar un coche eléctrico?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Sí, he estado considerando la idea. He oído que son mejores para el medio ambiente."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Exactamente. Además, son más baratos de mantener y no necesitan tanto mantenimiento como los coches de gasolina."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Eso es cierto. Y con los precios de la electricidad están bajando, son más baratos de usar también."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Sí, y hay más estaciones de carga disponibles ahora. Es más fácil encontrar un lugar para cargar el coche."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Eso es un alivio. Me preocupaba tener que planificar demasiado los viajes largos."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "No te preocupes. Con un coche eléctrico, puedes disfrutar del viaje sin preocuparte por el combustible."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-1p-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -605,6 +1257,301 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-1p-phone_call-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Forest Fire Alert",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Hola, ¿has visto las noticias?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Sí, sobre el incendio forestal, ¿verdad?"
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Exactamente. Se acerca a nuestro pueblo en Pinar del Río."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "He oído que los vientos están empujando las llamas hacia nosotros."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Sí, y los bomberos están trabajando sin cesar para controlarlo."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Espero que puedan detenerlo a tiempo. Podríamos tener que evacuar."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Tienes razón. Es importante estar preparados."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1p-phone_call-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "The Debate on Military Service",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Hola, ¿cómo estás?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Hola, bien, ¿y tú?"
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Bien, gracias. Oye, ¿has visto las noticias últimamente?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Sí, he visto que están hablando sobre el servicio militar obligatorio."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Sí, es un tema muy discutido. ¿No crees que el servicio militar obligatorio es importante?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Sí, lo es. Enseña disciplina y patriotismo. Además, fortalece la defensa nacional."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "No estoy de acuerdo, pienso que debería ser voluntario. Muchos países ya tienen servicio voluntario. ¿No crees que deberíamos hacer lo mismo?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Pero si es voluntario, menos personas se unirán. Necesitamos un ejército fuerte."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Entiendo tu punto, pero obligar a las personas no es justo. Deberían tener la libertad de elegir."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Es un debate complicado, pero creo que el servicio militar obligatorio tiene más beneficios."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1p-phone_call-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Flood Risk in the Valley",
+   "body": "",
+   "script": [
+    {
+     "speaker": "María",
+     "voice": "female",
+     "text": "Hola, Juan. Soy María. Te llamo para informarte que hay una alerta de inundación en el valle."
+    },
+    {
+     "speaker": "Juan",
+     "voice": "male",
+     "text": "¿En serio? ¿Qué está pasando?"
+    },
+    {
+     "speaker": "María",
+     "voice": "female",
+     "text": "Ha estado lloviendo mucho en las montañas y el río del valle está creciendo rápidamente."
+    },
+    {
+     "speaker": "Juan",
+     "voice": "male",
+     "text": "¿Qué tan grave es la situación?"
+    },
+    {
+     "speaker": "María",
+     "voice": "female",
+     "text": "Las autoridades dicen que el río podría desbordarse en las próximas horas. Es importante estar en guardia y prepararse para cualquier eventualidad."
+    },
+    {
+     "speaker": "Juan",
+     "voice": "male",
+     "text": "Gracias por avisarme, María. Tomaré precauciones."
+    },
+    {
+     "speaker": "María",
+     "voice": "female",
+     "text": "De nada, Juan. Por favor, mantente seguro."
+    },
+    {
+     "speaker": "Juan",
+     "voice": "male",
+     "text": "Lo haré. Adiós, María."
+    },
+    {
+     "speaker": "María",
+     "voice": "female",
+     "text": "Adiós, Juan."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1p-phone_call-005",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Cooperation in Emergency",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Buenos días, ¿hablo con la Cruz Roja?"
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Sí, soy María González, ¿en qué puedo ayudarle?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Soy el capitán Rodríguez de la Protección Civil. Llamo para coordinar nuestra operación de rescate en la montaña."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Entiendo, ¿cuál es la situación?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Ha habido un deslizamiento de tierra y necesitamos equipos médicos y voluntarios."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "De acuerdo, ¿a qué hora comienza la operación de búsqueda y rescate?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "La operación comienza a las 8 de la mañana. ¿Pueden enviar ayuda lo antes posible?"
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Sí, prepararemos un equipo de inmediato. ¿Dónde nos encontramos?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Nos encontraremos en el parque de bomberos a las 7:30. Gracias por su colaboración."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "De nada, capitán. Hasta entonces."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1p-phone_call-006",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "es-dl-1+-phonecall-001-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Llamada entrante",
+     "voice": "female",
+     "text": "¿Hola, quién habla?"
+    },
+    {
+     "speaker": "Juan",
+     "voice": "male",
+     "text": "Hola, soy Juan de la Guardia Nacional. ¿Puedo hablar con el Capitán Rodríguez, por favor?"
+    },
+    {
+     "speaker": "Llamada entrante",
+     "voice": "female",
+     "text": "Sí, hablando. ¿En qué puedo ayudarte, Juan?"
+    },
+    {
+     "speaker": "Juan",
+     "voice": "male",
+     "text": "Capitán, necesitamos coordinar nuestra operación de rescate con su equipo. ¿Podemos reunirnos mañana a las 10:00 en la montaña?"
+    },
+    {
+     "speaker": "Llamada entrante",
+     "voice": "female",
+     "text": "Sí, claro. ¿Cuántos equipos de rescate van a participar?"
+    },
+    {
+     "speaker": "Juan",
+     "voice": "male",
+     "text": "Vamos a tener tres equipos de la Guardia Nacional y dos de su departamento. Gracias, Capitán. Nos vemos mañana."
+    },
+    {
+     "speaker": "Llamada entrante",
+     "voice": "female",
+     "text": "De nada, Juan. Hasta mañana."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-2-briefing-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -671,6 +1618,113 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-2-briefing-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "briefing",
+   "title": "es-dl-2-briefing-007-q1",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Buenos días a todos. Hoy les informaré sobre la operación de búsqueda y rescate conjunta entre México y Estados Unidos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "La operación se llevará a cabo en la frontera entre los dos países, específicamente en la región de Sonora."
+    },
+    {
+     "speaker": "Capitán López",
+     "voice": "female",
+     "text": "Soy la Capitán López, líder de la operación por parte de México. Contamos con un equipo de 50 personas, incluyendo personal médico y de rescate."
+    },
+    {
+     "speaker": "Comandante García",
+     "voice": "male",
+     "text": "Yo soy el Comandante García, líder del equipo de Estados Unidos. Tenemos un equipo similar en tamaño y capacidad."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "La operación se realizará en coordinación entre ambos equipos. Utilizaremos tecnología avanzada y técnicas de búsqueda probadas para localizar y rescatar a las personas desaparecidas."
+    },
+    {
+     "speaker": "Capitán López",
+     "voice": "female",
+     "text": "Nuestra prioridad es la seguridad de las personas involucradas. Haremos todo lo posible para garantizar su bienestar."
+    },
+    {
+     "speaker": "Comandante García",
+     "voice": "male",
+     "text": "Estamos comprometidos a trabajar juntos para lograr el mejor resultado posible. Apreciamos la cooperación y el apoyo de nuestras contrapartes mexicanas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Mantendremos informado al público sobre el progreso de la operación. Gracias por su atención."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-briefing-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "briefing",
+   "title": "The Overbooked Hotel Room",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Buenos días, señor. ¿En qué puedo ayudarle?"
+    },
+    {
+     "speaker": "Huésped",
+     "voice": "male",
+     "text": "Buenos días. Tengo una reserva a nombre de Carlos Mendoza. Llegué para check-in, pero parece que no aparece mi reserva."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Un momento, por favor. Déjeme verificar... Ah, sí, aquí está. Lamentablemente, estamos sobrevendidos y no tenemos habitaciones disponibles en este momento."
+    },
+    {
+     "speaker": "Huésped",
+     "voice": "male",
+     "text": "¿Cómo es posible? Hice la reserva hace semanas."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Entiendo su frustración, señor Mendoza. Estamos haciendo todo lo posible para resolver este inconveniente. Podemos intentar conseguirle una habitación en otro hotel cercano. Permítame hacer algunas llamadas."
+    },
+    {
+     "speaker": "Huésped",
+     "voice": "male",
+     "text": "Está bien, pero por favor asegúrese de que sea un hotel de la misma categoría."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Por supuesto, señor. Haré todo lo posible para encontrar una solución adecuada. Gracias por su comprensión."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-2-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -718,6 +1772,113 @@
      "speaker": "Mujer",
      "voice": "female",
      "text": "Vamos a seguir intentado. Algo tiene que salir."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "conversation",
+   "title": "A Problem with the Room View",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Buenos días, ¿en qué puedo ayudarle?"
+    },
+    {
+     "speaker": "Huésped",
+     "voice": "male",
+     "text": "Buenos días. Tengo una reserva a nombre de Rodríguez. La habitación que me dieron no tiene vista al océano, como se me había prometido."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Lo siento mucho, señor Rodríguez. Permítame verificar nuestra disponibilidad."
+    },
+    {
+     "speaker": "Huésped",
+     "voice": "male",
+     "text": "Sí, por favor. Necesito una habitación con vista al océano. Eso era parte del acuerdo."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Entiendo, señor Rodríguez. Tengo una habitación disponible en el mismo piso con vista al océano. ¿Le gustaría cambiarse?"
+    },
+    {
+     "speaker": "Huésped",
+     "voice": "male",
+     "text": "¿Podrían cambiarme a otra habitación? Me gustaría una con vista al océano."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Por supuesto, señor Rodríguez. Por favor, sígame. Le mostraremos la nueva habitación."
+    },
+    {
+     "speaker": "Huésped",
+     "voice": "male",
+     "text": "Gracias. Aprecio su ayuda."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "conversation",
+   "title": "es-dl-2-conversation-012-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Carlos, ¿has visto las noticias últimamente sobre la falta de vivienda en las ciudades?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Sí, Ana. Es un problema cada vez más grave. En ciudades como Madrid o Barcelona, encontrar un piso asequible es casi una misión imposible."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Es verdad. Muchos jóvenes y trabajadores no pueden permitirse vivir cerca de sus trabajos. ¿Qué crees que se puede hacer?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Creo que el gobierno debería hacer más para construir viviendas sociales. También hay que controlar los precios de la vivienda."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Sí, y también hay que pensar en soluciones a largo plazo, como mejorar el transporte público para que la gente pueda vivir más lejos de la ciudad."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Eso es cierto. Pero también hay que abordar los costos de construcción, que han subido mucho, lo que hace que los precios de la vivienda también suban."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Es un problema complejo, pero espero que se encuentren soluciones pronto."
     }
    ],
    "source": "llm",
@@ -830,6 +1991,169 @@
      "speaker": "María González",
      "voice": "female",
      "text": "Gracias a ustedes por la oportunidad de hablar sobre esta importante tema."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Missing Travel Document",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Turista",
+     "voice": "male",
+     "text": "Hola, buenas tardes. ¿Podría ayudarme?"
+    },
+    {
+     "speaker": "Empleado",
+     "voice": "female",
+     "text": "Buenas tardes, señor. Claro, ¿en qué lo puedo ayudar?"
+    },
+    {
+     "speaker": "Turista",
+     "voice": "male",
+     "text": "Perdí mi pasaporte. Necesito reportar que mi pasaporte ha sido robado."
+    },
+    {
+     "speaker": "Empleado",
+     "voice": "female",
+     "text": "Lamento escuchar eso. ¿Dónde estaba cuando se dio cuenta de que no lo tenía?"
+    },
+    {
+     "speaker": "Turista",
+     "voice": "male",
+     "text": "Estaba en el banco. Fui a sacar dinero y cuando busqué mi pasaporte ya no estaba en mi bolsillo."
+    },
+    {
+     "speaker": "Empleado",
+     "voice": "female",
+     "text": "Entiendo. Para reportar el robo y obtener un nuevo pasaporte, necesitará presentar una denuncia policial y llenar algunos formularios."
+    },
+    {
+     "speaker": "Turista",
+     "voice": "male",
+     "text": "¿Cómo puedo hacer la gestión para obtener uno nuevo?"
+    },
+    {
+     "speaker": "Empleado",
+     "voice": "female",
+     "text": "Primero, debe ir a la comisaría más cercana para reportar el robo. Luego, traiga la denuncia a nuestra oficina para empezar el trámite."
+    },
+    {
+     "speaker": "Turista",
+     "voice": "male",
+     "text": "Muchas gracias por su ayuda. Iré a la comisaría ahora mismo."
+    },
+    {
+     "speaker": "Empleado",
+     "voice": "female",
+     "text": "De nada, señor. Estamos aquí para ayudarle. ¡Buena suerte!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "news",
+   "title": "New Mayor for San Carlos",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Buenas tardes, les hablamos desde San Carlos donde acaba de concluir un histórico proceso electoral."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Así es, el nuevo alcalde de San Carlos es Carlos Mendoza, quien ganó las elecciones con más del 60% de los votos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Carlos Mendoza, del Partido Verde, se ha comprometido a mejorar la infraestructura de la ciudad y a promover el desarrollo sostenible."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "La toma de posesión de Carlos Mendoza como nuevo alcalde de San Carlos se llevará a cabo el próximo sábado en la plaza central."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Se espera que asistan varios líderes políticos y miembros de la comunidad para apoyar al nuevo alcalde en su inicio de mandato."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Carlos Mendoza ha prometido trabajar arduamente para cumplir con las expectativas de los ciudadanos y mejorar la calidad de vida en San Carlos."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-news-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "news",
+   "title": "Expanding Access to Digital Books",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "El municipio de Valencia ha lanzado la iniciativa “Libros Digitales para Todos” para ofrecer libros electrónicos gratuitos a los residentes."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Esta nueva plataforma permitirá a los usuarios descargar una variedad de libros sin costo alguno."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "El objetivo es garantizar el acceso a la lectura digital para todos los residentes, sin importar su situación económica."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "La biblioteca municipal ha trabajado en colaboración con varias editoriales para hacer posible este proyecto."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Los libros estarán disponibles en diferentes formatos, incluyendo PDF y EPUB, y se podrán leer en diversos dispositivos."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Además, la plataforma incluirá una sección de libros en idiomas extranjeros para fomentar el aprendizaje de otros idiomas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Se espera que esta iniciativa no solo facilite el acceso a la lectura, sino que también promueva la inclusión digital en la comunidad."
     }
    ],
    "source": "llm",
@@ -1062,6 +2386,72 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-2p-documentary-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "The Fight for Housing in Urban Centers",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "En las últimas décadas, las ciudades de España han experimentado un crecimiento sin precedentes. Sin embargo, este crecimiento ha traído consigo un problema grave: la falta de vivienda asequible."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "Uno de los principales factores es el alto costo de la tierra y los materiales de construcción. Además, la especulación inmobiliaria ha llevado a un aumento en los precios de las viviendas existentes."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Laura, una joven de 28 años, es un ejemplo de las personas afectadas por esta crisis. Ella trabaja como diseñadora gráfica y gana un salario modesto."
+    },
+    {
+     "speaker": "Laura",
+     "voice": "female",
+     "text": "Comparto un apartamento de una habitación con tres compañeros de trabajo. Pagamos un alquiler muy alto y las condiciones no son las mejores, pero no tenemos otra opción."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Carlos, un hombre de 50 años, ha estado buscando un apartamento durante más de un año. Trabaja como profesor y también gana un salario modesto."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "He visitado numerosos apartamentos, pero todos están fuera de mi alcance financiero. Me enfrento a una situación cada vez más desesperada."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "La falta de vivienda asequible no solo afecta a los jóvenes, sino también a las familias y a las personas mayores. Esto ha llevado a un aumento en la demanda de viviendas sociales y a un debate sobre cómo abordar esta crisis."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Algunas ciudades han comenzado a implementar medidas para aliviar la presión sobre el mercado de la vivienda, como la construcción de viviendas sociales y la regulación de los alquileres."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "Sin embargo, muchos argumentan que estas medidas no son suficientes y que se necesita una acción más decisiva por parte del gobierno y del sector privado."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "La crisis de vivienda en las ciudades españolas es un problema complejo que requiere soluciones a largo plazo. Solo mediante un esfuerzo concertado podremos asegurar que todos tengan acceso a una vivienda adecuada y asequible."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-2p-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -1260,6 +2650,494 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-2p-news_analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Rise of Remote Work: A Conversation with Laura Mendoza",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Hola y bienvenidos a nuestro programa. Hoy hablamos sobre el futuro del teletrabajo en España. Con nosotros está Laura Mendoza, experta en recursos humanos. Laura, ¿cómo ha evolucionado el teletrabajo en los últimos años?"
+    },
+    {
+     "speaker": "Laura Mendoza",
+     "voice": "male",
+     "text": "Hola, gracias por tenerme. El teletrabajo ha cobrado un nuevo impulso, especialmente después de la pandemia. Las empresas han visto que pueden mantener la productividad incluso con empleados trabajando desde casa."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "¿Cree que esta tendencia es positiva para todos los sectores?"
+    },
+    {
+     "speaker": "Laura Mendoza",
+     "voice": "male",
+     "text": "No todos los sectores pueden adaptarse fácilmente, pero el teletrabajo puede ser una gran oportunidad para muchos. Sin embargo, hay desafíos, como la necesidad de adaptar las políticas laborales y garantizar la seguridad de los datos."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "¿Y qué papel juega el gobierno en esto?"
+    },
+    {
+     "speaker": "Laura Mendoza",
+     "voice": "male",
+     "text": "El gobierno está promoviendo el teletrabajo mediante incentivos fiscales y regulaciones. También están trabajando en mejorar la infraestructura digital en zonas rurales para que todos puedan beneficiarse."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Interesante. Gracias, Laura, por compartir su perspectiva."
+    },
+    {
+     "speaker": "Laura Mendoza",
+     "voice": "male",
+     "text": "De nada, ha sido un placer."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-news_analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "es-dl-2a-analysis-001",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hoy se cumplen veinte años de aquel día en que el país dio un giro en su historia económica."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Así es. Hace dos décadas, el gobierno implementó una serie de reformas económicas que prometían sacar al país de la crisis."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Y aunque es cierto que hemos visto un crecimiento económico significativo en estos años,"
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "También es innegable que este crecimiento ha sido desigual y que muchas regiones, especialmente las más pobres, no han visto los beneficios."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A pesar de las reformas económicas, la brecha entre los ricos y los pobres se ha ensanchado."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Exactamente. Y esto ha llevado a un aumento en la tensión social y a un debate nacional sobre cómo hacer que el crecimiento económico beneficie a todos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hoy, mientras celebramos los logros de estos últimos veinte años, también debemos enfrentar los desafíos que aún quedan por resolver."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "The Future of Online Education",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Bienvenidos a nuestro panel de discusión sobre el futuro de la educación en línea. Hoy tenemos con nosotros a la profesora Laura Méndez, experta en pedagogía digital, y al ingeniero Carlos Ruiz, especialista en tecnología educativa."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Comencemos con la primera pregunta: ¿Cuáles son los principales desafíos que enfrentamos en la implementación de la educación en línea?"
+    },
+    {
+     "speaker": "Laura Méndez",
+     "voice": "female",
+     "text": "Uno de los principales desafíos es la necesidad de una infraestructura adecuada. Muchos estudiantes no tienen acceso a dispositivos electrónicos o a internet de calidad. Además, debemos abordar la brecha digital que existe en nuestro país."
+    },
+    {
+     "speaker": "Carlos Ruiz",
+     "voice": "male",
+     "text": "Estoy de acuerdo con Laura. También es crucial la capacitación de los docentes. Muchos profesores no se sienten preparados para enseñar en línea y necesitan formación en el uso de herramientas digitales."
+    },
+    {
+     "speaker": "Laura Méndez",
+     "voice": "female",
+     "text": "Exacto, Carlos. Y no olvidemos el apoyo psicológico y académico que necesitan los estudiantes. La educación en línea puede ser aislante, y es importante crear comunidades virtuales de aprendizaje."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Interesantes puntos. ¿Qué soluciones proponen para estos desafíos?"
+    },
+    {
+     "speaker": "Carlos Ruiz",
+     "voice": "male",
+     "text": "Propongo la creación de alianzas público-privadas para mejorar la infraestructura tecnológica en las escuelas. También, programas de formación continua para los docentes."
+    },
+    {
+     "speaker": "Laura Méndez",
+     "voice": "female",
+     "text": "Yo sugiero el desarrollo de plataformas educativas más accesibles y user-friendly. Además, implementar programas de mentoría entre estudiantes para fomentar la interacción y el apoyo mutuo."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Muchas gracias a ambos por sus valiosas aportaciones. Esto concluye nuestro panel de discusión."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Joint Military Exercise 'Unified Shield'",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderador",
+     "voice": "female",
+     "text": "Buenos días a todos. Hoy discutiremos sobre el ejercicio militar conjunto 'Unified Shield' con nuestro aliado país vecino."
+    },
+    {
+     "speaker": "General López",
+     "voice": "male",
+     "text": "Nuestra alianza militar con el país vecino es una de las más fuertes de la región. Este ejercicio es una oportunidad para fortalecer nuestra cooperación."
+    },
+    {
+     "speaker": "Coronel García",
+     "voice": "female",
+     "text": "El ejercicio 'Unified Shield' se llevará a cabo en dos fases. La primera fase incluirá simulaciones de combate y la segunda fase se centrará en operaciones de mantenimiento de la paz."
+    },
+    {
+     "speaker": "General López",
+     "voice": "male",
+     "text": "La logística del ejercicio es un desafío enorme, pero estamos bien preparados para ello. Hemos aprendido mucho de nuestros ejercicios conjuntos anteriores."
+    },
+    {
+     "speaker": "Coronel García",
+     "voice": "female",
+     "text": "Sí, hemos participado en numerosas ejercicios conjuntos en el pasado. Esto nos ha permitido desarrollar procedimientos y protocolos eficientes."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "female",
+     "text": "¿Cuáles son los objetivos principales de este ejercicio?"
+    },
+    {
+     "speaker": "General López",
+     "voice": "male",
+     "text": "Los objetivos principales son mejorar nuestra capacidad de respuesta conjunta y fortalecer nuestra interoperabilidad. También queremos evaluar nuevas tecnologías y tácticas."
+    },
+    {
+     "speaker": "Coronel García",
+     "voice": "female",
+     "text": "Además, este ejercicio nos permitirá mejorar nuestra capacidad de comunicación y coordinación en situaciones de crisis."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "female",
+     "text": "Gracias a ambos por su tiempo y por compartir esta información con nosotros."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Preserving Traditions at the Fiesta de los Barrios",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderadora",
+     "voice": "female",
+     "text": "Bienvenidos a nuestro panel sobre la Fiesta de los Barrios. Hoy discutiremos cómo preservar nuestras tradiciones culturales durante este evento tan importante."
+    },
+    {
+     "speaker": "Panelista 1",
+     "voice": "male",
+     "text": "Creo que es crucial enseñar a las nuevas generaciones sobre nuestras danzas tradicionales, como el Baile de los Viejos. Es una parte vital de nuestra herencia."
+    },
+    {
+     "speaker": "Panelista 2",
+     "voice": "female",
+     "text": "Estoy de acuerdo. Además, debemos asegurar que los alimentos tradicionales, como las empanadas de maíz, estén disponibles en el festival. Es una oportunidad única para mostrar nuestra cultura local."
+    },
+    {
+     "speaker": "Panelista 3",
+     "voice": "male",
+     "text": "No olvidemos los artesanías. Los artistas locales deben tener un espacio para exhibir y vender sus trabajos. Esto ayuda a mantener vivas nuestras tradiciones."
+    },
+    {
+     "speaker": "Panelista 2",
+     "voice": "female",
+     "text": "También es importante involucrar a toda la comunidad. Que todos participen en las actividades y celebren nuestras raíces."
+    },
+    {
+     "speaker": "Moderadora",
+     "voice": "female",
+     "text": "Gracias a todos por sus valiosos puntos de vista. Es evidente que la Fiesta de los Barrios es más que una celebración; es una manera de preservar nuestra identidad cultural."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "speech",
+   "title": "The Centenary of the Foundation of the National Institute of Anthropology and History",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Buenas tardes a todos. Hoy nos reunimos aquí para celebrar un hito importante en la historia de México."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Sí, hoy conmemoramos el centenario de la fundación del Instituto Nacional de Antropología e Historia, conocido como INAH."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A lo largo de estos 100 años, el INAH ha jugado un papel fundamental en la preservación y estudio de nuestro rico patrimonio cultural."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Desde la protección de zonas arqueológicas hasta la conservación de documentos históricos, el INAH ha logrado avances significativos en la investigación, la conservación y la difusión de nuestro patrimonio cultural."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Es crucial reconocer la importancia de preservar nuestro patrimonio cultural, no solo como un recordatorio de nuestro pasado, sino como una guía para nuestro futuro."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Debemos garantizar que las generaciones futuras puedan apreciar y aprender de nuestro pasado, para construir una sociedad más informada y comprometida con su herencia cultural."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "En este centenario, celebramos no solo los logros del INAH, sino también el compromiso continuo de todos los mexicanos con la preservación de nuestra historia y cultura."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Que este sea un recordatorio de que nuestro patrimonio es un tesoro invaluable que debemos proteger y valorar."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Gracias a todos por estar aquí hoy y por su apoyo continuo a esta importante causa."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Impact of Smartphones on Child Development",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hoy vamos a hablar sobre el impacto de los smartphones en el desarrollo de los niños. Un tema que preocupa a muchos padres y educadores."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Los smartphones se han convertido en una herramienta cotidiana, incluso para los más pequeños. Pero, ¿qué efectos tiene su uso en el desarrollo infantil?"
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Por un lado, los smartphones pueden ser útiles para el aprendizaje. Existen aplicaciones educativas que ayudan a los niños a desarrollar habilidades como la lectura, las matemáticas y la resolución de problemas."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Sin embargo, el uso excesivo de estos dispositivos puede tener consecuencias negativas. Estudios muestran que el uso prolongado de smartphones puede afectar la capacidad de concentración y la creatividad de los niños."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Además, el uso de smartphones puede interferir con el sueño, lo que a su vez afecta el rendimiento académico y el estado de ánimo de los niños."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Otro problema es el impacto en las habilidades sociales. Los niños que pasan mucho tiempo en sus smartphones pueden tener menos interacciones cara a cara con sus compañeros, lo que puede afectar su desarrollo social."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Es crucial que los padres establezcan límites claros y supervisen el uso que los niños hacen de estos dispositivos. También es importante fomentar actividades alternativas, como el deporte, la lectura y el juego al aire libre."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "En resumen, aunque los smartphones pueden tener beneficios educativos, es esencial equilibrar su uso con otras actividades y supervisar su impacto en el desarrollo cognitivo y social de los niños."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Revival of the Fiesta de la Cosecha",
+   "body": "",
+   "script": [
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "Hola, bienvenidos a nuestro programa."
+    },
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "Hoy vamos a hablar sobre la Fiesta de la Cosecha, un evento tradicional que se celebra en nuestra región."
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Sí, la Fiesta de la Cosecha es un evento muy importante para nosotros."
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Este año, los organizadores han estado trabajando duro para revivir este festival y hacerlo más atractivo para todos."
+    },
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "¿Qué tipo de actividades se han planificado para este año?"
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Bueno, además de los desfiles y las exhibiciones agrícolas tradicionales, habrá espectáculos modernos, talleres educativos y una feria de comida."
+    },
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "¿Cómo ha sido la participación de la comunidad local?"
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Ha sido excelente. Muchos voluntarios han ayudado en la organización y numerosos negocios locales han patrocinado el evento."
+    },
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "¿Cuáles han sido los desafíos en la organización del festival?"
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Uno de los mayores desafíos ha sido mantener un equilibrio entre las tradiciones y las nuevas ideas."
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Queremos que el festival sea un evento emblemático que represente nuestra herencia agrícola y la unidad de nuestra comunidad."
+    },
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "¿Qué esperan lograr con este festival?"
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Esperamos que este año sea aún más exitoso que el anterior y que atraiga a más visitantes."
+    },
+    {
+     "speaker": "I",
+     "voice": "male",
+     "text": "Creemos que el festival tiene un gran potencial para crecer y convertirse en un evento reconocido a nivel nacional."
+    },
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "Muchas gracias por compartir esta información con nosotros."
+    },
+    {
+     "speaker": "L",
+     "voice": "female",
+     "text": "Les invitamos a todos a participar en la Fiesta de la Cosecha y a disfrutar de este evento único."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-3-debate-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -1297,6 +3175,174 @@
      "speaker": "Moderador",
      "voice": "male",
      "text": "Gracias a ambos por este debate tan informativo. Es claro que la nueva ley de seguridad vial es un tema complejo con múltiples perspectivas."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Perils of Travel: A Lost Passport",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Lector",
+     "voice": "male",
+     "text": "Hoy quiero compartir con ustedes una experiencia que tuve recientemente mientras viajaba por Europa. Como muchos de ustedes saben, perder el pasaporte en un país extranjero puede ser una pesadilla burocrática."
+    },
+    {
+     "speaker": "Lector",
+     "voice": "female",
+     "text": "Al principio, no me di cuenta de que mi pasaporte se había caído de mi bolsa hasta que llegué al aeropuerto para tomar mi vuelo de regreso a casa. Fue entonces cuando me di cuenta de que estaba en un buen lío."
+    },
+    {
+     "speaker": "Lector",
+     "voice": "male",
+     "text": "La embajada de mi país en ese país europeo estaba a horas de distancia, y no había ningún consulado cercano. La fragilidad del sistema se hizo evidente cuando me di cuenta de que tendría que esperar días para obtener un nuevo pasaporte."
+    },
+    {
+     "speaker": "Lector",
+     "voice": "female",
+     "text": "El proceso burocrático fue largo y complicado. Tuve que llenar montones de formularios, proporcionar fotografías y esperar en largas filas. Fue una experiencia estresante y agotadora."
+    },
+    {
+     "speaker": "Lector",
+     "voice": "male",
+     "text": "Lo más frustrante fue que, aunque entendía la necesidad de seguridad, no podía evitar sentir que había una mejor manera de manejar estas situaciones. La necesidad de mejorar este proceso es evidente."
+    },
+    {
+     "speaker": "Lector",
+     "voice": "female",
+     "text": "Al final, después de varios días de espera y muchas dificultades, finalmente obtuve mi nuevo pasaporte y pude regresar a casa. Pero la experiencia me dejó con una lección importante: siempre debo tener cuidado con mis documentos de viaje."
+    },
+    {
+     "speaker": "Lector",
+     "voice": "male",
+     "text": "Espero que compartiendo esta experiencia pueda ayudar a otros viajeros a estar más preparados y conscientes de los riesgos y las dificultades que pueden enfrentar si pierden sus documentos de identidad mientras están en el extranjero."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Pros and Cons of the Pacific Alliance",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hoy vamos a hablar sobre la Alianza del Pacífico, un acuerdo de integración regional que busca impulsar el comercio y la inversión entre sus países miembros: México, Colombia, Perú y Chile."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "La Alianza del Pacífico tiene beneficios significativos. Por ejemplo, se espera que el acuerdo aumente el comercio entre los países miembros en un 30% en los próximos cinco años."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Además, la Alianza del Pacífico promueve la cooperación en áreas como educación, turismo y protección del medio ambiente."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Sin embargo, también hay desafíos potenciales. Algunos expertos creen que el acuerdo podría aumentar la desigualdad económica en la región."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Otros temen que el aumento del comercio pueda frenar el crecimiento económico en algunas regiones, ya que las empresas locales podrían no ser capaces de competir con las importaciones más baratas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Además, hay preocupaciones sobre el impacto ambiental del aumento del comercio y la inversión."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A pesar de estos desafíos, muchos creen que los beneficios de la Alianza del Pacífico superan los riesgos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Es importante que los países miembros trabajen juntos para abordar estas preocupaciones y asegurar que el acuerdo beneficie a todos los ciudadanos de la región."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Uniting Forces for Lives in Peril",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "La reciente operación de búsqueda y rescate en el Mar Mediterráneo ha demostrado una vez más la importancia de la cooperación internacional."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "Los equipos de España, Italia y Grecia trabajaron juntos para salvar a los pasajeros de un barco que se hundía."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Esta colaboración no solo salvó vidas, sino que también permitió aprovechar sinergias y compartir recursos de manera más eficiente."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "Los equipos ya habían colaborado en operaciones más pequeñas, pero esta fue la primera vez que se unieron en una operación de gran escala."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "A pesar de los desafíos iniciales, como las diferencias en los protocolos y la comunicación, los equipos lograron superar estos obstáculos gracias a su profesionalismo y dedicación."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "La operación también destacó la importancia de la formación conjunta y la estandarización de los procedimientos."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Esto permitirá a los equipos responder de manera más rápida y efectiva en futuras emergencias."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "En conclusión, la operación de búsqueda y rescate en el Mar Mediterráneo es un ejemplo claro de cómo la cooperación internacional puede salvar vidas y mejorar la eficacia de las operaciones de emergencia."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Esperamos que este éxito inspire a más países a unirse en futuras operaciones de búsqueda y rescate."
     }
    ],
    "source": "llm",
@@ -1363,6 +3409,72 @@
      "speaker": "Locutor",
      "voice": "male",
      "text": "Gracias por su atención y por ser parte de nuestra comunidad universitaria."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The Importance of Preventive Medicine",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Buenos días a todos. Hoy quiero hablarles sobre la importancia de la medicina preventiva."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Muchos de nosotros solo acudimos al médico cuando estamos enfermos o sentimos síntomas preocupantes."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Sin embargo, la medicina preventiva se centra en mantener la salud y prevenir enfermedades antes de que ocurran."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Implementar estrategias proactivas puede marcar una diferencia significativa en nuestra calidad de vida."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Por ejemplo, llevar una dieta equilibrada y hacer ejercicio regularmente son formas efectivas de prevenir enfermedades crónicas como la diabetes y las enfermedades cardíacas."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Además, las revisiones regulares pueden detectar problemas de salud en etapas tempranas, cuando son más fáciles y menos costosas de tratar."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "No subestimen el poder de las vacunas. Son una herramienta vital en la prevención de enfermedades infecciosas."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "También es crucial mantenerse al día con los exámenes de detección recomendados para su edad y sexo."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Recuerden, prevenir es mejor que curar. Pequeños cambios en nuestro estilo de vida pueden tener un gran impacto en nuestra salud a largo plazo."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "female",
+     "text": "Gracias por su atención. Estoy aquí para responder cualquier pregunta que puedan tener."
     }
    ],
    "source": "llm",
@@ -1456,6 +3568,274 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Future of Pensions in Spain",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Buenas tardes a todos."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Hoy quiero hablar sobre un tema crucial para nuestro futuro: las pensiones en España."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Como saben, nuestra población envejece rápidamente."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "El número de pensionistas sigue aumentando, mientras que el de trabajadores activos disminuye."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Esto pone una presión enorme sobre nuestro sistema de pensiones."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Es crucial que tomemos medidas urgentes para reformar nuestro sistema de pensiones."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Debemos asegurarnos de que sea sostenible y justo para todos."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Una opción es aumentar la edad de jubilación gradualmente."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Otra es fomentar el empleo de los trabajadores mayores."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "También podemos considerar incentivos para que las personas trabajen más allá de la edad de jubilación."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Es importante que involucremos a todos los actores sociales en este debate."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Los sindicatos, las empresas y la sociedad civil deben trabajar juntos para encontrar soluciones."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "No subestimemos el desafío que enfrentamos, pero tampoco nos dejemos llevar por el pesimismo."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Con voluntad política y diálogo social, podemos asegurar la viabilidad a largo plazo de nuestro sistema de pensiones."
+    },
+    {
+     "speaker": "Orador",
+     "voice": "male",
+     "text": "Gracias por su atención."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-speech-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Future of Workers at the Textile Factory",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor (male)",
+     "voice": "male",
+     "text": "Buenas tardes a todos,"
+    },
+    {
+     "speaker": "Locutor (male)",
+     "voice": "male",
+     "text": "Hoy nos reunimos aquí para discutir el anuncio reciente del cierre de nuestra fábrica textil."
+    },
+    {
+     "speaker": "Locutor (female)",
+     "voice": "female",
+     "text": "Como muchos de ustedes saben, esta fábrica ha sido una parte vital de nuestra comunidad durante más de 50 años."
+    },
+    {
+     "speaker": "Locutor (female)",
+     "voice": "female",
+     "text": "Sin embargo, la gerencia ha tomado esta decisión sin tener en cuenta el bienestar de sus empleados."
+    },
+    {
+     "speaker": "Locutor (male)",
+     "voice": "male",
+     "text": "El cierre de la fábrica tendrá un impacto devastador en nuestra comunidad y en los medios de vida de nuestros trabajadores."
+    },
+    {
+     "speaker": "Locutor (male)",
+     "voice": "male",
+     "text": "Perderemos más de 1,000 empleos, lo que afectará a las familias y a la economía local."
+    },
+    {
+     "speaker": "Locutor (female)",
+     "voice": "female",
+     "text": "Además, muchos de nuestros trabajadores tienen habilidades especializadas que pueden no ser fácilmente transferibles a otros sectores."
+    },
+    {
+     "speaker": "Locutor (female)",
+     "voice": "female",
+     "text": "Esto significa que la pérdida de empleos no solo afectará a nuestros trabajadores, sino también a sus familias y a toda nuestra comunidad."
+    },
+    {
+     "speaker": "Locutor (male)",
+     "voice": "male",
+     "text": "Es crucial que nos unamos para encontrar soluciones y apoyar a nuestros trabajadores durante este momento difícil."
+    },
+    {
+     "speaker": "Locutor (male)",
+     "voice": "male",
+     "text": "Podemos comenzar por presionar a la gerencia para que ofrezca paquetes de despido justos y programas de recolocación."
+    },
+    {
+     "speaker": "Locutor (female)",
+     "voice": "female",
+     "text": "También debemos trabajar con el gobierno local para atraer nuevas inversiones y crear empleos en nuestra comunidad."
+    },
+    {
+     "speaker": "Locutor (female)",
+     "voice": "female",
+     "text": "No podemos permitir que nuestra comunidad sufra en silencio. Debemos levantarnos y luchar por nuestro futuro."
+    },
+    {
+     "speaker": "Locutor (male)",
+     "voice": "male",
+     "text": "Gracias por su atención y por su apoyo en este momento crucial."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-speech-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "speech",
+   "title": "New Directions for Public Transportation in the City",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Buenas tardes a todos."
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Hoy estoy aquí para hablar sobre los cambios importantes que vamos a implementar en nuestro sistema de transporte público."
+    },
+    {
+     "speaker": "Loco 2",
+     "voice": "female",
+     "text": "¡Qué emocionante!"
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Sí, estamos comprometidos a mejorar la movilidad en nuestra ciudad y hacerla más sostenible."
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Primero, vamos a construir dos nuevas líneas de metro que conectarán los barrios más alejados con el centro de la ciudad."
+    },
+    {
+     "speaker": "Loco 2",
+     "voice": "female",
+     "text": "Eso facilitará mucho el desplazamiento de los ciudadanos."
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "También, implementaremos 15 nuevas rutas de autobús para cubrir áreas que actualmente no están bien conectadas."
+    },
+    {
+     "speaker": "Loco 2",
+     "voice": "female",
+     "text": "¿Y qué pasa con las bicicletas?"
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Excelente pregunta. Vamos a crear una red de carriles bici que permitirá a los ciudadanos moverse de manera segura y eficiente."
+    },
+    {
+     "speaker": "Loco 2",
+     "voice": "female",
+     "text": "Eso suena maravilloso."
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Además, estamos promoviendo la reducción del uso del coche mediante la implementación de zonas peatonales y la restricción del tráfico en el centro de la ciudad."
+    },
+    {
+     "speaker": "Loco 2",
+     "voice": "female",
+     "text": "¿Cómo van a financiar todos estos cambios?"
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Utilizaremos una combinación de fondos públicos y privadas para garantizar que estos proyectos se lleven a cabo de manera eficiente y efectiva."
+    },
+    {
+     "speaker": "Loco 2",
+     "voice": "female",
+     "text": "Estoy muy emocionada por estos cambios."
+    },
+    {
+     "speaker": "Loco 1",
+     "voice": "male",
+     "text": "Gracias. Estamos comprometidos a hacer de nuestra ciudad un lugar más habitable y sostenible para todos."
+    },
+    {
+     "speaker": "Loco 2",
+     "voice": "female",
+     "text": "¡Gracias a todos por su atención!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
@@ -1474,6 +3854,204 @@
    ],
    "answer": 0,
    "explanation": "The receptionist says \"Su reserva no es para estas fechas\", indicating that the problem is with the dates of the reservation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-advertisement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-advertisement-002",
+   "stem": "What is the name of the new metro line?",
+   "choices": [
+    "La línea amarilla",
+    "La línea azul",
+    "La línea verde",
+    "La línea roja"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'La línea verde' because the text says '¡Atención, viajeros! La nueva línea verde del metro está en funcionamiento.' This tells us that the new metro line is called 'la línea verde'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-advertisement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "purpose",
+   "passageId": "es-dl-0p-advertisement-002",
+   "stem": "What is the purpose of this announcement?",
+   "choices": [
+    "To inform passengers about a new metro line",
+    "To announce a delay in the metro service",
+    "To instruct passengers on how to use the metro",
+    "To advertise a sale on metro tickets"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To inform passengers about a new metro line' because the text says '¡Atención, viajeros! La nueva línea verde del metro está en funcionamiento.' This is the main purpose of the announcement, to inform passengers about the new metro line.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-announcement-001",
+   "stem": "What does the word \"oposición\" mean here?",
+   "choices": [
+    "a type of interview",
+    "a type of training",
+    "a type of exam",
+    "a type of job"
+   ],
+   "answer": 2,
+   "explanation": "The text says \"La oposición se celebrará el próximo viernes\", so \"oposición\" is an event that happens on a specific day, and it's something that is celebrated (held). The other choices are not events that are celebrated. It's also clear from the context that this is a job-related event, so \"a type of job\" is not correct. \"Exam\" is the best answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dl-0p-announcement-001",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "A job interview will be held next Friday at 10am",
+    "The interview has been cancelled",
+    "The applicant needs to bring more documents to the interview",
+    "The applicant has been rejected for the job"
+   ],
+   "answer": 0,
+   "explanation": "The text says \"La oposición se celebrará el próximo viernes a las 10 de la mañana\", which means \"The exam will be held next Friday at 10am\". This is the main idea of the announcement. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-announcement-002",
+   "stem": "What is the current price for the fishing permit?",
+   "choices": [
+    "$5",
+    "$15",
+    "$20",
+    "$10"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the Él precio actual es de $15.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-0p-announcement-002",
+   "stem": "What does the phrase Él precio actual mean here?",
+   "choices": [
+    "the new price",
+    "the minimum price",
+    "the maximum price",
+    "the current price"
+   ],
+   "answer": 3,
+   "explanation": "The phrase Él precio actual is used to indicate the price that is valid now, i.e., the current price.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-short_exchange-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-short_exchange-001",
+   "stem": "What does the man say the library is for?",
+   "choices": [
+    "to borrow books",
+    "to study",
+    "to read books",
+    "to meet friends"
+   ],
+   "answer": 1,
+   "explanation": "The man says the library is for studying: “La biblioteca es para estudiar.” The other activities are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-short_exchange-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-short_exchange-002",
+   "stem": "What is the name of the community volunteer program?",
+   "choices": [
+    "El Programa de Voluntarios",
+    "El Centro de Bienestar",
+    "La Biblioteca Municipal",
+    "La Escuela Primaria"
+   ],
+   "answer": 0,
+   "explanation": "The name of the community volunteer program is stated as El Programa de Voluntarios in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-short_exchange-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-0p-short_exchange-002",
+   "stem": "The word 'necesitamos' is used in the text. What does it mean here?",
+   "choices": [
+    "We need",
+    "We want",
+    "We have",
+    "We give"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'necesitamos' means 'we need'. The text says 'necesitamos su ayuda', which translates to 'we need your help'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-short_exchange-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-short_exchange-003",
+   "stem": "The forecast mentions \"lluvias\". What does it mean here?",
+   "choices": [
+    "snows",
+    "rains",
+    "temperatures",
+    "winds"
+   ],
+   "answer": 1,
+   "explanation": "The word \"lluvias\" is used to refer to rain in the forecast. The text says \"El sábado habrá lluvias por la mañana\". This means that there will be rain in the morning on Saturday.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-short_exchange-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-short_exchange-004",
+   "stem": "What is the customer concerned about?",
+   "choices": [
+    "The size of the new battery",
+    "The color of the new battery",
+    "The price of the new battery",
+    "The availability of the new battery"
+   ],
+   "answer": 3,
+   "explanation": "The customer is concerned about the availability of the new battery, asking '¿Tienen la batería ahora?' ('Do you have the battery now?'). The other options are not mentioned in the conversation.",
    "source": "llm",
    "verified": false
   },
@@ -1568,6 +4146,42 @@
    "verified": false
   },
   {
+   "id": "es-dl-0p-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dl-0p-voicemail-004",
+   "stem": "In the message, what does 'nueva' mean?",
+   "choices": [
+    "the condition of the hospital",
+    "the age of the hospital",
+    "the location of the hospital",
+    "the name of the hospital"
+   ],
+   "answer": 1,
+   "explanation": "It means the hospital is new. The text says 'el hospital nuevo', which translates to 'the new hospital'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-0p-voicemail-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dl-0p-voicemail-004",
+   "stem": "What is the main topic of the message?",
+   "choices": [
+    "A new wing is being added to an existing hospital.",
+    "A new hospital is opening soon.",
+    "A new doctor is starting work.",
+    "A new medical procedure is being offered."
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the message is that a new hospital is opening soon. The text says 'el hospital nuevo', which translates to 'the new hospital', and 'estará listos', which translates to 'will be ready'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-1-announcement-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1658,6 +4272,186 @@
    "verified": false
   },
   {
+   "id": "es-dl-1-announcement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-announcement-003",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To inform people about a new online platform for education",
+    "To announce a new online course in photography",
+    "To remind students to register for classes",
+    "To announce the opening of a new school"
+   ],
+   "answer": 0,
+   "explanation": "The announcement says 'El Ministerio de Educación lanza una nueva plataforma educativa en línea, Aprendiendo Juntos.' This indicates that the purpose is to inform people about a new online platform for education.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-announcement-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-announcement-003",
+   "stem": "What does 'lanzar' mean here?",
+   "choices": [
+    "To delay",
+    "To throw",
+    "To launch",
+    "To cancel"
+   ],
+   "answer": 2,
+   "explanation": "In the context of the announcement, 'lanzar' means 'to launch'. The text says 'El Ministerio de Educación lanza una nueva plataforma educativa en línea,' indicating the introduction of a new online educational platform.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-announcement-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dl-1-announcement-003",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "Students will no longer need to attend physical classes",
+    "The government is investing more in traditional education",
+    "A new online educational platform is being introduced",
+    "Schools are moving to online classes permanently"
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the announcement is that 'El Ministerio de Educación lanza una nueva plataforma educativa en línea, Aprendiendo Juntos.' This clearly states the introduction of a new online educational platform.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-conversation-001",
+   "stem": "What is the main topic of conversation?",
+   "choices": [
+    "The weather forecast for the weekend",
+    "Preparations for an international climate summit",
+    "The latest technological innovations",
+    "A new policy on international travel"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B. The conversation revolves around preparations for an international climate summit, as indicated by the phrases 'la próxima cumbre climática' and 'necesitamos asegurarnos de que todo esté listo'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-conversation-001",
+   "stem": "What does 'coordinar' mean here?",
+   "choices": [
+    "To organize",
+    "To compete",
+    "To travel",
+    "To debate"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B. In this context, 'coordinar' means 'to organize'. The speaker says 'tenemos que coordinar los detalles', indicating the need to organize the details of the summit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-conversation-002",
+   "stem": "What did the university decide to do about admissions?",
+   "choices": [
+    "Require SAT/ACT scores",
+    "Open new campuses",
+    "Extend the application period",
+    "Cancel online applications"
+   ],
+   "answer": 2,
+   "explanation": "The university decided to extend the application period. This is stated in the text: “Hemos decidido extender el plazo de inscripción.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dl-1-conversation-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Faculty hiring",
+    "University budget cuts",
+    "Changes to admissions",
+    "New student housing"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the conversation is changes to admissions, as the entire dialogue revolves around the university’s decision to extend the application period.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-conversation-002",
+   "stem": "What does “plazo” mean here?",
+   "choices": [
+    "Deadline",
+    "Campus",
+    "Fee",
+    "Requirement"
+   ],
+   "answer": 0,
+   "explanation": "In this context, “plazo” refers to the deadline for applications. The text states: “Hemos decidido extender el plazo de inscripción,” meaning the university extended the application deadline.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-instructions-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-instructions-001",
+   "stem": "What is the name of the new metro line?",
+   "choices": [
+    "Line 2",
+    "Line 3",
+    "Line 4",
+    "Line 1"
+   ],
+   "answer": 1,
+   "explanation": "The text specifies that the new metro line is 'la Línea 3'. This is clearly stated in the announcement, making it the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-instructions-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-instructions-001",
+   "stem": "In the text, what does 'abierta' mean here?",
+   "choices": [
+    "Open",
+    "Maintained",
+    "Closed",
+    "Under construction"
+   ],
+   "answer": 0,
+   "explanation": "The word 'abierta' in the context of the text means 'open'. The announcement states 'la Línea 3 está abierta', indicating that the new metro line is now operational.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-1-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1730,6 +4524,60 @@
    "verified": false
   },
   {
+   "id": "es-dl-1-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-voicemail-003",
+   "stem": "What is the caller's problem?",
+   "choices": [
+    "The hotel's website is down.",
+    "They need to change their room type.",
+    "Their reservation is not confirmed.",
+    "The hotel is overbooked."
+   ],
+   "answer": 2,
+   "explanation": "The caller states, \"Mi reserva no está confirmada.\" This indicates that their reservation is not confirmed, which is the main issue they are facing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-voicemail-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dl-1-voicemail-003",
+   "stem": "What is the purpose of the caller's message?",
+   "choices": [
+    "To request a confirmation of their reservation.",
+    "To complain about the hotel's service.",
+    "To ask for a refund.",
+    "To cancel their reservation."
+   ],
+   "answer": 0,
+   "explanation": "The caller explicitly asks, \"¿Podrían confirmar mi reserva lo antes posible?\" This shows that the purpose of the message is to request a confirmation of their reservation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-voicemail-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-voicemail-003",
+   "stem": "What does 'lo antes posible' mean here?",
+   "choices": [
+    "In the past.",
+    "For the first time.",
+    "As soon as possible.",
+    "At the latest."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'lo antes posible' is used to emphasize the urgency of confirming the reservation, meaning 'as soon as possible'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-1-weather-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1762,6 +4610,78 @@
    ],
    "answer": 3,
    "explanation": "The correct answer is \"Sunny\". In the text, 'soleado' is used to describe the weather forecast for the election day in the city of León, indicating that it will be sunny. The other options do not match the meaning of 'soleado' in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-weather-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-weather-002",
+   "stem": "In the recording, what is the word for 'electricity'?",
+   "choices": [
+    "la lluvia",
+    "el agua",
+    "el viento",
+    "la luz"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'la luz'. The text says 'problemas con la luz', which means 'problems with the electricity'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-weather-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "es-dl-1-weather-002",
+   "stem": "What is the purpose of the recording?",
+   "choices": [
+    "To warn listeners about a potential power outage due to a cyberattack",
+    "To instruct listeners on how to prepare for a storm",
+    "To announce the cancellation of a public event",
+    "To inform listeners about a planned power outage"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To warn listeners about a potential power outage due to a cyberattack'. The text says 'posible interrupción del servicio eléctrico debido a un ataque cibernético', which means 'possible interruption of the electricity service due to a cyberattack'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-weather-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-weather-003",
+   "stem": "What is the weather forecast for the summit city?",
+   "choices": [
+    "Snowy",
+    "Partly cloudy",
+    "Rainy",
+    "Sunny with light winds"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the weather will be 'soleado con vientos suaves', which means 'sunny with light winds'. This is the only choice that matches this description.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-weather-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-weather-003",
+   "stem": "What does 'vientos suaves' mean here?",
+   "choices": [
+    "Gentle breezes",
+    "Heavy rain",
+    "Thunderstorms",
+    "Strong winds"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'vientos suaves' is used to describe the wind conditions in the forecast. 'Suaves' means 'gentle' or 'light', so the correct answer is 'Gentle breezes'.",
    "source": "llm",
    "verified": false
   },
@@ -1928,6 +4848,114 @@
    "verified": false
   },
   {
+   "id": "es-dl-1p-announcement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dl-1p-announcement-004",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "The company is changing its name.",
+    "The company is moving to a new location.",
+    "The company is looking for new employees.",
+    "The company is investing in renewable energy projects."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that the company is investing in renewable energy projects. This is clear from the text: \"Nuestra empresa está comprometida con la inversión en proyectos de energía renovable.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-announcement-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dl-1p-announcement-004",
+   "stem": "What is the name of the company?",
+   "choices": [
+    "Nueva Energía",
+    "EcoInvest",
+    "Soluciones Sostenibles",
+    "Energía Verde"
+   ],
+   "answer": 3,
+   "explanation": "The name of the company is Energía Verde. This is explicitly stated in the text: \"Energía Verde se complace en anunciar...\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-announcement-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1p-announcement-004",
+   "stem": "What does \"comprometida\" mean here?",
+   "choices": [
+    "Concerned",
+    "Invested",
+    "Committed",
+    "Interested"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"comprometida\" means committed. This is clear from the text: \"Nuestra empresa está comprometida con la inversión en proyectos de energía renovable.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dl-1p-conversation-001",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The environmental impact of electric cars.",
+    "The benefits of electric cars over gas-powered cars.",
+    "The availability of charging stations for electric cars.",
+    "The cost of electric cars compared to gas-powered cars."
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the benefits of electric cars, as the speakers discuss how they are better for the environment, cheaper to run, and require less maintenance. For example, they say, 'son mejores para el medio ambiente' and 'son más baratos de mantener'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dl-1p-conversation-001",
+   "stem": "What does the male speaker say is one of the advantages of electric cars?",
+   "choices": [
+    "They are faster than gas-powered cars.",
+    "They are more comfortable to drive.",
+    "They require less maintenance.",
+    "They can travel longer distances on a single charge."
+   ],
+   "answer": 2,
+   "explanation": "The male speaker says that electric cars are 'más baratos de mantener' and 'no necesitan tanto mantenimiento', which means they require less maintenance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1p-conversation-001",
+   "stem": "In the phrase 'los precios de la electricidad están bajando', what does 'bajando' mean?",
+   "choices": [
+    "Fluctuating",
+    "Stabilizing",
+    "Rising",
+    "Dropping"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'bajando' means 'dropping'. The speakers are discussing how the cost of electricity is decreasing, which makes electric cars more affordable to run.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-1p-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -2036,6 +5064,276 @@
    "verified": false
   },
   {
+   "id": "es-dl-1p-phone_call-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dl-1p-phone_call-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A forest fire approaching a town",
+    "A fire at a local school",
+    "A planned controlled burn",
+    "A discussion about fire safety tips"
+   ],
+   "answer": 0,
+   "explanation": "The speakers discuss the forest fire near Pinar del Rio and its effects on the town, so the main topic is a forest fire approaching a town. They mention 'el incendio forestal' and 'se acerca a nuestro pueblo'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dl-1p-phone_call-002",
+   "stem": "What does the male speaker say is a concern about the forest fire?",
+   "choices": [
+    "It might burn down the town hall",
+    "It could disrupt the water supply",
+    "It may force them to evacuate",
+    "It will prevent them from having a festival"
+   ],
+   "answer": 2,
+   "explanation": "The male speaker expresses concern about the possibility of evacuation. He says 'Podríamos tener que evacuar'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1p-phone_call-002",
+   "stem": "What does the speaker mean by the phrase 'están trabajando sin cesar'?",
+   "choices": [
+    "They are working with limited resources",
+    "They are working without taking breaks",
+    "They are working only at night",
+    "They are working very slowly"
+   ],
+   "answer": 1,
+   "explanation": "The female speaker uses this phrase to describe the firefighters' efforts. 'Sin cesar' means without stopping or taking breaks. The text says 'los bomberos están trabajando sin cesar'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dl-1p-phone_call-003",
+   "stem": "What is the main idea of the conversation?",
+   "choices": [
+    "D. They are explaining how to join the military.",
+    "A. They are discussing the benefits of military service.",
+    "B. They are talking about the history of military service.",
+    "C. They are arguing about whether military service should be mandatory."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that they are arguing about whether military service should be mandatory. This is evident from statements like \"¿No crees que el servicio militar obligatorio es importante?\" and \"No estoy de acuerdo, pienso que debería ser voluntario.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dl-1p-phone_call-003",
+   "stem": "According to the man, what is one benefit of mandatory military service?",
+   "choices": [
+    "D. It improves national security.",
+    "B. It teaches discipline and patriotism.",
+    "C. It provides jobs for young people.",
+    "A. It increases the size of the military."
+   ],
+   "answer": 1,
+   "explanation": "The man mentions that mandatory military service \"enseña disciplina y patriotismo\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "purpose",
+   "passageId": "es-dl-1p-phone_call-003",
+   "stem": "Why does the woman mention that many countries have voluntary service?",
+   "choices": [
+    "D. To prove that their country should follow the trend.",
+    "C. To argue that voluntary service is more effective.",
+    "A. To show that mandatory service is outdated.",
+    "B. To suggest that other countries are better than theirs."
+   ],
+   "answer": 0,
+   "explanation": "The woman mentions that many countries have voluntary service to argue that their country should follow the trend, as she says \"Muchos países ya tienen servicio voluntario. ¿No crees que deberíamos hacer lo mismo?\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dl-1p-phone_call-004",
+   "stem": "What is the main idea of the phone call?",
+   "choices": [
+    "The caller is informing someone about a flood warning in the valley.",
+    "The caller is discussing a recent flood that occurred in the city.",
+    "The caller is requesting help to fix a broken pipe.",
+    "The caller is asking about the weather forecast for the weekend."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the phone call is that the caller is informing someone about a flood warning in the valley. This is evident from the caller's statement 'Te llamo para informarte que hay una alerta de inundación en el valle.' and the subsequent details about the flood risk and the river level.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dl-1p-phone_call-004",
+   "stem": "What is the name of the river that the caller mentions?",
+   "choices": [
+    "The Colorado River",
+    "The valley river",
+    "The Amazon River",
+    "The Rio Grande"
+   ],
+   "answer": 1,
+   "explanation": "The caller mentions the river as 'el río del valle', which translates to 'the valley river'. This is a specific detail provided in the phone call.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1p-phone_call-004",
+   "stem": "What does the phrase 'estar en guardia' mean in this context?",
+   "choices": [
+    "To be on vacation",
+    "To be on guard",
+    "To be on a budget",
+    "To be on a diet"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'estar en guardia' in this context means 'to be on guard'. The caller uses this phrase to advise the listener to be prepared and vigilant due to the flood warning, as indicated by 'Es importante estar en guardia y prepararse para cualquier eventualidad.'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dl-1p-phone_call-005",
+   "stem": "What is the main topic of this phone call?",
+   "choices": [
+    "A search-and-rescue operation",
+    "A military exercise",
+    "A natural disaster",
+    "A sports competition"
+   ],
+   "answer": 0,
+   "explanation": "The call repeatedly refers to a rescue operation, as in 'nuestra operación de rescate' and 'la operación de búsqueda y rescate'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dl-1p-phone_call-005",
+   "stem": "What is the name of the agency that is coordinating the operation?",
+   "choices": [
+    "El Ministerio de Defensa",
+    "La Guardia Civil",
+    "La Protección Civil",
+    "La Cruz Roja"
+   ],
+   "answer": 2,
+   "explanation": "The caller explicitly states 'La Protección Civil está coordinando la operación'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1p-phone_call-005",
+   "stem": "What does 'deslizamiento de tierra' mean here?",
+   "choices": [
+    "An earthquake",
+    "A flood",
+    "A landslide",
+    "A snowstorm"
+   ],
+   "answer": 2,
+   "explanation": "The term 'deslizamiento de tierra' is used to describe the incident that caused the need for a rescue operation, indicating a landslide.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dl-1p-phone_call-006",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "B. A joint search-and-rescue operation",
+    "A. A cultural exchange program",
+    "D. A business meeting",
+    "C. A sporting event"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a joint search-and-rescue operation. This is evident from the repeated use of terms like 'rescate' (rescue) and 'operación conjunta' (joint operation).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dl-1p-phone_call-006",
+   "stem": "Where will the meeting take place?",
+   "choices": [
+    "A. In the city center",
+    "D. By the river",
+    "C. On the mountain",
+    "B. At the local community center"
+   ],
+   "answer": 2,
+   "explanation": "The meeting will take place 'en la montaña' (on the mountain). This is explicitly stated in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1p-phone_call-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1p-phone_call-006",
+   "stem": "What does the phrase 'equipos de rescate' refer to here?",
+   "choices": [
+    "C. Sports teams",
+    "B. Search-and-rescue teams",
+    "D. Medical teams",
+    "A. Teams of lawyers"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'equipos de rescate' refers to 'search-and-rescue teams'. This is clear from the context of the conversation, which discusses a rescue operation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-2-briefing-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2090,6 +5388,114 @@
    "verified": false
   },
   {
+   "id": "es-dl-2-briefing-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-briefing-002",
+   "stem": "What is the main topic of the briefing?",
+   "choices": [
+    "A border dispute between two countries",
+    "A military exercise between two countries",
+    "An environmental protection initiative between two countries",
+    "A search-and-rescue operation between two countries"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is a search-and-rescue operation between Mexico and the United States. This is clear from the repeated mention of the operation, the countries involved, and the context of the search and rescue efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-briefing-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-briefing-002",
+   "stem": "What is the name of the Mexican official leading the operation?",
+   "choices": [
+    "Sargento Ramírez",
+    "Comandante García",
+    "Teniente Martínez",
+    "Capitán López"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the Mexican official leading the operation is Capitán López.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-briefing-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-briefing-002",
+   "stem": "What does the phrase 'en coordinación' mean here?",
+   "choices": [
+    "in cooperation",
+    "in isolation",
+    "in conflict",
+    "in competition"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'en coordinación' means 'in cooperation'. This is evident from the context of the joint operation and the collaboration between the two countries' teams.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-briefing-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-briefing-003",
+   "stem": "What is the main problem described in the briefing?",
+   "choices": [
+    "The guest wants to change their room type.",
+    "The hotel is overbooked and cannot provide a room.",
+    "The hotel staff is being rude to the guest.",
+    "The hotel has lost the guest's reservation."
+   ],
+   "answer": 1,
+   "explanation": "The main problem is that the hotel is overbooked and cannot provide a room for the guest. This is stated clearly when the recepcionista says, 'Lamentablemente, estamos sobrevendidos y no tenemos habitaciones disponibles en este momento.' The other options are not the primary issues discussed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-briefing-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-briefing-003",
+   "stem": "What does the recepcionista offer to the huésped as a solution?",
+   "choices": [
+    "A room in another hotel.",
+    "An upgrade to a suite.",
+    "A free breakfast.",
+    "A discount on their next stay."
+   ],
+   "answer": 0,
+   "explanation": "The recepcionista offers to find the huésped a room in another hotel. This is mentioned when she says, 'Podemos intentar conseguirle una habitación en otro hotel cercano.' The other options are not offered as solutions in the briefing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-briefing-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-briefing-003",
+   "stem": "In the phrase 'Estamos haciendo todo lo posible para resolver este inconveniente', what does 'inconveniente' mean here?",
+   "choices": [
+    "Problem",
+    "Inconvenience",
+    "Mistake",
+    "Situation"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'inconveniente' refers to the problem of the overbooked hotel room. The recepcionista is saying they are doing everything possible to resolve this issue. The word 'problem' best captures this meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-2-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2140,6 +5546,114 @@
    ],
    "answer": 3,
    "explanation": "The male speaker mentions 'dentro de nuestro presupuesto', referring to their financial plan or budget when looking for housing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-conversation-002",
+   "stem": "What is the main problem in this conversation?",
+   "choices": [
+    "The guest is unhappy with the room's cleanliness.",
+    "The hotel is overbooked.",
+    "The room has no view of the ocean.",
+    "The hotel staff is rude to the guest."
+   ],
+   "answer": 2,
+   "explanation": "The main problem is that the room does not have a view of the ocean, as stated by the guest: 'La habitación que me dieron no tiene vista al océano.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-conversation-002",
+   "stem": "What does the guest say is missing from the room?",
+   "choices": [
+    "A safe.",
+    "A view of the ocean.",
+    "A minibar.",
+    "A balcony."
+   ],
+   "answer": 1,
+   "explanation": "The guest explicitly mentions that the room lacks a view of the ocean: 'La habitación que me dieron no tiene vista al océano.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-conversation-002",
+   "stem": "In the phrase '¿Podrían cambiarme a otra habitación?', what does 'cambiarme' mean here?",
+   "choices": [
+    "To improve me.",
+    "To switch me.",
+    "To downgrade me.",
+    "To upgrade me."
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'cambiarme' means 'to switch me' to another room, as the guest wants to change rooms because of the view issue.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-conversation-003",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The lack of affordable housing in cities",
+    "The government's plan to build new highways",
+    "The high cost of housing in the countryside",
+    "The benefits of living in rural areas"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the lack of affordable housing in cities. This is evident from the speakers' discussion of the difficulties in finding housing in cities like Madrid and Barcelona, and the impact of this shortage on young people and workers. For example, Carlos says, 'En ciudades como Madrid o Barcelona, encontrar un piso asequible es casi una misión imposible.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-conversation-003",
+   "stem": "According to the conversation, what is one of the reasons for the housing shortage in cities?",
+   "choices": [
+    "A rise in construction costs",
+    "A lack of available land",
+    "A decrease in population",
+    "An increase in the number of empty houses"
+   ],
+   "answer": 0,
+   "explanation": "One of the reasons for the housing shortage is a rise in construction costs. Ana mentions this when she says, 'Los costos de construcción han subido mucho, lo que hace que los precios de la vivienda también suban.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-conversation-003",
+   "stem": "In the conversation, what does the word 'asequible' mean here?",
+   "choices": [
+    "Affordable",
+    "Convenient",
+    "Expensive",
+    "Luxurious"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'asequible' means affordable. Carlos uses this word when he says, 'En ciudades como Madrid o Barcelona, encontrar un piso asequible es casi una misión imposible.'",
    "source": "llm",
    "verified": false
   },
@@ -2248,6 +5762,168 @@
    ],
    "answer": 2,
    "explanation": "The phrase 'saneamiento adecuado' is used in the context of health issues caused by a lack of it. The interviewee states 'Problemas de salud, especialmente entre los niños, como enfermedades diarreicas debido a la falta de saneamiento adecuado'. This indicates that 'saneamiento adecuado' refers to adequate sanitation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-interview-003",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The rules of a local bank",
+    "A tourist's lost passport",
+    "The requirements for a visa application",
+    "The process of applying for a new ID card"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the lost passport, as indicated by lines like 'Perdí mi pasaporte' and 'Necesito reportar que mi pasaporte ha sido robado'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-interview-003",
+   "stem": "What does the tourist say he was doing when his passport went missing?",
+   "choices": [
+    "He was at a bank",
+    "He was at a market",
+    "He was at a hotel",
+    "He was at a restaurant"
+   ],
+   "answer": 0,
+   "explanation": "The tourist states 'Estaba en el banco' when asked about the location where his passport went missing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-interview-003",
+   "stem": "What does 'gestión' mean here?",
+   "choices": [
+    "A complaint",
+    "A request",
+    "A process",
+    "A payment"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'gestión' refers to the process of reporting the lost passport and getting a new one, as seen in '¿Cómo puedo hacer la gestión para obtener uno nuevo?'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-news-001",
+   "stem": "What is the main topic of the news report?",
+   "choices": [
+    "The results of a recent local election",
+    "A new policy to improve public transportation",
+    "A natural disaster affecting the city",
+    "A protest against the current government"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the news report is the results of a recent local election. This is clear from the speakers discussing the election results, the new mayor, and the mayor's plans for the city.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-news-001",
+   "stem": "What is the name of the new mayor of San Carlos?",
+   "choices": [
+    "Javier López",
+    "Ana García",
+    "Laura Rodríguez",
+    "Carlos Mendoza"
+   ],
+   "answer": 3,
+   "explanation": "The name of the new mayor of San Carlos is Carlos Mendoza. This is explicitly stated in the text: \"El nuevo alcalde de San Carlos es Carlos Mendoza.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-news-001",
+   "stem": "What does the phrase 'toma de posesión' mean here?",
+   "choices": [
+    "Inauguration ceremony",
+    "Press conference",
+    "Official resignation",
+    "Public debate"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'toma de posesión' means inauguration ceremony in this context. This is inferred from the text: \"La toma de posesión de Carlos Mendoza como nuevo alcalde de San Carlos se llevará a cabo el próximo sábado.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-news-002",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "a new program to provide free digital books to the public",
+    "a decrease in the number of physical books in libraries",
+    "a new way to borrow physical books from libraries",
+    "a new tax on digital books to fund library services"
+   ],
+   "answer": 0,
+   "explanation": "The news report discusses a new initiative called 'Libros Digitales para Todos' that aims to provide free digital books to the public. This is mentioned in the first line of the text: 'El municipio de Valencia ha lanzado la iniciativa “Libros Digitales para Todos” para ofrecer libros electrónicos gratuitos a los residentes.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-news-002",
+   "stem": "What is the name of the initiative mentioned in the news report?",
+   "choices": [
+    "b 'Biblioteca Digital Municipal'",
+    "c 'Libros Digitales para Todos'",
+    "a 'El Libro Digital'",
+    "d 'Valencia Lee Digital'"
+   ],
+   "answer": 1,
+   "explanation": "The name of the initiative is explicitly stated in the text: 'El municipio de Valencia ha lanzado la iniciativa “Libros Digitales para Todos” para ofrecer libros electrónicos gratuitos a los residentes.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-news-002",
+   "stem": "What does the word 'acceso' mean here?",
+   "choices": [
+    "c a way to communicate with someone",
+    "d a method to store information",
+    "a physical entry to a place",
+    "b permission to use or benefit from something"
+   ],
+   "answer": 3,
+   "explanation": "'Acceso' in this context refers to the availability and opportunity to use digital books for free. The text states: 'El objetivo es garantizar el acceso a la lectura digital para todos los residentes, sin importar su situación económica.' This indicates that 'acceso' means having the opportunity or permission to benefit from the digital books.",
    "source": "llm",
    "verified": false
   },
@@ -2414,6 +6090,60 @@
    "verified": false
   },
   {
+   "id": "es-dl-2p-documentary-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dl-2p-documentary-003",
+   "stem": "What is the main idea of the documentary?",
+   "choices": [
+    "The documentary discusses the causes of housing shortages in cities and the struggles of those affected.",
+    "The documentary suggests that people should move to the countryside to solve housing problems.",
+    "The documentary argues that housing shortages only affect elderly people.",
+    "The documentary explains how to build affordable housing in rural areas."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is the first choice. The documentary focuses on the causes of housing shortages in cities and the difficulties faced by people like Laura and Carlos. This is evident throughout the text, such as when it mentions 'Laura, una joven de 28 años, que comparte un apartamento de una habitación con tres compañeros de trabajo' and 'Carlos, un hombre de 50 años, que ha estado buscando un apartamento durante más de un año.' The other choices are incorrect because they do not capture the main focus of the documentary.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-documentary-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "es-dl-2p-documentary-003",
+   "stem": "According to the documentary, what is one of the main causes of housing shortages in cities?",
+   "choices": [
+    "The lack of interest in urban living.",
+    "The decrease in population density in cities.",
+    "The high cost of land and construction materials.",
+    "The government's policy to promote rural housing."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is the first choice. The documentary states that 'uno de los principales factores es el alto costo de la tierra y los materiales de construcción,' which directly addresses the causes of housing shortages. The other choices are not mentioned in the text as causes of housing shortages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-documentary-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2p-documentary-003",
+   "stem": "In the documentary, the phrase 'se enfrenta a una situación cada vez más desesperada' means...",
+   "choices": [
+    "is enjoying a period of stability.",
+    "is dealing with a minor inconvenience.",
+    "is facing an increasingly desperate situation.",
+    "is experiencing a very hopeful moment."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is the first choice. The phrase 'se enfrenta a una situación cada vez más desesperada' is used to describe the difficulties people like Laura and Carlos are experiencing due to housing shortages. The other choices do not accurately reflect the meaning of the phrase in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-2p-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2576,6 +6306,438 @@
    "verified": false
   },
   {
+   "id": "es-dl-2p-news_analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dl-2p-news_analysis-002",
+   "stem": "What is the main idea of this conversation?",
+   "choices": [
+    "The impact of remote work on urban infrastructure",
+    "The benefits of remote work for companies",
+    "The future of remote work in Spain",
+    "The challenges of remote work for employees"
+   ],
+   "answer": 2,
+   "explanation": "The main idea is the future of remote work in Spain, as the conversation discusses the trend, its impact on different sectors, and the government's role. The text states 'el futuro del teletrabajo en España' and discusses various aspects related to this topic.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-news_analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-news_analysis-002",
+   "stem": "What can be inferred about Laura Mendoza's opinion on remote work?",
+   "choices": [
+    "She is cautiously optimistic about it",
+    "She thinks it is only beneficial for large companies",
+    "She is indifferent to it",
+    "She is strongly against it"
+   ],
+   "answer": 0,
+   "explanation": "Laura Mendoza is cautiously optimistic about remote work. She mentions 'el teletrabajo puede ser una gran oportunidad' and discusses its potential benefits, but also acknowledges challenges like 'la necesidad de adaptar las políticas laborales'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-news_analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2p-news_analysis-002",
+   "stem": "In the phrase 'el teletrabajo ha cobrado un nuevo impulso', what does 'cobrado' mean?",
+   "choices": [
+    "Lost",
+    "Changed",
+    "Gained",
+    "Maintained"
+   ],
+   "answer": 2,
+   "explanation": "'Cobrado' in this context means 'gained'. The phrase 'ha cobrado un nuevo impulso' translates to 'has gained new momentum', indicating that remote work has become more popular or significant.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-news_analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dl-2p-news_analysis-003",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The country's economic growth is solely due to foreign investment.",
+    "The country's economic growth has been uneven across regions.",
+    "The economic challenges facing the country are insurmountable.",
+    "The government has successfully implemented economic reforms."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the country's economic growth has been uneven across regions. This is supported by the text's discussion of the 'crecimiento desigual' and the 'regiones más pobres' that have not benefited from the growth.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-news_analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-news_analysis-003",
+   "stem": "What can be inferred about the author's view on the government's economic policies?",
+   "choices": [
+    "The author thinks the government's policies have had some positive effects but also some negative consequences.",
+    "The author is indifferent to the government's economic policies.",
+    "The author believes the government's policies have been a complete failure.",
+    "The author believes the government's policies have been a resounding success."
+   ],
+   "answer": 0,
+   "explanation": "The author's view is that the government's policies have had some positive effects but also some negative consequences. This is inferred from the text's mention of the 'reformas económicas' that have led to 'crecimiento económico' but have also resulted in 'mayor desigualdad'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-news_analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2p-news_analysis-003",
+   "stem": "What does the phrase 'a pesar de' mean here?",
+   "choices": [
+    "In spite of",
+    "In addition to",
+    "Because of",
+    "According to"
+   ],
+   "answer": 0,
+   "explanation": "'A pesar de' means 'in spite of' here. The text uses this phrase to contrast the 'crecimiento económico' with the 'mayor desigualdad' that has occurred 'a pesar de las reformas económicas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dl-2p-panel_discussion-001",
+   "stem": "What is the main topic of the discussion?",
+   "choices": [
+    "The role of technology in traditional classrooms",
+    "The future of online education and its challenges",
+    "The history of distance learning",
+    "The impact of online education on the environment"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 2 because the participants discuss the future of online education and its challenges, mentioning the need for infrastructure, teacher training, and student support. This is evident in phrases like 'la necesidad de una infraestructura adecuada' and 'la capacitación de los docentes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-panel_discussion-001",
+   "stem": "What can be inferred about the speaker labeled Moderador?",
+   "choices": [
+    "He is skeptical about the future of online education",
+    "He is neutral and facilitates the discussion",
+    "He is an expert in online education technology",
+    "He is a strong advocate for traditional education"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 1 because the Moderador introduces the topic and the speakers, asks questions, and summarizes points, indicating a neutral role in facilitating the discussion. This is seen in phrases like 'Bienvenidos a nuestro panel de discusión' and 'Comencemos con la primera pregunta'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2p-panel_discussion-001",
+   "stem": "What does the phrase 'la brecha digital' refer to in the text?",
+   "choices": [
+    "The divide between those with and without access to technology",
+    "The gap between rich and poor students",
+    "The difference between online and traditional education",
+    "The challenge of digital literacy among teachers"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 2 because 'la brecha digital' is used to discuss the divide between those with and without access to technology, as seen in 'debemos abordar la brecha digital que existe en nuestro país'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dl-2p-panel_discussion-002",
+   "stem": "What is the main topic of this discussion?",
+   "choices": [
+    "The benefits of military exercises for civilian populations",
+    "The economic impact of military exercises on local communities",
+    "The history of military alliances between countries",
+    "The planning and execution of a joint military exercise with an allied country"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the discussion is the planning and execution of a joint military exercise with an allied country. This is evident from the repeated mentions of the exercise 'Unified Shield', the participating countries, and the details about the planning and execution process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-panel_discussion-002",
+   "stem": "What can be inferred about the relationship between the two countries involved in the exercise?",
+   "choices": [
+    "They are negotiating a new trade agreement",
+    "They have a strong military alliance and cooperate regularly",
+    "They are experiencing political tensions",
+    "They are rivals competing for regional dominance"
+   ],
+   "answer": 1,
+   "explanation": "The inference that can be made is that the two countries have a strong military alliance and cooperate regularly. This is supported by statements such as 'Nuestra alianza militar con el país vecino es una de las más fuertes de la región' and 'Hemos participado en numerosas ejercicios conjuntos en el pasado'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2p-panel_discussion-002",
+   "stem": "What does 'logística' mean here?",
+   "choices": [
+    "The management of resources and transportation for the exercise",
+    "The strategic planning of military operations",
+    "The negotiation of political agreements",
+    "The training of military personnel"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'logística' refers to the management of resources and transportation for the exercise. This is evident from the sentence 'La logística del ejercicio es un desafío enorme, pero estamos bien preparados para ello'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dl-2p-panel_discussion-003",
+   "stem": "What is the main topic of the panel discussion?",
+   "choices": [
+    "The economic impact of the festival on the city",
+    "The history of traditional dances performed at the festival",
+    "The role of local businesses in organizing the festival",
+    "The efforts to preserve cultural traditions during the festival"
+   ],
+   "answer": 3,
+   "explanation": "The panelists discuss various aspects of preserving cultural traditions during the festival, such as traditional dances, food, and crafts. This is evident in statements like 'nuestras tradiciones culturales' and 'preservar estas danzas tradicionales'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-panel_discussion-003",
+   "stem": "What can be inferred about the panelists' views on the festival?",
+   "choices": [
+    "They argue that the festival is not well-attended by locals.",
+    "They believe the festival is becoming too commercialized.",
+    "They think the festival is an important way to showcase local culture.",
+    "They feel the festival should focus more on modern entertainment."
+   ],
+   "answer": 2,
+   "explanation": "The panelists express the importance of the festival in showcasing local culture, as seen in 'una oportunidad única para mostrar nuestra cultura local' and 'celebrar nuestras raíces'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-panel_discussion-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2p-panel_discussion-003",
+   "stem": "What does the phrase 'mantener vivas' mean here?",
+   "choices": [
+    "To create new",
+    "To document",
+    "To keep alive",
+    "To modify"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'mantener vivas nuestras tradiciones' means 'to keep alive our traditions', as the panelists discuss preserving cultural practices.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dl-2p-speech-001",
+   "stem": "What is the main idea of this speech?",
+   "choices": [
+    "The challenges faced by the Institute in its first 100 years.",
+    "The importance of preserving Mexico's cultural heritage for future generations.",
+    "The history of the National Institute of Anthropology and History.",
+    "The celebration of the Institute's centenary with various events."
+   ],
+   "answer": 1,
+   "explanation": "The speech focuses on the significance of preserving Mexico's cultural heritage, as indicated by phrases like 'la importancia de preservar nuestro patrimonio cultural' and 'garantizar que las generaciones futuras puedan apreciar y aprender de nuestro pasado'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-speech-001",
+   "stem": "What can be inferred about the speaker's view on the Institute's work?",
+   "choices": [
+    "The speaker is critical of the Institute's methods and approaches.",
+    "The speaker thinks the Institute has made significant achievements.",
+    "The speaker believes the Institute's work is crucial but underfunded.",
+    "The speaker is indifferent to the Institute's contributions."
+   ],
+   "answer": 1,
+   "explanation": "The speaker praises the Institute's achievements, stating 'el INAH ha logrado avances significativos en la investigación, la conservación y la difusión de nuestro patrimonio cultural'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2p-speech-001",
+   "stem": "In this speech, what does 'difusión' mean?",
+   "choices": [
+    "The method of creating or producing something.",
+    "The act of hiding or concealing something.",
+    "The process of spreading information or knowledge.",
+    "The technique of analyzing or studying something."
+   ],
+   "answer": 2,
+   "explanation": "'Difusión' in this context refers to the spreading of knowledge about cultural heritage, as seen in 'la difusión de nuestro patrimonio cultural'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-analysis-001",
+   "stem": "What is the main point of the text?",
+   "choices": [
+    "Parents should ban smartphones for children under a certain age.",
+    "The benefits of smartphones for children's education outweigh the risks.",
+    "Smartphones have a significant negative impact on children's development.",
+    "Children's smartphone use should be carefully monitored and limited."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'Children's smartphone use should be carefully monitored and limited.' The text argues that smartphones can have both positive and negative effects, but the key point is that excessive use can be harmful and should be controlled. The text states, 'Es crucial que los padres establezcan límites claros y supervisen el uso que los niños hacen de estos dispositivos.' This indicates the need for monitoring and limitation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-analysis-001",
+   "stem": "What can be inferred about the author's view on educational apps?",
+   "choices": [
+    "The author thinks educational apps can be beneficial but do not offset the negative effects.",
+    "The author believes educational apps are the primary benefit of smartphones for children.",
+    "The author believes educational apps are a waste of time for children.",
+    "The author is indifferent to the use of educational apps by children."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'The author thinks educational apps can be beneficial but do not offset the negative effects.' The text mentions that educational apps can be useful, but it also highlights the negative impacts of smartphones, implying that the benefits do not outweigh the risks. The text states, 'Aunque existen aplicaciones educativas que pueden ser útiles, el uso excesivo de smartphones puede afectar negativamente el desarrollo cognitivo y social de los niños.' This suggests that the positive aspects do not cancel out the negative ones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-analysis-001",
+   "stem": "In the text, the phrase 'el desarrollo cognitivo y social' refers to which aspects of children's growth?",
+   "choices": [
+    "Intellectual and social development.",
+    "Creative and artistic development.",
+    "Physical and emotional development.",
+    "Moral and spiritual development."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'Intellectual and social development.' The phrase 'el desarrollo cognitivo y social' in the text refers to the cognitive (intellectual) and social aspects of children's growth. The text states, 'el uso excesivo de smartphones puede afectar negativamente el desarrollo cognitivo y social de los niños,' indicating that it is these areas that are impacted by excessive smartphone use.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-analysis-002",
+   "stem": "What is the primary focus of the text?",
+   "choices": [
+    "The history of agricultural festivals in the region.",
+    "The traditional foods served during the festival.",
+    "The economic impact of the Fiesta de la Cosecha on local businesses.",
+    "The efforts to revive and modernize the Fiesta de la Cosecha."
+   ],
+   "answer": 3,
+   "explanation": "The text discusses various initiatives and challenges related to the revival of the festival, such as community involvement (\"la participación de la comunidad local\"), modern entertainment (\"espectáculos modernos\"), and preserving traditions (\"mantener las tradiciones\").",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-analysis-002",
+   "stem": "What can be inferred about the organizers' view on the festival's future?",
+   "choices": [
+    "They believe the festival will remain the same as it was in the past.",
+    "They are optimistic about its growth and success.",
+    "They think the festival should be held less frequently.",
+    "They are considering moving the festival to a different location."
+   ],
+   "answer": 1,
+   "explanation": "The organizers express hope and enthusiasm for the festival's future, as seen in phrases like \"esperamos que este año sea aún más exitoso\" and \"creemos que el festival tiene un gran potencial para crecer.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-analysis-002",
+   "stem": "What does \"emblemático\" mean here?",
+   "choices": [
+    "Expensive",
+    "Symbolic",
+    "Outdated",
+    "Controversial"
+   ],
+   "answer": 1,
+   "explanation": "The text describes the festival as \"un evento emblemático\" that represents the region's agricultural heritage and unity. Thus, \"emblemático\" means symbolic in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-3-debate-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2626,6 +6788,168 @@
    ],
    "answer": 2,
    "explanation": "The context suggests that 'paso importante' refers to a significant step, as the speaker acknowledges the importance of the new law but also notes that it is not a magical solution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-editorial_commentary-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The need for better security measures at airports",
+    "The difficulties of obtaining a new passport while abroad",
+    "The author's personal experience with losing a passport",
+    "The importance of keeping personal documents safe while traveling"
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the text is the difficulties of obtaining a new passport while abroad. The author discusses the process and the challenges faced when trying to replace a lost passport in a foreign country. The text mentions the 'proceso burocrático' (bureaucratic process) and the 'dificultades' (difficulties) encountered, which are the central focus of the commentary.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-editorial_commentary-001",
+   "stem": "What can be inferred about the author's opinion on travel document security?",
+   "choices": [
+    "The author believes that travel document security is not a significant concern",
+    "The author suggests that there is room for improvement in travel document security",
+    "The author thinks that travel document security is solely the responsibility of the traveler",
+    "The author believes that travel document security is perfect as it is"
+   ],
+   "answer": 1,
+   "explanation": "The author suggests that there is room for improvement in travel document security. The text mentions the 'fragilidad' (fragility) of the current system and the 'necesidad de mejorar' (need for improvement), indicating that the author believes there are issues with the current security measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-editorial_commentary-001",
+   "stem": "How is the word 'lío' used in the text?",
+   "choices": [
+    "As a place to visit",
+    "As a positive experience",
+    "As a complicated situation",
+    "As a type of food"
+   ],
+   "answer": 2,
+   "explanation": "The word 'lío' is used to describe a complicated situation. The text states 'me encontré en un buen lío' (I found myself in a good mess), indicating that the author is referring to a difficult and complicated situation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-editorial_commentary-002",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The Pacific Alliance will definitely harm the economies of its member countries.",
+    "The Pacific Alliance is a secret agreement that will be bad for the environment.",
+    "The Pacific Alliance is a perfect trade agreement with no drawbacks.",
+    "The Pacific Alliance has significant benefits but also some potential drawbacks."
+   ],
+   "answer": 3,
+   "explanation": "The text discusses both the benefits of the Pacific Alliance, such as increased trade and economic growth, and the potential drawbacks, such as environmental concerns and economic inequality. The correct answer acknowledges both aspects, as seen in the phrases 'beneficios significativos' and 'desafíos potenciales'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-editorial_commentary-002",
+   "stem": "What can be inferred about the author's view on the Pacific Alliance?",
+   "choices": [
+    "The author is completely against the Pacific Alliance.",
+    "The author is neutral and presents both sides of the argument.",
+    "The author is unsure about the Pacific Alliance and needs more information.",
+    "The author is completely in favor of the Pacific Alliance."
+   ],
+   "answer": 1,
+   "explanation": "The author presents both the benefits and the potential drawbacks of the Pacific Alliance, indicating a neutral stance. This is evident in the phrases 'beneficios significativos' and 'desafíos potenciales', which show that the author is considering both sides of the argument.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-editorial_commentary-002",
+   "stem": "What does the phrase 'frenar el crecimiento económico' mean here?",
+   "choices": [
+    "To ignore economic growth.",
+    "To measure economic growth.",
+    "To accelerate economic growth.",
+    "To stop economic growth."
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'frenar el crecimiento económico' is used in the context of discussing potential drawbacks of the Pacific Alliance. The correct answer is 'To stop economic growth', as seen in the phrase 'podría frenar el crecimiento económico en algunas regiones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-editorial_commentary-003",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "The text argues for increased funding for national search-and-rescue agencies.",
+    "The editorial discusses the challenges of coordinating multinational rescue efforts.",
+    "The editorial criticizes the slow response time of individual rescue teams.",
+    "The commentary highlights the benefits of international cooperation in search-and-rescue operations."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that international cooperation in search-and-rescue operations is beneficial, as stated in the opening sentence: 'La reciente operación de búsqueda y rescate en el Mar Mediterráneo ha demostrado una vez más la importancia de la cooperación internacional.' The rest of the commentary supports this idea with examples and benefits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-editorial_commentary-003",
+   "stem": "What can be inferred about the relationship between the involved countries before this operation?",
+   "choices": [
+    "They had no prior experience working together.",
+    "They had previously coordinated on smaller-scale operations.",
+    "They had a tense political relationship.",
+    "They had a history of competing for resources."
+   ],
+   "answer": 1,
+   "explanation": "The text mentions that 'los equipos ya habían colaborado en operaciones más pequeñas', indicating that the countries had previous experience working together on smaller-scale operations. This inference is supported by the fact that the recent operation built upon these past collaborations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-editorial_commentary-003",
+   "stem": "In the text, what does 'sinergias' mean here?",
+   "choices": [
+    "Competitions",
+    "Conflicts",
+    "Challenges",
+    "Synergies"
+   ],
+   "answer": 3,
+   "explanation": "'Sinergias' in this context refers to the combined efforts and benefits of the international cooperation, as seen in the phrase: 'la operación ha permitido aprovechar sinergias y compartir recursos de manera más eficiente'. This means that the operation allowed for a more efficient use of resources through combined efforts.",
    "source": "llm",
    "verified": false
   },
@@ -2684,6 +7008,60 @@
    "verified": false
   },
   {
+   "id": "es-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-lecture-002",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The history of medical treatments",
+    "The cure for chronic diseases",
+    "The role of pharmacists in healthcare",
+    "The importance of preventive medicine"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the lecture is the importance of preventive medicine. This is evident from the doctor's opening statement: \"Hoy quiero hablarles sobre la importancia de la medicina preventiva.\" The rest of the lecture supports this main idea by discussing various aspects of preventive care.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-lecture-002",
+   "stem": "What does the doctor mean by \"estrategias proactivas\" in the context of the lecture?",
+   "choices": [
+    "Proactive strategies",
+    "Aggressive tactics",
+    "Reactive measures",
+    "Passive approaches"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the lecture, \"estrategias proactivas\" refers to proactive strategies. The doctor uses this phrase to describe approaches that aim to prevent illnesses before they occur: \"Implementar estrategias proactivas para prevenir enfermedades antes de que se manifiesten.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-lecture-002",
+   "stem": "What can be inferred about the doctor's view on regular check-ups?",
+   "choices": [
+    "They are only for the elderly",
+    "They are too expensive",
+    "They are necessary for preventive care",
+    "They are a waste of time"
+   ],
+   "answer": 2,
+   "explanation": "The doctor views regular check-ups as necessary for preventive care. This can be inferred from the statement: \"Las revisiones regulares pueden detectar problemas de salud en etapas tempranas, cuando son más fáciles y menos costosas de tratar.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-3-speech-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2734,6 +7112,168 @@
    ],
    "answer": 3,
    "explanation": "In this context, \"sistema de puntos\" refers to a system where drivers lose points for traffic violations. The speaker explains: \"Esto significa que por cada infracción, los conductores perderán puntos en su licencia.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-speech-002",
+   "stem": "What is the main idea of this speech?",
+   "choices": [
+    "Young people in Spain are unwilling to support the pension system.",
+    "Pensions in Spain are sufficient and do not need reform.",
+    "Spain must take urgent action to reform its pension system to address the challenges of an aging population.",
+    "The Spanish government plans to increase taxes to fund pensions for the elderly."
+   ],
+   "answer": 2,
+   "explanation": "The speaker states that 'es crucial que tomemos medidas urgentes para reformar nuestro sistema de pensiones' to address the challenges of an aging population, making this the main idea of the speech.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-speech-002",
+   "stem": "What can be inferred about the current pension system in Spain?",
+   "choices": [
+    "It provides insufficient benefits to retirees.",
+    "It is well-funded and sustainable.",
+    "It is not affected by economic fluctuations.",
+    "It is facing challenges due to the aging population."
+   ],
+   "answer": 3,
+   "explanation": "The speaker mentions that 'nuestra población envejece rápidamente' and 'el número de pensionistas sigue aumentando', implying that the current system is facing challenges due to these demographic changes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-speech-002",
+   "stem": "What does the speaker mean by 'sostenible' in this context?",
+   "choices": [
+    "Exciting",
+    "Profitable",
+    "Capable of being maintained at a certain rate or level",
+    "Environmentally friendly"
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses 'sostenible' to describe a pension system that 'asegure la viabilidad a largo plazo', indicating that it should be capable of being maintained over time.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-speech-003",
+   "stem": "Which of the following best summarizes the main idea of the speech?",
+   "choices": [
+    "The factory closure is a result of economic growth and modernization.",
+    "The factory closure is an opportunity for workers to pursue new careers.",
+    "The factory closure is a necessary step to ensure the company's profitability.",
+    "The factory closure will negatively impact the local economy and workers' livelihoods."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C. The speaker repeatedly emphasizes the negative consequences of the factory closure, such as 'el impacto devastador en nuestra comunidad' and 'la pérdida de empleos estables y bien remunerados', which indicate that the main idea focuses on the detrimental effects on the local economy and workers' livelihoods.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-speech-003",
+   "stem": "What can be inferred about the speaker's attitude towards the factory management?",
+   "choices": [
+    "The speaker is indifferent to the management's decision.",
+    "The speaker admires the management's business acumen.",
+    "The speaker believes that the management has made a fair decision.",
+    "The speaker thinks that the management has failed to consider the workers' well-being."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is B. The speaker states 'la gerencia ha tomado esta decisión sin tener en cuenta el bienestar de sus empleados', which suggests that the speaker believes the management has not considered the workers' well-being. This indicates a critical attitude towards the management.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-speech-003",
+   "stem": "What does the phrase 'el impacto devastador' mean here?",
+   "choices": [
+    "The devastating impact",
+    "The beneficial effect",
+    "The surprising outcome",
+    "The gradual change"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is A. In the context of the speech, 'el impacto devastador' refers to the severe negative consequences of the factory closure on the community, as indicated by the following phrase 'en nuestra comunidad y en los medios de vida de nuestros trabajadores'. This demonstrates that 'impacto devastador' means 'devastating impact' in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-speech-004",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "The speech outlines the history of public transportation in the city.",
+    "The speech discusses the need for immediate improvements to the city's public transportation system.",
+    "The speech presents a detailed plan for expanding the city's public transportation network.",
+    "The speech argues for the benefits of reducing car usage in the city."
+   ],
+   "answer": 2,
+   "explanation": "The speaker discusses specific plans for expanding the public transportation network, including new metro lines, bus routes, and bike lanes. For example, the speaker mentions \"la construcción de dos nuevas líneas de metro\" and \"la implementación de 15 nuevas rutas de autobús\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-speech-004",
+   "stem": "What can be inferred about the speaker's attitude towards car usage?",
+   "choices": [
+    "The speaker is indifferent to car usage.",
+    "The speaker believes car usage should be eliminated entirely.",
+    "The speaker thinks car usage should be reduced but not eliminated.",
+    "The speaker believes car usage should be increased."
+   ],
+   "answer": 2,
+   "explanation": "The speaker encourages \"la reducción del uso del coche\" and promotes alternatives like public transportation and bike lanes, but does not suggest eliminating car usage entirely.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-speech-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-speech-004",
+   "stem": "What does the speaker mean by \"la movilidad sostenible\"?",
+   "choices": [
+    "Sustainable mobility refers to the use of environmentally friendly transportation options.",
+    "Sustainable mobility refers to the use of public transportation only.",
+    "Sustainable mobility refers to the use of cars.",
+    "Sustainable mobility refers to the use of bicycles only."
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses \"la movilidad sostenible\" to refer to environmentally friendly transportation options, including \"el transporte público, las bicicletas y la caminata\".",
    "source": "llm",
    "verified": false
   }

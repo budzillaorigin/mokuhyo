@@ -88,6 +88,205 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-0p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Job Interview Rescheduling",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Secretária",
+     "voice": "female",
+     "text": "Bom dia, senhor Carlos."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Bom dia."
+    },
+    {
+     "speaker": "Secretária",
+     "voice": "female",
+     "text": "Precisamos remarcar sua entrevista de emprego."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Tudo bem. Por quê?"
+    },
+    {
+     "speaker": "Secretária",
+     "voice": "female",
+     "text": "O escritório estará fechado no dia marcado para a entrevista."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Ah, entendi. Qual é a nova data?"
+    },
+    {
+     "speaker": "Secretária",
+     "voice": "female",
+     "text": "Vamos marcar para a próxima semana, no mesmo horário."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Perfeito, obrigado."
+    },
+    {
+     "speaker": "Secretária",
+     "voice": "female",
+     "text": "De nada. Até logo."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Até logo."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-0p-short_exchange-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "University Admission Notice",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Universidade",
+     "voice": "female",
+     "text": "Atenção, estudantes!"
+    },
+    {
+     "speaker": "Universidade",
+     "voice": "female",
+     "text": "A partir deste ano, o processo de admissão será totalmente online."
+    },
+    {
+     "speaker": "Universidade",
+     "voice": "female",
+     "text": "Visitem nosso site para mais informações."
+    },
+    {
+     "speaker": "Estudante",
+     "voice": "male",
+     "text": "Legal, facílimo!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-0p-short_exchange-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Gym Membership Discount for Seniors",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Bom dia! Em que posso ajudar?"
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "Bom dia! Eu gostaria de saber sobre a promoção para idosos."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Claro! Oferecemos um desconto na mensalidade para pessoas acima de 60 anos."
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "Que ótimo! E qual é o valor com o desconto?"
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Com o desconto, a mensalidade fica em R$ 80,00."
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "Perfeito! Gostaria de me inscrever então."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-0p-short_exchange-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Summit Schedule Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Organizador",
+     "voice": "male",
+     "text": "Boa tarde, equipe."
+    },
+    {
+     "speaker": "Equipe",
+     "voice": "female",
+     "text": "Boa tarde. Como podemos ajudar?"
+    },
+    {
+     "speaker": "Organizador",
+     "voice": "male",
+     "text": "Alteração no horário do cume. Abertura às 9, não mais às 8."
+    },
+    {
+     "speaker": "Equipe",
+     "voice": "female",
+     "text": "Entendido. E o almoço?"
+    },
+    {
+     "speaker": "Organizador",
+     "voice": "male",
+     "text": "Almoço às 12.30, como antes."
+    },
+    {
+     "speaker": "Equipe",
+     "voice": "female",
+     "text": "Anotado. Obrigada pela informação."
+    },
+    {
+     "speaker": "Organizador",
+     "voice": "male",
+     "text": "Por nada. Até mais."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-0p-voicemail-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -181,6 +380,114 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-0p-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Metrô Novo Inauguração",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Gravação",
+     "voice": "female",
+     "text": "A nova linha do metrô está pronta para inaugurar."
+    },
+    {
+     "speaker": "Gravação",
+     "voice": "male",
+     "text": "A Linha Verde vai começar a operar na próxima semana."
+    },
+    {
+     "speaker": "Gravação",
+     "voice": "female",
+     "text": "Os trens vão passar a cada 10 minutos."
+    },
+    {
+     "speaker": "Gravação",
+     "voice": "male",
+     "text": "Aproveite o transporte público mais rápido."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-0p-voicemail-005",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Traffic Safety Law Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Gravação",
+     "voice": "female",
+     "text": "Olá, este é um aviso importante sobre a nova lei de segurança no trânsito."
+    },
+    {
+     "speaker": "Gravação",
+     "voice": "male",
+     "text": "A partir de agora, a multa para usar o celular enquanto dirige é de R$ 150."
+    },
+    {
+     "speaker": "Gravação",
+     "voice": "female",
+     "text": "Por favor, dirija com segurança. Obrigado."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-0p-voicemail-006",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Newspaper Delivery Delay",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Máquina",
+     "voice": "female",
+     "text": "Olá, este é um recado para os nossos clientes."
+    },
+    {
+     "speaker": "Livros",
+     "voice": "male",
+     "text": "A entrega do jornal de hoje está atrasada por causa do mau tempo."
+    },
+    {
+     "speaker": "Máquina",
+     "voice": "female",
+     "text": "Estamos enfrentando problemas no transporte."
+    },
+    {
+     "speaker": "Livros",
+     "voice": "male",
+     "text": "Pedimos desculpas pelo inconveniente."
+    },
+    {
+     "speaker": "Máquina",
+     "voice": "female",
+     "text": "Obrigado pela compreensão."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-1-announcement-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -222,6 +529,139 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-1-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Temporary Farm Work Opportunity",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atenção, atenção!"
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Precisa-se de trabalhadores temporários para colheita de café por dois meses."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Trabalho na fazenda Verde Vale, em Minas Gerais."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Alojamento e refeições fornecidos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Interessados, ligar para João no (31) 98765-4321."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1-announcement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Community Solar Project Launch",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atenção, moradores de Vila Verde!"
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Estamos felizes em anunciar o lançamento do nosso novo projeto de energia solar comunitária!"
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "O projeto tem como objetivo diminuir a dependência do município de combustíveis fósseis."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Além disso, aumentará o uso de fontes renováveis de energia em nossa cidade."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Participe e faça parte dessa mudança!"
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Mais informações na prefeitura ou no site da cidade."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1-announcement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Joint Search-and-Rescue Operation Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atenção, atenção, boa tarde a todos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Estamos transmitindo um importante comunicado."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Uma operação conjunta de busca e resgate está em andamento no Rio Paranaíba."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Precisamos urgentemente de voluntários para ajudar nas buscas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Se você tem experiência em resgate ou pode ajudar de alguma forma, por favor, contacte a Defesa Civil imediatamente."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Obrigada pela sua atenção e ajuda."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -249,6 +689,103 @@
      "speaker": "Mulher",
      "voice": "female",
      "text": "Vai, mas pode demorar um pouco mais."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Retirement Home News",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Marta",
+     "voice": "female",
+     "text": "Oi, João. Você recebeu o e-mail sobre a reunião de amanhã?"
+    },
+    {
+     "speaker": "João",
+     "voice": "male",
+     "text": "Sim, Marta. Recebi. É sobre o aumento recente no número de residentes, certo?"
+    },
+    {
+     "speaker": "Marta",
+     "voice": "female",
+     "text": "Isso mesmo. Precisamos de mais funcionários para cuidar de todos."
+    },
+    {
+     "speaker": "João",
+     "voice": "male",
+     "text": "Concordo. Vamos discutir isso amanhã."
+    },
+    {
+     "speaker": "Marta",
+     "voice": "female",
+     "text": "Sim, até amanhã então."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Unavailable Hotel Room",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Hotel Atlântico, boa tarde. Como posso ajudar?"
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "Boa tarde. Eu fiz uma reserva para hoje, mas parece que o quarto não está disponível."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Posso ver o seu nome, por favor?"
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "Claro, é João Silva."
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Ah, sim. Sinto muito, Sr. Silva. Houve um pequeno erro no nosso sistema."
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "E agora, o que eu faço?"
+    },
+    {
+     "speaker": "Recepcionista",
+     "voice": "female",
+     "text": "Temos um quarto disponível amanhã. Podemos oferecer um desconto de 10%."
+    },
+    {
+     "speaker": "Cliente",
+     "voice": "male",
+     "text": "Tudo bem, obrigado."
     }
    ],
    "source": "llm",
@@ -360,6 +897,52 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-1-instructions-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "New Arrival Procedures at the Camp",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Bem-vindos ao acampamento."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Por favor, siga estas instruções."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Primeiro, vá ao escritório principal para se registrar."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Depois, escutar as instruções com atenção."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Em seguida, você receberá um kit de boas-vindas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Obrigado pela sua cooperação."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-1-voicemail-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -387,6 +970,144 @@
      "speaker": "Professor",
      "voice": "female",
      "text": "Tchau!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1-voicemail-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "AI Conference Invitation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Olá, você está convidado para a Conferência Nacional de Inteligência Artificial."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "O evento acontecerá no próximo mês, nos dias 15 e 16."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "O propósito do evento é discutir a regulamentação do desenvolvimento da IA."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Por favor, confirme sua presença até o dia 10."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Aguardamos sua participação."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Obrigado."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Anúncio do Campeonato de Futebol da Escola",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atenção, alunos! O departamento de esportes da escola está feliz em anunciar o calendário do campeonato de futebol da escola."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "As inscrições estão abertas até sexta-feira, 1º de dezembro."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "As partidas começarão na segunda-feira, 4 de dezembro, e continuarão todas as noites da semana até a final."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "A grande final acontecerá no domingo, 17 de dezembro, no estádio da escola."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Não percam essa oportunidade de mostrar seu talento e apoiar seus colegas!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Temporary Bus Route Adjustment",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Atenção, passageiros!"
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Devido a obras na Avenida Principal, haverá um ajuste temporário no trajeto do ônibus linha 101."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A partir de amanhã, os ônibus não irão parar na Praça da Liberdade e no Mercado Central."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Os passageiros podem usar a linha 202 para chegar a essas paradas durante esse período."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Agradecemos pela compreensão e pedimos desculpas pelo transtorno."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Retornaremos ao trajeto normal assim que as obras forem concluídas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Obrigado!"
     }
    ],
    "source": "llm",
@@ -442,6 +1163,169 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-1p-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Protesto na Rádio",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Joana",
+     "voice": "female",
+     "text": "Carlos, você ouviu as notícias hoje?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Não, Joana. O que aconteceu?"
+    },
+    {
+     "speaker": "Joana",
+     "voice": "female",
+     "text": "Há um protesto contra a censura do governo na praça principal."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Censura? O que eles estão censurando?"
+    },
+    {
+     "speaker": "Joana",
+     "voice": "female",
+     "text": "Eles estão censurando notícias e bloqueando transmissões."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Isso é horrível. E o que as pessoas estão fazendo?"
+    },
+    {
+     "speaker": "Joana",
+     "voice": "female",
+     "text": "Elas estão protestando pela liberdade de imprensa e pedindo ao governo para retirar essa medida."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Espero que isso funcione."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1p-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Drought Concerns in the Northeast",
+   "body": "",
+   "script": [
+    {
+     "speaker": "João",
+     "voice": "male",
+     "text": "Oi, Maria. Como você está?"
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Oi, João. Estou preocupada com a seca no Nordeste."
+    },
+    {
+     "speaker": "João",
+     "voice": "male",
+     "text": "Sim, a seca está afetando muito a agricultura por lá."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "As plantações estão sofrendo bastante. Não temos água suficiente para irrigar os campos."
+    },
+    {
+     "speaker": "João",
+     "voice": "male",
+     "text": "É verdade. E isso está causando grandes perdas para os agricultores."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Precisamos de chuvas urgentes para resolver esse problema."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "interview",
+   "title": "Job Interview for Restaurant Position",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Entrevistadora",
+     "voice": "female",
+     "text": "Bom dia! Obrigada por vir hoje."
+    },
+    {
+     "speaker": "Candidato",
+     "voice": "male",
+     "text": "Bom dia! Obrigado por me receber."
+    },
+    {
+     "speaker": "Entrevistadora",
+     "voice": "female",
+     "text": "Você já trabalhou como garçom antes?"
+    },
+    {
+     "speaker": "Candidato",
+     "voice": "male",
+     "text": "Sim, trabalho como garçom há dois anos."
+    },
+    {
+     "speaker": "Entrevistadora",
+     "voice": "female",
+     "text": "Qual é a sua experiência com atendimento ao cliente?"
+    },
+    {
+     "speaker": "Candidato",
+     "voice": "male",
+     "text": "Trabalhei em um restaurante italiano e adoro interagir com os clientes."
+    },
+    {
+     "speaker": "Entrevistadora",
+     "voice": "female",
+     "text": "Nós precisamos de alguém para trabalhar no turno da noite e nos fins de semana. Isso é um problema para você?"
+    },
+    {
+     "speaker": "Candidato",
+     "voice": "male",
+     "text": "Não, estou disponível para esses horários."
+    },
+    {
+     "speaker": "Entrevistadora",
+     "voice": "female",
+     "text": "Ótimo! Vamos marcar sua contratação então."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-1p-news_brief-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -474,6 +1358,88 @@
      "speaker": "Locutor",
      "voice": "male",
      "text": "Obrigado e boa viagem!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1p-news_brief-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Brazilian Troops Join UN Peacekeeping Mission",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "O Brasil está enviando mais tropas para uma missão de paz no Mali."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "A missão é liderada pelas Nações Unidas e tem como objetivo manter a paz na região."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "As tropas brasileiras serão responsáveis por proteger civis e ajudar na reconstrução do país."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "O governo brasileiro afirmou que está comprometido em apoiar esforços internacionais de paz."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A expectativa é que as tropas cheguem ao Mali nas próximas semanas."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1p-news_brief-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Lost Passport Report",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Anunciador",
+     "voice": "male",
+     "text": "Atenção, por favor."
+    },
+    {
+     "speaker": "Anunciador",
+     "voice": "male",
+     "text": "O Sr. Silva informou que perdeu seu passaporte no ônibus ontem à tarde."
+    },
+    {
+     "speaker": "Anunciador",
+     "voice": "male",
+     "text": "Ele viajou recentemente para o exterior e está preocupado com a situação."
+    },
+    {
+     "speaker": "Anunciador",
+     "voice": "male",
+     "text": "A polícia está investigando o caso e pede a qualquer pessoa com informações para entrar em contato com a delegacia mais próxima."
+    },
+    {
+     "speaker": "Anunciador",
+     "voice": "male",
+     "text": "Obrigado pela atenção."
     }
    ],
    "source": "llm",
@@ -544,6 +1510,108 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-1p-phone_call-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Relocation Plans at the Camp",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Oi, Maria. Tudo bem?"
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Oi, Carlos. Tudo bem, e com você?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Estamos planejando nos mudar para outro local. O novo local parece ser mais seguro e tem melhor acesso à água."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Que ótima notícia! Quando vamos nos mudar?"
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Ainda não temos uma data exata, mas estamos trabalhando nisso. Também temos alguns desafios a enfrentar, como garantir que todos tenhamos transporte."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Entendi. Vou ajudar no que for possível."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Obrigado, Maria. Fico feliz em saber que posso contar com você."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-1p-phone_call-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Water Supply Restrictions Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Prefeitura",
+     "voice": "female",
+     "text": "Olá, é a prefeitura. Estamos passando por uma seca severa no verão e precisamos reduzir o consumo de água."
+    },
+    {
+     "speaker": "Morador",
+     "voice": "male",
+     "text": "Entendo. Como podemos ajudar?"
+    },
+    {
+     "speaker": "Prefeitura",
+     "voice": "female",
+     "text": "Vamos ter que cortar o fornecimento de água por algumas horas durante o dia para economizar."
+    },
+    {
+     "speaker": "Morador",
+     "voice": "male",
+     "text": "Quais são os horários dos cortes?"
+    },
+    {
+     "speaker": "Prefeitura",
+     "voice": "female",
+     "text": "Será das 10h às 14h e das 18h às 22h. Por favor, evite usar água nesse período."
+    },
+    {
+     "speaker": "Morador",
+     "voice": "male",
+     "text": "Ok, obrigado pela informação."
+    },
+    {
+     "speaker": "Prefeitura",
+     "voice": "female",
+     "text": "De nada. Contamos com sua colaboração."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-2-briefing-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -605,6 +1673,148 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-2-briefing-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Briefing on Inflation and Interest Rates",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Bom dia, e bem-vindos à nossa reunião de atualização econômica."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Hoje vamos discutir a relação entre a inflação e as taxas de juros."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Nos últimos meses, temos visto um aumento na inflação, o que tem levado o banco central a tomar medidas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Isso mesmo. O banco central está aumentando as taxas de juros para controlar a inflação."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Essa estratégia tem como objetivo ajustar as expectativas do mercado e reduzir a pressão sobre os preços."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "No entanto, é importante lembrar que ajustes nas taxas de juros podem ter efeitos tanto positivos quanto negativos na economia."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Por um lado, podem ajudar a controlar a inflação, mas por outro, podem desacelerar o crescimento econômico."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Portanto, é crucial que o banco central encontre o equilíbrio certo."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Obrigado pela atenção, e ficamos à disposição para esclarecer qualquer dúvida."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2-briefing-004",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Inauguração do Novo Terminal do Aeroporto Internacional de Brasília",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Boa tarde, senhoras e senhores."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hoje, temos uma grande novidade para compartilhar com vocês."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Estamos aqui para apresentar o novo terminal do Aeroporto Internacional de Brasília."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Este projeto é resultado de anos de planejamento e teve como objetivo principal melhorar a experiência dos passageiros."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "O novo terminal conta com uma arquitetura moderna e funcional."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Temos áreas de check-in mais espaçosas, o que permite maior eficiência no fluxo de passageiros."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Além disso, oferecemos mais opções de compras e alimentação, garantindo maior conforto e conveniência."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A segurança também foi uma prioridade, com sistemas de última geração e procedimentos atualizados."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Estamos confiantes de que o novo terminal atenderá às expectativas de todos os nossos passageiros."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Agradecemos pelo apoio e pela paciência durante as obras."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Em breve, teremos mais detalhes sobre a data de inauguração."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Fiquem ligados em nossas redes sociais."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Obrigado a todos e até breve!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-2-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -657,6 +1867,123 @@
      "speaker": "Repórter",
      "voice": "female",
      "text": "Obrigado, prefeito. Vamos aguardar os próximos desenvolvimentos."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Exercício Militar Conjunto",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Oficial",
+     "voice": "male",
+     "text": "Estamos nos preparando para o exercício militar conjunto com nossos aliados do Chile."
+    },
+    {
+     "speaker": "Subordinado",
+     "voice": "female",
+     "text": "Sim, senhor. Qual é o cronograma para o exercício?"
+    },
+    {
+     "speaker": "Oficial",
+     "voice": "male",
+     "text": "O exercício está marcado para o mês que vem. Precisamos coordenar os detalhes com eles o mais rápido possível."
+    },
+    {
+     "speaker": "Subordinado",
+     "voice": "female",
+     "text": "Entendido. Alguma dificuldade específica que devemos considerar?"
+    },
+    {
+     "speaker": "Oficial",
+     "voice": "male",
+     "text": "Uma das dificuldades que enfrentamos é a barreira linguística entre as tropas."
+    },
+    {
+     "speaker": "Subordinado",
+     "voice": "female",
+     "text": "Como podemos resolver isso?"
+    },
+    {
+     "speaker": "Oficial",
+     "voice": "male",
+     "text": "Vamos designar intérpretes e garantir que todos os materiais sejam traduzidos. Além disso, precisamos garantir que todas as unidades estejam cientes dos protocolos."
+    },
+    {
+     "speaker": "Subordinado",
+     "voice": "female",
+     "text": "Ótimo. Vou começar a trabalhar nisso imediatamente."
+    },
+    {
+     "speaker": "Oficial",
+     "voice": "male",
+     "text": "Muito bem. Mantenha-me informado sobre o progresso."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "interview",
+   "title": "A Nova Linha do Metrô de São Paulo",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Bem-vindo ao nosso programa. Hoje temos como convidado o Sr. Silva, o diretor do projeto da nova linha de metrô de São Paulo. Sr. Silva, pode nos contar mais sobre esse projeto?"
+    },
+    {
+     "speaker": "Sr. Silva",
+     "voice": "female",
+     "text": "Claro, obrigado por nos receber. A nova linha do metrô de São Paulo é um projeto muito importante para a cidade. Ela vai ajudar a reduzir o tempo de deslocamento e melhorar a mobilidade urbana."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Isso é muito interessante. Quantas estações novas essa linha vai ter?"
+    },
+    {
+     "speaker": "Sr. Silva",
+     "voice": "female",
+     "text": "A nova linha terá 12 estações novas. Elas vão estar localizadas em áreas estratégicas da cidade, facilitando o acesso dos moradores a diversos pontos de São Paulo."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "E qual é o prazo para a conclusão desse projeto?"
+    },
+    {
+     "speaker": "Sr. Silva",
+     "voice": "female",
+     "text": "A previsão é que a nova linha entre em operação no final do próximo ano. Estamos trabalhando arduamente para garantir que tudo esteja pronto dentro do prazo."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Muito obrigado, Sr. Silva, por nos atualizar sobre esse projeto importante. Foi um prazer ter você aqui conosco."
+    },
+    {
+     "speaker": "Sr. Silva",
+     "voice": "female",
+     "text": "Obrigado por terem me recebido. Fico feliz em poder compartilhar essas informações com vocês."
     }
    ],
    "source": "llm",
@@ -759,6 +2086,200 @@
      "speaker": "Locutor",
      "voice": "male",
      "text": "Que ótima oportunidade para aprender sobre outras culturas!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2-news-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "news",
+   "title": "Brazilian Rocket Launch Marks Historic Milestone",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor(a)",
+     "voice": "male",
+     "text": "A empresa brasileira Alcântara Aeroespacial anunciou hoje o sucesso do lançamento de seu foguete, o Alcântara 1."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "O lançamento ocorreu às 10:15 da manhã, horário de Brasília, a partir do Centro de Lançamento de Alcântara, no Maranhão."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "male",
+     "text": "O foguete levou um satélite de comunicação para a órbita terrestre, que será utilizado para melhorar as comunicações em áreas remotas do país."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "A tecnologia inovadora viabilizou o lançamento bem-sucedido do foguete, marcando um marco importante para o programa espacial brasileiro."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "male",
+     "text": "O presidente da Alcântara Aeroespacial, Carlos Silva, expressou sua satisfação com o resultado, destacando o trabalho dedicado de sua equipe."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "Este é o primeiro lançamento bem-sucedido de um foguete totalmente desenvolvido no Brasil, representando um grande avanço para o país na área de tecnologia espacial."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "male",
+     "text": "O governo brasileiro tem investido significativamente no setor espacial, visando aumentar a capacidade tecnológica e a autonomia do país em comunicações e observação da Terra."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2-news-004",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "news",
+   "title": "Brazil's Demographic Shift: Challenges and Opportunities",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "O Brasil está envelhecendo. O número de idosos no país está crescendo rapidamente, enquanto o número de jovens está diminuindo."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Isso está trazendo desafios significativos para o país."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Um dos principais desafios é o aumento da demanda por serviços de saúde e previdência."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Além disso, a força de trabalho está encolhendo, o que pode afetar o crescimento econômico."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "O governo está tentando enfrentar esses desafios através de políticas que incentivam a natalidade e o envelhecimento ativo."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "No entanto, especialistas afirmam que mais precisa ser feito para garantir que o Brasil esteja preparado para uma população cada vez mais idosa."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2-report-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "report",
+   "title": "Abertura do Hospital Nova Esperança",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Bom dia, aqui é o repórter Carlos Silva. Hoje estamos aqui para trazer a você as últimas notícias sobre a abertura do Hospital Nova Esperança."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Localizado no coração da cidade, o hospital está equipado com tecnologia de ponta e oferece uma ampla gama de serviços."
+    },
+    {
+     "speaker": "Enfermeira",
+     "voice": "female",
+     "text": "Temos uma unidade de emergência pediátrica, uma maternidade moderna e um centro de diagnóstico completo."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Além disso, o Hospital Nova Esperança conta com uma equipe médica altamente qualificada, pronta para atender às necessidades da comunidade."
+    },
+    {
+     "speaker": "Diretor",
+     "voice": "male",
+     "text": "Estamos muito orgulhosos de oferecer esses serviços à nossa comunidade. O hospital foi inaugurado na última semana e já estamos recebendo pacientes."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Isso é tudo por hoje. Fiquem ligados para mais atualizações sobre o Hospital Nova Esperança."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "report",
+   "title": "Ataque a Jornalistas em São Paulo",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Boa noite, aqui é a Rádio Brasil Notícias. Temos um relato urgente."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Sim, boa noite. Um grupo de jornalistas foi atacado por manifestantes durante um protesto contra o governo em São Paulo."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Os jornalistas estavam cobrindo o protesto quando foram agredidos com objetos e palavras de baixo calão."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Há feridos?"
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Sim, três jornalistas ficaram feridos e foram levados para o hospital. As feridas não são graves, mas eles estão abalados."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "A Polícia Militar abriu um inquérito para investigar o ocorrido. Eles estão tentando identificar os agressores."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Obrigado pela atualização. Vamos continuar acompanhando a situação."
     }
    ],
    "source": "llm",
@@ -961,6 +2482,564 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-2p-documentary-004",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "Impacto da Inflação nas Pequenas Empresas",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Bem-vindos ao nosso programa de documentários econômicos."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "No episódio de hoje, vamos explorar como a inflação está afetando as pequenas empresas em todo o país."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Acompanhe-nos enquanto conversamos com donos de negócios e especialistas para entender os desafios que eles enfrentam."
+    },
+    {
+     "speaker": "Dona da Loja",
+     "voice": "female",
+     "text": "Olá, meu nome é Ana, e eu tenho uma pequena loja de roupas aqui no centro da cidade."
+    },
+    {
+     "speaker": "Dona da Loja",
+     "voice": "female",
+     "text": "Nos últimos meses, tenho visto um aumento significativo nos custos de tudo, desde os tecidos que compro até a conta de luz da loja."
+    },
+    {
+     "speaker": "Dona da Loja",
+     "voice": "female",
+     "text": "Isso tem tornado muito difícil para mim manter os preços acessíveis para os clientes, e ainda assim conseguir lucro suficiente para cobrir minhas despesas."
+    },
+    {
+     "speaker": "Economista",
+     "voice": "male",
+     "text": "A inflação alta é um problema sério para as pequenas empresas porque elas geralmente não têm os mesmos recursos que as grandes corporações para absorver esses aumentos de custo."
+    },
+    {
+     "speaker": "Economista",
+     "voice": "male",
+     "text": "Muitas vezes, elas precisam passar esses custos adicionais para os consumidores, o que pode levar a uma diminuição na demanda por seus produtos e serviços."
+    },
+    {
+     "speaker": "Dono do Restaurante",
+     "voice": "male",
+     "text": "Meu nome é Carlos, e eu gero um pequeno restaurante familiar."
+    },
+    {
+     "speaker": "Dono do Restaurante",
+     "voice": "male",
+     "text": "Com a inflação, os preços dos alimentos e das bebidas têm subido muito, e eu tenho tido dificuldades para me manter à tona."
+    },
+    {
+     "speaker": "Dono do Restaurante",
+     "voice": "male",
+     "text": "Eu tenho que aumentar os preços dos pratos no menu, mas sei que isso pode afastar alguns clientes."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Essas são apenas algumas das vozes de donos de pequenas empresas que estão sentindo o impacto da inflação."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "É um desafio complexo que requer soluções criativas e apoio tanto do governo quanto da comunidade para ajudar esses negócios a prosperar."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2p-documentary-005",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "Brazil's Renewable Energy Boom: The Case of the Northeast",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Em recente visita ao Nordeste do Brasil, o ministro de Minas e Energia destacou a importância da região para o futuro energético do país."
+    },
+    {
+     "speaker": "Ministro",
+     "voice": "female",
+     "text": "O governo brasileiro está investindo pesadamente em projetos de energia renovável no Nordeste para diversificar a matriz energética do país."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "male",
+     "text": "Um dos principais objetivos é reduzir a dependência de combustíveis fósseis e promover o desenvolvimento sustentável."
+    },
+    {
+     "speaker": "Especialista",
+     "voice": "male",
+     "text": "O potencial eólico e solar do Nordeste é imenso, e já estamos vendo resultados significativos."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "Um exemplo notável é a usina solar no estado do Ceará, que está gerando empregos e impulsionando o desenvolvimento local."
+    },
+    {
+     "speaker": "Prefeito",
+     "voice": "male",
+     "text": "A usina solar trouxe não apenas energia limpa, mas também novas oportunidades para nossa comunidade."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "Além disso, o governo está investindo em infraestrutura para apoiar esses projetos, como a construção de novas linhas de transmissão."
+    },
+    {
+     "speaker": "Ministro",
+     "voice": "male",
+     "text": "Esses investimentos são essenciais para garantir que a energia gerada no Nordeste possa ser distribuída para todo o país."
+    },
+    {
+     "speaker": "Narrador",
+     "voice": "female",
+     "text": "O futuro da energia renovável no Nordeste parece promissor, com mais projetos em fase de planejamento e implementação."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2p-documentary-006",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "The Successful Launch of the Lunar Probe",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Bem-vindos à transmissão ao vivo do lançamento da sonda lunar brasileira."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hoje, o Brasil fez história com o lançamento bem-sucedido da sonda lunar."
+    },
+    {
+     "speaker": "Engenheiro Chefe",
+     "voice": "female",
+     "text": "Estamos muito orgulhosos deste momento. A sonda lunar foi lançada com sucesso às 14:30 horas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A contagem regressiva começou exatamente às 14:00 horas e a operação transcorreu sem percalços."
+    },
+    {
+     "speaker": "Cientista",
+     "voice": "male",
+     "text": "A sonda está agora em sua trajetória para a Lua, onde realizará diversas missões científicas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Este é um grande passo para o programa espacial brasileiro e demonstra nossa capacidade de realizar missões complexas."
+    },
+    {
+     "speaker": "Presidente da Agência Espacial Brasileira",
+     "voice": "female",
+     "text": "Quero parabenizar a todos os envolvidos neste projeto. Este lançamento é um testemunho do talento e da dedicação de nossa equipe."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "A sonda levará instrumentos científicos avançados para estudar a superfície lunar e coletar dados importantes."
+    },
+    {
+     "speaker": "Cientista",
+     "voice": "male",
+     "text": "Esperamos que as descobertas desta missão contribuam significativamente para a comunidade científica global."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Este lançamento marca um novo capítulo na exploração espacial brasileira e abre portas para futuras missões."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Crossing the Brazil-Bolivia Border",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Bem-vindo ao programa Viaje Seguro. Hoje, vamos falar sobre como cruzar a fronteira entre o Brasil e a Bolívia. Temos conosco a agente de fronteira Maria Silva."
+    },
+    {
+     "speaker": "Maria Silva",
+     "voice": "female",
+     "text": "Obrigado por me receber. Estou aqui para ajudar os viajantes a entenderem melhor o processo."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Poderia nos dizer quais documentos são necessários para cruzar a fronteira?"
+    },
+    {
+     "speaker": "Maria Silva",
+     "voice": "female",
+     "text": "Claro. Cidadãos brasileiros precisam de um passaporte válido para entrar na Bolívia. Além disso, é recomendável ter um seguro de viagem e a carteira de vacinação atualizada."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "E para os cidadãos bolivianos?"
+    },
+    {
+     "speaker": "Maria Silva",
+     "voice": "female",
+     "text": "Cidadãos bolivianos podem entrar no Brasil com seu documento de identidade nacional, desde que esteja válido."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Como é o processo na fronteira?"
+    },
+    {
+     "speaker": "Maria Silva",
+     "voice": "female",
+     "text": "Na fronteira, os viajantes passarão por controles de imigração e aduana. Pode haver atrasos devido à alta temporada, então recomendamos chegar cedo."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Algum conselho final para os viajantes?"
+    },
+    {
+     "speaker": "Maria Silva",
+     "voice": "female",
+     "text": "Sim. Mantenha todos os documentos organizados e acessíveis. Além disso, esteja ciente das regras de importação e exportação para evitar problemas na aduana."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Obrigado, Maria, por suas informações valiosas. Agradecemos a todos por ouvirem o Viaje Seguro. Até a próxima!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2p-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Consulta com o Cardiologista",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "Bom dia, Sr. Silva. Por que o senhor marcou esta consulta?"
+    },
+    {
+     "speaker": "Paciente",
+     "voice": "female",
+     "text": "Bom dia, doutor. Estou sentindo um cansaço excessivo e falta de ar nos últimos dias."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "Entendo. O senhor tem histórico de problemas cardíacos na família?"
+    },
+    {
+     "speaker": "Paciente",
+     "voice": "female",
+     "text": "Sim, meu pai teve um problema no coração quando era mais velho."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "Vamos verificar alguns sintomas que o senhor mencionou, como a falta de ar e a fadiga. O senhor tem sentido algum desconforto no peito?"
+    },
+    {
+     "speaker": "Paciente",
+     "voice": "female",
+     "text": "Às vezes, mas não é muito forte."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "O senhor faz algum tipo de exercício regularmente?"
+    },
+    {
+     "speaker": "Paciente",
+     "voice": "female",
+     "text": "Não, doutor. Tenho levado uma vida muito sedentária nos últimos anos."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "Entendo. Vamos fazer alguns exames para confirmar o diagnóstico. O senhor está tomando alguma medicação no momento?"
+    },
+    {
+     "speaker": "Paciente",
+     "voice": "female",
+     "text": "Apenas um remédio para a pressão arterial."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "Ótimo. Vamos agendar os exames para a próxima semana. Enquanto isso, gostaria que o senhor começasse a fazer algumas caminhadas leves todos os dias."
+    },
+    {
+     "speaker": "Paciente",
+     "voice": "female",
+     "text": "Tudo bem, doutor. Farei isso."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "Ótimo. Qualquer mudança nos sintomas, por favor, me avise imediatamente."
+    },
+    {
+     "speaker": "Paciente",
+     "voice": "female",
+     "text": "Claro, doutor. Obrigado pela atenção."
+    },
+    {
+     "speaker": "Médico",
+     "voice": "male",
+     "text": "De nada, Sr. Silva. Até a próxima consulta."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Expansão da TechNova para o Nordeste",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Bem-vindo ao programa. Hoje, temos a honra de receber o CEO da TechNova, uma empresa de tecnologia que está fazendo ondas no mercado brasileiro."
+    },
+    {
+     "speaker": "CEO",
+     "voice": "female",
+     "text": "Obrigado por nos receber. Estamos muito animados com os planos de expansão da TechNova."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Poderia nos contar mais sobre essa expansão?"
+    },
+    {
+     "speaker": "CEO",
+     "voice": "female",
+     "text": "Claro. Estamos planejando nos mudar para o Nordeste, especificamente para Recife. Essa decisão é estratégica para reduzir custos operacionais e atrair novos talentos."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Por que Recife?"
+    },
+    {
+     "speaker": "CEO",
+     "voice": "female",
+     "text": "Recife oferece incentivos fiscais para novas empresas e tem uma comunidade de tecnologia em crescimento. Além disso, a qualidade de vida é excelente."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "E como a empresa está se preparando para essa mudança?"
+    },
+    {
+     "speaker": "CEO",
+     "voice": "female",
+     "text": "Estamos trabalhando arduamente para garantir uma transição suave. Isso inclui treinar nossa equipe existente, contratar novos funcionários locais e adaptar nossos processos para enfrentar desafios."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "male",
+     "text": "Obrigado por compartilhar essas informações conosco."
+    },
+    {
+     "speaker": "CEO",
+     "voice": "female",
+     "text": "Foi um prazer. Estamos ansiosos para o que o futuro reserva para a TechNova no Nordeste."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Fronteiras Unidas: Operação de Busca e Resgate Conjunta",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Boa noite, ouvintes. Hoje trazemos uma história inspiradora de cooperação internacional."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Uma operação de busca e resgate conjunta entre o Brasil e o Paraguai resultou no resgate bem-sucedido de um grupo de excursionistas que estavam desaparecidos há três dias."
+    },
+    {
+     "speaker": "Comandante Brasileiro",
+     "voice": "male",
+     "text": "As equipes de busca foram acionadas assim que recebemos o alerta sobre os excursionistas desaparecidos."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Os excursionistas se perderam enquanto seguiam um rio que acreditavam ser o limite entre os dois países."
+    },
+    {
+     "speaker": "Comandante Paraguaio",
+     "voice": "male",
+     "text": "A coordenação entre as equipes brasileiras e paraguaias foi essencial para o sucesso da operação."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Após 72 horas de busca intensa, os excursionistas foram encontrados saudáveis e em segurança."
+    },
+    {
+     "speaker": "Comandante Brasileiro",
+     "voice": "male",
+     "text": "Eles estavam desidratados, mas conseguiram se abrigar e esperar pelo resgate."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Esta operação destaca a importância da cooperação entre os países vizinhos para enfrentar desafios transfronteiriços."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Cultural Revival of the Festa de São João de Caruaru",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Bem-vindos ao programa Cultura em Foco, da Rádio Nacional."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hoje, vamos discutir o ressurgimento da Festa de São João de Caruaru, um dos maiores festivais de cultura popular do Brasil."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Isso mesmo. A Festa de São João de Caruaru, em Pernambuco, tem atraído cada vez mais turistas e amantes da cultura."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Quais são os principais atrativos do festival?"
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "O festival oferece uma variedade de atrativos, incluindo um vasto lineup de shows ao vivo com artistas renomados e bandas locais."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "E as tradições culturais, como estão sendo preservadas?"
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Os organizadores têm feito um grande esforço para manter as tradições vivas, como as danças folclóricas e os artesanatos típicos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "E a comida, também é um ponto alto?"
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Claro, não podemos esquecer das deliciosas comidas típicas, como o bolo de rolo e a canjica, que estão em todos os lugares durante o festival."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Obrigado pela reportagem. Fiquem ligados na Rádio Nacional para mais sobre cultura e eventos no Brasil."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-2p-panel_discussion-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -1013,6 +3092,77 @@
      "speaker": "Moderador",
      "voice": "male",
      "text": "Obrigado a todos pelos insights valiosos. Espero que nossa discussão ajude os candidatos a se prepararem melhor para suas entrevistas de emprego."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "analysis",
+   "title": "A Erosão Costeira e os Desafios para as Comunidades Locais",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Líder Comunitário",
+     "voice": "male",
+     "text": "A erosão costeira é um problema grave que afeta muitas comunidades ao longo da costa brasileira."
+    },
+    {
+     "speaker": "Cientista Ambiental",
+     "voice": "female",
+     "text": "Sim, e o problema vem se agravando devido às mudanças climáticas e à ação humana."
+    },
+    {
+     "speaker": "Líder Comunitário",
+     "voice": "male",
+     "text": "Nossa comunidade tem sofrido muito com a perda de casas e infraestrutura devido à erosão."
+    },
+    {
+     "speaker": "Cientista Ambiental",
+     "voice": "female",
+     "text": "Infelizmente, isso é comum em muitas áreas costeiras. A erosão pode destruir tudo em seu caminho."
+    },
+    {
+     "speaker": "Líder Comunitário",
+     "voice": "male",
+     "text": "O que podemos fazer para proteger nossas casas e nosso meio de vida?"
+    },
+    {
+     "speaker": "Cientista Ambiental",
+     "voice": "female",
+     "text": "Existem várias estratégias que podem ser implementadas. Barreiras de areia, vegetação costeira e até mesmo a realocação de comunidades podem ser necessárias."
+    },
+    {
+     "speaker": "Líder Comunitário",
+     "voice": "male",
+     "text": "Mas essas soluções não são baratas. Como podemos financiá-las?"
+    },
+    {
+     "speaker": "Cientista Ambiental",
+     "voice": "female",
+     "text": "O governo tem um papel crucial na mitigação dos impactos da erosão costeira. Eles podem fornecer financiamento e apoio técnico."
+    },
+    {
+     "speaker": "Líder Comunitário",
+     "voice": "male",
+     "text": "E a participação da comunidade? Como podemos nos envolver?"
+    },
+    {
+     "speaker": "Cientista Ambiental",
+     "voice": "female",
+     "text": "A participação da comunidade é essencial. Vocês conhecem melhor a área e podem ajudar a desenvolver e implementar medidas de adaptação."
+    },
+    {
+     "speaker": "Líder Comunitário",
+     "voice": "male",
+     "text": "Entendo. Vamos trabalhar juntos para encontrar uma solução."
     }
    ],
    "source": "llm",
@@ -1098,6 +3248,397 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dl-3-analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Evacuação de Estrangeiros devido a Conflito na Região Norte",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Bom dia, aqui é a repórter Ana Silva, diretamente do Ministério das Relações Exteriores em Brasília."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "O governo brasileiro anunciou hoje que está coordenando a evacuação de estrangeiros da região norte do país devido a um aumento significativo de violência armada."
+    },
+    {
+     "speaker": "Porta-voz do Governo",
+     "voice": "male",
+     "text": "A situação de segurança se deteriorou rapidamente nas últimas semanas, tornando a área insegura para residentes e visitantes."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "O porta-voz do governo, Carlos Mendes, disse que o deslocamento de estrangeiros da região norte do Brasil continua."
+    },
+    {
+     "speaker": "Porta-voz do Governo",
+     "voice": "male",
+     "text": "O governo brasileiro está trabalhando em estreita colaboração com as embaixadas estrangeiras e organizações internacionais para facilitar este processo."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Até agora, mais de mil estrangeiros foram evacuados para áreas seguras dentro do Brasil e para seus respectivos países."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "As autoridades estão pedindo a todos os estrangeiros na região norte para que se registrem imediatamente com suas embaixadas locais para receber assistência."
+    },
+    {
+     "speaker": "Porta-voz do Governo",
+     "voice": "male",
+     "text": "Pedimos a todos para seguirem as instruções das autoridades locais e cooperarem plenamente com o processo de evacuação."
+    },
+    {
+     "speaker": "Repórter",
+     "voice": "female",
+     "text": "Mais atualizações serão fornecidas à medida que a situação evoluir. Isso é Ana Silva, reportando de Brasília."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-debate-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "debate",
+   "title": "Debate sobre a Recuperação do Turismo no Brasil",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Apresentador",
+     "voice": "male",
+     "text": "Bem-vindos a este debate sobre a recuperação do turismo no Brasil. Hoje, discutiremos o papel do turismo doméstico na recuperação econômica do país."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Obrigada por me convidar. Acredito que o turismo doméstico será crucial para a recuperação econômica do Brasil. O setor está enfrentando dificuldades, mas creio que pode se recuperar rapidamente com o apoio adequado."
+    },
+    {
+     "speaker": "Pedro",
+     "voice": "male",
+     "text": "Concordo, Maria. O setor de turismo no Brasil é conhecido por ser resiliente. No entanto, precisamos de políticas públicas que incentivem os brasileiros a viajar dentro do próprio país."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Exato, Pedro. Além disso, os destinos turísticos precisam adaptar seus protocolos de segurança para garantir a tranquilidade dos viajantes. Isso inclui investir em tecnologia para reduzir o contato físico."
+    },
+    {
+     "speaker": "Pedro",
+     "voice": "male",
+     "text": "Também é importante destacar o papel das pequenas empresas nesse processo. Elas são a espinha dorsal do turismo no Brasil e precisam de apoio para se recuperar."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Com certeza, Pedro. E não devemos esquecer do impacto positivo que o turismo doméstico pode ter nas comunidades locais. Isso gera empregos e renda para muitas famílias."
+    },
+    {
+     "speaker": "Pedro",
+     "voice": "male",
+     "text": "Absolutamente. E com a vacinação em massa avançando, esperamos que mais brasileiros se sintam seguros para viajar e explorar nosso belo país."
+    },
+    {
+     "speaker": "Apresentador",
+     "voice": "male",
+     "text": "Muito obrigado, Maria e Pedro, por compartilharem suas perspectivas sobre a recuperação do turismo no Brasil."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-debate-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "debate",
+   "title": "Debate: Operação Lava Jato e suas Repercussões",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Bem-vindos ao debate sobre as repercussões da Operação Lava Jato na economia brasileira."
+    },
+    {
+     "speaker": "Debatedor 1",
+     "voice": "female",
+     "text": "A Operação Lava Jato tem sido um marco na luta contra a corrupção no Brasil."
+    },
+    {
+     "speaker": "Debatedor 1",
+     "voice": "female",
+     "text": "No entanto, é crucial analisar os impactos econômicos da operação nas empresas nacionais."
+    },
+    {
+     "speaker": "Debatedor 2",
+     "voice": "male",
+     "text": "Concordo que a Lava Jato teve um efeito significativo no setor de construção civil, por exemplo."
+    },
+    {
+     "speaker": "Debatedor 2",
+     "voice": "male",
+     "text": "Mas será que os benefícios superam os custos para a economia como um todo?"
+    },
+    {
+     "speaker": "Debatedor 1",
+     "voice": "female",
+     "text": "Embora a Lava Jato tenha tido alguns resultados positivos, como a recuperação de recursos desviados, ainda há muito a ser feito para combater a corrupção de forma eficaz."
+    },
+    {
+     "speaker": "Debatedor 2",
+     "voice": "male",
+     "text": "Além disso, a operação tem gerado incertezas no mercado, afetando investimentos e empregos."
+    },
+    {
+     "speaker": "Debatedor 1",
+     "voice": "female",
+     "text": "É verdade que há desafios, mas acredito que a longo prazo, a transparência e a responsabilização trarão benefícios duradouros."
+    },
+    {
+     "speaker": "Debatedor 2",
+     "voice": "male",
+     "text": "Espero que possamos discutir também o papel das empresas estrangeiras nestes esquemas de corrupção e lavagem de dinheiro."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Vamos continuar o debate, explorando essas questões de forma aprofundada."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-debate-003",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "debate",
+   "title": "Urbanização e o Dilema Habitacional: Um Debate Aquecido",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Bem-vindos ao debate sobre a escassez de moradias nas cidades brasileiras."
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Obrigado. Acredito que o principal problema é a falta de investimento em habitação social por parte do governo."
+    },
+    {
+     "speaker": "João",
+     "voice": "male",
+     "text": "Concordo que o governo tem um papel importante, mas também precisamos controlar o crescimento desordenado das cidades. O custo de vida nas áreas urbanas está se tornando insustentável."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "Além disso, precisamos de um planejamento urbano mais eficaz. Muitas cidades não têm infraestrutura suficiente para acomodar a população atual, quanto mais o crescimento futuro."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "E não podemos esquecer o papel dos desenvolvedores privados. Eles muitas vezes priorizam lucros em vez de moradias acessíveis, o que agrava a crise habitacional."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Então, qual é a solução?"
+    },
+    {
+     "speaker": "Maria",
+     "voice": "female",
+     "text": "Acredito que o governo deve aumentar o orçamento para habitação social e trabalhar em parceria com o setor privado para garantir moradias acessíveis."
+    },
+    {
+     "speaker": "João",
+     "voice": "male",
+     "text": "Além disso, precisamos de políticas que incentivem o desenvolvimento sustentável e o uso eficiente do espaço urbano."
+    },
+    {
+     "speaker": "Ana",
+     "voice": "female",
+     "text": "E não podemos esquecer a importância de envolver as comunidades locais na tomada de decisões sobre o desenvolvimento urbano."
+    },
+    {
+     "speaker": "Carlos",
+     "voice": "male",
+     "text": "Concordo. A crise habitacional é complexa e requer uma abordagem multifacetada. Todos nós temos um papel a desempenhar na busca por soluções."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Obrigado a todos pelos insights valiosos. Este debate certamente nos deu muito para refletir."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Debate on Mandatory Military Service in Brazil",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "Bem-vindos ao nosso programa de debates. Hoje, vamos discutir um tema muito atual: o serviço militar obrigatório no Brasil."
+    },
+    {
+     "speaker": "Locutor(b)",
+     "voice": "male",
+     "text": "O serviço militar obrigatório tem sido um tema de grande controvérsia. Alguns argumentam que é essencial para a defesa nacional, enquanto outros acham que é um resquício do passado."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "É verdade que o debate está polarizado. Temos opiniões passionadas de ambos os lados, mas o que precisamos é de um debate mais equilibrado e informado."
+    },
+    {
+     "speaker": "Locutor(b)",
+     "voice": "male",
+     "text": "Muitos defendem que o serviço militar obrigatório promove a disciplina e o patriotismo, mas será que isso justifica mantê-lo como é hoje?"
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "Por outro lado, há quem diga que o serviço militar obrigatório é discriminatório, pois muitos jovens encontram maneiras de se livrar dele, enquanto outros não têm essa oportunidade."
+    },
+    {
+     "speaker": "Locutor(b)",
+     "voice": "male",
+     "text": "Além disso, em vez de desviar a atenção para questões mais urgentes, como a modernização das forças armadas, estamos presos a um sistema que muitos consideram ultrapassado."
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "É importante lembrar que o serviço militar obrigatório não é apenas sobre a defesa do país, mas também sobre a formação de cidadãos."
+    },
+    {
+     "speaker": "Locutor(b)",
+     "voice": "male",
+     "text": "No entanto, será que há maneiras mais eficazes de alcançar esse objetivo, sem a obrigatoriedade do serviço militar?"
+    },
+    {
+     "speaker": "Locutor(a)",
+     "voice": "female",
+     "text": "Essas são algumas das perguntas que precisamos nos fazer enquanto continuamos este debate crucial para o futuro do nosso país."
+    },
+    {
+     "speaker": "Locutor(b)",
+     "voice": "male",
+     "text": "Obrigado por nos acompanhar. Esperamos que este debate tenha contribuído para uma discussão mais informada e equilibrada sobre o serviço militar obrigatório no Brasil."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "O Futuro das Bibliotecas Públicas: Mais que Livros",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Bem-vindos a mais um debate sobre o futuro das bibliotecas públicas no Brasil."
+    },
+    {
+     "speaker": "Apresentadora",
+     "voice": "female",
+     "text": "Obrigado por nos acompanhar. Hoje discutiremos como as bibliotecas podem se adaptar às necessidades modernas."
+    },
+    {
+     "speaker": "Especialista",
+     "voice": "male",
+     "text": "As bibliotecas públicas precisam se adaptar e oferecer mais do que apenas livros."
+    },
+    {
+     "speaker": "Apresentadora",
+     "voice": "female",
+     "text": "Concordo. Elas devem se transformar em espaços multifuncionais, oferecendo cursos, workshops, acesso à internet e muito mais."
+    },
+    {
+     "speaker": "Especialista",
+     "voice": "male",
+     "text": "Exatamente. Imagine uma biblioteca onde você pode aprender uma nova habilidade, participar de um debate ou até mesmo ter acesso a serviços de saúde básica."
+    },
+    {
+     "speaker": "Apresentadora",
+     "voice": "female",
+     "text": "Isso soa como um sonho, mas é possível. Bibliotecas em outros países já estão fazendo isso."
+    },
+    {
+     "speaker": "Especialista",
+     "voice": "male",
+     "text": "Sim, e é isso que precisamos implementar aqui. As bibliotecas podem ser o coração das nossas comunidades, reunindo pessoas de todas as idades e backgrounds."
+    },
+    {
+     "speaker": "Apresentadora",
+     "voice": "female",
+     "text": "E o que dizer dos livros? Eles ainda têm um lugar nestas bibliotecas modernas?"
+    },
+    {
+     "speaker": "Especialista",
+     "voice": "male",
+     "text": "Claro que sim. Os livros são a base, mas não devem ser o único foco. Podemos ter seções dedicadas a livros, mas também espaços para atividades interativas e tecnológicas."
+    },
+    {
+     "speaker": "Apresentadora",
+     "voice": "female",
+     "text": "Muito obrigado pela sua perspectiva. Vamos continuar esta discussão nos próximos programas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Agradecemos a todos por acompanharem este debate. Até a próxima!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dl-3-lecture-001",
    "exam": "DLPT_LISTENING",
    "language": "pt-BR",
@@ -1155,6 +3696,87 @@
      "speaker": "Apresentador",
      "voice": "male",
      "text": "Obrigado pela atenção. Agora, vamos abrir para perguntas."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The Centenary of the Brazilian Communist Party",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Apresentador",
+     "voice": "male",
+     "text": "Bem-vindos a todos à nossa palestra de hoje."
+    },
+    {
+     "speaker": "Apresentador",
+     "voice": "male",
+     "text": "Hoje celebramos o centenário do Partido Comunista Brasileiro, uma ocasião significativa para refletir sobre sua história e contribuições."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "Obrigado pela apresentação."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "De fato, hoje marca cem anos desde a fundação do PCdoB."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "Ao longo de cem anos, o PCdoB tem desempenhado um papel crucial na história do nosso país."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "Desde sua fundação em 1922, o partido tem sido um defensor incansável dos direitos dos trabalhadores e das classes oprimidas."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "Ao longo das décadas, o PCdoB tem adaptado suas estratégias para enfrentar os desafios políticos e sociais."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "A emergência de novas ideias e estratégias tem sido uma característica marcante do partido."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "Apesar das dificuldades e perseguições, o PCdoB tem mantido seus princípios marxista-leninistas."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "Hoje, o partido continua a lutar por um Brasil mais justo e igualitário."
+    },
+    {
+     "speaker": "Palestrante",
+     "voice": "female",
+     "text": "Celebrar o centenário do PCdoB é reconhecer sua resistência e sua contribuição para a construção de uma sociedade mais justa."
+    },
+    {
+     "speaker": "Apresentador",
+     "voice": "male",
+     "text": "Muito obrigado pela palestra esclarecedora."
+    },
+    {
+     "speaker": "Apresentador",
+     "voice": "male",
+     "text": "Agradecemos a todos por participarem deste evento histórico."
     }
    ],
    "source": "llm",
@@ -1248,6 +3870,57 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dl-3-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "speech",
+   "title": "O Futuro da Regulação da Inteligência Artificial",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Palestrantes",
+     "voice": "female",
+     "text": "Boa tarde a todos. É um prazer estar aqui hoje para discutir um tema de extrema relevância para o nosso futuro: a regulação da inteligência artificial."
+    },
+    {
+     "speaker": "Palestrantes",
+     "voice": "female",
+     "text": "Vivemos em uma era de avanços tecnológicos sem precedentes. A inteligência artificial está transformando indústrias, melhorando a qualidade de vida e abrindo novas possibilidades que antes eram inalcançáveis."
+    },
+    {
+     "speaker": "Palestrantes",
+     "voice": "female",
+     "text": "No entanto, com esses avanços vêm desafios significativos. O ritmo do avanço da inteligência artificial supera amplamente a capacidade de resposta dos nossos quadros regulatórios atuais."
+    },
+    {
+     "speaker": "Palestrantes",
+     "voice": "female",
+     "text": "Precisamos de um marco regulatório abrangente que possa acompanhar o ritmo do desenvolvimento tecnológico, garantindo que a IA seja utilizada de maneira ética, segura e benéfica para toda a sociedade."
+    },
+    {
+     "speaker": "Palestrantes",
+     "voice": "female",
+     "text": "Isso requer uma abordagem colaborativa, envolvendo governos, empresas, acadêmicos e a sociedade civil. Juntos, podemos estabelecer diretrizes claras e normas que promovam a inovação, ao mesmo tempo em que protegem os direitos e a segurança dos cidadãos."
+    },
+    {
+     "speaker": "Palestrantes",
+     "voice": "female",
+     "text": "A regulação da inteligência artificial não é apenas uma questão técnica, mas também uma questão de valores e prioridades. Devemos nos perguntar: qual é o futuro que queremos construir? Como podemos garantir que a IA seja uma força para o bem, e não para o mal?"
+    },
+    {
+     "speaker": "Palestrantes",
+     "voice": "female",
+     "text": "Em conclusão, a regulação da inteligência artificial é um desafio complexo, mas também uma oportunidade única para moldar o futuro da tecnologia de maneira responsável e inclusiva. Agradeço a todos pela atenção e estou ansiosa para discutir este tema importante com vocês."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
@@ -1302,6 +3975,96 @@
    ],
    "answer": 0,
    "explanation": "The word 'atualizado' in the text means 'updated' or 'new'. The other words do not mean 'new'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dl-0p-announcement-002",
+   "stem": "What is the main reason for rescheduling the interview?",
+   "choices": [
+    "The candidate is not available on the original date.",
+    "The interviewer is not available on the original date.",
+    "The office will be closed on the original date.",
+    "The candidate requested a different time."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the office will be closed on the original date of the interview, which is why it needs to be rescheduled. The relevant phrase is: \"O escritório estará fechado no dia marcado para a entrevista.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-0p-announcement-002",
+   "stem": "In the text, what does \"remarcar\" mean?",
+   "choices": [
+    "To reschedule",
+    "To cancel",
+    "To confirm",
+    "To postpone indefinitely"
+   ],
+   "answer": 0,
+   "explanation": "The word \"remarcar\" in this context means to reschedule. The text says: \"Precisamos remarcar sua entrevista de emprego.\", indicating that the interview needs to be rescheduled to a new date.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-short_exchange-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dl-0p-short_exchange-001",
+   "stem": "What is the main change in the admission process for the university?",
+   "choices": [
+    "The required documents have been reduced.",
+    "The admission fee has been increased.",
+    "The application deadline has been extended.",
+    "The admission process will now be entirely online."
+   ],
+   "answer": 3,
+   "explanation": "The text states that the admission process will be entirely online, as indicated by the phrase 'o processo de admissão será totalmente online.' There is no mention of changes to deadlines, required documents, or fees.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-short_exchange-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dl-0p-short_exchange-002",
+   "stem": "What is the main benefit of the gym membership for seniors?",
+   "choices": [
+    "Free personal training sessions",
+    "Unlimited access to the gym facilities",
+    "A discount on the membership fee",
+    "Access to special classes for seniors"
+   ],
+   "answer": 2,
+   "explanation": "The main benefit mentioned is the discount on the membership fee, as stated in the text: 'desconto na mensalidade'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-short_exchange-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dl-0p-short_exchange-003",
+   "stem": "What is the main purpose of this exchange?",
+   "choices": [
+    "To inform about the summit's location.",
+    "To invite participants to the summit.",
+    "To discuss the summit's agenda.",
+    "To announce changes to the summit schedule."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to announce changes to the summit schedule. This is clear from the phrase 'Alteração no horário do cume' and the specific time changes mentioned.",
    "source": "llm",
    "verified": false
   },
@@ -1396,6 +4159,78 @@
    "verified": false
   },
   {
+   "id": "pt-dl-0p-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dl-0p-voicemail-004",
+   "stem": "What is the main idea of the message?",
+   "choices": [
+    "A new metro station is being built.",
+    "The metro will close for maintenance.",
+    "The metro fare has increased.",
+    "A new metro line is opening in the city."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that a new metro line is opening, as stated in the message: “A nova linha do metrô está pronta para inaugurar.” The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-voicemail-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dl-0p-voicemail-005",
+   "stem": "What is the fine for talking on your cell phone while driving?",
+   "choices": [
+    "R$ 300",
+    "R$ 200",
+    "R$ 50",
+    "R$ 150"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'R$ 150'. The voicemail states \"a multa para usar o celular enquanto dirige é de R$ 150.\" This clearly indicates the fine amount for using a cell phone while driving.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-voicemail-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dl-0p-voicemail-006",
+   "stem": "What does the speaker say is the reason for the delay?",
+   "choices": [
+    "Bad weather",
+    "A strike",
+    "A technical problem",
+    "A holiday"
+   ],
+   "answer": 0,
+   "explanation": "The speaker states that the delivery is delayed due to the bad weather, saying 'a entrega está atrasada por causa do mau tempo'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-0p-voicemail-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-0p-voicemail-006",
+   "stem": "What does the speaker mean by 'problemas no transporte'?",
+   "choices": [
+    "Delivery issues",
+    "Vehicle breakdowns",
+    "Traffic jams",
+    "Transportation problems"
+   ],
+   "answer": 3,
+   "explanation": "The speaker mentions 'problemas no transporte', which literally translates to 'transportation problems'. This refers to issues that are affecting the delivery process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-1-announcement-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1450,6 +4285,114 @@
    "verified": false
   },
   {
+   "id": "pt-dl-1-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dl-1-announcement-002",
+   "stem": "In the announcement, what is the main requirement for the job?",
+   "choices": [
+    "Availability to work for two months.",
+    "The ability to drive a tractor.",
+    "Knowledge of Portuguese.",
+    "Experience with planting crops."
+   ],
+   "answer": 0,
+   "explanation": "The main requirement is the availability to work for two months. The announcement states 'Precisa-se de trabalhadores temporários para colheita de café por dois meses.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1-announcement-002",
+   "stem": "In the announcement, what does the word 'temporários' mean?",
+   "choices": [
+    "Skilled",
+    "Experienced",
+    "Short-term",
+    "Permanent"
+   ],
+   "answer": 2,
+   "explanation": "'Temporários' means 'short-term' in this context. The announcement is looking for temporary workers, as stated in 'Precisa-se de trabalhadores temporários...'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-announcement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dl-1-announcement-003",
+   "stem": "What is the purpose of the community solar project?",
+   "choices": [
+    "To educate residents about renewable energy sources",
+    "To provide free electricity to low-income households",
+    "To reduce the town's dependence on fossil fuels",
+    "To generate income for the town by selling excess energy"
+   ],
+   "answer": 2,
+   "explanation": "The purpose of the community solar project is to reduce the town's dependence on fossil fuels. This is stated in the text as \"o projeto tem como objetivo diminuir a dependência do município de combustíveis fósseis.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-announcement-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1-announcement-003",
+   "stem": "What does the phrase \"fontes renováveis\" mean here?",
+   "choices": [
+    "Alternative energy sources",
+    "Government energy sources",
+    "Non-renewable energy sources",
+    "Traditional energy sources"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"fontes renováveis\" refers to alternative energy sources in this context. The text mentions that the project aims to increase the use of renewable energy sources, stating \"aumentar o uso de fontes renováveis de energia.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-announcement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dl-1-announcement-004",
+   "stem": "What is the name of the river where the search-and-rescue operation is taking place?",
+   "choices": [
+    "Rio Paranaíba",
+    "Rio Doce",
+    "Rio São Francisco",
+    "Rio Amazonas"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the operation is happening no Rio Paranaíba, so the correct answer is 'Rio Paranaíba'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-announcement-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "pt-dl-1-announcement-004",
+   "stem": "What is the purpose of this announcement?",
+   "choices": [
+    "To request help for a search-and-rescue operation",
+    "To inform about a new law",
+    "To warn about a natural disaster",
+    "To advertise a product"
+   ],
+   "answer": 0,
+   "explanation": "The announcement is asking for volunteers to help with a search-and-rescue operation no Rio Paranaíba, so the correct answer is 'To request help for a search-and-rescue operation'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1482,6 +4425,78 @@
    ],
    "answer": 0,
    "explanation": "The woman uses \"passar\" to mean the bus will go through the area: \"O ônibus vai passar aqui, mas vai fazer um caminho diferente.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dl-1-conversation-002",
+   "stem": "What is the purpose of the meeting?",
+   "choices": [
+    "To plan activities for the residents' entertainment.",
+    "To talk about the recent increase in the number of residents.",
+    "To organize a trip for the residents to the city center.",
+    "To discuss the new menu options for residents."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is (C). The text mentions that the purpose of the meeting is “para discutir o aumento recente no número de residentes”, which means “to discuss the recent increase in the number of residents”.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dl-1-conversation-002",
+   "stem": "What is the main idea of this conversation?",
+   "choices": [
+    "The retirement home is discussing the need for more staff due to an increase in residents.",
+    "The retirement home is planning a special event for the residents.",
+    "The retirement home is organizing a trip for the residents.",
+    "The retirement home is considering a change in its menu options."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is (B). The main idea of the conversation is that the retirement home is discussing the need for more staff due to an increase in residents, as indicated by the phrase “precisamos de mais funcionários”, which means “we need more staff”.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dl-1-conversation-003",
+   "stem": "What is the problem the caller is experiencing?",
+   "choices": [
+    "The hotel room is too small.",
+    "The hotel room is not clean.",
+    "The hotel room they reserved is not available.",
+    "The hotel room is too expensive."
+   ],
+   "answer": 2,
+   "explanation": "The caller states that they made a reservation and asks why the room is not available, indicating that the problem is the room's unavailability. The text does not discuss price, cleanliness, or size.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1-conversation-003",
+   "stem": "In the phrase 'a reserva do quarto', what does 'a reserva' mean here?",
+   "choices": [
+    "The room's size",
+    "The room's price",
+    "The room's cleaning",
+    "The room's booking"
+   ],
+   "answer": 3,
+   "explanation": "'A reserva' here refers to the action of reserving or booking the room, as stated by the caller: 'Eu fiz uma reserva para hoje'.",
    "source": "llm",
    "verified": false
   },
@@ -1576,6 +4591,60 @@
    "verified": false
   },
   {
+   "id": "pt-dl-1-instructions-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dl-1-instructions-003",
+   "stem": "What should new arrivals do first?",
+   "choices": [
+    "Wait for further instructions",
+    "Register at the main office",
+    "Find a tent",
+    "Go to the dining hall"
+   ],
+   "answer": 1,
+   "explanation": "The text says 'Primeiro, vá ao escritório principal para se registrar.' This means that the first step is to go to the main office to register.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-instructions-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1-instructions-003",
+   "stem": "What does 'escutar' mean here?",
+   "choices": [
+    "To wait",
+    "To listen",
+    "To look",
+    "To ask"
+   ],
+   "answer": 1,
+   "explanation": "The text says 'Escutar as instruções com atenção.' Here, 'escutar' means 'to listen' to the instructions carefully.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-instructions-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "pt-dl-1-instructions-003",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To inform new arrivals about the camp rules",
+    "To provide information about the camp facilities",
+    "To guide new arrivals through the registration process",
+    "To welcome new arrivals to the camp"
+   ],
+   "answer": 2,
+   "explanation": "The announcement provides a step-by-step guide for new arrivals, starting with registration at the main office and then listening to instructions. This is the main purpose of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-1-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1608,6 +4677,150 @@
    ],
    "answer": 2,
    "explanation": "The teacher says 'Só pra lembrar que sua aula online é amanhã às 14h.' which means 'Just to remind you that your online class is tomorrow at 2 pm.', so the purpose of the message is to remind Ana about an upcoming online class.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-voicemail-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dl-1-voicemail-002",
+   "stem": "What is the purpose of the conference?",
+   "choices": [
+    "To train AI developers",
+    "To discuss the use of AI in healthcare",
+    "To showcase new AI technologies",
+    "To regulate the development of AI"
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the conference is to regulate the development of AI, as stated in the voicemail: 'O propósito do evento é discutir a regulamentação do desenvolvimento da IA.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1-voicemail-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1-voicemail-002",
+   "stem": "What does the speaker mean by 'regulamentação' here?",
+   "choices": [
+    "Regulation",
+    "Innovation",
+    "Restriction",
+    "Invention"
+   ],
+   "answer": 0,
+   "explanation": "The speaker means 'regulation' by 'regulamentação'. The full sentence is: 'O propósito do evento é discutir a regulamentação do desenvolvimento da IA.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-announcement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To describe the rules of football.",
+    "To announce the schedule for the school football championship.",
+    "To inform students about a new football team.",
+    "To recruit players for the school football team."
+   ],
+   "answer": 1,
+   "explanation": "The announcement explicitly states that it is about the schedule for the school football championship, as seen in the phrase \"o calendário do campeonato de futebol da escola\". The other options are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-announcement-001",
+   "stem": "When will the final match of the championship take place?",
+   "choices": [
+    "On Sunday, December 17th",
+    "On Monday, December 18th",
+    "On Saturday, December 16th",
+    "On Friday, December 15th"
+   ],
+   "answer": 0,
+   "explanation": "The text specifies that the final match will occur on \"domingo, 17 de dezembro\", which is Sunday, December 17th.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-announcement-001",
+   "stem": "What does the word \"inscrições\" mean here?",
+   "choices": [
+    "matches",
+    "practices",
+    "rules",
+    "registration"
+   ],
+   "answer": 3,
+   "explanation": "The word \"inscrições\" in this context refers to the registration process for the championship, as seen in the phrase \"as inscrições estão abertas\". It does not refer to practices, matches, or rules.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-announcement-002",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "A new bus route is being introduced.",
+    "Buses will no longer stop at certain locations.",
+    "A bus route will be temporarily changed due to construction.",
+    "A new bus company is taking over the route."
+   ],
+   "answer": 2,
+   "explanation": "The announcement states that due to construction on Avenida Principal, the bus route will be temporarily changed. This is the main idea as it is the reason for the adjustment and affects the regular schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-announcement-002",
+   "stem": "Which bus stops will not be served during the adjustment?",
+   "choices": [
+    "Hospital Geral and Estádio Municipal.",
+    "Estação Rodoviária and Parque da Cidade.",
+    "Praça da Liberdade and Mercado Central.",
+    "Shopping Center and Universidade Federal."
+   ],
+   "answer": 2,
+   "explanation": "The text specifies that during the adjustment, buses will not stop at Praça da Liberdade and Mercado Central.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-announcement-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-announcement-002",
+   "stem": "In the phrase 'ajuste temporário', what does 'temporário' mean here?",
+   "choices": [
+    "Permanent.",
+    "Long-term.",
+    "Short-term.",
+    "Occasional."
+   ],
+   "answer": 2,
+   "explanation": "The context indicates that the adjustment is temporary, meaning it is short-term. The text states that the change is due to construction, implying it will last only as long as the construction work.",
    "source": "llm",
    "verified": false
   },
@@ -1666,6 +4879,168 @@
    "verified": false
   },
   {
+   "id": "pt-dl-1p-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-conversation-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A protest over government censorship",
+    "A new show format",
+    "A strike by radio station employees",
+    "A plan to expand the radio station's coverage"
+   ],
+   "answer": 0,
+   "explanation": "The conversation revolves around a protest against government censorship, as indicated by the words 'protesto contra a censura do governo' and 'liberdade de imprensa'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-conversation-002",
+   "stem": "What does Joana say the government is doing?",
+   "choices": [
+    "Blocking certain radio frequencies",
+    "Censoring news reports",
+    "Shutting down radio stations",
+    "Fining radio stations for playing certain music"
+   ],
+   "answer": 1,
+   "explanation": "Joana states that the government is 'censurando notícias' and 'bloqueando transmissões'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-conversation-002",
+   "stem": "What does 'medida' mean here?",
+   "choices": [
+    "A radio frequency",
+    "A protest sign",
+    "A musical instrument",
+    "A government policy"
+   ],
+   "answer": 3,
+   "explanation": "'Medida' here refers to the government's action, as in 'medida do governo'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-conversation-003",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A new irrigation system",
+    "A festival in the Northeast",
+    "Government policies on farming",
+    "The effects of drought on agriculture"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the effects of drought on agriculture, as indicated by phrases like 'a seca está afetando', 'as plantações estão sofrendo', and 'não temos água suficiente'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-conversation-003",
+   "stem": "What is one specific effect of the drought mentioned in the conversation?",
+   "choices": [
+    "A rise in river levels",
+    "New government subsidies",
+    "Suffering plantations",
+    "Increased crop yields"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions 'as plantações estão sofrendo' as a specific effect of the drought.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-conversation-003",
+   "stem": "What does the phrase 'não temos água suficiente' mean here?",
+   "choices": [
+    "We are storing water",
+    "We do not have enough water",
+    "We have plenty of water",
+    "We are recycling water"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'não temos água suficiente' means 'We do not have enough water', indicating a lack of adequate water supply due to the drought.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-interview-001",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "Filling a server position",
+    "Opening a new restaurant",
+    "Hiring a new chef",
+    "Discussing menu changes"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is filling a server position, as indicated by the interviewer's question: 'Você já trabalhou como garçom antes?' (Have you ever worked as a server before?) and the candidate's response about serving experience.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-interview-001",
+   "stem": "What specific time commitment does the interviewer mention?",
+   "choices": [
+    "Morning shifts only",
+    "Full-time during the week",
+    "Evening and weekend shifts",
+    "Part-time on weekends"
+   ],
+   "answer": 2,
+   "explanation": "The interviewer mentions the specific time commitment as 'trabalhar à noite e nos fins de semana' (work in the evenings and on weekends).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-interview-001",
+   "stem": "What does the word 'turno' mean here?",
+   "choices": [
+    "Meal",
+    "Day",
+    "Shift",
+    "Break"
+   ],
+   "answer": 2,
+   "explanation": "The word 'turno' is used to refer to 'turno da noite' (the night shift), meaning a period of work.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-1p-news_brief-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1716,6 +5091,114 @@
    ],
    "answer": 2,
    "explanation": "The word \"alterados\" in this context means \"changed\". This is clear from the sentence \"A linha 103 terá seus horários alterados.\", which discusses modifications to the schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-news_brief-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-news_brief-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Brazil has sent troops to a new peacekeeping mission.",
+    "Brazil has withdrawn from a peacekeeping mission.",
+    "The UN has requested more troops from Brazil.",
+    "A Brazilian soldier was injured in a recent conflict."
+   ],
+   "answer": 0,
+   "explanation": "The text discusses Brazil sending troops to join a peacekeeping mission, which is the main idea. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-news_brief-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-news_brief-002",
+   "stem": "Where is the peacekeeping mission taking place?",
+   "choices": [
+    "Mali",
+    "Central African Republic",
+    "Democratic Republic of the Congo",
+    "South Sudan"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the peacekeeping mission is in Mali, so that is the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-news_brief-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-news_brief-002",
+   "stem": "What does the phrase 'manter a paz' mean here?",
+   "choices": [
+    "to make peace",
+    "to keep the peace",
+    "to negotiate peace",
+    "to break the peace"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'manter a paz' in this context refers to the purpose of the peacekeeping mission, which is to keep the peace in the region. The other options do not fit the context of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-news_brief-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-news_brief-003",
+   "stem": "What is the main idea of this news brief?",
+   "choices": [
+    "A woman has found a lost passport and is returning it.",
+    "A man has reported a lost passport and is seeking help.",
+    "A passport office has been closed due to renovations.",
+    "A new passport has been issued to a resident."
+   ],
+   "answer": 1,
+   "explanation": "The news brief opens with 'O Sr. Silva informou' ('Mr. Silva reported') and continues with details about the lost passport. The other choices do not match the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-news_brief-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-news_brief-003",
+   "stem": "Where did Mr. Silva lose his passport?",
+   "choices": [
+    "On a bus.",
+    "At a restaurant.",
+    "At the passport office.",
+    "At his home."
+   ],
+   "answer": 0,
+   "explanation": "The text states 'ele perdeu seu passaporte no ônibus' ('he lost his passport on the bus'). The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-news_brief-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "inference",
+   "passageId": "pt-dl-1p-news_brief-003",
+   "stem": "What can be inferred about Mr. Silva's passport?",
+   "choices": [
+    "It was stolen.",
+    "It was expired.",
+    "It was issued recently.",
+    "It was used for international travel."
+   ],
+   "answer": 3,
+   "explanation": "The text mentions that Mr. Silva 'viajou recentemente para o exterior' ('recently traveled abroad'), implying that he used his passport for international travel. The other choices cannot be inferred from the text.",
    "source": "llm",
    "verified": false
   },
@@ -1774,6 +5257,114 @@
    "verified": false
   },
   {
+   "id": "pt-dl-1p-phone_call-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-phone_call-002",
+   "stem": "What is the main topic of this phone call?",
+   "choices": [
+    "plans to move refugees to another location",
+    "the number of refugees at the camp",
+    "the lack of supplies at the camp",
+    "the new leadership of the camp"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the phone call is the plans to move refugees to another location. This is evident from the speakers discussing the new camp site and the preparations for the move, as seen in the lines \"Estamos planejando nos mudar para outro local\" and \"O novo local parece ser uma boa opção\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-phone_call-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-phone_call-002",
+   "stem": "According to the conversation, what is one of the advantages of the new camp site?",
+   "choices": [
+    "It is closer to the city.",
+    "It has more supplies.",
+    "It is safer and has better access to water.",
+    "It has more medical facilities."
+   ],
+   "answer": 2,
+   "explanation": "One of the advantages of the new camp site mentioned in the conversation is that it is safer and has better access to water. This is stated in the line \"O novo local parece ser mais seguro e tem melhor acesso à água\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-phone_call-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-phone_call-002",
+   "stem": "In this conversation, what does the word \"desafios\" mean?",
+   "choices": [
+    "changes",
+    "challenges",
+    "choices",
+    "chances"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"desafios\" means \"challenges\". The speaker uses this word to discuss the difficulties they might face during the move, as seen in the line \"Mas também temos alguns desafios a enfrentar\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-phone_call-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dl-1p-phone_call-003",
+   "stem": "What is the main idea of this phone call?",
+   "choices": [
+    "Residents are being encouraged to use more water for their gardens.",
+    "The caller is asking for help to fix a broken pipe.",
+    "The government is planning to build new water treatment plants.",
+    "The city is experiencing water shortages due to summer heat."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is conveyed in the first lines of the call: “Olá, é a prefeitura. Estamos passando por uma seca severa no verão e precisamos reduzir o consumo de água.” This sets the context for the entire conversation about water shortages and the need to reduce consumption.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-phone_call-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dl-1p-phone_call-003",
+   "stem": "What specific measure is the city taking to reduce water consumption?",
+   "choices": [
+    "Scheduling water cuts for certain times of the day.",
+    "Implementing strict fines for water wastage.",
+    "Increasing water prices for high consumers.",
+    "Rationing water supply to different neighborhoods."
+   ],
+   "answer": 0,
+   "explanation": "The caller mentions the specific measure: “Vamos ter que cortar o fornecimento de água por algumas horas durante o dia para economizar.” This directly answers the question about the city’s action.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-1p-phone_call-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-1p-phone_call-003",
+   "stem": "What does the word “cortar” mean here?",
+   "choices": [
+    "To distribute.",
+    "To increase.",
+    "To stop temporarily.",
+    "To repair."
+   ],
+   "answer": 2,
+   "explanation": "The word “cortar” in this context means to stop temporarily, as in “Vamos ter que cortar o fornecimento de água por algumas horas durante o dia para economizar.” This refers to scheduled interruptions in water supply.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-2-briefing-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -1828,6 +5419,114 @@
    "verified": false
   },
   {
+   "id": "pt-dl-2-briefing-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-briefing-003",
+   "stem": "What is the main topic of this briefing?",
+   "choices": [
+    "The history of Brazil's economic policies.",
+    "The effects of interest rates on the global economy.",
+    "The impact of inflation on Brazil's GDP growth.",
+    "The relationship between inflation and interest rates."
+   ],
+   "answer": 3,
+   "explanation": "The briefing focuses on the relationship between inflation and interest rates, as indicated by the statements about the central bank's strategy and the effects of interest rates on inflation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-briefing-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-briefing-003",
+   "stem": "According to the briefing, what is the main goal of the central bank regarding interest rates?",
+   "choices": [
+    "To encourage foreign investment.",
+    "To stimulate economic growth.",
+    "To reduce unemployment.",
+    "To control inflation."
+   ],
+   "answer": 3,
+   "explanation": "The briefing states that the central bank aims to control inflation by raising interest rates: \"O banco central está aumentando as taxas de juros para controlar a inflação.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-briefing-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-briefing-003",
+   "stem": "What does 'ajustar' mean here?",
+   "choices": [
+    "To decrease.",
+    "To maintain.",
+    "To increase.",
+    "To balance."
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"ajustar as expectativas\" means to balance or adjust the expectations, not to increase, decrease, or maintain them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-briefing-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-briefing-004",
+   "stem": "What is the main purpose of this briefing?",
+   "choices": [
+    "To inform about the features and benefits of a new airport terminal.",
+    "To explain the job opportunities available at the new terminal.",
+    "To discuss the environmental impact of the new terminal.",
+    "To announce the closure of the old airport terminal."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the briefing is to inform about the features and benefits of a new airport terminal. This is evident from the repeated use of 'o novo terminal' and the detailed description of its characteristics, such as 'maior eficiência no fluxo de passageiros' and 'mais opções de compras e alimentação'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-briefing-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-briefing-004",
+   "stem": "According to the briefing, what is one of the benefits of the new terminal?",
+   "choices": [
+    "Increased job opportunities.",
+    "More parking spaces.",
+    "Greater passenger flow efficiency.",
+    "Reduced environmental impact."
+   ],
+   "answer": 2,
+   "explanation": "One of the benefits of the new terminal mentioned in the briefing is 'maior eficiência no fluxo de passageiros'. This is explicitly stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-briefing-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-briefing-004",
+   "stem": "What does 'check-in' mean in this context?",
+   "choices": [
+    "The area where passengers wait for their flights.",
+    "The process of registering for a flight.",
+    "The security checkpoint before boarding.",
+    "The place where passengers claim their luggage."
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'check-in' refers to 'o processo de registro para os voos', which is the process of registering for a flight. This is evident from the phrase 'áreas de check-in mais espaçosas' in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-2-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -1878,6 +5577,114 @@
    ],
    "answer": 2,
    "explanation": "In this context, \"denúncias\" refers to accusations made against the mayor. The text states \"várias denúncias contra o prefeito\", indicating that these are serious allegations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-conversation-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A vacation plan for the summer",
+    "A new military strategy",
+    "A complaint about military equipment",
+    "A joint military exercise with an allied country"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the conversation is the joint military exercise with an allied country. This is evident from the repeated mention of the exercise, the allies, and the planning involved, such as 'Estamos nos preparando para o exercício militar conjunto com nossos aliados do Chile' and 'Precisamos coordenar os detalhes com eles'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-conversation-002",
+   "stem": "What specific challenge does the speaker mention regarding the exercise?",
+   "choices": [
+    "Lack of proper equipment",
+    "Difficulty in coordinating schedules",
+    "Inadequate training facilities",
+    "Language barriers between the troops"
+   ],
+   "answer": 3,
+   "explanation": "The speaker mentions language barriers as a specific challenge: 'Uma das dificuldades que enfrentamos é a barreira linguística entre as tropas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-conversation-002",
+   "stem": "In the phrase 'Precisamos garantir que todas as unidades estejam cientes dos protocolos', what does 'cientes' mean?",
+   "choices": [
+    "Capable",
+    "Interested",
+    "Prepared",
+    "Aware"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'cientes' means 'aware'. The speaker is stressing the importance of all units knowing the protocols: 'Precisamos garantir que todas as unidades estejam cientes dos protocolos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-interview-001",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "Detailing the architectural design of the new metro stations",
+    "Explaining the history of the São Paulo metro system",
+    "Discussing the impact of the new metro line on São Paulo's traffic",
+    "Promoting the new metro line and its benefits"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the interview is promoting the new metro line and its benefits. This is evident from the context of the conversation, where the interviewee discusses the advantages of the new line, such as 'reduzir o tempo de deslocamento' (reduce commuting time) and 'melhorar a mobilidade urbana' (improve urban mobility).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-interview-001",
+   "stem": "According to the interview, how many new stations will the new metro line have?",
+   "choices": [
+    "15",
+    "10",
+    "12",
+    "18"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 12. The interviewee states 'a nova linha terá 12 estações novas' (the new line will have 12 new stations).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-interview-001",
+   "stem": "What does 'deslocamento' mean in the context of the interview?",
+   "choices": [
+    "Moving from one place to another",
+    "Construction of buildings",
+    "Traffic congestion",
+    "Public transportation"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the interview, 'deslocamento' refers to 'reduzir o tempo de deslocamento' (reduce commuting time). Therefore, it means 'moving from one place to another', specifically in the context of commuting.",
    "source": "llm",
    "verified": false
   },
@@ -1986,6 +5793,222 @@
    ],
    "answer": 3,
    "explanation": "The word 'viagem' is used to describe the 'intercâmbio cultural', indicating that the young people will travel to the other country. So it means 'trip'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-news-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-news-003",
+   "stem": "What is the main idea of the news report?",
+   "choices": [
+    "The Brazilian Space Agency is facing budgetary constraints.",
+    "A Brazilian company has successfully launched a rocket into space.",
+    "The Brazilian government is investing heavily in space tourism.",
+    "A new satellite will be used primarily for military purposes."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that a Brazilian company has successfully launched a rocket into space. This is stated in the first sentence: \"A empresa brasileira Alcântara Aeroespacial anunciou hoje o sucesso do lançamento de seu foguete, o Alcântara 1.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-news-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-news-003",
+   "stem": "What is the name of the rocket that was launched?",
+   "choices": [
+    "Alcântara Aeroespacial",
+    "Alcântara 1",
+    "Veículo Lançador de Satélites",
+    "Centro de Lançamento de Alcântara"
+   ],
+   "answer": 1,
+   "explanation": "The name of the rocket is given as Alcântara 1 in the text: \"A empresa brasileira Alcântara Aeroespacial anunciou hoje o sucesso do lançamento de seu foguete, o Alcântara 1.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-news-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-news-003",
+   "stem": "In the text, the word \"viabilizou\" means",
+   "choices": [
+    "delayed",
+    "cancelled",
+    "made possible",
+    "complicated"
+   ],
+   "answer": 2,
+   "explanation": "The word \"viabilizou\" is used to describe how the new technology made the launch possible: \"A tecnologia inovadora viabilizou o lançamento bem-sucedido do foguete.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-news-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-news-004",
+   "stem": "What is the main idea of this news report?",
+   "choices": [
+    "Young people in Brazil are migrating to other countries in large numbers.",
+    "Brazil's population is rapidly decreasing due to low birth rates.",
+    "The Brazilian government is implementing strict policies to control population growth.",
+    "Brazil is facing challenges due to an increasing elderly population."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that Brazil is facing challenges due to an increasing elderly population. This is evident in the opening sentence: 'O Brasil está envelhecendo. O número de idosos no país está crescendo rapidamente.' and throughout the rest of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-news-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-news-004",
+   "stem": "According to the report, what is one of the challenges posed by the aging population?",
+   "choices": [
+    "A rise in the number of young workers.",
+    "Increased demand for educational facilities.",
+    "Pressure on the healthcare system.",
+    "Decreased need for public transportation."
+   ],
+   "answer": 2,
+   "explanation": "The report mentions that the aging population poses challenges such as 'um aumento da demanda por serviços de saúde e previdência.' This indicates pressure on the healthcare system.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-news-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-news-004",
+   "stem": "What does the phrase 'envelhecer' mean in this context?",
+   "choices": [
+    "To migrate.",
+    "To grow younger.",
+    "To become more active.",
+    "To age."
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'envelhecer' means 'to age'. The text states 'O Brasil está envelhecendo,' indicating that the population is getting older.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-report-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-report-001",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "the challenges faced by local doctors",
+    "the opening of a new hospital",
+    "the government's healthcare budget",
+    "the history of healthcare in the region"
+   ],
+   "answer": 1,
+   "explanation": "The report discusses the opening of the new hospital, Hospital Nova Esperança, including its location, facilities, and services. Although other topics are mentioned, they are not the main focus.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-report-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-report-001",
+   "stem": "What is one of the special services offered by the new hospital?",
+   "choices": [
+    "an outdoor surgical center",
+    "a pediatric emergency unit",
+    "a research laboratory",
+    "a specialized sports medicine clinic"
+   ],
+   "answer": 1,
+   "explanation": "The report mentions that the hospital will have a pediatric emergency unit, along with other services like a maternity ward and a diagnostic center.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-report-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-report-001",
+   "stem": "In the report, what does 'inaugurado' mean?",
+   "choices": [
+    "closed",
+    "renovated",
+    "opened",
+    "constructed"
+   ],
+   "answer": 2,
+   "explanation": "The word 'inaugurado' is used to describe the new hospital, indicating that it has been opened. The sentence is: 'O Hospital Nova Esperança foi inaugurado na última semana.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dl-2-report-002",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A new law protecting journalists in Brazil",
+    "An attack on journalists during a protest in São Paulo",
+    "The role of the military police in maintaining public order",
+    "An increase in violent crimes in São Paulo"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the report is an attack on journalists during a protest in São Paulo. This is evident from the repeated mentions of journalists being attacked, such as 'o grupo de jornalistas foi atacado por manifestantes' and 'jornalistas foram agredidos com objetos' and the location 'durante um protesto contra o governo em São Paulo.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dl-2-report-002",
+   "stem": "What did the military police do after the attack?",
+   "choices": [
+    "They arrested the attackers immediately.",
+    "They escorted the journalists to a safe location.",
+    "They provided medical assistance to the injured journalists.",
+    "They opened an investigation into the incident."
+   ],
+   "answer": 3,
+   "explanation": "The report states that 'a Polícia Militar abriu um inquérito para investigar o ocorrido,' indicating that the military police opened an investigation into the incident.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2-report-002",
+   "stem": "What does 'ocorrido' mean here?",
+   "choices": [
+    "The protest",
+    "The journalists' report",
+    "The attack on the journalists",
+    "The government's response"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'ocorrido' refers to the attack on the journalists. The sentence 'a Polícia Militar abriu um inquérito para investigar o ocorrido' follows directly after describing the attack, indicating that 'ocorrido' refers to the attack.",
    "source": "llm",
    "verified": false
   },
@@ -2152,6 +6175,438 @@
    "verified": false
   },
   {
+   "id": "pt-dl-2p-documentary-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-documentary-004",
+   "stem": "What is the main topic of the documentary?",
+   "choices": [
+    "The role of the central bank in controlling interest rates",
+    "The history of economic policies in Brazil",
+    "The effect of inflation on small businesses",
+    "The impact of global trade on the Brazilian economy"
+   ],
+   "answer": 2,
+   "explanation": "The documentary focuses on the impact of inflation on small businesses, as indicated by the opening statement: 'No episódio de hoje, vamos explorar como a inflação está afetando as pequenas empresas em todo o país.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dl-2p-documentary-004",
+   "stem": "What can be inferred about the current economic situation in Brazil?",
+   "choices": [
+    "The economy is stable with low inflation",
+    "The economy is experiencing high inflation rates",
+    "The economy is in a recession with deflation",
+    "The economy is growing rapidly"
+   ],
+   "answer": 1,
+   "explanation": "The documentary discusses the difficulties small businesses face due to inflation, such as 'dificuldades para se manterem à tona' and 'custos elevados', indicating high inflation rates.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-documentary-004",
+   "stem": "In the context of the documentary, what does 'à tona' mean?",
+   "choices": [
+    "Afraid",
+    "Floating",
+    "Underwater",
+    "In business"
+   ],
+   "answer": 3,
+   "explanation": "'À tona' is used in the context of small businesses trying to stay afloat or remain in business despite economic challenges: 'dificuldades para se manterem à tona'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-documentary-005",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The Brazilian government is focusing on fossil fuel investments to meet the country's growing energy demands.",
+    "The Brazilian government is investing heavily in renewable energy projects in the Northeast to diversify the country's energy matrix.",
+    "The Northeast region of Brazil is experiencing an economic boom due to increased oil and gas exploration.",
+    "The text discusses the challenges of implementing nuclear energy projects in the Northeast region."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the Brazilian government is investing in renewable energy projects in the Northeast, as stated in the text: 'O governo brasileiro está investindo pesadamente em projetos de energia renovável no Nordeste para diversificar a matriz energética do país.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "pt-dl-2p-documentary-005",
+   "stem": "What specific renewable energy project is mentioned in the text?",
+   "choices": [
+    "A solar energy plant in the state of Ceará.",
+    "A large-scale wind farm in the state of Bahia.",
+    "A hydroelectric dam on the São Francisco River.",
+    "A geothermal energy project in the state of Pernambuco."
+   ],
+   "answer": 0,
+   "explanation": "The text mentions a specific renewable energy project: 'Um exemplo notável é a usina solar no estado do Ceará, que está gerando empregos e impulsionando o desenvolvimento local.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-documentary-005",
+   "stem": "In the text, what does 'impulsionando' mean?",
+   "choices": [
+    "Boosting",
+    "Stabilizing",
+    "Complicating",
+    "Reducing"
+   ],
+   "answer": 0,
+   "explanation": "The word 'impulsionando' is used in the context of development: 'está gerando empregos e impulsionando o desenvolvimento local.' This means it is boosting or accelerating local development.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-documentary-006",
+   "stem": "What is the main topic of the audio?",
+   "choices": [
+    "The history of Brazilian space technology",
+    "The environmental impact of space launches",
+    "The successful launch of the Lunar Probe",
+    "The challenges of space exploration"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the audio is the successful launch of the Lunar Probe. This is evident from the repeated mentions of the launch, such as 'Hoje, o Brasil fez história com o lançamento bem-sucedido da sonda lunar.' and 'A sonda lunar foi lançada com sucesso às 14:30 horas.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dl-2p-documentary-006",
+   "stem": "What can be inferred about the Brazilian Space Agency's capabilities?",
+   "choices": [
+    "They are only capable of launching small satellites",
+    "They rely heavily on international partnerships for launches",
+    "They are planning to launch a manned mission to Mars",
+    "They have advanced capabilities, including lunar missions"
+   ],
+   "answer": 3,
+   "explanation": "The inference that the Brazilian Space Agency has advanced capabilities, including lunar missions, can be drawn from the successful launch of the Lunar Probe, as mentioned in 'Hoje, o Brasil fez história com o lançamento bem-sucedido da sonda lunar.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-documentary-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-documentary-006",
+   "stem": "What does the phrase 'a operação transcorreu sem percalços' mean here?",
+   "choices": [
+    "The operation was completed with many difficulties",
+    "The operation was completed with some delays",
+    "The operation was completed with international help",
+    "The operation was completed without any problems"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'a operação transcorreu sem percalços' means that the operation was completed without any problems. This is evident from the context of the successful launch described in the audio.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The history of the Brazil-Bolivia border",
+    "A tourist's experience visiting Bolivia",
+    "The requirements for crossing the Brazil-Bolivia border",
+    "The economic impact of border crossings between Brazil and Bolivia"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the requirements for crossing the Brazil-Bolivia border, as the entire interview discusses the documents needed, the process at the border, and advice for travelers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "pt-dl-2p-interview-001",
+   "stem": "What document is required for Brazilian citizens to enter Bolivia?",
+   "choices": [
+    "A passport",
+    "A driver's license",
+    "A national ID card",
+    "A visa"
+   ],
+   "answer": 0,
+   "explanation": "The interview states that Brazilian citizens need a passport to enter Bolivia: \"Cidadãos brasileiros precisam de um passaporte válido para entrar na Bolívia.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-interview-001",
+   "stem": "What does the word 'atrasos' mean here?",
+   "choices": [
+    "Changes",
+    "Delays",
+    "Requirements",
+    "Expenses"
+   ],
+   "answer": 1,
+   "explanation": "The word 'atrasos' is used to discuss potential delays at the border: \"Pode haver atrasos devido à alta temporada.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-interview-002",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The opening of a new cardiology department in a hospital",
+    "A discussion about a patient's symptoms and treatment with a cardiologist",
+    "The importance of regular exercise for heart health",
+    "A new medical procedure for heart disease"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is a discussion about a patient's symptoms and treatment with a cardiologist, as indicated by lines like 'Por que o senhor marcou esta consulta?' and 'Então, vamos fazer alguns exames para confirmar o diagnóstico.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dl-2p-interview-002",
+   "stem": "What can be inferred about the patient's current condition?",
+   "choices": [
+    "The patient is recovering well from a recent heart surgery",
+    "The patient has already been diagnosed with a heart condition",
+    "The patient is showing early signs of a potential heart issue",
+    "The patient is likely experiencing severe heart failure"
+   ],
+   "answer": 2,
+   "explanation": "The patient is showing early signs of a potential heart issue, as the doctor says 'Vamos verificar alguns sintomas que o senhor mencionou, como a falta de ar e a fadiga.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-interview-002",
+   "stem": "What does the word 'confirma' mean here: 'Então, vamos fazer alguns exames para confirmar o diagnóstico.'?",
+   "choices": [
+    "To guess",
+    "To verify",
+    "To ignore",
+    "To deny"
+   ],
+   "answer": 1,
+   "explanation": "The word 'confirma' means 'to verify' in this context, as the doctor wants to confirm the diagnosis with tests.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-interview-003",
+   "stem": "What is the main idea of this interview?",
+   "choices": [
+    "TechNova is relocating to the Northeast to reduce costs and attract talent.",
+    "TechNova is expanding to the Northeast due to a lack of skilled workers in São Paulo.",
+    "TechNova is moving to the Northeast to be closer to its customers.",
+    "TechNova is expanding to the Northeast because of government incentives."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that TechNova is relocating to the Northeast to reduce costs and attract talent. This is evident in statements like 'reduzir custos operacionais' and 'atrair novos talentos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "pt-dl-2p-interview-003",
+   "stem": "Why is TechNova choosing Recife as its new location?",
+   "choices": [
+    "Because Recife has a large number of universities.",
+    "Because Recife offers tax incentives for new businesses.",
+    "Because Recife is closer to TechNova's main customers.",
+    "Because Recife has a lower cost of living."
+   ],
+   "answer": 1,
+   "explanation": "TechNova is choosing Recife because it offers tax incentives for new businesses. This is stated as 'incentivos fiscais para novas empresas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-interview-003",
+   "stem": "What does 'desafios' mean here?",
+   "choices": [
+    "Chances",
+    "Choices",
+    "Challenges",
+    "Changes"
+   ],
+   "answer": 2,
+   "explanation": "Here, 'desafios' refers to the challenges or difficulties that TechNova might face during the relocation process, as mentioned in 'enfrentar desafios'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-news_analysis-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The Brazilian and Paraguayan governments have agreed to improve border security.",
+    "A new search-and-rescue team was formed to handle cross-border incidents.",
+    "A group of hikers disappeared while crossing the border between Brazil and Paraguay.",
+    "A joint operation between Brazil and Paraguay was successful in rescuing a group of missing hikers."
+   ],
+   "answer": 3,
+   "explanation": "The text primarily focuses on the successful joint operation between Brazil and Paraguay to rescue missing hikers, which is evident in the description of the operation and the positive outcome.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "pt-dl-2p-news_analysis-001",
+   "stem": "What was the cause of the hikers getting lost?",
+   "choices": [
+    "They took a wrong turn while following a river.",
+    "They were attacked by wild animals.",
+    "Their GPS devices malfunctioned.",
+    "A sudden storm hit the area."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the hikers got lost while following a river: \"Os excursionistas se perderam enquanto seguiam um rio que acreditavam ser o limite entre os dois países.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-news_analysis-001",
+   "stem": "What does the word \"coordenação\" mean here?",
+   "choices": [
+    "Coordination",
+    "Competition",
+    "Communication",
+    "Conflict"
+   ],
+   "answer": 0,
+   "explanation": "The word \"coordenação\" in this context refers to the joint effort and planning between the Brazilian and Paraguayan teams: \"a coordenação entre as equipes brasileiras e paraguaias foi essencial para o sucesso da operação.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dl-2p-news_analysis-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The Festa de São João de Caruaru is struggling to attract tourists.",
+    "The Festa de São João de Caruaru is primarily a religious event.",
+    "The Festa de São João de Caruaru is losing its traditional cultural elements.",
+    "The Festa de São João de Caruaru is a major cultural event that has seen a revival in recent years."
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the revival of the Festa de São João de Caruaru, highlighting its cultural significance and the efforts to preserve its traditions. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "pt-dl-2p-news_analysis-002",
+   "stem": "According to the text, what is one of the main attractions of the Festa de São João de Caruaru?",
+   "choices": [
+    "The fireworks display.",
+    "The religious processions.",
+    "The traditional food stalls.",
+    "The live music performances."
+   ],
+   "answer": 3,
+   "explanation": "The text mentions that 'a varied lineup of live music performances' is one of the main attractions of the festival.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-2p-news_analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-2p-news_analysis-002",
+   "stem": "In the text, what does 'ressurgimento' mean?",
+   "choices": [
+    "A celebration.",
+    "A decline.",
+    "A transformation.",
+    "A revival."
+   ],
+   "answer": 3,
+   "explanation": "'Ressurgimento' in the text refers to the revival of the festival, as in 'o ressurgimento da Festa de São João de Caruaru nos últimos anos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-2p-panel_discussion-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2202,6 +6657,60 @@
    ],
    "answer": 2,
    "explanation": "The phrase 'aperto de mão firme' refers to a firm handshake, which is mentioned as a cultural expectation in Brazilian job interviews.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-analysis-001",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The benefits of coastal tourism in Brazil",
+    "The role of the government in managing coastal areas",
+    "The impact of coastal erosion on local communities",
+    "The history of coastal development in Brazil"
+   ],
+   "answer": 2,
+   "explanation": "The text focuses on the impact of coastal erosion on local communities, discussing the challenges they face and the need for adaptation. This is evident in the discussion of the threats to homes and infrastructure, as well as the mention of the need for community involvement in finding solutions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-analysis-001",
+   "stem": "What can be inferred about the role of the government in addressing coastal erosion?",
+   "choices": [
+    "The government is primarily responsible for causing coastal erosion",
+    "The government's role is limited to raising awareness about coastal erosion",
+    "The government has ignored the issue of coastal erosion",
+    "The government is actively involved in providing solutions to coastal erosion"
+   ],
+   "answer": 3,
+   "explanation": "The text states that 'o governo tem um papel crucial na mitigação dos impactos da erosão costeira', indicating that the government plays a crucial role in mitigating the impacts of coastal erosion. This suggests that the government is actively involved in addressing the issue.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-analysis-001",
+   "stem": "What does the phrase 'medidas de adaptação' mean here?",
+   "choices": [
+    "Measures to relocate communities affected by coastal erosion",
+    "Measures to prevent coastal erosion",
+    "Measures to adapt to the effects of coastal erosion",
+    "Measures to reverse the effects of coastal erosion"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'medidas de adaptação' is used in the context of 'desenvolver e implementar medidas de adaptação' to deal with the impacts of coastal erosion. This implies adapting to the effects of coastal erosion, rather than preventing or reversing it.",
    "source": "llm",
    "verified": false
   },
@@ -2260,6 +6769,330 @@
    "verified": false
   },
   {
+   "id": "pt-dl-3-analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "pt-dl-3-analysis-003",
+   "stem": "What is the main reason for the evacuation of foreign nationals from the Northern region?",
+   "choices": [
+    "A tropical storm has caused widespread flooding.",
+    "A volcanic eruption has made the area unsafe.",
+    "An escalation in armed conflict has endangered the population.",
+    "A disease outbreak has required quarantine measures."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the evacuation was ordered due to 'um aumento significativo de violência armada' (a significant increase in armed violence) and 'a situação de segurança se deteriorando rapidamente' (the security situation rapidly deteriorating). These phrases indicate that the main reason for the evacuation is the escalation in armed conflict.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-analysis-003",
+   "stem": "What can be inferred about the role of the Brazilian government in the evacuation?",
+   "choices": [
+    "The Brazilian government has refused to assist in the evacuation.",
+    "The Brazilian government is unaware of the situation and has not taken any action.",
+    "The Brazilian government is coordinating with international partners to facilitate the evacuation.",
+    "The Brazilian government is solely responsible for the evacuation process."
+   ],
+   "answer": 2,
+   "explanation": "The text mentions that 'o governo brasileiro está trabalhando em estreita colaboração com as embaixadas estrangeiras e organizações internacionais' (the Brazilian government is working closely with foreign embassies and international organizations). This suggests that the Brazilian government is coordinating with international partners to facilitate the evacuation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-analysis-003",
+   "stem": "What does 'deslocamento' mean here?",
+   "choices": [
+    "The movement of people from one place to another.",
+    "A change in government policy.",
+    "A natural disaster, such as an earthquake.",
+    "A financial transaction."
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'deslocamento' refers to the evacuation and movement of foreign nationals from the affected region to safer areas. The text states that 'o deslocamento de estrangeiros da região norte do Brasil continua' (the displacement of foreigners from the northern region of Brazil continues), indicating the movement of people.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-debate-001",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The environmental impact of increased tourism in Brazil.",
+    "The challenges faced by Brazilian airlines during the pandemic.",
+    "The role of domestic tourism in Brazil's economic recovery.",
+    "The impact of new technology on Brazilian tourism."
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the role of domestic tourism in Brazil's economic recovery, as discussed by the participants. For example, Pedro mentions 'o papel do turismo doméstico na recuperação econômica do país'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-debate-001",
+   "stem": "What can be inferred about the speaker's view on the current state of Brazilian tourism?",
+   "choices": [
+    "She thinks it is struggling but has the potential to recover quickly.",
+    "She argues that it should focus solely on international tourists.",
+    "She feels it is beyond recovery due to the pandemic's impact.",
+    "She believes it is thriving and requires no further support."
+   ],
+   "answer": 0,
+   "explanation": "The speaker, Maria, implies that tourism is struggling but can recover, stating 'o setor está enfrentando dificuldades, mas creio que pode se recuperar rapidamente com o apoio adequado'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-debate-001",
+   "stem": "In the context of the debate, what does 'resiliente' mean?",
+   "choices": [
+    "Adaptable",
+    "Traditional",
+    "Expensive",
+    "Fragile"
+   ],
+   "answer": 0,
+   "explanation": "The word 'resiliente' is used to describe the tourism sector's ability to recover from difficulties, meaning 'adaptable'. Pedro says 'o setor de turismo no Brasil é conhecido por ser resiliente'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-debate-002",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The ethical implications of whistleblowing in corporate settings",
+    "The role of international organizations in corruption investigations",
+    "The legal framework for combating corruption in Brazil",
+    "The impact of Operation Lava Jato on Brazil's economy"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the debate is the impact of Operation Lava Jato on Brazil's economy. This is evident from the speakers discussing the consequences of the investigation on various sectors, such as 'os impactos econômicos da operação nas empresas nacionais' and 'o efeito da Lava Jato no setor de construção civil'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-debate-002",
+   "stem": "What can be inferred about the stance of the female debater on the effectiveness of Operation Lava Jato?",
+   "choices": [
+    "She is uncertain about its overall impact but acknowledges some positive outcomes",
+    "She believes it has been largely ineffective in combating corruption",
+    "She thinks it has been successful but needs to be expanded",
+    "She strongly supports its continuation without any modifications"
+   ],
+   "answer": 0,
+   "explanation": "The female debater states 'Embora a Lava Jato tenha tido alguns resultados positivos, como a recuperação de recursos desviados, ainda há muito a ser feito para combater a corrupção de forma eficaz'. This indicates that she is uncertain about the overall impact but acknowledges some positive outcomes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-debate-002",
+   "stem": "What does the phrase 'lavagem de dinheiro' mean here?",
+   "choices": [
+    "Money laundering",
+    "Illegal financial transactions",
+    "Tax evasion",
+    "Fraudulent accounting practices"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the debate, 'lavagem de dinheiro' refers to money laundering, as it is discussed in relation to 'esquemas de corrupção' and 'desvio de recursos públicos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-debate-003",
+   "stem": "The main idea of this debate is that",
+   "choices": [
+    "private developers are the main cause of the housing crisis in cities",
+    "people should move to rural areas to solve the housing problem",
+    "housing shortages in cities are solely due to a lack of government funding",
+    "the housing shortage is a complex issue that requires a multifaceted approach"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is that the housing shortage is a complex issue that requires a multifaceted approach. This is evident throughout the debate, as various speakers discuss different aspects of the problem, including urbanization, government policies, and the role of private developers. For example, Maria mentions a lack of funding for public housing, while João discusses the need to control urban sprawl and Carlos talks about the role of private developers in exacerbating the crisis.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-debate-003",
+   "stem": "In the phrase 'o custo de vida nas áreas urbanas está se tornando insustentável', what does 'insustentável' mean here?",
+   "choices": [
+    "unhealthy",
+    "uncomfortable",
+    "unstable",
+    "unaffordable"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'unaffordable'. In this context, 'insustentável' refers to the high cost of living in urban areas, which is making it difficult for people to afford housing. Carlos uses this word to emphasize the severity of the housing crisis and the need for urgent action.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-debate-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-debate-003",
+   "stem": "What can be inferred from Ana's statement about the need for 'um planejamento urbano mais eficaz'?",
+   "choices": [
+    "Ana wants to see more green spaces in urban areas",
+    "Ana thinks that the government should build more high-rise buildings",
+    "Ana is advocating for the demolition of existing housing structures",
+    "Ana believes that better urban planning can help alleviate the housing shortage"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is that Ana believes that better urban planning can help alleviate the housing shortage. This can be inferred from her statement advocating for 'um planejamento urbano mais eficaz', which implies that she sees effective urban planning as a key part of addressing the housing crisis. She does not mention high-rise buildings, green spaces, or the demolition of existing housing structures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-editorial_commentary-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The current debate on mandatory military service is polarized and lacks nuance.",
+    "The Brazilian military's role in domestic security has been misunderstood.",
+    "Brazil should increase its military budget to improve defense capabilities.",
+    "Mandatory military service is essential for Brazil's national defense."
+   ],
+   "answer": 0,
+   "explanation": "The text discusses the polarized debate on mandatory military service, highlighting the lack of nuance and the strong opinions on both sides. This is evident in the phrases 'o debate está polarizado' and 'opiniões passionadas de ambos os lados'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-editorial_commentary-001",
+   "stem": "What can be inferred about the author's stance on the debate?",
+   "choices": [
+    "The author thinks the debate needs more balanced discussion.",
+    "The author supports the current mandatory military service system.",
+    "The author is indifferent to the topic of mandatory military service.",
+    "The author believes mandatory military service should be abolished."
+   ],
+   "answer": 0,
+   "explanation": "The author suggests that the debate needs more balanced discussion, as indicated by the phrase 'o que precisamos é de um debate mais equilibrado e informado'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-editorial_commentary-001",
+   "stem": "What does 'desviar' mean here?",
+   "choices": [
+    "To avoid",
+    "To divert",
+    "To distract",
+    "To delay"
+   ],
+   "answer": 1,
+   "explanation": "The word 'desviar' is used in the context of 'desviar a atenção' (to divert attention), as seen in 'em vez de desviar a atenção para questões mais urgentes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-editorial_commentary-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Public libraries should be closed and replaced by online services.",
+    "Public libraries are no longer relevant in the digital age.",
+    "Public libraries should focus only on lending books to the public.",
+    "Public libraries need to modernize and offer more than just books."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that public libraries need to modernize and offer more than just books. This is evident in statements like 'As bibliotecas públicas precisam se adaptar e oferecer mais do que apenas livros.' and 'Elas devem se transformar em espaços multifuncionais.' which highlight the need for libraries to evolve and provide diverse services.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-editorial_commentary-002",
+   "stem": "What can be inferred about the author's opinion on the role of libraries in communities?",
+   "choices": [
+    "The author believes libraries should focus solely on digital services.",
+    "The author sees libraries as vital community hubs that need to adapt.",
+    "The author thinks libraries are obsolete and should be replaced.",
+    "The author believes libraries should maintain their traditional role."
+   ],
+   "answer": 1,
+   "explanation": "The author sees libraries as vital community hubs that need to adapt. This is inferred from statements like 'As bibliotecas públicas precisam se adaptar e oferecer mais do que apenas livros.' and 'Elas devem se transformar em espaços multifuncionais, oferecendo cursos, workshops, acesso à internet e muito mais.' which emphasize the importance of libraries evolving to meet community needs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-editorial_commentary-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-editorial_commentary-002",
+   "stem": "What does the phrase 'espaços multifuncionais' mean here?",
+   "choices": [
+    "Spaces that are primarily for reading.",
+    "Spaces designed for a single specific function.",
+    "Spaces that serve multiple purposes.",
+    "Spaces that are used only for educational purposes."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'espaços multifuncionais' means spaces that serve multiple purposes. This is evident in the context where it is mentioned that libraries should 'oferecer cursos, workshops, acesso à internet e muito mais,' indicating that these spaces are designed to provide a variety of services.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-3-lecture-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2314,6 +7147,60 @@
    "verified": false
   },
   {
+   "id": "pt-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-lecture-002",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The history of communism in Latin America",
+    "The influence of international communist movements on Brazil",
+    "The founding principles of the Brazilian Communist Party",
+    "The centenary celebration of the Brazilian Communist Party"
+   ],
+   "answer": 3,
+   "explanation": "The lecture focuses on the centenary celebration of the Brazilian Communist Party, as indicated by phrases like 'hoje celebramos o centenário do Partido Comunista Brasileiro' and 'ao longo de cem anos, o PCdoB tem desempenhado um papel crucial na história do nosso país'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-lecture-002",
+   "stem": "What does 'emergência' mean here?",
+   "choices": [
+    "Importance",
+    "Urgency",
+    "Emergence",
+    "Appearance"
+   ],
+   "answer": 2,
+   "explanation": "The word 'emergência' is used in the context of 'a emergência de novas ideias e estratégias', referring to the development or emergence of new ideas and strategies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "pt-dl-3-lecture-002",
+   "stem": "According to the lecture, what is one of the key aspects of the Brazilian Communist Party's history?",
+   "choices": [
+    "Its consistent adherence to Marxist-Leninist principles",
+    "Its role in the industrialization of Brazil",
+    "Its alliance with foreign governments",
+    "Its focus on international relations"
+   ],
+   "answer": 0,
+   "explanation": "The lecture mentions 'o PCdoB tem mantido seus princípios marxista-leninistas', indicating the party's consistent adherence to these principles as a key aspect of its history.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dl-3-speech-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2364,6 +7251,60 @@
    ],
    "answer": 1,
    "explanation": "The speaker refers to the challenges of managing children's smartphone use as a 'dilema moderno', indicating a contemporary issue with no easy solution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dl-3-speech-002",
+   "stem": "What is the main topic of the speech?",
+   "choices": [
+    "The historical development of artificial intelligence",
+    "The future of artificial intelligence regulation",
+    "The potential dangers of artificial intelligence",
+    "The need for international cooperation in AI regulation"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the speech is the future of artificial intelligence regulation, as indicated by the speaker's focus on the need for a comprehensive regulatory framework. The speaker mentions, 'Precisamos de um marco regulatório abrangente que possa acompanhar o ritmo do desenvolvimento tecnológico.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dl-3-speech-002",
+   "stem": "What can be inferred about the speaker's view on the current state of AI regulation?",
+   "choices": [
+    "They feel current regulations are too strict.",
+    "They think current regulations are outdated.",
+    "They are unsure about the effectiveness of current regulations.",
+    "They believe current regulations are sufficient."
+   ],
+   "answer": 1,
+   "explanation": "The speaker implies that current regulations are outdated by stating, 'O ritmo do avanço da inteligência artificial supera amplamente a capacidade de resposta dos nossos quadros regulatórios atuais.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dl-3-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dl-3-speech-002",
+   "stem": "In the phrase 'um marco regulatório abrangente', what does 'abrangente' mean here?",
+   "choices": [
+    "Confusing",
+    "Complex",
+    "Controversial",
+    "Comprehensive"
+   ],
+   "answer": 3,
+   "explanation": "'Abrangente' in this context means 'comprehensive', indicating that the speaker wants a wide-reaching regulatory framework. The speaker says, 'Precisamos de um marco regulatório abrangente que possa acompanhar o ritmo do desenvolvimento tecnológico.'",
    "source": "llm",
    "verified": false
   }

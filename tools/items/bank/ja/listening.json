@@ -6,6 +6,37 @@
  "attribution": "Tsumugi/Mokuhyo contributors (AI-drafted, pending review)",
  "passages": [
   {
+   "id": "ja-dl-0p-advertisement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "New Road Safety Law",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "みなさん、こんにちは。新しい交通安全法が施行されます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "スマートフォンを使用した運転は禁止です。安全運転をお願いします。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "よろしくお願いします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-0p-announcement-001",
    "exam": "DLPT_LISTENING",
    "level": "0+",
@@ -101,6 +132,42 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-0p-announcement-006",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Bank Interest Rate Notice",
+   "body": "",
+   "script": [
+    {
+     "speaker": "銀行",
+     "voice": "female",
+     "text": "お客様への大切なお知らせです。"
+    },
+    {
+     "speaker": "銀行",
+     "voice": "male",
+     "text": "利率が変更されます。"
+    },
+    {
+     "speaker": "銀行",
+     "voice": "female",
+     "text": "新しい利率は1.0％となります。"
+    },
+    {
+     "speaker": "銀行",
+     "voice": "male",
+     "text": "詳しいことは窓口までお尋ねください。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-0p-voicemail-001",
    "exam": "DLPT_LISTENING",
    "level": "0+",
@@ -139,6 +206,109 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-0p-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Launch Delay Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "自動応答",
+     "voice": "female",
+     "text": "こんにちは、宇宙開発機構です。本日の打ち上げについてお知らせします。"
+    },
+    {
+     "speaker": "自動応答",
+     "voice": "female",
+     "text": "残念ながら、問題が発生しましたので、打ち上げは延期となります。"
+    },
+    {
+     "speaker": "自動応答",
+     "voice": "female",
+     "text": "詳しい情報は、我々のウェブサイトをご覧ください。"
+    },
+    {
+     "speaker": "自動応答",
+     "voice": "female",
+     "text": "ご不便をおかけして申し訳ありません。"
+    },
+    {
+     "speaker": "自動応答",
+     "voice": "female",
+     "text": "ありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-0p-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Voicemail from a Tourist Agency",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "こんにちは、これは観光案内所の自動応答システムです。来月一日から営業を再開します。お問い合わせはメールで承っております。ご協力ありがとうございました。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "観光案内所は来月一日から通常営業を開始します。詳細はホームページをご覧ください。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-0p-voicemail-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Voicemail from a Debate Organizer",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "こんにちは、市民会館の田中です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "明日の徴兵制についての討論会の連絡です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "場所は市民会館の大会議室、時間は午後七時となります。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "皆様のご参加をお待ちしております。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-1-announcement-001",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -175,6 +345,47 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-1-announcement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Flu Vaccination Campaign Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "皆様の健康をお守りするため、インフルエンザ予防接種キャンペーンを実施いたします。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "このキャンペーンは、10月1日（月）から10月31日（火）まで、各地区センターで行います。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "予防接種は無料です。接種前には、必ずご自身の健康状態をご確認ください。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "詳細は、各地区センターまでお問い合わせください。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "皆様のご協力をお待ちしております。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-1-conversation-001",
@@ -294,6 +505,144 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-1-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Volunteer Sign-Up",
+   "body": "",
+   "script": [
+    {
+     "speaker": "スタッフ",
+     "voice": "female",
+     "text": "こんにちは！ボランティアの仕事について説明いたします。"
+    },
+    {
+     "speaker": "新人ボランティア",
+     "voice": "male",
+     "text": "はい、お願いします。"
+    },
+    {
+     "speaker": "スタッフ",
+     "voice": "female",
+     "text": "最初に、チラシを配布することです。"
+    },
+    {
+     "speaker": "新人ボランティア",
+     "voice": "male",
+     "text": "了解しました。どこで配布しますか？"
+    },
+    {
+     "speaker": "スタッフ",
+     "voice": "female",
+     "text": "近くの公園と商店街です。その後、コミュニティセンターでお手伝いをします。"
+    },
+    {
+     "speaker": "新人ボランティア",
+     "voice": "male",
+     "text": "はい、頑張ります！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1-conversation-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Planning a Museum Visit",
+   "body": "",
+   "script": [
+    {
+     "speaker": "田中さん",
+     "voice": "female",
+     "text": "博物館に行きたいと考えています。"
+    },
+    {
+     "speaker": "佐藤さん",
+     "voice": "male",
+     "text": "いつ行きますか？"
+    },
+    {
+     "speaker": "田中さん",
+     "voice": "female",
+     "text": "来週の土曜日はいかがでしょうか？"
+    },
+    {
+     "speaker": "佐藤さん",
+     "voice": "male",
+     "text": "良いですね。歴史の展示を見たいです。"
+    },
+    {
+     "speaker": "田中さん",
+     "voice": "female",
+     "text": "特別展示もありますよ。"
+    },
+    {
+     "speaker": "佐藤さん",
+     "voice": "male",
+     "text": "それは見逃せません。何時から開いていますか？"
+    },
+    {
+     "speaker": "田中さん",
+     "voice": "female",
+     "text": "午前十時からです。"
+    },
+    {
+     "speaker": "佐藤さん",
+     "voice": "male",
+     "text": "了解しました。楽しみにしています。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1-conversation-006",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Library Card Renewal",
+   "body": "",
+   "script": [
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "すみません、図書カードの更新をしたいのですが。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "はい、図書カードの更新ですね？"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "はい、お願いします。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "では、図書カードと身分証明書を提示していただけますか？"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-1-voicemail-001",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -330,6 +679,47 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-1-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Aid Convoy Delayed",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "こんにちは、緊急支援団体の山田です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "大変申し訳ありませんが、本日の支援物資の輸送が遅れることになりました。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "大雨のため、道路が冠水し、交通渋滞が発生しています。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "そのため、予定を2時間程度遅らせることになりました。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "改めてご連絡いたしますので、よろしくお願いいたします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-1p-announcement-001",
@@ -387,6 +777,67 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-1p-announcement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Renewable Energy Subsidy Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "みなさん、こんにちは。町役場からのお知らせです。"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "皆様に大切なご案内をお伝えいたします。"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "これまで、石油や石炭などの化石燃料への補助金を実施してまいりましたが、"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "来月から補助金の対象を変更いたします。"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "太陽光や風力などの再生可能エネルギーへの転換を検討されている方に、新たな補助金をご用意いたします。"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "1月1日から新しい補助金の申請を受け付けます。"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "詳しい情報は町役場のホームページでご確認いただけます。"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "皆様のご理解とご協力を賜りますよう、お願い申し上げます。"
+    },
+    {
+     "speaker": "町役場",
+     "voice": "female",
+     "text": "ご清聴ありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-1p-conversation-001",
@@ -534,6 +985,230 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-1p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "interview",
+   "title": "New Admissions Policy at Tohoku University",
+   "body": "",
+   "script": [
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "東方大学が、入学試験の方式を変えます。詳しくは、東方大学の入試担当の佐藤先生にお話を伺いました。"
+    },
+    {
+     "speaker": "佐藤先生",
+     "voice": "male",
+     "text": "はい、来年度から新しい入学試験方式を導入します。まず、筆記試験を減らし、面接を重視します。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "面接では何を重視しますか？"
+    },
+    {
+     "speaker": "佐藤先生",
+     "voice": "male",
+     "text": "学生の意欲やコミュニケーション能力を重視します。また、併願を認めますので、複数の大学に出願できるようになります。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "ありがとうございました。"
+    },
+    {
+     "speaker": "佐藤先生",
+     "voice": "male",
+     "text": "どういたしまして。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1p-phone_call-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Bank Call About Loan Rates",
+   "body": "",
+   "script": [
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "こんにちは、三井銀行の山田です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "はい、もしもし。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "お客様にご連絡させていただきたいことがございます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "はい、何でしょうか。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "現在の経済状況を考慮し、貸し出し金利の引き上げを行うこととなりました。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "金利が上がるのですね。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "はい、インフレが進んでいるため、来月1日から金利を引き上げます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "そうですか、了解しました。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "何かご質問がございましたら、どうぞ。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "いいえ、結構です。ありがとうございます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "失礼いたします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1p-phone_call-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Port Visit Arrangements",
+   "body": "",
+   "script": [
+    {
+     "speaker": "受付",
+     "voice": "female",
+     "text": "はい、海軍基地見学センターです。どういたしまして。"
+    },
+    {
+     "speaker": "客",
+     "voice": "male",
+     "text": "こんにちは、来週の水曜日、海軍基地を見学できますか。"
+    },
+    {
+     "speaker": "受付",
+     "voice": "female",
+     "text": "はい、可能です。何時ごろにいらっしゃいますか。"
+    },
+    {
+     "speaker": "客",
+     "voice": "male",
+     "text": "午前10時に伺いたいのですが。"
+    },
+    {
+     "speaker": "受付",
+     "voice": "female",
+     "text": "了解しました。午前10時の見学の手配をいたしました。お名前とご連絡先をお願いいたします。"
+    },
+    {
+     "speaker": "客",
+     "voice": "male",
+     "text": "佐藤と申します。電話番号は090-1234-5678です。"
+    },
+    {
+     "speaker": "受付",
+     "voice": "female",
+     "text": "ありがとうございます。当日、受付でお名前をお伝えください。"
+    },
+    {
+     "speaker": "客",
+     "voice": "male",
+     "text": "はい、了解しました。ありがとうございました。"
+    },
+    {
+     "speaker": "受付",
+     "voice": "female",
+     "text": "ありがとうございました。またお電話ください。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1p-phone_call-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Wedding Budget Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性A",
+     "voice": "female",
+     "text": "もしもし、佐藤さん？私です。結婚式の準備について話したかったのですが。"
+    },
+    {
+     "speaker": "男性B",
+     "voice": "male",
+     "text": "ああ、こんにちは。結婚式の費用が高くて心配なの。"
+    },
+    {
+     "speaker": "女性A",
+     "voice": "female",
+     "text": "ええ、そうね。でも予算を抑える方法はあるわ。冬に結婚式を挙げれば、料理や会場の費用が安くなるかもしれない。"
+    },
+    {
+     "speaker": "男性B",
+     "voice": "male",
+     "text": "いいアイデアだね。写真もプロに頼まないで、友達に撮ってもらうのも良いかも。"
+    },
+    {
+     "speaker": "女性A",
+     "voice": "female",
+     "text": "そうね。そうすればかなり節約できるわ。でもどんなに安くても、楽しい結婚式にしたいな。"
+    },
+    {
+     "speaker": "男性B",
+     "voice": "male",
+     "text": "もちろんよ。大切なのは楽しむことだからね。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-1p-voicemail-001",
@@ -730,6 +1405,62 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Negotiating the Pacific Alliance",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "こんにちは、山田さん。先日発表された太平洋連合についてどう思いますか？"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "こんにちは、佐藤さん。太平洋連合が日本にとって新たな機会を提供する可能性がありますね。特に、新興市場での技術やイノベーションへのアクセスが期待されます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "確かに、互恵的な取引が増えることは企業にとって良いニュースです。しかし、農業や漁業の分野では懸念もありますよね。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "もちろん、課題もあります。国内産業への影響を最小限に抑えるための対策が必要です。例えば、補助金の提供や技術支援などが考えられます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "それに、環境基準の統一化も重要なポイントです。持続可能な開発を促進するためには、厳格なルールが必要です。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "その通りです。環境保護と経済成長のバランスを取ることが、この協定の成功の鍵となります。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "確かに、慎重な対応が求められるでしょう。政府と企業が協力して、この機会を最大限に活用することが大切ですね。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "同意します。太平洋連合は日本にとって大きなチャンスです。私たちもこの動向を注視していきましょう。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-2-interview-001",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -816,6 +1547,67 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "interview",
+   "title": "City's Fight Against Air Pollution",
+   "body": "",
+   "script": [
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "こんにちは、市長。本日は市の大気汚染対策についてお伺いしたいと思います。"
+    },
+    {
+     "speaker": "市長",
+     "voice": "male",
+     "text": "はい、もちろんです。大気汚染の削減は、私たちの最優先事項の一つです。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "具体的にどのような対策を進めていらっしゃいますか？"
+    },
+    {
+     "speaker": "市長",
+     "voice": "male",
+     "text": "まず、公共交通機関の利用を促進するため、バスと電車のサービスを拡充しています。また、緑地を増やすことで、都市のヒートアイランド現象を軽減しようとしています。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "環境の専門家の方もお呼びしました。専門家の方、市の大気汚染の主な原因は何だと思われますか？"
+    },
+    {
+     "speaker": "環境専門家",
+     "voice": "female",
+     "text": "自動車の排気ガスが主な原因の一つです。特に、交通渋滞が多い時間帯には、大気汚染物質の濃度が高くなります。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "市長、これからの予定についてもお聞かせください。"
+    },
+    {
+     "speaker": "市長",
+     "voice": "male",
+     "text": "来年、市内の工場からの排出ガスをさらに規制する条例を成立させる予定です。また、市民に対する環境意識の啓発活動も強化していきます。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "ありがとうございます。本日は大変参考になりました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-2-liaison-001",
@@ -924,6 +1716,62 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "news",
+   "title": "Innovations in Online Learning",
+   "body": "",
+   "script": [
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "こんにちは、ニュースデスクの田中です。本日はオンライン教育の新しい動向についてお伝えします。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "はい、こんにちは。最近、バーチャルリアリティを活用したオンライン教育が注目を集めています。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "そうです。バーチャルリアリティ技術の進歩により、生徒たちはバーチャルリアリティを通じて実際の環境を体験できるようになりました。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "例えば、歴史の授業では、古代の遺跡を訪れることができ、理科の授業では、危険な実験を安全に行うことができます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "さらに、バーチャルリアリティを使うことで、遠隔地にいる生徒たちも同じ教室で学ぶことが可能になり、教育の機会が格段に広がっています。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "しかし、バーチャルリアリティ教育を導入するためには、高額な設備費用がかかり、教師の訓練も必要です。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "はい、そのような課題もありますが、今後さらに技術が進歩すれば、より多くの学校でバーチャルリアリティ教育が普及することが期待されます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "本日のニュースはここまでです。引き続き最新の情報をお伝えします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-2p-broadcast-001",
@@ -1067,6 +1915,52 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-2p-documentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "The Pacific Climate Summit: A Regional Commitment",
+   "body": "",
+   "script": [
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "皆様、こんにちは。本日、太平洋地域気候サミットにようこそ。このサミットは、気候変動という課題に取り組み、太平洋地域の持続可能な未来を築くことを目的としています。"
+    },
+    {
+     "speaker": "政府代表",
+     "voice": "male",
+     "text": "各国政府として、気候変動対策の具体的な行動計画を提出することが重要です。私たちは、温室効果ガスの排出削減と再生可能エネルギーの利用促進を約束します。"
+    },
+    {
+     "speaker": "科学者",
+     "voice": "female",
+     "text": "科学的見地から、気候変動の影響緩和と適応策の強化が必要です。特に、海面上昇や気候変動がもたらす健康リスクへの対応が急務です。"
+    },
+    {
+     "speaker": "企業代表",
+     "voice": "male",
+     "text": "民間企業としても、持続可能なビジネスモデルの推進と環境配慮型技術開発への取り組みが不可欠です。このサミットで得た知見を実践に移すことを約束します。"
+    },
+    {
+     "speaker": "市民社会リーダー",
+     "voice": "female",
+     "text": "市民社会としても、地域コミュニティの強化と気候変動対策の支援が重要です。教育と意識向上を通じて、持続可能な未来実現への協力を呼びかけます。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "本日のサミットでは、政府関係者、科学者、企業代表、そして市民社会のリーダーが一堂に会し、気候変動対策の具体的な行動計画を策定します。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-2p-interview-001",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -1153,6 +2047,52 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-2p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "interview",
+   "title": "University of Kyoto's New Entrance Examination System",
+   "body": "",
+   "script": [
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "京都大学は来年度から入学試験のあり方を大きく変えることになりました。新たに抽選方式の入試を導入するということですが、この背景や具体的な内容についてお話を伺います。まず、なぜこのような変更をすることになったのでしょうか？"
+    },
+    {
+     "speaker": "インタビュイー",
+     "voice": "male",
+     "text": "はい、京都大学は来年度から一般選抜入試を廃止し、新たに抽選方式の入試を導入することになりました。これは、入学試験の結果だけで将来の可能性を決めることの問題点を考え、多様な学生を受け入れるための新しい方法を模索した結果です。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "抽選方式の入試で「当選」した学生にはどのようなメリットがあるのでしょうか？"
+    },
+    {
+     "speaker": "インタビュイー",
+     "voice": "male",
+     "text": "試験結果に左右されずに入学できる機会が増えることです。これにより、従来の入試方法では不利だった学生も、京大で学ぶチャンスを得られるようになります。また、学費の免除や奨学金の支給など、経済的な支援も受けられる可能性があります。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "具体的にどのような学生が対象となるのでしょうか？"
+    },
+    {
+     "speaker": "インタビュイー",
+     "voice": "male",
+     "text": "対象は高等学校在学中の学生で、特に学業成績や経済状況に関係なく、多様な背景を持つ学生を対象としています。例えば、スポーツや芸術の分野で活躍している学生、または経済的な理由で学業を継続するのが困難な学生などが考えられます。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-2p-liaison-001",
@@ -1263,6 +2203,199 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-2p-news_analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Hotel Reservation Confusion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "こんにちは、ニュースデスクです。本日の注目のニュースをお伝えします。"
+    },
+    {
+     "speaker": "レポーター",
+     "voice": "male",
+     "text": "はい、こんにちは。近頃、ホテルの予約システムでトラブルが相次いでいます。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "具体的にどのような問題があるのでしょうか。"
+    },
+    {
+     "speaker": "レポーター",
+     "voice": "male",
+     "text": "例えば、重複予約が起きることが多く、お客様の不満が増加しているようです。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "重複予約とは何ですか。"
+    },
+    {
+     "speaker": "レポーター",
+     "voice": "male",
+     "text": "同じ部屋を複数のお客様に予約してしまうことです。システムの不具合が原因のようです。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "そのためにどういった影響が出ているのでしょうか。"
+    },
+    {
+     "speaker": "レポーター",
+     "voice": "male",
+     "text": "予約が確認できない、チェックインが遅れるなど、様々な問題が報告されています。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "ホテル側はどう対応しているのでしょうか。"
+    },
+    {
+     "speaker": "レポーター",
+     "voice": "male",
+     "text": "システムの改修を行っているほか、お客様への補償も検討しているようです。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "今後、どうなるでしょうか。"
+    },
+    {
+     "speaker": "レポーター",
+     "voice": "male",
+     "text": "改修が完了するまでにはまだ時間がかかる見込みです。お客様にはご不便をおかけしますが、ご理解をお願いします。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "ありがとうございました。それが今日のニュースです。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2p-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "speech",
+   "title": "An Announcement About the Closure of the Hokuriku Factory",
+   "body": "",
+   "script": [
+    {
+     "speaker": "代表取締役社長",
+     "voice": "male",
+     "text": "本日、残念ながら、北陸工場の閉鎖及び大阪への移転についてお知らせいたします。この決定は、事業の効率化及びコスト削減を図るための重要な一歩です。"
+    },
+    {
+     "speaker": "代表取締役社長",
+     "voice": "male",
+     "text": "北陸工場は、長年にわたり当社の重要な拠点として機能してまいりました。しかし、最近の市場の変化と競争の激化により、このような決定を下すこととなったのです。"
+    },
+    {
+     "speaker": "従業員代表",
+     "voice": "female",
+     "text": "社長の決定に対して、多くの従業員が心配しております。特に、家族や地域とのつながりを考慮すると、移転は容易ではありません。"
+    },
+    {
+     "speaker": "代表取締役社長",
+     "voice": "male",
+     "text": "その点については、十分に理解しております。当社は、従業員の皆様が大阪への移転をスムーズに行えるよう全力でサポートいたします。皆様のご理解とご協力を賜りますよう心からお願い申し上げます。"
+    },
+    {
+     "speaker": "従業員代表",
+     "voice": "female",
+     "text": "具体的にどのようなサポートが提供されますか？"
+    },
+    {
+     "speaker": "代表取締役社長",
+     "voice": "male",
+     "text": "まず、移転費用の全額補助及び住宅の手配を行います。また、大阪の生活に慣れるためのサポートも提供いたします。さらに、子育て中の従業員には保育所の手配も行います。"
+    },
+    {
+     "speaker": "従業員代表",
+     "voice": "female",
+     "text": "ありがとうございます。このサポートがあれば、多くの従業員が安心して移転できるでしょう。"
+    },
+    {
+     "speaker": "代表取締役社長",
+     "voice": "male",
+     "text": "今後も、従業員の皆様と協力して、新たな大阪工場を成功させ、さらに発展させることを目指してまいります。皆様のご理解とご協力を賜りますよう、改めてお願い申し上げます。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-3-analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Impact of Energy Subsidies on Rural Economies",
+   "body": "",
+   "script": [
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "最近、エネルギー補助金の役割について議論が盛んです。特に地方経済に与える影響について、様々な意見があります。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "確かに、エネルギー補助金は地方経済の成長に不可欠です。補助金によって、地方のインフラが整備され、雇用が創出されます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "しかし、一部の人は補助金に依存することで、地方の自立性が損なわれると懸念しています。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "確かにそのリスクはありますが、適切に管理されれば、補助金は地方の自立的な発展を促進します。例えば、再生可能エネルギーの導入を支援することで、持続可能な経済成長を実現できます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "その点は重要ですね。補助金が適切に活用されることで、地方経済はより強固な基盤を築くことができるでしょう。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "また、エネルギー補助金は単に経済的な支援にとどまりません。教育や医療など、生活の質を向上させるための資金としても活用できます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "つまり、エネルギー補助金は地方経済の多面的な発展に貢献するのですね。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "その通りです。補助金が適切に配分され、効果的に活用されることで、地方経済は持続可能な成長を遂げることができるでしょう。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-3-commentary-001",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -1324,6 +2457,72 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-3-debate-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Future of Work: Remote Work vs. Office Work",
+   "body": "",
+   "script": [
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "こんにちは、今日は就職面接として、リモートワークとオフィスワークについてお話を伺いたいと思います。まず、リモートワークとオフィスワーク、どちらが優れていると思いますか？"
+    },
+    {
+     "speaker": "応募者",
+     "voice": "male",
+     "text": "こんにちは、ありがとうございます。リモートワークには柔軟性があると思います。自宅で働けるので、通勤時間が節約でき、ワークライフバランスを実現しやすいです。また、集中して作業できる環境を自分で作ることができます。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "なるほど、リモートワークのメリットについて詳しく教えてください。"
+    },
+    {
+     "speaker": "応募者",
+     "voice": "male",
+     "text": "例えば、家族の用事と仕事のスケジュールを調整しやすいです。また、健康上の理由で外出が難しい人にも適しています。さらに、環境に優しい面もあります。通勤による二酸化炭素排出が減るからです。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "一方で、オフィスワークのメリットは何だと思いますか？"
+    },
+    {
+     "speaker": "応募者",
+     "voice": "male",
+     "text": "オフィスワークは直接的なコミュニケーションが多く、チームワークを強化できます。また、職場の雰囲気や企業文化を感じながら働くことができ、モチベーションを維持しやすいです。さらに、仕事とプライベートの境界が明確になるので、仕事から離れることができます。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "リモートワークとオフィスワーク、どちらを選ぶかは個人の好みや職種によって異なると思います。応募者さんの考えを教えてください。"
+    },
+    {
+     "speaker": "応募者",
+     "voice": "male",
+     "text": "私はどちらも重要だと考えます。リモートワークは柔軟性がありますが、オフィスワークはチームワークを強化します。仕事の内容や目標に応じて、適切な働き方を選ぶことが大切だと思います。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "female",
+     "text": "ありがとうございます。今日は貴重な意見をありがとうございました。"
+    },
+    {
+     "speaker": "応募者",
+     "voice": "male",
+     "text": "いいえ、ありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-3-discussion-001",
@@ -1628,9 +2827,182 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-3-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "speech",
+   "title": "A Speech on Local Governance",
+   "body": "",
+   "script": [
+    {
+     "speaker": "司会者",
+     "voice": "male",
+     "text": "皆さん、こんにちは。本日の市議会選挙の候補者をご紹介します。まず最初に、田中美咲候補の演説をお聞きください。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "皆さん、こんにちは。私は田中美咲です。今日はこのような機会をいただきありがとうございます。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "私が選挙に立候補した理由は、私たちの地域が直面している様々な課題を解決したいからです。教育、医療、交通など、地域の課題は多岐にわたります。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "しかし、これらの課題を解決するためには、住民の皆様とのコミュニケーションを改善し、地域の問題を一緒に解決していくことが重要です。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "私は、地域の皆様と密に連携し、住民の声を政策に反映させることができればと考えています。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "例えば、地域の子どもたちの教育環境を改善するためには、学校と地域住民が協力し、子どもたちが安心して学べる環境を作ることが大切です。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "また、高齢者の医療サービスを充実させるためには、地域の医療機関と連携し、高齢者が安心して生活できるような環境を整える必要があります。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "さらに、交通インフラの整備も重要です。特に、地域の公共交通機関を充実させ、皆様が快適に移動できるようにすることが必要です。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "私の政策は、これらの課題を解決するための具体的なプランに基づいています。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "皆様からのご意見やご要望も積極的に取り入れ、より良い地域社会を築いていきたいと考えています。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "私のスローガンは「地域と共に、未来を創る」です。皆様と一緒に、私たちの地域の未来を切り開いていきましょう。"
+    },
+    {
+     "speaker": "田中美咲",
+     "voice": "female",
+     "text": "皆様のご支持をよろしくお願いいたします。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "male",
+     "text": "田中美咲候補の演説は以上です。次に、佐藤健太郎候補の演説をお聞きください。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-3-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "speech",
+   "title": "A Vision for Modern Healthcare: The New Central Hospital",
+   "body": "",
+   "script": [
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "皆様、本日はこのような席を設けていただき、ありがとうございます。今日は、新たに建設された中央病院の開院についてお話ししたいと思います。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "中央病院は、地域の皆様に最善の医療を提供するために、喜びをもって開院いたします。当院では、最先端の医療機器を導入し、より正確で迅速な診断と治療を実現します。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "さらに、専門医による高度な医療サービスを提供します。心臓病、がん、脳卒中など、様々な分野の専門医が揃っており、患者様一人ひとりに最適な治療を提供いたします。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "中央病院は、地域の皆様に開かれた病院です。地域の皆様と連携し、地域の健康を守るための取り組みを進めてまいります。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "例えば、地域の医療機関との連携を強化し、患者様が必要な医療を必要な時に受けられるようにするためのシステムを構築します。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "また、予防医学の重要性を訴え、地域の皆様の健康増進に貢献してまいります。定期的な健康診断や予防接種の実施、健康教育の提供など、予防医学に関する様々な取り組みを進めてまいります。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "中央病院は、地域の皆様にとって、安心して受診できる病院であり続けることをお約束します。皆様のご理解とご支援を賜り、当院が地域の皆様の健康と幸福に貢献できるよう、今後ともよろしくお願い申し上げます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "皆様、本日はありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
+  {
+   "id": "ja-dl-0p-advertisement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dl-0p-advertisement-001",
+   "stem": "What does the announcement say about the new law?",
+   "choices": [
+    "It mandates regular vehicle inspections.",
+    "It increases fines for speeding.",
+    "It bans driving while using a phone.",
+    "It requires all drivers to take a safety course."
+   ],
+   "answer": 2,
+   "explanation": "The announcement states that the new law prohibits driving while using a phone, as indicated by the phrase 'スマホ運転禁止' ('No phone use while driving').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-0p-advertisement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-0p-advertisement-001",
+   "stem": "What does 'スマホ' mean here?",
+   "choices": [
+    "A road sign",
+    "A kind of insurance",
+    "A smartphone",
+    "A type of car"
+   ],
+   "answer": 2,
+   "explanation": "The word 'スマホ' is short for 'スマートフォン' ('smartphone'). The phrase 'スマホ運転禁止' ('No phone use while driving') makes it clear that it refers to smartphones.",
+   "source": "llm",
+   "verified": false
+  },
   {
    "id": "ja-dl-0p-announcement-001-q1",
    "exam": "DLPT_LISTENING",
@@ -1794,6 +3166,42 @@
    "verified": false
   },
   {
+   "id": "ja-dl-0p-announcement-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dl-0p-announcement-006",
+   "stem": "What is the new interest rate for savings accounts?",
+   "choices": [
+    "2.0%",
+    "0.5%",
+    "1.5%",
+    "1.0%"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the new interest rate is 1.0% (新しい利率は1.0％です).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-0p-announcement-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dl-0p-announcement-006",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To notify customers about a new service",
+    "To remind customers about a policy change",
+    "To announce a change in interest rates",
+    "To inform customers about a price increase"
+   ],
+   "answer": 2,
+   "explanation": "The announcement is primarily about the change in interest rates, as indicated by the phrases '利率が変更されます' and '新しい利率は1.0％です'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-0p-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "0+",
@@ -1862,6 +3270,96 @@
    ],
    "answer": 3,
    "explanation": "「三月五日、金曜日の午前十一時」 is Friday, March 5 at 11 a.m. The other choices change the day (15th), the month (May), or the time (1 p.m.).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-0p-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dl-0p-voicemail-003",
+   "stem": "What is the reason for the launch delay?",
+   "choices": [
+    "High winds",
+    "Bad weather",
+    "A technical issue",
+    "A scheduling conflict"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is A. The speaker mentions a '問題が発生しました', which means 'a problem has occurred', indicating a technical issue.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-0p-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dl-0p-voicemail-004",
+   "stem": "What is the purpose of this voicemail?",
+   "choices": [
+    "To advertise a discount on flights",
+    "To inform about a new tourist attraction",
+    "To announce the reopening of a tourist office",
+    "To remind about a cancellation policy"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is B. The voicemail explicitly states that the tourist office is reopening on the 1st of next month, which is '来月一日に再開します' in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-0p-voicemail-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-0p-voicemail-004",
+   "stem": "What does the word '再開' mean here?",
+   "choices": [
+    "Closure",
+    "Reopening",
+    "Relocation",
+    "Extension"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is C. The word '再開' in this context means 'reopening', as it is used to announce that the tourist office is starting its operations again after some time.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-0p-voicemail-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dl-0p-voicemail-005",
+   "stem": "What is the topic of the debate?",
+   "choices": [
+    "The necessity of military service",
+    "The history of military conflicts",
+    "The role of women in the military",
+    "The impact of military spending"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions '徴兵制' (conscripted military service), indicating that the debate is about the necessity of military service.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-0p-voicemail-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-0p-voicemail-005",
+   "stem": "In the text, what does '徴兵制' mean here?",
+   "choices": [
+    "Volunteer military service",
+    "Military training",
+    "Military exercise",
+    "Mandatory military service"
+   ],
+   "answer": 3,
+   "explanation": "In the context of the debate, '徴兵制' refers to 'Mandatory military service', as it is a common topic of debate regarding military service policies.",
    "source": "llm",
    "verified": false
   },
@@ -1970,6 +3468,60 @@
    ],
    "answer": 3,
    "explanation": "「お弁当の箱は、食べたあと、体育館の入口に返してください」: return the boxes at the gym entrance. Washing, throwing away, or taking them to the office are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-announcement-003",
+   "stem": "Where can people get the flu vaccine?",
+   "choices": [
+    "At the community center",
+    "At the city hall",
+    "At any convenience store",
+    "At the local hospital"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the vaccine is available at the 地区センター (community center). The other locations are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dl-1-announcement-003",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To inform about the symptoms of flu",
+    "To announce the dates of the vaccination campaign",
+    "To describe the side effects of the vaccine",
+    "To promote the importance of annual check-ups"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to announce the インフルエンザ予防接種キャンペーン (flu vaccination campaign) and its dates, 10月1日から10月31日まで (from October 1st to October 31st).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-announcement-003",
+   "stem": "What does 予防接種 mean here?",
+   "choices": [
+    "Medication",
+    "Medical check-up",
+    "Flu symptoms",
+    "Vaccination"
+   ],
+   "answer": 3,
+   "explanation": "The word 予防接種 refers to the インフルエンザ予防接種 (flu vaccination) campaign mentioned in the announcement.",
    "source": "llm",
    "verified": false
   },
@@ -2136,6 +3688,168 @@
    "verified": false
   },
   {
+   "id": "ja-dl-1-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-conversation-004",
+   "stem": "What is the first task of the volunteer?",
+   "choices": [
+    "To organize a food drive",
+    "To distribute flyers",
+    "To clean the park",
+    "To help at the community center"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'To distribute flyers'. This is stated directly in the text: 「最初は、チラシを配ることです。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dl-1-conversation-004",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The schedule of community events",
+    "The requirements for becoming a volunteer",
+    "The benefits of volunteering",
+    "The tasks of a new community volunteer"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'The tasks of a new community volunteer'. The conversation is about what the new volunteer will be doing, starting with 「最初は、チラシを配ることです。」 and then 「その後、コミュニティセンターで手伝います。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-conversation-004",
+   "stem": "What does 「チラシ」 mean in this context?",
+   "choices": [
+    "A type of food",
+    "A cleaning tool",
+    "A community event",
+    "A printed advertisement"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'A printed advertisement'. In this context, 「チラシ」 refers to flyers that the volunteer will be distributing, which are a form of printed advertisement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-conversation-005",
+   "stem": "What are the speakers discussing?",
+   "choices": [
+    "A visit to a museum",
+    "A birthday party",
+    "A new exhibition",
+    "A trip to the countryside"
+   ],
+   "answer": 0,
+   "explanation": "The speakers mention a 「博物館」 (museum) and 「歴史展示」 (historical exhibition), indicating they are planning a visit to a museum.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dl-1-conversation-005",
+   "stem": "What is the main purpose of their conversation?",
+   "choices": [
+    "To decide on a gift",
+    "To arrange a meeting",
+    "To plan a museum visit",
+    "To discuss historical events"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of their conversation is to plan a visit to the museum, as they discuss the date, time, and what they will see there.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-conversation-005",
+   "stem": "What does 「特別な展示」 refer to?",
+   "choices": [
+    "A café",
+    "A temporary exhibit",
+    "A regular exhibit",
+    "A gift shop"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 「特別な展示」 (special exhibit) refers to a temporary exhibit, as it is something special that they want to see at the museum.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-conversation-006",
+   "stem": "What does the man want to do?",
+   "choices": [
+    "Pay a fine.",
+    "Renew his library card.",
+    "Find a lost book.",
+    "Check out a book."
+   ],
+   "answer": 1,
+   "explanation": "The man says “図書カードの更新をしたいんですが” (I want to renew my library card)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dl-1-conversation-006",
+   "stem": "What is this conversation about?",
+   "choices": [
+    "A man asking for directions to the library.",
+    "A man complaining about library hours.",
+    "A man wanting to renew his library card.",
+    "A man looking for a specific book."
+   ],
+   "answer": 2,
+   "explanation": "The conversation is about a man asking how to renew his library card.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-conversation-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-conversation-006",
+   "stem": "What does the woman mean by 「更新」 here?",
+   "choices": [
+    "To register.",
+    "To cancel.",
+    "To extend.",
+    "To replace."
+   ],
+   "answer": 2,
+   "explanation": "The man says “図書カードの更新をしたいんですが” (I want to renew my library card). Here, 「更新」 means to extend the validity of the card.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-1-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -2222,6 +3936,42 @@
    ],
    "answer": 3,
    "explanation": "「平日の午前九時から午後四時までに」: on weekdays between 9 a.m. and 4 p.m. Weekends and evenings are outside those hours.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-voicemail-003",
+   "stem": "What is the reason for the delay of the aid convoy?",
+   "choices": [
+    "Heavy rain and traffic",
+    "A lack of supplies",
+    "A mechanical problem",
+    "A protest on the road"
+   ],
+   "answer": 0,
+   "explanation": "The speaker mentions '大雨' (heavy rain) and '交通渋滞' (traffic congestion) as the reasons for the delay.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-voicemail-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-voicemail-003",
+   "stem": "What does '支援物資の輸送' refer to here?",
+   "choices": [
+    "A medical team",
+    "A convoy of vehicles",
+    "A group of volunteers",
+    "A shipment of supplies"
+   ],
+   "answer": 3,
+   "explanation": "'支援物資の輸送' refers to 'the transport of aid supplies', which is the subject of the voicemail.",
    "source": "llm",
    "verified": false
   },
@@ -2388,6 +4138,60 @@
    "verified": false
   },
   {
+   "id": "ja-dl-1p-announcement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dl-1p-announcement-004",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To inform residents about changes to energy subsidies",
+    "To explain how to reduce electricity bills",
+    "To promote a new renewable energy project",
+    "To encourage residents to switch energy providers"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To inform residents about changes to energy subsidies', because the announcement discusses the ending of subsidies for certain energy sources and the introduction of new subsidies for renewable energy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-announcement-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dl-1p-announcement-004",
+   "stem": "What date will the new subsidies start?",
+   "choices": [
+    "February 1",
+    "March 1",
+    "January 1",
+    "April 1"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'January 1', as stated in the sentence '1月1日から新しい補助金が始まります'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-announcement-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1p-announcement-004",
+   "stem": "In the phrase '補助金の対象が変わります', what does '対象' mean?",
+   "choices": [
+    "the purpose of the subsidy",
+    "the deadline for applying for the subsidy",
+    "the people or things that qualify for the subsidy",
+    "the amount of the subsidy"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'the people or things that qualify for the subsidy', because the sentence discusses the change in what qualifies for the subsidy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-1p-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -2546,6 +4350,222 @@
    ],
    "answer": 3,
    "explanation": "「旅館のバスが、駅まで迎えに来てくれる」: the inn's bus will pick them up at the station.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dl-1p-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "An increase in tuition fees",
+    "A new requirement to study abroad",
+    "A change in the admissions policy",
+    "A new sports facility"
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the interview is clearly stated in the first line: 「とうほくだいがくが、入学試験の方式を変えます」 ('Tohoku University is changing its entrance examination format'). The rest of the interview provides details about this change.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dl-1p-interview-001",
+   "stem": "What is the main change in the admissions policy?",
+   "choices": [
+    "They will stop offering scholarships",
+    "They will use a new type of entrance exam",
+    "They will increase the number of students",
+    "They will only accept students from Tokyo"
+   ],
+   "answer": 1,
+   "explanation": "The main change in the admissions policy is clearly stated as 「新しい入学試験方式を導入します」 ('We are introducing a new entrance examination format').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1p-interview-001",
+   "stem": "What does 「併願」 mean here?",
+   "choices": [
+    "Applying late",
+    "Applying without an exam",
+    "Applying to multiple universities",
+    "Applying early"
+   ],
+   "answer": 2,
+   "explanation": "「併願」 means 'applying to multiple universities'. This is evident from the context: 「併願を認めます」 ('We will allow multiple applications').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dl-1p-phone_call-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A promotion for new customers",
+    "A new credit card offer",
+    "An increase in loan interest rates",
+    "A change in the bank's operating hours"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is an increase in loan interest rates, as indicated by the phrases 「金利が上がります」and 「貸し出し金利の引き上げ」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dl-1p-phone_call-001",
+   "stem": "What is the reason given for the increase in loan interest rates?",
+   "choices": [
+    "To compete with other banks",
+    "To cover increased operational costs",
+    "To attract more customers",
+    "Due to rising inflation"
+   ],
+   "answer": 3,
+   "explanation": "The reason given for the increase is 「インフレが進んでいる」, which means 'inflation is progressing'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1p-phone_call-001",
+   "stem": "What does 「貸し出し金利」mean here?",
+   "choices": [
+    "Loan interest rates",
+    "Credit card rates",
+    "Mortgage payments",
+    "Bank fees"
+   ],
+   "answer": 0,
+   "explanation": "Here, 「貸し出し金利」refers to the interest rates on loans, as it is discussed in the context of 「引き上げ」 (increase).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dl-1p-phone_call-002",
+   "stem": "What is the main topic of this phone call?",
+   "choices": [
+    "Arranging a visit to a naval port",
+    "Organizing a naval exercise",
+    "Planning a tourist excursion",
+    "Discussing the history of naval ships"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is arranging a visit to a naval port, as indicated by phrases like '海軍基地の見学' (naval port visit) and '見学日程' (visit schedule).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dl-1p-phone_call-002",
+   "stem": "When is the naval port visit scheduled to take place?",
+   "choices": [
+    "This Friday",
+    "Next Monday",
+    "Next Wednesday",
+    "This Thursday"
+   ],
+   "answer": 2,
+   "explanation": "The visit is scheduled for '来週の水曜日' (next Wednesday), as mentioned in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1p-phone_call-002",
+   "stem": "What does  '手配' mean here?",
+   "choices": [
+    "To confirm",
+    "To cancel",
+    "To arrange",
+    "To postpone"
+   ],
+   "answer": 2,
+   "explanation": "The word '手配' means 'to arrange' in this context, as in '見学の手配をしました' (I arranged the visit).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dl-1p-phone_call-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The traditional customs involved in Japanese weddings.",
+    "The difficulty of finding a wedding venue.",
+    "The cost of weddings and ways to reduce expenses.",
+    "The best season to have a wedding."
+   ],
+   "answer": 2,
+   "explanation": "The conversation primarily focuses on the costs associated with weddings, such as the venue, food, and photography, and discusses ways to reduce these expenses. Key phrases include \"結婚式の費用が高い\" (wedding costs are high) and \"予算を抑える方法\" (ways to keep the budget down).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dl-1p-phone_call-003",
+   "stem": "According to the conversation, what is one suggestion to reduce wedding costs?",
+   "choices": [
+    "Having the wedding in the winter.",
+    "Hiring a famous photographer.",
+    "Choosing a less popular venue.",
+    "Serving expensive catering."
+   ],
+   "answer": 0,
+   "explanation": "One suggestion to reduce wedding costs mentioned in the conversation is \"冬に結婚式を挙げる\" (having the wedding in the winter), as it is implied to be less expensive.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1p-phone_call-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1p-phone_call-003",
+   "stem": "What does the phrase \"予算を抑える\" mean here?",
+   "choices": [
+    "To increase the budget.",
+    "To hide the budget.",
+    "To forget the budget.",
+    "To keep the budget down."
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"予算を抑える\" means \"to keep the budget down.\" This is clear from the context of the conversation, where they are discussing ways to reduce wedding expenses.",
    "source": "llm",
    "verified": false
   },
@@ -2874,6 +4894,60 @@
    "verified": false
   },
   {
+   "id": "ja-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dl-2-conversation-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The impact of the new trade agreement on individual consumers",
+    "The history of trade agreements in the Asia-Pacific region",
+    "The environmental regulations included in the new agreement",
+    "The potential benefits and challenges of the Pacific Alliance for Japan"
+   ],
+   "answer": 3,
+   "explanation": "The conversation focuses on the Pacific Alliance and its implications for Japan, including both benefits and challenges. This is evident from statements like 太平洋連合が日本にとって新たな機会を提供する可能性があります and もちろん、課題もあります. The other options are either too specific or not the main focus of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-conversation-003",
+   "stem": "What specific benefit does the male speaker mention regarding the Pacific Alliance?",
+   "choices": [
+    "Lower tariffs on Japanese exports",
+    "Access to new technologies and innovations",
+    "Improved diplomatic relations with neighboring countries",
+    "Increased tourism from member countries"
+   ],
+   "answer": 1,
+   "explanation": "The male speaker mentions that the Pacific Alliance could provide Japan with access to new technologies and innovations, as he says 特に、新興市場での技術やイノベーションへのアクセスが期待されます.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2-conversation-003",
+   "stem": "What does the phrase 互恵的な取引 mean in this context?",
+   "choices": [
+    "One-sided market advantages",
+    "Unfair trade practices",
+    "Restrictive trade agreements",
+    "Mutually beneficial trade"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 互恵的な取引 refers to mutually beneficial trade, as the speakers discuss the potential benefits of the Pacific Alliance for Japan and its trading partners. This is supported by the context of discussing trade agreements and their positive impacts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-2-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2982,6 +5056,60 @@
    "verified": false
   },
   {
+   "id": "ja-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dl-2-interview-003",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The history of air quality regulations in the city",
+    "The benefits of cycling for personal health",
+    "The impact of traffic congestion on the city's economy",
+    "The city's efforts to reduce air pollution"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the city's efforts to reduce air pollution, as indicated by the context of the conversation about air quality and measures being taken. For example, the mayor mentions '大気汚染を減らすための取り組み' (measures to reduce air pollution).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-interview-003",
+   "stem": "According to the environmental specialist, what is one of the main sources of air pollution in the city?",
+   "choices": [
+    "Power plants",
+    "Industrial emissions",
+    "Household waste",
+    "Vehicle exhaust"
+   ],
+   "answer": 3,
+   "explanation": "The environmental specialist states that '自動車の排気ガスが主な原因の一つです' (vehicle exhaust is one of the main causes), identifying it as a primary source of air pollution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2-interview-003",
+   "stem": "In this context, what does '緑地' mean?",
+   "choices": [
+    "Government buildings",
+    "Green spaces",
+    "Industrial zones",
+    "Shopping districts"
+   ],
+   "answer": 1,
+   "explanation": "The mayor discusses '緑地を増やす' (increasing green spaces) as part of the city's efforts to improve air quality, indicating that '緑地' refers to areas with vegetation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-2-liaison-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -3068,6 +5196,60 @@
    ],
    "answer": 0,
    "explanation": "The report ends 「ヘリコプターで水を運ぶことも検討している」 because tankers cannot get in. No new road, relocation or longer hours are mentioned; supply runs 7 a.m. to 6 p.m.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dl-2-news-001",
+   "stem": "What is the main topic of the news report?",
+   "choices": [
+    "The history of online learning platforms",
+    "The challenges of traditional education",
+    "The rise of virtual reality in online education",
+    "The impact of online education on student performance"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the rise of virtual reality in online education, as indicated by the repeated references to VR and its applications in the text, such as 'VRを活用したオンライン教育' and 'VR技術の進歩'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-news-001",
+   "stem": "What is one of the benefits of VR in education mentioned in the report?",
+   "choices": [
+    "It reduces the cost of education",
+    "It increases the number of teachers",
+    "It allows students to experience real-world environments",
+    "It eliminates the need for textbooks"
+   ],
+   "answer": 2,
+   "explanation": "The report mentions that VR allows students to experience real-world environments, as stated in '生徒たちはVRを通じて実際の環境を体験できる'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2-news-001",
+   "stem": "What does '体験' mean here?",
+   "choices": [
+    "Experiment",
+    "Entertainment",
+    "Education",
+    "Experience"
+   ],
+   "answer": 3,
+   "explanation": "The word '体験' is used to mean 'experience' in the context of students experiencing real-world environments through VR, as in '実際の環境を体験できる'",
    "source": "llm",
    "verified": false
   },
@@ -3360,6 +5542,60 @@
    "verified": false
   },
   {
+   "id": "ja-dl-2p-documentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ja-dl-2p-documentary-001",
+   "stem": "What is the main purpose of the Pacific Climate Summit?",
+   "choices": [
+    "To plan a joint military exercise among Pacific nations.",
+    "To discuss economic growth in the Pacific region.",
+    "To establish new trade routes between Pacific countries.",
+    "To address and commit to solving climate change issues in the Pacific region."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to address and commit to solving climate change issues, as stated in the text: \"このサミットの目的は、環境変化の課題に取り組み、太平洋地域の持続可能な未来を築くことにあります。\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-documentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-documentary-001",
+   "stem": "What can be inferred about the participants of the summit?",
+   "choices": [
+    "They are primarily environmental scientists.",
+    "They represent various sectors and interests in their respective countries.",
+    "They are mostly business leaders from the Pacific region.",
+    "They are all heads of state from Pacific nations."
+   ],
+   "answer": 1,
+   "explanation": "The text mentions that participants include \"政府関係者、科学者、企業の代表、そして市民社会のリーダー\" indicating a diverse range of sectors and interests.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-documentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2p-documentary-001",
+   "stem": "In the text, what does the word \"持続可能\" mean?",
+   "choices": [
+    "Socially inclusive",
+    "Culturally rich",
+    "Economically viable",
+    "Environmentally sustainable"
+   ],
+   "answer": 3,
+   "explanation": "The word \"持続可能\" is used in the context of \"持続可能な未来\" (sustainable future), indicating environmental sustainability.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-2p-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -3486,6 +5722,60 @@
    "verified": false
   },
   {
+   "id": "ja-dl-2p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ja-dl-2p-interview-003",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The University of Kyoto's new policy on extracurricular activities",
+    "The University of Kyoto's decision to switch to a lottery system for admissions",
+    "The University of Kyoto's plan to increase the number of students",
+    "The University of Kyoto's new research facilities"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the University of Kyoto's new entrance examination system, specifically the switch to a lottery system for admissions. This is clear from the repeated mentions of the lottery system and its implementation, such as '京都大学は来年度から入学試験のあり方を大きく変えることになりました' and '京都大学は来年度から一般選抜入試を廃止し、新たに Lottery 方式の入試を導入することになりました'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2p-interview-003",
+   "stem": "In the interview, what does the phrase '当選' refer to?",
+   "choices": [
+    "Receiving a scholarship",
+    "Being selected through the lottery system",
+    "Winning a prize in a competition",
+    "Passing an exam"
+   ],
+   "answer": 1,
+   "explanation": "The phrase '当選' in this context refers to being selected through the lottery system. The interviewer asks 'Lottery 方式の入試で「当選」した学生にはどのようなメリットがあるのでしょうか', indicating that '当選' refers to being selected in the lottery-based admissions process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-interview-003",
+   "stem": "What can be inferred about the students who will benefit from this new system?",
+   "choices": [
+    "They will have to pay higher tuition fees",
+    "They will have a higher chance of being admitted regardless of their exam scores",
+    "They will have to attend additional classes",
+    "They will have more time to prepare for their exams"
+   ],
+   "answer": 1,
+   "explanation": "The new lottery system gives students a chance to be admitted regardless of their exam scores. The interviewer asks 'Lottery 方式の入試で「当選」した学生にはどのようなメリットがあるのでしょうか', and the interviewee responds '試験結果に左右されずに入学できる機会が増えることです', indicating that students have a chance to be admitted without being affected by their exam results.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-2p-liaison-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -3572,6 +5862,168 @@
    ],
    "answer": 0,
    "explanation": "He says 「すべてにお応えできるわけではありません」 yet has reviewed flight routes and feels 「なぜできないのかを説明する責任がある」. He does not meet every request, he says the baby story carried weight 「数字…とは違う」, and he does not dismiss the requests.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-news_analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ja-dl-2p-news_analysis-001",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "The increase in tourist arrivals",
+    "A problem with hotel reservation systems",
+    "The benefits of online booking platforms",
+    "The success of a newly opened hotel"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the problem with hotel reservation systems, as indicated by phrases like \"予約のトラブル\" (reservation troubles) and \"システムのエラー\" (system errors).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-news_analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2p-news_analysis-001",
+   "stem": "What does \"ダブルブッキング\" mean here?",
+   "choices": [
+    "Double booking",
+    "Double payment",
+    "Double room",
+    "Double occupancy"
+   ],
+   "answer": 0,
+   "explanation": "The context discusses issues with reservations, specifically \"予約が重複した\" (reservations were duplicated), indicating that \"ダブルブッキング\" refers to double booking.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-news_analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-news_analysis-001",
+   "stem": "What can be inferred about the impact of the reservation issues?",
+   "choices": [
+    "They have led to a decrease in hotel prices",
+    "They have caused customer dissatisfaction",
+    "They have improved the hotel's reputation",
+    "They have increased the number of tourists"
+   ],
+   "answer": 1,
+   "explanation": "The report mentions \"お客様の不満が増加している\" (customer dissatisfaction is increasing), indicating that the reservation issues have negatively impacted customers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ja-dl-2p-speech-001",
+   "stem": "What is the main topic of this speech?",
+   "choices": [
+    "The relocation of the Hokuriku factory to Osaka",
+    "The celebration of the Hokuriku factory's 50th anniversary",
+    "A new factory opening in Osaka",
+    "The expansion of the Hokuriku factory's production line"
+   ],
+   "answer": 0,
+   "explanation": "The speaker explicitly states that the Hokuriku factory will be closing and moving to Osaka. The text says: 「本日、残念ながら、北陸工場の閉鎖及び大阪への移転についてお知らせいたします。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2p-speech-001",
+   "stem": "In the phrase 「事業の効率化」, what does 「効率化」 mean here?",
+   "choices": [
+    "Making operations more efficient",
+    "Expanding the product line",
+    "Improvement of working conditions",
+    "Increasing the number of employees"
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses 「効率化」 to explain why the factory is moving. The text says: 「この移転は、事業の効率化及びコスト削減を図るための重要な一歩です。」, indicating that the move is to make operations more efficient and reduce costs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-speech-001",
+   "stem": "What can be inferred about the employees of the Hokuriku factory?",
+   "choices": [
+    "They will all be laid off immediately",
+    "They will receive a significant pay raise",
+    "They will be offered positions at the new Osaka factory",
+    "They will be required to move to Osaka within a month"
+   ],
+   "answer": 2,
+   "explanation": "The speaker mentions that the company will support the employees in moving to Osaka and that their employment will continue. The text says: 「当社は、従業員の皆様が大阪への移転をスムーズに行えるよう全力でサポートいたします。皆様のご理解とご協力を賜りますよう心からお願い申し上げます。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-analysis-001",
+   "stem": "What is the main idea of this discussion?",
+   "choices": [
+    "Energy subsidies create a dependency among rural communities.",
+    "Energy subsidies have a limited impact on rural economies.",
+    "Energy subsidies are crucial for the development of rural economies.",
+    "Energy subsidies are unnecessary in rural areas."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that energy subsidies are crucial for the development of rural economies. This is evident in statements like 「エネルギー補助金は地方経済の成長に不可欠です」 and 「補助金によって、地方のインフラが整備され、雇用が創出されます」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-analysis-001",
+   "stem": "What can be inferred about the long-term effects of energy subsidies on rural communities?",
+   "choices": [
+    "They lead to increased dependency on external aid.",
+    "They foster self-sufficiency and sustainable development.",
+    "They have no significant long-term effects.",
+    "They cause economic instability in the long run."
+   ],
+   "answer": 1,
+   "explanation": "The inference is that energy subsidies foster self-sufficiency and sustainable development. This is supported by 「補助金は地方の自立的な発展を促進し、持続可能な経済成長を実現します」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-3-analysis-001",
+   "stem": "What does 「持続可能な」 mean here?",
+   "choices": [
+    "Rapid",
+    "Traditional",
+    "Temporary",
+    "Sustainable"
+   ],
+   "answer": 3,
+   "explanation": "Here, 「持続可能な」 means \"sustainable\". This is clear from the context of discussing long-term economic growth and development, as in 「持続可能な経済成長を実現します」.",
    "source": "llm",
    "verified": false
   },
@@ -3716,6 +6168,60 @@
    ],
    "answer": 1,
    "explanation": "She says it is 財政の現実を考えれば無責任な主張. That is plainly critical, so it is not called humane or reasonable, and she says nothing about whether residents have demanded it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-debate-001",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The pros and cons of remote work compared to office work",
+    "The impact of remote work on family life",
+    "The history of office work",
+    "The technology used in remote work"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the debate is the comparison between remote work and office work, as indicated by the repeated references to both types of work and their respective advantages and disadvantages. For example, インタビュアー says, 'リモートワークとオフィスワーク、どちらが優れていると思いますか？'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-debate-001",
+   "stem": "What can be inferred about the candidate's preference?",
+   "choices": [
+    "The candidate prefers office work",
+    "The candidate prefers remote work",
+    "The candidate is indifferent between remote work and office work",
+    "The candidate has not formed an opinion on remote work or office work"
+   ],
+   "answer": 2,
+   "explanation": "The candidate does not express a strong preference for either remote work or office work. They acknowledge the benefits of both, stating that 'リモートワークは柔軟性がありますが、オフィスワークはチームワークを強化します。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-3-debate-001",
+   "stem": "In the context of this debate, what does 'コミュニケーション' refer to?",
+   "choices": [
+    "Communication with colleagues",
+    "Communication with superiors",
+    "Communication with family",
+    "Communication with clients"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'コミュニケーション' refers to communication with colleagues. The candidate mentions that 'オフィスワークは直接的なコミュニケーションが多く、チームワークを強化します。'",
    "source": "llm",
    "verified": false
   },
@@ -4112,6 +6618,114 @@
    ],
    "answer": 3,
    "explanation": "It follows his warning that 「形だけの説明会を重ねれば、かえって不信を深める」 and his call to leave room where input 「実際に変わりうる」. People stop coming because nothing changes, not because they are uninterested; he wants better consultation, not fewer or written-only briefings.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-speech-001",
+   "stem": "What is the main point of this speech?",
+   "choices": [
+    "The importance of infrastructure development in rural areas.",
+    "The benefits of increasing the local tax rate.",
+    "The need for better communication between local governments and residents.",
+    "The speaker's personal achievements in local politics."
+   ],
+   "answer": 2,
+   "explanation": "The speaker emphasizes the need for better communication and understanding between local governments and residents to address community issues effectively. This is evident in statements like 「住民の皆様とのコミュニケーションを改善し、地域の問題を一緒に解決していくことが重要です」 and 「私たちの役割は、住民の声を聞き、その声を政策に反映させることです」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-3-speech-001",
+   "stem": "What does the speaker mean by '地域の課題' here?",
+   "choices": [
+    "Local festivals and events.",
+    "Historical sites and landmarks.",
+    "Challenges faced by the local community.",
+    "Traditional food and customs."
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses '地域の課題' to refer to the problems and challenges faced by the local community, such as 「教育、医療、交通など、地域の課題は多岐にわたります」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-speech-001",
+   "stem": "What can be inferred about the speaker's view on the current state of local governance?",
+   "choices": [
+    "The speaker feels that local governance should focus solely on economic development.",
+    "The speaker believes that local governance is a responsibility that should be handled solely by elected officials.",
+    "The speaker thinks that local governance could be improved with more community involvement.",
+    "The speaker believes that local governance is functioning perfectly as is."
+   ],
+   "answer": 2,
+   "explanation": "The speaker implies that local governance could be improved with more community involvement, as stated in 「住民の皆様とのコミュニケーションを改善し、地域の問題を一緒に解決していくことが重要です」 and 「私たちの役割は、住民の声を聞き、その声を政策に反映させることです」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-speech-002",
+   "stem": "What is the main purpose of the speech?",
+   "choices": [
+    "To describe the history of healthcare in the region",
+    "To announce the opening of a new hospital and discuss its features",
+    "To criticize the current healthcare system",
+    "To explain how to apply for jobs at the new hospital"
+   ],
+   "answer": 1,
+   "explanation": "The speaker explicitly states the purpose in the opening lines: 「今日は、新たに建設された中央病院の開院についてお話ししたいと思います。」This sets the stage for the rest of the speech, which focuses on the new hospital's features and benefits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-3-speech-002",
+   "stem": "What does the speaker mean by 「最先端の医療機器」?",
+   "choices": [
+    "Outdated medical technology",
+    "Basic medical supplies",
+    "Cutting-edge medical equipment",
+    "Administrative tools"
+   ],
+   "answer": 2,
+   "explanation": "The context makes it clear that the new hospital will have advanced technology: 「当院では、最先端の医療機器を導入し、より正確で迅速な診断と治療を実現します。」This implies that the equipment is modern and advanced.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-speech-002",
+   "stem": "What can be inferred about the speaker's attitude towards the new hospital?",
+   "choices": [
+    "Indifferent",
+    "Enthusiastic and optimistic",
+    "Critical",
+    "Skeptical"
+   ],
+   "answer": 1,
+   "explanation": "The speaker's tone throughout the speech is positive and enthusiastic. Phrases like 「喜びをもって」and 「期待しています」indicate a strong sense of optimism and excitement about the new hospital.",
    "source": "llm",
    "verified": false
   }

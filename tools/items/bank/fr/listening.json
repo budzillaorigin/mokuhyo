@@ -93,6 +93,83 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-0p-advertisement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "New Bus Route Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Attention, s'il vous plaît."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Nouvelle ligne de bus à Paris."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "La nouvelle ligne est la 101."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Elle commence le 15 mars."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Merci."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-0p-advertisement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Lost Passport Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Attention s'il vous plaît."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Un passeport a été perdu dans la salle d'attente."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Si vous l'avez trouvé, veuillez le remettre au comptoir d'information."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Merci."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-0p-announcement-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -206,6 +283,196 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-0p-announcement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Transport Strike Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "À l'attention de tous les voyageurs,"
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Les travailleurs des transports sont en grève aujourd'hui."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Ils demandent de meilleurs avantages."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Les bus et les tramways ne fonctionneront pas."
+    },
+    {
+     "speaker": "Annonceur",
+     "voice": "male",
+     "text": "Désolés pour le désagrément."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-0p-announcement-005",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Temporary Metro Line Closure",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Attention, s'il vous plaît."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "female",
+     "text": "La ligne 1 sera fermée temporairement."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Pour travaux de maintenance."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "female",
+     "text": "Merci de votre compréhension."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-0p-short_exchange-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Announcement of a Cultural Event",
+   "body": "",
+   "script": [
+    {
+     "speaker": "L'animateur",
+     "voice": "male",
+     "text": "Bonjour à tous!"
+    },
+    {
+     "speaker": "L'animatrice",
+     "voice": "female",
+     "text": "Bonjour! Ce week-end, c'est la Fête des Lumières."
+    },
+    {
+     "speaker": "L'animateur",
+     "voice": "male",
+     "text": "Oui, la Fête des Lumières aura lieu ce week-end."
+    },
+    {
+     "speaker": "L'animatrice",
+     "voice": "female",
+     "text": "Ne manquez pas l'événement de ce week-end!"
+    },
+    {
+     "speaker": "L'animateur",
+     "voice": "male",
+     "text": "À ce week-end!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-0p-short_exchange-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Border Crossing: Vehicle Inspection",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Agent",
+     "voice": "female",
+     "text": "Bonjour monsieur. Vos documents, s'il vous plaît."
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Les voici."
+    },
+    {
+     "speaker": "Agent",
+     "voice": "female",
+     "text": "Ouvrez votre coffre, s'il vous plaît."
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "D'accord."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-0p-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Earthquake Relief Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Femme",
+     "voice": "female",
+     "text": "Bonjour, ici la mairie de Saint-Martin. Un centre d'aide a été ouvert pour les victimes du tremblement de terre."
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Nous avons besoin de volontaires pour aider à distribuer de la nourriture et des vêtements."
+    },
+    {
+     "speaker": "Femme",
+     "voice": "female",
+     "text": "S'il vous plaît, contactez-nous au 05 55 55 55 55 pour plus d'informations."
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Merci pour votre aide."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-1-announcement-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -238,6 +505,231 @@
      "speaker": "Annonciateur",
      "voice": "male",
      "text": "Merci pour votre attention."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Remembering the Great Fire",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Tu te souviens que c'est l'anniversaire du grand feu cette année, n'est-ce pas?"
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Bien sûr, Marie. Comment pourrais-je oublier? C'était il y a 50 ans."
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Oui, c'était un moment tragique, mais aussi un moment qui a changé notre ville pour toujours."
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Tu as raison. On devrait en parler aux enfants, leur dire comment le grand feu a eu un impact sur notre histoire."
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Exactement. Et nous devrions peut-être visiter le musée pour voir les artefacts de cette époque."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Preparing for the Tournament",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Paul",
+     "voice": "male",
+     "text": "Tu as vu les matchs de la Coupe Nationale hier?"
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Oui, c'était incroyable! Notre équipe a gagné."
+    },
+    {
+     "speaker": "Paul",
+     "voice": "male",
+     "text": "Je sais! L'entraîneur a fait un excellent travail cette année."
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Oui, les joueurs étaient vraiment motivés."
+    },
+    {
+     "speaker": "Paul",
+     "voice": "male",
+     "text": "Quand est le prochain match?"
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "C'est samedi prochain. Tu viens?"
+    },
+    {
+     "speaker": "Paul",
+     "voice": "male",
+     "text": "Bien sûr! Je ne manquerais ça pour rien au monde."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Seeking Employment in France",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Bonjour, je m'appelle Jean. Je cherche du travail en France."
+    },
+    {
+     "speaker": "Femme",
+     "voice": "female",
+     "text": "Quelle sorte de travail cherchez-vous?"
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Je suis un cuisinier. J'ai travaillé dans des restaurants en Espagne."
+    },
+    {
+     "speaker": "Femme",
+     "voice": "female",
+     "text": "Avez-vous des références de vos emplois précédents?"
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Oui, je peux vous fournir des lettres de recommandation."
+    },
+    {
+     "speaker": "Femme",
+     "voice": "female",
+     "text": "Très bien. Nous avons plusieurs postes disponibles. Je vais vous aider à trouver un emploi."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Evacuation Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Allô, ici l'ambassade. Nous appelons à cause du tremblement de terre."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Tout le monde doit évacuer la zone immédiatement."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Rendez-vous au point de rencontre près du parc."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Ne paniquez pas et suivez les instructions."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-conversation-005",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Warning About the Hot Weather",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Marius",
+     "voice": "male",
+     "text": "Salut, Claire, comment ça va?"
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Salut, Marius. Ça va, et toi?"
+    },
+    {
+     "speaker": "Marius",
+     "voice": "male",
+     "text": "Je ne peux pas me plaindre. Il fait très chaud à Paris en ce moment, n'est-ce pas?"
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Oui, c'est une vraie canicule. Il fait très chaud et ensoleillé."
+    },
+    {
+     "speaker": "Marius",
+     "voice": "male",
+     "text": "Tu as raison. On dirait que l'été est enfin arrivé."
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Oui, mais n'oublie pas de boire beaucoup d'eau et de rester à l'ombre."
+    },
+    {
+     "speaker": "Marius",
+     "voice": "male",
+     "text": "Je ferai attention. Merci pour le conseil, Claire."
     }
    ],
    "source": "llm",
@@ -315,6 +807,109 @@
      "speaker": "Radio Speaker",
      "voice": "male",
      "text": "Restez à l'écoute pour plus d'informations."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-instructions-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Relief Distribution After the Earthquake",
+   "body": "",
+   "script": [
+    {
+     "speaker": "L'annonceur",
+     "voice": "male",
+     "text": "Bonjour à tous. Nous vous informons que la répartition des vivres aura lieu ce soir à 18h."
+    },
+    {
+     "speaker": "L'annonceur",
+     "voice": "male",
+     "text": "Rendez-vous sur la place centrale pour recevoir votre part de nourriture."
+    },
+    {
+     "speaker": "La femme",
+     "voice": "female",
+     "text": "N'oubliez pas d'apporter vos récipients pour transporter les vivres."
+    },
+    {
+     "speaker": "L'annonceur",
+     "voice": "male",
+     "text": "Merci de votre coopération. Restez en sécurité."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Invitation to the French Film Festival",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Claire Martin",
+     "voice": "female",
+     "text": "Bonjour, c'est Claire Martin. Je vous appelle pour vous inviter au festival du film français. Le festival commence ce week-end. Il y a des films de différents genres et des activités pour tous. S'il vous plaît, venez et profitez de cette expérience culturelle. Au revoir."
+    },
+    {
+     "speaker": "Répondeur",
+     "voice": "male",
+     "text": "Vous avez un nouveau message."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Voicemail About a Charging Station",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Bonjour, je vous appelle pour vous informer que notre nouvelle station de recharge pour voitures électriques est ouverte."
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "Elle est située près du centre commercial, rue de la Gare."
+    },
+    {
+     "speaker": "Femme",
+     "voice": "female",
+     "text": "Il y a des collations gratuites et un espace confortable pour attendre."
+    },
+    {
+     "speaker": "Femme",
+     "voice": "female",
+     "text": "N'hésitez pas à venir essayer nos services."
+    },
+    {
+     "speaker": "Homme",
+     "voice": "male",
+     "text": "À bientôt!"
     }
    ],
    "source": "llm",
@@ -421,6 +1016,108 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-1p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "New Metro Line Opening",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Bonjour à tous,"
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Nous avons le plaisir de vous annoncer l'ouverture prochaine de l'extension de la ligne 14 du métro."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Cette nouvelle ligne reliera la gare Saint-Lazare au quartier d'affaires de La Défense."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Les travaux sont presque terminés et nous prévoyons une mise en service pour le mois de décembre."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Cette extension réduira considérablement les temps de trajet pour les usagers."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Nous vous tiendrons informés des dates exactes et des horaires dans les semaines à venir."
+    },
+    {
+     "speaker": "Annonciateur",
+     "voice": "male",
+     "text": "Merci pour votre attention et bonne journée à tous."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1p-announcement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Harbor Festivities Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Hôte",
+     "voice": "male",
+     "text": "Bonjour à tous,"
+    },
+    {
+     "speaker": "Hôte",
+     "voice": "male",
+     "text": "Nous avons le plaisir de vous annoncer les fêtes du port qui auront lieu ce week-end."
+    },
+    {
+     "speaker": "Hôte",
+     "voice": "male",
+     "text": "Venez nombreux découvrir les animations musicales et les stands de nourriture."
+    },
+    {
+     "speaker": "Hôte",
+     "voice": "male",
+     "text": "Samedi, visitez le navire La Marseillaise, ouvert au public de 10h à 18h."
+    },
+    {
+     "speaker": "Hôte",
+     "voice": "male",
+     "text": "Dimanche, ne manquez pas le spectacle de danses traditionnelles sur le quai principal."
+    },
+    {
+     "speaker": "Hôte",
+     "voice": "male",
+     "text": "Nous vous attendons nombreux pour célébrer ensemble cet événement."
+    },
+    {
+     "speaker": "Hôte",
+     "voice": "male",
+     "text": "Merci et à bientôt au port!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-1p-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -509,6 +1206,144 @@
      "speaker": "Interviewer",
      "voice": "male",
      "text": "Au revoir."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "interview",
+   "title": "A Cultural Exchange Opportunity",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Bonjour, bienvenue dans notre émission. Aujourd'hui, nous avons avec nous Claire, qui a participé à un programme d'échange culturel. Claire, pouvez-vous nous parler de votre expérience?"
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Bien sûr! J'ai passé six mois incroyables à Québec dans le cadre du programme. C'était une expérience d'immersion totale, où j'ai pu pratiquer le français tous les jours."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Qu'avez-vous appris pendant votre séjour?"
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "J'ai appris beaucoup sur la culture québécoise, comme leurs traditions, leur musique et leur cuisine. J'ai aussi amélioré mon français et j'ai rencontré des gens formidables."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Merci, Claire, pour partager votre expérience avec nous."
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "De rien, c'était un plaisir!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "interview",
+   "title": "The Future of Electric Cars",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "male",
+     "text": "Bonjour et bienvenue dans notre émission. Aujourd'hui, nous avons avec nous Monsieur Dubois, expert en voitures électriques. Monsieur Dubois, pourriez-vous nous parler des dernières innovations dans ce domaine?"
+    },
+    {
+     "speaker": "Monsieur Dubois",
+     "voice": "female",
+     "text": "Bien sûr. Actuellement, il y a beaucoup de recherches et de développements dans le domaine des voitures électriques. Les nouvelles technologies qui rendent les voitures électriques plus accessibles et plus performantes sont en cours de développement."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "male",
+     "text": "Quels sont les avantages des voitures électriques par rapport aux voitures à essence?"
+    },
+    {
+     "speaker": "Monsieur Dubois",
+     "voice": "female",
+     "text": "Les voitures électriques sont plus respectueuses de l'environnement, car elles n'émettent pas de gaz à effet de serre. De plus, elles sont plus silencieuses et nécessitent moins de maintenance que les voitures à essence."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "male",
+     "text": "Quelles sont les prochaines innovations que nous pouvons attendre dans le domaine des voitures électriques?"
+    },
+    {
+     "speaker": "Monsieur Dubois",
+     "voice": "female",
+     "text": "Nous pouvons nous attendre à des améliorations significatives dans la technologie des batteries, ce qui augmentera l'autonomie des voitures électriques. De plus, il y a des recherches en cours sur les systèmes de recharge plus rapides et plus efficaces."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1p-news_brief-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Lost Passport Report",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour à tous, nous avons une annonce importante à faire."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Un passeport perdu a été remis à la police."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Le passeport a été trouvé dans un café situé au centre-ville."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "La personne qui a trouvé le passeport l'a remis aux autorités."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Si vous avez perdu votre passeport, veuillez contacter la police pour plus d'informations."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Merci de votre attention."
     }
    ],
    "source": "llm",
@@ -626,6 +1461,342 @@
      "speaker": "Femme",
      "voice": "female",
      "text": "De rien. À bientôt!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1p-phone_call-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Factory Closure Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Employée",
+     "voice": "female",
+     "text": "Bonjour, ici Marie Dubois de l'usine TechnoSpring à Lille."
+    },
+    {
+     "speaker": "Employée",
+     "voice": "female",
+     "text": "Je vous appelle pour vous informer d'une décision importante."
+    },
+    {
+     "speaker": "Employé",
+     "voice": "male",
+     "text": "Ah bon, quelle est cette décision?"
+    },
+    {
+     "speaker": "Employée",
+     "voice": "female",
+     "text": "Malheureusement, nous devons fermer l'usine."
+    },
+    {
+     "speaker": "Employé",
+     "voice": "male",
+     "text": "Quand est-ce que cela va se passer?"
+    },
+    {
+     "speaker": "Employée",
+     "voice": "female",
+     "text": "L'usine fermera ses portes dans trois mois."
+    },
+    {
+     "speaker": "Employée",
+     "voice": "female",
+     "text": "Nous mettrons en place des mesures sociales pour soutenir nos employés."
+    },
+    {
+     "speaker": "Employé",
+     "voice": "male",
+     "text": "D'accord, merci pour l'information."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1p-phone_call-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Foreign Nationals Evacuation Notice",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Allô, ici l'ambassade des États-Unis. Nous vous appelons pour une urgence."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Il y a une situation grave en ville et nous devons évacuer immédiatement tous les ressortissants étrangers."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Veuillez vous rendre au point de rassemblement près de l'ambassade dans les plus brefs délais."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Préparez un sac avec vos documents importants, de l'eau et des provisions pour au moins 72 heures."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Restez calme et suivez les instructions des autorités locales et de notre personnel."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "male",
+     "text": "Merci pour votre coopération. Au revoir."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-briefing-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "briefing",
+   "title": "The Mayor's Briefing on Corruption",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour Monsieur le Maire, pouvez-vous nous parler de l'enquête récente sur la corruption au sein de votre administration?"
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Bonjour. Oui, effectivement, une enquête interne a révélé des actes de corruption impliquant plusieurs de nos fonctionnaires."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Quelles mesures avez-vous prises suite à ces révélations?"
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "J'ai ordonné la suspension immédiate des fonctionnaires impliqués dans cette affaire. De plus, les démissions des responsables impliqués sont en cours."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Quelles sont les prochaines étapes dans cette affaire?"
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Nous collaborons étroitement avec les autorités judiciaires pour assurer que justice soit faite. Nous avons également renforcé nos mesures de contrôle interne pour prévenir de futurs incidents."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Merci Monsieur le Maire pour ces informations."
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Je vous en prie. Merci à tous."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-briefing-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Hotel Reservation Mix-Up",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Client",
+     "voice": "female",
+     "text": "Bonjour, je suis Marie Dubois. J'ai une réservation pour ce soir."
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "male",
+     "text": "Bonjour Madame Dubois. Un instant, je vais vérifier. Oui, voici votre réservation pour une chambre simple."
+    },
+    {
+     "speaker": "Client",
+     "voice": "female",
+     "text": "Parfait. Je serai là vers 18 heures."
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "male",
+     "text": "Je suis désolé, Madame Dubois, mais nous avons eu une surréservation et nous n'avons plus de chambres disponibles."
+    },
+    {
+     "speaker": "Client",
+     "voice": "female",
+     "text": "Quoi? Mais j'ai payé un acompte! Je veux une solution."
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "male",
+     "text": "Nous sommes vraiment désolés pour ce désagrément. Nous pouvons vous offrir un remboursement immédiat de votre acompte."
+    },
+    {
+     "speaker": "Client",
+     "voice": "female",
+     "text": "Je voudrais un remboursement de mon acompte, s'il vous plaît."
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "male",
+     "text": "Bien sûr, Madame Dubois. Je vais m'en occuper tout de suite."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-briefing-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Conditions at Refugee Camp",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Bonjour à tous, bienvenue à cette brève réunion d'information sur la situation du camp de réfugiés de Lumières."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "La situation actuelle est tendue, mais nous faisons de notre mieux pour gérer la situation."
+    },
+    {
+     "speaker": "Travailleur humanitaire",
+     "voice": "female",
+     "text": "Nous avons environ 2000 réfugiés ici, et le nombre augmente chaque jour."
+    },
+    {
+     "speaker": "Travailleur humanitaire",
+     "voice": "female",
+     "text": "Il y a une pénurie de tentes, ce qui signifie que certaines familles doivent partager un abri."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Les leaders communautaires travaillent avec nous pour assurer que les ressources sont distribuées équitablement."
+    },
+    {
+     "speaker": "Travailleur humanitaire",
+     "voice": "female",
+     "text": "Les travailleurs humanitaires rapportent que les conditions sont difficiles, mais ils font de leur mieux pour aider."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Nous avons besoin de plus de soutien international pour faire face à cette crise."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Merci pour votre attention. Nous vous tiendrons informés des développements."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Refugee Camp Coordination",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Jean",
+     "voice": "male",
+     "text": "Salut Marie, comment ça se passe aujourd'hui au camp de réfugiés?"
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Salut Jean, c'est assez intense. Nous avons eu l'arrivée de nouveaux réfugiés ce matin."
+    },
+    {
+     "speaker": "Jean",
+     "voice": "male",
+     "text": "Ah bon? Combien de nouveaux arrivants?"
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Environ cinquante personnes. Nous avons besoin de plus de tentes et de personnel pour les accueillir."
+    },
+    {
+     "speaker": "Jean",
+     "voice": "male",
+     "text": "D'accord, je vais voir ce que je peux faire pour le personnel. Et les ressources, tout est sous contrôle?"
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Pas vraiment. Le système de distribution d'eau pose problème. Nous avons besoin de plus de réserves."
+    },
+    {
+     "speaker": "Jean",
+     "voice": "male",
+     "text": "Je comprends. Je vais contacter nos partenaires pour voir s'ils peuvent nous aider avec ça."
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Merci, Jean. C'est un vrai défi de coordonner tout ça, mais nous faisons de notre mieux."
+    },
+    {
+     "speaker": "Jean",
+     "voice": "male",
+     "text": "Je sais, Marie. Nous sommes tous là pour aider. Tiens-moi au courant si tu as besoin de quelque chose d'autre."
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Bien sûr, Jean. Merci pour ton soutien."
     }
    ],
    "source": "llm",
@@ -828,6 +1999,271 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "news",
+   "title": "France Faces Demographic Challenge",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour à tous, nous parlons aujourd'hui d'un défi majeur pour la France : le vieillissement de sa population."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Selon les dernières projections de l'INSEE, d'ici 2030, 35 % de la population française aura plus de 60 ans."
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "Ce vieillissement démographique a des conséquences importantes sur notre économie."
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "Avec moins de jeunes actifs pour financer les retraites, le système devient de plus en plus difficile à équilibrer."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Le gouvernement envisage plusieurs mesures pour répondre à ce défi."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Parmi celles-ci, on trouve des incitations à la natalité et des réformes des retraites."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Mais ces mesures suffiront-elles à inverser la tendance ? C'est la question que se posent aujourd'hui de nombreux économistes."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-news-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "news",
+   "title": "Expansion of Online Learning in France",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour à tous, aujourd'hui nous parlons de l'évolution de l'éducation en France avec l'essor des plateformes d'apprentissage en ligne."
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Effectivement, les plateformes d'apprentissage en ligne connaissent un essor fulgurant. Près de 60% des élèves français ont déjà utilisé ces plateformes."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Quels sont les avantages de ces plateformes selon vous?"
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Elles offrent une grande flexibilité, permettant aux élèves d'apprendre à leur propre rythme et selon leur emploi du temps."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Et comment les écoles traditionnelles réagissent-elles à cette évolution?"
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Elles intègrent de plus en plus ces outils dans leurs programmes pour rester compétitives et répondre aux besoins des élèves."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Merci pour ces éclaircissements. Nous allons maintenant passer à..."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-news-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "news",
+   "title": "New AI Regulations in France",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "La France s'apprête à adopter de nouvelles réglementations pour encadrer le développement et l'utilisation de l'intelligence artificielle."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Ces règles, qui devraient être annoncées dans les prochaines semaines, visent à garantir que l'IA soit utilisée de manière éthique et responsable."
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "Il est crucial que nous établissions des normes claires pour l'IA, surtout dans des domaines sensibles comme la santé et la finance."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Les nouvelles réglementations exigeront la transparence dans les processus de prise de décision des systèmes d'IA."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Elles imposeront également des obligations strictes en matière de protection des données personnelles."
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "Les acteurs du secteur technologique ont été consultés tout au long du processus de rédaction de ces règles."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Le gouvernement espère que ces mesures encourageront l'innovation tout en protégeant les droits des citoyens."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Les détails complets des nouvelles réglementations seront dévoilés lors d'une conférence de presse prochaine."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-report-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Heat Wave in Lyon",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour à tous, nous suivons de près la situation à Lyon où une vague de chaleur sans précédent sévit depuis plusieurs jours."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Les températures dépassent allègrement les 35 degrés, ce qui commence à avoir des répercussions sur la vie quotidienne."
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "En effet, les tramways surchauffent et doivent réduire leurs horaires. Les écoles sont fermées et les événements en plein air sont annulés ou reportés."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Les autorités appellent la population à rester vigilante et à suivre les conseils de sécurité."
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "Il est crucial de bien s'hydrater, de rester à l'ombre et de vérifier régulièrement sur les personnes vulnérables."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "La mairie de Lyon a également mis en place des espaces climatisés ouverts au public pour offrir un refuge contre la chaleur."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Nous vous tiendrons informés de l'évolution de la situation. Restez avec nous pour plus de détails."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Bank of France Discusses Inflation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "male",
+     "text": "Bonjour à tous, nous sommes ici devant la Banque de France pour une annonce importante sur la situation économique actuelle."
+    },
+    {
+     "speaker": "Représentant de la Banque de France",
+     "voice": "female",
+     "text": "Bonjour, en effet, nous constatons une inflation croissante qui affecte le pouvoir d'achat des ménages."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "male",
+     "text": "Quelles mesures la Banque de France prévoit-elle de prendre pour contrer cette inflation?"
+    },
+    {
+     "speaker": "Représentant de la Banque de France",
+     "voice": "female",
+     "text": "Nous allons augmenter les taux d'intérêt pour stabiliser les prix et soutenir la valeur de l'euro."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "male",
+     "text": "Et quels sont les secteurs les plus touchés par cette inflation?"
+    },
+    {
+     "speaker": "Représentant de la Banque de France",
+     "voice": "female",
+     "text": "Principalement l'énergie, l'alimentation et les transports, qui sont des postes de dépenses importants pour les ménages."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "male",
+     "text": "Merci pour ces informations. Nous restons à votre disposition pour toute question complémentaire."
+    },
+    {
+     "speaker": "Représentant de la Banque de France",
+     "voice": "female",
+     "text": "Merci à vous, et n'hésitez pas à consulter notre site web pour plus de détails."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-2p-documentary-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -955,6 +2391,280 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-2p-documentary-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "The Great Escape: A Ski Holiday Gone Wrong",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Réceptionniste",
+     "voice": "female",
+     "text": "Bonjour, bienvenue à l'hôtel Mont Blanc. Comment puis-je vous aider ?"
+    },
+    {
+     "speaker": "Client",
+     "voice": "male",
+     "text": "Bonjour, nous avons une réservation au nom de Dubois."
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "female",
+     "text": "Un moment, je regarde... Ah, oui, M. et Mme Dubois, chambre avec vue sur la mer, c'est bien cela ?"
+    },
+    {
+     "speaker": "Client",
+     "voice": "male",
+     "text": "C'est exact."
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "female",
+     "text": "Je suis désolé, mais nous avons une surréservation et nous ne pouvons pas vous loger. Vous voulez que nous partions ?"
+    },
+    {
+     "speaker": "Client",
+     "voice": "male",
+     "text": "Quoi ? Mais nous avons payé d'avance !"
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "female",
+     "text": "Je comprends, mais nous n'avons pas d'autres chambres disponibles. Nous pouvons vous rembourser ou vous trouver un autre hôtel dans la région."
+    },
+    {
+     "speaker": "Client",
+     "voice": "male",
+     "text": "C'est inacceptable ! Nous avons prévu des vacances en famille ici et maintenant vous nous dites que nous devons partir ?"
+    },
+    {
+     "speaker": "Réceptionniste",
+     "voice": "female",
+     "text": "Je suis vraiment désolée pour ce désagrément. Nous ferons de notre mieux pour vous trouver une solution."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Tech Innovators on the Move",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Bonjour et bienvenue dans notre émission. Aujourd'hui, nous avons avec nous Jean-Luc Martin, le PDG de TechSolutions, une entreprise de logiciels innovants. Bonjour Jean-Luc, merci d'être avec nous."
+    },
+    {
+     "speaker": "Jean-Luc Martin",
+     "voice": "male",
+     "text": "Bonjour, merci de m'avoir invité."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Jean-Luc, je sais que TechSolutions traverse une période de transition. Pouvez-vous nous en dire plus à ce sujet?"
+    },
+    {
+     "speaker": "Jean-Luc Martin",
+     "voice": "male",
+     "text": "Bien sûr. Notre entreprise déménage son siège social à Lyon. C'est une étape importante pour nous."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Pourquoi avoir choisi Lyon?"
+    },
+    {
+     "speaker": "Jean-Luc Martin",
+     "voice": "male",
+     "text": "Nous avons choisi Lyon pour plusieurs raisons, notamment sa scène technologique florissante. Lyon offre un environnement dynamique pour les startups technologiques. De plus, la ville dispose d'un vivier de talents exceptionnel."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Comment les employés réagissent-ils à ce déménagement?"
+    },
+    {
+     "speaker": "Jean-Luc Martin",
+     "voice": "male",
+     "text": "Globalement, les employés sont enthousiastes. Bien sûr, il y a des défis à relever, mais nous sommes convaincus que ce déménagement profite à tous. Nous organisons d'ailleurs des visites de la ville pour aider les employés à s'installer."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Quels sont les principaux défis que vous anticipez?"
+    },
+    {
+     "speaker": "Jean-Luc Martin",
+     "voice": "male",
+     "text": "L'un des principaux défis est de maintenir la cohésion d'équipe pendant la transition. Nous mettons en place des initiatives pour renforcer les liens entre les employés. Nous prévoyons également des sessions de formation pour les aider à s'adapter à leur nouvel environnement."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Merci Jean-Luc pour ces informations. Bonne chance avec votre déménagement."
+    },
+    {
+     "speaker": "Jean-Luc Martin",
+     "voice": "male",
+     "text": "Merci beaucoup."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Preserving Indigenous Languages in the Digital Age",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Intervieweuse",
+     "voice": "female",
+     "text": "Bonjour et merci d'être avec nous aujourd'hui. Nous avons le plaisir d'accueillir Marie Dubois, coordinatrice d'un programme d'échange culturel qui vise à préserver les langues autochtones."
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Bonjour et merci de m'avoir invitée. Oui, notre programme s'adresse principalement aux communautés innues et atikamekw au Québec."
+    },
+    {
+     "speaker": "Intervieweuse",
+     "voice": "female",
+     "text": "Pouvez-vous nous parler des défis auxquels vous êtes confrontés dans la préservation de ces langues à l'ère du numérique?"
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Bien sûr. L'un des principaux défis est la médiation linguistique. Nous devons trouver des moyens d'intégrer ces langues dans les technologies numériques tout en respectant leur culture et leurs traditions."
+    },
+    {
+     "speaker": "Intervieweuse",
+     "voice": "female",
+     "text": "Comment votre programme facilite-t-il le dialogue entre les communautés autochtones et le reste du monde?"
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Nous organisons des ateliers et des formations pour les jeunes des communautés. Nous les encourageons à utiliser les réseaux sociaux et les plateformes numériques pour partager leur culture et leur langue."
+    },
+    {
+     "speaker": "Intervieweuse",
+     "voice": "female",
+     "text": "Quels sont les résultats concrets de votre programme jusqu'à présent?"
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Nous avons vu une augmentation de l'utilisation de la langue innu dans les écoles et les foyers. De plus, les jeunes sont plus fiers de leur héritage linguistique et culturel."
+    },
+    {
+     "speaker": "Intervieweuse",
+     "voice": "female",
+     "text": "Merci beaucoup pour cette discussion éclairante."
+    },
+    {
+     "speaker": "Invité",
+     "voice": "male",
+     "text": "Je vous en prie, merci de m'avoir invitée."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-panel_discussion-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Rising Food Prices in France: A Panel Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Bienvenue à tous à ce panel de discussion sur la hausse des prix des produits alimentaires en France."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Nous avons avec nous aujourd'hui trois experts pour discuter de cette question cruciale."
+    },
+    {
+     "speaker": "Économiste",
+     "voice": "female",
+     "text": "Merci de nous recevoir. En effet, les prix des produits alimentaires ont augmenté de manière significative ces derniers mois."
+    },
+    {
+     "speaker": "Agriculteur",
+     "voice": "male",
+     "text": "Plusieurs facteurs contribuent à cette hausse des prix, notamment l'augmentation des coûts de production et de distribution."
+    },
+    {
+     "speaker": "Consommateur",
+     "voice": "female",
+     "text": "En tant que consommateur, je suis très préoccupé par cette situation. Comment pouvons-nous faire face à cette augmentation des prix?"
+    },
+    {
+     "speaker": "Économiste",
+     "voice": "female",
+     "text": "Il est vrai que cette situation est complexe. Cependant, il est important de comprendre les causes sous-jacentes."
+    },
+    {
+     "speaker": "Agriculteur",
+     "voice": "male",
+     "text": "Par exemple, l'augmentation des coûts de carburant a un impact direct sur le transport des produits alimentaires."
+    },
+    {
+     "speaker": "Consommateur",
+     "voice": "female",
+     "text": "Je vois. Mais quelles sont les solutions possibles pour atténuer cette hausse des prix?"
+    },
+    {
+     "speaker": "Économiste",
+     "voice": "female",
+     "text": "Une approche pourrait être de soutenir les agriculteurs locaux et de promouvoir des pratiques agricoles durables."
+    },
+    {
+     "speaker": "Agriculteur",
+     "voice": "male",
+     "text": "Tout à fait. De plus, une meilleure gestion des ressources et une réduction des pertes alimentaires pourraient également aider."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Merci à tous pour cette discussion enrichissante. Nous espérons que cela aidera à mieux comprendre les enjeux actuels."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-2p-panel_discussion-002",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -1006,6 +2716,72 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-2p-panel_discussion-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Earthquake Aftermath: Coordinating Relief Efforts",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Bienvenue à ce panel sur les efforts de secours après le séisme."
+    },
+    {
+     "speaker": "Experte en gestion de crise",
+     "voice": "female",
+     "text": "Dans les premières heures, la coordination entre les services est cruciale."
+    },
+    {
+     "speaker": "Représentant des services d'urgence",
+     "voice": "male",
+     "text": "Nous avons déployé des équipes sur le terrain pour évaluer les dégâts."
+    },
+    {
+     "speaker": "Experte en gestion de crise",
+     "voice": "female",
+     "text": "La logistique est un défi majeur. Nous devons nous assurer que les fournitures arrivent à temps."
+    },
+    {
+     "speaker": "Représentant des services d'urgence",
+     "voice": "male",
+     "text": "Nous travaillons en collaboration avec les services locaux pour maximiser notre impact."
+    },
+    {
+     "speaker": "Experte en santé publique",
+     "voice": "female",
+     "text": "Les besoins médicaux sont immenses. Nous avons besoin de plus de personnel et de fournitures médicales."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Quels sont les principaux défis auxquels vous faites face?"
+    },
+    {
+     "speaker": "Représentant des services d'urgence",
+     "voice": "male",
+     "text": "Accéder à certaines zones est difficile en raison des dégâts aux infrastructures."
+    },
+    {
+     "speaker": "Experte en santé publique",
+     "voice": "female",
+     "text": "Nous devons également nous assurer que les populations vulnérables sont prises en charge."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Merci à tous pour cette discussion. Continuez votre travail essentiel."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-2p-speech-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -1048,6 +2824,214 @@
      "speaker": "Animateur",
      "voice": "male",
      "text": "Merci pour cette intervention éclairante. Nous ouvrirons maintenant la discussion aux questions du public."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Reforming Energy Subsidies in France",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Mesdames et messieurs, bonjour. Aujourd'hui, nous allons parler des réformes prévues pour les subventions énergétiques en France."
+    },
+    {
+     "speaker": "Ministre",
+     "voice": "female",
+     "text": "Merci. En effet, notre système actuel de subventions énergétiques est devenu ingérable et coûteux. Nous devons agir pour assurer la durabilité de notre budget."
+    },
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Quelles sont les mesures spécifiques que vous envisagez, Madame la Ministre?"
+    },
+    {
+     "speaker": "Ministre",
+     "voice": "female",
+     "text": "Nous allons progressivement réduire certaines subventions énergétiques pour diminuer le déficit budgétaire. Cependant, nous maintenons notre engagement à soutenir les ménages modestes."
+    },
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Pouvez-vous nous donner plus de détails sur cette réduction progressive?"
+    },
+    {
+     "speaker": "Ministre",
+     "voice": "female",
+     "text": "Bien sûr. Nous prévoyons de réduire les subventions pour les énergies fossiles sur une période de cinq ans. Cela permettra aux consommateurs et aux entreprises de s'adapter à ces changements."
+    },
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Et qu'en est-il des énergies renouvelables?"
+    },
+    {
+     "speaker": "Ministre",
+     "voice": "female",
+     "text": "Nous continuerons à soutenir les énergies renouvelables, car elles sont essentielles pour notre transition énergétique. Les subventions dans ce domaine resteront stables."
+    },
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Merci, Madame la Ministre, pour ces éclaircissements."
+    },
+    {
+     "speaker": "Ministre",
+     "voice": "female",
+     "text": "Je vous en prie. Nous sommes ouverts à vos questions et suggestions. Ensemble, nous pouvons construire un avenir énergétique durable pour la France."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-speech-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "speech",
+   "title": "The Future of Renewable Energy in France",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Présentateur",
+     "voice": "female",
+     "text": "Mesdames et Messieurs, bonjour. Aujourd'hui, nous allons discuter d'un sujet crucial pour l'avenir de notre pays : les subventions énergétiques."
+    },
+    {
+     "speaker": "Orateur",
+     "voice": "male",
+     "text": "Le gouvernement a annoncé son intention de réduire progressivement les subventions énergétiques. Cette décision fait partie de notre engagement à promouvoir des sources d'énergie plus durables et à réduire notre empreinte carbone."
+    },
+    {
+     "speaker": "Orateur",
+     "voice": "male",
+     "text": "Actuellement, une grande partie de ces subventions va aux énergies fossiles. Cependant, ces subventions ne sont plus viables à long terme."
+    },
+    {
+     "speaker": "Orateur",
+     "voice": "male",
+     "text": "Il s'agit de réorienter ces aides vers des sources d'énergie plus durables comme l'éolien, le solaire et l'hydroélectrique."
+    },
+    {
+     "speaker": "Orateur",
+     "voice": "male",
+     "text": "Nous savons que cette transition ne sera pas facile. Mais c'est une étape nécessaire pour assurer un avenir plus vert et plus propre pour les générations futures."
+    },
+    {
+     "speaker": "Orateur",
+     "voice": "male",
+     "text": "Nous travaillons également sur des mesures pour soutenir les entreprises et les ménages pendant cette transition."
+    },
+    {
+     "speaker": "Orateur",
+     "voice": "male",
+     "text": "Nous croyons que cette réforme est essentielle pour atteindre nos objectifs climatiques et pour positionner la France comme un leader dans la lutte contre le changement climatique."
+    },
+    {
+     "speaker": "Présentateur",
+     "voice": "female",
+     "text": "Merci pour votre attention. Nous ouvrons maintenant la séance aux questions."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-speech-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Economic Policy Debate: Balancing Inflation and Growth",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Mesdames et messieurs, bonjour et bienvenue à cette conférence économique. Notre premier intervenant est M. Pierre Laurent, gouverneur de la Banque de France."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Merci, monsieur l'animateur. Chers collègues, mesdames et messieurs,"
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Aujourd'hui, je voudrais parler d'un sujet crucial pour notre économie : la relation entre l'inflation et les taux d'intérêt."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Comme vous le savez, l'inflation reste trop élevée à 3.5 pour cent. C'est pourquoi nous devons intensifier notre lutte contre l'inflation."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Cependant, nous devons également être conscients des effets de nos politiques sur la croissance économique."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Augmenter les taux d'intérêt peut aider à réduire l'inflation, mais cela peut aussi freiner la croissance."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "C'est un équilibre délicat que nous devons trouver. Nous devons serrer les boulons sur notre politique monétaire,"
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "mais nous ne devons pas étouffer la croissance économique."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Il est essentiel que nous agissions de manière pragmatique et flexible."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Nous devons être prêts à ajuster notre politique en fonction de l'évolution de la situation économique."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "En conclusion, mesdames et messieurs, la lutte contre l'inflation est une priorité,"
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "mais nous ne devons pas perdre de vue l'importance de la croissance économique."
+    },
+    {
+     "speaker": "Pierre Laurent",
+     "voice": "female",
+     "text": "Merci de votre attention."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Merci, M. Laurent, pour cette intervention éclairante."
     }
    ],
    "source": "llm",
@@ -1194,6 +3178,87 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-3-analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Cultural Bridge: A Program of Exchange",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Bienvenue à tous dans notre émission spéciale sur le programme d'échange culturel."
+    },
+    {
+     "speaker": "Invité 1",
+     "voice": "male",
+     "text": "Merci de nous recevoir. Ce programme est vraiment unique en son genre."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Pourriez-vous nous en dire plus sur les objectifs de ce programme?"
+    },
+    {
+     "speaker": "Invité 1",
+     "voice": "male",
+     "text": "Bien sûr. Le programme a été créé pour promouvoir la compréhension mutuelle et la coopération internationale parmi les jeunes."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Et comment cela se passe-t-il concrètement?"
+    },
+    {
+     "speaker": "Invité 2",
+     "voice": "female",
+     "text": "Les participants vivent avec des familles d'accueil, découvrent les musées, les sites historiques et les traditions locales. Ils participent également à des ateliers et des discussions sur divers sujets culturels."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Quels sont les critères pour participer à ce programme?"
+    },
+    {
+     "speaker": "Invité 1",
+     "voice": "male",
+     "text": "Le programme est ouvert à tous les jeunes de 15 à 18 ans, quels que soient leur origine, leur culture ou leur niveau de langue. L'important est leur motivation et leur ouverture d'esprit."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Pouvez-vous nous donner des exemples de succès de ce programme?"
+    },
+    {
+     "speaker": "Invité 2",
+     "voice": "female",
+     "text": "Absolument. Le programme a permis à de nombreux jeunes de découvrir de nouvelles cultures et de développer une compréhension mutuelle. Grâce à ce programme, des amitiés durables se sont formées et des stéréotypes ont été brisés."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "C'est vraiment inspiring. Merci à tous les deux pour cette discussion enrichissante."
+    },
+    {
+     "speaker": "Invité 1",
+     "voice": "male",
+     "text": "Merci à vous."
+    },
+    {
+     "speaker": "Invité 2",
+     "voice": "female",
+     "text": "Merci de nous avoir invités."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-3-debate-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -1256,6 +3321,376 @@
      "speaker": "Modérateur",
      "voice": "male",
      "text": "Merci à tous les deux pour cette discussion enrichissante."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-debate-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Future of Artificial Intelligence: A Global Debate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Bienvenue à ce débat international sur l'avenir de l'intelligence artificielle. Nous avons avec nous deux experts renommés pour discuter des défis et des opportunités que l'IA présente."
+    },
+    {
+     "speaker": "Experte en IA",
+     "voice": "female",
+     "text": "Merci. Je crois que l'IA a le potentiel de transformer de nombreux secteurs, de la santé à l'éducation, en augmentant l'efficacité et en créant de nouvelles opportunités."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "C'est un point de vue intéressant. Et qu'en est-il des préoccupations éthiques, Madame?"
+    },
+    {
+     "speaker": "Experte en IA",
+     "voice": "female",
+     "text": "L'éthique de l'intelligence artificielle est cruciale. Nous devons nous assurer que les développements de l'IA sont responsables et respectent les droits humains."
+    },
+    {
+     "speaker": "Expert en Technologie",
+     "voice": "male",
+     "text": "Je suis d'accord sur l'importance de l'éthique, mais nous ne devons pas négliger l'innovation. Les régulations trop strictes pourraient freiner le progrès."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Intéressant. Pourriez-vous donner des exemples concrets d'applications de l'IA dans le domaine de la santé, Madame?"
+    },
+    {
+     "speaker": "Experte en IA",
+     "voice": "female",
+     "text": "Bien sûr. L'IA peut aider à diagnostiquer des maladies à un stade précoce, personnaliser les traitements et même prédire les épidémies."
+    },
+    {
+     "speaker": "Expert en Technologie",
+     "voice": "male",
+     "text": "Absolument. Et dans le secteur de l'éducation, l'IA peut personnaliser l'apprentissage, rendant l'éducation plus accessible et efficace."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Quels sont les défis majeurs que nous devons relever pour tirer pleinement parti de l'IA?"
+    },
+    {
+     "speaker": "Experte en IA",
+     "voice": "female",
+     "text": "L'un des défis majeurs est la protection des données. Nous devons nous assurer que les informations personnelles sont sécurisées et utilisées de manière responsable."
+    },
+    {
+     "speaker": "Expert en Technologie",
+     "voice": "male",
+     "text": "Je serais également inquiété par la dépendance croissante à l'égard de l'IA. Il est essentiel de maintenir un équilibre entre l'automatisation et l'intervention humaine."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Merci à tous les deux pour cette discussion enrichissante. Cela conclut notre débat sur l'avenir de l'intelligence artificielle."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-debate-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "debate",
+   "title": "Election Debate: The Future of Public Transportation in Lyon",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Bienvenue à ce débat sur l'avenir des transports en commun à Lyon. Nous avons avec nous aujourd'hui Madame Dubois, conseillère municipale, et Monsieur Lefèvre, représentant des usagers des transports."
+    },
+    {
+     "speaker": "Madame Dubois",
+     "voice": "female",
+     "text": "Merci de nous recevoir. Je pense que nous devons tous nous accorder sur l'urgence d'agir. La saturation des routes est devenue intolérable."
+    },
+    {
+     "speaker": "Monsieur Lefèvre",
+     "voice": "male",
+     "text": "Tout à fait d'accord. Les retards quotidiens dans les bus et les métros sont un vrai problème pour les usagers."
+    },
+    {
+     "speaker": "Madame Dubois",
+     "voice": "female",
+     "text": "C'est pourquoi je propose l'extension des lignes de métro vers les quartiers périphériques. Cela désengorgerait le centre-ville."
+    },
+    {
+     "speaker": "Monsieur Lefèvre",
+     "voice": "male",
+     "text": "Une excellente idée, mais nous devons aussi penser à l'écologie. Et si nous introduisions des bus électriques ?"
+    },
+    {
+     "speaker": "Madame Dubois",
+     "voice": "female",
+     "text": "C'est une suggestion intéressante. Cependant, nous devons aussi nous assurer que le réseau de transports en commun reste accessible à tous."
+    },
+    {
+     "speaker": "Monsieur Lefèvre",
+     "voice": "male",
+     "text": "Absolument. Nous pourrions aussi augmenter la fréquence des passages pour réduire l'attente."
+    },
+    {
+     "speaker": "Madame Dubois",
+     "voice": "female",
+     "text": "Tout cela nécessitera des investissements importants, mais je pense que c'est un prix à payer pour l'amélioration de la qualité de vie à Lyon."
+    },
+    {
+     "speaker": "Monsieur Lefèvre",
+     "voice": "male",
+     "text": "Je suis entièrement d'accord. Merci pour ce débat constructif."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Merci à tous les deux pour cette discussion enrichissante."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Naval Diplomacy: A Port Visit Sparks Debate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "La visite du navire de guerre français La Résolue au port de Nantes est devenue un sujet épineux."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Alors que certains y voient une opportunité de renforcer les liens diplomatiques,"
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "d'autres dénoncent les implications militaires et politiques de cette visite."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Le maire de Nantes, Jean-Luc Martin, a accueilli le navire avec enthousiasme,"
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "'C'est une chance pour notre ville de recevoir un tel navire et de montrer notre soutien à la marine française.'"
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Cependant, des manifestations ont eu lieu devant le port,"
+    },
+    {
+     "speaker": "Manifestant",
+     "voice": "male",
+     "text": "'Nous ne voulons pas de ce navire ici. Il représente des politiques militaires que nous rejetons.'"
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Le navire a été impliqué dans une opération militaire controversée en Méditerranée,"
+    },
+    {
+     "speaker": "Expert",
+     "voice": "male",
+     "text": "ce qui a alimenté les tensions et les débats."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Les autorités portuaires ont assuré que toutes les mesures de sécurité étaient prises,"
+    },
+    {
+     "speaker": "Autorité portuaire",
+     "voice": "male",
+     "text": "'Nous avons travaillé en étroite collaboration avec la marine pour garantir la sécurité de tous.'"
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Malgré ces assurances, les critiques continuent de s'exprimer,"
+    },
+    {
+     "speaker": "Critique",
+     "voice": "male",
+     "text": "'Cette visite est un symbole de la militarisation croissante de nos ports.'"
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "La question reste ouverte: cette visite renforce-t-elle les liens diplomatiques ou elle aggrave-t-elle les tensions?"
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Seul le temps nous le dira."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Shadow of Scandal: A Corruption Investigation Unfolds",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour à tous, aujourd'hui nous allons discuter de l'enquête sur la corruption qui secoue la France."
+    },
+    {
+     "speaker": "Expert 1",
+     "voice": "male",
+     "text": "Cette enquête est une opportunité de renouveler notre paysage politique, qui manque actuellement de direction claire."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Pourriez-vous développer ce point, s'il vous plaît?"
+    },
+    {
+     "speaker": "Expert 1",
+     "voice": "male",
+     "text": "Bien sûr. Nous avons vu des scandales similaires dans le passé, mais celui-ci semble différent. Il touche à plusieurs niveaux de gouvernement et implique des figures politiques majeures."
+    },
+    {
+     "speaker": "Expert 2",
+     "voice": "female",
+     "text": "C'est vrai. Et c'est précisément pourquoi cela pourrait être un tournant. Les citoyens sont fatigués de la corruption. Ils veulent voir des changements concrets."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Pensez-vous que cette enquête pourrait restaurer la confiance du public dans nos institutions?"
+    },
+    {
+     "speaker": "Expert 2",
+     "voice": "female",
+     "text": "Absolument. Mais cela dépendra de la manière dont les autorités gèrent l'enquête. La transparence est cruciale. Les gens doivent voir que la justice est faite, peu importe qui est impliqué."
+    },
+    {
+     "speaker": "Expert 1",
+     "voice": "male",
+     "text": "Je suis d'accord. Et cela pourrait aussi être une chance de renforcer nos lois contre la corruption. Nous avons besoin de mesures plus strictes pour prévenir de tels scandales à l'avenir."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Merci pour ces insights. Nous reviendrons sur ce sujet dans les prochains jours, car l'enquête se déroule."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-lecture-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Libraries in the Digital Age: Adapting to Change",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Bonjour à tous, et bienvenue à cette conférence sur les bibliothèques à l'ère numérique."
+    },
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Aujourd'hui, nous allons discuter de la manière dont les bibliothèques doivent s'adapter et innover pour rester pertinentes."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "Merci. Tout d'abord, il est important de reconnaître que les bibliothèques ont toujours été des lieux d'apprentissage et de découverte."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "Cependant, avec l'avènement d'Internet et des ressources numériques, le rôle des bibliothèques a évolué."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "Elles ne sont plus simplement des dépôts de livres, mais des centres communautaires dynamiques."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "Les bibliothèques offrent désormais un large éventail de services, allant des ateliers d'alphabétisation numérique aux espaces de coworking."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "De plus, elles jouent un rôle crucial dans la lutte contre la fracture numérique."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "En fournissant un accès gratuit à la technologie et à la formation, les bibliothèques aident à démocratiser l'information."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "Mais pour continuer à remplir cette mission, les bibliothèques doivent embrasser pleinement le numérique."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "Cela signifie investir dans des collections numériques, former le personnel aux nouvelles technologies et repenser l'espace physique des bibliothèques."
+    },
+    {
+     "speaker": "Conférencière",
+     "voice": "female",
+     "text": "En conclusion, l'avenir des bibliothèques est prometteur, mais il dépend de leur capacité à s'adapter et à innover."
+    },
+    {
+     "speaker": "Présentateur",
+     "voice": "male",
+     "text": "Merci beaucoup pour cette présentation inspirante. Nous allons maintenant ouvrir la séance de questions."
     }
    ],
    "source": "llm",
@@ -1375,6 +3810,87 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-speech-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "speech",
+   "title": "Dispute Over Fishing Rights: A Coastal Town's Fight",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Mes chers concitoyens, aujourd'hui, je me tiens devant vous pour discuter d'une question cruciale pour notre avenir: le droit de pêche de Saint-Malo."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Comme vous le savez tous, notre ville a une longue et fière tradition de pêche."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Cependant, cette tradition est maintenant menacée par des revendications de nos voisins."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Je suis ici pour vous dire que nous ne pouvons pas rester silencieux face à cette menace."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Nous devons défendre notre droit de pêche, non seulement pour nous, mais aussi pour les générations futures."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "La pérennité de notre industrie de la pêche est essentielle pour notre économie locale."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Sans elle, notre ville souffrirait énormément."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Nous avons déjà vu les effets négatifs de la surpêche dans d'autres régions."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Nous ne voulons pas que cela arrive à Saint-Malo."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "C'est pourquoi nous devons nous battre pour nos droits de pêche."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Nous devons montrer à nos voisins que nous sommes prêts à défendre notre héritage."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Ensemble, nous pouvons garantir que Saint-Malo continuera à prospérer en tant que ville de pêcheurs."
+    },
+    {
+     "speaker": "Président",
+     "voice": "male",
+     "text": "Merci de votre attention, et n'oubliez pas, notre avenir est entre nos mains."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
@@ -1429,6 +3945,60 @@
    ],
    "answer": 3,
    "explanation": "The correct answer is B, 'Weekend weather forecast', because the text discusses the weather conditions expected on Saturday and Sunday, such as 'soleil' and 'pluie'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-advertisement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dl-0p-advertisement-003",
+   "stem": "What is the new bus route in Paris?",
+   "choices": [
+    "Route 202",
+    "Route 12",
+    "Route 21",
+    "Route 101"
+   ],
+   "answer": 3,
+   "explanation": "The text states 'La nouvelle ligne est la 101.' This means 'The new route is the 101.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-advertisement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dl-0p-advertisement-004",
+   "stem": "What was lost according to the announcement?",
+   "choices": [
+    "A phone",
+    "A key",
+    "A passport",
+    "A wallet"
+   ],
+   "answer": 2,
+   "explanation": "The announcement mentions 'un passeport', which means 'a passport'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-advertisement-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-0p-advertisement-004",
+   "stem": "What does 'perdu' mean here?",
+   "choices": [
+    "Broken",
+    "Lost",
+    "Found",
+    "Stolen"
+   ],
+   "answer": 1,
+   "explanation": "The announcement says 'passeport perdu', which translates to 'lost passport'.",
    "source": "llm",
    "verified": false
   },
@@ -1505,6 +4075,132 @@
    "verified": false
   },
   {
+   "id": "fr-dl-0p-announcement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dl-0p-announcement-004",
+   "stem": "Why are the workers on strike?",
+   "choices": [
+    "They are protesting working conditions.",
+    "They are unhappy with the management.",
+    "They are demanding better benefits.",
+    "They want higher wages."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the workers are on strike because they want 'de meilleurs avantages'. This means they are demanding better benefits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-announcement-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dl-0p-announcement-005",
+   "stem": "Where is the temporary closure happening?",
+   "choices": [
+    "Line 1",
+    "Line 7",
+    "Line 5",
+    "Line 3"
+   ],
+   "answer": 0,
+   "explanation": "The text specifies that the closure is on la ligne 1, so the correct answer is Line 1.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-announcement-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-0p-announcement-005",
+   "stem": "What does 'travaux' mean here?",
+   "choices": [
+    "travel",
+    "rest",
+    "work",
+    "play"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions 'travaux de maintenance', where 'travaux' refers to maintenance work.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-short_exchange-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dl-0p-short_exchange-001",
+   "stem": "What is the event called?",
+   "choices": [
+    "La Fête des Lumières",
+    "La Nuit des Étoiles",
+    "Le Festival de la Musique",
+    "Le Salon du Livre"
+   ],
+   "answer": 0,
+   "explanation": "The event is referred to as La Fête des Lumières in the text: La Fête des Lumières aura lieu ce week-end.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-short_exchange-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-0p-short_exchange-001",
+   "stem": "What does l'événement mean here?",
+   "choices": [
+    "The weather",
+    "The news",
+    "The announcement",
+    "The event"
+   ],
+   "answer": 3,
+   "explanation": "l'événement refers to La Fête des Lumières, the event being discussed: Ne manquez pas l'événement de ce week-end!",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-short_exchange-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dl-0p-short_exchange-002",
+   "stem": "What is the man being asked to do?",
+   "choices": [
+    "Open his trunk.",
+    "Show his passport.",
+    "Roll down his window.",
+    "Turn off his engine."
+   ],
+   "answer": 0,
+   "explanation": "The female voice asks the man to open his trunk with the phrase \"Ouvrez votre coffre\" in the text. This is the only action requested of him in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-0p-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dl-0p-voicemail-001",
+   "stem": "What is the main idea of this message?",
+   "choices": [
+    "A center has been opened for earthquake victims.",
+    "A new earthquake has been reported.",
+    "A meeting will be held to discuss the earthquake.",
+    "People are asked to donate clothes."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is (C) A center has been opened for earthquake victims. The message mentions that a center has been opened to help those affected by the earthquake, providing food and shelter. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-1-announcement-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1537,6 +4233,240 @@
    ],
    "answer": 2,
    "explanation": "The main topic is a corruption investigation, as indicated by the phrases 'une enquête pour corruption' and 'des allégations d'actes répréhensibles'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-conversation-001",
+   "stem": "What is being celebrated?",
+   "choices": [
+    "A cultural festival",
+    "A famous battle",
+    "A national holiday",
+    "A historical fire"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is B, because the speakers discuss a fire (\"le grand feu\") and its anniversary.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dl-1-conversation-001",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "Talking about the weather",
+    "Planning a trip",
+    "Discussing historical events",
+    "Organizing a party"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is B, as the speakers are discussing the Great Fire and its impact on the town (\"comment le grand feu a changé notre ville\").",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-conversation-001",
+   "stem": "What does \"impact\" mean here?",
+   "choices": [
+    "An effect or influence",
+    "A sudden force or collision",
+    "A tool used for shaping materials",
+    "A large body of water"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is C. The speakers are talking about how the fire affected or influenced the town (\"comment le grand feu a changé notre ville\").",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-conversation-002",
+   "stem": "What is the name of the sports championship?",
+   "choices": [
+    "The National Cup",
+    "The European Championship",
+    "The French Open",
+    "The Regional Tournament"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions 'la Coupe Nationale' which translates to 'The National Cup'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-conversation-002",
+   "stem": "What does 'l'entraîneur' mean here?",
+   "choices": [
+    "The player",
+    "The coach",
+    "The referee",
+    "The manager"
+   ],
+   "answer": 1,
+   "explanation": "'L'entraîneur' refers to 'the coach' in this context, as it is mentioned in relation to preparing the team.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-conversation-003",
+   "stem": "What does the man want to do in France?",
+   "choices": [
+    "visit his friends",
+    "study French",
+    "stay with his family",
+    "find a job"
+   ],
+   "answer": 3,
+   "explanation": "The man says: \"Je cherche du travail.\" This means he is looking for a job.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dl-1-conversation-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "a man's travel plans",
+    "a man's family reunion",
+    "a man's studies in France",
+    "a man's job search in France"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the man's job search in France, as evidenced by his statement: \"Je cherche du travail en France.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-conversation-003",
+   "stem": "What does the woman mean by saying \"des références\"?",
+   "choices": [
+    "previous employers",
+    "job references",
+    "language skills",
+    "a list of friends"
+   ],
+   "answer": 1,
+   "explanation": "The woman says: \"Avez-vous des références de vos emplois précédents?\" Here, \"des références\" means job references, as she is asking about his previous jobs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-conversation-004",
+   "stem": "Why is the embassy calling people?",
+   "choices": [
+    "That there is a severe storm.",
+    "That there is a terrorist threat.",
+    "That there has been a volcanic eruption.",
+    "That there has been an earthquake."
+   ],
+   "answer": 3,
+   "explanation": "The embassy is calling people because 'un tremblement de terre' (an earthquake) has occurred.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-conversation-004",
+   "stem": "In the context of the text, what does the phrase 'évacuer' mean?",
+   "choices": [
+    "The location of a meeting point.",
+    "To go to the embassy.",
+    "The action of leaving a place due to danger.",
+    "The time to leave a place."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'évacuer' means 'to evacuate' or 'the action of leaving a place due to danger.' The text states 'évacuer la zone immédiatement' (evacuate the area immediately).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "fr-dl-1-conversation-004",
+   "stem": "What is the purpose of the conversation?",
+   "choices": [
+    "It is to warn people about a dangerous situation.",
+    "It is to provide information about a new policy.",
+    "It is to reschedule a meeting.",
+    "It is to inform people about a cultural event."
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the conversation is 'à cause du tremblement de terre' (because of the earthquake) and to inform people to 'évacuer la zone immédiatement' (evacuate the area immediately).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-conversation-005",
+   "stem": "What is the weather like in Paris right now?",
+   "choices": [
+    "Cloudy and cool",
+    "Misty and warm",
+    "Hot and sunny",
+    "Rainy and windy"
+   ],
+   "answer": 2,
+   "explanation": "The text states that it is \"très chaud\" and \"soleil\" in Paris right now.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-conversation-005",
+   "stem": "What does \"canicule\" mean here?",
+   "choices": [
+    "A type of music",
+    "A kind of food",
+    "A kind of dance",
+    "A heat wave"
+   ],
+   "answer": 3,
+   "explanation": "The text describes \"une canicule\" as \"très chaud et ensoleillé\", which is a heat wave.",
    "source": "llm",
    "verified": false
   },
@@ -1627,6 +4557,150 @@
    ],
    "answer": 3,
    "explanation": "In this context, 'évacuation' means 'a departure', specifically the departure of residents from their homes due to the flood danger: 'préparer une évacuation si nécessaire'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-instructions-003",
+   "stem": "What is the meaning of 'répartition' here?",
+   "choices": [
+    "A formal meeting",
+    "A medical examination",
+    "The act of dividing something among a group",
+    "A type of emergency shelter"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 1, 'The act of dividing something among a group'. The text states 'La répartition des vivres aura lieu ce soir.' 'Répartition' here refers to the distribution of food supplies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dl-1-instructions-003",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The locations of emergency shelters",
+    "The reasons for the earthquake",
+    "The schedule of emergency food distribution",
+    "How to build earthquake-resistant houses"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 1, 'The schedule of emergency food distribution'. The text primarily discusses the 'répartition des vivres' (distribution of food supplies) and provides specific details about the time and location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-voicemail-001",
+   "stem": "What is the speaker's name?",
+   "choices": [
+    "Claire Martin",
+    "Sophie Berger",
+    "Marie Laurent",
+    "Jeanne Dubois"
+   ],
+   "answer": 0,
+   "explanation": "The speaker introduces herself as Claire Martin at the beginning of the message. She says, 'Bonjour, c'est Claire Martin.' This clearly identifies her name.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-voicemail-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dl-1-voicemail-001",
+   "stem": "What is the main purpose of the message?",
+   "choices": [
+    "To inform about a cultural exchange program",
+    "To invite the recipient to a film festival",
+    "To discuss a new French film",
+    "To invite the recipient to a concert"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the message is to invite the recipient to a film festival. Claire Martin says, 'Je vous invite au festival du film français.' This is the central point of the message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-voicemail-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-voicemail-001",
+   "stem": "What does 'c'est' mean here?",
+   "choices": [
+    "You are",
+    "He is",
+    "I am",
+    "It is"
+   ],
+   "answer": 2,
+   "explanation": "In the phrase 'Bonjour, c'est Claire Martin,' 'c'est' means 'I am.' It is used to introduce oneself, so the correct interpretation is 'I am Claire Martin.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-voicemail-003",
+   "stem": "What does the caller say is available at the charging station?",
+   "choices": [
+    "Free snacks",
+    "Free coffee",
+    "Free Wi-Fi",
+    "Free newspapers"
+   ],
+   "answer": 0,
+   "explanation": "The caller says «Il y a des collations gratuites».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-voicemail-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dl-1-voicemail-003",
+   "stem": "What is the main idea of the voicemail?",
+   "choices": [
+    "To advertise a new electric car model",
+    "To inform about a discount on electric cars",
+    "To announce the opening of a charging station",
+    "To promote a sale on car accessories"
+   ],
+   "answer": 2,
+   "explanation": "The caller says «Je vous appelle pour vous informer que notre nouvelle station de recharge est ouverte».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-voicemail-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-voicemail-003",
+   "stem": "What does the caller mean by «collations»?",
+   "choices": [
+    "Books",
+    "Food items",
+    "Drinks",
+    "Toys"
+   ],
+   "answer": 1,
+   "explanation": "The caller says «Il y a des collations gratuites», referring to snacks or light food items available at the charging station.",
    "source": "llm",
    "verified": false
   },
@@ -1739,6 +4813,114 @@
    "verified": false
   },
   {
+   "id": "fr-dl-1p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dl-1p-announcement-002",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "The metro will be closed for maintenance.",
+    "The metro fares will increase.",
+    "A new bus route will be introduced.",
+    "A new metro line will open soon."
+   ],
+   "answer": 3,
+   "explanation": "The announcement is about the opening of a new metro line, specifically the Line 14 extension, which is stated at the beginning: \"Nous avons le plaisir de vous annoncer l'ouverture prochaine de l'extension de la ligne 14 du métro.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dl-1p-announcement-002",
+   "stem": "What is the name of the new metro line extension?",
+   "choices": [
+    "Line 14",
+    "Line 18",
+    "Line 12",
+    "Line 16"
+   ],
+   "answer": 0,
+   "explanation": "The text explicitly mentions the extension of Line 14: \"l'extension de la ligne 14 du métro.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-announcement-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1p-announcement-002",
+   "stem": "What does \"prochaine\" mean here?",
+   "choices": [
+    "previous",
+    "first",
+    "next",
+    "last"
+   ],
+   "answer": 2,
+   "explanation": "The word \"prochaine\" is used to indicate that the opening of the metro line extension is soon: \"l'ouverture prochaine de l'extension de la ligne 14 du métro.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-announcement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dl-1p-announcement-003",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To advertise a concert tour",
+    "To promote a new naval ship",
+    "To inform about upcoming harbor festivities",
+    "To announce a maritime trade show"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to inform about upcoming harbor festivities, as indicated by the phrases 'fêtes du port', 'visite des navires', and 'animations musicales'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-announcement-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dl-1p-announcement-003",
+   "stem": "What is the name of the naval ship that will be open to the public?",
+   "choices": [
+    "La Marseillaise",
+    "La Fregate",
+    "La Provence",
+    "La Liberté"
+   ],
+   "answer": 0,
+   "explanation": "The name of the naval ship is 'La Marseillaise', as stated in 'Visitez le navire La Marseillaise'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-announcement-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1p-announcement-003",
+   "stem": "What does the phrase 'animations musicales' refer to?",
+   "choices": [
+    "Musical performances",
+    "Musical stores",
+    "Musical instruments",
+    "Musical training"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'animations musicales' refers to musical performances, as it is used in the context of festivities and entertainment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-1p-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1847,6 +5029,168 @@
    "verified": false
   },
   {
+   "id": "fr-dl-1p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dl-1p-interview-003",
+   "stem": "What is the main idea of this interview?",
+   "choices": [
+    "A government official announces new regulations for cultural exchanges.",
+    "A professor explains the history of cultural exchange programs.",
+    "A travel agent promotes a new tour package for students.",
+    "A student describes her experiences in a cultural exchange program."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is that a student describes her experiences in a cultural exchange program. The interview is about a student named Claire who talks about her time in the program and what she learned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dl-1p-interview-003",
+   "stem": "Where did Claire go as part of the cultural exchange program?",
+   "choices": [
+    "She went to the United States.",
+    "She went to Canada.",
+    "She went to Quebec.",
+    "She went to France."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is that she went to Quebec. Claire says, \"J'ai passé six mois incroyables à Québec dans le cadre du programme.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1p-interview-003",
+   "stem": "In the interview, what does 'immersion' mean?",
+   "choices": [
+    "A type of therapy.",
+    "A way of learning a language by being surrounded by it.",
+    "A technique for painting.",
+    "A method of cooking."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is a way of learning a language by being surrounded by it. Claire says, \"C'était une expérience d'immersion totale, où j'ai pu pratiquer le français tous les jours.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dl-1p-interview-004",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The cost of electric cars",
+    "The history of electric cars",
+    "The environmental impact of electric cars",
+    "The future of electric cars"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the interview is the future of electric cars, as indicated by the interviewee's statements about upcoming innovations and developments, such as 'les nouvelles technologies qui rendent les voitures électriques plus accessibles' and 'les prochaines innovations dans le domaine'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dl-1p-interview-004",
+   "stem": "According to the interview, what is one of the main benefits of electric cars?",
+   "choices": [
+    "They are cheaper to manufacture.",
+    "They are faster than gas-powered cars.",
+    "They have a longer range.",
+    "They are more environmentally friendly."
+   ],
+   "answer": 3,
+   "explanation": "The interviewee states that 'les voitures électriques sont plus respectueuses de l'environnement', indicating that one of the main benefits of electric cars is that they are more environmentally friendly.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1p-interview-004",
+   "stem": "What does 'accessibles' mean here?",
+   "choices": [
+    "Slow",
+    "Affordable",
+    "Expensive",
+    "Fast"
+   ],
+   "answer": 1,
+   "explanation": "In the context of the interview, 'accessibles' refers to electric cars becoming more affordable and available to the public, as indicated by the interviewee's statement 'les nouvelles technologies qui rendent les voitures électriques plus accessibles'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-news_brief-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dl-1p-news_brief-001",
+   "stem": "What is the main idea of the broadcast?",
+   "choices": [
+    "A lost passport has been turned in to the police.",
+    "A tourist lost their passport while shopping.",
+    "A person misplaced their passport in a café.",
+    "Someone found a wallet with a passport inside it."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that a lost passport has been turned in to the police. This is evident from the phrase 'Un passeport perdu a été remis à la police.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-news_brief-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dl-1p-news_brief-001",
+   "stem": "Where was the passport found?",
+   "choices": [
+    "In a shop.",
+    "At a café.",
+    "In a restaurant.",
+    "On a street."
+   ],
+   "answer": 1,
+   "explanation": "The text states 'trouvé dans un café,' indicating that the passport was found at a café.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-news_brief-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1p-news_brief-001",
+   "stem": "What does 'remis' mean here?",
+   "choices": [
+    "Lost",
+    "Taken",
+    "Found",
+    "Turned in"
+   ],
+   "answer": 3,
+   "explanation": "The word 'remis' in this context means 'turned in.' The phrase 'Un passeport perdu a été remis à la police' translates to 'A lost passport has been turned in to the police.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-1p-phone_call-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1951,6 +5295,330 @@
    ],
    "answer": 0,
    "explanation": "'Les activités culturelles' refers to artistic and educational events, as the female speaker mentions 'des ateliers pour enfants et des concerts de musique classique'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-phone_call-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dl-1p-phone_call-003",
+   "stem": "What is the main subject of the phone call?",
+   "choices": [
+    "A factory expansion",
+    "A new factory opening",
+    "A change in factory management",
+    "A factory closure"
+   ],
+   "answer": 3,
+   "explanation": "The main subject of the phone call is the closure of the factory. This is evident from the repeated use of the verb 'fermer' and the phrase 'la fermeture de l'usine'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-phone_call-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dl-1p-phone_call-003",
+   "stem": "When will the factory close?",
+   "choices": [
+    "Immediately",
+    "In three months",
+    "At the end of the year",
+    "Next month"
+   ],
+   "answer": 1,
+   "explanation": "The factory will close in three months, as stated by the speaker: 'l'usine fermera ses portes dans trois mois'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-phone_call-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1p-phone_call-003",
+   "stem": "What does the phrase 'mesures sociales' mean here?",
+   "choices": [
+    "Social studies",
+    "Social media",
+    "Social measures",
+    "Social gathering"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'mesures sociales' refers to the social measures that will be taken to support the employees affected by the closure, as mentioned: 'nous mettrons en place des mesures sociales pour soutenir nos employés'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-phone_call-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dl-1p-phone_call-004",
+   "stem": "What is the main topic of this phone call?",
+   "choices": [
+    "An emergency evacuation of foreign nationals",
+    "A routine check of the embassy's security systems",
+    "A regular meeting of the embassy staff",
+    "A cultural event at the embassy"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the emergency evacuation of foreign nationals, as indicated by the phrase \"évacuation d'urgence de tous les ressortissants étrangers\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-phone_call-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dl-1p-phone_call-004",
+   "stem": "What is the phrase \"préparez un sac\" a reference to here?",
+   "choices": [
+    "Packing a school bag",
+    "Gathering personal items for an evacuation",
+    "Preparing a bag for a shopping trip",
+    "Packing a bag for a vacation"
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"préparez un sac\" refers to gathering personal items for an evacuation, as indicated by the context of the emergency evacuation and the need to bring important documents and supplies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1p-phone_call-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "inference",
+   "passageId": "fr-dl-1p-phone_call-004",
+   "stem": "What can be inferred about the situation in the city?",
+   "choices": [
+    "The city is under construction",
+    "The city is hosting a major event",
+    "The city is experiencing a minor inconvenience",
+    "The city is facing a serious threat"
+   ],
+   "answer": 3,
+   "explanation": "The situation in the city can be inferred to be serious, as indicated by the phrase \"situation grave\" and the need for an emergency evacuation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-briefing-001",
+   "stem": "What is the main topic of this briefing?",
+   "choices": [
+    "A recent corruption investigation",
+    "The mayor's re-election strategy",
+    "The city's new tourism campaign",
+    "An upcoming cultural festival"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a recent corruption investigation, as stated at the beginning of the briefing: 'Nous allons discuter de l'enquête récente sur la corruption au sein de notre administration.' The other topics are not mentioned in the briefing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-briefing-001",
+   "stem": "What specific action did the mayor take regarding the officials involved in the corruption?",
+   "choices": [
+    "He promoted them to higher positions",
+    "He ignored their actions",
+    "He publicly praised them",
+    "He suspended them from their duties"
+   ],
+   "answer": 3,
+   "explanation": "The mayor suspended the officials involved: 'J'ai ordonné la suspension immédiate des fonctionnaires impliqués dans cette affaire.' The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-briefing-001",
+   "stem": "What does 'démissions' mean here?",
+   "choices": [
+    "Transfers",
+    "Resignations",
+    "Vacations",
+    "Promotions"
+   ],
+   "answer": 1,
+   "explanation": "The word 'démissions' refers to the resignations of the implicated officials: 'Les démissions des responsables impliqués sont en cours.' The other choices do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-briefing-002",
+   "stem": "What is the main problem described in this conversation?",
+   "choices": [
+    "A guest is requesting a room upgrade.",
+    "A customer wants to cancel their reservation last minute.",
+    "A hotel has overbooked its rooms and cannot accommodate a reservation.",
+    "A guest is unhappy with the hotel's room service."
+   ],
+   "answer": 2,
+   "explanation": "The main problem is that the hotel cannot honor a reservation due to overbooking. The receptionist says, 'Nous sommes désolés, mais nous avons eu une surréservation et nous n'avons plus de chambres disponibles.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-briefing-002",
+   "stem": "What does the customer ask for as a solution?",
+   "choices": [
+    "A room in a different hotel.",
+    "A room upgrade in the same hotel.",
+    "A refund of their deposit.",
+    "A discount on their stay."
+   ],
+   "answer": 2,
+   "explanation": "The customer asks for a refund, saying, 'Je voudrais un remboursement de mon acompte, s'il vous plaît.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-briefing-002",
+   "stem": "In the phrase 'Nous avons eu une surréservation', what does 'surréservation' mean here?",
+   "choices": [
+    "A room that needs maintenance.",
+    "A situation where more bookings are taken than available rooms.",
+    "An unexpected cancellation.",
+    "A special request from a guest."
+   ],
+   "answer": 1,
+   "explanation": "Here, 'surréservation' means that the hotel has taken more bookings than it has rooms available. This is clear from the context: 'nous n'avons plus de chambres disponibles.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-briefing-003",
+   "stem": "What is the main topic of this briefing?",
+   "choices": [
+    "The daily life and challenges at the refugee camp",
+    "The political situation causing the refugee crisis",
+    "The history of the refugee camp",
+    "The international organizations involved in the camp"
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the daily life and challenges faced by refugees in the camp, such as shelter, food, and security. It mentions specific aspects like the distribution of tents, the work of aid workers, and the presence of community leaders. The other choices are not the main focus of the briefing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-briefing-003",
+   "stem": "What is one of the main challenges mentioned in the briefing?",
+   "choices": [
+    "Shortage of clean water",
+    "Insufficient number of tents",
+    "Lack of medical supplies",
+    "Inadequate security personnel"
+   ],
+   "answer": 1,
+   "explanation": "The briefing explicitly mentions that there is a shortage of tents, stating 'Il y a une pénurie de tentes, ce qui signifie que certaines familles doivent partager un abri.' The other challenges are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-briefing-003",
+   "stem": "What does 'rapporter' mean here?",
+   "choices": [
+    "To carry",
+    "To tell",
+    "To bring back",
+    "To report"
+   ],
+   "answer": 3,
+   "explanation": "In the context of the briefing, 'rapporter' is used to mean 'to report'. The text states 'Les travailleurs humanitaires rapportent que les conditions sont difficiles, mais ils font de leur mieux pour aider.' This indicates that the aid workers are reporting on the conditions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-conversation-001",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A recent celebration at the refugee camp",
+    "The history of the refugee camp",
+    "The challenges of managing a refugee camp",
+    "The future expansion plans of the refugee camp"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the conversation is the challenges of managing a refugee camp. This is evident from the discussion about the distribution of resources, the arrival of new refugees, and the need for additional staff.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-conversation-001",
+   "stem": "What specific resource is mentioned as being in short supply?",
+   "choices": [
+    "Tents",
+    "Medical supplies",
+    "Water",
+    "Food"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions that the water distribution system is causing problems, indicating a short supply of water. The exact words are: \"Le système de distribution d'eau pose problème.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-conversation-001",
+   "stem": "What does \"la coordination\" mean here?",
+   "choices": [
+    "The management",
+    "The conflict",
+    "The celebration",
+    "The expansion"
+   ],
+   "answer": 0,
+   "explanation": "In this context, \"la coordination\" refers to the management of the refugee camp. The speakers discuss the challenges of coordinating the distribution of resources and managing the arrival of new refugees. The exact words are: \"C'est un vrai défi de coordonner tout ça.\"",
    "source": "llm",
    "verified": false
   },
@@ -2117,6 +5785,276 @@
    "verified": false
   },
   {
+   "id": "fr-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-news-001",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "A government plan to increase birth rates",
+    "The benefits of immigration for France",
+    "A new law to support the elderly",
+    "The impact of a shrinking workforce on France's economy"
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the economic implications of an aging population and a shrinking workforce, as seen in lines like 'la population active diminue' and 'le vieillissement de la population pose un défi économique'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-news-001",
+   "stem": "According to the report, what percentage of France's population will be over 60 years old by 2030?",
+   "choices": [
+    "30%",
+    "25%",
+    "40%",
+    "35%"
+   ],
+   "answer": 3,
+   "explanation": "The text states 'd'ici 2030, 35 % de la population française aura plus de 60 ans'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-news-001",
+   "stem": "In the phrase 'le vieillissement de la population pose un défi économique', what does 'pose un défi' mean?",
+   "choices": [
+    "Represents a challenge",
+    "Offers a solution",
+    "Provides an opportunity",
+    "Creates a benefit"
+   ],
+   "answer": 0,
+   "explanation": "'Pose un défi' means 'represents a challenge' in this context, as it refers to the economic difficulties caused by an aging population.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-news-002",
+   "stem": "What is the main topic of the broadcast?",
+   "choices": [
+    "The benefits of traditional classroom learning",
+    "The growth and impact of online education in France",
+    "The challenges faced by French teachers",
+    "The government's plan to reduce education spending"
+   ],
+   "answer": 1,
+   "explanation": "The broadcast focuses on the expansion of online learning platforms in France, their increasing popularity, and the impact on traditional education. This is evident from phrases like 'les plateformes d'apprentissage en ligne connaissent un essor fulgurant' and 'le paysage éducatif français évolue rapidement'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-news-002",
+   "stem": "According to the broadcast, what percentage of French students have used online learning platforms?",
+   "choices": [
+    "75%",
+    "30%",
+    "45%",
+    "60%"
+   ],
+   "answer": 3,
+   "explanation": "The broadcast states that 'près de 60% des élèves français ont déjà utilisé ces plateformes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-news-002",
+   "stem": "In the broadcast, 'l'essor fulgurant' refers to what?",
+   "choices": [
+    "A steady improvement",
+    "A gradual decline",
+    "A sudden and rapid increase",
+    "A temporary setback"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'l'essor fulgurant' is used to describe the rapid growth of online learning platforms, indicating a sudden and rapid increase.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-news-003",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "The future of artificial intelligence in France",
+    "The history of AI development in Europe",
+    "New regulations for artificial intelligence in France",
+    "The impact of AI on the French job market"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is introduced in the opening lines: 'La France s'apprête à adopter de nouvelles réglementations pour encadrer le développement et l'utilisation de l'intelligence artificielle.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-news-003",
+   "stem": "What is one of the key aspects of the new AI regulations?",
+   "choices": [
+    "Mandating that all AI systems be open-source",
+    "Requiring transparency in AI decision-making processes",
+    "Banning the use of AI in the healthcare sector",
+    "Imposing heavy taxes on AI research and development"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the new regulations will 'exiger la transparence dans les processus de prise de décision des systèmes d'IA', indicating that transparency is a key aspect.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-news-003",
+   "stem": "In the phrase 'les acteurs du secteur technologique', what does 'acteurs' mean here?",
+   "choices": [
+    "Participants",
+    "Investors",
+    "Stakeholders",
+    "Employees"
+   ],
+   "answer": 2,
+   "explanation": "'Acteurs du secteur technologique' refers to those who have a significant role or interest in the technology sector, which is best captured by 'stakeholders'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-report-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-report-001",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "The city's preparations for an upcoming festival",
+    "The cultural events planned for the summer in Lyon",
+    "The impact of the heat wave on Lyon's tourism industry",
+    "The effects of a heat wave on Lyon's infrastructure"
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the concrete effects of the heat wave on infrastructure, such as the overheating of trams and the closure of schools: 'les tramways surchauffent' and 'les écoles sont fermées'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-report-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-report-001",
+   "stem": "What specific impact did the heat wave have on public transportation?",
+   "choices": [
+    "Metro stations were closed to prevent passengers from fainting",
+    "Trains were canceled due to track distortions",
+    "Trams were overheating and had to reduce their schedules",
+    "Buses were delayed due to melted roads"
+   ],
+   "answer": 2,
+   "explanation": "The text states that 'les tramways surchauffent et doivent réduire leurs horaires'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-report-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-report-001",
+   "stem": "What does 'les mesures' refer to in the context?",
+   "choices": [
+    "The tourist attractions",
+    "The cultural events",
+    "The actions taken to mitigate the heat wave's effects",
+    "The weather forecasts"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions 'les mesures' in the context of actions taken to deal with the heat wave, such as 'les écoles sont fermées et les événements en plein air sont annulés ou reportés'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-report-002",
+   "stem": "What is the main topic of this broadcast?",
+   "choices": [
+    "The impact of inflation on French households",
+    "The latest fashion trends in Paris",
+    "The history of interest rates in Europe",
+    "The Bank of France's new headquarters"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'The impact of inflation on French households' because the broadcast discusses how inflation affects the cost of living and the Bank of France's measures to control it. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-report-002",
+   "stem": "What specific measure is the Bank of France taking to control inflation?",
+   "choices": [
+    "Lowering interest rates",
+    "Introducing a new currency",
+    "Raising interest rates",
+    "Increasing the money supply"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'Raising interest rates' because the text states that the Bank of France is 'augmentant les taux d'intérêt' to combat inflation. The other options are not mentioned as measures being taken.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-report-002",
+   "stem": "In the phrase 'le pouvoir d'achat des ménages', what does 'pouvoir d'achat' mean here?",
+   "choices": [
+    "Negotiation skills",
+    "Financial education",
+    "Purchasing power",
+    "Decision-making ability"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'Purchasing power' because the phrase refers to the ability of households to buy goods and services, which is directly related to inflation and the cost of living. The other options do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-2p-documentary-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2225,6 +6163,222 @@
    "verified": false
   },
   {
+   "id": "fr-dl-2p-documentary-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-documentary-003",
+   "stem": "What is the main idea of the conversation?",
+   "choices": [
+    "A hotel is overbooked and cannot accommodate a guest.",
+    "A guest is requesting a refund for a non-refundable booking.",
+    "A hotel is trying to upgrade a guest to a better room.",
+    "A guest is complaining about the poor quality of a hotel room."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is clearly stated in the first lines of the conversation: 'Je suis désolé, mais nous avons une surréservation et nous ne pouvons pas vous loger.' (I'm sorry, but we have an overbooking and we cannot accommodate you.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-documentary-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "fr-dl-2p-documentary-003",
+   "stem": "Why is the guest upset?",
+   "choices": [
+    "They have not been given the sea view room they booked.",
+    "They have been given a room with no heating.",
+    "They have been asked to leave the hotel.",
+    "They have to share a room with another family."
+   ],
+   "answer": 2,
+   "explanation": "The guest is upset because they have been asked to leave the hotel: 'Vous voulez que nous partions ?' (You want us to leave?)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-documentary-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-documentary-003",
+   "stem": "What does 'surréservation' mean here?",
+   "choices": [
+    "A reservation for a specific type of room.",
+    "A reservation made in advance.",
+    "A reservation for more guests than the hotel can accommodate.",
+    "A reservation that can be canceled without penalty."
+   ],
+   "answer": 2,
+   "explanation": "'Surréservation' means that the hotel has more reservations than they can accommodate. This is clear from the context: 'nous avons une surréservation et nous ne pouvons pas vous loger.' (we have an overbooking and we cannot accommodate you.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The impact of a new government policy on businesses",
+    "A firm's decision to move its headquarters",
+    "A company's struggle with financial losses",
+    "The challenges of hiring new employees"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the company's decision to relocate its headquarters. This is evident from the interviewer's opening question and the interviewee's responses about the move to Lyon, such as 'Notre entreprise déménage son siège social à Lyon.' and 'Nous avons choisi Lyon pour plusieurs raisons.'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-interview-001",
+   "stem": "What can be inferred about the interviewee's feelings towards the relocation?",
+   "choices": [
+    "They are excited about the new opportunities",
+    "They are disappointed with the decision",
+    "They are indifferent about the move",
+    "They are anxious about the challenges ahead"
+   ],
+   "answer": 0,
+   "explanation": "The interviewee expresses excitement about the new opportunities the relocation presents. This can be inferred from statements like 'C'est une étape importante pour nous.' and 'Nous avons choisi Lyon pour plusieurs raisons, notamment sa scène technologique florissante.'. The tone is positive and optimistic throughout the interview.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-interview-001",
+   "stem": "What does the word 'dynamique' mean in this context?",
+   "choices": [
+    "Challenging",
+    "Vibrant",
+    "Expensive",
+    "Stagnant"
+   ],
+   "answer": 1,
+   "explanation": "The word 'dynamique' is used to describe the technological scene in Lyon. In this context, it means 'vibrant' or 'active'. The interviewee says, 'Lyon offre un environnement dynamique pour les startups technologiques.', indicating a lively and energetic atmosphere for technological startups.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-interview-002",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The history of the Innu language",
+    "The challenges of preserving indigenous languages in the digital era",
+    "The benefits of bilingualism for children",
+    "A new app for learning French"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the challenges of preserving indigenous languages like Innu in the digital age. This is clear from the context of the discussion about the cultural exchange program and the mention of specific indigenous languages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "fr-dl-2p-interview-002",
+   "stem": "According to the interviewer, what is one of the goals of the cultural exchange program?",
+   "choices": [
+    "To teach French to indigenous people",
+    "To create a new writing system for indigenous languages",
+    "To facilitate dialogue and exchange between indigenous communities and the wider world",
+    "To promote the use of English in indigenous communities"
+   ],
+   "answer": 2,
+   "explanation": "The interviewer states that one of the goals of the program is 'faciliter le dialogue et les échanges entre les communautés autochtones et le reste du monde'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-interview-002",
+   "stem": "What does 'médiation linguistique' mean here?",
+   "choices": [
+    "Language policy",
+    "Language teaching",
+    "Language mediation",
+    "Language extinction"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'médiation linguistique' refers to the process of facilitating communication and understanding between different language communities, not just teaching languages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-panel_discussion-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-panel_discussion-001",
+   "stem": "What is the main topic of the panel discussion?",
+   "choices": [
+    "Government subsidies for local farmers",
+    "The rising cost of living in urban areas",
+    "The impact of climate change on French agriculture",
+    "The causes and effects of increasing food prices in France"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the causes and effects of increasing food prices in France, as discussed by the panelists. This is evident from lines such as 'les prix des produits alimentaires ont augmenté de manière significative' and 'plusieurs facteurs contribuent à cette hausse des prix'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-panel_discussion-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "fr-dl-2p-panel_discussion-001",
+   "stem": "According to the panel, what is one of the main factors driving up food prices?",
+   "choices": [
+    "A surge in agricultural exports",
+    "Government regulations on farming practices",
+    "An increase in fuel costs",
+    "A decrease in consumer demand"
+   ],
+   "answer": 2,
+   "explanation": "One of the main factors driving up food prices is 'l'augmentation des coûts de carburant', as mentioned by the male speaker.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-panel_discussion-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-panel_discussion-001",
+   "stem": "In this context, what does the phrase 'faire face à' mean?",
+   "choices": [
+    "To celebrate",
+    "To delay",
+    "To ignore",
+    "To confront or deal with"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'faire face à' in this context means 'to confront or deal with', as in 'nous devons faire face à cette situation complexe'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-2p-panel_discussion-002-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2279,6 +6433,60 @@
    "verified": false
   },
   {
+   "id": "fr-dl-2p-panel_discussion-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-panel_discussion-003",
+   "stem": "What is the main topic of the discussion?",
+   "choices": [
+    "The role of international aid in disaster relief",
+    "Criticizing the government's handling of the earthquake",
+    "Long-term reconstruction plans after an earthquake",
+    "The immediate response to a recent earthquake"
+   ],
+   "answer": 3,
+   "explanation": "The speakers discuss the immediate response to an earthquake, including the deployment of resources, coordination between agencies, and initial relief efforts. This is evident from phrases like 'dans les premières heures' and 'la coordination entre les services'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-panel_discussion-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-panel_discussion-003",
+   "stem": "What can be inferred about the relationship between the speakers?",
+   "choices": [
+    "They are colleagues collaborating to manage the crisis",
+    "They are critics pointing out the failures of the relief efforts",
+    "They are journalists reporting on the earthquake",
+    "They are competitors vying for control of the relief efforts"
+   ],
+   "answer": 0,
+   "explanation": "The speakers use phrases like 'nous devons coordonner nos efforts' and 'en collaboration avec les services locaux', indicating a collaborative relationship. They are not competitors, critics, or journalists, but rather colleagues working together to manage the crisis.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-panel_discussion-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-panel_discussion-003",
+   "stem": "What does 'la logistique' mean here?",
+   "choices": [
+    "The emotional impact on the victims",
+    "The political implications of the earthquake",
+    "The practical arrangements for transporting supplies",
+    "The scientific study of earthquakes"
+   ],
+   "answer": 2,
+   "explanation": "The speaker says 'la logistique est un défi majeur', referring to the challenges of organizing and transporting resources. This indicates that 'la logistique' means the practical arrangements for transporting supplies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-2p-speech-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2329,6 +6537,168 @@
    ],
    "answer": 3,
    "explanation": "The speaker uses 'adaptation' in the context of societal changes, saying 'nous devons nous adapter à cette nouvelle réalité.' This indicates a process of adjusting to new conditions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-speech-002",
+   "stem": "What is the main idea of this speech?",
+   "choices": [
+    "The government is introducing new energy subsidies to promote renewable energy.",
+    "The government plans to gradually phase out certain energy subsidies to reduce budget deficits.",
+    "The government is considering eliminating all energy subsidies immediately.",
+    "The government is increasing energy subsidies to support struggling households."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is that the government plans to gradually phase out certain energy subsidies to reduce budget deficits. This is supported by the speaker's statement: 'Nous allons progressivement réduire certaines subventions énergétiques pour diminuer le déficit budgétaire.' The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-speech-002",
+   "stem": "What can be inferred about the current energy subsidy system?",
+   "choices": [
+    "It is highly efficient and targeted.",
+    "It is unsustainable and costly.",
+    "It is set to increase in the coming years.",
+    "It is primarily aimed at supporting industrial users."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is that the current energy subsidy system is unsustainable and costly. This can be inferred from the speaker's statement: 'Notre système actuel de subventions énergétiques est devenu ingérable et coûteux.' The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-speech-002",
+   "stem": "What does the speaker mean by 'ingérable' in this context?",
+   "choices": [
+    "Incomprehensible",
+    "Unmanageable",
+    "Irrelevant",
+    "Inevitable"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'unmanageable'. The speaker uses 'ingérable' to describe the current energy subsidy system, indicating that it is no longer manageable. The relevant text is: 'Notre système actuel de subventions énergétiques est devenu ingérable et coûteux.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-speech-003",
+   "stem": "What is the main topic of the speech?",
+   "choices": [
+    "The government's plan to reduce energy subsidies",
+    "The history of energy subsidies in France",
+    "The impact of renewable energy on global warming",
+    "The benefits of solar energy over other renewable sources"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the speech is the government's plan to reduce energy subsidies, as indicated by the speaker's opening line: 'Le gouvernement a annoncé son intention de réduire progressivement les subventions énergétiques.' The rest of the speech elaborates on this plan and its implications.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-speech-003",
+   "stem": "What can be inferred about the current energy subsidies?",
+   "choices": [
+    "They are not beneficial for the environment",
+    "They are primarily for renewable energy sources",
+    "They are unsustainable in the long run",
+    "They are mostly used by large corporations"
+   ],
+   "answer": 2,
+   "explanation": "The speaker infers that the current energy subsidies are unsustainable in the long run when they say: 'Cependant, ces subventions ne sont plus viables à long terme.' This suggests that the current system is not sustainable and needs to be changed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-speech-003",
+   "stem": "What does the speaker mean by 'réorienter' in this context?",
+   "choices": [
+    "To redirect",
+    "To increase",
+    "To eliminate",
+    "To maintain"
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses the word 'réorienter' when discussing the government's plan: 'Il s'agit de réorienter ces aides vers des sources d'énergie plus durables.' In this context, 'réorienter' means to redirect the subsidies towards more sustainable energy sources.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dl-2p-speech-004",
+   "stem": "What is the primary topic of the speech?",
+   "choices": [
+    "The history of the French franc",
+    "The impact of climate change on the economy",
+    "The relationship between inflation and interest rates",
+    "The role of the European Union in French economic policy"
+   ],
+   "answer": 2,
+   "explanation": "The speaker discusses the relationship between inflation and interest rates, mentioning specific figures like '3.5 percent' and 'the fight against inflation'. This is the main topic of the speech.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2p-speech-004",
+   "stem": "In the phrase 'nous devons serrer les boulons', what does 'serrer les boulons' mean here?",
+   "choices": [
+    "To tighten screws literally",
+    "To invest more money",
+    "To be more strict or rigorous",
+    "To reduce interest rates"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'serrer les boulons' is used metaphorically here to mean being more strict or rigorous. The speaker says 'nous devons serrer les boulons sur notre politique monétaire', indicating a need for stricter monetary policy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-speech-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-speech-004",
+   "stem": "What can be inferred about the speaker's view on the current economic situation?",
+   "choices": [
+    "They are concerned about inflation and believe action is needed",
+    "They want to increase government spending to stimulate the economy",
+    "They believe the economy is stable and requires no changes",
+    "They think the economy is growing too quickly and needs to be slowed down"
+   ],
+   "answer": 0,
+   "explanation": "The speaker expresses concern about inflation, stating 'l'inflation reste trop élevée à 3.5 pour cent' and 'nous devons intensifier notre lutte contre l'inflation'. This indicates that they believe action is needed to address the issue.",
    "source": "llm",
    "verified": false
   },
@@ -2441,6 +6811,60 @@
    "verified": false
   },
   {
+   "id": "fr-dl-3-analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-analysis-003",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The cultural exchange program has been successful in fostering international understanding.",
+    "The cultural exchange program has been criticized for its lack of structure.",
+    "The cultural exchange program has failed to meet its objectives.",
+    "The cultural exchange program has been cancelled due to lack of funding."
+   ],
+   "answer": 0,
+   "explanation": "The text discusses the success of the cultural exchange program in fostering international understanding and cooperation, as seen in the lines 'Le programme a permis à de nombreux jeunes de découvrir de nouvelles cultures et de développer une compréhension mutuelle.' and 'Grâce à ce programme, des amitiés durables se sont formées et des stéréotypes ont été brisés.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-analysis-003",
+   "stem": "What can be inferred about the participants in the cultural exchange program?",
+   "choices": [
+    "They came from diverse backgrounds.",
+    "They were all university students.",
+    "They were all from Europe.",
+    "They were all fluent in French."
+   ],
+   "answer": 0,
+   "explanation": "The text mentions that the program is open to young people from various countries and backgrounds, as seen in the line 'Le programme est ouvert à tous les jeunes de 15 à 18 ans, quels que soient leur origine, leur culture ou leur niveau de langue.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "fr-dl-3-analysis-003",
+   "stem": "What is one of the activities that participants in the cultural exchange program engage in?",
+   "choices": [
+    "They participate in community service projects.",
+    "They visit museums and historical sites.",
+    "They learn to cook traditional French dishes.",
+    "They attend lectures on French history."
+   ],
+   "answer": 1,
+   "explanation": "The text states that participants 'découvrent les musées, les sites historiques et les traditions locales,' indicating that they visit museums and historical sites.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-3-debate-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2491,6 +6915,276 @@
    ],
    "answer": 3,
    "explanation": "The speaker is arguing that cultural exchanges are no longer relevant, as indicated by the context 'les échanges culturels ont perdu leur pertinence'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-debate-002",
+   "stem": "What is the main topic of this debate?",
+   "choices": [
+    "The role of artificial intelligence in future technological advancements",
+    "The regulation of international trade and commerce",
+    "The implications of quantum computing on data security",
+    "The impact of climate change on global economies"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of this debate is the role of artificial intelligence in future technological advancements. This is evident from the repeated mentions of AI (intelligence artificielle) and its applications in various fields throughout the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-debate-002",
+   "stem": "What can be inferred about the speaker labeled 'Modérateur'?",
+   "choices": [
+    "He is opposed to the use of AI in healthcare",
+    "He is neutral and facilitating the debate",
+    "He is a proponent of strict AI regulations",
+    "He is an expert in quantum computing"
+   ],
+   "answer": 1,
+   "explanation": "The speaker labeled 'Modérateur' is neutral and facilitating the debate. This is inferred from his role in introducing the topic, asking questions to both speakers, and not expressing a personal stance on the issues discussed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-debate-002",
+   "stem": "In this text, what does 'l'éthique' refer to?",
+   "choices": [
+    "The aesthetic design of AI interfaces",
+    "The moral principles governing AI development and use",
+    "The efficiency of AI systems",
+    "The speed at which AI processes information"
+   ],
+   "answer": 1,
+   "explanation": "In this text, 'l'éthique' refers to the moral principles governing AI development and use. This is evident from the context in which it is discussed, particularly in the phrase 'l'éthique de l'intelligence artificielle' and the subsequent discussion on regulations and responsible innovation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-debate-003",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The best way to reduce traffic congestion in Lyon",
+    "The impact of tourism on Lyon's infrastructure",
+    "The need for a new airport in Lyon",
+    "The future of public transportation in Lyon"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the debate is the future of public transportation in Lyon. This is evident from the repeated references to public transportation, such as 'le réseau de transports en commun', 'les lignes de métro', and 'les bus électriques'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-debate-003",
+   "stem": "What can be inferred about the current state of public transportation in Lyon?",
+   "choices": [
+    "It is completely inadequate and needs a complete overhaul",
+    "It is non-existent and needs to be built from scratch",
+    "It is highly efficient and does not need any improvements",
+    "It is adequate but could benefit from some upgrades"
+   ],
+   "answer": 3,
+   "explanation": "The debate focuses on improvements and expansions, such as 'l'extension des lignes de métro' and 'l'introduction de bus électriques', suggesting that the current system is adequate but could benefit from these upgrades.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-debate-003",
+   "stem": "In the phrase 'la saturation des routes', what does 'saturation' mean here?",
+   "choices": [
+    "Congestion",
+    "Beautification",
+    "Expansion",
+    "Cleanness"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'saturation' refers to the high level of traffic and congestion on the roads, as discussed in the debate about reducing traffic congestion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-editorial_commentary-001",
+   "stem": "What is the main topic of the commentary?",
+   "choices": [
+    "The cultural exchange during a naval port visit",
+    "The economic benefits of a naval port visit",
+    "The environmental impact of naval ships",
+    "The diplomatic tensions caused by a naval port visit"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the diplomatic tensions caused by a naval port visit. The commentary discusses how the visit of the naval ship 'La Résolue' to the port of Nantes has sparked debates and protests, indicating the focus on diplomatic relations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-editorial_commentary-001",
+   "stem": "What does the phrase 'un sujet épineux' mean here?",
+   "choices": [
+    "A complex problem",
+    "A controversial issue",
+    "A delicate situation",
+    "A hot topic"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'un sujet épineux' means 'a controversial issue' in this context. The text states that 'la visite du navire de guerre français La Résolue au port de Nantes est devenue un sujet épineux', indicating that the visit has become a contentious topic.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "fr-dl-3-editorial_commentary-001",
+   "stem": "What is one of the reasons given for the protests against the naval port visit?",
+   "choices": [
+    "The ship's role in a controversial military operation",
+    "The environmental pollution caused by the naval ship",
+    "The high cost of the visit to the local economy",
+    "The lack of cultural exchange programs"
+   ],
+   "answer": 0,
+   "explanation": "One of the reasons given for the protests is the ship's role in a controversial military operation. The text mentions that 'le navire a été impliqué dans une opération militaire controversée', which has led to protests.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-editorial_commentary-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The text argues that the corruption investigation is a minor issue that will not significantly impact France.",
+    "The text discusses the potential benefits of a corruption investigation for France's political landscape.",
+    "The text provides a detailed timeline of the corruption investigation and its key figures.",
+    "The text criticizes the media for exaggerating the importance of the corruption investigation."
+   ],
+   "answer": 1,
+   "explanation": "The text focuses on the potential positive consequences of the corruption investigation, framing it as an opportunity for political renewal. This is evident in phrases like 'une opportunité de renouveau politique' and 'une chance de restaurer la confiance'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-editorial_commentary-002",
+   "stem": "What can be inferred about the author's opinion of the current political climate in France?",
+   "choices": [
+    "The author thinks the current political climate is corrupt but unchanged.",
+    "The author believes the current political climate is healthy and does not need significant change.",
+    "The author feels the current political climate is stagnant and lacks direction.",
+    "The author argues the current political climate is improving but needs more time."
+   ],
+   "answer": 2,
+   "explanation": "The author implies that the political climate is lacking direction and needs renewal, as seen in 'un manque de direction claire' and 'une opportunité de renouveau politique'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-editorial_commentary-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-editorial_commentary-002",
+   "stem": "What does the phrase 'un manque de direction claire' mean here?",
+   "choices": [
+    "A lack of clear direction",
+    "A change in clear direction",
+    "A reinforcement of clear direction",
+    "A surplus of clear direction"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'un manque de direction claire' translates to 'a lack of clear direction,' indicating that the political landscape is uncertain and needs guidance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-lecture-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-lecture-001",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The history of libraries",
+    "The architecture of modern libraries",
+    "The role of libraries in the digital age",
+    "The decline of print books"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the role of libraries in the digital age, as indicated by phrases like 'l'ère numérique' and 'les bibliothèques doivent s'adapter'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-lecture-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-lecture-001",
+   "stem": "What can be inferred about the speaker's view on the future of libraries?",
+   "choices": [
+    "Libraries will focus solely on digital resources",
+    "Libraries will become obsolete",
+    "Libraries will continue to evolve and adapt",
+    "Libraries will close due to lack of funding"
+   ],
+   "answer": 2,
+   "explanation": "The speaker infers that libraries will continue to evolve, as stated in 'les bibliothèques doivent s'adapter et innover pour rester pertinentes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-lecture-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-lecture-001",
+   "stem": "What does 'pertinentes' mean here?",
+   "choices": [
+    "Relevant",
+    "Modern",
+    "Accessible",
+    "Exciting"
+   ],
+   "answer": 0,
+   "explanation": "'pertinentes' means relevant here, as in 'les bibliothèques doivent s'adapter et innover pour rester pertinentes'.",
    "source": "llm",
    "verified": false
   },
@@ -2599,6 +7293,60 @@
    ],
    "answer": 3,
    "explanation": "The phrase 'un problème majeur' is used to describe air pollution in Paris, indicating that it is a significant challenge that requires urgent attention.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-speech-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-speech-003",
+   "stem": "What is the main topic of the speech?",
+   "choices": [
+    "The history of fishing traditions in the region",
+    "The dispute over fishing rights between Saint-Malo and other coastal towns",
+    "The economic benefits of fishing for the town of Saint-Malo",
+    "The environmental impact of fishing on the local ecosystem"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the speech is the dispute over fishing rights. This is evident from the repeated mentions of the conflict, such as 'notre droit de pêche est menacé' and 'cette dispute avec nos voisins'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-speech-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-speech-003",
+   "stem": "What can be inferred about the speaker's view on the dispute?",
+   "choices": [
+    "They want the town to give up its fishing rights to avoid conflict",
+    "They believe the dispute is beneficial for the town's economy",
+    "They think the dispute should be resolved through violence",
+    "They are concerned about the impact of the dispute on the town's fishing rights"
+   ],
+   "answer": 3,
+   "explanation": "The speaker's concern about the town's fishing rights can be inferred from statements like 'nous ne pouvons pas rester silencieux' and 'nous devons défendre notre droit de pêche'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-speech-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-speech-003",
+   "stem": "In the phrase 'la pérennité de notre industrie', what does 'pérennité' mean here?",
+   "choices": [
+    "Sustainability",
+    "Modernization",
+    "Profitability",
+    "Expansion"
+   ],
+   "answer": 0,
+   "explanation": "'Pérennité' in this context refers to the sustainability of the fishing industry, as the speaker is discussing the long-term preservation of the town's fishing rights and traditions.",
    "source": "llm",
    "verified": false
   }

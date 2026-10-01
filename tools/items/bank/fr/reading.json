@@ -6,6 +6,21 @@
  "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
  "passages": [
   {
+   "id": "fr-dr-0p-advertisement-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Save Our Shoreline",
+   "body": "🌊🏖️ Érosion côtière! Luttez contre l'érosion côtière. Rejoignez-nous chaque samedi pour nettoyer la plage. 9h-11h. Contactez-nous: plagepropre@email.com. Ensemble, sauvons notre rivage! 🌊🏖️",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-0p-label-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -21,6 +36,51 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-0p-label-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "label",
+   "title": "Emergency Shelter Information",
+   "body": "ABRI TEMPORAIRE SÉISME\n\nAprès le séisme, veuillez vous rendre à l'abri temporaire situé au parc central.\n\nRepas servis à 12h et 18h.\n\nRépartition des tentes à 10h.\n\nPour plus d'informations, contactez le 314-555-0198.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-label-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "label",
+   "title": "Weekend Weather Outlook",
+   "body": "Weekend Météo\n\nSamedi:\nJour: ensoleillé\nTempérature: 22°C\nSoir: pluie légère\nTempérature: 14°C\n\nDimanche:\nJour: nuageux\nTempérature: 18°C\nSoir: vent modéré\nTempérature: 12°C\n\nProfitez de votre week-end!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-label-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "label",
+   "title": "Office Supplies",
+   "body": "Articles de bureau\n\nPapier\nStylos\nCahiers\n\nEt plus encore!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-0p-menu-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -28,6 +88,36 @@
    "textType": "menu",
    "title": "New Road Safety Law: Menu Restrictions",
    "body": "Nouvelle loi sur la sécurité routière: interdiction de manger en conduisant. Amendes de 150 euros. Exceptions: conducteurs de véhicules électriques et hybrides.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-menu-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Lost Passport",
+   "body": "Passport perdu. \n\nJean Dupont, \n\nLe 15 avril 2023, \n\nRestaurant Le Petit Bistro, \n\nParis, France.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-menu-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Drought Watch: Local Farm Stand",
+   "body": "CRISE DE SÉCHERESSE AGRICOLE\n\nFruits\nmelon 2,70 €\npastèque 2,50 €\n\nLégumes\ntomate 3,00 €\npoivron 3,20 €\n\nPrix sujets à changement selon la disponibilité.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -81,6 +171,66 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-0p-schedule-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "schedule",
+   "title": "Senior Center Events",
+   "body": "Centre pour personnes âgées\n\nLundi: danse\nMardi: bricolage\nMercredi: jeux de société\nJeudi: promenade\nVendredi: cinéma\nSamedi: yoga\nDimanche: repos\n\nHeures: 10h à 12h et 14h à 16h",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-advertisement-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "Clean Air Initiative",
+   "body": "Chers habitants de Paris,\n\nLa qualité de l'air dans notre ville se détériore. Pour y remédier, nous lançons une initiative \"Air Pur\". Nous vous encourageons à utiliser moins votre voiture et à privilégier les transports en commun, le covoiturage ou le vélo. Ensemble, faisons de Paris une ville plus propre et plus saine!\n\nMerci pour votre participation.\n\nLa Mairie de Paris",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-advertisement-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "A New Terminal at Paris-Orly",
+   "body": "Grandes nouvelles! Paris-Orly ouvre un nouveau terminal en 2024. Ce terminal moderne offrira un confort et des services améliorés pour tous les passagers. Avec des magasins et des restaurants supplémentaires, des zones d'attente plus spacieuses, et une technologie de pointe, voyagez en toute sérénité. Ne manquez pas cette expérience de voyage révolutionnaire. Paris-Orly, votre porte d'entrée vers le monde, vient de devenir encore meilleure!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Local Market Price Adjustments",
+   "body": "Chers clients, Nous vous informons d'une hausse des prix sur certains produits frais à compter de lundi prochain. Cette décision est due à l'augmentation des coûts de production et de transport. Nous nous excusons pour ce désagrément et vous remercions de votre compréhension. Cordialement, L'équipe du marché local",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -96,6 +246,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1-instructions-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Community Garden Guidelines",
+   "body": "Bienvenue au programme de bénévolat pour notre jardin communautaire ! Chaque bénévole doit signer ce document pour confirmer leur participation. Voici quelques règles à suivre:\n\n1. Respectez les horaires de jardinage, qui sont de 9h à 17h tous les jours.\n2. Utilisez les outils fournis et rangez-les après utilisation.\n3. Ne pas apporter des plantes ou des graines sans autorisation.\n4. Travaillez en équipe et aidez les autres bénévoles.\n\nMerci pour votre aide précieuse !",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -103,6 +268,21 @@
    "textType": "notice",
    "title": "Urgent Evacuation Notice",
    "body": "AVIS URGENT D'ÉVACUATION\n\nEn raison d'un catastrophe naturelle, toutes les personnes non-résidentes sont priées de quitter immédiatement la région de Montclair. Veuillez suivre les consignes des autorités locales. Des bus seront mis à disposition pour le transport. Merci pour votre collaboration.\n\nMinistère des Affaires Étrangères",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-notice-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "notice",
+   "title": "Summer Water Conservation",
+   "body": "En raison de la sécheresse estivale, nous vous demandons de réduire votre consommation d'eau de 25 %. Pour aider à préserver cette ressource précieuse, veuillez suivre ces conseils : restreindre l'arrosage aux heures matinales ou en fin de soirée, éviter de laver les voitures et les trottoirs, et reporter les tâches nécessitant beaucoup d'eau. Ensemble, nous pouvons faire la différence. Merci pour votre coopération.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -156,6 +336,51 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1-short_message-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Border Crossing Update",
+   "body": "Message aux voyageurs : Prochainement, des contrôles douaniers auront lieu à la frontière nord sous peu. Prévoyez des retards. Merci de votre compréhension.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-short_message-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "short_message",
+   "title": "AI Ethics Meeting",
+   "body": "Objet : Réunion sur l'éthique de l'IA\n\nBonjour à tous,\n\nNous organisons une réunion sur l'éthique de l'intelligence artificielle le 15 mars à 14h dans la salle de conférence du 2ème étage. Nous discuterons des principes directeurs pour le développement responsable de l'IA. Votre participation est importante.\n\nCordialement,\n[Votre Nom]",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "New AI Law Proposal",
+   "body": "Le ministère de la technologie a annoncé aujourd'hui une nouvelle loi sur l'intelligence artificielle. Cette loi vise à réglementer le développement et l'utilisation de l'IA dans notre pays. Le projet de loi propose des règles pour garantir la transparence, la responsabilité et la sécurité des systèmes d'IA. Les parties prenantes sont invitées à donner leur avis sur le projet de loi. La période de consultation publique est ouverte jusqu'au 15 juillet. Les commentaires peuvent être soumis en ligne sur le site web du ministère. Cette initiative vise à protéger les droits des citoyens tout en encourageant l'innovation technologique. Nous vous encourageons à participer et à partager vos idées sur cette question importante.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1p-announcement-002",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -163,6 +388,36 @@
    "textType": "announcement",
    "title": "New Library Hours",
    "body": "À partir du 1er septembre, la bibliothèque sera ouverte plus longtemps le week-end, avec des horaires prolongés. Les samedis et dimanches, les heures d'ouverture seront de 10h à 18h. Cette modification a été effectuée pour mieux servir la communauté et offrir plus de temps pour l'étude, la lecture et l'utilisation des ressources de la bibliothèque. Nous espérons que ce nouvel horaire sera bénéfique pour tous les usagers de la bibliothèque. Pour plus d'informations, veuillez contacter la bibliothèque au 01 23 45 67 89.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-announcement-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "New Bus Route Schedule",
+   "body": "À partir du 1er juin, la société des transports en commun de la ville annoncent des ajustements d'horaire et de ligne pour mieux servir les citoyens. \n\nVoici les changements principaux : \n\n- La ligne 1 aura désormais des départs toutes les 15 minutes aux heures de pointe, du lundi au vendredi. \n\n- La ligne 2 sera prolongée jusqu'au nouveau quartier résidentiel, avec des départs chaque demi-heure les jours ouvrables. \n\n- La ligne 3 partira à 8h00 les jours ouvrables, au lieu de 7h30. \n\n- La ligne 4 verra ses horaires du week-end modifiés pour correspondre à la demande accrue dans les zones commerciales. \n\nCes changements visent à améliorer l'efficacité et la commodité pour tous les usagers. Pour plus d'informations, veuillez consulter notre site web ou contacter notre service clientèle.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-announcement-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Upcoming Municipal Election",
+   "body": "Chers citoyens, les élections municipales approchent à grands pas! Nous comptons sur votre participation pour choisir nos futurs élus. Les élections auront lieu le 15 juin. C'est le moment de faire entendre votre voix et de participer à la vie de notre ville. Rappelez-vous, voter est un droit et un devoir. Votre vote compte et influence directement les décisions qui affectent notre communauté. Pour voter, il vous suffit de vous présenter à votre bureau de vote muni de votre pièce d'identité. Nous avons besoin de vous pour construire ensemble l'avenir de notre ville. À bientôt dans les urnes!",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -201,6 +456,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1p-email-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "email",
+   "title": "Rising Prices and Savings",
+   "body": "Objet : L'inflation et vos économies\n\nBonjour,\n\nJe voulais vous parler de l'inflation et de son impact sur vos économies. L'inflation fait que l'argent que vous avez aujourd'hui vaut moins demain. Cela signifie que si vous ne faites rien, le pouvoir d'achat de vos économies diminuera avec le temps.\n\nLes taux d'intérêt jouent un rôle important dans tout cela. Actuellement, les taux d'intérêt sont bas, ce qui signifie que les banques ne vous paient pas beaucoup pour garder votre argent. Cela peut rendre difficile de faire fructifier vos économies.\n\nIl est important de comprendre comment l'inflation et les taux d'intérêt fonctionnent pour prendre des décisions éclairées sur la façon de gérer votre argent.\n\nCordialement,\n[Votre Nom]",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-email-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "email",
+   "title": "New Hiring Policy at Tech Solutions",
+   "body": "Objet : Nouvelle politique d'embauche chez Tech Solutions\n\nBonjour à tous,\n\nNous élargissons notre équipe en embauchant des travailleurs à distance depuis la France. Nous recherchons des candidats motivés et qualifiés pour rejoindre notre département de développement. Les candidats retenus travailleront à distance et devront être disponibles pendant les heures de bureau françaises.\n\nSi vous connaissez quelqu'un qui serait intéressé par ce poste, veuillez l'encourager à postuler. Les candidats doivent envoyer leur CV à notre département des ressources humaines avant le 15 septembre.\n\nCordialement,\n\n[Votre nom]",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1p-instructions-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -216,6 +501,66 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1p-instructions-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Guidelines for Aid Distribution",
+   "body": "Pour assurer une distribution équitable des secours, veuillez suivre les règles suivantes. Tout d'abord, vérifiez les identités des bénéficiaires avant de décharger le convoi. Ensuite, triez les fournitures selon les besoins spécifiques de chaque groupe. N'oubliez pas de documenter chaque distribution en utilisant le formulaire fourni. En cas de doute, consultez le responsable de l'équipe avant de prendre une décision. Enfin, rappelez-vous que toutes les décisions doivent être prises dans l'intérêt des bénéficiaires. Merci pour votre engagement à aider ceux dans le besoin.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-instructions-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Community Garden Initiative",
+   "body": "Nous lançons une nouvelle initiative de jardin communautaire pour le printemps prochain! Le jardin sera situé dans le terrain vacant sur la Rue de la République. Nous nous réunirons tous les samedis matin à 10h pour travailler ensemble. Les bénévoles travailleront ensemble pour planter, entretenir et récolter les légumes. Tous les légumes cultivés seront donnés à la banque alimentaire locale. Nous fournissons tous les outils nécessaires, mais veuillez apporter des gants de jardinage et de l'eau. Rejoignez-nous pour créer un espace vert et aider notre communauté!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Guide to Temporary Agricultural Work Visas",
+   "body": "Guide pour l'obtention d'un visa de travail temporaire dans le secteur agricole\n\nPour obtenir un visa de travail temporaire dans le secteur agricole, vous devez suivre ces étapes:\n\n1. Vérifiez votre éligibilité: Vous devez avoir une offre d'emploi dans le secteur agricole et posséder au moins six mois d'expérience de travail agricole au cours des trois dernières années.\n\n2. Rassemblez les documents nécessaires: Vous aurez besoin de votre passeport valide, d'une lettre de votre employeur précédent confirmant votre expérience de travail agricole, et de votre offre d'emploi actuelle.\n\n3. Remplissez le formulaire de demande: Vous pouvez trouver le formulaire de demande en ligne sur le site du ministère de l'Intérieur.\n\n4. Payez les frais de demande: Les frais de demande s'élèvent à 150 euros. Vous pouvez payer en ligne ou en personne au moment du dépôt de votre demande.\n\n5. Soumettez votre demande: Vous pouvez soumettre votre demande en ligne ou en personne à votre consulat ou ambassade français le plus proche.\n\n6. Attendez la décision: Le traitement de votre demande peut prendre jusqu'à 30 jours. Vous serez informé de la décision par courrier.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-biography-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "biography",
+   "title": "The Life of a Market Trader",
+   "body": "Marcel, un commerçant du marché, se lève chaque jour à quatre heures du matin. Il arrive au marché vers cinq heures pour préparer son stand. Marcel vend des fruits et légumes depuis plus de vingt ans. Il aime rencontrer ses clients et discuter avec eux. Cependant, ces derniers temps, Marcel fait face à des défis. Les prix des produits alimentaires flambent, ce qui rend difficile pour lui de maintenir ses marges bénéficiaires. Il doit également faire face à la concurrence des supermarchés, qui proposent souvent des prix plus bas. Malgré ces difficultés, Marcel reste optimiste. Il croit en la qualité de ses produits et en la relation de confiance qu'il a établie avec ses clients. Il espère que les choses s'amélioreront bientôt. Pour l'instant, il continue de se lever tôt chaque matin pour aller au marché, comme il le fait depuis tant d'années.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -223,6 +568,51 @@
    "textType": "factual_article",
    "title": "Urban Housing Crisis Deepens",
    "body": "Les grandes villes françaises font face à une crise de logement sans précédent. Selon une étude récente, le manque de logements abordables, c'est-à-dire de logements dont le loyer est inférieur à 30% du revenu du ménage, a atteint un niveau critique. À Paris, par exemple, le prix moyen au mètre carré a augmenté de 50% au cours des dix dernières années, rendant l'achat ou la location de logements presque inaccessible pour les ménages à revenu moyen. La situation est similaire dans d'autres grandes villes comme Lyon, Marseille et Bordeaux. Plusieurs facteurs expliquent cette crise. Tout d'abord, la hausse des coûts des terrains et des matériaux de construction a rendu la construction de nouveaux logements très coûteuse. Ensuite, la densification des villes limite les possibilités d'expansion urbaine. Enfin, la demande de logements en ville augmente en raison de l'exode rural et de l'attrait des centres urbains. Les conséquences de cette crise sont graves. De plus en plus de personnes sont contraintes de vivre dans des logements insalubres ou de quitter leurs villes natales pour trouver un logement abordable. Les gouvernements locaux et nationaux sont sous pression pour trouver des solutions, mais les mesures prises jusqu'à présent n'ont pas suffi à inverser la tendance.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-factual_article-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "Smog Alert in Paris",
+   "body": "La capitale française connaît des niveaux élevés de pollution ces derniers jours. Pour faire face à cette situation, les autorités ont décidé de mettre en place la circulation alternée. Cette mesure vise à réduire la pollution de l'air en limitant le nombre de véhicules sur les routes. Les Parisiens sont invités à vérifier les plaques d'immatriculation de leurs véhicules pour savoir s'ils peuvent circuler ou non. Les jours pairs, seuls les véhicules avec des plaques se terminant par un chiffre pair sont autorisés, et les jours impairs, ce sont ceux avec des plaques se terminant par un chiffre impair. Cette mesure est en vigueur jusqu'à nouvel ordre. Les habitants sont également encouragés à utiliser les transports en commun ou à pratiquer le covoiturage pour se déplacer dans la ville. Les autorités espèrent que ces efforts permettront de diminuer la pollution et d'améliorer la qualité de l'air à Paris.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-factual_article-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "The Disappearing Beaches of La Rochelle",
+   "body": "Les plages de La Rochelle sont en danger à cause de l'érosion côtière. Chaque année, des mètres de sable disparaissent, réduisant la taille des plages et menaçant les infrastructures côtières. Les niveaux de la mer montent, ce qui entraîne une érosion accrue des côtes. Les tempêtes et les vagues puissantes érodent également le littoral, emportant le sable et affaiblissant les dunes. La ville de La Rochelle travaille avec des experts pour trouver des solutions à ce problème. Des mesures telles que la construction de brise-lames et la restauration des dunes sont envisagées pour protéger les plages. Cependant, ces solutions sont coûteuses et ne peuvent pas arrêter complètement l'érosion. La communauté locale est également appelée à participer à la protection des plages, en respectant les règles de bonne conduite et en participant à des programmes de sensibilisation.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-factual_article-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "Weekend Weather Outlook: Mixed Conditions Across France",
+   "body": "Un week-end contrasté s'annonce sur la France, avec des périodes ensoleillées et des averses. Samedi, des pluies abondantes sont attendues dans le nord du pays, tandis que le sud profitera d'un temps plus clément. Les températures resteront douces, avec des maximales autour de 18 à 20 degrés dans la plupart des régions. Dimanche, les précipitations devraient diminuer en soirée, laissant place à un ciel partiellement nuageux. Les vents seront modérés, soufflant principalement de l'ouest. Attention cependant aux orages isolés dans l'est du pays en fin de journée. Pour les amateurs de randonnée, le temps sera plus agréable dans les régions montagneuses, avec un soleil dominant et des températures fraîches mais agréables. N'oubliez pas de consulter les mises à jour locales pour des informations plus précises concernant votre région.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -291,6 +681,111 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-2-report-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "A Museum's Hidden Treasures",
+   "body": "Le musée de la Ville-Lumière est ravi de présenter une exposition spéciale mettant en lumière des trésors cachés de sa collection. Intitulée 'Les Couleurs du Passé', cette exposition sera ouverte au public à partir du 1er octobre et se poursuivra jusqu'au 31 décembre. Les visiteurs auront l'opportunité de découvrir des œuvres d'art qui n'ont pas été exposées depuis des décennies, ainsi que des artefacts qui ont été récemment restaurés mais pas encore présentés au public. Cette exposition a pour but de permettre aux visiteurs de découvrir des aspects méconnus de l'histoire locale et de mieux comprendre le patrimoine culturel de la région. Parmi les pièces phares, on trouve des peintures du XIXe siècle, des sculptures anciennes et des documents historiques jamais vus auparavant. Le musée a également prévu des visites guidées et des ateliers éducatifs pour enrichir l'expérience des visiteurs. Ne manquez pas cette occasion unique de plonger dans les trésors cachés de la Ville-Lumière!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Volunteers for Neighborhood Renewal",
+   "body": "Le programme VoisiNage vise à améliorer notre quartier grâce à l'engagement de ses habitants. Depuis son lancement il y a six mois, plus de cent cinquante volontaires se sont portés volontaires pour participer à diverses initiatives. Les activités comprennent l'organisation d'ateliers de bricolage, le nettoyage des parcs et des espaces publics, ainsi que l'aide aux personnes âgées. Les bénévoles travaillent en étroite collaboration avec la mairie pour identifier les besoins prioritaires du quartier. Chaque semaine, des réunions sont organisées pour planifier les actions à venir et évaluer les progrès réalisés. Les habitants sont invités à se mobiliser pour soutenir les bénévoles, que ce soit en participant aux activités ou en offrant leurs compétences spécifiques. Grâce à cet esprit de solidarité, notre quartier devient un endroit plus agréable à vivre pour tous.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-report-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Lost Passport in Paris",
+   "body": "Hier, une femme a trouvé un passeport dans un café à Paris. Le passeport appartenait à un homme nommé Jean Dupont. La femme a regardé à l'intérieur et a vu une adresse et un numéro de téléphone. Elle a essayé de le rendre, mais personne n'a répondu au téléphone. Ensuite, elle est allée à l'adresse indiquée, mais personne n'a répondu à la porte. Elle a décidé d'aller à la police pour signaler sa découverte. La police a pris le passeport et a dit qu'ils allaient contacter l'ambassade pour trouver le propriétaire. La femme était contente d'avoir fait ce qu'il fallait, même si cela n'a pas été facile. Elle espère que Jean Dupont retrouvera son passeport bientôt.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2p-extended_report-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "extended_report",
+   "title": "France's AI Ethics Committee: A Year in Review",
+   "body": "Le Comité d'Éthique de l'Intelligence Artificielle (CEIA) de la France a récemment publié son rapport annuel, détaillant leurs lignes directrices éthiques et recommandations pour l'année écoulée. Créé en 2022, le CEIA a pour mission de garantir que le développement et l'utilisation de l'IA se fassent de manière éthique et responsable. Le rapport souligne les progrès accomplis et les défis rencontrés dans la mise en œuvre de ces principes. Le comité a examiné les enjeux éthiques liés à l'utilisation de l'IA dans divers secteurs, y compris la santé, les transports et la sécurité. Parmi les recommandations clés figurent la nécessité de transparence dans les algorithmes d'IA, la protection des données personnelles et la prévention des biais algorithmiques. Le CEIA a également souligné l'importance de la coopération internationale pour établir des normes éthiques communes. Le comité prévoit d'organiser des ateliers et des conférences pour promouvoir le dialogue entre les parties prenantes et encourager l'adoption de ces recommandations. Le rapport annuel du CEIA sert de guide pour les développeurs, les entreprises et les décideurs politiques, les aidant à naviguer dans le paysage complexe de l'éthique de l'IA.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2p-feature-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "feature",
+   "title": "The Hidden Costs of Parisian Rentals",
+   "body": "Trouver un appartement à Paris peut être un défi. La demande est très élevée à cause de la popularité de la ville, et l'offre est limitée. De plus, les loyers sont élevés, et il faut souvent payer des frais d'agence et un dépôt de garantie. Mais ce n'est pas tout. Il y a aussi les charges, qui incluent le chauffage, l'eau, et la maintenance. Ces coûts supplémentaires peuvent représenter un montant considérable. Par exemple, dans un appartement de deux pièces, les charges peuvent atteindre 150 euros par mois. Il est donc important de bien comprendre tous les coûts avant de signer un contrat de location. En outre, il est crucial de lire attentivement le contrat pour éviter les mauvaises surprises. Certains propriétaires peuvent inclure des clauses abusives, comme des frais de rénovation ou des restrictions sur les animaux domestiques. Enfin, il est conseillé de visiter l'appartement avant de signer pour s'assurer qu'il répond à vos attentes. En résumé, louer un appartement à Paris nécessite une bonne préparation et une attention aux détails.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2p-feature-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "feature",
+   "title": "Mountain Rescue: A Joint Effort",
+   "body": "Une opération de recherche et de sauvetage conjointe entre la France et la Suisse s'est soldée par un succès remarquable. Un skieur français, porté disparu dans les Alpes suisses, a été retrouvé sain et sauf grâce à la collaboration étroite des équipes de secours des deux pays. L'alerte a été donnée dimanche après-midi, lorsque le skieur n'est pas rentré à son hôtel. Immédiatement, les équipes de secours françaises et suisses ont été mobilisées. Les conditions météorologiques étaient difficiles, avec des vents violents et une visibilité réduite. Les secours sont arrivés sur place, dépourvus de tout équipement spécialisé, mais avec une détermination inébranlable. Les équipes françaises et suisses ont travaillé ensemble de manière harmonieuse, mettant en commun leurs compétences et leurs ressources. Après plusieurs heures de recherche intense, le skieur a été localisé et secouru. Il a été transporté à l'hôpital le plus proche pour des soins médicaux. Les autorités des deux pays ont salué la coopération exemplaire entre les équipes de secours. Cette opération met en lumière l'importance de la collaboration internationale dans les situations d'urgence. Les équipes de secours ont fait preuve d'un professionnalisme et d'un dévouement remarquables, sauvant une vie grâce à leur travail acharné et leur esprit d'équipe.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2p-interview-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "interview",
+   "title": "United in Crisis: A Joint Search-and-Rescue Operation",
+   "body": "Interviewer : Aujourd'hui, nous avons avec nous le capitaine Marc Dubois de l'équipe de secours française et le lieutenant Elisabeth Bauer de l'équipe de sauvetage suisse pour discuter d'une récente opération de recherche et de sauvetage conjointe. Merci d'être avec nous.\n\nCapitaine Dubois : Merci de nous recevoir.\n\nLieutenant Bauer : Oui, merci.\n\nInterviewer : Pouvez-vous nous parler de cette opération et de la façon dont vos équipes ont collaboré ?\n\nCapitaine Dubois : Bien sûr. Il y a deux semaines, un avion s'est écrasé dans les Alpes françaises. Immédiatement, nos équipes se sont mobilisées. Cependant, en raison du terrain accidenté, nous avons eu du mal à atteindre le site de l'accident. C'est à ce moment-là que nos collègues suisses sont intervenus.\n\nLieutenant Bauer : Exactement. Nos équipes ont une expérience approfondie des opérations en montagne. Nous avons pu apporter notre expertise et travailler main dans la main avec les Français. Nous avons pu localiser les survivants plus rapidement grâce à notre équipement spécialisé.\n\nInterviewer : Comment les équipes ont-elles géré la coordination et la communication ?\n\nCapitaine Dubois : La coordination a été exemplaire. Nous avons utilisé des canaux de communication sécurisés et avons tenu des briefings réguliers. Malgré la pression, nos équipes ont travaillé ensemble de manière harmonieuse.\n\nLieutenant Bauer : Oui, il y avait un grand respect mutuel. Nous avons pu tirer parti de nos forces respectives pour sauver des vies. C'était une véritable opération conjointe réussie.\n\nInterviewer : Quels ont été les principaux défis rencontrés ?\n\nCapitaine Dubois : Outre le terrain difficile, les conditions météo changeantes ont également compliqué les choses. Mais grâce à notre collaboration étroite, nous avons pu surmonter ces obstacles.\n\nLieutenant Bauer : Absolument. La communication ouverte et la confiance mutuelle ont été essentielles pour surmonter ces défis.\n\nInterviewer : Merci pour ce partage. C'est inspirant de voir comment les équipes de différents pays peuvent travailler ensemble dans des situations critiques.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-2p-interview-002",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -306,6 +801,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-2p-interview-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "interview",
+   "title": "The Digital Transformation of Public Libraries: An Interview with a Librarian",
+   "body": "Interviewer: Bonjour Madame Lefèvre. Vous êtes la directrice de la bibliothèque municipale de Lyon. Pouvez-vous nous parler de la transformation numérique de votre bibliothèque?\nMadame Lefèvre: Bonjour. Oui, bien sûr. La transformation numérique est un défi passionnant pour nous. Nous avons commencé à numériser nos collections il y a quelques années et maintenant, nous offrons une large gamme de ressources en ligne. Les livres imprimés restent importants, mais nous devons aussi offrir des ressources numériques.\nInterviewer: Quels types de ressources numériques proposez-vous?\nMadame Lefèvre: Nous avons des livres électroniques, des audiolivres, des bases de données, des articles de journaux, et même des cours en ligne. Nous travaillons aussi avec des plateformes de streaming pour offrir des films et de la musique. Tout cela est accessible avec une carte de bibliothèque.\nInterviewer: Comment cette transformation a-t-elle affecté l'utilisation de la bibliothèque?\nMadame Lefèvre: Nous avons vu une augmentation significative du nombre de visiteurs, tant physiques que virtuels. Les gens apprennent à utiliser nos ressources en ligne et cela les encourage à venir à la bibliothèque pour des programmes et des ateliers. C'est un cercle vertueux.\nInterviewer: Quels sont les défis de cette transformation numérique?\nMadame Lefèvre: L'un des principaux défis est de former notre personnel à ces nouvelles technologies. Il faut aussi éduquer nos usagers pour qu'ils sachent comment utiliser ces ressources. Et bien sûr, il y a le coût. La technologie évolue rapidement et nous devons constamment mettre à jour nos équipements et nos abonnements aux bases de données.\nInterviewer: Comment voyez-vous l'avenir des bibliothèques publiques?\nMadame Lefèvre: Je pense que les bibliothèques publiques vont continuer à jouer un rôle crucial dans nos communautés. Elles ne seront plus seulement des lieux pour emprunter des livres, mais des centres communautaires où les gens peuvent apprendre, se connecter et créer. La technologie nous aide à faciliter l'accès à une plus grande variété de ressources et à répondre aux besoins changeants de nos usagers.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-2p-news_analysis-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -313,6 +823,51 @@
    "textType": "news_analysis",
    "title": "Humanitarian Aid Convoys Face New Challenges in the Sahel",
    "body": "Les convois humanitaires dans le Sahel font face à des défis de plus en plus importants. Ces derniers mois, les groupes armés ont intensifié leurs attaques contre les convois humanitaires, rendant l'accès aux populations vulnérables de plus en plus difficile. Cette situation s'ajoute à la crise humanitaire déjà existante, marquée par une insécurité alimentaire croissante et des besoins humanitaires importants.\n\nLa situation sécuritaire volatile complique également la coordination entre les acteurs humanitaires. Malgré ces défis, les organisations humanitaires continuent de travailler sans relâche pour apporter une aide vitale aux populations affectées. Cependant, il est crucial que la communauté internationale renforce son soutien et sa coordination pour faire face à cette crise complexe et en constante évolution.\n\nLes défis logistiques sont également considérables. Les routes sont souvent impraticables en raison des conditions météorologiques difficiles et du manque d'infrastructure adéquate. De plus, le manque de ressources financières et humaines limite la capacité des organisations humanitaires à répondre efficacement aux besoins croissants.\n\nEn conclusion, bien que les convois humanitaires dans le Sahel soient confrontés à des défis immenses, la coordination et le soutien international restent essentiels pour apporter une aide vitale aux populations dans le besoin.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Fight Against Rising Tides",
+   "body": "La Montée des Eaux: Un Défi pour les Côtes Françaises\n\nLes côtes de France font face à une menace grandissante: l'érosion côtière. Chaque année, les vagues et les tempêtes avalent des mètres de terrain, laissant derrière elles des maisons abandonnées et des paysages défigurés. Les zones côtières, déjà fragilisées par le changement climatique, sont de plus en plus vulnérables.\n\nLes conséquences de cette érosion sont dévastatrices. Les habitants doivent quitter leurs maisons, les entreprises ferment et les habitats naturels sont détruits. Par exemple, dans la région de Normandie, plusieurs villages ont déjà été partiellement engloutis par la mer. Les habitants de ces zones se sentent abandonnés, car les efforts du gouvernement pour atténuer ces effets ont été lents et insuffisants.\n\nFace à cette situation, les scientifiques et les militants environnementaux appellent à des actions plus fortes. Ils proposent des solutions comme la restauration des dunes, la plantation de végétation côtière et la construction de digues. Cependant, ces mesures sont coûteuses et nécessitent une planification à long terme. De plus, elles ne peuvent pas toujours compenser la perte de terres due à l'élévation du niveau de la mer.\n\nL'érosion côtière est un problème complexe qui nécessite une approche multidimensionnelle. Il ne s'agit pas seulement de protéger les terres, mais aussi de soutenir les communautés affectées et de préserver les écosystèmes fragiles. Sans action immédiate et décisive, les côtes de France continueront de reculer, laissant derrière elles un paysage irréversiblement changé.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Future of Renewable Energy: Challenges and Opportunities",
+   "body": "Le sommet international sur l'énergie renouvelable, qui s'est tenu la semaine dernière à Lyon, a rassemblé des représentants de plus de 50 pays. L'objectif de ce sommet était d'examiner les progrès réalisés dans le domaine de l'énergie renouvelable et de discuter des défis à venir. Le sommet a mis en lumière l'importance de la coopération internationale pour relever les défis de l'énergie renouvelable. Les participants ont souligné que, bien que des progrès significatifs aient été réalisés, il reste encore beaucoup à faire pour atteindre les objectifs mondiaux en matière d'énergie renouvelable. L'un des principaux défis identifiés est le besoin de financements supplémentaires pour soutenir le développement de projets d'énergie renouvelable dans les pays en développement. Les pays en développement, quant à eux, font face à des défis majeurs, notamment en termes de financement et d'infrastructures. Le sommet a également souligné les obstacles techniques à surmonter pour rendre l'énergie renouvelable plus accessible et efficace. Les participants ont discuté de diverses solutions potentielles, telles que l'amélioration des technologies de stockage de l'énergie et le développement de réseaux intelligents. Malgré les défis, il y a un optimisme prudent quant à l'avenir de l'énergie renouvelable. Les participants ont souligné l'importance de continuer à investir dans la recherche et le développement pour surmonter les obstacles techniques et rendre l'énergie renouvelable plus accessible à tous. Le sommet s'est conclu par un appel à l'action, exhortant les gouvernements et les entreprises à redoubler d'efforts pour promouvoir l'utilisation de l'énergie renouvelable et à travailler ensemble pour un avenir plus durable.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-005",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "France's Solar Surge: Sun Powering the Nation",
+   "body": "La France a connu une augmentation significative des investissements dans l'énergie solaire, motivée par des facteurs économiques et environnementaux. Selon les dernières données du ministère de la Transition écologique, les investissements dans le solaire ont plus que doublé au cours des cinq dernières années. Cette tendance s'inscrit dans le cadre des efforts du pays pour atteindre ses objectifs de réduction des émissions de carbone et de diversification de son mix énergétique.\n\nPlusieurs facteurs expliquent cet essor des investissements dans les énergies renouvelables, en particulier dans le solaire. D'abord, les coûts de production ont considérablement diminué, rendant cette source d'énergie plus compétitive par rapport aux énergies fossiles. Ensuite, les subventions gouvernementales et les incitations fiscales ont encouragé les particuliers et les entreprises à adopter des solutions solaires. Enfin, la prise de conscience environnementale croissante parmi les citoyens français a joué un rôle clé dans cette transition énergétique.\n\nMalgré ces progrès, des défis subsistent. L'intégration du solaire dans le réseau électrique national nécessite des investissements supplémentaires dans les infrastructures et les technologies de stockage. De plus, la variabilité de la production solaire en fonction des conditions météorologiques pose des défis pour la stabilité du réseau. Cependant, les experts estiment que ces obstacles peuvent être surmontés grâce à des innovations technologiques et à une planification rigoureuse.\n\nBien que la France continue de diversifier son portefeuille énergétique, l'énergie solaire est appelée à jouer un rôle de plus en plus important. Avec le soutien continu du gouvernement et l'engagement des acteurs privés, la France est bien positionnée pour tirer parti du potentiel du solaire et atteindre ses objectifs climatiques.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -381,6 +936,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-3-argumentative_essay-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "Urban Housing Crunch: A Call for Action",
+   "body": "La crise du logement dans les villes françaises est devenue un problème de plus en plus aigu. Les prix exorbitants des logements, combinés à la pénurie de logements abordables, rendent la vie en ville de plus en plus difficile pour de nombreux résidents. Cette situation est le résultat de plusieurs facteurs, notamment la croissance démographique, la gentrification et le manque de politiques de logement efficaces. Pour résoudre cette crise, il est essentiel de mettre en œuvre des solutions innovantes et des actions immédiates de la part des différents acteurs impliqués, y compris les gouvernements, les promoteurs immobiliers et les communautés locales. Les gouvernements doivent adopter des politiques de logement plus strictes et investir dans des projets de logement social. Les promoteurs immobiliers doivent être encouragés à construire des logements abordables et durables. Les communautés locales doivent être impliquées dans le processus de planification et de développement pour s'assurer que les nouveaux logements répondent aux besoins des résidents. En outre, il est crucial de repenser l'utilisation des espaces urbains. Les villes doivent maximiser l'utilisation des espaces disponibles en encourageant la construction de logements denses et en réhabilitant les bâtiments existants. Les espaces sous-utilisés, tels que les parkings et les terrains vagues, peuvent être transformés en logements abordables. La crise du logement est un problème sérieux qui nécessite une attention urgente. En travaillant ensemble, les différents acteurs peuvent trouver des solutions efficaces pour garantir que tout le monde ait accès à un logement abordable et de qualité dans les villes françaises.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-3-commentary-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -388,6 +958,51 @@
    "textType": "commentary",
    "title": "The Art of the Interview",
    "body": "L'autre jour, j'ai mené un entretien d'embauche pour un poste dans notre département. Le candidat, une jeune femme nommée Élodie, semblait très qualifiée sur le papier. Cependant, dès les premières minutes de l'entretien, j'ai remarqué qu'elle était un peu nerveuse. Elle jouait avec son stylo et évitait de croiser mon regard. Mais malgré cela, elle a su garder son calme et répondre de manière cohérente à mes questions.\n\nCe qui m'a frappé, c'est la manière dont elle a abordé ses précédentes expériences professionnelles. Elle n'a pas simplement énuméré ses tâches, mais a expliqué comment elle avait contribué à des projets spécifiques et quels résultats elle avait obtenus. Cela a montré qu'elle avait une bonne compréhension de ses réalisations et de leur impact. Cependant, j'ai remarqué qu'elle avait tendance à minimiser ses succès, ce qui pourrait indiquer un manque de confiance en soi.\n\nLorsque je lui ai demandé de parler de ses points faibles, elle a été honnête et a admis qu'elle avait parfois du mal à déléguer des tâches. Elle a expliqué qu'elle préférait souvent faire les choses elle-même pour s'assurer qu'elles étaient bien faites. C'est une qualité qui montre son engagement, mais qui pourrait aussi poser problème dans un environnement de travail collaboratif.\n\nEn fin de compte, l'entretien s'est bien passé. Élodie a montré qu'elle avait les compétences nécessaires pour le poste, mais elle doit travailler sur sa confiance en elle et sa capacité à déléguer. J'ai hâte de la voir évoluer et espère qu'elle pourra surmonter ces défis.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-commentary-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "commentary",
+   "title": "The Centenary of the Treaty of Versailles: A Reflection on Peace and Power",
+   "body": "Aujourd'hui, nous célébrons le centenaire du traité de Versailles, un événement qui a marqué la fin de la Première Guerre mondiale et a façonné le cours du XXe siècle. Ce traité, signé le 28 juin 1919, était bien plus qu'un simple accord de paix; c'était un effort pour redéfinir l'ordre mondial après des années de conflit dévastateur. Cependant, comme tout événement historique majeur, son héritage est complexe et sujet à interprétation. \n\nD'un côté, le traité de Versailles a établi des institutions internationales comme la Société des Nations, précurseur de l'ONU, et a posé les bases du droit international moderne. Il a également redessiné les frontières en Europe, donnant naissance à de nouveaux États et redéfinissant les relations de pouvoir sur le continent. Ces aspects positifs montrent que le traité a joué un rôle crucial dans la construction d'un nouvel ordre mondial. \n\nCôté obscur, le traité a imposé des réparations financières lourdes à l'Allemagne, semant les graines de l'instabilité économique et politique qui ont contribué à l'ascension d'Adolf Hitler et, finalement, à la Seconde Guerre mondiale. De plus, les décisions prises à Versailles ont laissé des tensions ethniques et territoriales non résolues, qui continuent de hanter l'Europe aujourd'hui. \n\nAlors que nous réfléchissons sur ce centenaire, il est essentiel de reconnaître que le traité de Versailles n'était ni entièrement bon ni entièrement mauvais. C'était un produit de son temps, façonné par les défis et les perspectives de l'époque. Les leçons de Versailles résonnent encore aujourd'hui, nous rappelant l'importance de la diplomatie prudente et de la compréhension mutuelle dans la prévention des conflits. Notre monde est toujours en train de naviguer les répercussions de ce traité, et il est de notre devoir de tirer les enseignements du passé pour construire un avenir plus pacifique.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-commentary-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "commentary",
+   "title": "The Vanishing Coast: A Race Against Time",
+   "body": "La côte française s'effrite à un rythme alarmant. Chaque année, des mètres de plage disparaissent, des falaises s'effondrent et des maisons sont menacées. Ce phénomène, connu sous le nom d'érosion côtière, est un défi majeur pour notre pays.\n\nL'érosion côtière est un processus naturel, mais il est accéléré par les activités humaines. La montée du niveau de la mer, causée par le changement climatique, est l'un des principaux coupables. Les tempêtes plus fréquentes et plus intenses, ainsi que la surexploitation des ressources côtières, aggravent également la situation.\n\nLes conséquences de l'érosion côtière sont graves. En plus de la perte de terres, elle menace les écosystèmes côtiers, les infrastructures et les moyens de subsistance des communautés locales. Par exemple, dans certaines régions, les plages disparaissent, ce qui affecte le tourisme, une source importante de revenus.\n\nMalheureusement, les mesures prises par le gouvernement jusqu'à présent sont insuffisantes. Les efforts de protection sont souvent fragmentés et manquent de coordination. De plus, la sensibilisation du public à ce problème est faible, ce qui limite la pression sur les décideurs pour agir.\n\nIl est temps d'agir de manière urgente et coordonnée. Nous devons investir dans des solutions durables, telles que la restauration des écosystèmes côtiers, la construction de digues et la mise en place de politiques de gestion intégrée des zones côtières. Nous devons également sensibiliser le public à ce problème et encourager les comportements responsables.\n\nLa côte française est un trésor national. Nous ne pouvons pas nous permettre de la perdre. Agissons maintenant pour protéger notre patrimoine côtier pour les générations futures.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-commentary-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "commentary",
+   "title": "A New Lens on Impressionism: The Musée d'Orsay's Bold Exhibition",
+   "body": "Le Musée d'Orsay, connu pour sa collection impressionniste, se lance dans une aventure audacieuse avec son exposition \"Impressionism Reconsidered\". Cette exposition, qui se tient jusqu'au 18 septembre, met en lumière des œuvres moins connues de Monet, Degas, Renoir et d'autres maîtres de l'Impressionnisme.\n\nL'objectif de cette exposition est de recontextualiser le mouvement impressionniste, souvent perçu comme un simple reflet de la beauté de la nature ou de la vie quotidienne. Les commissaires de l'exposition, Marie Laurent et Pierre Moreau, cherchent à montrer comment ces artistes ont en fait répondu aux défis sociaux et politiques de leur époque.\n\nPar exemple, l'exposition présente des œuvres de Monet qui explorent les effets de l'industrialisation sur le paysage, tandis que des tableaux de Degas mettent en lumière les conditions de travail des danseuses de l'Opéra de Paris. Ces œuvres, souvent éclipsées par les peintures plus célèbres des mêmes artistes, offrent un nouveau regard sur leur production artistique.\n\nL'exposition ne se contente pas de présenter des œuvres moins connues. Elle les intègre dans un récit plus large qui montre comment l'Impressionnisme a évolué en réponse aux changements de la société française. Les commissaires ont également inclus des documents d'archives, des lettres et des journaux de l'époque pour fournir un contexte supplémentaire.\n\nCette exposition est un témoignage de l'engagement continu du Musée d'Orsay à stimuler la réflexion et le débat sur l'art. En présentant l'Impressionnisme sous un nouveau jour, le musée invite les visiteurs à repenser leurs idées préconçues sur ce mouvement artistique majeur.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -411,6 +1026,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-3-editorial-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "editorial",
+   "title": "The Unseen Heroes of the Evacuation",
+   "body": "Dans les moments de crise, la véritable mesure de notre humanité se révèle souvent à travers le dévouement et la compassion des individus ordinaires. La récente évacuation des étrangers en France en est un exemple frappant. Face à l'urgence de la situation, les bénévoles ont joué un rôle crucial dans l'organisation des efforts de secours et dans la fourniture d'une aide vitale aux personnes touchées. Leur dévouement et leur compassion ont été essentiels pour aider les gens à traverser cette période difficile. Les bénévoles ont travaillé sans relâche pour coordonner les efforts de secours, fournir des vivres et des soins médicaux, et offrir un soutien émotionnel aux personnes évacuées. Leur engagement a permis de sauver des vies et de soulager la souffrance de nombreuses personnes. Il est important de reconnaître et de célébrer les efforts de ces héros méconnus, dont l'action a été déterminante dans la gestion de la crise. Leur exemple nous rappelle que, même dans les moments les plus sombres, la solidarité et la compassion peuvent faire la différence. Les autorités locales ont également joué un rôle important en fournissant des ressources et des infrastructures nécessaires pour faciliter l'évacuation. Cependant, sans l'engagement et la détermination des bénévoles, les efforts de secours n'auraient pas été aussi efficaces. Les bénévoles ont fait preuve d'une grande résilience et d'un sens aigu de la responsabilité, en répondant aux besoins des personnes évacuées avec empathie et professionnalisme. Leur action a permis de créer un environnement de sécurité et de soutien, essentiel pour les personnes touchées par la crise. En conclusion, la récente évacuation des étrangers en France témoigne de la puissance de la solidarité humaine. Les bénévoles ont démontré que, même dans les situations les plus difficiles, il est possible de faire une différence positive. Leur dévouement et leur compassion sont un rappel puissant de l'importance de l'entraide et de la responsabilité sociale. Nous devons continuer à soutenir et à valoriser les efforts de ces héros méconnus, dont l'action est essentielle pour construire une société plus juste et plus humaine.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-3-speech-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -424,9 +1054,75 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-speech-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "speech",
+   "title": "A Difficult Decision: The Closure of the Textile Factory in Lille",
+   "body": "Mesdames et Messieurs, chers collègues, c'est avec une profonde tristesse que je vous annonce aujourd'hui la fermeture de notre usine de textiles à Lille. Cette décision n'a pas été prise à la légère, et je tiens à vous expliquer les raisons qui nous y ont conduits. Les défis économiques actuels, exacerbés par la concurrence internationale et la hausse des coûts de production, nous obligent à prendre cette décision difficile. Malgré nos efforts pour moderniser notre usine et améliorer notre compétitivité, nous ne pouvons plus continuer à opérer de manière rentable. Je tiens à exprimer ma plus profonde gratitude pour votre dévouement et votre dur labeur au fil des ans. Vous avez tous contribué à faire de cette usine un lieu de travail dynamique et productif, et votre engagement a toujours été une source d'inspiration pour moi. Nous comprenons que cette nouvelle soit difficile à entendre et nous sommes là pour vous soutenir pendant cette période de transition. Nous mettrons en place un programme de soutien pour vous aider à traverser cette période, y compris des services de reclassement, des formations et un accompagnement personnalisé. Nous nous engageons également à respecter toutes nos obligations envers vous, y compris les indemnités de licenciement et les avantages sociaux. Je sais que cette nouvelle est difficile à accepter, mais je vous demande de rester unis et solidaires dans cette épreuve. Ensemble, nous pouvons surmonter ce défi et construire un avenir meilleur pour chacun d'entre nous. Je vous remercie pour votre attention et votre compréhension.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-speech-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Shrinking Shore: A Call to Action",
+   "body": "Mesdames et Messieurs, chers collègues, aujourd'hui, je souhaite attirer votre attention sur une crise silencieuse qui menace nos côtes : l'érosion côtière. Nos côtes reculent à un rythme alarmant, avec des pertes de terrain allant jusqu'à plusieurs mètres par an. Des villages entiers sont menacés de disparition, et des écosystèmes uniques sont détruits. La situation est critique et exige une action immédiate et coordonnée. L'érosion côtière est un phénomène naturel, mais il est amplifié par la pression anthropique. L'urbanisation, le tourisme et l'agriculture intensive contribuent à accélérer ce processus. De plus, le changement climatique, avec la montée du niveau de la mer et l'augmentation de la fréquence des tempêtes, aggrave encore la situation. Les efforts actuels sont fragmentés et souvent insuffisants. Nous avons besoin d'une stratégie nationale coordonnée pour lutter contre ce fléau. Cette stratégie doit reposer sur trois piliers : la prévention, l'adaptation et la restauration. Tout d'abord, nous devons prévenir l'érosion en limitant l'impact des activités humaines. Cela implique de réguler l'urbanisme, de gérer durablement les espaces côtiers et de réduire notre empreinte carbone. Ensuite, nous devons nous adapter aux changements inévitables. Cela peut signifier le retrait stratégique de certaines zones, la construction de digues ou la rénovation d'infrastructures existantes. Enfin, nous devons restaurer les écosystèmes côtiers. Les dunes, les marais et les herbiers marins jouent un rôle crucial dans la protection de nos côtes. En les restaurant, nous renforçons notre défense naturelle contre l'érosion. Mesdames et Messieurs, le temps presse. Chaque année perdue est une victoire pour l'érosion, une défaite pour nos communautés côtières. Agissons maintenant, avant qu'il ne soit trop tard. Merci.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
+  {
+   "id": "fr-dr-0p-advertisement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-advertisement-001",
+   "stem": "What does the advertisement say is happening to the coastline?",
+   "choices": [
+    "It's being developed.",
+    "It's getting longer.",
+    "It's eroding.",
+    "It's becoming more popular."
+   ],
+   "answer": 2,
+   "explanation": "The advertisement states that the coastline is eroding, using the phrase 'érosion côtière'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-advertisement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-0p-advertisement-001",
+   "stem": "What does 'luttez' mean here?",
+   "choices": [
+    "ignore",
+    "enjoy",
+    "observe",
+    "fight"
+   ],
+   "answer": 3,
+   "explanation": "The word 'luttez' means 'fight' in this context. The advertisement asks people to 'luttez contre l'érosion côtière', which translates to 'fight against coastal erosion'.",
+   "source": "llm",
+   "verified": false
+  },
   {
    "id": "fr-dr-0p-label-001-q1",
    "exam": "DLPT_READING",
@@ -464,6 +1160,96 @@
    "verified": false
   },
   {
+   "id": "fr-dr-0p-label-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-label-002",
+   "stem": "What is this document about?",
+   "choices": [
+    "A new store opening",
+    "A community festival",
+    "A temporary place for people displaced by an earthquake",
+    "A place to get food"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'A temporary place for people displaced by an earthquake.' The text mentions 'séisme' (earthquake) and 'abri temporaire' (temporary shelter), indicating that it is about a place for people to stay after an earthquake.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-label-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-label-002",
+   "stem": "What does 'répartition des tentes' mean here?",
+   "choices": [
+    "Tents for sale",
+    "Tent repair service",
+    "Tent setup instructions",
+    "Tent distribution schedule"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'Tent distribution schedule.' The text states 'répartition des tentes à 10h,' indicating that it is about when and where tents will be given out.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-label-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-label-003",
+   "stem": "What does the word “pluie” mean here?",
+   "choices": [
+    "windy",
+    "cloudy",
+    "sunny",
+    "rain"
+   ],
+   "answer": 3,
+   "explanation": "The text says “samedi soir, pluie légère,” which means “Saturday evening, light rain.” So “pluie” here means rain.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-label-004-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-label-004",
+   "stem": "What is the French word or phrase for 'office supplies'?",
+   "choices": [
+    "articles de cuisine",
+    "articles de sport",
+    "articles de bureau",
+    "articles de voyage"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is \"articles de bureau\", because the label is about office supplies. The relevant words of the text are \"Articles de bureau\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-label-004-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-label-004",
+   "stem": "What is the main idea of the label?",
+   "choices": [
+    "It provides contact information for the IT department.",
+    "It describes the office layout.",
+    "It lists the types of office supplies available.",
+    "It explains how to use office equipment."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is \"It lists the types of office supplies available.\", because the label enumerates different kinds of office supplies. The relevant words of the text are \"Papier, stylos, cahiers, etc.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-0p-menu-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -496,6 +1282,60 @@
    ],
    "answer": 3,
    "explanation": "The text says 'Nouvelle loi sur la sécurité routière: interdiction de manger au volant.' This indicates that the main idea is a new rule about eating while driving, not a list of new foods, a schedule for road construction, or a description of a new car model.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-menu-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-menu-002",
+   "stem": "What is the name of the lost object?",
+   "choices": [
+    "a wallet",
+    "a phone",
+    "a passport",
+    "a book"
+   ],
+   "answer": 2,
+   "explanation": "The text says \"Passport perdu\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-menu-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-menu-003",
+   "stem": "What is the price of the \"melon\"?",
+   "choices": [
+    "€2.7",
+    "€3.2",
+    "€3.0",
+    "€2.5"
+   ],
+   "answer": 0,
+   "explanation": "The text gives the price of \"melon\" as \"2,70 €\". It is listed as the first item under 'Fruits', with the price shown directly after it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-menu-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-0p-menu-003",
+   "stem": "In the text, what does \"sécheresse\" mean here?",
+   "choices": [
+    "a type of fruit",
+    "a kind of soil",
+    "a farming tool",
+    "a weather condition"
+   ],
+   "answer": 3,
+   "explanation": "The text uses \"sécheresse\" to refer to a \"sécheresse agricole\", which is an \"agricultural drought\", a weather condition. The text is about the effects of drought on the prices of produce.",
    "source": "llm",
    "verified": false
   },
@@ -590,6 +1430,168 @@
    "verified": false
   },
   {
+   "id": "fr-dr-0p-schedule-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-schedule-003",
+   "stem": "What is the main topic of this schedule?",
+   "choices": [
+    "C. Activities for older adults",
+    "B. Upcoming elections",
+    "D. A sports tournament",
+    "A. A new movie release schedule"
+   ],
+   "answer": 0,
+   "explanation": "The schedule mentions events like \"danse\" (dance) and \"bricolage\" (crafts), which are typically associated with activities for older adults. The phrase \"Centre pour personnes âgées\" (Senior Center) also supports this idea.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-schedule-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-schedule-003",
+   "stem": "What does the phrase \"Lundi\" refer to here?",
+   "choices": [
+    "D. Monday",
+    "A. Tuesday",
+    "B. Wednesday",
+    "C. Thursday"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the schedule, \"Lundi\" refers to the day of the week, Monday. This is when the \"danse\" (dance) activity takes place, as indicated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-advertisement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-advertisement-001",
+   "stem": "What does the advertisement ask readers to do?",
+   "choices": [
+    "Increase their use of private vehicles.",
+    "Reduce their use of public transportation.",
+    "Avoid traveling during rush hours.",
+    "Use their cars less often."
+   ],
+   "answer": 3,
+   "explanation": "The advertisement asks readers to \"utilisez moins votre voiture\". This means they should use their cars less often.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-advertisement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-advertisement-001",
+   "stem": "What does the phrase \"qualité de l'air\" refer to in the advertisement?",
+   "choices": [
+    "The temperature outside.",
+    "The condition of the atmosphere.",
+    "The cleanliness of the water.",
+    "The amount of sunlight."
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"qualité de l'air\" refers to \"la condition de l'atmosphère\", as it is used in the context of air pollution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-advertisement-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "fr-dr-1-advertisement-001",
+   "stem": "Why was this advertisement written?",
+   "choices": [
+    "To announce a new public transportation route.",
+    "To raise awareness about air pollution.",
+    "To inform about a new law.",
+    "To encourage people to use more cars."
+   ],
+   "answer": 1,
+   "explanation": "The advertisement was written \"pour améliorer la qualité de l'air\", which means to raise awareness about air pollution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-advertisement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-advertisement-002",
+   "stem": "Why is the new terminal being built?",
+   "choices": [
+    "To improve passenger experience",
+    "To connect to the new high-speed rail line",
+    "To accommodate more international flights",
+    "To replace the old terminal that is no longer safe"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the new terminal is being built 'pour améliorer l'expérience des passagers', which means 'to improve the passenger experience'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-advertisement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-advertisement-002",
+   "stem": "In the advertisement, what does 'confort' mean?",
+   "choices": [
+    "Speed",
+    "Comfort",
+    "Convenience",
+    "Entertainment"
+   ],
+   "answer": 1,
+   "explanation": "The word 'confort' in the text refers to the 'confort moderne' that the new terminal will offer, which means 'modern comfort'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-announcement-001",
+   "stem": "In the announcement, what does 'hausse' mean?",
+   "choices": [
+    "a celebration",
+    "an increase",
+    "a decrease",
+    "a holiday"
+   ],
+   "answer": 1,
+   "explanation": "The word 'hausse' in the announcement means 'an increase'. The text says 'Nous vous informons d'une hausse des prix...', indicating that prices are going up.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-announcement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To announce a new product line",
+    "To announce store hours",
+    "To inform customers about price increases",
+    "To advertise a sale"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the announcement is 'To inform customers about price increases'. The text explicitly states 'Nous vous informons d'une hausse des prix...' to convey this information.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -626,6 +1628,42 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1-instructions-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-instructions-002",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "what to plant in a community garden",
+    "where to find a community garden",
+    "rules for participating in a community garden",
+    "how to start a community garden"
+   ],
+   "answer": 2,
+   "explanation": "The text outlines specific rules and instructions for participants, such as 'Chaque bénévole doit signer ce document' and 'Respectez les horaires de jardinage', indicating that it is about the rules for participating in a community garden.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-instructions-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-instructions-002",
+   "stem": "What does the phrase 'les horaires de jardinage' refer to?",
+   "choices": [
+    "the schedule for watering the plants",
+    "the hours the garden is open to the public",
+    "the times when tools are available",
+    "the times when volunteers can garden"
+   ],
+   "answer": 3,
+   "explanation": "The text states 'Respectez les horaires de jardinage, qui sont de 9h à 17h tous les jours', indicating that 'les horaires de jardinage' refer to the times when volunteers can garden.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -658,6 +1696,42 @@
    ],
    "answer": 3,
    "explanation": "The text says 'Veuillez évacuer immédiatement,' which means 'Please evacuate immediately.' The word 'immédiatement' means 'now'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-notice-002",
+   "stem": "What does the notice say about water use?",
+   "choices": [
+    "Water use should be reduced by 25%.",
+    "Water use should be reduced by 15%.",
+    "Water use should be reduced by 30%.",
+    "Water use should be reduced by 10%."
+   ],
+   "answer": 0,
+   "explanation": "The notice states that water use should be reduced by 25%, as stated in the phrase 'réduire votre consommation d'eau de 25 %'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-notice-002",
+   "stem": "What is meant by 'restreindre' here?",
+   "choices": [
+    "To increase",
+    "To limit",
+    "To measure",
+    "To monitor"
+   ],
+   "answer": 1,
+   "explanation": "The word 'restreindre' in this context means 'to limit', as it is used to describe the action of limiting watering to early morning or late evening hours, as seen in 'restreindre l'arrosage aux heures matinales ou en fin de soirée'.",
    "source": "llm",
    "verified": false
   },
@@ -806,6 +1880,150 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1-short_message-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-short_message-002",
+   "stem": "What is the purpose of the message?",
+   "choices": [
+    "To advertise a new tourist attraction.",
+    "To warn travelers about a border crossing closure.",
+    "To announce a new border crossing.",
+    "To inform travelers about a temporary border crossing procedure."
+   ],
+   "answer": 3,
+   "explanation": "The message informs travelers about a temporary procedure: “Prochainement, des contrôles douaniers auront lieu à la frontière nord.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-short_message-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-short_message-002",
+   "stem": "What does the phrase \"sous peu\" mean here?",
+   "choices": [
+    "In the distant future",
+    "Immediately",
+    "Soon",
+    "Recently"
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"sous peu\" means \"soon\": “Prochainement, des contrôles douaniers auront lieu à la frontière nord sous peu.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-short_message-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-short_message-002",
+   "stem": "What is the main idea of the message?",
+   "choices": [
+    "Travelers should be prepared for a new border crossing experience.",
+    "Travelers should expect delays at the border due to new controls.",
+    "Travelers should bring extra documentation for the border crossing.",
+    "Travelers should avoid the border crossing due to security concerns."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that travelers should expect delays: “Des contrôles douaniers auront lieu à la frontière nord sous peu. Prévoyez des retards.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-short_message-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-short_message-003",
+   "stem": "What is the topic of the meeting?",
+   "choices": [
+    "The future of virtual reality",
+    "The impact of robots on jobs",
+    "The regulation of social media",
+    "The ethics of artificial intelligence"
+   ],
+   "answer": 3,
+   "explanation": "The text explicitly states that the meeting is about \"l'éthique de l'intelligence artificielle\", which means \"the ethics of artificial intelligence\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-short_message-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-short_message-003",
+   "stem": "In the text, what does \"nous discuterons\" mean?",
+   "choices": [
+    "We will discuss",
+    "We will present",
+    "We will argue",
+    "We will listen"
+   ],
+   "answer": 0,
+   "explanation": "The text uses \"nous discuterons\" to indicate what the participants will do at the meeting. The correct meaning is \"we will discuss\", as in \"nous discuterons des principes directeurs pour le développement responsable\", which translates to \"we will discuss the guiding principles for responsible development\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-announcement-001",
+   "stem": "What is the main topic of this announcement?",
+   "choices": [
+    "A new law about artificial intelligence",
+    "A new tax on technology companies",
+    "A new rule about internet use",
+    "A new education program about computers"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is the first choice. The announcement discusses a new law proposal about artificial intelligence, as indicated by the words \"une nouvelle loi sur l'intelligence artificielle\" and the discussion of AI regulation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-announcement-001",
+   "stem": "What is the deadline for public comments on the proposal?",
+   "choices": [
+    "June 15",
+    "July 15",
+    "August 1",
+    "July 1"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is the third choice. The announcement states that the deadline for public comments is \"le 15 juillet\", which is July 15.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-announcement-001",
+   "stem": "In the phrase \"les parties prenantes\", what does \"parties\" mean here?",
+   "choices": [
+    "Legal parties",
+    "Political groups",
+    "Business partners",
+    "Interested groups"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is the second choice. In this context, \"les parties prenantes\" refers to \"les personnes ou les groupes qui peuvent être affectés par la loi ou qui ont un intérêt dans son application\", which means interested groups.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1p-announcement-002-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -856,6 +2074,114 @@
    ],
    "answer": 3,
    "explanation": "The word \"prolongées\" means \"extended\" here, as it is used to describe the new hours of the library: « À partir du 1er septembre, la bibliothèque sera ouverte plus longtemps le week-end, avec des heures prolongées. »",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-announcement-003",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "A new bus depot opening",
+    "Changes to bus schedules and routes",
+    "A new bus route starting in the city",
+    "A reduction in bus fares"
+   ],
+   "answer": 1,
+   "explanation": "The announcement discusses changes to bus schedules and routes in the city, specifically mentioning les horaires and les lignes de bus. It does not focus on a new route, fare reduction, or a new depot.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-announcement-003",
+   "stem": "According to the announcement, what is the new departure time for Line 3 on weekdays?",
+   "choices": [
+    "8:30 AM",
+    "7:30 AM",
+    "7:00 AM",
+    "8:00 AM"
+   ],
+   "answer": 3,
+   "explanation": "The announcement states that Line 3 will now depart at 8h00 les jours ouvrables.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-announcement-003",
+   "stem": "In the announcement, the word 'ajustements' is used. What does it mean here?",
+   "choices": [
+    "New features",
+    "Cancellations",
+    "Delays",
+    "Modifications"
+   ],
+   "answer": 3,
+   "explanation": "The word 'ajustements' is used to indicate modifications to the bus schedules and routes, as in les ajustements d'horaire et de ligne.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-announcement-004",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To explain how to register for a community event.",
+    "To announce the results of a recent local vote.",
+    "To inform citizens about a new municipal policy.",
+    "To encourage people to vote in the upcoming election."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to encourage people to vote. This is clear from the repeated emphasis on voting and the election date: \"Nous comptons sur votre participation pour choisir nos futurs élus. Les élections auront lieu le 15 juin.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-announcement-004",
+   "stem": "What is the date of the upcoming election?",
+   "choices": [
+    "June 20",
+    "June 15",
+    "June 25",
+    "June 10"
+   ],
+   "answer": 1,
+   "explanation": "The text states: \"Les élections auront lieu le 15 juin.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-announcement-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-announcement-004",
+   "stem": "In this text, what is meant by \"faire entendre votre voix\"?",
+   "choices": [
+    "To sing a song",
+    "To whisper to someone",
+    "To express your opinion",
+    "To shout loudly"
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"faire entendre votre voix\" means to express your opinion through voting, as indicated by the context: \"C'est le moment de faire entendre votre voix et de participer à la vie de notre ville.\"",
    "source": "llm",
    "verified": false
   },
@@ -968,6 +2294,114 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1p-email-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-email-002",
+   "stem": "What is the main idea of this email?",
+   "choices": [
+    "The writer is explaining how inflation affects savings.",
+    "The writer is describing a new government policy on interest rates.",
+    "The writer is asking for advice on how to invest money.",
+    "The writer is complaining about the high cost of living."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that inflation affects savings. The writer explains how rising prices reduce the value of savings and mentions the role of interest rates in this context. The relevant words are: \"L'inflation fait que l'argent que vous avez aujourd'hui vaut moins demain.\" and \"Les taux d'intérêt jouent un rôle important dans tout cela.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-email-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-email-002",
+   "stem": "What does the writer say about the current interest rates?",
+   "choices": [
+    "They are very high.",
+    "They are unpredictable.",
+    "They are low.",
+    "They are stable."
+   ],
+   "answer": 2,
+   "explanation": "The writer says that interest rates are low. The relevant words are: \"Les taux d'intérêt sont actuellement bas.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-email-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-email-002",
+   "stem": "What does the writer mean by \"l'argent que vous avez aujourd'hui\"?",
+   "choices": [
+    "Money that you will earn in the future.",
+    "Money that you currently possess.",
+    "Money that you have borrowed from someone.",
+    "Money that you have saved over time."
+   ],
+   "answer": 1,
+   "explanation": "The writer is referring to the money that the reader currently has. The relevant words are: \"L'inflation fait que l'argent que vous avez aujourd'hui vaut moins demain.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-email-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-email-003",
+   "stem": "What is the main idea of this email?",
+   "choices": [
+    "The company is increasing the salaries of current employees.",
+    "The company is laying off employees due to budget cuts.",
+    "The company is moving its headquarters to France.",
+    "The company is hiring more remote workers from abroad."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that the company is hiring more remote workers from abroad, as stated in the first sentence: 'Nous élargissons notre équipe en embauchant des travailleurs à distance depuis la France.' The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-email-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-email-003",
+   "stem": "What does the email say about the application process?",
+   "choices": [
+    "Applicants must have French citizenship.",
+    "Applicants should have at least 5 years of experience.",
+    "Applicants must be able to work in the office in Paris.",
+    "Applicants should send their resumes to the HR department."
+   ],
+   "answer": 3,
+   "explanation": "The email states that applicants should send their resumes to the HR department: 'Envoyez votre CV à notre département des ressources humaines avant le 15 septembre.' The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-email-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-email-003",
+   "stem": "What does 'notre équipe' mean here?",
+   "choices": [
+    "Our suppliers",
+    "Our competitors",
+    "Our customers",
+    "Our team"
+   ],
+   "answer": 3,
+   "explanation": "'Notre équipe' refers to 'our team' in the context of the email, as it is discussing the expansion of the team by hiring remote workers. The relevant sentence is: 'Nous élargissons notre équipe en embauchant des travailleurs à distance depuis la France.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1p-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -1022,6 +2456,222 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1p-instructions-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-instructions-002",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "The history of humanitarian aid in France",
+    "How to volunteer for aid convoys",
+    "Rules for distributing humanitarian aid",
+    "How to apply for humanitarian aid"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the rules for distributing humanitarian aid, as indicated by phrases like 'distribution des secours' and 'les règles suivantes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-instructions-002",
+   "stem": "What should you do before unloading the convoy?",
+   "choices": [
+    "Contact the local authorities",
+    "Check the inventory",
+    "Verify the recipients' identities",
+    "Assess the needs of the community"
+   ],
+   "answer": 2,
+   "explanation": "The text states 'Vérifiez les identités des bénéficiaires avant de décharger le convoi.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-instructions-002",
+   "stem": "What does 'bénéficiaires' mean here?",
+   "choices": [
+    "Volunteers",
+    "Donors",
+    "Recipients",
+    "Organizers"
+   ],
+   "answer": 2,
+   "explanation": "'Bénéficiaires' refers to the people who will receive the aid, as indicated by the context of distribution and verification of identities.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-instructions-003",
+   "stem": "The main idea of the text is that it ...",
+   "choices": [
+    "provides a historical overview of community gardening in France",
+    "describes how to grow specific vegetables in a home garden",
+    "lists the requirements for becoming a certified horticulturist",
+    "announces a new community garden initiative for the upcoming spring"
+   ],
+   "answer": 3,
+   "explanation": "The text begins by stating 'Nous lançons une nouvelle initiative de jardin communautaire pour le printemps prochain!' which announces a new community garden initiative for the upcoming spring. The rest of the text provides details about this initiative, such as the location, meeting times, and what participants will do.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-instructions-003",
+   "stem": "Where will the community garden be located?",
+   "choices": [
+    "In the empty lot on Rue de la République",
+    "At the community center on Avenue des Champs",
+    "Behind the local elementary school",
+    "In the city park near the fountain"
+   ],
+   "answer": 0,
+   "explanation": "The text states 'Le jardin sera situé dans le terrain vacant sur la Rue de la République.' This specifies the location of the community garden.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-instructions-003",
+   "stem": "In the text, what does 'les bénévoles' mean here?",
+   "choices": [
+    "The volunteers",
+    "The plants",
+    "The garden tools",
+    "The community members"
+   ],
+   "answer": 0,
+   "explanation": "The text states 'Les bénévoles travailleront ensemble pour planter, entretenir et récolter les légumes.' Here, 'les bénévoles' refers to the volunteers who will be working in the garden.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-instructions-004",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "Steps to obtain a temporary agricultural work visa",
+    "How to apply for a permanent residency visa",
+    "Requirements for a student visa",
+    "Rules for bringing pets into the country"
+   ],
+   "answer": 0,
+   "explanation": "The text discusses the process for obtaining a temporary agricultural work visa, including who is eligible, how to apply, and what documents are required. It does not mention permanent residency, student visas, or pets.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-instructions-004",
+   "stem": "What must applicants submit as proof of their agricultural work experience?",
+   "choices": [
+    "A letter from their previous employer",
+    "A copy of their high school diploma",
+    "A passport-sized photograph",
+    "A valid driver's license"
+   ],
+   "answer": 0,
+   "explanation": "The text states that applicants must submit 'une lettre de votre employeur précédent confirmant votre expérience de travail agricole.' This means they need a letter from their previous employer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-instructions-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1p-instructions-004",
+   "stem": "What does 'le secteur agricole' mean here?",
+   "choices": [
+    "The technology sector",
+    "The agricultural sector",
+    "The manufacturing industry",
+    "The service industry"
+   ],
+   "answer": 1,
+   "explanation": "The text is about agricultural work visas, so 'le secteur agricole' refers to the agricultural sector. It is mentioned as 'le secteur agricole' dans lequel vous souhaitez travailler.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-biography-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-biography-001",
+   "stem": "Which of the following best summarizes the main idea of the passage?",
+   "choices": [
+    "The passage argues for government intervention to control food prices.",
+    "The passage explains the history of market trading in France.",
+    "The passage discusses the benefits of buying food from market traders.",
+    "The passage describes the daily life of a market trader and the challenges of rising food prices."
+   ],
+   "answer": 3,
+   "explanation": "The main idea of the passage is about the daily life of a market trader named Marcel and the challenges he faces with rising food prices. The other choices are not the primary focus of the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-biography-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-biography-001",
+   "stem": "What time does Marcel usually arrive at the market?",
+   "choices": [
+    "6:00 AM",
+    "7:00 AM",
+    "4:00 AM",
+    "5:00 AM"
+   ],
+   "answer": 3,
+   "explanation": "The passage states that Marcel arrive au marché vers cinq heures du matin.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-biography-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-biography-001",
+   "stem": "What does the phrase \"les prix flambent\" mean here?",
+   "choices": [
+    "Prices are stable.",
+    "Prices are increasing rapidly.",
+    "Prices are decreasing.",
+    "Prices are being negotiated."
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"les prix flambent\" means that prices are increasing rapidly. This is evident in the context of the passage where it discusses the challenges Marcel faces due to rising food prices.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -1072,6 +2722,168 @@
    ],
    "answer": 3,
    "explanation": "In this context, 'abordables' refers to housing that is affordable, as indicated by the phrase 'le manque de logements abordables, c'est-à-dire de logements dont le loyer est inférieur à 30% du revenu du ménage'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-factual_article-002",
+   "stem": "What is the main idea of this article?",
+   "choices": [
+    "The French government has banned all vehicles in Paris.",
+    "The Eiffel Tower is a major source of air pollution in Paris.",
+    "Paris has implemented new traffic regulations to reduce pollution.",
+    "Tourists are advised to avoid visiting Paris during summer."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that Paris is experiencing high pollution levels and has implemented measures like alternating traffic patterns to reduce it. The article states: \"La capitale française connaît des niveaux élevés de pollution ces derniers jours,\" and \"la circulation alternée a été mise en place pour réduire la pollution de l'air.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-factual_article-002",
+   "stem": "What specific measure has been taken to reduce air pollution in Paris?",
+   "choices": [
+    "Residents are required to wear masks outdoors.",
+    "All industrial activities have been halted.",
+    "All public transportation has been suspended.",
+    "A system of alternating traffic patterns has been implemented."
+   ],
+   "answer": 3,
+   "explanation": "The article mentions: \"la circulation alternée a été mise en place pour réduire la pollution de l'air.\" This indicates that a system of alternating traffic patterns has been implemented.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-factual_article-002",
+   "stem": "In the phrase \"les niveaux élevés de pollution,\" what does \"niveaux\" mean?",
+   "choices": [
+    "Sources",
+    "Levels",
+    "Effects",
+    "Types"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"niveaux\" refers to the levels or amounts of pollution. The phrase \"niveaux élevés de pollution\" translates to \"high levels of pollution.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-factual_article-003",
+   "stem": "What is the main idea of this article?",
+   "choices": [
+    "The city of La Rochelle is considering a ban on beach activities.",
+    "The city of La Rochelle is planning to build a new marina.",
+    "Coastal erosion is causing problems for the beaches of La Rochelle.",
+    "The beaches of La Rochelle are becoming more popular with tourists."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the article is that coastal erosion is causing problems for the beaches of La Rochelle. This is stated in the first sentence: \"Les plages de La Rochelle sont en danger à cause de l'érosion côtière.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-factual_article-003",
+   "stem": "According to the article, what is one of the causes of coastal erosion in La Rochelle?",
+   "choices": [
+    "Increased tourism",
+    "Heavy rainfall",
+    "Rising sea levels",
+    "Sand mining"
+   ],
+   "answer": 2,
+   "explanation": "The article states that rising sea levels are one of the causes of coastal erosion in La Rochelle: \"Les niveaux de la mer montent, ce qui entraîne une érosion accrue des côtes.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-factual_article-003",
+   "stem": "What does \"l'érosion\" mean here?",
+   "choices": [
+    "The process of wearing away of soil, rock, or other material",
+    "The process of changing the color of soil, rock, or other material",
+    "The process of building up soil, rock, or other material",
+    "The process of moving soil, rock, or other material from one place to another"
+   ],
+   "answer": 0,
+   "explanation": "\"L'érosion\" refers to the process of wearing away of soil, rock, or other material. In this context, it refers to the wearing away of the coast due to natural forces such as wind and water.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-factual_article-004",
+   "stem": "What is the main idea of this article?",
+   "choices": [
+    "France will experience a mix of sunny and rainy weather over the weekend.",
+    "Strong winds will be the dominant weather feature over the weekend.",
+    "Temperatures will drop significantly across France during the weekend.",
+    "A heatwave will affect the entire country during the weekend."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that France will have a mix of sunny and rainy weather. The text states 'Un week-end contrasté s'annonce sur la France, avec des périodes ensoleillées et des averses.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-factual_article-004",
+   "stem": "What weather condition is expected in the north of France on Saturday?",
+   "choices": [
+    "Fog",
+    "Heavy rain",
+    "Strong winds",
+    "Sunny skies"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions that 'des pluies abondantes sont attendues dans le nord du pays samedi.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-factual_article-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-factual_article-004",
+   "stem": "What does the phrase 'les précipitations' refer to in this context?",
+   "choices": [
+    "Rainfall",
+    "Sunshine duration",
+    "Wind speeds",
+    "Temperature changes"
+   ],
+   "answer": 0,
+   "explanation": "'Les précipitations' refers to rainfall. The text states 'les précipitations devraient diminuer en soirée.'",
    "source": "llm",
    "verified": false
   },
@@ -1292,6 +3104,384 @@
    "verified": false
   },
   {
+   "id": "fr-dr-2-report-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-report-002",
+   "stem": "What is the main idea of the report?",
+   "choices": [
+    "A museum is closing down due to financial difficulties.",
+    "A museum is showcasing rarely seen items from its collection.",
+    "A museum has acquired many new artifacts.",
+    "A museum is hosting an international exhibition."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the museum is showcasing rarely seen items. This is stated in the opening sentence: 'Le musée de la Ville-Lumière est ravi de présenter une exposition spéciale mettant en lumière des trésors cachés de sa collection.' The rest of the report supports this idea by describing the types of items that will be on display and the reasons for showcasing them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-report-002",
+   "stem": "What is one of the reasons the museum is showcasing these items?",
+   "choices": [
+    "To attract more tourists to the city.",
+    "To raise money for a new building.",
+    "To educate the public about the history of the region.",
+    "To celebrate the museum's 100th anniversary."
+   ],
+   "answer": 2,
+   "explanation": "One of the reasons is 'pour éduquer le public sur l'histoire de la région'. This is stated in the sentence: 'Cette exposition a pour but de permettre aux visiteurs de découvrir des aspects méconnus de l'histoire locale et de mieux comprendre le patrimoine culturel de la région.' The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-report-002",
+   "stem": "In the phrase 'des trésors cachés', what does 'cachés' mean?",
+   "choices": [
+    "Hidden",
+    "Ancient",
+    "Valuable",
+    "Stolen"
+   ],
+   "answer": 0,
+   "explanation": "'Cachés' means 'hidden' in this context. The phrase 'des trésors cachés' is used to describe items that are not usually on display. For example, the report mentions 'des œuvres d'art qui n'ont pas été exposées depuis des décennies' and 'des artefacts qui ont été récemment restaurés mais pas encore présentés au public'. These examples illustrate that the items have been kept out of sight, or hidden, from the public.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-report-003",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "The opening of a new community center",
+    "The history of a local festival",
+    "The success of a local sports team",
+    "A volunteer program for neighborhood improvement"
+   ],
+   "answer": 3,
+   "explanation": "The report discusses a volunteer program called \"VoisiNage\" aimed at improving the neighborhood, as seen in the opening sentence: \"Le programme VoisiNage vise à améliorer notre quartier grâce à l'engagement de ses habitants.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-report-003",
+   "stem": "What is one of the volunteer activities mentioned in the report?",
+   "choices": [
+    "Cleaning up parks and public spaces",
+    "Organizing a neighborhood watch",
+    "Hosting a weekly farmers market",
+    "Teaching classes at the local school"
+   ],
+   "answer": 0,
+   "explanation": "The report mentions that volunteers participate in cleaning up parks and public spaces: \"Les bénévoles participent à des activités de nettoyage des parcs et des espaces publics.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-report-003",
+   "stem": "What does the phrase \"se mobiliser\" mean here?",
+   "choices": [
+    "To decorate",
+    "To relax",
+    "To gather and take action",
+    "To travel"
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"se mobiliser\" is used to describe residents taking action to support the volunteer program: \"Les habitants sont invités à se mobiliser pour soutenir les bénévoles.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-report-004",
+   "stem": "What is the main idea of the report?",
+   "choices": [
+    "A tourist lost his passport and reported it to the consulate.",
+    "A woman found a passport in a café and tried to return it.",
+    "A man found a lost passport and returned it to the police.",
+    "A passport was stolen from a hotel room and the owner filed a report."
+   ],
+   "answer": 1,
+   "explanation": "The report is about a woman who found a passport in a café and her efforts to return it. The correct answer is choice 2. The relevant words of the text are: “Une femme a trouvé un passeport dans un café et a essayé de le rendre.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-report-004",
+   "stem": "Where did the woman find the passport?",
+   "choices": [
+    "In a hotel lobby.",
+    "In a café.",
+    "At a police station.",
+    "On a bus."
+   ],
+   "answer": 1,
+   "explanation": "The report states that the woman found the passport in a café. The relevant words of the text are: “Elle a trouvé un passeport dans un café.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-report-004",
+   "stem": "What does the word “rendre” mean here?",
+   "choices": [
+    "To return.",
+    "To borrow.",
+    "To keep.",
+    "To lose."
+   ],
+   "answer": 0,
+   "explanation": "The word “rendre” in this context means to return something to its owner. The relevant words of the text are: “Elle a essayé de le rendre.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-extended_report-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "purpose",
+   "passageId": "fr-dr-2p-extended_report-001",
+   "stem": "Why did the French government create the Comité d'Éthique de l'Intelligence Artificielle (CEIA)?",
+   "choices": [
+    "To ensure the ethical development and use of AI technologies.",
+    "To provide funding for AI research and development.",
+    "To promote French tech companies in the global market.",
+    "To regulate the export of AI technologies to other countries."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the CEIA was established to 'garantir que le développement et l'utilisation de l'IA se fassent de manière éthique et responsable.' This indicates that the primary purpose of the committee is to ensure the ethical development and use of AI technologies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-extended_report-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dr-2p-extended_report-001",
+   "stem": "What is the main focus of the article?",
+   "choices": [
+    "The ethical guidelines and recommendations made by the CEIA.",
+    "The international cooperation on AI regulation and ethics.",
+    "The technological advancements in AI made in France over the past year.",
+    "The economic impact of AI on the French job market."
+   ],
+   "answer": 0,
+   "explanation": "The article primarily discusses the work done by the CEIA, including their 'lignes directrices éthiques' and 'recommandations' regarding AI. This is evident throughout the text, such as in the sentence 'Le CEIA a publié un rapport annuel détaillant leurs lignes directrices éthiques et recommandations pour l'année écoulée.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-extended_report-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2p-extended_report-001",
+   "stem": "How is the phrase 'enjeux éthiques' used in the text?",
+   "choices": [
+    "To describe the financial challenges faced by AI startups.",
+    "To denote the competitive aspects of the AI market.",
+    "To explain the technical difficulties in creating AI algorithms.",
+    "To refer to the moral implications and considerations of AI development."
+   ],
+   "answer": 3,
+   "explanation": "The text uses 'enjeux éthiques' to discuss the 'moral implications and considerations of AI development.' This is seen in the sentence 'Le comité a examiné les enjeux éthiques liés à l'utilisation de l'IA dans divers secteurs, y compris la santé, les transports et la sécurité.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-feature-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "fr-dr-2p-feature-001",
+   "stem": "What is the main reason why Parisian rentals are difficult to secure?",
+   "choices": [
+    "The increasing number of people leaving the city",
+    "The strict regulations imposed by the government",
+    "The lack of new buildings being constructed",
+    "The high demand for apartments due to the city's popularity"
+   ],
+   "answer": 3,
+   "explanation": "The text states that 'la demande est très élevée à cause de la popularité de la ville', which means 'the demand is very high due to the city's popularity'. This indicates that the high demand is the main reason why Parisian rentals are difficult to secure.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-feature-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2p-feature-001",
+   "stem": "In the text, 'les charges' refers to:",
+   "choices": [
+    "The real estate agent's commission",
+    "The security deposit",
+    "The additional fees for services like heating and maintenance",
+    "The monthly rent"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions 'les charges, qui incluent le chauffage, l'eau, et la maintenance', which means 'the additional fees, which include heating, water, and maintenance'. This indicates that 'les charges' refers to the additional fees for services.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-feature-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dr-2p-feature-001",
+   "stem": "What can be inferred about the process of finding an apartment in Paris?",
+   "choices": [
+    "It is a quick and straightforward process",
+    "It is only possible through real estate agents",
+    "It is cheaper than in other European cities",
+    "It requires a lot of patience and persistence"
+   ],
+   "answer": 3,
+   "explanation": "The text mentions that 'trouver un appartement à Paris peut être un défi' and 'il faut être patient et persévérant', which means 'finding an apartment in Paris can be a challenge' and 'one must be patient and persistent'. This implies that the process of finding an apartment in Paris requires a lot of patience and persistence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-feature-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dr-2p-feature-002",
+   "stem": "What is the main idea of this article?",
+   "choices": [
+    "Both French and Swiss teams were praised for their efforts in a recent rescue operation.",
+    "The challenges of mountain rescue operations were highlighted in a recent incident.",
+    "A joint search-and-rescue operation was successful due to the cooperation of French and Swiss teams.",
+    "A French skier was rescued after a successful international operation."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the article is the successful joint operation between French and Swiss teams, as seen in the opening sentence: 'Une opération de recherche et de sauvetage conjointe entre la France et la Suisse s'est soldée par un succès remarquable.' The other choices are details or specific points mentioned in the article but not the main focus.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-feature-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dr-2p-feature-002",
+   "stem": "What can be inferred about the relationship between the French and Swiss rescue teams?",
+   "choices": [
+    "They have a history of mutual respect and cooperation.",
+    "The Swiss team is generally more experienced than the French team.",
+    "They often compete against each other in rescue operations.",
+    "The French team typically takes the lead in joint operations."
+   ],
+   "answer": 0,
+   "explanation": "The inference that can be made is that the teams have a history of mutual respect and cooperation. This is supported by the statement: 'Les équipes françaises et suisses ont travaillé ensemble de manière harmonieuse, mettant en commun leurs compétences et leurs ressources.' The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-feature-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2p-feature-002",
+   "stem": "What does the word 'dépourvus' mean here?",
+   "choices": [
+    "Covered with",
+    "Lacking",
+    "Equipped with",
+    "Full of"
+   ],
+   "answer": 1,
+   "explanation": "The word 'dépourvus' means 'lacking' in this context. The text states: 'Les secours sont arrivés sur place, dépourvus de tout équipement spécialisé.' This indicates that the rescuers lacked specialized equipment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-interview-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dr-2p-interview-001",
+   "stem": "What is the main idea of the interview?",
+   "choices": [
+    "The interview discusses the differences in search-and-rescue techniques between France and Switzerland.",
+    "The interview describes the challenges and successes of a joint search-and-rescue operation between France and Switzerland.",
+    "The interview focuses on the funding and resources required for search-and-rescue operations.",
+    "The interview explains how search-and-rescue operations have evolved over the past decade."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is choice 0, as the interview primarily describes the collaborative efforts, challenges, and successes of a joint search-and-rescue operation between France and Switzerland. The other choices are not the main focus of the interview.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-interview-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dr-2p-interview-001",
+   "stem": "What can be inferred about the relationship between the French and Swiss rescue teams?",
+   "choices": [
+    "They have a competitive relationship and strive to outperform each other.",
+    "They work together seamlessly and have a strong mutual respect.",
+    "They have significant communication barriers that hinder their collaboration.",
+    "They rarely collaborate and prefer to handle rescue operations independently."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is choice 1. The interview states that the teams 'work together seamlessly' and have a 'strong mutual respect', indicating a positive and collaborative relationship. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-interview-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "fr-dr-2p-interview-001",
+   "stem": "What specific challenge did the French team face during the operation?",
+   "choices": [
+    "They struggled with the language barrier and communication with the Swiss team.",
+    "They had difficulty navigating the rugged terrain and accessing the crash site.",
+    "They encountered extreme weather conditions that complicated the rescue efforts.",
+    "They faced a shortage of necessary equipment and resources."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is choice 2. The text mentions that the French team had 'difficulty navigating the rugged terrain and accessing the crash site'. The other choices are not mentioned as challenges faced by the French team in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-2p-interview-002-q1",
    "exam": "DLPT_READING",
    "level": "2+",
@@ -1346,6 +3536,60 @@
    "verified": false
   },
   {
+   "id": "fr-dr-2p-interview-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dr-2p-interview-003",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The role of librarians in modern society",
+    "The challenges of funding public libraries",
+    "The impact of technology on library services",
+    "The history of libraries in France"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the interview is the impact of technology on library services. This is evident from the repeated focus on digital transformation, online resources, and technological challenges throughout the interview.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-interview-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dr-2p-interview-003",
+   "stem": "What can be inferred about the role of traditional books in the library?",
+   "choices": [
+    "They have become completely obsolete",
+    "They are still an important part of the library's offerings",
+    "They are only kept for historical purposes",
+    "They are no longer available to patrons"
+   ],
+   "answer": 1,
+   "explanation": "The inference that traditional books are still an important part of the library's offerings can be drawn from the statement 'Les livres imprimés restent importants, mais nous devons aussi offrir des ressources numériques.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-interview-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2p-interview-003",
+   "stem": "In the context of the interview, what does 'l'accès' mean?",
+   "choices": [
+    "The quality",
+    "The cost",
+    "The availability",
+    "The duration"
+   ],
+   "answer": 2,
+   "explanation": "In the context of the interview, 'l'accès' means the availability. This is evident from the phrase 'faciliter l'accès à une plus grande variété de ressources' which discusses making a wider variety of resources available to patrons.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-2p-news_analysis-001-q1",
    "exam": "DLPT_READING",
    "level": "2+",
@@ -1396,6 +3640,168 @@
    ],
    "answer": 3,
    "explanation": "The author mentions 'la coordination entre les acteurs humanitaires' to emphasize its importance in 'faire face aux défis croissants' and 'améliorer l'efficacité des interventions humanitaires,' as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dr-2p-news_analysis-003",
+   "stem": "What is this article primarily about?",
+   "choices": [
+    "The cultural significance of coastal towns in France",
+    "The government's role in managing natural disasters",
+    "The environmental and human consequences of coastal erosion",
+    "The economic impact of tourism on coastal regions"
+   ],
+   "answer": 2,
+   "explanation": "The article focuses on the effects of coastal erosion, including the environmental damage and the displacement of residents. This is evident in phrases like 'les habitants doivent quitter leurs maisons' and 'la destruction des habitats naturels'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dr-2p-news_analysis-003",
+   "stem": "What can be inferred about the French government's response to coastal erosion?",
+   "choices": [
+    "They have implemented strict regulations to prevent further erosion",
+    "They are investing heavily in infrastructure to combat erosion",
+    "They have been slow to address the issue, leaving residents vulnerable",
+    "They are actively working to relocate affected residents"
+   ],
+   "answer": 2,
+   "explanation": "The text states 'les efforts du gouvernement pour atténuer ces effets ont été lents et insuffisants', indicating that the government's response has been inadequate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2p-news_analysis-003",
+   "stem": "In the phrase 'les zones côtières sont de plus en plus vulnérables', what does 'vulnérables' mean?",
+   "choices": [
+    "Developed",
+    "Susceptible to harm",
+    "Beautiful",
+    "Protected"
+   ],
+   "answer": 1,
+   "explanation": "'Vulnérables' in this context refers to the increased susceptibility of coastal areas to the harmful effects of erosion, as described in the article.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dr-2p-news_analysis-004",
+   "stem": "What is the main idea of this news analysis?",
+   "choices": [
+    "The summit focused solely on technological advancements in renewable energy.",
+    "The summit discussed the negative impacts of renewable energy on the environment.",
+    "The summit was a failure due to disagreements among participating countries.",
+    "The summit highlighted the need for international cooperation to overcome challenges in renewable energy."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that the summit emphasized the importance of international cooperation to address challenges in renewable energy. This is evident in the text: 'Le sommet a mis en lumière l'importance de la coopération internationale pour relever les défis de l'énergie renouvelable.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dr-2p-news_analysis-004",
+   "stem": "What can be inferred about the role of developing countries in the renewable energy transition?",
+   "choices": [
+    "Developing countries are not interested in renewable energy.",
+    "Developing countries will lead the way in renewable energy technologies.",
+    "Developing countries have already achieved their renewable energy goals.",
+    "Developing countries face significant challenges in transitioning to renewable energy."
+   ],
+   "answer": 3,
+   "explanation": "The text suggests that developing countries face substantial challenges in transitioning to renewable energy: 'Les pays en développement, quant à eux, font face à des défis majeurs, notamment en termes de financement et d'infrastructures.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2p-news_analysis-004",
+   "stem": "What does 'les obstacles techniques' refer to in this context?",
+   "choices": [
+    "The high cost of renewable energy technologies.",
+    "Technical difficulties in implementing renewable energy technologies.",
+    "The physical barriers that prevent the use of renewable energy.",
+    "The lack of trained personnel in the renewable energy sector."
+   ],
+   "answer": 1,
+   "explanation": "'Les obstacles techniques' refers to the technical difficulties in implementing renewable energy technologies: 'Le sommet a également souligné les obstacles techniques à surmonter pour rendre l'énergie renouvelable plus accessible et efficace.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "fr-dr-2p-news_analysis-005",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "France's solar energy investments are primarily motivated by political pressures.",
+    "The French government is struggling to find investors for renewable energy projects.",
+    "France is abandoning nuclear energy in favor of wind power.",
+    "France's recent investments in solar energy are driven by economic and environmental factors."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that France's solar energy investments are driven by economic and environmental factors. The text states: \"La France a connu une augmentation significative des investissements dans l'énergie solaire, motivée par des facteurs économiques et environnementaux.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dr-2p-news_analysis-005",
+   "stem": "What can be inferred from the passage about the future of solar energy in France?",
+   "choices": [
+    "France will continue to diversify its energy portfolio but solar will play an increasingly important role.",
+    "Solar energy investments will decline due to lack of public support.",
+    "The French government will soon stop investing in solar energy.",
+    "Solar energy will likely become the primary source of energy in France within the next decade."
+   ],
+   "answer": 0,
+   "explanation": "The passage suggests that France will continue to diversify its energy portfolio but solar will play an increasingly important role: \"Bien que la France continue de diversifier son portefeuille énergétique, l'énergie solaire est appelée à jouer un rôle de plus en plus important.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2p-news_analysis-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2p-news_analysis-005",
+   "stem": "What does \"l'essor\" mean here?",
+   "choices": [
+    "A temporary setback",
+    "A sudden change",
+    "A decrease",
+    "A significant increase or growth"
+   ],
+   "answer": 3,
+   "explanation": "L'essor refers to a significant increase or growth: \"...l'essor des investissements dans les énergies renouvelables, en particulier dans le solaire.\"",
    "source": "llm",
    "verified": false
   },
@@ -1616,6 +4022,60 @@
    "verified": false
   },
   {
+   "id": "fr-dr-3-argumentative_essay-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-argumentative_essay-003",
+   "stem": "What is the main argument of the essay?",
+   "choices": [
+    "The housing crisis in cities is a complex issue that requires immediate and innovative solutions from various stakeholders.",
+    "The housing shortage is not a real problem, but rather a perception created by the media.",
+    "Cities should focus on building more luxurious housing to attract wealthier residents.",
+    "The housing shortage in cities is caused by a lack of government regulation."
+   ],
+   "answer": 0,
+   "explanation": "The essay argues that the housing crisis is a complex issue requiring immediate and innovative solutions from various stakeholders. This is evident in the text's discussion of the need for 'des solutions innovantes et des actions immédiates de la part des différents acteurs impliqués.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-argumentative_essay-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-argumentative_essay-003",
+   "stem": "What can be inferred about the author's opinion on the current state of urban housing?",
+   "choices": [
+    "The author is concerned about the housing crisis and believes it is a serious issue that needs to be addressed urgently.",
+    "The author believes the current state of urban housing is acceptable and does not require significant changes.",
+    "The author thinks the housing crisis is exaggerated and not as severe as it is portrayed.",
+    "The author is indifferent to the housing crisis and does not express a strong opinion."
+   ],
+   "answer": 0,
+   "explanation": "The author expresses concern about the housing crisis, stating that 'la crise du logement est un problème sérieux qui nécessite une attention urgente.' This indicates that the author believes the issue is serious and needs to be addressed urgently.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-argumentative_essay-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-argumentative_essay-003",
+   "stem": "In the phrase 'les prix exorbitants des logements', what does 'exorbitants' mean here?",
+   "choices": [
+    "moderate",
+    "reasonable",
+    "extremely high",
+    "affordable"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'exorbitants' means 'extremely high'. The text discusses the 'prix exorbitants des logements', indicating that the prices of housing are extremely high, contributing to the housing crisis.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-3-commentary-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -1666,6 +4126,168 @@
    ],
    "answer": 0,
    "explanation": "The phrase 'garder son calme' means to maintain composure or stay calm in this context. The text describes the interviewee as keeping their calm despite showing some signs of anxiety.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-commentary-002",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "The Treaty of Versailles had both positive and negative consequences, shaping the 20th century in complex ways.",
+    "The Treaty of Versailles is no longer relevant to modern geopolitics.",
+    "The Treaty of Versailles was a fair and just agreement that ensured lasting peace.",
+    "The Treaty of Versailles was primarily a failure due to its harsh penalties on Germany."
+   ],
+   "answer": 0,
+   "explanation": "The commentary discusses both the positive aspects and the negative consequences of the Treaty of Versailles, highlighting its complex legacy and impact on the 20th century. This is evident in phrases like 'un héritage complexe' and 'les leçons de Versailles résonnent encore aujourd'hui'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-commentary-002",
+   "stem": "What can be inferred about the author's view on the Treaty's long-term effects?",
+   "choices": [
+    "The author believes the Treaty's long-term effects were entirely positive.",
+    "The author thinks the Treaty's long-term effects were entirely negative.",
+    "The author suggests that the Treaty's long-term effects were mixed and still relevant today.",
+    "The author believes the Treaty had no significant long-term effects."
+   ],
+   "answer": 2,
+   "explanation": "The author implies that the Treaty's long-term effects are still relevant today, as seen in 'les leçons de Versailles résonnent encore aujourd'hui' and 'notre monde est toujours en train de naviguer les répercussions de ce traité.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-commentary-002",
+   "stem": "In the text, the phrase 'un héritage complexe' refers to:",
+   "choices": [
+    "A legacy that is easy to understand.",
+    "A legacy that is multifaceted and intricate.",
+    "A simple and straightforward legacy.",
+    "A legacy that is only negative."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'un héritage complexe' is used to describe the Treaty's legacy, implying that it is multifaceted and intricate, as seen in the discussion of both positive and negative consequences.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-commentary-003",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The passage argues that coastal erosion is not a serious problem.",
+    "The passage describes the rapid disappearance of France's coastline and the urgent need for action.",
+    "The passage discusses the economic benefits of coastal erosion.",
+    "The passage explains how coastal erosion is caused by natural processes."
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the passage is that France's coastline is rapidly disappearing due to coastal erosion, and this is a serious problem that requires urgent action. This is evident from the opening sentence: \"La côte française s'effrite à un rythme alarmant,\" and the repeated emphasis on the urgency of the situation throughout the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-commentary-003",
+   "stem": "What can be inferred about the author's attitude towards the government's response to coastal erosion?",
+   "choices": [
+    "The author is indifferent to the government's actions.",
+    "The author believes the government is doing enough to address the issue.",
+    "The author is supportive of the government's efforts.",
+    "The author is critical of the government's slow response."
+   ],
+   "answer": 3,
+   "explanation": "The author's attitude towards the government's response can be inferred as critical. The text states: \"Malheureusement, les mesures prises par le gouvernement jusqu'à présent sont insuffisantes,\" which translates to \"Unfortunately, the measures taken by the government so far are insufficient.\" This indicates that the author believes the government's response has been slow and inadequate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-commentary-003",
+   "stem": "In the phrase \"les efforts de protection sont souvent fragmentés,\" what does \"fragmentés\" mean here?",
+   "choices": [
+    "Well-coordinated",
+    "Expensive",
+    "Disorganized",
+    "Effective"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"fragmentés\" means \"disorganized.\" The text is discussing the lack of coordination in protection efforts, stating that they are often \"fragmentés,\" which implies that they are not well-organized or cohesive.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-commentary-004",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The Musée d'Orsay is hosting an exhibition that challenges traditional views of Impressionism.",
+    "The Musée d'Orsay is renovating its building.",
+    "The Musée d'Orsay is focusing on the personal lives of Impressionist artists.",
+    "The Musée d'Orsay is introducing a new collection of Impressionist paintings."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the passage is that the Musée d'Orsay is hosting an exhibition that challenges traditional views of Impressionism. This is evident from the description of the exhibition's focus on 'lesser-known works' and its aim to 'recontextualize' the Impressionist movement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-commentary-004",
+   "stem": "What can be inferred about the role of the Musée d'Orsay in the art world?",
+   "choices": [
+    "It is a modern museum that only exhibits contemporary art.",
+    "It is a museum that primarily focuses on French art.",
+    "It is a traditional museum that focuses on classic art.",
+    "It is a museum that plays a significant role in shaping the understanding of Impressionism."
+   ],
+   "answer": 3,
+   "explanation": "The passage infers that the Musée d'Orsay plays a significant role in shaping the understanding of Impressionism. This is evident from the description of the exhibition as a 'bold' and 'provocative' attempt to 'recontextualize' the Impressionist movement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-commentary-004",
+   "stem": "In the phrase 'l'exposition met en lumière des œuvres moins connues', what does 'met en lumière' mean?",
+   "choices": [
+    "Highlighted",
+    "Put in the dark",
+    "Put in the shade",
+    "Kept secret"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'met en lumière' means 'highlighted' in this context. The passage uses this phrase to describe how the exhibition brings attention to lesser-known works of Impressionist artists.",
    "source": "llm",
    "verified": false
   },
@@ -1724,6 +4346,60 @@
    "verified": false
   },
   {
+   "id": "fr-dr-3-editorial-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-editorial-002",
+   "stem": "What is the main topic of this article?",
+   "choices": [
+    "The economic impact of evacuating foreign nationals",
+    "The political implications of the evacuation",
+    "The challenges faced by foreign nationals in France",
+    "The role of local volunteers in evacuation efforts"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the article is the role of local volunteers in evacuation efforts. This is evident throughout the text, which focuses on the actions and importance of volunteers, such as 'Les bénévoles ont joué un rôle crucial dans l'évacuation des étrangers' and 'Leur dévouement et leur compassion ont été essentiels pour aider les gens à traverser cette période difficile.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-editorial-002",
+   "stem": "What can be inferred about the author's view on the evacuation efforts?",
+   "choices": [
+    "The author is indifferent to the evacuation efforts.",
+    "The author is supportive of the evacuation efforts.",
+    "The author is unsure about the evacuation efforts.",
+    "The author is critical of the evacuation efforts."
+   ],
+   "answer": 1,
+   "explanation": "The author's supportive view can be inferred from phrases like 'Les bénévoles ont joué un rôle crucial' and 'Leur dévouement et leur compassion ont été essentiels', which highlight the positive impact of the volunteers and the evacuation efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-editorial-002",
+   "stem": "What does 'coordonner' mean in the context of the article?",
+   "choices": [
+    "To praise",
+    "To criticize",
+    "To ignore",
+    "To organize"
+   ],
+   "answer": 3,
+   "explanation": "In the context of the article, 'coordonner' means 'to organize'. This is evident in the phrase 'Les bénévoles ont travaillé sans relâche pour coordonner les efforts de secours', which describes the volunteers' efforts to organize the rescue efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-3-speech-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -1774,6 +4450,114 @@
    ],
    "answer": 0,
    "explanation": "The speaker uses \"vigilance\" to stress the need for careful attention and caution in protecting press freedom. The context is about being watchful against abuses of power, not about anger, indifference, or excitement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-speech-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-speech-002",
+   "stem": "What is the main idea of the speaker's address?",
+   "choices": [
+    "The necessity of closing the Lille textile factory due to economic pressures",
+    "The benefits of the new technology being implemented in the factory",
+    "The importance of textile manufacturing in the French economy",
+    "The history of labor unions in France and their role in protecting workers"
+   ],
+   "answer": 0,
+   "explanation": "The speaker's main idea is that the factory must close due to economic pressures. This is evident throughout the speech, but particularly in the lines: 'C'est avec une profonde tristesse que je vous annonce aujourd'hui la fermeture de notre usine de textiles à Lille.' and 'Les défis économiques actuels nous obligent à prendre cette décision difficile.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-speech-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-speech-002",
+   "stem": "What can be inferred about the speaker's attitude towards the factory workers?",
+   "choices": [
+    "They are indifferent to the workers' well-being.",
+    "They are angry with the workers for not being more productive.",
+    "They feel sympathetic towards the workers and appreciate their contributions.",
+    "They believe the workers are to blame for the factory's closure."
+   ],
+   "answer": 2,
+   "explanation": "The speaker's attitude towards the workers is sympathetic and appreciative. This can be inferred from statements like 'Je tiens à exprimer ma plus profonde gratitude pour votre dévouement et votre dur labeur au fil des ans.' and 'Nous comprenons que cette nouvelle soit difficile à entendre et nous sommes là pour vous soutenir pendant cette période de transition.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-speech-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-speech-002",
+   "stem": "What does the speaker mean by 'cette période de transition'?",
+   "choices": [
+    "A phase of technological upgrade and modernization",
+    "A time of change and adjustment following the factory closure",
+    "A period of economic instability and uncertainty",
+    "A time of great celebration and joy"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'cette période de transition' refers to the time of change and adjustment following the factory closure. This is clear from the context, as the speaker is discussing the support that will be provided to workers during this difficult time: 'Nous mettrons en place un programme de soutien pour vous aider à traverser cette période de transition.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-speech-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-speech-003",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "The speaker discusses the economic benefits of coastal erosion for local communities.",
+    "The speaker proposes a new method for building seawalls to prevent coastal erosion.",
+    "The speaker discusses the urgent need to address coastal erosion and its impacts on communities and the environment.",
+    "The speaker argues that coastal erosion is a natural process that should be left unchecked."
+   ],
+   "answer": 2,
+   "explanation": "The speaker clearly states the urgency of the situation, mentioning that 'Nos côtes reculent à un rythme alarmant' and that 'Des villages entiers sont menacés de disparition'. They also discuss the impacts on communities and the environment, and call for action.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-speech-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-speech-003",
+   "stem": "What can be inferred about the speaker's attitude towards the current efforts to combat coastal erosion?",
+   "choices": [
+    "The speaker thinks that current efforts are inadequate and lack coordination.",
+    "The speaker is indifferent to the current efforts and focuses only on the future.",
+    "The speaker believes that current efforts are a waste of time and resources.",
+    "The speaker believes that current efforts are sufficient and well-coordinated."
+   ],
+   "answer": 0,
+   "explanation": "The speaker mentions that 'Les efforts actuels sont fragmentés et souvent insuffisants' and calls for 'une stratégie nationale coordonnée', indicating that they believe current efforts are inadequate and lack coordination.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-speech-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-speech-003",
+   "stem": "In the phrase 'la pression anthropique', what does 'pression' mean here?",
+   "choices": [
+    "Emotional stress or anxiety.",
+    "The impact of human activities on the environment.",
+    "Social or political pressure.",
+    "Physical force exerted on an object."
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'pression anthropique' refers to the impact of human activities on the environment, as the speaker discusses how 'l'urbanisation, le tourisme et l'agriculture intensive' contribute to coastal erosion.",
    "source": "llm",
    "verified": false
   }

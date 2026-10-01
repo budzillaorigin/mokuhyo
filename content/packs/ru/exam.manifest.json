@@ -2,32 +2,32 @@
  "language": "ru",
  "exam": {
   "file": "exam.json",
-  "sha256": "b89a7eb14896b79a7fe6089678ebf7090c4be9331def18b6734f5a5b4be5353f",
-  "bytes": 140693,
+  "sha256": "3064eba188f2106dbbb91fb4dc32664f0f17ebeddfa303583ca2e17b089056b3",
+  "bytes": 514418,
   "passages": {
    "reading": {
-    "0+": 3,
-    "1": 5,
-    "1+": 5,
-    "2": 2,
-    "2+": 1,
-    "3": 1
+    "0+": 12,
+    "1": 12,
+    "1+": 12,
+    "2": 12,
+    "2+": 11,
+    "3": 11
    },
    "listening": {
-    "0+": 5,
-    "1": 4,
-    "1+": 5,
-    "2": 4,
-    "2+": 2,
-    "3": 5
+    "0+": 12,
+    "1": 12,
+    "1+": 12,
+    "2": 12,
+    "2+": 11,
+    "3": 12
    }
   },
   "items": {
-   "reading": 43,
-   "listening": 66
+   "reading": 187,
+   "listening": 186
   },
-  "listeningWithAudio": 25,
-  "listeningPassages": 25,
+  "listeningWithAudio": 71,
+  "listeningPassages": 71,
   "license": "CC BY-SA 4.0",
   "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)"
  },

@@ -21,6 +21,51 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-0p-advertisement-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Clean Air Campaign",
+   "body": "¡Atención, ciudadanos! La ciudad está tomando acción para protegemos nuestro aire. Únete a la campaña contra la contaminación del aire. Usa transporte público y reduce el uso de tu auto. Juntos, podemos respirar mejor. ¡Hagámoslo por nuestro futuro!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-form-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "form",
+   "title": "AI Registration Form",
+   "body": "Registro de sistemas de IA\n\nNombre del sistema: ___________\nFecha de registro: _____/_____/______\nVersión: ___________\nDesarrollador: ___________\n\nPor favor, complete este formulario para registrar su sistema de IA.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-form-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "form",
+   "title": "Flood Alert",
+   "body": "ALERTA DE INUNDACIÓN\nSe espera que el Río Grande alcance niveles peligrosos de agua. Se recomienda a los residentes de las zonas bajas tomar precauciones. Manténgase informado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-0p-label-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -36,6 +81,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-0p-label-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "label",
+   "title": "Debate on Military Service",
+   "body": "Debate sobre el servicio militar\n\nEl Foro de la Juventud invita a todos los participantes a unirse a nuestro debate sobre el servicio militar. Discutiremos los pros y los contras de esta importante cuestión. ¡No te lo pierdas!\n\nFecha: 15 de octubre\nHora: 7:00 pm\nLugar: Centro Comunal\n\n¿Tienes algo que decir? ¡Ven y comparte tu opinión!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-menu-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Apartment Rental Agreement",
+   "body": "Apartamento en alquiler: 500 euros/mes. Depósito de 100 euros. Incluye agua, luz y gas. Llamar al 555-1234 para más información.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-0p-notice-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -43,6 +118,111 @@
    "textType": "notice",
    "title": "Apartment Availability",
    "body": "Se alquila apartamento de un dormitorio, con cocina equipada y baño. El alquiler es de 300 euros al mes. Disponible a partir del 15 de octubre. Contactar al 555-1234.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-schedule-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "schedule",
+   "title": "Campo de Refugiados Horario",
+   "body": "Campo de Refugiados Esperanza\n\nHorario Diario\n\nDesayuno: 07:00 - 08:00\nAlmuerzo: 12:30 - 13:30\nRecreación: 15:00 - 17:00\nCena: 18:30 - 19:30",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-schedule-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "schedule",
+   "title": "Port Call Schedule",
+   "body": "Puerto de Cartagena\nHorario de Visita Naval\nLlegada: 07:00\nSalida: 17:00\nAtracar: Muelle 3\nBienvenidos a bordo.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-sign-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Heat Wave Warning",
+   "body": "¡Advertencia de ola de calor! Hoy la temperatura máxima será de 36 grados Celsius. No olviden llevar agua. Eviten ejercicio intenso. Quedarse en lugares frescos. ¡Cuídense!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-sign-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "sign",
+   "title": "Community Garden Volunteer Signup",
+   "body": "¿Te gustaría ser voluntario/a en nuestro huerto comunitario?\n\nNecesitamos ayuda para mantener y mejorar nuestro espacio verde.\n\nPor favor, registrate en la alcaldía.\n\n¡Gracias por tu apoyo!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-advertisement-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "Cozy Apartment for Rent",
+   "body": "Alquilo apartamento acogedor en el centro de la ciudad. Tiene una habitación, sala, cocina y baño. La renta es 300 pesos al mes. Incluye agua y luz. Cerca de tiendas, parques y transporte. Ideal para una persona o pareja. Contactar al 555-1234 para más información.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-advertisement-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "Joint Military Exercise in the Works",
+   "body": "Participaremos en el Ejercicio Conjunto con Colombia. Del 1 al 15 de octubre, en el territorio del departamento de Santander. Objetivo: mejorar la cooperación y preparación militar. Abierto a personal autorizado. Más información: oficina de relaciones públicas del ejército.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-advertisement-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "advertisement",
+   "title": "Senior Center Event",
+   "body": "El centro para adultos mayores de Villaflor invita a todos los residentes de 60 años y más a un evento especial el sábado por la mañana. Habrá música, baile y diversión para todos. No se necesita inscripción previa. El evento es gratuito y abierto a todas las personas de 60 años y más. Únase a nosotros para un día de alegría y compañía. ¡Los esperamos!",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -81,6 +261,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1-announcement-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Public Transport Disruption",
+   "body": "AVISO IMPORTANTE\n\nEstimados Usuarios:\n\nLes informamos que habrá interrupciones en el servicio de transporte público debido a una huelga de los trabajadores del transporte. La huelga está programada para el 11 de junio.\n\nPedimos disculpas por los inconvenientes que esto pueda causar y les recomendamos planificar su viaje con anticipación o utilizar métodos alternativos de transporte durante ese día.\n\nAgradecemos su comprensión y paciencia.\n\nAtentamente,\nEl Departamento de Transporte",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Metro Line Adjustments",
+   "body": "Avisos de Ajustes en Líneas de Metro\n\nEstimados pasajeros:\n\nLes informamos de los siguientes ajustes en nuestras líneas de metro:\n\n- Línea 1: Cerrará temprano el sábado debido a un evento especial.\n\n- Línea 2: Servicio reducido el domingo por la mañana.\n\nAgradecemos su comprensión y paciencia.\n\nAtentamente,\nEl equipo de Metro",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -111,6 +321,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1-personal_letter-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "personal_letter",
+   "title": "Coastal Concerns",
+   "body": "Querido Juan, La erosión de la costa es un problema grave en nuestro pueblo. Cada año, el mar se lleva más arena y las olas golpean con fuerza nuestras casas. Necesitamos hacer algo para protegernos y salvar nuestro hogar. El ayuntamiento está organizando una reunión para hablar de esto. ¿Puedes venir? Saludos, María",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -126,6 +351,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1-short_message-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "short_message",
+   "title": "A Century of Independence",
+   "body": "¡Atención, ciudadanos! Este año celebramos nuestro centésimo aniversario de independencia. Para honrar este hito histórico, habrá un desfile y una fiesta en la plaza principal el 15 de agosto. Únase a nosotros para comer, bailar y disfrutar de la música tradicional. ¡Viva nuestra libertad!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-1p-announcement-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -133,6 +373,81 @@
    "textType": "announcement",
    "title": "New App Launch Announcement",
    "body": "¡Atención! Nos complace anunciar el lanzamiento de nuestra nueva aplicación llamada VidaVerde, que te ayudará a encontrar productos ecológicos cerca de ti. Creada por la startup EcoStart, VidaVerde está diseñada para hacer tu vida más verde y sostenible. Con VidaVerde, puedes buscar productos ecológicos, leer reseñas y encontrar tiendas cercanas que ofrecen opciones amigables con el medio ambiente. ¡Descarga VidaVerde hoy y únete a nosotros en nuestro viaje hacia un futuro más verde! La aplicación está disponible para iOS y Android.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "A New Hospital Opens in San Carlos",
+   "body": "El nuevo Hospital San Carlos abrirá sus puertas el próximo lunes. Les invitamos a la inauguración, que tendrá lugar el sábado a las 10 de la mañana. El hospital contará con modernos equipos y personal altamente calificado para brindar la mejor atención a nuestros pacientes. Estamos ubicados en la Avenida Principal, número 100, cerca de la plaza del pueblo. Para más información, pueden llamar al 555-1234. ¡Esperamos verlos allí!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-description-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "description",
+   "title": "Smog in the City",
+   "body": "La capital enfrenta una contaminación peligrosa. Las autoridades han declarado alerta ambiental debido a los altos niveles de material particulado en el aire. El tráfico vehicular es una de las principales fuentes de contaminación. Para reducir la contaminación, se ha implementado la medida de contingencia que restringe el uso de vehículos en la ciudad. Se recomienda a los habitantes utilizar el transporte público o medios alternativos de transporte. Además, se ha pedido a las industrias reducir sus emisiones. Se espera que estas medidas ayuden a mejorar la calidad del aire en los próximos días.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-description-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "description",
+   "title": "Crossing into Colombia",
+   "body": "Para cruzar la frontera entre Panamá y Colombia por el Puente de las Américas, los viajeros deben tener su pasaporte y visa válidos, y mostrar sus boletos de regreso. Los menores de edad también necesitan una autorización firmada por sus padres. El puente está abierto las 24 horas, pero los viajeros deben pasar por el control migratorio y aduanero. Los oficiales pueden preguntar sobre el propósito del viaje y el tiempo de estancia en el país. Es importante tener toda la documentación en regla para evitar retrasos o problemas en el cruce.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-description-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "description",
+   "title": "Volunteering for a Better Community",
+   "body": "El programa Vecinos Solidarios invita a todos los miembros de la comunidad a dedicar parte de su tiempo a ayudar a otros. Hay muchas formas de participar, como ayudar en la organización de eventos comunitarios, apoyar en la biblioteca local o acompañar a los ancianos en sus visitas al médico. No se necesita experiencia previa, solo ganas de ayudar. Al unirte a Vecinos Solidarios, no solo estarás haciendo una diferencia en la vida de los demás, sino también enriqueciendo tu propia vida.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-email-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "email",
+   "title": "Border Formalities",
+   "body": "Asunto: Procedimiento para cruzar la frontera\n\nHola,\n\nEspero que este mensaje te encuentre bien. Quiero recordarte algunos puntos importantes sobre el procedimiento para cruzar la frontera de México a Estados Unidos.\n\nPrimero, asegúrate de tener tu pasaporte y visa válidos. Sin estos documentos, no podrás cruzar la frontera. También es importante que tengas a mano cualquier otro documento que pueda ser requerido, como tu tarjeta de turismo.\n\nCuando llegues al puesto de control fronterizo, sigue las indicaciones de los agentes. Prepárate para la inspección, que puede incluir una revisión de tu equipaje. Es normal que te hagan preguntas sobre tu viaje y el propósito de tu visita.\n\nRecuerda que es importante ser honesto y cooperativo durante el proceso. Si tienes alguna duda, no dudes en preguntar a los agentes.\n\n¡Buen viaje!\n\nSaludos,\n[Tu Nombre]",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -201,6 +516,66 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1p-news_brief-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Subsidios energéticos en riesgo",
+   "body": "El gobierno ha anunciado que comenzará a reducir gradualmente los subsidios a la energía a partir del próximo año. La medida busca alinear los precios locales con los internacionales y reducir el gasto público. Según el ministro de Economía, \"esta decisión permitirá al país ahorrar miles de millones de pesos anuales.\" Sin embargo, se espera que el aumento en las tarifas afecte a los consumidores, especialmente a las familias de bajos ingresos. El gobierno ha prometido implementar programas de apoyo para mitigar el impacto en estas comunidades. La reducción de los subsidios será un proceso progresivo, con ajustes graduales en los precios durante los próximos tres años.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-personal_letter-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "personal_letter",
+   "title": "Rising Costs",
+   "body": "Querido Juan, \n\nEspero que estés bien. Te escribo para contarte cómo están las cosas por aquí. Los últimos meses han sido difíciles porque los precios de las cosas han subido mucho. La inflación está muy alta y las tasas de interés también. Esto hace que todo sea más caro, desde la comida hasta la gasolina. \n\nMi familia y yo hemos tenido que reducir nuestros gastos. Por ejemplo, ahora compramos menos comida y solo lo necesario. También hemos dejado de salir a restaurantes y a cine. Es triste, pero es lo que tenemos que hacer. \n\nEspero que las cosas mejoren pronto. ¿Cómo están las cosas por tu lado? \n\nUn abrazo,\nCarlos",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-biography-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "biography",
+   "title": "From Guatemala to the City of Flowers",
+   "body": "Antonia, una guatemalteca de 45 años, es una de las muchas personas que han emigrado de Centroamérica a México en busca de mejores oportunidades. Nació en un pequeño pueblo en el departamento de Chimaltenango, donde trabajaba como tejedora. Sin embargo, la falta de trabajo y las dificultades económicas la llevaron a tomar la difícil decisión de dejar su hogar y su familia atrás. En 2005, Antonia emigro a México con la esperanza de encontrar un trabajo que le permitiera enviar dinero a su familia en Guatemala. Después de varios meses de lucha, finalmente encontró trabajo en una fábrica en la Ciudad de México. Aunque las condiciones de trabajo eran duras y el salario era bajo, Antonia estaba decidida a hacer lo mejor para sus hijos. Con el tiempo, logró traer a su familia a México y establecerse en la colonia Doctores, conocida como la 'Ciudad de las Flores'. Hoy, Antonia trabaja como costurera en un taller local y sus hijos van a la escuela. Aunque extraña su pueblo natal y a su familia, Antonia está agradecida por las oportunidades que ha encontrado en México y espera que sus hijos tengan un futuro mejor.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-biography-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "biography",
+   "title": "A New Voice for San Miguel",
+   "body": "Carlos Mendoza, el candidato a la alcaldía de San Miguel, es un hombre que ha dedicado su vida a mejorar su ciudad. Nació y creció en San Miguel, donde aprendió el valor del trabajo duro y la importancia de la comunidad. Después de terminar la universidad, Carlos se convirtió en un emprendedor y creó su propia empresa de turismo, que ayudó a impulsar la economía local. Su éxito en los negocios le dio la experiencia y los conocimientos necesarios para entender las necesidades de su ciudad y sus habitantes. Ahora, Carlos quiere usar esa experiencia para servir a su comunidad como alcalde. Su campaña se centra en la creación de empleo, la mejora de la infraestructura y el fomento del turismo. \"Quiero que San Miguel sea un lugar donde la gente pueda prosperar y vivir una vida plena\", dice Carlos. Si es elegido, promete trabajar incansablemente para hacer de San Miguel una ciudad mejor para todos. Carlos Mendoza es un hombre con una visión clara y un compromiso firme con su comunidad. Su experiencia en los negocios y su amor por su ciudad lo convierten en un candidato fuerte y prometedor para la alcaldía de San Miguel.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-2-event_description-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -261,6 +636,66 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-2-event_description-005",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "event_description",
+   "title": "The End of an Era: Textile Factory Closes Its Doors",
+   "body": "La fábrica de textiles Villa Flor, ubicada en la ciudad de Mendoza, anunciará su cierre definitivo el próximo lunes. Después de más de 50 años de operación, la empresa ha decidido dejar de operar debido a dificultades financieras y la competencia de importaciones más baratas. El cierre afectará a alrededor de 200 empleados, que perderán sus trabajos a finales de este mes. El gerente general, Sr. Rodríguez, expresó su tristeza por el fin de una era, pero afirmó que la decisión es necesaria para la supervivencia de la empresa. Se ofrecerá un paquete de despido y se intentará reubicar a algunos empleados en otras instalaciones de la compañía en el país. La fábrica, conocida por sus productos de alta calidad, dejará un vacío en la comunidad local. Se espera que el anuncio oficial se haga durante una reunión con los empleados y representantes sindicales. La empresa insta a los afectados a asistir a la sesión informativa para obtener más detalles sobre los próximos pasos y las opciones de apoyo disponibles.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-factual_article-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "A Busy Morning at the Consulate",
+   "body": "A Busy Morning at the Consulate\n\nEsta mañana perdí mi pasaporte. Fue una situación estresante, pero afortunadamente logré resolver el problema. Primero, revisé toda la habitación del hotel, incluyendo el baño y debajo de la cama, pero no lo encontré. Luego, recordé que había salido a desayunar y quizá lo había dejado en el restaurante. Fui rápidamente al lugar, pero no estaba allí tampoco. Decidí ir al consulado de mi país para reportar la pérdida.\n\nCuando llegué al consulado, había una larga fila de personas. Un funcionario me explicó que podía tramitar un pasaporte de emergencia. Me pidió que llenara un formulario y proporcionara una fotografía reciente. También tuve que presentar mi tarjeta de identidad y pagar una tarifa. El proceso fue rápido y eficiente.\n\nMientras esperaba, conversé con otras personas que también habían perdido sus documentos. Compartimos consejos sobre cómo evitar situaciones similares en el futuro. Finalmente, después de dos horas, recibí mi nuevo pasaporte. Aunque fue un día agitado, me siento aliviado de haber resuelto el problema a tiempo para mi vuelo de regreso.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-news-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "news",
+   "title": "Tourism Revives in the Andean Region",
+   "body": "El turismo en la región andina muestra signos de recuperación tras los duros golpes de la pandemia. Según datos recientes, el número de visitantes ha ido en aumento, lo que ha generado un respiro para los negocios locales y las comunidades dependientes de esta actividad. Sin embargo, a pesar de estos avances, el sector aún enfrentan desafíos significativos. Las limitaciones de infraestructura y las preocupaciones de seguridad siguen siendo obstáculos importantes que deben superarse. Autoridades y empresarios están trabajando en conjunto para implementar estrategias que atraigan a más turistas de manera segura y sostenible. Se espera que estas medidas ayuden a dinamizar el sector turístico y a consolidar la recuperación en los próximos meses. La colaboración entre gobiernos locales, empresas privadas y organizaciones comunitarias será clave para el éxito de estos esfuerzos.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-news-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "news",
+   "title": "Capital City Faces Air Quality Crisis",
+   "body": "La capital del país enfrenta una grave crisis de contaminación del aire. En los últimos días, los altos niveles de contaminación han superado los límites seguros, poniendo en riesgo la salud de los habitantes. Las autoridades han emitido alertas y recomendaciones para que la población permanezca en interiores y evite actividades físicas al aire libre. El gobierno ha implementado medidas de emergencia, incluyendo restricciones a la circulación de vehículos privados según el número de placa. Además, se ha incrementado el control sobre las emisiones industriales y se ha promovido el uso del transporte público. Los expertos atribuyen esta situación a la combinación de factores como el aumento del tráfico vehicular, las condiciones meteorológicas adversas y la quema de residuos. Se espera que las lluvias de las próximas semanas ayuden a mejorar la calidad del aire, pero las autoridades advierten que se necesitan soluciones a largo plazo para prevenir futuras crisis.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-2-report-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -268,6 +703,21 @@
    "textType": "report",
    "title": "The River Project",
    "body": "Informe del Proyecto Río\n\nEl Proyecto Río, iniciado hace dos años, tiene como objetivo restaurar el ecosistema del río Grande y mejorar la calidad del agua. Desde su inicio, el proyecto ha enfrentado varios desafíos, pero también ha logrado avances significativos.\n\nUna de las principales dificultades ha sido la falta de financiación. Aunque se han obtenido fondos de diversas fuentes, incluyendo el gobierno y organizaciones no gubernamentales, estos no han sido suficientes para cubrir todos los costos del proyecto. Además, la participación de la comunidad ha sido irregular, lo que ha ralentizado algunos de los trabajos planificados.\n\nA pesar de estos obstáculos, el proyecto ha logrado restaurar varias zonas húmedas a lo largo del río y ha mejorado la calidad del agua en algunas áreas. También se ha observado un aumento en la diversidad de especies de peces y aves en la zona.\n\nEl equipo del proyecto está trabajando en la obtención de más fondos y en la mejora de la participación comunitaria. Se espera que, con el apoyo continuo de todas las partes involucradas, el Proyecto Río pueda alcanzar sus objetivos en los próximos años.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-report-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "report",
+   "title": "A New Metro Line for San Carlos",
+   "body": "La ciudad de San Carlos está a punto de recibir una gran mejora en su sistema de transporte público. La nueva línea del metro, conocida como Línea Verde, comenzará su construcción el próximo mes. Esta línea recorrerá 20 kilómetros desde el norte hasta el sur de la ciudad, pasando por algunos de los barrios más poblados. La nueva línea contará con 14 estaciones nuevas, incluyendo una estación de transferencia en el centro de la ciudad. Esta estación permitirá a los pasajeros transferirse fácilmente a otras líneas de metro y autobuses. La Línea Verde interconectará con las líneas existentes, lo que facilitará el viaje de los pasajeros en toda la red de transporte público. Se espera que la construcción de la nueva línea genere empleos temporales y permanentes para los residentes locales. Además, se espera que la nueva línea reduzca el tráfico en las calles principales de la ciudad. La Línea Verde también tendrá un impacto positivo en el medio ambiente, ya que reducirá la dependencia de los automóviles y disminuirá las emisiones de gases de efecto invernadero. La construcción de la nueva línea está programada para completar en dos años. Una vez finalizada, la Línea Verde será una adición valiosa al sistema de transporte público de San Carlos.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -306,6 +756,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-2p-extended_report-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "extended_report",
+   "title": "Mayoral Race Heats Up in San Miguel",
+   "body": "La carrera por la alcaldía de San Miguel se está calentando, con tres candidatos principales compitiendo por el puesto. El actual alcalde, Carlos Mendoza, enfrenta una fuerte oposición debido a su manejo de la crisis económica. Su principal contendiente es la exdirectora de educación, Sofía Ruiz, quien ha ganado popularidad por sus propuestas para mejorar las escuelas públicas. El tercer candidato, Luis Gómez, es un empresario local que promete crear más empleos y atraer inversiones a la ciudad. La elección, programada para el próximo mes, se espera que sea reñida, con cada candidato atrayendo a diferentes segmentos del electorado. Mientras Mendoza cuenta con el apoyo de los sectores más conservadores, Ruiz ha logrado ganarse el favor de los votantes más jóvenes y progresistas. Gómez, por su parte, ha logrado atraer a los votantes preocupados por la economía y el empleo. La campaña ha estado llena de debates acalorados y promesas ambiciosas, con cada candidato tratando de destacar sus logros y criticar los de sus oponentes. La ciudad de San Miguel está esperando ansiosamente el resultado de esta elección, que podría determinar el rumbo futuro de la comunidad.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-2p-interview-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -313,6 +778,81 @@
    "textType": "interview",
    "title": "Controversy Over Fishing Rights in the Pacific",
    "body": "Periodista: Hemos invitado al Sr. García, experto en derecho internacional, para hablar sobre el conflicto entre Chile y Perú por los derechos de pesca en el Pacífico. Bienvenido, Sr. García.\r\n\r\nGarcía: Gracias por tenerme. Es un tema importante y complejo.\r\n\r\nPeriodista: ¿Podría explicarnos la naturaleza del conflicto?\r\n\r\nGarcía: Claro. Chile y Perú han estado en desacuerdo sobre los derechos de pesca en el Pacífico durante años. El conflicto se centra en la zona de pesca que ambos países reclaman como suya. Esta zona es rica en recursos pesqueros y es vital para la economía de ambas naciones.\r\n\r\nPeriodista: ¿Qué ha llevado a esta disputa?\r\n\r\nGarcía: La disputa ha llevado a tensiones diplomáticas entre los dos países. Ambos países han presentado argumentos basados en tratados históricos y acuerdos internacionales. Chile argumenta que la zona está dentro de sus aguas territoriales, mientras que Perú sostiene que la zona ha sido parte de su patrimonio pesquero durante generaciones.\r\n\r\nPeriodista: ¿Ha habido algún intento de resolver este conflicto?\r\n\r\nGarcía: Sí, ha habido varias rondas de negociaciones y mediaciones internacionales. Sin embargo, hasta ahora no se ha llegado a un acuerdo definitivo. La complejidad del tema y los intereses económicos en juego hacen que sea difícil encontrar una solución que satisfaga a ambas partes.\r\n\r\nPeriodista: ¿Cuál es el impacto de este conflicto en la región?\r\n\r\nGarcía: El impacto es significativo. La incertidumbre sobre los derechos de pesca afecta a los pescadores locales y a las industrias pesqueras de ambos países. Además, la disputa ha generado tensiones en las relaciones bilaterales y ha afectado la cooperación en otros ámbitos.\r\n\r\nPeriodista: ¿Qué se puede hacer para resolver este conflicto?\r\n\r\nGarcía: Es crucial que ambos países continúen las negociaciones y consideren soluciones creativas, como acuerdos de gestión conjunta de los recursos pesqueros. También es importante que la comunidad internacional apoye estos esfuerzos y facilite el diálogo entre las partes involucradas.\r\n\r\nPeriodista: Gracias, Sr. García, por su perspectiva sobre este importante tema.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2p-interview-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Conversation with Firefighter Elena Ramírez",
+   "body": "Elena Ramírez es una bomberos forestal con más de 15 años de experiencia. Ha luchado contra incendios en diversas partes de Sudamérica y ha visto de cerca los estragos que estos pueden causar. En esta entrevista, nos habla sobre los desafíos y las recompensas de su trabajo.\n\nPregunta: ¿Cuál es el mayor desafío al luchar contra los incendios forestales?\nRespuesta: El mayor desafío es la imprevisibilidad. El comportamiento del fuego y las condiciones meteorológicas pueden cambiar en un instante. Nunca sabes exactamente cómo se va a desarrollar un incendio, lo que lo hace muy peligroso. Además, trabajamos en terrenos difíciles y a menudo bajo condiciones físicas extremas.\n\nP: ¿Cómo se preparan para enfrentar estos desafíos?\nR: La preparación es clave. Tenemos un entrenamiento riguroso que incluye simulacros de incendios, manejo de equipos y primeras respuestas médicas. También realizamos ejercicios de trabajo en equipo para asegurarnos de que todos sabemos exactamente qué hacer en cualquier situación. Estamos preparados para lo peor.\n\nP: ¿Qué es lo más gratificante de su trabajo?\nR: Sin duda, es saber que estamos haciendo una diferencia. Cuando logramos controlar un incendio y proteger vidas y propiedades, sentimos un gran sentido de logro. Además, trabajamos con una increíble comunidad de bomberos que se apoyan mutuamente. Es una familia.\n\nP: ¿Qué mensaje le daría a alguien que está considerando unirse a este campo?\nR: Les diría que sea pasión lo que los motive. Este trabajo no es fácil, pero es extremadamente gratificante. Si tienes el deseo de ayudar a los demás y la determinación para superar los desafíos, entonces vale la pena considerando una carrera como bombero forestal.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2p-interview-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Preserving the Past: A Conversation with Curator Ana García",
+   "body": "Ana García, la curadora en jefe del Museo Nacional de Antropología, nos habla sobre su nueva exposición, \"Raíces de México\".\n\n¿Puede contarnos sobre la nueva exposición?\nClaro, nos complace presentar nuestra nueva exposición, \"Raíces de México\". Esta exhibición explora la historia y la cultura de los pueblos indígenas de México, desde las civilizaciones precolombinas hasta las comunidades contemporáneas. Queremos que los visitantes aprendan sobre la riqueza y diversidad de las culturas indígenas de México.\n\n¿Qué tipo de artefactos se pueden ver en la exposición?\nLa exposición incluye una amplia variedad de artefactos, como cerámicas, textiles, joyas y herramientas, provenientes de diferentes regiones de México. También contamos con maquetas y recreaciones de sitios arqueológicos importantes. Uno de los puntos destacados es una colección de códices antiguos que nunca antes se habían exhibido al público.\n\n¿Cómo se seleccionaron los artefactos para esta exposición?\nEl proceso de selección fue minucioso. Trabajamos en estrecha colaboración con arqueólogos, historiadores y líderes comunitarios para asegurarnos de que la exposición fuera representativa y respetuosa de las culturas que representamos. También consideramos cuidadosamente el estado de conservación de cada artefacto para garantizar su preservación a largo plazo.\n\n¿Qué espera que los visitantes saquen de experiencia?\nEspero que los visitantes salgan de la exposición con una mayor apreciación y comprensión de la herencia cultural de México. Queremos inspirar un sentido de orgullo y conexión con las raíces indígenas de nuestro país. También esperamos fomentar un diálogo continuo sobre la importancia de preservar y celebrar estas culturas vivas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2p-interview-004",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Conversation on the Paths of Migration and Labor",
+   "body": "Entrevista con María López, Directora del Centro de Apoyo al Migrante en la Ciudad de México\n\nPeriodista: María, gracias por estar con nosotros hoy. Para comenzar, ¿podría hablarnos sobre los desafíos que enfrentan los migrantes al buscar empleo en México?\n\nMaría: Gracias por tenerme. Claro, uno de los mayores desafíos es la falta de reconocimiento de sus credenciales y experiencia previa. Muchos migrantes llegan con habilidades valiosas, pero a menudo se les subestima y se les ofrece trabajo en sectores informales o mal remunerados. Además, enfrentan discriminación y barreras lingüísticas que dificultan su integración laboral.\n\nPeriodista: ¿Y qué se está haciendo para apoyar a estos trabajadores migrantes?\n\nMaría: En el Centro de Apoyo al Migrante, trabajamos en varias frentes. Ofrecemos capacitación en idiomas, adaptamos sus habilidades a las necesidades del mercado laboral mexicano y promovemos la inclusión en empresas locales. También es crucial tejer redes de apoyo que les den seguridad y acceso a recursos básicos. La migración es una realidad compleja y multifacética que no puede ser ignorada, y es nuestro deber facilitar su transición.\n\nPeriodista: Háblenos de algún éxito reciente.\n\nMaría: Hemos visto casos de migrantes que, después de nuestra capacitación y apoyo, han logrado empleos formales en sectores como la tecnología, la salud y la educación. Esto no solo mejora su calidad de vida, sino que también enriquece nuestras comunidades con sus diversas perspectivas y talentos.\n\nPeriodista: María, mucho éxito en su labor. Gracias por compartir esta información con nosotros.\n\nMaría: Gracias a ustedes por la oportunidad.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2p-interview-005",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Tourism Recovery in the Wake of Global Challenges",
+   "body": "Entrevistador: Bienvenidos a nuestro programa. Hoy hablamos con María González, Ministra de Turismo de Costa Rica, sobre la recuperación del sector turístico en el país. María, ¿cuáles han sido los mayores desafíos que han enfrentado?\\n\\nMaría González: Gracias por tenerme. El colapso en el turismo debido a la pandemia y otros factores globales ha sido un golpe duro para nuestro país. Hemos visto una recuperación gradual, pero aún enfrentamos desafíos, como la percepción de inseguridad en algunas regiones.\\n\\nEntrevistador: ¿Qué medidas se han tomado para abordar estos desafíos?\\n\\nMaría González: Hemos implementado una serie de medidas para atraer de nuevo a los turistas, como campañas de promoción y descuentos en alojamientos. También hemos trabajado en mejorar la infraestructura y servicios turísticos. Además, hemos puesto un fuerte énfasis en el turismo sostenible y ecológico, que es una de nuestras mayores fortalezas.\\n\\nEntrevistador: ¿Cómo ha respondido la industria turística local a estas iniciativas?\\n\\nMaría González: La respuesta ha sido muy positiva. Los hoteles y guías turísticos han adoptado prácticas más sostenibles y han participado activamente en nuestras campañas. Esto ha ayudado a reconstruir la confianza de los turistas internacionales.\\n\\nEntrevistador: ¿Qué se puede esperar en el futuro para el turismo en Costa Rica?\\n\\nMaría González: Somos optimistas. Creemos que el enfoque en el turismo sostenible nos dará una ventaja competitiva. Además, estamos explorando nuevos mercados y promocionando menos conocidos destinos dentro de nuestro país para distribuir mejor el flujo de turistas.\\n\\nEntrevistador: Muchas gracias, María, por compartir esta información con nosotros.\\n\\nMaría González: Gracias a ustedes.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2p-news_analysis-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Unstoppable Rise of the Jaguares",
+   "body": "La victoria de los Jaguares en el Campeonato Nacional de Rugby no fue un accidente, sino el resultado de una estrategia bien planificada y un trabajo en equipo excepcional. Desde el inicio de la temporada, el equipo ha demostrado una dedicación y una determinación inquebrantables. Su defensa implacable no permitió que el equipo contrario anotara, mientras que su ataque preciso y efectivo les permitió marcar puntos cruciales. El entrenador, Carlos Mendoza, ha sido fundamental en la creación de un ambiente de equipo donde cada jugador se siente valorado y motivado. Además, la incorporación de jugadores jóvenes y talentosos ha inyectado una nueva energía en el equipo. Con esta victoria, los Jaguares han demostrado que son un equipo a tener en cuenta en el futuro. Sin embargo, no hay lugar para la complacencia. El mundo del rugby es altamente competitivo, y otros equipos estarán buscando la manera de superar a los Jaguares. Será interesante ver cómo el equipo responde a estos nuevos desafíos y si pueden mantener su nivel de rendimiento en las próximas temporadas.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -336,6 +876,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-2p-opinion-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "opinion",
+   "title": "The Ethical Crossroads of Artificial Intelligence",
+   "body": "En la era de la inteligencia artificial (IA), nos encontramos en un cruce ético que exige nuestra atención inmediata. El ritmo del avance tecnológico supera con creces la capacidad de nuestros marcos regulatorios actuales para mantenerse al día. Es imperativo que establezcamos regulaciones robustas para guiar el desarrollo de la IA, asegurando que beneficiosa para la sociedad en su conjunto y no solo para unos pocos. Uno de los principales desafíos es el potencial de la IA para exacerbar las desigualdades existentes. Si no se regula adecuadamente, la IA podría concentrar aún más el poder y los recursos en manos de una élite, dejando atrás a grandes segmentos de la población. Además, debemos abordar las preocupaciones sobre la privacidad y la seguridad. Los sistemas de IA recopilan y analizan cantidades masivas de datos personales, lo que plantea riesgos significativos para la privacidad de los individuos. Es crucial que las regulaciones garanticen que estos datos se utilicen de manera responsable y transparente. Otro aspecto crítico es el impacto de la IA en el empleo. Si bien la IA puede crear nuevas oportunidades, también puede automatizar puestos de trabajo, dejando a muchos trabajadores en una situación precaria. Las regulaciones deben incluir medidas para apoyar la transición de los trabajadores hacia nuevas áreas de empleo y proporcionarles las habilidades necesarias para prosperar en la economía impulsada por la IA. En conclusión, la regulación de la IA no es una opción, sino una necesidad urgente. Debemos actuar con prontitud y determinación para establecer marcos regulatorios que equilibren la innovación con la protección de los intereses públicos. Solo así podremos asegurarnos de que la IA sirva para el bien común y no para el beneficio de unos pocos.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2p-opinion-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2+",
+   "textType": "opinion",
+   "title": "A Clash of Interests in the Pacific",
+   "body": "En el Pacífico, los derechos de pesca están generando un creciente conflicto entre los países costeros y los defensores del medio ambiente. La voraz industria pesquera, impulsada por la demanda global de productos del mar, está llevando a una sobreexplotación de los recursos marinos y a la degradación de los ecosistemas. Países como Chile y Perú, ricos en biodiversidad marina, están en desacuerdo sobre cómo gestionar estas aguas compartidas. Mientras que Chile argumenta que necesita acceder a ciertas zonas para mantener su economía local, Perú insiste en la protección de especies en peligro. El manejo actual de los derechos de pesca está llevando a una sobreexplotación de los recursos marinos y a la degradación de los ecosistemas. Además, la pesca ilegal, no declarada y no reglamentada (INDNR) sigue siendo un problema grave, con barcos extranjeros operando en aguas protegidas. Organizaciones ambientales exigen acuerdos internacionales más estrictos y sanciones severas para quienes violen las regulaciones. Sin embargo, los gobiernos temen que estas medidas afecten negativamente a las comunidades costeras que dependen de la pesca para su sustento. La solución parece estar en un equilibrio delicado entre la protección ambiental y las necesidades económicas, un desafío que requiere cooperación y voluntad política.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-3-analysis-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -343,6 +913,21 @@
    "textType": "analysis",
    "title": "The Challenges of Cooperation",
    "body": "La reciente cumbre internacional en Buenos Aires reunió a representantes de más de cincuenta países para abordar los desafíos globales más apremiantes. Aunque los resultados pueden ser limitados, estos encuentros son necesarios para abordar problemas que trascienden las fronteras nacionales. Sin embargo, la cumbre puso de manifiesto las dificultades de la cooperación internacional. Las partes involucradas deben encontrar un terreno común, pero las diferencias en intereses, prioridades y capacidades a menudo obstaculizan el progreso.\n\nUno de los temas centrales fue el cambio climático. Si bien todos los países reconocieron su importancia, hubo desacuerdos significativos sobre cómo abordarlo. Las naciones en desarrollo argumentaron que los países más ricos deben asumir una mayor responsabilidad, mientras que estos últimos insistieron en la necesidad de una acción colectiva. Estas diferencias reflejaron las tensiones subyacentes que a menudo caracterizan las negociaciones internacionales.\n\nAdemás del cambio climático, la cumbre abordó cuestiones económicas y sociales. La brecha entre los países ricos y pobres se destacó como un obstáculo importante para el progreso global. A pesar de los esfuerzos por encontrar soluciones, las diferencias en las prioridades nacionales hicieron difícil llegar a un consenso. Por ejemplo, mientras algunos países abogaron por una mayor inversión en educación y salud, otros se centraron en la necesidad de reformas económicas.\n\nA pesar de estos desafíos, la cumbre no fue un fracaso total. Se lograron algunos avances, como la creación de un fondo para apoyar proyectos de energía renovable en países en desarrollo. Sin embargo, queda claro que la cooperación internacional sigue siendo un proceso complejo y a menudo frustrante. La cumbre en Buenos Aires sirvió como un recordatorio de que, aunque los países del mundo comparten muchos de los mismos desafíos, encontrar soluciones comunes sigue siendo un objetivo difícil de alcanzar.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-3-analysis-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "analysis",
+   "title": "A Shift in University Admissions: The End of the Entrance Exam",
+   "body": "La universidad ha anunciado que eliminará su tradicional examen de ingreso y adoptará un nuevo proceso de admisión a partir del próximo año. Este cambio se debe a la preocupación de que el examen actual no refleja adecuadamente las habilidades y potencial de los estudiantes. El nuevo proceso evaluará a los estudiantes en función de su desempeño académico, actividades extracurriculares, entrevistas personales y ensayos. La rectora de la universidad, María López, explicó que el objetivo de este cambio es diversificar el cuerpo estudiantil y crear una comunidad más inclusiva. \"Queremos atraer a estudiantes que no solo sean académicamente talentosos, sino también comprometidos con su comunidad y con un espíritu innovador\", afirmó López. La universidad también ha indicado que proporcionará recursos y apoyo adicionales a los estudiantes que sean admitidos a través de este nuevo proceso, para asegurar que tengan las herramientas necesarias para tener éxito en sus estudios. La decisión ha generado tanto elogios como críticas. Algunos sectores aplauden el esfuerzo por hacer el proceso de admisión más equitativo, mientras que otros expresan preocupación por la posible pérdida de estándares académicos. A pesar de las críticas, la universidad mantiene su compromiso con este cambio, señalando que está en línea con las tendencias globales en educación superior. La implementación del nuevo proceso de admisión comenzará con la próxima cohortes de estudiantes, y la universidad planea monitorear su impacto y realizar ajustes según sea necesario.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -366,6 +951,51 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-3-argumentative_essay-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "The Hidden Costs of Cheap Food",
+   "body": "En los últimos años, hemos presenciado un aumento significativo en los precios de los alimentos. Este fenómeno no es simplemente el resultado de fluctuaciones del mercado, sino que refleja problemas más profundos en nuestro sistema alimentario global. Uno de los principales factores que contribuyen a este aumento es el coste creciente del combustible y el transporte. A medida que los precios del petróleo aumentan, también lo hacen los costes de transporte de los alimentos, lo que se traduce en precios más altos para los consumidores. Sin embargo, este es solo la punta del iceberg. El verdadero problema radica en la insostenible explotación de los recursos naturales que sustentan nuestra producción alimentaria. La sobreexplotación de los suelos, la deforestación y la sobreexplotación de los recursos hídricos están llevando a una degradación ambiental que, a su vez, está afectando la capacidad de los sistemas alimentarios para satisfacer la demanda global. A esto se suma el impacto del cambio climático, que está alterando los patrones de precipitación y las temperaturas, lo que dificulta aún más la producción de alimentos. El sistema actual de precios de los alimentos esconde los verdaderos costos de la producción de alimentos. Los precios bajos que vemos en los supermercados no reflejan el daño ambiental y social que se está causando para producir esos alimentos. Es hora de reconocer que el verdadero costo de los alimentos es mucho más alto de lo que pagamos en la caja registradora. Debemos trasladar estos costos ocultos a los precios de los alimentos para incentivar prácticas más sostenibles y justas. Esto no solo ayudará a proteger nuestro medio ambiente, sino que también garantizará que los agricultores reciban un precio justo por su trabajo. Además, debemos invertir en tecnologías y prácticas agrícolas sostenibles que puedan producir alimentos de manera eficiente sin dañar el medio ambiente. Esto incluye el uso de métodos de agricultura regenerativa, la implementación de sistemas de riego eficientes y la promoción de la biodiversidad en las granjas. Solo mediante un enfoque integral que aborde tanto los aspectos económicos como ambientales del sistema alimentario podremos garantizar un suministro estable de alimentos para las generaciones futuras. En conclusión, el aumento en los precios de los alimentos es un llamado de atención sobre la necesidad de cambiar nuestro sistema alimentario actual. Debemos reconocer y abordar los costos ocultos de la producción de alimentos y trabajar hacia un sistema que sea sostenible, justo y resiliente. Solo entonces podremos garantizar que todos tengan acceso a alimentos asequibles y nutritivos, sin comprometer el futuro de nuestro planeta.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-3-argumentative_essay-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "The Tide of Change: A Debate on Fishing Rights",
+   "body": "En los últimos años, el debate sobre los derechos de pesca se ha intensificado a nivel mundial. Los defensores del statu quo argumentan que el sistema actual garantiza la seguridad alimentaria y el empleo en las comunidades costeras. Sin embargo, esta postura no tiene en cuenta el impacto devastador que la pesca sin restricciones está teniendo en nuestros ecosistemas marinos. Es imperativo que reconsideremos cómo se asignan los derechos de pesca para equilibrar las necesidades económicas y la sostenibilidad ambiental. Los derechos de pesca deben ser asignados considerando tanto el uso histórico como el impacto ambiental. Esto significa que las comunidades locales, que han dependido de la pesca durante generaciones, deben tener prioridad. Además, las cuotas de pesca deben establecerse en función de la capacidad de regeneración de cada especie, no de la capacidad de las empresas para maximizar sus ganancias. El sistema actual favorece a las grandes corporaciones y no tiene en cuenta el impacto ambiental. Esto ha llevado a una sobrepesca generalizada, que ha puesto en peligro numerosas especies y alterado los ecosistemas marinos. La pesca sin restricciones está causando una tala rasa en nuestros ecosistemas marinos. Para evitar un colapso ecológico, es crucial implementar un sistema de derechos de pesca basado en la precaución y la sostenibilidad. Esto no solo protegerá nuestros océanos para las generaciones futuras, sino que también garantizará que las comunidades costeras puedan seguir dependiendo de la pesca como fuente de ingresos y alimentos.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-3-commentary-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "commentary",
+   "title": "The Heart of the Matter: Vaccination Campaign in Rural Colombia",
+   "body": "En el corazón de Colombia, lejos de las grandes ciudades, las campañas de vacunación enfrentan desafíos únicos que requieren soluciones específicas. La geografía accidentada y las comunidades dispersas hacen que el acceso a los servicios de salud sea difícil. Además, las creencias culturales y la desconfianza hacia los programas de salud pública pueden dificultar la aceptación de las vacunas. Por lo tanto, es crucial que las estrategias de vacunación en estas áreas se adapten a las necesidades y contextos locales. Involucrar a los líderes locales y a los miembros de la comunidad en la planificación e implementación de las campañas de vacunación puede mejorar notablemente su eficacia. Esto no solo ayuda a superar las barreras culturales, sino que también fomenta un sentido de propiedad y responsabilidad dentro de la comunidad. Además, es esencial garantizar la aceptación y la sostenibilidad de las campañas. Esto puede lograrse mediante la educación comunitaria, la provisión de información clara y precisa sobre los beneficios de la vacunación, y la creación de entornos de vacunación amigables y accesibles. Las campañas de vacunación en las zonas rurales de Colombia no son solo una cuestión de disponibilidad de vacunas, sino también de adaptación, compromiso comunitario y comunicación efectiva. Al abordar estos aspectos, se puede mejorar significativamente el impacto de las campañas de vacunación y contribuir a la salud y el bienestar de las comunidades rurales.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-3-editorial-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -381,6 +1011,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-3-editorial-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "editorial",
+   "title": "A Giant Leap for Argentina",
+   "body": "El reciente lanzamiento espacial desde la base de Coheurá en la provincia de Neuquén ha posicionado a Argentina como un actor clave en la exploración espacial. Este éxito no solo simboliza el progreso científico del país, sino también su capacidad para competir en el escenario global. La misión, llevada a cabo por la Comisión Nacional de Actividades Espaciales (CONAE), ha demostrado que Argentina está a la vanguardia de la tecnología espacial en América Latina. Este logro no solo simboliza el progreso científico, sino también la capacidad de Argentina para competir en el escenario global. La misión, llevada a cabo por la Comisión Nacional de Actividades Espaciales (CONAE), ha demostrado que Argentina está a la vanguardia de la tecnología espacial en América Latina. La exitosa puesta en órbita del satélite ARSAT-3 es un testimonio del talento y la dedicación de los científicos argentinos. Este hito tecnológico ha puesto a Argentina en el mapa global, atrayendo la atención de la comunidad internacional y abriendo nuevas oportunidades de colaboración. Es hora de celebrar este logro y apoyar los esfuerzos continuos en la exploración espacial. La inversión en tecnología espacial no es un gasto, sino una inversión en el futuro de Argentina. Al hacerlo, no solo estamos avanzando en el campo científico, sino también fortaleciendo nuestra posición en la economía global. El lanzamiento exitoso del ARSAT-3 es un paso importante en esta dirección, y debemos seguir apoyando a nuestros científicos y sus esfuerzos innovadores. Argentina ha dado un paso gigante no solo para el país, sino para toda la región. Este avance tecnológico es un faro de esperanza y un recordatorio de lo que podemos lograr cuando trabajamos juntos hacia un objetivo común. La exploración espacial es un campo que requiere colaboración y cooperación internacional, y Argentina está lista para desempeñar un papel líder en este esfuerzo global. Este logro es un testimonio del talento y la dedicación de los científicos argentinos, y un recordatorio de que, con la inversión adecuada y el apoyo continuo, podemos alcanzar nuevas alturas. Es hora de mirar hacia el futuro con optimismo y seguir apoyando los esfuerzos innovadores de nuestros científicos. El lanzamiento del ARSAT-3 es solo el comienzo, y el cielo no es el límite para Argentina.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-3-editorial-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "editorial",
+   "title": "The Silent Crisis: The Forgotten Impact of Forest Fires",
+   "body": "En los últimos años, el mundo ha sido testigo de una serie de crisis que han captado la atención de los medios y la opinión pública. Desde pandemias hasta conflictos geopolíticos, estas crisis han dejado una profunda huella en nuestras vidas. Sin embargo, los impactos de los incendios forestales a menudo pasan desapercibidos. Estas catástrofes naturales, que se han vuelto más frecuentes e intensas debido al cambio climático, tienen consecuencias devastadoras para el medio ambiente y la economía. Es crucial que reconozcamos y abordemos esta crisis silenciosa. Los incendios forestales no solo destruyen hábitats naturales y ponen en peligro la biodiversidad, sino que también afectan la calidad del aire y la salud humana. Además, los costos económicos asociados con la lucha contra los incendios y la recuperación de las áreas afectadas son enormes. A pesar de esto, los recursos y la coordinación necesarios para prevenir y gestionar estos incendios a menudo son insuficientes. Es crucial que los gobiernos tomen medidas más enérgicas para prevenir y gestionar los incendios forestales. Esto incluye invertir en la prevención, como la gestión forestal sostenible y la concienciación pública, así como en la respuesta, como la capacitación de bomberos y la adquisición de equipos adecuados. También es importante fomentar la cooperación internacional, ya que los incendios forestales no conocen fronteras y requieren una respuesta coordinada a nivel global. Ignorar la crisis de los incendios forestales solo empeorará sus impactos y aumentará los costos a largo plazo. Es hora de reconocer la gravedad de esta crisis y tomar medidas concretas para abordarla. Solo así podremos proteger nuestro medio ambiente, nuestra salud y nuestra economía para las generaciones futuras.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-3-speech-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -388,6 +1048,36 @@
    "textType": "speech",
    "title": "A New Vision for Our Community: The Path Forward",
    "body": "Estimados conciudadanos, hoy nos reunimos para hablar sobre el futuro de nuestra comunidad. En los últimos años, hemos enfrentado una serie de desafíos que requieren nuestra atención y acción colectiva. Desde la falta de participación ciudadana hasta la necesidad de mejorar en varias áreas, como la educación, la infraestructura y el medio ambiente, es evidente que debemos unirnos y trabajar juntos hacia una visión compartida para nuestro pueblo, San Carlos. No se trata de señalar con el dedo o echar la culpa a otros, sino de asumir la responsabilidad y comprometernos a hacer las cosas mejor. Debemos fomentar el diálogo entre todos los sectores de nuestra comunidad, incluyendo a los jóvenes, los ancianos, los empresarios y los líderes locales. Solo a través de la colaboración y el respeto mutuo podremos encontrar soluciones efectivas y duraderas. Uno de los primeros pasos que propongo es la creación de un consejo consultivo ciudadano que represente la diversidad de nuestra comunidad y que trabaje en estrecha colaboración con el ayuntamiento. Este consejo se encargaría de identificar las necesidades y prioridades de los ciudadanos, así como de supervisar la implementación de los proyectos y políticas públicas. Además, es crucial que promovamos la transparencia y la rendición de cuentas en nuestro gobierno local. Los ciudadanos tienen derecho a saber cómo se están utilizando los recursos públicos y a participar en las decisiones que afectan sus vidas. Para lograr esto, proponemos la creación de una plataforma en línea donde se pueda acceder a información actualizada sobre los proyectos en curso, los presupuestos y los informes de avance. También es importante que fomentemos la participación ciudadana a través de consultas públicas y asambleas vecinales, donde todos puedan expresar sus opiniones y sugerencias. En cuanto a los jóvenes, debemos crear más oportunidades para su desarrollo y participación. Esto incluye programas de mentoría, becas y espacios seguros donde puedan expresarse y contribuir al bienestar de nuestra comunidad. También es fundamental que invirtamos en nuestra infraestructura y servicios públicos. Esto no solo mejorará la calidad de vida de nuestros ciudadanos, sino que también atraerá nuevas inversiones y oportunidades económicas. Finalmente, debemos comprometernos a proteger y preservar nuestro medio ambiente. San Carlos es conocido por su belleza natural, y es nuestro deber garantizar que las futuras generaciones puedan disfrutar de ella. Esto implica adoptar prácticas sostenibles, promover la educación ambiental y trabajar en la conservación de nuestros recursos naturales. Conciudadanos, el camino por delante no será fácil, pero estoy convencido de que, si trabajamos juntos, podemos superar los desafíos y construir un futuro próspero y sostenible para San Carlos. Les pido que se unan a mí en este esfuerzo y que juntos hagamos de nuestra comunidad un lugar mejor para todos. Muchas gracias.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-3-speech-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "speech",
+   "title": "Uniting in the Aftermath: Rebuilding Together",
+   "body": "Estimados conciudadanos,\\n\\nNos reunimos hoy en un momento de gran tristeza y reflexión. Un terremoto devastador ha sacudido nuestras vidas, dejando un rastro de destrucción y pérdida. Sin embargo, también nos ha recordado la fuerza de nuestra comunidad y la importancia de estar unidos en los momentos más difíciles.\\n\\nEn los últimos días, hemos visto actos heroicos de valor y compasión. Vecinos ayudando a vecinos, desconocidos convirtiéndose en familiares, y una comunidad entera levantándose para supports a los más afectados. Estas acciones nos recuerdan quiénes somos y qué valoramos como sociedad.\\n\\nHoy no hablamos de días o semanas, sino de meses y años. Juntos, debemos reconstruir no solo los edificios, sino también la esperanza y la confianza en nuestro futuro. La resiliencia de nuestra comunidad será puesta a prueba, pero estoy seguro de que superaremos este desafío.\\n\\nEl gobierno municipal ya ha establecido centros de ayuda en toda la ciudad, donde las familias pueden acceder a alimentos, agua y refugio temporal. También hemos activado protocolos de emergencia para garantizar la seguridad y el bienestar de todos.\\n\\nSin embargo, no podemos hacerlo solos. Necesitamos la cooperación de cada uno de ustedes. Ya sea ofreciendo su tiempo, donando suministros o simplemente siendo un hombro amigo para aquellos que lo necesitan, cada acto de bondad cuenta.\\n\\nTambién debemos recordar a nuestras comunidades más vulnerables. Los ancianos, los niños y aquellos con necesidades especiales requieren atención adicional. Como comunidad, debemos asegurarnos de que nadie se quede atrás en nuestros esfuerzos de recuperación.\\n\\nEn los próximos días, anunciaremos un plan detallado de reconstrucción. Este plan incluirá no solo la reparación de la infraestructura dañada, sino también iniciativas para fortalecer nuestra comunidad y prepararla mejor para futuros desafíos.\\n\\nFinalmente, quiero dejar claro que no estamos solos. Hemos recibido ofertas de ayuda de comunidades vecinas y organizaciones nacionales e internacionales. Aceptaremos esta ayuda con gratitud y la usaremos para apoyar nuestros esfuerzos de recuperación.\\n\\nEn los días por venir, enfrentaremos desafíos significativos. Pero si hemos aprendido algo de esta experiencia, es que somos más fuertes cuando estamos unidos. Juntos, reconstruiremos nuestras casas, nuestras escuelas y nuestros lugares de trabajo. Juntos, reconstruiremos nuestras vidas.\\n\\nGracias, y que Dios bendiga a nuestra comunidad.\\n\\n-- Alcalde Roberto Méndez",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-3-speech-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Walls Are Closing In: Urban Housing in Crisis",
+   "body": "En los últimos años, hemos visto un aumento masivo en la migración hacia las ciudades. Según las Naciones Unidas, el 55% de la población mundial vive en áreas urbanas, y se espera que esta cifra aumente al 68% para 2050. Este crecimiento urbano ha llevado a una alta demanda de vivienda, pero la oferta no ha podido seguir el ritmo. Como resultado, el precio de la vivienda se ha disparado, haciendo que sea casi imposible para muchas personas encontrar un lugar adecuado para vivir. Esta crisis está afectando a millones de personas en todo el mundo, desde Nueva York hasta Tokio, pasando por Ciudad de México y São Paulo. Sin embargo, los gobiernos no están haciendo lo suficiente para abordar esta crisis. Es urgente que se tomen medidas para aumentar la oferta de vivienda asequible y proteger a los inquilinos de los abusos de los propietarios. La falta de vivienda asequible no solo afecta el bienestar de las personas, sino que también tiene un impacto negativo en la economía en general. Cuando las personas no pueden permitirse un lugar para vivir, no pueden gastar en otras cosas, lo que a su vez afecta a los negocios y la economía local. Además, la falta de vivienda asequible puede llevar a un aumento de la delincuencia y otros problemas sociales. Por lo tanto, es crucial que los gobiernos actúen ahora para abordar esta crisis y garantizar que todas las personas tengan acceso a una vivienda adecuada y asequible. No podemos permitir que millones de personas sigan sufriendo por la falta de un lugar para vivir. Es hora de tomar medidas concretas y efectivas para resolver este problema.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -416,6 +1106,96 @@
    "verified": false
   },
   {
+   "id": "es-dr-0p-advertisement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-advertisement-002",
+   "stem": "In the advertisement, what does the phrase 'protegemos nuestro aire' mean?",
+   "choices": [
+    "we breathe our air",
+    "we protect our air",
+    "we clean our air",
+    "we pollute our air"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'protegemos nuestro aire' means 'we protect our air' in the context of the advertisement. The text states that the city is taking action to 'protegemos nuestro aire', indicating a protective measure rather than pollution, cleaning, or breathing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-advertisement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-advertisement-002",
+   "stem": "What is the main idea of the advertisement?",
+   "choices": [
+    "to sell air purifiers",
+    "to inform about a new park",
+    "to announce a campaign to reduce air pollution",
+    "to encourage people to use public transportation"
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the advertisement is 'to announce a campaign to reduce air pollution'. The text mentions that the city is taking action to protect the air and encourages people to participate in the campaign, which implies a focus on reducing air pollution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-form-001",
+   "stem": "What is the purpose of this form?",
+   "choices": [
+    "To report AI-related accidents",
+    "To register an AI system",
+    "To apply for an AI system license",
+    "To request AI system funding"
+   ],
+   "answer": 1,
+   "explanation": "The form's purpose is to register an AI system, as indicated by the phrase \"Registro de sistemas de IA\" in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-form-002",
+   "stem": "What is the name of the river mentioned in the flood warning?",
+   "choices": [
+    "Río Grande",
+    "Río Colorado",
+    "Río Amazonas",
+    "Río Bravo"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions the river as \"el Río Grande\", so the correct answer is \"Río Grande\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-0p-form-002",
+   "stem": "What does the phrase \"niveles peligrosos\" mean here?",
+   "choices": [
+    "Dangerous levels",
+    "Low levels",
+    "Safe levels",
+    "High levels"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"niveles peligrosos\" is used to describe the water levels, indicating that the levels are dangerous. The text says \"los niveles peligrosos de agua\", so the correct answer is \"Dangerous levels\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-0p-label-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -430,6 +1210,60 @@
    ],
    "answer": 1,
    "explanation": "The correct answer is 'an area where you can fish'. The text states 'Zona de pesca autorizada', which means 'Authorized fishing area'. The other choices do not match the context of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-label-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-label-002",
+   "stem": "What is the name of the group organizing this debate?",
+   "choices": [
+    "Jóvenes por la Paz",
+    "Foro de la Juventud",
+    "Asociación de Padres",
+    "Consejo Municipal"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the debate is organized by the \"Foro de la Juventud\", which is the 'Youth Forum'. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-label-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-0p-label-002",
+   "stem": "What does the word \"participantes\" mean here?",
+   "choices": [
+    "Organizers",
+    "Audience members",
+    "People who take part",
+    "Speakers"
+   ],
+   "answer": 2,
+   "explanation": "The text invites \"participantes\" to join the debate. In this context, \"participantes\" refers to people who take part in the debate. The other options are not accurate in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-menu-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-menu-001",
+   "stem": "What is the amount of the deposit?",
+   "choices": [
+    "50 euros",
+    "100 euros",
+    "200 euros",
+    "No deposit is required"
+   ],
+   "answer": 1,
+   "explanation": "The deposit amount is clearly stated as 100 euros in the text: \"depósito de 100 euros\". The other choices are incorrect because they do not match the specified amount or imply no deposit is required, which contradicts the text.",
    "source": "llm",
    "verified": false
   },
@@ -466,6 +1300,276 @@
    ],
    "answer": 1,
    "explanation": "The notice is advertising an apartment for rent, providing details such as the rent amount and the availability date.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-schedule-001",
+   "stem": "What does 'desayuno' mean here?",
+   "choices": [
+    "a type of breakfast food",
+    "a snack",
+    "a breakfast meal",
+    "a lunch meal"
+   ],
+   "answer": 2,
+   "explanation": "Desayuno means breakfast meal. The text says 'desayuno: 07:00 - 08:00', so this is the breakfast meal that people in the camp eat between 7 and 8 in the morning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-schedule-001",
+   "stem": "What is this document?",
+   "choices": [
+    "a menu for the camp cafeteria",
+    "a list of camp rules",
+    "a list of camp staff",
+    "a camp activity schedule"
+   ],
+   "answer": 3,
+   "explanation": "This is a camp activity schedule. It lists the times for different activities and meals throughout the day, such as 'desayuno: 07:00 - 08:00' and 'recreación: 15:00 - 17:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-schedule-002",
+   "stem": "When does the ship arrive?",
+   "choices": [
+    "07:00",
+    "10:00",
+    "08:00",
+    "09:00"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the ship arrives at 07:00, with the words 'Llegada: 07:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-sign-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-sign-001",
+   "stem": "What does the sign say is the highest temperature in the city today?",
+   "choices": [
+    "90 degrees Fahrenheit",
+    "84 degrees Fahrenheit",
+    "36 degrees Celsius",
+    "38 degrees Celsius"
+   ],
+   "answer": 2,
+   "explanation": "The sign states the temperature as 36 grados Celsius. The other choices are either incorrect or not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-sign-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-0p-sign-001",
+   "stem": "What does 'olvidar' mean here?",
+   "choices": [
+    "To hide",
+    "To drink",
+    "To forget",
+    "To remember"
+   ],
+   "answer": 2,
+   "explanation": "The sign says 'No olviden llevar agua'. 'Olvidar' in this context means 'to forget', so the correct interpretation is 'Do not forget to bring water'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-sign-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "purpose",
+   "passageId": "es-dr-0p-sign-002",
+   "stem": "What is the purpose of the text?",
+   "choices": [
+    "To announce a new community garden",
+    "To recruit volunteers for a community garden",
+    "To sell vegetables from a community garden",
+    "To describe the benefits of gardening"
+   ],
+   "answer": 1,
+   "explanation": "The purpose of the text is to recruit volunteers for a community garden. The sign says '¿Te gustaría ser voluntario/a en nuestro huerto comunitario?' which means 'Would you like to be a volunteer in our community garden?' followed by instructions on how to sign up.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-sign-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-sign-002",
+   "stem": "Where can interested volunteers find more information?",
+   "choices": [
+    "At the volunteer's house",
+    "At the local library",
+    "At the community center",
+    "At the city hall"
+   ],
+   "answer": 3,
+   "explanation": "The text states 'Visita la alcaldía para más información.' which means 'Visit the city hall for more information.' This indicates that interested volunteers can find more information at the city hall.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-advertisement-001",
+   "stem": "What is the monthly rent for the apartment?",
+   "choices": [
+    "500 pesos",
+    "200 pesos",
+    "400 pesos",
+    "300 pesos"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the rent is '300 pesos al mes', so the correct answer is B.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "es-dr-1-advertisement-001",
+   "stem": "What is the purpose of this text?",
+   "choices": [
+    "To describe the amenities of a neighborhood",
+    "To inform about a new housing development",
+    "To explain how to find an apartment",
+    "To advertise an apartment for rent"
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the text is 'Alquilo apartamento acogedor', which means 'I rent a cozy apartment' in English. Therefore, the correct answer is B.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-advertisement-002",
+   "stem": "What is the name of the military exercise?",
+   "choices": [
+    "Ejercicio Conjunto",
+    "Ejercicio de Paz",
+    "Ejercicio Militar",
+    "Ejercicio Aliado"
+   ],
+   "answer": 0,
+   "explanation": "The text explicitly states the name of the exercise as Ejercicio Conjunto. The other options are plausible but incorrect as they are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-advertisement-002",
+   "stem": "What is the main purpose of the advertisement?",
+   "choices": [
+    "To promote tourism in the region",
+    "To announce a new military strategy",
+    "To recruit new soldiers for the army",
+    "To inform about a joint military exercise with Colombia"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the advertisement is to inform about the upcoming joint military exercise with Colombia, as stated in the first sentence: Participaremos en el Ejercicio Conjunto con Colombia.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1-advertisement-002",
+   "stem": "What does el territorio mean here?",
+   "choices": [
+    "The border",
+    "The region",
+    "The capital",
+    "The country"
+   ],
+   "answer": 1,
+   "explanation": "In this context, el territorio refers to the region where the exercise will take place. The text states: en el territorio del departamento de Santander, which translates to in the region of the department of Santander.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-advertisement-003",
+   "stem": "The text says that the event is open to whom? (A) Everyone in the city (B) Only seniors with health issues (C) People aged 60 and above (D) Only those who have registered beforehand",
+   "choices": [
+    "People aged 60 and above",
+    "Only those who have registered beforehand",
+    "Only seniors with health issues",
+    "Everyone in the city"
+   ],
+   "answer": 0,
+   "explanation": "The text says 'abierto a todas las personas de 60 años y más,' which means the event is open to people aged 60 and above.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-advertisement-003",
+   "stem": "What is the main idea of the text? (A) A new senior center is opening in the city. (B) A special event for seniors will take place on Saturday. (C) The city is offering free health checkups for all residents. (D) A new park will be inaugurated next week.",
+   "choices": [
+    "A new park will be inaugurated next week.",
+    "The city is offering free health checkups for all residents.",
+    "A special event for seniors will take place on Saturday.",
+    "A new senior center is opening in the city."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the text is that 'el sábado, tendremos un evento especial,' which indicates that a special event for seniors will take place on Saturday.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-advertisement-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1-advertisement-003",
+   "stem": "In the text, what does 'diversión' mean? (A) Food (B) Rest (C) Fun (D) Music",
+   "choices": [
+    "Music",
+    "Food",
+    "Fun",
+    "Rest"
+   ],
+   "answer": 2,
+   "explanation": "'Diversión' in the text means 'fun,' as it is used in the phrase 'música, baile y diversión,' which refers to the enjoyable activities planned for the event.",
    "source": "llm",
    "verified": false
   },
@@ -560,6 +1664,96 @@
    "verified": false
   },
   {
+   "id": "es-dr-1-announcement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-announcement-003",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To encourage passengers to use alternative transport methods.",
+    "To inform passengers about a new route for buses.",
+    "To announce a disruption in public transport services due to a strike.",
+    "To explain why the transport workers are on strike."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to announce a disruption in public transport services due to a strike. The announcement explicitly states that there will be 'interrupciones en el servicio de transporte público debido a una huelga de los trabajadores del transporte.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-announcement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-announcement-003",
+   "stem": "What is the date of the strike?",
+   "choices": [
+    "June 12",
+    "June 11",
+    "June 10",
+    "June 13"
+   ],
+   "answer": 1,
+   "explanation": "The date of the strike is June 11. The announcement states that the strike will occur on '11 de junio.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-announcement-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1-announcement-003",
+   "stem": "What does 'huelga' mean here?",
+   "choices": [
+    "A strike",
+    "A protest",
+    "A celebration",
+    "A meeting"
+   ],
+   "answer": 0,
+   "explanation": "'Huelga' means 'strike' here. The announcement states that there will be 'interrupciones en el servicio de transporte público debido a una huelga de los trabajadores del transporte,' indicating that the workers are on strike.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-instructions-001",
+   "stem": "Why is Line 1 closing early on Saturday?",
+   "choices": [
+    "To allow for emergency repairs.",
+    "To accommodate a special event.",
+    "Because of a scheduled maintenance break.",
+    "Due to a lack of passengers during that time."
+   ],
+   "answer": 1,
+   "explanation": "The text states that Line 1 will close early on Saturday due to 'un evento especial', which translates to 'a special event'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1-instructions-001",
+   "stem": "What does 'ajustes' mean here?",
+   "choices": [
+    "Improvements",
+    "Delays",
+    "Repairs",
+    "Changes"
+   ],
+   "answer": 3,
+   "explanation": "'Ajustes' in this context refers to the modifications being made to the metro lines' schedules, such as closing early or having reduced service.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -650,6 +1844,42 @@
    "verified": false
   },
   {
+   "id": "es-dr-1-personal_letter-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-personal_letter-002",
+   "stem": "What is the author mainly worried about?",
+   "choices": [
+    "the increasing number of tourists",
+    "the pollution in the ocean",
+    "the rising cost of beachfront property",
+    "the erosion of the coastline"
+   ],
+   "answer": 3,
+   "explanation": "The author is worried about the erosion of the coastline, as indicated by the phrase 'la erosión de la costa' in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-personal_letter-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1-personal_letter-002",
+   "stem": "What does 'protegernos' mean here?",
+   "choices": [
+    "to ignore us",
+    "to attack us",
+    "to protect us",
+    "to warn us"
+   ],
+   "answer": 2,
+   "explanation": "The word 'protegernos' means 'to protect us' in this context, as the author is discussing the need to safeguard the coast to ensure their safety and that of the local community.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -682,6 +1912,42 @@
    ],
    "answer": 1,
    "explanation": "The text says \"Todos están invitados a asistir\", which means \"Everyone is invited to attend.\" This shows that \"asistir\" means \"to attend\" in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-short_message-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-short_message-002",
+   "stem": "What does the word 'celebremos' mean here?",
+   "choices": [
+    "We should discuss",
+    "We must organize",
+    "We must remember",
+    "We should celebrate"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'We should celebrate'. The text says 'celebremos nuestro centésimo aniversario de independencia', which means 'let's celebrate our hundredth anniversary of independence'. The context suggests a joyful event, not a discussion, remembrance, or organization.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-short_message-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-short_message-002",
+   "stem": "What is the main idea of the message?",
+   "choices": [
+    "To organize a parade",
+    "To discuss the country's history",
+    "To inform about a historical event",
+    "To invite people to a celebration"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'To invite people to a celebration'. The text says 'celebremos nuestro centésimo aniversario de independencia' and 'Únase a nosotros', which means 'let's celebrate our hundredth anniversary of independence' and 'Join us'. This shows the main purpose is an invitation to a celebration.",
    "source": "llm",
    "verified": false
   },
@@ -736,6 +2002,276 @@
    ],
    "answer": 0,
    "explanation": "In this context, 'lanzamiento' means 'launch'. The text refers to 'el lanzamiento de nuestra aplicación', indicating the app's launch. The other options do not fit the context as well.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-announcement-002",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To invite people to a celebration",
+    "To announce the opening of a new hospital",
+    "To describe the history of San Carlos",
+    "To explain how to get medical treatment"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to announce the opening of a new hospital. The first sentence of the announcement says, 'El nuevo Hospital San Carlos abrirá sus puertas el próximo lunes.' (The new San Carlos Hospital will open its doors next Monday.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-announcement-002",
+   "stem": "When will the new hospital open?",
+   "choices": [
+    "Next Wednesday",
+    "Next Sunday",
+    "Next Friday",
+    "Next Monday"
+   ],
+   "answer": 3,
+   "explanation": "The hospital will open next Monday. The announcement says, 'El nuevo Hospital San Carlos abrirá sus puertas el próximo lunes.' (The new San Carlos Hospital will open its doors next Monday.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-announcement-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1p-announcement-002",
+   "stem": "In this announcement, what does 'inauguración' mean?",
+   "choices": [
+    "A closing",
+    "A meeting",
+    "A celebration",
+    "A ceremony to mark the start of something"
+   ],
+   "answer": 3,
+   "explanation": "'Inauguración' refers to a ceremony to mark the start of something. The announcement says, 'Les invitamos a la inauguración del nuevo Hospital San Carlos.' (We invite you to the inauguration of the new San Carlos Hospital.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-description-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The city is experiencing unusually high temperatures.",
+    "The city government is planning to build more parks.",
+    "Air pollution levels in the capital city are dangerously high.",
+    "The city has implemented new traffic regulations."
+   ],
+   "answer": 2,
+   "explanation": "The text discusses high levels of air pollution in the capital city, specifically mentioning contaminación peligrosa and alerta ambiental. The other options are not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-description-001",
+   "stem": "What is one of the main sources of air pollution mentioned in the text?",
+   "choices": [
+    "Construction sites",
+    "Vehicular traffic",
+    "Factories",
+    "Power plants"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions that el tráfico vehicular es una de las principales fuentes de contaminación. The other options are not mentioned as sources of air pollution in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1p-description-001",
+   "stem": "What does 'contingencia' mean here?",
+   "choices": [
+    "Vacation",
+    "Emergency",
+    "Meeting",
+    "Celebration"
+   ],
+   "answer": 1,
+   "explanation": "The text uses the phrase medida de contingencia, which refers to an emergency measure implemented due to the high levels of air pollution. The other options do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-description-002",
+   "stem": "The main idea of this text is that:",
+   "choices": [
+    "travelers need to have specific documents to cross the border",
+    "there is a new bridge for crossing the border",
+    "the border crossing is closed except for emergencies",
+    "the border crossing is open 24 hours a day"
+   ],
+   "answer": 0,
+   "explanation": "The text emphasizes the required documents: \"Para cruzar la frontera, los viajeros deben tener su pasaporte y visa válidos, y mostrar sus boletos de regreso. Los menores de edad también necesitan una autorización firmada por sus padres.\" This is the main idea.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-description-002",
+   "stem": "What must travelers show to cross the border?",
+   "choices": [
+    "their driver's license and hotel reservation",
+    "their passport and return ticket",
+    "their national ID card and travel insurance",
+    "their work permit and bank statement"
+   ],
+   "answer": 1,
+   "explanation": "The text states: \"Para cruzar la frontera, los viajeros deben tener su pasaporte y visa válidos, y mostrar sus boletos de regreso.\" So the correct answer is their passport and return ticket.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1p-description-002",
+   "stem": "What does \"menores de edad\" mean here?",
+   "choices": [
+    "business travelers",
+    "tourists staying more than 30 days",
+    "people under a certain age",
+    "travelers without luggage"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions: \"Los menores de edad también necesitan una autorización firmada por sus padres.\" This indicates that \"menores de edad\" refers to people under a certain age, specifically minors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-description-003",
+   "stem": "What does the text mainly discuss?",
+   "choices": [
+    "The benefits of volunteering for personal growth.",
+    "A program that encourages community members to volunteer their time.",
+    "A new community center that offers various services.",
+    "The history of volunteerism in the local community."
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the text is a program encouraging community members to volunteer their time, as stated in the opening sentence: 'El programa Vecinos Solidarios invita a todos los miembros de la comunidad a dedicar parte de su tiempo a ayudar a otros.' The other options are not the primary focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-description-003",
+   "stem": "What is one of the tasks that volunteers can do in this program?",
+   "choices": [
+    "Build houses for low-income families.",
+    "Provide legal advice to those in need.",
+    "Teach classes at the local school.",
+    "Organize community events."
+   ],
+   "answer": 3,
+   "explanation": "The text mentions that volunteers can 'ayudar en la organización de eventos comunitarios,' which directly corresponds to choice B. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-description-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1p-description-003",
+   "stem": "What does 'dedicar' mean here: 'El programa Vecinos Solidarios invita a todos los miembros de la comunidad a dedicar parte de su tiempo a ayudar a otros.'",
+   "choices": [
+    "To inspire or motivate.",
+    "To teach or instruct.",
+    "To set aside or devote.",
+    "To donate money."
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'dedicar' means to set aside or devote, as in devoting time to help others. The sentence reads: 'El programa Vecinos Solidarios invita a todos los miembros de la comunidad a dedicar parte de su tiempo a ayudar a otros.' The other options do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-email-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-email-001",
+   "stem": "What is the main subject of this email?",
+   "choices": [
+    "A tourist complaining about border delays",
+    "A request for border crossing documents",
+    "Guidelines for crossing the border from Mexico into the United States",
+    "An announcement about new border crossing fees"
+   ],
+   "answer": 2,
+   "explanation": "The email discusses the necessary documents and procedures for crossing the border from Mexico into the United States, such as having a valid passport and visa, and being prepared for inspection. The other options are not the main subject of the email.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-email-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-email-001",
+   "stem": "According to the email, what document do you need to show at the border crossing?",
+   "choices": [
+    "A valid passport and visa",
+    "A work permit",
+    "A birth certificate",
+    "A driver's license"
+   ],
+   "answer": 0,
+   "explanation": "The email states, 'Asegúrate de tener tu pasaporte y visa válidos.' This means you need to have a valid passport and visa to show at the border crossing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-email-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1p-email-001",
+   "stem": "In the email, what does 'inspección' refer to?",
+   "choices": [
+    "A customs duty",
+    "A check of your documents and belongings",
+    "A medical examination",
+    "A tour of the border facilities"
+   ],
+   "answer": 1,
+   "explanation": "The email mentions 'prepárate para la inspección,' which refers to the process of checking your documents and belongings at the border crossing.",
    "source": "llm",
    "verified": false
   },
@@ -956,6 +2492,222 @@
    "verified": false
   },
   {
+   "id": "es-dr-1p-news_brief-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-news_brief-001",
+   "stem": "What is the main point of the news brief?",
+   "choices": [
+    "The government has decided to increase energy prices.",
+    "The government plans to gradually eliminate energy subsidies.",
+    "The government will provide new subsidies for energy companies.",
+    "Energy companies are struggling due to government regulations."
+   ],
+   "answer": 1,
+   "explanation": "The main point is that the government plans to gradually eliminate energy subsidies, as stated in the text: \"el gobierno ha anunciado que comenzará a reducir gradualmente los subsidios a la energía a partir del próximo año.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-news_brief-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-news_brief-001",
+   "stem": "When will the government start reducing energy subsidies?",
+   "choices": [
+    "Next month",
+    "Immediately",
+    "In two years",
+    "Next year"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the government will start reducing subsidies \"a partir del próximo año,\" which means 'starting next year.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-news_brief-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1p-news_brief-001",
+   "stem": "What does \"gradualmente\" mean here?",
+   "choices": [
+    "Suddenly",
+    "Slowly",
+    "Immediately",
+    "Completely"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"gradualmente\" means 'slowly' or 'step by step,' as the government plans to reduce subsidies over time: \"comenzará a reducir gradualmente los subsidios.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-personal_letter-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-personal_letter-001",
+   "stem": "What is the main topic of this letter?",
+   "choices": [
+    "A new car that the writer wants to buy",
+    "A new job the writer has taken",
+    "The writer's recent vacation",
+    "The increasing prices of goods and services"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the letter is the increasing prices of goods and services, as indicated by phrases like \"los precios de las cosas\" and \"la inflación\" in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-personal_letter-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-personal_letter-001",
+   "stem": "According to the letter, what has the writer had to do because of the rising costs?",
+   "choices": [
+    "Reduce spending on food",
+    "Buy a new car",
+    "Take on a second job",
+    "Move to a cheaper apartment"
+   ],
+   "answer": 0,
+   "explanation": "The writer mentions having to \"reducir nuestros gastos\" because of the rising costs, specifically mentioning \"la comida\" as an example.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-personal_letter-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-1p-personal_letter-001",
+   "stem": "What does \"las tasas de interés\" mean here?",
+   "choices": [
+    "Inflation rates",
+    "Interest rates",
+    "Tax rates",
+    "Exchange rates"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"las tasas de interés\" refers to interest rates, as it is mentioned in relation to \"la inflación\" and how they affect the cost of borrowing money.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-biography-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-biography-001",
+   "stem": "The main idea of this passage is that",
+   "choices": [
+    "Antonia's journey to Mexico is typical of many Central Americans",
+    "Antonia's family is very wealthy",
+    "Antonia was born in Mexico",
+    "Antonia's children are not interested in her past"
+   ],
+   "answer": 0,
+   "explanation": "The passage describes Antonia's journey from Guatemala to Mexico in detail, which is similar to the journeys of many Central Americans. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-biography-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-biography-001",
+   "stem": "According to the passage, what was Antonia's occupation in Guatemala?",
+   "choices": [
+    "She was a teacher",
+    "She was a nurse",
+    "She was a weaver",
+    "She was a farmer"
+   ],
+   "answer": 2,
+   "explanation": "The passage states that Antonia 'trabajaba como tejedora en su pueblo natal en Guatemala'. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-biography-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2-biography-001",
+   "stem": "In the passage, the word 'emigro' means",
+   "choices": [
+    "To visit",
+    "To move permanently to another country",
+    "To travel for pleasure",
+    "To stay"
+   ],
+   "answer": 1,
+   "explanation": "The passage states that Antonia 'emigro a Mexico' to find better opportunities for her family. This indicates that she moved permanently to another country. The other choices do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-biography-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-biography-002",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The passage discusses the economic development of San Miguel.",
+    "The passage describes the life and political career of a candidate for mayor in San Miguel.",
+    "The passage argues for the importance of voting in local elections.",
+    "The passage explains the history of local elections in San Miguel."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is the life and political career of a candidate for mayor in San Miguel, as the passage describes his background, motivations, and goals for the city.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-biography-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-biography-002",
+   "stem": "What is the name of the candidate for mayor in San Miguel?",
+   "choices": [
+    "María García",
+    "Carlos Mendoza",
+    "Juan López",
+    "Pedro Sánchez"
+   ],
+   "answer": 1,
+   "explanation": "The candidate's name is given as Carlos Mendoza in the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-biography-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2-biography-002",
+   "stem": "What does \"emprendedor\" mean here?",
+   "choices": [
+    "A person who works in a factory.",
+    "A person who teaches in a school.",
+    "A person who starts and runs a business.",
+    "A person who works for the government."
+   ],
+   "answer": 2,
+   "explanation": "The passage describes Carlos Mendoza as \"un emprendedor\" who \"creó su propia empresa de turismo\", indicating that he is someone who starts and runs a business.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-2-event_description-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -1172,6 +2924,222 @@
    "verified": false
   },
   {
+   "id": "es-dr-2-event_description-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-event_description-005",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The closure of a textile factory after many years of operation.",
+    "The relocation of a textile factory to a different country.",
+    "A new textile factory opening in the region.",
+    "The celebration of a textile factory's anniversary."
+   ],
+   "answer": 0,
+   "explanation": "The text discusses the closure of a textile factory, as indicated by phrases like 'cierre definitivo', 'dejará de operar', and 'el fin de una era'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-event_description-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-event_description-005",
+   "stem": "How many jobs will be lost due to the factory closure?",
+   "choices": [
+    "150 jobs",
+    "200 jobs",
+    "300 jobs",
+    "250 jobs"
+   ],
+   "answer": 1,
+   "explanation": "The text states that 'alrededor de 200 empleados' will lose their jobs, which translates to approximately 200 jobs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-event_description-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2-event_description-005",
+   "stem": "In the text, what does 'reubicar' mean?",
+   "choices": [
+    "To fire",
+    "To relocate",
+    "To train",
+    "To promote"
+   ],
+   "answer": 1,
+   "explanation": "The text uses 'reubicar' to describe the process of moving employees to other facilities, which means 'to relocate'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-factual_article-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-factual_article-001",
+   "stem": "What is the main idea of the article?",
+   "choices": [
+    "The article explains how to apply for a new passport when traveling abroad.",
+    "The article provides tips on how to avoid losing your passport.",
+    "The article discusses the security measures at the consulate.",
+    "The article describes the process of reporting a lost passport at a consulate."
+   ],
+   "answer": 3,
+   "explanation": "The article focuses on the experience of reporting a lost passport at a consulate, describing the steps taken by the protagonist and the interactions with consulate staff. The other options are not the main focus of the article.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-factual_article-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-factual_article-001",
+   "stem": "What did the protagonist do first when he realized his passport was missing?",
+   "choices": [
+    "He contacted his travel insurance company.",
+    "He went to the consulate immediately.",
+    "He called the police.",
+    "He searched his hotel room."
+   ],
+   "answer": 3,
+   "explanation": "The protagonist first searched his hotel room thoroughly: “Primero, revisé toda la habitación del hotel, incluyendo el baño y debajo de la cama, pero no lo encontré.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-factual_article-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2-factual_article-001",
+   "stem": "What does the phrase 'tramitar un pasaporte de emergencia' mean here?",
+   "choices": [
+    "To get an emergency passport.",
+    "To renew an expired passport.",
+    "To report a lost passport.",
+    "To apply for a new passport."
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'tramitar un pasaporte de emergencia' refers to the process of obtaining an emergency passport, as the protagonist needs a replacement quickly: “El funcionario me explicó que podía tramitar un pasaporte de emergencia.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-news-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-news-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Tourism in the Andean region is no longer a viable economic activity.",
+    "Tourism in the Andean region is slowly recovering but faces challenges.",
+    "Tourism in the Andean region has fully recovered to pre-pandemic levels.",
+    "Tourism in the Andean region has been replaced by other industries."
+   ],
+   "answer": 1,
+   "explanation": "The text discusses the gradual recovery of tourism in the Andean region, mentioning increased visitor numbers but also noting challenges such as infrastructure limitations and safety concerns. For example, it states 'el número de visitantes ha ido en aumento' and 'aún enfrentan desafíos significativos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-news-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-news-001",
+   "stem": "What is one of the challenges mentioned for the tourism recovery in the Andean region?",
+   "choices": [
+    "Lack of government support.",
+    "High competition from other regions.",
+    "Insufficient marketing campaigns.",
+    "Infrastructure limitations and safety concerns."
+   ],
+   "answer": 3,
+   "explanation": "The text explicitly mentions 'limitaciones de infraestructura y preocupaciones de seguridad' as challenges faced by the tourism sector in the Andean region.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-news-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2-news-001",
+   "stem": "What does 'dinamizar' mean here: 'se espera que estas medidas ayuden a dinamizar el sector turístico'?",
+   "choices": [
+    "To stimulate",
+    "To diversify",
+    "To stabilize",
+    "To reduce"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'dinamizar' means to stimulate or boost the tourism sector, as implied by the expectation that the measures will help improve the sector's activity.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-news-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-news-002",
+   "stem": "What is the main topic of this news article?",
+   "choices": [
+    "The severe air pollution problem in the capital city",
+    "The impact of air pollution on local wildlife",
+    "The city's efforts to improve public transportation",
+    "A new law passed to reduce traffic congestion"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the severe air pollution problem in the capital city. This is evident from the repeated mention of high pollution levels, the health risks, and the government's emergency measures, such as 'los altos niveles de contaminación', 'riesgo para la salud', and 'medidas de emergencia'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-news-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-news-002",
+   "stem": "What specific action did the government take to address the air pollution crisis?",
+   "choices": [
+    "They implemented a city-wide curfew",
+    "They closed all factories and industrial plants",
+    "They banned all private vehicles from the city",
+    "They restricted the circulation of private vehicles based on license plates"
+   ],
+   "answer": 3,
+   "explanation": "The government restricted the circulation of private vehicles based on license plates. The text states 'El gobierno ha implementado restricciones a la circulación de vehículos privados según el número de placa'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-news-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2-news-002",
+   "stem": "What does 'medidas de emergencia' mean here?",
+   "choices": [
+    "Emergency measures",
+    "Legal actions",
+    "Long-term plans",
+    "Routine procedures"
+   ],
+   "answer": 0,
+   "explanation": "'Medidas de emergencia' refers to emergency measures taken to address the immediate crisis. The text mentions 'medidas de emergencia' in the context of the government's response to the severe air pollution problem, indicating these are urgent and temporary actions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-2-report-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -1222,6 +3190,60 @@
    ],
    "answer": 0,
    "explanation": "In the context of the report, \"la comunidad\" refers to \"los residentes de la zona\" (the residents of the area) who have been involved in the project. Therefore, the correct answer is choice 2: \"The residents of the area.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-report-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-report-002",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "Public opinion on metro lines",
+    "Traffic problems in San Carlos",
+    "Historical development of San Carlos",
+    "A new metro line in San Carlos"
+   ],
+   "answer": 3,
+   "explanation": "The report focuses on the new metro line in San Carlos, mentioning its route, stations, and benefits. The other options are not the main topics.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-report-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-report-002",
+   "stem": "How many new stations will the metro line have?",
+   "choices": [
+    "16",
+    "18",
+    "14",
+    "12"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the new metro line will have 14 new stations: «la nueva línea contará con 14 estaciones nuevas».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-report-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2-report-002",
+   "stem": "What does «interconectará» mean here?",
+   "choices": [
+    "Will divide",
+    "Will intersect",
+    "Will connect",
+    "Will surround"
+   ],
+   "answer": 2,
+   "explanation": "The word «interconectará» is used to describe how the new metro line will connect with other existing lines: «interconectará con las líneas existentes».",
    "source": "llm",
    "verified": false
   },
@@ -1334,6 +3356,60 @@
    "verified": false
   },
   {
+   "id": "es-dr-2p-extended_report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-extended_report-003",
+   "stem": "What is the main idea of the report?",
+   "choices": [
+    "The report examines the environmental issues facing San Miguel.",
+    "The report analyzes the economic policies of the current mayor of San Miguel.",
+    "The report discusses the main candidates in the upcoming mayoral election in San Miguel.",
+    "The report compares the education systems of different cities in the region."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the report is clearly stated in the first sentence: 'La carrera por la alcaldía de San Miguel se está calentando, con tres candidatos principales compitiendo por el puesto.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-extended_report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dr-2p-extended_report-003",
+   "stem": "What can be inferred about the current mayor's approval rating?",
+   "choices": [
+    "The current mayor's approval rating is unknown.",
+    "The current mayor is not running for re-election.",
+    "The current mayor is highly popular among the citizens.",
+    "The current mayor has a low approval rating."
+   ],
+   "answer": 3,
+   "explanation": "The report states that 'el actual alcalde, Carlos Mendoza, enfrenta una fuerte oposición debido a su manejo de la crisis económica.' This suggests that the current mayor has a low approval rating.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-extended_report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-extended_report-003",
+   "stem": "What does the phrase 'la carrera por la alcaldía' mean here?",
+   "choices": [
+    "A competition among city runners.",
+    "A race to the town hall.",
+    "The campaign for the mayoral position.",
+    "A marathon in the city center."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'la carrera por la alcaldía' is used to describe the competition among candidates for the position of mayor, which is the mayoral race or campaign.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-2p-interview-001-q1",
    "exam": "DLPT_READING",
    "level": "2+",
@@ -1384,6 +3460,276 @@
    ],
    "answer": 1,
    "explanation": "In the context of the interview, 'reclaman' means 'claim'. This is clear from the phrase 'La disputa se centra en la zona de pesca que ambos países reclaman como suya', which indicates that both countries are asserting their ownership or right to the fishing zone.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-interview-002",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The training required to become a professional firefighter",
+    "The challenges and rewards of fighting forest fires",
+    "The causes and effects of forest fires in South America",
+    "The personal background of firefighter Elena Ramírez"
+   ],
+   "answer": 1,
+   "explanation": "The interview focuses on the challenges Elena Ramírez faces in her job fighting forest fires, as well as the satisfaction she derives from it. While other topics are mentioned, they are not the central focus.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "es-dr-2p-interview-002",
+   "stem": "According to Elena Ramírez, what is one of the main challenges of fighting forest fires?",
+   "choices": [
+    "The lack of proper training among firefighters",
+    "The difficulty of predicting where fires will start",
+    "The unpredictability of fire behavior and weather conditions",
+    "The insufficient funding for firefighting equipment"
+   ],
+   "answer": 2,
+   "explanation": "Elena Ramírez states, 'El comportamiento del fuego y las condiciones meteorológicas pueden cambiar en un instante,' indicating that the unpredictability of fire behavior and weather conditions is a main challenge.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-interview-002",
+   "stem": "In the context of the interview, what does the phrase 'estamos preparados para lo peor' mean?",
+   "choices": [
+    "We are always optimistic about the results",
+    "We are not prepared for any situation",
+    "We expect the best outcome in every situation",
+    "We are ready to face the worst possible scenarios"
+   ],
+   "answer": 3,
+   "explanation": "Elena Ramírez uses this phrase to explain that she and her team are trained to handle the most difficult and dangerous situations that may arise while fighting forest fires.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-interview-003",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The life and work of famous artists",
+    "The history of Mexican archaeology",
+    "The process of restoring ancient artifacts",
+    "A new exhibition at the National Museum of Anthropology"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C. The interview focuses on a new exhibition at the National Museum of Anthropology, as mentioned in the first sentence: 'Nos complace presentar nuestra nueva exposición, \"Raíces de México\".'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "es-dr-2p-interview-003",
+   "stem": "According to Ana García, what is one of the main goals of the exhibition?",
+   "choices": [
+    "To showcase the latest archaeological discoveries",
+    "To educate visitors about the diversity of Mexico's indigenous cultures",
+    "To promote contemporary Mexican art",
+    "To discuss the impact of tourism on historical sites"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B. Ana García states that the exhibition aims to educate visitors about the diversity of Mexico's indigenous cultures: 'Queremos que los visitantes aprendan sobre la riqueza y diversidad de las culturas indígenas de México.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-interview-003",
+   "stem": "In the phrase 'la riqueza y diversidad de las culturas indígenas', what does 'riqueza' mean?",
+   "choices": [
+    "Language",
+    "History",
+    "Geography",
+    "Wealth"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is A. In this context, 'riqueza' refers to the wealth or richness of indigenous cultures, both in terms of material and cultural aspects.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-interview-004",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The challenges and opportunities facing migrant workers in Mexico",
+    "The history of labor movements in Latin America",
+    "The impact of migration on the Mexican economy",
+    "The personal experiences of migrants in Mexico City"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the interview is the challenges and opportunities facing migrant workers in Mexico. This is evident throughout the interview, as the interviewee discusses the difficulties migrants face in finding work and the support systems available to them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dr-2p-interview-004",
+   "stem": "What can we infer about the interviewee's views on migration?",
+   "choices": [
+    "They think that migrants are a drain on the resources of the host country",
+    "They are indifferent to the issue of migration",
+    "They see migration as an inevitable part of the global economy",
+    "They believe migration is a negative phenomenon that should be discouraged"
+   ],
+   "answer": 2,
+   "explanation": "The interviewee states that 'la migración es una realidad compleja y multifacética que no puede ser ignorada', suggesting that they see migration as an inevitable and important part of the global economy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-interview-004",
+   "stem": "What does the phrase 'tejer redes de apoyo' mean here?",
+   "choices": [
+    "To establish businesses",
+    "To weave physical nets",
+    "To build houses",
+    "To create support networks"
+   ],
+   "answer": 3,
+   "explanation": "The interviewee mentions 'la importancia de tejer redes de apoyo para los migrantes', indicating that 'tejer redes de apoyo' means to create support networks for migrants.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-interview-005",
+   "stem": "What is the main idea of this interview?",
+   "choices": [
+    "The challenges faced by the tourism industry due to climate change.",
+    "The impact of political instability on tourism in Central America.",
+    "The strategies implemented by Costa Rica to recover its tourism sector after global crises.",
+    "The benefits of eco-tourism over traditional tourism models."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is the strategies implemented by Costa Rica to recover its tourism sector after global crises, as the interviewee discusses various measures taken and the results achieved. For example, 'Hemos implementado una serie de medidas para atraer de nuevo a los turistas, como campañas de promoción y descuentos en alojamientos.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dr-2p-interview-005",
+   "stem": "What can be inferred about the current state of tourism in Costa Rica?",
+   "choices": [
+    "It is focusing solely on domestic tourism.",
+    "It has fully recovered and surpassed pre-crisis levels.",
+    "It is showing signs of recovery, although challenges remain.",
+    "It is struggling to recover due to a lack of interest from international tourists."
+   ],
+   "answer": 2,
+   "explanation": "The inference that can be made is that tourism in Costa Rica is showing signs of recovery, although challenges remain. The interviewee mentions, 'Hemos visto una recuperación gradual, pero aún enfrentamos desafíos, como la percepción de inseguridad en algunas regiones.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-interview-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-interview-005",
+   "stem": "What does the phrase 'el colapso' refer to in this context?",
+   "choices": [
+    "A sudden increase in tourism.",
+    "A significant decrease or breakdown in tourism.",
+    "A natural disaster.",
+    "A political event."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'el colapso' refers to a significant decrease or breakdown in tourism. The interviewee states, 'El colapso en el turismo debido a la pandemia y otros factores globales ha sido un golpe duro para nuestro país.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-news_analysis-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-news_analysis-001",
+   "stem": "What is the main idea of the news analysis?",
+   "choices": [
+    "The Jaguares' victory was a result of their individual players' skills.",
+    "The Jaguares' victory was a result of their strong defense.",
+    "The Jaguares' victory was a result of their strategic planning and teamwork.",
+    "The Jaguares' victory was a surprise to many."
+   ],
+   "answer": 2,
+   "explanation": "The text states that 'La victoria de los Jaguares no fue un accidente, sino el resultado de una estrategia bien planificada y un trabajo en equipo excepcional.' This indicates that the main idea is the Jaguares' strategic planning and teamwork leading to their victory.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-news_analysis-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dr-2p-news_analysis-001",
+   "stem": "What can be inferred about the Jaguares' future performances?",
+   "choices": [
+    "The Jaguares are expected to continue their winning streak.",
+    "The Jaguares are expected to perform poorly in future tournaments.",
+    "The Jaguares are expected to rely on individual players for future victories.",
+    "The Jaguares are expected to change their strategy for future tournaments."
+   ],
+   "answer": 0,
+   "explanation": "The text mentions that 'Con esta victoria, los Jaguares han demostrado que son un equipo a tener en cuenta en el futuro.' This suggests that the Jaguares are expected to continue performing well in the future.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-news_analysis-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-news_analysis-001",
+   "stem": "What does 'implacable' mean here?",
+   "choices": [
+    "Unprepared",
+    "Unpredictable",
+    "Uninterested",
+    "Unstoppable"
+   ],
+   "answer": 3,
+   "explanation": "The text uses 'implacable' to describe the Jaguares' performance, indicating that their defense was unstoppable. The relevant phrase is 'una defensa implacable que no permitió que el equipo contrario anotara.'",
    "source": "llm",
    "verified": false
   },
@@ -1442,6 +3788,114 @@
    "verified": false
   },
   {
+   "id": "es-dr-2p-opinion-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-opinion-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The importance of international cooperation in AI research",
+    "The need for stricter regulations on AI development",
+    "The potential of AI to create new job opportunities",
+    "The benefits of AI in improving daily life"
+   ],
+   "answer": 1,
+   "explanation": "The text primarily discusses the necessity of regulating AI development due to ethical concerns, as seen in the statement 'Es imperativo que establezcamos regulaciones robustas para guiar el desarrollo de la IA.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-opinion-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dr-2p-opinion-002",
+   "stem": "What can be inferred about the author's view on current AI regulations?",
+   "choices": [
+    "They are unsure about the effectiveness of current regulations",
+    "They think current regulations are outdated",
+    "They feel current regulations are too restrictive",
+    "They believe current regulations are sufficient"
+   ],
+   "answer": 1,
+   "explanation": "The author implies that current regulations are not adequate by stating 'el ritmo del avance tecnológico supera con creces la capacidad de nuestros marcos regulatorios actuales para mantenerse al día.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-opinion-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-opinion-002",
+   "stem": "What does 'imperativo' mean here?",
+   "choices": [
+    "Urgent",
+    "Controversial",
+    "Optional",
+    "Desirable"
+   ],
+   "answer": 0,
+   "explanation": "The context indicates that establishing regulations is not optional but necessary, as seen in 'Es imperativo que establezcamos regulaciones robustas...'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-opinion-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "es-dr-2p-opinion-003",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The passage discusses the economic benefits of fishing for coastal communities.",
+    "New technologies are revolutionizing the fishing industry in the Pacific.",
+    "International agreements are successfully protecting marine life in the Pacific.",
+    "Fishing rights in the Pacific are causing tensions between countries and environmentalists."
+   ],
+   "answer": 3,
+   "explanation": "The passage focuses on the tensions between countries and environmentalists regarding fishing rights in the Pacific. It discusses specific conflicts, such as those between Chile and Peru, and the impact of fishing on marine life. While it mentions economic benefits and environmental concerns, these are part of the larger discussion about fishing rights.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-opinion-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dr-2p-opinion-003",
+   "stem": "What can be inferred about the author's opinion on the current management of fishing rights?",
+   "choices": [
+    "The author believes that the current management of fishing rights should be expanded to include more countries.",
+    "The author thinks that the current management of fishing rights is causing more harm than good.",
+    "The author believes that the current management of fishing rights is fair and effective.",
+    "The author is indifferent to the current management of fishing rights."
+   ],
+   "answer": 1,
+   "explanation": "The author expresses concern about the current management of fishing rights, stating that 'el manejo actual de los derechos de pesca está llevando a una sobreexplotación de los recursos marinos y a la degradación de los ecosistemas.' This suggests that the author believes the current management is causing more harm than good.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2p-opinion-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-2p-opinion-003",
+   "stem": "In the phrase 'la voraz industria pesquera', what does 'voraz' mean here?",
+   "choices": [
+    "Hungry",
+    "Powerful",
+    "Greedy",
+    "Rapid"
+   ],
+   "answer": 2,
+   "explanation": "'Voraz' is used here to describe the fishing industry as excessively greedy or exploitative. The text discusses how 'la voraz industria pesquera' is depleting marine resources, indicating that the industry is taking more than it should, which aligns with the meaning of 'greedy'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-3-analysis-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -1492,6 +3946,60 @@
    ],
    "answer": 2,
    "explanation": "'Involucradas' in this context means 'involved'. The text states, 'las partes involucradas deben encontrar un terreno común', which translates to 'the parties involved must find common ground'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dr-3-analysis-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The university is increasing the number of entrance exams to better evaluate students.",
+    "The university will now prioritize extracurricular activities over academic performance.",
+    "The university will only accept students who have completed a specific set of high school courses.",
+    "The university is abolishing its traditional entrance exam and implementing a new admissions process."
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the university's decision to eliminate the traditional entrance exam and replace it with a new admissions process that evaluates students based on various criteria. This is clearly stated in the first paragraph: \"La universidad ha anunciado que eliminará su tradicional examen de ingreso y adoptará un nuevo proceso de admisión a partir del próximo año.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dr-3-analysis-002",
+   "stem": "What can be inferred about the new admissions process?",
+   "choices": [
+    "It will be based solely on interviews with the admissions committee.",
+    "It will be less competitive than the old system.",
+    "It will only consider students' academic performance.",
+    "It will evaluate students based on a broader range of criteria than just their exam scores."
+   ],
+   "answer": 3,
+   "explanation": "The text mentions that the new process will evaluate students based on their academic performance, extracurricular activities, personal interviews, and essays. This indicates a broader range of criteria than just exam scores: \"El nuevo proceso evaluará a los estudiantes en función de su desempeño académico, actividades extracurriculares, entrevistas personales y ensayos.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-analysis-002",
+   "stem": "What does \"diversificar\" mean here?",
+   "choices": [
+    "To complicate something.",
+    "To make something more varied or diverse.",
+    "To simplify something.",
+    "To make something more uniform."
+   ],
+   "answer": 1,
+   "explanation": "The text uses \"diversificar\" to describe the university's goal of making its student body more varied and diverse. This is clear from the context: \"La rectora de la universidad, María López, explicó que el objetivo de este cambio es diversificar el cuerpo estudiantil y crear una comunidad más inclusiva.\"",
    "source": "llm",
    "verified": false
   },
@@ -1550,6 +4058,168 @@
    "verified": false
   },
   {
+   "id": "es-dr-3-argumentative_essay-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "es-dr-3-argumentative_essay-002",
+   "stem": "What is the main reason the author gives for the recent increase in food prices?",
+   "choices": [
+    "The rising cost of fuel and transport.",
+    "A decrease in the availability of arable land.",
+    "The impact of climate change on crop yields.",
+    "Government subsidies for agricultural products being reduced."
+   ],
+   "answer": 0,
+   "explanation": "The author states that the increase in food prices is primarily due to \"el aumento en el costo del combustible y el transporte\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-argumentative_essay-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "es-dr-3-argumentative_essay-002",
+   "stem": "What is the author's attitude towards the current food pricing system?",
+   "choices": [
+    "Indifferent, as they believe the market should dictate prices.",
+    "Supportive, as they believe it encourages sustainable farming practices.",
+    "Optimistic, as they believe technology will solve the issues.",
+    "Critical, as they believe it hides the true costs of food production."
+   ],
+   "answer": 3,
+   "explanation": "The author expresses criticism towards the system, stating that \"el sistema actual de precios de los alimentos esconde los verdaderos costos de la producción de alimentos\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-argumentative_essay-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-argumentative_essay-002",
+   "stem": "In the phrase \"la insostenible explotación de los recursos naturales\", what does \"insostenible\" mean?",
+   "choices": [
+    "Unsustainable",
+    "Unregulated",
+    "Inefficient",
+    "Inexpensive"
+   ],
+   "answer": 0,
+   "explanation": "\"Insostenible\" in this context refers to the fact that the exploitation of natural resources cannot be maintained at the current rate, as it is leading to depletion and environmental damage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-argumentative_essay-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dr-3-argumentative_essay-003",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The author believes that fishing rights should be sold to the highest bidder to maximize economic benefits.",
+    "The author proposes that the government should take over all fishing operations to ensure sustainability.",
+    "The author argues for a complete ban on commercial fishing to protect marine ecosystems.",
+    "The author suggests that fishing rights should be allocated based on historical usage and environmental impact."
+   ],
+   "answer": 3,
+   "explanation": "The author's main argument is that fishing rights should be allocated based on historical usage and environmental impact, as stated in the text: \"Los derechos de pesca deben ser asignados considerando tanto el uso histórico como el impacto ambiental.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-argumentative_essay-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dr-3-argumentative_essay-003",
+   "stem": "What can be inferred about the author's view on the current system of fishing rights?",
+   "choices": [
+    "The author is critical of the current system and believes it needs significant reform.",
+    "The author thinks the current system needs minor adjustments.",
+    "The author is indifferent to the current system.",
+    "The author believes the current system is fair and effective."
+   ],
+   "answer": 0,
+   "explanation": "The author criticizes the current system for favoring large corporations and not considering environmental impacts, as seen in: \"El sistema actual favorece a las grandes corporaciones y no tiene en cuenta el impacto ambiental.\" This implies the author believes significant reform is needed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-argumentative_essay-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-argumentative_essay-003",
+   "stem": "What does \"la tala rasa\" mean here?",
+   "choices": [
+    "A type of fishing net",
+    "A specific marine species",
+    "A complete and indiscriminate destruction",
+    "A traditional fishing method"
+   ],
+   "answer": 2,
+   "explanation": "In the text, \"la tala rasa\" is used to describe the effect of unrestricted fishing on marine ecosystems: \"La pesca sin restricciones está causando una tala rasa en nuestros ecosistemas marinos.\" Here, it means a complete and indiscriminate destruction.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-commentary-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dr-3-commentary-001",
+   "stem": "What is the main idea of the commentary?",
+   "choices": [
+    "Rural Colombians are resistant to vaccination due to a lack of education.",
+    "The success of vaccination campaigns depends solely on the availability of vaccines.",
+    "The Colombian government needs to increase its budget for vaccination campaigns.",
+    "Vaccination campaigns in rural Colombia face unique challenges that require specific solutions."
+   ],
+   "answer": 3,
+   "explanation": "The author discusses the specific challenges of vaccination campaigns in rural Colombia, such as geographical barriers, cultural factors, and the need for community engagement, which require tailored solutions. The commentary is not primarily about government budget, vaccine availability, or resistance due to lack of education.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-commentary-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dr-3-commentary-001",
+   "stem": "What can be inferred about the author's opinion on the involvement of local leaders in vaccination campaigns?",
+   "choices": [
+    "The author believes that local leaders should be the sole decision-makers in vaccination campaigns.",
+    "The author suggests that local leaders can play a crucial role in the success of vaccination campaigns.",
+    "The author thinks that local leaders should be consulted but not actively involved.",
+    "The author believes that local leaders are irrelevant to the success of vaccination campaigns."
+   ],
+   "answer": 1,
+   "explanation": "The author states that 'involving local leaders and community members in the planning and implementation of vaccination campaigns can greatly improve their effectiveness.' This indicates that the author believes local leaders can play a crucial role.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-commentary-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-commentary-001",
+   "stem": "In the phrase 'esenciales para garantizar la aceptación y la sostenibilidad de las campañas,' what does 'garantizar' mean here?",
+   "choices": [
+    "To ensure",
+    "To warrant legally",
+    "To promise",
+    "To guarantee financially"
+   ],
+   "answer": 0,
+   "explanation": "The context discusses the importance of certain elements in securing the acceptance and sustainability of vaccination campaigns. 'Garantizar' in this context means 'to ensure.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-3-editorial-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -1604,6 +4274,114 @@
    "verified": false
   },
   {
+   "id": "es-dr-3-editorial-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dr-3-editorial-002",
+   "stem": "What is the main idea of this editorial?",
+   "choices": [
+    "Argentina's investment in space technology has been a waste of resources that could have been used elsewhere.",
+    "The recent space launch has brought Argentina into the global spotlight for its technological achievements.",
+    "The space launch was a joint effort between Argentina and Brazil, showcasing their strong diplomatic relations.",
+    "The editorial argues that Argentina should focus more on domestic issues rather than space exploration."
+   ],
+   "answer": 1,
+   "explanation": "The editorial focuses on how the recent space launch has positioned Argentina as a significant player in space technology, highlighting its global implications and the country's technological achievements. This is evident in phrases like 'Argentina ha dado un paso gigante no solo para el país, sino para toda la región.' and 'Esta hazaña tecnológica ha puesto a Argentina en el mapa global.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-editorial-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dr-3-editorial-002",
+   "stem": "What can be inferred about the author's opinion on Argentina's space program?",
+   "choices": [
+    "The author is indifferent and merely presents the facts without any personal opinion.",
+    "The author is critical of the space program and believes it is a waste of money.",
+    "The author is concerned about the environmental impact of the space launch.",
+    "The author is supportive and believes the space program is beneficial for Argentina's future."
+   ],
+   "answer": 3,
+   "explanation": "The author's supportive stance is evident in statements like 'Este logro no solo simboliza el progreso científico, sino también la capacidad de Argentina para competir en el escenario global.' and 'Es hora de celebrar este hito y apoyar los esfuerzos continuos en la exploración espacial.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-editorial-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-editorial-002",
+   "stem": "What does the phrase 'este hito' refer to in the text?",
+   "choices": [
+    "A political milestone in Argentina's history",
+    "A significant technological achievement in Argentina's space program",
+    "A major environmental disaster caused by the space launch",
+    "A financial crisis that has impacted the country's economy"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'este hito' refers to the recent space launch, which is described as a significant achievement. The text states, 'Este logro no solo simboliza el progreso científico, sino también la capacidad de Argentina para competir en el escenario global.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-editorial-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dr-3-editorial-003",
+   "stem": "What is the main argument of this editorial?",
+   "choices": [
+    "Governments should prioritize economic growth over environmental conservation.",
+    "The environmental and economic impacts of forest fires are often overlooked and underappreciated.",
+    "Forest fires are a natural phenomenon that should not be prevented.",
+    "Deforestation is the primary cause of climate change."
+   ],
+   "answer": 1,
+   "explanation": "The editorial argues that the environmental and economic impacts of forest fires are often overshadowed by more visible crises. The author emphasizes that these impacts are significant and deserve more attention, as seen in the phrase 'sin embargo, los impactos de los incendios forestales a menudo pasan desapercibidos.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-editorial-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dr-3-editorial-003",
+   "stem": "What can be inferred about the author's view on government action regarding forest fires?",
+   "choices": [
+    "The author implies that governments need to do more to address the issue of forest fires.",
+    "The author suggests that governments should rely on private companies to manage forest fires.",
+    "The author thinks that governments should focus more on economic development than forest fire prevention.",
+    "The author believes that governments are taking sufficient action to prevent forest fires."
+   ],
+   "answer": 0,
+   "explanation": "The author implies that more government action is needed to address forest fires. This is evident in the statement 'es crucial que los gobiernos tomen medidas más enérgicas para prevenir y gestionar los incendios forestales' and the discussion of the lack of resources and coordination.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-editorial-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-editorial-003",
+   "stem": "What does the phrase 'devastadoras consecuencias' mean here?",
+   "choices": [
+    "Far-reaching impacts",
+    "Temporary changes",
+    "Minor effects",
+    "Beneficial outcomes"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'devastadoras consecuencias' is used to describe the impacts of forest fires on the environment and economy. The context makes clear that these are not minor or beneficial, but rather serious and far-reaching, as seen in the discussion of air quality, biodiversity, and economic losses.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-3-speech-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -1654,6 +4432,114 @@
    ],
    "answer": 0,
    "explanation": "'Fomentar' in this context means 'to promote' or 'to encourage', as the speaker is advocating for increased dialogue among community sectors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-speech-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dr-3-speech-002",
+   "stem": "What is the primary focus of the speaker's address?",
+   "choices": [
+    "The immediate rescue operations following the earthquake",
+    "The long-term reconstruction efforts and community unity",
+    "The role of international aid in disaster relief",
+    "The scientific causes and prevention of earthquakes"
+   ],
+   "answer": 1,
+   "explanation": "The speaker emphasizes the need for unity and long-term reconstruction efforts, stating 'Hoy no hablamos de días o semanas, sino de meses y años. Juntos, debemos reconstruir no solo los edificios, sino también la esperanza y la confianza en nuestro futuro.' This indicates the primary focus is on long-term efforts and community unity.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-speech-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dr-3-speech-002",
+   "stem": "What can be inferred about the recent earthquake's impact based on the speaker's words?",
+   "choices": [
+    "It caused minimal damage and no loss of life",
+    "It primarily affected the city's infrastructure",
+    "It resulted in significant destruction and loss of life",
+    "It was a minor earthquake with little impact"
+   ],
+   "answer": 2,
+   "explanation": "The speaker mentions 'las pérdidas que hemos sufrido, tanto en vidas como en hogares', indicating significant destruction and loss of life. Additionally, the mention of 'edificios derrumbados' and 'comunidades devastadas' supports this inference.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-speech-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-speech-002",
+   "stem": "What does the speaker mean by 'la resiliencia' in this context?",
+   "choices": [
+    "The process of rebuilding infrastructure",
+    "The ability to bounce back from difficulties",
+    "The scientific study of earthquakes",
+    "The emotional support provided to victims"
+   ],
+   "answer": 1,
+   "explanation": "The speaker uses 'la resiliencia' to refer to the community's ability to recover and move forward after the disaster. This is evident in the phrase 'demostrar nuestra resiliencia y reconstruir nuestras vidas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-speech-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "es-dr-3-speech-003",
+   "stem": "What is the speaker's main point?",
+   "choices": [
+    "People are moving to cities because they prefer urban lifestyles.",
+    "Cities are becoming more attractive to live in because of job opportunities.",
+    "The housing shortage is only a problem in certain cities around the world.",
+    "Governments are not doing enough to address the housing crisis in cities."
+   ],
+   "answer": 3,
+   "explanation": "The speaker's main point is that governments are not doing enough to address the housing crisis in cities. This is evident throughout the speech, but particularly in the statement \"sin embargo, los gobiernos no están haciendo lo suficiente para abordar esta crisis\" ('however, governments are not doing enough to address this crisis').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-speech-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dr-3-speech-003",
+   "stem": "What does the speaker mean by \"el precio de la vivienda se ha disparado\"?",
+   "choices": [
+    "The supply of housing has increased rapidly.",
+    "The cost of housing has increased dramatically.",
+    "The demand for housing has decreased significantly.",
+    "The quality of housing has improved greatly."
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"el precio de la vivienda se ha disparado\" means that the cost of housing has increased dramatically. This is clear from the context of the speech, which discusses the housing crisis and the difficulties people face in finding affordable housing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-3-speech-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dr-3-speech-003",
+   "stem": "What can be inferred about the speaker's attitude towards the housing crisis?",
+   "choices": [
+    "The speaker is concerned about the housing crisis and believes it needs to be addressed urgently.",
+    "The speaker is indifferent about the housing crisis.",
+    "The speaker thinks the housing crisis is a problem that will resolve itself over time.",
+    "The speaker believes the housing crisis is not a serious issue."
+   ],
+   "answer": 0,
+   "explanation": "The speaker's attitude towards the housing crisis is one of concern and urgency. This can be inferred from statements such as \"esta crisis está afectando a millones de personas\" ('this crisis is affecting millions of people') and \"es urgente que se tomen medidas\" ('it is urgent that measures are taken').",
    "source": "llm",
    "verified": false
   }

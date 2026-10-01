@@ -6,6 +6,114 @@
  "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
  "passages": [
   {
+   "id": "ru-dl-0p-advertisement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Border Crossing Information",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Голос",
+     "voice": "male",
+     "text": "Внимание, путники! Покажите паспорт на границе."
+    },
+    {
+     "speaker": "Голос",
+     "voice": "female",
+     "text": "Получите штамп."
+    },
+    {
+     "speaker": "Голос",
+     "voice": "male",
+     "text": "Спасибо за сотрудничество."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-0p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "Earthquake Aid Distribution",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Внимание, всем жителям города!"
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "После землетрясения начинается распределение помощи."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Пожалуйста, приходите в школу номер пять."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Там вы получите еду, воду и одежду."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-0p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "The Satellite's Mission",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Внимание, внимание!"
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Спутник успешно выведен на орбиту."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Запуск прошёл без проблем."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Следующий запуск через месяц."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Большое спасибо за внимание."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-0p-short_exchange-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -201,6 +309,160 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dl-0p-short_exchange-006",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "The Fountain's Problem",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Извините, а почему фонтан не работает?"
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Он сломался. Мы ждём ремонтную бригаду."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Как долго это будет продолжаться?"
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Надеюсь, не больше недели."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-0p-short_exchange-007",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "The Job Offer",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "Есть работа. Нужно чистить офисы."
+    },
+    {
+     "speaker": "Иммигрант",
+     "voice": "female",
+     "text": "Хорошо. Сколько платят?"
+    },
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "1200 долларов в месяц. Время с 8 до 5."
+    },
+    {
+     "speaker": "Иммигрант",
+     "voice": "female",
+     "text": "Я согласен."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-0p-short_exchange-008",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "The Apartment Visit",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Здравствуйте! Я пришла посмотреть квартиру."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Здравствуйте! Конечно, проходите."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Сколько стоит аренда в месяц?"
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Пятьдесят тысяч рублей."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "А когда можно въехать?"
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Через неделю, если вас устроит."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-0p-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "The Garden Restrictions",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Автоответчик",
+     "voice": "male",
+     "text": "Здравствуйте, вы слушаете автоответчик городского водоканала. В этом году из-за засухи ограничено использование воды для полива садов."
+    },
+    {
+     "speaker": "Автоответчик",
+     "voice": "female",
+     "text": "Поливать можно только в вечернее время с восьми до десяти часов."
+    },
+    {
+     "speaker": "Автоответчик",
+     "voice": "male",
+     "text": "Нарушителей будут штрафовать. Спасибо за понимание."
+    },
+    {
+     "speaker": "Автоответчик",
+     "voice": "female",
+     "text": "Всего доброго."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -283,6 +545,282 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dl-1-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "conversation",
+   "title": "University Admissions Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Привет, Мария! Ты слышала о нововведениях в приеме в университет?"
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Привет, Алексей! Да, я прочитала объявление. Теперь срок подачи документов истек 1 июня."
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Понятно. А что с вступительными экзаменами?"
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Ничего не изменилось. Экзамены по-прежнему в июле."
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Спасибо за информацию, Мария!"
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Пожалуйста, Алексей. Удачи с подачей документов!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1-instructions-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Summer Safety Alert",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Внимание! В городе объявлен режим экстренного жары."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Оставайтесь в прохладных местах и пейте воду."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Носите легкую одежду и головные уборы."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Берегите себя и своих близких."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Будьте осторожны с тепловым ударом."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Следите за прогнозом погоды."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1-instructions-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Extreme Heat Advisory",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Внимание, граждане!"
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "В следующие дни температура будет выше 30 градусов."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Это сильная жара."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Пожалуйста, пейте больше воды."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Оставайтесь в тени, когда это возможно."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Избегайте длительного пребывания на солнце."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Берегите себя и своих близких."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Спасибо за внимание."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1-instructions-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "New Hospital Directions",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Голос",
+     "voice": "female",
+     "text": "Внимание, уважаемые пациенты!"
+    },
+    {
+     "speaker": "Голос",
+     "voice": "male",
+     "text": "Перед входом в больницу вымойте руки и наденьте маску."
+    },
+    {
+     "speaker": "Голос",
+     "voice": "female",
+     "text": "В регистратуре получите талон и ждите своего номера."
+    },
+    {
+     "speaker": "Голос",
+     "voice": "male",
+     "text": "Если вам нужна помощь, обратитесь к медсестре."
+    },
+    {
+     "speaker": "Голос",
+     "voice": "female",
+     "text": "Спасибо за внимание!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1-instructions-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Relocation Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "Внимание, всем сотрудникам! Наша компания переезжает в новый офис."
+    },
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "Новый офис находится по адресу: 789 Ленина проспект."
+    },
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "Переезд состоится в следующую субботу."
+    },
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "Пожалуйста, убедитесь, что все ваши личные вещи упакованы и готовы к переезду."
+    },
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "Новый офис больше и удобнее, чем наш текущий."
+    },
+    {
+     "speaker": "Работодатель",
+     "voice": "male",
+     "text": "Если у вас есть вопросы, обратитесь к своему руководителю."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1-instructions-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Port Visit Guidelines",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Голос из динамика",
+     "voice": "female",
+     "text": "Внимание, посетители! Ваш визит на базу очень важен для нас."
+    },
+    {
+     "speaker": "Голос из динамика",
+     "voice": "male",
+     "text": "Пожалуйста, следуйте нашим инструкциям."
+    },
+    {
+     "speaker": "Голос из динамика",
+     "voice": "female",
+     "text": "Фотографирование на базе запрещено."
+    },
+    {
+     "speaker": "Голос из динамика",
+     "voice": "male",
+     "text": "Вы должны оставаться с вашим эскортом в течение всего визита."
+    },
+    {
+     "speaker": "Голос из динамика",
+     "voice": "female",
+     "text": "Спасибо за сотрудничество и приятного пребывания!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-1-voicemail-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -351,6 +889,129 @@
      "speaker": "Секретарь",
      "voice": "female",
      "text": "Пожалуйста. До свидания."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "The New Terminal Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Женский голос",
+     "voice": "female",
+     "text": "Вы слушаете автоответчик аэропорта Москвы. Оставьте сообщение после сигнала."
+    },
+    {
+     "speaker": "Мужской голос",
+     "voice": "male",
+     "text": "Здравствуйте. Я хотел бы узнать, когда откроется новый терминал. Спасибо."
+    },
+    {
+     "speaker": "Женский голос",
+     "voice": "female",
+     "text": "Спасибо за сообщение. Мы свяжемся с вами в ближайшее время."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1-weather-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1",
+   "textType": "weather",
+   "title": "Winter Border Crossing",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Диктор",
+     "voice": "female",
+     "text": "Внимание, путешественники! Погода на границе холодная и снежная."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "female",
+     "text": "Температура сейчас -15 градусов по Цельсию."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "female",
+     "text": "Будьте осторожны с зимним вождением."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "male",
+     "text": "Проверьте свою машину перед поездкой."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "male",
+     "text": "Не забудьте теплую одежду."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "female",
+     "text": "Спасибо за внимание. Берегите себя!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Community Cleanup Day",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Внимание, всем жителям города!"
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "В эту субботу, 10 сентября, мы проводим День уборки города."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Встречаемся в парке культуры в 9 утра."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Мы будем собирать мусор, красить заборы и сажать деревья."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Пожалуйста, присоединяйтесь к нам и помогите сделать наш город чище и красивее."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Будем рады видеть каждого!"
     }
    ],
    "source": "llm",
@@ -523,6 +1184,93 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dl-1p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "interview",
+   "title": "Interview on Energy Subsidies",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Здравствуйте! Сегодня мы говорим об энергосубсидиях и их роли в нашей жизни."
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Здравствуйте! Да, энергосубсидии играют важную роль в подержании энерготарифов на доступном уровне для населения."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Какие основные цели энергосубсидий?"
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Основные цели включают поддержку малоимущих семейств и стимулирование экономического роста."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Спасибо за информацию!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "interview",
+   "title": "Weekend Weather Outlook",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Здравствуйте! Сегодня у нас в студии метеоролог Мария Иванова. Мария, расскажите, какая погода нас ждёт на выходные?"
+    },
+    {
+     "speaker": "Мария Иванова",
+     "voice": "male",
+     "text": "Здравствуйте! На выходные погода будет переменчивой. В субботу будет облачно с возможным дождём."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "А как дело обстоит с температурой?"
+    },
+    {
+     "speaker": "Мария Иванова",
+     "voice": "male",
+     "text": "Температура будет около пятнадцати градусов. Ветер будет слабый, около пяти метров в секунду."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Спасибо, Мария, за информацию!"
+    },
+    {
+     "speaker": "Мария Иванова",
+     "voice": "male",
+     "text": "Не за что! Будьте готовы к изменениям погоды и возьмите зонт!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-1p-news_brief-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -560,6 +1308,139 @@
      "speaker": "Диктор",
      "voice": "male",
      "text": "Ожидается, что сезонные рабочие помогут оживить местную экономику."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1p-news_brief-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Library Expansion Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Центральная библиотека переезжает в новое здание."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Новое здание библиотеки будет иметь больше места для чтения, больше книг и новые услуги."
+    },
+    {
+     "speaker": "Директор библиотеки",
+     "voice": "male",
+     "text": "Мы рады сообщить, что в новом здании будет кафе и компьютерный зал."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Переезд состоится в следующем месяце, и мы приглашаем всех посетить нашу новую библиотеку."
+    },
+    {
+     "speaker": "Директор библиотеки",
+     "voice": "male",
+     "text": "Мы уверены, что новые услуги позволят вам проводить больше времени в библиотеке и наслаждаться чтением."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Больше информации можно найти на нашем веб-сайте."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1p-news_brief-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Change in Admission Procedure Announced",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Диктор",
+     "voice": "female",
+     "text": "Университет меняет процедуру поступления. Теперь документы будут приниматься только через наш сайт в электронном виде."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "male",
+     "text": "Это изменение вступает в силу с следующего года."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "female",
+     "text": "Мы приняли это решение, чтобы упростить процесс подачи документов для абитуриентов."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "male",
+     "text": "Все подробности вы найдете на нашем официальном сайте."
+    },
+    {
+     "speaker": "Диктор",
+     "voice": "female",
+     "text": "Спасибо за внимание."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1p-news_brief-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Bank Warns of Rising Inflation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "В последние месяцы Центральный банк России принял меры для борьбы с растущей инфляцией."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Как сообщает пресс-служба банка, процентные ставки будут повышены на 0,5%."
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Центральный банк ожидает, что инфляция достигнет 6% в этом году."
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "female",
+     "text": "Банк предупредил, что рост цен может ускориться из-за увеличения затрат на импорт."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "Экономисты отмечают, что повышение ставок может замедлить экономический рост."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Однако, по словам представителя банка, это необходимо для стабилизации цен."
     }
    ],
    "source": "llm",
@@ -626,6 +1507,62 @@
      "speaker": "Мужчина",
      "voice": "male",
      "text": "Пожалуйста. До свидания."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-1p-phone_call-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Tourism Recovery Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Привет, это Анна. Я звоню, чтобы обсудить восстановление туризма."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Привет, Анна. Да, туризм начинает восстанавливаться после пандемии."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Да, я вижу, что авиакомпании увеличивают количество рейсов."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Верно. Кроме того, отели имеют высокую загруженность."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Это хорошо. А какие меры безопасности еще действуют?"
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Ну, в большинстве мест нужно носить маски и соблюдать социальную дистанцию."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Спасибо за информацию. До свидания."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Пока."
     }
    ],
    "source": "llm",
@@ -762,6 +1699,153 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "conversation",
+   "title": "City Living Challenges",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Знаешь, я уже устал искать нормальное жилье в этом городе."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Да, я понимаю. Я тоже уже месяц ищу, но цены просто заоблачные."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Вон в том доме, где мы были вчера, цена за квадратный метр просто нереальная."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Да, и при этом ремонт там нужен срочно. Мы просто не можем позволить себе переплачивать за квартиру."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Может, стоит поискать что-нибудь в другом районе?"
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Я уже смотрела. В других районах ситуация такая же."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "А что насчет общежития? Там цены должны быть ниже."
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Да, но там очень мало места, и условия жилья оставляют желать лучшего."
+    },
+    {
+     "speaker": "Мужчина",
+     "voice": "male",
+     "text": "Может, стоит поискать комнату в квартире с другими жильцами?"
+    },
+    {
+     "speaker": "Женщина",
+     "voice": "female",
+     "text": "Это хорошая идея. Посмотрим, что удастся найти."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Preparing for the Moscow Summit",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Привет, Мария! Мы должны подготовиться к международному саммиту в следующем месяце."
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Привет, Алексей! Да, это важное событие. Что именно нужно сделать?"
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Нам нужно проверить инфраструктуру, обеспечить безопасность и организовать транспорт."
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Понятно. Кто занимается вопросами безопасности?"
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Министерство внутренних дел занимается вопросами безопасности. Они уже начали работать над этим."
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Хорошо. А транспорт?"
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Транспорт организует Министерство транспорта. Они будут координировать все маршруты и расписания."
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Отлично. Нам также нужно позаботиться о проживании делегатов."
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Да, я уже связался с несколькими отелями. Они готовы принять делегатов и предоставить необходимые услуги."
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Звучит хорошо. Нам нужно убедиться, что все готово к встрече лидеров разных стран."
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Абсолютно. Давайте проверим все детали на следующей неделе."
+    },
+    {
+     "speaker": "Мария",
+     "voice": "female",
+     "text": "Согласна. Спасибо, Алексей!"
+    },
+    {
+     "speaker": "Алексей",
+     "voice": "male",
+     "text": "Пожалуйста, Мария. Удачи в подготовке!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-2-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -838,6 +1922,118 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dl-2-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Town's Vaccination Drive",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Здравствуйте, уважаемые слушатели! Сегодня у нас в студии Ольга Петровна, глава администрации города Красновка. Ольга Петровна, расскажите нам о кампании по вакцинации, которая сейчас проходит в вашем городе."
+    },
+    {
+     "speaker": "Ольга Петровна",
+     "voice": "male",
+     "text": "Здравствуйте! Конечно, рада рассказать. Мы начали кампанию по вакцинации против COVID-19 на этой неделе. Мы используем вакцину «Спутник V» и прививаем всех желающих."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Как проходит процесс вакцинации?"
+    },
+    {
+     "speaker": "Ольга Петровна",
+     "voice": "male",
+     "text": "Мы организовали несколько пунктов вакцинации в разных районах города. Жители могут записаться на прививку через наш сайт или по телефону. Мы также отправляем мобильные бригады в отдаленные районы, чтобы все могли получить вакцину."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Какой у вас план по вакцинации?"
+    },
+    {
+     "speaker": "Ольга Петровна",
+     "voice": "male",
+     "text": "Наш план — привить всех желающих жителей Красновки до конца лета. Мы уверены, что это поможет нам справиться с пандемией и вернуть жизнь в нормальное русло."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Спасибо за информацию, Ольга Петровна!"
+    },
+    {
+     "speaker": "Ольга Петровна",
+     "voice": "male",
+     "text": "Пожалуйста, всегда пожалуйста!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "interview",
+   "title": "New Traffic Safety Regulations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Добро пожаловать на нашу программу. Сегодня мы говорим о новом законе о безопасности на дорогах. С нами в студии эксперт по дорожному движению, Александр Петрович. Александр Петрович, как новый закон повысит безопасность на дорогах?"
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Спасибо за вопрос. Новый закон вводит ряд важных изменений. Во-первых, теперь запрещено использовать мобильные телефоны за рулём. Во-вторых, ужесточены наказания за превышение скорости."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Какие ещё изменения в ПДД вступили в силу?"
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Также введены новые требования к техническому состоянию автомобилей. Теперь каждый водитель должен проходить технический осмотр раз в два года."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Какие меры планируются для обеспечения соблюдения новых правил?"
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Новый закон предусматривает жесткие меры против нарушителей. В частности, за повторные нарушения ПДД предусмотрены более суровые штрафы и даже лишение прав."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Спасибо за информацию, Александр Петрович. Надеемся, что новый закон действительно повысит безопасность на дорогах."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Спасибо за приглашение. Надеюсь, что так и будет."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -880,6 +2076,220 @@
      "speaker": "Журналист",
      "voice": "male",
      "text": "Спасибо за информацию. Это был наш разговор о проекте 'Виртуальная школа'."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "report",
+   "title": "Joint Military Exercise in the Black Sea",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Внимание, внимание! Говорит радиостанция Военно-Морского Флота."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Сегодня мы завершили совместные учения с военно-морскими силами Украины."
+    },
+    {
+     "speaker": "Офицер",
+     "voice": "female",
+     "text": "Да, учения прошли успешно в акватории Черного моря."
+    },
+    {
+     "speaker": "Офицер",
+     "voice": "female",
+     "text": "Целью учений было укрепление взаимодействия между российским и украинским военно-морскими силами."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Какие задачи решались в ходе учений?"
+    },
+    {
+     "speaker": "Офицер",
+     "voice": "female",
+     "text": "Мы отрабатывали координацию действий, проведение совместных операций и обмен информацией."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Были ли какие-либо сложности?"
+    },
+    {
+     "speaker": "Офицер",
+     "voice": "female",
+     "text": "Нет, все прошло без проблем. Обе стороны показали высокий уровень профессионализма."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Спасибо за информацию. Это был ведущий радиостанции Военно-Морского Флота."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2-report-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "report",
+   "title": "Startup Success Story",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Здравствуйте, уважаемые слушатели. Сегодня у нас в гостях представитель стартапа 'Квантовый скачок' из Москвы."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Здравствуйте, спасибо, что нашли время для нашего интервью."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Здравствуйте. Спасибо за приглашение."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Расскажите, пожалуйста, о вашем стартапе."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Наш стартап 'Квантовый скачок' был основан всего год назад. Мы разрабатываем программное обеспечение для автоматизации бизнес-процессов."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Это звучит интересно. Какие успехи вы уже достигли?"
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "После успешного запуска проекта мы смогли привлечь более 50 тысяч пользователей в первые три месяца."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Это действительно впечатляюще. Какие у вас планы на будущее?"
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Мы планируем расширить наши услуги и выйти на международный рынок в следующем году."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2-report-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "report",
+   "title": "Library Services Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Добро пожаловать на ежеквартальный отчет о библиотечных услугах."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Я рад сообщить, что в нашей библиотеке появились новые услуги."
+    },
+    {
+     "speaker": "Сотрудник",
+     "voice": "female",
+     "text": "Да, у нас теперь есть новые цифровые ресурсы, такие как программы для изучения языков и онлайн-базы данных."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Кроме того, мы планируем проводить регулярные мероприятия для сообщества, такие как мастер-классы и лекции."
+    },
+    {
+     "speaker": "Сотрудник",
+     "voice": "female",
+     "text": "Мы также увеличили часы работы библиотеки, чтобы обеспечить доступ к этим услугам для всех."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Большое спасибо за внимание. Следите за нашими обновлениями."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2-report-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2",
+   "textType": "report",
+   "title": "Rising Food Prices in Siberia",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Вот последние новости о ценах на продукты питания в Сибири."
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "Цены на продукты питания в Сибири продолжают расти. По данным регионального министерства сельского хозяйства, стоимость гречки выросла на 15%, а капусты — на 20% по сравнению с прошлым годом."
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "Урожай картофеля в этом году снизился из-за неблагоприятных погодных условий, что привело к увеличению его стоимости на 12%."
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Кроме того, нехватка капусты из-за засухи также способствует росту цен."
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "Местные жители отмечают, что такие изменения в ценах значительно влияют на их бюджет."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Это были последние новости о ситуации с ценами на продукты питания в Сибири."
     }
    ],
    "source": "llm",
@@ -940,6 +2350,392 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dl-2p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "interview",
+   "title": "The Green City Initiative",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Добро пожаловать на нашу программу. Сегодня мы поговорим о проблеме загрязнения воздуха в столице."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Наша гостья — Маргарита Петровна, директор Департамента экологии и природных ресурсов."
+    },
+    {
+     "speaker": "Маргарита Петровна",
+     "voice": "female",
+     "text": "Спасибо за приглашение. Проблема загрязнения воздуха в столице становится все более острой."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Какие основные источники загрязнения воздуха в нашем городе?"
+    },
+    {
+     "speaker": "Маргарита Петровна",
+     "voice": "female",
+     "text": "Основными источниками являются транспорт, промышленные предприятия и бытовые отходы."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Какие меры принимаются для снижения уровня загрязнения?"
+    },
+    {
+     "speaker": "Маргарита Петровна",
+     "voice": "female",
+     "text": "Мы ввели зоны с ограничением движения автомобилей, поощряем использование общественного транспорта и внедряем современные технологии на промышленных предприятиях."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Какие результаты уже достигнуты?"
+    },
+    {
+     "speaker": "Маргарита Петровна",
+     "voice": "female",
+     "text": "Безусловно, принятые меры дают свои результаты. Уровень загрязнения воздуха снизился на 15% за последний год."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Какие планы на будущее?"
+    },
+    {
+     "speaker": "Маргарита Петровна",
+     "voice": "female",
+     "text": "Мы планируем расширить сети велодорожек, увеличить количество зеленых зон и продолжать вводить меры по контролю за выбросами."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "male",
+     "text": "Спасибо за интересную беседу. Это была Маргарита Петровна, директор Департамента экологии и природных ресурсов."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Restoring Hope: Aid Efforts After the Tashkent Earthquake",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Добро пожаловать на нашу программу. Сегодня мы обсудим усилия по оказанию помощи после недавнего землетрясения в Ташкенте. С нами в студии представитель МЧС России, Александр Петрович. Александр Петрович, расскажите, пожалуйста, о текущей ситуации."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Спасибо за приглашение. Ситуация остается сложной. Землетрясение причинило значительные разрушения, и сейчас ведутся активные поисково-спасательные работы. Основные усилия направлены на спасение людей, пострадавших под завалами."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Какие меры предпринимаются для оказания медицинской помощи?"
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Мы развернули несколько медицинских пунктов в зонах бедствия. Туда направлены мобильные бригады врачей и медицинское оборудование. Также обеспечивается эвакуация пострадавших в ближайшие больницы."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Есть ли необходимость в международной помощи?"
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Да, мы получили запрос о международной помощи от правительства Узбекистана. Уже начали поступать предложения о помощи от нескольких стран. Это важно, так как местным силам требуется поддержка для быстрого восстановления."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Какие еще шаги планируются для восстановления?"
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Помимо поисково-спасательных работ и медицинской помощи, мы работаем над обеспечением временным жильем для пострадавших. Также планируются работы по восстановлению инфраструктуры и жилых домов."
+    },
+    {
+     "speaker": "Интервьюер",
+     "voice": "female",
+     "text": "Спасибо за информацию, Александр Петрович. Желаем вам успехов в дальнейших усилиях."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "male",
+     "text": "Спасибо. Мы сделаем все возможное, чтобы помочь пострадавшим и восстановить нормальную жизнь в регионе."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "United in Adversity: A Multinational Rescue Mission",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Добро пожаловать на нашу программу новостного анализа. Сегодня мы поговорим о недавней совместной операции по поиску и спасению, которая прошла в горах Тянь-Шаня."
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "Да, это была масштабная операция, в которой приняли участие спасатели из России, Казахстана и Киргизии."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Что именно произошло в тех горах?"
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "В результате сильного землетрясения несколько туристов оказались заблокированы в труднодоступных районах. Спасатели столкнулись со сложными погодными условиями, включая сильные дожди и грозы."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Как прошла сама операция?"
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "Благодаря совместным усилиям и координации между тремя странами, операция была успешной. Были задействованы вертолеты, спецназ и специальное спасательное оборудование."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Какие результаты были достигнуты?"
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "В результате совместных усилий спасателей удалось спасти 14 человек. К сожалению, трое туристов погибли, и еще пятеро получили травмы."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Какое значение имеет эта операция?"
+    },
+    {
+     "speaker": "Корреспондент",
+     "voice": "female",
+     "text": "Эта операция стала еще одним примером эффективного сотрудничества между этими странами в условиях чрезвычайной ситуации. Она также показала важность совместных усилий в спасательных работах."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Спасибо за этот подробный анализ. Это была наша программа новостного анализа."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Evacuation from the Conflict Zone",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "В последнее время процесс эвакуации иностранных граждан из зоны конфликта стал одной из ключевых тем в новостях."
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Да, действительно. Организация вывода людей из опасной зоны требует значительных усилий и ресурсов."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Какие основные трудности возникают при эвакуации?"
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Прежде всего, это логистические проблемы. Нужно организовать транспортировку, убедиться, что маршруты безопасны, и координировать усилия различных организаций."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "А как обстоят дела с безопасностью?"
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Безопасность — это один из главных приоритетов. Несмотря на рискованные маршруты, мы работаем над обеспечением безопасности всех участников процесса."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Есть ли прогресс в эвакуации?"
+    },
+    {
+     "speaker": "Эксперт",
+     "voice": "male",
+     "text": "Да, за последние дни удалось эвакуировать несколько групп иностранных граждан. Однако работа продолжается, и мы надеемся на дальнейшее улучшение ситуации."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "The Drying Rivers Debate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Добро пожаловать на нашу панельную дискуссию о проблемах водоснабжения летом."
+    },
+    {
+     "speaker": "Эксперт_1",
+     "voice": "female",
+     "text": "Спасибо. В последнее время мы наблюдаем серьезные проблемы с водоснабжением из-за изменения климата."
+    },
+    {
+     "speaker": "Эксперт_2",
+     "voice": "male",
+     "text": "Да, действительно. Снижение стока рек и засухи становятся все более частыми явлениями."
+    },
+    {
+     "speaker": "Эксперт_1",
+     "voice": "female",
+     "text": "Сельское хозяйство страдает, экосистемы страдают, и городам становится все труднее обеспечивать население водой."
+    },
+    {
+     "speaker": "Эксперт_2",
+     "voice": "male",
+     "text": "Мы строим новые водохранилища и улучшаем системы орошения, но, к сожалению, этого недостаточно."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Какие еще меры можно предпринять?"
+    },
+    {
+     "speaker": "Эксперт_1",
+     "voice": "female",
+     "text": "Важно улучшить использование воды в сельском хозяйстве через мелиорацию и внедрение более эффективных технологий орошения."
+    },
+    {
+     "speaker": "Эксперт_2",
+     "voice": "male",
+     "text": "Также необходимо внедрять программы экономии воды в городах и промышленности."
+    },
+    {
+     "speaker": "Эксперт_1",
+     "voice": "female",
+     "text": "Нам нужно делать больше для защиты и восстановления экосистем, которые зависят от воды."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Спасибо всем за участие в этой важной дискуссии."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "The Future of Urban Mobility: A Panel Discussion on Electric Scooters",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Добро пожаловать на нашу панельную дискуссию о будущем городской мобильности. Сегодня мы обсудим, как электрические самокаты могут изменить городскую мобильность."
+    },
+    {
+     "speaker": "Эксперт по транспорту",
+     "voice": "female",
+     "text": "Электрические самокаты становятся все более популярными в городах по всему миру. Они предлагают быстрое и удобное решение для коротких поездок."
+    },
+    {
+     "speaker": "Эксперт по окружающей среде",
+     "voice": "male",
+     "text": "Кроме того, электрические самокаты экологичнее автомобилей. Они помогают снизить выбросы углекислого газа и улучшить качество воздуха в городах."
+    },
+    {
+     "speaker": "Эксперт по транспорту",
+     "voice": "female",
+     "text": "Электрические самокаты могут уменьшить заторы на дорогах, так как они занимают меньше места, чем автомобили."
+    },
+    {
+     "speaker": "Эксперт по безопасности",
+     "voice": "male",
+     "text": "Однако есть и проблемы, такие как безопасность. Нужно обеспечить безопасность как водителей самокатов, так и пешеходов."
+    },
+    {
+     "speaker": "Эксперт по транспорту",
+     "voice": "female",
+     "text": "Для этого нужна соответствующая инфраструктура, например, выделенные полосы для самокатов и безопасные парковочные зоны."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Спасибо всем за участие в этой дискуссии. Надеюсь, мы смогли дать вам представление о том, как электрические самокаты могут изменить наш городской транспорт."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-2p-speech-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -982,6 +2778,169 @@
      "speaker": "Капитан флота",
      "voice": "male",
      "text": "Мы надеемся, что этот визит станет важным шагом в укреплении наших дружеских отношений и взаимопонимания."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Crisis in the Grid: A Cyberattack on the Power Supply",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Здравствуйте, уважаемые дамы и господа. Сегодня мы собрались здесь, чтобы обсудить серьезный инцидент, произошедший вчера."
+    },
+    {
+     "speaker": "Представитель энергосистемы",
+     "voice": "male",
+     "text": "Спасибо. Вчера вечером наша энергосистема подверглась кибератаке. Это привело к масштабным перебоям в подаче электроэнергии в нескольких районах региона."
+    },
+    {
+     "speaker": "Представитель энергосистемы",
+     "voice": "male",
+     "text": "Мы понимаем, какой дискомфорт доставляет этот инцидент нашим потребителям. Сейчас наши специалисты работают круглосуточно, чтобы восстановить нормальное электроснабжение."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Какие меры были приняты для предотвращения подобных атак в будущем?"
+    },
+    {
+     "speaker": "Представитель энергосистемы",
+     "voice": "male",
+     "text": "Мы уже начали усиленное сотрудничество с профильными службами безопасности и экспертами по кибербезопасности. Также планируется внедрение новых систем защиты, чтобы минимизировать риски подобных инцидентов."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "female",
+     "text": "Когда можно ожидать полного восстановления энергоснабжения?"
+    },
+    {
+     "speaker": "Представитель энергосистемы",
+     "voice": "male",
+     "text": "Ожидается, что основные работы по восстановлению будут завершены в течение ближайших 48 часов. Однако в некоторых отдаленных районах возможны задержки."
+    },
+    {
+     "speaker": "Представитель энергосистемы",
+     "voice": "male",
+     "text": "Я хочу заверить вас, что мы делаем всё возможное для восстановления нормальной работы энергосистемы. Спасибо за ваше терпение и понимание."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-speech-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Central Bank Governor Addresses Inflation Concerns",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Сегодня у нас в студии председатель Центрального банка, Александр Петрович. Он выступит с заявлением по поводу текущей инфляционной ситуации."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "female",
+     "text": "Спасибо. Уважаемые граждане, сегодня я хотел бы обсудить текущую ситуацию с инфляцией и шаги, которые Центральный банк предпринимает для ее контроля."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "female",
+     "text": "Как вы знаете, в последние месяцы мы наблюдаем рост инфляции. Это оказывает значительное давление на домохозяйства и бизнес."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "female",
+     "text": "Центральный банк уже повысил ключевую ставку для сдерживания инфляции. Однако мы осознаем, что этого может быть недостаточно."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "female",
+     "text": "Мы готовы применить дополнительные меры, если это будет необходимо. Наши эксперты внимательно следят за ситуацией и анализируют возможные сценарии."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "female",
+     "text": "Мы также сотрудничаем с международными организациями для обмена опытом и лучшими практиками в области управления инфляцией."
+    },
+    {
+     "speaker": "Александр Петрович",
+     "voice": "female",
+     "text": "Наша цель — стабилизировать экономику и обеспечить устойчивый рост. Мы понимаем, что это требует времени и усилий, но мы привержены этой задаче."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Спасибо, Александр Петрович, за ваше заявление. Мы надеемся, что предложенные меры помогут стабилизировать ситуацию."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-2p-speech-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Community Volunteers Transform Their Neighborhood",
+   "body": "",
+   "script": [
+    {
+     "speaker": "ведущий",
+     "voice": "male",
+     "text": "Здравствуйте, друзья! Сегодня я хочу рассказать вам о нашей волонтерской программе и о том, как она изменила наш район к лучшему."
+    },
+    {
+     "speaker": "ведущий",
+     "voice": "male",
+     "text": "В последние два года мы, волонтеры, работали над различными проектами, чтобы сделать наш район более красивым и безопасным местом для жизни."
+    },
+    {
+     "speaker": "ведущий",
+     "voice": "male",
+     "text": "Во-первых, мы улучшили наши парки. Мы посадили новые деревья и цветы, что сделало их более привлекательными для прогулок и отдыха."
+    },
+    {
+     "speaker": "ведущий",
+     "voice": "male",
+     "text": "Во-вторых, мы организовали бесплатные занятия по различным видам спорта и творчества для детей и взрослых."
+    },
+    {
+     "speaker": "ведущий",
+     "voice": "male",
+     "text": "Кроме того, мы активно работаем над повышением безопасности в нашем районе. Вместе с местной полицией мы провели несколько мероприятий по профилактике правонарушений."
+    },
+    {
+     "speaker": "ведущий",
+     "voice": "male",
+     "text": "Я горжусь нашей работой и тем, что мы достигли много за такое короткое время. Наш район стал лучше, и это благодаря усилиям всех волонтеров и жителей."
+    },
+    {
+     "speaker": "ведущий",
+     "voice": "male",
+     "text": "Спасибо за внимание, и я надеюсь, что вы тоже присоединитесь к нашей волонтерской программе!"
     }
    ],
    "source": "llm",
@@ -1128,6 +3087,92 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dl-3-analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Vaccination Drive: Challenges and Successes",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "Здравствуйте, уважаемые слушатели. Сегодня мы обсудим ход кампании по вакцинации в нашем регионе."
+    },
+    {
+     "speaker": "Эксперт по здравоохранению",
+     "voice": "female",
+     "text": "Спасибо. Кампания по вакцинации столкнулась с рядом сложностей."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "Какие именно проблемы вы имели в виду?"
+    },
+    {
+     "speaker": "Эксперт по здравоохранению",
+     "voice": "female",
+     "text": "Во-первых, был недостаток медицинского персонала, особенно в отдаленных районах."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "Как вы справились с этой проблемой?"
+    },
+    {
+     "speaker": "Эксперт по здравоохранению",
+     "voice": "female",
+     "text": "Мы обучили дополнительных медицинских работников и привлекли волонтеров."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "А что насчет инфраструктуры?"
+    },
+    {
+     "speaker": "Эксперт по здравоохранению",
+     "voice": "female",
+     "text": "Были проблемы логистики, такие как доставка вакцин в отдаленные районы. Также не хватало холодильного оборудования для хранения вакцин."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "Как вы решили эти проблемы?"
+    },
+    {
+     "speaker": "Эксперт по здравоохранению",
+     "voice": "female",
+     "text": "Мы использовали мобильные пункты вакцинации и временные холодильные установки. Местные сообщества активно участвовали в организации пунктов вакцинации и информировании населения."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "Были ли еще какие-либо сложности?"
+    },
+    {
+     "speaker": "Эксперт по здравоохранению",
+     "voice": "female",
+     "text": "Да, была недостаточная информированность населения о важности вакцинации. Мы провели информационные кампании через СМИ и социальные сети, чтобы повысить осведомленность."
+    },
+    {
+     "speaker": "Журналист",
+     "voice": "male",
+     "text": "Спасибо за информацию. Надеюсь, кампания по вакцинации будет успешной."
+    },
+    {
+     "speaker": "Эксперт по здравоохранению",
+     "voice": "female",
+     "text": "Спасибо. Мы продолжаем работать над решением оставшихся проблем и надеемся на положительный результат."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dl-3-debate-001",
    "exam": "DLPT_LISTENING",
    "language": "ru",
@@ -1190,6 +3235,234 @@
      "speaker": "Женщина",
      "voice": "female",
      "text": "Согласна. Главное - начать действовать уже сегодня."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-3-lecture-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The Impact of Migration on the Labor Market in Russia",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Сегодня мы поговорим о влиянии миграции на рынок труда в России."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "В последние годы Россия сталкивается с значительным потоком трудовых мигрантов."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Эти мигранты приезжают в основном из стран СНГ, таких как Узбекистан, Таджикистан и Киргизия."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Они работают в различных секторах экономики, включая строительство, сельское хозяйство и услуги."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Спрос на трудовых мигрантов растет, особенно в некоторых секторах экономики."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Это связано с несколькими факторами, включая демографические изменения и экономический рост."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Однако миграция также создает определенные вызовы для российского рынка труда."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Одной из основных проблем является конкуренция между местными работниками и мигрантами."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Это может привести к снижению заработной платы и ухудшению условий труда для местных работников."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Кроме того, мигранты часто сталкиваются с языковым барьером и культурными различиями."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Это может затруднить их интеграцию в российское общество и рынок труда."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Несмотря на эти вызовы, миграция играет важную роль в российской экономике."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Она помогает удовлетворить спрос на рабочую силу и способствует экономическому росту."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Таким образом, важно найти баланс между использованием миграционного потенциала и решением возникающих проблем."
+    },
+    {
+     "speaker": "Преподаватель (мужской)",
+     "voice": "male",
+     "text": "Это требует комплексного подхода, включающего как экономические, так и социальные меры."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Pushing Boundaries: The Siberian Winter Triathlon Championship",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Добро пожаловать на лекцию о Сибирском зимнем триатлоне, уникальном спортивном событии, которое привлекает участников со всего мира."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Этот чемпионат состоит из трех частей: бег по снегу, лыжная гонка и плавание в ледяной воде."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Первый этап, бег по снегу, требует от спортсменов высокой выносливости и силы."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Затем следует лыжная гонка, которая проверяет их технические навыки и стратегическое мышление."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Финальный этап, плавание в ледяной воде, является самым сложным и требует от спортсменов максимальной концентрации и подготовки."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Организаторы чемпионата уделяют большое внимание безопасности."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Они проводят тщательные проверки оборудования и условий, а также обеспечивают спортсменов специальной экипировкой."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Чемпионат не только демонстрирует силу и выносливость спортсменов, но и показывает красоту и суровость сибирской природы."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Это событие является важным шагом в развитии зимних видов спорта и привлекает внимание к региону."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Благодаря этому чемпионату Сибирь становится известной не только своими природными ресурсами, но и своими спортивными достижениями."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "male",
+     "text": "Спасибо за внимание. Если у вас есть вопросы, я буду рад на них ответить."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-3-lecture-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Preparing for the Inevitable: Understanding Flood Risks in Russian Regions",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "Добрый день, уважаемые слушатели."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "Сегодня мы поговорим о важности подготовки и реагирования на наводнения в России."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "Наводнения являются одними из самых разрушительных природных катастроф, которые могут привести к значительным человеческим и материальным потерям."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "В последние годы изменение климата увеличивает частоту и интенсивность наводнений, что делает понимание рисков и подготовку к ним еще более важными."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "В России существует множество регионов, подверженных риску наводнений, таких как Поволжье, Сибирь и Дальний Восток."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "Для эффективного управления рисками наводнений необходимо проводить точное прогнозирование, мониторинг и оценку уязвимости."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "Это позволяет разрабатывать и реализовывать эффективные меры реагирования, такие как эвакуация населения, строительство защитных сооружений и восстановление инфраструктуры."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "Кроме того, важно повышать осведомленность населения о рисках наводнений и обучать их основным мерам безопасности."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "В заключение, подготовка к наводнениям и эффективное реагирование на них являются ключевыми аспектами снижения рисков и минимизации последствий этих природных катастроф."
+    },
+    {
+     "speaker": "Лектор",
+     "voice": "female",
+     "text": "Спасибо за внимание."
     }
    ],
    "source": "llm",
@@ -1339,9 +3612,339 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-3-speech-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Humanitarian Response: A Glimpse into Refugee Life",
+   "body": "",
+   "script": [
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Добрый день, уважаемые дамы и господа. Сегодня я хочу рассказать вам о жизни в лагере беженцев 'Надежда', который находится на окраине города."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Каждый день здесь сталкиваются с множеством вызовов, но их невероятная сила духа вдохновляет нас всех."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Утро в лагере начинается рано. Люди просыпаются с рассветом, чтобы успеть встать в очередь за водой и продовольствием."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Одной из главных проблем является доступ к чистой воде. Достаточное количество воды есть не всегда, и это создает дополнительные сложности."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Питание также является серьезным вопросом. Рацион ограничен, и часто приходится довольствоваться тем, что есть."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Медицинские услуги в лагере ограничены. Есть небольшой медицинский пункт, но он не всегда может справиться с потоком пациентов."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Несмотря на все эти трудности, жители лагеря справляются с ними с достоинством."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Дети продолжают учиться в временных классах, а взрослые пытаются найти способы заработать на жизнь."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Одна из самых больших проблем – это психологическая нагрузка. Многие люди потеряли своих близких и дома, и им нужна поддержка."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "В лагере работают волонтеры, которые помогают беженцам адаптироваться и находить силы для дальнейшей жизни."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Мы продолжаем работать над улучшением условий в лагере, несмотря на логистические трудности и нехватку ресурсов."
+    },
+    {
+     "speaker": "ВЕДУЩИЙ",
+     "voice": "female",
+     "text": "Спасибо за внимание. Надеюсь, что наши усилия помогут этим людям найти новый дом и начать новую жизнь."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-3-speech-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "3",
+   "textType": "speech",
+   "title": "Opening the Northern Cross Line: A Step Towards a Better Future",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Здравствуйте, уважаемые жители нашего города! Сегодня мы собрались здесь, чтобы обсудить важное событие в жизни нашего города – открытие новой линии метро, которая называется \"Северный крест\"."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Эта линия будет простираться от северных окраин города до южных районов, соединяя между собой ранее недостаточно обслуживаемые районы."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Основная цель \"Северного креста\" – значительно сократить время в пути для наших граждан и облегчить транспортное сообщение между различными частями города."
+    },
+    {
+     "speaker": "Житель",
+     "voice": "female",
+     "text": "А как это повлияет на стоимость проезда?"
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Стоимость проезда останется на том же уровне, что и в других линиях метро. Мы понимаем, что доступность транспорта – это важный аспект для всех горожан."
+    },
+    {
+     "speaker": "Житель",
+     "voice": "male",
+     "text": "Будет ли новая линия метро иметь пересадки на другие виды транспорта?"
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Да, конечно. \"Северный крест\" будет иметь удобные пересадки на другие линии метро, а также на автобусы и трамваи. Это сделает поездки еще более удобными и быстрыми."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Мы также планируем внедрить современные технологии в управление этой линией, что позволит нам обеспечивать безопасность и комфорт для всех пассажиров."
+    },
+    {
+     "speaker": "Житель",
+     "voice": "female",
+     "text": "Когда именно откроется новая линия?"
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Открытие \"Северного креста\" запланировано на следующий год. Мы понимаем, что многие горожане с нетерпением ждут этого события, и мы делаем все возможное, чтобы завершить работы в срок."
+    },
+    {
+     "speaker": "Ведущий",
+     "voice": "male",
+     "text": "Спасибо за ваши вопросы. Мы надеемся, что новая линия метро станет важным шагом на пути к улучшению качества жизни в нашем городе. Благодарим за внимание!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dl-3-speech-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ru",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Future of Energy: Investing in Renewables",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Добрый день, уважаемые коллеги!"
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Сегодня я хочу поговорить с вами о будущем энергетики в нашей стране."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Мы живем в эпоху быстрых изменений, и один из ключевых вызовов, перед которыми мы стоим, это переход к устойчивой энергетике."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Мы должны инвестировать в возобновляемую энергетику, чтобы обеспечить устойчивое будущее для нашей страны."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Это не только вопрос экологии, но и экономической стабильности."
+    },
+    {
+     "speaker": "Спикер 2",
+     "voice": "male",
+     "text": "Но разве традиционные источники энергии не дешевле?"
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Да, сегодня они могут быть дешевле, но мы должны думать о долгосрочных перспективах."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Инвестиции в возобновляемую энергетику могут быть выше в начале, но они приносят значительные выгоды в долгосрочной перспективе."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Кроме того, мы должны учитывать экологические издержки использования ископаемых видов топлива."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Мы должны инвестировать в перспективные технологии, такие как солнечная и ветровая энергетика."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Это не только снизит нашу зависимость от импорта, но и создаст новые рабочие места."
+    },
+    {
+     "speaker": "Спикер 2",
+     "voice": "male",
+     "text": "Но как мы можем быть уверены, что эти технологии будут эффективны в нашем климате?"
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Это хороший вопрос."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Мы уже видите примеры успешного использования возобновляемой энергетики в различных регионах нашей страны."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Конечно, есть вызовы, но мы должны быть готовы к ним."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Правительство должно создать благоприятные условия для инвестиций в возобновляемую энергетику."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Это включает в себя налоговые льготы, субсидии и поддержку научных исследований."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "В заключение, хочу сказать, что переход к возобновляемой энергетике — это не просто необходимость, а возможность для нашей страны стать лидером в этой области."
+    },
+    {
+     "speaker": "Спикер 1",
+     "voice": "female",
+     "text": "Спасибо за внимание!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
+  {
+   "id": "ru-dl-0p-advertisement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ru-dl-0p-advertisement-001",
+   "stem": "What does the announcement say about passports?",
+   "choices": [
+    "They are not required for this border crossing.",
+    "They will be checked at a later station.",
+    "They should be carried but not shown.",
+    "They must be shown at the border crossing."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is choice 0. The announcement states: \"Покажите паспорт на границе.\", which means \"Show your passport at the border.\" This indicates that passports must be shown at the border crossing. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-advertisement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ru-dl-0p-advertisement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To describe the customs process.",
+    "To explain how to obtain a visa.",
+    "To advertise a new border crossing service.",
+    "To inform travelers about the border crossing procedure."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is choice 0. The announcement is primarily about informing travelers about the border crossing procedure, specifically mentioning the need to show a passport and receive a stamp. The other choices are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ru-dl-0p-announcement-001",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To instruct people on how to prepare for an earthquake.",
+    "To provide information about the distribution of aid after an earthquake.",
+    "To describe the damage caused by the earthquake.",
+    "To inform people about the earthquake's magnitude."
+   ],
+   "answer": 1,
+   "explanation": "The announcement is about the distribution of aid after an earthquake, as indicated by the phrases \"после землетрясения\" (after the earthquake) and \"распределение помощи\" (distribution of aid).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ru-dl-0p-announcement-002",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "A new planet was discovered.",
+    "A new type of rocket was tested.",
+    "A satellite was successfully launched into orbit.",
+    "A space station was repaired."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that a satellite was successfully launched into orbit, as stated in the announcement: \"Спутник успешно выведен на орбиту.\"",
+   "source": "llm",
+   "verified": false
+  },
   {
    "id": "ru-dl-0p-short_exchange-001-q1",
    "exam": "DLPT_LISTENING",
@@ -1487,6 +4090,114 @@
    "verified": false
   },
   {
+   "id": "ru-dl-0p-short_exchange-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ru-dl-0p-short_exchange-006",
+   "stem": "What is the problem?",
+   "choices": [
+    "The fountain is dirty",
+    "The fountain is too old",
+    "The fountain is too small",
+    "The fountain is not working"
+   ],
+   "answer": 3,
+   "explanation": "The man says that the fountain is not working: Фонтан не работает.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-short_exchange-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ru-dl-0p-short_exchange-006",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A summer festival",
+    "A broken fountain",
+    "A water shortage",
+    "A new park"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the broken fountain. The woman asks about the fountain and the man explains that it is not working.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-short_exchange-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ru-dl-0p-short_exchange-007",
+   "stem": "What is the salary for the job?",
+   "choices": [
+    "$1200",
+    "$1000",
+    "$2000",
+    "$1500"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the salary is 1200 долларов (1200 dollars), so the correct answer is B.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-short_exchange-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ru-dl-0p-short_exchange-007",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A complaint about working conditions",
+    "A request for a day off",
+    "A discussion about vacation plans",
+    "An offer for a job"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the conversation is an offer for a job, as indicated by the phrases работа (work) and предлагаю (I offer).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-short_exchange-008-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ru-dl-0p-short_exchange-008",
+   "stem": "What is the first thing the man wants to know about the apartment?",
+   "choices": [
+    "the size of the apartment",
+    "whether it is available",
+    "the amenities included",
+    "the monthly rent"
+   ],
+   "answer": 3,
+   "explanation": "The man first asks about the monthly rent, saying: \"Сколько стоит аренда в месяц?\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-0p-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ru-dl-0p-voicemail-001",
+   "stem": "What is the main idea of this message?",
+   "choices": [
+    "The city is restricting water use for gardens.",
+    "The city is running out of water.",
+    "The city is asking residents to water their gardens more often.",
+    "The city is asking residents to report water leaks."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that the city is restricting water use for gardens. This is stated directly in the message: 'В этом году из-за засухи ограничено использование воды для полива садов.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1577,6 +4288,240 @@
    "verified": false
   },
   {
+   "id": "ru-dl-1-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-conversation-003",
+   "stem": "What is changing about university admissions?",
+   "choices": [
+    "Students must take an additional exam.",
+    "Applicants need to submit a recommendation letter.",
+    "The application process is now online.",
+    "The application deadline is earlier."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 0: \"The application deadline is earlier.\" This is stated directly in the text: \"Теперь срок подачи документов истек 1 июня.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1-conversation-003",
+   "stem": "In the text, the word \"документы\" refers to:",
+   "choices": [
+    "academic transcripts",
+    "legal contracts",
+    "personal identification papers",
+    "application forms"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 2: \"application forms\". In this context, \"документы\" refers to the forms that need to be submitted for the university application process, as indicated by the phrase \"подачи документов\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-instructions-001",
+   "stem": "What is the main danger during the heat wave?",
+   "choices": [
+    "sunburn",
+    "heat stroke",
+    "sun glare",
+    "dehydration"
+   ],
+   "answer": 1,
+   "explanation": "The main danger is 'heat stroke' (тепловой удар), as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1-instructions-001",
+   "stem": "What does 'пейте воду' mean here?",
+   "choices": [
+    "store water",
+    "buy water",
+    "drink water",
+    "find water"
+   ],
+   "answer": 2,
+   "explanation": "'пейте воду' means to 'drink water', encouraging people to stay hydrated during the heat wave.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-instructions-002",
+   "stem": "What is the temperature in the coming days?",
+   "choices": [
+    "30 degrees",
+    "35 degrees",
+    "below 30 degrees",
+    "over 30 degrees"
+   ],
+   "answer": 3,
+   "explanation": "The text says \"в следующие дни температура будет выше 30 градусов\", so the correct answer is 'over 30 degrees'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dl-1-instructions-002",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To advertise cooling products",
+    "To warn about extreme heat",
+    "To inform about a holiday",
+    "To schedule public events"
+   ],
+   "answer": 1,
+   "explanation": "The main idea is \"предупреждение о сильной жаре\", so the correct answer is 'To warn about extreme heat'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-instructions-003",
+   "stem": "What does the speaker say you should do before entering the hospital?",
+   "choices": [
+    "Wash your hands",
+    "Sign a form",
+    "Show your ID",
+    "Take off your hat"
+   ],
+   "answer": 0,
+   "explanation": "The text says: “Перед входом в больницу вымойте руки.” This means you should wash your hands before entering.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1-instructions-003",
+   "stem": "In the text, what does the word 'регистратура' mean?",
+   "choices": [
+    "Admission desk",
+    "Pharmacy",
+    "Cafeteria",
+    "Emergency room"
+   ],
+   "answer": 0,
+   "explanation": "The text says: “В регистратуре получите талон.” This means you should get a ticket at the admission desk.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-instructions-004",
+   "stem": "What is the new office address?",
+   "choices": [
+    "321 Karl Marks Prospekt",
+    "789 Lenina Prospekt",
+    "123 Sovetskaya Ulitsa",
+    "456 Gorkogo Prospekt"
+   ],
+   "answer": 1,
+   "explanation": "The text states the new office address as 789 Lenina Prospekt.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ru-dl-1-instructions-004",
+   "stem": "Why is the company moving?",
+   "choices": [
+    "To be closer to clients",
+    "To follow government regulations",
+    "To expand their office space",
+    "To reduce costs"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions that the company is moving to a larger office, implying the purpose is to expand their office space.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-instructions-005",
+   "stem": "What does the announcement mention as a restriction on the base?",
+   "choices": [
+    "Visitors must stay with their hosts.",
+    "No photography is allowed.",
+    "Vehicles are prohibited.",
+    "No outside food is permitted."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'No photography is allowed.' The text states that photography is not allowed on the base, which directly addresses the restriction in question. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dl-1-instructions-005",
+   "stem": "What is the main purpose of the announcement?",
+   "choices": [
+    "To provide guidelines for visiting the naval port.",
+    "To announce the closure of the base.",
+    "To schedule a tour of the naval port.",
+    "To inform visitors about the base's history."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To provide guidelines for visiting the naval port.' The announcement outlines specific rules and instructions for visitors, such as the prohibition of photography and the requirement to stay with hosts. This is the main purpose of the text. The other options are not supported by the content of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-instructions-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1-instructions-005",
+   "stem": "What does the word 'эскорт' mean here?",
+   "choices": [
+    "A meal",
+    "A vehicle",
+    "A document",
+    "A guide"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'A guide.' In the context of the announcement, 'эскорт' refers to the requirement for visitors to stay with their hosts, implying that the hosts act as guides. The other options do not fit the context of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-1-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1663,6 +4608,132 @@
    ],
    "answer": 0,
    "explanation": "'Рынке' here refers to a market where food items are sold. The text says: 'сколько стоят картофель и морковь на рынке.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-voicemail-003",
+   "stem": "What does the caller want to know?",
+   "choices": [
+    "When the new terminal opens",
+    "What shops are in the new terminal",
+    "Whether the new terminal has free Wi-Fi",
+    "How to get to the new terminal"
+   ],
+   "answer": 0,
+   "explanation": "The caller asks about the opening date of the new terminal: \"Я хотел бы узнать, когда откроется новый терминал.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-voicemail-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1-voicemail-003",
+   "stem": "What does \"откроется\" mean here?",
+   "choices": [
+    "Will be built",
+    "Will be repaired",
+    "Will be closed",
+    "Will be opened"
+   ],
+   "answer": 3,
+   "explanation": "\"Откроется\" means 'will be opened' in this context: The caller wants to know when the new terminal will start operating: \"Я хотел бы узнать, когда откроется новый терминал.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-weather-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dl-1-weather-001",
+   "stem": "What is the current temperature at the border crossing?",
+   "choices": [
+    "-10 degrees Celsius",
+    "-15 degrees Celsius",
+    "-20 degrees Celsius",
+    "-25 degrees Celsius"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the temperature is -15 градусов по Цельсию.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1-weather-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1-weather-001",
+   "stem": "What does the phrase \"зимнее вождение\" mean here?",
+   "choices": [
+    "summer driving",
+    "winter driving",
+    "ice skating",
+    "snow removal"
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"зимнее вождение\" refers to driving in winter conditions, which is relevant to the border crossing procedure mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dl-1p-announcement-001",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "Residents should report any vandalism.",
+    "The town is hosting a cleanup day event.",
+    "A new recycling program has started.",
+    "A new community center is opening."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is the cleanup day event, as indicated by the repeated mention of the cleanup (уборка) and the specific tasks involved, such as collecting trash (собирать мусор) and painting (красить).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dl-1p-announcement-001",
+   "stem": "When will the Community Cleanup Day take place?",
+   "choices": [
+    "This Sunday",
+    "This Saturday",
+    "Next Saturday",
+    "Next Sunday"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the cleanup will take place this Saturday (в эту субботу).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1p-announcement-001",
+   "stem": "In the announcement, what does the phrase 'сбор мусора' refer to?",
+   "choices": [
+    "Repairing roads",
+    "Collecting trash",
+    "Painting fences",
+    "Planting trees"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'сбор мусора' means 'collecting trash', which is one of the tasks mentioned for the cleanup day.",
    "source": "llm",
    "verified": false
   },
@@ -1829,6 +4900,114 @@
    "verified": false
   },
   {
+   "id": "ru-dl-1p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dl-1p-interview-003",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The role of energy subsidies in reducing energy costs",
+    "The history of energy subsidies in Russia",
+    "How to apply for energy subsidies",
+    "The impact of energy subsidies on the economy"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is D. The interview focuses on how energy subsidies help to reduce energy costs for consumers, as indicated by the phrase в подержании энерготарифов на доступном уровне (keeping energy tariffs at an affordable level).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dl-1p-interview-003",
+   "stem": "According to the interview, what is one of the goals of energy subsidies?",
+   "choices": [
+    "To support low-income households",
+    "To increase energy production",
+    "To reduce energy consumption",
+    "To promote renewable energy sources"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B. The interviewer states that one of the goals is поддержка малоимущих семейств (support for low-income families).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1p-interview-003",
+   "stem": "What does the phrase энерготарифы mean here?",
+   "choices": [
+    "Energy sources",
+    "Energy consumption",
+    "Energy prices",
+    "Energy subsidies"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is B. The phrase энерготарифы refers to energy prices, as indicated by the context of keeping them at an affordable level в подержании энерготарифов на доступном уровне.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dl-1p-interview-004",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The weather forecast for the coming weekend",
+    "The best places to vacation in Russia",
+    "The impact of weather on local businesses",
+    "The effects of climate change on Moscow"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the weather forecast for the coming weekend. This is clear from the repeated use of words like 'выходные' (weekend) and 'погода' (weather), and phrases like 'на выходные' (for the weekend) and 'погода будет' (the weather will be).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dl-1p-interview-004",
+   "stem": "What does the meteorologist say about Saturday's weather?",
+   "choices": [
+    "It will be sunny and warm.",
+    "It will be windy with possible thunderstorms.",
+    "It will be cloudy with a chance of rain.",
+    "It will be rainy and cold."
+   ],
+   "answer": 2,
+   "explanation": "The meteorologist says 'В субботу будет облачно с возможным дождём' (On Saturday it will be cloudy with a possible rain). This matches choice 2.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1p-interview-004",
+   "stem": "The word 'облачно' as used here means:",
+   "choices": [
+    "Sunny",
+    "Cloudy",
+    "Windy",
+    "Rainy"
+   ],
+   "answer": 1,
+   "explanation": "The word 'облачно' is used to describe the weather on Saturday. The phrase 'облачно с возможным дождём' (cloudy with a possible rain) indicates that 'облачно' means cloudy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-1p-news_brief-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1883,6 +5062,168 @@
    "verified": false
   },
   {
+   "id": "ru-dl-1p-news_brief-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dl-1p-news_brief-002",
+   "stem": "What is the main point of this announcement?",
+   "choices": [
+    "The Central Library is moving to a larger building with more services.",
+    "A new library has opened in the city center.",
+    "The Central Library is expanding its services to include more books.",
+    "The library is hosting a special event for children."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is that the Central Library is moving to a larger building with more services. This is supported by the text stating \"Центральная библиотека переезжает в новое здание\" and \"новое здание библиотеки будет иметь больше места для чтения, больше книг и новые услуги\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dl-1p-news_brief-002",
+   "stem": "What new services will the library offer?",
+   "choices": [
+    "A larger book collection and a reading room.",
+    "A café and a children's play area.",
+    "A café and a computer lab.",
+    "A computer lab and a quiet study area."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is a café and a computer lab. The text mentions \"кафе и компьютерный зал\" as new services offered in the new building.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "inference",
+   "passageId": "ru-dl-1p-news_brief-002",
+   "stem": "Why is the library moving to a new building?",
+   "choices": [
+    "To be closer to the city center.",
+    "Because the old building was damaged.",
+    "To accommodate more visitors and offer new services.",
+    "Because the old building was too small for the staff."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is to accommodate more visitors and offer new services. The text states \"новое здание библиотеки будет иметь больше места для чтения, больше книг и новые услуги\", implying that the move is to provide more space and additional services.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dl-1p-news_brief-003",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "A new building on campus",
+    "A change in the admission procedure",
+    "A new scholarship program",
+    "A change in the university's admission requirements"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is a change in the admission procedure, as stated in the opening sentence: \"Университет меняет процедуру поступления\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dl-1p-news_brief-003",
+   "stem": "What is the new procedure for submitting documents?",
+   "choices": [
+    "Applicants must submit documents via email",
+    "Applicants must submit documents in person",
+    "Applicants must submit documents through the mail",
+    "Applicants must submit documents through the university's website"
+   ],
+   "answer": 3,
+   "explanation": "The new procedure is for applicants to submit documents through the university's website, as stated in the text: \"документы будут приниматься только через наш сайт\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1p-news_brief-003",
+   "stem": "What does the phrase \"в электронном виде\" refer to in this context?",
+   "choices": [
+    "Submitting documents in person",
+    "Submitting documents in a digital format",
+    "Submitting documents via email",
+    "Submitting documents through the university's website"
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"в электронном виде\" refers to submitting documents in a digital format, as it is used to describe how documents should be submitted through the university's website: \"документы будут приниматься только через наш сайт в электронном виде\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dl-1p-news_brief-004",
+   "stem": "What is the main idea of this news report?",
+   "choices": [
+    "The Central Bank is introducing new digital currency.",
+    "The Central Bank is raising interest rates to combat inflation.",
+    "The Central Bank is lowering interest rates to encourage spending.",
+    "The Central Bank is warning about a potential economic crisis."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the Central Bank is raising interest rates to combat inflation, as stated in the text: «Центральный банк повышает процентные ставки, чтобы бороться с инфляцией.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dl-1p-news_brief-004",
+   "stem": "What does the text say the Central Bank expects inflation to reach this year?",
+   "choices": [
+    "5%",
+    "7%",
+    "6%",
+    "8%"
+   ],
+   "answer": 2,
+   "explanation": "The text states that «Центральный банк ожидает, что инфляция достигнет 6% в этом году.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-news_brief-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1p-news_brief-004",
+   "stem": "In the phrase «банк предупредил, что рост цен может ускориться», what does «ускориться» mean?",
+   "choices": [
+    "to speed up",
+    "to stop",
+    "to slow down",
+    "to stabilize"
+   ],
+   "answer": 0,
+   "explanation": "The context indicates that the bank is warning about inflation increasing more rapidly, so «ускориться» means «to speed up».",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-1p-phone_call-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1933,6 +5274,60 @@
    ],
    "answer": 2,
    "explanation": "The word “непогода” is used to describe the bad weather that might affect the launch, as mentioned in the text: “из-за непогоды”.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-phone_call-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ru-dl-1p-phone_call-002",
+   "stem": "What is the main topic of this phone conversation?",
+   "choices": [
+    "the current state of the tourism industry",
+    "a personal vacation plan",
+    "the opening of a new hotel",
+    "a complaint about a recent trip"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the current state of the tourism industry, as indicated by phrases like \"туризм начинает восстанавливаться\" (tourism is beginning to recover) and discussions about bookings and safety measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-phone_call-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ru-dl-1p-phone_call-002",
+   "stem": "What specific example does the speaker give for tourism recovery?",
+   "choices": [
+    "airlines are increasing flights",
+    "hotels are fully booked",
+    "restaurants are offering discounts",
+    "more people are visiting museums"
+   ],
+   "answer": 0,
+   "explanation": "The speaker mentions that \"авиакомпании увеличивают количество рейсов\" (airlines are increasing the number of flights), which is the specific example given for tourism recovery.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-1p-phone_call-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-1p-phone_call-002",
+   "stem": "What does \"загруженность\" mean here?",
+   "choices": [
+    "popularity",
+    "safety",
+    "occupancy",
+    "profitability"
+   ],
+   "answer": 2,
+   "explanation": "The word \"загруженность\" is used to describe hotels, meaning they are fully booked or have high occupancy. The context is \"отели имеют высокую загруженность\" (hotels have high occupancy).",
    "source": "llm",
    "verified": false
   },
@@ -2045,6 +5440,114 @@
    "verified": false
   },
   {
+   "id": "ru-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-conversation-003",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The best neighborhoods to live in for young professionals.",
+    "The benefits of living in a rural area.",
+    "The advantages of owning a house over renting an apartment.",
+    "The difficulties of finding affordable housing in cities."
+   ],
+   "answer": 3,
+   "explanation": "The speakers discuss the problems of finding a place to live in the city, mentioning high prices and limited availability.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-conversation-003",
+   "stem": "What does the woman suggest as a possible solution to the housing problem?",
+   "choices": [
+    "Commuting from a nearby town.",
+    "Moving to a smaller city.",
+    "Renting a room in a shared apartment.",
+    "Buying a house in the suburbs."
+   ],
+   "answer": 2,
+   "explanation": "The woman says, \"Может, стоит поискать комнату в квартире с другими жильцами?\" (\"Maybe we should look for a room in an apartment with other tenants?\")",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-conversation-003",
+   "stem": "What does \"переплачивать\" mean here?",
+   "choices": [
+    "To spend more than necessary.",
+    "To borrow money.",
+    "To save money.",
+    "To invest money."
+   ],
+   "answer": 0,
+   "explanation": "The man says, \"Мы просто не можем позволить себе переплачивать за квартиру\" (\"We just can't afford to overpay for an apartment\")",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-conversation-004",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "Preparing for an upcoming international summit",
+    "Discussing Russian history",
+    "Planning a vacation in Moscow",
+    "Organizing a cultural festival"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is preparing for an upcoming international summit. This is evident from phrases like 'международный саммит', 'подготовка к саммиту', and 'встреча лидеров разных стран'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-conversation-004",
+   "stem": "Who is responsible for the security arrangements according to the conversation?",
+   "choices": [
+    "The foreign ministry",
+    "The defense ministry",
+    "The interior ministry",
+    "The local police"
+   ],
+   "answer": 2,
+   "explanation": "The interior ministry is responsible for the security arrangements. This is stated in the line 'Министерство внутренних дел занимается вопросами безопасности'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-conversation-004",
+   "stem": "In the conversation, what does the phrase 'проверить инфраструктуру' mean?",
+   "choices": [
+    "To inspect and ensure the infrastructure is ready",
+    "To ignore the existing infrastructure",
+    "To build new infrastructure",
+    "To demolish old infrastructure"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'проверить инфраструктуру' means to inspect and ensure the infrastructure is ready. This is clear from the context of preparing for the summit, where they need to make sure everything is in order.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-2-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2095,6 +5598,114 @@
    ],
    "answer": 1,
    "explanation": "The correct answer is C. The context of the interview discusses the role of interest rates in managing economic challenges, such as 'Процентные ставки играют важную роль в управлении инфляцией', indicating that 'управлять инфляцией' means to control inflation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-interview-002",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The local government's vaccination campaign",
+    "The town's plans to build a new hospital",
+    "The town's economic development strategies",
+    "A recent festival in the town of Krasnovka"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is C because the entire interview is about the vaccination campaign in the town of Krasnovka. The other topics are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-interview-002",
+   "stem": "What is the name of the vaccine being administered in the campaign?",
+   "choices": [
+    "AstraZeneca",
+    "Sputnik V",
+    "Pfizer",
+    "Moderna"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is A because the interviewer mentions that they are administering the «Спутник V» vaccine. The other vaccines are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-interview-002",
+   "stem": "What does the word «план» mean here?",
+   "choices": [
+    "A map",
+    "A schedule",
+    "A document",
+    "A surprise"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B because the speaker is talking about their «план» to vaccinate all residents who wish to be vaccinated by the end of the summer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-interview-003",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "Personal experiences of traffic violations",
+    "A new law on road safety and its provisions",
+    "The history of road safety regulations in Russia",
+    "The impact of traffic safety laws on drivers"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the interview is a new law on road safety and its provisions. This is evident from the context of the questions and answers, such as 'Как новый закон повысит безопасность на дорогах?' and 'Какие изменения в ПДД вступили в силу?'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-interview-003",
+   "stem": "According to the new law, what is one of the key changes in traffic regulations?",
+   "choices": [
+    "The speed limit on highways has been increased",
+    "The use of mobile phones while driving is now prohibited",
+    "Drivers are allowed to turn right on red lights",
+    "The blood alcohol limit for drivers has been raised"
+   ],
+   "answer": 1,
+   "explanation": "The text states that 'Использование мобильных телефонов за рулём теперь запрещено.' This indicates that the use of mobile phones while driving is now prohibited according to the new law.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-interview-003",
+   "stem": "In the text, the phrase 'жесткие меры' refers to what?",
+   "choices": [
+    "Lenient punishments",
+    "New traffic signs",
+    "Additional driving tests",
+    "Strict measures"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'жесткие меры' is used in the context of 'Новый закон предусматривает жесткие меры против нарушителей.' This indicates that it refers to strict measures against violators.",
    "source": "llm",
    "verified": false
   },
@@ -2153,6 +5764,222 @@
    "verified": false
   },
   {
+   "id": "ru-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-report-002",
+   "stem": "What is the main idea of this report?",
+   "choices": [
+    "the Russian navy is testing new equipment in the Black Sea",
+    "a problem with a naval exercise caused a delay",
+    "a joint military exercise with Ukraine was completed successfully",
+    "Ukraine is planning to upgrade its naval forces"
+   ],
+   "answer": 2,
+   "explanation": "The report is about a naval exercise carried out jointly with Ukraine; the other choices are not the main topics of the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-report-002",
+   "stem": "What was the purpose of the exercise?",
+   "choices": [
+    "to test new weapons systems",
+    "to practice responding to natural disasters",
+    "to improve coordination between the two navies",
+    "to demonstrate military strength to other countries"
+   ],
+   "answer": 2,
+   "explanation": "The text says: 'Целью учений было укрепление взаимодействия между российским и украинским военно-морскими силами.' The other choices are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-report-002",
+   "stem": "What does 'успешно' mean here?",
+   "choices": [
+    "easily",
+    "quietly",
+    "successfully",
+    "quickly"
+   ],
+   "answer": 2,
+   "explanation": "The text says: 'Учения прошли успешно.' The exercise was 'successful', so the correct meaning of 'успешно' is 'successfully'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-report-003",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A new technology startup's early successes",
+    "The history of technology startups in Russia",
+    "The failure of a startup due to poor management",
+    "A government initiative to support startups"
+   ],
+   "answer": 0,
+   "explanation": "The report focuses on the early successes of a new technology startup called 'Quantum Leap' in Moscow. This is evident from the description of their product, the number of users, and their future plans.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-report-003",
+   "stem": "How many users does the startup currently have?",
+   "choices": [
+    "Under 1,000",
+    "Exactly 500,000",
+    "Over 50,000",
+    "Around 10,000"
+   ],
+   "answer": 2,
+   "explanation": "The report states that the startup has 'более 50 тысяч пользователей'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-report-003",
+   "stem": "What does 'запуск' mean here?",
+   "choices": [
+    "A sports event",
+    "A type of software",
+    "The beginning of a project",
+    "A rocket launch"
+   ],
+   "answer": 2,
+   "explanation": "The word 'запуск' is used to describe the start of the project, as in 'после успешного запуска проекта'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-report-004",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "Library staff training programs",
+    "Introduction of new library services",
+    "Changes in library operating hours",
+    "New books available in the library"
+   ],
+   "answer": 1,
+   "explanation": "The report discusses the introduction of new services such as digital resources, community events, and extended opening hours, which are mentioned as follows: 'новые цифровые ресурсы', 'мероприятия для сообщества', and 'увеличение часов работы'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-report-004",
+   "stem": "What is one of the new digital resources mentioned in the report?",
+   "choices": [
+    "Language learning software",
+    "Movie streaming service",
+    "E-books",
+    "Online magazines"
+   ],
+   "answer": 0,
+   "explanation": "The report mentions 'программы для изучения языков' as one of the new digital resources, which corresponds to language learning software.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-report-004",
+   "stem": "What does 'доступ' mean here?",
+   "choices": [
+    "Variety",
+    "Quality",
+    "Cost",
+    "Access"
+   ],
+   "answer": 3,
+   "explanation": "The word 'доступ' is used in the context of making services available to the public: 'обеспечить доступ к этим услугам для всех'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dl-2-report-005",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "Increasing food prices in Siberia",
+    "A new supermarket opening in Siberia",
+    "Government policies on food imports",
+    "The effects of climate change on Siberian agriculture"
+   ],
+   "answer": 0,
+   "explanation": "The report discusses the recent increase in food prices in Siberia, mentioning specific items like buckwheat and cabbage. The main idea is clearly stated in the opening lines: 'Цены на продукты питания в Сибири продолжают расти.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dl-2-report-005",
+   "stem": "Why are potatoes more expensive in Siberia this year?",
+   "choices": [
+    "Due to higher import taxes",
+    "Due to a decrease in potato harvests",
+    "Because of increased demand from restaurants",
+    "Because of a shortage of storage facilities"
+   ],
+   "answer": 1,
+   "explanation": "The report states 'Урожай картофеля в этом году снизился из-за неблагоприятных погодных условий,' directly explaining the price increase.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2-report-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2-report-005",
+   "stem": "What does 'нехватка' mean here?",
+   "choices": [
+    "A demand",
+    "A supply",
+    "A surplus",
+    "A shortage"
+   ],
+   "answer": 3,
+   "explanation": "The word 'нехватка' is used to describe the situation with cabbage: 'нехватка капусты из-за засухи.' This indicates a shortage or lack of cabbage due to drought.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-2p-documentary-002-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2207,6 +6034,330 @@
    "verified": false
   },
   {
+   "id": "ru-dl-2p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "Efforts to reduce air pollution in the capital city.",
+    "The impact of traffic on city life.",
+    "A new park opening in the city center.",
+    "The history of industrial development in the city."
+   ],
+   "answer": 0,
+   "explanation": "The entire interview focuses on the problem of air pollution and the measures being taken to address it. This is evident from statements like 'Проблема загрязнения воздуха в столице становится все более острой.' and 'Мы обсудим различные меры, которые принимаются для снижения уровня загрязнения.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-interview-001",
+   "stem": "What can be inferred about the interviewee's opinion on the current situation?",
+   "choices": [
+    "She believes the situation is hopeless.",
+    "She is optimistic that the problem will be solved soon.",
+    "She believes the situation is improving rapidly.",
+    "She thinks the problem is being addressed but more needs to be done."
+   ],
+   "answer": 3,
+   "explanation": "The interviewee states 'Безусловно, принятые меры дают свои результаты, но мы еще далеко не у цели.' This indicates that she acknowledges progress but believes more needs to be done.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-interview-001",
+   "stem": "What does 'принятые меры' mean here?",
+   "choices": [
+    "Approved documents",
+    "Received gifts",
+    "Accepted rules",
+    "Adopted measures"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'принятые меры' refers to the actions or steps that have been taken to address the air pollution problem, as indicated by the discussion of specific initiatives like 'введение зон с ограничением движения автомобилей'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-interview-003",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The political implications of the earthquake in Tashkent",
+    "The immediate response and challenges of disaster relief efforts in Tashkent",
+    "The long-term economic impact of the earthquake in Tashkent",
+    "The historical context of earthquakes in Central Asia"
+   ],
+   "answer": 1,
+   "explanation": "The interview focuses on the immediate response and challenges of disaster relief efforts, as indicated by phrases like \"немедленная помощь\" (immediate aid) and discussions about search and rescue, medical aid, and shelter.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-interview-003",
+   "stem": "What can be inferred about the scale of the earthquake's impact?",
+   "choices": [
+    "It was a significant earthquake requiring international assistance",
+    "It was a man-made disaster",
+    "It was a natural disaster that only affected infrastructure",
+    "It was a minor earthquake with limited damage"
+   ],
+   "answer": 0,
+   "explanation": "The scale of the impact can be inferred from the need for international assistance, as mentioned by the female speaker: \"Мы получили запрос о международной помощи от правительства Узбекистана.\" (We received a request for international aid from the government of Uzbekistan).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-interview-003",
+   "stem": "What does \"разрушения\" mean in this context?",
+   "choices": [
+    "Historical sites",
+    "Rescue operations",
+    "Damage caused by the earthquake",
+    "Construction projects"
+   ],
+   "answer": 2,
+   "explanation": "The word \"разрушения\" (damage) is used in the context of the earthquake's impact, as in \"масштабы разрушений\" (the scale of the damage).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-news_analysis-001",
+   "stem": "What is the main idea of this news analysis?",
+   "choices": [
+    "The importance of search-and-rescue operations in preventing natural disasters.",
+    "A single country's efforts were sufficient to handle the aftermath of a natural disaster.",
+    "The difficulties of coordinating a multinational search-and-rescue operation led to its failure.",
+    "A multinational search-and-rescue operation successfully saved lives in the aftermath of a natural disaster."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that a multinational search-and-rescue operation successfully saved lives. This is evident from the text: \"В результате совместных усилий спасателей из России, Казахстана и Киргизии удалось спасти 14 человек.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-news_analysis-001",
+   "stem": "What can be inferred about the relationship between the countries involved in the operation?",
+   "choices": [
+    "They had no prior experience working together in such operations.",
+    "They were competing against each other to save the most lives.",
+    "They were forced to work together by international pressure.",
+    "They have a history of successful collaboration in crisis situations."
+   ],
+   "answer": 3,
+   "explanation": "The inference is that the countries have a history of successful collaboration. This is suggested by the text: \"Эта операция стала еще одним примером эффективного сотрудничества между этими странами в условиях чрезвычайной ситуации.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-news_analysis-001",
+   "stem": "In the text, what does \"сложные погодные условия\" mean here?",
+   "choices": [
+    "Mild weather conditions.",
+    "Stable weather conditions.",
+    "Harsh weather conditions.",
+    "Unpredictable weather patterns."
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"сложные погодные условия\" means harsh weather conditions in this context. The text states: \"Спасатели столкнулись со сложными погодными условиями, включая сильные дожди и грозы.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-news_analysis-002",
+   "stem": "What is the main topic of the news analysis?",
+   "choices": [
+    "The challenges and progress of evacuating foreign nationals.",
+    "The humanitarian efforts to assist local residents.",
+    "The political negotiations to end the conflict.",
+    "The economic impact of the conflict on the region."
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the difficulties and advancements in evacuating foreign nationals from the conflict zone, as seen in phrases like \"процесс эвакуации\", \"иностранные граждане\", and \"организация вывода\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-news_analysis-002",
+   "stem": "What can be inferred about the safety of the evacuation routes?",
+   "choices": [
+    "The routes are completely safe and secure.",
+    "The safety of the routes is not mentioned in the text.",
+    "The routes have some risks, but efforts are made to mitigate them.",
+    "The routes are highly dangerous and unstable."
+   ],
+   "answer": 2,
+   "explanation": "The text mentions \"рискованные маршруты\" and \"обеспечение безопасности\", indicating that while there are risks, measures are taken to address them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-news_analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-news_analysis-002",
+   "stem": "What does \"логистические проблемы\" mean here?",
+   "choices": [
+    "Communication breakdowns.",
+    "Difficulties in planning and organizing the evacuation.",
+    "Lack of medical supplies.",
+    "Political disagreements."
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"логистические проблемы\" refers to the challenges in planning and coordinating the evacuation, as seen in the context of organizing the departure of foreign nationals.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-panel_discussion-001",
+   "stem": "What is the main topic of the discussion?",
+   "choices": [
+    "The best ways to build new reservoirs",
+    "The economic impact of water shortages",
+    "The reasons for and consequences of summer water shortages",
+    "The history of water management in Russia"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the reasons for and consequences of summer water shortages, as evidenced by the discussion of climate change ('из-за изменения климата'), reduced river flows ('снижение стока рек'), and the impact on agriculture ('сельское хозяйство страдает') and ecosystems ('экосистемы страдают').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-panel_discussion-001",
+   "stem": "What can be inferred about the current water management strategies?",
+   "choices": [
+    "They are not fully addressing the problem",
+    "They are entirely ineffective",
+    "They are focusing too much on industry",
+    "They are sufficient for current needs"
+   ],
+   "answer": 0,
+   "explanation": "The inference that current water management strategies are not fully addressing the problem can be made from statements like 'но, к сожалению, этого недостаточно' and 'нам нужно делать больше', which suggest that more needs to be done.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-panel_discussion-001",
+   "stem": "What does 'мелиорация' mean in this context?",
+   "choices": [
+    "A water treatment process",
+    "A type of river",
+    "A type of irrigation system",
+    "Land reclamation and improvement"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'мелиорация' refers to land reclamation and improvement, as it is mentioned in relation to improving water use in agriculture ('важно улучшить использование воды в сельском хозяйстве через мелиорацию').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-panel_discussion-003",
+   "stem": "What is the main topic of the panel discussion?",
+   "choices": [
+    "The future of urban mobility and the role of electric scooters",
+    "The environmental impact of electric scooters",
+    "The regulation of electric scooters in urban areas",
+    "The safety concerns related to electric scooters"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the panel discussion is the future of urban mobility and the role of electric scooters. This is evident from the repeated mentions of urban mobility and electric scooters as a means to address urban transportation challenges. For example, 'Мы обсудим, как электрические самокаты могут изменить городскую мобильность' (We will discuss how electric scooters can change urban mobility).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ru-dl-2p-panel_discussion-003",
+   "stem": "According to the panel, what is one of the main advantages of electric scooters?",
+   "choices": [
+    "They are more expensive than other modes of transport",
+    "They reduce traffic congestion",
+    "They are not environmentally friendly",
+    "They require a lot of maintenance"
+   ],
+   "answer": 1,
+   "explanation": "The panel mentions that electric scooters can help reduce traffic congestion. This is explicitly stated in the text: 'Электрические самокаты могут уменьшить заторы на дорогах' (Electric scooters can reduce traffic jams on the roads).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-panel_discussion-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-panel_discussion-003",
+   "stem": "In the context of the discussion, what does 'инфраструктура' mean?",
+   "choices": [
+    "Urban transportation system",
+    "Economic policies",
+    "Safety measures",
+    "Environmental regulations"
+   ],
+   "answer": 0,
+   "explanation": "The term 'инфраструктура' is used in the context of urban transportation. The panel discusses the need for the development of infrastructure to support electric scooters, indicating that it refers to the urban transportation system. For example, 'Но для этого нужна соответствующая инфраструктура' (But for this, the appropriate infrastructure is needed).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-2p-speech-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2257,6 +6408,168 @@
    ],
    "answer": 1,
    "explanation": "The speaker uses the phrase 'кульминацией нашего визита' to refer to the concert, which is presented as the highlight or climax of the visit. The word 'кульминацией' here means a climactic event.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-speech-002",
+   "stem": "What is the main topic of this speech?",
+   "choices": [
+    "A recent cyberattack on the regional power grid",
+    "The benefits of renewable energy sources",
+    "The importance of upgrading old power plants",
+    "The government's new energy policy"
+   ],
+   "answer": 0,
+   "explanation": "The speaker explicitly mentions a cyberattack on the power grid: «Вчера вечером наша энергосистема подверглась кибератаке.», making this the main topic of the speech.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-speech-002",
+   "stem": "What can be inferred about the speaker's role?",
+   "choices": [
+    "They are a cybersecurity expert.",
+    "They are an energy company executive.",
+    "They are a spokesperson for the regional power authority.",
+    "They are a politician campaigning for office."
+   ],
+   "answer": 2,
+   "explanation": "The speaker discusses the current situation of the power grid and the steps being taken to restore it, which suggests they are a spokesperson for the regional power authority: «Я хочу заверить вас, что мы делаем всё возможное для восстановления нормальной работы энергосистемы.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-speech-002",
+   "stem": "What does the speaker mean by «инцидент» in this context?",
+   "choices": [
+    "A routine check",
+    "A minor technical issue",
+    "A scheduled maintenance",
+    "A serious disruption"
+   ],
+   "answer": 3,
+   "explanation": "The speaker uses the word «инцидент» to describe the cyberattack, which is clearly a serious disruption: «Мы понимаем, какой дискомфорт доставляет этот инцидент.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-speech-003",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "The Central Bank is planning to introduce new financial regulations to stabilize the economy.",
+    "The Central Bank is considering lowering interest rates to stimulate economic growth.",
+    "The Central Bank is concerned about the impact of inflation on consumers and is taking steps to address it.",
+    "The Central Bank is predicting a significant decrease in inflation rates in the coming months."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the speech is that the Central Bank is concerned about the impact of inflation on consumers and is taking steps to address it. This is evident throughout the speech, for example: \"Мы осознаем, что инфляция оказывает значительное давление на домохозяйства.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-2p-speech-003",
+   "stem": "In the phrase \"мы готовы применить дополнительные меры\", what does \"применить\" mean here?",
+   "choices": [
+    "to delay",
+    "to discuss",
+    "to announce",
+    "to implement"
+   ],
+   "answer": 3,
+   "explanation": "Here, \"применить\" means \"to implement\". The speaker is saying that the Central Bank is ready to take additional measures to address inflation, not just announce, discuss, or delay them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-speech-003",
+   "stem": "What can be inferred about the Central Bank's approach to managing inflation?",
+   "choices": [
+    "They are willing to take gradual steps to address inflation if necessary.",
+    "They plan to rely solely on international organizations to manage inflation.",
+    "They believe that inflation is not a significant concern for the economy.",
+    "They prefer to use drastic measures to quickly lower inflation rates."
+   ],
+   "answer": 0,
+   "explanation": "The speaker mentions that the Central Bank is ready to take additional measures if necessary, indicating a willingness to take gradual steps to address inflation: \"мы готовы применить дополнительные меры, если это будет необходимо.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dl-2p-speech-004",
+   "stem": "What is the main idea of this speech?",
+   "choices": [
+    "The speaker argues for more government funding for volunteer programs.",
+    "The speaker describes the positive impacts of a volunteer program on the local neighborhood.",
+    "The speaker explains how to join the local volunteer program.",
+    "The speaker discusses the challenges faced by the volunteer program."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is the positive impacts of the volunteer program, as the speaker discusses various improvements in the neighborhood such as 'улучшили парки', 'организовали бесплатные занятия', and 'повысили безопасность'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dl-2p-speech-004",
+   "stem": "What can be inferred about the speaker's opinion of the volunteer program?",
+   "choices": [
+    "The speaker is indifferent about the program.",
+    "The speaker is unsure about the program's effectiveness.",
+    "The speaker is enthusiastic and supportive of the program.",
+    "The speaker is critical of the program."
+   ],
+   "answer": 2,
+   "explanation": "The speaker's enthusiasm is evident in phrases like 'мы достигли много', 'наш район стал лучше', and 'я горжусь нашей работой'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-2p-speech-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ru-dl-2p-speech-004",
+   "stem": "What specific improvement did the volunteers make to the local parks?",
+   "choices": [
+    "They planted new trees and flowers.",
+    "They built new playgrounds for children.",
+    "They organized community sports events.",
+    "They improved the lighting and pathways."
+   ],
+   "answer": 0,
+   "explanation": "The speaker mentions 'мы посадили новые деревья и цветы в парках'.",
    "source": "llm",
    "verified": false
   },
@@ -2369,6 +6682,60 @@
    "verified": false
   },
   {
+   "id": "ru-dl-3-analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dl-3-analysis-003",
+   "stem": "What is the main idea of this discussion?",
+   "choices": [
+    "The discussion revolves around the challenges faced during a vaccination campaign and the strategies used to overcome them.",
+    "The discussion is about the history of vaccinations and their impact on public health.",
+    "The discussion emphasizes the importance of international cooperation in vaccine distribution.",
+    "The discussion focuses on the technical aspects of producing vaccines."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is the challenges faced during a vaccination campaign and the strategies used to overcome them. This is evident in the repeated references to 'проблемы', 'сложности', and 'решения', as well as the specific examples discussed, such as 'недостаток медицинского персонала' and 'недостаточная информированность населения'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-3-analysis-003",
+   "stem": "What does 'проблемы логистики' mean here?",
+   "choices": [
+    "Problems with vaccine efficacy",
+    "Problems with vaccine storage and distribution",
+    "Problems with vaccine production",
+    "Problems with vaccine safety"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'проблемы логистики' refers to problems with vaccine storage and distribution. This is clear from the context: '...включая проблемы логистики, такие как доставка вакцин в отдаленные районы...'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dl-3-analysis-003",
+   "stem": "What can be inferred about the role of local communities in the vaccination campaign?",
+   "choices": [
+    "Local communities were not involved in the campaign.",
+    "Local communities played a crucial role in overcoming infrastructure challenges.",
+    "Local communities were responsible for international vaccine distribution.",
+    "Local communities were primarily responsible for vaccine production."
+   ],
+   "answer": 1,
+   "explanation": "The inference is that local communities played a crucial role in overcoming infrastructure challenges. This is supported by the text: '...местные сообщества активно участвовали в организации пунктов вакцинации и информировании населения...'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dl-3-debate-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2419,6 +6786,168 @@
    ],
    "answer": 2,
    "explanation": "In this context, 'ветер и солнце' refer to wind and solar energy, which are two types of renewable energy sources. The speakers discuss their potential as alternatives to fossil fuels.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dl-3-lecture-001",
+   "stem": "What is the main focus of the lecture?",
+   "choices": [
+    "The history of migration in Russia",
+    "The cultural impact of migration on Russian society",
+    "The effects of migration on the Russian labor market",
+    "The legal framework for migration in Russia"
+   ],
+   "answer": 2,
+   "explanation": "The main focus of the lecture is the effects of migration on the Russian labor market. This is evident from the repeated references to the labor market, such as \"рыночная ситуация\", \"трудовые мигранты\", and \"рынок труда\". The other topics, while mentioned, are not the primary focus of the lecture.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dl-3-lecture-001",
+   "stem": "What can be inferred about the demand for migrant workers in Russia?",
+   "choices": [
+    "It is only present in large cities",
+    "It is decreasing due to economic downturns",
+    "It is increasing, especially in certain sectors",
+    "It is stable and not expected to change"
+   ],
+   "answer": 2,
+   "explanation": "The demand for migrant workers in Russia can be inferred to be increasing, especially in certain sectors. This is supported by the statement \"спрос на трудовых мигрантов растет, особенно в некоторых секторах экономики, таких как строительство, сельское хозяйство и услуги\". The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-3-lecture-001",
+   "stem": "What does the phrase \"рыночная ситуация\" mean here?",
+   "choices": [
+    "The situation in the real estate market",
+    "The situation in the stock market",
+    "The situation in the labor market",
+    "The situation in the retail market"
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"рыночная ситуация\" here refers to the situation in the labor market. This is evident from the context, as the lecture is discussing the impact of migration on the labor market, and \"рыночная ситуация\" is used to describe the current state of this market.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dl-3-lecture-002",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The Siberian Winter Triathlon Championship and its unique aspects",
+    "The challenges of organizing sports events in cold climates",
+    "The history of triathlons in Siberia",
+    "The impact of extreme sports on local economies"
+   ],
+   "answer": 0,
+   "explanation": "The lecture focuses on the Siberian Winter Triathlon Championship, discussing its unique aspects such as the challenging conditions, the athletes' preparation, and the event's significance. This is evident from the detailed description of the event and its components, such as бег по снегу (running on snow), лыжная гонка (ski racing), and плавание в ледяной воде (swimming in icy water).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dl-3-lecture-002",
+   "stem": "What can be inferred about the organizers of the Siberian Winter Triathlon Championship?",
+   "choices": [
+    "They are primarily concerned with setting new world records",
+    "They aim to attract international participants to boost tourism",
+    "They focus on making the event as challenging as possible",
+    "They prioritize the athletes' safety above all else"
+   ],
+   "answer": 3,
+   "explanation": "The organizers prioritize safety, as indicated by the statement они проводят тщательные проверки оборудования и условий (they conduct thorough checks of equipment and conditions). While the event is indeed challenging and aims to attract participants, the emphasis on safety suggests that this is their primary concern.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-3-lecture-002",
+   "stem": "What does \"экипировка\" mean here?",
+   "choices": [
+    "The food and drinks provided for the athletes",
+    "The medical supplies available at the event",
+    "The prizes awarded to the winners",
+    "The athletes' clothing and gear"
+   ],
+   "answer": 3,
+   "explanation": "Экипировка refers to the athletes' clothing and gear, as mentioned in the context: спортсмены должны иметь специальную экипировку, чтобы выдержать суровые условия (athletes must have special equipment to withstand the harsh conditions).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dl-3-lecture-003",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The impact of climate change on global weather patterns",
+    "The economic consequences of natural disasters in Russia",
+    "The importance of flood preparedness and response in Russia",
+    "The historical records of flooding in Russian regions"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the lecture is the importance of flood preparedness and response in Russia. This is evident from the repeated emphasis on understanding flood risks, preparing for floods, and effective response measures, as seen in phrases like \"понимание рисков наводнений\", \"подготовка к наводнениям\", and \"эффективные меры реагирования\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dl-3-lecture-003",
+   "stem": "What can be inferred about the frequency of floods in Russia?",
+   "choices": [
+    "Floods occur with the same frequency as in previous centuries",
+    "Floods are more common in urban areas than in rural areas",
+    "Floods are rare events that occur once every few decades",
+    "Floods are becoming increasingly frequent due to climate change"
+   ],
+   "answer": 3,
+   "explanation": "The lecture implies that floods are becoming increasingly frequent due to climate change. This is suggested by the statement \"изменение климата увеличивает частоту и интенсивность наводнений\", which indicates that climate change is making floods more frequent and intense.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-lecture-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-3-lecture-003",
+   "stem": "What does \"прогнозирование\" mean here?",
+   "choices": [
+    "Forecasting the likelihood and severity of a flood",
+    "Predicting the exact time and place of a flood",
+    "Estimating the potential damage caused by a flood",
+    "Assessing the long-term effects of flooding"
+   ],
+   "answer": 0,
+   "explanation": "In this context, \"прогнозирование\" refers to forecasting the likelihood and severity of a flood. This is clear from the phrase \"точное прогнозирование наводнений\", which emphasizes the importance of accurate forecasting in understanding and preparing for flood risks.",
    "source": "llm",
    "verified": false
   },
@@ -2527,6 +7056,168 @@
    ],
    "answer": 0,
    "explanation": "The speaker mentions that the museum houses 'оригинальные чертежи Транссиба', which translates to 'the original blueprints of the Trans-Siberian Railway', highlighting this as a notable exhibit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dl-3-speech-003",
+   "stem": "What is the main topic of the speech?",
+   "choices": [
+    "The economic impact of the refugee crisis",
+    "The daily life and challenges in a refugee camp",
+    "The international relations affecting refugee policies",
+    "The political situation in the region"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the daily life and challenges in a refugee camp, as indicated by phrases like 'жизнь в лагере беженцев' and 'вызовы, с которыми они сталкиваются ежедневно'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dl-3-speech-003",
+   "stem": "What can be inferred about the speaker's attitude towards the refugees?",
+   "choices": [
+    "They are critical of the refugees' choices",
+    "They believe the refugees should return to their home country",
+    "They feel indifferent about the refugees' situation",
+    "They sympathize with the refugees and admire their resilience"
+   ],
+   "answer": 3,
+   "explanation": "The speaker's sympathetic attitude and admiration are evident in phrases like 'невероятная сила духа' and 'справляются с этими трудностями с достоинством'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-3-speech-003",
+   "stem": "What does the speaker mean by 'логистические трудности'?",
+   "choices": [
+    "Emotional challenges",
+    "Political difficulties",
+    "Language barriers",
+    "Practical problems related to organizing and managing"
+   ],
+   "answer": 3,
+   "explanation": "The context makes clear that 'логистические трудности' refers to practical problems related to organizing and managing the camp, as seen in 'организации и управления лагерем'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "ru-dl-3-speech-004",
+   "stem": "What is the main purpose of the Northern Cross Line?",
+   "choices": [
+    "To reduce traffic congestion in the city center",
+    "To provide a direct route to the seaport",
+    "To connect the city center with the airport",
+    "To improve transportation between the northern and southern parts of the city"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the line is designed to improve transportation between the northern and southern parts of the city, connecting previously underserved areas. The words \"северные и южные районы города\" (northern and southern parts of the city) and \"предыдущие районы\" (previously underserved areas) support this.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-3-speech-004",
+   "stem": "What does \"облегчить\" mean here?",
+   "choices": [
+    "To complicate",
+    "To make lighter",
+    "To simplify",
+    "To facilitate"
+   ],
+   "answer": 3,
+   "explanation": "In the context, \"облегчить\" means to facilitate or make easier. The text says \"облегчить транспортное сообщение\" (to facilitate transportation).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dl-3-speech-004",
+   "stem": "What can be inferred about the current transportation system in the city?",
+   "choices": [
+    "It is highly efficient and does not need improvement",
+    "It is inadequate and causes significant delays",
+    "It is only problematic during rush hours",
+    "It is better than in other cities in Russia"
+   ],
+   "answer": 1,
+   "explanation": "The text implies that the current transportation system is inadequate by stating that the new line will \"значительно сократить время в пути\" (significantly reduce travel time) and \"облегчить транспортное сообщение\" (facilitate transportation), suggesting that there are currently significant delays and problems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dl-3-speech-005",
+   "stem": "What is the main idea of this speech?",
+   "choices": [
+    "Russia should focus solely on traditional energy sources for economic growth",
+    "Renewable energy investment is crucial for Russia's future economic and environmental stability",
+    "The government should not intervene in the energy market",
+    "Renewable energy technologies are not viable in Russia's climate"
+   ],
+   "answer": 1,
+   "explanation": "The speaker argues that investing in renewable energy is essential for Russia's future, both economically and environmentally. This is evident throughout the speech, such as in the statement \"Мы должны инвестировать в возобновляемую энергетику, чтобы обеспечить устойчивое будущее для нашей страны\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dl-3-speech-005",
+   "stem": "What can be inferred about the speaker's view on government intervention in the energy sector?",
+   "choices": [
+    "The speaker is unsure about the government's role in the energy sector",
+    "The speaker thinks the government should not be involved in the energy sector at all",
+    "The speaker believes the government should focus only on traditional energy sources",
+    "The speaker believes the government should play an active role in promoting renewable energy"
+   ],
+   "answer": 3,
+   "explanation": "The speaker mentions that \"правительство должно создать благоприятные условия для инвестиций в возобновляемую энергетику\", indicating that they believe the government should intervene to promote renewable energy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dl-3-speech-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dl-3-speech-005",
+   "stem": "What does the speaker mean by \"перспективные технологии\"?",
+   "choices": [
+    "Technologies that show promise for the future",
+    "Technologies that have been proven to be unsuccessful",
+    "Technologies that are outdated and no longer useful",
+    "Technologies that are currently being used in traditional energy sectors"
+   ],
+   "answer": 0,
+   "explanation": "The speaker refers to \"перспективные технологии\" in the context of renewable energy, stating that \"мы должны инвестировать в перспективные технологии, такие как солнечная и ветровая энергетика\". This indicates that these technologies show promise for the future.",
    "source": "llm",
    "verified": false
   }

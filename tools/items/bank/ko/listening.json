@@ -42,6 +42,42 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dl-0p-advertisement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Border Crossing Information",
+   "body": "",
+   "script": [
+    {
+     "speaker": "방송",
+     "voice": "female",
+     "text": "경계 검문소에 오신 것을 환영합니다."
+    },
+    {
+     "speaker": "방송",
+     "voice": "male",
+     "text": "모든 여행객은 여권, 비자, 그리고 건강 신고서를 제출하세요."
+    },
+    {
+     "speaker": "방송",
+     "voice": "female",
+     "text": "검사 후 입국이 허용됩니다."
+    },
+    {
+     "speaker": "방송",
+     "voice": "male",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dl-0p-announcement-001",
    "exam": "DLPT_LISTENING",
    "language": "ko",
@@ -105,6 +141,109 @@
      "speaker": "기상 캐스터",
      "voice": "female",
      "text": "따뜻하게 입으시는 것을 권해드립니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-0p-short_exchange-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Newspaper Delivery Delay",
+   "body": "",
+   "script": [
+    {
+     "speaker": "배달원",
+     "voice": "male",
+     "text": "죄송하지만 오늘 신문의 배달이 지연될 예정입니다."
+    },
+    {
+     "speaker": "독자",
+     "voice": "female",
+     "text": "어떤 문제가 발생한 건가요?"
+    },
+    {
+     "speaker": "배달원",
+     "voice": "male",
+     "text": "예상치 못한 일이 생겼습니다."
+    },
+    {
+     "speaker": "독자",
+     "voice": "female",
+     "text": "알겠습니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-0p-short_exchange-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Fire Danger Warning",
+   "body": "",
+   "script": [
+    {
+     "speaker": "방송",
+     "voice": "male",
+     "text": "여러분, 주의해 주세요. 현재 가뭄으로 인해 산불 위험이 매우 높습니다."
+    },
+    {
+     "speaker": "주민1",
+     "voice": "female",
+     "text": "진짜로요? 산불에 주의해야 하겠습니다."
+    },
+    {
+     "speaker": "주민2",
+     "voice": "male",
+     "text": "네, 특히 산에 갈 때는 더욱 신중해야 합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-0p-short_exchange-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Bank Loan Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "은행원",
+     "voice": "female",
+     "text": "최근 인플레이션이 심해지고 있습니다."
+    },
+    {
+     "speaker": "고객",
+     "voice": "male",
+     "text": "네, 듣고 있습니다. 금리는 어떻게 되시나요?"
+    },
+    {
+     "speaker": "은행원",
+     "voice": "female",
+     "text": "금리는 3.5%로 올랐습니다."
+    },
+    {
+     "speaker": "고객",
+     "voice": "male",
+     "text": "아, 그렇군요. 감사합니다."
     }
    ],
    "source": "llm",
@@ -196,6 +335,124 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dl-0p-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Office Move Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "안녕하세요. 강남전자입니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "다음 주에 우리 회사가 이사합니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "새로운 주소는 서울시 서초구 반포대로 123번지입니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "더 많은 정보가 필요하시면 전화 주시기 바랍니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-0p-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Flu Shot Reminder",
+   "body": "",
+   "script": [
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "안녕하세요. 여기 지역 보건소입니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "인플루엔자 시즌이 다가왔으니 예방 주사를 맞으세요."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "월요일부터 금요일까지 오전 9시부터 오후 4시까지 접종이 가능합니다."
+    },
+    {
+     "speaker": "남성",
+     "voice": "male",
+     "text": "더 궁금한 점이 있으면 전화해 주세요."
+    },
+    {
+     "speaker": "남성",
+     "voice": "male",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-0p-voicemail-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Mission Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "안녕하세요, 김 대위님."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "미션이 지연될 것으로 보입니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "내일 더 자세한 정보를 알려드리겠습니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dl-1-announcement-001",
    "exam": "DLPT_LISTENING",
    "language": "ko",
@@ -223,6 +480,88 @@
      "speaker": "공항 직원",
      "voice": "male",
      "text": "여러분의 편리한 여행이 되시길 바랍니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Electric Car Charging Station Opening",
+   "body": "",
+   "script": [
+    {
+     "speaker": "announcer",
+     "voice": "female",
+     "text": "여러분께 중요한 안내를 드리겠습니다."
+    },
+    {
+     "speaker": "announcer",
+     "voice": "female",
+     "text": "새로운 전기차 충전소가 개소되었습니다."
+    },
+    {
+     "speaker": "announcer",
+     "voice": "female",
+     "text": "충전소는 시청 근처에 있습니다."
+    },
+    {
+     "speaker": "announcer",
+     "voice": "female",
+     "text": "모든 전기차 소유자는 무료로 이용할 수 있습니다."
+    },
+    {
+     "speaker": "announcer",
+     "voice": "female",
+     "text": "더 자세한 정보는 우리 홈페이지에서 확인하세요."
+    },
+    {
+     "speaker": "announcer",
+     "voice": "female",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1-announcement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Announcement of Joint Military Exercise",
+   "body": "",
+   "script": [
+    {
+     "speaker": "군인",
+     "voice": "male",
+     "text": "여러분, 경청해 주세요. 한국과 일본은 다음 달에 함께 군사 훈련을 할 예정입니다."
+    },
+    {
+     "speaker": "군인",
+     "voice": "male",
+     "text": "이 훈련은 두 나라의 군사 협력을 강화하기 위해 합니다."
+    },
+    {
+     "speaker": "군인",
+     "voice": "male",
+     "text": "훈련 기간은 3월 1일부터 3월 15일까지입니다."
+    },
+    {
+     "speaker": "군인",
+     "voice": "male",
+     "text": "더 자세한 정보는 곧 발표될 것입니다. 감사합니다."
     }
    ],
    "source": "llm",
@@ -319,6 +658,47 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dl-1-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1",
+   "textType": "conversation",
+   "title": "New Airport Terminal Opening",
+   "body": "",
+   "script": [
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "인천국제공항의 새로운 터미널이 개장했어요."
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "정말이에요? 어디에 있나요?"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "1번 터미널 옆에 있어요."
+    },
+    {
+     "speaker": "B",
+     "voice": "male",
+     "text": "어떤 편의시설이 있나요?"
+    },
+    {
+     "speaker": "A",
+     "voice": "female",
+     "text": "카페와 쇼핑몰이 있어요. 그리고 무료 무선인터넷이 있어요."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dl-1-instructions-001",
    "exam": "DLPT_LISTENING",
    "language": "ko",
@@ -336,6 +716,52 @@
      "speaker": "안내방송",
      "voice": "male",
      "text": "또 한 번 알려드립니다. 오늘 오후 2시에 구호 물자를 실은 대열이 출발할 예정이에요. 시청 앞 광장에서 모이도록 하세요. 모든 차량은 정각 2시에 출발해야 합니다. 물자와 함께 물병과 간식을 준비해 주세요. 안전하고 효율적인 구호 활동이 되길 바랍니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Community Cleanup Day Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "여러분 안녕하세요. 동네 청소 모임의 김민수입니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "오늘은 다음 달 청소 일정을 알려드리기 위해 연락드렸습니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "모든 이웃 여러분께 청소에 참여해 주시기를 요청드립니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "청소 일정은 5월 25일 오전 9시부터입니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "더 자세한 정보는 마을 게시판을 참고하시기 바랍니다."
+    },
+    {
+     "speaker": "여성",
+     "voice": "female",
+     "text": "감사합니다."
     }
    ],
    "source": "llm",
@@ -372,6 +798,185 @@
      "speaker": "방송",
      "voice": "male",
      "text": "안전을 위해 준비하시기 바랍니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1-weather-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1",
+   "textType": "weather",
+   "title": "Fishing Season Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "방송",
+     "voice": "male",
+     "text": "여러분 안녕하세요. 어업계 여러분께 알립니다."
+    },
+    {
+     "speaker": "방송",
+     "voice": "female",
+     "text": "내년 1월부터 3월까지 어업 시즌이 시작됩니다."
+    },
+    {
+     "speaker": "방송",
+     "voice": "male",
+     "text": "기상청에 따르면 기온이 낮아질 전망입니다."
+    },
+    {
+     "speaker": "방송",
+     "voice": "female",
+     "text": "구름이 많고 때로는 비가 올 것입니다."
+    },
+    {
+     "speaker": "방송",
+     "voice": "male",
+     "text": "바람은 약할 것으로 예상됩니다."
+    },
+    {
+     "speaker": "방송",
+     "voice": "female",
+     "text": "안전을 위해 어업 활동에 각별히 주의해 주시기 바랍니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1-weather-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1",
+   "textType": "weather",
+   "title": "Factory Closure Due to Heavy Rain",
+   "body": "",
+   "script": [
+    {
+     "speaker": "스피커",
+     "voice": "female",
+     "text": "여러분, 안녕하세요. 오늘부터 일주일 동안 공장이 임시로 닫히게 되었습니다."
+    },
+    {
+     "speaker": "스피커",
+     "voice": "female",
+     "text": "비로 인해 안전상 문제 때문에 결정을 내렸습니다."
+    },
+    {
+     "speaker": "스피커",
+     "voice": "female",
+     "text": "불편을 드려 죄송합니다."
+    },
+    {
+     "speaker": "스피커",
+     "voice": "male",
+     "text": "더 자세한 정보는 관리자에게 문의하시기 바랍니다."
+    },
+    {
+     "speaker": "스피커",
+     "voice": "male",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1-weather-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1",
+   "textType": "weather",
+   "title": "Weekend Weather Outlook",
+   "body": "",
+   "script": [
+    {
+     "speaker": "천기예보관",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 주말 날씨 전망을 알려드리겠습니다."
+    },
+    {
+     "speaker": "천기예보관",
+     "voice": "female",
+     "text": "토요일은 구름이 많고 비가 내릴 가능성이 있습니다."
+    },
+    {
+     "speaker": "천기예보관",
+     "voice": "female",
+     "text": "기온은 15도에서 20도 사이로 예상됩니다."
+    },
+    {
+     "speaker": "천기예보관",
+     "voice": "female",
+     "text": "일요일은 맑은 날씨가 예상되며, 기온은 18도에서 25도 사이로 오를 것입니다."
+    },
+    {
+     "speaker": "천기예보관",
+     "voice": "female",
+     "text": "주말 동안 외출하실 때는 날씨에 맞게 준비하시기 바랍니다."
+    },
+    {
+     "speaker": "천기예보관",
+     "voice": "female",
+     "text": "다시 한 번 알려드리면, 토요일은 구름이 많고 비가 내릴 가능성이 있고, 일요일은 맑은 날씨가 예상됩니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "New Deployment of Peacekeepers to Africa",
+   "body": "",
+   "script": [
+    {
+     "speaker": "방송국",
+     "voice": "female",
+     "text": "여러분 안녕하세요. 여기 방송국입니다."
+    },
+    {
+     "speaker": "방송국",
+     "voice": "female",
+     "text": "아프리카에 새로운 평화유지군 파병이 시작됩니다."
+    },
+    {
+     "speaker": "방송국",
+     "voice": "female",
+     "text": "이번 파병은 지역 안정화와 평화 유지를 위해 진행됩니다."
+    },
+    {
+     "speaker": "방송국",
+     "voice": "female",
+     "text": "약 300명의 병력이 참여하며, 6개월 간의 임무를 수행할 예정입니다."
+    },
+    {
+     "speaker": "방송국",
+     "voice": "female",
+     "text": "자세한 내용은 우리 웹사이트에서 확인할 수 있습니다."
+    },
+    {
+     "speaker": "방송국",
+     "voice": "female",
+     "text": "감사합니다."
     }
    ],
    "source": "llm",
@@ -469,6 +1074,159 @@
      "speaker": "남자",
      "voice": "male",
      "text": "그래서 많은 사람들이 도시를 떠나고 있어요."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1p-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "The New Electric Car",
+   "body": "",
+   "script": [
+    {
+     "speaker": "지민",
+     "voice": "female",
+     "text": "새로운 전기차 모델이 나왔대요."
+    },
+    {
+     "speaker": "민호",
+     "voice": "male",
+     "text": "정말이요? 어떤 점이 좋나요?"
+    },
+    {
+     "speaker": "지민",
+     "voice": "female",
+     "text": "이 차는 배터리 수명이 더 길어요."
+    },
+    {
+     "speaker": "민호",
+     "voice": "male",
+     "text": "그래요? 다른 전기차보다 빠르게 충전되나요?"
+    },
+    {
+     "speaker": "지민",
+     "voice": "female",
+     "text": "아니요, 하지만 더 많은 거리를 달릴 수 있어요."
+    },
+    {
+     "speaker": "민호",
+     "voice": "male",
+     "text": "이 차의 특징을 더 알고 싶어요."
+    },
+    {
+     "speaker": "지민",
+     "voice": "female",
+     "text": "인터넷에서 더 많은 정보를 찾아볼 수 있어요."
+    },
+    {
+     "speaker": "민호",
+     "voice": "male",
+     "text": "좋아요. 나중에 같이 보죠."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1p-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Parental Concerns About Smartphone Use",
+   "body": "",
+   "script": [
+    {
+     "speaker": "어머니",
+     "voice": "female",
+     "text": "아이들이 스마트폰을 너무 많이 사용하면 어떻게 될까요?"
+    },
+    {
+     "speaker": "아버지",
+     "voice": "male",
+     "text": "글쎄요, 주로 인터넷 중독이 걱정되요."
+    },
+    {
+     "speaker": "어머니",
+     "voice": "female",
+     "text": "네, 그 점도 중요하지만, 아이들이 스마트폰으로 시간을 보내면 학업에 영향을 줄 거예요."
+    },
+    {
+     "speaker": "아버지",
+     "voice": "male",
+     "text": "맞아요. 그리고 너무 많은 시간을 스마트폰으로 보내면 신체적 건강에도 해로울 수 있어요."
+    },
+    {
+     "speaker": "어머니",
+     "voice": "female",
+     "text": "저는 제 아이에게 스마트폰을 주지 않기로 했어요. 대신 태블릿에 교육용 앱만 설치해줬어요."
+    },
+    {
+     "speaker": "아버지",
+     "voice": "male",
+     "text": "그거 좋은 생각이에요. 하지만 아이들이 커지면 스마트폰을 사용해야 할 거예요."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "interview",
+   "title": "Candidate Discusses Local Education",
+   "body": "",
+   "script": [
+    {
+     "speaker": "인터뷰어",
+     "voice": "male",
+     "text": "안녕하세요, 오늘은 지역 교육에 대한 후보님의 의견을 들어보겠습니다."
+    },
+    {
+     "speaker": "후보",
+     "voice": "female",
+     "text": "네, 감사합니다. 저는 먼저 학교 시설의 개선을 우선시하겠습니다."
+    },
+    {
+     "speaker": "인터뷰어",
+     "voice": "male",
+     "text": "어떤 방식으로 개선하시려 계획이신가요?"
+    },
+    {
+     "speaker": "후보",
+     "voice": "female",
+     "text": "구체적으로는 교실과 체육관을 리모델링하고, 도서관을 확장할 계획입니다."
+    },
+    {
+     "speaker": "인터뷰어",
+     "voice": "male",
+     "text": "교사들의 근무 조건도 개선하실 계획이신가요?"
+    },
+    {
+     "speaker": "후보",
+     "voice": "female",
+     "text": "네, 교사들의 급여를 인상하고, 더 많은 교사들을 채용할 계획입니다."
+    },
+    {
+     "speaker": "인터뷰어",
+     "voice": "male",
+     "text": "좋은 계획이시군요. 감사합니다."
     }
    ],
    "source": "llm",
@@ -611,6 +1369,215 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dl-1p-news_brief-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "New Children's Hospital Opens in Seoul",
+   "body": "",
+   "script": [
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘부터 서울 시내 중심부에 새로운 어린이 병원이 개원하여 많은 부모님의 주목을 받고 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "이 병원은 어린이 건강에 특화된 서비스를 제공하기 위해 최신 의료 장비를 갖추고 있습니다."
+    },
+    {
+     "speaker": "의사",
+     "voice": "male",
+     "text": "우리는 어린이 환자들을 위한 최신 의료 장비와 전문의들이 준비되어 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "또한, 병원 내부에는 어린이들이 편안하게 지낼 수 있는 편의 시설들도 마련되어 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "새로운 어린이 병원이 서울 시내에 개원하여 많은 부모님들의 부담을 덜어줄 것으로 기대됩니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1p-phone_call-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Flood Alert for Seongnam Residents",
+   "body": "",
+   "script": [
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "안녕하세요, 여기는 기상청입니다."
+    },
+    {
+     "speaker": "남자",
+     "voice": "male",
+     "text": "안녕하세요, 저는 성남시 주민입니다. 무슨 일이신가요?"
+    },
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "성남시 주민 여러분께 중요한 알림이 있습니다. 내일과 모레 강수량이 매우 많을 전망입니다."
+    },
+    {
+     "speaker": "남자",
+     "voice": "male",
+     "text": "그래요? 어떤 위험이 있을까요?"
+    },
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "성남시는 홍수 위험이 있습니다. 주의가 필요합니다."
+    },
+    {
+     "speaker": "남자",
+     "voice": "male",
+     "text": "알겠습니다. 감사합니다."
+    },
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "더 궁금한 점이 있으면 언제든지 전화 주세요."
+    },
+    {
+     "speaker": "남자",
+     "voice": "male",
+     "text": "네, 감사합니다. 그럼 이만."
+    },
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "안녕히 계세요."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-1p-phone_call-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Space Launch Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "안녕하세요, 김 과학자입니다."
+    },
+    {
+     "speaker": "남자",
+     "voice": "male",
+     "text": "안녕하세요, 박 기자입니다. 발사에 대한 정보를 알려주실 수 있나요?"
+    },
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "네, 물론이죠. 내일 오후 4시에 발사할 예정이에요."
+    },
+    {
+     "speaker": "남자",
+     "voice": "male",
+     "text": "발사 시간이 변경될 가능성은 있나요?"
+    },
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "현재까지는 없습니다. 하지만 날씨가 안 좋아질 경우를 대비해 준비중이에요."
+    },
+    {
+     "speaker": "남자",
+     "voice": "male",
+     "text": "알겠습니다. 감사합니다."
+    },
+    {
+     "speaker": "여자",
+     "voice": "female",
+     "text": "천만에요. 더 궁금한 점이 있으면 연락주세요."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-briefing-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Climate Change Summit in Seoul",
+   "body": "",
+   "script": [
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "여러분, 안녕하세요. 오늘은 서울에서 열린 기후 변화 정상회의에 대해 간단히 브리핑드리겠습니다."
+    },
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "이번 회의에는 전 세계 50개국 이상의 대표들이 참석했습니다."
+    },
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "먼저, 미국 대표는 탄소 배출을 50% 감소시키겠다는 약속을 재확인했습니다."
+    },
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "또한, 유럽 연합은 재생 가능 에너지 목표를 2030년까지 40%로 높였습니다."
+    },
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "중국은 2060년까지 탄소 중립을 달성하겠다는 계획을 발표했습니다."
+    },
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "이와 함께, 많은 개발도상국들은 기후 변화에 대응하기 위해 국제 사회의 지원이 필요하다고 강조했습니다."
+    },
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "이번 회의는 기후 위기를 해결하기 위한 중요한 한 걸음이 될 것입니다."
+    },
+    {
+     "speaker": "주최자",
+     "voice": "female",
+     "text": "더 자세한 내용은 나중에 발표할 예정입니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dl-2-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "ko",
@@ -658,6 +1625,301 @@
      "speaker": "아버지",
      "voice": "male",
      "text": "그럼 우리 아이들과 함께 스마트폰 사용에 대한 규칙을 정해야겠어요. 건강한 디지털 라이프를 위해요."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "conversation",
+   "title": "The Launch of a New App",
+   "body": "",
+   "script": [
+    {
+     "speaker": "김대리",
+     "voice": "female",
+     "text": "안녕하세요, 박 대리. 우리 팀의 새로운 앱 '머니메이트' 출시 준비가 거의 다 되었습니다."
+    },
+    {
+     "speaker": "박대리",
+     "voice": "male",
+     "text": "정말이요? 어떤 앱이예요?"
+    },
+    {
+     "speaker": "김대리",
+     "voice": "female",
+     "text": "재정 관리 앱이에요. 사용자가 예산을 설정하고, 은행 계좌에 연결하여 지출을 자동으로 추적할 수 있게 해줍니다."
+    },
+    {
+     "speaker": "박대리",
+     "voice": "male",
+     "text": "재미있네요! 어떻게 수익을 낼 계획이예요?"
+    },
+    {
+     "speaker": "김대리",
+     "voice": "female",
+     "text": "무료 기본 버전과 유료 프리미엄 버전을 제공할 거예요. 프리미엄 버전은 더 자세한 분석과 맞춤형 재정 조언을 제공합니다."
+    },
+    {
+     "speaker": "박대리",
+     "voice": "male",
+     "text": "좋은 아이디어네요. 출시일을 언제로 잡았어요?"
+    },
+    {
+     "speaker": "김대리",
+     "voice": "female",
+     "text": "다음 달 15일이에요. 마케팅 팀이 적극적으로 홍보할 예정이에요."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Future of Korean-American Trade",
+   "body": "",
+   "script": [
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "안녕하세요, 오늘은 새롭게 체결된 한미 무역 협정에 대해 이야기를 나누어 보겠습니다. 외교부 장관님, 안녕하세요."
+    },
+    {
+     "speaker": "장관",
+     "voice": "male",
+     "text": "안녕하세요, 기자님. 오늘은 정말 중요하고 기대되는 주제로 대화할 수 있게 되어 기쁩니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "새로운 무역 협정은 두 나라 모두에게 큰 기회를 제공할 것입니다. 특히 한국 기업들에게 어떤 혜택이 있을까요?"
+    },
+    {
+     "speaker": "장관",
+     "voice": "male",
+     "text": "먼저, 한국 자동차에 대한 관세가 크게 낮아질 것입니다. 또한, 미국 시장으로의 시장 접근성이 크게 개선될 것입니다. 이는 한국 기업들에게 더 큰 시장 기회를 제공할 것입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "미국 기업들에게도 혜택이 있을까요?"
+    },
+    {
+     "speaker": "장관",
+     "voice": "male",
+     "text": "네, 미국 기업들도 한국 시장으로의 접근성이 개선될 것입니다. 또한, 두 나라 간의 투자가 활발해질 것으로 예상됩니다. 이는 경제 성장에 큰 도움이 될 것입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "이 협정이 한국 경제에 어떤 영향을 미칠까요?"
+    },
+    {
+     "speaker": "장관",
+     "voice": "male",
+     "text": "이 협정을 통해 한국 경제는 더 큰 성장을 이룰 수 있을 것입니다. 특히, 수출이 증가하고 새로운 일자리가 창출될 것입니다. 또한, 두 나라 간의 협력은 더욱 강화될 것입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "마지막으로, 이 협정이 성공하기 위해 필요한 것은 무엇이라고 생각하시나요?"
+    },
+    {
+     "speaker": "장관",
+     "voice": "male",
+     "text": "성공하기 위해서는 두 나라 간의 지속적인 협력과 소통이 필요합니다. 또한, 양국 기업들이 이 기회를 잘 활용할 수 있도록 지원해야 합니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "장관님, 감사합니다. 오늘 대화는 많은 분들에게 유용한 정보를 제공했을 것입니다."
+    },
+    {
+     "speaker": "장관",
+     "voice": "male",
+     "text": "천만에요, 기자님. 오늘 대화에 참여해 주셔서 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "interview",
+   "title": "Korea Accelerates COVID-19 Vaccination Campaign",
+   "body": "",
+   "script": [
+    {
+     "speaker": "인터뷰어",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 코로나19 백신 접종 캠페인에 대해 이야기해 보겠습니다. 우리와 함께 하는 분은 보건복지부의 김지훈 차장님입니다. 환영합니다, 김 차장님."
+    },
+    {
+     "speaker": "김지훈",
+     "voice": "male",
+     "text": "안녕하세요, 인터뷰어님. 감사합니다."
+    },
+    {
+     "speaker": "인터뷰어",
+     "voice": "female",
+     "text": "최근 코로나19 백신 접종 속도가 빨라지고 있다고 들었습니다. 어떤 일이 일어나고 있나요?"
+    },
+    {
+     "speaker": "김지훈",
+     "voice": "male",
+     "text": "네, 맞습니다. 정부가 백신 접종률을 높이기 위한 다양한 전략을 실천하고 있습니다. 우선, 국내 백신 생산량이 증가했고, 국제적으로도 더 많은 백신이 공급되고 있습니다. 또한, 접종 센터를 확대하고, 예약 시스템을 개선하여 접종을 더 쉽게 만들었습니다."
+    },
+    {
+     "speaker": "인터뷰어",
+     "voice": "female",
+     "text": "백신 접종을 확대하는 데 어떤 어려움이 있나요?"
+    },
+    {
+     "speaker": "김지훈",
+     "voice": "male",
+     "text": "주로 지역별로 백신 공급량의 차이와 접종 센터의 인력 부족이 문제입니다. 정부에서는 이러한 문제를 해결하기 위해 지방자치단체와 협력하여 백신 분배 시스템을 개선하고, 추가 인력을 배치하고 있습니다. 또한, 모바일 백신 예약 시스템을 도입하여 예약 과정을 간소화했습니다."
+    },
+    {
+     "speaker": "인터뷰어",
+     "voice": "female",
+     "text": "앞으로의 계획은 무엇인가요?"
+    },
+    {
+     "speaker": "김지훈",
+     "voice": "male",
+     "text": "앞으로도 백신 생산을 확대하고 접종을 확대하는 것을 최우선으로 하겠습니다. 또한, 백신 접종에 대한 정보 제공을 강화하여 국민들의 이해와 협조를 구할 계획입니다. 모든 국민이 안전하게 백신을 접종할 수 있도록 최선을 다하겠습니다."
+    },
+    {
+     "speaker": "인터뷰어",
+     "voice": "female",
+     "text": "김지훈 차장님, 감사합니다. 여러분, 오늘 인터뷰를 들어주셔서 감사합니다."
+    },
+    {
+     "speaker": "김지훈",
+     "voice": "male",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "interview",
+   "title": "Probe Into City Hall Contracts",
+   "body": "",
+   "script": [
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "안녕하세요, 반부패 및 민권위원회 관계자님과 대화 중입니다. 최근 도시관리국과 관련된 수상한 계약에 대한 수사가 진행 중이라고 들었습니다."
+    },
+    {
+     "speaker": "관료",
+     "voice": "male",
+     "text": "네, 맞습니다. 현재 우리 위원회에서 도시관리국과 관련된 계약들을 조사 중입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "수사 내용에 대해 좀 더 자세히 알려주실 수 있나요?"
+    },
+    {
+     "speaker": "관료",
+     "voice": "male",
+     "text": "특정 업체와의 계약 과정에서 부당한 이익이 제공되었는지 여부를 확인하고 있습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "어떤 조치를 취할 계획이신가요?"
+    },
+    {
+     "speaker": "관료",
+     "voice": "male",
+     "text": "정확한 사실을 확인한 후, 필요한 조치를 취할 예정입니다. 만약 불법 행위가 확인된다면, 관련자를 엄정히 처리할 것입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "알겠습니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "news",
+   "title": "Record-Breaking Heat Wave Sweeps Across Korea",
+   "body": "",
+   "script": [
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 전국적으로 기록적인 더위를 기록하고 있는 상황에 대해 알려드리겠습니다."
+    },
+    {
+     "speaker": "기상청 관계자",
+     "voice": "male",
+     "text": "네, 오늘은 전국적으로 기온이 35도를 넘어서고 있습니다. 특히 서울과 경기도 지역에서는 38도까지 올라간 곳도 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "기상청에 따르면, 이처럼 장기적인 고온이 지속되면서 건강 문제도 발생하고 있습니다."
+    },
+    {
+     "speaker": "기상청 관계자",
+     "voice": "male",
+     "text": "네, 열사병 환자가 급증하고 있습니다. 특히 노년층과 아동들이 많은 영향을 받고 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "전국적으로 전기 사용량이 급증하고 있습니다. 특히 공조 장치가 가동되면서 전기 사용량이 많이 증가하고 있습니다."
+    },
+    {
+     "speaker": "기상청 관계자",
+     "voice": "male",
+     "text": "네, 전기 사용량이 급증하면서 전력 공급에도 문제가 생길 수 있습니다. 따라서 가능한 한 전기 사용을 아껴주시기 바랍니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "기상청은 계속해서 고온이 지속될 것으로 예상하고 있습니다. 따라서 건강에 각별히 주의하시기 바랍니다."
     }
    ],
    "source": "llm",
@@ -723,6 +1985,52 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dl-2-news-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "news",
+   "title": "Public Debate on Compulsory Military Service",
+   "body": "",
+   "script": [
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 군복무 기간 단축에 대한 토론을 진행해보겠습니다."
+    },
+    {
+     "speaker": "토론자 A",
+     "voice": "male",
+     "text": "저는 군복무 기간을 단축하는 것에 찬성합니다. 현대 사회에서 필요한 인재를 양성하기 위해서는 더 많은 시간을 교육과 훈련에 투자해야 합니다."
+    },
+    {
+     "speaker": "토론자 B",
+     "voice": "female",
+     "text": "반대합니다. 군복무 기간을 단축하면 국방력에 미치는 영향이 큽니다. 현재 군사 능력 유지에 어려움을 줄 수 있습니다."
+    },
+    {
+     "speaker": "토론자 A",
+     "voice": "male",
+     "text": "하지만 기술의 발전으로 군사 훈련도 더 효율적으로 진행할 수 있습니다. 기간을 단축하더라도 충분한 훈련을 통해 군사력을 유지할 수 있습니다."
+    },
+    {
+     "speaker": "토론자 B",
+     "voice": "female",
+     "text": "그럼에도 불구하고 군복무 기간을 단축하면 병사들의 전투 준비 태세와 전투 기술 향상에 부정적인 영향을 미칠 수 있습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "두 의견을 잘 들어보셨습니다. 군복무 기간 단축에 대한 논의는 앞으로도 계속될 것입니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "ko",
@@ -765,6 +2073,184 @@
      "speaker": "앵커",
      "voice": "female",
      "text": "알겠습니다. 오늘은 이 정도로 마치겠습니다. 더 자세한 내용은 다음 소식에서 알려드리겠습니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "report",
+   "title": "Relief Efforts for Displaced Families in the North",
+   "body": "",
+   "script": [
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 북부 지역에서 이주민 가족들을 위한 구호 물자 수송 상황을 보고드리겠습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "최근 몇 주 동안, 여러 구호 단체들이 북부 지역의 여러 마을에 식량, 의류, 의약품 등을 공급하기 위해 노력해 왔습니다."
+    },
+    {
+     "speaker": "구호 작업자",
+     "voice": "male",
+     "text": "우리는 지역 사회의 협력을 통해, 가장 어려운 환경에서도 구호 물자를 성공적으로 전달할 수 있었습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "특히, 가장 최근에 북부 지역에 위치한 세 개의 마을에 구호 물자를 공급하는 데 성공했습니다."
+    },
+    {
+     "speaker": "구호 단체 대표",
+     "voice": "male",
+     "text": "하지만 여전히 많은 이주민 가족들이 도움을 기다리고 있습니다. 우리는 더 많은 지원을 받아 더 많은 마을에 구호 물자를 공급할 계획입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "이와 같은 노력이 계속된다면, 북부 지역의 이주민 가족들에게 희망을 전달할 수 있을 것입니다. 더 자세한 내용은 우리 뉴스 웹사이트에서 확인할 수 있습니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2-report-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2",
+   "textType": "report",
+   "title": "Cyberattack Disrupts Power Grid",
+   "body": "",
+   "script": [
+    {
+     "speaker": "앵커",
+     "voice": "male",
+     "text": "한국전력공사는 최근 사이버 공격으로 인해 전기망이 마비되었습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "네, 맞습니다. 이 공격으로 인해 전국적으로 전력 공급이 중단되어 약 200만 가구가 정전을 경험했습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "male",
+     "text": "어떤 지역이 가장 심하게 영향을 받았나요?"
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "특히 수도권과 호남 지역에서 정전 현상이 심하게 발생했습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "male",
+     "text": "한국전력공사는 이 문제를 어떻게 해결하고 있나요?"
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "한국전력공사는 현재 시스템 복구를 위해 최선을 다하고 있으며, 사이버 보안 대책을 강화하고 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "male",
+     "text": "정부도 이 문제를 어떻게 대응하고 있나요?"
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "정부는 한국전력공사와 협력하여 사이버 공격에 대한 조사를 진행 중이며, 피해를 최소화하기 위해 노력하고 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "male",
+     "text": "알겠습니다. 오늘 보고를 마칩니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2p-documentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "documentary",
+   "title": "Rising Waters: A Community on Alert",
+   "body": "",
+   "script": [
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "여러분, 주의해서 들어주세요. 강수량 증가로 인한 홍수 경보가 발령되었습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "내일 아침까지 100밀리미터 이상의 비가 예상되며, 특히 서해안 지역은 더욱 주의가 필요합니다."
+    },
+    {
+     "speaker": "관리자",
+     "voice": "male",
+     "text": "현재 다인댐의 수위는 안전수위보다 2미터 높게 상승했습니다."
+    },
+    {
+     "speaker": "관리자",
+     "voice": "male",
+     "text": "만약 비가 계속된다면 댐을 개방해야 할 수도 있습니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "저수지 근처 또는 하천 근처의 주민은 안전지대로 대피하시기 바랍니다."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "또한, 지하실이나 낮은 지대에는 물이 차올라 위험할 수 있으니 주의하세요."
+    },
+    {
+     "speaker": "주민",
+     "voice": "male",
+     "text": "우리 동네도 위험할까요? 댐에서 멀리 떨어져 있잖아."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "네, 댐에서 먼 지역이라도 하천 근처 물이 차오를 수 있으니 주의해야 합니다."
+    },
+    {
+     "speaker": "주민",
+     "voice": "female",
+     "text": "어떻게 준비해야 할까요? 지하실이 있는데..."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "지하실은 물이 차올라 위험할 수 있으니 중요한 물건은 높은 곳으로 이동시키세요."
+    },
+    {
+     "speaker": "앵커",
+     "voice": "female",
+     "text": "또한, 비상키트를 준비하고 이웃들과 서로 도와주시기 바랍니다."
     }
    ],
    "source": "llm",
@@ -977,6 +2463,133 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dl-2p-news_analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Humanitarian Aid Convoys Navigate Complexities in Conflict Zones",
+   "body": "",
+   "script": [
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 갈등 지역에서의 인도적 지원 물자의 운송에 대한 분석을 전해드리겠습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "지원 물자를 갈등 지역으로 운송하는 것은 매우 복잡한 과정이죠. 무장 갈등과 안보 위협이 존재하기 때문에, 물자의 안전한 운송을 보장하기 위해 신중한 계획과 협력이 필요합니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "어떤 조직들이 이 과정에서 주요 역할을 하나요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "국제적 지원 기관들과 현지 사회가 협력하여 복잡한 환경에서 물자를 운송하고, 안전한 환경을 조성하기 위해 노력하고 있습니다. 현지 사회는 특히 현지 지식을 활용하여 지원 물자의 분배를 효율적으로 관리합니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "지원 물자의 운송에 필요한 자금은 어떻게 조달되나요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "국제적 지원 기관들은 정부와 민간 단체의 보조금을 받아 운송 비용을 충당하고 있습니다. 또한, 현지 사회와 협력하여 자원을 최적화하여 사용하고 있습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "이러한 노력에도 불구하고, 여전히 많은 과제가 남아있는 걸로 알고 있습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "네, 맞습니다. 물자 운송 과정에서 발생하는 지연과 손실, 그리고 안보 위협은 여전히 큰 과제입니다. 따라서 지속적인 모니터링과 평가, 그리고 현지 사회와의 협력이 필수적입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "오늘 분석을 들어주셔서 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2p-news_analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Bridge of Arts: A Cultural Exchange Program's Impact on Diplomatic Relations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 한일 간의 문화 교류 프로그램에 대한 분석을 전해드리겠습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "최근 한일 간의 문화 교류 프로그램인 '아트 브릿지'가 큰 주목을 받고 있습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "'아트 브릿지' 프로그램은 미술, 음악, 문학 등 다양한 분야에서 두 나라의 예술가들이 교류하고 협력하는 모습을 보여주고 있습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "이 프로그램은 한일 간의 외교 관계를 크게 개선하는 데 기여했습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "예를 들어, 최근 한일 간의 미술 전시회가 성공적으로 개최되었으며, 이는 두 나라 간의 문화적 이해를 높이는 데 큰 도움이 되었습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "또한, 이 프로그램은 한일 간의 경제적 협력도 촉진했습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "예를 들어, 한국 기업들이 일본 시장에 진출하는 데 도움을 주고, 일본 기업들도 한국 시장에서 성공을 거두고 있습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "이 프로그램은 긍정적인 평가를 받아 다른 국가에도 확대될 예정입니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "이처럼 '아트 브릿지' 프로그램은 한일 간의 문화적, 경제적 교류를 증진시키고, 외교적 채널을 강화하는 데 큰 역할을 하고 있습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "오늘 분석은 여기까지입니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dl-2p-panel_discussion-001",
    "exam": "DLPT_LISTENING",
    "language": "ko",
@@ -1094,6 +2707,245 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dl-2p-panel_discussion-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Balancing Technology and Childhood Development",
+   "body": "",
+   "script": [
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 아이들의 스마트폰 사용에 대한 패널 토론을 진행하겠습니다."
+    },
+    {
+     "speaker": "패널 1",
+     "voice": "male",
+     "text": "저는 스마트폰이 아이들의 발달에 미치는 영향을 걱정합니다. 과도한 사용은 사회적 기술의 저하로 이어질 수 있습니다."
+    },
+    {
+     "speaker": "패널 2",
+     "voice": "female",
+     "text": "반면, 스마트폰은 교육적 기회의 증대를 가져올 수 있습니다. 예를 들어, 온라인 교육 자료에 쉽게 접근할 수 있습니다."
+    },
+    {
+     "speaker": "패널 3",
+     "voice": "male",
+     "text": "하지만 스마트폰의 중독성도 무시할 수 없습니다. 아이들이 스마트폰에 너무 많이 의존하면 다른 활동에 영향을 미칠 수 있습니다."
+    },
+    {
+     "speaker": "패널 2",
+     "voice": "female",
+     "text": "제 동의합니다. 그러나 적절한 가이드라인이 있다면 이러한 리스크를 최소화할 수 있을 것입니다."
+    },
+    {
+     "speaker": "패널 1",
+     "voice": "male",
+     "text": "그렇다면, 부모와 교육자는 아이들이 스마트폰을 어떻게 사용할지 명확한 지침을 제공해야 합니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "감사합니다. 오늘의 토론을 통해 스마트폰 사용의 이점과 리스크를 모두 고려해야 함을 알 수 있었습니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2p-panel_discussion-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Collaboration in Crisis: Joint Search-and-Rescue Efforts",
+   "body": "",
+   "script": [
+    {
+     "speaker": "사회자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 국제적 구출작전의 협력이라는 주제로 토론을 진행하겠습니다."
+    },
+    {
+     "speaker": "패널A",
+     "voice": "male",
+     "text": "네, 국제적 구출작전의 협력이라는 것은 항상 쉬운 일이 아닙니다. 특히 한국과 일본의 팀 간의 협력은 과거 정치적 긴장으로 인해 협력이 어려웠던 경험이 있죠."
+    },
+    {
+     "speaker": "패널B",
+     "voice": "female",
+     "text": "그렇습니다. 하지만 최근의 지진 구출작전에서 두 팀이 성공적으로 협력한 사례가 있습니다. 이는 의사소통과 자원 배분의 중요성을 보여주는 좋은 예입니다."
+    },
+    {
+     "speaker": "패널A",
+     "voice": "male",
+     "text": "네, 맞습니다. 하지만 여전히 문화적 차이와 언어 장벽은 해결해야 할 과제입니다. 예를 들어, 한국 팀은 계층적 구조를 선호하지만 일본 팀은 더 평등한 접근을 선호합니다."
+    },
+    {
+     "speaker": "패널B",
+     "voice": "female",
+     "text": "그렇지만 이러한 차이점을 이해하고 존중하는 것이 중요합니다. 우리는 서로 다른 문화적 배경을 가진 팀과 협력할 때 더 유연한 태도가 필요합니다."
+    },
+    {
+     "speaker": "사회자",
+     "voice": "female",
+     "text": "그렇다면 기술의 역할은 어떻습니까? 기술은 국제적 구출작전의 협력에 어떻게 기여할 수 있을까요?"
+    },
+    {
+     "speaker": "패널A",
+     "voice": "male",
+     "text": "기술은 의사소통과 정보를 공유하는 데 큰 도움이 됩니다. 예를 들어, 실시간 번역 도구와 통합된 통신 시스템을 사용하면 언어 장벽을 극복할 수 있습니다."
+    },
+    {
+     "speaker": "패널B",
+     "voice": "female",
+     "text": "네, 그리고 드론과 인공위성을 이용한 정찰도 구출작전의 효율성을 높이는 데 기여합니다. 기술은 국제적 구출작전의 협력을 강화하는 데 필수적입니다."
+    },
+    {
+     "speaker": "사회자",
+     "voice": "female",
+     "text": "오늘 토론을 마치며, 국제적 구출작전의 협력이라는 것은 항상 쉬운 일이 아니지만, 성공적인 협력을 위한 노력이 중요하다는 점을 강조하고 싶습니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2p-speech-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Protecting Our Shores: Addressing Coastal Erosion in Korea",
+   "body": "",
+   "script": [
+    {
+     "speaker": "발표자",
+     "voice": "male",
+     "text": "여러분, 오늘은 우리나라의 해안 침식 문제를 논의하고자 합니다. 우리 해안선은 아름답고 풍부한 자원과 함께 우리의 문화와 역사를 간직하고 있습니다. 그러나 안타깝게도, 우리 해안선들은 점점 사라지고 있습니다. 오늘은 이 문제를 심각하게 인식하고, 어떻게 우리를 보호할 수 있는지에 대해 이야기하고 싶습니다."
+    },
+    {
+     "speaker": "발표자",
+     "voice": "male",
+     "text": "먼저, 해안 침식의 주요 원인에 대해 알아보겠습니다. 기후 변화로 인한 해수면 상승이 우리의 해안을 알맞은 속도로 침식하고 있습니다. 또한, 인간 활동도 해안 침식에 기여하고 있습니다. 예를 들어, 과도한 건축과 개발, 그리고 자연적인 둑의 제거가 해안을 취약하게 만듭니다."
+    },
+    {
+     "speaker": "발표자",
+     "voice": "male",
+     "text": "이러한 문제들을 해결하기 위해서는 종합적인 해안 보호 전략이 필요합니다. 우선, 해안 지역의 개발을 규제하고, 자연스러운 해안 생태계를 복원하는 것이 중요합니다. 또한, 해수면 상승에 대비하여 방파제와 같은 인공 구조물을 건설하는 것도 하나의 방법입니다. 그러나 가장 중요한 것은 우리 모두의 인식과 참여입니다."
+    },
+    {
+     "speaker": "발표자",
+     "voice": "male",
+     "text": "우리 각자가 해안 보호의 중요성을 인식하고, 일상 생활에서 환경에 대한 책임감을 가져야 합니다. 예를 들어, 해안 청소 활동에 참여하거나, 해안 지역의 생태계를 보호하는 정책을 지원하는 것입니다. 또한, 정부와 지역 사회도 협력하여 해안 보호 프로그램을 확대하고, 교육 캠페인을 통해 국민들의 인식 수준을 높여야 합니다."
+    },
+    {
+     "speaker": "발표자",
+     "voice": "male",
+     "text": "마지막으로, 해안 침식은 우리 모두의 문제입니다. 우리 해안선이 사라지면, 우리 문화와 역사, 그리고 자연 자원이 모두 위험에 처합니다. 따라서, 우리는 지금 당장 행동해야 합니다. 함께 노력하여 우리의 아름다운 해안을 미래 세대에게 물려주도록 합시다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-2p-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Expanding Horizons: Addressing Urban Housing Shortages",
+   "body": "",
+   "script": [
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 도시의 주택 부족 문제를 해결하기 위한 몇 가지 방안을 논의해 보려고 합니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "최근 몇 년간 우리나라의 도시들이 빠르게 성장하면서 주택 수요가 공급을 크게 초과하고 있습니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "특히 서울과 같은 대도시에서는 주택 가격이 급격히 상승하면서 많은 사람들이 합리적인 가격의 주택을 찾기 어려워하고 있습니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "이 문제는 점점 더 심각해지고 있으며, 해결을 위해 다양한 접근 방식이 필요합니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "첫째, 도시 주변의 새로운 주거 지구를 개발해야 합니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "이렇게 하면 밀집된 주택가에서 벗어나 더 많은 사람들이 주택을 구할 수 있을 것입니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "둘째, 공공 주택의 공급을 늘려야 합니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "정부는 저소득층을 위한 주택을 더 많이 건설하고, 기존의 공공 주택을 개선하여 더 많은 사람이 이용할 수 있도록 해야 합니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "셋째, 도시 계획에서 혼합 사용 지구를 늘려야 합니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "이렇게 하면 주택뿐만 아니라 상업시설과 공원 등도 함께 조성될 수 있어 더 살기 좋은 도시 환경을 만들 수 있을 것입니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "마지막으로, 교통 인프라를 개선하여 사람들이 더 쉽게 주택을 찾아다닐 수 있도록 해야 합니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "대중교통을 확대하고, 자전거 도로를 더 많이 만들면 교통 문제도 해결할 수 있을 것입니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "이러한 방안을 통해 우리는 도시의 주택 부족 문제를 단계적으로 해결할 수 있을 것입니다."
+    },
+    {
+     "speaker": "연사",
+     "voice": "female",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dl-3-analysis-001",
    "exam": "DLPT_LISTENING",
    "language": "ko",
@@ -1146,6 +2998,656 @@
      "speaker": "진행자",
      "voice": "female",
      "text": "이주 노동자들이 한국 사회에 완전히 통합되기 위해서는 시간과 노력이 필요할 것입니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Daegu Metro Line 3: Economic and Social Impacts",
+   "body": "",
+   "script": [
+    {
+     "speaker": "정부 관계자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 대구 지하철 3호선의 경제적·사회적 영향을 분석해 보겠습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "네, 새로운 지하철 노선의 개통은 지역 경제에 큰 영향을 미칩니다. 특히 대구 지하철 3호선은 새로운 일자리를 창출할 것으로 기대됩니다."
+    },
+    {
+     "speaker": "정부 관계자",
+     "voice": "female",
+     "text": "그렇습니다. 건설 현장에서 일하는 근로자들뿐만 아니라, 운영에 필요한 인력도 필요하게 될 것입니다. 또한, 주변 지역의 재개발이 활발해질 것으로 예상됩니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "네, 재개발이 활발해지면 주변 지역의 부동산 가격도 오를 것입니다. 이는 지역 주민들에게도 긍정적인 영향을 미칠 것입니다."
+    },
+    {
+     "speaker": "정부 관계자",
+     "voice": "female",
+     "text": "그렇습니다. 또한, 지하철의 편리한 접근성 덕분에 지역 주민들의 삶의 질도 향상될 것입니다. 예를 들어, 통근 시간은 줄어들고, 다양한 시설에 쉽게 접근할 수 있게 될 것입니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "네, 이는 지역 사회의 활성화로 이어질 것입니다. 새로운 상점과 레스토랑이 생기면서 지역 경제도 성장할 것입니다."
+    },
+    {
+     "speaker": "정부 관계자",
+     "voice": "female",
+     "text": "그렇습니다. 또한, 새로운 지하철 노선은 대구의 관광 산업에도 긍정적인 영향을 미칠 것입니다. 관광객들이 더 쉽게 대구를 방문할 수 있게 될 것입니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "네, 이는 지역 경제에 큰 도움이 될 것입니다. 관광 산업의 성장으로 새로운 일자리가 창출되고, 지역 경제도 활성화될 것입니다."
+    },
+    {
+     "speaker": "정부 관계자",
+     "voice": "female",
+     "text": "그렇습니다. 따라서 대구 지하철 3호선의 개통은 지역 경제와 사회에 긍정적인 영향을 미칠 것으로 기대됩니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "네, 저는 이 프로젝트가 성공적으로 완료되기를 바랍니다. 이는 대구의 미래를 위한 중요한 단계가 될 것입니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Transport Workers' Strike: A City on Edge",
+   "body": "",
+   "script": [
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 대중교통노동자들의 파업이 시작된 지 일주일째가 되는 오늘, 시내 교통 상황과 파업의 배경에 대해 자세히 알려드리겠습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "대중교통노동자들의 파업은 주로 최저임금 인상과 근무조건 개선을 요구하며 시작되었습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "파업은 시내 교통에 큰 차질을 빚고 있습니다. 버스는 운행을 중단했고, 지하철도 일부 노선만 운행 중인 상황입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "이번 파업으로 인해 시민들은 큰 불편을 겪고 있습니다. 특히 출퇴근 시간대에 교통 마비가 발생하며, 많은 시민들이 택시를 이용하거나 도보로 이동하고 있습니다."
+    },
+    {
+     "speaker": "시민",
+     "voice": "male",
+     "text": "파업이 끝나기만을 바랍니다. 매일 아침 지하철을 타고 출근하는데, 이번 주에는 택시비를 많이 쓰게 되어 경제적으로 큰 부담이 되고 있습니다."
+    },
+    {
+     "speaker": "노동조합 대표",
+     "voice": "female",
+     "text": "우리는 단순히 임금 인상만 요구하는 것이 아닙니다. 더 안전한 근무 환경과 합리적인 근무 시간을 요구하고 있습니다."
+    },
+    {
+     "speaker": "정부 대변인",
+     "voice": "male",
+     "text": "정부는 노동자들의 요구를 이해하지만, 파업으로 인한 시민들의 불편을 최소화하기 위해 노력하고 있습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "현재 정부와 노동조합 간의 협상이 진행 중이며, 빠른 해결을 기대하고 있습니다. 여러분, 오늘도 교통 정보를 꼭 확인하시고 안전한 출근하시기 바랍니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-debate-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "debate",
+   "title": "ko-dl-3-debate-002-q2",
+   "body": "",
+   "script": [
+    {
+     "speaker": "A",
+     "voice": "male",
+     "text": "최근 동맹국과의 군사 연습이 예정되어 있습니다. 이 연습은 우리나라의 안보를 강화하는 데 중요한 역할을 할 것입니다."
+    },
+    {
+     "speaker": "B",
+     "voice": "female",
+     "text": "하지만, 군사 연습이 지역 갈등을 유발할 수 있습니다. 특히, 이웃 나라들과의 관계를 고려할 때 신중한 접근이 필요합니다."
+    },
+    {
+     "speaker": "A",
+     "voice": "male",
+     "text": "동의합니다. 군사 연습은 중요하지만, 그 규모와 시기를 신중하게 고려해야 합니다. 또한, 연습의 규모를 줄이고, 주민들의 안전을 최우선으로 고려해야 합니다."
+    },
+    {
+     "speaker": "B",
+     "voice": "female",
+     "text": "하지만, 연습의 규모를 줄이면 실제 상황을 반영하지 못할 수 있습니다. 따라서, 연습의 효율성과 주민들의 안전 사이에서 균형을 찾아야 합니다."
+    },
+    {
+     "speaker": "A",
+     "voice": "male",
+     "text": "물론입니다. 하지만, 주민들의 안전은 최우선입니다. 따라서, 연습 전에 충분한 공지와 대피 훈련을 실시해야 합니다."
+    },
+    {
+     "speaker": "B",
+     "voice": "female",
+     "text": "또한, 연습 중에 발생할 수 있는 환경 오염 문제를 고려해야 합니다. 예를 들어, 연습 지역 주변의 물과 공기의 오염을 방지하기 위한 조치가 필요합니다."
+    },
+    {
+     "speaker": "A",
+     "voice": "male",
+     "text": "좋은 지적입니다. 따라서, 군사 연습을 계획할 때는 안보, 주민 안전, 환경 보호 등의 다양한 요소를 고려해야 합니다."
+    },
+    {
+     "speaker": "B",
+     "voice": "female",
+     "text": "동의합니다. 이러한 접근이 지역 안정성과 우리 국민의 복지를 증진시킬 것입니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Climate Change and the Urban Heat Island Effect",
+   "body": "",
+   "script": [
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "최근 몇 주간 전국적으로 기록적인 고온이 지속되고 있습니다. 특히 도시 지역에서는 더운 날씨가 더 심하게 느껴지고 있습니다."
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "이러한 현상을 도시의 열섬 현상이라고 합니다. 인위적인 구조물과 활동이 기온을 상승시키는 현상입니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "열섬 현상이란 정확히 무엇인가요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "도시의 열섬 현상은 건물, 아스팔트, 차량 등이 태양열을 흡수하고 재방출하는 과정에서 기온이 상승하는 현상을 말합니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "이번 열파가 특별히 위험한 이유는 무엇인가요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "이번 열파는 자연적인 기후 변화뿐만 아니라 인위적인 요인도 작용하고 있습니다. 도시화와 산업화가 진행되면서 열섬 현상이 더욱 심화되고 있습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "이런 열파가 우리 일상생활에 어떤 영향을 미치나요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "고온은 건강 문제뿐만 아니라 에너지 소비 증가, 인프라 손상 등의 문제를 일으킬 수 있습니다. 특히 노약자나 만성 질환자가 있는 가구에서는 더욱 주의가 필요합니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "도시의 열섬 현상을 완화하기 위한 대책은 무엇인가요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "녹지 공간을 늘리고, 에너지 효율적인 건물 설계, 대형 건축물에 녹색 벽면이나 옥상 정원을 설치하는 등의 방법을 통해 열섬 현상을 완화할 수 있습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "요즘처럼 더운 날씨가 지속될 경우, 시민들은 어떻게 대비해야 할까요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "수분 섭취를 충분히 하고, 외출 시에는 모자나 선글라스를 착용하는 것이 좋습니다. 또한, 가능하면 오후의 강한 햇빛을 피하는 것이 좋습니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "열파가 지속될 경우, 정부나 지자체에서 어떤 조치를 취해야 할까요?"
+    },
+    {
+     "speaker": "전문가",
+     "voice": "male",
+     "text": "공공시설에서의 시원한 휴식 공간 제공, 열사병 예방을 위한 건강 상담 서비스 강화, 열파 경보 시스템의 신속한 운영 등이 필요합니다."
+    },
+    {
+     "speaker": "기자",
+     "voice": "female",
+     "text": "열파는 이제 자연 현상이 아니라 우리 사회의 문제입니다. 도시에 사는 우리 모두의 문제입니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Voice of the People: A Closer Look at the Recent Local Elections",
+   "body": "",
+   "script": [
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 지난주 지역 선거에 대해 이야기해 보겠습니다."
+    },
+    {
+     "speaker": "분석가",
+     "voice": "male",
+     "text": "네, 지난주 지역 선거 결과가 나왔습니다. 이번 선거에서 몇 가지 흥미로운 점이 있습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "어떤 점이 흥미로웠나요?"
+    },
+    {
+     "speaker": "분석가",
+     "voice": "male",
+     "text": "첫째, 두 주요 정당의 대립점이 명확히 드러났습니다. 예를 들어, 교육 정책과 환경 정책에서 서로 다른 접근 방식을 제시했습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "그래요. 그리고 젊은 유권자들의 투표가 결과에 큰 영향을 미쳤죠."
+    },
+    {
+     "speaker": "분석가",
+     "voice": "male",
+     "text": "네, 특히 20대와 30대의 투표율이 높았습니다. 그들은 미래 지향적인 정책을 선호하는 경향이 있었습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "이번 선거 결과에서 주목할 점이 몇 가지 있습니다. 예를 들어, 일부 지역에서는 무소속 후보가 승리하기도 했죠."
+    },
+    {
+     "speaker": "분석가",
+     "voice": "male",
+     "text": "네, 무소속 후보들이 지역 사회의 문제를 더 잘 이해하고 해결할 수 있다는 점에서 인기를 얻었습니다."
+    },
+    {
+     "speaker": "진행자",
+     "voice": "female",
+     "text": "이번 선거 결과를 통해 어떤 교훈을 얻을 수 있을까요?"
+    },
+    {
+     "speaker": "분석가",
+     "voice": "male",
+     "text": "저는 이번 선거 결과가 지역 사회의 다양한 목소리를 반영해야 한다는 점을 강조한다는 점에서 의미가 있습니다. 또한, 젊은 유권자들의 의견을 더 많이 반영해야 한다는 것도 중요한 교훈입니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Voice of the People: A Closer Look at the Recent Local Elections",
+   "body": "",
+   "script": [
+    {
+     "speaker": "진행자1",
+     "voice": "female",
+     "text": "여러분 안녕하세요. 오늘은 최근 지방 선거에 대해 이야기해 보고자 합니다."
+    },
+    {
+     "speaker": "진행자2",
+     "voice": "male",
+     "text": "네, 이번 지방 선거는 여러모로 주목할 만한 점이 많았죠."
+    },
+    {
+     "speaker": "진행자1",
+     "voice": "female",
+     "text": "특히 선거 참여율이 급증한 점이 가장 눈에 띄었습니다. 이번 선거에서 유권자의 목소리가 얼마나 컸는지를 보여주는 증거입니다."
+    },
+    {
+     "speaker": "진행자2",
+     "voice": "male",
+     "text": "그렇죠. 전통적으로, 지방 선거는 중앙 선거보다 관심도가 낮았는데, 이번에 이렇게 많은 사람들이 참여한 것은 매우 의미 있는 변화입니다."
+    },
+    {
+     "speaker": "진행자1",
+     "voice": "female",
+     "text": "특히 젊은 층의 참여가 눈에 띄었습니다. 그들은 SNS를 통해 적극적으로 정보를 공유하고, 자신의 의견을 표출하는 데 적극적이었습니다."
+    },
+    {
+     "speaker": "진행자2",
+     "voice": "male",
+     "text": "네, 이러한 변화는 우리 민주주의의 건강한 신호입니다. 시민들이 정치에 더 관심을 가지게 되고, 자신의 권리를 행사하려는 의지가 강해지고 있다는 증거죠."
+    },
+    {
+     "speaker": "진행자1",
+     "voice": "female",
+     "text": "하지만 동시에, 이러한 변화에 대한 대응도 필요합니다. 정치인들은 젊은 층의 목소리를 더 잘 들어주어야 하고, 그들의 우려를 반영한 정책을 수립해야 합니다."
+    },
+    {
+     "speaker": "진행자2",
+     "voice": "male",
+     "text": "그렇습니다. 또한, 선거 제도도 젊은 유권자의 참여를 더 촉진할 수 있도록 개선되어야 합니다. 예를 들어, 온라인 투표의 도입이나 투표 날짜의 유연화 같은 제도가 고려될 수 있을 것입니다."
+    },
+    {
+     "speaker": "진행자1",
+     "voice": "female",
+     "text": "마지막으로, 이번 선거를 통해 우리는 한 가지 중요한 교훈을 얻을 수 있습니다. 바로 민주주의는 지속적으로 발전해야 한다는 것입니다. 시민들의 참여와 목소리가 민주주의의 핵심이라는 점을 잊지 말아야 합니다."
+    },
+    {
+     "speaker": "진행자2",
+     "voice": "male",
+     "text": "네, 여러분도 정치에 관심을 가지고, 자신의 의견을 적극적으로 표현해 주세요. 그럼 오늘 이야기할 내용은 여기까지입니다. 감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "A Beacon of Hope: Seoul’s New Integrated Hospital",
+   "body": "",
+   "script": [
+    {
+     "speaker": "내레이터",
+     "voice": "female",
+     "text": "안녕하세요, 여러분의 귀를 빌려 주셔서 감사합니다. 오늘은 서울에 새로 문을 연 종합병원에 대해 이야기해 보겠습니다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "male",
+     "text": "이 병원은 단순히 새로운 시설을 건설한 것에 그치지 않습니다. 이는 의료 혁신의 상징이자 지역 사회를 위한 희망의 등불입니다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "female",
+     "text": "먼저, 이 병원의 선도적 의료 시스템을 언급해야 합니다. 최신 의료 장비와 기술이 구비되어 있어 환자들에게 최상의 치료를 제공할 수 있습니다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "male",
+     "text": "또한, 이 병원은 지역 주민들의 편의를 고려하여 중심부에 위치하고 있습니다. 이는 환자들이 쉽게 접근할 수 있도록 하기 위한 전략적 선택입니다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "female",
+     "text": "뿐만 아니라, 이 병원은 단순한 치료 기관을 넘어 지역 사회와 밀접하게 연결되어 있습니다. 다양한 건강 프로그램과 예방 의료 서비스를 제공하여 주민들의 건강을 향상시키기 위한 노력을 기울이고 있습니다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "male",
+     "text": "예를 들어, 주기적인 건강 검진 캠페인과 건강 교육 세미나를 통해 주민들이 자신의 건강 상태를 관리하고 예방 조치를 취할 수 있도록 지원합니다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "female",
+     "text": "이처럼 서울의 새로운 종합병원은 의료의 질을 향상시키고 지역 사회와 긴밀하게 연결된 통합적인 접근 방식을 채택함으로써 새로운 기준을 설정하고 있습니다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "male",
+     "text": "이 병원의 성공적인 운영이 지속되기 위해서는 모든 구성원들의 노력과 협력이 필요합니다. 함께 노력하여 이 희망의 등불이 더 밝게 빛나도록 합시다."
+    },
+    {
+     "speaker": "내레이터",
+     "voice": "female",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-lecture-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Bridge to Recovery: Humanitarian Aid Convoys in Conflict Zones",
+   "body": "",
+   "script": [
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 갈등 지역에서의 인도적 지원 물자 수송의 복잡성을 다뤄보겠습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "인도적 지원 물자 수송은 단순한 물자 이동을 넘어, 복잡한 정치적, 군사적, 사회적 요인들을 고려해야 합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "첫째, 안전한 경로를 확보하는 것이 가장 큰 과제입니다. 갈등 지역에서는 도로가 파괴되거나 통제될 수 있어, 물자를 수송하는 데 큰 위험이 따릅니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "둘째, 현지와의 협력은 성공적인 지원 물자 수송의 핵심입니다. 지역 사회와의 협력을 통해 물자가 필요로 하는 곳으로 정확하게 전달될 수 있습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "셋째, 현대 기술은 물자를 더 빠르고 안전하게 수송하는 데 도움이 됩니다. GPS와 드론 같은 기술은 물자 수송의 효율성을 크게 높입니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "마지막으로, 국제적 협력은 갈등 지역의 인도적 지원 물자 수송을 더욱 효과적으로 만들 수 있습니다. 다양한 국가와 조직이 협력하여 물자를 조달하고 수송하는 것은 매우 중요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "따라서, 갈등 지역에서의 인도적 지원 물자 수송은 복잡하지만, 안전하고 효율적인 물자 수송을 위해 다양한 접근이 필요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "감사합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The Path to Success: Navigating Career Opportunities in the Digital Age",
+   "body": "",
+   "script": [
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 디지털 시대에 맞는 경력 개발 전략에 대해 이야기해 보겠습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "최근 몇 년간 기술의 발전은 정말 놀라운 속도로 이루어지고 있습니다. 특히 디지털 기술의 발전은 우리의 일상생활과 직업 세계에 큰 변화를 가져왔습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "이제 디지털 소양은 모든 직업에서 필수적인 능력으로 자리잡았습니다. 프로그래밍, 데이터 분석, 인공지능 이해 등 디지털 기술에 대한 이해도는 경력 개발에서 중요한 역할을 합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "하지만 디지털 기술만으로는 충분하지 않습니다. 소프트 스킬, 즉 소통, 협업, 문제 해결 능력도 여전히 중요합니다. 디지털 기술과 소프트 스킬을 조화롭게 결합할 수 있는 능력이 필요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "지속적인 학습과 적응은 이제 선택이 아닌 필수가 되었습니다. 새로운 기술이 지속적으로 등장하고 있으므로, 자신을 업데이트하고 새로운 기술을 배우는 것이 중요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "또한, 네트워킹도 경력 개발에서 중요한 역할을 합니다. 링크드인과 같은 플랫폼을 활용하여 전문가들과 연결하고, 정보를 공유하며, 새로운 기회를 찾는 것이 중요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "마지막으로, 디지털 시대에 맞는 경력 개발을 위해 멘토와 코치의 도움이 중요합니다. 그들은 경험과 지식을 바탕으로 우리를 지도하고, 새로운 기회를 알려줄 수 있습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "요약하면, 디지털 시대에 맞는 경력 개발을 위해 디지털 소양, 소프트 스킬, 지속적인 학습, 네트워킹, 멘토링이 중요합니다. 이러한 요소들을 종합적으로 고려하여 나만의 경력 개발 전략을 세우는 것이 중요합니다."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dl-3-lecture-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ko",
+   "level": "3",
+   "textType": "lecture",
+   "title": "ko-dl-3-lecture-001-q2",
+   "body": "",
+   "script": [
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "안녕하세요, 여러분. 오늘은 인공지능, 즉 AI에 대한 규제에 대해 이야기해 보겠습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "최근 몇 년 동안 AI 기술은 빠르게 발전해 왔습니다. 이 기술은 우리의 일상생활에 큰 변화를 가져왔죠."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "하지만, AI의 빠른 발전은 여러 가지 문제를 제기하기도 합니다. 특히, AI의 잠재적인 위험에 대한 우려가 커지고 있습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "예를 들어, AI 시스템이 잘못된 결정을 내릴 경우, 심각한 결과를 초래할 수 있습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "또, AI 기술이 악용될 경우, 개인 정보 보호와 같은 문제가 발생할 수 있습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "이러한 이유로, AI에 대한 포괄적인 규제가 필요합니다. 현재까지는 AI 규제에 대한 논의가 활발히 진행되고 있지만, 여전히 많은 과제가 남아 있습니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "첫째, AI 규제는 기술의 빠르게 변화하는 특성을 고려해야 합니다. 즉, 규제는 유연해야 합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "둘째, AI 규제는 글로벌 협력이 필요합니다. AI 기술은 국경을 넘나드는 문제이므로, 국제적인 협력이 중요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "셋째, AI 규제는 윤리적 рам워크가 필요합니다. AI 시스템이 사회에 미치는 영향을 고려하여, 윤리적인 원칙을 수립해야 합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "현재의 노력은 부적절할 수 있습니다. 더 강렬한 조치가 필요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "여러분, AI 기술은 우리 사회에 큰 편익을 가져올 수 있습니다. 하지만, 그 편익을 극대화하기 위해서는 적절한 규제가 필요합니다."
+    },
+    {
+     "speaker": "강사",
+     "voice": "female",
+     "text": "오늘의 강의가 여러분의 이해를 돕는 데 도움이 되길 바랍니다. 감사합니다."
     }
    ],
    "source": "llm",
@@ -1241,6 +3743,42 @@
    "verified": false
   },
   {
+   "id": "ko-dl-0p-advertisement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dl-0p-advertisement-002",
+   "stem": "What does the announcement say about the required documents?",
+   "choices": [
+    "A passport and a health certificate.",
+    "A passport, visa, and health declaration form.",
+    "A passport and visa only.",
+    "A visa and a work permit."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B, a passport, visa, and health declaration form. The text says, \"여권, 비자, 그리고 건강 신고서를 제출하세요.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-advertisement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-0p-advertisement-002",
+   "stem": "What does '제출하세요' mean here?",
+   "choices": [
+    "A. Bring",
+    "D. Forget",
+    "B. Leave",
+    "C. Submit"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C, submit. The text says, \"여권, 비자, 그리고 건강 신고서를 제출하세요.\", meaning \"Submit your passport, visa, and health declaration form.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dl-0p-announcement-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "0+",
@@ -1291,6 +3829,78 @@
    ],
    "answer": 2,
    "explanation": "The weather is described as 구름이 많을 것 같아요 (it looks like it will be cloudy) on Saturday.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-short_exchange-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dl-0p-short_exchange-002",
+   "stem": "Why is there a delay in newspaper delivery?",
+   "choices": [
+    "Because the delivery trucks broke down",
+    "Because of an unexpected event",
+    "Because the newspapers are not finished printing yet",
+    "Because the delivery workers are on strike"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is C. The speaker says 'Unexpected event'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-short_exchange-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-0p-short_exchange-002",
+   "stem": "In the phrase 'Unexpected event', what does 'event' mean here?",
+   "choices": [
+    "Something that is expected",
+    "Something that happens by chance",
+    "Something that is not important",
+    "Something that is planned"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B. The speaker says 'Unexpected event', which means that the event was not planned or expected.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-short_exchange-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dl-0p-short_exchange-003",
+   "stem": "What is the main reason for the fire danger?",
+   "choices": [
+    "The heat wave.",
+    "The strong winds.",
+    "The dry weather.",
+    "The lightning strikes."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the fire danger is due to the dry weather, specifically mentioning \"가뭄\" (drought).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-short_exchange-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dl-0p-short_exchange-004",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The weather forecast for the weekend",
+    "Their plans for dinner",
+    "The current state of the economy",
+    "A recent movie they watched"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is (C) The current state of the economy. This is evident from the keywords used in the conversation such as '인플레이션' (inflation) and '금리' (interest rates).",
    "source": "llm",
    "verified": false
   },
@@ -1367,6 +3977,78 @@
    "verified": false
   },
   {
+   "id": "ko-dl-0p-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dl-0p-voicemail-003",
+   "stem": "What is the name of the company moving?",
+   "choices": [
+    "Daegu Tech",
+    "Seoul Digital",
+    "Busan Innovations",
+    "Gangnam Electronics"
+   ],
+   "answer": 3,
+   "explanation": "The company name is given as '강남전자' in the voicemail.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dl-0p-voicemail-004",
+   "stem": "What is the purpose of the message?",
+   "choices": [
+    "To remind people to get vaccinated",
+    "To inform about a new flu strain",
+    "To advertise a new medicine",
+    "To announce a change in vaccination hours"
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the message is to remind people to get vaccinated, as indicated by the phrase '예방 접종을 받으세요' ('Please get vaccinated').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-voicemail-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dl-0p-voicemail-005",
+   "stem": "What is the purpose of the call?",
+   "choices": [
+    "To ask for volunteers for the mission.",
+    "To inform about a delay in the mission.",
+    "To announce a change in the mission's leadership.",
+    "To request more supplies for the mission."
+   ],
+   "answer": 1,
+   "explanation": "The purpose of the call is to inform the listener about a delay in the mission. The speaker says '미션이 지연될 것 같습니다.' which translates to 'It seems the mission will be delayed.' This is the main point of the voicemail.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-0p-voicemail-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-0p-voicemail-005",
+   "stem": "What does '지연' mean here?",
+   "choices": [
+    "Success",
+    "Advancement",
+    "Postponement",
+    "Cancellation"
+   ],
+   "answer": 2,
+   "explanation": "In this context, '지연' means 'postponement' or 'delay'. The speaker says '미션이 지연될 것 같습니다.' which indicates that the mission will not proceed as scheduled and is being delayed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dl-1-announcement-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1399,6 +4081,114 @@
    ],
    "answer": 1,
    "explanation": "The text says, \"새로운 종합 터미널 3호를 개장합니다.\" This means 'We are opening a new comprehensive Terminal 3.' The word '개장합니다' indicates that the terminal is opening.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dl-1-announcement-002",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To remind people to get their cars serviced",
+    "To inform about a new electric car charging station",
+    "To advertise a new type of electric car",
+    "To announce a sale on electric cars"
+   ],
+   "answer": 1,
+   "explanation": "The announcement is about a new electric car charging station. The relevant part of the text is: \"전기차 충전소 개소 안내\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1-announcement-002",
+   "stem": "What does \"개소\" mean here?",
+   "choices": [
+    "Renovation",
+    "Relocation",
+    "Opening",
+    "Closing"
+   ],
+   "answer": 2,
+   "explanation": "The word \"개소\" means opening here. The relevant part of the text is: \"전기차 충전소 개소 안내\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-announcement-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dl-1-announcement-002",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "A new electric car charging station is opening",
+    "Electric cars are now cheaper to buy",
+    "The city is promoting public transportation",
+    "Car servicing is now free for electric cars"
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the announcement is that a new electric car charging station is opening. The relevant part of the text is: \"전기차 충전소 개소 안내\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-announcement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dl-1-announcement-003",
+   "stem": "What country will join South Korea for the military exercise?",
+   "choices": [
+    "Japan",
+    "Russia",
+    "China",
+    "United States"
+   ],
+   "answer": 0,
+   "explanation": "The text states that Japan (일본) will participate in the military exercise with South Korea (한국).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-announcement-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dl-1-announcement-003",
+   "stem": "What is the main purpose of the announcement?",
+   "choices": [
+    "To inform about a military conflict",
+    "To announce a joint military exercise",
+    "To warn about a natural disaster",
+    "To schedule a cultural event"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the announcement is to inform about the upcoming joint military exercise between South Korea and Japan, as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-announcement-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1-announcement-003",
+   "stem": "What does the word \"훈련\" mean here?",
+   "choices": [
+    "War",
+    "Disaster",
+    "Exercise",
+    "Conflict"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"훈련\" refers to the military exercise that will be conducted jointly by South Korea and Japan.",
    "source": "llm",
    "verified": false
   },
@@ -1493,6 +4283,42 @@
    "verified": false
   },
   {
+   "id": "ko-dl-1-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dl-1-conversation-003",
+   "stem": "What is the location of the new airport terminal?",
+   "choices": [
+    "Jeju International Airport",
+    "Seoul Incheon Airport",
+    "Incheon International Airport",
+    "Gimpo International Airport"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'Incheon International Airport' because the text states '인천국제공항의 새로운 터미널'. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1-conversation-003",
+   "stem": "What does '열렸어요' mean here?",
+   "choices": [
+    "Closed",
+    "Under construction",
+    "Opened",
+    "Under renovation"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'Opened' because the text states '새로운 터미널이 열렸어요', indicating that the new terminal has opened. The other options do not match the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dl-1-instructions-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1525,6 +4351,60 @@
    ],
    "answer": 3,
    "explanation": "The correct answer is 'to provide instructions for a humanitarian aid convoy'. The text mentions '구호 물자 대열' (humanitarian aid convoy) and provides specific instructions related to it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dl-1-voicemail-001",
+   "stem": "What is the date of the cleanup event?",
+   "choices": [
+    "May 20",
+    "May 15",
+    "May 30",
+    "May 25"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is May 25, as stated in the voicemail: \"청소 일정은 5월 25일 오전 9시부터입니다.\" The other dates are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-voicemail-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dl-1-voicemail-001",
+   "stem": "What is the main purpose of the voicemail?",
+   "choices": [
+    "To request volunteers for a local festival",
+    "To schedule a meeting for community leaders",
+    "To inform about a new community policy",
+    "To announce a community cleanup event"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the voicemail is to announce a community cleanup event. This is clear from the statements: \"모든 이웃 여러분께 청소 참여를 요청드립니다\" and \"청소 일정은 5월 25일 오전 9시부터입니다.\" The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-voicemail-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1-voicemail-001",
+   "stem": "What does \"참여\" mean here?",
+   "choices": [
+    "Policy",
+    "Donation",
+    "Meeting",
+    "Participation"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"참여\" means \"participation.\" The speaker says \"청소 참여를 요청드립니다,\" asking for participation in the cleanup. The other options do not fit the context.",
    "source": "llm",
    "verified": false
   },
@@ -1579,6 +4459,204 @@
    ],
    "answer": 1,
    "explanation": "The announcer mentions \"비와 바람\" (rain and wind) to warn about the upcoming weather conditions. The relevant phrase is \"내일부터 비와 바람이 더 강해질 것\" which translates to \"from tomorrow, rain and wind will be stronger.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dl-1-weather-002",
+   "stem": "What is the weather forecast for the fishing season?",
+   "choices": [
+    "Cloudy with occasional rain",
+    "Warm with low winds",
+    "Sunny with high winds",
+    "Cold with snow"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the weather will be '구름 많고 때로는 비가 올 것입니다.', which means 'Cloudy with occasional rain.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ko-dl-1-weather-002",
+   "stem": "Why is this announcement being made?",
+   "choices": [
+    "To inform fishermen about the upcoming fishing season",
+    "To warn fishermen about dangerous weather conditions",
+    "To cancel the fishing season due to bad weather",
+    "To announce a new fishing regulation"
+   ],
+   "answer": 0,
+   "explanation": "The announcement starts with '어업계에 알립니다.', which means 'We announce to the fishing industry.' and continues to provide information about the fishing season and weather conditions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1-weather-002",
+   "stem": "What does '어업계' mean here?",
+   "choices": [
+    "Fishing industry",
+    "Fishermen",
+    "Fishing season",
+    "Weather forecast"
+   ],
+   "answer": 0,
+   "explanation": "'어업계' refers to the 'fishing industry', as it is the group being addressed in the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dl-1-weather-003",
+   "stem": "What is the main reason for the factory closure?",
+   "choices": [
+    "Lack of employees",
+    "Power outage",
+    "Heavy rain",
+    "Equipment failure"
+   ],
+   "answer": 2,
+   "explanation": "The main reason for the factory closure is stated as \"비로 인해\" (due to rain).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dl-1-weather-003",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "A temporary factory closure",
+    "A change in working hours",
+    "A new production schedule",
+    "A safety inspection"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the announcement is a temporary factory closure, as indicated by \"공장이 임시로 닫히게 되었습니다\" (The factory will temporarily close).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1-weather-003",
+   "stem": "What does \"임시로\" mean here?",
+   "choices": [
+    "Immediately",
+    "Completely",
+    "Permanently",
+    "Temporarily"
+   ],
+   "answer": 3,
+   "explanation": "\"임시로\" in this context means temporarily, as in \"공장이 임시로 닫히게 되었습니다\" (The factory will temporarily close).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dl-1-weather-004",
+   "stem": "What will the weather be like on Saturday?",
+   "choices": [
+    "cold with snow",
+    "sunny and warm",
+    "cloudy with a chance of rain",
+    "windy with thunderstorms"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'cloudy with a chance of rain'. The weather forecast states that on Saturday, the sky will be cloudy and there is a possibility of rain, as indicated by the phrase '토요일은 구름이 많고 비가 올 가능성이 있습니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1-weather-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1-weather-004",
+   "stem": "In the forecast, what does '일요일은 맑은 날씨가 예상된다' mean?",
+   "choices": [
+    "Sunday will be snowy",
+    "Sunday will be rainy",
+    "Sunday will be sunny",
+    "Sunday will be cloudy"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'Sunday will be sunny'. The phrase '일요일은 맑은 날씨가 예상된다' means that Sunday is expected to have clear weather, which implies it will be sunny.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dl-1p-announcement-001",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "A training program for peacekeepers is starting in Africa.",
+    "A new peacekeeping force is being deployed to Africa.",
+    "A peacekeeping force is being withdrawn from Africa.",
+    "A new peacekeeping force is being deployed to Europe."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that a new peacekeeping force is being deployed to Africa. This is stated clearly in the announcement: '아프리카에 새로운 평화유지군 파병이 시작됩니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dl-1p-announcement-001",
+   "stem": "Where will the peacekeepers be deployed?",
+   "choices": [
+    "South America",
+    "Asia",
+    "Africa",
+    "Europe"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the peacekeepers will be deployed to Africa: '아프리카에 새로운 평화유지군 파병이 시작됩니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1p-announcement-001",
+   "stem": "What does '파병' mean here?",
+   "choices": [
+    "Deployment of troops",
+    "Supply of troops",
+    "Training of troops",
+    "Withdrawal of troops"
+   ],
+   "answer": 0,
+   "explanation": "The word '파병' in this context means the deployment of troops. The announcement states: '아프리카에 새로운 평화유지군 파병이 시작됩니다.' indicating that troops are being sent to Africa.",
    "source": "llm",
    "verified": false
   },
@@ -1687,6 +4765,168 @@
    ],
    "answer": 0,
    "explanation": "\"임대료\" refers to the cost of renting a house in this context. The male speaker uses this term to discuss the rising costs associated with housing shortages: \"주택 부족으로 인해 임대료가 계속 오르고 있어요\" (Due to the housing shortage, rents keep rising).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dl-1p-conversation-003",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The disadvantages of electric cars",
+    "The price of electric cars",
+    "The history of electric cars",
+    "A new electric car model"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is a new electric car model. This is clear from the repeated mentions of the car's features and specifications, such as '새로운 전기차 모델' and '이 차의 특징'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dl-1p-conversation-003",
+   "stem": "What is one feature of the new electric car?",
+   "choices": [
+    "It has a longer battery life",
+    "It runs on gasoline",
+    "It is very slow",
+    "It is cheaper than other cars"
+   ],
+   "answer": 0,
+   "explanation": "One feature of the new electric car is that it has a longer battery life. This is stated in the conversation with '이 차는 배터리 수명이 더 길어요'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1p-conversation-003",
+   "stem": "What is the meaning of '특징' in this conversation?",
+   "choices": [
+    "Sizes",
+    "Features",
+    "Colors",
+    "Problems"
+   ],
+   "answer": 1,
+   "explanation": "'특징' in this conversation refers to the features of the new electric car, as in '이 차의 특징'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dl-1p-conversation-004",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Parents' worries about their children using smartphones",
+    "New smartphone features for children",
+    "The benefits of smartphones for children's education",
+    "How to choose the best smartphone for a child"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is parents' worries about children using smartphones, as indicated by lines like '아이들이 스마트폰을 너무 많이 쓰면 어떻게 될까요?' and '저는 제 아이에게 스마트폰을주지 않기로 했어요.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dl-1p-conversation-004",
+   "stem": "What does the male speaker say is his main concern about children using smartphones?",
+   "choices": [
+    "That they might become addicted to the internet",
+    "That they might waste too much time on games",
+    "That they might be exposed to inappropriate content",
+    "That they might not get enough exercise"
+   ],
+   "answer": 0,
+   "explanation": "The male speaker says '주로 인터넷 중독이 걱정돼요'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1p-conversation-004",
+   "stem": "In this conversation, what does '시간을 보내다' mean?",
+   "choices": [
+    "To lose time",
+    "To receive time",
+    "To spend time",
+    "To save time"
+   ],
+   "answer": 2,
+   "explanation": "'시간을 보내다' here means 'to spend time', as in '아이들이 스마트폰으로 시간을 보내면 교육에 영향을 줄 거예요.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dl-1p-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "A candidate's ideas for local tourism",
+    "A candidate's views on local education",
+    "A candidate's stance on local transportation",
+    "A candidate's plan for local business development"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the candidate's views on local education, as the text mentions improving schools and increasing teacher salaries.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dl-1p-interview-001",
+   "stem": "What specific issue does the candidate want to address in local education?",
+   "choices": [
+    "Increasing teacher salaries",
+    "Reducing administrative costs",
+    "Expanding extracurricular activities",
+    "Decreasing school hours"
+   ],
+   "answer": 0,
+   "explanation": "The candidate wants to address increasing teacher salaries, as stated in the text: \"교사들의 급여를 늘리고 싶습니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1p-interview-001",
+   "stem": "What does the candidate mean by saying \"학교 시설\"?",
+   "choices": [
+    "School curriculum",
+    "School uniforms",
+    "School facilities",
+    "School hours"
+   ],
+   "answer": 2,
+   "explanation": "The candidate uses \"학교 시설\" to refer to school facilities, as they mention improving them in the text: \"학교 시설을 개선하고 싶습니다.\"",
    "source": "llm",
    "verified": false
   },
@@ -1853,6 +5093,222 @@
    "verified": false
   },
   {
+   "id": "ko-dl-1p-news_brief-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dl-1p-news_brief-005",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To explain the architectural design of a new hospital.",
+    "To advertise job openings at a new hospital.",
+    "To inform the public about a new hospital specializing in children's health.",
+    "To discuss the financial struggles of a new hospital."
+   ],
+   "answer": 2,
+   "explanation": "The announcement's main purpose is to inform the public about the new children's hospital. This is clear from the repeated mentions of the hospital's specialization in children's health, such as '어린이 건강에 특화된 병원' and '어린이 환자들을 위한 최신 의료 장비'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-news_brief-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dl-1p-news_brief-005",
+   "stem": "Where is the new hospital located?",
+   "choices": [
+    "In Busan.",
+    "Near Incheon Airport.",
+    "In the heart of Seoul.",
+    "In the suburbs of Seoul."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the hospital is located '서울 시내 중심부에', which translates to 'in the heart of Seoul'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-news_brief-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1p-news_brief-005",
+   "stem": "What does '개원' mean in this context?",
+   "choices": [
+    "To renovate.",
+    "To celebrate.",
+    "To close down.",
+    "To open."
+   ],
+   "answer": 3,
+   "explanation": "'개원' in this context means 'to open'. The text says '새로운 어린이 병원이 개원하여', indicating that the new children's hospital has opened.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-phone_call-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dl-1p-phone_call-001",
+   "stem": "What is the main idea of this conversation?",
+   "choices": [
+    "A weather forecast for the weekend.",
+    "An announcement about a new flood prevention system.",
+    "A discussion about recent heavy rains in the area.",
+    "A warning about possible flooding in Seongnam."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is a warning about possible flooding in Seongnam. The caller mentions that heavy rains are expected to continue for the next two days and that Seongnam is at risk of flooding.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-phone_call-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dl-1p-phone_call-001",
+   "stem": "What is the specific risk mentioned for Seongnam?",
+   "choices": [
+    "Extreme heat and drought.",
+    "Tornadoes and hail.",
+    "Strong winds and power outages.",
+    "Heavy rains and flooding."
+   ],
+   "answer": 3,
+   "explanation": "The specific risk mentioned is heavy rains and flooding. The caller states that Seongnam is at risk of flooding due to the expected heavy rains.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-phone_call-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1p-phone_call-001",
+   "stem": "What does \"홍수\" mean here?",
+   "choices": [
+    "A natural disaster involving extreme heat.",
+    "An overflow of water causing damage.",
+    "A type of heavy rain.",
+    "A strong wind."
+   ],
+   "answer": 1,
+   "explanation": "Here, \"홍수\" means an overflow of water causing damage. The caller warns about the risk of flooding in Seongnam.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-phone_call-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dl-1p-phone_call-002",
+   "stem": "What is the main topic of this phone call?",
+   "choices": [
+    "A traffic report",
+    "A weather forecast",
+    "A space launch",
+    "A movie review"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the phone call is clearly about a space launch. This is evident from the repeated mentions of the launch, such as \"발사에 대한\" and \"발사 시간이\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-phone_call-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dl-1p-phone_call-002",
+   "stem": "When is the space launch scheduled to take place?",
+   "choices": [
+    "Tomorrow at 4:00 PM",
+    "Today at 4:00 PM",
+    "Today at 4:00 AM",
+    "Tomorrow at 4:00 AM"
+   ],
+   "answer": 0,
+   "explanation": "The space launch is scheduled to take place tomorrow at 4:00 PM. This is stated in the line \"내일 오후 4시에 발사할 예정이에요.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-1p-phone_call-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-1p-phone_call-002",
+   "stem": "What does 발사 mean in this context?",
+   "choices": [
+    "Explosion",
+    "Launch",
+    "Landing",
+    "Takeoff"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 발사 means \"launch.\" This is evident from the repeated mentions of the space launch, such as \"발사에 대한\" and \"발사 시간이.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-briefing-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-briefing-001",
+   "stem": "What is the main topic of the briefing?",
+   "choices": [
+    "The participants and their commitments to climate action.",
+    "The schedule of events for the summit.",
+    "The economic impact of the summit on Seoul.",
+    "The history of climate change negotiations."
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the briefing is the participants and their commitments to climate action. This is evident from the repeated mentions of different countries and their pledges, such as '미국 대표는 탄소 배출을 50% 감소시키겠다는 약속을 재확인했습니다' and '유럽 연합은 재생 가능 에너지 목표를 2030년까지 40%로 높였습니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-briefing-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-briefing-001",
+   "stem": "What is one specific commitment made by the United States?",
+   "choices": [
+    "To invest $100 billion in green technology.",
+    "To reduce carbon emissions by 50%.",
+    "To plant 1 billion trees by 2030.",
+    "To achieve carbon neutrality by 2050."
+   ],
+   "answer": 1,
+   "explanation": "The United States committed to reducing carbon emissions by 50%, as stated in '미국 대표는 탄소 배출을 50% 감소시키겠다는 약속을 재확인했습니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-briefing-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-briefing-001",
+   "stem": "What does '재확인' mean here?",
+   "choices": [
+    "To confirm again.",
+    "To suggest.",
+    "To propose.",
+    "To deny."
+   ],
+   "answer": 0,
+   "explanation": "In this context, '재확인' means 'to confirm again'. The sentence '미국 대표는 탄소 배출을 50% 감소시키겠다는 약속을 재확인했습니다' indicates that the U.S. representative reaffirmed or confirmed again their commitment to reduce carbon emissions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dl-2-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -1903,6 +5359,276 @@
    ],
    "answer": 2,
    "explanation": "The father suggests '불필요한 내용에 노출되지 않도록 필터링을 하는 게 좋을 것 같아요.' Here, '필터링' refers to restricting access to inappropriate content.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-conversation-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A new app that helps users manage their finances",
+    "A social media platform for professionals",
+    "A restaurant recommendation app",
+    "A travel planning application"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is clearly the launch of a new app called 'MoneyMate' that helps users manage their finances. This is evident from the repeated mentions of the app's features and purpose, such as '재정 관리 앱' and '예산 설정'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-conversation-002",
+   "stem": "What feature does the app have that allows users to track their spending?",
+   "choices": [
+    "It connects to users' bank accounts",
+    "It uses GPS to track purchases",
+    "It scans receipts using the phone's camera",
+    "It requires users to manually enter each expense"
+   ],
+   "answer": 0,
+   "explanation": "The app tracks spending by connecting to users' bank accounts, as stated in the text: '은행 계좌에 연결하여 지출을 자동으로 추적합니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-conversation-002",
+   "stem": "What does '예산 설정' mean here?",
+   "choices": [
+    "Setting a budget",
+    "Creating a shopping list",
+    "Saving money",
+    "Tracking expenses"
+   ],
+   "answer": 0,
+   "explanation": "In this context, '예산 설정' refers to setting a budget. The text mentions this as one of the app's features: '예산 설정 및 추적 기능'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-interview-001",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The history of Korean-American trade relations",
+    "The benefits of the new trade agreement for both countries",
+    "The impact of the new trade agreement on Korean exports",
+    "The challenges faced by Korean businesses in the American market"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the interview is the benefits of the new trade agreement for both countries. This is evident in the discussion about increased market access and economic growth, such as \"새로운 무역 협정은 두 나라 모두에게 큰 기회를 제공할 것입니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-interview-001",
+   "stem": "According to the minister, what is one specific benefit of the new trade agreement for Korea?",
+   "choices": [
+    "Improved intellectual property protections",
+    "Reduced tariffs on Korean automobiles",
+    "Increased access to the American agricultural market",
+    "More opportunities for Korean students to study in the US"
+   ],
+   "answer": 1,
+   "explanation": "The minister mentions that \"한국 자동차에 대한 관세가 크게 낮아질 것입니다.\" This indicates that reduced tariffs on Korean automobiles is a specific benefit of the new trade agreement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-interview-001",
+   "stem": "In the interview, what does \"시장 접근성\" refer to?",
+   "choices": [
+    "The quality of products in a market",
+    "The size of a market",
+    "The price of goods in a market",
+    "The ability to enter and compete in a market"
+   ],
+   "answer": 3,
+   "explanation": "\"시장 접근성\" refers to the ability to enter and compete in a market. In the interview, it is used in the context of \"시장 접근성이 크게 개선될 것입니다,\" indicating that it will be easier for businesses to enter and compete in the American market.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-interview-002",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The side effects of different COVID-19 vaccines",
+    "Korea's efforts to speed up COVID-19 vaccinations",
+    "The challenges of distributing COVID-19 vaccines in rural areas",
+    "The global shortage of COVID-19 vaccines"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is Korea's efforts to speed up COVID-19 vaccinations. This is evident from the repeated mentions of vaccination acceleration, increased supply, and the government's strategies to achieve higher vaccination rates, such as '코로나19 백신 접종 속도를 높이는 것' and '백신 접종률을 높이기 위한 정부의 전략'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-interview-002",
+   "stem": "What is one of the reasons for the recent increase in vaccine supply?",
+   "choices": [
+    "More people are volunteering to be vaccinated",
+    "International aid organizations are donating vaccines",
+    "Domestic production of vaccines has increased",
+    "The government has lowered the age limit for vaccination"
+   ],
+   "answer": 2,
+   "explanation": "One reason for the recent increase in vaccine supply is that domestic production of vaccines has increased. This is explicitly stated in the text: '국내 백신 생산량이 증가했다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-interview-002",
+   "stem": "What does '확대' mean here?",
+   "choices": [
+    "To test",
+    "To expand",
+    "To delay",
+    "To reduce"
+   ],
+   "answer": 1,
+   "explanation": "Here, '확대' means 'to expand'. This is clear from the context: '백신 생산을 확대하고 접종을 확대하는 것'. The government is expanding both production and vaccination efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-interview-003",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "A public forum on improving city services",
+    "An investigation into suspicious contracts at City Hall",
+    "A new policy to reduce corruption in city government",
+    "The resignation of a city official due to health reasons"
+   ],
+   "answer": 1,
+   "explanation": "The text discusses an investigation into suspicious contracts at City Hall. The reporter asks about \"수상한 계약\" (suspicious contracts), and the official confirms they are investigating \"도시관리국\" (the Department of Urban Management) for possible corruption.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-interview-003",
+   "stem": "Who is leading the investigation into the suspicious contracts?",
+   "choices": [
+    "The mayor",
+    "The Department of Urban Management",
+    "A private law firm",
+    "The Anti-Corruption and Civil Rights Commission"
+   ],
+   "answer": 3,
+   "explanation": "The text states that \"반부패 및 민권위원회\" (the Anti-Corruption and Civil Rights Commission) is leading the investigation. The official says \"우리 위원회\" (our commission) is currently investigating the matter.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-interview-003",
+   "stem": "In the text, what does \"정확한 사실\" mean?",
+   "choices": [
+    "Accurate facts",
+    "Financial records",
+    "Witness testimonies",
+    "Legal documents"
+   ],
+   "answer": 0,
+   "explanation": "The official uses the phrase \"정확한 사실\" to emphasize the need to find out the truth about the suspicious contracts. This means they are seeking \"accurate facts\" to understand what happened.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-news-001",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "A comparison of this year's weather with last year's.",
+    "A new government policy to combat climate change.",
+    "The opening of new cooling centers in major cities.",
+    "The effects of a prolonged heat wave in Korea."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the effects of a prolonged heat wave in Korea, as indicated by phrases like 'Record-breaking heat wave', 'prolonged high temperatures', and 'temperatures soaring above 35 degrees Celsius'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-news-001",
+   "stem": "What is one of the consequences of the heat wave mentioned in the report?",
+   "choices": [
+    "An increase in the number of people working outdoors.",
+    "A decrease in water consumption.",
+    "A surge in tourism to coastal areas.",
+    "Increased electricity demand due to air conditioning use."
+   ],
+   "answer": 3,
+   "explanation": "The report mentions '전국적으로 전기 사용량이 급증' (electricity use has surged nationwide), which is a consequence of the heat wave.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-news-001",
+   "stem": "What does '열사병 환자' refer to in this context?",
+   "choices": [
+    "Workers who are exposed to the sun.",
+    "Patients suffering from heatstroke.",
+    "Tourists visiting beaches.",
+    "People who are enjoying the hot weather."
+   ],
+   "answer": 1,
+   "explanation": "'열사병 환자' refers to 'patients suffering from heatstroke', as the context discusses the health impacts of the prolonged heat wave.",
    "source": "llm",
    "verified": false
   },
@@ -1961,6 +5687,60 @@
    "verified": false
   },
   {
+   "id": "ko-dl-2-news-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-news-003",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The effectiveness of the current military training program",
+    "The possibility of abolishing compulsory military service entirely",
+    "The economic benefits of reducing the length of military service",
+    "The potential impact of shortening military service on national defense"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the debate is the potential impact of shortening military service on national defense, as indicated by the phrases \"군복무 기간 단축\" and \"국방력에 미치는 영향\" in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-news-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-news-003",
+   "stem": "What is one argument presented by the opponents of shortening military service?",
+   "choices": [
+    "It would lead to a decrease in the number of soldiers",
+    "It would cause an increase in the number of military bases",
+    "It would result in higher defense spending",
+    "It would make it difficult to maintain current military capabilities"
+   ],
+   "answer": 3,
+   "explanation": "One argument presented by the opponents is that shortening military service \"현재 군사 능력 유지에 어려움을 줄 수 있다\" (\"would make it difficult to maintain current military capabilities\").",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-news-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-news-003",
+   "stem": "What does \"국방력\" mean here?",
+   "choices": [
+    "Defense industry",
+    "Military expenditure",
+    "National defense strategy",
+    "National defense capabilities"
+   ],
+   "answer": 3,
+   "explanation": "\"국방력\" here refers to \"national defense capabilities,\" as it is used in the context of discussing the impact of shortening military service on the country's ability to defend itself, \"국방력에 미치는 영향.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dl-2-report-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2011,6 +5791,168 @@
    ],
    "answer": 3,
    "explanation": "In this context, \"이주\" means to relocate. The male speaker mentions \"공장의 이주 과정\" (the process of the factory's relocation), indicating that the factory is moving to a new location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-report-002",
+   "stem": "What is the main purpose of this report?",
+   "choices": [
+    "To announce a new policy for distributing humanitarian aid.",
+    "To describe the challenges faced by relief workers in delivering aid.",
+    "To provide an update on the progress of aid convoys to displaced families in the North.",
+    "To criticize the government's response to the humanitarian crisis."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the report is to provide an update on the progress of aid convoys to displaced families in the North. The report mentions that the aid convoys have successfully delivered supplies to several regions, including '가장 최근에 북부 지역에 위치한 세 개의 마을에 식량과 의류, 의약품 등을 공급했다' (recently supplied food, clothing, and medicine to three villages in the northern region).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-report-002",
+   "stem": "Which of the following is NOT mentioned as a type of aid delivered by the convoys?",
+   "choices": [
+    "Food",
+    "Clothing",
+    "Medical supplies",
+    "Construction materials"
+   ],
+   "answer": 3,
+   "explanation": "The report mentions that the aid convoys have delivered '식량과 의류, 의약품' (food, clothing, and medicine), but it does not mention construction materials. The report focuses on the delivery of essential supplies to displaced families.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-report-002",
+   "stem": "What does the phrase '지역 사회의 협력' mean here?",
+   "choices": [
+    "International aid organizations",
+    "Local government regulations",
+    "Military assistance",
+    "Community support and collaboration"
+   ],
+   "answer": 3,
+   "explanation": "The phrase '지역 사회의 협력' (community support and collaboration) refers to the cooperation between local communities and aid organizations. The report mentions that '지역 사회의 협력' has been crucial in ensuring the safe and efficient delivery of aid to displaced families, stating that '지역 사회의 협력 thanks to the cooperation of local communities, the aid convoys have been able to reach even the most remote areas.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-report-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dl-2-report-003",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "A cyberattack on a major public utility",
+    "The response of emergency services to a blackout",
+    "A power outage caused by severe weather",
+    "The implementation of new cybersecurity measures"
+   ],
+   "answer": 0,
+   "explanation": "The report discusses a cyberattack on the Korean Electric Power Corporation (KEPCO), which disrupted the power grid. The main topic is clearly stated in the first sentence: 'KEPCO는 최근 사이버 공격으로 인해 전기망이 마비되었습니다.' The other choices are not the main focus of the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-report-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dl-2-report-003",
+   "stem": "What was the direct result of the cyberattack on KEPCO?",
+   "choices": [
+    "An increase in power consumption",
+    "A temporary shutdown of government websites",
+    "The implementation of new security protocols",
+    "A widespread power outage"
+   ],
+   "answer": 3,
+   "explanation": "The direct result of the cyberattack was a widespread power outage. The report states: '이 공격으로 인해 전국적으로 전력 공급이 중단되어 약 200만 가구가 정전을 경험했습니다.' The other choices are not direct results of the cyberattack.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2-report-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2-report-003",
+   "stem": "What does '사이버 보안 대책' refer to in this context?",
+   "choices": [
+    "A new type of cyber weapon",
+    "A government agency responsible for cybersecurity",
+    "Measures to prevent future cyberattacks",
+    "A software update to fix vulnerabilities"
+   ],
+   "answer": 2,
+   "explanation": "In this context, '사이버 보안 대책' refers to measures to prevent future cyberattacks. The report mentions: 'KEPCO는 사이버 보안 대책을 강화하고 있습니다.' The other choices do not accurately describe the context in which this phrase is used.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-documentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dl-2p-documentary-001",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "A cultural event",
+    "A community celebration",
+    "A traffic update",
+    "A flood warning"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is a flood warning. The announcement mentions rising river levels, expected heavy rainfall, and the need for residents to prepare. For example, it says '강수량 증가 및 하천 수위 상승으로 인한 홍수 경보가 발령되었습니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-documentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ko-dl-2p-documentary-001",
+   "stem": "What is one of the specific actions residents are advised to take?",
+   "choices": [
+    "Move to higher ground",
+    "Check their car's oil",
+    "Plant more trees",
+    "Attend a community meeting"
+   ],
+   "answer": 0,
+   "explanation": "Residents are advised to move to higher ground. The announcement states '저수지 근처 또는 하천가까이의 주민은 안전지대로 대피하시기 바랍니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-documentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2p-documentary-001",
+   "stem": "What does '대피하시기 바랍니다' mean here?",
+   "choices": [
+    "Please check your car",
+    "Please celebrate",
+    "Please plant trees",
+    "Please evacuate"
+   ],
+   "answer": 3,
+   "explanation": "'대피하시기 바랍니다' means 'Please evacuate' in this context. It is used to instruct residents to move to a safer location due to the flood warning. The full phrase is '저수지 근처 또는 하천가까이의 주민은 안전지대로 대피하시기 바랍니다.'",
    "source": "llm",
    "verified": false
   },
@@ -2177,6 +6119,114 @@
    "verified": false
   },
   {
+   "id": "ko-dl-2p-news_analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dl-2p-news_analysis-002",
+   "stem": "What is the main challenge highlighted in this analysis of humanitarian aid convoys?",
+   "choices": [
+    "The difficulty of coordinating between different aid organizations",
+    "The lack of funding for humanitarian efforts",
+    "The inefficiency of transportation routes",
+    "The impact of armed conflict on the delivery of aid"
+   ],
+   "answer": 3,
+   "explanation": "The text discusses how \"conflict regions\" make it \"challenging\" to deliver aid, mentioning \"armed conflicts\" and \"security threats\". This is the central theme around which the analysis is structured.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-news_analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dl-2p-news_analysis-002",
+   "stem": "What can be inferred about the role of local communities in humanitarian aid efforts?",
+   "choices": [
+    "They are responsible for funding the convoys",
+    "They are often overlooked in the planning process",
+    "They play a crucial role in ensuring the safety and effectiveness of aid delivery",
+    "They primarily handle the distribution of aid"
+   ],
+   "answer": 2,
+   "explanation": "The text states that \"local communities\" are \"essential\" for \"navigating complex environments\" and \"ensuring the safety of aid workers\". This implies their crucial role in aid efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-news_analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2p-news_analysis-002",
+   "stem": "What does \"보조금\" refer to in this context?",
+   "choices": [
+    "A document required for crossing borders",
+    "Financial support provided to aid organizations",
+    "A specific route used for delivering aid",
+    "A type of aid convoy vehicle"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions that \"aid organizations\" receive \"보조금\" to cover operational costs, indicating it refers to financial support.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-news_analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dl-2p-news_analysis-003",
+   "stem": "What is the main idea of the news analysis?",
+   "choices": [
+    "The cultural exchange program has had a minimal impact on diplomatic relations.",
+    "The cultural exchange program has faced numerous logistical challenges.",
+    "The cultural exchange program has significantly improved diplomatic relations between Korea and Japan.",
+    "The cultural exchange program has been a financial success, attracting many participants."
+   ],
+   "answer": 2,
+   "explanation": "The text focuses on the positive impact of the cultural exchange program on diplomatic relations, as seen in the phrase '이 문화 교류 프로그램은 한일 간의 외교 관계를 크게 개선하는 데 기여했습니다.' and the discussion of specific examples of improved relations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-news_analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dl-2p-news_analysis-003",
+   "stem": "What can be inferred about the future of the cultural exchange program?",
+   "choices": [
+    "The program will focus more on economic exchanges than cultural ones.",
+    "The program will remain the same with no planned changes.",
+    "The program is likely to expand to include more countries.",
+    "The program will be discontinued due to lack of funding."
+   ],
+   "answer": 2,
+   "explanation": "The text mentions that the program has '긍정적인 평가를 받아 다른 국가에도 확대될 예정입니다.', suggesting that the program is likely to expand to include more countries.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-news_analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2p-news_analysis-003",
+   "stem": "In the text, what does '외교적 채널' mean?",
+   "choices": [
+    "A method of transporting cultural artifacts between countries.",
+    "A type of art exhibition featuring diplomatic works.",
+    "A diplomatic channel, or a means of official communication between governments.",
+    "A channel for broadcasting international news."
+   ],
+   "answer": 2,
+   "explanation": "The text uses '외교적 채널' to refer to '이 프로그램은 한일 간의 외교적 채널을 강화하고, 상호 이해와 협력을 증진시켰습니다.', indicating that it means a diplomatic channel or means of official communication between governments.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dl-2p-panel_discussion-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2285,6 +6335,222 @@
    "verified": false
   },
   {
+   "id": "ko-dl-2p-panel_discussion-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dl-2p-panel_discussion-003",
+   "stem": "What is the main topic of the discussion?",
+   "choices": [
+    "How to completely ban smartphones for children.",
+    "The benefits of smartphones for children's education.",
+    "The role of smartphones in childhood development and potential risks.",
+    "The impact of smartphones on children's social skills."
+   ],
+   "answer": 2,
+   "explanation": "The discussion focuses on the influence of smartphones on children's development, both positive and negative, as indicated by phrases like '아이들의 발달에 미치는 영향을 논의' and '스마트폰 사용의 리스크'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-panel_discussion-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dl-2p-panel_discussion-003",
+   "stem": "What can be inferred about the panelists' views on smartphone use by children?",
+   "choices": [
+    "They think smartphones should be used only for educational purposes.",
+    "They have mixed views but agree on the need for guidelines.",
+    "They are all against any smartphone use by children.",
+    "They believe smartphones are essential for children's development."
+   ],
+   "answer": 1,
+   "explanation": "Panelists express various concerns and benefits, such as '사회적 기술의 저하' and '교육적 기회의 증대', but agree on the need for '이용을 위한 지침'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-panel_discussion-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2p-panel_discussion-003",
+   "stem": "What does '중독성' mean in this context?",
+   "choices": [
+    "The ease of use.",
+    "The ability to learn new things quickly.",
+    "The high cost.",
+    "The tendency to become addicted."
+   ],
+   "answer": 3,
+   "explanation": "The word '중독성' is used to discuss the addictive nature of smartphones, as in '스마트폰의 중독성'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-panel_discussion-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dl-2p-panel_discussion-004",
+   "stem": "What is the main topic of the panel discussion?",
+   "choices": [
+    "the importance of technology in search-and-rescue operations",
+    "the challenges of coordinating international search-and-rescue efforts",
+    "the success of a recent joint search-and-rescue operation",
+    "the historical context of search-and-rescue operations in Korea"
+   ],
+   "answer": 1,
+   "explanation": "The panel discussion focuses on the challenges of coordinating international search-and-rescue efforts. This is evident from the panelists' discussion of communication barriers, resource allocation, and cultural differences.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-panel_discussion-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dl-2p-panel_discussion-004",
+   "stem": "What can be inferred about the relationship between the Korean and Japanese search-and-rescue teams?",
+   "choices": [
+    "They are in direct competition with each other.",
+    "They have never worked together before.",
+    "They have had difficulties in the past due to political tensions.",
+    "They have a long history of successful collaboration."
+   ],
+   "answer": 2,
+   "explanation": "The inference that the Korean and Japanese search-and-rescue teams have had difficulties in the past due to political tensions can be drawn from the moderator's statement: \"과거 정치적 긴장으로 인해 협력이 어려웠던 경험이 있죠.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-panel_discussion-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2p-panel_discussion-004",
+   "stem": "What does \"협력\" mean here?",
+   "choices": [
+    "negotiation",
+    "conflict",
+    "competition",
+    "cooperation"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"협력\" means cooperation. The moderator uses it to discuss the challenges of coordinating international search-and-rescue efforts, saying: \"국제적 구출작전의 협력이라는 것은 항상 쉬운 일이 아닙니다.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-speech-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dl-2p-speech-001",
+   "stem": "What is the main topic of this speech?",
+   "choices": [
+    "The problem of coastal erosion and efforts to address it",
+    "The effects of climate change on Korean agriculture",
+    "The history of coastal development in Korea",
+    "The impact of tourism on coastal cities"
+   ],
+   "answer": 0,
+   "explanation": "The speaker explicitly states that the topic is \"our coastlines are disappearing, and we must act now to protect them\". This indicates that the main topic is coastal erosion and the efforts to address it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-speech-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ko-dl-2p-speech-001",
+   "stem": "According to the speaker, what is one of the major causes of coastal erosion?",
+   "choices": [
+    "Deforestation",
+    "Excessive fishing",
+    "Rising sea levels",
+    "Increased tourism"
+   ],
+   "answer": 2,
+   "explanation": "The speaker mentions \"rising sea levels\" as one of the major causes of coastal erosion, stating \"rising sea levels are eating away at our shores at an alarming rate.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-speech-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2p-speech-001",
+   "stem": "What does the speaker mean by \"해안 보호\"?",
+   "choices": [
+    "Coastal tourism",
+    "Coastal protection",
+    "Coastal development",
+    "Coastal erosion"
+   ],
+   "answer": 1,
+   "explanation": "The speaker uses \"해안 보호\" to refer to efforts to protect and preserve the coastlines, as in \"we must implement comprehensive 해안 보호 strategies.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ko-dl-2p-speech-002",
+   "stem": "What is the primary focus of this speech?",
+   "choices": [
+    "The history of Korean architecture",
+    "The benefits of rural living",
+    "The impact of housing shortages on the economy",
+    "Solutions to the housing shortage in cities"
+   ],
+   "answer": 3,
+   "explanation": "The speaker explicitly discusses solutions to the housing shortage in cities, such as '도시 주변의 새로운 주거 지구를 개발해야 합니다' and '공공 주택의 공급을 늘려야 합니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ko-dl-2p-speech-002",
+   "stem": "What can be inferred about the speaker's views on the current housing situation?",
+   "choices": [
+    "They believe it is improving",
+    "They are concerned about its impact",
+    "They are indifferent to the problem",
+    "They think it is a minor issue"
+   ],
+   "answer": 1,
+   "explanation": "The speaker mentions '도시의 주택 수요가 공급을 크게 초과하고 있습니다' and '이 문제는 점점 더 심각해지고 있습니다', indicating concern about the situation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-2p-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-2p-speech-002",
+   "stem": "In this context, what does '밀집' mean here?",
+   "choices": [
+    "Isolated",
+    "Spacious",
+    "Scattered",
+    "Dense"
+   ],
+   "answer": 3,
+   "explanation": "The speaker uses '밀집된 주택가' to describe housing areas, indicating that the word means 'dense' in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dl-3-analysis-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2335,6 +6601,546 @@
    ],
    "answer": 0,
    "explanation": "The correct answer is 0. In the context, '수요' refers to the demand for labor in certain industries, as indicated by '특정 산업에서의 노동력 수요가 높다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-analysis-002",
+   "stem": "What is the main focus of the discussion?",
+   "choices": [
+    "the comparison between Daegu Metro Line 3 and other metro systems in South Korea",
+    "the economic and social impacts of the new Daegu Metro Line 3",
+    "the environmental benefits of the new metro line",
+    "the potential for increased tourism due to the new metro line"
+   ],
+   "answer": 1,
+   "explanation": "The speakers discuss various economic and social impacts, such as job creation, increased property values, and improved quality of life, which aligns with choice 2. They do not focus on environmental benefits, tourism, or comparisons with other metro systems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-analysis-002",
+   "stem": "What can be inferred about the speakers' views on the new metro line?",
+   "choices": [
+    "they are concerned about its environmental impact",
+    "they are generally positive about its impact",
+    "they are skeptical about its benefits",
+    "they are indifferent to its impact"
+   ],
+   "answer": 1,
+   "explanation": "The speakers highlight positive impacts such as job creation, increased property values, and improved quality of life, indicating a generally positive view. There is no mention of skepticism, indifference, or environmental concerns.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-analysis-002",
+   "stem": "What does '재개발' mean in this context?",
+   "choices": [
+    "tourist attraction",
+    "urban redevelopment",
+    "urban decay",
+    "environmental conservation"
+   ],
+   "answer": 1,
+   "explanation": "The context discusses the positive impacts of the new metro line, including increased property values and improved quality of life, which are associated with urban redevelopment. The word '재개발' is used to describe these improvements, aligning with choice 2.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-analysis-003",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "The impact of a new transport law on workers' rights",
+    "The advantages of public transportation over private vehicles",
+    "The reasons behind and consequences of a transport workers' strike",
+    "The history of labor unions in South Korea"
+   ],
+   "answer": 2,
+   "explanation": "The text discusses the reasons for the strike ('대중교통노동자들의 파업은 주로 최저임금 인상과 근무조건 개선을 요구') and its consequences ('파업은 시내 교통에 큰 차질을 빚고 있다').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-analysis-003",
+   "stem": "What does the phrase '교통 마비' mean as used here?",
+   "choices": [
+    "Traffic congestion",
+    "Transportation paralysis",
+    "Vehicle breakdown",
+    "Road construction"
+   ],
+   "answer": 1,
+   "explanation": "The phrase '교통 마비' is used to describe the severe disruption of the city's transportation system due to the strike ('파업으로 인해 시내 교통이 마비된 상태').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "ko-dl-3-analysis-003",
+   "stem": "What is the tone of this text?",
+   "choices": [
+    "Neutral and informative",
+    "Supportive of the strikers' demands",
+    "Humorous and lighthearted",
+    "Critical of the strikers' actions"
+   ],
+   "answer": 0,
+   "explanation": "The text presents the facts about the strike and its impact without taking a clear stance for or against the strikers, using neutral language such as '대중교통노동자들의 파업이 시작되었다' and '파업은 시내 교통에 큰 차질을 빚고 있다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-debate-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-debate-001",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The economic effects of tourism in South Korea.",
+    "The impact of a military exercise on regional stability.",
+    "The environmental consequences of industrial development.",
+    "The benefits of hosting a cultural festival."
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the debate is the impact of a military exercise on regional stability, as indicated by the repeated mentions of the exercise and its potential effects, such as '동맹국과의 군사 연습' and '지역 안보에 미치는 영향'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-debate-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-debate-001",
+   "stem": "What can be inferred about Speaker A's stance on the military exercise?",
+   "choices": [
+    "Speaker A supports the military exercise with some reservations.",
+    "Speaker A is strongly against the military exercise.",
+    "Speaker A is indifferent to the military exercise.",
+    "Speaker A believes the military exercise should be postponed."
+   ],
+   "answer": 0,
+   "explanation": "Speaker A's stance can be inferred as supportive with some reservations, as they state '군사 연습은 중요하지만, 그 규모와 시기를 신중하게 고려해야 합니다' and '연습의 규모를 줄이고, 주민들의 안전을 최우선으로 고려해야 합니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-debate-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-debate-001",
+   "stem": "What does the phrase '안보에 미치는 영향' mean here?",
+   "choices": [
+    "The consequences for regional security.",
+    "The changes in environmental policies.",
+    "The effect on cultural exchange.",
+    "The impact on economic growth."
+   ],
+   "answer": 0,
+   "explanation": "The phrase '안보에 미치는 영향' refers to the consequences for regional security, as it is used in the context of discussing the potential effects of the military exercise, such as '지역 안보에 미치는 영향' and '지역 갈등을 유발할 수 있습니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-editorial_commentary-001",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The heat wave is not a significant concern for public health.",
+    "The heat wave is exacerbated by urban development and human activity.",
+    "The heat wave is a temporary problem that will soon pass.",
+    "The heat wave is a result of natural climate cycles."
+   ],
+   "answer": 1,
+   "explanation": "The text discusses how urban development and human activity contribute to the heat island effect, making heat waves more severe. This is evident in phrases like '도시의 열섬 현상은 인위적인 구조물과 활동이 기온을 상승시키는 현상입니다' and '인위적인 요인이 가중시켜서 더 이상 열파를 무시할 수 없습니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-editorial_commentary-001",
+   "stem": "The phrase '열섬 현상' as used in the text most nearly means:",
+   "choices": [
+    "An artificial increase in temperature due to human activity.",
+    "A natural weather phenomenon.",
+    "A seasonal change in climate.",
+    "A type of urban architecture."
+   ],
+   "answer": 0,
+   "explanation": "The text defines '열섬 현상' as '인위적인 구조물과 활동이 기온을 상승시키는 현상입니다', indicating that it refers to an artificial increase in temperature due to human activity.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "ko-dl-3-editorial_commentary-001",
+   "stem": "What is the tone of this text?",
+   "choices": [
+    "Optimistic",
+    "Sarcastic",
+    "Indifferent",
+    "Urgent and concerned"
+   ],
+   "answer": 3,
+   "explanation": "The text expresses concern about the impact of heat waves and the urgent need to address the issue, as seen in phrases like '더 이상 열파를 무시할 수 없습니다' and '도시에 사는 우리 모두의 문제입니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-editorial_commentary-002",
+   "stem": "What is the main idea of the commentary?",
+   "choices": [
+    "The commentary advocates for a change in the electoral system.",
+    "The commentary analyzes the results of the recent local elections and their implications.",
+    "The commentary criticizes the candidates for not addressing local issues.",
+    "The commentary discusses the impact of national issues on local elections."
+   ],
+   "answer": 1,
+   "explanation": "The commentary focuses on the recent local elections, analyzing the results and discussing what they mean for the future. This is evident in lines such as '지난 주 지역 선거의 결과가 나왔습니다' and '이번 선거 결과에서 주목할 점이 몇 가지 있습니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-editorial_commentary-002",
+   "stem": "What does '대척점' mean here?",
+   "choices": [
+    "Similarity",
+    "Agreement",
+    "Difference",
+    "Compromise"
+   ],
+   "answer": 2,
+   "explanation": "The word '대척점' is used to describe the contrasting views between the two major parties. The text states '두 주요 정당의 대척점이 명확히 드러났습니다', indicating that it means 'difference' in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-editorial_commentary-002",
+   "stem": "What can be inferred about the younger voters from the commentary?",
+   "choices": [
+    "They showed a strong preference for independent candidates.",
+    "They played a crucial role in the election outcomes.",
+    "Their turnout was significantly lower than in previous elections.",
+    "They voted primarily based on national issues."
+   ],
+   "answer": 1,
+   "explanation": "The commentary highlights that '젊은 유권자들의 투표가 결과에 큰 영향을 미쳤습니다', indicating that younger voters played a significant role in the election outcomes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-editorial_commentary-003",
+   "stem": "What is the main idea of the commentary?",
+   "choices": [
+    "The commentary discusses the unprecedented voter turnout in the recent local elections and its implications.",
+    "The commentary suggests that the elections were rigged due to the high voter turnout.",
+    "The commentary criticizes the candidates for not addressing environmental issues.",
+    "The commentary argues for the need for more international influence in local politics."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the commentary is the unprecedented voter turnout and its implications, as indicated by the phrases '선거 참여율의 급증' and '이번 지방 선거에서 voters'의 voices'의 영향력'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-editorial_commentary-003",
+   "stem": "What can be inferred about the author's view on the increased voter participation?",
+   "choices": [
+    "The author is concerned that the increased voter participation may lead to political instability.",
+    "The author believes that the increased voter participation is a positive sign for democracy.",
+    "The author feels that the increased voter participation is a result of manipulation by political parties.",
+    "The author thinks that the increased voter participation is due to a lack of understanding of political issues."
+   ],
+   "answer": 1,
+   "explanation": "The author's positive view on the increased voter participation can be inferred from the phrases '이번 지방 선거에서의 voters'의 voices'의 영향력' and '이러한 변화는 우리 민주주의의 건강한 신호이다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-editorial_commentary-003",
+   "stem": "What does '이번 지방 선거에서의 voters'의 voices'의 영향력' mean here?",
+   "choices": [
+    "The influence of international observers on the local elections",
+    "The impact of voters' opinions on the outcome of the local elections",
+    "The role of political parties in shaping voters' opinions",
+    "The effect of media coverage on voters' decisions"
+   ],
+   "answer": 1,
+   "explanation": "'이번 지방 선거에서의 voters'의 voices'의 영향력' refers to the impact of voters' opinions on the outcome of the local elections, as discussed in the context of the unprecedented voter turnout.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-editorial_commentary-004",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "The new hospital is a waste of space in an overcrowded city",
+    "The new hospital is a symbol of political corruption",
+    "The new hospital is a financial burden on the city",
+    "The new hospital is a model of medical innovation and community care"
+   ],
+   "answer": 3,
+   "explanation": "The commentary focuses on the positive aspects of the new hospital, describing it as a 'beacon of hope' and highlighting its advanced facilities and community-oriented services.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-editorial_commentary-004",
+   "stem": "In this commentary, what does '선도적' mean?",
+   "choices": [
+    "expensive",
+    "leading",
+    "basic",
+    "outdated"
+   ],
+   "answer": 1,
+   "explanation": "The commentary describes the hospital as '선도적 의료 시스템' (leading medical system), emphasizing its advanced and innovative nature.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-editorial_commentary-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-editorial_commentary-004",
+   "stem": "What can be inferred about the author's opinion on the new hospital's location?",
+   "choices": [
+    "The author believes the location is a waste of valuable real estate",
+    "The author thinks the location is too far from public transportation",
+    "The author believes the location is a strategic choice to serve the community",
+    "The author thinks the location is inconvenient for patients"
+   ],
+   "answer": 2,
+   "explanation": "The commentary states that the hospital is '지역 주민들이 쉽게 이용할 수 있도록 중심부에 위치' (located in the central area for easy access by local residents), indicating the author's approval of the strategic location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-lecture-001",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The political implications of international aid organizations",
+    "The logistical challenges of delivering humanitarian aid in conflict zones",
+    "The cultural exchange between aid workers and local communities",
+    "The economic impact of war on local businesses"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the lecture is clearly stated in the opening lines: \"오늘은 갈등 지역에서의 인도적 지원 물자 운송의 복잡성을 다뤄보겠습니다\". This sets the stage for discussing the challenges and complexities involved in delivering aid in conflict zones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-lecture-001",
+   "stem": "What can be inferred about the role of technology in modern humanitarian aid efforts?",
+   "choices": [
+    "Technology has made humanitarian aid efforts obsolete",
+    "Technology is often a barrier to effective aid delivery",
+    "Technology is used primarily for communication between aid organizations",
+    "Technology plays a crucial role in overcoming logistical challenges"
+   ],
+   "answer": 3,
+   "explanation": "The speaker mentions that \"현대 기술은 물자를 더 빠르고 안전하게 운반하는 데 도움이 됩니다\" and provides examples such as GPS와 드론. This indicates that technology is seen as a tool to overcome logistical challenges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-lecture-001",
+   "stem": "In the lecture, what does the phrase \"지역 사회와의 협력\" refer to?",
+   "choices": [
+    "Conflict with local authorities over aid distribution",
+    "Communication barriers between aid workers and local populations",
+    "Collaboration with local communities to ensure effective aid delivery",
+    "Competition with local businesses for resources"
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"지역 사회와의 협력\" is used in the context of ensuring that aid reaches those in need. The speaker states that \"지역 사회와의 협력은 성공적인 지원 물자 운송의 핵심입니다\" and explains the importance of working with local communities to navigate complex environments.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-lecture-002",
+   "stem": "What is the main idea of this lecture?",
+   "choices": [
+    "The impact of globalization on traditional industries",
+    "The importance of digital literacy in today's job market",
+    "The role of government in job creation",
+    "The history of career development in Korea"
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the lecture is the importance of digital literacy in today's job market, as indicated by the repeated emphasis on digital skills and technology throughout the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-lecture-002",
+   "stem": "What can be inferred about the speaker's view on continuous learning?",
+   "choices": [
+    "It is crucial for career success",
+    "It is a waste of time",
+    "It is the responsibility of employers",
+    "It is only necessary for certain professions"
+   ],
+   "answer": 0,
+   "explanation": "The speaker emphasizes the need for continuous learning and adaptation to new technologies, stating that \"지속적인 학습과 적응은 이제 선택이 아닌 필수가 되었습니다.\" This indicates that the speaker views continuous learning as crucial for career success.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-lecture-002",
+   "stem": "How is the phrase '디지털 리터러시' used in this context?",
+   "choices": [
+    "As a type of software",
+    "As the ability to use digital technology effectively",
+    "As a form of art",
+    "As a government policy"
+   ],
+   "answer": 1,
+   "explanation": "The phrase '디지털 리터러시' is used to refer to the ability to use digital technology effectively, as the speaker discusses the importance of digital skills in today's job market, stating that \"디지털 리터러시는 이제 모든 직업에서 필수적인 능력으로 자리잡았습니다.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dl-3-lecture-003",
+   "stem": "Which of the following best describes the main idea of the lecture?",
+   "choices": [
+    "The lecture discusses the importance of AI in everyday life and its benefits.",
+    "The lecture focuses on the economic benefits of AI development and investment.",
+    "The lecture argues that AI regulation is unnecessary due to its positive impact on society.",
+    "The lecture examines the potential risks of AI and the need for comprehensive regulation."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C. The lecture emphasizes the need for AI regulation due to potential risks, as indicated by phrases like \"AI의 잠재적인 위험\" and \"포괄적인 규제가 필요합니다\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dl-3-lecture-003",
+   "stem": "What can be inferred about the speaker's view on current AI regulation efforts?",
+   "choices": [
+    "The speaker thinks current efforts are a good start but more is needed.",
+    "The speaker believes current efforts are sufficient.",
+    "The speaker believes current efforts are counterproductive.",
+    "The speaker is unsure about the effectiveness of current efforts."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B. The speaker implies that current efforts are not enough by saying \"현재의 노력은 부적절할 수 있습니다\" and \"더 강렬한 조치가 필요합니다\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dl-3-lecture-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dl-3-lecture-003",
+   "stem": "In the lecture, what does the speaker mean by \"윤리적 рам워크\"?",
+   "choices": [
+    "A legal requirement for AI companies.",
+    "A framework of moral principles for AI behavior.",
+    "A set of financial guidelines for AI development.",
+    "A technical standard for AI programming."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B. The speaker uses \"윤리적 рам워크\" to refer to a framework of moral principles, as indicated by the context discussing \"AI의 행동\" and \"사회적 영향\".",
    "source": "llm",
    "verified": false
   },

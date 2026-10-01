@@ -6,6 +6,66 @@
  "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
  "passages": [
   {
+   "id": "pt-dr-0p-form-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "form",
+   "title": "City Air Quality Report",
+   "body": "São Paulo: Relatório de Qualidade do Ar\n\nDia: 15\nMês: Março\nAno: 2023\n\nNível de Poluição: Alto\n\nCausa: Trânsito Pesado\n\nSugestão: Use transporte público.\n\nFonte: Cetesb",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-form-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "form",
+   "title": "Fire Report Form",
+   "body": "Relatório de Incêndios\n\nData: _____/_____/_____\n\nNome do informante: _________________________\n\nData dos incêndios ocorridos: _____/_____/_____\n\nLocalização: _________________________\n\nÁrea afetada (em hectares): _____\n\nObservações: _________________________",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-form-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "form",
+   "title": "Drought Assistance Application",
+   "body": "Formulário de Assistência à Seca\n\nNome: ______________________\nData: ___/___/____\nSolicitação de ajuda devido à seca severa.\nÁrea afetada: ________ hectares.\nTipo de cultivo: ______________________.\nPrecisa de assistência imediata?",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-label-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "label",
+   "title": "Factory Closure Announcement",
+   "body": "AVISO\nA fábrica de brinquedos Brincar Fechada\nFim da produção\nTodos os funcionários devem sair até 30 de junho",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-0p-menu-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -13,6 +73,51 @@
    "textType": "menu",
    "title": "Tech Start-Up Lunch Menu",
    "body": "Inovação Digital\nSalada de Folhas Verdes\nSanduíche de Frango Grelhado\nSucos Naturais\nBiscoitos de Aveia\n\nLanche Rápido e Saudável",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-menu-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Joint Search-and-Rescue Operation Menu",
+   "body": "Operação Conjunta de Busca e Resgate\n\nCafé, Água, Arroz, Frango, e Legumes\n\nCafé da Manhã\n\nSegunda-feira, 10 de Abril",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-menu-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "menu",
+   "title": "Cafeteria do Inovatec",
+   "body": "Cafeteria do Inovatec\n\nPrato do dia: Feijão com arroz, frango à passarinho e salada verde\nSobremesa: Brigadeiro\n\nPreço: R$ 12,50\n\nAberto das 11h30 às 14h30",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-notice-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "notice",
+   "title": "Library Announcement",
+   "body": "Aviso: A biblioteca estará fechada para reparos. Peçamos desculpas pelo transtorno. Agradecemos sua compreensão. Biblioteca Municipal, 10 de março de 2023.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -111,6 +216,66 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1-instructions-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Flood Warning in São Luís",
+   "body": "Aviso de Inundação em São Luís\n\nDevido às chuvas intensas previstas para os próximos dias, a prefeitura de São Luís emite este aviso para alertar os moradores sobre a possibilidade de alagamentos. Peça-se que todos estejam preparados e tomem as medidas necessárias para proteger suas propriedades. Mantenha-se informado através dos canais oficiais da prefeitura. Em caso de emergência, ligue para o número 193.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-instructions-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Crossing the Brazilian Border",
+   "body": "Para cruzar a fronteira brasileira, siga estas instruções. Primeiro, dirija-se ao guichê para carimbar o passaporte. Em seguida, passe pela inspeção de segurança. Guarde o cartão de embarque para retirar a bagagem no carrocel. Por fim, apresente o passaporte e o cartão de embarque ao oficial de imigração. Boa viagem!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-instructions-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Hospital Novo Horizonte",
+   "body": "O hospital novo, Hospital Novo Horizonte, está agora aberto. Ele tem um estacionamento para visitantes e uma cafeteria. Os elevadores são para pacientes e médicos. A capela está aberta para todos. Visite-nos e conheça nossas instalações.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Tourist Guide Instructions",
+   "body": "Para se tornar um guia turístico certificado, siga estas etapas. O primeiro passo é se inscrever em um curso de guia turístico. Após concluir o curso, você precisará fazer uma prova. Se passar na prova, receberá um certificado. Com o certificado, você poderá se candidatar a uma licença de guia turístico. Certifique-se de seguir todas as etapas para se qualificar como um guia turístico certificado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -141,6 +306,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1-notice-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "notice",
+   "title": "City Alert: Air Quality Warning",
+   "body": "Atenção: A qualidade do ar está prejudicada. Evite atividades ao ar livre. A poluição está alta devido ao trânsito intenso e queimadas. Fique atento aos sintomas como tosse e dificuldade para respirar. A prefeitura está trabalhando para melhorar a situação. Obrigado pela compreensão.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-notice-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "notice",
+   "title": "Town Flood Warning",
+   "body": "Aviso: Devido às fortes chuvas, o nível do rio está subindo rapidamente. As chuvas devem continuar nos próximos dias. Todos os residentes devem estar alerta e tomar precauções. Podem ocorrer enxurradas e inundações em áreas baixas. Fique atento às atualizações e siga as orientações das autoridades locais. Em caso de emergência, ligue para os serviços de resgate.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -156,6 +351,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1-short_message-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Forest Fire Warning in Santa Catarina",
+   "body": "Alerta: Houve um aumento no número de incêndios florestais em Santa Catarina. Por favor, evite fazer fogueiras e não jogue cigarros acesos no chão. Denuncie qualquer incêndio ao Corpo de Bombeiros imediatamente. Juntos, podemos proteger nossas florestas. Obrigado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1p-announcement-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -163,6 +373,36 @@
    "textType": "announcement",
    "title": "Naval Vessel Arrival",
    "body": "Aviso à população: O navio naval Almirante Tamandaré chegará ao porto do Rio de Janeiro no próximo sábado, 10 de março. O navio estará atracado no cais da Marinha do Brasil por três dias. O Almirante Tamandaré é um navio-escola que representa a força e a tradição da Marinha do Brasil. Durante sua estadia, o navio estará aberto para visitas e haverá diversas atrações para o público, incluindo apresentações de música e dança. Essa é uma ótima oportunidade para conhecer mais sobre a história e a importância da Marinha em nosso país. Todos estão convidados a participar deste evento especial.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Water Supply Disruption in Porto Alegre",
+   "body": "Prefeitura de Porto Alegre\n\nAviso Importante: Interrupção no Fornecimento de Água\n\nDevido a um ataque cibernético que afetou nossos sistemas, haverá uma interrupção temporária no fornecimento de água em vários bairros de Porto Alegre. As equipes da Companhia de Água e Esgoto estão trabalhando para resolver o problema o mais rápido possível.\n\nInfelizmente, será necessário suspender o fornecimento de água por vários dias enquanto os técnicos realizam os reparos necessários. Pedimos desculpas pelo inconveniente e agradecemos pela compreensão de todos.\n\nRecomendamos que os residentes armazenem água para uso essencial durante esse período. Caso tenham dúvidas ou precisem de assistência, entre em contato com nosso serviço de atendimento ao cliente.\n\nAtenciosamente,\nDepartamento de Água e Esgoto de Porto Alegre",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-announcement-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Exhibition: The History of Brazilian Coffee",
+   "body": "O Museu de Cultura Brasileira está orgulhoso em anunciar sua nova exposição: A História do Café Brasileiro. A exposição abrirá em 1º de abril e ficará aberta ao público até 10 de maio. Venha explorar como o café tornou-se uma parte essencial da cultura brasileira. A exposição contará a história do café no Brasil, desde suas origens até os dias atuais. Haverá uma variedade de expositores, incluindo utensílios de cozinha, máquinas de café antigas e fotografias históricas. Não perca esta oportunidade de aprender sobre um dos produtos mais importantes do Brasil. A entrada é gratuita, e o museu está aberto de terça a domingo, das 10h às 17h. Para mais informações, visite nosso site ou ligue para (11) 3333-4444.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -201,6 +441,66 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1p-instructions-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Evacuation Procedure for Foreign Nationals",
+   "body": "Evacuação de Nacionais Estrangeiros\n\nNo caso de uma evacuação, siga estas instruções:\n\n1. Fique atento às notícias e às orientações das autoridades locais.\n2. Entre em contato com a embaixada ou consulado do seu país para obter assistência.\n3. Reúna seus documentos importantes e pertences pessoais.\n4. Siga as rotas de evacuação designadas e mantenha a calma e siga as orientações.\n5. Não entre em pânico e ajude os outros, se possível.\n\nLembre-se de que a segurança é a prioridade. Siga todas as instruções e mantenha-se informado sobre a situação.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Library Rules and Services",
+   "body": "Bem-vindo à Biblioteca Municipal de Florianópolis! Aqui estão nossas regras e serviços: \n\n1. Lembre-se de devolver os livros no prazo determinado. Se o livro for devolvido com atraso, será cobrada uma multa. \n\n2. Você pode pegar emprestado até 5 livros de cada vez. \n\n3. Nossos computadores estão disponíveis para uso gratuito. O tempo máximo de uso é de 1 hora por dia. \n\n4. Por favor, mantenha o silêncio na biblioteca para que todos possam desfrutar de um ambiente tranquilo. \n\n5. Alimentos e bebidas não são permitidos dentro da biblioteca. \n\nNossa equipe está sempre pronta para ajudar. Aproveite seu tempo na Biblioteca Municipal de Florianópolis!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-instructions-005",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Guidelines for Local Journalists",
+   "body": "Siga estas diretrizes para exercer sua função como jornalista local. Primeiramente, registre-se no conselho de imprensa da sua região. Em seguida, obtenha autorização dos organizadores do evento antes de cobrir qualquer atividade pública. Lembre-se de sempre portar sua identificação profissional e respeitar as regras estabelecidas pelo local. Mantenha o profissionalismo e a ética jornalística em todas as suas atividades. Caso tenha dúvidas, consulte o código de conduta do jornalista brasileiro.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-instructions-006",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "instructions",
+   "title": "Allied Military Exercise Instructions",
+   "body": "SOLDADOS E OFICIAIS, A OPERAÇÃO CACHOEIRA ESTÁ PRÓXIMA! ESTAMOS REALIZANDO UM EXERCÍCIO MILITAR CONJUNTO COM NOSSO PAÍS ALIADO, A ARGENTINA. O EXERCÍCIO ACONTECERÁ EM LOCAIS ESPECÍFICOS NO BRASIL E NA ARGENTINA. OS HORÁRIOS E LOCAIS DE CADA DESDOBRAMENTO SERÃO COMUNICADOS PREVIAMENTE. É IMPORTANTE QUE TODOS OS PARTICIPANTES CHEGUEM COM ANTECEDÊNCIA E LEVEM SEU EQUIPAMENTO PADRÃO. ALÉM DISSO, TODOS DEVEM USAR SEU UNIFORME DE CAMUFLAGEM E TRAZER SEU DOCUMENTO DE IDENTIFICAÇÃO MILITAR. LEMBREM-SE DE QUE A PONTUALIDADE E A DISCIPLINA SÃO FUNDAMENTAIS PARA O SUCESSO DESTA OPERAÇÃO. QUALQUER DÚVIDA, PROCURE SEU SUPERIOR IMEDIATO. ESTAMOS CONTANDO COM A COLABORAÇÃO DE TODOS PARA FAZER DESTA OPERAÇÃO UM SUCESSO!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1p-news_brief-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -208,6 +508,36 @@
    "textType": "news_brief",
    "title": "Brazil and France Strengthen Ties",
    "body": "Brasil e França realizaram um exercício militar conjunto na semana passada. O exercício, chamado de 'Operação Cruzeiro do Sul', teve como objetivo fortalecer a cooperação mútua e a interoperabilidade entre as forças armadas dos dois países. As tropas brasileiras e francesas trabalharam juntas em diversas simulações de operações, incluindo ações de busca e salvamento, combate a incêndios florestais e respostas a desastres naturais. O exercício também incluiu treinamentos conjuntos em táticas de combate e logística militar. As autoridades de ambos os países destacaram a importância da parceria estratégica entre Brasil e França para a segurança regional e global.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-news_brief-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Press Freedom Bill Advances in Brazilian Congress",
+   "body": "O projeto de lei para proteger a liberdade de imprensa avançou no Congresso brasileiro. O projeto, que visa garantir mais transparência e proteger jornalistas, foi aprovado pela comissão de constituição e justiça. A próxima etapa é a votação no plenário da Câmara dos Deputados. O relator do projeto, deputado Carlos Silva, destacou a importância da liberdade de imprensa para a democracia. 'A imprensa livre é essencial para uma sociedade democrática', afirmou Silva. O projeto agora aguarda a votação final antes de se tornar lei.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-personal_letter-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "personal_letter",
+   "title": "A Joint Search-and-Rescue Effort",
+   "body": "Olá João, Tudo bem? Espero que sim. Estou te escrevendo para contar sobre a operação de busca e resgate em que participei ontem. Foi uma experiência incrível e quero compartilhar contigo. Tudo começou quando recebemos um chamado de emergência sobre um barco que havia virado na praia. Imediatamente, nossa equipe de resgate se mobilizou. Trabalhamos juntos com os bombeiros e a guarda costeira. Foi um trabalho em equipe muito bem coordenado. Conseguimos encontrar e resgatar todas as pessoas que estavam no barco. Foi um dia longo e cansativo, mas muito gratificante. Estou feliz por termos podido ajudar. Abraços, Maria",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -246,6 +576,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-2-event_description-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Inauguração do Novo Terminal do Aeroporto de Florianópolis",
+   "body": "O novo terminal do Aeroporto Internacional Hercílio Luz, em Florianópolis, foi inaugurado nesta semana com grande pompa e circunstância. O terminal, que tem uma área de 50 mil metros quadrados, pode receber até 8 milhões de passageiros por ano. A nova estrutura conta com seis pontes de embarque, 72 balcões de check-in e 14 esteiras de bagagem. Além disso, o novo terminal conta com uma praça de alimentação, lojas diversas e espaços para descanso. A inauguração contou com a presença de autoridades locais e nacionais, além de representantes da comunidade aeroportuária. O governador do estado destacou a importância do novo terminal para o desenvolvimento econômico da região. A expectativa é que o novo terminal gere mais de 3 mil empregos diretos e indiretos. A inauguração do novo terminal é mais um passo na modernização da infraestrutura aeroportuária brasileira e representa um importante avanço para a aviação civil no país.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-event_description-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Abrigo Temporário na Fronteira",
+   "body": "No município de Brasiléia, no estado do Acre, foi montado um abrigo temporário para famílias deslocadas devido a conflitos na região. O abrigo conta com barracas, cozinhas comunitárias e banheiros. Há assistência médica disponível para todos, além de alimentos e água potável. Voluntários da Cruz Vermelha e da Prefeitura trabalham no local, garantindo que as necessidades básicas sejam atendidas. As famílias recebem colchonetes e cobertores para passar as noites. Crianças têm um espaço dedicado a atividades recreativas, enquanto os adultos podem receber orientações sobre como acessar ajuda humanitária. O objetivo é oferecer um ambiente seguro e organizado até que as famílias possam retornar para casa ou serem realocadas em outras áreas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -253,6 +613,21 @@
    "textType": "factual_article",
    "title": "Earthquake Response in Minas Gerais",
    "body": "Na manhã de ontem, um terremoto de magnitude 6,2 atingiu a região central de Minas Gerais, causando danos significativos a infraestruturas e deixando milhares de pessoas desabrigadas. O governo do estado de Minas Gerais, em parceria com organizações não governamentais, está coordenando esforços de socorro. Voluntários estão sendo organizados para ajudar na distribuição de suprimentos e na limpeza de áreas afetadas. Um dos principais desafios tem sido o acesso a áreas remotas afetadas pelo terremoto. Equipes de resgate estão trabalhando incessantemente para garantir que os necessitados recebam a ajuda necessária. A comunidade internacional também tem expressado solidariedade, oferecendo apoio e recursos para as vítimas do desastre.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-factual_article-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "factual_article",
+   "title": "Metrô de São Paulo Introduz Novas Linhas",
+   "body": "O Metrô de São Paulo está ampliando sua rede com a inauguração das linhas 6-Laranja e 17-Ouro. Essas novas linhas vão oferecer melhores conexões e maior acesso aos moradores da região. A linha 6-Laranja vai ligar a estação São Joaquim, no Brooklin, à estação São Judas, no bairro de mesmo nome. Já a linha 17-Ouro vai conectar a estação São Judas à estação São Mateus, na zona leste da cidade. A estação São Judas será uma importante estação de conexão, permitindo a transferência entre as linhas 6-Laranja, 17-Ouro e a linha 1-Azul. Essas novas conexões vão beneficiar milhares de passageiros, reduzindo os tempos de viagem e melhorando a mobilidade urbana. A expectativa é que as novas linhas estejam totalmente operacionais até o final do ano, trazendo mais eficiência e conforto para os usuários do metrô.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -276,6 +651,81 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-2-letter-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "letter",
+   "title": "Challenges for Consumers: Rising Prices and Interest Rates",
+   "body": "Prezado João, Espero que esta carta o encontre bem. Eu estava querendo compartilhar com você algumas preocupações que tenho tido recentemente. Os juros subiram novamente, e isso está afetando diretamente meu orçamento. As prestações do carro e do cartão de crédito ficaram mais caras, e eu estou tendo que cortar gastos em outras áreas para conseguir pagar tudo. Infelizmente, isso significa que vou ter que adiar meus planos de viajar este ano. Também estou preocupada com a inflação, que parece estar piorando a cada dia. Os preços dos alimentos e de outros produtos essenciais estão subindo, e eu sinto que estou ficando no prejuízo. Estou tentando economizar onde posso, mas está se tornando cada vez mais difícil. Você tem alguma dica de como lidar com essa situação? Agradeço qualquer conselho que você possa oferecer. Atenciosamente, Ana",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-news-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "news",
+   "title": "Central Bank Takes Action to Curb Inflation",
+   "body": "O Banco Central anunciou medidas para conter a inflação, que tem preocupado os brasileiros nos últimos meses. Entre as ações, está a elevação da taxa básica de juros para 10,25% ao ano. A decisão visa frear o aumento dos preços e estabilizar a economia. O presidente do Banco Central, Roberto Campos Neto, explicou que a medida é necessária para garantir a confiança dos investidores e proteger o poder de compra da população. Apesar do aumento dos juros, Campos Neto afirmou que a instituição está comprometida em apoiar o crescimento econômico sustentável. A inflação acumulada nos últimos 12 meses chegou a 7,8%, acima do teto da meta estabelecida pelo governo. Com essas medidas, o Banco Central espera controlar a alta dos preços e manter a estabilidade econômica do país.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-news-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "news",
+   "title": "Brazil Implements Stricter Road Safety Laws",
+   "body": "O governo brasileiro anunciou recentemente a implementação de uma nova lei de trânsito, conhecida como Lei Seca, que visa aumentar a segurança nas estradas do país. A nova legislação estabelece penalidades mais severas para motoristas que dirigem sob a influência de álcool ou outras substâncias psicoativas. Além disso, a lei também determina que os motoristas devem usar cinto de segurança em todos os assentos do veículo e que as crianças devem ser transportadas em cadeiras adequadas para sua idade e tamanho. A Lei Seca também prevê a instalação de equipamentos de segurança, como airbags e freios ABS, em todos os veículos novos. As autoridades esperam que essas medidas ajudem a reduzir o número de acidentes causados por motoristas embriagados e a melhorar a segurança geral no trânsito. A nova lei entrará em vigor nos próximos meses e as infrações serão fiscalizadas pela Polícia Rodoviária Federal. Os motoristas que não cumprirem as novas regras estarão sujeitos a multas e à suspensão do direito de dirigir. O governo também está promovendo campanhas de conscientização para informar os motoristas sobre as novas regras e a importância de dirigir de forma segura e responsável.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-report-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "report",
+   "title": "Vacinação em Massa no Rio de Janeiro",
+   "body": "A campanha de vacinação em massa realizada no Rio de Janeiro nos últimos meses foi considerada um sucesso pela Secretaria Municipal de Saúde. Mais de 90% da população alvo foi imunizada, ultrapassando a meta inicial. Um dos principais desafios foi organizar os locais de vacinação para atender a todos os moradores. Além disso, a campanha contou com a ajuda de voluntários e profissionais de saúde de todo o estado. A população respondeu positivamente à iniciativa, com longas filas sendo formadas nos primeiros dias. A secretaria destacou a importância da colaboração de todos para o sucesso da campanha. No entanto, alguns moradores relataram dificuldades para encontrar informações sobre os locais e horários de vacinação. Para resolver esse problema, a secretaria lançou uma plataforma online com todas as informações necessárias. A campanha também contou com o apoio de veículos de comunicação locais, que ajudaram a divulgar as informações e incentivar a população a se vacinar. A secretaria municipal de saúde planeja realizar novas campanhas de vacinação nos próximos meses, seguindo o exemplo do sucesso alcançado nesta iniciativa.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-report-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "report",
+   "title": "Soaring Wedding Costs in Brazil",
+   "body": "Os custos dos casamentos no Brasil têm subido significativamente nos últimos anos. Um casamento médio no país pode custar entre R$ 50.000 e R$ 100.000, dependendo da região e do número de convidados. A demanda por locais luxuosos tem crescido significativamente, fazendo com que os preços desses espaços subam. Além disso, os serviços de buffet, fotografia e decoração também têm ficado mais caros. Muitas vezes, os noivos se veem obrigados a ajustar seus orçamentos para conseguir realizar o casamento dos sonhos. Apesar dos altos custos, a maioria dos casais ainda acredita que vale a pena investir neste dia tão especial. Especialistas recomendam que os noivos pesquisem bastante antes de fechar contratos e que negociem os preços sempre que possível. Planejamento e organização são fundamentais para evitar surpresas desagradáveis com os custos do casamento.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-2p-extended_report-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -283,6 +733,36 @@
    "textType": "extended_report",
    "title": "Evacuation of Foreign Nationals from São Tomé and Príncipe",
    "body": "O governo brasileiro anunciou hoje que iniciará a evacuação de estrangeiros de São Tomé e Príncipe devido a uma erupção vulcânica iminente. A medida visa garantir a segurança dos cidadãos estrangeiros, incluindo brasileiros, que residem no país. A embaixada brasileira no país está trabalhando em estreita colaboração com as autoridades locais para garantir a segurança de todos os envolvidos. A evacuação começará amanhã e será realizada em colaboração com as autoridades locais e outras embaixadas. Os evacuados serão levados para um local seguro fora da zona de perigo. O governo brasileiro está monitorando de perto a situação e está pronto para fornecer assistência adicional, se necessário. A prioridade é garantir a segurança e o bem-estar de todos os envolvidos. A evacuação é uma medida preventiva e visa evitar qualquer risco à vida humana. O governo brasileiro está em contato constante com as famílias dos evacuados e fornecerá atualizações regulares sobre a situação. A evacuação é uma medida temporária e os evacuados serão autorizados a retornar assim que a situação se estabilizar. O governo brasileiro está comprometido em garantir a segurança e o bem-estar de todos os cidadãos estrangeiros em São Tomé e Príncipe.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-extended_report-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "extended_report",
+   "title": "Renting an Apartment in Salvador",
+   "body": "Alugar um apartamento em Salvador pode ser uma tarefa desafiadora, mas com as informações certas, o processo pode ser mais tranquilo. Primeiramente, é importante definir o orçamento. Os preços variam bastante dependendo da localização e do tamanho do imóvel. Em áreas centrais, como o Rio Vermelho ou a Barra, os valores são mais elevados, enquanto em bairros mais distantes, como Pau da Lima ou Cajazeiras, é possível encontrar opções mais acessíveis. Além do aluguel, é importante considerar os custos adicionais, como condomínio, IPTU e despesas com serviços públicos. Geralmente, os proprietários pedem um depósito de fiança equivalente a três meses de aluguel e os documentos necessários incluem RG, CPF, comprovante de residência e comprovante de renda. É comum que os inquilinos tenham que apresentar um fiador ou fazer um seguro-fiança. As vagas para alugar são disputadas rapidamente, por isso é importante estar preparado com toda a documentação e ter agilidade na hora de fechar o contrato. Muitos imóveis são anunciados em portais online, mas também é possível encontrar oportunidades em imobiliárias locais ou até mesmo por indicação de amigos e familiares. Antes de fechar o contrato, é essencial visitar o imóvel para verificar seu estado de conservação e garantir que atende às necessidades. Alugar um apartamento em Salvador pode ser uma experiência positiva se todos os passos forem seguidos com atenção e cuidado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-extended_report-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "extended_report",
+   "title": "Urban Expansion and Housing Challenges in Brazilian Cities",
+   "body": "Nos últimos anos, o Brasil tem enfrentado sérios desafios em relação à habitação urbana. Com o crescimento populacional e a migração em massa para as grandes cidades, a demanda por moradias tem aumentado significativamente. No entanto, a falta de planejamento urbano e infraestrutura adequada para acomodar esse crescimento tem levado a uma escassez de moradias, especialmente para as camadas mais pobres da população. Esse problema é agravado pelo crescimento desordenado das cidades, que muitas vezes ocorre sem a devida regulamentação e controle por parte das autoridades locais. Além disso, a especulação imobiliária e o aumento dos preços dos terrenos têm contribuído para a dificuldade de acessar moradias dignas. Em muitas áreas, a oferta de habitações é insuficiente para atender à demanda, resultando em altos índices de desabrigados e no surgimento de favelas. Sem intervenção adequada, essa situação tende a piorar ainda mais, exigindo medidas urgentes por parte do governo e dos setores privados para garantir o acesso à moradia para todos os cidadãos.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -306,6 +786,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-2p-feature-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "feature",
+   "title": "The Rise of Online Education in Brazil",
+   "body": "A educação online está se tornando cada vez mais popular no Brasil, especialmente entre adultos que precisam conciliar estudos e trabalho. Com o avanço da tecnologia e o aumento do acesso à internet, as plataformas de ensino a distância estão se tornando uma alternativa viável para muitos brasileiros. Uma das principais vantagens da educação online é a flexibilidade que ela oferece. Os alunos podem acessar o material didático a qualquer momento e de qualquer lugar, permitindo que eles estudem no seu próprio ritmo e de acordo com a sua rotina. Além disso, as plataformas de ensino a distância oferecem uma ampla variedade de cursos, desde idiomas até cursos de graduação e pós-graduação. Isso permite que os alunos escolham os cursos que melhor atendem às suas necessidades e interesses. Outra vantagem da educação online é a acessibilidade. Muitos brasileiros vivem em áreas remotas ou não têm acesso a instituições de ensino tradicionais. Com a educação online, esses alunos podem ter acesso a uma educação de qualidade sem precisar se deslocar para grandes centros urbanos. Além disso, as plataformas de ensino a distância muitas vezes oferecem cursos a preços mais acessíveis do que as instituições de ensino tradicionais, tornando a educação mais acessível para um maior número de pessoas. No entanto, a educação online também apresenta alguns desafios. Um dos principais desafios é a necessidade de disciplina e autodisciplina por parte dos alunos. Como os alunos têm a liberdade de estudar no seu próprio ritmo, eles precisam ser capazes de se organizar e se manter motivados para concluir os cursos. Além disso, a educação online requer acesso constante à internet e a dispositivos eletrônicos, o que pode ser um desafio para alguns alunos. Apesar desses desafios, a educação online está se tornando uma opção cada vez mais atraente para muitos brasileiros. Com o avanço da tecnologia e o aumento do acesso à internet, é provável que a educação online continue a crescer e a se tornar uma parte importante do sistema educacional brasileiro.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-2p-interview-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -313,6 +808,36 @@
    "textType": "interview",
    "title": "Smog in São Paulo: A Growing Concern",
    "body": "A prefeitura de São Paulo tem implementado várias medidas para reduzir a poluição do ar, como o rodízio de veículos e a expansão do transporte público. Recentemente, conversamos com o secretário municipal do Verde e do Meio Ambiente para discutir esses esforços e os desafios enfrentados. 'A qualidade do ar em São Paulo é um problema sério que afeta a saúde de milhões de pessoas', afirmou o secretário. 'Estamos no caminho certo, mas ainda há muito a ser feito.' Uma das iniciativas mais recentes é a ampliação do sistema de metrô e a criação de corredores exclusivos para ônibus. Além disso, a prefeitura tem trabalhado para modernizar a frota de ônibus e impor limites de emissão para veículos, estabelecendo um contingente para veículos mais poluentes. 'Precisamos de mais investimentos em tecnologias limpas e conscientização pública', destacou o secretário. 'A parceria com o governo estadual e federal é crucial para o sucesso dessas políticas.' Apesar dos esforços, a poluição do ar continua sendo um desafio significativo. A prefeitura reconhece a necessidade de monitoramento contínuo e ajustes nas políticas para garantir a eficácia a longo prazo.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-interview-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "interview",
+   "title": "The Pros and Cons of Renting in São Paulo",
+   "body": "Entrevista com Ana Silva, especialista em imóveis, sobre alugar apartamentos em São Paulo.\n\nRepórter: Quais são as vantagens de alugar um apartamento em São Paulo?\nAna Silva: Vantagens incluem liberdade e flexibilidade para mudar de endereço conforme a necessidade. Além disso, não há preocupação com manutenção e reparos, pois essas responsabilidades geralmente são do proprietário.\n\nRepórter: E as desvantagens?\nAna Silva: Por outro lado, os aluguéis podem ser caros, especialmente em áreas mais centrais e procuradas. Encontrar um imóvel que atenda às necessidades e ao orçamento pode ser um desafio. Também é importante estar ciente dos direitos e deveres do inquilino para evitar problemas.\n\nRepórter: Quais são as áreas mais populares para alugar em São Paulo?\nAna Silva: Bairros como Jardins, Pinheiros e Vila Madalena são muito procurados devido à localização e infraestrutura. No entanto, esses bairros também têm preços mais elevados. Áreas mais afastadas podem oferecer melhores preços, mas é essencial considerar o tempo de deslocamento e a disponibilidade de transporte público.\n\nRepórter: Algum conselho para quem está procurando alugar?\nAna Silva: Sim, recomendo visitar vários bairros e comparar opções. É importante também ler atentamente o contrato de locação e tirar todas as dúvidas antes de assinar. Contratar um corretor de imóveis pode ajudar a encontrar melhores oportunidades e evitar armadilhas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-interview-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Celebrating 150 Years of the Republic of Councils",
+   "body": "Hoje, celebramos 150 anos da República dos Conselhos, um marco significativo na nossa história política. Para discutir esse aniversário importante, entrevistamos a Dra. Ana Silva, uma renomada historiadora e especialista em política brasileira. \n\nDra. Silva, como a República dos Conselhos evoluiu ao longo dos anos? \nA República dos Conselhos foi estabelecida em 1873 após um período de grande agitação social e política. Inicialmente, foi uma experiência revolucionária, buscando estabelecer um sistema de conselhos populares para governar o país. No entanto, ao longo dos anos, enfrentou vários desafios e transformações. \nPode nos falar sobre alguns dos desafios mais significativos que a república enfrentou? \nCertamente. Um dos maiores desafios foi a resistência das elites tradicionais, que viam o sistema de conselhos como uma ameaça aos seus privilégios. Além disso, a república enfrentou várias tentativas de golpe e instabilidade política. Apesar desses desafios, acreditamos que há espaço para otimismo. \nComo a república lida com os desafios políticos atuais, como a polarização e a instabilidade? \nAtualmente, a república está enfrentando um período de intensa polarização política. No entanto, as instituições democráticas têm se mostrado resilientes. A participação cidadã e o fortalecimento das instituições são cruciais para superar esses desafios e garantir um futuro estável para a república.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -351,6 +876,36 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-2p-news_analysis-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "Northern Brazil Faces Potential Flooding",
+   "body": "As chuvas intensas continuam a cair sobre o norte do Brasil, deixando as autoridades preocupadas com a possibilidade de inundações graves. A região já recebeu o dobro da média de chuva para esta época do ano, e os rios estão transbordando. As autoridades alertam para a possibilidade de inundações graves, colocando a região em estado de emergência. A situação é crítica, especialmente nas áreas próximas aos rios Amazonas e Negro, onde os níveis da água estão subindo rapidamente. Os moradores estão sendo encorajados a tomar precauções imediatas para proteger suas famílias e propriedades. Especialistas preveem que as chuvas intensas vão continuar nos próximos dias, aumentando o risco de inundações e possíveis deslizamentos de terra. As equipes de resposta a emergências estão se preparando para ajudar as comunidades afetadas, mas a situação pode causar estragos significativos. Os moradores são aconselhados a ficar atentos às atualizações das autoridades locais e seguir as orientações para garantir sua segurança. A situação é um lembrete da importância de estar preparado para desastres naturais e da necessidade de investimentos contínuos em infraestrutura para mitigar os impactos das inundações.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2p-opinion-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2+",
+   "textType": "opinion",
+   "title": "Streamlining Border Crossings for a Stronger Mercosul",
+   "body": "A integração econômica do Mercosul depende, em grande parte, da facilidade com que as mercadorias e as pessoas podem atravessar as fronteiras entre os países membros. No entanto, os procedimentos atuais podem ser burocráticos e demorados, o que pode desincentivar o comércio e o crescimento econômico. Para garantir o sucesso do Mercosul, é essencial que o Brasil simplifique seus procedimentos de fronteira. A simplificação dos procedimentos de fronteira pode impulsionar o comércio e o crescimento econômico, além de fortalecer os laços entre os países membros. É importante que o Brasil adote medidas para desburocratizar os procedimentos de fronteira, como a padronização de documentos e a implementação de sistemas eletrônicos de controle. Além disso, é crucial que o Brasil trabalhe em estreita colaboração com os outros países membros do Mercosul para garantir que os procedimentos de fronteira sejam harmonizados e eficientes. Isso pode envolver a realização de consultas regulares e a troca de informações entre as autoridades de fronteira. Facilitar o trânsito de mercadorias e pessoas não só beneficia o comércio, mas também promove o turismo e o intercâmbio cultural. Portanto, é do interesse de todos os países membros do Mercosul que o Brasil tome medidas para simplificar seus procedimentos de fronteira. Isso não só beneficiará o Brasil, mas também fortalecerá o Mercosul como um todo, tornando-o mais competitivo no cenário internacional.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -373,6 +928,21 @@
    "textType": "argumentative_essay",
    "title": "Paralisação dos Transportes: Justiça ou Caos?",
    "body": "A greve dos trabalhadores de transporte, embora legítima em sua causa, tem trazido um caos sem precedentes à nossa cidade. As ruas estão congestionadas, os cidadãos estão desamparados, e a economia está sofrendo. É inegável que os trabalhadores têm o direito de lutar por melhores salários e condições de trabalho, mas a paralisação total dos serviços de transporte está afetando negativamente toda a população.\n\nA situação atual não é sustentável. Os trabalhadores estão em greve há semanas, e não há um fim à vista. As negociações entre os sindicatos e as empresas de transporte estão estagnadas, e o governo parece estar ausente nessa discussão. É imperative que as partes envolvidas retornem à mesa de negociações, com a mediação do governo, para encontrar uma solução que atenda às necessidades dos trabalhadores sem paralisar a cidade.\n\nAlém dos impactos imediatos, a greve está tendo consequências a longo prazo. Empresas estão perdendo dinheiro, e os cidadãos estão perdendo a confiança nos serviços de transporte. A cidade precisa de um sistema de transporte confiável e eficiente para funcionar adequadamente, e essa greve está colocando tudo isso em risco.\n\nNão estou dizendo que os trabalhadores não merecem melhores condições. Eles merecem, e suas preocupações devem ser ouvidas. No entanto, a paralisação total dos serviços de transporte não é a solução. É preciso encontrar um meio-termo, uma forma de atender às demandas dos trabalhadores sem causar tanto transtorno à população.\n\nEm conclusão, embora compreenda a luta dos trabalhadores de transporte, acredito que a greve está causando mais mal do que bem. É hora de as partes envolvidas se unirem e encontrarem uma solução que beneficie a todos, não apenas a uma parte. A cidade não pode continuar nesse caos, e uma solução rápida e eficaz é urgente.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "argumentative_essay",
+   "title": "The Cultural Revival of the Festival of Lights in Belém",
+   "body": "O Festival de Luzes de Belém é muito mais do que uma simples celebração; é uma expressão viva da cultura e da história do Pará. Realizado anualmente na capital paraense, o festival tem suas raízes no século XVIII, quando as luzes eram acesas para celebrar a chegada da família real portuguesa ao Brasil. Ao longo dos anos, o evento evoluiu para se tornar um símbolo de identidade cultural e união entre os paraenses.\n\nO festival é uma verdadeira festa dos sentidos. As ruas de Belém são iluminadas com milhares de luzes coloridas, criando um cenário mágico que encanta moradores e visitantes. Além das luzes, o evento conta com apresentações musicais, danças tradicionais, como o carimbó, e uma variedade de comidas típicas que refletem a riqueza da culinária paraense. Entre os pratos mais populares estão o tacacá, o açaí e o pato no tucupi.\n\nUma das características mais marcantes do Festival de Luzes de Belém é a sua capacidade de unir as pessoas. Durante o evento, famílias, amigos e até mesmo desconhecidos se reúnem para celebrar juntos, criando laços de amizade e solidariedade. O festival também promove a integração entre as diferentes comunidades de Belém, fortalecendo o senso de pertencimento e identidade cultural.\n\nAlém disso, o festival atrai turistas de todas as partes do país, impulsionando os negócios locais e contribuindo para a economia da região. Empresas de hospedagem, restaurantes e lojas de artesanato registram um aumento significativo nas vendas durante o período do evento, gerando empregos e renda para os moradores de Belém.\n\nO Festival de Luzes de Belém representa uma revitalização das tradições e do patrimônio cultural do Pará. Ele não apenas preserva as raízes históricas do estado, mas também as adapta às novas realidades, garantindo que elas continuem vivas e relevantes para as futuras gerações. Ao celebrar a cultura e a história do Pará, o festival fortalece a identidade cultural dos paraenses e promove o orgulho pela sua herança única.",
    "script": [],
    "source": "llm",
    "verified": false,
@@ -411,6 +981,51 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-3-editorial-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Sao Paulo's Tech Startup Revolutionizes Urban Mobility",
+   "body": "Em meio ao caos do trânsito de São Paulo, uma startup está fazendo história. Fundada por três amigos com formação em tecnologia e urbanismo, a MovidoAqui está revolucionando a forma como nos movemos pela cidade. Seu aplicativo inovador combina informações em tempo real de transporte público, bicicletas compartilhadas e até mesmo caronas, oferecendo às pessoas as opções mais rápidas e eficientes para chegar ao seu destino.\n\nA ideia surgiu durante um projeto acadêmico sobre mobilidade urbana. Os fundadores perceberam que, apesar da vasta rede de transporte público da cidade, os paulistanos enfrentavam dificuldades para navegar pelo sistema. Eles criaram um algoritmo inteligente que integra dados de diversas fontes, proporcionando uma experiência de usuário sem complicações.\n\nO impacto da MovidoAqui tem sido profundo. Desde seu lançamento, há dois anos, o aplicativo já foi baixado mais de um milhão de vezes. Os usuários relataram economias significativas de tempo e dinheiro, além de uma redução no estresse associado ao trânsito caótico da cidade. A startup também tem colaborado com o poder público para melhorar a infraestrutura de transporte, fornecendo dados valiosos sobre os padrões de deslocamento dos cidadãos.\n\nNo entanto, o caminho não tem sido fácil. A MovidoAqui enfrenta concorrência de gigantes da tecnologia e desafios regulatórios. Mas, com uma equipe dedicada e uma visão clara, a startup continua a crescer e a inovar. Eles já estão de olho em outras cidades brasileiras, prontos para levar sua revolução para além de São Paulo.\n\nEsta é uma história inspiradora de como a tecnologia pode transformar nossa vida cotidiana. A MovidoAqui não é apenas um aplicativo; é um símbolo de esperança para um futuro mais conectado e eficiente. Para os paulistanos, é um lembrete de que, mesmo no meio do caos, há sempre espaço para inovação e melhoria.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-editorial-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial",
+   "title": "A Operação Lava Jato e o Futuro da Transparência no Brasil",
+   "body": "A Operação Lava Jato, iniciada em 2014, tem sido um marco na luta contra a corrupção no Brasil. Com suas investigações abrangentes e bem-sucedidas, a operação tem desvendado esquemas de corrupção e lavagem de dinheiro que envolvem políticos, empresários e funcionários públicos de alto escalão. O impacto da operação tem sido profundo, com repercussões em diversos setores da sociedade brasileira.\n\nUm dos principais aspectos da Operação Lava Jato é o seu foco na transparência e na responsabilização. Ao expor os envolvidos nos esquemas de corrupção, a operação tem contribuído para a construção de um Brasil mais justo e transparente. Além disso, a Lava Jato tem servido como um exemplo para outras nações que enfrentam problemas semelhantes de corrupção e impunidade.\n\nNo entanto, a operação também enfrenta desafios significativos. A complexidade dos casos investigados, a resistência de grupos poderosos e as limitações legais e institucionais representam obstáculos substanciais. Apesar desses desafios, a Operação Lava Jato continua a avançar, demonstrando a importância da perseverança na busca por justiça e transparência.\n\nÉ crucial que a sociedade brasileira continue a apoiar a Operação Lava Jato e a exigir a responsabilização daqueles que cometem atos de corrupção. A luta contra a corrupção é um processo contínuo, e a Lava Jato representa um passo importante nessa direção. Com esforço e determinação, é possível construir um futuro mais prometedor para o Brasil, onde a transparência e a justiça prevaleçam.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-editorial-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial",
+   "title": "A New Dawn for Air Travel: The Expansion of Aeroporto Internacional de Florianópolis",
+   "body": "Com a inauguração do novo terminal do Aeroporto Internacional de Florianópolis, Herculano de Oliveira Lima, a cidade de Florianópolis está prestes a entrar em uma era de modernidade e eficiência no transporte aéreo. Este projeto ambicioso não só visa melhorar a experiência do passageiro, mas também impulsionar o turismo e o comércio local, trazendo um impacto econômico positivo para toda a região. A expansão do aeroporto inclui novas portas de embarque, áreas de check-in mais amplas e uma infinidade de opções de restaurantes e lojas, garantindo que os passageiros tenham uma jornada mais confortável e agradável. Além disso, a infraestrutura moderna do novo terminal está equipada para lidar com um aumento significativo no número de voos, tanto nacionais quanto internacionais, conectando Florianópolis a destinos globais de maneira mais eficiente. No entanto, a construção do novo terminal não está isenta de desafios. É crucial que as autoridades locais trabalhem para superar os obstáculos relacionados à melhoria da infraestrutura e à garantia da sustentabilidade ambiental. A implementação de práticas sustentáveis, como a utilização de energia renovável e a gestão eficiente de resíduos, será essencial para minimizar o impacto ambiental e garantir que o aeroporto opere de maneira ecológica. Além disso, a colaboração entre o governo, os operadores aéros e a comunidade local será fundamental para o sucesso contínuo do aeroporto. A inauguração do novo terminal do Aeroporto Internacional de Florianópolis marca um momento significativo na história da aviação brasileira. Com sua infraestrutura moderna e foco na sustentabilidade, o novo terminal está bem posicionado para atender às necessidades dos passageiros e impulsionar o crescimento econômico da região. À medida que a cidade se prepara para receber este novo capítulo, há um otimismo generalizado de que o futuro da aviação em Florianópolis está brilhante e cheio de possibilidades.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-3-speech-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -424,9 +1039,144 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-speech-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Struggle for Fair Labor Practices in Rural Brazil",
+   "body": "Boa tarde a todos,\n\nÉ com grande preocupação que me dirijo a vocês hoje para discutir um tema de extrema importância para o nosso país: a situação dos trabalhadores migrantes nas áreas rurais do Brasil. Nos últimos anos, temos assistido a um aumento significativo da migração interna em busca de oportunidades de trabalho, especialmente na agricultura e no setor de serviços. No entanto, essa migração tem trazido consigo uma série de desafios que não podem ser ignorados.\n\nInfelizmente, os trabalhadores migrantes são frequentemente explorados e submetidos a condições desumanas. Eles enfrentam longas jornadas de trabalho, salários baixos e, em muitos casos, a falta de acesso a serviços básicos, como saúde e educação. Além disso, a falta de políticas efetivas para proteger esses trabalhadores tem permitido que essa situação persista.\n\nÉ fundamental que reconheçamos a contribuição vital que os trabalhadores migrantes fazem para a nossa economia. Sem o seu trabalho, muitas das atividades agrícolas e de serviços não seriam possíveis. No entanto, essa contribuição não pode ser explorada. É nosso dever garantir que eles tenham acesso a condições de trabalho justas e dignas, bem como aos direitos básicos que todo cidadão brasileiro merece.\n\nPrecisamos urgentemente de uma mudança nas políticas públicas para proteger os trabalhadores migrantes. Isso inclui a implementação de leis trabalhistas mais rigorosas, a criação de programas de apoio e a promoção de campanhas de conscientização sobre os direitos dos trabalhadores. Além disso, é essencial que haja uma colaboração mais estreita entre os governos federal, estadual e municipal para garantir que essas políticas sejam implementadas de forma eficaz.\n\nNenhuma sociedade pode se desenvolver de forma sustentável se uma parte significativa de sua população é explorada e marginalizada. É nosso dever moral e ético garantir que todos os trabalhadores migrantes tenham a oportunidade de viver e trabalhar com dignidade. Agradeço a atenção e espero que possamos trabalhar juntos para trazer as mudanças necessárias.\n\nObrigado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-speech-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "speech",
+   "title": "The Impact of Climate Change on Food Prices",
+   "body": "Boa tarde a todos. Hoje, gostaria de falar sobre um tema crucial para nosso país: o impacto das mudanças climáticas nos preços dos alimentos. Nos últimos anos, temos observado um aumento significativo na volatilidade dos preços dos alimentos, e as mudanças climáticas estão tendo um impacto significativo nesse cenário. As alterações nos padrões de chuva, o aumento das temperaturas e os eventos climáticos extremos estão afetando diretamente a produção agrícola, o que, por sua vez, influencia os preços no mercado. A seca prolongada no Centro-Oeste, por exemplo, tem reduzido a produção de soja e milho, dois dos principais produtos agrícolas do Brasil. Isso tem levado a um aumento nos preços desses produtos, afetando tanto os consumidores quanto os produtores. A volatilidade dos preços dos alimentos tem sido uma preocupação constante, e a situação tende a piorar se não tomarmos medidas adequadas. Para enfrentar esse desafio, é essencial investir em tecnologia e infraestrutura. A modernização das técnicas agrícolas pode aumentar a resiliência das culturas às mudanças climáticas. Além disso, o governo pode desempenhar um papel crucial na estabilização dos preços dos alimentos. Implementar políticas que incentivem a produção local e reduzam a dependência de importações pode ajudar a mitigar os efeitos das oscilações de preços. Também é importante promover a diversificação das culturas, reduzindo a dependência de poucos produtos agrícolas. Isso pode ser feito através de programas de educação e capacitação para os agricultores, ensinando-lhes técnicas de produção sustentável e diversificada. Em conclusão, as mudanças climáticas representam um desafio significativo para a estabilidade dos preços dos alimentos no Brasil. No entanto, com investimentos adequados em tecnologia, infraestrutura e políticas governamentais, podemos mitigar esses efeitos e garantir a segurança alimentar para todos os brasileiros. Obrigado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-speech-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "speech",
+   "title": "Unidos Pela Vacinação: Uma Campanha de Esperança",
+   "body": "Meus caros concidadãos, hoje estamos aqui para lançar uma campanha de vacinação que é mais do que uma simples iniciativa de saúde. É um apelo à nossa unidade, à nossa responsabilidade coletiva e ao nosso compromisso com o bem-estar de todos. Vivemos em tempos desafiadores, onde a saúde não é apenas uma questão individual, mas sim uma preocupação comunitária. A vacinação é um esforço coletivo, e cada um de nós tem um papel crucial a desempenhar. Nosso objetivo é claro: proteger nossa comunidade, especialmente os mais vulneráveis, contra doenças preveníveis. Para alcançar essa meta, precisamos da participação ativa de todos. A vacinação não é apenas um direito, mas também um dever cívico. Ao nos vacinarmos, estamos protegendo não apenas a nós mesmos, mas também nossos familiares, amigos e vizinhos. Cada dose aplicada é um passo em direção à imunidade coletiva, que é a melhor defesa contra a propagação de doenças. Nosso plano é abrangente e bem estruturado. Em colaboração com os profissionais de saúde, temos estabelecido postos de vacinação em locais estratégicos, garantindo que todos tenham acesso fácil e seguro às vacinas. Além disso, estamos realizando campanhas de conscientização para dissipar mitos e fornecer informações precisas sobre a importância da vacinação. Entendemos que pode haver desafios no caminho. Talvez alguns estejam hesitantes devido a informações enganosas ou medo do desconhecido. Mas quero assegurar a vocês que as vacinas que estamos oferecendo são seguras e eficazes. Elas foram rigorosamente testadas e aprovadas pelos órgãos de saúde competentes. Nosso compromisso é com a verdade e com a proteção da vida. Portanto, peço a todos que se informem, que conversem com os profissionais de saúde e que tomem a decisão de se vacinar. Juntos, podemos proteger nossa comunidade e construir um futuro mais saudável. Lembrem-se, a vacinação não é apenas uma questão de saúde, mas também de solidariedade e cuidado mútuo. Vamos nos unir por essa causa nobre e fazer a diferença. Muito obrigado.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
+  {
+   "id": "pt-dr-0p-form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-form-001",
+   "stem": "What is the name of the city?",
+   "choices": [
+    "Belo Horizonte",
+    "Rio de Janeiro",
+    "Brasília",
+    "São Paulo"
+   ],
+   "answer": 3,
+   "explanation": "The form is about São Paulo (São Paulo), as stated at the beginning. The other cities are distractors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-form-002",
+   "stem": "What does the word “ocorridos” mean in the text?",
+   "choices": [
+    "controlled",
+    "expected",
+    "reported",
+    "happened"
+   ],
+   "answer": 3,
+   "explanation": "The text states “incêndios ocorridos” (fires occurred), so this word means happened. The other choices are plausible distractors because they are all related to fires, but the text specifies that the fires have already taken place.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-form-002",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To document fires that have happened",
+    "To warn about potential fire hazards",
+    "To request assistance for fighting fires",
+    "To report the location of fires"
+   ],
+   "answer": 0,
+   "explanation": "The form asks for “data dos incêndios ocorridos” (dates of fires that have occurred), so its purpose is to document past fires. The other choices are plausible distractors because they are all related to fires, but the text specifies that the form is for recording information about fires that have already happened.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-form-003",
+   "stem": "What is the meaning of the phrase 'seca severa' in the text?",
+   "choices": [
+    "temporary drought",
+    "moderate drought",
+    "mild drought",
+    "severe drought"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'seca severa' is explicitly stated in the text, which directly translates to 'severe drought'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-label-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-label-001",
+   "stem": "What does the label say about the factory's production?",
+   "choices": [
+    "It will increase soon.",
+    "It will decrease by half.",
+    "It will stop completely.",
+    "It will move to another country."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is that the factory's production will stop completely. The label states 'Fim da produção' which means 'End of production'.",
+   "source": "llm",
+   "verified": false
+  },
   {
    "id": "pt-dr-0p-menu-001-q1",
    "exam": "DLPT_READING",
@@ -442,6 +1192,60 @@
    ],
    "answer": 1,
    "explanation": "The name of the start-up is mentioned at the top of the menu: \"Inovação Digital\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-menu-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-menu-002",
+   "stem": "What item is listed at the second position in the menu?",
+   "choices": [
+    "Café",
+    "Água",
+    "Frango",
+    "Arroz"
+   ],
+   "answer": 1,
+   "explanation": "The second item listed in the menu is Água (Water). The menu reads: Café, Água, Arroz, Frango, e Legumes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-menu-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-menu-003",
+   "stem": "In the text, what does \"Inovatec\" mean?",
+   "choices": [
+    "a project",
+    "a menu item",
+    "a company",
+    "a new technology"
+   ],
+   "answer": 2,
+   "explanation": "The text begins with the words \"Cafeteria do Inovatec,\" which translates to \"Inovatec Cafeteria.\" The word \"do\" in this context means \"of,\" indicating that Inovatec is the name of the company or organization that the cafeteria belongs to.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-notice-001",
+   "stem": "What is this announcement about?",
+   "choices": [
+    "A new librarian has been hired.",
+    "The library needs help from volunteers.",
+    "A new book has arrived at the library.",
+    "The library will be closed for repairs."
+   ],
+   "answer": 3,
+   "explanation": "The announcement is about the library being closed for repairs. The text states 'A biblioteca estará fechada para reparos.'",
    "source": "llm",
    "verified": false
   },
@@ -680,6 +1484,186 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1-instructions-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-001",
+   "stem": "Why is the city issuing this warning?",
+   "choices": [
+    "Because of heavy rains forecast for the next few days.",
+    "Because the city has not received enough rain this year.",
+    "Because the river is already overflowing.",
+    "Because a dam upstream has broken."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the city is issuing the warning because of \"chuvas intensas previstas para os próximos dias\" (heavy rains forecast for the next few days).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-instructions-001",
+   "stem": "What does \"alagamentos\" mean here?",
+   "choices": [
+    "Landslides",
+    "Floods",
+    "Forest fires",
+    "Earthquakes"
+   ],
+   "answer": 1,
+   "explanation": "The text warns residents to be prepared for \"possíveis alagamentos\" (possible floods).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "pt-dr-1-instructions-001",
+   "stem": "What is the purpose of the warning?",
+   "choices": [
+    "To inform residents about a new water treatment plant.",
+    "To announce a new flood control system.",
+    "To advise residents to go on vacation.",
+    "To prepare residents for possible flooding."
+   ],
+   "answer": 3,
+   "explanation": "The text clearly states its purpose as preparing residents for \"possíveis alagamentos\" (possible floods).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-002",
+   "stem": "What is the first step in the border crossing procedure?",
+   "choices": [
+    "Get your passport stamped at the booth.",
+    "Show your passport to the officer.",
+    "Go through the security checkpoint.",
+    "Pick up your baggage at the carousel."
+   ],
+   "answer": 0,
+   "explanation": "The first step is to get your passport stamped at the booth as stated in the text: \"Dirija-se ao guichê para carimbar o passaporte.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "pt-dr-1-instructions-002",
+   "stem": "Why should you keep your boarding pass until you pick up your baggage?",
+   "choices": [
+    "To show it to the customs officer.",
+    "To prove you have completed the border crossing.",
+    "To exchange it for a local currency.",
+    "To claim your baggage at the carousel."
+   ],
+   "answer": 3,
+   "explanation": "The text instructs you to keep your boarding pass to claim your baggage: \"Guarde o cartão de embarque para retirar a bagagem no carrocel.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-instructions-003",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The new hospital has a parking lot for visitors.",
+    "Doctors have moved to the new hospital for their offices.",
+    "Patients must use the new hospital's elevators for treatment.",
+    "Visitors can now use the new hospital's facilities."
+   ],
+   "answer": 3,
+   "explanation": "The text states that the hospital is now open and visitors are allowed to use its facilities, such as the cafeteria and the chapel. This is the main idea of the text. The other choices are not directly stated as the main purpose of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-003",
+   "stem": "What is the name of the new hospital?",
+   "choices": [
+    "Hospital da Família",
+    "Hospital Central",
+    "Hospital Novo Horizonte",
+    "Hospital São Paulo"
+   ],
+   "answer": 2,
+   "explanation": "The text explicitly states the name of the new hospital: Hospital Novo Horizonte.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-instructions-003",
+   "stem": "What does the word \"aberta\" mean here?",
+   "choices": [
+    "Open",
+    "Closed",
+    "Free",
+    "Being built"
+   ],
+   "answer": 0,
+   "explanation": "The text says \"O hospital está agora aberta para visitas.\" The word \"aberta\" here means that the hospital is open for visitors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-instructions-004",
+   "stem": "What is the main point of the text?",
+   "choices": [
+    "To outline the steps for becoming a certified tourist guide",
+    "To describe the process of obtaining a visa for tourists",
+    "To explain how to register for a tourist guide course",
+    "To provide information about the requirements for a tourist guide license"
+   ],
+   "answer": 0,
+   "explanation": "The text outlines the steps required to become a certified tourist guide: first, registering for a course, then taking an exam, and finally obtaining a certificate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-004",
+   "stem": "What is the first step to become a certified tourist guide according to the text?",
+   "choices": [
+    "Taking an exam",
+    "Submitting an application",
+    "Obtaining a certificate",
+    "Registering for a course"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the first step is to register for a course, as stated in the sentence: \"O primeiro passo é se inscrever em um curso de guia turístico.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -770,6 +1754,96 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1-notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-notice-003",
+   "stem": "In the notice, what does it mean where the word 'atenção' is used?",
+   "choices": [
+    "Be aware and informed.",
+    "Take action immediately.",
+    "Stay indoors.",
+    "Go to the hospital."
+   ],
+   "answer": 0,
+   "explanation": "The text says 'Atenção: A qualidade do ar está prejudicada.' This means 'Attention: The air quality is poor.' The word 'atenção' is used to alert people to be aware of the situation, not to take immediate action, go to the hospital, or stay indoors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To warn about poor air quality.",
+    "To inform about a new law.",
+    "To announce a new park.",
+    "To advertise a product."
+   ],
+   "answer": 0,
+   "explanation": "The notice states 'Atenção: A qualidade do ar está prejudicada.' and 'Evite atividades ao ar livre.' This clearly warns about poor air quality and advises people to avoid outdoor activities. It does not inform about a new law, announce a new park, or advertise a product.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-notice-004",
+   "stem": "What is the primary reason for the flooding?",
+   "choices": [
+    "A. A broken dam",
+    "D. Melting snow",
+    "C. A tsunami",
+    "B. Heavy rainfall"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the reason for the flooding is \"as fortes chuvas\" (heavy rains). There is no mention of a broken dam, tsunami, or melting snow.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-notice-004",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "C. To advertise a new product",
+    "A. To inform about a cultural event",
+    "B. To warn residents about flooding",
+    "D. To announce a change in school hours"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the notice is to warn residents about flooding due to heavy rains, as indicated by \"Aviso: Devido às fortes chuvas\" (Warning: Due to heavy rains).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-notice-004",
+   "stem": "What does \"enxurradas\" mean here?",
+   "choices": [
+    "A. Small streams",
+    "B. Gentle breezes",
+    "C. Sudden floods",
+    "D. Heavy snowfall"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"enxurradas\" refers to \"sudden floods\" caused by heavy rains, as indicated by \"podem ocorrer enxurradas\" (sudden floods may occur).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -824,6 +1898,42 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1-short_message-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-short_message-002",
+   "stem": "The phrase 'aumento no número de incêndios' refers to:",
+   "choices": [
+    "a rise in the number of firefighters",
+    "a decrease in the number of fires",
+    "a decrease in the number of firefighters",
+    "a rise in the number of fires"
+   ],
+   "answer": 3,
+   "explanation": "The text states 'houve um aumento no número de incêndios florestais', indicating an increase in the number of forest fires.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-short_message-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "pt-dr-1-short_message-002",
+   "stem": "What is the purpose of this message?",
+   "choices": [
+    "to inform residents about an increase in forest fires",
+    "to request donations for firefighting equipment",
+    "to recruit volunteers for firefighting",
+    "to announce a new forest conservation program"
+   ],
+   "answer": 0,
+   "explanation": "The message aims to 'alertar os moradores' and inform them about 'o aumento no número de incêndios florestais'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1p-announcement-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -874,6 +1984,114 @@
    ],
    "answer": 0,
    "explanation": "'Atrações' in this context refers to things that will attract or interest people, specifically 'para o público', as in 'O navio estará aberto para visitas e haverá diversas atrações para o público.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-announcement-002",
+   "stem": "The main purpose of this announcement is to...",
+   "choices": [
+    "ask residents to conserve water during a scheduled maintenance",
+    "inform residents about a temporary water outage due to a cyberattack",
+    "announce a permanent change in the city's water supply system",
+    "report a leak in the city's main water pipeline"
+   ],
+   "answer": 1,
+   "explanation": "The announcement states that there will be 'uma interrupção temporária no fornecimento de água' (a temporary interruption in water supply) due to 'um ataque cibernético' (a cyberattack). This is the main purpose of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-announcement-002",
+   "stem": "The announcement states that the water outage will last for...",
+   "choices": [
+    "a week",
+    "several days",
+    "an undetermined amount of time",
+    "a few hours"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions 'por vários dias' (for several days) when discussing the duration of the water outage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-announcement-002",
+   "stem": "In this announcement, the word 'suspender' means...",
+   "choices": [
+    "to resume",
+    "to cancel",
+    "to postpone",
+    "to maintain"
+   ],
+   "answer": 1,
+   "explanation": "The announcement uses the phrase 'será necessário suspender o fornecimento de água' (it will be necessary to suspend the water supply), which means that the water supply will be temporarily canceled.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-announcement-003",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "A new exhibition about the history of Brazilian coffee",
+    "A lecture series on Brazilian culture",
+    "A festival celebrating coffee producers",
+    "A workshop on growing coffee plants"
+   ],
+   "answer": 0,
+   "explanation": "The announcement is about a new exhibition, as stated in the first sentence: 'O Museu de Cultura Brasileira está orgulhoso em anunciar sua nova exposição: A História do Café Brasileiro.' The focus is clearly on the history of Brazilian coffee.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-announcement-003",
+   "stem": "What is the opening date of the exhibition?",
+   "choices": [
+    "March 15",
+    "June 20",
+    "May 10",
+    "April 1"
+   ],
+   "answer": 3,
+   "explanation": "The opening date is mentioned in the text: 'A exposição abrirá em 1º de abril e ficará aberta ao público até 10 de maio.' Therefore, the correct answer is April 1.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-announcement-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "inference",
+   "passageId": "pt-dr-1p-announcement-003",
+   "stem": "What can visitors expect to see at the exhibition?",
+   "choices": [
+    "A large selection of coffee beans for sale",
+    "Artifacts and information about the history of coffee in Brazil",
+    "Recipes for coffee-based dishes",
+    "Live demonstrations of coffee farming"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the exhibition will cover the history of coffee in Brazil: 'a exposição contará a história do café no Brasil, desde suas origens até os dias atuais.' This implies that visitors can expect to see artifacts and information related to this history.",
    "source": "llm",
    "verified": false
   },
@@ -986,6 +2204,222 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1p-instructions-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-instructions-003",
+   "stem": "This passage is mostly about ...",
+   "choices": [
+    "the types of disasters that can occur",
+    "the procedures for evacuating foreign nationals",
+    "the reasons for a recent earthquake",
+    "the history of evacuations in the region"
+   ],
+   "answer": 1,
+   "explanation": "The text describes the steps to be taken in case of an evacuation, including who to contact and what to bring. It does not discuss the reasons for an earthquake, the history of evacuations, or the types of disasters.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-instructions-003",
+   "stem": "According to the passage, what should you bring with you during an evacuation?",
+   "choices": [
+    "Only personal belongings",
+    "Nothing, as everything will be provided",
+    "Only important documents",
+    "Important documents and personal belongings"
+   ],
+   "answer": 3,
+   "explanation": "The text states that you should trazer seus documentos importantes e pertences pessoais during an evacuation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-instructions-003",
+   "stem": "The phrase 'mantendo a calma' in the passage means ...",
+   "choices": [
+    "keeping quiet",
+    "moving quickly",
+    "staying calm",
+    "following instructions"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'mantendo a calma' means to stay calm. The text instructs readers to 'mantendo a calma e seguir as orientações' during the evacuation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-instructions-004",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "How to join the library's book club",
+    "How to volunteer at the library",
+    "Library hours and staff information",
+    "Library rules and available services"
+   ],
+   "answer": 3,
+   "explanation": "The text discusses rules like returning books on time and available services including borrowing books and using computers, so the main idea is library rules and available services. The text does not discuss joining a book club, volunteering, or library hours and staff.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-instructions-004",
+   "stem": "What happens if a book is returned late?",
+   "choices": [
+    "The library will send a reminder email",
+    "The borrower will have to pay a fine",
+    "The library will block the borrower's account",
+    "The borrower will be banned from the library"
+   ],
+   "answer": 1,
+   "explanation": "The text states that if a book is returned late, the borrower will have to pay a fine: \"Se o livro for devolvido com atraso, será cobrada uma multa.\" The text does not mention reminder emails, blocking accounts, or banning borrowers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-instructions-004",
+   "stem": "In the text, what does \"devolução\" mean?",
+   "choices": [
+    "Returning",
+    "Reserving",
+    "Renewing",
+    "Borrowing"
+   ],
+   "answer": 0,
+   "explanation": "The text uses \"devolução\" to mean returning books: \"Lembre-se de devolver os livros no prazo determinado.\" The other choices do not fit this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-instructions-005",
+   "stem": "What is the main purpose of this text?",
+   "choices": [
+    "To describe the importance of freedom of the press",
+    "To explain how to apply for press credentials",
+    "To list the rights of journalists in Brazil",
+    "To provide guidelines for journalists covering local events"
+   ],
+   "answer": 3,
+   "explanation": "The text is clearly giving instructions to journalists: it starts with 'Siga estas diretrizes' and continues with specific actions like 'registre-se' and 'obtenha autorização'. The other options are not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-instructions-005",
+   "stem": "According to the text, what must journalists do before covering a public event?",
+   "choices": [
+    "Register with the local press association",
+    "Submit a copy of their identification",
+    "Attend a briefing session",
+    "Obtain authorization from the event organizers"
+   ],
+   "answer": 3,
+   "explanation": "The text states 'Obtenha autorização dos organizadores do evento antes de cobrir qualquer atividade pública.' This is the specific instruction given for covering public events.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-005-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-instructions-005",
+   "stem": "What does the phrase 'cobrir qualquer atividade pública' mean here?",
+   "choices": [
+    "To participate in any public event",
+    "To organize any public activity",
+    "To attend any public activity",
+    "To report on any public event"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'cobrir' means to report on events. The phrase 'cobrir qualquer atividade pública' refers to the act of reporting on or covering public events as a journalist.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-006-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-instructions-006",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "A historical account of military alliances",
+    "A new military recruitment process",
+    "A tourist visiting a military base",
+    "Instructions for a military exercise with an allied country"
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the details of a military exercise called 'Operação Cachoeira', scheduled to take place in various locations, and instructions for participating soldiers and officers. This is evident from phrases like 'exercício militar', 'Operação Cachoeira', and 'locais específicos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-006-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-instructions-006",
+   "stem": "Where will the exercise take place?",
+   "choices": [
+    "In specific locations in Brazil and Argentina",
+    "In the capital cities of Brazil and Argentina",
+    "In the military bases of both countries",
+    "In the cities of São Paulo and Buenos Aires"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the exercise will occur in 'locais específicos no Brasil e na Argentina'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-instructions-006-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-instructions-006",
+   "stem": "What does the word 'desdobramento' mean here?",
+   "choices": [
+    "A type of military equipment",
+    "A phase or stage of the exercise",
+    "A type of military rank",
+    "A specific military strategy"
+   ],
+   "answer": 1,
+   "explanation": "The word 'desdobramento' is used to refer to different stages or phases of the exercise, as seen in 'Os horários e locais de cada desdobramento serão comunicados previamente.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1p-news_brief-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -1036,6 +2470,114 @@
    ],
    "answer": 0,
    "explanation": "The phrase 'cooperação mútua' in the text refers to the mutual cooperation between Brazil and France during the military exercise. The text states: 'O exercício visou fortalecer a cooperação mútua e a interoperabilidade entre as forças armadas dos dois países.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-news_brief-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-news_brief-002",
+   "stem": "What is the main idea of the news brief?",
+   "choices": [
+    "The Brazilian Congress has voted to increase funding for press organizations.",
+    "A new law has been passed restricting press freedom in Brazil.",
+    "A bill protecting press freedom has advanced in the Brazilian Congress.",
+    "Journalists in Brazil have been granted new rights by the Supreme Court."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the news brief is that a bill protecting press freedom has advanced in the Brazilian Congress. The text states: 'O projeto de lei para proteger a liberdade de imprensa avançou no Congresso brasileiro.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-news_brief-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-news_brief-002",
+   "stem": "In the text, the word 'aprovado' means:",
+   "choices": [
+    "Amended",
+    "Rejected",
+    "Approved",
+    "Discussed"
+   ],
+   "answer": 2,
+   "explanation": "The word 'aprovado' in the text means 'approved'. The text states: 'O projeto de lei foi aprovado pela comissão de constituição e justiça.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-news_brief-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "purpose",
+   "passageId": "pt-dr-1p-news_brief-002",
+   "stem": "What is the purpose of the news brief?",
+   "choices": [
+    "To explain the legal process for passing bills in the Brazilian Congress.",
+    "To discuss the impact of press freedom on Brazilian society.",
+    "To update readers on the progress of a bill protecting press freedom.",
+    "To inform readers about a new law restricting press freedom."
+   ],
+   "answer": 2,
+   "explanation": "The purpose of the news brief is to update readers on the progress of a bill protecting press freedom. The text provides information on the bill's advancement in the Brazilian Congress and its approval by the constitution and justice committee.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-personal_letter-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-personal_letter-001",
+   "stem": "What is the main topic of the letter?",
+   "choices": [
+    "A complaint about a neighbor",
+    "A request for a job",
+    "A joint search-and-rescue operation",
+    "A birthday party invitation"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the letter is a joint search-and-rescue operation. This is clear from the context of the letter, which mentions 'operação de busca e resgate' and 'trabalhando juntos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-personal_letter-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-personal_letter-001",
+   "stem": "Where did the search-and-rescue operation take place?",
+   "choices": [
+    "In a city",
+    "In a forest",
+    "On a beach",
+    "In a mountain"
+   ],
+   "answer": 2,
+   "explanation": "The search-and-rescue operation took place on a beach. The letter mentions 'na praia', indicating the location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-personal_letter-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1p-personal_letter-001",
+   "stem": "What does the word 'equipe' mean here?",
+   "choices": [
+    "A family",
+    "A team",
+    "A class of students",
+    "A group of friends"
+   ],
+   "answer": 1,
+   "explanation": "The word 'equipe' in this context means 'a team'. The letter mentions 'nossa equipe de resgate', referring to the rescue team.",
    "source": "llm",
    "verified": false
   },
@@ -1148,6 +2690,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-2-event_description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-event_description-002",
+   "stem": "What is the main idea of the article?",
+   "choices": [
+    "The article explains how to get to the new terminal at Florianópolis Airport.",
+    "The article describes the features of the new terminal at Florianópolis Airport.",
+    "The article compares the new terminal to other airports in Brazil.",
+    "The article discusses the history of Florianópolis Airport."
+   ],
+   "answer": 1,
+   "explanation": "The article focuses on describing the new terminal at Florianópolis Airport, including its size, capacity, and amenities. The relevant words are 'O novo terminal do Aeroporto Internacional Hercílio Luz, em Florianópolis, foi inaugurado nesta semana com grande pompa e circunstância. O terminal, que tem uma área de 50 mil metros quadrados, pode receber até 8 milhões de passageiros por ano.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-event_description-002",
+   "stem": "What is one of the new amenities in the terminal?",
+   "choices": [
+    "A new runway for private jets.",
+    "A helipad for helicopter transport.",
+    "A museum dedicated to the history of aviation.",
+    "A shopping mall with various stores."
+   ],
+   "answer": 3,
+   "explanation": "The article mentions that the new terminal includes a shopping mall with various stores. The relevant words are 'Além disso, o novo terminal conta com uma praça de alimentação, lojas diversas e espaços para descanso.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-event_description-002",
+   "stem": "What does 'pompas e circunstâncias' mean here?",
+   "choices": [
+    "With great ceremony and celebration.",
+    "With great speed and efficiency.",
+    "With great difficulty and struggle.",
+    "With great secrecy and secrecy."
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'pompas e circunstâncias' is used to describe the grand and celebratory inauguration of the new terminal. The relevant words are 'O novo terminal do Aeroporto Internacional Hercílio Luz, em Florianópolis, foi inaugurado nesta semana com grande pompa e circunstância.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-event_description-003",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "Local businesses are offering jobs to immigrants crossing the border.",
+    "The government is planning to build a permanent settlement for refugees.",
+    "A shelter has been set up to provide temporary housing and support for displaced families.",
+    "A new school has been opened to educate children from neighboring countries."
+   ],
+   "answer": 2,
+   "explanation": "The text describes the setup of a temporary shelter with facilities like tents, kitchens, and medical assistance for displaced families, which matches choice 0. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-event_description-003",
+   "stem": "What is one of the services offered at the temporary shelter?",
+   "choices": [
+    "Job placement for adults.",
+    "Language classes for children.",
+    "Legal consultation for permanent residency.",
+    "Medical assistance for everyone."
+   ],
+   "answer": 3,
+   "explanation": "The text mentions que há assistência médica disponível para todos, which means medical assistance is available for everyone, matching choice 2. The other services are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-event_description-003",
+   "stem": "In the phrase deslocadas devido a conflitos na região, what does deslocadas mean here?",
+   "choices": [
+    "Displaced",
+    "Hungry",
+    "Lost",
+    "Tired"
+   ],
+   "answer": 0,
+   "explanation": "The context refers to families who had to leave their homes due to conflicts in the region, so deslocadas means displaced. The other options do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -1198,6 +2848,60 @@
    ],
    "answer": 0,
    "explanation": "The text mentions 'Voluntários estão sendo organizados para ajudar na distribuição de suprimentos e na limpeza de áreas afetadas', which shows that 'suprimentos' refers to items or goods that are being distributed to help those affected by the earthquake.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-factual_article-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-factual_article-002",
+   "stem": "What is the main topic of the article?",
+   "choices": [
+    "The history of public transportation in São Paulo",
+    "The financial struggles of the São Paulo Metro",
+    "The introduction of new metro lines in São Paulo",
+    "The environmental impact of the São Paulo Metro"
+   ],
+   "answer": 2,
+   "explanation": "The article primarily discusses the introduction of new metro lines in São Paulo, as indicated by phrases such as \"linhas 6-Laranja e 17-Ouro\" and \"novas conexões\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-factual_article-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-factual_article-002",
+   "stem": "According to the article, where will passengers be able to transfer between lines?",
+   "choices": [
+    "São Mateus",
+    "São João",
+    "São Joaquim",
+    "São Judas"
+   ],
+   "answer": 3,
+   "explanation": "The article states that \"a estação São Judas será uma importante estação de conexão\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-factual_article-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-factual_article-002",
+   "stem": "In the article, what does \"ligação\" mean?",
+   "choices": [
+    "A connection",
+    "A type of train",
+    "A station",
+    "A schedule"
+   ],
+   "answer": 0,
+   "explanation": "The word \"ligação\" is used in the context of connecting lines and stations, as in \"novas ligações entre as linhas\"",
    "source": "llm",
    "verified": false
   },
@@ -1256,6 +2960,276 @@
    "verified": false
   },
   {
+   "id": "pt-dr-2-letter-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-letter-002",
+   "stem": "What is the main topic of the letter?",
+   "choices": [
+    "The latest fashion trends in Brazil",
+    "The author's plans for a vacation",
+    "The impact of rising interest rates on personal finances",
+    "The author's new job offer"
+   ],
+   "answer": 2,
+   "explanation": "The letter primarily discusses the effects of rising interest rates on the author's financial situation, particularly in terms of increased costs for loans and credit cards. This is evident in sentences like 'Os juros subiram novamente, e isso está afetando diretamente meu orçamento.' and 'As prestações do carro e do cartão de crédito ficaram mais caras.' The other options are not the focus of the letter.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-letter-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-letter-002",
+   "stem": "According to the letter, which of the following has increased due to the rise in interest rates?",
+   "choices": [
+    "The author's salary",
+    "The price of groceries",
+    "The value of the author's savings account",
+    "The cost of the author's car and credit card payments"
+   ],
+   "answer": 3,
+   "explanation": "The author explicitly states that 'As prestações do carro e do cartão de crédito ficaram mais caras.' due to the increase in interest rates. The other options are not mentioned as being directly affected by the rise in interest rates in the letter.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-letter-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-letter-002",
+   "stem": "In the letter, the phrase 'ficar no prejuízo' most likely means:",
+   "choices": [
+    "To be happy",
+    "To be excited",
+    "To be confused",
+    "To be at a disadvantage"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'ficar no prejuízo' is used in the context of the author not being able to afford certain things due to the increase in costs. This implies a sense of being at a disadvantage or suffering a loss. The other options do not fit the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-news-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-news-001",
+   "stem": "What is the main topic of the news report?",
+   "choices": [
+    "The history of economic crises in Brazil",
+    "The role of international markets in Brazilian economy",
+    "The Central Bank's new policies to reduce inflation",
+    "The effects of inflation on Brazilian families"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the news report is the Central Bank's new policies to reduce inflation. This is evident from the first sentence: \"O Banco Central anunciou medidas para conter a inflação.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-news-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-news-001",
+   "stem": "According to the text, what is one of the measures taken by the Central Bank?",
+   "choices": [
+    "Increasing the basic interest rate",
+    "Distributing financial aid to families",
+    "Lowering the basic interest rate",
+    "Freezing prices of essential goods"
+   ],
+   "answer": 0,
+   "explanation": "The text states that one of the measures taken by the Central Bank is \"elevar a taxa básica de juros para 10,25% ao ano.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-news-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-news-001",
+   "stem": "In the text, what does \"conter\" mean?",
+   "choices": [
+    "To calculate",
+    "To increase",
+    "To reduce",
+    "To ignore"
+   ],
+   "answer": 2,
+   "explanation": "In the context of the text, \"conter\" means \"to reduce.\" This is seen in the sentence: \"O Banco Central anunciou medidas para conter a inflação.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-news-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-news-002",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "An analysis of the effectiveness of current traffic laws",
+    "A comparison of road safety laws in different countries",
+    "The history of road safety regulations in Brazil",
+    "New traffic rules introduced in Brazil"
+   ],
+   "answer": 3,
+   "explanation": "The passage focuses on new traffic rules introduced in Brazil, specifically the new law called Lei Seca. The other choices are not the main topic, although they may contain some related information.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-news-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-news-002",
+   "stem": "What is one of the main objectives of the new law according to the text?",
+   "choices": [
+    "To promote the use of public transportation",
+    "To reduce the number of accidents caused by drunk driving",
+    "To increase the number of traffic police officers",
+    "To impose heavier fines on all traffic violations"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the new law aims to 'reduzir o número de acidentes causados por motoristas embriagados', which translates to 'reduce the number of accidents caused by drunk drivers'. The other choices are not mentioned as main objectives in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-news-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-news-002",
+   "stem": "What does the word 'infrações' mean here?",
+   "choices": [
+    "Fines",
+    "Accidents",
+    "Violations",
+    "Warnings"
+   ],
+   "answer": 2,
+   "explanation": "In the context of the passage, 'infrações' refers to 'violações das leis de trânsito', which translates to 'violations of traffic laws'. The other choices do not fit the context as well.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-report-001",
+   "stem": "What is the main idea of the report?",
+   "choices": [
+    "The report discusses the history of vaccination in Brazil.",
+    "The report explains how to produce vaccines in Brazil.",
+    "The report criticizes the Brazilian healthcare system.",
+    "The report describes a successful vaccination campaign in Rio de Janeiro."
+   ],
+   "answer": 3,
+   "explanation": "The report focuses on a recent vaccination campaign in Rio de Janeiro, detailing its success and the community's response. The main idea is captured in the first paragraph: 'A campanha de vacinação em massa realizada no Rio de Janeiro nos últimos meses foi considerada um sucesso pela Secretaria Municipal de Saúde.' The other choices are not the main focus of the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-report-001",
+   "stem": "According to the report, what was one of the main challenges faced during the campaign?",
+   "choices": [
+    "Transporting vaccines to remote areas.",
+    "Convincing people to get vaccinated.",
+    "Organizing the vaccination sites.",
+    "Lack of vaccines and medical staff."
+   ],
+   "answer": 2,
+   "explanation": "The report mentions that organizing the vaccination sites was a challenge: 'Um dos principais desafios foi organizar os locais de vacinação para atender a todos os moradores.' The other choices are not mentioned as challenges in the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-report-001",
+   "stem": "What does 'atingir' mean here: 'O objetivo da campanha era atingir 90% da população.'?",
+   "choices": [
+    "To maintain",
+    "To reach",
+    "To increase",
+    "To reduce"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'atingir' means 'to reach'. The sentence states that the goal of the campaign was to reach 90% of the population: 'O objetivo da campanha era atingir 90% da população.' The other choices do not fit the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-report-002",
+   "stem": "The passage mainly discusses _______.",
+   "choices": [
+    "the legal aspects of marriage in Brazil",
+    "the increasing expenses of weddings",
+    "the cultural significance of weddings",
+    "the environmental impact of weddings"
+   ],
+   "answer": 1,
+   "explanation": "The passage focuses on the rising costs of weddings, mentioning expenses like venues, catering, and photography. It does not primarily discuss legal aspects, environmental impact, or cultural significance, although these may be mentioned in passing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-report-002",
+   "stem": "According to the report, what is one of the main reasons for the increase in wedding costs?",
+   "choices": [
+    "an increase in the price of wedding dresses",
+    "a decrease in the number of wedding planners",
+    "a rise in the popularity of destination weddings",
+    "a growth in the demand for luxury venues"
+   ],
+   "answer": 3,
+   "explanation": "The report states that \"a demanda por locais luxuosos tem crescido significativamente\", which translates to 'the demand for luxury venues has grown significantly'. This is given as a reason for the increase in wedding costs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-report-002",
+   "stem": "In the passage, the word \"orçamentos\" is best understood to mean _______.",
+   "choices": [
+    "invitations",
+    "decorations",
+    "budgets",
+    "guest lists"
+   ],
+   "answer": 2,
+   "explanation": "The passage uses the phrase \"os orçamentos estão ficando cada vez mais altos\", which translates to 'the budgets are getting higher and higher'. This indicates that \"orçamentos\" refers to budgets in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-2p-extended_report-001-q1",
    "exam": "DLPT_READING",
    "level": "2+",
@@ -1306,6 +3280,114 @@
    ],
    "answer": 1,
    "explanation": "\"Iminente\" means \"impending\" in this context. The text uses it to describe the volcanic eruption: \"devido a uma erupção vulcânica iminente.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-extended_report-002",
+   "stem": "What is the main idea of this report?",
+   "choices": [
+    "The process of renting an apartment in Salvador",
+    "The benefits of living in the city center of Salvador",
+    "The history of real estate development in Salvador",
+    "The challenges of finding affordable housing in Salvador"
+   ],
+   "answer": 0,
+   "explanation": "The text primarily describes the process of renting an apartment in Salvador, including the steps involved and the typical costs. The other options are not the main focus of the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-extended_report-002",
+   "stem": "What can be inferred about the real estate market in Salvador?",
+   "choices": [
+    "It is stable and predictable",
+    "It is primarily focused on commercial properties",
+    "It is highly competitive and fast-moving",
+    "It is controlled by the government"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions that \"as vagas para alugar são disputadas rapidamente\", indicating that the real estate market in Salvador is highly competitive and fast-moving. This inference is supported by the context provided.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-extended_report-002",
+   "stem": "What does the phrase \"fiança\" mean here?",
+   "choices": [
+    "A background check",
+    "A security deposit",
+    "A reference letter",
+    "A rental agreement"
+   ],
+   "answer": 1,
+   "explanation": "In the context of renting an apartment, \"fiança\" refers to a security deposit. The text states that \"um depósito de fiança equivalente a três meses de aluguel\" is required, indicating that this is the meaning of the phrase in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-extended_report-003",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The lack of urban planning is a significant factor in housing shortages.",
+    "The Brazilian government is successfully addressing housing shortages.",
+    "Foreign investment is the main solution to Brazil's housing problems.",
+    "Housing shortages in Brazilian cities are primarily due to economic crises."
+   ],
+   "answer": 0,
+   "explanation": "The passage discusses how the lack of urban planning and infrastructure has led to housing shortages, as seen in the phrase 'a falta de planejamento urbano e infraestrutura adequada para acomodar esse crescimento tem levado a uma escassez de moradias'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-extended_report-003",
+   "stem": "What can be inferred about the future of housing in Brazilian cities?",
+   "choices": [
+    "The government will soon implement effective housing policies.",
+    "Foreign companies will take over the housing market.",
+    "Without intervention, housing shortages will likely worsen.",
+    "Housing shortages will decrease as the economy improves."
+   ],
+   "answer": 2,
+   "explanation": "The passage implies that the situation will deteriorate further without changes, as stated in 'sem intervenção adequada, essa situação tende a piorar ainda mais'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-extended_report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-extended_report-003",
+   "stem": "In the phrase 'o crescimento desordenado das cidades', what does 'desordenado' mean?",
+   "choices": [
+    "Planned",
+    "Chaotic",
+    "Controlled",
+    "Rapid"
+   ],
+   "answer": 1,
+   "explanation": "'Desordenado' in this context means 'chaotic', as it describes the unplanned and unregulated growth of cities.",
    "source": "llm",
    "verified": false
   },
@@ -1364,6 +3446,60 @@
    "verified": false
   },
   {
+   "id": "pt-dr-2p-feature-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-feature-002",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "Online education is not recognized by employers in Brazil.",
+    "Online education is replacing traditional classrooms in Brazil.",
+    "Online education is becoming increasingly popular in Brazil due to its flexibility and accessibility.",
+    "Online education is only suitable for younger students in Brazil."
+   ],
+   "answer": 2,
+   "explanation": "The passage discusses the growing trend of online education in Brazil, highlighting its advantages such as flexibility and accessibility. The text states that 'A educação online está se tornando cada vez mais popular no Brasil, especialmente entre adultos que precisam conciliar estudos e trabalho.' This indicates that the main idea is about the rise and benefits of online education.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-feature-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-feature-002",
+   "stem": "What can be inferred about the future of online education in Brazil?",
+   "choices": [
+    "It will be primarily used for vocational training only.",
+    "It will be restricted to only a few major cities.",
+    "It will continue to grow and become more integrated into the educational system.",
+    "It will be replaced by traditional classroom learning."
+   ],
+   "answer": 2,
+   "explanation": "The passage mentions that online education is 'tornando-se cada vez mais popular' and highlights its advantages, such as 'flexibilidade e acessibilidade'. These points suggest that online education will continue to grow and become more integrated into the educational system in Brazil.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-feature-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-feature-002",
+   "stem": "As used in the passage, what does 'flexibilidade' mean?",
+   "choices": [
+    "The need for constant internet connectivity.",
+    "The limitation to specific subjects only.",
+    "The ability to adapt to different schedules and learning paces.",
+    "The rigidity of a structured curriculum."
+   ],
+   "answer": 2,
+   "explanation": "The passage describes online education as offering 'flexibilidade e acessibilidade'. Here, 'flexibilidade' refers to the ability to adapt to different schedules and learning paces, as it allows students to study at their own pace and on their own time.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-2p-interview-001-q1",
    "exam": "DLPT_READING",
    "level": "2+",
@@ -1414,6 +3550,114 @@
    ],
    "answer": 1,
    "explanation": "The word 'contingente' in this context refers to a limited amount or number. The text states 'impor limites de emissão para veículos e estabelecer um contingente para veículos mais poluentes', indicating that 'contingente' is used to describe a restriction or limit on the number of more polluting vehicles allowed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-interview-002",
+   "stem": "What is the main idea of the interview?",
+   "choices": [
+    "The benefits and drawbacks of renting an apartment in São Paulo",
+    "The difficulties of finding affordable housing in São Paulo",
+    "The legal aspects of renting property in Brazil",
+    "The best neighborhoods to live in São Paulo"
+   ],
+   "answer": 0,
+   "explanation": "The interview discusses both the advantages and disadvantages of renting in São Paulo, as seen in statements like 'Vantagens incluem liberdade e flexibilidade' and 'Por outro lado, os aluguéis podem ser caros'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-interview-002",
+   "stem": "What can be inferred about the current housing market in São Paulo?",
+   "choices": [
+    "It is easy to find affordable housing",
+    "It is very competitive and prices are high",
+    "The government provides ample housing assistance",
+    "There is a surplus of rental properties"
+   ],
+   "answer": 1,
+   "explanation": "The text implies a competitive market with high prices through phrases like 'os aluguéis podem ser caros' and 'encontrar um imóvel que atenda às necessidades e ao orçamento pode ser um desafio'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "pt-dr-2p-interview-002",
+   "stem": "What does the interviewee suggest doing to find a good apartment?",
+   "choices": [
+    "Visiting multiple neighborhoods and comparing options",
+    "Negotiating directly with property owners",
+    "Looking only in wealthy neighborhoods",
+    "Relying solely on online listings"
+   ],
+   "answer": 0,
+   "explanation": "The interviewee advises 'visitar vários bairros e comparar opções' to find a suitable apartment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-interview-003",
+   "stem": "What is the main focus of this interview?",
+   "choices": [
+    "The cultural impact of the Republic of Councils over 150 years.",
+    "The technological advancements made during the Republic of Councils' existence.",
+    "The history of the Republic of Councils' economic policies.",
+    "The political evolution and current state of the Republic of Councils."
+   ],
+   "answer": 3,
+   "explanation": "The main focus of the interview is the political evolution and current state of the Republic of Councils. This is evident from the discussion about the political changes over the years, the current political climate, and the challenges faced by the republic, such as 'os desafios políticos atuais, como a polarização e a instabilidade'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-interview-003",
+   "stem": "What can be inferred about the interviewee's view on the future of the Republic of Councils?",
+   "choices": [
+    "They think the republic will remain unchanged.",
+    "They believe the republic will become more authoritarian.",
+    "They believe the republic will collapse under current conditions.",
+    "They are cautiously optimistic about the republic's future."
+   ],
+   "answer": 3,
+   "explanation": "The interviewee expresses cautious optimism about the future of the Republic of Councils. They mention 'apesar dos desafios, acredito que há espaço para otimismo' and discuss the importance of democratic institutions and civic engagement, indicating a hopeful outlook.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-interview-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-interview-003",
+   "stem": "What does the phrase 'polarização' mean here?",
+   "choices": [
+    "Political division",
+    "Cultural assimilation",
+    "Economic disparity",
+    "Social inequality"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'polarização' refers to political division. The text mentions 'os desafios políticos atuais, como a polarização e a instabilidade', indicating that it is discussing political challenges, specifically the division within the political landscape.",
    "source": "llm",
    "verified": false
   },
@@ -1526,6 +3770,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-2p-news_analysis-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-news_analysis-003",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "The government's response to previous floods",
+    "The potential for severe flooding in northern Brazil",
+    "The economic impact of floods in northern Brazil",
+    "The history of flooding in the Amazon region"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the passage is the potential for severe flooding in northern Brazil, as indicated by phrases such as \"as chuvas intensas continuam\", \"as autoridades alertam para a possibilidade de inundações graves\", and \"a situação é crítica\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-news_analysis-003",
+   "stem": "What can be inferred about the population affected by the potential flooding?",
+   "choices": [
+    "They are well-prepared for such events",
+    "They have been evacuated already",
+    "They are not taking the warnings seriously",
+    "They are likely to face significant challenges"
+   ],
+   "answer": 3,
+   "explanation": "The inference that the population will face significant challenges can be drawn from the description of the situation as \"crítica\" and the mention of \"possíveis deslizamentos de terra\" and \"estragos significativos\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-news_analysis-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-news_analysis-003",
+   "stem": "What does \"emergência\" mean here?",
+   "choices": [
+    "A planned event",
+    "A sudden, urgent situation",
+    "A minor problem",
+    "A routine procedure"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"emergência\" refers to a sudden, urgent situation, as indicated by the phrase \"em estado de emergência\" and the description of the critical situation facing the region",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-opinion-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "pt-dr-2p-opinion-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Brazil should make its border crossing procedures simpler to facilitate trade and economic growth in Mercosul.",
+    "Brazil should increase the number of border checkpoints to improve security.",
+    "Brazil should implement more rigorous checks at its borders to prevent illegal activities.",
+    "Brazil should close some of its border crossings to reduce administrative costs."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the text is that Brazil should simplify its border crossing procedures to facilitate trade and economic growth in Mercosul. This is evident from the author's argument that \"a simplificação dos procedimentos de fronteira pode impulsionar o comércio e o crescimento econômico\" and that \"facilitar o trânsito de mercadorias e pessoas\" is crucial for the success of Mercosul.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-opinion-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "pt-dr-2p-opinion-001",
+   "stem": "What can be inferred about the current border crossing procedures in Brazil?",
+   "choices": [
+    "They are too complex and can hinder trade and economic growth.",
+    "They are already very efficient and do not need any improvements.",
+    "They are too expensive and need to be made more affordable.",
+    "They are not secure enough and need to be strengthened."
+   ],
+   "answer": 0,
+   "explanation": "The text implies that the current border crossing procedures in Brazil are too complex and can hinder trade and economic growth. The author states that \"os procedimentos atuais podem ser burocráticos e demorados, o que pode desincentivar o comércio\" and argues that simplifying these procedures can \"impulsionar o comércio e o crescimento econômico\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2p-opinion-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2p-opinion-001",
+   "stem": "In the text, what does \"desburocratizar\" mean?",
+   "choices": [
+    "To increase the number of bureaucrats.",
+    "To make something more complicated.",
+    "To make something more bureaucratic.",
+    "To simplify or reduce bureaucracy in something."
+   ],
+   "answer": 3,
+   "explanation": "In the text, \"desburocratizar\" means to simplify or reduce bureaucracy in something. The author uses this word to describe the need to \"desburocratizar os procedimentos de fronteira\" to facilitate trade and economic growth.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -1630,6 +3982,60 @@
    ],
    "answer": 0,
    "explanation": "The word \"paralisação\" is used in the context of the strike causing a \"caos sem precedentes\" (unprecedented chaos) to the city. The author states that \"A paralisação dos transportes tem deixado milhares de cidadãos desamparados,\" indicating that the strike has resulted in a complete halt of transportation services, stranding thousands of citizens.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-argumentative_essay-003",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The Festival of Lights in Belém has been canceled due to lack of funding.",
+    "The Festival of Lights in Belém is a vibrant celebration of Pará's culture and history.",
+    "The Festival of Lights in Belém is a new festival with no historical significance.",
+    "The Festival of Lights in Belém is primarily a religious event."
+   ],
+   "answer": 1,
+   "explanation": "The passage discusses the Festival of Lights in Belém as a vibrant celebration that showcases the culture and history of Pará. This is evident throughout the text, such as in the sentence 'O Festival de Luzes de Belém é muito mais do que uma simples celebração; é uma expressão viva da cultura e da história do Pará.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-argumentative_essay-003",
+   "stem": "What can be inferred about the author's opinion on the festival's impact on the local economy?",
+   "choices": [
+    "The author is unsure about the festival's impact on the local economy.",
+    "The author thinks the festival has no impact on the local economy.",
+    "The author believes the festival has a significant positive impact on the local economy.",
+    "The author believes the festival has a negative impact on the local economy."
+   ],
+   "answer": 2,
+   "explanation": "The author suggests that the festival attracts tourists and boosts local businesses, indicating a positive impact on the local economy. This is inferred from the sentence 'Além disso, o festival atrai turistas de todas as partes do país, impulsionando os negócios locais e contribuindo para a economia da região.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-argumentative_essay-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-argumentative_essay-003",
+   "stem": "As used in the passage, what does 'revitalização' mean?",
+   "choices": [
+    "A cancellation",
+    "A decline",
+    "A relocation",
+    "A renewal"
+   ],
+   "answer": 3,
+   "explanation": "The word 'revitalização' is used to describe the renewal and preservation of traditions and cultural heritage. This is evident in the sentence 'O Festival de Luzes de Belém representa uma revitalização das tradições e do patrimônio cultural do Pará.'",
    "source": "llm",
    "verified": false
   },
@@ -1742,6 +4148,168 @@
    "verified": false
   },
   {
+   "id": "pt-dr-3-editorial-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-editorial-002",
+   "stem": "What is the main idea of the editorial?",
+   "choices": [
+    "The startup faces significant challenges despite its innovative technology.",
+    "The startup's app has improved public transportation efficiency.",
+    "The startup has revolutionized urban mobility in Sao Paulo.",
+    "The startup's success is due to its founders' backgrounds."
+   ],
+   "answer": 2,
+   "explanation": "The editorial focuses on how the startup has revolutionized urban mobility in Sao Paulo, as seen in the phrases like 'uma revolução no transporte urbano' and 'mudou para sempre a forma como nos movemos pela cidade'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-editorial-002",
+   "stem": "What can be inferred about the future of the startup?",
+   "choices": [
+    "It will likely be acquired by a larger technology company.",
+    "It will face increasing competition from traditional taxi services.",
+    "It will expand to other major Brazilian cities.",
+    "It will struggle to maintain its current level of success."
+   ],
+   "answer": 2,
+   "explanation": "The editorial mentions that the startup 'já está de olho em outras cidades brasileiras', suggesting that expansion to other major Brazilian cities is a likely future step.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "pt-dr-3-editorial-002",
+   "stem": "What is the tone of the editorial?",
+   "choices": [
+    "Enthusiastic and supportive.",
+    "Cautiously optimistic.",
+    "Neutral and informative.",
+    "Critical and skeptical."
+   ],
+   "answer": 0,
+   "explanation": "The editorial uses phrases like 'uma história inspiradora', 'uma revolução no transporte urbano', and 'um impacto profundo', indicating an enthusiastic and supportive tone.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-editorial-003",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The text explains the legal processes used in the Lava Jato investigation.",
+    "The text argues that the Lava Jato investigation has been a failure and should be disbanded.",
+    "The text provides a detailed timeline of the Lava Jato investigation's key events.",
+    "The text discusses the progress and impact of the Lava Jato investigation on Brazilian politics and society."
+   ],
+   "answer": 3,
+   "explanation": "The passage primarily discusses the effects and significance of the Lava Jato investigation, as indicated by the focus on its impact on Brazilian politics and society throughout the text. For example, it mentions 'A Operação Lava Jato, iniciada em 2014, tem sido um marco na luta contra a corrupção no Brasil.' and 'O impacto da operação tem sido profundo, com repercussões em diversos setores da sociedade brasileira.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-editorial-003",
+   "stem": "What can the reader infer about the author's perspective on the Lava Jato investigation?",
+   "choices": [
+    "The author is indifferent to the investigation and merely presents the facts.",
+    "The author is supportive of the investigation and its goals, despite acknowledging the challenges.",
+    "The author believes the investigation has been ineffective in combating corruption.",
+    "The author is critical of the investigation and believes it has caused more harm than good."
+   ],
+   "answer": 1,
+   "explanation": "The author's support for the investigation and its goals is evident in statements such as 'A Operação Lava Jato, iniciada em 2014, tem sido um marco na luta contra a corrupção no Brasil.' and 'É inegável que a operação tem contribuído para a construção de um Brasil mais justo e transparente.' Although the author acknowledges the challenges, they do not express criticism or indifference.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-editorial-003",
+   "stem": "What does the phrase 'desafios' mean here?",
+   "choices": [
+    "solutions",
+    "opportunities",
+    "challenges",
+    "benefits"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'desafios' is used in the context of the difficulties and obstacles faced by the Lava Jato investigation, as seen in 'No entanto, a operação também enfrenta desafios significativos.' This indicates that 'desafios' means 'challenges' in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-editorial-004",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The new terminal at Aeroporto Internacional de Florianópolis will be a source of environmental degradation.",
+    "The new terminal at Aeroporto Internacional de Florianópolis will primarily serve as a military base.",
+    "The new terminal at Aeroporto Internacional de Florianópolis will significantly improve the passenger experience and boost the local economy.",
+    "The new terminal at Aeroporto Internacional de Florianópolis will be exclusively used for cargo flights."
+   ],
+   "answer": 2,
+   "explanation": "The text discusses the benefits of the new terminal, including improved passenger experience and economic impact, as indicated by phrases like 'experiência do passageiro' and 'impacto econômico positivo'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-editorial-004",
+   "stem": "What can be inferred about the author's opinion on the new terminal?",
+   "choices": [
+    "The author believes the new terminal will not meet passenger needs.",
+    "The author is supportive of the new terminal and its potential benefits.",
+    "The author is indifferent to the new terminal's construction.",
+    "The author is concerned about the environmental impact of the new terminal."
+   ],
+   "answer": 1,
+   "explanation": "The author's support is evident in statements like 'uma era de modernidade e eficiência' and 'impulsionar o turismo e o comércio local'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-editorial-004",
+   "stem": "What does 'desafios' mean here?",
+   "choices": [
+    "Benefits",
+    "Challenges",
+    "Opportunities",
+    "Obstacles"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'superar os desafios' indicates that 'desafios' refers to challenges that need to be overcome, such as 'melhorar a infraestrutura e a sustentabilidade'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-3-speech-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -1792,6 +4360,168 @@
    ],
    "answer": 0,
    "explanation": "The speaker uses 'urgentes' to describe environmental challenges that require immediate action, as indicated by the phrase 'ações urgentes e coordenadas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-speech-002",
+   "stem": "What is the primary focus of the speaker's address?",
+   "choices": [
+    "The impact of migration on the national economy.",
+    "The need for improved labor conditions and rights for migrant workers in rural areas.",
+    "The cultural exchange facilitated by internal migration.",
+    "The economic benefits of migration for urban centers."
+   ],
+   "answer": 1,
+   "explanation": "The speaker primarily discusses the challenges faced by migrant workers in rural areas, emphasizing the need for better labor conditions and rights. This is evident throughout the speech, particularly in the phrases 'condições de trabalho justas e dignas' and 'direitos básicos dos trabalhadores migrantes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-speech-002",
+   "stem": "What can be inferred about the speaker's view on current government policies regarding migrant workers?",
+   "choices": [
+    "The speaker thinks current policies are ineffective and do not address the needs of migrant workers.",
+    "The speaker is unsure about the effectiveness of current policies.",
+    "The speaker believes current policies are too strict and need to be relaxed.",
+    "The speaker believes current policies are adequate and only need minor adjustments."
+   ],
+   "answer": 0,
+   "explanation": "The speaker criticizes the 'falta de políticas efetivas' and mentions that 'os direitos básicos dos trabalhadores migrantes são frequentemente ignorados', indicating a view that current policies are ineffective.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-speech-002",
+   "stem": "In this context, what does the speaker mean by 'exploitação'?",
+   "choices": [
+    "The process of developing new technologies.",
+    "The unfair treatment and taking advantage of workers.",
+    "The exploration of natural resources.",
+    "The migration of people from one region to another."
+   ],
+   "answer": 1,
+   "explanation": "The speaker uses 'exploitação' to describe the situation where 'trabalhadores migrantes são frequentemente explorados' and 'submetidos a condições desumanas', indicating the unfair treatment and taking advantage of workers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-speech-003",
+   "stem": "What is the main idea of this speech?",
+   "choices": [
+    "The best crops to grow in Brazil's changing climate.",
+    "How to start a successful farming business in Brazil.",
+    "How climate change affects food prices and what can be done about it.",
+    "The history of food pricing in Brazil."
+   ],
+   "answer": 2,
+   "explanation": "The speaker discusses the effects of climate change on food prices, stating that 'as mudanças climáticas estão tendo um impacto significativo nos preços dos alimentos' and proposes solutions, such as 'investir em tecnologia e infraestrutura'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-speech-003",
+   "stem": "What can be inferred about the speaker's view on government intervention?",
+   "choices": [
+    "The speaker thinks the government should not be involved in food pricing.",
+    "The speaker believes the government should play a role in stabilizing food prices.",
+    "The speaker believes the government should focus solely on exports.",
+    "The speaker is unsure about the government's role in food pricing."
+   ],
+   "answer": 1,
+   "explanation": "The speaker mentions that 'o governo pode desempenhar um papel crucial na estabilização dos preços dos alimentos' and suggests 'implementar políticas que incentivem a produção local e reduzam a dependência de importações'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-speech-003",
+   "stem": "In the phrase 'a volatilidade dos preços dos alimentos tem sido uma preocupação constante', what does 'volatilidade' mean?",
+   "choices": [
+    "Decrease",
+    "Stability",
+    "Increase",
+    "Fluctuation"
+   ],
+   "answer": 3,
+   "explanation": "The context discusses how climate change has led to 'oscilações significativas nos preços dos alimentos', indicating that 'volatilidade' refers to fluctuation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-speech-004",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "A new vaccine has been developed to combat a recent outbreak.",
+    "The challenges faced by healthcare workers during the campaign.",
+    "The importance of community involvement in a vaccination campaign.",
+    "The government's plan to distribute vaccines to remote areas."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the speech is the importance of community involvement in a vaccination campaign. This is evident throughout the speech, such as in the statement 'A vacinação é um esforço coletivo, e cada um de nós tem um papel crucial a desempenhar.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-speech-004",
+   "stem": "What can be inferred about the speaker's view on the effectiveness of the vaccination campaign?",
+   "choices": [
+    "The speaker believes the campaign will be successful with community involvement.",
+    "The speaker thinks the campaign will fail due to lack of resources.",
+    "The speaker is unsure about the campaign's effectiveness.",
+    "The speaker thinks the campaign is unnecessary."
+   ],
+   "answer": 0,
+   "explanation": "The speaker believes the campaign will be successful with community involvement. This can be inferred from statements like 'Juntos, podemos proteger nossa comunidade e construir um futuro mais saudável.' and 'Cada dose aplicada é um passo em direção à imunidade coletiva.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-speech-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-speech-004",
+   "stem": "What does the word 'imunidade' mean here?",
+   "choices": [
+    "A state of being free from disease.",
+    "A government policy.",
+    "A medical procedure.",
+    "A type of vaccine."
+   ],
+   "answer": 0,
+   "explanation": "The word 'imunidade' here means 'a state of being free from disease,' specifically referring to collective immunity achieved through vaccination. This is clear from the context 'Cada dose aplicada é um passo em direção à imunidade coletiva.'",
    "source": "llm",
    "verified": false
   }

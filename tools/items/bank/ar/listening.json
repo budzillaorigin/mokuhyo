@@ -47,6 +47,155 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-0p-advertisement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Announcement of the Global Health Summit",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المضيف",
+     "voice": "male",
+     "text": "أعزاءنا، نعلن عن عقد القمة العالمية للصحة في مدينة الدوحة هذا الشهر."
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "ستناقش التحديات الصحية العالمية."
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "male",
+     "text": "نرجو حضوركم جميعا."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-0p-advertisement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "Transport Workers Announce Strike",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "ينظم العمال إضرابا مطالبين بزيادة الأجور"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "female",
+     "text": "ستوقف جميع الحافلات العمل غدا"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نعتذر عن أي إزعاج قد يحدث"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-0p-advertisement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "0+",
+   "textType": "advertisement",
+   "title": "New Airport Terminal Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "أخبار هامة! أخبار هامة!"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن فخورون بافتتاح محطة جوية جديدة."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "ما هي الأخبار؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "المحطة الجديدة ستيسّر الوصول إلى الطائرات."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "متى؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "من غد."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "شكرًا!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-0p-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "0+",
+   "textType": "announcement",
+   "title": "New Online Learning Platform Launch",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المدرسة",
+     "voice": "female",
+     "text": "نطلِق منصَّة التعلم الإلكترونيَّة الجديدة للطلاب."
+    },
+    {
+     "speaker": "المدرسة",
+     "voice": "female",
+     "text": "التعليم الأفضل للطلاب."
+    },
+    {
+     "speaker": "المدرسة",
+     "voice": "female",
+     "text": "بدءًا من الغد."
+    },
+    {
+     "speaker": "المدرسة",
+     "voice": "female",
+     "text": "شكرًا لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-0p-short_exchange-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -190,6 +339,52 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-0p-short_exchange-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "0+",
+   "textType": "short_exchange",
+   "title": "Hotel Check-in Issue",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المستقبل",
+     "voice": "male",
+     "text": "مرحبًا، لدي حجزًا باسم محمد علي."
+    },
+    {
+     "speaker": "موظف الاستقبال",
+     "voice": "female",
+     "text": "أهلًا وسهلًا، هل يمكنني رؤيته؟"
+    },
+    {
+     "speaker": "المستقبل",
+     "voice": "male",
+     "text": "بالطبع، إليك."
+    },
+    {
+     "speaker": "موظف الاستقبال",
+     "voice": "female",
+     "text": "عذرًا، غرفتك لم تكن جاهزة بعد."
+    },
+    {
+     "speaker": "المستقبل",
+     "voice": "male",
+     "text": "كيف ذلك؟ حجزت الغرفة قبل أسبوع."
+    },
+    {
+     "speaker": "موظف الاستقبال",
+     "voice": "female",
+     "text": "آسف على هذا، سنعمل معًا لحل هذه المشكلة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-0p-voicemail-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -212,6 +407,63 @@
      "speaker": "الانذار",
      "voice": "male",
      "text": "الرجاء اتخاذ الاحتياطات اللازمة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-0p-voicemail-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Urgent Water Advisory",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الجهاز التلقائي",
+     "voice": "female",
+     "text": "مرحبًا بكم في نظام الرسائل الصوتيّة. هذا هو تذكير مهم. سيتم قطع المياه غدًا من الساعة التاسعة صباحًا حتى الساعة الرابعة مساءً بسبب صيانة الطوارئ. نعتذر عن الإزعاج."
+    },
+    {
+     "speaker": "الجهاز التلقائي",
+     "voice": "male",
+     "text": "شكرًا لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-0p-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "0+",
+   "textType": "voicemail",
+   "title": "Moving Office",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المسجل الصوتي",
+     "voice": "male",
+     "text": "مرحبا بكم في نظام الرسائل الصوتي لمكتبنا. نحن ننتقل إلى مكان جديد في 15 من الشهر المقبل."
+    },
+    {
+     "speaker": "المسجل الصوتي",
+     "voice": "female",
+     "text": "العنوان الجديد هو شارع السلام، رقم 20. ننتقل لنتوسع."
+    },
+    {
+     "speaker": "المسجل الصوتي",
+     "voice": "male",
+     "text": "شكرا لكم."
     }
    ],
    "source": "llm",
@@ -303,6 +555,139 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-1-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Opening of the New Airport Wing",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "مرحباً بكم في برنامجنا اليومي. اليوم سنناقش افتتاح الجناح الجديد للمطار."
+    },
+    {
+     "speaker": "المهندس",
+     "voice": "female",
+     "text": "نعم، تم بناء هذا الجناح الجديد لاستيعاب عدد أكبر من المسافرين."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "ما هي الميزات الخاصة بهذا الجناح؟"
+    },
+    {
+     "speaker": "المهندس",
+     "voice": "female",
+     "text": "هناك مناطق انتظار أكبر، ومكاتب للتيكيت، ومطاعم جديدة."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "شكراً جزيلاً للمهندس على هذا التوضيح."
+    },
+    {
+     "speaker": "المهندس",
+     "voice": "female",
+     "text": "بالتأكيد، استمتعوا بافتتاحه الجديد."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Plans for the Annual Olive Harvest Festival",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المرأة الأولى",
+     "voice": "female",
+     "text": "هل أنت متحمس للمهرجان السنوي لجمع الزيتون؟"
+    },
+    {
+     "speaker": "المرأة الثانية",
+     "voice": "female",
+     "text": "نعم، أنا متحمس جدًا! ما هي الخطة؟"
+    },
+    {
+     "speaker": "الرجل الأول",
+     "voice": "male",
+     "text": "النشاط الرئيسي في المهرجان هو عصر الزيتون، ولكن هناك أيضًا بيع الحرف اليدوية، الطبخ التقليدي، والرقص الشعبي."
+    },
+    {
+     "speaker": "المرأة الأولى",
+     "voice": "female",
+     "text": "من سيأتي؟"
+    },
+    {
+     "speaker": "الرجل الأول",
+     "voice": "male",
+     "text": "جميع سكان القرية سيأتون. سنلتقي عند مزرعة الزيتون الرئيسية في الساعة التاسعة صباحًا."
+    },
+    {
+     "speaker": "المرأة الثانية",
+     "voice": "female",
+     "text": "رائع! لا يمكنني الانتظار."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Bus Route Adjustments",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "هل سمعت عن التعديلات على مسارات الحافلات؟"
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "نعم، سمعت. تم تغيير بعض المسارات لتخفيف الزحام وتحسين تدفق حركة المرور."
+    },
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "هل ستؤثر هذه التغييرات على مواعيد الحافلات؟"
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "نعم، قد تتغير مواعيد بعض الحافلات قليلاً، ولكن سيتم الإعلان عن الجدول الجديد قريبًا."
+    },
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "شكرًا للتفاصيل."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-1-instructions-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -335,6 +720,150 @@
      "speaker": "المعهد",
      "voice": "male",
      "text": "شكراً لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-instructions-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Emergency Evacuation Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "عزيزي المواطنون الأجانب،"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نعلن حالة طوارئ في المنطقة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "لذا، نطلب من جميع المواطنين الأجانب مغادرة المنطقة فورًا."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "الرجاء التوجه إلى السفارة أو القنصلية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكرًا لتفهمكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-instructions-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Flood Warning Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مرحباً بكم، نود أن نعلن عن فيضانات في منطقةنا بسبب هطول أمطار شديدة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نتشرف بزيارتكم موقعنا الإلكتروني للحصول على معلومات أكثر دقة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "ننصحك بالابتعاد عن المجاري المائية واتخاذ جميع التدابير اللازمة لحماية أنفسكم وأهلكم."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكراً لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-instructions-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Border Crossing Instructions",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "مرحبًا بك في نقطة عبور الحدود."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "من فضلك، أظهر بطاقتك الشخصية."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "الآن، انتظر في الطابور حتى دورك."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "سيطرح عليك بعض الأسئلة."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "شكرًا لك، وأتمنى لك يومًا سعيدًا."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "ar-dl-1-voicemail-001-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "مرحبا، هذا هو هاتف أحمد."
+    },
+    {
+     "speaker": "المستدع",
+     "voice": "male",
+     "text": "مرحبا أحمد، أنا كريم. أنا أبحث عن عمل. أنا عامل بناء. هل يمكنك مساعدتي؟ شكرا جزيلا. وداعا."
     }
    ],
    "source": "llm",
@@ -497,6 +1026,47 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-1p-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1+",
+   "textType": "announcement",
+   "title": "Change in University Admissions Requirements",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مرحبًا بكم جميعًا في جامعة الأمل الجديدة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نود أن نعلن عن تغيير في شروط القبول للعام الدراسي القادم."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "من الآن فصاعدًا، يجب أن يكون المتقدمون متوسط تراكميًا لا يقل عن 2.5."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هذا التغيير سيسمح لنا باختيار الطلاب الأكثر جدارة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكرًا لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-1p-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -554,6 +1124,271 @@
      "speaker": "الرجل",
      "voice": "male",
      "text": "بالضبط. هذا هو الغرض من التطبيق."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1p-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Firefighters Discuss Forest Fires",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "مرحبًا، أنا في الغابات الآن، حيث يحدث حريق كبير."
+    },
+    {
+     "speaker": "القائد",
+     "voice": "female",
+     "text": "نعم، نحن نعمل جاهدين لإطفاء النيران."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "ما هي المناطق المتضررة؟"
+    },
+    {
+     "speaker": "القائد",
+     "voice": "female",
+     "text": "الخسائر كبيرة، والعديد من الأشجار قد تحولت إلى فحم."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "هل هناك أي تحديثات على الوضع؟"
+    },
+    {
+     "speaker": "القائد",
+     "voice": "female",
+     "text": "نعم، النيران قد انتشرت إلى مناطق أخرى."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "ما الذي يمكن القيام به؟"
+    },
+    {
+     "speaker": "القائد",
+     "voice": "female",
+     "text": "نحتاج إلى المزيد من الموارد لمواجهة هذه الكارثة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1p-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Customs Officer Explains Requirements",
+   "body": "",
+   "script": [
+    {
+     "speaker": "عامل الجمارك",
+     "voice": "male",
+     "text": "أهلاً وسهلاً بكم في نقطة الحدود. سأشرح لك إجراءات المرور عبر الحدود."
+    },
+    {
+     "speaker": "المسافر",
+     "voice": "female",
+     "text": "شكراً، ما هو المطلوب من أجل المرور عبر الحدود؟"
+    },
+    {
+     "speaker": "عامل الجمارك",
+     "voice": "male",
+     "text": "يجب أن يكون لديك جواز سفر صالح وصفة الجمرك المملوءة."
+    },
+    {
+     "speaker": "المسافر",
+     "voice": "female",
+     "text": "هل هناك أي قيود على البضائع التي يمكن إدخالها؟"
+    },
+    {
+     "speaker": "عامل الجمارك",
+     "voice": "male",
+     "text": "نعم، هناك بعض القيود. يمكنك إدخال بضائع بقيمة لا تتجاوز ألف دولار دون دفع رسوم جمركية."
+    },
+    {
+     "speaker": "المسافر",
+     "voice": "female",
+     "text": "شكراً على المعلومات."
+    },
+    {
+     "speaker": "عامل الجمارك",
+     "voice": "male",
+     "text": "عفواً، هل لديك أي أسئلة أخرى؟"
+    },
+    {
+     "speaker": "المسافر",
+     "voice": "female",
+     "text": "لا، شكراً لك."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1p-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1+",
+   "textType": "conversation",
+   "title": "Economists Discuss Inflation and Interest Rates",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الاقتصادي الأول",
+     "voice": "female",
+     "text": "هل لاحظت كيف أن معدلات التضخم قد ارتفعت في الآونة الأخيرة؟"
+    },
+    {
+     "speaker": "الاقتصادي الثاني",
+     "voice": "male",
+     "text": "نعم، أنا على علم بذلك. هذا يثير قلقًا كبيرًا لدى العديد من الناس."
+    },
+    {
+     "speaker": "الاقتصادي الأول",
+     "voice": "female",
+     "text": "بالطبع، لأن التضخم يؤثر على أسعار الفائدة، والتي تؤثر بدورها على الاستثمار والاستهلاك."
+    },
+    {
+     "speaker": "الاقتصادي الثاني",
+     "voice": "male",
+     "text": "نعم، عندما يرفع البنك المركزي أسعار الفائدة، يصبح القرض أكثر تكلفة، مما قد يبطئ الاستثمار والاستهلاك."
+    },
+    {
+     "speaker": "الاقتصادي الأول",
+     "voice": "female",
+     "text": "هذا صحيح. كما أن ارتفاع أسعار الفائدة يمكن أن يجذب الاستثمارات الأجنبية، مما يعزز قيمة العملة."
+    },
+    {
+     "speaker": "الاقتصادي الثاني",
+     "voice": "male",
+     "text": "نعم، ولكن هناك دائمًا مخاطر، مثل تبطئ النمو الاقتصادي."
+    },
+    {
+     "speaker": "الاقتصادي الأول",
+     "voice": "female",
+     "text": "بالطبع، لذلك يجب على البنك المركزي أن يكون حذرًا عند اتخاذ قراراته."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1p-news_brief-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Peacekeepers Deploy to Al-Salam Region",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "هذه هي النشرة الإخبارية من إذاعة صوت الوطن."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "الحكومة قد قررت إرسال قوات حفظ السلام إلى منطقة السلام لحفظ الاستقرار في المنطقة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "ستبلغ عدد القوات حوالي خمسمائة جندي، وسيتم توزيعهم في مختلف أنحاء منطقة السلام."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "سيعمل الجنود على حماية المدنيين، وحفظ القانون والنظام، والمساعدة في إعادة الإعمار."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "سيتم توفير جميع الإمدادات اللازمة للجنود، بما في ذلك الطعام، والماء، والمعدات الطبية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "من المتوقع أن تبدأ القوات في الوصول إلى المنطقة في غضون الأسبوع القادم."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "هذه هي نهاية النشرة الإخبارية، شكرا لملاحظة صوت الوطن."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1p-news_brief-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "Debate on Mandatory Military Service",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "في الوقت الحاضر، هناك جدل دائر حول الخدمة العسكرية الإجبارية في وطننا."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "العديد من المواطنين يشاركون في المناقشات حول هذا الموضوع الحساس."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "من جانبهم، يدعم المؤيدون للخدمة الإجبارية ويؤكدون أنها ستضمن الأمن الوطني."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "كما أنهم يعتقدون أن ذلك سيؤدي إلى تعزيز الوحدة الوطنية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "من ناحية أخرى، يعارض المعارضون هذه الفكرة ويؤكدون على أهمية التعليم والتخصصات الأخرى."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "هم يرجون وجود استثناءات للطلاب والمهنيين في بعض المجالات."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "الجدل لا يزال مستمرًا، حيث يحاول كل طرف إقناع الآخر بوجهة نظره."
     }
    ],
    "source": "llm",
@@ -746,6 +1581,57 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-1p-phone_call-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1+",
+   "textType": "phone_call",
+   "title": "Investment in Solar Energy Project",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المركز",
+     "voice": "male",
+     "text": "مركز الطاقة الشمسية، كيف يمكنني مساعدتك؟"
+    },
+    {
+     "speaker": "المستثمر",
+     "voice": "female",
+     "text": "مرحبًا، أنا مهتم بالاستثمار في مشروع الطاقة الشمسية الجديد في مدينتنا."
+    },
+    {
+     "speaker": "المركز",
+     "voice": "male",
+     "text": "بالطبع! المشروع الجديد سيقام على أطراف مدينتنا، وسيساهم في تقليل الاستهلاك الكهربائي."
+    },
+    {
+     "speaker": "المستثمر",
+     "voice": "female",
+     "text": "هذا رائع! كم من المال يحتاج المشروع؟"
+    },
+    {
+     "speaker": "المركز",
+     "voice": "male",
+     "text": "نحتاج إلى حوالي مليون دولار للبدء، ولكن أي مساهمة صغيرة ستساهم."
+    },
+    {
+     "speaker": "المستثمر",
+     "voice": "female",
+     "text": "فهمت. سأتفكر في هذا الأمر وأتصل بك قريبًا."
+    },
+    {
+     "speaker": "المركز",
+     "voice": "male",
+     "text": "شكرًا لاهتمامك. نتمنى أن نسمع منك قريبًا!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-2-briefing-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -808,6 +1694,52 @@
      "speaker": "المعريفة",
      "voice": "female",
      "text": "بالطبع، إذا كان لديك أي أسئلة أخرى، لا تتردد في طرحها."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-briefing-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Grain Export Restrictions and Their Impact",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أهلًا وسهلًا، اليوم نناقش تأثير القيود المفروضة على صادرات الحبوب على أسعار الأغذية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "لقد فرضت روسيا وأوكرانيا قيودًا على صادرات الحبوب، مما أدى إلى ارتفاع أسعار الأغذية في الأسواق العالمية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هذه القيود تأتي نتيجة الكوارث الطبيعية الأخيرة والصراع المستمر في المنطقة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "بالإضافة إلى ذلك، فإن زيادة الطلب على الحبوب من دول أخرى، مثل مصر والبرازيل، قد ساهمت في ارتفاع الأسعار."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "من المتوقع أن يستمر تأثير هذه القيود على الأسواق العالمية في الأشهر القادمة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن نوصي الدول المعنية بالعمل على حلول مشتركة لتخفيف تأثير هذه القيود على أسعار الأغذية."
     }
    ],
    "source": "llm",
@@ -888,6 +1820,438 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-2-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Discussion on Labor Migration",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "هل تعتقد أن الهجرة العمالية لها تأثير إيجابي على الاقتصاد؟"
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "نعم، طبعا. العمال المهاجرين يساهمون في اقتصاد البلد المستضيف من خلال العمل في وظائف مختلفة ولديهم تأثير كبير على النمو الاقتصادي."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "هل هناك أي فوائد أخرى؟"
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "بالطبع، الهجرة العمالية تساعد أيضًا بلدانهم الأصلية من خلال إرسال الأموال إلى العائلات. هذا المال يمكن أن يساعد في تحسين مستوى المعيشة لأسرهم."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "هذا صحيح. وعلاوة على ذلك، يمكن أنجلب تكنولوجيات جديدة ومهارات إلى البلدان التي يعملون فيها."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "نعم، هذا صحيح أيضا. ولكن هناك أيضًا تحديات يجب معالجتها، مثل التمييز ضد العمال المهاجرين في بعض الأحيان."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "بالطبع. يجب أن نعمل جميعا معا لحل هذه التحديات وزيادة الفوائد من الهجرة العمالية."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "interview",
+   "title": "Interview with Aid Coordinator",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "مرحبًا بكم في برنامجنا اليومي. معنا اليوم السيد أحمد خالد، مدير المشاريع في منظمة الإغاثة الدولية."
+    },
+    {
+     "speaker": "أحمد خالد",
+     "voice": "female",
+     "text": "شكرًا لكم على دعوتكم. أنا سعيد بأن أكون هنا."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "السيد خالد، هل يمكنكم أن تشرحوا لنا التحديات التي تواجهها شاحنات الإغاثة أثناء نقل المساعدات إلى المناطق المتضررة؟"
+    },
+    {
+     "speaker": "أحمد خالد",
+     "voice": "female",
+     "text": "بالطبع. هناك العديد من التحديات. على سبيل المثال، هناك مناطق يتحكم بها المتمردون، ومناطق تعاني من العنف، مما يجعل من الصعب الوصول إليها."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "كيف تتعامل منظمة الإغاثة الدولية مع هذه التحديات؟"
+    },
+    {
+     "speaker": "أحمد خالد",
+     "voice": "female",
+     "text": "نعمل على إنشاء مسارات آمنة للقطارات، وننظم اجتماعات مع جميع الأطراف المعنية، ونستخدم طائرات بدون طيار لجمع المعلومات."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "شكرًا لكم على معلوماتكم القيمة، السيد خالد."
+    },
+    {
+     "speaker": "أحمد خالد",
+     "voice": "female",
+     "text": "عفوًا، الشكر لكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "interview",
+   "title": "Transport Workers' Strike: An Interview with Union Leader",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحبًا بكم جميعًا، اليوم معنا في الاستوديو السيد أحمد ياسين، رئيس اتحاد عمال النقل، لنناقش الإضراب الذي بدأت به النقابة منذ ثلاثة أيام."
+    },
+    {
+     "speaker": "الأحمد ياسين",
+     "voice": "male",
+     "text": "شكرًا جزيلًا على دعوتكم. نعم، نحن نقف هنا اليوم لنطلب ظروف عمل أفضل وأجورًا أعلى. العمال في هذا القطاع يعانون من ظروف عمل سيئة وأجور منخفضة، وهذا لا يمكن أن يستمر."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "female",
+     "text": "ما هو تأثير الإضراب على الخدمات العامة؟"
+    },
+    {
+     "speaker": "الأحمد ياسين",
+     "voice": "male",
+     "text": "بالطبع، الإضراب يؤدي إلى إعاقة الخدمات العامة، ولكننا نعتقد أن هذا هو الطريقة الوحيدة التي يمكن من خلالها جذب الانتباه إلى القضايا التي نواجهها. إن هذه المطالب ضرورية لرفاهية العمال."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "female",
+     "text": "كيف تستجيب الحكومة لطلبكم؟"
+    },
+    {
+     "speaker": "الأحمد ياسين",
+     "voice": "male",
+     "text": "حتى الآن، الحكومة عرضت بعض الحلول، ولكننا لا نعتقد أنها كافية. نحن نريد حوارًا جادًا مع الحكومة لتقديم حلول حقيقية لمشاكلنا."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "female",
+     "text": "هل هناك أي تقدم في المفاوضات؟"
+    },
+    {
+     "speaker": "الأحمد ياسين",
+     "voice": "male",
+     "text": "هناك بعض التقدم، ولكننا لا يزال لدينا طريق طويل للذهاب. نحن نأمل أن نجد حلًا سريعًا لهذه القضايا حتى يمكن للعمال العودة إلى عملهم."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "female",
+     "text": "شكرًا لك، السيد ياسين، على هذه المعلومات."
+    },
+    {
+     "speaker": "الأحمد ياسين",
+     "voice": "male",
+     "text": "شكرًا لكم على الاستماع."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "interview",
+   "title": "Crown of the Desert: An Interview with the Marathon Champion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "مرحبا بك في برنامجنا اليوم البطل الأولمبي في ماراثون الصحراء، أحمد بن محمد."
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "مرحبا، شكرا لك على دعوتكم."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "كيف بدأت رحلتك في العالم الرياضي؟"
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "كانت بداية بسيطة، كنت أحب الجري منذ صغري. كان لي هدف واضح: أن أكون أفضل في ما أفعله."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "ما الذي يحفزك على الاستمرار في هذا المجال؟"
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "أرغب في تحدي نفسي وارتقاء بالمستوى كل مرة أركض. كما أنني أرغب في أن أكون نموذجاً لأطفال بلدي."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "ما هي التحديات التي واجهتها أثناء تدريبك؟"
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "التدريب في الصحراء ليس سهلا، خاصة في الطقس الحار. لكنني تعلمت كيف أتعامل مع هذه الظروف وأستفيد منها."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "ما هي نصيحتك للرياضيين الشباب؟"
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "أقول لهم: آمنوا بأنفسكم وكنوا صبورين. النجاح لا يأتي بسهولة، لكنه يستحق كل الجهد."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "شكرا لك أحمد على هذا الحوار المفيد."
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "شكرا لك على الاستضافة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-news-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "news",
+   "title": "Lost Passport at Airport Security",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحبا بكم في برنامج الأخبار. اليوم سنناقش موضوعا مهما: فقدان جواز سفر في مطار المدينة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وفقا للشرطة، فقدت سيدة اسمها ليلى جواز سفرها في نقطة المرور في المطار هذا الصباح."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وقالت ليلى إن تركت جواز سفرها في حقيبتها عندما مرت عبر نقطة الأمن في المطار."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "بعد ذلك، وجدت جواز سفرها في سلة المهملات بالقرب من نقطة الأمن."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وقدمت ليلى شكوى إلى الشرطة، والتي بدأت في تحقيق في الحادث."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وقال أحد عمال الأمن إن هذا ليس الحادث الأول من نوعه، خاصة في أوقات الذروة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "ودعى إلى زيادة عدد العمال في نقاط الأمن لإدارة الوضع بشكل أفضل."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "والآن، لننتقل إلى موضوع آخر..."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-news-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "news",
+   "title": "Joint Military Exercise: Falcon Shield 2023",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "بدأت تمارين عسكرية مشتركة بين مصر والسعودية تحت اسم صقر الحماية 2023."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "نعم، هذه التمارين العسكرية المشتركة، وهي جزء من التعاون الاستراتيجي بين البلدين."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "كم عدد الجنود المشاركين في هذه التمارين؟"
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "يشارك في هذه التمارين أكثر من 15,000 جندي، بالإضافة إلى معدات عسكرية متطورة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "أين ستجرى هذه التمارين؟"
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "ستجرى في مختلف المناطق في مصر والسعودية، وسنرى المشاركة الفعالة للقوات المسلحة للبلدين."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "ما هي أهداف هذه التمارين؟"
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "تهدف هذه التمارين إلى تعزيز التعاون العسكري، ومشاركة الخبرات، وتحسين القدرات القتالية للقوات المسلحة للبلدين."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكرًا لك على هذه المعلومات."
+    },
+    {
+     "speaker": "المراسل",
+     "voice": "female",
+     "text": "بالطبع، شكرًا لك."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-news-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "news",
+   "title": "Tourism Recovery in Al-Madinah Al-Munawwarah",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحبا بكم في برنامج أخبار اليوم. اليوم نتحدث عن استعادة السياحة في المدينة المنورة بعد الجائحة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وفقا للبيانات الجديدة، زادت أعداد السياح هذا العام بشكل كبير مقارنة بالعام الماضي."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وشهدت المدينة المنورة زيادة كبيرة في أعداد السياح الدينيين بسبب بداية موسم الحج."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وأشاد مدير السياحة في المدينة المنورة، السيد أحمد العتيبي، بجهود الحكومة في استعادة السياحة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "قال العتيبي: 'لقد بذلنا جهودا كبيرا لاستعادة السياحة في المدينة المنورة، ونتوقع زيادة إضافية في الأشهر المقبلة.'"
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وكذلك، تم افتتاح العديد من الفنادق الجديدة والمقاهي والمطاعم لتلبية احتياجات السياح."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وتم تحسين الخدمات السياحية مثل النقل والعربات السياحية التي تدعم السياحة الدينية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وهناك خطط لمزيد من التطوير في المستقبل القريب."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "الشكر لكل من ساهم في استعادة السياحة في المدينة المنورة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -944,6 +2308,47 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "report",
+   "title": "Launch of the Hope Space Probe",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المذيعة",
+     "voice": "female",
+     "text": "مع تحياتنا لكم، نقدم لكم برنامج الأمل الفضائي، الذي انطلق بنجاح في الساعة 12:51 مساءً بالتوقيت المحلي للإمارات، من مركز تنزرو في اليابان."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "صنعته فريق من المهندسين الإماراتيين، يسعى برنامج الأمل الفضائي إلى تحقيق رؤية الإمارات 2021، وهو أول مركبة فضائية عربية تدرس جو الكوكب الأحمر."
+    },
+    {
+     "speaker": "المذيعة",
+     "voice": "female",
+     "text": "سيتمكن برنامج الأمل من دراسة الغلاف الجوي للكوكب الأحمر، وجمع البيانات العلمية التي ستساعد في فهم التغيرات المناخية على الأرض."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "كما سيسهم البرنامج في تعزيز التعاون العلمي بين الإمارات والدول الشريكة، لتعزيز المعرفة والتقنيات الفضائية."
+    },
+    {
+     "speaker": "المذيعة",
+     "voice": "female",
+     "text": "وذكرت الوكالة الإماراتية للفضاء أن برنامج الأمل يمثل خطوة هامة في مسيرة الإمارات نحو تحقيق التحول الوطني في مجال البحث العلمي والتقنيات الفضائية."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-2p-documentary-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -976,6 +2381,331 @@
      "speaker": "المذيع",
      "voice": "male",
      "text": "سيتم تقديم تفاصيل إضافية حول القانون خلال مؤتمر صحفي في الأسبوع القادم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-interview-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "interview",
+   "title": "The Importance of Regular Check-ups",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "أهلاً وسهلاً بكم في برنامجنا اليومي الصحي. ضيفنا اليوم هو الدكتور أحمد ياسين، طبيب أمراض داخلية في مستشفى الجامعة في مدينة القاهرة. شكراً لك على وجودك معنا، دكتور أحمد."
+    },
+    {
+     "speaker": "الطبيب",
+     "voice": "female",
+     "text": "أهلاً بكم جميعاً، وسأكون سعيداً بأن أجيب على أي استفسارات لديكم اليوم."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "دكتور أحمد، من المهم جداً إجراء الفحوصات الطبية الدورية لتجنب المشاكل الصحية التي قد تظهر في وقت لاحق. ما هي الفحوصات التي توصي بها للرجل العادي الذي لا يعاني من أي أعراض؟"
+    },
+    {
+     "speaker": "الطبيب",
+     "voice": "female",
+     "text": "بالتأكيد، هناك فحوصات أساسية يجب على كل رجل إجراءها سنوياً. هذه الفحوصات تشمل تحليل الدم الكامل، فحص ضغط الدم، فحص سكر الدم، وفحص الكوليسترول، بالإضافة إلى فحص البطن والقلب. كما نوصي بإجراء فحص البروستاتا للرجال فوق عمر الأربعين."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكراً لك، دكتور أحمد. الآن، دعنا نسمع من أحد المرضى. سيدي، لماذا جئت اليوم لزيارة الطبيب؟"
+    },
+    {
+     "speaker": "المريض",
+     "voice": "male",
+     "text": "كان لدي عمل كثير جداً، ولم أجد وقتاً لزيارة الطبيب. ولكن في الآونة الأخيرة، بدأت أشعر بألم في البطن وأشعر بتعب شديد. لذلك، قررت في النهاية أن أذهب إلى الطبيب لأعرف ما إذا كان كل شيء على ما يرام."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكراً لك على مشاركتك. دكتور أحمد، ما هو رايك في حالة هذا المريض؟"
+    },
+    {
+     "speaker": "الطبيب",
+     "voice": "female",
+     "text": "بعد الانتهاء من الفحوصات، سنحتاج إلى المتابعة الطبية لتقييم حالتك الصحية. ولكن من المهم أن نبدأ العلاج مبكراً لتجنب أي مضاعفات محتملة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكراً لكما على مشاركتكما اليوم. وهذا يخرجنا من برنامجنا اليومي الصحي. شكراً لكم على مشاهدتكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Expanding Horizons: Al-Rahma Corporation's Relocation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "مرحبا بكم في برنامجنا اليوم. لدينا معنا السيد أحمد العبد الله، مدير شركة الرحمة، لنناقش نقل الشركة إلى موقع جديد."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "أهلاً وسهلاً، السيد أحمد. أخبرنا عن أسباب نقل الشركة."
+    },
+    {
+     "speaker": "السيد أحمد العبد الله",
+     "voice": "male",
+     "text": "شكراً لك. نقوم بنقل الشركة لسببين أساسيين. أولا، نريد الوقوف بالقرب من عملائنا الرئيسيين، وهذا سيحسن من خدماتنا لهم. ثانيا، نريد الوصول إلى بركة من المواهب أكبر، حيث أن الموقع الجديد يقدم مرافق أكثر حداثة."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "هذا مثير للاهتمام. كيف توقعون أن يؤثر هذا النقل على أداء الشركة؟"
+    },
+    {
+     "speaker": "السيد أحمد العبد الله",
+     "voice": "male",
+     "text": "نتوقع أن يكون هذا النقل إيجابيا بشكل كبير. من خلال تقليل الوقت الذي نستخدمه في التنقل، سنكون أكثر إنتاجية. بالإضافة إلى ذلك، ستساعدنا المواهب الجديدة التي سنجندها في تحسين جودة منتجاتنا وخدماتنا."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "شكراً لك، السيد أحمد، على هذه المعلومات القيمة."
+    },
+    {
+     "speaker": "السيد أحمد العبد الله",
+     "voice": "male",
+     "text": "شكراً لك على دعوتكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Night at the Oasis Grand",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "مرحبا بكم في برنامجنا اليومي. نحن نقدم لكم مقابلة مع زائرة واحدة من فندق أواسيس غراندي."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "مرحبا زائرة، شكرا لك على قبولك هذه المقابلة."
+    },
+    {
+     "speaker": "زائرة",
+     "voice": "female",
+     "text": "مرحبا، لا شكر على واجب."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "أخبرينا ما الذي حدث لك في فندق أواسيس غراندي؟"
+    },
+    {
+     "speaker": "زائرة",
+     "voice": "female",
+     "text": "أنا مرتبكة من هذه الوضعية. حجزت غرفة، لكن يُقال إنها غير متاحة. ما الذي يحدث؟"
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "هل تحدثت إلى موظف في الفندق؟"
+    },
+    {
+     "speaker": "زائرة",
+     "voice": "female",
+     "text": "نعم، تحدثت إلى موظف يُدعى أحمد. كان ودودًا واستأصل للخلل."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "ما هو الحل الذي قدمه الفندق؟"
+    },
+    {
+     "speaker": "زائرة",
+     "voice": "female",
+     "text": "قدموا لي غرفة أخرى في نفس الطابق، لكن كانت أصغر من التي حجزتها في البداية."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "هل كنت راضيا عن هذا الحل؟"
+    },
+    {
+     "speaker": "زائرة",
+     "voice": "female",
+     "text": "لا، ليس بالضبط. لكنهم وعدوا أن يوفروا لي عروضًا خاصة في زيارتي القادمة."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "ما هو رسالتك للضيوف الآخرين الذين قد يواجهون مثل هذه المتاعب؟"
+    },
+    {
+     "speaker": "زائرة",
+     "voice": "female",
+     "text": "أقول لهم أن يكونوا صبورين ومتواصلين مع الموظفين. عادةً ما يكونون مستعدين لمساعدتك."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "شكرا لك زائرة على مشاركتك قصتك معنا اليوم."
+    },
+    {
+     "speaker": "زائرة",
+     "voice": "female",
+     "text": "شكرا لك على دعوتك."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "بهذا ننتهي من هذه المقابلة. شكرا لملاحظتكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Future of Electric Cars in the Middle East",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحبا بكم في برنامج تحليل الأخبار اليوم، سنناقش مستقبل السيارات الكهربائية في المنطقة العربية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "لقد شهدنا في الآونة الأخيرة تحولا كهربائيا في المنطقة، حيث أصبحت السيارات الكهربائية أكثر شيوعا."
+    },
+    {
+     "speaker": "المحللة",
+     "voice": "female",
+     "text": "نعم، بالفعل. هناك عدة عوامل تدفع هذا التحول، منها الحوافز الحكومية وتعزيز الوعي البيئي."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "ما هي بعض الحوافز التي تقدمها الحكومات؟"
+    },
+    {
+     "speaker": "المحللة",
+     "voice": "female",
+     "text": "مثلا، تخفيضات في الرسوم الجمركية على استيراد السيارات الكهربائية، وتوفير مواقف خاصة بها، وزيادة عدد محطات الشحن."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "وما هو دور التكنولوجيا في هذا التوجه؟"
+    },
+    {
+     "speaker": "المحللة",
+     "voice": "female",
+     "text": "التكنولوجيا تلعب دورا مهما، حيث أن التكاليف متوقعة أن تنخفض مع تطور البطاريات، وزيادة مدى السفر على شحنة واحدة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكرا لك على هذا التحليل المفيد."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "هذا ختام برنامجنا اليوم، شكرا لملاحظةكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "news_analysis",
+   "title": "The Art of Ancient Nubia: A Journey Through Time",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "أهلاً وسهلاً بكم في برنامجنا الإخبارية \"في قلب الأحداث\". اليوم، نقدم لكم تحليلاً لعرض فني هام في متحف القاهرة."
+    },
+    {
+     "speaker": "المراسلة",
+     "voice": "female",
+     "text": "شكراً لك. هذا العرض الفني الذي يحمل عنوان \"فن نوبي القديم\" يفتح أبوابه لزواره في يوم الغد."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "ما الذي يجعل هذا العرض الفني مختلفاً عن الآخرين؟"
+    },
+    {
+     "speaker": "المراسلة",
+     "voice": "female",
+     "text": "يقدم هذا العرض الفني رحلة رائعة عبر الزمن، يستكشف هذا العرض الفني تراث نوبي القديم عبر أعمال فنية ونقوش وتماثيل من مختلف عصور التاريخ النوبي."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "هل هناك أي قطع فنية خاصة يجب أن لا يفوت زوار المعرض رؤيتها؟"
+    },
+    {
+     "speaker": "المراسلة",
+     "voice": "female",
+     "text": "نعم، هناك العديد من القطع الفريدة، مثل تمثال آمون الذي يعود إلى فترة المملكة الكوشية، ونقوش جدارية من فترة ميثرايس."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكراً لك على هذا التحليل المفصل. نتطلع إلى زيارة هذا العرض الفني المميز."
+    },
+    {
+     "speaker": "المراسلة",
+     "voice": "female",
+     "text": "شكراً لك. كان من متعة أن أشارككم هذا التحليل."
     }
    ],
    "source": "llm",
@@ -1082,6 +2812,47 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-2p-panel_discussion-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Sustainable Tourism: A Path to Recovery",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحبًا بكم جميعا في هذا الحوار حول تحديات تطوير السياحة المستدامة. اليوم معنا نخبة من الخبراء في مجال السياحة والبيئة والأعمال. دعونا نبدأ!"
+    },
+    {
+     "speaker": "الخبير السياحي",
+     "voice": "female",
+     "text": "شكرًا لك. أعتقد أن التحديات التي تواجه تطوير السياحة المستدامة هي متعددة. من المهم أن نتوازن بين النمو السياحي وحماية البيئة والثقافة المحلية."
+    },
+    {
+     "speaker": "الخبير البيئي",
+     "voice": "male",
+     "text": "أتفق معك تمامًا. يجب أن نضع سياسات واضحة لحماية البيئة. السياحة المستدامة ليست فقط عن الجذب السياحي، بل عن الحفاظ على الموارد الطبيعية للأجيال القادمة."
+    },
+    {
+     "speaker": "خبير الأعمال",
+     "voice": "female",
+     "text": "من وجهة نظري، ندرك أن دور الحكومة في تعزيز السياحة المستدامة هو أمر أساسي. يجب أن تكون هناك قوانين وقوانين واضحة ودعم للقطاع الخاص لتعزيز الممارسات المستدامة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكرًا لجميعكم على مشاركاتكم القيمة. يبدو أن التعاون بين جميع الأطراف هو المفتاح لتحقيق السياحة المستدامة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-2p-panel_discussion-004",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -1134,6 +2905,128 @@
      "speaker": "المتحدثة",
      "voice": "female",
      "text": "شكراً لك. أنا أيضاً آمل ذلك. معاً، يمكننا جعل فرق في حياة اللاجئين."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-panel_discussion-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "panel_discussion",
+   "title": "Evacuation Plan: Safeguarding Lives in Al-Salam",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "أهلاً وسهلاً بكم في برامجنا. نحن اليوم نناقش موضوعاً هاماً جداً، وهو إجلاء المواطنين الأجانب من مدينة السلام. لندعوا ضيوفنا اليوم."
+    },
+    {
+     "speaker": "الدكتور أحمد",
+     "voice": "female",
+     "text": "شكراً للمقدمة. بالفعل، الوضع في مدينة السلام أصبح خطيراً جداً. بسبب التدهور الأمني في المدينة، قررت الحكومة إجلاء جميع المواطنين الأجانب."
+    },
+    {
+     "speaker": "السيدة فاطمة",
+     "voice": "male",
+     "text": "أتفق مع الدكتور أحمد. هذا الإجلاء يهدف إلى ضمان سلامة المواطنين الأجانب. سيكون هناك طائرات خاصة لنقلهم إلى دول آمنة."
+    },
+    {
+     "speaker": "الدكتور كاريم",
+     "voice": "female",
+     "text": "بالطبع، هذا الإجلاء سيؤثر على الاقتصاد المحلي. لكن سلامة المواطنين هي الأولوية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "هل هناك أي تفاصيل أخرى عن عملية الإجلاء؟"
+    },
+    {
+     "speaker": "السيدة فاطمة",
+     "voice": "male",
+     "text": "نعم، سيتم توفير جميع الخدمات اللازمة للمواطنين الأجانب خلال عملية الإجلاء. وسيتم التنسيق مع سفاراتهم للتأكد من سلامتهم."
+    },
+    {
+     "speaker": "الدكتور أحمد",
+     "voice": "female",
+     "text": "أود أن أشير إلى أن هذا الإجلاء مؤقت. ستتم مراجعة الوضع الأمني في مدينة السلام، وستتم إعادة المواطنين الأجانب بعد استتباب الأمن."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكراً لكم جميعاً على هذا النقاش المفيد. نتمنى للجميع السلامة والسلام."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-speech-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "speech",
+   "title": "Whistleblower Exposes Fraud in Al-Noor Hospital",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مرحبًا بكم جميعًا. أنا هنا اليوم لأكشف عن الأمر الذي كان يزعجني لمدة طويلة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أريد أن أخبركم عن الفساد الذي وجدت في مستشفى النور."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أنا أحد الموظفين هناك، وشهدت على العديد من الممارسات غير القانونية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هناك تسعير مزيف للأدوية، وتزويد مزيف للمعدات الطبية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "وكذلك هناك دفعات غير قانونية للعديد من الموظفين."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أنا لا أستطيع أن أجلس وصامتًا بينما هذا يحدث."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أنا أطلب من الحكومة أن تبدأ تحقيقًا فوريًا في مستشفى النور."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أنا أطلب من الحكومة أن تتخذ إجراءً ضد جميع أولئك الذين شاركوا في هذا الفساد."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أنا أطلب من الحكومة أن تحمي جميع الموظفين الذين يدعمون الحقيقة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هذا هو كل ما لدي. شكرًا لكم."
     }
    ],
    "source": "llm",
@@ -1270,6 +3163,209 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-3-debate-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Role of Language in Cultural Exchange",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المشارك الأول",
+     "voice": "male",
+     "text": "أهلًا وسهلًا بكم في هذا المناقشة حول دور اللغة في برامج التبادل الثقافي."
+    },
+    {
+     "speaker": "المشارك الثاني",
+     "voice": "female",
+     "text": "أهلًا وسهلًا أيضًا، إن هذه البرامج تلعب دورًا هامًا في تعزيز الفهم المتبادل بين الثقافات المختلفة."
+    },
+    {
+     "speaker": "المشارك الأول",
+     "voice": "male",
+     "text": "بالطبع، اللغة هي وسيلة التواصل الأساسية التي تربط بين الثقافات وتيسّر التبادل الثقافي، أي أنّها تَبْنِي الجسور بين الناس."
+    },
+    {
+     "speaker": "المشارك الثاني",
+     "voice": "female",
+     "text": "أتفق معك تمامًا، ولكن كيف يمكن لهذه البرامج أن تسهم في حفظ اللغات النادرة أو الأقل استخدامًا؟"
+    },
+    {
+     "speaker": "المشارك الأول",
+     "voice": "male",
+     "text": "إن برامج التبادل الثقافي يمكن أن تشجّع على تعلم هذه اللغات عن طريق تعرض المشاركين لها ضمن سياق ثقافي غني، مما يزيد من اهتمامهم بتعلمها وحفظها."
+    },
+    {
+     "speaker": "المشارك الثاني",
+     "voice": "female",
+     "text": "هذا صحيح، ولكن المشاركة الفعّالة في هذا البرنامج تتطلب مهارات لغوية كافية لتحقيق التواصل الفعّال."
+    },
+    {
+     "speaker": "المشارك الأول",
+     "voice": "male",
+     "text": "بالطبع، لكن اللغة المشتركة تعزّز من التعاون والتفاهم بين المشاركين في هذه البرامج."
+    },
+    {
+     "speaker": "المشارك الثاني",
+     "voice": "female",
+     "text": "بالطبع، لأنّ اللغة ليست مجرد أداة للتواصل، بل هي باب لفتح آفاق جديدة لفهم الثقافة بشكل أعمق."
+    },
+    {
+     "speaker": "المشارك الأول",
+     "voice": "male",
+     "text": "لذلك، يجب أن تكون اللغة جزءًا أساسيًا من أي برنامج تبادل ثقافي ناجح."
+    },
+    {
+     "speaker": "المشارك الثاني",
+     "voice": "female",
+     "text": "أتفق معك، وشكرًا لك على هذه المناقشة المفيدة."
+    },
+    {
+     "speaker": "المشارك الأول",
+     "voice": "male",
+     "text": "شكرًا لك أيضًا، فقدمنا رؤية واضحة حول دور اللغة في تعزيز التبادل الثقافي."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Lost in Transit: The Perils of Passport Misplacement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الموضوع",
+     "voice": "male",
+     "text": "فقد جواز السفر هو واحدة من أسوأ الكوارث التي قد تحدث أثناء السفر."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "female",
+     "text": "عندما تفقده، تتعرض لسلسلة من المشكلات التي يمكن أن تجعلك تشعر باليأس."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "male",
+     "text": "أولاً، يجب عليك الإبلاغ عن الفقدان إلى السلطات المختصة."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "female",
+     "text": "هذا يتطلب الوقت والجهد، خاصة إذا كنت في بلد أجنبي."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "male",
+     "text": "ثانياً، يجب عليك الحصول على جواز سفر جديد."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "female",
+     "text": "العملية البيروقراطية معقدة ومتكلفة، وتستغرق وقتاً طويلاً."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "male",
+     "text": "ستواجه المشاق التي تواجهها في هذا العملية، مثل الإنتظار في الطوابير الطويلة، ومواجهة الموظفين غير الودودين."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "female",
+     "text": "بالإضافة إلى ذلك، قد تواجه مشاكل في الحصول على تأشيرات جديدة للمنتجات التي ستزورها."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "male",
+     "text": "هذا يمكن أن يبطئ رحلتك ويجعلها أقل متعة."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "female",
+     "text": "لذلك، من المهم أن تكون حذراً مع جواز سفرك وأن تحافظ عليه بأمان."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "male",
+     "text": "إذا فقدته، كن على علم بأنك ستواجه سلسلة من المشاكل التي يمكن أن تجعلك تشعر باليأس."
+    },
+    {
+     "speaker": "الموضوع",
+     "voice": "female",
+     "text": "نحن نواجه هذه المشاكل جميعها، لذا يجب أن نكون حذرين ونحافظ على جوازات السفرنا بأمان."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-lecture-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "lecture",
+   "title": "The New Traffic Law and Its Impact on Road Safety",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مرحبا بكم جميعا. الآن، أود أن أتحدث عن القانون الجديد للسلامة المرورية وما تأثيره على حياتنا اليومية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "كما يعلم الجميع، كانت الحوادث المرورية تشكل مشكلة خطيرة في بلدنا، مما أدى إلى خسائر في الأرواح والمال."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "لذا، قررت الحكومة أن تتخذ خطوات جادة لمنع هذه الحوادث من خلال إقرار قانون جديد للسلامة المرورية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "من بين التغييرات الرئيسية: فرض عقوبات شديدة على قيادة المركبات تحت تأثير الكحول، وزيادة العقوبات على المخالفات المرورية، وزيادة عدد إشارات المرور في المناطق الخطرة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "بالإضافة إلى ذلك، يتم تشجيع المواطنين على ارتداء حزام الأمان، والالتزام بسرعات آمنة، وتجنب استخدام الهواتف المحمولة أثناء القيادة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "من الضروري أن نلتزم بالقوانين الجديدة للسلامة المرورية، ليس فقط لحماية أنفسنا، ولكن أيضًا لحماية الآخرين على الطرق."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أنا أؤمن بأن هذه القوانين الجديدة ستمكننا من خفض معدلات الحوادث المرورية بشكل كبير، مما سيؤدي إلى مجتمع أكثر أمانًا ورفاهية لجميع مواطنينا."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكرًا لكم على الانتباه."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-3-speech-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -1390,6 +3486,431 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
    "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-speech-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "speech",
+   "title": "Transforming Our City: Updates on Public Transportation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "مرحبًا بكم جميعًا!"
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "أنا فاطمة أحمد، مديرة النقل العام."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "اليوم، نحن نستعد لافتتاح نظام نقل عام جديد في مدينتنا."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "هذا النظام الجديد سيحل العديد من المشكلات التي واجهها مواطنونا في السنوات الماضية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "لقد عملنا جاهدين على تحسين خدمات النقل العام في مدينتنا."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "من خلال هذا النظام الجديد، سنقدم خدمات أكثر فعالية وكفاءة."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "من بين التحديات التي واجهناها، كان هناك نقص في التمويل وزيادة كثافة حركة المرور."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "لكننا قادرون على التغلب على هذه التحديات."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "لقد عملنا على إنشاء مسارات مخصصة للحافلات."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هذا سيساعد في تقليل الوقت الذي يقضيه الراكب في الحافلات."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "بالإضافة إلى ذلك، سنزيد عدد الحافلات على جميع الخطوط."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "هذا سيضمن أن يكون هناك حافلة متاحة في كل وقت."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن أيضًا نعمل على تحسين راحة الركاب."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "سيكون هناك مقاعد أكثر، وخدمات إنترنت اللاسلكي، وتهوية جيدة في جميع الحافلات."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "نأمل أن يكون هذا النظام الجديد خطوة مهمة نحو تحسين جودة الحياة في مدينتنا."
+    },
+    {
+     "speaker": "الخاطبة",
+     "voice": "female",
+     "text": "شكرًا لمتابعتكم!"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "بالتوفيق!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-speech-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "speech",
+   "title": "Cultural Exchange Program: Bridging Nations Through Art",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مرحبًا بكم جميعًا في هذا الحدث المهم. اليوم، نعلن عن إطلاق برنامج التبادل الثقافي الذي نهدف من خلاله إلى تعزيز الفهم المتبادل بين الأمم من خلال الفن."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "الفن ليس مجرد وسيلة للتعبير عن الجمال، بل هو أداة قوية للتواصل والحوار بين الثقافات."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "سيتم اختيار فنانين من مختلف البلدان لمشاركتهم في هذا البرنامج، حيث سيقدمون أعمالهم الفنية في معارض في البلدان المشاركة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "بالإضافة إلى ذلك، سيعمل هذا البرنامج على تعزيز التقارب بين الثقافات المختلفة من خلال ورش عمل ونقاشات حول مواضيع فنية واجتماعية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نأمل أن يكون هذا البرنامج خطوة نحو بناء جسر من الفهم والتفاهم بين شعوب العالم."
+    },
+    {
+     "speaker": "السائلة",
+     "voice": "female",
+     "text": "هل هناك أي شروط معينة للمشاركة في هذا البرنامج؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نعم، سنبحث عن فنانين لديهم خبرة في المجال الفني، ولديهم القدرة على التواصل مع الجمهور، ولديهم الرغبة في تبادل الأفكار مع فنانين من ثقافات مختلفة."
+    },
+    {
+     "speaker": "السائل",
+     "voice": "male",
+     "text": "كيف يمكن للجمهور المشاركة في هذا البرنامج؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "سننظم معارض فنية ومحاضرات وورش عمل مفتوحة للجمهور. كما سنقدم فرصًا للجمهور لالتقاء الفنانين المشاركين والتبادل معهم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-speech-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "speech",
+   "title": "Closing of Al-Nasr Textile Factory: A Community's Concern",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "أهلاً وسهلاً، أيها الأصدقاء. اليوم، نحن هنا من أجل موضوع مهم للغاية يخص الجميع في مجتمعنا."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "الآن، نواجه مصنعنا المنصوري للنسيج، الذي هو معلم في مجتمعنا، يواجه الإغلاق."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "هذا الإغلاق سيؤدي إلى فقدان مئات من الوظائف، مما سيؤثر على العديد من العائلات في مجتمعنا."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "بالطبع، هذا ليس الخبر السار الذي نود سماعه، ولكننا يجب أن نواجه الواقع ونجد حلولاً لهذه المشكلة."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "ما هي الأسباب وراء إغلاق المصنع؟"
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "هذا هو سؤال جيد. هناك عدة أسباب. أولاً، هناك انخفاض كبير في الطلب على المنسوجات المحلية بسبب الواردات الرخيصة."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "ثانياً، المصنع قديم ولا يمكن أن يتنافس مع المصانع الحديثة من حيث الكفاءة والتميز."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "هل هناك أي خطط لإعادة تشغيل المصنع أو العثور على مستثمرين جدد؟"
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "نعم، هناك محاولات جارية لمقابلة المستثمرين المحتملين، ولكن حتى الآن، لم يكن هناك تقدم كبير."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "المجتمع سيشعر بفقدان كبير إذا تم إغلاق المصنع دون حل بديل."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "نحن نأمل أن يكون هناك حل قريب، ولكننا يجب أن نكون مستعدين لكل السيناريوهات."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "ما الذي يمكن أن يفعله أفراد المجتمع للمساعدة؟"
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "هناك عدة طرق. أولاً، يمكن للجميع دعم المنتجات المحلية والحد من شراء الواردات الرخيصة."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "ثانياً، يمكن أن نعمل مع السلطات المحلية والجهات المختصة للعثور على حلول بديلة."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "أخيراً، يجب أن نبقى متضامنين وندعم بعضنا البعض خلال هذه الفترة الصعبة."
+    },
+    {
+     "speaker": "الخاتيب",
+     "voice": "male",
+     "text": "شكراً لكم جميعاً على حضوركم اليوم. لنكن متحدين ونعمل معاً لإيجاد حل لهذه المشكلة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-speech-006",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "speech",
+   "title": "Combating Agricultural Drought: A Strategic Approach",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أعزائي المواطنون، اليوم نناقش موضوعًا هامًا جدًا وهو الجفاف الزراعي وأثره على مستقبلنا."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مع ارتفاع درجات الحرارة ونقص الأمطار، يواجه المزارعون تحديات كبيرة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "لكننا في الحكومة نعمل جاهدين لمواجهة هذه التحديات."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن نعمل على بناء سدود جديدة وأنظمة ري متقدمة وحفظ المياه لزيادة استدامة الموارد المائية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هذه المشاريع ستساعد في تحسين استخدام المياه وتقليل تأثير الجفاف على الزراعة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "كما نعمل مع المزارعين لتعليمهم تقنيات جديدة لتوفير المياه."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هذا جزء من استراتيجية شاملة على المدى الطويل لزيادة كفاءة استخدام المياه وتقليل تأثير الجفاف على الزراعة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن نؤمن بأن التعاون والابتكار هما المفتاح لحل هذه التحديات."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "معًا، يمكننا بناء مستقبل مستدام للجميع."
+    },
+    {
+     "speaker": "السائلة",
+     "voice": "female",
+     "text": "ما هو هدف هذه المشاريع الجديدة؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هدفنا هو تحسين استخدام المياه وتقليل تأثير الجفاف على الزراعة."
+    },
+    {
+     "speaker": "السائلة",
+     "voice": "female",
+     "text": "كيف ستساعد هذه المشاريع المزارعين؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "ستساعد هذه المشاريع المزارعين من خلال توفير المياه وتقليل تأثير الجفاف على المحاصيل."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "كما سنعمل على تعليم المزارعين تقنيات جديدة لتوفير المياه."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكرًا لاهتمامكم، والسؤال الآن مفتوح للجميع."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-speech-007",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "speech",
+   "title": "Humanitarian Aid: Responding to the Crisis in Al-Amal",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "أهلاً وسهلاً، أنا الدكتور أحمد خالد، رئيس بعثة المساعدة الإنسانية في مدينة الأمل."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نود أن نعلن عن خطة الإخلاء لجميع الأجانب في المدينة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "بسبب التدهور المستمر للأزمة في مدينة الأمل، قدنا قرار إخلاء جميع الأجانب."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "سيتم التنسيق مع السفارات المختلفة لتسهيل عملية الإخلاء."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن نعمل جاهدين لضمان سلامة وسلام جميع الأجانب أثناء عملية الإخلاء."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "سنقدم جميع المعلومات اللازمة لعمليات الإخلاء خلال اليومين المقبلين."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن نؤمن بأن هذا هو الخيار الأكثر مسؤولية في هذه المرحلة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكراً لاهتمامكم وتفهمكم."
+    },
+    {
+     "speaker": "السيدة محمد",
+     "voice": "female",
+     "text": "شكراً لك الدكتور أحمد، هل هناك أي معلومات إضافية حول المدة المتوقعة لإخلاء الأجانب؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن نهدف إلى إكمال عملية الإخلاء في غضون أسبوعين، ولكن هذا يعتمد على التعاون بين جميع الجهات المعنية."
+    },
+    {
+     "speaker": "السيد حسن",
+     "voice": "male",
+     "text": "ما هي التدابير التي تم اتخاذها لضمان سلامة الأجانب أثناء الإخلاء؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن قد اتخذنا العديد من التدابير الأمنية، بما في ذلك توفير الحماية خلال النقل وتوفير المأوى الآمن في المناطق المستهدفة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
   }
  ],
  "items": [
@@ -1426,6 +3947,96 @@
    ],
    "answer": 0,
    "explanation": "The military exercise will take place in two weeks. The relevant words in the text are 'بعد أسبوعين'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-advertisement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ar-dl-0p-advertisement-002",
+   "stem": "What is the purpose of the Global Health Summit?",
+   "choices": [
+    "To promote international trade agreements.",
+    "To celebrate cultural diversity.",
+    "To address health challenges worldwide.",
+    "To discuss global economic policies."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the summit is to 'مناقشة التحديات الصحية العالمية' (discuss global health challenges), so the correct answer is B.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-advertisement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ar-dl-0p-advertisement-003",
+   "stem": "What is the reason given for the strike?",
+   "choices": [
+    "to support a political cause",
+    "to demand higher wages",
+    "to protest dangerous working conditions",
+    "to ask for better benefits"
+   ],
+   "answer": 1,
+   "explanation": "The text states 'العمال نقل ينظمون إضرابا مطالبين بزيادة الأجور', which translates to 'Transport workers organize a strike demanding wage increases'. This indicates that the reason for the strike is to demand higher wages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-advertisement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ar-dl-0p-advertisement-004",
+   "stem": "What is the main point of the announcement?",
+   "choices": [
+    "The airport has increased security measures.",
+    "The airport is closed for maintenance.",
+    "The airport is offering discounts on flights.",
+    "A new terminal is opening at the airport."
+   ],
+   "answer": 3,
+   "explanation": "The main point of the announcement is that a new terminal is opening at the airport. This is clearly stated in the text: \"نحن فخورون بفتح محطة جوية جديدة.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ar-dl-0p-announcement-001",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "The school is closed due to bad weather.",
+    "Parents should pick up their children early.",
+    "There is a new policy for school uniforms.",
+    "A new online learning platform is being launched for students."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that a new online learning platform is being launched, as stated in the text: \"نطلق منصة التعلم الإلكتروني الجديدة للطلاب.\" The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ar-dl-0p-announcement-001",
+   "stem": "What is the purpose of the new platform?",
+   "choices": [
+    "To change the school uniform policy.",
+    "To close the school permanently.",
+    "To announce a new policy for parents.",
+    "To provide better education for students."
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the new platform is to provide better education for students, as stated in the text: \"للتعليم الأفضل للطلاب.\" The other options are not mentioned in the text.",
    "source": "llm",
    "verified": false
   },
@@ -1538,6 +4149,42 @@
    "verified": false
   },
   {
+   "id": "ar-dl-0p-short_exchange-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ar-dl-0p-short_exchange-004",
+   "stem": "What is the problem at the hotel?",
+   "choices": [
+    "The room is not ready yet.",
+    "The guest arrived too late.",
+    "The hotel is overbooked.",
+    "The room is not clean."
+   ],
+   "answer": 0,
+   "explanation": "The receptionist says, \"عذرًا، غرفتك لم تكن جاهزة بعد.\" This means \"Sorry, your room was not ready yet.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-short_exchange-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-0p-short_exchange-004",
+   "stem": "What does \"جاهزة\" mean here?",
+   "choices": [
+    "Broken",
+    "Expensive",
+    "Ready",
+    "Dirty"
+   ],
+   "answer": 2,
+   "explanation": "The receptionist says, \"غرفتك لم تكن جاهزة بعد.\" Here, \"جاهزة\" means \"ready.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-0p-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "0+",
@@ -1552,6 +4199,60 @@
    ],
    "answer": 0,
    "explanation": "The message mentions 'مستويات التلوث الهوائية' (air pollution levels) and 'التلوث في العاصمة' (pollution in the capital), indicating that the main topic is air quality in the city.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-voicemail-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ar-dl-0p-voicemail-002",
+   "stem": "What is the purpose of the message?",
+   "choices": [
+    "To schedule a water delivery.",
+    "To inform about a new water source.",
+    "To announce a water outage.",
+    "To remind people to conserve water."
+   ],
+   "answer": 2,
+   "explanation": "The message mentions that the water will be cut off, which is the key detail. The relevant words are: \"سيتم قطع المياه\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ar-dl-0p-voicemail-003",
+   "stem": "What is the reason for the move?",
+   "choices": [
+    "The company is expanding.",
+    "The building is being renovated.",
+    "The rent is too expensive.",
+    "The office is getting a new manager."
+   ],
+   "answer": 0,
+   "explanation": "The speaker says: 'لنتوسع' 'to expand', indicating that the company is moving to accommodate growth.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-0p-voicemail-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "0+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-0p-voicemail-003",
+   "stem": "What does 'نتوسع' mean here?",
+   "choices": [
+    "We are changing our business hours.",
+    "We are increasing our prices.",
+    "We are reducing our staff.",
+    "We are moving to a larger space."
+   ],
+   "answer": 3,
+   "explanation": "'نتوسع' means 'we are expanding' in this context, referring to the company's growth and need for more space.",
    "source": "llm",
    "verified": false
   },
@@ -1628,6 +4329,168 @@
    "verified": false
   },
   {
+   "id": "ar-dl-1-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-conversation-002",
+   "stem": "What is the purpose of the new airport wing?\n(A) To increase the number of flights\n(B) To accommodate more passengers\n(C) To improve the airport's appearance\n(D) To provide more space for shops",
+   "choices": [
+    "To improve the airport's appearance",
+    "To provide more space for shops",
+    "To accommodate more passengers",
+    "To increase the number of flights"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is (B) To accommodate more passengers. The text states that the new wing is built to 'استيعاب عدد أكبر من المسافرين' (accommodate a larger number of travelers).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-conversation-002",
+   "stem": "What is the main topic of the conversation?\n(A) The new airport wing\n(B) The increase in flight schedules\n(C) The new shops in the airport\n(D) The improved security measures",
+   "choices": [
+    "The new airport wing",
+    "The improved security measures",
+    "The increase in flight schedules",
+    "The new shops in the airport"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is (A) The new airport wing. The entire conversation revolves around the opening and features of the new airport wing, as indicated by phrases like 'الجناح الجديد للمطار' (the new wing of the airport) and 'فتحه الجديد' (its opening).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-conversation-002",
+   "stem": "What does 'استيعاب' mean here?\n(A) To entertain\n(B) To accommodate\n(C) To inspect\n(D) To restrict",
+   "choices": [
+    "To restrict",
+    "To entertain",
+    "To inspect",
+    "To accommodate"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is (B) To accommodate. In the context of the conversation, 'استيعاب عدد أكبر من المسافرين' means 'to accommodate a larger number of travelers', indicating the purpose of the new wing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-conversation-003",
+   "stem": "What is the main activity at the festival?",
+   "choices": [
+    "B. Pressing olives",
+    "D. Performing folk dances",
+    "C. Cooking traditional meals",
+    "A. Selling handmade crafts"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the festival is about the olive harvest, and the main activity is pressing olives: \"النشاط الرئيسي في المهرجان هو عصر الزيتون\". The other activities mentioned are secondary: craft sales, traditional cooking, and folk dancing are all part of the festival, but not the main activity.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-conversation-003",
+   "stem": "What is the main purpose of the conversation?",
+   "choices": [
+    "B. To plan for the festival",
+    "A. To discuss the history of the festival",
+    "C. To explain how to make olive oil",
+    "D. To talk about the different types of olives"
+   ],
+   "answer": 0,
+   "explanation": "The speakers are discussing the preparations for the festival, including who will bring what and when they will meet. This is evident in phrases like \"من سيأتي؟\" and \"ما هي الخطة؟\", showing they are planning for the festival.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-conversation-003",
+   "stem": "What does \"الخطة\" mean here?",
+   "choices": [
+    "D. The invitation",
+    "A. The map",
+    "B. The schedule",
+    "C. The recipe"
+   ],
+   "answer": 2,
+   "explanation": "The text uses \"الخطة\" in the context of planning for the festival. The speaker asks \"ما هي الخطة؟\", meaning 'What is the schedule?', indicating that they are asking about the planned activities or timeline for the festival.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-conversation-004",
+   "stem": "What is the reason for the changes in the bus routes?",
+   "choices": [
+    "To increase the number of stops",
+    "To improve the scenery along the routes",
+    "To reduce congestion and improve traffic flow",
+    "To decrease the frequency of buses"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is (B) To reduce congestion and improve traffic flow. The male speaker explicitly states this reason in the text: \"للتخفيف من الزحام وتحسين تدفق حركة المرور\". The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-conversation-004",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "Bus schedule updates",
+    "A new bus route",
+    "Complaints about bus services",
+    "Changes to bus routes"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is (B) Changes to bus routes. The conversation revolves around the adjustments being made to the bus routes, as indicated by the female speaker: \"تعديلات على مسارات الحافلات\". The other options are not the primary focus of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-conversation-004",
+   "stem": "What does \"الزحام\" mean here?",
+   "choices": [
+    "Number",
+    "Frequency",
+    "Congestion",
+    "Beauty"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is (B) Congestion. In this context, the male speaker uses \"الزحام\" to refer to the traffic congestion that the changes aim to reduce: \"للتخفيف من الزحام\". The other options do not fit the context of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-1-instructions-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -1660,6 +4523,204 @@
    ],
    "answer": 1,
    "explanation": "The purpose of the announcement is to inform students about a change in the admissions process: \"ننقل لكم تغيراً في عملية القبول.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-instructions-002",
+   "stem": "What is the main idea of this announcement?",
+   "choices": [
+    "Foreign nationals are being evacuated due to an emergency.",
+    "A natural disaster has struck the area.",
+    "A local festival is being held.",
+    "The government is asking for volunteers."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is that foreign nationals are being evacuated due to an emergency. This is stated in the announcement with the phrase \"لذلك، نطلب من جميع المواطنين الأجانب مغادرة المنطقة فورًا\" (Therefore, we ask all foreign nationals to leave the area immediately).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-instructions-002",
+   "stem": "Where are foreign nationals being asked to go?",
+   "choices": [
+    "To the airport.",
+    "To the embassy or consulate.",
+    "To the nearest hospital.",
+    "To a designated shelter."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is to the embassy or consulate. This is stated in the announcement with the phrase \"الرجاء ذهابكم إلى السفارة أو القنصلية\" (Please go to the embassy or consulate).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-instructions-002",
+   "stem": "What does \"الفور\" mean here?",
+   "choices": [
+    "When it is convenient.",
+    "At a later time.",
+    "After receiving more information.",
+    "As soon as possible."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'As soon as possible.' This is the meaning of \"الفور\" in the context of the announcement, which states \"مغادرة المنطقة فورًا\" (leave the area immediately).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-instructions-003",
+   "stem": "What is the main cause of the flood, according to the announcement?",
+   "choices": [
+    "a pipe burst",
+    "a heavy downpour",
+    "a dam burst",
+    "a river overflowed"
+   ],
+   "answer": 1,
+   "explanation": "The announcement states that the flood is caused by 'هطول أمطار شديد' (a heavy downpour).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-instructions-003",
+   "stem": "What is the main purpose of the announcement?",
+   "choices": [
+    "to announce the opening of a new flood shelter",
+    "to warn residents about a flood and provide safety instructions",
+    "to explain how the flood happened",
+    "to request volunteers to help with flood relief"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to warn residents about the flood and provide safety instructions, as indicated by 'نتشرف بزيارتكم موقعنا الالكتروني' (We invite you to visit our website) and 'ننصحك بالابتعاد عن المجاري المائية' (We advise you to stay away from waterways).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-instructions-003",
+   "stem": "What does 'ننصحك' mean here?",
+   "choices": [
+    "We order you",
+    "We suggest to you",
+    "We inform you",
+    "We request from you"
+   ],
+   "answer": 1,
+   "explanation": "The word 'ننصحك' is used to advise or suggest that residents should stay away from waterways.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-instructions-004",
+   "stem": "What document does the officer ask for?",
+   "choices": [
+    "Visa",
+    "Passport",
+    "Identity card",
+    "Driver's license"
+   ],
+   "answer": 2,
+   "explanation": "The officer asks for a document called a  \"بطاقة هوية\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-instructions-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-instructions-004",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To advertise a new travel package",
+    "To inform travelers about the border crossing procedure",
+    "To explain how to apply for a visa",
+    "To describe the best travel routes"
+   ],
+   "answer": 1,
+   "explanation": "The text provides instructions on the border crossing procedure, mentioning steps like showing a document, waiting in line, and answering questions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-voicemail-001",
+   "stem": "What is the caller's job?",
+   "choices": [
+    "A mechanic",
+    "A teacher",
+    "A doctor",
+    "A construction worker"
+   ],
+   "answer": 3,
+   "explanation": "The caller says “أنا عمال بناء” (I am a construction worker), so the correct answer is D.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-voicemail-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-voicemail-001",
+   "stem": "What does the caller mean by “العمل” here?",
+   "choices": [
+    "A task",
+    "A project",
+    "A company",
+    "A job"
+   ],
+   "answer": 3,
+   "explanation": "The caller says “أنا أبحث عن عمل” (I am looking for work), so the correct answer is A.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-voicemail-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ar-dl-1-voicemail-001",
+   "stem": "Why did the caller leave this message?",
+   "choices": [
+    "To schedule a meeting",
+    "To report a problem at work",
+    "To ask for help finding a job",
+    "To complain about a coworker"
+   ],
+   "answer": 2,
+   "explanation": "The caller says “أنا أبحث عن عمل” (I am looking for work) and “هل يمكنك مساعدتي؟” (Can you help me?), so the correct answer is A.",
    "source": "llm",
    "verified": false
   },
@@ -1808,6 +4869,60 @@
    "verified": false
   },
   {
+   "id": "ar-dl-1p-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ar-dl-1p-announcement-002",
+   "stem": "What is the main topic of the announcement?",
+   "choices": [
+    "Increase in tuition fees",
+    "Changes in admission requirements",
+    "New scholarships available",
+    "The new university building"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is changes in admission requirements, as indicated by the repeated use of the phrase \"شروط القبول\" (admission requirements) and the description of these changes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ar-dl-1p-announcement-002",
+   "stem": "What is the new requirement for admission?",
+   "choices": [
+    "Applicants must submit a personal statement",
+    "Applicants must have a minimum GPA of 2.5",
+    "Applicants must pass an entrance exam",
+    "Applicants must have a high school diploma"
+   ],
+   "answer": 1,
+   "explanation": "The new requirement is a minimum GPA of 2.5, as stated in the text: \"المتقدمين يجب أن يكون لديهم متوسط تراكمي لا يقل عن 2.5\" (Applicants must have a minimum GPA of 2.5).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-announcement-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1p-announcement-002",
+   "stem": "What does \"المتوسط التراكمي\" mean here?",
+   "choices": [
+    "Grade point average",
+    "Personal statement",
+    "Entrance exam score",
+    "High school diploma"
+   ],
+   "answer": 0,
+   "explanation": "The word \"المتوسط التراكمي\" refers to the grade point average, as it is used to describe the new minimum requirement for admission.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-1p-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1+",
@@ -1858,6 +4973,276 @@
    ],
    "answer": 2,
    "explanation": "In this context, \"الموقع\" refers to a physical location or place where the event is happening, as indicated by the phrase \"الموقع الذي يحدث فيه الحدث\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ar-dl-1p-conversation-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The best places to camp",
+    "The current forest fire situation",
+    "How to prevent forest fires",
+    "The history of forest fires"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the conversation is the current forest fire situation, as indicated by the repeated mentions of forest fires and their locations, such as في الغابات near the beginning and near the end of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ar-dl-1p-conversation-002",
+   "stem": "What is the meaning of the phrase \"الخسائر كبيرة\" in the context of the conversation?",
+   "choices": [
+    "The fires are widespread",
+    "The damage is extensive",
+    "The firefighters are tired",
+    "The weather is hot"
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"الخسائر كبيرة\" means \"the damage is extensive\" in this context. This is clear from the discussion of the impact of the fires, such as \"الخسائر كبيرة\" and the mention of affected areas.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "purpose",
+   "passageId": "ar-dl-1p-conversation-002",
+   "stem": "What is the purpose of the last speaker's statement?",
+   "choices": [
+    "To complain about the weather",
+    "To suggest a new strategy",
+    "To end the conversation",
+    "To request more resources"
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the last speaker's statement is to request more resources. This is evident from the statement \"نحتاج إلى المزيد من الموارد\" and the context of discussing the challenges and needs related to fighting the fires.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ar-dl-1p-conversation-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Rules for importing pets into the country",
+    "How to apply for a new driver's license",
+    "The process for obtaining a work visa",
+    "A customs officer explaining passport requirements"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly announced in the first line: \"أهلاً وسهلاً بكم في نقطة الحدود. سأشرح لك إجراءات المرور عبر الحدود.\" (\"Welcome to the border crossing point. I will explain to you the border crossing procedures.\") The rest of the conversation elaborates on these procedures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ar-dl-1p-conversation-003",
+   "stem": "According to the text, what must the traveler have in order to cross the border?",
+   "choices": [
+    "A work permit and a letter from their employer",
+    "A valid passport and a completed customs form",
+    "A visa and a return ticket",
+    "A driver's license and a car registration document"
+   ],
+   "answer": 1,
+   "explanation": "The customs officer specifies the required documents: \"يجب أن يكون لديك جواز سفر صالح وصفة الجمرك المملوءة.\" (\"You must have a valid passport and a completed customs form.\")",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1p-conversation-003",
+   "stem": "In the text, the word \"الجمرك\" means",
+   "choices": [
+    "A document that allows entry into a country",
+    "A form that travelers must complete",
+    "The office that checks goods entering the country",
+    "A type of tax on imported goods"
+   ],
+   "answer": 2,
+   "explanation": "Here, \"الجمرك\" refers to the customs office that checks goods entering the country. This is clear from the context of the conversation about border crossing procedures: \"سأشرح لك إجراءات المرور عبر الحدود، بما في ذلك الجمرك.\" (\"I will explain to you the border crossing procedures, including customs.\")",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ar-dl-1p-conversation-004",
+   "stem": "What are the speakers mainly discussing?",
+   "choices": [
+    "The impact of inflation on the stock market.",
+    "The relationship between inflation and interest rates.",
+    "The effects of interest rates on consumer spending.",
+    "The role of central banks in controlling inflation."
+   ],
+   "answer": 1,
+   "explanation": "The speakers discuss how inflation rates affect interest rates, as seen in their statements about the central bank's decisions and the economic indicators they mention, such as \"تأثير التضخم على أسعار الفائدة\" (the impact of inflation on interest rates).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ar-dl-1p-conversation-004",
+   "stem": "According to the speakers, what is one way the central bank can control inflation?",
+   "choices": [
+    "By raising interest rates.",
+    "By increasing government spending.",
+    "By lowering interest rates.",
+    "By decreasing taxes."
+   ],
+   "answer": 0,
+   "explanation": "One speaker mentions that the central bank can control inflation by \"رفع أسعار الفائدة\" (raising interest rates) to slow down economic activity and reduce price increases.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1p-conversation-004",
+   "stem": "In this context, what does the word \"الاستهلاك\" mean?",
+   "choices": [
+    "Investment",
+    "Savings",
+    "Production",
+    "Consumption"
+   ],
+   "answer": 3,
+   "explanation": "The word \"الاستهلاك\" is used in the context of economic activity and refers to \"الاستهلاك\" (consumption), as in how people spend money on goods and services.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-news_brief-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ar-dl-1p-news_brief-001",
+   "stem": "What is the main idea of this news brief?",
+   "choices": [
+    "A new military base is being built in the Al-Salam region.",
+    "The government is sending aid to the Al-Salam region.",
+    "Peacekeepers are being deployed to the Al-Salam region to maintain stability.",
+    "The Al-Salam region has been completely pacified."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that peacekeepers are being deployed to the Al-Salam region to maintain stability. This is clearly stated in the text: 'الحكومة قد قررت إرسال قوات حفظ السلام إلى منطقة السلام' and 'لحفظ الاستقرار في المنطقة'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-news_brief-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ar-dl-1p-news_brief-001",
+   "stem": "What is the main goal of the peacekeeping mission?",
+   "choices": [
+    "To provide humanitarian aid to the local population.",
+    "To build new infrastructure in the region.",
+    "To negotiate with local rebel groups.",
+    "To maintain stability in the Al-Salam region."
+   ],
+   "answer": 3,
+   "explanation": "The main goal of the peacekeeping mission is to maintain stability in the Al-Salam region, as stated in the text: 'لحفظ الاستقرار في المنطقة'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-news_brief-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1p-news_brief-001",
+   "stem": "What does 'الاستقرار' mean here?",
+   "choices": [
+    "Economic growth",
+    "Military strength",
+    "Peace and order",
+    "Development"
+   ],
+   "answer": 2,
+   "explanation": "Here, 'الاستقرار' means 'peace and order'. This is evident from the context: 'لحفظ الاستقرار في المنطقة' (to maintain stability in the region).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-news_brief-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ar-dl-1p-news_brief-002",
+   "stem": "What is the main topic of this news brief?",
+   "choices": [
+    "The length of military training",
+    "A debate on mandatory military service",
+    "The history of the military",
+    "A new military strategy"
+   ],
+   "answer": 1,
+   "explanation": "The text discusses a debate on whether military service should be mandatory, as indicated by the phrase \"الجدل الدائر حول الخدمة العسكرية الإجبارية\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-news_brief-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ar-dl-1p-news_brief-002",
+   "stem": "What is one argument in favor of mandatory military service mentioned in the text?",
+   "choices": [
+    "It increases the defense budget",
+    "It eliminates the need for training",
+    "It strengthens national unity",
+    "It reduces the size of the military"
+   ],
+   "answer": 2,
+   "explanation": "The text states that one argument in favor is \"تعزيز الوحدة الوطنية\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-news_brief-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1p-news_brief-002",
+   "stem": "What does the word \"الاستثناءات\" mean here?",
+   "choices": [
+    "Changes",
+    "Rules",
+    "Exceptions",
+    "Requirements"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions \"الاستثناءات\" in the context of who would not be required to serve, indicating that it means \"exceptions\".",
    "source": "llm",
    "verified": false
   },
@@ -2024,6 +5409,60 @@
    "verified": false
   },
   {
+   "id": "ar-dl-1p-phone_call-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ar-dl-1p-phone_call-004",
+   "stem": "What is the main topic of the phone call?",
+   "choices": [
+    "A discussion about the city's water supply",
+    "A request for information about electric vehicles",
+    "A complaint about the city's power outages",
+    "A new solar energy project in the city"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the phone call is a new solar energy project in the city. This is evident from the repeated mentions of the project, such as في مشروع الطاقة الشمسية الجديد في مدينتنا (in our city's new solar energy project) and المشروع الجديد (the new project).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-phone_call-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ar-dl-1p-phone_call-004",
+   "stem": "According to the text, where will the solar energy project be located?",
+   "choices": [
+    "On the outskirts of the city",
+    "In the city center",
+    "In the suburbs",
+    "Near the industrial zone"
+   ],
+   "answer": 0,
+   "explanation": "The project will be located on the outskirts of the city, as mentioned in على أطراف مدينتنا (on the outskirts of our city).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1p-phone_call-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1p-phone_call-004",
+   "stem": "What does الاستثمار في (investment in) refer to in this context?",
+   "choices": [
+    "A fee for using public transportation",
+    "A financial contribution to the solar energy project",
+    "A payment for electricity bills",
+    "A donation to the city's general fund"
+   ],
+   "answer": 1,
+   "explanation": "The phrase الاستثمار في (investment in) refers to a financial contribution to the solar energy project, as stated in الاستثمار في مشروع الطاقة الشمسية الجديد (investment in our city's new solar energy project).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-2-briefing-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2074,6 +5513,60 @@
    ],
    "answer": 3,
    "explanation": "The word \"التأشيرات\" is used in the context of border crossing requirements, referring to the necessary travel documents. It means \"visa\" here.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-briefing-002",
+   "stem": "What is the main topic of this briefing?",
+   "choices": [
+    "The role of international organizations in regulating food trade",
+    "The impact of grain export restrictions on food prices",
+    "The global shortage of grain due to natural disasters",
+    "The effects of climate change on agricultural production"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the impact of grain export restrictions on food prices. This is evident from the repeated mention of export restrictions and their consequences, such as في زيادة أسعار الأغذية (increasing food prices) and تأثيرها على الأسواق العالمية (their impact on global markets).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-briefing-002",
+   "stem": "Which countries are mentioned as having imposed export restrictions?",
+   "choices": [
+    "Argentina and the United States",
+    "Russia and Ukraine",
+    "Egypt and Brazil",
+    "India and Pakistan"
+   ],
+   "answer": 1,
+   "explanation": "The countries mentioned as having imposed export restrictions are روسيا (Russia) and أوكرانيا (Ukraine), as stated in the text: فقد فرضت روسيا وأوكرانيا قيودًا على صادرات الحبوب.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-briefing-002",
+   "stem": "What does  القيود  mean here?",
+   "choices": [
+    "Trade agreements",
+    "Price fluctuations",
+    "Export restrictions",
+    "Agricultural techniques"
+   ],
+   "answer": 2,
+   "explanation": "Here,  القيود  means 'export restrictions'. The text states: فقد فرضت روسيا وأوكرانيا قيودًا على صادرات الحبوب (Russia and Ukraine have imposed restrictions on grain exports).",
    "source": "llm",
    "verified": false
   },
@@ -2132,6 +5625,384 @@
    "verified": false
   },
   {
+   "id": "ar-dl-2-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-conversation-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The process of obtaining a work visa for another country.",
+    "The difficulties faced by migrant workers in finding suitable housing.",
+    "The challenges of learning a new language in a foreign country.",
+    "The impact of labor migration on the economies of both the home and host countries."
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the conversation is the impact of labor migration on the economies of both the home and host countries. This is evident from the speakers discussing how migrant workers send money back to their home countries and contribute to the host country's economy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-conversation-002",
+   "stem": "According to the conversation, what is one way migrant workers help their home countries?",
+   "choices": [
+    "By bringing back new technologies.",
+    "By creating new jobs in their home countries.",
+    "By investing in local businesses.",
+    "By sending money back to their families."
+   ],
+   "answer": 3,
+   "explanation": "One way migrant workers help their home countries is by sending money back to their families. This is mentioned in the conversation when one speaker says, 'العمالة المهاجرة تساهم في اقتصاد بلدانها الأصلية عن طريق إرسال الأموال إلى Families.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-conversation-002",
+   "stem": "In the conversation, what does the word 'المهاجر' mean?",
+   "choices": [
+    "A person who studies abroad.",
+    "A person who visits another country for a short period.",
+    "A person who moves to another country for work.",
+    "A person who travels for leisure."
+   ],
+   "answer": 2,
+   "explanation": "In the context of the conversation, 'المهاجر' refers to a person who moves to another country for work. This is clear from the discussion about labor migration and the role of migrant workers in the economy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-interview-001",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The political situation in the region.",
+    "The personal life of the aid coordinator.",
+    "The history of humanitarian aid organizations.",
+    "The challenges of delivering aid in conflict zones."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the challenges of delivering aid in conflict zones, as seen in the discussion of obstacles such as 'المناطق التي يتحكم بها المتمردون' (areas controlled by rebels) and 'المناطق التي تعاني من العنف' (areas suffering from violence).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-interview-001",
+   "stem": "What specific obstacle does the aid coordinator mention that makes delivering aid difficult?",
+   "choices": [
+    "Poor infrastructure.",
+    "Areas controlled by rebels.",
+    "Corrupt officials.",
+    "Lack of funding."
+   ],
+   "answer": 1,
+   "explanation": "The aid coordinator explicitly mentions 'من areas controlled by rebels' as an obstacle, saying 'المناطق التي يتحكم بها المتمردون' (areas controlled by rebels).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-interview-001",
+   "stem": "What does the word 'المسار' mean in this context?",
+   "choices": [
+    "A type of vehicle.",
+    "A time schedule.",
+    "A route or path.",
+    "A goal or objective."
+   ],
+   "answer": 2,
+   "explanation": "The word 'المسار' is used to refer to the routes or paths that aid convoys take, as in 'المسارات التي يسلكها قطارات المساعدات' (the routes that aid convoys take).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-interview-002",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "A strike by transport workers and its impact",
+    "A new law regulating transport workers' hours",
+    "A debate on the future of the transport industry",
+    "A government plan to improve public transportation"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the strike by transport workers, as indicated by the repeated mentions of the strike (الإضراب) and its effects, such as the disruption (إعاقة) of services and the union's demands (المطالب).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-interview-002",
+   "stem": "Why did the transport workers go on strike?",
+   "choices": [
+    "To protest a new tax on fuel",
+    "To support a political candidate",
+    "To demand better working conditions and higher wages",
+    "To oppose a new law on transportation"
+   ],
+   "answer": 2,
+   "explanation": "The workers went on strike to demand better working conditions and higher wages, as stated by the union leader: \"نحن نقف هنا اليوم لنطلب ظروف عمل أفضل وأجورًا أعلى\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-interview-002",
+   "stem": "What does \"الضرورية\" mean here?",
+   "choices": [
+    "Unnecessary",
+    "Essential",
+    "Temporary",
+    "Luxurious"
+   ],
+   "answer": 1,
+   "explanation": "Here, \"الضرورية\" means essential, as the union leader is arguing that the demands are essential for the workers' well-being: \"إن هذه المطالب ضرورية لرفاهية العمال\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-interview-003",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The life and achievements of a marathon champion",
+    "The impact of weather on marathon performance",
+    "The organization of sports events in the desert",
+    "The challenges faced by marathon runners in the desert"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the interview is the life and achievements of a marathon champion. This is evident from the opening statement by the interviewer: \"مرحبا بك في برنامجنا اليوم البطل الأولمبي في ماراثون صحراء، أحمد بن محمد.\" (Welcome to our program today, the Olympic champion in the Desert Marathon, Ahmed bin Mohammed.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-interview-003",
+   "stem": "What did Ahmed say was his motivation for running marathons?",
+   "choices": [
+    "To prove himself to his family",
+    "To challenge himself and overcome limits",
+    "To win medals and fame",
+    "To promote sports in his country"
+   ],
+   "answer": 1,
+   "explanation": "Ahmed stated his motivation as challenging himself and overcoming limits. He said: \"أرغب في تحدي نفسي وارتقاء بالمستوى كل مرة أركض.\" (I want to challenge myself and raise the level every time I run.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-interview-003",
+   "stem": "In the phrase \"كان لدي هدف واضح: أن أكون أفضل في ما أفعله\" (I had a clear goal: to be the best in what I do), what does \"هدف\" mean here?",
+   "choices": [
+    "Plan",
+    "Dream",
+    "Objective",
+    "Wish"
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"هدف\" means objective. Ahmed is referring to his clear objective of being the best in what he does.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-news-001",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "An increase in airport thefts",
+    "A lost passport at airport security",
+    "A new security measure at the airport",
+    "A protest by airport workers"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is a lost passport at airport security. This is clear from the repeated mentions of the passport and the security checkpoint, such as في نقطة الأمن في المطار and passport في المطار.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-news-001",
+   "stem": "Where was the passport discovered?",
+   "choices": [
+    "At the airline's check-in counter",
+    "In a trash can near the security checkpoint",
+    "In the passenger's luggage",
+    "In the lost and found office"
+   ],
+   "answer": 1,
+   "explanation": "The passport was discovered in a trash can near the security checkpoint. The text states explicitly: discovered في سلة المهملات بالقرب من نقطة الأمن.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-news-001",
+   "stem": "What does the word 'المرور' mean in this context?",
+   "choices": [
+    "Passage or checkpoint",
+    "Time",
+    "Traffic",
+    "Customs"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'المرور' refers to the security checkpoint where the passport was lost. The text mentions: في نقطة المرور في المطار, which means 'at the security checkpoint at the airport'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-news-002",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "A detailed account of a recent military conflict",
+    "An announcement of a new military alliance",
+    "A discussion on military budget allocations",
+    "A report on a joint military exercise between two countries"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly stated in the first sentence: \"بدأ تمارين عسكرية مشتركة بين مصر والسعودية تحت اسم shielding falcon 2023\". The rest of the passage provides details about this exercise, confirming that it is the main topic.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-news-002",
+   "stem": "Where is the joint military exercise taking place?",
+   "choices": [
+    "Only in Saudi Arabia",
+    "In a neutral third country",
+    "Only in Egypt",
+    "In various locations across Egypt and Saudi Arabia"
+   ],
+   "answer": 3,
+   "explanation": "The text states \"في مختلف المناطق في مصر والسعودية\", indicating that the exercise is taking place in both countries.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-news-002",
+   "stem": "What does \"المشاركة الفعالة\" mean here?",
+   "choices": [
+    "Active participation",
+    "Passive observation",
+    "Limited involvement",
+    "Financial contribution"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"المشاركة الفعالة\" is used to describe the nature of the exercise, indicating that both countries are actively participating. This is further supported by the details provided about the troops and equipment involved.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-news-003",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "The challenges faced by the local transport industry",
+    "The impact of new visa policies on tourism",
+    "The recovery of tourism in Al-Madinah Al-Munawwarah after the pandemic",
+    "The increase in religious tourism compared to leisure tourism"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the recovery of tourism in Al-Madinah Al-Munawwarah after the pandemic. This is evident from the repeated mentions of tourism recovery, the impact of the pandemic, and the efforts to revive the tourism sector, such as 'استعادة السياحة' (restoring tourism) and 'بعد الوباء' (after the pandemic).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-news-003",
+   "stem": "What specific event contributed to the increase in tourism numbers this year?",
+   "choices": [
+    "The launch of a new marketing campaign",
+    "The easing of international travel restrictions",
+    "The start of the Hajj season",
+    "The opening of new hotels and resorts"
+   ],
+   "answer": 2,
+   "explanation": "The text states 'بداية موسم الحج' (the start of the Hajj season) as the reason for the increase in tourism numbers this year.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-news-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-news-003",
+   "stem": "In the text, 'السياح religioso' most nearly means",
+   "choices": [
+    "Pilgrims",
+    "Spiritual guides",
+    "Tour operators",
+    "Religious tourists"
+   ],
+   "answer": 3,
+   "explanation": "The text uses 'السياح religioso' to refer to tourists who visit for religious purposes, specifically during the Hajj season, indicating 'Religious tourists'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-2-report-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -2186,6 +6057,60 @@
    "verified": false
   },
   {
+   "id": "ar-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-report-002",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A) The challenges of space exploration",
+    "D) The economic impact of space programs",
+    "C) The history of space missions",
+    "B) The launch of the Hope space probe"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly stated at the beginning: \"الانطلاق الناجح لبرنامج الأمل الفضائي\". The rest of the report provides details about this event.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-report-002",
+   "stem": "What is the role of the Emirati engineers according to the report?",
+   "choices": [
+    "A) They designed the space probe",
+    "C) They monitored the launch from a distance",
+    "B) They launched the probe",
+    "D) They coordinated with international space agencies"
+   ],
+   "answer": 0,
+   "explanation": "The report states that the space probe was \"صنعها مهندسون إماراتيون\". There is no mention of them launching it or monitoring from a distance, nor of coordinating with international agencies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-report-002",
+   "stem": "What does \"تسعى\" mean here?",
+   "choices": [
+    "B) Strives",
+    "C) Plans",
+    "A) Achieves",
+    "D) Attempts"
+   ],
+   "answer": 0,
+   "explanation": "The phrase is \"تسعى الإمارات إلى تحقيق رؤية 2021\". Here, \"تسعى\" means \"strives\" as it indicates ongoing effort toward achieving a vision, not a single plan or attempt, nor something already achieved.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-2p-documentary-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2236,6 +6161,276 @@
    ],
    "answer": 2,
    "explanation": "The word 'الجزاءات' is used in the context of what will be imposed on those who violate the new law (ما سيُفرض على من يخالفه). This indicates that it refers to punishments or fines.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-interview-001",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The history of medicine in Al-Kahira",
+    "A new medical research study",
+    "The importance of regular medical check-ups",
+    "The benefits of a specific medical treatment"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the interview is the importance of regular medical check-ups. This is evident from the doctor's statement: \"الطبيب: من المهم جداً إجراء الفحوصات الطبية الدورية لتجنب المشاكل الصحية التي قد تظهر في وقت لاحق.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ar-dl-2p-interview-001",
+   "stem": "According to the patient, what is one reason he didn't go to the doctor earlier?",
+   "choices": [
+    "He didn't have health insurance",
+    "He was afraid of the doctor's diagnosis",
+    "He was too busy with work",
+    "He thought his symptoms were not serious"
+   ],
+   "answer": 2,
+   "explanation": "The patient states that he was too busy with work as one reason he didn't go to the doctor earlier: \"المريض: كان لدي عمل كثير جدا، ولم أجد وقتاً لزيارة الطبيب.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2p-interview-001",
+   "stem": "What does the doctor mean by \"المتابعة الطبية\" here?",
+   "choices": [
+    "Medical treatment",
+    "Medical follow-up",
+    "Medical research",
+    "Medical history"
+   ],
+   "answer": 1,
+   "explanation": "The doctor uses the phrase \"المتابعة الطبية\" to refer to medical follow-up, as in continuing care and monitoring after initial treatment: \"الطبيب: بعد الانتهاء من الفحوصات، سنحتاج إلى المتابعة الطبية لتقييم حالتك الصحية.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-interview-002",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The impact of Al-Rahma Corporation's relocation on the local economy.",
+    "The challenges faced by Al-Rahma Corporation in their new location.",
+    "The reasons behind Al-Rahma Corporation's relocation and its benefits.",
+    "The history of Al-Rahma Corporation and its achievements."
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the interview is the reasons behind Al-Rahma Corporation's relocation and its benefits. This is evident from the context where the interviewer asks about the reasons for moving (لماذا قررتم الانتقال؟) and the interviewee discusses the benefits such as proximity to clients (الوقوف بالقرب من عملائنا) and access to a larger talent pool (وصولنا إلى بركة من المواهب أكبر).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-interview-002",
+   "stem": "What can be inferred about the new location of Al-Rahma Corporation?",
+   "choices": [
+    "It has a smaller talent pool.",
+    "It is more expensive than their previous location.",
+    "It offers better infrastructure and amenities.",
+    "It is far from their main clients."
+   ],
+   "answer": 2,
+   "explanation": "The inference that can be made about the new location is that it offers better infrastructure and amenities. This is implied when the interviewee mentions that the new location provides more modern facilities (مرافق أكثر حداثة) and is closer to their clients (الوقوف بالقرب من عملائنا).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ar-dl-2p-interview-002",
+   "stem": "What specific benefit does the interviewee mention regarding the new location's talent pool?",
+   "choices": [
+    "It provides better training facilities.",
+    "It has a higher concentration of skilled workers.",
+    "It has a larger pool of talented individuals.",
+    "It offers lower labor costs."
+   ],
+   "answer": 2,
+   "explanation": "The specific benefit mentioned regarding the new location's talent pool is that it has a larger pool of talented individuals. The interviewee explicitly states (وصولنا إلى بركة من المواهب أكبر) which translates to 'access to a larger talent pool'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-interview-003",
+   "stem": "What is the main idea of this interview?",
+   "choices": [
+    "A hotel reservation mix-up leads to a discussion about customer service.",
+    "The Oasis Grand Hotel explains its policy on reservation cancellations.",
+    "A guest describes their luxurious experience at the Oasis Grand Hotel.",
+    "A traveler complains about the high prices at the Oasis Grand Hotel."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the interview is the reservation mix-up and the subsequent discussion about customer service. This is clear from the context of the conversation, where the guest, زائرة, mentions her confusion about the reservation and the staff member, موظف, apologizes and tries to resolve the issue. The other options, while mentioned, are not the primary focus of the interview.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-interview-003",
+   "stem": "What can be inferred about the guest's mood at the beginning of the interview?",
+   "choices": [
+    "Excited and happy.",
+    "Confused and anxious.",
+    "Angry and frustrated.",
+    "Indifferent and apathetic."
+   ],
+   "answer": 1,
+   "explanation": "The guest's mood can be inferred as confused and anxious. This is evident from her statement, \"أنا confused من هذا situation. I reserved a room, but it says it's not available. What is happening?\" (أنا مُضطربة من هذا الوضع. حجزت غرفة، لكن يُقال إنها غير متاحة. ما الذي يحدث؟). The other options do not accurately describe her initial mood based on the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2p-interview-003",
+   "stem": "What does the word \"المتاعب\" mean here?",
+   "choices": [
+    "Challenges.",
+    "Solutions.",
+    "Opportunities.",
+    "Problems."
+   ],
+   "answer": 3,
+   "explanation": "The word \"المتاعب\" means problems in this context. The staff member says, \"نحن نعمل جاهدين لتجنب مثل هذه المتاعب في المستقبل.\" (We are working hard to avoid such problems in the future.), indicating that they are referring to the issues or difficulties that occurred.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-news_analysis-001",
+   "stem": "What is the main idea of this news analysis?",
+   "choices": [
+    "The Middle East is abandoning electric cars due to high costs.",
+    "The Middle East is not suitable for electric cars due to its climate.",
+    "Electric cars are becoming increasingly popular in the Middle East.",
+    "Electric cars are only for wealthy people in the Middle East."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that electric cars are becoming more popular in the Middle East. The text discusses various factors contributing to this trend, such as government incentives, increased awareness, and a growing charging infrastructure. The relevant words are: «تحول كهربائي في المنطقة العربية» and «السيارات الكهربائية».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-news_analysis-001",
+   "stem": "What can be inferred about the future of electric cars in the Middle East?",
+   "choices": [
+    "They will be banned due to their environmental impact.",
+    "They will become more common as technology advances and costs decrease.",
+    "They will be replaced by hydrogen-powered cars.",
+    "They will remain a niche product for the wealthy."
+   ],
+   "answer": 1,
+   "explanation": "The inference is that electric cars will become more common in the future. The text mentions that costs are expected to decrease and technology is advancing, which implies increased adoption. The relevant words are: «التكاليف expected to decrease» and «التكنولوجيا المتقدمة».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2p-news_analysis-001",
+   "stem": "What does the phrase «الحوافز الحكومية» mean here?",
+   "choices": [
+    "Government restrictions",
+    "Government regulations",
+    "Government taxes",
+    "Government incentives"
+   ],
+   "answer": 3,
+   "explanation": "The phrase «الحوافز الحكومية» means \"government incentives\" in this context. The text discusses how governments in the Middle East are offering incentives to promote the adoption of electric cars. The relevant words are: «الحوافز الحكومية لتعزيز» and «تتبنى السيارات الكهربائية».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-news_analysis-002",
+   "stem": "What is the main topic of this news analysis?",
+   "choices": [
+    "The opening of a new museum in Cairo",
+    "The economic impact of tourism on Egypt",
+    "The history of ancient Nubia",
+    "An exhibition on ancient Nubian art and culture"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the exhibition on ancient Nubian art and culture, as indicated by the repeated focus on the exhibition and its significance, such as \"عرض فني هام\" and \"يقدم هذا العرض الفني\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-news_analysis-002",
+   "stem": "What can be inferred about the significance of the exhibition?",
+   "choices": [
+    "It is expected to attract only local visitors",
+    "It is a minor event in the world of art",
+    "It highlights the cultural richness of ancient Nubia",
+    "It is the first exhibition of its kind in the world"
+   ],
+   "answer": 2,
+   "explanation": "The significance of the exhibition is inferred from phrases like \"يقدم هذا العرض الفني رحلة رائعة عبر الزمن\" and \"يستكشف هذا العرض الفني تراث نوبية القديم\", indicating its focus on the rich cultural heritage of ancient Nubia.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-news_analysis-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "detail",
+   "passageId": "ar-dl-2p-news_analysis-002",
+   "stem": "According to the news analysis, what is one of the key features of the exhibition?",
+   "choices": [
+    "Modern art installations",
+    "Live performances by local artists",
+    "Interactive digital displays",
+    "Artifacts from various periods of Nubian history"
+   ],
+   "answer": 3,
+   "explanation": "The key feature of the exhibition is mentioned as \"أعمال فنية ونقوشاً وتماثيل من مختلف عصور التاريخ النوبي\", indicating the presence of artifacts from various periods of Nubian history.",
    "source": "llm",
    "verified": false
   },
@@ -2348,6 +6543,60 @@
    "verified": false
   },
   {
+   "id": "ar-dl-2p-panel_discussion-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-panel_discussion-003",
+   "stem": "What is the main topic of the panel discussion?",
+   "choices": [
+    "The effects of political instability on tourism",
+    "The role of technology in tourism recovery",
+    "The challenges of sustainable tourism development",
+    "The impact of climate change on tourism"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the panel discussion is the challenges of sustainable tourism development. This is evident from the speakers' focus on balancing tourism growth with environmental and cultural preservation, as seen in the phrases (التحديات التي تواجه تطوير السياحة المستدامة) and (التوازن بين النمو السياحي وحماية البيئة والثقافة).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-panel_discussion-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-panel_discussion-003",
+   "stem": "What can be inferred about the panelists' views on government intervention in tourism?",
+   "choices": [
+    "They believe the government should have minimal involvement",
+    "They are unsure about the role of the government in tourism",
+    "They think the government should heavily regulate tourism",
+    "They agree that government intervention is necessary for sustainable tourism"
+   ],
+   "answer": 3,
+   "explanation": "The panelists agree that government intervention is necessary for sustainable tourism. This can be inferred from the statement (ندرك أن دور الحكومة في تعزيز السياحة المستدامة هو أمر أساسي) and the discussion about specific policies and regulations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-panel_discussion-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2p-panel_discussion-003",
+   "stem": "What does the phrase (السياحة المستدامة) mean here?",
+   "choices": [
+    "Tourism that is only for adventure seekers",
+    "Tourism that meets the needs of the present while preserving for the future",
+    "Tourism that focuses on luxury experiences",
+    "Tourism that is only profitable"
+   ],
+   "answer": 1,
+   "explanation": "The phrase (السياحة المستدامة) means tourism that meets the needs of the present while preserving for the future. This is clear from the context of the discussion, which emphasizes balancing growth with environmental and cultural preservation, as seen in the phrase (التوازن بين النمو السياحي وحماية البيئة والثقافة).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-2p-panel_discussion-004-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -2398,6 +6647,114 @@
    ],
    "answer": 1,
    "explanation": "In this context, 'المتضررين' is used to refer to the people who are affected by the crisis. The female speaker says, 'نحن نعمل على تحسين ظروف المتضررين' (We are working to improve the conditions of the affected people), indicating that she is referring to the refugees in the camp who are suffering from the consequences of the crisis.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-panel_discussion-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-panel_discussion-005",
+   "stem": "What is the main topic of the discussion?",
+   "choices": [
+    "The economic impact of the evacuation on Al-Salam.",
+    "The upcoming holiday season in Al-Salam.",
+    "The cultural exchange between Al-Salam and other countries.",
+    "The evacuation of foreign nationals from Al-Salam."
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the discussion is the evacuation of foreign nationals from Al-Salam. This is evident from the repeated mentions of the evacuation, the reasons behind it, and the procedures involved, such as \"بسبب التدهور الأمني في المدينة\" and \"يهدف هذا الإجلاء إلى ضمان سلامة المواطنين الأجانب\". The other choices are mentioned but are not the main focus of the discussion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-panel_discussion-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-panel_discussion-005",
+   "stem": "What can be inferred about the safety situation in Al-Salam?",
+   "choices": [
+    "The safety situation is stable.",
+    "The safety situation is unrelated to the evacuation.",
+    "The safety situation is improving.",
+    "The safety situation is deteriorating."
+   ],
+   "answer": 3,
+   "explanation": "The panelists infer that the safety situation in Al-Salam is deteriorating. This is implied by the statement \"بسبب التدهور الأمني في المدينة\" and the need for an evacuation to \"ضمان سلامة المواطنين الأجانب\". The other choices do not align with the information provided in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-panel_discussion-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2p-panel_discussion-005",
+   "stem": "What does \"التدهور الأمني\" mean here?",
+   "choices": [
+    "Economic growth.",
+    "Cultural exchange.",
+    "Security deterioration.",
+    "Political stability."
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"التدهور الأمني\" means security deterioration. This is evident from the discussion about the evacuation due to the worsening security situation in Al-Salam, as mentioned in \"بسبب التدهور الأمني في المدينة\". The other choices do not fit the context of the discussion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-speech-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ar-dl-2p-speech-002",
+   "stem": "The main idea of this speech is that",
+   "choices": [
+    "a whistleblower was fired for exposing fraud in Al-Noor Hospital",
+    "the government is investigating all hospitals for fraud",
+    "a whistleblower exposed fraud in Al-Noor Hospital",
+    "Al-Noor Hospital is the best hospital in the country"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'a whistleblower exposed fraud in Al-Noor Hospital', as the speaker says 'أريد أن أخبركم عن الفساد الذي وجدت في مستشفى النور' (I want to tell you about the corruption I found in Al-Noor Hospital). The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-speech-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-speech-002",
+   "stem": "What can be inferred from the speech?",
+   "choices": [
+    "the whistleblower is a nurse",
+    "the whistleblower is an accountant",
+    "the whistleblower is a doctor",
+    "the whistleblower's identity is not revealed"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'the whistleblower's identity is not revealed', as the speaker does not mention their profession or identity. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-speech-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2p-speech-002",
+   "stem": "What does 'الفساد' mean here?",
+   "choices": [
+    "disease",
+    "pollution",
+    "corruption",
+    "decay"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'corruption', as the speaker uses 'الفساد' to refer to illegal activities in Al-Noor Hospital. The other choices do not fit the context.",
    "source": "llm",
    "verified": false
   },
@@ -2510,6 +6867,168 @@
    "verified": false
   },
   {
+   "id": "ar-dl-3-debate-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-debate-001",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The impact of cultural exchange programs on language preservation",
+    "The challenges of teaching foreign languages in educational institutions",
+    "The benefits of learning multiple languages for personal growth",
+    "The role of language in fostering understanding and cooperation in cultural exchange programs"
+   ],
+   "answer": 3,
+   "explanation": "The participants discuss how language serves as a tool for building bridges and promoting mutual understanding in cultural exchange programs. This is evident in their statements about language being a means of connection and cooperation, such as: 'اللغة هي وسيلة التواصل الأساسية التي تربط بين الثقافات وتيسّر التبادل الثقافي' and 'اللغة المشتركة تعزّز من التعاون والتفاهم بين المشاركين في هذه البرامج'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-debate-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-debate-001",
+   "stem": "Based on the debate, what can be inferred about the importance of language skills in cultural exchange programs?",
+   "choices": [
+    "Language skills are not necessary if participants have a strong interest in the culture",
+    "Language skills are only important for program coordinators, not participants",
+    "Language skills are only important for those who plan to live in the host country permanently",
+    "Language skills are crucial for all participants to fully benefit from the experience"
+   ],
+   "answer": 3,
+   "explanation": "Both participants emphasize the importance of language skills for all participants. They argue that language enables deeper cultural immersion and more meaningful interactions, as seen in: 'المشاركة الفعّالة في برنامج التبادل الثقافي تتطلب مهارات لغوية كافية لتحقيق التواصل الفعّال' and 'اللغة ليست مجرد أداة للتواصل، بل هي باب لفتح آفاق جديدة لفهم الثقافة بشكل أعمق'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-debate-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-debate-001",
+   "stem": "In the context of the debate, what does 'بناء الجسور' mean?",
+   "choices": [
+    "Developing new methods for teaching languages",
+    "Creating musical compositions that blend different cultural styles",
+    "Building physical bridges between countries",
+    "Establishing connections and promoting understanding between different cultures"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'بناء الجسور' is used to describe how language helps to connect different cultures and promote understanding. This is clear from the context: 'اللغة هي وسيلة التواصل الأساسية التي تربط بين الثقافات وتيسّر التبادل الثقافي، أي أنّها تُبْنِي الجسور بين الناس'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-editorial_commentary-001",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The need for stricter airport security measures to prevent passport loss",
+    "The bureaucratic hurdles and personal inconveniences faced when a passport is lost",
+    "The importance of carrying a copy of one's passport at all times",
+    "The role of technology in tracking and recovering lost passports"
+   ],
+   "answer": 1,
+   "explanation": "The text focuses on the difficulties and inconveniences caused by losing a passport, including the bureaucratic processes involved in obtaining a new one. This is evident from phrases like 'المشاكل التي تواجهها في الحصول على جواز سفر جديد' and 'العملية البيروقراطية معقدة ومتكلفة'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-editorial_commentary-001",
+   "stem": "What can be inferred about the author's experience?",
+   "choices": [
+    "The author is writing purely from a theoretical perspective",
+    "The author is an immigration officer who deals with lost passports daily",
+    "The author has never lost a passport before",
+    "The author has recently gone through the process of reporting a lost passport"
+   ],
+   "answer": 3,
+   "explanation": "The author's personal experience can be inferred from the use of first-person perspective and the detailed description of the process, such as 'عندما تفقده، تتعرض لسلسلة من المشكلات' and 'نحن نواجه هذه المشاكل جميعها'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-editorial_commentary-001",
+   "stem": "What does the word 'المشاق' mean here?",
+   "choices": [
+    "Pleasures",
+    "Challenges",
+    "Requirements",
+    "Opportunities"
+   ],
+   "answer": 1,
+   "explanation": "The word 'المشاق' is used to describe the difficulties and hardships faced during the process of obtaining a new passport, as seen in 'والمشاق التي تواجهها في هذا العملية'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-lecture-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-lecture-001",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The new traffic law and its impact on road safety",
+    "The role of technology in preventing road accidents",
+    "The causes of road accidents in urban areas",
+    "The history of traffic regulations in the country"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the lecture is the new traffic law and its impact on road safety. This is evident from the opening statement: \"الآن، أود أن أتحدث عن القانون الجديد للسلامة المرورية وما تأثيره على حياتنا اليومية.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-lecture-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "ar-dl-3-lecture-001",
+   "stem": "According to the lecture, what is one of the key changes introduced by the new law?",
+   "choices": [
+    "Allowing the use of mobile phones while driving",
+    "Imposing stricter penalties for driving under the influence of alcohol",
+    "Reducing the penalties for traffic violations",
+    "Increasing the speed limits on highways"
+   ],
+   "answer": 1,
+   "explanation": "One of the key changes introduced by the new law is imposing stricter penalties for driving under the influence of alcohol. The lecturer states: \"من بين التغييرات الرئيسية هي فرض عقوبات شديدة على قيادة المركبات تحت تأثير الكحول.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-lecture-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-lecture-001",
+   "stem": "In the lecture, the word \"التزام\" is used to mean what?",
+   "choices": [
+    "Adherence",
+    "Disregard",
+    "Violation",
+    "Avoidance"
+   ],
+   "answer": 0,
+   "explanation": "In the lecture, the word \"التزام\" is used to mean adherence. The lecturer says: \"من الضروري أن نلتزم بالقوانين الجديدة للسلامة المرورية.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-3-speech-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2614,6 +7133,276 @@
    ],
    "answer": 1,
    "explanation": "The speaker uses the phrase \"فريق عمل متخصص\" to refer to a team with specific expertise, stating \"سنشكل فريق عمل متخصص لإدارة عملية الإجلاء.\" This implies a group of experts, not just any group of people or volunteers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-speech-003",
+   "stem": "What is the main topic of the speech?",
+   "choices": [
+    "The history of public transportation in the city",
+    "A new public transportation system",
+    "The impact of new buses on traffic",
+    "Changes in bus routes and schedules"
+   ],
+   "answer": 1,
+   "explanation": "The speech focuses on the introduction of a new public transportation system, as indicated by the phrase \"نحن نستعد لافتتاح نظام نقل عام جديد\" (We are preparing to launch a new public transportation system).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "ar-dl-3-speech-003",
+   "stem": "What is one of the new features of the public transportation system?",
+   "choices": [
+    "Special lanes for buses",
+    "Extended operating hours",
+    "Discounted fares for seniors",
+    "Free rides for students"
+   ],
+   "answer": 0,
+   "explanation": "The speaker mentions \"العمل على إنشاء مسارات مخصصة للحافلات\" (working on creating dedicated lanes for buses) as one of the new features.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-speech-003",
+   "stem": "What does \"التحديات\" mean in this context?",
+   "choices": [
+    "Opportunities",
+    "Requirements",
+    "Challenges",
+    "Benefits"
+   ],
+   "answer": 2,
+   "explanation": "The speaker discusses \"التحديات التي واجهتنا\" (the challenges we faced), referring to the obstacles encountered during the implementation of the new system.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-speech-004",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "The government will invest more money in local art schools.",
+    "A cultural exchange program will be implemented to promote understanding between nations through art.",
+    "A new art gallery will be opened to display international artworks.",
+    "Artists will be given more opportunities to travel abroad for personal enrichment."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is clearly stated in the opening lines of the speech: \"من خلال برنامج التبادل الثقافي الذي نقدمه اليوم، نهدف إلى تعزيز الفهم المتبادل بين الأمم من خلال الفن.\" (Through the cultural exchange program we present today, we aim to promote mutual understanding between nations through art.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-speech-004",
+   "stem": "What can be inferred about the role of art in this cultural exchange program?",
+   "choices": [
+    "Art is viewed as a means to entertain and distract people from daily life.",
+    "Art is considered a profitable industry for economic growth.",
+    "Art is regarded as a way to showcase the technological advancements of a nation.",
+    "Art is seen as a tool for fostering international cooperation and understanding."
+   ],
+   "answer": 3,
+   "explanation": "The inference can be drawn from the speaker's statement: \"الفن ليس مجرد وسيلة للتعبير عن الجمال، بل هو أداة قوية للتواصل والحوار بين الثقافات.\" (Art is not just a means of expressing beauty, but it is a powerful tool for communication and dialogue between cultures.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-speech-004",
+   "stem": "In the speech, the word \"التقارب\" is used. What does it mean here?",
+   "choices": [
+    "Approach",
+    "Difference",
+    "Convergence",
+    "Separation"
+   ],
+   "answer": 2,
+   "explanation": "The word \"التقارب\" is used in the context of promoting understanding and cooperation: \"سيعمل هذا البرنامج على تعزيز التقارب بين الثقافات المختلفة.\" (This program will work to enhance the convergence of different cultures.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-speech-005",
+   "stem": "What is the main topic of this speech?",
+   "choices": [
+    "The environmental impact of textile factories",
+    "The government's plan to open a new university",
+    "The closure of Al-Nasr Textile Factory and its effects",
+    "The history of textile manufacturing in the region"
+   ],
+   "answer": 2,
+   "explanation": "The speech focuses on the closure of Al-Nasr Textile Factory and its impact on the community. This is evident throughout the speech, such as in the statement \"الآن، نحن نواجه مصنعنا المنصوري للنسيج، الذي هو معلم في مجتمعنا، يواجه الإغلاق\". The other topics are not the main focus of the speech.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "ar-dl-3-speech-005",
+   "stem": "According to the speaker, what is one of the main concerns about the factory closure?",
+   "choices": [
+    "Loss of jobs for local residents",
+    "Increased traffic congestion in the area",
+    "Decreased production of textiles in the country",
+    "A rise in the local crime rate"
+   ],
+   "answer": 0,
+   "explanation": "The speaker explicitly mentions job loss as a concern, stating \"هذا الإغلاق سيؤدي إلى فقدان hundreds من الوظائف، مما سيؤثر على families العديد من العائلات في مجتمعنا\". The other options are not mentioned as concerns in the speech.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-speech-005",
+   "stem": "In the phrase \"المجتمع سيشعر بفقدان كبير\" what does \"فقدان\" mean here?",
+   "choices": [
+    "A great achievement",
+    "A major change",
+    "A large quantity",
+    "A significant loss"
+   ],
+   "answer": 3,
+   "explanation": "The word \"فقدان\" is used to indicate that the community will experience a significant loss due to the factory closure. The phrase \"سيشعر بفقدان كبير\" translates to \"will feel a great loss\". The other options do not fit the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-speech-006",
+   "stem": "What is the main idea of the speech?",
+   "choices": [
+    "The impact of drought on urban communities.",
+    "The government's plan to combat agricultural drought through infrastructure development.",
+    "The importance of rain for agricultural success.",
+    "The history of droughts in the region."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 0 because the speech focuses on the government's plan to combat agricultural drought through infrastructure development. This is evident from the repeated mentions of projects like dams, irrigation systems, and water storage facilities. The speaker says, 'نحن نعمل على بناء سدود جديدة وأنظمة ري متقدمة وحفظ المياه لزيادة استدامة الموارد المائية'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-speech-006",
+   "stem": "What can be inferred about the government's approach to combating drought?",
+   "choices": [
+    "It ignores the needs of rural communities.",
+    "It is a comprehensive, long-term strategy.",
+    "It relies heavily on international aid.",
+    "It is primarily focused on short-term solutions."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 1 because the speech describes a comprehensive, long-term strategy. The government is investing in infrastructure projects and promoting water conservation. The speaker mentions, 'هذا جزء من استراتيجية شاملة على المدى الطويل لزيادة كفاءة استخدام المياه وتقليل تأثير الجفاف على الزراعة'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-speech-006",
+   "stem": "In the speech, what does 'الاستدامة' mean?",
+   "choices": [
+    "Immediate action.",
+    "Temporary relief.",
+    "Sustainability.",
+    "Scarcity."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 2 because 'الاستدامة' in this context refers to sustainability. The speaker uses it to discuss the long-term viability of water resources, saying, 'نحن نعمل على زيادة استدامة الموارد المائية'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-speech-007",
+   "stem": "What is the main purpose of the speech?",
+   "choices": [
+    "To explain the challenges faced by humanitarian organizations in Al-Amal.",
+    "To discuss the long-term economic impacts of the crisis in Al-Amal.",
+    "To outline the evacuation plan for foreign nationals from Al-Amal due to a crisis.",
+    "To request additional funding for the construction of new schools in Al-Amal."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the speech is to outline the evacuation plan for foreign nationals from Al-Amal due to a crisis. This is evident from the speaker's statements such as 'نود أن نعلن عن خطة الإخلاء' (We would like to announce the evacuation plan) and 'Due to the escalating crisis in Al-Amal, we have decided to evacuate all foreign nationals'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-speech-007",
+   "stem": "In the speech, the word 'التنسيق' is used. What does it mean here?",
+   "choices": [
+    "Coordination",
+    "Competition",
+    "Conflict",
+    "Cooperation"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'التنسيق' means 'Coordination'. The speaker says 'سيتم التنسيق مع السفارات المختلفة' (Coordination will be made with different embassies), indicating the need for organized effort and communication between different entities.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-speech-007-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-speech-007",
+   "stem": "What can be inferred about the safety of foreign nationals in Al-Amal?",
+   "choices": [
+    "Their safety is not a concern for the government.",
+    "They will be relocated to a safer area within Al-Amal.",
+    "They are currently in immediate danger.",
+    "They are being evacuated as a precautionary measure."
+   ],
+   "answer": 3,
+   "explanation": "The inference that can be made is that foreign nationals are being evacuated as a precautionary measure. The speaker states 'Due to the escalating crisis in Al-Amal, we have decided to evacuate all foreign nationals', which suggests that while there may not be immediate danger, the situation is serious enough to warrant evacuation.",
    "source": "llm",
    "verified": false
   }
