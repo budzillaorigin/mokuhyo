@@ -132,7 +132,7 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         Validation.length("utterance", output.utterance, max = 300),
         input.history.firstOrNull { similar(it.text, output.utterance) }
             ?.let { if (it.speaker == Speaker.PARTNER) "utterance repeats an earlier question (\"${it.text.take(60)}\")" else "utterance repeats the candidate's words" },
-        if (output.nextPhase < input.phase) "next_phase goes back to an earlier phase" else null,
+        // A backward next_phase is not an error: OpiSession.advance never moves back, so the utterance is still usable.
         if (output.english.isNotBlank()) ScriptCheck.requireEnglish("english", output.english) else null,
     )
 
@@ -236,10 +236,9 @@ class OpiRate(private val fallbackHook: ((Input) -> Output?)? = null) : PromptTa
             factors.firstOrNull { IlrLevel.parse(it.level) == null }?.let { "unknown factor level ${it.level}" },
             if (estimate == null) "unknown estimate ${output.estimate}" else null,
             // An estimate above the sustained level is capped by normalize (the ILR rating is the sustained level).
-            ScriptCheck.requireEnglish("rationale", output.rationale),
-            output.nextSteps.firstNotNullOfOrNull { ScriptCheck.requireEnglish("next step", it) },
+            // English is requested; feedback in the interview language is accepted (D-017): small models often answer in it.
             Validation.length("rationale", output.rationale, min = 20, max = 1200),
-            if (output.nextSteps.size !in 2..4) "next_steps must have three items" else null,
+            if (output.nextSteps.isEmpty() || output.nextSteps.size > 4) "next_steps must have three items" else null,
             // Evidence quotes must come from the candidate: a rating whose quotes are mostly invented is rejected;
             // [normalize] drops the odd non-verbatim one.
             factors.flatMap { it.quotes }.filter { it.isNotBlank() }.let { qs ->
@@ -354,4 +353,45 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
     }
 
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
+}
+
+/** `generate_topics` (BRIEF §5.4 Speaking "generate more"): new conversation topics for a domain, in the language. */
+class GenerateTopics : PromptTask<GenerateTopics.Input, GenerateTopics.Output> {
+    data class Input(val language: String, val registerNotes: String, val domain: TopicDomain, val avoid: List<String>, val count: Int = 5)
+
+    @Serializable
+    data class Item(val title: String, val opener: String, @SerialName("min_level") val minLevel: String)
+
+    @Serializable
+    data class Output(val topics: List<Item>)
+
+    override val name = "generate_topics"
+    override val serializer: KSerializer<Output> = Output.serializer()
+    override val temperature = 0.8
+    override val maxTokens = 900
+    override val schema = JsonSchema.Obj(
+        listOf(
+            "topics" to JsonSchema.Arr(
+                JsonSchema.Obj(listOf("title" to JsonSchema.Str(maxLength = 80), "opener" to JsonSchema.Str(maxLength = 300), "min_level" to JsonSchema.Str(enum = OpiRate.LEVELS))),
+                maxItems = 8,
+            ),
+        ),
+    )
+
+    override fun messages(input: Input): List<ChatMessage> {
+        val lang = languageName(input.language)
+        return listOf(
+            system("You suggest conversation-practice topics for learners of $lang.", "Register: ${input.registerNotes}"),
+            user("Domain: ${input.domain.title}. Write ${input.count} new topics: title (short English label), opener (a partner's first line in " +
+                "$lang that asks the learner a question), min_level (lowest ILR level that can handle it). Avoid: ${input.avoid.joinToString("; ").take(800)}"),
+        )
+    }
+
+    override fun validate(input: Input, output: Output, context: ValidationContext): List<String> = buildList {
+        if (output.topics.isEmpty()) add("no topics")
+        output.topics.forEach { t ->
+            ScriptCheck.requireLanguage("opener", t.opener, input.language)?.let { add(it) }
+            ScriptCheck.requireEnglish("title", t.title)?.let { add(it) }
+        }
+    }
 }

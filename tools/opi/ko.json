@@ -1,0 +1,897 @@
+{
+ "language": "ko",
+ "profile": {
+  "language": "ko",
+  "registerNotes": "Use 해요체 (polite informal) with the candidate; 합쇼체 (-습니다) in formal role-plays (officials, briefings). 반말 only between close friends in a role-play.",
+  "formalityMarkers": [
+   "해요체",
+   "합쇼체",
+   "반말",
+   "honorific -시-"
+  ],
+  "levelCheckTopics": {
+   "0+": [
+    "name and greetings",
+    "numbers and prices",
+    "days and times",
+    "family members"
+   ],
+   "1": [
+    "daily routine",
+    "home and neighborhood",
+    "food and shopping",
+    "weekend activities",
+    "work or studies"
+   ],
+   "1+": [
+    "a recent trip",
+    "describing your hometown",
+    "a typical workday",
+    "plans for next year"
+   ],
+   "2": [
+    "a memorable event in detail",
+    "comparing two places you lived",
+    "explaining a process at work",
+    "a current event in your country"
+   ],
+   "2+": [
+    "advantages and disadvantages of a policy",
+    "how your profession has changed",
+    "a problem in your community and its causes"
+   ],
+   "3": [
+    "supporting an opinion on an abstract issue",
+    "hypothetical: what if your country changed a major policy",
+    "the role of technology in society",
+    "ethics of a professional decision"
+   ]
+  },
+  "rolePlaySeeds": [
+   "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+   "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+   "Report a lost passport at a police station (interviewer: police officer).",
+   "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+   "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+   "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+   "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+   "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ]
+ },
+ "questions": [
+  {
+   "id": "ko-q-warmup-0+-01",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "안녕하세요! 이름이 뭐예요?",
+   "english": "Hello! What is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-0+-02",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "가족이 몇 명이에요?",
+   "english": "How many people are in your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-0+-03",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "주말에 뭐 해요?",
+   "english": "What do you do on the weekends?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-0+-04",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "마지막으로 본 영화가 뭐예요?",
+   "english": "What was the last movie you saw?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1-01",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "안녕하세요! 최근에 즐거운 일이 있었어요?",
+   "english": "Hello! Have you had any fun recently?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1-02",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "가족과 함께 자주 하는 일이 뭐예요?",
+   "english": "What do you often do with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1-03",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "현재 어떤 방식으로 돈을 버나요?",
+   "english": "How do you currently make money?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1-04",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "마을에서 자주 보는 사람이 누군데요?",
+   "english": "Who do you often see in your neighborhood?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1+-01",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "가장 좋아하는 계절이 어디예요? 왜 그렇게 생각하시나요?",
+   "english": "What is your favorite season? Why do you think that?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1+-02",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "가족과 함께 가장 즐거웠던 추억이 있나요? 그 이야기를 해줄래요?",
+   "english": "Do you have a favorite memory with your family? Can you tell me about it?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1+-03",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "일주일 중에 가장 바쁜날이 언제예요? 그 날은 왜 이렇게 바쁘나요?",
+   "english": "What is the busiest day of your week? Why is that day so busy?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-warmup-1+-04",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "현재 살고 있는 동네에서 가장 편리한 점은 어디예요?",
+   "english": "What is the most convenient thing about the neighborhood you currently live in?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-0+-01",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "오늘 날씨가 좋아요. 어디에 가요?",
+   "english": "The weather is nice today. Where are you going?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-0+-02",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "가족이 있어요? 몇 명이에요?",
+   "english": "Do you have a family? How many people are there?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-0+-03",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "좋아하는 음식 뭐예요?",
+   "english": "What is your favorite food?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-0+-04",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "주말에 뭐해요?",
+   "english": "What do you do on the weekends?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-0+-05",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "직업이 뭐예요?",
+   "english": "What is your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-0+-06",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "최근에 본 영화 있어요?",
+   "english": "Have you seen any movies recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1-01",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "요즘 뭐 좋아해요?",
+   "english": "What do you like these days?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1-02",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "가족과 자주 뭐 해요?",
+   "english": "What do you often do with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1-03",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "직장에서 하루 보통 어떻게 보내요?",
+   "english": "How do you usually spend your day at work?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1-04",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "사는 동네가 좋아요? 왜 그래요?",
+   "english": "Do you like the neighborhood you live in? Why is that?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1-05",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "최근에 뉴스에서 흥미로운 거 본 적 있어요?",
+   "english": "Have you seen anything interesting in the news recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1-06",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "여행 갈 때 가장 중요한 거 뭐라고 생각해요?",
+   "english": "What do you think is the most important thing when traveling?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1+-01",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "지난주 주말에 뭐 했어요?",
+   "english": "What did you do last weekend?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1+-02",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "가족 중에서 가장 친한 사람 누구예요?",
+   "english": "Who is the closest person to you in your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1+-03",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "최근에 회사에서 제일 재미있었던 일 뭐였어요?",
+   "english": "What was the most fun thing that happened to you at work recently?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1+-04",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "사시는 동네의 장점 뭐라고 생각해요?",
+   "english": "What do you think are the advantages of the neighborhood you live in?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1+-05",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "최근에 주목했던 뉴스 거리가 있었어요?",
+   "english": "Have there been any news stories that caught your attention recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-1+-06",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "여행할 때 미리 준비하는 거 뭐가 중요하다고 생각해요?",
+   "english": "What do you think is important to prepare beforehand when traveling?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "지난주에 어떤 계획을 세우셨나요?",
+   "english": "What plans did you make last week?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "가족과 함께 가장 즐거운 시간을 보냈던 적이 언제인가요?",
+   "english": "When was the most enjoyable time you spent with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "현재 직장에서 가장 중요한 프로젝트가 무엇인가요?",
+   "english": "What is the most important project you're working on at your current job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "지역 사회에서 최근 어떤 봉사 활동을 하셨나요?",
+   "english": "What kind of volunteer work have you done in your community recently?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2-05",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "최근 뉴스에서 가장 주목했던 이슈가 무엇인가요?",
+   "english": "What was the most notable issue in the news recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2-06",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "여행 중 가장 기억에 남는 경험이 언제였나요?",
+   "english": "When was the most memorable experience you had while traveling?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2+-01",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "최근에 읽거나 본 것이 가장 기억에 남는 것은 무엇인가요?",
+   "english": "What is the most memorable thing you've read or seen recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2+-02",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "직장 동료들과의 관계를 어떻게 유지하시나요?",
+   "english": "How do you maintain relationships with your coworkers?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2+-03",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "여행할 때 가장 중요하게 생각하는 것은 무엇인가요?",
+   "english": "What do you think is most important when traveling?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2+-04",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "가족과 함께한 가장 즐거운 추억은 언제인가요?",
+   "english": "When was the most enjoyable time you spent with your family?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2+-05",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "현재 직장에서 가장 중요한 프로젝트는 무엇인가요?",
+   "english": "What is the most important project you're working on at your current job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-2+-06",
+   "phase": "level_check",
+   "level": "2+",
+   "prompt": "최근에 지역 사회에서 어떤 봉사 활동을 하셨나요?",
+   "english": "What kind of volunteer work have you done in your community recently?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-3-01",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "가족과 함께 시간을 보내는 것보다 더 즐거운 시간이 있나요? 그 이유는 무엇인가요?",
+   "english": "Is there anything more enjoyable than spending time with family? What is that?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-3-02",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "최근에 직장에서 가장 큰 성공을 경험한 것은 무엇인가요?",
+   "english": "What has been your greatest success at work recently?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-3-03",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "지역 사회에서 최근에 참여한 중요한 활동이 있나요?",
+   "english": "Have you participated in any important activities in your community recently?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-3-04",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "최근 뉴스에서 가장 주목할 만한 이슈가 무엇이었나요?",
+   "english": "What has been the most notable issue in the news recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-3-05",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "여행을 할 때 가장 중요하게 여기는 것은 무엇인가요?",
+   "english": "What do you value most when traveling?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-level_check-3-06",
+   "phase": "level_check",
+   "level": "3",
+   "prompt": "사회에서의 평등은 어떻게 달성할 수 있을까요?",
+   "english": "How can equality in society be achieved?",
+   "domain": "abstract",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-0+-01",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "여행하신 적이 있으세요?",
+   "english": "Have you ever traveled?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-0+-02",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "가족과 함께 하는 주말 활동은 무엇인가요?",
+   "english": "What activities do you do with your family on the weekends?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-0+-03",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "현재 어떤 일에 종사하고 계신가요?",
+   "english": "What kind of work are you currently doing?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-0+-04",
+   "phase": "probe",
+   "level": "0+",
+   "prompt": "주민센터에서 어떤 서비스를 제공받을 수 있다 생각하시나요?",
+   "english": "What kinds of services do you think can be offered at a community center?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1-01",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "주말에 뭐 해?",
+   "english": "What do you do on the weekends?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1-02",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "가족과 함께 가장 즐거운 시간은 언제예요?",
+   "english": "When is the most enjoyable time with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1-03",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "지금 직장에서 어떤 일을 주로 해요?",
+   "english": "What do you mainly do at your current job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1-04",
+   "phase": "probe",
+   "level": "1",
+   "prompt": "지금 사는 동네에서 어떤 활동을 좋아해요?",
+   "english": "What activities do you enjoy in the neighborhood where you live now?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1+-01",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "최근에 본 영화 중 가장 기억에 남는 영화가 있나요? 왜 기억에 남나요?",
+   "english": "Is there a movie you've seen recently that you remember the most? Why do you remember it?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1+-02",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "형제자매와 어떤 관계인가요? 서로를 어떻게 도와주나요?",
+   "english": "What is your relationship like with your siblings? How do you help each other?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1+-03",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "현재 직장에서 가장 도전적인 부분은 무엇인가요? 어떻게 해결하려 하나요?",
+   "english": "What is the most challenging aspect of your current job? How do you try to solve it?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-1+-04",
+   "phase": "probe",
+   "level": "1+",
+   "prompt": "우리 동네에 새로운 시장이 열렸다고 가정해봅시다. 어떤 상품들이 팔리면 좋겠어요?",
+   "english": "Let's assume a new market is opening in our neighborhood. What kind of products would you like to see sold there?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2-01",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "가족과 함께 여행 간 경험이 있어요? 그 때 어떤 일들이 있었나요?",
+   "english": "Have you ever traveled with your family? What kinds of things happened during that trip?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2-02",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "일주일에 몇 시간 정도 가족과 시간을 보내요? 어떤 활동을 가장 좋아하세요?",
+   "english": "How many hours a week do you spend time with your family? What activities do you like the most?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2-03",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "현재 직장에서 가장 최근에 완료한 프로젝트가 뭐였어요? 그 프로젝트를 수행하면서 어떤 어려움을 겪었나요?",
+   "english": "What was the most recent project you completed at your current job? What difficulties did you encounter while working on that project?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2-04",
+   "phase": "probe",
+   "level": "2",
+   "prompt": "당신이 사는 동네에서 지역 사회를 위한 어떤 프로그램이 더 필요하다고 생각하세요?",
+   "english": "What kind of program do you think is needed more in your neighborhood for the community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2+-01",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "요즘 한국에 있는 외국인들의 숫자가 점점 늘고 있는데, 이들에게 더 잘 적응할 수 있게 도와줄 방법을 생각해볼 수 있을까요?",
+   "english": "The number of foreign residents in Korea is increasing rapidly. Can you think of ways to help them adapt better?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2+-02",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "최근에 본 영화 중 가장 인상 깊었던 작품이 있나요? 그 영화가 왜 기억에 남는 지 구체적으로 알려줄 수 있나요?",
+   "english": "Is there a movie you've seen recently that left a strong impression on you? Can you tell me specifically why that movie stands out?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2+-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "군대에 계셨다면, 훈련 중 가장 어려웠던 경험을 하나 골라서 상세히 설명해주실 수 있나요?",
+   "english": "If you've served in the military, can you pick one of the most difficult experiences during training and describe it in detail?",
+   "domain": "military",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-2+-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "만약에 한 달 동안 어떤 나라든지 자유롭게 여행할 수 있다면, 어디를 갈 것인가요? 그곳을 선택한 이유를 구체적으로 설명해주세요.",
+   "english": "If you could travel to any country for a month, where would you go? Please explain your reason in detail.",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-3-01",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "가족과 함께하는 시간 중에서 가장 행복했던 순간을 상세히 설명해 줄 수 있나요?",
+   "english": "Can you describe in detail the happiest moment you've had with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-3-02",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "현재 직장에서 한 주에 가장 많은 시간을 보내는 일이 무엇인가요? 그 과정에서 어떤 어려움을 경험하고 있나요?",
+   "english": "What task takes up the most time in your current job on a weekly basis? What challenges do you face in that process?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-3-03",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "지역 사회에 기여할 수 있는 프로그램을 하나 제안해 주세요. 그 프로그램이 어떻게 지역 사회에 도움이 될지 설명해 주세요.",
+   "english": "Please suggest one program that can contribute to your local community. Explain how that program would be beneficial.",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-probe-3-04",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "최근 몇 달 안에 가장 주목할 만한 국제적 사건이 무엇이라고 생각하세요? 그 사건에 대한 당신의 의견을 말해 주세요.",
+   "english": "What do you think has been the most notable international event in the past few months? Please share your opinion on that event.",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-1-01",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "형제자매 있어요?",
+   "english": "Do you have any siblings?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-1-02",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "어떤 직업이나 싶어요?",
+   "english": "What kind of job do you want?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-1-03",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "동네에서 가장 좋아하는 곳 있어요?",
+   "english": "Is there a place in your neighborhood that you like the most?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-1-04",
+   "phase": "winddown",
+   "level": "1",
+   "prompt": "외국에 가고 싶어요?",
+   "english": "Do you want to go abroad?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-2-01",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "요즘 주말에 주로 무엇을 하세요?",
+   "english": "What do you usually do on weekends these days?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-2-02",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "가족과 함께 가장 즐거운 시간을 어떻게 보내나요?",
+   "english": "How do you spend the most enjoyable time with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-2-03",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "요즘 회사에서 어떤 프로젝트를 하고 있나요?",
+   "english": "What kind of project are you working on at your company recently?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-q-winddown-2-04",
+   "phase": "winddown",
+   "level": "2",
+   "prompt": "지역 사회에서 최근에 참여한 활동이 있다면 알려주세요.",
+   "english": "Could you tell me about any recent activities you've participated in in your community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "rolePlays": [],
+ "topics": [],
+ "checklist": {
+  "0+": [
+   "I can greet people and say my name.",
+   "I can give numbers, prices, days and times.",
+   "I can answer very simple questions with memorized phrases."
+  ],
+  "1": [
+   "I can make simple sentences about myself, my family and my daily routine.",
+   "I can ask and answer simple questions about familiar topics.",
+   "I can handle basic needs: ordering food, buying a ticket, asking for directions."
+  ],
+  "1+": [
+   "I can describe places and people in connected sentences.",
+   "I can tell what happened on a recent trip or weekend.",
+   "I can handle routine situations even when something small goes wrong."
+  ],
+  "2": [
+   "I can narrate past, present and future events in paragraphs.",
+   "I can describe and explain concrete topics at work and in the news.",
+   "I can resolve a complication in a role-play, like a cancelled reservation."
+  ],
+  "2+": [
+   "I can often support my opinions with reasons and examples.",
+   "I can discuss some abstract topics, although I sometimes break down.",
+   "I can explain the causes and effects of a problem in my community."
+  ],
+  "3": [
+   "I can support and defend opinions on abstract and unfamiliar topics.",
+   "I can hypothesize about situations that did not happen.",
+   "I can speak at length with good control of grammar and vocabulary."
+  ]
+ }
+}

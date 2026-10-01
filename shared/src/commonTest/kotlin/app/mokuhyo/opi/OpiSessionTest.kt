@@ -140,6 +140,15 @@ class InterviewerRepeatTest {
         assertTrue(task.validate(input, repeat, app.mokuhyo.ai.ValidationContext()).any { "repeats" in it })
         assertTrue(task.validate(input, fresh, app.mokuhyo.ai.ValidationContext()).isEmpty())
     }
+
+    /** Smoke regression: a usable question with a backward next_phase was thrown away; the session clamps it instead. */
+    @Test
+    fun backwardNextPhaseIsAccepted() {
+        val task = OpiInterviewerTurn()
+        val input = OpiInterviewerTurn.Input("es", "usted", OpiPhase.PROBE, IlrLevel.L2, listOf(Turn(Speaker.PARTNER, "¿Dónde vive usted?"), Turn(Speaker.LEARNER, "En Madrid.")))
+        val out = OpiInterviewerTurn.Output("¿Cómo ha cambiado su barrio en los últimos diez años?", "", OpiPhase.WARMUP)
+        assertTrue(task.validate(input, out, app.mokuhyo.ai.ValidationContext()).isEmpty())
+    }
 }
 
 class SimilarQuestionsTest {

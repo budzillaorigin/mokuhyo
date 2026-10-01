@@ -29,4 +29,10 @@ The owner's Ollama server (BRIEF §7.1) runs the approved list in `tools/models/
 
 ## Speaking eval
 
-Not run yet: `tools/models/eval_speaking.py` fills this table in Phase 4 (| model | lang | score |).
+`tools/models/eval_speaking.py`, last run 2026-10-01 (Ollama on the owner's RTX 5090 at http://<server-ip>:11434/v1). 60 prompts per language through the app's own prompts and validators; score = mean of json validity, target-language purity, register (judged by the reference model) and rating agreement (estimate within one ILR step of the intended level). Below 0.60 the model picker warns for that language. Latency is the 5090 server's, not a laptop's.
+
+| model | lang | score | tier | json | purity | register | agreement | median latency |
+|---|---|---|---|---|---|---|---|---|
+| `eurollm-9b-instruct-q4km` | ar | 0.81 | B | 1.00 | 0.88 | 0.93 | 0.45 | 2.1 s |
+| `eurollm-9b-instruct-q4km` | es | 0.76 | B | 1.00 | 0.85 | 0.68 | 0.50 | 1.7 s |
+| `eurollm-9b-instruct-q4km` | ja | 0.81 | B | 1.00 | 0.95 | 0.80 | 0.50 | 1.9 s |

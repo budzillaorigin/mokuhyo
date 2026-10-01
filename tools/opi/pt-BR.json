@@ -1818,6 +1818,204 @@
    "minLevel": "3",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-01",
+   "domain": "interpreter",
+   "title": "Airport Pickup",
+   "opener": "Olá, você é o intérprete que fui designado para encontrar, certo? Vamos para o hotel agora ou tem algum outro compromisso primeiro?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-02",
+   "domain": "interpreter",
+   "title": "Hotel Check-in",
+   "opener": "Bom dia, eu gostaria de fazer o check-in, por favor. Você poderia ajudar a explicar as políticas do hotel em português?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-03",
+   "domain": "interpreter",
+   "title": "Business Meeting",
+   "opener": "Você poderia traduzir o que estou dizendo para os nossos parceiros de negócios? Quero explicar a importância deste projeto para ambas as empresas.",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-04",
+   "domain": "interpreter",
+   "title": "Medical Appointment",
+   "opener": "O médico disse algo sobre alguns exames que preciso fazer. Você poderia perguntar a ele quais são exatamente e por que são necessários?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-05",
+   "domain": "interpreter",
+   "title": "Restaurant Order",
+   "opener": "Eu gostaria de pedir a refeição, mas não entendo completamente o menu. Você poderia ajudar a explicar o que cada prato inclui?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-06",
+   "domain": "interpreter",
+   "title": "Shopping Assistance",
+   "opener": "Estou procurando um presente para um amigo, mas não tenho certeza do que comprar. Você poderia ajudar a perguntar ao vendedor sobre as opções disponíveis?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-07",
+   "domain": "interpreter",
+   "title": "Tour Guide",
+   "opener": "Poderia interpretar para os turistas que estão interessados em saber mais sobre a história deste local?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-08",
+   "domain": "interpreter",
+   "title": "Legal Consultation",
+   "opener": "O advogado mencionou alguns termos legais que não entendi. Você poderia pedir para ele explicar em detalhes o que cada termo significa?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-09",
+   "domain": "interpreter",
+   "title": "Conference Interpretation",
+   "opener": "Você poderia traduzir simultaneamente o que está sendo dito na conferência? É importante que eu entenda cada detalhe.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-10",
+   "domain": "interpreter",
+   "title": "Cultural Event",
+   "opener": "Poderia ajudar a explicar aos participantes estrangeiros as tradições e costumes envolvidos nesta cerimônia?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-interpreter-11",
+   "domain": "interpreter",
+   "title": "Emergency Situation",
+   "opener": "Aconteceu um acidente e preciso de ajuda urgente. Você poderia comunicar a situação para os paramédicos e garantir que eles entendam tudo?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-01",
+   "domain": "abstract",
+   "title": "Education Reform",
+   "opener": "Você acha que a reforma educacional recente vai melhorar a qualidade do ensino no Brasil?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-02",
+   "domain": "abstract",
+   "title": "Environmental Policy",
+   "opener": "O que você pensa sobre a política ambiental do novo governo?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-03",
+   "domain": "abstract",
+   "title": "Ethics in Business",
+   "opener": "Como você lida com situações onde a ética nos negócios é desafiada?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-04",
+   "domain": "abstract",
+   "title": "Technology and Privacy",
+   "opener": "Você acha que a tecnologia está invadindo nossa privacidade?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-05",
+   "domain": "abstract",
+   "title": "Healthcare Priorities",
+   "opener": "Quais você acha que devem ser as prioridades no sistema de saúde do Brasil?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-06",
+   "domain": "abstract",
+   "title": "Cultural Identity",
+   "opener": "Como você define sua identidade cultural em um mundo globalizado?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-07",
+   "domain": "abstract",
+   "title": "Political Engagement",
+   "opener": "Você acha que os jovens hoje estão suficientemente engajados politicamente?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-08",
+   "domain": "abstract",
+   "title": "Artistic Expression",
+   "opener": "Qual você acha que é o papel da arte na sociedade contemporânea?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-09",
+   "domain": "abstract",
+   "title": "Economic Inequality",
+   "opener": "O que você sugere para reduzir a desigualdade econômica no Brasil?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-10",
+   "domain": "abstract",
+   "title": "Future of Work",
+   "opener": "Como você imagina que o mundo do trabalho vai mudar nas próximas décadas?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-topic-abstract-11",
+   "domain": "abstract",
+   "title": "Social Media Influence",
+   "opener": "Você acha que as redes sociais estão mais ajudando ou prejudicando a sociedade?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
   }
  ],
  "checklist": {

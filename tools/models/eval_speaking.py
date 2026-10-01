@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import random
 import re
 import statistics
@@ -139,10 +140,15 @@ def pull(client: llm.Client, tag: str) -> None:
 
 
 def run_app(fixture_files: list[Path], endpoint: str, models: list[str], out: Path, limit: int | None) -> None:
+    """Runs `Mokuhyo --eval-speaking`: the packaged launcher when MOKUHYO_APP points at one, else `gradlew run`."""
+    args = ["--eval-speaking", "--fixtures", ",".join(str(f) for f in fixture_files), "--endpoint", endpoint, "--models", ",".join(models),
+            "--out", str(out)] + (["--limit", str(limit)] if limit else [])
+    launcher = os.environ.get("MOKUHYO_APP")
+    if launcher:
+        subprocess.run([launcher, *args], cwd=REPO, check=True)
+        return
     gradle = str(REPO / ("gradlew.bat" if sys.platform == "win32" else "gradlew"))
-    app_args = (f"--eval-speaking --fixtures {','.join(str(f) for f in fixture_files)} --endpoint {endpoint} "
-                f"--models {','.join(models)} --out {out}" + (f" --limit {limit}" if limit else ""))
-    subprocess.run([gradle, ":desktopApp:run", f"--args={app_args}", "--console=plain", "-q"], cwd=REPO, check=True)
+    subprocess.run([gradle, ":desktopApp:run", "--args=" + " ".join(args), "--console=plain", "-q"], cwd=REPO, check=True)
 
 
 def judge_register(client: llm.Client, lang: str, register: str, outputs: list[str]) -> list[bool]:

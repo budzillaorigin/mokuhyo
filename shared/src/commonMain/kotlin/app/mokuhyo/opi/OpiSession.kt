@@ -9,7 +9,11 @@ import kotlin.time.Clock
 import kotlin.time.Instant
 
 /** An interviewer line; [english] is shown after the interview. [engine] is null for scripted (bank) questions. */
-data class InterviewerLine(val text: String, val english: String, val phase: OpiPhase, val engine: String?, val domain: String?)
+data class InterviewerLine(
+    val text: String, val english: String, val phase: OpiPhase, val engine: String?, val domain: String?,
+    /** Why the model's question wasn't used (scripted fallback), for diagnostics. */
+    val fallbackReason: String? = null,
+)
 
 /** The rating shown after an interview (BRIEF §6.2). */
 @Serializable
@@ -101,15 +105,16 @@ class OpiSession(
             usedDomains.distinct(),
         )
         val task = OpiInterviewerTurn { scripted(it.phase) }
+        var reason: String? = null
         val (out, engine) = when (val r = gateway.run(task, input)) {
             is AiResult.Ok -> r.value to r.engine
-            is AiResult.Fallback -> r.value to null
+            is AiResult.Fallback -> { reason = r.reason; r.value to null }
             is AiResult.Unavailable -> {
                 finished = true
                 return null
             }
         }
-        val line = InterviewerLine(out.utterance, out.english, phase, engine, out.domain.ifBlank { null })
+        val line = InterviewerLine(out.utterance, out.english, phase, engine, out.domain.ifBlank { null }, reason)
         records += OpiTurnRecord(records.size, phase, out.utterance, out.english, line.domain, targetFor(phase), workingLevel, engine = engine)
         line.domain?.let { usedDomains += it }
         questionPhase = phase

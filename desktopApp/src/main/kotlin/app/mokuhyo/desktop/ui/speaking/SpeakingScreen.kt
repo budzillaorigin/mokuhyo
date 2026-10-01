@@ -51,6 +51,7 @@ import app.mokuhyo.opi.OpiRating
 import app.mokuhyo.opi.OpiSession
 import app.mokuhyo.opi.OpiTurnOutcome
 import app.mokuhyo.opi.Speaker
+import app.mokuhyo.opi.GenerateTopics
 import app.mokuhyo.opi.Topic
 import app.mokuhyo.opi.TopicDomain
 import app.mokuhyo.opi.TopicExchange
@@ -364,6 +365,9 @@ private fun InterviewResults(
 private fun TopicView(app: AppGraph, module: LanguageModule, pack: OpiPack, close: () -> Unit) {
     var domain by remember { mutableStateOf<TopicDomain?>(null) }
     var topic by remember { mutableStateOf<Topic?>(null) }
+    val scope = rememberCoroutineScope()
+    val generatedTopics = remember(module.code) { mutableStateListOf<Topic>().apply { addAll(app.generated.topics(app.learnerId, module.code)) } }
+    var generating by remember { mutableStateOf(false) }
     var custom by remember { mutableStateOf("") }
     val t = topic
     if (t == null) {
@@ -377,12 +381,27 @@ private fun TopicView(app: AppGraph, module: LanguageModule, pack: OpiPack, clos
             }
             domain?.let { d ->
                 SectionCard(d.title) {
-                    pack.topics.filter { it.domain == d.id }.forEach { tp ->
+                    (pack.topics.filter { it.domain == d.id } + generatedTopics.filter { it.domain == d.id }).forEach { tp ->
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             TextButton(onClick = { topic = tp }) { Text(tp.title) }
                             Text("from ILR ${tp.minLevel}", style = MaterialTheme.typography.bodySmall)
-                            if (tp.source == "llm" && !tp.verified) Badge("AI-generated")
+                            if (tp.id.startsWith("local-")) Badge("Generated on this computer") else if (tp.source == "llm" && !tp.verified) Badge("AI-generated")
                         }
+                    }
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                        OutlinedButton(enabled = !generating && app.languageModel() != null, onClick = {
+                            generating = true
+                            scope.launch {
+                                val input = GenerateTopics.Input(module.code, pack.profile.registerNotes, d, pack.topics.filter { it.domain == d.id }.map { it.title } + generatedTopics.map { it.title })
+                                val r = withContext(Dispatchers.Default) { app.gateway.run(GenerateTopics(), input) }
+                                if (r is app.mokuhyo.ai.AiResult.Ok) r.value.topics.forEachIndexed { i, t ->
+                                    val topic = Topic("local-${module.code}-topic-${System.currentTimeMillis()}-$i", d.id, t.title, t.opener, t.minLevel, "llm", false)
+                                    app.generated.saveTopic(app.learnerId, module.code, topic, r.engine)
+                                    generatedTopics += topic
+                                }
+                                generating = false
+                            }
+                        }) { Text(if (generating) "Generating…" else "Generate more topics") }
                     }
                 }
             }

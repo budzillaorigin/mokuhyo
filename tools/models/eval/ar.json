@@ -1,0 +1,1627 @@
+{
+ "language": "ar",
+ "registerNotes": "Modern Standard Arabic (فصحى) throughout, not a dialect. Address the candidate with polite forms (حضرتك is dialectal; prefer أنت with courtesy phrases).",
+ "source": "llm",
+ "generatedBy": "mistral-small3.2:24b-instruct-2506-q8_0",
+ "interviewer": [
+  {
+   "id": "ar-int-00",
+   "phase": "warmup",
+   "level": "0+",
+   "history": []
+  },
+  {
+   "id": "ar-int-01",
+   "phase": "level_check",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "أنت تحب القراءة؟ ما هو الكتاب الأخير الذي قرأته؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا like reading. آخر كتاب آنا read is 'البحار لا يروي' لطه عبد الرؤوف. هو عن life story of person. هو interesting و make me think about my life."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-02",
+   "phase": "probe",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل لديك أي أقارب يعيشون معك؟ أخبرني عنهم."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا live مع my brother و his family. هو married و has two kids. هو engineer و wife هي teacher. kids هي cute و playful. نحن live together في big house. sometimes هو noisy و busy، but أنا like living مع family. nous support بعضنا البعض و spend time together."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل التطوعي الذي ترغب في المشاركة فيه؟ صف لي هذا العمل وسبب اهتمامك به."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أريد المشاركة في العمل التطوعي teaching kids. أنا like helping kids learn و grow. أنا think education هو مهم و يمكن تغيير life. أيضا، أنا like interact مع kids و make difference في community. هذا العمل يمكن أن يكون challenging و rewarding."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-03",
+   "phase": "roleplay",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كان لديك الفرصة لزيارة أي بلد في العالم، أي بلد ستختار؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كان لدي الفرصة لزيارة أي بلد في العالم، أنا سأختار اليابان. هناك العديد من الأسباب لذلك. أولاً، اليابان لديها ثقافة غنية وتاريخية. ثانياً، اليابان لديها الكثير من المناظر الطبيعية Beautiful مثل الجبال والبحيرات. ثالثاً، اليابان معروفة بآكلها اللذيذة. أخيراً، اليابان تقدم many opportunities للعمل والدراسة. أThink أن visitar اليابان يمكن أن يكون تجربة غير محتملة."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو آخر كتاب قرأته؟ وما هي الفكرة الأساسية التي استحوذت على اهتمامك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آخر كتاب قرأته هو 'قصور في الهواء' لطفيل اللبدي. الفكرة الأساسية التي استحوذت على اهتمامي هي تأثير الحرب على الناس. الكتاب يصف كيف يمكن للحرب أن تغير حياة الناس بشكل جذري، وكيف يمكن للأشخاص العثور على الشجاعة وال espoir sogar في أوقات الصعوبة. أيضاً، الكتاب يناقش موضوع الحريّة والحرية، وأهمية القتال من أجلها."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكنك مقارنة الحياة في المدينة بالحياة في الريف؟ ما هي الفوائد والتحديات التي تواجه كل منهما؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أThink أن الحياة في المدينة مختلفة جداً عن الحياة في الريف. الفوائد الحياة في المدينة هي أن هناك الكثير من الفرص العمل، ومجموعة متنوعة من الخدمات مثل hospitals والمتاحف والمطاعم. ومع ذلك، هناك أيضاً تشللات مثل pollution العالية، وارتفاع تكاليف المعيشة، وفي بعض الأحيان، العزلة الاجتماعية. في الوقت نفسه، الحياة في الريف هي هادئة أكثر، وتكون تكاليف المعيشة أقل. هناك أيضاً أكثر nature، وقد تكون cộngmunity الأقرب. ومع ذلك، هناك أقل الفرص العمل، ويمكن أن يكون الوصول إلى الخدمات صعباً."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-04",
+   "phase": "winddown",
+   "level": "2+",
+   "history": []
+  },
+  {
+   "id": "ar-int-05",
+   "phase": "warmup",
+   "level": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو دور الثقافة في تعزيز العلاقات الدولية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أتفق أن وسائل التواصل الاجتماعي لها تأثير كبير على العلاقات الشخصية. من ناحية، قد تساعد على الحفاظ على الاتصال مع الأصدقاء والعائلة الذين يعيشون في مسافات بعيدة. أما من ناحية أخرى، أعتقد أن وسائل التواصل الاجتماعي قد تؤدي إلى العزلة الاجتماعية، حيث الناس يفضلون التواصل عبر الإنترنت عن طريق التواصل وجهًا لوجه. بالإضافة إلى ذلك، هناك تأثيرات سلبية مثل envy، وإهمال الوقت الحقيقي، وإمكانية تعرض الخصوصية للخطر. لذلك، يجب أن نستخدم وسائل التواصل الاجتماعي بطريقة معقولة وواعية."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-06",
+   "phase": "level_check",
+   "level": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل الذي ترغبه أن تقوم به؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لا، أنا لا travel."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل سافرتَ إلى مكان مثير للاهتمام في الوقت الحاضر؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا لا understand."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-07",
+   "phase": "probe",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل تقرأ الأخبار؟ ما الذي يجذب انتباهك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا read news كل يوم. آنا like news about politics و sports. آنا find politics important because هو affect my life. sports news is fun to read."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل كنت في رحلة مؤخراً؟ أخبرني عنها."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا go على trip to القاهرة recently. هو beautiful city. أنا visit pyramids. هو amazing. also, أنا eat delicious food. أنا like trip very much."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "من فضلك، أخبرني عن هواياتك المفضلة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هواياتي المفضلة is reading books و listening to music. أنا like books because هو teach me things. music make me feel good. sometimes, أنا play guitar. هو relax."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-08",
+   "phase": "roleplay",
+   "level": "1+",
+   "history": []
+  },
+  {
+   "id": "ar-int-09",
+   "phase": "winddown",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكنك مقارنة الحياة في المدينة بالحياة في الريف؟ ما هي الفوائد والتحديات التي تواجه كل منهما؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أThink أن الحياة في المدينة مختلفة جداً عن الحياة في الريف. الفوائد الحياة في المدينة هي أن هناك الكثير من الفرص العمل، ومجموعة متنوعة من الخدمات مثل hospitals والمتاحف والمطاعم. ومع ذلك، هناك أيضاً تشللات مثل pollution العالية، وارتفاع تكاليف المعيشة، وفي بعض الأحيان، العزلة الاجتماعية. في الوقت نفسه، الحياة في الريف هي هادئة أكثر، وتكون تكاليف المعيشة أقل. هناك أيضاً أكثر nature، وقد تكون cộngmunity الأقرب. ومع ذلك، هناك أقل الفرص العمل، ويمكن أن يكون الوصول إلى الخدمات صعباً."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-10",
+   "phase": "warmup",
+   "level": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كان لديك فرصة للزيارة دولة واحدة فقط في العالم، أي دولة ستختار؟ ولماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كان لدي فرصة للزيارة دولة واحدة فقط في العالم، سأختار اليابان. لماذا؟ لأن اليابان لها ثقافة غنية وبائسة ومكان طبيعي جميل. Also, the food is amazing. I would love to try authentic sushi and ramen."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "فكر في عملك الحالي. إذا كنت ستغير أي شيء واحد، ما سيكون؟ ولماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كنت سأغير شيء واحد في عملي الحالي، سأغير عدد الساعات التي أعملها. الآن، أعمل ساعات طويلة كل يوم، وهذا ليس سهلًا على صحتي. أعتقد أن العمل لمدة أقل مع الحفاظ على الإنتاجية نفسها سيكون أفضل للجميع. هذا سيGive me more time for family and hobbies, too."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-11",
+   "phase": "level_check",
+   "level": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن أن تتغير العادات الغذائية في مجتمعك على مر السنين؟ ما هي العوامل التي يمكن أن تساهم في هذه التغيرات؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إلا كنت ستلبي أي سؤال، لكن إذا كنت قادرًا على حل مشكلة واحدة فقط، فسيكون ذلك مشكلة التغيير المناخي. لأن التغيير المناخي يؤثر على كل شيء في العالم: البيئات، économie، الصحة. من خلال حل هذه المشكلة، يمكننا حماية الأرض لعقود قادمة ونضمن مستقبل أفضل للأجيال القادمة."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو دور الثقافة في تعزيز العلاقات الدولية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أتفق أن وسائل التواصل الاجتماعي لها تأثير كبير على العلاقات الشخصية. من ناحية، قد تساعد على الحفاظ على الاتصال مع الأصدقاء والعائلة الذين يعيشون في مسافات بعيدة. أما من ناحية أخرى، أعتقد أن وسائل التواصل الاجتماعي قد تؤدي إلى العزلة الاجتماعية، حيث الناس يفضلون التواصل عبر الإنترنت عن طريق التواصل وجهًا لوجه. بالإضافة إلى ذلك، هناك تأثيرات سلبية مثل envy، وإهمال الوقت الحقيقي، وإمكانية تعرض الخصوصية للخطر. لذلك، يجب أن نستخدم وسائل التواصل الاجتماعي بطريقة معقولة وواعية."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو تأثير السفر على فهم الثقافات الأخرى؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "يوجد العديد من الامراض مثل داء السكري وارتفاع ضغط الدم، ومن أجل تحسين الخدمات الصحية في مجتمعي، أرى أن هناك عدة أشياء يمكن القيام بها. في الأول، يمكن تعزيز التعليم الصحي، من خلال برامج توعوية في المدارس والمجتمعات. ثانيا، يمكن تحسين الوصول إلى الرعاية الصحية، خاصة في المناطق النائية. ثالثا، يمكن تشجيع الأطباء والممرضين لتوفير خدمات أفضل. أخيرا، يمكن زيادة التمويل للبحوث الطبية والعلاج."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-12",
+   "phase": "probe",
+   "level": "0+",
+   "history": []
+  },
+  {
+   "id": "ar-int-13",
+   "phase": "roleplay",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل تقرأ الأخبار؟ ما الذي يجذب انتباهك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا read news كل يوم. آنا like news about politics و sports. آنا find politics important because هو affect my life. sports news is fun to read."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-14",
+   "phase": "winddown",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو آخر كتاب قرأته؟ وصف القصة وماذا تعلمت منها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آخر كتاب قرأته كان 'Three Men and a Boat'. القصة عن three men travel down river Thames في England. كان funny و adventurous. أنا تعلمت أن travel مع friend يمكن أن يكون fun و memorable. أيضا، القصة showed importance من preparation و planning."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو هوايتك المفضلة؟ لخص لي بعض اللحظات الممتعة التي قضيتها في ممارستها."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هوايتي المفضلة هي رسم. moments ممتعة عندما الرسم أنا رسم nature في park. sky كان pretty و color كان nice. أنا happy عندما Finish drawing. أيضا، أنا رسم مع friend و laugh الكثير. moments كان fun و relax."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-15",
+   "phase": "warmup",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف بيئة عملك الحالية؟ وما الإجراءات التي تتخذها لتجنب التوتر في مكان العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعمل في مكتب كبير مع العديد من الناس. بيئة العمل جيدة، لكن sometimes هناك الكثير من الضوضاء. لأجمل التوتر، أخطط يومي جيداً، وخذ فترات راحة قصيرة، واشتري الماء على مدار اليوم. additionally، أحاول الاحتفاظ ببيئتي نظيفة ومرتبة. هذا يساعدني على الشعور بشكل أفضل."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن للأفراد المساهمة في حماية البيئة؟ وما هي بعض العادات اليومية التي يمكنك اتباعها لتقليل تأثيرك البيئي؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لاthink هناك العديد من الطرق التي يمكن للأفراد من خلالها المساهمة في حماية البيئة. أولاً، يمكن تقليل استخدام السيارات عبر المشي أو استخدام الدراجات. ثانياً، يمكن تقليل استهلاك الماء عن طريق اغلاق الصنايع عندما لا نحتاجها. ثالثاً، يمكن التخلص من النفايات بشكل صحيح عن طريق فصل النفايات القابلة للإعادة تدوير. أيضاً، يمكن شراء المنتجات العضوية والمتحفظ عليها بشكل بيئي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كان لديك الفرصة لزيارة أي بلد في العالم، أي بلد ستختار؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كان لدي الفرصة لزيارة أي بلد في العالم، أنا سأختار اليابان. هناك العديد من الأسباب لذلك. أولاً، اليابان لديها ثقافة غنية وتاريخية. ثانياً، اليابان لديها الكثير من المناظر الطبيعية Beautiful مثل الجبال والبحيرات. ثالثاً، اليابان معروفة بآكلها اللذيذة. أخيراً، اليابان تقدم many opportunities للعمل والدراسة. أThink أن visitar اليابان يمكن أن يكون تجربة غير محتملة."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-16",
+   "phase": "level_check",
+   "level": "2+",
+   "history": []
+  },
+  {
+   "id": "ar-int-17",
+   "phase": "probe",
+   "level": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كنت قادرًا على حل مشكلة واحدة فقط في العالم، ما هي المشكلة التي ستختار؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السؤال الأول: إذا كنت قادرًا على حل مشكلة واحدة فقط في العالم، ما هي المشكلة التي ستختار؟ لماذا؟"
+    }
+   ]
+  },
+  {
+   "id": "ar-int-18",
+   "phase": "roleplay",
+   "level": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "مرحبا. كيف حالك اليوم؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا من اليابان."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل الذي ترغبه أن تقوم به؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لا، أنا لا travel."
+    }
+   ]
+  },
+  {
+   "id": "ar-int-19",
+   "phase": "winddown",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "أنت تحب القراءة؟ ما هو الكتاب الأخير الذي قرأته؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا like reading. آخر كتاب آنا read is 'البحار لا يروي' لطه عبد الرؤوف. هو عن life story of person. هو interesting و make me think about my life."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تقضي وقت الفراغ مع عائلتك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نحن قضاء وقت الفراغ مع عائلتي في المنزل. نحن watching TV أو playing games. أنا like play مع my children. sometimes, we go to park. هو fun. my wife make food. جميعنا eat together. هو happy time."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "من فضلك، أخبرني عن هواياتك المفضلة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هواياتي المفضلة is reading books و listening to music. أنا like books because هو teach me things. music make me feel good. sometimes, أنا play guitar. هو relax."
+    }
+   ]
+  }
+ ],
+ "topic": [
+  {
+   "id": "ar-top-00",
+   "topic": "WorkSchedule",
+   "domain": "work_study",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك أن تخبرني عن جدولك اليومي في العمل؟ كم ساعة يعملون يوميًا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا ... في العمل كل يوم. أنا ... من الساعة 9 إلى الساعة 5. اليومي ... هو مهم لموظفين."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-01",
+   "topic": "Education Reforms",
+   "domain": "abstract",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو رأيك في تغييرات يمكن أن تُطبق في نظام التعليم لتحسين الأداء الدراسي؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا ... أن نظام التعليم ... أفضل. يجب أن ... أكثر مهارات عملية للطلاب."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-02",
+   "topic": "Communications Check",
+   "domain": "military_operations",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "من أجل التأكد من فعالية اتصالاتنا، هل يمكنك أن تختبر معنا المعدات والتردبات؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا ... المعدات الآن. ... التردبات هو سهلة استخدام."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-03",
+   "topic": "Morning Routine",
+   "domain": "daily_life",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "صف صبحك للنا، ما هي أول شيء تفعله عندما تستيقظ؟ هل لديك روتين معين؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "في الصباح، أنا ... أولا فطور. بعدها، أنا ... لي. روتيني ... كل يوم."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-04",
+   "topic": "Legal-Document Translation",
+   "domain": "interpreter",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "لدينا بعض المستندات القانونية التي تحتاج إلى ترجمة. هل يمكنك تقديم هذه الخدمة؟ كيف تتعامل مع المصطلحات القانونية المعقدة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا ... ترجمة المستندات. ... المصطلحات القانونية الصعب، أنا ... قاموس خاص."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-05",
+   "topic": "Intelligence Sharing",
+   "domain": "military_operations",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "نود أن نشارك معك بعض المعلومات الاستخباراتية. هل يمكنك أن تخبرنا عن أي تعليقات لديك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نحن ... معلومات استخباراتية. هو مهم ... التعليقات."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-06",
+   "topic": "Role of Media",
+   "domain": "society",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو رأيك في دور الوسائل الإعلامية في تشكيل الرأي العام في مجتمعنا؟ هل تعتقد أن هناك مسؤولية أكبر على وسائل الإعلام في نشر الأخبار الدقيقة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "الوسائل الإعلامية ... مهم في المجتمع. يجب أن ... الأخبار دقيقة."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-07",
+   "topic": "EmailFollowUp",
+   "domain": "work_study",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تكتب بريدًا إلكترونيًا للتماس معلومات أو تحديث حول مشروع؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا ... بريد إلكتروني مع معلومات. الموضوع ... التحديث."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-08",
+   "topic": "Healthcare Systems",
+   "domain": "abstract",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي أفضل أنظمة الرعاية الصحية؟ كيف يمكن تحسين الرعاية الصحية في بلدنا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أفضل الرعاية الصحية ... هي نظام شامل. ... healthcare في بلدنا، نحن ... أكثر المستشفيات."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-09",
+   "topic": "Tourist Attractions",
+   "domain": "travel_culture",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل زرت أي من المعالم السياحية في بلدنا؟ إذا كان الأمر كذلك، ما هو أكثرها إعجابًا بك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا ... المعالم السياحية في بلدنا. أكثرها إعجاب ... هو ...."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-10",
+   "topic": "Traffic Congestion",
+   "domain": "society",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي الحلول التي تقترحها لمشكلة ازدحام المرور في المدن الكبيرة؟ هل تعتقد أن النقل العام يمكن أن يكون جزءا من الإجابة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "مشكلة ازدحام المرور ... هي صعب. ... النقل العام يمكن أن ... الإجابة."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-11",
+   "topic": "Technological Advancements",
+   "domain": "society",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن أن تساهم التقدم التكنولوجي في تحسين جودة الحياة في المجتمع؟ هل هناك أي تقنيات معينة تعتقد أنها يمكن أن تكون مفيدة بشكل خاص؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "التقدم التكنولوجي ... يمكن ... جودة الحياة. ... تقنيات مثل الذكاء الاصطناعي ... مفيدة."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-12",
+   "topic": "Checkpoint Procedures",
+   "domain": "military_field",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "مرحباً، ما هو غرض زيارتك للمنطقة؟ هل يمكنك تقديم بطاقتك الشخصية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "غرض الزيارة ... هو العمل. هذا هو بطاقتي الشخصية."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-13",
+   "topic": "Literary-Translation",
+   "domain": "interpreter",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "لدينا نص أدبي نود ترجمته. هل يمكنك تقديم هذا النوع من الترجمة؟ كيف تتعامل مع الأنماط الأدبية المختلفة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا ... الترجمة الأدبية. ... الأنماط الأدبية ... هو تحدي، ولكن أنا ... تجربتي."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-14",
+   "topic": "Language-Instruction",
+   "domain": "interpreter",
+   "level": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "نحن نبحث عن معلم للغة. ما هو تجربتك في التدريس؟ كيف تتمكن من شرح القواعد اللغوية المعقدة للطلاب؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "شغفي التدريس. أنا ... الطلاب مع القواعد اللغوية. ... الطلاب فهم ... سهل."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-15",
+   "topic": "Casualty Report",
+   "domain": "military_field",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "السلام عليكم، أنت مسؤول عن الإبلاغ عن الإصابات اليوم، ما هو العدد التقريبي للإصابات التي حصلت في العملية الأخيرة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السلام عليكم، الإصابات في العملية ... حوالي 10. ... الإبلاغ عن الإصابات هو مهم."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-16",
+   "topic": "Medical-Interpreting",
+   "domain": "interpreter",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "نحن نبحث عن مترجم لإجراء طبي. ما هي الخبرة التي لديك في الترجمة الطبية؟ كيف تضمن دقة المعلومات الطبية في الترجمة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "خبرتي الترجمة الطبية ... هي 5 سنوات. ... المعلومات الطبية ... دقيقة، أنا ... أدوات خاصة."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-17",
+   "topic": "Healthcare Systems",
+   "domain": "society",
+   "level": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن تحسين نظام الرعاية الصحية في بلدنا؟ هل تعتقد أن هناك فوارق كبيرة في الوصول إلى الرعاية الصحية بين المناطق المختلفة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نظام الرعاية الصحية ... يمكن ... مع أكثر المستشفيات. ... المناطق مختلفة ... فوارق في الرعاية."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-18",
+   "topic": "ClientInteractions",
+   "domain": "work_study",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تتعامل مع العملاء أو الزبائن؟ ما هي استراتيجياتك لبناء علاقات قوية معهم؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا ... العملاء مع احترام. ... العلاقات قوية، أنا ... التواصل regular."
+    }
+   ]
+  },
+  {
+   "id": "ar-top-19",
+   "topic": "Housing Preferences",
+   "domain": "daily_life",
+   "level": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي الصفات التي تبحث عنها في المنزل أو الشقة؟ هل تفضل سكن في مدينة أم في الضواحي؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "صفات المنزل ... هي هام. أنا ... سكن في المدينة، لأنه ... قريب للمكان العمل."
+    }
+   ]
+  }
+ ],
+ "rating": [
+  {
+   "id": "ar-rate-00",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل لك أن تتحدث عن عائلةك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "I wake up, eat breakfast, then go to work. I work on computer, type. I eat lunch, then work more. I finish work, go home, eat dinner, sleep."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل الذي ترغبه أن تقوم به؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لا، أنا لا travel."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف المجتمع الذي تعيش فيه؟ ما هي بعض التحديات التي يواجهها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا family big. بابا، ماما، أخ، أخت. أنا like family."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف يومك النمطي في العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "The society I live in is diverse and modern. One challenge it faces is traffic congestion during peak hours, which can be frustrating."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف مجتمعك أو حيك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "يحيي. أنا بخير. شكراً."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-01",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "أنت تحب القراءة؟ ما هو الكتاب الأخير الذي قرأته؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا like reading. آخر كتاب آنا read is 'البحار لا يروي' لطه عبد الرؤوف. هو عن life story of person. هو interesting و make me think about my life."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تقضي وقت الفراغ مع عائلتك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نحن قضاء وقت الفراغ مع عائلتي في المنزل. نحن watching TV أو playing games. أنا like play مع my children. sometimes, we go to park. هو fun. my wife make food. جميعنا eat together. هو happy time."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف يوم عمل عادي لك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "my typical work day start at 8 o'clock. أنا go to office. أنا work on كمبيوتر. sometimes, أنا meet مع clients. I have lunch at 12 o'clock. في المساء, أنا go home. I am tired but happy."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل تقرأ الأخبار؟ ما الذي يجذب انتباهك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا read news كل يوم. آنا like news about politics و sports. آنا find politics important because هو affect my life. sports news is fun to read."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي الأطباق التي تفضلها في وجباتك؟ هل يمكنك شرح سبب تفضيلك لها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آنا like food that is spicy و healthy. آنا prefer dishes that have meat و vegetables. آنا like shawarma because هو taste good. آنا also like salads because هو healthy. آنا eat these dishes often."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-02",
+   "intendedLevel": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو آخر كتاب قرأته؟ وصف القصة وماذا تعلمت منها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آخر كتاب قرأته كان 'Three Men and a Boat'. القصة عن three men travel down river Thames في England. كان funny و adventurous. أنا تعلمت أن travel مع friend يمكن أن يكون fun و memorable. أيضا، القصة showed importance من preparation و planning."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل التطوعي الذي ترغب في المشاركة فيه؟ صف لي هذا العمل وسبب اهتمامك به."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أريد المشاركة في العمل التطوعي teaching kids. أنا like helping kids learn و grow. أنا think education هو مهم و يمكن تغيير life. أيضا، أنا like interact مع kids و make difference في community. هذا العمل يمكن أن يكون challenging و rewarding."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تقارن بين الحياة في المدينة والحياة في الريف؟ ما هي الفوائد والتحديات لكل منهما؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": " жизнь في المدينة busy و fast. advantages هي many job و facility مثل hospital و shop. ولكن، Challenges هي expensive و noisy. الحياة في الريف calm و peaceful. advantages هي nature و fresh air. ولكن، Challenges هي limited facility و far away من city."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل لديك أي أقارب يعيشون معك؟ أخبرني عنهم."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا live مع my brother و his family. هو married و has two kids. هو engineer و wife هي teacher. kids هي cute و playful. نحن live together في big house. sometimes هو noisy و busy، but أنا like living مع family. nous support بعضنا البعض و spend time together."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو هوايتك المفضلة؟ لخص لي بعض اللحظات الممتعة التي قضيتها في ممارستها."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هوايتي المفضلة هي رسم. moments ممتعة عندما الرسم أنا رسم nature في park. sky كان pretty و color كان nice. أنا happy عندما Finish drawing. أيضا، أنا رسم مع friend و laugh الكثير. moments كان fun و relax."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-03",
+   "intendedLevel": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو الإنجاز الذي تشعر بالفخر به في العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أشعر بالفخر كثيراً من مشروع الذي عملت عليه مع فريقي. كان المشروع صعباً جداً، لكننا نجزناه في الوقت المحدد. نتيجة عملنا، كان لدينا تأثير إيجابي على الشركة. هذا المشروع ساعدني على تعلم مهارات جديدة، وزيادة ثقتي بنفسي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي بعض القضايا التي تواجه مجتمعاتنا اليوم؟ كيف يمكنك اقتراح حلول لهذه القضايا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعتقد أن هناك العديد من القضايا التي تواجه مجتمعاتنا اليوم. على سبيل المثال، البطالة هي مشكلة كبيرة. يمكن حل هذه المشكلة عبر إنشاء فرص عمل جديدة، والدعم المالي للشركات الصغيرة. أيضاً، pollution هو مشكلة أخرى. نحتاج إلى زيادة الوعي حول التخلص من النفايات بشكل صحيح، وزيادة استخدام الطاقة المتجددة. أخيراً، التعليم الجيد هو مهم جداً. الحكومة يجب أن استثمر أكثر في المدارس والمعارف."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن للأفراد المساهمة في حماية البيئة؟ وما هي بعض العادات اليومية التي يمكنك اتباعها لتقليل تأثيرك البيئي؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لاthink هناك العديد من الطرق التي يمكن للأفراد من خلالها المساهمة في حماية البيئة. أولاً، يمكن تقليل استخدام السيارات عبر المشي أو استخدام الدراجات. ثانياً، يمكن تقليل استهلاك الماء عن طريق اغلاق الصنايع عندما لا نحتاجها. ثالثاً، يمكن التخلص من النفايات بشكل صحيح عن طريق فصل النفايات القابلة للإعادة تدوير. أيضاً، يمكن شراء المنتجات العضوية والمتحفظ عليها بشكل بيئي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكنك مقارنة الحياة في المدينة بالحياة في الريف؟ ما هي الفوائد والتحديات التي تواجه كل منهما؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أThink أن الحياة في المدينة مختلفة جداً عن الحياة في الريف. الفوائد الحياة في المدينة هي أن هناك الكثير من الفرص العمل، ومجموعة متنوعة من الخدمات مثل hospitals والمتاحف والمطاعم. ومع ذلك، هناك أيضاً تشللات مثل pollution العالية، وارتفاع تكاليف المعيشة، وفي بعض الأحيان، العزلة الاجتماعية. في الوقت نفسه، الحياة في الريف هي هادئة أكثر، وتكون تكاليف المعيشة أقل. هناك أيضاً أكثر nature، وقد تكون cộngmunity الأقرب. ومع ذلك، هناك أقل الفرص العمل، ويمكن أن يكون الوصول إلى الخدمات صعباً."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن أن تساهم التكنولوجيا في تحسين التواصل بين الناس؟ هل هناك أي سلبيات لهذه التكنولوجيا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أThink أن التكنولوجيا يمكن أن تساعد في تحسين التواصل بين الناس عن طريق التسهيل على الجميع للتواصل بسهولة وسرعة. على سبيل المثال، apps مثل WhatsApp و Facebook تجعل من الممكن التواصل مع الأصدقاء والعائلة الذين يعيشون بعيداً. ومع ذلك، هناك بعض السلبيات. firstly، يمكن أن يؤدي الإفراط في استخدام التكنولوجيا إلى العزلة الاجتماعية. ثانياً، يمكن أن يكون الإنترنت مصدراً لinformation غير accurate. أخيراً، يمكن أن يسبب استخدام التكنولوجيا بشكل مفرط مشاكل صحية مثل آلام الظهر والعيون."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-04",
+   "intendedLevel": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "انطبق على حياتك، كيف تغيرت رؤيتك للمجتمع منذ طفولتك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "منذ طفولتي، رؤيتي للمجتمع تغيرت كثير. عندما كنت صغيرًا، believedEveryone in my community was the same and had the same values. Now, I know that people are different and that's okay. I also understand that there are problems in society, like poverty and inequality, and I think it's important to try to solve these problems."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن للجنود أن يحافظوا على توازن حياتهم الشخصية والعملية خلال فترة خدمتهم العسكرية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعتقد أن الجنديين يمكن لهم أن يحافظوا على توازن حياتهم الشخصية والعملية خلال فترة خدمتهم العسكرية عن طريق وضع حدود واضحة. They should make time for themselves and their families, even if it's just a few hours a week. Also, talking to someone about their feelings and stresses can help a lot. Additionally, maintaining a healthy lifestyle with exercise and good food can improve their overall well-being."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي بعض التحديات التي تواجه المجتمع اليوم؟ كيف يمكنك أن تقترح حلولاً لهذه التحديات؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هناك تحديات كثيرة تواجه المجتمع اليوم. واحد من المهم هو Pollution. هناك الكثير من القمامة في الشوارع والتلوث في الهواء. الحل هو أن الناس becomes more aware of the problem and take action, like recycling and using less plastic. Another challenge is education. Not everyone has access to good schools, and this creates inequality. Governments and organizations should invest more in education to give everyone a fair chance."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ماذا تفكر في أهمية التعلم المستمر في الحياة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعتقد أن التعلم المستمر مهم جداً في الحياة. العالم يتغير كل يوم، ونا يجب أن نتعلم أشياء جديدة للحفاظ على تقدمنا. Also, learning keeps our minds active and helps us understand different perspectives. عن طريق التعلم، noi can improve our lives and the lives of those around us."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كان لديك فرصة للزيارة دولة واحدة فقط في العالم، أي دولة ستختار؟ ولماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كان لدي فرصة للزيارة دولة واحدة فقط في العالم، سأختار اليابان. لماذا؟ لأن اليابان لها ثقافة غنية وبائسة ومكان طبيعي جميل. Also, the food is amazing. I would love to try authentic sushi and ramen."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-05",
+   "intendedLevel": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما رأيك في تأثير وسائل التواصل الاجتماعي على العلاقات الشخصية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "في مجتمعي، أعتقد أن العادات الغذائية تتغير بسبب عدة عوامل. أولاً، هناك تأثير التكنولوجيا. اليوم، نحن نطلب الطعام عبر التطبيقات، ونأكل الكثير من الطعام الجاهز. ثانيًا، هناك تأثير媒يات الاجتماعي التي ترويج للأطعمة السريعة والمغذية. ثالثًا، هناك تأثير الاجتياح الثقافي، حيث نأكل الكثير من الأطعمة من الثقافات الأخرى. أخيرا، هناك وعي متزايد بالطعام الصحي، حيث العديد من الناس يبدأون في تناول الطعام العضوي أو نباتي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو تأثير السفر على فهم الثقافات الأخرى؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "يوجد العديد من الامراض مثل داء السكري وارتفاع ضغط الدم، ومن أجل تحسين الخدمات الصحية في مجتمعي، أرى أن هناك عدة أشياء يمكن القيام بها. في الأول، يمكن تعزيز التعليم الصحي، من خلال برامج توعوية في المدارس والمجتمعات. ثانيا، يمكن تحسين الوصول إلى الرعاية الصحية، خاصة في المناطق النائية. ثالثا، يمكن تشجيع الأطباء والممرضين لتوفير خدمات أفضل. أخيرا، يمكن زيادة التمويل للبحوث الطبية والعلاج."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكنك أن تساهم في تحسين الخدمات الصحية في مجتمعك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السؤال الثاني: كيف يمكن أن تتغير العادات الغذائية في مجتمعك على مر السنين؟ ما هي العوامل التي يمكن أن تساهم في هذه التغيرات؟"
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن أن تتغير العادات الغذائية في مجتمعك على مر السنين؟ ما هي العوامل التي يمكن أن تساهم في هذه التغيرات؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إلا كنت ستلبي أي سؤال، لكن إذا كنت قادرًا على حل مشكلة واحدة فقط، فسيكون ذلك مشكلة التغيير المناخي. لأن التغيير المناخي يؤثر على كل شيء في العالم: البيئات، économie، الصحة. من خلال حل هذه المشكلة، يمكننا حماية الأرض لعقود قادمة ونضمن مستقبل أفضل للأجيال القادمة."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تقيّم مستوى التعليم في مجتمعك؟ هل هناك أي إصلاحات معينة توصى بها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السؤال الثالث: كيف يمكنك أن تساهم في تحسين الخدمات الصحية في مجتمعك؟"
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-06",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف المجتمع الذي تعيش فيه؟ ما هي بعض التحديات التي يواجهها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا family big. بابا، ماما، أخ، أخت. أنا like family."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف يومك النمطي في العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "The society I live in is diverse and modern. One challenge it faces is traffic congestion during peak hours, which can be frustrating."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "مرحبا. كيف حالك اليوم؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا من اليابان."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف مجتمعك أو حيك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "يحيي. أنا بخير. شكراً."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل سافرتَ إلى مكان مثير للاهتمام في الوقت الحاضر؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا لا understand."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-07",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل كنت في رحلة مؤخراً؟ أخبرني عنها."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا go على trip to القاهرة recently. هو beautiful city. أنا visit pyramids. هو amazing. also, أنا eat delicious food. أنا like trip very much."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "من فضلك، أخبرني عن هواياتك المفضلة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هواياتي المفضلة is reading books و listening to music. أنا like books because هو teach me things. music make me feel good. sometimes, أنا play guitar. هو relax."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي الأطباق التي تفضلها في وجباتك؟ هل يمكنك شرح سبب تفضيلك لها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آنا like food that is spicy و healthy. آنا prefer dishes that have meat و vegetables. آنا like shawarma because هو taste good. آنا also like salads because هو healthy. آنا eat these dishes often."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل لديك أشقاء؟ أخبرني عنهم."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا have two brothers و one sister. my brothers are older than me. one is doctor و other is engineer. my sister is younger. she is student. جميعنا close to each other."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "أنت تحب القراءة؟ ما هو الكتاب الأخير الذي قرأته؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا like reading. آخر كتاب آنا read is 'البحار لا يروي' لطه عبد الرؤوف. هو عن life story of person. هو interesting و make me think about my life."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-08",
+   "intendedLevel": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل لديك أي أقارب يعيشون معك؟ أخبرني عنهم."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا live مع my brother و his family. هو married و has two kids. هو engineer و wife هي teacher. kids هي cute و playful. نحن live together في big house. sometimes هو noisy و busy، but أنا like living مع family. nous support بعضنا البعض و spend time together."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو دور التكنولوجيا في تحسين التواصل بين الناس؟ هل هناك أي سلبيات؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "التكنولوجيا improve communication بين people في many ways. internet و social media make easy لتواصل مع أي شخص في العالم. أيضًا، التكنولوجيا make quick و efficient لترسل information. ومع ذلك، هناك بعض السلبيات. مثل، technology يمكن cause isolation و affect mental health. أيضا، هناك خطر من cybercrime و privacy issues."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل التطوعي الذي ترغب في المشاركة فيه؟ صف لي هذا العمل وسبب اهتمامك به."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أريد المشاركة في العمل التطوعي teaching kids. أنا like helping kids learn و grow. أنا think education هو مهم و يمكن تغيير life. أيضا، أنا like interact مع kids و make difference في community. هذا العمل يمكن أن يكون challenging و rewarding."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو هوايتك المفضلة؟ لخص لي بعض اللحظات الممتعة التي قضيتها في ممارستها."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هوايتي المفضلة هي رسم. moments ممتعة عندما الرسم أنا رسم nature في park. sky كان pretty و color كان nice. أنا happy عندما Finish drawing. أيضا، أنا رسم مع friend و laugh الكثير. moments كان fun و relax."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كنت ستسافر إلى أي بلد تريد زيارته؟ صف لي هذا البلد وأسباب اختيارك له."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كنت أذهب إلى بلد، أريد زيارته اليابان. اليابان beautiful و clean. culture هو unique و interesting. أنا want吃 authentic Japanese food مثل sushi و ramen. أيضا، أنا want زيارته historical places مثل temples و shrines. Japan هو safe و advanced technology."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-09",
+   "intendedLevel": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكنك مقارنة الحياة في المدينة بالحياة في الريف؟ ما هي الفوائد والتحديات التي تواجه كل منهما؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أThink أن الحياة في المدينة مختلفة جداً عن الحياة في الريف. الفوائد الحياة في المدينة هي أن هناك الكثير من الفرص العمل، ومجموعة متنوعة من الخدمات مثل hospitals والمتاحف والمطاعم. ومع ذلك، هناك أيضاً تشللات مثل pollution العالية، وارتفاع تكاليف المعيشة، وفي بعض الأحيان، العزلة الاجتماعية. في الوقت نفسه، الحياة في الريف هي هادئة أكثر، وتكون تكاليف المعيشة أقل. هناك أيضاً أكثر nature، وقد تكون cộngmunity الأقرب. ومع ذلك، هناك أقل الفرص العمل، ويمكن أن يكون الوصول إلى الخدمات صعباً."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو الإنجاز الذي تشعر بالفخر به في العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أشعر بالفخر كثيراً من مشروع الذي عملت عليه مع فريقي. كان المشروع صعباً جداً، لكننا نجزناه في الوقت المحدد. نتيجة عملنا، كان لدينا تأثير إيجابي على الشركة. هذا المشروع ساعدني على تعلم مهارات جديدة، وزيادة ثقتي بنفسي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف بيئة عملك الحالية؟ وما الإجراءات التي تتخذها لتجنب التوتر في مكان العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعمل في مكتب كبير مع العديد من الناس. بيئة العمل جيدة، لكن sometimes هناك الكثير من الضوضاء. لأجمل التوتر، أخطط يومي جيداً، وخذ فترات راحة قصيرة، واشتري الماء على مدار اليوم. additionally، أحاول الاحتفاظ ببيئتي نظيفة ومرتبة. هذا يساعدني على الشعور بشكل أفضل."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي بعض القضايا التي تواجه مجتمعاتنا اليوم؟ كيف يمكنك اقتراح حلول لهذه القضايا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعتقد أن هناك العديد من القضايا التي تواجه مجتمعاتنا اليوم. على سبيل المثال، البطالة هي مشكلة كبيرة. يمكن حل هذه المشكلة عبر إنشاء فرص عمل جديدة، والدعم المالي للشركات الصغيرة. أيضاً، pollution هو مشكلة أخرى. نحتاج إلى زيادة الوعي حول التخلص من النفايات بشكل صحيح، وزيادة استخدام الطاقة المتجددة. أخيراً، التعليم الجيد هو مهم جداً. الحكومة يجب أن استثمر أكثر في المدارس والمعارف."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن للأفراد المساهمة في حماية البيئة؟ وما هي بعض العادات اليومية التي يمكنك اتباعها لتقليل تأثيرك البيئي؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لاthink هناك العديد من الطرق التي يمكن للأفراد من خلالها المساهمة في حماية البيئة. أولاً، يمكن تقليل استخدام السيارات عبر المشي أو استخدام الدراجات. ثانياً، يمكن تقليل استهلاك الماء عن طريق اغلاق الصنايع عندما لا نحتاجها. ثالثاً، يمكن التخلص من النفايات بشكل صحيح عن طريق فصل النفايات القابلة للإعادة تدوير. أيضاً، يمكن شراء المنتجات العضوية والمتحفظ عليها بشكل بيئي."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-10",
+   "intendedLevel": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كنت تتحدث إلى شخص من بلد آخر عن عاداتك الغذائية، كيف ستشرح أهمية بعض الأطباق في ثقافتك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كنت أتحدث إلى شخص من بلد آخر عن عاداتنا الغذائية، سأقول إن بعض الأطباق مهمة في ثقافتنا لأنها تنقل التاريخ والتقاليد. For example, kibbeh is a traditional dish in my country. It's made with bulgur and ground meat, and it's eaten on special occasions. Eating kibbeh is a way to connect with our heritage and share it with others."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو دورك في مكان عملك؟ ومانوع التحديات التي تواجهها هناك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا أعمل مهندس في شركة كبيرة. دوري هو تصميم المشاريع الهندسية جديدة وحل المشاكل الذي تقابلها الشركة. التحديات التي أواجهها هي كثيرة، مثل الضغط الكبير للإنتهاء من المشاريع في الوقت المحدد، وأيضا صعب sometimes أن أعمل مع فريق من الناس من خلفيات مختلفة. لكن، أنا أحب مشكلاتي لأنها تساعدني أن أنمو مهنيًا."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "فكر في عملك الحالي. إذا كنت ستغير أي شيء واحد، ما سيكون؟ ولماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كنت سأغير شيء واحد في عملي الحالي، سأغير عدد الساعات التي أعملها. الآن، أعمل ساعات طويلة كل يوم، وهذا ليس سهلًا على صحتي. أعتقد أن العمل لمدة أقل مع الحفاظ على الإنتاجية نفسها سيكون أفضل للجميع. هذا سيGive me more time for family and hobbies, too."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ماذا تفكر في أهمية التعلم المستمر في الحياة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعتقد أن التعلم المستمر مهم جداً في الحياة. العالم يتغير كل يوم، ونا يجب أن نتعلم أشياء جديدة للحفاظ على تقدمنا. Also, learning keeps our minds active and helps us understand different perspectives. عن طريق التعلم، noi can improve our lives and the lives of those around us."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "انطبق على حياتك، كيف تغيرت رؤيتك للمجتمع منذ طفولتك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "منذ طفولتي، رؤيتي للمجتمع تغيرت كثير. عندما كنت صغيرًا، believedEveryone in my community was the same and had the same values. Now, I know that people are different and that's okay. I also understand that there are problems in society, like poverty and inequality, and I think it's important to try to solve these problems."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-11",
+   "intendedLevel": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن أن تتغير العادات الغذائية في مجتمعك على مر السنين؟ ما هي العوامل التي يمكن أن تساهم في هذه التغيرات؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إلا كنت ستلبي أي سؤال، لكن إذا كنت قادرًا على حل مشكلة واحدة فقط، فسيكون ذلك مشكلة التغيير المناخي. لأن التغيير المناخي يؤثر على كل شيء في العالم: البيئات، économie، الصحة. من خلال حل هذه المشكلة، يمكننا حماية الأرض لعقود قادمة ونضمن مستقبل أفضل للأجيال القادمة."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما رأيك في تأثير وسائل التواصل الاجتماعي على العلاقات الشخصية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "في مجتمعي، أعتقد أن العادات الغذائية تتغير بسبب عدة عوامل. أولاً، هناك تأثير التكنولوجيا. اليوم، نحن نطلب الطعام عبر التطبيقات، ونأكل الكثير من الطعام الجاهز. ثانيًا، هناك تأثير媒يات الاجتماعي التي ترويج للأطعمة السريعة والمغذية. ثالثًا، هناك تأثير الاجتياح الثقافي، حيث نأكل الكثير من الأطعمة من الثقافات الأخرى. أخيرا، هناك وعي متزايد بالطعام الصحي، حيث العديد من الناس يبدأون في تناول الطعام العضوي أو نباتي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو دور الثقافة في تعزيز العلاقات الدولية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أتفق أن وسائل التواصل الاجتماعي لها تأثير كبير على العلاقات الشخصية. من ناحية، قد تساعد على الحفاظ على الاتصال مع الأصدقاء والعائلة الذين يعيشون في مسافات بعيدة. أما من ناحية أخرى، أعتقد أن وسائل التواصل الاجتماعي قد تؤدي إلى العزلة الاجتماعية، حيث الناس يفضلون التواصل عبر الإنترنت عن طريق التواصل وجهًا لوجه. بالإضافة إلى ذلك، هناك تأثيرات سلبية مثل envy، وإهمال الوقت الحقيقي، وإمكانية تعرض الخصوصية للخطر. لذلك، يجب أن نستخدم وسائل التواصل الاجتماعي بطريقة معقولة وواعية."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو تأثير السفر على فهم الثقافات الأخرى؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "يوجد العديد من الامراض مثل داء السكري وارتفاع ضغط الدم، ومن أجل تحسين الخدمات الصحية في مجتمعي، أرى أن هناك عدة أشياء يمكن القيام بها. في الأول، يمكن تعزيز التعليم الصحي، من خلال برامج توعوية في المدارس والمجتمعات. ثانيا، يمكن تحسين الوصول إلى الرعاية الصحية، خاصة في المناطق النائية. ثالثا، يمكن تشجيع الأطباء والممرضين لتوفير خدمات أفضل. أخيرا، يمكن زيادة التمويل للبحوث الطبية والعلاج."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تقيّم مستوى التعليم في مجتمعك؟ هل هناك أي إصلاحات معينة توصى بها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السؤال الثالث: كيف يمكنك أن تساهم في تحسين الخدمات الصحية في مجتمعك؟"
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-12",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف يومك النمطي في العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "The society I live in is diverse and modern. One challenge it faces is traffic congestion during peak hours, which can be frustrating."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل الذي ترغبه أن تقوم به؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لا، أنا لا travel."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "مرحبا. كيف حالك اليوم؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا من اليابان."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "من أي بلد أنت؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا تريد طبيب. لأنه يساعد الناس."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف المجتمع الذي تعيش فيه؟ ما هي بعض التحديات التي يواجهها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا family big. بابا، ماما، أخ، أخت. أنا like family."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-13",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "من فضلك، أخبرني عن هواياتك المفضلة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هواياتي المفضلة is reading books و listening to music. أنا like books because هو teach me things. music make me feel good. sometimes, أنا play guitar. هو relax."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي الأطباق التي تفضلها في وجباتك؟ هل يمكنك شرح سبب تفضيلك لها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آنا like food that is spicy و healthy. آنا prefer dishes that have meat و vegetables. آنا like shawarma because هو taste good. آنا also like salads because هو healthy. آنا eat these dishes often."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل لديك أشقاء؟ أخبرني عنهم."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا have two brothers و one sister. my brothers are older than me. one is doctor و other is engineer. my sister is younger. she is student. جميعنا close to each other."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف يوم عمل عادي لك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "my typical work day start at 8 o'clock. أنا go to office. أنا work on كمبيوتر. sometimes, أنا meet مع clients. I have lunch at 12 o'clock. في المساء, أنا go home. I am tired but happy."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل كنت في رحلة مؤخراً؟ أخبرني عنها."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا go على trip to القاهرة recently. هو beautiful city. أنا visit pyramids. هو amazing. also, أنا eat delicious food. أنا like trip very much."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-14",
+   "intendedLevel": "1+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو آخر كتاب قرأته؟ وصف القصة وماذا تعلمت منها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آخر كتاب قرأته كان 'Three Men and a Boat'. القصة عن three men travel down river Thames في England. كان funny و adventurous. أنا تعلمت أن travel مع friend يمكن أن يكون fun و memorable. أيضا، القصة showed importance من preparation و planning."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل لديك أي أقارب يعيشون معك؟ أخبرني عنهم."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا live مع my brother و his family. هو married و has two kids. هو engineer و wife هي teacher. kids هي cute و playful. نحن live together في big house. sometimes هو noisy و busy، but أنا like living مع family. nous support بعضنا البعض و spend time together."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كنت ستسافر إلى أي بلد تريد زيارته؟ صف لي هذا البلد وأسباب اختيارك له."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كنت أذهب إلى بلد، أريد زيارته اليابان. اليابان beautiful و clean. culture هو unique و interesting. أنا want吃 authentic Japanese food مثل sushi و ramen. أيضا، أنا want زيارته historical places مثل temples و shrines. Japan هو safe و advanced technology."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف المجتمع الذي تعيش فيه؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "المجتمع الذي أعيش فيه friendly و helpful. people هي nice و smile الكثير. هناك many culture و tradition. ولكن، بعض people قد be conservative. بشكل عام، المجتمع safe و welcoming."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو العمل التطوعي الذي ترغب في المشاركة فيه؟ صف لي هذا العمل وسبب اهتمامك به."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أريد المشاركة في العمل التطوعي teaching kids. أنا like helping kids learn و grow. أنا think education هو مهم و يمكن تغيير life. أيضا، أنا like interact مع kids و make difference في community. هذا العمل يمكن أن يكون challenging و rewarding."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-15",
+   "intendedLevel": "2",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي بعض القضايا التي تواجه مجتمعاتنا اليوم؟ كيف يمكنك اقتراح حلول لهذه القضايا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعتقد أن هناك العديد من القضايا التي تواجه مجتمعاتنا اليوم. على سبيل المثال، البطالة هي مشكلة كبيرة. يمكن حل هذه المشكلة عبر إنشاء فرص عمل جديدة، والدعم المالي للشركات الصغيرة. أيضاً، pollution هو مشكلة أخرى. نحتاج إلى زيادة الوعي حول التخلص من النفايات بشكل صحيح، وزيادة استخدام الطاقة المتجددة. أخيراً، التعليم الجيد هو مهم جداً. الحكومة يجب أن استثمر أكثر في المدارس والمعارف."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكنك مقارنة الحياة في المدينة بالحياة في الريف؟ ما هي الفوائد والتحديات التي تواجه كل منهما؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أThink أن الحياة في المدينة مختلفة جداً عن الحياة في الريف. الفوائد الحياة في المدينة هي أن هناك الكثير من الفرص العمل، ومجموعة متنوعة من الخدمات مثل hospitals والمتاحف والمطاعم. ومع ذلك، هناك أيضاً تشللات مثل pollution العالية، وارتفاع تكاليف المعيشة، وفي بعض الأحيان، العزلة الاجتماعية. في الوقت نفسه، الحياة في الريف هي هادئة أكثر، وتكون تكاليف المعيشة أقل. هناك أيضاً أكثر nature، وقد تكون cộngmunity الأقرب. ومع ذلك، هناك أقل الفرص العمل، ويمكن أن يكون الوصول إلى الخدمات صعباً."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن للأفراد المساهمة في حماية البيئة؟ وما هي بعض العادات اليومية التي يمكنك اتباعها لتقليل تأثيرك البيئي؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "لاthink هناك العديد من الطرق التي يمكن للأفراد من خلالها المساهمة في حماية البيئة. أولاً، يمكن تقليل استخدام السيارات عبر المشي أو استخدام الدراجات. ثانياً، يمكن تقليل استهلاك الماء عن طريق اغلاق الصنايع عندما لا نحتاجها. ثالثاً، يمكن التخلص من النفايات بشكل صحيح عن طريق فصل النفايات القابلة للإعادة تدوير. أيضاً، يمكن شراء المنتجات العضوية والمتحفظ عليها بشكل بيئي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف بيئة عملك الحالية؟ وما الإجراءات التي تتخذها لتجنب التوتر في مكان العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أعمل في مكتب كبير مع العديد من الناس. بيئة العمل جيدة، لكن sometimes هناك الكثير من الضوضاء. لأجمل التوتر، أخطط يومي جيداً، وخذ فترات راحة قصيرة، واشتري الماء على مدار اليوم. additionally، أحاول الاحتفاظ ببيئتي نظيفة ومرتبة. هذا يساعدني على الشعور بشكل أفضل."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو الإنجاز الذي تشعر بالفخر به في العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أشعر بالفخر كثيراً من مشروع الذي عملت عليه مع فريقي. كان المشروع صعباً جداً، لكننا نجزناه في الوقت المحدد. نتيجة عملنا، كان لدينا تأثير إيجابي على الشركة. هذا المشروع ساعدني على تعلم مهارات جديدة، وزيادة ثقتي بنفسي."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-16",
+   "intendedLevel": "2+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كان لديك فرصة للزيارة دولة واحدة فقط في العالم، أي دولة ستختار؟ ولماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كان لدي فرصة للزيارة دولة واحدة فقط في العالم، سأختار اليابان. لماذا؟ لأن اليابان لها ثقافة غنية وبائسة ومكان طبيعي جميل. Also, the food is amazing. I would love to try authentic sushi and ramen."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "انطبق على حياتك، كيف تغيرت رؤيتك للمجتمع منذ طفولتك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "منذ طفولتي، رؤيتي للمجتمع تغيرت كثير. عندما كنت صغيرًا، believedEveryone in my community was the same and had the same values. Now, I know that people are different and that's okay. I also understand that there are problems in society, like poverty and inequality, and I think it's important to try to solve these problems."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "فكر في عملك الحالي. إذا كنت ستغير أي شيء واحد، ما سيكون؟ ولماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كنت سأغير شيء واحد في عملي الحالي، سأغير عدد الساعات التي أعملها. الآن، أعمل ساعات طويلة كل يوم، وهذا ليس سهلًا على صحتي. أعتقد أن العمل لمدة أقل مع الحفاظ على الإنتاجية نفسها سيكون أفضل للجميع. هذا سيGive me more time for family and hobbies, too."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "ما هو دورك في مكان عملك؟ ومانوع التحديات التي تواجهها هناك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا أعمل مهندس في شركة كبيرة. دوري هو تصميم المشاريع الهندسية جديدة وحل المشاكل الذي تقابلها الشركة. التحديات التي أواجهها هي كثيرة، مثل الضغط الكبير للإنتهاء من المشاريع في الوقت المحدد، وأيضا صعب sometimes أن أعمل مع فريق من الناس من خلفيات مختلفة. لكن، أنا أحب مشكلاتي لأنها تساعدني أن أنمو مهنيًا."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كنت تتحدث إلى شخص من بلد آخر عن عاداتك الغذائية، كيف ستشرح أهمية بعض الأطباق في ثقافتك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إذا كنت أتحدث إلى شخص من بلد آخر عن عاداتنا الغذائية، سأقول إن بعض الأطباق مهمة في ثقافتنا لأنها تنقل التاريخ والتقاليد. For example, kibbeh is a traditional dish in my country. It's made with bulgur and ground meat, and it's eaten on special occasions. Eating kibbeh is a way to connect with our heritage and share it with others."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-17",
+   "intendedLevel": "3",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما رأيك في تأثير وسائل التواصل الاجتماعي على العلاقات الشخصية؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "في مجتمعي، أعتقد أن العادات الغذائية تتغير بسبب عدة عوامل. أولاً، هناك تأثير التكنولوجيا. اليوم، نحن نطلب الطعام عبر التطبيقات، ونأكل الكثير من الطعام الجاهز. ثانيًا، هناك تأثير媒يات الاجتماعي التي ترويج للأطعمة السريعة والمغذية. ثالثًا، هناك تأثير الاجتياح الثقافي، حيث نأكل الكثير من الأطعمة من الثقافات الأخرى. أخيرا، هناك وعي متزايد بالطعام الصحي، حيث العديد من الناس يبدأون في تناول الطعام العضوي أو نباتي."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكن أن تتغير العادات الغذائية في مجتمعك على مر السنين؟ ما هي العوامل التي يمكن أن تساهم في هذه التغيرات؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "إلا كنت ستلبي أي سؤال، لكن إذا كنت قادرًا على حل مشكلة واحدة فقط، فسيكون ذلك مشكلة التغيير المناخي. لأن التغيير المناخي يؤثر على كل شيء في العالم: البيئات، économie، الصحة. من خلال حل هذه المشكلة، يمكننا حماية الأرض لعقود قادمة ونضمن مستقبل أفضل للأجيال القادمة."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تقيّم مستوى التعليم في مجتمعك؟ هل هناك أي إصلاحات معينة توصى بها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السؤال الثالث: كيف يمكنك أن تساهم في تحسين الخدمات الصحية في مجتمعك؟"
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف يمكنك أن تساهم في تحسين الخدمات الصحية في مجتمعك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السؤال الثاني: كيف يمكن أن تتغير العادات الغذائية في مجتمعك على مر السنين؟ ما هي العوامل التي يمكن أن تساهم في هذه التغيرات؟"
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "إذا كنت قادرًا على حل مشكلة واحدة فقط في العالم، ما هي المشكلة التي ستختار؟ لماذا؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "السؤال الأول: إذا كنت قادرًا على حل مشكلة واحدة فقط في العالم، ما هي المشكلة التي ستختار؟ لماذا؟"
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-18",
+   "intendedLevel": "0+",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "من أي بلد أنت؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا تريد طبيب. لأنه يساعد الناس."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف مجتمعك أو حيك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "يحيي. أنا بخير. شكراً."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "مرحبا. كيف حالك اليوم؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا من اليابان."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "كيف تصف المجتمع الذي تعيش فيه؟ ما هي بعض التحديات التي يواجهها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "أنا family big. بابا، ماما، أخ، أخت. أنا like family."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف يومك النمطي في العمل؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "The society I live in is diverse and modern. One challenge it faces is traffic congestion during peak hours, which can be frustrating."
+    }
+   ]
+  },
+  {
+   "id": "ar-rate-19",
+   "intendedLevel": "1",
+   "history": [
+    {
+     "speaker": "PARTNER",
+     "text": "ما هي الأطباق التي تفضلها في وجباتك؟ هل يمكنك شرح سبب تفضيلك لها؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "آنا like food that is spicy و healthy. آنا prefer dishes that have meat و vegetables. آنا like shawarma because هو taste good. آنا also like salads because هو healthy. آنا eat these dishes often."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "من فضلك، أخبرني عن هواياتك المفضلة؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "هواياتي المفضلة is reading books و listening to music. أنا like books because هو teach me things. music make me feel good. sometimes, أنا play guitar. هو relax."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل كنت في رحلة مؤخراً؟ أخبرني عنها."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، أنا go على trip to القاهرة recently. هو beautiful city. أنا visit pyramids. هو amazing. also, أنا eat delicious food. أنا like trip very much."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل يمكنك وصف يوم عمل عادي لك؟"
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "my typical work day start at 8 o'clock. أنا go to office. أنا work on كمبيوتر. sometimes, أنا meet مع clients. I have lunch at 12 o'clock. في المساء, أنا go home. I am tired but happy."
+    },
+    {
+     "speaker": "PARTNER",
+     "text": "هل لديك أشقاء؟ أخبرني عنهم."
+    },
+    {
+     "speaker": "LEARNER",
+     "text": "نعم، آنا have two brothers و one sister. my brothers are older than me. one is doctor و other is engineer. my sister is younger. she is student. جميعنا close to each other."
+    }
+   ]
+  }
+ ]
+}

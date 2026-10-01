@@ -120,3 +120,12 @@ Persian می/نمی + space and + ZWNJ as the same word, since both spellings ar
 Noto Sans, Noto Sans JP/SC/KR and Noto Naskh Arabic variable TTFs from google/fonts, pinned to commit 9710da1 with
 SHA-256 in `tools/release/fonts.lock`, staged by `tools/release/stage_fonts.py`. Target-language text always uses
 the font for its script; app chrome uses the platform default with Skia fallback.
+
+## D-017 Interview rating language and robustness (unattended default)
+The rating prompt asks for English evidence, rationale and next steps, but EuroLLM-9B (Tier B) consistently writes
+them in the interview's language even when told twice. BRIEF §6.2 doesn't require English, so the validator accepts
+feedback in either language. It still rejects ratings whose quotes are mostly not the candidate's own words, caps an
+estimate above the sustained level at the sustained level (the ILR rating is the sustained level), drops non-verbatim
+quotes, and keeps one to three next steps. The interviewer prompt keeps the static instructions and the transcript
+first and the per-turn instructions last so llama.cpp reuses its prompt cache across turns, and rejects questions that
+repeat an earlier question or echo the candidate (character-bigram similarity ≥ 0.7).

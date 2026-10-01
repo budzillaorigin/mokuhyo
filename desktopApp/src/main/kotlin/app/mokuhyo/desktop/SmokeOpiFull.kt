@@ -71,7 +71,8 @@ object SmokeOpiFull {
             app.conversations.addRecording(id, turn * 2 + 1, rel, pcm.size / 16L, sha(wav))
             session.answer(heard)
             english += ""
-            println("smoke-opi-full: [${line.phase.wireName}] ${line.text.take(70)} → \"${heard.take(60)}\" (${t.elapsedNow().inWholeMilliseconds} ms)")
+            println("smoke-opi-full: [${line.phase.wireName}] ${line.text.take(70)} → \"${heard.take(60)}\" (${t.elapsedNow().inWholeMilliseconds} ms)" +
+                (line.fallbackReason?.let { " [scripted: $it]" } ?: ""))
             turn++
         }
         val t = clock.markNow()

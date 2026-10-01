@@ -50,6 +50,19 @@ class GeneratedBank(private val db: MokuhyoDatabase, private val clock: Clock = 
         return passages to items
     }
 
+    /** Generated conversation topics (skill SPEAKING_TOPIC: textType = domain, body = opener, level = min level). */
+    fun saveTopic(learnerId: String, lang: String, topic: app.mokuhyo.opi.Topic, engine: String) {
+        db.generatedQueries.insertGenerated(
+            Generated_passage(topic.id, learnerId, lang, "SPEAKING_TOPIC", topic.minLevel, topic.domain, topic.title, topic.opener, "[]", "[]", null, engine,
+                clock.now().toEpochMilliseconds(), null),
+        )
+    }
+
+    fun topics(learnerId: String, lang: String): List<app.mokuhyo.opi.Topic> =
+        db.generatedQueries.generated(learnerId, lang, "SPEAKING_TOPIC").executeAsList().map { r ->
+            app.mokuhyo.opi.Topic(r.id, r.textType, r.title, r.body, r.level, "llm", false)
+        }
+
     fun count(learnerId: String, lang: String): Int = Skill.entries.sumOf { db.generatedQueries.generated(learnerId, lang, it.name).executeAsList().size }
 
     /** Removes every generated passage for the language (tombstones; the rows stay for history and backups). */
