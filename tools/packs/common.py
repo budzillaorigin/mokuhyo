@@ -20,16 +20,15 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 CACHE = REPO / "tools" / ".cache"
 PACKS = REPO / "content" / "packs"
-DICTIONARY_PACK = PACKS / "dictionary.sqlite"
-DICTIONARY_SQ = (
-    REPO / "shared/src/commonMain/sqldelightDictionary/app/tsumugi/dictionary/db/dictionary.sq"
-)
-PATH_PACK = PACKS / "kanji-path.sqlite"
-PATH_SQ = REPO / "shared/src/commonMain/sqldelightPath/app/tsumugi/path/db/path.sq"
+# Language-neutral dictionary schema (BRIEF §5.2); one pack per language at content/packs/<lang>/dictionary.sqlite.
+DICTIONARY_SQ = REPO / "shared/src/commonMain/sqldelightDictionary/app/mokuhyo/dictionary/db/dictionary.sq"
 
-# Bump when the builder output changes shape or content rules. Recorded in pack_meta.
-DICTIONARY_PACK_VERSION = "1"
-PATH_PACK_VERSION = "1"
+# Bump when the builder output changes shape or content rules. Recorded in the pack's meta table.
+DICTIONARY_PACK_VERSION = "2"
+
+
+def dictionary_pack(language: str) -> Path:
+    return PACKS / language / "dictionary.sqlite"
 
 
 def log(msg: str) -> None:
@@ -260,7 +259,7 @@ def table_statements(tables: set[str], sq_path: Path = DICTIONARY_SQ) -> list[st
     return out
 
 
-def open_pack(path: Path = DICTIONARY_PACK, sq_path: Path = DICTIONARY_SQ) -> sqlite3.Connection:
+def open_pack(path: Path, sq_path: Path = DICTIONARY_SQ) -> sqlite3.Connection:
     """Open (creating if needed) a pack with the full schema. user_version=1 so SQLDelight never re-creates it."""
     path.parent.mkdir(parents=True, exist_ok=True)
     fresh = not path.exists()

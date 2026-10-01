@@ -779,6 +779,146 @@
       "update": {
         "kind": "fixed"
       }
+    },
+    "cc-cedict": {
+      "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+      "file": "cedict_1_0_ts_utf-8_mdbg.txt.gz",
+      "release": "rolling export",
+      "date": "2026-09-30",
+      "rolling": true,
+      "sha256": "58c442d8f100a8a56852832fdd4555a233b6d802b0bf01a5bdddf01561c0a326",
+      "license": "CC BY-SA 4.0 (MDBG)",
+      "update": {
+        "kind": "rolling",
+        "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+        "file": "cedict_1_0_ts_utf-8_mdbg.txt.gz"
+      }
+    },
+    "kaikki-arabic": {
+      "url": "https://kaikki.org/dictionary/Arabic/kaikki.org-dictionary-Arabic.jsonl",
+      "file": "kaikki.org-dictionary-Arabic.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "81a86fb9e25b8bae2f3097c05d1a8c5fcdc56dd89dbb2b96d62565d4fcab519c",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/Arabic/kaikki.org-dictionary-Arabic.jsonl",
+        "file": "kaikki.org-dictionary-Arabic.jsonl"
+      }
+    },
+    "kaikki-french": {
+      "url": "https://kaikki.org/dictionary/French/kaikki.org-dictionary-French.jsonl",
+      "file": "kaikki.org-dictionary-French.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "be18e3c1f5d83532318935301ccdfc6cbb3fc60416080242a9335d3007d01162",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/French/kaikki.org-dictionary-French.jsonl",
+        "file": "kaikki.org-dictionary-French.jsonl"
+      }
+    },
+    "kaikki-german": {
+      "url": "https://kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl",
+      "file": "kaikki.org-dictionary-German.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "650a0f3a06c6fc4e957f85f246a84120316ac85809ab2ea3597819021eac57e4",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl",
+        "file": "kaikki.org-dictionary-German.jsonl"
+      }
+    },
+    "kaikki-indonesian": {
+      "url": "https://kaikki.org/dictionary/Indonesian/kaikki.org-dictionary-Indonesian.jsonl",
+      "file": "kaikki.org-dictionary-Indonesian.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "d3587b5eea8c558991cc835887a82bb7cc82b8a8b43e918fed8dba27af3cca01",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/Indonesian/kaikki.org-dictionary-Indonesian.jsonl",
+        "file": "kaikki.org-dictionary-Indonesian.jsonl"
+      }
+    },
+    "kaikki-korean": {
+      "url": "https://kaikki.org/dictionary/Korean/kaikki.org-dictionary-Korean.jsonl",
+      "file": "kaikki.org-dictionary-Korean.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "5e6223e62733ac7ca2ea4d38e4b5be2924f886528edc6f69bb3a33e8fcd78525",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/Korean/kaikki.org-dictionary-Korean.jsonl",
+        "file": "kaikki.org-dictionary-Korean.jsonl"
+      }
+    },
+    "kaikki-persian": {
+      "url": "https://kaikki.org/dictionary/Persian/kaikki.org-dictionary-Persian.jsonl",
+      "file": "kaikki.org-dictionary-Persian.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "f67a8687e38517a169185f4ab6d6082f23a5d33786f3020255075a61882719b6",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/Persian/kaikki.org-dictionary-Persian.jsonl",
+        "file": "kaikki.org-dictionary-Persian.jsonl"
+      }
+    },
+    "kaikki-portuguese": {
+      "url": "https://kaikki.org/dictionary/Portuguese/kaikki.org-dictionary-Portuguese.jsonl",
+      "file": "kaikki.org-dictionary-Portuguese.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "0067b22d52e706dfa374d03993c104797bf124b6e9da53ee4635c351b648a27c",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/Portuguese/kaikki.org-dictionary-Portuguese.jsonl",
+        "file": "kaikki.org-dictionary-Portuguese.jsonl"
+      }
+    },
+    "kaikki-russian": {
+      "url": "https://kaikki.org/dictionary/Russian/kaikki.org-dictionary-Russian.jsonl",
+      "file": "kaikki.org-dictionary-Russian.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "eab01279fe888f4fedf044350e04f8f619dd34bbd325ca186b0017e595ad3b6b",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/Russian/kaikki.org-dictionary-Russian.jsonl",
+        "file": "kaikki.org-dictionary-Russian.jsonl"
+      }
+    },
+    "kaikki-spanish": {
+      "url": "https://kaikki.org/dictionary/Spanish/kaikki.org-dictionary-Spanish.jsonl",
+      "file": "kaikki.org-dictionary-Spanish.jsonl",
+      "release": "rolling export",
+      "date": "2026-09-28",
+      "rolling": true,
+      "sha256": "a2cc93aee2b0ac24d869ec59e07ddef69d1379d54518f77b87c07a765139a2e6",
+      "license": "CC BY-SA 3.0 / GFDL dual (English Wiktionary via kaikki.org wiktextract); used under CC BY-SA 3.0",
+      "update": {
+        "kind": "rolling",
+        "url": "https://kaikki.org/dictionary/Spanish/kaikki.org-dictionary-Spanish.jsonl",
+        "file": "kaikki.org-dictionary-Spanish.jsonl"
+      }
     }
   }
 }

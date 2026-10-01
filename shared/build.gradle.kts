@@ -52,5 +52,10 @@ sqldelight {
             packageName.set("app.mokuhyo.lang.ja.tokenizer.db")
             srcDirs.setFrom("src/commonMain/sqldelightTokenizer")
         }
+        // Read-only per-language dictionary packs (BRIEF §5.2), built by tools/packs/build_dictionary.py.
+        create("DictionaryDatabase") {
+            packageName.set("app.mokuhyo.dictionary.db")
+            srcDirs.setFrom("src/commonMain/sqldelightDictionary")
+        }
     }
 }
