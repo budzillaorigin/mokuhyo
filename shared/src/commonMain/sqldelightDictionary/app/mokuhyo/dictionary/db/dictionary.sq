@@ -1,0 +1,135 @@
+-- Read-only per-language dictionary pack (content/packs/<lang>/dictionary.sqlite), language-neutral schema of
+-- BRIEF §5.2. Built by tools/packs/build_dictionary.py --language xx, which executes the CREATE statements in this
+-- file verbatim (everything before the first labeled query). Text is stored NFC, never NFKC.
+
+-- source, license, attribution, language, entry_count, form_count, build_date, pack_version, schema_version.
+CREATE TABLE meta (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+-- One lemma. reading: kana (ja), pinyin with tone marks (zh), RR (ko), stress-marked form (ru), romanization
+-- (ar, fa); NULL when the headword is its own reading. frequencyRank: 1 = most frequent (wordfreq), NULL = unranked.
+CREATE TABLE entry (
+    id INTEGER NOT NULL PRIMARY KEY,
+    lang TEXT NOT NULL,
+    headword TEXT NOT NULL,
+    reading TEXT,
+    pos TEXT NOT NULL,
+    frequencyRank INTEGER
+);
+
+-- frequencyRank in the indexes makes prefix ranking an index-only scan (no row fetch per candidate).
+CREATE INDEX entry_headword ON entry(headword, frequencyRank);
+CREATE INDEX entry_reading ON entry(reading, frequencyRank) WHERE reading IS NOT NULL;
+
+CREATE TABLE sense (
+    entryId INTEGER NOT NULL,
+    ord INTEGER NOT NULL,
+    gloss_en TEXT NOT NULL,
+    domain TEXT,
+    register TEXT,
+    PRIMARY KEY (entryId, ord)
+) WITHOUT ROWID;
+
+-- Inflected or variant surface (NFC) → lemma. tags: comma-separated grammatical tags ("first-person,plural,present").
+CREATE TABLE form (
+    surface TEXT NOT NULL,
+    entryId INTEGER NOT NULL,
+    tags TEXT NOT NULL,
+    PRIMARY KEY (surface, entryId)
+) WITHOUT ROWID;
+
+CREATE TABLE example (
+    entryId INTEGER NOT NULL,
+    ord INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    translation TEXT,
+    source TEXT NOT NULL,
+    PRIMARY KEY (entryId, ord)
+) WITHOUT ROWID;
+
+-- Fuzzy keys: DictionaryFold.fold(headword | reading | form surface), stored only where the key differs from the
+-- text itself (an equal key is found through the entry/form indexes). kind 0 = headword or reading, 1 = form.
+-- frequencyRank is the entry's, copied so prefix ranking never leaves this table.
+CREATE TABLE fold (
+    key TEXT NOT NULL,
+    entryId INTEGER NOT NULL,
+    kind INTEGER NOT NULL,
+    frequencyRank INTEGER,
+    PRIMARY KEY (key, entryId)
+) WITHOUT ROWID;
+
+exact:
+SELECT * FROM entry
+WHERE headword = :query OR reading = :query
+ORDER BY frequencyRank IS NULL, frequencyRank, id
+LIMIT :limit;
+
+byForm:
+SELECT entry.* FROM form JOIN entry ON entry.id = form.entryId
+WHERE form.surface = :surface
+ORDER BY entry.frequencyRank IS NULL, entry.frequencyRank, entry.id
+LIMIT :limit;
+
+byFold:
+SELECT entry.*, fold.kind FROM fold JOIN entry ON entry.id = fold.entryId
+WHERE fold.key = :key
+ORDER BY entry.frequencyRank IS NULL, entry.frequencyRank, entry.id
+LIMIT :limit;
+
+-- Ids of the most frequent entries whose headword, reading or folded key starts with the folded query
+-- ([low, high) is the prefix range). Three index-only range scans, each top-:limit by rank (a plain UNION makes
+-- SQLite scan the whole entry table); up to 3 × :limit ids, possibly repeated. Rows are fetched with byIds.
+prefixIds:
+SELECT eid FROM (
+    SELECT eid, r FROM (
+        SELECT id AS eid, frequencyRank AS r FROM entry WHERE headword >= :low AND headword < :high
+        ORDER BY r IS NULL, r, eid LIMIT :limit
+    )
+    UNION ALL
+    SELECT eid, r FROM (
+        SELECT id AS eid, frequencyRank AS r FROM entry WHERE reading >= :low AND reading < :high
+        ORDER BY r IS NULL, r, eid LIMIT :limit
+    )
+    UNION ALL
+    SELECT eid, r FROM (
+        SELECT entryId AS eid, frequencyRank AS r FROM fold WHERE key >= :low AND key < :high AND kind = 0
+        ORDER BY r IS NULL, r, eid LIMIT :limit
+    )
+)
+ORDER BY r IS NULL, r, eid;
+
+byId:
+SELECT * FROM entry WHERE id = :id;
+
+byIds:
+SELECT * FROM entry WHERE id IN :ids;
+
+sensesFor:
+SELECT * FROM sense WHERE entryId IN :ids ORDER BY entryId, ord;
+
+examplesFor:
+SELECT * FROM example WHERE entryId IN :ids ORDER BY entryId, ord;
+
+allMeta:
+SELECT key, value FROM meta;
+
+-- Writes are for test fixtures only; real packs are built by tools/packs/build_dictionary.py.
+insertEntry:
+INSERT INTO entry VALUES ?;
+
+insertSense:
+INSERT INTO sense VALUES ?;
+
+insertForm:
+INSERT OR IGNORE INTO form VALUES ?;
+
+insertExample:
+INSERT INTO example VALUES ?;
+
+insertFold:
+INSERT OR IGNORE INTO fold VALUES ?;
+
+insertMeta:
+INSERT OR REPLACE INTO meta VALUES ?;

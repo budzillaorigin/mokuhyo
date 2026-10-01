@@ -1,0 +1,233 @@
+{
+ "_comment": "Shared by DictionaryFoldTest (Kotlin) and tools/packs/test_build_dictionary.py (Python). Edit both fold implementations together.",
+ "vectors": [
+  {
+   "lang": "es",
+   "input": "Habló",
+   "expected": "hablo",
+   "note": "Accents and case"
+  },
+  {
+   "lang": "es",
+   "input": "  NIÑO  ",
+   "expected": "nino",
+   "note": "Tilde stripped, trimmed"
+  },
+  {
+   "lang": "es",
+   "input": "ＡＢＣ１２３",
+   "expected": "abc123",
+   "note": "Full-width ASCII"
+  },
+  {
+   "lang": "fr",
+   "input": "Été",
+   "expected": "ete",
+   "note": "French accents"
+  },
+  {
+   "lang": "fr",
+   "input": "aujourd’hui",
+   "expected": "aujourd'hui",
+   "note": "Curly apostrophe"
+  },
+  {
+   "lang": "fr",
+   "input": "cœur",
+   "expected": "cœur",
+   "note": "Ligature kept (no NFKC)"
+  },
+  {
+   "lang": "de",
+   "input": "Straße",
+   "expected": "strasse",
+   "note": "Eszett"
+  },
+  {
+   "lang": "de",
+   "input": "STRASSE",
+   "expected": "strasse",
+   "note": "Upper-case"
+  },
+  {
+   "lang": "de",
+   "input": "Ärger über Öl",
+   "expected": "arger uber ol",
+   "note": "Umlauts, inner spaces kept"
+  },
+  {
+   "lang": "pt-BR",
+   "input": "ação",
+   "expected": "acao",
+   "note": "Cedilla and tilde"
+  },
+  {
+   "lang": "ru",
+   "input": "говори́ть",
+   "expected": "говорить",
+   "note": "Combining stress mark"
+  },
+  {
+   "lang": "ru",
+   "input": "Ёлка",
+   "expected": "елка",
+   "note": "Yo folds to ye"
+  },
+  {
+   "lang": "ru",
+   "input": "йогурт",
+   "expected": "йогурт",
+   "note": "Short i keeps its breve"
+  },
+  {
+   "lang": "ru",
+   "input": "ЙОД",
+   "expected": "йод",
+   "note": "Upper short i"
+  },
+  {
+   "lang": "ar",
+   "input": "كِتَابٌ",
+   "expected": "كتاب",
+   "note": "Tashkeel"
+  },
+  {
+   "lang": "ar",
+   "input": "أحمد",
+   "expected": "احمد",
+   "note": "Hamza on alef"
+  },
+  {
+   "lang": "ar",
+   "input": "إسلام",
+   "expected": "اسلام",
+   "note": "Hamza under alef"
+  },
+  {
+   "lang": "ar",
+   "input": "آخر",
+   "expected": "اخر",
+   "note": "Madda"
+  },
+  {
+   "lang": "ar",
+   "input": "كتـــاب",
+   "expected": "كتاب",
+   "note": "Tatweel"
+  },
+  {
+   "lang": "ar",
+   "input": "مستشفى",
+   "expected": "مستشفي",
+   "note": "Alef maksura"
+  },
+  {
+   "lang": "fa",
+   "input": "کتاب",
+   "expected": "كتاب",
+   "note": "Persian kaf"
+  },
+  {
+   "lang": "fa",
+   "input": "می‌روم",
+   "expected": "ميروم",
+   "note": "ZWNJ"
+  },
+  {
+   "lang": "fa",
+   "input": "ایران",
+   "expected": "ايران",
+   "note": "Persian yeh"
+  },
+  {
+   "lang": "ja",
+   "input": "タベル",
+   "expected": "たべる",
+   "note": "Katakana to hiragana"
+  },
+  {
+   "lang": "ja",
+   "input": "ｶﾞｯｺｳ",
+   "expected": "がっこう",
+   "note": "Half-width katakana"
+  },
+  {
+   "lang": "ja",
+   "input": "が",
+   "expected": "が",
+   "note": "Dakuten kept"
+  },
+  {
+   "lang": "ja",
+   "input": "パン",
+   "expected": "ぱん",
+   "note": "Handakuten kept"
+  },
+  {
+   "lang": "ja",
+   "input": "食べる",
+   "expected": "食べる",
+   "note": "Kanji untouched"
+  },
+  {
+   "lang": "ja",
+   "input": "〜ている",
+   "expected": "〜ている",
+   "note": "Wave dash untouched"
+  },
+  {
+   "lang": "ja",
+   "input": "ゔ",
+   "expected": "ゔ",
+   "note": "vu kept"
+  },
+  {
+   "lang": "ja",
+   "input": "ＴＶ",
+   "expected": "tv",
+   "note": "Full-width Latin in Japanese"
+  },
+  {
+   "lang": "zh-Hans",
+   "input": "zhōng guó",
+   "expected": "zhongguo",
+   "note": "Pinyin tones and spacing"
+  },
+  {
+   "lang": "zh-Hans",
+   "input": "nǚ",
+   "expected": "nu",
+   "note": "u with diaeresis and caron"
+  },
+  {
+   "lang": "zh-Hans",
+   "input": "中国",
+   "expected": "中国",
+   "note": "Hanzi untouched"
+  },
+  {
+   "lang": "ko",
+   "input": "먹었다",
+   "expected": "먹었다",
+   "note": "Hangul untouched"
+  },
+  {
+   "lang": "ko",
+   "input": "Seoul",
+   "expected": "seoul",
+   "note": "Latin in Korean"
+  },
+  {
+   "lang": "id",
+   "input": "Makan  Siang",
+   "expected": "makan siang",
+   "note": "Whitespace collapse"
+  },
+  {
+   "lang": "es",
+   "input": "",
+   "expected": "",
+   "note": "Empty"
+  }
+ ]
+}
