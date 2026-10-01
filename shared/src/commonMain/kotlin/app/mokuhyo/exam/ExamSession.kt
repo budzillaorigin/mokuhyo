@@ -58,6 +58,7 @@ data class ExamResult(
 data class ExamProgress(
     val id: String,
     val exam: String,
+    val language: String = "",
     val level: String,
     val mode: String,
     val sections: List<SectionRef>,
@@ -74,8 +75,9 @@ data class ExamProgress(
     @Serializable
     data class SectionRef(val title: String, val minutes: Int?, val listening: Boolean, val items: List<ItemRef>)
 
+    /** [choices]/[answer]: the order shown (keys are rebalanced per form), so a resumed test looks the same. */
     @Serializable
-    data class ItemRef(val id: String, val group: String, val typeTitle: String)
+    data class ItemRef(val id: String, val group: String, val typeTitle: String, val choices: List<String> = emptyList(), val answer: Int = -1)
 
     val answeredCount: Int get() = choices.size
     val totalCount: Int get() = sections.sumOf { it.items.size }
@@ -101,6 +103,8 @@ interface ExamProgressStore {
  */
 class ExamSession(
     val form: ExamForm,
+    /** Listening play policy on tests (practice is unlimited). */
+    private val playPolicy: PlayPolicy = PlayPolicy(),
     private val clock: Clock = Clock.System,
     private val store: ExamProgressStore? = null,
     restored: ExamProgress? = null,
@@ -206,21 +210,32 @@ class ExamSession(
         return true
     }
 
-    fun canPlayAudio(itemId: String): Boolean = !form.mode.strict || (plays[itemId] ?: 0) == 0
+    /** Whether [passageId]'s audio may be played (again): unlimited in practice, the blueprint's plays on tests. */
+    fun canPlayAudio(passageId: String): Boolean = !form.mode.strict || (plays[passageId] ?: 0) < playPolicy.plays
 
-    fun audioPlayed(itemId: String) {
-        plays[itemId] = (plays[itemId] ?: 0) + 1
+    fun playsOf(passageId: String): Int = plays[passageId] ?: 0
+
+    /** On tests, questions stay hidden until the passage has played once unless the blueprint says otherwise. */
+    fun questionsVisible(passageId: String?): Boolean =
+        passageId == null || !form.mode.strict || !form.sections.getOrNull(sectionIndex)?.listening.orFalse() ||
+            playPolicy.questionsVisibleBeforeAudio || (plays[passageId] ?: 0) > 0
+
+    fun audioPlayed(passageId: String) {
+        plays[passageId] = (plays[passageId] ?: 0) + 1
         persist()
     }
+
+    private fun Boolean?.orFalse() = this ?: false
 
     /** The state [ExamService.resume] rebuilds the session from. */
     fun progress(): ExamProgress = ExamProgress(
         id = attemptId,
         exam = form.exam.name,
+        language = form.language,
         level = form.level,
         mode = form.mode.name,
         sections = form.sections.map { s ->
-            ExamProgress.SectionRef(s.title, s.minutes, s.listening, s.items.map { ExamProgress.ItemRef(it.item.id, it.group, it.typeTitle) })
+            ExamProgress.SectionRef(s.title, s.minutes, s.listening, s.items.map { ExamProgress.ItemRef(it.item.id, it.group, it.typeTitle, it.item.choices, it.item.answer) })
         },
         passageIds = form.passages.keys.toList(),
         startedAt = startedAt.toEpochMilliseconds(),
@@ -305,7 +320,7 @@ class ExamSession(
             val ilr = when {
                 estimate.level != null -> "ILR ${estimate.level.label}" + if (estimate.confident) "" else " (low confidence)"
                 estimate.provisional != null -> "≈ ILR ${estimate.provisional.label} (provisional)"
-                else -> "below ILR ${DlptRange.ofFormLevel(form.level).levels.first().label}"
+                else -> "below ILR ${IlrLevel.lowerRange.first().label}"
             }
             scoring to "${form.exam.title} · $ilr · $correct/${answers.size}"
         }

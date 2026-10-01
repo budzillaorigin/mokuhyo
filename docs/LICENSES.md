@@ -79,6 +79,7 @@ Ported algorithms (code in this repo, original license kept):
 | JMdict / EDICT (Japanese dictionary) | CC BY-SA 4.0 | © Electronic Dictionary Research and Development Group — https://www.edrdg.org/edrdg/licence.html |
 | KANJIDIC2 | CC BY-SA 4.0 | © Electronic Dictionary Research and Development Group — https://www.edrdg.org/edrdg/licence.html |
 | mecab-ipadic (Japanese tokenizer dictionary) | BSD-style (IPA dictionary license) | © Nara Institute of Science and Technology / Information-technology Promotion Agency — https://github.com/taku910/mecab |
+| Noto Sans, Noto Sans JP / SC / KR, Noto Naskh Arabic (bundled fonts, `tools/release/fonts.lock`) | OFL-1.1 | © The Noto Project Authors — https://github.com/notofonts · via https://github.com/google/fonts |
 | ILR Skill Level Descriptions | Public domain (US Government work) | Interagency Language Roundtable — https://www.govtilr.org |
 | Tsumugi DLPT-style Japanese practice banks (`tools/items/bank/dlpt_*.json`) | CC BY-SA 4.0 | © Tsumugi / Mokuhyo contributors; AI-drafted items carry `source = "llm"` |
 

@@ -117,12 +117,18 @@ private fun TitleBar(app: AppGraph, lang: String) {
         Box {
             TextButton(onClick = { open = true }) {
                 Icon(Icons.Outlined.Translate, contentDescription = null)
-                Text("  " + (Languages.of(lang)?.let { "${it.nameEnglish} · ${it.nameNative}" } ?: lang))
+                Text("  " + (Languages.of(lang)?.nameEnglish ?: lang) + " · ")
+                Text(Languages.of(lang)?.nameNative ?: "", fontFamily = Fonts.forLanguage(lang))
             }
             DropdownMenu(open, onDismissRequest = { open = false }) {
                 val chosen = app.chosenLanguages()
                 (chosen.mapNotNull { Languages.of(it) } + Languages.all.filter { it.code !in chosen }).forEach { l ->
-                    DropdownMenuItem(text = { Text("${l.nameEnglish} · ${l.nameNative}") }, onClick = {
+                    DropdownMenuItem(text = {
+                        Row {
+                            Text(l.nameEnglish + " · ")
+                            Text(l.nameNative, fontFamily = Fonts.forLanguage(l.code))
+                        }
+                    }, onClick = {
                         app.setLanguage(l.code)
                         if (l.code !in chosen) app.setChosenLanguages(chosen + l.code)
                         open = false

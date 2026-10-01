@@ -21,6 +21,8 @@ fun main(args: Array<String>) {
     when {
         "--smoke" in args -> exitProcess(Smoke.run(args))
         "--smoke-opi" in args -> exitProcess(SmokeOpi.run(args))
+        "--smoke-lang" in args -> exitProcess(LangSmoke.run(args, OsSpeech))
+        "--screenshots" in args -> exitProcess(Screenshots.run(args))
     }
     val app = AppGraph()
     application {

@@ -1,0 +1,157 @@
+{
+ "language": "*",
+ "version": 1,
+ "notes": "Default blueprint (open decision 2, unattended default): 60 items per full form (8/10/10/12/10/10 from ILR 0+ to 3), 180 minutes; slices scale by minutes. Listening passages play once on tests and questions appear after the first play. Owner adjusts per language from the public familiarization guides by adding tools/items/blueprints/<lang>.json with only the fields to override.",
+ "englishQuestions": true,
+ "noRepeatForms": 3,
+ "reading": {
+  "levels": [
+   "0+",
+   "1",
+   "1+",
+   "2",
+   "2+",
+   "3"
+  ],
+  "itemsPerLevel": {
+   "0+": 8,
+   "1": 10,
+   "1+": 10,
+   "2": 12,
+   "2+": 10,
+   "3": 10
+  },
+  "fullMinutes": 180,
+  "textTypes": {
+   "0+": [
+    "sign",
+    "notice",
+    "advertisement",
+    "schedule",
+    "menu",
+    "form",
+    "label"
+   ],
+   "1": [
+    "short_message",
+    "notice",
+    "announcement",
+    "instructions",
+    "advertisement",
+    "personal_letter"
+   ],
+   "1+": [
+    "news_brief",
+    "instructions",
+    "personal_letter",
+    "description",
+    "announcement",
+    "email"
+   ],
+   "2": [
+    "news",
+    "report",
+    "letter",
+    "biography",
+    "factual_article",
+    "event_description"
+   ],
+   "2+": [
+    "news_analysis",
+    "opinion",
+    "extended_report",
+    "interview",
+    "feature"
+   ],
+   "3": [
+    "editorial",
+    "argumentative_essay",
+    "analysis",
+    "speech",
+    "commentary"
+   ]
+  },
+  "questionTypes": [
+   "main_idea",
+   "detail",
+   "inference",
+   "purpose",
+   "vocabulary_in_context",
+   "tone"
+  ]
+ },
+ "listening": {
+  "levels": [
+   "0+",
+   "1",
+   "1+",
+   "2",
+   "2+",
+   "3"
+  ],
+  "itemsPerLevel": {
+   "0+": 8,
+   "1": 10,
+   "1+": 10,
+   "2": 12,
+   "2+": 10,
+   "3": 10
+  },
+  "fullMinutes": 180,
+  "textTypes": {
+   "0+": [
+    "announcement",
+    "voicemail",
+    "short_exchange",
+    "advertisement"
+   ],
+   "1": [
+    "announcement",
+    "voicemail",
+    "conversation",
+    "instructions",
+    "weather"
+   ],
+   "1+": [
+    "news_brief",
+    "conversation",
+    "interview",
+    "announcement",
+    "phone_call"
+   ],
+   "2": [
+    "news",
+    "interview",
+    "report",
+    "briefing",
+    "conversation"
+   ],
+   "2+": [
+    "news_analysis",
+    "interview",
+    "panel_discussion",
+    "speech",
+    "documentary"
+   ],
+   "3": [
+    "editorial_commentary",
+    "lecture",
+    "debate",
+    "speech",
+    "analysis"
+   ]
+  },
+  "questionTypes": [
+   "main_idea",
+   "detail",
+   "inference",
+   "purpose",
+   "vocabulary_in_context",
+   "tone"
+  ],
+  "play": {
+   "plays": 1,
+   "questionsVisibleBeforeAudio": false
+  }
+ }
+}

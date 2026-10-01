@@ -32,6 +32,7 @@ data class ScriptLine(val speaker: String = "", val voice: String = "female", va
 data class ExamPassage(
     val id: String,
     val exam: ExamKind,
+    val language: String,
     val level: String,
     val textType: String,
     val title: String,
@@ -39,8 +40,15 @@ data class ExamPassage(
     val script: List<ScriptLine>,
     val source: String,
     val verified: Boolean,
+    /** Pre-rendered audio clip (path relative to the pack), when the pack has one; else the voice service speaks [script]. */
+    val audio: String? = null,
+    /** "shipped" or "local" (generated on this computer; never mixed into shipped-bank statistics). */
+    val bank: String = "shipped",
 ) {
     val aiGenerated: Boolean get() = source == "llm" && !verified
+
+    /** The words spoken or read: body for reading, the script's lines for listening. */
+    val text: String get() = if (script.isNotEmpty()) script.joinToString("\n") { it.text } else body
 }
 
 data class ExamItem(
@@ -67,6 +75,7 @@ data class ExamItem(
 @Serializable
 data class ExamBankFile(
     val bank: String,
+    val language: String = "",
     val title: String = bank,
     val license: String = "",
     val attribution: String = "",
@@ -84,6 +93,8 @@ data class ExamBankFile(
         val script: List<ScriptLine> = emptyList(),
         val source: String = "human",
         val verified: Boolean = false,
+        val language: String = "",
+        val engine: String = "",
     )
 
     @Serializable

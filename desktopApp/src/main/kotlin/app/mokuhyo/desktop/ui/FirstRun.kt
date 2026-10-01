@@ -113,7 +113,10 @@ fun LanguagePicker(chosen: MutableList<String>) {
                 FilterChip(
                     selected = l.code in chosen,
                     onClick = { if (l.code in chosen) chosen.remove(l.code) else chosen.add(l.code) },
-                    label = { Text("${l.nameEnglish} · ${l.nameNative}") },
+                    label = {
+                        Text(l.nameEnglish + " · ")
+                        Text(l.nameNative, fontFamily = Fonts.forLanguage(l.code))
+                    },
                 )
             }
         }

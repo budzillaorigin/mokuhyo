@@ -1,7 +1,7 @@
-"""Build content/packs/tokenizer.sqlite from mecab-ipadic 2.7.0 (BRIEF §5.2).
+"""Build content/packs/ja/tokenizer.sqlite from mecab-ipadic 2.7.0 (BRIEF §5.2).
 
-The pack feeds app.tsumugi.jp.tokenizer.LatticeTokenizer, a pure-Kotlin Viterbi analyzer, so iOS and Android
-segment text identically. Only dictionary data is used (no MeCab code).
+The pack feeds app.mokuhyo.lang.ja.tokenizer.LatticeTokenizer, a pure-Kotlin Viterbi analyzer, so the app
+segments Japanese like MeCab. Only dictionary data is used (no MeCab code).
 
 License: mecab-ipadic, © NAIST, with entries from ICOT Free Software — free use, modification and
 redistribution provided the copyright notice and the NO WARRANTY section accompany it (see docs/LICENSES.md).
@@ -18,8 +18,8 @@ import tarfile
 
 from common import PACKS, REPO, finish_pack, log, nfc, open_pack, reset_tables, set_meta, source
 
-TOKENIZER_PACK = PACKS / "tokenizer.sqlite"
-TOKENIZER_SQ = REPO / "shared/src/commonMain/sqldelightTokenizer/app/tsumugi/tokenizer/db/tokenizer.sq"
+TOKENIZER_PACK = PACKS / "ja" / "tokenizer.sqlite"
+TOKENIZER_SQ = REPO / "shared/src/commonMain/sqldelightTokenizer/app/mokuhyo/lang/ja/tokenizer/db/tokenizer.sq"
 TOKENIZER_PACK_VERSION = "1"
 TABLES = {"pos", "morpheme", "connection", "char_category", "char_range", "unknown"}
 

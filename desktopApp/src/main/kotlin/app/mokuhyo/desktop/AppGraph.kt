@@ -55,6 +55,26 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     val firstRunDone: Boolean get() = settings.bool(Settings.Key.FIRST_RUN_DONE)
 
+    /** Content packs: bundled in the installer, else installed into the data dir, else the dev checkout's content/packs. */
+    val packsDir: File? = listOfNotNull(
+        Resources.dir?.let { File(it, "packs") },
+        File(dataDir, "packs"),
+        Resources.repoDir?.let { File(it, "content/packs") },
+    ).firstOrNull { d -> d.isDirectory && d.listFiles().orEmpty().any { it.isDirectory } }
+
+    val speech: app.mokuhyo.lang.SpeechOutput get() = SpeechProvider.get(this)
+    val languages = app.mokuhyo.lang.LanguageRegistry(packsDir, app.mokuhyo.lang.DictionaryOpeners.default) { speech }
+    val history = app.mokuhyo.history.HistoryRepository(db)
+    val reviews = app.mokuhyo.srs.ReviewService(db)
+    private val examCache = java.util.concurrent.ConcurrentHashMap<String, Result<app.mokuhyo.exam.ExamContent?>>()
+
+    /** The language's exam pack, parsed once (null when the pack isn't installed). Call off the UI thread. */
+    fun exam(lang: String): app.mokuhyo.exam.ExamContent? = examCache.getOrPut(lang) {
+        runCatching { packsDir?.let { File(it, "$lang/exam.json") }?.takeIf { it.isFile }?.let { app.mokuhyo.exam.ExamContent.parse(it.readText()) } }
+    }.getOrNull()
+
+    fun packFile(lang: String, relative: String): File? = packsDir?.let { File(File(it, lang), relative) }?.takeIf { it.isFile }
+
     fun setLanguage(code: String) {
         require(Languages.of(code) != null)
         settings.put(Settings.Key.CURRENT_LANGUAGE, code)

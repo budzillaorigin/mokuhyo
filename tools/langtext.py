@@ -39,6 +39,38 @@ LATIN = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿĀ-ž]")
 SENTENCE_END = re.compile(r"(?<=[.!?。！？؟])\s*|\n+")
 
 
+HAN = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]")
+KANA = re.compile(r"[\u3040-\u30ff]")
+HANGUL = re.compile(r"[\uac00-\ud7af\u1100-\u11ff\u3130-\u318f]")
+CYRILLIC = re.compile(r"[\u0400-\u04ff]")
+ARABIC = re.compile(r"[\u0600-\u06ff\u0750-\u077f\ufb50-\ufdff\ufe70-\ufeff]")
+LATIN_WORD = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿĀ-ž]{3,}")
+LATIN_LANGS = {"es", "fr", "de", "pt-BR", "id"}
+
+
+def foreign_script(text: str, lang: str) -> list[str]:
+    """Words or characters from another script that don't belong in a text written in [lang] (drafting models
+    leak English words into Arabic, hanja into Korean, …). Upper-case acronyms (NATO, OBS) are allowed."""
+    found: list[str] = []
+    if lang not in LATIN_LANGS:
+        found += [w for w in LATIN_WORD.findall(text) if not w.isupper()]
+    if lang == "ko":
+        found += HAN.findall(text) + KANA.findall(text)
+    if lang == "zh-Hans":
+        found += KANA.findall(text) + HANGUL.findall(text)
+    if lang == "ja":
+        found += HANGUL.findall(text)
+    if lang in LATIN_LANGS or lang in ("ru", "id"):
+        found += HAN.findall(text) + KANA.findall(text) + HANGUL.findall(text) + ARABIC.findall(text)
+        if lang != "ru":
+            found += CYRILLIC.findall(text)
+    if lang == "ru":
+        found += [w for w in LATIN_WORD.findall(text) if not w.isupper()]
+    if lang in ("ar", "fa"):
+        found += HAN.findall(text) + CYRILLIC.findall(text)
+    return found
+
+
 def tokens(text: str, lang: str) -> list[str]:
     return [t for t in wordfreq.tokenize(text, WF[lang]) if any(c.isalpha() for c in t)]
 

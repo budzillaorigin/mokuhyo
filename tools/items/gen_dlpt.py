@@ -142,6 +142,23 @@ def band_misses(p: dict, lang: str, bands: dict) -> list[str]:
     return out
 
 
+GIVEAWAY = re.compile(r"""['"‘“「『«][^'"’”」』»]{1,40}['"’”」』»]\s*\((?:[^)]*[A-Za-z]{3,}[^)]*)\)""")
+
+
+def content_problems(p: dict, items: list[dict], lang: str) -> list[str]:
+    """Hard errors regardless of --strict: foreign-script leaks in the text, vocabulary questions that translate
+    the tested word in the stem."""
+    out = []
+    texts = [p.get("body", ""), *(x.get("text", "") for x in p.get("script", []))]
+    leaks = sorted({w for t in texts for w in langtext.foreign_script(t, lang)})
+    if leaks:
+        out.append("foreign-script words in the text: " + ", ".join(leaks[:6]))
+    for it in items:
+        if GIVEAWAY.search(it.get("stem", "")):
+            out.append(f"{it.get('id')}: the stem translates the quoted words (gives the answer away)")
+    return out
+
+
 def is_nfc(s: str) -> bool:
     return unicodedata.normalize("NFC", s) == s
 
@@ -188,6 +205,8 @@ def validate_bank(bank: dict, lang: str, skill: str, report: Report, bands: dict
         if p.get("level") in LEVELS:
             for miss in band_misses(p, lang, bands):
                 (report.error if strict else report.warn)(where, miss)
+        for problem in content_problems(p, [it for it in items if it.get("passageId") == pid], lang):
+            report.error(where, problem)
     per_passage: dict[str, int] = {}
     seen: set[str] = set()
     for it in items:
@@ -207,6 +226,10 @@ def validate_bank(bank: dict, lang: str, skill: str, report: Report, bands: dict
         choices = it.get("choices")
         if not isinstance(choices, list) or len(choices) != 4 or len({c.strip().lower() for c in choices}) != 4:
             report.error(where, "needs exactly 4 distinct choices")
+        elif any(re.fullmatch(r"\(?[A-Da-d1-4][).]?", c.strip()) for c in choices):
+            report.error(where, "choices are bare letters; the options must be the choices themselves")
+        if re.search(r"(^|\n)\s*[A-D]\)\s", it.get("stem", "")):
+            report.error(where, "the stem lists the options; put them in choices")
         elif not isinstance(it.get("answer"), int) or not 0 <= it["answer"] < 4:
             report.error(where, "answer must be 0–3")
         stem = it.get("stem", "")
@@ -335,12 +358,17 @@ Length: about {target} words (between {lo} and {hi} English-equivalent words); k
 {form}
 Give it a short English title.
 
+Write the text ONLY in {name}: no English or other foreign words in it (well-known upper-case acronyms are fine), and
+no characters from another writing system.
+
 Then write exactly {n_items} multiple-choice question(s) IN ENGLISH about the text:
 - question types to use (vary them): {qtypes}
 - each with exactly 4 English answer choices, one clearly correct according to the text, three plausible distractors
   that a learner who misread the text might choose; no "all of the above"; answer is the 0-based index of the
   correct choice; put the correct answer at varied positions
 - answerable only from the text, not from general knowledge; test understanding at ILR {level}
+- vocabulary_in_context questions quote the {name} word or phrase and ask what it means here; NEVER give its
+  translation or a gloss in the stem
 - explanation (English): why the answer is right, quoting the relevant words of the text in {name}
 """
     if avoid:
@@ -348,6 +376,25 @@ Then write exactly {n_items} multiple-choice question(s) IN ENGLISH about the te
     if feedback:
         user += f"\nA previous draft was rejected: {feedback}. Fix that.\n"
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+
+
+PROOF_SCHEMA = {"type": "object", "properties": {"text": {"type": "string"}, "changes": {"type": "array", "items": {"type": "string"}}},
+                "required": ["text", "changes"]}
+
+
+def proofread(client: llm.Client, lang: str, text: str) -> str:
+    """A native-editor pass over a draft (same model, low temperature): fixes grammar, spelling, word order and any
+    foreign words without changing content, length or level."""
+    name = LANG_NAMES[lang]
+    out = client.chat_json([
+        {"role": "system", "content": f"You are a meticulous native {name} copy editor."},
+        {"role": "user", "content": f"Proofread this {name} text. Fix grammar, spelling, word order, unnatural phrasing "
+                                    f"and replace any foreign-language words with {name}. Do not change the facts, the "
+                                    f"length, the line structure or the difficulty. Return the full corrected text and a "
+                                    f"short list of changes.\n\n{text}"},
+    ], PROOF_SCHEMA, temperature=0.1, max_tokens=3000)
+    fixed = str(out.get("text", "")).strip()
+    return fixed if fixed and 0.7 <= len(fixed) / max(1, len(text)) <= 1.3 else text
 
 
 def next_index(lang: str, skill: str, level: str, text_type: str, taken: set[str]) -> str:
@@ -409,12 +456,24 @@ def draft_one(client: llm.Client, lang: str, skill: str, level: str, bands: dict
     for _ in range(tries):
         try:
             raw = client.chat_json(draft_messages(lang, skill, level, text_type, topic, band, n_items, avoid, feedback),
-                                   draft_schema(skill, n_items), temperature=0.8, max_tokens=3000)
+                                   draft_schema(skill, n_items), temperature=0.6, max_tokens=3000)
         except (ValueError, KeyError, RuntimeError) as e:
             if isinstance(e, llm.EndpointDown):
                 raise
             feedback = f"invalid JSON ({e})"
             continue
+        try:
+            if skill == "reading" and raw.get("body"):
+                raw["body"] = proofread(client, lang, raw["body"])
+            elif skill == "listening" and raw.get("script"):
+                joined = "\n".join(x["text"] for x in raw["script"])
+                lines = proofread(client, lang, joined).split("\n")
+                if len(lines) == len(raw["script"]):
+                    for x, t in zip(raw["script"], lines, strict=True):
+                        x["text"] = t.strip()
+        except (ValueError, KeyError, RuntimeError) as e:
+            if isinstance(e, llm.EndpointDown):
+                raise
         pid = next_index(lang, skill, level, text_type, taken)
         try:
             passage, items = to_entries(raw, lang, skill, level, text_type, pid, client.model)
@@ -557,34 +616,44 @@ def counts(lang: str, skill: str) -> dict[str, int]:
 
 
 def cmd_fill(args) -> int:
+    """Rounds of: draft every shortfall (primary model) → check every staged draft (checker model) → merge. Batching
+    across languages means the GPU swaps models twice per round instead of twice per language."""
     client = llm.Client.from_args(args.endpoint, args.model, args.check_model)
     try:
         client.ping()
     except llm.EndpointDown as e:
         print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
         return 2
-    langs = langtext.LANGS if args.language == "all" else args.language.split(",")
+    langs = list(langtext.LANGS) if args.language == "all" else args.language.split(",")
     skills = SKILLS if args.skill == "both" else (args.skill,)
-    for lang in langs:
-        for skill in skills:
-            for _round in range(args.rounds):
-                have = counts(lang, skill)
-                staged = read_staging(lang, skill)
-                pending = {lv: sum(1 for r in staged if r["passage"]["level"] == lv and r.get("check") is None) for lv in LEVELS}
-                need = {lv: max(0, args.per_band - have[lv] - pending[lv]) for lv in LEVELS}
-                if not any(need.values()) and not any(pending.values()):
-                    break
-                for lv in LEVELS:
-                    if need[lv]:
-                        ns = argparse.Namespace(language=lang, skill=skill, ilr=lv, n=need[lv])
-                        rc = cmd_draft(ns, client)
-                        if rc:
-                            return rc
+    for rnd in range(1, args.rounds + 1):
+        tasks = []
+        for lv in LEVELS:  # level-major order: an interrupted run still leaves every language with every level
+            for lang in langs:
+                for skill in skills:
+                    staged = read_staging(lang, skill)
+                    pending = sum(1 for r in staged if r["passage"]["level"] == lv and r.get("check") is None)
+                    need = max(0, args.per_band - counts(lang, skill)[lv] - pending)
+                    if need:
+                        tasks.append((lang, skill, lv, need))
+        unchecked = [(lang, skill) for lang in langs for skill in skills
+                     if any(r.get("check") is None for r in read_staging(lang, skill))]
+        if not tasks and not unchecked:
+            print(f"fill: every band has {args.per_band} passages")
+            break
+        print(f"== round {rnd}: drafting {sum(t[3] for t in tasks)} passages in {len(tasks)} bands", flush=True)
+        for lang, skill, lv, need in tasks:
+            rc = cmd_draft(argparse.Namespace(language=lang, skill=skill, ilr=lv, n=need), client)
+            if rc:
+                return rc
+        print(f"== round {rnd}: checking", flush=True)
+        for lang in langs:
+            for skill in skills:
                 rc = cmd_check(argparse.Namespace(language=lang, skill=skill), client)
                 if rc:
                     return rc
                 cmd_merge(argparse.Namespace(language=lang, skill=skill))
-            print(f"== {lang} {skill}: {counts(lang, skill)}", flush=True)
+        cmd_status(args)
     return 0
 
 
