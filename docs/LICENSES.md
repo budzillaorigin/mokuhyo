@@ -42,6 +42,9 @@ Ported algorithms (code in this repo, original license kept):
 
 | id | Component | License | Attribution / source |
 |---|---|---|---|
+| `llama.cpp` | llama.cpp b11040 — on-device LLM inference, statically linked into `mokuhyo_native` | MIT | © The ggml authors — https://github.com/ggml-org/llama.cpp (tarball SHA-256 in `native/lock.json`) |
+| `whisper.cpp` | whisper.cpp b5130 — on-device speech-to-text, statically linked into `mokuhyo_native` | MIT | © The ggml authors — https://github.com/ggml-org/whisper.cpp (tarball SHA-256 in `native/lock.json`) |
+| `ggml` | ggml tensor library (CPU, Metal, Vulkan backends), the copy vendored in llama.cpp b11040, shared by both engines | MIT | © The ggml authors — https://github.com/ggml-org/ggml |
 
 ## Models (downloaded on first run or bundled)
 
