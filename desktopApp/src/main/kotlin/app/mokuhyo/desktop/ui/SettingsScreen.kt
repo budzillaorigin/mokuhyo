@@ -29,6 +29,7 @@ import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.desktop.BuildInfo
 import app.mokuhyo.desktop.Resources
 import app.mokuhyo.settings.Settings
+import app.mokuhyo.update.UpdateResult
 import io.ktor.client.engine.java.Java
 import kotlinx.coroutines.launch
 
@@ -97,18 +98,14 @@ private fun OllamaSection(app: AppGraph) {
             checked && list == null -> Text("No Ollama server answered at localhost:11434.")
             list != null -> {
                 list.forEach { m ->
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        androidx.compose.material3.RadioButton(
-                            selected = use && model == m.name, enabled = m.excludedReason == null,
-                            onClick = {
-                                model = m.name
-                                use = true
-                                app.settings.put(Settings.Key.OLLAMA_MODEL, m.name)
-                                app.settings.put(Settings.Key.USE_OLLAMA, "true")
-                            },
-                        )
+                    RadioRow(use && model == m.name, enabled = m.excludedReason == null, onSelect = {
+                        model = m.name
+                        use = true
+                        app.settings.put(Settings.Key.OLLAMA_MODEL, m.name)
+                        app.settings.put(Settings.Key.USE_OLLAMA, "true")
+                    }) {
                         Text(m.name + (if (m.parameterSize.isNotEmpty()) " · ${m.parameterSize}" else ""))
-                        m.excludedReason?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
+                        m.excludedReason?.let { Text("  " + it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
                     }
                 }
                 if (use) OutlinedButton(onClick = {
@@ -149,6 +146,19 @@ private fun PrivacySettings(app: AppGraph) {
                 app.settings.put(Settings.Key.UPDATE_CHECK, it.toString())
             })
             Text("Check for updates automatically (GitHub Releases, once a day)")
+        }
+        val update by app.updates.state.collectAsState()
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(onClick = { app.updates.checkNow() }) { Text("Check now") }
+            Text(
+                when (val u = update) {
+                    null -> "This is version ${BuildInfo.version}."
+                    UpdateResult.UpToDate -> "You have the latest version (${BuildInfo.version})."
+                    is UpdateResult.Available -> "Version ${u.version} is available: ${u.release.url}"
+                    is UpdateResult.Failed -> "Couldn't check for updates: ${u.message}"
+                },
+                style = MaterialTheme.typography.bodySmall,
+            )
         }
     }
     SectionCard("Your data") {

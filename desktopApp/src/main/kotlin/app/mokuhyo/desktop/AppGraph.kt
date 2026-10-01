@@ -46,6 +46,7 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
     val modelsDir = File(dataDir, "models")
     val models = ModelManager(FileSystem.SYSTEM, modelsDir.toOkioPath(), Java.create(), manifest, freeBytes = ::freeBytes)
     val downloads = DownloadCenter(scope, models)
+    val updates = Updates(scope, settings)
     val runtime: NativeRuntime by lazy { NativeRuntime.create(settings.bool(Settings.Key.PREFER_CPU)) }
 
     private val _language = MutableStateFlow(settings.get(Settings.Key.CURRENT_LANGUAGE) ?: "ja")

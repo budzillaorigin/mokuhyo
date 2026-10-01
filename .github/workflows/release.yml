@@ -24,7 +24,7 @@ jobs:
         include:
           - { name: windows-x64, os: windows-latest, gpu: vulkan }
           - { name: macos-arm64, os: macos-14, gpu: metal }
-          - { name: macos-x64, os: macos-13, gpu: metal }
+          - { name: macos-x64, os: macos-15-intel, gpu: metal }
           - { name: linux-x64, os: ubuntu-22.04, gpu: vulkan }
     runs-on: ${{ matrix.os }}
     defaults:
@@ -109,3 +109,31 @@ jobs:
         run: |
           gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --title "Mokuhyo $TAG (pre-release)" --notes-file docs/RELEASE_NOTES.md
           gh release upload "$TAG" dist/* --clobber
+
+  fresh-install:
+    name: fresh install (${{ matrix.name }})
+    needs: publish
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: windows-x64, os: windows-latest }
+          - { name: macos-arm64, os: macos-14 }
+          - { name: macos-x64, os: macos-15-intel }
+          - { name: linux-x64, os: ubuntu-22.04 }
+    runs-on: ${{ matrix.os }}
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools/gates
+      - name: Install the published installer and launch it
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: tools/gates/fresh_install_smoke.ps1 -Tag $env:TAG -Name ${{ matrix.name }}
+      - name: Install the published installer and launch it
+        if: runner.os != 'Windows'
+        run: tools/gates/fresh_install_smoke.sh "$TAG" ${{ matrix.name }}

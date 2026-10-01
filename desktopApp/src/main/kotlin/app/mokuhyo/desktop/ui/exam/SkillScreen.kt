@@ -1,5 +1,7 @@
 package app.mokuhyo.desktop.ui.exam
 
+import app.mokuhyo.desktop.ui.CheckRow
+import app.mokuhyo.desktop.ui.RadioRow
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
@@ -176,10 +178,7 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
                 }
                 var includeLocal by remember { mutableStateOf(false) }
                 val local = remember(module.code, skill, generatedVersion) { app.generated.load(app.learnerId, module.code, skill) }
-                if (local.first.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
-                    androidx.compose.material3.Checkbox(includeLocal, { includeLocal = it })
-                    Text("Include ${local.first.size} passages generated on this computer")
-                }
+                if (local.first.isNotEmpty()) CheckRow(includeLocal, { includeLocal = it }) { Text("Include ${local.first.size} passages generated on this computer") }
                 Button(onClick = {
                     val seen = app.history.practisedPassages(app.learnerId, module.code, skill)
                     val c = if (includeLocal) content.withLocal(local.first, local.second) else content
@@ -206,10 +205,7 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
                     (if (skill == Skill.READING) "texts" else "recordings") + ", from ILR 0+ to 3, easiest first. No dictionary, no pausing the clock." +
                     if (skill == Skill.LISTENING) " Each recording plays ${content.blueprint.listening.play.plays}×." else "")
                 FormLength.entries.forEach { l ->
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        RadioButton(length == l, { length = l })
-                        Text("${l.title} — ${content.blueprint.section(skill).itemsFor(l).values.sum()} questions")
-                    }
+                    RadioRow(length == l, { length = l }) { Text("${l.title} — ${content.blueprint.section(skill).itemsFor(l).values.sum()} questions") }
                 }
                 // A listening test can only use passages this computer can play: pre-rendered clips, or any passage
                 // when a voice for the language is available (docs/LANGUAGES.md, D-013).

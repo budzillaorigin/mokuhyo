@@ -40,6 +40,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import app.mokuhyo.update.UpdateResult
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
@@ -102,6 +103,14 @@ fun interface Screens {
     }
 }
 
+/** Opens a release page in the system browser (no-op when the platform has no browser integration). */
+internal fun openUrl(url: String) {
+    runCatching {
+        val d = java.awt.Desktop.getDesktop()
+        if (java.awt.Desktop.isDesktopSupported() && d.isSupported(java.awt.Desktop.Action.BROWSE)) d.browse(java.net.URI(url))
+    }
+}
+
 @Composable
 private fun TitleBar(app: AppGraph, lang: String) {
     var open by remember { mutableStateOf(false) }
@@ -114,6 +123,10 @@ private fun TitleBar(app: AppGraph, lang: String) {
         Text("Mokuhyo", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
         Box(Modifier.weight(1f))
         downloads.values.filterIsInstance<DownloadCenter.State.Running>().firstOrNull()?.let { DownloadPill(it) }
+        val update by app.updates.state.collectAsState()
+        (update as? UpdateResult.Available)?.let { u ->
+            TextButton(onClick = { openUrl(u.release.url) }) { Text("Mokuhyo ${u.version} is available") }
+        }
         Box {
             TextButton(onClick = { open = true }) {
                 Icon(Icons.Outlined.Translate, contentDescription = null)

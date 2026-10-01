@@ -1,5 +1,7 @@
 package app.mokuhyo.desktop.ui.speaking
 
+import app.mokuhyo.desktop.ui.CheckRow
+import app.mokuhyo.desktop.ui.RadioRow
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -223,10 +225,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             } else if (!busy && !finished) {
                 val last = lines.lastOrNull()
                 if (last?.first?.speaker == Speaker.PARTNER) {
-                    if (!test) Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(showText, { showText = it })
-                        Text("Show the question text")
-                    }
+                    if (!test) CheckRow(showText, { showText = it }) { Text("Show the question text") }
                     if (showText && !test) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         OutlinedButton(onClick = { scope.launch { speak(app, last.first.text, module.code) } }) { Text("Repeat the question") }
@@ -297,10 +296,7 @@ private fun InterviewResults(
             pack.checklist.forEach { (lv, statements) ->
                 Text("ILR $lv", fontWeight = FontWeight.SemiBold)
                 statements.forEach { st ->
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(st in checked, { if (it) checked += st else checked -= st })
-                        Text(st)
-                    }
+                    CheckRow(st in checked, { if (it) checked += st else checked -= st }) { Text(st) }
                 }
             }
             Button(onClick = {

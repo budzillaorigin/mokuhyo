@@ -23,6 +23,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.RadioButton
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
@@ -34,7 +41,7 @@ const val DISCLAIMER = "Unofficial practice — not an official rating. Not affi
 fun Page(title: String, subtitle: String? = null, content: @Composable ColumnScope.() -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 32.dp, vertical = 24.dp)) {
         Column(Modifier.widthIn(max = 960.dp)) {
-            Text(title, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.SemiBold)
+            Text(title, Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.SemiBold)
             if (subtitle != null) {
                 Spacer(Modifier.height(4.dp))
                 Text(subtitle, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -49,9 +56,27 @@ fun Page(title: String, subtitle: String? = null, content: @Composable ColumnSco
 fun SectionCard(title: String? = null, modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) {
     Card(modifier.fillMaxWidth().padding(bottom = 16.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
         Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (title != null) Text(title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+            if (title != null) Text(title, Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
             content()
         }
+    }
+}
+
+/** A checkbox whose whole row (label included) toggles it, read by screen readers as one labelled checkbox. */
+@Composable
+fun CheckRow(checked: Boolean, onChange: (Boolean) -> Unit, label: @Composable () -> Unit) {
+    Row(Modifier.toggleable(checked, role = Role.Checkbox, onValueChange = onChange), verticalAlignment = Alignment.CenterVertically) {
+        Checkbox(checked, onCheckedChange = null, Modifier.padding(12.dp))
+        label()
+    }
+}
+
+/** A radio button whose whole row selects it, read by screen readers as one labelled radio button. */
+@Composable
+fun RadioRow(selected: Boolean, onSelect: () -> Unit, enabled: Boolean = true, label: @Composable () -> Unit) {
+    Row(Modifier.selectable(selected = selected, enabled = enabled, role = Role.RadioButton, onClick = onSelect), verticalAlignment = Alignment.CenterVertically) {
+        RadioButton(selected, onClick = null, Modifier.padding(12.dp), enabled = enabled)
+        label()
     }
 }
 

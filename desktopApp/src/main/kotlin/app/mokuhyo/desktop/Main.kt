@@ -28,6 +28,7 @@ fun main(args: Array<String>) {
         "--smoke-opi-full" in args -> exitProcess(SmokeOpiFull.run(args))
     }
     val app = AppGraph()
+    app.updates.startup()
     application {
         val state = rememberWindowState(size = DpSize(1180.dp, 800.dp), position = WindowPosition(Alignment.Center))
         Window(

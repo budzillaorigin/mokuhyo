@@ -36,6 +36,7 @@ class Settings(private val db: MokuhyoDatabase) {
         INPUT_DEVICE("device.audio.input", Scope.DEVICE),
         OUTPUT_DEVICE("device.audio.output", Scope.DEVICE),
         UPDATE_CHECK("device.updates.auto", Scope.DEVICE),
+        UPDATE_LAST_CHECK("device.updates.lastCheck", Scope.DEVICE),
         READING_ONLY("device.readingOnly", Scope.DEVICE),
         DEVELOPER("device.developer", Scope.DEVICE),
     }

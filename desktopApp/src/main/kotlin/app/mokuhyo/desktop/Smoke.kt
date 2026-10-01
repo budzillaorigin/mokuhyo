@@ -10,7 +10,9 @@ import java.nio.file.Files
 /**
  * `--smoke` (BRIEF §11.1 gate_build): headless start-up check of a packaged app. Opens a fresh database, loads the
  * native library (CPU variant), lists the registered languages and renders one Compose frame offscreen. Exit 0 = OK.
- * `--data-dir DIR` uses DIR instead of a temp dir; `--allow-no-native` tolerates a missing native library (dev only).
+ * `--data-dir DIR` uses DIR instead of a temp dir; `--allow-no-native` tolerates a missing native library (dev only);
+ * `--require-packs` (fresh-install smoke) also requires the bundled content packs for all 11 languages, a voice
+ * service and the bundled Whisper model.
  */
 object Smoke {
     fun run(args: Array<String>): Int {
@@ -26,6 +28,14 @@ object Smoke {
         println("smoke: languages ${Languages.all.joinToString(",") { it.code }}")
         if (Languages.all.size != 11) problems += "expected 11 languages, got ${Languages.all.size}"
         println("smoke: models in manifest ${app.manifest.models.size}")
+        if ("--require-packs" in args) {
+            val packs = app.installedPacks()
+            println("smoke: bundled packs ${packs.content.sorted()}, piper voices ${packs.voices.size}, models ${packs.models}")
+            val missing = Languages.all.map { it.code }.filter { it !in packs.content }
+            if (missing.isNotEmpty()) problems += "content packs missing for $missing"
+            if (app.manifest.models.none { it.bundled && it.id in packs.models }) problems += "bundled Whisper model missing"
+            if (packs.voices.isEmpty()) problems += "no bundled Piper voices"
+        }
         val scene = ImageComposeScene(1180, 800, Density(1f)) { MokuhyoTheme(dark = false) { Shell(app) } }
         val image: org.jetbrains.skia.Image = scene.render()
         scene.close()

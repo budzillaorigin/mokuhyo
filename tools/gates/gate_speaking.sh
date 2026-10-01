@@ -13,7 +13,8 @@ GRADLE="${GRADLE:-./gradlew}"
 export MOKUHYO_REQUIRE_PACKS=1
 
 echo "== gate_speaking: packs"
-(cd tools && uv run --locked --group content python -W ignore packs/build_packs.py --language all)
+# This gate exercises the OPI packs only; exam-bank completeness is gate_exam's job (strict build there).
+(cd tools && uv run --locked --group content python -W ignore packs/build_packs.py --language all --allow-empty)
 
 echo "== gate_speaking: sessions, mock model, scripted fallback, golden ratings"
 $GRADLE :shared:jvmTest --tests 'app.mokuhyo.opi.*' --tests 'app.mokuhyo.ai.*' --rerun --console=plain

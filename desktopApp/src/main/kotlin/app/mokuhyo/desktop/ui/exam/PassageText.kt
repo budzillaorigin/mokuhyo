@@ -1,5 +1,14 @@
 package app.mokuhyo.desktop.ui.exam
 
+import androidx.compose.foundation.focusable
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -63,19 +72,38 @@ fun PassageText(app: AppGraph, module: LanguageModule, text: String, aids: AidSt
     var tokens by remember(shown) { mutableStateOf<List<Token>>(emptyList()) }
     LaunchedEffect(shown) { tokens = withContext(Dispatchers.Default) { module.segment(shown) } }
     var selected by remember(shown) { mutableStateOf<Token?>(null) }
-    val font = Fonts.forLanguage(module.code)
     val rtl = module.script.direction == Direction.RTL
+    // Keyboard access: with the passage focused, ←/→ move a word cursor and Enter/Space defines the word.
+    var cursor by remember(shown) { mutableStateOf<Token?>(null) }
+    val words = remember(tokens) { tokens.filter { it.isWord } }
+    val keys = Modifier.focusable(tapToDefine).onPreviewKeyEvent { e ->
+        if (e.type != KeyEventType.KeyDown || words.isEmpty()) return@onPreviewKeyEvent false
+        val i = words.indexOf(cursor)
+        // Visual order: in right-to-left text the next word is to the left.
+        val forward = if (rtl) Key.DirectionLeft else Key.DirectionRight
+        val back = if (rtl) Key.DirectionRight else Key.DirectionLeft
+        when (e.key) {
+            forward -> { cursor = words[(i + 1).coerceAtMost(words.lastIndex)]; true }
+            back -> { cursor = words[(i - 1).coerceAtLeast(0)]; true }
+            Key.Enter, Key.Spacebar -> { cursor?.let { selected = it }; cursor != null }
+            else -> false
+        }
+    }.semantics { contentDescription = "Passage. Use the arrow keys to move between words and Enter to look one up." }
+    val font = Fonts.forLanguage(module.code)
     val style = TextStyle(fontFamily = font, fontSize = 20.sp, lineHeight = 34.sp, textDirection = if (rtl) TextDirection.Rtl else TextDirection.Ltr,
         color = MaterialTheme.colorScheme.onSurface)
     CompositionLocalProvider(LocalLayoutDirection provides if (rtl) LayoutDirection.Rtl else LayoutDirection.Ltr) {
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(keys, verticalArrangement = Arrangement.spacedBy(8.dp)) {
             if (aids.ruby && ReadingAids.Aid.RUBY in module.readingAids.available) {
                 // Ruby layout: each token a small reading over the word (CJK has no spaces, so token wrapping reads naturally).
                 FlowRow {
                     tokens.forEach { t ->
                         Column(Modifier.padding(horizontal = 1.dp).pointerInput(t) { detectTapGestures { if (tapToDefine && t.isWord) selected = t } }) {
                             Text(module.readingAids.ruby(t) ?: " ", fontSize = 11.sp, fontFamily = font, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            Text(t.text, style = style.copy(background = if (selected == t) MaterialTheme.colorScheme.secondaryContainer else androidx.compose.ui.graphics.Color.Unspecified))
+                            Text(t.text, style = style.copy(
+                                background = if (selected == t) MaterialTheme.colorScheme.secondaryContainer else androidx.compose.ui.graphics.Color.Unspecified,
+                                textDecoration = if (cursor == t) TextDecoration.Underline else null,
+                            ))
                         }
                     }
                 }
@@ -85,7 +113,11 @@ fun PassageText(app: AppGraph, module: LanguageModule, text: String, aids: AidSt
                     var last = 0
                     tokens.forEach { t ->
                         if (t.start > last) append(shown.substring(last, t.start))
-                        if (t == selected) withStyle(SpanStyle(background = MaterialTheme.colorScheme.secondaryContainer)) { append(t.text) } else append(t.text)
+                        when (t) {
+                            selected -> withStyle(SpanStyle(background = MaterialTheme.colorScheme.secondaryContainer)) { append(t.text) }
+                            cursor -> withStyle(SpanStyle(textDecoration = TextDecoration.Underline)) { append(t.text) }
+                            else -> append(t.text)
+                        }
                         last = t.end
                     }
                     if (last < shown.length) append(shown.substring(last))

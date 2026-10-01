@@ -129,3 +129,13 @@ estimate above the sustained level at the sustained level (the ILR rating is the
 quotes, and keeps one to three next steps. The interviewer prompt keeps the static instructions and the transcript
 first and the per-turn instructions last so llama.cpp reuses its prompt cache across turns, and rejects questions that
 repeat an earlier question or echo the candidate (character-bigram similarity ≥ 0.7).
+A model-suggested `next_phase` that points backwards is clamped by the session instead of rejecting the turn
+(OpiSession.advance never moves back); the full-interview smoke showed it throwing away otherwise good questions.
+
+## D-018 Update check source (unattended default)
+The optional update check (off by default, at most once a day, plus "Check now") reads
+`https://api.github.com/repos/budzillaorigin/mokuhyo/releases` unauthenticated and only links the newer release page;
+nothing is downloaded or installed. App tags `vX.Y.Z[-pre]` count, content-pack releases (`packs-…`) and drafts don't,
+and pre-releases count while the installed build is 0.x or itself a pre-release. The repository is private, so until
+the owner makes it public the check reports "the release list isn't public yet". Making it public is a release decision
+left to the owner.

@@ -54,10 +54,7 @@ fun ReportScreen(app: AppGraph) {
         }
         SectionCard("Languages") {
             Languages.all.filter { it.code in app.chosenLanguages() || app.history.attempts(app.learnerId, it.code).isNotEmpty() }.forEach { l ->
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Checkbox(l.code in langs, { if (it) langs += l.code else langs -= l.code })
-                    Text(l.nameEnglish)
-                }
+                CheckRow(l.code in langs, { if (it) langs += l.code else langs -= l.code }) { Text(l.nameEnglish) }
             }
         }
         SectionCard("Options") {
