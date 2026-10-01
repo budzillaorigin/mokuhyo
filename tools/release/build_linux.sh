@@ -45,6 +45,8 @@ docker run --rm --platform linux/amd64 \
         unzip fakeroot dpkg-dev libvulkan-dev libasound2 libgl1 libfontconfig1 libfreetype6 libx11-6 libxext6 libxrender1 \
         libxtst6 libxi6 >/dev/null; }
     export JAVA_HOME=/work/jdk PATH=/work/jdk/bin:/work/bin:/work/vulkan/$VK/x86_64/bin:$PATH VULKAN_SDK=/work/vulkan/$VK/x86_64
+    # Ubuntu 22.04 ships CMake 3.22; the native and Piper builds need 3.24+ (FetchContent DOWNLOAD_EXTRACT_TIMESTAMP).
+    export CMAKE="uvx --from cmake>=3.28 cmake"
     mkdir -p /work/src && tar -xf /src.tar -C /work/src && cd /work/src
     mkdir -p tools/.cache content/packs voices/models
     ln -sfn /cache/models tools/.cache/models; ln -sfn /cache/fonts tools/.cache/fonts
