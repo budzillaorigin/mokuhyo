@@ -3,6 +3,7 @@ package app.mokuhyo.desktop.ui
 import androidx.compose.runtime.Composable
 import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.desktop.ui.exam.SkillScreen
+import app.mokuhyo.desktop.ui.speaking.SpeakingScreen
 import app.mokuhyo.exam.Skill
 
 /** Screens before their phase lands: honest empty states, never fake content. */
@@ -12,6 +13,7 @@ fun PlaceholderScreens(destination: Destination, app: AppGraph, navigate: (Desti
         Destination.HOME -> HomeDashboard(app, navigate)
         Destination.READING -> SkillScreen(app, Skill.READING)
         Destination.LISTENING -> SkillScreen(app, Skill.LISTENING)
+        Destination.SPEAKING -> SpeakingScreen(app)
         Destination.REVIEW -> ReviewScreen(app)
         Destination.HISTORY -> HistoryList(app)
         Destination.SETTINGS -> SettingsScreen(app)

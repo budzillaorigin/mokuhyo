@@ -34,6 +34,7 @@ kotlin {
             implementation(libs.sqldelight.sqlite.driver)
             implementation(libs.icu4j)
             implementation(libs.pdfbox)
+            implementation(libs.concentus)
         }
     }
 }

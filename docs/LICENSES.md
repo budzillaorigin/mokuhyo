@@ -33,6 +33,7 @@ Mokuhyo's own code is Apache-2.0 (`LICENSE`). Mokuhyo's original content (bluepr
 | `org.jetbrains.androidx.*:*`, `androidx.*:*` | AndroidX libraries used by Compose (lifecycle, savedstate, navigationevent, collection, annotation, arch core) | Apache-2.0 | © The Android Open Source Project — https://developer.android.com/jetpack/androidx |
 | `org.jetbrains.runtime:jbr-api` | JetBrains Runtime API (optional window-decoration API used by Compose Desktop) | Apache-2.0 | © JetBrains s.r.o. — https://github.com/JetBrains/JetBrainsRuntimeApi |
 | `org.jetbrains.kotlinx:atomicfu*` | kotlinx atomicfu | Apache-2.0 | © JetBrains s.r.o. — https://github.com/Kotlin/kotlinx-atomicfu |
+| `io.github.jaredmdobson:concentus` | Concentus — pure-Java Opus codec (listening clips) | BSD-3-Clause (Opus licence) | © Skype Limited, Xiph.Org Foundation, CSIRO, Microsoft, Jean-Marc Valin, Logan Stromberg et al. — https://github.com/lostromb/concentus |
 | `org.jspecify:jspecify` | JSpecify annotations | Apache-2.0 | © The JSpecify Authors — https://jspecify.dev |
 | `empty` | Gradle lockfile placeholder line, not an artifact | — | — |
 

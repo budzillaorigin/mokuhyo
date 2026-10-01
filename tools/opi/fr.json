@@ -1,0 +1,176 @@
+{
+ "language": "fr",
+ "profile": {
+  "language": "fr",
+  "registerNotes": "Vouvoyez the candidate (vous). In role-plays use tu only between friends. Standard metropolitan French.",
+  "formalityMarkers": [
+   "vous",
+   "tu",
+   "conditionnel de politesse"
+  ],
+  "levelCheckTopics": {
+   "0+": [
+    "name and greetings",
+    "numbers and prices",
+    "days and times",
+    "family members"
+   ],
+   "1": [
+    "daily routine",
+    "home and neighborhood",
+    "food and shopping",
+    "weekend activities",
+    "work or studies"
+   ],
+   "1+": [
+    "a recent trip",
+    "describing your hometown",
+    "a typical workday",
+    "plans for next year"
+   ],
+   "2": [
+    "a memorable event in detail",
+    "comparing two places you lived",
+    "explaining a process at work",
+    "a current event in your country"
+   ],
+   "2+": [
+    "advantages and disadvantages of a policy",
+    "how your profession has changed",
+    "a problem in your community and its causes"
+   ],
+   "3": [
+    "supporting an opinion on an abstract issue",
+    "hypothetical: what if your country changed a major policy",
+    "the role of technology in society",
+    "ethics of a professional decision"
+   ]
+  },
+  "rolePlaySeeds": [
+   "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+   "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+   "Report a lost passport at a police station (interviewer: police officer).",
+   "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+   "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+   "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+   "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+   "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ]
+ },
+ "questions": [
+  {
+   "id": "fr-q-warmup-0+-01",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Comment vous appelez-vous?",
+   "english": "What is your name?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-q-warmup-0+-02",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Où habitez-vous?",
+   "english": "Where do you live?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-q-warmup-0+-03",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Aimez-vous sortir le soir?",
+   "english": "Do you like to go out in the evening?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-q-warmup-0+-04",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "Quel est votre plat préféré?",
+   "english": "What is your favorite dish?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-q-warmup-1-01",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Vous avez des frères et sœurs ?",
+   "english": "Do you have any brothers and sisters?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-q-warmup-1-02",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Quel est votre travail ?",
+   "english": "What is your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-q-warmup-1-03",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Vous aimez cuisiner ?",
+   "english": "Do you like to cook?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-q-warmup-1-04",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "Vous participez à des événements dans votre communauté ?",
+   "english": "Do you participate in events in your community?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "rolePlays": [],
+ "topics": [],
+ "checklist": {
+  "0+": [
+   "I can greet people and say my name.",
+   "I can give numbers, prices, days and times.",
+   "I can answer very simple questions with memorized phrases."
+  ],
+  "1": [
+   "I can make simple sentences about myself, my family and my daily routine.",
+   "I can ask and answer simple questions about familiar topics.",
+   "I can handle basic needs: ordering food, buying a ticket, asking for directions."
+  ],
+  "1+": [
+   "I can describe places and people in connected sentences.",
+   "I can tell what happened on a recent trip or weekend.",
+   "I can handle routine situations even when something small goes wrong."
+  ],
+  "2": [
+   "I can narrate past, present and future events in paragraphs.",
+   "I can describe and explain concrete topics at work and in the news.",
+   "I can resolve a complication in a role-play, like a cancelled reservation."
+  ],
+  "2+": [
+   "I can often support my opinions with reasons and examples.",
+   "I can discuss some abstract topics, although I sometimes break down.",
+   "I can explain the causes and effects of a problem in my community."
+  ],
+  "3": [
+   "I can support and defend opinions on abstract and unfamiliar topics.",
+   "I can hypothesize about situations that did not happen.",
+   "I can speak at length with good control of grammar and vocabulary."
+  ]
+ }
+}

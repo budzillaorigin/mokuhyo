@@ -3,14 +3,11 @@ package app.mokuhyo.desktop
 import app.mokuhyo.exam.ExamPassage
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.speech.OggOpus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.security.MessageDigest
-import javax.sound.sampled.AudioFormat
-import javax.sound.sampled.AudioInputStream
-import javax.sound.sampled.AudioSystem
 
 /**
  * Audio for a listening passage (BRIEF §5.3, CLAUDE.md "pre-rendered where consistency matters"): the pack's
@@ -58,17 +55,13 @@ class PassageAudio(private val app: AppGraph) {
         val VOICE_NOTES = mapOf("fa" to "synthetic voice; some words are mispronounced")
     }
 
-    private fun decode(file: File): ByteArray = file.readBytes()
+    /** Pack clips are Ogg Opus (or WAV); the player wants WAV. */
+    private fun decode(file: File): ByteArray {
+        val bytes = file.readBytes()
+        return if (OggOpus.isOggOpus(bytes)) AudioIO.wav(OggOpus.decode(bytes)) else bytes
+    }
 
     private fun digest(s: String): String =
         MessageDigest.getInstance("SHA-256").digest(s.toByteArray()).take(6).joinToString("") { "%02x".format(it) }
 
-    @Suppress("unused")
-    private fun silence(ms: Int): ByteArray {
-        val format = AudioFormat(16_000f, 16, 1, true, false)
-        val bytes = ByteArray(16 * ms * 2)
-        val out = ByteArrayOutputStream()
-        AudioSystem.write(AudioInputStream(bytes.inputStream(), format, (bytes.size / 2).toLong()), javax.sound.sampled.AudioFileFormat.Type.WAVE, out)
-        return out.toByteArray()
-    }
 }

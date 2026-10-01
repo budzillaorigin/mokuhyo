@@ -23,6 +23,8 @@ fun main(args: Array<String>) {
         "--smoke-opi" in args -> exitProcess(SmokeOpi.run(args))
         "--smoke-lang" in args -> exitProcess(LangSmoke.run(args, app.mokuhyo.tts.VoiceService.create()))
         "--screenshots" in args -> exitProcess(Screenshots.run(args))
+        "--render-audio" in args -> exitProcess(RenderAudio.run(args))
+        "--eval-speaking" in args -> exitProcess(EvalSpeaking.run(args))
     }
     val app = AppGraph()
     application {
