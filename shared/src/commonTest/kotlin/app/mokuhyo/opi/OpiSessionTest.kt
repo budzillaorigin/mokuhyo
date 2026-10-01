@@ -1,112 +1,130 @@
 package app.mokuhyo.opi
 
 import app.mokuhyo.ai.AiGateway
-import app.mokuhyo.ai.CompletionRequest
-import app.mokuhyo.ai.CompletionResult
-import app.mokuhyo.ai.LanguageModel
-import app.mokuhyo.ai.prompts.OpiPhase
+import app.mokuhyo.ai.FakeModel
 import app.mokuhyo.exam.IlrLevel
-import app.mokuhyo.opi.OpiBank
-import app.mokuhyo.opi.OpiQuestion
 import kotlinx.coroutines.test.runTest
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-import app.mokuhyo.opi.OpiPhase as BankPhase
 
+/** CLAUDE.md rule 10: the OPI session against a mock model and against the scripted fallback, in any language. */
 class OpiSessionTest {
+    private val profile = OpiProfile("es", "Use usted with the candidate.")
+    private val words: (String) -> Int = { s -> s.split(Regex("\\s+")).count { it.isNotBlank() } }
 
-    private val banks: Map<IlrLevel, OpiBank> = IlrLevel.lowerRange.associateWith { level ->
-        OpiBank(
-            level.label,
-            BankPhase.entries.flatMap { phase -> (1..4).map { OpiQuestion(phase, "${level.label}-${phase.name}-$it？", "Q $it", "", "llm") } },
-            listOf("statement ${level.label} a", "statement ${level.label} b"),
-        )
+    private val bank: List<BankQuestion> = OpiPhase.entries.flatMap { phase ->
+        IlrLevel.lowerRange.flatMap { lv ->
+            (1..4).map { n -> BankQuestion("${phase.wireName}-${lv.label}-$n", phase.wireName, lv.label, "¿Pregunta ${phase.wireName} ${lv.label} $n?", "Question $n", domain = listOf("work", "family", "travel", "abstract")[n - 1]) }
+        }
     }
+    private val rolePlays = listOf(RolePlay("rp1", "1", "You are at a hotel.", "receptionist", "Buenas tardes, ¿en qué puedo ayudarle?", "Good afternoon, how can I help you?"))
 
-    private val noModel = AiGateway({ null })
+    private fun scripted(test: Boolean = false) = OpiSession("es", profile, bank, rolePlays, AiGateway({ null }), words, test = test, random = Random(1))
 
     @Test
-    fun scriptedInterviewRunsAllPhasesInOrder() = runTest {
-        val session = OpiSession(banks, noModel, random = Random(1))
+    fun scriptedFallbackRunsAllFivePhases() = runTest {
+        val s = scripted()
         val phases = mutableListOf<OpiPhase>()
         while (true) {
-            val line = session.next() ?: break
+            val line = s.next() ?: break
             phases += line.phase
-            assertTrue(line.english.isNotEmpty())
             assertNull(line.engine)
-            session.answer("はい、そうです。")
+            s.answer("Sí, trabajo en una oficina en el centro de la ciudad y me gusta mucho mi trabajo porque es interesante.")
         }
-        assertEquals(OpiSession.PLAN.values.sum(), phases.size)
-        assertEquals(phases.sortedBy { it.ordinal }, phases, "phases never go back")
-        assertEquals(OpiPhase.entries.toList(), phases.distinct())
-        assertTrue(session.finished)
+        assertEquals(OpiPhase.entries, phases.distinct())
+        assertEquals(OpiSession.PRACTICE_PLAN.values.sum(), phases.size)
+        assertTrue(s.finished)
+        assertTrue(s.turns.any { it.question == rolePlays.single().opening }, "role-play opening used")
+        assertEquals(phases.size, s.turns.map { it.question }.distinct().size, "no repeated questions")
     }
 
     @Test
-    fun strongAnswersRaiseAndBreakdownLowersTheWorkingLevel() = runTest {
-        val session = OpiSession(banks, noModel, IlrLevel.L1, random = Random(2))
-        while (session.phase != OpiPhase.LEVEL_CHECK) { session.next(); session.answer("はい。") }
-        assertEquals(IlrLevel.L1, session.workingLevel)
-        session.next()
-        session.answer("週末はたいてい家族と一緒に近くの公園へ行って、散歩をしたり、お弁当を食べたりします。")
-        assertTrue(session.workingLevel > IlrLevel.L1)
-        val raised = session.workingLevel
-        session.next()
-        session.answer("えっと")
-        assertTrue(session.workingLevel < raised)
+    fun testModeRunsTheFullPlan() = runTest {
+        val s = scripted(test = true)
+        var n = 0
+        while (s.next() != null) {
+            s.answer("Bueno, creo que es una pregunta difícil, pero en mi opinión depende de muchas cosas.")
+            n++
+        }
+        assertEquals(OpiSession.TEST_PLAN.values.sum(), n)
     }
 
     @Test
-    fun noQuestionsRepeat() = runTest {
-        val session = OpiSession(banks, noModel, random = Random(3))
-        val asked = mutableListOf<String>()
-        while (true) { asked += (session.next() ?: break).japanese; session.answer("はい") }
-        assertEquals(asked.size, asked.toSet().size)
+    fun levelAdaptsUpOnLongAnswersAndDownOnBreakdown() = runTest {
+        val s = scripted()
+        while (s.phase != OpiPhase.LEVEL_CHECK) { s.next(); s.answer("Sí.") }
+        val before = s.workingLevel
+        s.next()
+        s.answer((1..40).joinToString(" ") { "palabra$it" })
+        assertTrue(s.workingLevel > before, "should move up from $before")
+        s.next()
+        s.answer("No.")
+        assertTrue(s.turns.last().outcome == OpiTurnOutcome.BREAKDOWN)
     }
 
     @Test
-    fun withoutAModelTheLearnerSelfRates() = runTest {
-        val session = OpiSession(banks, noModel)
-        session.next()
-        session.answer("はい")
-        val rating = session.rate()
+    fun noModelMeansSelfRating() = runTest {
+        val s = scripted()
+        s.next()
+        s.answer("Hola, me llamo Ana.")
+        val rating = s.rate()
         assertTrue(rating.needsSelfRating)
-        val all = session.checklist().map { it.second }
-        val upTo2 = session.checklist().filter { it.first <= IlrLevel.L2 }.map { it.second }.toSet()
-        assertEquals(IlrLevel.L2, session.selfRate(upTo2).ilr)
-        assertEquals(IlrLevel.L3, session.selfRate(all.toSet()).ilr)
-        assertNull(session.selfRate(emptySet()).ilr)
-        // A gap at 1+ caps the rating at 1 even if higher statements are checked.
-        val gap = all.toSet() - "statement 1+ a"
-        assertEquals(IlrLevel.L1, session.selfRate(gap).ilr)
+        val checklist = mapOf("0+" to listOf("a"), "1" to listOf("b"), "1+" to listOf("c"))
+        assertEquals("1", s.selfRate(checklist, setOf("a", "b")).estimate)
     }
 
     @Test
-    fun modelRatingMapsActflToIlr() = runTest {
-        val model = object : LanguageModel {
-            override val id = "fake"
-            override val isLocal = false
-            override suspend fun complete(request: CompletionRequest): CompletionResult {
-                val system = request.messages.first().content
-                val text = if ("estimate the candidate" in system) {
-                    """{"level":"Intermediate High","functions":3,"accuracy":3,"vocabulary":3,"fluency":4,"rationale":"The candidate handled routine questions and narrated in paragraphs with some breakdown.","strengths":["narration"],"next_steps":["past tense"]}"""
-                } else {
-                    """{"utterance":"お名前は何ですか。","next_phase":"warmup","topic":"name"}"""
-                }
-                return CompletionResult(text, "fake", null)
-            }
-        }
-        val session = OpiSession(banks, AiGateway({ model }))
-        val line = assertNotNull(session.next())
-        assertEquals("fake", line.engine)
-        session.answer("キムです。")
-        val rating = session.rate()
-        assertEquals(IlrLevel.L1_PLUS, rating.ilr)
-        assertEquals("fake", rating.engine)
-        assertEquals(IlrLevel.L2, OpiSession.ilrFor("Advanced Mid"))
+    fun mockModelDrivesTheInterviewAndRates() = runTest {
+        val turn = """{"utterance":"¿Dónde vive usted?","english":"Where do you live?","next_phase":"level_check","topic":"home","domain":"personal"}"""
+        val rate = """{"functions":{"level":"2","evidence":"Narrates past events.","quotes":["fui a Madrid"]},
+            "context_content":{"level":"2","evidence":"Concrete topics.","quotes":[]},
+            "accuracy":{"level":"1+","evidence":"Some agreement errors.","quotes":[]},
+            "text_type":{"level":"2","evidence":"Paragraph-length answers.","quotes":[]},
+            "sustained_level":"2","breakdown_level":"2+","estimate":"2",
+            "rationale":"The candidate narrates and describes in paragraphs on concrete topics but breaks down when asked to support an opinion.",
+            "next_steps":["Practise supporting opinions with two reasons.","Review past-tense agreement.","Describe a process step by step."]}"""
+        val model = FakeModel(turn, rate)
+        val s = OpiSession("es", profile, emptyList(), emptyList(), AiGateway({ model }), words)
+        val line = s.next()
+        assertNotNull(line)
+        assertEquals("fake engine", line.engine)
+        assertEquals(OpiPhase.LEVEL_CHECK, s.phase)
+        s.answer("Vivo en Madrid. El año pasado fui a Madrid para trabajar.")
+        val rating = s.rate()
+        assertEquals("2", rating.estimate)
+        assertEquals(3, rating.nextSteps.size)
+        assertFalse(rating.needsSelfRating)
+        assertEquals(setOf("functions", "context_content", "accuracy", "text_type"), rating.factors.keys)
+    }
+
+    @Test
+    fun invented_quotesAreRejected() = runTest {
+        val rate = """{"functions":{"level":"3","evidence":"x","quotes":["discurso abstracto brillante"]},
+            "context_content":{"level":"3","evidence":"x","quotes":[]},"accuracy":{"level":"3","evidence":"x","quotes":[]},
+            "text_type":{"level":"3","evidence":"x","quotes":[]},"sustained_level":"3","estimate":"3",
+            "rationale":"Excellent extended discourse on abstract topics throughout the interview.","next_steps":["a","b","c"]}"""
+        val s = OpiSession("es", profile, emptyList(), emptyList(), AiGateway({ FakeModel(rate, rate) }), words)
+        s.answer("Me llamo Ana.")
+        assertTrue(s.rate().needsSelfRating)
+    }
+
+    @Test
+    fun topicConversationTracksRollingLevelAndRecurringErrors() = runTest {
+        fun reply(level: String) = """{"reply":"¡Qué interesante! ¿Por qué?","corrected":"Yo fui al parque.",""" +
+            """"changes":[{"from":"va","to":"fui","why":"past tense"}],"rewrite":"Fui al parque.","vocabulary":[],"turn_level":"$level"}"""
+        val model = FakeModel(reply("1"), reply("2"), reply("2"))
+        val topic = Topic("t1", "daily_life", "Weekend plans", "¿Qué hizo el fin de semana?")
+        val t = TopicSession("es", profile, topic, AiGateway({ model }))
+        repeat(3) { assertNotNull(t.say("Yo va al parque.")) }
+        assertEquals(IlrLevel.L2, t.rollingLevel)
+        assertEquals(listOf("1", "2", "2"), t.levelTrack)
+        assertEquals(1, t.recurringErrors().size)
+        assertTrue(t.redoLast())
+        assertEquals(2, t.exchanges.size)
     }
 }

@@ -1,5 +1,7 @@
 package app.mokuhyo.ai
 
+import app.mokuhyo.lang.ScriptCheck
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -7,22 +9,17 @@ import kotlin.test.assertNull
 
 class ValidationTest {
     @Test
-    fun scriptLeaks() {
-        assertNull(Validation.scriptLeak("昨日、CDを買いました。"))
-        assertNull(Validation.scriptLeak("ＮＨＫのニュースを見る。1990年"))
-        assertNotNull(Validation.scriptLeak("私はgakkouに行きます"))
-        assertNotNull(Validation.scriptLeak("これは the answer です"))
-        assertNotNull(Validation.scriptLeak("안녕하세요"))
-        assertNotNull(Validation.scriptLeak("привет"))
-    }
-
-    @Test
-    fun requireJapaneseAndEnglish() {
-        assertNull(Validation.requireJapanese("f", "猫が好きです"))
-        assertEquals("f is not Japanese", Validation.requireJapanese("f", "I like cats"))
-        assertEquals("f is empty", Validation.requireJapanese("f", " "))
-        assertNull(Validation.requireEnglish("f", "The particle は marks the topic."))
-        assertEquals("f is not English", Validation.requireEnglish("f", "これは説明です。"))
+    fun scriptCheckPerLanguage() {
+        assertNull(ScriptCheck.requireLanguage("f", "昨日、CDを買いました。", "ja"))
+        assertNotNull(ScriptCheck.requireLanguage("f", "私はgakkouに行きます", "ja"))
+        assertNotNull(ScriptCheck.requireLanguage("f", "انا أحب items الجميلة", "ar"))
+        assertNull(ScriptCheck.requireLanguage("f", "مرحبا، كيف حالك؟ NATO", "ar"))
+        assertNotNull(ScriptCheck.requireLanguage("f", "새로운 병원은 心血管 질환을 치료합니다", "ko"))
+        assertNull(ScriptCheck.requireLanguage("f", "Pemerintah mengumumkan kebijakan baru.", "id"))
+        assertNotNull(ScriptCheck.requireLanguage("f", "I like cats", "ru"))
+        assertEquals("f is not in Spanish", ScriptCheck.requireLanguage("f", "Привет, как дела?", "es"))
+        assertNull(ScriptCheck.requireEnglish("f", "Use the past tense here."))
+        assertEquals("f is not English", ScriptCheck.requireEnglish("f", "過去形を使います"))
     }
 
     @Test

@@ -1,0 +1,88 @@
+package app.mokuhyo.opi
+
+import app.mokuhyo.ai.AiGateway
+import app.mokuhyo.ai.AiResult
+import app.mokuhyo.exam.IlrLevel
+import kotlinx.serialization.Serializable
+import kotlin.time.Clock
+import kotlin.time.Instant
+
+/** One exchange of a topic conversation with the feedback on the learner's turn. */
+@Serializable
+data class TopicExchange(
+    val learner: String,
+    val reply: String,
+    val replyEnglish: String = "",
+    val corrected: String? = null,
+    val changes: List<TopicTurn.Change> = emptyList(),
+    val rewrite: String? = null,
+    val vocabulary: List<TopicTurn.Vocab> = emptyList(),
+    val turnLevel: String? = null,
+    val engine: String? = null,
+)
+
+/**
+ * Topic conversation (BRIEF §6.3): the learner talks about a topic; after each turn the partner replies at the
+ * learner's rolling level and corrections, a natural rewrite and vocabulary notes appear. The rolling level is the
+ * median of the last five turn levels (stable against one long or short answer). Recurring corrections are reported
+ * for the review queue.
+ */
+class TopicSession(
+    val language: String,
+    private val profile: OpiProfile,
+    val topic: Topic,
+    private val gateway: AiGateway,
+    startLevel: IlrLevel = IlrLevel.L1,
+    private val clock: Clock = Clock.System,
+) {
+    val startedAt: Instant = clock.now()
+    private val history = mutableListOf(Turn(Speaker.PARTNER, topic.opener))
+    private val levels = mutableListOf<IlrLevel>()
+    val exchanges = mutableListOf<TopicExchange>()
+
+    var rollingLevel: IlrLevel = startLevel
+        private set
+
+    /** Rolling level after each turn (stored with the conversation). */
+    val levelTrack = mutableListOf<String>()
+
+    val transcript: List<Turn> get() = history.toList()
+
+    /** Sends the learner's turn; returns the exchange, or null when no model is available (topic mode needs one). */
+    suspend fun say(text: String): TopicExchange? {
+        val said = text.trim()
+        if (said.isEmpty()) return null
+        history += Turn(Speaker.LEARNER, said)
+        val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList())
+        val exchange = when (val r = gateway.run(TopicTurn(), input)) {
+            is AiResult.Ok -> r.value.let { o ->
+                TopicExchange(said, o.reply, o.replyEnglish, o.corrected.takeIf { it.trim() != said }, o.changes, o.rewrite, o.vocabulary, o.turnLevel, r.engine)
+            }
+            else -> {
+                history.removeAt(history.lastIndex)
+                return null
+            }
+        }
+        history += Turn(Speaker.PARTNER, exchange.reply)
+        exchange.turnLevel?.let(IlrLevel::parse)?.let { levels += it }
+        rollingLevel = levels.takeLast(5).sorted().let { it[it.size / 2] }
+        levelTrack += rollingLevel.label
+        exchanges += exchange
+        return exchange
+    }
+
+    /** "Say it again": drop the last exchange so the learner can redo it. */
+    fun redoLast(): Boolean {
+        if (exchanges.isEmpty()) return false
+        exchanges.removeAt(exchanges.lastIndex)
+        repeat(2) { if (history.size > 1) history.removeAt(history.lastIndex) }
+        if (levels.isNotEmpty()) levels.removeAt(levels.lastIndex)
+        if (levelTrack.isNotEmpty()) levelTrack.removeAt(levelTrack.lastIndex)
+        rollingLevel = levels.takeLast(5).sorted().let { if (it.isEmpty()) rollingLevel else it[it.size / 2] }
+        return true
+    }
+
+    /** Corrections that came up at least twice in this conversation (fed to the review queue as ERROR items). */
+    fun recurringErrors(): List<TopicTurn.Change> =
+        exchanges.flatMap { it.changes }.groupBy { it.from.lowercase().trim() to it.to.lowercase().trim() }.values.filter { it.size >= 2 }.map { it.first() }
+}

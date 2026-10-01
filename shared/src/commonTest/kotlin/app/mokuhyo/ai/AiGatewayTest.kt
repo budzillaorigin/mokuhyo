@@ -1,6 +1,9 @@
 package app.mokuhyo.ai
 
-import app.mokuhyo.ai.prompts.CorrectSentence
+import app.mokuhyo.exam.IlrLevel
+import app.mokuhyo.opi.Speaker
+import app.mokuhyo.opi.TopicTurn
+import app.mokuhyo.opi.Turn
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -27,17 +30,21 @@ class FakeModel(vararg replies: Any?) : LanguageModel {
 }
 
 class AiGatewayTest {
-    private val task = CorrectSentence()
-    private val input = CorrectSentence.Input("私は学校を行きます。")
-    private val good = """{"is_correct":false,"corrected":"私は学校に行きます。","confidence":0.9,""" +
-        """"edits":[{"original":"を","replacement":"に","reason":"行く takes に for a destination."}],"explanation":"Use に with 行く."}"""
+    private val task = TopicTurn()
+    private val input = TopicTurn.Input(
+        "es", "Use usted.", "Weekend plans", "daily_life", IlrLevel.L1,
+        listOf(Turn(Speaker.PARTNER, "¿Qué hizo el fin de semana?"), Turn(Speaker.LEARNER, "Yo va al parque con mi familia.")),
+    )
+    private val good = """{"reply":"¡Qué bien! ¿Y qué hicieron en el parque?","reply_english":"How nice! And what did you do in the park?",""" +
+        """"corrected":"Yo fui al parque con mi familia.","changes":[{"from":"va","to":"fui","why":"Past tense, first person."}],""" +
+        """"rewrite":"Fui al parque con mi familia.","vocabulary":[{"word":"pasear","meaning":"to stroll","example":"Paseamos por el parque."}],"turn_level":"1"}"""
 
     @Test
     fun okOnFirstValidAnswer() = runTest {
         val model = FakeModel(good)
         val result = AiGateway({ model }).run(task, input)
-        assertIs<AiResult.Ok<CorrectSentence.Output>>(result)
-        assertEquals("私は学校に行きます。", result.value.corrected)
+        assertIs<AiResult.Ok<TopicTurn.Output>>(result)
+        assertEquals("Yo fui al parque con mi familia.", result.value.corrected)
         assertEquals("fake engine", result.engine)
         assertEquals(1, model.requests.size)
         assertEquals(task.schema, model.requests[0].jsonSchema)
@@ -57,8 +64,8 @@ class AiGatewayTest {
 
     @Test
     fun givesUpAfterSecondFailure() = runTest {
-        val rewrite = """{"is_correct":false,"corrected":"昨日は友達と映画館で映画を見ました。","confidence":0.9,""" +
-            """"edits":[{"original":"全部","replacement":"映画","reason":"x"}],"explanation":"Rewrote it."}"""
+        val rewrite = """{"reply":"¡Qué bien!","corrected":"El domingo pasado salimos todos juntos a caminar por el bosque cercano.",""" +
+            """"rewrite":"Salimos a caminar.","turn_level":"1"}"""
         val model = FakeModel(rewrite, rewrite)
         val result = AiGateway({ model }).run(task, input)
         assertIs<AiResult.Unavailable>(result)
@@ -76,12 +83,12 @@ class AiGatewayTest {
 
     @Test
     fun timeoutUsesFallbackHook() = runTest {
-        val fallback = CorrectSentence.Output(isCorrect = true, corrected = input.sentence, confidence = 0.0)
-        val withHook = CorrectSentence { fallback }
+        val fallback = TopicTurn.Output("¿Y luego?", "", "Yo va al parque con mi familia.", emptyList(), "Fui al parque.", emptyList(), "1")
+        val withHook = TopicTurn { fallback }
         val result = AiGateway({ FakeModel(null) }, AiSettings(timeoutMs = 1_000)).run(withHook, input)
-        assertIs<AiResult.Fallback<CorrectSentence.Output>>(result)
+        assertIs<AiResult.Fallback<TopicTurn.Output>>(result)
         assertEquals("the model took too long", result.reason)
-        assertTrue(result.value.isUnsure)
+        assertEquals("¿Y luego?", result.value.reply)
     }
 
     @Test
@@ -110,11 +117,11 @@ class AiGatewayTest {
     }
 
     @Test
-    fun dictionaryAcceptanceRejectsInventedWords() = runTest {
-        val strict = ValidationContext(isKnownJapanese = { false })
-        val result = AiGateway({ FakeModel(good, good) }, context = strict).run(task, input)
+    fun wrongLanguageIsRejected() = runTest {
+        val english = good.replace("¡Qué bien! ¿Y qué hicieron en el parque?", "How nice! What did you do in the park?")
+        val result = AiGateway({ FakeModel(english, english) }).run(task, input)
         assertIs<AiResult.Unavailable>(result)
-        assertTrue(result.reason.contains("dictionary"))
+        assertTrue(result.reason.contains("not in Spanish"), result.reason)
     }
 
     @Test

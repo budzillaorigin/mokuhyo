@@ -2,69 +2,82 @@ package app.mokuhyo.opi
 
 import app.mokuhyo.ai.AiGateway
 import app.mokuhyo.ai.AiResult
-import app.mokuhyo.ai.prompts.OpiInterviewerTurn
-import app.mokuhyo.ai.prompts.OpiPhase
-import app.mokuhyo.ai.prompts.OpiRate
-import app.mokuhyo.ai.prompts.Speaker
-import app.mokuhyo.ai.prompts.Turn
 import app.mokuhyo.exam.IlrLevel
-import app.mokuhyo.opi.OpiBank
-import app.mokuhyo.opi.OpiDomain
-import app.mokuhyo.opi.OpiQuestion
+import kotlinx.serialization.Serializable
 import kotlin.random.Random
 import kotlin.time.Clock
 import kotlin.time.Instant
-import app.mokuhyo.opi.OpiPhase as BankPhase
 
-/** An interviewer line; [english] is only set for scripted (bank) questions and shown after the interview. */
-data class InterviewerLine(val japanese: String, val english: String, val phase: OpiPhase, val engine: String?)
+/** An interviewer line; [english] is shown after the interview. [engine] is null for scripted (bank) questions. */
+data class InterviewerLine(val text: String, val english: String, val phase: OpiPhase, val engine: String?, val domain: String?)
 
+/** The rating shown after an interview (BRIEF §6.2). */
+@Serializable
 data class OpiRating(
-    val ilr: IlrLevel?,
-    val actfl: String?,
-    val functions: Int? = null,
-    val accuracy: Int? = null,
-    val vocabulary: Int? = null,
-    val fluency: Int? = null,
+    val estimate: String?,
+    val sustained: String? = null,
+    val breakdown: String? = null,
+    val factors: Map<String, OpiRate.Factor> = emptyMap(),
     val rationale: String = "",
-    val strengths: List<String> = emptyList(),
     val nextSteps: List<String> = emptyList(),
     /** Set when a model produced the rating (AI-generated badge). */
     val engine: String? = null,
     /** No model: the learner rates themselves against the ILR checklist instead. */
+    val selfRated: Boolean = false,
     val needsSelfRating: Boolean = false,
 )
 
+/** Answers judged at a level hold up (SUSTAINED), partly (PARTIAL) or not (BREAKDOWN); others aren't rated. */
+enum class OpiTurnOutcome { SUSTAINED, PARTIAL, BREAKDOWN, NOT_RATED }
+
+@Serializable
+data class OpiTurnRecord(
+    val index: Int,
+    val phase: OpiPhase,
+    val question: String,
+    val english: String = "",
+    val domain: String? = null,
+    val targetLevel: IlrLevel,
+    val levelBefore: IlrLevel,
+    val answer: String? = null,
+    val answerWords: Int? = null,
+    val levelAfter: IlrLevel? = null,
+    val outcome: OpiTurnOutcome = OpiTurnOutcome.NOT_RATED,
+    val engine: String? = null,
+) {
+    val rated: Boolean get() = outcome != OpiTurnOutcome.NOT_RATED
+}
+
 /**
- * OPI-style practice interview (BRIEF §5.11): warm-up → level checks → probes → role-play → wind-down, adapting the
- * working level up on strong answers and down on breakdown. With a model the interviewer is `opi_interviewer_turn`;
- * without one, questions come from the practice pack's scripted banks per ILR level (BRIEF §7.3). Unofficial practice.
+ * Practice OPI (BRIEF §6.2): warm-up → level checks → probes → role-play → wind-down, adapting the working level up
+ * on sustained answers and down on breakdown. With a model, `opi_interviewer_turn` writes each question in the
+ * language; without one, the language's scripted bank (pack `opi.json`) supplies them and the learner self-rates.
  *
- * Adaptation is a documented heuristic on answer length (a stand-in for "sustained speech at this level"): an answer
- * at least as long as the next level's typical answer moves the working level up; one under half the current
- * level's typical length counts as breakdown and moves it down.
- *
- * Scripted questions rotate through the DLI topic domains (family, work, current events, hypotheticals, abstract;
- * BRIEF_V2 §6.16): an unused domain is preferred. Every question and answer is logged in [turns], and [probeMap]
- * turns the log into the "level check → probe" picture shown after the interview.
+ * Adaptation is a documented heuristic on answer length in words ([wordCount] uses the language's own segmenter,
+ * scaled to English-equivalent words): at least the next level's typical length moves the working level up; under
+ * half the current level's moves it down. Test mode (`test = true`) runs the full 20–30 minute plan.
  */
 class OpiSession(
-    private val banks: Map<IlrLevel, OpiBank>,
+    val language: String,
+    private val profile: OpiProfile,
+    private val bank: List<BankQuestion>,
+    private val rolePlays: List<RolePlay>,
     private val gateway: AiGateway,
+    private val wordCount: (String) -> Int,
     startLevel: IlrLevel = IlrLevel.L1,
+    val test: Boolean = false,
     private val clock: Clock = Clock.System,
     private val random: Random = Random.Default,
 ) {
     val startedAt: Instant = clock.now()
     private val history = mutableListOf<Turn>()
-    private val lines = mutableListOf<Pair<Speaker, String>>()
     private val asked = mutableSetOf<String>()
+    private val usedDomains = mutableListOf<String>()
+    private val records = mutableListOf<OpiTurnRecord>()
     private var turnsInPhase = 0
     private var questionPhase = OpiPhase.WARMUP
-    private val interviewerTask = OpiInterviewerTurn { input -> scripted(input.phase) }
-    private val usedDomains = mutableSetOf<OpiDomain>()
-    private val domainForScripted = mutableMapOf<String, OpiDomain>()
-    private val records = mutableListOf<OpiTurnRecord>()
+    private var rolePlay: RolePlay? = null
+    private val plan = if (test) TEST_PLAN else PRACTICE_PLAN
 
     var phase: OpiPhase = OpiPhase.WARMUP
         private set
@@ -73,37 +86,34 @@ class OpiSession(
     var finished: Boolean = false
         private set
 
-    /** Transcript (hidden during the interview, shown after). */
-    val transcript: List<Pair<Speaker, String>> get() = lines.toList()
-    private val englishForScripted = mutableMapOf<String, String>()
+    val transcript: List<Turn> get() = history.toList()
+    val turns: List<OpiTurnRecord> get() = records.toList()
 
     /** The interviewer's next line, or null once the interview is over. */
-    @Throws(Exception::class)
     suspend fun next(): InterviewerLine? {
         if (finished) return null
-        val input = OpiInterviewerTurn.Input(phase, actflFor(workingLevel), history.toList(), turnsInPhase)
-        val (text, english, next, engine) = when (val r = gateway.run(interviewerTask, input)) {
-            is AiResult.Ok -> Quad(r.value.utterance, "", r.value.nextPhase, r.engine)
-            is AiResult.Fallback -> Quad(r.value.utterance, englishForScripted[r.value.utterance].orEmpty(), r.value.nextPhase, null)
+        if (phase == OpiPhase.ROLEPLAY && rolePlay == null) rolePlay = pickRolePlay()
+        val input = OpiInterviewerTurn.Input(
+            language, profile.registerNotes, phase, workingLevel, history.toList(), turnsInPhase,
+            rolePlay?.let { "${it.situation} You play: ${it.interviewerRole}." }?.takeIf { phase == OpiPhase.ROLEPLAY && turnsInPhase == 0 },
+            usedDomains.distinct(),
+        )
+        val task = OpiInterviewerTurn { scripted(it.phase) }
+        val (out, engine) = when (val r = gateway.run(task, input)) {
+            is AiResult.Ok -> r.value to r.engine
+            is AiResult.Fallback -> r.value to null
             is AiResult.Unavailable -> {
                 finished = true
                 return null
             }
         }
-        val line = InterviewerLine(text, english, phase, engine)
-        records += OpiTurnRecord(
-            index = records.size,
-            phase = phase,
-            question = text,
-            domain = if (engine == null) domainForScripted[text] else null,
-            targetLevel = targetFor(phase),
-            levelBefore = workingLevel,
-        )
+        val line = InterviewerLine(out.utterance, out.english, phase, engine, out.domain.ifBlank { null })
+        records += OpiTurnRecord(records.size, phase, out.utterance, out.english, line.domain, targetFor(phase), workingLevel, engine = engine)
+        line.domain?.let { usedDomains += it }
         questionPhase = phase
-        history += Turn(Speaker.PARTNER, text)
-        lines += Speaker.PARTNER to text
+        history += Turn(Speaker.PARTNER, out.utterance)
         turnsInPhase++
-        advance(next)
+        advance(out.nextPhase)
         return line
     }
 
@@ -111,70 +121,60 @@ class OpiSession(
     fun answer(text: String) {
         val answer = text.trim()
         history += Turn(Speaker.LEARNER, answer)
-        lines += Speaker.LEARNER to answer
-        // Judge the answer by the phase of the question it answers (the phase may already have moved on).
+        val words = wordCount(answer)
         val judged = questionPhase == OpiPhase.LEVEL_CHECK || questionPhase == OpiPhase.PROBE
-        if (judged) adapt(answer)
+        if (judged) adapt(words)
         val last = records.lastOrNull()
-        if (last != null && last.answerLength == null) {
-            val length = answer.count { !it.isWhitespace() }
+        if (last != null && last.answer == null) {
             records[records.lastIndex] = last.copy(
-                answerLength = length,
-                levelAfter = workingLevel,
-                outcome = if (judged) OpiTurnOutcome.judge(length, last.targetLevel) else OpiTurnOutcome.NOT_RATED,
+                answer = answer, answerWords = words, levelAfter = workingLevel,
+                outcome = if (judged && answer.isNotEmpty()) judge(words, last.targetLevel) else OpiTurnOutcome.NOT_RATED,
             )
         }
     }
 
-    /** Every interviewer question so far with the answer's length and outcome (the probe map's input). */
-    val turns: List<OpiTurnRecord> get() = records.toList()
+    fun stop() {
+        finished = true
+    }
 
-    /** The "level check → probe" picture for the results screen (BRIEF_V2 §6.16). */
-    fun probeMap(): OpiProbeMap = OpiProbeMap.from(records)
+    /** The model's rating; with no model (or a failed one), [OpiRating.needsSelfRating]. */
+    suspend fun rate(): OpiRating {
+        finished = true
+        if (history.none { it.speaker == Speaker.LEARNER && it.text.isNotBlank() }) return OpiRating(null, needsSelfRating = true)
+        return when (val r = gateway.run(OpiRate(), OpiRate.Input(language, history.toList(), profile.registerNotes))) {
+            is AiResult.Ok -> r.value.let {
+                OpiRating(
+                    estimate = it.estimate, sustained = it.sustainedLevel, breakdown = it.breakdownLevel,
+                    factors = mapOf("functions" to it.functions, "context_content" to it.contextContent, "accuracy" to it.accuracy, "text_type" to it.textType),
+                    rationale = it.rationale, nextSteps = it.nextSteps, engine = r.engine,
+                )
+            }
+            else -> OpiRating(null, needsSelfRating = true)
+        }
+    }
 
-    /** The level a question in [phase] aims at: probes one level above the working level, everything else at it. */
+    /** Self-rating against the ILR checklist: the highest level whose statements (and every lower level's) are all checked. */
+    fun selfRate(checklist: Map<String, List<String>>, checked: Set<String>): OpiRating {
+        var level: IlrLevel? = null
+        for (l in IlrLevel.lowerRange) {
+            val statements = checklist[l.label].orEmpty()
+            if (statements.isEmpty()) continue
+            if (statements.all { it in checked }) level = l else break
+        }
+        return OpiRating(level?.label, rationale = "Self-rated against the ILR speaking descriptions.", selfRated = true)
+    }
+
     private fun targetFor(phase: OpiPhase): IlrLevel {
         if (phase != OpiPhase.PROBE) return workingLevel
         val index = IlrLevel.lowerRange.indexOf(workingLevel)
         return IlrLevel.lowerRange[(index + 1).coerceAtMost(IlrLevel.lowerRange.lastIndex)]
     }
 
-    /** Ends early (the learner stops); the rating uses what was said. */
-    fun stop() {
-        finished = true
-    }
-
-    @Throws(Exception::class)
-    suspend fun rate(): OpiRating {
-        finished = true
-        if (history.none { it.speaker == Speaker.LEARNER }) return OpiRating(null, null, needsSelfRating = true)
-        return when (val r = gateway.run(OpiRate(), OpiRate.Input(history.toList()))) {
-            is AiResult.Ok -> r.value.let {
-                OpiRating(ilrFor(it.level), it.level, it.functions, it.accuracy, it.vocabulary, it.fluency, it.rationale, it.strengths, it.nextSteps, r.engine)
-            }
-            else -> OpiRating(null, null, needsSelfRating = true)
-        }
-    }
-
-    /** Checklist for self-rating, lowest level first: (level, statement). */
-    fun checklist(): List<Pair<IlrLevel, String>> =
-        IlrLevel.lowerRange.flatMap { level -> banks[level]?.checklist.orEmpty().map { level to it } }
-
-    /** Self-rating: the highest level whose statements (and every lower level's) are all checked. */
-    fun selfRate(checked: Set<String>): OpiRating {
-        var level: IlrLevel? = null
-        for (l in IlrLevel.lowerRange) {
-            val statements = banks[l]?.checklist.orEmpty()
-            if (statements.isEmpty()) continue
-            if (statements.all { it in checked }) level = l else break
-        }
-        return OpiRating(level, level?.let(::actflFor), rationale = "Self-rated against the ILR speaking descriptors.")
-    }
-
     private fun advance(suggested: OpiPhase) {
-        val limit = PLAN.getValue(phase)
+        val limit = plan.getValue(phase)
+        // Tests keep to the plan so every candidate gets a full-length interview; practice may move on early.
         val target = when {
-            suggested > phase -> suggested
+            !test && suggested > phase && turnsInPhase >= 1 -> suggested
             turnsInPhase >= limit -> OpiPhase.entries.getOrNull(phase.ordinal + 1)
             else -> phase
         }
@@ -185,96 +185,61 @@ class OpiSession(
                 turnsInPhase = 0
             }
         }
-        if (phase == OpiPhase.WINDDOWN && turnsInPhase >= PLAN.getValue(OpiPhase.WINDDOWN)) finished = true
+        if (phase == OpiPhase.WINDDOWN && turnsInPhase >= plan.getValue(OpiPhase.WINDDOWN)) finished = true
     }
 
-    private fun adapt(answer: String) {
-        val length = answer.count { !it.isWhitespace() }
+    private fun adapt(words: Int) {
         val index = IlrLevel.lowerRange.indexOf(workingLevel)
         val up = IlrLevel.lowerRange.getOrNull(index + 1)
         workingLevel = when {
-            up != null && length >= TYPICAL_LENGTH.getValue(up) -> up
-            length * 2 < TYPICAL_LENGTH.getValue(workingLevel) && index > 0 -> IlrLevel.lowerRange[index - 1]
+            up != null && words >= TYPICAL_WORDS.getValue(up) -> up
+            words * 2 < TYPICAL_WORDS.getValue(workingLevel) && index > 0 -> IlrLevel.lowerRange[index - 1]
             else -> workingLevel
         }
     }
 
-    /** Scripted fallback: an unasked bank question for the phase at the working level (probes aim one level up). */
-    private fun scripted(phase: OpiPhase): OpiInterviewerTurn.Output? {
-        val bankPhase = BANK_PHASE.getValue(phase)
-        val index = IlrLevel.lowerRange.indexOf(workingLevel)
-        val aim = if (phase == OpiPhase.PROBE) (index + 1).coerceAtMost(IlrLevel.lowerRange.lastIndex) else index
-        val order = IlrLevel.lowerRange.indices.sortedBy { kotlin.math.abs(it - aim) }.map { IlrLevel.lowerRange[it] }
-        val question: OpiQuestion = order.firstNotNullOfOrNull { level ->
-            val fresh = banks[level]?.phase(bankPhase)?.filter { it.promptJa !in asked }.orEmpty()
-            // Rotate topic domains: prefer a question from a domain not covered yet (untagged ones count as fresh).
-            val unusedDomain = fresh.filter { it.domain == null || it.domain !in usedDomains }
-            (unusedDomain.ifEmpty { fresh }).takeIf { it.isNotEmpty() }?.random(random)
-        } ?: return null
-        asked += question.promptJa
-        englishForScripted[question.promptJa] = question.promptEn
-        question.domain?.let {
-            usedDomains += it
-            domainForScripted[question.promptJa] = it
-        }
-        val next = if (turnsInPhase + 1 >= PLAN.getValue(phase)) OpiPhase.entries.getOrElse(phase.ordinal + 1) { phase } else phase
-        return OpiInterviewerTurn.Output(question.promptJa, next, question.note)
+    private fun pickRolePlay(): RolePlay? {
+        val aim = IlrLevel.lowerRange.indices.sortedBy { kotlin.math.abs(it - IlrLevel.lowerRange.indexOf(workingLevel)) }.map { IlrLevel.lowerRange[it].label }
+        return aim.firstNotNullOfOrNull { lv -> rolePlays.filter { it.level == lv }.randomOrNull(random) } ?: rolePlays.randomOrNull(random)
     }
 
-    private data class Quad(val text: String, val english: String, val next: OpiPhase, val engine: String?)
+    /** Scripted fallback: an unasked bank question for the phase near the working level, in an unused domain if possible. */
+    private fun scripted(phase: OpiPhase): OpiInterviewerTurn.Output? {
+        if (phase == OpiPhase.ROLEPLAY && turnsInPhase == 0) rolePlay?.let { rp ->
+            asked += rp.opening
+            return OpiInterviewerTurn.Output(rp.opening, rp.english, nextFor(phase), "role-play", "roleplay")
+        }
+        val index = IlrLevel.lowerRange.indexOf(workingLevel)
+        val aim = if (phase == OpiPhase.PROBE) (index + 1).coerceAtMost(IlrLevel.lowerRange.lastIndex) else index
+        val order = IlrLevel.lowerRange.indices.sortedBy { kotlin.math.abs(it - aim) }.map { IlrLevel.lowerRange[it].label }
+        val wire = phase.wireName
+        val q = order.firstNotNullOfOrNull { lv ->
+            val fresh = bank.filter { it.phase == wire && it.level == lv && it.prompt !in asked }
+            fresh.filter { it.domain == null || it.domain !in usedDomains }.ifEmpty { fresh }.randomOrNull(random)
+        } ?: bank.filter { it.phase == wire && it.prompt !in asked }.randomOrNull(random) ?: return null
+        asked += q.prompt
+        return OpiInterviewerTurn.Output(q.prompt, q.english, nextFor(phase), "", q.domain.orEmpty())
+    }
+
+    private fun nextFor(phase: OpiPhase) = if (turnsInPhase + 1 >= plan.getValue(phase)) OpiPhase.entries.getOrElse(phase.ordinal + 1) { phase } else phase
 
     companion object {
-        /** Planned turns per phase (a 15–30 minute interview). */
-        val PLAN = mapOf(
-            OpiPhase.WARMUP to 2,
-            OpiPhase.LEVEL_CHECK to 3,
-            OpiPhase.PROBE to 3,
-            OpiPhase.ROLEPLAY to 2,
-            OpiPhase.WINDDOWN to 1,
+        /** Planned turns per phase: a short practice interview, and the full 20–30 minute test. */
+        val PRACTICE_PLAN = mapOf(OpiPhase.WARMUP to 2, OpiPhase.LEVEL_CHECK to 3, OpiPhase.PROBE to 3, OpiPhase.ROLEPLAY to 2, OpiPhase.WINDDOWN to 1)
+        val TEST_PLAN = mapOf(OpiPhase.WARMUP to 3, OpiPhase.LEVEL_CHECK to 6, OpiPhase.PROBE to 5, OpiPhase.ROLEPLAY to 3, OpiPhase.WINDDOWN to 2)
+
+        /** Typical answer length (English-equivalent words) for sustained speech at each level; the adaptation heuristic. */
+        val TYPICAL_WORDS = mapOf(
+            IlrLevel.L0_PLUS to 2, IlrLevel.L1 to 6, IlrLevel.L1_PLUS to 12, IlrLevel.L2 to 22, IlrLevel.L2_PLUS to 35, IlrLevel.L3 to 50,
         )
 
-        private val BANK_PHASE = mapOf(
-            OpiPhase.WARMUP to BankPhase.WARM_UP,
-            OpiPhase.LEVEL_CHECK to BankPhase.LEVEL_CHECK,
-            OpiPhase.PROBE to BankPhase.PROBE,
-            OpiPhase.ROLEPLAY to BankPhase.ROLE_PLAY,
-            OpiPhase.WINDDOWN to BankPhase.WIND_DOWN,
-        )
-
-        /** Typical answer length (non-space characters) for sustained speech at each level; the adaptation heuristic. */
-        val TYPICAL_LENGTH = mapOf(
-            IlrLevel.L0_PLUS to 4,
-            IlrLevel.L1 to 10,
-            IlrLevel.L1_PLUS to 20,
-            IlrLevel.L2 to 35,
-            IlrLevel.L2_PLUS to 55,
-            IlrLevel.L3 to 80,
-        )
-
-        /** ACTFL ↔ ILR crosswalk (ACTFL's published approximate equivalence). */
-        private val ACTFL_TO_ILR = mapOf(
-            "Novice Low" to IlrLevel.L0,
-            "Novice Mid" to IlrLevel.L0_PLUS,
-            "Novice High" to IlrLevel.L0_PLUS,
-            "Intermediate Low" to IlrLevel.L1,
-            "Intermediate Mid" to IlrLevel.L1,
-            "Intermediate High" to IlrLevel.L1_PLUS,
-            "Advanced Low" to IlrLevel.L2,
-            "Advanced Mid" to IlrLevel.L2,
-            "Advanced High" to IlrLevel.L2_PLUS,
-            "Superior" to IlrLevel.L3,
-        )
-
-        fun ilrFor(actfl: String): IlrLevel? = ACTFL_TO_ILR[actfl]
-
-        fun actflFor(ilr: IlrLevel): String = when (ilr) {
-            IlrLevel.L0 -> "Novice Low"
-            IlrLevel.L0_PLUS -> "Novice High"
-            IlrLevel.L1 -> "Intermediate Mid"
-            IlrLevel.L1_PLUS -> "Intermediate High"
-            IlrLevel.L2 -> "Advanced Mid"
-            IlrLevel.L2_PLUS -> "Advanced High"
-            else -> "Superior"
+        fun judge(words: Int, target: IlrLevel): OpiTurnOutcome {
+            val typical = TYPICAL_WORDS[target] ?: return OpiTurnOutcome.NOT_RATED
+            return when {
+                words >= typical -> OpiTurnOutcome.SUSTAINED
+                words * 2 >= typical -> OpiTurnOutcome.PARTIAL
+                else -> OpiTurnOutcome.BREAKDOWN
+            }
         }
     }
 }

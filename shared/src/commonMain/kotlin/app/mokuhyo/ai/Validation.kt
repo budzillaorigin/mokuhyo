@@ -1,53 +1,11 @@
 package app.mokuhyo.ai
 
-import app.mokuhyo.lang.ja.Kana
-
 /**
- * Checks applied to every structured AI output before it reaches the learner (BRIEF §7.4). Small models drift:
- * they leak English or Chinese-style romanization into Japanese fields, rewrite a whole sentence when asked for a
- * minimal correction, or invent words. Anything that fails is retried once and then falls back.
+ * Generic checks applied to structured AI output before it reaches the learner. Small models drift: they rewrite a
+ * whole sentence when asked for a minimal correction, or answer at the wrong length. Language checks live in
+ * [app.mokuhyo.lang.ScriptCheck]. Anything that fails is retried once and then falls back.
  */
 object Validation {
-    /**
-     * A problem description if [text], which should be Japanese, contains another script: Hangul, Cyrillic,
-     * Greek, Thai, Arabic, Devanagari, or a run of 3+ lowercase Latin letters (English words, romaji). Uppercase
-     * acronyms (CD, NHK), digits and full-width forms are allowed. Returns null when the text is clean.
-     */
-    fun scriptLeak(text: String): String? {
-        var latinRun = 0
-        for (c in text) {
-            val code = c.code
-            val foreign = when (code) {
-                in 0xAC00..0xD7AF, in 0x1100..0x11FF, in 0x3130..0x318F -> "Korean"
-                in 0x0400..0x04FF -> "Cyrillic"
-                in 0x0370..0x03FF -> "Greek"
-                in 0x0E00..0x0E7F -> "Thai"
-                in 0x0600..0x06FF -> "Arabic"
-                in 0x0900..0x097F -> "Devanagari"
-                else -> null
-            }
-            if (foreign != null) return "contains $foreign text"
-            latinRun = if (c in 'a'..'z') latinRun + 1 else 0
-            if (latinRun >= 3) return "contains Latin-script words"
-        }
-        return null
-    }
-
-    /** A problem description unless [text] actually contains Japanese (kana or kanji). */
-    fun requireJapanese(field: String, text: String): String? = when {
-        text.isBlank() -> "$field is empty"
-        !text.any { Kana.isKana(it) } && !Kana.containsKanji(text) -> "$field is not Japanese"
-        else -> scriptLeak(text)?.let { "$field $it" }
-    }
-
-    /** A problem description if an English field is mostly Japanese (the model answered in the wrong language). */
-    fun requireEnglish(field: String, text: String): String? {
-        if (text.isBlank()) return "$field is empty"
-        val japanese = text.count { Kana.isKana(it) || Kana.isKanji(it.code) }
-        val latin = text.count { it in 'a'..'z' || it in 'A'..'Z' }
-        return if (japanese > latin) "$field is not English" else null
-    }
-
     fun length(field: String, text: String, min: Int = 1, max: Int): String? {
         val n = text.cpCount()
         return when {
@@ -105,11 +63,7 @@ object Validation {
     private fun String.cpCount(): Int = cpArray().size
 }
 
-/**
- * What validators may consult beyond the output itself. [isKnownJapanese] is the dictionary/deinflector acceptance
- * check the app injects (tokenize, deinflect, look up): it returns false when a Japanese sentence contains a word
- * that no dictionary entry or conjugation explains, which is how invented words are caught. Default: accept all.
- */
+/** What validators may consult beyond the output itself (language packs could add a word-acceptance check here). */
 class ValidationContext(
-    val isKnownJapanese: (String) -> Boolean = { true },
+    val isKnownWord: (language: String, text: String) -> Boolean = { _, _ -> true },
 )
