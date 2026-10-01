@@ -6,6 +6,7 @@
 #   tools/gates/fresh_install_smoke.sh v0.1.0 [macos-arm64|macos-x64|linux-x64]
 #   FROM_DIR=dist tools/gates/fresh_install_smoke.sh main macos-arm64   # installers + SHA256SUMS from a folder (dry run)
 set -euo pipefail
+SUDO=$([ "$(id -u)" = 0 ] || echo sudo)
 TAG="$1"
 case "$TAG" in v[0-9]*) VERSION="${TAG#v}" ;; *) VERSION=0.1.0 ;; esac
 FROM_DIR="${FROM_DIR:+$(cd "$FROM_DIR" && pwd)}"
@@ -37,12 +38,12 @@ if [ "$EXT" = dmg ]; then
   hdiutil detach "$MNT" >/dev/null
   BIN=$(ls "$DEST"/*.app/Contents/MacOS/* | head -1)
 else
-  sudo apt-get install -y "./$ASSET" >/dev/null
+  $SUDO apt-get install -y "./$ASSET" >/dev/null
   BIN=/opt/mokuhyo/bin/Mokuhyo
 fi
 echo "== fresh install: launching $BIN --smoke"
 # An empty data directory: no settings, no learner, nothing cached (the owner's data is never touched).
 "$BIN" --smoke --require-packs --data-dir "$WORK/data" | tee smoke.log
 grep -q "smoke: OK" smoke.log
-[ "$EXT" = deb ] && sudo apt-get remove -y mokuhyo >/dev/null || true
+[ "$EXT" = deb ] && $SUDO apt-get remove -y mokuhyo >/dev/null || true
 echo "fresh_install_smoke: PASS ($ASSET)"
