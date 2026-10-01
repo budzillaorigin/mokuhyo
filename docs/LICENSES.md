@@ -78,6 +78,9 @@ Ported algorithms (code in this repo, original license kept):
 |---|---|---|
 | JMdict / EDICT (Japanese dictionary) | CC BY-SA 4.0 | © Electronic Dictionary Research and Development Group — https://www.edrdg.org/edrdg/licence.html |
 | KANJIDIC2 | CC BY-SA 4.0 | © Electronic Dictionary Research and Development Group — https://www.edrdg.org/edrdg/licence.html |
+| CC-CEDICT (Chinese dictionary, `zh-Hans` pack) | CC BY-SA 4.0 | CC-CEDICT, published by MDBG; based on CEDICT © 1997, 1998 Paul Andrew Denisowski — https://www.mdbg.net/chinese/dictionary?page=cc-cedict |
+| English Wiktionary via kaikki.org (dictionaries for `es fr de pt-BR ru ko ar fa id`) | CC BY-SA 3.0 (Wiktionary text is dual CC BY-SA 3.0 / GFDL; used under CC BY-SA 3.0) | © Wiktionary contributors — https://en.wiktionary.org; extracted with wiktextract by Tatu Ylonen — https://kaikki.org |
+| wordfreq word-frequency data (dictionary frequency ranks) | CC BY-SA 4.0 | © Robyn Speer, wordfreq — https://github.com/rspeer/wordfreq (includes data from Google Books Ngrams, OpenSubtitles, Wikipedia, and others; see its README) |
 | mecab-ipadic (Japanese tokenizer dictionary) | BSD-style (IPA dictionary license) | © Nara Institute of Science and Technology / Information-technology Promotion Agency — https://github.com/taku910/mecab |
 | ILR Skill Level Descriptions | Public domain (US Government work) | Interagency Language Roundtable — https://www.govtilr.org |
 | Tsumugi DLPT-style Japanese practice banks (`tools/items/bank/dlpt_*.json`) | CC BY-SA 4.0 | © Tsumugi / Mokuhyo contributors; AI-drafted items carry `source = "llm"` |
