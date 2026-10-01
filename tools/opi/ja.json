@@ -1,0 +1,397 @@
+{
+ "language": "ja",
+ "profile": {
+  "language": "ja",
+  "registerNotes": "Use polite です/ます form with the candidate throughout; keigo (尊敬語/謙譲語) only in the role-play when the role calls for it (e.g. a hotel clerk). Plain form only if the role-play is between friends.",
+  "formalityMarkers": [
+   "です/ます",
+   "尊敬語",
+   "謙譲語",
+   "plain form"
+  ],
+  "levelCheckTopics": {
+   "0+": [
+    "name and greetings",
+    "numbers and prices",
+    "days and times",
+    "family members"
+   ],
+   "1": [
+    "daily routine",
+    "home and neighborhood",
+    "food and shopping",
+    "weekend activities",
+    "work or studies"
+   ],
+   "1+": [
+    "a recent trip",
+    "describing your hometown",
+    "a typical workday",
+    "plans for next year"
+   ],
+   "2": [
+    "a memorable event in detail",
+    "comparing two places you lived",
+    "explaining a process at work",
+    "a current event in your country"
+   ],
+   "2+": [
+    "advantages and disadvantages of a policy",
+    "how your profession has changed",
+    "a problem in your community and its causes"
+   ],
+   "3": [
+    "supporting an opinion on an abstract issue",
+    "hypothetical: what if your country changed a major policy",
+    "the role of technology in society",
+    "ethics of a professional decision"
+   ]
+  },
+  "rolePlaySeeds": [
+   "Check into a hotel and solve a problem with the reservation (interviewer: receptionist).",
+   "Buy a train ticket after the train you wanted was cancelled (interviewer: ticket agent).",
+   "Report a lost passport at a police station (interviewer: police officer).",
+   "Arrange a meeting time with a colleague whose schedule keeps changing (interviewer: colleague).",
+   "Persuade a landlord to fix a broken heater before winter (interviewer: landlord).",
+   "Brief a local official about a joint exercise that will close a road (interviewer: town official).",
+   "Explain a misunderstanding between two delegations as their interpreter (interviewer: delegation leader).",
+   "At a checkpoint, explain why your convoy must pass before noon (interviewer: checkpoint officer)."
+  ]
+ },
+ "questions": [
+  {
+   "id": "ja-q-warmup-0+-01",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "こんにちは。今、何時に起きますか？",
+   "english": "Hello. What time do you wake up now?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-0+-02",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "家族で一緒に食事をしますか？",
+   "english": "Do you eat meals with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-0+-03",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "今、どんな仕事をしていますか？",
+   "english": "What kind of work are you doing now?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-0+-04",
+   "phase": "warmup",
+   "level": "0+",
+   "prompt": "あなたの町に図書館がありますか？",
+   "english": "Is there a library in your town?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1-01",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "こんにちは。お天気の話題ですが、今日どこかへ出かける予定はありますか？",
+   "english": "Hello. Speaking of the weather, do you have any plans to go out today?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1-02",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "家族の話をしてもいいですか。最近、家族で一緒に楽しんだことはありますか？",
+   "english": "May I ask about your family? Have you done something fun together with your family recently?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1-03",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "仕事の話をさせてください。最近、仕事でやりがいを感じたことはありますか？",
+   "english": "Let me ask about your work. Have you felt a sense of accomplishment at work recently?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1-04",
+   "phase": "warmup",
+   "level": "1",
+   "prompt": "地域の話題ですが、最近、あなたの町で何か楽しいイベントが行われましたか？",
+   "english": "Speaking of your community, has any fun event been held in your town recently?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1+-01",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "こんにちは。お天気のことはどうですか？最近、何か特別な天気の日がありましたか？",
+   "english": "Hello. How about the weather? Have there been any especially nice days recently?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1+-02",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "お仕事はどうですか？仕事で最近、何か新しいことを学びましたか？",
+   "english": "How about your work? Have you learned anything new at work recently?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1+-03",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "家族のことについて教えてください。家族旅行に行ったことがありますか？どこに行きましたか？",
+   "english": "Tell me about your family. Have you gone on a family trip? Where did you go?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-warmup-1+-04",
+   "phase": "warmup",
+   "level": "1+",
+   "prompt": "お住まいの地域について教えてください。地元でおすすめのレストランはありますか？",
+   "english": "Tell me about your area. Do you have a recommended restaurant in town?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-0+-01",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "この本は何ですか。",
+   "english": "What is this book?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-0+-02",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "家族は何人ですか。",
+   "english": "How many family members do you have?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-0+-03",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "仕事は何ですか。",
+   "english": "What is your job?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-0+-04",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "近くに公園がありますか。",
+   "english": "Is there a park near you?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-0+-05",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "最近のニュースは何ですか。",
+   "english": "What is a recent news item?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-0+-06",
+   "phase": "level_check",
+   "level": "0+",
+   "prompt": "旅行に行きたい国はどこですか。",
+   "english": "What country do you want to travel to?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1-01",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "毎朝、朝食に何を食べますか？",
+   "english": "What do you usually have for breakfast?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1-02",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "休日の過ごし方を教えてください。",
+   "english": "How do you spend your days off?",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1-03",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "家族でよく行きますか？",
+   "english": "Do you often go out with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1-04",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "今までで一番印象に残っている仕事の経験は何ですか？",
+   "english": "What is the most memorable work experience you have had so far?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1-05",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "地域のイベントに参加したことがありますか？",
+   "english": "Have you ever participated in a local event?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1-06",
+   "phase": "level_check",
+   "level": "1",
+   "prompt": "最近読んだ本や見た映画で面白かったものはありますか？",
+   "english": "Have you read any good books or seen any interesting movies lately?",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1+-01",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "最近、何か楽しいことがありましたか。具体的に教えてください。",
+   "english": "Has there been anything fun happening to you recently? Please tell me in detail.",
+   "domain": "personal",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1+-02",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "家族と一緒に過ごす時間の中で、一番嬉しいことは何ですか。",
+   "english": "What is the most joyful thing about spending time with your family?",
+   "domain": "family",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1+-03",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "今までで一番印象に残っているプロジェクトは何ですか。なぜですか。",
+   "english": "What is the most memorable project you've worked on so far? Why?",
+   "domain": "work",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1+-04",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "あなたの近所にはどんな施設や場所がありますか。その中で一番便利だと思っているところはどこですか。",
+   "english": "What facilities or places are in your neighborhood? Which one do you think is the most convenient?",
+   "domain": "community",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1+-05",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "最近、ニュースで興味を引かれた出来事はありますか。その内容を簡単に説明してください。",
+   "english": "Have there been any news events that caught your interest recently? Please briefly explain what happened.",
+   "domain": "current_events",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-q-level_check-1+-06",
+   "phase": "level_check",
+   "level": "1+",
+   "prompt": "旅行で行ってみたい国はありますか。なぜその国に行きたいですか。",
+   "english": "Is there any country you'd like to travel to? Why do you want to go to that country?",
+   "domain": "travel",
+   "source": "llm",
+   "verified": false
+  }
+ ],
+ "rolePlays": [],
+ "topics": [],
+ "checklist": {
+  "0+": [
+   "I can greet people and say my name.",
+   "I can give numbers, prices, days and times.",
+   "I can answer very simple questions with memorized phrases."
+  ],
+  "1": [
+   "I can make simple sentences about myself, my family and my daily routine.",
+   "I can ask and answer simple questions about familiar topics.",
+   "I can handle basic needs: ordering food, buying a ticket, asking for directions."
+  ],
+  "1+": [
+   "I can describe places and people in connected sentences.",
+   "I can tell what happened on a recent trip or weekend.",
+   "I can handle routine situations even when something small goes wrong."
+  ],
+  "2": [
+   "I can narrate past, present and future events in paragraphs.",
+   "I can describe and explain concrete topics at work and in the news.",
+   "I can resolve a complication in a role-play, like a cancelled reservation."
+  ],
+  "2+": [
+   "I can often support my opinions with reasons and examples.",
+   "I can discuss some abstract topics, although I sometimes break down.",
+   "I can explain the causes and effects of a problem in my community."
+  ],
+  "3": [
+   "I can support and defend opinions on abstract and unfamiliar topics.",
+   "I can hypothesize about situations that did not happen.",
+   "I can speak at length with good control of grammar and vocabulary."
+  ]
+ }
+}

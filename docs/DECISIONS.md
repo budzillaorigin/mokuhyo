@@ -101,3 +101,22 @@ used for distributed recordings, so shipped listening passages in these language
 **Owner review:** most kept Piper voices were fine-tuned from `en_US-lessac`, whose Blizzard-2013 Lessac data is
 research-licensed. The voices' own datasets are CC0/CC BY/CC BY-SA and rhasspy publishes the voice files under MIT;
 whether the base model's licence carries into the fine-tune is unresolved. Kept, flagged here and in V1_SUMMARY.
+
+## D-014 Dictionary packs (unattended default)
+Language-neutral `DictionaryDatabase` (entry, sense, form, example, fold, meta). Sources: JMdict (full), CC-CEDICT
+(full), English Wiktionary via kaikki.org for the other nine, capped at the 40,000 most frequent lemmas by wordfreq
+(fewer exist for ko/ar/fa/id). kaikki.org and CC-CEDICT publish only rolling exports, so they are pinned by SHA-256
+and date in `tools/packs/sources.lock` like Tatoeba was; a newer download is refused until re-pinned. Fold rules
+are shared with Python through `shared/src/commonTest/resources/dictionary/fold_vectors.json`. Ranking adjustments
+(non-common JMdict entries −1.5 Zipf, capitalised headwords after lower-case twins, CEDICT proper names last) and
+schema additions (`ord`, the `fold` table storing only keys that differ) are documented in docs/CONTENT_PACKS.md.
+
+## D-015 Comparison folding and Persian round-trip metric (unattended default)
+`Fold.forCompare` (learner input vs keys) folds case, width, diacritics, tashkeel/tatweel and Arabic letter variants,
+ё/е, and katakana/hiragana. The gate's TTS→Whisper token match (LCS over the module's own word tokens) also treats
+Persian می/نمی + space and + ZWNJ as the same word, since both spellings are in common use.
+
+## D-016 Bundled fonts (unattended default)
+Noto Sans, Noto Sans JP/SC/KR and Noto Naskh Arabic variable TTFs from google/fonts, pinned to commit 9710da1 with
+SHA-256 in `tools/release/fonts.lock`, staged by `tools/release/stage_fonts.py`. Target-language text always uses
+the font for its script; app chrome uses the platform default with Skia fallback.

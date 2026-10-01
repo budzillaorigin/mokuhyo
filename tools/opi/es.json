@@ -1079,9 +1079,945 @@
    "domain": "abstract",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "es-rp-3-01",
+   "level": "3",
+   "situation": "You are at a hotel check-in and realize that your reservation is not for a standard room but for a much smaller one. You need to resolve this issue.",
+   "interviewerRole": "Receptionist",
+   "opening": "Buenas tardes, ¿en qué puedo ayudarle?",
+   "english": "Good afternoon, how can I help you?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-3-02",
+   "level": "3",
+   "situation": "You need to buy a train ticket to Barcelona, but the train you wanted was cancelled. You need to find an alternative.",
+   "interviewerRole": "Ticket Agent",
+   "opening": "¿En qué puedo ayudarle hoy?",
+   "english": "How can I help you today?",
+   "domain": "travel_culture",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-3-03",
+   "level": "3",
+   "situation": "You are at a police station to report a lost passport. The officer seems busy and you need to convince them to help you immediately.",
+   "interviewerRole": "Police Officer",
+   "opening": "Buenos días, ¿qué necesita?",
+   "english": "Good morning, what do you need?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-rp-3-04",
+   "level": "3",
+   "situation": "You are planning a community event and need to reserve a local park. The official tells you the park is already reserved for the same date. You need to persuade them to change the reservation.",
+   "interviewerRole": "Local Official",
+   "opening": "Buenas tardes, ¿cómo puedo ayudarle?",
+   "english": "Good afternoon, how can I help you?",
+   "domain": "society",
+   "source": "llm",
+   "verified": false
   }
  ],
- "topics": [],
+ "topics": [
+  {
+   "id": "es-topic-daily_life-01",
+   "domain": "daily_life",
+   "title": "Morning Routine",
+   "opener": "Buenos días. Usted se levanta temprano todas las mañanas. ¿Podría contarme sobre su rutina matutina?",
+   "minLevel": "0+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-02",
+   "domain": "daily_life",
+   "title": "Favorite Meal",
+   "opener": "Tengo curiosidad por saber cuál es su comida favorita. ¿Podría describirla y decirme por qué le gusta tanto?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-03",
+   "domain": "daily_life",
+   "title": "Neighborhood",
+   "opener": "Usted vive en un barrio interesante. Por favor, cuénteme más sobre dónde vive y qué le gusta de la zona.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-04",
+   "domain": "daily_life",
+   "title": "Weekend Plans",
+   "opener": "El fin de semana está cerca. ¿Tiene planes especiales para este fin de semana?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-05",
+   "domain": "daily_life",
+   "title": "Recent Movie",
+   "opener": "¿Ha visto alguna película interesante recientemente? Me encantaría saber su opinión al respecto.",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-06",
+   "domain": "daily_life",
+   "title": "Healthy Habits",
+   "opener": "Mantenerse saludable es importante. ¿Podría compartir algunas de sus costumbres saludables conmigo?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-07",
+   "domain": "daily_life",
+   "title": "Public Transportation",
+   "opener": "Usted usa el transporte público a menudo, ¿verdad? ¿Qué opina de los diferentes medios de transporte en su ciudad?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-08",
+   "domain": "daily_life",
+   "title": "Cooking Preferences",
+   "opener": "Prefiere cocinar en casa o salir a comer. ¿Podría explicarme por qué?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-09",
+   "domain": "daily_life",
+   "title": "Local Markets",
+   "opener": "Me han dicho que hay mercados locales cerca de su casa. ¿Podría hablarme sobre ellos y lo que ofrece?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-10",
+   "domain": "daily_life",
+   "title": "Exercise Routine",
+   "opener": "Mantenerse activo es crucial. ¿Podría describir su rutina de ejercicio y cómo la integra en su vida diaria?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-daily_life-11",
+   "domain": "daily_life",
+   "title": "Shopping Habits",
+   "opener": "Usted parece ser una persona organizada. ¿Podría compartir sus hábitos de compra y cómo planea sus compras?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-01",
+   "domain": "work_study",
+   "title": "Job Description",
+   "opener": "¿Podría decirme más sobre sus funciones en su trabajo actual? ¿Qué tareas realiza a diario?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-02",
+   "domain": "work_study",
+   "title": "Work Schedule",
+   "opener": "¿Cómo es su horario de trabajo? ¿Trabaja a tiempo completo o a tiempo parcial?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-03",
+   "domain": "work_study",
+   "title": "Meeting Preparation",
+   "opener": "Tenemos una reunión importante mañana. ¿Podría preparar un resumen de los puntos clave que debemos discutir?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-04",
+   "domain": "work_study",
+   "title": "Email Follow-up",
+   "opener": "Recibí su correo electrónico sobre el proyecto X. ¿Podría explicarme los detalles más importantes que mencionó?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-05",
+   "domain": "work_study",
+   "title": "Career Goals",
+   "opener": "¿Podría compartir conmigo sus metas profesionales a corto y largo plazo?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-06",
+   "domain": "work_study",
+   "title": "Education Background",
+   "opener": "Me interesa conocer más sobre su formación académica. ¿Podría hablarme sobre su educación?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-07",
+   "domain": "work_study",
+   "title": "Job Satisfaction",
+   "opener": "¿Qué aspectos de su trabajo actual le gustan más y cuáles le gustaría cambiar?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-08",
+   "domain": "work_study",
+   "title": "Professional Development",
+   "opener": "¿Qué tipo de capacitación o desarrollo profesional le gustaría recibir en el futuro?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-09",
+   "domain": "work_study",
+   "title": "Work Challenges",
+   "opener": "¿Cuáles han sido los mayores desafíos en su carrera profesional hasta ahora?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-10",
+   "domain": "work_study",
+   "title": "Team Collaboration",
+   "opener": "¿Podría describir cómo colabora con su equipo de trabajo para alcanzar los objetivos comunes?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-work_study-11",
+   "domain": "work_study",
+   "title": "Project Management",
+   "opener": "¿Qué estrategias utiliza para gestionar proyectos y asegurarse de que se completen a tiempo?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-01",
+   "domain": "society",
+   "title": "News Summary",
+   "opener": "¿Qué noticias ha visto recientemente que le hayan llamado la atención? ¿Podría resumirme una de ellas?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-02",
+   "domain": "society",
+   "title": "Local Issues",
+   "opener": "¿Cuáles son algunos de los problemas más importantes que enfrenta su comunidad en este momento?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-03",
+   "domain": "society",
+   "title": "Environmental Concerns",
+   "opener": "¿Qué opina usted sobre los esfuerzos de su país para abordar el cambio climático?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-04",
+   "domain": "society",
+   "title": "Education Policy",
+   "opener": "¿Cómo cree usted que podrían mejorarse las políticas educativas en su país?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-05",
+   "domain": "society",
+   "title": "Technology in Society",
+   "opener": "¿Cómo ha impactado la tecnología en la vida cotidiana de las personas en su país?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-06",
+   "domain": "society",
+   "title": "Healthcare System",
+   "opener": "¿Qué aspectos del sistema de salud de su país funcionan bien y cuáles necesitan mejoras?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-07",
+   "domain": "society",
+   "title": "Cultural Events",
+   "opener": "¿Qué eventos culturales recientes han sido importantes en su comunidad o país?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-08",
+   "domain": "society",
+   "title": "Urbanization",
+   "opener": "¿Cómo ha afectado la urbanización a las comunidades rurales en su país?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-09",
+   "domain": "society",
+   "title": "Social Media Influence",
+   "opener": "¿Cómo cree usted que las redes sociales han influido en la sociedad actual?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-10",
+   "domain": "society",
+   "title": "Labor Market",
+   "opener": "¿Cuáles son los principales desafíos que enfrentan los jóvenes al ingresar al mercado laboral en su país?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-society-11",
+   "domain": "society",
+   "title": "Public Transportation",
+   "opener": "¿Qué opina usted sobre el estado del transporte público en su ciudad o país?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-01",
+   "domain": "travel_culture",
+   "title": "Airport Security",
+   "opener": "Buenos días, ¿podría mostrarme su documento de identidad y su billete de avión, por favor?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-02",
+   "domain": "travel_culture",
+   "title": "Checking In",
+   "opener": "Buenos días, ¿en qué puedo ayudarle hoy?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-03",
+   "domain": "travel_culture",
+   "title": "Lost Luggage",
+   "opener": "Buenos días, creo que he perdido mi equipaje. ¿Qué debo hacer?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-04",
+   "domain": "travel_culture",
+   "title": "Cultural Etiquette",
+   "opener": "Buenos días, voy a asistir a una reunión de negocios en México. ¿Hay alguna norma de etiqueta que deba conocer?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-05",
+   "domain": "travel_culture",
+   "title": "Local Customs",
+   "opener": "Buenos días, estoy visitando España por primera vez. ¿Puede decirme algo sobre las costumbres locales que deba tener en cuenta?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-06",
+   "domain": "travel_culture",
+   "title": "Directions",
+   "opener": "Disculpe, ¿puede indicarme cómo llegar a la plaza mayor?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-07",
+   "domain": "travel_culture",
+   "title": "Hotel Reservations",
+   "opener": "Buenos días, ¿tienen habitaciones disponibles para esta noche?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-08",
+   "domain": "travel_culture",
+   "title": "Room Service",
+   "opener": "Buenos días, me gustaría pedir algo de comer. ¿Puede darme el menú, por favor?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-09",
+   "domain": "travel_culture",
+   "title": "Local Festivals",
+   "opener": "Buenos días, he oído que hay un festival local esta semana. ¿Puede decirme más sobre eso?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-10",
+   "domain": "travel_culture",
+   "title": "Tourist Attractions",
+   "opener": "Buenos días, ¿cuáles son los lugares turísticos más populares de la zona?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-travel_culture-11",
+   "domain": "travel_culture",
+   "title": "Public Transportation",
+   "opener": "Disculpe, ¿cómo puedo conseguir un billete para el autobús?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-01",
+   "domain": "military_garrison",
+   "title": "Barracks Life",
+   "opener": "¿Cómo describiría su rutina diaria en los cuarteles? Usted sabe, desde que se levanta hasta que termina el día.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-02",
+   "domain": "military_garrison",
+   "title": "Mess Hall Preferences",
+   "opener": "He notado que pasamos mucho tiempo en el comedor. ¿Qué le parece la comida allí? ¿Hay algo que le guste especialmente o que prefiera evitar?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-03",
+   "domain": "military_garrison",
+   "title": "Physical Training",
+   "opener": "Hablemos de las sesiones de entrenamiento físico. ¿Qué tipo de ejercicios suelen hacer y cómo los encuentra?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-04",
+   "domain": "military_garrison",
+   "title": "Unit Structure",
+   "opener": "Para alguien nuevo en la base, ¿podría explicar cómo está estructurada nuestra unidad? ¿Qué roles y rangos hay?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-05",
+   "domain": "military_garrison",
+   "title": "Duty Roster",
+   "opener": "¿Cómo se siente acerca del horario de guardias que hemos tenido últimamente? ¿Cree que es justo para todos?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-06",
+   "domain": "military_garrison",
+   "title": "Inspections",
+   "opener": "Las inspecciones son una parte regular de la vida en la base. ¿Qué aspectos encuentra más desafiantes y por qué?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-07",
+   "domain": "military_garrison",
+   "title": "Local Culture",
+   "opener": "Usted ha estado aquí por un tiempo. ¿Qué aspectos de la cultura local le han llamado la atención o le han resultado interesantes?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-08",
+   "domain": "military_garrison",
+   "title": "Promotion Prospects",
+   "opener": "Hablemos de sus metas profesionales. ¿Qué rango espera alcanzar en los próximos años y qué planes tiene para lograrlo?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-09",
+   "domain": "military_garrison",
+   "title": "Base Facilities",
+   "opener": "¿Qué opina de las instalaciones de la base? ¿Hay algo que crea que necesita mejorar o cambiar?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-10",
+   "domain": "military_garrison",
+   "title": "Conflict Resolution",
+   "opener": "En un entorno como este, los conflictos entre compañeros pueden surgir. ¿Cómo suele manejar esos situaciones?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_garrison-11",
+   "domain": "military_garrison",
+   "title": "Mental Health",
+   "opener": "La salud mental es tan importante como la física. ¿Qué estrategias usa para manejar el estrés y mantener su bienestar?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-01",
+   "domain": "military_operations",
+   "title": "Exercise Planning",
+   "opener": "Buenos días. Usted es el coordinador de nuestro próximo ejercicio, ¿verdad? Necesito discutir algunos detalles con usted.",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-02",
+   "domain": "military_operations",
+   "title": "Logistics Coordination",
+   "opener": "¿Cómo van los preparativos para el envío de suministros a la base avanzada? Necesitamos asegurarnos de que todo llegue a tiempo.",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-03",
+   "domain": "military_operations",
+   "title": "Airfield Operations",
+   "opener": "Usted está a cargo de las operaciones en la pista hoy, ¿correcto? ¿Podría informarme sobre el estado de las pistas y las zonas de estacionamiento?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-04",
+   "domain": "military_operations",
+   "title": "Movement Orders",
+   "opener": "Necesito que revise estas órdenes de movimiento con usted. ¿Podría confirmar si los detalles son correctos?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-05",
+   "domain": "military_operations",
+   "title": "Briefing a Counterpart",
+   "opener": "Voy a dar una breve charla sobre nuestra próxima misión. Por favor, escuche y luego déme su opinión.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-06",
+   "domain": "military_operations",
+   "title": "Communications Check",
+   "opener": "¿Podría hacer una verificación de comunicaciones con usted? Necesitamos asegurarnos de que todos los canales estén funcionales.",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-07",
+   "domain": "military_operations",
+   "title": "Medical Evacuation",
+   "opener": "Tenemos una situación de evacuación médica que necesitamos coordinar. ¿Podría ayudarme a planificar los pasos necesarios?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-08",
+   "domain": "military_operations",
+   "title": "Intelligence Sharing",
+   "opener": "Recibí nueva inteligencia que necesita ser compartida con su unidad. ¿Podría revisar estos informes conmigo?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-09",
+   "domain": "military_operations",
+   "title": "Fuel Resupply",
+   "opener": "Necesitamos coordinar el reabastecimiento de combustible para nuestras unidades en el campo. ¿Podría ayudarme con esto?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-10",
+   "domain": "military_operations",
+   "title": "Ammunition Stockpile",
+   "opener": "Voy a revisar el inventario de municiones hoy. ¿Podría acompañarme y verificar los números?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_operations-11",
+   "domain": "military_operations",
+   "title": "Patrol Routes",
+   "opener": "Estamos planeando nuevas rutas de patrulla. ¿Podría discutir las opciones y recomendar la mejor ruta?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-01",
+   "domain": "military_field",
+   "title": "Checkpoint Procedure",
+   "opener": "Buenos días, ¿podría por favor ver su identificación y los documentos de su vehículo?",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-02",
+   "domain": "military_field",
+   "title": "Equipment Request",
+   "opener": "Buenas tardes, necesito solicitar equipo adicional para mi unidad. ¿Podría ayudarme con eso?",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-03",
+   "domain": "military_field",
+   "title": "Safety Briefing",
+   "opener": "Atención todos, vamos a realizar un breve resumen de seguridad antes de comenzar la operación.",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-04",
+   "domain": "military_field",
+   "title": "Casualty Evacuation",
+   "opener": "Tenemos un herido que necesita evacuación médica inmediata. ¿Cuál es el procedimiento?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-05",
+   "domain": "military_field",
+   "title": "Convoy Planning",
+   "opener": "Tenemos un convoy planeado para mañana. ¿Podría usted revisar la ruta y los puntos de control con nosotros?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-06",
+   "domain": "military_field",
+   "title": "Disaster Relief Coordination",
+   "opener": "Hemos recibido un informe de un desastre natural en la zona. ¿Cómo coordinamos los esfuerzos de socorro?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-07",
+   "domain": "military_field",
+   "title": "Intelligence Report Debrief",
+   "opener": "Acabamos de recibir un informe de inteligencia. Vamos a revisarlo y discutir las implicaciones.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-08",
+   "domain": "military_field",
+   "title": "Civilian Evacuation",
+   "opener": "Hay una situación peligrosa en una zona civil. ¿Cómo procedemos con la evacuación de los civiles?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-09",
+   "domain": "military_field",
+   "title": "Interagency Cooperation",
+   "opener": "Vamos a tener una reunión con representantes de otras agencias gubernamentales. ¿Podría prepararnos para eso?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-10",
+   "domain": "military_field",
+   "title": "Crisis Management",
+   "opener": "Estamos enfrentando una crisis en curso. Necesitamos discutir nuestras opciones y estrategias de respuesta.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-military_field-11",
+   "domain": "military_field",
+   "title": "Logistics and Supply",
+   "opener": "Hay un problema con nuestro suministro de combustible. ¿Podría ayudarnos a resolver esto rápidamente?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-01",
+   "domain": "interpreter",
+   "title": "Airport Arrival",
+   "opener": "Buenos días. ¿Podría ayudarme a entender las instrucciones en la pantalla de llegadas? No estoy seguro de qué puerta de embarque tomar.",
+   "minLevel": "1",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-02",
+   "domain": "interpreter",
+   "title": "Hotel Checkout",
+   "opener": "Disculpe, ¿podría aclarar qué cargos aparecen en mi cuenta? No reconozco uno de ellos.",
+   "minLevel": "1+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-03",
+   "domain": "interpreter",
+   "title": "Restaurant Order",
+   "opener": "Hola, ¿podría explicarme qué platos son vegetarianos? Tengo algunas restricciones dietéticas.",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-04",
+   "domain": "interpreter",
+   "title": "Doctor's Appointment",
+   "opener": "Buenas tardes. ¿Podría traducir y explicar los síntomas que el doctor me está preguntando?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-05",
+   "domain": "interpreter",
+   "title": "Business Meeting",
+   "opener": "Buenos días. ¿Podría ayudarme a entender las expectativas para esta reunión y lo que se espera que logremos hoy?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-06",
+   "domain": "interpreter",
+   "title": "Conference Interpretation",
+   "opener": "¿Podría interpretar simultáneamente esta presentación? Asegúrese de transmitir la información técnica con precisión.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-07",
+   "domain": "interpreter",
+   "title": "Legal Document Translation",
+   "opener": "Buenos días. ¿Podría traducir este contrato y explicar los términos clave y las obligaciones?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-08",
+   "domain": "interpreter",
+   "title": "Cultural Event",
+   "opener": "Hola. ¿Podría explicar el contexto cultural y la importancia de este evento tradicional?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-09",
+   "domain": "interpreter",
+   "title": "Diplomatic Meeting",
+   "opener": "Buenos días. ¿Podría interpretar en esta reunión diplomática y asegurarse de que el tono y el protocolo sean adecuados?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-10",
+   "domain": "interpreter",
+   "title": "Emergency Situation",
+   "opener": "¡Rápido! ¿Podría traducir y transmitir las instrucciones de emergencia a los turistas que no hablan español?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-interpreter-11",
+   "domain": "interpreter",
+   "title": "Academic Presentation",
+   "opener": "Buenas tardes. ¿Podría interpretar esta presentación académica y asegurar la claridad de los conceptos complejos?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-01",
+   "domain": "abstract",
+   "title": "Education Policy",
+   "opener": "¿Qué opina usted sobre la implementación de un año obligatorio de servicio comunitario para todos los estudiantes antes de graduarse?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-02",
+   "domain": "abstract",
+   "title": "Ethical Dilemma",
+   "opener": "Imagina que encuentras una bolsa con dinero en la calle. ¿Qué haría usted y por qué?",
+   "minLevel": "2",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-03",
+   "domain": "abstract",
+   "title": "Future Technology",
+   "opener": "¿Cómo cree usted que la inteligencia artificial cambiará nuestro mundo en los próximos 20 años?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-04",
+   "domain": "abstract",
+   "title": "Social Issues",
+   "opener": "¿Qué medidas debería tomar el gobierno para reducir la brecha entre ricos y pobres?",
+   "minLevel": "2+",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-05",
+   "domain": "abstract",
+   "title": "Environmental Policy",
+   "opener": "¿Está usted a favor o en contra de la imposición de impuestos más altos a las empresas contaminantes? ¿Por qué?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-06",
+   "domain": "abstract",
+   "title": "Philosophical Question",
+   "opener": "¿Cree usted que el fin justifica los medios? Por favor, dé su opinión y ejemplos.",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-07",
+   "domain": "abstract",
+   "title": "Political System",
+   "opener": "¿Qué ventajas y desventajas ve usted en un sistema de gobierno parlamentario en comparación con un sistema presidencial?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-08",
+   "domain": "abstract",
+   "title": "Hypothetical Scenario",
+   "opener": "Si usted pudiera cambiar una ley o política en este país, ¿cuál sería y por qué?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-09",
+   "domain": "abstract",
+   "title": "Moral Responsibility",
+   "opener": "¿Cuál cree usted que es la responsabilidad moral de los ciudadanos en una democracia?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-10",
+   "domain": "abstract",
+   "title": "Cultural Values",
+   "opener": "¿Cómo definiría usted los valores culturales más importantes de su país y cómo han evolucionado con el tiempo?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-topic-abstract-11",
+   "domain": "abstract",
+   "title": "Globalization",
+   "opener": "¿Qué impacto ha tenido la globalización en la identidad cultural de su país?",
+   "minLevel": "3",
+   "source": "llm",
+   "verified": false
+  }
+ ],
  "checklist": {
   "0+": [
    "I can greet people and say my name.",

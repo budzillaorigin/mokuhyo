@@ -99,7 +99,7 @@ class LanguageModuleContractTest {
         registry.codes.forEach { code ->
             val m = registry.module(code)
             val dict = m.dictionary ?: return@forEach skip("$code dictionary: content/packs/$code/dictionary.sqlite not built")
-            val words = lists[code]?.jsonArray?.map { it.jsonPrimitive.content }.orEmpty()
+            val words = lists[code]?.jsonArray?.map { it.jsonObject["q"]!!.jsonPrimitive.content }.orEmpty()
             val misses = words.filter { dict.lookup(it, 1).isEmpty() }
             assertTrue(misses.isEmpty(), "$code: no dictionary hit for $misses")
             assertTrue(words.size >= 20, "$code: needs 20 known words, has ${words.size}")

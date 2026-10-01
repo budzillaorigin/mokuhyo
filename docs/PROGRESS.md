@@ -77,10 +77,48 @@ ChatML formatting (Phase 1 switches to the GGUF's own chat template), `Validatio
 - `smoke_opi.sh` (packaged app, Tier A Phi-4-mini Q4_K_M from `tools/.cache/models`): Metal — first interviewer turn
   3.8 s incl. model load, Whisper small transcript of the OS-voice answer 1.3 s with 95 % character overlap, model
   follow-up 3.4 s. CPU (`--cpu`) — 9.5 s / 2.0 s / 10.7 s. OK on both.
-- Windows and Linux gate_build: CI (see below).
+- CI run 36818087433: gate_core and gate_build green on Linux, macOS and Windows (after fixing the Linux launcher
+  path and letting CMake pick the installed Visual Studio).
 
 **Deferred / known gaps:** the Vulkan variant and `native/build.ps1` are only exercised by CI; the per-language quality
 badge reads `docs/MODELS.md` "Speaking eval" (filled in Phase 4); voices beyond the OS voice arrive in Phase 2;
 Settings → "Check for updates" is wired in Phase 7.
 
 **Run it:** `./gradlew :desktopApp:run` · `tools/gates/gate_build.sh` · `tools/gates/smoke_opi.sh`
+
+## Phase 2 — Language layer ✅ (one known gap)
+
+**Built**
+- `LanguageModule` contract (`shared/.../lang/LanguageModule.kt`) with `DictionaryPack`, `SpeechOutput`, `ReadingAids`,
+  `ScriptInfo`, `VoiceSpec`; `LanguageRegistry` builds all 11 modules from installed packs.
+- Segmentation: ICU4J word break (dictionary-based for zh); Japanese uses the lattice tokenizer over mecab-ipadic
+  (`content/packs/ja/tokenizer.sqlite`, 25 MB) for dictionary forms and furigana; Korean particle/ending stripping.
+- `Fold.forCompare` per language (D-015); `ScriptCheck` (target-language purity, foreign-script leaks, Latin-script
+  function-word test) used by every AI prompt validator.
+- Dictionaries for all 11 languages (D-014): language-neutral schema, exact → lemma → fuzzy → prefix lookup, mean
+  ~2 ms, p95 ≤ 3.2 ms; built packs: ja 219k entries (40 MB), zh-Hans 124k (23.5 MB), es/fr/de/pt-BR/ru 40k each
+  (12–33 MB), ko 38k, ar 27k, fa 17k, id 36k.
+- Voice service (D-012, D-013): Piper 2023.11.14-2 built from source as a separate GPL executable with a JSON-lines
+  protocol, 11 redistributable voices (es, fr, de, pt-BR, ru, fa), OS-voice fallback by locale (macOS `say`,
+  Windows SAPI), null when nothing can speak a language.
+- Reading aids: furigana (ja), pinyin + Traditional toggle (zh), romanization (ru, ko, ar, fa, ja), Arabic short-vowel
+  toggle. RTL passages for ar/fa. Bundled Noto fonts (D-016) with a glyph-coverage test.
+- `docs/LANGUAGES.md` (per-language table, how to add a 12th language).
+
+**Gate `tools/gates/gate_lang.sh` (macOS arm64)**
+- Contract tests with real packs (MOKUHYO_REQUIRE_PACKS=1): segmentation/offsets, folding fixtures, lemmas, ja lattice
+  lemma + furigana, reading aids, 20 known-word dictionary hits × 11 languages, font coverage — PASS.
+- TTS → Whisper small round trip (≥ 60 % token match): ja 82 % (OS Kyoko), es 93 %, fr 79 %, de 75 %, pt-BR 92 %,
+  ru 82 % (Piper), zh-Hans 92 % (OS Tingting), ko 78 % (OS Yuna, open decision 4 fallback), ar 100 % (OS Majed),
+  id 78 % (OS Damayanti) — PASS; **fa FAIL (known gap)**.
+- **Known gap — Persian TTS intelligibility.** Command: `tools/gates/gate_lang.sh` (or
+  `./gradlew :desktopApp:run --args="--smoke-lang --whisper $PWD/tools/.cache/models/ggml-small.bin --languages fa"`).
+  Output: `smoke-lang: fa FAIL voice=piper:fa_IR-amir-medium match=50% "جلسه فردا سات ده در سالون طبقه سی وومبر بزار میشد."`
+  Three attempts: (1) voice fa_IR-ganji: 20–40 %; (2) Whisper large-v3-turbo: amir 30 %, ganji 50 %; (3) Persian
+  می + space/ZWNJ normalisation: still 20–50 %. Cause: espeak-ng's Persian phonemisation mispronounces words
+  (جلسه → "kalase", طبقه → "tabaqiye"); Whisper hears what was said. Persian listening still plays with the Piper
+  voice, labelled as an imperfect synthetic voice; a better Persian voice is an owner follow-up.
+- `gate_core`: PASS (258 Kotlin tests, Python tests incl. 15 dictionary-builder tests).
+
+**Run it:** `tools/gates/gate_lang.sh` (builds packs and voices' prerequisites: `voices/build.sh`,
+`python3 tools/voices/manifest.py --fetch`)

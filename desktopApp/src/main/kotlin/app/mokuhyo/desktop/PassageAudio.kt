@@ -33,7 +33,7 @@ class PassageAudio(private val app: AppGraph) {
         )
         cached.parentFile.mkdirs()
         cached.writeBytes(wav)
-        Result.Ready(wav, "voice service")
+        Result.Ready(wav, "voice service" + (VOICE_NOTES[passage.language]?.let { " — $it" } ?: ""))
     }
 
     private suspend fun render(speech: SpeechOutput, passage: ExamPassage): ByteArray? {
@@ -51,6 +51,11 @@ class PassageAudio(private val app: AppGraph) {
         }
         val all = ShortArray(pcm.sumOf { it.size }).also { out -> var o = 0; pcm.forEach { it.copyInto(out, o); o += it.size } }
         return AudioIO.wav(all)
+    }
+
+    companion object {
+        /** Honest labels for voices with known problems (docs/LANGUAGES.md, PROGRESS gate_lang known gap). */
+        val VOICE_NOTES = mapOf("fa" to "synthetic voice; some words are mispronounced")
     }
 
     private fun decode(file: File): ByteArray = file.readBytes()

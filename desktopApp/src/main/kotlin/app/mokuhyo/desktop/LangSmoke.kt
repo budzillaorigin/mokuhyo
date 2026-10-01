@@ -49,7 +49,9 @@ object LangSmoke {
         val rows = langs.map { lang ->
             val module = registry.module(lang)
             val text = sentences.getValue(lang)
-            val spoken = runCatching { speech.synthesize(text, lang) }.getOrNull()
+            val voiceId = Smoke.arg(args, "--voice")
+            val voice = voiceId?.let { id -> speech.voicesFor(lang).firstOrNull { it.id == id } }
+            val spoken = runCatching { speech.synthesize(text, lang, voice) }.getOrNull()
             if (spoken == null) {
                 Row(lang, "none", "", null, ok = lang in allowedFallback, note = "FALLBACK: no voice for $lang on this computer (text-first; logged per DECISIONS)")
             } else {
@@ -74,7 +76,9 @@ object LangSmoke {
     /** Share of the expected word tokens found, in order, in the transcript (LCS over folded word tokens). */
     fun tokenMatch(module: LanguageModule, expected: String, heard: String): Double {
         val norm = if (module.code == "zh-Hans") synchronized(toSimplified) { toSimplified.transliterate(heard) } else heard
-        fun words(s: String) = module.segment(s).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
+        // Persian writes the verbal prefix می/نمی with a ZWNJ or a space interchangeably; compare them as one word.
+        fun persian(s: String) = if (module.code == "fa") s.replace(Regex("(^|\\s)(ن?می)\\s+"), "$1$2\u200C") else s
+        fun words(s: String) = module.segment(persian(s)).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
         val a = words(expected)
         val b = words(norm)
         if (a.isEmpty()) return 0.0

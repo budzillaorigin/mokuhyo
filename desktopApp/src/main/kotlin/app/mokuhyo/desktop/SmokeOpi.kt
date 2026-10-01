@@ -37,11 +37,14 @@ object SmokeOpi {
         val info = TierAdvisor.defaultModel(Tier.A, manifest.models)!!
         val clock = TimeSource.Monotonic
         val gateway = AiGateway({ LocalLlamaModel(llm, info, model.absolutePath) })
-        val session = OpiSession(banks = emptyMap(), gateway = gateway, startLevel = IlrLevel.L1)
+        val registry = app.mokuhyo.lang.LanguageRegistry(Resources.repoDir?.let { File(it, "content/packs") })
+        val ja = registry.module("ja")
+        val profile = app.mokuhyo.opi.OpiProfile("ja", "Use polite です/ます form with the candidate.")
+        val session = OpiSession("ja", profile, emptyList(), emptyList(), gateway, { s -> ja.segment(s).count { it.isWord } }, startLevel = IlrLevel.L1)
 
         var t = clock.markNow()
         val q1 = session.next() ?: return@runBlocking fail("no first interviewer turn")
-        println("smoke-opi: interviewer [${q1.engine ?: "scripted"}] ${q1.japanese}  (${t.elapsedNow().inWholeMilliseconds} ms incl. model load)")
+        println("smoke-opi: interviewer [${q1.engine ?: "scripted"}] ${q1.text}  (${t.elapsedNow().inWholeMilliseconds} ms incl. model load)")
         if (q1.engine == null) return@runBlocking fail("the interviewer turn did not come from the model")
 
         val answer = "はじめまして。私はアメリカから来ました。今は東京で日本語を勉強しています。趣味は料理です。"
@@ -58,7 +61,7 @@ object SmokeOpi {
         session.answer(transcript.text)
         t = clock.markNow()
         val q2 = session.next() ?: return@runBlocking fail("no second interviewer turn")
-        println("smoke-opi: interviewer [${q2.engine ?: "scripted"}] ${q2.japanese}  (${t.elapsedNow().inWholeMilliseconds} ms)")
+        println("smoke-opi: interviewer [${q2.engine ?: "scripted"}] ${q2.text}  (${t.elapsedNow().inWholeMilliseconds} ms)")
         if (q2.engine == null) return@runBlocking fail("the follow-up did not come from the model")
         println("smoke-opi: OK")
         0
