@@ -43,3 +43,5 @@ SmartScreen and Gatekeeper warnings. No Linux build is provided.
 - On the mid-size model, the interviewer sometimes repeats a question or stays on one topic, and ratings are
   approximate.
 - The update check is off by default. It can't see releases while the repository is private.
+- The app is meant to be dark; on Windows it still shows the light theme. A fix is coming in an update.
+- On Windows, if the app doesn't start, run `%LOCALAPPDATA%\Mokuhyo\MokuhyoConsole.exe --smoke` and send us its output.
