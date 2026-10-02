@@ -36,6 +36,8 @@ uv run --locked python release/stage_resources.py --require-native --require-voi
 Pop-Location
 
 Step "package"
+# Wipe the Compose output: Gradle can reuse a stale app image after the staged packs change.
+if (Test-Path desktopApp\build\compose) { Remove-Item -Recurse -Force desktopApp\build\compose }
 .\gradlew.bat --no-daemon :desktopApp:packageMsi :desktopApp:createDistributable "-Pmokuhyo.version=$Version" --console=plain -q; Check "package"
 
 Step "packaged smoke"
