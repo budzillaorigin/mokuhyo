@@ -53,7 +53,8 @@ docker run --rm --platform linux/amd64 \
     cp -a /packs/. content/packs/
     cp -a /voice-models/. voices/models/
     echo "== native cpu"; native/build.sh cpu
-    echo "== native vulkan"; native/build.sh vulkan || echo "WARNING: Vulkan variant failed; shipping CPU only"
+    # The Vulkan shader generator can deadlock under amd64 emulation (Colima + Rosetta); bound it and fall back to CPU.
+    echo "== native vulkan"; timeout 3600 native/build.sh vulkan || { echo "WARNING: Vulkan variant failed or timed out; shipping CPU only"; rm -rf native/build/linux-x86_64/vulkan; }
     echo "== piper"; voices/build.sh
     echo "== stage"
     (cd tools && uv run --locked python release/stage_fonts.py && uv run --locked python release/stage_resources.py --require-native --require-voices)
