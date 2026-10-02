@@ -1,9 +1,9 @@
 # Mokuhyo v1 — summary for the owner
 
 Status as of 2026-10-02. Phases 0–7 of BRIEF §11 are complete, each with its gate passing and a checkpoint in
-`docs/PROGRESS.md`. **v0.1.0 is published as a pre-release** (never a full release):
-https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.1.0 — Windows MSI and portable zip, macOS DMGs for Apple
-silicon and Intel, and `SHA256SUMS`.
+`docs/PROGRESS.md`. **v0.1.1 is the current pre-release** (never a full release):
+https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.1.1 — Windows MSI and portable zip, macOS DMGs for Apple
+silicon and Intel, and `SHA256SUMS`. v0.1.0 remains, with a pointer to v0.1.1.
 
 ## What you have
 - **App:**
@@ -44,9 +44,6 @@ silicon and Intel, and `SHA256SUMS`.
    Making it public is your call.
 
 ## Known gaps
-- **Dark mode on Windows:** the app is built dark-only (D-027), but your Windows install still showed the light theme.
-  This is the first thing to fix in the next update. Check first whether reinstalling the same-version MSI really
-  replaced the files.
 - **Windows build is cross-compiled** (mingw-w64, wixl). It starts and finds everything, but the GPU (Vulkan) path and
   Piper speech on Windows haven't been exercised yet. `tools/release/build_windows.ps1` is the MSVC alternative.
 - **No human review of content.** Every passage, question and interview item is AI-drafted and checked only by a

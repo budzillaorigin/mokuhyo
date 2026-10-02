@@ -274,3 +274,21 @@ ko, ar, id; none on Linux — known gap, D-013).
   start-up.
 - See `docs/V1_SUMMARY.md` for the rest: content unreviewed, the Persian voice, OS voices for ja/zh/ko/ar/id,
   interviewer quality, unsigned installers, and the voice-licensing review (D-013).
+
+## v0.1.1 — dark everywhere (2026-10-02) ✅
+
+https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.1.1 — pre-release. The v0.1.0 notes point to it.
+
+**Changes**
+- `MokuhyoTheme` paints the dark background and text colour for every screen; in v0.1.0 the first-run flow showed the
+  light window colour.
+- Dark AWT window background.
+- Dark Windows title bar through `mokuhyo_win.dll` (`native/win/dark_titlebar.c`, DWM, D-027).
+
+**Gate `gate_release.sh v0.1.1`: PASS.** The macOS fresh-install smokes (arm64 and Intel) passed. On Windows, the
+owner installed it as an in-place upgrade from 0.1.0 and confirmed it is fully dark.
+
+**Also before going public:** the git history was rewritten (2026-10-02):
+- Commit emails now use the GitHub privacy address.
+- LAN addresses are replaced with placeholders.
+- A backup of the old history is at `~/mokuhyo-history-backup-2026-10-02.bundle` on the build Mac.
