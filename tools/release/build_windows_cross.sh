@@ -82,7 +82,10 @@ if [[ ! -f "$skiko_jar" ]]; then
   mv "$skiko_jar.tmp" "$skiko_jar"
 fi
 cp "$skiko_jar" "$IMG/app/"
-(cd "$IMG/app" && unzip -o -q "$skiko_jar" skiko-windows-x64.dll skiko-windows-x64.dll.sha256)
+# Everything skiko ships next to its DLL: Skia's ICU data (icudtl.dat) is required on Windows — without it
+# text layout aborts ("SkLoadICU: datafile ... is missing", check(fUnicode)).
+(cd "$IMG/app" && unzip -o -q "$skiko_jar" -x 'META-INF/*')
+for f in skiko-windows-x64.dll icudtl.dat; do [[ -f "$IMG/app/$f" ]] || { echo "skiko $f missing" >&2; exit 1; }; done
 
 echo "== app config"
 {
