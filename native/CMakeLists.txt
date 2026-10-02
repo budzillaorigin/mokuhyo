@@ -152,6 +152,11 @@ if (APPLE)
     # Export only the JNI entry points; strip everything pulled in from the static archives.
     target_link_options(mokuhyo_native PRIVATE "-Wl,-exported_symbol,_Java_*" "-Wl,-exported_symbol,_JNI_OnLoad"
                         "-Wl,-dead_strip")
+elseif (MINGW)
+    # Cross-built from macOS/Linux with mingw-w64 (native/build_mingw.sh): System.mapLibraryName gives
+    # mokuhyo_native.dll (no "lib" prefix), and the GCC/pthread runtimes are linked in so only system DLLs are needed.
+    set_target_properties(mokuhyo_native PROPERTIES PREFIX "")
+    target_link_options(mokuhyo_native PRIVATE "-static" "-static-libstdc++" "-static-libgcc" "-Wl,--gc-sections")
 elseif (UNIX)
     # Also link libstdc++/libgcc statically so the .so runs on older distros than the build host.
     target_link_options(mokuhyo_native PRIVATE "-Wl,--exclude-libs,ALL" "-Wl,--gc-sections" "-Wl,--as-needed"

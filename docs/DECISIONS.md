@@ -186,3 +186,23 @@ empty data folder. No Linux installer is published ("no one will use it on Linux
 stays for anyone who wants one; under Colima/Rosetta llama.cpp's Vulkan shader generator deadlocks, so the script
 bounds that step and falls back to CPU. Rule 11's three-OS CI is suspended until the owner re-enables the workflows.
 gate_release checks the published pre-release (assets, checksums, pre-release flag) and the local fresh-install logs.
+
+## D-026 Windows installer cross-built on macOS (owner request, 2026-10-02; OWNER REVIEW of the runtime licenses)
+The owner's own Windows builds kept failing, there is no SSH access to a Windows machine, and GitHub Actions is off
+(D-025). So `tools/release/build_windows_cross.sh` builds the Windows x64 MSI and portable zip on this Mac:
+- **AI library:** `mokuhyo_native.dll` (CPU and Vulkan) cross-compiled with mingw-w64 (`native/build_mingw.sh`).
+  The Vulkan variant links an import library generated from `vulkan_core.h`, and the DLL imports only four Vulkan
+  1.0/1.1 functions from the driver's `vulkan-1.dll`.
+- **Piper:** cross-compiled with mingw-w64 (`voices/build_mingw.sh`) with the same pinned sources and patch.
+  espeak-ng's data is compiled by the host build's espeak-ng (`voices/host_espeak.sh`).
+- **Java runtime:** this Mac's `jlink` links the Windows JDK's jmods; it is the same JDK version, which jlink requires.
+- **Launcher and installer:** jpackage's own Windows launcher plus a hand-written `.cfg`. wixl makes a per-user MSI
+  that installs into `%LOCALAPPDATA%\Mokuhyo`, with a Start-menu shortcut and the jpackage UpgradeCode. The app also
+  ships a console launcher, `MokuhyoConsole.exe`, so smoke tests can be read.
+
+The result can't be run on the build machine: first-run verification is on Windows
+(`tools/gates/fresh_install_smoke.ps1`, or install it and run `MokuhyoConsole.exe --smoke --require-packs`).
+**For the owner:** the mingw build links the GCC C++ runtime statically into the JNI library. That runtime is
+GPL-3.0 with the GCC Runtime Library Exception, which allows this for code under any license; MSVC builds link
+Microsoft's runtime the same way. Rule 6's MIT/Apache/BSD list is read as covering third-party library code, not the
+compiler runtime. If you read it more strictly, build Windows with MSVC (`tools/release/build_windows.ps1`).

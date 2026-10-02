@@ -44,6 +44,12 @@ endif()
 # Windows keeps the default dynamic MSVC runtime (/MD): piper.exe and piper_phonemize.dll pass std::string and
 # std::vector across the DLL boundary, which needs one shared CRT heap. build.ps1 copies the VC++ runtime DLLs
 # (app-local deployment) next to piper.exe instead.
+if(CMAKE_TOOLCHAIN_FILE)
+  # Cross builds (voices/build_mingw.sh): every sub-build targets the same platform.
+  # GCC 14+ no longer pulls <cstdint> in transitively and defaults to C++20; the 2023 sources expect C++17.
+  set(cross_cxx "-include cstdint -std=gnu++17")
+  list(APPEND common_args -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE} "-DCMAKE_CXX_FLAGS=${cross_cxx}")
+endif()
 if(CMAKE_C_COMPILER)
   list(APPEND common_args -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER})
 endif()
@@ -111,6 +117,10 @@ set(pp_args ${common_args} -DCMAKE_INSTALL_PREFIX:PATH=${P}/pi -DONNXRUNTIME_DIR
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   # Runs on Ubuntu 22.04+ without depending on the build host's libstdc++ version.
   list(APPEND pp_args "-DCMAKE_SHARED_LINKER_FLAGS=-static-libstdc++ -static-libgcc")
+endif()
+if(CMAKE_TOOLCHAIN_FILE AND WIN32)
+  # piper-phonemize includes <windows.h> only under _MSC_VER but calls SetConsoleOutputCP under _WIN32.
+  list(APPEND pp_args "-DCMAKE_CXX_FLAGS=${cross_cxx} -DNOMINMAX -include windows.h")
 endif()
 src_url(piper-phonemize pp_url pp_hash)
 ExternalProject_Add(piper_phonemize

@@ -53,6 +53,15 @@ Ported algorithms (code in this repo, original license kept):
 | `whisper.cpp` | whisper.cpp b5130 — on-device speech-to-text, statically linked into `mokuhyo_native` | MIT | © The ggml authors — https://github.com/ggml-org/whisper.cpp (tarball SHA-256 in `native/lock.json`) |
 | `ggml` | ggml tensor library (CPU, Metal, Vulkan backends), the copy vendored in llama.cpp b11040, shared by both engines | MIT | © The ggml authors — https://github.com/ggml-org/ggml |
 
+## Bundled runtimes (part of every installer)
+
+| id | Component | License | Attribution / source |
+|---|---|---|---|
+| `openjdk-runtime` | Java runtime image (jlink of Eclipse Temurin OpenJDK 21) that runs the app | GPL-2.0 WITH Classpath-exception-2.0 (the exception lets the app ship under its own license) | © Oracle and/or its affiliates and contributors; build by the Eclipse Adoptium project — https://adoptium.net · source: https://github.com/adoptium/jdk21u |
+| `gcc-runtime` | Windows build only (mingw-w64 cross build, D-026): libstdc++ and libgcc, linked statically into `mokuhyo_native.dll` and shipped as `libstdc++-6.dll` / `libgcc_s_seh-1.dll` next to piper | GPL-3.0-or-later WITH GCC-exception-3.1 (the GCC Runtime Library Exception permits combining with code under any license) | © Free Software Foundation — https://gcc.gnu.org · https://www.gnu.org/licenses/gcc-exception-3.1.html |
+| `winpthreads` | Windows build only: mingw-w64 winpthreads (`libwinpthread-1.dll`, also static in `mokuhyo_native.dll`) | MIT AND BSD-3-Clause | © the mingw-w64 project — https://www.mingw-w64.org |
+| `msvc-runtime` | Windows only: Microsoft Visual C++ runtime (`msvcp140.dll`, `vcruntime140*.dll`) next to piper, needed by Microsoft's onnxruntime.dll; also inside the Java runtime | Microsoft Visual Studio "Distributable Code" terms | © Microsoft Corporation — copied from the Temurin JDK, which redistributes them |
+
 ## Models (downloaded on first run or bundled)
 
 | id | Model | Developer (country) | License | Source |
@@ -121,6 +130,10 @@ source tarballs (pinned with SHA-256 in `voices/lock.json`, built by `voices/bui
 | Gradle + Gradle wrapper | Apache-2.0 | https://gradle.org |
 | Kotlin Gradle plugins, Compose Multiplatform Gradle plugin, SQLDelight Gradle plugin | Apache-2.0 | https://github.com/JetBrains/kotlin · https://github.com/JetBrains/compose-multiplatform · https://github.com/sqldelight/sqldelight |
 | uv, Ruff (Python tools) | MIT / Apache-2.0 | https://github.com/astral-sh/uv · https://github.com/astral-sh/ruff |
+| mingw-w64 GCC cross toolchain (Windows build from macOS, D-026) | GPL-3.0-or-later (compiler; runtime libraries above) | https://www.mingw-w64.org |
+| msitools / wixl (Windows MSI from macOS) | LGPL-2.1-or-later | https://gitlab.gnome.org/GNOME/msitools |
+| Vulkan-Headers, SPIRV-Headers (compiled into the Vulkan variant of `mokuhyo_native`), shaderc `glslc` (shader compiler) | Apache-2.0 OR MIT / MIT-style (Khronos) / Apache-2.0 | https://github.com/KhronosGroup/Vulkan-Headers · https://github.com/KhronosGroup/SPIRV-Headers · https://github.com/google/shaderc |
+| jpackage Windows launcher (`jpackageapplauncherw.exe`, from the Temurin JDK) — shipped as `Mokuhyo.exe` | GPL-2.0 WITH Classpath-exception-2.0 | part of OpenJDK — https://github.com/adoptium/jdk21u |
 
 ## Inspiration only — no content used
 

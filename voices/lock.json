@@ -95,6 +95,61 @@
           "bytes": 488864
         }
       }
+    },
+    "windows-x86_64": {
+      "treeSha256": "e9f5bbb62f6847fe9e6030775e8e7c9219cacd3e71159a2fbe17acfff11d7d69",
+      "files": 379,
+      "bytes": 88361382,
+      "binaries": {
+        "libespeak-ng.dll": {
+          "sha256": "896b9f2d5b7e11ffcb1f55b6c0baf2e4df0dd717870291179c6d99f498abf661",
+          "bytes": 639241
+        },
+        "libgcc_s_seh-1.dll": {
+          "sha256": "606e87911f93bb521b6071df301eb11e6f7435158a57a4b704b4739f95c1df9f",
+          "bytes": 988015
+        },
+        "libpiper_phonemize.dll": {
+          "sha256": "72bd3b7e88d8ed7dda09fdf7b77e6f1a9553528c1979dd6b47911b5d98832230",
+          "bytes": 584812
+        },
+        "libstdc++-6.dll": {
+          "sha256": "089683d3ab0762b98cc8ff7a68f3ff1df03b020abbf9081b7afe2f0b88996088",
+          "bytes": 29558267
+        },
+        "libtashkeel_model.ort": {
+          "sha256": "9f27090af3e0f661913af048a739632a3f577b3233512551d8c90580ccad4aa8",
+          "bytes": 10261536
+        },
+        "libwinpthread-1.dll": {
+          "sha256": "4546bde48168fd708b6bc4b47d60d351c851bac7b95c9e238407614415ac8854",
+          "bytes": 343646
+        },
+        "msvcp140.dll": {
+          "sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde",
+          "bytes": 575056
+        },
+        "onnxruntime.dll": {
+          "sha256": "a630f67f4a82b6689e4178bf81d362d945522dd907b2a92cb43cebf72c83a06f",
+          "bytes": 9271704
+        },
+        "onnxruntime_providers_shared.dll": {
+          "sha256": "71705b9bd76baced583eb37fe5ec2101946b4de50f1e9bdb156109f7e8082980",
+          "bytes": 22424
+        },
+        "piper.exe": {
+          "sha256": "ef07c95b5fd35f061c209ce4461faaf6c5391dd45a6db1faddb8a6f00062ce68",
+          "bytes": 17590612
+        },
+        "vcruntime140.dll": {
+          "sha256": "02c6aa0e6e624411a9f19b0360a7865ab15908e26024510e5c38a9c08362c35a",
+          "bytes": 119888
+        },
+        "vcruntime140_1.dll": {
+          "sha256": "7dd9aa02e271c68ca6d5f18d651d23a15d7259715af43326578f7dde27f37637",
+          "bytes": 49640
+        }
+      }
     }
   }
 }

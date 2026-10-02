@@ -25,7 +25,10 @@ $got = (Get-FileHash $asset -Algorithm SHA256).Hash.ToLower()
 if ($want -ne $got) { throw "checksum mismatch: $got != $want" }
 $p = Start-Process msiexec.exe -ArgumentList "/i", "`"$work\$asset`"", "/qn", "/l*v", "`"$work\install.log`"" -Wait -PassThru
 if ($p.ExitCode -ne 0) { Get-Content "$work\install.log" -Tail 40; throw "msiexec exit $($p.ExitCode)" }
-$exe = Get-ChildItem -Path "$env:LOCALAPPDATA\Mokuhyo", "$env:ProgramFiles\Mokuhyo" -Filter Mokuhyo.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+# The cross-built MSI (D-026) also ships MokuhyoConsole.exe, whose output can be captured; prefer it.
+$dirs = "$env:LOCALAPPDATA\Mokuhyo", "$env:ProgramFiles\Mokuhyo"
+$exe = Get-ChildItem -Path $dirs -Filter MokuhyoConsole.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+if (-not $exe) { $exe = Get-ChildItem -Path $dirs -Filter Mokuhyo.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 }
 if (-not $exe) { throw "installed Mokuhyo.exe not found" }
 Write-Host "== fresh install: launching $($exe.FullName) --smoke"
 # An empty data directory: no settings, no learner, nothing cached.
