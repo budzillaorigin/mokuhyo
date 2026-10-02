@@ -1,4 +1,11 @@
-# Mokuhyo 0.1.0 (pre-release)
+# Mokuhyo 0.1.1 (pre-release)
+
+**What's new in 0.1.1:** the whole app is now dark, including the setup screens and the Windows title bar. In 0.1.0
+parts of it showed a bright light background. On Windows, installing 0.1.1 upgrades 0.1.0 in place.
+
+---
+
+## 0.1.0
 
 Free, open-source practice for lower-range DLPT-style reading and listening (ILR 0+ to 3) and an OPI-style speaking
 interview, in 11 languages: Japanese, Spanish, French, German, Brazilian Portuguese, Russian, Chinese (Simplified),
@@ -11,9 +18,9 @@ works with no internet.
 
 | Computer | File |
 |---|---|
-| Windows 10/11 (64-bit) | `Mokuhyo-0.1.0-windows-x64.msi` |
-| Mac with Apple silicon | `Mokuhyo-0.1.0-macos-arm64.dmg` |
-| Mac with an Intel processor (AVX2, 2014 or later) | `Mokuhyo-0.1.0-macos-x64.dmg` |
+| Windows 10/11 (64-bit) | `Mokuhyo-0.1.1-windows-x64.msi` |
+| Mac with Apple silicon | `Mokuhyo-0.1.1-macos-arm64.dmg` |
+| Mac with an Intel processor (AVX2, 2014 or later) | `Mokuhyo-0.1.1-macos-x64.dmg` |
 
 Check downloads against `SHA256SUMS`. The installers are unsigned. See `docs/INSTALL.md` for getting past the
 SmartScreen and Gatekeeper warnings. No Linux build is provided.
@@ -43,5 +50,4 @@ SmartScreen and Gatekeeper warnings. No Linux build is provided.
 - On the mid-size model, the interviewer sometimes repeats a question or stays on one topic, and ratings are
   approximate.
 - The update check is off by default. It can't see releases while the repository is private.
-- The app is meant to be dark; on Windows it still shows the light theme. A fix is coming in an update.
 - On Windows, if the app doesn't start, run `%LOCALAPPDATA%\Mokuhyo\MokuhyoConsole.exe --smoke` and send us its output.

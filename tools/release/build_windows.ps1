@@ -28,11 +28,17 @@ if ($LASTEXITCODE -ne 0) { Write-Warning "Vulkan variant failed; shipping CPU on
 Step "piper"
 & powershell -NoProfile -ExecutionPolicy Bypass -File voices\build.ps1; Check "piper"
 
+Step "dark title bar helper"
+$winOut = "native\build\windows-x86_64\win"
+New-Item -ItemType Directory -Force -Path $winOut | Out-Null
+cl /nologo /O2 /LD native\win\dark_titlebar.c "/I$env:JAVA_HOME\include" "/I$env:JAVA_HOME\include\win32" dwmapi.lib user32.lib "/Fe:$winOut\mokuhyo_win.dll" "/Fo:$winOut\"; Check "dark title bar helper"
+
 Step "content packs, fonts, resources"
 Push-Location tools
 uv run --locked python release/fetch_packs.py; Check "fetch_packs"
 uv run --locked python release/stage_fonts.py; Check "stage_fonts"
 uv run --locked python release/stage_resources.py --require-native --require-voices; Check "stage_resources"
+Copy-Item ..\native\build\windows-x86_64\win\mokuhyo_win.dll ..\desktopApp\resources\windows-x64\native\ -Force
 Pop-Location
 
 Step "package"

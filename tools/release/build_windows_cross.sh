@@ -54,6 +54,11 @@ PY
     echo "WARNING: Vulkan variant failed; shipping CPU only"
 fi
 
+# Dark title bar helper (D-027): a 13 KB DLL that needs only system DLLs.
+mkdir -p native/build/windows-x86_64/win
+x86_64-w64-mingw32-gcc -O2 -shared -s -o native/build/windows-x86_64/win/mokuhyo_win.dll native/win/dark_titlebar.c \
+  -I"$W/jdk/include" -I"$W/jdk/include/win32" -ldwmapi -static-libgcc
+
 IMG="$W/image/Mokuhyo"
 rm -rf "$W/image" && mkdir -p "$IMG/app"
 echo "== runtime (jlink → Windows)"
@@ -106,6 +111,7 @@ for d in fonts models packs voices; do
   [[ -d "desktopApp/resources/common/$d" ]] && cp -R "desktopApp/resources/common/$d" "$R/"
 done
 cp native/build/windows-x86_64/cpu/mokuhyo_native.dll "$R/native/cpu/"
+cp native/build/windows-x86_64/win/mokuhyo_win.dll "$R/native/"
 [[ -f native/build/windows-x86_64/vulkan/mokuhyo_native.dll ]] && mkdir -p "$R/native/vulkan" && cp native/build/windows-x86_64/vulkan/mokuhyo_native.dll "$R/native/vulkan/"
 rm -rf "$R/voices/piper" && cp -R voices/build/windows-x86_64/piper "$R/voices/piper"
 for need in packs/ja/exam.json models voices/manifest.json voices/piper/piper.exe fonts; do

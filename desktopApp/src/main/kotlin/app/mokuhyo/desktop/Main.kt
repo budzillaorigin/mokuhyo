@@ -15,6 +15,8 @@ import androidx.compose.ui.res.painterResource
 import app.mokuhyo.desktop.ui.FirstRun
 import app.mokuhyo.desktop.ui.MokuhyoTheme
 import app.mokuhyo.desktop.ui.Shell
+import app.mokuhyo.desktop.ui.WindowBackground
+import androidx.compose.runtime.LaunchedEffect
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
@@ -41,6 +43,9 @@ fun main(args: Array<String>) {
             icon = painterResource("icon.png"),
         ) {
             window.minimumSize = java.awt.Dimension(1024, 700)
+            window.background = WindowBackground
+            // The window may not be visible on the first call; DWM ignores hidden ones, so try a few times.
+            LaunchedEffect(Unit) { repeat(3) { WindowsTitleBar.darken(); kotlinx.coroutines.delay(400) } }
             MokuhyoTheme {
                 var setUp by remember { mutableStateOf(app.firstRunDone) }
                 if (setUp) Shell(app) else FirstRun(app) { setUp = true }

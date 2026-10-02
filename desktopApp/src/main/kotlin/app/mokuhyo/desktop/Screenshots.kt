@@ -3,6 +3,7 @@ package app.mokuhyo.desktop
 import androidx.compose.ui.ImageComposeScene
 import androidx.compose.ui.unit.Density
 import app.mokuhyo.desktop.ui.Destination
+import app.mokuhyo.desktop.ui.FirstRun
 import app.mokuhyo.desktop.ui.MokuhyoTheme
 import app.mokuhyo.desktop.ui.Shell
 import app.mokuhyo.desktop.ui.exam.SessionPreview
@@ -31,6 +32,13 @@ object Screenshots {
             }
             val png = image.encodeToData(EncodedImageFormat.PNG)!!.bytes
             File(out, "${d.name.lowercase()}.png").writeBytes(png)
+            scene.close()
+        }
+        if ("--first-run" in args) {
+            val scene = ImageComposeScene(1280, 840, Density(1f)) { MokuhyoTheme { FirstRun(app) {} } }
+            var image = scene.render(0)
+            for (i in 1..8) { Thread.sleep(150); image = scene.render(i * 16_000_000L) }
+            File(out, "first-run.png").writeBytes(image.encodeToData(EncodedImageFormat.PNG)!!.bytes)
             scene.close()
         }
         Smoke.arg(args, "--session")?.let { spec ->

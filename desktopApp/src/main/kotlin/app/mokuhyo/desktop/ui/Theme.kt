@@ -1,9 +1,12 @@
 package app.mokuhyo.desktop.ui
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 private val Dark = darkColorScheme(
@@ -13,8 +16,16 @@ private val Dark = darkColorScheme(
     secondaryContainer = Color(0xFF6B2418), onSecondaryContainer = Color(0xFFFFDAD3),
 )
 
-/** Always dark (D-027): the light scheme was uncomfortably bright on Windows, where the app followed the OS. */
+/** The window background outside Compose (AWT), so resizing and the first frame never flash light. */
+val WindowBackground = java.awt.Color(0x11, 0x15, 0x22)
+
+/**
+ * Always dark (D-027). The dark background is painted here for every screen: a screen without its own Surface (the
+ * first-run flow) otherwise showed the light AWT window colour with black default text.
+ */
 @Composable
 fun MokuhyoTheme(content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = Dark, typography = Typography(), content = content)
+    MaterialTheme(colorScheme = Dark, typography = Typography()) {
+        Surface(Modifier.fillMaxSize(), color = Dark.background, contentColor = Dark.onBackground, content = content)
+    }
 }

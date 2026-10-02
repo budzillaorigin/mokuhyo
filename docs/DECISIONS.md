@@ -213,5 +213,13 @@ compiler runtime. If you read it more strictly, build Windows with MSVC (`tools/
 ## D-027 Always dark (owner decision, 2026-10-02)
 The app followed the OS light/dark setting; on the owner's Windows PC it came up light, which was too bright. The UI
 is now always dark: the light colour scheme and the OS check are gone from `ui/Theme.kt`. The PDF report stays black
-on white because it is a printed document. The window frame and title bar are drawn by the OS and follow its
-setting.
+on white because it is a printed document.
+**v0.1.1 fix:** in v0.1.0 the theme coloured only the screens that brought their own `Surface`. The first-run flow
+showed the light AWT window colour with black text, and Windows drew a light title bar. Now:
+- `MokuhyoTheme` paints the dark background and default text colour for every screen.
+- The AWT window background is dark too, so resizing and the first frame never flash white.
+- On Windows, `mokuhyo_win.dll` (`native/win/dark_titlebar.c`, our code, system DLLs only) asks DWM for a dark title
+  bar in the app's colour. Windows 10 20H1+ gets dark mode; Windows 11 also gets the exact caption colour. Older
+  builds ignore it.
+
+Native OS file dialogs (export and import) remain in the OS's own style.
