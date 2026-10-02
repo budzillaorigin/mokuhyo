@@ -36,7 +36,7 @@ object Smoke {
             if (app.manifest.models.none { it.bundled && it.id in packs.models }) problems += "bundled Whisper model missing"
             if (packs.voices.isEmpty()) problems += "no bundled Piper voices"
         }
-        val scene = ImageComposeScene(1180, 800, Density(1f)) { MokuhyoTheme(dark = false) { Shell(app) } }
+        val scene = ImageComposeScene(1180, 800, Density(1f)) { MokuhyoTheme { Shell(app) } }
         val image: org.jetbrains.skia.Image = scene.render()
         scene.close()
         val bitmap = org.jetbrains.skia.Bitmap.makeFromImage(image)

@@ -29,7 +29,7 @@ machine before a release (BRIEF §10). Record results with date, OS version and 
 ## Languages and display
 - [ ] Arabic and Persian content renders right-to-left; the app chrome stays left-to-right.
 - [ ] CJK text never shows boxes on Windows (bundled Noto fonts).
-- [ ] Window at 1024×700 has no clipped controls; OS text scaling 150% works; dark mode follows the OS.
+- [ ] Window at 1024×700 has no clipped controls; OS text scaling 150% works; the app is always in dark mode (D-027).
 
 ## Data
 - [ ] PDF report fonts render for all 11 languages (open the PDF in the OS viewer).

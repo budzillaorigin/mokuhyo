@@ -206,3 +206,9 @@ The result can't be run on the build machine: first-run verification is on Windo
 GPL-3.0 with the GCC Runtime Library Exception, which allows this for code under any license; MSVC builds link
 Microsoft's runtime the same way. Rule 6's MIT/Apache/BSD list is read as covering third-party library code, not the
 compiler runtime. If you read it more strictly, build Windows with MSVC (`tools/release/build_windows.ps1`).
+
+## D-027 Always dark (owner decision, 2026-10-02)
+The app followed the OS light/dark setting; on the owner's Windows PC it came up light, which was too bright. The UI
+is now always dark: the light colour scheme and the OS check are gone from `ui/Theme.kt`. The PDF report stays black
+on white because it is a printed document. The window frame and title bar are drawn by the OS and follow its
+setting.

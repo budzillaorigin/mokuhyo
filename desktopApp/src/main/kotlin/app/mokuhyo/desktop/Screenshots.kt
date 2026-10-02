@@ -21,24 +21,23 @@ object Screenshots {
         Smoke.arg(args, "--data-dir")?.let { System.setProperty("mokuhyo.data.dir", it) }
         val app = AppGraph()
         Smoke.arg(args, "--language")?.let { app.setLanguage(it) }
-        val dark = "--dark" in args
         val only = Smoke.arg(args, "--only")?.split(",")
         Destination.entries.filter { only == null || it.name.lowercase() in only }.forEach { d ->
-            val scene = ImageComposeScene(1280, 840, Density(1f)) { MokuhyoTheme(dark = dark) { Shell(app, start = d) } }
+            val scene = ImageComposeScene(1280, 840, Density(1f)) { MokuhyoTheme { Shell(app, start = d) } }
             var image = scene.render(0)
             for (i in 1..12) {
                 Thread.sleep(150)
                 image = scene.render(i * 16_000_000L)
             }
             val png = image.encodeToData(EncodedImageFormat.PNG)!!.bytes
-            File(out, "${d.name.lowercase()}${if (dark) "-dark" else ""}.png").writeBytes(png)
+            File(out, "${d.name.lowercase()}.png").writeBytes(png)
             scene.close()
         }
         Smoke.arg(args, "--session")?.let { spec ->
             val (skillId, level) = spec.split(":")
             val skill = Skill.of(skillId)
             val scene = ImageComposeScene(1280, 840, Density(1f)) {
-                MokuhyoTheme(dark = dark) { SessionPreview(app, skill, level, answer = false) }
+                MokuhyoTheme { SessionPreview(app, skill, level, answer = false) }
             }
             var image = scene.render(0)
             for (i in 1..20) { Thread.sleep(200); image = scene.render(i * 16_000_000L) }
