@@ -214,3 +214,25 @@ Drafted to 5 passages per band (D-019); the checker dropped 2–8 of 30 per bank
   on the other two OSes — green in CI run 36827787084.
 
 **Run it:** `tools/gates/gate_data.sh`; app: Settings → Backup, Report.
+
+## Phase 6 — Content at scale ✅ (10 passages short of target)
+
+**Built**
+- Per-language validators, adapters and renderers (`gen_dlpt.py` ILR bands, `ScriptCheck`, `render_audio.py`), in-app
+  "Generate more" for passages and conversation topics, Content Review screen (Settings → About → Developer tools)
+  exporting verdicts for `tools/items/review.py ingest`.
+- `fill --hours` drafting budget (D-019); the English-question check now accepts quoted target-language words (every
+  Russian ILR 2+ draft was being rejected; regression test in `tools/items/test_gen_dlpt.py`).
+- `tools/gates/gate_content.sh` + `check_content.py` → `docs/CONTENT_STATUS.md`.
+
+**Content** (drafted by mistral-small3.2 on the §7.1 server, checked by gpt-oss:20b; all `source = "llm"`, badged,
+0 human-verified): 1,574 of 1,584 reading/listening passages (12 per ILR band per skill in 7 languages; ru, ko, fa,
+id are 1–3 short at ILR 1+–3), 182–226 items per language and skill; 425 Piper listening clips (es, fr, de, pt-BR, ru,
+fa: every passage); 80 OPI questions + 24 role-plays + 99 topics in each of the 11 languages. Per-language table and
+the commands that close each shortfall: `docs/CONTENT_STATUS.md`.
+
+**Gate `tools/gates/gate_content.sh`: PASS** — strict validation of all 22 banks, packs for all 11 languages, counts
+against §5.3 with shortfalls logged; every listening passage has a clip or a run-time voice (OS voice for ja, zh-Hans,
+ko, ar, id; none on Linux — known gap, D-013).
+
+**Run it:** `tools/gates/gate_content.sh`; top up: `cd tools && uv run --group content python items/gen_dlpt.py fill --language all --skill both --per-band 12`.
