@@ -236,3 +236,41 @@ against §5.3 with shortfalls logged; every listening passage has a clip or a ru
 ko, ar, id; none on Linux — known gap, D-013).
 
 **Run it:** `tools/gates/gate_content.sh`; top up: `cd tools && uv run --group content python items/gen_dlpt.py fill --language all --skill both --per-band 12`.
+
+## Phase 7 — Release hardening ✅ — v0.1.0 published as a pre-release
+
+**Built**
+- Opt-in update check (off by default, daily, "Check now"; D-018). Accessibility pass: labelled checkbox and radio
+  rows, headings, keyboard word lookup in passages. Always-dark theme (D-027; see known issue below).
+- Release builds without GitHub Actions (D-025):
+  - macOS arm64: `tools/release/build_macos_arm64.sh`, wipes the Compose output first.
+  - Intel Mac: `tools/release/build_macos_x64.sh`, an x86_64 cross-build plus jpackage on an x86_64 JDK under
+    Rosetta.
+  - Windows x64: `tools/release/build_windows_cross.sh`, cross-built on macOS (D-026) — mingw-w64 native CPU +
+    Vulkan and Piper, a jlink'd Windows runtime, jpackage's launcher, and a wixl MSI.
+  - `tools/release/build_windows.ps1` remains for an MSVC build on Windows.
+- No Linux installer (owner decision; `tools/release/build_linux.sh` kept).
+- Final content packs `packs-20261002-0213` (`tools/release/packs.lock`).
+- `docs/RELEASE_NOTES.md`, `docs/INSTALL.md`, `docs/V1_SUMMARY.md`.
+
+**Release** https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.1.0 — **pre-release**, tag `v0.1.0` at
+18e84a0. Assets: `Mokuhyo-0.1.0-windows-x64.msi`, `-windows-x64-portable.zip`, `-macos-arm64.dmg`,
+`-macos-x64.dmg`, `SHA256SUMS`.
+
+**Gate `tools/gates/gate_release.sh v0.1.0`: PASS**
+- It is a pre-release, not a draft. All installers and `SHA256SUMS` are present, and GitHub's digests match.
+- `INSTALL.md` and `RELEASE_NOTES.md` exist.
+- macOS fresh-install smokes passed (arm64 natively, Intel under Rosetta): the DMG installs, launches on an empty data
+  folder, and finds 11 packs, 11 Piper voices and Whisper small.
+- **Windows (owner, 2026-10-02):** the MSI installs and the app works. The first cross-build crashed in Skia
+  (missing `icudtl.dat`), which was fixed before release. `MokuhyoConsole.exe --smoke --require-packs` found all
+  packs, voices and Whisper.
+
+**Known issues carried into the next update**
+- **Windows still shows the light theme** even though the build is dark-only (D-027). The jars inside the Windows
+  image contain only the dark scheme, so the cause is still open. First check: whether the reinstall actually replaced
+  the files (same version 0.1.0 MSI), then Windows-specific Compose behaviour.
+- The Windows build is cross-compiled; the Vulkan path and Piper speech on Windows were not exercised beyond
+  start-up.
+- See `docs/V1_SUMMARY.md` for the rest: content unreviewed, the Persian voice, OS voices for ja/zh/ko/ar/id,
+  interviewer quality, unsigned installers, and the voice-licensing review (D-013).

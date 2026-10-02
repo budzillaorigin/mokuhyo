@@ -1,9 +1,9 @@
 # Mokuhyo v1 — summary for the owner
 
-Status as of 2026-10-01. Phases 0–6 of BRIEF §11 are complete, each with its gate passing and a checkpoint in
-`docs/PROGRESS.md`. Phase 7 is done on my side. The v0.1.0 **pre-release** goes out once your Windows build is in:
-run `tools\release\build_windows.ps1`, then I create the release and run `tools/gates/gate_release.sh v0.1.0`.
-Nothing has been published as a full release.
+Status as of 2026-10-02. Phases 0–7 of BRIEF §11 are complete, each with its gate passing and a checkpoint in
+`docs/PROGRESS.md`. **v0.1.0 is published as a pre-release** (never a full release):
+https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.1.0 — Windows MSI and portable zip, macOS DMGs for Apple
+silicon and Intel, and `SHA256SUMS`.
 
 ## What you have
 - **App:**
@@ -22,9 +22,9 @@ Nothing has been published as a full release.
 - **Models** (`docs/MODELS.md`, all on the rule-13 approved list):
   - Tier A Phi-4-mini, Tier B EuroLLM-9B, Tier C Mistral-Nemo, Tier D Mistral-Small-3.2 (D-021).
   - Whisper small is bundled; Whisper large-v3-turbo is a download (D-022).
-- **Installers:** about 1.4 GB each (runtime, Whisper small, voices, dictionaries, content).
+- **Installers:** about 1.4–1.5 GB each (runtime, Whisper small, voices, dictionaries, content).
   - macOS arm64 and Intel: built and fresh-install tested here.
-  - Windows: your build.
+  - Windows: cross-built on this Mac (D-026) and verified by you on Windows.
 - **Tests and gates:** about 280 Kotlin tests and the Python tool tests. Gates: `gate_core`, `gate_build`, `gate_lang`,
   `gate_exam`, `gate_speaking`, `gate_data`, `gate_content` and `gate_release`, all runnable locally from
   `tools/gates/`.
@@ -46,6 +46,11 @@ Nothing has been published as a full release.
    Making it public is your call.
 
 ## Known gaps
+- **Dark mode on Windows:** the app is built dark-only (D-027), but your Windows install still showed the light theme.
+  This is the first thing to fix in the next update. Check first whether reinstalling the same-version MSI really
+  replaced the files.
+- **Windows build is cross-compiled** (mingw-w64, wixl). It starts and finds everything, but the GPU (Vulkan) path and
+  Piper speech on Windows haven't been exercised yet. `tools/release/build_windows.ps1` is the MSVC alternative.
 - **No human review of content.** Every passage, question and interview item is AI-drafted and checked only by a
   second model. Use Settings → About → Developer tools → Content review, then `tools/items/review.py ingest`, to verify
   items.
@@ -70,5 +75,7 @@ Nothing has been published as a full release.
 ## Housekeeping
 - An interim content-pack pre-release `packs-20261001-1043` exists from a dry run. The release uses
   `packs-20261002-0213` (pinned in `tools/release/packs.lock`). You can delete the interim one.
-- Colima, Docker and Rosetta 2 were installed on this Mac for the cross-builds. Colima is stopped
-  (`colima delete` removes its VM).
+- Installed on this Mac for the builds: Rosetta 2, Colima and Docker (the Colima VM has been deleted), mingw-w64,
+  msitools, vulkan-headers, spirv-headers and shaderc (all Homebrew).
+- **D-026 — Windows cross-build (needs your review):** the GCC C++ runtime is linked into the Windows AI library
+  under the GCC Runtime Library Exception.
