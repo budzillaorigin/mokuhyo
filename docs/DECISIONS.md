@@ -90,7 +90,7 @@ WAV before announcing it. Bundled voices (`voices/manifest.json`, 11): es davefx
 de thorsten, pt-BR faber/cadu, ru dmitri/denis, fa amir/ganji. `tools/voices/manifest.py` refuses any voice whose
 dataset licence isn't CC0/CC BY/CC BY-SA/Apache/MIT or whose base model is non-commercial.
 
-## D-013 Languages without a bundleable voice; base-model lineage (unattended default — OWNER REVIEW)
+## D-013 Languages without a bundleable voice; base-model lineage (unattended default; lineage accepted by the owner 2026-10-02)
 No redistributable Piper voice exists for ja (Hi-Fi-CAPTAIN NC), ko (KSS NC; open decision 4), zh-Hans (huayan
 unknown, xiao_ya/chaowen NC lineage), ar (kareem: dataset repo has no licence) or id (news_tts: unclear dataset), and
 de_DE-kerstin was dropped (fine-tuned from CC BY-NC-SA RyanSpeech). These languages use the OS voice at run time
@@ -101,6 +101,8 @@ used for distributed recordings, so shipped listening passages in these language
 **Owner review:** most kept Piper voices were fine-tuned from `en_US-lessac`, whose Blizzard-2013 Lessac data is
 research-licensed. The voices' own datasets are CC0/CC BY/CC BY-SA and rhasspy publishes the voice files under MIT;
 whether the base model's licence carries into the fine-tune is unresolved. Kept, flagged here and in V1_SUMMARY.
+**Owner decision (2026-10-02):** keep the voices. The "fine-tuned from en_US-lessac-medium" provenance stays on
+each voice's row in `docs/LICENSES.md`.
 
 ## D-014 Dictionary packs (unattended default)
 Language-neutral `DictionaryDatabase` (entry, sense, form, example, fold, meta). Sources: JMdict (full), CC-CEDICT
@@ -187,7 +189,7 @@ stays for anyone who wants one; under Colima/Rosetta llama.cpp's Vulkan shader g
 bounds that step and falls back to CPU. Rule 11's three-OS CI is suspended until the owner re-enables the workflows.
 gate_release checks the published pre-release (assets, checksums, pre-release flag) and the local fresh-install logs.
 
-## D-026 Windows installer cross-built on macOS (owner request, 2026-10-02; OWNER REVIEW of the runtime licenses)
+## D-026 Windows installer cross-built on macOS (owner request, 2026-10-02; runtime licensing accepted by the owner)
 The owner's own Windows builds kept failing, there is no SSH access to a Windows machine, and GitHub Actions is off
 (D-025). So `tools/release/build_windows_cross.sh` builds the Windows x64 MSI and portable zip on this Mac:
 - **AI library:** `mokuhyo_native.dll` (CPU and Vulkan) cross-compiled with mingw-w64 (`native/build_mingw.sh`).
@@ -206,6 +208,7 @@ The result can't be run on the build machine: first-run verification is on Windo
 GPL-3.0 with the GCC Runtime Library Exception, which allows this for code under any license; MSVC builds link
 Microsoft's runtime the same way. Rule 6's MIT/Apache/BSD list is read as covering third-party library code, not the
 compiler runtime. If you read it more strictly, build Windows with MSVC (`tools/release/build_windows.ps1`).
+**Owner decision (2026-10-02):** accepted as is.
 
 ## D-027 Always dark (owner decision, 2026-10-02)
 The app followed the OS light/dark setting; on the owner's Windows PC it came up light, which was too bright. The UI

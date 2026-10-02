@@ -30,12 +30,10 @@ silicon and Intel, and `SHA256SUMS`.
   `tools/gates/`.
 
 ## Decisions you should look at (`docs/DECISIONS.md`)
-1. **D-013 — voice licensing (needs your review).**
-   - Most bundled Piper voices are fine-tuned from `en_US-lessac`, whose base data is research-licensed. Whether that
-     carries into the fine-tunes is unresolved.
-   - I kept them and flagged the question. If you disagree, the affected voices drop out and those languages fall
-     back to the OS voice.
-   - `de_DE-kerstin` was already excluded (NC lineage).
+1. **D-013 — voice licensing: decided (2026-10-02).**
+   - You kept the Piper voices fine-tuned from `en_US-lessac`, whose base data is research-licensed.
+   - Their lineage stays recorded on each voice's row in `docs/LICENSES.md`.
+   - `de_DE-kerstin` stays excluded (NC lineage).
 2. **D-025 — no GitHub Actions, no Linux installer.**
    - CI and release workflows are disabled; all gates run locally.
    - Three-OS CI (CLAUDE.md rule 11) is suspended until you re-enable it.
@@ -77,5 +75,5 @@ silicon and Intel, and `SHA256SUMS`.
   `packs-20261002-0213` (pinned in `tools/release/packs.lock`). You can delete the interim one.
 - Installed on this Mac for the builds: Rosetta 2, Colima and Docker (the Colima VM has been deleted), mingw-w64,
   msitools, vulkan-headers, spirv-headers and shaderc (all Homebrew).
-- **D-026 — Windows cross-build (needs your review):** the GCC C++ runtime is linked into the Windows AI library
-  under the GCC Runtime Library Exception.
+- **D-026 — Windows cross-build: decided (2026-10-02).** You accepted the GCC C++ runtime in the Windows AI library
+  (GCC Runtime Library Exception).
