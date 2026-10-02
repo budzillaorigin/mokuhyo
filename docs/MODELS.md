@@ -29,7 +29,7 @@ The owner's Ollama server (BRIEF §7.1) runs the approved list in `tools/models/
 
 ## Speaking eval
 
-`tools/models/eval_speaking.py`, last run 2026-10-01 (Ollama on the owner's RTX 5090 at http://<server-ip>:11434/v1). 60 prompts per language through the app's own prompts and validators; score = mean of json validity, target-language purity, register (judged by the reference model) and rating agreement (estimate within one ILR step of the intended level). Below 0.60 the model picker warns for that language. Latency is the 5090 server's, not a laptop's.
+`tools/models/eval_speaking.py`, last run 2026-10-01 (Ollama on the owner's RTX 5090). 60 prompts per language through the app's own prompts and validators; score = mean of json validity, target-language purity, register (judged by the reference model) and rating agreement (estimate within one ILR step of the intended level). Below 0.60 the model picker warns for that language. Latency is the 5090 server's, not a laptop's.
 
 | model | lang | score | tier | json | purity | register | agreement | median latency |
 |---|---|---|---|---|---|---|---|---|

@@ -273,7 +273,7 @@ def main() -> int:
     rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines() if line.strip()]
     registers = {lang: json.loads((EVAL / f"{lang}.json").read_text(encoding="utf-8"))["registerNotes"] for lang in langs}
     results = score(rows, client, registers)
-    write_models_md(results, f"Ollama on the owner's RTX 5090 at {client.endpoint}")
+    write_models_md(results, "Ollama on the owner's RTX 5090")  # no LAN address in a public doc
     return 0
 
 
