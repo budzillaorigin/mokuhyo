@@ -8,8 +8,7 @@ Releases page and check its SHA-256 against `SHA256SUMS` if you want to be sure 
 |---|---|
 | Windows 10/11 (64-bit) | `Mokuhyo-<version>-windows-x64.msi` (or the `-portable.zip`) |
 | Mac with Apple silicon (M1–M4) | `Mokuhyo-<version>-macos-arm64.dmg` |
-| Mac with an Intel processor | `Mokuhyo-<version>-macos-x64.dmg` |
-| Linux (Ubuntu 22.04+, Debian 12+) | `Mokuhyo-<version>-linux-x64.deb` (or the `-portable.tar.gz`) |
+| Mac with an Intel processor (2014 or later, AVX2) | `Mokuhyo-<version>-macos-x64.dmg` |
 
 The installer is large (about 1–2 GB) because everything is inside: the program, its own Java runtime, the speech
 recognizer, voices, dictionaries and practice content for 11 languages. After installing, the app downloads one AI
@@ -31,16 +30,11 @@ processor and says so in Settings → AI.
    Alternatively, in Terminal: `xattr -d com.apple.quarantine /Applications/Mokuhyo.app`
 3. Allow microphone access when asked (needed for speaking practice).
 
-## Linux
-1. `sudo apt install ./Mokuhyo-<version>-linux-x64.deb` (installs to `/opt/mokuhyo` with a menu entry), or unpack the
-   portable `.tar.gz` anywhere and run `Mokuhyo/bin/Mokuhyo`.
-2. Linux has no built-in system voice; Japanese, Chinese, Korean, Arabic and Indonesian listening is shown as a
-   transcript in practice and skipped in tests on Linux (see docs/LANGUAGES.md).
-
 ## First run
 Welcome → choose your languages → Mokuhyo checks memory, graphics and disk → pick an AI tier (the recommended one is
 marked; "Reading/Listening only for now" skips the download) → test your microphone and speakers → Home.
 
 ## Uninstalling
-Windows: Settings → Apps → Mokuhyo → Uninstall. macOS: drag Mokuhyo from Applications to the Bin. Linux:
-`sudo apt remove mokuhyo`. Your data folder (see docs/PRIVACY.md) is kept; delete it to remove your history too.
+Windows: Settings → Apps → Mokuhyo → Uninstall. macOS: drag Mokuhyo from Applications to the Bin. Your data folder (see docs/PRIVACY.md) is kept; delete it to remove your history too.
+
+Linux builds are not provided. The code builds on Linux (`tools/release/build_linux.sh`), but no installer is published (D-025).

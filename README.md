@@ -1,6 +1,6 @@
 # Mokuhyo 目標 (working name)
 
-Free, open-source desktop app (Windows, macOS, Linux) for practicing lower-range DLPT5-style reading and listening
+Free, open-source desktop app (Windows and macOS) for practicing lower-range DLPT5-style reading and listening
 (ILR 0+–3) and the Oral Proficiency Interview, in 11 languages, fully offline after one model download.
 
 Unofficial practice. Not an official rating. Not affiliated with DLI, ACTFL, AFCLC or the LEAP program.

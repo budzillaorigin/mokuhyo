@@ -5,7 +5,7 @@ machine before a release (BRIEF §10). Record results with date, OS version and 
 
 ## Install and first run
 - [ ] Installer runs: Windows MSI (SmartScreen "More info → Run anyway"), macOS DMG (Gatekeeper "Open anyway" or
-      `xattr -d com.apple.quarantine`), Linux DEB.
+      `xattr -d com.apple.quarantine`).
 - [ ] First run: welcome → languages → hardware scan shows the right RAM/GPU/VRAM → recommended tier is sensible →
       audio check → Home.
 - [ ] "Reading/Listening only for now" skips the model download and the app still works.
@@ -40,13 +40,16 @@ machine before a release (BRIEF §10). Record results with date, OS version and 
       with the disclaimer; quitting mid-test and relaunching offers to resume.
 - [ ] Tap-to-define works with the mouse and with the keyboard (Tab to the passage, ←/→, Enter).
 - [ ] A listening test plays each clip once and shows the questions after the first play; Japanese, Chinese, Korean,
-      Arabic and Indonesian listening use the OS voice (none on Linux).
+      Arabic and Indonesian listening use the OS voice.
 - [ ] "Generate more" produces a passage labelled "Generated on this computer" that is excluded from estimates.
 
 ## Speaking
 - [ ] An interview test runs 19 turns with the microphone and the model's voice; the rating shows evidence quotes.
 - [ ] Interview quality on Tier B: does the interviewer move between topics, or fixate on one the learner mentioned?
 - [ ] Recordings play back from History.
+
+## Intel Mac
+- [ ] On a real Intel Mac: the DMG installs, the CPU and Metal backends load (Settings → AI), an interview turn completes.
 
 ## Updates
 - [ ] The update check is off by default; "Check now" reports the result (private repository: "isn't public yet").

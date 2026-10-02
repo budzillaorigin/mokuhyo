@@ -172,3 +172,17 @@ which Compose Desktop doesn't produce. The release workflow builds both on their
 ## D-024 Portuguese and Arabic variants — open decisions 6 and 7 (unattended default)
 Brazilian Portuguese only (`pt-BR`) and Modern Standard Arabic only (`ar`) at launch, as the brief assumes. Dialects
 and European Portuguese would be added later as separate languages through the `LanguageModule` contract.
+
+## D-025 Release builds without GitHub Actions; no Linux installer (owner decisions, 2026-10-01)
+The owner doesn't pay for extra Actions minutes, so `ci.yml` and `release.yml` are disabled (`gh workflow disable`)
+and every gate runs locally. Installers are built on the owner's machines instead:
+- **Apple-silicon macOS:** built natively.
+- **Intel macOS:** `tools/release/build_macos_x64.sh`, which cross-compiles the native libraries and Piper for x86_64
+  and runs jpackage on an x86_64 JDK under Rosetta 2.
+- **Windows:** `tools/release/build_windows.ps1`, run by the owner.
+
+Each script ends with a fresh-install smoke: install the package, then launch it with `--smoke --require-packs` on an
+empty data folder. No Linux installer is published ("no one will use it on Linux"). `tools/release/build_linux.sh`
+stays for anyone who wants one; under Colima/Rosetta llama.cpp's Vulkan shader generator deadlocks, so the script
+bounds that step and falls back to CPU. Rule 11's three-OS CI is suspended until the owner re-enables the workflows.
+gate_release checks the published pre-release (assets, checksums, pre-release flag) and the local fresh-install logs.
