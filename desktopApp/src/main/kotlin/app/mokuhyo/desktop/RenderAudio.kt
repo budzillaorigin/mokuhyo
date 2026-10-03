@@ -35,7 +35,14 @@ object RenderAudio {
         // Track dialogues (BRIEF_PHASE8 C-03) are rendered the same way, keyed by dialogue id.
         val dialogues = File(packs, "$lang/track-${app.mokuhyo.lexicon.TrackIds.CUAS}.json").takeIf { it.isFile }
             ?.let { f -> app.mokuhyo.lexicon.Track.parse(f.readText()).dialogues.map { it.asPassage(lang) } }.orEmpty()
-        (content.passagesFor(Skill.LISTENING) + dialogues).sortedBy { it.id }.forEach { p ->
+        // Exemplar answers (BRIEF_PHASE8 N-05), one voice, keyed by exemplar id.
+        val exemplars = File(packs, "$lang/exemplars.json").takeIf { it.isFile }?.let { f ->
+            app.mokuhyo.opi.ExemplarPack.parse(f.readText()).exemplars.map { e ->
+                app.mokuhyo.exam.ExamPassage(e.id, app.mokuhyo.exam.ExamKind.DLPT_LISTENING, lang, e.level, "exemplar", e.prompt, "",
+                    listOf(app.mokuhyo.exam.ScriptLine("candidate", "male", e.response)), e.source, e.verified)
+            }
+        }.orEmpty()
+        (content.passagesFor(Skill.LISTENING) + dialogues + exemplars).sortedBy { it.id }.forEach { p ->
             val out = File(outDir, "${p.id}.ogg")
             if (out.isFile && "--force" !in args) { kept++; return@forEach }
             val speakers = p.script.map { it.speaker }.distinct()

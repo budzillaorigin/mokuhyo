@@ -139,7 +139,7 @@ def stage_voices(native_dir: str, compose_dir: str, with_voice_files: bool = Tru
     return have_piper
 
 
-PACK_FILES = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite", "culture.json", "pragmatics.json", "personas.json", "feeds.json")
+PACK_FILES = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite", "culture.json", "pragmatics.json", "personas.json", "feeds.json", "exemplars.json")
 
 
 def stage_packs() -> int:

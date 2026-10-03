@@ -36,6 +36,7 @@ JSON_KINDS = {
     "persona": ("personas/{lang}.json", "personas"),
     "scenario": ("tracks/cuas-base-defense.{lang}.json", "scenarios"),
     "dialogue": ("tracks/cuas-base-defense.{lang}.json", "dialogues"),
+    "exemplar": ("exemplars/{lang}.json", "exemplars"),
 }
 LOG = TOOLS / "items" / "review-log.jsonl"
 LANGS = ("ja", "es", "fr", "de", "pt-BR", "ru", "zh-Hans", "ko", "ar", "fa", "id")

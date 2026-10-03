@@ -118,6 +118,7 @@ fun SpeakingScreen(app: AppGraph) {
             0, 1 -> InterviewView(app, module, pack!!, test = tab == 1, mode) { active = false }
             3 -> ScenarioView(app, module, pack!!, app.lexicon(module.code), mode, persona) { active = false }
             4 -> InterpretSetup(app, module) { active = false }
+            5 -> ExemplarsBrowse(app, module) { active = false }
             else -> TopicView(app, module, pack!!, mode, persona) { active = false }
         }
         return
@@ -129,6 +130,7 @@ fun SpeakingScreen(app: AppGraph) {
             Tab(tab == 2, { tab = 2 }, text = { Text("Topic conversation") })
             Tab(tab == 3, { tab = 3 }, text = { Text("Scenarios") })
             Tab(tab == 4, { tab = 4 }, text = { Text("Interpret") })
+            Tab(tab == 5, { tab = 5 }, text = { Text("Exemplars") })
         }
         Spacer(Modifier.height(16.dp))
         if (pack == null) {
@@ -162,6 +164,11 @@ fun SpeakingScreen(app: AppGraph) {
                 PersonaPicker(personas, persona, module) { persona = it }
                 ModePicker(modes[activity.ordinal], hasModel) { modes[activity.ordinal] = it }
                 Button(enabled = hasModel, onClick = { active = true }) { Text("Choose a topic") }
+            }
+            5 -> SectionCard("Exemplar answers") {
+                Text("Hear and read what an answer at ILR 1+, 2 and 3 sounds like for the same interview question, with a note on what makes " +
+                    "each one that level and not the next.")
+                Button(onClick = { active = true }) { Text("Browse exemplars") }
             }
             4 -> SectionCard("Interpret") {
                 Text("Consecutive interpretation drills on the Counter-UAS & Base Defense dialogues: hear a chunk, take notes, say it in the other " +
@@ -364,7 +371,11 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             val r = rating
             if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test)
             else SectionCard { Text("Corrections were off: no rating or feedback was generated."); Text("Your transcript and recordings are saved in History.") }
-            aab?.let { AfterActionBriefView(app, module.code, it, conversationId) }
+            aab?.let { brief ->
+                AfterActionBriefView(app, module.code, brief, conversationId) { turnIndex ->
+                    lines.getOrNull(turnIndex - 1)?.first?.takeIf { it.speaker == Speaker.PARTNER }?.text
+                }
+            }
             if (r == null) TranscriptCard(app, module, session, lines, conversationId)
             Button(onClick = close) { Text("Done") }
             return@Page
@@ -546,6 +557,7 @@ private fun TranscriptCard(app: AppGraph, module: LanguageModule, session: OpiSe
                     if (english.isNotBlank()) Text(english, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     val rec = session.turns.firstOrNull { it.answer == turn.text && turn.speaker == Speaker.LEARNER }
                     if (rec?.outcome == OpiTurnOutcome.BREAKDOWN) Text("breakdown at ILR ${rec.targetLevel.label}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                    if (turn.speaker == Speaker.LEARNER && rec != null) CompareWithExemplars(app, module, rec.question)
                 }
                 if (turn.speaker == Speaker.LEARNER) {
                     val file = File(app.dataDir, "recordings/$conversationId/turn-%02d.wav".format(i))
