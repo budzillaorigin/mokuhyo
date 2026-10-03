@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop
 
+import app.mokuhyo.lang.VoiceRotation
 import app.mokuhyo.exam.ExamPassage
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.speech.AudioIO
@@ -36,12 +37,11 @@ class PassageAudio(private val app: AppGraph) {
     private suspend fun render(speech: SpeechOutput, passage: ExamPassage): ByteArray? {
         val voices = speech.voicesFor(passage.language)
         if (voices.isEmpty()) return null
-        val speakers = passage.script.map { it.speaker }.distinct()
+        // Speaker variety (BRIEF_PHASE8 N-07): rotate by passage id; distinct speakers get distinct voices when there are enough.
+        val cast = VoiceRotation.assign(voices, passage.script.map { it.speaker to it.voice }.distinctBy { it.first }, passage.id)
         val pcm = ArrayList<ShortArray>()
         for (line in passage.script) {
-            // Distinct speakers get distinct voices when there are enough; otherwise match gender.
-            val byGender = voices.filter { it.gender == line.voice }.ifEmpty { voices }
-            val voice = byGender[speakers.indexOf(line.speaker).coerceAtLeast(0) % byGender.size]
+            val voice = cast.getValue(line.speaker)
             val spoken = speech.synthesize(line.text, passage.language, voice) ?: return null
             pcm += AudioIO.toPcm16kMono(spoken.wav)
             pcm += ShortArray(16_000 * 6 / 10) // 0.6 s between lines

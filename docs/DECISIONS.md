@@ -341,3 +341,21 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
 - **AAB summary** (`aab_summary`: three next steps, grammar, register, avoidance) falls back to the session's own
   recurring corrections when no model answers. Cultural flags are grouped by culture-card tag (register → rank,
   face → face, directness → refusal, ritual → hospitality, taboo → religion) with the matching card's title.
+
+## D-040 Phase 9 N-07: speaker variety (unattended default, 2026-10-03)
+- **Cap raised from two to four Piper voices per language** (`MAX_PER_LANGUAGE`), aiming at two female and two male.
+  The installer grows by ~280 MB of new model files (es_MX-claude-high, fr_FR-mls, de_DE-mls, pt_PT-tugão); extra
+  speakers of an already-bundled multi-speaker model (sharvard M, upmc Jessica, MLS speakers) cost nothing — manifest
+  entries name the shared files with `model`.
+- **Gender is measured, not guessed from a name.** `tools/voices/measure.py` synthesizes a fixed sentence and
+  `pitch.py` takes the median F0: below 150 Hz male, above 190 Hz female, between ambiguous. Every entry records
+  `measuredF0Hz`; `manifest.py check` refuses a gender label that contradicts the measurement unless `genderSource`
+  says "unverified". This relabelled fa_IR-ganji (unknown → male, 98 Hz) and left dmitri (185 Hz) and faber (179 Hz)
+  as unverified name-based labels.
+- **Regional variants:** es-MX (claude, Apache-2.0) next to es-ES; pt-PT (tugão, CC0) in the Portuguese pack, labelled
+  as European Portuguese. `region` is recorded per voice. es_MX-ald (Unlicense, 160 Hz) and pt_BR-jeff (154 Hz) were
+  allowed but left out: ambiguous gender and no new coverage. No Arabic variant: ar_JO-kareem has no license.
+- **Unlicense** joins the allowed dataset licenses (public-domain dedication, like CC0).
+- **Rotation** (`VoiceRotation`): passages start at a stable hash of their id, distinct speakers in a script get
+  distinct voices (same-gender speakers take consecutive voices), a persona keeps one voice of their gender.
+  Already-rendered pack clips keep their voice until re-rendered (`render-audio --force`).

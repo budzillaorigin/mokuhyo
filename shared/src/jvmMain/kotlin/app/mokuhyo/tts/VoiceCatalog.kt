@@ -80,8 +80,9 @@ class VoiceCatalog(
         fun load(piperDir: File?, manifest: File, modelsDir: File, source: String): VoiceCatalog {
             val entries = runCatching { json.decodeFromString<Manifest>(manifest.readText()).voices }.getOrDefault(emptyList())
             val voices = entries.filter { it.engine == "piper" }.mapNotNull { e ->
-                val model = File(modelsDir, "${e.id}/${e.id}.onnx")
-                val config = File(modelsDir, "${e.id}/${e.id}.onnx.json")
+                val stem = e.model ?: e.id // speakers of one multi-speaker model share its files (BRIEF_PHASE8 N-07)
+                val model = File(modelsDir, "$stem/$stem.onnx")
+                val config = File(modelsDir, "$stem/$stem.onnx.json")
                 if (!model.isFile || !config.isFile) return@mapNotNull null
                 val lengthScale = runCatching {
                     json.parseToJsonElement(config.readText()).jsonObject["inference"]?.jsonObject
@@ -111,5 +112,6 @@ class VoiceCatalog(
         val speaker: Int? = null,
         val quality: String = "medium",
         val license: String = "",
+        val model: String? = null,
     )
 }

@@ -492,3 +492,21 @@ Japanese with nothing graded until the end, live grading when asked.
 **Gate:** `StorylineTest` — a scripted five-session run completes with branches following the choices; the day-5 prompt
 recalls the facts of days 1–4 and day 1 recalls none (golden); an invalid summary falls back; the state round-trips
 through a `.mokuhyo` bundle.
+
+## N-07 — Speaker variety ✅ (with logged gaps)
+- `voices/manifest.json`: 19 Piper voices (was 11) — es 4 (2 F incl. es-MX, 2 M), fr 4 (2 F, 2 M), de 4 (2 F, 2 M),
+  pt-BR 3 (incl. pt-PT), ru 2, fa 2. Every entry records developer, country, licenses, dataset, base model, `region`
+  and `measuredF0Hz` (D-040). Multi-speaker models serve several entries through `model`.
+- `VoiceRotation` rotates listening passages by id, gives distinct speakers distinct voices, and fixes one voice per
+  persona; used by pack rendering (`--render-audio`), live passage audio and persona speech.
+
+**Gate:** `manifest.py check` 0 problems; `check_licenses` / `check_provenance` 0 problems; `VoiceRotationTest`
+(4) and `VoiceCatalogTest` pass; `PiperEngineTest.dialoguesRenderWithDistinctVoices` renders a two-speaker dialogue
+with two different voices in es, fr, de, pt-BR, ru and fa (real Piper, real voices).
+
+**Known gaps (logged, not blocking):**
+- No verified female voice for **ru** (irina: no license; ruslan: non-commercial), **fa** (all four candidates measure
+  male) or **pt-BR** (faber 179 Hz and tugão 179 Hz are ambiguous). Dialogues there use two distinct voices whose
+  gender may not match the script.
+- **ja, ko, zh-Hans, ar, id** have no redistributable Piper voice (D-013); they keep the OS voice, so variety depends on
+  the voices the user's OS has installed.

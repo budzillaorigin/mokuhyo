@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui.speaking
 
+import app.mokuhyo.lang.VoiceRotation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -251,8 +252,10 @@ private fun saveRecording(app: AppGraph, conversationId: String, turn: Int, pcm:
     return file.path
 }
 
-private suspend fun speak(app: AppGraph, text: String, lang: String) = withContext(Dispatchers.IO) {
-    app.speech.synthesize(text, lang)?.let { runCatching { AudioIO.play(it.wav, app.settings.get(Settings.Key.OUTPUT_DEVICE)) } }
+private suspend fun speak(app: AppGraph, text: String, lang: String, persona: Persona? = null) = withContext(Dispatchers.IO) {
+    // A persona keeps one voice of their gender (BRIEF_PHASE8 N-07).
+    val voice = persona?.let { p -> VoiceRotation.forPersona(app.speech.voicesFor(lang), p.id, p.gender) }
+    app.speech.synthesize(text, lang, voice)?.let { runCatching { AudioIO.play(it.wav, app.settings.get(Settings.Key.OUTPUT_DEVICE)) } }
 }
 
 private fun wordCounter(module: LanguageModule): (String) -> Int {
@@ -669,7 +672,7 @@ private fun TopicConversation(
                     fluency += FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
                 }
                 status = ""
-                speak(app, ex.reply, module.code)
+                speak(app, ex.reply, module.code, persona)
             }
             busy = false
         }
@@ -722,7 +725,7 @@ private fun TopicConversation(
             Text(persona?.name ?: "Partner", fontWeight = FontWeight.SemiBold)
             Text(topic.opener, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleMedium)
             if (topic.source == "llm") Badge("AI-generated")
-            TextButton(onClick = { scope.launch { speak(app, topic.opener, module.code) } }) { Text("▶ Listen") }
+            TextButton(onClick = { scope.launch { speak(app, topic.opener, module.code, persona) } }) { Text("▶ Listen") }
         }
         exchanges.forEach { ex ->
             SectionCard {
