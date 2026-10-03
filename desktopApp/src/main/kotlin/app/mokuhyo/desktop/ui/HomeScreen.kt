@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -31,6 +33,11 @@ private val dateFmt = DateTimeFormatter.ofPattern("d MMM yyyy").withZone(ZoneId.
 @Composable
 fun HomeDashboard(app: AppGraph, navigate: (Destination) -> Unit) {
     val lang by app.language.collectAsState()
+    var standTo by remember(lang) { mutableStateOf(false) }
+    if (standTo) {
+        StandToView(app, app.languages.module(lang)) { standTo = false }
+        return
+    }
     val points = remember(lang) { app.history.estimates(app.learnerId, lang) }
     val due = remember(lang) { app.reviews.dueCount(app.learnerId, lang) }
     val byModality = points.groupBy { it.modality }
@@ -40,6 +47,7 @@ fun HomeDashboard(app: AppGraph, navigate: (Destination) -> Unit) {
                 ModalityCard(title, byModality[key].orEmpty(), Modifier.weight(1f))
             }
         }
+        StandToCard(app, lang) { standTo = true }
         val next = recommend(byModality, due)
         SectionCard("Next") {
             Text(next.first)

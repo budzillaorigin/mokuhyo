@@ -449,3 +449,21 @@ is noisier, test mode is always clean, cross-talk mixes in.
 **Gate:** `NoNetworkTest` (requests fail closed — the engine is never reached; the update check reports a failure);
 `ModelManagerTest.sideLoadsAVerifiedFileWithoutNetwork`; SBOM generated (155 components). The SBOM-on-release part of
 the gate is checked by `gate_release` at v0.3.0 (N-14).
+
+## N-12 — Daily stand-to ✅
+- `StandToPlanner` builds an 8–10 minute recipe: a numbers set, lexicon items (due terms first, else priority-1 track
+  terms), one listening clip at the learner's band (nearest band with unseen clips), and one speaking turn whose
+  feedback comes at the end — only with a model; without one the time goes to more numbers and terms.
+- Home → **Daily stand-to** (one tap) runs the steps, saves to the `stand_to` log (schema 3 → 4, `3.sqm`, carried in the
+  bundle) and shows this week's summary on the card.
+
+**Gate:** `StandToTest` — full recipe with a model, no speaking turn without one, nearest band and no-clip fallbacks all
+stay within 8–10 minutes, weekly summary arithmetic; migration verified.
+
+## N-13 — Side-by-side terms ✅
+- `SideBySide.rows` matches terms across the enabled languages by seed id; Lexicon → **Compare languages** shows English
+  → each language with its kind, the radio note, source confirmation or badge, and ▶ audio per language; domain
+  filter and search.
+
+**Gate:** `SideBySideTest` (row snapshots for 1, 2 and 3 languages, domain filter and search) and
+`SideBySideRenderTest` (the screen renders for 1, 2 and 3 languages).
