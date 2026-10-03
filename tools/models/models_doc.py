@@ -51,7 +51,26 @@ def render(manifest: dict) -> str:
          "reference grader; `gpt-oss:20b` (OpenAI, US, Apache-2.0) is the second-opinion checker."),
         "",
     ]
+    out += calibration_table()
     return "\n".join(out)
+
+
+def calibration_table() -> list[str]:
+    """BRIEF_PHASE8 N-04: agreement of the OPI estimate with instructor ratings, per language and tier."""
+    out = ["## Rater calibration", ""]
+    f = REPO / "content" / "models" / "calibration.json"
+    entries = json.loads(f.read_text(encoding="utf-8")).get("entries", []) if f.exists() else []
+    if not entries:
+        return out + ["Not run yet (`tools/models/calibrate.py`). Every OPI estimate is labelled \"uncalibrated\".", ""]
+    out += ["Exact and within-one-step agreement between the app's OPI estimate (`opi_rate`) and instructor ratings of the same "
+            "practice recordings (`tools/models/calibrate.py`). Rows marked *fixture* ran on the harness's own fixture samples, "
+            "not instructor ratings: they test the harness and do not calibrate anything (the app says \"uncalibrated\").", "",
+            "| Language | Tier | Model | Samples | Exact | Within 1 step | Status |", "|---|---|---|---|---|---|---|"]
+    for e in sorted(entries, key=lambda x: (x["lang"], x["tier"])):
+        n = max(1, e["n"])
+        status = "fixture" if e.get("fixture") else ("calibrated" if e["n"] >= 5 else "too few samples")
+        out.append(f"| {e['lang']} | {e['tier']} | `{e['model']}` | {e['n']} | {100 * e['exact'] // n}% | {100 * e['within1'] // n}% | {status} |")
+    return out + [""]
 
 
 def main() -> int:

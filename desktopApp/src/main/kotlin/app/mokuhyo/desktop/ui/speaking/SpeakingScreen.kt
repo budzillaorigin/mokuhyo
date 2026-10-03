@@ -53,6 +53,7 @@ import app.mokuhyo.lexicon.Scenario
 import app.mokuhyo.lexicon.Track
 import app.mokuhyo.opi.AfterActionBrief
 import app.mokuhyo.opi.AfterActionBuilder
+import app.mokuhyo.opi.Calibration
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.CulturalReview
 import app.mokuhyo.opi.FeedbackQueue
@@ -492,6 +493,13 @@ private fun InterviewResults(
             if (shown.selfRated) Badge("Self-rated")
         }
         if (shown.sustained != null) Text("Sustained: ILR ${shown.sustained}" + (shown.breakdown?.let { " · breaks down at ILR $it" } ?: ""))
+        // BRIEF_PHASE8 N-04: the confidence band from instructor-rated samples for this language and tier.
+        shown.estimate?.takeIf { shown.engine != null }?.let { est ->
+            val tier = app.tier
+            val band = Calibration.band(est, tier?.let { app.calibration.entry(module.code, it.id) }, module.nameEnglish, tier?.let { "Tier ${it.id}" } ?: "your model")
+            if (band.calibrated) Text("Likely range: ILR ${band.low}–${band.high}", fontWeight = FontWeight.SemiBold)
+            Text(band.sentence, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
         if (shown.rationale.isNotBlank()) Text(shown.rationale)
         Disclaimer()
     }

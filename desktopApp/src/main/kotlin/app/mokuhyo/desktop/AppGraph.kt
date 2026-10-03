@@ -111,6 +111,11 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     val storylines = app.mokuhyo.opi.StorylineRepository(db)
 
+    /** Rater calibration table (BRIEF_PHASE8 N-04); empty = every estimate is "uncalibrated". */
+    val calibration: app.mokuhyo.opi.Calibration.Table by lazy {
+        Resources.textOrNull("models/calibration.json")?.let { runCatching { app.mokuhyo.opi.Calibration.Table.parse(it) }.getOrNull() } ?: app.mokuhyo.opi.Calibration.Table()
+    }
+
     /** Learner suggestions and flags (BRIEF_PHASE8 N-10), kept on this computer. */
     val suggestions = app.mokuhyo.feedback.SuggestionStore(File(dataDir, "suggestions.json"))
 

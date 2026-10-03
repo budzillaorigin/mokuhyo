@@ -80,6 +80,7 @@ tasks.withType<JavaExec>().configureEach {
 // Ship the model manifest and the licenses file inside the jar (read by the model picker and the Licenses screen).
 val bundledDocs by tasks.registering(Copy::class) {
     from(rootProject.file("content/models/manifest.json")) { into("models") }
+    from(rootProject.file("content/models")) { include("calibration.json"); into("models") }
     from(rootProject.file("docs/LICENSES.md")) { into("docs") }
     // Lexicon update channel (BRIEF_PHASE8 C-04): the publisher's Ed25519 public key; the private key never enters the repo.
     from(rootProject.file("tools/release/keys")) { into("keys") }
