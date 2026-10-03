@@ -77,6 +77,8 @@ class Backup(
                 put("db.sqlite", dbCopy)
                 putBytes("settings.json", Bundle.json.encodeToString(MapSerializer(String.serializer(), String.serializer()), settings).encodeToByteArray())
                 putBytes("packs.json", Bundle.json.encodeToString(Bundle.PacksList.serializer(), packs).encodeToByteArray())
+                // Suggestions and flags (BRIEF_PHASE8 N-10) ride along so the curator sees them after a move.
+                File(dataDir, "suggestions.json").takeIf { it.isFile }?.let { put("suggestions.json", it) }
                 recordings.forEachIndexed { i, f ->
                     if (cancelled()) throw Cancelled()
                     progress(0.1 + 0.6 * i / recordings.size.coerceAtLeast(1), "Adding recordings")
@@ -178,6 +180,10 @@ class Backup(
                 val local = queryPairs("SELECT key, value FROM setting WHERE scope = 'learner'").toMap()
                 val conflicts = incomingSettings.filter { (k, v) -> k in local && local[k] != v && k != "learner.id" }.map { (k, v) -> Triple(k, local.getValue(k), v) }
                 incomingSettings.filter { (k, _) -> k !in local && k != "learner.id" }.forEach { (k, v) -> db.settingsQueries.put(k, v, "learner") }
+                z.getEntry("suggestions.json")?.let { e ->
+                    val store = app.mokuhyo.feedback.SuggestionStore(File(dataDir, "suggestions.json"))
+                    store.merge(store.decode(z.getInputStream(e).readBytes().decodeToString()))
+                }
                 val packs = z.getEntry("packs.json")?.let { Bundle.json.decodeFromString(Bundle.PacksList.serializer(), z.getInputStream(it).readBytes().decodeToString()) }
                 progress(1.0, "Done")
                 return ImportReport(added, tombstones, copied, conflicts, packs?.models.orEmpty(), manifest.created, manifest.learnerId)

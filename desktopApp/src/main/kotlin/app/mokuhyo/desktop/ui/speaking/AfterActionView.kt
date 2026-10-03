@@ -22,6 +22,7 @@ import app.mokuhyo.desktop.ui.Badge
 import app.mokuhyo.desktop.ui.Disclaimer
 import app.mokuhyo.desktop.ui.Fonts
 import app.mokuhyo.desktop.ui.SectionCard
+import app.mokuhyo.desktop.ui.SuggestButton
 import app.mokuhyo.opi.AfterActionBrief
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.PragmaticFlag
@@ -109,6 +110,7 @@ private fun TurnReview(app: AppGraph, lang: String, r: TurnFeedbackRecord, conve
         if (r.changes.isNotEmpty() || r.pragmatics.isNotEmpty()) TextButton(enabled = key !in queued, onClick = { queue(app, lang, r, queued) }) {
             Text(if (key in queued) "Added to Review" else "Add to review")
         }
+        SuggestButton(app, lang, "flag", "turn", "$conversationId:${r.turnIndex}", r.learner, "Flag this feedback")
         HorizontalDivider()
     }
 }

@@ -40,6 +40,7 @@ import app.mokuhyo.desktop.ui.EmptyState
 import app.mokuhyo.desktop.ui.Fonts
 import app.mokuhyo.desktop.ui.Page
 import app.mokuhyo.desktop.ui.SectionCard
+import app.mokuhyo.desktop.ui.SuggestButton
 import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.lexicon.Dialogue
 import app.mokuhyo.lexicon.Drill
@@ -101,6 +102,7 @@ private fun TermsTab(app: AppGraph, module: LanguageModule, track: Track) {
             FilterChip(domain == d, { domain = d }, label = { Text("${Track.DOMAIN_TITLES[d] ?: d} · ${track.terms.count { it.domain == d }}") })
         }
     }
+    SuggestButton(app, module.code, "suggest_term", "term", "", query)
     OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text("Search (English or ${module.nameEnglish})") },
         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
     val q = module.normalizeForCompare(query.trim())
@@ -156,6 +158,7 @@ fun TermCard(app: AppGraph, module: LanguageModule, t: TrackTerm, added: Boolean
                 app.reviews.add(app.learnerId, module.code, ReviewService.Kind.TERM, "term:${t.id}", t.term, "${t.termEn}\n${t.definition}", t.examples.firstOrNull()?.text)
                 onAdd()
             }) { Text(if (added) "Added" else "Add to review") }
+            SuggestButton(app, module.code, "flag", "term", t.id, t.term)
         }
     }
 }

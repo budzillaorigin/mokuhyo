@@ -61,7 +61,10 @@ fun SettingsScreen(app: AppGraph) {
                 SpeechModels(app)
                 AudioCheck(app)
             }
-            SettingsTab.CONTENT -> ImportLexicon(app)
+            SettingsTab.CONTENT -> {
+                ImportLexicon(app)
+                ExportSuggestions(app)
+            }
             SettingsTab.BACKUP -> BackupSection(app)
             SettingsTab.PRIVACY -> PrivacySettings(app)
             SettingsTab.ABOUT -> About(app)

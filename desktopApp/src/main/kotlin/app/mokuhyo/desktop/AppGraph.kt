@@ -109,6 +109,9 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     val lexicons = app.mokuhyo.lexicon.LexiconRepository(db)
 
+    /** Learner suggestions and flags (BRIEF_PHASE8 N-10), kept on this computer. */
+    val suggestions = app.mokuhyo.feedback.SuggestionStore(File(dataDir, "suggestions.json"))
+
     /** Public keys of trusted lexicon publishers, shipped in the app (tools/release/keys/). */
     val trustedLexiconKeys: List<app.mokuhyo.lexicon.TrustedKey> by lazy {
         Resources.textOrNull("keys/lexicon-ed25519.pub.json")?.let { runCatching { app.mokuhyo.lexicon.parseTrustedKeys(it) }.getOrNull() }.orEmpty()

@@ -400,3 +400,38 @@ geo-block scripted requests — and don't fail the build).
   for every source (C-00) and the build tools added in Phase 8.
 
 **Gate:** `tools/items/test_review_ingest.py` round-trip on fixtures for every new kind (accept, reject, carried state).
+
+# Phase 9 — Follow-on (BRIEF_PHASE8 Part D; built on branch `phase9` while Phase 8 content drafted, merged after v0.2.0)
+
+## N-02 — Numbers under stress ✅
+- `NumberGrammar` on every `LanguageModule` (ICU4J spell-out + per-language time/date glue: `IcuNumbers`), spelling
+  alphabets (NATO; Japanese katakana NATO and 和文通話表; German DIN 5009; Russian), `NumberItems` (times, dates, MGRS
+  grids, bearing/range, call signs, tail numbers, phone numbers, frequencies, counts, spelling) and an adaptive
+  `NumberDrill`. Listening → **Numbers**: play, type, adaptive on the kinds you miss. No model, no network.
+
+**Gate:** `NumbersTest` — cardinal, ordinal, time and date forms pinned for all 11 languages, 12-hour forms, a 500-item
+generated set per language validates (unique ids, every kind, each item accepts its own answer), the drill adapts.
+
+## N-06 — Degraded audio ✅
+- `Degrade` (16 kHz PCM): RBJ band-pass, synthesized noise beds (pink, radio static, turbine, mains hum, babble,
+  engine) mixed at a target SNR (difficulty 0–1 → +20…0 dB), tanh compression, radio clipping, optional cross-talk.
+  Listening practice shows Conditions (Telephone, VHF/UHF radio, Flightline, Generator room, Crowd, Vehicle interior),
+  a difficulty slider and "Replay clean"; tests never show them and `Degrade.apply(testMode = true)` returns the clean
+  audio. Noise is labelled "synthesized" (no owner recordings were supplied — logged input gap).
+
+**Gate:** `DegradeTest` — band-pass gains, SNR exact to 0.01 dB, deterministic and length-preserving per preset, harder
+is noisier, test mode is always clean, cross-talk mixes in.
+
+## N-09 — Doctrine refresh ✅
+- `tools/terms/refresh.py` diffs a new glossary edition against `terms_en.json` → changed, deprecated, candidates;
+  `docs/LEXICON_MAINTENANCE.md` sets the quarterly procedure and reminder.
+
+**Gate:** `tools/terms/test_refresh.py` on two fixture editions (1 changed, 1 deprecated, 1 candidate; CLI too).
+
+## N-10 — Suggest a term / flag this item ✅
+- `SuggestionStore` (`<data dir>/suggestions.json`): Lexicon → Suggest a term and Flag on each term, Flag on exam
+  feedback and on After Action Brief turns; carried in the `.mokuhyo` bundle (merged by id); Settings → Content →
+  Export suggestions; `tools/items/review.py suggestions <file>` queues them for the curator.
+
+**Gate:** `SuggestionsTest` (bundle round-trip, idempotent merge, standalone export validates, bad input refused);
+`test_review_ingest.py::test_suggestions_queue`.

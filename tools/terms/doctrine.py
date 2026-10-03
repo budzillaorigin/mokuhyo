@@ -74,8 +74,9 @@ def _finish(term: str, body: str, sid: str, pdf: int, label: str) -> Entry:
                  acronym=also.group(1) if also else "", ref=ref)
 
 
-def dod_dictionary(source_id: str = "us-dod-dict-2026-08") -> list[Entry]:
-    pages = S.pages(source_id)
+def dod_dictionary(source_id: str = "us-dod-dict-2026-08", pages: list[str] | None = None) -> list[Entry]:
+    """DoD Dictionary entries; [pages] = page texts to parse instead of the cached source (fixtures, new editions)."""
+    pages = pages if pages is not None else S.pages(source_id)
     entries: list[Entry] = []
     cur: tuple[str, list[str], int, str] | None = None
     started = False
