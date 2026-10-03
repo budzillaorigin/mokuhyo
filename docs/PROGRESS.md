@@ -430,3 +430,18 @@ $ cd tools && uv run python terms/align_terms.py write
 ```
 The public allied sources (white papers, one Brazilian glossary, AAP-06) don't name most counter-UAS and base-defense
 terms; the remaining terms need the human look-up queue or new sources.
+
+## C-05 — Culture cards ✅
+- `tools/culture/build_cards.py` → `tools/culture/<lang>.cards.json`: 24 cards per language (26 for Arabic: two
+  Qatar-specific), each tagged with the scenario/persona vocabulary (rank, meeting, gate, radio, hospitality, face,
+  time, refusal…), with title, body, do / avoid lists and the AFCLC Expeditionary Culture Field Guide section and page
+  it draws on. France and Germany have no field guide, and neither do the Qatar cards: those cards say "general
+  knowledge" and are badged. All AI-drafted, `verified = false` until reviewed in Content Review.
+- `tools/gates/check_culture.py` (new, in `gate_content.sh`) validates cards, pragmatics and personas.
+
+**Gate:** `check_culture.py --only cards`: 11 languages, 0 errors (every one of the 12 scenarios has ≥ 1 card in every
+language; every card cites a field-guide section and page or says general knowledge); `gate_terms.sh` PASS —
+overlap_check over 92,378 text fields including all cards, 0 failing (no sentence copied from the guides).
+- Fixes found on the way, each with a regression test in `tools/terms/test_terms_gates.py`: `overlap_check.py` now
+  writes its JSON report even when there is no text (it crashed the pragmatics build); the official French force name
+  is on the overlap allow-list (a proper name, not copied prose).

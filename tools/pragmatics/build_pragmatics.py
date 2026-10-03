@@ -64,8 +64,10 @@ def failures(entries: list[dict], lang: str) -> set[str]:
         f = Path(tmp) / "p.jsonl"
         f.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows), encoding="utf-8")
         rep = Path(tmp) / "r.json"
-        subprocess.run([sys.executable, str(TOOLS / "terms" / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)],
-                       capture_output=True, check=False)
+        proc = subprocess.run([sys.executable, str(TOOLS / "terms" / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)],
+                              capture_output=True, text=True, check=False)
+        if not rep.exists():
+            raise RuntimeError(f"overlap_check produced no report (exit {proc.returncode}): {proc.stderr[-1500:]}")
         return {fd["item"] for fd in json.loads(rep.read_text(encoding="utf-8"))["findings"] if fd["verdict"] == "FAIL"}
 
 
@@ -112,6 +114,10 @@ def build(client: llm.Client, lang: str) -> dict:
                 entries.append({"id": f"{lang}-prag-{topic}-{k}", "topic": topic, "rule": e["rule"].strip(),
                                 "examples": [{k2: langtext.nfc(str(x.get(k2, "")).strip()) for k2 in ("situation", "say", "dontSay", "why")} for x in exs],
                                 "source": src, "verified": False})
+            if not entries:
+                feedback = (f"no usable entry: every 'say' and 'dontSay' must be written entirely in {NAMES[lang]} script "
+                            f"(no romanization, no English), and each entry needs a rule and examples")
+                continue
             bad = failures(entries, lang)
             if bad:
                 feedback = "it reused the field guide's wording; rewrite every sentence in different words"

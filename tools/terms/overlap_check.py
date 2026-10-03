@@ -197,6 +197,9 @@ def cmd_check(args):
         items.extend(read_items(p, fields))
     if not items:
         print('check: no text found in the given fields')
+        if args.json:  # callers read the report; an empty check still writes one
+            with open(args.json, 'w', encoding='utf-8') as f:
+                json.dump({'findings': [], 'failed': False, 'checked': 0}, f)
         return 0
 
     rows = indexable(load_sources())

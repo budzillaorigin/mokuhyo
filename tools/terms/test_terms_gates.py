@@ -175,8 +175,18 @@ def test_write_withholds_overlap_failures() -> None:
             A.WORK, A.OUT, A.seeds = saved
 
 
+def test_overlap_empty_report() -> None:
+    """overlap_check writes its JSON report even when there is no text to check (pragmatics crash fix)."""
+    with tempfile.TemporaryDirectory() as tmp:
+        f, rep = Path(tmp) / "e.jsonl", Path(tmp) / "r.json"
+        f.write_text("", encoding="utf-8")
+        subprocess.run([sys.executable, str(HERE / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)], check=True,
+                       capture_output=True)
+        assert json.loads(rep.read_text(encoding="utf-8"))["findings"] == []
+
+
 if __name__ == "__main__":
     for t in [test_guard, test_fetch, test_alignment, test_flatten, test_overlap_gate, test_verbatim, test_seed_file,
-              test_write_withholds_overlap_failures]:
+              test_write_withholds_overlap_failures, test_overlap_empty_report]:
         t()
         print("ok", t.__name__)
