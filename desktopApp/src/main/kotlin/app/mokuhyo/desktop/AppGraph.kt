@@ -109,6 +109,8 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     val lexicons = app.mokuhyo.lexicon.LexiconRepository(db)
 
+    val storylines = app.mokuhyo.opi.StorylineRepository(db)
+
     /** Learner suggestions and flags (BRIEF_PHASE8 N-10), kept on this computer. */
     val suggestions = app.mokuhyo.feedback.SuggestionStore(File(dataDir, "suggestions.json"))
 

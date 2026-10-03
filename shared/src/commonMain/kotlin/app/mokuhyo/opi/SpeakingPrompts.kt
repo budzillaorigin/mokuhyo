@@ -293,6 +293,8 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
         val persona: PersonaContext? = null,
         /** Pragmatics rules (English) the learner's turn is checked against (BRIEF_PHASE8 C-06/C-07). */
         val culturalNotes: List<String> = emptyList(),
+        /** What the partner remembers from earlier storyline days (BRIEF_PHASE8 N-03). */
+        val memory: List<String> = emptyList(),
     )
 
     @Serializable
@@ -348,6 +350,8 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
                     "keep the feedback fields about the learner's language.",
                 "Register: ${input.registerNotes}",
                 input.persona?.let { PersonaPrompt.lines(it) } ?: "",
+                if (input.memory.isNotEmpty()) "What you remember from earlier days with this learner (refer to it naturally when it fits): " +
+                    input.memory.joinToString(" ") { "• $it" } else "",
                 "The learner speaks at about ILR ${input.rollingLevel.label} (${IlrSpeaking.describe(input.rollingLevel)}). Reply in natural $lang at that level, " +
                     "1–3 sentences, and keep the conversation going with a question. reply_english translates your reply.",
                 "Then give feedback on the learner's LAST turn only: corrected = their sentence with the fewest changes that make it correct and appropriate " +

@@ -46,7 +46,7 @@ class Backup(
     }
 
     private val tables = listOf("learner", "attempt", "conversation", "recording", "ilr_estimate", "review_item", "review", "generated_passage",
-        "lexicon_package", "lexicon_term", "conversation_turn_feedback", "stand_to")
+        "lexicon_package", "lexicon_term", "conversation_turn_feedback", "stand_to", "storyline", "storyline_day")
 
     fun export(
         out: File, languages: List<String>, packs: Bundle.PacksList, passphrase: String? = null,
@@ -259,6 +259,8 @@ class Backup(
             insert("conversation", "SELECT id, ${learner("learnerId")}, lang, kind, topic, startedAt, endedAt, turnsJson, ratingJson, rollingLevelJson, audioDir, deleted, correctionsMode, aabJson FROM incoming.conversation")
             insert("conversation_turn_feedback", "SELECT * FROM incoming.conversation_turn_feedback")
             insert("stand_to", "SELECT id, ${learner("learnerId")}, lang, startedAt, finishedAt, recipeJson, resultJson, deleted FROM incoming.stand_to")
+            insert("storyline", "SELECT id, ${learner("learnerId")}, lang, personaId, startedAt, deleted FROM incoming.storyline")
+            insert("storyline_day", "SELECT * FROM incoming.storyline_day")
             insert("recording", "SELECT * FROM incoming.recording")
             insert("ilr_estimate", "SELECT id, ${learner("learnerId")}, lang, modality, at, value, sourceKind, sourceId, confidence, provisional, deleted FROM incoming.ilr_estimate")
             insert("generated_passage", "SELECT id, ${learner("learnerId")}, lang, skill, level, textType, title, body, scriptJson, itemsJson, audioPath, engine, createdAt, deleted FROM incoming.generated_passage")
@@ -273,7 +275,7 @@ class Backup(
             insert("review", "SELECT r.id, mp.outId, r.at, r.rating, r.durationMs, r.deleted FROM incoming.review r JOIN temp.item_map mp ON mp.inId = r.itemId")
             affected += strings("SELECT DISTINCT mp.outId FROM incoming.review r JOIN temp.item_map mp ON mp.inId = r.itemId")
             // Tombstones are facts too: a deletion on either computer stays a deletion.
-            for (t in listOf("attempt", "conversation", "recording", "ilr_estimate", "generated_passage", "review", "lexicon_package", "conversation_turn_feedback", "stand_to")) {
+            for (t in listOf("attempt", "conversation", "recording", "ilr_estimate", "generated_passage", "review", "lexicon_package", "conversation_turn_feedback", "stand_to", "storyline", "storyline_day")) {
                 val before = long("SELECT count(*) FROM main.$t WHERE deleted IS NOT NULL")
                 exec("UPDATE main.$t SET deleted = (SELECT deleted FROM incoming.$t x WHERE x.id = main.$t.id) " +
                     "WHERE deleted IS NULL AND id IN (SELECT id FROM incoming.$t WHERE deleted IS NOT NULL)")

@@ -44,6 +44,8 @@ class TopicSession(
     val culturalNotes: List<String> = emptyList(),
     /** Live and After action run the same correction pass; Off asks only for the partner's reply (BRIEF_PHASE8 C-11). */
     val mode: CorrectionsMode = CorrectionsMode.LIVE,
+    /** Storyline memory (BRIEF_PHASE8 N-03). */
+    val memory: List<String> = emptyList(),
 ) {
     val startedAt: Instant = clock.now()
     private val history = mutableListOf(Turn(Speaker.PARTNER, topic.opener))
@@ -63,7 +65,7 @@ class TopicSession(
         val said = text.trim()
         if (said.isEmpty()) return null
         history += Turn(Speaker.LEARNER, said)
-        val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay, persona, culturalNotes)
+        val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay, persona, culturalNotes, memory)
         if (!mode.records) {
             val reply = when (val r = gateway.run(PartnerReply(), input)) {
                 is AiResult.Ok -> TopicExchange(said, r.value.reply, r.value.replyEnglish, engine = r.engine)

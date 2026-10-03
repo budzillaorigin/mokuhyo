@@ -74,6 +74,8 @@ import app.mokuhyo.opi.TopicSession
 import app.mokuhyo.opi.Turn
 import app.mokuhyo.opi.TurnFeedback
 import app.mokuhyo.opi.TurnFeedbackRecord
+import app.mokuhyo.opi.Storyline
+import app.mokuhyo.opi.StorylineRunner
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.FluencyAnalyzer
@@ -610,13 +612,14 @@ private fun TopicView(app: AppGraph, module: LanguageModule, pack: OpiPack, mode
 private fun TopicConversation(
     app: AppGraph, module: LanguageModule, pack: OpiPack, topic: Topic, close: () -> Unit,
     rolePlay: RolePlayContext? = null, kind: String = "TOPIC", mode: CorrectionsMode = CorrectionsMode.LIVE, persona: Persona? = null,
-    activity: SpeakingActivity = SpeakingActivity.TOPIC,
+    activity: SpeakingActivity = SpeakingActivity.TOPIC, memory: List<String> = emptyList(),
+    onFinished: ((TopicSession, String) -> Unit)? = null,
 ) {
     val scope = rememberCoroutineScope()
     val conversationId = remember { app.conversations.newId() }
     val session = remember {
         TopicSession(module.code, pack.profile, topic, app.gateway, rolePlay = rolePlay, persona = persona?.context(),
-            culturalNotes = app.culturalNotes(module.code, persona), mode = mode)
+            culturalNotes = app.culturalNotes(module.code, persona), mode = mode, memory = memory)
     }
     val exchanges = remember { mutableStateListOf<TopicExchange>() }
     val fluency = remember { mutableStateListOf<FluencyAnalyzer.Report>() }
@@ -653,6 +656,7 @@ private fun TopicConversation(
     }
 
     fun save(brief: AfterActionBrief?) {
+        onFinished?.invoke(session, conversationId)
         app.conversations.save(conversationId, app.learnerId, module.code, kind, topic.title, session.startedAt.toEpochMilliseconds(),
             StoredConversation(session.transcript, exchanges = exchanges.toList()), null, session.levelTrack.toList(), "recordings/$conversationId", mode, brief)
         session.recurringErrors().forEach { c ->
@@ -808,8 +812,24 @@ private fun ScenarioView(app: AppGraph, module: LanguageModule, pack: OpiPack, t
             kind = "SCENARIO", mode = mode, persona = persona, activity = SpeakingActivity.PERSONA)
         return
     }
+    var week by remember { mutableStateOf(false) }
+    if (week) {
+        ExerciseWeek(app, module, pack, mode, persona) { week = false }
+        return
+    }
     Page("Scenarios", "${module.nameEnglish} · ${track.title}") {
         if (s == null) {
+            SectionCard("Exercise week") {
+                val st = remember { app.storylines.current(app.learnerId, module.code) }
+                Text("Five linked sessions with the same counterpart — arrival, a drone sighting, an intrusion, a gate incident, the joint after-action " +
+                    "review. Your counterpart remembers what happened on earlier days, and how you handled each day shapes the next.")
+                Text(when {
+                    st == null -> "Not started."
+                    st.completed -> "Completed."
+                    else -> "Next: ${Storyline.day(st.nextDay)?.title}"
+                }, style = MaterialTheme.typography.bodySmall)
+                Button(onClick = { week = true }) { Text(if (st == null || st.completed) "Start an exercise week" else "Continue") }
+            }
             track.scenarios.forEach { sc ->
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     TextButton(onClick = { chosen = sc }) { Text(sc.title) }
@@ -837,5 +857,53 @@ private fun ScenarioView(app: AppGraph, module: LanguageModule, pack: OpiPack, t
                 TextButton(onClick = { chosen = null }) { Text("Choose another") }
             }
         }
+    }
+}
+
+
+/** The exercise-week storyline (BRIEF_PHASE8 N-03): day by day with a persistent counterpart and memory. */
+@Composable
+private fun ExerciseWeek(app: AppGraph, module: LanguageModule, pack: OpiPack, mode: CorrectionsMode, chosenPersona: Persona?, close: () -> Unit) {
+    val scope = rememberCoroutineScope()
+    val personas = remember(module.code) { app.personas(module.code) }
+    var state by remember { mutableStateOf(app.storylines.current(app.learnerId, module.code)?.takeIf { !it.completed }) }
+    var playing by remember { mutableStateOf(false) }
+    var status by remember { mutableStateOf("") }
+    val st = state
+    val persona = st?.let { s -> personas.firstOrNull { it.id == s.personaId } } ?: chosenPersona
+    if (st != null && playing) {
+        val (day, role) = StorylineRunner.rolePlay(st, persona?.let { PersonaContext(it.name, it.rankTitle, it.roleTitle, it.force, it.register, it.patience, it.formality) })
+        TopicConversation(app, module, pack, Topic(day.id, "military_operations", day.title, ""), { playing = false }, role, kind = "STORYLINE", mode = mode,
+            persona = persona, activity = SpeakingActivity.PERSONA, memory = st.memory) { session, conversationId ->
+            status = "Saving what your counterpart will remember…"
+            scope.launch {
+                val rec = withContext(Dispatchers.Default) { StorylineRunner.summarize(app.gateway, module.code, day, conversationId, session.transcript) }
+                app.storylines.addDay(st.id, rec)
+                state = app.storylines.current(app.learnerId, module.code)
+                status = "Day ${day.n} saved: ${rec.summary}"
+            }
+        }
+        return
+    }
+    Page("Exercise week", module.nameEnglish) {
+        if (st == null) {
+            SectionCard("Choose your counterpart") {
+                if (personas.isEmpty()) Text("No personas in this language's pack; your counterpart will be a generic host-nation officer.")
+                personas.filter { it.role in setOf("senior_counterpart", "peer_officer") }.forEach { p ->
+                    TextButton(onClick = { state = app.storylines.start(app.learnerId, module.code, p.id) }) { Text("${p.name}, ${p.rankTitle} (${p.force})") }
+                }
+                if (personas.isEmpty()) Button(onClick = { state = app.storylines.start(app.learnerId, module.code, "") }) { Text("Start") }
+            }
+        } else {
+            SectionCard(Storyline.day(st.nextDay)?.title ?: "Week complete") {
+                st.days.sortedBy { it.day }.forEach { d -> Text("Day ${d.day}: ${d.summary}", style = MaterialTheme.typography.bodySmall) }
+                if (!st.completed) {
+                    Text(Storyline.situation(st.nextDay, st.lastChoice))
+                    Button(onClick = { playing = true }) { Text("Play day ${st.nextDay}") }
+                } else Text("Exercise week complete.", fontWeight = FontWeight.SemiBold)
+            }
+        }
+        if (status.isNotEmpty()) Text(status, style = MaterialTheme.typography.bodySmall)
+        TextButton(onClick = close) { Text("Back") }
     }
 }

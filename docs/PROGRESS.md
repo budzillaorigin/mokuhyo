@@ -480,3 +480,15 @@ stay within 8–10 minutes, weekly summary arithmetic; migration verified.
 **Gate:** `InterpretTest` — chunking pinned (joining short lines, splitting long ones, both directions, unspaced
 scripts), grader JSON validates on fixtures (and bad scores are rejected), scripted sessions complete in Spanish and
 Japanese with nothing graded until the end, live grading when asked.
+
+## N-03 — Exercise-week storyline ✅
+- Five linked sessions (`Storyline.DAYS`: arrival and handover → drone sighting → intrusion and QRF → incident with a
+  local national → joint after-action review) with one counterpart chosen from the language's personas. After each day
+  `storyline_summary` stores what the counterpart remembers (facts, a two-sentence summary) and how the learner
+  handled it (the branch key); the next day's situation branches on it and the counterpart's prompt carries the memory.
+  Speaking → Scenarios → **Exercise week**. Culture cards and personas apply as in scenarios.
+- Append-only `storyline` / `storyline_day` rows (schema 4 → 5, `4.sqm`), carried in the bundle; the state is derived.
+
+**Gate:** `StorylineTest` — a scripted five-session run completes with branches following the choices; the day-5 prompt
+recalls the facts of days 1–4 and day 1 recalls none (golden); an invalid summary falls back; the state round-trips
+through a `.mokuhyo` bundle.
