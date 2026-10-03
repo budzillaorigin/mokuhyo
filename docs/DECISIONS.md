@@ -271,3 +271,28 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
   never downloaded, opened or hashed. `tools/sources/check.py` (named in A-02) lists every row with its flags.
 - **`docs/LICENSES.md` → "Reference sources"**: one row per acquired/superseded SOURCES.json id (the six limited JPs
   are listed as never read or shipped); `check_licenses.py` fails when one is missing.
+
+## D-030 Phase 8 C-01a: how the seed list is built (unattended default, 2026-10-03)
+- **Catalog.** `tools/terms/seed_catalog.py` holds the §B.2.2 starter list (priority 1, every term kept) and a
+  by-domain extension of DoD Dictionary terms (priority 2/3). `build_seed_terms.py` resolves each row and writes
+  `seed_terms.csv` (402 rows: cuas, base-defense, airspace, ew, roe, c2, logistics, medical, hadr, brevity). The
+  §B.2.1 columns gain `acronym`, `definition_source` (doctrine | original) and `source_id` (the SOURCES.json id).
+  Cross-cutting starter terms are filed under `c2`.
+- **Source order.** DoD Dictionary Aug 2026 → ATP 3-01.81 glossary → JP 3-10 (2019) glossary → JP 3-01 (2017)
+  glossary → ATP 1-02.1 (brevity rows) → **the June 2025 and November 2021 DoD Dictionary editions** (added: same
+  publisher, public domain, both in SOURCES.json; the Aug 2026 edition dropped terms such as *call sign*,
+  *situation report* and *exercise*). AFDP 3-10 has no glossary.
+- **Body-text definitions.** When no glossary defines a term, a sentence from the public doctrine's body text may
+  serve, copied verbatim with its page — only if the term is the sentence's grammatical subject followed by is/are/
+  means/refers to, the primary model picks it as a general definition, and the checker model (gpt-oss:20b) agrees.
+  Choices are kept in `seed_quotes.json` so the build is reproducible offline. 3 rows resolved this way.
+- **Wrong senses are not used.** Where the only doctrinal entry is a different sense (*detection* = CBRN, *cover* =
+  intelligence cover, *accountability* = legal obligation), the row uses an original definition and says why.
+- **Verbatim is verified, not assumed.** Definitions are trimmed to whole sentences that appear verbatim in the
+  cited source (page breaks and running headers tolerated); `validate_seeds.py` re-checks every doctrine row against
+  the source text, plus ids, domains, priorities, approvedBy, ≥ 250 rows and every priority-1 starter term.
+- **Result:** 402 rows, 316 (78.6%) with a doctrinal definition, 86 original. The C-01a target of ≥ 90% is not met
+  (known gap, PROGRESS): the starter list is mostly modern tactical vocabulary — FPV drone, interceptor drone, net
+  capture, vehicle search area, lockdown, all clear, blotter, radio procedure words — that no public US glossary
+  defines. Padding the list with ~450 more dictionary terms to dilute the originals would not serve learners.
+  Original rows are marked `definition_source = original` / `source_doc = authored` and stay reviewable.

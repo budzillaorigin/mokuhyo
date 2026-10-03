@@ -306,3 +306,21 @@ owner installed it as an in-place upgrade from 0.1.0 and confirmed it is fully d
 
 **Gate:** `tools/gates/gate_terms.sh` PASS on the empty `term_alignment.csv` and all existing banks (78,938 strings,
 0 failing); `fetch_sources.py --check`: 44 verified, 0 problems, 6 limited rows never touched.
+
+## C-01a — Seed term list ✅ (one criterion is a known gap)
+- `tools/terms/build_seed_terms.py` + `seed_catalog.py` + `doctrine.py` (glossary parsers) + `verbatim.py` →
+  `tools/terms/seed_terms.csv`: **402 rows**, 154 priority 1 (the whole §B.2.2 starter list), `approvedBy = owner
+  (delegated 2026-10-03)`. Definitions: DoD Dictionary Aug 2026 251, ATP 1-02.1 50, ATP 3-01.81 9, DoD Dictionary
+  2021/2025 5, JP 3-01 1, original 86 (D-030).
+- `tools/terms/validate_seeds.py` (in gate_terms): format, provenance, verbatim-in-source check, starter coverage.
+
+**Gate:** `validate_alignment.py --seeds` passes (seed file found); ≥ 250 rows ✅; every priority-1 starter term ✅;
+**≥ 90% doctrinal: known gap** after three distinct attempts (Aug 2026 dictionary + glossaries → 78%; adding the 2025
+and 2021 dictionary editions → 79%; verified body-text definitions → 79%; the remaining rows are terms no public US
+source defines). Exact command and output:
+
+```
+$ cd tools && uv run python terms/validate_seeds.py --min-doctrinal 0.9
+validate_seeds: 402 rows, 316 doctrinal (78.6%), 0 errors
+validate_seeds: doctrinal share 78.6% is below 90%
+```

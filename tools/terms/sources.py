@@ -96,12 +96,14 @@ def sha256(p: Path) -> str:
     return h.hexdigest()
 
 
-def pages(source_id: str, purpose: str = "parse") -> list[str]:
-    """The source's text per PDF page (index 0 = page 1). Cached by sha256."""
+def pages(source_id: str, purpose: str = "parse", layout: bool = True) -> list[str]:
+    """The source's text per PDF page (index 0 = page 1). Cached by sha256. `layout=True` keeps columns and indents
+    (glossary parsing); `layout=False` is reading order (prose)."""
     row = require(source_id, purpose)
     PAGE_CACHE.mkdir(parents=True, exist_ok=True)
-    txt = PAGE_CACHE / f"{source_id}.txt"
-    meta = PAGE_CACHE / f"{source_id}.meta.json"
+    stem = source_id if layout else f"{source_id}.flow"
+    txt = PAGE_CACHE / f"{stem}.txt"
+    meta = PAGE_CACHE / f"{stem}.meta.json"
     if txt.exists() and meta.exists() and json.loads(meta.read_text()).get("sha256") == row.get("sha256"):
         return txt.read_text(encoding="utf-8").split("\f")
     src = path(row)
@@ -109,7 +111,7 @@ def pages(source_id: str, purpose: str = "parse") -> list[str]:
         raise FileNotFoundError(f"{src} is missing; run: uv run python sources/fetch_sources.py")
     if not shutil.which("pdftotext"):
         raise RuntimeError("pdftotext (poppler) is required: brew install poppler / apt install poppler-utils")
-    r = subprocess.run(["pdftotext", "-enc", "UTF-8", "-layout", str(src), "-"], capture_output=True, check=True)
+    r = subprocess.run(["pdftotext", "-enc", "UTF-8", *(["-layout"] if layout else []), str(src), "-"], capture_output=True, check=True)
     text = r.stdout.decode("utf-8", "replace")
     txt.write_text(text, encoding="utf-8")
     meta.write_text(json.dumps({"id": source_id, "sha256": row.get("sha256"), "pages": text.count("\f") + 1}))

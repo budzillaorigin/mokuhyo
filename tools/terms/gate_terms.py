@@ -104,7 +104,7 @@ def main() -> int:
     if a.no_sources:
         print("gate_terms: overlap check SKIPPED (--no-sources): this machine has no tools/sources PDFs")
     else:
-        files = [str(HERE / "term_alignment.csv")]
+        files = [str(HERE / "term_alignment.csv"), *([str(HERE / "seed_terms.csv")] if (HERE / "seed_terms.csv").exists() else [])]
         items: list[dict] = []
         for pattern in TARGETS:
             for f in sorted(glob.glob(str(REPO / pattern))):

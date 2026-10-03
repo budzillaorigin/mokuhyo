@@ -128,7 +128,30 @@ def test_overlap_gate() -> None:
         assert r.returncode == 1 and "copy" in r.stdout and "own" not in r.stdout.split("FAIL")[-1], r.stdout
 
 
+
+
+def test_verbatim() -> None:
+    import verbatim as V
+    hay = V.squash("coordinating authority — A commander who has the authority to require 35 Terms and Definitions "
+                   "consultation between Services. (JP 1)")
+    assert V.matches("A commander who has the authority to require consultation between Services.", hay)
+    assert not V.matches("A commander who has the power to require consultation between Services.", hay)
+    far = V.squash("A commander who has the authority to require " + "x" * 200 + " consultation between Services.")
+    assert not V.matches("A commander who has the authority to require consultation between Services.", far)
+
+
+def test_seed_file() -> None:
+    seeds = HERE / "seed_terms.csv"
+    if not seeds.exists():
+        return
+    r = subprocess.run([sys.executable, str(HERE / "validate_seeds.py"), str(seeds)], capture_output=True, text=True, check=False)
+    assert r.returncode == 0, r.stdout[-2000:]
+    with open(seeds, encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) >= 250 and all(r["approvedBy"] for r in rows)
+
+
 if __name__ == "__main__":
-    for t in [test_guard, test_fetch, test_alignment, test_flatten, test_overlap_gate]:
+    for t in [test_guard, test_fetch, test_alignment, test_flatten, test_overlap_gate, test_verbatim, test_seed_file]:
         t()
         print("ok", t.__name__)
