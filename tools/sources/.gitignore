@@ -1,0 +1,6 @@
+# extracted text for overlap_check.py only - never commit or ship
+.cache/
+us-limited/
+
+# source PDFs are not committed (~700 MB); SOURCES.json carries url + sha256 to re-fetch them
+**/*.pdf

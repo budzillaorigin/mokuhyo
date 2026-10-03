@@ -223,3 +223,25 @@ showed the light AWT window colour with black text, and Windows drew a light tit
   builds ignore it.
 
 Native OS file dialogs (export and import) remain in the OS's own style.
+
+## D-028 Phase 8 owner decisions (2026-10-03)
+Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattended Phase 8 run.
+- **A-01 / A-05 — seed term list delegated to the pipeline.** The owner did not hand-author `tools/terms/seed_terms.csv`.
+  Claude Code builds it (new item C-01a): ~300 terms in the BRIEF_PHASE8 §B.2.2 domains, `term_en` and `definition_en`
+  copied verbatim from the August 2026 DoD Dictionary (public domain), falling back to ATP 3-01.81, JP 3-10 (2019
+  official), AFDP 3-10 and ATP 1-02.1, each with `source_doc` and `source_page`. `approvedBy` = "owner (delegated
+  2026-10-03)"; the requester may still review it later through the Content Review screen.
+- **Translation rule.** Where an allied source (`alignment_ok = true`) confirms both the target-language term and its
+  meaning, that confirmed term is used as the translation and cited (`term_source_id` + page). Only when no confirmed
+  term exists does the model propose one, with `badge = unconfirmed-term`.
+- **A-06 — partner forces for personas and culture cards: the air force equivalent of each partner country.**
+  ja: Japan Air Self-Defense Force (JASDF) · ko: Republic of Korea Air Force (ROKAF) · de: Luftwaffe ·
+  fr: Armée de l'air et de l'espace · es: Fuerza Aérea Mexicana (Mexico, per the AFCLC guide available; Spain's
+  Ejército del Aire y del Espacio as the alternate) · pt-BR: Força Aérea Brasileira · ru: Russian Aerospace Forces (VKS) ·
+  id: TNI Angkatan Udara (TNI-AU) · fa: Islamic Republic of Iran Air Force (IRIAF; culture reference per the AFCLC Iran
+  guide) · zh-Hans: PLA Air Force (PLAAF; the Taiwan sources and ROCAF remain the zh-Hant alternate) ·
+  **ar: two persona sets — Royal Saudi Air Force (RSAF) and Qatar Emiri Air Force (QEAF)**, culture cards from the AFCLC
+  Saudi Arabia guide for both, with Qatar-specific notes drawn from public sources and badged.
+- **A-09 — CLAUDE.md rule 6 replaced** with the four-flag wording in BRIEF_PHASE8 §B.0 (`verbatim_ok`, `alignment_ok`,
+  `machine_extract_ok`, `distribution`); `tools/terms/overlap_check.py` is a gate on all shipped text. Approved by the
+  owner 2026-10-03; Claude Code applies it in C-00.
