@@ -124,7 +124,7 @@ class Client:
             raise EndpointDown(f"drafting endpoint {self.endpoint} is unreachable: {e}", rerun_command()) from e
 
     def chat(self, messages: list[dict], *, json_schema: dict | None = None, temperature: float | None = None,
-             max_tokens: int = 4096, model: str | None = None) -> str:
+             max_tokens: int = 4096, model: str | None = None, extra: dict | None = None) -> str:
         """One completion; returns the text. Retries 3× with backoff; falls back to the secondary model after three
         consecutive primary failures."""
         use = model or (self.fallback if self.fallback and self.consecutive_failures >= 3 and not model else self.model)
@@ -133,6 +133,8 @@ class Client:
                       "max_tokens": max_tokens, "stream": False}
         if json_schema is not None:
             body["response_format"] = {"type": "json_schema", "json_schema": {"name": "out", "schema": json_schema, "strict": True}}
+        if extra:
+            body.update(extra)  # e.g. {"reasoning_effort": "low"} for gpt-oss
         data = json.dumps(body).encode()
         last: Exception | None = None
         for attempt in range(4):  # first try + 3 retries

@@ -78,6 +78,8 @@ class OpiSession(
     val test: Boolean = false,
     private val clock: Clock = Clock.System,
     private val random: Random = Random.Default,
+    /** The pragmatics pack's norms the interviewer follows (BRIEF_PHASE8 C-07). */
+    private val culturalNotes: List<String> = emptyList(),
 ) {
     val startedAt: Instant = clock.now()
     private val history = mutableListOf<Turn>()
@@ -107,6 +109,7 @@ class OpiSession(
             language, profile.registerNotes, phase, workingLevel, history.toList(), turnsInPhase,
             rolePlay?.let { "${it.situation} You play: ${it.interviewerRole}." }?.takeIf { phase == OpiPhase.ROLEPLAY && turnsInPhase == 0 },
             usedDomains.distinct(),
+            culturalNotes,
         )
         val task = OpiInterviewerTurn { scripted(it.phase) }
         var reason: String? = null

@@ -157,9 +157,12 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
         TabRow(selectedTabIndex = tab) {
             Tab(tab == 0, { tab = 0 }, text = { Text("Practice") })
             Tab(tab == 1, { tab = 1 }, text = { Text("Test") })
+            if (skill == Skill.READING) Tab(tab == 2, { tab = 2 }, text = { Text("This month") })
         }
         Spacer(Modifier.height(16.dp))
-        if (tab == 0) {
+        if (tab == 2) {
+            ThisMonth(app, module)
+        } else if (tab == 0) {
             var level by remember { mutableStateOf(levels.firstOrNull { (counts[it] ?: 0) > 0 } ?: levels.first()) }
             var track by remember { mutableStateOf<String?>(null) }
             var textType by remember(level, track) { mutableStateOf<String?>(null) }

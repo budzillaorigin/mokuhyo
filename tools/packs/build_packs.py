@@ -53,6 +53,52 @@ def audio_index(lang: str) -> dict[str, str]:
     return {f.stem: f"audio/{f.name}" for f in sorted(d.iterdir()) if f.suffix in AUDIO_EXT}
 
 
+TRACKS_DIR = TOOLS / "tracks"
+
+
+def copy_tracks(lang: str, audio: dict[str, str]) -> list[dict]:
+    """tools/tracks/<id>.<lang>.json → packs/<lang>/track-<id>.json, with each dialogue's pre-rendered clip (BRIEF_PHASE8 C-03)."""
+    out = []
+    for src in sorted(TRACKS_DIR.glob(f"*.{lang}.json")):
+        track = json.loads(src.read_text(encoding="utf-8"))
+        for d in track.get("dialogues", []):
+            if d["id"] in audio:
+                d["audio"] = audio[d["id"]]
+            else:
+                d.pop("audio", None)
+        data = json.dumps(track, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        name = f"track-{track['id']}.json"
+        (PACKS / lang / name).write_bytes(data)
+        out.append({"file": name, "id": track["id"], "version": track["version"], "sha256": hashlib.sha256(data).hexdigest(),
+                    "terms": len(track["terms"]), "drills": len(track["drills"]), "scenarios": len(track["scenarios"]),
+                    "dialogues": len(track["dialogues"])})
+    return out
+
+
+EXTRAS = {  # BRIEF_PHASE8: source file → pack file name
+    "culture.json": TOOLS / "culture" / "{lang}.cards.json",
+    "pragmatics.json": TOOLS / "pragmatics" / "{lang}.json",
+    "personas.json": TOOLS / "personas" / "{lang}.json",
+}
+
+
+def copy_extras(lang: str) -> dict:
+    """Culture cards (C-05), pragmatics (C-07), personas (C-08) and the current-events links (C-09) for the language."""
+    info = {}
+    for name, pattern in EXTRAS.items():
+        src = Path(str(pattern).format(lang=lang))
+        if src.exists():
+            data = json.dumps(json.loads(src.read_text(encoding="utf-8")), ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+            (PACKS / lang / name).write_bytes(data)
+            info[name] = hashlib.sha256(data).hexdigest()
+    feeds = json.loads((TOOLS / "terms" / "feeds.json").read_text(encoding="utf-8"))["feeds"]
+    mine = {"format": "mokuhyo-feeds/1", "lang": lang, "feeds": [f for f in feeds if f["lang"] == lang]}
+    data = json.dumps(mine, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    (PACKS / lang / "feeds.json").write_bytes(data)
+    info["feeds.json"] = hashlib.sha256(data).hexdigest()
+    return info
+
+
 def build(lang: str, allow_empty: bool) -> dict:
     bands = gen_dlpt.load_bands()
     banks = {}
@@ -86,13 +132,15 @@ def build(lang: str, allow_empty: bool) -> dict:
         (PACKS / lang / "opi.json").write_bytes(opi_bytes)
         opi_info = {"file": "opi.json", "sha256": hashlib.sha256(opi_bytes).hexdigest(), "questions": len(opi["questions"]),
                     "rolePlays": len(opi["rolePlays"]), "topics": len(opi["topics"])}
+    track_info = copy_tracks(lang, pack["audio"])
+    extras = copy_extras(lang)
     stats = {s: gen_dlpt.counts(lang, s) for s in gen_dlpt.SKILLS}
     listening_ids = [p["id"] for p in banks["listening"]["passages"]]
     with_audio = sum(1 for p in listening_ids if p in pack["audio"])
     manifest = {"language": lang, "exam": {"file": "exam.json", "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
                 "passages": stats, "items": {s: len(banks[s]["items"]) for s in banks},
                 "listeningWithAudio": with_audio, "listeningPassages": len(listening_ids),
-                "license": gen_dlpt.LICENSE, "attribution": banks["reading"].get("attribution", "")}, "opi": opi_info}
+                "license": gen_dlpt.LICENSE, "attribution": banks["reading"].get("attribution", "")}, "opi": opi_info, "tracks": track_info, "extras": extras}
     (PACKS / lang / "exam.manifest.json").write_text(json.dumps(manifest, indent=1, ensure_ascii=False), encoding="utf-8")
     print(f"{lang}: exam.json {len(data) / 1e6:.1f} MB · reading {stats['reading']} · listening {stats['listening']} · "
           f"audio {with_audio}/{len(listening_ids)} · opi {opi_info and (opi_info['questions'], opi_info['rolePlays'], opi_info['topics'])}")

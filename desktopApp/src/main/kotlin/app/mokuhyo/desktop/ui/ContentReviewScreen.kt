@@ -35,6 +35,45 @@ private data class Verdict(val language: String, val kind: String, val id: Strin
 @Serializable
 private data class ReviewExport(val format: String = "mokuhyo-review/1", val reviewer: String, val created: String, val verdicts: List<Verdict>)
 
+/** Phase 8 content kinds the review covers (BRIEF_PHASE8 C-10); the export's `kind` matches tools/items/review.py. */
+private val PHASE8_KINDS = listOf("term" to "Terms", "card" to "Culture cards", "pragmatics" to "Pragmatics", "persona" to "Personas",
+    "scenario" to "Scenarios", "dialogue" to "Dialogues")
+
+/** Unreviewed units of a Phase 8 kind: (id, text to read). */
+private fun phase8Units(app: AppGraph, lang: String, kind: String): List<Pair<String, String>> = when (kind) {
+    "term" -> app.lexicon(lang)?.terms.orEmpty().filter { it.status != "approved" }.map { t ->
+        val eq = t.equivalents.firstOrNull()
+        t.id to buildString {
+            appendLine("${t.id} · ${t.domain} · ${t.badgeLabel ?: ""}")
+            appendLine("${t.termEn} → ${t.term} (${t.termKind})")
+            appendLine(if (eq?.source?.isNotEmpty() == true) "Confirmed in ${eq.source}, p. ${eq.page}" else "Model-proposed (no allied source)")
+            appendLine()
+            appendLine(t.definitionEn)
+            appendLine("— ${t.englishCitation()}")
+            appendLine()
+            appendLine(t.definition)
+            t.examples.forEach { appendLine("• ${it.text}  (${it.english})") }
+        }
+    }
+    "card" -> app.culture(lang)?.cards.orEmpty().filter { !it.verified }.map { c ->
+        c.id to "${c.id} · ${c.tags.joinToString()}\n${c.title}\n\n${c.body}\nDo: ${c.doThis.joinToString(" · ")}\nAvoid: ${c.avoidThis.joinToString(" · ")}\n\n${c.citation()}"
+    }
+    "pragmatics" -> app.pragmatics(lang)?.entries.orEmpty().filter { !it.verified }.map { e ->
+        e.id to "${e.id} · ${e.topic}\n${e.rule}\n\n" + e.examples.joinToString("\n\n") { "${it.situation}\n  say: ${it.say}\n  not: ${it.dontSay}\n  ${it.why}" } +
+            "\n\n${e.source.doc} ${e.source.section} ${e.source.page}"
+    }
+    "persona" -> app.personas(lang).filter { !it.verified }.map { p ->
+        p.id to "${p.id} · ${p.roleTitle} · ${p.force}\n${p.name}, ${p.rankTitle} (${p.rankEnglish})\n${p.register}\n${p.bio}\n\n${p.greeting}\n${p.greetingEnglish}"
+    }
+    "scenario" -> app.track(lang)?.scenarios.orEmpty().filter { !it.verified }.map { s ->
+        s.id to "${s.id} · ILR ${s.level}\n${s.title}\n${s.situation}\nYou: ${s.learnerRole} · Partner: ${s.partnerRole}\n\n${s.opener}\n${s.openerEnglish}"
+    }
+    "dialogue" -> app.track(lang)?.dialogues.orEmpty().filter { !it.verified }.map { d ->
+        d.id to "${d.id} · ILR ${d.level}\n${d.title}\n\n" + d.lines.joinToString("\n") { "${it.speaker}: ${it.text}\n   ${it.english}" }
+    }
+    else -> emptyList()
+}
+
 /**
  * Content Review (developer tool, BRIEF §7): read unreviewed AI-drafted passages and interview questions, mark them
  * accept or reject, and export the verdicts for `tools/items/review.py ingest`, which flips `verified` in the source
@@ -68,6 +107,8 @@ fun ContentReviewScreen(app: AppGraph) {
                     }
                 }
             }.orEmpty()
+        } else if (kind != "opi") {
+            phase8Units(app, lang, kind)
         } else {
             opi?.let { o ->
                 o.questions.filter { !it.verified }.map { it.id to "${it.id} · ${it.phase} · ILR ${it.level}\n\n${it.prompt}\n${it.english}" } +
@@ -80,6 +121,9 @@ fun ContentReviewScreen(app: AppGraph) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             FilterChip(kind == "exam", { kind = "exam" }, label = { Text("Reading & listening") })
             FilterChip(kind == "opi", { kind = "opi" }, label = { Text("Interview & topics") })
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            PHASE8_KINDS.forEach { (k, title) -> FilterChip(kind == k, { kind = k }, label = { Text(title) }) }
         }
         OutlinedTextField(reviewer, { reviewer = it }, label = { Text("Reviewer") }, singleLine = true)
         Text("${verdicts.size} verdicts this session · ${units.size} unreviewed")

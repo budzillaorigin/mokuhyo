@@ -75,6 +75,8 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         val rolePlay: String? = null,
         /** Topic domains already covered, so the interviewer moves to a new one. */
         val usedDomains: List<String> = emptyList(),
+        /** The language's pragmatics norms (BRIEF_PHASE8 C-07): the interviewer follows them and plays role-plays by them. */
+        val culturalNotes: List<String> = emptyList(),
     )
 
     @Serializable
@@ -115,6 +117,8 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                 "Never repeat or rephrase a question you already asked, and never repeat the candidate's words back as your question; build on what they said or move to a new topic.",
                 "english is an English translation of your utterance. next_phase is the phase for the following turn: stay, or move forward when this phase has done its job; never go back.",
                 "topic is a two-to-five-word English label; domain is one of: ${DOMAINS.joinToString()}.",
+                if (input.culturalNotes.isNotEmpty()) "Cultural norms you follow as a native speaker (and in role-plays): " +
+                    input.culturalNotes.joinToString(" ") { "• $it" } else "",
             ),
             user(
                 (if (input.history.isEmpty()) "The interview is starting.\n" else "Interview so far:\n" + transcript(input.history, "Candidate", "Interviewer") + "\n\n") +

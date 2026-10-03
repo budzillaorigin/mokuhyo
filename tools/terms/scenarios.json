@@ -1,0 +1,225 @@
+{
+ "format": "mokuhyo-scenarios/1",
+ "note": "Scenario catalog for the Counter-UAS & Base Defense track (BRIEF_PHASE8 §B.3). Language-neutral; build_track.py adds each language's opener, and C-05 attaches culture cards by tag. Situations are original.",
+ "scenarios": [
+  {
+   "id": "bdoc-handover",
+   "title": "BDOC shift handover",
+   "level": "2",
+   "situation": "You are coming on shift in the base defense operations center. Your host-nation counterpart is going off shift and briefs you on the night: one drone sighting, a gate camera fault and a patrol still out.",
+   "learnerRole": "Incoming BDOC controller",
+   "partnerRole": "Outgoing host-nation BDOC controller",
+   "tags": [
+    "meeting",
+    "rank",
+    "time"
+   ],
+   "terms": [
+    "bd-001",
+    "bd-041",
+    "air-002"
+   ]
+  },
+  {
+   "id": "drone-sighting-report",
+   "title": "Reporting a drone sighting up the chain",
+   "level": "2",
+   "situation": "From an observation post you see a small multirotor drone hovering over the fuel point. Report it to the host-nation duty officer on the radio: what, where, direction, and what you are doing.",
+   "learnerRole": "Observation post sentry",
+   "partnerRole": "Host-nation duty officer",
+   "tags": [
+    "radio",
+    "rank"
+   ],
+   "terms": [
+    "cuas-010",
+    "c2-003",
+    "bd-009"
+   ]
+  },
+  {
+   "id": "airspace-coordination",
+   "title": "Airspace coordination call with host-nation air defense",
+   "level": "2+",
+   "situation": "Your unit will fly a small surveillance drone this afternoon. Call the host-nation air defense artillery cell to coordinate the area, altitude block and times so they do not engage it.",
+   "learnerRole": "Unit airspace manager",
+   "partnerRole": "Host-nation air defense artillery liaison",
+   "tags": [
+    "radio",
+    "meeting",
+    "rank"
+   ],
+   "terms": [
+    "air-008",
+    "air-010",
+    "air-013"
+   ]
+  },
+  {
+   "id": "ecp-incident",
+   "title": "Entry control point incident with a local national",
+   "level": "1+",
+   "situation": "A local delivery driver arrives at the gate without a valid pass and becomes upset. Explain politely why he cannot enter, what he needs, and offer to call his contact on base.",
+   "learnerRole": "Gate guard",
+   "partnerRole": "Local delivery driver",
+   "tags": [
+    "gate",
+    "refusal",
+    "hospitality"
+   ],
+   "terms": [
+    "bd-005",
+    "bd-038",
+    "bd-039"
+   ]
+  },
+  {
+   "id": "joint-patrol-brief",
+   "title": "Joint perimeter patrol brief",
+   "level": "2",
+   "situation": "You lead tonight's joint perimeter patrol with host-nation soldiers. Brief their team leader on the route, check-in times, radio frequencies and what to do if you find a drone launch point.",
+   "learnerRole": "Patrol leader",
+   "partnerRole": "Host-nation team leader",
+   "tags": [
+    "meeting",
+    "rank",
+    "radio",
+    "time"
+   ],
+   "terms": [
+    "bd-014",
+    "cuas-037",
+    "air-016"
+   ]
+  },
+  {
+   "id": "post-incident-debrief",
+   "title": "Post-incident debrief",
+   "level": "2+",
+   "situation": "After a night drone incursion, sit down with your host-nation counterpart to go over what happened, what worked, and what both sides will change.",
+   "learnerRole": "Security forces flight chief",
+   "partnerRole": "Host-nation security officer",
+   "tags": [
+    "meeting",
+    "face",
+    "rank"
+   ],
+   "terms": [
+    "c2-017",
+    "c2-018",
+    "cuas-013"
+   ]
+  },
+  {
+   "id": "request-qrf",
+   "title": "Requesting a quick reaction force",
+   "level": "2",
+   "situation": "Your team has found a person with a drone controller near the fence line. Call the host-nation operations center, give your location and request their quick reaction force.",
+   "learnerRole": "Team leader on the perimeter",
+   "partnerRole": "Host-nation operations center",
+   "tags": [
+    "radio",
+    "rank"
+   ],
+   "terms": [
+    "bd-011",
+    "cuas-036",
+    "air-018"
+   ]
+  },
+  {
+   "id": "fpcon-contractor",
+   "title": "Explaining an FPCON change to a local contractor",
+   "level": "2",
+   "situation": "The force protection condition has gone up. Explain to the local construction contractor's manager what changes for his workers tomorrow: arrival times, searches and escorts.",
+   "learnerRole": "Installation security liaison",
+   "partnerRole": "Local contractor's site manager",
+   "tags": [
+    "meeting",
+    "time",
+    "refusal",
+    "hospitality"
+   ],
+   "terms": [
+    "bd-004",
+    "bd-006",
+    "bd-039"
+   ]
+  },
+  {
+   "id": "no-drone-zone-officials",
+   "title": "Coordinating a no-drone zone with municipal officials",
+   "level": "2+",
+   "situation": "A town festival is planned next to the base. Meet the municipal official to agree a no-drone zone notice for the public, who announces it, and how violations are handled.",
+   "learnerRole": "Base community liaison officer",
+   "partnerRole": "Municipal official",
+   "tags": [
+    "meeting",
+    "hospitality",
+    "face",
+    "rank"
+   ],
+   "terms": [
+    "air-005",
+    "air-006",
+    "bd-037"
+   ]
+  },
+  {
+   "id": "hadr-drone-survey",
+   "title": "HADR drone-survey tasking",
+   "level": "2",
+   "situation": "After floods, your team will fly survey drones for the host-nation disaster agency. Agree the areas, priorities, data sharing and safety rules with their coordinator.",
+   "learnerRole": "Drone survey team lead",
+   "partnerRole": "Host-nation disaster agency coordinator",
+   "tags": [
+    "meeting",
+    "time",
+    "hospitality"
+   ],
+   "terms": [
+    "hadr-001",
+    "c2-010",
+    "cuas-001"
+   ]
+  },
+  {
+   "id": "weapons-status-coordination",
+   "title": "Agreeing weapons control status with a host-nation C-UAS team",
+   "level": "3",
+   "situation": "A drone swarm threat is expected tonight. Agree with the host-nation counter-drone team commander who holds engagement authority, the weapons control status, and how each side will avoid hitting friendly drones.",
+   "learnerRole": "Air defense liaison officer",
+   "partnerRole": "Host-nation C-UAS team commander",
+   "tags": [
+    "meeting",
+    "rank",
+    "face",
+    "radio"
+   ],
+   "terms": [
+    "cuas-047",
+    "roe-010",
+    "cuas-007"
+   ]
+  },
+  {
+   "id": "delegation-escort",
+   "title": "Escorting a host-nation delegation through access control",
+   "level": "1+",
+   "situation": "A visiting host-nation delegation arrives for a briefing. Welcome them at the gate, explain the badge and escort rules, and walk them to the briefing room.",
+   "learnerRole": "Protocol escort",
+   "partnerRole": "Senior member of the visiting delegation",
+   "tags": [
+    "gate",
+    "rank",
+    "hospitality",
+    "gift"
+   ],
+   "terms": [
+    "bd-039",
+    "bd-040",
+    "bd-005"
+   ]
+  }
+ ]
+}

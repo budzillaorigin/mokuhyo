@@ -263,7 +263,8 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     val scope = rememberCoroutineScope()
     val conversationId = remember { app.conversations.newId() }
     val session = remember {
-        OpiSession(module.code, pack.profile, pack.questions, pack.rolePlays, app.gateway, wordCounter(module), IlrLevel.L1, test = test)
+        OpiSession(module.code, pack.profile, pack.questions, pack.rolePlays, app.gateway, wordCounter(module), IlrLevel.L1, test = test,
+            culturalNotes = app.culturalNotes(module.code))
     }
     val notes = remember { app.culturalNotes(module.code) }
     val lines = remember { mutableStateListOf<Pair<Turn, String>>() } // (turn, english gloss)

@@ -95,6 +95,59 @@ TOPICS = [
 ]
 
 
+# Topic tracks (BRIEF_PHASE8 C-03, C-07): passages drafted for a track carry `"track": <id>`; the app can filter on it.
+# Text types follow the DLPT text-type progression per band (notice/sign at 1, news/report at 2, editorial/analysis at 3).
+TRACKS = {
+    "cuas-base-defense": {
+        "levels": ("1", "2", "3"),
+        "per_band": {"reading": 6, "listening": 4},
+        "textTypes": {
+            "1": {"reading": ["notice", "announcement", "instructions", "short_message"],
+                  "listening": ["announcement", "voicemail", "instructions", "conversation"]},
+            "2": {"reading": ["news", "report", "event_description"], "listening": ["news", "report", "briefing", "interview"]},
+            "3": {"reading": ["editorial", "analysis", "commentary"], "listening": ["editorial_commentary", "analysis", "lecture", "debate"]},
+        },
+        "topics": [
+            "a drone sighted over an air base perimeter", "new rules for flying drones near a military airfield",
+            "a base defense exercise with host-nation forces", "a change in the force protection condition at a base",
+            "an entry control point incident with a delivery driver", "a counter-drone system installed at an airport",
+            "a no-drone zone notice for a festival near a base", "a quick reaction force drill at night",
+            "jamming of a drone's control link during an exercise", "a joint perimeter patrol briefing",
+            "post-attack reconnaissance after a rocket alarm", "coordinating airspace with civil aviation for drone operations",
+            "a loitering munition threat to air bases", "a swarm of small drones over a harbor",
+            "training security forces to recognize hostile intent", "a shift handover at a base defense operations center",
+            "a humanitarian drone survey after a flood", "lessons learned from a counter-drone exercise",
+            "the cost of defending bases against cheap drones", "debate over laser weapons for air defense",
+            "local residents' concerns about base security measures", "a drone operator detained near an airport",
+            "radio procedures between allied air defense units", "insider threat awareness training at a base",
+        ],
+    },
+    # C-07: 24 listening items per language whose answer depends on what a speaker implies (8 passages × 3 inference items).
+    "pragmatics": {
+        "levels": ("2", "2+"),
+        "per_band": {"reading": 0, "listening": 4},
+        "textTypes": {"2": {"listening": ["conversation", "interview"]}, "2+": {"listening": ["conversation", "interview"]}},
+        "topics": [],  # filled per language from tools/pragmatics/<lang>.json
+        "questionTypes": ["inference"],
+        "instruction": ("Build the conversation around implied meaning: one speaker never says the key point outright but implies it — a "
+                        "softened refusal, an indirect request, a face-saving excuse, polite disagreement — following this cultural norm: "
+                        "{rule} Every question must be an inference question whose correct answer depends on what is implied, not on "
+                        "a stated fact; the distractors are the literal or opposite readings."),
+    },
+}
+
+
+def pragmatics_topic(lang: str, rng: random.Random) -> tuple[str, str]:
+    """(topic, rule) from the language's pragmatics pack (C-07)."""
+    p = HERE.parent / "pragmatics" / f"{lang}.json"
+    entries = json.loads(p.read_text(encoding="utf-8"))["entries"] if p.exists() else []
+    if not entries:
+        return "a polite refusal between colleagues at work", "Refusals are usually softened and indirect."
+    e = rng.choice(entries)
+    ex = rng.choice(e["examples"]) if e.get("examples") else {"situation": e["rule"]}
+    return ex["situation"], e["rule"]
+
+
 # --- Validation ------------------------------------------------------------------------------------------
 
 
@@ -337,12 +390,12 @@ def draft_schema(skill: str, n_items: int) -> dict:
 
 
 def draft_messages(lang: str, skill: str, level: str, text_type: str, topic: str, band: dict, n_items: int,
-                   avoid: list[str], feedback: str | None) -> list[dict]:
+                   avoid: list[str], feedback: str | None, extra: str | None = None, qtypes_override: list[str] | None = None) -> list[dict]:
     name = LANG_NAMES[lang]
     lo, hi = band["words"][skill]
     target = int((lo + hi) / 2)
     desc = (ILR_READING if skill == "reading" else ILR_LISTENING)[level]
-    qtypes = ", ".join(band["questionTypes"])
+    qtypes = ", ".join(qtypes_override or band["questionTypes"])
     form = (
         f"Write the passage body in {name}." if skill == "reading" else
         f"Write a listening script in {name}: a list of lines, each with a speaker label (in {name}), a voice "
@@ -376,6 +429,8 @@ Then write exactly {n_items} multiple-choice question(s) IN ENGLISH about the te
   translation or a gloss in the stem
 - explanation (English): why the answer is right, quoting the relevant words of the text in {name}
 """
+    if extra:
+        user += "\n" + extra + "\n"
     if avoid:
         user += "\nDo not reuse these titles or scenarios: " + "; ".join(avoid[-12:]) + "\n"
     if feedback:
@@ -456,16 +511,30 @@ def write_staging(lang: str, skill: str, rows: list[dict]) -> None:
 
 
 def draft_one(client: llm.Client, lang: str, skill: str, level: str, bands: dict, taken: set[str], avoid: list[str],
-              rng: random.Random, tries: int = 3) -> dict | None:
+              rng: random.Random, tries: int = 3, track: str | None = None) -> dict | None:
     band = bands["levels"][level]
-    text_type = rng.choice(band["textTypes"][skill])
-    topic = rng.choice(TOPICS)
+    extra = None
+    qtypes = None
+    if track == "pragmatics":
+        text_type = rng.choice(TRACKS[track]["textTypes"][level][skill])
+        topic, rule = pragmatics_topic(lang, rng)
+        extra = TRACKS[track]["instruction"].replace("{rule}", rule)
+        qtypes = TRACKS[track]["questionTypes"]
+    elif track:
+        text_type = rng.choice(TRACKS[track]["textTypes"][level][skill])
+        topic = rng.choice(TRACKS[track]["topics"])
+    else:
+        text_type = rng.choice(band["textTypes"][skill])
+        topic = rng.choice(TOPICS)
     n_items = 3 if level not in ("0+", "1") else rng.choice(band["itemsPerPassage"])
     feedback = None
     for _ in range(tries):
         try:
-            raw = client.chat_json(draft_messages(lang, skill, level, text_type, topic, band, n_items, avoid, feedback),
+            raw = client.chat_json(draft_messages(lang, skill, level, text_type, topic, band, n_items, avoid, feedback, extra, qtypes),
                                    draft_schema(skill, n_items), temperature=0.6, max_tokens=3000)
+            if qtypes and any(q.get("type") not in qtypes for q in raw.get("items", [])):
+                feedback = f"every question must have type {' or '.join(qtypes)}"
+                continue
         except (ValueError, KeyError, RuntimeError) as e:
             if isinstance(e, llm.EndpointDown):
                 raise
@@ -488,6 +557,8 @@ def draft_one(client: llm.Client, lang: str, skill: str, level: str, bands: dict
         pid = next_index(lang, skill, level, text_type, taken)
         try:
             passage, items = to_entries(raw, lang, skill, level, text_type, pid, client.model)
+            if track:
+                passage["track"] = track
         except (KeyError, TypeError, AttributeError) as e:
             feedback = f"missing fields ({e})"
             continue
@@ -520,7 +591,7 @@ def cmd_draft(args, client: llm.Client | None = None) -> int:
     made = 0
     for _ in range(args.n):
         try:
-            row = draft_one(client, args.language, args.skill, args.ilr, bands, taken, avoid, rng)
+            row = draft_one(client, args.language, args.skill, args.ilr, bands, taken, avoid, rng, track=getattr(args, "track", None))
         except llm.EndpointDown as e:
             print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
             write_staging(args.language, args.skill, rows)
@@ -618,10 +689,12 @@ def cmd_merge(args) -> int:
     return 0
 
 
-def counts(lang: str, skill: str) -> dict[str, int]:
+def counts(lang: str, skill: str, track: str | None = None) -> dict[str, int]:
     bank = load_bank(lang, skill)
     out = {lv: 0 for lv in LEVELS}
     for p in bank["passages"]:
+        if track and p.get("track") != track:
+            continue
         if p["level"] in out:
             out[p["level"]] += 1
     return out
@@ -646,25 +719,29 @@ def cmd_fill(args) -> int:
             print("fill: drafting budget used up", flush=True)
             break
         tasks = []
-        for lv in LEVELS:  # level-major order: an interrupted run still leaves every language with every level
+        track = getattr(args, "track", None)
+        levels = TRACKS[track]["levels"] if track else LEVELS
+        for lv in levels:  # level-major order: an interrupted run still leaves every language with every level
             for lang in langs:
                 for skill in skills:
                     staged = read_staging(lang, skill)
-                    pending = sum(1 for r in staged if r["passage"]["level"] == lv and r.get("check") is None)
-                    need = max(0, args.per_band - counts(lang, skill)[lv] - pending)
+                    pending = sum(1 for r in staged if r["passage"]["level"] == lv and r.get("check") is None
+                                  and r["passage"].get("track") == track)
+                    target = TRACKS[track]["per_band"][skill] if track else args.per_band
+                    need = max(0, target - counts(lang, skill, track)[lv] - pending)
                     if need:
                         tasks.append((lang, skill, lv, need))
         unchecked = [(lang, skill) for lang in langs for skill in skills
                      if any(r.get("check") is None for r in read_staging(lang, skill))]
         if not tasks and not unchecked:
-            print(f"fill: every band has {args.per_band} passages")
+            print(f"fill: every band has its target ({track or args.per_band})")
             break
         print(f"== round {rnd}: drafting {sum(t[3] for t in tasks)} passages in {len(tasks)} bands", flush=True)
         for lang, skill, lv, need in tasks:
             if deadline and time.monotonic() > deadline:
                 print("fill: drafting budget used up; checking what was drafted", flush=True)
                 break
-            rc = cmd_draft(argparse.Namespace(language=lang, skill=skill, ilr=lv, n=need), client)
+            rc = cmd_draft(argparse.Namespace(language=lang, skill=skill, ilr=lv, n=need, track=track), client)
             if rc:
                 return rc
         print(f"== round {rnd}: checking", flush=True)
@@ -701,6 +778,8 @@ def main(argv: list[str] | None = None) -> int:
         p = sub.add_parser(name)
         p.add_argument("--language", required=True, help="BCP-47 code, comma list, or 'all' (fill)")
         p.add_argument("--skill", required=True, choices=SKILLS + (("both",) if name == "fill" else ()))
+        if name in ("draft", "fill"):
+            p.add_argument("--track", choices=sorted(TRACKS), help="draft passages for a topic track (C-03)")
         if name == "draft":
             p.add_argument("--ilr", required=True, choices=LEVELS)
             p.add_argument("--n", type=int, default=1)

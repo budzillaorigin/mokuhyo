@@ -28,6 +28,15 @@ from pathlib import Path
 TOOLS = Path(__file__).resolve().parents[1]
 BANK = TOOLS / "items" / "bank"
 OPI = TOOLS / "opi"
+ALIGN = TOOLS / "terms" / "term_alignment.csv"
+# Phase 8 content kinds (BRIEF_PHASE8 C-10): kind → (file pattern, list key)
+JSON_KINDS = {
+    "card": ("culture/{lang}.cards.json", "cards"),
+    "pragmatics": ("pragmatics/{lang}.json", "entries"),
+    "persona": ("personas/{lang}.json", "personas"),
+    "scenario": ("tracks/cuas-base-defense.{lang}.json", "scenarios"),
+    "dialogue": ("tracks/cuas-base-defense.{lang}.json", "dialogues"),
+}
 LOG = TOOLS / "items" / "review-log.jsonl"
 LANGS = ("ja", "es", "fr", "de", "pt-BR", "ru", "zh-Hans", "ko", "ar", "fa", "id")
 
@@ -140,6 +149,87 @@ def apply_opi(lang: str, verdicts: dict[str, dict], reviewer: str) -> tuple[int,
     return accepted, rejected
 
 
+def apply_terms(lang: str, verdicts: dict[str, dict], reviewer: str) -> tuple[int, int]:
+    """Term alignments (docs/TERM_PIPELINE.md step 5): accept → status approved, approvedBy, badge cleared (a model-proposed
+    term also gets the acceptance note the validator requires); reject → back to draft with the note. Ids are seed ids."""
+    import csv
+    if not ALIGN.exists():
+        return 0, 0
+    with open(ALIGN, encoding="utf-8", newline="") as f:
+        rd = csv.DictReader(f)
+        cols = rd.fieldnames or []
+        rows = list(rd)
+    accepted = rejected = 0
+    for r in rows:
+        v = verdicts.get(r["seed_id"]) if r["lang"] == lang else None
+        if not v:
+            continue
+        if v["verdict"] == "accept":
+            for field in ("term", "definition"):
+                if field in v.get("edits", {}):
+                    r[field] = v["edits"][field]
+            r.update(status="approved", approvedBy=reviewer, badge="")
+            if not r["term_source_id"]:
+                r["notes"] = (r["notes"] + " | " if r["notes"] else "") + f"model-proposed term accepted by {reviewer}" + \
+                    (f": {v['note']}" if v.get("note") else "")
+            accepted += 1
+        elif v["verdict"] == "reject":
+            r.update(status="draft", approvedBy="", badge=r["badge"] or ("unreviewed" if r["term_source_id"] else "unconfirmed-term"))
+            r["notes"] = (r["notes"] + " | " if r["notes"] else "") + f"rejected by {reviewer}: {v.get('note', '')}"
+            rejected += 1
+        _log({"kind": "term", "language": lang, "id": r["seed_id"], "verdict": v["verdict"], "note": v.get("note", ""), "reviewer": reviewer,
+              "at": dt.datetime.now(dt.UTC).isoformat()})
+    if not DRY_RUN:
+        with open(ALIGN, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, cols)
+            w.writeheader()
+            w.writerows(rows)
+    return accepted, rejected
+
+
+def apply_json(kind: str):
+    """Culture cards, pragmatics entries, personas, track scenarios and dialogues: accept → verified (with edits);
+    reject → removed from the source file (the log keeps the verdict)."""
+    pattern, key = JSON_KINDS[kind]
+
+    def apply(lang: str, verdicts: dict[str, dict], reviewer: str) -> tuple[int, int]:
+        path = TOOLS / pattern.format(lang=lang)
+        if not path.exists():
+            return 0, 0
+        data = json.loads(path.read_text(encoding="utf-8"))
+        accepted = rejected = 0
+        keep = []
+        for x in data.get(key, []):
+            v = verdicts.get(x["id"])
+            if v and v["verdict"] == "reject":
+                rejected += 1
+                _log({"kind": kind, "language": lang, "id": x["id"], "verdict": "reject", "note": v.get("note", ""), "reviewer": reviewer})
+                continue
+            if v and v["verdict"] == "accept":
+                x.update(v.get("edits", {}))
+                mark(x, reviewer)
+                accepted += 1
+                _log({"kind": kind, "language": lang, "id": x["id"], "verdict": "accept", "reviewer": reviewer})
+            keep.append(x)
+        data[key] = keep
+        _write(path, data)
+        return accepted, rejected
+
+    return apply
+
+
+def applier(kind: str):
+    if kind == "exam":
+        return apply_exam
+    if kind == "opi":
+        return apply_opi
+    if kind == "term":
+        return apply_terms
+    if kind in JSON_KINDS:
+        return apply_json(kind)
+    raise SystemExit(f"unknown review kind {kind}")
+
+
 def cmd_status(_args) -> int:
     print(f"{'lang':8} {'exam passages':>22} {'opi items':>18}")
     for lang in LANGS:
@@ -207,12 +297,15 @@ def cmd_ingest(args) -> int:
         by.setdefault((v["language"], v["kind"]), {})[v["id"]] = v
     total = [0, 0]
     for (lang, kind), verdicts in by.items():
-        a, r = (apply_exam if kind == "exam" else apply_opi)(lang, verdicts, args.reviewer or data.get("reviewer", "unknown"))
+        a, r = applier(kind)(lang, verdicts, args.reviewer or data.get("reviewer", "unknown"))
         total[0] += a
         total[1] += r
         print(f"{lang} {kind}: {a} accepted, {r} rejected")
     if args.dry_run:
         print("(dry run: nothing written)")
+    elif any(k in ("term", "scenario", "dialogue") for _, k in by):
+        print("Rebuild the track and packs: uv run --group content python tracks/build_track.py assemble --language <lang> && "
+              "uv run --group content python packs/build_packs.py --language <lang>")
     return 0
 
 

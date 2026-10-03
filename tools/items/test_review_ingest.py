@@ -83,5 +83,46 @@ def main() -> int:
     return 1 if failed else 0
 
 
+def test_phase8_kinds() -> None:
+    """C-10: terms, culture cards, pragmatics entries and personas round-trip from an export into the source files."""
+    import csv
+    with tempfile.TemporaryDirectory() as t:
+        tmp = Path(t)
+        setup(tmp)
+        review.TOOLS = tmp
+        review.ALIGN = tmp / "terms" / "term_alignment.csv"
+        (tmp / "terms").mkdir()
+        cols = ["seed_id", "lang", "term", "term_kind", "radio_english", "term_source_id", "term_source_page", "definition", "status", "badge",
+                "approvedBy", "notes", "accuracy", "drafted_by", "checked_by"]
+        with open(review.ALIGN, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, cols)
+            w.writeheader()
+            w.writerow({"seed_id": "cuas-001", "lang": "es", "term": "sistema", "definition": "d", "status": "checked", "badge": "unconfirmed-term"})
+            w.writerow({"seed_id": "cuas-002", "lang": "es", "term": "aeronave", "term_source_id": "x", "term_source_page": "1", "definition": "d",
+                        "status": "checked", "badge": "unreviewed"})
+        for kind, (pattern, key) in review.JSON_KINDS.items():
+            p = tmp / pattern.format(lang="es")
+            p.parent.mkdir(parents=True, exist_ok=True)
+            data = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"lang": "es"}
+            data[key] = [{"id": f"es-{kind}-1", "verified": False}, {"id": f"es-{kind}-2", "verified": False}]
+            p.write_text(json.dumps(data), encoding="utf-8")
+        f = tmp / "v.json"
+        verdicts = [{"language": "es", "kind": "term", "id": "cuas-001", "verdict": "accept", "note": "standard in FAM usage"},
+                    {"language": "es", "kind": "term", "id": "cuas-002", "verdict": "reject", "note": "wrong sense"}]
+        for kind in review.JSON_KINDS:
+            verdicts += [{"language": "es", "kind": kind, "id": f"es-{kind}-1", "verdict": "accept"},
+                         {"language": "es", "kind": kind, "id": f"es-{kind}-2", "verdict": "reject"}]
+        f.write_text(json.dumps({"format": "mokuhyo-review/1", "reviewer": "Tester", "verdicts": verdicts}), encoding="utf-8")
+        assert review.main(["ingest", str(f)]) == 0
+        with open(review.ALIGN, encoding="utf-8") as fh:
+            rows = {r["seed_id"]: r for r in csv.DictReader(fh)}
+        assert rows["cuas-001"]["status"] == "approved" and rows["cuas-001"]["approvedBy"] == "Tester" and rows["cuas-001"]["badge"] == ""
+        assert "accepted by Tester" in rows["cuas-001"]["notes"]
+        assert rows["cuas-002"]["status"] == "draft" and "wrong sense" in rows["cuas-002"]["notes"]
+        for kind, (pattern, key) in review.JSON_KINDS.items():
+            items = json.loads((tmp / pattern.format(lang="es")).read_text(encoding="utf-8"))[key]
+            assert [x["id"] for x in items] == [f"es-{kind}-1"] and items[0]["verified"] is True, kind
+
+
 if __name__ == "__main__":
     sys.exit(main())

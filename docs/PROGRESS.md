@@ -381,3 +381,22 @@ waits for the interviewer and matches a direct run; OPI test always After action
 without a model), `AfterActionStorageTest` (mode, AAB and turn feedback round-trip through a `.mokuhyo` bundle; the
 default-mode setting is learner-scoped), `AfterActionRenderTest` (the AAB renders on fixtures in es, ja, ar). Full
 Kotlin suite green.
+
+## C-09 — Current-events reading set ✅
+- `tools/terms/feeds.json`: 22 official defense press/news links, at least one per language (ministries and air
+  forces; Saudi and Qatari pages for Arabic). Reading → **This month** opens them in the learner's browser and offers
+  **Paste text to practice** (tap-to-define, reading aids; the pasted text is not saved). Nothing is fetched or stored.
+- `tools/terms/validate_feeds.py` checks the list (schema offline in gate_terms; a live link check in gate_content).
+
+**Gate:** `ThisMonthRenderTest` renders the screen (es, ja, ar); `validate_feeds.py`: 22 links, 0 errors (ROKAF, the
+Saudi and Qatari ministries, mil.ru, IRNA and the PRC pages are marked `reachability: unreliable` — they refuse or
+geo-block scripted requests — and don't fail the build).
+
+## C-10 — Review surfaces and docs ✅
+- Content Review covers terms, culture cards, pragmatics entries, personas, scenarios and dialogues;
+  `tools/items/review.py ingest` applies their verdicts (terms → `approved` + `approvedBy`, badge cleared; others →
+  `verified`; rejections removed and logged); `tools/items/review_state.py` keeps verdicts across rebuilds.
+- `docs/CONTENT_PACKS.md` documents every Phase 8 pack file and the term pipeline files; `docs/LICENSES.md` has a row
+  for every source (C-00) and the build tools added in Phase 8.
+
+**Gate:** `tools/items/test_review_ingest.py` round-trip on fixtures for every new kind (accept, reject, carried state).

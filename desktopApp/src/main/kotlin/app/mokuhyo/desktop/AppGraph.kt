@@ -95,6 +95,8 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     fun pragmatics(lang: String): app.mokuhyo.culture.PragmaticsPack? = packJson(lang, "pragmatics.json", app.mokuhyo.culture.PragmaticsPack::parse)
 
+    fun feeds(lang: String): List<app.mokuhyo.culture.Feed> = packJson(lang, "feeds.json", app.mokuhyo.culture.FeedPack::parse)?.feeds.orEmpty()
+
     fun personas(lang: String): List<app.mokuhyo.culture.Persona> =
         packJson(lang, "personas.json", app.mokuhyo.culture.PersonaPack::parse)?.personas.orEmpty()
 

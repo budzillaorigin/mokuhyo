@@ -101,6 +101,8 @@ def main() -> int:
         failed.append("validate_seeds")
     if run([PY, str(HERE / "validate_alignment.py")]):
         failed.append("validate_alignment")
+    if run([PY, str(HERE / "validate_feeds.py"), "--offline"]):
+        failed.append("validate_feeds")
     if a.no_sources:
         print("gate_terms: overlap check SKIPPED (--no-sources): this machine has no tools/sources PDFs")
     else:

@@ -73,3 +73,33 @@ JVM, 61 lookups per pack including 1- and 2-character prefixes): mean 1.6–2.0 
   (`jvmTest/resources/dictionary/known_words.json`, inflected forms for the form index) and the 5 ms budget;
   languages without a built pack are skipped.
 - `tools/packs/test_build_dictionary.py`: adapters on inline fixtures, ranking, pack writing, fold vectors.
+
+## Phase 8 pack files (BRIEF_PHASE8)
+
+Built by `tools/packs/build_packs.py` from source-of-truth files in `tools/`, staged into the installer by
+`tools/release/stage_resources.py`. Every string passes `tools/terms/overlap_check.py` (`tools/gates/gate_terms.sh`).
+Everything drafted is `source: "llm"`, `verified: false` and badged in the app until reviewed.
+
+| Pack file | Source | Built by | Contents |
+|---|---|---|---|
+| `track-cuas-base-defense.json` | `tools/tracks/cuas-base-defense.<lang>.json` | `tools/tracks/build_track.py` | `mokuhyo-track/1`: terms (`id`, `domain`, `priority`, `termEn`, `acronym`, `definitionEn` + `definitionEnSource {doc, page, sourceId}`, `term`, `termKind`, `radioEnglish`, `equivalents[] {text, kind, source, page, verified}`, `definition`, `status`, `badge`, `registerNote`, `examples[]`, `collocations[]`), drills (`meaning`, `fill_in`, `register`, `brevity`), 12 scenarios (`tags` = culture-card tags), dialogues (with a pre-rendered `audio` clip where the language has a bundled voice), `sources` (id → title) |
+| `culture.json` | `tools/culture/<lang>.cards.json` | `tools/culture/build_cards.py` | `mokuhyo-culture/1`: cards `{id, lang, country, tags[], title, body (≤ 60 words), doThis[], avoidThis[], source {doc, sourceId, section, page}, verified}` |
+| `pragmatics.json` | `tools/pragmatics/<lang>.json` | `tools/pragmatics/build_pragmatics.py` | `mokuhyo-pragmatics/1`: entries `{id, topic, rule, examples[{situation, say, dontSay, why}], source, verified}` over seven topics |
+| `personas.json` | `tools/personas/<lang>.json` | `tools/personas/build_personas.py` | `mokuhyo-personas/1`: six personas per language (twelve for `ar`: RSAF, QEAF) `{id, role, name, rankTitle, rankEnglish, force, gender, register, patience, formality, bio, greeting, greetingEnglish, pragmatics[], card}` |
+| `feeds.json` | `tools/terms/feeds.json` | `build_packs.py` | `mokuhyo-feeds/1`: current-events links `{title, url, publisher, reachability?}` — links only (`tools/terms/validate_feeds.py` checks them at build) |
+| `exam.json` (unchanged format) | `tools/items/bank/<lang>/*.json` | `tools/items/gen_dlpt.py` | passages may carry `"track"`: `cuas-base-defense` (C-03: 6 reading per ILR 1/2/3, 4 listening per band) or `pragmatics` (C-07: listening at ILR 2/2+, inference items only) |
+| `opi.json` (unchanged format) | `tools/opi/<lang>.json` | `build_track.py` (probes) | 12 track probes per language: `id` `<lang>-cuas-probe-NN`, `domain` `military`, `track` |
+
+### Term pipeline files (`tools/terms/`, not shipped)
+`seed_terms.csv` (C-01a, `validate_seeds.py`), `terms_en.json` (C-01, provenance per term), `term_alignment.csv`
+(C-02, `validate_alignment.py`), `lookup_queue.csv` (terms in human-review-only sources: de, id, zh), `scenarios.json`
+(scenario catalog), `feeds.json`. See `docs/TERM_PIPELINE.md`.
+
+### Review (C-10)
+Settings → About → Developer tools → Content review covers reading/listening, interview content, **terms, culture
+cards, pragmatics entries, personas, scenarios and dialogues**. The exported verdicts (`mokuhyo-review/1`, `kind` =
+exam | opi | term | card | pragmatics | persona | scenario | dialogue) are applied with
+`uv run python items/review.py ingest <file>`: terms become `approved` with `approvedBy` and a cleared badge (a
+model-proposed term also records the acceptance note the validator requires), other kinds become `verified`, rejected
+items are removed from the source and logged in `tools/items/review-log.jsonl`. Builders carry verdicts across rebuilds
+(`tools/items/review_state.py`).

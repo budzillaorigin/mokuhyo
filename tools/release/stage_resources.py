@@ -139,7 +139,7 @@ def stage_voices(native_dir: str, compose_dir: str, with_voice_files: bool = Tru
     return have_piper
 
 
-PACK_FILES = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite")
+PACK_FILES = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite", "culture.json", "pragmatics.json", "personas.json", "feeds.json")
 
 
 def stage_packs() -> int:
@@ -150,11 +150,11 @@ def stage_packs() -> int:
         shutil.rmtree(dest)
     n = 0
     for lang_dir in sorted(p for p in src.glob("*") if p.is_dir()) if src.is_dir() else []:
-        for f in PACK_FILES:
-            if (lang_dir / f).is_file():
-                (dest / lang_dir.name).mkdir(parents=True, exist_ok=True)
-                shutil.copy2(lang_dir / f, dest / lang_dir.name / f)
-                n += 1
+        names = [f for f in PACK_FILES if (lang_dir / f).is_file()] + sorted(p.name for p in lang_dir.glob("track-*.json"))
+        for f in names:  # topic tracks (BRIEF_PHASE8 C-03) ship next to the exam and interview packs
+            (dest / lang_dir.name).mkdir(parents=True, exist_ok=True)
+            shutil.copy2(lang_dir / f, dest / lang_dir.name / f)
+            n += 1
         if (lang_dir / "audio").is_dir():
             shutil.copytree(lang_dir / "audio", dest / lang_dir.name / "audio")
     print(f"packs: staged {n} files into {dest.relative_to(REPO)}")

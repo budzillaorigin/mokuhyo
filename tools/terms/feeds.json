@@ -1,0 +1,145 @@
+{
+ "format": "mokuhyo-feeds/1",
+ "note": "Current-events reading set (BRIEF_PHASE8 C-09): links only. The app never fetches or stores these pages; it opens them in the learner's browser and offers 'Paste text to practice'. Checked by validate_feeds.py at build. reachability=unreliable = often unreachable from some networks (geo-blocking); not a build failure.",
+ "feeds": [
+  {
+   "lang": "ja",
+   "title": "防衛省 報道資料",
+   "url": "https://www.mod.go.jp/j/press/news/index.html",
+   "publisher": "Ministry of Defense (Japan)"
+  },
+  {
+   "lang": "ja",
+   "title": "航空自衛隊 ニュース",
+   "url": "https://www.mod.go.jp/asdf/news/",
+   "publisher": "Japan Air Self-Defense Force"
+  },
+  {
+   "lang": "ko",
+   "title": "국방부",
+   "url": "https://www.mnd.go.kr/",
+   "publisher": "Ministry of National Defense (Republic of Korea)"
+  },
+  {
+   "lang": "ko",
+   "title": "대한민국 공군",
+   "url": "https://www.airforce.mil.kr/",
+   "publisher": "Republic of Korea Air Force",
+   "reachability": "unreliable"
+  },
+  {
+   "lang": "de",
+   "title": "Bundeswehr – Aktuelles",
+   "url": "https://www.bundeswehr.de/de/aktuelles",
+   "publisher": "Bundeswehr"
+  },
+  {
+   "lang": "de",
+   "title": "BMVg – Presse",
+   "url": "https://www.bmvg.de/de/presse",
+   "publisher": "Bundesministerium der Verteidigung"
+  },
+  {
+   "lang": "fr",
+   "title": "Ministère des Armées – Actualités",
+   "url": "https://www.defense.gouv.fr/actualites",
+   "publisher": "Ministère des Armées"
+  },
+  {
+   "lang": "fr",
+   "title": "Armée de l'Air et de l'Espace",
+   "url": "https://www.defense.gouv.fr/air",
+   "publisher": "Armée de l'Air et de l'Espace"
+  },
+  {
+   "lang": "es",
+   "title": "Defensa – Prensa",
+   "url": "https://www.gob.mx/defensa/prensa",
+   "publisher": "Secretaría de la Defensa Nacional (México)"
+  },
+  {
+   "lang": "es",
+   "title": "Ministerio de Defensa – Notas de prensa",
+   "url": "https://www.defensa.gob.es/gabinete/notasPrensa/",
+   "publisher": "Ministerio de Defensa (España)"
+  },
+  {
+   "lang": "pt-BR",
+   "title": "Ministério da Defesa – Notícias",
+   "url": "https://www.gov.br/defesa/pt-br/centrais-de-conteudo/noticias",
+   "publisher": "Ministério da Defesa (Brasil)"
+  },
+  {
+   "lang": "pt-BR",
+   "title": "Força Aérea Brasileira – Notícias",
+   "url": "https://www.fab.mil.br/noticias",
+   "publisher": "Força Aérea Brasileira"
+  },
+  {
+   "lang": "ru",
+   "title": "Минобороны России",
+   "url": "https://mil.ru/",
+   "publisher": "Ministry of Defence of the Russian Federation",
+   "reachability": "unreliable"
+  },
+  {
+   "lang": "ar",
+   "title": "وزارة الدفاع – المملكة العربية السعودية",
+   "url": "https://www.mod.gov.sa/",
+   "publisher": "Ministry of Defense (Saudi Arabia)",
+   "reachability": "unreliable"
+  },
+  {
+   "lang": "ar",
+   "title": "وكالة الأنباء السعودية",
+   "url": "https://www.spa.gov.sa/",
+   "publisher": "Saudi Press Agency"
+  },
+  {
+   "lang": "ar",
+   "title": "وزارة الدفاع – دولة قطر",
+   "url": "https://www.mod.gov.qa/",
+   "publisher": "Ministry of Defence (Qatar)",
+   "reachability": "unreliable"
+  },
+  {
+   "lang": "ar",
+   "title": "وكالة الأنباء القطرية",
+   "url": "https://www.qna.org.qa/",
+   "publisher": "Qatar News Agency"
+  },
+  {
+   "lang": "fa",
+   "title": "خبرگزاری جمهوری اسلامی (ایرنا)",
+   "url": "https://www.irna.ir/",
+   "publisher": "Islamic Republic News Agency",
+   "reachability": "unreliable"
+  },
+  {
+   "lang": "id",
+   "title": "Kementerian Pertahanan RI",
+   "url": "https://www.kemhan.go.id/",
+   "publisher": "Kementerian Pertahanan Republik Indonesia"
+  },
+  {
+   "lang": "id",
+   "title": "TNI Angkatan Udara",
+   "url": "https://tni-au.mil.id/",
+   "publisher": "TNI Angkatan Udara"
+  },
+  {
+   "lang": "zh-Hans",
+   "title": "国防部网",
+   "url": "http://www.mod.gov.cn/",
+   "publisher": "Ministry of National Defense (People's Republic of China)",
+   "reachability": "unreliable"
+  },
+  {
+   "lang": "zh-Hans",
+   "title": "新华网 军事",
+   "url": "http://www.news.cn/mil/",
+   "publisher": "Xinhua News Agency",
+   "reachability": "unreliable"
+  }
+ ]
+}

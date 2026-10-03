@@ -123,6 +123,13 @@ class PragmaticsGoldenTest {
     }
 
     @Test
+    fun interviewerFollowsThePragmaticsPack() {
+        val msgs = OpiInterviewerTurn().messages(OpiInterviewerTurn.Input("ko", "합쇼체", OpiPhase.WARMUP, IlrLevel.L1,
+            culturalNotes = listOf("Use rank and title, never a bare name, with a senior officer.")))
+        assertTrue("Cultural norms you follow as a native speaker (and in role-plays): • Use rank and title, never a bare name, with a senior officer." in msgs.first().content)
+    }
+
+    @Test
     fun invalidFlagsAreRejected() {
         val json = Json { ignoreUnknownKeys = true }
         val f = fixtures.first()
