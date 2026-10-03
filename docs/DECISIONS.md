@@ -296,3 +296,6 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
   capture, vehicle search area, lockdown, all clear, blotter, radio procedure words — that no public US glossary
   defines. Padding the list with ~450 more dictionary terms to dilute the originals would not serve learners.
   Original rows are marked `definition_source = original` / `source_doc = authored` and stay reviewable.
+- **Superseded public-domain editions count as public domain in the overlap gate.** `overlap_check.py` now indexes
+  `status: superseded` rows too, so a DoD Dictionary (Nov 2021) definition that AAP-06 repeats reports `ok-PD`
+  instead of failing (3 seed rows).

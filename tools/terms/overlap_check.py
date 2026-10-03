@@ -106,7 +106,8 @@ def cache_paths(sid):
 
 def indexable(rows):
     # 'limited' = releasability-controlled doctrine: never extracted, never indexed
-    return [r for r in rows if r.get('status') == 'acquired' and r.get('path')
+    # superseded editions stay indexed: a public-domain match in an older DoD Dictionary is still public domain
+    return [r for r in rows if r.get('status') in ('acquired', 'superseded') and r.get('path')
             and r.get('distribution') != 'limited'
             and r.get('verbatim_ok') in (True, False)]
 
