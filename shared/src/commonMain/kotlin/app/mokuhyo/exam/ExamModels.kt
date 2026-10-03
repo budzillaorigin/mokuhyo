@@ -46,6 +46,9 @@ data class ExamPassage(
     val bank: String = "shipped",
     /** Topic track the passage was drafted for (BRIEF_PHASE8 C-03/C-07), e.g. "cuas-base-defense"; null = general. */
     val track: String? = null,
+    /** Authentic format (BRIEF_PHASE8 N-08) and its structured content; null = plain prose. */
+    val format: String? = null,
+    val formatData: kotlinx.serialization.json.JsonElement? = null,
 ) {
     val aiGenerated: Boolean get() = source == "llm" && !verified
 
@@ -98,6 +101,8 @@ data class ExamBankFile(
         val language: String = "",
         val engine: String = "",
         val track: String? = null,
+        val format: String? = null,
+        val formatData: kotlinx.serialization.json.JsonElement? = null,
     )
 
     @Serializable

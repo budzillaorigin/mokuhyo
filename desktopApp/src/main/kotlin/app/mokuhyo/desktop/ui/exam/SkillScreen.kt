@@ -371,8 +371,14 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
                 if (passage != null) {
                     Text(passage.title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (skill == Skill.READING) {
-                        AidToggles(module, aids) { aids = it }
-                        PassageText(app, module, passage.body, aids, tapToDefine = practice)
+                        // Authentic formats (BRIEF_PHASE8 N-08) render as the real document; practice can also show the tappable text.
+                        val formatted = FormattedPassage(module, passage.format, passage.formatData)
+                        var asText by remember(passage.id) { mutableStateOf(false) }
+                        if (formatted && practice) CheckRow(asText, { asText = it }) { Text("Show as text (tap a word for its meaning)") }
+                        if (!formatted || asText) {
+                            AidToggles(module, aids) { aids = it }
+                            PassageText(app, module, passage.body, aids, tapToDefine = practice)
+                        }
                     } else {
                         ListeningPanel(app, module, session, passage, practice, transcriptVisible = showFeedback, aids = aids, onAids = { aids = it }) { tick++ }
                     }
