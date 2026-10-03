@@ -49,3 +49,5 @@ changing a chunk, or the header, makes decryption fail.
 - Importing the same bundle again adds nothing (merge-idempotent; tested).
 - Imported lexicon updates (`lexicon_package`, `lexicon_term`, database schema 2, BRIEF_PHASE8 C-04) merge by id like
   everything else; the receiving app re-derives which version is current.
+- Schema 3 (BRIEF_PHASE8 C-11) adds `conversation.correctionsMode`, `conversation.aabJson` and the
+  `conversation_turn_feedback` table; they merge by id with the rest.

@@ -84,6 +84,27 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
         runCatching { packFile(lang, "track-$id.json")?.let { app.mokuhyo.lexicon.Track.parse(it.readText()) } }
     }.getOrNull()
 
+    private val packCache = java.util.concurrent.ConcurrentHashMap<String, Result<Any?>>()
+
+    @Suppress("UNCHECKED_CAST")
+    private fun <T> packJson(lang: String, file: String, parse: (String) -> T): T? =
+        packCache.getOrPut("$lang/$file") { runCatching { packFile(lang, file)?.let { parse(it.readText()) } } }.getOrNull() as T?
+
+    /** Culture cards (BRIEF_PHASE8 C-05), pragmatics pack (C-07) and personas (C-08) of the language's pack. */
+    fun culture(lang: String): app.mokuhyo.culture.CulturePack? = packJson(lang, "culture.json", app.mokuhyo.culture.CulturePack::parse)
+
+    fun pragmatics(lang: String): app.mokuhyo.culture.PragmaticsPack? = packJson(lang, "pragmatics.json", app.mokuhyo.culture.PragmaticsPack::parse)
+
+    fun personas(lang: String): List<app.mokuhyo.culture.Persona> =
+        packJson(lang, "personas.json", app.mokuhyo.culture.PersonaPack::parse)?.personas.orEmpty()
+
+    /** The pragmatics rules a conversation checks the learner against: the persona's entries, else address and refusal norms. */
+    fun culturalNotes(lang: String, persona: app.mokuhyo.culture.Persona? = null): List<String> {
+        val pack = pragmatics(lang) ?: return emptyList()
+        val chosen = persona?.pragmatics?.let(pack::ids).orEmpty().ifEmpty { pack.byTopic("address") + pack.byTopic("refusal") }
+        return chosen.take(6).map { it.rule }
+    }
+
     val lexicons = app.mokuhyo.lexicon.LexiconRepository(db)
 
     /** Public keys of trusted lexicon publishers, shipped in the app (tools/release/keys/). */

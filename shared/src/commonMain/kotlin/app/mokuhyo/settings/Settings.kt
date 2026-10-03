@@ -25,6 +25,11 @@ class Settings(private val db: MokuhyoDatabase) {
         LANGUAGES("learner.languages", Scope.LEARNER),
         LEARNER_ID("learner.id", Scope.LEARNER),
         THEME("learner.theme", Scope.LEARNER),
+        // BRIEF_PHASE8 C-11: default corrections mode per speaking activity, and whether turn audio is kept for the AAB
+        CORRECTIONS_OPI("learner.corrections.opi", Scope.LEARNER),
+        CORRECTIONS_TOPIC("learner.corrections.topic", Scope.LEARNER),
+        CORRECTIONS_PERSONA("learner.corrections.persona", Scope.LEARNER),
+        AAB_KEEP_AUDIO("learner.aab.keepAudio", Scope.LEARNER),
         // device-local
         FIRST_RUN_DONE("device.firstRunDone", Scope.DEVICE),
         MODEL_TIER("device.model.tier", Scope.DEVICE),

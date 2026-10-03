@@ -19,6 +19,8 @@ data class TopicExchange(
     val vocabulary: List<TopicTurn.Vocab> = emptyList(),
     val turnLevel: String? = null,
     val engine: String? = null,
+    /** Cultural/pragmatic flags (BRIEF_PHASE8 C-06); feedback only, never part of the level. */
+    val pragmatics: List<PragmaticFlag> = emptyList(),
 )
 
 /**
@@ -36,6 +38,12 @@ class TopicSession(
     private val clock: Clock = Clock.System,
     /** Set for scenario role-plays (BRIEF_PHASE8 C-03): the partner plays the scenario's role. */
     val rolePlay: RolePlayContext? = null,
+    /** The partner persona (BRIEF_PHASE8 C-08). */
+    val persona: PersonaContext? = null,
+    /** Pragmatics rules the learner's turns are checked against (C-06/C-07). */
+    val culturalNotes: List<String> = emptyList(),
+    /** Live and After action run the same correction pass; Off asks only for the partner's reply (BRIEF_PHASE8 C-11). */
+    val mode: CorrectionsMode = CorrectionsMode.LIVE,
 ) {
     val startedAt: Instant = clock.now()
     private val history = mutableListOf(Turn(Speaker.PARTNER, topic.opener))
@@ -55,10 +63,23 @@ class TopicSession(
         val said = text.trim()
         if (said.isEmpty()) return null
         history += Turn(Speaker.LEARNER, said)
-        val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay)
+        val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay, persona, culturalNotes)
+        if (!mode.records) {
+            val reply = when (val r = gateway.run(PartnerReply(), input)) {
+                is AiResult.Ok -> TopicExchange(said, r.value.reply, r.value.replyEnglish, engine = r.engine)
+                else -> {
+                    history.removeAt(history.lastIndex)
+                    return null
+                }
+            }
+            history += Turn(Speaker.PARTNER, reply.reply)
+            exchanges += reply
+            return reply
+        }
         val exchange = when (val r = gateway.run(TopicTurn(), input)) {
             is AiResult.Ok -> r.value.let { o ->
-                TopicExchange(said, o.reply, o.replyEnglish, o.corrected.takeIf { it.trim() != said }, o.changes, o.rewrite, o.vocabulary, o.turnLevel, r.engine)
+                TopicExchange(said, o.reply, o.replyEnglish, o.corrected.takeIf { it.trim() != said }, o.changes, o.rewrite, o.vocabulary, o.turnLevel, r.engine,
+                    o.pragmatics)
             }
             else -> {
                 history.removeAt(history.lastIndex)
@@ -83,6 +104,10 @@ class TopicSession(
         rollingLevel = levels.takeLast(5).sorted().let { if (it.isEmpty()) rollingLevel else it[it.size / 2] }
         return true
     }
+
+    /** What `conversation_turn_feedback` stores for this session (empty in Off mode). Turn index = the learner line's transcript index. */
+    val records: List<TurnFeedbackRecord>
+        get() = if (!mode.records) emptyList() else exchanges.mapIndexed { i, ex -> TurnFeedbackRecord.of(2 * i + 1, ex) }
 
     /** Corrections that came up at least twice in this conversation (fed to the review queue as ERROR items). */
     fun recurringErrors(): List<TopicTurn.Change> =

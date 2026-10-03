@@ -25,6 +25,7 @@ import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.lang.Languages
 import app.mokuhyo.opi.Speaker
 import app.mokuhyo.speech.AudioIO
+import app.mokuhyo.desktop.ui.speaking.AfterActionBriefView
 import java.io.File
 import java.time.Instant
 import java.time.ZoneId
@@ -107,9 +108,19 @@ private fun ConversationDetail(app: AppGraph, lang: String, id: String) {
     val c = app.conversations.get(id) ?: return
     val stored = app.conversations.stored(c)
     val recordings = app.conversations.recordings(id).associateBy { it.turnIndex?.toInt() }
+    val mode = app.conversations.mode(c)
+    Text("Corrections: ${mode.title}", style = MaterialTheme.typography.bodySmall)
     app.conversations.rating(c)?.let { r ->
         if (r.rationale.isNotBlank()) Text(r.rationale)
         r.nextSteps.forEachIndexed { i, s -> Text("${i + 1}. $s", style = MaterialTheme.typography.bodySmall) }
+    }
+    stored.cultural?.let { cr ->
+        Text("Cultural appropriateness (not part of the ILR scale): ${cr.summary}", style = MaterialTheme.typography.bodySmall)
+    }
+    app.conversations.aab(c)?.let { aab ->
+        var showAab by remember(id) { mutableStateOf(false) }
+        TextButton(onClick = { showAab = !showAab }) { Text(if (showAab) "Hide After Action Brief" else "Show After Action Brief") }
+        if (showAab) AfterActionBriefView(app, lang, aab, id)
     }
     stored.transcript.forEachIndexed { i, t ->
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {

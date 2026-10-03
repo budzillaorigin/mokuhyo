@@ -33,6 +33,10 @@ data class OpiRating(
     val failure: String? = null,
 )
 
+/** "Cultural appropriateness" for the OPI debrief (BRIEF_PHASE8 C-06): not part of the ILR scale. */
+@Serializable
+data class CulturalReview(val flags: List<OpiCulturalReview.TurnFlag>, val summary: String, val engine: String? = null)
+
 /** Answers judged at a level hold up (SUSTAINED), partly (PARTIAL) or not (BREAKDOWN); others aren't rated. */
 enum class OpiTurnOutcome { SUSTAINED, PARTIAL, BREAKDOWN, NOT_RATED }
 
@@ -159,6 +163,18 @@ class OpiSession(
             }
             is AiResult.Fallback -> OpiRating(null, needsSelfRating = true, failure = r.reason)
             is AiResult.Unavailable -> OpiRating(null, needsSelfRating = true, failure = r.reason)
+        }
+    }
+
+    /**
+     * The cultural-appropriateness review (BRIEF_PHASE8 C-06): a separate model call over the same transcript. It is never
+     * an input to [rate] and the rating never reads it, so pragmatic flags cannot change the ILR estimate.
+     */
+    suspend fun culturalReview(culturalNotes: List<String>): CulturalReview? {
+        if (history.none { it.speaker == Speaker.LEARNER && it.text.isNotBlank() }) return null
+        return when (val r = gateway.run(OpiCulturalReview(), OpiCulturalReview.Input(language, history.toList(), profile.registerNotes, culturalNotes))) {
+            is AiResult.Ok -> CulturalReview(r.value.flags, r.value.summary, r.engine)
+            else -> null
         }
     }
 

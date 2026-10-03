@@ -1,0 +1,13 @@
+-- Schema 2 → 3 (Phase 8, C-11): corrections mode and the After Action Brief on each conversation, per-turn feedback.
+ALTER TABLE conversation ADD COLUMN correctionsMode TEXT;
+ALTER TABLE conversation ADD COLUMN aabJson TEXT;
+
+CREATE TABLE conversation_turn_feedback (
+    id TEXT NOT NULL PRIMARY KEY,
+    conversationId TEXT NOT NULL,
+    turnIndex INTEGER NOT NULL,
+    json TEXT NOT NULL,
+    createdAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX turn_feedback_conversation ON conversation_turn_feedback(conversationId, turnIndex);

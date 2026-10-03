@@ -285,6 +285,10 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
         val history: List<Turn>,
         /** A scenario role-play (BRIEF_PHASE8 C-03): the partner stays in the role. */
         val rolePlay: RolePlayContext? = null,
+        /** The partner persona (BRIEF_PHASE8 C-08): who the partner is and how they expect to be addressed. */
+        val persona: PersonaContext? = null,
+        /** Pragmatics rules (English) the learner's turn is checked against (BRIEF_PHASE8 C-06/C-07). */
+        val culturalNotes: List<String> = emptyList(),
     )
 
     @Serializable
@@ -302,12 +306,14 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
         val rewrite: String,
         val vocabulary: List<Vocab> = emptyList(),
         @SerialName("turn_level") val turnLevel: String,
+        /** Cultural/pragmatic flags on the learner's last turn (BRIEF_PHASE8 §B.4.3). Never an ILR factor. */
+        val pragmatics: List<PragmaticFlag> = emptyList(),
     )
 
     override val name = "topic_turn"
     override val serializer: KSerializer<Output> = Output.serializer()
     override val temperature = 0.5
-    override val maxTokens = 900
+    override val maxTokens = 1100
     override val schema = JsonSchema.Obj(
         listOf(
             "reply" to JsonSchema.Str(maxLength = 400),
@@ -323,6 +329,7 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
                 maxItems = 3,
             ),
             "turn_level" to JsonSchema.Str(enum = OpiRate.LEVELS),
+            "pragmatics" to PragmaticFlag.SCHEMA,
         ),
     )
 
@@ -336,12 +343,14 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
                     "Situation: ${role.situation} You play: ${role.partnerRole}. The learner plays: ${role.learnerRole}. Stay in your role in reply; " +
                     "keep the feedback fields about the learner's language.",
                 "Register: ${input.registerNotes}",
+                input.persona?.let { PersonaPrompt.lines(it) } ?: "",
                 "The learner speaks at about ILR ${input.rollingLevel.label} (${IlrSpeaking.describe(input.rollingLevel)}). Reply in natural $lang at that level, " +
                     "1–3 sentences, and keep the conversation going with a question. reply_english translates your reply.",
                 "Then give feedback on the learner's LAST turn only: corrected = their sentence with the fewest changes that make it correct and appropriate " +
                     "(identical if nothing is wrong); changes lists each change (from, to, why in English); rewrite = how a native speaker would naturally say it; " +
                     "vocabulary = 1–3 useful words or phrases for this topic (word in $lang, meaning and example in English/$lang).",
                 "turn_level = the ILR level the learner's last turn demonstrates.",
+                PragmaticFlag.instructions(lang, input.culturalNotes),
             ),
             user("Conversation so far:\n" + transcript(input.history, "Learner", "Partner")),
         )
@@ -355,10 +364,134 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
             if (last.isNotBlank()) Validation.minimalEdit(last, output.corrected) else null,
             if (IlrLevel.parse(output.turnLevel) == null) "unknown turn_level" else null,
             if (output.vocabulary.size > 3) "at most three vocabulary notes" else null,
+            *PragmaticFlag.problems(output.pragmatics, input.language).toTypedArray(),
         )
     }
 
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
+}
+
+/**
+ * A cultural/pragmatic flag (BRIEF_PHASE8 §B.4.3): [kind] register | face | directness | ritual | taboo, [severity]
+ * low | medium | high, [what] (the learner's words), [why] (one-line cultural reason, English), [better] (a more
+ * appropriate version in the language). Flags are feedback only: they never change an ILR level or rating.
+ */
+@Serializable
+data class PragmaticFlag(val kind: String, val severity: String = "medium", val what: String, val why: String, val better: String = "") {
+    companion object {
+        val KINDS = listOf("register", "face", "directness", "ritual", "taboo")
+        val SEVERITIES = listOf("low", "medium", "high")
+        val SCHEMA = JsonSchema.Arr(
+            JsonSchema.Obj(listOf(
+                "kind" to JsonSchema.Str(enum = KINDS), "severity" to JsonSchema.Str(enum = SEVERITIES),
+                "what" to JsonSchema.Str(maxLength = 160), "why" to JsonSchema.Str(maxLength = 200), "better" to JsonSchema.Str(maxLength = 240),
+            )),
+            maxItems = 3,
+        )
+
+        fun instructions(lang: String, notes: List<String>): String =
+            "pragmatics = cultural and pragmatic problems in the learner's LAST turn only, for this partner and situation: register (wrong " +
+                "level of politeness or address for this person's rank or role), face (embarrasses or criticises the partner too openly), " +
+                "directness (too blunt or too vague for the culture), ritual (missing or wrong greeting, thanks, apology or leave-taking), " +
+                "taboo (a topic or word to avoid). Each: kind, severity, what (the learner's words), why (one short cultural reason in English), " +
+                "better (a more appropriate way to say it in $lang). Use an empty list when there is nothing to flag; do not flag grammar here. " +
+                "Pragmatic problems never lower turn_level." +
+                (if (notes.isNotEmpty()) " Cultural norms for this language: " + notes.joinToString(" ") { "• $it" } else "")
+
+        fun problems(flags: List<PragmaticFlag>, language: String): List<String> = buildList {
+            if (flags.size > 3) add("at most three pragmatics flags")
+            flags.forEach { f ->
+                if (f.kind !in KINDS) add("pragmatics kind must be one of ${KINDS.joinToString()}")
+                if (f.severity !in SEVERITIES) add("pragmatics severity must be low, medium or high")
+                if (f.why.isBlank()) add("each pragmatics flag needs a why")
+                if (f.better.isNotBlank()) ScriptCheck.requireLanguage("pragmatics.better", f.better, language)?.let { add(it) }
+            }
+        }
+    }
+}
+
+/** Who the partner is (BRIEF_PHASE8 §B.4.2), for the prompt. */
+data class PersonaContext(
+    val name: String,
+    val rankTitle: String,
+    val roleTitle: String,
+    val force: String,
+    val register: String,
+    val patience: Int,
+    val formality: Int,
+)
+
+/** The persona part of a partner's system prompt (golden-tested). */
+object PersonaPrompt {
+    fun lines(p: PersonaContext): String = listOf(
+        "You are ${p.name}, ${p.rankTitle} (${p.roleTitle}), ${p.force}. Stay in character.",
+        "How you speak and expect to be addressed: ${p.register}",
+        "Formality ${p.formality}/5: " + when {
+            p.formality >= 4 -> "formal; you notice and mind casual address or skipped courtesies."
+            p.formality <= 2 -> "relaxed; you speak casually and do not mind informality."
+            else -> "polite but not stiff."
+        },
+        "Patience ${p.patience}/5: " + when {
+            p.patience >= 4 -> "patient; you slow down, rephrase and help when the learner struggles."
+            p.patience <= 2 -> "busy and brisk; you keep answers short and move on if the learner is slow or unclear."
+            else -> "ordinary patience; you ask once for clarification when unclear."
+        },
+    ).joinToString("\n")
+}
+
+/**
+ * `opi_cultural_review` (BRIEF_PHASE8 C-06): after an interview, the candidate's turns are checked for register,
+ * face, directness, ritual and taboo problems. The result is shown as "Cultural appropriateness — not part of the ILR
+ * scale"; it is computed separately from `opi_rate` and never changes the rating.
+ */
+class OpiCulturalReview : PromptTask<OpiCulturalReview.Input, OpiCulturalReview.Output> {
+    data class Input(val language: String, val history: List<Turn>, val registerNotes: String = "", val culturalNotes: List<String> = emptyList())
+
+    @Serializable
+    data class TurnFlag(val turn: Int, val kind: String, val severity: String = "medium", val what: String, val why: String, val better: String = "")
+
+    @Serializable
+    data class Output(val flags: List<TurnFlag> = emptyList(), val summary: String)
+
+    override val name = "opi_cultural_review"
+    override val serializer: KSerializer<Output> = Output.serializer()
+    override val temperature = 0.1
+    override val maxTokens = 900
+    override val schema = JsonSchema.Obj(listOf(
+        "flags" to JsonSchema.Arr(JsonSchema.Obj(listOf(
+            "turn" to JsonSchema.Integer, "kind" to JsonSchema.Str(enum = PragmaticFlag.KINDS), "severity" to JsonSchema.Str(enum = PragmaticFlag.SEVERITIES),
+            "what" to JsonSchema.Str(maxLength = 160), "why" to JsonSchema.Str(maxLength = 200), "better" to JsonSchema.Str(maxLength = 240),
+        )), maxItems = 8),
+        "summary" to JsonSchema.Str(maxLength = 600),
+    ))
+
+    override fun messages(input: Input): List<ChatMessage> {
+        val lang = languageName(input.language)
+        var n = 0
+        val numbered = input.history.joinToString("\n") { t -> if (t.speaker == Speaker.LEARNER) "Candidate turn ${++n}: ${t.text}" else "Interviewer: ${t.text}" }
+        return listOf(
+            system(
+                "You review the cultural and pragmatic appropriateness of a candidate's speech in a practice interview in $lang. This is NOT part " +
+                    "of the ILR scale and does not affect any rating; do not rate proficiency.",
+                if (input.registerNotes.isNotBlank()) "Register in this language: ${input.registerNotes}" else "",
+                if (input.culturalNotes.isNotEmpty()) "Cultural norms: " + input.culturalNotes.joinToString(" ") { "• $it" } else "",
+                "Flag only real problems: register (address or politeness wrong for the interviewer or the role-play partner), face, directness, " +
+                    "ritual (greetings, thanks, apologies, leave-taking), taboo. Each flag: turn (candidate turn number), kind, severity, what " +
+                    "(the candidate's words), why (one short cultural reason, English), better (a more appropriate version in $lang).",
+                "summary: two or three English sentences on the candidate's cultural appropriateness overall, including what they did well.",
+            ),
+            user("Interview transcript:\n$numbered\n\nReview the candidate's turns now."),
+        )
+    }
+
+    override fun validate(input: Input, output: Output, context: ValidationContext): List<String> {
+        val turns = input.history.count { it.speaker == Speaker.LEARNER }
+        return issues(
+            Validation.length("summary", output.summary, min = 10, max = 600),
+            output.flags.firstOrNull { it.turn !in 1..turns }?.let { "flag turn ${it.turn} is not a candidate turn (1–$turns)" },
+            *PragmaticFlag.problems(output.flags.map { PragmaticFlag(it.kind, it.severity, it.what, it.why, it.better) }, input.language).toTypedArray(),
+        )
+    }
 }
 
 /** A scenario for a role-play conversation (English, for the prompt). */

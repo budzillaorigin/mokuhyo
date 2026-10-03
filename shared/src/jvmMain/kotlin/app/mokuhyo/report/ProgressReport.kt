@@ -26,7 +26,11 @@ data class ReportData(
 
     data class AttemptRow(val at: Instant, val modality: String, val mode: String, val correct: Int, val total: Int, val estimate: String?, val provisional: Boolean)
 
-    data class ConversationRow(val at: Instant, val kind: String, val topic: String?, val estimate: String?, val nextSteps: List<String>, val aiRated: Boolean)
+    data class ConversationRow(
+        val at: Instant, val kind: String, val topic: String?, val estimate: String?, val nextSteps: List<String>, val aiRated: Boolean,
+        /** BRIEF_PHASE8 C-11: the session's corrections mode and its After Action Brief, when one was made. */
+        val mode: String? = null, val aab: app.mokuhyo.opi.AfterActionBrief? = null,
+    )
 
     data class Transcript(val at: Instant, val title: String, val lines: List<Pair<String, String>>)
 
@@ -119,6 +123,15 @@ class ProgressReport(private val fontsDir: File) {
             val kind = when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario"; else -> "Conversation" }
             w.text("${dateFmt.format(c.at)} · $kind${c.topic?.let { " · $it" } ?: ""}${c.estimate?.let { " · ILR $it" } ?: ""}${if (c.aiRated) " (AI-rated)" else ""}", 10.5f)
             c.nextSteps.forEach { w.text("   • $it", 9.5f, gray = true) }
+            c.aab?.let { a ->
+                w.text("   After Action Brief (${c.mode?.replace('_', ' ') ?: "after action"}): ${a.turns} turns, ${a.durationSec / 60} min" +
+                    (a.persona?.let { ", with $it" } ?: ""), 9.5f)
+                a.nextSteps.forEach { w.text("      → $it", 9.5f, gray = true) }
+                a.patterns.grammar.take(3).forEach { w.text("      Grammar: $it", 9.5f, gray = true, lang = s.code) }
+                a.patterns.register.take(2).forEach { w.text("      Register: $it", 9.5f, gray = true, lang = s.code) }
+                if (a.cultural.isNotEmpty()) w.text("      Cultural notes (not part of the ILR scale): " +
+                    a.cultural.joinToString(", ") { "${it.tag} ${it.flags.size}" }, 9.5f, gray = true)
+            }
         }
         w.gap(8f)
         w.text("Weak areas", 13f, bold = true)

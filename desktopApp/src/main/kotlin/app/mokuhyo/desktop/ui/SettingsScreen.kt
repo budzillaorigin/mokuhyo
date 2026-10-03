@@ -29,6 +29,11 @@ import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.desktop.BuildInfo
 import app.mokuhyo.desktop.Resources
 import app.mokuhyo.desktop.ui.lexicon.ImportLexicon
+import app.mokuhyo.opi.CorrectionsMode
+import app.mokuhyo.opi.SpeakingActivity
+import androidx.compose.material3.FilterChip
+import app.mokuhyo.desktop.ui.speaking.correctionsDefault
+import app.mokuhyo.desktop.ui.speaking.settingKey
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.update.UpdateResult
 import io.ktor.client.engine.java.Java
@@ -52,6 +57,7 @@ fun SettingsScreen(app: AppGraph) {
             }
             SettingsTab.AI -> AiSettings(app)
             SettingsTab.SPEECH -> {
+                SpeakingDefaults(app)
                 SpeechModels(app)
                 AudioCheck(app)
             }
@@ -115,6 +121,31 @@ private fun OllamaSection(app: AppGraph) {
                     app.settings.put(Settings.Key.USE_OLLAMA, "false")
                 }) { Text("Stop using Ollama") }
             }
+        }
+    }
+}
+
+/** Default corrections mode per speaking activity and AAB audio (BRIEF_PHASE8 §B.5); learner settings, so they travel in backups. */
+@Composable
+private fun SpeakingDefaults(app: AppGraph) {
+    SectionCard("Speaking: corrections") {
+        Text("How corrections appear by default. Interview tests always run as After action.", style = MaterialTheme.typography.bodyMedium)
+        SpeakingActivity.entries.forEach { act ->
+            var mode by remember { mutableStateOf(app.correctionsDefault(act)) }
+            Text(act.title, style = MaterialTheme.typography.labelLarge)
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                CorrectionsMode.entries.forEach { m ->
+                    FilterChip(mode == m, {
+                        mode = m
+                        app.settings.put(settingKey(act), m.id)
+                    }, label = { Text(m.title) })
+                }
+            }
+        }
+        var keep by remember { mutableStateOf(app.settings.bool(Settings.Key.AAB_KEEP_AUDIO, default = true)) }
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Switch(keep, onCheckedChange = { keep = it; app.settings.put(Settings.Key.AAB_KEEP_AUDIO, it.toString()) })
+            Text("Keep my recorded turns for playback in the After Action Brief (recordings stay on this computer)")
         }
     }
 }

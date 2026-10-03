@@ -53,7 +53,9 @@ CREATE TABLE conversation (
     ratingJson TEXT,
     rollingLevelJson TEXT,
     audioDir TEXT,
-    deleted INTEGER
+    deleted INTEGER,
+    correctionsMode TEXT,            -- live | after_action | off (BRIEF_PHASE8 C-11); null = before Phase 8 (live)
+    aabJson TEXT                     -- the After Action Brief, when one was generated
 );
 CREATE INDEX conversation_lang ON conversation(learnerId, lang, startedAt);
 
@@ -74,6 +76,27 @@ SELECT * FROM conversation ORDER BY startedAt;
 
 tombstoneConversation:
 UPDATE conversation SET deleted = ? WHERE id = ? AND deleted IS NULL;
+
+-- Per-turn feedback (corrections, rewrite, vocabulary, pragmatic flags) recorded during a speaking session, identical in
+-- Live and After-action mode (BRIEF_PHASE8 §B.5). One row per learner turn; append-only.
+CREATE TABLE conversation_turn_feedback (
+    id TEXT NOT NULL PRIMARY KEY,
+    conversationId TEXT NOT NULL,
+    turnIndex INTEGER NOT NULL,
+    json TEXT NOT NULL,
+    createdAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX turn_feedback_conversation ON conversation_turn_feedback(conversationId, turnIndex);
+
+insertTurnFeedback:
+INSERT OR IGNORE INTO conversation_turn_feedback VALUES ?;
+
+turnFeedback:
+SELECT * FROM conversation_turn_feedback WHERE conversationId = ? AND deleted IS NULL ORDER BY turnIndex, createdAt;
+
+turnFeedbackAll:
+SELECT * FROM conversation_turn_feedback ORDER BY createdAt;
 
 -- Audio kept with a conversation turn or an attempt (path is relative to the data dir).
 CREATE TABLE recording (

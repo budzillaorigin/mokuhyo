@@ -352,3 +352,32 @@ and the update channel were built meanwhile and land first; C-02 and C-03 are ch
 20 added / 5 changed terms imports with exactly that delta and queues exactly the 20 new terms; re-import is a no-op;
 tampered terms, a tampered manifest and an unsigned copy are caught; canonical JSON matches Python's.
 `tools/release/test_lexicon.py` passes. Full Kotlin suite (`:shared:allTests :desktopApp:test`) green.
+
+## C-06 — Pragmatic flags ✅
+- `topic_turn` returns `pragmatics[] {kind, severity, what, why, better}` (register, face, directness, ritual, taboo);
+  the prompt carries the persona and the pragmatics pack's rules. Live conversations show "Cultural notes — not part
+  of your level" under the learner's turn ("Say it again" stays).
+- OPI debrief: `opi_cultural_review`, a separate call after the rating, shown as **Cultural appropriateness** with
+  "Not part of the ILR scale — it does not change your level or rating." Stored with the conversation (D-032).
+
+**Gate:** `PragmaticsGoldenTest` — prompt fields pinned (schema kinds, instructions, persona block text); three fixture
+turns in each of the 11 languages produce the expected flag through the gateway and the topic session with the turn
+level unchanged; invalid kinds rejected; the OPI rating is one call that never sees cultural notes.
+
+## C-11 — Live / After action / Off corrections and the After Action Brief ✅ (built ahead of C-05…C-10)
+- `CorrectionsMode` per session, chosen on the Speaking setup card (defaults per activity in Settings → Speech & audio
+  → Speaking: interview practice After action, topic and persona/scenario Live; interview tests always After action).
+- After action: the conversation only (mode chip, no corrections, flags or rewrites); every record still goes to
+  `conversation_turn_feedback`; the end button reads "End and show After Action Brief". Interview feedback runs in a
+  background queue that yields to the interviewer. Off: transcript and recordings only, "no feedback will be
+  generated".
+- After Action Brief: summary with three next steps, turn-by-turn review with "▶ my audio" / "▶ model version" and
+  add-to-review (or queue all), patterns (grammar, register, avoidance, fluency), cultural appropriateness grouped by
+  culture-card tag; for interviews the phase map and the rating with evidence above it. Saved on the conversation,
+  shown from History, listed in the PDF report. Schema 2 → 3 (`2.sqm`).
+
+**Gate:** `CorrectionsModeTest` (identical records in Live and After action; Off records nothing; the feedback queue
+waits for the interviewer and matches a direct run; OPI test always After action; the AAB builds from records with and
+without a model), `AfterActionStorageTest` (mode, AAB and turn feedback round-trip through a `.mokuhyo` bundle; the
+default-mode setting is learner-scoped), `AfterActionRenderTest` (the AAB renders on fixtures in es, ja, ar). Full
+Kotlin suite green.

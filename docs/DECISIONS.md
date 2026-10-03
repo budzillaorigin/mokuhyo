@@ -318,3 +318,26 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
 - **Current version** per (lang, track): the highest imported version, unless the shipped track is newer (an app
   update supersedes an older package). Packages are append-only rows in the learner DB (schema 1 → 2 migration,
   `1.sqm`) and travel in the `.mokuhyo` bundle.
+
+## D-032 Phase 8 C-06 and C-11: pragmatic flags and corrections modes (unattended default, 2026-10-03)
+- **Flags ride the existing correction pass.** `topic_turn` gains `pragmatics[] {kind, severity, what, why, better}`
+  (kinds register | face | directness | ritual | taboo). The prompt receives the persona (C-08) and up to six rules
+  from the language's pragmatics pack (C-07: the persona's entries, else address and refusal norms). The prompt says
+  flags never lower `turn_level`; the golden test pins that a flagged turn keeps its level.
+- **OPI: a separate review, never an input to the rating.** `opi_cultural_review` runs after `opi_rate` on the same
+  transcript and is shown in its own block headed "Cultural appropriateness" with the line "Not part of the ILR scale —
+  it does not change your level or rating." The rating call never sees cultural notes (tested).
+- **One correction pass for Live and After action.** Topic, persona and scenario conversations make the same single
+  `topic_turn` call in both modes, so the stored records are identical by construction; After action only hides
+  them. Interview practice gets per-answer feedback through `turn_feedback`, run by a background queue that waits while
+  the interviewer's next question is being generated and drains at the end. Off asks only for the partner's reply
+  (`partner_reply`) and, for interviews, skips the rating — the session is labelled "no feedback will be generated".
+- **Live keeps today's end** (save and close); After action ends on the After Action Brief. Every mode stores its
+  mode on the conversation; Live and After action also store each turn's record in `conversation_turn_feedback`
+  (schema 2 → 3, `2.sqm`), and After action stores the AAB (`conversation.aabJson`). History shows the mode and opens
+  the AAB; the PDF report lists AAB next steps, patterns and cultural-note counts. Defaults per activity and "keep my
+  recorded turns" are learner settings (they travel in the bundle): interview practice After action, topic and
+  persona/scenario practice Live. Interview tests are always After action.
+- **AAB summary** (`aab_summary`: three next steps, grammar, register, avoidance) falls back to the session's own
+  recurring corrections when no model answers. Cultural flags are grouped by culture-card tag (register → rank,
+  face → face, directness → refusal, ritual → hospitality, taboo → religion) with the matching card's title.

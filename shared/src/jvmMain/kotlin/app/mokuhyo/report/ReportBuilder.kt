@@ -49,7 +49,8 @@ class ReportBuilder(
                 attempts = attemptRows,
                 conversations = convs.map { c ->
                     val r = conversations.rating(c)
-                    ReportData.ConversationRow(Instant.ofEpochMilli(c.startedAt), c.kind, c.topic, r?.estimate, r?.nextSteps.orEmpty(), r?.engine != null)
+                    ReportData.ConversationRow(Instant.ofEpochMilli(c.startedAt), c.kind, c.topic, r?.estimate, r?.nextSteps.orEmpty(), r?.engine != null,
+                        c.correctionsMode, conversations.aab(c))
                 },
                 weakTextTypes = weak(byText), weakQuestionTypes = weak(byType), recurringErrors = errors,
                 reviewItems = reviews.total(learnerId, l.code), reviewsDue = reviews.dueCount(learnerId, l.code),
