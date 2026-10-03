@@ -206,4 +206,19 @@ class ModelManagerTest {
         assertEquals(147951465L, m.models.single().totalBytes)
         assertEquals(ModelKind.STT, m.models.single().kind)
     }
+
+    @Test
+    fun sideLoadsAVerifiedFileWithoutNetwork() {
+        val mm = ModelManager(fs, dir, MockEngine { error("no network for a side-load") }, manifest)
+        val usb = "/usb/model.gguf".toPath()
+        fs.createDirectories("/usb".toPath())
+        fs.write(usb) { write(partA) }
+        assertTrue(mm.installFromFile(small, usb).isSuccess)
+        assertTrue(mm.isInstalled(small))
+        val bad = "/usb/bad.gguf".toPath()
+        fs.write(bad) { write(partA.copyOf().also { it[5] = (it[5] + 1).toByte() }) }
+        val r = mm.installFromFile(small.copy(id = "other-llm"), bad)
+        assertTrue(r.isFailure && "SHA-256" in r.exceptionOrNull()!!.message!!)
+        assertTrue(mm.installFromFile(split, usb).isFailure, "multi-file models are not side-loaded")
+    }
 }

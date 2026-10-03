@@ -187,6 +187,7 @@ Documents under `tools/sources/` (git-ignored PDFs; `tools/sources/SOURCES.json`
 | Gradle + Gradle wrapper | Apache-2.0 | https://gradle.org |
 | Kotlin Gradle plugins, Compose Multiplatform Gradle plugin, SQLDelight Gradle plugin | Apache-2.0 | https://github.com/JetBrains/kotlin · https://github.com/JetBrains/compose-multiplatform · https://github.com/sqldelight/sqldelight |
 | uv, Ruff (Python tools) | MIT / Apache-2.0 | https://github.com/astral-sh/uv · https://github.com/astral-sh/ruff |
+| CycloneDX Gradle plugin (`org.cyclonedx.bom`, SBOM generation) | Apache-2.0 | https://github.com/CycloneDX/cyclonedx-gradle-plugin |
 | cryptography, pycparser (Python; signs lexicon update packages, `tools/release/lexicon.py`) | Apache-2.0 OR BSD-3-Clause / BSD-3-Clause | https://github.com/pyca/cryptography · https://github.com/eliben/pycparser |
 | poppler `pdftotext` (extracts reference-source text for the term pipeline; never shipped, run as a separate program) | GPL-2.0-or-later | https://poppler.freedesktop.org |
 | mingw-w64 GCC cross toolchain (Windows build from macOS, D-026) | GPL-3.0-or-later (compiler; runtime libraries above) | https://www.mingw-w64.org |

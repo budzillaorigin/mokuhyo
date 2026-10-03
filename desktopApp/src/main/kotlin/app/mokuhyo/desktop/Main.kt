@@ -20,6 +20,8 @@ import androidx.compose.runtime.LaunchedEffect
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
+    // BRIEF_PHASE8 N-11: no network at all — not even the optional update check or Ollama detection.
+    if ("--no-network" in args || System.getenv("MOKUHYO_NO_NETWORK") == "1") app.mokuhyo.net.NetworkPolicy.disabled = true
     when {
         "--smoke" in args -> exitProcess(Smoke.run(args))
         "--smoke-opi" in args -> exitProcess(SmokeOpi.run(args))

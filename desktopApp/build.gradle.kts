@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.mp)
+    alias(libs.plugins.cyclonedx)
 }
 
 kotlin {
@@ -86,3 +87,9 @@ val bundledDocs by tasks.registering(Copy::class) {
     into(layout.buildDirectory.dir("generated/bundled"))
 }
 sourceSets.main { resources.srcDir(bundledDocs) }
+
+// SBOM (BRIEF_PHASE8 N-11): `./gradlew :desktopApp:cyclonedxDirectBom` → build/reports/cyclonedx-direct/bom.json, attached to each
+// GitHub release next to the installers. Only the runtime classpath — what ships — is listed.
+tasks.named<org.cyclonedx.gradle.CyclonedxDirectTask>("cyclonedxDirectBom") {
+    includeConfigs.set(listOf("runtimeClasspath"))
+}

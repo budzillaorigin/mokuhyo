@@ -43,3 +43,5 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose-mp = { id = "org.jetbrains.compose", version.ref = "compose-mp" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+# BRIEF_PHASE8 N-11: CycloneDX SBOM of what ships (Apache-2.0, build tooling only).
+cyclonedx = { id = "org.cyclonedx.bom", version = "3.4.1" }

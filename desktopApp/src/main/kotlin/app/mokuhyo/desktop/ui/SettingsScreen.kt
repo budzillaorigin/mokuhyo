@@ -28,6 +28,8 @@ import app.mokuhyo.ai.OllamaModel
 import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.desktop.BuildInfo
 import app.mokuhyo.desktop.Resources
+import app.mokuhyo.net.NetworkPolicy
+import okio.Path.Companion.toOkioPath
 import app.mokuhyo.desktop.ui.lexicon.ImportLexicon
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.SpeakingActivity
@@ -86,7 +88,40 @@ private fun AiSettings(app: AppGraph) {
         }
     }
     SectionCard("Model tier") { TierSettings(app) }
+    SideLoadModel(app)
     OllamaSection(app)
+}
+
+/** Air-gapped install (BRIEF_PHASE8 N-11): copy a model file from a USB stick or share; size and SHA-256 are checked. */
+@Composable
+private fun SideLoadModel(app: AppGraph) {
+    val scope = rememberCoroutineScope()
+    var status by remember { mutableStateOf("") }
+    var busy by remember { mutableStateOf(false) }
+    SectionCard("Install a model from a file (no network)") {
+        Text("For computers without internet: copy the model file (from the model's source page, see docs/MODELS.md) onto this computer, " +
+            "then choose it here. Mokuhyo checks its size and SHA-256 against its catalogue before installing.", style = MaterialTheme.typography.bodyMedium)
+        app.manifest.models.filter { it.files.size == 1 && app.modelFile(it) == null }.forEach { m ->
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("${m.name} — ${m.files.single().name} (${gb(m.totalBytes)})", modifier = Modifier.weight(1f))
+                OutlinedButton(enabled = !busy, onClick = {
+                    val d = java.awt.FileDialog(null as java.awt.Frame?, "Choose ${m.files.single().name}", java.awt.FileDialog.LOAD)
+                    d.isVisible = true
+                    val name = d.file ?: return@OutlinedButton
+                    busy = true
+                    status = "Checking ${name}…"
+                    scope.launch {
+                        val r = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                            app.models.installFromFile(m, java.io.File(d.directory, name).toOkioPath())
+                        }
+                        status = r.fold({ "${m.name} installed." }, { "Not installed: ${it.message}" })
+                        busy = false
+                    }
+                }) { Text("Choose file…") }
+            }
+        }
+        if (status.isNotEmpty()) Text(status, style = MaterialTheme.typography.bodySmall)
+    }
 }
 
 @Composable
@@ -175,6 +210,8 @@ private fun SpeechModels(app: AppGraph) {
 private fun PrivacySettings(app: AppGraph) {
     var auto by remember { mutableStateOf(app.settings.bool(Settings.Key.UPDATE_CHECK)) }
     SectionCard("Network") {
+        if (NetworkPolicy.disabled) Text("Network access is turned off for this session (--no-network): downloads, the update check, " +
+            "Ollama detection and lexicon URL imports all refuse to connect.", color = MaterialTheme.colorScheme.error)
         Text("Mokuhyo works offline. It goes online only to download a model you chose, to check for updates if you turn that on, and to look for Ollama on this computer when you ask.")
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Switch(auto, onCheckedChange = {

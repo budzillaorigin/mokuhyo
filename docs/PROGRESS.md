@@ -435,3 +435,17 @@ is noisier, test mode is always clean, cross-talk mixes in.
 
 **Gate:** `SuggestionsTest` (bundle round-trip, idempotent merge, standalone export validates, bad input refused);
 `test_review_ingest.py::test_suggestions_queue`.
+
+## N-11 — SBOM and no-network install profile ✅
+- **`--no-network`** (or `MOKUHYO_NO_NETWORK=1`): `NetworkPolicy` plus a client plugin in `mokuhyoHttpClient` (the only
+  way the app makes HTTP clients) refuse every request before it reaches the network; Settings → Privacy says so and
+  the This month links are disabled.
+- **Air-gapped install:** Settings → AI → *Install a model from a file (no network)* — `ModelManager.installFromFile`
+  checks size and SHA-256 against the catalogue before installing.
+- **SBOM:** CycloneDX Gradle plugin (`:desktopApp:cyclonedxDirectBom`, CycloneDX 1.6, runtime classpath); the macOS build
+  produces it, `collect.py` names it `Mokuhyo-<version>-sbom.cdx.json`, and `gate_release` requires it from v0.3.0.
+- `docs/SECURITY_PROFILE.md`: network behaviour, data locations, signing status, provenance rules, air-gapped steps.
+
+**Gate:** `NoNetworkTest` (requests fail closed — the engine is never reached; the update check reports a failure);
+`ModelManagerTest.sideLoadsAVerifiedFileWithoutNetwork`; SBOM generated (155 components). The SBOM-on-release part of
+the gate is checked by `gate_release` at v0.3.0 (N-14).

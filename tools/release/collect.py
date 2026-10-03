@@ -39,6 +39,9 @@ def main() -> int:
         else:
             shutil.make_archive(str(out / f"{base}-portable"), "zip", app)
         found += 1
+    sbom = REPO / "desktopApp" / "build" / "reports" / "cyclonedx-direct" / "bom.json"  # BRIEF_PHASE8 N-11
+    if sbom.is_file():
+        shutil.copy2(sbom, out / f"Mokuhyo-{a.version}-sbom.cdx.json")
     for f in sorted(out.iterdir()):
         print(f"{f.name}  {f.stat().st_size / 1e6:.0f} MB")
     return 0 if found else 1
