@@ -1,0 +1,29 @@
+-- Schema 1 → 2 (Phase 8, C-04): lexicon update packages.
+CREATE TABLE lexicon_package (
+    id TEXT NOT NULL PRIMARY KEY,
+    packageId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    domain TEXT NOT NULL,
+    version TEXT NOT NULL,
+    previousVersion TEXT,
+    publisher TEXT NOT NULL,
+    created TEXT NOT NULL,
+    sha256 TEXT NOT NULL,
+    verified INTEGER NOT NULL,
+    keyId TEXT,
+    origin TEXT NOT NULL,
+    attribution TEXT NOT NULL,
+    importedAt INTEGER NOT NULL,
+    deltaJson TEXT NOT NULL DEFAULT '{}',
+    deleted INTEGER
+);
+CREATE INDEX lexicon_package_lang ON lexicon_package(lang, domain, importedAt);
+
+CREATE TABLE lexicon_term (
+    packageRowId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    domain TEXT NOT NULL,
+    termId TEXT NOT NULL,
+    json TEXT NOT NULL,
+    PRIMARY KEY (packageRowId, termId)
+);

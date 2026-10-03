@@ -34,6 +34,8 @@ class TopicSession(
     private val gateway: AiGateway,
     startLevel: IlrLevel = IlrLevel.L1,
     private val clock: Clock = Clock.System,
+    /** Set for scenario role-plays (BRIEF_PHASE8 C-03): the partner plays the scenario's role. */
+    val rolePlay: RolePlayContext? = null,
 ) {
     val startedAt: Instant = clock.now()
     private val history = mutableListOf(Turn(Speaker.PARTNER, topic.opener))
@@ -53,7 +55,7 @@ class TopicSession(
         val said = text.trim()
         if (said.isEmpty()) return null
         history += Turn(Speaker.LEARNER, said)
-        val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList())
+        val input = TopicTurn.Input(language, profile.registerNotes, topic.title, topic.domain, rollingLevel, history.toList(), rolePlay)
         val exchange = when (val r = gateway.run(TopicTurn(), input)) {
             is AiResult.Ok -> r.value.let { o ->
                 TopicExchange(said, o.reply, o.replyEnglish, o.corrected.takeIf { it.trim() != said }, o.changes, o.rewrite, o.vocabulary, o.turnLevel, r.engine)

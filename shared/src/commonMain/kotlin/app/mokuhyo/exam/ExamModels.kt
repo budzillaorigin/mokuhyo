@@ -44,6 +44,8 @@ data class ExamPassage(
     val audio: String? = null,
     /** "shipped" or "local" (generated on this computer; never mixed into shipped-bank statistics). */
     val bank: String = "shipped",
+    /** Topic track the passage was drafted for (BRIEF_PHASE8 C-03/C-07), e.g. "cuas-base-defense"; null = general. */
+    val track: String? = null,
 ) {
     val aiGenerated: Boolean get() = source == "llm" && !verified
 
@@ -95,6 +97,7 @@ data class ExamBankFile(
         val verified: Boolean = false,
         val language: String = "",
         val engine: String = "",
+        val track: String? = null,
     )
 
     @Serializable

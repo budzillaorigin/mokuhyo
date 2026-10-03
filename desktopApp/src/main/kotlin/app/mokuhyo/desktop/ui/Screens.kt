@@ -3,6 +3,7 @@ package app.mokuhyo.desktop.ui
 import androidx.compose.runtime.Composable
 import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.desktop.ui.exam.SkillScreen
+import app.mokuhyo.desktop.ui.lexicon.LexiconScreen
 import app.mokuhyo.desktop.ui.speaking.SpeakingScreen
 import app.mokuhyo.exam.Skill
 
@@ -14,6 +15,7 @@ fun PlaceholderScreens(destination: Destination, app: AppGraph, navigate: (Desti
         Destination.READING -> SkillScreen(app, Skill.READING)
         Destination.LISTENING -> SkillScreen(app, Skill.LISTENING)
         Destination.SPEAKING -> SpeakingScreen(app)
+        Destination.LEXICON -> LexiconScreen(app)
         Destination.REVIEW -> ReviewScreen(app)
         Destination.HISTORY -> HistoryList(app)
         Destination.REPORT -> ReportScreen(app)

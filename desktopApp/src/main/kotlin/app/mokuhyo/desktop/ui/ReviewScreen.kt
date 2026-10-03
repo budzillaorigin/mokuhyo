@@ -63,7 +63,7 @@ fun ReviewScreen(app: AppGraph) {
                     else -> false
                 }
             }) {
-                Text(if (card.item.kind == "WORD") "Word" else if (card.item.kind == "ITEM") "Missed question" else "Recurring error",
+                Text(when (card.item.kind) { "WORD" -> "Word"; "ITEM" -> "Missed question"; "TERM" -> "Military term"; "PRAGMATIC" -> "Cultural note"; else -> "Recurring error" },
                     style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
                 Text(card.item.front, fontFamily = Fonts.forLanguage(lang), fontSize = 24.sp, fontWeight = FontWeight.SemiBold)
                 card.item.context?.takeIf { it.isNotBlank() && card.item.kind != "WORD" }?.let {

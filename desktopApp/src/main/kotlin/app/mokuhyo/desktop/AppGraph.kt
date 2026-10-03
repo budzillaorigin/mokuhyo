@@ -77,6 +77,28 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     fun packFile(lang: String, relative: String): File? = packsDir?.let { File(File(it, lang), relative) }?.takeIf { it.isFile }
 
+    private val trackCache = java.util.concurrent.ConcurrentHashMap<String, Result<app.mokuhyo.lexicon.Track?>>()
+
+    /** A topic track shipped in the language's pack (BRIEF_PHASE8 C-03), parsed once; null when not installed. */
+    fun track(lang: String, id: String = app.mokuhyo.lexicon.TrackIds.CUAS): app.mokuhyo.lexicon.Track? = trackCache.getOrPut("$lang/$id") {
+        runCatching { packFile(lang, "track-$id.json")?.let { app.mokuhyo.lexicon.Track.parse(it.readText()) } }
+    }.getOrNull()
+
+    val lexicons = app.mokuhyo.lexicon.LexiconRepository(db)
+
+    /** Public keys of trusted lexicon publishers, shipped in the app (tools/release/keys/). */
+    val trustedLexiconKeys: List<app.mokuhyo.lexicon.TrustedKey> by lazy {
+        Resources.textOrNull("keys/lexicon-ed25519.pub.json")?.let { runCatching { app.mokuhyo.lexicon.parseTrustedKeys(it) }.getOrNull() }.orEmpty()
+    }
+
+    /** The track as the learner sees it: the shipped track with any newer imported lexicon update overlaid (C-04). */
+    fun lexicon(lang: String, id: String = app.mokuhyo.lexicon.TrackIds.CUAS): app.mokuhyo.lexicon.Track? {
+        val shipped = track(lang, id)
+        if (shipped != null) return lexicons.overlay(shipped)
+        val (pkg, terms) = lexicons.current(lang, id, null) ?: return null
+        return app.mokuhyo.lexicon.Track(id = id, lang = lang, title = "Counter-UAS & Base Defense", version = pkg.version, attribution = pkg.attribution, terms = terms)
+    }
+
     fun setLanguage(code: String) {
         require(Languages.of(code) != null)
         settings.put(Settings.Key.CURRENT_LANGUAGE, code)

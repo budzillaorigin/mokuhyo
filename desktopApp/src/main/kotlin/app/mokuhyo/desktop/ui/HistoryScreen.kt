@@ -55,9 +55,9 @@ fun HistoryList(app: AppGraph) {
         } + conversations.map { c ->
             val rating = app.conversations.rating(c)
             val stored = app.conversations.stored(c)
-            Row(c.id, c.startedAt, when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; else -> "Conversation: ${c.topic}" },
+            Row(c.id, c.startedAt, when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario: ${c.topic}"; else -> "Conversation: ${c.topic}" },
                 "${stored.transcript.count { it.speaker == Speaker.LEARNER }} answers" + (rating?.estimate?.let { " · ILR $it" + if (rating.selfRated) " (self-rated)" else "" } ?: ""),
-                stored.transcript.joinToString(" ") { it.text } + " " + (c.topic ?: ""), if (c.kind == "TOPIC") Kind.CONVERSATIONS else Kind.INTERVIEWS, true, false)
+                stored.transcript.joinToString(" ") { it.text } + " " + (c.topic ?: ""), if (c.kind == "TOPIC" || c.kind == "SCENARIO") Kind.CONVERSATIONS else Kind.INTERVIEWS, true, false)
         }.sortedByDescending { it.at }
     }
     val shown = rows.filter { (kind == Kind.ALL || it.kind == kind) && (query.isBlank() || it.searchable.contains(query, ignoreCase = true) || it.title.contains(query, ignoreCase = true)) }

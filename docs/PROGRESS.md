@@ -333,3 +333,22 @@ validate_seeds: doctrinal share 78.6% is below 90%
 
 **Gate:** every seed term resolved or flagged — 366 of 402 have ≥ 1 source citation, 36 are `"status": "unsourced"`
 (modern tactical terms with original definitions: FPV drone, interceptor drone, lockdown, radio procedure words…).
+
+## C-04 — Lexicon update channel ✅ (lands before C-02/C-03 finish drafting)
+The term alignment (C-02) and the track drafting (C-03) run on the §7.1 server for hours, so the app side of the track
+and the update channel were built meanwhile and land first; C-02 and C-03 are checkpointed when their content passes.
+- **Track in the app (C-03 app side):** `shared/.../lexicon/Track.kt` (terms with both-language definitions, sources,
+  kinds, examples, collocations; drills; scenarios; dialogues), a **Lexicon** screen (terms by domain with search and
+  badges, meaning / fill-in / register / radio-brevity drills, listening dialogues), a **Scenarios** tab in Speaking
+  (briefing + key terms, then a role-play where the partner keeps the scenario role), a topic filter in Reading and
+  Listening practice (`track` on passages), review kinds `TERM` and `PRAGMATIC`.
+- **Update channel (C-04):** `lexicon-<lang>-<domain>-<semver>.json` packages built and Ed25519-signed by
+  `tools/release/lexicon.py` (key D-031), verified in the app against the shipped key; Settings → Content → *Import
+  lexicon update* (file or URL); Lexicon → *What's new*; added terms queued to Review; `lexicon_package` /
+  `lexicon_term` tables (schema 2, migration `1.sqm`), carried in the `.mokuhyo` bundle. Format:
+  `docs/LEXICON_FORMAT.md`.
+
+**Gate:** `LexiconPackageTest` (jvmTest) — Python-signed v1 imports clean against the shipped baseline; v2 with
+20 added / 5 changed terms imports with exactly that delta and queues exactly the 20 new terms; re-import is a no-op;
+tampered terms, a tampered manifest and an unsigned copy are caught; canonical JSON matches Python's.
+`tools/release/test_lexicon.py` passes. Full Kotlin suite (`:shared:allTests :desktopApp:test`) green.

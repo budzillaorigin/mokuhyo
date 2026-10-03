@@ -283,6 +283,8 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
         val domain: String,
         val rollingLevel: IlrLevel,
         val history: List<Turn>,
+        /** A scenario role-play (BRIEF_PHASE8 C-03): the partner stays in the role. */
+        val rolePlay: RolePlayContext? = null,
     )
 
     @Serializable
@@ -326,9 +328,13 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
 
     override fun messages(input: Input): List<ChatMessage> {
         val lang = languageName(input.language)
+        val role = input.rolePlay
         return listOf(
             system(
-                "You are a conversation partner and tutor for a learner of $lang. Topic: ${input.topic} (${input.domain.replace('_', ' ')}).",
+                if (role == null) "You are a conversation partner and tutor for a learner of $lang. Topic: ${input.topic} (${input.domain.replace('_', ' ')})."
+                else "You are a conversation partner and tutor for a learner of $lang, playing a role in a practice scenario: ${input.topic}. " +
+                    "Situation: ${role.situation} You play: ${role.partnerRole}. The learner plays: ${role.learnerRole}. Stay in your role in reply; " +
+                    "keep the feedback fields about the learner's language.",
                 "Register: ${input.registerNotes}",
                 "The learner speaks at about ILR ${input.rollingLevel.label} (${IlrSpeaking.describe(input.rollingLevel)}). Reply in natural $lang at that level, " +
                     "1–3 sentences, and keep the conversation going with a question. reply_english translates your reply.",
@@ -354,6 +360,9 @@ class TopicTurn(private val fallbackHook: ((Input) -> Output?)? = null) : Prompt
 
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
 }
+
+/** A scenario for a role-play conversation (English, for the prompt). */
+data class RolePlayContext(val situation: String, val partnerRole: String, val learnerRole: String)
 
 /** `generate_topics` (BRIEF §5.4 Speaking "generate more"): new conversation topics for a domain, in the language. */
 class GenerateTopics : PromptTask<GenerateTopics.Input, GenerateTopics.Output> {

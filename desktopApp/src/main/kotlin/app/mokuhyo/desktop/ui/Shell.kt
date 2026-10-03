@@ -18,6 +18,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Mic
 import androidx.compose.material.icons.outlined.Replay
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Shield
 import androidx.compose.material.icons.outlined.Translate
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -55,6 +56,7 @@ enum class Destination(val title: String, val icon: ImageVector) {
     READING("Reading", Icons.AutoMirrored.Outlined.MenuBook),
     LISTENING("Listening", Icons.Outlined.Headphones),
     SPEAKING("Speaking", Icons.Outlined.Mic),
+    LEXICON("Lexicon", Icons.Outlined.Shield),
     REVIEW("Review", Icons.Outlined.Replay),
     HISTORY("History", Icons.Outlined.History),
     REPORT("Report", Icons.Outlined.Assessment),

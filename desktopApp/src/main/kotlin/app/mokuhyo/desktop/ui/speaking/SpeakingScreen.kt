@@ -58,6 +58,9 @@ import app.mokuhyo.opi.Topic
 import app.mokuhyo.opi.TopicDomain
 import app.mokuhyo.opi.TopicExchange
 import app.mokuhyo.opi.TopicSession
+import app.mokuhyo.opi.RolePlayContext
+import app.mokuhyo.lexicon.Scenario
+import app.mokuhyo.lexicon.Track
 import app.mokuhyo.opi.Turn
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
@@ -81,6 +84,7 @@ fun SpeakingScreen(app: AppGraph) {
     if (active) {
         when (tab) {
             0, 1 -> InterviewView(app, module, pack!!, test = tab == 1) { active = false }
+            3 -> ScenarioView(app, module, pack!!, app.track(module.code)) { active = false }
             else -> TopicView(app, module, pack!!) { active = false }
         }
         return
@@ -90,6 +94,7 @@ fun SpeakingScreen(app: AppGraph) {
             Tab(tab == 0, { tab = 0 }, text = { Text("Interview practice") })
             Tab(tab == 1, { tab = 1 }, text = { Text("Interview test") })
             Tab(tab == 2, { tab = 2 }, text = { Text("Topic conversation") })
+            Tab(tab == 3, { tab = 3 }, text = { Text("Scenarios") })
         }
         Spacer(Modifier.height(16.dp))
         if (pack == null) {
@@ -115,9 +120,17 @@ fun SpeakingScreen(app: AppGraph) {
                 if (!hasModel) Text("The test needs an AI model for the rating.", style = MaterialTheme.typography.bodySmall)
                 Disclaimer()
             }
-            else -> SectionCard("Topic conversation") {
+            2 -> SectionCard("Topic conversation") {
                 Text("Talk about a topic. After each turn you get corrections, a natural rewrite and vocabulary notes, and the partner adjusts to your level.")
                 Button(enabled = hasModel, onClick = { active = true }) { Text("Choose a topic") }
+            }
+            else -> SectionCard("Scenarios — Counter-UAS & Base Defense") {
+                val track = remember(lang) { app.track(lang) }
+                Text("Role-play a work situation with a host-nation counterpart: a BDOC handover, a drone sighting report, an airspace call, a gate incident. " +
+                    "You get a briefing and the key terms first; the partner stays in role and you get feedback on your language.")
+                if (track == null) Text("The Counter-UAS & Base Defense track isn't installed for ${module.nameEnglish}.", style = MaterialTheme.typography.bodySmall)
+                Button(enabled = hasModel && track != null, onClick = { active = true }) { Text("Choose a scenario") }
+                if (!hasModel) Text("Scenarios need an AI model.", style = MaterialTheme.typography.bodySmall)
             }
         }
     }
@@ -415,10 +428,13 @@ private fun TopicView(app: AppGraph, module: LanguageModule, pack: OpiPack, clos
 }
 
 @Composable
-private fun TopicConversation(app: AppGraph, module: LanguageModule, pack: OpiPack, topic: Topic, close: () -> Unit) {
+private fun TopicConversation(
+    app: AppGraph, module: LanguageModule, pack: OpiPack, topic: Topic, close: () -> Unit,
+    rolePlay: RolePlayContext? = null, kind: String = "TOPIC",
+) {
     val scope = rememberCoroutineScope()
     val conversationId = remember { app.conversations.newId() }
-    val session = remember { TopicSession(module.code, pack.profile, topic, app.gateway) }
+    val session = remember { TopicSession(module.code, pack.profile, topic, app.gateway, rolePlay = rolePlay) }
     val exchanges = remember { mutableStateListOf<TopicExchange>() }
     var busy by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf("") }
@@ -452,7 +468,7 @@ private fun TopicConversation(app: AppGraph, module: LanguageModule, pack: OpiPa
     }
 
     fun finish() {
-        app.conversations.save(conversationId, app.learnerId, module.code, "TOPIC", topic.title, session.startedAt.toEpochMilliseconds(),
+        app.conversations.save(conversationId, app.learnerId, module.code, kind, topic.title, session.startedAt.toEpochMilliseconds(),
             StoredConversation(session.transcript, exchanges = exchanges.toList()), null, session.levelTrack.toList(), "recordings/$conversationId")
         session.recurringErrors().forEach { c ->
             app.reviews.add(app.learnerId, module.code, ReviewService.Kind.ERROR, "${c.from}→${c.to}", c.from, "${c.to}\n${c.why}")
@@ -528,6 +544,50 @@ private fun TopicConversation(app: AppGraph, module: LanguageModule, pack: OpiPa
             OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type") },
                 textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
             TextButton(enabled = typed.isNotBlank(), onClick = { val s = typed; typed = ""; send(s, null) }) { Text("Send") }
+        }
+    }
+}
+
+/** Scenario role-plays from the Counter-UAS & Base Defense track (BRIEF_PHASE8 §B.3): pick, read the briefing, talk. */
+@Composable
+private fun ScenarioView(app: AppGraph, module: LanguageModule, pack: OpiPack, track: Track?, close: () -> Unit) {
+    var chosen by remember { mutableStateOf<Scenario?>(null) }
+    var started by remember { mutableStateOf(false) }
+    val s = chosen
+    if (track == null) {
+        Page("Scenarios") { EmptyState("No scenarios", "The track isn't installed for ${module.nameEnglish}."); TextButton(onClick = close) { Text("Back") } }
+        return
+    }
+    if (s != null && started) {
+        TopicConversation(app, module, pack, Topic(s.id, "military_operations", s.title, s.opener, s.level, s.source, s.verified), close,
+            RolePlayContext(s.situation, s.partnerRole, s.learnerRole), kind = "SCENARIO")
+        return
+    }
+    Page("Scenarios", "${module.nameEnglish} · ${track.title}") {
+        if (s == null) {
+            track.scenarios.forEach { sc ->
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    TextButton(onClick = { chosen = sc }) { Text(sc.title) }
+                    Text("ILR ${sc.level}", style = MaterialTheme.typography.bodySmall)
+                }
+            }
+            TextButton(onClick = close) { Text("Back") }
+            return@Page
+        }
+        SectionCard("Before you start") {
+            Text(s.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+            Text(s.situation)
+            Text("You: ${s.learnerRole} · Your counterpart: ${s.partnerRole}", style = MaterialTheme.typography.bodySmall)
+            val terms = s.terms.mapNotNull { track.term(it) }
+            if (terms.isNotEmpty()) {
+                Text("Key terms", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
+                terms.forEach { t -> Text("${t.term} — ${t.termEn}", fontFamily = Fonts.forLanguage(module.code)) }
+            }
+            if (s.opener.isBlank()) Text("This scenario has no opening line yet; you start the conversation.", style = MaterialTheme.typography.bodySmall)
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = { started = true }) { Text("Start") }
+                TextButton(onClick = { chosen = null }) { Text("Choose another") }
+            }
         }
     }
 }

@@ -17,6 +17,14 @@ class ExamContent(
 
     fun passagesFor(skill: Skill): List<ExamPassage> = passages.values.filter { it.exam == skill.exam }
 
+    /** Items whose passage belongs to [track] (null = every item). */
+    fun pool(skill: Skill, track: String?): List<ExamItem> =
+        if (track == null) pool(skill) else pool(skill).filter { passages[it.passageId]?.track == track }
+
+    /** Topic tracks present for [skill], with their item counts. */
+    fun tracks(skill: Skill): Map<String, Int> =
+        pool(skill).mapNotNull { passages[it.passageId]?.track }.groupingBy { it }.eachCount()
+
     /** Passages per ILR level for [skill] (what the gates and the Home screen count). */
     fun countsByLevel(skill: Skill): Map<String, Int> =
         passagesFor(skill).groupingBy { it.level }.eachCount()
@@ -47,7 +55,7 @@ class ExamContent(
                 val exam = ExamBankValidator.examOf(p.exam) ?: return@mapNotNull null
                 ExamPassage(
                     id = p.id, exam = exam, language = pack.language, level = p.level, textType = p.textType, title = p.title,
-                    body = p.body, script = p.script, source = p.source, verified = p.verified, audio = pack.audio[p.id],
+                    body = p.body, script = p.script, source = p.source, verified = p.verified, audio = pack.audio[p.id], track = p.track,
                 )
             }.associateBy { it.id }
             val items = (pack.reading.items + pack.listening.items).mapNotNull { i ->

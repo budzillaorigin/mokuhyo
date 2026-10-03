@@ -299,3 +299,22 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
 - **Superseded public-domain editions count as public domain in the overlap gate.** `overlap_check.py` now indexes
   `status: superseded` rows too, so a DoD Dictionary (Nov 2021) definition that AAP-06 repeats reports `ok-PD`
   instead of failing (3 seed rows).
+
+## D-031 Phase 8 C-04: lexicon update channel (unattended default, 2026-10-03)
+- **One file, embedded signature.** A package is a single JSON file; the Ed25519 signature covers the canonical JSON
+  of everything except itself (docs/LEXICON_FORMAT.md). Python (`tools/release/lexicon.py`) signs, the JDK's own
+  Ed25519 verifies (no new app dependency). A cross-language fixture signed by Python is verified by the Kotlin test.
+- **Key custody.** The publisher key was generated on the build Mac at `~/.mokuhyo-keys/lexicon-ed25519.key`
+  (mode 600, outside the repo); the public half is `tools/release/keys/lexicon-ed25519.pub.json` (key id
+  4c3f54aa7b5109a4) and ships in the jar. **Owner: back the private key up**; to rotate, add a second key to the
+  public file in an app release before signing with it.
+- **URL import is a learner-started download** (one GET, connect 5 s / request 120 s, 20 MB cap, cancel). It extends
+  rule 2's list of network calls exactly as BRIEF_PHASE8 C-04 requires; docs/PRIVACY.md lists it. File import needs
+  no network.
+- **Unsigned packages** import only after a warning and stay labelled "unverified publisher"; a bad signature or an
+  unknown key is refused.
+- **Review queuing: added terms only** (the C-04 gate: "queues exactly the new terms"). Changed and removed terms are
+  shown in Lexicon → What's new; a changed term already in Review keeps its card.
+- **Current version** per (lang, track): the highest imported version, unless the shipped track is newer (an app
+  update supersedes an older package). Packages are append-only rows in the learner DB (schema 1 → 2 migration,
+  `1.sqm`) and travel in the `.mokuhyo` bundle.

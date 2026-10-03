@@ -21,7 +21,8 @@ class ReviewService(
     private val scheduler: FsrsScheduler = FsrsScheduler(),
     private val clock: Clock = Clock.System,
 ) {
-    enum class Kind { WORD, ITEM, ERROR }
+    /** TERM: a lexicon term (track or lexicon update); PRAGMATIC: a cultural-appropriateness flag from an After Action Brief. */
+    enum class Kind { WORD, ITEM, ERROR, TERM, PRAGMATIC }
 
     /** Adds an item unless the same (kind, ref) is already queued; returns its id either way. */
     fun add(learnerId: String, lang: String, kind: Kind, ref: String, front: String, back: String, context: String? = null): String {

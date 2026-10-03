@@ -47,3 +47,5 @@ changing a chunk, or the header, makes decryption fail.
 - Recordings are copied when the path doesn't exist yet. Learner settings missing here are added; differing ones are
   reported to the learner and left unchanged.
 - Importing the same bundle again adds nothing (merge-idempotent; tested).
+- Imported lexicon updates (`lexicon_package`, `lexicon_term`, database schema 2, BRIEF_PHASE8 C-04) merge by id like
+  everything else; the receiving app re-derives which version is current.

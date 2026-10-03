@@ -129,6 +129,9 @@ fun SkillScreen(app: AppGraph, skill: Skill) {
 
 private val json = Json { ignoreUnknownKeys = true }
 
+/** Practice topic filters (BRIEF_PHASE8 C-03, C-07). */
+val TRACK_TITLES = mapOf("cuas-base-defense" to "Counter-UAS & Base Defense", "pragmatics" to "Implied meaning")
+
 /** Saves a running test after every move so a crash or quit never loses it (exam_in_progress). */
 private class DbProgressStore(private val app: AppGraph, private val lang: String) : ExamProgressStore {
     override fun save(progress: ExamProgress) {
@@ -158,7 +161,8 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
         Spacer(Modifier.height(16.dp))
         if (tab == 0) {
             var level by remember { mutableStateOf(levels.firstOrNull { (counts[it] ?: 0) > 0 } ?: levels.first()) }
-            var textType by remember(level) { mutableStateOf<String?>(null) }
+            var track by remember { mutableStateOf<String?>(null) }
+            var textType by remember(level, track) { mutableStateOf<String?>(null) }
             var menu by remember { mutableStateOf(false) }
             SectionCard("Practice by ILR level and text type") {
                 Text(if (skill == Skill.READING) "Untimed. Tap any word for its meaning; answers are checked as you go." else
@@ -168,7 +172,12 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
                         FilterChip(level == l, { level = l }, enabled = (counts[l] ?: 0) > 0, label = { Text("ILR $l · ${counts[l] ?: 0}") })
                     }
                 }
-                val types = ExamAssembler.textTypes(skill, level, content.pool(skill), content.passages)
+                val tracks = remember(content) { content.tracks(skill) }
+                if (tracks.isNotEmpty()) FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FilterChip(track == null, { track = null }, label = { Text("All topics") })
+                    tracks.forEach { (t, n) -> FilterChip(track == t, { track = t }, label = { Text("${TRACK_TITLES[t] ?: t} · $n") }) }
+                }
+                val types = ExamAssembler.textTypes(skill, level, content.pool(skill, track), content.passages)
                 Box {
                     OutlinedButton(onClick = { menu = true }) { Text("Text type: ${textType?.replace('_', ' ') ?: "any"}") }
                     DropdownMenu(menu, { menu = false }) {
@@ -182,7 +191,8 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
                 Button(onClick = {
                     val seen = app.history.practisedPassages(app.learnerId, module.code, skill)
                     val c = if (includeLocal) content.withLocal(local.first, local.second) else content
-                    val form = ExamAssembler.practice(module.code, skill, level, textType, c.pool(skill), c.passages, seen, Random.Default)
+                    val pool = if (track == null) c.pool(skill) else c.pool(skill, track)
+                    val form = ExamAssembler.practice(module.code, skill, level, textType, pool, c.passages, seen, Random.Default)
                     if (!form.isEmpty) start(ExamSession(form, content.blueprint.section(skill).play))
                 }) { Text("Start practice") }
             }

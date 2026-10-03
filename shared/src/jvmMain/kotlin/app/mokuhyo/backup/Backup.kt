@@ -45,7 +45,8 @@ class Backup(
         val total: Long get() = added.values.sum()
     }
 
-    private val tables = listOf("learner", "attempt", "conversation", "recording", "ilr_estimate", "review_item", "review", "generated_passage")
+    private val tables = listOf("learner", "attempt", "conversation", "recording", "ilr_estimate", "review_item", "review", "generated_passage",
+        "lexicon_package", "lexicon_term")
 
     fun export(
         out: File, languages: List<String>, packs: Bundle.PacksList, passphrase: String? = null,
@@ -253,6 +254,9 @@ class Backup(
             insert("recording", "SELECT * FROM incoming.recording")
             insert("ilr_estimate", "SELECT id, ${learner("learnerId")}, lang, modality, at, value, sourceKind, sourceId, confidence, provisional, deleted FROM incoming.ilr_estimate")
             insert("generated_passage", "SELECT id, ${learner("learnerId")}, lang, skill, level, textType, title, body, scriptJson, itemsJson, audioPath, engine, createdAt, deleted FROM incoming.generated_passage")
+            // Imported lexicon updates (BRIEF_PHASE8 C-04) travel with the learner: packages and their terms, by id.
+            insert("lexicon_package", "SELECT * FROM incoming.lexicon_package")
+            insert("lexicon_term", "SELECT * FROM incoming.lexicon_term")
             // Review items: map incoming ids onto existing (learner, lang, kind, ref) rows.
             exec("CREATE TEMP TABLE item_map AS SELECT i.id AS inId, COALESCE(m.id, i.id) AS outId FROM incoming.review_item i " +
                 "LEFT JOIN main.review_item m ON m.learnerId = ${learner("i.learnerId")} AND m.lang = i.lang AND m.kind = i.kind AND m.ref = i.ref")
@@ -261,7 +265,7 @@ class Backup(
             insert("review", "SELECT r.id, mp.outId, r.at, r.rating, r.durationMs, r.deleted FROM incoming.review r JOIN temp.item_map mp ON mp.inId = r.itemId")
             affected += strings("SELECT DISTINCT mp.outId FROM incoming.review r JOIN temp.item_map mp ON mp.inId = r.itemId")
             // Tombstones are facts too: a deletion on either computer stays a deletion.
-            for (t in listOf("attempt", "conversation", "recording", "ilr_estimate", "generated_passage", "review")) {
+            for (t in listOf("attempt", "conversation", "recording", "ilr_estimate", "generated_passage", "review", "lexicon_package")) {
                 val before = long("SELECT count(*) FROM main.$t WHERE deleted IS NOT NULL")
                 exec("UPDATE main.$t SET deleted = (SELECT deleted FROM incoming.$t x WHERE x.id = main.$t.id) " +
                     "WHERE deleted IS NULL AND id IN (SELECT id FROM incoming.$t WHERE deleted IS NOT NULL)")

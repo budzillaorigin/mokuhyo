@@ -80,6 +80,8 @@ tasks.withType<JavaExec>().configureEach {
 val bundledDocs by tasks.registering(Copy::class) {
     from(rootProject.file("content/models/manifest.json")) { into("models") }
     from(rootProject.file("docs/LICENSES.md")) { into("docs") }
+    // Lexicon update channel (BRIEF_PHASE8 C-04): the publisher's Ed25519 public key; the private key never enters the repo.
+    from(rootProject.file("tools/release/keys")) { into("keys") }
     from(rootProject.file("docs/MODELS.md")) { into("docs") }
     into(layout.buildDirectory.dir("generated/bundled"))
 }

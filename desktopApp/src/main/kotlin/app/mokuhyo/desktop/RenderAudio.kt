@@ -32,7 +32,10 @@ object RenderAudio {
         val outDir = File(packs, "$lang/audio").apply { mkdirs() }
         var made = 0
         var kept = 0
-        content.passagesFor(Skill.LISTENING).sortedBy { it.id }.forEach { p ->
+        // Track dialogues (BRIEF_PHASE8 C-03) are rendered the same way, keyed by dialogue id.
+        val dialogues = File(packs, "$lang/track-${app.mokuhyo.lexicon.TrackIds.CUAS}.json").takeIf { it.isFile }
+            ?.let { f -> app.mokuhyo.lexicon.Track.parse(f.readText()).dialogues.map { it.asPassage(lang) } }.orEmpty()
+        (content.passagesFor(Skill.LISTENING) + dialogues).sortedBy { it.id }.forEach { p ->
             val out = File(outDir, "${p.id}.ogg")
             if (out.isFile && "--force" !in args) { kept++; return@forEach }
             val speakers = p.script.map { it.speaker }.distinct()

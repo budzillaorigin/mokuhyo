@@ -28,12 +28,13 @@ import app.mokuhyo.ai.OllamaModel
 import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.desktop.BuildInfo
 import app.mokuhyo.desktop.Resources
+import app.mokuhyo.desktop.ui.lexicon.ImportLexicon
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.update.UpdateResult
 import io.ktor.client.engine.java.Java
 import kotlinx.coroutines.launch
 
-private enum class SettingsTab(val title: String) { LANGUAGES("Languages"), AI("AI"), SPEECH("Speech & audio"), BACKUP("Backup"), PRIVACY("Privacy & updates"), ABOUT("About & licenses") }
+private enum class SettingsTab(val title: String) { LANGUAGES("Languages"), AI("AI"), SPEECH("Speech & audio"), CONTENT("Content"), BACKUP("Backup"), PRIVACY("Privacy & updates"), ABOUT("About & licenses") }
 
 @Composable
 fun SettingsScreen(app: AppGraph) {
@@ -54,6 +55,7 @@ fun SettingsScreen(app: AppGraph) {
                 SpeechModels(app)
                 AudioCheck(app)
             }
+            SettingsTab.CONTENT -> ImportLexicon(app)
             SettingsTab.BACKUP -> BackupSection(app)
             SettingsTab.PRIVACY -> PrivacySettings(app)
             SettingsTab.ABOUT -> About(app)

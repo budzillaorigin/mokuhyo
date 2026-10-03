@@ -1,0 +1,55 @@
+-- Lexicon update packages the learner imported (BRIEF_PHASE8 C-04, docs/LEXICON_FORMAT.md). Append-only: a package
+-- row is never changed after import (re-importing the same package adds nothing); `deleted` is a tombstone.
+CREATE TABLE lexicon_package (
+    id TEXT NOT NULL PRIMARY KEY,         -- "<manifest id>@<version>"
+    packageId TEXT NOT NULL,              -- manifest id, e.g. lexicon-ja-cuas-base-defense
+    lang TEXT NOT NULL,
+    domain TEXT NOT NULL,                 -- the track id
+    version TEXT NOT NULL,
+    previousVersion TEXT,
+    publisher TEXT NOT NULL,
+    created TEXT NOT NULL,
+    sha256 TEXT NOT NULL,
+    verified INTEGER NOT NULL,            -- 1 = signature verified against a shipped public key
+    keyId TEXT,
+    origin TEXT NOT NULL,                 -- file name or URL it was imported from
+    attribution TEXT NOT NULL,
+    importedAt INTEGER NOT NULL,
+    deltaJson TEXT NOT NULL DEFAULT '{}', -- {added:[ids], changed:[ids], removed:[ids]} against what was current
+    deleted INTEGER
+);
+CREATE INDEX lexicon_package_lang ON lexicon_package(lang, domain, importedAt);
+
+-- The package's full term set, one row per term (TrackTerm JSON).
+CREATE TABLE lexicon_term (
+    packageRowId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    domain TEXT NOT NULL,
+    termId TEXT NOT NULL,
+    json TEXT NOT NULL,
+    PRIMARY KEY (packageRowId, termId)
+);
+
+insertPackage:
+INSERT OR IGNORE INTO lexicon_package VALUES ?;
+
+insertTerm:
+INSERT OR IGNORE INTO lexicon_term VALUES ?;
+
+packages:
+SELECT * FROM lexicon_package WHERE lang = ? AND deleted IS NULL ORDER BY importedAt DESC;
+
+packagesFor:
+SELECT * FROM lexicon_package WHERE lang = ? AND domain = ? AND deleted IS NULL ORDER BY importedAt DESC;
+
+packageById:
+SELECT * FROM lexicon_package WHERE id = ?;
+
+packagesAll:
+SELECT * FROM lexicon_package ORDER BY importedAt;
+
+termsOf:
+SELECT * FROM lexicon_term WHERE packageRowId = ? ORDER BY termId;
+
+tombstonePackage:
+UPDATE lexicon_package SET deleted = ? WHERE id = ? AND deleted IS NULL;
