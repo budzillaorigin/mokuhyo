@@ -12,4 +12,6 @@ echo "== gate_core: licenses"
 echo "== gate_core: model provenance"
 (cd tools && uv run --locked python models/models_doc.py --check)
 (cd tools && uv run --locked python gates/check_provenance.py)
+echo "== gate_core: terms and sources (overlap gate)"
+tools/gates/gate_terms.sh
 echo "gate_core: PASS"

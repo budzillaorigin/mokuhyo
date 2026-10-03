@@ -23,7 +23,15 @@ Exit codes: 0 = clean, 1 = overlap found (gate fails), 2 = usage / setup error.
 The text cache (tools/sources/.cache/) holds extracted source text for
 comparison only. Keep it out of git and out of any shipped build.
 """
-import argparse, csv, hashlib, json, os, shutil, subprocess, sys, unicodedata
+import argparse
+import csv
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import sys
+import unicodedata
 from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -82,7 +90,7 @@ def sha256(path):
 
 def extract_pdf(path):
     if shutil.which('pdftotext'):
-        r = subprocess.run(['pdftotext', '-enc', 'UTF-8', path, '-'], capture_output=True)
+        r = subprocess.run(['pdftotext', '-enc', 'UTF-8', path, '-'], capture_output=True, check=False)
         if r.returncode == 0:
             return r.stdout.decode('utf-8', 'replace')
     try:
@@ -211,7 +219,7 @@ def cmd_check(args):
         u = units(normalize(it['text']), cm)
         item_units.append((u, cm, n))
         m = shingle_map['char' if cm else 'word']
-        for pos in range(0, len(u) - n + 1):
+        for pos in range(len(u) - n + 1):
             m[tuple(u[pos:pos + n])].append((idx, pos))
 
     mode_langs = {mode: {lang_family(items[i]['lang']) for lst in m.values() for i, _ in lst}
@@ -232,7 +240,7 @@ def cmd_check(args):
                     continue
                 with open(cache_paths(r['id'])[0], encoding='utf-8') as f:
                     su = units(f.read(), mode == 'char')
-                for p in range(0, len(su) - n + 1):
+                for p in range(len(su) - n + 1):
                     lst = m.get(tuple(su[p:p + n]))
                     if lst:
                         for idx, pos in lst:

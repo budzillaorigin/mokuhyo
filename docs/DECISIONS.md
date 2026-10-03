@@ -245,3 +245,29 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
 - **A-09 — CLAUDE.md rule 6 replaced** with the four-flag wording in BRIEF_PHASE8 §B.0 (`verbatim_ok`, `alignment_ok`,
   `machine_extract_ok`, `distribution`); `tools/terms/overlap_check.py` is a gate on all shipped text. Approved by the
   owner 2026-10-03; Claude Code applies it in C-00.
+
+## D-029 Phase 8 C-00: how the handoff's gates are wired (unattended default, 2026-10-03)
+- **Rule 6** in `CLAUDE.md` is the §B.0 wording, as approved in D-028 (A-09).
+- **One guard for every source read.** `tools/terms/sources.py` is the only way scripts open a source: `require(id,
+  purpose)` with purpose `overlap` (mechanical comparison), `parse` / `llm` (needs `machine_extract_ok = true`) or
+  `align` (needs `alignment_ok = true`). `distribution: limited` rows — and any path under `us-limited/` — are refused
+  for every purpose before a file is opened. Page-split text for parsing is cached in `tools/sources/.cache/pages/`
+  (git-ignored), only for `machine_extract_ok = true` sources. Build machines need poppler's `pdftotext`.
+- **`tools/gates/gate_terms.sh`** (called by `gate_core.sh`): `fetch_sources.py --check`, `overlap_check.py index`,
+  `validate_seeds.py` (from C-01a), `validate_alignment.py`, then `overlap_check.py check` on `term_alignment.csv` plus
+  every string of the source-of-truth content files the pack builders copy into the packs (`tools/items/bank`,
+  `tools/opi`, and the Phase 8/9 folders `tools/tracks`, `tools/culture`, `tools/pragmatics`, `tools/personas`, …).
+  Latin-script strings are checked as English and as the file's language; in ja/zh/ko files the CJK runs are checked
+  as characters and the Latin runs as English words. Thresholds stay at the handoff's 8 words / 20 characters.
+- **First run on the existing banks:** two drafted strings failed (a French listening line shared 8 words with the
+  RNS 2025; a Chinese listening passage's English title/explanations shared "the founding of the People's Republic of
+  China" with three English sources). Both were reworded rather than allow-listed; the French clip is re-rendered with
+  the next audio pass (C-03).
+- **CI** sets `MOKUHYO_NO_SOURCES=1`: the PDFs are not in git and the Aug 2026 DoD Dictionary is CAC-only (JEL+), so CI
+  runs the validators and says the overlap check was skipped. CI is disabled anyway (owner, 2026-10-01); the full gate
+  runs on the build Mac.
+- **`fetch_sources.py`** re-downloads every acquired/superseded row by URL (http(s) or a `file://` mirror) and verifies
+  SHA-256; `--check` is offline. Rows with a non-URL source ("JEL+ (CAC)") are reported as manual. Limited rows are
+  never downloaded, opened or hashed. `tools/sources/check.py` (named in A-02) lists every row with its flags.
+- **`docs/LICENSES.md` → "Reference sources"**: one row per acquired/superseded SOURCES.json id (the six limited JPs
+  are listed as never read or shipped); `check_licenses.py` fails when one is missing.

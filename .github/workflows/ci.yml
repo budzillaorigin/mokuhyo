@@ -31,6 +31,10 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - uses: astral-sh/setup-uv@v6
       - name: gate_core
+        # The reference PDFs (tools/sources/) are not in git and some are CAC-only (JEL+), so CI runs the term
+        # validators without the overlap check; the release machine runs the full gate (D-029).
+        env:
+          MOKUHYO_NO_SOURCES: "1"
         run: tools/gates/gate_core.sh
       - name: Test reports
         if: failure()

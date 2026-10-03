@@ -29,7 +29,11 @@ Rules
 Usage: python tools/terms/validate_alignment.py [tools/terms/term_alignment.csv] [--seeds PATH]
 Exit 0 = valid, 1 = errors, 2 = setup error.
 """
-import argparse, csv, json, os, sys
+import argparse
+import csv
+import json
+import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -84,7 +88,7 @@ def main():
         for n, r in enumerate(rd, 2):
             r = {k: (v or '').strip() for k, v in r.items()}
             where = f'line {n} ({r["seed_id"]}/{r["lang"]})'
-            def err(msg): errors.append(f'{where}: {msg}')
+            def err(msg, where=where): errors.append(f'{where}: {msg}')
 
             key = (r['seed_id'], r['lang'])
             if key in seen: err('duplicate seed_id + lang')

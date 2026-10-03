@@ -3,6 +3,8 @@
 - Every artifact in the Gradle lockfiles (the runtime classpaths that ship) matches a pattern in the
   "App classpath" table of docs/LICENSES.md, and none of those rows is GPL/AGPL/LGPL.
 - Every id in content/models/manifest.json, voices/manifest.json and native/lock.json has a row in docs/LICENSES.md.
+- Every acquired or superseded row of tools/sources/SOURCES.json has a row in the "Reference sources" table (rule 6:
+  the row lands in the same commit that first reads the source).
 - If a packaged app image exists (desktopApp/build/compose/binaries/**/app), no jar on its classpath declares a GPL
   license and no GPL executable (piper, espeak-ng) sits in the app/JNI lib dirs; they belong in the voices/ folder.
 
@@ -103,6 +105,13 @@ def main() -> int:
         for mid in manifest_ids(path, key):
             if mid not in keys:
                 problems.append(f"{path.relative_to(REPO)} id '{mid}' has no row in docs/LICENSES.md '{heading}'")
+
+    sources = REPO / "tools/sources/SOURCES.json"
+    if sources.exists():
+        keys = {k for row in table_rows(md, "Reference sources") for k in first_col_keys(row[0])}
+        for r in json.loads(sources.read_text(encoding="utf-8"))["sources"]:
+            if r.get("status") in ("acquired", "superseded") and r.get("path") and r["id"] not in keys:
+                problems.append(f"tools/sources/SOURCES.json id '{r['id']}' has no row in docs/LICENSES.md 'Reference sources'")
 
     scan_image(problems)
     for p in problems:

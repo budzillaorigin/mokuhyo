@@ -292,3 +292,17 @@ owner installed it as an in-place upgrade from 0.1.0 and confirmed it is fully d
 - Commit emails now use the GitHub privacy address.
 - LAN addresses are replaced with placeholders.
 - A backup of the old history is at `~/mokuhyo-history-backup-2026-10-02.bundle` on the build Mac.
+
+# Phase 8 — Current military lexicon and the cultural-nuance layer (BRIEF_PHASE8.md, unattended from 2026-10-03)
+
+## C-00 — Adopt the handoff ✅
+- Rule 6 replaced with the four-flag wording (D-028/A-09); source access goes through `tools/terms/sources.py`, which
+  refuses `us-limited/` for every purpose (D-029).
+- `tools/sources/fetch_sources.py` (+ `check.py`), `tools/gates/gate_terms.sh` wired into `gate_core.sh` and CI,
+  `docs/LICENSES.md` "Reference sources" (49 rows) enforced by `check_licenses.py`.
+- Tests: `tools/terms/test_terms_gates.py` (guard, fetch round-trip with a tampered file, alignment validator, mixed-
+  script flattening, a copied AFCLC run fails the overlap check).
+- The overlap gate caught two drafted strings in the existing banks; reworded (D-029).
+
+**Gate:** `tools/gates/gate_terms.sh` PASS on the empty `term_alignment.csv` and all existing banks (78,938 strings,
+0 failing); `fetch_sources.py --check`: 44 verified, 0 problems, 6 limited rows never touched.
