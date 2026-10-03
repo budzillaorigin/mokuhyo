@@ -324,3 +324,12 @@ $ cd tools && uv run python terms/validate_seeds.py --min-doctrinal 0.9
 validate_seeds: 402 rows, 316 doctrinal (78.6%), 0 errors
 validate_seeds: doctrinal share 78.6% is below 90%
 ```
+
+## C-01 — English term ingestion ✅
+- `tools/terms/extract_terms.py` → `tools/terms/terms_en.json` (`mokuhyo-terms-en/1`): per seed term the definition
+  of record with its citation, every glossary definition of the term across the public sources and editions, and up
+  to three page mentions per source (DoD Dictionary, ATP 3-01.81, JP 3-10, JP 3-01, AFDP 3-10, the two AF doctrine
+  advisories, the DoD C-sUAS strategy, ATP 1-02.1); 57 glossary `candidates` not yet in the seed list.
+
+**Gate:** every seed term resolved or flagged — 366 of 402 have ≥ 1 source citation, 36 are `"status": "unsourced"`
+(modern tactical terms with original definitions: FPV drone, interceptor drone, lockdown, radio procedure words…).
