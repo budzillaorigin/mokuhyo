@@ -400,3 +400,33 @@ geo-block scripted requests — and don't fail the build).
   for every source (C-00) and the build tools added in Phase 8.
 
 **Gate:** `tools/items/test_review_ingest.py` round-trip on fixtures for every new kind (accept, reject, carried state).
+
+## C-02 — Allied term alignment ✅ (one criterion is a known gap)
+- `tools/terms/align_terms.py` (propose → confirm → retrieve → draft → check → overlap → write) wrote
+  `tools/terms/term_alignment.csv`: 4,315 rows over 11 languages (371–402 per language), each with term, kind,
+  `term_source_id` + `term_source_page` where documented, a learner definition drafted from the US definition and
+  checked by the checker model; badges `unreviewed` / `unconfirmed-term` (D-033). 1,161 rows queued for human look-up
+  in `tools/terms/lookup_queue.csv` (de, id, zh-Hans).
+
+**Gate:** `validate_alignment.py`: 4,315 rows, 0 errors ✅; `gate_terms.sh` PASS — `overlap_check.py` 88,735 text fields,
+0 failing ✅ (five French definitions too close to AAP-06 were redrafted naming the shared run; regression test
+`test_write_withholds_overlap_failures`). **≥ 70% documented equivalents per language with a source: known gap** after
+three distinct attempts (D-033):
+
+| lang | exact search | + glossary retrieval / parallel edition |
+|---|---|---|
+| fr | 36.7% | 60.9% |
+| pt-BR | 20.8% | 63.8% |
+| ja | 19.6% | 31.1% |
+| ko | 12.9% | 16.3% |
+| de, id, zh-Hans | 0% (sources human-review-only) | queued for look-up |
+
+```
+$ cd tools && uv run python terms/align_terms.py write
+  ja        402 rows · documented  125 ( 31.1%) · checked  397
+  ko        387 rows · documented   63 ( 16.3%) · checked  381
+  fr        402 rows · documented  245 ( 60.9%) · checked  398
+  pt-BR     387 rows · documented  247 ( 63.8%) · checked  385
+```
+The public allied sources (white papers, one Brazilian glossary, AAP-06) don't name most counter-UAS and base-defense
+terms; the remaining terms need the human look-up queue or new sources.

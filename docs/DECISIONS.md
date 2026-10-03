@@ -341,3 +341,17 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
 - **AAB summary** (`aab_summary`: three next steps, grammar, register, avoidance) falls back to the session's own
   recurring corrections when no model answers. Cultural flags are grouped by culture-card tag (register → rank,
   face → face, directness → refusal, ritual → hospitality, taboo → religion) with the matching card's title.
+
+## D-033 Phase 8 C-02: allied term alignment (unattended default, 2026-10-03)
+- **Three distinct attempts at a documented equivalent**, in order: (1) exact search of the model's three candidates in
+  the language's `machine_extract_ok = true` sources (AAP-06 English/French entry pairs read directly); (2) glossary
+  retrieval — the model picks among the six most similar entries of MD35-G-01 (pt-BR), AAP-06 (fr) or the Japanese
+  white-paper index, or none; (3) parallel editions — the model copies the term the ja/ko/fr edition of a bilingual
+  white paper uses on the pages aligned with the English mention. Every pick is verified to occur on the cited page.
+- **de, id, zh-Hans** sources are `machine_extract_ok = "unclear"`: never parsed in bulk; their rows keep the model's
+  term with `badge = unconfirmed-term` and go to `tools/terms/lookup_queue.csv` (1,161 rows) for a human.
+- **es, ru, ar, fa** have no allied source: model-proposed terms, `badge = unconfirmed-term` (as specified).
+- **Overlap is absolute:** a definition still failing `overlap_check.py` after the redraft rounds (including a targeted
+  redraft that names the shared run of words, `align_terms.py fixoverlap`) is written with an empty definition and a
+  note, never with the copied wording.
+- Checker-model verdicts other than `pass` leave the row at `status = draft` with the problems in `notes`.
