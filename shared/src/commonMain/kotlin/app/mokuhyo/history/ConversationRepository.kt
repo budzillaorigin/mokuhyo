@@ -27,6 +27,8 @@ data class StoredConversation(
     val engine: String? = null,
     /** OPI: the cultural-appropriateness review (not part of the ILR scale; BRIEF_PHASE8 C-06). */
     val cultural: app.mokuhyo.opi.CulturalReview? = null,
+    /** Interpretation drill (BRIEF_PHASE8 N-01): every chunk with the rendering and its grade. */
+    val interpret: List<app.mokuhyo.opi.InterpretResult> = emptyList(),
 )
 
 /**

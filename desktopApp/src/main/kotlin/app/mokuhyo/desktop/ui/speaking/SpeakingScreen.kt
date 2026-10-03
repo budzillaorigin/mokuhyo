@@ -114,6 +114,7 @@ fun SpeakingScreen(app: AppGraph) {
         when (tab) {
             0, 1 -> InterviewView(app, module, pack!!, test = tab == 1, mode) { active = false }
             3 -> ScenarioView(app, module, pack!!, app.lexicon(module.code), mode, persona) { active = false }
+            4 -> InterpretSetup(app, module) { active = false }
             else -> TopicView(app, module, pack!!, mode, persona) { active = false }
         }
         return
@@ -124,6 +125,7 @@ fun SpeakingScreen(app: AppGraph) {
             Tab(tab == 1, { tab = 1 }, text = { Text("Interview test") })
             Tab(tab == 2, { tab = 2 }, text = { Text("Topic conversation") })
             Tab(tab == 3, { tab = 3 }, text = { Text("Scenarios") })
+            Tab(tab == 4, { tab = 4 }, text = { Text("Interpret") })
         }
         Spacer(Modifier.height(16.dp))
         if (pack == null) {
@@ -157,6 +159,11 @@ fun SpeakingScreen(app: AppGraph) {
                 PersonaPicker(personas, persona, module) { persona = it }
                 ModePicker(modes[activity.ordinal], hasModel) { modes[activity.ordinal] = it }
                 Button(enabled = hasModel, onClick = { active = true }) { Text("Choose a topic") }
+            }
+            4 -> SectionCard("Interpret") {
+                Text("Consecutive interpretation drills on the Counter-UAS & Base Defense dialogues: hear a chunk, take notes, say it in the other " +
+                    "language. Also a radio relay over a noisy channel and timed sight translation of notices. Feedback comes at the end.")
+                Button(onClick = { active = true }) { Text("Set up a drill") }
             }
             else -> SectionCard("Scenarios — Counter-UAS & Base Defense") {
                 val track = remember(lang) { app.track(lang) }

@@ -467,3 +467,16 @@ stay within 8–10 minutes, weekly summary arithmetic; migration verified.
 
 **Gate:** `SideBySideTest` (row snapshots for 1, 2 and 3 languages, domain filter and search) and
 `SideBySideRenderTest` (the screen renders for 1, 2 and 3 languages).
+
+## N-01 — Consecutive interpretation drill ✅
+- Speaking → **Interpret**: track dialogue lines chunked into 1–3 sentences (`Chunker`), played in the target language or
+  English, a configurable note-taking pause (0–20 s) with a notes box, the rendering by voice (Whisper in the output
+  language) or typed; `grade_interpretation` scores accuracy, completeness and register (0–5), lists omissions and
+  distortions and gives a better version. Presented After-action (feedback at the end). Variants: **radio relay**
+  (radio-sounding dialogues through the N-06 radio channel) and **sight translation** (a track notice on screen for 45 s).
+- Saved as conversation kind `INTERPRET` (results in the stored record, so the `.mokuhyo` bundle carries them);
+  History shows the results; the PDF report lists the session score.
+
+**Gate:** `InterpretTest` — chunking pinned (joining short lines, splitting long ones, both directions, unspaced
+scripts), grader JSON validates on fixtures (and bad scores are rejected), scripted sessions complete in Spanish and
+Japanese with nothing graded until the end, live grading when asked.
