@@ -1,5 +1,8 @@
 package app.mokuhyo.desktop
 
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.jsonObject
 import app.mokuhyo.ai.WhisperRecognizer
 import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.lang.LanguageRegistry
@@ -71,6 +74,39 @@ object LangSmoke {
         if (failed.isEmpty()) 0 else 1
     }
 
+    /**
+     * TTS → Whisper round trip for pre-rendered clips (BRIEF_PHASE8 N-00 gate: ≥ 80 % token match):
+     * `Mokuhyo --roundtrip <jobs.jsonl> --clips <dir> --whisper <ggml-*.bin> [--min 0.8]`. Each job's expected text is
+     * its lines joined; its clip is `<dir>/<lang>/<id>.wav`. Prints one row per clip and the mean per language.
+     */
+    fun roundtrip(args: Array<String>): Int = runBlocking {
+        val jobs = Smoke.arg(args, "--roundtrip")?.let(::File)?.takeIf { it.isFile } ?: return@runBlocking fail("--roundtrip <jobs.jsonl> is required")
+        val clips = Smoke.arg(args, "--clips")?.let(::File) ?: return@runBlocking fail("--clips <dir> is required")
+        val whisper = Smoke.arg(args, "--whisper")?.let(::File)?.takeIf { it.isFile } ?: return@runBlocking fail("--whisper <ggml-*.bin> is required")
+        val min = Smoke.arg(args, "--min")?.toDoubleOrNull() ?: 0.8
+        val registry = LanguageRegistry(Smoke.arg(args, "--packs")?.let(::File) ?: Resources.repoDir?.let { File(it, "content/packs") })
+        val runtime = JniRuntime.tryCreate(preferCpu = false)
+        val stt = runtime.stt() ?: return@runBlocking fail("native library not available: ${runtime.status}")
+        val recognizer = WhisperRecognizer(stt, whisper.absolutePath, whisper.name)
+        val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+        val scores = mutableMapOf<String, MutableList<Double>>()
+        jobs.readLines().filter { it.isNotBlank() }.forEach { line ->
+            val o = json.parseToJsonElement(line).jsonObject
+            val id = o.getValue("id").jsonPrimitive.content
+            val lang = o.getValue("lang").jsonPrimitive.content
+            val wav = File(clips, "$lang/$id.wav").takeIf { it.isFile } ?: return@forEach
+            val text = o.getValue("lines").jsonArray.joinToString(" ") { it.jsonObject.getValue("text").jsonPrimitive.content }
+            val module = registry.module(lang)
+            val heard = recognizer.transcribe(AudioIO.toPcm16kMono(wav.readBytes()), module.sttLanguage).text
+            val m = tokenMatch(module, text.replace(" ", if (lang in setOf("zh-Hans", "ja")) "" else " "), heard)
+            scores.getOrPut(lang) { mutableListOf() } += m
+            println("roundtrip: %-7s %-28s %3.0f%% \"%s\"".format(lang, id, m * 100, heard.take(80)))
+        }
+        val failed = scores.filter { (_, v) -> v.average() < min }
+        scores.forEach { (l, v) -> println("roundtrip: %-7s mean %3.0f%% over %d clips %s".format(l, v.average() * 100, v.size, if (l in failed) "FAIL" else "OK")) }
+        if (failed.isEmpty() && scores.isNotEmpty()) 0 else 1
+    }
+
     private val toSimplified: Transliterator by lazy { Transliterator.getInstance("Traditional-Simplified") }
 
     /** Share of the expected word tokens found, in order, in the transcript (LCS over folded word tokens). */
@@ -78,7 +114,12 @@ object LangSmoke {
         val norm = if (module.code == "zh-Hans") synchronized(toSimplified) { toSimplified.transliterate(heard) } else heard
         // Persian writes the verbal prefix می/نمی with a ZWNJ or a space interchangeably; compare them as one word.
         fun persian(s: String) = if (module.code == "fa") s.replace(Regex("(^|\\s)(ن?می)\\s+"), "$1$2\u200C") else s
-        fun words(s: String) = module.segment(persian(s)).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
+        // Whisper writes "6時15分" where the script says "六時十五分": spell digit runs out with the language's own number
+        // grammar on both sides, so number formatting is not counted as a mishearing (BRIEF_PHASE8 N-00 round trip).
+        fun spelled(s: String) = module.numbers?.let { g ->
+            Regex("\\d+").replace(s) { m -> m.value.toLongOrNull()?.let { g.cardinal(it) } ?: m.value }
+        } ?: s
+        fun words(s: String) = module.segment(persian(spelled(s))).filter { it.isWord }.map { module.normalizeForCompare(it.text) }
         val a = words(expected)
         val b = words(norm)
         if (a.isEmpty()) return 0.0

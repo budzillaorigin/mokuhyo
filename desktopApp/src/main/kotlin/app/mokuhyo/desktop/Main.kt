@@ -25,6 +25,7 @@ fun main(args: Array<String>) {
     when {
         "--smoke" in args -> exitProcess(Smoke.run(args))
         "--smoke-opi" in args -> exitProcess(SmokeOpi.run(args))
+        "--roundtrip" in args -> exitProcess(LangSmoke.roundtrip(args))
         "--smoke-lang" in args -> exitProcess(LangSmoke.run(args, app.mokuhyo.tts.VoiceService.create()))
         "--screenshots" in args -> exitProcess(Screenshots.run(args))
         "--render-audio" in args -> exitProcess(RenderAudio.run(args))

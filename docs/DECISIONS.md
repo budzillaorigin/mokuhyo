@@ -377,7 +377,7 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
   distinct voices (same-gender speakers take consecutive voices), a persona keeps one voice of their gender.
   Already-rendered pack clips keep their voice until re-rendered (`render-audio --force`).
 
-## D-041 Phase 9 N-00(b): Chatterbox Multilingual is not adopted — rule 13 (unattended default, 2026-10-04)
+## D-041 Phase 9 N-00(b): Chatterbox Multilingual — owner exception to rule 13 (owner decision, 2026-10-04)
 - BRIEF_PHASE8 N-00(b) names Chatterbox Multilingual (Resemble AI, MIT) as the natural-voice engine and calls it "not
   PRC-origin". Checking the code before adopting it: its speech tokenizer is `S3TokenizerV2` loading
   `speech_tokenizer_v2_25hz`, the tokenizer trained by Alibaba's FunAudioLLM team for **CosyVoice2-0.5B** (and built on
@@ -390,3 +390,12 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
   pre-rendered" criteria are met with these engines where they cover a language, and logged as gaps where they don't.
 - Reversible: if the owner decides the tokenizer is acceptable (or Resemble ships a model without it), the
   `--engine chatterbox` path can be added later; nothing in the voice manifest format depends on this choice.
+- **Owner decision (2026-10-04), superseding the above:** "Use chatterbox. It's the only option that keeps natural
+  sounding voices." Chatterbox Multilingual is adopted as a named exception to rule 13. Conditions kept so the
+  exception stays narrow and visible:
+  - only this model (`chatterbox-multilingual`), listed in `OWNER_EXCEPTIONS` in `tools/gates/check_provenance.py`;
+    its manifest entry must carry `"ownerException": "D-041"` and `provenance.prcComponent` naming the CosyVoice2
+    speech tokenizer (Alibaba / FunAudioLLM), or the gate fails;
+  - `docs/MODELS.md`, `docs/LICENSES.md` and the voice picker state the component's origin;
+  - every other rule-13 check (LLM tiers, STT, other TTS, drafting defaults) is unchanged; no other CosyVoice-family
+    model is allowed by this decision.
