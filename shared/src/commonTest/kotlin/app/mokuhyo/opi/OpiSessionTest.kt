@@ -117,7 +117,7 @@ class OpiSessionTest {
     fun topicConversationTracksRollingLevelAndRecurringErrors() = runTest {
         fun reply(level: String) = """{"reply":"¡Qué interesante! ¿Por qué?","corrected":"Yo fui al parque.",""" +
             """"changes":[{"from":"va","to":"fui","why":"past tense"}],"rewrite":"Fui al parque.","vocabulary":[],"turn_level":"$level"}"""
-        val model = FakeModel(reply("1"), reply("2"), reply("2"))
+        val model = FakeModel(reply("1"), reply("1"), reply("2"), reply("2"), reply("2"), reply("2")) // reply + critique per turn
         val topic = Topic("t1", "daily_life", "Weekend plans", "¿Qué hizo el fin de semana?")
         val t = TopicSession("es", profile, topic, AiGateway({ model }))
         repeat(3) { assertNotNull(t.say("Yo va al parque.")) }

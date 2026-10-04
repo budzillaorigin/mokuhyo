@@ -42,11 +42,11 @@ class StorylineTest {
             assertEquals(n, day.n)
             if (n == 3) assertTrue("Yesterday's report came late" in role.situation, "day 3 branches on day 2's choice")
             if (n == 2) assertTrue("welcomed you warmly" in role.situation, "day 2 branches on day 1's choice")
-            val model = FakeModel(turn)
+            val model = FakeModel(turn, turn) // reply + critique (N-00b split)
             val session = TopicSession("es", OpiProfile("es", "usted"), Topic(day.id, "military_operations", day.title, ""), AiGateway({ model }),
                 rolePlay = role, persona = persona, memory = state.memory)
             session.say("Buenos días, mi capitán.")
-            prompts += model.requests.single().messages.first().content
+            prompts += model.requests.first().messages.first().content
             val rec = StorylineRunner.summarize(AiGateway({ FakeModel(summary(n, choices[n - 1])) }), "es", day, "conv-$n", session.transcript)
             repo.addDay(state.id, rec)
             state = assertNotNull(repo.current("A", "es"))

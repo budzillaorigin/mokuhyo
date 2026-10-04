@@ -642,7 +642,7 @@ private fun TopicConversation(
     val conversationId = remember { app.conversations.newId() }
     val session = remember {
         TopicSession(module.code, pack.profile, topic, app.gateway, rolePlay = rolePlay, persona = persona?.context(),
-            culturalNotes = app.culturalNotes(module.code, persona), mode = mode, memory = memory)
+            culturalNotes = app.culturalNotes(module.code, persona), mode = mode, memory = memory, critiqueTimeoutMs = app.critiqueTimeoutMs())
     }
     val exchanges = remember { mutableStateListOf<TopicExchange>() }
     val fluency = remember { mutableStateListOf<FluencyAnalyzer.Report>() }
@@ -661,7 +661,8 @@ private fun TopicConversation(
         scope.launch {
             val ex = withContext(Dispatchers.Default) { session.say(text) }
             if (ex == null) {
-                status = "The model didn't answer. Check Settings → AI, or try again."
+                // Say why (no model, timeout, load failure, schema failure), not a generic line (BRIEF_PHASE8 N-00b).
+                status = "No reply: ${session.lastError ?: "unknown error"}. Settings → AI → Test the model shows the details."
             } else {
                 exchanges += ex
                 val turn = exchanges.size * 2 - 1
@@ -732,6 +733,10 @@ private fun TopicConversation(
                 Text("You", fontWeight = FontWeight.SemiBold)
                 Text(ex.learner, fontFamily = Fonts.forLanguage(module.code))
                 if (mode == CorrectionsMode.LIVE) {
+                    ex.feedbackMissing?.let { why ->
+                        Text("No feedback for this turn ($why). The conversation goes on.", style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                     ex.corrected?.let { c ->
                         Text("Correction", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
                         Text(c, fontFamily = Fonts.forLanguage(module.code))

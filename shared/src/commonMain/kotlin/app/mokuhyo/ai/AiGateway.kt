@@ -68,7 +68,7 @@ class AiGateway(
     fun contextSize(): Int = model()?.contextSize ?: LocalLlamaModel.DEFAULT_CONTEXT
 
     @Throws(Exception::class)
-    suspend fun <I, O> run(task: PromptTask<I, O>, input: I): AiResult<O> {
+    suspend fun <I, O> run(task: PromptTask<I, O>, input: I, timeoutMs: Long? = null): AiResult<O> {
         val lm = model() ?: return fallbackOr(task, input, "no AI model is set up")
         val base = task.messages(input)
         var messages = withJsonContract(base, task.schema)
@@ -76,7 +76,7 @@ class AiGateway(
         val attempts = if (settings.retryInvalid) 2 else 1
         repeat(attempts) { attempt ->
             val result = try {
-                withTimeout(settings.timeoutMs) {
+                withTimeout(timeoutMs ?: settings.timeoutMs) {
                     lm.complete(
                         CompletionRequest(
                             ContextWindow.fit(messages, lm.contextSize ?: LocalLlamaModel.DEFAULT_CONTEXT, task.maxTokens),

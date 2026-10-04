@@ -95,6 +95,12 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     fun pragmatics(lang: String): app.mokuhyo.culture.PragmaticsPack? = packJson(lang, "pragmatics.json", app.mokuhyo.culture.PragmaticsPack::parse)
 
+    /**
+     * Time limit for a conversation's critique call (BRIEF_PHASE8 N-00b): on a CPU-only machine the critique (larger
+     * schema) gets 4 minutes instead of the gateway's default, so it isn't cut off where the reply alone fits.
+     */
+    fun critiqueTimeoutMs(): Long? = if (!runtime.gpuActive) 240_000 else null
+
     fun exemplars(lang: String): app.mokuhyo.opi.ExemplarPack? = packJson(lang, "exemplars.json", app.mokuhyo.opi.ExemplarPack::parse)
 
     fun feeds(lang: String): List<app.mokuhyo.culture.Feed> = packJson(lang, "feeds.json", app.mokuhyo.culture.FeedPack::parse)?.feeds.orEmpty()
