@@ -208,7 +208,7 @@ private fun InterpretRun(app: AppGraph, module: LanguageModule, chunks: List<Chu
                     if (hasStt) Button(onClick = {
                         val r = recording
                         if (r == null) {
-                            recording = runCatching { AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE)) {} }.getOrNull()
+                            recording = runCatching { AudioIO.record(app.settings.get(Settings.Key.INPUT_DEVICE), onLevel = {}) }.getOrNull()
                         } else {
                             val pcm = r.stop()
                             recording = null

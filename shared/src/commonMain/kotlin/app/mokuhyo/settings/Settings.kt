@@ -27,6 +27,8 @@ class Settings(private val db: MokuhyoDatabase) {
         THEME("learner.theme", Scope.LEARNER),
         // BRIEF_PHASE8 C-11: default corrections mode per speaking activity, and whether turn audio is kept for the AAB
         CORRECTIONS_OPI("learner.corrections.opi", Scope.LEARNER),
+        /** Show the transcript to confirm, retake or edit before it is sent (BRIEF_PHASE8 N-00b; on by default in practice). */
+        CONFIRM_TRANSCRIPT("learner.speech.confirmTranscript", Scope.LEARNER),
         CORRECTIONS_TOPIC("learner.corrections.topic", Scope.LEARNER),
         CORRECTIONS_PERSONA("learner.corrections.persona", Scope.LEARNER),
         AAB_KEEP_AUDIO("learner.aab.keepAudio", Scope.LEARNER),

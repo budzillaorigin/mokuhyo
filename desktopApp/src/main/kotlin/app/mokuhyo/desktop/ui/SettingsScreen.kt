@@ -226,6 +226,15 @@ private fun OllamaSection(app: AppGraph) {
 /** Default corrections mode per speaking activity and AAB audio (BRIEF_PHASE8 §B.5); learner settings, so they travel in backups. */
 @Composable
 private fun SpeakingDefaults(app: AppGraph) {
+    var confirm by remember { mutableStateOf(app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true)) }
+    SectionCard("Speaking: voice input") {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Switch(confirm, onCheckedChange = { confirm = it; app.settings.put(Settings.Key.CONFIRM_TRANSCRIPT, it.toString()) })
+            Text("Show what I said before sending it, so I can edit it or record again (practice only; interview tests send it directly)")
+        }
+        Text("Recording stops by itself after a short silence. If nothing is heard, you'll get a hint about the microphone.",
+            style = MaterialTheme.typography.bodySmall)
+    }
     SectionCard("Speaking: corrections") {
         Text("How corrections appear by default. Interview tests always run as After action.", style = MaterialTheme.typography.bodyMedium)
         SpeakingActivity.entries.forEach { act ->

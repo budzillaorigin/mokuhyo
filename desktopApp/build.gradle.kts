@@ -54,6 +54,12 @@ compose.desktop {
                 dmgPackageVersion = macBundleVersion
                 appCategory = "public.app-category.education"
                 iconFile.set(project.file("icons/mokuhyo.icns"))
+                // Without this key macOS never asks for the microphone and recordings come back silent (BRIEF_PHASE8 N-00b).
+                // The app isn't signed with the hardened runtime, so no audio-input entitlement is needed.
+                infoPlist {
+                    extraKeysRawXml = "  <key>NSMicrophoneUsageDescription</key>\n" +
+                        "  <string>Mokuhyo records your spoken answers to transcribe them on this computer. Recordings never leave it.</string>\n"
+                }
             }
             windows {
                 menuGroup = "Mokuhyo"

@@ -399,24 +399,10 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     if (showText && !test) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         OutlinedButton(onClick = { scope.launch { speak(app, last.first.text, module.code) } }) { Text("Repeat the question") }
-                        if (hasStt) Button(onClick = {
-                            if (!recorder.recording) {
-                                runCatching { recorder.start { level = it } }.onFailure { status = "Couldn't open the microphone: ${it.message}" }
-                                status = "Recording… press Stop when you're done."
-                            } else {
-                                val pcm = recorder.stop()
-                                level = 0.0
-                                busy = true
-                                status = "Transcribing…"
-                                scope.launch {
-                                    val text = withContext(Dispatchers.IO) { runCatching { app.recognizer()!!.transcribe(pcm, module.sttLanguage).text }.getOrDefault("") }
-                                    busy = false
-                                    if (text.isBlank()) status = "I didn't catch anything. Try again, or type your answer." else submitAnswer(text, pcm)
-                                }
-                            }
-                        }) { Text(if (recorder.recording) "■ Stop" else "● Record") }
                     }
-                    if (recorder.recording) LinearProgressIndicator(progress = { (level * 4).toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
+                    // Interview tests send what was heard; practice shows it first unless turned off (BRIEF_PHASE8 N-00b).
+                    if (hasStt) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
+                        enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }) { t, pcm -> submitAnswer(t, pcm) }
                     OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
                         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -777,25 +763,11 @@ private fun TopicConversation(
         }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (hasStt) Button(onClick = {
-                    if (!recorder.recording) {
-                        runCatching { recorder.start { level = it } }.onFailure { status = "Couldn't open the microphone: ${it.message}" }
-                    } else {
-                        val pcm = recorder.stop()
-                        level = 0.0
-                        busy = true
-                        status = "Transcribing…"
-                        scope.launch {
-                            val text = withContext(Dispatchers.IO) { runCatching { app.recognizer()!!.transcribe(pcm, module.sttLanguage).text }.getOrDefault("") }
-                            busy = false
-                            if (text.isBlank()) status = "I didn't catch anything." else send(text, pcm)
-                        }
-                    }
-                }) { Text(if (recorder.recording) "■ Stop" else "● Record") }
                 if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = exchanges.isNotEmpty(), onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
                 TextButton(onClick = { finish() }) { Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End conversation") }
             }
-            if (recorder.recording) LinearProgressIndicator(progress = { (level * 4).toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
+            if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
+                enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }) { t, pcm -> send(t, pcm) }
             OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type") },
                 textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
             TextButton(enabled = typed.isNotBlank(), onClick = { val s = typed; typed = ""; send(s, null) }) { Text("Send") }

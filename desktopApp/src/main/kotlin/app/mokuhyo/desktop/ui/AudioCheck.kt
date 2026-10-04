@@ -61,7 +61,7 @@ fun AudioCheck(app: AppGraph) {
                     status = "Recording for 3 seconds — say something…"
                     val samples = withContext(Dispatchers.IO) {
                         runCatching {
-                            val rec = AudioIO.record(input) { level = it }
+                            val rec = AudioIO.record(input, onLevel = { level = it })
                             Thread.sleep(3_000)
                             rec.stop()
                         }

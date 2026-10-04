@@ -37,6 +37,10 @@ if [ "$EXT" = dmg ]; then
   cp -R "$MNT"/*.app "$DEST/"
   hdiutil detach "$MNT" >/dev/null
   BIN=$(ls "$DEST"/*.app/Contents/MacOS/* | head -1)
+  # BRIEF_PHASE8 N-00b gate: without the microphone usage string macOS never asks and recordings are silent.
+  plutil -extract NSMicrophoneUsageDescription raw "$(ls -d "$DEST"/*.app)/Contents/Info.plist" >/dev/null \
+    || { echo "fresh_install_smoke: FAIL Info.plist lacks NSMicrophoneUsageDescription"; exit 1; }
+  echo "== Info.plist: NSMicrophoneUsageDescription present"
 else
   $SUDO apt-get install -y "./$ASSET" >/dev/null
   BIN=/opt/mokuhyo/bin/Mokuhyo
