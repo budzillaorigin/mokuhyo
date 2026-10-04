@@ -376,3 +376,17 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
 - **Rotation** (`VoiceRotation`): passages start at a stable hash of their id, distinct speakers in a script get
   distinct voices (same-gender speakers take consecutive voices), a persona keeps one voice of their gender.
   Already-rendered pack clips keep their voice until re-rendered (`render-audio --force`).
+
+## D-041 Phase 9 N-00(b): Chatterbox Multilingual is not adopted — rule 13 (unattended default, 2026-10-04)
+- BRIEF_PHASE8 N-00(b) names Chatterbox Multilingual (Resemble AI, MIT) as the natural-voice engine and calls it "not
+  PRC-origin". Checking the code before adopting it: its speech tokenizer is `S3TokenizerV2` loading
+  `speech_tokenizer_v2_25hz`, the tokenizer trained by Alibaba's FunAudioLLM team for **CosyVoice2-0.5B** (and built on
+  SenseVoice). Chatterbox's own acknowledgements credit CosyVoice and S3Tokenizer; the S3Tokenizer repository states
+  the v2 25 Hz model comes from `iic/CosyVoice2-0.5B`. Rule 13 bans CosyVoice "or derivatives" by name, so a model
+  that ships and runs CosyVoice's trained tokenizer is out, whoever packaged it.
+- Compliant alternatives exist inside N-00 itself, so the run continues (CLAUDE.md: only a conflict with *no*
+  compliant alternative ends it): pre-rendered clips → Kokoro-82M (Apache-2.0, StyleTTS 2 lineage) → VOICEVOX
+  (Japanese, pre-render only) → Piper → OS voice → text. The "TTS → Whisper ≥ 80%" and "every ja/ko/ar/zh passage
+  pre-rendered" criteria are met with these engines where they cover a language, and logged as gaps where they don't.
+- Reversible: if the owner decides the tokenizer is acceptable (or Resemble ships a model without it), the
+  `--engine chatterbox` path can be added later; nothing in the voice manifest format depends on this choice.
