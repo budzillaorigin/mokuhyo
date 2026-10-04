@@ -25,6 +25,20 @@ LANG_IDS = {"ja": "ja", "es": "es", "fr": "fr", "de": "de", "pt-BR": "pt", "ru":
             "fa": None, "id": "ms"}  # fa: not supported by the model; id: Malay is the closest (logged listening test)
 
 
+def yield_to_other_work() -> None:
+    """Below-normal priority on Windows (BELOW_NORMAL_PRIORITY_CLASS), nice 10 elsewhere: the render host is the owner's
+    machine and their own work always comes first; the render only takes spare capacity."""
+    try:
+        if sys.platform == "win32":
+            import ctypes
+            ctypes.windll.kernel32.SetPriorityClass(ctypes.windll.kernel32.GetCurrentProcess(), 0x00004000)
+        else:
+            import os
+            os.nice(10)
+    except Exception as e:  # noqa: BLE001 - lowering our own priority is best effort
+        print(f"note: couldn't lower priority ({e})", flush=True)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("jobs")
@@ -32,8 +46,11 @@ def main() -> int:
     ap.add_argument("refs")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--shard", default="0/1", help="i/n: render every n-th job starting at i (run n processes on one GPU)")
+    ap.add_argument("--threads", type=int, default=4, help="CPU threads per process; parallel shards oversubscribe the CPU otherwise")
     a = ap.parse_args()
+    yield_to_other_work()
     out, refs = Path(a.out), Path(a.refs)
+    torch.set_num_threads(a.threads)  # PyTorch defaults to one thread per core in every process
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = ChatterboxMultilingualTTS.from_pretrained(device=device)
     sr = model.sr
