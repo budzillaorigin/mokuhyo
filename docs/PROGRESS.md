@@ -624,3 +624,47 @@ with two different voices in es, fr, de, pt-BR, ru and fa (real Piper, real voic
   gender may not match the script.
 - **ja, ko, zh-Hans, ar, id** have no redistributable Piper voice (D-013); they keep the OS voice, so variety depends on
   the voices the user's OS has installed.
+
+## N-00 — Natural voices and the Windows OS-voice fix ✅ (gaps logged)
+Owner addition to Part D (2026-10-03). Built in the brief's order:
+- **(a) Windows OS voices:** PowerShell scripts go as `-EncodedCommand` (base64 UTF-16LE), so quotes, spaces and
+  Japanese survive Java's launcher; voices are listed from SAPI 5 **and** WinRT `Windows.Media.SpeechSynthesis`
+  (OneCore voices such as Haruka, no registry copy), online-only voices dropped, synthesis through the API that owns
+  the voice; Settings → Speech & audio → "This computer's voices" with **Rescan voices**; on macOS a one-line hint with
+  the System Settings path when only a compact voice is installed. `OsVoiceTest` covers the encoding (quotes, spaces,
+  Japanese), the SAPI + WinRT merge and the hint.
+- **(b) Chatterbox Multilingual** — adopted as the owner's named exception to rule 13 (**D-041**: its speech tokenizer is
+  CosyVoice2's). Runs on the RTX 5090 at build time only (`tools/voices/chatterbox_render.py`, CUDA 12.8 PyTorch, capped
+  threads, below-normal priority on the owner's machine). Chinese is pre-segmented with ICU so the PRC-origin `pkuseg`
+  is never installed. Voices: Chatterbox's single built-in voice is gender-ambiguous, so per the owner's choice the pools
+  are **donated TTS voices only** (Thorsten, OHF-Voice, Sharvard, SIWIS, UPMC, claude — no LibriVox/MLS readers):
+  two female and two male per language, each Whisper-scored ≥ 82 % in every gate language
+  (`voices/chatterbox_voices.json`, `voices/chatterbox_voice_test.txt`). PerTh watermark recorded in `docs/PRIVACY.md`
+  and `docs/LICENSES.md`; the listening screen credits engine and reference voices per clip (`audio/voices.json`).
+- **(d) VOICEVOX** for Japanese exam listening (Tsumugi's vetted characters 春日部つむぎ, 四国めたん, 玄野武宏;
+  per-clip credits): all 92 Japanese exam passages.
+- **(e) Piper `ar_JO` / `id_ID` re-checked:** still no license (Arabic repo has none; the Indonesian card links a
+  Malayalam notebook) — still excluded.
+- Fallback order per language is in `voices/manifest.json` (`fallbackOrder`).
+
+**Gate:**
+- Every shipped Japanese, Korean, Arabic and Chinese listening clip is pre-rendered (ja 100 = 92 VOICEVOX + 8
+  Chatterbox; ko, ar, zh-Hans 99 each).
+- TTS → Whisper round trip (`Mokuhyo --roundtrip`, large-v3-turbo, number-aware token match): **ja 98 % (VOICEVOX) /
+  93 % (Chatterbox), ko 91 %, ar 95 %, zh-Hans 97 %** — all ≥ 80 %. Three clips under 70 % (two ko, one zh) are queued for
+  re-render with the remaining languages.
+- The measurement exposed an app bug: Whisper segments were joined with no space, gluing words together in every
+  spaced language (fixed, `TranscriptJoinTest`).
+- The voice manifest carries the fallback order with provenance; the Chatterbox model and reference voices have
+  provenance rows in `docs/MODELS.md` and `docs/LICENSES.md`; `check_provenance.py` passes with the D-041 exception.
+
+**Known gaps (logged, not blocking):**
+- **Windows checks are the owner's** (no Windows machine here, CI disabled): `--smoke-lang` showing a `ja` voice with
+  Haruka installed, and the WinRT synthesis path.
+- **Live Chatterbox on Tier B+ and Kokoro-82M for Tier A Japanese are not built.** Both need a JVM port (Chatterbox's
+  tokenizers and autoregressive loop over ONNX Runtime; Kokoro's Japanese G2P), a sizeable job for a live path. Every
+  shipped clip already has natural pre-rendered audio; live speech (interviewer, generated content) still uses Piper or
+  the OS voice. Re-run plan: port after v0.3.0.
+- **Spanish, French, German, Portuguese and Russian** clips are still Piper; their Chatterbox render resumes after the
+  Phase 9 drafting frees the GPU (`chatterbox_render.py jobs.jsonl … --shard i/4`, resumable).
+- Indonesian stays on the OS voice; the Malay listening test was not run.
