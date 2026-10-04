@@ -1,5 +1,8 @@
 package app.mokuhyo.desktop.ui
 
+import app.mokuhyo.ai.LocalLlamaModel
+import app.mokuhyo.ai.AiResult
+import app.mokuhyo.ai.ModelCheck
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.Dispatchers
 import androidx.compose.runtime.LaunchedEffect
@@ -94,8 +97,59 @@ private fun AiSettings(app: AppGraph) {
         }
     }
     SectionCard("Model tier") { TierSettings(app) }
+    TestModel(app)
     SideLoadModel(app)
     OllamaSection(app)
+}
+
+/**
+ * "Test the model" (BRIEF_PHASE8 N-00b): one turn through the gateway with the error shown verbatim; which native
+ * variant loaded; the model file's own name and its context limit; the last AI calls from the rolling log.
+ */
+@Composable
+private fun TestModel(app: AppGraph) {
+    val scope = rememberCoroutineScope()
+    var result by remember { mutableStateOf<String?>(null) }
+    var busy by remember { mutableStateOf(false) }
+    var tail by remember { mutableStateOf(app.log.tail(8)) }
+    SectionCard("Test the model") {
+        Text("Native engine: ${app.runtime.status}", style = MaterialTheme.typography.bodySmall)
+        val lm = app.languageModel()
+        val local = lm as? LocalLlamaModel
+        Text(
+            when {
+                lm == null -> "No model is set up."
+                local != null -> "Model file: ${local.fileInfo?.name ?: lm.id} · context ${local.contextSize} tokens" +
+                    (local.fileInfo?.contextLength?.let { " (trained for $it)" } ?: "")
+                else -> "Model: ${lm.id}" + (lm.contextSize?.let { " · context $it tokens" } ?: "")
+            },
+            style = MaterialTheme.typography.bodySmall,
+        )
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(enabled = !busy, onClick = {
+                busy = true
+                result = null
+                scope.launch {
+                    val start = System.nanoTime()
+                    val r = withContext(Dispatchers.Default) { app.gateway.run(ModelCheck(), "Spanish") }
+                    val s = (System.nanoTime() - start) / 1_000_000_000.0
+                    result = when (r) {
+                        is AiResult.Ok -> "OK in ${"%.1f".format(s)} s — ${r.engine}: “${r.value.reply}”"
+                        is AiResult.Fallback -> "Failed after ${"%.1f".format(s)} s: ${r.reason}"
+                        is AiResult.Unavailable -> "Failed after ${"%.1f".format(s)} s: ${r.reason}"
+                    }
+                    tail = app.log.tail(8)
+                    busy = false
+                }
+            }) { Text(if (busy) "Testing…" else "Test the model") }
+            Text("One short turn through the same path every feature uses.", style = MaterialTheme.typography.bodySmall)
+        }
+        result?.let { Text(it, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.bodySmall) }
+        if (tail.isNotEmpty()) {
+            Text("Recent AI calls (${app.log.file.absolutePath})", style = MaterialTheme.typography.labelMedium)
+            tail.forEach { Text(it, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.bodySmall) }
+        }
+    }
 }
 
 /** Air-gapped install (BRIEF_PHASE8 N-11): copy a model file from a USB stick or share; size and SHA-256 are checked. */

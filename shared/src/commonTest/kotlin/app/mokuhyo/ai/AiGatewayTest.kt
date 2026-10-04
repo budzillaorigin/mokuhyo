@@ -141,3 +141,21 @@ class AiGatewayTest {
         assertTrue(msgs[0].content.endsWith("""{"type":"object","properties":{"a":{"type":"boolean"}},"required":["a"],"additionalProperties":false}"""))
     }
 }
+
+/** BRIEF_PHASE8 N-00b: every call is reported once with its outcome and reason (the rolling log's source). */
+class AiCallHookTest {
+    @Test
+    fun everyCallIsReportedWithOutcome() = kotlinx.coroutines.test.runTest {
+        val calls = mutableListOf<AiCall>()
+        val ok = AiGateway({ FakeModel("""{"reply":"Hola","language":"Spanish"}""") }, onCall = { calls += it })
+        ok.run(ModelCheck(), "Spanish")
+        val down = AiGateway({ FakeModel(IllegalStateException("couldn't load model: out of memory")) }, onCall = { calls += it })
+        down.run(ModelCheck(), "Spanish")
+        AiGateway({ null }, onCall = { calls += it }).run(ModelCheck(), "Spanish")
+        kotlin.test.assertEquals(listOf("ok", "unavailable", "unavailable"), calls.map { it.outcome })
+        kotlin.test.assertEquals(listOf("model_check"), calls.map { it.task }.distinct())
+        kotlin.test.assertEquals("fake engine", calls[0].engine)
+        kotlin.test.assertEquals("couldn't load model: out of memory", calls[1].reason)
+        kotlin.test.assertEquals("no AI model is set up", calls[2].reason)
+    }
+}

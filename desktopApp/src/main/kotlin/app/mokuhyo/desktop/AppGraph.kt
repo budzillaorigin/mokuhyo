@@ -210,7 +210,10 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
     private val llamaModels = java.util.concurrent.ConcurrentHashMap<String, app.mokuhyo.ai.LanguageModel>()
 
     /** One gateway for every AI task; reads the current model per call so settings changes apply. */
-    val gateway = app.mokuhyo.ai.AiGateway({ languageModel() }, app.mokuhyo.ai.AiSettings(timeoutMs = 180_000))
+    /** Rolling diagnostics log in the data dir (BRIEF_PHASE8 N-00b). */
+    val log = RollingLog(java.io.File(dataDir, "logs"))
+
+    val gateway = app.mokuhyo.ai.AiGateway({ languageModel() }, app.mokuhyo.ai.AiSettings(timeoutMs = 180_000), onCall = log::ai)
 
     /** On-device Whisper, or null when the speech model or native runtime is missing. */
     fun recognizer(): app.mokuhyo.ai.SpeechRecognizer? {

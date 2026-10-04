@@ -44,6 +44,9 @@ fun <T> AiResult<T>.valueOrNull(): T? = when (this) {
     is AiResult.Unavailable -> null
 }
 
+/** One AI call as the app's log records it: task, engine, duration, outcome ("ok" / "fallback" / "unavailable"), reason. */
+data class AiCall(val task: String, val engine: String?, val ms: Long, val outcome: String, val reason: String?)
+
 data class AiSettings(
     val timeoutMs: Long = 90_000,
     /** Retry once when the output isn't valid JSON of the right shape or fails validation. */
@@ -60,6 +63,8 @@ class AiGateway(
     private val model: () -> LanguageModel?,
     private val settings: AiSettings = AiSettings(),
     private val context: ValidationContext = ValidationContext(),
+    /** Called once per [run] with what happened (BRIEF_PHASE8 N-00b: the app's rolling log). Never sees prompt text. */
+    private val onCall: (AiCall) -> Unit = {},
 ) {
     /** True when a model is configured right now (it may still fail on a given call). */
     fun hasModel(): Boolean = model() != null
@@ -69,6 +74,20 @@ class AiGateway(
 
     @Throws(Exception::class)
     suspend fun <I, O> run(task: PromptTask<I, O>, input: I, timeoutMs: Long? = null): AiResult<O> {
+        val start = kotlin.time.TimeSource.Monotonic.markNow()
+        val result = runInner(task, input, timeoutMs)
+        val ms = start.elapsedNow().inWholeMilliseconds
+        runCatching {
+            onCall(when (result) {
+                is AiResult.Ok -> AiCall(task.name, result.engine, ms, "ok", null)
+                is AiResult.Fallback -> AiCall(task.name, model()?.id, ms, "fallback", result.reason)
+                is AiResult.Unavailable -> AiCall(task.name, model()?.id, ms, "unavailable", result.reason)
+            })
+        }
+        return result
+    }
+
+    private suspend fun <I, O> runInner(task: PromptTask<I, O>, input: I, timeoutMs: Long?): AiResult<O> {
         val lm = model() ?: return fallbackOr(task, input, "no AI model is set up")
         val base = task.messages(input)
         var messages = withJsonContract(base, task.schema)
