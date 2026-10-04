@@ -154,20 +154,39 @@ REGDRILL_SCHEMA = {"type": "object", "properties": {"items": {"type": "array", "
     "explanation": {"type": "string"}}, "required": ["situation", "choices", "answer", "explanation"]}}}, "required": ["items"]}
 
 
+def parse_probes(text: str, lang: str) -> list[dict]:
+    """`<n> | <phase> | <ILR level> | <question> | <English>` lines; tolerates "ILR 2", "Level check", bold markup."""
+    probes = []
+    for n, p in parse_lines(text, {str(i) for i in range(1, 13)}).items():
+        if len(p) < 4:
+            continue
+        phase = "level_check" if "check" in p[0].lower() else "probe" if "probe" in p[0].lower() else ""
+        level = re.sub(r"(?i)^\s*ilr\s*", "", p[1].strip().strip("*")).strip()
+        if phase and level in ("2", "2+", "3") and pure(p[2], lang):
+            probes.append({"n": int(n), "phase": phase, "level": level, "prompt": clean_text(p[2]), "english": p[3].strip()})
+    return probes
+
+
 def extras(client: llm.Client, lang: str) -> None:
     done = load(lang, "extras")
     cat = json.loads(SCENARIOS.read_text(encoding="utf-8"))["scenarios"]
     al = aligned(lang)
     name = NAMES[lang]
-    if "openers" not in done:
-        listing = "\n".join(f'{s["id"]} | {s["situation"]} The learner is: {s["learnerRole"]}. You are: {s["partnerRole"]}.' for s in cat)
-        text = client.chat([{"role": "user", "content":
-            f"For each role-play below, write the first line the partner says to open it, in natural {name} as spoken by a "
-            f"member of {PARTNER[lang]} (or a local civilian where the role says so), at ILR level of the scenario (1+ to 3), "
-            f"ending with something the learner must answer; plus an English translation.\nOutput one line per role-play:\n"
-            f"<id> | <opening line in {name}> | <English>\n\n{listing}"}], temperature=0.6, max_tokens=2500)
-        got = {sid: {"opener": clean_text(p[0]), "english": p[1].strip() if len(p) > 1 else ""}
-               for sid, p in parse_lines(text, {s["id"] for s in cat}).items() if pure(p[0], lang)}
+    if len(done.get("openers", {})) < 10:
+        got = dict(done.get("openers", {}))
+        for _attempt in range(3):
+            todo = [s for s in cat if s["id"] not in got]
+            if not todo:
+                break
+            listing = "\n".join(f'{s["id"]} | {s["situation"]} The learner is: {s["learnerRole"]}. You are: {s["partnerRole"]}.' for s in todo)
+            text = client.chat([{"role": "user", "content":
+                f"For each role-play below, write the first line the partner says to open it, in natural {name} as spoken by a "
+                f"member of {PARTNER[lang]} (or a local civilian where the role says so), at ILR level of the scenario (1+ to 3), "
+                f"ending with something the learner must answer; plus an English translation. The opening line must be written "
+                f"entirely in {name} script: no romanization, no English words or acronyms.\nOutput one line per role-play:\n"
+                f"<id> | <opening line in {name}> | <English>\n\n{listing}"}], temperature=0.6, max_tokens=2500)
+            got.update({sid: {"opener": clean_text(p[0]), "english": p[1].strip() if len(p) > 1 else ""}
+                        for sid, p in parse_lines(text, {s["id"] for s in todo}).items() if pure(p[0], lang)})
         if len(got) >= 10:
             done["openers"] = got
             save(lang, "extras", done)
@@ -176,7 +195,7 @@ def extras(client: llm.Client, lang: str) -> None:
         if s["id"] in dialogues:
             continue
         terms = [al[t]["term"] for t in s["terms"] if t in al]
-        for _attempt in range(2):
+        for _attempt in range(3):
             try:
                 out = client.chat_json([{"role": "system", "content": "You write ORIGINAL listening practice dialogues. Answer in JSON only."},
                     {"role": "user", "content":
@@ -196,21 +215,20 @@ def extras(client: llm.Client, lang: str) -> None:
                 dialogues[s["id"]] = {"title": out.get("title", s["title"]).strip(), "lines": lines}
                 save(lang, "extras", done)
                 break
-    if "probes" not in done:
-        text = client.chat([{"role": "user", "content":
-            f"Write 12 interview questions in {name} for a practice oral proficiency interview of a military linguist, on "
-            f"counter-drone defense and base security work with {PARTNER[lang]}: 4 level checks at ILR 2 (describe, narrate a past "
-            f"event), 4 probes at ILR 2+ (compare, explain a procedure and its reasons), 4 probes at ILR 3 (support an opinion, "
-            f"hypothesize about policy). One question each, natural spoken {name}, polite register.\n"
-            f"Output one line per question:\n<n> | <phase: level_check or probe> | <ILR level> | <question in {name}> | <English>"}],
-            temperature=0.6, max_tokens=2500)
-        probes = []
-        for n, p in parse_lines(text, {str(i) for i in range(1, 13)}).items():
-            if len(p) >= 4 and p[0].strip() in ("level_check", "probe") and p[1].strip() in ("2", "2+", "3") and pure(p[2], lang):
-                probes.append({"n": int(n), "phase": p[0].strip(), "level": p[1].strip(), "prompt": clean_text(p[2]), "english": p[3].strip()})
-        if len(probes) >= 10:
-            done["probes"] = sorted(probes, key=lambda x: x["n"])
-            save(lang, "extras", done)
+    if len(done.get("probes", [])) < 10:
+        for _attempt in range(3):
+            text = client.chat([{"role": "user", "content":
+                f"Write 12 interview questions in {name} for a practice oral proficiency interview of a military linguist, on "
+                f"counter-drone defense and base security work with {PARTNER[lang]}: 4 level checks at ILR 2 (describe, narrate a past "
+                f"event), 4 probes at ILR 2+ (compare, explain a procedure and its reasons), 4 probes at ILR 3 (support an opinion, "
+                f"hypothesize about policy). One question each, natural spoken {name}, polite register, written entirely in {name} "
+                f"script.\nOutput one line per question:\n<n> | <phase: level_check or probe> | <ILR level> | <question in {name}> | <English>"}],
+                temperature=0.6, max_tokens=2500)
+            probes = parse_probes(text, lang)
+            if len(probes) >= 10:
+                done["probes"] = sorted(probes, key=lambda x: x["n"])
+                save(lang, "extras", done)
+                break
     if "register" not in done:
         sd = seeds()
         picks = [t for t in ("bd-001", "bd-004", "bd-011", "cuas-047", "c2-005", "air-008", "c2-003", "roe-001") if t in al]
