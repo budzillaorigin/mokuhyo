@@ -40,6 +40,8 @@ class Settings(private val db: MokuhyoDatabase) {
         PREFER_CPU("device.native.preferCpu", Scope.DEVICE),
         USE_OLLAMA("device.ollama.use", Scope.DEVICE),
         OLLAMA_MODEL("device.ollama.model", Scope.DEVICE),
+        /** A local-network Ollama server (BRIEF_PHASE8 N-00b; explicit opt-in, LAN only). Empty = this computer. */
+        OLLAMA_URL("device.ollama.url", Scope.DEVICE),
         INPUT_DEVICE("device.audio.input", Scope.DEVICE),
         OUTPUT_DEVICE("device.audio.output", Scope.DEVICE),
         UPDATE_CHECK("device.updates.auto", Scope.DEVICE),

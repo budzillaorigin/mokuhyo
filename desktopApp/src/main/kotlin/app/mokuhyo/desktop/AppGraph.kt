@@ -193,11 +193,15 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
      * The language model for speaking and generation: the learner's own Ollama when they turned that on (rule-13
      * screened), else the downloaded tier model on the embedded llama.cpp, else none (scripted fallbacks).
      */
+    /** The Ollama server to use: the saved local-network URL when it still validates, else this computer. */
+    fun ollamaBaseUrl(): String = settings.get(Settings.Key.OLLAMA_URL)?.let { app.mokuhyo.ai.LanUrl.check(it).baseUrl }
+        ?: app.mokuhyo.ai.OllamaDetector.DEFAULT_URL
+
     fun languageModel(): app.mokuhyo.ai.LanguageModel? {
         if (settings.bool(Settings.Key.USE_OLLAMA)) {
             val name = settings.get(Settings.Key.OLLAMA_MODEL)
             if (name != null && app.mokuhyo.ai.ModelPolicy.exclusion(name) == null) {
-                return app.mokuhyo.ai.OpenAICompatibleModel(Java.create(), app.mokuhyo.ai.OllamaDetector.DEFAULT_URL + "/v1", null, name)
+                return app.mokuhyo.ai.OpenAICompatibleModel(Java.create(), ollamaBaseUrl() + "/v1", null, name)
             }
         }
         val model = chosenModel() ?: return null

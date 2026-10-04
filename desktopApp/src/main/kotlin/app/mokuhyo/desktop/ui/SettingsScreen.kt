@@ -1,5 +1,8 @@
 package app.mokuhyo.desktop.ui
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.OutlinedTextField
+import app.mokuhyo.ai.LanUrl
 import app.mokuhyo.ai.LocalLlamaModel
 import app.mokuhyo.ai.AiResult
 import app.mokuhyo.ai.ModelCheck
@@ -191,17 +194,31 @@ private fun OllamaSection(app: AppGraph) {
     var checked by remember { mutableStateOf(false) }
     var use by remember { mutableStateOf(app.settings.bool(Settings.Key.USE_OLLAMA)) }
     var model by remember { mutableStateOf(app.settings.get(Settings.Key.OLLAMA_MODEL)) }
+    var url by remember { mutableStateOf(app.settings.get(Settings.Key.OLLAMA_URL).orEmpty()) }
+    var urlProblem by remember { mutableStateOf<String?>(null) }
     SectionCard("Use my Ollama (optional)") {
-        Text("If you already run Ollama on this computer, Mokuhyo can use one of its models instead of its own. Off by default; only localhost is checked.", style = MaterialTheme.typography.bodyMedium)
+        Text("If you run Ollama on this computer — or on another computer on your home network, such as a GPU machine — Mokuhyo can use " +
+            "one of its models instead of its own. Off by default. Only local-network addresses are accepted; nothing goes to the internet.",
+            style = MaterialTheme.typography.bodyMedium)
+        OutlinedTextField(url, { url = it; urlProblem = null }, Modifier.fillMaxWidth(), singleLine = true,
+            label = { Text("Server on my network (leave empty for this computer)") }, placeholder = { Text("http://192.168.1.46:11434") })
+        urlProblem?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
         OutlinedButton(onClick = {
+            val checkedUrl = if (url.isBlank()) LanUrl.Checked(OllamaDetector.DEFAULT_URL, null) else LanUrl.check(url)
+            val base = checkedUrl.baseUrl
+            if (base == null) {
+                urlProblem = checkedUrl.problem
+                return@OutlinedButton
+            }
+            app.settings.put(Settings.Key.OLLAMA_URL, if (url.isBlank()) "" else base)
             scope.launch {
-                found = OllamaDetector(Java.create()).detect()
+                found = OllamaDetector(Java.create(), base).detect()
                 checked = true
             }
-        }) { Text("Look for Ollama on this computer") }
+        }) { Text(if (url.isBlank()) "Look for Ollama on this computer" else "Connect to this server") }
         val list = found
         when {
-            checked && list == null -> Text("No Ollama server answered at localhost:11434.")
+            checked && list == null -> Text("No Ollama server answered at ${app.ollamaBaseUrl()}.")
             list != null -> {
                 list.forEach { m ->
                     RadioRow(use && model == m.name, enabled = m.excludedReason == null, onSelect = {

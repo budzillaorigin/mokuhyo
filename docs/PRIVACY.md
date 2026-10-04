@@ -7,7 +7,8 @@ Mokuhyo works entirely on your computer. There are no accounts, no telemetry, no
 |---|---|---|
 | You download an AI or speech model (first run or Settings) | huggingface.co | An HTTPS download of the model file you chose. Nothing about you is sent. |
 | You turn on "Check for updates" (off by default) | api.github.com | Once a day, a request for the latest release of Mokuhyo. |
-| You press "Look for Ollama" in Settings → AI | localhost:11434 only | A request to an Ollama server on this computer. Never the network. |
+| You press "Look for Ollama" in Settings → AI | localhost:11434 only | A request to an Ollama server on this computer. |
+| You enter a server address in Settings → AI → "Use my Ollama" and choose one of its models (off by default) | that address — local-network addresses only (private IPs, `.local`); public addresses are refused | Your conversation turns go to that server for the model's replies, the same text the on-device model would see. It never leaves your network. |
 | You type a URL in Settings → Content → "Import lexicon update" and press Download | the address you typed | One HTTPS download of that lexicon package (at most 20 MB). Nothing about you is sent. Importing from a file needs no network. |
 
 Everything else — reading, listening, interviews, recordings, transcripts, ratings, review, reports — happens on this
