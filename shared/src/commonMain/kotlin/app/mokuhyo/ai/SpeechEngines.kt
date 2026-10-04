@@ -94,10 +94,20 @@ class WhisperRecognizer(
             }
         }
         val segments = parseSegments(jsonText)
-        return Transcript(segments.joinToString("") { it.text }.trim(), segments, "on-device $modelName")
+        return Transcript(joinSegments(segments, language), segments, "on-device $modelName")
     }
 
     companion object {
+        /**
+         * Segment texts joined into one transcript. The bridge trims each segment, so spaced languages need a space
+         * between segments ("للطلاب" + "التعليم", "Madrid" + "El año…"); Japanese and Chinese don't use one. Joining with
+         * nothing glued words together at every segment boundary.
+         */
+        fun joinSegments(segments: List<TranscriptSegment>, language: String): String {
+            val unspaced = language.substringBefore('-').lowercase() in setOf("ja", "zh")
+            return segments.map { it.text.trim() }.filter { it.isNotEmpty() }.joinToString(if (unspaced) "" else " ").trim()
+        }
+
         fun parseSegments(jsonText: String): List<TranscriptSegment> =
             Json.parseToJsonElement(jsonText).jsonArray.map { e ->
                 val o = e.jsonObject
