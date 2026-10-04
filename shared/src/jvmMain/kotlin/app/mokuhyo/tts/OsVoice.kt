@@ -8,8 +8,8 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 /**
- * The operating system's own text-to-speech, used as the fallback voice (BRIEF §3.3): macOS `say`, Windows SAPI
- * through PowerShell. Linux has no guaranteed system voice, so it relies on the bundled voices. Renders to a WAV
+ * The operating system's own text-to-speech, used as the fallback voice (BRIEF §3.3): macOS `say`, Windows SAPI 5 and
+ * WinRT `Windows.Media.SpeechSynthesis` (OneCore voices such as Haruka) through PowerShell. Linux has no guaranteed system voice, so it relies on the bundled voices. Renders to a WAV
  * file, never speaks directly, so the app's player, speed control and recordings work the same for every source.
  *
  * Voices are picked from the OS's own list ([voices]: `say -v ?`, SAPI `GetInstalledVoices`) by locale. When no
@@ -17,8 +17,11 @@ import java.util.concurrent.TimeUnit
  * read the text, which would be junk audio.
  */
 object OsVoice {
-    /** One installed system voice. [locale] as the OS reports it (`ja_JP`, `ar_001`, `es-ES`). */
-    data class Info(val name: String, val locale: String, val gender: String)
+    /**
+     * One installed system voice. [locale] as the OS reports it (`ja_JP`, `ar_001`, `es-ES`). On Windows [api] says which
+     * speech API owns it ("sapi" or "winrt") and [id] is the WinRT voice id used to select it.
+     */
+    data class Info(val name: String, val locale: String, val gender: String, val api: String = "", val id: String = "")
 
     /** Preferred regions per app language, best first; a voice of any other region of the language ranks after. */
     private val preferredRegions = mapOf(
@@ -52,18 +55,37 @@ object OsVoice {
 
     @Volatile private var cached: List<Info>? = null
 
-    /** Every voice installed on this computer (listed once per process; empty on Linux or on failure). */
+    /** Every voice installed on this computer (listed once per process until [rescan]; empty on Linux or on failure). */
     fun voices(): List<Info> {
         cached?.let { return it }
         val list = runCatching {
             when (Os.current) {
                 Os.MACOS -> parseSayVoices(run(listOf("say", "-v", "?"), 10))
-                Os.WINDOWS -> parseSapiVoices(run(powershell(listScript), 20))
+                Os.WINDOWS -> parseWindowsVoices(run(powershell(listScript), 30))
                 Os.LINUX -> emptyList()
             }
         }.getOrDefault(emptyList())
         cached = list
         return list
+    }
+
+    /** Forgets the voice list so the next call lists the OS's voices again (Settings → "Rescan voices"). */
+    fun rescan(): List<Info> {
+        cached = null
+        return voices()
+    }
+
+    /**
+     * macOS only: when the only voices for [lang] are compact ones, a one-line hint with the System Settings path to a
+     * natural (Enhanced or Premium) voice; null otherwise (BRIEF_PHASE8 N-00).
+     */
+    fun compactOnlyHint(lang: String, all: List<Info> = voices()): String? {
+        if (Os.current != Os.MACOS) return null
+        val vs = voicesFor(lang, all).filter { baseName(it.name) !in eloquence }
+        if (vs.isEmpty() || vs.any { "Enhanced" in it.name || "Premium" in it.name }) return null
+        return "Only the compact ${baseName(vs.first().name)} voice is installed. For a natural voice: System Settings → " +
+            "Accessibility → Spoken Content → System voice → Manage Voices…, then download its Enhanced or Premium version " +
+            "and press Rescan voices."
     }
 
     /** Installed voices that speak [lang] (BCP-47 app code), best first: preferred region, own voices, enhanced. */
@@ -94,8 +116,8 @@ object OsVoice {
      */
     fun synthesize(text: String, lang: String, rate: Double, voiceName: String?): ByteArray? {
         val candidates = voicesFor(lang)
-        val voice = (voiceName?.let { n -> candidates.firstOrNull { it.name == n } } ?: candidates.firstOrNull())?.name
-            ?: return null
+        val info = voiceName?.let { n -> candidates.firstOrNull { it.name == n } } ?: candidates.firstOrNull() ?: return null
+        val voice = info.name
         val out = File.createTempFile("mokuhyo-osvoice", ".wav")
         val input = File.createTempFile("mokuhyo-osvoice", ".txt").apply { writeText(text, Charsets.UTF_8) }
         try {
@@ -105,15 +127,8 @@ object OsVoice {
                     "--file-format=WAVE", "--data-format=LEI16@22050", "-f", input.absolutePath,
                 )
                 Os.WINDOWS -> powershell(
-                    """
-                    Add-Type -AssemblyName System.Speech
-                    ${'$'}s = New-Object System.Speech.Synthesis.SpeechSynthesizer
-                    ${'$'}s.SelectVoice('${ps(voice)}')
-                    ${'$'}s.Rate = ${((rate - 1.0) * 10).toInt().coerceIn(-10, 10)}
-                    ${'$'}s.SetOutputToWaveFile('${ps(out.absolutePath)}')
-                    ${'$'}s.Speak([IO.File]::ReadAllText('${ps(input.absolutePath)}', [Text.Encoding]::UTF8))
-                    ${'$'}s.Dispose()
-                    """.trimIndent(),
+                    if (info.api == "winrt") winrtSpeakScript(info.id, rate, input.absolutePath, out.absolutePath)
+                    else sapiSpeakScript(voice, rate, input.absolutePath, out.absolutePath),
                 )
                 Os.LINUX -> return null
             }
@@ -134,15 +149,87 @@ object OsVoice {
         }
     }
 
-    // ---- listing ----
+    // ---- Windows scripts ----
 
-    private val listScript = """
-[Console]::OutputEncoding = [Text.Encoding]::UTF8
+    internal fun sapiSpeakScript(voice: String, rate: Double, inputPath: String, outPath: String): String = """
 Add-Type -AssemblyName System.Speech
 ${'$'}s = New-Object System.Speech.Synthesis.SpeechSynthesizer
-${'$'}s.GetInstalledVoices() | Where-Object { ${'$'}_.Enabled } | ForEach-Object { ${'$'}i = ${'$'}_.VoiceInfo; "${'$'}(${'$'}i.Name)|${'$'}(${'$'}i.Culture.Name)|${'$'}(${'$'}i.Gender)" }
+${'$'}s.SelectVoice('${ps(voice)}')
+${'$'}s.Rate = ${((rate - 1.0) * 10).toInt().coerceIn(-10, 10)}
+${'$'}s.SetOutputToWaveFile('${ps(outPath)}')
+${'$'}s.Speak([IO.File]::ReadAllText('${ps(inputPath)}', [Text.Encoding]::UTF8))
 ${'$'}s.Dispose()
 """
+
+    /** WinRT synthesis (OneCore voices): the stream it returns is already a RIFF/WAV file. */
+    internal fun winrtSpeakScript(voiceId: String, rate: Double, inputPath: String, outPath: String): String = """
+${'$'}ErrorActionPreference = 'Stop'
+Add-Type -AssemblyName System.Runtime.WindowsRuntime
+[Windows.Media.SpeechSynthesis.SpeechSynthesizer, Windows.Media.SpeechSynthesis, ContentType = WindowsRuntime] | Out-Null
+[Windows.Storage.Streams.DataReader, Windows.Storage.Streams, ContentType = WindowsRuntime] | Out-Null
+${'$'}asTask = [System.WindowsRuntimeSystemExtensions].GetMethods() | Where-Object { ${'$'}_.Name -eq 'AsTask' -and ${'$'}_.GetParameters().Count -eq 1 -and ${'$'}_.GetParameters()[0].ParameterType.Name -eq 'IAsyncOperation`1' } | Select-Object -First 1
+function Await(${'$'}op, [Type] ${'$'}t) { ${'$'}task = ${'$'}asTask.MakeGenericMethod(${'$'}t).Invoke(${'$'}null, @(${'$'}op)); ${'$'}task.Wait(-1) | Out-Null; ${'$'}task.Result }
+${'$'}s = New-Object Windows.Media.SpeechSynthesis.SpeechSynthesizer
+${'$'}s.Voice = [Windows.Media.SpeechSynthesis.SpeechSynthesizer]::AllVoices | Where-Object { ${'$'}_.Id -eq '${ps(voiceId)}' } | Select-Object -First 1
+${'$'}s.Options.SpeakingRate = ${"%.2f".format(java.util.Locale.ROOT, rate.coerceIn(0.5, 3.0))}
+${'$'}text = [IO.File]::ReadAllText('${ps(inputPath)}', [Text.Encoding]::UTF8)
+${'$'}stream = Await (${'$'}s.SynthesizeTextToStreamAsync(${'$'}text)) ([Windows.Media.SpeechSynthesis.SpeechSynthesisStream])
+${'$'}reader = New-Object Windows.Storage.Streams.DataReader(${'$'}stream.GetInputStreamAt(0))
+${'$'}n = [uint32]${'$'}stream.Size
+Await (${'$'}reader.LoadAsync(${'$'}n)) ([uint32]) | Out-Null
+${'$'}bytes = New-Object byte[] ${'$'}n
+${'$'}reader.ReadBytes(${'$'}bytes)
+[IO.File]::WriteAllBytes('${ps(outPath)}', ${'$'}bytes)
+"""
+
+    // ---- listing ----
+
+    /**
+     * Lists SAPI 5 voices and WinRT (OneCore) voices: `sapi|name|culture|gender` and `winrt|name|language|gender|id`.
+     * Either half may fail on its own (no System.Speech, no WinRT) without losing the other.
+     */
+    internal val listScript = """
+[Console]::OutputEncoding = [Text.Encoding]::UTF8
+try {
+  Add-Type -AssemblyName System.Speech
+  ${'$'}s = New-Object System.Speech.Synthesis.SpeechSynthesizer
+  ${'$'}s.GetInstalledVoices() | Where-Object { ${'$'}_.Enabled } | ForEach-Object { ${'$'}i = ${'$'}_.VoiceInfo; "sapi|${'$'}(${'$'}i.Name)|${'$'}(${'$'}i.Culture.Name)|${'$'}(${'$'}i.Gender)" }
+  ${'$'}s.Dispose()
+} catch { }
+try {
+  [Windows.Media.SpeechSynthesis.SpeechSynthesizer, Windows.Media.SpeechSynthesis, ContentType = WindowsRuntime] | Out-Null
+  [Windows.Media.SpeechSynthesis.SpeechSynthesizer]::AllVoices | ForEach-Object { "winrt|${'$'}(${'$'}_.DisplayName)|${'$'}(${'$'}_.Language)|${'$'}(${'$'}_.Gender)|${'$'}(${'$'}_.Id)" }
+} catch { }
+"""
+
+    /**
+     * Parses [listScript] output. A voice both APIs list (SAPI "Microsoft Haruka Desktop", WinRT "Microsoft Haruka")
+     * keeps the SAPI entry; WinRT adds the OneCore voices SAPI can't see. Online-only voices (names containing
+     * "Online") need the network and are left out (rule 2). Lines without the api prefix are old-format SAPI lines.
+     */
+    internal fun parseWindowsVoices(output: String): List<Info> {
+        val sapi = mutableListOf<Info>()
+        val winrt = mutableListOf<Info>()
+        output.lineSequence().forEach { l ->
+            val parts = l.trim().split('|')
+            when (parts.firstOrNull()) {
+                "sapi" -> parseSapiVoices(parts.drop(1).joinToString("|")).firstOrNull()?.let { sapi += it.copy(api = "sapi") }
+                "winrt" -> if (parts.size >= 5 && parts[1].isNotBlank() && parts[2].isNotBlank()) {
+                    winrt += Info(parts[1].trim(), parts[2].trim(), gender(parts[3]), "winrt", parts[4].trim())
+                }
+                else -> parseSapiVoices(l).firstOrNull()?.let { sapi += it.copy(api = "sapi") }
+            }
+        }
+        fun key(name: String) = name.lowercase().removeSuffix(" desktop").replace(Regex("\\s*-.*$"), "").trim()
+        val seen = sapi.map { key(it.name) }.toSet()
+        return (sapi + winrt.filter { key(it.name) !in seen }).filterNot { "online" in it.name.lowercase() }
+    }
+
+    private fun gender(s: String): String = when (s.trim().lowercase()) {
+        "female" -> "female"
+        "male" -> "male"
+        else -> "unknown"
+    }
 
     /** Parses `say -v ?` lines: `Kyoko               ja_JP    # こんにちは…`, `Eddy (German (Germany)) de_DE    # …`. */
     internal fun parseSayVoices(output: String): List<Info> {
@@ -158,12 +245,7 @@ ${'$'}s.Dispose()
     internal fun parseSapiVoices(output: String): List<Info> = output.lineSequence().mapNotNull { l ->
         val parts = l.trim().split('|')
         if (parts.size < 3 || parts[0].isBlank() || parts[1].isBlank()) return@mapNotNull null
-        val gender = when (parts[2].trim().lowercase()) {
-            "female" -> "female"
-            "male" -> "male"
-            else -> "unknown"
-        }
-        Info(parts[0].trim(), parts[1].trim(), gender)
+        Info(parts[0].trim(), parts[1].trim(), gender(parts[2]))
     }.toList()
 
     /** Does an OS locale (`ja_JP`, `zh-CN`, `ar_001`) speak app language [code] (`ja`, `zh-hans`, `pt-br`)? */
@@ -190,8 +272,15 @@ ${'$'}s.Dispose()
 
     private fun ps(s: String): String = s.replace("'", "''")
 
-    private fun powershell(script: String): List<String> =
-        listOf("powershell", "-NoProfile", "-NonInteractive", "-Command", script)
+    /**
+     * PowerShell with the script as `-EncodedCommand` (base64 of UTF-16LE). Passing it as one `-Command` argument broke
+     * on Windows: Java's process launcher does not escape the script's embedded double quotes, so the listing came back
+     * empty and no OS voice was found (owner finding 2026-10-03, BRIEF_PHASE8 N-00).
+     */
+    internal fun powershell(script: String): List<String> =
+        listOf("powershell", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-EncodedCommand", encode(script))
+
+    internal fun encode(script: String): String = java.util.Base64.getEncoder().encodeToString(script.toByteArray(Charsets.UTF_16LE))
 
     private fun run(cmd: List<String>, timeoutSeconds: Long): String {
         val p = ProcessBuilder(cmd).redirectErrorStream(true).start()

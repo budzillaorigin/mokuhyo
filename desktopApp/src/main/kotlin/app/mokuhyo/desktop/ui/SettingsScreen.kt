@@ -1,5 +1,10 @@
 package app.mokuhyo.desktop.ui
 
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
+import androidx.compose.runtime.LaunchedEffect
+import app.mokuhyo.lang.Languages
+import app.mokuhyo.tts.OsVoice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -61,6 +66,7 @@ fun SettingsScreen(app: AppGraph) {
             SettingsTab.SPEECH -> {
                 SpeakingDefaults(app)
                 SpeechModels(app)
+                SystemVoices(app)
                 AudioCheck(app)
             }
             SettingsTab.CONTENT -> {
@@ -111,7 +117,7 @@ private fun SideLoadModel(app: AppGraph) {
                     busy = true
                     status = "Checking ${name}…"
                     scope.launch {
-                        val r = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                        val r = withContext(Dispatchers.IO) {
                             app.models.installFromFile(m, java.io.File(d.directory, name).toOkioPath())
                         }
                         status = r.fold({ "${m.name} installed." }, { "Not installed: ${it.message}" })
@@ -202,6 +208,38 @@ private fun SpeechModels(app: AppGraph) {
                     Text(if (active) "In use" else "Use this model")
                 }
             }
+        }
+    }
+}
+
+/** The computer's own voices (BRIEF_PHASE8 N-00): what was found per language, the compact-voice hint, and a rescan. */
+@Composable
+private fun SystemVoices(app: AppGraph) {
+    val scope = rememberCoroutineScope()
+    var voices by remember { mutableStateOf<List<OsVoice.Info>?>(null) }
+    var busy by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { voices = withContext(Dispatchers.IO) { OsVoice.voices() } }
+    SectionCard("This computer's voices") {
+        if (!OsVoice.available) {
+            Text("This system has no built-in voices Mokuhyo can use; the bundled voices speak where a language has one.")
+            return@SectionCard
+        }
+        val all = voices
+        if (all == null) Text("Looking for installed voices…")
+        else Languages.all.forEach { l ->
+            val found = OsVoice.voicesFor(l.code, all)
+            Text("${l.nameEnglish}: " + (found.take(3).joinToString { it.name }.ifEmpty { "none installed" }), style = MaterialTheme.typography.bodySmall)
+            OsVoice.compactOnlyHint(l.code, all)?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary) }
+        }
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(enabled = !busy, onClick = {
+                busy = true
+                scope.launch {
+                    voices = withContext(Dispatchers.IO) { OsVoice.rescan() }
+                    busy = false
+                }
+            }) { Text(if (busy) "Rescanning…" else "Rescan voices") }
+            Text("After installing a voice in your system settings, rescan so Mokuhyo uses it without a restart.", style = MaterialTheme.typography.bodySmall)
         }
     }
 }
