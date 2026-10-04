@@ -43,13 +43,15 @@ object ChatterboxJobs {
         val pools = Smoke.arg(args, "--voices")?.let(::File)?.takeIf { it.isFile }?.let(::pools) ?: return fail("--voices <chatterbox_voices.json> is required")
         val packs = Smoke.arg(args, "--packs")?.let(::File) ?: Resources.repoDir?.let { File(it, "content/packs") } ?: return fail("--packs")
         val langs = Smoke.arg(args, "--languages")?.split(",") ?: pools.keys.toList()
+        // --only exam: listening passages only (VOICEVOX renders Japanese exam listening; Chatterbox the rest).
+        val examOnly = Smoke.arg(args, "--only") == "exam"
         val registry = LanguageRegistry(packs)
         val lines = mutableListOf<String>()
         for (lang in langs) {
             val pool = pools[lang].orEmpty().ifEmpty { continue }
             val specs = pool.map { VoiceSpec(it.ref, lang, it.gender, "chatterbox", "") }
             val module = registry.module(lang)
-            for (p in passages(packs, lang)) {
+            for (p in passages(packs, lang, examOnly)) {
                 val cast = VoiceRotation.assign(specs, p.script.map { it.speaker to it.voice }.distinctBy { it.first }, p.id)
                 val arr = buildJsonArray {
                     p.script.forEach { ln ->
@@ -66,8 +68,9 @@ object ChatterboxJobs {
     }
 
     /** Every clip a pack ships: listening passages, track dialogues, exemplar answers (same ids as RenderAudio). */
-    fun passages(packs: File, lang: String): List<ExamPassage> {
+    fun passages(packs: File, lang: String, examOnly: Boolean = false): List<ExamPassage> {
         val content = File(packs, "$lang/exam.json").takeIf { it.isFile }?.let { ExamContent.parse(it.readText()) }
+        if (examOnly) return content?.passagesFor(Skill.LISTENING).orEmpty().sortedBy { it.id }
         val dialogues = File(packs, "$lang/track-${app.mokuhyo.lexicon.TrackIds.CUAS}.json").takeIf { it.isFile }
             ?.let { f -> app.mokuhyo.lexicon.Track.parse(f.readText()).dialogues.map { it.asPassage(lang) } }.orEmpty()
         val exemplars = File(packs, "$lang/exemplars.json").takeIf { it.isFile }?.let { f ->
@@ -92,7 +95,8 @@ object ChatterboxJobs {
                 val id = wav.nameWithoutExtension
                 File(audio, "$id.ogg").writeBytes(OggOpus.encode(AudioIO.toPcm16kMono(wav.readBytes()), bitrate = 32_000))
                 val refs = jobs[id]?.get("lines")?.jsonArray?.map { it.jsonObject.getValue("ref").jsonPrimitive.content.ifEmpty { "builtin" } }?.distinct()
-                credits[id] = buildJsonObject { put("engine", "chatterbox-multilingual"); put("voices", JsonArray(refs.orEmpty().map(::JsonPrimitive))) }
+                val engine = if (refs.orEmpty().any { it.startsWith("vv:") }) "voicevox" else "chatterbox-multilingual"
+                credits[id] = buildJsonObject { put("engine", engine); put("voices", JsonArray(refs.orEmpty().map(::JsonPrimitive))) }
                 n++
             }
             File(audio, "voices.json").writeText(kotlinx.serialization.json.JsonObject(credits.toSortedMap()).toString())

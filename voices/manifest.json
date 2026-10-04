@@ -852,11 +852,11 @@
     },
     {
       "id": "ar_JO-kareem-medium",
-      "reason": "dataset repository has no license"
+      "reason": "dataset repository (github.com/AliMokhammad/arabicttstrain) has no license file or terms; re-checked 2026-10-04 (N-00e), still excluded"
     },
     {
       "id": "id_ID-news_tts-medium",
-      "reason": "dataset provenance and license unclear"
+      "reason": "model card's dataset link is a Kaggle notebook about a Malayalam corpus and gives no license; re-checked 2026-10-04 (N-00e), still excluded"
     },
     {
       "id": "es_MX-ald-medium",
@@ -885,5 +885,69 @@
     "zh-Hans": "OS voice (macOS Tingting; Windows Chinese speech pack)",
     "ar": "OS voice (macOS Majed; Windows Arabic speech pack)",
     "id": "OS voice (macOS Damayanti; Windows Indonesian speech pack)"
-  }
+  },
+  "fallbackOrder": {
+    "ja": [
+      "clip:voicevox (exam listening)",
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "ko": [
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "ar": [
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "zh-Hans": [
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "es": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "fr": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "de": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "pt-BR": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "ru": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "fa": [
+      "clip:piper",
+      "piper",
+      "os",
+      "text"
+    ],
+    "id": [
+      "os",
+      "text"
+    ]
+  },
+  "fallbackNotes": "Live synthesis uses Piper or the OS voice. Chatterbox runs at build time only (D-041). Kokoro-82M (ja; Apache-2.0, hexgrad, StyleTTS 2 lineage) was evaluated for a Tier A live Japanese voice and is not bundled yet — logged in PROGRESS."
 }

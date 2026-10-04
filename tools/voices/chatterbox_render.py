@@ -6,7 +6,7 @@ WAV already exists. A job: {"id", "lang", "lines": [{"text", "ref"}], "pause": s
 REF_DIR (a donated TTS voice, see voices/chatterbox_voices.json) or "" for Chatterbox's built-in voice. Chinese text
 arrives already segmented with ICU (spaces between words), so Chatterbox's PRC-origin pkuseg segmenter is never used.
 
-    python chatterbox_render.py JOBS.jsonl OUT_DIR REF_DIR [--limit N]
+    python chatterbox_render.py JOBS.jsonl OUT_DIR REF_DIR [--limit N] [--shard i/n]
 """
 from __future__ import annotations
 
@@ -31,12 +31,15 @@ def main() -> int:
     ap.add_argument("out")
     ap.add_argument("refs")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--shard", default="0/1", help="i/n: render every n-th job starting at i (run n processes on one GPU)")
     a = ap.parse_args()
     out, refs = Path(a.out), Path(a.refs)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = ChatterboxMultilingualTTS.from_pretrained(device=device)
     sr = model.sr
     jobs = [json.loads(ln) for ln in Path(a.jobs).read_text(encoding="utf-8").splitlines() if ln.strip()]
+    i, n = (int(x) for x in a.shard.split("/"))
+    jobs = jobs[i::n]
     done = 0
     for job in jobs:
         lid = LANG_IDS.get(job["lang"])

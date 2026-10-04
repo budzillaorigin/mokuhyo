@@ -63,11 +63,17 @@ class PassageAudio(private val app: AppGraph) {
             kotlinx.serialization.json.Json.parseToJsonElement(credits.readText()).jsonObject[passage.id]?.jsonObject
         }.getOrNull() ?: return "pre-rendered clip"
         val voices = entry["voices"]?.jsonArray?.map { it.jsonPrimitive.content.removeSuffix(".wav") }.orEmpty()
+        if (entry["engine"]?.jsonPrimitive?.content == "voicevox") {
+            return "pre-rendered clip · " + voices.mapNotNull { VOICEVOX_CREDITS[it] }.distinct().joinToString()
+        }
         return "pre-rendered clip · AI voice (Chatterbox Multilingual, Resemble AI; watermarked)" +
             if (voices.isEmpty()) "" else " · reference voices: ${voices.joinToString()}"
     }
 
     companion object {
+        /** VOICEVOX character credits the characters' terms require (voices/voicevox_voices.json). */
+        val VOICEVOX_CREDITS = mapOf("vv:8" to "VOICEVOX:春日部つむぎ", "vv:2" to "VOICEVOX:四国めたん", "vv:11" to "VOICEVOX:玄野武宏", "vv:11:low" to "VOICEVOX:玄野武宏")
+
         /** Honest labels for voices with known problems (docs/LANGUAGES.md, PROGRESS gate_lang known gap). */
         val VOICE_NOTES = mapOf("fa" to "synthetic voice; some words are mispronounced")
     }

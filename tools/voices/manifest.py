@@ -232,14 +232,29 @@ EXCLUDED = [
                "only runs eSpeak-phoneme voices. Also fine-tuned from zh_CN-xiao_ya (non-commercial dataset)"},
     {"id": "ru_RU-irina-medium", "reason": "dataset license unknown"},
     {"id": "fr_FR-tom-medium", "reason": "dataset is AGPL (not a content license; copyleft terms unclear for weights)"},
-    {"id": "ar_JO-kareem-medium", "reason": "dataset repository has no license"},
-    {"id": "id_ID-news_tts-medium", "reason": "dataset provenance and license unclear"},
+    {"id": "ar_JO-kareem-medium", "reason": "dataset repository (github.com/AliMokhammad/arabicttstrain) has no license file or "
+                                            "terms; re-checked 2026-10-04 (N-00e), still excluded"},
+    {"id": "id_ID-news_tts-medium", "reason": "model card's dataset link is a Kaggle notebook about a Malayalam corpus and gives no "
+                                              "license; re-checked 2026-10-04 (N-00e), still excluded"},
     {"id": "es_MX-ald-medium", "reason": "allowed (Unlicense) but not bundled: median F0 160 Hz leaves its gender unverifiable and es already has two male voices"},
     {"id": "pt_BR-jeff-medium", "reason": "allowed (CC0) but not bundled: median F0 154 Hz (ambiguous) and pt-BR already has two such voices"},
     {"id": "ru_RU-ruslan-medium", "reason": "dataset is CC BY-NC-SA 4.0 (non-commercial)"},
     {"id": "de_DE-pavoque-low", "reason": "dataset is CC BY-NC-SA 4.0 (non-commercial)"},
     {"id": "fa_IR-reza_ibrahim-medium", "reason": "Quran-recitation dataset: a chanted reading style unsuited to everyday listening passages"},
 ]
+
+# Fallback order per language (BRIEF_PHASE8 N-00): what speaks a line, first available wins.
+FALLBACK_ORDER = {
+    "ja": ["clip:voicevox (exam listening)", "clip:chatterbox-multilingual", "os", "text"],
+    **{lang: ["clip:chatterbox-multilingual", "os", "text"] for lang in ("ko", "ar", "zh-Hans")},
+    **{lang: ["clip:chatterbox-multilingual", "piper", "os", "text"] for lang in ("es", "fr", "de", "pt-BR", "ru")},
+    "fa": ["clip:piper", "piper", "os", "text"],
+    "id": ["os", "text"],
+}
+FALLBACK_NOTES = (
+    "Live synthesis uses Piper or the OS voice. Chatterbox runs at build time only (D-041). Kokoro-82M (ja; Apache-2.0, "
+    "hexgrad, StyleTTS 2 lineage) was evaluated for a Tier A live Japanese voice and is not bundled yet — logged in PROGRESS."
+)
 
 LANG_FALLBACK = {
     "ja": "OS voice (macOS Kyoko; Windows Japanese speech pack)",
@@ -357,6 +372,8 @@ def write() -> int:
         "voices": voices,
         "excluded": EXCLUDED,
         "osVoiceLanguages": LANG_FALLBACK,
+        "fallbackOrder": FALLBACK_ORDER,
+        "fallbackNotes": FALLBACK_NOTES,
     }
     MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     total = sum(f["bytes"] for v in voices for f in v["files"])
