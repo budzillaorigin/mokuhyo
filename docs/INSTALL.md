@@ -36,8 +36,9 @@ marked; "Reading/Listening only for now" skips the download) → test your micro
 
 ## If recording picks up nothing
 Mokuhyo says "No audio detected — check your microphone" when the input stays silent.
-- **macOS:** System Settings → Privacy & Security → Microphone → turn Mokuhyo on. (From 0.3.0 macOS asks the first time
-  you record; 0.2.x and earlier never asked, so turn it on there by hand.)
+- **macOS:** System Settings → Privacy & Security → Microphone → turn Mokuhyo on. From 0.3.0 macOS asks the first time
+  you record. Versions 0.2.x and earlier lacked the permission request, so macOS silenced the microphone and may not list
+  Mokuhyo there at all — install 0.3.0 or later.
 - **Windows:** Settings → Privacy & security → Microphone → turn on "Let desktop apps access your microphone".
 - In Mokuhyo, Settings → Speech & audio → pick the right input and use the level meter to check it.
 
