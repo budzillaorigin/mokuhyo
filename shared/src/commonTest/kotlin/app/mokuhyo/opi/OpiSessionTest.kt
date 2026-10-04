@@ -93,7 +93,12 @@ class OpiSessionTest {
         val line = s.next()
         assertNotNull(line)
         assertEquals("fake engine", line.engine)
-        assertEquals(OpiPhase.LEVEL_CHECK, s.phase)
+        // Slot filling (BRIEF_PHASE8 N-00b): the plan moves the phase, not the model's "next_phase"; the session's
+        // topic area and question type are in the prompt.
+        assertEquals(OpiPhase.WARMUP, s.phase)
+        val prompt = model.requests.first().messages.last().content
+        assertTrue("Kind of question: an easy personal question" in prompt && "Topic area for this question: " in prompt, prompt)
+        assertEquals(0, s.scriptedTurns)
         s.answer("Vivo en Madrid. El año pasado fui a Madrid para trabajar.")
         val rating = s.rate()
         assertEquals("2", rating.estimate)

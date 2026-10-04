@@ -288,6 +288,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     }
     val notes = remember { app.culturalNotes(module.code) }
     val lines = remember { mutableStateListOf<Pair<Turn, String>>() } // (turn, english gloss)
+    var asker by remember { mutableStateOf<String?>(null) }
     val records = remember { mutableStateListOf<TurnFeedbackRecord>() }
     val queue = remember {
         if (mode.records && app.languageModel() != null) FeedbackQueue(app.gateway, scope) { rec ->
@@ -347,6 +348,8 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 return@launch
             }
             lines += Turn(Speaker.PARTNER, line.text) to line.english
+            // Say who asked (BRIEF_PHASE8 N-00b): the model by name, or a scripted bank question and why.
+            asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
             status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
             speak(app, line.text, module.code)
             busy = false
@@ -386,6 +389,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         ModeChip(mode)
         SectionCard {
             Text(status, style = MaterialTheme.typography.titleMedium)
+            asker?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
             if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
             queue?.pendingCount?.collectAsState()?.value?.takeIf { it > 0 && mode == CorrectionsMode.LIVE }?.let {
                 Text("Feedback on $it answer(s) is being prepared…", style = MaterialTheme.typography.bodySmall)

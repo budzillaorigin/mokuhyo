@@ -84,6 +84,10 @@ class OpiSession(
     val startedAt: Instant = clock.now()
     private val history = mutableListOf<Turn>()
     private val asked = mutableSetOf<String>()
+
+    /** Interviewer turns that came from the scripted bank instead of the model (BRIEF_PHASE8 N-00b: target < 10 %). */
+    var scriptedTurns = 0
+        private set
     private val usedDomains = mutableListOf<String>()
     private val records = mutableListOf<OpiTurnRecord>()
     private var turnsInPhase = 0
@@ -105,11 +109,16 @@ class OpiSession(
     suspend fun next(): InterviewerLine? {
         if (finished) return null
         if (phase == OpiPhase.ROLEPLAY && rolePlay == null) rolePlay = pickRolePlay()
+        // Slot filling (BRIEF_PHASE8 N-00b): the session picks phase, target level, topic area and question type; the model
+        // only writes the question. Phases advance by the plan, never by the model.
+        val aim = targetFor(phase)
         val input = OpiInterviewerTurn.Input(
             language, profile.registerNotes, phase, workingLevel, history.toList(), turnsInPhase,
             rolePlay?.let { "${it.situation} You play: ${it.interviewerRole}." }?.takeIf { phase == OpiPhase.ROLEPLAY && turnsInPhase == 0 },
             usedDomains.distinct(),
             culturalNotes,
+            domain = nextDomain(),
+            questionType = OpiInterviewerTurn.questionType(phase, aim),
         )
         val task = OpiInterviewerTurn { scripted(it.phase) }
         var reason: String? = null
@@ -121,13 +130,17 @@ class OpiSession(
                 return null
             }
         }
-        val line = InterviewerLine(out.utterance, out.english, phase, engine, out.domain.ifBlank { null }, reason)
+        val domain = if (reason == null) input.domain.takeIf { phase != OpiPhase.ROLEPLAY } else out.domain.ifBlank { null }
+        val line = InterviewerLine(out.utterance, out.english, phase, engine, domain?.ifBlank { null }, reason)
         records += OpiTurnRecord(records.size, phase, out.utterance, out.english, line.domain, targetFor(phase), workingLevel, engine = engine)
         line.domain?.let { usedDomains += it }
         questionPhase = phase
         history += Turn(Speaker.PARTNER, out.utterance)
+        if (reason != null) scriptedTurns++
+        asked += out.utterance
+        val next = nextFor(phase) // by the plan, counted before this turn is added
         turnsInPhase++
-        advance(out.nextPhase)
+        advance(next)
         return line
     }
 
@@ -253,6 +266,13 @@ class OpiSession(
         } ?: bank.filter { it.phase == wire && it.prompt !in asked }.randomOrNull(random) ?: return null
         asked += q.prompt
         return OpiInterviewerTurn.Output(q.prompt, q.english, nextFor(phase), "", q.domain.orEmpty())
+    }
+
+    /** The next topic area: an unused one (in a stable shuffled order), else the least used. */
+    private fun nextDomain(): String {
+        val pool = OpiInterviewerTurn.DOMAINS.filter { it != "roleplay" }
+        val unused = pool.filter { it !in usedDomains }
+        return if (unused.isNotEmpty()) unused.shuffled(random).first() else pool.minBy { d -> usedDomains.count { it == d } }
     }
 
     private fun nextFor(phase: OpiPhase) = if (turnsInPhase + 1 >= plan.getValue(phase)) OpiPhase.entries.getOrElse(phase.ordinal + 1) { phase } else phase

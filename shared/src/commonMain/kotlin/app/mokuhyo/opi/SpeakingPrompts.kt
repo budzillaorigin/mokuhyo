@@ -77,13 +77,20 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         val usedDomains: List<String> = emptyList(),
         /** The language's pragmatics norms (BRIEF_PHASE8 C-07): the interviewer follows them and plays role-plays by them. */
         val culturalNotes: List<String> = emptyList(),
+        /**
+         * Slots the session fills (BRIEF_PHASE8 N-00b): the topic area and the kind of question for this turn. The model
+         * only writes the question; phase, level, topic and type are decided by the session's state machine.
+         */
+        val domain: String = "",
+        val questionType: String = "",
     )
 
+    /** The model fills one slot: the question (and its English). Phase and topic come from the session, not the model. */
     @Serializable
     data class Output(
         val utterance: String,
         val english: String = "",
-        @SerialName("next_phase") val nextPhase: OpiPhase,
+        @SerialName("next_phase") val nextPhase: OpiPhase? = null,
         val topic: String = "",
         val domain: String = "",
     )
@@ -96,9 +103,6 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         listOf(
             "utterance" to JsonSchema.Str(maxLength = 300),
             "english" to JsonSchema.Str(maxLength = 300),
-            "next_phase" to JsonSchema.Str(enum = OpiPhase.entries.map { it.wireName }),
-            "topic" to JsonSchema.Str(maxLength = 80),
-            "domain" to JsonSchema.Str(enum = DOMAINS),
         ),
     )
 
@@ -115,8 +119,7 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                     "speech breaks down: ask to narrate, compare, support an opinion or hypothesize), roleplay (set up the situation and play your role), winddown (easy closing).",
                 "Write utterance in natural $lang only (no English, no romanization). One question or prompt, short enough to say in one breath. Never correct the candidate.",
                 "Never repeat or rephrase a question you already asked, and never repeat the candidate's words back as your question; build on what they said or move to a new topic.",
-                "english is an English translation of your utterance. next_phase is the phase for the following turn: stay, or move forward when this phase has done its job; never go back.",
-                "topic is a two-to-five-word English label; domain is one of: ${DOMAINS.joinToString()}.",
+                "english is an English translation of your utterance. The session decides the phase, the topic area and the kind of question; you write the question that fits them.",
                 if (input.culturalNotes.isNotEmpty()) "Cultural norms you follow as a native speaker (and in role-plays): " +
                     input.culturalNotes.joinToString(" ") { "• $it" } else "",
             ),
@@ -125,8 +128,10 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                     "Now: phase ${input.phase.wireName} (turn ${input.turnsInPhase + 1} of this phase). Working level hypothesis: ILR ${input.workingLevel.label} — " +
                     "${IlrSpeaking.describe(input.workingLevel)}. Aim this question at ILR ${aim.label}: ${IlrSpeaking.describe(aim)}." +
                     (input.rolePlay?.let { " Role-play to set up now: $it" } ?: "") +
-                    (if (input.usedDomains.isNotEmpty()) " Topic areas already covered: ${input.usedDomains.joinToString()}; prefer a new one." else "") +
-                    " Your next turn.",
+                    (if (input.domain.isNotBlank() && input.rolePlay == null) " Topic area for this question: ${input.domain}." else "") +
+                    (if (input.questionType.isNotBlank()) " Kind of question: ${input.questionType}." else "") +
+                    (if (input.usedDomains.isNotEmpty()) " Topic areas already covered: ${input.usedDomains.joinToString()}." else "") +
+                    " Write the question.",
             ),
         )
     }
@@ -143,6 +148,20 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
     override fun fallback(input: Input): Output? = fallbackHook?.invoke(input)
 
     companion object {
+        /** The kind of question each phase and target level calls for (the session's slot, BRIEF_PHASE8 N-00b). */
+        fun questionType(phase: OpiPhase, aim: IlrLevel): String = when (phase) {
+            OpiPhase.WARMUP -> "an easy personal question (work, daily life, where they live)"
+            OpiPhase.WINDDOWN -> "an easy, friendly closing question"
+            OpiPhase.ROLEPLAY -> "set up the role-play situation and speak your first line in your role"
+            else -> when (aim) {
+                IlrLevel.L0, IlrLevel.L0_PLUS, IlrLevel.L1 -> "a simple question about a familiar fact or routine"
+                IlrLevel.L1_PLUS -> "ask them to describe something familiar in some detail"
+                IlrLevel.L2 -> "ask them to narrate a past event, or describe a place or a process in detail"
+                IlrLevel.L2_PLUS -> "ask them to compare two things, or explain a procedure and the reasons for it"
+                else -> "ask them to support an opinion on an abstract or policy issue, or to hypothesize about what would happen if…"
+            }
+        }
+
         /**
          * Near-duplicate questions: character-bigram Jaccard similarity ≥ 0.7 after folding. Works the same for spaced
          * and unspaced scripts: "¿Qué te parece hacer un viaje a España?" ≈ "¿Qué te parece si hacemos un viaje a
