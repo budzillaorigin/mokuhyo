@@ -21,6 +21,10 @@ import sys
 from pathlib import Path
 
 TOOLS = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(TOOLS))
+
+from langtext import reads_as_english
+
 LANGS = ["ja", "es", "fr", "de", "pt-BR", "ru", "zh-Hans", "ko", "ar", "fa", "id"]
 TOPICS = {"address", "refusal", "apology", "small_talk", "disagreement", "hospitality", "nonverbal"}
 ROLES = {"senior_counterpart", "peer_officer", "junior_enlisted", "interpreter", "local_contractor", "civilian_official"}
@@ -73,6 +77,9 @@ def check_pragmatics(lang: str) -> list[str]:
             for x in e.get("examples", []):
                 if not all(str(x.get(k, "")).strip() for k in ("situation", "say", "dontSay", "why")):
                     errs.append(f"{lang} {tid}[{i}]: example needs situation, say, dontSay, why")
+                for k in ("say", "dontSay"):
+                    if reads_as_english(str(x.get(k, "")), lang):
+                        errs.append(f"{lang} {e.get('id')}: {k} reads as English: {x.get(k)}")
     return errs
 
 

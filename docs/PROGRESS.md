@@ -449,3 +449,50 @@ overlap_check over 92,378 text fields including all cards, 0 failing (no sentenc
 - Fixes found on the way, each with a regression test in `tools/terms/test_terms_gates.py`: `overlap_check.py` now
   writes its JSON report even when there is no text (it crashed the pragmatics build); the official French force name
   is on the overlap allow-list (a proper name, not copied prose).
+
+## C-03 — Counter-UAS and base-defense track ✅ (small shortfalls logged)
+- `tools/tracks/build_track.py` → `tools/tracks/cuas-base-defense.<lang>.json` → `content/packs/<lang>/track-cuas-base-defense.json`:
+  371–402 terms per language with the aligned term (C-02), learner definition, two example sentences, collocations
+  and register note; 361–671 drills (meaning, fill-in, register, radio brevity); 12 scenarios with partner openers
+  (all 12 in every language except Arabic, 11); 8 listening dialogues (Persian 7) rendered as audio where a voice is
+  bundled; 12 OPI probes per language (Arabic 10) merged into `tools/opi/<lang>.json` as `<lang>-cuas-probe-NN`.
+- Track passages (`gen_dlpt.py fill --track cuas-base-defense`): reading 6 and listening 4 per band at ILR 1, 2, 3.
+- Every example, collocation, drill and dialogue passes `overlap_check.py` before the track file is written
+  (`scrub`; 4 items dropped). Official AAP-06 / MD35-G-01 designations used as terms are on the overlap allow-list.
+- Fixes on the way, each with a regression test (`tools/tracks/test_build_track.py`, `tools/terms/test_terms_gates.py`):
+  OPI probes were all dropped because the model writes "ILR 2"; openers/dialogues now retry and keep partial results;
+  examples are redrafted when the aligned term changes; allow-listed designations match with an attached "l'"/"da".
+
+**Gate:** `gate_content.sh` PASS (strict validation 0 errors, packs, counts, feeds, culture); `gate_terms.sh` PASS
+(222,738 text fields, 0 failing). Shortfalls logged (the gate allows them with the draft command):
+
+| lang | band | have / want | close with |
+|---|---|---|---|
+| ru | track listening | 11 / 12 passages | `cd tools && uv run --group content python items/gen_dlpt.py fill --language ru --skill listening --track cuas-base-defense` |
+| fa | track reading | 17 / 18 passages | `cd tools && uv run --group content python items/gen_dlpt.py fill --language fa --skill reading --track cuas-base-defense` |
+
+## C-07 — Pragmatics pack and inference items ✅ (small shortfalls logged)
+- `tools/pragmatics/<lang>.json` → `packs/<lang>/pragmatics.json`: the seven topics (address and rank, refusals,
+  apology and thanks, small talk, disagreement, hospitality, gestures and silence), 19–21 entries per language, each
+  with a rule and examples (say / don't say / why), citing the field-guide section where one exists.
+- `build_pragmatics.py` strips English glosses from example lines and drops examples that read as English
+  (`langtext.reads_as_english`, the Python mirror of the app's `ScriptCheck`); `check_culture.py` enforces it.
+  The app's Spanish function-word list gained "a" (valid Spanish like "¿Puedo ayudar a limpiar?" was read as English).
+- Inference items: `gen_dlpt.py fill --track pragmatics` — listening "implied meaning" passages at ILR 2 and 2+.
+- The OPI interviewer and topic partner carry the pack's norms (`AppGraph.culturalNotes` → `OpiSession`,
+  `TopicSession`); `PragmaticsGoldenTest` pins it.
+
+**Gate:** `check_culture.py` 0 errors; `RealCulturePacksTest` (built packs, `MOKUHYO_REQUIRE_PACKS=1`) 3/3; items pass
+the strict exam validator in `gate_content`. Inference items: 24 in ja, es, fr, de, pt-BR, ru, id; **21 of 24** in
+zh-Hans, ko, ar and fa after the top-up rounds — close with
+`cd tools && uv run --group content python items/gen_dlpt.py fill --language zh-Hans,ko,ar,fa --skill listening --track pragmatics`.
+
+## C-08 — Partner personas ✅
+- `tools/personas/<lang>.json` → `packs/<lang>/personas.json`: six roles per partner force (senior counterpart, peer
+  officer, junior enlisted, interpreter, local contractor, civilian official) — twelve for Arabic (RSAF and QEAF) —
+  each with name, rank title, register, patience, formality, a greeting in the language, and links to the pragmatics
+  entries and culture card it draws on. Persona picker in Speaking (C-04/C-11 app side).
+
+**Gate:** `RealCulturePacksTest.personaPromptsHaveTheGoldenShape` (each persona's system-prompt block has the golden
+shape; greetings in the language) and `PragmaticsGoldenTest` pass; `check_culture.py` 0 errors. Full Kotlin suite
+(`:shared:allTests :desktopApp:test`, packs required) green.

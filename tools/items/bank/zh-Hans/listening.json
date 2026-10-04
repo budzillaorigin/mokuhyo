@@ -508,6 +508,95 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dl-1-announcement-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Forest Park Patrol Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "管理员",
+     "voice": "male",
+     "text": "大家好，我是森林公园的管理员。"
+    },
+    {
+     "speaker": "管理员",
+     "voice": "male",
+     "text": "通知大家明天上午九点在森林公园管理楼开会。"
+    },
+    {
+     "speaker": "管理员",
+     "voice": "male",
+     "text": "我们将进行森林公园周界联合巡逻。"
+    },
+    {
+     "speaker": "管理员",
+     "voice": "male",
+     "text": "希望大家准时参加。"
+    },
+    {
+     "speaker": "管理员",
+     "voice": "male",
+     "text": "谢谢大家！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Base Defense Operations Center Shift Handover",
+   "body": "",
+   "script": [
+    {
+     "speaker": "值班员",
+     "voice": "male",
+     "text": "各位同事，现在开始交接班。"
+    },
+    {
+     "speaker": "值班员",
+     "voice": "male",
+     "text": "新一班，首先进行系统检查，然后核查当前情况。"
+    },
+    {
+     "speaker": "值班员",
+     "voice": "male",
+     "text": "注意，雷达系统有轻微故障，请尽快处理。"
+    },
+    {
+     "speaker": "值班员",
+     "voice": "male",
+     "text": "老一班，请汇报近况。"
+    },
+    {
+     "speaker": "老班长",
+     "voice": "female",
+     "text": "老一班值班期间，一切正常。"
+    },
+    {
+     "speaker": "值班员",
+     "voice": "male",
+     "text": "交接班完毕，新一班开始工作。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "zh-Hans",
@@ -687,6 +776,53 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dl-1-instructions-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Air Defense System Debate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "张工程师",
+     "voice": "male",
+     "text": "我们正在讨论将激光武器用作空中防御系统的可能性。"
+    },
+    {
+     "speaker": "李主管",
+     "voice": "female",
+     "text": "激光武器的优势是什么？"
+    },
+    {
+     "speaker": "张工程师",
+     "voice": "male",
+     "text": "激光武器可以在任何天气条件下使用，而且比传统武器更精确。"
+    },
+    {
+     "speaker": "李主管",
+     "voice": "female",
+     "text": "但是，激光武器的成本很高，而且需要大量的能源。"
+    },
+    {
+     "speaker": "张工程师",
+     "voice": "male",
+     "text": "是的，这是一个需要权衡的问题。"
+    },
+    {
+     "speaker": "李主管",
+     "voice": "female",
+     "text": "我们需要进一步研究和测试，以确定激光武器是否适合我们的空中防御需求。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dl-1-voicemail-001",
    "exam": "DLPT_LISTENING",
    "language": "zh-Hans",
@@ -802,6 +938,48 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-1-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Base Security Alert Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "各位同事，我是安保部的张主任。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "基地安全等级已提升至二级。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "请大家注意安全，这是一个安全提醒。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "再次感谢大家的配合。"
+    },
+    {
+     "speaker": "女士",
+     "voice": "female",
+     "text": "祝大家好。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2013,6 +2191,73 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Collaboration in the Tech Industry: A Meeting Between Two Companies",
+   "body": "",
+   "script": [
+    {
+     "speaker": "李经理",
+     "voice": "male",
+     "text": "王总监，您好！很高兴能有机会与您见面。"
+    },
+    {
+     "speaker": "王总监",
+     "voice": "female",
+     "text": "李经理，您好！我也很高兴能与您谈谈。"
+    },
+    {
+     "speaker": "李经理",
+     "voice": "male",
+     "text": "我们公司最近在开发一个新项目，我们认为贵公司在这个领域有很强的实力。"
+    },
+    {
+     "speaker": "王总监",
+     "voice": "female",
+     "text": "哦？是什么项目呢？"
+    },
+    {
+     "speaker": "李经理",
+     "voice": "male",
+     "text": "是一个关于智能家居的项目。我们希望能与贵公司合作，共同开发这个项目。"
+    },
+    {
+     "speaker": "王总监",
+     "voice": "female",
+     "text": "智能家居啊，这个领域我们确实有很多经验。"
+    },
+    {
+     "speaker": "李经理",
+     "voice": "male",
+     "text": "我们的团队有丰富的经验，相信我们可以做得很好。"
+    },
+    {
+     "speaker": "王总监",
+     "voice": "female",
+     "text": "也许我们可以考虑一下？"
+    },
+    {
+     "speaker": "李经理",
+     "voice": "male",
+     "text": "好的，我们可以详细谈谈合作的细节。"
+    },
+    {
+     "speaker": "王总监",
+     "voice": "female",
+     "text": "好的，我们可以约个时间详细讨论。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dl-2-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "zh-Hans",
@@ -2152,6 +2397,224 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "interview",
+   "title": "Cross-Border Patrol Cooperation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "欢迎收听今天的访谈节目。今天我们请到了边境巡逻队的队长张伟和李明，他们将为我们介绍最近的联合巡逻计划。张队长，请您先介绍一下这个计划的背景吧。"
+    },
+    {
+     "speaker": "张伟",
+     "voice": "male",
+     "text": "感谢您的邀请。这个联合巡逻计划是为了加强我们两国边境的安全合作。通过双边合作，我们可以更好地共享情报，提高巡逻的效率和效果。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "李队长，您觉得这个计划对巡逻队员们有什么具体的帮助呢？"
+    },
+    {
+     "speaker": "李明",
+     "voice": "male",
+     "text": "这个计划让我们能够更好地协调行动，特别是在应对跨境犯罪方面。我们可以互相支持，共同应对各种挑战。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "听起来这个计划确实有很多好处。张队长，您能否具体说明一下这个计划是如何运作的呢？"
+    },
+    {
+     "speaker": "张伟",
+     "voice": "male",
+     "text": "当然可以。我们会定期举行联合巡逻，确保边境的安全。同时，我们也会定期交流情报，确保信息的及时共享。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "感谢两位队长的详细介绍。今天的访谈就到这里，感谢收听。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "interview",
+   "title": "Border Security Measures: A Joint Patrol Briefing",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "今天我们很荣幸采访到边境巡逻队的队长张明。张队长，您能介绍一下即将进行的联合巡逻吗？"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "当然可以。我们即将进行联合巡逻，确保边境安全。这次巡逻由我们两国边防部队共同执行，目的是加强边境管控，打击跨境犯罪。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "巡逻队的主要职责是什么？"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "巡逻队必须保持通信畅通，确保协调一致。他们需要定期巡视边境地区，检查可疑活动，并收集情报。此外，他们还要与当地社区合作，提高边境安全意识。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "这次联合巡逻有什么特别之处吗？"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "这次联合巡逻我们引入了新的技术设备，如无人机和热成像仪，以提高巡逻效率和安全性。此外，我们还将进行联合演练，以应对各种突发情况。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "感谢您的介绍，张队长。祝巡逻顺利！"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "不客气，合作愉快！"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-interview-005",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "interview",
+   "title": "A Business Meal with Air Force Colleagues",
+   "body": "",
+   "script": [
+    {
+     "speaker": "小王",
+     "voice": "female",
+     "text": "张上校，今天晚上的晚宴在哪里举行？"
+    },
+    {
+     "speaker": "张上校",
+     "voice": "male",
+     "text": "在我们空军招待所。小王，你们来之前，有什么需要准备的吗？"
+    },
+    {
+     "speaker": "小王",
+     "voice": "female",
+     "text": "我听说空军的招待很丰盛，我带了我喜欢的特产，想送给大家。"
+    },
+    {
+     "speaker": "张上校",
+     "voice": "male",
+     "text": "那太好了！我们空军有空军的传统，到时候我会介绍给你。"
+    },
+    {
+     "speaker": "小王",
+     "voice": "female",
+     "text": "好的，我会注意的。张上校，我听说你们空军有特别的祝酒方式，能介绍一下吗？"
+    },
+    {
+     "speaker": "张上校",
+     "voice": "male",
+     "text": "我们空军祝酒的时候，通常是由长者或主人先举杯，然后大家一起碰杯。小王，你第一次来，就由我来敬你一杯吧。"
+    },
+    {
+     "speaker": "小王",
+     "voice": "female",
+     "text": "谢谢张上校，我一定好好学习。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-interview-006",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "interview",
+   "title": "Air Force Training Strategy Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "张参谋",
+     "voice": "male",
+     "text": "王上尉，关于新的训练计划，我有几点想法想和您讨论一下。"
+    },
+    {
+     "speaker": "王上尉",
+     "voice": "female",
+     "text": "好的，张参谋，我很乐意听听您的意见。"
+    },
+    {
+     "speaker": "张参谋",
+     "voice": "male",
+     "text": "首先，这个训练计划看起来有点紧凑，您觉得我们的飞行员能适应这样的强度吗？"
+    },
+    {
+     "speaker": "王上尉",
+     "voice": "female",
+     "text": "确实，时间安排很紧凑，但我们可以在训练前加强体能训练来适应。"
+    },
+    {
+     "speaker": "张参谋",
+     "voice": "male",
+     "text": "其次，这些训练地点我们已经去过很多次了，或许我们可以考虑一些新的地点来增加挑战性。"
+    },
+    {
+     "speaker": "王上尉",
+     "voice": "female",
+     "text": "这些地点确实很熟悉，但它们的地理环境对我们的训练很有帮助。"
+    },
+    {
+     "speaker": "张参谋",
+     "voice": "male",
+     "text": "最后，关于训练方法，我们可能需要一些新的方法来提高效果。"
+    },
+    {
+     "speaker": "王上尉",
+     "voice": "female",
+     "text": "我们可以保留一些传统的方法，同时引入一些新的技术和策略。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2353,6 +2816,63 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dl-2-news-004",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "news",
+   "title": "Airport Installs Counter-Drone System",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "近日，北京首都国际机场和天津滨海国际机场安装了新型反无人机系统。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "这套系统能够探测到无人机并干扰其信号，从而使其无法正常飞行或返回。"
+    },
+    {
+     "speaker": "机场发言人",
+     "voice": "male",
+     "text": "随着无人机的普及，近年来机场周边的无人机事件时有发生。"
+    },
+    {
+     "speaker": "机场发言人",
+     "voice": "male",
+     "text": "这些事件不仅影响了飞行安全，还给机场的正常运行带来了挑战。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "新系统的安装旨在加强机场的安全措施，保障飞行安全。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "机场方面表示，该系统已经通过多次测试，具有很高的准确性和可靠性。"
+    },
+    {
+     "speaker": "机场发言人",
+     "voice": "male",
+     "text": "我们希望通过这一措施，有效减少无人机对机场运行的干扰和威胁。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "机场还呼吁广大无人机爱好者，遵守相关法规，不要在机场周边地区飞行无人机。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "zh-Hans",
@@ -2401,6 +2921,339 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "report",
+   "title": "Unmanned Aircraft Sighting at Dongfeng Air Base",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "各位听众，晚上好。我是央广新闻的记者小李。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "今天晚上，东风空军基地附近发生了一起无人机侦察事件。"
+    },
+    {
+     "speaker": "值班员",
+     "voice": "male",
+     "text": "报告长官，雷达屏幕上显示有不明飞行物体正在基地上空盘旋。"
+    },
+    {
+     "speaker": "长官",
+     "voice": "male",
+     "text": "立即启动应急预案，调派武装直升机前往拦截。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "根据基地值班员的报告，这架无人机于晚上10点左右被首次发现。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "基地立即启动应急预案，调派武装直升机前往拦截，但无人机似乎察觉到危险，迅速逃离了现场。"
+    },
+    {
+     "speaker": "长官",
+     "voice": "male",
+     "text": "目前，我们正在对这起事件进行调查，以确定无人机的来源和目的。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "我是央广新闻的记者小李，为您报道。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Request from the Air Force",
+   "body": "",
+   "script": [
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "李华，我是张伟。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "你最近过得怎么样？"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "张伟，我很好，谢谢。你呢？"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "我也不错。听说你在空军工作，我想请你帮个忙。"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "当然可以，什么忙？"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "我们单位有一个项目需要进入一个限制区域进行调查。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "我想请你带我进去看看。"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "这个嘛，我需要先了解一下具体情况。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "这个限制区域对我们的项目非常重要，我想亲自去看看。"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "我理解，这确实需要一定的安全许可。"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "让我和我的上级商量一下，看看是否可以安排。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "好的，谢谢你。"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "不过，我恐怕不能答应你的请求。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "为什么？"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "最近工作比较忙，而且这个区域的安保措施比较严格。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "这样啊，那真是太遗憾了。"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "也许下次有机会吧。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "好的，那我们下次再约。"
+    },
+    {
+     "speaker": "李华 (Lǐ Huá)",
+     "voice": "female",
+     "text": "好的，再见。"
+    },
+    {
+     "speaker": "张伟 (Zhāng Wěi)",
+     "voice": "male",
+     "text": "再见。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Home-Cooked Meal in Chengdu",
+   "body": "",
+   "script": [
+    {
+     "speaker": "李华",
+     "voice": "female",
+     "text": "张明、王丽，今天我来你们家做客，真的很高兴。"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "李华：欢迎欢迎！我们一直想请你来家里吃饭。"
+    },
+    {
+     "speaker": "王丽",
+     "voice": "female",
+     "text": "张明：是的，今天我们准备了几道家常菜，希望你喜欢。"
+    },
+    {
+     "speaker": "李华",
+     "voice": "female",
+     "text": "李华：太感谢了！你们那么忙还特意做饭，真的不用那么麻烦。"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "王丽：不麻烦不麻烦，我们很乐意。你太客气了！"
+    },
+    {
+     "speaker": "王丽",
+     "voice": "female",
+     "text": "李华：你尝尝这个红烧肉，这是我们家的拿手菜。"
+    },
+    {
+     "speaker": "李华",
+     "voice": "female",
+     "text": "张明：哇，看起来就很好吃！我一定要多吃点。"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "王丽：来，再喝点汤，这是我们自己做的菌菇汤，很补的。"
+    },
+    {
+     "speaker": "李华",
+     "voice": "female",
+     "text": "张明：好啊，谢谢！你们家的菜真好吃，味道太棒了！"
+    },
+    {
+     "speaker": "王丽",
+     "voice": "female",
+     "text": "李华：客气了，我们家的厨艺还是可以的。"
+    },
+    {
+     "speaker": "张明",
+     "voice": "male",
+     "text": "张明：你下次有空一定要再来，我们随便吃吃吧。"
+    },
+    {
+     "speaker": "李华",
+     "voice": "female",
+     "text": "李华：好啊，下次我一定再来打扰你们。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "Planning for the Annual Cultural Festival",
+   "body": "",
+   "script": [
+    {
+     "speaker": "张经理",
+     "voice": "male",
+     "text": "大家好，今天我们开会是为了商讨一下本月文化节的筹备工作。"
+    },
+    {
+     "speaker": "李主任",
+     "voice": "female",
+     "text": "好的，张经理。我们需要确保一切顺利，所以我们需要详细讨论每个环节。"
+    },
+    {
+     "speaker": "王主管",
+     "voice": "male",
+     "text": "首先，我们需要协调演员的排练时间。他们最近都很忙，我们需要尽早确定具体时间。"
+    },
+    {
+     "speaker": "张经理",
+     "voice": "male",
+     "text": "是的，王主管。我们可以联系演员的经纪人，看看他们的时间安排。"
+    },
+    {
+     "speaker": "赵秘书",
+     "voice": "female",
+     "text": "另外，我们还需要准备道具和布景。我们可以考虑请专业的道具公司来帮忙。"
+    },
+    {
+     "speaker": "李主任",
+     "voice": "female",
+     "text": "这个主意不错。我们可以比较几家公司的报价，然后选择最合适的。"
+    },
+    {
+     "speaker": "王主管",
+     "voice": "male",
+     "text": "关于宣传方面，我们可以考虑在社交媒体上进行推广。"
+    },
+    {
+     "speaker": "张经理",
+     "voice": "male",
+     "text": "我们可以稍后再讨论这个。现在，我们需要先解决演员和道具的问题。"
+    },
+    {
+     "speaker": "赵秘书",
+     "voice": "female",
+     "text": "好的，张经理。我们会优先处理这些事项。"
+    },
+    {
+     "speaker": "李主任",
+     "voice": "female",
+     "text": "最后，我们需要确认志愿者的安排。我们需要足够的人手来确保活动顺利进行。"
+    },
+    {
+     "speaker": "张经理",
+     "voice": "male",
+     "text": "是的，李主任。我们可以发布公告，征集志愿者。"
+    },
+    {
+     "speaker": "王主管",
+     "voice": "male",
+     "text": "好的，今天的会议就到这里。我们下周再开会跟进进展。"
+    },
+    {
+     "speaker": "张经理",
+     "voice": "male",
+     "text": "好的，散会。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2797,6 +3650,68 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-2p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Preparations for the National Education Conference",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者 (女)",
+     "voice": "female",
+     "text": "欢迎大家参加今天的联络会议。这次会议的目的是为了讨论即将举行的全国教育大会的筹备工作。"
+    },
+    {
+     "speaker": "王老师 (男)",
+     "voice": "male",
+     "text": "是的，这次会议很重要。我们需要确保每个环节都运作顺畅，这需要提前准备。"
+    },
+    {
+     "speaker": "李老师 (女)",
+     "voice": "female",
+     "text": "我同意。我们可能需要调整一些安排，以适应不同代表的需求。"
+    },
+    {
+     "speaker": "赵主任 (男)",
+     "voice": "male",
+     "text": "老师们的经验和反馈对于会议的成功至关重要。我们应该考虑让更多的老师参与到筹备工作中来。"
+    },
+    {
+     "speaker": "张校长 (女)",
+     "voice": "female",
+     "text": "我认为我们应该重点讨论会议的主题和议程。这些将决定会议的成败。"
+    },
+    {
+     "speaker": "王老师 (男)",
+     "voice": "male",
+     "text": "是的，主题和议程很重要。我们需要确保每个环节都能有效地进行。"
+    },
+    {
+     "speaker": "李老师 (女)",
+     "voice": "female",
+     "text": "有些代表可能有特别的要求，我们需要提前沟通。"
+    },
+    {
+     "speaker": "赵主任 (男)",
+     "voice": "male",
+     "text": "我同意。我们需要确保每个代表都能充分发挥他们的作用。"
+    },
+    {
+     "speaker": "张校长 (女)",
+     "voice": "female",
+     "text": "好的，我们将在下次会议上进一步讨论这些细节。今天的会议就到这里，谢谢大家。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3439,6 +4354,130 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dl-3-analysis-004",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Enhancing Airport Security: The Counter-Drone System",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者 (Journalist)",
+     "voice": "female",
+     "text": "各位观众大家好，我是记者王丽。今天我们来到首都国际机场，报道最近安装的无人机防御系统。"
+    },
+    {
+     "speaker": "机场负责人 (Airport Manager)",
+     "voice": "male",
+     "text": "这个系统是我们机场安全升级的一部分。它能够在10公里内探测到无人机，并采取必要的措施来防止它们对飞行安全造成威胁。"
+    },
+    {
+     "speaker": "记者 (Journalist)",
+     "voice": "female",
+     "text": "这个系统是如何工作的呢？"
+    },
+    {
+     "speaker": "技术专家 (Technical Expert)",
+     "voice": "male",
+     "text": "这个无人机防御系统通过雷达和光学传感器来探测无人机。一旦发现可疑的无人机，系统可以发出警报，或者干扰其通信信号，使其无法继续飞行。"
+    },
+    {
+     "speaker": "记者 (Journalist)",
+     "voice": "female",
+     "text": "这个系统有哪些优势呢？"
+    },
+    {
+     "speaker": "机场负责人 (Airport Manager)",
+     "voice": "male",
+     "text": "首先，它提高了机场的安全性。其次，它可以减少飞行延误，因为无人机干扰是导致飞行延误的一个重要原因。最后，它还可以保护乘客的隐私，防止无人机偷拍。"
+    },
+    {
+     "speaker": "记者 (Journalist)",
+     "voice": "female",
+     "text": "这个系统已经投入使用了吗？"
+    },
+    {
+     "speaker": "机场负责人 (Airport Manager)",
+     "voice": "male",
+     "text": "是的，系统已经投入使用，并且已经成功防止了几起无人机干扰事件。我们相信，这个系统将大大提高我们机场的安全水平。"
+    },
+    {
+     "speaker": "记者 (Journalist)",
+     "voice": "female",
+     "text": "感谢各位的介绍。观众朋友们，这就是首都国际机场新安装的无人机防御系统。我是记者王丽，报道完毕。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-3-analysis-005",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Harbor Surveillance: The Future of Drone Technology",
+   "body": "",
+   "script": [
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "今天我们来到青岛港，这里最近引入了小型无人机群进行港口监控。让我们听听相关专家的看法。"
+    },
+    {
+     "speaker": "港口管理员",
+     "voice": "male",
+     "text": "自从我们引入小型无人机群以来，港口的监控能力得到了显著提升。这些无人机可以快速响应各种情况，提供实时的视频监控和数据采集。"
+    },
+    {
+     "speaker": "技术专家",
+     "voice": "female",
+     "text": "这些小型无人机配备了先进的传感器和摄像头，能够在复杂的环境中进行精确的航线规划和避障。它们可以协同作战，覆盖更大的区域，提高监控的效率和准确性。"
+    },
+    {
+     "speaker": "安全专家",
+     "voice": "male",
+     "text": "当然，使用无人机也带来了一些挑战。例如，如何确保无人机的安全性，防止它们被黑客攻击或被用于恶意目的。此外，还需要考虑隐私问题，确保无人机的监控不侵犯个人隐私。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "那么，这些无人机如何与现有的监控系统协同工作呢？"
+    },
+    {
+     "speaker": "港口管理员",
+     "voice": "male",
+     "text": "无人机只是综合监控系统的一部分。它们与固定的监控摄像头、雷达系统和人工巡逻相结合，提供全面的监控覆盖。这种多层次的监控方式可以最大限度地提高港口的安全性。"
+    },
+    {
+     "speaker": "技术专家",
+     "voice": "female",
+     "text": "此外，无人机还可以用于特定任务，如巡逻、搜救和应急响应。它们的灵活性和机动性使它们成为港口监控的重要工具。"
+    },
+    {
+     "speaker": "安全专家",
+     "voice": "male",
+     "text": "未来，随着技术的不断进步，无人机的应用前景将更加广阔。我们期待看到更多创新的解决方案，以提高港口的安全和效率。"
+    },
+    {
+     "speaker": "记者",
+     "voice": "female",
+     "text": "谢谢各位专家的介绍。今天的报道就到这里，我是青岛电视台的记者张晓茜，我们下期再会。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dl-3-debate-001",
    "exam": "DLPT_LISTENING",
    "language": "zh-Hans",
@@ -3604,6 +4643,58 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-3-debate-004",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Economic Burden of Counter-Drone Measures",
+   "body": "",
+   "script": [
+    {
+     "speaker": "甲 (A)",
+     "voice": "male",
+     "text": "随着无人机技术的快速发展，我们面临着新的安全挑战。这些廉价的无人机可以轻易接近我们的军事基地，并造成严重破坏。"
+    },
+    {
+     "speaker": "乙 (B)",
+     "voice": "female",
+     "text": "我同意无人机威胁的严重性，但我们必须考虑升级我们的防御系统所带来的经济负担。每年花费数十亿美元来应对廉价无人机的威胁，这在财政上是不可持续的。"
+    },
+    {
+     "speaker": "甲 (A)",
+     "voice": "male",
+     "text": "然而，我们必须投资于先进的防御系统，以确保我们的基地安全。廉价无人机的威胁日益增大，我们不能因短期的财政考虑而忽视长期的安全需求。"
+    },
+    {
+     "speaker": "乙 (B)",
+     "voice": "female",
+     "text": "我们面临着巨大的经济负担，因为我们不得不不断升级我们的系统。而且，敌人可以轻易制造和部署大量廉价无人机，而我们却需要投入巨资来防御。"
+    },
+    {
+     "speaker": "甲 (A)",
+     "voice": "male",
+     "text": "确实，无人机的成本远低于我们的防御系统。但我们的基地安全至关重要，我们不能因为成本问题而妥协。我们需要在财政可持续性和国家安全之间找到平衡。"
+    },
+    {
+     "speaker": "乙 (B)",
+     "voice": "female",
+     "text": "我理解你的担忧，但我们需要更聪明地花钱。我们可以开发更有效的防御策略，而不是仅仅依赖于昂贵的技术升级。"
+    },
+    {
+     "speaker": "甲 (A)",
+     "voice": "male",
+     "text": "同意。我们需要探索成本效益更高的解决方案。但无论如何，我们必须确保我们的基地免受廉价无人机的威胁。这需要持续的投资和创新。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3888,6 +4979,73 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Coordinating Air Defense: A Lecture on Allied Radio Procedures",
+   "body": "",
+   "script": [
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "今天，我们要讨论的是联合空防单位之间无线电程序的重要性。有效的通信是成功协作的关键。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "首先，我们需要建立统一的频率和通信协议。这将确保所有单位能够清晰地接收和发送信息。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "例如，我们可以使用国际民用航空组织的频率和代码。这将帮助我们避免混淆和误解。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "其次，我们需要建立明确的指挥和控制结构。每个单位都应该清楚地知道谁负责协调和决策。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "例如，我们可以设立一个联合指挥中心，负责协调所有的空防行动。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "此外，我们需要建立标准的报告程序。这将确保所有单位能够及时地识别和响应威胁。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "例如，如果单位发现不明飞行物，必须立即按照既定程序报告。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "最后，我们需要定期进行通信演练。这将帮助我们确保所有单位都熟悉程序，并能够有效地应对各种情况。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "例如，我们可以每月进行一次通信演练，模拟不同的空防场景。"
+    },
+    {
+     "speaker": "讲师",
+     "voice": "male",
+     "text": "通过这些措施，我们可以确保联合空防单位之间的无线电程序的有效性，从而提高我们的整体空防能力。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -4356,6 +5514,114 @@
    "verified": false
   },
   {
+   "id": "zh-dl-1-announcement-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dl-1-announcement-001",
+   "stem": "What is the meeting location?",
+   "choices": [
+    "Forest Park Visitor Center",
+    "Forest Park Gate 3",
+    "Forest Park Maintenance Shed",
+    "Forest Park Administration Building"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the meeting location is '森林公园管理楼', which means 'Forest Park Administration Building'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-announcement-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1-announcement-001",
+   "stem": "What does '巡逻' mean here?",
+   "choices": [
+    "To sleep",
+    "To eat",
+    "To rest",
+    "To patrol"
+   ],
+   "answer": 3,
+   "explanation": "In this context, '巡逻' refers to the action of '巡逻森林公园', which means 'to patrol Forest Park'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-announcement-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "zh-dl-1-announcement-001",
+   "stem": "What is the purpose of this announcement?",
+   "choices": [
+    "To announce a joint perimeter patrol meeting",
+    "To schedule a maintenance check",
+    "To inform about a park closure",
+    "To arrange a visitor event"
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the announcement is '通知大家明天上午九点在森林公园管理楼开会', which means 'to inform everyone about a meeting tomorrow morning at 9 at the Forest Park Administration Building' for a '森林公园周界联合巡逻', which means 'joint perimeter patrol of Forest Park'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dl-1-announcement-002",
+   "stem": "What is the new shift's first task?",
+   "choices": [
+    "to organize a meeting",
+    "to perform a system check",
+    "to submit a report",
+    "to review the current situation"
+   ],
+   "answer": 1,
+   "explanation": "The text says that the new shift should first perform a system check 系统检查.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1-announcement-002",
+   "stem": "What does 交接班 here mean?",
+   "choices": [
+    "start of shift",
+    "shift handover",
+    "end of shift",
+    "break time"
+   ],
+   "answer": 1,
+   "explanation": "Exchange of information and responsibility at the beginning of a shift is called 交接班.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-announcement-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dl-1-announcement-002",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "to instruct the new shift on their tasks",
+    "to introduce new team members",
+    "to inform about a system failure",
+    "to announce a change in shift schedule"
+   ],
+   "answer": 0,
+   "explanation": "The announcement mainly instructs the new shift to perform a system check and review the current situation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4554,6 +5820,42 @@
    "verified": false
   },
   {
+   "id": "zh-dl-1-instructions-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dl-1-instructions-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The advantages and disadvantages of using laser weapons for air defense",
+    "The history of air defense systems",
+    "The cost of developing new military technologies",
+    "The environmental impact of laser weapons"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'The advantages and disadvantages of using laser weapons for air defense'. The conversation revolves around the debate of using laser weapons for air defense, as indicated by the phrases '雷射武器' (laser weapons) and '空中防御' (air defense).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-instructions-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dl-1-instructions-002",
+   "stem": "What is one advantage of laser weapons mentioned in the conversation?",
+   "choices": [
+    "They are more cost-effective than traditional weapons",
+    "They are more environmentally friendly",
+    "They have a longer range than traditional weapons",
+    "They can be used in all weather conditions"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'They can be used in all weather conditions'. This is mentioned in the conversation with the phrase '在任何天气条件下都可以使用' (can be used in any weather conditions).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dl-1-voicemail-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4712,6 +6014,60 @@
    ],
    "answer": 3,
    "explanation": "The speaker says \"请确认您的出席\" (Please confirm your attendance), indicating that \"确认\" means \"to confirm\" in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dl-1-voicemail-004",
+   "stem": "What level is the base security raised to?",
+   "choices": [
+    "Level 4",
+    "Level 3",
+    "Level 1",
+    "Level 2"
+   ],
+   "answer": 3,
+   "explanation": "The voicemail states that the base security is raised to '二级', which translates to 'Level 2'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dl-1-voicemail-004",
+   "stem": "What is the main point of the voicemail?",
+   "choices": [
+    "A reminder about the upcoming holiday",
+    "A new exercise schedule for personnel",
+    "A change in the base's operating hours",
+    "An update on the base's security level"
+   ],
+   "answer": 3,
+   "explanation": "The main point of the voicemail is to inform personnel about the change in the base's security level, as stated in '基地安全等级已提高到二级'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-1-voicemail-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-1-voicemail-004",
+   "stem": "What does '提醒' mean here?",
+   "choices": [
+    "To suggest",
+    "To inform",
+    "To remind",
+    "To warn"
+   ],
+   "answer": 2,
+   "explanation": "In this context, '提醒' means 'to remind'. The speaker says '请大家注意安全，这是一个提醒', which translates to 'Please everyone pay attention to safety, this is a reminder'.",
    "source": "llm",
    "verified": false
   },
@@ -5904,6 +7260,60 @@
    "verified": false
   },
   {
+   "id": "zh-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-conversation-003",
+   "stem": "What is the purpose of the meeting?",
+   "choices": [
+    "To finalize a merger between the two companies",
+    "To discuss a potential partnership for a new project",
+    "To negotiate the terms of a new contract",
+    "To resolve a dispute over a previous contract"
+   ],
+   "answer": 1,
+   "explanation": "The purpose of the meeting is implied through the conversation. The speakers mention a \"new project\" and \"working together\", which suggests they are discussing a potential partnership. There is no mention of a merger, dispute, or contract negotiation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-conversation-003",
+   "stem": "What does 王总监 mean by 也许我们可以考虑一下?",
+   "choices": [
+    "He is asking for more time to make a decision",
+    "He is indicating they should consider the proposal",
+    "He is suggesting they should end the meeting",
+    "He is proposing they take a break"
+   ],
+   "answer": 1,
+   "explanation": "王总监 says 也许我们可以考虑一下? which translates to \"Perhaps we can consider it?\" This implies that he is suggesting they should consider the proposal discussed in the meeting. He is not suggesting they end the meeting, take a break, or asking for more time to make a decision.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-conversation-003",
+   "stem": "What is the implication of 李经理 saying 我们的团队有丰富的经验?",
+   "choices": [
+    "He is indicating his team's capability to handle the project",
+    "He is comparing his team to 王总监's team",
+    "He is bragging about his team's achievements",
+    "He is trying to impress 王总监"
+   ],
+   "answer": 0,
+   "explanation": "李经理 says 我们的团队有丰富的经验?, which translates to \"Our team has rich experience.\" This implies that he is indicating his team's capability to handle the project. He is not bragging, trying to impress, or comparing his team to 王总监's team.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dl-2-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -6008,6 +7418,222 @@
    ],
    "answer": 2,
    "explanation": "In this context, 互惠互利 means mutual benefit, as it is used to describe the nature of the cultural exchange program: 这个项目的宗旨是促进中外文化的交流与合作，实现互惠互利.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-interview-003",
+   "stem": "What is the main purpose of this interview?",
+   "choices": [
+    "To debate the effectiveness of different patrol strategies",
+    "To announce the results of a recent patrol operation",
+    "To discuss the challenges of cross-border tourism",
+    "To explain the benefits of a joint perimeter patrol"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of this interview is to explain the benefits of a joint perimeter patrol. This is evident from the discussion about the cooperation between the two border patrol teams, the sharing of information, and the increased security benefits. The text states: “通过双边合作，我们可以更好地共享情报，提高巡逻的效率和效果.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-interview-003",
+   "stem": "What is one of the key benefits of the joint perimeter patrol mentioned in the interview?",
+   "choices": [
+    "Reduction in border crossing fees",
+    "Enhanced cultural exchange programs",
+    "Improved communication between patrol teams",
+    "Increased tourist traffic"
+   ],
+   "answer": 2,
+   "explanation": "One of the key benefits of the joint perimeter patrol is improved communication between patrol teams. The text states: “通过双边合作，我们可以更好地共享情报，提高巡逻的效率和效果.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-interview-003",
+   "stem": "In the interview, what does the speaker mean by 共享情报?",
+   "choices": [
+    "To train new patrol officers",
+    "To coordinate patrol schedules",
+    "To divide patrol territories",
+    "To share intelligence information"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 共享情报 in this context means 'to share intelligence information.' The text states: “通过双边合作，我们可以更好地共享情报，提高巡逻的效率和效果.” This indicates the exchange of information between the two patrol teams to improve their effectiveness.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-interview-004",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "The importance of border security and joint patrol procedures",
+    "The economic benefits of increased border trade",
+    "The challenges of joint military exercises",
+    "The history of the two countries' diplomatic relations"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the interview is the importance of border security and joint patrol procedures. This is evident from the context of the discussion, which focuses on the upcoming joint perimeter patrol, the roles of the patrol teams, and the importance of communication and coordination. For example, the speaker says, \"我们即将进行联合巡逻，确保边境安全\" (We are about to conduct a joint patrol to ensure border security).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-interview-004",
+   "stem": "What is one of the key responsibilities of the patrol teams?",
+   "choices": [
+    "To provide medical assistance",
+    "To maintain communication and coordination",
+    "To inspect customs documents",
+    "To negotiate trade agreements"
+   ],
+   "answer": 1,
+   "explanation": "One of the key responsibilities of the patrol teams is to maintain communication and coordination. The speaker explicitly states this when they say, \"巡逻队必须保持通信畅通，确保协调一致\" (Patrol teams must maintain open communication to ensure coordination).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-interview-004",
+   "stem": "In the phrase \"巡逻队必须保持通信畅通\", what does \"通信畅通\" mean here?",
+   "choices": [
+    "Free flow of information",
+    "Loud speaking",
+    "Clear vision",
+    "Fast travel"
+   ],
+   "answer": 0,
+   "explanation": "In this context, \"通信畅通\" means free flow of information. The speaker is emphasizing the importance of maintaining open and effective communication channels among the patrol teams. The phrase \"保持通信畅通\" (maintain open communication) supports this interpretation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-interview-005",
+   "stem": "What does the woman imply when she says 我听说空军的招待很丰盛？",
+   "choices": [
+    "She is trying to flatter the host.",
+    "She is nervous about eating too much.",
+    "She is eagerly looking forward to the meal.",
+    "She is asking for advice on what to order."
+   ],
+   "answer": 2,
+   "explanation": "The woman is expressing her anticipation and positive expectations about the meal, implying she is looking forward to it. The phrase 我听说...很丰盛 indicates she has heard good things about the meal, suggesting eagerness. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-interview-005",
+   "stem": "What does the man imply when he says 我们空军有空军的传统？",
+   "choices": [
+    "He is saying that they do not follow any customs.",
+    "He is suggesting that they should change their customs.",
+    "He is asking the woman to teach them new customs.",
+    "He is explaining that they have unique customs."
+   ],
+   "answer": 3,
+   "explanation": "The man is implying that the Air Force has its own unique traditions, which they follow. The phrase 我们空军有空军的传统 indicates that they have specific customs. The other options contradict or are not supported by this statement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-interview-005",
+   "stem": "What does the woman imply when she says 好的，我会注意的？",
+   "choices": [
+    "She is changing the subject.",
+    "She is agreeing to follow their customs.",
+    "She is asking for more details about the customs.",
+    "She is refusing to follow their customs."
+   ],
+   "answer": 1,
+   "explanation": "The woman is implying that she will pay attention and follow their customs. The phrase 好的，我会注意的 indicates her agreement and willingness to adapt. The other options are not supported by this statement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-interview-006",
+   "stem": "What does the speaker imply about the proposed training schedule?",
+   "choices": [
+    "It is well-planned and realistic.",
+    "It is too relaxed and needs more intensity.",
+    "It is flexible and can be adjusted.",
+    "It is too rushed and needs more time."
+   ],
+   "answer": 3,
+   "explanation": "The speaker implies that the schedule is too rushed when he says 这个训练计划看起来有点紧凑 (This training schedule seems a bit tight).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-interview-006",
+   "stem": "What is the speaker's attitude towards the proposed training locations?",
+   "choices": [
+    "He thinks they are too expensive and not worth it.",
+    "He thinks they are too distant and inconvenient.",
+    "He thinks they are convenient and suitable.",
+    "He thinks they are too familiar and unchallenging."
+   ],
+   "answer": 3,
+   "explanation": "The speaker implies that the locations are too familiar when he says 这些地点我们已经去过很多次了 (We've been to these places many times already).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-interview-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "zh-dl-2-interview-006",
+   "stem": "What does the speaker imply about the proposed training methods?",
+   "choices": [
+    "They are too complex and need simplifying.",
+    "They are too traditional and need updating.",
+    "They are suitable and should be implemented as planned.",
+    "They are innovative and should be adopted."
+   ],
+   "answer": 1,
+   "explanation": "The speaker implies that the methods are too traditional when he says 我们可能需要一些新的训练方法 (Perhaps we need some new training methods).",
    "source": "llm",
    "verified": false
   },
@@ -6174,6 +7800,60 @@
    "verified": false
   },
   {
+   "id": "zh-dl-2-news-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-news-004",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The increase in drone-related incidents at airports",
+    "A new system to detect and counter drones at an airport",
+    "The regulations surrounding drone usage near airports",
+    "The dangers of drones to airport security"
+   ],
+   "answer": 1,
+   "explanation": "The text discusses a new counter-drone system installed at an airport, including its features and purpose. The main topic is clearly stated in the first sentence: '近日, 京津机场安装了新型反无人机系统.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-news-004",
+   "stem": "According to the text, what is one of the functions of the new counter-drone system?",
+   "choices": [
+    "To shoot down drones using missiles",
+    "To track drones using satellite imagery",
+    "To physically capture drones",
+    "To jam the signals of drones"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the system can '干扰无人机的信号,' which means it can jam the signals of drones. This is one of the functions mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-news-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-news-004",
+   "stem": "In the text, what does '干扰' mean?",
+   "choices": [
+    "To jam",
+    "To avoid",
+    "To track",
+    "To create"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the text, '干扰' refers to the system's ability to jam the signals of drones. The relevant sentence is: '该系统能够探测到无人机并干扰其信号, 从而使其无法正常飞行或返回.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dl-2-report-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -6224,6 +7904,222 @@
    ],
    "answer": 0,
    "explanation": "The phrase “缓解交通拥堵” means to reduce traffic congestion. This is clear from the context: “这条新地铁线将缓解南京市中心的交通拥堵问题。。” The report explains that the new metro line will alleviate traffic congestion in the city center.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dl-2-report-002",
+   "stem": "What is the main idea of this report?",
+   "choices": [
+    "An unidentified drone was spotted near an air base.",
+    "The air base has installed new anti-drone technology.",
+    "A new type of drone was tested at an air base.",
+    "An exercise was conducted to test the air base's defenses."
+   ],
+   "answer": 0,
+   "explanation": "The report discusses an unmanned aircraft being sighted over the perimeter of Dongfeng Air Base, which makes the first choice the correct main idea. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dl-2-report-002",
+   "stem": "What time was the drone first spotted?",
+   "choices": [
+    "At 22:30",
+    "At 23:00",
+    "At 22:00",
+    "At 21:30"
+   ],
+   "answer": 2,
+   "explanation": "The report states that the drone was first spotted at 22:00, so this is the correct detail.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-2-report-002",
+   "stem": "What does 无人机 mean in this context?",
+   "choices": [
+    "A new type of aircraft",
+    "An unmanned aircraft",
+    "A commercial aircraft",
+    "A military aircraft"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 无人机 refers to an unmanned aircraft, as it is described as being spotted near the air base perimeter without a pilot.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-001",
+   "stem": "What does the speaker imply when he says 我恐怕不能答应你这次的邀请。? (I'm afraid I can't accept your invitation this time.)",
+   "choices": [
+    "He is asking for more time to consider the invitation.",
+    "He is refusing the invitation politely.",
+    "He is excited to visit the restricted area.",
+    "He is eager to meet the speaker's colleagues."
+   ],
+   "answer": 1,
+   "explanation": "The speaker uses the phrase 我恐怕不能答应你这次的邀请 (I'm afraid I can't accept your invitation this time) to indirectly refuse the invitation. The use of 我恐怕 (I'm afraid) softens the refusal and maintains harmony, which is a cultural norm when refusing a request from PLA Air Force personnel.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-001",
+   "stem": "What does the speaker imply when he says 也许下次有机会吧。? (Perhaps there will be another opportunity next time.)",
+   "choices": [
+    "He is suggesting that the colleague should invite someone else.",
+    "He is implying that he is not interested in visiting the restricted area.",
+    "He is hopeful that he will be able to visit the restricted area in the future.",
+    "He is indicating that he is too busy to visit the restricted area."
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses the phrase 也许下次有机会吧 (Perhaps there will be another opportunity next time) to imply that he is hopeful that he will be able to visit the restricted area in the future. This is an indirect way of expressing his interest in visiting the restricted area while softening the refusal of the current invitation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-001",
+   "stem": "What does the speaker imply when he says 我理解，这确实需要一定的安全许可。? (I understand, this indeed requires certain security clearance.)",
+   "choices": [
+    "He is implying that the security clearance is not important.",
+    "He is indicating that he does not have the necessary security clearance.",
+    "He is suggesting that the colleague should provide him with the security clearance.",
+    "He is acknowledging the colleague's explanation about the security clearance."
+   ],
+   "answer": 3,
+   "explanation": "The speaker uses the phrase 我理解，这确实需要一定的安全许可 (I understand, this indeed requires certain security clearance) to acknowledge the colleague's explanation about the security clearance. This is an indirect way of showing that he understands the reasons behind the invitation and the need for security clearance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-002",
+   "stem": "What does 李华 mean by saying 我们随便吃吃吧? (wǒmen suíbiàn chīchī ba)?",
+   "choices": [
+    "She wants to order takeout.",
+    "She wants to cook something elaborate.",
+    "She wants to have a simple meal at home.",
+    "She wants to go to a fancy restaurant."
+   ],
+   "answer": 2,
+   "explanation": "李华 says 我们随便吃吃吧 (wǒmen suíbiàn chīchī ba), which implies she wants to have a casual and simple meal at home. She does not mention ordering takeout, going to a fancy restaurant, or cooking something elaborate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-002",
+   "stem": "What does 张明 imply when he says 你太客气了! (nǐ tài kèqi le)?",
+   "choices": [
+    "He thinks 李华 is trying to flatter him.",
+    "He thinks 李华 is not being appreciative enough.",
+    "He thinks 李华 is being too formal.",
+    "He thinks 李华 is being too critical."
+   ],
+   "answer": 2,
+   "explanation": "By saying 你太客气了! (nǐ tài kèqi le), 张明 implies that he thinks 李华 is being too formal or polite. He is trying to make the atmosphere more relaxed and casual.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-002",
+   "stem": "What does 王丽 imply when she says 我们家的厨艺还是可以的 (wǒmen jiā de chúyì shì hái kěyǐ de)?",
+   "choices": [
+    "She is humbly acknowledging her cooking skills.",
+    "She is expressing doubt about her cooking skills.",
+    "She is asking for feedback on her cooking.",
+    "She is bragging about her cooking skills."
+   ],
+   "answer": 0,
+   "explanation": "王丽 says 我们家的厨艺还是可以的 (wǒmen jiā de chúyì shì hái kěyǐ de), which is a humble way of acknowledging that her cooking skills are decent. She is not bragging, expressing doubt, or asking for feedback.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-003",
+   "stem": "Which of the following best describes the purpose of the meeting?",
+   "choices": [
+    "To discuss the logistics of the festival",
+    "To assign responsibilities for different aspects of the festival",
+    "To review the schedule of events for the festival",
+    "To finalize the budget for the festival"
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the meeting is to discuss the logistics of the festival. This is implied by the repeated mentions of specific tasks and coordination efforts, such as 协调演员 ('coordinate with the performers') and 准备道具 ('prepare props'). The other options, while related to festival planning, are not the main focus of this conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-003",
+   "stem": "What does 我们需要确保一切顺利 ('we need to ensure everything goes smoothly') imply about the speakers' attitudes toward the festival?",
+   "choices": [
+    "They are indifferent to the outcome of the festival.",
+    "They are excited about the festival but not concerned about the details.",
+    "They are worried about potential problems and want to prevent them.",
+    "They are confident that the festival will be successful."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 我们需要确保一切顺利 ('we need to ensure everything goes smoothly') implies that the speakers are concerned about potential problems and want to prevent them. This is evident in their detailed discussion about coordinating various aspects of the festival and their emphasis on thorough preparation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-conversation-003",
+   "stem": "What does 我们可以稍后再讨论 ('we can discuss that later') imply about the speaker's attitude toward the suggestion?",
+   "choices": [
+    "The speaker is dismissive of the suggestion.",
+    "The speaker is unsure about the suggestion and needs more time to think about it.",
+    "The speaker is eager to discuss the suggestion immediately.",
+    "The speaker is open to discussing the suggestion but wants to focus on other matters first."
+   ],
+   "answer": 3,
+   "explanation": "The phrase 我们可以稍后再讨论 ('we can discuss that later') implies that the speaker is open to discussing the suggestion but wants to focus on other matters first. This is a polite way to defer the discussion without dismissing the suggestion outright. The other options do not accurately reflect the implied meaning of the phrase in this context.",
    "source": "llm",
    "verified": false
   },
@@ -6548,6 +8444,60 @@
    ],
    "answer": 3,
    "explanation": "The word 表现 (biǎo xiàn) is used to describe Wang Yi's playing in the championship. The context shows it refers to his performance, as in 他在乒乓球锦标赛中的表现非常出色 (His performance in the table tennis championship was excellent).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-interview-004",
+   "stem": "What is the main purpose of the liaison meeting described in the interview?",
+   "choices": [
+    "To select participants for the National Education Conference",
+    "To announce the dates of the National Education Conference",
+    "To criticize the previous year's conference",
+    "To discuss the agenda and logistics for the National Education Conference"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the liaison meeting is implied through the discussion about the agenda and logistics. The speakers talk about the schedule, topics to be discussed, and the need for coordination, which indicates that the meeting is preparatory in nature. For example, 王老师 says 我们需要确保每个环节都运作顺畅, 这需要提前准备 (",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-interview-004",
+   "stem": "What does 李老师 imply when he says 我们可能需要调整一些安排? (Li Laoshi implies the need to adjust some arrangements when he says '我们可能需要调整一些安排'. What does he mean?)",
+   "choices": [
+    "The budget for the conference has been increased",
+    "The current schedule is too tight and needs to be expanded",
+    "The venue is not suitable for all planned activities",
+    "Some participants have requested changes to the agenda"
+   ],
+   "answer": 3,
+   "explanation": "李老师 implies that there might be a need to adjust some arrangements due to requests or changes in circumstances. This is inferred from the context where he mentions the need for flexibility and coordination, suggesting that some participants might have requested changes to the agenda. For example, 李老师 says 有些代表可能有特别的要求, 我们需要提前沟通 (",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-2p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "zh-dl-2p-interview-004",
+   "stem": "What is the underlying reason for 赵主任's suggestion to involve more teachers in the planning process? (Zhao Zhuanyuan suggests involving more teachers in the planning process. What is his underlying reason?)",
+   "choices": [
+    "To increase the workload for the current planning team",
+    "To reduce the budget for the conference",
+    "To shorten the duration of the conference",
+    "To ensure that the conference reflects the needs and perspectives of frontline educators"
+   ],
+   "answer": 3,
+   "explanation": "赵主任's suggestion to involve more teachers in the planning process implies a desire to ensure that the conference reflects the needs and perspectives of frontline educators. This is inferred from his statement 老师们的经验和反馈对于会议的成功至关重要 (",
    "source": "llm",
    "verified": false
   },
@@ -7038,6 +8988,114 @@
    "verified": false
   },
   {
+   "id": "zh-dl-3-analysis-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dl-3-analysis-004",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The text discusses the implementation and benefits of a counter-drone system at an airport.",
+    "The text argues for the abolition of all drone usage at airports.",
+    "The text explains the economic impact of drone technology on the aviation industry.",
+    "The text describes the history of drone technology and its military applications."
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the installation and advantages of a counter-drone system at an airport, as indicated by the repeated discussion of the system's capabilities and benefits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-analysis-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-3-analysis-004",
+   "stem": "What does 无人机系统 (the 'unmanned aircraft system') refer to in the text?",
+   "choices": [
+    "A network of airports that ban drones.",
+    "A software used to design drones.",
+    "A type of drone used for military purposes.",
+    "A system used to control and monitor drones."
+   ],
+   "answer": 3,
+   "explanation": "The text refers to 无人机系统 (the 'unmanned aircraft system') as the technology used to detect and neutralize drones, indicating a system for controlling and monitoring them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-analysis-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "zh-dl-3-analysis-004",
+   "stem": "According to the text, what is one of the main benefits of the counter-drone system?",
+   "choices": [
+    "It can provide real-time video feeds from drones.",
+    "It can distinguish between friendly and hostile drones.",
+    "It can detect drones up to 10 kilometers away.",
+    "It can completely eliminate all drone activity within a 5-kilometer radius."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the counter-drone system can 探测到 (detect) drones up to 10 kilometers away, highlighting this as one of its main benefits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-analysis-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dl-3-analysis-005",
+   "stem": "What is the main topic of the listening script?",
+   "choices": [
+    "The history of drone development in China",
+    "The impact of drone technology on maritime security",
+    "The environmental effects of drone usage in harbors",
+    "The regulations governing drone flights over harbors"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the listening script is the impact of drone technology on maritime security, particularly the use of small drones for harbor surveillance. This is evident throughout the script, as the speakers discuss the advantages and challenges of using drones in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-analysis-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dl-3-analysis-005",
+   "stem": "What can be inferred about the future of drone technology in harbor surveillance?",
+   "choices": [
+    "Drones will become the primary method for harbor surveillance",
+    "Drones will be replaced by more advanced technologies in the near future",
+    "Drones will only be used for specific tasks in harbor surveillance",
+    "Drones will be used alongside other technologies for comprehensive surveillance"
+   ],
+   "answer": 3,
+   "explanation": "The speakers mention that drones are 'just one part of a comprehensive surveillance system', indicating that they will be used alongside other technologies. This suggests that drones will not replace other methods but will be integrated into a broader approach to harbor surveillance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-analysis-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-3-analysis-005",
+   "stem": "In the listening script, what does the phrase '小型无人机群' mean here?",
+   "choices": [
+    "A swarm of small, autonomous drones",
+    "A group of small, remotely controlled aircraft",
+    "A fleet of small, unmanned ships",
+    "A collection of small, remote-controlled cameras"
+   ],
+   "answer": 0,
+   "explanation": "The phrase '小型无人机群' refers to a swarm of small, autonomous drones. This is clear from the context, as the speakers discuss the use of multiple drones working together to monitor the harbor. The term '无人机' (drones) is modified by '小型' (small) and '群' (swarm), indicating that these are small drones operating in a coordinated group.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dl-3-debate-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -7196,6 +9254,60 @@
    ],
    "answer": 2,
    "explanation": "In this context, 合理化 means to make something seem acceptable, as Speaker 1 uses it to describe how the museum is trying to justify its approach to displaying ancient artifacts: 博物馆试图通过一些解释来合理化他们的做法 (The museum tries to justify its approach with some explanations).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-debate-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dl-3-debate-004",
+   "stem": "What is the main topic of this debate?",
+   "choices": [
+    "The financial impact of defending military bases against cheap drones",
+    "The ethical implications of using drones in military operations",
+    "The technological advancements in drone warfare",
+    "The effectiveness of drones in modern warfare"
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the economic burden of counter-drone measures, specifically the cost of defending military bases against inexpensive drones. This is evident in the discussion of the financial strain caused by the need to upgrade systems and the comparison of the cost of drones to the cost of defenses.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-debate-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dl-3-debate-004",
+   "stem": "What can be inferred about the speaker labeled 甲 (A) from the debate?",
+   "choices": [
+    "They are primarily concerned with the ethical implications of drone warfare",
+    "They are a financial analyst focused on the budgetary impact of military decisions",
+    "They are a military strategist concerned with the technological aspects of drone defense",
+    "They believe that the financial cost of counter-drone measures is justified"
+   ],
+   "answer": 3,
+   "explanation": "Speaker 甲 (A) argues that the cost of defending bases against drones is necessary and justifiable, stating '我们必须投资于先进的防御系统，以确保我们的基地安全' (We must invest in advanced defense systems to ensure the safety of our bases). This indicates that they believe the financial cost is justified.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-debate-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-3-debate-004",
+   "stem": "In the debate, what does 经济负担 (economic burden) mean?",
+   "choices": [
+    "The cost of purchasing new drones",
+    "The profit made from selling drone technology",
+    "The economic growth resulting from military investments",
+    "The financial strain caused by the need to upgrade defense systems"
+   ],
+   "answer": 3,
+   "explanation": "经济负担 (economic burden) is used to describe the financial strain caused by the need to upgrade defense systems to counter cheap drones. Speaker 乙 (B) mentions '我们面临着巨大的经济负担，因为我们不得不不断升级我们的系统' (We are facing a huge economic burden because we have to constantly upgrade our systems).",
    "source": "llm",
    "verified": false
   },
@@ -7412,6 +9524,60 @@
    ],
    "answer": 1,
    "explanation": "In this context,  互操作性 refers to the compatibility of military equipment and systems used by the Chinese and Lao forces during the exercise. This is evident in the speaker's mention of  '确保我们的装备和系统能够无缝协作'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dl-3-lecture-002",
+   "stem": "What is the primary objective of the lecture?",
+   "choices": [
+    "To introduce new air defense technologies",
+    "To coordinate a specific air defense operation",
+    "To explain the importance of radio procedures in air defense",
+    "To criticize current air defense strategies"
+   ],
+   "answer": 2,
+   "explanation": "The lecture's primary objective is to discuss the importance of radio procedures in air defense, as stated in the opening sentence: '今天，我们要讨论的是联合空防单位之间无线电程序的重要性。' (Today, we will discuss the importance of radio procedures between allied air defense units.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dl-3-lecture-002",
+   "stem": "What does the phrase '统一频率' mean here?",
+   "choices": [
+    "Emergency channel",
+    "Standardized frequency",
+    "High-frequency band",
+    "Secure communication line"
+   ],
+   "answer": 1,
+   "explanation": "In the context of the lecture, '统一频率' refers to a standardized frequency. The speaker mentions: '首先，我们需要建立统一的频率和通信协议。' (First, we need to establish a unified frequency and communication protocols.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "zh-dl-3-lecture-002",
+   "stem": "According to the lecture, what should be done if a unit detects an unidentified aircraft?",
+   "choices": [
+    "Ignore the aircraft if it's outside their airspace",
+    "Immediately engage the aircraft",
+    "Report to the nearest airbase",
+    "Follow the established reporting procedures"
+   ],
+   "answer": 3,
+   "explanation": "The lecture states that units should follow established reporting procedures: '如果单位发现不明飞行物，必须立即按照既定程序报告。' (If a unit detects an unidentified aircraft, it must immediately report according to established procedures.)",
    "source": "llm",
    "verified": false
   },

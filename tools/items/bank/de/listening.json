@@ -678,6 +678,48 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dl-1-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Drone Deployment After Flooding",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Frau",
+     "voice": "female",
+     "text": "Hallo, ich habe gehört, dass Drohnen nach der Überschwemmung eingesetzt werden."
+    },
+    {
+     "speaker": "Mann",
+     "voice": "male",
+     "text": "Ja, das stimmt. Die Drohnen werden Fotos von den überfluteten Gebieten machen."
+    },
+    {
+     "speaker": "Frau",
+     "voice": "female",
+     "text": "Und wofür werden die Drohnen nach der Überschwemmung verwendet?"
+    },
+    {
+     "speaker": "Mann",
+     "voice": "male",
+     "text": "Sie werden die Schäden beurteilen und helfen, die betroffenen Gebiete zu kartieren."
+    },
+    {
+     "speaker": "Frau",
+     "voice": "female",
+     "text": "Das ist eine gute Idee. Vielen Dank für die Information."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dl-1-instructions-001",
    "exam": "DLPT_LISTENING",
    "language": "de",
@@ -900,6 +942,142 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1-instructions-006",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Humanitarian Drone Survey Announcement",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Hallo, hier ist das Katastrophenmanagement."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Wir beginnen morgen mit dem Einsatz unserer Drohnen."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Ziel ist es, die Überschwemmungsschäden zu bewerten."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Die Drohnen werden in der Nähe der Flussufer fliegen."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Bitte halten Sie sich von diesen Gebieten fern."
+    },
+    {
+     "speaker": "Sprecher",
+     "voice": "male",
+     "text": "Vielen Dank für Ihre Zusammenarbeit."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1-voicemail-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Base Security Alert",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Annabelle",
+     "voice": "female",
+     "text": "Hier ist eine wichtige Durchsage."
+    },
+    {
+     "speaker": "Bernd",
+     "voice": "male",
+     "text": "Ab morgen gilt CONDITION ZWEI."
+    },
+    {
+     "speaker": "Annabelle",
+     "voice": "female",
+     "text": "Bitte halten Sie sich an die neuen Sicherheitsvorschriften."
+    },
+    {
+     "speaker": "Bernd",
+     "voice": "male",
+     "text": "Vielen Dank für Ihre Aufmerksamkeit."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-1-voicemail-002",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Coordinating Drone Operations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Guten Tag, hier ist Frau Müller von der Flugsicherungsbehörde."
+    },
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Ich rufe wegen der geplanten Drohnenflüge morgen an."
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Guten Tag, Frau Müller. Was kann ich für Sie tun?"
+    },
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Wir möchten eine Genehmigung für Drohnenflug im Bereich des Flughafens erhalten."
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Verstanden. Wir müssen den Luftraum mit der zivilen Luftfahrt abzustimmen."
+    },
+    {
+     "speaker": "Frau Müller",
+     "voice": "female",
+     "text": "Bitte lassen Sie uns wissen, ob es Einschränkungen gibt. Danke."
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Ich melde mich baldmöglichst bei Ihnen. Auf Wiederhören."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2070,6 +2248,93 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "conversation",
+   "title": "A Warm Evening in Bonn: Sharing a Meal",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Offizier",
+     "voice": "male",
+     "text": "Guten Abend und willkommen in unserem Zuhause."
+    },
+    {
+     "speaker": "Gast 1",
+     "voice": "female",
+     "text": "Guten Abend. Vielen Dank für die Einladung. Wir haben eine Flasche Wein mitgebracht."
+    },
+    {
+     "speaker": "Offizier",
+     "voice": "male",
+     "text": "Das ist sehr aufmerksam von Ihnen. Vielen Dank."
+    },
+    {
+     "speaker": "Gast 2",
+     "voice": "male",
+     "text": "Gern geschehen. Wir hoffen, er schmeckt Ihnen."
+    },
+    {
+     "speaker": "Offiziersfrau",
+     "voice": "female",
+     "text": "Kommen Sie doch bitte herein. Ich hoffe, Sie mögen Schnitzel."
+    },
+    {
+     "speaker": "Gast 1",
+     "voice": "female",
+     "text": "Das klingt wunderbar. Wir sind gespannt."
+    },
+    {
+     "speaker": "Offiziersfrau",
+     "voice": "female",
+     "text": "Möchten Sie vielleicht etwas helfen, in der Küche?"
+    },
+    {
+     "speaker": "Gast 2",
+     "voice": "male",
+     "text": "Ich würde nicht stören wollen. Aber danke für das Angebot."
+    },
+    {
+     "speaker": "Offizier",
+     "voice": "male",
+     "text": "Keine Sorge. Meine Frau hat alles unter Kontrolle."
+    },
+    {
+     "speaker": "Gast 1",
+     "voice": "female",
+     "text": "Das ist wirklich nett von Ihnen, uns einzuladen."
+    },
+    {
+     "speaker": "Offizier",
+     "voice": "male",
+     "text": "Es ist uns ein Vergnügen. Wir freuen uns immer über Gesellschaft."
+    },
+    {
+     "speaker": "Gast 2",
+     "voice": "male",
+     "text": "Das Essen war ausgezeichnet. Vielen Dank für den schönen Abend."
+    },
+    {
+     "speaker": "Offiziersfrau",
+     "voice": "female",
+     "text": "Gern geschehen. Es war uns ein Vergnügen, Sie bei uns zu haben."
+    },
+    {
+     "speaker": "Offizier",
+     "voice": "male",
+     "text": "Auf Wiedersehen und gute Nacht."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dl-2-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "de",
@@ -2123,6 +2388,197 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "interview",
+   "title": "Preparing for Success: A Colleague's Assistance",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Guten Morgen, Frau Schmidt. Ich habe gehört, dass Sie mir bei der Vorbereitung für das Meeting geholfen haben."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Guten Morgen, Herr Weber. Ja, das stimmt. Ich habe alles vorbereitet und die Unterlagen sind bereit."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das ist sehr netter von Ihnen. Vielen Dank für Ihre Hilfe."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Es war mir ein Vergnügen. Ich weiß, wie wichtig dieses Meeting für Sie ist."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Ich weiß das wirklich zu schätzen. Haben Sie die Präsentation auch überprüft?"
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Ja, ich habe sie durchgesehen und ein paar kleine Änderungen vorgenommen. Sie sollten jetzt perfekt sein."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das ist großartig. Ich bin Ihnen wirklich dankbar."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Falls Sie noch etwas brauchen, lassen Sie es mich wissen. Ich bin gerne bereit zu helfen."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Das ist sehr freundlich von Ihnen. Ich werde Sie auf dem Laufenden halten."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Gut, dann wünsche ich Ihnen viel Erfolg bei dem Meeting."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "male",
+     "text": "Danke, Frau Schmidt. Ich weiß das wirklich zu schätzen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "interview",
+   "title": "Supply Chain Challenges: A Conversation with Logistics Manager Karl Müller",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Guten Tag, Herr Müller. Vielen Dank, dass Sie sich Zeit für dieses Interview genommen haben."
+    },
+    {
+     "speaker": "Karl Müller",
+     "voice": "male",
+     "text": "Guten Tag. Kein Problem, gerne."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Herr Müller, Sie sind Logistikmanager bei der Firma Schmidt & Co. Können Sie uns etwas über die aktuellen Herausforderungen in der Lieferkette erzählen?"
+    },
+    {
+     "speaker": "Karl Müller",
+     "voice": "male",
+     "text": "Natürlich. Im Moment haben wir mit einigen Herausforderungen zu kämpfen. Die Treibstoffpreise sind in letzter Zeit stark gestiegen, was unsere Kosten erhöht hat. Außerdem gibt es immer wieder Verzögerungen bei den Lieferungen, was unsere Planung erschwert."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Das klingt schwierig. Wie geht Ihre Firma damit um?"
+    },
+    {
+     "speaker": "Karl Müller",
+     "voice": "male",
+     "text": "Wir müssen unsere Lieferanten diversifizieren, um weniger abhängig von einzelnen Quellen zu sein. Wir könnten auch über eine lokale Produktion nachdenken, um die Lieferzeiten zu verkürzen und die Kosten zu senken."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Das sind interessante Ansätze. Vielen Dank für Ihre Einblicke, Herr Müller."
+    },
+    {
+     "speaker": "Karl Müller",
+     "voice": "male",
+     "text": "Gern geschehen. Ich hoffe, das hilft Ihnen weiter."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-interview-005",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Art of Compromise: Scheduling a Meeting",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Besucher",
+     "voice": "male",
+     "text": "Guten Tag, Frau Schmidt. Vielen Dank für Ihren Besuch."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Guten Tag, Herr Weber. Es ist schön, Sie wiederzusehen. Ich hoffe, Sie hatten eine gute Reise."
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "male",
+     "text": "Ja, danke. Die Reise war angenehm. Wie kann ich Ihnen heute helfen?"
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Ich wollte eigentlich mit Ihnen über unser neues Projekt sprechen. Hätten Sie Zeit für ein kurzes Meeting heute Nachmittag?"
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "male",
+     "text": "Heute Nachmittag? Eigentlich hatte ich vor, etwas früher zu gehen."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Ich verstehe. Vielleicht passt Ihnen 16 Uhr besser? Oder vielleicht könnten wir das Meeting auf morgen verschieben?"
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "male",
+     "text": "Heute wäre mir lieber, wenn es Ihnen nichts ausmacht. Wie wäre es mit 15 Uhr?"
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "15 Uhr passt mir gut. Vielen Dank für Ihr Entgegenkommen, Herr Weber."
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "male",
+     "text": "Gern geschehen, Frau Schmidt. Ich freue mich auf unser Meeting."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2233,6 +2689,167 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dl-2-news-003",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "news",
+   "title": "Unidentified Drone Over Military Air Base",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journalist",
+     "voice": "female",
+     "text": "Guten Morgen, hier ist Ihr Nachrichtenupdate. Ein unbemannter Fluggerät wurde in der Nähe des Luftwaffenstützpunkts in der Nacht zum Dienstag gesichtet."
+    },
+    {
+     "speaker": "Journalist",
+     "voice": "female",
+     "text": "Die Sichtung des Drohnen hat die Sicherheitskräfte alarmiert."
+    },
+    {
+     "speaker": "Military Spokesperson",
+     "voice": "male",
+     "text": "Um 3:30 Uhr morgens haben unsere Sensoren ein unbekanntes Signal erfasst."
+    },
+    {
+     "speaker": "Journalist",
+     "voice": "female",
+     "text": "Laut Angaben des Militärs konnte das Fluggerät nicht identifiziert werden."
+    },
+    {
+     "speaker": "Military Spokesperson",
+     "voice": "male",
+     "text": "Wir haben keine Informationen darüber, wer die Drohne betrieben hat oder was ihr Zweck war."
+    },
+    {
+     "speaker": "Journalist",
+     "voice": "female",
+     "text": "Die Sicherheitsvorkehrungen am Stützpunkt wurden verstärkt, und eine Untersuchung ist im Gange."
+    },
+    {
+     "speaker": "Military Spokesperson",
+     "voice": "male",
+     "text": "Wir nehmen die Sicherheit unseres Stützpunkts sehr ernst und werden alles tun, um solche Vorfälle in Zukunft zu verhindern."
+    },
+    {
+     "speaker": "Journalist",
+     "voice": "female",
+     "text": "Das ist alles für den Moment. Halten Sie sich für weitere Updates bereit."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-news-004",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "news",
+   "title": "Enhanced Security Training: Recognizing Hostile Intent",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Willkommen zu den Nachrichten. Heute berichten wir über ein neues Programm zur Schulung von Sicherheitskräften."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "female",
+     "text": "Ja, das ist richtig. Dieses Programm zielt darauf ab, die Fähigkeit der Sicherheitskräfte zu verbessern, feindliche Absichten zu erkennen."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Und wie genau funktioniert dieses Programm?"
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "female",
+     "text": "Die Schulung umfasst Rollenspiele mit Schauspielern, die verschiedene Verhaltensweisen und Absichten darstellen. Auf diese Weise können die Sicherheitskräfte in einer sicheren Umgebung lernen, wie sie feindliche Absichten erkennen und angemessen darauf reagieren können."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Das klingt sehr nützlich. Vielen Dank für diesen Bericht."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "female",
+     "text": "Gern geschehen. Das war unser Bericht über das neue Schulungsprogramm für Sicherheitskräfte."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-news-005",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "news",
+   "title": "Airport Security: New Counter-Drone System in Action",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "female",
+     "text": "Willkommen bei den Nachrichten von Radio Frankfurt."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "In einer bahnbrechenden Initiative hat der Frankfurter Flughafen heute ein neues System zur Abwehr von Drohnen eingeführt."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Dieses System, entwickelt von der lokalen Firma TechShield, kann Drohnen erkennen und durch Störung ihrer Kommunikation neutralisieren."
+    },
+    {
+     "speaker": "Experte",
+     "voice": "female",
+     "text": "Die Sicherheit unserer Fluggäste und der Flugbetrieb haben für uns höchste Priorität."
+    },
+    {
+     "speaker": "Experte",
+     "voice": "female",
+     "text": "Mit diesem System sind wir einen Schritt voraus, um potenzielle Bedrohungen durch Drohnen zu verhindern."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Das System wurde erfolgreich getestet und ist nun vollständig einsatzbereit."
+    },
+    {
+     "speaker": "Reporter",
+     "voice": "male",
+     "text": "Es handelt sich um eine wichtige Maßnahme, um die Sicherheit am Flughafen zu gewährleisten."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "female",
+     "text": "Das war Radio Frankfurt mit den neuesten Nachrichten."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "de",
@@ -2286,6 +2903,145 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2",
+   "textType": "report",
+   "title": "New Regulations for Drone Operations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "male",
+     "text": "Ab dem nächsten Monat gelten neue Vorschriften für den Betrieb von Drohnen im deutschen Luftraum."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "female",
+     "text": "Eine der wichtigsten Änderungen ist, dass Drohnen ab sofort eine Registriernummer haben müssen."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "male",
+     "text": "Diese Nummer muss clearly sichtbar am Drohnengehäuse angebracht sein."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "female",
+     "text": "Zusätzlich müssen alle Drohnenpiloten einen Online-Kurs absolvieren und eine Prüfung ablegen."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "male",
+     "text": "Die Koordination zwischen militärischen und zivilen Luftverkehrsbehörden ist entscheidend für die sichere Integration von Drohnen in den Luftraum."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "female",
+     "text": "Die neuen Vorschriften sollen sicherstellen, dass Drohnen sicher und verantwortungsbewusst betrieben werden."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "male",
+     "text": "Verstöße gegen die neuen Regeln können zu hohen Geldstrafen führen."
+    },
+    {
+     "speaker": "Sprachausgabe",
+     "voice": "female",
+     "text": "Die Behörden hoffen, dass die neuen Vorschriften dazu beitragen, die Sicherheit im deutschen Luftraum zu erhöhen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Delicate Inquiry: Office Confidentiality",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Guten Morgen, Frau Schmidt. Wie geht es Ihnen heute?"
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Guten Morgen, Herr Müller. Mir geht es gut, danke. Und Ihnen?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Auch gut, danke. Hören Sie, ich wollte Sie etwas fragen. Es geht um die neuen Verträge, die wir gerade bearbeiten."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Ach ja, die neuen Verträge. Was möchten Sie wissen?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Nun, ich war neugierig, ob Sie mir mehr über die Details der Gehaltsverhandlungen erzählen könnten. Das ist eine etwas heikle Angelegenheit, ich weiß, aber es wäre sehr hilfreich für meine Arbeit."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Ich verstehe, Herr Müller. Das ist tatsächlich eine sensible Information. Ich würde es vorziehen, wenn wir das intern klären könnten."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Natürlich, das verstehe ich. Vielleicht könnten wir uns stattdessen auf die Quartalszahlen konzentrieren? Ich denke, das könnte auch sehr nützlich sein."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Das klingt nach einer guten Idee, Herr Müller. Die Quartalszahlen sind ein sicheres Thema, über das wir offen sprechen können."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Vielen Dank, Frau Schmidt. Ich schätze Ihre Hilfe sehr."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Gern geschehen, Herr Müller. Wenn Sie noch weitere Fragen haben, können Sie sich gerne an mich wenden."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Das ist sehr freundlich von Ihnen. Ich werde darauf zurückkommen, wenn nötig. Vielen Dank nochmals."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Guten Tag, Herr Müller."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Auf Wiedersehen, Frau Schmidt."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2707,6 +3463,212 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-interview-005",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Balancing Security and Convenience: A Campus Debate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Willkommen zu unserer Diskussion über die neuen Sicherheitsprotokolle auf dem Campus."
+    },
+    {
+     "speaker": "Frau Weber",
+     "voice": "female",
+     "text": "Vielen Dank. Wir freuen uns, heute hier zu sein, um über diese wichtigen Themen zu sprechen."
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Ja, Sicherheit ist ein zentrales Anliegen für uns alle. Wir müssen sicherstellen, dass unser Campus ein sicherer Ort für Studierende und Mitarbeiter bleibt."
+    },
+    {
+     "speaker": "Frau Weber",
+     "voice": "female",
+     "text": "Das stimmt. Allerdings müssen wir auch sicherstellen, dass die neuen Maßnahmen nicht zu umständlich sind und den täglichen Betrieb nicht zu sehr beeinträchtigen."
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Wir verstehen die Bedenken, aber Sicherheit hat Vorrang. Wir können es uns nicht leisten, Kompromisse bei der Sicherheit zu machen."
+    },
+    {
+     "speaker": "Frau Weber",
+     "voice": "female",
+     "text": "Natürlich. Vielleicht können wir eine Ausnahme für bestimmte Bereiche machen, wo die Sicherheitsmaßnahmen weniger streng sein könnten, ohne die Gesamtsicherheit zu gefährden."
+    },
+    {
+     "speaker": "Herr Schmidt",
+     "voice": "male",
+     "text": "Das ist ein interessanter Vorschlag. Wir sollten dies genauer prüfen und sehen, welche Bereiche möglicherweise weniger streng überwacht werden können, ohne die Sicherheit zu gefährden."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Vielen Dank für diese wertvollen Einsichten. Lassen Sie uns weiterhin daran arbeiten, eine Balance zwischen Sicherheit und Praktikabilität zu finden."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-interview-006",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Ensuring Safety: A Gate Security Check",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Guten Tag! Wie kann ich Ihnen helfen?"
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "female",
+     "text": "Guten Tag, Sergeant Müller. Ich bin hier, um Herrn Schmidt zu treffen."
+    },
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Ah, Herr Schmidt. Was ist der Zweck Ihres Besuchs?"
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "female",
+     "text": "Ich habe eine Besprechung mit ihm."
+    },
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Ich verstehe. Haben Sie Ihre Ausweisdokumente dabei?"
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "female",
+     "text": "Ja, hier ist mein Personalausweis."
+    },
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Danke. Ich muss das überprüfen. Das wird eine Weile dauern."
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "female",
+     "text": "Natürlich, ich verstehe."
+    },
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Haben Sie irgendetwas dabei, das ich nicht durchsuchen darf?"
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "female",
+     "text": "Ich habe mein Handy dabei. Ich hoffe, das ist in Ordnung."
+    },
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Ja, das ist in Ordnung. Bitte schalten Sie es aus und legen Sie es in den Behälter."
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "female",
+     "text": "Natürlich, kein Problem."
+    },
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Vielen Dank für Ihre Zusammenarbeit. Sie können jetzt durchgehen."
+    },
+    {
+     "speaker": "Besucher",
+     "voice": "female",
+     "text": "Danke, Sergeant Müller. Einen schönen Tag noch."
+    },
+    {
+     "speaker": "Sergeant Müller",
+     "voice": "male",
+     "text": "Ebenfalls, und einen guten Tag."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-2p-interview-007",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "2+",
+   "textType": "interview",
+   "title": "The Art of Preparation: A Colleague's Insight",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Herr Müller, Sie haben erwähnt, dass Ihre Kollegin, Frau Schmidt, die Materialien für Sie vorbereitet hat. Können Sie uns mehr darüber erzählen?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Ja, natürlich. Frau Schmidt hat wirklich großartige Arbeit geleistet. Sie hat alle relevanten Dokumente zusammengestellt und sie nach Themen sortiert."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Das klingt sehr organisiert. Wie hat Ihnen das geholfen?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Das hat mir wirklich viel Arbeit erspart. Ich musste nicht stundenlang nach den Dokumenten suchen. Sie hat genau gewusst, was ich brauche."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Das ist wirklich eine große Hilfe. Haben Sie irgendwelche Herausforderungen bei der Nutzung der vorbereiteten Materialien festgestellt?"
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Nein, überhaupt nicht. Alles war gut strukturiert und leicht zugänglich. Ich war sehr dankbar für ihre Vorbereitung."
+    },
+    {
+     "speaker": "Interviewer",
+     "voice": "female",
+     "text": "Vielen Dank, Herr Müller, für diese Einblicke."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Gern geschehen."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3234,6 +4196,78 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dl-3-analysis-004",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Joint Air Defense: Coordinating Allied Efforts",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Leitstelle",
+     "voice": "female",
+     "text": "Hier ist die deutsche Leitstelle. Wir haben eine mögliche Bedrohung in unserem Luftraum erkannt."
+    },
+    {
+     "speaker": "US-Kommando",
+     "voice": "male",
+     "text": "Verstanden, deutsche Leitstelle. Hier ist das US-Kommando. Wir sind bereit, Sie zu unterstützen."
+    },
+    {
+     "speaker": "Leitstelle",
+     "voice": "female",
+     "text": "Ausgezeichnet. Wir benötigen zusätzliche Radarüberdeckung für den Sektor Drei. Können Sie das übernehmen?"
+    },
+    {
+     "speaker": "US-Kommando",
+     "voice": "male",
+     "text": "Bestätigt. Wir aktivieren unsere Radarstation und bieten zusätzliche Überdeckung. Was ist die aktuelle Lage?"
+    },
+    {
+     "speaker": "Leitstelle",
+     "voice": "female",
+     "text": "Ein unbekanntes Flugzeug nähert sich unserem Luftraum. Wir glauben, es könnte ein ziviles Flugzeug sein, aber wir sind vorsichtig."
+    },
+    {
+     "speaker": "US-Kommando",
+     "voice": "male",
+     "text": "Verstanden. Wir werden das Flugzeug verfolgen und seine Identität bestätigen. Sollten wir Abwehrmaßnahmen ergreifen?"
+    },
+    {
+     "speaker": "Leitstelle",
+     "voice": "female",
+     "text": "Noch nicht. Wir versuchen, Kontakt aufzunehmen. Halten Sie sich bereit, falls nötig."
+    },
+    {
+     "speaker": "US-Kommando",
+     "voice": "male",
+     "text": "Verstanden. Wir sind bereit. Sollten wir die deutsche Luftwaffe alarmieren?"
+    },
+    {
+     "speaker": "Leitstelle",
+     "voice": "female",
+     "text": "Noch nicht notwendig. Wir hoffen, die Situation diplomatisch zu lösen. Vielen Dank für Ihre Unterstützung."
+    },
+    {
+     "speaker": "US-Kommando",
+     "voice": "male",
+     "text": "Kein Problem. Wir sind hier, um zu helfen. Haben Sie weitere Anweisungen?"
+    },
+    {
+     "speaker": "Leitstelle",
+     "voice": "female",
+     "text": "Im Moment nicht. Wir halten Sie auf dem Laufenden. Ende der Übertragung."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dl-3-debate-001",
    "exam": "DLPT_LISTENING",
    "language": "de",
@@ -3387,6 +4421,63 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dl-3-debate-004",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "debate",
+   "title": "Defensive Measures: The Rising Cost of Drone Defense",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Willkommen zu unserer Debatte über die steigenden Kosten des Schutzes von Militärbasen vor billigen Drohnen. Unsere Gäste heute sind Frau Schmidt, Expertin für Militärstrategie, und Herr Müller, Spezialist für Drohnentechnologie."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Vielen Dank. Es ist entscheidend, dass wir unsere Basen gegen Drohnenangriffe abwehren können. Allerdings stellen die finanziellen Belastungen eine enorme Herausforderung dar."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Ich stimme zu, dass die Sicherheit unserer Basen oberste Priorität hat. Allerdings müssen wir auch die hohen Kosten berücksichtigen, die mit den aktuellen Abwehrsystemen verbunden sind."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Die aktuellen Systeme mögen teuer sein, aber sie sind notwendig. Wir können es uns nicht leisten, unsere Basen ungeschützt zu lassen."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Ich schlage vor, dass wir in neue Technologien investieren, die kostengünstiger sind. Langfristig könnten diese Innovationen die Kosten considerably senken."
+    },
+    {
+     "speaker": "Frau Schmidt",
+     "voice": "female",
+     "text": "Das klingt verlockend, aber wir müssen sicherstellen, dass diese neuen Technologien genauso effektiv sind wie die aktuellen Systeme."
+    },
+    {
+     "speaker": "Herr Müller",
+     "voice": "male",
+     "text": "Natürlich. Wir können nicht das Risiko eingehen, unsere Basen mit unzureichenden Systemen zu schützen. Aber wir müssen auch nach Wegen suchen, die finanziellen Belastungen zu reduzieren."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "male",
+     "text": "Vielen Dank für diese interessante Diskussion. Wir werden das Thema weiter verfolgen, da es für unsere nationale Sicherheit von großer Bedeutung ist."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dl-3-editorial_commentary-001",
    "exam": "DLPT_LISTENING",
    "language": "de",
@@ -3516,6 +4607,93 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-003",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Shift Change at the Base Defense Center",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Guten Abend, alle zusammen. Bitte nehmen Sie Platz und hören Sie zu."
+    },
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Die ausgehende Schicht hat die Verantwortung, die eingehende Schicht über alle wichtigen Vorkommnisse und Änderungen zu informieren."
+    },
+    {
+     "speaker": "Soldat1",
+     "voice": "female",
+     "text": "Verstanden, Herr Schichtleiter. Wir haben heute mehrere kleinere Vorfälle gemeldet, aber nichts Ernstes."
+    },
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Gut, Soldat1. Bitte geben Sie einen kurzen Überblick über die Vorfälle."
+    },
+    {
+     "speaker": "Soldat1",
+     "voice": "female",
+     "text": "Um 1400 Uhr gab es eine kleine Störung im Zaun auf der Ostseite, aber unsere Patrouille konnte das Problem schnell beheben."
+    },
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Danke, Soldat1. Hat es noch andere Vorkommnisse gegeben?"
+    },
+    {
+     "speaker": "Soldat2",
+     "voice": "male",
+     "text": "Ja, Herr Schichtleiter. Um 1600 Uhr haben wir eine verdächtige Person in der Nähe des Haupttors bemerkt."
+    },
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Was ist mit der Person passiert?"
+    },
+    {
+     "speaker": "Soldat2",
+     "voice": "male",
+     "text": "Die Person wurde von unseren Sicherheitskräften festgenommen und zur weiteren Befragung gebracht."
+    },
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Sehr gut. Nach der Lagebesprechung übergaben die ausgehenden Soldaten ihre Posten an die eingehenden Soldaten."
+    },
+    {
+     "speaker": "Soldat3",
+     "voice": "female",
+     "text": "Verstanden, Herr Schichtleiter. Wir werden die Informationen sorgfältig überprüfen und unsere Schicht entsprechend planen."
+    },
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Gut, Soldat3. Wenn es keine weiteren Fragen gibt, können Sie jetzt mit Ihrer Schicht beginnen."
+    },
+    {
+     "speaker": "Soldat3",
+     "voice": "female",
+     "text": "Danke, Herr Schichtleiter. Wir werden unser Bestes tun, um die Basis sicher zu halten."
+    },
+    {
+     "speaker": "Schichtleiter",
+     "voice": "male",
+     "text": "Das weiß ich, Soldat3. Viel Glück und bis zur nächsten Schicht."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3694,6 +4872,78 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dl-3-lecture-004",
+   "exam": "DLPT_LISTENING",
+   "language": "de",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Night Maneuvers: The Quick Reaction Force Drill",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Guten Abend und herzlich willkommen zu unserem heutigen Vortrag über die schnelle Einsatzbereitschaft unserer Kräfte bei Nacht."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Guten Abend. Heute werden wir eine Übung durchführen, die als Quick Reaction Force, oder kurz QRF, bekannt ist."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Die QRF ist eine hochmobile und schnell einsatzbereite Einheit, die in der Lage ist, auf verschiedene Bedrohungen zu reagieren."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Unsere heutige Übung findet bei Nacht statt, was zusätzliche Herausforderungen mit sich bringt."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Zuerst werden wir einen Konvoi simulieren, der von feindlichen Kräften angegriffen wird."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Die QRF wird dann den Angriff abwehren und die Sicherheit des Konvois gewährleisten."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Wir werden Nachtsichtgeräte verwenden, um unsere Sichtbarkeit und Genauigkeit zu erhöhen."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Der Übungsverlauf umfasst mehrere Phasen, einschließlich der Vorbereitung, der Durchführung und der Auswertung."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Nach der Übung werden wir eine Nachbesprechung durchführen, um die Leistung der Einheit zu bewerten und Verbesserungspotenziale zu identifizieren."
+    },
+    {
+     "speaker": "Vortragender",
+     "voice": "male",
+     "text": "Diese Übung ist entscheidend, um die Einsatzbereitschaft und Effizienz unserer Kräfte zu gewährleisten."
+    },
+    {
+     "speaker": "Moderator",
+     "voice": "female",
+     "text": "Vielen Dank für Ihren Vortrag. Das waren wertvolle Einblicke in die Bedeutung und den Ablauf der QRF-Übung bei Nacht."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -4290,6 +5540,60 @@
    "verified": false
   },
   {
+   "id": "de-dl-1-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-conversation-004",
+   "stem": "What does the man say the drones will do?",
+   "choices": [
+    "Drop seeds to help the area recover from the flood damage.",
+    "Scare away wild animals that might have been displaced by the flood.",
+    "Take pictures of the flooded areas to assess the damage.",
+    "Fly over the flooded areas to deliver food and water."
+   ],
+   "answer": 2,
+   "explanation": "The man says the drones will 'Fotos von den überfluteten Gebieten machen', which means they will take pictures of the flooded areas to assess the damage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dl-1-conversation-004",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The man and woman are discussing how to prepare for a flood.",
+    "The man and woman are discussing the use of drones after a flood.",
+    "The man and woman are talking about the weather forecast for the upcoming week.",
+    "The man and woman are planning a trip to a flooded area."
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the conversation is the use of drones after a flood, as indicated by the woman's question 'Wofür werden die Drohnen nach der Überschwemmung verwendet?' and the man's response about taking pictures of the flooded areas.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1-conversation-004",
+   "stem": "What does the German word 'Schäden' mean here?",
+   "choices": [
+    "Damage",
+    "Animals",
+    "Plants",
+    "Benefits"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'Schäden' refers to the damage caused by the flood, as indicated by the man's statement 'Die Drohnen werden Fotos von den überfluteten Gebieten machen, um die Schäden zu beurteilen.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dl-1-instructions-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4520,6 +5824,132 @@
    ],
    "answer": 2,
    "explanation": "The announcement focuses on the requirements for obtaining a fishing permit, such as 'Sie benötigen einen Angelschein' and 'Der Antrag kann online gestellt werden'. It does not primarily discuss seasons, costs, or fishing spots.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-instructions-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-instructions-006",
+   "stem": "What does the speaker say is the purpose of the drone survey?",
+   "choices": [
+    "To assess the damage caused by the flood",
+    "To deliver supplies to affected areas",
+    "To locate missing people",
+    "To monitor the water levels"
+   ],
+   "answer": 0,
+   "explanation": "The speaker states that the purpose of the drone survey is 'die Überschwemmungsschäden zu bewerten', which means 'to assess the damage caused by the flood'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-instructions-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1-instructions-006",
+   "stem": "What does the speaker mean by the word 'Einsatz'?",
+   "choices": [
+    "A mission",
+    "A break",
+    "A meeting",
+    "A celebration"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'Einsatz' refers to the drone survey mission, as indicated by the phrase 'der Einsatz unserer Drohnen', which translates to 'the deployment of our drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-voicemail-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-voicemail-001",
+   "stem": "What is the new force protection condition that will be in effect starting tomorrow?",
+   "choices": [
+    "CONDITION TWO",
+    "CONDITION ONE",
+    "CONDITION FOUR",
+    "CONDITION THREE"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is CONDITION TWO, as stated in the voicemail: \"Ab morgen gilt CONDITION ZWEI.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-voicemail-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dl-1-voicemail-001",
+   "stem": "What is the main purpose of this voicemail?",
+   "choices": [
+    "To report a security breach.",
+    "To schedule a mandatory training session.",
+    "To announce a new base commander.",
+    "To inform listeners about a change in base security measures."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the voicemail is to inform listeners about a change in base security measures, specifically the new force protection condition. The voicemail states: \"Hier ist eine wichtige Durchsage. Ab morgen gilt CONDITION ZWEI. Bitte halten Sie sich an die neuen Sicherheitsvorschriften.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-voicemail-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1-voicemail-001",
+   "stem": "In the voicemail, what does the phrase \"halten Sie sich an\" mean here?",
+   "choices": [
+    "to hold",
+    "to stop",
+    "to wait for",
+    "to follow"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"halten Sie sich an\" means \"to follow\". The voicemail instructs listeners to follow the new security regulations: \"Bitte halten Sie sich an die neuen Sicherheitsvorschriften.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-voicemail-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dl-1-voicemail-002",
+   "stem": "What is the purpose of the call?",
+   "choices": [
+    "To cancel a drone flight",
+    "To change drone flight coordinates",
+    "To report a drone malfunction",
+    "To request drone flight approval"
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the call is to request approval for drone operations, as indicated by the phrase 'Genehmigung für Drohnenflug'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-1-voicemail-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-1-voicemail-002",
+   "stem": "What does 'Luftraum' mean here?",
+   "choices": [
+    "A type of drone",
+    "Airspace",
+    "A specific drone model",
+    "A drone control center"
+   ],
+   "answer": 1,
+   "explanation": "The word 'Luftraum' refers to 'airspace', as it is used in the context of coordinating drone operations with civil aviation, 'mit der zivilen Luftfahrt abzustimmen'.",
    "source": "llm",
    "verified": false
   },
@@ -5712,6 +7142,60 @@
    "verified": false
   },
   {
+   "id": "de-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-conversation-003",
+   "stem": "What does the officer imply when he says that the wine is \"very thoughtful of you\"?",
+   "choices": [
+    "He appreciates the gesture but is not particularly fond of wine.",
+    "He is surprised that the guests brought a gift.",
+    "He thinks the wine is of poor quality.",
+    "He is grateful for the gift and the thoughtfulness behind it."
+   ],
+   "answer": 3,
+   "explanation": "The officer says \"Das ist sehr aufmerksam von Ihnen\", which implies gratitude and appreciation for the thoughtfulness of the gift. The other options are either too literal or opposite of the implied meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-conversation-003",
+   "stem": "What is the officer's wife implying when she says \"I hope you like schnitzel\"?",
+   "choices": [
+    "She is trying to be polite but doesn't expect the guests to like it.",
+    "She is suggesting that the guests should order something else.",
+    "She is unsure if the guests will enjoy the meal.",
+    "She is confident that the guests will love the meal."
+   ],
+   "answer": 2,
+   "explanation": "The officer's wife says \"Ich hoffe, Sie mögen Schnitzel\", which implies that she is unsure if the guests will enjoy the meal. The other options either misinterpret or contradict the implied meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-conversation-003",
+   "stem": "What does the guest imply when he says that he \"wouldn't want to impose\"?",
+   "choices": [
+    "He is politely declining an offer to do something, possibly to avoid inconveniencing the host.",
+    "He is indicating that he feels uncomfortable and wants to leave.",
+    "He is suggesting that the officer's family should do more for him.",
+    "He is being polite and doesn't actually mind imposing."
+   ],
+   "answer": 0,
+   "explanation": "The guest says \"Ich würde nicht stören wollen\", which implies that he is politely declining an offer to avoid inconveniencing the host. The other options either misinterpret or contradict the implied meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dl-2-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5762,6 +7246,168 @@
    ],
    "answer": 3,
    "explanation": "The correct answer is 0. The phrase 'unterzeichnet' refers to the action of signing the lease. The text states: 'wir haben einen langfristigen Mietvertrag... unterzeichnet,' which means they signed a long-term lease. The other choices do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-002",
+   "stem": "What does 'Ich habe alles vorbereitet' imply?",
+   "choices": [
+    "The colleague is still working on the preparation.",
+    "The colleague needs help with the preparation.",
+    "The colleague has completed all necessary tasks.",
+    "The colleague forgot to prepare something."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'Ich habe alles vorbereitet' implies that the colleague has completed all necessary tasks. The use of 'alles' (everything) and 'vorbereitet' (prepared) indicates that the preparation is finished.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-002",
+   "stem": "What does 'Es war mir ein Vergnügen' imply?",
+   "choices": [
+    "The colleague is annoyed at having to help.",
+    "The colleague enjoyed helping.",
+    "The colleague expects a reward for helping.",
+    "The colleague is indifferent about helping."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'Es war mir ein Vergnügen' implies that the colleague enjoyed helping. The use of 'Vergnügen' (pleasure) indicates that the colleague found the task enjoyable.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-002",
+   "stem": "What does 'Falls Sie noch etwas brauchen' imply?",
+   "choices": [
+    "The colleague is asking for a favor in return.",
+    "The colleague is offering further assistance.",
+    "The colleague is waiting for instructions.",
+    "The colleague is done with helping."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'Falls Sie noch etwas brauchen' implies that the colleague is offering further assistance. The use of 'falls' (in case) and 'noch etwas brauchen' (need something else) indicates that the colleague is willing to help more if needed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-003",
+   "stem": "According to Karl Müller, what is the main issue with the current supply chain?",
+   "choices": [
+    "A lack of warehouse space",
+    "Delays at customs due to new regulations",
+    "Increased fuel costs",
+    "A shortage of qualified truck drivers"
+   ],
+   "answer": 2,
+   "explanation": "Karl Müller implies that the main issue is increased fuel costs when he says 'Die Treibstoffpreise sind in letzter Zeit stark gestiegen, was unsere Kosten erhöht hat.' This suggests that the rising fuel prices are a significant challenge for the supply chain, as it directly impacts their operational costs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-003",
+   "stem": "What does Karl Müller imply when he says 'Wir müssen unsere Lieferanten diversifizieren'?",
+   "choices": [
+    "They are planning to increase orders from current suppliers",
+    "They are thinking about changing their supply chain strategy completely",
+    "They are looking to find new suppliers to mitigate risks",
+    "They are considering reducing the number of suppliers"
+   ],
+   "answer": 2,
+   "explanation": "Karl Müller implies that they are looking to find new suppliers to mitigate risks. The phrase 'Lieferanten diversifizieren' suggests that they want to have a variety of suppliers to avoid over-reliance on a single source, which can help mitigate risks in the supply chain.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-003",
+   "stem": "What is the implied suggestion when Karl says 'Wir könnten auch über eine lokale Produktion nachdenken'?",
+   "choices": [
+    "They should expand their current production facilities",
+    "They should consider moving production closer to their main market",
+    "They should invest in more automated production equipment",
+    "They should outsource more of their production"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'lokale Produktion' implies moving production closer to their main market to reduce dependency on global supply chains and mitigate risks associated with long-distance transportation. It suggests a strategic shift towards localizing production to enhance supply chain resilience.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-005",
+   "stem": "Why does the German counterpart suggest 4 PM for the meeting?",
+   "choices": [
+    "The counterpart knows the visitor has another appointment at 3 PM.",
+    "The counterpart thinks the visitor might be tired after lunch.",
+    "The visitor explicitly asked for a later time.",
+    "The counterpart wants to accommodate the visitor's schedule."
+   ],
+   "answer": 3,
+   "explanation": "The counterpart says \"Ich dachte, vielleicht passt Ihnen 16 Uhr besser?\", implying they are trying to accommodate the visitor's schedule. There's no mention of the visitor being tired, having another appointment, or explicitly asking for a later time.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-005",
+   "stem": "What does the German counterpart imply when they say \"Vielleicht können wir das Meeting auf morgen verschieben\"?",
+   "choices": [
+    "They have no flexibility in their schedule.",
+    "They are not interested in meeting at all.",
+    "They are open to changing the meeting time.",
+    "They are eager to meet as soon as possible."
+   ],
+   "answer": 2,
+   "explanation": "The counterpart is suggesting an alternative time, indicating they are open to changing the meeting time. They don't express eagerness to meet immediately, inflexibility, or disinterest.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-interview-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dl-2-interview-005",
+   "stem": "What is the visitor's implied response to the suggestion of moving the meeting to tomorrow?",
+   "choices": [
+    "They are eager to meet today.",
+    "They agree to move the meeting to tomorrow.",
+    "They are indifferent about the meeting time.",
+    "They are not available tomorrow."
+   ],
+   "answer": 0,
+   "explanation": "The visitor responds with \"Heute wäre mir lieber\", indicating they prefer to meet today. There's no indication of agreement to move the meeting, unavailability tomorrow, or indifference.",
    "source": "llm",
    "verified": false
   },
@@ -5874,6 +7520,168 @@
    "verified": false
   },
   {
+   "id": "de-dl-2-news-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-news-003",
+   "stem": "What is the main idea of this news report?",
+   "choices": [
+    "The military air base has decided to increase its drone fleet.",
+    "A new type of drone was tested at the military air base.",
+    "The military air base has implemented new drone detection technology.",
+    "A drone was spotted near a military air base, raising security concerns."
+   ],
+   "answer": 3,
+   "explanation": "The main idea of the news report is that a drone was spotted near a military air base, which raised security concerns. This is evident from the statements such as 'ein unbemanntes Fluggerät wurde in der Nähe des Luftwaffenstützpunkts gesichtet' and 'Die Sichtung des Drohnen hat die Sicherheitskräfte alarmiert'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-news-003",
+   "stem": "What time was the drone first spotted?",
+   "choices": [
+    "At 3:30 AM",
+    "At 3:45 AM",
+    "At 3:15 AM",
+    "At 4:00 AM"
+   ],
+   "answer": 0,
+   "explanation": "The drone was first spotted at 3:30 AM. This is stated in the text as 'um 3:30 Uhr morgens'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-news-003",
+   "stem": "What does 'unbemannte Fluggeräte' mean here?",
+   "choices": [
+    "Military planes",
+    "Commercial airliners",
+    "Unmanned aerial vehicles",
+    "Manned aircraft"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'unbemannte Fluggeräte' refers to unmanned aerial vehicles, or drones. This is clear from the discussion about the drone sighting and the security concerns it raised.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-news-004",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "A new type of technology used to detect hostile individuals",
+    "A new program to help security forces recognize hostile intent",
+    "A new law requiring security personnel to undergo more training",
+    "A recent increase in hostile incidents at government buildings"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the new training program for security forces to recognize hostile intent, as stated in the first and last lines of the text: \"Ein neues Programm zur Schulung von Sicherheitskräften\" and \"Dieses Programm zielt darauf ab, die Fähigkeit der Sicherheitskräfte zu verbessern, feindliche Absichten zu erkennen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-news-004",
+   "stem": "What is one of the methods used in the training program?",
+   "choices": [
+    "Role-playing exercises with actors",
+    "Lectures from security experts",
+    "Computer simulations of hostile scenarios",
+    "Field trips to high-risk locations"
+   ],
+   "answer": 0,
+   "explanation": "The text mentions that the training involves role-playing exercises with actors: \"Die Schulung umfasst Rollenspiele mit Schauspielern, die verschiedene Verhaltensweisen und Absichten darstellen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-news-004",
+   "stem": "What does \"feindliche Absichten\" mean here?",
+   "choices": [
+    "Violent actions",
+    "Hostile intentions",
+    "Angry words",
+    "Suspicious behavior"
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"feindliche Absichten\" refers to hostile intentions, as it is used to describe what the security forces are being trained to recognize: \"Dieses Programm zielt darauf ab, die Fähigkeit der Sicherheitskräfte zu verbessern, feindliche Absichten zu erkennen.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-news-005",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A new counter-drone system at Frankfurt Airport",
+    "The history of drone technology",
+    "The increase in drone-related incidents at airports",
+    "The economic impact of drones on aviation"
+   ],
+   "answer": 0,
+   "explanation": "The report focuses on the new counter-drone system installed at Frankfurt Airport. This is evident from the repeated mentions of the system and its features, such as 'ein neues System zur Abwehr von Drohnen' and 'das System kann Drohnen erkennen und neutralisieren'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-news-005",
+   "stem": "How does the counter-drone system work?",
+   "choices": [
+    "It uses trained birds to intercept drones",
+    "It uses a net to catch drones",
+    "It emits a signal that disrupts the drone's communication",
+    "It shoots down drones with a laser"
+   ],
+   "answer": 2,
+   "explanation": "The report states that the system 'kann Drohnen erkennen und durch Störung ihrer Kommunikation neutralisieren', which means it disrupts the drone's communication.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-news-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-news-005",
+   "stem": "What does 'neutralisieren' mean here?",
+   "choices": [
+    "To render ineffective",
+    "To interrupt",
+    "To destroy",
+    "To confiscate"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'neutralisieren' means to render the drones ineffective by disrupting their communication, as stated in 'das System kann Drohnen erkennen und durch Störung ihrer Kommunikation neutralisieren'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dl-2-report-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5924,6 +7732,114 @@
    ],
    "answer": 0,
    "explanation": "In this context, 'Erreichbarkeit' refers to the accessibility of different neighborhoods. The text says, 'Die neue Linie wird die Fahrtzeiten verkürzen und die Erreichbarkeit von mehreren Stadtteilen deutlich verbessern.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dl-2-report-002",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The benefits of using drones for military operations",
+    "The new regulations for drone operations in German airspace",
+    "The history of drone technology in Germany",
+    "The impact of drones on civil aviation"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the new regulations for drone operations. This is clear from the opening sentence: 'Ab dem nächsten Monat gelten neue Vorschriften für den Betrieb von Drohnen im deutschen Luftraum.' The rest of the text elaborates on these regulations and their implications.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dl-2-report-002",
+   "stem": "What is one of the key changes in the new regulations?",
+   "choices": [
+    "Drones are only allowed to fly in designated areas",
+    "Drones are no longer allowed to fly at night",
+    "Drones must always stay within the operator's line of sight",
+    "Drones must have a registration number"
+   ],
+   "answer": 3,
+   "explanation": "One of the key changes is that drones must have a registration number. This is stated in the text: 'Eine der wichtigsten Änderungen ist, dass Drohnen ab sofort eine Registriernummer haben müssen.' The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-2-report-002",
+   "stem": "What does 'Koordination' mean in this context?",
+   "choices": [
+    "Conflict",
+    "Cooperation",
+    "Competition",
+    "Communication"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'Koordination' refers to the cooperation between military and civil aviation authorities to manage drone operations. The text states: 'Die Koordination zwischen militärischen und zivilen Luftverkehrsbehörden ist entscheidend für die sichere Integration von Drohnen in den Luftraum.' This implies a collaborative effort, not competition, conflict, or merely communication.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-conversation-001",
+   "stem": "What does the speaker imply when they say, \"Das ist eine etwas heikle Angelegenheit\"?",
+   "choices": [
+    "The information is highly secret and should not be shared.",
+    "The information is slightly sensitive and should be handled carefully.",
+    "The information is not important and can be shared freely.",
+    "The information is too complex and cannot be explained easily."
+   ],
+   "answer": 1,
+   "explanation": "The speaker implies that the information is slightly sensitive and should be handled carefully. This is evident from the phrase \"etwas heikle Angelegenheit\", which translates to \"a somewhat delicate matter\". The use of \"etwas\" (somewhat) suggests that it is not highly secret but requires careful handling.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-conversation-001",
+   "stem": "What does the speaker imply when they say, \"Ich würde es vorziehen, wenn wir das intern klären könnten\"?",
+   "choices": [
+    "They prefer to keep the discussion within the department.",
+    "They prefer to ignore the matter altogether.",
+    "They want to discuss the matter openly with everyone.",
+    "They want to involve higher management in the discussion."
+   ],
+   "answer": 0,
+   "explanation": "The speaker implies that they prefer to keep the discussion within the department. This is evident from the phrase \"intern klären könnten\", which translates to \"could clarify internally\". The use of \"intern\" (internally) suggests that they want to keep the discussion within the confines of their department.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-conversation-001",
+   "stem": "What does the speaker imply when they say, \"Vielleicht könnten wir uns stattdessen auf die Quartalszahlen konzentrieren\"?",
+   "choices": [
+    "They want to avoid discussing the sensitive information altogether.",
+    "They want to postpone the discussion to a later date.",
+    "They suggest focusing on quarterly numbers as an alternative.",
+    "They suggest involving a third party in the discussion."
+   ],
+   "answer": 2,
+   "explanation": "The speaker implies that they suggest focusing on quarterly numbers as an alternative. This is evident from the phrase \"uns stattdessen auf die Quartalszahlen konzentrieren\", which translates to \"instead focus on the quarterly numbers\". The use of \"stattdessen\" (instead) suggests that they are offering an alternative topic for discussion.",
    "source": "llm",
    "verified": false
   },
@@ -6248,6 +8164,168 @@
    ],
    "answer": 1,
    "explanation": "The word 'Einsätze' is used in the context of the peacekeepers' work in the Congo. The text states, 'Unsere Einsätze sind oft in abgelegenen Gebieten.' (Our missions are often in remote areas.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-005",
+   "stem": "In the interview, what is implied when Frau Weber says, \"Wir müssen sicherstellen, dass die neuen Maßnahmen nicht zu umständlich sind\"?",
+   "choices": [
+    "The new security measures are not complicated enough.",
+    "The new security measures are already too complicated.",
+    "The new security measures are perfectly balanced.",
+    "The new security measures should be adjusted to be less cumbersome."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'The new security measures should be adjusted to be less cumbersome.' The phrase \"nicht zu umständlich\" implies that the measures could be too cumbersome and need to be adjusted.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-005",
+   "stem": "What does Herr Schmidt imply when he says, \"Wir verstehen die Bedenken, aber Sicherheit hat Vorrang\"?",
+   "choices": [
+    "The concerns about convenience are invalid.",
+    "Security is not a priority.",
+    "Convenience is more important than security.",
+    "Security is the top priority."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'Security is the top priority.' The phrase \"Sicherheit hat Vorrang\" directly states that security is the top priority, implying that other concerns, such as convenience, are secondary.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-005",
+   "stem": "What is implied by Frau Weber's statement, \"Vielleicht können wir eine Ausnahme für bestimmte Bereiche machen\"?",
+   "choices": [
+    "Exceptions will be made for all areas.",
+    "Exceptions could be considered for specific areas.",
+    "No exceptions will be made for any areas.",
+    "The current security measures are sufficient for all areas."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'Exceptions could be considered for specific areas.' The phrase \"eine Ausnahme für bestimmte Bereiche machen\" implies that exceptions might be possible in certain areas, indicating a willingness to discuss and potentially adjust the security measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-006",
+   "stem": "Why does the sergeant ask about the visitor's purpose of visit?",
+   "choices": [
+    "To gather information for a report",
+    "To determine if the visitor is authorized to enter the facility",
+    "To assess the visitor's knowledge of German culture",
+    "To decide whether to offer the visitor a tour"
+   ],
+   "answer": 1,
+   "explanation": "The sergeant asks about the purpose of the visit to ensure that the visitor is authorized to enter the facility. This is implied by the question 'Was ist der Zweck Ihres Besuchs?' and the subsequent mention of checking authorization.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-006",
+   "stem": "What does the sergeant imply when he says 'Das wird eine Weile dauern'?",
+   "choices": [
+    "The check will take some time",
+    "The check will be thorough but not time-consuming",
+    "The check will be postponed",
+    "The check will be quick"
+   ],
+   "answer": 0,
+   "explanation": "The sergeant implies that the check will take some time with the phrase 'Das wird eine Weile dauern'. This is a softening of a refusal to hurry the process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-006",
+   "stem": "What does the visitor's use of the phrase 'Ich hoffe, das ist in Ordnung' imply?",
+   "choices": [
+    "The visitor is making a complaint",
+    "The visitor is seeking permission or approval",
+    "The visitor is making a request for information",
+    "The visitor is expressing dissatisfaction"
+   ],
+   "answer": 1,
+   "explanation": "The visitor's use of the phrase 'Ich hoffe, das ist in Ordnung' implies that they are seeking permission or approval for something, in this case, bringing in a personal device.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-007",
+   "stem": "The speaker's tone when discussing their colleague's preparation suggests that they appreciate their colleague's work because...",
+   "choices": [
+    "the colleague's preparation saves them time and effort.",
+    "they think their colleague is too meticulous.",
+    "they feel their colleague is overstepping their responsibilities.",
+    "they believe their colleague is trying to impress the boss."
+   ],
+   "answer": 0,
+   "explanation": "The speaker's tone is grateful and appreciative. They say 'Das hat mir wirklich viel Arbeit erspart' which means 'It has really saved me a lot of work.' This indicates that they appreciate their colleague's preparation because it saves them time and effort.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-007",
+   "stem": "What does the speaker imply about their colleague's understanding of their needs?",
+   "choices": [
+    "The colleague is not very familiar with the speaker's work.",
+    "The colleague is trying to change the speaker's way of working.",
+    "The colleague knows exactly what the speaker needs.",
+    "The colleague has made some assumptions that might not be accurate."
+   ],
+   "answer": 2,
+   "explanation": "The speaker says 'Sie hat genau gewusst, was ich brauche' which means 'She knew exactly what I needed.' This implies that their colleague understands their needs very well.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-2p-interview-007-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "de-dl-2p-interview-007",
+   "stem": "What does the phrase 'Das ist wirklich eine große Hilfe' suggest about the speaker's feeling towards their colleague's preparation?",
+   "choices": [
+    "They think it is unnecessary.",
+    "They find it very helpful.",
+    "They feel it is too much work for their colleague.",
+    "They believe it is not done properly."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'Das ist wirklich eine große Hilfe' means 'That is really a big help.' This suggests that the speaker feels very positively about their colleague's preparation and finds it very helpful.",
    "source": "llm",
    "verified": false
   },
@@ -6738,6 +8816,60 @@
    "verified": false
   },
   {
+   "id": "de-dl-3-analysis-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-analysis-004",
+   "stem": "What is the main topic of this radio exchange between air defense units?",
+   "choices": [
+    "Planning a joint military exercise involving air defense",
+    "Discussing new technology for air defense systems",
+    "Procedures for coordinating air defense efforts between allied units",
+    "Reporting a breach in air defense protocols"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the procedures for coordinating air defense efforts, as indicated by the repeated use of terms like Koordination, Abwehrmaßnahmen, and Zusammenarbeit throughout the exchange.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-analysis-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-analysis-004",
+   "stem": "What does the phrase 'Luftraumüberwachung' refer to in this context?",
+   "choices": [
+    "Airspace monitoring",
+    "Ground-based missile defense",
+    "Radar surveillance only",
+    "Air-to-air combat"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'Luftraumüberwachung' refers to airspace monitoring, as it is used to describe the ongoing monitoring of the airspace by both German and American units.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-analysis-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "de-dl-3-analysis-004",
+   "stem": "According to the exchange, what is the primary role of the American unit in this operation?",
+   "choices": [
+    "To lead the air defense operation due to their advanced technology",
+    "To provide additional radar coverage and support the German unit's air defense efforts",
+    "To intercept any hostile aircraft entering the designated airspace",
+    "To coordinate communications between all allied units involved in the operation"
+   ],
+   "answer": 1,
+   "explanation": "The primary role of the American unit is to provide additional radar coverage and support the German unit's air defense efforts, as stated in the line 'Wir bieten zusätzliche Radarüberdeckung und unterstützen Ihre Abwehrmaßnahmen'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dl-3-debate-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -6900,6 +9032,60 @@
    "verified": false
   },
   {
+   "id": "de-dl-3-debate-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-debate-004",
+   "stem": "What is the main topic of the debate?",
+   "choices": [
+    "The effectiveness of different types of military drones",
+    "The environmental impact of drone technology",
+    "The ethical implications of drone warfare",
+    "The rising cost of defending military bases from cheap drones"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly stated in the text: 'die steigenden Kosten des Schutzes von Militärbasen vor billigen Drohnen'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-debate-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dl-3-debate-004",
+   "stem": "What can be inferred about the speakers' opinions on the current situation?",
+   "choices": [
+    "They believe that drones pose no significant threat to military bases",
+    "They are both concerned about the financial burden of drone defense",
+    "They think that the problem will resolve itself over time",
+    "They are both in favor of increasing drone defense budgets"
+   ],
+   "answer": 1,
+   "explanation": "Both speakers express concern about the financial aspect: Frau Schmidt mentions 'die finanziellen Belastungen', and Herr Müller talks about 'die hohen Kosten'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-debate-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-debate-004",
+   "stem": "What does 'abwehren' mean in this context?",
+   "choices": [
+    "To attack",
+    "To ignore",
+    "To destroy",
+    "To defend"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'abwehren' means to defend, as in 'die Basen gegen Drohnenangriffe abwehren'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dl-3-editorial_commentary-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -7004,6 +9190,60 @@
    ],
    "answer": 1,
    "explanation": "The author's critical opinion is evident in statements like \"Die Wohnungssuche in Berlin ist zu einem wahren Albtraum geworden\" and \"Die sogenannte Mietpreisbremse [...] zeigt kaum Wirkung.\" These statements indicate frustration and criticism towards the current housing situation and the ineffective policies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-editorial_commentary-003",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The daily routine of soldiers at a base defense operations center",
+    "The importance of technology in modern base defense",
+    "The challenges of shift handover in a military environment",
+    "The personal lives of the soldiers working at the base"
+   ],
+   "answer": 2,
+   "explanation": "The text focuses on the challenges and procedures involved in the shift handover at a base defense operations center, highlighting the complexities and responsibilities of the process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-editorial_commentary-003",
+   "stem": "In the text, the phrase 'die Lagebesprechung' refers to what?",
+   "choices": [
+    "A casual conversation among soldiers",
+    "A briefing about the current situation",
+    "A meeting to discuss personal issues",
+    "A planning session for future missions"
+   ],
+   "answer": 1,
+   "explanation": "The text states 'Nach der Lagebesprechung übergaben die ausgehenden Soldaten ihre Posten an die eingehenden Soldaten.', indicating that 'die Lagebesprechung' is a briefing about the current situation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-editorial_commentary-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "de-dl-3-editorial_commentary-003",
+   "stem": "What is the tone of the text?",
+   "choices": [
+    "Humorous and lighthearted",
+    "Informative and neutral",
+    "Emotional and sentimental",
+    "Critical and negative"
+   ],
+   "answer": 1,
+   "explanation": "The text provides a detailed and factual description of the shift handover process, maintaining an informative and neutral tone throughout.",
    "source": "llm",
    "verified": false
   },
@@ -7166,6 +9406,60 @@
    ],
    "answer": 2,
    "explanation": "The correct answer is 'Cultural heritage'. The lecturer uses the phrase in the context of storytelling helping to preserve and transmit 'kulturelle Identität', referring to the shared beliefs, customs, and history that define a group of people. The other options do not fit the context as well.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dl-3-lecture-004",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The role of drones in modern warfare",
+    "The importance of communication in military operations",
+    "The history of the Quick Reaction Force",
+    "The logistics of a nighttime QRF drill"
+   ],
+   "answer": 3,
+   "explanation": "The lecture focuses on the details of a nighttime Quick Reaction Force drill, including the preparation, execution, and evaluation of the exercise. The speaker discusses the specific tasks, such as the convoy simulation, the attack scenario, and the use of night vision devices, which are all key aspects of the drill.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dl-3-lecture-004",
+   "stem": "From the lecture, what can be inferred about the importance of the QRF drill?",
+   "choices": [
+    "It is a routine exercise with little significance",
+    "It is a symbolic gesture to display military strength",
+    "It is primarily for training new recruits",
+    "It is crucial for maintaining readiness and efficiency in military operations"
+   ],
+   "answer": 3,
+   "explanation": "The speaker emphasizes the importance of the QRF drill in maintaining the readiness and efficiency of the force. They mention that the drill helps to improve the unit's ability to react quickly and effectively to various threats, which is essential for real-world military operations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dl-3-lecture-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dl-3-lecture-004",
+   "stem": "In the lecture, the phrase \"der Übungsverlauf\" refers to:",
+   "choices": [
+    "The participants in the drill",
+    "The equipment used in the drill",
+    "The sequence of events during the drill",
+    "The final evaluation of the drill"
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses the phrase \"der Übungsverlauf\" to describe the sequence of events during the drill. They mention that the Übungsverlauf includes the convoy simulation, the attack scenario, and the evaluation of the force's performance.",
    "source": "llm",
    "verified": false
   },

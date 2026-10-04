@@ -201,6 +201,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-1-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "announcement",
+   "title": "New Drone Regulations Announced",
+   "body": "为了确保飞行安全，空军基地近期发布了新的无人机飞行规定。无人机不得在距离空军基地500米以内飞行。违规操作将导致设备被扣押。请所有无人机用户遵守此规定。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -276,6 +292,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-1-instructions-006",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "instructions",
+   "title": "No-Drone Zone Notice for Lantern Festival",
+   "body": "元宵节期间, 基地周边将实行无人机禁飞。严禁在基地周边使用无人机。为了防止无人机与灯笼相撞引发事故, 请广大市民理解并配合。违者将依法处理。感谢合作。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-instructions-007",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Debate Club Meeting Instructions",
+   "body": "俱乐部下次会议的主题是空中防御中的激光武器。我们将讨论这个主题的利与弊。请准备相关资料，并积极参与。会议时间是下周三下午三点，地点在学校图书馆。希望大家准时到达。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-instructions-008",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Basic Security Training Instructions",
+   "body": "安全训练指示\n\n每组需3人。注意观察周围环境，训练识别敌意。发现可疑人员，立即报告。保持安静，勿惊动敌人。团队合作至关重要，保持警惕，确保安全。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -321,6 +385,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-1-notice-005",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "notice",
+   "title": "Shift Handover Notice",
+   "body": "通知\n\n基地防御作战中心交接班通知\n\n各位同事：\n\n本周五晚九点将进行例行交接班。晚班的张明和王丽将向早班的李华和陈洋移交工作。请各位在交接班时仔细检查设备和记录，确保信息准确无误。\n\n感谢各位的配合！\n\n基地防御作战中心\n\n2023年10月10日",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-1-personal_letter-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -363,6 +443,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-short_message-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Joint Perimeter Patrol Briefing",
+   "body": "各位同事，大家好！\n\n今天下午我们将进行联合周边巡逻。巡逻的目的是检查周边是否有异常活动或安全隐患。巡逻路线将覆盖东门、北门和西门。请大家准时参加，并携带齐全所需装备。巡逻期间，请注意安全，并保持警惕。\n\n感谢大家的配合！\n\n巡逻负责人：张伟",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -666,6 +762,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-2-event_description-004",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Air Defense Drill Conducted Successfully",
+   "body": "北约各成员国的空中防御部队在德国东部举行了联合演习。昨天，各成员国的空军部队和防空部队共同参与了这次演习。演习的重点是测试新的通信系统和协调机制。参加演习的部队包括来自德国、法国、意大利和西班牙的飞行员和地面控制人员。演习开始时，各国的飞行员在指定的空域内进行了巡逻任务。地面控制人员负责监测空中情况，并向飞行员提供指示。在演习的高潮部分，各国部队模拟了应对来自多个方向的空中威胁的情景。通过这次演习，各成员国的空中防御部队有效地展示了它们的协作能力和应对突发情况的能力。演习结束后，各国代表进行了总结会议，讨论了演习中的经验和不足。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-event_description-005",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Community Meeting Addresses Security Fears",
+   "body": "社区安全措施\n\n亲爱的居民们，\n\n由于近期发生的一些事件，社区委员会决定加强安全措施。我们理解大家的担忧，并希望通过这些措施来确保我们社区的安全。首先，我们将在社区的出入口和公共区域安装更多的监控摄像头。其次，我们将组织定期的安全演练，以确保每个人都清楚如何应对紧急情况。此外，我们还将加强巡逻，确保社区在任何时候都有足够的安全人员。\n\n我们鼓励每位居民积极参与这些安全措施，并报告任何可疑活动。你们的合作对于我们社区的安全至关重要。如果你们有任何问题或建议，请不要犹豫与社区委员会联系。\n\n感谢你们的理解和支持。\n\n社区委员会",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -711,6 +839,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-2-news-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "news",
+   "title": "Coordinated Actions During Joint Air Defense Exercise",
+   "body": "近期，联合空中防御演习将在多个省份展开。为确保通信顺畅，各参演单位需遵循以下无线电通信程序。首先，各单位需确定通信频率和呼号。其次，建立联系后，各单位应报告其当前位置和状态。例如，东部地区的防御单位可能会说：“我们位于A点，状态为黄色。”接收单位应确认收到信息，并报告自身位置和状态。在接收到威胁信息时，各单位应立即通知所有相关单位，并提供威胁的详细信息，如威胁的类型、位置和移动方向。例如，南部地区的单位可能会说：“发现敌方飞机，位于B点，向东北方向移动。”所有单位应保持通信畅通，并定期更新其位置和状态。在演习结束时，各单位应通知所有相关单位，并确认通信结束。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-2-report-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -723,6 +867,54 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-report-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "report",
+   "title": "Unusual Drone Activity at Xiamen Harbor",
+   "body": "最近在厦门港上空出现了一大群小型无人机。今天清晨大约六点钟，港口工作人员首先发现了这群无人机。据估计，有超过五百架无人机在港口上空盘旋。许多市民都停下来观看这奇观。\n\n港口管理部门迅速采取了行动。他们联系了当地的无人机注册中心，试图找出这些无人机的来源。同时，港口管理部门也呼吁市民保持冷静，不要试图接近或控制这些无人机。\n\n目前，这些无人机并没有对港口的运营造成直接影响。但是，港口管理部门仍然建议船只和飞机保持警惕，避免与这些无人机发生冲突。\n\n无人机专家表示，这些无人机可能是某个科研项目的一部分，或者是某个无人机爱好者集团的活动。他们正在进一步调查这些无人机的来源和目的。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "report",
+   "title": "Training Program for Identifying Threatening Behavior",
+   "body": "近期，为了提升安全人员识别敌意意图的能力，我们开展了一系列培训课程和实战演练。本次培训的目的是提高安全人员识别敌意意图的能力，确保他们能够在第一时间做出正确的判断和反应。培训内容包括行为分析、情绪识别、威胁评估等方面。通过这些课程，安全人员可以了解不同类型的威胁行为，并学会如何有效地应对这些威胁。此外，我们还设计了模拟真实情境的演练，让安全人员在虚拟环境中练习识别和应对威胁行为。这些演练不仅帮助安全人员提高了实战能力，还增强了他们的信心。我们相信，通过持续的培训和演练，安全人员将能够更好地履行职责，确保公共安全。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-report-004",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "report",
+   "title": "Interference Disrupts Military Drone Exercise",
+   "body": "近日，我军在某训练基地进行无人机操控演习。演习过程中，无人机的控制通信链路遭到电磁干扰，导致部分无人机失去控制。经过紧急处置，未造成人员伤亡和设备损失。据初步调查，干扰源来自演习区域外的某无线电设备。目前，相关部门正在进一步调查干扰源的具体位置和性质。为了防止类似事件再次发生，我军将加强对无人机控制通信链路的保护，并加大对干扰设备的监测力度。此外，我军还将加强无人机操控人员的培训，提高他们的应急处理能力。这次演习的经验和教训将被记录下来，以便未来的演习和实际作战中参考。我军将继续加强无人机技术的研发和应用，以提高作战能力。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -951,6 +1143,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-3-analysis-004",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Laser Weapons: The Future of Air Defense?",
+   "body": "近年来，激光武器在空中防御中的应用引发了激烈的讨论。支持者认为，激光武器具有快速、精准和成本低的优势，可以有效应对无人机和巡航导弹等新兴威胁。例如，激光武器可以在几秒钟内击中目标，而传统导弹可能需要更长的时间。此外，激光武器的成本每次使用仅为传统导弹的百分之一，这在应对大量来袭目标时具有显著的经济优势。然而，反对者指出，激光武器的技术成熟度仍然有待提高。激光武器的有效射程和穿透能力受到天气条件的限制，特别是在雾、雨或雪等恶劣天气下，其性能可能大幅下降。此外，激光武器的功率和能量需求也对装备和供电系统提出了严峻挑战。此外，激光武器的发展还面临着伦理和法律方面的问题。国际社会对激光武器的使用尚未达成共识，其长期影响和潜在风险需要进一步评估。考虑到这些因素，中国的空中防御策略应采取平衡的立场。虽然激光武器在某些情况下可以发挥重要作用，但传统导弹在空中防御中仍然发挥着不可替代的作用。因此，中国应继续投资于激光武器的研究和发展，同时保持和更新其传统导弹防御系统。这种综合的方法可以确保中国的空中防御能力在不断变化的安全环境中保持强大和灵活。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-analysis-005",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Rising Costs: The Challenge of Drone Defense for Military Bases",
+   "body": "近年来，低成本无人机的使用越来越普遍，无论是国家行为体还是非国家行为体都在使用它们进行侦察和攻击。这些无人机成本低廉，操作简单，使得它们成为一种严重的安全威胁。为了应对这种威胁，军事基地需要升级它们的防御系统。然而，防御系统的升级成本非常高昂。例如，先进的雷达系统和电磁脉冲武器可以检测和摧毁无人机，但这些系统的成本可能高达数百万美元。此外，由于无人机技术不断发展，防御系统也需要不断更新和改进，这将进一步增加成本。因此，军事基地在应对低成本无人机威胁时面临着巨大的财政挑战。为了有效地防御无人机攻击，军事基地需要投资于先进的防御系统。这些系统必须能够检测和识别各种类型的无人机，并能够在不伤害人员或造成财产损失的情况下摧毁它们。然而，这样的系统成本非常高昂，且维护和操作也需要大量的资源。此外，由于无人机技术不断发展，防御系统也需要不断更新和改进，这将进一步增加成本。因此，军事基地在应对低成本无人机威胁时面临着巨大的财政挑战。为了应对这些挑战，军事基地需要采取多方面的策略。首先，他们需要与其他军事机构和情报机构合作，共享信息和资源，以提高防御系统的效率和有效性。其次，他们需要投资于研究和开发，以创造更先进、更经济的防御系统。最后，他们需要培训和教育军事人员，使他们能够有效地使用和维护这些系统。总之，低成本无人机的威胁是一个严峻的挑战，军事基地需要采取积极的措施来应对。尽管成本高昂，但投资于先进的防御系统和技术是必要的，以确保军事基地的安全和稳定。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -1053,6 +1277,70 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-editorial-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "editorial",
+   "title": "A New Shield for Air Travel Safety",
+   "body": "近日，某国际机场安装了一套先进的反无人机系统，这一举措引起了广泛关注。此次安装的反无人机系统是提升民用航空安全的重要一步，也是对近年来无人机干扰事件频发的有力回应。随着无人机技术的普及，其带来的安全隐患日益凸显。无人机干扰飞机起降、侵入机场禁飞区等事件屡见不鲜，给民用航空安全带来了严峻挑战。面对这种情况，传统的安全措施往往难以应对，亟需新的解决方案。反无人机系统的出现正填补了这一空白。这套系统利用先进的传感器和干扰技术，能够有效探测、跟踪和中断非法无人机的活动。它不仅能保护飞机的正常起降，还能维护机场的日常运营秩序。此外，该系统还具有高度的灵活性和可扩展性，可以根据实际需要进行调整和升级。这意味着它能够适应未来可能出现的新型安全威胁。当然，技术的应用必须以合规和道德为前提。在部署反无人机系统时，必须确保其操作符合相关法律法规，并充分考虑对合法无人机活动的影响。只有这样，才能在保障安全的同时，维护公众的信任和支持。随着科技的发展，反无人机系统的出现为解决这个问题提供了新的途径。我们有理由相信，在不远的将来，类似的系统将在更多的机场投入使用，为百万飞行旅客提供更加安全的旅行体验。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-editorial-004",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "editorial",
+   "title": "The Future of Air Defense: Lasers or Missiles?",
+   "body": "激光武器在防空领域的应用存在诸多争议。支持者认为，激光武器具有快速、精准和成本低的优势，能够有效拦截来袭的导弹和无人机。然而，反对者指出，激光武器技术仍处于实验阶段，面临诸多挑战，例如能源供应、精准度和成本问题。\n\n近年来，中国在激光武器领域取得了显著进展。2016年，中国成功测试了世界上首款装船激光武器系统“飞龙”。2018年，中国又展示了新型高能激光武器“神光”。这些成就表明，中国在激光武器技术方面处于世界领先地位。\n\n然而，我们也不能忽视激光武器的局限性。例如，激光武器的有效范围有限，通常仅为几公里到十几公里。此外，激光武器的能源供应问题尚未完全解决，这限制了其持续使用的能力。此外，激光武器的成本仍然较高，这使得其大规模部署面临挑战。\n\n此外，激光武器的发展还面临伦理和法律问题。国际社会对激光武器的使用尚未达成共识，这可能会影响中国在国际舞台上的地位。因此，我们需要更深入地探讨这个问题，并制定相应的政策和法律法规。\n\n综上所述，激光武器在防空领域的应用是一个复杂的问题，需要我们全面考虑其优势和挑战。我们应当继续投资于激光武器的研究和开发，同时也要认识到其局限性，并制定相应的政策和法律法规。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-editorial-005",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Border Cooperation: A Pillar of Regional Stability",
+   "body": "边境联合巡逻：维护地区和平的重要手段\n\n近年来，随着地区形势的不断变化，边境联合巡逻在维护地区和平与稳定方面发挥着越来越重要的作用。中国与周边国家开展联合巡逻，不仅是维护各自国家安全的需要，也是促进地区合作与发展的重要举措。\n\n边境联合巡逻不仅是维护地区和平的重要手段，更是增进各国互信的桥梁。通过联合巡逻，各国可以加强在情报共享、反恐合作等方面的交流，提高应对跨国犯罪和恐怖主义的能力。近期，中国和朝鲜边境发生的走私事件再次证明了联合巡逻的必要性。通过联合行动，相关国家可以更有效地打击跨国犯罪，维护边境地区的安全与稳定。\n\n然而，边境联合巡逻也面临一些挑战。例如，各国在巡逻标准、装备水平和应急响应机制等方面存在差异，这些差异可能影响巡逻的效果。因此，各国需要加强协调与合作，制定统一的巡逻标准和应急预案，确保巡逻行动的顺利进行。\n\n此外，边境联合巡逻还需要各国政府的支持和投入。各国应增加对边境巡逻的资金投入，提高巡逻人员的待遇和装备水平，确保巡逻行动的有效性和持续性。同时，各国还应加强与本国边境地区的合作，提高当地居民的安全意识和参与度，共同维护边境地区的和平与稳定。\n\n总之，边境联合巡逻是维护地区和平与稳定的重要手段。各国应携手应对各种安全挑战，共同维护地区和平与稳定，为地区的繁荣与发展创造有利的安全环境。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-3-editorial-006",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Building the Human Shield: Training Security Forces to Recognize Hostile Intent",
+   "body": "近年来，全球安全形势日益复杂，恐怖袭击和暴力事件频发。在这些事件中，许多本可以被提前预判和防范。因此，提高安全力量识别敌意意图的能力至关重要。\n\n虽然技术在安全领域发挥着重要作用，但人类的判断力仍然不可替代。安全人员需要通过培训提高识别威胁的敏锐度。这包括了解常见的敌意行为模式，如异常的肢体语言、可疑的行李或包裹，以及与周围环境不符的行为。\n\n培训还应强调结合多种观察和背景因素进行综合判断。例如，一个人的行为可能在某些情况下看起来无害，但在特定的背景下可能具有威胁性。安全人员需要学会将单一观察与更广泛的背景信息结合起来，以做出准确的判断。\n\n此外，培训应包括模拟演练和真实场景的练习。通过这些活动，安全人员可以在安全的环境中练习识别和应对潜在的威胁。这不仅可以提高他们的技能，还可以增强他们的信心。\n\n最后，持续的教育和培训是必不可少的。安全威胁和犯罪手法不断演变，安全人员需要不断更新他们的知识和技能，以应对新的挑战。这包括定期参加培训课程，了解最新的安全趋势和技术。\n\n总之，通过系统的培训和教育，我们可以建立一道人类的防御屏障，有效识别和应对敌意意图，保护公共安全。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1430,6 +1718,60 @@
    "verified": false
   },
   {
+   "id": "zh-dr-1-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-announcement-002",
+   "stem": "What is the distance limit for flying drones near the airbase?",
+   "choices": [
+    "1000 meters",
+    "1500 meters",
+    "500 meters",
+    "2000 meters"
+   ],
+   "answer": 2,
+   "explanation": "The text states that drones cannot be flown within 500 meters of the airbase: 无人机不得在距离空军基地500米内飞行。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1-announcement-002",
+   "stem": "In the phrase 违规操作, what does 操作 mean here?",
+   "choices": [
+    "operations",
+    "maneuvers",
+    "exercises",
+    "repairs"
+   ],
+   "answer": 0,
+   "explanation": "Operating drones in violation of the rules is 违规操作; 操作 means operations and is used in the sense of handling or maneuvering.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-announcement-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "zh-dr-1-announcement-002",
+   "stem": "What is the purpose of this announcement?",
+   "choices": [
+    "To warn tourists about the dangers of flying drones in China",
+    "To advertise drone training courses for military personnel",
+    "To inform drone owners of new regulations for flying near the airbase",
+    "To announce a new drone racing event near the airbase"
+   ],
+   "answer": 2,
+   "explanation": "The text announces new rules for flying drones near the airbase: 为了确保飞行安全，空军基地近日发布了新的无人机飞行规定。",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1646,6 +1988,150 @@
    "verified": false
   },
   {
+   "id": "zh-dr-1-instructions-006-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-instructions-006",
+   "stem": "What is the reason given for the no-drone zone?",
+   "choices": [
+    "To prevent accidents with lanterns",
+    "To ensure the safety of festival performers",
+    "To protect military aircraft",
+    "To avoid disturbing the natural habitat"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is choice 0 because the text states 为了防止无人机与灯笼相撞引发事故, which translates to 'To prevent accidents with lanterns.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-006-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1-instructions-006",
+   "stem": "What does 严禁 mean here?",
+   "choices": [
+    "Gently remind",
+    "Strictly prohibit",
+    "Carefully observe",
+    "Strongly encourage"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is choice 2 because 严禁 is used to indicate a strict prohibition in the text: 严禁在基地周边使用无人机, which translates to 'Strictly prohibit the use of drones in the vicinity of the base.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-006-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "zh-dr-1-instructions-006",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To explain drone technology",
+    "To ban drone usage during the festival",
+    "To inform about festival events",
+    "To promote drone safety workshops"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is choice 2 because the notice is primarily about prohibiting drone usage during the Lantern Festival, as stated in 元宵节期间, 基地周边将实行无人机禁飞, which translates to 'During the Lantern Festival, the vicinity of the base will implement a no-drone zone.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-007-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-instructions-007",
+   "stem": "What is the topic of the debate club's meeting?",
+   "choices": [
+    "Space exploration.",
+    "Air defense strategies.",
+    "The impact of climate change.",
+    "International trade agreements."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the debate is about “空中防御中的激光武器” (laser weapons for air defense), which directly relates to air defense strategies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-007-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1-instructions-007",
+   "stem": "In the text, what does “讨论” mean?",
+   "choices": [
+    "To debate.",
+    "To announce.",
+    "To ignore.",
+    "To argue."
+   ],
+   "answer": 0,
+   "explanation": "The text uses the word “讨论” to describe what the club will do: “俱乐部将讨论这个话题” (The club will discuss this topic), meaning 'to debate.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-007-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "zh-dr-1-instructions-007",
+   "stem": "Why is the text written?",
+   "choices": [
+    "To inform members about the debate topic.",
+    "To advertise a new product.",
+    "To announce a holiday schedule.",
+    "To provide weather updates."
+   ],
+   "answer": 0,
+   "explanation": "The text clearly states that it is “关于俱乐部下次会议的话题” (about the topic of the club's next meeting), specifically to inform members about the debate on laser weapons for air defense.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-008-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-instructions-008",
+   "stem": "How many people should each team have according to the instructions?",
+   "choices": [
+    "Four",
+    "Two",
+    "Three",
+    "Five"
+   ],
+   "answer": 2,
+   "explanation": "The text states that each team should have 3 people: “每个小组需要3个人”。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-instructions-008-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1-instructions-008",
+   "stem": "What does “敌意” mean here?",
+   "choices": [
+    "Hostile intent",
+    "Fear",
+    "Curiosity",
+    "Surprise"
+   ],
+   "answer": 0,
+   "explanation": "The text is about recognizing hostile intent, so “敌意” means \"hostile intent\": “训练你们识别敌意”。",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1768,6 +2254,42 @@
    ],
    "answer": 3,
    "explanation": "The notice is about the price of the wedding hall going up, as stated in \"通知：婚礼大厅租金将上调\" and \"从下个月开始，大厅的租金将调整为每小时2000元\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-notice-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-notice-005",
+   "stem": "In the text, what does \"交接班\" mean?",
+   "choices": [
+    "A shift change",
+    "A shift meeting",
+    "A shift break",
+    "A shift schedule"
+   ],
+   "answer": 0,
+   "explanation": "The answer is correct because \"交接班\" in the text refers to the action of one shift giving its responsibilities to another, as seen in the context of the entire notice. The text does not mention a meeting, break, or schedule, only the transfer of duties.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-notice-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-notice-005",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To describe the duties of each shift",
+    "To inform about a shift change",
+    "To request additional staff for shifts",
+    "To announce a new shift schedule"
+   ],
+   "answer": 1,
+   "explanation": "The answer is correct because the main purpose of the notice is to inform about the shift handover, as indicated by the phrase \"交接班\" and the details provided about the time and personnel involved. The notice does not announce a new schedule, request staff, or describe duties.",
    "source": "llm",
    "verified": false
   },
@@ -1912,6 +2434,60 @@
    ],
    "answer": 2,
    "explanation": "The deadline for responding is Sunday. This is stated in the text: '请于周日前回复'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-short_message-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-short_message-002",
+   "stem": "What is the purpose of the patrol?",
+   "choices": [
+    "To check for any unusual activity or security risks.",
+    "To monitor the weather conditions around the perimeter.",
+    "To practice emergency response procedures.",
+    "To deliver supplies to the outposts along the perimeter."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the purpose of the patrol is to 检查周边是否有异常活动或安全风险 (check for any unusual activity or security risks). The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-short_message-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-short_message-002",
+   "stem": "What is the main idea of the message?",
+   "choices": [
+    "The patrol will focus on checking for unusual activity or security risks.",
+    "The patrol team will practice emergency response procedures.",
+    "The patrol will be canceled due to bad weather.",
+    "The patrol team needs to bring extra supplies for the outposts."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the message is that the patrol will focus on 检查周边是否有异常活动或安全风险 (checking for any unusual activity or security risks). The other options are not the main focus of the message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-short_message-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-1-short_message-002",
+   "stem": "In the phrase 请注意安全 (qǐng zhùyì ānquán), what does 安全 mean?",
+   "choices": [
+    "Emergency procedures",
+    "Weather conditions",
+    "Supplies",
+    "Security"
+   ],
+   "answer": 3,
+   "explanation": "In the context of the message, 安全 refers to 安全风险 (security risks) that the patrol team is checking for. The other options do not fit the context of the phrase.",
    "source": "llm",
    "verified": false
   },
@@ -2996,6 +3572,114 @@
    "verified": false
   },
   {
+   "id": "zh-dr-2-event_description-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-event_description-004",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Allied units conducted a joint air defense drill.",
+    "Pilots practiced flying in formation.",
+    "A new air defense system was installed.",
+    "A military base was attacked during a drill."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that allied units conducted a joint air defense drill. This is evident from the text: “昨天，北约各成员国的空中防御单位在德国东部举行了联合演习.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-event_description-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-event_description-004",
+   "stem": "Where did the drill take place?",
+   "choices": [
+    "Over the North Sea.",
+    "In the skies over Berlin.",
+    "At a military base in France.",
+    "In eastern Germany."
+   ],
+   "answer": 3,
+   "explanation": "The drill took place in eastern Germany. The text states: “北约各成员国的空中防御单位在德国东部举行了联合演习.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-event_description-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-event_description-004",
+   "stem": "What does “联合” mean in the phrase “联合演习”?",
+   "choices": [
+    "Surprise",
+    "Secret",
+    "Defensive",
+    "Joint"
+   ],
+   "answer": 3,
+   "explanation": "In the phrase “联合演习,” “联合” means joint. The context refers to the allied units conducting the drill together, which is described as “北约各成员国的空中防御单位.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-event_description-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-event_description-005",
+   "stem": "What is the main topic of this announcement?",
+   "choices": [
+    "How to report security concerns to authorities",
+    "Plans for a new community center",
+    "The history of local security policies",
+    "New community security measures"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is announced in the first sentence: 社区安全措施 (community security measures).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-event_description-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-event_description-005",
+   "stem": "According to the text, what is one specific security measure that will be implemented?",
+   "choices": [
+    "Increased police patrols",
+    "Community-wide curfew",
+    "Installation of additional surveillance cameras",
+    "Mandatory security training for residents"
+   ],
+   "answer": 2,
+   "explanation": "The text mentions 安装更多的监控摄像头 (installation of additional surveillance cameras) as one of the new security measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-event_description-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-event_description-005",
+   "stem": "In this text, what does 近期 (jìn qī) mean?",
+   "choices": [
+    "Upcoming",
+    "Last",
+    "Recent",
+    "Long-term"
+   ],
+   "answer": 2,
+   "explanation": "The text uses 近期 (jìn qī) to refer to recent events that have raised security concerns among residents.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3158,6 +3842,60 @@
    "verified": false
   },
   {
+   "id": "zh-dr-2-news-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-news-002",
+   "stem": "What is the main purpose of this article?",
+   "choices": [
+    "To explain the importance of joint air defense exercises",
+    "To announce a new air defense strategy",
+    "To provide a historical overview of air defense exercises",
+    "To describe the procedures for coordinating radio communications between air defense units"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the article is to describe the procedures for coordinating radio communications between air defense units, as indicated by the repeated use of phrases like 通信协调 (communication coordination) and 需遵循的程序 (procedures to be followed).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-news-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-news-002",
+   "stem": "What is the first step in the radio communication procedure?",
+   "choices": [
+    "Confirming the location of the units",
+    "Identifying the threat level",
+    "Verifying the readiness status",
+    "Establishing the frequency and call sign"
+   ],
+   "answer": 3,
+   "explanation": "The first step in the radio communication procedure is establishing the frequency and call sign, as stated in the text: 首先，各单位需要确定通信频率和呼叫符号 (First, each unit needs to determine the communication frequency and call sign).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-news-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-news-002",
+   "stem": "What does 确认 (确认) mean here?",
+   "choices": [
+    "To ignore",
+    "To reject",
+    "To acknowledge",
+    "To delay"
+   ],
+   "answer": 2,
+   "explanation": "The word 确认 (确认) in this context means to acknowledge or confirm, as seen in the phrase 确认收到信息 (confirm receipt of the message).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-2-report-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3208,6 +3946,168 @@
    ],
    "answer": 2,
    "explanation": "The phrase “技术转让” in the text refers to the exchange of technological knowledge and innovations between countries. This is clear from the sentence: “峰会期间，各国代表分享了各自在可再生能源领域的进展，并讨论了技术转让和国际合作的可能性。” (During the summit, representatives from various countries shared their progress in the field of renewable energy and discussed the possibilities of technology transfer and international cooperation.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-report-002",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "The impact of drones on local businesses",
+    "The safety regulations for drones in Xiamen",
+    "A new drone delivery service at Xiamen Harbor",
+    "A swarm of small drones sighted over Xiamen Harbor"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly stated in the first sentence: 最近在厦门港上空出现了一大群小型无人机 (Recently, a large swarm of small drones appeared in the sky over Xiamen Harbor).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-report-002",
+   "stem": "When did the drone swarm first appear?",
+   "choices": [
+    "At night",
+    "Around noon",
+    "Early in the morning",
+    "In the late afternoon"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the drones were first spotted 今天清晨 (this morning).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-report-002",
+   "stem": "What does 奇观 (qí guān) mean here?",
+   "choices": [
+    "A scientific experiment",
+    "A rare and impressive sight",
+    "A dangerous situation",
+    "A common sight"
+   ],
+   "answer": 1,
+   "explanation": "The context describes the drone swarm as something unusual and impressive: 许多市民都停下来观看这奇观 (Many citizens stopped to watch this spectacle).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-report-003",
+   "stem": "What is the main goal of the training program?",
+   "choices": [
+    "To teach security forces how to use new weapons systems",
+    "To improve physical fitness among security forces",
+    "To enhance communication skills among security personnel",
+    "To help security personnel recognize signs of hostile intent"
+   ],
+   "answer": 3,
+   "explanation": "The main goal of the training program is to help security personnel recognize signs of hostile intent. The text states that the purpose of the program is to '提高安全人员识别敌意意图的能力'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-report-003",
+   "stem": "What does '敌意意图' mean here?",
+   "choices": [
+    "Uncertain purpose",
+    "Hostile intent",
+    "Neutral attitude",
+    "Friendly behavior"
+   ],
+   "answer": 1,
+   "explanation": "The phrase '敌意意图' in this context refers to hostile intent. This is clear from the sentence '本次培训的目的是提高安全人员识别敌意意图的能力'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-report-003",
+   "stem": "What is the purpose of the exercises described in the text?",
+   "choices": [
+    "To simulate real-life scenarios where security personnel need to identify and respond to threatening behavior",
+    "To improve the physical fitness of security personnel",
+    "To teach security personnel how to use advanced surveillance equipment",
+    "To enhance the communication skills of security personnel"
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the exercises is to simulate real-life scenarios where security personnel need to identify and respond to threatening behavior. The text states that the exercises are designed to '模拟真实情境', allowing personnel to practice '识别和应对威胁行为'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-report-004",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "A new type of drone",
+    "The weather conditions during an exercise",
+    "A military exercise involving drones",
+    "A new drone control system"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the disruption of a military exercise involving drones, as indicated by the mention of the exercise (演习) and the drones (无人机) in the first sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-report-004",
+   "stem": "What caused the disruption during the exercise?",
+   "choices": [
+    "Human error",
+    "Jamming of the control link",
+    "Bad weather",
+    "Technical failure of the drones"
+   ],
+   "answer": 1,
+   "explanation": "The disruption was caused by jamming of the control link, as stated in the sentence: \"演习过程中，无人机的控制链路遭到干扰，导致部分无人机失去控制.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-report-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-2-report-004",
+   "stem": "What does the phrase '控制链路' mean in this context?",
+   "choices": [
+    "The communication link used to control the drone",
+    "The software used to operate the drone",
+    "The power source of the drone",
+    "The physical structure of the drone"
+   ],
+   "answer": 0,
+   "explanation": "In this context, '控制链路' refers to the communication link used to control the drone, as it is the part that was jammed (干扰) during the exercise.",
    "source": "llm",
    "verified": false
   },
@@ -4022,6 +4922,114 @@
    "verified": false
   },
   {
+   "id": "zh-dr-3-analysis-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-analysis-004",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "Laser weapons are clearly superior to traditional missiles in all aspects of air defense.",
+    "Traditional missiles are the only reliable method for air defense and will remain so for the foreseeable future.",
+    "China should immediately abandon its research into laser weapons for air defense.",
+    "The debate over laser weapons for air defense is complex and involves multiple factors."
+   ],
+   "answer": 3,
+   "explanation": "The passage discusses various aspects of the debate over laser weapons for air defense, including their advantages and disadvantages, as well as the context of China's air defense strategy. This is evident in sentences like  '激光武器在空中防御中的应用引发了激烈的讨论。' and '然而，传统导弹在空中防御中仍然发挥着不可替代的作用。'. Thus, the main idea is that the debate is complex and involves multiple factors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-analysis-004",
+   "stem": "What can be inferred about the author's stance on the use of laser weapons in air defense?",
+   "choices": [
+    "The author is opposed to any use of laser weapons in air defense.",
+    "The author thinks that the debate over laser weapons is irrelevant to China's air defense strategy.",
+    "The author is strongly in favor of replacing all traditional missiles with laser weapons.",
+    "The author believes that laser weapons should be used in conjunction with traditional missiles."
+   ],
+   "answer": 3,
+   "explanation": "The author presents both the advantages and disadvantages of laser weapons and acknowledges the continued importance of traditional missiles. This suggests a balanced view that laser weapons should complement rather than completely replace traditional methods. This inference is supported by the text's discussion of '激光武器的优势和劣势' and the statement that '传统导弹在空中防御中仍然发挥着不可替代的作用。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-analysis-004",
+   "stem": "What does the phrase '技术成熟度' mean here?",
+   "choices": [
+    "The speed of the technology.",
+    "The political support for the technology.",
+    "The cost of the technology.",
+    "The level of technological advancement."
+   ],
+   "answer": 3,
+   "explanation": "The phrase '技术成熟度' is used in the context of discussing the readiness of laser weapons technology. The sentence '激光武器的技术成熟度仍然有待提高。' indicates that the technology is not yet fully developed or advanced. Therefore, the correct meaning here is 'The level of technological advancement.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-analysis-005",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "Cheap drones are being used for peaceful purposes, making them a low-priority threat.",
+    "Military bases should be closed to prevent drone attacks.",
+    "Military bases need to upgrade their defense systems to counter the growing threat of cheap drones.",
+    "The military should focus on developing offensive drone technology rather than defensive measures."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that military bases need to upgrade their defense systems to counter the growing threat of cheap drones. This is evident throughout the text, which discusses the increasing use of cheap drones by both state and non-state actors and the need for advanced defense systems to counter them. The text does not suggest focusing on offensive drone technology, using drones for peaceful purposes, or closing military bases.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-analysis-005",
+   "stem": "What can be inferred about the cost of defending bases against drones?",
+   "choices": [
+    "It will decrease as drone technology becomes more common.",
+    "It will remain constant as defense systems improve.",
+    "It will be negligible compared to the overall military budget.",
+    "It will increase due to the need for advanced and adaptive defense systems."
+   ],
+   "answer": 3,
+   "explanation": "The cost of defending bases against drones will increase due to the need for advanced and adaptive defense systems. The text states that 'the cost of defending bases against drones will continue to rise as defense systems must become more advanced and adaptive to keep up with the evolving threat.' This implies that the cost will not decrease, remain constant, or be negligible.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-analysis-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-analysis-005",
+   "stem": "What does the phrase '低成本无人机' mean here?",
+   "choices": [
+    "Expensive unmanned aerial vehicles",
+    "Cheap drones",
+    "High-tech surveillance aircraft",
+    "Military-grade aircraft"
+   ],
+   "answer": 1,
+   "explanation": "The phrase '低成本无人机' means 'cheap drones' in this context. The text discusses how both state and non-state actors are using '低成本无人机' to conduct surveillance and attacks, indicating that these drones are inexpensive and accessible. Therefore, the other options (expensive unmanned aerial vehicles, high-tech surveillance aircraft, military-grade aircraft) are not correct.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4396,6 +5404,222 @@
    ],
    "answer": 0,
    "explanation": "The phrase '文化对话' is used to describe a means to promote understanding between cultures. The text states '我们希望能够通过这种文化对话，增进不同文化之间的理解与尊重。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-editorial-003",
+   "stem": "What is the main idea of the editorial?",
+   "choices": [
+    "The need to regulate drone usage at airports has been ignored for too long.",
+    "The installation of a counter-drone system at an airport is a significant step in enhancing air travel safety.",
+    "Drones are becoming increasingly dangerous to airport operations.",
+    "Airports should invest more in traditional security measures rather than new technologies."
+   ],
+   "answer": 1,
+   "explanation": "The editorial focuses on the importance of the newly installed counter-drone system, highlighting its role in improving air travel safety. This is evident throughout the text, such as in the phrase '此次安装的反无人机系统是提升民航安全的重要一步'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-editorial-003",
+   "stem": "What can be inferred about the author's view on technological advancements in airport security?",
+   "choices": [
+    "The author thinks that traditional security measures are sufficient.",
+    "The author is skeptical about the effectiveness of new technologies.",
+    "The author believes that technological advancements are crucial for airport security.",
+    "The author is indifferent to the use of technology in security."
+   ],
+   "answer": 2,
+   "explanation": "The author's positive view on technological advancements is inferred from statements like '随着科技的发展，反无人机系统的出现为解决这个问题提供了新的途径'. This indicates that the author sees new technologies as important solutions to current security challenges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-editorial-003",
+   "stem": "What does the phrase '无人机干扰' mean here?",
+   "choices": [
+    "Drone surveillance",
+    "Drone maintenance",
+    "Drone interference",
+    "Drone delivery"
+   ],
+   "answer": 2,
+   "explanation": "The phrase '无人机干扰' is used in the context of discussing the problems caused by drones at airports, such as '无人机干扰飞机起降'. This clearly refers to the interference that drones can cause in airport operations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-editorial-004",
+   "stem": "What is the main point of the editorial?",
+   "choices": [
+    "The debate over laser weapons for air defense is complex and nuanced.",
+    "China should follow the lead of other countries in developing laser weapons.",
+    "Laser weapons are a safe and proven technology for air defense.",
+    "The Chinese military should invest more in traditional missile systems."
+   ],
+   "answer": 0,
+   "explanation": "The editorial discusses various aspects of the debate over laser weapons for air defense, including their advantages, challenges, and the need for further development. This is evident in phrases like \"激光武器在防空领域的应用存在诸多争议\" and \"我们需要更深入地探讨这个问题\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-editorial-004",
+   "stem": "What can be inferred about the author's view on the current state of laser weapons technology?",
+   "choices": [
+    "The author believes that other countries have more advanced laser weapons technology than China.",
+    "The author is convinced that laser weapons will never be a viable option for air defense.",
+    "The author believes laser weapons are already superior to traditional missile systems.",
+    "The author thinks laser weapons are not yet ready for widespread use in air defense."
+   ],
+   "answer": 3,
+   "explanation": "The author suggests that laser weapons are still in the experimental stage and need further development, as indicated by \"激光武器技术仍处于实验阶段\" and \"需要更多的研究和开发\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-editorial-004",
+   "stem": "In the sentence \"激光武器的发展面临着诸多挑战，例如能量来源、精准度和成本问题\", what does \"精准度\" mean here?",
+   "choices": [
+    "The range of the laser weapon.",
+    "The intensity of the laser beam.",
+    "The accuracy of the laser weapon.",
+    "The speed at which the laser weapon can be deployed."
+   ],
+   "answer": 2,
+   "explanation": "In this context, \"精准度\" refers to the accuracy of the laser weapon, as it is mentioned alongside other challenges like energy source and cost, all of which are factors that affect the weapon's effectiveness.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-editorial-005",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "Joint patrols should be conducted only by land forces.",
+    "China and its neighbors should reduce military cooperation to avoid conflicts.",
+    "Joint patrols are essential for maintaining peace and stability in the region.",
+    "The author believes that joint patrols are a waste of resources."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that joint patrols are crucial for regional stability. This is evident throughout the text, such as in the sentence: \"边境联合巡逻不仅是维护地区和平的重要手段，更是增进各国互信的桥梁.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-editorial-005",
+   "stem": "What can be inferred about the author's view on the recent incident involving North Korean smugglers?",
+   "choices": [
+    "The author believes that the incident was not significant enough to warrant joint patrols.",
+    "The author blames China for not doing enough to stop the smugglers.",
+    "The author thinks that joint patrols are ineffective in preventing such incidents.",
+    "The author believes that such incidents highlight the necessity of joint patrols."
+   ],
+   "answer": 3,
+   "explanation": "The author uses the incident to emphasize the importance of joint patrols, as seen in: \"近期，中国和朝鲜边境发生的走私事件再次证明了联合巡逻的必要性.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-editorial-005",
+   "stem": "What does the phrase \"携手应对\" mean here?",
+   "choices": [
+    "To compete against each other.",
+    "To ignore problems collectively.",
+    "To blame each other for difficulties.",
+    "To face challenges together."
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"携手应对\" means to face challenges together, as shown in: \"我们应携手应对各种安全挑战，共同维护地区和平与稳定.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-006-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "zh-dr-3-editorial-006",
+   "stem": "What is the main idea of this editorial?",
+   "choices": [
+    "Security forces should be trained to recognize hostile intent to prevent attacks",
+    "Security forces should focus on physical barriers rather than behavior analysis",
+    "New technologies should replace human judgment in security",
+    "Hostile intent is impossible to recognize in advance"
+   ],
+   "answer": 0,
+   "explanation": "The editorial argues that training security forces to recognize hostile intent is crucial for preventing attacks. This is evident in statements such as '提高安全力量识别敌意意图的能力至关重要' and '通过培训提高安全人员识别威胁的敏锐度'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-006-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "zh-dr-3-editorial-006",
+   "stem": "What can be inferred about the author's view on technology in security?",
+   "choices": [
+    "Technology should supplement but not replace human judgment",
+    "Technology should completely replace human judgment",
+    "Technology is too expensive for security use",
+    "Technology is useless in security"
+   ],
+   "answer": 0,
+   "explanation": "The author suggests that technology should aid but not replace human judgment. This is inferred from '虽然技术在安全领域发挥着重要作用，但人类的判断力仍然不可替代'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-3-editorial-006-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "zh-dr-3-editorial-006",
+   "stem": "What does \"综合判断\" mean here?",
+   "choices": [
+    "A technological calculation",
+    "A legal judgment",
+    "A single, isolated observation",
+    "A combination of observations and contextual factors"
+   ],
+   "answer": 3,
+   "explanation": "The text uses \"综合判断\" to refer to combining observations and contextual factors to assess threats, as in '结合多种观察和背景因素进行综合判断'.",
    "source": "llm",
    "verified": false
   },

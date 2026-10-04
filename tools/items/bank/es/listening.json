@@ -541,6 +541,105 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-1-announcement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "announcement",
+   "title": "es-dl-1-announcement-005-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Líder de equipo",
+     "voice": "male",
+     "text": "Atención, todos."
+    },
+    {
+     "speaker": "Líder de equipo",
+     "voice": "male",
+     "text": "Tenemos un anuncio importante."
+    },
+    {
+     "speaker": "Líder de equipo",
+     "voice": "male",
+     "text": "El 25 de marzo habrá un ejercicio de defensa de la base."
+    },
+    {
+     "speaker": "Líder de equipo",
+     "voice": "male",
+     "text": "Participarán nuestras fuerzas y aliados de la nación anfitriona."
+    },
+    {
+     "speaker": "Líder de equipo",
+     "voice": "male",
+     "text": "Por favor, prepárense y estén listos."
+    },
+    {
+     "speaker": "Líder de equipo",
+     "voice": "male",
+     "text": "Gracias."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-announcement-005",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "announcement",
+   "title": "es-dl-1-announcement-006-q3",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Loudspeaker",
+     "voice": "female",
+     "text": "Atención, por favor."
+    },
+    {
+     "speaker": "Loudspeaker",
+     "voice": "female",
+     "text": "Se recuerda a todo el personal que el entrenamiento de concienciación sobre amenazas internas es el próximo viernes."
+    },
+    {
+     "speaker": "Loudspeaker",
+     "voice": "female",
+     "text": "El entrenamiento es obligatorio para todo el personal."
+    },
+    {
+     "speaker": "Loudspeaker",
+     "voice": "female",
+     "text": "La sesión será en el auditorio principal a las 14:00 horas."
+    },
+    {
+     "speaker": "Loudspeaker",
+     "voice": "female",
+     "text": "No se permitirá la entrada después de las 14:15 horas."
+    },
+    {
+     "speaker": "Loudspeaker",
+     "voice": "female",
+     "text": "Asegúrense de asistir."
+    },
+    {
+     "speaker": "Loudspeaker",
+     "voice": "female",
+     "text": "Gracias."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -774,6 +873,85 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Post-Attack Reconnaissance",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Llamada entrante",
+     "voice": "female",
+     "text": "Buenos días, esto es un mensaje para el departamento de emergencias."
+    },
+    {
+     "speaker": "Llamada entrante",
+     "voice": "male",
+     "text": "Para reportar daños después del ataque y solicitar una revisión de la zona."
+    },
+    {
+     "speaker": "Llamada entrante",
+     "voice": "female",
+     "text": "Por favor, comuníquense con nosotros lo antes posible."
+    },
+    {
+     "speaker": "Llamada entrante",
+     "voice": "male",
+     "text": "Gracias."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-1-voicemail-005",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Community Safety Concerns",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Hola, soy el señor García del barrio. Llamo para hablar sobre las medidas de seguridad en la base."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Los vecinos estamos preocupados porque hay poca seguridad."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Queremos más patrullas y cámaras para sentirnos seguros."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Por favor, reconsideren las medidas actuales."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Gracias por su atención."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1888,6 +2066,63 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-2-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Planning a Business Lunch",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Hola, Juan. ¿Cómo estás?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Hola, María. Estoy bien, gracias. ¿Y tú?"
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Muy bien. Oye, Juan, he estado pensando en la reunión que tenemos la próxima semana. ¿Qué te parece si almorzamos juntos antes?"
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Me parece una excelente idea. Hay un nuevo restaurante que quiero probar. ¿Qué tal si vamos allí?"
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Suena interesante. Pero tengo que consultar mi agenda primero."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Claro, no hay problema. Podemos elegir otro día si es necesario."
+    },
+    {
+     "speaker": "Mujer",
+     "voice": "female",
+     "text": "Gracias, Juan. Me encantaría probar la comida de ese lugar. Te haré saber mi disponibilidad pronto."
+    },
+    {
+     "speaker": "Hombre",
+     "voice": "male",
+     "text": "Perfecto. Estoy deseando que llegue el día."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-2-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -2066,6 +2301,262 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-2-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "interview",
+   "title": "A Taste of Tradition",
+   "body": "",
+   "script": [
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "¡Buenos días, oficiales! ¿Cómo están?"
+    },
+    {
+     "speaker": "OFICIAL 1",
+     "voice": "male",
+     "text": "¡Buenos días, Ana! Estamos muy bien, gracias. ¿Y usted?"
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "Muy bien, gracias. Por favor, siéntense. Hoy les he preparado un almuerzo tradicional mexicano."
+    },
+    {
+     "speaker": "OFICIAL 2",
+     "voice": "male",
+     "text": "¡Qué amable! Nos encanta probar platos tradicionales."
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "Espero que les guste. Aquí tienen sopa de tortilla para empezar."
+    },
+    {
+     "speaker": "OFICIAL 1",
+     "voice": "male",
+     "text": "¡Qué delicioso está todo! Ana, eres una excelente cocinera."
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "Gracias, oficial. ¿Se sienten cómodos con el picante?"
+    },
+    {
+     "speaker": "OFICIAL 2",
+     "voice": "male",
+     "text": "Sí, está perfecto. Nos gusta el sabor."
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "Me alegra oír eso. Ahora les traeré los chiles rellenos."
+    },
+    {
+     "speaker": "OFICIAL 1",
+     "voice": "male",
+     "text": "Hemos oído que la Fuerza Aérea Mexicana tiene nuevas aeronaves."
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "Sí, es cierto. Hemos recibido aviones de combate nuevos."
+    },
+    {
+     "speaker": "OFICIAL 2",
+     "voice": "male",
+     "text": "Debe ser emocionante volar con esa tecnología."
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "Sí, lo es. Pero también requiere mucho entrenamiento."
+    },
+    {
+     "speaker": "OFICIAL 1",
+     "voice": "male",
+     "text": "Nos gusta mucho conversar después de comer. ¿Tienes más café, Ana?"
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "Por supuesto, oficiales. Aquí tienen."
+    },
+    {
+     "speaker": "OFICIAL 2",
+     "voice": "male",
+     "text": "Ana, gracias por este delicioso almuerzo y la agradable conversación."
+    },
+    {
+     "speaker": "ANA",
+     "voice": "female",
+     "text": "De nada, oficiales. Fue un placer tenerlos aquí."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-interview-005",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Border Security Initiative",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Buenos días, General. Gracias por aceptar esta entrevista. Hoy queremos hablar sobre la iniciativa de seguridad fronteriza."
+    },
+    {
+     "speaker": "General",
+     "voice": "male",
+     "text": "Buenos días. Es un placer. La iniciativa es un tema muy importante para nosotros."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "General, ¿cuál ha sido el progreso de la iniciativa hasta ahora?"
+    },
+    {
+     "speaker": "General",
+     "voice": "male",
+     "text": "Hemos logrado avances significativos. Hemos mejorado la coordinación entre nuestras fuerzas y hemos implementado nuevas tecnologías."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Eso suena prometedor. ¿Han enfrentado algún obstáculo?"
+    },
+    {
+     "speaker": "General",
+     "voice": "male",
+     "text": "Como en cualquier proyecto de esta magnitud, hemos tenido algunos desafíos. Sin embargo, estamos trabajando para superarlos."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "¿Cómo planean continuar con la iniciativa?"
+    },
+    {
+     "speaker": "General",
+     "voice": "male",
+     "text": "Es crucial que continuemos con estos esfuerzos. Vamos a seguir trabajando en estrecha colaboración con nuestras contrapartes estadounidenses."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "General, ¿qué necesita la iniciativa para tener éxito?"
+    },
+    {
+     "speaker": "General",
+     "voice": "male",
+     "text": "Necesitamos el apoyo continuo de todos los involucrados. Espero que podamos contar con su apoyo."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Gracias, General. Ha sido muy informativo."
+    },
+    {
+     "speaker": "General",
+     "voice": "male",
+     "text": "Gracias a usted. Que tenga un buen día."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-interview-006",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "interview",
+   "title": "Coordination Between Forces",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Bienvenidos a nuestra transmisión especial. Hoy tenemos con nosotros al Capitán García de la Fuerza Aérea Mexicana y al Coronel Mendoza del Ejército Mexicano."
+    },
+    {
+     "speaker": "Capitán García",
+     "voice": "female",
+     "text": "Gracias por recibirnos. Hoy queremos hablar sobre la importancia de la coordinación entre nuestras fuerzas."
+    },
+    {
+     "speaker": "Coronel Mendoza",
+     "voice": "male",
+     "text": "Estamos de acuerdo, Capitán García. La coordinación es clave para nuestra seguridad nacional."
+    },
+    {
+     "speaker": "Capitán García",
+     "voice": "female",
+     "text": "Exactamente. Hemos estado trabajando en una propuesta para un ejercicio conjunto que podría fortalecer nuestra colaboración."
+    },
+    {
+     "speaker": "Coronel Mendoza",
+     "voice": "male",
+     "text": "Suena interesante, Capitán García. ¿Podría darnos más detalles sobre esta propuesta?"
+    },
+    {
+     "speaker": "Capitán García",
+     "voice": "female",
+     "text": "Claro, Coronel Mendoza. La idea es realizar un simulacro de emergencia que involucre tanto a la Fuerza Aérea como al Ejército."
+    },
+    {
+     "speaker": "Coronel Mendoza",
+     "voice": "male",
+     "text": "Entendemos sus preocupaciones, pero tenemos nuestras propias restricciones en cuanto a recursos y personal."
+    },
+    {
+     "speaker": "Capitán García",
+     "voice": "female",
+     "text": "Nos gustaría que consideraran nuestra propuesta. Creemos que los beneficios superan los desafíos."
+    },
+    {
+     "speaker": "Coronel Mendoza",
+     "voice": "male",
+     "text": "Apreciamos su entusiasmo, Capitán García. Vamos a revisar la propuesta y ver cómo podemos adaptarla a nuestras capacidades."
+    },
+    {
+     "speaker": "Capitán García",
+     "voice": "female",
+     "text": "Confiamos en que podamos llegar a un acuerdo beneficioso para ambos. Gracias por su tiempo, Coronel Mendoza."
+    },
+    {
+     "speaker": "Coronel Mendoza",
+     "voice": "male",
+     "text": "Gracias a usted, Capitán García. Seguiremos en contacto."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Eso fue todo por hoy. Les mantendremos informados sobre los desarrollos de esta importante coordinación."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-2-news-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -2163,6 +2654,120 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-2-news-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "news",
+   "title": "New Restrictions for Drone Pilots Near Air Base",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "¡Atención, pilotos de drones! A partir del próximo mes, entrarán en vigencia nuevas reglas para operar drones cerca de la base aérea militar."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "En primer lugar, todos los drones deben mantenerse a una distancia mínima de 1 kilómetro de la base aérea."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Además, las operaciones de drones estarán prohibidas entre las 6 de la mañana y las 9 de la noche, sin excepciones."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Estas medidas tienen como objetivo impedir el acceso no autorizado y garantizar la seguridad de todas las operaciones aéreas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Los infractores se enfrentarán a sanciones, incluyendo multas y la posible confiscación de sus drones."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Para más información, pueden visitar el sitio web de la autoridad de aviación civil o contactar directamente con la base aérea."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-news-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "news",
+   "title": "Shifting Responsibilities at the Operations Center",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Sargento Pérez (female)",
+     "voice": "female",
+     "text": "Buenos días, Cabo Mendoza. ¿Cómo estuvo el turno de noche?"
+    },
+    {
+     "speaker": "Cabo Mendoza (male)",
+     "voice": "male",
+     "text": "Buenos días, Sargento Pérez. El turno de noche estuvo tranquilo, sin incidentes. Aquí está el informe de cambio de turno."
+    },
+    {
+     "speaker": "Sargento Pérez (female)",
+     "voice": "female",
+     "text": "Gracias, Cabo Mendoza. Vamos a repasar los puntos clave del informe de cambio de turno antes de que comience el turno de día a las ocho de la mañana."
+    },
+    {
+     "speaker": "Cabo Mendoza (male)",
+     "voice": "male",
+     "text": "Claro, Sargento Pérez. Primero, revisamos los sistemas de seguridad y todos están operativos."
+    },
+    {
+     "speaker": "Sargento Pérez (female)",
+     "voice": "female",
+     "text": "Muy bien. ¿Hubo alguna alerta durante la noche?"
+    },
+    {
+     "speaker": "Cabo Mendoza (male)",
+     "voice": "male",
+     "text": "No, Sargento. No hubo alertas ni actividad sospechosa en los monitores."
+    },
+    {
+     "speaker": "Sargento Pérez (female)",
+     "voice": "female",
+     "text": "Perfecto. ¿Algo más que deba saber antes de asumir el turno de día?"
+    },
+    {
+     "speaker": "Cabo Mendoza (male)",
+     "voice": "male",
+     "text": "Solo que el equipo de mantenimiento vendrá más tarde para revisar las cámaras exteriores."
+    },
+    {
+     "speaker": "Sargento Pérez (female)",
+     "voice": "female",
+     "text": "Entendido. Gracias por el informe, Cabo Mendoza. Puede retirarse."
+    },
+    {
+     "speaker": "Cabo Mendoza (male)",
+     "voice": "male",
+     "text": "Gracias, Sargento Pérez. Buen turno."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -2216,6 +2821,212 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-report-002",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "report",
+   "title": "Assessing the Damage After the Rocket Alert",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Líder del equipo",
+     "voice": "female",
+     "text": "Hola a todos. Vamos a evaluar los daños causados por la alarma de cohetes de esta mañana."
+    },
+    {
+     "speaker": "Miembro 1",
+     "voice": "male",
+     "text": "En el sector norte, encontramos daños estructurales menores en varios edificios."
+    },
+    {
+     "speaker": "Miembro 2",
+     "voice": "female",
+     "text": "Sí, pero nada que no podamos manejar con algunos reparaciones rápidas."
+    },
+    {
+     "speaker": "Líder del equipo",
+     "voice": "female",
+     "text": "¿Y en el sector sur?"
+    },
+    {
+     "speaker": "Miembro 3",
+     "voice": "male",
+     "text": "No encontramos daños significativos allí. Algunas ventanas rotas, pero eso es todo."
+    },
+    {
+     "speaker": "Líder del equipo",
+     "voice": "female",
+     "text": "Bien. Vamos a priorizar las reparaciones en el sector norte y luego nos ocuparemos de las ventanas rotas."
+    },
+    {
+     "speaker": "Miembro 1",
+     "voice": "male",
+     "text": "¿Y qué pasa con los sistemas de seguridad?"
+    },
+    {
+     "speaker": "Líder del equipo",
+     "voice": "female",
+     "text": "Vamos a revisar todos los sistemas y asegurarnos de que estén funcionando correctamente. También vamos a recomendar una actualización de nuestros protocolos de evacuación."
+    },
+    {
+     "speaker": "Miembro 2",
+     "voice": "female",
+     "text": "Suena como un plan. Vamos a ponernos a trabajar entonces."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2-report-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2",
+   "textType": "report",
+   "title": "Nighttime Drill for Quick Reaction Force",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Buenas noches, aquí es el Teniente Martínez reportando desde el Campo de Entrenamiento Alpha."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "La Fuerza de Reacción Rápida completó su simulacro de entrenamiento nocturno."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "El propósito del ejercicio era evaluar la preparación de la Fuerza de Reacción Rápida para operaciones nocturnas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "El ejercicio comenzó a las 22:00 horas y terminó a las 04:00 horas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Los miembros de la Fuerza de Reacción Rápida demostraron habilidades excepcionales en navegación y comunicación bajo condiciones de poca luz."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "El ejercicio fue un éxito, cumpliendo todos los objetivos establecidos."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "No se reportaron incidentes graves durante el ejercicio."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "La Fuerza de Reacción Rápida está ahora mejor preparada para enfrentar cualquier desafío nocturno."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Esto es todo por ahora. Fin del informe."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "Cross-Border Cooperation: Mexican Air Force Training Exercise",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Teniente Coronel Ramírez",
+     "voice": "female",
+     "text": "Buenos días, Coronel Johnson. ¿Cómo está usted?"
+    },
+    {
+     "speaker": "Coronel Johnson",
+     "voice": "male",
+     "text": "Muy bien, gracias. ¿Y usted, Teniente Coronel?"
+    },
+    {
+     "speaker": "Teniente Coronel Ramírez",
+     "voice": "female",
+     "text": "También bien. Ahora, vamos a hablar sobre el ejercicio de entrenamiento que estamos planeando."
+    },
+    {
+     "speaker": "Coronel Johnson",
+     "voice": "male",
+     "text": "Sí, estamos muy emocionados por esta oportunidad de cooperación. Hemos revisado los detalles y nos parece un plan sólido."
+    },
+    {
+     "speaker": "Teniente Coronel Ramírez",
+     "voice": "female",
+     "text": "Nos complace escuchar eso. Sin embargo, queremos asegurarnos de que todos los aspectos estén cubiertos. ¿Han considerado posibles contingencias imprevistas?"
+    },
+    {
+     "speaker": "Coronel Johnson",
+     "voice": "male",
+     "text": "Por supuesto. Hemos hecho un análisis de riesgos y tenemos planes de contingencia en su lugar. Pero, como sabe, siempre hay posibilidades de que surjan problemas."
+    },
+    {
+     "speaker": "Teniente Coronel Ramírez",
+     "voice": "female",
+     "text": "Entiendo. También queremos discutir las fechas propuestas. ¿Han confirmado su disponibilidad para las fechas sugeridas?"
+    },
+    {
+     "speaker": "Coronel Johnson",
+     "voice": "male",
+     "text": "Aún no. Estamos revisando nuestro calendario y haremos todo lo posible para participar. Le haremos saber tan pronto como podamos."
+    },
+    {
+     "speaker": "Teniente Coronel Ramírez",
+     "voice": "female",
+     "text": "Apreciamos su esfuerzo. Quizás podríamos programar una reunión de seguimiento para discutir cualquier problema que pueda surgir."
+    },
+    {
+     "speaker": "Coronel Johnson",
+     "voice": "male",
+     "text": "Creo que es una buena idea. Nos mantiene a ambos informados y nos da la oportunidad de explorar otras opciones si es necesario."
+    },
+    {
+     "speaker": "Teniente Coronel Ramírez",
+     "voice": "female",
+     "text": "Exactamente. Entonces, ¿qué le parece si nos reunimos de nuevo la próxima semana?"
+    },
+    {
+     "speaker": "Coronel Johnson",
+     "voice": "male",
+     "text": "Suena bien. Hablaremos entonces. Gracias, Teniente Coronel Ramírez."
+    },
+    {
+     "speaker": "Teniente Coronel Ramírez",
+     "voice": "female",
+     "text": "Gracias a usted, Coronel Johnson. Hasta entonces."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2591,6 +3402,207 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Strengthening Ties: A Meeting with Mexican Air Force",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Buenos días, soy Maria López y hoy estamos aquí con el Coronel Juan Pérez de la Fuerza Aérea Mexicana para hablar sobre su reciente reunión de enlace con sus homólogos de la Fuerza Aérea de los Estados Unidos."
+    },
+    {
+     "speaker": "Coronel Juan Pérez",
+     "voice": "male",
+     "text": "Buenos días, María. Es un placer estar aquí."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Coronel Pérez, ¿podría hablarnos sobre los objetivos de esta reunión?"
+    },
+    {
+     "speaker": "Coronel Juan Pérez",
+     "voice": "male",
+     "text": "Claro, la reunión tuvo como objetivo fortalecer los lazos y mejorar la coordinación entre nuestras fuerzas aéreas. Creemos que es importante trabajar juntos para enfrentar los desafíos comunes."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "¿Qué temas se discutieron durante la reunión?"
+    },
+    {
+     "speaker": "Coronel Juan Pérez",
+     "voice": "male",
+     "text": "Discutimos una variedad de temas, incluyendo operaciones conjuntas, entrenamiento y capacitación, y el intercambio de información. También hablamos sobre las diferencias en nuestros procedimientos y cómo podemos aprender el uno del otro."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "¿Hubo algún desacuerdo durante la reunión?"
+    },
+    {
+     "speaker": "Coronel Juan Pérez",
+     "voice": "male",
+     "text": "Bueno, como en cualquier reunión, hubo algunas diferencias de opinión. Por ejemplo, las cosas se hacen de manera un poco diferente aquí en México comparado con los Estados Unidos. Pero creo que es importante respetar estas diferencias y encontrar una manera de trabajar juntos a pesar de ellas."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "¿Qué planes hay para el futuro?"
+    },
+    {
+     "speaker": "Coronel Juan Pérez",
+     "voice": "male",
+     "text": "Creo que podríamos beneficiarnos de una mayor colaboración en el futuro. Espero que podamos encontrar una manera de trabajar juntos en proyectos específicos y continuar con el intercambio de conocimiento y experiencia."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Muchas gracias, Coronel Pérez, por compartir esta información con nosotros."
+    },
+    {
+     "speaker": "Coronel Juan Pérez",
+     "voice": "male",
+     "text": "El placer es mío, María. Gracias por la invitación."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Helping Hand: Translating for Success",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Buenos días, Coronel Ramírez. Gracias por concederme esta entrevista."
+    },
+    {
+     "speaker": "Coronel Ramírez",
+     "voice": "female",
+     "text": "Buenos días. Es un placer ayudar. ¿En qué puedo asistirle hoy?"
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Necesito su ayuda con una traducción. Tengo un documento que debe estar en español perfecto para mañana."
+    },
+    {
+     "speaker": "Coronel Ramírez",
+     "voice": "female",
+     "text": "Entiendo. ¿Podría decirme más sobre el documento y por qué es tan importante?"
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Es un documento muy importante para una reunión con inversionistas extranjeros. Quiero asegurarme de que todo esté claro y preciso."
+    },
+    {
+     "speaker": "Coronel Ramírez",
+     "voice": "female",
+     "text": "Claro, entiendo la urgencia. Por favor, envíeme el documento y comenzaré de inmediato."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Muchas gracias, Coronel. Realmente aprecio su ayuda. ¿Hay algo más que necesite saber antes de enviar el documento?"
+    },
+    {
+     "speaker": "Coronel Ramírez",
+     "voice": "female",
+     "text": "No, está bien. Solo asegúrese de que el documento esté en un formato que pueda editar fácilmente. Eso sería de gran ayuda."
+    },
+    {
+     "speaker": "Entrevistador",
+     "voice": "male",
+     "text": "Perfecto, Coronel. Le enviaré el documento en unos minutos. Gracias de nuevo por su ayuda."
+    },
+    {
+     "speaker": "Coronel Ramírez",
+     "voice": "female",
+     "text": "De nada. Estoy aquí para ayudar. Que tenga un buen día."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-2p-interview-005",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Sustainable Farming in Rural Mexico: A Chat with Don Luis",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Buenos días, Don Luis. Estamos aquí para hablar sobre la agricultura sostenible en su comunidad. ¿Cómo están adoptando estas prácticas?"
+    },
+    {
+     "speaker": "Don Luis",
+     "voice": "male",
+     "text": "Buenos días. Bueno, estamos haciendo nuestro mejor esfuerzo. Hemos empezado a usar menos pesticidas y a rotar los cultivos, pero todavía estamos analizando los beneficios a largo plazo."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Entiendo. ¿Qué opinas de los beneficios a largo plazo de la agricultura orgánica?"
+    },
+    {
+     "speaker": "Don Luis",
+     "voice": "male",
+     "text": "Mire, hemos escuchado sobre los beneficios, pero también sabemos que hay muchos desafíos que enfrentamos. No es tan fácil cambiar nuestras prácticas tradicionales."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Claro, es un proceso. ¿Han recibido apoyo del gobierno para estos cambios?"
+    },
+    {
+     "speaker": "Don Luis",
+     "voice": "male",
+     "text": "Sí, hemos recibido algo de apoyo, pero todavía necesitamos más recursos y capacitación para implementar estas prácticas de manera efectiva."
+    },
+    {
+     "speaker": "Periodista",
+     "voice": "female",
+     "text": "Gracias, Don Luis. Esperamos que puedan superar estos obstáculos y beneficiarse de la agricultura sostenible."
+    },
+    {
+     "speaker": "Don Luis",
+     "voice": "male",
+     "text": "Gracias a usted. Estamos comprometidos a mejorar nuestras prácticas y cuidar nuestro medio ambiente."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3138,6 +4150,130 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dl-3-analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "analysis",
+   "title": "es-dl-3-editorial-003-drone-jamming-analysis",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Presentador",
+     "voice": "male",
+     "text": "Buenos días a todos. Hoy vamos a discutir un tema muy importante relacionado con los ejercicios militares y el uso de drones."
+    },
+    {
+     "speaker": "Analista",
+     "voice": "female",
+     "text": "La interrupción del enlace de control del dron durante el ejercicio plantea serias preocupaciones de seguridad."
+    },
+    {
+     "speaker": "Presentador",
+     "voice": "male",
+     "text": "¿Podría explicar más sobre esto?"
+    },
+    {
+     "speaker": "Analista",
+     "voice": "female",
+     "text": "Claro. Cuando el enlace de control de un dron es interrumpido, el dron puede perder su capacidad para recibir comandos y seguir su misión programada."
+    },
+    {
+     "speaker": "Presentador",
+     "voice": "male",
+     "text": "¿Qué implica esto para las operaciones militares?"
+    },
+    {
+     "speaker": "Analista",
+     "voice": "female",
+     "text": "Implica que los drones pueden ser vulnerables a ataques cibernéticos y a la interferencia electrónica, lo que puede comprometer la seguridad de las operaciones."
+    },
+    {
+     "speaker": "Presentador",
+     "voice": "male",
+     "text": "¿Qué medidas se pueden tomar para mitigar este riesgo?"
+    },
+    {
+     "speaker": "Analista",
+     "voice": "female",
+     "text": "Es crucial que las fuerzas armadas tomen medidas para proteger los sistemas de control de los drones. Esto puede incluir el uso de enlaces de control cifrados y la implementación de protocolos de seguridad avanzados."
+    },
+    {
+     "speaker": "Presentador",
+     "voice": "male",
+     "text": "Gracias por su análisis. Es claro que este es un tema que requiere atención inmediata."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-analysis-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Evaluating Drone Defense Strategies",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Bienvenidos a todos. Hoy vamos a analizar las lecciones aprendidas del ejercicio de contramedidas contra drones realizado la semana pasada."
+    },
+    {
+     "speaker": "Participante 1",
+     "voice": "female",
+     "text": "Gracias. Creo que el ejercicio fue muy revelador. Vimos que las estrategias de interferencia electromagnética tuvieron una eficacia limitada en ciertos escenarios."
+    },
+    {
+     "speaker": "Participante 2",
+     "voice": "male",
+     "text": "Estoy de acuerdo. Además, las contramedidas cinéticas mostraron una mayor efectividad, pero también presentaron desafíos logísticos significativos."
+    },
+    {
+     "speaker": "Participante 3",
+     "voice": "female",
+     "text": "Es importante considerar también el aspecto legal. Las normas actuales pueden no ser suficientes para abordar todos los escenarios que enfrentamos."
+    },
+    {
+     "speaker": "Participante 1",
+     "voice": "female",
+     "text": "Sí, y no debemos olvidar la importancia de la coordinación entre los diferentes participantes de diversos ámbitos, desde seguridad hasta tecnología y derecho."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Exactamente. La próxima vez, perhaps deberíamos incluir a más expertos en seguridad cibernética para abordar las vulnerabilidades en los sistemas de control de drones."
+    },
+    {
+     "speaker": "Participante 2",
+     "voice": "male",
+     "text": "Una excelente sugerencia. También sería útil tener más simulaciones en entornos urbanos para evaluar mejor las estrategias en condiciones reales."
+    },
+    {
+     "speaker": "Participante 3",
+     "voice": "female",
+     "text": "Absolutamente. Y no olvidemos la importancia de la formación continua para nuestros operadores y técnicos."
+    },
+    {
+     "speaker": "Moderador",
+     "voice": "male",
+     "text": "Gracias a todos por sus valiosos aportes. Este ejercicio nos ha dado mucho en qué pensar y mejorar para futuras operaciones."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dl-3-debate-001",
    "exam": "DLPT_LISTENING",
    "language": "es",
@@ -3349,6 +4485,115 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-004",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "es-dl-3-editorial-001-drone-jamming",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "El reciente incidente durante un ejercicio militar ha puesto de manifiesto una amenaza grave y urgente: la interferencia en los sistemas de control de drones."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Imagínese un escenario en el que nuestros drones, utilizados para misiones críticas, son incapaces de cumplir sus objetivos debido a la interferencia malintencionada en sus sistemas de control."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Esto no es ciencia ficción; es una realidad que enfrentamos hoy."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "La capacidad de nuestros adversarios para interrumpir la comunicación entre el operador y el drone puede tener consecuencias devastadoras."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Si bien las fuerzas armadas han tomado medidas para mitigar este riesgo, es evidente que no son suficientes."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Es imperativo que tomemos medidas inmediatas para proteger nuestros sistemas de control de drones."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Esto incluye la inversión en tecnología de contramedidas, la mejora de los protocolos de seguridad y la formación continua de nuestros operadores."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "No podemos permitirnos ser complacientes en un entorno de amenazas en constante evolución."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "La seguridad de nuestros sistemas de control de drones es crucial para el éxito de nuestras misiones y, en última instancia, para la seguridad nacional."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "female",
+     "text": "Es hora de actuar, y actuar con decisión."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-005",
+   "exam": "DLPT_LISTENING",
+   "language": "es",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "es-dl-3-editorial-002-drone-exercise-jammed",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Buenos días, estimados oyentes. Hoy les traemos un análisis editorial sobre un reciente ejercicio militar que involuñó el uso de drones. El ejercicio, que tuvo lugar la semana pasada en la base aérea de San Miguel, fue diseñado para probar la capacidad de los drones en operaciones tácticas."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Sin embargo, el ejercicio reveló una grave vulnerabilidad en la tecnología de drones. Durante la simulación, la señal de control del dron fue interrumpida por una fuente externa, lo que provocó la pérdida temporal del control del dron."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "Este incidente ha generado preocupación entre los expertos en seguridad y tecnología militar. Los drones son una herramienta vital en las operaciones militares modernas, y cualquier fallo en su funcionamiento puede tener consecuencias graves."
+    },
+    {
+     "speaker": "Locutora",
+     "voice": "female",
+     "text": "Es crucial que abordemos estos problemas y desarrolleos soluciones para garantizar la seguridad y eficacia de los drones en futuras operaciones. El Ministerio de Defensa ha anunciado que se llevará a cabo una investigación exhaustiva para determinar la causa de la interrupción de la señal y proponer medidas correctivas."
+    },
+    {
+     "speaker": "Locutor",
+     "voice": "male",
+     "text": "En conclusión, aunque el ejercicio puso de manifiesto algunos desafíos, también destacó la importancia de continuar invirtiendo en la tecnología de drones y mejorando su seguridad. Solo así podremos asegurar su uso efectivo en las operaciones militares del futuro. Esto ha sido todo por hoy. Gracias por sintonizarnos."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -4326,6 +5571,96 @@
    "verified": false
   },
   {
+   "id": "es-dl-1-announcement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-announcement-004",
+   "stem": "What is the date of the exercise?",
+   "choices": [
+    "March 30",
+    "March 15",
+    "March 20",
+    "March 25"
+   ],
+   "answer": 3,
+   "explanation": "The date of the exercise is mentioned as 25 de marzo in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-announcement-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dl-1-announcement-004",
+   "stem": "What is the main purpose of the announcement?",
+   "choices": [
+    "To announce the date and participants of a defense exercise",
+    "To cancel the upcoming defense exercise",
+    "To inform about a change in the exercise schedule",
+    "To invite the public to participate in a defense exercise"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the announcement is to inform about the exercise involving base defense forces and our host-nation allies on 25 de marzo.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-announcement-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-announcement-005",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To remind personnel about an upcoming training session.",
+    "To inform personnel about a new policy on personal data.",
+    "To announce a change in the base's working hours.",
+    "To request volunteers for a special project."
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the announcement is to remind personnel about an upcoming training session. The text says, \"Se recuerda a todo el personal que el entrenamiento de concienciación sobre amenazas internas es el próximo viernes.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-announcement-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dl-1-announcement-005",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "Personnel must attend a mandatory training session next week.",
+    "A new policy on personal leave has been implemented.",
+    "The base will have a new security system installed.",
+    "The base's visiting hours have been changed."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the announcement is that personnel must attend a mandatory training session next week. The text states, \"El entrenamiento de concienciación sobre amenazas internas es obligatorio para todo el personal.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-announcement-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-announcement-005",
+   "stem": "What does the phrase \"amenazas internas\" mean here?",
+   "choices": [
+    "Personal risks.",
+    "External dangers.",
+    "Internal threats.",
+    "Security breaches."
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"amenazas internas\" means internal threats. The context is a training session about awareness of such threats, as stated in the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4574,6 +5909,96 @@
    ],
    "answer": 2,
    "explanation": "The phrase 'lo antes posible' is used to emphasize the urgency of confirming the reservation, meaning 'as soon as possible'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-voicemail-004",
+   "stem": "What is the caller's purpose?",
+   "choices": [
+    "To ask about the rocket alarm procedures.",
+    "To report damage after a rocket attack.",
+    "To confirm the time of the next alarm.",
+    "To request assistance for injured people."
+   ],
+   "answer": 1,
+   "explanation": "The caller's purpose is to report damage after a rocket attack, as indicated by the phrase 'Para reportar daños después del ataque.' The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-voicemail-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-voicemail-004",
+   "stem": "What does \"revisión\" mean here?",
+   "choices": [
+    "A correction.",
+    "A review of a book.",
+    "A revision of a document.",
+    "An inspection."
+   ],
+   "answer": 3,
+   "explanation": "Here, \"revisión\" refers to an inspection or assessment of the damage, as seen in 'Para reportar daños después del ataque y solicitar una revisión de la zona.' The other options do not fit the context of post-attack procedures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-voicemail-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "es-dl-1-voicemail-004",
+   "stem": "Why does the caller mention \"la zona\"?",
+   "choices": [
+    "To inquire about the safety of the area.",
+    "To specify the area that needs to be inspected.",
+    "To ask about the location of the rocket.",
+    "To request a change in the alarm zone."
+   ],
+   "answer": 1,
+   "explanation": "The caller mentions \"la zona\" to specify the area that needs to be inspected, as part of the request for a 'revisión de la zona' after reporting the damage. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-voicemail-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dl-1-voicemail-005",
+   "stem": "What is the main concern expressed in the voicemail?",
+   "choices": [
+    "The base's pollution of the environment",
+    "The base's impact on local businesses",
+    "The lack of security measures at the base",
+    "The noise from the base's activities"
+   ],
+   "answer": 2,
+   "explanation": "The speaker explicitly mentions security measures: 'las medidas de seguridad en la base'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-1-voicemail-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-1-voicemail-005",
+   "stem": "In the voicemail, what does 'vecinos' mean?",
+   "choices": [
+    "Businesses",
+    "Soldiers",
+    "Residents",
+    "Visitors"
+   ],
+   "answer": 2,
+   "explanation": "'Vecinos' refers to the people who live in the community, as in 'los vecinos del barrio'.",
    "source": "llm",
    "verified": false
   },
@@ -5658,6 +7083,60 @@
    "verified": false
   },
   {
+   "id": "es-dl-2-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-conversation-004",
+   "stem": "What does the woman imply when she says 'tengo que consultar mi agenda'?",
+   "choices": [
+    "She is not interested in the restaurant the man suggested.",
+    "She does not want to have lunch with the man.",
+    "She has a busy schedule and needs to check if she is free for lunch.",
+    "She has already made other plans for lunch."
+   ],
+   "answer": 2,
+   "explanation": "The woman says 'tengo que consultar mi agenda', which implies that she needs to check her schedule. This suggests that she has a busy schedule and needs to see if she is free for lunch. It does not necessarily mean that she does not want to have lunch with the man, has already made other plans, or is not interested in the restaurant.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-conversation-004",
+   "stem": "What does the man imply when he says 'no hay problema, podemos elegir otro día'?",
+   "choices": [
+    "He is not interested in having lunch with the woman.",
+    "He thinks the woman is being difficult.",
+    "He has other plans for the day.",
+    "He is willing to reschedule the lunch for another day."
+   ],
+   "answer": 3,
+   "explanation": "The man says 'no hay problema, podemos elegir otro día', which implies that he is willing to reschedule the lunch for another day. This shows that he is flexible and accommodating. It does not suggest that he is not interested in having lunch with the woman, thinks she is being difficult, or has other plans for the day.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-conversation-004",
+   "stem": "What does the woman imply when she says 'me encantaría probar la comida de ese lugar'?",
+   "choices": [
+    "She has already eaten at the suggested restaurant.",
+    "She is not hungry and does not want to have lunch.",
+    "She is looking forward to trying the food at the suggested restaurant.",
+    "She prefers to eat at a different restaurant."
+   ],
+   "answer": 2,
+   "explanation": "The woman says 'me encantaría probar la comida de ese lugar', which implies that she is looking forward to trying the food at the suggested restaurant. This shows her enthusiasm and interest. It does not suggest that she has already eaten there, is not hungry, or prefers a different restaurant.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-2-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5820,6 +7299,168 @@
    "verified": false
   },
   {
+   "id": "es-dl-2-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-004",
+   "stem": "What is implied about the officers' feelings towards the meal?",
+   "choices": [
+    "They found it too spicy.",
+    "They thought it was too simple.",
+    "They were indifferent to it.",
+    "They enjoyed it thoroughly."
+   ],
+   "answer": 3,
+   "explanation": "The officers imply their enjoyment through their compliments and the prolonged conversation, such as when they say '¡Qué delicioso está todo!' and 'Nos encanta probar platos tradicionales.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-004",
+   "stem": "What is implied about the host's concern when he asks '¿Se sienten cómodos con el picante?'?",
+   "choices": [
+    "He is worried the food is too spicy for them.",
+    "He is asking if they would like more spicy food.",
+    "He wants them to hurry up and finish eating.",
+    "He thinks they might be allergic to some ingredients."
+   ],
+   "answer": 0,
+   "explanation": "The host is being polite and considerate, implying concern for their comfort with the spiciness of the food.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-004",
+   "stem": "What is implied about the officers' reason for staying longer?",
+   "choices": [
+    "They have nothing better to do.",
+    "They are waiting for someone else to arrive.",
+    "They are enjoying the conversation and company.",
+    "They want to discuss business."
+   ],
+   "answer": 2,
+   "explanation": "The officers imply their enjoyment of the conversation and company by saying 'Nos gusta mucho conversar después de comer' and continuing to engage in light-hearted topics.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-005",
+   "stem": "What is the purpose of the meeting?",
+   "choices": [
+    "To address recent political tensions with the U.S.",
+    "To review the progress of the border security initiative.",
+    "To discuss the military's annual budget.",
+    "To plan a joint operation with U.S. forces."
+   ],
+   "answer": 1,
+   "explanation": "The purpose of the meeting is implied through the conversation. The speakers discuss the 'iniciativa de seguridad fronteriza' and its progress, as seen in lines like 'Hemos logrado avances significativos en la iniciativa' and 'Es crucial que continuemos con estos esfuerzos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-005",
+   "stem": "What does the speaker mean when they say 'Hemos tenido algunos desafíos'?",
+   "choices": [
+    "They have received additional resources.",
+    "They have encountered some difficulties.",
+    "They have completed all tasks.",
+    "They have faced no obstacles."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'Hemos tenido algunos desafíos' implies that there have been some difficulties or obstacles faced during the implementation of the initiative.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-005",
+   "stem": "What is implied by the speaker's statement 'Espero que podamos contar con su apoyo'?",
+   "choices": [
+    "The speaker is requesting the listener's assistance.",
+    "The speaker is indifferent to the listener's support.",
+    "The speaker is criticizing the listener's lack of support.",
+    "The speaker is certain of the listener's support."
+   ],
+   "answer": 0,
+   "explanation": "The statement 'Espero que podamos contar con su apoyo' is a polite way of requesting the listener's assistance and support for the initiative.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-006",
+   "stem": "What does the captain imply when he says 'nos gustaría que consideraran nuestra propuesta'?",
+   "choices": [
+    "He is asking for the officers' agreement on a joint exercise.",
+    "He is suggesting that they ignore the proposal.",
+    "He is requesting more time to discuss the proposal.",
+    "He is stating that their proposal is final."
+   ],
+   "answer": 0,
+   "explanation": "The captain uses the phrase 'nos gustaría que consideraran nuestra propuesta,' which implies a request for consideration and agreement. The context of the conversation being about coordination and joint efforts supports this inference. The other choices are either opposite or unrelated to the implied meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-006",
+   "stem": "What does the colonel imply when he says 'entendemos sus preocupaciones, pero tenemos nuestras propias restricciones'?",
+   "choices": [
+    "He is agreeing to the captain's proposal without any conditions.",
+    "He is refusing the captain's proposal outright.",
+    "He is asking for more details about the captain's proposal.",
+    "He is suggesting that they find a compromise considering both parties' limitations."
+   ],
+   "answer": 3,
+   "explanation": "The colonel's statement 'entendemos sus preocupaciones, pero tenemos nuestras propias restricciones' implies that while they understand the captain's concerns, they have their own limitations. This suggests a need for a compromise rather than outright agreement or refusal. The other choices do not align with this implied meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-interview-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "es-dl-2-interview-006",
+   "stem": "What does the captain imply when he says 'confiamos en que podamos llegar a un acuerdo beneficioso para ambos'?",
+   "choices": [
+    "He is indicating that the proposal will be rejected.",
+    "He is expressing hope for a mutually beneficial agreement despite current limitations.",
+    "He is certain that an agreement will be reached immediately.",
+    "He is suggesting that the meeting should be postponed."
+   ],
+   "answer": 1,
+   "explanation": "The captain's phrase 'confiamos en que podamos llegar a un acuerdo beneficioso para ambos' implies hope and confidence in reaching a mutually beneficial agreement in the future, despite the current limitations discussed. The other choices do not reflect this implied meaning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-2-news-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5928,6 +7569,114 @@
    "verified": false
   },
   {
+   "id": "es-dl-2-news-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-news-003",
+   "stem": "What is the main topic of this announcement?",
+   "choices": [
+    "The history of military airfields and drone technology",
+    "New safety regulations for flying drones near a military airfield",
+    "A new drone racing event near the air base",
+    "Changes in weather patterns affecting drone flights"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the new safety regulations for flying drones near a military airfield. The announcement repeatedly mentions new rules and restrictions, such as 'nuevas reglas para operar drones' and 'restricciones adicionales'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-news-003",
+   "stem": "How far from the air base must drones stay, according to the new rules?",
+   "choices": [
+    "1 kilometer",
+    "10 kilometers",
+    "500 meters",
+    "5 kilometers"
+   ],
+   "answer": 0,
+   "explanation": "The new rules state that drones must stay at least '1 kilómetro de distancia de la base aérea'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-news-003",
+   "stem": "In this announcement, what does 'impedir' mean?",
+   "choices": [
+    "To ignore",
+    "To allow",
+    "To prevent",
+    "To encourage"
+   ],
+   "answer": 2,
+   "explanation": "The word 'impedir' is used in the context of 'impedir el acceso no autorizado'. This means to prevent unauthorized access.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-news-004",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A debate on the effectiveness of the current security protocols",
+    "A complaint about the lack of personnel at the operations center",
+    "A detailed discussion about the center's annual budget",
+    "A routine shift change procedure at an operations center"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the conversation is the shift change procedure at the operations center. This is evident from the conversation's context, including phrases like 'turno de noche' (night shift), 'turno de día' (day shift), and 'informe de cambio de turno' (shift handover report).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-news-004",
+   "stem": "What time is the day shift starting?",
+   "choices": [
+    "9:00 AM",
+    "8:00 AM",
+    "7:00 AM",
+    "6:00 AM"
+   ],
+   "answer": 1,
+   "explanation": "The day shift is starting at 8:00 AM. This is explicitly stated in the conversation with the phrase 'el turno de día comienza a las ocho de la mañana' (the day shift starts at eight in the morning).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-news-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-news-004",
+   "stem": "In the phrase 'vamos a repasar los puntos clave del informe de cambio de turno', what does 'repasar' mean?",
+   "choices": [
+    "To skip",
+    "To review",
+    "To ignore",
+    "To write"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'repasar' means 'to review'. The speaker is indicating that they will go over the key points of the shift handover report, which implies reviewing the information.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-2-report-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5978,6 +7727,168 @@
    ],
    "answer": 0,
    "explanation": "In the context of the report, \"desfile\" refers to the main parade of the festival: \"La parada principal comenzará a las 10:00 de la mañana.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-report-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-report-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The evacuation procedures during an alarm",
+    "The preparations for a military exercise",
+    "The installation of new security systems",
+    "The aftermath of a rocket attack"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the aftermath of a rocket attack. This is evident from the context of the conversation, which includes phrases like 'la alarma de cohetes', 'los daños', and 'la reconstrucción'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-report-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-report-002",
+   "stem": "What did the team find in the northern sector?",
+   "choices": [
+    "A large crater in the ground",
+    "Minor structural damage to several buildings",
+    "No significant damage",
+    "Evidence of a chemical spill"
+   ],
+   "answer": 1,
+   "explanation": "The team found 'daños estructurales menores en varios edificios' in the northern sector.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-report-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-report-002",
+   "stem": "What does 'evaluar' mean here?",
+   "choices": [
+    "To construct",
+    "To assess",
+    "To destroy",
+    "To ignore"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'evaluar' means 'to assess'. The speaker uses this word to describe the process of examining the damage caused by the rocket attack: 'Vamos a evaluar los daños y a determinar los pasos necesarios para la reconstrucción.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-report-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dl-2-report-003",
+   "stem": "What is the main idea of the report?",
+   "choices": [
+    "The Quick Reaction Force faced numerous challenges during a nighttime drill.",
+    "The Quick Reaction Force needs more training for nighttime operations.",
+    "The Quick Reaction Force successfully completed a nighttime drill.",
+    "The Quick Reaction Force is preparing for a real mission at night."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the report is that the Quick Reaction Force successfully completed a nighttime drill. This is evident from the statements such as 'La Fuerza de Reacción Rápida completó su ejercicio de entrenamiento nocturno' and 'El ejercicio fue un éxito'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-report-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dl-2-report-003",
+   "stem": "What was the purpose of the exercise?",
+   "choices": [
+    "To test the readiness of the Quick Reaction Force for nighttime operations.",
+    "To practice communication strategies under low-light conditions.",
+    "To evaluate the new equipment of the Quick Reaction Force.",
+    "To assess the physical fitness of the Quick Reaction Force members."
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the exercise was to test the readiness of the Quick Reaction Force for nighttime operations. This is explicitly stated in the report: 'El propósito del ejercicio era evaluar la preparación de la Fuerza de Reacción Rápida para operaciones nocturnas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2-report-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-2-report-003",
+   "stem": "In the report, what does 'simulacro' mean?",
+   "choices": [
+    "A piece of equipment.",
+    "A communication strategy.",
+    "A training exercise.",
+    "A real operation."
+   ],
+   "answer": 2,
+   "explanation": "In the context of the report, 'simulacro' refers to a training exercise. The report states 'La Fuerza de Reacción Rápida completó su simulacro de entrenamiento nocturno', indicating that the activity was a training exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-conversation-001",
+   "stem": "What is implied about the US side's ability to participate in the training exercise?",
+   "choices": [
+    "It is uncertain due to scheduling conflicts.",
+    "It is not possible due to budget constraints.",
+    "It is highly likely.",
+    "It is guaranteed."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the US side will \"hacer todo lo posible para participar\", which implies that they will try their best but there are no guarantees due to potential scheduling conflicts. This is further supported by the statement that they will \"ver cómo encaja en nuestro calendario\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-conversation-001",
+   "stem": "What does the phrase \"contingencias imprevistas\" refer to in this context?",
+   "choices": [
+    "Unexpected events that may affect the training exercise.",
+    "Planned events that conflict with the training exercise.",
+    "Weather conditions that may impact the exercise.",
+    "Budget constraints that may limit participation."
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"contingencias imprevistas\" is used to refer to any unexpected events that may arise and potentially impact the training exercise, as indicated by the context of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-conversation-001",
+   "stem": "Why does the Mexican side suggest holding a follow-up meeting?",
+   "choices": [
+    "To resolve any disagreements between the two sides.",
+    "To discuss budget constraints and limitations.",
+    "To discuss potential alternatives if the current plan falls through.",
+    "To finalize the details of the training exercise."
+   ],
+   "answer": 2,
+   "explanation": "The Mexican side suggests a follow-up meeting to \"explorar otras opciones\" if the current plan does not work out, indicating that they want to discuss potential alternatives.",
    "source": "llm",
    "verified": false
   },
@@ -6248,6 +8159,168 @@
    ],
    "answer": 3,
    "explanation": "In this context, 'marcar una diferencia significativa' means to have a major impact. Dr. Rojas uses this phrase to express her belief that the new hospital will greatly improve healthcare in the region.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-003",
+   "stem": "What does the speaker mean by saying “las cosas se hacen de manera un poco diferente aquí”?",
+   "choices": [
+    "Things are done differently here.",
+    "Things are done more slowly here.",
+    "Things are done more traditionally here.",
+    "Things are done more efficiently here."
+   ],
+   "answer": 0,
+   "explanation": "The speaker implies that things are done differently in Mexico compared to the U.S. They do not say that things are done more efficiently, slowly, or traditionally, but simply that there are differences in how things are done.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-003",
+   "stem": "What does the speaker mean by saying “creo que podríamos beneficiarnos de una mayor colaboración”?",
+   "choices": [
+    "I think we could benefit from more competition.",
+    "I think we could benefit from more collaboration.",
+    "I think we could benefit from less communication.",
+    "I think we could benefit from less collaboration."
+   ],
+   "answer": 1,
+   "explanation": "The speaker implies that more collaboration would be beneficial for both parties. They do not suggest more competition, less collaboration, or less communication.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-003",
+   "stem": "What does the speaker mean by saying “espero que podamos encontrar una manera de trabajar juntos en el futuro”?",
+   "choices": [
+    "I hope we can find a way to work against each other in the future.",
+    "I hope we can find a way to avoid working together in the future.",
+    "I hope we can find a way to work separately in the future.",
+    "I hope we can find a way to work together in the future."
+   ],
+   "answer": 3,
+   "explanation": "The speaker implies that they hope to find a way to work together in the future. They do not suggest working separately, avoiding working together, or working against each other.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-004",
+   "stem": "What is the interviewee's implied reason for needing help with the translation?",
+   "choices": [
+    "The document is in a dialect the interviewee is not familiar with.",
+    "The interviewee wants to ensure the translation is accurate for an important meeting.",
+    "The document is highly technical and requires expert knowledge.",
+    "The interviewee is not confident in their own translation skills."
+   ],
+   "answer": 1,
+   "explanation": "The interviewee states, 'Necesito que este documento esté perfecto para la reunión de mañana.' This implies that the accuracy of the translation is crucial for the upcoming meeting, suggesting that the interviewee wants to ensure the translation is accurate for an important meeting.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-004",
+   "stem": "What does the interviewee imply about the importance of the document?",
+   "choices": [
+    "It is a routine report that needs to be translated.",
+    "It is a critical document for an upcoming meeting.",
+    "It is a personal letter that needs to be translated for a family member.",
+    "It contains sensitive information that must be kept confidential."
+   ],
+   "answer": 1,
+   "explanation": "The interviewee says, 'Es un documento muy importante y necesito que esté listo para mañana.' This implies that the document is critical for an upcoming meeting, as the interviewee emphasizes the importance and the tight deadline.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-004",
+   "stem": "What is the interviewee's implied attitude towards the Air Force officer's help?",
+   "choices": [
+    "They are indifferent and just need the translation done.",
+    "They are skeptical about the officer's ability to help.",
+    "They are eager to pay for the officer's services.",
+    "They are grateful and appreciative of the officer's assistance."
+   ],
+   "answer": 3,
+   "explanation": "The interviewee expresses gratitude by saying, 'Muchas gracias, Coronel. Realmente aprecio su ayuda.' This implies that the interviewee is grateful and appreciative of the officer's assistance, as they sincerely thank the officer for their help.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-005",
+   "stem": "What is Don Luis’s indirect way of saying that he will not adopt organic farming practices immediately?",
+   "choices": [
+    "He does not believe organic farming will work in his region.",
+    "He is waiting for the government to provide subsidies.",
+    "He is worried about the cost of organic fertilizers.",
+    "He needs more time to study the benefits."
+   ],
+   "answer": 3,
+   "explanation": "Don Luis says, 'Todavía estamos analizando los beneficios a largo plazo,' which means 'We are still analyzing the long-term benefits.' This implies that he needs more time to study the benefits before making a decision.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-005",
+   "stem": "What does the word 'desafíos' mean in the context of the conversation?",
+   "choices": [
+    "Benefits",
+    "Obstacles",
+    "Traditions",
+    "Opportunities"
+   ],
+   "answer": 1,
+   "explanation": "In the conversation, Don Luis mentions 'los desafíos que enfrentamos,' referring to the difficulties or obstacles they face in adopting new farming practices. This usage implies that 'desafíos' means obstacles.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-2p-interview-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "es-dl-2p-interview-005",
+   "stem": "What is the reporter’s indirect way of suggesting that Don Luis should consider organic farming?",
+   "choices": [
+    "She asks about the long-term benefits of organic farming.",
+    "She discusses the environmental impact of traditional farming.",
+    "She mentions the success of organic farming in other regions.",
+    "She inquires about government support for organic farming."
+   ],
+   "answer": 0,
+   "explanation": "The reporter asks, '¿Qué opinas de los beneficios a largo plazo de la agricultura orgánica?' This question implies that she is suggesting Don Luis consider the long-term benefits of organic farming, encouraging him to think about its advantages.",
    "source": "llm",
    "verified": false
   },
@@ -6738,6 +8811,114 @@
    "verified": false
   },
   {
+   "id": "es-dl-3-analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-analysis-003",
+   "stem": "The main idea of the text is that",
+   "choices": [
+    "military exercises should not include drones because they are too expensive.",
+    "drones are useless in military exercises because they can be easily jammed.",
+    "drones should be banned from all military operations due to their vulnerability.",
+    "jamming a drone's control link during an exercise is a serious security concern."
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the implications of jamming a drone's control link during an exercise, highlighting the security concerns and the need for better protection. This is evident in phrases like 'la interrupción del enlace de control del dron durante el ejercicio plantea serias preocupaciones de seguridad' and 'es crucial que las fuerzas armadas tomen medidas para proteger los sistemas de control de los drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-analysis-003",
+   "stem": "What can be inferred from the text about the future of drone use in military exercises?",
+   "choices": [
+    "Drones will be completely replaced by manned aircraft.",
+    "Drones will be limited to non-combat roles only.",
+    "Drones will continue to be used, but with improved security measures.",
+    "Drones will be used exclusively for surveillance purposes."
+   ],
+   "answer": 2,
+   "explanation": "The text suggests that while jamming is a concern, drones will continue to be used. It mentions 'es crucial que las fuerzas armadas tomen medidas para proteger los sistemas de control de los drones', implying that with better security, drones will still be a part of military exercises.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-analysis-003",
+   "stem": "What does 'vulnerabilidad' mean here?",
+   "choices": [
+    "The range of the drone's control link.",
+    "The ability of the drone to evade detection.",
+    "The speed of the drone.",
+    "The susceptibility of the drone to being hacked or jammed."
+   ],
+   "answer": 3,
+   "explanation": "The text uses 'vulnerabilidad' in the context of the drone's control link being jammed, indicating that it refers to the drone's susceptibility to being hacked or jammed. This is supported by the phrase 'la vulnerabilidad de los sistemas de control de los drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-analysis-004",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The economic impact of drone warfare on global markets",
+    "The legal implications of using drones in civilian airspace",
+    "The effectiveness of various counter-drone strategies in a recent exercise",
+    "The history of drone technology in military operations"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the evaluation of counter-drone strategies, as indicated by phrases such as 'evaluar las estrategias' and 'ejercicio de contramedidas contra drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-analysis-004",
+   "stem": "What can be inferred about the participants in the exercise?",
+   "choices": [
+    "They were all engineers specializing in drone technology",
+    "They were all military personnel with extensive drone experience",
+    "They represented a diverse group of experts from various fields",
+    "They were primarily civilians with no prior drone knowledge"
+   ],
+   "answer": 2,
+   "explanation": "The inference is that the participants were a diverse group, as suggested by 'participantes de diversos ámbitos' and 'expertos en seguridad, tecnología y derecho'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-analysis-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-analysis-004",
+   "stem": "What does \"eficacia\" mean in this context?",
+   "choices": [
+    "The success rate of the counter-drone measures",
+    "The cost-effectiveness of the strategies",
+    "The speed of the counter-drone response",
+    "The complexity of the drone systems"
+   ],
+   "answer": 0,
+   "explanation": "The word 'eficacia' refers to the success rate, as evidenced by 'evaluar la eficacia de diferentes estrategias' and 'efectividad de las medidas implementadas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dl-3-debate-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -6950,6 +9131,114 @@
    ],
    "answer": 3,
    "explanation": "'Sinergias' in this context refers to the combined efforts and benefits of the international cooperation, as seen in the phrase: 'la operación ha permitido aprovechar sinergias y compartir recursos de manera más eficiente'. This means that the operation allowed for a more efficient use of resources through combined efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-editorial_commentary-004",
+   "stem": "What is the main idea of this editorial?",
+   "choices": [
+    "The editorial suggests that drone jamming is a minor issue that can be ignored for now.",
+    "The editorial argues that drone jamming is a serious threat to national security and must be addressed immediately.",
+    "The editorial explains the technical details of how drone jamming works.",
+    "The editorial discusses the economic impact of drone jamming on the aerospace industry."
+   ],
+   "answer": 1,
+   "explanation": "The editorial focuses on the seriousness of drone jamming as a threat to national security and the need for immediate action. This is evident in lines such as 'El reciente incidente durante un ejercicio militar ha puesto de manifiesto una amenaza grave y urgente: la interferencia en los sistemas de control de drones.' and 'Es imperativo que tomemos medidas inmediatas para proteger nuestros sistemas de control de drones.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-editorial_commentary-004",
+   "stem": "What can be inferred about the author's attitude towards the military's response to the drone jamming incident?",
+   "choices": [
+    "The author believes the military's response was adequate and no further action is needed.",
+    "The author is unsure about the military's response and calls for more information.",
+    "The author thinks the military's response was insufficient and more needs to be done.",
+    "The author is critical of the military's response but offers no suggestions for improvement."
+   ],
+   "answer": 2,
+   "explanation": "The author implies that the military's response was insufficient by stating 'Si bien las fuerzas armadas han tomado medidas para mitigar este riesgo, es evidente que no son suficiente.' This suggests that the author believes more needs to be done to address the threat of drone jamming.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-editorial_commentary-004",
+   "stem": "In the phrase 'Es imperativo que tomemos medidas inmediatas para proteger nuestros sistemas de control de drones.', what does 'imperativo' mean here?",
+   "choices": [
+    "Expensive",
+    "Urgent",
+    "Difficult",
+    "Optional"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'Es imperativo' means that taking immediate action is urgent and necessary. The context of the sentence, which discusses the need for immediate measures to protect drone control systems, supports this interpretation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "es-dl-3-editorial_commentary-005",
+   "stem": "What is the main point of the editorial?",
+   "choices": [
+    "The exercise was a complete success with no issues reported.",
+    "The exercise was canceled due to bad weather conditions.",
+    "The exercise revealed vulnerabilities in drone technology that need to be addressed.",
+    "The exercise demonstrated the effectiveness of drones in military operations."
+   ],
+   "answer": 2,
+   "explanation": "The main point of the editorial is that the exercise revealed vulnerabilities in drone technology that need to be addressed. The text states that 'el ejercicio reveló una grave vulnerabilidad en la tecnología de drones' and 'es crucial que abordemos estos problemas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "es-dl-3-editorial_commentary-005",
+   "stem": "What can be inferred about the author's opinion on the use of drones in military operations?",
+   "choices": [
+    "The author is indifferent about the use of drones in military operations.",
+    "The author thinks that drones should be replaced with other technology.",
+    "The author believes that drones are essential for military operations and the issues can be fixed.",
+    "The author is against the use of drones in military operations."
+   ],
+   "answer": 2,
+   "explanation": "The author believes that drones are essential for military operations and the issues can be fixed. The text states that 'los drones son una herramienta vital en las operaciones militares modernas' and 'es crucial que abordemos estos problemas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dl-3-editorial_commentary-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "es-dl-3-editorial_commentary-005",
+   "stem": "What does 'interrumpir' mean here?",
+   "choices": [
+    "To connect",
+    "To disrupt",
+    "To improve",
+    "To maintain"
+   ],
+   "answer": 1,
+   "explanation": "The word 'interrumpir' means 'to disrupt' in this context. The text states that 'la señal de control del dron fue interrumpida', indicating that the signal was disrupted.",
    "source": "llm",
    "verified": false
   },

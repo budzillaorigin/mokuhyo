@@ -246,6 +246,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-1-announcement-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Nighttime Drill Alert",
+   "body": "Achtung! Es wird eine nächtliche Übung für die schnelle Eingreiftruppe am Mittwoch um 22:00 Uhr stattfinden. Bitte stellen Sie sicher, dass alle Mitglieder schnell einsatzbereit sind. Die Übung soll 30 Minuten dauern. Vielen Dank für Ihre Kooperation. — Kommandant Müller",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-announcement-004",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Upcoming Joint Defense Exercise",
+   "body": "Wir möchten Sie darüber informieren, dass in den nächsten zwei Wochen die Übung Schutzschild mit unseren Gastgebern stattfinden wird. Diese Übung dient der Verbesserung unserer gemeinsamen Verteidigungsfähigkeiten. Bitte beachten Sie, dass es während dieser Zeit zu erhöhten Sicherheitsmaßnahmen und vorübergehenden Straßensperren kommen kann. Wir danken Ihnen für Ihr Verständnis und Ihre Zusammenarbeit. Für weitere Informationen wenden Sie sich bitte an Ihren örtlichen Sicherheitsbeauftragten.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -306,6 +338,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-1-notice-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "notice",
+   "title": "Drone Exercise Disruption",
+   "body": "Achtung! Während der heutigen Drohnenübung gibt es eine Störung der Steuerungsverbindung. Ein starkes Funksignal blockiert die Verbindung. Die Übung verzögert sich. Bitte warten Sie auf weitere Anweisungen. Wir entschuldigen uns für die Unannehmlichkeiten. Sicherheitsvorkehrungen bleiben in Kraft. Ende der Durchsage.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-notice-004",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "notice",
+   "title": "Drone Control Interference",
+   "body": "Achtung! Während der Übung morgen zwischen 10:00 und 12:00 Uhr könnte es mögliche Störungen der Funkverbindung für Drohnen geben. Diese Störungen könnten die Steuerung der Drohnen beeinträchtigen. Bitte seid vorsichtig und haltet Abstand von den Drohnen während dieser Zeit. Vielen Dank für Eure Zusammenarbeit.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-notice-005",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "notice",
+   "title": "Air Defense Meeting Announcement",
+   "body": "An alle Interessierten, es findet ein wichtiges Treffen statt. Thema: Laserwaffen in der Luftverteidigung. Wann: 20. März, 18:00 Uhr. Wo: Raum 101, Luftwaffenkaserne. Bitte kommen Sie und teilen Sie Ihre Gedanken. Alle sind willkommen. Luftwaffenkommando",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-1-personal_letter-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -363,6 +443,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-short_message-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Nighttime Training Exercise",
+   "body": "Betreff: Nachtübung zur Krisenbewältigung\n\nAn alle Einheiten der Schnelleinsatzkräfte,\n\nam 15. März um 22:00 Uhr findet eine Nachtübung zur Krisenbewältigung statt. Der Treffpunkt ist das Hauptquartier. Bitte bringen Sie Ihre gesamte Ausrüstung mit. Die Übung dient zur Vorbereitung auf mögliche Einsätze in der Dunkelheit.\n\nMit freundlichen Grüßen,\nKommandant Müller",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -636,6 +732,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-2-event_description-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Joint Base Defense Exercise Concludes Successfully",
+   "body": "Die gemeinsame Übung zur Basisverteidigung zwischen US und deutschen Einheiten fand vergangenen Monat erfolgreich statt. An verschiedenen Standorten im Süden Deutschlands wurden verschiedene Szenarien geübt, um die Zusammenarbeit und Kommunikation zu verbessern. Die Übung dauerte drei Tage und umfasste sowohl Tag- als auch Nachteinsätze. Die Teams arbeiteten eng zusammen, um die Basis gegen verschiedene Bedrohungen zu verteidigen. Die Koordination zwischen den Einheiten war hervorragend, was die Effizienz und Wirkung der Übung erheblich steigerte. Trotz einiger Herausforderungen, wie unvorhergesehene Wetterbedingungen, wurden alle Ziele erreicht. Die Übung endete mit einer Nachbesprechung, bei der die Teams ihre Erfahrungen austauschten und Verbesserungsvorschläge einbrachten. Beide Seiten zeigten sich zufrieden mit dem Ergebnis und betonten die Wichtigkeit solcher gemeinsamen Übungen für die zukünftige Zusammenarbeit.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -696,6 +808,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-2-news-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "news",
+   "title": "New Training Program for Security Personnel",
+   "body": "Die Bundespolizei führt ein neues Schulungsprogramm für ihre Sicherheitskräfte ein. Das Hauptziel ist es, feindliche Absichten zu erkennen. Dieses Training ist notwendig geworden, da die Bedrohungslage in den letzten Jahren gestiegen ist. Die Schulung umfasst verschiedene Module, darunter Verhaltenstanalyse, Beobachtungstechniken und Kommunikation. Die Teilnehmer lernen, verdächtiges Verhalten zu identifizieren und angemessen zu reagieren. Das Programm wird von erfahrenen Ausbildern durchgeführt, die selbst langjährige Erfahrung in der Sicherheit haben. Die Bundespolizei hofft, dass dieses Training die Fähigkeiten ihrer Kräfte verbessern und die öffentliche Sicherheit erhöhen wird. Die erste Schulungsrunde beginnt nächsten Monat und wird an mehreren Standorten in Deutschland durchgeführt. Weitere Informationen zum Programm finden Sie auf der offiziellen Website der Bundespolizei.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-2-news-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "news",
+   "title": "Delivery Driver Detained at Entry Control Point",
+   "body": "Gestern Morgen gab es eine unerwartete Verzögerung an der Einfahrt zum Firmengelände der Müller GmbH. Ein Lieferant, Herr Schmidt, wurde an der Kontrollstelle festgehalten, weil er nicht anhielt, wie es die Vorschriften verlangen. Die Sicherheitskräfte waren alarmiert, da das Verhalten des Fahrers gegen die festgelegten Sicherheitsprotokolle verstieß. Herr Schmidt erklärte später, dass er die neue Kontrollstelle nicht bemerkt hatte, da sie erst kürzlich eingerichtet worden war. Nach einer gründlichen Überprüfung und einer Diskussion mit dem Sicherheitsleiter wurde Herr Schmidt freigelassen. Er erhielt eine schriftliche Warnung und wurde angewiesen, in Zukunft die Sicherheitsvorschriften strikt einzuhalten. Die Firma Müller GmbH nutzte diesen Vorfall, um alle Lieferanten an die Bedeutung der Einhaltung der Sicherheitsregeln zu erinnern. Es wurden auch Pläne für eine Schulungssitzung zur Sensibilisierung für Sicherheitsprotokolle angekündigt, die in den nächsten Wochen stattfinden soll.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-2-news-004",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "news",
+   "title": "Allied Air Defense Coordination",
+   "body": "Die Koordination zwischen den verbündeten Luftverteidigungseinheiten erfolgt primär über Funk. Die Primärfrequenz für den routinemäßigen Funkverkehr beträgt 141,25 MHz. Diese Frequenz wird für die regelmäßige Kommunikation und den Austausch von Informationen verwendet. Im Falle von Abweichungen oder besonderen Vorkommnissen ist die Sekundärfrequenz 141,75 MHz zu nutzen. Diese Frequenz dient auch als Backup, falls die Primärfrequenz gestört ist. Alle Einheiten müssen sicherstellen, dass ihre Funkgeräte auf beiden Frequenzen empfangsbereit sind. Die standardisierten Kommunikationsprotokolle müssen strikt eingehalten werden, um eine klare und effektive Kommunikation zu gewährleisten. Regelmäßige Funktests und Übungen sind erforderlich, um die Einsatzbereitschaft zu gewährleisten. Jede Einheit ist verpflichtet, alle Änderungen in ihren Betriebsabläufen unverzüglich zu melden. Dies dient der Transparenz und ermöglicht eine schnelle Anpassung der Koordinationsmaßnahmen.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-2-report-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -723,6 +883,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "report",
+   "title": "Drone Incident at München Airport",
+   "body": "Ein Drohnenpilot wurde in der Nähe des Flughafens München festgenommen. Der Vorfall ereignete sich am späten Donnerstagnachmittag, als die Flughafenbehörden eine Drohne im eingeschränkten Luftraum über dem Flughafen entdeckten. Der Pilot, ein 34-jähriger Mann aus Bayern, wurde beschuldigt, die Drohne in einem eingeschränkten Luftraum geflogen zu haben, was gegen die geltenden Sicherheitsvorschriften verstößt. Die Behörden wurden alarmiert, als Fluglotsen die Drohne auf ihren Radarsystemen entdeckten. Die Polizei nahm den Piloten schnell fest, nachdem die Drohne sicher am Boden gelandet war. Der Vorfall führte zu vorübergehenden Störungen im Flugbetrieb, und mehrere Flüge wurden umgeleitet oder verschoben. Die Ermittlungen sind noch im Gange, und der Pilot könnte sich wegen Verletzung der Luftsicherheitsvorschriften verantworten müssen. Der Flughafen München betonte die Wichtigkeit von Sicherheitsmaßnahmen und erinnerte die Öffentlichkeit daran, die geltenden Regeln für den Drohnenflug zu beachten.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-2-report-004",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "report",
+   "title": "Air Defense Debate: The Future of Laser Technology",
+   "body": "In der Debatte um die Zukunft der Luftverteidigung gewinnen Laserwaffen zunehmend an Aufmerksamkeit. Befürworter argumentieren, dass diese Waffen eine höhere Präzision bieten und gezielt auf Bedrohungen reagieren können. Auch die Möglichkeit, die Kosten im Griff zu behalten, da keine teuren Munitionsvorräte nötig sind, wird als Vorteil genannt. Kritiker hingegen warnen vor den hohen Anfangsinvestitionen und der Notwendigkeit weiterer Forschung, um die Technologie zu perfektionieren. Derzeit sind Laserwaffen noch in der Entwicklung und Erprobung, doch einige Experten glauben, dass sie in Zukunft eine wichtige Rolle in der Luftverteidigung spielen könnten. Während traditionelle Systeme wie Raketen weiterhin unverzichtbar bleiben, könnten Laserwaffen eine wertvolle Ergänzung darstellen. Die Diskussion zeigt, dass die Luftverteidigung der Zukunft wahrscheinlich eine Kombination aus bewährten Technologien und innovativen Lösungen sein wird.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -936,6 +1128,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-3-analysis-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Harmonizing Skies: Integrating Drones into Civil Airspace",
+   "body": "In den letzten Jahren hat die Nutzung von Drohnen in verschiedenen Bereichen wie der Landwirtschaft, der Lieferung von Paketen und der Luftaufnahme stark zugenommen. Diese zunehmende Nutzung stellt jedoch auch eine Herausforderung für die Luftraumkoordination mit der zivilen Luftfahrt dar. Die Integration von Drohnen in den zivilen Luftraum ist ein komplexer Prozess, der sorgfältige Planung und Koordination erfordert, um die Sicherheit und Effizienz des Luftverkehrs zu gewährleisten. Eine der Hauptherausforderungen besteht darin, sicherzustellen, dass Drohnen und bemannte Flugzeuge sicher im selben Luftraum operieren können. Dies erfordert die Entwicklung und Implementierung von Sicherheitsmaßnahmen, die spezifisch auf die einzigartigen Eigenschaften von Drohnen zugeschnitten sind. Eine Möglichkeit, dies zu erreichen, besteht darin, spezielle Flugkorridore für Drohnen einzurichten, die von den Flugkörpern der bemannten Flugzeuge getrennt sind. Eine weitere Herausforderung besteht darin, die Kommunikation zwischen Drohnen und der zivilen Luftfahrt zu verbessern. Dies kann durch die Nutzung modernster Technologien wie ADS-B (Automatisches abhängiges Überwachungssystem) erreicht werden, die es Drohnen ermöglichen, ihre Position und Flugdaten in Echtzeit an die Luftverkehrskontrolle zu übermitteln. Auch die Zusammenarbeit zwischen Drohnenbetreibern und zivilen Luftfahrtbehörden ist entscheidend. Durch die Zusammenarbeit können beide Seiten ihr Wissen und ihre Erfahrungen austauschen und gemeinsame Lösungen für die Herausforderungen der Luftraumkoordination entwickeln. Insgesamt erfordert die Integration von Drohnen in den zivilen Luftraum eine ganzheitliche Herangehensweise, die technische, regulatorische und operationelle Aspekte berücksichtigt. Nur durch eine enge Zusammenarbeit und sorgfältige Planung kann sichergestellt werden, dass die Nutzung von Drohnen sicher und effizient in den zivilen Luftraum integriert wird.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -1026,6 +1234,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-3-commentary-005",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "3",
+   "textType": "commentary",
+   "title": "A Call for Enhanced Awareness",
+   "body": "Auf unserer Basis wird demnächst eine Schulung zur Sensibilisierung für Insider-Bedrohungen eingeführt. Diese Initiative ist eine Reaktion auf die zunehmende Bedrohung durch Insider, die Informationen oder Zugriff auf sensible Bereiche haben. Solche Vorfälle nehmen zu, und es ist entscheidend, dass alle Mitarbeiter das Risiko verstehen und wissen, wie sie darauf reagieren können.\n\nDie Schulung wird von unseren Sicherheitsexperten geleitet und umfasst verschiedene Szenarien, die zeigen, wie Insider-Bedrohungen aussehen können. Sie werden lernen, verdächtiges Verhalten zu erkennen, wie man verdächtige Aktivitäten meldet und wie man sich selbst und die Basis schützt. Wir werden auch darauf eingehen, wie wichtig es ist, eine Kultur der Sicherheit und des Vertrauens zu fördern, in der jeder Verantwortung übernimmt.\n\nDiese Schulung ist verpflichtend für alle Mitarbeiter, unabhängig von ihrer Position oder Abteilung. Wir erwarten, dass jeder teilnimmt und die Informationen ernst nimmt. Denken Sie daran, dass die Sicherheit unserer Basis die gemeinsame Verantwortung aller ist. Indem wir wachsam bleiben und zusammenarbeiten, können wir das Risiko von Insider-Bedrohungen minimieren und eine sichere Umgebung für alle gewährleisten.\n\nWir danken Ihnen für Ihre Aufmerksamkeit und Ihr Engagement bei der Sicherstellung der Sicherheit unserer Basis. Bei Fragen oder Bedenken wenden Sie sich bitte an unser Sicherheitsteam.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-3-commentary-006",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Interference in the Sky: The Drone Incident of Exercise Silberfuchs",
+   "body": "Bei der jüngsten Militärübung Silberfuchs kam es zu einem unerwarteten Zwischenfall, der die Verwundbarkeit der Drohnentechnologie aufzeigte. Während einer Routineübung zur Überwachung des Geländes verlor die Bodenstation plötzlich die Kontrolle über eine Aufklärungsdrohne. Trotz mehrfacher Versuche, die Verbindung wiederherzustellen, blieb die Drohne unkontrollierbar und landete schließlich außerhalb des Übungsgeländes. Die Ursache des Vorfalls konnte zunächst nicht geklärt werden. Spekulationen über technische Defekte, menschliches Versagen oder sogar Sabotage machten die Runde. Eine gründliche Untersuchung ergab schließlich, dass die Verbindung der Drohne durch eine externe Störquelle unterbrochen worden war. Die genaue Herkunft dieser Störung konnte jedoch nicht ermittelt werden. Dieser Vorfall zeigt die Verwundbarkeit der Drohnentechnologie auf, insbesondere in Bezug auf die Sicherheit der Steuerungsverbindungen. Die Übung Silberfuchs hatte das Ziel, die Fähigkeiten der Truppe im Umgang mit unbemannten Systemen zu verbessern. Das Übungsszenario sah vor, dass die Drohnen verschiedene Aufgaben wie Überwachung, Aufklärung und Zielerkennung durchführen sollten. Doch der unerwartete Ausfall einer Drohne warf Fragen zur Zuverlässigkeit dieser Technologie auf. Experten betonen, dass solche Zwischenfälle zwar selten sind, aber die Notwendigkeit unterstreichen, die Sicherheitssysteme weiter zu verbessern. Insbesondere die Abschirmung gegen externe Störungen muss verstärkt werden, um die Kontrolle über die Drohnen in jedem Fall zu gewährleisten. Die Militärführung hat bereits Maßnahmen eingeleitet, um die Sicherheit der Steuerungsverbindungen zu erhöhen. Dazu gehören die Entwicklung neuer Verschlüsselungstechniken und die Implementierung redundanter Steuerungssysteme. Zudem wird die Ausbildung der Bedienmannschaften verstärkt, um auf solche Zwischenfälle besser vorbereitet zu sein. Trotz des Zwischenfalls bleibt die Übung Silberfuchs ein wichtiger Meilenstein für die Weiterentwicklung der Drohnentechnologie im Militär. Die gewonnenen Erkenntnisse werden dazu beitragen, die Zuverlässigkeit und Sicherheit dieser Systeme in Zukunft zu verbessern. Der Vorfall zeigt jedoch auch, dass die Technologie noch immer Herausforderungen birgt, die es zu bewältigen gilt. Die Militärübung Silberfuchs hat einmal mehr verdeutlicht, dass die Entwicklung und der Einsatz von Drohnentechnologie eine ständige Herausforderung darstellt. Die Sicherheit der Steuerungsverbindungen muss kontinuierlich überwacht und verbessert werden, um die Zuverlässigkeit dieser Systeme zu gewährleisten. Nur so kann das volle Potenzial der Drohnentechnologie im Militär genutzt werden.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-3-commentary-007",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Assessing the Aftermath: A Critical Look at Post-Attack Reconnaissance",
+   "body": "In den letzten Monaten haben Raketenangriffe in verschiedenen Regionen zugenommen, und die anschließenden Aufklärungsmaßnahmen haben oft gezeigt, dass sie unkoordiniert und ineffizient sind. Nach einem Alarm müssen die Einsatzkräfte schnell handeln, um den Abschussort zu lokalisieren und zu sichern. Allerdings gibt es derzeit keine einheitlichen Vorgehensweisen, was zu Verzögerungen und Sicherheitslücken führen kann, die Angreifer ausnutzen können.\n\nEin kritischer Faktor bei der Aufklärung nach einem Angriff ist die Kommunikation zwischen den verschiedenen Einsatzteams. Oft arbeiten Polizei, Feuerwehr und Spezialeinheiten unabhängig voneinander, was zu Doppelarbeit und fehlender Information führt. Eine bessere Koordination könnte diese Probleme lösen und die Effizienz der Maßnahmen erhöhen. Zudem könnten standardisierte Ausbildungsprogramme sicherstellen, dass alle Teams über das gleiche Wissen und die gleichen Fähigkeiten verfügen.\n\nEin weiterer Aspekt, der verbessert werden muss, ist die Nutzung von Technologie. Moderne Geräte wie Drohnen und Wärmebildkameras können die Suche nach dem Abschussort erheblich beschleunigen. Allerdings sind diese Technologien nicht überall verfügbar oder werden nicht optimal eingesetzt. Eine Investition in solche Ausrüstungen und die Schulung der Einsatzkräfte in ihrem Gebrauch wäre ein wichtiger Schritt nach vorne.\n\nLetztlich ist es entscheidend, aus jedem Angriff zu lernen und die Erkenntnisse in die zukünftigen Maßnahmen einzubinden. Eine regelmäßige Überprüfung und Anpassung der Strategien kann dazu beitragen, die Effizienz der Aufklärungsmaßnahmen zu steigern und die Sicherheit der Bevölkerung zu erhöhen. Nur durch eine kontinuierliche Verbesserung können wir sicherstellen, dass wir auf zukünftige Bedrohungen bestmöglich vorbereitet sind.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-3-editorial-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -1038,6 +1294,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-3-editorial-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Learning from the Sky: Reflections on Exercise Adlerauge",
+   "body": "Die kürzlich durchgeführte Übung Adlerauge zur Abwehr von Drohnenangriffen hat wichtige Lehren für die zukünftige Sicherheit unserer Lufträume geliefert. Die Übung, an der mehrere Sicherheitsbehörden beteiligt waren, sollte die Fähigkeit testen, Drohnenangriffe auf kritische Infrastrukturen abzuwehren. Die Ergebnisse waren gemischt, aber sie bieten wertvolle Einblicke für die Weiterentwicklung unserer Sicherheitsstrategien. \n\nEin positiver Aspekt der Übung war die erfolgreiche Erkennung und Neutralisierung mehrerer simulierter Drohnenangriffe. Die eingesetzten Technologien, darunter Radarsysteme und elektronische Störsender, haben gezeigt, dass sie in der Lage sind, Drohnen in bestimmten Szenarien zu identifizieren und zu stoppen. Die derzeitigen Gegenmaßnahmen haben sich in einigen Fällen als wirksam erwiesen, aber es gibt noch viel zu tun. \n\nDie Übung hat jedoch auch gezeigt, dass die Koordination zwischen den verschiedenen Sicherheitsbehörden verbessert werden muss. In mehreren Fällen kam es zu Verzögerungen und Kommunikationsproblemen, die die Effektivität der Gegenmaßnahmen beeinträchtigten. Eine bessere Abstimmung zwischen den Behörden ist entscheidend, um sicherzustellen, dass Drohnenangriffe schnell und effizient abgewehrt werden können. \n\nEin weiterer wichtiger Aspekt, der in der Übung deutlich wurde, ist die Notwendigkeit, die Öffentlichkeit in die Sicherheitsmaßnahmen einzubeziehen. Bürger können eine wichtige Rolle bei der Erkennung und Meldung verdächtiger Drohnenaktivitäten spielen. Durch Aufklärung und Sensibilisierung kann das Bewusstsein für diese Bedrohung gesteigert und die Zusammenarbeit zwischen Sicherheitsbehörden und der Öffentlichkeit verbessert werden. \n\nInsgesamt hat die Übung Adlerauge gezeigt, dass wir auf dem richtigen Weg sind, aber noch viel Arbeit vor uns liegt. Die Abwehr von Drohnenangriffen erfordert eine Kombination aus fortschrittlicher Technologie, besserer Koordination und öffentlicher Beteiligung. Nur durch eine gemeinsame Anstrengung können wir unsere Lufträume effektiv schützen und zukünftigen Bedrohungen begegnen.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-3-editorial-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Security Measures Spark Debate in Kleinburg",
+   "body": "In der kleinen Gemeinde Kleinburg hat die Einführung neuer Sicherheitsmaßnahmen rund um das nahegelegene Militärgelände für erhebliche Kontroverse gesorgt. Die Bewohner sind besorgt über die Auswirkungen auf ihren Alltag und fühlen sich übergangen, da sie in den Entscheidungsprozess nicht einbezogen wurden. Die neuen Maßnahmen umfassen verstärkte Patrouillen, Kontrollpunkte und eingeschränkten Zugang zu bestimmten Gebieten, was viele als Einschränkung ihrer Bewegungsfreiheit empfinden.\n\nDie Militärbehörden argumentieren, dass die Sicherheitsmaßnahmen notwendig sind, um die Einrichtung und ihre Mitarbeiter zu schützen. Sie verweisen auf jüngste Sicherheitsvorfälle in anderen Regionen und betonen die Bedeutung proaktiver Maßnahmen. Allerdings haben die Bewohner Bedenken geäußert, dass die Maßnahmen übertrieben sind und ihre Lebensqualität beeinträchtigen.\n\nEin weiterer Streitpunkt ist die Kommunikation zwischen den Militärbehörden und der Gemeinde. Viele Bewohner fühlen sich nicht ausreichend informiert über die Gründe für die Maßnahmen oder deren Dauer. Dies hat zu einer Atmosphäre der Unsicherheit und des Misstrauens geführt. Einige fordern regelmäßige Informationssitzungen, um ihre Bedenken anzusprechen und Klarheit über die geplanten Maßnahmen zu erhalten.\n\nDie Debatte in Kleinburg spiegelt ein breiteres Dilemma wider, das viele Gemeinden in der Nähe von Militärstandorten erleben. Es geht darum, einen Ausgleich zwischen der Notwendigkeit der Sicherheit und den Bedürfnissen der lokalen Bevölkerung zu finden. Ohne eine offene und transparente Kommunikation wird es schwierig sein, eine Lösung zu finden, die sowohl die Sicherheit des Militärgeländes als auch das Wohlbefinden der Bewohner gewährleistet.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1646,6 +1934,78 @@
    "verified": false
   },
   {
+   "id": "de-dr-1-announcement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-announcement-003",
+   "stem": "When is the nighttime drill scheduled to occur?",
+   "choices": [
+    "At 11:00 PM on Wednesday",
+    "At 10:00 PM on Thursday",
+    "At 10:00 PM on Wednesday",
+    "At 11:00 PM on Thursday"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the drill will happen am Mittwoch um 22:00 Uhr, so the correct answer is 'At 10:00 PM on Wednesday'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-announcement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-1-announcement-003",
+   "stem": "In the text, what does \"schnell einsatzbereit\" mean here?",
+   "choices": [
+    "able to move slowly",
+    "ready to respond quickly",
+    "capable of sleeping",
+    "good at cooking"
+   ],
+   "answer": 1,
+   "explanation": "The phrase schnell einsatzbereit refers to the quick reaction force's ability to be ready to respond quickly, as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-announcement-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-announcement-004",
+   "stem": "What is the name of the exercise?",
+   "choices": [
+    "Schutzschild",
+    "Eiserner Vorhang",
+    "Sicheres Tor",
+    "Festung Europa"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is \"Schutzschild\" because the text states \"Übung Schutzschild\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-announcement-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-announcement-004",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To announce a joint defense exercise with host-nation forces",
+    "To describe the equipment used in defense exercises",
+    "To discuss the political implications of defense exercises",
+    "To explain the history of defense exercises"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is \"To announce a joint defense exercise with host-nation forces\" because the text states \"Wir möchten Sie darüber informieren, dass in den nächsten zwei Wochen die Übung Schutzschild mit unseren Gastgebern stattfinden wird.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1826,6 +2186,114 @@
    "verified": false
   },
   {
+   "id": "de-dr-1-notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-notice-003",
+   "stem": "What causes the disruption of the drone's control link?",
+   "choices": [
+    "a software update",
+    "a mechanical failure",
+    "a power outage",
+    "a strong radio signal"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the control link is being disrupted by \"ein starkes Funksignal\", which means a strong radio signal.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "de-dr-1-notice-003",
+   "stem": "Why was this notice written?",
+   "choices": [
+    "to announce a change in the exercise schedule",
+    "to inform participants about a delay in the exercise",
+    "to request feedback on the exercise",
+    "to warn about a potential danger during the exercise"
+   ],
+   "answer": 1,
+   "explanation": "The notice was written to inform participants that \"die Übung verzögert sich\", which means the exercise is delayed due to the disruption.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-notice-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-notice-004",
+   "stem": "In the notice, what word does the writer use for 'control link'?",
+   "choices": [
+    "Frequenz",
+    "Übung",
+    "Funkverbindung",
+    "Störung"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'Funkverbindung', which is used in the text to mean 'control link'. The other choices are distractors: 'Frequenz' means 'frequency', 'Störung' means 'interference', and 'Übung' means 'exercise'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-notice-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-notice-004",
+   "stem": "What is the main idea of the notice?",
+   "choices": [
+    "To inform about a change in the drone exercise schedule.",
+    "To warn about potential interference with drone controls during an exercise.",
+    "To announce the cancellation of the drone exercise.",
+    "To request feedback on the drone exercise."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'To warn about potential interference with drone controls during an exercise.' The notice mentions that there could be 'mögliche Störungen der Funkverbindung' during the 'Übung', which means 'potential interference with the control link during the exercise'. The other choices are distractors as they do not accurately reflect the main idea of the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-notice-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-notice-005",
+   "stem": "What is the date of the meeting about laser weapons?",
+   "choices": [
+    "March 20",
+    "April 15",
+    "March 15",
+    "April 20"
+   ],
+   "answer": 0,
+   "explanation": "The text says the meeting is on den 20. März, which is March 20.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-notice-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-notice-005",
+   "stem": "What is the main topic of the meeting?",
+   "choices": [
+    "The use of laser weapons in air defense",
+    "New recruitment strategies for the air force",
+    "Upgrades to existing missile systems",
+    "Budget cuts to defense spending"
+   ],
+   "answer": 0,
+   "explanation": "The text clearly states that the meeting is about Laserwaffen in der Luftverteidigung, which means laser weapons in air defense.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-1-personal_letter-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2002,6 +2470,60 @@
    ],
    "answer": 0,
    "explanation": "'Vorbereitungen' here refers to the arrangements being made for the summit, as in 'Die Vorbereitungen für den Gipfel laufen auf Hochtouren.' (Preparations for the summit are in full swing.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-short_message-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-short_message-003",
+   "stem": "What is the reason for the exercise?",
+   "choices": [
+    "to practice handling emergencies at night",
+    "to train for a specific mission",
+    "to evaluate the readiness of the unit",
+    "to test new equipment"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the exercise is \"eine Nachtübung zur Krisenbewältigung\", which means \"a nighttime training exercise for crisis management\". The phrase \"Krisenbewältigung\" indicates that the purpose is to practice handling emergencies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-short_message-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-1-short_message-003",
+   "stem": "What does \"Kräfte\" mean here?",
+   "choices": [
+    "strengths",
+    "forces",
+    "abilities",
+    "powers"
+   ],
+   "answer": 1,
+   "explanation": "\"Kräfte\" in this context refers to the \"Schnelleinsatzkräfte\", which translates to \"quick reaction forces\". Therefore, \"Kräfte\" means \"forces\" here.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-short_message-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "de-dr-1-short_message-003",
+   "stem": "Why is the message being sent to the recipients?",
+   "choices": [
+    "to request their participation in an exercise",
+    "to inform them about an upcoming exercise",
+    "to provide instructions for an exercise",
+    "to evaluate their performance during an exercise"
+   ],
+   "answer": 1,
+   "explanation": "The message is sent \" zur Information\" as stated in the text. The primary purpose is to inform the recipients about the upcoming \"Nachtübung\" or nighttime training exercise.",
    "source": "llm",
    "verified": false
   },
@@ -2978,6 +3500,60 @@
    "verified": false
   },
   {
+   "id": "de-dr-2-event_description-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-event_description-003",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "A new type of exercise was tested for the first time.",
+    "The exercise focused on defending against a specific type of threat.",
+    "The exercise was held to improve communication between different units.",
+    "The exercise was a joint effort between U.S. and German forces."
+   ],
+   "answer": 3,
+   "explanation": "The main idea of the passage is that the exercise was a joint effort between U.S. and German forces. This is evident from the repeated mention of 'US und deutschen Einheiten' and the coordination between them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-event_description-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-event_description-003",
+   "stem": "Where was the exercise held?",
+   "choices": [
+    "In a training facility in Bavaria.",
+    "At a military base in Berlin.",
+    "At various locations in southern Germany.",
+    "In a forest near München."
+   ],
+   "answer": 2,
+   "explanation": "The passage states that the exercise took place 'an verschiedenen Standorten im Süden Deutschlands', indicating that it was held at various locations in southern Germany.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-event_description-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-2-event_description-003",
+   "stem": "What does 'Koordination' mean here?",
+   "choices": [
+    "Logistics",
+    "Coordination",
+    "Communication",
+    "Planning"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'Koordination' refers to the planning and organization of the joint efforts between the units. The passage mentions 'die Koordination zwischen den Einheiten', indicating the planning aspect.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3194,6 +3770,168 @@
    "verified": false
   },
   {
+   "id": "de-dr-2-news-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-news-002",
+   "stem": "What is the main topic of the article?",
+   "choices": [
+    "A protest against security measures",
+    "A training program for security personnel",
+    "A new technology for security cameras",
+    "A new law regulating security personnel"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the article is a training program for security personnel, as indicated by the repeated focus on the 'Ausbildung' (training) and 'Schulung' (education) for 'Sicherheitskräfte' (security forces).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-news-002",
+   "stem": "What is the primary goal of the new training program?",
+   "choices": [
+    "To help security personnel recognize hostile intent",
+    "To improve the physical fitness of security personnel",
+    "To teach security personnel how to use new weapons",
+    "To train security personnel in crowd control"
+   ],
+   "answer": 0,
+   "explanation": "The primary goal of the new training program is 'feindliche Absichten zu erkennen' (to recognize hostile intent), as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-2-news-002",
+   "stem": "What does 'feindliche Absichten' mean here?",
+   "choices": [
+    "Helpful actions",
+    "Friendly gestures",
+    "Neutral expressions",
+    "Hostile intentions"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'feindliche Absichten' is used to describe the intent that security personnel will be trained to recognize, which is clearly hostile in nature.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-news-003",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "A new security measure was implemented at the entry control point.",
+    "A delivery driver was arrested for smuggling.",
+    "A delivery driver was delayed due to a misunderstanding.",
+    "A driver was detained for violating the entry control point rules."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the incident involving a delivery driver being detained at an entry control point. The text describes the event and the resolution, but it does not discuss smuggling, new security measures, or a simple misunderstanding.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-news-003",
+   "stem": "What was the reason for the driver's detention?",
+   "choices": [
+    "The driver was carrying illegal goods.",
+    "The driver was speeding.",
+    "The driver failed to stop at the checkpoint.",
+    "The driver did not have the correct permits."
+   ],
+   "answer": 2,
+   "explanation": "The driver was detained because he failed to stop at the checkpoint. The text states, \"Der Fahrer hielt nicht an der Kontrollstelle an.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-2-news-003",
+   "stem": "What does \"die Kontrollstelle\" mean here?",
+   "choices": [
+    "A security office.",
+    "A police station.",
+    "An inspection point.",
+    "A border crossing."
+   ],
+   "answer": 2,
+   "explanation": "Here, \"die Kontrollstelle\" refers to the inspection point or checkpoint where the incident occurred. The text uses this term to describe the location where the driver failed to stop.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-news-004",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "Procedures for coordinating between allied air defense units",
+    "A report on recent air defense exercises",
+    "The history of allied air defense cooperation",
+    "A description of a new radio system for air defense"
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on describing procedures for coordinating between allied air defense units, mentioning specific radio frequencies and communication protocols. It does not discuss a new radio system, recent exercises, or the history of cooperation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-news-004",
+   "stem": "What is the primary frequency for routine communication between allied units?",
+   "choices": [
+    "141.25 MHz",
+    "141.75 MHz",
+    "141.50 MHz",
+    "142.00 MHz"
+   ],
+   "answer": 0,
+   "explanation": "The text states 'Die Primärfrequenz für den routinemäßigen Funkverkehr zwischen den Verbündeten beträgt 141,25 MHz.' This clearly indicates that 141.25 MHz is the primary frequency for routine communication.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-news-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-2-news-004",
+   "stem": "What does 'Abweichungen' mean here?",
+   "choices": [
+    "Changes",
+    "Delays",
+    "Errors",
+    "Interruptions"
+   ],
+   "answer": 0,
+   "explanation": "The text uses 'Abweichungen' in the context of 'Meldung von Abweichungen', which refers to reporting changes or deviations from standard procedures. The phrase does not imply errors, delays, or interruptions, but rather changes that need to be reported.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-2-report-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3298,6 +4036,114 @@
    ],
    "answer": 3,
    "explanation": "\"Wohnungsnot\" in this context refers to the housing crisis, as the article discusses the challenges and difficulties related to the lack of affordable housing in German cities. For example, \"Die Wohnungsnot in deutschen Städten verschärft sich zunehmend.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-report-003",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A new drone policy was implemented at the airport.",
+    "The airport experienced a major technical malfunction.",
+    "A drone caused significant damage to airport infrastructure.",
+    "A drone operator was arrested near the airport."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is introduced in the first sentence: \"Ein Drohnenpilot wurde in der Nähe des Flughafens München festgenommen.\" The rest of the report provides details about this incident.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-report-003",
+   "stem": "What was the drone operator accused of doing?",
+   "choices": [
+    "Stealing airport equipment.",
+    "Smuggling contraband into the country.",
+    "Selling illegal drone parts.",
+    "Flying the drone in restricted airspace."
+   ],
+   "answer": 3,
+   "explanation": "The report states that the operator \"wurde beschuldigt, die Drohne in einem eingeschränkten Luftraum geflogen zu haben,\" which directly answers the question.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-2-report-003",
+   "stem": "What does \"Festnahme\" mean here?",
+   "choices": [
+    "A flight plan.",
+    "An arrest.",
+    "A flight path.",
+    "A warning."
+   ],
+   "answer": 1,
+   "explanation": "In the context of the report, \"Festnahme\" refers to the action taken against the drone operator: \"Ein Drohnenpilot wurde in der Nähe des Flughafens München festgenommen.\" This means the operator was arrested.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-report-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-report-004",
+   "stem": "What is the main advantage of laser weapons according to the report?",
+   "choices": [
+    "They can be used in a wider range of environments than traditional weapons.",
+    "They have a longer range than traditional weapons.",
+    "They are more precise than traditional weapons.",
+    "They are cheaper to produce than traditional weapons."
+   ],
+   "answer": 2,
+   "explanation": "The report states that laser weapons \"bieten eine höhere Präzision und können gezielt auf Bedrohungen reagieren\", which translates to 'offer higher precision and can respond specifically to threats'. This indicates that their main advantage is their precision.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-report-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-2-report-004",
+   "stem": "In the phrase \"die Kosten im Griff zu behalten\", what does \"im Griff\" mean?",
+   "choices": [
+    "In control",
+    "In the open",
+    "In the right",
+    "In the dark"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"die Kosten im Griff zu behalten\" translates to 'to keep costs in control'. The phrase \"im Griff\" means \"in control\" in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-report-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "de-dr-2-report-004",
+   "stem": "What can be inferred about the current state of laser weapons?",
+   "choices": [
+    "They are not as effective as traditional weapons.",
+    "They are too expensive for practical use.",
+    "They are already widely used in air defense.",
+    "They are still in the experimental phase."
+   ],
+   "answer": 3,
+   "explanation": "The report mentions that laser weapons \"sind derzeit noch in der Entwicklung und Erprobung\", which translates to 'are currently still in development and testing'. This suggests that they are still in the experimental phase.",
    "source": "llm",
    "verified": false
   },
@@ -4058,6 +4904,60 @@
    "verified": false
   },
   {
+   "id": "de-dr-3-analysis-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dr-3-analysis-003",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "The regulations for drone operations in urban areas",
+    "The environmental impact of drone usage",
+    "The integration of drones into civil airspace and coordination with civil aviation",
+    "The military applications of drone technology"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the passage is the integration of drones into civil airspace and the coordination efforts with civil aviation. This is evident from the focus on airspace management, safety measures, and collaboration between drone operators and civil aviation authorities, as seen in the text. The passage discusses how \"die Integration von Drohnen in den zivilen Luftraum\" is a complex process that requires careful planning and coordination.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-analysis-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dr-3-analysis-003",
+   "stem": "What can be inferred about the challenges of integrating drones into civil airspace?",
+   "choices": [
+    "It is a complex process that requires careful planning and coordination",
+    "It does not require any collaboration with civil aviation authorities",
+    "It involves only technical challenges",
+    "It is a simple process that requires minimal coordination"
+   ],
+   "answer": 0,
+   "explanation": "The passage states that \"die Integration von Drohnen in den zivilen Luftraum\" is a komplexer Prozess, was sorgfältige Planung und Koordination erfordert. This indicates that the process is not simple and requires significant effort to ensure safety and efficiency.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-analysis-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-3-analysis-003",
+   "stem": "What does \"die Nutzung von Drohnen\" mean here?",
+   "choices": [
+    "The operation and use of drones",
+    "The design of drones",
+    "The maintenance of drones",
+    "The manufacturing of drones"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the passage, \"die Nutzung von Drohnen\" refers to the operation and use of drones. The text discusses how \"die Nutzung von Drohnen\" has increased significantly in recent years, leading to the need for better coordination with civil aviation. This is seen in the phrase \"die Nutzung von Drohnen in verschiedenen Bereichen wie der Landwirtschaft, der Lieferung von Paketen und der Luftaufnahme\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4382,6 +5282,168 @@
    "verified": false
   },
   {
+   "id": "de-dr-3-commentary-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "de-dr-3-commentary-005",
+   "stem": "What is the primary goal of the insider threat awareness training at the base?",
+   "choices": [
+    "To educate soldiers about cybersecurity threats from external sources.",
+    "To promote understanding of potential threats from within the base.",
+    "To teach soldiers how to use new weapons systems.",
+    "To improve physical fitness and combat skills."
+   ],
+   "answer": 1,
+   "explanation": "The primary goal is stated as 'das Bewusstsein für potenzielle Bedrohungen von innen zu schärfen' (to raise awareness of potential threats from within). The training focuses on 'Mitarbeiter, die Informationen oder Zugriff auf sensible Bereiche haben' (employees who have access to information or sensitive areas), indicating an internal focus.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dr-3-commentary-005",
+   "stem": "According to the text, what can be inferred about the frequency of insider threats?",
+   "choices": [
+    "They are only a problem in certain departments.",
+    "They happen occasionally and should not be a major concern.",
+    "They are a growing concern and occur more frequently than expected.",
+    "They are extremely rare and unlikely to occur."
+   ],
+   "answer": 2,
+   "explanation": "The text mentions 'die zunehmende Bedrohung durch Insider' (the growing threat from insiders) and states that 'solche Vorfälle nehmen zu' (such incidents are increasing), implying that insider threats are becoming more frequent and are a significant concern.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "de-dr-3-commentary-005",
+   "stem": "What is the tone of the text?",
+   "choices": [
+    "Humorous and lighthearted.",
+    "Alarmist and panicky.",
+    "Casual and unconcerned.",
+    "Informative and serious."
+   ],
+   "answer": 3,
+   "explanation": "The tone is 'informative' as it provides facts and information about the training program, and 'serious' as it addresses a significant security concern. The text does not use alarmist language or attempt to induce panic, but rather aims to educate and raise awareness.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-006-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dr-3-commentary-006",
+   "stem": "What was the main point of this commentary?",
+   "choices": [
+    "Drone technology is becoming increasingly obsolete.",
+    "The military is planning a new type of drone exercise.",
+    "A drone exercise was disrupted by an unknown source, highlighting vulnerabilities in drone technology.",
+    "A drone exercise was disrupted by a hacker."
+   ],
+   "answer": 2,
+   "explanation": "The commentary discusses a drone exercise that was disrupted, and it focuses on the unknown source of the interference and the vulnerabilities it exposed in drone technology. The correct answer is choice 1.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-006-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dr-3-commentary-006",
+   "stem": "What can be inferred about the author's opinion on drone technology?",
+   "choices": [
+    "The author believes drone technology is perfect.",
+    "The author is concerned about the security of drone technology.",
+    "The author thinks drone technology is outdated.",
+    "The author thinks drone technology is not useful in exercises."
+   ],
+   "answer": 1,
+   "explanation": "The author expresses concern about the vulnerabilities in drone technology, as seen in the words \"dieser Vorfall zeigt die Verwundbarkeit der Drohnentechnologie auf\" (this incident highlights the vulnerability of drone technology).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-006-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-3-commentary-006",
+   "stem": "What does the phrase \"das Übungsszenario\" refer to here?",
+   "choices": [
+    "The planned sequence of events in the exercise.",
+    "The location where the exercise took place.",
+    "The type of drone used in the exercise.",
+    "The real-world application of drones."
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"das Übungsszenario\" refers to the planned sequence of events in the exercise, as seen in the context where it discusses the disruption to the planned exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-007-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dr-3-commentary-007",
+   "stem": "What is the main idea of the commentary?",
+   "choices": [
+    "The effectiveness of current strategies in locating and securing attack sites.",
+    "The role of international cooperation in managing rocket attacks.",
+    "The importance of advanced technology in identifying rocket launch sites.",
+    "The need for standardized procedures in post-attack reconnaissance."
+   ],
+   "answer": 3,
+   "explanation": "The commentary primarily discusses the lack of uniformity in post-attack reconnaissance procedures and calls for standardized approaches, as seen in the phrase 'einheitliche Vorgehensweisen'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-007-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dr-3-commentary-007",
+   "stem": "What can be inferred about the author's view on current reconnaissance efforts?",
+   "choices": [
+    "They believe current efforts are sufficient but could be improved with better technology.",
+    "They argue that current efforts are inadequate due to a lack of standardized procedures.",
+    "They feel that current efforts are hampered by a lack of political will.",
+    "They think current efforts are effective but lack international coordination."
+   ],
+   "answer": 1,
+   "explanation": "The author implies that current efforts are inadequate, stating 'die aktuellen Maßnahmen sind oft unkoordiniert und ineffizient' and arguing for 'einheitliche Vorgehensweisen'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-commentary-007-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-3-commentary-007",
+   "stem": "What does the author mean by 'Sicherheitslücken' in this context?",
+   "choices": [
+    "Lapses in communication protocols.",
+    "Gaps in intelligence gathering.",
+    "Vulnerabilities in security measures.",
+    "Deficiencies in personnel training."
+   ],
+   "answer": 2,
+   "explanation": "The author uses 'Sicherheitslücken' to refer to vulnerabilities in security measures, as seen in the sentence 'dies führt zu Sicherheitslücken, die Angreifer ausnutzen können'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-3-editorial-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4432,6 +5494,114 @@
    ],
    "answer": 0,
    "explanation": "'Gestärkt' in this context means 'strengthened'. The text states that the program has helped not only those in need but also strengthened the community, indicating a positive reinforcement of community bonds.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-editorial-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "de-dr-3-editorial-002",
+   "stem": "What is the main point of this editorial?",
+   "choices": [
+    "Exercise Adlerauge revealed that counter-drone technology is not yet advanced enough to handle large-scale threats.",
+    "Exercise Adlerauge proved that current counter-drone strategies are effective in preventing drone incursions.",
+    "Exercise Adlerauge highlighted the importance of public awareness in counter-drone efforts.",
+    "Exercise Adlerauge demonstrated the need for improved coordination between different security agencies."
+   ],
+   "answer": 3,
+   "explanation": "The main point of the editorial is that Exercise Adlerauge revealed the need for better coordination between different security agencies. This is evident throughout the text, such as in the statement 'Die Übung hat jedoch auch gezeigt, dass die Koordination zwischen den verschiedenen Sicherheitsbehörden verbessert werden muss.' (The exercise has also shown, however, that coordination between the various security authorities must be improved.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-editorial-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dr-3-editorial-002",
+   "stem": "What can be inferred about the author's opinion on current counter-drone measures?",
+   "choices": [
+    "The author thinks current measures are outdated and need to be replaced.",
+    "The author believes current measures are sufficient for most threats.",
+    "The author is unsure about the effectiveness of current measures.",
+    "The author feels current measures have some value but need improvement."
+   ],
+   "answer": 3,
+   "explanation": "The author acknowledges that current measures have some value but need improvement. This is inferred from statements like 'Die derzeitigen Gegenmaßnahmen haben sich in einigen Fällen als wirksam erwiesen, aber es gibt noch viel zu tun.' (The current countermeasures have proven effective in some cases, but there is still much to be done.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-editorial-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-3-editorial-002",
+   "stem": "In the sentence 'Die Übung hat jedoch auch gezeigt, dass die Koordination zwischen den verschiedenen Sicherheitsbehörden verbessert werden muss.', what does 'verbessert werden muss' mean here?",
+   "choices": [
+    "has been improved",
+    "needs to be improved",
+    "is being improved",
+    "was improved"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'verbessert werden muss' means 'needs to be improved'. The use of 'muss' (must) indicates a necessity for improvement, not a completed or ongoing action.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-editorial-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "de-dr-3-editorial-003",
+   "stem": "What is the main concern expressed by residents in Kleinburg?",
+   "choices": [
+    "The impact of security measures on their daily lives",
+    "The high cost of implementing new security measures",
+    "The potential for increased crime due to the new measures",
+    "The lack of transparency in the decision-making process"
+   ],
+   "answer": 0,
+   "explanation": "The text states that residents are concerned about the 'Auswirkungen auf ihren Alltag' (impact on their daily lives). This is the central issue discussed throughout the editorial. The other options are not the primary focus of the residents' concerns.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-editorial-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "de-dr-3-editorial-003",
+   "stem": "In the phrase 'die Bewohner fühlen sich übergangen', what does 'übergangen' mean here?",
+   "choices": [
+    "Supported",
+    "Informed",
+    "Consulted",
+    "Ignored"
+   ],
+   "answer": 3,
+   "explanation": "The word 'übergangen' in this context means that the residents feel they have been 'ignored' or bypassed in the decision-making process. The text states 'die Bewohner fühlen sich übergangen', indicating they feel left out or disregarded.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-3-editorial-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "de-dr-3-editorial-003",
+   "stem": "What can be inferred about the author's stance on the situation?",
+   "choices": [
+    "The author is supportive of the military's decisions",
+    "The author is critical of the security measures",
+    "The author is indifferent to the residents' concerns",
+    "The author is neutral and presents both sides equally"
+   ],
+   "answer": 3,
+   "explanation": "The author presents both the residents' concerns ('die Bewohner fühlen sich übergangen') and the military's perspective ('die Sicherheitsmaßnahmen sind notwendig'), indicating a neutral stance that aims to present both sides of the issue equally.",
    "source": "llm",
    "verified": false
   },

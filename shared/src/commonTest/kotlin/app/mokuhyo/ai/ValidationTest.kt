@@ -16,6 +16,9 @@ class ValidationTest {
         assertNull(ScriptCheck.requireLanguage("f", "مرحبا، كيف حالك؟ NATO", "ar"))
         assertNotNull(ScriptCheck.requireLanguage("f", "새로운 병원은 心血管 질환을 치료합니다", "ko"))
         assertNull(ScriptCheck.requireLanguage("f", "Pemerintah mengumumkan kebijakan baru.", "id"))
+        // Spanish "a" is a preposition, not English (C-07 fix); code-switching into English is still caught.
+        assertNull(ScriptCheck.requireLanguage("f", "¿Puedo ayudar a limpiar?", "es"))
+        assertNotNull(ScriptCheck.requireLanguage("f", "Veo tu perspectiva, pero perhaps we should think about it differently.", "es"))
         assertNotNull(ScriptCheck.requireLanguage("f", "I like cats", "ru"))
         assertEquals("f is not in Spanish", ScriptCheck.requireLanguage("f", "Привет, как дела?", "es"))
         assertNull(ScriptCheck.requireEnglish("f", "Use the past tense here."))

@@ -2,40 +2,58 @@
  "language": "de",
  "exam": {
   "file": "exam.json",
-  "sha256": "8bef0c9573420da6e0927bb0bbb9723fb97768fbedf97480126b049c5a8d0840",
-  "bytes": 439814,
+  "sha256": "87852168d6af6de8260fe21f7b7a633b3c00873f7168bcff687450f63aea31a9",
+  "bytes": 570799,
   "passages": {
    "reading": {
     "0+": 12,
-    "1": 12,
+    "1": 18,
     "1+": 12,
-    "2": 12,
+    "2": 18,
     "2+": 12,
-    "3": 12
+    "3": 18
    },
    "listening": {
     "0+": 12,
-    "1": 12,
+    "1": 16,
     "1+": 12,
-    "2": 12,
-    "2+": 12,
-    "3": 12
+    "2": 20,
+    "2+": 16,
+    "3": 16
    }
   },
   "items": {
-   "reading": 195,
-   "listening": 193
+   "reading": 244,
+   "listening": 251
   },
-  "listeningWithAudio": 72,
-  "listeningPassages": 72,
+  "listeningWithAudio": 92,
+  "listeningPassages": 92,
   "license": "CC BY-SA 4.0",
   "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)"
  },
  "opi": {
   "file": "opi.json",
-  "sha256": "fb6de655384cc0f79095b4faa4a99bbc0935f9985add15529caf047b20412d97",
-  "questions": 80,
+  "sha256": "51e0c002d42fb9e5df6a04f60543c967a8eec719c99945ba66bac231858a0ad5",
+  "questions": 92,
   "rolePlays": 24,
   "topics": 99
+ },
+ "tracks": [
+  {
+   "file": "track-cuas-base-defense.json",
+   "id": "cuas-base-defense",
+   "version": "1.0.0",
+   "sha256": "8894b1e4859a19bfd9006eabe564e5bdb904fc9d494b7b0bf6b25d3de2bc3891",
+   "terms": 402,
+   "drills": 599,
+   "scenarios": 12,
+   "dialogues": 8
+  }
+ ],
+ "extras": {
+  "culture.json": "e807bf4cd59880530bbe53d24f5d9dc6d91e98cc8fb4bb95bf14754b0c767335",
+  "pragmatics.json": "b30c29f3e70c079d27f8128c7ecb9eaa69ad353f3e9a5b994ec58c0092e88c17",
+  "personas.json": "e7ad1d16bea9e82fd8928cdd3315b1dcd1cb9b4a59a180966d7917e14f118c60",
+  "feeds.json": "8c20b785c87817cd3d27f0e05edd06f8f5b6f44beddd46c9c1232ad07f6a6997"
  }
 }

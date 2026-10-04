@@ -276,6 +276,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dr-1-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Instructions for Guard Shift Change",
+   "body": "إجراءات التبديل في مركز عمليات الدفاع: عند وصول حارس جديد، يجب عليه القيام بالخطوات التالية: أولاً، مراجعة السجل المسجل لفهم الأحداث التي وقعت خلال الدور السابق. ثانياً، إجراء جولة تفقدية مع الحارس الخارج لتوضيح أي نقاط مهمة. ثالثاً، التأكد من أن جميع أنظمة الأمن تعمل بشكل صحيح. رابعاً، تحديث السجل المسجل بمعلومات جديدة. وأخيراً، إبلاغ الحارس الخارج عن نهاية عملية التبديل.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-1-instructions-005",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Change in Force Protection Condition",
+   "body": "تغيير حالة الحماية: بسبب زيارة سامية، سنغير حالة الحماية في القاعدة إلى 'دفاع' اعتبارًا من الساعة 18:00 اليوم. جميع الأشخاص داخل القاعدة يجب أن 'يقيدوا حركتهم داخل القاعدة'، ولا يسمح بالوصول إلى القاعدة إلا للأشخاص الذين لديهم تصاريح خاصة. يجب على جميع الوحدات أن 'تفعيل بروتوكولات الدفاع' وأن 'تزيد من المراقبة' حول الحدود. يجب على جميع الأشخاص 'الالتزام' بهذه التعليمات حتى 'إلغاء' حالة الحماية. شكرًا لتفهمكم.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "ar",
@@ -321,6 +353,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dr-1-notice-004",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "1",
+   "textType": "notice",
+   "title": "Security Patrol Guidelines: Joint Perimeter Check",
+   "body": "المراقبة المشتركة: فحص الحاجز لمخيمنا\n\nسيتم إجراء المراقبة المشتركة غدا في الساعة الثامنة صباحًا. الهدف من هذه المراقبة هو فحص الحاجز لمخيمنا وزيارة نقاط المراقبة. يجب أن يكون كل عضو في المراقبة مستعدًا في الساعة السابعة والثلاثين دقيقة صباحًا في نقطة التقاء رئيسية. يرجى التأكد من توافر جميع الإمدادات الضرورية. شكرًا لكم على تعاونكم.\n\nالضابط المسؤول: أحمد",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-1-notice-005",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "1",
+   "textType": "notice",
+   "title": "Unmanned Aircraft Sighted Near Base",
+   "body": "تم رصد طائرة بدون طيار فوق محيط القاعدة. يرجى الانتباه لوجود طائرة بدون طيار فوق محيط القاعدة. ستتخذ جميع التدابير اللازمة للتأكد من سلامة جميع أفراد القاعدة. يرجى الإبلاغ عن أي معلومات غير عادية إلى الأمن على الفور.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-1-notice-006",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "1",
+   "textType": "notice",
+   "title": "Notice: Change in Guard Shift Schedule",
+   "body": "إشعار: تغيير في جدول دوريات الحراس\n\nالموضوع: تغيير في جدول الدوريات\n\nالتاريخ: 12 ربيع الثاني 1443 هـ / 25 أكتوبر 2021\n\nالحراس الأعزاء،\n\nسيتم تغيير جدول الدوريات اعتبارًا من اليوم. سيبدأ الفريق الجديد دوريته في الساعة 20:00، وسيذهب فريق الحراس الحالي إلى استراحة في الساعة 22:00. نرجو من جميع الحراس الالتزام بالجدول الجديد.\n\nشكرًا لكم جميعًا.\n\nالتوقيع\nالمقيم\nمركز عمليات الدفاع",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dr-1-personal_letter-001",
    "exam": "DLPT_READING",
    "language": "ar",
@@ -363,6 +443,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-1-short_message-001",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Upcoming Training on Recognizing Insider Threats",
+   "body": "إعلان عن جلسة تدريبية حول التعرف على التهديدات الداخلية. سيُقام التدريب يوم الإثنين السابع عشر من أبريل 2023، في المبنى الرئيسي للقيادة. سيعمل التدريب على تحسين قدرات الموظفين على التعرف على السلوكيات المشبوهة والتحدث عن المخاوف الأمنية. يُرجى الحضور في الوقت المحدد للبدء في الساعة التاسعة صباحًا. للتواصل، يرجى الاتصال بمدير الأمن في المبنى رقم 213.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -576,6 +672,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dr-2-event_description-002",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Coordinated Air Defense Drill in the Eastern Region",
+   "body": "يستحق الذكر أن القوات المسلحة ستنظم تمرينًا للدفاع الجوي المحسن التنسيق بين الوحدات المختلفة في المنطقة الشرقية خلال الأسبوع القادم. سيشارك في هذا التمرين عدد من الوحدات الدفاعية الجوية، بما في ذلك وحدة الرادار، ووحدة التحكم في الحركة الجوية، ووحدة الدفاع الجوي. الهدف من التمرين هو تحسين التنسيق بين الوحدات المختلفة للدفاع الجوي وضمان الاستجابة السريعة والفعالة لأية تهديدات جوية محتملة. سيبدأ التمرين في الساعة التاسعة صباحًا في اليوم الأول من الأسبوع القادم وسيمتد لمدة ثلاثة أيام متتالية. خلال التمرين، سيتم استخدام مختلف أنواع المعدات العسكرية، بما في ذلك الطائرات بدون طيار، والصواريخ الأرض-جو، والنظم الرادارية المتقدمة. كما سيتم تطبيق إجراءات الأمن اللازمة لضمان سلامة جميع المشاركين في التمرين. سيسهم هذا التمرين في تعزيز القدرات الدفاعية للقوات المسلحة وتعزيز التعاون بين الوحدات المختلفة الداعمة للدفاع الجوي. كما سيسهم في تحسين القدرة على الاستجابة لأية تهديدات جوية محتملة في المستقبل.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dr-2-event_description-003",
    "exam": "DLPT_READING",
    "language": "ar",
@@ -708,6 +820,86 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-2-news-003",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "2",
+   "textType": "news",
+   "title": "Joint Exercise Strengthens Defense Ties Between Nations",
+   "body": "أعلنت القوات المسلحة الإماراتية والسعودية عن بدء التمرين المشترك \"الدرع المتحد\" الذي يتم في قاعدة عسكرية مشتركة. يهدف التمرين الذي يستمر أسبوعًا واحدًا إلى تعزيز قدرات الدفاع المشتركة وتعزيز التعاون والاستعداد بين القوات المتحالفة. سيشارك في التمرين نحو ألفي جندي من كلا البلدين، بالإضافة إلى معدات عسكرية متقدمة. ومن المتوقع أن يشمل التمرين مناورات مختلفة، بما في ذلك عمليات الدفاع عن القاعدة وأعمال البحث والإنقاذ. وأكدت المصادر العسكرية أن التمرين سيعزز من مستوى التعاون بين القوات المسلحة الإماراتية والسعودية وسيساهم في تعزيز الأمن والاستقرار في المنطقة.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-2-news-004",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "2",
+   "textType": "news",
+   "title": "New Security Training Program Launched in Amman",
+   "body": "تم إطلاق برنامج تدريبي جديد في عمان يهدف إلى تحسين مهارات قوات الأمن في التعرف على النية العدوانية. يتم تنظيم هذا البرنامج بالتعاون بين وزارة الداخلية والقوات المسلحة، مع مشاركة خبراء دوليين في مجال الأمن. سيستمر التدريب لمدة أربعة أسابيع، وسيشمل دورات نظرية وعمليّة لتزويد المشاركين بالمهارات اللازمة للتعامل مع مختلف سيناريوهات التهديد. سيشمل البرنامج أيضًا تدريبات على استخدام التقنيات الحديثة في رصد السلوك المشبوه، مثل استخدام الكاميرات الذكية والذكاء الاصطناعي. كما ستتناول الدورات أيضًا أهمية التعاون بين مختلف وكالات الأمن لضمان سلامة المواطنين. سيشارك في هذا البرنامج حوالي 200 عنصر من قوات الأمن، وسيتم اختيارهم استنادًا إلى خبراتهم ومهاراتهم. من المتوقع أن يساهم هذا البرنامج في تحسين قدرة قوات الأمن على التعرف على التهديدات محليًا وعالميًا.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-2-news-005",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "2",
+   "textType": "news",
+   "title": "Military Bases Face Rising Costs to Counter Drones",
+   "body": "في الوقت الحالي، تزداد تكاليف الدفاع عن القواعد العسكرية من الطائرات بدون طيار الرخيصة بشكل كبير. هذه الطائرات، التي يمكن شراؤها بآلاف الريالات فقط، تمثل تهديدًا حقيقيًا للقواعد العسكرية في جميع أنحاء العالم. وقد بدأ الجيش في البحث عن طرق جديدة لحماية القواعد من هذه الهجمات الرخيصة والعنيفة. وتشمل هذه الطرق استخدام أنظمة الدفاع الجوي المتقدمة، مثل أنظمة الصواريخ، والرادارات، والطائرات بدون طيار الدفاعية. ومع ذلك، فإن هذه الأنظمة متكلفة للغاية، حيث يمكن أن تصل تكلفتها إلى الملايين من الريالات. كما أن هناك حاجة إلى تدريب القوات المسلحة على استخدام هذه الأنظمة، مما يزيد من التكاليف بشكل أكبر. وفي الختام، فإن الدفاع عن القواعد العسكرية من الطائرات بدون طيار الرخيصة يمثل تحديًا كبيرًا للجيش، حيث يجب عليه أن يجد طرقًا فعالة وذاتيية التكلفة لحماية القواعد من هذه التهديدات.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-2-news-006",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "2",
+   "textType": "news",
+   "title": "Residents Voice Concerns Over Base Security Measures",
+   "body": "أشاد سكان العريش بالحرس الوطني على جهودهم في تعزيز إجراءات الأمن حول القاعدة العسكرية، لكنهم أبدوا قلقهم من قرب القاعدة من منازلهم. وقال أحد السكان إن “القيود الجديدة على حركة المرور والبحث الدقيق في المركبات تسبب إزعاجًا كبيرًا، لكننا نفهم أهمية هذه الإجراءات”. ووضح قائد الحرس الوطني أن “القيود الجديدة ضرورية لحماية السكان والقاعدة من التهديدات الخارجية”. كما أشار إلى أن هناك خططًا لزيادة عدد نقاط التفتيش وتثبيت كاميرات المراقبة الجديدة. وقال آخر من السكان إن “نحن نؤيد الجهود الأمنية، لكننا نريد أن يتم اتخاذ إجراءات لحماية منازلنا أيضًا”. وأضاف أن “الحرس الوطني يعمل بشكل جيد، لكننا نحتاج إلى حلول طويلة الأجل لمشاكلنا”. وأكد قائد الحرس الوطني أن “جميع المخاوف قد تم سماعها، وسنقوم بالعمل على حلها في أقصر وقت ممكن”.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-2-report-001",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "2",
+   "textType": "report",
+   "title": "New Loitering Munition Threat Identified",
+   "body": "أخبار عن جهاز جديد من الأسلحة المتجولة التي تشكل تهديدًا للقواعد الجوية. هذا الجهاز، الذي يُطلق عليه \"الطائر المتجول-3\"، تم تطويره من قبل شركة دفاعية جديدة. وهو قادر على الطيران لمسافات طويلة تصل إلى 200 كيلومتر، ويمكنه استهداف الأهداف المتحركة أو الثابتة بدقة. كما أنه مزود بنظام استشعار متقدم قادر على التعرف على الأهداف في ظروف مختلفة من الطقس. وقد تم تصميم هذا الجهاز ليمكّن القوات الجوية من ضرب أهداف العدو بفعالية دون الحاجة إلى طائرات مقاتلة تقليدية. وقد تم اختبار هذا الجهاز بنجاح في عدة مناسبات، مما يثير قلق المسؤولين العسكريين بشأن التهديد الذي قد يوجهه إلى القواعد الجوية في المنطقة.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -951,6 +1143,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dr-3-analysis-004",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Drone Activity: A New Security Challenge",
+   "body": "في الأيام الأخيرة، تم رصد طائرة بدون طيار فوق حدود قاعدة جوية عسكرية، مما أثار مخاوفًا حول سلامة وأمن المنشأة. حسبما تم الإبلاغ عنه، تم رؤية الطائرة بدون طيار تتحرك في المنطقة المحرمة خلال فترة الليل، مما أدى إلى تنبيه قوات الأمن. رغم أن الطائرة لم تسبب أي ضرر مباشر، إلا أن هذا الحادث قد يوفر فرصة مهمة لإعادة تقييم الاستعدادات الأمنية الحالية. يُعتقد أن الطائرة بدون طيار كانت تستخدم لأغراض التجسس، حيث تم رصدها تتحرك بشكل متكرر فوق مناطق حساسة داخل القاعدة. هذا الحادث يسلط الضوء على أهمية تعزيز الوعي بأمن الطائرات بدون طيار بين قوات الأمن. يجب على القوات أن تكون على دراية بالأخطار المحتملة التي تشكلها هذه الطائرات، وأن تتخذ الخطوات اللازمة لتجنب أي انتهاكات مستقبلية. يوضح هذا الحادث أيضًا أهمية الاستثمار في تقنيات جديدة للكشف عن الطائرات بدون طيار. يجب على القاعدة أن تفكر في اعتماد أنظمة اكتشاف متقدمة يمكن أن تكتشف وتحيط الطائرات بدون طيار على الفور. بالإضافة إلى ذلك، من المهم أن يتم تدريب قوات الأمن على كيفية التعامل مع هذه الطائرات في حالة ظهورها. يجب أن يكون لديهم الخبرة اللازمة لإزالة الطائرات بدون طيار من المنطقة بشكل آمن وبفعالية. في الختام، يوضح هذا الحادث أهمية تعزيز الاستعدادات الأمنية في قاعدة جوية عسكرية. يجب على القوات أن تكون على دراية بالأخطار المحتملة وأن تتخذ الخطوات اللازمة لحمايتها من أي تهديدات محتملة. من خلال الاستثمار في تقنيات جديدة وتقديم التدريب المناسب، يمكن للقاعدة أن تضمن سلامة وأمن منشآتها.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-3-analysis-006",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Loitering Munition Threat to Air Bases in the Region",
+   "body": "في الآونة الأخيرة، أصبح التهديد الذي تمثله الذخائر المتخفية على القواعد الجوية في المنطقة أكثر حدة. هذه الذخائر، المعروفة أيضًا باسم \"الذخائر الذكية\" أو \"الطائرات بدون طيار الهجومية\"، هي أسلحة ذات طيران طويل الأمد يمكن أن تتخفي في الجو لمدة طويلة قبل أن تطلق نفسها على الهدف المحدد. وقد تم استخدام هذه الذخائر في هجمات متكررة على القواعد الجوية في المنطقة، مما تسبب في أضرار كبيرة ومقتل عدد من الجنود. في أحد الأمثلة الأخيرة، تم استخدام هذه الذخائر في هجمات على قاعدة جوية في شمال المنطقة، مما أدى إلى تدمير عدد من الطائرات ومباني القاعدة. وقد أدى هذا الهجوم إلى إصابات بليغة في صفوف الجنود وإلحاق أضرار كبيرة بالأسطول الجوي. كما أن هناك تقارير عن استخدام هذه الذخائر في هجمات على قواعد جوية في جنوب المنطقة، مما أدى إلى إصابات ومقتل عدد من الجنود. هذه الهجمات تظهر مدى التهديد الذي تمثله الذخائر المتخفية على القواعد الجوية في المنطقة. وقد أظهرت هذه الهجمات أيضًا محدودية فعالية أنظمة الدفاع الجوي الحالية في مواجهتها. ورغم أن هناك بعض الحالات التي تم فيها اعتراض هذه الذخائر، إلا أن فعالية أنظمة الدفاع الجوي الحالية غير كافية بشكل كامل. وهذا يعكس الحاجة إلى تطوير أنظمة دفاعية جديدة ومتقدمة قادرة على مواجهة هذا النوع من التهديد. كما أنه من الضروري تعزيز التعاون بين الدول في المنطقة من أجل المواجهة المشتركة لهذا التهديد.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-3-analysis-007",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Maintaining Vigilance: A Critical Shift Handover at the Defense Operations Center",
+   "body": "عملية التحويل في مركز عمليات الدفاع هي عملية حاسمة لضمان الاستمرارية في السلامة والأمان. أثناء التحويل، يتم نقل المسؤوليات والمعلومات بين الفريق الخارج والمجموعة الواردة، مما يضمن انتقالًا سلسًا للعمليات. تبدأ عملية التحويل بتقييم المخاطر الحالية والمتوقعة، حيث يقوم الفريق الوارد بتحليل المعلومات المتاحة وتحديد أي تهديدات محتملة. ثم يتم مناقشة هذه المخاطر مع الفريق الخارج، حيث يتم تبادل المعلومات والتجارب لضمان فهم مشترك للموقف. بعد ذلك، يقوم الفريق الوارد بتقييم القدرات والتجهيزات المتاحة، مما يضمن وجود جميع الموارد اللازمة لمواجهة أي تهديدات. ثم يتم مناقشة الخطط والإجراءات التي سيتم اتخاذها في حالة حدوث أي تهديدات، مما يضمن أن جميع أعضاء الفريق على دراية كاملة بالخطوات المطلوبة. وأخيرًا، يقوم الفريق الوارد بتقييم الاتصال والتواصل مع جميع الوحدات والأطراف المعنية، مما يضمن أن جميع الأطراف على علم بالعمليات الجارية والمخاطر المحتملة. خلال عملية التحويل، من الضروري الحفاظ على التركيز والتفاني، حيث أن أي خطأ أو إهمال يمكن أن يؤدي إلى عواقب خطيرة. لذلك، يجب على جميع أعضاء الفريق الحفاظ على التركيز والتفاني، وضمان أن جميع العمليات يتم إجراؤها بشكل صحيح وكمال. التواصل الفعال بين جميع أعضاء الفريق هو مفتاح نجاح عملية التحويل، حيث أن أي سوء فهم أو سوء تواصل يمكن أن يؤدي إلى أخطاء خطيرة. لذلك، يجب على جميع أعضاء الفريق الحفاظ على التواصل المفتوح والمباشر مع بعضهم البعض، وضمان أن جميع المعلومات يتم نقلها بشكل صحيح وكمال. في الخاتمة، عملية التحويل في مركز عمليات الدفاع هي عملية حاسمة لضمان الاستمرارية في السلامة والأمان. يجب على جميع أعضاء الفريق الحفاظ على التركيز والتفاني، وضمان أن جميع العمليات يتم إجراؤها بشكل صحيح وكمال، وضمان التواصل الفعال بين جميع أعضاء الفريق.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "ar",
@@ -996,6 +1236,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dr-3-commentary-001",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Drone Integration: A New Era in Airspace Management",
+   "body": "في السنوات الأخيرة، شهد استخدام الطائرات بدون طيار نموًا ملحوظًا لأغراض متنوعة، تتراوح من الزراعة إلى الأمن. أدى هذا الارتفاع إلى زيادة الحاجة إلى تنسيق المساحة الجوية مع الطيران المدني لضمان السلامة والكفاءة. لذلك، من الضروري العمل على تكيف عمليات الطائرات بدون طيار مع المساحة الجوية المدنية. أحد التحديات الرئيسية في هذا التنسيق هو الفرق الكبير في الحجم والقدرات بين الطائرات بدون طيار والطائرات التقليدية. حيث أن الطائرات بدون طيار، بسبب صغر حجمها وبطء سرعتها غالبًا، تتطلب استراتيجيات إدارة مختلفة. بالإضافة إلى ذلك، تتضمن عملياتها غالبًا طيرانًا على ارتفاعات منخفضة، مما قد يتداخل مع مسارات الطائرات التجارية. لعلاج هذه المشاكل، من الضروري وضع إرشادات وقوانين واضحة. يجب أن تشمل هذه المساحة الجوية المخصصة للطائرات بدون طيار، ومسارات طيران محددة، وقيود على الارتفاع. بالإضافة إلى ذلك، يجب تنفيذ أنظمة المراقبة والتواصل في الوقت الفعلي لضمان أن يمكن لمشغلي الطائرات بدون طيار ومكاتب التحكم في حركة المرور الجوية تبادل المعلومات بسلاسة. جانب آخر مهم هو تدريب الطيارين والمشغلين. يجب أن يكونوا على دراية جيدة بالقواعد والإجراءات لتبادل المساحة الجوية مع الطائرات التقليدية. وهذا يشمل فهم قيود الطائرات بدون طيار ومعرفة كيفية الاستجابة للمشاكل المحتملة. التعاون بين الوكالات الحكومية، سلطات الطيران المدني، وصانعي الطائرات بدون طيار هو أيضًا أمر حيوي. من خلال العمل معًا، يمكنهم تطوير معايير وتكنولوجيات تسهل عمليات الطائرات بدون طيار الآمنة والكفاءة. في الختام، دمج الطائرات بدون طيار في المساحة الجوية المدنية مهمة معقدة ولكن ضرورية. مع التخطيط الدقيق والتعاون، يمكننا إنشاء نظام يخدم جميع مستخدمي المساحة الجوية.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-3-commentary-002",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "3",
+   "textType": "commentary",
+   "title": "A Test of Readiness: Nighttime Drill Evaluated",
+   "body": "في الليالي المظلمة، تحت ستار الظلام، أجرت قواتنا التمرين الليلي الأخير الذي كان من المفترض أن يكون اختبارًا حقيقيًا لقدراتنا على الاستجابة لحالات الطوارئ في الظروف الصعبة. ومع ذلك، تظهر النتائج وجود بعض المشاكل الجوهرية التي تواجه قواتنا خلال التمارين الليلي.\n\nأظهر التدريب عددًا من العيوب والضعف في قدراتنا الليلي، خاصة فيما يتعلق بالتواصل بين الوحدات المختلفة. بسبب محدودية رؤية الليل، كان من الصعب على القوات التواصل بشكل فعال، مما أدى إلى تأخير في ردود الأفعال والعمليات. بالإضافة إلى ذلك، واجهت القوات صعوبة في التنقل في المناطق غير المرئية، مما أدى إلى فقدان الوقت الثمين.\n\nأظهر قائدنا بعض التردد في اتخاذ القرارات في ظروف الظلام، مما أثار تساؤلات حول كفاءته في قيادة القوات في مثل هذه الظروف. قد يحتاج قادةنا إلى مراجعة استراتيجياتهم والتدريب أكثر على اتخاذ القرارات في ظروف الظلام.\n\nمن ناحية أخرى، أظهرت القوات بعض نقاط القوة، مثل القدرة على الحفاظ على التركيز والهدوء في ظل الظروف الصعبة. هذا هو نقطة إيجابية يجب أن نعمل على تطويرها أكثر في التمارين القادمة.\n\nفي الختام، يجب على قيادة قواتنا أن تكون أكثر وعيًا بالقيود التي تواجه قواتنا خلال التمارين الليلي وأن تعمل على تحسين القدرات الليلي لقيواتنا. هذا هو الطريق نحو بناء قوة عسكرية أقوى وأفضل مُعدَّة للتصدي لأي تحدي في الظلام.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dr-3-editorial-001",
    "exam": "DLPT_READING",
    "language": "ar",
@@ -1038,6 +1310,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dr-3-editorial-004",
+   "exam": "DLPT_READING",
+   "language": "ar",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Ensuring Clarity: Standardizing Radio Procedures in Air Defense",
+   "body": "في عالم الدفاع الجوي، حيث كل ثانية تحسب، فإن الوضوح والفعالية في الاتصالات اللاسلكية بين الوحدات المتحالفة أمر ضروري في بيئات القتال. ومع ذلك، فإن الإجراءات اللاسلكية الحالية غالبًا ما تكون غير متسقة، مما يؤدي إلى الخلطات والخطأ في تنفيذ المهمة. لذلك، فإن توحيد إجراءات اللاسلكي بين الوحدات المتحالفة أمر بالغ الأهمية لضمان الوضوح والفعالية.\n\nأولاً، يجب أن تكون الإجراءات اللاسلكية واضحة ومباشرة. يجب أن تكون الجمل قصيرة والعبارات سهلة الفهم. يجب تجنب المصطلحات الغامضة أو المبتكرة التي قد تسبب ارتباكاً. على سبيل المثال، بدلاً من استخدام المصطلحات المحلية أو المصطلحات الخاصة بالوحدة، يجب استخدام المصطلحات القياسية التي يفهمها جميع أفراد الوحدة.\n\nثانياً، يجب أن تكون الإجراءات اللاسلكية متسقة. يجب أن تكون نفس الإجراء هو نفسه في جميع الوحدات المتحالفة. هذا يعني أن الوحدات يجب أن تستخدم نفس الترميز، ونفس الإشارات، ونفس الإجراءات في نفس الظروف. هذه الاستمرارية ستضمن أن جميع الوحدات تعمل بشكل منسق، مما يزيد من فعالية الدفاع الجوي.\n\nثالثاً، يجب أن تكون الإجراءات اللاسلكية مرنة. يجب أن تكون قادرة على التكيف مع الظروف المتغيرة. على سبيل المثال، في حالة الطقس السيئ أو التداخل، يجب أن تكون هناك إجراءات بديلة لضمان استمرار الاتصال. يجب أن تكون الوحدات قادرة على التبديل بسرعة بين الإجراءات المختلفة حسب الحاجة.\n\nأخيراً، يجب أن تكون الإجراءات اللاسلكية موضوعية للتدريب المستمر. يجب أن تكون الوحدات قادرة على ممارسة هذه الإجراءات بانتظام لضمان مهاراتها. يجب أن يكون هناك تدريب دوري على الإجراءات اللاسلكية الجديدة أو المعدلة لضمان أن جميع أفراد الوحدة على دراية بها.\n\nباختصار، فإن الوضوح والفعالية في الاتصالات اللاسلكية بين الوحدات المتحالفة أمر ضروري في بيئات القتال. من خلال توحيد إجراءات اللاسلكي، يمكن تحقيق هذا الوضوح والفعالية. يجب أن تكون الإجراءات اللاسلكية واضحة ومباشرة، وتكون متسقة، وتكون مرنة، وتكون موضوعية للتدريب المستمر. فقط من خلال هذه الجهود المشتركة، يمكن تعزيز فعالية الدفاع الجوي وضمان نجاح المهمة.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1682,6 +1970,114 @@
    "verified": false
   },
   {
+   "id": "ar-dr-1-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dr-1-instructions-004",
+   "stem": "Why should the incoming guard check the logbook?",
+   "choices": [
+    "To determine the length of their shift.",
+    "To review the events of the previous shift.",
+    "To find out who is on duty next.",
+    "To see if there are any scheduled breaks."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the incoming guard should review the logbook to be aware of any previous occurrences. The relevant phrase is 'يراجع incoming guard الكتاب المسجل' which translates to 'the incoming guard should review the logbook'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dr-1-instructions-004",
+   "stem": "What is the main purpose of these instructions?",
+   "choices": [
+    "To explain how to fill out the logbook.",
+    "To outline the procedures for changing shifts at the defense operations center.",
+    "To announce a new policy for guard rotations.",
+    "To inform guards about their shift schedule."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the text is to provide instructions for the shift change process at the defense operations center. This is evident from the phrases 'إجراءات change shifted' and 'التحول بين shifts' which translate to 'shift change procedures' and 'shift transition' respectively.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-instructions-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-1-instructions-004",
+   "stem": "What does the phrase 'التحول بين shifts' mean here?",
+   "choices": [
+    "The transition between shifts.",
+    "The end of a shift.",
+    "The start of a shift.",
+    "The length of a shift."
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'التحول بين shifts' is used to describe the process of one guard replacing another. This is clear from the context of the instructions for changing shifts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-instructions-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dr-1-instructions-005",
+   "stem": "What does the text say is the reason for the change in the force protection condition?",
+   "choices": [
+    "A scheduled military exercise",
+    "A planned visit by a high-ranking official",
+    "An increase in local criminal activity",
+    "A change in the local weather"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the reason is ''زيارته سامية'' ('a high-level visit'), specifically ''زيارتهم سامية'' ('their high-level visit').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-instructions-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-1-instructions-005",
+   "stem": "What does the phrase ''تقييد الحركة'' mean here?",
+   "choices": [
+    "To increase movement",
+    "To stop movement",
+    "To restrict movement",
+    "To monitor movement"
+   ],
+   "answer": 2,
+   "explanation": "The text instructs to ''تقييد الحركة داخل القاعدة'' ('restrict movement within the base').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-instructions-005-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ar-dr-1-instructions-005",
+   "stem": "What is the purpose of the text?",
+   "choices": [
+    "To schedule a military exercise",
+    "To announce a base closure",
+    "To provide a weather update",
+    "To announce a change in the force protection condition"
+   ],
+   "answer": 3,
+   "explanation": "The text begins with ''تغيير حالة الحماية'' ('change in the protection condition') and provides instructions related to this change.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1826,6 +2222,132 @@
    "verified": false
   },
   {
+   "id": "ar-dr-1-notice-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dr-1-notice-004",
+   "stem": "What is the purpose of the joint patrol?",
+   "choices": [
+    "To check the perimeter of the camp.",
+    "To inspect the interior of the buildings.",
+    "To count the number of guards on duty.",
+    "To deliver supplies to the outposts."
+   ],
+   "answer": 0,
+   "explanation": "The text explicitly states that the purpose of the patrol is to check the perimeter of the camp: (المراقبة المشتركة) ... (فحص) (الحاجز) (لمخيمنا).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-notice-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-1-notice-004",
+   "stem": "What does the phrase (نقاط المحطة) refer to in the notice?",
+   "choices": [
+    "The communication centers in the city.",
+    "The supply depots inside the camp.",
+    "The guard posts along the perimeter.",
+    "The rest areas for the guards."
+   ],
+   "answer": 2,
+   "explanation": "The phrase (نقاط المحطة) refers to the guard posts along the perimeter, as it is mentioned in the context of checking the perimeter of the camp: (فحص) (الحاجز) (لمخيمنا) (وزيارة) (نقاط المحطة).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-notice-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dr-1-notice-005",
+   "stem": "What was seen flying over the base perimeter?",
+   "choices": [
+    "A plane",
+    "A drone",
+    "A bird",
+    "A helicopter"
+   ],
+   "answer": 1,
+   "explanation": "The text states that a drone was seen flying over the base perimeter: \"تم رصد طائرة بدون طيار فوق perimeter القاعدة\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-notice-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-1-notice-005",
+   "stem": "In the text, the word \"رصد\" means what in English?",
+   "choices": [
+    "To sight",
+    "To build",
+    "To destroy",
+    "To hide"
+   ],
+   "answer": 0,
+   "explanation": "The word \"رصد\" in this context means \"to sight\" or \"to observe\". The text says \"تم رصد طائرة بدون طيار\", which translates to \"A drone was sighted\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-notice-005-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ar-dr-1-notice-005",
+   "stem": "Why was this notice issued?",
+   "choices": [
+    "To schedule a meeting",
+    "To inform about a security concern",
+    "To advertise a product",
+    "To announce a new policy"
+   ],
+   "answer": 1,
+   "explanation": "The notice was issued to inform about a security concern, as it states \"يرجى الانتباه لوجود طائرة بدون طيار فوق perimeter القاعدة\", which translates to \"Please be aware of a drone over the base perimeter\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-notice-006-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dr-1-notice-006",
+   "stem": "What does the notice say happens at 2200 hours?",
+   "choices": [
+    "The current guard team goes on break",
+    "The guard shift ends",
+    "A new team of guards arrives",
+    "A meeting takes place"
+   ],
+   "answer": 0,
+   "explanation": "The notice states that the current guard team goes on break at 2200 hours, as indicated by the phrase \"يذهب فريق الحراس الحالي إلى استراحة في الساعة 2200\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-notice-006-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ar-dr-1-notice-006",
+   "stem": "Why was this notice written?",
+   "choices": [
+    "To remind guards about their duties",
+    "To inform guards about a change in their shift schedule",
+    "To announce a new security protocol",
+    "To request additional guards for a special event"
+   ],
+   "answer": 1,
+   "explanation": "The notice was written to inform guards about a change in their shift schedule, as indicated by the phrase \"إشعار: تغيير في جدول دوريات الحراس\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dr-1-personal_letter-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1966,6 +2488,60 @@
    ],
    "answer": 0,
    "explanation": "The writer says the car uses \"طاقة نظيفة\", meaning it uses clean energy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-short_message-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dr-1-short_message-001",
+   "stem": "What is the date of the upcoming training?",
+   "choices": [
+    "April 18",
+    "April 17",
+    "April 16",
+    "April 15"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the training will take place on Monday, April 17, 2023. The relevant part of the text is: \"التدريب سيُقام يوم الإثنين السابع عشر من أبريل 2023.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-short_message-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dr-1-short_message-001",
+   "stem": "What is the main purpose of the message?",
+   "choices": [
+    "To schedule a routine security drill",
+    "To announce a training session on recognizing insider threats",
+    "To remind personnel about existing security protocols",
+    "To inform about a new security policy"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the message is to announce a training session on recognizing insider threats. The relevant part of the text is: \"إعلان عن جلسة تدريبية حول التعرف على التهديدات الداخلية.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-1-short_message-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-1-short_message-001",
+   "stem": "What does the word \"التهديدات\" mean here?",
+   "choices": [
+    "Changes",
+    "Challenges",
+    "Opportunities",
+    "Threats"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"التهديدات\" refers to threats, specifically insider threats. The relevant part of the text is: \"التعرف على التهديدات الداخلية.\"",
    "source": "llm",
    "verified": false
   },
@@ -2726,6 +3302,60 @@
    "verified": false
   },
   {
+   "id": "ar-dr-2-event_description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dr-2-event_description-002",
+   "stem": "What is the main topic of this passage?",
+   "choices": [
+    "A new type of radar system",
+    "A report on recent security breaches",
+    "A plan to increase military spending",
+    "A coordinated air defense drill"
+   ],
+   "answer": 3,
+   "explanation": "The passage is about a coordinated air defense drill, as indicated by the repeated mention of the exercise and the coordination between different units. The drill is described in terms of its schedule, participants, and the specific procedures to be followed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-event_description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dr-2-event_description-002",
+   "stem": "What is the purpose of the exercise mentioned in the passage?",
+   "choices": [
+    "To test new weaponry",
+    "To celebrate a military victory",
+    "To improve coordination between air defense units",
+    "To conduct routine maintenance on aircraft"
+   ],
+   "answer": 2,
+   "explanation": "The purpose of the exercise is stated as improving coordination between units. The text says: «التمارين تهدف إلى تعزيز التنسيق بين الوحدات المختلفة للدفاع الجوي».",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-event_description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-2-event_description-002",
+   "stem": "What does the phrase «التمرين الميداني» mean in this passage?",
+   "choices": [
+    "Field exercise",
+    "Military parade",
+    "Weapon demonstration",
+    "Strategic planning meeting"
+   ],
+   "answer": 0,
+   "explanation": "The phrase «التمرين الميداني» refers to a field exercise, which is a practical training event. The text mentions this exercise as part of the coordinated air defense drill: «سيتم إجراء تمرين ميداني في المنطقة الشرقية».",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dr-2-event_description-003-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3208,6 +3838,276 @@
    ],
    "answer": 0,
    "explanation": "The text uses \"الامطار الغزيرة\" to describe the expected weather condition, which translates to \"heavy rains\". This is further supported by the mention of \"عواصف رعدية\" (thunderstorms).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dr-2-news-003",
+   "stem": "What is the main purpose of the exercise described in the text?",
+   "choices": [
+    "To train soldiers in a new combat strategy",
+    "To prepare for a specific upcoming threat",
+    "To enhance cooperation and readiness between allied forces",
+    "To demonstrate new military technology"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the exercise aims to 'strengthen joint defense capabilities' and 'enhance cooperation and readiness' between the allied forces, specifically mentioning the 'United Arab Emirates and Kingdom of Saudi Arabia'. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dr-2-news-003",
+   "stem": "What is the name of the joint exercise?",
+   "choices": [
+    "United Shield",
+    "Desert Shield",
+    "Saudi Shield",
+    "Emirati Shield"
+   ],
+   "answer": 0,
+   "explanation": "The text explicitly mentions the name of the exercise: 'تسمى التمرين المشترك shield المتحد'. The other names are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-2-news-003",
+   "stem": "What does 'الاستعداد' mean here?",
+   "choices": [
+    "Cooperation",
+    "Technology",
+    "Strategy",
+    "Readiness"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'الاستعداد' refers to the state of being prepared or ready. The text uses it in the phrase 'زيادة الاستعداد', which translates to 'enhance readiness'. The other options do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dr-2-news-004",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The importance of physical fitness for security personnel",
+    "The history of security forces in Jordan",
+    "A new security training program in Amman",
+    "Recent changes in Jordan's national budget"
+   ],
+   "answer": 2,
+   "explanation": "The text discusses a new security training program in Amman, focusing on recognizing hostile intent. This is clear from the beginning of the text: \"تم إطلاق برنامج تدريبي جديد في عمان\" (A new training program has been launched in Amman).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dr-2-news-004",
+   "stem": "What is the primary goal of the new training program?",
+   "choices": [
+    "To increase the number of security personnel in Amman",
+    "To update the equipment used by security forces",
+    "To improve physical fitness among security forces",
+    "To teach security forces how to recognize hostile intent"
+   ],
+   "answer": 3,
+   "explanation": "The primary goal of the new training program is to teach security forces how to recognize hostile intent. The text states: \"الهدف من هذا البرنامج هو تدريب قوات الأمن على التعرف على النية العدوانية\" (The goal of this program is to train security forces to recognize hostile intent).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-2-news-004",
+   "stem": "What does \"النية العدوانية\" mean here?",
+   "choices": [
+    "Physical strength",
+    "Hostile intent",
+    "Terrorist organization",
+    "Military strategy"
+   ],
+   "answer": 1,
+   "explanation": "\"النية العدوانية\" refers to \"hostile intent\" in the context of the text. It is the main focus of the new training program, as stated: \"الهدف من هذا البرنامج هو تدريب Forces الأمن على التعرف على النية العدوانية\" (The goal of this program is to train security forces to recognize hostile intent).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dr-2-news-005",
+   "stem": "What is the main topic of this article?",
+   "choices": [
+    "The history of drone technology in military applications",
+    "The increasing threat of drone attacks on military bases",
+    "The effectiveness of drones in modern warfare",
+    "The rising cost of defending military bases against drones"
+   ],
+   "answer": 3,
+   "explanation": "The article focuses on the financial burden of protecting military bases from drone threats, as indicated by the phrase \"تكاليف الدفاع عن القواعد العسكرية من drones\" in the first sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dr-2-news-005",
+   "stem": "What type of drones are specifically mentioned as a threat?",
+   "choices": [
+    "Cheap drones",
+    "Commercial drones",
+    "Stealth drones",
+    "Military-grade drones"
+   ],
+   "answer": 0,
+   "explanation": "The article mentions \"drones الرخيصة\" as a specific threat in the sentence \"تكاليف الدفاع عن القواعد العسكرية من drones الرخيصة في الارتفاع.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-2-news-005",
+   "stem": "What does \"تكاليف\" mean here?",
+   "choices": [
+    "Benefits",
+    "Risks",
+    "Expenses",
+    "Challenges"
+   ],
+   "answer": 2,
+   "explanation": "\"تكاليف\" is used in the context of the cost of defending bases, as in \"تكاليف الدفاع عن القواعد العسكرية من drones الرخيصة في الارتفاع,\" meaning \"the costs of defending military bases against cheap drones are rising.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-006-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dr-2-news-006",
+   "stem": "What is the main concern of the residents of al-‘Arish?",
+   "choices": [
+    "The new security measures are too expensive.",
+    "The military base is too close to their homes.",
+    "The base is not doing enough to protect them from external threats.",
+    "The increased military presence is disrupting their daily lives."
+   ],
+   "answer": 1,
+   "explanation": "The residents' primary concern is that the military base is too close to their homes, as stated in the text: “أشاد السكان في العريش بالحرس الوطني على جهودهم، لكنهم أبدوا قلقهم من قرب القاعدة العسكرية من منازلهم.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-006-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-2-news-006",
+   "stem": "What does the word “الحرس الوطني” mean in this context?",
+   "choices": [
+    "The national guard",
+    "The local police",
+    "The security forces",
+    "The military base"
+   ],
+   "answer": 0,
+   "explanation": "In this context, “الحرس الوطني” refers to the national guard, which is mentioned as the group that has been implementing the new security measures around the base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-news-006-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dr-2-news-006",
+   "stem": "What can be inferred about the relationship between the residents and the national guard?",
+   "choices": [
+    "The residents believe the national guard is not doing enough to protect them.",
+    "The residents are pleased with the national guard's efforts but have concerns about the base's location.",
+    "The residents are unhappy with the national guard's performance.",
+    "The residents want the national guard to increase security measures further."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the residents “أشاد السكان... بالحرس الوطني على effortsهم” but also “أبدوا قلقهم من قرب القاعدة العسكرية من منازلهم,” indicating that while they appreciate the national guard's efforts, they are concerned about the base's proximity to their homes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-report-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dr-2-report-001",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "A new type of loitering munition that threatens air bases",
+    "The military response to recent drone attacks",
+    "The economic impact of loitering munitions on the defense industry",
+    "The history of loitering munitions and their development"
+   ],
+   "answer": 0,
+   "explanation": "The text discusses a new loitering munition threat to air bases, as seen in the first sentence: \"الاخبار عن جهاز جديد من الاسلحة المتجولة التي تشكل تهديدا للقواعد الجوية\". The rest of the text elaborates on this topic, providing details about the munition's characteristics and the potential threat it poses.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-report-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dr-2-report-001",
+   "stem": "What is the maximum range of the new loitering munition?",
+   "choices": [
+    "200 kilometers",
+    "150 kilometers",
+    "100 kilometers",
+    "250 kilometers"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the munition has a range of up to 200 kilometers: \"ويبلغ مداه 200 كيلومتر\". This detail is provided in the description of the munition's capabilities.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-2-report-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-2-report-001",
+   "stem": "What does \"الاستهداف الدقيق\" mean in this text?",
+   "choices": [
+    "Rapid movement",
+    "Precise targeting",
+    "Stealth technology",
+    "High explosive yield"
+   ],
+   "answer": 1,
+   "explanation": "In this text, \"الاستهداف الدقيق\" refers to the munition's ability to precisely target and engage moving or stationary objects: \"ويمكنه الاستهداف الدقيق للأهداف المتحركة أو الثابتة\". This is a key feature of the loitering munition described in the text.",
    "source": "llm",
    "verified": false
   },
@@ -4076,6 +4976,168 @@
    "verified": false
   },
   {
+   "id": "ar-dr-3-analysis-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dr-3-analysis-004",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "Drones are commonly used for surveillance purposes in military bases.",
+    "The base's security measures are sufficient to handle drone threats.",
+    "The military should invest more in drone technology for defense.",
+    "A drone sighting highlights the need for improved security protocols."
+   ],
+   "answer": 3,
+   "explanation": "The passage discusses the sighting of a drone over the air base perimeter and emphasizes the need for enhanced security protocols and awareness. The correct answer is choice 1 because the text focuses on the inadequacies of current measures and the necessity for improvement, as seen in the phrase \"يؤكد هذا الحادث على الأهمية القصوى لتبني بروتوكولات أمنية محسنة\" (This incident underscores the critical importance of adopting improved security protocols).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-3-analysis-004",
+   "stem": "What does the phrase \"الاستعدادات الأمنية\" mean here?",
+   "choices": [
+    "Emergency response teams",
+    "Intelligence reports",
+    "Military exercises",
+    "Security measures"
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"الاستعدادات الأمنية\" (Security measures) refers to the protocols and measures in place to ensure the safety and security of the base. The text mentions \"إعادة تقييم الاستعدادات الأمنية الحالية\" (reassessing current security measures), indicating that these are the protocols and safeguards that need to be reviewed and improved.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dr-3-analysis-004",
+   "stem": "What can be inferred about the base's current security measures?",
+   "choices": [
+    "They are fully effective against all types of threats.",
+    "They are not concerned with drone activity.",
+    "They are primarily focused on ground threats.",
+    "They need to be reassessed and improved."
+   ],
+   "answer": 3,
+   "explanation": "The text states \"يؤكد هذا الحادث على الأهمية القصوى لتبني بروتوكولات أمنية محسنة\" (This incident underscores the critical importance of adopting improved security protocols) and mentions \"إعادة تقييم الاستعدادات الأمنية الحالية\" (reassessing current security measures), which implies that the current measures are inadequate and need improvement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-006-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dr-3-analysis-006",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The text describes how loitering munitions are being used to target air bases in the region.",
+    "The text analyzes the economic impact of loitering munitions on the defense industry.",
+    "The text explains the history of loitering munitions and their development over time.",
+    "The text discusses the various types of loitering munitions and their technical specifications."
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the threat posed by loitering munitions to air bases in the region, as shown in the opening sentence: \"في الآونة الأخيرة، أصبح التهديد الذي تمثله الذخائر المتخفية على القواعد الجوية في المنطقة أكثر حدة.\" The rest of the text elaborates on this idea, discussing specific examples and consequences.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-006-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dr-3-analysis-006",
+   "stem": "What can be inferred about the effectiveness of current air defense systems against loitering munitions?",
+   "choices": [
+    "Current air defense systems have some success but are not fully effective against loitering munitions.",
+    "Current air defense systems are completely ineffective against loitering munitions.",
+    "Current air defense systems have not been tested against loitering munitions.",
+    "Current air defense systems are highly effective in intercepting loitering munitions."
+   ],
+   "answer": 0,
+   "explanation": "The text suggests that while there have been some successful interceptions, air defense systems are not fully effective. This is implied in the sentence: \"ورغم أن هناك بعض الحالات التي تم فيها اعتراض هذه الذخائر، إلا أن فعالية sistemas de defensa aérea الحالية غير كافية بشكل كامل.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-006-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-3-analysis-006",
+   "stem": "What does \"التخفي\" mean here?",
+   "choices": [
+    "To attack",
+    "To retreat",
+    "To approach",
+    "To hide"
+   ],
+   "answer": 3,
+   "explanation": "The word \"التخفي\" is used to describe the loitering munitions' ability to stay hidden or camouflaged. This is evident in the context: \"الذخائر المتخفية هي أسلحة ذات طيران طويل الأمد يمكن أن تتخفي في الجو لمدة طويلة قبل أن تطلق نفسها على الهدف المحدد.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-007-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dr-3-analysis-007",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "A detailed report on a recent security breach",
+    "The history and evolution of defense operations centers",
+    "The process and significance of a shift handover at a defense operations center",
+    "The importance of teamwork in a defense operations center"
+   ],
+   "answer": 2,
+   "explanation": "The passage focuses on the process and significance of a shift handover at a defense operations center, as indicated by the mention of various steps involved in the handover process and the importance of maintaining vigilance during the shift change.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-007-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dr-3-analysis-007",
+   "stem": "What can be inferred about the role of communication in the shift handover process?",
+   "choices": [
+    "Communication is not important during the shift handover process",
+    "Effective communication is crucial for a successful shift handover",
+    "Communication is only important between the outgoing and incoming shift leaders",
+    "Communication is only necessary when there is a security threat"
+   ],
+   "answer": 1,
+   "explanation": "The passage emphasizes the importance of effective communication during the shift handover process, stating that 'التواصل الفعال بين جميع أعضاء الفريق هو مفتاح نجاح عملية transmission'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-analysis-007-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-3-analysis-007",
+   "stem": "What does the phrase 'تقييم المخاطر' mean here?",
+   "choices": [
+    "Ignoring the dangers",
+    "Overreacting to potential hazards",
+    "Underestimating the threats",
+    "Assessing the risks"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'تقييم المخاطر' means 'assessing the risks' in this context. The passage states that 'يبدأ الفريق الوارد بتقييم المخاطر الحالية والمتوقعة'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4238,6 +5300,114 @@
    "verified": false
   },
   {
+   "id": "ar-dr-3-commentary-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dr-3-commentary-001",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "Airspace coordination is unnecessary for drone operations.",
+    "Drones are a minor issue for civil aviation.",
+    "Integrating drones into airspace requires careful coordination with civil aviation.",
+    "Drones should be banned from all airspace."
+   ],
+   "answer": 2,
+   "explanation": "The commentary discusses the need for careful coordination between drone operations and civil aviation, as seen in the statement \"لذلك، من الضروري أن نعمل على تكييف عمليات الطائرات بدون طيار مع الفضاء الجوي المدني\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-commentary-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dr-3-commentary-001",
+   "stem": "What can be inferred about the author's view on drone operations?",
+   "choices": [
+    "The author believes drone operations should be limited.",
+    "The author supports the integration of drone operations with civil aviation.",
+    "The author thinks drone operations are not important.",
+    "The author is indifferent to drone operations."
+   ],
+   "answer": 1,
+   "explanation": "The author supports integration, as indicated by the phrase \"من الضروري أن نعمل على تكييف عمليات الطائرات بدون طيار مع الفضاء الجوي المدني\" and the discussion on how to achieve this.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-commentary-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-3-commentary-001",
+   "stem": "What does the word \"تكييف\" mean here?",
+   "choices": [
+    "To adapt",
+    "To ignore",
+    "To break",
+    "To cool"
+   ],
+   "answer": 0,
+   "explanation": "The word \"تكييف\" is used in the context of making drone operations compatible with civil aviation, meaning \"to adapt\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-commentary-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dr-3-commentary-002",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The drill was a success, but minor improvements are needed.",
+    "The drill revealed critical weaknesses in the force's nighttime capabilities.",
+    "The drill demonstrated the force's superior nighttime combat skills.",
+    "The drill was a complete failure due to lack of preparation."
+   ],
+   "answer": 1,
+   "explanation": "The passage repeatedly highlights the force's difficulties during the drill. Key phrases include \"بعض المشاكل الجوهرية التي تواجه قوىنا خلال التمارين الليلي\" and \"أظهر التدريب عدداً من العيوب والضعف في قدراتنا الليلي\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-commentary-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dr-3-commentary-002",
+   "stem": "What can be inferred about the author's opinion of the force's leadership?",
+   "choices": [
+    "The author is unsure about the leadership's effectiveness.",
+    "The author believes the leadership is incompetent.",
+    "The author thinks the leadership made the right decisions during the drill.",
+    "The author commends the leadership for their quick decision-making."
+   ],
+   "answer": 0,
+   "explanation": "The author mentions that the leadership \"أظهر قائدنا بعض التردد\" but does not outright criticize them. The phrase \"قد يحتاج قادتنا إلى مراجعة إستراتيجياتهم\" suggests uncertainty about the leadership's effectiveness.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-commentary-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-3-commentary-002",
+   "stem": "What does the word \"الاستجابة\" mean in this context?",
+   "choices": [
+    "The evaluation",
+    "The response",
+    "The preparation",
+    "The training"
+   ],
+   "answer": 1,
+   "explanation": "The word \"الاستجابة\" is used in the phrase \"الاستجابة لحالات الطوارئ\" which refers to responding to emergency situations during the drill.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dr-3-editorial-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4396,6 +5566,60 @@
    ],
    "answer": 2,
    "explanation": "The phrase \"الاستثمار في البنية التحتية\" refers to investing in the infrastructure, which includes the physical and organizational structures necessary for the border crossing to function efficiently. The author uses this phrase to argue for improvements in the facilities and systems at the border crossing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-editorial-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dr-3-editorial-004",
+   "stem": "What is the main point of this editorial?",
+   "choices": [
+    "The historical development of air defense strategies",
+    "The role of drones in modern air defense",
+    "The need for standardized radio procedures among allied air defense units",
+    "The impact of weather on radio communication"
+   ],
+   "answer": 2,
+   "explanation": "The editorial focuses on the need for standardized radio procedures among allied air defense units to ensure clarity and effectiveness. This is evident throughout the text, such as in the sentence: \"لذلك، فإنstandardizationإجراءات الراديو بين الوحدات المتحالفة أمر بالغ الأهمية لضمان الوضوح والفعالية\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-editorial-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dr-3-editorial-004",
+   "stem": "What can be inferred about the current state of radio procedures among allied air defense units?",
+   "choices": [
+    "They are highly advanced and effective",
+    "They are primarily used for non-combat communications",
+    "They are primarily used for inter-service coordination",
+    "They are inconsistent and lack standardization"
+   ],
+   "answer": 3,
+   "explanation": "The editorial implies that current radio procedures are inconsistent and lack standardization. This is suggested by the need for standardization to ensure clarity and effectiveness, as stated in the sentence: \"إن الوضوح والفعالية في الاتصالات الراديوية بين الوحدات المتحالفة أمر ضروري في بيئات القتال\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dr-3-editorial-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dr-3-editorial-004",
+   "stem": "In the sentence \"لذلك، فإنstandardizationإجراءات الراديو بين الوحدات المتحالفة أمر بالغ الأهمية لضمان الوضوح والفعالية\". What does \"standardization\" mean here?",
+   "choices": [
+    "The process of encrypting communications",
+    "The process of training personnel",
+    "The process of improving radio technology",
+    "The process of establishing uniform procedures"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"standardization\" refers to the process of establishing uniform procedures. The text emphasizes the need for uniform procedures to ensure clarity and effectiveness in radio communications.",
    "source": "llm",
    "verified": false
   },

@@ -231,6 +231,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Enhancing Airport Security",
+   "body": "Aéroport de Lyon-Saint Exupéry\n\nNous vous informons que nous venons d'installer un système de contre-drones. Ce système permet de détecter et de neutraliser les drones non autorisés dans l'espace aérien de l'aéroport. Cette mesure vise à améliorer la sécurité des passagers et du personnel. Nous vous remercions de votre compréhension et de votre coopération.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-announcement-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Drone Exercise Interruption",
+   "body": "Annonce importante : Pendant l'exercice de drone aujourd'hui, la liaison de contrôle du drone a été brouillée. Le drone a perdu contact avec l'opérateur et a atterri en toute sécurité. Les équipes techniques enquêtent sur l'incident. Merci de votre compréhension. Fin de l'annonce.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -261,6 +293,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1-instructions-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Exercice de défense",
+   "body": "Exercice de défense avec les forces de la nation hôte\n\nL'objectif est de travailler avec les forces de la nation hôte. L'exercice aura lieu le 15 mars à 10h00. Rassemblez-vous au point de rendez-vous. Suivez les procédures en cas d'urgence. Portez l'uniforme de service. Fin de l'exercice à 15h00.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Drone Defense Drill",
+   "body": "Exercice de défense contre les drones\n\nLe but de cet exercice est d'apprendre à se défendre contre les drones.\n\nIl y a trois étapes:\n1. Identifier le drone.\n2. Suivre le drone.\n3. Désactiver le drone.\n\nTous les participants doivent suivre ces étapes dans l'ordre. Bonne chance!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -288,6 +352,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-notice-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "notice",
+   "title": "End of Shift Report",
+   "body": "Fin de Quart de Travail\n\nBonjour à tous,\n\nPendant mon quart de travail, tout s'est bien passé jusqu'à minuit. À 01:00, nous avons remarqué une activité inhabituelle près de la porte est. Deux individus non identifiés ont été vus marchant près de la clôture. La sécurité a été alertée et une patrouille a été envoyée pour investigating. Rien de suspect n'a été trouvé.\n\nVeuillez rester vigilant.\n\nCordialement,\nJean",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-notice-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "notice",
+   "title": "A New Security Exercise",
+   "body": "À l'attention de tous les membres du personnel: Une nouvelle exercice de sécurité aura lieu le 15 mars. L'exercice impliquera les forces de défense et les forces locales. L'objectif est d'améliorer la coordination et la réponse en cas d'urgence. L'exercice commencera à 9h00 et se terminera à 17h00. Tous les membres du personnel sont priés de suivre les instructions fournies pendant l'exercice. Merci pour votre coopération.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -561,6 +657,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-2-event_description-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "event_description",
+   "title": "A Counter-Drone Exercise in Lyon",
+   "body": "Le week-end dernier, la ville de Lyon a mené un exercice de contre-drones pour évaluer sa préparation face à la menace croissante des drones malveillants. L'exercice, qui a impliqué plusieurs équipes de sécurité et des experts en cybersécurité, visait à tester les protocoles de détection et de neutralisation des drones non autorisés. Cependant, l'évaluation de l'exercice a révélé plusieurs défis. Notamment, les équipes ont rencontré des difficultés de communication, ce qui a entraîné des retards dans la réponse aux menaces simulées. De plus, un manque de coordination entre les différentes équipes a compliqué les efforts de neutralisation des drones. Les organisateurs ont souligné le besoin de formation supplémentaire pour les membres des équipes de sécurité afin de mieux gérer de telles situations à l'avenir. Malgré ces défis, l'exercice a fourni des informations précieuses pour améliorer les protocoles de sécurité de la ville.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-event_description-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Assessing Damage After a Rocket Alert in Toulouse",
+   "body": "Hier soir, une alarme de roquette a retenti dans la ville de Toulouse, poussant les autorités à lancer une mission de reconnaissance pour évaluer les dégâts. Dès que l'alerte a été donnée, les services d'urgence se sont mobilisés pour assurer la sécurité des citoyens. Les rues ont été évacuées rapidement et les habitants ont été dirigés vers les abris les plus proches. Une équipe de volontaires, formée et équipée pour ce type de situation, a été déployée pour inspecter les zones touchées. L'équipe a commencé à évaluer les dégâts dès que la zone a été déclarée sûre. Ils ont trouvé des dégâts minimes aux bâtiments et aucune blessure signalée. Les services publics, comme l'électricité et l'eau, n'ont pas été affectés. Les autorités ont rapidement informé la population que la situation était sous contrôle et que les services de nettoyage seraient déployés dès le lendemain pour réparer les dégâts mineurs. La ville a également mis en place un numéro d'urgence pour que les citoyens puissent signaler tout problème non détecté par l'équipe de reconnaissance. Les habitants de Toulouse ont réagi avec calme et coopération, suivant les instructions des autorités pour assurer leur sécurité. La ville a souligné l'importance de la préparation et de la vigilance en cas d'alerte de roquette, rappelant à tous les citoyens les procédures à suivre pour rester en sécurité.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -723,6 +851,70 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-report-005",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Post-Alarm Reconnaissance in Marseille",
+   "body": "Après l'alerte à la fusée qui a retenti ce matin, une équipe de reconnaissance a été déployée pour évaluer la situation dans la zone touchée. L'équipe, composée de membres de la police municipale et des services de secours, a commencé son travail dès la levée de l'alerte. Leur première tâche était d'inspecter les bâtiments et les infrastructures pour repérer d'éventuels dommages causés par l'explosion. Ils ont également cherché des signes de menace persistante, comme des débris non explosés ou des activités suspectes. Parallèlement, ils ont évalué l'impact de l'alerte sur les habitants, en notant les blessures éventuelles et les besoins immédiats en assistance. L'équipe a travaillé en étroite collaboration avec les services de santé pour assurer une réponse rapide et coordonnée. Une fois l'évaluation initiale terminée, ils ont commencé à élaborer un plan de secours pour les zones les plus touchées, en priorisant les interventions nécessaires pour restaurer la sécurité et la normalité. Le rapport final sera présenté à la mairie en fin de journée, avec des recommandations pour les mesures à prendre dans les prochaines heures et jours.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-report-006",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Routine de Sécurité à la Base",
+   "body": "Rapport de Transmission de Quart\n\nDate : 15 mars 2023\nHeure de transmission : 19h00\n\nLe quart précédent s'est terminé à 19h00. Voici le résumé des activités de la journée :\n\n1. Vérification des systèmes de sécurité : Tous les systèmes ont été vérifiés et fonctionnent correctement. Aucune anomalie n'a été détectée.\n2. Patrouilles : Les patrouilles ont été effectuées comme prévu. Aucun incident majeur n'a eu lieu.\n3. Communications : Toutes les communications ont été enregistrées et traitées conformément aux procédures.\n\nLes prochaines étapes pour le prochain quart incluent :\n\n1. Vérification des systèmes de sécurité à 21h00.\n2. Patrouilles supplémentaires en raison de la pleine lune.\n3. Réunion de coordination à 22h00 avec les équipes de soutien.\n\nLe quart suivant commencera à 7h00 demain matin. Fin du rapport.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-report-008",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Un essaim de drones au-dessus du port",
+   "body": "Un essaim de petits drones a survolé le port de Brest ce matin, perturbant le trafic maritime et causant des retards dans les opérations portuaires. Les drones, mesurant environ 50 centimètres de diamètre, ont commencé à apparaître dans la matinée précoce et ont continué à voler en formation serrée pendant plusieurs heures. Les autorités portuaires ont été alertées par les navires et les travailleurs du port qui ont signalé la présence inhabituelle des drones. Les responsables de la sécurité ont tenté de faire décoller les drones, mais ceux-ci ont continué à voler malgré les efforts pour les faire partir. Les autorités ont finalement fait appel à des experts en drones pour les aider à comprendre l'origine et l'intention derrière cette intrusion. Les enquêteurs soupçonnent qu'il pourrait s'agir d'une manifestation contre les activités portuaires ou d'une tentative de tester les protocoles de sécurité du port. Une enquête est en cours pour déterminer l'origine des drones et les mesures nécessaires pour empêcher de futurs incidents de ce type.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-report-009",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "report",
+   "title": "Changement de Quart de Nuit à la Base de l'Aérodrome",
+   "body": "Rapport de Changement de Quart de Nuit\n\nBonjour à tous, je suis le sergent Dubois et je prends le quart de nuit à la base de l'aérodrome. Je vous fais un rapide compte-rendu de la situation avant de passer les consignes à l'équipe de jour.\n\nTout d'abord, le temps est brumeux avec une visibilité réduite à 500 mètres. Les patrouilles terrestres ont signalé une activité inhabituelle près du périmètre sud, mais il s'est avéré être une fausse alarme causée par des animaux sauvages.\n\nConcernant les opérations aériennes, l'avion de reconnaissance a terminé sa mission sans incident. L'hélicoptère de transport est toujours en attente de réparation, mais les techniciens prévoient de le remettre en service d'ici la fin de la semaine.\n\nDu côté des communications, le système de radio a connu une panne temporaire, mais il a été rapidement réparé. Nous avons également reçu une mise à jour des protocoles de sécurité que nous devons examiner et mettre en œuvre dès que possible.\n\nEnfin, je vous rappelle que la prochaine simulation d'urgence est prévue pour la semaine prochaine. Assurez-vous que toutes les équipes sont préparées et informées des procédures à suivre.\n\nC'est tout pour ce soir. Passez une bonne nuit et restez vigilants.\n\nSigné, Sergent Dubois",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -906,6 +1098,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-3-analysis-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Fortification or Fencing In? Residents Debate Base Security Measures",
+   "body": "Dans la petite ville de Montclair, située à proximité d'une base militaire, les résidents expriment des inquiétudes croissantes concernant les mesures de sécurité mises en place. Bien que la nécessité de renforcer la sécurité soit comprise, plusieurs habitants estiment que les récentes initiatives ont un impact négatif sur leur qualité de vie.\n\n\"L'aspect visuel des clôtures et des barrières est désolant\", déclare Madame Lefèvre, une résidente de longue date. \"Ils transforment notre quartier pittoresque en quelque chose qui ressemble à une zone fortifiée\". Elle n'est pas la seule à exprimer ce sentiment. De nombreux résidents se plaignent de la perturbation de la vie quotidienne causée par ces mesures. Les routes habituelles sont bloquées, et l'accès à certains sentiers de randonnée préférés est restreint.\n\nUn autre point de préoccupation est le sentiment d'enfermement que ces mesures de sécurité créent. Monsieur Dubois, un retraité, explique : \"Je comprends la nécessité de la sécurité, mais je ne veux pas me sentir comme un prisonnier dans ma propre maison\". Il fait référence à l'installation récente de caméras de surveillance et de points de contrôle aux entrées du quartier.\n\nLes autorités de la base militaire reconnaissent ces préoccupations, mais insistent sur l'importance de ces mesures pour garantir la sécurité de tous. \"Nous comprenons les inquiétudes des résidents\", déclare le capitaine Renault, \"mais la sécurité doit rester notre priorité\".\n\nCependant, les résidents estiment que leurs préoccupations ne sont pas suffisamment prises en compte. Ils demandent un dialogue plus ouvert et une évaluation plus approfondie de l'impact de ces mesures sur la communauté. \"Nous ne voulons pas vivre dans une forteresse\", conclut Madame Lefèvre, \"nous voulons juste nous sentir en sécurité sans sacrifier notre mode de vie\".",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-analysis-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Assessing the Damage: Humanitarian Drones After the Flood",
+   "body": "Les inondations récentes ont causé des ravages dans de nombreuses régions, et les efforts humanitaires sont en cours pour évaluer les dégâts et apporter une aide aux populations touchées. Parmi les outils utilisés pour ces efforts, les drones jouent un rôle de plus en plus important. Les drones offrent des avantages incontestables, notamment leur capacité à accéder à des zones difficiles d'accès et à fournir des données en temps réel. Cependant, leur utilisation ne va pas sans défis. Les conditions météorologiques défavorables peuvent limiter leur efficacité, et les restrictions légales peuvent entraver leur déploiement. Malgré ces obstacles, les drones continuent de prouver leur valeur dans les efforts humanitaires. Par exemple, dans la région de X, les drones ont permis de cartographier rapidement les zones inondées et d'identifier les zones les plus touchées. Cela a permis aux équipes humanitaires de concentrer leurs efforts là où ils étaient les plus nécessaires. De plus, les drones ont été utilisés pour livrer des fournitures médicales et de la nourriture aux populations isolées. Bien que les drones ne puissent pas remplacer complètement les méthodes traditionnelles de secours, ils constituent un complément précieux. Ils permettent de gagner du temps et de sauver des vies, ce qui est essentiel dans les situations d'urgence. En conclusion, les drones jouent un rôle crucial dans les efforts humanitaires post-inondation. Leur utilisation continue de se développer, et il est probable que leur importance ne fera que croître à l'avenir.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -1011,6 +1235,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-3-commentary-005",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "commentary",
+   "title": "L'Entraînement à la Détection de l'Intention Hostile",
+   "body": "Dans un monde où les menaces à la sécurité évoluent constamment, il est crucial que les forces de sécurité soient formées pour détecter l'intention hostile par le biais des indicateurs comportementaux. La formation des agents de sécurité à reconnaître les signes avant-coureurs d'une menace potentielle est devenue une priorité absolue. Les méthodes traditionnelles de formation, qui se concentraient principalement sur l'utilisation des technologies de surveillance, ont laissé place à des approches plus holistiques intégrant l'analyse comportementale.\n\nLes experts en sécurité soulignent que la détection de l'intention hostile nécessite une combinaison de compétences techniques et d'aptitudes humaines. Les agents doivent être formés pour observer et interpréter les comportements suspects, tels que les mouvements nerveux, les contacts visuels évités ou les tentatives de se fondre dans la foule. Ces indicateurs comportementaux peuvent fournir des informations précieuses sur les intentions d'un individu bien avant qu'une action hostile ne soit entreprise.\n\nUn programme de formation récent, développé en collaboration avec des psychologues et des experts en comportement, a été appliqué avec succès dans plusieurs scénarios réels. Ce programme met l'accent sur des exercices pratiques où les agents doivent évaluer rapidement les situations et prendre des décisions éclairées. Les simulations de menaces variées permettent aux agents de renforcer leur vigilance et leur capacité à réagir efficacement.\n\nEn outre, la formation inclut des modules sur la communication et le travail d'équipe, soulignant l'importance de la coordination entre les différents membres des forces de sécurité. Une approche collaborative permet de partager les observations et les informations en temps réel, améliorant ainsi la détection et la réponse aux menaces potentielles. Les agents apprennent également à gérer le stress et à maintenir leur calme dans des situations de crise, des compétences essentielles pour une intervention efficace.\n\nEn conclusion, la formation des forces de sécurité à la détection de l'intention hostile par l'analyse comportementale représente une avancée significative dans le domaine de la sécurité. En combinant des compétences techniques et humaines, ce type de formation permet de mieux préparer les agents à faire face aux menaces émergentes et à assurer la sécurité de tous.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-3-editorial-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -1038,6 +1278,54 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-editorial-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Neighborhood Watch: Balancing Security and Community",
+   "body": "Récemment, notre quartier a vu l'introduction de nouvelles mesures de sécurité accrues. Bien que la sécurité soit une priorité, il est essentiel d'examiner les préoccupations soulevées par les résidents. Les résidents ont exprimé leurs inquiétudes concernant les nouvelles mesures de sécurité accrues, notamment l'impact sur la vie quotidienne et les éventuelles restrictions de la liberté individuelle. Par exemple, certains ont mentionné que les barrières de sécurité installées aux entrées du quartier rendent difficile l'accès pour les livreurs et les visiteurs. De plus, les patrouilles fréquentes la nuit ont perturbé le sommeil de plusieurs résidents. Il est crucial de garantir la sécurité de notre quartier, mais nous devons également prendre au sérieux les préoccupations de nos voisins. Une approche équilibrée est nécessaire, où la sécurité et le bien-être de la communauté sont tous deux pris en compte. Les autorités doivent engager un dialogue ouvert avec les résidents pour comprendre leurs préoccupations et trouver des solutions qui répondent aux besoins de sécurité tout en minimisant les perturbations. Par exemple, des horaires de patrouille ajustés ou des systèmes d'identification pour les livreurs pourraient atténuer certaines des préoccupations actuelles. En conclusion, tandis que nous soutenons les efforts pour améliorer la sécurité, il est impératif de le faire de manière qui respecte et intègre les préoccupations de la communauté. Un quartier sûr est un quartier où chacun se sent en sécurité et respecté.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-editorial-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Local Festival, National Security: The Case for a No-Drone Zone",
+   "body": "La sécurité nationale est une préoccupation majeure pour tout pays, et la France ne fait pas exception. Avec l'essor des drones récréatifs, il est devenu crucial d'aborder les risques potentiels pour la sécurité, notamment près des installations militaires sensibles. C'est dans ce contexte que se déroule le festival annuel de musique et d'art à Saint-Laurent, situé à proximité de la base aérienne 123. Bien que le festival attire des visiteurs du monde entier et soit un atout pour la région, il est impératif d'instaurer une zone sans drones pour garantir la sécurité de tous. Les drones, bien qu'utiles à des fins récréatives et professionnelles, peuvent représenter une menace significative pour la sécurité lorsque utilisés de manière inappropriée ou malveillante. Près d'une base militaire, les risques sont encore plus élevés, car les drones pourraient interférer avec les opérations aériennes ou servir de moyen de surveillance illégale. Il est donc essentiel de mettre en place des mesures de sécurité renforcées pour prévenir de tels incidents. Les organisateurs du festival comprennent cette nécessité et ont collaboré avec les autorités locales et militaires pour établir une zone sans drones autour du site du festival. Cette zone s'étendra sur un rayon de cinq kilomètres autour de la base aérienne, couvrant ainsi à la fois le festival et les installations militaires sensibles. Les visiteurs sont invités à respecter cette restriction et à laisser leurs drones à la maison ou à les utiliser uniquement dans les zones désignées. Pour garantir le respect de cette règle, des mesures de surveillance seront mises en place, notamment des patrouilles aériennes et terrestres, ainsi que des systèmes de détection de drones. Les contrevenants s'exposent à des amendes et à la confiscation de leur matériel. Bien que cette mesure puisse sembler restrictive, elle est nécessaire pour préserver la sécurité nationale et permettre à tous de profiter du festival en toute tranquillité. En conclusion, l'instauration d'une zone sans drones près du festival de Saint-Laurent est une étape importante pour garantir la sécurité de tous. Les visiteurs sont invités à coopérer avec les autorités et à respecter les restrictions en vigueur. Ensemble, nous pouvons assurer un événement sûr et agréable pour tous.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-3-editorial-005",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Securing the Borders: A Unified Approach",
+   "body": "Securing the Borders: A Unified Approach\n\nDans le contexte des récentes menaces sécuritaires, il est plus important que jamais de renforcer notre coopération avec nos voisins belges. Les patrouilles conjointes franco-belges sont un élément clé de notre stratégie de sécurité. Cependant, pour maximiser leur efficacité, nous devons aborder plusieurs défis.\n\nTout d'abord, la coopération entre nos forces est essentielle pour garantir la sécurité de nos frontières. Les patrouilles conjointes permettent de partager les ressources et les informations en temps réel, ce qui est crucial pour répondre rapidement aux menaces. Cependant, nous devons surmonter les défis linguistiques et culturels pour assurer l'efficacité de nos opérations. Il est impératif que nos forces développent une meilleure compréhension mutuelle pour travailler ensemble de manière harmonieuse.\n\nEnsuite, nous devons nous assurer que nos forces sont bien équipées et formées pour faire face aux menaces actuelles. Les équipements modernes et une formation adéquate sont indispensables pour garantir la sécurité de nos patrouilles et l'efficacité de nos opérations. Nous devons également investir dans des technologies de communication avancées pour faciliter la coordination entre nos forces.\n\nEnfin, nous devons adopter une approche proactive pour anticiper et prévenir les menaces. Les patrouilles conjointes doivent être planifiées et exécutées de manière stratégique pour maximiser leur impact. Nous devons également renforcer notre collaboration avec les autres agences de sécurité et les forces de l'ordre pour créer un réseau de sécurité intégré.\n\nEn conclusion, les patrouilles conjointes franco-belges sont un outil précieux pour renforcer la sécurité de nos frontières. En abordant les défis actuels et en adoptant une approche proactive, nous pouvons garantir la sécurité de nos citoyens et de nos communautés. Une réponse robuste et coordonnée est essentielle pour faire face aux menaces sécuritaires actuelles et futures.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1592,6 +1880,96 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-announcement-002",
+   "stem": "What is the purpose of the new system at the airport?",
+   "choices": [
+    "To monitor the number of flights.",
+    "To detect and neutralize unauthorized drones.",
+    "To guide drones to designated landing areas.",
+    "To provide entertainment for passengers."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'To detect and neutralize unauthorized drones.' The text states 'un système de contre-drones' and 'neutraliser les drones non autorisés', indicating that the purpose of the new system is to deal with unauthorized drones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-announcement-002",
+   "stem": "In the text, what does 'neutraliser' mean here?",
+   "choices": [
+    "To monitor",
+    "To guide",
+    "To make ineffective",
+    "To entertain"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'To make ineffective.' The text states 'neutraliser les drones non autorisés', indicating that the system is designed to make unauthorized drones ineffective.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-announcement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-announcement-003",
+   "stem": "What is the main problem being reported?",
+   "choices": [
+    "A drone lost contact with its operator.",
+    "The drone's camera failed.",
+    "A drone was stolen.",
+    "The drone's battery died."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the drone's control link was jammed, causing it to lose contact with its operator: “la liaison de contrôle du drone a été brouillée”. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-announcement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-announcement-003",
+   "stem": "In the text, what does the word \"brouillée\" mean?",
+   "choices": [
+    "Damaged",
+    "Destroyed",
+    "Jammed",
+    "Lost"
+   ],
+   "answer": 2,
+   "explanation": "The word \"brouillée\" is used to describe the control link of the drone. In this context, it means that the link was interfered with or jammed: “la liaison de contrôle du drone a été brouillée”. The other options do not accurately describe the situation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-announcement-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-announcement-003",
+   "stem": "What is the purpose of this announcement?",
+   "choices": [
+    "To report an interruption during a drone exercise.",
+    "To announce a new drone model.",
+    "To schedule a drone maintenance.",
+    "To inform about a drone crash."
+   ],
+   "answer": 0,
+   "explanation": "The announcement is reporting an interruption during a drone exercise: “Pendant l'exercice de drone aujourd'hui”. The other options are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1664,6 +2042,96 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1-instructions-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-instructions-003",
+   "stem": "What is the purpose of the exercise?",
+   "choices": [
+    "To simulate a terrorist attack",
+    "To evaluate new military equipment",
+    "To practice working with host-nation forces",
+    "To test the response to a natural disaster"
+   ],
+   "answer": 2,
+   "explanation": "The text explicitly states that the purpose is to work with host-nation forces: “l'objectif est de travailler avec les forces de la nation hôte.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-instructions-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-instructions-003",
+   "stem": "What does the phrase 'en cas d'urgence' mean here?",
+   "choices": [
+    "In case of bad weather",
+    "In case of a scheduled event",
+    "In case of a planned exercise",
+    "In case of an emergency"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'en cas d'urgence' is used to indicate that the procedures should be followed if there is an emergency during the exercise: “suivez les procédures en cas d'urgence.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-instructions-004",
+   "stem": "What does the text say is the first step in the exercise?",
+   "choices": [
+    "to record the drone",
+    "to identify the drone",
+    "to follow the drone",
+    "to disable the drone"
+   ],
+   "answer": 1,
+   "explanation": "The text says 'La première étape est d'identifier le drone.' This is the first step mentioned in the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-instructions-004",
+   "stem": "What is the main purpose of the exercise?",
+   "choices": [
+    "to learn how to fly drones",
+    "to learn how to defend against drones",
+    "to learn how to use drones",
+    "to learn how to repair drones"
+   ],
+   "answer": 1,
+   "explanation": "The text states 'Le but de cet exercice est d'apprendre à se défendre contre les drones.' This clearly indicates the main purpose of the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-instructions-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-instructions-004",
+   "stem": "What does 'désactiver' mean here?",
+   "choices": [
+    "to disable",
+    "to record",
+    "to identify",
+    "to follow"
+   ],
+   "answer": 0,
+   "explanation": "The text says 'La troisième étape est de désactiver le drone.' In this context, 'désactiver' means to disable the drone.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1732,6 +2200,114 @@
    ],
    "answer": 1,
    "explanation": "The word 'restreindre' in this context means 'to limit', as it is used to describe the action of limiting watering to early morning or late evening hours, as seen in 'restreindre l'arrosage aux heures matinales ou en fin de soirée'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-notice-003",
+   "stem": "What is the main point of this notice?",
+   "choices": [
+    "A report of unusual activities during the shift.",
+    "A change in the shift schedule.",
+    "A list of tasks to be completed by the next shift.",
+    "An announcement of a new security protocol."
+   ],
+   "answer": 0,
+   "explanation": "The main point is to report unusual activities during the shift. The text mentions 'activité inhabituelle' and provides details about it, which is the focus of the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-notice-003",
+   "stem": "What time did the unusual activity occur?",
+   "choices": [
+    "20:00",
+    "14:00",
+    "08:00",
+    "01:00"
+   ],
+   "answer": 3,
+   "explanation": "The unusual activity occurred at '01:00'. The text states 'À 01:00, nous avons remarqué une activité inhabituelle près de la porte est.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-1-notice-003",
+   "stem": "What does 'remarqué' mean here?",
+   "choices": [
+    "reported",
+    "noticed",
+    "ignored",
+    "prevented"
+   ],
+   "answer": 1,
+   "explanation": "'Remarqué' means 'noticed' here. The text says 'nous avons remarqué une activité inhabituelle', indicating that the unusual activity was noticed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-notice-004",
+   "stem": "What does “les forces de défense” mean here?",
+   "choices": [
+    "the defense team",
+    "the defense forces",
+    "the defense industry",
+    "the defense lawyers"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions “les forces de défense” in the context of a security exercise, so it must mean “the defense forces”. It does not refer to a team, lawyers, or an industry.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-notice-004",
+   "stem": "What is the main idea of the notice?",
+   "choices": [
+    "to explain how to defend the base",
+    "to announce a new security exercise",
+    "to schedule a meeting with the host nation",
+    "to introduce new defense forces"
+   ],
+   "answer": 1,
+   "explanation": "The notice states “Une nouvelle exercice de sécurité” and provides details about it, so the main idea is to announce a new security exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-notice-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "fr-dr-1-notice-004",
+   "stem": "Why does the notice mention “les forces locales”?",
+   "choices": [
+    "to announce a local security threat",
+    "to inform about the participants in the exercise",
+    "to describe the local defense strategy",
+    "to introduce new local defense laws"
+   ],
+   "answer": 1,
+   "explanation": "The notice mentions “les forces locales” as part of the exercise participants, saying “les forces de défense et les forces locales”, so it is to inform about the participants.",
    "source": "llm",
    "verified": false
   },
@@ -2672,6 +3248,114 @@
    "verified": false
   },
   {
+   "id": "fr-dr-2-event_description-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-event_description-001",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "The history of drone technology in France",
+    "The installation of new security systems in Lyon",
+    "The economic impact of drone usage on local businesses",
+    "The challenges faced during a counter-drone exercise"
+   ],
+   "answer": 3,
+   "explanation": "The text primarily discusses the challenges encountered during a counter-drone exercise, such as communication issues and the need for better training. This is evident from phrases like 'difficultés de communication', 'besoin de formation supplémentaire', and 'manque de coordination'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-event_description-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-event_description-001",
+   "stem": "What was one of the main issues during the exercise?",
+   "choices": [
+    "The drones were not detected by the security systems",
+    "There was a lack of coordination between different teams",
+    "The drones were too fast for the security teams to handle",
+    "The weather conditions were unfavorable for the exercise"
+   ],
+   "answer": 1,
+   "explanation": "The text explicitly states that 'un manque de coordination entre les différentes équipes' was one of the main issues during the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-event_description-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-event_description-001",
+   "stem": "What does 'l'évaluation' mean here?",
+   "choices": [
+    "The final report of the exercise",
+    "The assessment of the exercise's success",
+    "The initial planning phase",
+    "The training session before the exercise"
+   ],
+   "answer": 1,
+   "explanation": "The text uses 'l'évaluation' to refer to the assessment of the exercise's outcomes and the lessons learned, as seen in 'l'évaluation de l'exercice a révélé plusieurs défis'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-event_description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-event_description-002",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "A critique of the city's preparedness for rocket attacks.",
+    "The historical context of rocket attacks in Toulouse.",
+    "A detailed description of the rocket that hit Toulouse.",
+    "The response of emergency services to a rocket alert in Toulouse."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is B because the passage primarily focuses on the actions taken by the authorities and volunteers after a rocket alarm in Toulouse, including the reconnaissance mission to assess damage. The other options are not the main focus of the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-event_description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-event_description-002",
+   "stem": "What did the reconnaissance team find during their assessment?",
+   "choices": [
+    "Significant damage to infrastructure and many casualties.",
+    "Minimal damage to buildings and no injuries.",
+    "Widespread destruction and several injuries.",
+    "Evidence of multiple rockets hitting different parts of the city."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B. The text states that the reconnaissance team found 'des dégâts minimes aux bâtiments et aucune blessure signalée', which translates to 'minimal damage to buildings and no reported injuries'. The other options are not supported by the details in the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-event_description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-event_description-002",
+   "stem": "What does 'évaluer' mean here?",
+   "choices": [
+    "To estimate",
+    "To ignore",
+    "To criticize",
+    "To destroy"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B. In the context of the passage, 'évaluer' means 'to estimate' or 'to assess'. The sentence 'l'équipe a commencé à évaluer les dégâts' translates to 'the team began to assess the damage'. The other options do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3262,6 +3946,222 @@
    ],
    "answer": 0,
    "explanation": "The word “rendre” in this context means to return something to its owner. The relevant words of the text are: “Elle a essayé de le rendre.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-report-005",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "the aftermath of a recent earthquake",
+    "plans for a new security system",
+    "the annual budget for municipal safety",
+    "the response to a rocket alarm in Marseille"
+   ],
+   "answer": 3,
+   "explanation": "The report discusses the reconnaissance activities following a rocket alarm in Marseille. This is evident from phrases like \"après l'alerte à la fusée\" and \"la zone touchée par l'alerte\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-report-005",
+   "stem": "What is one of the key tasks of the reconnaissance team?",
+   "choices": [
+    "to assess the damage and potential threats",
+    "to negotiate with attackers",
+    "to repair damaged infrastructure",
+    "to evacuate residents"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the reconnaissance team is tasked with \"évaluer les dommages et les menaces potentielles\", which translates to assessing the damage and potential threats.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-report-005",
+   "stem": "What does \"la zone touchée\" mean here?",
+   "choices": [
+    "the border region",
+    "the central district",
+    "the target zone",
+    "the affected area"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"la zone touchée\" refers to \"la zone touchée par l'alerte\", which means the area affected by the alarm.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-006-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-report-006",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A routine shift handover at a base defense operations center",
+    "A new security protocol being implemented",
+    "A description of the base's layout",
+    "A security breach at the base"
+   ],
+   "answer": 0,
+   "explanation": "The report describes the handover of duties and information between shifts, including a summary of activities and any notable events. This is evident in phrases like 'Résumé des activités de la journée', 'Aucun incident majeur n'a eu lieu', and 'Les prochaines étapes pour le prochain quart'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-006-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-report-006",
+   "stem": "What time did the previous shift end?",
+   "choices": [
+    "15:00",
+    "19:00",
+    "23:00",
+    "07:00"
+   ],
+   "answer": 1,
+   "explanation": "The report states 'Le quart précédent s'est terminé à 19h00', indicating that the previous shift ended at 19:00.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-006-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-report-006",
+   "stem": "What does 'incident majeur' mean here?",
+   "choices": [
+    "A minor issue",
+    "A significant event or problem",
+    "A planned activity",
+    "A routine check"
+   ],
+   "answer": 1,
+   "explanation": "'Incident majeur' is used to describe a significant event or problem. The report mentions 'Aucun incident majeur n'a eu lieu', indicating that no significant events or problems occurred during the shift.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-008-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-report-008",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "A group of drones was used to deliver packages to ships in the port of Brest.",
+    "A new drone technology was tested in the port of Brest.",
+    "A swarm of drones disrupted maritime traffic in the port of Brest.",
+    "The port of Brest experienced a significant increase in drone sightings."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the passage is that a swarm of drones disrupted maritime traffic in the port of Brest. This is evident from the description of the incident and its impact on port operations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-008-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-report-008",
+   "stem": "What time did the drones first appear in the port?",
+   "choices": [
+    "In the afternoon",
+    "At dusk",
+    "At dawn",
+    "In the early morning"
+   ],
+   "answer": 3,
+   "explanation": "The passage states that the drones first appeared dans la matinée précoce, which translates to \"in the early morning\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-008-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-report-008",
+   "stem": "In the passage, the word \"perturbé\" most likely means:",
+   "choices": [
+    "Disrupted",
+    "Assisted",
+    "Inspired",
+    "Monitored"
+   ],
+   "answer": 0,
+   "explanation": "The word \"perturbé\" is used to describe the effect of the drones sur le trafic maritime, which translates to \"on maritime traffic\". The context suggests that the drones disrupted or interfered with the normal operations of the port.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-009-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-report-009",
+   "stem": "What is the main purpose of this report?",
+   "choices": [
+    "To describe the current weather conditions and their impact on operations.",
+    "To explain the procedures for handling a lost pass.",
+    "To document the events and decisions made during a shift change at an airfield base.",
+    "To outline the steps for conducting a security drill."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of this report is to document the events and decisions made during a shift change at an airfield base. The text mentions the transfer of responsibilities, updates on ongoing situations, and preparations for the next shift.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-009-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-report-009",
+   "stem": "What does the report say about the weather?",
+   "choices": [
+    "The weather is clear and calm.",
+    "The weather is foggy, reducing visibility to 500 meters.",
+    "The weather is not mentioned in the report.",
+    "The weather is stormy and affecting operations."
+   ],
+   "answer": 1,
+   "explanation": "The report states that the weather is foggy, reducing visibility to 500 meters. The relevant phrase is: \"Le temps est brumeux avec une visibilité réduite à 500 mètres.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-report-009-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-2-report-009",
+   "stem": "In the phrase \"Les patrouilles terrestres ont signalé une activité inhabituelle près du périmètre sud\", what does \"périmètre\" mean here?",
+   "choices": [
+    "A type of patrol vehicle.",
+    "A specific time slot for patrols.",
+    "A type of communication equipment.",
+    "An area or boundary."
+   ],
+   "answer": 3,
+   "explanation": "Here, \"périmètre\" refers to an area or boundary. The phrase indicates that unusual activity was reported near the southern boundary of the base.",
    "source": "llm",
    "verified": false
   },
@@ -3914,6 +4814,114 @@
    "verified": false
   },
   {
+   "id": "fr-dr-3-analysis-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-analysis-001",
+   "stem": "What is the main concern of the residents discussed in the article?",
+   "choices": [
+    "The insufficient funding allocated to base security",
+    "The lack of transparency in the decision-making process",
+    "The inadequate training of security personnel",
+    "The potential negative impact of security measures on their quality of life"
+   ],
+   "answer": 3,
+   "explanation": "The article discusses various concerns residents have about security measures, such as the visual impact of fences (\"l'aspect visuel des clôtures\"), the disruption of daily life (\"perturbation de la vie quotidienne\"), and the feeling of being enclosed (\"sentiment d'enfermement\"). These points indicate that the main concern is the negative impact on their quality of life.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-analysis-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-analysis-001",
+   "stem": "What can be inferred about the relationship between the residents and the base authorities?",
+   "choices": [
+    "It is strained due to differing priorities",
+    "It is non-existent",
+    "It is collaborative and cooperative",
+    "It is distant but respectful"
+   ],
+   "answer": 0,
+   "explanation": "The article mentions that residents feel their concerns are not being adequately addressed (\"les préoccupations des résidents ne sont pas suffisamment prises en compte\"), suggesting a strain in the relationship due to differing priorities.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-analysis-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-analysis-001",
+   "stem": "In the context of the article, what does \"mesures de sécurité\" refer to?",
+   "choices": [
+    "Surveillance and monitoring systems",
+    "Emergency response plans",
+    "Physical barriers and fortifications",
+    "Security protocols and procedures"
+   ],
+   "answer": 2,
+   "explanation": "The article discusses specific physical measures such as fences (\"clôtures\") and barriers (\"barrières\"), indicating that \"mesures de sécurité\" refers to physical barriers and fortifications in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-analysis-002",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The passage criticizes the government's response to the recent flood.",
+    "The passage discusses the use of drones in post-flood humanitarian efforts, focusing on their effectiveness and challenges.",
+    "The passage argues that drones should replace traditional methods of flood damage assessment.",
+    "The passage describes the technical specifications of the drones used in humanitarian efforts."
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the passage is the use of drones in post-flood humanitarian efforts, focusing on their effectiveness and challenges. The passage discusses the advantages of using drones, such as their ability to access difficult terrain and provide real-time data, as well as the challenges faced, such as weather conditions and legal restrictions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-analysis-002",
+   "stem": "What can be inferred about the author's opinion on the use of drones in humanitarian efforts?",
+   "choices": [
+    "The author believes that drones are a valuable tool in humanitarian efforts but acknowledges the challenges faced.",
+    "The author is indifferent about the use of drones in humanitarian efforts.",
+    "The author thinks that drones should be used exclusively in humanitarian efforts.",
+    "The author is skeptical about the effectiveness of drones in humanitarian efforts."
+   ],
+   "answer": 0,
+   "explanation": "The author believes that drones are a valuable tool in humanitarian efforts but acknowledges the challenges faced. The author states that 'les drones offrent des avantages incontestables' (drones offer undeniable advantages) but also discusses the challenges faced, such as 'les conditions météorologiques défavorables' (unfavorable weather conditions) and 'les restrictions légales' (legal restrictions).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-analysis-002",
+   "stem": "What does the phrase 'évaluer les dégâts' mean here?",
+   "choices": [
+    "To predict the damage",
+    "To assess the damage",
+    "To ignore the damage",
+    "To repair the damage"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'évaluer les dégâts' means to assess the damage. The passage states that 'les drones sont utilisés pour évaluer les dégâts causés par les inondations' (drones are used to assess the damage caused by floods).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4292,6 +5300,60 @@
    "verified": false
   },
   {
+   "id": "fr-dr-3-commentary-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-commentary-005",
+   "stem": "What is the main point of this text?",
+   "choices": [
+    "The history of security training methods in France.",
+    "The need for advanced technology to replace human judgment in security operations.",
+    "The legal framework for security forces in handling potential threats.",
+    "The importance of training security forces to detect hostile intent through behavioral cues."
+   ],
+   "answer": 3,
+   "explanation": "The text discusses how security forces can be trained to recognize hostile intent by analyzing behavioral indicators, as seen in the focus on 'la détection de l'intention hostile par le biais des indicateurs comportementaux'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-commentary-005",
+   "stem": "What can be inferred about the effectiveness of the training program discussed?",
+   "choices": [
+    "It has been discontinued due to lack of results.",
+    "It relies too heavily on technological solutions.",
+    "It is still in the theoretical development stage.",
+    "It has proven successful in various real-world scenarios."
+   ],
+   "answer": 3,
+   "explanation": "The text states that the training has been 'appliqué avec succès dans plusieurs scénarios réels', indicating its effectiveness in practical situations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-commentary-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-commentary-005",
+   "stem": "What does the phrase 'renforcer la vigilance' mean here?",
+   "choices": [
+    "To implement new laws and regulations.",
+    "To increase awareness and readiness.",
+    "To strengthen physical barriers.",
+    "To reduce the number of personnel."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'renforcer la vigilance' is used in the context of improving the ability of security forces to detect threats, which means 'augmenter la conscience et la préparation'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-3-editorial-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4396,6 +5458,168 @@
    ],
    "answer": 3,
    "explanation": "In the context of the article, 'coordonner' means 'to organize'. This is evident in the phrase 'Les bénévoles ont travaillé sans relâche pour coordonner les efforts de secours', which describes the volunteers' efforts to organize the rescue efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-editorial-003",
+   "stem": "What is the main idea of this editorial?",
+   "choices": [
+    "The author is indifferent to the concerns raised by the residents.",
+    "Residents are concerned about the negative impacts of increased security measures.",
+    "The editorial argues for the immediate removal of all security measures.",
+    "A new security measure has been implemented to protect the neighborhood."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that residents are concerned about the negative impacts of increased security measures, as seen in the repeated mentions of their worries and the author's acknowledgment of these concerns (e.g., 'Les résidents ont exprimé leurs inquiétudes concernant les nouvelles mesures de sécurité...').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-editorial-003",
+   "stem": "What can be inferred about the author's opinion on the security measures?",
+   "choices": [
+    "The author believes the security measures are necessary but understands the residents' concerns.",
+    "The author is completely against the security measures.",
+    "The author is indifferent to the security measures.",
+    "The author thinks the security measures are ineffective."
+   ],
+   "answer": 0,
+   "explanation": "The author's opinion can be inferred as believing the security measures are necessary but understanding the residents' concerns, as indicated by the phrases 'il est crucial de garantir la sécurité de notre quartier' and 'nous devons également prendre au sérieux les préoccupations de nos voisins'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-editorial-003",
+   "stem": "What does the phrase 'mesures de sécurité accrues' mean here?",
+   "choices": [
+    "Increased security measures",
+    "Decreased security measures",
+    "New types of security measures",
+    "Temporary security measures"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'mesures de sécurité accrues' means 'increased security measures' here, as it refers to the additional security steps taken to enhance protection (e.g., 'Les résidents ont exprimé leurs inquiétudes concernant les nouvelles mesures de sécurité accrues...').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-editorial-004",
+   "stem": "What is the main point of the editorial?",
+   "choices": [
+    "Drone usage should be encouraged at local festivals to boost tourism.",
+    "A no-drone zone around the festival is necessary for national security reasons.",
+    "The festival's organizers should be allowed to decide on drone restrictions.",
+    "The military base near the festival should relocate to avoid such conflicts."
+   ],
+   "answer": 1,
+   "explanation": "The editorial argues that a no-drone zone is necessary due to the proximity of a military base and the potential security risks. This is evident in phrases like 'la nécessité de préserver la sécurité nationale' and 'les risques potentiels pour la sécurité.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-editorial-004",
+   "stem": "What can be inferred about the author's view on drone regulations?",
+   "choices": [
+    "The author supports stricter drone regulations in certain areas to ensure public safety.",
+    "The author believes drone regulations should be relaxed to promote technological advancement.",
+    "The author thinks current drone regulations are sufficient and do not need modification.",
+    "The author argues that drone regulations should be decided on a case-by-case basis."
+   ],
+   "answer": 0,
+   "explanation": "The author supports stricter regulations in specific areas, as inferred from the statement 'il est impératif d'instaurer une zone sans drones' and the emphasis on 'la sécurité nationale' and 'les risques potentiels pour la sécurité.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dr-3-editorial-004",
+   "stem": "What does the phrase 'mesures de sécurité renforcées' mean here?",
+   "choices": [
+    "Increased security measures",
+    "Emergency protocols",
+    "Military exercises",
+    "Technological advancements"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'mesures de sécurité renforcées' refers to the need for increased security measures around the festival area, as seen in the context of 'la nécessité de préserver la sécurité nationale' and 'les risques potentiels pour la sécurité.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dr-3-editorial-005",
+   "stem": "What is the main idea of the editorial?",
+   "choices": [
+    "To suggest that technology should replace human patrols for border security",
+    "To criticize the lack of coordination between French and Belgian security forces",
+    "To argue that perimeter patrols are outdated and need to be replaced",
+    "To emphasize the importance of joint patrols between French and Belgian forces to enhance border security"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C. The editorial repeatedly stresses the need for collaboration between French and Belgian forces, stating 'La coopération entre nos forces est essentielle pour garantir la sécurité de nos frontières' and 'Les patrouilles conjointes franco-belges sont un élément clé de notre stratégie de sécurité'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dr-3-editorial-005",
+   "stem": "What can be inferred about the author's opinion on the recent security threats?",
+   "choices": [
+    "S/he believes they are exaggerated and not a real concern",
+    "S/he thinks they are a serious issue that requires immediate attention",
+    "S/he is unsure about the severity of the threats",
+    "S/he believes they are a distraction from other more important security issues"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B. The author expresses concern about the 'récentes menaces sécuritaires' and emphasizes the need for 'une réponse robuste et coordonnée', indicating that s/he takes these threats seriously.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-3-editorial-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "fr-dr-3-editorial-005",
+   "stem": "According to the editorial, what is one of the main challenges faced during joint patrols?",
+   "choices": [
+    "Language barriers between French and Belgian forces",
+    "Insufficient training of personnel",
+    "Lack of proper equipment",
+    "Difficulty in coordinating schedules"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B. The editorial explicitly mentions 'les défis linguistiques' as one of the main obstacles in joint patrols, stating 'Nous devons surmonter les défis linguistiques et culturels pour assurer l'efficacité de nos opérations'.",
    "source": "llm",
    "verified": false
   },

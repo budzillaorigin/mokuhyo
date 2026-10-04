@@ -231,6 +231,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-1-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Change of Guard at the Defense Operations Center",
+   "body": "Pemberitahuan perubahan jaga hari ini. Pertukaran jaga hari ini akan dilakukan pada pukul 14:00. Semua personel diminta untuk hadir tepat waktu. Terima kasih atas kerjasamanya. Pukul 14:00 jaga akan diganti. Harap hadir tepat waktu. Terima kasih.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -261,6 +277,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-1-instructions-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Radio Procedures for Allied Air Defense Units",
+   "body": "Petunjuk Prosedur Radio untuk Unit Pertahanan Udara Sekutu\n\n1. Hidupkan radio dan pastikan baterai terisi penuh.\n2. Atur frekuensi sesuai dengan yang telah ditetapkan.\n3. Pastikan pemantauan udara terus-menerus.\n4. Laporkan semua aktivitas tidak biasa segera.\n5. Jika ada masalah, pindahkan frekuensi.\n6. Selalu gunakan bahasa yang jelas dan singkat.\n7. Pastikan Anda memahami pesan sebelum merespons.\n8. Selamatkan frekuensi untuk komunikasi penting.\n9. Matikan radio ketika tidak digunakan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Lessons from the Drone Defense Drill",
+   "body": "Selama latihan anti-dron, kami belajar beberapa hal penting. Pertama, penting untuk menggunakan sistem senjata anti-dron yang tepat. Kedua, kami harus melatih kru secara berkala. Terakhir, komunikasi yang baik di antara kru sangat penting. Dengan pelajaran ini, kami bisa meningkatkan pertahanan against serangan dron.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -273,6 +321,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-notice-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "notice",
+   "title": "Drone Warning at Kalimantan Airport",
+   "body": "Peringatan: Pengoperasian Drone di Sekitar Bandara\n\nKepada seluruh masyarakat, khususnya pengoperasi drone. Sehubungan dengan adanya potensi gangguan pada proses lepas landas dan mendarat pesawat, penggunaan drone di sekitar Bandara Internasional Kalimantan dilarang. Pengoperasian drone dalam radius 10 kilometer dari bandara dapat menimbulkan bahaya. Jika Anda melihat drone yang terbang di sekitar bandara, segera laporkan kepada petugas keamanan bandara terdekat. Kerjasama Anda sangat kami hargai.\n\nTerima kasih.\nPetugas Keamanan Bandara",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-notice-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "notice",
+   "title": "New Drone Restrictions at Angkasa Airfield",
+   "body": "Pemberitahuan Penting:\n\nUntuk alasan keamanan, mulai tanggal 15 September, dilarang mengoperasikan drone dalam radius 5 kilometer dari Pangkalan Angkasa. Pelanggar akan dikenakan sanksi. Terima kasih atas kerjasamanya.\n\nPimpinan Pangkalan Angkasa",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -363,6 +443,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-short_message-007",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "short_message",
+   "title": "New Safety System at Soekarno–Hatta Airport",
+   "body": "Bandara Soekarno–Hatta telah memasang sistem anti-drone baru. Sistem ini dirancang untuk mencegah drone masuk ke area bandara. Sistem ini akan membantu meningkatkan keamanan bandara dan melindungi pesawat serta penumpang. Kami harapkan semua pengunjung bandara dapat membaca informasi ini dan memahami pentingnya sistem baru ini. Terima kasih atas kerjasama Anda. Pemerintah Bandara Soekarno–Hatta",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -636,6 +732,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-2-event_description-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Security Awareness Day at Tanjung Priok Base",
+   "body": "Pangkalan Tanjung Priok baru saja mengadakan Hari Kesadaran Keamanan untuk seluruh personel. Acara ini diselenggarakan di auditori markas dan bertujuan untuk meningkatkan kesadaran personel tentang ancaman dari dalam. Komandan pangkalan, Kolonel Jaya, membuka acara dengan mengingatkan betapa pentingnya keamanan informasi dalam mencegah kebocoran informasi yang berbahaya. Selama acara, personel diajarkan tentang tanda-tanda potensial insider threat, seperti perilaku yang aneh atau permintaan informasi yang tidak biasa. Mereka juga belajar tentang langkah-langkah yang harus diambil jika mereka melihat tindakan mencurigakan. Selain itu, diadakan sesi praktis di mana personel harus mengidentifikasi situasi yang mungkin menjadi ancaman dari dalam. Acara ini berakhir dengan sesi tanya jawab di mana personel dapat menanyakan pertanyaan tentang keamanan dan melaporkan masalah yang mereka hadapi. Komandan pangkalan mengucapkan terima kasih kepada seluruh personel atas partispasinya dan mengingatkan mereka untuk selalu waspada terhadap potensi ancaman dari dalam.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -696,6 +808,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-2-news-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "news",
+   "title": "Unmanned Aerial Threat to Indonesian Air Bases",
+   "body": "Pemerintahan Indonesia mematikan beberapa basis udara setelah adanya ancaman dari munisi berkeliaran. Munisi berkeliaran, yang sering disebut sebagai drone, telah menjadi masalah serius bagi keamanan basis udara di seluruh negeri. Drone dapat menembus sistem keamanan yang ada dan mencoba untuk mendekati fasilitas kritis. Untuk menanggapi ancaman ini, pemerintah telah mengimplementasikan zona terbang terbatas di sekitar basis udara. Zona terbang terbatas ini melarang penggunaan drone di area tertentu dan membantu mengurangi risiko keamanan. Pihak berwenang juga bekerja sama dengan perusahaan teknologi untuk mengembangkan sistem deteksi drone yang lebih canggih. Meski demikian, masih banyak tantangan yang harus diatasi untuk melindungi basis udara dari ancaman drone. Pemerintah berkomitmen untuk terus meningkatkan keamanan dan melindungi fasilitas militer dari ancaman serupa di masa depan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-news-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "news",
+   "title": "Residents Worry About Military Base Access",
+   "body": "Warga yang tinggal di sekitar pangkalan militer di kota Bandung mulai khawatir dengan langkah-langkah keamanan baru yang akan segera diimplementasikan. Militer telah mengumumkan rencana untuk melakukan pemeriksaan kendaraan yang lebih ketat dan membatasi akses ke pangkalan. Warga khawatir ini akan menyebabkan kemacetan lalu lintas yang parah, terutama saat jam sibuk. \"Kami memahami pentingnya keamanan, tetapi kami juga perlu bisa berjalan kaki ke toko atau sekolah tanpa harus menunggu lama di pos pemeriksaan,\" kata Bapak Sutarman, seorang warga lokal. Militer menyebut langkah-langkah baru ini diperlukan untuk menanggapi ancaman keamanan yang semakin kompleks. Mereka berjanji untuk berkoordinasi dengan pemerintah setempat untuk meminimalkan gangguan pada warga. Namun, banyak warga yang masih merasa khawatir dan menantikan penjelasan lebih lanjut dari pihak militer.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-2-report-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -708,6 +852,54 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-report-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "Indonesian Air Force Considers Laser Weapons for Air Defense",
+   "body": "TNI Angkatan Udara mengkaji penggunaan senjata laser untuk pertahanan udara. Kaji ini dilakukan karena beberapa keunggulan penggunaan senjata laser. Pertama, senjata laser dapat menembak jatuh pesawat musuh dengan akurat. Kedua, senjata laser dapat digunakan berkali-kali tanpa perlu diisi ulang amunisi. Namun, ada juga beberapa tantangan dalam penggunaan senjata laser. Misalnya, senjata laser membutuhkan banyak energi dan rentang jaraknya masih terbatas. Selain itu, senjata laser rentan terhadap cuaca buruk. Meskipun demikian, TNI Angkatan Udara optimis dapat mengatasi tantangan tersebut. Mereka berencana melakukan uji coba senjata laser dalam waktu dekat. Jika uji coba berhasil, senjata laser akan menjadi bagian dari sistem pertahanan udara Indonesia.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "Drone Operations and Airspace Coordination in East Nusa Tenggara",
+   "body": "Untuk meningkatkan keamanan dan keteramanan penerbangan di Nusa Tenggara Timur, koordinasi antara operator drone dan otoritas penerbangan sipil harus diutamakan. Dengan adanya koordinasi yang baik, dapat dicapai manajemen udara yang efektif dan teratur. Hal ini penting untuk mencegah tabrakan di udara dan memastikan operasi drone berjalan lancar. Otoritas penerbangan sipil di Nusa Tenggara Timur telah menyiapkan prosedur dan peraturan yang jelas untuk pengoperasian drone. Operator drone diharapkan untuk selalu mematuhi peraturan tersebut dan berkoordinasi dengan otoritas penerbangan sipil sebelum melakukan operasi. Dengan demikian, dapat dicapai lingkungan penerbangan yang aman dan teratur di Nusa Tenggara Timur.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-report-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "Delivery Truck Stopped at Security Checkpoint",
+   "body": "Pada hari Selasa, sebuah truk pengiriman dihentikan di titik kontrol masuk. Pemandu truk tersebut, Budi, mengatakan bahwa ia memiliki semua dokumen yang diperlukan. Namun, petugas keamanan menemukan bahwa truk itu memiliki bagian yang hilang. Bagian yang dibutuhkan untuk memeriksa truk itu tidak ada. Budi mengatakan bahwa ia tidak tahu bagaimana bagian itu hilang. Petugas keamanan menginformasikan ke atasannya tentang masalah ini. Setelah beberapa menit menunggu, Budi diizinkan untuk melanjutkan perjalanannya. Namun, ia harus mengirimkan truk itu untuk diperbaiki terlebih dahulu. Budi setuju dan pergi ke bengkel terdekat. Truk itu diperbaiki dalam waktu singkat dan Budi dapat melanjutkan pengiriman.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -906,6 +1098,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-3-analysis-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Joint Patrol Briefing: Security Challenges in the Border Region",
+   "body": "Pembicaraan Bersama Patroli Perimeter: Tantangan Keamanan di Wilayah Perbatasan\n\nPara pejabat militer Indonesia dan Malaysia berkumpul untuk membahas strategi patroli perimeter bersama. Dalam pertemuan tersebut, mereka menyoroti pentingnya kerja sama dalam menghadapi berbagai tantangan keamanan yang ada di wilayah perbatasan.\n\nPertama, mereka membahas tentang peningkatan aktivitas gelap seperti penyelundupan dan pencurian yang terjadi di wilayah perbatasan. Hal ini menjadi masalah serius yang perlu ditangani dengan serius. Untuk itu, mereka sepakat untuk meningkatkan koordinasi antara pasukan dari kedua negara.\n\nKedua, mereka juga membahas tentang masalah keamanan yang timbul dari adanya grup-grup yang tidak bertanggung jawab. Kelompok-kelompok ini sering melakukan aktivitas yang merugikan masyarakat dan menimbulkan ketidakstabilan. Oleh karena itu, mereka menyepakati rencana untuk melakukan patroli bersama yang lebih intensif.\n\nSelain itu, mereka juga membahas tentang pentingnya mengoptimalkan sumber daya yang tersedia. Dengan cara ini, mereka dapat bekerja lebih efisien dan efektif dalam menjaga keamanan wilayah perbatasan. Mereka juga sepakat untuk melakukan pertukaran informasi secara rutin agar dapat memberikan tanggapan yang lebih tepat terhadap berbagai tantangan keamanan.\n\nDalam kesimpulannya, para pejabat militer dari Indonesia dan Malaysia menyatakan komitmen mereka untuk terus bekerja sama dalam menjaga keamanan wilayah perbatasan. Mereka juga menyoroti pentingnya dukungan dari masyarakat setempat dalam upaya peningkatan keamanan.\n\nDengan demikian, pertemuan ini menjadi langkah penting dalam upaya meningkatkan kerja sama antara Indonesia dan Malaysia dalam menjaga keamanan wilayah perbatasan. Kerja sama yang erat ini diharapkan dapat memberikan dampak positif bagi stabilitas dan ketertiban di wilayah tersebut.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-analysis-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "analysis",
+   "title": "New Drone Regulations Near Bima Air Base",
+   "body": "Pemerintah Indonesia telah menerapkan aturan baru untuk penerbangan drone di sekitar Pangkalan Udara Bima. Aturan ini dilaksanakan untuk mencegah penerbangan drone tidak terautorisasi di wilayah tersebut dan menjaga keamanan pangkalan udara serta lingkungannya. Dengan adanya aturan baru ini, diharapkan dapat menghindari insiden yang tidak diinginkan dan memastikan keselamatan semua pihak.\n\nAturan baru yang berlaku meliputi batasan wilayah penerbangan drone, persyaratan izin, dan sanksi untuk pelanggar. Wilayah yang dilarang untuk penerbangan drone meliputi area sekitar Pangkalan Udara Bima dengan radius 5 kilometer. Penerbangan drone hanya diperbolehkan setelah mendapatkan izin terlebih dahulu dari pihak berwenang. Izin tersebut harus disertai dengan rincian penerbangan, termasuk waktu, lokasi, dan tujuan penerbangan.\n\nPelanggar yang ditemukan melakukan penerbangan drone tanpa izin atau melanggar aturan yang berlaku akan dikenakan sanksi hukum dan denda. Pihak berwenang juga akan melakukan pemantauan dan pengawasan secara rutin untuk memastikan pelaksanaan aturan baru ini. Dengan adanya aturan baru ini, diharapkan dapat menambah keamanan dan ketertiban di sekitar Pangkalan Udara Bima serta mendukung kegiatan operasi militer yang berlangsung.\n\nSelain itu, pemerintah juga menyediakan fasilitas pelatihan dan edukasi bagi operator drone agar mereka memahami aturan dan prosedur yang berlaku. Pelatihan ini dilakukan untuk meningkatkan kesadaran dan pengetahuan operator drone tentang pentingnya keamanan dan keselamatan dalam operasi penerbangan drone.\n\nDengan implementasi aturan baru ini, diharapkan dapat mencegah insiden yang tidak diinginkan dan memastikan keselamatan semua pihak. Pemerintah juga berharap bahwa operator drone akan patuh dan mematuhi aturan yang berlaku agar kegiatan penerbangan drone dapat berlangsung dengan lancar dan aman.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-analysis-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Ensuring Safe Skies: Integrating Drones into Indonesian Airspace",
+   "body": "Integrasi drone ke dalam ruang udara Indonesia menuntut penataan yang matang. Dengan semakin banyaknya penggunaan drone baik untuk keperluan sipil maupun militer, koordinasi antara operasi drone dan penerbangan sipil menjadi sangat penting. Penerbangan sipil, yang meliputi pesawat penumpang dan kargo, sudah memiliki jalur penerbangan dan prosedur yang terstandar. Namun, dengan adanya drone, ruang udara menjadi lebih ramai dan kompleks. Oleh karena itu, penataan ruang udara yang baik menjadi kunci untuk menjamin keamanan dan efisiensi operasi penerbangan secara keseluruhan. \n\nDirektorat Jenderal Perhubungan Udara (DGAC) memiliki peran penting dalam menata ruang udara untuk operasi drone. DGAC bertanggung jawab untuk menentukan zona operasi drone, menetapkan aturan penerbangan, dan memastikan bahwa semua operator drone mematuhi regulasi yang berlaku. Selain itu, DGAC juga bekerja sama dengan operator penerbangan sipil untuk mengkoordinasikan jalur penerbangan dan mencegah tabrakan di udara. Koordinasi ini sangat penting untuk mencegah insiden yang mungkin terjadi akibat benturan antara drone dan pesawat lain. \n\nSelain penataan ruang udara, aspek keamanan juga menjadi prioritas utama. Operasi drone harus memenuhi standar keamanan yang ketat untuk menjamin bahwa mereka tidak menimbulkan bahaya bagi penerbangan sipil atau masyarakat umum. Hal ini meliputi pemeriksaan teknis pada drone, pelatihan operator, dan implementasi sistem pengawasan yang efektif. Dengan demikian, integrasi drone ke dalam ruang udara Indonesia tidak hanya tentang menambah jenis pesawat yang terbang, tetapi juga tentang menjaga keamanan dan ketertiban di udara.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -966,6 +1206,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-3-commentary-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Ensuring Safe Skies for All: Integrating Drones into Indonesian Airspace",
+   "body": "Pemerintah Indonesia sedang menghadapi tantangan koordinasi yang besar dalam integrasi drone ke dalam ruang udara nasional. Dengan pertumbuhan cepat operasi drone, baik untuk keperluan sipil maupun militer, koordinasi yang cermat antara berbagai pihak yang terlibat menjadi semakin penting. Ruang udara Indonesia, yang sudah ramai dengan lalu lintas pesawat sipil dan militer, harus dapat menampung operasi drone secara aman dan teratur.\n\nUntuk melakukan hal ini, Kementerian Perhubungan dan TNI AU sedang bekerja sama untuk mengembangkan aturan dan prosedur yang jelas. Tujuan utama adalah mencegah insiden yang tidak diinginkan dan memastikan ketertiban dan keamanan ruang udara. Salah satu tantangan utama adalah pengembangan sistem pengendalian lalu lintas udara yang dapat menangani berbagai jenis pesawat tanpa awak, dari drone kecil untuk kegiatan rekreasi hingga drone besar untuk kegiatan komersial dan militer.\n\nSelain itu, koordinasi antara pengendali lalu lintas udara sipil dan militer juga perlu diperkuat. Dengan adanya komunikasi yang baik dan koordinasi yang efektif, ruang udara Indonesia dapat dimanfaatkan secara optimal tanpa menimbulkan resiko keselamatan. Pemerintah juga harus memastikan bahwa semua operator drone memahami aturan dan prosedur yang berlaku, serta memiliki lisensi yang sesuai.\n\nDengan demikian, integrasi drone ke dalam ruang udara Indonesia bukanlah tugas yang mudah. Namun, dengan kerja sama yang baik antara berbagai pihak dan pengembangan sistem pengendalian lalu lintas udara yang canggih, tantangan ini dapat diatasi. Hal ini tidak hanya penting untuk memastikan keamanan dan ketertiban ruang udara, tetapi juga untuk memanfaatkan potensi manfaat yang ditawarkan oleh teknologi drone.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-3-editorial-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -993,6 +1249,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-editorial-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Safeguarding Our Skies: Strengthening Base Defense with Local Allies",
+   "body": "Editorial: Menegakkan Pertahanan Basis Melalui Kerjasama dengan Pasukan Negara Tuan Rumah\n\nSeluruh warga negara harus bangga dengan upaya yang dilakukan oleh Angkatan Bersenjata Republik Indonesia (ABRI) dalam menjaga keamanan dan kestabilan negara. Salah satu upaya yang Done secara konsisten adalah melaksanakan latihan pertahanan basis bersama dengan pasukan negara tuan rumah.\n\nLatihan bersama dengan pasukan negara tuan rumah adalah langkah penting dalam upaya memperkuat pertahanan basis kami. Melalui latihan ini, kami dapat meningkatkan koordinasi, komunikasi, dan kerjasama antara pasukan kami dan pasukan negara tuan rumah. Selain itu, latihan ini juga memungkinkan kami untuk melakukan penilaian yang lebih akurat terhadap kekuatan dan kelemahan kami.\n\nDalam konteks pertahanan basis, kerjasama dengan pasukan negara tuan rumah tidak hanya penting untuk meningkatkan kemampuan pertahanan, tetapi juga untuk membangun kepercayaan dan hubungan yang lebih baik antara kedua belah pihak. Dengan adanya kepercayaan dan hubungan yang baik, kami dapat bekerja sama dengan lebih efektif dalam menghadapi berbagai ancaman keamanan yang mungkin timbul.\n\nSelain itu, latihan bersama dengan pasukan negara tuan rumah juga dapat meningkatkan kemampuan pasukan kami dalam menanggulangi berbagai situasi darurat. Misalnya, dalam menanggulangi serangan dari musuh, pasukan kami dapat bekerja sama dengan pasukan negara tuan rumah untuk melakukan operasi penanggulangan secara efektif dan efisien.\n\nDengan demikian, latihan pertahanan basis bersama dengan pasukan negara tuan rumah adalah upaya yang harus dilakukan secara terus-menerus. Melalui latihan ini, kami dapat meningkatkan kemampuan pertahanan basis kami, membangun kepercayaan dan hubungan yang lebih baik dengan pasukan negara tuan rumah, dan meningkatkan kemampuan pasukan kami dalam menanggulangi berbagai situasi darurat.\n\nMari kita dukung upaya ABRI dalam melaksanakan latihan pertahanan basis bersama dengan pasukan negara tuan rumah. Dengan dukungan dari seluruh warga negara, kita dapat menjaga keamanan dan kestabilan negara kita dengan lebih baik.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-3-editorial-004",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Ensuring Seamless Transitions: The Importance of Effective Shift Handovers",
+   "body": "Setiap perubahan shift di Pusat Operasi Pertahanan Pangkalan (POPP) adalah saat kritis yang mempengaruhi keselurahan operasi keamanan. Dalam waktu singkat, tim baru harus menerima informasi lengkap dari tim sebelumnya untuk memastikan bahwa tidak ada kekosongan dalam pengawasan dan tanggapan terhadap ancaman potensial. Oleh karena itu, proses penyerahan shift harus dilaksanakan dengan cermat dan teliti. Meskipun ada prosedur yang sudah ada, ada beberapa langkah tambahan yang dapat diambil untuk meningkatkan efisiensi dan efektivitas dalam proses ini. Pertama, penting untuk melaksanakan penilaian risiko yang terstruktur untuk mengidentifikasi potensi ancaman. Ini dapat melibatkan pemeriksaan area sekitar, pemantauan sistem keamanan, dan evaluasi informasi intelijen terkini. Kedua, komunikasi yang jelas dan konkret antara tim masuk dan tim keluar adalah kunci. Informasi harus disampaikan dengan detail, termasuk perubahan terbaru, masalah yang belum terselesaikan, dan langkah-langkah yang sedang diambil. Ketiga, dokumentasi yang akurat dan komprehensif harus dipastikan. Seluruh informasi yang relevan harus dicatat dan disampaikan kepada tim berikutnya. Terakhir, ada kebutuhan untuk melatih personel secara berkala dalam prosedur penyerahan shift. Pelatihan ini harus mencakup baik aspek teknis dan non-teknis, serta simulasi situasi darurat untuk mempersiapkan tim dalam menangani berbagai jenis ancaman. Dengan mengikuti langkah-langkah ini, POPP dapat memastikan bahwa setiap penyerahan shift berlangsung dengan lancar dan efektif, sehingga mengurangi risiko keamanan dan meningkatkan kesempatan untuk merespons ancaman dengan tepat waktu. Keamanan pangkalan tidak hanya tanggung jawab tim saat ini, tetapi juga tim yang akan menggantikannya. Oleh karena itu, penyerahan shift yang baik adalah investasi yang berharga untuk keselamatan dan keamanan keseluruhan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1487,6 +1775,42 @@
    "verified": false
   },
   {
+   "id": "id-dr-1-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-announcement-002",
+   "stem": "What does the announcement say about the time of the shift change?",
+   "choices": [
+    "It will take place at 18:00 this evening.",
+    "It is scheduled for 14:00 today.",
+    "It happens at 12:00 PM every day.",
+    "It occurs at 16:00 every week."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is that the shift change is scheduled for 14:00 today, as stated in the text: 'Pertukaran jaga hari ini akan dilakukan pada pukul 14:00.' The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-announcement-002",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To inform about a new defense strategy.",
+    "To request additional personnel for the defense center.",
+    "To announce a change in the shift schedule.",
+    "To notify about a change in the defense operations center's location."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the announcement is to inform about a change in the shift schedule, specifically that the shift change will take place today at 14:00, as indicated by the phrase 'Pemberitahuan perubahan jaga hari ini.' The other options are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1559,6 +1883,114 @@
    "verified": false
   },
   {
+   "id": "id-dr-1-instructions-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-instructions-003",
+   "stem": "What does the speaker say to do if there is a problem with the radio?",
+   "choices": [
+    "Use a different frequency",
+    "Contact the maintenance team immediately",
+    "Wait for the problem to resolve itself",
+    "Continue trying to communicate"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is choice 0, 'Use a different frequency'. The text states 'Jika ada masalah, pindahkan frekuensi', which instructs to change the frequency if there is a problem.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-instructions-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-instructions-003",
+   "stem": "What is the main purpose of the instructions?",
+   "choices": [
+    "To describe the different types of radio frequencies",
+    "To explain how to operate a radio during air defense exercises",
+    "To discuss the history of radio communication",
+    "To inform about new radio equipment"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is choice 1, 'To explain how to operate a radio during air defense exercises'. The instructions are specifically about radio procedures for allied air defense units, as stated in the title and the content of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-instructions-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1-instructions-003",
+   "stem": "What does the word 'pemantauan' mean here?",
+   "choices": [
+    "Decoding",
+    "Monitoring",
+    "Recording",
+    "Transmitting"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is choice 0, 'Monitoring'. The text states 'Pastikan pemantauan udara terus-menerus', which means 'Ensure continuous air monitoring', indicating that 'pemantauan' refers to monitoring in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-instructions-004",
+   "stem": "In the text, what is the meaning of the phrase \"menggunakan\"?",
+   "choices": [
+    "to sell",
+    "to build",
+    "to fix",
+    "to operate"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is B, \"to operate\". The text says \"menggunakan sistem senjata anti-dron\" which means \"to operate an anti-drone weapon system\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-instructions-004",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "Lessons learned from a counter-drone exercise",
+    "New drone technology",
+    "The benefits of drones",
+    "The dangers of drone exercises"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is C, \"Lessons learned from a counter-drone exercise\". The text discusses what was learned from a counter-drone exercise, not the other topics mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-instructions-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "id-dr-1-instructions-004",
+   "stem": "What is the purpose of the text?",
+   "choices": [
+    "To warn about drone dangers",
+    "To explain how to build a drone",
+    "To share lessons learned from a counter-drone exercise",
+    "To inform about a new drone system"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is C, \"To share lessons learned from a counter-drone exercise\". The text is structured as a series of lessons learned, not as a warning, an explanation, or an announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1609,6 +2041,96 @@
    ],
    "answer": 0,
    "explanation": "The phrase 'menghindari penggunaan kendaraan bermotor' means to avoid using motorized vehicles, which is suggested as one of the actions to reduce air pollution.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-notice-003",
+   "stem": "In the notice, what is the reason given for the warning about drones?",
+   "choices": [
+    "They may interfere with airplane takeoffs and landings",
+    "They disturb the peace of nearby residents",
+    "They often fly too high and cause accidents",
+    "They are not allowed to fly near the airport at any time"
+   ],
+   "answer": 0,
+   "explanation": "The notice says that drones may interfere with airplane takeoffs and landings, so they are not allowed to fly near the airport. This is the reason for the warning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-notice-003",
+   "stem": "What is the main message of this notice?",
+   "choices": [
+    "Airplanes are not allowed to fly at night",
+    "The airport is closed to all aircraft",
+    "Drones are banned in this city",
+    "Drones can be dangerous near airports"
+   ],
+   "answer": 3,
+   "explanation": "The main message is that drones can be dangerous near airports, as they may interfere with airplane takeoffs and landings. The notice warns about this danger and tells people what to do if they see a drone flying near the airport.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-notice-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-notice-004",
+   "stem": "What is the new rule for flying drones near Angkasa Airfield?",
+   "choices": [
+    "Drones can fly up to 100 meters from the airfield.",
+    "Drones must be flown only during daylight hours.",
+    "Drones cannot fly within 5 kilometers of the airfield.",
+    "Drones are allowed to fly at any distance from the airfield."
+   ],
+   "answer": 2,
+   "explanation": "The text states that flying drones within 5 kilometers of Angkasa Airfield is now prohibited, as indicated by 'dilarang mengoperasikan drone dalam radius 5 kilometer dari Pangkalan Angkasa'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-notice-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-notice-004",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To advertise a drone flying competition at Angkasa Airfield.",
+    "To provide guidelines for drone maintenance.",
+    "To inform drone enthusiasts about new safety regulations.",
+    "To announce the opening of a new drone flying area."
+   ],
+   "answer": 2,
+   "explanation": "The notice aims to inform people about the new rules for flying drones near Angkasa Airfield, specifically that 'dilarang mengoperasikan drone dalam radius 5 kilometer dari Pangkalan Angkasa'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-notice-004-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1-notice-004",
+   "stem": "What does 'dilarang' mean here?",
+   "choices": [
+    "Encouraged",
+    "Prohibited",
+    "Permitted",
+    "Suggested"
+   ],
+   "answer": 1,
+   "explanation": "In this context, 'dilarang' means 'prohibited', as it is used to indicate that flying drones within 5 kilometers of Angkasa Airfield is not allowed.",
    "source": "llm",
    "verified": false
   },
@@ -1879,6 +2401,60 @@
    ],
    "answer": 1,
    "explanation": "The correct answer is 'To invite people to a celebration' because the message is about inviting everyone to celebrate the 60th anniversary of independence. The text says 'Mari kita merayakan ulang tahun kemerdekaan yang ke-60 bersama-sama'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-short_message-007-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-short_message-007",
+   "stem": "What is the purpose of the new system at the airport?",
+   "choices": [
+    "To track the number of drones in the area",
+    "To guide drones to the correct landing spots",
+    "To provide entertainment for passengers",
+    "To prevent drones from entering the airport area"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the new system is installed to prevent drones from entering the airport area. This is clearly mentioned with the phrase 'mencegah drone masuk ke area bandara'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-short_message-007-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-short_message-007",
+   "stem": "What is the main point of the message?",
+   "choices": [
+    "Passengers can use drones for personal entertainment",
+    "Drones are now allowed at the airport",
+    "The airport has installed a counter-drone system",
+    "The airport has a new drone tracking system"
+   ],
+   "answer": 2,
+   "explanation": "The main point of the message is that the airport has installed a counter-drone system. This is the focus of the text, as indicated by the phrase 'bandara telah memasang sistem anti-drone'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-short_message-007-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-1-short_message-007",
+   "stem": "In the message, what does 'sistem anti-drone' refer to?",
+   "choices": [
+    "A system to repair drones",
+    "A system to block drones",
+    "A system to attract drones",
+    "A system to count drones"
+   ],
+   "answer": 1,
+   "explanation": "The term 'sistem anti-drone' in the message refers to a system designed to block or prevent drones from entering the airport area. This is clear from the context and the phrase 'mencegah drone masuk ke area bandara'.",
    "source": "llm",
    "verified": false
   },
@@ -2855,6 +3431,60 @@
    "verified": false
   },
   {
+   "id": "id-dr-2-event_description-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-event_description-004",
+   "stem": "What is the main purpose of the event described in the text?",
+   "choices": [
+    "To educate personnel about insider threats",
+    "To announce the base commander's new policies",
+    "To celebrate the base's anniversary",
+    "To introduce new security equipment"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the purpose of the event is 'untuk meningkatkan kesadaran personel tentang ancaman dari dalam' ('to increase personnel awareness about insider threats').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-event_description-004",
+   "stem": "Where did the insider threat awareness training take place?",
+   "choices": [
+    "In the base's auditorium",
+    "In the base's mess hall",
+    "In the base commander's office",
+    "At the base's security checkpoint"
+   ],
+   "answer": 0,
+   "explanation": "The text specifies that the event took place 'di auditori markas' ('in the base's auditorium').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-event_description-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-event_description-004",
+   "stem": "What does 'kebocoran informasi' mean here?",
+   "choices": [
+    "Information overflow",
+    "Information leakage",
+    "Information update",
+    "Information encryption"
+   ],
+   "answer": 1,
+   "explanation": "The text uses 'kebocoran informasi' to refer to the unauthorized disclosure of sensitive information, which is 'information leakage'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3071,6 +3701,114 @@
    "verified": false
   },
   {
+   "id": "id-dr-2-news-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-news-003",
+   "stem": "What does the news report mainly discuss?",
+   "choices": [
+    "The cultural significance of air bases in Indonesia",
+    "The economic effects of air base closures",
+    "The impact of drones on Indonesian air bases",
+    "The history of Indonesian air defense systems"
+   ],
+   "answer": 2,
+   "explanation": "The text discusses the threat posed by drones, or 'munisi berkeliaran', to Indonesian air bases, focusing on the impact and responses to this issue. The other choices are not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-news-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-news-003",
+   "stem": "What specific action has been taken to address the drone threat?",
+   "choices": [
+    "Implementing new radar systems",
+    "Deploying additional fighter jets",
+    "Establishing no-fly zones around air bases",
+    "Creating a special task force to track drones"
+   ],
+   "answer": 2,
+   "explanation": "The text states that 'zona terbang terbatas' or no-fly zones have been established around air bases to mitigate the drone threat. The other actions are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-news-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-news-003",
+   "stem": "What does 'menembus' mean here?",
+   "choices": [
+    "To avoid",
+    "To penetrate",
+    "To destroy",
+    "To fly over"
+   ],
+   "answer": 1,
+   "explanation": "The text uses 'menembus' to describe how drones can 'penetrate' or bypass existing security measures. The other choices do not accurately describe the context in which 'menembus' is used.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-news-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-news-004",
+   "stem": "What is the main concern of the residents living near the military base?",
+   "choices": [
+    "The soldiers are not polite to the local residents",
+    "The new security measures will cause traffic congestion",
+    "The military base is too close to their homes",
+    "The base is not well-maintained"
+   ],
+   "answer": 1,
+   "explanation": "The text states that residents are worried about 'kemacetan lalu lintas yang parah' (severe traffic congestion) due to the new security measures, such as 'pemeriksaan kendaraan yang lebih ketat' (stricter vehicle checks).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-news-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-news-004",
+   "stem": "What does 'kemacetan lalu lintas' mean here?",
+   "choices": [
+    "A new security measure",
+    "A type of vehicle",
+    "A kind of military exercise",
+    "A traffic jam"
+   ],
+   "answer": 3,
+   "explanation": "The text uses 'kemacetan lalu lintas' to describe the traffic congestion that residents fear will result from the new security measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-news-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dr-2-news-004",
+   "stem": "What can be inferred about the current security measures at the military base?",
+   "choices": [
+    "They are causing a lot of noise",
+    "They are already causing traffic problems",
+    "They are not well-liked by the soldiers",
+    "They are not strict enough"
+   ],
+   "answer": 3,
+   "explanation": "The text mentions that the military has announced 'pemeriksaan kendaraan yang lebih ketat' (stricter vehicle checks), implying that the current measures are not strict enough.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-2-report-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3121,6 +3859,168 @@
    ],
    "answer": 1,
    "explanation": "In this context, 'serupai' means 'similar to'. The text is comparing the situation in Lampung to that in West Java and Banten, as stated in the sentence: 'Situasi ini serupai dengan pantai-pantai di Jawa Barat dan Banten.' The other options do not fit the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-report-002",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "The history of laser technology in Indonesia.",
+    "The impact of laser weapons on the economy.",
+    "The potential use of laser weapons for air defense by the Indonesian Air Force.",
+    "The training of Indonesian Air Force pilots."
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the consideration of laser weapons for air defense by the Indonesian Air Force. The passage discusses the debate and potential implementation of this technology, as seen in the phrase 'TNI Angkatan Udara mengkaji penggunaan senjata laser untuk pertahanan udara.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-report-002",
+   "stem": "According to the passage, what is one of the advantages of using laser weapons?",
+   "choices": [
+    "They have a longer range than missiles.",
+    "They are less expensive than traditional weapons.",
+    "They can precisely target enemy aircraft.",
+    "They can be used in any weather condition."
+   ],
+   "answer": 2,
+   "explanation": "The passage states that laser weapons can precisely target enemy aircraft, as indicated by the phrase 'dapat menembak jatuh pesawat musuh dengan akurat.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-report-002",
+   "stem": "In the passage, the word 'keunggulan' most nearly means:",
+   "choices": [
+    "Advantages",
+    "Limitations",
+    "Features",
+    "Disadvantages"
+   ],
+   "answer": 0,
+   "explanation": "The word 'keunggulan' is used to describe the positive aspects of laser weapons, as seen in the phrase 'Beberapa keunggulan penggunaan senjata laser untuk pertahanan udara.' This indicates that it means 'advantages' in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-report-003",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "Drone operations in East Nusa Tenggara require careful airspace coordination with civil aviation",
+    "The Indonesian government has banned all drone operations in East Nusa Tenggara",
+    "Civil aviation authorities have taken full control of drone operations in East Nusa Tenggara",
+    "East Nusa Tenggara has the highest number of drone incidents in Indonesia"
+   ],
+   "answer": 0,
+   "explanation": "The text discusses the need for coordination between drone operators and civil aviation in East Nusa Tenggara. This is evident in sentences like 'Untuk itu, koordinasi antara operator drone dan otoritas penerbangan sipil di Nusa Tenggara Timur harus diutamakan' and 'Hal ini penting untuk mencegah tabrakan di udara dan memastikan operasi drone berjalan lancar.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-report-003",
+   "stem": "According to the text, what is one of the main reasons for coordinating airspace with civil aviation for drone operations?",
+   "choices": [
+    "To promote tourism in East Nusa Tenggara",
+    "To reduce the cost of drone operations",
+    "To increase the number of drone operators",
+    "To prevent mid-air collisions"
+   ],
+   "answer": 3,
+   "explanation": "The text states 'Hal ini penting untuk mencegah tabrakan di udara' which translates to 'This is important to prevent mid-air collisions.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-report-003",
+   "stem": "What does 'lancar' mean here?",
+   "choices": [
+    "Slow",
+    "Dangerous",
+    "Expensive",
+    "Smooth"
+   ],
+   "answer": 3,
+   "explanation": "'Lancar' in this context means 'smooth' as in 'memastikan operasi drone berjalan lancar' which translates to 'ensure drone operations run smoothly.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-report-004",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "A new security system was installed at a checkpoint.",
+    "A truck was stolen from a delivery company.",
+    "A driver was arrested for smuggling.",
+    "A driver had trouble getting through a security checkpoint."
+   ],
+   "answer": 3,
+   "explanation": "The text describes a driver having trouble getting through a security checkpoint because of an issue with the delivery truck. The other choices are not the focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-report-004",
+   "stem": "What was the problem with the delivery truck?",
+   "choices": [
+    "It was missing a part.",
+    "Its cargo was not properly secured.",
+    "It did not have the correct paperwork.",
+    "It had an expired license plate."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the truck 'memiliki bagian yang hilang', which means 'was missing a part'. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-report-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-2-report-004",
+   "stem": "What does 'dibutuhkan' mean here?",
+   "choices": [
+    "Was required",
+    "Was inspected",
+    "Was repaired",
+    "Was stolen"
+   ],
+   "answer": 0,
+   "explanation": "The text says 'Bagian yang dibutuhkan untuk memeriksa truk itu tidak ada', which means 'The part needed to inspect the truck was not there'. Therefore, 'dibutuhkan' means 'was required'.",
    "source": "llm",
    "verified": false
   },
@@ -3827,6 +4727,168 @@
    "verified": false
   },
   {
+   "id": "id-dr-3-analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-analysis-002",
+   "stem": "What is the main topic of the briefing?",
+   "choices": [
+    "The history of joint patrols between Indonesia and Malaysia",
+    "The importance of maintaining good relations with neighboring countries",
+    "Current security challenges and strategies for joint perimeter patrols",
+    "The environmental impact of increased military presence in border regions"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the briefing is current security challenges and strategies for joint perimeter patrols, as indicated by the repeated mention of \"perimeter patrols\" and discussion of security challenges, such as \"peningkatan aktivitas gelap\" and \"masalah keamanan\" throughout the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-analysis-002",
+   "stem": "What can be inferred about the relationship between Indonesia and Malaysia based on the briefing?",
+   "choices": [
+    "They are competing for resources in the border region",
+    "They are in a state of conflict and hostility",
+    "They have no interest in collaborating on security issues",
+    "They have a strong and cooperative relationship"
+   ],
+   "answer": 3,
+   "explanation": "The inference that can be drawn is that Indonesia and Malaysia have a strong and cooperative relationship. This is evident from the mention of \"kerjasama Indonesia dan Malaysia\" and the joint efforts in perimeter patrols, such as \"melakukan patroli bersama\" and \"mengoptimalkan sumber daya yang tersedia\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-analysis-002",
+   "stem": "What does \"menghadapi\" mean here?",
+   "choices": [
+    "To avoid",
+    "To ignore",
+    "To celebrate",
+    "To face or confront"
+   ],
+   "answer": 3,
+   "explanation": "The word \"menghadapi\" in this context means \"to face or confront\". This is evident from the sentence \"Kita harus menghadapi berbagai tantangan keamanan\" which discusses the challenges that need to be addressed in the border region.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-analysis-003",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Bima Air Base is experiencing an increase in drone-related accidents, prompting new safety measures.",
+    "Drone operators are now required to obtain special permits to fly near Bima Air Base.",
+    "The Indonesian government has banned all drone activities in the region due to security concerns.",
+    "New drone rules have been implemented to prevent unauthorized drone flights near Bima Air Base and its surrounding areas."
+   ],
+   "answer": 3,
+   "explanation": "The text discusses the implementation of new rules for flying drones near Bima Air Base, focusing on preventing unauthorized flights and ensuring safety. The main idea is captured in the first choice, which summarizes the purpose and content of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-analysis-003",
+   "stem": "What can be inferred about the potential consequences of violating the new drone rules?",
+   "choices": [
+    "Drone operators may face legal action and fines for unauthorized flights near Bima Air Base.",
+    "Violators will be banned from operating drones anywhere in Indonesia.",
+    "The Indonesian government will confiscate all drones found flying near the air base.",
+    "Violators will be required to attend a mandatory safety training course."
+   ],
+   "answer": 0,
+   "explanation": "The text mentions that the new rules are designed to prevent unauthorized drone flights and ensure safety. It also states that violators will be subject to legal action and fines, as indicated by the phrase 'pelanggar akan dikenakan sanksi hukum dan denda'. This inference is supported by the context of the new regulations and their enforcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-analysis-003",
+   "stem": "What does the phrase 'menjaga keamanan' mean here?",
+   "choices": [
+    "To enhance communication",
+    "To maintain security",
+    "To increase efficiency",
+    "To improve visibility"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'menjaga keamanan' is used in the context of the new drone rules, which aim to prevent unauthorized flights and ensure the safety of the air base and its surroundings. The correct meaning is 'to maintain security', as the text emphasizes the importance of security in the implementation of the new regulations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-analysis-004",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The passage explains how drones are used for military purposes in Indonesia.",
+    "The passage argues that drones should be banned from Indonesian airspace due to safety concerns.",
+    "The passage describes the history of drone technology in Indonesia.",
+    "The passage discusses the challenges and solutions for integrating drones into Indonesian airspace, focusing on coordination with civil aviation."
+   ],
+   "answer": 3,
+   "explanation": "The passage focuses on the challenges and solutions for integrating drones into Indonesian airspace, particularly the need for coordination with civil aviation. This is evident from the discussion of airspace management, safety procedures, and the role of the Directorate General of Air Transportation (DGAC).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-analysis-004",
+   "stem": "What does the word \"menata\" mean here?",
+   "choices": [
+    "To organize",
+    "To disrupt",
+    "To destroy",
+    "To ignore"
+   ],
+   "answer": 0,
+   "explanation": "The word \"menata\" is used in the context of \"menata ruang udara\", which means \"to organize airspace\". The passage discusses the need to organize or manage airspace to accommodate both civil aviation and drone operations safely.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-analysis-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-analysis-004",
+   "stem": "What can be inferred about the role of the Directorate General of Air Transportation (DGAC) in drone operations?",
+   "choices": [
+    "The DGAC has no role in drone operations and focuses solely on traditional aircraft.",
+    "The DGAC is responsible for overseeing all aspects of drone operations, including safety and coordination with civil aviation.",
+    "The DGAC is primarily concerned with military drone operations.",
+    "The DGAC is responsible for manufacturing drones."
+   ],
+   "answer": 1,
+   "explanation": "The passage states that \"DGAC memiliki peran penting dalam menata ruang udara untuk operasi drone\", indicating that the DGAC plays a crucial role in organizing airspace for drone operations. This implies oversight and coordination with civil aviation to ensure safety.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4043,6 +5105,60 @@
    "verified": false
   },
   {
+   "id": "id-dr-3-commentary-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-commentary-001",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "The superiority of military aircraft over drones in Indonesian airspace",
+    "The importance of integrating drone operations into Indonesian airspace for economic growth",
+    "The need for strict regulations to ban drone operations in Indonesia",
+    "The challenges of coordinating airspace with civil aviation for drone operations"
+   ],
+   "answer": 3,
+   "explanation": "The commentary discusses the challenges and complexities of coordinating airspace for drone operations, as seen in the phrases 'tantangan koordinasi' (coordination challenges) and 'integrasi drone ke dalam ruang udara' (integration of drones into airspace).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-commentary-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-commentary-001",
+   "stem": "What can be inferred about the author's view on drone operations?",
+   "choices": [
+    "The author acknowledges the potential benefits of drone operations but emphasizes the need for careful coordination",
+    "The author thinks drone operations are already well-coordinated in Indonesia",
+    "The author is against any form of drone operations in Indonesia",
+    "The author believes drone operations should be limited to military use only"
+   ],
+   "answer": 0,
+   "explanation": "The author acknowledges the potential benefits, as seen in 'potensi manfaat' (potential benefits), but emphasizes the need for careful coordination, as indicated by 'perlu adanya koordinasi yang cermat' (there needs to be careful coordination).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-commentary-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-commentary-001",
+   "stem": "What does the phrase 'berbagai pihak' mean here?",
+   "choices": [
+    "A variety of stakeholders",
+    "Various government agencies",
+    "Multiple air traffic controllers",
+    "Different drone manufacturers"
+   ],
+   "answer": 0,
+   "explanation": "'Berbagai pihak' refers to 'stakeholders' in the context of drone operations, as seen in 'koordinasi antara berbagai pihak yang terlibat dalam operasi drone' (coordination among various stakeholders involved in drone operations).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-3-editorial-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4147,6 +5263,114 @@
    ],
    "answer": 3,
    "explanation": "The context shows that the author believes the challenges of online education can be dealt with or overcome, not created, ignored, or exaggerated.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-editorial-003",
+   "stem": "What is the main idea of the editorial?",
+   "choices": [
+    "The Indonesian military is not capable of defending its own bases",
+    "Indonesia should rely solely on its own military for base defense",
+    "Foreign military bases in Indonesia pose a significant threat",
+    "Joint exercises with host-nation forces are crucial for enhancing base defense capabilities"
+   ],
+   "answer": 3,
+   "explanation": "The editorial emphasizes the importance of joint exercises with host-nation forces to strengthen base defense capabilities, as seen in the statement 'Latihan bersama dengan pasukan negara tuan rumah adalah langkah penting dalam upaya memperkuat pertahanan basis kami.' This is the main idea throughout the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-editorial-003",
+   "stem": "What can be inferred about the relationship between the Indonesian military and host-nation forces?",
+   "choices": [
+    "The Indonesian military does not trust host-nation forces",
+    "They have no history of cooperation",
+    "They share a common goal of enhancing base defense",
+    "They are often in conflict with each other"
+   ],
+   "answer": 2,
+   "explanation": "The editorial implies a cooperative relationship, stating 'Melalui latihan bersama ini, kami dapat meningkatkan koordinasi, komunikasi, dan kerjasama antara pasukan kami dan pasukan negara tuan rumah.' This suggests that both forces share the goal of enhancing base defense.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-editorial-003",
+   "stem": "What does 'melakukan' mean here?",
+   "choices": [
+    "To perform",
+    "To understand",
+    "To ignore",
+    "To avoid"
+   ],
+   "answer": 0,
+   "explanation": "In the context 'Pertama, latihan ini memungkinkan kami untuk melakukan penilaian yang lebih akurat terhadap kekuatan dan kelemahan kami.', 'melakukan' means 'to perform'. The sentence discusses carrying out an accurate assessment, which aligns with the meaning of 'to perform'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dr-3-editorial-004",
+   "stem": "What is the main idea of this editorial?",
+   "choices": [
+    "The importance of proper shift handovers in maintaining security at a defense operations center",
+    "The benefits of advanced technology in defense operations",
+    "The need for more personnel at defense operations centers",
+    "The challenges of working night shifts at defense operations centers"
+   ],
+   "answer": 0,
+   "explanation": "The editorial discusses the critical role of shift handovers in ensuring the smooth operation and security of a defense operations center, as seen in the opening sentence: 'Setiap perubahan shift di Pusat Operasi Pertahanan Pangkalan (POPP) adalah saat kritis yang mempengaruhi keselurahan operasi keamanan.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dr-3-editorial-004",
+   "stem": "What can be inferred about the author's opinion on the current state of shift handovers?",
+   "choices": [
+    "The author believes that no changes are needed in the current procedures",
+    "The author thinks that current procedures are completely inadequate",
+    "The author is indifferent to the current state of shift handovers",
+    "The author believes that current procedures are generally effective but could be improved"
+   ],
+   "answer": 3,
+   "explanation": "The author acknowledges that there are existing procedures but also suggests improvements, such as in the sentence: 'Meskipun ada prosedur yang sudah ada, ada beberapa langkah tambahan yang dapat diambil untuk meningkatkan efisiensi dan efektivitas dalam proses ini.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-3-editorial-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dr-3-editorial-004",
+   "stem": "In the phrase 'melaksanakan penilaian risiko yang terstruktur', what does 'terstruktur' mean here?",
+   "choices": [
+    "Secret",
+    "Rapid",
+    "Organized",
+    "Comprehensive"
+   ],
+   "answer": 2,
+   "explanation": "The word 'terstruktur' in this context refers to the structured or organized nature of the risk assessment, as seen in the phrase: 'melaksanakan penilaian risiko yang terstruktur untuk mengidentifikasi potensi ancaman.'",
    "source": "llm",
    "verified": false
   },
