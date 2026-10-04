@@ -355,3 +355,7 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
   redraft that names the shared run of words, `align_terms.py fixoverlap`) is written with an empty definition and a
   note, never with the copied wording.
 - Checker-model verdicts other than `pass` leave the row at `status = draft` with the problems in `notes`.
+- **Every cited term is verified** (`align_terms.py verify`, added after review): the checker model must agree the cited
+  term is the target-language term for exactly this concept — not broader, narrower, related or mixed with English. A
+  rejection drops the citation (`unconfirmed-term`, note names the rejected term). Precision over coverage: a wrong
+  term with a real citation would mislead learners more than an honest "unconfirmed" badge.

@@ -411,22 +411,26 @@ geo-block scripted requests — and don't fail the build).
 **Gate:** `validate_alignment.py`: 4,315 rows, 0 errors ✅; `gate_terms.sh` PASS — `overlap_check.py` 88,735 text fields,
 0 failing ✅ (five French definitions too close to AAP-06 were redrafted naming the shared run; regression test
 `test_write_withholds_overlap_failures`). **≥ 70% documented equivalents per language with a source: known gap** after
-three distinct attempts (D-033):
+three distinct attempts (D-033). **Correction (same day):** a review of the track text found that many retrieved terms
+were related entries, not the concept (e.g. "point repère" for entry control point). A checker-model verification of
+every cited term (`align_terms.py verify`) rejected 361 citations; those rows keep the model's term with
+`unconfirmed-term` and a note naming the rejected term. The figures below are after verification:
 
-| lang | exact search | + glossary retrieval / parallel edition |
-|---|---|---|
-| fr | 36.7% | 60.9% |
-| pt-BR | 20.8% | 63.8% |
-| ja | 19.6% | 31.1% |
-| ko | 12.9% | 16.3% |
-| de, id, zh-Hans | 0% (sources human-review-only) | queued for look-up |
+| lang | exact search | + retrieval / parallel edition | after verification |
+|---|---|---|---|
+| fr | 36.7% | 60.9% | 28.6% |
+| pt-BR | 20.8% | 63.8% | 25.1% |
+| ja | 19.6% | 31.1% | 16.4% |
+| ko | 12.9% | 16.3% | 11.9% |
+| de, id, zh-Hans | 0% (sources human-review-only) | queued for look-up | — |
 
 ```
-$ cd tools && uv run python terms/align_terms.py write
-  ja        402 rows · documented  125 ( 31.1%) · checked  397
-  ko        387 rows · documented   63 ( 16.3%) · checked  381
-  fr        402 rows · documented  245 ( 60.9%) · checked  398
-  pt-BR     387 rows · documented  247 ( 63.8%) · checked  385
+$ cd tools && uv run python terms/align_terms.py verify --language ja,ko,fr,pt-BR
+  ja: 61 of 130 rejected · ko: 18 of 69 rejected · fr: 131 of 248 rejected · pt-BR: 151 of 249 rejected
+  ja        402 rows · documented   66 ( 16.4%) · checked  397
+  ko        387 rows · documented   46 ( 11.9%) · checked  381
+  fr        402 rows · documented  115 ( 28.6%) · checked  399
+  pt-BR     387 rows · documented   97 ( 25.1%) · checked  385
 ```
 The public allied sources (white papers, one Brazilian glossary, AAP-06) don't name most counter-UAS and base-defense
 terms; the remaining terms need the human look-up queue or new sources.

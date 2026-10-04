@@ -263,6 +263,7 @@ def confirm(langs: list[str]) -> None:
     rows = {r["id"]: r for r in seeds()}
     for lang in langs:
         prop = load(lang, "propose")
+        verified = load(lang, "verify")
         out = {}
         for sid, p in prop.items():
             r = rows.get(sid)
@@ -288,6 +289,11 @@ def confirm(langs: list[str]) -> None:
             got = load(lang, "retrieve").get(sid, {})
             if not rec["source_id"] and got.get("term"):
                 rec.update(term=got["term"], source_id=got["source_id"], page=got["page"], via=got["via"], excerpt="")
+            v = verified.get(sid)
+            if rec["source_id"] and v and v["term"] == rec["term"] and not v["ok"]:
+                # The checker found the cited term is not the term for exactly this concept: no citation (D-033).
+                rec = {"term": first["term"], "kind": first["kind"], "radio_english": p["radio_english"], "source_id": "", "page": "",
+                       "excerpt": "", "via": "model", "rejected": v["term"]}
             out[sid] = rec
         save(lang, "confirm", out)
         n = sum(1 for v in out.values() if v["source_id"])
@@ -424,6 +430,33 @@ def retrieve(langs: list[str]) -> None:
             save(lang, "retrieve", done)
         got = sum(1 for v in done.values() if v.get("term"))
         print(f"  {lang}: {got} more documented", flush=True)
+
+
+# ------------------------------------------------------------------------------------------------ verify
+def verify(langs: list[str]) -> None:
+    """Checker model: is each cited term the target-language term for exactly this concept? (D-033, after review found
+    glossary-retrieval picks of related but different entries.) Rejections lose their citation in confirm."""
+    c = client()
+    rows = {r["id"]: r for r in seeds()}
+    for lang in langs:
+        conf, done = load(lang, "confirm"), load(lang, "verify")
+        todo = [sid for sid, k in conf.items() if k["source_id"] and done.get(sid, {}).get("term") != k["term"]]
+        if not todo:
+            continue
+        print(f"verify {lang}: {len(todo)}", flush=True)
+        for batch in batches(todo, 10):
+            listing = "\n".join(f"{sid} | {rows[sid]['term_en']} — {rows[sid]['definition_en'][:220]} | {conf[sid]['term']}" for sid in batch)
+            text = c.chat([{"role": "user", "content":
+                f"For each line: a US military term with its definition, then a proposed {NAMES[lang]} term. Answer yes only if the "
+                f"{NAMES[lang]} term is a correct, complete {NAMES[lang]} term for exactly this concept (not a broader, narrower or merely "
+                f"related concept, not a different term, not mixed with English). Otherwise no.\nOutput one line per item:\n"
+                f"<id> | <yes or no> | <reason in a few English words>\n\n{listing}"}],
+                temperature=0.0, max_tokens=3000, model=c.fallback, extra={"reasoning_effort": "low"})
+            for sid, parts in parse_lines(text, set(batch)).items():
+                done[sid] = {"term": conf[sid]["term"], "ok": parts[0].strip().lower().startswith("yes"),
+                             "reason": parts[1].strip() if len(parts) > 1 else "", "model": c.fallback}
+            save(lang, "verify", done)
+        print(f"  {lang}: {sum(1 for sid in todo if done.get(sid, {}).get('ok') is False)} of {len(todo)} rejected", flush=True)
 
 
 # ------------------------------------------------------------------------------------------------ draft
@@ -592,6 +625,8 @@ def write(langs_done: list[str]) -> None:
             verdict = ck.get("verdict", "")
             ok = verdict == "pass" and sid not in bad
             notes = list(notes_pre)
+            if k.get("rejected"):
+                notes.append(f"allied-source term '{k['rejected']}' rejected by the checker as not this exact concept")
             if k["via"] == "aap06-pair" and k["source_id"]:
                 notes.append("term from the AAP-06 English/French entry pair")
             elif k["via"] == "glossary-retrieval" and k["source_id"]:
@@ -642,7 +677,7 @@ def summary(out: list[dict]) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["propose", "confirm", "retrieve", "draft", "check", "overlap", "fixoverlap", "write", "all"])
+    ap.add_argument("stage", choices=["propose", "confirm", "retrieve", "draft", "check", "overlap", "fixoverlap", "verify", "write", "all"])
     ap.add_argument("--language", default="all")
     ap.add_argument("--limit", type=int)
     a = ap.parse_args()
@@ -673,6 +708,13 @@ def main() -> int:
                     draft(langs, redo)
                     check(langs, {lg: set(v) for lg, v in redo.items()})
                     failing = overlap(langs)
+        if a.stage == "verify":
+            verify(langs)
+            confirm(langs)
+            draft(langs)  # redrafts rows whose term changed
+            check(langs)
+            fix_overlap(langs)
+            write(langs)
         if a.stage == "fixoverlap":
             fix_overlap(langs)
             write(langs)

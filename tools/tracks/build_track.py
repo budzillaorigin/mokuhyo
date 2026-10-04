@@ -105,7 +105,8 @@ def pure(text: str, lang: str, allow: set[str] = frozenset()) -> bool:
 def examples(client: llm.Client, lang: str) -> None:
     al, sd = aligned(lang), seeds()
     done = load(lang, "examples")
-    todo = [sid for sid in sd if sid in al and sid not in done]
+    # Redraft when the aligned term changed since the examples were written (C-02 verification can replace a term).
+    todo = [sid for sid in sd if sid in al and (sid not in done or done[sid].get("term", al[sid]["term"]) != al[sid]["term"])]
     if not todo:
         return
     print(f"examples {lang}: {len(todo)}", flush=True)
@@ -139,7 +140,7 @@ def examples(client: llm.Client, lang: str) -> None:
             allow = {w for w in re.findall(r"[A-Za-z]+", al[sid]["term"])}
             if not all(e["text"] and pure(e["text"], lang, allow) for e in ex):
                 continue
-            done[sid] = {"examples": ex, "collocations": [clean_text(c) for c in parts[4].split(";") if c.strip()][:4],
+            done[sid] = {"term": al[sid]["term"], "examples": ex, "collocations": [clean_text(c) for c in parts[4].split(";") if c.strip()][:4],
                          "registerNote": parts[5].strip() if parts[5].strip() not in ("-", "") else ""}
         save(lang, "examples", done)
     print(f"  {lang}: {len(done)} terms with examples")
@@ -172,9 +173,9 @@ def extras(client: llm.Client, lang: str) -> None:
     cat = json.loads(SCENARIOS.read_text(encoding="utf-8"))["scenarios"]
     al = aligned(lang)
     name = NAMES[lang]
-    if len(done.get("openers", {})) < 10:
+    if len(done.get("openers", {})) < len(cat):
         got = dict(done.get("openers", {}))
-        for _attempt in range(3):
+        for _attempt in range(6):
             todo = [s for s in cat if s["id"] not in got]
             if not todo:
                 break
@@ -187,15 +188,14 @@ def extras(client: llm.Client, lang: str) -> None:
                 f"<id> | <opening line in {name}> | <English>\n\n{listing}"}], temperature=0.6, max_tokens=2500)
             got.update({sid: {"opener": clean_text(p[0]), "english": p[1].strip() if len(p) > 1 else ""}
                         for sid, p in parse_lines(text, {s["id"] for s in todo}).items() if pure(p[0], lang)})
-        if len(got) >= 10:
-            done["openers"] = got
-            save(lang, "extras", done)
+        done["openers"] = got  # partial sets are kept and completed on the next run
+        save(lang, "extras", done)
     dialogues = done.setdefault("dialogues", {})
     for s in cat[:8]:
         if s["id"] in dialogues:
             continue
         terms = [al[t]["term"] for t in s["terms"] if t in al]
-        for _attempt in range(3):
+        for _attempt in range(5):
             try:
                 out = client.chat_json([{"role": "system", "content": "You write ORIGINAL listening practice dialogues. Answer in JSON only."},
                     {"role": "user", "content":
@@ -203,7 +203,8 @@ def extras(client: llm.Client, lang: str) -> None:
                         f"(a US service member speaking {name}) and {s['partnerRole']} (a native speaker; {PARTNER[lang]}). "
                         f"Use these terms naturally: {', '.join(terms)}. ILR level {s['level']}. Speaker labels in {name}; voice "
                         f"female or male, different for the two speakers; each line with an English translation. Natural spoken "
-                        f"{name}, correct military register; invent names, no real units. Give a short English title."}],
+                        f"{name}, correct military register; every line written entirely in {name} script (no words in Latin letters); "
+                        f"invent names, no real units. Give a short English title."}],
                     DIALOGUE_SCHEMA, temperature=0.6, max_tokens=3500)
             except (RuntimeError, ValueError) as e:
                 if isinstance(e, llm.EndpointDown):
