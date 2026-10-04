@@ -25,6 +25,13 @@ computer with no network connection.
   recover it.
 - The PDF report contains what you select (transcripts are off by default).
 
+## Audio watermark in pre-rendered clips
+
+Listening clips rendered with Chatterbox Multilingual (BRIEF_PHASE8 N-00; owner decision D-041) carry Resemble AI's
+PerTh watermark. It is an inaudible mark that identifies the audio as AI-generated, embedded by the model at render
+time on the build machine. It carries no information about you; nothing in the app adds or reads it, and your own
+recordings never pass through Chatterbox.
+
 ## Deleting
 Deleting an item from History hides it everywhere in the app (it stays in the database as a marked-deleted record so
 backups merge correctly). To remove everything, quit Mokuhyo and delete the data folder above.
