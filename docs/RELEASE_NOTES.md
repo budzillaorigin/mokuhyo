@@ -1,4 +1,42 @@
-# Mokuhyo 0.1.1 (pre-release)
+# Mokuhyo 0.2.0 (pre-release)
+
+**What's new in 0.2.0: current military vocabulary and the cultural layer.** On Windows, installing 0.2.0 upgrades
+0.1.x in place; your history, recordings and settings stay.
+
+- **Counter-drone and base-defense track** in all 11 languages. It has 370–400 terms, each with:
+  - the target-language term (cited to an allied source where one confirms it, otherwise marked "unconfirmed term");
+  - a learner definition and two example sentences;
+  - drills, a Lexicon screen, and 12 role-play scenarios.
+  - It also adds listening dialogues and 18 reading and 12 listening passages per language.
+- **Lexicon updates:** signed term packages you can import from a file or link (Settings → Content). The app checks the
+  signature and shows what changed.
+- **Culture:** culture cards for every scenario, with the field-guide section each draws on. A pragmatics pack covers
+  address and rank, refusals, apologies, small talk, disagreement, hospitality, and gestures and silence, with "implied
+  meaning" listening items built from it.
+- **Partner personas:** six per language (twelve for Arabic), each with their own register, patience and formality.
+- **Corrections your way:** Live, After action or Off for each conversation. After action ends with an After Action
+  Brief: turn-by-turn review, model versions, patterns, and next steps.
+- **Cultural notes:** shown in conversations and interviews, labelled as not part of the ILR scale. They never change
+  your level.
+- **This month:** links to official defense news sites per language, with a paste-to-practice reader. Nothing is
+  fetched.
+
+All new content is AI-drafted and marked "unreviewed" until a person checks it. Terms marked "unconfirmed term" have
+no allied source that confirms them yet.
+
+**Unofficial practice — not an official rating. Not affiliated with DLI, ACTFL, AFCLC or the LEAP program.**
+
+| Computer | File |
+|---|---|
+| Windows 10/11 (64-bit) | `Mokuhyo-0.2.0-windows-x64.msi` |
+| Mac with Apple silicon | `Mokuhyo-0.2.0-macos-arm64.dmg` |
+| Mac with an Intel processor (AVX2, 2014 or later) | `Mokuhyo-0.2.0-macos-x64.dmg` |
+
+Check downloads against `SHA256SUMS`. The installers are unsigned; see `docs/INSTALL.md`.
+
+---
+
+## 0.1.1
 
 **What's new in 0.1.1:** the whole app is now dark, including the setup screens and the Windows title bar. In 0.1.0
 parts of it showed a bright light background. On Windows, installing 0.1.1 upgrades 0.1.0 in place.
