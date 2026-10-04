@@ -406,7 +406,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     }
                     // Interview tests send what was heard; practice shows it first unless turned off (BRIEF_PHASE8 N-00b).
                     if (hasStt) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
-                        enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }) { t, pcm -> submitAnswer(t, pcm) }
+                        enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
                     OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
                         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -771,7 +771,8 @@ private fun TopicConversation(
                 TextButton(onClick = { finish() }) { Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End conversation") }
             }
             if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
-                enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }) { t, pcm -> send(t, pcm) }
+                enabled = !busy, onStatus = { status = it }, onBusy = { busy = it },
+                prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" ")) { t, pcm -> send(t, pcm) }
             OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type") },
                 textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
             TextButton(enabled = typed.isNotBlank(), onClick = { val s = typed; typed = ""; send(s, null) }) { Text("Send") }

@@ -27,6 +27,7 @@ fun main(args: Array<String>) {
         "--smoke-opi" in args -> exitProcess(SmokeOpi.run(args))
         "--chatterbox-jobs" in args -> exitProcess(ChatterboxJobs.jobs(args))
         "--import-clips" in args -> exitProcess(ChatterboxJobs.importClips(args))
+        "--eval-coherence" in args -> exitProcess(EvalSpeaking.coherence(args))
         "--roundtrip" in args -> exitProcess(LangSmoke.roundtrip(args))
         "--smoke-lang" in args -> exitProcess(LangSmoke.run(args, app.mokuhyo.tts.VoiceService.create()))
         "--screenshots" in args -> exitProcess(Screenshots.run(args))

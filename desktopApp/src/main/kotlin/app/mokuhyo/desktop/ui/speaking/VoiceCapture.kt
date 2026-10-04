@@ -44,6 +44,8 @@ fun VoiceCapture(
     enabled: Boolean,
     onStatus: (String) -> Unit,
     onBusy: (Boolean) -> Unit,
+    /** Words the learner is likely to say (the question, the topic, key terms): Whisper's initial prompt (N-00b). */
+    prompt: String = "",
     onSend: (String, ShortArray) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -62,7 +64,7 @@ fun VoiceCapture(
         onStatus("Transcribing…")
         scope.launch {
             val text = withContext(Dispatchers.IO) {
-                runCatching { app.recognizer()!!.transcribe(pcm, module.sttLanguage).text.trim() }.getOrDefault("")
+                runCatching { app.recognizer()!!.transcribe(pcm, module.sttLanguage, prompt).text.trim() }.getOrDefault("")
             }
             onBusy(false)
             when {

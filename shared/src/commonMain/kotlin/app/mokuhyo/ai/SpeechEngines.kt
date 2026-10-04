@@ -42,6 +42,13 @@ interface LocalSttBridge {
     fun isLoaded(): Boolean
     fun load(modelPath: String, onDone: (String?) -> Unit)
     fun transcribe(samples: FloatArray, language: String, onDone: (String?, String?) -> Unit)
+
+    /**
+     * With an initial prompt that biases recognition toward the session's vocabulary (BRIEF_PHASE8 N-00b). Bridges that
+     * can't pass a prompt ignore it.
+     */
+    fun transcribe(samples: FloatArray, language: String, prompt: String, onDone: (String?, String?) -> Unit) =
+        transcribe(samples, language, onDone)
 }
 
 /**
@@ -60,7 +67,9 @@ class WhisperRecognizer(
     private val modelName: String = "Whisper",
 ) : SpeechRecognizer {
     @Throws(Exception::class)
-    override suspend fun transcribe(pcm16kMono: ShortArray, language: String): Transcript {
+    override suspend fun transcribe(pcm16kMono: ShortArray, language: String): Transcript = transcribe(pcm16kMono, language, "")
+
+    override suspend fun transcribe(pcm16kMono: ShortArray, language: String, prompt: String): Transcript {
         if (!bridge.isLoaded()) {
             val path = modelPath ?: throw AiException("speech model is not downloaded")
             suspendCancellableCoroutine { cont ->
@@ -75,7 +84,7 @@ class WhisperRecognizer(
             // Leaving the screen (or a timeout) cancels the coroutine: stop the native work too, and ignore the
             // late callback (F-41).
             cont.invokeOnCancellation { (bridge as? CancellableSttBridge)?.cancel() }
-            bridge.transcribe(samples, language) { result, error ->
+            bridge.transcribe(samples, language, prompt) { result, error ->
                 if (!cont.isActive) return@transcribe
                 when {
                     result != null -> cont.resume(result)
