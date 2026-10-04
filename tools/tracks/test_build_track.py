@@ -21,7 +21,18 @@ def test_probe_parsing_tolerates_ilr_prefix_and_bold() -> None:
     assert [(p["n"], p["phase"], p["level"]) for p in got] == [(1, "level_check", "2"), (2, "probe", "2+"), (3, "probe", "3")], got
 
 
+def test_scrub_drops_copied_text() -> None:
+    """Examples and drills that copy a restricted source never ship (C-03 fix)."""
+    copied = "to attain and maintain a desired degree of air superiority over the area by the combined action"
+    track = {"terms": [{"examples": [{"text": "Hola.", "english": copied}, {"text": "Adiós.", "english": "Bye."}], "collocations": ["dron"]}],
+             "drills": [{"prompt": "x", "choices": ["a"], "explanation": copied}, {"prompt": "y", "choices": ["b"], "explanation": "fine"}],
+             "dialogues": []}
+    B.scrub(track, "es")
+    assert [e["english"] for e in track["terms"][0]["examples"]] == ["Bye."], track["terms"][0]["examples"]
+    assert [d["prompt"] for d in track["drills"]] == ["y"]
+
+
 if __name__ == "__main__":
-    for t in [test_probe_parsing_tolerates_ilr_prefix_and_bold]:
+    for t in [test_probe_parsing_tolerates_ilr_prefix_and_bold, test_scrub_drops_copied_text]:
         t()
         print("ok", t.__name__)

@@ -857,6 +857,138 @@
    "domain": "hypothetical",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "es-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Describe un día típico en su trabajo como linguista militar en la defensa contra drones con la Fuerza Aérea Mexicana.",
+   "english": "Describe a typical day in your work as a military linguist in counter-drone defense with the Mexican Air Force.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Narra un incidente de seguridad en una base militar en el que hayas participado y cómo se resolvió.",
+   "english": "Narrate a security incident at a military base in which you participated and how it was resolved.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Compara los sistemas de defensa contra drones utilizados por la Fuerza Aérea Mexicana con los de otras fuerzas armadas que conozcas.",
+   "english": "Compare the counter-drone defense systems used by the Mexican Air Force with those of other armed forces you know.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Explica el procedimiento para identificar y neutralizar un dron no autorizado cerca de una base militar y por qué es importante seguir cada paso.",
+   "english": "Explain the procedure for identifying and neutralizing an unauthorized drone near a military base and why it is important to follow each step.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-05",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "¿Qué medidas cree que deberían implementarse para mejorar la seguridad de las bases aéreas mexicanas contra amenazas de drones? Sustente su opinión.",
+   "english": "What measures do you think should be implemented to improve the security of Mexican air bases against drone threats? Support your opinion.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-06",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Si se implementara una nueva política de seguridad en la Fuerza Aérea Mexicana, ¿qué impacto tendría en las operaciones diarias de los linguistas militares?",
+   "english": "If a new security policy were implemented in the Mexican Air Force, what impact would it have on the daily operations of military linguists?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-07",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Describe las herramientas y tecnologías que utiliza para monitorear y contrarrestar drones en su trabajo diario.",
+   "english": "Describe the tools and technologies you use to monitor and counter drones in your daily work.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-08",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Narra una situación en la que tu conocimiento de idiomas fue crucial para resolver un problema de seguridad en una base militar.",
+   "english": "Narrate a situation in which your language knowledge was crucial to resolving a security problem at a military base.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-09",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Explica cómo se coordina la comunicación entre diferentes unidades militares durante una operación de defensa contra drones y por qué es crucial esta coordinación.",
+   "english": "Explain how communication is coordinated between different military units during a counter-drone defense operation and why this coordination is crucial.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-10",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Compara los desafíos de la defensa contra drones en zonas urbanas versus zonas rurales y cómo se abordan estos desafíos.",
+   "english": "Compare the challenges of counter-drone defense in urban versus rural areas and how these challenges are addressed.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Si tuvieras que diseñar un protocolo de seguridad para una nueva base aérea, ¿qué elementos incluirías para prevenir y responder a amenazas de drones?",
+   "english": "If you had to design a security protocol for a new air base, what elements would you include to prevent and respond to drone threats?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Hipotetiza cómo podrían evolucionar las amenazas de drones en los próximos cinco años y qué estrategias deberían adoptar las fuerzas armadas mexicanas para estar preparadas.",
+   "english": "Hypothesize how drone threats might evolve in the next five years and what strategies the Mexican armed forces should adopt to be prepared.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

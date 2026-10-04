@@ -858,6 +858,138 @@
    "domain": "community",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "در یک مأموریت دفاعی که شرکت کرده‌اید، چگونه از سیستم‌های ضدبلندپروازی استفاده کرده‌اید؟",
+   "english": "In a defensive mission you participated in, how did you use counter-drone systems?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "یک بار که در امنیتی پایگاه شرکت کردید، چه چالشی را مواجه شدید و چگونه با آن برخورد کردید؟",
+   "english": "Describe a challenge you faced during a base security operation and how you addressed it.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "به طور کلی، چگونه سیستم‌های ضدبلندپروازی در پایگاه‌های نیروی هوایی ایران به کار می‌روند؟",
+   "english": "Generally, how are counter-drone systems used in Iranian Air Force bases?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "یک تجربه‌ای که در ارتباط با شناسایی و خنثی‌سازی یک بلندپرواز غیرمجاز داشته‌اید را بگویید.",
+   "english": "Narrate a past experience of identifying and neutralizing an unauthorized drone.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "چگونه سیستم‌های ضدبلندپروازی در پایگاه‌های نظامی ایران با سیستم‌های کشورهای دیگر متفاوت است؟",
+   "english": "How do counter-drone systems in Iranian military bases differ from those in other countries?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "چه روش‌هایی برای شناسایی و خنثی‌سازی بلندپروازهای دشمن استفاده می‌شود و چرا این روش‌ها مؤثر هستند؟",
+   "english": "What methods are used to identify and neutralize enemy drones, and why are these methods effective?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "چگونه در یک پایگاه نظامی، بین بلندپروازهای دوستانه و دشمن تشخیص می‌شود؟",
+   "english": "How is the distinction made between friendly and enemy drones in a military base?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-08",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "چه فرایندهایی برای آموزش نیروهای امنیتی در مورد دفاع ضدبلندپروازی انجام می‌شود؟",
+   "english": "What procedures are followed to train security forces in counter-drone defense?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "چرا شما معتقدید که دفاع ضدبلندپروازی در امنیتی پایگاه‌های نظامی ضروری است؟",
+   "english": "Why do you believe that counter-drone defense is essential for military base security?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "اگر سیاست‌های دفاعی ایران در مورد بلندپروازهای غیرمجاز تغییر کند، چه اثراتی ممکن است داشته باشد؟",
+   "english": "If Iran's defensive policies regarding unauthorized drones change, what effects might this have?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "اگر در آینده فناوری بلندپروازهای دشمن پیشرفته‌تر شود، چه راه‌حل‌هایی برای مقابله با آن پیشنهاد می‌کنید؟",
+   "english": "If enemy drone technology becomes more advanced in the future, what solutions would you propose to counter it?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "چگونه می‌توان از همکاری بین نیروهای مختلف نظامی برای بهبود دفاع ضدبلندپروازی در پایگاه‌ها بهره برد؟",
+   "english": "How can collaboration between different military forces improve counter-drone defense in bases?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

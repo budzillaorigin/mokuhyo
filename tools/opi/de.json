@@ -857,6 +857,138 @@
    "domain": "personal",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "de-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Können Sie bitte beschreiben, welche Rolle ein Militärlinguist bei der Abwehr von Drohnen spielt?",
+   "english": "Can you please describe the role of a military linguist in counter-drone defense?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Erzählen Sie mir von einer Situation, in der Sie bei der Sicherung einer Luftwaffenbasis mitgewirkt haben. Was war Ihre Aufgabe?",
+   "english": "Tell me about a situation where you contributed to the security of an air force base. What was your role?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Wie unterscheiden sich die Methoden zur Drohnenabwehr im Vergleich zu anderen Sicherheitsmaßnahmen auf einem Militärstützpunkt?",
+   "english": "How do the methods for countering drones differ from other security measures at a military base?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Können Sie erklären, warum bestimmte Protokolle bei der Erkennung und Neutralisierung von Drohnen so wichtig sind?",
+   "english": "Can you explain why certain protocols for detecting and neutralizing drones are so important?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-05",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Was halten Sie von der Idee, künstliche Intelligenz in der Drohnenabwehr einzusetzen? Wie könnte das die Sicherheit verbessern?",
+   "english": "What do you think about the idea of using artificial intelligence in counter-drone defense? How could this improve security?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-06",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Wie könnte die Bundeswehr ihre Sprachressourcen besser nutzen, um die Kommunikation und Koordination bei Sicherheitsoperationen zu verbessern?",
+   "english": "How could the Bundeswehr better utilize its language resources to improve communication and coordination in security operations?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-07",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Beschreiben Sie, wie Sie in einer Notsituation auf einer Luftwaffenbasis kommuniziert haben. Welche Sprachen haben Sie verwendet?",
+   "english": "Describe how you communicated in an emergency situation at an air force base. Which languages did you use?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-08",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Erzählen Sie von einem Mal, als Sie Übersetzungsfähigkeiten in einem Sicherheitskontext eingesetzt haben. Welche Herausforderungen gab es?",
+   "english": "Tell me about a time when you used translation skills in a security context. What challenges arose?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-09",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Vergleichen Sie die Sicherheitsprotokolle für eine Luftwaffenbasis in Deutschland mit denen in einem anderen Land, in dem Sie Erfahrung haben. Was sind die Hauptunterschiede?",
+   "english": "Compare the security protocols for an air force base in Germany with those in another country where you have experience. What are the main differences?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-10",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Wie würde man ein System zur Drohnenabwehr in einer multilingualen Umgebung implementieren?",
+   "english": "How would one implement a counter-drone defense system in a multilingual environment?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Wie könnte die Bundeswehr ihre Sprachfähigkeiten nutzen, um internationale Kooperationen bei der Sicherheit zu verbessern?",
+   "english": "How could the Bundeswehr use its language skills to improve international cooperation in security?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Wenn Sie die Möglichkeit hätten, eine neue Richtlinie für die Sprachausbildung von Militärlinguisten zu entwerfen, was würden Sie vorschlagen und warum?",
+   "english": "If you had the opportunity to design a new policy for the language training of military linguists, what would you propose and why?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

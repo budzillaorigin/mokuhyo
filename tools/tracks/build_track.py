@@ -25,7 +25,9 @@ import datetime as dt
 import json
 import random
 import re
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -326,11 +328,57 @@ def assemble(lang: str) -> dict:
              "terms": terms, "drills": drills, "scenarios": scenarios, "dialogues": dialogues,
              "sources": {sid: S.cite(sid) for sid in sorted({e["source"] for t in terms for e in t["equivalents"] if e["source"] in S.rows()}
                                                            | {t["definitionEnSource"].get("sourceId", "") for t in terms} - {""})}}
+    dropped = scrub(track, lang)
     out.write_text(json.dumps(track, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     merge_probes(lang, xt.get("probes", []))
+    if dropped:
+        print(f"  {lang}: {dropped} examples/collocations/drills dropped by the overlap check")
     print(f"assemble {lang}: {len(terms)} terms ({sum(1 for t in terms if t['examples'])} with examples) · {len(drills)} drills · "
           f"{len(scenarios)} scenarios ({sum(1 for s in scenarios if s['opener'])} with openers) · {len(dialogues)} dialogues")
     return track
+
+
+def scrub(track: dict, lang: str) -> int:
+    """Removes examples, collocations and drills whose wording fails overlap_check.py (BRIEF_PHASE8 hard rule: copied text
+    never ships). Terms themselves are designations (allow-listed where they match a source)."""
+    rows = []
+    for i, t in enumerate(track["terms"]):
+        for j, e in enumerate(t["examples"]):
+            rows.append({"id": f"ex|{i}|{j}", "lang": lang, "text": e["text"]})
+            rows.append({"id": f"ex|{i}|{j}", "lang": "en", "text": e.get("english", "")})
+        for j, c in enumerate(t["collocations"]):
+            rows.append({"id": f"co|{i}|{j}", "lang": lang, "text": c})
+    for i, d in enumerate(track["drills"]):
+        for k, v in (("prompt", d.get("prompt", "")), ("explanation", d.get("explanation", ""))):
+            rows.append({"id": f"dr|{i}", "lang": "en" if k == "explanation" else lang, "text": v})
+        for c in d.get("choices", []):
+            rows.append({"id": f"dr|{i}", "lang": lang, "text": c})
+    for i, d in enumerate(track["dialogues"]):
+        for ln in d["lines"]:
+            rows.append({"id": f"dl|{i}", "lang": lang, "text": ln["text"]})
+            rows.append({"id": f"dl|{i}", "lang": "en", "text": ln.get("english", "")})
+    with tempfile.TemporaryDirectory() as tmp:
+        f, rep = Path(tmp) / "t.jsonl", Path(tmp) / "r.json"
+        f.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows if r["text"].strip()), encoding="utf-8")
+        subprocess.run([sys.executable, str(TOOLS / "terms" / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)],
+                       capture_output=True, check=False)
+        bad = {fd["item"] for fd in json.loads(rep.read_text(encoding="utf-8"))["findings"] if fd["verdict"] == "FAIL"}
+    for key in bad:
+        kind, *ix = key.split("|")
+        if kind == "ex":
+            track["terms"][int(ix[0])]["examples"][int(ix[1])] = None
+        elif kind == "co":
+            track["terms"][int(ix[0])]["collocations"][int(ix[1])] = None
+        elif kind == "dr":
+            track["drills"][int(ix[0])] = None
+        elif kind == "dl":
+            track["dialogues"][int(ix[0])] = None
+    for t in track["terms"]:
+        t["examples"] = [e for e in t["examples"] if e is not None]
+        t["collocations"] = [c for c in t["collocations"] if c is not None]
+    track["drills"] = [d for d in track["drills"] if d is not None]
+    track["dialogues"] = [d for d in track["dialogues"] if d is not None]
+    return len(bad)
 
 
 def merge_probes(lang: str, probes: list[dict]) -> None:

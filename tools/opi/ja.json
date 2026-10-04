@@ -858,6 +858,138 @@
    "domain": "community",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "対空無人機防御システムについて簡単に説明してください",
+   "english": "Please briefly describe the counter-drone defense system.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "自衛隊基地で過去に起きたセキュリティ事件について話してください",
+   "english": "Please talk about a security incident that occurred at a Self-Defense Forces base in the past.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "自衛隊基地の警備体制について説明してください",
+   "english": "Please explain the security measures at Self-Defense Forces bases.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "対空無人機防御システムを使用した経験について話してください",
+   "english": "Please talk about your experience using the counter-drone defense system.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "従来の警備システムと対空無人機防御システムの違いを説明してください",
+   "english": "Please explain the differences between traditional security systems and counter-drone defense systems.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "対空無人機防御システムの運用手順とその理由を説明してください",
+   "english": "Please explain the procedures for operating the counter-drone defense system and the reasons behind them.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "自衛隊基地の警備パターンの変更がセキュリティに与える影響について説明してください",
+   "english": "Please explain the impact of changes in the security patterns at Self-Defense Forces bases.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-08",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "対空無人機防御システムの効果的な使用方法を説明してください",
+   "english": "Please explain effective ways to use the counter-drone defense system.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "日本の防衛政策における対空無人機防御システムの重要性について意見を述べてください",
+   "english": "Please state your opinion on the importance of the counter-drone defense system in Japan's defense policy.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "将来的に自衛隊基地のセキュリティが向上するためにはどうすればよいと思いますか",
+   "english": "What do you think needs to be done to improve the security of Self-Defense Forces bases in the future?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "対空無人機防御システムの技術的進歩が日本の安全保障に与える影響について考えを述べてください",
+   "english": "Please express your thoughts on the impact of technological advancements in counter-drone defense systems on Japan's security.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "自衛隊基地のセキュリティ強化に関する政策提言をしてください",
+   "english": "Please make a policy recommendation for strengthening the security of Self-Defense Forces bases.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

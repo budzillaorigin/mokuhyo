@@ -269,7 +269,17 @@ def cmd_check(args):
         for a, b in longest_runs(sorted(poss), n):
             seg = u[a:b]
             run = ''.join(seg) if cm else ' '.join(seg)
-            if any(run in al for al in allow):
+            # An allowed designation may be flagged with a function word attached ("l'", "da", "ao", "the"): trim up to two
+            # short words at each end before matching (word scripts only).
+            core = seg
+            if not cm:
+                for _ in range(2):
+                    if len(core) > 1 and len(core[0]) <= 3:
+                        core = core[1:]
+                    if len(core) > 1 and len(core[-1]) <= 3:
+                        core = core[:-1]
+            core_run = ''.join(core) if cm else ' '.join(core)
+            if any(run in al or core_run in al for al in allow):
                 verdict, pd_src = 'allowed', None
             else:
                 pd_src = next((pid for pid, (spaced, packed) in pd_text.items()

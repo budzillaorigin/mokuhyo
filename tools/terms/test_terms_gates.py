@@ -185,8 +185,20 @@ def test_overlap_empty_report() -> None:
         assert json.loads(rep.read_text(encoding="utf-8"))["findings"] == []
 
 
+def test_allow_list_ignores_attached_function_words() -> None:
+    """An allow-listed designation still matches when the flagged run carries "l'" / "da" at an end (C-03 fix)."""
+    with tempfile.TemporaryDirectory() as tmp:
+        f, rep, allow = Path(tmp) / "a.jsonl", Path(tmp) / "r.json", Path(tmp) / "allow.txt"
+        f.write_text(json.dumps({"id": "x", "lang": "fr", "text": "Je travaille avec l'Armée de l'air et de l'espace depuis dix ans."}), encoding="utf-8")
+        allow.write_text("armée de l air et de l espace\n", encoding="utf-8")
+        subprocess.run([sys.executable, str(HERE / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep), "--allow", str(allow)],
+                       check=False, capture_output=True)
+        assert not [x for x in json.loads(rep.read_text(encoding="utf-8"))["findings"] if x["verdict"] == "FAIL"]
+
+
 if __name__ == "__main__":
     for t in [test_guard, test_fetch, test_alignment, test_flatten, test_overlap_gate, test_verbatim, test_seed_file,
-              test_write_withholds_overlap_failures, test_overlap_empty_report]:
+              test_write_withholds_overlap_failures, test_overlap_empty_report,
+              test_allow_list_ignores_attached_function_words]:
         t()
         print("ok", t.__name__)
