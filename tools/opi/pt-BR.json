@@ -857,6 +857,138 @@
    "domain": "family",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Descreva as medidas de segurança que você já viu sendo usadas em bases aéreas brasileiras para proteger contra drones.",
+   "english": "Describe the security measures you have seen being used at Brazilian air bases to protect against drones.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Narre um incidente envolvendo um drone que você presenciou ou de que teve conhecimento enquanto trabalhava na defesa contra drones.",
+   "english": "Narrate an incident involving a drone that you witnessed or heard about while working in counter-drone defense.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Explique como você se comunica com sua equipe durante uma operação de segurança em uma base aérea.",
+   "english": "Explain how you communicate with your team during a security operation at an air base.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Descreva o equipamento mais comum que você já usou para detectar e neutralizar drones em operações militares.",
+   "english": "Describe the most common equipment you have used to detect and neutralize drones in military operations.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Compare as técnicas de defesa contra drones usadas pela Força Aérea Brasileira com as de outros países que você conhece.",
+   "english": "Compare the counter-drone defense techniques used by the Brazilian Air Force with those of other countries you know.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Explique o procedimento de resposta rápida a uma ameaça de drone em uma base militar e por que esse procedimento é importante.",
+   "english": "Explain the quick response procedure to a drone threat at a military base and why this procedure is important.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Como você acha que a coordenação entre diferentes unidades militares pode ser melhorada para lidar com ameaças de drones?",
+   "english": "How do you think coordination between different military units can be improved to deal with drone threats?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-08",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Qual é a diferença entre as medidas preventivas e as reagentes na defesa contra drones, e qual você acha mais eficaz?",
+   "english": "What is the difference between preventive measures and reactive measures in counter-drone defense, and which do you think is more effective?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Qual é a sua opinião sobre o uso de sistemas de inteligência artificial para detectar drones em bases militares, e por que você apoia ou não essa ideia?",
+   "english": "What is your opinion on the use of artificial intelligence systems to detect drones at military bases, and why do you support or not support this idea?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Se você fosse responsável por criar uma nova política de segurança contra drones, que mudanças você implementaria e por quê?",
+   "english": "If you were responsible for creating a new counter-drone security policy, what changes would you implement and why?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Como você acha que a segurança de bases aéreas brasileiras poderia ser aprimorada no futuro, considerando os avanços tecnológicos em drones?",
+   "english": "How do you think the security of Brazilian air bases could be improved in the future, considering technological advances in drones?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-BR-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Hipotetize sobre como as forças armadas brasileiras poderiam responder a um ataque coordenado de vários drones contra uma base militar.",
+   "english": "Hypothesize about how the Brazilian armed forces could respond to a coordinated attack by multiple drones against a military base.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

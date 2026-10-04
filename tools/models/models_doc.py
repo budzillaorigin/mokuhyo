@@ -62,9 +62,9 @@ def calibration_table() -> list[str]:
     entries = json.loads(f.read_text(encoding="utf-8")).get("entries", []) if f.exists() else []
     if not entries:
         return out + ["Not run yet (`tools/models/calibrate.py`). Every OPI estimate is labelled \"uncalibrated\".", ""]
-    out += ["Exact and within-one-step agreement between the app's OPI estimate (`opi_rate`) and instructor ratings of the same "
-            "practice recordings (`tools/models/calibrate.py`). Rows marked *fixture* ran on the harness's own fixture samples, "
-            "not instructor ratings: they test the harness and do not calibrate anything (the app says \"uncalibrated\").", "",
+    out += [("Exact and within-one-step agreement between the app's OPI estimate (`opi_rate`) and instructor ratings of the same "
+             "practice recordings (`tools/models/calibrate.py`). Rows marked *fixture* ran on the harness's own fixture samples, "
+             "not instructor ratings: they test the harness and do not calibrate anything (the app says \"uncalibrated\")."), "",
             "| Language | Tier | Model | Samples | Exact | Within 1 step | Status |", "|---|---|---|---|---|---|---|"]
     for e in sorted(entries, key=lambda x: (x["lang"], x["tier"])):
         n = max(1, e["n"])

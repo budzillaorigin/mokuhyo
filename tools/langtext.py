@@ -115,3 +115,44 @@ def measure(text: str, lang: str) -> Measures:
 
 def nfc(text: str) -> str:
     return unicodedata.normalize("NFC", text)
+
+
+# Mirror of ScriptCheck.latinLanguageOk in the app (shared/.../lang/ScriptCheck.kt): a Latin-script sentence must not
+# read as English (more English function words than the language's own).
+STOPWORDS = {
+    "en": {
+        "the", "and", "of", "to", "is", "are", "was", "were", "you", "your", "what", "did", "do", "does", "in", "on", "at",
+        "for", "with", "this", "that", "it", "be", "have", "has", "will", "would", "not", "a", "an", "about", "from", "by", "as",
+        "or", "but", "into", "their", "they", "he", "she", "his", "her", "its", "which", "more", "some", "little", "than",
+        "then", "there", "these", "those", "also", "only", "very", "can", "could", "should", "may", "might", "when", "where",
+        "how", "why", "who",
+    },
+    "es": {
+        "el", "la", "los", "las", "de", "del", "que", "y", "en", "un", "una", "es", "por", "con", "para", "no", "se", "su", "al",
+        "lo", "como", "más", "pero", "sus", "le", "ya", "o", "fue", "muy", "qué", "usted", "está", "a",
+    },
+    "fr": {
+        "le", "la", "les", "de", "des", "du", "et", "en", "un", "une", "est", "que", "qui", "pour", "pas", "dans", "sur", "au",
+        "avec", "ce", "il", "elle", "nous", "vous", "je", "ne", "se", "son", "sa",
+    },
+    "de": {
+        "der", "die", "das", "und", "ist", "nicht", "ein", "eine", "zu", "den", "von", "mit", "sich", "des", "auf", "für", "im",
+        "dem", "auch", "es", "an", "als", "wir", "sie", "ich", "haben", "wird",
+    },
+    "pt-BR": {
+        "o", "a", "os", "as", "de", "do", "da", "dos", "das", "que", "e", "em", "um", "uma", "é", "para", "com", "não", "no",
+        "na", "por", "mais", "se", "você", "foi", "está", "ao",
+    },
+    "id": {
+        "yang", "dan", "di", "ini", "itu", "dengan", "untuk", "tidak", "dari", "dalam", "akan", "pada", "ke", "juga", "ada",
+        "saya", "anda", "kami", "mereka", "adalah", "atau", "sudah",
+    },
+}
+
+
+def reads_as_english(text: str, lang: str) -> bool:
+    own = STOPWORDS.get(lang)
+    words = re.findall(r"[^\W\d_]+(?:'[^\W\d_]+)?", text.lower())
+    if own is None or len(words) < 4:
+        return False
+    return sum(w in own for w in words) < sum(w in STOPWORDS["en"] for w in words)

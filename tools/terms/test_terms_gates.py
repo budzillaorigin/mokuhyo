@@ -151,7 +151,54 @@ def test_seed_file() -> None:
     assert len(rows) >= 250 and all(r["approvedBy"] for r in rows)
 
 
+def test_write_withholds_overlap_failures() -> None:
+    """A definition that still fails overlap_check is never written to term_alignment.csv (C-02 fix)."""
+    import align_terms as A
+
+    saved = (A.WORK, A.OUT, A.seeds)
+    with tempfile.TemporaryDirectory() as tmp:
+        A.WORK, A.OUT = Path(tmp) / "work", Path(tmp) / "out.csv"
+        A.seeds = lambda: [{"id": "x-1", "term_en": "orbit"}, {"id": "x-2", "term_en": "track"}]
+        try:
+            conf = {"term": "t", "kind": "native", "source_id": "", "page": "", "via": "", "radio_english": False, "excerpt": ""}
+            A.save("es", "confirm", {"x-1": conf, "x-2": conf})
+            A.save("es", "draft", {"x-1": {"definition": "copied words"}, "x-2": {"definition": "own words"}})
+            A.save("es", "check", {"x-1": {"verdict": "pass"}, "x-2": {"verdict": "pass"}})
+            A.save("es", "overlap", {"failing": ["x-1"], "phrases": {"x-1": "copied words"}})
+            assert "copied words" in A.overlap_feedback("es", "x-1")
+            A.write(["es"])
+            with open(A.OUT, encoding="utf-8") as f:
+                rows = {r["seed_id"]: r for r in csv.DictReader(f)}
+            assert rows["x-1"]["definition"] == "" and rows["x-1"]["status"] == "draft" and "withheld" in rows["x-1"]["notes"]
+            assert rows["x-2"]["definition"] == "own words" and rows["x-2"]["status"] == "checked"
+        finally:
+            A.WORK, A.OUT, A.seeds = saved
+
+
+def test_overlap_empty_report() -> None:
+    """overlap_check writes its JSON report even when there is no text to check (pragmatics crash fix)."""
+    with tempfile.TemporaryDirectory() as tmp:
+        f, rep = Path(tmp) / "e.jsonl", Path(tmp) / "r.json"
+        f.write_text("", encoding="utf-8")
+        subprocess.run([sys.executable, str(HERE / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)], check=True,
+                       capture_output=True)
+        assert json.loads(rep.read_text(encoding="utf-8"))["findings"] == []
+
+
+def test_allow_list_ignores_attached_function_words() -> None:
+    """An allow-listed designation still matches when the flagged run carries "l'" / "da" at an end (C-03 fix)."""
+    with tempfile.TemporaryDirectory() as tmp:
+        f, rep, allow = Path(tmp) / "a.jsonl", Path(tmp) / "r.json", Path(tmp) / "allow.txt"
+        f.write_text(json.dumps({"id": "x", "lang": "fr", "text": "Je travaille avec l'Armée de l'air et de l'espace depuis dix ans."}), encoding="utf-8")
+        allow.write_text("armée de l air et de l espace\n", encoding="utf-8")
+        subprocess.run([sys.executable, str(HERE / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep), "--allow", str(allow)],
+                       check=False, capture_output=True)
+        assert not [x for x in json.loads(rep.read_text(encoding="utf-8"))["findings"] if x["verdict"] == "FAIL"]
+
+
 if __name__ == "__main__":
-    for t in [test_guard, test_fetch, test_alignment, test_flatten, test_overlap_gate, test_verbatim, test_seed_file]:
+    for t in [test_guard, test_fetch, test_alignment, test_flatten, test_overlap_gate, test_verbatim, test_seed_file,
+              test_write_withholds_overlap_failures, test_overlap_empty_report,
+              test_allow_list_ignores_attached_function_words]:
         t()
         print("ok", t.__name__)

@@ -858,6 +858,138 @@
    "domain": "community",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "드론 방어를 위해 사용하는 장비들을 설명해 주세요.",
+   "english": "Please describe the equipment used for counter-drone defense.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "최근에 드론으로 인한 보안 위협에 대처한 경험을 이야기해 주세요.",
+   "english": "Please narrate a past event where you dealt with a security threat involving drones.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-03",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "여러 가지 드론 탐지 시스템 중 ROKAF에서 주로 사용하는 시스템이 있나요? 그 이유는 무엇인가요?",
+   "english": "Among various drone detection systems, is there one primarily used by the ROKAF? Why is that?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-04",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "기지 보안에서 드론 감시와 다른 보안 조치들을 비교해 보세요.",
+   "english": "Please compare drone monitoring with other security measures in base security.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-05",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "기지 보안 강화를 위해 드론 기술 개발에 더 많은 예산을 할당해야 한다고 생각하시나요? 그 이유를 설명해 주세요.",
+   "english": "Do you think more budget should be allocated to drone technology development for base security reinforcement? Please explain your reasoning.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-06",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "만약 드론 기술이 더욱 발전한다면, 기지 보안에 어떤 영향을 미칠 것이라고 생각하시나요?",
+   "english": "If drone technology advances further, what impact do you think it will have on base security?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-07",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "드론을 탐지하고 대응하는 표준 절차를 설명해 주세요.",
+   "english": "Please describe the standard procedure for detecting and responding to drones.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-08",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "드론 방어를 위해 훈련하는 과정을 이야기해 주세요.",
+   "english": "Please narrate the process of training for counter-drone defense.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-09",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "드론 탐지와 대응을 위한 훈련에서 가장 중요한 요소는 무엇이라고 생각하시나요? 그 이유는 무엇인가요?",
+   "english": "What do you think is the most important element in training for drone detection and response? Why is that?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-10",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "기지 보안에서 드론 위협에 대한 대응 방식이 다른 국가의 군사 기지와 비교했을 때 어떻게 다르다고 생각하시나요?",
+   "english": "How do you think the ROKAF's response to drone threats differs from those of other countries' military bases?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "드론 기술이 군사 기지 보안에 미치는 영향을 고려할 때, 미래의 보안 정책 방향은 어떻게 되어야 할까요?",
+   "english": "Considering the impact of drone technology on military base security, what should be the direction of future security policies?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "만약 드론 기술이 악용될 경우, 이를 방지하기 위한 정책적 접근이 필요하다고 생각하시나요? 어떤 접근이 적합할까요?",
+   "english": "If drone technology is misused, do you think a policy approach is needed to prevent this? What approach would be appropriate?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

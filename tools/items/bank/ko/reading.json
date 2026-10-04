@@ -276,6 +276,86 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-1-notice-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "notice",
+   "title": "Changed Security Status on Base",
+   "body": "안녕하세요. 본부는 현재 조건 3에서 조건 2로 전환됩니다. 이 변경은 오늘 오후 3시에 발생합니다. 모든 인원은 이 변경에 따라 적절한 조치를 취해야 합니다. 조건 2에서는 추가 보안 검문이 수행되고, 특정 지역에서의 접근이 제한될 수 있습니다. 모든 인원은 본부 명령에 따라 행동해야 합니다. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-notice-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "notice",
+   "title": "Disruption in Drone Exercise",
+   "body": "드론 연습 중 조종 연결이 차단되어 문제가 발생했습니다. 이번 주 금요일 오전 10시부터 오후 2시까지 예정되어 있던 연습은 취소됩니다. 연결 차단 문제는 기술 팀이 해결 중이며, 다음 주 월요일에 새 연습 일정을 발표할 예정입니다. 불편을 끼쳐 죄송합니다. 추가 문의는 123-4567로 연락주시기 바랍니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-notice-004",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "notice",
+   "title": "Night Drill Announcement",
+   "body": "급속 대응 부대 훈련 알림\n\n모든 직원 여러분, 안녕하세요.\n\n오늘 밤 9시부터 11시까지 급속 대응 부대 훈련을 진행합니다. 이번 훈련은 보안 위협에 대한 대응 능력을 높이기 위해 실시됩니다. 훈련 기간 동안 건물 내 불필요한 이동을 자제해 주시기 바랍니다. 또한, 훈련 중 발생할 수 있는 소음에 대해 양해 부탁드립니다.\n\n감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-notice-005",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "notice",
+   "title": "New Counter-Drone System at Incheon International Airport",
+   "body": "인천국제공항에 신규 대책 무인기 시스템이 설치되었습니다. 이 시스템은 공항의 비행 금지 구역에서 조종하는 무인기를 탐지하고 무력화할 수 있습니다. 이제 인천국제공항은 더 안전해졌습니다. 모든 승객과 직원 여러분께서는 이 시스템의 작동을 위해 협조해 주시기 바랍니다. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-notice-006",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "notice",
+   "title": "Joint Patrol Briefing",
+   "body": "주변 국가와의 공동 경계 순찰을 위해 순찰 부대를 구성합니다. 순찰 부대의 목적은 경계 보안 강화와 지역 안보 유지입니다. 모든 부대는 오늘 오후 2시까지 본부에서 집합해야 합니다. 순찰은 내일 아침 9시부터 시작됩니다. 모든 부대원들은 적절한 장비와 장구를 휴대해야 합니다. 추가 정보가 필요하면 순찰 담당자에게 문의하세요.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-1-personal_letter-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -363,6 +443,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-short_message-005",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Drone Exercise Insights",
+   "body": "최근 드론 훈련에서 배운 점\n\n1. 다양한 날씨 조건에서 드론을 사용하는 연습이 중요하다.\n2. 드론의 배터리 수명이 훈련에 미치는 영향을 고려해야 한다.\n3. 팀 간 협력은 성공적인 훈련을 위한 핵심 요소이다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -591,6 +687,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-2-event_description-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "event_description",
+   "title": "No-Drone Zone for Suwon Festival: Safety First",
+   "body": "수원 축제 기간 동안 드론 비행이 금지되는 지역이 있습니다. 축제 참가자와 인근 군인들의 안전과 축제 운영을 위해, 해당 지역에서는 드론을 비행할 수 없습니다. 지정 구역 내에서는 드론 비행이 금지됩니다. 이 지역에는 축제 주요 시설과 인근 군 기지가 포함됩니다. 드론 비행으로 인한 사고를 방지하고, 안전하고 즐거운 축제 분위기를 만들기 위해 협조 부탁드립니다. 금지 구역 내에서는 드론을 비행하면 법적 제재를 받을 수 있습니다. 모든 축제 참가자는 이 규정을 준수해 주시기 바랍니다. 축제 기간 동안 드론을 비행하시려고 하시는 분들은 반드시 금지 구역을 확인하시고, 안전하게 즐기시기 바랍니다. 수원 축제를 안전하고 즐겁게 만들기 위해 모두의 협조 부탁드립니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -666,6 +778,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-2-news-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "news",
+   "title": "Base Security Measures Spark Local Debate",
+   "body": "부산에 위치한 군 기지의 보안 조치에 대한 지역 주민들의 우려가 높아지고 있다. 최근 기지 주변에서 증가한 순찰과 검문소 설치로 인해 주민들의 불편이 커지고 있다. 특히 새로운 울타리 건설로 인해 교통이 복잡해지고, 일부 주민들은 자산 가치가 떨어질 것이라고 우려하고 있다. 군 당국은 이러한 조치들이 기지 내외의 안전성을 높이는 데 필수적이라고 주장하지만, 주민들은 더 많은 대안을 요구하고 있다. 주민 대표들은 기지와의 협력 회의를 요청하며, 안보와 일상생활의 균형을 찾기 위한 논의가 필요하다고 강조했다. 한편, 일부 주민들은 강화된 보안 조치로 인해 지역 사업에 미칠 수 있는 영향에 대해 우려를 표명하고 있다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-2-news-003",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -696,6 +824,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-2-news-005",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "news",
+   "title": "Seoul's Airspace Plan for Drones",
+   "body": "서울시는 최근 무인항공기(드론)의 활용이 확대되면서 공중 교통 관리에 대한 관심을 높이고 있다. 무인항공기 운영과 일반 항공기의 안전한 공중 혼용을 위해 공중 교통 관리를 개선하고 있다. 서울시는 무인항공기를 위한 전용 공중 교통 체계 구축을 계획 중이다. 이 체계는 무인항공기의 안전한 비행과 일반 항공기와의 충돌을 방지하기 위해 설계되었다. 또한, 무인항공기의 비행 경로와 고도를 관리하며, 실시간으로 비행 상태를 모니터링할 수 있는 시스템을 도입할 예정이다. 서울시는 또한 무인항공기 조종사에게 필요한 교육 프로그램을 제공하여 전문성을 향상시킬 계획이다. 이를 통해 무인항공기의 안전하고 효율적인 운영을 도모하고자 한다. 서울시의 이러한 노력은 무인항공기의 활용을 확대하면서도 공중 교통의 안전성을 확보하는 데 기여할 것으로 기대된다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-news-006",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "news",
+   "title": "Post-Attack Reconnaissance Begins in Northern County",
+   "body": "북부 군에서 최근 로켓 경보 이후 공격 후 정찰이 시작되었다. 정찰 팀은 로켓이 학교와 주택가 근처에 착지한 것을 확인했다. 현재 피해 상황을 조사하고 있다. 인명 피해와 재산 피해에 대한 상세한 보고서가 준비 중이다. 지역 정부는 주민들을 위해 임시 대피소를 설치하고 있다. 또한, 피해 지역 주변에서 추가 정찰을 실시하여 안전성을 확인하고 있다. 지역 주민들은 불안감을 표출하고 있지만, 정부와 응급 서비스는 빠르게 대응하고 있다. 정찰 팀은 피해 지역을 철저히 조사하여 정확한 정보를 수집하고 있다. 이 정보는 지역 주민들의 안전을 보장하고 추가 조치를 결정하는 데 도움이 될 것이다. 현재까지는 추가적인 공격이나 위험 신호는 보고되지 않았다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-news-007",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "news",
+   "title": "Morning Handover at Northern Defense Center",
+   "body": "북부 방어 작전 센터에서 아침 교대가 진행 중이다. 전날 밤 근무를 마친 인원들은 들어오는 교대 인원들에게 필요한 정보를 전달하고 있다. 먼저, 오늘 아침의 일기 예보를 확인하였다. 오늘은 비가 내릴 전망이며, 바람도 강하게 불 것으로 예상된다. 또한, 감시 장비의 상태를 확인하여 보고하였다. 모든 장비는 정상적으로 작동 중이며, 특별히 문제가 되는 사항은 없다. 또한, 전날 발생한 모든 사건에 대한 보고서를 작성하여 넘겨주었다. 모든 보고서에 서명이 되어 있으며, 정확한 기록이 이루어졌다. 마지막으로, 오늘의 업무 계획과 중요 사항을 전달하였다. 모든 교대 인원들은 이 정보를 바탕으로 오늘의 업무를 수행할 것이다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-2-report-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -723,6 +899,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "report",
+   "title": "Delivery Driver Incident at Entry Control Point",
+   "body": "오늘 오전 10시경, A 건설 현장의 입구에서 배달 차량이 검문을 받는 사건이 발생했습니다. 배달 기사 김모 씨는 음식과 물품을 실은 차량으로 현장에 들어가지 못하자, 입구에서 검문을 받게 되었습니다. 경비원은 차량의 내용물을 확인하기 위해 김 씨에게 차량을 멈추라고 지시했습니다. 김 씨는 경비원의 지시에 따라 차량을 멈추고, 경비원이 차량을 검사하는 것을 허용했습니다. 경비원은 차량의 내용물을 자세히 검사한 후, 음식과 물품이 모두 정상적인 것으로 확인되었습니다. 경비원은 김 씨에게 차량의 내용물이 정상적이므로, 현장으로 들어갈 수 있다고 안내했습니다. 김 씨는 경비원의 안내를 따라 현장으로 들어갔습니다. 이 사건은 배달 차량의 검문 과정에서 발생한 일시적인 혼란이었습니다. 경비원과 김 씨는 서로 협력하여 문제를 해결하고, 현장의 안전을 유지했습니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -921,6 +1113,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-3-analysis-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Evaluating Counter-Drone Strategies: Insights from Recent Exercise",
+   "body": "최근 진행된 대항 드론 훈련을 통해 우리는 여러 가지 중요한 교훈을 얻었다. 이 훈련은 우리나라의 주요 시설과 인구 밀집 지역을 보호하기 위한 방어를 강화하기 위한 것이었다. 훈련에서 사용된 드론은 다양한 크기와 기능이 있었다. 소형 드론부터 대형 드론까지, 각 드론은 고유한 위협을 제공했다. 이 훈련은 단지 기술적 능력만 시험한 것이 아니라, 다양한 기관 간의 협력과 조정의 중요성도 강조했다. 공군, 경찰, 그리고 국토교통부는 서로 협력하여 효과적인 대항 드론 작전을 수행했다. 이번 훈련에서 얻어진 교훈은 여러 가지가 있다. 첫째, 빠른 반응 시간의 중요성이다. 드론 위협에 신속하게 대응하는 것이 필수적이다. 둘째, 다양한 센서와 시스템의 통합이 중요하다. 레이더, 카메라, 그리고 무선 감지 장치를 결합하여 드론을 탐지하고 추적하는 것이 효과적이다. 셋째, 훈련과 시뮬레이션의 중요성이다. 정기적인 훈련과 시뮬레이션을 통해 대항 드론 작전의 효율성을 높일 수 있다. 이번 훈련은 작전 효율성을 높이는 데 중점을 두었다. 훈련을 통해 얻은 중요한 교훈 중 하나는 실시간 데이터 공유의 중요성이다. 다양한 기관이 실시간으로 데이터를 공유함으로써 작전의 효율성을 크게 높일 수 있다. 또한, 이 훈련은 대항 드론 작전의 복잡성과 도전을 강조했다. 드론 위협은 지속적으로 진화하고 있으므로, 우리도 지속적으로 우리의 전략과 기술을 발전시켜야 한다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-analysis-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Detecting Deception: The Art of Recognizing Hostile Intent",
+   "body": "최근 보안 분야에서 가장 큰 도전 과제 중 하나는 적대적 의도를 식별하는 것입니다. 보안 요원들은 복잡한 환경에서 다양한 위협을 감지하고 대응해야 합니다. 그러나 적대적 의도는 항상 명확하거나 예측 가능하지는 않습니다. 따라서 보안 요원들은 훈련을 통해 적대적 의도를 인식하는 능력을 키워야 합니다.\n\n첫째, 보안 요원들은 의심스러운 행동의 패턴을 이해해야 합니다. 예를 들어, 특정 지역을 반복적으로 순회하거나 사진을 찍는 행동은 적대적 의도의 신호일 수 있습니다. 그러나 이러한 행동이 항상 적대적 의도를 의미하는 것은 아닙니다. 보안 요원들은 이러한 행동이 일반적이지 않거나 맥락에서 벗어나면 주의해야 합니다.\n\n둘째, 보안 요원들은 심리적 요인도 고려해야 합니다. 적대적 의도를 가진 개인은 스트레스, 불안, 또는 공격적인 행동과 같은 신호를 보일 수 있습니다. 그러나 이러한 신호는 다른 원인에 의해 발생할 수도 있습니다. 따라서 보안 요원들은 이러한 신호를 해석할 때 신중해야 합니다.\n\n셋째, 보안 요원들은 기술적인 도구를 활용해야 합니다. 현대적인 감시 장비와 분석 소프트웨어는 적대적 의도를 식별하는 데 도움이 될 수 있습니다. 그러나 이러한 도구도 완벽하지는 않습니다. 따라서 보안 요원들은 기술적인 도구와 자신의 판단력을 결합하여 적대적 의도를 식별해야 합니다.\n\n마지막으로, 보안 요원들은 지속적인 훈련과 교육을 받아야 합니다. 보안 환경은 빠르게 변화하며, 새로운 위협이 지속적으로 등장합니다. 훈련 방법은 지속적으로 발전해야 하며, 새로운 위협에 대응할 수 있도록 업데이트되어야 합니다. 또한, 보안 요원들은 실제 시나리오를 통해 적대적 의도를 식별하는 능력을 향상시킬 수 있습니다.\n\n결론적으로, 적대적 의도를 식별하는 것은 복잡하고 도전적인 작업입니다. 그러나 체계적인 훈련과 교육, 기술적인 도구의 활용을 통해 보안 요원들은 이 도전을 극복할 수 있을 것입니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -1038,6 +1262,70 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-commentary-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Airspace Defense: Reflections on the recent counter-drone exercise",
+   "body": "최근 실시된 무인기 대응 훈련을 통해 우리는 여러 가지 중요한 교훈을 얻었다. 이 훈련은 단순한 기술 시연을 넘어, 우리 사회가 직면한 공중방어의 복잡성과 다각성을 이해하는 데 중요한 계기가 되었다. 이번 훈련을 통해 우리는 다기관 협업의 중요성을 다시 한번 확인할 수 있었다. 다양한 기관 간의 원활한 정보 공유와 조율 없이 효과적인 무인기 대응은 불가능하다는 점이 명확히 드러났다. 특히, 군사 당국과 민간 기관 간의 협력이 부족할 경우 발생할 수 있는 치명적인 지연을 방지하기 위해 표준화된 통신 프로토콜과 데이터 공유 체계가 시급히 필요하다는 사실이 강조되었다. 또한, 이번 훈련은 공중방어 체계에 대한 공공의식 강화의 필요성을 상기시켰다. 무인기 위협은 더 이상 군사 기지나 전략적 시설에 국한되지 않고, 일반 시민의 일상생활까지 위협하는 범위가 되었다. 따라서 시민들이 기본적인 무인기 위협 인식과 대응 방법을 알고 있어야 한다는 점이 강조되었다. 이번 훈련에서 가장 중요한 교훈 중 하나는 지속적인 훈련과 시뮬레이션의 필요성이다. 무인기 기술은 빠르게 발전하고 있으며, 이에 대응하는 우리의 체계도 지속적으로 업그레이드되어야 한다. 정기적인 훈련과 최신 기술 반영을 통한 시뮬레이션을 통해 우리는 항상 준비된 상태를 유지해야 한다. 이번 무인기 대응 훈련을 통해 우리는 기술적, 조직적, 사회적 차원의 여러 가지 과제를 확인할 수 있었다. 이러한 교훈을 바탕으로 우리 사회는 더욱 안전한 공중방어를 위해 지속적으로 노력해야 할 것이다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-commentary-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Ensuring Continuity: The Critical Role of Shift Handover in Base Defense",
+   "body": "기지 방어 작전 센터에서의 교대 인계 과정은 매우 중요합니다. 이 과정은 새 교대 인원에게 정확하고 최신 정보를 전달하여, 기지 방어 작전의 연속성을 보장하는 핵심 요소입니다. 교대 인계가 철저히 이루어지지 않으면, 중대한 오류와 보안성의 취약점이 발생할 수 있습니다. 따라서, 교대 인계는 매우 체계적이고 세심한 준비가 필요합니다. 교대 인계 전, 현재 교대 인원은 모든 시스템과 장비의 상태를 점검하고, 현재 진행 중인 작전 및 임무에 대한 상세한 보고서를 작성해야 합니다. 또한, 기지 주변의 모든 활동과 잠재적인 위협에 대한 정보를 수집하고 분석해야 합니다. 이러한 준비는 새로운 교대 인원이 업무에 빠르게 적응하고, 중대한 실수를 방지하는 데 필수적입니다. 교대 인계 과정에서, 현재 교대 인원은 새로운 교대 인원에게 기지의 모든 시스템과 장비의 상태에 대한 정확한 정보를 전달해야 합니다. 또한, 현재 진행 중인 작전 및 임무에 대한 상세한 설명을 제공해야 합니다. 새로운 교대 인원은 이 정보를 바탕으로, 기지 방어 작전의 연속성을 보장하고, 모든 위협에 효과적으로 대응할 수 있습니다. 교대 인계가 완료된 후, 새로운 교대 인원은 기지 방어 작전에 대한 완전한 책임을 집니다. 이 시점에서, 새로운 교대 인원은 모든 시스템과 장비의 상태를 다시 점검하고, 현재 진행 중인 작전 및 임무에 대한 상세한 보고서를 작성해야 합니다. 또한, 기지 주변의 모든 활동과 잠재적인 위협에 대한 정보를 수집하고 분석해야 합니다. 이러한 조치는 기지 방어 작전의 연속성을 보장하고, 모든 위협에 효과적으로 대응하는 데 필수적입니다. 기지 방어 작전 센터에서의 교대 인계 과정은 매우 중요합니다. 이 과정은 새 교대 인원에게 정확하고 최신 정보를 전달하여, 기지 방어 작전의 연속성을 보장하는 핵심 요소입니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-commentary-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Unmanned Intruder: A Drone Over the Base",
+   "body": "최근 한 공군 기지가 무인기에 의해 침범당하는 사건이 발생했다. 이 사건은 우리의 보안 시스템에 대한 경각심을 일깨워주는 계기이다. 우리는 이 사건을 단순히 우발적인 사고로 치부해서는 안 된다. 오히려, 이 사건을 계기로 기존의 보안 조치를 점검하고 강화해야 한다. 무인기는 점점 더 고도화되고 있으며, 이는 우리 보안을 위협하는 새로운 도전이 되고 있다. 따라서, 우리 보안 시스템도 이 새로운 위협에 맞춰 진화해야 한다. 첫째, 무인기 탐지 시스템을 강화해야 한다. 현재 우리의 무인기 탐지 시스템은 다양한 요인에 의해 제한을 받고 있다. 이러한 제한을 극복하기 위해 더 정교한 탐지 기술이 필요하다. 둘째, 무인기에 대한 대응 전략을 수립해야 한다. 무인기 탐지뿐만 아니라, 무인기에 대한 효과적인 대응 방안도 마련되어야 한다. 이는 무인기에 대한 물리적 제압뿐만 아니라, 사이버 공간에서의 대응도 포함된다. 셋째, 보안 인력의 교육과 훈련을 강화해야 한다. 무인기에 대한 대응은 단순한 기술적 문제뿐만 아니라, 인적 요인도 중요하다. 따라서, 보안 인력의 교육과 훈련을 강화하여 무인기에 대한 대응 능력을 향상시켜야 한다. 마지막으로, 다양한 기관과의 협력이 필요하다. 무인기는 국경 없이 활동할 수 있는 특성을 가지고 있다. 따라서, 국내외 다양한 기관과의 협력을 통해 무인기에 대한 포괄적인 대응이 필요하다. 최근의 무인기 조우 사건은 우리의 보안 시스템에 대한 경각심을 일깨워주는 계기이다. 우리는 이 사건을 계기로 기존의 보안 조치를 무인기와의 조우에 대비하기 위해 강화해야 한다. 또한, 무인기에 대한 대응 전략을 수립하고, 보안 인력의 교육과 훈련을 강화해야 한다. 마지막으로, 다양한 기관과의 협력을 통해 무인기에 대한 포괄적인 대응이 필요하다. 이처럼, 우리는 무인기에 대한 새로운 위협에 맞춰 우리의 보안 시스템을 진화시켜야 한다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-3-commentary-004",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "3",
+   "textType": "commentary",
+   "title": "The Harbor's New Guardians: A Swarm of Drones",
+   "body": "최근 한 항구의 하늘을 날아다니는 작은 드론 무리를 본 적이 있다. 이 드론들은 항구의 보안을 강화하기 위해 도입된 것으로, 해상 감시, 침입 탐지, 그리고 응급 상황 대응을 수행하는 다목적 도구이다. 이 새로운 기술은 항구 보안의 새로운 패러다임을 열었지만, 동시에 여러 가지 도전 과제를 제기한다.\n\n먼저, 드론들은 광활한 해상 지역을 감시하고 실시간으로 데이터를 수집할 수 있는 능력이 있다. 이는 전통적인 감시 방법과 비교할 때 큰 장점이다. 또한, 드론들은 위험한 환경에서 작전을 수행할 수 있어 인명 피해를 줄일 수 있다. 예를 들어, 화재나 폭발 위험이 있는 지역에서도 드론을 사용하여 상황을 평가하고 대응할 수 있다.\n\n그러나 드론을 효과적으로 활용하기 위해서는 몇 가지 장애물을 극복해야 한다. 첫째, 대규모 드론 편대를 효과적으로 조종하고 관리하는 것은 기술적으로 복잡하다. 드론들이 서로 충돌하지 않고 목표를 정확히 달성하기 위해서는 고도의 자율 항법과 실시간 데이터 수집이 필요하다. 둘째, 드론의 보안 자체도 중요한 문제다. 해킹이나 스푸핑과 같은 사이버 공격으로부터 드론을 보호하기 위한 강력한 조치가 필요하다.\n\n또한, 드론의 사용은 법적 및 윤리적 문제를 제기한다. 예를 들어, 드론이 수집한 데이터를 어떻게 처리하고 보호할지, 그리고 드론의 작전이 개인의 사생활을 침해할 수 있는지에 대한 고려가 필요하다. 이러한 문제들을 해결하기 위해서는 정부, 기업, 그리고 전문가들의 협력이 필요하다.\n\n결론적으로, 드론은 항구 보안에 혁신적인 가능성을 제공하지만, 이를 효과적으로 활용하기 위해서는 기술적, 법적, 윤리적 도전 과제를 해결해야 한다. 드론 기술을 지속적으로 발전시키고, 적절한 규제를 마련하며, 공공의 신뢰를 얻는 것이 중요하다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1757,6 +2045,204 @@
    "verified": false
   },
   {
+   "id": "ko-dr-1-notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-notice-002",
+   "stem": "What is the new security condition on the base?",
+   "choices": [
+    "Condition 4",
+    "Condition 3",
+    "Condition 2",
+    "Condition 1"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the base is moving to \"조건 2\" (Condition 2).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ko-dr-1-notice-002",
+   "stem": "Why is this notice being issued?",
+   "choices": [
+    "To schedule a base-wide exercise",
+    "To inform personnel of a change in security status",
+    "To remind personnel of the base's location",
+    "To announce a new base commander"
+   ],
+   "answer": 1,
+   "explanation": "The notice is issued to inform personnel that the base is moving to \"조건 2\" (Condition 2), which is a change in security status.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-notice-003",
+   "stem": "What is the meaning of the phrase '조종 연결이 차단된다' here?",
+   "choices": [
+    "The drone is not responding to commands.",
+    "The drone has lost its signal.",
+    "The drone's battery is low.",
+    "The drone's control link is jammed."
+   ],
+   "answer": 3,
+   "explanation": "The text states '드론의 조종 연결이 차단된다', which means 'the drone's control link is jammed'. This is the specific issue mentioned in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ko-dr-1-notice-003",
+   "stem": "What is the purpose of this notice?",
+   "choices": [
+    "To announce a new drone exercise schedule.",
+    "To introduce new drone safety measures.",
+    "To inform about a disruption in a drone exercise.",
+    "To explain how to fix a drone."
+   ],
+   "answer": 2,
+   "explanation": "The notice is about informing people of a disruption in a drone exercise, as stated in '드론 연습 중 조종 연결이 차단되어 문제가 발생했습니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-notice-004",
+   "stem": "What is the purpose of the drill?",
+   "choices": [
+    "To practice responding to a power outage.",
+    "To practice responding to a fire emergency.",
+    "To practice responding to a natural disaster.",
+    "To practice responding to a security threat."
+   ],
+   "answer": 3,
+   "explanation": "The drill is for 보안 위협 (security threat) response, as stated in the text: \"이번 연습은 보안 위협에 대한 대응 능력을 높이기 위해 진행됩니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-notice-004",
+   "stem": "In the text, what does \"급속 대응\" mean?",
+   "choices": [
+    "Slow response",
+    "Gradual preparation",
+    "Immediate withdrawal",
+    "Quick reaction"
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"급속 대응\" is used to describe the force's ability to respond quickly: \"급속 대응 부대의 능력을 향상시키기 위해\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-notice-005",
+   "stem": "What is the purpose of the new system at Incheon International Airport?",
+   "choices": [
+    "It is intended to improve passenger Wi-Fi connectivity.",
+    "It is designed to detect and neutralize unauthorized drones.",
+    "It aims to enhance the airport's lighting system.",
+    "It is meant to track the movement of airport staff."
+   ],
+   "answer": 1,
+   "explanation": "The text explicitly states that the system is designed to detect and neutralize unauthorized drones, using the phrase '비행 금지 구역에서 조종하는 무인기를 탐지하고 무력화할 수 있습니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-notice-005",
+   "stem": "What is the main point of the notice?",
+   "choices": [
+    "New security measures for passengers have been introduced.",
+    "The airport is hosting a drone racing event.",
+    "The airport is expanding its terminal buildings.",
+    "Incheon International Airport has installed a new counter-drone system."
+   ],
+   "answer": 3,
+   "explanation": "The main point of the notice is that Incheon International Airport has installed a new counter-drone system. This is clearly stated at the beginning and end of the text, with phrases like '인천국제공항에 신규 대책 무인기 시스템이 설치되었습니다.' and '이제 인천국제공항은 더 안전해졌습니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-005-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-notice-005",
+   "stem": "What does the phrase '무인기 시스템' refer to here?",
+   "choices": [
+    "A self-service baggage drop system.",
+    "A drone detection and neutralization system.",
+    "An automated cleaning system.",
+    "An automated check-in system."
+   ],
+   "answer": 1,
+   "explanation": "The phrase '무인기 시스템' refers to the counter-drone system mentioned in the text. It is used in the context of detecting and neutralizing unauthorized drones, as stated in '비행 금지 구역에서 조종하는 무인기를 탐지하고 무력화할 수 있습니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-006-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-notice-006",
+   "stem": "Why are patrol units being formed?",
+   "choices": [
+    "To train new recruits.",
+    "To prepare for a large exercise.",
+    "To improve border security.",
+    "To conduct a festival parade."
+   ],
+   "answer": 2,
+   "explanation": "The text states that the purpose of forming patrol units is \"경계 보안 강화\" (strengthening border security). The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-notice-006-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-notice-006",
+   "stem": "What does \"경계\" mean here?",
+   "choices": [
+    "Exercise",
+    "Festival",
+    "Recruit",
+    "Border"
+   ],
+   "answer": 3,
+   "explanation": "The word \"경계\" is used in the phrase \"경계 보안\" (border security), which refers to the security of the border. The other choices are not related to the context in which \"경계\" is used.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-1-personal_letter-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1969,6 +2455,60 @@
    ],
    "answer": 2,
    "explanation": "The text mentions '차량 10대' (10 vehicles) which are part of the convoy to deliver the relief items.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-1-short_message-005",
+   "stem": "In the message, what does the word \"훈련\" mean?",
+   "choices": [
+    "a training session",
+    "a type of drone",
+    "a lesson learned",
+    "a kind of exercise"
+   ],
+   "answer": 0,
+   "explanation": "\"훈련\" means \"a training session\" here because it refers to the event where people practiced dealing with drones. The text says \"최근 드론 훈련에서 배운 점\", which translates to \"points learned from a recent drone training session.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-short_message-005",
+   "stem": "What was one of the main lessons learned from the drone exercise?",
+   "choices": [
+    "Drones should not be flown near airports.",
+    "It is important to practice using drones in different weather conditions.",
+    "Teams worked well together during the exercise.",
+    "Drones can be used for delivery services."
+   ],
+   "answer": 1,
+   "explanation": "The text states \"다양한 날씨 조건에서 드론을 사용하는 연습이 중요하다\" which translates to \"It is important to practice using drones in various weather conditions.\" This is one of the main lessons learned from the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-short_message-005-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ko-dr-1-short_message-005",
+   "stem": "Why was this message written?",
+   "choices": [
+    "To encourage people to buy drones.",
+    "To share lessons learned from a recent drone training session.",
+    "To explain how to fly drones safely.",
+    "To announce the schedule for the next drone exercise."
+   ],
+   "answer": 1,
+   "explanation": "The message starts with \"최근 드론 훈련에서 배운 점\" which translates to \"Points learned from a recent drone training session.\" The purpose of the message is to share these lessons.",
    "source": "llm",
    "verified": false
   },
@@ -2783,6 +3323,60 @@
    "verified": false
   },
   {
+   "id": "ko-dr-2-event_description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-event_description-002",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To announce new drone racing events at the festival",
+    "To encourage people to buy drones for the festival",
+    "To promote drone photography workshops during the festival",
+    "To inform festival-goers about drone restrictions during the Suwon Festival"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the notice is clearly stated in the first sentence: \"수원 축제 기간 동안 드론 비행이 금지되는 지역이 있습니다.\" (There are areas where drone flights are prohibited during the Suwon Festival.) The rest of the text supports this by detailing the restricted areas and the reasons for the restrictions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-event_description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-event_description-002",
+   "stem": "What is one of the reasons given for the drone restrictions?",
+   "choices": [
+    "To promote the sale of drones",
+    "To encourage more people to attend the festival",
+    "To prevent drone racing accidents",
+    "To ensure the safety of festival participants and military personnel"
+   ],
+   "answer": 3,
+   "explanation": "The text states \"축제 참가자와 nearby 군인들의 안전\" (the safety of festival participants and nearby military personnel) as one of the reasons for the drone restrictions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-event_description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-event_description-002",
+   "stem": "What does \"지정 구역\" mean here?",
+   "choices": [
+    "Festival area",
+    "Designated area",
+    "Restricted area",
+    "Military area"
+   ],
+   "answer": 1,
+   "explanation": "The text uses \"지정 구역\" to refer to the areas where drone flights are prohibited. It is used in the context of \"지정 구역 내에서는 드론 비행이 금지됩니다\" (Drone flights are prohibited within designated areas).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3053,6 +3647,60 @@
    "verified": false
   },
   {
+   "id": "ko-dr-2-news-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-news-002",
+   "stem": "What is the main topic of this article?",
+   "choices": [
+    "The economic impact of the military base on Busan",
+    "Local residents' concerns about base security measures",
+    "The environmental effects of military activities in Busan",
+    "The history of the military base in Busan"
+   ],
+   "answer": 1,
+   "explanation": "The article focuses on the concerns of local residents regarding security measures at the military base. This is evident from the repeated mentions of residents' worries and the security measures being discussed, such as increased patrols and checkpoints.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-news-002",
+   "stem": "What specific security measure has led to complaints from residents?",
+   "choices": [
+    "The installation of new surveillance cameras",
+    "The construction of a new fence around the base",
+    "The implementation of stricter ID checks",
+    "The increased frequency of military drills"
+   ],
+   "answer": 1,
+   "explanation": "The text mentions that '새로운 울타리 건설' (the construction of a new fence) has caused inconvenience and complaints from residents.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-news-002",
+   "stem": "In the text, what does '불편' mean here?",
+   "choices": [
+    "Curiosity",
+    "Inconvenience",
+    "Excitement",
+    "Danger"
+   ],
+   "answer": 1,
+   "explanation": "The word '불편' is used to describe the residents' feelings about the new security measures, indicating that these measures have caused them inconvenience.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-2-news-003-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3161,6 +3809,168 @@
    "verified": false
   },
   {
+   "id": "ko-dr-2-news-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-news-005",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "Seoul is working to integrate drone operations into its airspace management system.",
+    "Seoul is investing in new technology to manufacture drones locally.",
+    "Seoul is planning to expand drone delivery services across the city.",
+    "Seoul has banned all drone activities due to safety concerns."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that Seoul is working to integrate drone operations into its airspace management system. The text states '서울시는 무인항공기 운영과 일반 항공기의 안전한 공중 혼용을 위해 공중 교통 관리를 개선하고 있다' and '무인항공기를 위한 전용 공중 교통 체계 구축을 계획 중' (Seoul City is improving air traffic management for the safe coexistence of drones and regular aircraft in the air, and is planning to establish a dedicated air traffic system for drones)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-news-005",
+   "stem": "What is one of the main challenges Seoul faces in integrating drones into its airspace?",
+   "choices": [
+    "High costs of drone manufacturing.",
+    "Ensuring safe coexistence with regular aircraft.",
+    "Limited battery life of drones.",
+    "Lack of skilled drone operators."
+   ],
+   "answer": 1,
+   "explanation": "The text explicitly mentions '무인항공기 운영과 일반 항공기의 안전한 공중 혼용' (ensuring safe coexistence with regular aircraft) as one of the main challenges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-news-005",
+   "stem": "What does '공중 교통 체계' mean here?",
+   "choices": [
+    "Air traffic monitoring equipment",
+    "Air traffic control tower",
+    "Airspace regulation laws",
+    "Air traffic management system"
+   ],
+   "answer": 3,
+   "explanation": "'공중 교통 체계' refers to the '전용 공중 교통 체계 구축' (establishment of a dedicated air traffic system) mentioned in the text, which is a system for managing air traffic, not a physical tower, laws, or equipment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-006-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-news-006",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "A cultural festival happening in the county.",
+    "The construction of new homes in the affected region.",
+    "The local government's response to a recent rocket attack.",
+    "The opening of a new park in the area."
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the local government's response to a recent rocket attack, as indicated by phrases like '공격 후 정찰' (post-attack reconnaissance) and '로켓 경보 이후' (after a rocket alarm) in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-006-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-news-006",
+   "stem": "Where did the rocket land according to the report?",
+   "choices": [
+    "In a densely populated urban area.",
+    "In a mountainous region far from residents.",
+    "Near a school and residential buildings.",
+    "In an uninhabited field."
+   ],
+   "answer": 2,
+   "explanation": "The text states '학교와 주택가 nearby에 착지했다' (landed near a school and residential buildings), indicating the specific location of the rocket landing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-006-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-news-006",
+   "stem": "What does '피해 상황' refer to in this context?",
+   "choices": [
+    "The damage and injuries caused by the rocket.",
+    "The response time of emergency services.",
+    "The number of people evacuated.",
+    "The weather conditions during the attack."
+   ],
+   "answer": 0,
+   "explanation": "The phrase '피해 상황' (damage situation) in the text refers to '인명 피해와 재산 피해' (casualties and property damage), indicating it means the damage and injuries caused by the rocket.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-007-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-news-007",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "D. The base is preparing for a major military exercise",
+    "B. Routine procedures for a shift handover are described",
+    "C. A security breach has occurred at the base",
+    "A. A new commander is being introduced to the base"
+   ],
+   "answer": 1,
+   "explanation": "The passage focuses on the routine procedures and information exchange during a shift handover at the base defense operations center. It does not introduce a new commander, describe a security breach, or discuss preparations for a military exercise. The key details are about the morning briefing, weather updates, and equipment status checks, which are all part of the regular handover process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-007-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-news-007",
+   "stem": "What is one specific piece of information that the outgoing shift provides to the incoming shift?",
+   "choices": [
+    "C. The menu for the officers' mess",
+    "D. The schedule for the next military drill",
+    "A. The number of visitors expected that day",
+    "B. The current status of the surveillance equipment"
+   ],
+   "answer": 3,
+   "explanation": "The outgoing shift provides the incoming shift with the current status of the surveillance equipment, as stated in the text: \"감시 장비의 상태를 확인하여 보고했습니다.\" The other choices are not mentioned in the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-news-007-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-news-007",
+   "stem": "In the phrase \"교대 인원들에게 필요한 정보를 전달했습니다,\" what does \"교대 인원들에게\" mean here?",
+   "choices": [
+    "A. To the visitors",
+    "C. To the base commander",
+    "D. To the maintenance crew",
+    "B. To the incoming shift"
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"교대 인원들에게\" refers to the incoming shift, as it is part of the handover process. The context makes it clear that information is being passed from the outgoing shift to the incoming shift, as stated in the text: \"교대 인원들에게 필요한 정보를 전달했습니다.\" The other choices do not fit the context of the handover process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-2-report-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3265,6 +4075,60 @@
    ],
    "answer": 1,
    "explanation": "The word '활기차다' is used to describe the atmosphere of Gyeongju's traditional markets and cultural experiences, indicating that they are lively and vibrant. The text states '전통 시장과 문화 체험 장소에 활기찬 분위기가 돌아왔습니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-report-003",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "A delivery driver was turned away for not having proper identification.",
+    "A delivery driver was detained for carrying a suspicious package.",
+    "A delivery driver was allowed entry after a thorough inspection.",
+    "A delivery driver was arrested for smuggling contraband."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that the delivery driver was allowed entry after a thorough inspection. The text states that the driver was initially stopped, but after the inspection, he was allowed to enter with the package.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-report-003",
+   "stem": "What did the guard find in the package?",
+   "choices": [
+    "Food and supplies",
+    "Illegal documents",
+    "Stolen goods",
+    "Explosives"
+   ],
+   "answer": 0,
+   "explanation": "The guard found food and supplies in the package. The text states that the package contained '음식과 물품', which translates to 'food and supplies'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-report-003",
+   "stem": "What does '검문' mean in this context?",
+   "choices": [
+    "Interrogation",
+    "Inspection",
+    "Arrest",
+    "Search"
+   ],
+   "answer": 1,
+   "explanation": "'검문' in this context means 'inspection'. The text states that the guard conducted a '검문' to check the package, which means the guard performed an inspection.",
    "source": "llm",
    "verified": false
   },
@@ -3971,6 +4835,114 @@
    "verified": false
   },
   {
+   "id": "ko-dr-3-analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-analysis-002",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The passage discusses the history of drone technology in South Korea.",
+    "The passage analyzes the outcomes and lessons from a counter-drone exercise.",
+    "The passage argues for the abolition of all drone exercises.",
+    "The passage describes the technical specifications of new drones."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that the passage analyzes the outcomes and lessons from a counter-drone exercise. This is evident from the text's focus on the exercise's objectives, the strategies employed, and the lessons learned, such as '이번 연습에서 얻어진 교훈은 여러 가지가 있다.' and '연습을 통해 얻은 중요한 교훈 중 하나는...'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-analysis-002",
+   "stem": "What can be inferred about the authors' view on the importance of inter-agency cooperation in counter-drone operations?",
+   "choices": [
+    "They believe it is unnecessary for effective counter-drone operations.",
+    "They think it is crucial for successful counter-drone operations.",
+    "They are unsure about its relevance to counter-drone operations.",
+    "They believe it is only important in certain types of counter-drone operations."
+   ],
+   "answer": 1,
+   "explanation": "The authors view inter-agency cooperation as crucial for successful counter-drone operations. This can be inferred from their statement that '다양한 기관 간의 협력이 효과적인 대항 드론 작전을 위해 필수적이다.' and their emphasis on the successful coordination among different agencies during the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-analysis-002",
+   "stem": "What does the phrase '작전 효율성' mean here?",
+   "choices": [
+    "The cost-effectiveness of the operation",
+    "The aesthetic appeal of the operation",
+    "The environmental impact of the operation",
+    "The effectiveness of the operation"
+   ],
+   "answer": 3,
+   "explanation": "In this context, '작전 효율성' refers to the effectiveness of the operation. This is evident from the sentence '이번 연습은 작전 효율성을 높이는 데 중점을 두었다.' which discusses the focus on improving the effectiveness of the operation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-analysis-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-analysis-003",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To explain the challenges of recognizing hostile intent",
+    "To advocate for stricter penalties for hostile acts",
+    "To argue for more funding for security force training",
+    "To describe a new technology for detecting deception"
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the difficulties security forces face in identifying hostile intent, discussing various factors and strategies, not the other topics listed as distractors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-analysis-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-analysis-003",
+   "stem": "What can be inferred about the effectiveness of current training methods?",
+   "choices": [
+    "They are highly effective in all situations",
+    "They need to be constantly updated to address new threats",
+    "They are not useful for recognizing hostile intent",
+    "They focus too much on physical security"
+   ],
+   "answer": 1,
+   "explanation": "The text states, \"훈련 방법은 지속적으로 발전해야 하며, 새로운 위협에 대응할 수 있도록 업데이트되어야 합니다.\" This implies that current methods need constant updates to be effective.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-analysis-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-analysis-003",
+   "stem": "In the text, what does \"의심스러운 행동\" refer to?",
+   "choices": [
+    "Actions that are clearly illegal",
+    "Behaviors that raise concern but are not obviously hostile",
+    "Routine activities of civilians",
+    "Actions taken by security forces"
+   ],
+   "answer": 1,
+   "explanation": "The text uses \"의심스러운 행동\" to describe behaviors that may indicate hostile intent but are not overtly hostile, such as loitering or taking photos of secure areas.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4399,6 +5371,222 @@
    ],
    "answer": 0,
    "explanation": "The phrase '교통사고 감소' is used to discuss the benefits of the new traffic law, indicating a 'reduction in traffic accidents'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-commentary-001",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The passage argues for increased military spending to acquire more advanced counter-drone technology.",
+    "The passage reflects on the lessons learned from a recent counter-drone exercise and the need for improved coordination and public awareness.",
+    "The passage criticizes the government's handling of the recent counter-drone exercise.",
+    "The passage describes the technical specifications of various counter-drone systems."
+   ],
+   "answer": 1,
+   "explanation": "The passage discusses the recent counter-drone exercise, highlighting the need for better interagency coordination, public awareness, and the importance of continuous training. This is evident in phrases like '다기관 협업의 중요성', '공중방어 체계에 대한 공공의식 강화', and '지속적인 훈련과 시뮬레이션'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-commentary-001",
+   "stem": "Based on the passage, what can be inferred about the current state of counter-drone defenses in the region?",
+   "choices": [
+    "Counter-drone defenses have gaps that need to be addressed through better coordination and public awareness.",
+    "Counter-drone defenses are solely the responsibility of the military and do not require public involvement.",
+    "Counter-drone defenses are highly advanced and require no further improvement.",
+    "Counter-drone defenses are non-existent and need to be developed from scratch."
+   ],
+   "answer": 0,
+   "explanation": "The passage suggests that there are gaps in counter-drone defenses that need to be addressed. This is inferred from statements like '다기관 협업의 중요성', '공중방어 체계에 대한 공공의식 강화', and '지속적인 훈련과 시뮬레이션'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-commentary-001",
+   "stem": "In the passage, what does '협업' mean here?",
+   "choices": [
+    "Competition",
+    "Conflict",
+    "Isolation",
+    "Collaboration"
+   ],
+   "answer": 3,
+   "explanation": "The term '협업' is used in the context of '다기관 협업의 중요성', indicating the need for different agencies to work together effectively. This is evident in the phrase '다양한 기관 간의 원활한 정보 공유와 조율' which emphasizes the importance of smooth information sharing and coordination among various agencies.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-commentary-002",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The impact of shift handover on the overall security of the base",
+    "The importance of thorough preparation for shift change at a base defense operations center",
+    "The role of technology in facilitating shift handover procedures",
+    "The challenges faced by new personnel during shift handover"
+   ],
+   "answer": 1,
+   "explanation": "The text focuses primarily on the importance of thorough preparation and clear communication during shift change to ensure the continuity and effectiveness of base defense operations. This is evident throughout the text, such as in the sentence \"이러한 준비는 새로운 교대 인원이 업무에 빠르게 적응하고, 중대한 실수를 방지하는 데 필수적입니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-commentary-002",
+   "stem": "What can be inferred about the author's opinion on shift handover procedures?",
+   "choices": [
+    "The author considers them to be outdated and in need of reform",
+    "The author views them as a mere formality with little practical value",
+    "The author believes they are a necessary but burdensome task",
+    "The author thinks they are crucial for maintaining operational continuity"
+   ],
+   "answer": 3,
+   "explanation": "The author emphasizes the importance of shift handover procedures for maintaining operational continuity, as seen in the sentence \"교대 인계 과정은 기지 방어 작전의 연속성을 보장하는 핵심 요소입니다.\" This indicates that the author values these procedures highly.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-commentary-002",
+   "stem": "What does the phrase \"상황 인식\" mean here?",
+   "choices": [
+    "Awareness of the current operational status",
+    "Knowledge of the base's physical layout",
+    "Familiarity with the personnel on duty",
+    "Understanding of the historical context"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"상황 인식\" in this context refers to the awareness of the current operational status. This is clear from the sentence \"새로운 교대 인원은 현재 진행 중인 작전에 대한 상세한 설명과 함께, 기지의 모든 시스템과 장비의 상태에 대한 정확한 정보를 받아야 합니다. 이 모든 것은 정확한 상황 인식에 필수적입니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-commentary-003",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "The commentary argues that the recent drone sighting over the air base was a deliberate attempt to infiltrate the base's defenses.",
+    "The commentary examines the implications of the recent drone sighting over an air base and the need for a comprehensive response.",
+    "The commentary discusses the potential dangers of drone technology and calls for stricter regulations.",
+    "The commentary criticizes the air base's security measures and calls for their immediate improvement."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is C because the commentary discusses the recent drone sighting, its implications, and the need for a comprehensive response. This is evident throughout the text, such as in the phrases '최근 무인기 조우 사건' (the recent drone encounter incident) and '포괄적인 대응이 필요하다' (a comprehensive response is needed).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-commentary-003",
+   "stem": "What can be inferred about the author's attitude towards the current security measures at the air base?",
+   "choices": [
+    "The author thinks the current security measures are a good start but need to be enhanced to deal with new threats like drones.",
+    "The author believes the current security measures are adequate but need minor improvements.",
+    "The author is indifferent to the current security measures and believes the issue is not a priority.",
+    "The author is highly critical of the current security measures and believes they are completely ineffective."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is C because the author acknowledges that the current security measures have some value but need to be enhanced to deal with new threats. This is evident in the phrase '기존의 보안 조치도 무인기와의 조우에 대비하기 위해 강화되어야 한다' (existing security measures should also be strengthened to deal with drone encounters).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-commentary-003",
+   "stem": "What does the phrase '보안 취약점' refer to in the context of this commentary?",
+   "choices": [
+    "The insufficient funding allocated to the air base's security measures.",
+    "The physical weaknesses of the air base's perimeter fence.",
+    "The vulnerabilities in the air base's security systems that could be exploited by drones.",
+    "The lack of trained personnel to operate security equipment."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is B because the phrase '보안 취약점' (security vulnerabilities) refers to the weaknesses in the air base's security systems that could be exploited by drones. This is evident in the phrase '무인기의 조우가 노출시킨 보안 취약점' (security vulnerabilities exposed by the drone encounter).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ko-dr-3-commentary-004",
+   "stem": "What is the main idea of the commentary?",
+   "choices": [
+    "The commentary argues that drones are a perfect solution for all maritime security issues.",
+    "The commentary criticizes the government for not investing enough in harbor security.",
+    "The commentary describes the technical specifications of the drones used in the harbor.",
+    "The commentary discusses the benefits and challenges of using drones for harbor security."
+   ],
+   "answer": 3,
+   "explanation": "The commentary focuses on the use of drones for harbor security, discussing both their advantages and the challenges they present. For example, it mentions the drones' ability to monitor vast areas (\"광활한 해상 지역을 감시\" ) and the difficulties in managing a large swarm (\"대규모 무인기 편대를 효과적으로 조종\" ).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ko-dr-3-commentary-004",
+   "stem": "What can be inferred about the author's views on using drones for harbor security?",
+   "choices": [
+    "The author believes that drones are a complete replacement for traditional maritime security methods.",
+    "The author thinks that drones are too expensive and not worth the investment for harbor security.",
+    "The author is concerned that drones will lead to job losses in the maritime security sector.",
+    "The author is cautiously optimistic about the potential of drones but acknowledges the challenges."
+   ],
+   "answer": 3,
+   "explanation": "The author expresses cautious optimism by highlighting the potential of drones to revolutionize harbor security (\"항구 보안의 새로운 패러다임\" ) while also acknowledging the challenges, such as the difficulties in managing a large swarm (\"대규모 무인기 편대를 효과적으로 조종\" ).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-3-commentary-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-3-commentary-004",
+   "stem": "In the text, what does \"자율적 항법\" mean?",
+   "choices": [
+    "Pre-programmed flight paths",
+    "Autonomous navigation",
+    "Manual control",
+    "Remote guidance"
+   ],
+   "answer": 1,
+   "explanation": "The text uses \"자율적 항법\" to describe the drones' ability to navigate autonomously, as part of their advanced capabilities (\"고도의 자율적 항법과 실시간 데이터 수집\" ).",
    "source": "llm",
    "verified": false
   },

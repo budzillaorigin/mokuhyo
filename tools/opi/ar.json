@@ -857,6 +857,116 @@
    "domain": "family",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "صف نظام الدفاع ضد الطائرات المسيرة الذي عملت معه في القوات الجوية السعودية.",
+   "english": "Describe the counter-drone defense system you worked with in the Royal Saudi Air Force.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "روي حدثًا من تجربتك مع قوات الأمن في قاعدة جوية في قطر.",
+   "english": "Narrate a past event from your experience with security forces at a Qatari air base.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "وضح كيف تتعامل القوات الجوية القطرية مع التهديدات الجوية غير التقليدية.",
+   "english": "Describe how the Qatar Emiri Air Force deals with non-traditional aerial threats.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "اعط مثالًا عن مهمة أمنية ناجحة في قاعدة عسكرية عملت بها في دول الخليج.",
+   "english": "Provide an example of a successful security mission at a military base you worked at in the Gulf.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "ما هي الفروقات بين أنظمة الدفاع ضد الطائرات المسيرة في القوات الجوية السعودية والقوات الجوية القطرية؟",
+   "english": "What are the differences between counter-drone defense systems in the Royal Saudi Air Force and the Qatar Emiri Air Force?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "اشرح إجراءات الأمن في قاعدة جوية وسبب أهمية هذه الإجراءات.",
+   "english": "Explain the security procedures at an air base and why they are important.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "ما هي التحديات التي تواجه قوات الأمن في قواعد الجوية في منطقة الخليج؟",
+   "english": "What are the challenges faced by security forces at air bases in the Gulf region?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-08",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "ما هو رأيك في استراتيجية الدفاع ضد الطائرات المسيرة المستخدمة حاليا في القوات الجوية السعودية؟",
+   "english": "What is your opinion on the current counter-drone defense strategy used by the Royal Saudi Air Force?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "كيف ستقترح تغيير سياسات الأمن في قواعد الجوية القطرية لتحديات المستقبل؟",
+   "english": "How would you propose changing security policies at Qatari air bases to meet future challenges?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "ما هو تأثير التعاون العسكري بين دول الخليج على دفاعات الطائرات المسيرة؟",
+   "english": "What is the impact of military cooperation between Gulf countries on counter-drone defenses?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

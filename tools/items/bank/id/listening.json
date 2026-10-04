@@ -454,6 +454,48 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-1-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Festival Safety Alert",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pengumuman",
+     "voice": "male",
+     "text": "Diperhatikan para pengunjung festival!"
+    },
+    {
+     "speaker": "Pengumuman",
+     "voice": "female",
+     "text": "Penggunaan drone dilarang di sekitar area festival ini."
+    },
+    {
+     "speaker": "Pengumuman",
+     "voice": "male",
+     "text": "Hal ini untuk mencegah kecelakaan selama festival berlangsung."
+    },
+    {
+     "speaker": "Pengumuman",
+     "voice": "female",
+     "text": "Kami mohon kerjasama semua untuk patuhi peraturan ini."
+    },
+    {
+     "speaker": "Pengumuman",
+     "voice": "male",
+     "text": "Terima kasih atas perhatiannya."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -669,6 +711,90 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-1-conversation-006",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "conversation",
+   "title": "The New Threat",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Pak Jono, kamu tahu kan masalah baru yang kita hadapi?"
+    },
+    {
+     "speaker": "Pak Jono",
+     "voice": "male",
+     "text": "Apa ya Pak Budi?"
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Drones murah. Mereka mulai mengganggu pangkalan kita."
+    },
+    {
+     "speaker": "Pak Jono",
+     "voice": "male",
+     "text": "Iya, benar. Biaya melindungi pangkalan semakin mahal."
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Kita butuh solusi yang efektif dan murah."
+    },
+    {
+     "speaker": "Pak Jono",
+     "voice": "male",
+     "text": "Saya sudah mendengar tentang sistem baru yang bisa membantu."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-conversation-007",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "conversation",
+   "title": "The Defense Drill",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Kepala Pos",
+     "voice": "male",
+     "text": "Siapa yang bertanggung jawab untuk latihan bersama dengan TNI besok?"
+    },
+    {
+     "speaker": "Komandan",
+     "voice": "female",
+     "text": "Saya, Pak. Latihan ini akan berlangsung selama dua hari."
+    },
+    {
+     "speaker": "Kepala Pos",
+     "voice": "male",
+     "text": "Baik, siapkan semua persiapan di tempat latihan."
+    },
+    {
+     "speaker": "Komandan",
+     "voice": "female",
+     "text": "Baik, Pak. Saya akan segera menyiapkan semua."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-1-instructions-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -810,6 +936,43 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-1-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Airport Security Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemilik suara",
+     "voice": "female",
+     "text": "Halo, ini adalah pesan untuk semua pegawai bandara."
+    },
+    {
+     "speaker": "Pemilik suara",
+     "voice": "female",
+     "text": "Sistem baru untuk mendeteksi dan menutup drones yang tidak sah telah dipasang."
+    },
+    {
+     "speaker": "Pemilik suara",
+     "voice": "female",
+     "text": "Harap berjaga-jaga dengan apa yang terlihat di udara."
+    },
+    {
+     "speaker": "Pemilik suara",
+     "voice": "female",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1649,6 +1812,78 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-2-briefing-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "briefing",
+   "title": "New Regulations for Drone Operations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemimpin",
+     "voice": "male",
+     "text": "Selamat datang semua. Kami berkumpul di sini untuk membahas peraturan baru mengenai operasi drone di ruang udara Indonesia."
+    },
+    {
+     "speaker": "Pemimpin",
+     "voice": "male",
+     "text": "Seiring dengan meningkatnya penggunaan drone, pemerintah telah merumuskan peraturan baru untuk menjaga keamanan dan ketertiban di ruang udara."
+    },
+    {
+     "speaker": "Anggota 1",
+     "voice": "female",
+     "text": "Apa saja perubahan utama dalam peraturan baru ini?"
+    },
+    {
+     "speaker": "Pemimpin",
+     "voice": "male",
+     "text": "Perubahan utama adalah operator drone harus koordinasi dengan penerbangan sipil untuk penggunaan ruang udara."
+    },
+    {
+     "speaker": "Anggota 2",
+     "voice": "male",
+     "text": "Bagaimana cara koordinasi itu dilakukan?"
+    },
+    {
+     "speaker": "Pemimpin",
+     "voice": "male",
+     "text": "Operator drone harus membuat rencana penerbangan dan menyampaikannya kepada pihak berwenang minimal 24 jam sebelum operasi."
+    },
+    {
+     "speaker": "Anggota 3",
+     "voice": "female",
+     "text": "Apa yang akan terjadi jika mereka tidak melakukan koordinasi?"
+    },
+    {
+     "speaker": "Pemimpin",
+     "voice": "male",
+     "text": "Mereka akan dikenakan sanksi sesuai dengan peraturan yang berlaku."
+    },
+    {
+     "speaker": "Anggota 1",
+     "voice": "female",
+     "text": "Terima kasih atas penjelasannya. Apakah ada pertanyaan lain?"
+    },
+    {
+     "speaker": "Anggota 2",
+     "voice": "male",
+     "text": "Tidak, saya pikir sudah cukup jelas."
+    },
+    {
+     "speaker": "Pemimpin",
+     "voice": "male",
+     "text": "Baik, jika tidak ada lagi pertanyaan, kita akan melanjutkan dengan diskusi lebih lanjut."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-2-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -1715,6 +1950,130 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-2-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "conversation",
+   "title": "The Meeting with PT Harapan Bersama",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pak Wibowo",
+     "voice": "male",
+     "text": "Selamat pagi, Bu Sartika. Terima kasih atas waktu Anda. Saya ingin memeriksa status pengiriman peralatan yang kita pesan."
+    },
+    {
+     "speaker": "Bu Sartika",
+     "voice": "female",
+     "text": "Selamat pagi, Pak Wibowo. Saya senang bisa membantu. Kami sedang mengecek stok di gudang sekarang."
+    },
+    {
+     "speaker": "Pak Wibowo",
+     "voice": "male",
+     "text": "Bagaimana? Apakah ada masalah dengan pengiriman?"
+    },
+    {
+     "speaker": "Bu Sartika",
+     "voice": "female",
+     "text": "Tidak, tidak ada masalah. Kami akan mengirimkan peralatan tersebut segera."
+    },
+    {
+     "speaker": "Pak Wibowo",
+     "voice": "male",
+     "text": "Apakah ada tanggal pasti untuk pengiriman?"
+    },
+    {
+     "speaker": "Bu Sartika",
+     "voice": "female",
+     "text": "Saya akan memeriksa dan memberitahu Anda secepat mungkin. Saya yakin tidak akan ada masalah."
+    },
+    {
+     "speaker": "Pak Wibowo",
+     "voice": "male",
+     "text": "Terima kasih, Bu Sartika. Saya menghargai kerjasama Anda."
+    },
+    {
+     "speaker": "Bu Sartika",
+     "voice": "female",
+     "text": "Sama-sama, Pak Wibowo. Jika ada yang lain, jangan ragu untuk menanyakan."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "conversation",
+   "title": "The Village Library Upgrade",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembimbing",
+     "voice": "male",
+     "text": "Selamat pagi, semuanya. Saya ingin membahas beberapa perubahan yang akan kita lakukan di perpustakaan desa kami."
+    },
+    {
+     "speaker": "Pembimbing",
+     "voice": "male",
+     "text": "Pertama, kita akan mendapatkan banyak buku baru. Ini adalah langkah penting untuk meningkatkan koleksi perpustakaan kami."
+    },
+    {
+     "speaker": "Anggota",
+     "voice": "female",
+     "text": "Itu berita baik. Apakah buku-buku tersebut sudah tiba?"
+    },
+    {
+     "speaker": "Pembimbing",
+     "voice": "male",
+     "text": "Belum, tetapi mereka akan datang dalam beberapa minggu."
+    },
+    {
+     "speaker": "Anggota",
+     "voice": "female",
+     "text": "Baik, saya akan beritahu Anda saat buku-buku tersebut tiba."
+    },
+    {
+     "speaker": "Pembimbing",
+     "voice": "male",
+     "text": "Tapi sayangnya, ruang perpustakaan saat ini sudah terlalu sempit untuk menampung semua buku baru yang akan datang."
+    },
+    {
+     "speaker": "Anggota",
+     "voice": "female",
+     "text": "Saya mengerti. Apakah kita bisa memperluas ruang perpustakaan?"
+    },
+    {
+     "speaker": "Pembimbing",
+     "voice": "male",
+     "text": "Itu adalah ide yang baik, tetapi kita harus melihat anggaran kami terlebih dahulu."
+    },
+    {
+     "speaker": "Anggota",
+     "voice": "female",
+     "text": "Saya mengerti bahwa anggaran desa terbatas, tetapi mari kita lihat apa yang bisa kita lakukan."
+    },
+    {
+     "speaker": "Pembimbing",
+     "voice": "male",
+     "text": "Tetaplah optimis. Kita akan menemukan solusi yang terbaik untuk perpustakaan kami."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-2-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -1778,6 +2137,68 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-interview-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "interview",
+   "title": "Addressing Flood Risks in Desa Harmoni",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pak Rudi",
+     "voice": "male",
+     "text": "Terima kasih sudah datang, Ibu Sari dan Pak Budi. Saya ingin membahas tentang musim hujan yang akan datang."
+    },
+    {
+     "speaker": "Ibu Sari",
+     "voice": "female",
+     "text": "Tentu, Pak Rudi. Apa yang Anda khawatirkan?"
+    },
+    {
+     "speaker": "Pak Rudi",
+     "voice": "male",
+     "text": "Saya khawatir dengan bangunan sekolah baru kami. Mereka belum sempat selesai dan musim hujan mendekat."
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Benar. Kami juga perlu memperbaiki saluran air di beberapa daerah."
+    },
+    {
+     "speaker": "Ibu Sari",
+     "voice": "female",
+     "text": "Kami akan membutuhkan waktu untuk mengumpulkan dukungan dari masyarakat."
+    },
+    {
+     "speaker": "Pak Rudi",
+     "voice": "male",
+     "text": "Tetapi waktu sudah sempit. Apa yang bisa kita lakukan?"
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Mungkin kita bisa menghubungi Bappeda untuk bantuan."
+    },
+    {
+     "speaker": "Ibu Sari",
+     "voice": "female",
+     "text": "Idea yang bagus, Pak Budi. Mereka bisa membantu kita dengan sumber daya dan pengetahuan mereka."
+    },
+    {
+     "speaker": "Pak Rudi",
+     "voice": "male",
+     "text": "Baik, mari kita mulai dengan itu. Terima kasih atas partisipasinya, Ibu Sari dan Pak Budi."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1849,6 +2270,63 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Logistics Coordination Meeting",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Selamat pagi, Bu Lestari. Terima kasih atas kerjasamanya dalam proyek ini."
+    },
+    {
+     "speaker": "Bu Lestari",
+     "voice": "female",
+     "text": "Selamat pagi, Pak Widodo. Ya, tentu saja. Kami siap membantu dalam hal apa pun yang diperlukan."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Kami harus memastikan semua persiapan selesai sebelum deadline yang ketat ini."
+    },
+    {
+     "speaker": "Bu Lestari",
+     "voice": "female",
+     "text": "Ya, saya mengerti. Kami akan mengerjakan semuanya dengan cepat dan teliti."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Bagaimana dengan logistik di daerah timur? Apakah ada masalah yang perlu kita perhatikan?"
+    },
+    {
+     "speaker": "Bu Lestari",
+     "voice": "female",
+     "text": "Kami harus siap mengatasi kendala yang mungkin timur. Namun, dengan koordinasi yang baik, saya yakin kita bisa mengatasi semuanya."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Baik, kita harus memastikan semuanya berjalan lancar, meskipun ada tantangan."
+    },
+    {
+     "speaker": "Bu Lestari",
+     "voice": "female",
+     "text": "Tentu saja, Pak Widodo. Kami akan melakukan yang terbaik untuk memastikan proyek ini sukses."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2030,6 +2508,63 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-2-news-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "news",
+   "title": "New Regulations for Drone Operations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Pembaruan terbaru dari Departemen Perhubungan."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Pemerintah akan mengeluarkan aturan baru untuk penerbangan drone."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Tujuan utama dari aturan ini adalah untuk mengkoordinasikan penggunaan drone dengan penerbangan sipil."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Dengan adanya aturan ini, diharapkan penggunaan drone dapat dilakukan dengan lebih aman dan teratur."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Pemerintah juga akan menetapkan ruang udara tertentu untuk kegiatan penerbangan drone."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Hal ini untuk memastikan bahwa penerbangan drone tidak mengganggu aktivitas penerbangan sipil lainnya."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Departemen Perhubungan juga akan bekerja sama dengan Badan Meteorologi, Klimatologi, dan Geofisika untuk memantau kondisi cuaca yang mempengaruhi penerbangan drone."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "female",
+     "text": "Diharapkan dengan adanya aturan baru ini, penerbangan drone dapat berjalan dengan lancar dan aman."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -2173,6 +2708,361 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-2-report-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "Joint Perimeter Patrol Briefing",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pemimpin Tim Indonesia",
+     "voice": "male",
+     "text": "Selamat pagi, rekan-rekan. Hari ini kita akan melakukan patrol bersama dengan tim dari Malaysia di perairan sekitar Natuna."
+    },
+    {
+     "speaker": "Pemimpin Tim Malaysia",
+     "voice": "female",
+     "text": "Benar, kita akan bekerja sama untuk menjaga perbatasan dan memastikan keamanan di wilayah ini."
+    },
+    {
+     "speaker": "Pemimpin Tim Indonesia",
+     "voice": "male",
+     "text": "Tim Indonesia terdiri dari 10 personel dengan dua kapal patroli. Sementara itu, tim Malaysia terdiri dari 8 personel dengan satu kapal patroli."
+    },
+    {
+     "speaker": "Pemimpin Tim Malaysia",
+     "voice": "female",
+     "text": "Kita akan bertemu di titik koordinat yang telah disepakati sebelumnya. Pastikan semua peralatan dan senjata siap digunakan."
+    },
+    {
+     "speaker": "Pemimpin Tim Indonesia",
+     "voice": "male",
+     "text": "Baik, kita akan memulai patrol pada pukul 08.00 dan berakhir pada pukul 16.00. Jika ada situasi darurat, kita akan melaporkan ke markas besar secara langsung."
+    },
+    {
+     "speaker": "Pemimpin Tim Malaysia",
+     "voice": "female",
+     "text": "Terima kasih. Semoga patroli kali ini berjalan lancar dan tanpa insiden."
+    },
+    {
+     "speaker": "Pemimpin Tim Indonesia",
+     "voice": "male",
+     "text": "Amin. Selamat bekerja sama, rekan-rekan."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2-report-005",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2",
+   "textType": "report",
+   "title": "The Delivery Incident at the Factory Gate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Laporan insiden pintu gerbang pabrik."
+    },
+    {
+     "speaker": "Petugas Keamanan",
+     "voice": "male",
+     "text": "Kemarin pukul 14.30, Sopir pengiriman bernama Budi tidak diperbolehkan masuk ke pintu gerbang pabrik karena tidak memiliki dokumen yang benar."
+    },
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Kemudian apa yang terjadi?"
+    },
+    {
+     "speaker": "Petugas Keamanan",
+     "voice": "male",
+     "text": "Sopir tersebut kemudian memanggil atasannya untuk bantuan. Atasan sopir datang sekitar 30 menit kemudian dengan dokumen yang benar dan memohon maaf atas kesalahan."
+    },
+    {
+     "speaker": "Narrator",
+     "voice": "female",
+     "text": "Apakah ada tindakan lanjutan?"
+    },
+    {
+     "speaker": "Petugas Keamanan",
+     "voice": "male",
+     "text": "Kami memberi peringatan kepada sopir dan atasannya tentang pentingnya memiliki dokumen yang benar sebelum datang ke pabrik. Kami berharap insiden ini dapat diselesaikan secepatnya."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Culinary Exchange with the Navy",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Tamara",
+     "voice": "female",
+     "text": "Pak, saya sangat senang bisa berkesempatan untuk berjamah di rumah Pak"
+    },
+    {
+     "speaker": "Pak Agus",
+     "voice": "male",
+     "text": "Terima kasih Tamara, saya juga senang bisa menerima undangan Anda"
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "female",
+     "text": "Saya tidak bisa menolak undangan ini, karena saya sudah mendengar banyak tentang makanan lezat di rumah Pak"
+    },
+    {
+     "speaker": "Pak Agus",
+     "voice": "male",
+     "text": "Saya harap Anda merasa puas dengan makanan yang saya sajikan"
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "female",
+     "text": "Makanan ini sangat lezat, saya sudah lama tidak merasa seperti ini"
+    },
+    {
+     "speaker": "Pak Agus",
+     "voice": "male",
+     "text": "Saya senang mendengar itu, Tamara. Saya berharap Anda bisa merasakan kelezatan makanan khas Indonesia"
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "female",
+     "text": "Saya sangat menyukai hidangan ini, terutama rendangnya. Saya belum pernah merasakan yang seperti ini sebelumnya"
+    },
+    {
+     "speaker": "Pak Agus",
+     "voice": "male",
+     "text": "Saya senang mendengar pujian Anda, Tamara. Saya berharap Anda bisa menikmati hidangan lainnya juga"
+    },
+    {
+     "speaker": "Tamara",
+     "voice": "female",
+     "text": "Saya harap bisa berkesempatan lagi untuk datang ke rumah Pak dan menikmati makanan lezat Pak lagi"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Business Lunch in Jakarta",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Selamat siang, Bu Lina. Terima kasih atas undangan ini."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Selamat siang, Pak Widodo. Senang bisa bertemu dengan Anda."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Makanan di sini sangat enak. Saya suka hidangan ini."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Terima kasih. Saya senang Anda suka. Ini hidangan khusus dari daerah saya."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Oh ya? Saya tidak tahu bahwa Anda dari daerah itu. Saya pikir Anda dari Jakarta."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Tidak, saya dari Bandung. Tapi saya sudah tinggal di Jakarta sejak lama."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Oh, begitu. Saya juga suka ke Bandung. Kota yang indah."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Benar. Saya juga rindukan kota itu."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Nah, mari kita minum. Ini anggur yang enak."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Tidak ada masalah, tapi saya lebih suka minum teh."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Baiklah, saya pesan teh untuk Anda."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Terima kasih."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Oh ya, tentang proyek yang kita bicarakan tadi..."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Mungkin kita bisa lanjutkan ini nanti. Saya ingin menikmati makanan ini dulu."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Baiklah, sesuai dengan keinginan Anda."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Terima kasih. Saya sangat menghargai kesempatan ini. Ini makan siang yang sangat menyenangkan."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Saya juga. Terima kasih atas hospitalitas Anda."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Sama-sama. Saya harap kita bisa bertemu lagi nanti."
+    },
+    {
+     "speaker": "Pak Widodo",
+     "voice": "male",
+     "text": "Saya juga. Sampai jumpa, Bu Lina."
+    },
+    {
+     "speaker": "Bu Lina",
+     "voice": "female",
+     "text": "Sampai jumpa, Pak Widodo."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Colleague's Helpful Hand",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Karyawan",
+     "voice": "male",
+     "text": "Halo, bagaimana kabarnya?"
+    },
+    {
+     "speaker": "Saya",
+     "voice": "female",
+     "text": "Halo, saya baik-baik saja. Terima kasih sudah bertanya."
+    },
+    {
+     "speaker": "Karyawan",
+     "voice": "male",
+     "text": "Saya lihat kamu sedang sibuk dengan laporan itu. Apakah kamu sudah selesai?"
+    },
+    {
+     "speaker": "Saya",
+     "voice": "female",
+     "text": "Belum, saya masih butuh waktu untuk menyelesaikannya. Tapi saya sudah cukup jauh."
+    },
+    {
+     "speaker": "Karyawan",
+     "voice": "male",
+     "text": "Kalau begitu, saya bisa membantu kamu. Saya sudah pernah membuat laporan seperti itu sebelum ini."
+    },
+    {
+     "speaker": "Saya",
+     "voice": "female",
+     "text": "Sungguh? Terima kasih banyak. Saya akan sangat berterima kasih jika kamu bisa membantu saya."
+    },
+    {
+     "speaker": "Karyawan",
+     "voice": "male",
+     "text": "Tidak masalah. Saya sangat senang bisa membantu. Mari kita kerjakan bersama-sama."
+    },
+    {
+     "speaker": "Saya",
+     "voice": "female",
+     "text": "Baik, mari kita mulai. Saya akan sangat berterima kasih jika kamu bisa membantu saya dengan bagian ini."
+    },
+    {
+     "speaker": "Karyawan",
+     "voice": "male",
+     "text": "Tentu saja, saya bisa membantu dengan itu. Mari kita mulai segera."
+    },
+    {
+     "speaker": "Saya",
+     "voice": "female",
+     "text": "Terima kasih sudah membantu saya. Saya sangat berterima kasih atas bantuanmu."
+    },
+    {
+     "speaker": "Karyawan",
+     "voice": "male",
+     "text": "Tidak masalah. Mungkin besok saya bisa membantu lagi jika kamu masih butuh bantuan."
+    },
+    {
+     "speaker": "Saya",
+     "voice": "female",
+     "text": "Terima kasih banyak. Saya akan berhubung dengan kamu jika saya masih butuh bantuan."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-2p-interview-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -2282,6 +3172,63 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-2p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Shared Meal with the Air Force",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Selamat pagi, Pak Joko. Terima kasih telah datang ke kantor kami hari ini."
+    },
+    {
+     "speaker": "Pak Joko",
+     "voice": "male",
+     "text": "Selamat pagi, Pak Budi. Kami sangat menghargai undangan ini."
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Kami merencanakan makan bersama dengan rekan-rekan TNI-AU besok. Kita harus memastikan semua detail teratur."
+    },
+    {
+     "speaker": "Pak Joko",
+     "voice": "male",
+     "text": "Tentu saja, Pak Budi. Kami siap untuk membantu dalam segala hal yang diperlukan."
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Bagaimana dengan menu? Apakah ada waktu yang cukup untuk mempersiapkannya?"
+    },
+    {
+     "speaker": "Pak Joko",
+     "voice": "male",
+     "text": "Kami telah mempersiapkan beberapa opsi menu. Namun, mungkin kita bisa mempertimbangkan untuk mengajukan permintaan sebelumnya agar lebih banyak pilihan tersedia."
+    },
+    {
+     "speaker": "Pak Budi",
+     "voice": "male",
+     "text": "Itu adalah ide yang bagus, Pak Joko. Kami akan pastikan permintaan kita diajukan lebih awal."
+    },
+    {
+     "speaker": "Pak Joko",
+     "voice": "male",
+     "text": "Terima kasih, Pak Budi. Kami tunggu kabar baik dari Anda."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3473,6 +4420,155 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Unauthorized Drone: A Security Concern",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Pada hari Selasa kemarin, sebuah drone tak teridentifikasi telah dilaporkan terlihat mengelilingi perimeternya Pangkalan Udara Halim Perdanakusuma, Jakarta."
+    },
+    {
+     "speaker": "Komenter 1",
+     "voice": "female",
+     "text": "Ini adalah masalah serius. Kita harus mengevaluasi lagi sistem keamanan kita."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Drone tersebut berhasil masuk ke area yang terlindungi tanpa seizin, menyisakan masalah keamanan yang signifikan."
+    },
+    {
+     "speaker": "Komenter 2",
+     "voice": "male",
+     "text": "Jika drone yang tidak sah bisa masuk ke pangkalan udara, apa yang bisa dilakukan untuk mencegah hal serius?"
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Petugas keamanan segera bertindak dan berhasil mengamankan drone sebelum dapat menyebabkan kerusakan lebih lanjut."
+    },
+    {
+     "speaker": "Komenter 3",
+     "voice": "female",
+     "text": "Ini bukan hanya masalah teknis, tetapi juga masalah keamanan nasional yang terancam."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Investigasi sedang berlangsung untuk menentukan asal-usul drone dan tujuan penetrasinya ke area pangkalan udara."
+    },
+    {
+     "speaker": "Komenter 1",
+     "voice": "female",
+     "text": "Kita perlu memahami bagaimana drone ini bisa masuk. Harus ada kelemahan yang bisa kita perbaiki."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Pemerintah telah mengeluarkan pernyataan bahwa mereka akan segera mengevaluasi dan meningkatkan sistem keamanan di seluruh fasilitas militer."
+    },
+    {
+     "speaker": "Komenter 2",
+     "voice": "male",
+     "text": "Ini harus menjadi prioritas. Kita tidak bisa biarkan hal seperti ini terjadi lagi."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Masih tidak jelas siapa yang bertanggung jawab atas drone ini, tetapi upaya serius untuk memperketat aturan penggunaan drone di sekitar fasilitas militer diperlukan."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-editorial_commentary-002",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "The Drone Incident: A Call for Stricter Regulations",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Halo, ini adalah pembaca berita. Seorang operator drone ditahan di dekat Bandar Udara Internasional Soekarno-Hatta beberapa hari yang lalu."
+    },
+    {
+     "speaker": "Komenter 1",
+     "voice": "female",
+     "text": "Ini benar-benar mengkhawatirkan. Kenapa seseorang bisa terbang drone di dekat bandar udara?"
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Operator drone itu ditangkap setelah drone-nya terlihat di area terbang bandar udara."
+    },
+    {
+     "speaker": "Ahli Keamanan",
+     "voice": "male",
+     "text": "Ini adalah pelanggaran serius. Drone dapat menimbulkan bahaya bagi pesawat yang sedang lepas landas atau mendarat."
+    },
+    {
+     "speaker": "Komenter 2",
+     "voice": "female",
+     "text": "Saya setuju. Kita perlu aturan yang lebih ketat. Bandara tidak boleh dijadikan tempat bermain drone."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Insiden ini mengungkapkan masalah yang serius mengenai penggunaan drone di sekitar bandar udara."
+    },
+    {
+     "speaker": "Pembicara Pemerintah",
+     "voice": "male",
+     "text": "Kami sedang mengevaluasi aturan saat ini. Kami akan bekerja sama dengan pemerintah dan industri untuk mengatasi masalah ini."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Meskipun demikian, pembicara pemerintah menambahkan bahwa mereka masih memerlukan waktu untuk menentukan langkah selanjutnya."
+    },
+    {
+     "speaker": "Ahli Keamanan",
+     "voice": "male",
+     "text": "Ini bukan hanya tentang menahan operator drone. Kami perlu regulasi yang lebih kuat untuk mengatasi masalah ini."
+    },
+    {
+     "speaker": "Pembaca Berita",
+     "voice": "male",
+     "text": "Insiden tersebut masih dalam penyelidikan. Pelaku akan diadili sesuai dengan aturan yang berlaku."
+    },
+    {
+     "speaker": "Komenter 1",
+     "voice": "female",
+     "text": "Saya harap ini menjadi pembelajaran bagi semua orang. Kita harus lebih hati-hati dalam menggunakan drone."
+    },
+    {
+     "speaker": "Pembicara Pemerintah",
+     "voice": "male",
+     "text": "Kami akan terus berusaha untuk menjaga keselamatan di bandar udara. Keamanan adalah prioritas utama kami."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dl-3-lecture-001",
    "exam": "DLPT_LISTENING",
    "language": "id",
@@ -3597,6 +4693,160 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-lecture-003",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Coordinating Air Defense: Establishing Effective Radio Communication",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Selamat pagi, semuanya. Hari ini kita akan membahas tentang pentingnya prosedur komunikasi radio yang jelas dalam koordinasi pertahanan udara."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Komunikasi yang baik adalah kunci untuk sinkronisasi aksi yang terkoordinasi dengan baik."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Untuk memastikan ini, kita harus mematuhi beberapa prinsip dasar."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Pertama, masing-masing satuan harus memiliki tanda panggilan yang unik."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Ini akan membantu mencegah kesalahpahaman dan memastikan pesan diteruskan ke satuan yang tepat."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Kedua, kita harus selalu mengikuti format komunikasi yang telah ditetapkan."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Format ini harus mencakup informasi penting seperti posisi, status, dan tindakan yang akan diambil."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Terkadang, kita mungkin harus berkomunikasi dengan satuan sekutu yang menggunakan prosedur yang berbeda."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Dalam situasi seperti itu, kita harus tetap tenang dan memastikan kita memahami prosedur mereka sebelum kita mulai berkomunikasi."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Ingatlah, komunikasi yang baik tidak hanya tentang mengirim pesan, tetapi juga tentang menerima dan memahami pesan dengan benar."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Dengan mematuhi prinsip-prinsip dasar ini, kita dapat memastikan koordinasi yang efektif dan mencegah kesalahpahaman selama operasi pertahanan udara."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Terima kasih."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dl-3-lecture-004",
+   "exam": "DLPT_LISTENING",
+   "language": "id",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Latihan Pertahanan Dasar Bersama",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Pagi ini, saya akan berbicara tentang latihan pertahanan dasar yang baru saja kami lakukan bersama pasukan negara tuan rumah."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Tujuan utama latihan ini adalah untuk meningkatkan kemampuan kami dalam melindungi markas kami dari serangan musuh."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Kami melakukan berbagai scenario, termasuk serangan darat dan udara, serta serangan dengan senjata kimia dan biologis."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Dalam latihan ini, kami juga melibatkan pasukan negara tuan rumah untuk meningkatkan komunikasi dan koordinasi antara kami."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Hal ini sangat penting karena dalam situasi nyata, kami perlu bekerja sama dengan pasukan setempat untuk menjaga keamanan dalam wilayah mereka."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Selain itu, kami juga belajar tentang teknik-teknik Baru dalam pertahanan markas, seperti penggunaan teknologi canggih dan taktik Baru dalam mengelola sumber daya."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Kami juga melakukan simulasi serangan yang sangat realistis, sehingga kami dapat melihat bagaimana kami akan bertindak dalam situasi sebenarnya."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Dalam latihan ini, kami juga belajar tentang pentingnya keamanan siber dalam pertahanan markas."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Kami belajar bagaimana melindungi jaringan kami dari serangan siber dan bagaimana mengidentifikasi ancaman siber yang mungkin terjadi."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Secara keseluruhan, latihan ini sangat berhasil dan kami telah belajar banyak tentang bagaimana meningkatkan pertahanan markas kami."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Kami juga telah membangun hubungan yang lebih baik dengan pasukan negara tuan rumah, yang akan sangat membantu dalam situasi nyata."
+    },
+    {
+     "speaker": "Pembicara",
+     "voice": "male",
+     "text": "Terima kasih atas perhatiannya."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -4088,6 +5338,60 @@
    "verified": false
   },
   {
+   "id": "id-dl-1-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-announcement-002",
+   "stem": "In the announcement, what is the main reason given for the no-drone zone?",
+   "choices": [
+    "To ensure the safety of the military base.",
+    "To prevent accidents during the festival.",
+    "To maintain good weather conditions.",
+    "To avoid disturbing the festival attendees."
+   ],
+   "answer": 1,
+   "explanation": "The announcement states 'untuk mencegah kecelakaan selama festival berlangsung,' which means 'to prevent accidents during the festival.' This is the main reason given for the no-drone zone.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dl-1-announcement-002",
+   "stem": "What is the main idea of the announcement?",
+   "choices": [
+    "Drones are not allowed near the festival area for safety reasons.",
+    "Attendees should bring their own drones for entertainment.",
+    "The festival is canceled due to safety concerns.",
+    "The military base is closed during the festival."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the announcement is that 'penggunaan drone dilarang di sekitar area festival,' which means 'the use of drones is prohibited near the festival area.' This is clearly stated in the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-announcement-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-announcement-002",
+   "stem": "What does 'mencegah' mean here?",
+   "choices": [
+    "To prevent",
+    "To encourage",
+    "To allow",
+    "To ignore"
+   ],
+   "answer": 0,
+   "explanation": "In the context of the announcement, 'mencegah' means 'to prevent.' The phrase 'untuk mencegah kecelakaan selama festival berlangsung' translates to 'to prevent accidents during the festival.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4322,6 +5626,114 @@
    "verified": false
   },
   {
+   "id": "id-dl-1-conversation-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-conversation-006",
+   "stem": "What is the main problem discussed in the conversation?",
+   "choices": [
+    "The difficulty of detecting cheap drones",
+    "The cost of building new military bases",
+    "The increase in drone technology",
+    "The cost of defending bases against cheap drones"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'The cost of defending bases against cheap drones'. This is evident from the speakers discussing the 'biaya' (cost) of 'melindungi pangkalan' (defending bases) against 'drones murah' (cheap drones).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-conversation-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-conversation-006",
+   "stem": "What does 'mengganggu' mean here?",
+   "choices": [
+    "To build",
+    "To detect",
+    "To disturb",
+    "To increase"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'To disturb'. This is clear from the context where 'drones murah' are said to 'mengganggu' (disturb) the bases, causing the need for defense.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-conversation-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "id-dl-1-conversation-006",
+   "stem": "What is the purpose of the conversation?",
+   "choices": [
+    "To plan a new military strategy",
+    "To discuss the benefits of drones",
+    "To evaluate the cost of new technology",
+    "To find a solution to a problem"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'To find a solution to a problem'. The speakers are discussing the 'biaya' (cost) of 'melindungi pangkalan' (defending bases) against 'drones murah' (cheap drones) and considering 'solusi' (solutions), indicating they are trying to address the issue.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-conversation-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-conversation-007",
+   "stem": "What is the main purpose of the exercise?",
+   "choices": [
+    "to drill for an earthquake",
+    "to practice responding to a terrorist attack",
+    "to train with Indonesian forces",
+    "to test new weapons"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is \"to train with Indonesian forces\", because the text says \"latihan bersama dengan TNI\" ('exercise together with the TNI'). The TNI is the Indonesian National Armed Forces.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-conversation-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dl-1-conversation-007",
+   "stem": "What does the speaker say about the exercise?",
+   "choices": [
+    "It will be held next week.",
+    "It will be very difficult.",
+    "It will last for two days.",
+    "It will involve a lot of equipment."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is \"It will last for two days.\", because the text says \"latihan ini akan berlangsung selama dua hari\" ('this exercise will last for two days').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-conversation-007-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-conversation-007",
+   "stem": "What does \"tempat\" mean here?",
+   "choices": [
+    "place",
+    "way",
+    "reason",
+    "time"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is \"place\", because the text says \"tempat latihan\" ('exercise place'). The context makes it clear that they are talking about a location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-1-instructions-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4516,6 +5928,42 @@
    ],
    "answer": 2,
    "explanation": "The caller mentions the make of their electric car as \"Nissan\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dl-1-voicemail-004",
+   "stem": "What is the purpose of the new system installed at the airport?",
+   "choices": [
+    "To improve passenger check-in.",
+    "To detect and neutralize unauthorized drones.",
+    "To enhance the airport's Wi-Fi signal.",
+    "To monitor the airport's energy consumption."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'To detect and neutralize unauthorized drones.' The voicemail explicitly states that the system is designed to counter drones, mentioning 'mendeteksi dan menutup' (detect and neutralize) drones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-1-voicemail-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-1-voicemail-004",
+   "stem": "The phrase 'drones yang tidak sah' means here:",
+   "choices": [
+    "Drones that are not working properly.",
+    "Drones that are not authorized.",
+    "Drones that are not visible.",
+    "Drones that are not registered."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'Drones that are not authorized.' The phrase 'drones yang tidak sah' is used to describe drones that are not supposed to be there, implying they lack proper authorization.",
    "source": "llm",
    "verified": false
   },
@@ -5366,6 +6814,60 @@
    "verified": false
   },
   {
+   "id": "id-dl-2-briefing-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-briefing-004",
+   "stem": "What is the main topic of the briefing?",
+   "choices": [
+    "The impact of drones on civil aviation",
+    "The history of drone use in Indonesia",
+    "The future of drone technology",
+    "The new regulations for drone operations in Indonesian airspace"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the briefing is the new regulations for drone operations in Indonesian airspace, as stated in the opening line: \"Kami berkumpul di sini untuk membahas peraturan baru mengenai operasi drone di ruang udara Indonesia.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-briefing-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-briefing-004",
+   "stem": "What is one of the key changes in the new regulations?",
+   "choices": [
+    "Drones are no longer allowed to fly at night",
+    "Drone operators must coordinate with civil aviation for airspace use",
+    "The maximum altitude for drone flights has been reduced",
+    "Drone operators must obtain a license from the military"
+   ],
+   "answer": 1,
+   "explanation": "One of the key changes in the new regulations is that drone operators must coordinate with civil aviation for airspace use, as mentioned in the text: \"Operator drone harus koordinasi dengan penerbangan sipil untuk penggunaan ruang udara.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-briefing-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-briefing-004",
+   "stem": "What does \"koordinasi\" mean here?",
+   "choices": [
+    "Coordination",
+    "Translation",
+    "Cooperation",
+    "Communication"
+   ],
+   "answer": 0,
+   "explanation": "In this context, \"koordinasi\" means \"Coordination\", as it refers to the process of working together with civil aviation to manage airspace use: \"Operator drone harus koordinasi dengan penerbangan sipil untuk penggunaan ruang udara.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-2-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5416,6 +6918,114 @@
    ],
    "answer": 3,
    "explanation": "The text uses 'semboyan' in the context of a motto or slogan: 'Kita punya semboyan bersama:",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-conversation-002",
+   "stem": "What is the reason for Pak Wibowo's visit to PT Harapan Bersama?",
+   "choices": [
+    "To introduce himself as the new CEO of PT Jaya Makmur.",
+    "To discuss the terms of a new contract.",
+    "To request a tour of their new facilities.",
+    "To check on the delivery status of some equipment."
+   ],
+   "answer": 3,
+   "explanation": "Pak Wibowo implies that he is there to discuss the delivery of equipment when he says, 'Saya ingin memeriksa status pengiriman peralatan yang kita pesan.' He does not mention a new contract, a tour, or introducing himself as the new CEO.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-conversation-002",
+   "stem": "What does 'segera' mean here?",
+   "choices": [
+    "As soon as possible.",
+    "Next week.",
+    "At a convenient time.",
+    "After the holiday."
+   ],
+   "answer": 0,
+   "explanation": "Bu Sartika uses the word 'segera' to imply that the delivery should be prioritized. She says, 'Kami akan mengirimkan peralatan tersebut segera,' indicating that they will send the equipment as soon as possible.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-conversation-002",
+   "stem": "What is the main concern of Pak Wibowo regarding the delivery?",
+   "choices": [
+    "The equipment might be damaged during transit.",
+    "The delivery might be delayed.",
+    "The equipment might not meet their specifications.",
+    "The delivery cost might be too high."
+   ],
+   "answer": 1,
+   "explanation": "Pak Wibowo's concern about the delivery timing is implied when he says, 'Apakah ada masalah dengan pengiriman?' and later asks, 'Apakah ada tanggal pasti untuk pengiriman?' This suggests he is worried about potential delays.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-conversation-003",
+   "stem": "What does the speaker with the 'female' voice imply about the new library books?",
+   "choices": [
+    "The books are highly controversial.",
+    "The books are not yet available.",
+    "The books will arrive soon.",
+    "The books are not suitable for the village."
+   ],
+   "answer": 1,
+   "explanation": "The speaker says 'Saya akan beritahu Anda saat buku-buku tersebut tiba.' This implies that the books are not yet available, as they will inform when they arrive. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-conversation-003",
+   "stem": "What does the speaker with the 'male' voice imply about the current library space?",
+   "choices": [
+    "It needs to be renovated.",
+    "It is perfectly adequate.",
+    "It is located in an inconvenient place.",
+    "It is too small for the new books."
+   ],
+   "answer": 3,
+   "explanation": "The speaker says 'Tapi sayangnya, ruang perpustakaan saat ini sudah terlalu sempit untuk menampung semua buku baru yang akan datang.' This implies that the current library space is too small for the new books. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-conversation-003",
+   "stem": "What does the speaker with the 'female' voice imply about the village's budget for the library?",
+   "choices": [
+    "It is not a priority for the village.",
+    "It has been increased significantly.",
+    "It is being reviewed by the council.",
+    "It is insufficient for the upgrades."
+   ],
+   "answer": 3,
+   "explanation": "The speaker says 'Saya mengerti bahwa anggaran desa terbatas, tetapi mari kita lihat apa yang bisa kita lakukan.' This implies that the village's budget for the library is insufficient for the upgrades. The other choices are not supported by the text.",
    "source": "llm",
    "verified": false
   },
@@ -5474,6 +7084,60 @@
    "verified": false
   },
   {
+   "id": "id-dl-2-interview-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-interview-002",
+   "stem": "What is the main concern of Pak Rudi regarding the upcoming rainy season?",
+   "choices": [
+    "The insufficient number of volunteers for flood relief",
+    "The possibility of landslides in the nearby hills",
+    "The potential damage to the new school buildings",
+    "The lack of funds to build additional drainage systems"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is the potential damage to the new school buildings. Pak Rudi states, 'Saya khawatir dengan bangunan sekolah baru kami. Mereka belum sempat selesai dan musim hujan mendekat,' which shows his concern about the unfinished school buildings as the rainy season approaches. The other options are not directly mentioned as his main concern.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-interview-002",
+   "stem": "What does Ibu Sari imply when she says, 'Kami akan membutuhkan waktu untuk mengumpulkan dukungan dari masyarakat'?",
+   "choices": [
+    "They require additional funds to complete the school buildings",
+    "The community needs more time to prepare for the rainy season",
+    "The community needs time to organize support for the proposed drainage project",
+    "They need to gather more volunteers for flood relief"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is that the community needs time to organize support for the proposed drainage project. Ibu Sari's statement implies that they need to gather community support, which is necessary for the drainage project mentioned earlier. The other options are not directly related to her statement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-interview-002",
+   "stem": "What is the underlying reason for Pak Budi's suggestion to contact Bappeda?",
+   "choices": [
+    "To obtain more volunteers for flood relief",
+    "To request additional funds for the school buildings",
+    "To seek technical assistance for the drainage project",
+    "To get approval for the community's flood preparedness plan"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is to seek technical assistance for the drainage project. Pak Budi suggests contacting Bappeda because they have the expertise to help with the drainage project, as stated in 'Bappeda bisa membantu dengan pengetahuan teknis mereka untuk proyek saluran air.' The other options are not the main reason for his suggestion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-2-interview-003-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5524,6 +7188,60 @@
    ],
    "answer": 3,
    "explanation": "\"Menghadapi\" in this context means \"to face\" as in \"karyawan menghadapi kesulitan\" which translates to \"workers face difficulties\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-interview-004",
+   "stem": "Why does Pak Widodo mention the 'deadline yang ketat'?",
+   "choices": [
+    "To request an extension of the deadline.",
+    "To indicate that the project can be delayed if necessary.",
+    "To suggest that the deadline is not a priority.",
+    "To emphasize the importance of completing the project early."
+   ],
+   "answer": 3,
+   "explanation": "Pak Widodo says 'Kami harus memastikan semua persiapan selesai sebelum deadline yang ketat ini.' This implies that the tight deadline is a critical factor that necessitates ensuring all preparations are completed on time, emphasizing the importance of meeting it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-interview-004",
+   "stem": "What is implied by Bu Lestari's use of the phrase 'kendala yang mungkin timur'?",
+   "choices": [
+    "She is suggesting that the East is not important for the project.",
+    "She is requesting more resources for the Eastern region.",
+    "She is certain that there will be no problems in the East.",
+    "She is indicating that there might be some issues in the East."
+   ],
+   "answer": 3,
+   "explanation": "Bu Lestari says 'Kami harus siap mengatasi kendala yang mungkin timur.' This implies that there might be some challenges or issues in the Eastern region that need to be addressed, indicating potential problems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "id-dl-2-interview-004",
+   "stem": "What does Pak Widodo imply when he says 'kita harus memastikan semuanya berjalan lancar'?",
+   "choices": [
+    "He is suggesting that the project might face some obstacles.",
+    "He is indicating that everything is already running smoothly.",
+    "He is certain that the project will be completed ahead of schedule.",
+    "He is requesting more time to complete the project."
+   ],
+   "answer": 0,
+   "explanation": "Pak Widodo says 'Kita harus memastikan semuanya berjalan lancar, meskipun ada tantangan.' This implies that there might be some obstacles or challenges that need to be overcome to ensure the project runs smoothly.",
    "source": "llm",
    "verified": false
   },
@@ -5690,6 +7408,60 @@
    "verified": false
   },
   {
+   "id": "id-dl-2-news-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-news-004",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "the dangers of drone usage in Indonesia",
+    "how drones affect bird populations",
+    "the need for new regulations on drone operations",
+    "the history of drone technology in Indonesia"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is B. The text discusses the need for new regulations on drone operations, as indicated by the phrases  'aturan baru untuk penerbangan drone' and 'mengatur penggunaan drone dalam ruang udara'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-news-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-news-004",
+   "stem": "According to the text, what is one of the reasons for the new drone regulations?",
+   "choices": [
+    "to coordinate drone operations with civil aviation",
+    "to increase the speed of drone flights",
+    "to ban drone usage in certain areas",
+    "to reduce the number of drones in the sky"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B. The text states that one of the reasons for the new regulations is 'untuk mengkoordinasikan penggunaan drone dengan penerbangan sipil', which means 'to coordinate drone operations with civil aviation'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-news-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-news-004",
+   "stem": "In the text, what does 'mengatur' mean?",
+   "choices": [
+    "to fly",
+    "to organize",
+    "to ban",
+    "to promote"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is C. In the text, 'mengatur' is used in the context of 'mengatur penggunaan drone dalam ruang udara', which means 'to organize the use of drones in the airspace'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-2-report-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5852,6 +7624,276 @@
    "verified": false
   },
   {
+   "id": "id-dl-2-report-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-report-004",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A border dispute between Indonesia and Malaysia",
+    "A discussion about illegal fishing in the region",
+    "A routine joint patrol between Indonesian and Malaysian forces",
+    "A military exercise involving multiple countries"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is a routine joint patrol, as indicated by the context of the conversation, such as 'patrol bersama', 'perbatasan', and the mention of both Indonesian and Malaysian forces.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-report-004",
+   "stem": "According to the text, where will the joint patrol take place?",
+   "choices": [
+    "In the waters around Natuna",
+    "Along the land border between Indonesia and Malaysia",
+    "In the Java Sea",
+    "In the airspace above Borneo"
+   ],
+   "answer": 0,
+   "explanation": "The joint patrol will take place 'di perairan sekitar Natuna', as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-report-004",
+   "stem": "What does 'menjaga' mean here?",
+   "choices": [
+    "To guard",
+    "To observe",
+    "To navigate",
+    "To attack"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'menjaga' means 'to guard'. The text mentions 'menjaga perbatasan', which refers to guarding the border.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dl-2-report-005",
+   "stem": "What is the main idea of the report?",
+   "choices": [
+    "A driver was denied entry to the factory for not having the correct papers",
+    "The factory's entry control point was temporarily closed due to a security threat",
+    "A delivery driver was arrested for trying to smuggle goods into the factory",
+    "A truck caught fire at the factory gate, causing a major incident"
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that a driver was denied entry to the factory for not having the correct papers. This is stated clearly at the beginning of the report: \"Kemarin pukul 14.30, Sopir pengiriman bernama Budi tidak diperbolehkan masuk ke pintu gerbang pabrik karena tidak memiliki dokumen yang benar.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dl-2-report-005",
+   "stem": "What did the driver do when he was denied entry?",
+   "choices": [
+    "He drove away immediately",
+    "He waited at the gate for further instructions",
+    "He called his supervisor for help",
+    "He argued with the security guard"
+   ],
+   "answer": 2,
+   "explanation": "The driver called his supervisor for help. This is mentioned in the report: \"Sopir tersebut kemudian memanggil atasannya untuk bantuan.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2-report-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-2-report-005",
+   "stem": "What does 'menyelesaikan' mean here?",
+   "choices": [
+    "To cancel",
+    "To delay",
+    "To complete",
+    "To begin"
+   ],
+   "answer": 2,
+   "explanation": "'Menyelesaikan' in this context means 'to complete'. This is evident from the sentence: \"Kami berharap insiden ini dapat diselesaikan secepatnya.\", which means 'We hope this incident can be completed as soon as possible.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-001",
+   "stem": "What does the speaker mean by 'saya tidak bisa menolak undangan ini'?",
+   "choices": [
+    "The speaker is saying that they cannot refuse the invitation because they are grateful for the hospitality.",
+    "The speaker is saying that they cannot refuse the invitation because they are too busy.",
+    "The speaker is saying that they cannot refuse the invitation because they are very hungry.",
+    "The speaker is saying that they cannot refuse the invitation because they have already accepted another invitation."
+   ],
+   "answer": 0,
+   "explanation": "The speaker says 'saya tidak bisa menolak undangan ini' to express gratitude and appreciation for the hospitality. The context of the conversation is about having a meal together, and the speaker is thanking the host for the invitation. The other options are not supported by the context of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-001",
+   "stem": "What does the speaker mean by 'makanan ini sangat lezat'?",
+   "choices": [
+    "The speaker is saying that the food is too spicy for them.",
+    "The speaker is saying that the food is not to their liking.",
+    "The speaker is saying that the food is very delicious.",
+    "The speaker is saying that the food is too greasy for them."
+   ],
+   "answer": 2,
+   "explanation": "The speaker says 'makanan ini sangat lezat' to compliment the host on the food. The context of the conversation is about having a meal together, and the speaker is expressing their enjoyment of the food. The other options are not supported by the context of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-001",
+   "stem": "What does the speaker mean by 'saya harap bisa berkesempatan lagi'?",
+   "choices": [
+    "The speaker is saying that they hope to have the opportunity to visit again soon.",
+    "The speaker is saying that they hope to have the opportunity to meet the host again.",
+    "The speaker is saying that they hope to have the opportunity to bring their own food next time.",
+    "The speaker is saying that they hope to have the opportunity to try the food again."
+   ],
+   "answer": 0,
+   "explanation": "The speaker says 'saya harap bisa berkesempatan lagi' to express their hope to have the opportunity to visit again soon. The context of the conversation is about having a meal together, and the speaker is thanking the host for the invitation and expressing their enjoyment of the food. The other options are not supported by the context of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-002",
+   "stem": "What is implied by the speaker's use of the phrase 'tidak ada masalah'?",
+   "choices": [
+    "The speaker is asking for more alcohol.",
+    "The speaker is agreeing to drink alcohol.",
+    "The speaker is changing the subject.",
+    "The speaker is refusing to drink alcohol."
+   ],
+   "answer": 3,
+   "explanation": "The speaker says 'tidak ada masalah' after Pak Widodo suggests they drink alcohol. However, they immediately follow it with 'tapi saya lebih suka minum teh' (but I prefer to drink tea), implying that they are refusing the alcohol politely.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-002",
+   "stem": "What does the speaker imply when they say 'mungkin kita bisa lanjutkan ini nanti'?",
+   "choices": [
+    "They are ending the lunch early.",
+    "They are changing the topic.",
+    "They want to continue the conversation later.",
+    "They are asking for more food."
+   ],
+   "answer": 2,
+   "explanation": "The speaker says this after Pak Widodo starts talking about work. They imply that they would like to continue the conversation later, but not during the lunch.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-002",
+   "stem": "What is implied by Bu Lina's statement 'saya sangat menghargai kesempatan ini'?",
+   "choices": [
+    "She is asking for a favor.",
+    "She is criticizing the food.",
+    "She is complaining about the service.",
+    "She is expressing gratitude for the invitation."
+   ],
+   "answer": 3,
+   "explanation": "Bu Lina says this at the end of the lunch. She is expressing her gratitude for the invitation and the hospitality, as implied by the context and the phrase 'kesempatan ini' (this opportunity).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-003",
+   "stem": "What does the speaker imply by saying 'Saya sangat senang bisa membantu'?",
+   "choices": [
+    "The speaker is happy to have been able to help.",
+    "The speaker is asking for a favor in return.",
+    "The speaker is proud of their abilities.",
+    "The speaker is boasting about their skills."
+   ],
+   "answer": 0,
+   "explanation": "The speaker says 'Saya sangat senang bisa membantu', which implies they are happy to have been able to assist. They are not boasting, asking for a favor, or proud of their abilities, but rather expressing satisfaction in being helpful.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-003",
+   "stem": "What does the speaker imply by saying 'Mungkin besok saya bisa membantu lagi'?",
+   "choices": [
+    "The speaker is saying they won't be available tomorrow.",
+    "The speaker is asking for more work to do.",
+    "The speaker is saying they will be busy tomorrow.",
+    "The speaker is offering to help again tomorrow."
+   ],
+   "answer": 3,
+   "explanation": "The speaker says 'Mungkin besok saya bisa membantu lagi', which implies they are offering to help again tomorrow. They are not saying they will be busy, asking for more work, or saying they won't be available.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-conversation-003",
+   "stem": "What does the speaker imply by saying 'Terima kasih sudah membantu saya'?",
+   "choices": [
+    "The speaker is complimenting the helper's skills.",
+    "The speaker is expressing gratitude for the help received.",
+    "The speaker is asking for more help.",
+    "The speaker is saying they don't need help anymore."
+   ],
+   "answer": 1,
+   "explanation": "The speaker says 'Terima kasih sudah membantu saya', which implies they are expressing gratitude for the help received. They are not asking for more help, saying they don't need help anymore, or complimenting the helper's skills.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-2p-interview-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -5956,6 +7998,60 @@
    ],
    "answer": 2,
    "explanation": "In this context, 'dampak' means 'impact'. The text uses it to describe the effects of the naval visits on the local economy, as in 'Kunjungan kapal perang asing ini memberikan dampak positif bagi perekonomian daerah kami.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-interview-004",
+   "stem": "What does the speaker imply by saying 'kita harus memastikan semua detail teratur'?",
+   "choices": [
+    "The speaker is emphasizing the importance of proper planning.",
+    "The speaker is asking for help to organize the meal.",
+    "The speaker is suggesting that they should order more food.",
+    "The speaker is requesting a detailed report of the meal."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'The speaker is emphasizing the importance of proper planning.' The phrase 'kita harus memastikan semua detail teratur' implies that the speaker wants to ensure everything is well-organized and planned, not just a request for help or a report, or a suggestion to order more food.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-interview-004",
+   "stem": "What does the speaker imply by saying 'kami sangat menghargai undangan ini'?",
+   "choices": [
+    "The speaker is questioning the purpose of the invitation.",
+    "The speaker is surprised by the invitation.",
+    "The speaker is grateful for the invitation.",
+    "The speaker is declining the invitation."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'The speaker is grateful for the invitation.' The phrase 'kami sangat menghargai undangan ini' implies gratitude and appreciation for the invitation, not surprise, questioning, or declination.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-2p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "id-dl-2p-interview-004",
+   "stem": "What does the speaker imply by saying 'mungkin kita bisa mempertimbangkan untuk mengajukan permintaan sebelumnya'?",
+   "choices": [
+    "The speaker is asking for more time to prepare.",
+    "The speaker is suggesting they should submit a request earlier next time.",
+    "The speaker is proposing to change the menu.",
+    "The speaker is requesting additional resources."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'The speaker is suggesting they should submit a request earlier next time.' The phrase 'mungkin kita bisa mempertimbangkan untuk mengajukan permintaan sebelumnya' implies a suggestion to submit a request earlier in the future, not a request for more time, additional resources, or a change in the menu.",
    "source": "llm",
    "verified": false
   },
@@ -6932,6 +9028,114 @@
    "verified": false
   },
   {
+   "id": "id-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-editorial_commentary-001",
+   "stem": "What is the main point of this editorial?",
+   "choices": [
+    "The benefits of drones in modern warfare",
+    "The environmental effects of drone technology",
+    "The economic impact of the drone industry",
+    "The need for stricter regulations on drone usage near military facilities"
+   ],
+   "answer": 3,
+   "explanation": "The editorial focuses on the security concerns raised by the unauthorized drone sighting over the air base perimeter, emphasizing the need for stricter regulations. This is evident in phrases like 'menyisakan masalah keamanan yang signifikan' and 'membutuhkan upaya serius untuk memperketat aturan'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "id-dl-3-editorial_commentary-001",
+   "stem": "What is the tone of this editorial?",
+   "choices": [
+    "Concerned and urgent",
+    "Humorous and satirical",
+    "Indifferent and casual",
+    "Optimistic and enthusiastic"
+   ],
+   "answer": 0,
+   "explanation": "The tone is concerned and urgent, as shown by phrases like 'keamanan nasional terancam' and 'segera mengevaluasi dan meningkatkan sistem keamanan'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-editorial_commentary-001",
+   "stem": "What does 'penetrasi' mean here?",
+   "choices": [
+    "Celebration",
+    "Infiltration",
+    "Expansion",
+    "Simulation"
+   ],
+   "answer": 1,
+   "explanation": "The word 'penetrasi' is used to describe how the drone managed to enter the secured area, indicating 'infiltration'. This is clear from the context: 'drone yang bisa melakukan penetrasi ke area yang terlindungi'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-editorial_commentary-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-editorial_commentary-002",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "Drones should be banned near airports to prevent accidents.",
+    "Airports should invest in more advanced technology to detect and prevent drone incursions.",
+    "The current drone regulations are sufficient and do not need to be changed.",
+    "The incident involving the drone operator highlights the need for stricter drone regulations."
+   ],
+   "answer": 3,
+   "explanation": "The commentary discusses a specific incident involving a drone operator near an airport and uses it to argue for stricter regulations, as seen in the phrases 'perlu adanya aturan yang lebih ketat' and 'regulasi yang lebih kuat'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-editorial_commentary-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "id-dl-3-editorial_commentary-002",
+   "stem": "What can be inferred about the author's opinion on the current drone regulations?",
+   "choices": [
+    "The author is indifferent about the current regulations.",
+    "The author thinks the current regulations are too strict and should be relaxed.",
+    "The author implies that the current regulations are not strict enough.",
+    "The author believes the current regulations are effective and do not need modification."
+   ],
+   "answer": 2,
+   "explanation": "The author implies that the current regulations are not strict enough by stating 'Perlu adanya aturan yang lebih ketat dalam penggunaan drone di sekitar bandar udara' and 'regulasi yang lebih kuat diperlukan untuk mengatasi masalah ini'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-editorial_commentary-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-editorial_commentary-002",
+   "stem": "What does 'insiden' mean here?",
+   "choices": [
+    "An incident",
+    "A ceremony",
+    "A celebration",
+    "An event"
+   ],
+   "answer": 0,
+   "explanation": "The word 'insiden' is used to refer to the event involving the drone operator being detained near the airport, as seen in 'Insiden ini mengungkapkan masalah yang serius mengenai penggunaan drone di sekitar bandar udara'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dl-3-lecture-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -7036,6 +9240,114 @@
    ],
    "answer": 3,
    "explanation": "The lecturer mentions that 'dengan terusnya perubahan iklim, diharapkan gelombang panas akan menjadi lebih sering dan lebih parah di masa depan'. This indicates that heat waves will become more frequent and more severe, making choice 2 the correct answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-lecture-003",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The latest technological advancements in radio communication",
+    "The history of radio communication in air defense",
+    "The importance of clear radio procedures in air defense coordination",
+    "The role of satellites in air defense communication"
+   ],
+   "answer": 2,
+   "explanation": "The lecture focuses on the importance of clear radio procedures in air defense coordination, as indicated by the repeated emphasis on 'prosedur komunikasi radio yang jelas', 'koordinasi yang efektif', and 'mencegah kesalahpahaman'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-lecture-003",
+   "stem": "What does 'sinkronisasi' mean in this context?",
+   "choices": [
+    "The act of coordinating actions simultaneously",
+    "The method of encoding messages",
+    "The technique of amplifying signals",
+    "The process of gathering information"
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses 'sinkronisasi' to describe the need for 'aksi yang terkoordinasi dengan baik' and 'tindakan yang sejalan', indicating that it means 'the act of coordinating actions simultaneously'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "id-dl-3-lecture-003",
+   "stem": "According to the speaker, what should be included in a proper radio communication procedure?",
+   "choices": [
+    "A unique call sign for each unit",
+    "The frequency of communication with each unit",
+    "A detailed description of the weather conditions",
+    "A list of all available air defense units"
+   ],
+   "answer": 0,
+   "explanation": "The speaker explicitly states that 'masing-masing satuan harus memiliki tanda panggilan yang unik' to ensure clear communication.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "id-dl-3-lecture-004",
+   "stem": "What is the main topic of the lecture?",
+   "choices": [
+    "The logistics of transporting military equipment",
+    "A base defense exercise conducted with host-nation forces",
+    "The importance of cultural exchange between military personnel",
+    "The history of joint military exercises in Indonesia"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is C. The lecture focuses on a base defense exercise, as indicated by the repeated mention of 'latihan pertahanan dasar' and the discussion of joint efforts with host-nation forces, such as 'melibatkan pasukan negara tuan rumah'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "id-dl-3-lecture-004",
+   "stem": "What specific skill does the speaker mention that was improved through this exercise?",
+   "choices": [
+    "Airborne operations",
+    "Urban warfare tactics",
+    "Communication and coordination",
+    "Counterintelligence"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is C. The speaker mentions that 'komunikasi dan koordinasi' were improved through the exercise, as stated in 'hal ini meningkatkan komunikasi dan koordinasi antara kami'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dl-3-lecture-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "id-dl-3-lecture-004",
+   "stem": "In this context, what does 'menjaga' mean?",
+   "choices": [
+    "To retreat",
+    "To defend",
+    "To attack",
+    "To observe"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is B. The word 'menjaga' is used in the context of 'melakukan latihan menjaga markas', which refers to defending the base, as the exercise is about base defense.",
    "source": "llm",
    "verified": false
   },

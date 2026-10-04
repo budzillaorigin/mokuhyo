@@ -216,6 +216,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dr-1-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "announcement",
+   "title": "New Regulations for Drones Near Airfield",
+   "body": "Внимание! В связи с увеличением количества дронов в небе вблизи военного аэродрома \"Северный\", вводятся новые правила для полетов дронов. Эти правила созданы для обеспечения безопасности военных самолетов и предотвращения возможных аварий. Теперь запрещается летать на дронах выше 50 метров и ближе 5 километров от аэродрома. Также, все дроны должны быть зарегистрированы в соответствующем органе. Нарушение этих правил может привести к штрафу или конфискации дрона. Будьте внимательны и соблюдайте новые ограничения.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-announcement-003",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Vacation Cancelled Due To Safety Concerns",
+   "body": "Внимание! Отпуск на авиабазе \"Сокол\" отменен из-за неразорвавшихся боеприпасов. Пожалуйста, соблюдайте все меры предосторожности. Оставайтесь в безопасных зонах и следуйте инструкциям персонала. Мы сообщим вам, как только опасность будет устранена. Благодарим за понимание.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "ru",
@@ -243,6 +275,54 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-instructions-003",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Drone Ban Near Airport",
+   "body": "Внимание! Новое ограничение для владельцев дронов. Запрещается использование дронов в радиусе 10 километров от аэропорта. Это ограничение введено для обеспечения безопасности авиаперевозок. Нарушение этих правил может привести к штрафу до 500 000 рублей. Пожалуйста, соблюдайте эти правила для вашей безопасности и безопасности других.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "New Military Training Exercise",
+   "body": "Начало нового военного упражнения. Все военнослужащие должны прибыть на базу до 10 утра. Участники должны быть в полной форме. Упражнение включает использование новых лазерных систем. Пожалуйста, следуйте всем инструкциям офицеров. Будьте готовы к проверкам безопасности.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-instructions-005",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "instructions",
+   "title": "New Defense System Proposal",
+   "body": "Обсуждается использование лазерного оружия для противовоздушной обороны. Новые технологии могут заменить традиционные ракетные системы ПВО. Лазеры дешевле и быстрее. Они также могут работать в разных погодных условиях. Однако, есть вопросы по поводу их мощности и надежности. Продолжаются испытания и дебаты.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -363,6 +443,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-1-short_message-007",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Drone Incident Near Airport",
+   "body": "Вчера около аэропорта был задержан оператор дрона. Он фотографировал аэропорт, не имея на это разрешения. Сотрудники службы безопасности аэропорта заметили дрон и остановили оператора. Дрон был конфискован, а оператор дрона был допрошен. Авиационные власти предупредили, что полеты дронов вблизи аэропортов запрещены без специального разрешения.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -636,6 +732,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dr-2-event_description-004",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Security Awareness Day at Air Base 735",
+   "body": "На авиабазе 735 прошел день повышения осведомленности о внутренних угрозах. В рамках этого мероприятия персонал базы принял участие в различных тренингах и мастер-классах. Сотрудники службы безопасности обучили персонал распознавать потенциальные угрозы и правильно на них реагировать. Одной из ключевых тем дня стало выявление подозрительного поведения среди сотрудников и посетителей базы. Провели мастер-класс по выявлению подозрительного поведения, где показали, как важно обращать внимание на необычные действия и сообщать о них руководству. Также обсудили меры предосторожности при работе с конфиденциальной информацией. В конце дня провели тест на знание материалов, чтобы убедиться, что все сотрудники поняли важность безопасности. Надеемся, что такие мероприятия помогут укрепить культуру безопасности на базе и предотвратить возможные угрозы.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "ru",
@@ -696,6 +808,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dr-2-news-001",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "news",
+   "title": "Training for Vigilance: Security Forces Practice Recognizing Hostile Intent",
+   "body": "В последние дни силы безопасности проводят специальные упражнения, направленные на выявление и нейтрализацию угроз. Основное внимание уделяется распознаванию признаков враждебного намерения, таких как подозрительное поведение и необычные действия.\n\n\nСотрудники учатся идентифицировать людей, которые ведут себя странно или проявляют чрезмерный интерес к объектам инфраструктуры. Например, это могут быть лица, делающие фотографии контрольных пунктов безопасности или задающие слишком много вопросов о режиме работы учреждений.\n\n\nУпражнения также включают симуляцию различных сценариев, чтобы сотрудники могли практиковаться в принятии решений в реальных условиях. Это помогает им развивать навыки быстрого реагирования и повышать общую готовность к возможным угрозам.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-2-news-002",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "news",
+   "title": "Regulation of Drone Flights Over Urban Areas",
+   "body": "Правительство внедрило новые правила для координации операций с дронами и гражданской авиацией и управления воздушным пространством. Эти меры необходимы для обеспечения безопасности и эффективного использования воздушного пространства над городами. Одной из причин является необходимость интеграции дронов в национальную систему управления воздушным пространством. Новые правила также направлены на предотвращение конфликтов между дронами и другими воздушными суднами. Кроме того, они способствуют развитию коммерческого использования дронов, такого как доставка грузов и мониторинг дорожного движения. Правительство планирует регулярно пересматривать эти правила для адаптации к новым технологиям и изменениям в секторе дронов. Эти шаги помогут обеспечить безопасный и эффективный рост использования дронов в городских районах.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dr-2-report-001",
    "exam": "DLPT_READING",
    "language": "ru",
@@ -723,6 +867,54 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "report",
+   "title": "Air Defense Modernization Debate",
+   "body": "В Минобороны обсуждают перспективы использования лазерного оружия для системы противовоздушной обороны. Сторонники лазеров отмечают, что они могут более эффективно уничтожать дроны и ракеты, обеспечивая защиту от современных угроз. Кроме того, лазерное оружие обладает высокой точностью и может быть использовано многократно без необходимости перезарядки. Однако критики указывают на недостаточную надежность лазерного оружия и высокие затраты на его разработку и внедрение. Они также подчеркивают важность дальнейших исследований и испытаний перед принятием окончательного решения. В настоящее время ведутся активные работы по совершенствованию лазерных технологий, чтобы сделать их более надежными и доступными для широкого использования в военной сфере.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-2-report-004",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "report",
+   "title": "Unusual Activity Over Harbor 11",
+   "body": "Вчера вечером над Гаванью №11 наблюдалось необычное явление – огромное количество небольших дронов. По словам свидетелей, дроны двигались хаотично, создавая впечатление роя пчёл. Сообщения о необычной активности поступили в полицию и службу безопасности порта. Сотрудники служб сразу начали расследование. Первоначально предполагалось, что это часть какого-то мероприятия или рекламной акции, но позже стало ясно, что никто не запросил разрешение на такие действия. Эксперты предположили, что дроны могли быть частью исследовательского проекта или даже случайно оказаться в этом районе. К утру активность дронов прекратилась, и они исчезли так же внезапно, как и появились. В настоящее время продолжается расследование, чтобы выяснить природу этого явления и предотвратить его повторение в будущем.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-2-report-005",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2",
+   "textType": "report",
+   "title": "Allied Air Defense Coordination",
+   "body": "В этом отчете описаны процедуры координации системы ПВО между союзными подразделениями. Все подразделения должны использовать стандартизированные радиочастоты для связи. Это облегчает взаимодействие и предотвращает ошибки из-за несовместимости оборудования. Во время запланированных учений все подразделения должны следовать установленным процедурам. В случае обнаружения воздушной угрозы, подразделения должны немедленно информировать друг друга и координировать свои действия. Важно соблюдать четкую последовательность действий, чтобы избежать путаницы. Регулярные тренировки помогают улучшить навыки сотрудничества между союзными подразделениями. В отчете также указаны контактные лица для каждой группы, чтобы обеспечить быструю и эффективную связь. Соблюдение этих процедур повышает общую эффективность системы ПВО и способствует успешному выполнению задач.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -846,6 +1038,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dr-2p-interview-004",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Celebration of Unity: The 50th Anniversary of the Friendship Bridge",
+   "body": "Интервьюер: Сегодня мы отмечаем пятидесятую годовщину моста Дружбы между Россией и Китаем. Как вы думаете, какое значение имеет этот мост для наших стран?\n\nСотрудник министерства транспорта: Мост Дружбы — это не просто сооружение, а символ дружбы между нашими народами. Он играет ключевую роль в укреплении дружеских отношений между нашими странами и способствует экономическому сотрудничеству.\n\nИнтервьюер: Какие мероприятия запланированы в честь этого знаменательного события?\n\nСотрудник министерства транспорта: В рамках празднования этого знаменательного события запланирована серия мероприятий. Включая торжественную церемонию, культурные выступления и выставки, посвященные истории моста. Также планируется провести форум, посвященный будущему сотрудничества между нашими странами.\n\nИнтервьюер: Как мост Дружбы способствует экономическому развитию регионов?\n\nСотрудник министерства транспорта: Мост Дружбы значительно улучшил транспортное сообщение между регионами, что способствовало развитию торговли и туризма. Он также создал новые рабочие места и способствовал развитию инфраструктуры в прилегающих районах.\n\nИнтервьюер: Какие перспективы развития у моста Дружбы в будущем?\n\nСотрудник министерства транспорта: В будущем планируется провести реконструкцию моста для увеличения его пропускной способности. Также рассматриваются возможности строительства дополнительных транспортных коридоров для дальнейшего укрепления экономических связей между нашими странами.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dr-2p-news_analysis-001",
    "exam": "DLPT_READING",
    "language": "ru",
@@ -918,6 +1125,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-3-analysis-003",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Adjusting the Guard: Elevating Force Protection at Southern Base",
+   "body": "В связи с недавними атаками на базу, командование приняло решение усилить меры безопасности. В частности, будет увеличено количество патрулей, установлено дополнительное оборудование для наблюдения и усилена система контроля доступа. Эти меры направлены на предотвращение возможных атак и обеспечение безопасности персонала и оборудования базы. Кроме того, будет проведено дополнительное обучение персонала по вопросам безопасности и оказания первой помощи. Все эти меры направлены на обеспечение максимальной готовности к возможным угрозам и минимизацию рисков. Недавние атаки на базу, вероятно, были организованы местными группировками. Эти группировки стремятся дестабилизировать обстановку в регионе и создать проблемы для военных. Однако, несмотря на эти попытки, командование базы уверено в своей способности противостоять угрозам и обеспечить безопасность персонала и оборудования. Сдерживание представляет собой комплекс мер, направленных на предотвращение и нейтрализацию угроз. В частности, это включает в себя усиление патрулей, установку дополнительного оборудования для наблюдения и усиление системы контроля доступа. Эти меры направлены на предотвращение возможных атак и обеспечение безопасности персонала и оборудования базы. Кроме того, будет проведено дополнительное обучение персонала по вопросам безопасности и оказания первой помощи. Все эти меры направлены на обеспечение максимальной готовности к возможным угрозам и минимизацию рисков. Командование базы призывает всех сотрудников соблюдать меры предосторожности и быть бдительными. В случае обнаружения подозрительных лиц или предметов необходимо немедленно сообщать о этом руководству. Только совместными усилиями мы сможем обеспечить безопасность базы и предотвратить возможные угрозы.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-3-analysis-004",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Air Base Vulnerabilities: The Loitering Munition Threat",
+   "body": "Современные военные базы сталкиваются с новой угрозой, которая требует немедленного внимания: это боеприпасы-самолеты, или, как их еще называют, висячие боеприпасы. Эти устройства представляют собой беспилотные летательные аппараты, которые могут висеть в воздухе в течение длительного времени, ожидая команды для атаки. Их небольшой размер и способность маневрировать делают их трудными мишенями для традиционных систем противовоздушной обороны.\n\nВисячие боеприпасы могут наносить значительный урон военным базам, уничтожая самолеты, топливо и инфраструктуру. Они также могут использоваться для сбора разведданных, что делает их еще более опасными. В последние годы несколько стран демонстрировали свои разработки в этой области, показывая, что угроза реальна и растет.\n\nОдним из примеров является система \"Куб\", разработанная в России. Она способна нести различные виды боеприпасов и имеет радиус действия до 30 километров. Аналогичные системы развиваются и в других странах, что свидетельствует о глобальном характере этой угрозы.\n\nДля защиты от висячих боеприпасов необходимо разрабатывать новые стратегии и технологии. Это включает в себя улучшение систем обнаружения и идентификации, а также разработку новых способов нейтрализации этих устройств. Кроме того, важно проводить регулярные учения и тренировки персонала, чтобы быть готовыми к любому сценарию.\n\nВ заключение, висячие боеприпасы представляют серьезную угрозу для военных баз, и игнорирование этой проблемы может иметь катастрофические последствия. Необходимо принимать меры для противодействия этой угрозе и обеспечения безопасности военных объектов.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1026,6 +1265,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ru-dr-3-commentary-004",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Midnight Shift Change: A Routine Night at the BDO",
+   "body": "Ночь была спокойной в центре управления обороной базы (БДО). Дежурный офицер, майор Иванов, сидел за пультом управления, внимательно следя за мониторами. На экранах отображались изображения с камер наблюдения, установленных по всему периметру базы. Внезапно один из экранов мигнул красным цветом, сигнализируя о движении у западных ворот. Иванов напрягся, но через несколько секунд сигнал исчез. Ложная тревога, подумал он. Он сделал заметку в журнале дежурства: \"23:47 - ложная тревога на западных воротах\". Через несколько минут наступил час смены. В комнату вошел капитан Петров, офицер, который должен был заменить Иванова. Они обменялись приветствиями, и Иванов начал передавать дежурство. Он подробно рассказал Петрову о событиях ночи, включая ложную тревогу. Он также указал на несколько областей, которые требовали особого внимания, включая недавно обнаруженную уязвимость в системе видеонаблюдения. Петров внимательно слушал, задавая уточняющие вопросы и делая заметки. Когда Иванов закончил, Петров проверил все системы и убедился, что все в порядке. Он поблагодарил Иванова и пожелал ему хорошего отдыха. Иванов вышел из комнаты, а Петров остался один, готовясь к своей смене. Он посмотрел на часы - было 00:05. Ночь была долгой, но Петров знал, что он готов к любому вызову. Он открыл журнал дежурства и начал новую страницу: \"00:05 - смена дежурства завершена. Нарушителей не обнаружено\".",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ru-dr-3-editorial-001",
    "exam": "DLPT_READING",
    "language": "ru",
@@ -1038,6 +1293,54 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-3-editorial-002",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Exercise Disruption: A Wake-Up Call for Drone Security",
+   "body": "Недавно во время учебных учений произошел инцидент, который должен вызвать беспокойство у всех, кто отвечает за безопасность беспилотников. Оператор потерял контроль над беспилотником из-за помех на линии связи. К счастью, беспилотник не нанес никакого ущерба, но сам факт того, что это произошло, должен заставить нас задуматься о текущих мерах безопасности. Это должно послужить сигналом тревоги для военных и разработчиков, чтобы пересмотреть меры безопасности для беспилотников. Беспилотники становятся все более важными в военных и гражданских операциях, и их уязвимость к помехам может иметь серьезные последствия. Необходимо принять меры для пресечения подобных инцидентов в будущем. Один из способов сделать это — инвестировать в более надежные системы связи. Современные технологии позволяют создать более устойчивые к помехам каналы связи, которые будут труднее поддаваться воздействию. Кроме того, необходимо проводить регулярные учения и тренировки для операторов беспилотников, чтобы они были готовы к различным сценариям и могли быстро реагировать на любые неожиданные ситуации. Важно также улучшить системы обнаружения и подавления помех. Разработка и внедрение таких систем может значительно снизить риск потери контроля над беспилотниками. В заключение, недавний инцидент с помехами на линии связи беспилотника должен послужить напоминанием о важности постоянного улучшения мер безопасности. Беспилотники играют ключевую роль в современных операциях, и их защита должна быть приоритетом для военных и разработчиков. Только совместно можно обеспечить безопасное и эффективное использование этой важной технологии.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-3-editorial-003",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Northern Shield 2023: Strengthening Our Defenses Against Drone Threats",
+   "body": "Недавно завершились учебные стрельбы «Северный щит 2023», которые стали важным шагом в развитии наших сил в противодействии беспилотным летательным аппаратам (БПЛА). Эти учебные упражнения выявили как наши успехи, так и проблемы, которые необходимо решить. В ходе учений наши подразделения продемонстрировали значительный прогресс в обнаружении и нейтрализации БПЛА. Однако, выявленные проблемы показали, что нам еще предстоит проделать большую работу. Одной из ключевых проблем стало недостаточное взаимодействие между различными подразделениями. В ходе учений стало очевидным, что для эффективного противодействия БПЛА необходимо улучшить координацию между наземными и воздушными силами. Кроме того, выявились проблемы с идентификацией дружественных и враждебных БПЛА. В некоторых случаях наши силы ошибочно атаковали дружественные аппараты, что подчеркивает необходимость разработки более точных систем идентификации. Еще одной важной проблемой стало ограниченное количество обучающих материалов и симуляторов. Наши подразделения нуждаются в более реалистичных тренировках, которые позволят им лучше подготовиться к реальным угрозам. В заключение, учебные стрельбы «Северный щит 2023» стали важным этапом в развитии наших сил в противодействии БПЛА. Эти учения показали, что у нас есть значительный прогресс, но также выявили проблемы, которые необходимо решить. Мы должны продолжать улучшать наши системы обнаружения и нейтрализации БПЛА, а также развивать взаимодействие между различными подразделениями. Только так мы сможем обеспечить эффективную защиту от современных угроз.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ru-dr-3-editorial-004",
+   "exam": "DLPT_READING",
+   "language": "ru",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Unidentified Drones Over Harbor: A New Challenge for Coast Guard",
+   "body": "Недавно над гаванью был зафиксирован рой небольших дронов, что вызвало серьёзное беспокойство у местных властей и жителей. Этот инцидент поднимает важные вопросы о безопасности и необходимости принятия мер для предотвращения подобных ситуаций в будущем.\n\nВо-первых, важно понять, что небольшие дроны могут быть использованы в различных целях, включая развлечения, съёмку и даже доставку грузов. Однако, когда они появляются в больших количествах и без надлежащего контроля, они могут представлять серьёзную угрозу для безопасности и порядка.\n\nВ данном случае, рой дронов над гаванью мог быть результатом как случайного стечения обстоятельств, так и умышленного действия. В любом случае, это требует немедленного внимания и расследования. Существующие меры безопасности устарели и не могут справиться с новой угрозой. Необходимы более современные и эффективные методы контроля и мониторинга воздушного пространства.\n\nКроме того, важно рассмотреть возможность введения более строгих правил и штрафов для нарушителей. Это поможет предотвратить подобные инциденты в будущем и обеспечить безопасность всех, кто живёт и работает в районе гавани.\n\nВ заключение, инцидент с роем дронов над гаванью является серьёзным предупреждением. Мы должны действовать быстро и решительно, чтобы обеспечить безопасность и порядок в нашем регионе. Это требует не только технических решений, но и координации усилий между различными ведомствами и организациями.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1490,6 +1793,114 @@
    "verified": false
   },
   {
+   "id": "ru-dr-1-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-announcement-002",
+   "stem": "What is the main reason for the new rules?",
+   "choices": [
+    "to reduce the number of drones",
+    "to protect military aircraft",
+    "to increase drone sales",
+    "to improve drone technology"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the rules are to ensure the safety of military aircraft, as drones can pose a risk to them. The relevant words are \"для обеспечения безопасности военных самолетов\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dr-1-announcement-002",
+   "stem": "What is the announcement mainly about?",
+   "choices": [
+    "a drone exhibition",
+    "a new type of drone",
+    "a drone racing event",
+    "changes in drone regulations"
+   ],
+   "answer": 3,
+   "explanation": "The announcement is about new rules for flying drones near a military airfield. The relevant words are \"новые правила для полетов дронов\" and \"вблизи военного аэродрома\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-announcement-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1-announcement-002",
+   "stem": "What does \"ограничения\" mean here?",
+   "choices": [
+    "restrictions",
+    "recommendations",
+    "encouragements",
+    "suggestions"
+   ],
+   "answer": 0,
+   "explanation": "The word \"ограничения\" in this context refers to the new rules or restrictions that have been put in place. The relevant words are \"новые ограничения на полеты дронов\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-announcement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-announcement-003",
+   "stem": "What is the reason for the canceled holiday?",
+   "choices": [
+    "A terrorist attack",
+    "A disease outbreak",
+    "Unexploded munitions",
+    "A natural disaster"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the reason for the canceled holiday is \"из-за неразорвавшихся боеприпасов\" ('due to unexploded munitions').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-announcement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1-announcement-003",
+   "stem": "What does \"боеприпасы\" mean here?",
+   "choices": [
+    "Munitions",
+    "Food",
+    "Clothing",
+    "Medicine"
+   ],
+   "answer": 0,
+   "explanation": "The text states that \"из-за неразорвавшихся боеприпасов\" ('due to unexploded munitions').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-announcement-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ru-dr-1-announcement-003",
+   "stem": "What is the purpose of the announcement?",
+   "choices": [
+    "To invite people to an event",
+    "To inform about a holiday",
+    "To warn about a safety hazard",
+    "To advertise a new product"
+   ],
+   "answer": 2,
+   "explanation": "The text warns about a safety hazard, stating that the holiday is canceled \"из-за неразорвавшихся боеприпасов\" ('due to unexploded munitions').",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1594,6 +2005,132 @@
    ],
    "answer": 0,
    "explanation": "The context of 'Мульчируйте растения и деревья.' implies covering plants and trees with organic material to retain moisture.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-instructions-003",
+   "stem": "What is the penalty for not following the new rules?",
+   "choices": [
+    "A warning and a fine of up to 100,000 rubles",
+    "A prison sentence of up to 5 years",
+    "A ban on flying drones in the future",
+    "A fine of up to 500,000 rubles"
+   ],
+   "answer": 3,
+   "explanation": "The text states: \"Нарушение этих правил может привести к штрафу до 500 000 рублей.\" This indicates that the penalty is a fine of up to 500,000 rubles.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dr-1-instructions-003",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To advertise a new drone model",
+    "To inform about a new drone racing event",
+    "To provide tips on safe drone flying",
+    "To announce a ban on drones near the airport"
+   ],
+   "answer": 3,
+   "explanation": "The text's main purpose is to announce a ban on drones near the airport. It states: \"Запрещается использование дронов в радиусе 10 километров от аэропорта.\" This clearly indicates a ban.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1-instructions-003",
+   "stem": "What does \"ограничение\" mean here?",
+   "choices": [
+    "A model",
+    "An event",
+    "A restriction",
+    "A celebration"
+   ],
+   "answer": 2,
+   "explanation": "The text uses \"ограничение\" to indicate a restriction: \"Это ограничение введено для обеспечения безопасности авиаперевозок.\" This means the restriction is for ensuring the safety of air transport.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-instructions-004",
+   "stem": "In the text, what does \"участники\" refer to?",
+   "choices": [
+    "the police",
+    "the public",
+    "the government",
+    "the military"
+   ],
+   "answer": 3,
+   "explanation": "The answer is \"the military\" because the text says \"Участники должны прибыть\", which refers to \"военнослужащие\" mentioned in the first sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ru-dr-1-instructions-004",
+   "stem": "What is the main purpose of this text?",
+   "choices": [
+    "To inform about a public event",
+    "To describe a new weapon system",
+    "To warn about a dangerous area",
+    "To announce a new military training exercise"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is \"To announce a new military training exercise\", as indicated by the phrases \"новое военное упражнение\" and \"требуется ваше присутствие\" in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-instructions-005",
+   "stem": "What is the main topic of the debate in the text?",
+   "choices": [
+    "the impact of weather on military operations.",
+    "the cost of traditional missile defense systems.",
+    "the effectiveness of drones in modern warfare.",
+    "the use of laser weapons for air defense."
+   ],
+   "answer": 3,
+   "explanation": "The text explicitly mentions a debate over laser weapons for air defense, stating 'Обсуждается использование лазерного оружия для противовоздушной обороны.' This is the main topic introduced in the first sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-instructions-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1-instructions-005",
+   "stem": "What does 'системы' refer to in the text?",
+   "choices": [
+    "laser weapon systems.",
+    "traditional missile defense systems.",
+    "navigation systems.",
+    "communication systems."
+   ],
+   "answer": 1,
+   "explanation": "The text mentions 'традиционные ракетные системы ПВО', which translates to 'traditional missile defense systems'. This is the context in which 'системы' is used.",
    "source": "llm",
    "verified": false
   },
@@ -1936,6 +2473,42 @@
    ],
    "answer": 0,
    "explanation": "In this context, \"помощь\" refers to the help and services that the new clinic will provide to residents: \"Клиника будет оказывать помощь жителям района\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-short_message-007-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ru-dr-1-short_message-007",
+   "stem": "What was the drone operator doing in the airport area?",
+   "choices": [
+    "Flying the drone for personal entertainment.",
+    "Testing a new drone model.",
+    "Delivering packages to the airport.",
+    "Trying to take photos of the airport."
+   ],
+   "answer": 3,
+   "explanation": "The text states that the operator was \"фотографировал аэропорт\" (taking photos of the airport). There is no mention of testing, delivering packages, or personal entertainment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-1-short_message-007-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-1-short_message-007",
+   "stem": "In the text, what does \"задержан\" mean?",
+   "choices": [
+    "Detained.",
+    "Interviewed.",
+    "Arrested.",
+    "Questioned."
+   ],
+   "answer": 0,
+   "explanation": "The word \"задержан\" in the context of the text means that the drone operator was detained or held by authorities. The text says \"оператор дрона был задержан\", indicating that the operator was stopped and held by authorities.",
    "source": "llm",
    "verified": false
   },
@@ -2912,6 +3485,60 @@
    "verified": false
   },
   {
+   "id": "ru-dr-2-event_description-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dr-2-event_description-004",
+   "stem": "What is the main topic of the passage?",
+   "choices": [
+    "Changes to the base's visitor policy",
+    "A new weapons system being installed at the base",
+    "A celebration of the base's anniversary",
+    "A day of training about insider threats for base personnel"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is a training day about insider threats, as indicated by phrases like \"день повышения осведомленности о внутренних угрозах\" and \"обучили персонал распознавать потенциальные угрозы\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-event_description-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-event_description-004",
+   "stem": "What was one of the activities during the Security Awareness Day?",
+   "choices": [
+    "A workshop on identifying potential threats",
+    "A parade with the base's honor guard",
+    "A demonstration of new fighter jets",
+    "A concert by a military band"
+   ],
+   "answer": 0,
+   "explanation": "One activity was a workshop on identifying potential threats, as mentioned by \"провели мастер-класс по выявлению подозрительного поведения\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-event_description-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-event_description-004",
+   "stem": "What does \"внутренние угрозы\" mean here?",
+   "choices": [
+    "External attacks from other countries",
+    "Technical malfunctions in equipment",
+    "Natural disasters affecting the base",
+    "Threats from within the organization, such as employees"
+   ],
+   "answer": 3,
+   "explanation": "\"Внутренние угрозы\" refers to threats from within the organization, as indicated by the context of training personnel to recognize potential threats from within the base's community.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3128,6 +3755,114 @@
    "verified": false
   },
   {
+   "id": "ru-dr-2-news-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dr-2-news-001",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "Security forces are practicing how to identify and respond to threats.",
+    "A new type of weapon has been discovered that can bypass security measures.",
+    "The government is increasing funding for security force training.",
+    "Security forces are learning how to use new surveillance technology."
+   ],
+   "answer": 0,
+   "explanation": "The passage discusses exercises where security forces practice recognizing signs of hostile intent, such as unusual behavior and suspicious actions. This is the main idea, as it is the central topic of the passage. The other options are not the main focus of the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-news-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-news-001",
+   "stem": "What is one of the signs of hostile intent that security forces are trained to recognize?",
+   "choices": [
+    "Groups of tourists asking for directions",
+    "Individuals taking photos of security checkpoints",
+    "People wearing uniforms",
+    "Vehicles with diplomatic plates"
+   ],
+   "answer": 1,
+   "explanation": "The passage mentions that security forces are trained to recognize suspicious actions, such as individuals taking photos of security checkpoints, as signs of hostile intent. The other options are not mentioned as signs of hostile intent in the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-news-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-news-001",
+   "stem": "What does \"намерение\" mean here?",
+   "choices": [
+    "Behavior",
+    "Appearance",
+    "Intention",
+    "Location"
+   ],
+   "answer": 2,
+   "explanation": "The passage uses the word \"намерение\" to refer to the hostile intent that security forces are trained to recognize. The other options do not fit the context of the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-news-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dr-2-news-002",
+   "stem": "The main purpose of this article is to",
+   "choices": [
+    "describe new regulations for drone flights over cities",
+    "promote the use of drones for personal entertainment",
+    "explain how drones can help with traffic monitoring",
+    "discuss the environmental impact of drone operations"
+   ],
+   "answer": 0,
+   "explanation": "The article focuses on new regulations for drone flights over cities, specifically mentioning that the government has introduced new rules to coordinate drone operations with civil aviation and airspace management. This is evident in the text: «Правительство внедрило новые правила для координации операций с дронами и гражданской авиацией и управления воздушным пространством.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-news-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-news-002",
+   "stem": "According to the article, one of the reasons for the new drone regulations is",
+   "choices": [
+    "the increasing number of drone-related accidents",
+    "the demand for more drone delivery services",
+    "the need to integrate drones into the national airspace system",
+    "the rising cost of drone technology"
+   ],
+   "answer": 2,
+   "explanation": "The article states that one of the reasons for the new regulations is to integrate drones into the national airspace system. This is mentioned in the text: «Одной из причин является необходимость интеграции дронов в национальную систему управления воздушным пространством.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-news-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-news-002",
+   "stem": "In the text, what does «согласование» mean here?",
+   "choices": [
+    "separation",
+    "coordination",
+    "competition",
+    "conflict"
+   ],
+   "answer": 1,
+   "explanation": "The word «согласование» in this context refers to the coordination of drone operations with other airspace users. This is clear from the text: «Правительство внедрило новые правила для координации операций с дронами и гражданской авиацией и управления воздушным пространством.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dr-2-report-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3232,6 +3967,168 @@
    ],
    "answer": 2,
    "explanation": "The report mentions 'установление квот на вылов определенных видов рыб' (setting quotas for the catch of certain fish species). This indicates that 'квоты' refers to the maximum amount of fish that can be caught.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-report-003",
+   "stem": "What is the main advantage of laser weapons according to the report?",
+   "choices": [
+    "They cause less collateral damage.",
+    "They can be used multiple times without reloading.",
+    "They are less expensive than traditional weapons.",
+    "They are more effective against drones and missiles."
+   ],
+   "answer": 3,
+   "explanation": "The text states that лазеры могут более эффективно уничтожать дроны и ракеты (lasers can more effectively destroy drones and missiles), which indicates their main advantage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-report-003",
+   "stem": "In the phrase \"лазеры могут более эффективно уничтожать дроны и ракеты\", what does \"уничтожать\" mean here?",
+   "choices": [
+    "to destroy",
+    "to detect",
+    "to track",
+    "to repair"
+   ],
+   "answer": 0,
+   "explanation": "The context discusses the effectiveness of lasers against drones and missiles, so \"уничтожать\" means to destroy them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ru-dr-2-report-003",
+   "stem": "What can be inferred about the critics of laser weapons?",
+   "choices": [
+    "They believe laser weapons are too expensive.",
+    "They are concerned about the reliability of the technology.",
+    "They think laser weapons cause too much collateral damage.",
+    "They prefer traditional weapons for air defense."
+   ],
+   "answer": 1,
+   "explanation": "The text mentions that критики указывают на недостаточную надежность лазерного оружия (critics point to the insufficient reliability of laser weapons), which suggests their concern about the technology's reliability.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dr-2-report-004",
+   "stem": "What is the main point of the report?",
+   "choices": [
+    "A swarm of small drones was seen over the harbor",
+    "The coast guard is conducting new training exercises",
+    "The harbor is preparing for a large arrival of ships",
+    "New regulations are being introduced for harbor security"
+   ],
+   "answer": 0,
+   "explanation": "The main point is the observation of a swarm of small drones over the harbor, as stated in the first sentence: \"Вчера вечером над Гаванью №11 наблюдалось необычное явление – огромное количество небольших дронов.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-report-004",
+   "stem": "What time was the swarm of drones first observed?",
+   "choices": [
+    "In the evening",
+    "In the afternoon",
+    "At night",
+    "In the early morning"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the swarm was first observed in the evening: \"Вчера вечером над Гаванью №11 наблюдалось необычное явление\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-report-004",
+   "stem": "What does \"явление\" mean here?",
+   "choices": [
+    "Arrival",
+    "Phenomenon",
+    "Performance",
+    "Gathering"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"явление\" refers to an unusual phenomenon observed over the harbor: \"необычное явление – огромное количество небольших дронов.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ru-dr-2-report-005",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "The history of air defense systems in Russia.",
+    "Procedures for coordinating air defense between allied units.",
+    "A recent air defense exercise.",
+    "A new type of radar technology."
+   ],
+   "answer": 1,
+   "explanation": "The report discusses procedures for coordinating air defense between allied units, as seen in the opening sentence: \"В этом отчете описаны процедуры координации системы ПВО между союзными подразделениями.\" The other topics are not the main focus of the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ru-dr-2-report-005",
+   "stem": "According to the report, what is the purpose of using standardized radio frequencies?",
+   "choices": [
+    "To prevent interference with civilian air traffic.",
+    "To facilitate communication between allied units.",
+    "To ensure compatibility with older radar systems.",
+    "To reduce the cost of radio equipment."
+   ],
+   "answer": 1,
+   "explanation": "The report states that standardized radio frequencies are used to facilitate communication between allied units: \"Использование стандартизированных радиочастот облегчает связь между союзными подразделениями.\" The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2-report-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2-report-005",
+   "stem": "In the report, the phrase \"запланированные учения\" refers to",
+   "choices": [
+    "Routine maintenance checks.",
+    "Unexpected emergencies.",
+    "Strategic planning meetings.",
+    "Regularly scheduled training exercises."
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"запланированные учения\" is used to refer to scheduled training exercises: \"Во время запланированных учений все подразделения должны следовать установленным процедурам.\" The other choices do not fit the context.",
    "source": "llm",
    "verified": false
   },
@@ -3668,6 +4565,60 @@
    "verified": false
   },
   {
+   "id": "ru-dr-2p-interview-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "main_idea",
+   "passageId": "ru-dr-2p-interview-004",
+   "stem": "What is the main topic of the interview?",
+   "choices": [
+    "A. The construction process of the Friendship Bridge",
+    "B. The 50th anniversary celebrations of the Friendship Bridge",
+    "C. The economic impact of the Friendship Bridge on surrounding regions",
+    "D. The architectural design of the Friendship Bridge"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the interview is the 50th anniversary celebrations of the Friendship Bridge. This is evident from the repeated mentions of the anniversary and the celebration events, such as \"пятидесятая годовщина моста Дружбы\" and \"празднование этого знаменательного события\". The other options are not the main focus of the interview, although they may be discussed briefly.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2p-interview-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ru-dr-2p-interview-004",
+   "stem": "What can be inferred about the relationship between Russia and China based on the interview?",
+   "choices": [
+    "D. The two countries are planning to build more bridges together",
+    "A. The two countries have had a strained relationship in the past",
+    "C. The two countries have a strong and friendly relationship",
+    "B. The two countries are currently in a state of conflict"
+   ],
+   "answer": 2,
+   "explanation": "The relationship between Russia and China can be inferred as strong and friendly. This is supported by phrases like \"символ дружбы между нашими народами\" and \"укрепление дружеских отношений между нашими странами\". There is no mention of strained relationships, conflicts, or plans to build more bridges.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-2p-interview-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2+",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-2p-interview-004",
+   "stem": "In the interview, the phrase \"знаменательное событие\" refers to:",
+   "choices": [
+    "C. A historical event",
+    "B. A significant event",
+    "A. A minor event",
+    "D. A cultural event"
+   ],
+   "answer": 1,
+   "explanation": "The phrase \"знаменательное событие\" means \"a significant event\". In the context of the interview, it refers to the 50th anniversary of the Friendship Bridge, which is described as a \"важный момент в истории наших стран\". While it could also be considered a historical event, the most accurate choice is \"a significant event\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dr-2p-news_analysis-001-q1",
    "exam": "DLPT_READING",
    "level": "2+",
@@ -3934,6 +4885,114 @@
    ],
    "answer": 3,
    "explanation": "The phrase 'углубленная интеграция' (deepened integration) is used in the context of economic cooperation and the creation of a single market. The passage states that the EAEU aims to 'углубленную интеграцию экономик стран-участниц' (deepen the integration of the economies of the member states), indicating a process of increasing economic cooperation and reducing trade barriers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-analysis-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dr-3-analysis-003",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The base is preparing for a major military exercise",
+    "The base has been experiencing increased threats from local militia groups",
+    "The base has decided to implement new security measures to address recent threats",
+    "The base is conducting a routine review of its security protocols"
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the text is that the base is implementing new security measures in response to recent threats. This is evident from the repeated mentions of 'усиление мер безопасности' (strengthening of security measures) and the specific actions taken, such as increasing patrols and installing additional surveillance equipment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-analysis-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dr-3-analysis-003",
+   "stem": "What can be inferred about the recent attacks on the base?",
+   "choices": [
+    "They were likely conducted by local militia groups",
+    "They were part of a coordinated international effort",
+    "They were random acts of violence with no clear motive",
+    "They were carried out by a well-organized terrorist group"
+   ],
+   "answer": 0,
+   "explanation": "The text infers that the recent attacks were likely conducted by local militia groups. It states that 'недавние атаки на базу, вероятно, были организованы местными группировками' (recent attacks on the base were likely organized by local groups).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-analysis-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-3-analysis-003",
+   "stem": "As used in the text, what does \"сдерживание\" mean?",
+   "choices": [
+    "Negotiation",
+    "Offense",
+    "Defense",
+    "Retreat"
+   ],
+   "answer": 2,
+   "explanation": "In the text, 'сдерживание' is used to mean 'defense'. The text states that 'сдерживание представляет собой комплекс мер, направленных на предотвращение и нейтрализацию угроз' ('deterrence represents a set of measures aimed at preventing and neutralizing threats').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-analysis-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dr-3-analysis-004",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The passage analyzes the threat posed by loitering munitions to air bases.",
+    "The passage describes the various types of loitering munitions used worldwide.",
+    "The passage discusses the historical development of Russian air bases.",
+    "The passage outlines the economic impact of loitering munitions on defense budgets."
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the passage is the threat posed by loitering munitions to air bases, as indicated by the opening sentence: \"Современные военные базы сталкиваются с новой угрозой, которая требует немедленного внимания: это боеприпасы-самолеты, или, как их еще называют, висячие боеприпасы.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-analysis-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dr-3-analysis-004",
+   "stem": "Which of the following can be inferred from the passage about the effectiveness of traditional air defense systems?",
+   "choices": [
+    "Traditional air defense systems are highly effective against loitering munitions.",
+    "Traditional air defense systems may have limited effectiveness against loitering munitions.",
+    "Traditional air defense systems are completely ineffective against loitering munitions.",
+    "Traditional air defense systems are not mentioned in the context of loitering munitions."
+   ],
+   "answer": 1,
+   "explanation": "The passage suggests that traditional air defense systems may have limited effectiveness against loitering munitions: \"Традиционные системы противовоздушной обороны могут не справляться с этими устройствами из-за их небольшого размера и способности маневрировать.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-analysis-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-3-analysis-004",
+   "stem": "As used in the passage, what is the meaning of the phrase \"маневрировать\"?",
+   "choices": [
+    "To navigate skillfully",
+    "To camouflage",
+    "To communicate",
+    "To explode"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"маневрировать\" is used to describe the ability of loitering munitions to navigate skillfully: \"способность маневрировать\"",
    "source": "llm",
    "verified": false
   },
@@ -4316,6 +5375,60 @@
    "verified": false
   },
   {
+   "id": "ru-dr-3-commentary-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dr-3-commentary-004",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "A detailed description of the daily routine at a military base.",
+    "The challenges of maintaining security at a military base during shift changes.",
+    "The personal lives of soldiers working at a defense operations center.",
+    "The importance of technology in modern military operations."
+   ],
+   "answer": 1,
+   "explanation": "The text focuses on the challenges and procedures of shift changes at a base defense operations center (БДО), including security measures and communication protocols. The other options are not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-commentary-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dr-3-commentary-004",
+   "stem": "What can be inferred about the relationship between the outgoing and incoming shifts?",
+   "choices": [
+    "They are cooperative and work together to ensure a smooth transition.",
+    "They are hostile and often argue during shift changes.",
+    "They are competitive and try to outdo each other.",
+    "They are indifferent and do not communicate with each other."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the outgoing shift provides a detailed briefing to the incoming shift, including any issues or changes that occurred during their shift. This indicates a cooperative relationship. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-commentary-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-3-commentary-004",
+   "stem": "What does the phrase \"нарушителей не обнаружено\" mean here?",
+   "choices": [
+    "The intruders were not identified.",
+    "The intruders were not harmed.",
+    "No intruders were detected.",
+    "The intruders were not caught."
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"нарушителей не обнаружено\" is used in the context of a report on the night's activities. It means that no intruders were detected during the shift. The other options are not accurate translations of the phrase in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ru-dr-3-editorial-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4366,6 +5479,168 @@
    ],
    "answer": 3,
    "explanation": "The phrase 'наши критические инфраструктуры' refers to essential systems and assets vital for the functioning of society and the economy. The editorial uses this phrase to emphasize the importance of protecting these systems from cyberattacks.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dr-3-editorial-002",
+   "stem": "What is the main idea of the editorial?",
+   "choices": [
+    "Military exercises are no longer effective in modern warfare scenarios.",
+    "Drone exercises should be canceled to prevent potential security breaches.",
+    "The recent jamming of a drone's control link highlights the need for improved security measures.",
+    "Drone technology is outdated and needs to be replaced with more reliable systems."
+   ],
+   "answer": 2,
+   "explanation": "The editorial focuses on the recent incident of a drone's control link being jammed during an exercise and emphasizes the need for better security measures. This is evident in the statement: \"Это должно послужить сигналом тревоги для военных и разработчиков, чтобы пересмотреть меры безопасности для беспилотников.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dr-3-editorial-002",
+   "stem": "What can be inferred about the author's view on the current security measures for drones?",
+   "choices": [
+    "The author believes that the current security measures need to be improved.",
+    "The author believes the current security measures are adequate.",
+    "The author is unsure about the effectiveness of the current security measures.",
+    "The author thinks that the current security measures are outdated."
+   ],
+   "answer": 0,
+   "explanation": "The author implies that the current security measures are not sufficient and need improvement. This is inferred from the statement: \"Это должно послужить сигналом тревоги для военных и разработчиков, чтобы пересмотреть меры безопасности для беспилотников.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-3-editorial-002",
+   "stem": "What does \"пресечь\" mean here?",
+   "choices": [
+    "To encourage",
+    "To prevent",
+    "To ignore",
+    "To delay"
+   ],
+   "answer": 1,
+   "explanation": "The word \"пресечь\" in this context means \"to prevent.\" This is evident in the sentence: \"Необходимо принять меры для пресечения подобных инцидентов в будущем.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dr-3-editorial-003",
+   "stem": "What is the main topic of this editorial?",
+   "choices": [
+    "Lessons learned from a recent counter-drone military exercise",
+    "The importance of international cooperation in counter-drone technology",
+    "The development of new drone detection systems",
+    "The need to ban drones near military bases"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the editorial is the lessons learned from a recent counter-drone military exercise, as indicated by the phrases such as 'учебные упражнения', 'учебные стрельбы', and 'выявленные проблемы'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dr-3-editorial-003",
+   "stem": "What can be inferred about the author's view on the current state of Russia's counter-drone capabilities?",
+   "choices": [
+    "The author thinks that Russia's counter-drone capabilities are sufficient but could be improved with more funding",
+    "The author believes that Russia's counter-drone capabilities are already superior to those of other countries",
+    "The author suggests that while Russia has made progress, there are still significant challenges to overcome",
+    "The author argues that Russia should abandon its counter-drone efforts and focus on other defense strategies"
+   ],
+   "answer": 2,
+   "explanation": "The author's view can be inferred from statements such as 'значительный прогресс' and 'выявленные проблемы', suggesting that while progress has been made, challenges remain.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-3-editorial-003",
+   "stem": "What does the phrase 'наши силы' mean here?",
+   "choices": [
+    "Our military forces",
+    "Our diplomatic missions",
+    "Our economic resources",
+    "Our political parties"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'наши силы' refers to 'Our military forces', as discussed in the context of 'учебные стрельбы' and 'учебные упражнения'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ru-dr-3-editorial-004",
+   "stem": "What is the main idea of this editorial?",
+   "choices": [
+    "Local authorities should ban the use of drones near harbors to prevent accidents.",
+    "The recent drone swarm over the harbor poses a serious security threat and requires immediate attention.",
+    "The Coast Guard needs to upgrade its radar systems to detect drones.",
+    "Small drones can be used for various purposes, including recreational activities."
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the editorial is that the recent drone swarm over the harbor poses a serious security threat and requires immediate attention. This is evident from the repeated emphasis on the potential risks and the need for a comprehensive response, as seen in the phrases \"серьёзную угрозу\" and \"немедленного внимания\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ru-dr-3-editorial-004",
+   "stem": "What can be inferred about the author's opinion on the current security measures?",
+   "choices": [
+    "The author is unsure about the effectiveness of the current measures.",
+    "The author believes the current measures are adequate.",
+    "The author believes the current measures are a good start but need improvement.",
+    "The author thinks the current measures are outdated."
+   ],
+   "answer": 3,
+   "explanation": "The author infers that the current security measures are outdated, as they state that \"существующие меры безопасности устарели\" and \"не могут справиться с новой угрозой\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-dr-3-editorial-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ru-dr-3-editorial-004",
+   "stem": "'нарушители' as used in the text most nearly means",
+   "choices": [
+    "innocent people",
+    "offenders",
+    "coast guards",
+    "tourists"
+   ],
+   "answer": 1,
+   "explanation": "The word 'нарушители' is used to refer to those who operate the drones in an unauthorized manner, making them offenders. The text states \"нарушители могут представлять серьёзную угрозу\", indicating that they are a threat due to their actions.",
    "source": "llm",
    "verified": false
   },

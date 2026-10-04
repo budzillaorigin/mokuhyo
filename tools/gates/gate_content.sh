@@ -12,4 +12,6 @@ echo "== gate_content: counts"
 (cd tools && uv run --locked --group content python -W ignore gates/check_content.py)
 echo "== gate_content: current-events links (BRIEF_PHASE8 C-09)"
 (cd tools && uv run --locked python terms/validate_feeds.py)
+echo "== gate_content: culture cards, pragmatics, personas (BRIEF_PHASE8 C-05, C-07, C-08)"
+(cd tools && uv run --locked python gates/check_culture.py)
 echo "gate_content: PASS"

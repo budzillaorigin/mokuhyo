@@ -20,7 +20,7 @@ from pathlib import Path
 TOOLS = Path(__file__).resolve().parents[1]
 REPO = TOOLS.parent
 sys.path.insert(0, str(TOOLS))
-import llm  # noqa: E402
+import llm
 
 REAL = TOOLS / "sources" / "calibration"
 FIXTURES = TOOLS / "models" / "calibration_fixtures"

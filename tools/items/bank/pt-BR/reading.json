@@ -216,6 +216,22 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1-announcement-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Night Drill Announcement",
+   "body": "Atenção, todos os membros da força de reação rápida! Amanhã à noite, haverá um exercício de simulação realizado para testar a resposta da força de reação rápida a uma emergência noturna. O exercício começará às 20h e terminará às 22h. Todos os membros devem estar presentes e preparados. O local do exercício será o prédio principal. Por favor, tragam seus equipamentos necessários. Obrigado pela atenção.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -276,6 +292,70 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1-instructions-005",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Neighborhood Security Meeting",
+   "body": "Prezados vizinhos, \n\nPara garantir a segurança de todos, vamos nos reunir no portão da rua principal às 19h de sexta-feira. Vamos discutir medidas de segurança importantes. Por favor, tragam suas preocupações e sugestões. Sua participação é essencial. \n\nAtenciosamente, \nComitê de Segurança do Bairro",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-instructions-006",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Base Security Reminder",
+   "body": "Comunicado de Segurança da Base: Todos devem prestar atenção a atividades suspeitas. Isso inclui pessoas estranhas no local, comportamentos incomuns ou quaisquer ameaças. Relatar essas atividades ajuda a proteger a base e seu pessoal. Use os canais designados para relatórios. Sua vigilância é crucial para nossa segurança.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-instructions-007",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Festival Safety Zone Announcement",
+   "body": "Aviso: Zona Sem Drones\n\nPrezados visitantes do Festival de Verão,\n\nPara garantir a segurança de todos, informamos que o uso de drones é estritamente proibido na área do festival. Estamos próximos a uma base importante e o uso de drones pode representar um risco significativo.\n\nPor favor, respeitem esta área de segurança para sua própria proteção e a segurança de todos na base. Agradecemos sua cooperação.\n\nEquipe do Festival de Verão",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-instructions-008",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Drone Delivery Instructions",
+   "body": "Atenção, todos! Amanhã, um enxame de pequenos drones estará entregando pacotes no porto. Eles vão sobrevoar a área entre 10h e 14h. Por favor, fiquem atentos e não tentem tocar nos drones. Eles são seguros, mas precisam de espaço para trabalhar. Obrigado pela compreensão!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -333,6 +413,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-notice-005",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "notice",
+   "title": "Helping Hands from the Sky",
+   "body": "UM LEVANTAMENTO POR DRONES ESTÁ SENDO REALIZADO PARA AJUDAR APÓS AS ENCHENTES. EQUIPES TREINADAS ESTÃO USANDO DRONES PARA AVALIAR OS DANOS E AJUDAR NA COORDENAÇÃO DOS ESFORÇOS DE SOCORRO. INFORMAÇÕES ATUALIZADAS ESTARÃO DISPONÍVEIS EM NOSSO SITE. AGRADECEMOS SUA COMPREENSÃO E APOIO. ASSINADO: EQUIPE DE SEGURANÇA E SOCORRO.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -606,6 +702,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-2-event_description-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Safety Day at Base Aeroterrestre",
+   "body": "A Base Aeroterrestre de Campo Grande realizará o Dia de Segurança no próximo mês, em 15 de outubro, com uma série de atividades para conscientizar os funcionários sobre a importância da segurança no local de trabalho. O evento começará às 08:00 com uma palestra sobre segurança cibernética, seguida de uma sessão de treinamento prático sobre procedimentos de emergência. Às 09:00, haverá uma sessão de conscientização sobre ameaças internas, focando em como identificar e relatar comportamentos suspeitos. Além disso, haverá uma feira de segurança com expositores de várias empresas de segurança apresentando seus produtos e serviços. O Dia de Segurança encerrará às 17:00 com um briefing geral sobre as melhores práticas de segurança. Todos os funcionários são encorajados a participar deste evento importante para garantir um ambiente de trabalho seguro para todos.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-event_description-005",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "event_description",
+   "title": "New Drone Defense System at São Paulo International Airport",
+   "body": "O Aeroporto Internacional de São Paulo, mais conhecido como GRU Airport, instalou recentemente um sistema avançado de defesa contra drones. Este sistema é crucial para garantir a segurança das operações aeroportuárias e a proteção dos passageiros. O novo sistema é capaz de identificar e neutralizar ameaças de drones de forma rápida e eficiente. Ele utiliza radar para detectar a presença de drones nas proximidades do aeroporto e dispositivos de jamming eletrônico para neutralizar a ameaça. A instalação deste sistema é parte de um esforço contínuo para modernizar as infraestruturas de segurança do aeroporto e adaptar-se às novas ameaças que surgem no espaço aéreo. Além disso, o sistema foi projetado para operar de maneira autônoma, reduzindo a necessidade de intervenção humana e aumentando a eficácia da resposta. Com esta nova tecnologia, o GRU Airport está melhor preparado para enfrentar os desafios da segurança aérea no século XXI.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-event_description-006",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Drone Control Exercise Interrupted",
+   "body": "Durante um exercício de treinamento com drones realizado pela Força Aérea Brasileira na manhã desta quarta-feira, uma falha técnica causou a interrupção da atividade. Segundo o tenente-coronel João Silva, responsável pela operação, a interferência no link de controle do drone ocorreu por volta das 10h30, perturbou o exercício e obrigou os operadores a desligarem o aparelho. A causa exata da interferência ainda está sendo investigada, mas o tenente-coronel descartou a possibilidade de sabotagem. 'Trata-se de um incidente técnico que pode acontecer durante qualquer operação dessa natureza', afirmou. O exercício estava sendo realizado na Base Aérea de Anápolis e contou com a participação de 20 drones e 50 militares. A atividade foi retomada após uma hora de interrupção, sem danos ao equipamento ou riscos à segurança.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-2-factual_article-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -723,6 +867,54 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "report",
+   "title": "Residents Voice Concerns Over Base Security",
+   "body": "Os moradores do bairro próximo à Base Aeronaval de São Pedro estão expressando suas preocupações sobre as novas medidas de segurança implementadas recentemente. A base tem realizado vários ajustes para aumentar a segurança, incluindo a instalação de uma barreira de segurança e o fechamento de ruas próximas. No entanto, essas medidas têm causado problemas para os moradores locais. Maria Silva, uma moradora do bairro, disse que 'tem que fazer um desvio grande para chegar ao trabalho' devido ao fechamento de ruas. Além disso, os moradores estão preocupados com a falta de iluminação na área devido às novas medidas de segurança. Eles temem que a falta de iluminação possa criar um ambiente propício para atividades criminosas. A base tem se esforçado para abordar essas preocupações, mas os moradores ainda estão insatisfeitos com as medidas atuais. Eles esperam que a base possa encontrar uma solução que aumente a segurança sem causar tanta inconveniência para os residentes locais.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-report-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "report",
+   "title": "Unusual Activity at Santos Harbor",
+   "body": "Um enxame de pequenas drones foi avistado sobrevoando o Porto de Santos na tarde de ontem. Os drones foram avistados pela primeira vez perto da entrada do porto, movendo-se em formação antes de se dispersarem em diferentes direções. Testemunhas relataram que os drones eram do tamanho de pássaros pequenos e tinham uma aparência metálica. Autoridades portuárias foram notificadas imediatamente e iniciaram uma investigação para determinar a origem e o propósito dos drones. Até o momento, não há informações sobre danos ou interrupções nas operações portuárias. A polícia local está trabalhando em conjunto com as autoridades portuárias para monitorar a área e garantir a segurança de todos os envolvidos. Pedimos a todos que estejam na área para relatar qualquer atividade suspeita imediatamente às autoridades competentes. Mantemos a comunidade informada sobre qualquer desenvolvimento adicional neste caso.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-report-005",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "report",
+   "title": "Alteração no Nível de Proteção da Base Aérea de Anápolis",
+   "body": "O Comando da Base Aérea de Anápolis comunica a mudança no nível de proteção da base. A nova condição de proteção da força é o FPCON CHARLIE. Esta alteração entra em vigor imediatamente e visa aumentar a segurança de todos os membros da base e das instalações. A implementação do FPCON CHARLIE inclui a restrição de acesso a áreas específicas da base, aumento de patrulhas e verificações de identidade mais rigorosas. Todos os membros da base são encorajados a permanecer vigilantes e a relatar qualquer atividade suspeita. As autoridades competentes estão monitorando a situação de perto e fornecerão atualizações conforme necessário. A colaboração de todos é essencial para garantir a eficácia das medidas de segurança implementadas. Agradecemos pela compreensão e cooperação durante este período.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -906,6 +1098,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-3-analysis-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Defending the Skies: The Impact of Counter-Drone Technology at Guarulhos International Airport",
+   "body": "O Aeroporto Internacional de Guarulhos, um dos mais movimentados da América Latina, recentemente implementou um sistema avançado de contramedidas contra drones. Esse sistema, desenvolvido pela empresa brasileira TechSky, representa um marco na segurança aeroportuária do país. Desde sua instalação, houve um aumento significativo na segurança e uma melhoria na eficiência operacional do aeroporto. Antes da instalação do sistema, incidentes envolvendo drones eram frequentes, causando interrupções nos voos e colocando em risco a segurança dos passageiros. Com a nova tecnologia, a detecção precoce de drones e a neutralização de ameaças tornaram-se muito mais eficazes. O sistema utiliza uma combinação de radares, câmeras e software de inteligência artificial para monitorar o espaço aéreo ao redor do aeroporto. Quando um drone não autorizado é detectado, o sistema pode intervir de várias maneiras, incluindo a emissão de sinais para desativá-lo ou a direção de operações de interceptação. Além disso, o sistema é capaz de distinguir entre drones amigáveis e hostis, reduzindo a possibilidade de falsos positivos. A implementação do sistema de contramedidas contra drones em Guarulhos tem sido amplamente elogiada por especialistas em segurança e autoridades aeroportuárias. Eles destacam a importância de manter-se atualizado com as tecnologias mais avançadas para garantir a proteção de infraestruturas críticas. O sucesso do projeto em Guarulhos também tem servido de modelo para outros aeroportos no Brasil e no exterior, que estão considerando a implementação de sistemas semelhantes. No entanto, também há desafios a serem superados. A constante evolução da tecnologia de drones exige que os sistemas de contramedidas sejam continuamente atualizados e melhorados. Além disso, é crucial garantir que as operações do sistema sejam realizadas em conformidade com as regulamentações e leis vigentes. Em conclusão, o sistema de contramedidas contra drones instalado no Aeroporto Internacional de Guarulhos representa um passo importante na modernização da segurança aeroportuária. Sua implementação tem demonstrado resultados positivos, melhorando a segurança e a eficiência operacional do aeroporto, e servindo como um exemplo para outras instalações ao redor do mundo.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-analysis-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Reevaluating Security Measures: A Shift in Force Protection Condition at Base Aérea de Anápolis",
+   "body": "A mudança na condição de proteção de força para Delta exige uma reavaliação abrangente de nossos protocolos de segurança na Base Aérea de Anápolis. Esta alteração reflete a necessidade de adaptar nossas medidas de proteção às ameaças em evolução que enfrentamos atualmente. Mudanças recentes nas ameaças de segurança requerem que adaptemos nossas medidas de proteção. Em particular, a crescente presença de drones nas proximidades da base nos obriga a considerar novas estratégias para garantir a segurança de nossas instalações e pessoal. A condição Delta implica um nível de ameaça substancial, e é crucial que revisemos nossas medidas de contra-drone para garantir que estejamos preparados para qualquer eventualidade. Além disso, esta mudança nos permite melhorar a coordenação entre as diferentes unidades e departamentos dentro da base. A colaboração eficiente é essencial para uma resposta eficaz a ameaças potenciais. Implementaremos treinamentos adicionais para nosso pessoal, focando em reconhecimento e resposta a ameaças de drones. Também pretendemos realizar exercícios simulados para testar a eficácia de nossas novas medidas de segurança. A segurança da base é nossa prioridade máxima, e esta reavaliação é um passo crucial para garantir que estejamos preparados para enfrentar os desafios de segurança atuais e futuros. Contamos com a cooperação de todos os membros da base para garantir o sucesso desta iniciativa. Juntos, podemos manter a Base Aérea de Anápolis segura e protegida.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -966,6 +1190,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-3-commentary-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "commentary",
+   "title": "The Vital Role of Clear Communication in Air Defense",
+   "body": "A comunicação clara e concisa entre as unidades de defesa aérea aliadas é vital. Em operações de defesa aérea, cada segundo conta, e qualquer ambiguidade pode levar a consequências desastrosas. De minha experiência, sei que pequenos mal-entendidos podem levar a grandes consequências. Portanto, é crucial que todas as unidades adotem procedimentos de rádio padrões e consistentes.\n\nPrimeiramente, as unidades devem evitar gíria e jargão desnecessário. Embora alguns termos possam ser compreensíveis dentro de uma unidade específica, eles podem causar confusão quando usados entre diferentes unidades aliadas. Por exemplo, um termo coloquial usado por uma unidade pode não ser conhecido por outra, levando a erros de comunicação.\n\nAlém disso, as unidades devem usar frases padrão para transmitir informações essenciais. Frases como 'Contato visual confirmado' ou 'Alvo identificado' são universais e reduziram significativamente os mal-entendidos. Essas frases padrão garantem que todas as unidades envolvidas na operação estejam na mesma página.\n\nOutro aspecto importante é a repetição e a confirmação das mensagens. Em situações de alta pressão, é fácil cometer erros ou mal-entender uma mensagem. Portanto, é prática comum repetir e confirmar as mensagens para evitar equívocos. Por exemplo, após receber uma ordem, a unidade deve repetir a ordem de volta para o transmissor para confirmar a compreensão.\n\nPor fim, as unidades devem realizar exercícios regulares de comunicação para manter suas habilidades afiadas. Esses exercícios simulam cenários reais e permitem que as unidades pratiquem o uso de procedimentos de rádio padrão. Além disso, esses exercícios ajudam a identificar e corrigir quaisquer falhas na comunicação antes que se tornem um problema em uma situação real.\n\nEm conclusão, a comunicação clara e eficiente é a espinha dorsal de qualquer operação de defesa aérea bem-sucedida. As unidades devem priorizar a clareza e a consistência em suas comunicações para garantir a segurança e a eficácia de suas operações.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-commentary-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Cooperation Along the Rio Paraguai",
+   "body": "A cooperação entre as forças brasileiras e bolivianas na patrulha do perímetro do Rio Paraguai é crucial para a segurança mútua e a manutenção da paz. Durante a breve reunião de patrulha conjunta, os oficiais de ambas as nações discutiram as estratégias para melhorar a segurança ao longo do rio, que serve como uma fronteira natural entre os dois países. A colaboração entre as forças armadas brasileiras e bolivianas é essencial para prevenir conflitos e garantir a estabilidade regional.\n\nPara garantir o sucesso dessas patrulhas, é essencial que haja uma comunicação clara e constante entre as duas forças. Isso inclui o compartilhamento de informações em tempo real sobre atividades suspeitas e a coordenação de operações conjuntas. Além disso, a eficiência das patrulhas pode ser aumentada com o uso de tecnologias modernas, como drones e sistemas de vigilância avançados. Essas ferramentas permitem uma monitoração mais eficaz da área e ajudam a identificar e responder rapidamente a quaisquer ameaças potenciais.\n\nOs oficiais também destacaram a importância de treinar conjuntamente as tropas para melhorar a coordenação e a eficácia das operações. Exercícios regulares de simulação e treinamento conjunto ajudam a construir confiança e familiaridade entre as forças, garantindo que possam agir de maneira unificada em situações de crise. Além disso, a cooperação não se limita apenas às operações de segurança, mas também inclui esforços conjuntos para proteger o meio ambiente e promover o desenvolvimento sustentável na região.\n\nEm resumo, a patrulha conjunta do perímetro do Rio Paraguai é um exemplo de como a cooperação entre nações vizinhas pode contribuir para a segurança e a estabilidade regional. Através de uma comunicação eficaz, o uso de tecnologias modernas e treinamento conjunto, as forças brasileiras e bolivianas estão trabalhando juntas para garantir a segurança de suas fronteiras e promover a paz na região.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-3-editorial-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -1023,6 +1279,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-editorial-005",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Disruption in the Skies: The Need for Robust Countermeasures",
+   "body": "O recente incidente que resultou na interrupção de um exercício devido à interferência no link de controle de um drone levantou questões significativas sobre a segurança das operações aéreas. O incidente ocorreu durante uma simulação de rotina, quando um dispositivo de jamming foi ativado, causando a perda de controle do drone. Felizmente, o incidente não resultou em danos materiais ou físicos, mas serviu como um lembrete sombrio da vulnerabilidade dos sistemas atuais. O incidente recente serve como um alerta para a necessidade de medidas de contramedida mais robustas. As tecnologias de jamming estão se tornando mais sofisticadas e acessíveis, tornando crucial que nossas defesas se adaptem e evoluam. É imperativo que invistamos em pesquisas e desenvolvimento para Stay ahead of these evolving threats. Além disso, é essencial que haja uma colaboração mais estreita entre as agências governamentais, as forças armadas e a indústria privada. Somente através de um esforço coletivo poderemos garantir a segurança de nossas operações aéreas. O incidente também destaca a importância da conscientização e do treinamento. Todos os envolvidos em operações com drones devem estar cientes dos riscos potenciais e das medidas de segurança adequadas. Treinamentos regulares e atualizações devem ser realizados para garantir que todos estejam preparados para enfrentar qualquer situação. Em conclusão, o incidente recente é um chamado para a ação. Devemos usar isso como uma oportunidade para fortalecer nossas defesas, melhorar nossa colaboração e garantir que estamos fazendo tudo ao nosso alcance para proteger nossas operações aéreas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-3-editorial-006",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Intrusões Aéreas: A Necessidade de Vigilância Aumentada",
+   "body": "A avistagem de um drone sobre o perímetro da Base Aérea de Anápolis levanta sérias preocupações sobre a segurança de nossas instalações militares. Embora os drones tenham muitos usos benéficos, como entrega de pacotes e mapeamento de terras, também representam uma ameaça potencial à segurança nacional quando usados de maneira indevida. O incidente recente em Anápolis não é um caso isolado. Ao longo dos últimos meses, houve um aumento alarmante no número de avistagens de drones perto de instalações sensíveis em todo o país. É preocupante que nossas instalações militares possam ser vulneráveis a esse tipo de intrusão. A Base Aérea de Anápolis, como muitas outras, abriga aeronaves e equipamentos críticos para a defesa do Brasil. A presença não autorizada de um drone nessas áreas pode representar um risco significativo para a segurança operacional e a prontidão das forças armadas. Incidentes recentes demonstram que nossas medidas de segurança atuais podem não ser suficientes para lidar com ameaças modernas. É crucial que tomemos medidas imediatas para reforçar a vigilância e implementar tecnologias avançadas de detecção e contra-medidas. Além disso, é imperativo que revisemos e atualizemos nossas regulamentações sobre o uso de drones civis. Embora a privacidade e a liberdade individuais sejam valores importantes, elas não devem comprometer a segurança nacional. Devemos estabelecer zonas de exclusão aérea em torno de instalações sensíveis e aplicar penalidades severas para aqueles que violarem essas restrições. A vigilância aumentada não deve se limitar apenas à detecção de drones. É essencial que invistamos em sistemas de rastreamento e identificação para determinar a origem e o operador de qualquer drone não autorizado. Isso permitirá que as autoridades tomem medidas enérgicas contra os responsáveis e desincentivem o uso indevido de drones no futuro. Além disso, a cooperação entre agências governamentais, forças armadas e a indústria de tecnologia é vital para desenvolver soluções eficazes e adaptáveis a essa ameaça em evolução. A avistagem de um drone sobre a Base Aérea de Anápolis serve como um chamado à ação. Não podemos nos dar ao luxo de ignorar essa ameaça potencial. A segurança de nossas instalações militares e a proteção de nossos interesses nacionais dependem de nossa capacidade de adaptar e responder a essas novas realidades. É hora de agir com urgência e determinação para garantir que nossa nação esteja protegida contra ameaças modernas e emergentes.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1484,6 +1772,42 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1-announcement-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-announcement-003",
+   "stem": "What is the purpose of the drill?",
+   "choices": [
+    "To test the quick reaction force's response to an emergency at night.",
+    "To check the functionality of the building's lights.",
+    "To practice evacuating the building.",
+    "To simulate a fire emergency."
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the drill is to test the quick reaction force's response to an emergency at night, as stated in the text: \"o exercício de simulação será realizado para testar a resposta da força de reação rápida a uma emergência noturna.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-announcement-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-announcement-003",
+   "stem": "What does the word \"simulação\" mean here?",
+   "choices": [
+    "A practice exercise.",
+    "A competition.",
+    "An imaginary situation.",
+    "A real emergency."
+   ],
+   "answer": 0,
+   "explanation": "In this context, \"simulação\" refers to a practice exercise, as the text is about a drill: \"o exercício de simulação será realizado para testar a resposta da força de reação rápida a uma emergência noturna.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1664,6 +1988,168 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1-instructions-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-005",
+   "stem": "The phrase 'reunir no portão' means here:",
+   "choices": [
+    "to meet at the gate",
+    "to gather at the entrance",
+    "to assemble at the door",
+    "to congregate at the fence"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B, 'to meet at the gate'. This is clear from the context of the instructions, which ask neighbors to 'reunir no portão' (gather at the gate) for a security meeting. The other options are plausible but less accurate in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-instructions-005",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To request volunteers for neighborhood watch",
+    "To describe new security measures for the neighborhood",
+    "To inform residents about an upcoming security meeting",
+    "To announce a change in neighborhood leadership"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is B, 'To inform residents about an upcoming security meeting'. The text is an announcement about a meeting to discuss neighborhood security, as indicated by the phrases 'reunir no portão' (gather at the gate) and 'discutir medidas de segurança' (discuss security measures). The other options are not the main focus of the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-006-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-006",
+   "stem": "Why should you report suspicious activities according to the text?",
+   "choices": [
+    "To impress your superiors",
+    "To gain a reward",
+    "To protect the base and its personnel",
+    "To avoid punishment"
+   ],
+   "answer": 2,
+   "explanation": "The text states that reporting suspicious activities helps to proteger a base e seu pessoal (protect the base and its personnel). It does not mention rewards, impressing superiors, or avoiding punishment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-006-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-instructions-006",
+   "stem": "What does 'atenção' mean here?",
+   "choices": [
+    "Carefulness",
+    "A meeting",
+    "A sign",
+    "A warning"
+   ],
+   "answer": 0,
+   "explanation": "The text says 'Prestar atenção a atividades suspeitas' (Pay attention to suspicious activities). Here, 'atenção' means being careful or vigilant, not a warning, a sign, or a meeting.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-007-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-007",
+   "stem": "What is NOT allowed in the festival area?",
+   "choices": [
+    "drones",
+    "pets",
+    "alcohol",
+    "loud music"
+   ],
+   "answer": 0,
+   "explanation": "The text explicitly states that the use of drones is prohibited, saying 'O uso de drones é estritamente proibido.' There is no mention of restrictions on loud music, alcohol, or pets.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-007-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-instructions-007",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To prohibit pets in the festival area",
+    "To announce new festival food vendors",
+    "To warn about drone dangers",
+    "To inform about festival activities"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to warn about the dangers of drones near the base, as stated in 'Por favor, respeitem esta área de segurança para sua própria proteção e a segurança de todos na base.' The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-007-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-instructions-007",
+   "stem": "In the text, what does 'proibido' mean here?",
+   "choices": [
+    "required",
+    "recommended",
+    "encouraged",
+    "not allowed"
+   ],
+   "answer": 3,
+   "explanation": "'Proibido' in this context means 'not allowed.' The text says 'O uso de drones é estritamente proibido,' indicating that drones are not allowed in the festival area.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-008-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-instructions-008",
+   "stem": "In the text, what does the phrase 'enxame de drones' refer to?",
+   "choices": [
+    "A single large drone",
+    "A type of small boat",
+    "A group of small birds",
+    "A large group of drones"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'enxame de drones' is used to describe the group of drones. The phrase 'pequenos drones' indicates that the drones are small, and 'enxame' means a swarm or large group.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-instructions-008-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-instructions-008",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To describe a new type of drone technology",
+    "To announce a new delivery service in the city",
+    "To warn about a dangerous swarm of bees",
+    "To inform about a swarm of drones delivering packages"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the text is to inform about the swarm of drones delivering packages. The text states 'Um enxame de pequenos drones estará entregando pacotes no porto amanhã.' which means 'A swarm of small drones will be delivering packages at the harbor tomorrow.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1840,6 +2326,60 @@
    ],
    "answer": 2,
    "explanation": "In this context, \"enxurradas\" refers to \"sudden floods\" caused by heavy rains, as indicated by \"podem ocorrer enxurradas\" (sudden floods may occur).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-notice-005",
+   "stem": "What is the drone survey's purpose?",
+   "choices": [
+    "To take photos of the flood for a news report",
+    "To find people who need to be rescued immediately",
+    "To assess the damage and help coordinate relief efforts",
+    "To deliver food and supplies to flooded areas"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the drone survey is being conducted to avaliar os danos e ajudar na coordenação dos esforços de socorro, which means \"assess the damage and help coordinate relief efforts.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-notice-005",
+   "stem": "What is the main idea of the notice?",
+   "choices": [
+    "Drones are being used to find missing people",
+    "People should stay indoors during the flood",
+    "The government is providing food and supplies",
+    "A drone survey is helping after a flood"
+   ],
+   "answer": 3,
+   "explanation": "The main idea of the notice is that a drone survey is being conducted to help after a flood. This is stated clearly in the first sentence: \"Um levantamento por drones está sendo realizado para ajudar após as enchentes.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-notice-005-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-1-notice-005",
+   "stem": "What does \"levantamento\" mean here?",
+   "choices": [
+    "A delivery of supplies",
+    "A rescue operation",
+    "A gathering of people",
+    "A survey or assessment"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"levantamento\" refers to the drone survey or assessment. The text states that \"Um levantamento por drones está sendo realizado,\" which means \"A drone survey is being conducted.\"",
    "source": "llm",
    "verified": false
   },
@@ -2798,6 +3338,168 @@
    "verified": false
   },
   {
+   "id": "pt-dr-2-event_description-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-event_description-004",
+   "stem": "What is the main purpose of the text?",
+   "choices": [
+    "To announce a new security policy at the base",
+    "To describe the schedule for Safety Day at the base",
+    "To provide contact information for security personnel",
+    "To explain the importance of insider threat awareness"
+   ],
+   "answer": 1,
+   "explanation": "The text primarily describes the schedule and activities for the Safety Day at the base, including the insider threat awareness training. The other options are mentioned but are not the main focus.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-event_description-004",
+   "stem": "What time does the insider threat awareness training start?",
+   "choices": [
+    "09:30",
+    "08:00",
+    "08:30",
+    "09:00"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the insider threat awareness training will begin at 09:00, as part of the Safety Day schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-event_description-004",
+   "stem": "What does the word \"ameaça\" mean here?",
+   "choices": [
+    "Opportunity",
+    "Risk",
+    "Threat",
+    "Challenge"
+   ],
+   "answer": 2,
+   "explanation": "The word \"ameaça\" is used in the context of \"conscientização sobre ameaças internas,\" which translates to \"awareness of internal threats.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-event_description-005",
+   "stem": "What is this passage's main topic?",
+   "choices": [
+    "The impact of drones on global air traffic",
+    "The history of drone technology and its uses",
+    "A new drone detection system at São Paulo International Airport",
+    "A comparison of different drone defense systems"
+   ],
+   "answer": 2,
+   "explanation": "The passage focuses on the installation of a new drone defense system at São Paulo International Airport, describing its components and purpose. It does not discuss the history of drone technology, the impact of drones on global air traffic, or compare different drone defense systems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-event_description-005",
+   "stem": "What are the two main components of the new drone defense system?",
+   "choices": [
+    "Lasers and nets",
+    "Radar and electronic jamming devices",
+    "Satellites and drones",
+    "Radar and missiles"
+   ],
+   "answer": 1,
+   "explanation": "The passage states that the system uses radar para detectar drones and dispositivos de jamming eletrônico para neutralizar a ameaça, which corresponds to choice (B).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-event_description-005",
+   "stem": "In the phrase 'O sistema é capaz de identificar e neutralizar ameaças de drones', what does 'neutralizar' mean here?",
+   "choices": [
+    "To communicate with",
+    "To destroy",
+    "To ignore",
+    "To intercept and render harmless"
+   ],
+   "answer": 3,
+   "explanation": "The context implies that the system does not merely destroy drones ('neutralizar' as 'destruir') but rather intercepts and renders them harmless ('neutralizar' as 'interceptar e tornar inofensivo'). The passage does not suggest that the system ignores, communicates with, or merely identifies the drones without taking action.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-006-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-event_description-006",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "A drone exercise was interrupted by a technical failure.",
+    "A drone exercise was interrupted due to bad weather.",
+    "A drone exercise was interrupted by a deliberate act of sabotage.",
+    "A drone exercise was interrupted due to a lack of trained personnel."
+   ],
+   "answer": 0,
+   "explanation": "The text states that the drone exercise was interrupted due to a 'falha técnica' (technical failure), specifically a 'interferência no link de controle' (interference in the control link). There is no mention of sabotage, bad weather, or lack of personnel.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-006-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-event_description-006",
+   "stem": "What was the cause of the interruption during the drone exercise?",
+   "choices": [
+    "The drone's battery died.",
+    "The drone's software malfunctioned.",
+    "There was interference in the control link.",
+    "A bird struck the drone."
+   ],
+   "answer": 2,
+   "explanation": "The text explicitly states that the cause of the interruption was 'interferência no link de controle' (interference in the control link).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-event_description-006-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-event_description-006",
+   "stem": "In the text, what does 'perturbou' mean?",
+   "choices": [
+    "Annoyed",
+    "Interrupted",
+    "Delighted",
+    "Frightened"
+   ],
+   "answer": 1,
+   "explanation": "The text uses 'perturbou' to describe how the interference affected the exercise, saying 'a interferência perturbou o exercício' (the interference interrupted the exercise).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-2-factual_article-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3226,6 +3928,168 @@
    ],
    "answer": 2,
    "explanation": "The passage uses the phrase \"os orçamentos estão ficando cada vez mais altos\", which translates to 'the budgets are getting higher and higher'. This indicates that \"orçamentos\" refers to budgets in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-report-003",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The base has decided to install new security cameras.",
+    "Residents are concerned about the lack of security measures at the base.",
+    "The base is holding a meeting to discuss security concerns.",
+    "The base's security measures are causing problems for local residents."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is (C). The passage focuses on how the base's security measures are affecting the local residents. This is evident from the description of the problems caused by the new security measures, such as the 'barreira de segurança' and the 'fechamento de ruas' that have disrupted the daily life of residents.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-report-003",
+   "stem": "What specific problem does Maria Silva mention?",
+   "choices": [
+    "She has to take a long detour to get to work because of the street closures.",
+    "She is worried about the noise from the base's security alarms.",
+    "She cannot access her home due to the new security barriers.",
+    "She is concerned about the lack of lighting in the area due to the new security measures."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is (B). Maria Silva mentions that she 'tem que fazer um desvio grande para chegar ao trabalho' due to the 'fechamento de ruas' caused by the new security measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-report-003",
+   "stem": "In the sentence 'Os moradores estão preocupados com a falta de iluminação na área devido às novas medidas de segurança', what does 'iluminação' mean?",
+   "choices": [
+    "Lighting",
+    "Barriers",
+    "Street closures",
+    "Noise"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is (A). In this context, 'iluminação' refers to the lack of lighting in the area, which is one of the concerns mentioned by the residents. The sentence states that 'os moradores estão preocupados com a falta de iluminação na área devido às novas medidas de segurança'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-report-004",
+   "stem": "What is the main point of this report?",
+   "choices": [
+    "The harbor authorities implemented new security measures",
+    "A new species of bird was spotted at Santos Harbor",
+    "A group of small drones was seen flying over Santos Harbor",
+    "A fishing boat capsized near the harbor entrance"
+   ],
+   "answer": 2,
+   "explanation": "The main point of the report is the unusual activity of a swarm of small drones flying over Santos Harbor, as stated in the first sentence: \"Um enxame de pequenas drones foi avistado sobrevoando o Porto de Santos\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-report-004",
+   "stem": "Where were the drones first spotted?",
+   "choices": [
+    "Near the fishing boats",
+    "Close to the harbor entrance",
+    "Over the oil tankers",
+    "Above the container terminal"
+   ],
+   "answer": 1,
+   "explanation": "The drones were first spotted close to the harbor entrance, as mentioned in the text: \"Os drones foram avistados pela primeira vez perto da entrada do porto\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-report-004",
+   "stem": "What does \"sobrevoando\" mean here?",
+   "choices": [
+    "Landing on",
+    "Flying over",
+    "Taking off from",
+    "Hovering above"
+   ],
+   "answer": 1,
+   "explanation": "Here, \"sobrevoando\" means \"flying over\", as it is used to describe the drones' movement over the harbor area: \"Um enxame de pequenas drones foi avistado sobrevoando o Porto de Santos\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-report-005",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A list of security protocols",
+    "A new exercise for the air force",
+    "A description of the base's infrastructure",
+    "A change in the security level at the Anápolis Air Base"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is explicitly stated in the first sentence: \"O Comando da Base Aérea de Anápolis comunica a mudança no nível de proteção da base.\" The rest of the report elaborates on this change.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-report-005",
+   "stem": "What is the new force protection condition at the base?",
+   "choices": [
+    "FPCON ALFA",
+    "FPCON CHARLIE",
+    "FPCON BRAVO",
+    "FPCON DELTA"
+   ],
+   "answer": 1,
+   "explanation": "The new force protection condition is clearly stated as \"FPCON CHARLIE\" in the sentence: \"A nova condição de proteção da força é o FPCON CHARLIE.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-report-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-report-005",
+   "stem": "In the context of the report, what does the phrase 'restrição de acesso' mean?",
+   "choices": [
+    "Extending operating hours",
+    "Providing open access to all facilities",
+    "Increasing the number of visitors",
+    "Limiting entry to certain areas"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'restrição de acesso' is used in the context of the new security measures: \"A implementação do FPCON CHARLIE inclui a restrição de acesso a áreas específicas da base.\" This indicates that entry to certain areas will be limited.",
    "source": "llm",
    "verified": false
   },
@@ -3878,6 +4742,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-3-analysis-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-analysis-001",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "Guarulhos International Airport has faced a series of drone-related incidents that have gone unaddressed.",
+    "Guarulhos International Airport is the only airport in Brazil to implement a counter-drone system.",
+    "The installation of a counter-drone system at Guarulhos International Airport has significantly improved its security and operational efficiency.",
+    "The counter-drone system at Guarulhos International Airport has been met with widespread criticism from the public."
+   ],
+   "answer": 2,
+   "explanation": "The passage primarily discusses the positive impact of the counter-drone system on the security and operations of Guarulhos International Airport, as seen in phrases like 'aumento significativo na segurança' and 'melhoria na eficiência operacional'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-analysis-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-analysis-001",
+   "stem": "What can be inferred about the frequency of drone-related incidents at Guarulhos International Airport before the installation of the counter-drone system?",
+   "choices": [
+    "Drone-related incidents were not a concern for the airport.",
+    "Drone-related incidents were rare.",
+    "Drone-related incidents were a common occurrence.",
+    "Drone-related incidents were increasing but were not yet a significant problem."
+   ],
+   "answer": 2,
+   "explanation": "The text states that 'antes da instalação do sistema, incidentes envolvendo drones eram frequentes', indicating that drone-related incidents were common before the counter-drone system was installed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-analysis-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-analysis-001",
+   "stem": "In the phrase 'a detecção precoce de drones', what does 'detecção precoce' mean?",
+   "choices": [
+    "Accurate detection",
+    "Late detection",
+    "Inaccurate detection",
+    "Early detection"
+   ],
+   "answer": 3,
+   "explanation": "'Detecção precoce' in this context refers to the ability of the counter-drone system to identify drones early, as part of its role in enhancing airport security.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-analysis-002",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "The base is implementing new technology to combat drone threats.",
+    "The base is conducting a comprehensive review of its counter-drone strategies.",
+    "The base is reassessing its security protocols following a change in force protection condition.",
+    "The base has upgraded its security measures due to increasing drone activity."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the passage is that the base is reassessing its security protocols following a change in force protection condition. This is evident from the text: \"A mudança na condição de proteção de força para Delta exige uma reavaliação abrangente de nossos protocolos de segurança.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-analysis-002",
+   "stem": "What can be inferred about the base's previous security measures?",
+   "choices": [
+    "They were too stringent and required relaxation.",
+    "They were adequate but needed reassessment due to changing threats.",
+    "They were outdated and ineffective.",
+    "They were focused solely on drone threats."
+   ],
+   "answer": 1,
+   "explanation": "The inference is that the base's previous security measures were adequate but needed reassessment due to changing threats. The text states: \"Mudanças recentes nas ameaças de segurança requerem que adaptemos nossas medidas de proteção.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-analysis-002",
+   "stem": "What does \"reavaliação abrangente\" mean here?",
+   "choices": [
+    "A superficial review.",
+    "A selective examination.",
+    "A comprehensive reassessment.",
+    "A quick evaluation."
+   ],
+   "answer": 2,
+   "explanation": "The phrase \"reavaliação abrangente\" means a comprehensive reassessment. The text uses this phrase to describe the thorough review of security protocols: \"A mudança na condição de proteção de força para Delta exige uma reavaliação abrangente de nossos protocolos de segurança.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4094,6 +5066,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-3-commentary-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-commentary-002",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "The importance of friendly fire incidents in improving radio procedures.",
+    "The necessity of clear and concise communication between allied air defense units.",
+    "The requirement for air defense units to always follow the same radio procedures as the military.",
+    "The need for air defense units to use only English in their radio communications."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that clear and concise communication between allied air defense units is necessary. The author states this explicitly: 'A comunicação clara e concisa entre as unidades de defesa aérea aliadas é vital.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-commentary-002",
+   "stem": "What can be inferred about the author's experience?",
+   "choices": [
+    "The author has extensive experience in air defense communications.",
+    "The author has only worked in military units, not allied ones.",
+    "The author has never been involved in an air defense unit.",
+    "The author has never dealt with radio procedures in air defense."
+   ],
+   "answer": 0,
+   "explanation": "The author's experience in air defense communications can be inferred from their detailed knowledge and specific examples, such as 'De minha experiência, sei que pequenos mal-entendidos podem levar a grandes consequências.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-commentary-002",
+   "stem": "In the phrase 'As unidades devem evitar gíria e jargão desnecessário,' what does 'gíria' mean?",
+   "choices": [
+    "Official military terminology.",
+    "Standardized communication codes.",
+    "Slang or informal language.",
+    "Formal radio procedures."
+   ],
+   "answer": 2,
+   "explanation": "Here, 'gíria' refers to slang or informal language. The author advises against using it to ensure clear communication: 'As unidades devem evitar gíria e jargão desnecessário para garantir que todas as mensagens sejam compreendidas.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-commentary-003",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The history of border disputes between Brazil and Bolivia",
+    "The economic benefits of improved security along the river",
+    "The environmental impact of patrolling the Rio Paraguai",
+    "The importance of joint patrols along the Rio Paraguai"
+   ],
+   "answer": 3,
+   "explanation": "The passage discusses the joint perimeter patrol briefing between Brazilian and Bolivian forces, emphasizing the importance of cooperation and communication in securing the Rio Paraguai. The main idea is captured in the first sentence: “A cooperação entre as forças brasileiras e bolivianas na patrulha do perímetro do Rio Paraguai é crucial para a segurança mútua e a manutenção da paz.”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-commentary-003",
+   "stem": "What can be inferred about the relationship between the Brazilian and Bolivian forces?",
+   "choices": [
+    "They are in competition for resources",
+    "They have no interest in cooperating",
+    "They have a long history of conflict",
+    "They are working together to improve security"
+   ],
+   "answer": 3,
+   "explanation": "The passage describes a joint briefing and emphasizes the importance of cooperation and communication. For example, “A cooperação entre as forças brasileiras e bolivianas na patrulha do perímetro do Rio Paraguai é crucial para a segurança mútua e a manutenção da paz” and “Para garantir o sucesso dessas patrulhas, é essencial que haja uma comunicação clara e constante entre as duas forças.” These details suggest that the forces are working together to improve security.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-commentary-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-commentary-003",
+   "stem": "What does the word \"eficiência\" mean here?",
+   "choices": [
+    "Effectiveness",
+    "Cost",
+    "Complexity",
+    "Speed"
+   ],
+   "answer": 0,
+   "explanation": "The word “eficiência” is used in the context of improving the effectiveness of patrols. The sentence “Além disso, a eficiência das patrulhas pode ser aumentada com o uso de tecnologias modernas, como drones e sistemas de vigilância avançados” indicates that it refers to the effectiveness of the patrols.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-3-editorial-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4306,6 +5386,114 @@
    ],
    "answer": 1,
    "explanation": "The phrase 'superar os desafios' indicates that 'desafios' refers to challenges that need to be overcome, such as 'melhorar a infraestrutura e a sustentabilidade'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-editorial-005",
+   "stem": "What is the main idea of the editorial?",
+   "choices": [
+    "The impact of drone jamming on civilian air traffic",
+    "The importance of drones in military exercises",
+    "The history of drone technology in Brazil",
+    "The need for improved countermeasures against drone jamming"
+   ],
+   "answer": 3,
+   "explanation": "The editorial discusses the recent incident of drone jamming during an exercise and emphasizes the need for robust countermeasures. The main idea is captured in sentences like 'O incidente recente serve como um alerta para a necessidade de medidas de contramedida mais robustas.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-editorial-005",
+   "stem": "What can be inferred about the author's opinion on the current countermeasures?",
+   "choices": [
+    "The author believes they are sufficient",
+    "The author believes they need improvement",
+    "The author is unsure about their effectiveness",
+    "The author thinks they are outdated"
+   ],
+   "answer": 1,
+   "explanation": "The author implies that current countermeasures are not adequate, stating 'O incidente recente serve como um alerta para a necessidade de medidas de contramedida mais robustas.' This suggests a need for improvement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-3-editorial-005",
+   "stem": "What does 'interromper' mean here?",
+   "choices": [
+    "To delay",
+    "To continue",
+    "To begin",
+    "To stop"
+   ],
+   "answer": 3,
+   "explanation": "The word 'interromper' is used in the context of the exercise being stopped due to the jamming of the drone's control link: 'um exercício foi interrompido devido à interferência no link de controle do drone.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-006-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "pt-dr-3-editorial-006",
+   "stem": "What is the main topic of this editorial?",
+   "choices": [
+    "the benefits of drone technology",
+    "the environmental impact of air bases",
+    "the need for increased drone regulation",
+    "the history of drone usage in Brazil"
+   ],
+   "answer": 2,
+   "explanation": "The editorial discusses the sighting of a drone over an air base perimeter and argues for increased vigilance and regulation, as seen in the opening sentence: \"A avistagem de um drone sobre o perímetro da Base Aérea de Anápolis\" and the concluding call for \"vigilância aumentada\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-006-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "pt-dr-3-editorial-006",
+   "stem": "What can be inferred about the author's view on current security measures?",
+   "choices": [
+    "the author thinks current security measures are sufficient",
+    "the author believes current security measures are too strict",
+    "the author believes current security measures are inadequate",
+    "the author is unsure about the effectiveness of current security measures"
+   ],
+   "answer": 2,
+   "explanation": "The author implies that current security measures are inadequate by stating that \"a incidentes recentes demonstram que nossas medidas de segurança atuais podem não ser suficientes para lidar com ameaças modernas\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-3-editorial-006-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "tone",
+   "passageId": "pt-dr-3-editorial-006",
+   "stem": "What is the tone of this editorial?",
+   "choices": [
+    "optimistic and enthusiastic",
+    "humorous and lighthearted",
+    "urgent and concerned",
+    "indifferent and apathetic"
+   ],
+   "answer": 2,
+   "explanation": "The tone is urgent and concerned, as evidenced by phrases like \"é crucial que tomemos medidas imediatas\" and \"preocupante que nossas instalações militares possam ser vulneráveis\"",
    "source": "llm",
    "verified": false
   },

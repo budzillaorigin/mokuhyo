@@ -166,6 +166,38 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-1-announcement-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Joint Patrol Announcement",
+   "body": "皆様へ\n\n共同パトロールの説明会を開催いたします。日時は、来週の月曜日、午前八時半から、会議室にて行います。この説明会では、新しいパトロールルートと安全対策について説明いたします。全員のご参加をお願いします。\n\n連絡先：パトロールチーム事務局",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-announcement-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "announcement",
+   "title": "New Drone Defense System at Haneda Airport",
+   "body": "羽田空港では、無人機の侵入を検知し、防止するため、新たな対策システムを導入いたしました。このシステムは、空港の上空に無人機が侵入した場合、自動的に検知し、対策を講じることができます。皆様のご理解とご協力を賜りますようお願い申し上げます。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-1-email-001",
    "exam": "DLPT_READING",
    "level": "1",
@@ -298,6 +330,38 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-1-notice-006",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "notice",
+   "title": "Increased Security Measures Against Drones",
+   "body": "ドローン対策の強化について\n\n近頃、安価なドローンによる基地への侵入が増加しています。そのため、基地の防衛のための対策を強化する必要があります。毎月5,000,000円の費用がかかりますが、これは基地の安全を確保するために必要な投資です。皆様のご理解とご協力をお願いします。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-notice-007",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "notice",
+   "title": "Nighttime Drill Announcement",
+   "body": "緊急のお知らせ\n\n本日夜8時に急行部隊の訓練を行います。\n訓練中は大きな音がしますが、ご安心ください。\n近所の皆様にご迷惑をおかけしますが、ご理解とご協力をお願いします。\n\n訓練時間は約30分間です。\nご迷惑をおかけいたします。\n\n地域安全対策委員会",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-1-schedule-001",
    "exam": "DLPT_READING",
    "level": "1",
@@ -323,6 +387,38 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-short_message-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Drone Survey After Flooding",
+   "body": "大雨の影響で、近くの川が氾濫し、多くの被害が出ています。このような状況を把握するため、私たちの団体は無人機を使って被害状況を調査します。無人機は安全に飛行し、避難所の支援や復旧活動に役立つ情報を収集します。調査中は、安全のため、無人機に近づかないでください。ご理解とご協力をお願いします。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-short_message-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Delivery Vehicle Incident",
+   "body": "警備員は北ゲートで勤務しています。今日は非常に忙しいです。警備員はトラックを見かけました。トラックは倉庫から来たところです。運転手は運転免許証を所持していませんでした。警備員は「止まれ」と大声で叫びました。運転手は驚きました。警備員は「身分証明書を見せてください」と言いました。運転手は申し訳なく思いました。彼は身分証明書を忘れていました。警備員は彼にゲートを通過することを許可しませんでした。運転手は倉庫に戻りました。彼は身分証明書を取りに行きました。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -499,6 +595,54 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-2-event_description-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Drone Control Interference During Exercise",
+   "body": "先週、化学物質漏洩事故に対する対応を練習するための演習が行われました。この演習では、無人航空機（UAV）が使用され、地上ステーションから制御されて化学物質の拡散を監視する役割を果たしました。しかし、演習が始まって約20分後、UAVの制御信号が突然乱れ始めました。地上ステーションの画面にノイズが現れ、UAVとの連絡が途絶えました。技術チームはすぐに問題の原因を調査し、近くにある強力な電波妨害源の影響で制御信号が妨害されたことを発見しました。この妨害により、UAVは一時的に制御不能な状態に陥り、演習は中断を余儀なくされました。技術チームは迅速に対処し、電波妨害源からの距離を離すことで制御信号の安定化に成功し、演習を再開することができました。この事件は、無人航空機を使用した演習において、電磁波の妨害に対する対策の重要性を再認識させるものでした。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-event_description-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Drone Survey Maps Flood Damage",
+   "body": "先日発生した大規模な洪水により、地域の多くの場所が深刻な被害を受けました。このような状況下で、ドローンを活用した被害状況の調査が行われ、大きな成果を上げました。ドローンは、住宅地や道路、橋などのインフラの被害状況を迅速かつ正確に把握するために活用されました。調査チームは、ドローンからの映像とデータを分析し、被害の程度を評価しました。これにより、復旧計画の策定が大幅に前進しました。また、ドローンの活用により、人的リソースの節約と作業の効率化が図られました。この調査は、今後の災害対策の一環として、地域の復旧と再生に向けた重要な一歩となりました。地域住民からも、ドローンによる調査に対する高い評価を得ています。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-event_description-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "event_description",
+   "title": "New Training Program for Security Personnel",
+   "body": "警備員向けの新しい訓練プログラムが始まります。このプログラムは、警備員が敵意ある意図を認識する能力を高めることを目的としています。この訓練では、様々なシナリオを通じて、警備員が敵意ある行動を識別し、適切に対応する方法を学びます。例えば、空港や駅などの公共の場で、不審な行動を示す人物にどう対処すべきかを学びます。訓練は、実践的な演習と理論的な講義を組み合わせて行われます。警備員は、実際の状況に近い環境で訓練を受け、敵意ある意図を迅速に認識し、適切な行動を取る能力を養います。このプログラムは、警備員の安全意識を高め、公共の安全を確保することを目的としています。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-2-instructions-001",
    "exam": "DLPT_READING",
    "level": "2",
@@ -642,6 +786,22 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-2-news-006",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "news",
+   "title": "Drone Spotted Near Northern Air Base",
+   "body": "北部の航空基地周辺で、夕方、飛行物体が目撃された。目撃者の話によると、その物体は小型の無人機のようだった。基地の警備隊は、飛行物体の正体を確認するため、現場に向かった。彼らは、無人機が基地上空を飛行しているのを確認した。\n\n無人機が基地周辺で目撃されたことは、セキュリティ上の懸念を引き起こした。基地の司令官は、この事件を真剣に受け止め、必要な対策を講じると述べた。また、地元住民に対して、不審な飛行物体を見かけたらすぐに報告するよう呼びかけた。\n\n現在、警備隊は無人機の所有者を特定するため調査を進めている。無人機が基地周辺を飛行した理由や、その目的はまだ明確になっていない。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-2-report-001",
    "exam": "DLPT_READING",
    "level": "2",
@@ -653,6 +813,38 @@
    "language": "ja",
    "script": [],
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dr-2-report-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "report",
+   "title": "Expanding Drone Operations in Urban Areas",
+   "body": "民間航空局とドローン運用者の間で、都市部におけるドローンの利用拡大に向けた協議が進められている。この協議の目的は、ドローンの運用を安全かつ効果的に行うための基準を作成することである。具体的には、民間航空との空域の調整、ドローンの飛行経路の設定、建物や人々に近接した場所での安全な運用、そして緊急時の対応手順の確立が議論されている。これらの措置は、ドローンの利用を拡大しつつも、民間航空の安全を確保することを目的としている。また、ドローン運用者は、これらの基準を遵守することで、より広範な空域での運用が可能になると期待されている。この協議は、ドローン技術の進歩とともに、その利用範囲がさらに拡大することが予想される中で、今後のドローン運用のあり方を決定する重要なステップとなるであろう。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-report-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "report",
+   "title": "Joint Defense Exercise Conducted with Host Nation",
+   "body": "本日、自衛隊と在日米軍は、日米同盟の強化を目的とした合同防衛演習を実施した。この演習は、沖縄県の訓練場で行われ、両軍の協力と連携を強化することにより、地域の安全と安定に貢献することを目的としている。\n\n演習の内容は、仮想的な緊急事態に対処するための訓練で、両軍の部隊が共同で作戦を立案し、実行することを含む。具体的には、情報収集、作戦計画の立案、および実地訓練が行われた。この演習を通じて、両軍は緊急事態への迅速な対処能力を向上させ、日米同盟の強化に寄与することを目指した。\n\n演習には、自衛隊の陸上自衛隊、海上自衛隊、航空自衛隊の部隊、および在日米軍の陸軍、海兵隊、空軍の部隊が参加した。また、演習は地域の安全と安定に貢献することを目的としており、地域の住民との協力も重要な要素として考慮された。\n\nこの演習は、日米同盟の強化と地域の安全と安定の維持を目的として実施され、今後の両軍の協力と連携をさらに強化することが期待される。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dr-2p-column-001",
@@ -824,6 +1016,22 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-3-analysis-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Growing Threat of Loitering Munitions to Air Bases: A Strategic Analysis",
+   "body": "近年、航空基地に対する新たな脅威として、ホバリング兵器が注目されています。これらの兵器は、長時間空中に滞在し、目標を発見次第攻撃を行うことができるため、従来の防空システムには対処が難しい特性を持っています。航空基地は軍事戦略において重要な役割を果たしており、新たな脅威に対して強化された防御が必要です。これらの兵器は、その機動性と精密な攻撃能力により、航空基地の運用を大きく阻害する可能性があります。特に、航空基地のインフラや航空機そのものを標的にすることで、軍事作戦の遂行能力を低下させることが懸念されます。航空基地の防御を強化するためには、新たなセンサー技術や電子戦システムの導入が不可欠です。これらの技術を活用することで、ホバリング兵器の動きを早期に検知し、効果的に対処することが可能になります。また、航空基地の周辺地域においても、防御網を強化することが重要です。これにより、ホバリング兵器の侵入を防ぎ、航空基地の安全を確保することができます。これらの脅威に対処するための戦術的適応が必要です。例えば、航空機の配置や運用方法を柔軟に変更することで、ホバリング兵器の攻撃を回避することが可能です。さらに、国際協力を強化し、情報共有や共同訓練を通じて、ホバリング兵器に対する防御能力を向上させることが重要です。航空基地に対するホバリング兵器の脅威は、今後も増大する可能性があります。そのため、継続的な研究開発と戦術の改善が必要です。これにより、航空基地の安全を確保し、軍事作戦の遂行能力を維持することが可能になります。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-3-column-001",
    "exam": "DLPT_READING",
    "level": "3",
@@ -848,6 +1056,38 @@
    "language": "ja",
    "script": [],
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dr-3-commentary-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "3",
+   "textType": "commentary",
+   "title": "ja-dr-3-commentary-003-q3",
+   "body": "近年、テロや不法侵入といった脅威が多様化・複雑化しており、警備員が敵意ある意図を的確に認識する能力がますます重要になっています。このような状況下で、警備員の訓練プログラムを強化し、敵意ある意図を認識する能力を向上させるためには、より先進的な訓練方法が必要です。\n\nまず、訓練の内容を充実させることが重要です。これまでの訓練は、主に理論的な知識の習得に焦点を当てていましたが、実際の現場では、迅速かつ適切な判断が求められます。したがって、訓練には、現実的なシミュレーションやシナリオを取り入れることが不可欠です。例えば、テロ対策の訓練では、実際のテロ攻撃を想定したシナリオを作成し、警備員がそのような状況下でどのように対応するかを練習させる必要があります。\n\nさらに、技術的な支援も重要です。例えば、AIを活用した訓練システムを導入することで、警備員が敵意ある意図をより迅速かつ正確に認識できるように支援できます。AIを使用することで、訓練の効果を最大化し、警備員の能力を向上させることができます。\n\n最後に、定期的な評価とフィードバックが不可欠です。訓練の効果を評価し、必要に応じて訓練プログラムを改善することで、警備員の能力を継続的に向上させることができます。定期的な評価を行うことで、警備員の強みと弱みを特定し、個々のニーズに合わせた訓練を提供することが可能になります。\n\nまとめると、警備員が敵意ある意図を認識する能力を向上させるためには、先進的な訓練方法の導入、技術的な支援の活用、定期的な評価とフィードバックが不可欠です。これらの取り組みを通じて、警備員の能力を最大限に引き出し、多様化・複雑化する脅威に対処することができます。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-3-commentary-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "3",
+   "textType": "commentary",
+   "title": "The Path to Peaceful Coexistence: Drones and Civil Aviation",
+   "body": "近年、ドローンの利用が急速に拡大している。ドローンは農業、物流、災害救助など様々な分野で活用されており、その可能性は無限大である。しかし、ドローンの利用が増えるにつれ、民間航空機との共存が課題となっている。特に、空域の混雑や衝突のリスクが懸念されている。このような状況を考慮し、ドローンと民間航空機が共存するためには、適切な規制の見直しが不可欠である。\n\nまず、空域の管理と調整が重要である。現在、民間航空機とドローンは別々の空域を利用しているが、将来的に、両者が共存するためには、空域の共有と調整が必要となる。このためには、空域の分類と利用ルールの明確化が不可欠である。例えば、低高度空域をドローン専用にし、高高度空域を民間航空機専用にするなどの方法が考えられる。また、空域の利用状況をリアルタイムで把握し、衝突を回避するためのシステムも必要である。\n\nさらに、ドローンの運航ルールの統一も重要である。現在、ドローンの運航ルールは国や地域によって異なり、混乱を招いている。このため、国際的な基準の策定と各国の規制の調整が必要である。例えば、ドローンの最高高度や速度制限、飛行禁止区域の設定など、基本的なルールを統一することで、安全かつ効率的な運航が可能となる。\n\n最後に、技術的な対策も不可欠である。ドローンと民間航空機の衝突を防ぐためには、衝突回避システムの導入が有効である。例えば、自動操縦システムやセンサーを搭載することで、衝突のリスクを低減できる。また、ドローンの識別と追跡システムも重要である。これにより、ドローンの位置や状態を把握し、適切な対応が可能となる。\n\n以上のように、ドローンと民間航空機が共存するためには、空域の管理と調整、運航ルールの統一、技術的な対策の三つの柱が不可欠である。これらの課題に対処することで、ドローンの利用がさらに拡大し、社会に貢献することが期待される。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dr-3-editorial-001",
@@ -900,6 +1140,54 @@
    "language": "ja",
    "script": [],
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dr-3-editorial-005",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "3",
+   "textType": "editorial",
+   "title": "ja-dr-3-commentary-004-q3",
+   "body": "共同警備の重要性が高まっている。近年、国境付近での警備活動が活発化しており、各部隊間の連携が不可欠である。共同警備は、情報共有と迅速な対応を可能にするため、効果的な警備を実現するための鍵となる。しかしながら、現状では、これらの取り組みにはまだ改善の余地がある。特に、有効な意思疎通と明確な役割分担が不足している場合、警備の効果が低下する可能性がある。このような課題に対処するためには、定期的な共同警備の打ち合わせが必要である。打ち合わせでは、各部隊の役割と責任を明確にし、情報共有の手段を確立する必要がある。また、異なる部隊間の連携を強化することが不可欠である。これにより、共同警備の効果を最大化し、国境付近の安全を確保することができる。共同警備の打ち合わせは、単に情報を伝達するだけでなく、各部隊間の相互理解を深める場でもある。異なる部隊間の連携を強化するためには、お互いの運用方法や能力を理解することが重要である。これにより、警備活動中に発生する可能性のある混乱を最小限に抑えることができる。共同警備の打ち合わせでは、シミュレーションや演習を実施することも有効である。実際の警備活動を想定した訓練を通じて、各部隊の連携を強化し、迅速かつ適切な対応を可能にする。これらの取り組みを通じて、共同警備の効果を高め、国境付近の安全を確保することができる。共同警備の打ち合わせは、定期的に実施し、継続的な改善を図ることが重要である。これにより、各部隊間の連携を強化し、効果的な警備活動を実現することができる。共同警備の重要性は今後さらに高まるだろう。各部隊間の連携を強化し、効果的な警備を実現するためには、定期的な打ち合わせと継続的な改善が不可欠である。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-3-editorial-006",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Airport Security in the Age of Drones",
+   "body": "空港のセキュリティに対するドローンの脅威は、無視できない現実です。近年、某空港においてドローン対策システムが導入されました。このシステムは、空港周辺で不審なドローンを検知し、迅速に対応し、空港のセキュリティを確保することが可能です。このようなシステムの導入は、空港のセキュリティを強化するための重要な一歩と言えます。\n\nドローンの脅威は、単に物理的な被害を与えるだけではありません。ドローンは、空港の運営に混乱を引き起こし、旅客の安全を脅かす可能性もあります。例えば、ドローンが空港周辺を飛行することで、航空機の離着陸に支障をきたすことがあります。また、ドローンが空港の施設に衝突することで、火災や爆発の危険性もあります。\n\nさらに、ドローンはテロリズムの手段としても利用される可能性があります。ドローンに爆発物を積載し、空港や航空機を標的にする攻撃が考えられます。このような脅威に対処するためには、空港のセキュリティ体制を強化することが不可欠です。\n\nしかし、ドローン対策システムの導入には、コストやプライバシーの問題も伴います。システムの導入費用は膨大であり、運用には専門的な知識と技術が必要です。また、ドローンの検知と対応にあたっては、個人のプライバシーを侵害する可能性もあります。これらの課題に対して、適切な対策を講じることが求められます。\n\n空港のセキュリティを確保するためには、ドローン対策システムの導入だけでなく、関係機関の連携と情報共有も重要です。警察、自衛隊、空港運営会社などが連携し、迅速かつ適切な対応を取ることができれば、ドローンの脅威を最小限に抑えることができます。\n\nドローンの脅威は、今後も増大する可能性があります。そのため、空港のセキュリティ体制を常に見直し、最新の技術と戦略を導入していくことが必要です。これにより、空港のセキュリティを確保し、旅客の安全を守ることができます。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-3-editorial-007",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "3",
+   "textType": "editorial",
+   "title": "Harmonizing Skies: Integrating Drones into Civil Airspace",
+   "body": "近年、ドローン技術の進歩は目覚ましく、その活用範囲は急速に拡大している。配送サービスから環境モニタリングまで、多様な分野でドローンの重要性が高まっている。しかし、ドローンの活用を促進するために、民間航空との空域調整が不可欠である。現在、民間航空とドローンの空域利用は混在しているが、安全性と効率性の観点から、明確な調整が必要である。空域管理の柔軟性を高めることで、ドローンが民間航空と調和して飛行できる空域の確保が急務である。これにより、ドローンの活用により、配送サービスの効率化や環境モニタリングの向上が期待できる。また、空域の効率的な利用により、航空交通の混雑緩和にもつながる。一方で、空域調整には課題も多い。民間航空とドローンの運航ルールの違い、通信システムの互換性、さらには安全性の確保など、解決すべき問題は山積している。これらの課題に対処するためには、政府、民間企業、関係機関の連携が不可欠である。国際的な協力も重要であり、各国の規制を調和させることで、グローバルな空域管理の在り方を模索する必要がある。今後、ドローン技術のさらに一層の進歩が期待される中で、民間航空との空域調整はますます重要な課題となる。柔軟な空域管理と安全性の確保を両立させることで、ドローンの活用を最大限に引き出し、社会に貢献することができるだろう。この取り組みは、未来の航空交通システムを形作る上で、欠かせない一歩である。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dr-3-essay-001",
@@ -1409,6 +1697,96 @@
    "verified": false
   },
   {
+   "id": "ja-dr-1-announcement-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-announcement-001",
+   "stem": "The text mentions that the meeting will be held at what time?",
+   "choices": [
+    "7:30",
+    "8:00",
+    "9:00",
+    "8:30"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the meeting will be held at 八時半 (8:30).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-announcement-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-announcement-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To inform about a change in patrol routes",
+    "To discuss new security measures",
+    "To announce a joint perimeter patrol briefing",
+    "To schedule a meeting for patrol members"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the announcement is to inform about 共同パトロールの説明会 (a joint perimeter patrol briefing).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-announcement-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-announcement-002",
+   "stem": "What is the purpose of the new system installed at Haneda Airport?",
+   "choices": [
+    "To detect and prevent drones from entering the airport airspace",
+    "To enhance the airport's Wi-Fi capabilities",
+    "To improve passenger boarding times",
+    "To monitor and control the airport's lighting systems"
+   ],
+   "answer": 0,
+   "explanation": "The text states that the purpose of the new system is \"無人機の侵入を検知し、防止するため\" (to detect and prevent drones from entering).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-announcement-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-1-announcement-002",
+   "stem": "What does \"対策システム\" mean here?",
+   "choices": [
+    "A weather monitoring device",
+    "A passenger information display",
+    "A new type of aircraft",
+    "A countermeasure system"
+   ],
+   "answer": 3,
+   "explanation": "The text mentions \"新たな対策システム\" (a new countermeasure system) which refers to the anti-drone system installed at the airport.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-announcement-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-announcement-002",
+   "stem": "What is the main point of this announcement?",
+   "choices": [
+    "The airport has installed a new system to improve passenger comfort",
+    "The airport has introduced a new method for baggage handling",
+    "The airport has upgraded its security cameras",
+    "The airport has implemented a new system to prevent drone intrusions"
+   ],
+   "answer": 3,
+   "explanation": "The main point of the announcement is that Haneda Airport has installed \"無人機対策システム\" (a counter-drone system) to \"侵入を防止するため\" (prevent intrusions).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-1-email-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1895,6 +2273,96 @@
    "verified": false
   },
   {
+   "id": "ja-dr-1-notice-006-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-notice-006",
+   "stem": "In the notice, what is the cost for defending against drones?",
+   "choices": [
+    "It is about 50,000,000 yen per month.",
+    "It is about 50,000 yen per month.",
+    "It is about 500,000 yen per month.",
+    "It is about 5,000,000 yen per month."
+   ],
+   "answer": 3,
+   "explanation": "The text states that the cost is 5,000,000 yen per month: 「毎月5,000,000円」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-notice-006-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-notice-006",
+   "stem": "What is the main idea of the notice?",
+   "choices": [
+    "To inform about a new drone delivery service.",
+    "To advertise a new type of drone.",
+    "To announce increased security measures against drones.",
+    "To explain how to fly drones safely."
+   ],
+   "answer": 2,
+   "explanation": "The text is about increasing security measures against drones, as seen in: 「ドローン対策の強化について」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-notice-006-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ja-dr-1-notice-006",
+   "stem": "What is the purpose of the notice?",
+   "choices": [
+    "To recruit new security staff.",
+    "To sell new security products.",
+    "To explain how to build drones.",
+    "To inform the public about the cost of defending against drones."
+   ],
+   "answer": 3,
+   "explanation": "The purpose is to inform about the cost of defending against drones, as stated: 「ドローン対策の費用についてお知らせします」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-notice-007-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-notice-007",
+   "stem": "The drill starts at:",
+   "choices": [
+    "10:00 pm",
+    "8:00 am",
+    "8:00 pm",
+    "6:00 pm"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the drill starts at 8:00 pm, or 夜の8時. The other times are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-notice-007-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-1-notice-007",
+   "stem": "In the text, what does 急行 mean?",
+   "choices": [
+    "Reaction",
+    "Force",
+    "Emergency",
+    "Quick"
+   ],
+   "answer": 3,
+   "explanation": "The text uses 急行部隊 to mean \"quick reaction force.\" The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-1-schedule-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1999,6 +2467,96 @@
    ],
    "answer": 2,
    "explanation": "The phrase 予約が必要 means that a reservation is required for the vaccination: 予約が必要です. It does not indicate that it is optional, not available, or expensive.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-short_message-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-short_message-002",
+   "stem": "What is the purpose of the drone survey?",
+   "choices": [
+    "To monitor the water level of the river.",
+    "To assess the damage caused by the flood.",
+    "To deliver supplies to affected areas.",
+    "To help people find their lost pets."
+   ],
+   "answer": 1,
+   "explanation": "The purpose of the drone survey is indicated by the phrase 「被害の状況を把握するため」 in the text, which means 'to grasp the situation of the damage.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-short_message-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-1-short_message-002",
+   "stem": "What does 「避難所」 mean here?",
+   "choices": [
+    "A place where people go to relax.",
+    "A center for distributing food and water.",
+    "A hospital for treating the injured.",
+    "A temporary shelter for people affected by the disaster."
+   ],
+   "answer": 3,
+   "explanation": "Here, 「避難所」 refers to 'a temporary shelter for people affected by the disaster,' as it is mentioned in the context of the drone survey after the flood.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-short_message-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-short_message-002",
+   "stem": "What is the main idea of the message?",
+   "choices": [
+    "The drone survey will help people find their lost belongings.",
+    "The drone survey aims to assess the damage and support evacuation centers after the flood.",
+    "The drone survey is part of a new regulation for drone usage.",
+    "The drone survey will monitor the water level to prevent future flooding."
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the message is that 'the drone survey aims to assess the damage and support evacuation centers after the flood,' as indicated by the phrases 「被害の状況を把握するため」 and 「避難所の支援」 in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-short_message-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-short_message-003",
+   "stem": "What is the delivery driver doing wrong?",
+   "choices": [
+    "He is not driving the right vehicle.",
+    "He is not carrying his ID.",
+    "He is not following the designated route.",
+    "He is not wearing his uniform."
+   ],
+   "answer": 1,
+   "explanation": "The text says 「運転手さんは運転免許証を持っていません」, so the driver is not carrying his ID.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-short_message-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-1-short_message-003",
+   "stem": "What does the word 「止まれ」 mean here?",
+   "choices": [
+    "Stop",
+    "Go",
+    "Wait",
+    "Turn"
+   ],
+   "answer": 0,
+   "explanation": "The text says 「警備員は「止まれ」と叫びました」. The guard is telling the driver to stop.",
    "source": "llm",
    "verified": false
   },
@@ -2701,6 +3259,168 @@
    ],
    "answer": 2,
    "explanation": "The notice gives the reason directly: 「日本の選挙管理委員会との書類のやり取りに時間がかかるため」. The consulate is actually open on Saturday the 5th, and no ballot limit or deadline tied to the consulate period is mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-event_description-001",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The exercise was canceled due to drone control problems",
+    "The exercise was conducted successfully with no issues",
+    "A drone was used to test the response to a chemical spill",
+    "A drone's control signal was jammed during an exercise"
+   ],
+   "answer": 3,
+   "explanation": "The passage describes how the drone's 控制信号 was disrupted by a 噪声源, causing it to lose contact with the ground station during an exercise. This is the central event of the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-event_description-001",
+   "stem": "What did the ground station lose contact with during the exercise?",
+   "choices": [
+    "The chemical spill site",
+    "The noise source",
+    "The emergency response team",
+    "The drone"
+   ],
+   "answer": 3,
+   "explanation": "The passage states that the ground station lost contact with the drone after its 控制信号 was interfered with by a noise source.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-001-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-2-event_description-001",
+   "stem": "In the phrase '噪声源の影響で', what does '影響' mean here?",
+   "choices": [
+    "Presence",
+    "Distance",
+    "Benefit",
+    "Influence"
+   ],
+   "answer": 3,
+   "explanation": "Here, '影響' refers to the effect or influence that the noise source had on the drone's control signal, as indicated by the disruption described in the passage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-event_description-002",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "A new drone technology was tested during the flood.",
+    "The flood caused severe damage to infrastructure and homes.",
+    "Local governments are working together to improve disaster response.",
+    "Drones were used to assess damage and plan recovery after a flood."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that drones were used to survey flood damage and help with recovery planning. This is evident from phrases like '被害状況の調査', '復旧計画の策定', and 'ドローンを活用した調査'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-event_description-002",
+   "stem": "What specific areas were surveyed by the drones?",
+   "choices": [
+    "Only infrastructure like roads and bridges were surveyed.",
+    "Only residential areas were surveyed.",
+    "Both residential areas and infrastructure were surveyed.",
+    "Areas designated by the local government were surveyed."
+   ],
+   "answer": 2,
+   "explanation": "The text states that drones surveyed '住宅地や道路、橋などのインフラ' indicating both residential areas and infrastructure.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-2-event_description-002",
+   "stem": "What does '復旧計画' mean here?",
+   "choices": [
+    "A plan to repair and restore damaged areas.",
+    "A plan to prevent future floods.",
+    "A plan to provide financial aid to affected residents.",
+    "A plan to relocate residents to safer areas."
+   ],
+   "answer": 0,
+   "explanation": "The context is about planning after the survey, so '復旧計画' refers to repairing and restoring the damaged areas, as indicated by '調査結果を基に復旧計画の策定を進める'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-event_description-003",
+   "stem": "The main idea of the passage is to",
+   "choices": [
+    "promote the use of technology in security",
+    "describe a new training program for security personnel",
+    "discuss the history of security training",
+    "explain the dangers of hostile intent"
+   ],
+   "answer": 1,
+   "explanation": "The text focuses on a new training program for security personnel, detailing its purpose, methods, and expected outcomes. It does not primarily discuss the dangers of hostile intent, the history of security training, or the promotion of technology in security.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-event_description-003",
+   "stem": "According to the text, what is the primary goal of the new training program?",
+   "choices": [
+    "to teach advanced combat techniques to security personnel",
+    "to help security personnel recognize hostile intent",
+    "to enhance communication skills among security personnel",
+    "to improve physical fitness among security personnel"
+   ],
+   "answer": 1,
+   "explanation": "The text states that the primary goal of the new training program is to help security personnel recognize hostile intent. It says: 「この新しい訓練プログラムの主な目的は、警備員が敵意のある意図を認識する能力を高めることです。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-event_description-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-2-event_description-003",
+   "stem": "In the text, what does 「敵意のある意図」mean?",
+   "choices": [
+    "hostile intent",
+    "neutral attitude",
+    "friendly behavior",
+    "positive outlook"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 「敵意のある意図」in the text refers to hostile intent. The text discusses training security personnel to recognize this specific type of intent.",
    "source": "llm",
    "verified": false
   },
@@ -3425,6 +4145,60 @@
    "verified": false
   },
   {
+   "id": "ja-dr-2-news-006-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-news-006",
+   "stem": "What is the main idea of the text?",
+   "choices": [
+    "The air base has implemented new drone detection technology.",
+    "A drone was seen near a military installation, raising security concerns.",
+    "A drone delivery service was approved for operation near the base.",
+    "Residents reported a drone flying over their homes at night."
+   ],
+   "answer": 1,
+   "explanation": "The key point is that a drone was seen near the air base, which caused concern. The text states '飛行物体が基地の周辺で目撃された' and mentions the concern about security.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-news-006-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-news-006",
+   "stem": "What time was the drone first spotted?",
+   "choices": [
+    "Evening",
+    "Afternoon",
+    "Midday",
+    "Early morning"
+   ],
+   "answer": 0,
+   "explanation": "The text specifies '夕方' when describing the time the drone was first seen.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-news-006-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-2-news-006",
+   "stem": "What does 確認する mean in this text?",
+   "choices": [
+    "To ignore",
+    "To verify",
+    "To report",
+    "To destroy"
+   ],
+   "answer": 1,
+   "explanation": "The text uses 確認する in the context of checking or verifying the nature of the flying object: '飛行物体の正体を確認するために、警備隊が現場に向かった.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-2-report-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3493,6 +4267,114 @@
    ],
    "answer": 0,
    "explanation": "活字 is printed type (by extension, reading material) and 〜離れ means drifting away from something, so 活字離れ is the trend of people reading less. The other choices take the parts too literally or are unrelated.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-report-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-report-002",
+   "stem": "What is the main point of this report?",
+   "choices": [
+    "The report discusses the dangers of drones to civil aviation and suggests a ban.",
+    "Civil aviation authorities are banning all drone operations in urban areas.",
+    "Drone operators are being asked to limit their activities to rural areas only.",
+    "Drone operations are being integrated with civil aviation to expand their use in urban areas."
+   ],
+   "answer": 3,
+   "explanation": "The main point is that drone operations are being integrated with civil aviation to expand their use in urban areas. This is supported by the text's focus on coordinating airspace and establishing safety measures for drone operations in cities, such as 「都市部におけるドローンの利用拡大」and 「安全な運用のための基準を作成すること」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-report-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-report-002",
+   "stem": "What is one of the primary concerns addressed in the report?",
+   "choices": [
+    "The cost of implementing new drone regulations.",
+    "The noise pollution caused by drones in urban areas.",
+    "The potential for drones to interfere with air traffic control systems.",
+    "The safety of drone operations in close proximity to buildings and people."
+   ],
+   "answer": 3,
+   "explanation": "One of the primary concerns is the safety of drone operations in close proximity to buildings and people. The report explicitly mentions this concern with the phrase 「建物や人々に近接した場所での安全な運用」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-report-002-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-2-report-002",
+   "stem": "What does 「調整する」mean here?",
+   "choices": [
+    "To ignore",
+    "To destroy",
+    "To coordinate",
+    "To ban"
+   ],
+   "answer": 2,
+   "explanation": "Here, 「調整する」means 'to coordinate'. The text states 「民間航空との空域の調整」 which translates to 'coordinating airspace with civil aviation', indicating that the word means to coordinate in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-report-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-report-003",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A joint defense exercise with host-nation forces",
+    "A cultural exchange program",
+    "A new military base opening",
+    "A change in military leadership"
+   ],
+   "answer": 0,
+   "explanation": "The text discusses a joint defense exercise conducted with host-nation forces, as mentioned in the sentence \"本日、自衛隊と在日米軍は、日米同盟の強化を目的とした合同防衛演習を実施しました。\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-report-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-report-003",
+   "stem": "What was one of the main objectives of the exercise?",
+   "choices": [
+    "To conduct a rescue operation",
+    "To respond to a natural disaster",
+    "To test new military equipment",
+    "To strengthen the Japan-US alliance"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the exercise aimed to strengthen the Japan-US alliance, as indicated by the phrase \"日米同盟の強化を目的とした\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-report-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-2-report-003",
+   "stem": "In the context of the report, what does \"対処\" mean?",
+   "choices": [
+    "To prevent",
+    "To celebrate",
+    "To respond to or deal with",
+    "To ignore"
+   ],
+   "answer": 2,
+   "explanation": "The text uses \"対処\" in the phrase \"緊急事態への迅速な対処能力を向上させる\" indicating that it means to respond to or deal with something, specifically emergencies in this context.",
    "source": "llm",
    "verified": false
   },
@@ -4199,6 +5081,60 @@
    "verified": false
   },
   {
+   "id": "ja-dr-3-analysis-001-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dr-3-analysis-001",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The passage argues that loitering munitions are ineffective against modern air defense systems.",
+    "The passage provides a historical overview of the development of loitering munitions.",
+    "The passage analyzes the economic impact of loitering munitions on global defense budgets.",
+    "The passage discusses the increasing threat of loitering munitions to air bases and the strategic implications for military defense."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is the first choice. The passage focuses on the threat posed by loitering munitions to air bases and the need for strategic adaptations in military defense. This is evident from the discussion of the capabilities of these weapons, their impact on air base operations, and the strategic responses required.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-analysis-001-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dr-3-analysis-001",
+   "stem": "What can be inferred about the strategic importance of air bases from the passage?",
+   "choices": [
+    "Air bases are critical assets that require enhanced protection against emerging threats.",
+    "Air bases are primarily used for training purposes and are not strategic targets.",
+    "Air bases are becoming less important due to advances in long-range missiles.",
+    "Air bases are increasingly being replaced by mobile defense systems."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is the second choice. The passage emphasizes the strategic importance of air bases by discussing the need for enhanced protection against loitering munitions. This is inferred from statements such as '航空基地は軍事戦略において重要な役割を果たしており、新たな脅威に対して強化された防御が必要である。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-analysis-001-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-3-analysis-001",
+   "stem": "In the passage, what does the phrase '戦術的適応' mean?",
+   "choices": [
+    "The economic investment in defense technologies.",
+    "The development of new types of aircraft.",
+    "The adaptation of military tactics to counter new threats.",
+    "A strategic retreat from vulnerable positions."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is the second choice. The phrase '戦術的適応' refers to the adaptation of military tactics to counter new threats. This is evident from the context where it discusses the need for strategic responses to the threat posed by loitering munitions, such as 'これらの脅威に対処するための戦術的適応が必要である。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-3-column-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4339,6 +5275,114 @@
    ],
    "answer": 2,
    "explanation": "The second paragraph says that because grants go to projects matching the state's framework, it becomes more rational (合理的) for municipalities to pick projects likely to be adopted than to design their own, and the result is uniform projects. The writer blames the system's incentives, not officials' ignorance (D); residents' demands (A) and a legal requirement (B) are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-commentary-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dr-3-commentary-002",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "The current training methods for security forces are sufficient to handle all threats.",
+    "Security forces need to improve their ability to identify hostile intent through advanced training.",
+    "Security forces should focus solely on technological solutions to identify hostile intent.",
+    "Hostile intent is easily recognizable without any specialized training."
+   ],
+   "answer": 1,
+   "explanation": "The text discusses the importance of training security forces to recognize hostile intent, focusing on the need for advanced training methods to improve their abilities. This is evident in statements like '訓練の内容を充実させ、警備員が敵意ある意図を的確に認識できるよう支援することが重要です' (It is important to enrich the content of training and support security personnel in accurately recognizing hostile intent.) and '警備員が敵意ある意図を認識する能力を向上させるためには、より先進的な訓練方法が必要です' (To improve the ability of security personnel to recognize hostile intent, more advanced training methods are necessary.).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-commentary-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-3-commentary-002",
+   "stem": "What does 「敵意ある意図」mean here?",
+   "choices": [
+    "Indifferent attitude",
+    "Hostile intent",
+    "Neutral stance",
+    "Friendly intentions"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 「敵意ある意図」 is used to describe the harmful or threatening intentions that security forces need to recognize. This is clear from the context, such as '警備員が敵意ある意図を的確に認識できるよう支援することが重要です' (It is important to support security personnel in accurately recognizing hostile intent.) and '警備員が敵意ある意図を認識する能力を向上させるためには、より先進的な訓練方法が必要です' (To improve the ability of security personnel to recognize hostile intent, more advanced training methods are necessary.).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-commentary-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "ja-dr-3-commentary-002",
+   "stem": "According to the text, what is one of the key components of effective training for recognizing hostile intent?",
+   "choices": [
+    "Frequent physical fitness tests",
+    "Memorization of security protocols",
+    "Lectures on historical security incidents",
+    "Realistic simulations and scenarios"
+   ],
+   "answer": 3,
+   "explanation": "The text emphasizes the importance of realistic simulations and scenarios in training. This is highlighted in the statement '訓練には、現実的なシミュレーションやシナリオを取り入れることが不可欠です' (Training must incorporate realistic simulations and scenarios.).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-commentary-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dr-3-commentary-003",
+   "stem": "What is the main idea of this commentary?",
+   "choices": [
+    "Drones pose an insurmountable threat to civil aviation.",
+    "Drones are not useful in Japan's airspace.",
+    "Drones and civil aviation can coexist peacefully if regulations are properly coordinated.",
+    "Civil aviation should be completely separated from drone operations."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that drones and civil aviation can coexist if regulations are properly coordinated. This is stated directly in the text: 「ドローンと民間航空機が共存するためには、適切な規制の調整が不可欠である。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-commentary-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dr-3-commentary-003",
+   "stem": "What can be inferred from the commentary about the future of drone operations in Japan?",
+   "choices": [
+    "Drones will replace civil aviation completely.",
+    "Drone operations will be banned in Japan.",
+    "Drone operations will remain separate from civil aviation.",
+    "Drone operations will likely become more integrated with civil aviation."
+   ],
+   "answer": 3,
+   "explanation": "The commentary implies that drone operations will become more integrated with civil aviation. This is suggested by the discussion of coordination and the need for shared airspace: 「将来的に、ドローンと民間航空機が共存するためには、空域の共有と調整が必要となる。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-commentary-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-3-commentary-003",
+   "stem": "What does the phrase 「適切な規制」 mean here?",
+   "choices": [
+    "Strict laws",
+    "Appropriate regulations",
+    "New policies",
+    "Lenient rules"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 「適切な規制」 refers to appropriate regulations. This is evident in the context of the discussion about the need for proper regulation to ensure safety and coordination: 「安全かつ効率的な空域の利用を実現するためには、適切な規制が必要となる。」",
    "source": "llm",
    "verified": false
   },
@@ -4609,6 +5653,168 @@
    ],
    "answer": 2,
    "explanation": "The fourth paragraph notes that membership, powers and approval standards are barely specified, raising the concern that the committee will merely ratify (追認する) government judgments. The fear is that it will be too weak, not too strict (A); B and D are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-3-editorial-005",
+   "stem": "In the passage, what does 「共同」 mean?",
+   "choices": [
+    "c. being similar",
+    "a. happening at the same time",
+    "b. working together",
+    "d. being equal"
+   ],
+   "answer": 2,
+   "explanation": "The text discusses a joint patrol briefing, where 「共同」 refers to the collaborative effort between different units. The relevant phrase is 「共同警備」, meaning 'joint perimeter patrol'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dr-3-editorial-005",
+   "stem": "What is the main point of the editorial?",
+   "choices": [
+    "d. To discuss the historical context of perimeter patrols",
+    "b. To emphasize the importance of effective communication during joint perimeter patrols",
+    "c. To argue for the increase in the frequency of joint patrols",
+    "a. To criticize the lack of preparation for joint patrols"
+   ],
+   "answer": 1,
+   "explanation": "The editorial focuses on the necessity of clear communication and coordination between units during joint perimeter patrols. This is evident in phrases like 「有効な意思疎通」 and 「連携を強化することが不可欠である」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dr-3-editorial-005",
+   "stem": "What can be inferred about the author's opinion on the current state of joint perimeter patrols?",
+   "choices": [
+    "b. The author thinks they are unnecessary and should be reduced",
+    "c. The author feels they lack sufficient coordination and communication",
+    "d. The author argues that they are too frequent and resource-intensive",
+    "a. The author believes they are well-organized and efficient"
+   ],
+   "answer": 1,
+   "explanation": "The author implies that current joint perimeter patrols suffer from inadequate coordination and communication. This is suggested by statements such as 「しかしながら、現状では、これらの取り組みにはまだ改善の余地がある」 and 「各部隊間の連携が不十分な場合、警備の効果が低下する可能性がある」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-006-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dr-3-editorial-006",
+   "stem": "What is the primary focus of this editorial?",
+   "choices": [
+    "The need for stricter regulations on drone manufacturing",
+    "The impact of drones on air traffic control systems",
+    "The potential dangers of drones to airport security",
+    "The benefits of drones for airport operations"
+   ],
+   "answer": 2,
+   "explanation": "The editorial focuses on the security risks posed by drones to airports, as indicated by the installation of a counter-drone system and the discussion of potential threats. The first sentence sets this tone: 「空港のセキュリティに対するドローンの脅威は、無視できない現実です。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-006-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dr-3-editorial-006",
+   "stem": "What can be inferred about the author's opinion on the effectiveness of the counter-drone system?",
+   "choices": [
+    "The author is skeptical about its effectiveness",
+    "The author thinks it is unnecessary",
+    "The author believes it is too expensive to be effective",
+    "The author is confident in its effectiveness"
+   ],
+   "answer": 3,
+   "explanation": "The author expresses confidence in the system's effectiveness, stating that it can 「迅速に対応し、空港のセキュリティを確保する」 and that it is a 「重要な一歩」 towards addressing drone threats.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-006-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-3-editorial-006",
+   "stem": "What does 「脅威」 mean here?",
+   "choices": [
+    "Threat",
+    "Opportunity",
+    "Distraction",
+    "Challenge"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 「脅威」 refers to the security risks or threats posed by drones to airports, as discussed throughout the editorial. The first sentence uses it in this sense: 「空港のセキュリティに対するドローンの脅威は、無視できない現実です。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-007-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dr-3-editorial-007",
+   "stem": "What is the primary focus of this editorial?",
+   "choices": [
+    "The dangers of drone technology",
+    "The integration of drones into civil airspace",
+    "The need for stricter regulations on drone manufacturers",
+    "The economic impact of drone operations"
+   ],
+   "answer": 1,
+   "explanation": "The editorial focuses on the integration of drones into civil airspace, as indicated by the phrases like 「ドローンの活用を促進するために、民間航空との空域調整が不可欠である」 and 「ドローンが民間航空と調和して飛行できる空域の確保が急務である」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-007-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dr-3-editorial-007",
+   "stem": "According to the author, what is one potential benefit of integrating drones into civil airspace?",
+   "choices": [
+    "Decreased need for pilot training",
+    "Enhanced delivery services and environmental monitoring",
+    "Reduced air traffic for commercial airlines",
+    "Increased military surveillance"
+   ],
+   "answer": 1,
+   "explanation": "The author mentions that integrating drones can lead to benefits such as enhanced delivery services and environmental monitoring, as seen in 「ドローンの活用により、配送サービスの効率化や環境モニタリングの向上が期待できる」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-3-editorial-007-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dr-3-editorial-007",
+   "stem": "What does the phrase 「空域管理の柔軟性」 refer to in this context?",
+   "choices": [
+    "The rigidity of airspace regulations",
+    "The openness of airspace to all types of aircraft",
+    "The flexibility in scheduling flights",
+    "The ability to adapt airspace management to new technologies"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 「空域管理の柔軟性」 refers to the ability to adapt airspace management to new technologies, as indicated by the context discussing the need for flexible management to accommodate drones 「ドローンの活用を促進するために、空域管理の柔軟性が求められる」.",
    "source": "llm",
    "verified": false
   },

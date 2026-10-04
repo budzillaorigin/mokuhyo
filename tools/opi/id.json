@@ -858,6 +858,138 @@
    "domain": "abstract",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "id-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Bolehkah Anda menceritakan pengalaman Anda saat bekerja dalam tim pertahanan anti-drone di pangkalan TNI-AU?",
+   "english": "\"Can you describe your experience working in the counter-drone defense team at an Indonesian Air Force base?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Apakah Anda dapat menjelaskan bagaimana Anda mengidentifikasi dan menanggapi ancaman drone yang tidak diinginkan?",
+   "english": "\"Can you narrate a past event where you identified and responded to an unauthorized drone threat?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Bolehkah Anda menggambarkan peran Anda dalam meningkatkan keamanan pangkalan TNI-AU?",
+   "english": "\"Can you describe your role in enhancing the security of an Indonesian Air Force base?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Tolong ceritakan satu kali ketika Anda harus bekerja sama dengan tim lain untuk menangani situasi keamanan.",
+   "english": "\"Can you narrate a past event where you had to collaborate with other teams to handle a security situation?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Bagaimana perbedaan antara teknologi deteksi drone yang Anda gunakan dengan teknologi yang digunakan oleh pasukan darat?",
+   "english": "\"How does the drone detection technology you use differ from that used by ground forces?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Apakah ada alasan khusus mengapa prosedur tertentu harus dilakukan dalam menghadapi ancaman drone?",
+   "english": "\"Can you explain a specific procedure used in counter-drone defense and the reasons behind it?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Bandingkan strategi keamanan pangkalan TNI-AU dengan strategi yang Anda lihat di negara lain.",
+   "english": "\"How would you compare the security strategies of the Indonesian Air Force with those of other countries?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-08",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Jelaskan langkah-langkah yang Anda ambil ketika menemukan drone yang mencurigakan di sekitar pangkalan.",
+   "english": "\"Can you explain the steps you take when you encounter a suspicious drone near the base?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Apa pendapat Anda tentang kebijakan baru yang akan diimplementasikan untuk melindungi pangkalan dari serangan drone?",
+   "english": "\"What is your opinion on the new policy aimed at protecting the base from drone attacks?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Bagaimana Anda akan merekomendasikan perubahan pada sistem pertahanan anti-drone saat ini?",
+   "english": "\"How would you recommend improving the current counter-drone defense system?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Jika Anda diberi wewenang untuk merancang kebijakan keamanan baru, apa yang akan Anda prioritaskan?",
+   "english": "\"If you were given the authority to design new security policies, what would you prioritize?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Bagaimana Anda berargumen bahwa investasi dalam teknologi anti-drone adalah penting untuk TNI-AU?",
+   "english": "\"How would you argue that investing in anti-drone technology is crucial for the Indonesian Air Force?\"",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

@@ -22,9 +22,10 @@ TOOLS = HERE.parent
 sys.path.insert(0, str(TOOLS))
 sys.path.insert(0, str(TOOLS / "items"))
 
+import review_state
+
 import langtext
 import llm
-import review_state
 
 LEVELS = ("1+", "2", "3")
 NAMES = {"ja": "Japanese", "es": "Spanish", "fr": "French", "de": "German", "pt-BR": "Brazilian Portuguese", "ru": "Russian",

@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -64,8 +65,10 @@ def failures(entries: list[dict], lang: str) -> set[str]:
         f = Path(tmp) / "p.jsonl"
         f.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows), encoding="utf-8")
         rep = Path(tmp) / "r.json"
-        subprocess.run([sys.executable, str(TOOLS / "terms" / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)],
-                       capture_output=True, check=False)
+        proc = subprocess.run([sys.executable, str(TOOLS / "terms" / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)],
+                              capture_output=True, text=True, check=False)
+        if not rep.exists():
+            raise RuntimeError(f"overlap_check produced no report (exit {proc.returncode}): {proc.stderr[-1500:]}")
         return {fd["item"] for fd in json.loads(rep.read_text(encoding="utf-8"))["findings"] if fd["verdict"] == "FAIL"}
 
 
@@ -112,6 +115,10 @@ def build(client: llm.Client, lang: str) -> dict:
                 entries.append({"id": f"{lang}-prag-{topic}-{k}", "topic": topic, "rule": e["rule"].strip(),
                                 "examples": [{k2: langtext.nfc(str(x.get(k2, "")).strip()) for k2 in ("situation", "say", "dontSay", "why")} for x in exs],
                                 "source": src, "verified": False})
+            if not entries:
+                feedback = (f"no usable entry: every 'say' and 'dontSay' must be written entirely in {NAMES[lang]} script "
+                            f"(no romanization, no English), and each entry needs a rule and examples")
+                continue
             bad = failures(entries, lang)
             if bad:
                 feedback = "it reused the field guide's wording; rewrite every sentence in different words"
@@ -122,6 +129,7 @@ def build(client: llm.Client, lang: str) -> dict:
                 break
         print(f"  {lang} {topic}: {len(done.get(topic, []))}", flush=True)
     target = HERE / f"{lang}.json"
+    done = {t: clean_entries(es, lang) for t, es in done.items()}
     entries = review_state.carry("pragmatics", lang, [e for t in TOPICS for e in done.get(t, [])],
                                  json.loads(target.read_text(encoding="utf-8"))["entries"] if target.exists() else [])
     pack = {"format": "mokuhyo-pragmatics/1", "lang": lang,
@@ -132,11 +140,42 @@ def build(client: llm.Client, lang: str) -> dict:
     return pack
 
 
+def clean_entries(entries: list[dict], lang: str) -> list[dict]:
+    """Strips parenthetical glosses and stage directions from say / dontSay ("Como vai? (How are you?)"), drops examples that
+    still read as English (code-switching, an English dontSay), and drops entries left without an example."""
+    out = []
+    for e in entries:
+        exs = []
+        for x in e["examples"]:
+            x = dict(x)
+            for k in ("say", "dontSay"):
+                x[k] = re.sub(r"\s*\([^)]*\)", "", x[k]).strip()
+            if x["say"] and x["dontSay"] and not any(langtext.reads_as_english(x[k], lang) for k in ("say", "dontSay")):
+                exs.append(x)
+        if exs:
+            out.append(dict(e, examples=exs))
+    return out
+
+
+def clean_files(langs: list[str]) -> None:
+    for lang in langs:
+        f = HERE / f"{lang}.json"
+        pack = json.loads(f.read_text(encoding="utf-8"))
+        before = sum(len(e["examples"]) for e in pack["entries"])
+        pack["entries"] = clean_entries(pack["entries"], lang)
+        f.write_text(json.dumps(pack, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        print(f"clean {lang}: {before} → {sum(len(e['examples']) for e in pack['entries'])} examples, {len(pack['entries'])} entries")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--language", default="all")
+    ap.add_argument("--clean", action="store_true", help="only clean the existing packs (no model)")
     a = ap.parse_args()
     langs = list(langtext.LANGS) if a.language == "all" else a.language.split(",")
+    if a.clean:
+        clean_files(langs)
+        return 0
     client = llm.Client.from_args()
     try:
         client.ping()

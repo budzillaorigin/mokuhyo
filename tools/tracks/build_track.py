@@ -25,7 +25,9 @@ import datetime as dt
 import json
 import random
 import re
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -105,7 +107,8 @@ def pure(text: str, lang: str, allow: set[str] = frozenset()) -> bool:
 def examples(client: llm.Client, lang: str) -> None:
     al, sd = aligned(lang), seeds()
     done = load(lang, "examples")
-    todo = [sid for sid in sd if sid in al and sid not in done]
+    # Redraft when the aligned term changed since the examples were written (C-02 verification can replace a term).
+    todo = [sid for sid in sd if sid in al and (sid not in done or done[sid].get("term", al[sid]["term"]) != al[sid]["term"])]
     if not todo:
         return
     print(f"examples {lang}: {len(todo)}", flush=True)
@@ -139,7 +142,7 @@ def examples(client: llm.Client, lang: str) -> None:
             allow = {w for w in re.findall(r"[A-Za-z]+", al[sid]["term"])}
             if not all(e["text"] and pure(e["text"], lang, allow) for e in ex):
                 continue
-            done[sid] = {"examples": ex, "collocations": [clean_text(c) for c in parts[4].split(";") if c.strip()][:4],
+            done[sid] = {"term": al[sid]["term"], "examples": ex, "collocations": [clean_text(c) for c in parts[4].split(";") if c.strip()][:4],
                          "registerNote": parts[5].strip() if parts[5].strip() not in ("-", "") else ""}
         save(lang, "examples", done)
     print(f"  {lang}: {len(done)} terms with examples")
@@ -154,29 +157,47 @@ REGDRILL_SCHEMA = {"type": "object", "properties": {"items": {"type": "array", "
     "explanation": {"type": "string"}}, "required": ["situation", "choices", "answer", "explanation"]}}}, "required": ["items"]}
 
 
+def parse_probes(text: str, lang: str) -> list[dict]:
+    """`<n> | <phase> | <ILR level> | <question> | <English>` lines; tolerates "ILR 2", "Level check", bold markup."""
+    probes = []
+    for n, p in parse_lines(text, {str(i) for i in range(1, 13)}).items():
+        if len(p) < 4:
+            continue
+        phase = "level_check" if "check" in p[0].lower() else "probe" if "probe" in p[0].lower() else ""
+        level = re.sub(r"(?i)^\s*ilr\s*", "", p[1].strip().strip("*")).strip()
+        if phase and level in ("2", "2+", "3") and pure(p[2], lang):
+            probes.append({"n": int(n), "phase": phase, "level": level, "prompt": clean_text(p[2]), "english": p[3].strip()})
+    return probes
+
+
 def extras(client: llm.Client, lang: str) -> None:
     done = load(lang, "extras")
     cat = json.loads(SCENARIOS.read_text(encoding="utf-8"))["scenarios"]
     al = aligned(lang)
     name = NAMES[lang]
-    if "openers" not in done:
-        listing = "\n".join(f'{s["id"]} | {s["situation"]} The learner is: {s["learnerRole"]}. You are: {s["partnerRole"]}.' for s in cat)
-        text = client.chat([{"role": "user", "content":
-            f"For each role-play below, write the first line the partner says to open it, in natural {name} as spoken by a "
-            f"member of {PARTNER[lang]} (or a local civilian where the role says so), at ILR level of the scenario (1+ to 3), "
-            f"ending with something the learner must answer; plus an English translation.\nOutput one line per role-play:\n"
-            f"<id> | <opening line in {name}> | <English>\n\n{listing}"}], temperature=0.6, max_tokens=2500)
-        got = {sid: {"opener": clean_text(p[0]), "english": p[1].strip() if len(p) > 1 else ""}
-               for sid, p in parse_lines(text, {s["id"] for s in cat}).items() if pure(p[0], lang)}
-        if len(got) >= 10:
-            done["openers"] = got
-            save(lang, "extras", done)
+    if len(done.get("openers", {})) < len(cat):
+        got = dict(done.get("openers", {}))
+        for _attempt in range(6):
+            todo = [s for s in cat if s["id"] not in got]
+            if not todo:
+                break
+            listing = "\n".join(f'{s["id"]} | {s["situation"]} The learner is: {s["learnerRole"]}. You are: {s["partnerRole"]}.' for s in todo)
+            text = client.chat([{"role": "user", "content":
+                f"For each role-play below, write the first line the partner says to open it, in natural {name} as spoken by a "
+                f"member of {PARTNER[lang]} (or a local civilian where the role says so), at ILR level of the scenario (1+ to 3), "
+                f"ending with something the learner must answer; plus an English translation. The opening line must be written "
+                f"entirely in {name} script: no romanization, no English words or acronyms.\nOutput one line per role-play:\n"
+                f"<id> | <opening line in {name}> | <English>\n\n{listing}"}], temperature=0.6, max_tokens=2500)
+            got.update({sid: {"opener": clean_text(p[0]), "english": p[1].strip() if len(p) > 1 else ""}
+                        for sid, p in parse_lines(text, {s["id"] for s in todo}).items() if pure(p[0], lang)})
+        done["openers"] = got  # partial sets are kept and completed on the next run
+        save(lang, "extras", done)
     dialogues = done.setdefault("dialogues", {})
     for s in cat[:8]:
         if s["id"] in dialogues:
             continue
         terms = [al[t]["term"] for t in s["terms"] if t in al]
-        for _attempt in range(2):
+        for _attempt in range(5):
             try:
                 out = client.chat_json([{"role": "system", "content": "You write ORIGINAL listening practice dialogues. Answer in JSON only."},
                     {"role": "user", "content":
@@ -184,7 +205,8 @@ def extras(client: llm.Client, lang: str) -> None:
                         f"(a US service member speaking {name}) and {s['partnerRole']} (a native speaker; {PARTNER[lang]}). "
                         f"Use these terms naturally: {', '.join(terms)}. ILR level {s['level']}. Speaker labels in {name}; voice "
                         f"female or male, different for the two speakers; each line with an English translation. Natural spoken "
-                        f"{name}, correct military register; invent names, no real units. Give a short English title."}],
+                        f"{name}, correct military register; every line written entirely in {name} script (no words in Latin letters); "
+                        f"invent names, no real units. Give a short English title."}],
                     DIALOGUE_SCHEMA, temperature=0.6, max_tokens=3500)
             except (RuntimeError, ValueError) as e:
                 if isinstance(e, llm.EndpointDown):
@@ -196,21 +218,20 @@ def extras(client: llm.Client, lang: str) -> None:
                 dialogues[s["id"]] = {"title": out.get("title", s["title"]).strip(), "lines": lines}
                 save(lang, "extras", done)
                 break
-    if "probes" not in done:
-        text = client.chat([{"role": "user", "content":
-            f"Write 12 interview questions in {name} for a practice oral proficiency interview of a military linguist, on "
-            f"counter-drone defense and base security work with {PARTNER[lang]}: 4 level checks at ILR 2 (describe, narrate a past "
-            f"event), 4 probes at ILR 2+ (compare, explain a procedure and its reasons), 4 probes at ILR 3 (support an opinion, "
-            f"hypothesize about policy). One question each, natural spoken {name}, polite register.\n"
-            f"Output one line per question:\n<n> | <phase: level_check or probe> | <ILR level> | <question in {name}> | <English>"}],
-            temperature=0.6, max_tokens=2500)
-        probes = []
-        for n, p in parse_lines(text, {str(i) for i in range(1, 13)}).items():
-            if len(p) >= 4 and p[0].strip() in ("level_check", "probe") and p[1].strip() in ("2", "2+", "3") and pure(p[2], lang):
-                probes.append({"n": int(n), "phase": p[0].strip(), "level": p[1].strip(), "prompt": clean_text(p[2]), "english": p[3].strip()})
-        if len(probes) >= 10:
-            done["probes"] = sorted(probes, key=lambda x: x["n"])
-            save(lang, "extras", done)
+    if len(done.get("probes", [])) < 10:
+        for _attempt in range(3):
+            text = client.chat([{"role": "user", "content":
+                f"Write 12 interview questions in {name} for a practice oral proficiency interview of a military linguist, on "
+                f"counter-drone defense and base security work with {PARTNER[lang]}: 4 level checks at ILR 2 (describe, narrate a past "
+                f"event), 4 probes at ILR 2+ (compare, explain a procedure and its reasons), 4 probes at ILR 3 (support an opinion, "
+                f"hypothesize about policy). One question each, natural spoken {name}, polite register, written entirely in {name} "
+                f"script.\nOutput one line per question:\n<n> | <phase: level_check or probe> | <ILR level> | <question in {name}> | <English>"}],
+                temperature=0.6, max_tokens=2500)
+            probes = parse_probes(text, lang)
+            if len(probes) >= 10:
+                done["probes"] = sorted(probes, key=lambda x: x["n"])
+                save(lang, "extras", done)
+                break
     if "register" not in done:
         sd = seeds()
         picks = [t for t in ("bd-001", "bd-004", "bd-011", "cuas-047", "c2-005", "air-008", "c2-003", "roe-001") if t in al]
@@ -307,11 +328,57 @@ def assemble(lang: str) -> dict:
              "terms": terms, "drills": drills, "scenarios": scenarios, "dialogues": dialogues,
              "sources": {sid: S.cite(sid) for sid in sorted({e["source"] for t in terms for e in t["equivalents"] if e["source"] in S.rows()}
                                                            | {t["definitionEnSource"].get("sourceId", "") for t in terms} - {""})}}
+    dropped = scrub(track, lang)
     out.write_text(json.dumps(track, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     merge_probes(lang, xt.get("probes", []))
+    if dropped:
+        print(f"  {lang}: {dropped} examples/collocations/drills dropped by the overlap check")
     print(f"assemble {lang}: {len(terms)} terms ({sum(1 for t in terms if t['examples'])} with examples) · {len(drills)} drills · "
           f"{len(scenarios)} scenarios ({sum(1 for s in scenarios if s['opener'])} with openers) · {len(dialogues)} dialogues")
     return track
+
+
+def scrub(track: dict, lang: str) -> int:
+    """Removes examples, collocations and drills whose wording fails overlap_check.py (BRIEF_PHASE8 hard rule: copied text
+    never ships). Terms themselves are designations (allow-listed where they match a source)."""
+    rows = []
+    for i, t in enumerate(track["terms"]):
+        for j, e in enumerate(t["examples"]):
+            rows.append({"id": f"ex|{i}|{j}", "lang": lang, "text": e["text"]})
+            rows.append({"id": f"ex|{i}|{j}", "lang": "en", "text": e.get("english", "")})
+        for j, c in enumerate(t["collocations"]):
+            rows.append({"id": f"co|{i}|{j}", "lang": lang, "text": c})
+    for i, d in enumerate(track["drills"]):
+        for k, v in (("prompt", d.get("prompt", "")), ("explanation", d.get("explanation", ""))):
+            rows.append({"id": f"dr|{i}", "lang": "en" if k == "explanation" else lang, "text": v})
+        for c in d.get("choices", []):
+            rows.append({"id": f"dr|{i}", "lang": lang, "text": c})
+    for i, d in enumerate(track["dialogues"]):
+        for ln in d["lines"]:
+            rows.append({"id": f"dl|{i}", "lang": lang, "text": ln["text"]})
+            rows.append({"id": f"dl|{i}", "lang": "en", "text": ln.get("english", "")})
+    with tempfile.TemporaryDirectory() as tmp:
+        f, rep = Path(tmp) / "t.jsonl", Path(tmp) / "r.json"
+        f.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows if r["text"].strip()), encoding="utf-8")
+        subprocess.run([sys.executable, str(TOOLS / "terms" / "overlap_check.py"), "check", str(f), "--fields", "text", "--json", str(rep)],
+                       capture_output=True, check=False)
+        bad = {fd["item"] for fd in json.loads(rep.read_text(encoding="utf-8"))["findings"] if fd["verdict"] == "FAIL"}
+    for key in bad:
+        kind, *ix = key.split("|")
+        if kind == "ex":
+            track["terms"][int(ix[0])]["examples"][int(ix[1])] = None
+        elif kind == "co":
+            track["terms"][int(ix[0])]["collocations"][int(ix[1])] = None
+        elif kind == "dr":
+            track["drills"][int(ix[0])] = None
+        elif kind == "dl":
+            track["dialogues"][int(ix[0])] = None
+    for t in track["terms"]:
+        t["examples"] = [e for e in t["examples"] if e is not None]
+        t["collocations"] = [c for c in t["collocations"] if c is not None]
+    track["drills"] = [d for d in track["drills"] if d is not None]
+    track["dialogues"] = [d for d in track["dialogues"] if d is not None]
+    return len(bad)
 
 
 def merge_probes(lang: str, probes: list[dict]) -> None:

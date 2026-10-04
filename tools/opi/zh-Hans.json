@@ -858,6 +858,138 @@
    "domain": "work",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "请描述无人机防御系统的基本组成部分。",
+   "english": "Please describe the basic components of a counter-drone defense system.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "请叙述您过去一次参与基地防务训练的经历。",
+   "english": "Please narrate a past experience where you participated in base defense training.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "请解释空军基地如何应对无人机威胁。",
+   "english": "Please explain how Air Force bases respond to drone threats.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "请描述您在解放军空军中担任语言专家时的典型工作日。",
+   "english": "Please describe a typical workday for you as a linguist in the PLA Air Force.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "请比较不同类型的无人机防御技术，说明它们各自的优缺点。",
+   "english": "Please compare different types of counter-drone technologies and discuss their pros and cons.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "请解释基地安全巡逻的标准流程，并说明每个步骤的重要性。",
+   "english": "Please explain the standard procedure for base security patrols and the importance of each step.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "请说明为什么多语言能力对解放军空军基地安全工作至关重要。",
+   "english": "Please explain why multilingual capabilities are crucial for PLA Air Force base security work.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-08",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "请描述无人机防御系统的部署流程，并说明每个阶段的具体要求。",
+   "english": "Please describe the deployment process of a counter-drone defense system and the specific requirements of each stage.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "请支持您对当前无人机防御策略的看法，并提出改进建议。",
+   "english": "Please support your opinion on the current counter-drone defense strategies and propose improvements.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "如果解放军空军需要制定新的基地安全政策，您会建议采取哪些措施？",
+   "english": "If the PLA Air Force needed to create new base security policies, what measures would you recommend?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "请假设解放军空军面临新型无人机威胁，您认为应该采取哪些应对措施？",
+   "english": "Please hypothesize about new types of drone threats the PLA Air Force might face and suggest countermeasures.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-Hans-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "请评估多语言团队在解放军空军基地安全工作中的作用，并说明其未来发展方向。",
+   "english": "Please evaluate the role of multilingual teams in PLA Air Force base security work and discuss future development directions.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

@@ -857,6 +857,138 @@
    "domain": "community",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Опишите, как выглядит стандартный дрон, который может представлять угрозу для военной базы.",
+   "english": "Describe what a standard drone that could pose a threat to a military base looks like.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Расскажите о случае, когда вы помогали в работе по противодействию дронам на военной базе.",
+   "english": "Narrate an event where you assisted in counter-drone operations at a military base.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Опишите, какие меры безопасности обычно принимаются для защиты военной базы от дронов.",
+   "english": "Describe the usual security measures taken to protect a military base from drones.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Расскажите о своем опыте работы с российскими военными лингвистами в рамках задач по обеспечению безопасности базы.",
+   "english": "Narrate your experience working with Russian military linguists on base security tasks.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Сравните методы обнаружения дронов, используемые ВКС, с теми, что применяются в других странах.",
+   "english": "Compare the drone detection methods used by the VKS with those used in other countries.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Объясните, почему важно использовать комбинированные методы для защиты базы от дронов.",
+   "english": "Explain why it's important to use combined methods for base protection against drones.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Расскажите о процедуре реагирования на обнаружение дрона и почему она так важна.",
+   "english": "Describe the response procedure upon drone detection and why it is so important.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-08",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Объясните, как технологии радиоподавления помогают в борьбе с дронами и какие у них могут быть ограничения.",
+   "english": "Explain how jamming technology helps in counter-drone efforts and what limitations it may have.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Какие, на ваш взгляд, лучшие стратегии для защиты военной базы от дронов, и почему?",
+   "english": "What do you think are the best strategies for protecting a military base from drones, and why?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Как вы думаете, как могут развиваться политики и технологии противодействия дронам в ближайшие 5 лет?",
+   "english": "How do you think counter-drone policies and technologies might evolve in the next 5 years?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Предположим, что у вас есть возможность внедрить новую технику для обнаружения дронов. Какую бы вы выбрали и почему?",
+   "english": "If you had the opportunity to introduce new drone detection technology, which would you choose and why?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ru-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Как вы оцениваете текущие меры по безопасности баз ВКС и что, по вашему мнению, можно улучшить?",
+   "english": "How do you evaluate the current security measures for VKS bases, and what do you think could be improved?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

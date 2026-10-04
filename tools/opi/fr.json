@@ -857,6 +857,138 @@
    "domain": "personal",
    "source": "llm",
    "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-01",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Décrivez les différents types de drones que vous avez rencontrés lors de vos missions de défense contre les drones.",
+   "english": "Describe the different types of drones you have encountered during your counter-drone defense missions.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-02",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Racontez une situation où vous avez dû identifier et neutraliser un drone menaçant une base militaire.",
+   "english": "Narrate a situation where you had to identify and neutralize a drone threatening a military base.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-03",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Expliquez comment vous utilisez les terminologies de l'OTAN en français pour décrire les systèmes de défense anti-drone.",
+   "english": "Describe how you use NATO's French terminology to describe counter-drone defense systems.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-04",
+   "phase": "level_check",
+   "level": "2",
+   "prompt": "Décrire les procédures standard que vous suivez pour assurer la sécurité d'une base aérienne.",
+   "english": "Describe the standard procedures you follow to ensure the security of an air base.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-05",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Comparez les stratégies de défense contre les drones utilisées par l'Armée de l'air et de l'espace et celles d'autres forces armées de l'OTAN.",
+   "english": "Compare the counter-drone defense strategies used by the French Air and Space Force with those of other NATO armed forces.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-06",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Expliquez la procédure pour mettre en place un système de défense contre les drones et les raisons pour lesquelles chaque étape est importante.",
+   "english": "Explain the procedure for setting up a counter-drone defense system and the reasons why each step is important.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-07",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Comment les terminologies de l'OTAN en français facilitent-elles la communication entre les forces alliées lors des opérations de sécurité des bases ?",
+   "english": "How do NATO's French terminologies facilitate communication between allied forces during base security operations?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-08",
+   "phase": "probe",
+   "level": "2+",
+   "prompt": "Décrivez les différences entre les systèmes de défense anti-drone actifs et passifs et expliquez pourquoi ils sont complémentaires.",
+   "english": "Describe the differences between active and passive counter-drone defense systems and explain why they are complementary.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-09",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Selon vous, quelle est la meilleure approche pour former les militaires aux terminologies de l'OTAN en français ? Soutenez votre opinion.",
+   "english": "In your opinion, what is the best approach to train military personnel in NATO's French terminology? Support your opinion.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-10",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Si vous deviez concevoir une nouvelle politique de sécurité des bases aériennes, quelles mesures prioriseriez-vous et pourquoi ?",
+   "english": "If you were to design a new air base security policy, which measures would you prioritize and why?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-11",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Comment imaginez-vous l'évolution des défis en matière de défense contre les drones dans les cinq prochaines années ?",
+   "english": "How do you envision the evolution of counter-drone defense challenges in the next five years?",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-cuas-probe-12",
+   "phase": "probe",
+   "level": "3",
+   "prompt": "Hypothésisez sur l'impact potentiel des nouvelles technologies, comme l'intelligence artificielle, sur les opérations de sécurité des bases militaires.",
+   "english": "Hypothesize about the potential impact of new technologies, such as artificial intelligence, on military base security operations.",
+   "domain": "military",
+   "track": "cuas-base-defense",
+   "source": "llm",
+   "verified": false
   }
  ],
  "rolePlays": [

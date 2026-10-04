@@ -4,6 +4,7 @@ set -u
 cd "$(dirname "$0")"
 step() { echo "== $(date '+%H:%M:%S') $*"; }
 step "align retry (missing proposals)"; uv run python terms/align_terms.py all
+step "align attempts 2-3: glossary retrieval and parallel editions (D-033)"; uv run python terms/align_terms.py retrieve
 step "culture cards (C-05)"; uv run --group content python culture/build_cards.py all
 step "pragmatics (C-07)"; uv run --group content python pragmatics/build_pragmatics.py --language all
 step "personas (C-08)"; uv run --group content python personas/build_personas.py --language all

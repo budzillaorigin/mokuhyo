@@ -197,6 +197,9 @@ def cmd_check(args):
         items.extend(read_items(p, fields))
     if not items:
         print('check: no text found in the given fields')
+        if args.json:  # callers read the report; an empty check still writes one
+            with open(args.json, 'w', encoding='utf-8') as f:
+                json.dump({'findings': [], 'failed': False, 'checked': 0}, f)
         return 0
 
     rows = indexable(load_sources())
@@ -266,7 +269,17 @@ def cmd_check(args):
         for a, b in longest_runs(sorted(poss), n):
             seg = u[a:b]
             run = ''.join(seg) if cm else ' '.join(seg)
-            if any(run in al for al in allow):
+            # An allowed designation may be flagged with a function word attached ("l'", "da", "ao", "the"): trim up to two
+            # short words at each end before matching (word scripts only).
+            core = seg
+            if not cm:
+                for _ in range(2):
+                    if len(core) > 1 and len(core[0]) <= 3:
+                        core = core[1:]
+                    if len(core) > 1 and len(core[-1]) <= 3:
+                        core = core[:-1]
+            core_run = ''.join(core) if cm else ' '.join(core)
+            if any(run in al or core_run in al for al in allow):
                 verdict, pd_src = 'allowed', None
             else:
                 pd_src = next((pid for pid, (spaced, packed) in pd_text.items()

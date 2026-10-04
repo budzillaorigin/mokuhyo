@@ -263,6 +263,7 @@ def confirm(langs: list[str]) -> None:
     rows = {r["id"]: r for r in seeds()}
     for lang in langs:
         prop = load(lang, "propose")
+        verified = load(lang, "verify")
         out = {}
         for sid, p in prop.items():
             r = rows.get(sid)
@@ -285,10 +286,177 @@ def confirm(langs: list[str]) -> None:
                     if hit:
                         rec.update(term=cand["term"], kind=cand["kind"], source_id=hit[0], page=hit[1], excerpt=hit[2], via="source-search")
                         break
+            got = load(lang, "retrieve").get(sid, {})
+            if not rec["source_id"] and got.get("term"):
+                rec.update(term=got["term"], source_id=got["source_id"], page=got["page"], via=got["via"], excerpt="")
+            v = verified.get(sid)
+            if rec["source_id"] and v and v["term"] == rec["term"] and not v["ok"]:
+                # The checker found the cited term is not the term for exactly this concept: no citation (D-033).
+                rec = {"term": first["term"], "kind": first["kind"], "radio_english": p["radio_english"], "source_id": "", "page": "",
+                       "excerpt": "", "via": "model", "rejected": v["term"]}
             out[sid] = rec
         save(lang, "confirm", out)
         n = sum(1 for v in out.values() if v["source_id"])
         print(f"confirm {lang}: {n}/{len(out)} terms documented in an allied source")
+
+
+# ------------------------------------------------------------------------------------------------ retrieve
+# Attempts 2 and 3 for terms the exact search did not document (D-033): the model chooses among glossary/index entries
+# retrieved by similarity (MD35-G-01 for pt-BR, AAP-06 entry pairs for fr, the white-paper index for ja), or reads
+# the parallel English and target-language pages of a bilingual white paper (ja, ko, fr) and copies the term it uses.
+# Every pick is verified to occur in the cited source page before it is recorded.
+PARALLEL = {"ja": ("ja-doj-2025-en", "ja-doj-2025-ja"), "ko": ("ko-dwp-2022-en", "ko-dwp-2022-ko"), "fr": ("fr-rns-2025-en", "fr-rns-2025-fr")}
+
+
+def fold(s: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFKD", s.lower()) if not unicodedata.combining(c))
+
+
+def sim(a: str, b: str, cjk: bool) -> float:
+    if cjk:
+        x = {a[i:i + 2] for i in range(len(a) - 1)} or {a}
+        y = {b[i:i + 2] for i in range(len(b) - 1)} or {b}
+    else:
+        x, y = set(re.findall(r"\w+", fold(a))), set(re.findall(r"\w+", fold(b)))
+    return len(x & y) / len(x | y) if x and y else 0.0
+
+
+_md35: list[tuple[str, str, str]] | None = None
+
+
+def md35_heads() -> list[tuple[str, str, str]]:
+    """(headword, printed page, definition start) of the Brazilian glossary MD35-G-01."""
+    global _md35
+    if _md35 is None:
+        flow, labels = texts("ptbr-md35-g-01")
+        _md35 = []
+        for i, page in enumerate(flow):
+            for m in re.finditer(r"(?m)^([A-ZÁÉÍÓÚÂÊÔÃÕÇÀ0-9][A-ZÁÉÍÓÚÂÊÔÃÕÇÀ0-9 ,()/\-]{2,80}?) - (\S.{10,240})", page):
+                _md35.append((m.group(1).strip(), labels[i], " ".join(m.group(2).split())))
+    return _md35
+
+
+def retrieval_options(lang: str, seed: dict, cands: list[str]) -> list[tuple[str, str, str, str]]:
+    """Up to 6 (term, source_id, page, gloss) options from the language's glossary or index."""
+    opts: list[tuple[float, str, str, str, str]] = []
+    if lang == "pt-BR":
+        for head, page, gloss in md35_heads():
+            score = max((sim(head, c, False) for c in cands), default=0)
+            if score > 0:
+                opts.append((score, head, "ptbr-md35-g-01", page, gloss[:180]))
+    elif lang == "fr":
+        en = re.sub(r"\s*\(.*?\)", "", seed["term_en"])
+        for key, (frt, page) in aap06_pairs().items():
+            score = sim(key, en, False) + max((sim(frt, c, False) for c in cands), default=0)
+            if score > 0.4:
+                opts.append((score, frt, "nato-aap-06-2019", page, f"English entry: {key}"))
+    elif lang == "ja":
+        for term, page in ja_index().items():
+            score = max((sim(term, unicodedata.normalize("NFKC", c), True) for c in cands), default=0)
+            if score > 0.2:
+                opts.append((score, term, "ja-doj-2026-ja", page, "white-paper index entry"))
+    opts.sort(key=lambda x: -x[0])
+    seen, out = set(), []
+    for _, t, sid, page, gloss in opts:
+        if t not in seen:
+            seen.add(t)
+            out.append((t, sid, page, gloss))
+        if len(out) == 6:
+            break
+    return out
+
+
+def parallel_context(lang: str, seed: dict) -> tuple[str, str, list[int]] | None:
+    """(English excerpt, target pages text, target page indexes) around the term in a bilingual white paper."""
+    en_id, tg_id = PARALLEL[lang]
+    en_flow, _ = texts(en_id)
+    tg_flow, _ = texts(tg_id)
+    name = re.sub(r"\s*\(.*?\)", "", seed["term_en"]).strip()
+    pat = re.compile(rf"(?<![\w-]){re.escape(name)}(?![\w-])", re.IGNORECASE)
+    for i, page in enumerate(en_flow):
+        m = pat.search(page)
+        if m:
+            j = round(i * len(tg_flow) / max(1, len(en_flow)))
+            idx = [k for k in range(j - 3, j + 4) if 0 <= k < len(tg_flow)]
+            en = " ".join(page[max(0, m.start() - 300):m.end() + 300].split())
+            tg = "\n".join(f"[page {k + 1}] " + " ".join(tg_flow[k].split())[:1600] for k in idx)
+            return en, tg, idx
+    return None
+
+
+def retrieve(langs: list[str]) -> None:
+    c = client()
+    seeds_by = {r["id"]: r for r in seeds()}
+    for lang in [x for x in langs if x in SEARCH]:
+        conf, prop = load(lang, "confirm"), load(lang, "propose")
+        done = load(lang, "retrieve")
+        todo = [sid for sid, k in conf.items() if not k["source_id"] and sid not in done and not k["radio_english"]]
+        if not todo:
+            continue
+        print(f"retrieve {lang}: {len(todo)} undocumented", flush=True)
+        for sid in todo:
+            seed = seeds_by[sid]
+            cands = [x["term"] for x in prop.get(sid, {}).get("candidates", [])]
+            result = {"tried": True}
+            opts = retrieval_options(lang, seed, cands)
+            if opts:
+                listing = "\n".join(f"{i + 1}. {t} — {g}" for i, (t, _, _, g) in enumerate(opts))
+                text = c.chat([{"role": "user", "content":
+                    f"US military term: {seed['term_en']} — {seed['definition_en'][:300]}\n\nEntries from a {NAMES[lang]} official source:\n"
+                    f"{listing}\n\nWhich entry is the {NAMES[lang]} term for exactly this concept (same meaning, not a broader or related "
+                    f"one)? Answer with the number only, or 0 if none."}], temperature=0.0, max_tokens=10)
+                m = re.search(r"\d+", text)
+                n = int(m.group()) if m else 0
+                if 1 <= n <= len(opts):
+                    t, src, page, _ = opts[n - 1]
+                    result.update(term=t, source_id=src, page=page, via="glossary-retrieval")
+            if "term" not in result and lang in PARALLEL:
+                ctx = parallel_context(lang, seed)
+                if ctx:
+                    en, tg, idx = ctx
+                    text = c.chat([{"role": "user", "content":
+                        f"An English government document uses the term \"{seed['term_en']}\" here:\n{en}\n\nThese pages are from the "
+                        f"{NAMES[lang]} edition of the same document:\n{tg}\n\nCopy, character for character, the {NAMES[lang]} expression "
+                        f"this edition uses for \"{seed['term_en']}\" (the term only, no sentence). If it is not there, answer NONE."}],
+                        temperature=0.0, max_tokens=40)
+                    t = text.strip().strip("\"'「」『』 .。")
+                    if t and t.upper() != "NONE" and len(t) <= 40:
+                        tg_id = PARALLEL[lang][1]
+                        flow, labels = texts(tg_id)
+                        hit = next((k for k in idx if norm(t, lang) in norm(flow[k], lang)), None)
+                        if hit is not None:
+                            result.update(term=t, source_id=tg_id, page=labels[hit], via="parallel-edition")
+            done[sid] = result
+            save(lang, "retrieve", done)
+        got = sum(1 for v in done.values() if v.get("term"))
+        print(f"  {lang}: {got} more documented", flush=True)
+
+
+# ------------------------------------------------------------------------------------------------ verify
+def verify(langs: list[str]) -> None:
+    """Checker model: is each cited term the target-language term for exactly this concept? (D-033, after review found
+    glossary-retrieval picks of related but different entries.) Rejections lose their citation in confirm."""
+    c = client()
+    rows = {r["id"]: r for r in seeds()}
+    for lang in langs:
+        conf, done = load(lang, "confirm"), load(lang, "verify")
+        todo = [sid for sid, k in conf.items() if k["source_id"] and done.get(sid, {}).get("term") != k["term"]]
+        if not todo:
+            continue
+        print(f"verify {lang}: {len(todo)}", flush=True)
+        for batch in batches(todo, 10):
+            listing = "\n".join(f"{sid} | {rows[sid]['term_en']} — {rows[sid]['definition_en'][:220]} | {conf[sid]['term']}" for sid in batch)
+            text = c.chat([{"role": "user", "content":
+                f"For each line: a US military term with its definition, then a proposed {NAMES[lang]} term. Answer yes only if the "
+                f"{NAMES[lang]} term is a correct, complete {NAMES[lang]} term for exactly this concept (not a broader, narrower or merely "
+                f"related concept, not a different term, not mixed with English). Otherwise no.\nOutput one line per item:\n"
+                f"<id> | <yes or no> | <reason in a few English words>\n\n{listing}"}],
+                temperature=0.0, max_tokens=3000, model=c.fallback, extra={"reasoning_effort": "low"})
+            for sid, parts in parse_lines(text, set(batch)).items():
+                done[sid] = {"term": conf[sid]["term"], "ok": parts[0].strip().lower().startswith("yes"),
+                             "reason": parts[1].strip() if len(parts) > 1 else "", "model": c.fallback}
+            save(lang, "verify", done)
+        print(f"  {lang}: {sum(1 for sid in todo if done.get(sid, {}).get('ok') is False)} of {len(todo)} rejected", flush=True)
 
 
 # ------------------------------------------------------------------------------------------------ draft
@@ -300,7 +468,8 @@ def draft(langs: list[str], redo: dict[str, dict[str, str]] | None = None) -> No
         conf = load(lang, "confirm")
         done = load(lang, "draft")
         want = redo.get(lang, {}) if redo is not None else {}
-        todo = [sid for sid in conf if (sid not in done if redo is None else sid in want)]
+        todo = [sid for sid in conf if ((sid not in done or done[sid].get("term", conf[sid]["term"]) != conf[sid]["term"]) if redo is None
+                                        else sid in want)]
         if not todo:
             continue
         print(f"draft {lang}: {len(todo)}", flush=True)
@@ -327,7 +496,7 @@ def draft(langs: list[str], redo: dict[str, dict[str, str]] | None = None) -> No
                 definition = parts[0].strip()
                 concern = parts[1].strip() if len(parts) > 1 and parts[1].strip().lower() not in ("-", "->", "", "null", "none", "n/a") else ""
                 if definition:
-                    done[sid] = {"definition": definition, "term_concern": concern,
+                    done[sid] = {"definition": definition, "term_concern": concern, "term": conf[sid]["term"],
                                  "round": done.get(sid, {}).get("round", 0) + (1 if want else 0)}
             save(lang, "draft", done)
 
@@ -342,7 +511,8 @@ def check(langs: list[str], only: dict[str, set[str]] | None = None) -> None:
     for lang in langs:
         conf, drafts = load(lang, "confirm"), load(lang, "draft")
         done = load(lang, "check")
-        todo = [sid for sid in drafts if (sid not in done if only is None else sid in only.get(lang, set()))]
+        todo = [sid for sid in drafts if ((sid not in done or done[sid].get("definition", drafts[sid]["definition"]) != drafts[sid]["definition"])
+                                          if only is None else sid in only.get(lang, set()))]
         if not todo:
             continue
         print(f"check {lang}: {len(todo)}", flush=True)
@@ -372,7 +542,7 @@ def check(langs: list[str], only: dict[str, set[str]] | None = None) -> None:
                 match = parts[1].replace(" ", "").lower() if len(parts) > 1 else ""
                 problems = [x.strip() for x in parts[2].split(";") if x.strip() not in ("-", "->", "")] if len(parts) > 2 else []
                 done[sid] = {"verdict": verdict, "problems": problems[:4], "model": c.fallback,
-                             "term_matches_source": match != "match=no"}
+                             "term_matches_source": match != "match=no", "definition": drafts[sid]["definition"]}
             save(lang, "check", done)
 
         run_parallel(job, batches(todo, 10), workers=1)
@@ -381,6 +551,7 @@ def check(langs: list[str], only: dict[str, set[str]] | None = None) -> None:
 # ------------------------------------------------------------------------------------------------ overlap
 def overlap(langs: list[str]) -> dict[str, set[str]]:
     failing: dict[str, set[str]] = {}
+    phrases: dict[str, dict[str, str]] = {}
     with tempfile.TemporaryDirectory() as tmp:
         f = Path(tmp) / "defs.jsonl"
         lines = []
@@ -395,10 +566,30 @@ def overlap(langs: list[str]) -> dict[str, set[str]]:
             if fd["verdict"] == "FAIL":
                 sid, lang = fd["item"].split("|")
                 failing.setdefault(lang, set()).add(sid)
+                phrases.setdefault(lang, {})[sid] = fd.get("run", "")
     for lang in langs:
-        save(lang, "overlap", {"failing": sorted(failing.get(lang, set()))})
+        save(lang, "overlap", {"failing": sorted(failing.get(lang, set())), "phrases": phrases.get(lang, {})})
     print("overlap: " + ", ".join(f"{lg} {len(failing.get(lg, ()))}" for lg in langs) + " failing")
     return failing
+
+
+def overlap_feedback(lang: str, sid: str) -> str:
+    phrase = load(lang, "overlap").get("phrases", {}).get(sid, "")
+    return ("Your earlier wording was too close to a published text" + (f" (it shared the run \"{phrase}\")" if phrase else "") +
+            ". Use entirely different wording and sentence structure: change the verb, reorder the clauses, and do not reuse "
+            "that run of words.")
+
+
+def fix_overlap(langs: list[str], rounds: int = 3) -> None:
+    """Targeted redraft of the definitions that still fail overlap_check, naming the shared run of words."""
+    failing = overlap(langs)
+    for _round in range(rounds):
+        redo = {lg: {sid: overlap_feedback(lg, sid) for sid in ids} for lg, ids in failing.items() if ids}
+        if not redo:
+            break
+        draft(list(redo), redo)
+        check(list(redo), {lg: set(v) for lg, v in redo.items()})
+        failing = overlap(langs)
 
 
 # ------------------------------------------------------------------------------------------------ write
@@ -434,21 +625,28 @@ def write(langs_done: list[str]) -> None:
             verdict = ck.get("verdict", "")
             ok = verdict == "pass" and sid not in bad
             notes = list(notes_pre)
+            if k.get("rejected"):
+                notes.append(f"allied-source term '{k['rejected']}' rejected by the checker as not this exact concept")
             if k["via"] == "aap06-pair" and k["source_id"]:
                 notes.append("term from the AAP-06 English/French entry pair")
+            elif k["via"] == "glossary-retrieval" and k["source_id"]:
+                notes.append("term chosen from the source's glossary/index entries")
+            elif k["via"] == "parallel-edition" and k["source_id"]:
+                notes.append("term read from the parallel edition of the white paper")
             if d.get("term_concern"):
                 notes.append("TERM-CONCERN: " + d["term_concern"])
             if verdict and verdict != "pass":
                 notes.append(f"check {verdict}: " + "; ".join(ck.get("problems", [])))
             if sid in bad:
-                notes.append("overlap: wording too close to a restricted source; needs redraft")
+                notes.append("overlap: drafted wording too close to a restricted source, withheld; needs a human redraft")
             if lang in HUMAN and not k["source_id"]:
                 notes.append("human look-up queued (" + ", ".join(HUMAN[lang]) + ")")
                 queue.append({"seed_id": sid, "lang": lang, "term_en": r["term_en"], "proposed_term": k["term"],
                               "sources": " ".join(HUMAN[lang]), "found_term": "", "page": "", "reviewer": ""})
             existing[(sid, lang)] = {
                 "seed_id": sid, "lang": lang, "term": k["term"], "term_kind": k["kind"], "radio_english": "yes" if k["radio_english"] else "",
-                "term_source_id": k["source_id"], "term_source_page": k["page"], "definition": d["definition"],
+                # Wording that still fails the overlap gate is never written (BRIEF_PHASE8 hard rule): the row ships without it.
+                "term_source_id": k["source_id"], "term_source_page": k["page"], "definition": "" if sid in bad else d["definition"],
                 "status": "checked" if ok else "draft", "badge": "unreviewed" if k["source_id"] else "unconfirmed-term",
                 "approvedBy": "", "notes": " | ".join(notes), "accuracy": verdict or "unchecked", "drafted_by": model,
                 "checked_by": ck.get("model", ""),
@@ -479,7 +677,7 @@ def summary(out: list[dict]) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["propose", "confirm", "draft", "check", "overlap", "write", "all"])
+    ap.add_argument("stage", choices=["propose", "confirm", "retrieve", "draft", "check", "overlap", "fixoverlap", "verify", "write", "all"])
     ap.add_argument("--language", default="all")
     ap.add_argument("--limit", type=int)
     a = ap.parse_args()
@@ -501,7 +699,7 @@ def main() -> int:
                     for lang in langs:
                         ck = load(lang, "check")
                         for sid in failing.get(lang, set()):
-                            redo.setdefault(lang, {})[sid] = "Your earlier wording was too close to a published text. Use entirely different wording and sentence structure."
+                            redo.setdefault(lang, {})[sid] = overlap_feedback(lang, sid)
                         for sid, v in ck.items():
                             if v["verdict"] == "fix":
                                 redo.setdefault(lang, {})[sid] = "Fix: " + "; ".join(v["problems"])
@@ -510,6 +708,23 @@ def main() -> int:
                     draft(langs, redo)
                     check(langs, {lg: set(v) for lg, v in redo.items()})
                     failing = overlap(langs)
+        if a.stage == "verify":
+            verify(langs)
+            confirm(langs)
+            draft(langs)  # redrafts rows whose term changed
+            check(langs)
+            fix_overlap(langs)
+            write(langs)
+        if a.stage == "fixoverlap":
+            fix_overlap(langs)
+            write(langs)
+        if a.stage == "retrieve":
+            retrieve(langs)
+            confirm(langs)
+            draft(langs)  # redrafts rows whose term changed
+            check(langs)  # re-checks rows whose definition changed
+            overlap(langs)
+            write(langs)
         if a.stage in ("write", "all"):
             write(langs)
     except llm.EndpointDown as e:

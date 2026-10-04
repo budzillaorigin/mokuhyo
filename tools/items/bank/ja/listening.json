@@ -388,6 +388,90 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ja-dl-1-announcement-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Delivery Driver Incident",
+   "body": "",
+   "script": [
+    {
+     "speaker": "施設管理者",
+     "voice": "male",
+     "text": "本日、当施設の入口で、許可なく入ろうとした配達業者がいたことを報告します。"
+    },
+    {
+     "speaker": "施設管理者",
+     "voice": "male",
+     "text": "該当する配達トラックは、ナンバープレート789-0001の白いトラックです。"
+    },
+    {
+     "speaker": "施設管理者",
+     "voice": "male",
+     "text": "今後、許可なしで入ろうとする車両は、施設内に入れないようにしてください。"
+    },
+    {
+     "speaker": "施設管理者",
+     "voice": "male",
+     "text": "ご協力をよろしくお願いします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1-announcement-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Air Defense System Upgrade Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "皆さん、集まってください。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "今から、新しい防衛策の採用について話し合います。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "具体的に何について話すのですか？"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "レーザー兵器の空中防衛への利点について議論するためです。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "了解しました。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "では、始めましょう。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -719,6 +803,95 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1-voicemail-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Drone Exercise Debrief",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "こんにちは、山田です。先日の対ドローン演習で学んだことを共有いたします。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "まず、ドローンの検知が難しいことが分かりました。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "また、ドローンへの対処方法として、妨害装置の使用が有効です。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "さらに、ドローンの操縦者との連絡も重要です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "これらのポイントを今後の演習に活かしてください。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "以上です。よろしくお願いします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-1-voicemail-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Drone Survey Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "録音",
+     "voice": "female",
+     "text": "こんにちは、これは南町の調査についてのメッセージです。"
+    },
+    {
+     "speaker": "録音",
+     "voice": "female",
+     "text": "南町の調査は終了いたしました。"
+    },
+    {
+     "speaker": "録音",
+     "voice": "female",
+     "text": "明日の朝までに報告書を提出いたします。"
+    },
+    {
+     "speaker": "録音",
+     "voice": "female",
+     "text": "何かご質問がございましたら、私までご連絡ください。"
+    },
+    {
+     "speaker": "録音",
+     "voice": "female",
+     "text": "ありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1259,6 +1432,78 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dl-2-briefing-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Airspace Coordination for Drone Deliveries",
+   "body": "",
+   "script": [
+    {
+     "speaker": "管制官",
+     "voice": "male",
+     "text": "皆さん、今日はドローン配達の空域調整について話し合います。"
+    },
+    {
+     "speaker": "管制官",
+     "voice": "male",
+     "text": "現在、医療品や食品の配達にドローンを利用する計画が進んでいます。"
+    },
+    {
+     "speaker": "管制官",
+     "voice": "male",
+     "text": "夜間に配達を行うため、航空機との共用空域を確保する必要があります。"
+    },
+    {
+     "speaker": "配送会社代表",
+     "voice": "female",
+     "text": "はい、その通りです。安全に配達できるために、空域の調整は欠かせません。"
+    },
+    {
+     "speaker": "管制官",
+     "voice": "male",
+     "text": "具体的には、航空機の飛行経路を考慮し、ドローンの飛行ルートを決定します。"
+    },
+    {
+     "speaker": "管制官",
+     "voice": "male",
+     "text": "また、ドローンの高度や速度も制限する必要があります。"
+    },
+    {
+     "speaker": "配送会社代表",
+     "voice": "female",
+     "text": "はい、承知しました。安全な配達のために、ルートと高度の制限を厳守します。"
+    },
+    {
+     "speaker": "管制官",
+     "voice": "male",
+     "text": "さらに、緊急時の対応についても話し合う必要があります。"
+    },
+    {
+     "speaker": "配送会社代表",
+     "voice": "female",
+     "text": "はい、ドローンの故障や天候の急変など、様々な事態に備えておきます。"
+    },
+    {
+     "speaker": "管制官",
+     "voice": "male",
+     "text": "これで、ドローン配達の空域調整についての話し合いを終わります。"
+    },
+    {
+     "speaker": "配送会社代表",
+     "voice": "female",
+     "text": "はい、協力ありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-2-broadcast-001",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -1458,6 +1703,284 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2-conversation-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Diplomatic Tensions and Military Readiness",
+   "body": "",
+   "script": [
+    {
+     "speaker": "防衛省の男性職員",
+     "voice": "male",
+     "text": "最近の外交的な緊張が、我々の軍事演習に与える影響について話し合う必要があります。"
+    },
+    {
+     "speaker": "防衛省の女性職員",
+     "voice": "female",
+     "text": "確かに、その必要がありますね。特に、近隣諸国との関係が悪化している現在、慎重に対応する必要があります。"
+    },
+    {
+     "speaker": "防衛省の男性職員",
+     "voice": "male",
+     "text": "はい。そのためには、現在の国際情勢を考慮して、演習計画を見直す必要があります。"
+    },
+    {
+     "speaker": "防衛省の女性職員",
+     "voice": "female",
+     "text": "同意します。状況に応じて適切に対応することが重要です。"
+    },
+    {
+     "speaker": "防衛省の男性職員",
+     "voice": "male",
+     "text": "例えば、大規模な演習を中止するか、規模を縮小することも考えられます。"
+    },
+    {
+     "speaker": "防衛省の女性職員",
+     "voice": "female",
+     "text": "はい。また、他国との軍事協力を強化することも一つの方法かもしれません。"
+    },
+    {
+     "speaker": "防衛省の男性職員",
+     "voice": "male",
+     "text": "しかし、それは外交的な問題をさらに悪化させる可能性があります。"
+    },
+    {
+     "speaker": "防衛省の女性職員",
+     "voice": "female",
+     "text": "確かに、そのリスクは考慮する必要があります。"
+    },
+    {
+     "speaker": "防衛省の男性職員",
+     "voice": "male",
+     "text": "では、まずは演習計画の見直しから始めましょう。"
+    },
+    {
+     "speaker": "防衛省の女性職員",
+     "voice": "female",
+     "text": "了解しました。そのように進めましょう。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2-conversation-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Air Base Expansion Discussion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "皆さん、今日は空自基地の拡張計画について話し合いましょう。"
+    },
+    {
+     "speaker": "佐藤",
+     "voice": "female",
+     "text": "はい、田中さん。拡張計画の影響について心配しています。"
+    },
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "確かに、その点は考慮しなければなりません。しかし、基地の機能を維持するためには必要な措置です。"
+    },
+    {
+     "speaker": "鈴木",
+     "voice": "male",
+     "text": "了解しました。ただし、スケジュールについて教えてください。"
+    },
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "拡張工事は来年から始まり、約2年かかります。"
+    },
+    {
+     "speaker": "佐藤",
+     "voice": "female",
+     "text": "そんなに時間がかかるのですか。周辺住民への影響が心配です。"
+    },
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "ご心配ありがとうございます。住民の皆さんと協力して、影響を最小限に抑えるよう努めます。"
+    },
+    {
+     "speaker": "鈴木",
+     "voice": "male",
+     "text": "ぜひお願いします。"
+    },
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "はい、検討してみます。"
+    },
+    {
+     "speaker": "佐藤",
+     "voice": "female",
+     "text": "ありがとうございます。"
+    },
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "それでは、今日の会議はこれで終わりにしましょう。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2-conversation-006",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "conversation",
+   "title": "Planning for the Annual Air Exercise",
+   "body": "",
+   "script": [
+    {
+     "speaker": "田中 少佐",
+     "voice": "male",
+     "text": "佐藤 団長、今年の年次航空訓練の計画会議についてご相談があります。"
+    },
+    {
+     "speaker": "佐藤 団長",
+     "voice": "female",
+     "text": "ああ、田中少佐。いつが良いかな？"
+    },
+    {
+     "speaker": "田中 少佐",
+     "voice": "male",
+     "text": "申し訳ありませんが、他の任務が重なってしまい、十分な準備ができそうにありません。少し延期してもらえますか？"
+    },
+    {
+     "speaker": "佐藤 団長",
+     "voice": "female",
+     "text": "そうだね。では、来週の同じ時間でどうかな？"
+    },
+    {
+     "speaker": "田中 少佐",
+     "voice": "male",
+     "text": "はい、了解しました。その方が準備もできますので助かります。"
+    },
+    {
+     "speaker": "佐藤 団長",
+     "voice": "female",
+     "text": "この状況では、早めに計画を立てておくことが大切だ。"
+    },
+    {
+     "speaker": "田中 少佐",
+     "voice": "male",
+     "text": "はい、そのとおりです。"
+    },
+    {
+     "speaker": "佐藤 団長",
+     "voice": "female",
+     "text": "防衛省の方にも意見を伺うことで、より良い計画が立てられると思います。"
+    },
+    {
+     "speaker": "田中 少佐",
+     "voice": "male",
+     "text": "確かに、その方が良いでしょう。手配しておきます。"
+    },
+    {
+     "speaker": "佐藤 団長",
+     "voice": "female",
+     "text": "よろしく頼む。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2-conversation-007",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "conversation",
+   "title": "A Meal with JASDF Counterparts",
+   "body": "",
+   "script": [
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "皆さん、こんにちは。本日は自衛隊の空幕の皆様と共に食事ができることを光栄に思います。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "はい、ありがとうございます。こちらこそ、お招きいただきありがとうございます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "まずは、お箸の使い方に気をつけてください。これは日本の食事のマナーです。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "はい、承知しました。気をつけます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "では、いただきましょう。この料理は私の地元の名物です。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "美味しそうに見えます。ありがとうございます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "あの、少しお腹がいっぱいになってきました。もう一杯いただけますか？"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "もちろんです。お茶をお持ちしますね。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "ありがとうございます。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "少し休憩しましょうか？"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "はい、お願いします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1774,6 +2297,177 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ja-dl-2-news-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "news",
+   "title": "Nighttime Rapid Response Exercise Conducted by Fire Department",
+   "body": "",
+   "script": [
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "今夜、地域の消防署が近くの森で迅速な対応の訓練を実施しました。"
+    },
+    {
+     "speaker": "消防士1",
+     "voice": "male",
+     "text": "今夜の訓練は、夜間の迅速な対応を練習するために行われました。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "訓練では、消防士たちが仮想の緊急事態に対応する様子が見られました。"
+    },
+    {
+     "speaker": "消防士2",
+     "voice": "female",
+     "text": "まず、我々は森の中で火災が発生したと仮定し、迅速に現場に向かいました。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "消防士たちは、消火器具を使用し、火を消す訓練を行いました。"
+    },
+    {
+     "speaker": "消防士1",
+     "voice": "male",
+     "text": "夜間の作業は難しいですが、我々は適切に対応することができました。"
+    },
+    {
+     "speaker": "アナウンサー",
+     "voice": "female",
+     "text": "この訓練を通じて、消防署は夜間の迅速な対応能力を向上させることを目指しています。"
+    },
+    {
+     "speaker": "消防士2",
+     "voice": "female",
+     "text": "地域の安全のために、今後もこのような訓練を継続していきます。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2-news-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "news",
+   "title": "Post-Rocket Alarm Reconnaissance Report",
+   "body": "",
+   "script": [
+    {
+     "speaker": "報道官",
+     "voice": "female",
+     "text": "皆様、こんにちは。私は防衛省の報道官です。本日午前10時に発生したロケット警報後の調査活動について報告いたします。"
+    },
+    {
+     "speaker": "偵察隊員",
+     "voice": "male",
+     "text": "調査チームは警報解除後に直ちに活動を開始しました。まず、負傷者の確認を行い、幸いにも重傷者は確認されませんでした。"
+    },
+    {
+     "speaker": "自治体職員",
+     "voice": "female",
+     "text": "自治体の職員たちが迅速に対応し、住民の避難誘導を行いました。主要な建物の被害も最小限に抑えることができました。"
+    },
+    {
+     "speaker": "偵察隊員",
+     "voice": "male",
+     "text": "電力供給も早く復旧され、通信網もすぐに回復しました。市民の皆様には、冷静に対応していただきありがとうございます。"
+    },
+    {
+     "speaker": "報道官",
+     "voice": "female",
+     "text": "以上が、本日の調査活動の報告です。引き続き、市民の安全確保に努めてまいります。ご清聴ありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2-report-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2",
+   "textType": "report",
+   "title": "Drone Integration Task Force Meeting",
+   "body": "",
+   "script": [
+    {
+     "speaker": "委員長",
+     "voice": "male",
+     "text": "こんにちは、皆様。本日の会議を始めます。今日はドローンの運用と民間航空との連携について議論いたします。"
+    },
+    {
+     "speaker": "委員A",
+     "voice": "female",
+     "text": "はい、委員長。まず、空域の管理と調整について検討する必要があります。"
+    },
+    {
+     "speaker": "委員B",
+     "voice": "male",
+     "text": "同意します。特に、ドローンの安全な運用のために、国の空域をどのように活用するかが重要です。"
+    },
+    {
+     "speaker": "委員長",
+     "voice": "male",
+     "text": "その通りです。皆様からのご意見を伺いながら、具体的な計画を立てていきましょう。"
+    },
+    {
+     "speaker": "委員C",
+     "voice": "female",
+     "text": "では、私はドローンの運用時間帯について提案があります。"
+    },
+    {
+     "speaker": "委員長",
+     "voice": "male",
+     "text": "お願いします。"
+    },
+    {
+     "speaker": "委員C",
+     "voice": "female",
+     "text": "夜間の運用を増やすことで、昼間の混雑を軽減できると考えます。"
+    },
+    {
+     "speaker": "委員B",
+     "voice": "male",
+     "text": "良い提案ですね。ただし、夜間運用には照明や通信の確保が必要です。"
+    },
+    {
+     "speaker": "委員長",
+     "voice": "male",
+     "text": "確かに、安全対策は欠かせません。他にご意見はありますか。"
+    },
+    {
+     "speaker": "委員A",
+     "voice": "female",
+     "text": "はい、私はドローンの航路の最適化について検討します。"
+    },
+    {
+     "speaker": "委員長",
+     "voice": "male",
+     "text": "良い点です。それでは、本日の議題はこれで終わります。次回は具体的な計画を検討しましょう。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-2p-broadcast-001",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -1840,6 +2534,242 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-2p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "Air Force Equipment Procurement Talks",
+   "body": "",
+   "script": [
+    {
+     "speaker": "米空軍代表",
+     "voice": "male",
+     "text": "こんにちは、航空幕僚監部装備部のマイヤーズです。本日は新型早期警戒レーダーシステムの共同調達についてご説明いたします。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "こんにちは、航空幕僚監部装備部の佐藤です。よろしくお願いいたします。"
+    },
+    {
+     "speaker": "米空軍代表",
+     "voice": "male",
+     "text": "当該システムは、我が国の最新技術を駆使したもので、高い性能と信頼性を有しております。共同調達により、コストを削減し、効率的に運用できるものと存じます。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "確かに、そのようなシステムは魅力的です。しかし、そのシステムは我が国の現在の装備と互換性があるのか、その点が気掛かりです。"
+    },
+    {
+     "speaker": "米空軍代表",
+     "voice": "male",
+     "text": "その点については、当方の技術チームが協力し、互換性を確保するためのソリューションを提供できるものと存じます。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "それは助かります。ただし、予算の制約もあり、慎重に検討する必要があります。"
+    },
+    {
+     "speaker": "米空軍代表",
+     "voice": "male",
+     "text": "もちろんでございます。予算についても、柔軟に対応できるよう努力いたします。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "ありがとうございます。今後の協力について検討いたしたいと思います。"
+    },
+    {
+     "speaker": "米空軍代表",
+     "voice": "male",
+     "text": "よろしくお願いいたします。何かご質問があれば、いつでもお知らせください。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "はい、ありがとうございます。今後のご連絡を楽しみにしております。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2p-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "The Annual Security Review Meeting",
+   "body": "",
+   "script": [
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "こんにちは、山本さん。お忙しいところ申し訳ありませんが、ぜひご協力をお願いします。"
+    },
+    {
+     "speaker": "自衛隊の山本さん",
+     "voice": "female",
+     "text": "こんにちは、田中さん。何かお手伝いできることがあれば、喜んで協力します。"
+    },
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "実は、今年の安全保障レビューについて相談があってですね。"
+    },
+    {
+     "speaker": "自衛隊の山本さん",
+     "voice": "female",
+     "text": "ああ、それは大事なことですね。何か具体的にご相談がありますか？"
+    },
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "はい。予算配分の件で、少し悩んでいるんです。"
+    },
+    {
+     "speaker": "自衛隊の山本さん",
+     "voice": "female",
+     "text": "予算配分ですか。確かに、毎年難しい問題ですね。"
+    },
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "特に、新しい装備の購入と既存の維持管理のバランスを取るのが難しいんです。"
+    },
+    {
+     "speaker": "自衛隊の山本さん",
+     "voice": "female",
+     "text": "確かに、そのバランスは大切です。"
+    },
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "それについて、山本さんのご意見を伺いたいと思いまして。"
+    },
+    {
+     "speaker": "自衛隊の山本さん",
+     "voice": "female",
+     "text": "それは光栄です。できるだけ協力させていただきます。"
+    },
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "ありがとうございます。では、具体的な数字をもとに話し合いましょう。"
+    },
+    {
+     "speaker": "自衛隊の山本さん",
+     "voice": "female",
+     "text": "了解しました。この件は、より慎重な検討が必要だと思います。"
+    },
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "はい、同感です。今後の課題として、より効果的な予算配分を考える必要があります。"
+    },
+    {
+     "speaker": "自衛隊の山本さん",
+     "voice": "female",
+     "text": "そうですね。協力して、良い結果を出せるように頑張りましょう。"
+    },
+    {
+     "speaker": "防衛省の田中さん",
+     "voice": "male",
+     "text": "はい、よろしくお願いします。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2p-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "Adjustments to Flight Training Procedures",
+   "body": "",
+   "script": [
+    {
+     "speaker": "アメリカ空軍代表",
+     "voice": "male",
+     "text": "こんにちは、皆さん。今日は飛行訓練の手順について話し合いたいと思います。新しい手順を提案したいのですが、どう思いますか。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "こんにちは。新しい手順について詳しく教えてください。現在の手順とどう違いますか。"
+    },
+    {
+     "speaker": "アメリカ空軍代表",
+     "voice": "male",
+     "text": "新しい手順は、訓練の効率を高め、安全性を向上させることを目的としています。特に、シミュレーター訓練の頻度を増やし、実機訓練の前により多くのシナリオを体験できるようにします。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "それは興味深い提案ですね。しかし、現在の手順も効果的です。新しい手順を導入するためには、慎重に進める必要があります。"
+    },
+    {
+     "speaker": "アメリカ空軍代表",
+     "voice": "male",
+     "text": "確かに、慎重な計画が必要です。まずは小規模なテストを実施し、その結果を評価することから始めると思います。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "同意します。小規模なテストを実施し、データを収集することで、新しい手順の効果を確認できます。また、パイロットの意見も聞く必要があります。"
+    },
+    {
+     "speaker": "アメリカ空軍代表",
+     "voice": "male",
+     "text": "その通りです。パイロットのフィードバックを受けながら、手順を調整していくことが重要です。これにより、より効果的な訓練プログラムを作成できると思います。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "飛行訓練の手順を変更することは有益だと思いますが、慎重な計画が必要です。小規模なテストを実施し、パイロットの意見を反映させながら、徐々に新しい手順を導入していくべきだと思います。"
+    },
+    {
+     "speaker": "アメリカ空軍代表",
+     "voice": "male",
+     "text": "ありがとうございます。その提案に同意します。慎重に計画を進め、効果的な飛行訓練プログラムを作成していきましょう。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "はい、そのようにしましょう。協力して、より良い訓練プログラムを作成できると確信しています。"
+    },
+    {
+     "speaker": "アメリカ空軍代表",
+     "voice": "male",
+     "text": "では、次回の会議で具体的な計画を議論しましょう。今日はありがとうございました。"
+    },
+    {
+     "speaker": "航空自衛隊代表",
+     "voice": "female",
+     "text": "ありがとうございました。次回も楽しみにしています。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-2p-discussion-001",
@@ -2092,6 +3022,58 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-2p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "2+",
+   "textType": "interview",
+   "title": "A Base Commander's Engagement with the Local Community",
+   "body": "",
+   "script": [
+    {
+     "speaker": "インタビュアー",
+     "voice": "male",
+     "text": "今日は防衛省の基地司令官にお話を伺います。まず、基地の地域社会への貢献についてお聞かせください。"
+    },
+    {
+     "speaker": "司令官",
+     "voice": "female",
+     "text": "もちろんです。私たちの基地は地域社会との連携を非常に重要視しています。例えば、地元の学校と協力して防災訓練を行ったり、地域のイベントに参加したりしています。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "male",
+     "text": "それは素晴らしいことですね。しかし、地域の方々からの不安の声もあります。例えば、騒音や交通の混雑などの問題です。これらの課題についてはいかがお考えですか。"
+    },
+    {
+     "speaker": "司令官",
+     "voice": "female",
+     "text": "確かに、それらの課題は私たちも認識しています。私たちは地域の安全と福祉を第一に考えます。例えば、騒音対策として新しい技術を導入したり、交通混雑を軽減するためのルートを工夫したりしています。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "male",
+     "text": "具体的な取り組みですね。今後もこうした努力を続けていただけるでしょうか。"
+    },
+    {
+     "speaker": "司令官",
+     "voice": "female",
+     "text": "はい、もちろんです。私たちも地域の方々と一緒に、この課題に取り組んでいきたいと思います。地域社会との協力を通じて、より良い関係を築いていきたいと考えています。"
+    },
+    {
+     "speaker": "インタビュアー",
+     "voice": "male",
+     "text": "ありがとうございます。今後の活動に期待しています。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2525,6 +3507,140 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ja-dl-3-debate-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "debate",
+   "title": "Balancing the Skies: Integrating Drones into Civil Airspace",
+   "body": "",
+   "script": [
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "それでは、ドローンの民間航空との共用空域の調整についての議論を始めましょう。まず、航空局の山田さんから意見を聞きましょう。"
+    },
+    {
+     "speaker": "山田",
+     "voice": "male",
+     "text": "ありがとうございます。現在、日本の空域は民間航空と軍用の両方に利用されています。しかし、ドローンの利用が増加するにつれて、その調整が必要になってきています。現在の規制の欠如は、安全上の懸念を引き起こしています。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "次に、ドローンメーカーの佐藤さんからご意見をお願いします。"
+    },
+    {
+     "speaker": "佐藤",
+     "voice": "male",
+     "text": "はい、確かに、ドローンの利用は増加しています。しかし、私たちメーカーとしては、適切な規制と標準化が必要だと思います。これにより、安全な共用空域の利用が可能になります。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "航空自衛隊の田中さん、ご意見はどうですか？"
+    },
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "航空自衛隊としても、ドローンの利用の増加は認めています。しかし、安全確保のために、軍用空域と民間空域の明確な区分けが必要だと思います。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "ありがとうございます。それでは、この議論をさらに深めるために、パネルの皆さんで意見を交換してください。"
+    },
+    {
+     "speaker": "山田",
+     "voice": "male",
+     "text": "はい、私たち航空局としては、ドローンの利用を増やすことで、経済的な成長も期待できます。しかし、そのためには安全確保が最優先です。"
+    },
+    {
+     "speaker": "佐藤",
+     "voice": "male",
+     "text": "その通りです。私たちメーカーも、安全確保に努めることはもちろん、利用者向けの教育も重要だと考えています。"
+    },
+    {
+     "speaker": "田中",
+     "voice": "male",
+     "text": "確かに、教育も重要ですが、技術的な解決策も必要です。例えば、ドローンの自動操縦システムの改善などが考えられます。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "今日は、ドローンの民間航空との共用空域の調整について、有意義な議論をありがとうございました。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-3-debate-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Rising Threat: Drones and Base Defense Costs",
+   "body": "",
+   "script": [
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "今日は、安価なドローンによる基地防衛のコストについて議論いたします。まず、防衛大臣からご意見をお聞きしましょう。"
+    },
+    {
+     "speaker": "防衛大臣",
+     "voice": "male",
+     "text": "安価なドローンへの対応のための費用が膨大になっています。基地防衛の費用が増加することが懸念されます。この問題にどう対処すればよいでしょうか。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "次に、国防大学の教授からご意見をお聞かせください。"
+    },
+    {
+     "speaker": "教授",
+     "voice": "male",
+     "text": "確かに、ドローンの脅威は無視できません。しかし、過度な防衛費の増加は国の財政を圧迫します。バランスの取れた対策が必要です。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "次に、民間の安全保障専門家からご意見をお聞きしましょう。"
+    },
+    {
+     "speaker": "専門家",
+     "voice": "female",
+     "text": "新しい技術の導入や、既存のシステムの効率化によって、コストを抑えることが可能です。例えば、人工知能を活用した監視システムなどが考えられます。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "最後に、防衛副大臣からご意見をお聞かせください。"
+    },
+    {
+     "speaker": "防衛副大臣",
+     "voice": "male",
+     "text": "各々のご意見を踏まえ、予算の配分を見直す必要があります。また、国際協力によってコストを分担することも検討すべきです。"
+    },
+    {
+     "speaker": "司会者",
+     "voice": "female",
+     "text": "本日の議論を終わります。今後もこの問題に対して適切な対策を講じていくことが重要です。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dl-3-discussion-001",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -2655,6 +3771,125 @@
    "verified": false,
    "language": "ja",
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Community Safety: Balancing Act Between Security and Accessibility",
+   "body": "",
+   "script": [
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "最近、自衛隊基地の警備強化が話題になっています。確かに、治安維持と安全確保は重要な課題です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "はい、その通りです。しかし、警備を強化する際には、地元住民の生活を考慮することも重要です。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "例えば、基地の近くにある公共施設へのアクセスが、チェックポイントの設置によって制限される可能性があります。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "その通りです。地元の住民は、基地の警備を強化する必要性を理解していますが、日常生活への影響も懸念しています。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "特に、学校や病院へのアクセスが制限されることで、子育て世代や高齢者にとって大きな負担となる可能性があります。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "そのため、警備強化と地域住民の生活のバランスを取ることが求められます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "確かに、警備強化は重要ですが、地域住民の声に耳を傾け、柔軟な対応が必要です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "例えば、チェックポイントの設置を最小限に抑え、可能な限りアクセスを確保することが考えられます。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "また、地域住民との定期的な連絡会議を設置し、情報を共有することで、相互理解を深めることも重要です。"
+    },
+    {
+     "speaker": "女性",
+     "voice": "female",
+     "text": "このように、警備強化と地域住民の生活の両立を図るためには、様々な取り組みが必要です。"
+    },
+    {
+     "speaker": "男性",
+     "voice": "male",
+     "text": "今後も、地域住民の声を反映した警備計画の策定が求められます。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ja",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Drone Survey After the Flood: A New Hope",
+   "body": "",
+   "script": [
+    {
+     "speaker": "記者",
+     "voice": "female",
+     "text": "最近の大雨により、X県の複数の地域で洪水が発生しました。この洪水により、多くの住宅やインフラが被害を受け、多くの人々が避難を余儀なくされました。"
+    },
+    {
+     "speaker": "記者",
+     "voice": "female",
+     "text": "このような緊急時において、ドローンが果たす役割はますます重要になっています。今回の洪水でも、X県はドローンを活用した迅速な情報収集と救助活動を行いました。"
+    },
+    {
+     "speaker": "専門家",
+     "voice": "male",
+     "text": "ドローンは、人や車両が入りにくい場所にも簡単にアクセスでき、被害の状況を短時間で把握することができます。また、ドローンからの映像は、救助活動の計画立案や避難誘導にも役立ちます。"
+    },
+    {
+     "speaker": "記者",
+     "voice": "female",
+     "text": "実際、今回の洪水では、ドローンが被害の拡大を防ぎ、人命救助に貢献した事例がいくつか報告されています。例えば、ある地域では、ドローンが避難する人々のルートを提案し、安全な避難を助けました。"
+    },
+    {
+     "speaker": "専門家",
+     "voice": "male",
+     "text": "さらに、ドローンは被害の状況をリアルタイムで共有できるため、救助チームや行政機関が迅速に対応することができます。これは、従来の方法では難しいことです。"
+    },
+    {
+     "speaker": "記者",
+     "voice": "female",
+     "text": "今後の洪水対策において、ドローンはますます重要な役割を果たすことが期待されます。しかし、ドローンの活用には、技術的な課題や法的な問題もあります。これらの課題を解決し、ドローンをより効果的に活用するためには、引き続き研究と開発が必要です。"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dl-3-interview-001",
@@ -3526,6 +4761,114 @@
    "verified": false
   },
   {
+   "id": "ja-dl-1-announcement-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-announcement-004",
+   "stem": "What is the license plate number of the delivery truck?",
+   "choices": [
+    "456-1234",
+    "321-4567",
+    "987-6543",
+    "789-0001"
+   ],
+   "answer": 3,
+   "explanation": "The license plate number is clearly stated as 789-0001 in the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dl-1-announcement-004",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To warn about an unauthorized entry attempt",
+    "To announce a new delivery route",
+    "To request more delivery drivers",
+    "To inform about a scheduled delivery"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to warn about an unauthorized entry attempt, as stated in the text: 「本日、当施設の入口で、許可なく入ろうとした配達業者がいたことを報告します。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-announcement-004",
+   "stem": "What does 「許可」 mean here?",
+   "choices": [
+    "A security measure",
+    "Permission",
+    "A type of vehicle",
+    "A delivery schedule"
+   ],
+   "answer": 1,
+   "explanation": "Here, 「許可」 means \"permission\", as in the phrase 「許可なく入ろうとした」 which means \"tried to enter without permission.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-announcement-005",
+   "stem": "What is the purpose of the meeting announced in the recording?",
+   "choices": [
+    "To train personnel on using laser weapons.",
+    "To review the current air defense system's performance.",
+    "To discuss the benefits of laser weapons for air defense.",
+    "To decide on a new air defense system."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is \"To discuss the benefits of laser weapons for air defense.\" The recording mentions \"レーザー兵器の空中防衛への利点を議論するために\", which translates to \"to discuss the benefits of laser weapons for air defense.\" The other options are not mentioned in the recording.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-announcement-005",
+   "stem": "What does the word \"方策\" mean here?",
+   "choices": [
+    "Weapons",
+    "Systems",
+    "Measures",
+    "Benefits"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is \"Measures.\" The recording uses the phrase \"新しい防衛方策の採用\", which translates to \"the adoption of new defensive measures.\" The word \"方策\" in this context refers to measures or strategies, not benefits, weapons, or systems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-announcement-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ja-dl-1-announcement-005",
+   "stem": "Why is the meeting being held?",
+   "choices": [
+    "To train personnel on using laser weapons.",
+    "To review the current air defense system's performance.",
+    "To decide on a new air defense system.",
+    "To discuss the benefits of laser weapons for air defense."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is \"To discuss the benefits of laser weapons for air defense.\" The recording states \"レーザー兵器の空中防衛への利点を議論するために\", which translates to \"to discuss the benefits of laser weapons for air defense.\" This is the purpose of the meeting.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -3972,6 +5315,96 @@
    ],
    "answer": 3,
    "explanation": "'支援物資の輸送' refers to 'the transport of aid supplies', which is the subject of the voicemail.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-voicemail-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-voicemail-004",
+   "stem": "What did the speaker learn about drones in the exercise?",
+   "choices": [
+    "Drones can be easily hacked.",
+    "Drones are not useful in exercises.",
+    "Drones can be hard to detect.",
+    "Drones are always loud."
+   ],
+   "answer": 2,
+   "explanation": "The speaker mentions that they learned drones can be difficult to detect, as stated in the phrase \"ドローンは検知が難しいことが分かりました\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-voicemail-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dl-1-voicemail-004",
+   "stem": "What is the main purpose of the voicemail?",
+   "choices": [
+    "To schedule a meeting about drones.",
+    "To report a drone crash.",
+    "To share lessons learned from a drone exercise.",
+    "To complain about drone noise."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the voicemail is to share lessons learned from a counter-drone exercise, as indicated by the phrases \"先日の対ドローン演習で学んだことを共有します\" and the subsequent points about drones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-voicemail-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-1-voicemail-004",
+   "stem": "What does \"対処法\" mean here?",
+   "choices": [
+    "Methods of detection.",
+    "Methods of repair.",
+    "Methods of communication.",
+    "Methods of prevention."
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"対処法\" refers to methods of prevention, as the speaker is discussing how to deal with drones, not detect, communicate with, or repair them. The phrase \"ドローンに対処する方法\" implies preventive measures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-voicemail-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dl-1-voicemail-005",
+   "stem": "What happened in the town of Minami?",
+   "choices": [
+    "The drone survey was completed there.",
+    "A drone is stuck there.",
+    "Flooding was discovered there.",
+    "A drone crashed there."
+   ],
+   "answer": 0,
+   "explanation": "The speaker says \"南町の調査は終了しました\", which means 'The survey in Minami Town is completed'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-1-voicemail-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ja-dl-1-voicemail-005",
+   "stem": "Why did the speaker leave this message?",
+   "choices": [
+    "To announce the end of the drone survey.",
+    "To request more drones for the survey.",
+    "To report a drone accident.",
+    "To schedule a meeting about the survey."
+   ],
+   "answer": 0,
+   "explanation": "The speaker says \"南町の調査は終了しました\", which means 'The survey in Minami Town is completed'. This is the main purpose of the message.",
    "source": "llm",
    "verified": false
   },
@@ -4678,6 +6111,60 @@
    "verified": false
   },
   {
+   "id": "ja-dl-2-briefing-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dl-2-briefing-002",
+   "stem": "What is the main topic of this briefing?",
+   "choices": [
+    "Coordinating airspace for drone deliveries",
+    "New technologies in drone manufacturing",
+    "Drone regulations in Japan",
+    "The impact of drones on civil aviation"
+   ],
+   "answer": 0,
+   "explanation": "The text is about coordinating airspace for drone operations, specifically for delivery purposes. This is evident from phrases like 'ドローン配達', '航空機との共用空域', and '安全に配達できるため'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-briefing-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-briefing-002",
+   "stem": "What time of day will the drone operations take place?",
+   "choices": [
+    "Afternoon",
+    "Morning",
+    "Evening",
+    "Night"
+   ],
+   "answer": 3,
+   "explanation": "The text states '夜間に', which means 'at night', indicating that the drone operations will take place during the night.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-briefing-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2-briefing-002",
+   "stem": "What does '空域' mean here?",
+   "choices": [
+    "Airport",
+    "Airspace",
+    "Airport terminal",
+    "Air traffic"
+   ],
+   "answer": 1,
+   "explanation": "In this context, '空域' refers to 'airspace', the portion of the atmosphere controlled by a country or organization. The text discusses '航空機との共用空域', or shared airspace with aircraft.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-2-broadcast-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -4944,6 +6431,222 @@
    ],
    "answer": 3,
    "explanation": "In this context, 互恵的な取引 refers to mutually beneficial trade, as the speakers discuss the potential benefits of the Pacific Alliance for Japan and its trading partners. This is supported by the context of discussing trade agreements and their positive impacts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-004",
+   "stem": "What is the main concern of the Ministry of Defense officials regarding the recent diplomatic tensions?",
+   "choices": [
+    "The impact of diplomatic tensions on military exercises and readiness",
+    "The possibility of a direct military conflict with another nation",
+    "The potential for increased military cooperation with neighboring countries",
+    "The need to reduce the defense budget due to economic constraints"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is the impact of diplomatic tensions on military exercises and readiness. This is implied in the conversation when the male official mentions that they need to consider the current international situation and how it might affect their planned exercises. The other choices are either not mentioned or are incorrect based on the context of the conversation. For example, the text says 緊張した国際情勢を考慮する必要があります。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-004",
+   "stem": "What does the phrase \"状況に応じて対応する\" mean here?",
+   "choices": [
+    "To adjust their plans and actions based on the current situation",
+    "To ignore the diplomatic tensions and continue with their original plans",
+    "To prepare for a large-scale military operation",
+    "To respond aggressively to any provocation"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is to adjust their plans and actions based on the current situation. This is implied in the conversation when the female official suggests that they should respond appropriately to the situation. The other choices are either too extreme or do not accurately reflect the context of the conversation. For example, the text says 状況に応じて適切に対応する必要があります。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-004",
+   "stem": "What is the implied reason for the Ministry of Defense officials to review their exercise plans?",
+   "choices": [
+    "To avoid escalating the diplomatic tensions further",
+    "To comply with international treaties and agreements",
+    "To save costs on military operations",
+    "To show their military strength to other countries"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is to avoid escalating the diplomatic tensions further. This is implied in the conversation when the male official mentions that they need to be cautious and consider the current international situation. The other choices are either not mentioned or are incorrect based on the context of the conversation. For example, the text says 現在の国際情勢を考慮して慎重に対応する必要があります。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-005",
+   "stem": "What is the reason for the meeting?",
+   "choices": [
+    "To review the budget for the air base.",
+    "To plan for an upcoming military exercise.",
+    "To discuss the relocation of the air base.",
+    "To address concerns about the expansion of the air base."
+   ],
+   "answer": 3,
+   "explanation": "The reason for the meeting is implied by the context of the conversation. The participants discuss the expansion of the air base and the impact it will have on the surrounding area, indicating that the meeting is to address concerns about the expansion. The key phrases are 「拡張計画」('expansion plan') and 「影響」('impact').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-005",
+   "stem": "What does the speaker mean by saying 「考えてみます」?",
+   "choices": [
+    "They will delegate the task to someone else.",
+    "They will not consider the request.",
+    "They will think about it and get back later.",
+    "They will make a decision immediately."
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses the phrase 「考えてみます」to imply that they will consider the request and respond later. This is a polite way to soften a refusal or delay a response without directly saying so. The correct answer is inferred from the context of the conversation, where the speaker is discussing a sensitive topic and needs time to consider the implications.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-005",
+   "stem": "What is the purpose of the second speaker's question about the timeline?",
+   "choices": [
+    "To expedite the expansion process.",
+    "To request more information about the expansion plan.",
+    "To express concern about the duration of the expansion.",
+    "To suggest an alternative location for the air base."
+   ],
+   "answer": 1,
+   "explanation": "The second speaker's question about the timeline implies that they want more information about the expansion plan. The phrase 「スケジュールについて教えてください」('Please tell me about the schedule.') indicates that they are seeking clarification or additional details. The correct answer is inferred from the context of the conversation, where the speaker is asking for more information to better understand the implications of the expansion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-006",
+   "stem": "What is the real reason Captain Tanaka wants to postpone the planning meeting?",
+   "choices": [
+    "He is too busy with other duties to prepare properly.",
+    "He wants to avoid discussing the new budget cuts.",
+    "He thinks the current plan is already perfect.",
+    "He is waiting for higher command's approval."
+   ],
+   "answer": 0,
+   "explanation": "Captain Tanaka says 「申し訳ありませんが、他の任務が重なってしまい、十分な準備ができそうにありません。」 He uses humble speech 「申し訳ありません」 to apologize and implies that he is too busy with other duties to prepare properly for the meeting. The other options are either not mentioned or contradicted by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-006",
+   "stem": "What does 「この状況では」 refer to here?",
+   "choices": [
+    "The recent natural disasters in the region.",
+    "The upcoming annual air exercise.",
+    "The current tight budget situation.",
+    "The new military equipment that has arrived."
+   ],
+   "answer": 1,
+   "explanation": "「この状況では」 refers to the context of planning for the annual air exercise. Captain Tanaka mentions that it is important to start planning early for the exercise, implying that this is the current situation they are facing. The other options are not relevant to the context of the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-006",
+   "stem": "Why does Colonel Sato suggest they invite a representative from the Ministry of Defense?",
+   "choices": [
+    "To learn about new military technologies.",
+    "To get approval for their plans.",
+    "To ensure the exercise aligns with national defense policies.",
+    "To request more funding for the exercise."
+   ],
+   "answer": 2,
+   "explanation": "Colonel Sato suggests inviting a representative from the Ministry of Defense to ensure that their plans align with national defense policies. He says 「防衛省の方にも意見を伺うことで、より良い計画が立てられると思います。」 This implies that he wants to make sure their plans are in line with the broader defense strategy. The other options are not mentioned or implied in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-007",
+   "stem": "What did the female speaker imply when she said 箸の使い方を気をつけてください?",
+   "choices": [
+    "She was asking if they could use forks instead.",
+    "She was suggesting they should eat faster.",
+    "She wanted to show off her knowledge of etiquette.",
+    "She was reminding them to be careful with their chopsticks."
+   ],
+   "answer": 3,
+   "explanation": "The female speaker implied that they should be careful with their chopsticks. She said 箸の使い方を気をつけてください, which translates to 'Please be careful with the way you use your chopsticks.' This suggests she wanted them to follow proper chopstick etiquette, not that she wanted to show off her knowledge, ask to use forks, or suggest they eat faster.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-007",
+   "stem": "What did the male speaker imply when he said もう一杯いただけますか?",
+   "choices": [
+    "He was asking for the bill.",
+    "He was asking for more drink.",
+    "He was asking for more food.",
+    "He was asking to leave the table."
+   ],
+   "answer": 1,
+   "explanation": "The male speaker implied that he wanted more drink. He said もう一杯いただけますか, which translates to 'Can I have another cup?' In this context, it is more likely he is referring to a drink rather than food, as he would not ask for more food with the word cup. He is not asking to leave the table or for the bill.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-conversation-007-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ja-dl-2-conversation-007",
+   "stem": "What did the female speaker imply when she said 少し休みましょうか?",
+   "choices": [
+    "She wanted to continue eating.",
+    "She wanted to start eating again.",
+    "She wanted to go home.",
+    "She wanted to take a break."
+   ],
+   "answer": 3,
+   "explanation": "The female speaker implied that she wanted to take a break. She said 少し休みましょうか, which translates to 'Shall we take a little break?' This suggests she wanted to stop eating for a moment, not that she wanted to continue eating, start eating again, or go home.",
    "source": "llm",
    "verified": false
   },
@@ -5254,6 +6957,168 @@
    "verified": false
   },
   {
+   "id": "ja-dl-2-news-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dl-2-news-002",
+   "stem": "What is the main topic of this news segment?",
+   "choices": [
+    "A debate over the allocation of fire department funds",
+    "A fire department's nighttime rapid response exercise",
+    "A citizen's complaint about fire department noise",
+    "The history of the local fire department"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 'A fire department's nighttime rapid response exercise,' as the entire news segment discusses this event. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-news-002",
+   "stem": "Where did the fire department conduct the exercise?",
+   "choices": [
+    "In a nearby forest",
+    "At a residential area",
+    "At the local community center",
+    "In the city center"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'In a nearby forest,' as stated in the text: 「近くの森で」. The other locations are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2-news-002",
+   "stem": "What does 「迅速な対応」 mean in this context?",
+   "choices": [
+    "Careful planning",
+    "Slow reaction",
+    "Thorough investigation",
+    "Rapid response"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'Rapid response,' as the exercise was designed to practice quick reactions. The other choices do not fit the context of the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dl-2-news-003",
+   "stem": "What is the main topic of this report?",
+   "choices": [
+    "International reactions to the attack",
+    "The immediate aftermath of a rocket attack",
+    "Long-term strategies for missile defense",
+    "Civilian evacuation procedures"
+   ],
+   "answer": 1,
+   "explanation": "The report focuses on the activities immediately following a rocket alarm, such as reconnaissance and damage assessment. The relevant words are 「ロケット警報後の」 and 「偵察活動」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-news-003",
+   "stem": "According to the report, what was the first priority after the alarm?",
+   "choices": [
+    "Securing the perimeter",
+    "Assessing structural damage",
+    "Checking for injuries",
+    "Restoring power"
+   ],
+   "answer": 2,
+   "explanation": "The report states that the first priority was to check for injuries, as indicated by the phrase 「最初の優先事項は負傷者の確認だった」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-news-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2-news-003",
+   "stem": "In the phrase 「自治体の職員たちが迅速に対応した」, what does 「迅速に」 mean here?",
+   "choices": [
+    "Carefully",
+    "Slowly",
+    "Quickly",
+    "Angrily"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 「迅速に」 means 'quickly', as it describes how the municipal employees responded to the situation. The relevant phrase is 「迅速に対応した」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-report-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dl-2-report-001",
+   "stem": "What is the main topic of this meeting?",
+   "choices": [
+    "Problems with drone delivery services",
+    "The task force's annual report",
+    "Drone regulations for commercial use",
+    "Coordinating airspace for drone operations with civil aviation"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C, because the participants discuss how to integrate drone operations into the national airspace system and coordinate with civil aviation authorities. This is evident from phrases like 空域の管理と調整について話し合う and 民間航空との連携.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-report-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dl-2-report-001",
+   "stem": "What does the task force want to do with the national airspace system?",
+   "choices": [
+    "Make it more restrictive",
+    "Expand it significantly",
+    "Close it to all drone traffic",
+    "Integrate drone operations into it"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C, because the text states that the task force aims to 空域の管理と調整について話し合う, which means they want to integrate drone operations into the national airspace system.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2-report-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-2-report-001",
+   "stem": "How is the word 連携 used in this context?",
+   "choices": [
+    "A coordination or collaboration",
+    "A type of airspace",
+    "A type of drone",
+    "A government agency"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is C, because the text mentions 民間航空との連携, which means coordination or collaboration with civil aviation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-2p-broadcast-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -5394,6 +7259,168 @@
    ],
    "answer": 3,
    "explanation": "The reporter links the 'difficult steering' to fishers' anxiety that no conclusion will come before the season. Survey costs, threats of seizure and expert disagreement are not mentioned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-001",
+   "stem": "What is the main reason given for not accepting the offer to jointly procure the new early warning radar system?",
+   "choices": [
+    "The JASDF wants to procure a different type of radar system.",
+    "The JASDF already has a sufficient number of such systems.",
+    "The JASDF is concerned about the compatibility of the system with their existing equipment.",
+    "The JASDF is not interested in early warning radar systems."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'The JASDF is concerned about the compatibility of the system with their existing equipment.' This is implied when the JASDF representative says, 'そのシステムは我々の現在の装備と互換性があるのか、その点が心配です。' (We are concerned about whether the system is compatible with our current equipment.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-001",
+   "stem": "What does the phrase '今後の協力について検討したいと思います' imply?",
+   "choices": [
+    "The JASDF has already decided on future collaboration projects.",
+    "The JASDF is eager to collaborate on future projects immediately.",
+    "The JASDF is open to the possibility of future collaboration but needs time to consider.",
+    "The JASDF is not interested in future collaboration."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'The JASDF is open to the possibility of future collaboration but needs time to consider.' This is implied by the phrase '今後の協力について検討したいと思います' (We would like to consider future collaboration), which suggests a willingness to explore the possibility but does not indicate an immediate decision or eagerness.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-001",
+   "stem": "What is the underlying concern of the JASDF representative when they mention '予算の制約'?",
+   "choices": [
+    "The JASDF wants more budget for other projects.",
+    "The JASDF has no budget allocated for new equipment.",
+    "The JASDF is worried about staying within their budget for new equipment.",
+    "The JASDF is not concerned about the budget."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is 'The JASDF is worried about staying within their budget for new equipment.' This is implied by the mention of '予算の制約' (budget constraints), which suggests that the JASDF is mindful of their budget limitations and wants to ensure they can afford the new equipment.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-002",
+   "stem": "What does the speaker mean by saying 「この件は、より慎重な検討が必要だと思います」?",
+   "choices": [
+    "The matter is already decided.",
+    "The matter is not important.",
+    "The matter should be decided immediately.",
+    "The matter needs to be discussed more carefully."
+   ],
+   "answer": 3,
+   "explanation": "The speaker uses the phrase 「より慎重な検討が必要だと思います」 to imply that the matter needs more careful consideration. This is an indirect way of saying that they are not ready to make a decision at this time. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-002",
+   "stem": "What does the speaker mean by saying 「お忙しいところ申し訳ありませんが、ぜひご協力をお願いします」?",
+   "choices": [
+    "They are happy that the other person is busy.",
+    "They are asking the other person to leave.",
+    "They are sorry for taking up the other person's time and would like their cooperation.",
+    "They are angry with the other person for being busy."
+   ],
+   "answer": 2,
+   "explanation": "The speaker uses the phrase 「お忙しいところ申し訳ありませんが、ぜひご協力をお願いします」 to express gratitude for the other person's time and to request their cooperation. This is a polite and indirect way of asking for help. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-002",
+   "stem": "What does the speaker mean by saying 「今後の課題として、より効果的な予算配分を考える必要があります」?",
+   "choices": [
+    "They think more effective budget allocation is needed for future challenges.",
+    "They think budget allocation is not important.",
+    "They think someone else should handle budget allocation.",
+    "They think the current budget allocation is perfect."
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses the phrase 「今後の課題として、より効果的な予算配分を考える必要があります」 to imply that more effective budget allocation is needed for future challenges. This is a direct statement, but the inference is that the current allocation may not be effective. The other choices are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-003",
+   "stem": "What does the JASDF representative imply about the proposed change in flight training procedures?",
+   "choices": [
+    "The change is unnecessary as current procedures are sufficient.",
+    "The change is too risky and should be abandoned.",
+    "The change will be easy to implement immediately.",
+    "The change will be beneficial but requires careful planning."
+   ],
+   "answer": 3,
+   "explanation": "The JASDF representative implies that the change will be beneficial but requires careful planning. This is inferred from the statement '飛行訓練の手順を変更することは有益だと思いますが、慎重な計画が必要です。' which suggests that while the change is beneficial, it needs careful planning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-003",
+   "stem": "What does the phrase '慎重に進める必要があります' imply about the proposed change?",
+   "choices": [
+    "The change will be easy to implement.",
+    "The change requires careful consideration and gradual implementation.",
+    "The change should be implemented quickly.",
+    "The change is not important."
+   ],
+   "answer": 1,
+   "explanation": "The phrase '慎重に進める必要があります' implies that the change requires careful consideration and gradual implementation. This is inferred from the need to proceed carefully, indicating that the change is significant and should not be rushed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-conversation-003",
+   "stem": "What does the JASDF representative imply about the current flight training procedures?",
+   "choices": [
+    "They are perfect and do not need any changes.",
+    "They are effective but could be improved with modifications.",
+    "They are too complex and should be simplified.",
+    "They are outdated and need immediate replacement."
+   ],
+   "answer": 1,
+   "explanation": "The JASDF representative implies that the current flight training procedures are effective but could be improved with modifications. This is inferred from the statement '現在の手順も効果的ですが、いくつかの改善点があります。' which suggests that while the current procedures are effective, there is room for improvement.",
    "source": "llm",
    "verified": false
   },
@@ -5772,6 +7799,60 @@
    ],
    "answer": 1,
    "explanation": "The new lottery system gives students a chance to be admitted regardless of their exam scores. The interviewer asks 'Lottery 方式の入試で「当選」した学生にはどのようなメリットがあるのでしょうか', and the interviewee responds '試験結果に左右されずに入学できる機会が増えることです', indicating that students have a chance to be admitted without being affected by their exam results.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-interview-004",
+   "stem": "What does the base commander imply when he says \"私たちは地域の安全と福祉を第一に考えます\"?",
+   "choices": [
+    "The base's primary concern is the safety and welfare of its own personnel.",
+    "The base's operations will not affect the local community.",
+    "The base will prioritize local safety and welfare over its own operations.",
+    "The base will only consider local safety and welfare when it is convenient."
+   ],
+   "answer": 2,
+   "explanation": "The base commander implies that the base will prioritize local safety and welfare over its own operations. This is evident in the phrase \"私たちは地域の安全と福祉を第一に考えます\", which translates to \"We prioritize the safety and welfare of the region first.\" This suggests that the base's operations and decisions will be guided by the need to ensure the safety and welfare of the local community.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-interview-004",
+   "stem": "What does the reporter imply when he says \"しかし、地域の方々からの不安の声もあります\"?",
+   "choices": [
+    "The reporter is suggesting that the base is not doing enough to address local concerns.",
+    "The reporter is acknowledging that there are concerns from the local community.",
+    "The reporter is indicating that the local community is unhappy with the base's presence.",
+    "The reporter is implying that the base is the source of the local community's concerns."
+   ],
+   "answer": 1,
+   "explanation": "The reporter implies that there are concerns from the local community. This is evident in the phrase \"しかし、地域の方々からの不安の声もあります\", which translates to \"However, there are also voices of concern from the local people.\" This suggests that while the base may be engaged in community activities, there are still concerns and issues that need to be addressed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-2p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ja-dl-2p-interview-004",
+   "stem": "What does the base commander imply when he says \"私たちも地域の方々と一緒に、この課題に取り組んでいきたいと思います\"?",
+   "choices": [
+    "The base commander is indicating that the base will address the issues independently.",
+    "The base commander is passing the responsibility of addressing the issues to the local community.",
+    "The base commander is willing to work with the local community to address the issues.",
+    "The base commander is acknowledging that the issues are beyond the base's control."
+   ],
+   "answer": 2,
+   "explanation": "The base commander implies that he is willing to work with the local community to address the issues. This is evident in the phrase \"私たちも地域の方々と一緒に、この課題に取り組んでいきたいと思います\", which translates to \"We also want to work together with the local people to tackle this issue.\" This suggests that the base commander is open to collaboration and is committed to addressing the concerns raised by the local community.",
    "source": "llm",
    "verified": false
   },
@@ -6226,6 +8307,114 @@
    "verified": false
   },
   {
+   "id": "ja-dl-3-debate-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-debate-002",
+   "stem": "What is the main idea of this debate?",
+   "choices": [
+    "The urgency to increase the number of drones for military purposes",
+    "The need to completely ban drone operations in shared airspace",
+    "The necessity of integrating drones into civil airspace with proper coordination",
+    "The importance of prioritizing military airspace over civil aviation"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is C. The debate focuses on the '必要性' (necessity) of 'ドローンを民間航空と調整して共用空域に統合する' (integrating drones into civil airspace with proper coordination), as discussed throughout the exchange between the speakers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-debate-002",
+   "stem": "What can be inferred about the current state of drone operations in Japan?",
+   "choices": [
+    "Japan has banned all drone operations in shared airspace",
+    "Drone operations are already well-integrated with civil aviation",
+    "There is a lack of standardization in drone operations and airspace coordination",
+    "The military has complete control over all airspace"
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is C. The speakers discuss the '現在の規制の欠如' (lack of current regulations) and the '標準化の欠如' (lack of standardization), which implies that there is a lack of standardization in drone operations and airspace coordination.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-3-debate-002",
+   "stem": "What does '共用空域' mean here?",
+   "choices": [
+    "Airspace used by both civil aviation and drones",
+    "Military airspace",
+    "Restricted airspace",
+    "Airspace exclusively for civil aviation"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is C. In this context, '共用空域' (shared airspace) refers to the '民間航空とドローンの両方が利用する空域' (airspace used by both civil aviation and drones), as discussed by the speakers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-debate-003",
+   "stem": "What is the main topic of this debate?",
+   "choices": [
+    "The advantages of using drones in military operations",
+    "The technological advancements in drone design",
+    "The ethical implications of drone warfare",
+    "The financial burden of defending bases against cheap drones"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the financial burden of defending bases against cheap drones. This is evident from the repeated discussion of costs, such as 「安価なドローンに対処するための費用が莫大になっています」 and 「基地防衛の費用が増加すること」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-debate-003",
+   "stem": "What can be inferred about the speaker labeled 「防衛大臣」?",
+   "choices": [
+    "They believe that the current defense budget is sufficient",
+    "They are concerned about the increasing costs of base defense",
+    "They think that the public is overestimating the drone threat",
+    "They want to reduce military spending overall"
+   ],
+   "answer": 1,
+   "explanation": "The defense minister expresses concern about increasing costs with 「基地防衛の費用が増加することが懸念されます」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-debate-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-3-debate-003",
+   "stem": "How is 「対策」used here?",
+   "choices": [
+    "As a strategy to attack something",
+    "As a method to improve something",
+    "As a way to communicate something",
+    "As a plan to prevent something bad from happening"
+   ],
+   "answer": 3,
+   "explanation": "It is used to describe measures to prevent the threat of cheap drones, as in 「安価なドローンに対処するための対策」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dl-3-discussion-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -6438,6 +8627,114 @@
    ],
    "answer": 3,
    "explanation": "He calls education in checking information sources a detour that is actually the shortest route, admitting it takes time, and says there is no other royal road for protecting democracy. He does not give up, he is cautious about deletion rules, and he says detection has no decisive answer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-editorial_commentary-001",
+   "stem": "What is the main topic of this commentary?",
+   "choices": [
+    "The legal framework governing military base operations in Japan",
+    "The economic impact of base security measures on local businesses",
+    "Local residents' concerns about the balance between base security and their daily lives",
+    "The history of military bases in Japan"
+   ],
+   "answer": 2,
+   "explanation": "The commentary focuses on the concerns of local residents about how security measures at a military base affect their daily lives, as seen in the discussion of checkpoints and access to public facilities. The text explicitly states: 「地元の住民は、基地の警備を強化する必要性を理解していますが、日常生活への影響も懸念しています。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-editorial_commentary-001",
+   "stem": "What can be inferred about the author's perspective?",
+   "choices": [
+    "The author believes that security measures should be increased without considering local residents' concerns.",
+    "The author thinks that the local government should take full responsibility for base security.",
+    "The author is completely opposed to any security measures at the base.",
+    "The author acknowledges the need for security but also emphasizes the importance of addressing residents' concerns."
+   ],
+   "answer": 3,
+   "explanation": "The author acknowledges the need for security measures but also highlights the importance of addressing residents' concerns, as shown in: 「しかし、警備を強化する際には、地元住民の生活を考慮することも重要です。」 This indicates a balanced perspective.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "ja-dl-3-editorial_commentary-001",
+   "stem": "What specific example does the author use to illustrate the impact of security measures on local residents?",
+   "choices": [
+    "The difficulty in accessing public facilities due to checkpoints",
+    "The economic downturn caused by the base's presence",
+    "The lack of communication between the base and the local government",
+    "The increased noise from military exercises"
+   ],
+   "answer": 0,
+   "explanation": "The author specifically mentions the impact of checkpoints on access to public facilities: 「例えば、基地の近くにある公共施設へのアクセスがチェックポイントの設備によって制限される可能性があります。」 This detail directly addresses the impact of security measures on residents' daily lives.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ja-dl-3-editorial_commentary-002",
+   "stem": "What is the main idea of the article?",
+   "choices": [
+    "The article discusses how drones can be used to deliver humanitarian aid during floods.",
+    "The article criticizes the government's response to the flood and calls for more investment in drones.",
+    "The article argues that drones should replace traditional methods of flood assessment entirely.",
+    "The article describes a recent drone survey conducted after a flood and its benefits."
+   ],
+   "answer": 3,
+   "explanation": "The article primarily describes a recent drone survey conducted after a flood and highlights its benefits, such as quickly gathering information and assisting rescue efforts. It mentions, for example, that the drones were able to quickly gather information about the extent of the damage and the location of people in need of assistance. This is the main focus of the article.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ja-dl-3-editorial_commentary-002",
+   "stem": "What can be inferred from the article about the potential future use of drones in flood response?",
+   "choices": [
+    "Drones will likely play an increasingly important role in flood assessment and response.",
+    "Drones will completely replace human rescue teams in flood response.",
+    "Drones will be banned in flood zones due to safety concerns.",
+    "Drones will be used exclusively for delivering aid and not for assessment."
+   ],
+   "answer": 0,
+   "explanation": "The article suggests that drones have great potential in flood response, highlighting their ability to quickly gather information and assist rescue efforts. It infers that drones will likely play an increasingly important role in future flood assessment and response, as stated in the sentence: 「今後の洪水対策において、ドローンはますます重要な役割を果たすことが期待されます。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dl-3-editorial_commentary-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ja-dl-3-editorial_commentary-002",
+   "stem": "What does the phrase 「迅速な情報収集」 mean here?",
+   "choices": [
+    "Quick and efficient data gathering.",
+    "Slow and steady data gathering.",
+    "Random and unstructured data gathering.",
+    "Secretive and hidden data gathering."
+   ],
+   "answer": 0,
+   "explanation": "The phrase 「迅速な情報収集」 is used to describe one of the benefits of using drones in flood assessment. It means quick and efficient data gathering, as the drones were able to quickly gather information about the extent of the damage and the location of people in need of assistance.",
    "source": "llm",
    "verified": false
   },

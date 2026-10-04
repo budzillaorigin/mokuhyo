@@ -261,6 +261,38 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fa-dr-1-instructions-003",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Restricted Airspace Notice",
+   "body": "یک اپراتور درون‌بر در نزدیکی فرودگاه بین‌المللی امام خمینی بازداشت شد. درون‌بر در فضای هوایی محدود در نزدیکی فرودگاه مشاهده شد. اپراتور باید درون‌بر را فرود آورد و منتظر دستورها بماند. پرواز درون‌بر در این منطقه ممنوع است. لطفا با پایداری از این قوانین، کمک می‌کنید تا از تصادفات هواپیماها جلوگیری شود.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-1-instructions-004",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Relief Personnel Arrival",
+   "body": "شفت جدید در ساعت 12:00 می‌رسد و 12 ساعت دیگر باقی است. تا کنون همه چیز آرام بوده است. بزرگترین مشکل ما کمبود آب است. لطفا برای حل این مشکل اقدام کنید. همچنین، لطفا تجهیزات را بررسی کنید و اطمینان حاصل کنید که همه چیز در وضعیت خوبی است. در صورت نیاز به کمک، لطفا با من در ارتباط باشید. تشکر می‌کنم.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fa-dr-1-notice-001",
    "exam": "DLPT_READING",
    "language": "fa",
@@ -321,6 +353,54 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fa-dr-1-notice-005",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "1",
+   "textType": "notice",
+   "title": "Residents Voice Concerns Over Security",
+   "body": "به اهالی عزیز، در مورد مشکلات امنیتی که در منطقه ما وجود دارد، اجتماعی در روز جمعه ساعت 3 بعد از ظهر برگزار می‌شود. در این اجتماع، از شما خواسته می‌شود تا پیشنهادات خود را برای بهبود امنیت ارائه دهید. لطفاً به مدت 30 دقیقه در مرکز اجتماع حضور یابید. از شرکت شما تشکر می‌کنیم.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-1-notice-006",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "1",
+   "textType": "notice",
+   "title": "Drone Operations Notice",
+   "body": "به همه عاملین بدون سرنشین در ایران، به روزهای آسمانی و هواپیماهای غیرنظامی توجه داشته باشید. درون‌ما را در سازمان عملیات بدون سرنشین ایران ثبت کنید. این کار برای هماهنگی با هواپیماهای غیرنظامی ضروری است. از پرواز در مناطق ممنوعه خودداری کنید. اطلاعات بیشتر از وبسایت سازمان عملیات بدون سرنشین ایران در دسترس است. از همکاری شما سپاسگزاریم.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-1-notice-007",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "1",
+   "textType": "notice",
+   "title": "New Security Measures at Mashhad International Airport",
+   "body": "به نام خدا\n\nبه تمام مسافران و کارکنان محترم\n\nاز امروز و به منظور افزایش ایمنی، سیستم جدید تشخیص و خنثی‌سازی هواپیماهای بدون سرنشین در فرودگاه نصب شده است. لطفاً با همکاری شما در این زمینه سپاسگزاریم.\n\nاداره ایمنی فرودگاه بین‌المللی مشهد",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fa-dr-1-personal_letter-001",
    "exam": "DLPT_READING",
    "language": "fa",
@@ -363,6 +443,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-1-short_message-001",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "1",
+   "textType": "short_message",
+   "title": "Unusual Sight Over Bandar Abbas",
+   "body": "در بندرعباس رویدادی عجیب رخ داد. تعداد زیادی از ربات‌های هواپیما در بالای بندر گرد می‌شوند. مقامات می‌گویند که این ربات‌ها به بندرعباس اختلال می‌زنند. آنها می‌خواهند مردم از این موضوع آگاه باشند و در صورت داشتن اطلاعات بیشتر با مقامات تماس بگیرند.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -531,6 +627,21 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fa-dr-1p-news_brief-002",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "1+",
+   "textType": "news_brief",
+   "title": "New Entrance Exam Regulations for Shahid Beheshti University",
+   "body": "از سال تحصیلی جدید، دانشگاه شهید بهشتی آزمون ورودی خود را در دو مرحله برگزار می‌کند. در مرحله اول، دانشجوهایی که در آزمون شرکت می‌کنند، باید به صورت آنلاین به سوالات چندگانه پاسخ دهند. دانشجوهایی که در مرحله اول آزمون موفق باشند، می‌توانند در مرحله دوم شرکت کنند. در مرحله دوم، دانشجوهایی که به مرحله نهایی رسیده‌اند، باید به صورت حضوری در آزمون شرکت کنند و به سوالاتی که به صورت مقاله‌ای است، پاسخ دهند. این تغییرات به منظور بهبود فرایند انتخاب دانشجوها و افزایش کیفیت آموزش در دانشگاه انجام می‌شود.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fa-dr-2-biography-001",
    "exam": "DLPT_READING",
    "language": "fa",
@@ -603,6 +714,86 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-2-event_description-003",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "2",
+   "textType": "event_description",
+   "title": "New Year Festival Preparations",
+   "body": "به منظور حفظ امنیت و نظم در جشن سال نو، که در سال جاری در مناطق مجاور پایگاه نظامی برگزار می شود، تصمیم گرفته شده است که حریم پروازی برای سرنشین‌های خلبانی بدون سرنشین (درانف) در مناطق مجاور پایگاه نظامی و میدانهای جشن تاسیس شود. در نتیجه، از تمام افراد خواسته می شود که از استفاده از درانف در این مناطق خودداری نماید. این محدودیت‌ها از تاریخ ۲۰ مارس تا ۲ آوریل، زمان جشن سال نو، اعمال خواهد شد. ما از همکاری شما جهت حفظ امنیت و نظم در این رویداد مهم متکی هستیم. برای اطلاعات بیشتر، می توانید به وب سایت شورای شهر مراجعه نمایید. شاگردان خلبانی بدون سرنشین (درانف) می توانند از فضاهای اختصاصی در مناطق مجاز استفاده نمایند.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-2-event_description-004",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Unusual Activity at Chabahar Harbor",
+   "body": "در صبح زود امروز، گروهی از تراشه‌های کوچک در فراز بندر چابهار دیده شده‌اند. تراشه‌ها به سرعت و به صورت هماهنگ در هوا حرکت می‌کردند و به نظر می‌آمد که یک طرح مشخصی را دنبال می‌کنند. شاهدان عینی می‌گویند که این تراشه‌ها به رنگ‌های مختلفی مانند سبز، آبی و قهوه‌ای بوده و به اندازه یک دست بزرگ بوده‌اند. این فعالیت غیرمعمول باعث شد که پلیس بندر و نیروهای امنیتی به محل حرکت کنند تا دلیل این پدیده را بررسی کنند. تا به امروز، هیچگونه خطر یا آسیب برای کشتی‌ها یا بندر گزارش نشده است. مقامات بندر اعلام کرده‌اند که در حال بررسی فیلم‌های دوربین‌های مداربسته و گفتگو با شاهدان هستند تا بیشتر در مورد این رخداد ببينند.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-2-event_description-005",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Unusual Activity at Bushehr Harbor",
+   "body": "هفته پیش، گروهی از درانفش‌های کوچک در بندر بوشهر دیده شدند. این درانفش‌ها، هر کدام حدود 30 سانتی‌متر طول داشتند، به صورت گروهی و با سرعت در آسمان بندر حرکت می‌کردند. مأموران بندر ابتدا بندر را بسته و از ورود و خروج کشتی‌ها جلوگیری به عمل آوردند. آنها همچنین به نیروهای نظامی اطلاع دادند تا به آن‌ها یاری رسانند. پس از چند ساعت، مشخص شد که درانفش‌ها متعلق به یک شرکت تحقیقاتی بودند که در حال انجام یک پروژه علمی بودند. این شرکت از درانفش‌های کوچک برای جمع‌آوری داده‌های هواشناسی استفاده می‌کردند. مأموران بندر پس از دریافت اطلاعات دقیق، بندر را دوباره باز کردند و کشتی‌ها اجازه ورود و خروج را یافتند. شرکت تحقیقاتی نیز با مأموران بندر همکاری کرد و از آن‌ها عذرخواهی نمود.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-2-event_description-006",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "2",
+   "textType": "event_description",
+   "title": "New Traffic Regulations in Isfahan",
+   "body": "ساکنین اصفهان در مورد تاثیر نگرانی‌های جدید امنیتی بر زندگی روزمره خود ابراز نگرانی کرده‌اند. با اجرای تدابیر امنیتی جدید، نقاط چک جدیدی در سراسر شهر ایجاد شده است. ساکنان از افزایش ترافیک در محله‌های مسکونی به دلیل نقاط چک جدید شکایت دارند. این محدود کردن دسترسی به مناطق مسکونی باعث اختلال در زندگی روزمره شهروندان شده است. علاوه بر این، ساکنان معتقد هستند که تدابیر امنیتی جدید بر فعالیت‌های تجاری نیز تاثیر می‌گذارد. یک فروشنده در بازار بزرگ اصفهان گفت: «نقاط چک جدید باعث می‌شود مشتریان کم‌تر به بازار بیایند». ساکنان همچنین از عدم شفافیت در مورد اهداف این تدابیر امنیتی جدید شکایت کرده‌اند. آنها می‌خواهند از مقامات اطلاعات بیشتری در مورد نحوه اجرای این تدابیر و تاثیر آنها بر زندگی روزمره ساکنان دریافت کنند. با این نگرانی‌ها، مقامات محلی تأکید کرده‌اند که تدابیر امنیتی جدید برای ایمنی ساکنان ضروری است و آنها با ساکنان در مورد این موضوع در مذاکره هستند.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-2-event_description-007",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "2",
+   "textType": "event_description",
+   "title": "Post-Raid Assessment in Tabriz",
+   "body": "پس از صدا زدن هشدار راکت در تبریز، تیم شناسایی به محل حادثه فرستاده شد. این تیم ابتدا به بررسی وضعیت ساکنان ساختمان‌های آسیب دیده پرداخت. بعد از اطمینان از سلامت ساکنان، به بررسی ساختمان‌ها برای کشف آسیب‌های ساختاری پرداختند. تیم بازسازی به کار خود ادامه داد و تلاش کردند تا در اسرع وقت ساختمان‌ها را تعمیر کنند. همچنین، تیم‌های پزشکی حاضر بودند تا به ساکنان زخمی کمک کنند. تیم شناسایی همچنین با ساکنان مشاوره کرد و آنها را در مورد اقدامات لازم برای بازسازی ساختمان‌های خود راهنمایی کرد. در نهایت، تیم شناسایی گزارش خود را به مقامات محلی ارائه کرد و توصیه‌های خود را برای پیشگیری از حملات آینده ارائه داد.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -708,6 +899,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-2-news-003",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "2",
+   "textType": "news",
+   "title": "Joint Perimeter Patrol Briefing",
+   "body": "امروز در یک جلسه کوتاه، برنامه‌ریزی مراقبت مشترک در حاشیه مرز ایران و ترکمنستان برای ماه آینده به طور مفصل بررسی شد. این مراقبت که به صورت مشترک توسط نیروهای مسلح هر دو کشور انجام می‌شود، در تاریخ هفدهم اردیبهشت شروع خواهد شد و سه روز به طول انجامید. هدف اصلی از این مراقبت، افزایش همکاری بین دو کشور در زمینه امنیت مرزی و پیشگیری از فعالیت‌های غیرقانونی است. هر دو طرف موافقت کردند که از آخرین تجهیزات و فناوری‌های خود برای انجام این مراقبت استفاده کنند. همچنین، تصمیم گرفته شد که در صورت نیاز، از نیروی هوایی و دریایی نیز استفاده شود. این مراقبت مشترک، نهمین مراقبت از این نوع در سال جاری است و نشان‌دهنده تعهد هر دو کشور برای حفظ امنیت و ثبات در منطقه می‌باشد.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -906,6 +1113,70 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fa-dr-3-analysis-002",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Festival in the Shadow of the Base: A Delicate Balance",
+   "body": "در روزهای اخیر، در مورد برگزاری یک جشنواره بزرگ فرهنگی در نزدیکی یک پایگاه نظامی، بحث‌ها و نگرانی‌های زیادی وجود دارد. این جشنواره، که برای اولین بار در این منطقه برگزار می‌شود، به دلیل وجود پایگاه نظامی در نزدیکی، به یک چالش بزرگ تبدیل شده است. نگرانی اصلی، اختلال احتمالی در رویدادهای جشنواره توسط بدونه‌های غیرمجاز است. سازمان‌دهندگان جشنواره و مسئولان پایگاه نظامی، به دلایل مختلفی در این خصوص نگرانی دارند. برای سازمان‌دهندگان جشنواره، استفاده از بدونه‌های غیرمجاز ممکن است به اختلال در برنامه‌ریزی شده‌های رویدادها و به خطر انداختن شرکت‌کنندگان انجام شود. برای مسئولان پایگاه نظامی، حضور بدونه‌های غیرمجاز در منطقه ممکن است امنیت پایگاه و عملیات آن را به خطر اندازد. در نتیجه، یک 'منطقه بدون بدونه' در منطقه جشنواره، به عنوان یک اقدام برای جلوگیری از این خطرات احتمالی، پیشنهاد شده است. این منطقه بدون بدونه، با همکاری سازمان‌دهندگان جشنواره و مسئولان پایگاه نظامی، تعیین شده است. در این منطقه، استفاده از بدونه‌های غیرمجاز به صورت کامل ممنوع است. این اقدام، به عنوان یک گام برای تضمین امنیت و سلامت هر دو شرکت‌کنندگان جشنواره و عملیات پایگاه نظامی، در نظر گرفته شده است. همچنین، سازمان‌دهندگان جشنواره و مسئولان پایگاه نظامی، به دلایل مختلفی در این خصوص در ارتباط نزدیک هستند. آنها به طور مداوم با هم در ارتباط هستند تا اقدامات لازم برای پاسخگویی به این نگرانی‌ها، اجرا شوند. همچنین، آنها برنامه‌ریزی کرده‌اند تا پاتول‌های منظم در منطقه را برای تضمین رعایت منطقه بدون بدونه، انجام دهند. علاوه بر این، آنها برنامه‌ریزی کرده‌اند تا به شرکت‌کنندگان جشنواره در مورد اهمیت این اقدام و خطرات احتمالی بدونه‌ها در منطقه، آموزش دهند. با وجود این اقدامات، برخی منتقدان معتقدند که منطقه بدون بدونه ممکن است به طور کامل موثر نباشد. آنها معتقدند که برخی افراد ممکن است همچنان تلاش کنند تا بدونه‌ها را در منطقه استفاده کنند، با وجود ممنوعیت. با این حال، سازمان‌دهندگان و مسئولان نظامی معتقدند که این اقدام ضروری است و آنها همه گام‌های ممکن را برای تضمین موثر بودن آن، برداشته‌اند. آنها همچنین یادآوری کردند که منطقه بدون بدونه تنها بخشی از یک برنامه امنیتی گسترده برای جشنواره است. این برنامه شامل یک سری اقدامات مختلف برای تضمین امنیت و سلامت شرکت‌کنندگان و اجرای بدون دردسر رویدادها است.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-3-analysis-003",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "3",
+   "textType": "analysis",
+   "title": "The Drone Incident: A Test of National Security",
+   "body": "در روزهای گذشته، یک پرنده‌دار غیرنظامی در نزدیکی فرودگاه بین‌المللی امام خمینی تهران بازداشت شد. این پرنده‌دار یک بدون سرنشین شخصی را به ارتفاع ۴۰۰ متر از سطح زمین پرتاب کرده بود که با سامانه‌های دفاعی فرودگاه در هم ریخت. این پدیده، تهدیدی جدی برای امنیت ملی و سامانه‌های دفاعی کشور به حساب می‌آید. در سال‌های اخیر، استفاده از بدون سرنشین‌های غیرنظامی در سراسر کشور افزایش یافته است. در حالی که این بدون سرنشین‌ها برای اهداف گوناگون از جمله فیلم‌برداری و سرگرمی استفاده می‌شوند، اما استفاده اشتباه از آن‌ها می‌تواند به خطرات جدی برای امنیت هوایی و سامانه‌های دفاعی کشور منجر شود. پرنده‌دار بازداشت شده در تهران به نظر می‌رسد که از محدودیت‌های پرواز در نزدیکی فرودگاه‌ها آگاه نبوده باشد. او ادعا می‌کند که تنها می‌خواست یک فیلم از فرودگاه را بگیرد. با این حال، این پرونده نشان می‌دهد که نیاز به نظارت بیشتر و آموزش بیشتر برای پرنده‌داران غیرنظامی وجود دارد. دولت باید اقداماتی را برای کنترل و نظارت بر استفاده از بدون سرنشین‌های غیرنظامی در کشور انجام دهد. این اقدامات می‌تواند شامل تعیین محدودیت‌های پرواز، آموزش پرنده‌داران و تعقیب و مجازات نقض قوانین را شامل شود. همچنین، همکاری بین سازمان‌های دولتی و بخش خصوصی برای مدیریت امنیت هوایی و کنترل بدون سرنشین‌های غیرنظامی ضروری است. این پدیده به ویژه در شهرهایی که فرودگاه‌های بین‌المللی دارند، مانند تهران، اشرفیه و شیراز، مهم است. در پایان، باید یادآور شد که امنیت هوایی یک مسئولیت مشترک است. همه ما باید در این زمینه همکاری کنیم تا از ایمنی و امنیت هواپیماها و مسافران محافظت کنیم.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-3-analysis-004",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Silent Saviors: Drones in Post-Flood Humanitarian Efforts",
+   "body": "در سال‌های اخیر، استفاده از هواپیماهای بدون سرنشین در تلاش‌های کمک انسانی پس از سیل‌ها افزایش یافته است. این ابزارها قادر به ارائه اطلاعات زمانی و هماهنگی تلاش‌های کمک هستند که برای اطمینان افراد و هماهنگی تلاش‌های کمک ضروری هستند. در ایران، که در سال‌های اخیر با سیل‌های شدید روبرو شده است، هواپیماهای بدون سرنشین نقش مهمی در تلاش‌های کمک انسانی ایفا کرده اند. در این مقاله، به نقش هواپیماهای بدون سرنشین در تلاش‌های کمک انسانی پس از سیل‌ها در ایران می‌پردازم.\n\nهواپیماهای بدون سرنشین قادر به ارائه اطلاعات زمانی هستند که برای هماهنگی تلاش‌های کمک ضروری هستند. آنها می‌توانند به سرعت به مناطق مورد نظر پرواز کنند و اطلاعات دقیق از وضعیت آن مناطق را ارائه دهند. این اطلاعات می‌تواند شامل اطلاعاتی مانند سطح سیل، مناطق تحت تأثیر، و نیازهای فوری افراد باشد. در این شرایط، هواپیماهای بدون سرنشین قادر به ارائه اطلاعات زمانی و هماهنگی تلاش‌های کمک هستند که برای اطمینان افراد و هماهنگی تلاش‌های کمک ضروری هستند.\n\nبه علاوه، هواپیماهای بدون سرنشین می‌توانند در انتقال تجهیزات و مواد کمک کنند. آنها می‌توانند به مناطق سخت‌تنگ‌درشد بروند و تجهیزات و مواد را به افراد در نیاز رساند. این می‌تواند شامل غذا، آب، و تجهیزات پزشکی باشد. در این شرایط، هواپیماهای بدون سرنشین می‌توانند یک تفاوت مهم در نجات جان افراد ایجاد کنند.\n\nبا این حال، باید به خاطر داشت که هواپیماهای بدون سرنشین یک ابزار هستند و نمی‌توانند تمام روش‌های سنتی را جایگزین کنند، اما می‌توانند آنها را تکمیل کنند. برای مثال، هواپیماهای بدون سرنشین نمی‌توانند افراد را به مناطق امن منتقل کنند یا ساختمان‌ها را تعمیر کنند. اما آنها می‌توانند در هماهنگی تلاش‌های کمک و ارائه اطلاعات زمانی کمک کنند.\n\nدر کل، هواپیماهای بدون سرنشین نقش مهمی در تلاش‌های کمک انسانی پس از سیل‌ها ایفا می‌کنند. آنها قادر به ارائه اطلاعات زمانی و هماهنگی تلاش‌های کمک هستند که برای نجات جان افراد ضروری هستند. در ایران، که در سال‌های اخیر با سیل‌های شدید روبرو شده است، هواپیماهای بدون سرنشین یک ابزار ارزشمندی در تلاش‌های کمک انسانی بوده اند. با این حال، باید به خاطر داشت که هواپیماهای بدون سرنشین یک ابزار هستند و نمی‌توانند تمام روش‌های سنتی را جایگزین کنند، اما می‌توانند آنها را تکمیل کنند.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-3-analysis-005",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Intercept and Identify: Coordination in Allied Air Defense",
+   "body": "در عملیات‌های مشترک دفاع هوایی، هماهنگی و ارتباطات موثر بین واحدهای متحد به طور حیاتی است. در این مقاله، ما به بررسی پروتکل‌های ارتباطی رادیویی که توسط واحدهای متحد در طول عملیات‌های مشترک به کار می‌رود، می‌پردازیم. این پروتکل‌ها به واحدهای متحد اجازه می‌دهند تا اطلاعات را به طور دقیق و به موقع انتقال دهند، که برای شناسایی هواپیماهای دشمن و هماهنگی دفاع موثر ضروری است. یکی از مهم‌ترین پروتکل‌ها استفاده از فرکانس‌های رادیویی مشخص برای ارتباطات مختلف است. به عنوان مثال، یک فرکانس برای ارتباطات رو به رو بین واحدها، فرکانس دیگری برای ارتباطات با فرماندهی مرکزی، و فرکانس دیگری برای ارتباطات با واحدهای پشتیبانی به کار می‌رود. این تقسیم‌بندی فرکانس‌ها کمک می‌کند تا ارتباطات را موجهی کردن و از تداخل و اشتباهات جلوگیری شود. همچنین، استفاده از کدهای و فرمول‌های مشخص برای انتقال اطلاعات مهم، مانند موقعیت هواپیماهای دشمن یا تغییرات در وضعیت عملیات، ارتباطات را به طور بیشتر دقیق و موثر می‌کند. برای مثال، کد 'TANGO' برای شناسایی یک هواپیما دشمن و کد 'BRAVO' برای گزارش وضعیت آماده به کار رفتن استفاده می‌شود. علاوه بر این، استفاده از یک زبان مشترک و اصطلاحات استاندارد بین واحدهای متحد، درک مشترک را بهبود می‌بخشد و از اشتباهات ناشی از تفاوت‌های زبان جلوگیری می‌کند.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fa-dr-3-argumentative_essay-001",
    "exam": "DLPT_READING",
    "language": "fa",
@@ -963,6 +1234,22 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fa-dr-3-commentary-004",
+   "exam": "DLPT_READING",
+   "language": "fa",
+   "level": "3",
+   "textType": "commentary",
+   "title": "Maintaining Vigilance: A Shift Change at the Defense Operations Center",
+   "body": "در مرکز عملیات دفاعی، تغییر شیفت یک فرایند حیاتی است که باید با دقت کامل انجام شود. در ابتدا، باید کتاب ثبت حوادث و رخدادهای رخ داده در شیفت قبلی را بررسی کنید. این کتاب شامل اطلاعات مفصل در مورد همه اتفاقات، مشکلات، و اقدامات انجام شده در شیفت قبلی است. بعد از آن، باید وضعیت تمام سیستم‌های دفاعی را بررسی کنید. این شامل سیستم‌های رادار، سیستم‌های ارتباطی، و سیستم‌های کنترل دسترسی است. باید اطمینان حاصل کنید که همه سیستم‌ها در وضعیت کارکردن هستند و هیچ مشکل یا خطا در آنها وجود ندارد. همچنین، باید وضعیت تمام پرسنل را بررسی کنید. این شامل بررسی حاضر و آمادگی تمام پرسنل برای انجام وظایف خود است. باید اطمینان حاصل کنید که همه پرسنل آگاه به وظایف خود هستند و آماده برای پاسخگویی به هر نوع وضعیت هستند. بعد از انجام همه این بررسی‌ها، باید با شیفت قبلی تطبیق نظرات انجام دهید. این شامل مباحثه در مورد درک و ارزیابی وضعیت فعلی، برنامه‌های برای شیفت آتی، و هرگونه مشکل یا مشکل پتانسیئلی است که ممکن است رخ دهد. این فرایند باید با دقت کامل انجام شود تا اطمینان حاصل شود که همه اطلاعات مهم منتقل شده و همه پرسنل آگاه به وظایف خود هستند. در نهایت، باید با شیفت بعدی ارتباط برقرار کنید تا اطمینان حاصل شود که آنها آگاه به تمام اطلاعات مهم هستند و آماده برای انجام وظایف خود هستند. این فرایند تغییر شیفت یک فرایند حیاتی است که باید با دقت کامل انجام شود تا اطمینان حاصل شود که مرکز عملیات دفاعی در وضعیت کارکردن است و آماده برای پاسخگویی به هر نوع تهدید است.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1613,6 +1900,96 @@
    "verified": false
   },
   {
+   "id": "fa-dr-1-instructions-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fa-dr-1-instructions-003",
+   "stem": "What is the drone operator required to do immediately?",
+   "choices": [
+    "Go to the airport office.",
+    "Land the drone and wait for instructions.",
+    "Release the drone.",
+    "Pay a fine."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the operator should \"درون‌بر را فرود آورید و منتظر دستورها باشید\". This means they must land the drone and wait for instructions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-instructions-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fa-dr-1-instructions-003",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To announce a drone competition.",
+    "To warn about restricted airspace near the airport.",
+    "To inform about new drone laws.",
+    "To promote drone safety courses."
+   ],
+   "answer": 1,
+   "explanation": "The notice is about a drone operator who was detained near the airport. The main purpose is to warn about the restricted airspace, as indicated by the phrase \"فضای هوایی محدود در نزدیکی فرودگاه\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-instructions-003-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-1-instructions-003",
+   "stem": "What does \"محدود\" mean here?",
+   "choices": [
+    "Expensive",
+    "Open",
+    "Restricted",
+    "Busy"
+   ],
+   "answer": 2,
+   "explanation": "The word \"محدود\" is used to describe the airspace near the airport. The relevant phrase is \"فضای هوایی محدود در نزدیکی فرودگاه\", which translates to \"restricted airspace near the airport\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-instructions-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fa-dr-1-instructions-004",
+   "stem": "What is the schedule for the relief personnel?",
+   "choices": [
+    "They arrive at 1200 and stay for 14 hours.",
+    "They arrive at 1200 and stay for 12 hours.",
+    "They arrive at 1400 and stay for 12 hours.",
+    "They arrive at 1400 and stay for 14 hours."
+   ],
+   "answer": 1,
+   "explanation": "The text states that the relief personnel arrive at 1200 (noon) and stay for 12 hours: «شفت جدید در ساعت 1200 می‌رسد و 12 ساعت باقی می‌ماند.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-instructions-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fa-dr-1-instructions-004",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform the incoming shift about the status of the base.",
+    "To announce a change in the shift schedule.",
+    "To report a security breach at the base.",
+    "To request additional supplies for the operations center."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of this notice is to inform the incoming shift about the current status and any issues that need attention. This is evident from the instructions given, such as «تا کنون همه چیز calma بود» and «بزرگترین مشکل ما کمبود آب است.»",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fa-dr-1-notice-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1793,6 +2170,150 @@
    "verified": false
   },
   {
+   "id": "fa-dr-1-notice-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fa-dr-1-notice-005",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "A new community event",
+    "Residents' complaints about security",
+    "A change in neighborhood rules",
+    "A new security measure"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is residents' complaints about security, as indicated by the phrase \"متشکل\" (complaints) and \"امنیتی\" (security) in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-notice-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fa-dr-1-notice-005",
+   "stem": "What is the purpose of this notice?",
+   "choices": [
+    "To announce a new security measure",
+    "To address residents' concerns about security",
+    "To inform residents about a change in neighborhood rules",
+    "To advertise a new community event"
+   ],
+   "answer": 1,
+   "explanation": "The purpose of this notice is to address residents' concerns about security, as shown by the phrase \"در خصوص\" (regarding) and \"متشکل\" (complaints) in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-notice-005-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-1-notice-005",
+   "stem": "What does the word \"ناحیه\" mean in this context?",
+   "choices": [
+    "Neighborhood",
+    "Meeting",
+    "Security",
+    "Complaint"
+   ],
+   "answer": 0,
+   "explanation": "In this context, \"ناحیه\" refers to the neighborhood, as in \"ناحیه ما\" (our neighborhood) where the security concerns are being discussed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-notice-006-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fa-dr-1-notice-006",
+   "stem": "According to the notice, who must drones be registered with?",
+   "choices": [
+    "with the national drone registry",
+    "with the Iranian Drone Operations Authority",
+    "with the local police department",
+    "with the Ministry of Transportation"
+   ],
+   "answer": 1,
+   "explanation": "The notice specifies that drones must be registered with the Iranian Drone Operations Authority, as stated in the phrase: \"درون‌های خود را در سازمان عملیات بدون سرنشین ایران ثبت کنید.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-notice-006-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "fa-dr-1-notice-006",
+   "stem": "What is the purpose of this notice?",
+   "choices": [
+    "to inform drone operators about new safety regulations",
+    "to warn about the dangers of flying drones near airports",
+    "to announce a new drone racing competition",
+    "to remind drone operators to register their drones"
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the notice is to remind drone operators to register their drones, as indicated by the phrase: \"درون‌های خود را در سازمان عملیات بدون سرنشین ایران ثبت کنید.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-notice-007-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fa-dr-1-notice-007",
+   "stem": "What is the main purpose of the new system at the airport?",
+   "choices": [
+    "To provide better weather forecasting for flights.",
+    "To improve passenger check-in times.",
+    "To enhance security by detecting and neutralizing drones.",
+    "To facilitate cargo handling and logistics."
+   ],
+   "answer": 2,
+   "explanation": "The text explicitly states that the system is for detecting and neutralizing drones, which is a security measure. The Persian phrase 'سیستم جدید ایمنی برای تشخیص و خنثی کردن هواپیماهای بدون سرنشین' translates to 'a new security system for detecting and neutralizing drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-notice-007-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-1-notice-007",
+   "stem": "What does the word 'خنثی کردن' mean in this context?",
+   "choices": [
+    "To detect.",
+    "To improve.",
+    "To maintain.",
+    "To neutralize."
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'خنثی کردن' refers to the action of neutralizing drones, as part of the new security system. The phrase 'خنثی کردن هواپیماهای بدون سرنشین' translates to 'neutralizing drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-notice-007-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "fa-dr-1-notice-007",
+   "stem": "Why was this notice issued?",
+   "choices": [
+    "To announce the installation of a counter-drone system.",
+    "To inform passengers about new flight routes.",
+    "To advertise new airport facilities.",
+    "To provide updates on flight schedules."
+   ],
+   "answer": 0,
+   "explanation": "The notice was issued to announce the installation of a new security system aimed at detecting and neutralizing drones. The Persian phrase 'از امروز و به منظور ایمنی بیشتر، سیستم جدید ایمنی برای تشخیص و خنثی کردن هواپیماهای بدون سرنشین در فرودگاه نصب شده است' translates to 'Effective today, for enhanced safety, a new security system for detecting and neutralizing drones has been installed at the airport'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fa-dr-1-personal_letter-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1933,6 +2454,60 @@
    ],
    "answer": 3,
    "explanation": "The text says: \"پس از مروری بر اشیایتان، می‌توانید وارد شوید.\" This means 'After checking your items, you can enter.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-short_message-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fa-dr-1-short_message-001",
+   "stem": "What does the message say about the drones?",
+   "choices": [
+    "They are causing problems at the harbor.",
+    "They are delivering packages to ships.",
+    "They are flying in an unusual pattern.",
+    "They are part of a military exercise."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is (A). The text states that the drones are causing problems at the harbor: “زیرا به بندر عباس اختلال می‌здаند”. There is no mention of a military exercise, unusual pattern, or package delivery.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-short_message-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fa-dr-1-short_message-001",
+   "stem": "What is the main purpose of the message?",
+   "choices": [
+    "To describe the technology of the drones.",
+    "To inform people about a strange event.",
+    "To warn ships to stay away from the harbor.",
+    "To announce a new drone delivery service."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is (A). The message is informing people about a strange event: “در بندر عباس رویدادی غریب رخ داد”. It does not warn ships, announce a service, or describe technology.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1-short_message-001-q3",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-1-short_message-001",
+   "stem": "What does the word “اختلال” mean here?",
+   "choices": [
+    "Disturbance",
+    "Pattern",
+    "Exercise",
+    "Delivery"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is (C). The word “اختلال” means disturbance here, as in the phrase “زیرا به بندر عباس اختلال می‌здаند”. This indicates the drones are causing problems at the harbor.",
    "source": "llm",
    "verified": false
   },
@@ -2531,6 +3106,60 @@
    "verified": false
   },
   {
+   "id": "fa-dr-1p-news_brief-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fa-dr-1p-news_brief-002",
+   "stem": "What is the main idea of this text?",
+   "choices": [
+    "Shahid Beheshti University will now accept only students from Tehran.",
+    "Shahid Beheshti University is increasing its tuition fees for the next academic year.",
+    "The entrance exam for Shahid Beheshti University will be held in two stages.",
+    "Applicants to Shahid Beheshti University must now have a minimum high school GPA of 18."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that the entrance exam for Shahid Beheshti University will be held in two stages. The text states: \"دانشگاه شهید بهشتی از سال تحصیلی جدید، آزمون ورودی خود را در دو مرحله برگزار خواهد کرد.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1p-news_brief-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fa-dr-1p-news_brief-002",
+   "stem": "What must applicants do before taking the second stage of the entrance exam?",
+   "choices": [
+    "Pass an interview with the university admissions committee.",
+    "Submit a research proposal to the university.",
+    "Successfully complete the first stage of the exam.",
+    "Attend a preparatory course at the university."
+   ],
+   "answer": 2,
+   "explanation": "Applicants must successfully complete the first stage of the exam before taking the second stage. The text states: \"دانشجوانی که در مرحله اول آزمون موفقیت‌آمیز باشند، می‌توانند در مرحله دوم شرکت کنند.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-1p-news_brief-002-q3",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-1p-news_brief-002",
+   "stem": "What does \"موفقیت‌آمیز\" mean here?",
+   "choices": [
+    "Dissatisfied",
+    "Challenging",
+    "Unprepared",
+    "Successful"
+   ],
+   "answer": 3,
+   "explanation": "\"موفقیت‌آمیز\" means successful in this context. The text states: \"دانشجوانی که در مرحله اول آزمون موفقیت‌آمیز باشند، می‌توانند در مرحله دوم شرکت کنند.\", indicating that students who are successful in the first stage can participate in the second stage.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fa-dr-2-biography-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -2797,6 +3426,276 @@
    ],
    "answer": 1,
    "explanation": "The text mentions that the program helps \"در نگه‌داری از زیبایی شهر و افزایش آگاهی محیط‌زیستی\" (maintain the city's beauty and increase environmental awareness), making the correct answer \"It helps maintain the city's beauty and promotes environmental awareness\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fa-dr-2-event_description-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about new drone regulations for the festival",
+    "To announce the cancellation of the New Year festival",
+    "To recruit volunteers for festival security",
+    "To advertise the festival's main attractions and events"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is B because the notice focuses on informing residents about the establishment of a no-drone zone due to the festival taking place near a military base. This is evident from phrases like 'به منظور حفظ امنیت و نظم در جشن سال نو' and 'در مناطق مجاور پایگاه نظامی'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fa-dr-2-event_description-003",
+   "stem": "What is the specific area where drones are prohibited during the festival?",
+   "choices": [
+    "The entire city of Isfahan",
+    "A 5-kilometer radius around the city center",
+    "All public parks and recreational areas",
+    "Areas surrounding the military base and festival grounds"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is C as the notice specifies 'در مناطق مجاور پایگاه نظامی و میدانهای جشن' as the no-drone zone. This detail is crucial for understanding the scope of the restrictions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-2-event_description-003",
+   "stem": "What does the phrase 'حریم پروازی' mean in this context?",
+   "choices": [
+    "Drone maintenance area",
+    "Flight path",
+    "Airport runway",
+    "No-fly zone"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is B. The phrase 'حریم پروازی' is used to describe the area where drone usage is restricted, as stated in 'تاسیس حریم پروازی برای سرنشین‌های خلبانی بدون سرنشین (درانف) در مناطق مجاور'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fa-dr-2-event_description-004",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "A new security system installed at Chabahar Harbor",
+    "A fishing competition held near Chabahar Harbor",
+    "A swarm of small drones flying over Chabahar Harbor",
+    "The arrival of a large cargo ship at Chabahar Harbor"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in the first sentence: \"...گروهی از تراشه‌های کوچک در فراز بندر چابهار دیده شده است\" (A swarm of small drones has been seen over Chabahar Harbor).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fa-dr-2-event_description-004",
+   "stem": "What time did the unusual activity occur?",
+   "choices": [
+    "In the afternoon",
+    "In the evening",
+    "In the morning",
+    "At night"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the activity occurred at \"...صبح زود\" (early morning).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-004-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-2-event_description-004",
+   "stem": "What does the word \"گرد\" mean here?",
+   "choices": [
+    "Size",
+    "Color",
+    "Sound",
+    "Group"
+   ],
+   "answer": 3,
+   "explanation": "The word \"گرد\" is used to describe the drones as a \"...گروهی\" (group) flying together: \"...گروهی از تراشه‌های کوچک در فراز بندر چابahar دیده شده است\" (A swarm of small drones has been seen over Chabahar Harbor).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-005-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fa-dr-2-event_description-005",
+   "stem": "What is the main idea of this passage?",
+   "choices": [
+    "The drones caused significant damage to the harbor.",
+    "A large number of small drones were spotted over the harbor.",
+    "The drones were used for a military exercise.",
+    "The harbor is closed due to a security threat."
+   ],
+   "answer": 1,
+   "explanation": "The main idea is that a swarm of small drones was seen over the harbor. This is stated at the beginning of the text: \"هفته گذشته، یک گروه بزرگ از درانفش‌های کوچک بر فراز بندر بوشهر دیده شدند.\" The rest of the text provides details about this event, but the main focus is on the presence of the drones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-005-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fa-dr-2-event_description-005",
+   "stem": "What was the initial reaction of the harbor authorities?",
+   "choices": [
+    "They tried to communicate with the drones.",
+    "They ignored the situation.",
+    "They contacted the military for assistance.",
+    "They immediately closed the harbor."
+   ],
+   "answer": 3,
+   "explanation": "The initial reaction of the harbor authorities was to close the harbor. This is explicitly stated in the text: \"مأمورین بندر ابتدا تصمیم گرفتند بندر را بسته و از ورود و خروج کشتی‌ها جلوگیری کنند.\" The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-005-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-2-event_description-005",
+   "stem": "In the sentence \"در نهایت، مشخص شد که درانفش‌ها متعلق به یک شرکت تحقیقاتی بودند که در حال انجام یک پروژه علمی بودند.\", what does \"پروژه\" mean here?",
+   "choices": [
+    "A fishing operation",
+    "A military exercise",
+    "A scientific project",
+    "A commercial venture"
+   ],
+   "answer": 2,
+   "explanation": "The word \"پروژه\" in this context refers to a scientific project. The text states that the drones belonged to a research company that was conducting a scientific project: \"در نهایت، مشخص شد که درانفش‌ها متعلق به یک شرکت تحقیقاتی بودند که در حال انجام یک پروژه علمی بودند.\" The other options do not fit the context of the sentence.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-006-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fa-dr-2-event_description-006",
+   "stem": "What is the main concern of the residents of Isfahan?",
+   "choices": [
+    "Residents are worried about the impact of new security measures on their daily lives.",
+    "The new regulations are unfair to residents.",
+    "New traffic regulations have improved safety.",
+    "The new regulations have increased traffic congestion."
+   ],
+   "answer": 0,
+   "explanation": "The main concern is expressed in the opening sentence: \"ساکنین اصفهان در مورد تاثیر نگرانی‌های جدید امنیتی بر زندگی روزمره خود ابراز نگرانی کرده اند\". The rest of the text elaborates on this concern with specific examples.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-006-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fa-dr-2-event_description-006",
+   "stem": "What specific problem do residents mention regarding access to their neighborhoods?",
+   "choices": [
+    "The checkpoints are causing increased traffic congestion in residential areas.",
+    "Residents are not allowed to pass through the checkpoints.",
+    "The new checkpoints delay their commute.",
+    "The checkpoints are not clearly marked."
+   ],
+   "answer": 0,
+   "explanation": "The text states: \"居民ان از افزایش ترافیک در محله های مسکونی به دلیل نقاط چک جدید شکایت دارند\". This directly addresses the issue of increased traffic congestion in residential areas.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-006-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-2-event_description-006",
+   "stem": "What does the phrase \"محدود کردن دسترسی\" mean here?",
+   "choices": [
+    "To redirect access",
+    "To monitor access",
+    "To improve access",
+    "To limit access"
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"محدود کردن دسترسی\" is used to describe the effect of the new security measures: \"این محدود کردن دسترسی به مناطق مسکونی باعث اختلال در زندگی روزمره شهروندان شده است\". The context clearly indicates that access is being restricted or limited.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-007-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fa-dr-2-event_description-007",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "An assessment of damage and response after a rocket attack in Tabriz.",
+    "A report on a successful military operation in Tabriz.",
+    "A plan for future military exercises in Tabriz.",
+    "A description of the new security measures implemented in Tabriz."
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the assessment of damage and the response efforts after a rocket attack in Tabriz. This includes inspecting buildings, checking on residents, and evaluating the effectiveness of the response. The text does not primarily discuss a successful military operation, new security measures, or future exercises.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-007-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fa-dr-2-event_description-007",
+   "stem": "What was the first action taken by the reconnaissance team after the rocket alarm?",
+   "choices": [
+    "They checked on the residents of the affected buildings.",
+    "They inspected the damaged buildings for structural issues.",
+    "They contacted the emergency services for assistance.",
+    "They reported the incident to the local authorities."
+   ],
+   "answer": 0,
+   "explanation": "The first action taken by the reconnaissance team was to check on the residents of the affected buildings. The text states: \"تیم Reconnaissance ابتدا به بررسی وضعیت ساکنان edificiات آسیب دیده پرداخت.\" This indicates that ensuring the safety of the residents was their initial priority.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-event_description-007-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-2-event_description-007",
+   "stem": "What does the word \"بازسازی\" mean in this context?",
+   "choices": [
+    "Destruction",
+    "Restoration",
+    "Evaluation",
+    "Inspection"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"بازسازی\" refers to the process of restoring or repairing the damaged buildings. The text mentions: \"تیم بازسازی به کار خود ادامه داد.\" This indicates that the team was involved in restoring the buildings to their original state.",
    "source": "llm",
    "verified": false
   },
@@ -3175,6 +4074,60 @@
    ],
    "answer": 3,
    "explanation": "In this context, 'واریز' refers to the deposit that students must make to secure their admission, as in 'دانش آموزان باید مبلغی را به عنوان واریز پیش پرداخت کنند.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-news-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fa-dr-2-news-003",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "The schedule for a joint perimeter patrol between Iran and Turkmenistan",
+    "The economic benefits of cooperation between Iran and Turkmenistan",
+    "The cultural exchange programs between Iran and Turkmenistan",
+    "The history of border disputes between Iran and Turkmenistan"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the text is the schedule and details of a joint perimeter patrol between Iran and Turkmenistan. This is evident from phrases like 'مراقبت مشترک در حاشیه مرز' (joint perimeter patrol) and 'برنامه ریزی مراقبت' (patrol schedule).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-news-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fa-dr-2-news-003",
+   "stem": "Where will the joint perimeter patrol take place?",
+   "choices": [
+    "In the Caspian Sea",
+    "Along the Iran-Turkmenistan border",
+    "In the cities of Tehran and Ashgabat",
+    "In the Persian Gulf"
+   ],
+   "answer": 1,
+   "explanation": "The joint perimeter patrol will take place along the Iran-Turkmenistan border. The text states 'مراقبت مشترک در حاشیه مرز ایران و ترکمنستان' (joint perimeter patrol along the border of Iran and Turkmenistan).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-2-news-003-q3",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-2-news-003",
+   "stem": "What does 'مراقبت' mean here?",
+   "choices": [
+    "Negotiation",
+    "Festival",
+    "Celebration",
+    "Patrol"
+   ],
+   "answer": 3,
+   "explanation": "In this context, 'مراقبت' means 'patrol'. The text uses 'مراقبت مشترک در حاشیه مرز' (joint perimeter patrol) to describe the activity that will take place along the border.",
    "source": "llm",
    "verified": false
   },
@@ -3881,6 +4834,222 @@
    "verified": false
   },
   {
+   "id": "fa-dr-3-analysis-002-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fa-dr-3-analysis-002",
+   "stem": "What is the main concern addressed in the article?",
+   "choices": [
+    "The possibility of drones being used for illegal activities near the base",
+    "The impact of the festival on the military base's operations",
+    "The lack of proper security measures at the festival",
+    "The potential for drone interference to disrupt the festival's events"
+   ],
+   "answer": 3,
+   "explanation": "The main concern is the potential for drone interference to disrupt the festival's events. The article discusses the 'possible disruption of festival events by unauthorized drones' and mentions the 'concerns of both the festival organizers and the military base about the potential hazards of drones in the area.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-002-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fa-dr-3-analysis-002",
+   "stem": "What can be inferred about the relationship between the festival organizers and the military base?",
+   "choices": [
+    "They are in conflict over the use of drones.",
+    "They are working together to ensure the safety of the festival.",
+    "They are indifferent to each other's concerns.",
+    "They are competing for resources in the area."
+   ],
+   "answer": 1,
+   "explanation": "The article states that 'the festival organizers and the military base have been in close communication to address these concerns,' indicating that they are working together to ensure the safety of the festival.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-002-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-3-analysis-002",
+   "stem": "What does the phrase 'خطرات بالقوه' mean here?",
+   "choices": [
+    "Immediate threats",
+    "Minor inconveniences",
+    "Potential hazards",
+    "Long-term risks"
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'خطرات بالقوه' is used to describe the potential issues that drones could cause in the area, not immediate threats, long-term risks, or minor inconveniences.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-003-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fa-dr-3-analysis-003",
+   "stem": "What is the main idea of the passage?",
+   "choices": [
+    "the potential threats posed by civilian drone operators to national security",
+    "the importance of international cooperation in managing airspace",
+    "the need for stricter regulations on drone manufacturing",
+    "the impact of drone incidents on airport operations"
+   ],
+   "answer": 0,
+   "explanation": "The main idea of the passage is the potential threats posed by civilian drone operators to national security. This is evident throughout the text, such as in the statement \"این پدیده، تهدیدی جدی برای امنیت ملی و سامانه‌های دفاعی کشور به حساب می‌آید\" (This phenomenon poses a serious threat to national security and the country's defense systems).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-003-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fa-dr-3-analysis-003",
+   "stem": "What can be inferred about the detained drone operator's intentions?",
+   "choices": [
+    "They were trying to test the airport's security measures.",
+    "They were acting on behalf of a foreign government.",
+    "They were attempting to deliver a package to a passenger.",
+    "They were unaware of the restrictions on drone flying near airports."
+   ],
+   "answer": 3,
+   "explanation": "The text states \"به نظر می‌رسد که پرنده‌دار از محدودیت‌های پرواز در نزدیکی فرودگاه‌ها آگاه نبوده باشد\" (It appears that the drone operator was not aware of the flight restrictions near airports), suggesting that they were unaware of the restrictions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-003-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-3-analysis-003",
+   "stem": "In the phrase \"این پدیده، تهدیدی جدی برای امنیت ملی و سامانه‌های دفاعی کشور به حساب می‌آید\", what does \"تهدیدی\" mean?",
+   "choices": [
+    "an opportunity",
+    "a benefit",
+    "a challenge",
+    "a threat"
+   ],
+   "answer": 3,
+   "explanation": "In this context, \"تهدیدی\" means \"a threat\". The text is discussing the serious threat that civilian drones pose to national security, as indicated by the phrase \"تهدیدی جدی برای امنیت ملی\" (a serious threat to national security).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fa-dr-3-analysis-004",
+   "stem": "What is the main idea of this article?",
+   "choices": [
+    "Drones are essential for providing real-time data and coordinating relief efforts after floods.",
+    "The Iranian government has fully integrated drones into its disaster response strategy.",
+    "The use of drones in post-flood humanitarian efforts is limited by their battery life.",
+    "Humanitarian organizations should prioritize traditional methods over drone technology."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that drones are essential for providing real-time data and coordinating relief efforts after floods. This is evident throughout the article, such as in the sentence: \"در این شرایط، دrones قادر به ارائه اطلاعات زمانی و هماهنگی efforts کمک هستند.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fa-dr-3-analysis-004",
+   "stem": "What can be inferred about the role of drones in future disaster management?",
+   "choices": [
+    "Drones will replace all traditional methods of disaster management.",
+    "Drones will be primarily used for military purposes in disaster zones.",
+    "Drones will be used alongside traditional methods to enhance disaster response.",
+    "Drones will be limited to providing aerial photographs only."
+   ],
+   "answer": 2,
+   "explanation": "The inference that can be made is that drones will be used alongside traditional methods to enhance disaster response. This is suggested in the sentence: \"با این حال، باید به خاطر داشت که دrones یک ابزار هستند و نمی‌توانند تمام methods سنتی را جایگزین کنند، اما می‌توانند آنها را تکمیل کنند.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-3-analysis-004",
+   "stem": "What does the phrase \"مطمئن کردن\" mean here?",
+   "choices": [
+    "To repair",
+    "To inspect",
+    "To abandon",
+    "To ensure"
+   ],
+   "answer": 3,
+   "explanation": "The phrase \"مطمئن کردن\" means 'to ensure'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-005-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "purpose",
+   "passageId": "fa-dr-3-analysis-005",
+   "stem": "What is the purpose of the passage?",
+   "choices": [
+    "To analyze the communication protocols used by allied air defense units during joint operations",
+    "To provide a step-by-step guide for allied air defense units to follow during peacetime",
+    "To describe the cultural significance of air defense systems in Iran",
+    "To argue for increased funding for air defense research and development"
+   ],
+   "answer": 0,
+   "explanation": "The passage focuses on the 'communication protocols' and 'coordination' between allied air defense units, specifically during 'joint operations'. This is evident in phrases like 'when coordinating with allied units' and 'standard radio procedures for effective communication'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-005-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fa-dr-3-analysis-005",
+   "stem": "What can be inferred about the relationship between the units mentioned in the passage?",
+   "choices": [
+    "They share all their resources and technologies without restriction",
+    "They operate independently without any coordination",
+    "They occasionally collaborate on joint operations",
+    "They are in direct competition with each other"
+   ],
+   "answer": 2,
+   "explanation": "The passage mentions 'when coordinating with allied units' and 'joint operations', which implies that the units collaborate occasionally. There is no mention of competition, independence, or unrestricted resource sharing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-analysis-005-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-3-analysis-005",
+   "stem": "What does the phrase 'موجهی کردن ارتباطات' mean here?",
+   "choices": [
+    "Monitoring communications",
+    "Disrupting communications",
+    "Encrypting communications",
+    "Facilitating communications"
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'موجهی کردن ارتباطات' is used in the context of 'standard radio procedures for effective communication'. The word 'موجهی کردن' implies making something easier or more effective, which aligns with 'facilitating'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fa-dr-3-argumentative_essay-001-q1",
    "exam": "DLPT_READING",
    "level": "3",
@@ -4093,6 +5262,60 @@
    ],
    "answer": 0,
    "explanation": "The author suggests that the government could take steps to stabilize food prices, such as supporting local farmers and improving infrastructure. The relevant sentences are: \"دولت می‌تواند با پشتیبانی از کشاورزان محلی و بهبود زیرساخت‌ها در این زمینه کمک کند. همچنین، سیاست‌های مناسب در زمینه تجارت و واردات می‌تواند کمک کند تا قیمت‌ها به طور قابل کنترل باشد.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-commentary-004-q1",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "fa-dr-3-commentary-004",
+   "stem": "What is the first task mentioned in the shift handover process?",
+   "choices": [
+    "Verifying the status of all personnel",
+    "Inspecting the perimeter of the base",
+    "Reviewing the incident logbook",
+    "Checking the status of all defense systems"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the first task is reviewing the 'کتاب register of events and incidents that occurred during the previous shift' (کتاب register حوادث و رخدادهای رخ داده در شیفت قبلی).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-commentary-004-q2",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fa-dr-3-commentary-004",
+   "stem": "What does the phrase 'تطبیق نظرات' mean here?",
+   "choices": [
+    "Exchange of ideas",
+    "Alignment of opinions",
+    "Debate",
+    "Disagreement"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'تطبیق نظرات' is used to describe the process of ensuring that the 'understandings and assessments of the situation' (درک و ارزیابی وضعیت) between the incoming and outgoing shifts are consistent and aligned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fa-dr-3-commentary-004-q3",
+   "exam": "DLPT_READING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fa-dr-3-commentary-004",
+   "stem": "Why is it important to verify the status of all personnel during the shift handover?",
+   "choices": [
+    "To ensure everyone is accounted for and aware of their duties",
+    "To evaluate the performance of each personnel member",
+    "To identify any personnel who may be sleeping on the job",
+    "To determine who will be responsible for the next shift's incidents"
+   ],
+   "answer": 0,
+   "explanation": "The text emphasizes the importance of 'verifying the status and readiness of all personnel' (تأکید بر بررسی وضعیت و آمادگی تمام پرسنل) to ensure that everyone is accounted for, aware of their duties, and ready to respond to any situation that may arise.",
    "source": "llm",
    "verified": false
   },

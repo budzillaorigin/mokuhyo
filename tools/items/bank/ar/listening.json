@@ -509,6 +509,95 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-1-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Drone Survey After Flash Floods",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مرحبًا جميعًا،"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نود أن نعلن عن إجراء مسح جوي باستخدام الطائرات بدون طيار في المناطق المتأثرة بالفيضانات الأخيرة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "هدف هذا المسح هو تقييم الأضرار التي لحقت بالمباني والطرق."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "نحن نطلب من جميع السكان التعاون مع فرق المسح وتوفير أي معلومات قد تكون مفيدة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكرًا لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-announcement-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "announcement",
+   "title": "Base Security Update",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الأمر",
+     "voice": "male",
+     "text": "تغيير في حالة الحماية في القاعدة"
+    },
+    {
+     "speaker": "الأمر",
+     "voice": "male",
+     "text": "بسبب التحديات الأمنية الحالية"
+    },
+    {
+     "speaker": "الأمر",
+     "voice": "male",
+     "text": "تم رفع حالة الحماية إلى حالة دلتا"
+    },
+    {
+     "speaker": "الأمر",
+     "voice": "male",
+     "text": "سيكون هناك مراقبة متزايدة وبنود حركة معززة"
+    },
+    {
+     "speaker": "الأمر",
+     "voice": "male",
+     "text": "نطلب من جميع الأفراد الالتزام بتعليمات الأمن"
+    },
+    {
+     "speaker": "الأمر",
+     "voice": "male",
+     "text": "شكراً لاهتمامكم"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -870,6 +959,85 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-voicemail-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "ar-dl-1-voicemail-002-q1",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المرسل",
+     "voice": "male",
+     "text": "مرحبا، هذا هو رسالة صوتية من مركز التدريب في القاعدة."
+    },
+    {
+     "speaker": "المرسل",
+     "voice": "male",
+     "text": "نود تذكيركم بالتدريب حول الوعي بالتهديد الداخلي في اليوم التالي، في الساعة الثانية عشرة ظهرًا."
+    },
+    {
+     "speaker": "المرسل",
+     "voice": "male",
+     "text": "يرجى الحضور في الوقت المحدد وحمل وثائقك الشخصية."
+    },
+    {
+     "speaker": "المرسل",
+     "voice": "male",
+     "text": "شكرا لك."
+    },
+    {
+     "speaker": "المرسل",
+     "voice": "male",
+     "text": "السلام عليكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-1-voicemail-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "1",
+   "textType": "voicemail",
+   "title": "Festival Drone Restrictions",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المسجل الصوتي",
+     "voice": "female",
+     "text": "أهلاً وسهلاً، هذا هو رسالة مفاتيح لرفع مستوى اللغة العربية في الولايات المتحدة الأمريكية."
+    },
+    {
+     "speaker": "المسجل الصوتي",
+     "voice": "female",
+     "text": "الاستخدام المميز للطائرات بدون طيار محظور بالقرب من قاعدة المهرجان."
+    },
+    {
+     "speaker": "المسجل الصوتي",
+     "voice": "female",
+     "text": "ضمان سلامة المشاركين في المهرجان هو من أولوياتنا."
+    },
+    {
+     "speaker": "المسجل الصوتي",
+     "voice": "female",
+     "text": "شكراً لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1749,6 +1917,110 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-2-briefing-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "briefing",
+   "title": "New Regulations for Drones Near Al-Jabal Airfield",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحبًا بكم جميعًا في هذه الجلسة الإرشادية. اليوم سنناقش اللوائح الجديدة للطائرات بدون طيار بالقرب من قاعدة الجبل الجوية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "بدايةً، لا يسمح بتشغيل الطائرات بدون طيار ضمن نطاق 5 كيلومترات من قاعدة الجبل الجوية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "بالإضافة إلى ذلك، يجب على جميع مشغلي الطائرات بدون طيار التسجيل في قاعدة بيانات جديدة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "يجب تجديد التسجيل سنويًا، ويجب على جميع الطائرات بدون طيار أن تكون مجهزة بجهاز تحديد المواقع العالمي."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "أي خرق لهذه اللوائح قد يؤدي إلى مصادرة الطائرة بدون طيار والأجراءات القانونية المناسبة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكرًا لكم. هل هناك أي أسئلة؟"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-briefing-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Entry Control Point Incident",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "مرحباً بكم. اليوم سنناقش حادثة وقعت في نقطة التحكم بالدخول."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "في الساعة التاسعة من صباح اليوم، وصلت شاحنة توصيل إلى نقطة التحكم بالدخول."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "لم تتوقف الشاحنة عند نقطة التفتيش كما هو مطلوب."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "حاول الحراس التواصل مع السائق، لكنه استمر في القيادة دون التوقف."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "تم رفض دخول الشاحنة وإبلاغ الأمن الداخلي."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "بعد تحقيق مختصر، تبين أن السائق لم يكن على علم بالإجراءات الجديدة."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "سيتم تنظيم جلسة تدريب للسائقين في الأسبوع القادم."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "هذا كل شيء. شكراً لاهتمامكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-2-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -1868,6 +2140,83 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "conversation",
+   "title": "The Annual Conference on Cultural Heritage",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "مرحبا، كيف حالك؟"
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "مرحبا، أنا بخير. شكرًا لك. كيف حالك أنت؟"
+    },
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "أنا أيضًا بخير. أنا مستعدة لمناقشة مؤتمر التراث الثقافي السنوي."
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "نعم، هناك بعض التغيرات هذا العام. لقد قررنا نقل المؤتمر إلى شهر أكتوبر."
+    },
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "أحقًا؟ لماذا هذا التغيير؟"
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "لقد وجدنا أن شهر أكتوبر يكون أكثر ملاءمة للمشاركين الدوليين."
+    },
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "أوه، هذا جيد. نأمل أن يكون هذا التغيير للأفضل."
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "بالطبع. كما أن المكان الجديد هو مركز المؤتمرات الدولي، وهو مكان رائع."
+    },
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "إن المكان الجديد يبدو ممتعًا جدًا. هل هناك أي تغييرات أخرى؟"
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "لا، هذه هي التغييرات الرئيسية. نأمل أن نراك في المؤتمر."
+    },
+    {
+     "speaker": "المرأة",
+     "voice": "female",
+     "text": "أنا أيضًا. شكرًا لك."
+    },
+    {
+     "speaker": "الرجل",
+     "voice": "male",
+     "text": "أهلا وسهلا."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2066,6 +2415,254 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "interview",
+   "title": "Interview: Drone Regulations Near Al-Jabal Airfield",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقابلة",
+     "voice": "male",
+     "text": "الكلام اليوم عن اللوائح الجديدة للطائرات بدون طيار بالقرب من قاعدة الجبال الجوية."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "مرحبًا بكم في برنامجنا. اليوم معنا المسؤول عن الطيران المدني لتوضيح هذه اللوائح."
+    },
+    {
+     "speaker": "المسؤول عن الطيران المدني",
+     "voice": "male",
+     "text": "شكرًا لاختياركم. بالفعل، تم إصدار لوائح جديدة لضمان السلامة والخصوصية بالقرب من قاعدة الجبال الجوية."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "ما هي أهم هذه اللوائح؟"
+    },
+    {
+     "speaker": "المسؤول عن الطيران المدني",
+     "voice": "male",
+     "text": "ممنوع طيران الطائرات بدون طيار على ارتفاع أقل من 120 مترًا. كما يجب أن تكون الطائرة بدون طيار مرئية دائمًا للطيار."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "هل هناك أي استثناءات؟"
+    },
+    {
+     "speaker": "المسؤول عن الطيران المدني",
+     "voice": "male",
+     "text": "نعم، يمكن طلب استثناء إذا كان هناك سبب مشروع، مثل التصوير السينمائي أو البحث العلمي."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "شكرًا لك على هذه المعلومات."
+    },
+    {
+     "speaker": "المسؤول عن الطيران المدني",
+     "voice": "male",
+     "text": "عافاك الله. نحن دائمًا هنا لمساعدتكم."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-interview-005",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "interview",
+   "title": "Strategic Partnerships: An Interview with Saudi Business Leader",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقابل السعودي",
+     "voice": "male",
+     "text": "مرحباً بكم في هذا الاجتماع. نقدر اقتراحكم الاستراتيجي، لكن لدينا بعض المخاوف بشأن المخاطر المحتملة."
+    },
+    {
+     "speaker": "المقابل الأمريكي",
+     "voice": "female",
+     "text": "شكراً لكم. هل يمكن أن توضحوا المخاوف التي عندكم؟"
+    },
+    {
+     "speaker": "المقابل السعودي",
+     "voice": "male",
+     "text": "بالطبع. نفضل أن نركز على الحلول الأكثر استدامة، والتي يمكن أن توفر لنا فوائد طويلة الأمد."
+    },
+    {
+     "speaker": "المقابل الأمريكي",
+     "voice": "female",
+     "text": "فهمت. هل هناك أي اقتراحات أخرى يمكن أن نناقشها؟"
+    },
+    {
+     "speaker": "المقابل السعودي",
+     "voice": "male",
+     "text": "نعم، يمكننا النظر في البدائل التي قد تكون أقل خطورة، مثل الاستثمارات الأكثر تنوعاً أو الشراكات الاستراتيجية مع الشركات المحلية."
+    },
+    {
+     "speaker": "المقابل الأمريكي",
+     "voice": "female",
+     "text": "شكراً لكم على المشاركة. سنأخذ هذه الأفكار في الاعتبار ونستكشفها أكثر."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-interview-006",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Impact of Drought on Agriculture: An Interview with a Local Farmer",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "مرحبًا بك في برنامجنا اليوم. نحن هنا مع السيد أحمد، مزارع محلي، لنناقش تأثير الجفاف على الزراعة."
+    },
+    {
+     "speaker": "المزارع",
+     "voice": "male",
+     "text": "شكرًا لدعوتكم. أجل، الجفاف هو تحدي كبير لنا. نحن نعمل بجد لحرث الأرض والحفاظ على المحاصيل."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "هل هناك أي مساعدة يمكن أن نقدمها؟"
+    },
+    {
+     "speaker": "المزارع",
+     "voice": "male",
+     "text": "نعم، بالتأكيد. نحن نحتاج إلى دعم مالي وإمدادات مائية إضافية. بدون هذه المساعدة، سيكون من الصعب علينا الاستمرار."
+    },
+    {
+     "speaker": "المقابلة",
+     "voice": "female",
+     "text": "نحن نفهم التحديات التي تواجهكم. هل هناك أي خطط مستقبلية لتخفيف تأثير الجفاف؟"
+    },
+    {
+     "speaker": "المزارع",
+     "voice": "male",
+     "text": "نعم، نحن نعمل على استخدام تقنيات الري الحديثة والبحث عن مصادر مائية جديدة. نحن نأمل أن نتمكن من الاستمرار في الزراعة رغم هذه التحديات."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2-interview-007",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "interview",
+   "title": "A Sweet Visit: An Interview with a Colleague",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المراسل",
+     "voice": "male",
+     "text": "مرحباً بكم جميعا في برنامجنا اليوم. لقد زرت زميلتي في المكتب وقدمت لي بعض وجبات خفيفة. دعونا نسمع ما حدث."
+    },
+    {
+     "speaker": "الزائر",
+     "voice": "male",
+     "text": "مرحباً بك في مكتبك. لقد جئت لتقديم بعض وجبات خفيفة."
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "أهلاً وسهلاً! شكراً لك على زيارتك. ما هذا؟"
+    },
+    {
+     "speaker": "الزائر",
+     "voice": "male",
+     "text": "لقد جئت مع بعض بسكويت و شاي. آمل أن تعجبك."
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "شكراً لك! يبدو ذلك لذيذاً. هل تريد بعض قهوة؟"
+    },
+    {
+     "speaker": "الزائر",
+     "voice": "male",
+     "text": "شكراً لك، لكن لا آكل أو أشرب باليد اليسرى. هل يمكنك تقديمها لي باليمين؟"
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "بالطبع! أعتذر عن الخطأ. إليك قهوة."
+    },
+    {
+     "speaker": "الزائر",
+     "voice": "male",
+     "text": "شكراً لك. هذا لذيذ. كيف حالك؟"
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "أنا بخير، الشكر لله. كيف حالك أنت؟"
+    },
+    {
+     "speaker": "الزائر",
+     "voice": "male",
+     "text": "أنا أيضاً بخير. لقد كانت أسبوعاً بدايةً مشغولاً."
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "أفهمك. هل لديك أي خطط بعد هذه الزيارة؟"
+    },
+    {
+     "speaker": "الزائر",
+     "voice": "male",
+     "text": "في الواقع، فكرت في أن أذهب إلى المنزل. لدي اجتماعا هاما في الساعة الخامسة."
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "أوه، أنا آسفة سماع ذلك. أتمنى أن تعيد زيارتنا قريبا."
+    },
+    {
+     "speaker": "الزائر",
+     "voice": "male",
+     "text": "شكراً لك على دعوتك. لقد كان الزيارة ممتعة. حتى اللقاء."
+    },
+    {
+     "speaker": "المضيف",
+     "voice": "female",
+     "text": "إلى اللقاء. اسعدي في القيادة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2349,6 +2946,207 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-2-report-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2",
+   "textType": "report",
+   "title": "Base Defense Exercise: Iron Fortress 2023",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحبًا بكم في التقرير اليومي لمارين الدفاع المشترك قاعدة الحديدية 2023."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "اليوم، بدأت القوات المشتركة من الدولة المضيفة وقواتنا تمارين الدفاع المشترك."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "الهدف من هذا التدريب هو تعزيز القدرة على العمل المشترك وتعزيز العلاقات بين القوات."
+    },
+    {
+     "speaker": "الرقيب",
+     "voice": "female",
+     "text": "اليوم، تم التركيز على تدريبات الدفاع عن القاعدة باستخدام تقنيات جديدة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "كما تم تنظيم اجتماعات بين القادة العسكريين من كلا البلدين لمناقشة استراتيجيات الدفاع المشتركة."
+    },
+    {
+     "speaker": "الرقيب",
+     "voice": "female",
+     "text": "تمت أيضًا مناقشات حول تحسين التعاون بين القوات في المستقبل."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "سيستمر التدريب لمدة أسبوعين، مع التركيز على مختلف جوانب الدفاع عن القاعدة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "شكرًا لاهتمامكم وتابعوا تحديثاتنا."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Timely Discussion: Planning the Annual Festival",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "مرحبًا، كيف حالك؟"
+    },
+    {
+     "speaker": "أنت",
+     "voice": "female",
+     "text": "مرحبًا، أنا بخير، شكرًا. كيف يمكنني مساعدتك اليوم؟"
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "أنا هنا لنداقش الجدول الزمني لمهرجاننا السنوي."
+    },
+    {
+     "speaker": "أنت",
+     "voice": "female",
+     "text": "بالطبع، أنا مستعدة لمناقشته. ما هو الجدول الزمني المقترح؟"
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "نحن نهدف إلى الانتهاء من جميع التحضيرات في غضون شهرين."
+    },
+    {
+     "speaker": "أنت",
+     "voice": "female",
+     "text": "شكرًا لبيانك. لدي بعض المخاوف بشأن الجدول الزمني المقترح."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "أود أن أسمع مخاوفك."
+    },
+    {
+     "speaker": "أنت",
+     "voice": "female",
+     "text": "أخشى أن يكون غير واقعي في ظل الظروف الحالية، وأعتقد أنه من الصعب تحقيق هذا الجدول الزمني."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "أفهم مخاوفك. ومع ذلك، نحن نؤمن بأن هذا الجدول الزمني ضروري لتحقيق أهدافنا."
+    },
+    {
+     "speaker": "أنت",
+     "voice": "female",
+     "text": "أعتذر، ولكنني لا أعتقد هذا ممكن. لدينا العديد من المهام التي يجب أن نتممها، ووقت قصير جدا."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "أفهم وجهة نظرك. ما هو الجدول الزمني الذي تقترحينه؟"
+    },
+    {
+     "speaker": "أنت",
+     "voice": "female",
+     "text": "أعتقد أن لدينا حاجة إلى فترة لا تقل عن ثلاثة أشهر للقيام بالعمل على مستوى جيد."
+    },
+    {
+     "speaker": "الضابط",
+     "voice": "male",
+     "text": "شكرًا لرايك. سأأخذ ذلك في الاعتبار وسأعود إليك قريبًا مع تحديث."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Health Check-Up",
+   "body": "",
+   "script": [
+    {
+     "speaker": "الطبيب",
+     "voice": "male",
+     "text": "أهلاً وسهلاً، كيف حالك اليوم؟"
+    },
+    {
+     "speaker": "المريض",
+     "voice": "female",
+     "text": "أهلاً، أشعر بأنني في حالة جيدة، ولكنني هنا لأجرى فحصاً عاماً."
+    },
+    {
+     "speaker": "الطبيب",
+     "voice": "male",
+     "text": "جيد، سأبدأ بقياس ضغط الدم والنبض. (يجرى الفحوصات) ضغط الدم مرتفع قليلاً، هل أنت تحت توتر؟"
+    },
+    {
+     "speaker": "المريض",
+     "voice": "female",
+     "text": "نعم، لدي بعض التوتر في العمل."
+    },
+    {
+     "speaker": "الطبيب",
+     "voice": "male",
+     "text": "أعتقد أنك لم تهتم بصحتك مؤخراً. وزنك أعلى قليلاً من المفضل. هل أنت نشط جسدياً؟"
+    },
+    {
+     "speaker": "المريض",
+     "voice": "female",
+     "text": "لا، لم أكن أنخرط في أي نشاط جسدي مؤخراً."
+    },
+    {
+     "speaker": "الطبيب",
+     "voice": "male",
+     "text": "من المهم أن تكون نشيطاً. حاول المشي أو الرقص أو أي نشاط تفضله. أيضاً، تأكد من تناول وجبات متوازنة."
+    },
+    {
+     "speaker": "المريض",
+     "voice": "female",
+     "text": "شكراً، سأحاول تغيير بعض العادات."
+    },
+    {
+     "speaker": "الطبيب",
+     "voice": "male",
+     "text": "جيد. دعنا نناقش بعض التغييرات التي يمكنك إجراؤها."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-2p-documentary-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -2595,6 +3393,63 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-2p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Cultural Exchange: A Dialogue Between Artists",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المُقابلة",
+     "voice": "female",
+     "text": "مرحبًا بكم جميعًا، اليوم معنا الفنان أحمد الذي سيخبرنا عن تجربته في تبادل الثقافات من خلال الفن."
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "شكرًا لك على دعوتك. إن تبادل الثقافات من خلال الفن هو تجربة غنية جدًا، لكنها تأتي مع تحديات عديدة."
+    },
+    {
+     "speaker": "المُقابلة",
+     "voice": "female",
+     "text": "أعتقد أن هناك الكثير من التحديات التي تواجه الفنانين في تبادل الثقافات. كيف تتعامل مع هذه التحديات؟"
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "أعتقد أن التواصل هو المفتاح. يجب أن نكون مفتوحة على ثقافات أخرى ونحاول فهم منظورهم بينما نشارك منظورنا."
+    },
+    {
+     "speaker": "المُقابلة",
+     "voice": "female",
+     "text": "هذا مثير للاهتمام. كيف يمكن للفنانون أن يظلوا أصيلين في عملهم بينما يشاركون الثقافات الأخرى؟"
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "هذا هو التحدي الحقيقي. يجب أن نكون صادقين مع أنفسنا وثقافتنا بينما نتعلم من الثقافات الأخرى. لا يجب أن نفقد هويتنا في هذه العملية."
+    },
+    {
+     "speaker": "المُقابلة",
+     "voice": "female",
+     "text": "شكرًا لك، أحمد، على مشاركتك هذه الرائعة. أنا متأكدة أن المستمعين استمتعوا بحضورك."
+    },
+    {
+     "speaker": "أحمد",
+     "voice": "male",
+     "text": "شكرًا لك على الاستضافة. كان من العجب أن أكون هنا."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3163,6 +4018,73 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-3-analysis-003",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "analysis",
+   "title": "Drone Survey After Severe Flooding",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "مرحبا، أنا الدكتور أحمد، رئيس فريق الطوارئ في منظمة الإغاثة الدولية."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "مرحبا دكتور أحمد، أنا ليلى، مهندسة الطائرات بدون طيار في فريقنا. كيف يمكن أن نخدم في هذه الظروف؟"
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "الضربات الجوية الأخيرة التي ضربت المنطقة هي كارثية. هناك تدمير كبير للبيئة الطبيعية والبنية التحتية."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "أفهم. هل هناك مناطق محددة نركز عليها؟"
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "نعم، يجب أن نركز على المناطق التي تضررت بشكل كبير، مثل القرى القريبة من النهر. هناك ضرر كبير جدا للزراعة والبنية التحتية."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "شكرا لشرحك. سنستخدم طائراتنا بدون طيار لتقييم الأضرار التي خلفتها الفيضانات."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "هذا رائع. التقييم الأولي للضرر الذي لحق بالبنية التحتية والزراعة هو خطوة حاسمة لخطواتنا التالية."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "بالطبع، سنقوم بالتحليلات اللازمة ونقدم تقريرا مفصلا في أقرب وقت ممكن."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "شكرا جزيلا ليلى. نعتمد على خبرتكم في الطائرات بدون طيار لتقديم الدعم اللازم للضحايا."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "نحن هنا لمساعدتك. سنعمل جاهدين لضمان أن المعلومات التي نقدمها دقيقة ومنهجية."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-3-debate-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -3231,6 +4153,68 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-debate-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Future of Cybersecurity in Our Region",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "مرحبا بكم جميعا، اليوم سنناقش تدريب قوات الأمن على التعرف على النية العدائية، وهو موضوع حاسم في ظل التحديات الأمنية المتزايدة."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "أعتقد أن استخدام التقنيات الحديثة مثل الذكاء الاصطناعي يمكن أن يكون مفيدا في هذا المجال. يمكن للذكاء الاصطناعي تحليل الأنماط السلوكية والتعرف على التهديدات المحتملة."
+    },
+    {
+     "speaker": "المتحدث الثالث",
+     "voice": "male",
+     "text": "إن الحكم البشري ضروري في التعرف على النية العدائية، حيث يمكن للتهديدات أن تكون غير واضحة أو متغيرة. لا يمكن للذكاء الاصطناعي وحده أن يوفر الحل الكامل."
+    },
+    {
+     "speaker": "المتحدث الرابع",
+     "voice": "female",
+     "text": "أتفق مع المتحدث الثالث. يجب أن ندمج بين التقنيات الحديثة والتدريب البشري. كما يجب أن نؤكد على أهمية التعاون الدولي في تبادل الخبرات والمعلومات."
+    },
+    {
+     "speaker": "المتحدث الثاني",
+     "voice": "female",
+     "text": "أعتقد أن هناك حاجة إلى برامج تدريبية متخصصة يمكن أن تساعد قوات الأمن على تطوير مهاراتهم في التعرف على النية العدائية."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "بالطبع، يجب أن نأخذ في الاعتبار الفروق الثقافية والسياقات المحلية عند تطوير هذه البرامج التدريبية."
+    },
+    {
+     "speaker": "المتحدث الثالث",
+     "voice": "male",
+     "text": "كما يجب أن نؤكد على أهمية التقييم المستمر والتكيف مع التحديات الجديدة. يجب أن نكون مستعدين لمواجهة التحديات الأمنية المستقبلية."
+    },
+    {
+     "speaker": "المتحدث الرابع",
+     "voice": "female",
+     "text": "أتفق بالكامل. يجب أن نكون مرنين ونكون مستعدين للتكيف مع التغييرات. يجب أن نؤكد على أهمية التعاون بين مختلف الوكالات الأمنية."
+    },
+    {
+     "speaker": "المتحدث الأول",
+     "voice": "male",
+     "text": "باختصار، يجب أن ندمج بين التقنيات الحديثة والتدريب البشري، ونؤكد على أهمية التعاون الدولي، ونكون مرنين ونكون مستعدين للتكيف مع التحديات الجديدة."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3310,6 +4294,78 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ar-dl-3-editorial_commentary-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "editorial_commentary",
+   "title": "Coordinating Air Defense: Best Practices for Radio Communication",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "مرحباً بكم جميعا، اليوم سنناقش بعض أفضل الممارسات في الاتصال الإشعاعي بين وحدات الدفاع الجوي."
+    },
+    {
+     "speaker": "الرائد",
+     "voice": "female",
+     "text": "شكراً لك، مقدم. لقد لاحظنا أن هناك بعض المشاكل في الاتصال بين مراكز التحكم والطائرات المقاتلة."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "نعم، هذا صحيح. يجب أن نضمن الاتصال الواضح والمباشر في كل الأوقات. هذا هو السبب في أن التدريب المستمر أمر بالغ الأهمية."
+    },
+    {
+     "speaker": "الرائد",
+     "voice": "female",
+     "text": "أتفق معك. يجب أن نركز على التشغيل السليم للأجهزة الإشعاعية ونضمن أن جميع الطاقم على علم بالإجراءات القياسية."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "بالطبع. يجب أن نستخدم لغة واضحة ومحددة عندما ننقل المعلومات. هذا سيقلل من فرص الخلط أو سوء الفهم."
+    },
+    {
+     "speaker": "الرائد",
+     "voice": "female",
+     "text": "و ما هي بعض التحديات التي قد نواجهها في الاتصال الإشعاعي؟"
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "جيد، هناك عدة تحديات. على سبيل المثال، قد يكون هناك تداخل من مصادر مختلفة، أو قد يكون هناك تأخير في نقل المعلومات."
+    },
+    {
+     "speaker": "الرائد",
+     "voice": "female",
+     "text": "كيف يمكننا التغلب على هذه التحديات؟"
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "يمكننا استخدام تقنيات مثل التكرار والتأكيد على المعلومات المهمة. كما يجب أن نضمن أن جميع الطاقم على علم بأحدث الإجراءات والإرشادات."
+    },
+    {
+     "speaker": "الرائد",
+     "voice": "female",
+     "text": "شكراً لك، مقدم. أعتقد أن هذه النقاشات ستساعدنا بشكل كبير في تحسين الاتصال بين وحدات الدفاع الجوي."
+    },
+    {
+     "speaker": "المقدم",
+     "voice": "male",
+     "text": "أتفق معك. شكراً لكم جميعا على المشاركة. دعونا نستمر في العمل معاً لتحسين الاتصال وإعدادنا للعمليات المستقبلية."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ar-dl-3-lecture-001",
    "exam": "DLPT_LISTENING",
    "language": "ar",
@@ -3363,6 +4419,73 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ar-dl-3-lecture-002",
+   "exam": "DLPT_LISTENING",
+   "language": "ar",
+   "level": "3",
+   "textType": "lecture",
+   "title": "Security Breach: Detention of a Drone Operator Near Al-Salam Airport",
+   "body": "",
+   "script": [
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "مرحبا بكم جميعا. اليوم سنناقش حالة اعتقال طيار طائرة بدون طيار بالقرب من مطار السلام."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "كان طيار طائرة بدون طيار هذا يطير طائرة بدون طيار بالقرب من المطار دون الحصول على الإذن اللازم."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "تم القبض عليه من قبل قوى الأمن بعد أن رصدوا طائرته أثناء الطيران في منطقة ممنوعة."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "لقد أدى هذا الحادث إلى رفع مستوى الأمن في المطار وتقييم إجراءات الأمن الحالية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "سنناقش تفاصيل هذا الحادث وتأثيره على سياسات الأمن في المطار."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "ما هو الهدف من هذا الإخبار؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "الهدف من هذا الإخبار هو تنبيه جميع موظفي المطار إلى أهمية الالتزام بقواعد الأمن وتوفير معلومات حول هذا الحادث."
+    },
+    {
+     "speaker": "المستمع",
+     "voice": "female",
+     "text": "هل هناك أي تحديثات حول حالة طيار طائرة بدون طيار هذا؟"
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "في الوقت الحالي، لا يمكننا تقديم أي تفاصيل حول حالة طيار طائرة بدون طيار هذا بسبب تحقيقات الأمن الجارية."
+    },
+    {
+     "speaker": "المتحدث",
+     "voice": "male",
+     "text": "شكرا جميعا لاهتمامكم. إذا كان لديك أي أسئلة، فلا تتردد في طرحها."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -4293,6 +5416,96 @@
    "verified": false
   },
   {
+   "id": "ar-dl-1-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-announcement-002",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To inform people about a drone survey",
+    "To provide safety tips for future floods",
+    "To describe the damage caused by the floods",
+    "To request donations for flood victims"
+   ],
+   "answer": 0,
+   "explanation": "The announcement states that a drone survey is being conducted in the affected areas, which is the main point. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-announcement-002",
+   "stem": "What is the reason given for the drone survey?",
+   "choices": [
+    "To assess the damage caused by the floods",
+    "To deliver aid to the affected areas",
+    "To monitor the water levels",
+    "To locate missing people"
+   ],
+   "answer": 0,
+   "explanation": "The announcement states that the drone survey is being conducted to evaluate the damage caused by the floods in the affected areas.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-announcement-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-announcement-003",
+   "stem": "What is the new security condition at the base?",
+   "choices": [
+    "Condition Bravo",
+    "Condition Echo",
+    "Condition Delta",
+    "Condition Charlie"
+   ],
+   "answer": 2,
+   "explanation": "The text states that the security condition has been raised to \"حالة دلتا\", so the correct answer is Condition Delta.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-announcement-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-announcement-003",
+   "stem": "What does \"المراقبة\" mean here?",
+   "choices": [
+    "Restrictions",
+    "Monitoring",
+    "Drills",
+    "Alerts"
+   ],
+   "answer": 1,
+   "explanation": "The text uses \"المراقبة\" to indicate that there will be increased monitoring, so the correct answer is Monitoring.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-announcement-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ar-dl-1-announcement-003",
+   "stem": "What is the purpose of this announcement?",
+   "choices": [
+    "To schedule a maintenance period",
+    "To update the security condition at the base",
+    "To inform about a change in working hours",
+    "To announce a new training program"
+   ],
+   "answer": 1,
+   "explanation": "The announcement clearly states that the security condition has been raised to \"حالة دلتا\", so the correct answer is To update the security condition at the base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4721,6 +5934,78 @@
    ],
    "answer": 2,
    "explanation": "The caller says “أنا أبحث عن عمل” (I am looking for work) and “هل يمكنك مساعدتي؟” (Can you help me?), so the correct answer is A.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-voicemail-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-voicemail-002",
+   "stem": "Why does the caller mention the training?",
+   "choices": [
+    "To inform about a change in work schedule.",
+    "To announce a new policy for base security.",
+    "To remind personnel about an upcoming training session.",
+    "To request feedback on previous training sessions."
+   ],
+   "answer": 2,
+   "explanation": "The caller mentions the training to remind personnel about it, saying \"التدريب حول الوعي بالتهديد الداخلي في اليوم التالي، في الساعة الثانية عشرة ظهرًا.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-voicemail-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-1-voicemail-002",
+   "stem": "What does the word \"التهديد\" mean here?",
+   "choices": [
+    "A reward",
+    "A threat",
+    "A challenge",
+    "An opportunity"
+   ],
+   "answer": 1,
+   "explanation": "The word \"التهديد\" here refers to a threat, as in \"التدريب حول الوعي بالتهديد الداخلي\" which means \"training about awareness of the internal threat.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-voicemail-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ar-dl-1-voicemail-003",
+   "stem": "What is the reason given for the drone restriction?",
+   "choices": [
+    "To ensure the safety of festival attendees.",
+    "To maintain the privacy of festival organizers.",
+    "To avoid disturbing the local wildlife.",
+    "To prevent interference with official festival events."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To ensure the safety of festival attendees.' The voicemail states 'لضمان سلامة المشاركين في المهرجان' which translates to 'to ensure the safety of festival participants'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-1-voicemail-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ar-dl-1-voicemail-003",
+   "stem": "What is the main purpose of this voicemail?",
+   "choices": [
+    "To encourage people to attend the festival.",
+    "To inform listeners about the dates of the festival.",
+    "To provide details about the location of the festival.",
+    "To announce a restriction on drone usage near the festival."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'To announce a restriction on drone usage near the festival.' The voicemail is primarily about informing listeners that 'الاستخدام المميز للطائرات المسيرة' which translates to 'the use of drones' is not allowed near the festival base 'قاعدة المهرجان'.",
    "source": "llm",
    "verified": false
   },
@@ -5571,6 +6856,114 @@
    "verified": false
   },
   {
+   "id": "ar-dl-2-briefing-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-briefing-003",
+   "stem": "What is the main topic of the briefing?",
+   "choices": [
+    "The expansion of Al-Jabal Airfield's military operations",
+    "New restrictions on drone usage near Al-Jabal Airfield",
+    "The installation of new anti-drone technology at Al-Jabal Airfield",
+    "The opening of a new civilian airport near Al-Jabal Airfield"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is new restrictions on drone usage near Al-Jabal Airfield. This is clear from the repeated mentions of drones and new rules, such as the restriction of drone flights to a 5-kilometer radius from the airfield and the requirement for operators to register their drones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-briefing-003",
+   "stem": "What is the new rule regarding drone flights near Al-Jabal Airfield?",
+   "choices": [
+    "Drones are now allowed to fly within a 5-kilometer radius of the airfield",
+    "Drones must be equipped with special transponders to fly within a 5-kilometer radius of the airfield",
+    "Drones must fly at an altitude of at least 120 meters within a 5-kilometer radius of the airfield",
+    "Drones are no longer allowed to fly within a 5-kilometer radius of the airfield"
+   ],
+   "answer": 3,
+   "explanation": "The text explicitly states that drones are no longer allowed to fly within a 5-kilometer radius of Al-Jabal Airfield. The relevant phrase is: \"لا يسمح بتشغيل الطائرات بدون طيار ضمن نطاق 5 كيلومترات من قاعدة الجبل الجوية.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-briefing-003",
+   "stem": "In the phrase \"تجديد التسجيل\" what does \"تجديد\" mean here?",
+   "choices": [
+    "To cancel",
+    "To renew",
+    "To register",
+    "To update"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"تجديد\" means \"to renew\". The text states that drone operators must renew their registration every year. The relevant phrase is: \"يجب تجديد التسجيل سنويًا.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-briefing-004",
+   "stem": "What is the main topic of this briefing?",
+   "choices": [
+    "A delivery driver was turned away from an entry control point.",
+    "A delivery driver was praised for reporting a security threat.",
+    "A delivery driver was injured in an accident at an entry control point.",
+    "A routine delivery driver was arrested for smuggling."
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the incident involving a delivery driver being turned away from an entry control point. The text discusses the driver's arrival, the inspection process, and the decision to deny entry, which are the central points of the briefing.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-briefing-004",
+   "stem": "Why was the delivery driver turned away from the entry control point?",
+   "choices": [
+    "He was carrying a suspicious package.",
+    "He was not wearing a proper uniform.",
+    "He failed to stop at the checkpoint.",
+    "He did not have the correct paperwork."
+   ],
+   "answer": 2,
+   "explanation": "The driver was turned away because he failed to stop at the checkpoint. The text states, \"السيارة لم تتوقف عند نقطة التفتيش\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-briefing-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-briefing-004",
+   "stem": "In the phrase \"تم رفض الدخول\", what does \"تم رفض\" mean here?",
+   "choices": [
+    "Was inspected",
+    "Was denied",
+    "Was accepted",
+    "Was delayed"
+   ],
+   "answer": 1,
+   "explanation": "In this context, \"تم رفض\" means \"was denied\". The full phrase \"تم رفض الدخول\" translates to \"entry was denied\", indicating that the driver was not allowed to enter the facility.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-2-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5675,6 +7068,60 @@
    ],
    "answer": 2,
    "explanation": "In the context of the conversation, 'المهاجر' refers to a person who moves to another country for work. This is clear from the discussion about labor migration and the role of migrant workers in the economy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-conversation-003",
+   "stem": "According to the text, what is the main reason for the change in the annual conference's date?",
+   "choices": [
+    "The new date is more convenient for international participants.",
+    "The organizers wanted to attract more local participants.",
+    "The organizers wanted to avoid the hot weather.",
+    "The previous date conflicted with another major event."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is that the new date is more convenient for international participants. This is implied when the male speaker says: \"لقد وجدنا أن شهر أكتوبر يكون أكثر ملاءمة للمشاركين الدوليين.\" The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-conversation-003",
+   "stem": "What does the female speaker imply when she says \"نأمل أن يكون هذا التغيير للأفضل\"?",
+   "choices": [
+    "She believes the change will definitely be successful.",
+    "She is unsure about the change but hopes for the best.",
+    "She is excited about the change.",
+    "She thinks the change is unnecessary."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is that she is unsure about the change but hopes for the best. This is implied by the phrase \"نأمل أن يكون هذا التغيير للأفضل,\" which expresses hope despite uncertainty. The other options do not capture this nuance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-conversation-003",
+   "stem": "What is the female speaker's attitude towards the new location for the conference?",
+   "choices": [
+    "She has not considered the new location yet.",
+    "She is disappointed with the new location.",
+    "She is happy with the new location.",
+    "She is indifferent to the new location."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is that she is happy with the new location. This is implied when she says: \"إن المكان الجديد يبدو ممتعا جدا.\" The other options do not match this positive attitude.",
    "source": "llm",
    "verified": false
   },
@@ -5837,6 +7284,222 @@
    ],
    "answer": 2,
    "explanation": "In this context, \"هدف\" means objective. Ahmed is referring to his clear objective of being the best in what he does.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-interview-004",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The economic impact of drone regulations on local businesses.",
+    "The new rules for flying drones near Al-Jabal Airfield.",
+    "The history of Al-Jabal Airfield.",
+    "The types of drones available on the market."
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the interview is stated clearly in the first line: “الكلام اليوم عن اللوائح الجديدة للطائرات بدون طيار بالقرب من قاعدة الجبال الجوية.” (The topic today is the new regulations for drones near Al-Jabal Airfield.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-interview-004",
+   "stem": "Who is speaking in this interview?",
+   "choices": [
+    "A local resident affected by the new rules.",
+    "A representative from the Civil Aviation Authority.",
+    "A military officer from Al-Jabal Airfield.",
+    "A drone pilot."
+   ],
+   "answer": 1,
+   "explanation": "The speaker is identified as “المسؤول عن الطيران المدني” (the representative from the Civil Aviation Authority), who explains the new rules.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-interview-004",
+   "stem": "What does the word “ممنوع” mean in this context?",
+   "choices": [
+    "Required",
+    "Allowed",
+    "Prohibited",
+    "Recommended"
+   ],
+   "answer": 2,
+   "explanation": "The word “ممنوع” (prohibited) appears in the phrase “ممنوع طيران الطائرات بدون طيار على ارتفاع أقل من 120 مترًا” (Flying drones at an altitude of less than 120 meters is prohibited).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-005",
+   "stem": "What is the main reason the Saudi counterpart does not accept the proposed strategy?",
+   "choices": [
+    "The proposed strategy is too risky.",
+    "The proposed strategy is too costly.",
+    "The proposed strategy is not innovative enough.",
+    "The proposed strategy is not in line with their company's values."
+   ],
+   "answer": 0,
+   "explanation": "The Saudi counterpart implies that the proposed strategy is too risky when they say \"لنا بعض المخاوف بشأن المخاطر المحتملة\" (We have some concerns regarding the potential risks). This suggests that they are worried about the risks involved in the proposed strategy, which is the main reason they do not accept it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-005",
+   "stem": "What does the Saudi counterpart imply when they say \"نحن نفضل أن نركز على الحلول الأكثر استدامة\" (We prefer to focus on the more sustainable solutions)?",
+   "choices": [
+    "They want to use more traditional methods.",
+    "They want to reduce costs in the long run.",
+    "They want to use more eco-friendly materials.",
+    "They want to find a long-term solution that is less risky."
+   ],
+   "answer": 3,
+   "explanation": "The Saudi counterpart implies that they want to find a long-term solution that is less risky. They use the word \"أكثر استدامة\" (more sustainable) to suggest that they want a solution that will last longer and be more reliable, which is less risky in the long run.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-005",
+   "stem": "What is the Saudi counterpart's attitude towards the proposed strategy?",
+   "choices": [
+    "They are supportive of it.",
+    "They are enthusiastic about it.",
+    "They are indifferent to it.",
+    "They are skeptical of it."
+   ],
+   "answer": 3,
+   "explanation": "The Saudi counterpart's attitude towards the proposed strategy is skeptical. They say \"لنا بعض المخاوف بشأن المخاطر المحتملة\" (We have some concerns regarding the potential risks), which indicates that they are not fully convinced by the proposed strategy and have doubts about its potential risks.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-006",
+   "stem": "What does the farmer imply when he says \"نحن نعمل بجد\"?",
+   "choices": [
+    "The farmer is working hard but is not getting enough support.",
+    "The farmer is working hard but is asking for more hours of work.",
+    "The farmer is working hard and is satisfied with the progress.",
+    "The farmer is working hard but not effectively."
+   ],
+   "answer": 0,
+   "explanation": "The farmer implies that they are working hard but are not getting enough support. This is inferred from the context of the conversation where he mentions the challenges posed by the drought and the need for assistance. The phrase \"نحن نعمل بجد\" is followed by a discussion about the difficulties they face, indicating that their hard work is not sufficient without additional help.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-006",
+   "stem": "What does the interviewer imply when he says \"هل هناك أي مساعدة التي يمكن أن نقدمها\"?",
+   "choices": [
+    "The interviewer is offering to provide assistance directly.",
+    "The interviewer is indicating that he is unable to provide any assistance.",
+    "The interviewer is suggesting that the farmer should seek help from others.",
+    "The interviewer is asking if there is any help that can be provided by the government."
+   ],
+   "answer": 0,
+   "explanation": "The interviewer implies that he is offering to provide assistance directly. This is inferred from the phrasing \"هل هناك أي مساعدة التي يمكن أن نقدمها\" which suggests a willingness to help. The use of \"نقدمها\" indicates that the assistance is being offered by the interviewer or the organization he represents.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-006",
+   "stem": "What does the farmer imply when he says \"نحن نأمل أن نتمكن من الاستمرار\"?",
+   "choices": [
+    "The farmer is uncertain about their ability to continue farming.",
+    "The farmer is asking for more time to decide if they can continue.",
+    "The farmer is confident that they will be able to continue farming.",
+    "The farmer is indicating that they will stop farming soon."
+   ],
+   "answer": 0,
+   "explanation": "The farmer implies that he is uncertain about their ability to continue farming. This is inferred from the phrase \"نحن نأمل أن نتمكن من الاستمرار\" which suggests hope and uncertainty rather than confidence. The use of \"نأمل\" indicates that the continuation of farming is not guaranteed and depends on various factors, including the assistance they receive.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-007",
+   "stem": "What does the speaker imply when he says \"فكرت في أن أذهب إلى المنزل\"?",
+   "choices": [
+    "He is saying he wants to leave because he is not enjoying the visit.",
+    "He is politely trying to leave because he has other commitments.",
+    "He is tired and needs to rest at home.",
+    "He is hungry and wants to go home to eat."
+   ],
+   "answer": 1,
+   "explanation": "The speaker implies that he has other commitments by saying \"لدي اجتماع مهم في الساعة الخامسة\". He is not stating directly that he is leaving because he is not enjoying the visit, hungry, or tired.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-007",
+   "stem": "What does the speaker imply when she says \"أتمنى أن تعيد visitنا\"?",
+   "choices": [
+    "She wants him to visit her again soon.",
+    "She is asking him to bring more snacks next time.",
+    "She is saying goodbye to him.",
+    "She is implying that she did not enjoy his visit."
+   ],
+   "answer": 0,
+   "explanation": "The speaker implies that she wants him to visit her again soon by saying \"أتمنى أن تعيد visitنا\". She is not saying goodbye, asking for more snacks, or implying that she did not enjoy his visit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-interview-007-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "ar-dl-2-interview-007",
+   "stem": "What does the speaker imply when he says \"شكراً لك على inviteك\"?",
+   "choices": [
+    "He is asking for more snacks.",
+    "He is thanking her for the invitation and the pleasant time.",
+    "He is implying that he wants to leave immediately.",
+    "He is saying that he did not enjoy the visit."
+   ],
+   "answer": 1,
+   "explanation": "The speaker implies that he is thankful for the invitation and the pleasant time by saying \"شكراً لك على inviteك\". He is not saying that he did not enjoy the visit, wanting to leave immediately, or asking for more snacks.",
    "source": "llm",
    "verified": false
   },
@@ -6111,6 +7774,168 @@
    "verified": false
   },
   {
+   "id": "ar-dl-2-report-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ar-dl-2-report-003",
+   "stem": "What is the main topic of the report?",
+   "choices": [
+    "A joint defense exercise between foreign and host-nation forces",
+    "A political summit between the two countries",
+    "A new type of military equipment used in the exercise",
+    "A cultural exchange program"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a joint defense exercise, as indicated by phrases such as 'تمارين الدفاع المشترك' (joint defense exercises) and 'قوات الدولة المضيفة' (host-nation forces).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-report-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ar-dl-2-report-003",
+   "stem": "What is the name of the defense exercise?",
+   "choices": [
+    "Falcon Shield 2023",
+    "Steel Shield 2023",
+    "Iron Fortress 2023",
+    "Desert Storm 2023"
+   ],
+   "answer": 2,
+   "explanation": "The name of the defense exercise is 'قاعدة الحديدية 2023' (Iron Fortress 2023), as stated in the report.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2-report-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-2-report-003",
+   "stem": "What does 'التدريب' mean here?",
+   "choices": [
+    "The theoretical lecture",
+    "The initial planning",
+    "The final evaluation",
+    "The practical exercise"
+   ],
+   "answer": 3,
+   "explanation": "Here, 'التدريب' refers to the practical exercise, as it is used in the context of 'تمارين الدفاع المشترك' (joint defense exercises) and describes the activities carried out during the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-conversation-001",
+   "stem": "What is the speaker's real opinion about the suggested timeline?",
+   "choices": [
+    "He thinks it is too short.",
+    "He thinks it is appropriate.",
+    "He thinks it is too long.",
+    "He thinks it is flexible."
+   ],
+   "answer": 0,
+   "explanation": "The speaker implies that the timeline is unrealistic when he says \"لدي بعض المخاوف بشأن الجدول الزمني المقترح\" and \"أخشى أن يكون غير واقعي\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-conversation-001",
+   "stem": "What does the speaker mean by the phrase \"الظروف الحالية\"?",
+   "choices": [
+    "The current political climate.",
+    "The current resource limitations.",
+    "The current weather conditions.",
+    "The current technological advancements."
+   ],
+   "answer": 1,
+   "explanation": "The speaker implies that the current circumstances, likely the resource limitations, make the timeline unrealistic when he says \"في ظل الظروف الحالية، أعتقد أنه من الصعب تحقيق هذا الجدول الزمني\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-conversation-001",
+   "stem": "What is the speaker's intention when he says \"أعتذر، ولكنني لا أعتقد أن هذا ممكن\"?",
+   "choices": [
+    "He is apologizing for a mistake.",
+    "He is requesting additional resources.",
+    "He is asking for more time.",
+    "He is refusing to accept the timeline."
+   ],
+   "answer": 3,
+   "explanation": "The speaker is indirectly refusing to accept the suggested timeline by saying \"أعتذر، ولكنني لا believes it is not possible.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-conversation-002",
+   "stem": "What does the doctor imply about the patient's recent health habits?",
+   "choices": [
+    "He has been exercising more than usual.",
+    "He has been eating a balanced diet.",
+    "He has been neglecting his health.",
+    "He has been sleeping well."
+   ],
+   "answer": 2,
+   "explanation": "The doctor implies that the patient has been neglecting his health by saying \"أعتقد أنك لم تهتم بصحتك مؤخرًا\" (I think you have not been taking care of your health recently). This suggests that the patient has not been maintaining good health habits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-conversation-002",
+   "stem": "What does the patient imply about his lifestyle?",
+   "choices": [
+    "He is too busy to make any changes.",
+    "He is planning to make some changes.",
+    "He is satisfied with his current lifestyle.",
+    "He does not see the need for any changes."
+   ],
+   "answer": 1,
+   "explanation": "The patient implies that he is planning to make some changes by saying \"سأحاول تغيير بعض العادات\" (I will try to change some habits). This indicates that he is aware of the need to improve his lifestyle.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-conversation-002",
+   "stem": "What does the doctor imply about the patient's weight?",
+   "choices": [
+    "It is ideal for his height.",
+    "It is slightly above the recommended range.",
+    "It is not a concern at the moment.",
+    "It is significantly below the recommended range."
+   ],
+   "answer": 1,
+   "explanation": "The doctor implies that the patient's weight is slightly above the recommended range by saying \"ووزنك أعلى قليلاً من المفضل\" (and your weight is slightly higher than recommended). This suggests that the patient needs to work on losing some weight.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-2p-documentary-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2+",
@@ -6323,6 +8148,60 @@
    ],
    "answer": 3,
    "explanation": "The word \"المتاعب\" means problems in this context. The staff member says, \"نحن نعمل جاهدين لتجنب مثل هذه المتاعب في المستقبل.\" (We are working hard to avoid such problems in the future.), indicating that they are referring to the issues or difficulties that occurred.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-interview-004",
+   "stem": "What is the interviewer implying when she says \"أعتقد أن هناك الكثير من التحديات التي تواجه الفنانين في تبادل الثقافات\"?",
+   "choices": [
+    "She is stating that cultural exchange is not important.",
+    "She is highlighting the difficulties artists face in cultural exchange.",
+    "She is saying that artists do not want to exchange cultures.",
+    "She is suggesting that cultural exchange is easy."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"She is highlighting the difficulties artists face in cultural exchange.\" The interviewer implies this by stating \"أعتقد أن هناك الكثير من التحديات التي تواجه الفنانين في تبادل الثقافات\", which indicates that there are many challenges that artists face in cultural exchange.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-interview-004",
+   "stem": "What does the artist mean by \"أعتقد أن التواصل هو المفتاح\"?",
+   "choices": [
+    "He thinks that communication is the key to successful cultural exchange.",
+    "He feels that art is the most important aspect.",
+    "He believes that money is the key to success.",
+    "He believes that cultural exchange is not necessary."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is \"He thinks that communication is the key to successful cultural exchange.\" The artist implies this by saying \"أعتقد أن التواصل هو المفتاح\", emphasizing the importance of communication in overcoming challenges in cultural exchange.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-2p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "ar-dl-2p-interview-004",
+   "stem": "What is the interviewer suggesting when she asks \"كيف يمكن للفنانون أن يظلوا أصيلين في عملهم بينما يشاركون الثقافات الأخرى\"?",
+   "choices": [
+    "She is suggesting that artists should completely abandon their own culture.",
+    "She is asking how artists can maintain their authenticity while engaging in cultural exchange.",
+    "She is stating that authenticity is not important in art.",
+    "She is implying that it is easy for artists to remain authentic while exchanging cultures."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"She is asking how artists can maintain their authenticity while engaging in cultural exchange.\" The interviewer implies this by asking \"كيف يمكن للفنانون أن يظلوا أصيلين في عملهم بينما يشاركون الثقافات الأخرى\", which shows her concern about the balance between cultural exchange and maintaining artistic authenticity.",
    "source": "llm",
    "verified": false
   },
@@ -6867,6 +8746,60 @@
    "verified": false
   },
   {
+   "id": "ar-dl-3-analysis-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-analysis-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The benefits of drones in agriculture.",
+    "The challenges of drone operations in urban areas.",
+    "The legal restrictions on drone usage in emergency situations.",
+    "The use of drones in assessing flood damage."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the use of drones in assessing flood damage, as indicated by the repeated mention of drones and their role in evaluating the impact of the floods, such as in the phrase 'استخدام الطائرات بدون طيار لتقييم الأضرار التي خلفتها الفيضانات'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-analysis-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-analysis-003",
+   "stem": "What can be inferred about the current state of the affected areas?",
+   "choices": [
+    "They have minimal damage and can be easily repaired.",
+    "They are fully recovered and require no further assistance.",
+    "They are not accessible due to ongoing flooding.",
+    "The damage is extensive and requires immediate attention."
+   ],
+   "answer": 3,
+   "explanation": "The inference that the damage is extensive and requires immediate attention is supported by statements like 'الضرر كبير جدا' and 'الضرر الذي لحق بالبنية التحتية والزراعة' which indicate significant damage needing urgent attention.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-analysis-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-analysis-003",
+   "stem": "What does the phrase 'التقييم الأولي' mean in this context?",
+   "choices": [
+    "A legal evaluation of the responsibilities.",
+    "A preliminary assessment of the situation.",
+    "A final report on the damage.",
+    "A detailed analysis of the long-term effects."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'التقييم الأولي' means 'a preliminary assessment of the situation', as it is used to describe the initial findings from the drone survey, as in 'التقييم الأولي للضرر الذي لحق بالبنية التحتية'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-3-debate-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -6917,6 +8850,60 @@
    ],
    "answer": 3,
    "explanation": "The phrase 'بناء الجسور' is used to describe how language helps to connect different cultures and promote understanding. This is clear from the context: 'اللغة هي وسيلة التواصل الأساسية التي تربط بين الثقافات وتيسّر التبادل الثقافي، أي أنّها تُبْنِي الجسور بين الناس'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-debate-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-debate-002",
+   "stem": "What is the main topic of this debate?",
+   "choices": [
+    "The impact of cyber attacks on regional stability",
+    "Training security forces to recognize hostile intent",
+    "The use of artificial intelligence in military operations",
+    "The importance of international cooperation in cybersecurity"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is (C) because the speakers repeatedly discuss the need for training security forces to recognize hostile intent, such as in the phrase \"من الضروري تدريب قوات الأمن على التعرف على النية العدائية\" (It is essential to train security forces to recognize hostile intent).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-debate-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-debate-002",
+   "stem": "What can be inferred about the speaker labeled \"المتحدث third\"?",
+   "choices": [
+    "They prefer to rely on international experts for security training",
+    "They believe that technology alone can solve security issues",
+    "They are against the use of any new technologies in security",
+    "They think that human judgment is crucial in recognizing hostile intent"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is (B) because the speaker says \"إن الحكم البشري ضروري في التعرف على النية العدائية، حيث يمكن للتهديدات أن تكون غير واضحة أو متغيرة\" (Human judgment is necessary in recognizing hostile intent, as threats can be unclear or variable).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-debate-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-debate-002",
+   "stem": "What does the word \"التهديدات\" mean here?",
+   "choices": [
+    "Changes",
+    "Threats",
+    "Challenges",
+    "Opportunities"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is (C) because the speaker uses \"التهديدات\" to refer to potential dangers or risks, as in \"يمكن للتهديدات أن تكون غير واضحة أو متغيرة\" (Threats can be unclear or variable).",
    "source": "llm",
    "verified": false
   },
@@ -6975,6 +8962,60 @@
    "verified": false
   },
   {
+   "id": "ar-dl-3-editorial_commentary-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-editorial_commentary-002",
+   "stem": "What is the main topic of this text?",
+   "choices": [
+    "The importance of clear radio communication in air defense",
+    "The history of air defense systems",
+    "The latest technological advancements in air defense",
+    "The role of individual pilots in air defense missions"
+   ],
+   "answer": 0,
+   "explanation": "The text focuses on the essentials of radio communication in air defense. Key phrases include 'الإتصال الإشعاعي' (radio communication) and 'الدفاع الجوي' (air defense), indicating that the main topic is the importance of clear communication in coordinating air defense efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-editorial_commentary-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "ar-dl-3-editorial_commentary-002",
+   "stem": "What can be inferred about the intended audience of this text?",
+   "choices": [
+    "Politicians and policymakers",
+    "Commercial pilots and airline staff",
+    "Air defense personnel and radio operators",
+    "General public interested in military history"
+   ],
+   "answer": 2,
+   "explanation": "The text uses specialized terms like 'مراكز التحكم' (control centers) and 'الطائرات المقاتلة' (fighter aircraft), suggesting that it is intended for air defense personnel and radio operators who need to understand best practices for radio communication.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-editorial_commentary-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-editorial_commentary-002",
+   "stem": "What does 'التشغيل' mean here?",
+   "choices": [
+    "The training of personnel",
+    "The use of radio systems",
+    "The design of radio equipment",
+    "The maintenance of aircraft"
+   ],
+   "answer": 1,
+   "explanation": "The text states 'التشغيل السليم للأجهزة الإشعاعية' (proper operation of radio equipment), indicating that 'التشغيل' refers to the use of radio systems. This is further supported by the context of discussing communication procedures.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ar-dl-3-lecture-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "3",
@@ -7025,6 +9066,60 @@
    ],
    "answer": 0,
    "explanation": "In the lecture, the word \"التزام\" is used to mean adherence. The lecturer says: \"من الضروري أن نلتزم بالقوانين الجديدة للسلامة المرورية.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-lecture-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "ar-dl-3-lecture-002",
+   "stem": "What is the main topic of this lecture?",
+   "choices": [
+    "The detention of a drone operator near Al-Salam Airport",
+    "The impact of drones on airport security",
+    "The legal framework for drone operations in the country",
+    "The history of drone technology and its uses"
+   ],
+   "answer": 0,
+   "explanation": "The lecture focuses on the detention of a drone operator near Al-Salam Airport, as indicated by the speaker's opening statement: \"اليوم سنناقش حالة اعتقال operator طيران بدون طيار بالقرب من مطار السلام.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-lecture-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "detail",
+   "passageId": "ar-dl-3-lecture-002",
+   "stem": "What was the drone operator doing when he was detained?",
+   "choices": [
+    "He was flying his drone near the airport without permission",
+    "He was testing a new drone model for the military",
+    "He was conducting a survey of the airport's security measures",
+    "He was attempting to smuggle goods into the country using his drone"
+   ],
+   "answer": 0,
+   "explanation": "The speaker states that the drone operator was flying his drone near the airport without permission: \"كان operator طيران بدون طيار هذا يطير drone بالقرب من المطار دون الحصول على الإذن اللازم.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ar-dl-3-lecture-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "ar-dl-3-lecture-002",
+   "stem": "In the phrase \"تم القبض عليه من قبل قوى الأمن\", what does \"قوى الأمن\" mean here?",
+   "choices": [
+    "Security forces",
+    "Military personnel",
+    "Police officers",
+    "Airport staff"
+   ],
+   "answer": 0,
+   "explanation": "The phrase \"تم القبض عليه من قبل قوى الأمن\" refers to the security forces that detained the drone operator. The context of the lecture, which discusses airport security, supports this interpretation.",
    "source": "llm",
    "verified": false
   },

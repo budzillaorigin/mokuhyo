@@ -19,14 +19,16 @@ TOOLS = Path(__file__).resolve().parents[1]
 REPO = TOOLS.parent
 PACKS = REPO / "content" / "packs"
 LOCK = TOOLS / "release" / "packs.lock"
-KEEP = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite", "exam.manifest.json", "dictionary.json")
+KEEP = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite", "exam.manifest.json", "dictionary.json",
+        # Phase 8 pack files (BRIEF_PHASE8 C-03, C-05, C-07, C-08, C-09)
+        "culture.json", "pragmatics.json", "personas.json", "feeds.json")
 
 
 def build_zip(out: Path) -> dict:
     counts = {}
     with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         for lang_dir in sorted(p for p in PACKS.iterdir() if p.is_dir()):
-            files = [lang_dir / f for f in KEEP if (lang_dir / f).is_file()]
+            files = [lang_dir / f for f in KEEP if (lang_dir / f).is_file()] + sorted(lang_dir.glob("track-*.json"))
             audio = sorted((lang_dir / "audio").glob("*.ogg")) if (lang_dir / "audio").is_dir() else []
             for f in files + audio:
                 z.write(f, f.relative_to(PACKS).as_posix())

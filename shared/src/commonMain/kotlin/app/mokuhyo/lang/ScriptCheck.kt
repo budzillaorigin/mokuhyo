@@ -50,7 +50,7 @@ object ScriptCheck {
         "en" to ("the and of to is are was were you your what did do does in on at for with this that it be have has will would not " +
             "a an about from by as or but into their they he she his her its which more some little than then there these those also only " +
             "very can could should may might when where how why who").split(" ").toSet(),
-        "es" to "el la los las de del que y en un una es por con para no se su al lo como más pero sus le ya o fue muy qué usted está".split(" ").toSet(),
+        "es" to "el la los las de del que y en un una es por con para no se su al lo como más pero sus le ya o fue muy qué usted está a".split(" ").toSet(),
         "fr" to "le la les de des du et en un une est que qui pour pas dans sur au avec ce il elle nous vous je ne se son sa".split(" ").toSet(),
         "de" to "der die das und ist nicht ein eine zu den von mit sich des auf für im dem auch es an als wir sie ich haben wird".split(" ").toSet(),
         "pt-BR" to "o a os as de do da dos das que e em um uma é para com não no na por mais se você foi está ao".split(" ").toSet(),

@@ -514,6 +514,48 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-1-announcement-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "announcement",
+   "title": "New Drone Regulations Near Airfield",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Hôte de l'aérodrome",
+     "voice": "male",
+     "text": "Bonjour à tous,"
+    },
+    {
+     "speaker": "Hôte de l'aérodrome",
+     "voice": "male",
+     "text": "nouvelles règles pour les drones près de l'aérodrome militaire commencent demain."
+    },
+    {
+     "speaker": "Hôte de l'aérodrome",
+     "voice": "male",
+     "text": "Il est interdit de voler des drones dans un rayon de cinq kilomètres de l'aérodrome."
+    },
+    {
+     "speaker": "Hôte de l'aérodrome",
+     "voice": "male",
+     "text": "C'est pour éviter les interférences avec les avions militaires."
+    },
+    {
+     "speaker": "Hôte de l'aérodrome",
+     "voice": "male",
+     "text": "Merci pour votre compréhension."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-1-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -739,6 +781,48 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-1-conversation-006",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "conversation",
+   "title": "Preparing the Defense Exercise",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Capitaine",
+     "voice": "male",
+     "text": "Bonjour à tous, aujourd'hui nous commençons un exercice de défense biologique."
+    },
+    {
+     "speaker": "Soldat 1",
+     "voice": "female",
+     "text": "D'accord, capitaine. Quels sont nos objectifs?"
+    },
+    {
+     "speaker": "Capitaine",
+     "voice": "male",
+     "text": "Nous devons coordonner nos efforts avec les forces locales."
+    },
+    {
+     "speaker": "Soldat 2",
+     "voice": "male",
+     "text": "Compris, capitaine. Quand commençons-nous?"
+    },
+    {
+     "speaker": "Capitaine",
+     "voice": "male",
+     "text": "Nous commençons dans une heure. Préparez-vous."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-1-instructions-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -849,6 +933,85 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-instructions-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Post-Attack Reconnaissance Instructions",
+   "body": "",
+   "script": [
+    {
+     "speaker": "L'opérateur",
+     "voice": "female",
+     "text": "Attention, tous les habitants. Une alerte à la fusée a été déclenchée. Veuillez suivre ces instructions."
+    },
+    {
+     "speaker": "L'opérateur",
+     "voice": "female",
+     "text": "Après l'alerte, inspectez les dégâts dans votre zone immédiate."
+    },
+    {
+     "speaker": "L'opérateur",
+     "voice": "female",
+     "text": "Signalez tout objet suspect aux autorités."
+    },
+    {
+     "speaker": "L'opérateur",
+     "voice": "female",
+     "text": "Évitez les zones dangereuses comme les bâtiments endommagés."
+    },
+    {
+     "speaker": "L'opérateur",
+     "voice": "female",
+     "text": "Restez calme et attendez les instructions supplémentaires. Merci."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-1-instructions-005",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "1",
+   "textType": "instructions",
+   "title": "Drone Survey Instructions After a Flood",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Coordinateur",
+     "voice": "male",
+     "text": "Bonjour à tous, nous allons commencer l'enquête par drone pour évaluer les dégâts causés par les inondations."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "female",
+     "text": "D'accord, je suis prêt avec le drone. Il est équipé d'une caméra pour prendre des photos et des vidéos des zones critiques."
+    },
+    {
+     "speaker": "Coordinateur",
+     "voice": "male",
+     "text": "Parfait. Concentrez-vous sur les zones fortement touchées par les inondations. Nous avons besoin de ces informations pour planifier les opérations de secours."
+    },
+    {
+     "speaker": "Opérateur",
+     "voice": "female",
+     "text": "Compris. Je vais survoler ces zones et transmettre les données en temps réel."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1740,6 +1903,130 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-2-briefing-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Drone Survey After the Loire Floods",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Chef d'équipe",
+     "voice": "male",
+     "text": "Bonjour à tous, aujourd'hui nous allons discuter de notre prochaine mission de cartographie par drone après les récentes inondations dans la vallée de la Loire."
+    },
+    {
+     "speaker": "Membre 1",
+     "voice": "female",
+     "text": "Quelles zones allons-nous surveiller exactement ?"
+    },
+    {
+     "speaker": "Chef d'équipe",
+     "voice": "male",
+     "text": "Nous allons commencer par la vallée de la Loire, en particulier les zones autour d'Orléans et de Tours. Ces régions ont été particulièrement touchées par les inondations."
+    },
+    {
+     "speaker": "Membre 2",
+     "voice": "male",
+     "text": "Quels types de drones allons-nous utiliser ?"
+    },
+    {
+     "speaker": "Chef d'équipe",
+     "voice": "male",
+     "text": "Nous utiliserons principalement des drones équipés de caméras haute résolution et de capteurs LiDAR pour obtenir des images détaillées et des données topographiques."
+    },
+    {
+     "speaker": "Membre 3",
+     "voice": "female",
+     "text": "Quelles sont les précautions de sécurité que nous devons prendre ?"
+    },
+    {
+     "speaker": "Chef d'équipe",
+     "voice": "male",
+     "text": "Il est crucial de respecter les consignes de sécurité, surtout en vol. Nous devons éviter de survoler les zones peuplées et respecter les limites de hauteur de vol. De plus, nous devons coordonner nos vols avec les autres équipes de secours."
+    },
+    {
+     "speaker": "Membre 1",
+     "voice": "female",
+     "text": "Combien de temps durera la mission ?"
+    },
+    {
+     "speaker": "Chef d'équipe",
+     "voice": "male",
+     "text": "La mission devrait durer environ une semaine, en fonction des conditions météorologiques et de l'ampleur des dégâts. Nous devons être flexibles et prêts à ajuster notre plan si nécessaire."
+    },
+    {
+     "speaker": "Membre 2",
+     "voice": "male",
+     "text": "Quels sont les objectifs principaux de cette mission ?"
+    },
+    {
+     "speaker": "Chef d'équipe",
+     "voice": "male",
+     "text": "Notre objectif est de cartographier les zones sinistrées pour évaluer les dégâts et fournir des informations précises aux équipes de secours et aux autorités locales."
+    },
+    {
+     "speaker": "Membre 3",
+     "voice": "female",
+     "text": "Merci pour ces informations. Nous sommes prêts à commencer la mission dès que possible."
+    },
+    {
+     "speaker": "Chef d'équipe",
+     "voice": "male",
+     "text": "Excellent. Nous nous réunirons à nouveau demain pour finaliser les détails. Bonne journée à tous."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-briefing-005",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "briefing",
+   "title": "Residents of Saint-Jacques Express Concerns About Airfield Security",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour à tous, nous sommes ici aujourd'hui à Saint-Jacques pour discuter des préoccupations des résidents concernant les mesures de sécurité accrues autour de la base aérienne."
+    },
+    {
+     "speaker": "Résident 1",
+     "voice": "male",
+     "text": "Oui, nous sommes inquiets. Les nouvelles mesures de sécurité ont augmenté le nombre de véhicules de sécurité, et le bruit est devenu insupportable."
+    },
+    {
+     "speaker": "Résident 2",
+     "voice": "female",
+     "text": "Exactement. Et ce n'est pas seulement le bruit. Ils restreignent l'accès à certaines zones, ce qui complique nos déplacements quotidiens."
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Nous comprenons vos préoccupations. La sécurité est importante, mais nous travaillons avec la base aérienne pour trouver un équilibre."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Merci à tous pour vos contributions. Nous espérons que cette discussion aidera à résoudre ces problèmes."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-2-conversation-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -1803,6 +2090,73 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-conversation-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "conversation",
+   "title": "NATO Exercise in the Alps",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Général Dupont",
+     "voice": "male",
+     "text": "Bonjour à tous, aujourd'hui nous allons discuter de l'exercice de l'OTAN dans les Alpes."
+    },
+    {
+     "speaker": "Colonel Martin",
+     "voice": "female",
+     "text": "Bonjour Général, nous sommes prêts à commencer."
+    },
+    {
+     "speaker": "Général Dupont",
+     "voice": "male",
+     "text": "Parfait. Tout d'abord, nous devons confirmer les dates de l'exercice."
+    },
+    {
+     "speaker": "Colonel Martin",
+     "voice": "female",
+     "text": "Nous avons quelques préoccupations concernant les dates proposées."
+    },
+    {
+     "speaker": "Général Dupont",
+     "voice": "male",
+     "text": "Quelles sont vos préoccupations, Colonel?"
+    },
+    {
+     "speaker": "Colonel Martin",
+     "voice": "female",
+     "text": "Il faudrait peut-être revoir les dates, car elles coïncident avec une période de forte fréquentation touristique."
+    },
+    {
+     "speaker": "Général Dupont",
+     "voice": "male",
+     "text": "Je vois. Cela pourrait poser un problème, en effet."
+    },
+    {
+     "speaker": "Colonel Martin",
+     "voice": "female",
+     "text": "Oui, cela pourrait rendre les opérations plus difficiles et augmenter les risques pour les civils."
+    },
+    {
+     "speaker": "Général Dupont",
+     "voice": "male",
+     "text": "Je comprends. Nous allons examiner cela et vous tenir informés de notre décision."
+    },
+    {
+     "speaker": "Colonel Martin",
+     "voice": "female",
+     "text": "Merci, Général. Nous apprécions votre compréhension."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1943,6 +2297,73 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-2-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "interview",
+   "title": "Drone Control Link Disruption During Tactical Exercise",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour et merci d'être avec nous aujourd'hui. Nous avons avec nous le capitaine Marc Durand, qui dirige l'exercice de drone qui a eu lieu la semaine dernière. Capitaine Durand, pouvez-vous nous parler de l'incident qui s'est produit pendant l'exercice?"
+    },
+    {
+     "speaker": "Capitaine Durand",
+     "voice": "male",
+     "text": "Bonjour. Oui, bien sûr. Nous avons rencontré un problème inattendu lors de l'exercice. Notre drone a perdu le contrôle soudainement."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Pouvez-vous nous en dire plus sur ce qui s'est passé?"
+    },
+    {
+     "speaker": "Capitaine Durand",
+     "voice": "male",
+     "text": "Nous avons d'abord suspecté un problème technique. Cependant, après une investigation plus approfondie, nous avons découvert qu'il y avait eu un brouillage du lien de contrôle du drone."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Qui, selon vous, est responsable de ce brouillage?"
+    },
+    {
+     "speaker": "Capitaine Durand",
+     "voice": "male",
+     "text": "Il est difficile de dire avec certitude à ce stade. Nous menons une enquête approfondie pour déterminer l'origine du brouillage. Il pourrait s'agir d'une interférence accidentelle ou d'une action malveillante."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Quelles mesures allez-vous prendre pour éviter que cela ne se reproduise?"
+    },
+    {
+     "speaker": "Capitaine Durand",
+     "voice": "male",
+     "text": "Nous allons renforcer nos protocoles de sécurité et explorer des solutions technologiques pour protéger nos drones contre de telles interférences à l'avenir."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Merci, capitaine Durand, pour ces informations."
+    },
+    {
+     "speaker": "Capitaine Durand",
+     "voice": "male",
+     "text": "Je vous en prie."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-2-interview-004",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -1996,6 +2417,162 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-interview-005",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "interview",
+   "title": "Local Community Discusses Proposed Base Expansion",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Bonjour à tous. Merci d'être venus discuter de l'expansion de la base militaire."
+    },
+    {
+     "speaker": "Colonel",
+     "voice": "female",
+     "text": "Nous pensons que cette expansion apportera des avantages économiques significatifs à la région."
+    },
+    {
+     "speaker": "Enseignant",
+     "voice": "male",
+     "text": "Nous avons déjà des difficultés à gérer la croissance actuelle de la population. Comment allons-nous gérer davantage de résidents?"
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Nous comprenons vos préoccupations, mais nous devons aussi penser à l'avenir de notre région."
+    },
+    {
+     "speaker": "Résident",
+     "voice": "female",
+     "text": "Et les problèmes de circulation? La base est déjà très fréquentée."
+    },
+    {
+     "speaker": "Colonel",
+     "voice": "female",
+     "text": "Nous travaillons sur des solutions pour améliorer la circulation. Il serait utile d'avoir votre soutien dans cette démarche."
+    },
+    {
+     "speaker": "Enseignant",
+     "voice": "male",
+     "text": "Qu'en est-il des écoles? Nous avons besoin de plus de classes et de personnel enseignant."
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Nous avons prévu des fonds pour l'éducation dans le cadre de ce projet."
+    },
+    {
+     "speaker": "Résident",
+     "voice": "female",
+     "text": "Nous espérons que ces promesses seront tenues."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-interview-006",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "interview",
+   "title": "French Air and Space Force Collaborates on New Satellite Technology",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour et merci d'être avec nous aujourd'hui. Nous avons avec nous le Colonel Marc Dubois de l'Armée de l'Air et de l'Espace française et le Colonel Hans Schmidt de la Luftwaffe allemande pour discuter d'une possible collaboration sur un nouveau projet de satellite. Colonel Dubois, pourriez-vous nous parler de ce projet?"
+    },
+    {
+     "speaker": "Colonel Dubois",
+     "voice": "male",
+     "text": "Bien sûr. Nous travaillons sur un nouveau système de satellite de communication qui pourrait grandement améliorer nos capacités opérationnelles. Cependant, nous avons nos propres contraintes budgétaires. C'est pourquoi nous pensons que cette collaboration pourrait être bénéfique pour les deux parties, surtout en termes de coûts."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Colonel Schmidt, quelle est la position de l'Allemagne sur cette proposition?"
+    },
+    {
+     "speaker": "Colonel Schmidt",
+     "voice": "male",
+     "text": "C'est une idée intéressante. Nous devons étudier les détails et voir comment nous pourrions concilier nos objectifs respectifs. Bien sûr, il y a des défis à relever, mais nous sommes ouverts à la discussion."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Merci beaucoup à tous les deux pour cette discussion. Ce sera tout pour aujourd'hui."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2-interview-007",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "interview",
+   "title": "The Delayed Meeting",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Marie-Claude",
+     "voice": "female",
+     "text": "Bonjour Jean-Louis, comment allez-vous?"
+    },
+    {
+     "speaker": "Jean-Louis",
+     "voice": "male",
+     "text": "Bonjour Marie-Claude, je vais bien, merci. Je m'excuse pour le retard. J'ai dû gérer une urgence imprévue."
+    },
+    {
+     "speaker": "Marie-Claude",
+     "voice": "female",
+     "text": "Ne vous inquiétez pas, Jean-Louis. Ces choses arrivent. L'important est que vous soyez là maintenant."
+    },
+    {
+     "speaker": "Jean-Louis",
+     "voice": "male",
+     "text": "Merci de votre compréhension, Marie-Claude. Alors, par où commençons-nous?"
+    },
+    {
+     "speaker": "Marie-Claude",
+     "voice": "female",
+     "text": "Nous allons commencer par la mise à jour des projets en cours. Voulez-vous commencer par présenter le vôtre?"
+    },
+    {
+     "speaker": "Jean-Louis",
+     "voice": "male",
+     "text": "Bien sûr, je vais commencer par le projet X. J'ai quelques points importants à discuter."
+    },
+    {
+     "speaker": "Marie-Claude",
+     "voice": "female",
+     "text": "Très bien, nous vous écoutons."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2157,6 +2734,58 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-2-news-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2",
+   "textType": "news",
+   "title": "Security Concerns Near Air Base",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Bonjour à tous, nous sommes ici à Saint-Pierre, une petite commune située près de la base aérienne de Montvert."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Les habitants de la région expriment leurs inquiétudes concernant les nouvelles mesures de sécurité mises en place récemment."
+    },
+    {
+     "speaker": "Habitant 1",
+     "voice": "male",
+     "text": "Nous comprenons l'importance de la sécurité, mais les nouvelles réglementations sur les drones et les mesures de surveillance accrues affectent notre quotidien."
+    },
+    {
+     "speaker": "Habitant 2",
+     "voice": "female",
+     "text": "Il y a des restrictions sur l'utilisation des drones, même pour des activités récréatives. C'est frustrant pour ceux d'entre nous qui aiment la photographie aérienne ou le modélisme."
+    },
+    {
+     "speaker": "Maire",
+     "voice": "male",
+     "text": "Nous travaillons en étroite collaboration avec la base aérienne pour trouver un équilibre entre la sécurité et les préoccupations des citoyens."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Les autorités assurent que ces mesures sont temporaires et nécessaires pour garantir la sécurité de tous."
+    },
+    {
+     "speaker": "Journaliste",
+     "voice": "female",
+     "text": "Cependant, les habitants espèrent que leurs voix seront entendues et que des solutions seront trouvées rapidement."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-2-report-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -2261,6 +2890,145 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-conversation-001",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "A Delightful Dinner Invitation",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Alors, tout le monde a fini son repas? C'était délicieux, n'est-ce pas?"
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Oui, c'était vraiment excellent. Merci de nous avoir invités, Pierre."
+    },
+    {
+     "speaker": "Jean",
+     "voice": "male",
+     "text": "Absolument, un dîner parfait. Et maintenant, qui est partant pour aller au club de jazz en bas de la rue?"
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Oh, ça a l'air amusant! Je suis partante."
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Ça me ferait plaisir, mais..."
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Oh, allez Marie, ça va être sympa. On y va souvent après le dîner."
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Je ne peux pas, j’ai une réunion tôt demain matin. Je dois y aller."
+    },
+    {
+     "speaker": "Jean",
+     "voice": "male",
+     "text": "Ah, dommage. On pourrait peut-être se retrouver une autre fois alors?"
+    },
+    {
+     "speaker": "Marie",
+     "voice": "female",
+     "text": "Bien sûr, avec plaisir. Passez une bonne soirée!"
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "À bientôt, Marie! Profitez bien de votre soirée."
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Au revoir, Marie. On se voit bientôt!"
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-conversation-002",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "conversation",
+   "title": "The Running Meeting",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Je m'excuse pour mon retard, Pierre. Le trafic était infernal ce matin."
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Ce n'est pas grave, Claire. Tu es là maintenant. Comment vas-tu?"
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Je vais bien, merci. Désolée pour le contretemps. Je suis prête à commencer."
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Oui, c'est vraiment important que nous discutions aujourd'hui. Nous avons beaucoup de points à aborder."
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Je suis d'accord. Par quoi commençons-nous?"
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Je pense que nous devrions commencer par le projet X. Il y a eu quelques développements récents."
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Ah, oui. J'ai entendu parler de cela. Quels sont les nouveaux détails?"
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Nous devrons peut-être reporter notre discussion sur le projet X. Il semble que nous manquions de temps aujourd'hui."
+    },
+    {
+     "speaker": "Claire",
+     "voice": "female",
+     "text": "Oh, je vois. D'accord, nous pouvons passer au point suivant si tu préfères."
+    },
+    {
+     "speaker": "Pierre",
+     "voice": "male",
+     "text": "Merci, Claire. C'est apprécié. Passons au projet Y."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -2591,6 +3359,125 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-interview-003",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Aerial Defense Challenges: A French Air and Space Force Perspective",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Intervieweur",
+     "voice": "female",
+     "text": "Bonjour et merci d'être avec nous aujourd'hui. Pouvez-vous nous parler des principales priorités de la Force aérienne et de l'espace française en ce moment ?"
+    },
+    {
+     "speaker": "Interviewé",
+     "voice": "male",
+     "text": "Bien sûr. Actuellement, nous nous concentrons beaucoup sur la modernisation de nos systèmes de défense aérienne et l'amélioration de notre cyber-sécurité. Ce sont des domaines cruciaux pour assurer notre efficacité opérationnelle."
+    },
+    {
+     "speaker": "Intervieweur",
+     "voice": "female",
+     "text": "Pouvez-vous nous en dire plus sur ces défis uniques que vous mentionnez ?"
+    },
+    {
+     "speaker": "Interviewé",
+     "voice": "male",
+     "text": "Certainement. Notre force fait face à des défis uniques qui nécessitent des solutions innovantes. Par exemple, nous devons absolument nous concentrer sur la cybersécurité pour protéger nos données sensibles contre les accès non autorisés."
+    },
+    {
+     "speaker": "Intervieweur",
+     "voice": "female",
+     "text": "Comment voyez-vous l'avenir de la Force aérienne et de l'espace française ?"
+    },
+    {
+     "speaker": "Interviewé",
+     "voice": "male",
+     "text": "Nous sommes confrontés à des défis de taille, c'est vrai. Mais nous sommes convaincus que les nouvelles technologies nous aideront à les surmonter. De plus, la coopération internationale joue un rôle clé dans notre préparation et notre réponse aux menaces."
+    },
+    {
+     "speaker": "Intervieweur",
+     "voice": "female",
+     "text": "Merci pour ces éclaircissements. C'est fascinant d'entendre parler des efforts en cours."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-2p-interview-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "2+",
+   "textType": "interview",
+   "title": "Navigating Workplace Challenges: A Conversation with a Project Manager",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Journaliste (femme)",
+     "voice": "female",
+     "text": "Bonjour à tous, aujourd'hui nous avons avec nous Marie Dubois, cheffe de projet chez TechInnov. Marie, pouvez-vous nous parler de votre dernier projet?"
+    },
+    {
+     "speaker": "Marie Dubois (femme)",
+     "voice": "female",
+     "text": "Bonjour, oui bien sûr. Actuellement, nous travaillons sur un logiciel de gestion pour les petites entreprises. C'est un projet passionnant, mais il y a quelques défis."
+    },
+    {
+     "speaker": "Journaliste (homme)",
+     "voice": "male",
+     "text": "Quels sont ces défis, Marie?"
+    },
+    {
+     "speaker": "Marie Dubois (femme)",
+     "voice": "female",
+     "text": "Eh bien, nous avons quelques problèmes techniques à résoudre et notre équipe est un peu limitée en termes de ressources humaines."
+    },
+    {
+     "speaker": "Journaliste (homme)",
+     "voice": "male",
+     "text": "Je vois. Et quelle est la date limite pour ce projet?"
+    },
+    {
+     "speaker": "Marie Dubois (femme)",
+     "voice": "female",
+     "text": "La direction a fixé la date limite au 15 juillet. C'est assez serré, mais nous allons essayer de respecter ce délai."
+    },
+    {
+     "speaker": "Journaliste (homme)",
+     "voice": "male",
+     "text": "Pensez-vous que ce soit réaliste, Marie?"
+    },
+    {
+     "speaker": "Marie Dubois (femme)",
+     "voice": "female",
+     "text": "Je ne suis pas sûre que ce soit réaliste, mais nous ferons de notre mieux. Peut-être que nous aurons besoin de plus de temps."
+    },
+    {
+     "speaker": "Journaliste (homme)",
+     "voice": "male",
+     "text": "Merci, Marie. C'est tout pour aujourd'hui."
+    },
+    {
+     "speaker": "Marie Dubois (femme)",
+     "voice": "female",
+     "text": "Merci à vous."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "pragmatics",
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -3472,6 +4359,269 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dl-3-debate-004",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "debate",
+   "title": "Navigating the Skies: Integrating Drones into Civil Airspace",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Bienvenue à tous à ce débat sur l'intégration des drones dans l'espace aérien civil. Notre premier intervenant est le professeur Jacques Moreau, expert en aviation civile."
+    },
+    {
+     "speaker": "Jacques Moreau",
+     "voice": "male",
+     "text": "Merci. Il est crucial de trouver un équilibre entre l'expansion des opérations de drones et la sécurité de l'aviation civile."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Et pour représenter les opérateurs de drones, nous avons Madame Sophie Lefèvre."
+    },
+    {
+     "speaker": "Sophie Lefèvre",
+     "voice": "female",
+     "text": "Avec l'augmentation des opérations de drones, nous assistons à une hausse des incidents près des aéroports."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Professor Moreau, comment proposez-vous d'assurer une coexistence sûre entre les drones et les aéronefs civils?"
+    },
+    {
+     "speaker": "Jacques Moreau",
+     "voice": "male",
+     "text": "Nous devons établir des couloirs aériens dédiés aux drones et améliorer les systèmes de détection et d'évitement."
+    },
+    {
+     "speaker": "Sophie Lefèvre",
+     "voice": "female",
+     "text": "C'est une solution, mais nous devons aussi considérer les capacités limitées des petits opérateurs de drones."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Madame Lefèvre, quel est votre point de vue sur la réglementation actuelle?"
+    },
+    {
+     "speaker": "Sophie Lefèvre",
+     "voice": "female",
+     "text": "La réglementation doit évoluer pour refléter les avancées technologiques et les besoins opérationnels."
+    },
+    {
+     "speaker": "Jacques Moreau",
+     "voice": "male",
+     "text": "Je suis d'accord. Une collaboration étroite entre les autorités de l'aviation civile et les opérateurs de drones est essentielle."
+    },
+    {
+     "speaker": "Animatrice",
+     "voice": "female",
+     "text": "Merci à tous les deux pour cette discussion enrichissante."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-debate-005",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "debate",
+   "title": "Debate: Festival Drones and Military Security",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Animateur",
+     "voice": "female",
+     "text": "Bienvenue à notre débat sur l'interdiction des drones pendant le festival de musique de Saint-Pierre."
+    },
+    {
+     "speaker": "Militaire",
+     "voice": "male",
+     "text": "Nous ne pouvons pas permettre les drones pendant le festival. Nos opérations pourraient être gravement perturbées."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "female",
+     "text": "Pourquoi est-ce un problème?"
+    },
+    {
+     "speaker": "Militaire",
+     "voice": "male",
+     "text": "C'est une question de sécurité nationale. Les drones pourraient interférer avec nos systèmes et mettre en danger nos opérations."
+    },
+    {
+     "speaker": "Organisateur",
+     "voice": "female",
+     "text": "Mais les drones sont une partie importante de notre festival. Ils nous aident à filmer les événements et à promouvoir le festival sur les réseaux sociaux."
+    },
+    {
+     "speaker": "Militaire",
+     "voice": "male",
+     "text": "Nous comprenons l'importance des drones pour votre festival, mais la sécurité doit passer en premier."
+    },
+    {
+     "speaker": "Organisateur",
+     "voice": "female",
+     "text": "Ne pourrait-on pas établir une zone tampon autour de votre base?"
+    },
+    {
+     "speaker": "Militaire",
+     "voice": "male",
+     "text": "Nous y avons pensé, mais avec le nombre de drones prévu, cela ne serait pas suffisant pour garantir la sécurité."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "female",
+     "text": "Il semble que nous soyons dans une impasse. Y a-t-il une solution alternative?"
+    },
+    {
+     "speaker": "Militaire",
+     "voice": "male",
+     "text": "Nous pourrions envisager d'annuler le festival, mais nous comprenons que cela affecterait gravement votre industrie."
+    },
+    {
+     "speaker": "Organisateur",
+     "voice": "female",
+     "text": "Exactement. Le festival est une source importante de revenus pour notre ville."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "female",
+     "text": "Il semble que nous devons trouver un compromis. Merci à tous les deux pour ce débat."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-debate-006",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "debate",
+   "title": "The Ethics of AI in Security Training: A Debate",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Bienvenue à ce débat sur un sujet de plus en plus pertinent: l'utilisation de l'intelligence artificielle pour entraîner les forces de sécurité à reconnaître les intentions hostiles."
+    },
+    {
+     "speaker": "Femme 1",
+     "voice": "female",
+     "text": "Je pense que l'IA peut vraiment améliorer la formation des forces de sécurité, mais nous devons être prudents avec les implications éthiques."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Merci. Et vous, qu'en pensez-vous?"
+    },
+    {
+     "speaker": "Homme 1",
+     "voice": "male",
+     "text": "Je suis d'accord que l'IA peut aider, mais nous ne devrions pas oublier les méthodes traditionnelles de formation. L'IA pourrait prendre le relais de certaines tâches de formation, mais elle ne devrait pas remplacer complètement l'intervention humaine."
+    },
+    {
+     "speaker": "Femme 2",
+     "voice": "female",
+     "text": "Je crois que nous devons nous concentrer sur la précision et l'efficacité. L'IA peut analyser des données beaucoup plus rapidement que les humains, ce qui peut aider à identifier plus efficacement les intentions hostiles."
+    },
+    {
+     "speaker": "Homme 2",
+     "voice": "male",
+     "text": "Cependant, nous devons également considérer les biais potentiels dans les algorithmes d'IA. Si les données d'entraînement sont biaisées, cela pourrait conduire à des décisions incorrectes sur le terrain."
+    },
+    {
+     "speaker": "Modérateur",
+     "voice": "male",
+     "text": "Ce sont des points très importants. Passons maintenant aux questions du public."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dl-3-debate-007",
+   "exam": "DLPT_LISTENING",
+   "language": "fr",
+   "level": "3",
+   "textType": "debate",
+   "title": "A Debate on Security Measures in Saint-Lô",
+   "body": "",
+   "script": [
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Mesdames et messieurs, bienvenue à ce débat sur les nouvelles mesures de sécurité dans notre ville de Saint-Lô."
+    },
+    {
+     "speaker": "Monsieur Lefèvre",
+     "voice": "male",
+     "text": "Je ne vois pas pourquoi nous devons accepter ces mesures. Notre ville est calme et sûre. Ces mesures de sécurité sont disproportionnées."
+    },
+    {
+     "speaker": "Madame Dubois",
+     "voice": "female",
+     "text": "Je comprends votre préoccupation, Monsieur Lefèvre, mais nous devons penser à la sécurité de tous. Les menaces sont réelles, et nous devons être préparés."
+    },
+    {
+     "speaker": "Monsieur Martin",
+     "voice": "male",
+     "text": "Exactement, Madame Dubois. Les nouvelles mesures sont nécessaires pour protéger notre ville. Nous ne pouvons pas prendre de risques."
+    },
+    {
+     "speaker": "Madame Lefèvre",
+     "voice": "female",
+     "text": "Mais pensez aux conséquences pour les habitants. Les contrôles supplémentaires vont perturber notre vie quotidienne. Est-ce vraiment nécessaire?"
+    },
+    {
+     "speaker": "Monsieur Dubois",
+     "voice": "male",
+     "text": "Les mesures de sécurité sont conçues pour être minimales. Nous devons tous faire des sacrifices pour notre sécurité collective."
+    },
+    {
+     "speaker": "Madame Martin",
+     "voice": "female",
+     "text": "Je suis d'accord avec Monsieur Dubois. La sécurité doit être notre priorité. Ces mesures sont temporaires et nécessaires."
+    },
+    {
+     "speaker": "Monsieur Lefèvre",
+     "voice": "male",
+     "text": "Temporaires? Comment pouvez-vous en être sûr? Une fois ces mesures en place, elles pourraient devenir permanentes."
+    },
+    {
+     "speaker": "Animateur",
+     "voice": "male",
+     "text": "Merci à tous pour vos contributions. Continuons ce débat de manière constructive."
+    }
+   ],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dl-3-editorial_commentary-001",
    "exam": "DLPT_LISTENING",
    "language": "fr",
@@ -4237,6 +5387,42 @@
    "verified": false
   },
   {
+   "id": "fr-dl-1-announcement-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-announcement-002",
+   "stem": "What is the main reason for the new rules about flying drones near the airfield?",
+   "choices": [
+    "To create a new recreational area for drone enthusiasts",
+    "To increase the number of drones in the area",
+    "To encourage more people to buy drones",
+    "To prevent drones from interfering with military aircraft"
+   ],
+   "answer": 3,
+   "explanation": "The text states that the new rules are to prevent drones from interfering with military aircraft, as it says 'pour éviter les interférences avec les avions militaires'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-announcement-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-announcement-002",
+   "stem": "In the phrase 'les interférences avec les avions militaires', what does 'interférences' mean here?",
+   "choices": [
+    "disruptions",
+    "collisions",
+    "communications",
+    "observations"
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'interférences' refers to disruptions that drones could cause to military aircraft operations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-1-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4471,6 +5657,42 @@
    "verified": false
   },
   {
+   "id": "fr-dl-1-conversation-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-conversation-006",
+   "stem": "What is the purpose of the exercise?",
+   "choices": [
+    "To practice responding to a chemical attack.",
+    "To practice responding to a cyber attack.",
+    "To practice responding to a natural disaster.",
+    "To practice responding to a biological attack."
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is 'To practice responding to a biological attack.' This is indicated by the phrase 'un exercice de défense biologique' in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-conversation-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-conversation-006",
+   "stem": "What does 'coordonner' mean here?",
+   "choices": [
+    "To coordinate.",
+    "To criticize.",
+    "To celebrate.",
+    "To argue."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 'To coordinate.' This is indicated by the phrase 'nous devons coordonner nos efforts' in the text, which means 'we must coordinate our efforts.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-1-instructions-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "1",
@@ -4593,6 +5815,114 @@
    ],
    "answer": 2,
    "explanation": "The correct answer is 1, 'The schedule of emergency food distribution'. The text primarily discusses the 'répartition des vivres' (distribution of food supplies) and provides specific details about the time and location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-instructions-004",
+   "stem": "What should you do if you see any suspicious objects?",
+   "choices": [
+    "Take photos of them for documentation.",
+    "Ignore them if they are small.",
+    "Leave them where they are and report them.",
+    "Move them to a safe location."
+   ],
+   "answer": 2,
+   "explanation": "The text instructs to 'signalez tout objet suspect' (report any suspicious object), implying that you should leave it where it is and report it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-instructions-004",
+   "stem": "In the phrase 'inspectez les dégâts', what does 'inspectez' mean?",
+   "choices": [
+    "Examine",
+    "Repair",
+    "Avoid",
+    "Document"
+   ],
+   "answer": 0,
+   "explanation": "The phrase 'inspectez les dégâts' translates to 'inspect the damage', so 'inspectez' means 'examine'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "fr-dl-1-instructions-004",
+   "stem": "What is the purpose of these instructions?",
+   "choices": [
+    "To inform people about the causes of the rocket attack.",
+    "To provide instructions for post-attack reconnaissance and safety.",
+    "To guide people on how to repair damage after a rocket attack.",
+    "To explain how to prevent future rocket attacks."
+   ],
+   "answer": 1,
+   "explanation": "The instructions are about 'la reconnaissance après l'attaque' (post-attack reconnaissance) and include safety measures like 'évitez les zones dangereuses' (avoid dangerous areas), so the purpose is to provide instructions for post-attack reconnaissance and safety.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dl-1-instructions-005",
+   "stem": "What does the speaker in the following exchange suggest is the main purpose of the drone survey?",
+   "choices": [
+    "To assess the number of people affected by the flood.",
+    "To locate the source of the flood.",
+    "To evaluate the extent of the damage caused by the flood.",
+    "To identify areas where rescue teams should focus their efforts."
+   ],
+   "answer": 2,
+   "explanation": "The speaker says the drone survey will allow them to \"évaluer les dégâts\", which means to evaluate the damage. The other options are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-1-instructions-005",
+   "stem": "What does the speaker mean by \"les zones critiques\"?",
+   "choices": [
+    "Areas where the drone cannot fly.",
+    "Areas where the flood is most severe.",
+    "Areas where people are waiting for help.",
+    "Areas where rescue teams are located."
+   ],
+   "answer": 1,
+   "explanation": "The speaker uses \"les zones critiques\" to refer to the areas that have been \"fortement touchées par les inondations\", which means strongly affected by the floods.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-1-instructions-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "fr-dl-1-instructions-005",
+   "stem": "Why does the speaker mention that the drone is equipped with a camera?",
+   "choices": [
+    "To describe the drone's appearance.",
+    "To explain how the drone will help in the survey.",
+    "To warn people about the drone flying overhead.",
+    "To show off the drone's features."
+   ],
+   "answer": 1,
+   "explanation": "The speaker mentions the camera to explain that the drone will \"prendre des photos et des vidéos des zones critiques\", which means take photos and videos of the critical areas, helping in the survey.",
    "source": "llm",
    "verified": false
   },
@@ -5569,6 +6899,114 @@
    "verified": false
   },
   {
+   "id": "fr-dl-2-briefing-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-briefing-004",
+   "stem": "What is the main idea of this briefing?",
+   "choices": [
+    "The team is planning a training exercise for new drone operators.",
+    "The team is debating the ethics of using drones in disaster zones.",
+    "A drone survey team is preparing for a mission after a flood in France.",
+    "The team is discussing the best locations to set up their base."
+   ],
+   "answer": 2,
+   "explanation": "The main idea is that a drone survey team is preparing for a mission after a flood in France. This is evident from the context of the briefing, where the team discusses various aspects of their upcoming mission, such as the locations they will survey, the equipment they will use, and the safety precautions they will take.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-briefing-004",
+   "stem": "What is one of the main areas the team will survey?",
+   "choices": [
+    "The French Alps",
+    "The city of Orleans",
+    "The Rhone Valley",
+    "The Loire Valley"
+   ],
+   "answer": 3,
+   "explanation": "One of the main areas the team will survey is the Loire Valley. This is explicitly stated in the briefing: 'Nous allons commencer par la vallée de la Loire.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-briefing-004",
+   "stem": "What does 'les zones sinistrées' mean here?",
+   "choices": [
+    "The areas near the coast",
+    "The affected areas",
+    "The densely populated areas",
+    "The mountainous areas"
+   ],
+   "answer": 1,
+   "explanation": "'Les zones sinistrées' means 'the affected areas' in this context. The briefing states: 'Notre objectif est de cartographier les zones sinistrées pour évaluer les dégâts.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-briefing-005",
+   "stem": "What is the main idea of this briefing?",
+   "choices": [
+    "Residents of Saint-Jacques are concerned about the impact of new security measures on their daily lives.",
+    "The air base commander is explaining the necessity of increased security measures.",
+    "Residents are protesting against the presence of the air base in their community.",
+    "Local authorities are discussing the economic benefits of the air base."
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that residents are concerned about the impact of security measures on their daily lives, as seen in the repeated mentions of their concerns about the new measures (les nouvelles mesures) and their impact on the community (la communauté).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-briefing-005",
+   "stem": "What specific concern do the residents have about the new security measures?",
+   "choices": [
+    "They fear that the measures will disrupt local businesses.",
+    "They are concerned about the noise from additional security vehicles.",
+    "They are worried about increased traffic congestion.",
+    "They are afraid that the measures will make it harder for them to visit the air base."
+   ],
+   "answer": 1,
+   "explanation": "The text states that residents are concerned about the noise from additional security vehicles (le bruit des véhicules de sécurité supplémentaires).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-briefing-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-briefing-005",
+   "stem": "What does the speaker mean by 'restreindre' in this context?",
+   "choices": [
+    "To limit",
+    "To ignore",
+    "To promote",
+    "To expand"
+   ],
+   "answer": 0,
+   "explanation": "The speaker uses 'restreindre' to mean limiting access to certain areas (restreindre l'accès à certaines zones).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-2-conversation-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5619,6 +7057,60 @@
    ],
    "answer": 0,
    "explanation": "In this context, \"la coordination\" refers to the management of the refugee camp. The speakers discuss the challenges of coordinating the distribution of resources and managing the arrival of new refugees. The exact words are: \"C'est un vrai défi de coordonner tout ça.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-conversation-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-conversation-003",
+   "stem": "What does 'Nous avons quelques préoccupations' imply?",
+   "choices": [
+    "They need more time to evaluate.",
+    "They have serious objections.",
+    "They have some minor concerns.",
+    "They have no concerns at all."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'Nous avons quelques préoccupations' implies that they have some minor concerns, not serious objections or no concerns at all. It's a softened way to express disagreement or hesitation, which is a common cultural norm in French communication.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-conversation-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-conversation-003",
+   "stem": "What does 'Il faudrait peut-être revoir les dates' imply?",
+   "choices": [
+    "They want to confirm the dates.",
+    "They want to remove some dates.",
+    "They want to add more dates.",
+    "They want to change the dates."
+   ],
+   "answer": 3,
+   "explanation": "The phrase 'Il faudrait peut-être revoir les dates' implies that they want to change the dates. It's an indirect request, as they are not directly stating that they want to change the dates but suggesting that it might be necessary to review them.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-conversation-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-conversation-003",
+   "stem": "What does 'Cela pourrait poser un problème' imply?",
+   "choices": [
+    "It has already caused a problem.",
+    "It might cause a problem.",
+    "It will definitely cause a problem.",
+    "It will not cause any problem."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'Cela pourrait poser un problème' implies that it might cause a problem. It's a polite way to express concern without being too direct or alarmist, which is a common cultural norm in French communication.",
    "source": "llm",
    "verified": false
   },
@@ -5731,6 +7223,60 @@
    "verified": false
   },
   {
+   "id": "fr-dl-2-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-interview-003",
+   "stem": "What is the main topic of this interview?",
+   "choices": [
+    "The disruption of a drone's control link during an exercise",
+    "The future of drone technology in military applications",
+    "The benefits of using drones in military exercises",
+    "The history of drone technology in the French military"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the disruption of a drone's control link during an exercise, as indicated by the interviewer's opening question and the interviewee's detailed explanation about the jamming incident.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-interview-003",
+   "stem": "What did the exercise participants initially suspect when the drone lost control?",
+   "choices": [
+    "An act of sabotage",
+    "A communication satellite failure",
+    "A technical malfunction",
+    "A software update issue"
+   ],
+   "answer": 2,
+   "explanation": "The interviewee states that they initially suspected 'un problème technique', which translates to 'a technical malfunction'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-interview-003",
+   "stem": "What does the phrase 'brouillage du lien de contrôle' mean here?",
+   "choices": [
+    "The encryption of a control link",
+    "The disruption of a control link",
+    "The establishment of a control link",
+    "The strengthening of a control link"
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'brouillage du lien de contrôle' is used to describe the disruption of the drone's control link, as stated in the interviewee's explanation of the incident.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-2-interview-004-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -5781,6 +7327,168 @@
    ],
    "answer": 1,
    "explanation": "In this interview, 'connexion' refers to a connection between two metro lines, as seen in 'une connexion avec la ligne 13'. It does not refer to any other type of connection.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-005",
+   "stem": "What does the mayor imply when he says, 'Nous comprenons vos préoccupations, mais nous devons aussi penser à l'avenir de notre région'?",
+   "choices": [
+    "The base expansion will bring immediate benefits to the region.",
+    "Future generations will have better opportunities because of the expansion.",
+    "The concerns of the residents are not important.",
+    "The mayor does not care about the residents' worries."
+   ],
+   "answer": 1,
+   "explanation": "The mayor implies that the base expansion is for the future benefit of the region, not just immediate gains. The key phrase is 'nous devons aussi penser à l'avenir de notre région', which suggests long-term thinking and benefits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-005",
+   "stem": "What is the colonel indirectly requesting when he says, 'Il serait utile d'avoir votre soutien dans cette démarche'?",
+   "choices": [
+    "He is demanding that the residents leave the area.",
+    "He is asking for the residents' cooperation and support.",
+    "He wants the residents to openly protest the expansion.",
+    "He wants the residents to ignore their concerns."
+   ],
+   "answer": 1,
+   "explanation": "The colonel is indirectly requesting the residents' cooperation and support. The phrase 'Il serait utile d'avoir votre soutien' implies a request for assistance and understanding.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-005",
+   "stem": "What does the schoolteacher imply when she says, 'Nous avons déjà des difficultés à gérer la croissance actuelle de la population'?",
+   "choices": [
+    "The school is struggling with the existing population growth.",
+    "The school is well-equipped to handle more students.",
+    "The teacher supports the base expansion.",
+    "The current population growth is not a problem."
+   ],
+   "answer": 0,
+   "explanation": "The schoolteacher implies that the school is struggling with the current population growth. The phrase 'Nous avons déjà des difficultés à gérer la croissance actuelle de la population' suggests that additional growth would exacerbate existing problems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-006",
+   "stem": "What is the main reason the French Air and Space Force wants to collaborate with their German counterparts on this project?",
+   "choices": [
+    "To share the financial burden of the project",
+    "To strengthen bilateral relations",
+    "To access German expertise in satellite technology",
+    "To gain political leverage in the EU"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is \"To share the financial burden of the project\". This is implied when the French spokesperson says, \"Nous pensons que cette collaboration pourrait être bénéfique pour les deux parties, surtout en termes de coûts\". The other options are not mentioned or implied in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-006",
+   "stem": "What does the French spokesperson imply when they say, \"Nous avons nos propres contraintes budgétaires\"?",
+   "choices": [
+    "They have a large budget for the project",
+    "They have a limited budget for the project",
+    "They have no budget for the project",
+    "They have no need for a budget for the project"
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is \"They have a limited budget for the project\". This is implied by the phrase \"nos propres contraintes budgétaires\", which suggests that they have budget constraints. The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-006",
+   "stem": "What is the German spokesperson's attitude towards the French proposal?",
+   "choices": [
+    "They are enthusiastic and fully supportive",
+    "They are indifferent and unenthusiastic",
+    "They are dismissive and unwilling to collaborate",
+    "They are cautious but open to discussion"
+   ],
+   "answer": 3,
+   "explanation": "The correct answer is \"They are cautious but open to discussion\". This is implied when the German spokesperson says, \"C'est une idée intéressante. Nous devons étudier les détails et voir comment nous pourrions concilier nos objectifs respectifs\". The other options are not supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-007",
+   "stem": "What is the reason for the delay in the meeting?",
+   "choices": [
+    "Jean-Louis's train was delayed.",
+    "Jean-Louis was stuck in traffic.",
+    "Jean-Louis had to deal with an urgent matter.",
+    "Jean-Louis forgot about the meeting."
+   ],
+   "answer": 2,
+   "explanation": "Jean-Louis says 'Je m'excuse pour le retard. J'ai dû gérer une urgence imprévue.' He does not say that he forgot about the meeting, was stuck in traffic, or that his train was delayed. The implied reason for the delay is that he had to deal with an urgent matter.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-007",
+   "stem": "What does 'j'ai dû' mean here?",
+   "choices": [
+    "Jean-Louis was able to",
+    "Jean-Louis had to",
+    "Jean-Louis tried to",
+    "Jean-Louis wanted to"
+   ],
+   "answer": 1,
+   "explanation": "Jean-Louis says 'j'ai dû gérer une urgence imprévue.' Here, 'j'ai dû' means that he had to deal with an urgent matter, implying that it was necessary for him to do so.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-interview-007-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "inference",
+   "passageId": "fr-dl-2-interview-007",
+   "stem": "What is Marie-Claude's attitude towards Jean-Louis's delay?",
+   "choices": [
+    "She is indifferent.",
+    "She is angry and impatient.",
+    "She is disappointed.",
+    "She is understanding and reassuring."
+   ],
+   "answer": 3,
+   "explanation": "Marie-Claude says 'Ne vous inquiétez pas, Jean-Louis. Ces choses arrivent. L'important est que vous soyez là maintenant.' This shows that she is understanding and reassuring, as she acknowledges that unexpected things happen and reassures Jean-Louis that it is important he is there now.",
    "source": "llm",
    "verified": false
   },
@@ -5947,6 +7655,60 @@
    "verified": false
   },
   {
+   "id": "fr-dl-2-news-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dl-2-news-004",
+   "stem": "What is the main topic of this news report?",
+   "choices": [
+    "Protests against military exercises",
+    "Plans to expand the air base",
+    "Criticism of local government policies",
+    "Concerns about security measures near an air base"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the concerns of local residents about security measures near the air base, as seen in \"Les habitants de la région expriment leurs inquiétudes\" and \"les mesures de sécurité autour de la base aérienne\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dl-2-news-004",
+   "stem": "According to the news report, what specific security measures are the residents concerned about?",
+   "choices": [
+    "Limits on public transportation",
+    "Increased patrols and checkpoints",
+    "New drone regulations and surveillance",
+    "Nighttime curfews and restricted access"
+   ],
+   "answer": 2,
+   "explanation": "The residents are concerned about \"les nouvelles réglementations sur les drones\" and \"les mesures de surveillance accrues\", as stated in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2-news-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-2-news-004",
+   "stem": "What does the phrase \"mesures de sécurité\" mean here?",
+   "choices": [
+    "Emergency plans",
+    "Defense strategies",
+    "Safety regulations",
+    "Security protocols"
+   ],
+   "answer": 3,
+   "explanation": "\"Mesures de sécurité\" in this context refers to the security protocols and measures implemented around the air base, as seen in \"les mesures de sécurité autour de la base aérienne\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dl-2-report-001-q1",
    "exam": "DLPT_LISTENING",
    "level": "2",
@@ -6051,6 +7813,114 @@
    ],
    "answer": 2,
    "explanation": "The correct answer is 'Purchasing power' because the phrase refers to the ability of households to buy goods and services, which is directly related to inflation and the cost of living. The other options do not fit the context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-conversation-001-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-conversation-001",
+   "stem": "What is the reason the woman politely declines the invitation to continue the evening at the jazz club?",
+   "choices": [
+    "She is not a fan of jazz music.",
+    "She is feeling tired from the meal.",
+    "She has an early morning appointment the next day.",
+    "She wants to spend the evening with her family."
+   ],
+   "answer": 2,
+   "explanation": "The woman says, “J’ai une réunion tôt demain matin”, indicating that she has an early morning meeting the next day. This is the implied reason for her decline, not any of the other choices.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-conversation-001-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-conversation-001",
+   "stem": "What does the man imply when he says, “On pourrait peut-être se retrouver une autre fois”?",
+   "choices": [
+    "He is disappointed that the woman cannot join them.",
+    "He wants to end the evening immediately.",
+    "He thinks the jazz club is not a good idea.",
+    "He suggests they meet another time instead."
+   ],
+   "answer": 3,
+   "explanation": "The man says, “On pourrait peut-être se retrouver une autre fois”, implying that they could meet another time instead of tonight. This is the correct inference.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-conversation-001-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-conversation-001",
+   "stem": "What does the phrase “Ça me ferait plaisir” imply about the woman’s feelings toward the invitation?",
+   "choices": [
+    "She is excited to go to the jazz club.",
+    "She is indifferent to the invitation.",
+    "She is reluctant to go out.",
+    "She appreciates the invitation but cannot accept."
+   ],
+   "answer": 3,
+   "explanation": "The woman says, “Ça me ferait plaisir”, which implies that she appreciates the invitation but cannot accept it due to her early meeting the next day.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-conversation-002-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-conversation-002",
+   "stem": "Why is Claire specifically apologizing?",
+   "choices": [
+    "Because she is running late",
+    "Because she forgot the meeting",
+    "Because she did not prepare for the meeting",
+    "Because she is not in the right location"
+   ],
+   "answer": 0,
+   "explanation": "Claire says 'Je m'excuse pour mon retard' ('I apologize for my lateness'), so her apology is specifically for being late.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-conversation-002-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-conversation-002",
+   "stem": "What does 'C'est vraiment important' mean here?",
+   "choices": [
+    "It's very expensive",
+    "It's very boring",
+    "It's very crowded",
+    "It's very urgent"
+   ],
+   "answer": 3,
+   "explanation": "Pierre says 'Oui, c'est vraiment important que nous discutions aujourd'hui' ('Yes, it's really important that we discuss today'), so 'C'est vraiment important' means it's very urgent.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-conversation-002-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-conversation-002",
+   "stem": "What is Pierre implying when he says 'Nous devrons peut-être reporter'?",
+   "choices": [
+    "He wants to cancel the meeting",
+    "He wants to extend the meeting",
+    "He wants Claire to hurry up",
+    "He wants to reschedule the meeting"
+   ],
+   "answer": 3,
+   "explanation": "Pierre says 'Nous devrons peut-être reporter' ('We may have to postpone') after Claire apologizes for being late, implying he wants to reschedule the meeting for another time.",
    "source": "llm",
    "verified": false
   },
@@ -6321,6 +8191,114 @@
    ],
    "answer": 2,
    "explanation": "In this context, 'médiation linguistique' refers to the process of facilitating communication and understanding between different language communities, not just teaching languages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-003-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-interview-003",
+   "stem": "What is the reason for the increased focus on cybersecurity in the French Air and Space Force?",
+   "choices": [
+    "To prepare for potential attacks from enemy nations.",
+    "To improve communication between different branches of the military.",
+    "To protect sensitive information from unauthorized access.",
+    "To enhance the efficiency of their aerial defense systems."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is that the increased focus on cybersecurity is to protect sensitive information from unauthorized access. This is implied when the interviewee says, 'Nous devons absolument nous concentrer sur la cybersécurité pour protéger nos données sensibles contre les accès non autorisés.' The other options are not directly supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-003-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-interview-003",
+   "stem": "What does the interviewee imply when they mention 'les défis uniques'?",
+   "choices": [
+    "There are specific challenges that are not found elsewhere.",
+    "The French Air and Space Force faces unusual difficulties.",
+    "The force is uniquely unprepared for modern threats.",
+    "The interviewee's personal struggles in the military."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is that there are specific challenges that are not found elsewhere. This is implied when the interviewee says, 'Notre force fait face à des défis uniques qui nécessitent des solutions innovantes.' The other options are not directly supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-003-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-interview-003",
+   "stem": "What is the interviewee's attitude towards the future of the French Air and Space Force?",
+   "choices": [
+    "Neutral, as they are focused on the present tasks.",
+    "Optimistic, believing that they can overcome any challenge.",
+    "Concerned, but hopeful that new technologies will help.",
+    "Pessimistic, due to the increasing number of threats."
+   ],
+   "answer": 2,
+   "explanation": "The correct answer is that the interviewee is concerned but hopeful that new technologies will help. This is implied when the interviewee says, 'Bien que nous soyons confrontés à des défis de taille, nous sommes convaincus que les nouvelles technologies nous aideront à les surmonter.' The other options are not directly supported by the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-interview-004",
+   "stem": "What is the implied reason why the project manager says they will 'try' to meet the deadline?",
+   "choices": [
+    "They are not sure they can meet the deadline.",
+    "They are confident they can meet the deadline with extra resources.",
+    "They have already met the deadline.",
+    "They believe it will be easy to meet the deadline."
+   ],
+   "answer": 0,
+   "explanation": "The project manager uses the conditional tense ('j'essaierai') and the phrase 'peut-être' to indicate uncertainty. They do not commit fully to meeting the deadline, implying they are not sure they can meet it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-interview-004",
+   "stem": "What does the project manager imply when they say 'il y a quelques défis'?",
+   "choices": [
+    "There are minor issues that can be easily resolved.",
+    "There are significant challenges that may affect the timeline.",
+    "The challenges are someone else's responsibility.",
+    "There are no challenges at all."
+   ],
+   "answer": 1,
+   "explanation": "The phrase 'il y a quelques défis' suggests there are challenges that could impact the project. The use of 'quelques' implies there are multiple challenges, and the context suggests they are significant enough to mention.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-2p-interview-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "2+",
+   "type": "inference",
+   "passageId": "fr-dl-2p-interview-004",
+   "stem": "What is the implied meaning of 'je ne suis pas sûr que ce soit réaliste'?",
+   "choices": [
+    "The deadline is not likely achievable.",
+    "The deadline is definitely achievable.",
+    "The deadline is someone else's problem.",
+    "The deadline has already been achieved."
+   ],
+   "answer": 0,
+   "explanation": "The project manager uses 'je ne suis pas sûr' to express doubt about the feasibility of the deadline. The phrase 'ce soit réaliste' directly implies that the deadline may not be achievable.",
    "source": "llm",
    "verified": false
   },
@@ -7023,6 +9001,222 @@
    ],
    "answer": 0,
    "explanation": "In this context, 'saturation' refers to the high level of traffic and congestion on the roads, as discussed in the debate about reducing traffic congestion.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-004-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-debate-004",
+   "stem": "What is the main point of the debate?",
+   "choices": [
+    "The integration of drones into civil airspace and the challenges it presents.",
+    "The need for international regulation of drone technology.",
+    "The environmental impact of drone operations.",
+    "The economic benefits of drone technology for the aviation industry."
+   ],
+   "answer": 0,
+   "explanation": "The main point of the debate is the integration of drones into civil airspace and the challenges it presents. This is evident throughout the discussion, for example when the male speaker says, 'Il est crucial de trouver un équilibre entre l'expansion des opérations de drones et la sécurité de l'aviation civile.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-004-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-debate-004",
+   "stem": "What can be inferred about the current state of drone operations in France?",
+   "choices": [
+    "Drone operations are highly regulated and pose no risk to civil aviation.",
+    "Drone operations are limited to military use only.",
+    "Drone operations are expanding rapidly, leading to increased risk of accidents.",
+    "Drone operations are not a priority for the French government."
+   ],
+   "answer": 2,
+   "explanation": "The inference that can be made is that drone operations are expanding rapidly, leading to increased risk of accidents. This is supported by the female speaker's statement, 'Avec l'augmentation des opérations de drones, nous assistons à une hausse des incidents près des aéroports.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-004-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-debate-004",
+   "stem": "In this context, what does 'coexistence' mean?",
+   "choices": [
+    "The sharing of airspace between drones and civil aircraft.",
+    "The collaboration between drone manufacturers and civil aviation authorities.",
+    "The simultaneous operation of drones and civil aircraft in the same airspace.",
+    "The shared use of technology between drone operators and civil aviation."
+   ],
+   "answer": 0,
+   "explanation": "In this context, 'coexistence' means the sharing of airspace between drones and civil aircraft. This is clear from the male speaker's use of the phrase, 'assurer une coexistence sûre entre les drones et les aéronefs civils.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-005-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-debate-005",
+   "stem": "What is the main issue being debated?",
+   "choices": [
+    "How to improve festival security.",
+    "Whether drones should be allowed during the festival.",
+    "The environmental impact of the festival.",
+    "The festival's impact on local businesses."
+   ],
+   "answer": 1,
+   "explanation": "The correct answer is 0. The debate centers around the use of drones during the festival, with the military expressing concerns about security. This is evident from statements like \"Nous ne pouvons pas permettre les drones\" and \"C'est une question de sécurité nationale.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-005-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-debate-005",
+   "stem": "What can be inferred about the festival's location?",
+   "choices": [
+    "It is close to a military base.",
+    "It is in a remote, rural area.",
+    "It is in the center of a large city.",
+    "It is near a major international airport."
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 0. The military's concern about drones interfering with their operations implies that the festival is near a military base. This is supported by statements like \"Nos opérations pourraient être gravement perturbées\" and \"C'est une question de sécurité nationale.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-005-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-debate-005",
+   "stem": "What does \"perturbées\" mean here?",
+   "choices": [
+    "Disrupted",
+    "Cancelled",
+    "Excited",
+    "Postponed"
+   ],
+   "answer": 0,
+   "explanation": "The correct answer is 2. In this context, \"perturbées\" means disrupted. The military is concerned that drones could disrupt their operations, as stated in \"Nos opérations pourraient être gravement perturbées.\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-006-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-debate-006",
+   "stem": "What is the main topic of this debate?",
+   "choices": [
+    "The effectiveness of traditional security training methods.",
+    "The impact of AI on job opportunities in the security sector.",
+    "The ethical implications of using drones in military exercises.",
+    "The use of artificial intelligence in training security forces to recognize hostile intent."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the use of AI in training security forces to recognize hostile intent, as stated by the moderator in his introduction: 'l'utilisation de l'intelligence artificielle pour entraîner les forces de sécurité à reconnaître les intentions hostiles.' The other choices are mentioned, but not as the central topic.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-006-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "inference",
+   "passageId": "fr-dl-3-debate-006",
+   "stem": "What can be inferred about the position of the speaker labeled 'Femme 1'?",
+   "choices": [
+    "She believes AI should replace all traditional security training methods.",
+    "She is completely against the use of AI in any form of security.",
+    "She believes AI can enhance security training but has ethical concerns.",
+    "She thinks AI is not effective in security training."
+   ],
+   "answer": 2,
+   "explanation": "Femme 1 states, 'Je pense que l'IA peut vraiment améliorer la formation des forces de sécurité, mais nous devons être prudents avec les implications éthiques.' This shows she believes AI can enhance security training but has ethical concerns. The other choices are not supported by her statement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-006-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-debate-006",
+   "stem": "What does the phrase 'prendre le relais' mean in the context of this debate?",
+   "choices": [
+    "To slow down or pause.",
+    "To analyze or study.",
+    "To take over or replace.",
+    "To speed up or accelerate."
+   ],
+   "answer": 2,
+   "explanation": "The phrase 'prendre le relais' is used by Homme 1 when he says, 'l'IA pourrait prendre le relais de certaines tâches de formation.' In this context, it means to take over or replace certain training tasks. The other choices do not fit the context of the debate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-007-q1",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "main_idea",
+   "passageId": "fr-dl-3-debate-007",
+   "stem": "What is the main point of disagreement in this debate?",
+   "choices": [
+    "Whether the new security measures are too expensive",
+    "Whether the new security measures are necessary",
+    "Whether the new security measures should be implemented immediately",
+    "Whether the new security measures are effective"
+   ],
+   "answer": 1,
+   "explanation": "The main point of disagreement is whether the new security measures are necessary. This is evident from the speakers' arguments about the perceived threat level and the impact on local residents' daily lives.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-007-q2",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "purpose",
+   "passageId": "fr-dl-3-debate-007",
+   "stem": "What is the purpose of Monsieur Lefèvre's statement?",
+   "choices": [
+    "To argue that the new security measures are too expensive",
+    "To argue that the new security measures should be implemented immediately",
+    "To argue that the new security measures are unnecessary",
+    "To argue that the new security measures are ineffective"
+   ],
+   "answer": 2,
+   "explanation": "Monsieur Lefèvre states, 'Je ne vois pas pourquoi nous devons accepter ces mesures. Notre ville est calme et sûre.' This shows his purpose is to argue that the new security measures are unnecessary.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dl-3-debate-007-q3",
+   "exam": "DLPT_LISTENING",
+   "level": "3",
+   "type": "vocabulary_in_context",
+   "passageId": "fr-dl-3-debate-007",
+   "stem": "In the phrase 'les mesures de sécurité sont disproportionnées', what does 'disproportionnées' mean?",
+   "choices": [
+    "Expensive",
+    "Inadequate",
+    "Excessive",
+    "Ineffective"
+   ],
+   "answer": 2,
+   "explanation": "In this context, 'disproportionnées' means that the security measures are excessive or go beyond what is necessary. This is evident from the discussion about the impact on local residents' daily lives.",
    "source": "llm",
    "verified": false
   },
