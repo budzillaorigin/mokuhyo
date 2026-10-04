@@ -496,3 +496,22 @@ zh-Hans, ko, ar and fa after the top-up rounds — close with
 **Gate:** `RealCulturePacksTest.personaPromptsHaveTheGoldenShape` (each persona's system-prompt block has the golden
 shape; greetings in the language) and `PragmaticsGoldenTest` pass; `check_culture.py` 0 errors. Full Kotlin suite
 (`:shared:allTests :desktopApp:test`, packs required) green.
+
+## C-12 — v0.2.0 pre-release ✅
+
+https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.2.0 — **pre-release**, tag `v0.2.0` at 0166e87.
+Assets: `Mokuhyo-0.2.0-windows-x64.msi`, `-windows-x64-portable.zip`, `-macos-arm64.dmg`, `-macos-x64.dmg`,
+`SHA256SUMS`. The packs bundled in the installers are the Phase 8 packs built from `content/packs/` at that commit
+(track, culture cards, pragmatics, personas, feeds), with audio rendered for es, fr, de, pt-BR, ru and fa.
+
+**Gate `tools/gates/gate_release.sh v0.2.0`: PASS.** It is a pre-release (not a draft); all installers and
+`SHA256SUMS` are present and GitHub's digests match. The macOS fresh-install smokes passed: arm64 natively and Intel
+under Rosetta. `gate_core` and `gate_content` passed at the release commit. Summary: `docs/PHASE8_SUMMARY.md`.
+
+**Pending (owner):** the Windows install check, as for v0.1.x. The MSI was cross-built on macOS and has not been
+installed on Windows yet.
+
+**Build note:** the first Intel build failed with "No space left on device". The owner freed space by deleting
+regenerable build output. Builds now run one at a time, with intermediates removed between them. The Windows
+cross-build needs the macOS app image in `desktopApp/build`, so that image has to be kept or rebuilt
+(`./gradlew :desktopApp:createDistributable`).
