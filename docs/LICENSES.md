@@ -101,6 +101,15 @@ Ported algorithms (code in this repo, original license kept):
 | `de_DE-mls-medium-m6` | Piper mls (medium, speaker 6) — German, male (measured F0 97 Hz) | Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices (United States / Switzerland) | training data CC BY 4.0; voice files MIT (rhasspy/piper-voices) | https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium · Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain), https://www.openslr.org/94/ · trained from scratch (model card) |
 | `pt_PT-tugao-medium` | Piper tugao (medium) — Portuguese (Portugal), unknown (measured F0 179 Hz) | Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices (United States / Switzerland) | training data CC0 1.0; voice files MIT (rhasspy/piper-voices) | https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/pt/pt_PT/tugão/medium · dataset: tugão (OHF-Voice voice-datasets), https://github.com/OHF-Voice/voice-datasets · fine-tuned from en_US-lessac-medium (Blizzard 2013 Lessac data, research license) |
 
+### Pre-rendered speech (Chatterbox Multilingual, build time only; D-041)
+
+| id | What | Developer (country) | License | Source |
+|---|---|---|---|---|
+| `chatterbox-multilingual` | Chatterbox Multilingual TTS (weights used at build time; only rendered clips ship) | Resemble AI (United States); speech tokenizer from CosyVoice2-0.5B, Alibaba / FunAudioLLM (PRC) — owner exception D-041 | MIT (Chatterbox); speech tokenizer weights distributed by Resemble with the model | https://huggingface.co/ResembleAI/chatterbox · https://github.com/resemble-ai/chatterbox |
+| `chatterbox-refs` | Reference clips conditioning the Chatterbox voices: donated TTS voices read through Piper (`voices/chatterbox_refs/`, `voices/chatterbox_voices.json`) | as the donor voices above (Thorsten-Voice, OHF-Voice datasets, Sharvard, SIWIS, UPMC, claude) | each donor dataset's license, as in the Voices table; credits listed per clip in `packs/<lang>/audio/voices.json` | `tools/voices/make_refs.py` |
+
+Clips rendered by Chatterbox carry Resemble AI's inaudible PerTh watermark (AI-generated audio marker).
+
 ## Voice service executables (separate processes, not linked)
 
 Piper runs as a child process (`voices/build/<os>-<arch>/piper/`, staged to `<resources>/voices/piper/`); the app

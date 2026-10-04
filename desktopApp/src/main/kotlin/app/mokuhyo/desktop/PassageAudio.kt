@@ -1,5 +1,8 @@
 package app.mokuhyo.desktop
 
+import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
 import app.mokuhyo.lang.VoiceRotation
 import app.mokuhyo.exam.ExamPassage
 import app.mokuhyo.lang.SpeechOutput
@@ -22,7 +25,7 @@ class PassageAudio(private val app: AppGraph) {
     }
 
     suspend fun load(passage: ExamPassage): Result = withContext(Dispatchers.IO) {
-        passage.audio?.let { rel -> app.packFile(passage.language, rel)?.let { return@withContext Result.Ready(decode(it), "pre-rendered clip") } }
+        passage.audio?.let { rel -> app.packFile(passage.language, rel)?.let { return@withContext Result.Ready(decode(it), clipSource(passage)) } }
         val key = digest(passage.language + passage.script.joinToString("\n") { it.voice + "|" + it.text })
         val cached = File(app.dataDir, "cache/audio/${passage.language}/${passage.id}-$key.wav")
         if (cached.isFile) return@withContext Result.Ready(cached.readBytes(), "voice service (cached)")
@@ -48,6 +51,20 @@ class PassageAudio(private val app: AppGraph) {
         }
         val all = ShortArray(pcm.sumOf { it.size }).also { out -> var o = 0; pcm.forEach { it.copyInto(out, o); o += it.size } }
         return AudioIO.wav(all)
+    }
+
+    /**
+     * "pre-rendered clip", plus the engine and donor voices when the pack's `audio/voices.json` records them (Chatterbox
+     * clips, BRIEF_PHASE8 N-00): the credit the voices' licenses ask for, and the honest label for AI audio.
+     */
+    private fun clipSource(passage: ExamPassage): String {
+        val credits = app.packFile(passage.language, "audio/voices.json") ?: return "pre-rendered clip"
+        val entry = runCatching {
+            kotlinx.serialization.json.Json.parseToJsonElement(credits.readText()).jsonObject[passage.id]?.jsonObject
+        }.getOrNull() ?: return "pre-rendered clip"
+        val voices = entry["voices"]?.jsonArray?.map { it.jsonPrimitive.content.removeSuffix(".wav") }.orEmpty()
+        return "pre-rendered clip · AI voice (Chatterbox Multilingual, Resemble AI; watermarked)" +
+            if (voices.isEmpty()) "" else " · reference voices: ${voices.joinToString()}"
     }
 
     companion object {
