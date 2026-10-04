@@ -197,7 +197,7 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
         val model = chosenModel() ?: return null
         val file = modelFile(model) ?: return null
         val bridge = runtime.llm() ?: return null
-        return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot) }
+        return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
     }
 
     private val llamaSlot = app.mokuhyo.ai.LoadedModelSlot()

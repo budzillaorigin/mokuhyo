@@ -2,6 +2,7 @@ package app.mokuhyo.desktop
 
 import app.mokuhyo.ai.AiGateway
 import app.mokuhyo.ai.AiSettings
+import app.mokuhyo.ai.GgufReader
 import app.mokuhyo.ai.LocalLlamaModel
 import app.mokuhyo.ai.ModelKind
 import app.mokuhyo.ai.WhisperRecognizer
@@ -44,7 +45,7 @@ object SmokeOpiFull {
         val llm = runtime.llm() ?: return@runBlocking fail("native runtime: ${runtime.status}")
         val stt = runtime.stt() ?: return@runBlocking fail("native runtime: ${runtime.status}")
         println("smoke-opi-full: $lang on ${info.name} (${runtime.status})")
-        val gateway = AiGateway({ LocalLlamaModel(llm, info, modelFile.absolutePath) }, AiSettings(timeoutMs = 300_000))
+        val gateway = AiGateway({ LocalLlamaModel(llm, info, modelFile.absolutePath, inspect = GgufReader::read) }, AiSettings(timeoutMs = 300_000))
         val recognizer = WhisperRecognizer(stt, whisper.absolutePath, app.manifest.models.first { it.kind == ModelKind.STT }.name)
         val voices = VoiceService.create()
         val answers = learnerAnswers(args, lang)

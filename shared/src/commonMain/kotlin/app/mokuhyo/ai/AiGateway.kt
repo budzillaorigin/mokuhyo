@@ -78,7 +78,10 @@ class AiGateway(
             val result = try {
                 withTimeout(settings.timeoutMs) {
                     lm.complete(
-                        CompletionRequest(messages, maxTokens = task.maxTokens, temperature = task.temperature, jsonSchema = task.schema),
+                        CompletionRequest(
+                            ContextWindow.fit(messages, lm.contextSize ?: LocalLlamaModel.DEFAULT_CONTEXT, task.maxTokens),
+                            maxTokens = task.maxTokens, temperature = task.temperature, jsonSchema = task.schema,
+                        ),
                     )
                 }
             } catch (e: TimeoutCancellationException) {

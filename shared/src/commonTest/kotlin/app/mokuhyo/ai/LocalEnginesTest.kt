@@ -10,12 +10,12 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-private val testModel = ModelInfo(
+internal val testModel = ModelInfo(
     id = "phi-test", name = "Phi test", kind = ModelKind.LLM, minRamGb = 4, contextSize = 2048, license = "Apache-2.0",
     files = listOf(ModelFile("q.gguf", "https://example.invalid/q.gguf", "00", 1)),
 )
 
-private class FakeLlmBridge(
+internal class FakeLlmBridge(
     var reply: String? = "{\"ok\":true}",
     var loadError: String? = null,
     var hold: Boolean = false,

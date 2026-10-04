@@ -46,6 +46,9 @@ interface LocalLlmBridge {
     }
 }
 
+/** A model file's self-description (GGUF header): name, architecture and trained context length. */
+data class ModelFileInfo(val name: String?, val architecture: String?, val contextLength: Int?)
+
 /**
  * Which model file the native bridge currently holds. One per bridge (the apps have one llama context), shared by
  * every [LocalLlamaModel] built on it, so switching models in settings reloads instead of silently generating with
@@ -73,11 +76,26 @@ class LocalLlamaModel(
     /** Absolute path of the model's first file (see [ModelManager.modelPath]). */
     private val modelPath: String? = null,
     private val slot: LoadedModelSlot = LoadedModelSlot(),
+    /** Reads the file's own name and trained context (GgufReader on the JVM); null when unknown. */
+    inspect: (String) -> ModelFileInfo? = { null },
 ) : LanguageModel {
     override val id: String = modelInfo.id
     override val isLocal: Boolean = true
-    override val contextSize: Int = modelInfo.contextSize.takeIf { it > 0 } ?: DEFAULT_CONTEXT
-    private val engineLabel = "on-device ${modelInfo.name}"
+
+    /** What the model file says about itself (BRIEF_PHASE8 N-00b), when it could be read. */
+    val fileInfo: ModelFileInfo? = modelPath?.let(inspect)
+
+    /**
+     * The context the bridge opens: the manifest's value capped at the model's trained context (`n_ctx_train`), so
+     * EuroLLM-9B (trained at 4096) is never opened at 8192.
+     */
+    override val contextSize: Int = minOf(
+        modelInfo.contextSize.takeIf { it > 0 } ?: DEFAULT_CONTEXT,
+        fileInfo?.contextLength?.takeIf { it > 0 } ?: Int.MAX_VALUE,
+    )
+
+    /** The engine label comes from the loaded file's own name, not the configured tier. */
+    private val engineLabel = "on-device ${fileInfo?.name?.takeIf { it.isNotBlank() } ?: modelInfo.name}"
 
     @Throws(Exception::class)
     override suspend fun complete(request: CompletionRequest): CompletionResult {
