@@ -41,7 +41,18 @@ voices only (`voices/chatterbox_voices.json`).
 
 ## Rater calibration
 
-Not run yet (`tools/models/calibrate.py`). Every OPI estimate is labelled "uncalibrated".
+Exact and within-one-step agreement between the app's OPI estimate (`opi_rate`) and instructor ratings of the same practice recordings (`tools/models/calibrate.py`). Rows marked *fixture* ran on the harness's own fixture samples, not instructor ratings: they test the harness and do not calibrate anything (the app says "uncalibrated").
+
+| Language | Tier | Model | Samples | Exact | Within 1 step | Status |
+|---|---|---|---|---|---|---|
+| es | A | `phi4-mini:3.8b` | 3 | 66% | 100% | fixture |
+| es | B | `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | 3 | 33% | 100% | fixture |
+| es | C | `mistral-nemo:12b` | 3 | 33% | 100% | fixture |
+| es | D | `mistral-small3.2:24b-instruct-2506-q8_0` | 3 | 66% | 100% | fixture |
+| ja | A | `phi4-mini:3.8b` | 2 | 0% | 100% | fixture |
+| ja | B | `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | 2 | 0% | 50% | fixture |
+| ja | C | `mistral-nemo:12b` | 2 | 50% | 100% | fixture |
+| ja | D | `mistral-small3.2:24b-instruct-2506-q8_0` | 2 | 100% | 100% | fixture |
 
 ## Speaking eval
 

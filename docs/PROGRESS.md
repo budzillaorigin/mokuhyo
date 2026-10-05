@@ -737,3 +737,37 @@ Table in `docs/MODELS.md` "## Interviewer coherence".
 
 **Owner checks pending:** `AudioCheck` live level and capture on Windows; the macOS microphone prompt on a fresh
 install of 0.3.0.
+
+## N-08 — Authentic-format reading ✅ (small shortfall logged)
+- Six formats rendered as the real document: sign, visitor-badge form, phone message thread (SMS/LINE/WhatsApp), shift
+  log, municipal notice and schedule board (`exam/Formats.kt`, `ui/exam/FormattedPassage.kt`), right-to-left aware,
+  with a "Show as text" toggle that keeps tap-to-define. `body` stays the plain text, so validators, the overlap gate
+  and dictionary lookup work unchanged.
+- Drafted with `gen_dlpt.py formats` at the format's ILR bands (0+–2); the validator checks that `body` is exactly the
+  text of `formatData`. AI-drafted and badged. Format passages enter practice (the text-type menu is built from the
+  pool) and test forms at their band like any reading passage.
+
+**Gate:** `FormatRenderTest` renders every format in Spanish and Arabic (left-to-right and right-to-left), and
+`FormatsTest` parses each fixture. `gen_dlpt.py validate --language all --strict` reports 0 errors. `gate_terms.sh`
+passes (267,767 fields, 0 failing).
+**382 of 396** format passages after three drafting rounds. Still short:
+- de: badge form 5, shift log 4
+- ru: shift log 5
+- ar: municipal notice 3
+- fa: chat 3, municipal notice 3
+- id: schedule board 5
+
+Mostly length or rare-word band misses at ILR 1+/2. Close with:
+`cd tools && uv run --group content python items/gen_dlpt.py formats --language de,ru,ar,fa,id --per-format 6`.
+
+## N-04 — Rater calibration and confidence band ✅ (owner input missing — "uncalibrated")
+- `tools/models/calibrate.py` rates instructor-rated recordings (`tools/sources/calibration/<lang>/`) with the app's
+  own `opi_rate` on each tier's model and writes `content/models/calibration.json` and the agreement table in
+  `docs/MODELS.md` ("## Rater calibration").
+- The interview results show the estimate with a band and the sentence "Based on N calibrated samples for <language> on
+  <tier>", or "Uncalibrated: no instructor-rated samples…" (`opi/Calibration.kt`, `CalibrationTest`).
+
+**Gate:** the harness runs: 20 ratings over 8 language/tier cells on the fixtures (es 3, ja 2), table generated. Every
+cell is marked *fixture* and never counts toward a band, so the app says "uncalibrated" everywhere.
+**Missing owner input (logged):** 10 instructor-rated practice recordings per language with the human ILR rating and
+rationale. Run `cd tools && uv run python models/calibrate.py` once they're in `tools/sources/calibration/<lang>/`.

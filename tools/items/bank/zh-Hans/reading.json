@@ -36,6 +36,160 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-0p-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Access Request at Changcheng Air Base",
+   "body": "访问通行证\n姓名: 王磊\n单位: 长城空军基地\n身份证号: 11010119900101000X\n访问日期: 2023年11月15日\n访问事由: 低成本无人机防御成本讨论\n预计到达时间: 09:00\n预计离开时间: 11:30\n长城空军基地安全部门",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "访问通行证",
+    "fields": [
+     {
+      "label": "姓名",
+      "value": "王磊"
+     },
+     {
+      "label": "单位",
+      "value": "长城空军基地"
+     },
+     {
+      "label": "身份证号",
+      "value": "11010119900101000X"
+     },
+     {
+      "label": "访问日期",
+      "value": "2023年11月15日"
+     },
+     {
+      "label": "访问事由",
+      "value": "低成本无人机防御成本讨论"
+     },
+     {
+      "label": "预计到达时间",
+      "value": "09:00"
+     },
+     {
+      "label": "预计离开时间",
+      "value": "11:30"
+     }
+    ],
+    "footer": "长城空军基地安全部门"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Wind Farm Inspection Request at Huangshan Base",
+   "body": "游客通行证 / 访问请求表\n姓名: 李明\n公司: 绿能投资有限公司\n联系电话: 138-1234-5678\n抵达时间: 2023年11月15日 08:00\n预计停留时间: 4小时\n目的地: 黄山风力发电场\n访问目的: 检查风机运行状态\n车牌号: 粤B-12345\n请于入口处签到。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "游客通行证 / 访问请求表",
+    "fields": [
+     {
+      "label": "姓名",
+      "value": "李明"
+     },
+     {
+      "label": "公司",
+      "value": "绿能投资有限公司"
+     },
+     {
+      "label": "联系电话",
+      "value": "138-1234-5678"
+     },
+     {
+      "label": "抵达时间",
+      "value": "2023年11月15日 08:00"
+     },
+     {
+      "label": "预计停留时间",
+      "value": "4小时"
+     },
+     {
+      "label": "目的地",
+      "value": "黄山风力发电场"
+     },
+     {
+      "label": "访问目的",
+      "value": "检查风机运行状态"
+     },
+     {
+      "label": "车牌号",
+      "value": "粤B-12345"
+     }
+    ],
+    "footer": "请于入口处签到。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Counter-Drone System Installation at Beijing Capital International Airport",
+   "body": "访客通行证\n姓名: 王磊\n单位: 北京首都国际机场\n职位: 安全工程师\n访问日期: 2023年11月15日\n访问时间: 上午8:00–下午5:00\n访问目的: 安装反无人机系统\n联系电话: 138-1234-5678\n请随身携带本通行证，便于检查。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "访客通行证",
+    "fields": [
+     {
+      "label": "姓名",
+      "value": "王磊"
+     },
+     {
+      "label": "单位",
+      "value": "北京首都国际机场"
+     },
+     {
+      "label": "职位",
+      "value": "安全工程师"
+     },
+     {
+      "label": "访问日期",
+      "value": "2023年11月15日"
+     },
+     {
+      "label": "访问时间",
+      "value": "上午8:00–下午5:00"
+     },
+     {
+      "label": "访问目的",
+      "value": "安装反无人机系统"
+     },
+     {
+      "label": "联系电话",
+      "value": "138-1234-5678"
+     }
+    ],
+    "footer": "请随身携带本通行证，便于检查。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-0p-label-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -186,6 +340,210 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-0p-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Flood Warning Notice for Riverbank Village",
+   "body": "洪水预警通知\n日期 | 时间 | 预警等级 | 地区\n2023年6月1日 | 8:00-20:00 | 黄色 | 河滨村\n2023年6月2日 | 8:00-20:00 | 黄色 | 河滨村\n2023年6月3日 | 8:00-20:00 | 黄色 | 河滨村",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "洪水预警通知",
+    "columns": [
+     "日期",
+     "时间",
+     "预警等级",
+     "地区"
+    ],
+    "rows": [
+     [
+      "2023年6月1日",
+      "8:00-20:00",
+      "黄色",
+      "河滨村"
+     ],
+     [
+      "2023年6月2日",
+      "8:00-20:00",
+      "黄色",
+      "河滨村"
+     ],
+     [
+      "2023年6月3日",
+      "8:00-20:00",
+      "黄色",
+      "河滨村"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Drone Operator Detained Near Green Willow Airport",
+   "body": "绿柳机场附近拘留无人机操作员\n日期 | 姓名 | 事件 | 地点 | 时间\n2023年10月1日 | 张明 | 无人机非法飞行 | 绿柳机场西侧 | 14:30\n2023年10月1日 | 李华 | 无人机操作员拘留 | 绿柳机场警务室 | 15:45\n2023年10月2日 | 张明 | 审讯 | 绿柳机场警务室 | 10:00",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "绿柳机场附近拘留无人机操作员",
+    "columns": [
+     "日期",
+     "姓名",
+     "事件",
+     "地点",
+     "时间"
+    ],
+    "rows": [
+     [
+      "2023年10月1日",
+      "张明",
+      "无人机非法飞行",
+      "绿柳机场西侧",
+      "14:30"
+     ],
+     [
+      "2023年10月1日",
+      "李华",
+      "无人机操作员拘留",
+      "绿柳机场警务室",
+      "15:45"
+     ],
+     [
+      "2023年10月2日",
+      "张明",
+      "审讯",
+      "绿柳机场警务室",
+      "10:00"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Counter-Drone Exercise: Lessons Learned",
+   "body": "反无人机演练：经验教训\n日期 | 时间 | 地点 | 内容 | 负责人\n2023年10月1日 | 0800-1000 | 绿丘机场 | 反无人机演练 | 张伟\n2023年10月1日 | 1030-1200 | 绿丘机场 | 经验教训会议 | 李华\n2023年10月2日 | 0800-1000 | 绿丘机场 | 反无人机演练 | 张伟\n2023年10月2日 | 1030-1200 | 绿丘机场 | 经验教训会议 | 李华",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "反无人机演练：经验教训",
+    "columns": [
+     "日期",
+     "时间",
+     "地点",
+     "内容",
+     "负责人"
+    ],
+    "rows": [
+     [
+      "2023年10月1日",
+      "0800-1000",
+      "绿丘机场",
+      "反无人机演练",
+      "张伟"
+     ],
+     [
+      "2023年10月1日",
+      "1030-1200",
+      "绿丘机场",
+      "经验教训会议",
+      "李华"
+     ],
+     [
+      "2023年10月2日",
+      "0800-1000",
+      "绿丘机场",
+      "反无人机演练",
+      "张伟"
+     ],
+     [
+      "2023年10月2日",
+      "1030-1200",
+      "绿丘机场",
+      "经验教训会议",
+      "李华"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-signage-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Drone Activity Alert at Donghai Harbor",
+   "body": "警告：无人机活动\n东海港上空发现大量小型无人机\n禁止接近\n请勿触碰或干扰无人机\n如有必要，请联系基地警卫室：0532-1234567\n东海军事航空基地",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "警告：无人机活动",
+     "东海港上空发现大量小型无人机",
+     "禁止接近",
+     "请勿触碰或干扰无人机",
+     "如有必要，请联系基地警卫室：0532-1234567",
+     "东海军事航空基地"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-0p-signage-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Temporary Shuttle Bus Changes",
+   "body": "注意：基地公交车临时改道\n1号班车：7:00 - 8:00\n新站点：南门 → 食堂 → 机库3 → 宿舍\n2号班车：13:00 - 14:00\n新站点：宿舍 → 机库3 → 食堂 → 南门\n此安排持续至下周一",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "注意：基地公交车临时改道",
+     "1号班车：7:00 - 8:00",
+     "新站点：南门 → 食堂 → 机库3 → 宿舍",
+     "2号班车：13:00 - 14:00",
+     "新站点：宿舍 → 机库3 → 食堂 → 南门",
+     "此安排持续至下周一"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-1-announcement-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -214,6 +572,316 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Radio Procedures Training Access Request",
+   "body": "来访者通行证 / 访问请求表\n姓名: 李明\n单位: 友好空军第42联队\n职位: 通信官\n访问地点: 长城空军基地\n访问目的: 参加无线电程序培训\n预计到达时间: 2023年10月15日 08:00\n预计离开时间: 2023年10 15日 17:00\n联系电话: 138-1234-5678\n备注: 携带培训材料和通信设备。\n请在入口处出示此通行证。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "来访者通行证 / 访问请求表",
+    "fields": [
+     {
+      "label": "姓名",
+      "value": "李明"
+     },
+     {
+      "label": "单位",
+      "value": "友好空军第42联队"
+     },
+     {
+      "label": "职位",
+      "value": "通信官"
+     },
+     {
+      "label": "访问地点",
+      "value": "长城空军基地"
+     },
+     {
+      "label": "访问目的",
+      "value": "参加无线电程序培训"
+     },
+     {
+      "label": "预计到达时间",
+      "value": "2023年10月15日 08:00"
+     },
+     {
+      "label": "预计离开时间",
+      "value": "2023年10 15日 17:00"
+     },
+     {
+      "label": "联系电话",
+      "value": "138-1234-5678"
+     },
+     {
+      "label": "备注",
+      "value": "携带培训材料和通信设备。"
+     }
+    ],
+    "footer": "请在入口处出示此通行证。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Flood Warning Access Request at Yangtze Base",
+   "body": "访客通行证\n姓名: 李华\n单位: 长江基地水利部门\n联系电话: 138-1234-5678\n通行日期: 2023年7月15日\n通行时间: 08:00-17:00\n通行事由: 长江基地洪水警报检查\n签发人: 张明\n签发日期: 2023年7月14日\n备注: 请注意基地内可能的水淹路段，注意安全。\n长江基地保安部门 2023年7月14日",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "访客通行证",
+    "fields": [
+     {
+      "label": "姓名",
+      "value": "李华"
+     },
+     {
+      "label": "单位",
+      "value": "长江基地水利部门"
+     },
+     {
+      "label": "联系电话",
+      "value": "138-1234-5678"
+     },
+     {
+      "label": "通行日期",
+      "value": "2023年7月15日"
+     },
+     {
+      "label": "通行时间",
+      "value": "08:00-17:00"
+     },
+     {
+      "label": "通行事由",
+      "value": "长江基地洪水警报检查"
+     },
+     {
+      "label": "签发人",
+      "value": "张明"
+     },
+     {
+      "label": "签发日期",
+      "value": "2023年7月14日"
+     },
+     {
+      "label": "备注",
+      "value": "请注意基地内可能的水淹路段，注意安全。"
+     }
+    ],
+    "footer": "长江基地保安部门 2023年7月14日"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Access Request at Huangshan Base",
+   "body": "访问申请表\n姓名:: 李明\n单位:: 安徽省防务研究所\n目的:: 调研基地防低价无人机防御成本\n预计到达时间:: 2023年11月15日 09:00\n预计离开时间:: 2023年11月15日 17:00\n联系电话:: 138-1234-5678\n备注:: 需见基地安全主管张强。\n请在入口处出示此表。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "访问申请表",
+    "fields": [
+     {
+      "label": "姓名:",
+      "value": "李明"
+     },
+     {
+      "label": "单位:",
+      "value": "安徽省防务研究所"
+     },
+     {
+      "label": "目的:",
+      "value": "调研基地防低价无人机防御成本"
+     },
+     {
+      "label": "预计到达时间:",
+      "value": "2023年11月15日 09:00"
+     },
+     {
+      "label": "预计离开时间:",
+      "value": "2023年11月15日 17:00"
+     },
+     {
+      "label": "联系电话:",
+      "value": "138-1234-5678"
+     },
+     {
+      "label": "备注:",
+      "value": "需见基地安全主管张强。"
+     }
+    ],
+    "footer": "请在入口处出示此表。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-chat-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "chat",
+   "title": "Flood Warning in Green Valley",
+   "body": "小明: 大家好，我是小明。绿水村委会刚刚发布了洪水警报。预计明天会有大雨，河水可能会上涨。请大家做好准备。\n小华: 收到了，谢谢通知。我们需要采取什么措施吗？\n小明: 是的，请确保你们的房子周围没有堆积物。如果水位上升，请立即撤离到安全地带。\n小华: 明白了，我会通知大家。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "洪水警报",
+    "messages": [
+     {
+      "from": "小明",
+      "text": "大家好，我是小明。绿水村委会刚刚发布了洪水警报。预计明天会有大雨，河水可能会上涨。请大家做好准备。",
+      "time": "上午10:15",
+      "me": false
+     },
+     {
+      "from": "小华",
+      "text": "收到了，谢谢通知。我们需要采取什么措施吗？",
+      "time": "上午10:17",
+      "me": false
+     },
+     {
+      "from": "小明",
+      "text": "是的，请确保你们的房子周围没有堆积物。如果水位上升，请立即撤离到安全地带。",
+      "time": "上午10:19",
+      "me": false
+     },
+     {
+      "from": "小华",
+      "text": "明白了，我会通知大家。",
+      "time": "上午10:20",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "chat",
+   "title": "Drone Sighted Over Lánshān Air Base",
+   "body": "张伟: 大家好，刚才在基地西侧看到了一个无人机。\n李华: 真的吗？它看起来像是侦察无人机吗？\n张伟: 不确定，但它一直在基地上空盘旋。我已经报告给了安全部门。\n王强: 我们需要增加巡逻频率，确保基地安全。\n李华: 同意，我会通知所有巡逻队员。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "安全警报",
+    "messages": [
+     {
+      "from": "张伟",
+      "text": "大家好，刚才在基地西侧看到了一个无人机。",
+      "time": "14:30",
+      "me": false
+     },
+     {
+      "from": "李华",
+      "text": "真的吗？它看起来像是侦察无人机吗？",
+      "time": "14:31",
+      "me": false
+     },
+     {
+      "from": "张伟",
+      "text": "不确定，但它一直在基地上空盘旋。我已经报告给了安全部门。",
+      "time": "14:32",
+      "me": false
+     },
+     {
+      "from": "王强",
+      "text": "我们需要增加巡逻频率，确保基地安全。",
+      "time": "14:33",
+      "me": false
+     },
+     {
+      "from": "李华",
+      "text": "同意，我会通知所有巡逻队员。",
+      "time": "14:34",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "chat",
+   "title": "Tourism Recovery in Guilin",
+   "body": "李华: 大家好，我是李华。桂林的旅游业开始复苏了！漓江的游船今天满员了。\n王磊: 真的吗？太棒了！象鼻山的游客也很多吗？\n李华: 是的，象鼻山的游客比前几天多了很多。阳朔的西街也热闹起来了。\n张强: 看来桂林的旅游业真的在恢复。我们要抓住这个机会，推广我们的特色美食和文化。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "旅游业复苏",
+    "messages": [
+     {
+      "from": "李华",
+      "text": "大家好，我是李华。桂林的旅游业开始复苏了！漓江的游船今天满员了。",
+      "time": "10:00 AM 6/15/2023",
+      "me": false
+     },
+     {
+      "from": "王磊",
+      "text": "真的吗？太棒了！象鼻山的游客也很多吗？",
+      "time": "10:02 AM 6/15/2023",
+      "me": false
+     },
+     {
+      "from": "李华",
+      "text": "是的，象鼻山的游客比前几天多了很多。阳朔的西街也热闹起来了。",
+      "time": "10:05 AM 6/15/2023",
+      "me": false
+     },
+     {
+      "from": "张强",
+      "text": "看来桂林的旅游业真的在恢复。我们要抓住这个机会，推广我们的特色美食和文化。",
+      "time": "10:08 AM 6/15/2023",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -431,6 +1099,149 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Insider Threat Awareness Training Schedule",
+   "body": "基地内部威胁意识培训时间表\n日期 | 时间 | 地点 | 负责人\n10月1日（星期一） | 08:00-10:00 | 会议室A | 张伟\n10月2日（星期二） | 13:00-15:00 | 会议室B | 李华\n10月3日（星期三） | 09:00-11:00 | 会议室A | 王强\n10月4日（星期四） | 14:00-16:00 | 会议室B | 赵丽\n10月5日（星期五） | 10:00-12:00 | 会议室A | 钱阳",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "基地内部威胁意识培训时间表",
+    "columns": [
+     "日期",
+     "时间",
+     "地点",
+     "负责人"
+    ],
+    "rows": [
+     [
+      "10月1日（星期一）",
+      "08:00-10:00",
+      "会议室A",
+      "张伟"
+     ],
+     [
+      "10月2日（星期二）",
+      "13:00-15:00",
+      "会议室B",
+      "李华"
+     ],
+     [
+      "10月3日（星期三）",
+      "09:00-11:00",
+      "会议室A",
+      "王强"
+     ],
+     [
+      "10月4日（星期四）",
+      "14:00-16:00",
+      "会议室B",
+      "赵丽"
+     ],
+     [
+      "10月5日（星期五）",
+      "10:00-12:00",
+      "会议室A",
+      "钱阳"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Change in Base Security Posture",
+   "body": "基地安全态势变更通知\n日期 | 时间 | 事项\n2023年10月1日 | 08:00-17:00 | 安全条件由黄色提升至橙色，严格执行出入证检查\n2023年10月2日 | 全天 | 所有车辆必须经过安全检查点\n2023年10月3日 | 08:00-12:00 | 组织安全简报会议",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "基地安全态势变更通知",
+    "columns": [
+     "日期",
+     "时间",
+     "事项"
+    ],
+    "rows": [
+     [
+      "2023年10月1日",
+      "08:00-17:00",
+      "安全条件由黄色提升至橙色，严格执行出入证检查"
+     ],
+     [
+      "2023年10月2日",
+      "全天",
+      "所有车辆必须经过安全检查点"
+     ],
+     [
+      "2023年10月3日",
+      "08:00-12:00",
+      "组织安全简报会议"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "New Trade Agreement Announcement",
+   "body": "新贸易协议公告\n日期 | 时间 | 地点 | 活动\n6月1日(星期五) | 14:00-16:00 | 绿丝镇大会堂 | 新贸易协议签署仪式\n6月2日(星期六) | 10:00-12:00 | 绿丝镇图书馆 | 新贸易协议说明会\n6月3日(星期日) | 15:00-17:00 | 绿丝镇市场 | 新贸易协议产品展示",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "新贸易协议公告",
+    "columns": [
+     "日期",
+     "时间",
+     "地点",
+     "活动"
+    ],
+    "rows": [
+     [
+      "6月1日(星期五)",
+      "14:00-16:00",
+      "绿丝镇大会堂",
+      "新贸易协议签署仪式"
+     ],
+     [
+      "6月2日(星期六)",
+      "10:00-12:00",
+      "绿丝镇图书馆",
+      "新贸易协议说明会"
+     ],
+     [
+      "6月3日(星期日)",
+      "15:00-17:00",
+      "绿丝镇市场",
+      "新贸易协议产品展示"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -459,6 +1270,114 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "signage",
+   "title": "New Drone Regulations at Longhai Military Airfield",
+   "body": "长海军事机场\n无人机飞行新规定\n1. 严禁在距离机场3公里以内飞行无人机。\n2. 获得批准的无人机飞行员必须遵守以下规则：\n   - 飞行前必须向机场管理办公室登记。\n   - 飞行时必须保持与飞行员的视线接触。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "长海军事机场",
+     "无人机飞行新规定",
+     "1. 严禁在距离机场3公里以内飞行无人机。",
+     "2. 获得批准的无人机飞行员必须遵守以下规则：",
+     "   - 飞行前必须向机场管理办公室登记。",
+     "   - 飞行时必须保持与飞行员的视线接触。"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "signage",
+   "title": "Post-Attack Reconnaissance Instructions",
+   "body": "紧急通知\n基地代号：LH-07\n发布时间：2023年11月15日 08:00\n\n因刚刚发生火箭警报，\n所有侦察小组请立即前往指定区域进行巡查。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "紧急通知",
+     "基地代号：LH-07",
+     "发布时间：2023年11月15日 08:00",
+     "",
+     "因刚刚发生火箭警报，",
+     "所有侦察小组请立即前往指定区域进行巡查。"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "signage",
+   "title": "Solar Farm Construction Notice at Changcheng Air Base",
+   "body": "注意：\n根据空军基地可再生能源投资计划，\n从2023年5月1日开始，\n将在基地西北角建设太阳能发电厂。\n施工期间可能有噪音干扰，\n请各位人员注意安全并配合。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "注意：",
+     "根据空军基地可再生能源投资计划，",
+     "从2023年5月1日开始，",
+     "将在基地西北角建设太阳能发电厂。",
+     "施工期间可能有噪音干扰，",
+     "请各位人员注意安全并配合。"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1-signage-004",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1",
+   "textType": "signage",
+   "title": "Delivery Vehicle Inspection Notice",
+   "body": "注意: 交付车辆检查通知\n本月15日，一名送货司机王强在入口检查站拒绝配合检查，导致延误。\n根据基地安全规定，所有车辆进入前必须接受检查。\n请所有送货司机提前做好准备，配合检查。\n违者将无法进入基地。\n感谢您的理解与合作。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "注意: 交付车辆检查通知",
+     "本月15日，一名送货司机王强在入口检查站拒绝配合检查，导致延误。",
+     "根据基地安全规定，所有车辆进入前必须接受检查。",
+     "请所有送货司机提前做好准备，配合检查。",
+     "违者将无法进入基地。",
+     "感谢您的理解与合作。"
+    ],
+    "kind": "warning"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -504,6 +1423,180 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Change in Force Protection Condition at Lánshān Base",
+   "body": "张伟: 大家注意，兰山基地警戒状态从今天下午3点开始由黄色升级为橙色，请严格遵守相关规定。\n李华: 张伟，橙色警戒下，外出需要申请吗？\n张伟: 是的，李华。所有外出活动需提前申请，并获得批准。此外，基地访客限制也会更严格。\n王强: 明白了。我们的巡逻频率也需要增加吗？\n张伟: 是的，王强。巡逻频率将增加一倍，并加强对基地周边区域的监控。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "变更警戒状态",
+    "messages": [
+     {
+      "from": "张伟",
+      "text": "大家注意，兰山基地警戒状态从今天下午3点开始由黄色升级为橙色，请严格遵守相关规定。",
+      "time": "13:30 2023/11/15",
+      "me": false
+     },
+     {
+      "from": "李华",
+      "text": "张伟，橙色警戒下，外出需要申请吗？",
+      "time": "13:32 2023/11/15",
+      "me": false
+     },
+     {
+      "from": "张伟",
+      "text": "是的，李华。所有外出活动需提前申请，并获得批准。此外，基地访客限制也会更严格。",
+      "time": "13:35 2023/11/15",
+      "me": false
+     },
+     {
+      "from": "王强",
+      "text": "明白了。我们的巡逻频率也需要增加吗？",
+      "time": "13:38 2023/11/15",
+      "me": false
+     },
+     {
+      "from": "张伟",
+      "text": "是的，王强。巡逻频率将增加一倍，并加强对基地周边区域的监控。",
+      "time": "13:40 2023/11/15",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Night Drill Notification",
+   "body": "张强: 大家好，我是张强。今天晚上8点在训练场进行快速反应力演习，请做好准备。\n李华: 张强，演习需要带什么装备？\n张强: 李华，带上你的战术背包，里面装好水壶、头灯和通讯设备。记得穿上夜间迷彩服。\n王磊: 张强，演习大概多久？\n张强: 王磊，大约2小时。9点开始，11点结束。\n张强: 大家记得准时到达集合点，不见不散。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "快速反应力演习通知",
+    "messages": [
+     {
+      "from": "张强",
+      "text": "大家好，我是张强。今天晚上8点在训练场进行快速反应力演习，请做好准备。",
+      "time": "15:30 下午",
+      "me": false
+     },
+     {
+      "from": "李华",
+      "text": "张强，演习需要带什么装备？",
+      "time": "15:32 下午",
+      "me": false
+     },
+     {
+      "from": "张强",
+      "text": "李华，带上你的战术背包，里面装好水壶、头灯和通讯设备。记得穿上夜间迷彩服。",
+      "time": "15:35 下午",
+      "me": false
+     },
+     {
+      "from": "王磊",
+      "text": "张强，演习大概多久？",
+      "time": "15:37 下午",
+      "me": false
+     },
+     {
+      "from": "张强",
+      "text": "王磊，大约2小时。9点开始，11点结束。",
+      "time": "15:39 下午",
+      "me": false
+     },
+     {
+      "from": "张强",
+      "text": "大家记得准时到达集合点，不见不散。",
+      "time": "15:40 下午",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Insider Threat Awareness Training Reminder",
+   "body": "李主任: 大家好！明天上午9点在会议室有内部威胁意识培训。请准时参加，不要迟到。\n张华: 李主任，培训大概需要多久？\n李主任: 大约两小时。11点半结束。培训后可以一起吃午饭。\n王强: 好的，我知道了。培训内容包括什么？\n李主任: 主要是如何识别潜在威胁，保护基地安全，以及报告可疑活动。\n张华: 明白了，谢谢李主任！\n王强: 好的，我会准时参加。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "内部威胁意识培训",
+    "messages": [
+     {
+      "from": "李主任",
+      "text": "大家好！明天上午9点在会议室有内部威胁意识培训。请准时参加，不要迟到。",
+      "time": "10:30 AM, 5/15/2023",
+      "me": false
+     },
+     {
+      "from": "张华",
+      "text": "李主任，培训大概需要多久？",
+      "time": "10:32 AM, 5/15/2023",
+      "me": false
+     },
+     {
+      "from": "李主任",
+      "text": "大约两小时。11点半结束。培训后可以一起吃午饭。",
+      "time": "10:35 AM, 5/15/2023",
+      "me": false
+     },
+     {
+      "from": "王强",
+      "text": "好的，我知道了。培训内容包括什么？",
+      "time": "10:37 AM, 5/15/2023",
+      "me": false
+     },
+     {
+      "from": "李主任",
+      "text": "主要是如何识别潜在威胁，保护基地安全，以及报告可疑活动。",
+      "time": "10:40 AM, 5/15/2023",
+      "me": false
+     },
+     {
+      "from": "张华",
+      "text": "明白了，谢谢李主任！",
+      "time": "10:42 AM, 5/15/2023",
+      "me": false
+     },
+     {
+      "from": "王强",
+      "text": "好的，我会准时参加。",
+      "time": "10:43 AM, 5/15/2023",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -639,6 +1732,324 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Disruption in Water Supply Due to Cyberattack",
+   "body": "镇政府\n关于近期供水中断的通知\n各位居民：\n近日，我镇自来水公司系统遭受网络攻击，导致供水系统暂时瘫痪。我们正在全力与之抗争。\n预计修复工作将在48小时内完成。在此期间，请居民们节约用水，并准备好备用水源。\n如有任何问题，请联系镇政府热线电话：0773-1234567。\n我们对此造成的不便深表歉意，并将继续努力确保居民用水安全。\n镇政府\n2023年10月15日\n电话：0773-1234567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "镇政府",
+    "title": "关于近期供水中断的通知",
+    "paragraphs": [
+     "各位居民：",
+     "近日，我镇自来水公司系统遭受网络攻击，导致供水系统暂时瘫痪。我们正在全力与之抗争。",
+     "预计修复工作将在48小时内完成。在此期间，请居民们节约用水，并准备好备用水源。",
+     "如有任何问题，请联系镇政府热线电话：0773-1234567。",
+     "我们对此造成的不便深表歉意，并将继续努力确保居民用水安全。",
+     "镇政府"
+    ],
+    "date": "2023年10月15日",
+    "contact": "电话：0773-1234567"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Town Hall Notice: Renewable Energy Investment in Green Willow",
+   "body": "绿柳镇政府\n关于绿柳镇可再生能源投资的通知\n各位绿柳镇居民：\n为了促进我们镇的可持续发展，绿柳镇政府决定投资可再生能源项目。我们计划在镇中心建造一个太阳能发电站，并安装风力发电设备。\n此项目将于今年10月开始，预计明年6月完成。我们希望通过这个项目，减少碳排放，降低能源成本，并为居民提供更清洁的能源。\n我们将在下个月举行一次公共会议，解释项目的细节并回答您的问题。会议将于9月15日星期三晚上7点在镇政府大楼举行。\n我们鼓励所有居民参加，并期待您的支持和反馈。\n此致，敬礼！绿柳镇政府\n2023年8月1日\n联系人：张伟，电话：123-456-7890",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "绿柳镇政府",
+    "title": "关于绿柳镇可再生能源投资的通知",
+    "paragraphs": [
+     "各位绿柳镇居民：",
+     "为了促进我们镇的可持续发展，绿柳镇政府决定投资可再生能源项目。我们计划在镇中心建造一个太阳能发电站，并安装风力发电设备。",
+     "此项目将于今年10月开始，预计明年6月完成。我们希望通过这个项目，减少碳排放，降低能源成本，并为居民提供更清洁的能源。",
+     "我们将在下个月举行一次公共会议，解释项目的细节并回答您的问题。会议将于9月15日星期三晚上7点在镇政府大楼举行。",
+     "我们鼓励所有居民参加，并期待您的支持和反馈。",
+     "此致，敬礼！绿柳镇政府"
+    ],
+    "date": "2023年8月1日",
+    "contact": "联系人：张伟，电话：123-456-7890"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Town Hall Notice: Green Willow Annual Sports Championship",
+   "body": "绿柳镇人民政府\n关于2023年绿柳镇体育锦标赛的通知\n尊敬的绿柳镇居民：\n为了丰富我们的社区生活，增强居民体质，绿柳镇人民政府决定于2023年10月15日举办首届绿柳镇体育锦标赛。比赛将在绿柳镇体育场举行，包括田径、篮球、乒乓球等项目。\n报名时间为2023年9月1日至9月10日，报名地点为绿柳镇体育场办公室。每位居民可报名参加一项或多项比赛。\n我们诚邀全体居民积极参与，展现风采，增进友谊。如有任何问题，请联系绿柳镇体育场办公室。\n绿柳镇人民政府\n2023年8月25日\n2023年8月25日\n绿柳镇体育场办公室",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "绿柳镇人民政府",
+    "title": "关于2023年绿柳镇体育锦标赛的通知",
+    "paragraphs": [
+     "尊敬的绿柳镇居民：",
+     "为了丰富我们的社区生活，增强居民体质，绿柳镇人民政府决定于2023年10月15日举办首届绿柳镇体育锦标赛。比赛将在绿柳镇体育场举行，包括田径、篮球、乒乓球等项目。",
+     "报名时间为2023年9月1日至9月10日，报名地点为绿柳镇体育场办公室。每位居民可报名参加一项或多项比赛。",
+     "我们诚邀全体居民积极参与，展现风采，增进友谊。如有任何问题，请联系绿柳镇体育场办公室。",
+     "绿柳镇人民政府",
+     "2023年8月25日"
+    ],
+    "date": "2023年8月25日",
+    "contact": "绿柳镇体育场办公室"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Border Crossing Procedure Shift Log",
+   "body": "边境检查站 2023年10月15日\n08:00 张伟: 今天开始实施新的边境通行程序。所有车辆和人员必须在检查站前停止，等待检查。\n09:15 李娜: 检查了第一辆车，司机出示了有效的护照和签证。车辆和行李经过X光检查后放行。\n10:45 王强: 一位老人没有护照，声称他经常穿越边境。要求他回去拿护照。\n12:00 赵丽: 午餐时间。所有检查站人员休息30分钟。\n14:30 钱磊: 检查了一群游客，确认他们的旅游签证和行程单。一切正常。\n16:20 刘洋: 发现一辆可疑车辆，车内没有人。通知了边境巡逻队进行进一步调查。\n18:00 陈静: 今天的工作结束。总共检查了58辆车和123名行人。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "边境检查站",
+    "date": "2023年10月15日",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "张伟: 今天开始实施新的边境通行程序。所有车辆和人员必须在检查站前停止，等待检查。",
+      "initials": "ZW"
+     },
+     {
+      "time": "09:15",
+      "entry": "李娜: 检查了第一辆车，司机出示了有效的护照和签证。车辆和行李经过X光检查后放行。",
+      "initials": "LN"
+     },
+     {
+      "time": "10:45",
+      "entry": "王强: 一位老人没有护照，声称他经常穿越边境。要求他回去拿护照。",
+      "initials": "WQ"
+     },
+     {
+      "time": "12:00",
+      "entry": "赵丽: 午餐时间。所有检查站人员休息30分钟。",
+      "initials": "ZL"
+     },
+     {
+      "time": "14:30",
+      "entry": "钱磊: 检查了一群游客，确认他们的旅游签证和行程单。一切正常。",
+      "initials": "QL"
+     },
+     {
+      "time": "16:20",
+      "entry": "刘洋: 发现一辆可疑车辆，车内没有人。通知了边境巡逻队进行进一步调查。",
+      "initials": "LY"
+     },
+     {
+      "time": "18:00",
+      "entry": "陈静: 今天的工作结束。总共检查了58辆车和123名行人。",
+      "initials": "CJ"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Training Session for Hostile Intent Recognition at Green Willow Security Post",
+   "body": "绿柳安保站 2023年5月15日\n08:00 张警官开始进行敌意识别培训。\n08:30 播放了关于敌意行为的视频。\n09:15 讨论了如何识别可疑人物。\n10:00 进行了实际演练，模拟了潜在威胁场景。\n11:30 训练结束，总结了关键点。\n12:00 午休。\n13:00 复习了上午的训练内容。\n14:30 进行了测试，评估学员的理解程度。\n15:45 讨论了测试结果，并提供了反馈。\n16:30 训练结束，记录了学员的进步。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "绿柳安保站",
+    "date": "2023年5月15日",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "张警官开始进行敌意识别培训。",
+      "initials": "张"
+     },
+     {
+      "time": "08:30",
+      "entry": "播放了关于敌意行为的视频。",
+      "initials": "张"
+     },
+     {
+      "time": "09:15",
+      "entry": "讨论了如何识别可疑人物。",
+      "initials": "李"
+     },
+     {
+      "time": "10:00",
+      "entry": "进行了实际演练，模拟了潜在威胁场景。",
+      "initials": "王"
+     },
+     {
+      "time": "11:30",
+      "entry": "训练结束，总结了关键点。",
+      "initials": "张"
+     },
+     {
+      "time": "12:00",
+      "entry": "午休。",
+      "initials": "李"
+     },
+     {
+      "time": "13:00",
+      "entry": "复习了上午的训练内容。",
+      "initials": "王"
+     },
+     {
+      "time": "14:30",
+      "entry": "进行了测试，评估学员的理解程度。",
+      "initials": "张"
+     },
+     {
+      "time": "15:45",
+      "entry": "讨论了测试结果，并提供了反馈。",
+      "initials": "李"
+     },
+     {
+      "time": "16:30",
+      "entry": "训练结束，记录了学员的进步。",
+      "initials": "王"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Humanitarian Drone Survey in Green Willow Post",
+   "body": "绿柳安保点 2023年7月15日\n08:00 张明: 无人机勘测任务开始。目标区域：洪水影响的青河村。\n09:30 李华: 无人机已到达青河村上空。开始拍摄洪水损失的影像。\n11:45 王伟: 无人机发现村民被困在屋顶上。已通知当地救援队。\n13:20 赵丽: 无人机电池电量低。返回基地充电。\n14:30 张明: 无人机充电完成。继续勘测任务。\n16:15 李华: 任务完成。无人机返回基地。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "绿柳安保点",
+    "date": "2023年7月15日",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "张明: 无人机勘测任务开始。目标区域：洪水影响的青河村。",
+      "initials": "ZM"
+     },
+     {
+      "time": "09:30",
+      "entry": "李华: 无人机已到达青河村上空。开始拍摄洪水损失的影像。",
+      "initials": "LH"
+     },
+     {
+      "time": "11:45",
+      "entry": "王伟: 无人机发现村民被困在屋顶上。已通知当地救援队。",
+      "initials": "WW"
+     },
+     {
+      "time": "13:20",
+      "entry": "赵丽: 无人机电池电量低。返回基地充电。",
+      "initials": "ZL"
+     },
+     {
+      "time": "14:30",
+      "entry": "张明: 无人机充电完成。继续勘测任务。",
+      "initials": "ZM"
+     },
+     {
+      "time": "16:15",
+      "entry": "李华: 任务完成。无人机返回基地。",
+      "initials": "LH"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-1p-shift_log-004",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "New Drone Regulations at Red Maple Airfield",
+   "body": "红枫空军基地安保站值班日志 2023年10月15日\n08:00 张华：接到上级通知，即日起实施新的无人机飞行规定。\n08:05 张华：禁止在距离红枫空军基地5公里内飞行无人机。\n08:10 李明：了解。所有无人机飞行员必须在飞行前向安保站申请许可。\n08:15 张华：违反规定者将面临法律后果。请广泛宣传。\n08:20 王强：收到，将在巡逻时向居民解释新规定。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "红枫空军基地安保站值班日志",
+    "date": "2023年10月15日",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "张华：接到上级通知，即日起实施新的无人机飞行规定。",
+      "initials": "ZH"
+     },
+     {
+      "time": "08:05",
+      "entry": "张华：禁止在距离红枫空军基地5公里内飞行无人机。",
+      "initials": "ZH"
+     },
+     {
+      "time": "08:10",
+      "entry": "李明：了解。所有无人机飞行员必须在飞行前向安保站申请许可。",
+      "initials": "LM"
+     },
+     {
+      "time": "08:15",
+      "entry": "张华：违反规定者将面临法律后果。请广泛宣传。",
+      "initials": "ZH"
+     },
+     {
+      "time": "08:20",
+      "entry": "王强：收到，将在巡逻时向居民解释新规定。",
+      "initials": "WQ"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -824,6 +2235,96 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "zh-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Town Hall Notice: Upcoming Local Election",
+   "body": "镇政府\n关于即将举行的镇长选举的通知\n各位居民：\n我们即将迎来本年度的镇长选举。选举日期为2023年11月15日（星期三），投票站将设在镇中心文化礼堂。\n选举当天，投票站将从上午8点开放至下午5点。请携带您的身份证原件和复印件，以便顺利完成投票手续。\n本次选举共有三位候选人：张伟、李华和王芳。他们将在选举前夕举行公开辩论，时间为2023年11月12日（星期日）晚上7点，地点在镇中心文化礼堂。\n我们鼓励所有符合条件的居民积极参与投票。您的参与对于我们镇的未来发展至关重要。\n如有任何问题，请联系镇政府办公室，电话为123-4567。\n2023年10月1日\n镇政府办公室电话：123-4567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "镇政府",
+    "title": "关于即将举行的镇长选举的通知",
+    "paragraphs": [
+     "各位居民：",
+     "我们即将迎来本年度的镇长选举。选举日期为2023年11月15日（星期三），投票站将设在镇中心文化礼堂。",
+     "选举当天，投票站将从上午8点开放至下午5点。请携带您的身份证原件和复印件，以便顺利完成投票手续。",
+     "本次选举共有三位候选人：张伟、李华和王芳。他们将在选举前夕举行公开辩论，时间为2023年11月12日（星期日）晚上7点，地点在镇中心文化礼堂。",
+     "我们鼓励所有符合条件的居民积极参与投票。您的参与对于我们镇的未来发展至关重要。",
+     "如有任何问题，请联系镇政府办公室，电话为123-4567。"
+    ],
+    "date": "2023年10月1日",
+    "contact": "镇政府办公室电话：123-4567"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Base Security Level Change Announcement",
+   "body": "格林溪镇政府\n关于基地安全防护条件变更的通知\n各位居民：\n根据基地安全需求的变化，格林溪基地将于下周一（5月16日）起，调整安全防护条件。具体变更如下：\n1. 安全防护条件将从当前的‘安全’（甲）级调整为‘警觉’（乙）级。这意味着基地周边将增加巡逻频率，并对进入基地的车辆进行更严格的检查。\n2. 居民进出基地时，请携带有效身份证件，并配合安检人员的检查工作。\n3. 为减少不必要的干扰，建议居民非必要不驶入基地。\n4. 变更期间，基地附近的道路可能会有临时交通管制，请居民提前规划行程，避免因交通管制导致的延误。\n2023年5月12日\n如有任何疑问，请联系基地安全部门：0755-12345678。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "格林溪镇政府",
+    "title": "关于基地安全防护条件变更的通知",
+    "paragraphs": [
+     "各位居民：",
+     "根据基地安全需求的变化，格林溪基地将于下周一（5月16日）起，调整安全防护条件。具体变更如下：",
+     "1. 安全防护条件将从当前的‘安全’（甲）级调整为‘警觉’（乙）级。这意味着基地周边将增加巡逻频率，并对进入基地的车辆进行更严格的检查。",
+     "2. 居民进出基地时，请携带有效身份证件，并配合安检人员的检查工作。",
+     "3. 为减少不必要的干扰，建议居民非必要不驶入基地。",
+     "4. 变更期间，基地附近的道路可能会有临时交通管制，请居民提前规划行程，避免因交通管制导致的延误。"
+    ],
+    "date": "2023年5月12日",
+    "contact": "如有任何疑问，请联系基地安全部门：0755-12345678。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Town Hall Notice: New Hospital in Green Willow",
+   "body": "绿柳镇政府\n关于绿柳镇新医院建设的通知\n各位绿柳镇居民：\n为提升我们镇的医疗服务水平，绿柳镇政府决定在镇中心建设一所新的综合医院。新医院将命名为“绿柳人民医院”，预计于2024年6月正式开放。\n绿柳人民医院将设有多个科室，包括内科、外科、妇产科、儿科、急诊科等，并配备先进的医疗设备。医院还将设有24小时急诊服务，确保居民在任何时间都能获得及时的医疗帮助。\n为了方便居民就医，医院将提供免费停车服务，并设有无障碍通道，确保所有居民都能轻松入内。此外，医院还将提供多语言服务，以满足不同语言背景的居民需求。\n在新医院建设期间，我们将定期发布进展通知，以便居民了解建设情况。我们也欢迎居民提出宝贵意见和建议，以帮助我们改善医疗服务。\n绿柳镇政府将继续努力，为所有居民提供更好的医疗服务。我们期待绿柳人民医院的开放能为大家带来便利和健康。\n2023年11月15日\n绿柳镇政府办公室：010-12345678",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "绿柳镇政府",
+    "title": "关于绿柳镇新医院建设的通知",
+    "paragraphs": [
+     "各位绿柳镇居民：",
+     "为提升我们镇的医疗服务水平，绿柳镇政府决定在镇中心建设一所新的综合医院。新医院将命名为“绿柳人民医院”，预计于2024年6月正式开放。",
+     "绿柳人民医院将设有多个科室，包括内科、外科、妇产科、儿科、急诊科等，并配备先进的医疗设备。医院还将设有24小时急诊服务，确保居民在任何时间都能获得及时的医疗帮助。",
+     "为了方便居民就医，医院将提供免费停车服务，并设有无障碍通道，确保所有居民都能轻松入内。此外，医院还将提供多语言服务，以满足不同语言背景的居民需求。",
+     "在新医院建设期间，我们将定期发布进展通知，以便居民了解建设情况。我们也欢迎居民提出宝贵意见和建议，以帮助我们改善医疗服务。",
+     "绿柳镇政府将继续努力，为所有居民提供更好的医疗服务。我们期待绿柳人民医院的开放能为大家带来便利和健康。"
+    ],
+    "date": "2023年11月15日",
+    "contact": "绿柳镇政府办公室：010-12345678"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "zh-dr-2-news-001",
    "exam": "DLPT_READING",
    "language": "zh-Hans",
@@ -915,6 +2416,150 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Election Day Shift Log at Green Willow Security Post",
+   "body": "绿柳安保站 2023年9月17日\n06:30 张明：开始值班，一切正常。\n07:45 收到通知，今天是市长选举日，请注意监控和安保工作。\n08:15 李华报到，协助监控选举点附近的情况。\n09:30 发现几名可疑人员在选举点附近徘徊，已通知巡逻队进行核查。\n11:00 巡逻队报告，可疑人员为选举志愿者，情况正常。\n12:30 午餐休息，王芳接班监控。\n14:00 收到投诉，选举点外排队人员较多，请求增派安保人员。\n14:45 调派两名安保人员到选举点维持秩序。\n16:20 选举点附近交通拥堵，已联系交通队协助疏导。\n18:00 选举结束，所有安保人员返回岗位。\n19:30 收到通知，明天继续选举第二轮投票，请注意安排人员。\n21:00 换班，由陈伟接班。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "绿柳安保站",
+    "date": "2023年9月17日",
+    "entries": [
+     {
+      "time": "06:30",
+      "entry": "张明：开始值班，一切正常。",
+      "initials": "ZM"
+     },
+     {
+      "time": "07:45",
+      "entry": "收到通知，今天是市长选举日，请注意监控和安保工作。",
+      "initials": "ZM"
+     },
+     {
+      "time": "08:15",
+      "entry": "李华报到，协助监控选举点附近的情况。",
+      "initials": "ZM"
+     },
+     {
+      "time": "09:30",
+      "entry": "发现几名可疑人员在选举点附近徘徊，已通知巡逻队进行核查。",
+      "initials": "LH"
+     },
+     {
+      "time": "11:00",
+      "entry": "巡逻队报告，可疑人员为选举志愿者，情况正常。",
+      "initials": "ZM"
+     },
+     {
+      "time": "12:30",
+      "entry": "午餐休息，王芳接班监控。",
+      "initials": "LH"
+     },
+     {
+      "time": "14:00",
+      "entry": "收到投诉，选举点外排队人员较多，请求增派安保人员。",
+      "initials": "WF"
+     },
+     {
+      "time": "14:45",
+      "entry": "调派两名安保人员到选举点维持秩序。",
+      "initials": "WF"
+     },
+     {
+      "time": "16:20",
+      "entry": "选举点附近交通拥堵，已联系交通队协助疏导。",
+      "initials": "WF"
+     },
+     {
+      "time": "18:00",
+      "entry": "选举结束，所有安保人员返回岗位。",
+      "initials": "ZM"
+     },
+     {
+      "time": "19:30",
+      "entry": "收到通知，明天继续选举第二轮投票，请注意安排人员。",
+      "initials": "ZM"
+     },
+     {
+      "time": "21:00",
+      "entry": "换班，由陈伟接班。",
+      "initials": "ZM"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "zh-dr-2-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "zh-Hans",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Unusual Drone Activity at Blue Pine Harbor",
+   "body": "蓝松港安保站 2023年10月15日\n08:00 李华: 清晨巡逻时发现港口上空有大量小型无人机，数量约50架，形状类似商业用无人机。\n08:15 张伟: 无人机高度约150米，似乎在进行某种模式飞行，但未发现明显的危险行为。\n08:30 王强: 已联系港口管理部门确认，无任何单位申请在此区域进行无人机活动。\n09:00 赵丽: 无人机开始分散，向不同方向飞行，部分无人机进入市区上空。\n09:30 钱明: 已通知市政部门和警方，请求进一步指导。等待回复。\n10:15 孙强: 警方回复，派遣无人机小组前往调查。我们继续监控情况。\n11:00 周小敏: 无人机小组到达现场，开始尝试拦截和识别无人机。\n12:00 吴大宝: 部分无人机已被拦截，发现无人机上无任何标识或识别信息。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "蓝松港安保站",
+    "date": "2023年10月15日",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "李华: 清晨巡逻时发现港口上空有大量小型无人机，数量约50架，形状类似商业用无人机。",
+      "initials": "LH"
+     },
+     {
+      "time": "08:15",
+      "entry": "张伟: 无人机高度约150米，似乎在进行某种模式飞行，但未发现明显的危险行为。",
+      "initials": "ZW"
+     },
+     {
+      "time": "08:30",
+      "entry": "王强: 已联系港口管理部门确认，无任何单位申请在此区域进行无人机活动。",
+      "initials": "WQ"
+     },
+     {
+      "time": "09:00",
+      "entry": "赵丽: 无人机开始分散，向不同方向飞行，部分无人机进入市区上空。",
+      "initials": "ZL"
+     },
+     {
+      "time": "09:30",
+      "entry": "钱明: 已通知市政部门和警方，请求进一步指导。等待回复。",
+      "initials": "QM"
+     },
+     {
+      "time": "10:15",
+      "entry": "孙强: 警方回复，派遣无人机小组前往调查。我们继续监控情况。",
+      "initials": "SQ"
+     },
+     {
+      "time": "11:00",
+      "entry": "周小敏: 无人机小组到达现场，开始尝试拦截和识别无人机。",
+      "initials": "ZXM"
+     },
+     {
+      "time": "12:00",
+      "entry": "吴大宝: 部分无人机已被拦截，发现无人机上无任何标识或识别信息。",
+      "initials": "WDB"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1430,6 +3075,114 @@
    "verified": false
   },
   {
+   "id": "zh-dr-0p-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-badge_form-001",
+   "stem": "What is the purpose of Wang Lei's visit?",
+   "choices": [
+    "To inspect the base's facilities.",
+    "To discuss the cost of defending bases against cheap drones.",
+    "To deliver packages to the base.",
+    "To attend a training session."
+   ],
+   "answer": 1,
+   "explanation": "The purpose of Wang Lei's visit is explicitly stated as '低成本无人机防御成本讨论' (to discuss the cost of defending bases against cheap drones).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dr-0p-badge_form-001",
+   "stem": "What is the main topic of the access request form?",
+   "choices": [
+    "The construction of new facilities at the base.",
+    "The cost of defending bases against cheap drones.",
+    "The schedule of military exercises.",
+    "The delivery of supplies to the base."
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the access request form is '低成本无人机防御成本讨论' (the cost of defending bases against cheap drones), as indicated in the '访问事由' (purpose of visit) field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-badge_form-002",
+   "stem": "What is the estimated duration of the visit?",
+   "choices": [
+    "4 hours",
+    "2 hours",
+    "6 hours",
+    "8 hours"
+   ],
+   "answer": 0,
+   "explanation": "The document states 预计停留时间 (estimated duration of stay) is 4小时 (4 hours).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dr-0p-badge_form-002",
+   "stem": "What is the main purpose of the visit?",
+   "choices": [
+    "To inspect wind turbine operations",
+    "To perform maintenance work",
+    "To conduct a training session",
+    "To deliver equipment"
+   ],
+   "answer": 0,
+   "explanation": "The document states 访问目的 (purpose of visit) is 检查风机运行状态 (to check the operation status of the wind turbines).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-badge_form-003",
+   "stem": "Who is visiting the airport?",
+   "choices": [
+    "Li Hua",
+    "Zhang Wei",
+    "Chen Yi",
+    "Wang Lei"
+   ],
+   "answer": 3,
+   "explanation": "The name on the form is '王磊' (Wang Lei).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dr-0p-badge_form-003",
+   "stem": "What is the purpose of the visit?",
+   "choices": [
+    "To install a counter-drone system",
+    "To deliver packages",
+    "To inspect the runways",
+    "To conduct a security drill"
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the visit is '安装反无人机系统' (To install a counter-drone system).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-0p-label-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1682,6 +3435,186 @@
    "verified": false
   },
   {
+   "id": "zh-dr-0p-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-schedule_board-001",
+   "stem": "What is the flood warning level for Riverbank Village on June 2?",
+   "choices": [
+    "Orange",
+    "Red",
+    "Green",
+    "Yellow"
+   ],
+   "answer": 3,
+   "explanation": "The document states '预警等级' (warning level) is '黄色' (yellow) for '2023年6月2日' (June 2).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dr-0p-schedule_board-001",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "A new park opening",
+    "A local election",
+    "A school event",
+    "A flood warning"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is indicated by the title '洪水预警通知' (Flood Warning Notice).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-schedule_board-002",
+   "stem": "Where was the drone operator detained?",
+   "choices": [
+    "Green Willow Airport parking lot",
+    "Green Willow Airport runway",
+    "Green Willow Airport security office",
+    "Green Willow Airport western side"
+   ],
+   "answer": 2,
+   "explanation": "The document states that the drone operator '李华' was detained in the '绿柳机场警务室', which translates to 'Green Willow Airport security office'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "purpose",
+   "passageId": "zh-dr-0p-schedule_board-002",
+   "stem": "What is the purpose of this schedule board?",
+   "choices": [
+    "To schedule drone maintenance appointments",
+    "To inform about drone flight schedules",
+    "To list the daily tasks of airport security",
+    "To document the detention and investigation of a drone operator"
+   ],
+   "answer": 3,
+   "explanation": "The schedule board documents the events related to the drone operator '张明', including the '无人机非法飞行' (illegal drone flight) and the detention and investigation of the operator '李华'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-schedule_board-003",
+   "stem": "Who is responsible for the Counter-Drone Exercise on October 1?",
+   "choices": [
+    "Wang Ying",
+    "Zhang Wei",
+    "Chen Bo",
+    "Li Hua"
+   ],
+   "answer": 1,
+   "explanation": "The document clearly states that 张伟 (Zhang Wei) is responsible for the 反无人机演练 (Counter-Drone Exercise) on 2023年10月1日 (October 1).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dr-0p-schedule_board-003",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To plan a counter-drone exercise and discuss lessons learned",
+    "To organize a sports championship",
+    "To schedule regular drone operations",
+    "To plan a local election"
+   ],
+   "answer": 0,
+   "explanation": "The schedule includes both 反无人机演练 (Counter-Drone Exercise) and 经验教训会议 (Lessons Learned Meeting), indicating the main purpose is to plan the exercise and discuss the lessons learned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-signage-002",
+   "stem": "What should you NOT do if you see the drones?",
+   "choices": [
+    "Report the drones to the base",
+    "Take photos of the drones",
+    "Observe the drones from a distance",
+    "Touch the drones"
+   ],
+   "answer": 3,
+   "explanation": "The sign explicitly states \"请勿触碰或干扰无人机\" which translates to \"Do not touch or interfere with the drones.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dr-0p-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To instruct on how to operate drones",
+    "To warn about drone activity and prohibit interference",
+    "To advertise a drone racing event",
+    "To inform about a new drone delivery service"
+   ],
+   "answer": 1,
+   "explanation": "The sign warns about \"无人机活动\" (drone activity) and explicitly prohibits \"触碰或干扰\" (touching or interfering) with the drones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "zh-dr-0p-signage-003",
+   "stem": "When does the first shuttle bus run?",
+   "choices": [
+    "9:00 - 10:00",
+    "8:00 - 9:00",
+    "7:00 - 8:00",
+    "6:00 - 7:00"
+   ],
+   "answer": 2,
+   "explanation": "The sign states '1号班车：7:00 - 8:00', indicating the first shuttle bus runs from 7:00 to 8:00.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-0p-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "zh-dr-0p-signage-003",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To announce new shuttle bus drivers",
+    "To warn about shuttle bus delays",
+    "To inform about shuttle bus cancellations",
+    "To announce new shuttle bus routes"
+   ],
+   "answer": 3,
+   "explanation": "The sign starts with '注意：基地公交车临时改道', which translates to 'Notice: Base shuttle buses temporarily rerouted', indicating the main purpose is to announce new shuttle bus routes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-1-announcement-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1768,6 +3701,222 @@
    ],
    "answer": 2,
    "explanation": "The text announces new rules for flying drones near the airbase: 为了确保飞行安全，空军基地近日发布了新的无人机飞行规定。",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-badge_form-001",
+   "stem": "What is the purpose of Li Ming's visit?",
+   "choices": [
+    "To participate in radio procedures training",
+    "To attend a meeting",
+    "To inspect the base",
+    "To deliver supplies"
+   ],
+   "answer": 0,
+   "explanation": "The purpose of Li Ming's visit is clearly stated as '参加无线电程序培训' (to participate in radio procedures training).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-badge_form-001",
+   "stem": "What is the main topic of the document?",
+   "choices": [
+    "An announcement about a new regulation",
+    "A notice about a change in schedule",
+    "A request for access to a military base",
+    "A report on a recent incident"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the document is a request for access to a military base, as indicated by the title '来访者通行证 / 访问请求表' (Visitor Badge / Access Request Form).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-badge_form-002",
+   "stem": "What is the purpose of Li Hua's visit?",
+   "choices": [
+    "To inspect flood warning systems",
+    "To attend a meeting",
+    "To deliver supplies",
+    "To conduct a routine check"
+   ],
+   "answer": 0,
+   "explanation": "The form states '长江基地洪水警报检查,' which translates to 'Yangtze Base flood warning inspection.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-badge_form-002",
+   "stem": "What is the main concern indicated in the form?",
+   "choices": [
+    "Equipment delivery",
+    "Flood warning and safety",
+    "Base construction",
+    "Training exercise"
+   ],
+   "answer": 1,
+   "explanation": "The form mentions '长江基地洪水警报检查' and notes '请注意基地内可能的水淹路段，注意安全,' indicating the main concern is flood warning and safety.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-badge_form-003",
+   "stem": "What is the purpose of Li Ming's visit?",
+   "choices": [
+    "To install new drone systems.",
+    "To inspect the base's security measures.",
+    "To research the cost of defending bases against cheap drones.",
+    "To attend a conference on drone technology."
+   ],
+   "answer": 2,
+   "explanation": "The purpose of Li Ming's visit is explicitly stated as '调研基地防低价无人机防御成本' (to research the cost of defending bases against cheap drones).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-badge_form-003",
+   "stem": "What is the main topic of the document?",
+   "choices": [
+    "New drone technology.",
+    "Base security protocols.",
+    "Schedule of base visits.",
+    "The cost of defending bases against cheap drones."
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the document is '防低价无人机防御成本' (the cost of defending bases against cheap drones), as mentioned in the purpose of the visit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-chat-001",
+   "stem": "What is the expected weather condition mentioned in the flood warning?",
+   "choices": [
+    "Snow",
+    "Fog",
+    "High winds",
+    "Heavy rain"
+   ],
+   "answer": 3,
+   "explanation": "The message states '预计明天会有大雨', which translates to 'Heavy rain is expected tomorrow'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-chat-001",
+   "stem": "What is the main purpose of this message thread?",
+   "choices": [
+    "To warn about a flood",
+    "To discuss a social event",
+    "To plan a vacation",
+    "To organize a meeting"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to warn about a flood, as indicated by the title '洪水警报' and the content discussing the flood warning and necessary precautions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-chat-002",
+   "stem": "Where was the drone sighted?",
+   "choices": [
+    "Inside the base's hangar",
+    "Above the base's east side",
+    "Near the base's entrance",
+    "Above the base's west side"
+   ],
+   "answer": 3,
+   "explanation": "The message from 张伟 states '在基地西侧看到了一个无人机', which translates to 'Saw a drone on the west side of the base'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-chat-002",
+   "stem": "What is the main concern of the conversation?",
+   "choices": [
+    "Discussing drone technology",
+    "Ensuring base security",
+    "Scheduling maintenance work",
+    "Planning a base event"
+   ],
+   "answer": 1,
+   "explanation": "The main concern revolves around the drone sighting and the subsequent actions to '确保基地安全' (ensure base security), as mentioned by 王强.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-chat-003",
+   "stem": "Which attraction in Guilin is mentioned as having full capacity?",
+   "choices": [
+    "Li River",
+    "Elephant Trunk Hill",
+    "Sun and Moon Pagodas",
+    "Reed Flute Cave"
+   ],
+   "answer": 0,
+   "explanation": "The message from 李华 states that the '漓江的游船今天满员了,' which translates to 'The Li River's boats are full today.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Tourism recovery in Guilin",
+    "Food festivals in Guilin",
+    "Cultural events in Guilin",
+    "New attractions in Guilin"
+   ],
+   "answer": 0,
+   "explanation": "The conversation revolves around the topic of tourism recovery in Guilin, as indicated by phrases like '旅游业开始复苏了' and '桂林的旅游业真的在恢复.'",
    "source": "llm",
    "verified": false
   },
@@ -2402,6 +4551,114 @@
    "verified": false
   },
   {
+   "id": "zh-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-schedule_board-001",
+   "stem": "When is the training session on October 3rd scheduled?",
+   "choices": [
+    "09:00-11:00",
+    "14:00-16:00",
+    "13:00-15:00",
+    "08:00-10:00"
+   ],
+   "answer": 0,
+   "explanation": "The schedule shows that the training session on October 3rd is scheduled from 09:00 to 11:00, as indicated by the words '10月3日（星期三）' and '09:00-11:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-schedule_board-001",
+   "stem": "What is the purpose of this document?",
+   "choices": [
+    "To inform about a new hospital construction",
+    "To announce a flood warning",
+    "To schedule insider threat awareness training sessions",
+    "To announce a change in base security levels"
+   ],
+   "answer": 2,
+   "explanation": "The purpose of this document is to schedule insider threat awareness training sessions, as indicated by the title '基地内部威胁意识培训时间表'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-schedule_board-002",
+   "stem": "What is the new security condition of the base?",
+   "choices": [
+    "Yellow",
+    "Orange",
+    "Red",
+    "Green"
+   ],
+   "answer": 1,
+   "explanation": "The document states \"安全条件由黄色提升至橙色\", which translates to \"Security condition is elevated from yellow to orange.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-schedule_board-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To schedule a meeting",
+    "To announce a holiday",
+    "To schedule maintenance",
+    "To announce a change in security posture"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the notice is to inform about the change in security posture, as indicated by the title \"基地安全态势变更通知\" which translates to \"Base Security Posture Change Announcement.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-schedule_board-003",
+   "stem": "When is the new trade agreement signing ceremony scheduled to take place?",
+   "choices": [
+    "June 2, 10:00 AM - 12:00 PM",
+    "June 3, 3:00 PM - 5:00 PM",
+    "June 1, 10:00 AM - 12:00 PM",
+    "June 1, 2:00 PM - 4:00 PM"
+   ],
+   "answer": 3,
+   "explanation": "The signing ceremony is scheduled for June 1 (星期五) from 14:00-16:00, as indicated by the text '6月1日(星期五) 14:00-16:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-schedule_board-003",
+   "stem": "What is the main purpose of the events listed in the schedule?",
+   "choices": [
+    "To discuss environmental policies",
+    "To inform and promote the new trade agreement",
+    "To organize a sports competition",
+    "To celebrate a local festival"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to inform and promote the new trade agreement, as all events are related to the '新贸易协议', including the signing ceremony, explanatory meeting, and product exhibition.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2488,6 +4745,150 @@
    ],
    "answer": 3,
    "explanation": "In the context of the message, 安全 refers to 安全风险 (security risks) that the patrol team is checking for. The other options do not fit the context of the phrase.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-signage-001",
+   "stem": "What is the minimum distance from the airfield where drones are prohibited from flying?",
+   "choices": [
+    "5 kilometers",
+    "2 kilometers",
+    "3 kilometers",
+    "1 kilometer"
+   ],
+   "answer": 2,
+   "explanation": "The sign states '严禁在距离机场3公里以内飞行无人机', which translates to 'Drones are strictly prohibited from flying within 3 kilometers of the airfield.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-signage-001",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To advertise drone flying lessons",
+    "To promote a drone flying competition",
+    "To sell drones",
+    "To inform about new drone regulations"
+   ],
+   "answer": 3,
+   "explanation": "The sign's main purpose is to inform about new drone regulations, as indicated by the title '无人机飞行新规定' which translates to 'New Drone Flying Regulations'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-signage-002",
+   "stem": "What is the base code mentioned in the notice?",
+   "choices": [
+    "LH-07",
+    "WH-14",
+    "BH-03",
+    "DZ-09"
+   ],
+   "answer": 0,
+   "explanation": "The base code mentioned in the notice is \"基地代号：LH-07\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-signage-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform about a fire drill",
+    "To instruct reconnaissance teams to inspect designated areas after a rocket alarm",
+    "To request maintenance of equipment",
+    "To announce a change in shift schedules"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of this notice is \"所有侦察小组请立即前往指定区域进行巡查\" which translates to instruct reconnaissance teams to inspect designated areas after a rocket alarm.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-signage-003",
+   "stem": "When will the solar farm construction start at Changcheng Air Base?",
+   "choices": [
+    "May 1, 2023",
+    "June 1, 2023",
+    "July 1, 2023",
+    "April 1, 2023"
+   ],
+   "answer": 0,
+   "explanation": "The start date is explicitly mentioned as '2023年5月1日' in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "zh-dr-1-signage-003",
+   "stem": "What is the purpose of this notice?",
+   "choices": [
+    "To warn about potential noise disturbance during solar farm construction",
+    "To inform about a change in flight schedules",
+    "To announce a new military exercise",
+    "To advertise a new product for sale on the base"
+   ],
+   "answer": 0,
+   "explanation": "The notice mentions '可能有噪音干扰' and asks for cooperation, indicating it is about warning of potential noise disturbance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "zh-dr-1-signage-004",
+   "stem": "What caused the delay at the entry control point?",
+   "choices": [
+    "A driver was not familiar with the procedure",
+    "A driver refused to cooperate with the inspection",
+    "A driver had incomplete documentation",
+    "A driver arrived too early for inspection"
+   ],
+   "answer": 1,
+   "explanation": "The document states '本月15日，一名送货司机王强在入口检查站拒绝配合检查，导致延误。' which translates to 'On the 15th of this month, a delivery driver Wang Qiang refused to cooperate with the inspection at the entry control point, causing a delay.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1-signage-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "zh-dr-1-signage-004",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To remind drivers of the mandatory inspection procedure",
+    "To introduce new inspection personnel",
+    "To announce a change in inspection times",
+    "To inform drivers about a recent incident"
+   ],
+   "answer": 0,
+   "explanation": "The document emphasizes '根据基地安全规定，所有车辆进入前必须接受检查。' which translates to 'According to base security regulations, all vehicles must undergo inspection before entering.' This is the main idea and purpose of the notice.",
    "source": "llm",
    "verified": false
   },
@@ -2650,6 +5051,114 @@
    ],
    "answer": 1,
    "explanation": "In this context, '节约' means to conserve. The announcement asks residents to '节约用水' (conserve water) due to the drought.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-chat-001",
+   "stem": "What is the main idea of this conversation?",
+   "choices": [
+    "A request for leave from base personnel",
+    "A discussion about base construction projects",
+    "A complaint about base facilities",
+    "A change in the force protection condition at Lánshān Base"
+   ],
+   "answer": 3,
+   "explanation": "The main idea is clearly stated in the first message: '兰山基地警戒状态从今天下午3点开始由黄色升级为橙色', which translates to 'Lánshān Base's force protection condition is being elevated from yellow to orange starting this afternoon at 3 PM.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-chat-001",
+   "stem": "What specific change is mentioned regarding patrols?",
+   "choices": [
+    "Patrol routes will be shortened",
+    "Patrol frequency will double",
+    "Patrols will be reduced by half",
+    "Patrols will be suspended temporarily"
+   ],
+   "answer": 1,
+   "explanation": "The detail about patrols is explicitly mentioned in the last message: '巡逻频率将增加一倍', which translates to 'Patrol frequency will double.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "B organizing a night drill",
+    "C discussing a new training schedule",
+    "A planning a weekend trip",
+    "D arranging a meeting"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is organizing a night drill, as indicated by the phrase \"快速反应力演习\" (quick reaction force drill) mentioned multiple times.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-chat-002",
+   "stem": "What time does the drill start and end?",
+   "choices": [
+    "C 7 PM to 9 PM",
+    "B 9 PM to 11 PM",
+    "A 8 PM to 10 PM",
+    "D 10 PM to 12 AM"
+   ],
+   "answer": 1,
+   "explanation": "The drill starts at 9 PM and ends at 11 PM, as stated in the message: \"9点开始，11点结束\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A scheduling a team-building event",
+    "D organizing a base-wide picnic",
+    "C discussing insider threat awareness training",
+    "B planning a security exercise"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is insider threat awareness training, as indicated by the repeated mentions of '内部威胁意识培训'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-chat-003",
+   "stem": "What time does the training end?",
+   "choices": [
+    "C 12:30 PM",
+    "D 1:30 PM",
+    "A 10:30 AM",
+    "B 11:30 AM"
+   ],
+   "answer": 3,
+   "explanation": "The training ends at 11:30 AM, as stated in the message '大约两小时。11点半结束。'.",
    "source": "llm",
    "verified": false
   },
@@ -3136,6 +5645,258 @@
    ],
    "answer": 0,
    "explanation": "The text explains '单双号限行' as '根据车牌尾号，单号日行驶车牌尾号为1、3、5、7、9的机动车，双号日行驶车牌尾号为2、4、6、8、0的机动车' (Depending on the last digit of the license plate, cars with license plates ending in 1, 3, 5, 7, 9 can drive on odd days, and cars with license plates ending in 2, 4, 6, 8, 0 can drive on even days).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-municipal_notice-001",
+   "stem": "What is the main purpose of this notice from the town hall?",
+   "choices": [
+    "To inform residents about a cyberattack on the water supply system and provide instructions.",
+    "To schedule a routine maintenance for the water supply system.",
+    "To request residents to pay their water bills immediately.",
+    "To announce a new water conservation policy."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is clearly stated in the notice, mentioning the cyberattack and providing instructions for residents, as seen in the phrase '关于近期供水中断的通知' and '请居民们节约用水，并准备好备用水源。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-municipal_notice-001",
+   "stem": "How long is the estimated duration of the water supply disruption?",
+   "choices": [
+    "48 hours",
+    "24 hours",
+    "Indefinite",
+    "72 hours"
+   ],
+   "answer": 0,
+   "explanation": "The estimated duration is explicitly mentioned in the notice as '预计修复工作将在48小时内完成。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-municipal_notice-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a new renewable energy project in Green Willow Town.",
+    "To inform residents about a change in local government.",
+    "To schedule a meeting for a community event.",
+    "To advertise a new business opportunity in the town."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the notice is to announce the new renewable energy project, as indicated by the phrases '绿柳镇政府决定投资可再生能源项目' and '我们计划在镇中心建造一个太阳能发电站，并安装风力发电设备'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-municipal_notice-002",
+   "stem": "When will the public meeting be held?",
+   "choices": [
+    "September 15th at 7 PM.",
+    "October 1st at 8 AM.",
+    "November 20th at 10 AM.",
+    "December 1st at 2 PM."
+   ],
+   "answer": 0,
+   "explanation": "The public meeting will be held on '9月15日星期三晚上7点', which translates to September 15th at 7 PM.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-municipal_notice-003",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To remind residents about an upcoming election",
+    "To advertise a new training session for hostile intent recognition",
+    "To inform residents about a change in water supply",
+    "To announce a new sports championship in Green Willow Town"
+   ],
+   "answer": 3,
+   "explanation": "The notice is primarily about announcing the first annual sports championship in Green Willow Town, as indicated by the title and the first paragraph.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-municipal_notice-003",
+   "stem": "When is the registration period for the sports championship?",
+   "choices": [
+    "August 1st to August 10th, 2023",
+    "September 1st to September 10th, 2023",
+    "October 1st to October 10th, 2023",
+    "November 1st to November 10th, 2023"
+   ],
+   "answer": 1,
+   "explanation": "The registration period is clearly stated as '2023年9月1日至9月10日' in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-shift_log-001",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "Tourist activities near the border",
+    "Construction work at the border",
+    "Training exercises for border patrol",
+    "Daily activities of a border checkpoint"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the daily activities of a border checkpoint, as indicated by entries describing the implementation of new procedures, vehicle and person checks, and suspicious activity reports.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-shift_log-001",
+   "stem": "What happened to the elderly person who did not have a passport?",
+   "choices": [
+    "He was asked to go back and get his passport",
+    "He was allowed to cross after explaining his situation",
+    "He was detained for further questioning",
+    "He was escorted back to his home country"
+   ],
+   "answer": 0,
+   "explanation": "The entry at 10:45 states that the elderly person was asked to go back and get his passport, as indicated by the phrase '要求他回去拿护照'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-shift_log-002",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "Visitor logs and access control",
+    "Training session on recognizing hostile intent",
+    "Equipment maintenance schedule",
+    "Daily security routines"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is clearly stated in the entries, such as '开始进行敌意识别培训' (started training for recognizing hostile intent) and '讨论了如何识别可疑人物' (discussed how to recognize suspicious individuals).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-shift_log-002",
+   "stem": "What specific activity was conducted at 10:00?",
+   "choices": [
+    "Video presentation",
+    "Actual drill simulating potential threat scenarios",
+    "Lecture on security protocols",
+    "Review of previous day's logs"
+   ],
+   "answer": 1,
+   "explanation": "The entry at 10:00 states '进行了实际演练，模拟了潜在威胁场景' (conducted actual drills, simulating potential threat scenarios).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-shift_log-003",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "B A humanitarian drone survey after a flood",
+    "D A border crossing procedure update",
+    "C A training exercise for new security guards",
+    "A routine patrol by security personnel"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is clearly stated in the first entry: '无人机勘测任务开始。目标区域：洪水影响的青河村。' (Drone survey task begins. Target area: Qinghe Village affected by the flood.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-shift_log-003",
+   "stem": "What specific action was taken when the drone discovered stranded villagers?",
+   "choices": [
+    "C Local rescue teams were alerted",
+    "B The security post was notified",
+    "A The drone continued filming",
+    "D The drone returned to base"
+   ],
+   "answer": 0,
+   "explanation": "The entry at 11:45 states: '无人机发现村民被困在屋顶上。已通知当地救援队。' (The drone discovered villagers stranded on the roof. Local rescue teams have been notified.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "zh-dr-1p-shift_log-004",
+   "stem": "What is the main topic of the shift log entries?",
+   "choices": [
+    "Upcoming local elections",
+    "Announcement of a new sports championship",
+    "New rules for flying drones near a military airfield",
+    "Changes in military base security levels"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in the first entry: '接到上级通知，即日起实施新的无人机飞行规定。' (Received a notice from higher authorities, new drone flying regulations come into effect starting today.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-1p-shift_log-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "zh-dr-1p-shift_log-004",
+   "stem": "What is the distance within which drone flying is prohibited?",
+   "choices": [
+    "10 kilometers",
+    "2 kilometers",
+    "15 kilometers",
+    "5 kilometers"
+   ],
+   "answer": 3,
+   "explanation": "The specific distance is mentioned in the second entry: '禁止在距离红枫空军基地5公里内飞行无人机。' (Drone flying is prohibited within 5 kilometers of Red Maple Airfield.)",
    "source": "llm",
    "verified": false
   },
@@ -3788,6 +6549,114 @@
    "verified": false
   },
   {
+   "id": "zh-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-municipal_notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To remind residents about an upcoming training session.",
+    "To inform residents about an upcoming local election.",
+    "To announce a change in the town's water supply.",
+    "To notify residents about a change in force protection condition."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the notice is to inform residents about an upcoming local election. This is clearly stated in the title and the first sentence of the notice: “关于即将举行的镇长选举的通知” and “我们即将迎来本年度的镇长选举。”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-municipal_notice-001",
+   "stem": "When and where will the public debate among the candidates take place?",
+   "choices": [
+    "On November 15th at the Town Hall Office.",
+    "On November 12th at the Town Center Cultural Hall.",
+    "On November 15th at the Town Center Cultural Hall.",
+    "On November 12th at the Town Hall Office."
+   ],
+   "answer": 1,
+   "explanation": "The public debate among the candidates will take place on November 12th at the Town Center Cultural Hall. The notice states: “他们将在选举前夕举行公开辩论，时间为2023年11月12日（星期日）晚上7点，地点在镇中心文化礼堂。”",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-municipal_notice-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To remind residents about an upcoming election",
+    "To notify residents about a scheduled power outage",
+    "To announce a new traffic regulation in the town",
+    "To inform residents about a change in the base's security level"
+   ],
+   "answer": 3,
+   "explanation": "The notice is primarily about informing residents that the base's security level will change from '安全' (safe) to '警觉' (aware).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-municipal_notice-002",
+   "stem": "What will happen to the patrol frequency around the base?",
+   "choices": [
+    "It will stay the same",
+    "It will decrease",
+    "It will be randomized",
+    "It will increase"
+   ],
+   "answer": 3,
+   "explanation": "The notice states that '基地周边将增加巡逻频率' (perimeter patrols will be increased).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about a change in town leadership",
+    "To advertise a new shopping center in the town",
+    "To discuss the town's budget for the upcoming year",
+    "To announce the opening of a new hospital in Green Willow"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is clearly stated in the first paragraph: “绿柳镇政府决定在镇中心建设一所新的综合医院” (The Green Willow town government has decided to build a new comprehensive hospital in the town center).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-municipal_notice-003",
+   "stem": "What services will the new hospital provide?",
+   "choices": [
+    "Only emergency care and multilingual services",
+    "Only multilingual services and free parking",
+    "Only emergency care and free parking",
+    "Free parking, multilingual services, and 24-hour emergency care"
+   ],
+   "answer": 3,
+   "explanation": "The notice mentions that the hospital will provide '免费停车服务' (free parking services), '多语言服务' (multilingual services), and '24小时急诊服务' (24-hour emergency services).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "zh-dr-2-news-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -4108,6 +6977,78 @@
    ],
    "answer": 0,
    "explanation": "In this context, '控制链路' refers to the communication link used to control the drone, as it is the part that was jammed (干扰) during the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-shift_log-001",
+   "stem": "What is the main subject of this shift log?",
+   "choices": [
+    "C A traffic incident",
+    "B A local election day",
+    "A daily routine at a security post",
+    "D A training exercise"
+   ],
+   "answer": 1,
+   "explanation": "The main subject is a local election day, as indicated by multiple entries mentioning the election, such as '今天是市长选举日' and '选举结束'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-shift_log-001",
+   "stem": "What specific time is mentioned for the election to end?",
+   "choices": [
+    "A 18:00",
+    "B 19:30",
+    "D 12:30",
+    "C 21:00"
+   ],
+   "answer": 0,
+   "explanation": "The specific time mentioned for the election to end is '18:00', as stated in the entry '选举结束，所有安保人员返回岗位。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "zh-dr-2-shift_log-002",
+   "stem": "What is the main topic of the shift log entries?",
+   "choices": [
+    "C A scheduled drone inspection",
+    "A routine patrol of the harbor",
+    "B Unusual drone activity over the harbor",
+    "D A training exercise for drone recognition"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the unusual drone activity over the harbor, as indicated by entries such as '发现港口上空有大量小型无人机' (discovered a large number of small drones over the harbor).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "zh-dr-2-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "zh-dr-2-shift_log-002",
+   "stem": "What action did the security post take after discovering the drones?",
+   "choices": [
+    "C Ignored the drones",
+    "D Called for a city-wide evacuation",
+    "A Immediately shot down the drones",
+    "B Contacted the harbor management"
+   ],
+   "answer": 3,
+   "explanation": "The security post contacted the harbor management, as mentioned in '已联系港口管理部门确认，无任何单位申请在此区域进行无人机活动' (have contacted the harbor management to confirm, no unit has applied to conduct drone activities in this area).",
    "source": "llm",
    "verified": false
   },

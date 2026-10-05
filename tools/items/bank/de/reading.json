@@ -156,6 +156,175 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-0p-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "University Admissions Change Notification",
+   "body": "Änderung im Zulassungsverfahren\nDatum | Zeit | Ort | Info\n15.10.2023 | 09:00 | Hörsaal A | Zulassung: Online-Anmeldung\n15.10.2023 | 10:00 | Hörsaal B | Zulassung: Papierformular\n16.10.2023 | 09:00 | Hörsaal A | Zulassung: Online-Anmeldung\n16.10.2023 | 10:00 | Hörsaal B | Zulassung: Papierformular\n17.10.2023 | 09:00 | Hörsaal A | Zulassung: Online-Anmeldung\n17.10.2023 | 10:00 | Hörsaal B | Zulassung: Papierformular",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Änderung im Zulassungsverfahren",
+    "columns": [
+     "Datum",
+     "Zeit",
+     "Ort",
+     "Info"
+    ],
+    "rows": [
+     [
+      "15.10.2023",
+      "09:00",
+      "Hörsaal A",
+      "Zulassung: Online-Anmeldung"
+     ],
+     [
+      "15.10.2023",
+      "10:00",
+      "Hörsaal B",
+      "Zulassung: Papierformular"
+     ],
+     [
+      "16.10.2023",
+      "09:00",
+      "Hörsaal A",
+      "Zulassung: Online-Anmeldung"
+     ],
+     [
+      "16.10.2023",
+      "10:00",
+      "Hörsaal B",
+      "Zulassung: Papierformular"
+     ],
+     [
+      "17.10.2023",
+      "09:00",
+      "Hörsaal A",
+      "Zulassung: Online-Anmeldung"
+     ],
+     [
+      "17.10.2023",
+      "10:00",
+      "Hörsaal B",
+      "Zulassung: Papierformular"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Earthquake Relief Efforts in Kleinstadt",
+   "body": "Erdbebenhilfe in Kleinstadt\nDatum | Schicht | Ort | Team\n15.05. | 08:00-16:00 | Hauptplatz | Team A\n16.05. | 08:00-16:00 | Schulzentrum | Team B\n17.05. | 08:00-16:00 | Krankenhaus | Team A\n18.05. | 08:00-16:00 | Hauptplatz | Team B\n19.05. | 08:00-16:00 | Schulzentrum | Team A",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Erdbebenhilfe in Kleinstadt",
+    "columns": [
+     "Datum",
+     "Schicht",
+     "Ort",
+     "Team"
+    ],
+    "rows": [
+     [
+      "15.05.",
+      "08:00-16:00",
+      "Hauptplatz",
+      "Team A"
+     ],
+     [
+      "16.05.",
+      "08:00-16:00",
+      "Schulzentrum",
+      "Team B"
+     ],
+     [
+      "17.05.",
+      "08:00-16:00",
+      "Krankenhaus",
+      "Team A"
+     ],
+     [
+      "18.05.",
+      "08:00-16:00",
+      "Hauptplatz",
+      "Team B"
+     ],
+     [
+      "19.05.",
+      "08:00-16:00",
+      "Schulzentrum",
+      "Team A"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Nighttime Quick Reaction Force Drill",
+   "body": "Schnelleinsatzübung - Nachtschicht\nDatum | Schicht | Zeit | Ort | Kräfte\n01.11.2023 | Nachtschicht | 23:00 - 03:00 | Flugplatz Berlin-Tegel | Team Alpha\n02.11.2023 | Nachtschicht | 23:00 - 03:00 | Flugplatz Berlin-Tegel | Team Bravo\n03.11.2023 | Nachtschicht | 23:00 - 03:00 | Flugplatz Berlin-Tegel | Team Charlie",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Schnelleinsatzübung - Nachtschicht",
+    "columns": [
+     "Datum",
+     "Schicht",
+     "Zeit",
+     "Ort",
+     "Kräfte"
+    ],
+    "rows": [
+     [
+      "01.11.2023",
+      "Nachtschicht",
+      "23:00 - 03:00",
+      "Flugplatz Berlin-Tegel",
+      "Team Alpha"
+     ],
+     [
+      "02.11.2023",
+      "Nachtschicht",
+      "23:00 - 03:00",
+      "Flugplatz Berlin-Tegel",
+      "Team Bravo"
+     ],
+     [
+      "03.11.2023",
+      "Nachtschicht",
+      "23:00 - 03:00",
+      "Flugplatz Berlin-Tegel",
+      "Team Charlie"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-0p-sign-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -183,6 +352,60 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-0p-signage-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Delivery Driver Incident at Air Base",
+   "body": "ACHTUNG: ZUTRITT VERBOTEN\nNur für autorisierte Personen\nLieferanten: Parken Sie bei Tor 3\nHerr Müller von 'Schnell-Lieferungen'\nignorierte die Anweisung\nund parkte am Tor 1 um 10:15 Uhr, 15. Mai 2023",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "ACHTUNG: ZUTRITT VERBOTEN",
+     "Nur für autorisierte Personen",
+     "Lieferanten: Parken Sie bei Tor 3",
+     "Herr Müller von 'Schnell-Lieferungen'",
+     "ignorierte die Anweisung",
+     "und parkte am Tor 1 um 10:15 Uhr, 15. Mai 2023"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-0p-signage-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Solar Panel Installation Notice",
+   "body": "Achtung!\nSolarpanel-Installation\nnur im Bereich D\nvon 08:00 bis 16:00 Uhr\nHelme tragen\nVerbot: Rauchen und Feuer",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "Achtung!",
+     "Solarpanel-Installation",
+     "nur im Bereich D",
+     "von 08:00 bis 16:00 Uhr",
+     "Helme tragen",
+     "Verbot: Rauchen und Feuer"
+    ],
+    "kind": "warning"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -275,6 +498,436 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Quick Reaction Force Drill at Night",
+   "body": "Besucherausweis / Zugangsanforderung\nName:: Hans Müller\nEinheit:: Schnelle Einsatzkräfte (SEK)\nZweck des Besuchs:: Nachtübung der schnellen Einsatzkräfte\nDatum:: 15. Oktober 2023\nUhrzeit:: 23:00 bis 03:00\nOrt:: Flugplatz Berlin-Tegel\nKontaktperson:: Max Schmidt\nTelefon:: +49 30 1234567\nAutokennzeichen:: B-TG 1234\nUnterschrift:: ________________________\nDieser Ausweis ist nur für die angegebene Übung gültig.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Besucherausweis / Zugangsanforderung",
+    "fields": [
+     {
+      "label": "Name:",
+      "value": "Hans Müller"
+     },
+     {
+      "label": "Einheit:",
+      "value": "Schnelle Einsatzkräfte (SEK)"
+     },
+     {
+      "label": "Zweck des Besuchs:",
+      "value": "Nachtübung der schnellen Einsatzkräfte"
+     },
+     {
+      "label": "Datum:",
+      "value": "15. Oktober 2023"
+     },
+     {
+      "label": "Uhrzeit:",
+      "value": "23:00 bis 03:00"
+     },
+     {
+      "label": "Ort:",
+      "value": "Flugplatz Berlin-Tegel"
+     },
+     {
+      "label": "Kontaktperson:",
+      "value": "Max Schmidt"
+     },
+     {
+      "label": "Telefon:",
+      "value": "+49 30 1234567"
+     },
+     {
+      "label": "Autokennzeichen:",
+      "value": "B-TG 1234"
+     },
+     {
+      "label": "Unterschrift:",
+      "value": "________________________"
+     }
+    ],
+    "footer": "Dieser Ausweis ist nur für die angegebene Übung gültig."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Cyberattack on Water Treatment Facility",
+   "body": "Besucherausweis / Zugangsanfrage\nName:: Hans Müller\nFirma:: Stadtwerke Köln\nZweck des Besuchs:: Cyberangriff auf Wasseraufbereitungsanlage untersuchen\nDatum:: 15.03.2023\nUhrzeit:: 10:00 - 14:00 Uhr\nKontaktperson:: Maria Schneider\nTelefonnummer:: +49 221 1234567\nUnterschrift:: ___________________________\nGenehmigt von:: Sicherheitsdienst\nDieser Ausweis ist nur in Verbindung mit einem gültigen Personalausweis oder Reisepass gültig.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Besucherausweis / Zugangsanfrage",
+    "fields": [
+     {
+      "label": "Name:",
+      "value": "Hans Müller"
+     },
+     {
+      "label": "Firma:",
+      "value": "Stadtwerke Köln"
+     },
+     {
+      "label": "Zweck des Besuchs:",
+      "value": "Cyberangriff auf Wasseraufbereitungsanlage untersuchen"
+     },
+     {
+      "label": "Datum:",
+      "value": "15.03.2023"
+     },
+     {
+      "label": "Uhrzeit:",
+      "value": "10:00 - 14:00 Uhr"
+     },
+     {
+      "label": "Kontaktperson:",
+      "value": "Maria Schneider"
+     },
+     {
+      "label": "Telefonnummer:",
+      "value": "+49 221 1234567"
+     },
+     {
+      "label": "Unterschrift:",
+      "value": "___________________________"
+     },
+     {
+      "label": "Genehmigt von:",
+      "value": "Sicherheitsdienst"
+     }
+    ],
+    "footer": "Dieser Ausweis ist nur in Verbindung mit einem gültigen Personalausweis oder Reisepass gültig."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Allied Air Defense Exercise Access Request",
+   "body": "Besucherausweis\nName: Hans Weber\nEinheit: Luftwaffengruppe Nord\nZugehörige Organisation: NATO\nZweck des Besuchs: Funkverfahren zwischen verbündeten Luftverteidigungseinheiten\nDatum: 15.05.2023\nUhrzeit: 08:00 - 17:00\nKontaktperson: Major Klaus Schmidt\nBereich: Flugplatz Berlin-Tegel\nUnterschrift: ________________________\nDieser Ausweis ist nur in Verbindung mit einem gültigen Personalausweis oder Reisepass gültig.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Besucherausweis",
+    "fields": [
+     {
+      "label": "Name",
+      "value": "Hans Weber"
+     },
+     {
+      "label": "Einheit",
+      "value": "Luftwaffengruppe Nord"
+     },
+     {
+      "label": "Zugehörige Organisation",
+      "value": "NATO"
+     },
+     {
+      "label": "Zweck des Besuchs",
+      "value": "Funkverfahren zwischen verbündeten Luftverteidigungseinheiten"
+     },
+     {
+      "label": "Datum",
+      "value": "15.05.2023"
+     },
+     {
+      "label": "Uhrzeit",
+      "value": "08:00 - 17:00"
+     },
+     {
+      "label": "Kontaktperson",
+      "value": "Major Klaus Schmidt"
+     },
+     {
+      "label": "Bereich",
+      "value": "Flugplatz Berlin-Tegel"
+     },
+     {
+      "label": "Unterschrift",
+      "value": "________________________"
+     }
+    ],
+    "footer": "Dieser Ausweis ist nur in Verbindung mit einem gültigen Personalausweis oder Reisepass gültig."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-badge_form-004",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Delivery Driver Incident at Base Gate",
+   "body": "Besucherausweis / Zugangsanfrage\nName: Hans Müller\nFirma: Schnell-Lieferungen GmbH\nZweck des Besuchs: Lieferung von Büromaterial\nEmpfänger: Frau Schneider, Büro 101\nDatum: 15.10.2023\nUhrzeit: 10:30\nFahrzeugkennzeichen: M-AB 1234\nBesondere Hinweise: Der Lieferant hatte keine gültige Lieferbestätigung. Nach Überprüfung wurde die Lieferung akzeptiert.\nSicherheitskontrollpunkt Alpha, Base Berlin",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Besucherausweis / Zugangsanfrage",
+    "fields": [
+     {
+      "label": "Name",
+      "value": "Hans Müller"
+     },
+     {
+      "label": "Firma",
+      "value": "Schnell-Lieferungen GmbH"
+     },
+     {
+      "label": "Zweck des Besuchs",
+      "value": "Lieferung von Büromaterial"
+     },
+     {
+      "label": "Empfänger",
+      "value": "Frau Schneider, Büro 101"
+     },
+     {
+      "label": "Datum",
+      "value": "15.10.2023"
+     },
+     {
+      "label": "Uhrzeit",
+      "value": "10:30"
+     },
+     {
+      "label": "Fahrzeugkennzeichen",
+      "value": "M-AB 1234"
+     },
+     {
+      "label": "Besondere Hinweise",
+      "value": "Der Lieferant hatte keine gültige Lieferbestätigung. Nach Überprüfung wurde die Lieferung akzeptiert."
+     }
+    ],
+    "footer": "Sicherheitskontrollpunkt Alpha, Base Berlin"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-badge_form-005",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Energy Investor's Base Visit",
+   "body": "Besucherausweis\nName:: Anna Müller\nFirma:: GreenEnergy Investments GmbH\nZweck des Besuchs:: Investition in erneuerbare Energien\nBesuchte Stelle:: Forschungsabteilung\nDatum:: 10.05.2023\nUhrzeit:: 09:00 - 12:00\nKontaktperson:: Dr. Weber\nUnterschrift:: Anna Müller\nVielen Dank für Ihren Besuch! Bitte geben Sie diesen Ausweis am Ausgang wieder ab.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Besucherausweis",
+    "fields": [
+     {
+      "label": "Name:",
+      "value": "Anna Müller"
+     },
+     {
+      "label": "Firma:",
+      "value": "GreenEnergy Investments GmbH"
+     },
+     {
+      "label": "Zweck des Besuchs:",
+      "value": "Investition in erneuerbare Energien"
+     },
+     {
+      "label": "Besuchte Stelle:",
+      "value": "Forschungsabteilung"
+     },
+     {
+      "label": "Datum:",
+      "value": "10.05.2023"
+     },
+     {
+      "label": "Uhrzeit:",
+      "value": "09:00 - 12:00"
+     },
+     {
+      "label": "Kontaktperson:",
+      "value": "Dr. Weber"
+     },
+     {
+      "label": "Unterschrift:",
+      "value": "Anna Müller"
+     }
+    ],
+    "footer": "Vielen Dank für Ihren Besuch! Bitte geben Sie diesen Ausweis am Ausgang wieder ab."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-chat-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "chat",
+   "title": "Invitation to the Harvest Festival",
+   "body": "Anna: Hi Lena, hast du von dem Erntedankfest in Dorfhausen gehört? Es ist dieses Wochenende!\nLena: Ja, ich habe etwas gesehen. Wann beginnt es?\nAnna: Um 12 Uhr. Es gibt Essen, Musik und Spiele. Kommst du?\nLena: Klingt toll! Ich werde da sein. Danke für die Einladung!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "Nachrichten",
+    "messages": [
+     {
+      "from": "Anna",
+      "text": "Hi Lena, hast du von dem Erntedankfest in Dorfhausen gehört? Es ist dieses Wochenende!",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Lena",
+      "text": "Ja, ich habe etwas gesehen. Wann beginnt es?",
+      "time": "10:05 AM",
+      "me": true
+     },
+     {
+      "from": "Anna",
+      "text": "Um 12 Uhr. Es gibt Essen, Musik und Spiele. Kommst du?",
+      "time": "10:10 AM",
+      "me": false
+     },
+     {
+      "from": "Lena",
+      "text": "Klingt toll! Ich werde da sein. Danke für die Einladung!",
+      "time": "10:15 AM",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "chat",
+   "title": "Radio Check Between Allied Units",
+   "body": "Klaus: Hallo Thomas, hier ist Klaus von der Basis in Nürnberg. Radioverbindung testen. Over.\nThomas: Hallo Klaus, ich bin es, Thomas. Verstehe dich laut und klar. Over.\nKlaus: Verstanden, Thomas. Wir üben heute um 1400 Uhr mit den Alliierten. Bleib dran. Over.\nThomas: Alles klar, Klaus. Ich bin bereit. Over und out.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "",
+    "messages": [
+     {
+      "from": "Klaus",
+      "text": "Hallo Thomas, hier ist Klaus von der Basis in Nürnberg. Radioverbindung testen. Over.",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "Hallo Klaus, ich bin es, Thomas. Verstehe dich laut und klar. Over.",
+      "time": "10:16 AM",
+      "me": true
+     },
+     {
+      "from": "Klaus",
+      "text": "Verstanden, Thomas. Wir üben heute um 1400 Uhr mit den Alliierten. Bleib dran. Over.",
+      "time": "10:17 AM",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "Alles klar, Klaus. Ich bin bereit. Over und out.",
+      "time": "10:18 AM",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "chat",
+   "title": "Shift Handover at Defense Operations Center",
+   "body": "Hans: Hallo Anna, ich übernehme jetzt die Schicht. Alles ruhig hier. Keine besonderen Vorkommnisse.\nAnna: Okay Hans, danke. Die Systeme sind alle online. Check bitte die Kameras am Tor 3.\nHans: Gemacht. Kameras am Tor 3 funktionieren einwandfrei. Ich werde die Runde um 16:00 Uhr machen.\nAnna: Gut, Hans. Ich bin dann weg. Melde dich, wenn etwas ist.\nHans: Mach ich. Gute Nacht und bis morgen!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Schichtübergabe im Verteidigungsoperationszentrum",
+    "messages": [
+     {
+      "from": "Hans",
+      "text": "Hallo Anna, ich übernehme jetzt die Schicht. Alles ruhig hier. Keine besonderen Vorkommnisse.",
+      "time": "14:30",
+      "me": false
+     },
+     {
+      "from": "Anna",
+      "text": "Okay Hans, danke. Die Systeme sind alle online. Check bitte die Kameras am Tor 3.",
+      "time": "14:32",
+      "me": true
+     },
+     {
+      "from": "Hans",
+      "text": "Gemacht. Kameras am Tor 3 funktionieren einwandfrei. Ich werde die Runde um 16:00 Uhr machen.",
+      "time": "14:35",
+      "me": false
+     },
+     {
+      "from": "Anna",
+      "text": "Gut, Hans. Ich bin dann weg. Melde dich, wenn etwas ist.",
+      "time": "14:37",
+      "me": true
+     },
+     {
+      "from": "Hans",
+      "text": "Mach ich. Gute Nacht und bis morgen!",
+      "time": "14:38",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -416,6 +1069,183 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Wahlhelfer-Dienstplan für die Gemeindewahl in Kleinberg",
+   "body": "Dienstplan für die Gemeindewahl in Kleinberg\nName | Schicht | Wahllokal\nAnna Schmidt | 8:00-14:00 | Grundschule\nThomas Müller | 14:00-20:00 | Gemeindehaus\nMaria Wagner | 8:00-14:00 | Turnhalle\nJürgen Bauer | 14:00-20:00 | Grundschule\nErika Klein | 8:00-14:00 | Gemeindehaus",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Dienstplan für die Gemeindewahl in Kleinberg",
+    "columns": [
+     "Name",
+     "Schicht",
+     "Wahllokal"
+    ],
+    "rows": [
+     [
+      "Anna Schmidt",
+      "8:00-14:00",
+      "Grundschule"
+     ],
+     [
+      "Thomas Müller",
+      "14:00-20:00",
+      "Gemeindehaus"
+     ],
+     [
+      "Maria Wagner",
+      "8:00-14:00",
+      "Turnhalle"
+     ],
+     [
+      "Jürgen Bauer",
+      "14:00-20:00",
+      "Grundschule"
+     ],
+     [
+      "Erika Klein",
+      "8:00-14:00",
+      "Gemeindehaus"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Summer Tourism Recovery Schedule",
+   "body": "Sommer-Tourismus-Wiederaufbauplan\nTag | Schicht | Öffnungszeiten | Aktivitäten\nMontag | Team A | 09:00-18:00 | Stadtführung\nDienstag | Team B | 09:00-18:00 | Bootsfahrt\nMittwoch | Team C | 09:00-18:00 | Wanderung\nDonnerstag | Team A | 09:00-18:00 | Stadtführung\nFreitag | Team B | 09:00-20:00 | Abendessen im Freien\nSamstag | Team C | 08:00-20:00 | Markt und Handwerk\nSonntag | Team A | 09:00-18:00 | Entspannungstag",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Sommer-Tourismus-Wiederaufbauplan",
+    "columns": [
+     "Tag",
+     "Schicht",
+     "Öffnungszeiten",
+     "Aktivitäten"
+    ],
+    "rows": [
+     [
+      "Montag",
+      "Team A",
+      "09:00-18:00",
+      "Stadtführung"
+     ],
+     [
+      "Dienstag",
+      "Team B",
+      "09:00-18:00",
+      "Bootsfahrt"
+     ],
+     [
+      "Mittwoch",
+      "Team C",
+      "09:00-18:00",
+      "Wanderung"
+     ],
+     [
+      "Donnerstag",
+      "Team A",
+      "09:00-18:00",
+      "Stadtführung"
+     ],
+     [
+      "Freitag",
+      "Team B",
+      "09:00-20:00",
+      "Abendessen im Freien"
+     ],
+     [
+      "Samstag",
+      "Team C",
+      "08:00-20:00",
+      "Markt und Handwerk"
+     ],
+     [
+      "Sonntag",
+      "Team A",
+      "09:00-18:00",
+      "Entspannungstag"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Air Base Security Alert: Loitering Munition Threat",
+   "body": "Warnung: Drohende Bedrohung durch Kreislaufmunition\nDatum | Schicht | Torzeiten | Bemerkungen\n15. Mai | Tag | 06:00-18:00 | Erhöhte Sicherheit: Keine Drohnen in der Nähe\n16. Mai | Nachmittag | 12:00-24:00 | Patrouillen alle 2 Stunden\n17. Mai | Nacht | 20:00-08:00 | Kein Zugang ohne besondere Genehmigung\n18. Mai | Tag | 06:00-18:00 | Zusätzliche Sicherheitskontrollen\n19. Mai | Nachmittag | 12:00-24:00 | Keine Drohnen in der Nähe",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Warnung: Drohende Bedrohung durch Kreislaufmunition",
+    "columns": [
+     "Datum",
+     "Schicht",
+     "Torzeiten",
+     "Bemerkungen"
+    ],
+    "rows": [
+     [
+      "15. Mai",
+      "Tag",
+      "06:00-18:00",
+      "Erhöhte Sicherheit: Keine Drohnen in der Nähe"
+     ],
+     [
+      "16. Mai",
+      "Nachmittag",
+      "12:00-24:00",
+      "Patrouillen alle 2 Stunden"
+     ],
+     [
+      "17. Mai",
+      "Nacht",
+      "20:00-08:00",
+      "Kein Zugang ohne besondere Genehmigung"
+     ],
+     [
+      "18. Mai",
+      "Tag",
+      "06:00-18:00",
+      "Zusätzliche Sicherheitskontrollen"
+     ],
+     [
+      "19. Mai",
+      "Nachmittag",
+      "12:00-24:00",
+      "Keine Drohnen in der Nähe"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -462,6 +1292,113 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "signage",
+   "title": "Flood Warning at Air Base",
+   "body": "WICHTIGE DURCHSAGE\nHochwasserwarnung für Luftwaffenbasis\nKönigsberg\nAufgrund starker Regenfälle in der Region\nsteigt der Fluss 'Rhein' schnell an.\nEs besteht die Gefahr von Überschwemmungen auf der Basis bis 18:00 Uhr am 15. Mai 2023. Bleiben Sie wachsam und folgen Sie den Anweisungen der Basisleitung. Vermeiden Sie niedrig liegende Gebiete. Vielen Dank für Ihre Aufmerksamkeit. Luftwaffenbasis Königsberg",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "WICHTIGE DURCHSAGE",
+     "Hochwasserwarnung für Luftwaffenbasis",
+     "Königsberg",
+     "Aufgrund starker Regenfälle in der Region",
+     "steigt der Fluss 'Rhein' schnell an.",
+     "Es besteht die Gefahr von Überschwemmungen auf der Basis bis 18:00 Uhr am 15. Mai 2023. Bleiben Sie wachsam und folgen Sie den Anweisungen der Basisleitung. Vermeiden Sie niedrig liegende Gebiete. Vielen Dank für Ihre Aufmerksamkeit. Luftwaffenbasis Königsberg"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "signage",
+   "title": "Historical Aircraft Exhibition",
+   "body": "Achtung! Historische Flugzeuge!\nBesucher sind herzlich willkommen,\ndie Ausstellung zu besichtigen.\nBitte bleiben Sie auf den Wegen.\nFotografieren ist erlaubt.\nBitte nicht berühren oder betreten Sie die Flugzeuge nicht. Danke für Ihr Verständnis! - Luftwaffenmuseum der USAFE, 2023",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "Achtung! Historische Flugzeuge!",
+     "Besucher sind herzlich willkommen,",
+     "die Ausstellung zu besichtigen.",
+     "Bitte bleiben Sie auf den Wegen.",
+     "Fotografieren ist erlaubt.",
+     "Bitte nicht berühren oder betreten Sie die Flugzeuge nicht. Danke für Ihr Verständnis! - Luftwaffenmuseum der USAFE, 2023"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "signage",
+   "title": "Mandatory Vaccination Notice",
+   "body": "FLUGBASIS MÜNCHEN\n\nIMPFKAMPAGNE\n\nALLE PERSONALMITGLIEDER MÜSSEN\nGEIMPFT WERDEN GEGEN GRIPPALLE INFEKTE, INKLUSIVE COVID-19, VOR DEM 15. NOVEMBER 2023. DIE IMPFUNGEN WERDEN VON DER KRANKENSCHWESTER FRAU MEIER DURCHGEFÜHRT. Bitte melden Sie sich beim Sanitätsbereich, Gebäude 7, zwischen 08:00 und 16:00 Uhr. Die Impfung ist Pflicht. Bitte bringen Sie Ihren Personalausweis und Ihren Impfpass mit. Vielen Dank für Ihre Mitarbeit!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "FLUGBASIS MÜNCHEN",
+     "",
+     "IMPFKAMPAGNE",
+     "",
+     "ALLE PERSONALMITGLIEDER MÜSSEN",
+     "GEIMPFT WERDEN GEGEN GRIPPALLE INFEKTE, INKLUSIVE COVID-19, VOR DEM 15. NOVEMBER 2023. DIE IMPFUNGEN WERDEN VON DER KRANKENSCHWESTER FRAU MEIER DURCHGEFÜHRT. Bitte melden Sie sich beim Sanitätsbereich, Gebäude 7, zwischen 08:00 und 16:00 Uhr. Die Impfung ist Pflicht. Bitte bringen Sie Ihren Personalausweis und Ihren Impfpass mit. Vielen Dank für Ihre Mitarbeit!"
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1-signage-004",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1",
+   "textType": "signage",
+   "title": "Delivery Driver Incident at Entry Control Point",
+   "body": "ACHTUNG!\nLieferant: Herr Müller von 'Schnell-Lieferungen GmbH'.\nProblem: Keine Genehmigung für Einfahrt um 10:00 Uhr.\nLösung: Immer vorher anrufen: 0800-123-4567.\nDanke für Ihre Zusammenarbeit!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "ACHTUNG!",
+     "Lieferant: Herr Müller von 'Schnell-Lieferungen GmbH'.",
+     "Problem: Keine Genehmigung für Einfahrt um 10:00 Uhr.",
+     "Lösung: Immer vorher anrufen: 0800-123-4567.",
+     "Danke für Ihre Zusammenarbeit!"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-1p-announcement-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -504,6 +1441,174 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Rising Costs of Drone Defense",
+   "body": "Lena: Hey alle, habt ihr die neuen Zahlen zur Drohnenabwehr gesehen? Die Kosten für die neuen Systeme sind echt hoch.\nMarkus: Ja, Lena, hab ich. 500.000 Euro nur für die Basis hier in Treuchtlingen. Und das sind nur die Anfangskosten.\nAnna: Und die billigen Drohnen, gegen die wir uns schützen müssen, kosten nur ein paar tausend Euro. Das ist doch verrückt!\nLena: Stimmt. Und die Regierung will, dass wir bis Ende des Jahres alles fertig haben. Keine Ahnung, wie wir das schaffen sollen.\nMarkus: Vielleicht sollten wir nach günstigeren Alternativen suchen. Es muss doch eine Lösung geben, die nicht so teuer ist.\nAnna: Gute Idee, Markus. Ich frag mal bei den anderen Basen rum, was die machen. Vielleicht hat ja jemand eine gute Idee.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Gruppe \"Sicherheit Treuchtlingen\"",
+    "messages": [
+     {
+      "from": "Lena",
+      "text": "Hey alle, habt ihr die neuen Zahlen zur Drohnenabwehr gesehen? Die Kosten für die neuen Systeme sind echt hoch.",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "Markus",
+      "text": "Ja, Lena, hab ich. 500.000 Euro nur für die Basis hier in Treuchtlingen. Und das sind nur die Anfangskosten.",
+      "time": "10:20 AM",
+      "me": false
+     },
+     {
+      "from": "Anna",
+      "text": "Und die billigen Drohnen, gegen die wir uns schützen müssen, kosten nur ein paar tausend Euro. Das ist doch verrückt!",
+      "time": "10:25 AM",
+      "me": false
+     },
+     {
+      "from": "Lena",
+      "text": "Stimmt. Und die Regierung will, dass wir bis Ende des Jahres alles fertig haben. Keine Ahnung, wie wir das schaffen sollen.",
+      "time": "10:30 AM",
+      "me": false
+     },
+     {
+      "from": "Markus",
+      "text": "Vielleicht sollten wir nach günstigeren Alternativen suchen. Es muss doch eine Lösung geben, die nicht so teuer ist.",
+      "time": "10:35 AM",
+      "me": false
+     },
+     {
+      "from": "Anna",
+      "text": "Gute Idee, Markus. Ich frag mal bei den anderen Basen rum, was die machen. Vielleicht hat ja jemand eine gute Idee.",
+      "time": "10:40 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Debate on Laser Weapons for Air Defense",
+   "body": "Hans: Hey Thomas, hast du die News über die neuen Laserwaffen für die Luftverteidigung gesehen? Die USA testen sie schon.\nThomas: Ja, Hans. Aber ich bin mir nicht sicher, ob sie wirklich effektiv sind. Was denkst du?\nHans: Ich glaube schon. Sie sind schnell und kostengünstig im Vergleich zu Raketen. Stell dir vor, wir könnten Drohnen einfach abschießen!\nThomas: Aber was ist mit den Wetterbedingungen? Laser funktionieren nicht gut bei Regen oder Nebel, oder?\nHans: Stimmt, aber wir können sie trotzdem als Ergänzung zu unseren bestehenden Systemen nutzen. Es ist eine Frage der Flexibilität.\nThomas: Hmm, vielleicht hast du recht. Lass uns mehr darüber recherchieren. Danke für die Diskussion!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "Laserwaffen zur Luftverteidigung",
+    "messages": [
+     {
+      "from": "Hans",
+      "text": "Hey Thomas, hast du die News über die neuen Laserwaffen für die Luftverteidigung gesehen? Die USA testen sie schon.",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "Ja, Hans. Aber ich bin mir nicht sicher, ob sie wirklich effektiv sind. Was denkst du?",
+      "time": "10:20 AM",
+      "me": true
+     },
+     {
+      "from": "Hans",
+      "text": "Ich glaube schon. Sie sind schnell und kostengünstig im Vergleich zu Raketen. Stell dir vor, wir könnten Drohnen einfach abschießen!",
+      "time": "10:25 AM",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "Aber was ist mit den Wetterbedingungen? Laser funktionieren nicht gut bei Regen oder Nebel, oder?",
+      "time": "10:30 AM",
+      "me": true
+     },
+     {
+      "from": "Hans",
+      "text": "Stimmt, aber wir können sie trotzdem als Ergänzung zu unseren bestehenden Systemen nutzen. Es ist eine Frage der Flexibilität.",
+      "time": "10:35 AM",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "Hmm, vielleicht hast du recht. Lass uns mehr darüber recherchieren. Danke für die Diskussion!",
+      "time": "10:40 AM",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Flood Relief Drone Survey",
+   "body": "Lena: Hallo Team, die Drohnenumfrage nach der Flut in Bad Reichenhall beginnt morgen um 9 Uhr. Wir treffen uns um 8 Uhr im Gemeindezentrum.\nYou: Alles klar, Lena. Ich bin dabei. Brauchen wir noch etwas Spezialausrüstung?\nLena: Ja, bitte bring Drohnen mit langem Akkulaufzeit und Kameras mit hoher Auflösung mit. Wir werden Fotos und Videos von den betroffenen Gebieten machen.\nMarkus: Ich habe meine Drohne bereit. Soll ich auch einen Ersatzakku mitbringen?\nLena: Gute Idee, Markus. Danke! Wir sehen uns morgen früh.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "",
+    "messages": [
+     {
+      "from": "Lena",
+      "text": "Hallo Team, die Drohnenumfrage nach der Flut in Bad Reichenhall beginnt morgen um 9 Uhr. Wir treffen uns um 8 Uhr im Gemeindezentrum.",
+      "time": "10:30 AM, 15.07.2023",
+      "me": false
+     },
+     {
+      "from": "You",
+      "text": "Alles klar, Lena. Ich bin dabei. Brauchen wir noch etwas Spezialausrüstung?",
+      "time": "10:35 AM, 15.07.2023",
+      "me": true
+     },
+     {
+      "from": "Lena",
+      "text": "Ja, bitte bring Drohnen mit langem Akkulaufzeit und Kameras mit hoher Auflösung mit. Wir werden Fotos und Videos von den betroffenen Gebieten machen.",
+      "time": "10:40 AM, 15.07.2023",
+      "me": false
+     },
+     {
+      "from": "Markus",
+      "text": "Ich habe meine Drohne bereit. Soll ich auch einen Ersatzakku mitbringen?",
+      "time": "10:45 AM, 15.07.2023",
+      "me": false
+     },
+     {
+      "from": "Lena",
+      "text": "Gute Idee, Markus. Danke! Wir sehen uns morgen früh.",
+      "time": "10:50 AM, 15.07.2023",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -627,6 +1732,96 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "New Radio Procedures for Air Defense Units",
+   "body": "Rathaus Spicheren\nNeue Funkverfahren für Luftverteidigungs-Einheiten\nLiebe Mitbürger,\nAb dem 15. Juni werden neue Funkverfahren für die Kommunikation zwischen den verbündeten Luftverteidigungs-Einheiten eingeführt. Diese Änderungen betreffen alle Einheiten in der Nähe der Basis in Spicheren.\nDie neuen Frequenzen für die Kommunikation sind: Primär 123.45 MHz und Sekundär 124.56 MHz. Die Rufzeichen für unsere Einheiten sind 'Falken 1' bis 'Falken 5'. Die verbündeten Einheiten werden mit 'Adler 1' bis 'Adler 3' kommunizieren.\nDie Funkprozeduren werden wie folgt sein: Jede Nachricht beginnt mit dem Rufzeichen, gefolgt von der Frequenz und der Nachricht selbst. Beispiel: 'Falken 1 an Adler 1 auf 123.45 MHz, Position halten.'\nDiese Änderungen dienen dazu, die Kommunikation zu verbessern und die Sicherheit zu erhöhen. Wir bitten um Ihre volle Zusammenarbeit.\nFür weitere Informationen wenden Sie sich bitte an das Rathaus Spicheren, Raum 105, oder rufen Sie uns unter 06806-123456 an. Vielen Dank für Ihre Aufmerksamkeit.\n10. Juni 2023\nHerr Müller",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Rathaus Spicheren",
+    "title": "Neue Funkverfahren für Luftverteidigungs-Einheiten",
+    "paragraphs": [
+     "Liebe Mitbürger,",
+     "Ab dem 15. Juni werden neue Funkverfahren für die Kommunikation zwischen den verbündeten Luftverteidigungs-Einheiten eingeführt. Diese Änderungen betreffen alle Einheiten in der Nähe der Basis in Spicheren.",
+     "Die neuen Frequenzen für die Kommunikation sind: Primär 123.45 MHz und Sekundär 124.56 MHz. Die Rufzeichen für unsere Einheiten sind 'Falken 1' bis 'Falken 5'. Die verbündeten Einheiten werden mit 'Adler 1' bis 'Adler 3' kommunizieren.",
+     "Die Funkprozeduren werden wie folgt sein: Jede Nachricht beginnt mit dem Rufzeichen, gefolgt von der Frequenz und der Nachricht selbst. Beispiel: 'Falken 1 an Adler 1 auf 123.45 MHz, Position halten.'",
+     "Diese Änderungen dienen dazu, die Kommunikation zu verbessern und die Sicherheit zu erhöhen. Wir bitten um Ihre volle Zusammenarbeit.",
+     "Für weitere Informationen wenden Sie sich bitte an das Rathaus Spicheren, Raum 105, oder rufen Sie uns unter 06806-123456 an. Vielen Dank für Ihre Aufmerksamkeit."
+    ],
+    "date": "10. Juni 2023",
+    "contact": "Herr Müller"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Earthquake Relief Efforts in Bergstadt",
+   "body": "Rathaus Bergstadt\nErdbebenhilfe: Wichtige Informationen\nLiebe Mitbürgerinnen und Mitbürger,\nwie Sie alle wissen, hat uns ein starkes Erdbeben getroffen. Die Stadtverwaltung arbeitet hart daran, die Schäden zu reparieren und den Betroffenen zu helfen. Hier sind die wichtigsten Informationen für Sie:\n1. **Notunterkünfte**: Die Turnhallen der Schulen in der Stadtmitte und im Stadtteil West sind geöffnet. Bitte bringen Sie Decken und warme Kleidung mit.\n2. **Wasser- und Stromversorgung**: In einigen Gebieten kann es zu Unterbrechungen kommen. Wir bitten Sie, Wasser sparsam zu verwenden.\n3. **Hilfe anbieten**: Wenn Sie helfen möchten, melden Sie sich bitte im Rathaus oder bei der Feuerwehr. Jede Hilfe ist willkommen!\n4. **Informationen**: Halten Sie sich über die lokalen Nachrichten auf dem Laufenden. Wir werden Sie regelmäßig informieren.\n15. Mai 2023\nFür weitere Fragen wenden Sie sich bitte an das Rathaus Bergstadt, Telefon: 01234/56789.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Rathaus Bergstadt",
+    "title": "Erdbebenhilfe: Wichtige Informationen",
+    "paragraphs": [
+     "Liebe Mitbürgerinnen und Mitbürger,",
+     "wie Sie alle wissen, hat uns ein starkes Erdbeben getroffen. Die Stadtverwaltung arbeitet hart daran, die Schäden zu reparieren und den Betroffenen zu helfen. Hier sind die wichtigsten Informationen für Sie:",
+     "1. **Notunterkünfte**: Die Turnhallen der Schulen in der Stadtmitte und im Stadtteil West sind geöffnet. Bitte bringen Sie Decken und warme Kleidung mit.",
+     "2. **Wasser- und Stromversorgung**: In einigen Gebieten kann es zu Unterbrechungen kommen. Wir bitten Sie, Wasser sparsam zu verwenden.",
+     "3. **Hilfe anbieten**: Wenn Sie helfen möchten, melden Sie sich bitte im Rathaus oder bei der Feuerwehr. Jede Hilfe ist willkommen!",
+     "4. **Informationen**: Halten Sie sich über die lokalen Nachrichten auf dem Laufenden. Wir werden Sie regelmäßig informieren."
+    ],
+    "date": "15. Mai 2023",
+    "contact": "Für weitere Fragen wenden Sie sich bitte an das Rathaus Bergstadt, Telefon: 01234/56789."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "No-Drone Zone for Annual Summer Festival",
+   "body": "Rathaus Bergdorf\nHinweis: Keine-Drohnen-Zone für das jährliche Sommerfest\nLiebe Bürgerinnen und Bürger von Bergdorf,\nUnser jährliches Sommerfest findet dieses Jahr vom 15. bis 17. Juli im Stadtpark statt. Um die Sicherheit und Privatsphäre aller Besucher zu gewährleisten, wird der gesamte Stadtpark während des Festes zur Keine-Drohnen-Zone erklärt. Dies bedeutet, dass das Fliegen von Drohnen in diesem Bereich streng verboten ist. Die Einhaltung dieser Regelung wird durch die örtliche Polizei überwacht.\nEs gibt viele Aktivitäten für die ganze Familie, darunter Live-Musik, Essen und Kunsthandwerk. Wir möchten, dass alle Besucher das Fest in einer sicheren und angenehmen Umgebung genießen können. Bitte respektieren Sie die Keine-Drohnen-Zone und helfen Sie uns, das Fest für alle unvergesslich zu machen.\nFür weitere Informationen wenden Sie sich bitte an das Rathaus Bergdorf unter der Telefonnummer 01234/56789 oder besuchen Sie unsere Website www.bergdorf.de.\nVielen Dank für Ihre Zusammenarbeit!\nMit freundlichen Grüßen,\n10. Juli 2023\nRathaus Bergdorf, Hauptstraße 1, 12345 Bergdorf",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Rathaus Bergdorf",
+    "title": "Hinweis: Keine-Drohnen-Zone für das jährliche Sommerfest",
+    "paragraphs": [
+     "Liebe Bürgerinnen und Bürger von Bergdorf,",
+     "Unser jährliches Sommerfest findet dieses Jahr vom 15. bis 17. Juli im Stadtpark statt. Um die Sicherheit und Privatsphäre aller Besucher zu gewährleisten, wird der gesamte Stadtpark während des Festes zur Keine-Drohnen-Zone erklärt. Dies bedeutet, dass das Fliegen von Drohnen in diesem Bereich streng verboten ist. Die Einhaltung dieser Regelung wird durch die örtliche Polizei überwacht.",
+     "Es gibt viele Aktivitäten für die ganze Familie, darunter Live-Musik, Essen und Kunsthandwerk. Wir möchten, dass alle Besucher das Fest in einer sicheren und angenehmen Umgebung genießen können. Bitte respektieren Sie die Keine-Drohnen-Zone und helfen Sie uns, das Fest für alle unvergesslich zu machen.",
+     "Für weitere Informationen wenden Sie sich bitte an das Rathaus Bergdorf unter der Telefonnummer 01234/56789 oder besuchen Sie unsere Website www.bergdorf.de.",
+     "Vielen Dank für Ihre Zusammenarbeit!",
+     "Mit freundlichen Grüßen,"
+    ],
+    "date": "10. Juli 2023",
+    "contact": "Rathaus Bergdorf, Hauptstraße 1, 12345 Bergdorf"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-1p-personal_letter-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -639,6 +1834,177 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Security Post Log: Allied Air Defense Drill",
+   "body": "Flugabwehrzentrum Süd (FACS) 15. Mai 2023\n08:00 Schichtbeginn. Alles ruhig. (MU)\n10:15 Funkkontakt mit Einheit Nord (FAN). Sie melden einen unerklärlichen Kontakt auf dem Radar. (MU)\n10:20 Bestätigt, dass der Kontakt ein falscher Alarm war. Übung fortgesetzt. (MU)\n12:00 Mittagspause. (KS)\n13:00 Funkkontakt mit Einheit Ost (FAO). Sie führen eine gemeinsame Übung mit FAN durch. (KS)\n14:30 Erneuter Kontakt mit FAN. Sie melden erfolgreiche Abschluss der Übung. (KS)\n16:45 Schichtende. Keine weiteren Vorkommnisse. (KS)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Flugabwehrzentrum Süd (FACS)",
+    "date": "15. Mai 2023",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "Schichtbeginn. Alles ruhig. (MU)",
+      "initials": "MU"
+     },
+     {
+      "time": "10:15",
+      "entry": "Funkkontakt mit Einheit Nord (FAN). Sie melden einen unerklärlichen Kontakt auf dem Radar. (MU)",
+      "initials": "MU"
+     },
+     {
+      "time": "10:20",
+      "entry": "Bestätigt, dass der Kontakt ein falscher Alarm war. Übung fortgesetzt. (MU)",
+      "initials": "MU"
+     },
+     {
+      "time": "12:00",
+      "entry": "Mittagspause. (KS)",
+      "initials": "KS"
+     },
+     {
+      "time": "13:00",
+      "entry": "Funkkontakt mit Einheit Ost (FAO). Sie führen eine gemeinsame Übung mit FAN durch. (KS)",
+      "initials": "KS"
+     },
+     {
+      "time": "14:30",
+      "entry": "Erneuter Kontakt mit FAN. Sie melden erfolgreiche Abschluss der Übung. (KS)",
+      "initials": "KS"
+     },
+     {
+      "time": "16:45",
+      "entry": "Schichtende. Keine weiteren Vorkommnisse. (KS)",
+      "initials": "KS"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Security Post Log: Solar Farm Investment",
+   "body": "Sicherheitsposten Solarwind 22.05.2023\n07:00 Schichtbeginn. Alles ruhig. (MK)\n09:30 Bauunternehmer Herr Schmidt von GreenEnergy Solutions vor Ort. Bespricht Investitionen für neue Solarpaneele mit Herrn Weber. (MK)\n11:45 Lieferung neuer Solarpaneele von Firma SunPower angekommen. Kontrolle durchgeführt. Alles in Ordnung. (MK)\n13:20 Mittagspause. (MK)\n14:15 Besprechung mit Herrn Bauer von der Bank über Finanzierung der neuen Anlage. (MK)\n16:30 Arbeiter von GreenEnergy Solutions beginnen mit der Installation der neuen Paneele. (MK)\n18:45 Schichtende. Alles ruhig. (MK)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Sicherheitsposten Solarwind",
+    "date": "22.05.2023",
+    "entries": [
+     {
+      "time": "07:00",
+      "entry": "Schichtbeginn. Alles ruhig. (MK)",
+      "initials": "MK"
+     },
+     {
+      "time": "09:30",
+      "entry": "Bauunternehmer Herr Schmidt von GreenEnergy Solutions vor Ort. Bespricht Investitionen für neue Solarpaneele mit Herrn Weber. (MK)",
+      "initials": "MK"
+     },
+     {
+      "time": "11:45",
+      "entry": "Lieferung neuer Solarpaneele von Firma SunPower angekommen. Kontrolle durchgeführt. Alles in Ordnung. (MK)",
+      "initials": "MK"
+     },
+     {
+      "time": "13:20",
+      "entry": "Mittagspause. (MK)",
+      "initials": "MK"
+     },
+     {
+      "time": "14:15",
+      "entry": "Besprechung mit Herrn Bauer von der Bank über Finanzierung der neuen Anlage. (MK)",
+      "initials": "MK"
+     },
+     {
+      "time": "16:30",
+      "entry": "Arbeiter von GreenEnergy Solutions beginnen mit der Installation der neuen Paneele. (MK)",
+      "initials": "MK"
+     },
+     {
+      "time": "18:45",
+      "entry": "Schichtende. Alles ruhig. (MK)",
+      "initials": "MK"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-1p-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Security Post Log: Local Election Day",
+   "body": "Sicherheitsposten 3 07.05.2023\n06:00 Schichtbeginn. Alles ruhig. Wahlplakate von SPD, CDU und Grünen in der Nähe des Wahllokals gesehen.\n08:30 Besuch des Wahlhelfers Herrn Müller am Posten. Er hat seine Akkreditierung gezeigt. Keine Probleme.\n10:15 Kurze Unterbrechung des Stroms im Wahllokal. Techniker vor Ort. Strom zurück nach 15 Minuten.\n12:30 Polizei hat eine Gruppe von Personen in der Nähe des Wahllokals kontrolliert. Alles in Ordnung.\n14:45 Herr Schmidt von der CDU hat sich über laute Musik in der Nähe beschwert. Musik wurde leiser gestellt.\n17:00 Wahllokal schließt in einer Stunde. Bisher keine größeren Vorfälle.\n18:30 Schichtende. Alles ruhig. Wahl läuft planmäßig zu Ende.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Sicherheitsposten 3",
+    "date": "07.05.2023",
+    "entries": [
+     {
+      "time": "06:00",
+      "entry": "Schichtbeginn. Alles ruhig. Wahlplakate von SPD, CDU und Grünen in der Nähe des Wahllokals gesehen.",
+      "initials": "JW"
+     },
+     {
+      "time": "08:30",
+      "entry": "Besuch des Wahlhelfers Herrn Müller am Posten. Er hat seine Akkreditierung gezeigt. Keine Probleme.",
+      "initials": "JW"
+     },
+     {
+      "time": "10:15",
+      "entry": "Kurze Unterbrechung des Stroms im Wahllokal. Techniker vor Ort. Strom zurück nach 15 Minuten.",
+      "initials": "JW"
+     },
+     {
+      "time": "12:30",
+      "entry": "Polizei hat eine Gruppe von Personen in der Nähe des Wahllokals kontrolliert. Alles in Ordnung.",
+      "initials": "JW"
+     },
+     {
+      "time": "14:45",
+      "entry": "Herr Schmidt von der CDU hat sich über laute Musik in der Nähe beschwert. Musik wurde leiser gestellt.",
+      "initials": "JW"
+     },
+     {
+      "time": "17:00",
+      "entry": "Wahllokal schließt in einer Stunde. Bisher keine größeren Vorfälle.",
+      "initials": "JW"
+     },
+     {
+      "time": "18:30",
+      "entry": "Schichtende. Alles ruhig. Wahl läuft planmäßig zu Ende.",
+      "initials": "JW"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -793,6 +2159,96 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "de-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Changes to Bus Routes in Greenfield",
+   "body": "Rathaus Greenfield\nÄnderungen im Busverkehr\nLiebe Mitbürgerinnen und Mitbürger,\nab dem 15. März 2023 gibt es Änderungen im Busverkehr in unserer schönen Stadt Greenfield. Diese Änderungen wurden vorgenommen, um den Service zu verbessern und die Fahrzeiten zu optimieren.\nDie Buslinie 1, die bisher vom Bahnhof bis zum Stadtzentrum gefahren ist, wird verlängert und fährt ab jetzt bis zum neuen Einkaufszentrum 'Greenfield Mall'. Die Fahrpläne bleiben ähnlich, aber es gibt einige kleine Anpassungen. Bitte beachten Sie, dass der Bus jetzt alle 20 Minuten statt alle 30 Minuten fährt.\nDie Buslinie 2, die durch die Wohngebiete im Norden der Stadt fährt, wird ebenfalls angepasst. Ab dem 15. März wird diese Linie direkt zum Krankenhaus fahren. Dies soll den Einwohnern im Norden die Anreise zum Krankenhaus erleichtern. Die Fahrpläne bleiben unverändert.\nDie Buslinie 3, die bisher durch die südlichen Wohngebiete gefahren ist, wird eingestellt. Stattdessen wird eine neue Buslinie, die Linie 4, eingeführt. Diese neue Linie wird die südlichen Wohngebiete mit dem Industriegebiet verbinden. Die Fahrpläne für die Linie 4 werden bald bekannt gegeben.\nWir bitten Sie, die neuen Fahrpläne und Routen zu beachten und sich entsprechend zu informieren. Die neuen Fahrpläne können Sie auf der Website der Stadt Greenfield oder an den Bushaltestellen einsehen. Sollten Sie Fragen haben, können Sie sich gerne an das Bürgerbüro wenden. Vielen Dank für Ihr Verständnis und Ihre Unterstützung.\n10. März 2023\nBürgerbüro: Tel. 07652/123456, E-Mail: buergerbuero@greenfield.de",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Rathaus Greenfield",
+    "title": "Änderungen im Busverkehr",
+    "paragraphs": [
+     "Liebe Mitbürgerinnen und Mitbürger,",
+     "ab dem 15. März 2023 gibt es Änderungen im Busverkehr in unserer schönen Stadt Greenfield. Diese Änderungen wurden vorgenommen, um den Service zu verbessern und die Fahrzeiten zu optimieren.",
+     "Die Buslinie 1, die bisher vom Bahnhof bis zum Stadtzentrum gefahren ist, wird verlängert und fährt ab jetzt bis zum neuen Einkaufszentrum 'Greenfield Mall'. Die Fahrpläne bleiben ähnlich, aber es gibt einige kleine Anpassungen. Bitte beachten Sie, dass der Bus jetzt alle 20 Minuten statt alle 30 Minuten fährt.",
+     "Die Buslinie 2, die durch die Wohngebiete im Norden der Stadt fährt, wird ebenfalls angepasst. Ab dem 15. März wird diese Linie direkt zum Krankenhaus fahren. Dies soll den Einwohnern im Norden die Anreise zum Krankenhaus erleichtern. Die Fahrpläne bleiben unverändert.",
+     "Die Buslinie 3, die bisher durch die südlichen Wohngebiete gefahren ist, wird eingestellt. Stattdessen wird eine neue Buslinie, die Linie 4, eingeführt. Diese neue Linie wird die südlichen Wohngebiete mit dem Industriegebiet verbinden. Die Fahrpläne für die Linie 4 werden bald bekannt gegeben.",
+     "Wir bitten Sie, die neuen Fahrpläne und Routen zu beachten und sich entsprechend zu informieren. Die neuen Fahrpläne können Sie auf der Website der Stadt Greenfield oder an den Bushaltestellen einsehen. Sollten Sie Fragen haben, können Sie sich gerne an das Bürgerbüro wenden. Vielen Dank für Ihr Verständnis und Ihre Unterstützung."
+    ],
+    "date": "10. März 2023",
+    "contact": "Bürgerbüro: Tel. 07652/123456, E-Mail: buergerbuero@greenfield.de"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Town Hall Addresses Housing Shortage",
+   "body": "Rathaus Bergstadt\nWohnraummangel in Bergstadt\nSehr geehrte Bürgerinnen und Bürger von Bergstadt,\nwie viele von Ihnen wissen, gibt es in unserer Stadt ein wachsendes Problem mit dem Wohnraum. Immer mehr Menschen ziehen nach Bergstadt, was zu einem starken Anstieg der Nachfrage nach Wohnungen führt. Leider kann das aktuelle Angebot nicht mithalten, was zu langen Wartelisten und steigenden Mieten führt.\nUm dieser Situation zu begegnen, hat der Rat der Stadt Bergstadt beschlossen, mehrere Maßnahmen zu ergreifen. Zunächst werden wir die Bauvorschriften überprüfen, um den Bau von mehr Wohnungen zu erleichtern. Außerdem planen wir, bestehende Gebäude in Wohnraum umzuwandeln, um das Angebot schnell zu erhöhen.\nWir sind uns bewusst, dass dies eine Herausforderung ist, aber wir sind fest entschlossen, eine Lösung zu finden. Wir werden regelmäßig über die Fortschritte informieren und freuen uns auf Ihre Unterstützung und Geduld während dieser Zeit.\nFür weitere Informationen wenden Sie sich bitte an das Rathaus Bergstadt unter der Telefonnummer 0351-123456 oder besuchen Sie unsere Website www.bergstadt.de.\nMit freundlichen Grüßen,\n15. Mai 2023\nBürgerbüro Bergstadt",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Rathaus Bergstadt",
+    "title": "Wohnraummangel in Bergstadt",
+    "paragraphs": [
+     "Sehr geehrte Bürgerinnen und Bürger von Bergstadt,",
+     "wie viele von Ihnen wissen, gibt es in unserer Stadt ein wachsendes Problem mit dem Wohnraum. Immer mehr Menschen ziehen nach Bergstadt, was zu einem starken Anstieg der Nachfrage nach Wohnungen führt. Leider kann das aktuelle Angebot nicht mithalten, was zu langen Wartelisten und steigenden Mieten führt.",
+     "Um dieser Situation zu begegnen, hat der Rat der Stadt Bergstadt beschlossen, mehrere Maßnahmen zu ergreifen. Zunächst werden wir die Bauvorschriften überprüfen, um den Bau von mehr Wohnungen zu erleichtern. Außerdem planen wir, bestehende Gebäude in Wohnraum umzuwandeln, um das Angebot schnell zu erhöhen.",
+     "Wir sind uns bewusst, dass dies eine Herausforderung ist, aber wir sind fest entschlossen, eine Lösung zu finden. Wir werden regelmäßig über die Fortschritte informieren und freuen uns auf Ihre Unterstützung und Geduld während dieser Zeit.",
+     "Für weitere Informationen wenden Sie sich bitte an das Rathaus Bergstadt unter der Telefonnummer 0351-123456 oder besuchen Sie unsere Website www.bergstadt.de.",
+     "Mit freundlichen Grüßen,"
+    ],
+    "date": "15. Mai 2023",
+    "contact": "Bürgerbüro Bergstadt"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Lessons from Counter-Drone Exercise",
+   "body": "Rathaus Mühlenbach\nWichtige Informationen nach der Drohnenabwehrübung\nLiebe Mitbürgerinnen und Mitbürger,\nwie Sie vielleicht bereits gehört haben, fand letzte Woche eine wichtige Drohnenabwehrübung in unserer Gemeinde Mühlenbach statt. Diese Übung war Teil unserer Bemühungen, die Sicherheit in unserer Region zu erhöhen. Wir möchten Ihnen einige wichtige Erkenntnisse mitteilen.\nErstens, die Übung zeigte, dass unsere örtlichen Sicherheitskräfte gut auf solche Situationen vorbereitet sind. Die Polizei und die Feuerwehr arbeiteten Hand in Hand, um die Übung erfolgreich durchzuführen. Dennoch gab es einige Herausforderungen, die wir in Zukunft verbessern müssen.\nZweitens, es wurde deutlich, dass die Kommunikation zwischen den verschiedenen Einsatzkräften und den Anwohnern verbessert werden muss. Viele Bewohner waren sich nicht bewusst, was während der Übung geschah, was zu einigen Verwirrungen führte. Wir werden sicherstellen, dass solche Informationen in Zukunft rechtzeitig und klar kommuniziert werden.\nDrittens, die Übung half uns zu verstehen, wie wichtig es ist, die Technologie zu nutzen, die wir haben. Die Drohnen, die während der Übung eingesetzt wurden, waren ein wertvolles Werkzeug, um die Situation zu überwachen und zu kontrollieren.\nWir danken allen, die an der Übung teilgenommen haben, und hoffen, dass Sie diese Informationen nützlich finden. Wenn Sie Fragen haben, können Sie sich gerne an das Rathaus wenden. Gemeinsam können wir unsere Gemeinde sicherer machen.\n15. Oktober 2023\nBürgerbüro, Tel: 0611-123456",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Rathaus Mühlenbach",
+    "title": "Wichtige Informationen nach der Drohnenabwehrübung",
+    "paragraphs": [
+     "Liebe Mitbürgerinnen und Mitbürger,",
+     "wie Sie vielleicht bereits gehört haben, fand letzte Woche eine wichtige Drohnenabwehrübung in unserer Gemeinde Mühlenbach statt. Diese Übung war Teil unserer Bemühungen, die Sicherheit in unserer Region zu erhöhen. Wir möchten Ihnen einige wichtige Erkenntnisse mitteilen.",
+     "Erstens, die Übung zeigte, dass unsere örtlichen Sicherheitskräfte gut auf solche Situationen vorbereitet sind. Die Polizei und die Feuerwehr arbeiteten Hand in Hand, um die Übung erfolgreich durchzuführen. Dennoch gab es einige Herausforderungen, die wir in Zukunft verbessern müssen.",
+     "Zweitens, es wurde deutlich, dass die Kommunikation zwischen den verschiedenen Einsatzkräften und den Anwohnern verbessert werden muss. Viele Bewohner waren sich nicht bewusst, was während der Übung geschah, was zu einigen Verwirrungen führte. Wir werden sicherstellen, dass solche Informationen in Zukunft rechtzeitig und klar kommuniziert werden.",
+     "Drittens, die Übung half uns zu verstehen, wie wichtig es ist, die Technologie zu nutzen, die wir haben. Die Drohnen, die während der Übung eingesetzt wurden, waren ein wertvolles Werkzeug, um die Situation zu überwachen und zu kontrollieren.",
+     "Wir danken allen, die an der Übung teilgenommen haben, und hoffen, dass Sie diese Informationen nützlich finden. Wenn Sie Fragen haben, können Sie sich gerne an das Rathaus wenden. Gemeinsam können wir unsere Gemeinde sicherer machen."
+    ],
+    "date": "15. Oktober 2023",
+    "contact": "Bürgerbüro, Tel: 0611-123456"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "de-dr-2-news-001",
    "exam": "DLPT_READING",
    "language": "de",
@@ -915,6 +2371,68 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "de-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "de",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Security Post Log: Food Price Concerns",
+   "body": "Sicherheitsposten Berlin-Mitte 15.05.2023\n08:00 Schichtbeginn. Alles ruhig. (FG)\n09:30 Anruf von Frau Müller vom Supermarkt um die Ecke. Sie berichtet über Unruhe unter den Kunden wegen steigender Lebensmittelpreise. (FG)\n10:15 Patrouille im Stadtviertel. Habe beobachtet, dass einige Geschäfte Schilder mit Preiserhöhungen angebracht haben. (FG)\n11:45 Herr Schmidt, der Inhaber des Gemüsestands auf dem Markt, kam vorbei und klagte über die steigenden Kosten für Lieferungen aus anderen Bundesländern. (FG)\n12:30 Mittagspause. Habe im Radio gehört, dass die Bundesregierung die Preisentwicklung überwacht. (FG)\n14:00 Anruf von der Polizei. Sie haben Berichte über kleinere Auseinandersetzungen in anderen Städten wegen Lebensmittelpreisen erhalten. Wir sollen die Lage im Auge behalten. (FG)\n16:30 Habe mit einigen Anwohnern gesprochen. Sie sind besorgt, aber ruhig. Einige planen, sich beim nächsten Bürgerforum zu beschweren. (FG)\n18:00 Schichtende. Alles bleibt ruhig. (FG)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Sicherheitsposten Berlin-Mitte",
+    "date": "15.05.2023",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "Schichtbeginn. Alles ruhig. (FG)",
+      "initials": "FG"
+     },
+     {
+      "time": "09:30",
+      "entry": "Anruf von Frau Müller vom Supermarkt um die Ecke. Sie berichtet über Unruhe unter den Kunden wegen steigender Lebensmittelpreise. (FG)",
+      "initials": "FG"
+     },
+     {
+      "time": "10:15",
+      "entry": "Patrouille im Stadtviertel. Habe beobachtet, dass einige Geschäfte Schilder mit Preiserhöhungen angebracht haben. (FG)",
+      "initials": "FG"
+     },
+     {
+      "time": "11:45",
+      "entry": "Herr Schmidt, der Inhaber des Gemüsestands auf dem Markt, kam vorbei und klagte über die steigenden Kosten für Lieferungen aus anderen Bundesländern. (FG)",
+      "initials": "FG"
+     },
+     {
+      "time": "12:30",
+      "entry": "Mittagspause. Habe im Radio gehört, dass die Bundesregierung die Preisentwicklung überwacht. (FG)",
+      "initials": "FG"
+     },
+     {
+      "time": "14:00",
+      "entry": "Anruf von der Polizei. Sie haben Berichte über kleinere Auseinandersetzungen in anderen Städten wegen Lebensmittelpreisen erhalten. Wir sollen die Lage im Auge behalten. (FG)",
+      "initials": "FG"
+     },
+     {
+      "time": "16:30",
+      "entry": "Habe mit einigen Anwohnern gesprochen. Sie sind besorgt, aber ruhig. Einige planen, sich beim nächsten Bürgerforum zu beschweren. (FG)",
+      "initials": "FG"
+     },
+     {
+      "time": "18:00",
+      "entry": "Schichtende. Alles bleibt ruhig. (FG)",
+      "initials": "FG"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1682,6 +3200,114 @@
    "verified": false
   },
   {
+   "id": "de-dr-0p-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "de-dr-0p-schedule_board-001",
+   "stem": "When did the change to the university admissions process take effect?",
+   "choices": [
+    "October 15, 2023",
+    "October 17, 2023",
+    "October 16, 2023",
+    "October 10, 2023"
+   ],
+   "answer": 0,
+   "explanation": "The change took effect on '15.10.2023', as indicated in the first row of the schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "de-dr-0p-schedule_board-001",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To schedule exams for the upcoming semester",
+    "To inform students about changes in the admissions process",
+    "To announce a new course offering",
+    "To announce university holidays"
+   ],
+   "answer": 1,
+   "explanation": "The primary purpose is 'Zulassungsverfahren' (admissions process), as mentioned multiple times in the schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "de-dr-0p-schedule_board-002",
+   "stem": "What team is scheduled to work at the Schulzentrum on 16.05?",
+   "choices": [
+    "Team D",
+    "Team A",
+    "Team B",
+    "Team C"
+   ],
+   "answer": 2,
+   "explanation": "The schedule shows \"Team B\" assigned to the \"Schulzentrum\" on \"16.05.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "de-dr-0p-schedule_board-002",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To organize earthquake relief efforts",
+    "To schedule school classes",
+    "To plan a local festival",
+    "To coordinate a sports tournament"
+   ],
+   "answer": 0,
+   "explanation": "The title \"Erdbebenhilfe in Kleinstadt\" and the context indicate the schedule is for organizing earthquake relief efforts.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "de-dr-0p-schedule_board-003",
+   "stem": "What time does the nighttime drill end?",
+   "choices": [
+    "23:00",
+    "04:00",
+    "03:00",
+    "01:00"
+   ],
+   "answer": 2,
+   "explanation": "The document explicitly states that the drill ends at '03:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "de-dr-0p-schedule_board-003",
+   "stem": "What is the main purpose of the document?",
+   "choices": [
+    "To discuss food prices",
+    "To announce a new security post",
+    "To schedule a nighttime quick reaction force drill",
+    "To change bus routes"
+   ],
+   "answer": 2,
+   "explanation": "The document is titled 'Schnelleinsatzübung - Nachtschicht' which translates to 'Quick Reaction Force Drill - Night Shift', indicating the main purpose.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-0p-sign-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1732,6 +3358,78 @@
    ],
    "answer": 1,
    "explanation": "The poster states \"Neuer Impfstoff gegen Grippe\" and \"Jetzt verfügbar,\" which translates to \"New vaccine against flu\" and \"Now available.\" This indicates that the purpose of the poster is to announce a new vaccine.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "de-dr-0p-signage-001",
+   "stem": "At what time did Herr Müller park at the wrong gate?",
+   "choices": [
+    "08:15 Uhr",
+    "11:15 Uhr",
+    "10:15 Uhr",
+    "09:15 Uhr"
+   ],
+   "answer": 2,
+   "explanation": "The German text states \"um 10:15 Uhr\" as the time when Herr Müller parked at the wrong gate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "de-dr-0p-signage-001",
+   "stem": "What is the main point of this sign?",
+   "choices": [
+    "To inform about a change in delivery hours",
+    "To warn about unauthorized access",
+    "To announce a new delivery service",
+    "To advertise a new parking area"
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the sign is conveyed by the words \"ACHTUNG: ZUTRITT VERBOTEN\" and \"Nur für autorisierte Personen\", indicating a warning about unauthorized access.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "de-dr-0p-signage-002",
+   "stem": "What is the permitted time for solar panel installation?",
+   "choices": [
+    "06:00 to 14:00",
+    "08:00 to 16:00",
+    "09:00 to 17:00",
+    "07:00 to 15:00"
+   ],
+   "answer": 1,
+   "explanation": "The sign specifies the time as \"von 08:00 bis 16:00 Uhr\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-0p-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "de-dr-0p-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To advertise solar panel sales",
+    "To inform about solar panel benefits",
+    "To schedule solar panel maintenance",
+    "To provide safety guidelines for solar panel installation"
+   ],
+   "answer": 3,
+   "explanation": "The sign provides safety guidelines such as \"Helme tragen\" and \"Verbot: Rauchen und Feuer\" for solar panel installation.",
    "source": "llm",
    "verified": false
   },
@@ -2002,6 +3700,294 @@
    ],
    "answer": 0,
    "explanation": "The correct answer is \"To announce a joint defense exercise with host-nation forces\" because the text states \"Wir möchten Sie darüber informieren, dass in den nächsten zwei Wochen die Übung Schutzschild mit unseren Gastgebern stattfinden wird.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-badge_form-001",
+   "stem": "What is the purpose of Hans Müller's visit?",
+   "choices": [
+    "To attend a meeting",
+    "To inspect the facilities",
+    "To participate in a night drill",
+    "To deliver packages"
+   ],
+   "answer": 2,
+   "explanation": "The purpose of the visit is clearly stated as 'Nachtübung der schnellen Einsatzkräfte' (night drill of the quick reaction force).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-badge_form-001",
+   "stem": "What is the main activity happening at the location mentioned?",
+   "choices": [
+    "A regular day of operations",
+    "A social gathering",
+    "A construction project",
+    "A nighttime training exercise"
+   ],
+   "answer": 3,
+   "explanation": "The main activity is a nighttime training exercise, as indicated by 'Nachtübung der schnellen Einsatzkräfte' (night drill of the quick reaction force).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-badge_form-002",
+   "stem": "What is the purpose of Hans Müller's visit?",
+   "choices": [
+    "To install new equipment at the facility.",
+    "To conduct routine maintenance.",
+    "To deliver supplies to the facility.",
+    "To investigate a cyberattack on a water treatment facility."
+   ],
+   "answer": 3,
+   "explanation": "The purpose is clearly stated in the 'Zweck des Besuchs' field as 'Cyberangriff auf Wasseraufbereitungsanlage untersuchen'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-badge_form-002",
+   "stem": "What is the main topic of this visitor badge?",
+   "choices": [
+    "A cyberattack on a public utility.",
+    "A delivery of supplies.",
+    "An installation of new equipment.",
+    "A routine maintenance visit."
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a cyberattack on a public utility, specifically a water treatment facility, as indicated by the purpose of the visit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-badge_form-003",
+   "stem": "What is the purpose of Hans Weber's visit?",
+   "choices": [
+    "To invest in a solar farm.",
+    "To participate in an ancient art exhibition.",
+    "To deliver food supplies.",
+    "To discuss radio procedures between allied air defense units."
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the visit is clearly stated as 'Funkverfahren zwischen verbündeten Luftverteidigungseinheiten' (radio procedures between allied air defense units).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-badge_form-003",
+   "stem": "What is the main topic of this visitor badge?",
+   "choices": [
+    "An art exhibition.",
+    "A food delivery.",
+    "A solar farm investment.",
+    "A military exercise involving radio procedures."
+   ],
+   "answer": 3,
+   "explanation": "The main topic of this visitor badge is a military exercise involving radio procedures, as indicated by the purpose of the visit and the associated organizations (Luftwaffengruppe Nord and NATO).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-badge_form-004",
+   "stem": "What was the purpose of Hans Müller's visit?",
+   "choices": [
+    "To attend a meeting",
+    "To repair office equipment",
+    "To visit a friend",
+    "To deliver office supplies"
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the visit is clearly stated as 'Lieferung von Büromaterial' (delivery of office supplies).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-badge_form-004",
+   "stem": "What is the main issue reported in this form?",
+   "choices": [
+    "A visitor was denied entry",
+    "Office equipment was delivered",
+    "A delivery driver arrived without proper documentation",
+    "A meeting was scheduled at the base"
+   ],
+   "answer": 2,
+   "explanation": "The main issue is that the delivery driver 'hatte keine gültige Lieferbestätigung' (did not have a valid delivery confirmation).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-005-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-badge_form-005",
+   "stem": "What is the purpose of Anna Müller's visit?",
+   "choices": [
+    "To discuss investment in renewable energies",
+    "To meet with Dr. Weber for lunch",
+    "To inspect the research department",
+    "To tour the base facilities"
+   ],
+   "answer": 0,
+   "explanation": "The document states 'Zweck des Besuchs: Investition in erneuerbare Energien,' which translates to 'Purpose of visit: Investment in renewable energies.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-badge_form-005-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-badge_form-005",
+   "stem": "What is the main topic of the visitor badge?",
+   "choices": [
+    "A lunch appointment with a researcher",
+    "A business meeting about renewable energy",
+    "A visit to the base hospital",
+    "A tour of the base facilities"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is indicated by the purpose of the visit and the company name, 'GreenEnergy Investments GmbH,' both of which point to a business meeting about renewable energy.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-chat-001",
+   "stem": "What time does the festival start?",
+   "choices": [
+    "10:05 AM",
+    "12:00 PM",
+    "10:00 AM",
+    "10:10 AM"
+   ],
+   "answer": 1,
+   "explanation": "The message from Anna states that the festival begins 'um 12 Uhr', which translates to 'at 12:00 PM'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-chat-001",
+   "stem": "What is the main purpose of these messages?",
+   "choices": [
+    "To talk about school assignments",
+    "To invite someone to a festival",
+    "To plan a trip to the city",
+    "To discuss the weather forecast"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the messages is 'To invite someone to a festival', as Anna invites Lena to the Erntedankfest (Harvest Festival) in Dorfhausen.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-chat-002",
+   "stem": "What time will the exercise with the allied units take place?",
+   "choices": [
+    "10:17 AM",
+    "10:15 AM",
+    "10:18 AM",
+    "1400 hours"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Wir üben heute um 1400 Uhr mit den Alliierten', indicating the exercise will take place at 1400 hours.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-chat-002",
+   "stem": "What is the main purpose of this conversation?",
+   "choices": [
+    "To discuss weather conditions",
+    "To schedule a meeting",
+    "To test radio communication and coordinate an exercise",
+    "To report an incident"
+   ],
+   "answer": 2,
+   "explanation": "The conversation starts with 'Radioverbindung testen' and mentions 'Wir üben heute um 1400 Uhr mit den Alliierten', showing the purpose is to test radio communication and coordinate an exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-chat-003",
+   "stem": "What time will Hans make his rounds?",
+   "choices": [
+    "18:00",
+    "14:32",
+    "14:30",
+    "16:00"
+   ],
+   "answer": 3,
+   "explanation": "Hans says 'Ich werde die Runde um 16:00 Uhr machen.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "de-dr-1-chat-003",
+   "stem": "What is the purpose of this conversation?",
+   "choices": [
+    "To discuss personal matters",
+    "To handover shifts",
+    "To report a security breach",
+    "To plan a meeting"
+   ],
+   "answer": 1,
+   "explanation": "The conversation is about Hans taking over Anna's shift, as indicated by 'ich übernehme jetzt die Schicht' and 'Schichtübergabe'.",
    "source": "llm",
    "verified": false
   },
@@ -2366,6 +4352,114 @@
    "verified": false
   },
   {
+   "id": "de-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-schedule_board-001",
+   "stem": "Who is scheduled to work at the Gemeindehaus in the morning shift?",
+   "choices": [
+    "Anna Schmidt",
+    "Thomas Müller",
+    "Erika Klein",
+    "Maria Wagner"
+   ],
+   "answer": 2,
+   "explanation": "Erika Klein is assigned to the Gemeindehaus for the 8:00-14:00 shift, as indicated by the German words 'Gemeindehaus' and '8:00-14:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-schedule_board-001",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To provide the locations of polling stations",
+    "To announce the results of the election",
+    "To show the schedule for election workers in Kleinberg",
+    "To list the candidates for the local election"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to show the schedule for election workers (Wahlhelfer-Dienstplan) in Kleinberg, as indicated by the German words 'Dienstplan' and 'Gemeindewahl'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-schedule_board-002",
+   "stem": "Which team is on duty on Wednesday?",
+   "choices": [
+    "Team B",
+    "Team A",
+    "No team",
+    "Team C"
+   ],
+   "answer": 3,
+   "explanation": "The schedule shows 'Team C' under the 'Schicht' (shift) column for 'Mittwoch' (Wednesday).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-schedule_board-002",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To assign shifts to teams",
+    "All of the above",
+    "To list opening hours",
+    "To plan activities for tourists"
+   ],
+   "answer": 1,
+   "explanation": "The schedule includes 'Schicht' (shift), 'Öffnungszeiten' (opening hours), and 'Aktivitäten' (activities), indicating that it serves all these purposes.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-schedule_board-003",
+   "stem": "What is one of the security measures taken on May 16th?",
+   "choices": [
+    "Patrols every 2 hours",
+    "No drone zone",
+    "Additional security checks",
+    "No access without special permission"
+   ],
+   "answer": 0,
+   "explanation": "The German text states 'Patrouillen alle 2 Stunden' for May 16th, which translates to 'Patrols every 2 hours'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-schedule_board-003",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To outline security measures due to a threat",
+    "To inform about flight times",
+    "To schedule maintenance work",
+    "To announce changes in working hours"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is outlined in the title and remarks, such as 'Warnung: Drohende Bedrohung durch Kreislaufmunition' and 'Erhöhte Sicherheit: Keine Drohnen in der Nähe', indicating a focus on security measures due to a threat.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2528,6 +4622,150 @@
    "verified": false
   },
   {
+   "id": "de-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-signage-001",
+   "stem": "Until what time is there a risk of flooding at the air base?",
+   "choices": [
+    "D. 22:00 Uhr am 15. Mai 2023",
+    "C. 18:00 Uhr am 15. Mai 2023",
+    "A. 06:00 Uhr am 15. Mai 2023",
+    "B. 12:00 Uhr am 15. Mai 2023"
+   ],
+   "answer": 1,
+   "explanation": "The document states 'Es besteht die Gefahr von Überschwemmungen auf der Basis bis 18:00 Uhr am 15. Mai 2023.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-signage-001",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "A. To announce a new building on the base",
+    "B. To warn about potential flooding and provide safety instructions",
+    "D. To advertise a local restaurant",
+    "C. To inform about a scheduled airshow"
+   ],
+   "answer": 1,
+   "explanation": "The sign is a 'Hochwasserwarnung' (flood warning) and provides information about the risk of flooding and instructions to follow, such as 'Bleiben Sie wachsam und folgen Sie den Anweisungen der Basisleitung.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-signage-002",
+   "stem": "What is explicitly permitted in the exhibition?",
+   "choices": [
+    "Entering restricted areas.",
+    "Touching the aircraft.",
+    "Walking on the aircraft.",
+    "Taking photographs."
+   ],
+   "answer": 3,
+   "explanation": "The sign states 'Fotografieren ist erlaubt,' which means 'Photographing is permitted.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-signage-002",
+   "stem": "What is the primary purpose of this sign?",
+   "choices": [
+    "To announce a new military operation.",
+    "To inform visitors about the exhibition rules.",
+    "To advertise the air base facilities.",
+    "To warn about an upcoming storm."
+   ],
+   "answer": 1,
+   "explanation": "The sign provides information and instructions to visitors about the exhibition, such as 'Besucher sind herzlich willkommen' (Visitors are warmly welcome) and 'Bitte bleiben Sie auf den Wegen' (Please stay on the paths).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-signage-003",
+   "stem": "Who will administer the vaccinations?",
+   "choices": [
+    "Colonel Hoffmann",
+    "Nurse Meier",
+    "Dr. Schmidt",
+    "Major Bauer"
+   ],
+   "answer": 1,
+   "explanation": "The sign states 'DIE IMPFUNGEN WERDEN VON DER KRANKENSCHWESTER FRAU MEIER DURCHGEFÜHRT.' which translates to 'The vaccinations will be administered by Nurse Meier.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-signage-003",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To advertise a new product",
+    "To inform about a new facility",
+    "To schedule a meeting",
+    "To announce a vaccination campaign"
+   ],
+   "answer": 3,
+   "explanation": "The sign is about a vaccination campaign, as indicated by the word 'IMPFKAMPAGNE' and the details about the vaccinations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-signage-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "de-dr-1-signage-004",
+   "stem": "What is the name of the delivery driver involved in the incident?",
+   "choices": [
+    "Herr Schmidt",
+    "Herr Weber",
+    "Herr Klein",
+    "Herr Müller"
+   ],
+   "answer": 3,
+   "explanation": "The name 'Herr Müller' is explicitly mentioned in the sign: 'Lieferant: Herr Müller von 'Schnell-Lieferungen GmbH'.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1-signage-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "de-dr-1-signage-004",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To announce a new delivery schedule",
+    "To warn about an incident and prevent future issues",
+    "To advertise 'Schnell-Lieferungen GmbH'",
+    "To provide directions to the delivery entrance"
+   ],
+   "answer": 1,
+   "explanation": "The sign warns about a previous incident ('Problem: Keine Genehmigung für Einfahrt um 10:00 Uhr.') and provides a solution to prevent future issues ('Lösung: Immer vorher anrufen: 0800-123-4567.').",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-1p-announcement-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -2686,6 +4924,114 @@
    ],
    "answer": 0,
    "explanation": "In this context, \"Impftermine\" refers to the scheduled times for people to get vaccinated, which are mentioned as \"vorher online buchen\" or 'book online in advance'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-chat-001",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The latest drone technology",
+    "The cost of defending bases against cheap drones",
+    "The budget for the Treuchtlingen air base",
+    "The government's new security policies"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the cost of defending bases against cheap drones, as indicated by phrases like \"die neuen Zahlen zur Drohnenabwehr gesehen\" and \"die Kosten für die neuen Systeme sind echt hoch.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-chat-001",
+   "stem": "How much does the drone defense system cost for the Treuchtlingen base?",
+   "choices": [
+    "50,000 Euros",
+    "500,000 Euros",
+    "5 million Euros",
+    "5,000 Euros"
+   ],
+   "answer": 1,
+   "explanation": "The cost for the Treuchtlingen base is explicitly stated as \"500.000 Euro\" in Markus's message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-chat-002",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "The advantages of laser weapons for air defense",
+    "The history of military technology",
+    "The cost of maintaining air defense systems",
+    "The weather conditions affecting military operations"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the conversation is the use of laser weapons for air defense, as evidenced by phrases like 'Laserwaffen zur Luftverteidigung' and 'die neuen Laserwaffen für die Luftverteidigung'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-chat-002",
+   "stem": "According to Hans, what is one advantage of laser weapons?",
+   "choices": [
+    "They are easier to transport",
+    "They can be used to communicate with allies",
+    "They are faster and cheaper than missiles",
+    "They are effective in all weather conditions"
+   ],
+   "answer": 2,
+   "explanation": "Hans mentions that laser weapons are 'schnell und kostengünstig im Vergleich zu Raketen' (fast and cost-effective compared to missiles).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Discussing a new drone model",
+    "Planning a drone survey for flood relief",
+    "Organizing a community event",
+    "Preparing for a drone racing competition"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is planning a drone survey for flood relief, as indicated by phrases like 'Drohnenumfrage nach der Flut' and 'betroffenen Gebieten'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-chat-003",
+   "stem": "What specific equipment is requested for the drone survey?",
+   "choices": [
+    "Drones with night vision capabilities",
+    "Drones with long battery life and high-resolution cameras",
+    "Drones with obstacle avoidance sensors",
+    "Drones with extended range transmitters"
+   ],
+   "answer": 1,
+   "explanation": "The specific equipment requested is 'Drohnen mit langem Akkulaufzeit und Kameras mit hoher Auflösung', as mentioned by Lena.",
    "source": "llm",
    "verified": false
   },
@@ -3122,6 +5468,114 @@
    "verified": false
   },
   {
+   "id": "de-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-municipal_notice-001",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To discuss the rising costs of drone defense.",
+    "To announce a new festival in the town.",
+    "To invite residents to a town hall meeting.",
+    "To inform residents about new radio frequencies and call signs for air defense units."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is clearly stated in the first paragraph: 'Ab dem 15. Juni werden neue Funkverfahren für die Kommunikation zwischen den verbündeten Luftverteidigungs-Einheiten eingeführt.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-municipal_notice-001",
+   "stem": "What are the primary and secondary radio frequencies mentioned in the notice?",
+   "choices": [
+    "Primary: 127.89 MHz, Secondary: 128.90 MHz",
+    "Primary: 123.45 MHz, Secondary: 124.56 MHz",
+    "Primary: 125.67 MHz, Secondary: 126.78 MHz",
+    "Primary: 121.34 MHz, Secondary: 122.45 MHz"
+   ],
+   "answer": 1,
+   "explanation": "The notice explicitly states the frequencies: 'Die neuen Frequenzen für die Kommunikation sind: Primär 123.45 MHz und Sekundär 124.56 MHz.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-municipal_notice-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about changes in school schedules.",
+    "To announce a city-wide festival.",
+    "To inform residents about the earthquake and provide relief information.",
+    "To request donations for the city's new projects."
+   ],
+   "answer": 2,
+   "explanation": "The notice discusses the earthquake, notifies residents about relief efforts, and provides important information about shelters and how to help, as seen in the phrases 'Die Stadtverwaltung arbeitet hart daran, die Schäden zu reparieren und den Betroffenen zu helfen' and 'Hilfe anbieten'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-municipal_notice-002",
+   "stem": "Where are the emergency shelters located?",
+   "choices": [
+    "In the local parks.",
+    "In the city center and West district schools.",
+    "In the shopping centers.",
+    "In the hospitals."
+   ],
+   "answer": 1,
+   "explanation": "The notice states 'Die Turnhallen der Schulen in der Stadtmitte und im Stadtteil West sind geöffnet', which translates to 'The gyms of the schools in the city center and the West district are open'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce the annual summer festival.",
+    "To provide contact information for the town hall.",
+    "To promote family activities at the festival.",
+    "To inform residents about a no-drone zone during the festival."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the notice is to inform residents about a no-drone zone during the festival. The key phrase is 'Um die Sicherheit und Privatsphäre aller Besucher zu gewährleisten, wird der gesamte Stadtpark während des Festes zur Keine-Drohnen-Zone erklärt.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-municipal_notice-003",
+   "stem": "When is the annual summer festival taking place?",
+   "choices": [
+    "From August 15th to 17th",
+    "From July 15th to 17th",
+    "From August 1st to 3rd",
+    "From July 1st to 3rd"
+   ],
+   "answer": 1,
+   "explanation": "The festival is taking place from July 15th to 17th. The exact dates are mentioned in the sentence 'Unser jährliches Sommerfest findet dieses Jahr vom 15. bis 17. Juli im Stadtpark statt.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-1p-personal_letter-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -3172,6 +5626,114 @@
    ],
    "answer": 3,
    "explanation": "'Sicherstellen' means 'to ensure'. The letter says 'die Regierung wird alles tun, um Ihre Sicherheit zu sicherstellen', indicating that the government will ensure safety.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-shift_log-001",
+   "stem": "What is the main topic of the log entries?",
+   "choices": [
+    "Daily routine at a security post",
+    "Training schedule for new recruits",
+    "Local weather patterns affecting radar",
+    "Radio communication between allied air defense units"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is radio communication between allied air defense units, as indicated by phrases like 'Funkkontakt mit Einheit Nord (FAN)' and 'gemeinsame Übung mit FAN durch'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-shift_log-001",
+   "stem": "What did Einheit Nord (FAN) report at 10:15?",
+   "choices": [
+    "A friendly aircraft entering their airspace",
+    "A scheduled maintenance period",
+    "A malfunction in their communication equipment",
+    "An unexplained contact on their radar"
+   ],
+   "answer": 3,
+   "explanation": "Einheit Nord (FAN) reported 'einen unerklärlichen Kontakt auf dem Radar' at 10:15.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-shift_log-002",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A solar panel theft",
+    "An investment in renewable energy",
+    "A routine security check",
+    "A bank robbery"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is an investment in renewable energy, specifically the installation of new solar panels. This is evident from entries mentioning 'Investitionen für neue Solarpaneele' and 'Installation der neuen Paneele'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-shift_log-002",
+   "stem": "Who delivered the new solar panels?",
+   "choices": [
+    "D. Bank Bauer",
+    "B. Herr Weber",
+    "C. Firma SunPower",
+    "A. Herr Schmidt"
+   ],
+   "answer": 2,
+   "explanation": "The delivery was made by 'Firma SunPower', as stated in the entry 'Lieferung neuer Solarpaneele von Firma SunPower angekommen'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "de-dr-1p-shift_log-003",
+   "stem": "What is the main topic of this log?",
+   "choices": [
+    "A celebration of the local election winners",
+    "A protest against the local election results",
+    "A cyberattack on the local election system",
+    "A routine security post shift during a local election"
+   ],
+   "answer": 3,
+   "explanation": "The log entries consistently mention the election context (e.g., 'Wahllokals', 'Wahlhelfers', 'Wahl läuft planmäßig zu Ende') and focus on security and routine activities related to it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-1p-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "de-dr-1p-shift_log-003",
+   "stem": "What happened at 10:15?",
+   "choices": [
+    "There was a short power outage at the polling station",
+    "A group of people was controlled by the police",
+    "A complaint was made about loud music",
+    "An accredited election helper visited the post"
+   ],
+   "answer": 0,
+   "explanation": "The entry for 10:15 specifically states 'Kurze Unterbrechung des Stroms im Wahllokal', indicating a short power outage.",
    "source": "llm",
    "verified": false
   },
@@ -3716,6 +6278,114 @@
    "verified": false
   },
   {
+   "id": "de-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-municipal_notice-001",
+   "stem": "What is the main topic of the notice?",
+   "choices": [
+    "Changes in public transportation routes",
+    "Hospital services in the north",
+    "New shopping centers in Greenfield",
+    "City council elections"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the notice is the changes in public transportation routes, as indicated by the title 'Änderungen im Busverkehr' and the detailed descriptions of the changes to the bus lines.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-municipal_notice-001",
+   "stem": "What change will occur to Bus Line 1?",
+   "choices": [
+    "It will be discontinued",
+    "It will start running every 30 minutes",
+    "It will be extended to the new Greenfield Mall",
+    "It will no longer serve the city center"
+   ],
+   "answer": 2,
+   "explanation": "The notice states that 'Die Buslinie 1... wird verlängert und fährt ab jetzt bis zum neuen Einkaufszentrum",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-municipal_notice-002",
+   "stem": "What is the main idea of the notice?",
+   "choices": [
+    "The town hall is announcing a new building project.",
+    "The town hall is announcing a new tax policy.",
+    "The town hall is informing residents about a change in city leadership.",
+    "The town hall is addressing the housing shortage in Bergstadt."
+   ],
+   "answer": 3,
+   "explanation": "The main idea is that the town hall is addressing the housing shortage, as stated in the first paragraph: 'wie viele von Ihnen wissen, gibt es in unserer Stadt ein wachsendes Problem mit dem Wohnraum.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-municipal_notice-002",
+   "stem": "What is one of the measures the town hall is taking to address the housing shortage?",
+   "choices": [
+    "Reviewing building regulations to facilitate more apartment construction.",
+    "Increasing the number of public parks.",
+    "Overhauling the city's public transportation system.",
+    "Building more schools."
+   ],
+   "answer": 0,
+   "explanation": "The notice mentions that the town hall plans to 'die Bauvorschriften überprüfen, um den Bau von mehr Wohnungen zu erleichtern,' which translates to reviewing building regulations to facilitate more apartment construction.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-municipal_notice-003",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To request volunteers for future exercises",
+    "To inform residents about the results of a counter-drone exercise",
+    "To explain the dangers of drones",
+    "To announce a new security measure in the town"
+   ],
+   "answer": 1,
+   "explanation": "The notice is primarily about informing residents about the important lessons learned from the counter-drone exercise. The text explicitly states 'Wir möchten Ihnen einige wichtige Erkenntnisse mitteilen.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-municipal_notice-003",
+   "stem": "What is one of the areas that needs improvement according to the notice?",
+   "choices": [
+    "The number of participants in the exercise",
+    "The technology used during the exercise",
+    "The duration of the exercise",
+    "The communication between different groups"
+   ],
+   "answer": 3,
+   "explanation": "The notice mentions 'die Kommunikation zwischen den verschiedenen Einsatzkräften und den Anwohnern verbessert werden muss.' This indicates that communication is an area that needs improvement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "de-dr-2-news-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -4144,6 +6814,42 @@
    ],
    "answer": 3,
    "explanation": "The report mentions that laser weapons \"sind derzeit noch in der Entwicklung und Erprobung\", which translates to 'are currently still in development and testing'. This suggests that they are still in the experimental phase.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "de-dr-2-shift_log-001",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "C a planned protest against the government",
+    "A cyberattack on a local business",
+    "D a natural disaster affecting the city",
+    "B rising food prices and public reaction"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the rising food prices and public reaction, as indicated by entries mentioning 'steigende Lebensmittelpreise' and discussions with local business owners and residents.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "de-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "de-dr-2-shift_log-001",
+   "stem": "Who reported concerns about food prices to the security post?",
+   "choices": [
+    "A Herr Schmidt",
+    "C An anonymous caller",
+    "D The police",
+    "B Frau Müller"
+   ],
+   "answer": 3,
+   "explanation": "Frau Müller reported concerns about food prices, as stated in the entry: 'Anruf von Frau Müller vom Supermarkt um die Ecke. Sie berichtet über Unruhe unter den Kunden wegen steigender Lebensmittelpreise.'",
    "source": "llm",
    "verified": false
   },

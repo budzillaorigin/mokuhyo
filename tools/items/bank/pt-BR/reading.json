@@ -6,6 +6,226 @@
  "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)",
  "passages": [
   {
+   "id": "pt-dr-0p-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Night Drill Access at Base Santos Dumont",
+   "body": "CRÉDITO DE ACESSO\nNome:: João Silva\nUnidade:: Força de Reação Rápida\nLocal:: Base Santos Dumont\nData:: 05/10/2023\nHora:: 23:30\nMotivo:: Treino noturno\nAssinatura:: _______________________\nAcesso permitido apenas durante o horário de treino.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "CRÉDITO DE ACESSO",
+    "fields": [
+     {
+      "label": "Nome:",
+      "value": "João Silva"
+     },
+     {
+      "label": "Unidade:",
+      "value": "Força de Reação Rápida"
+     },
+     {
+      "label": "Local:",
+      "value": "Base Santos Dumont"
+     },
+     {
+      "label": "Data:",
+      "value": "05/10/2023"
+     },
+     {
+      "label": "Hora:",
+      "value": "23:30"
+     },
+     {
+      "label": "Motivo:",
+      "value": "Treino noturno"
+     },
+     {
+      "label": "Assinatura:",
+      "value": "_______________________"
+     }
+    ],
+    "footer": "Acesso permitido apenas durante o horário de treino."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Security Training Access Request at Base Fortaleza",
+   "body": "Base Fortaleza - Solicitação de Acesso\nNome:: Ana Silva\nOrganização:: Força de Segurança Brasileira\nData:: 15/10/2023\nHora de Chegada:: 08:00\nHora de Saída:: 17:00\nObjetivo da Visita:: Treinar reconhecimento de intenções hostis\nAssinatura:: Ana Silva\nCargo:: Instrutora de Segurança\nAcesso permitido apenas com este crachá.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Base Fortaleza - Solicitação de Acesso",
+    "fields": [
+     {
+      "label": "Nome:",
+      "value": "Ana Silva"
+     },
+     {
+      "label": "Organização:",
+      "value": "Força de Segurança Brasileira"
+     },
+     {
+      "label": "Data:",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Hora de Chegada:",
+      "value": "08:00"
+     },
+     {
+      "label": "Hora de Saída:",
+      "value": "17:00"
+     },
+     {
+      "label": "Objetivo da Visita:",
+      "value": "Treinar reconhecimento de intenções hostis"
+     },
+     {
+      "label": "Assinatura:",
+      "value": "Ana Silva"
+     },
+     {
+      "label": "Cargo:",
+      "value": "Instrutora de Segurança"
+     }
+    ],
+    "footer": "Acesso permitido apenas com este crachá."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Access Request at New Hospital",
+   "body": "FICHA DE ACESSO - HOSPITAL NOVO HORIZONTE\nNome:: Maria Silva\nRG:: 45.678.901-2\nData:: 05/10/2023\nHorário:: 14:00\nLocal de Destino:: Hospital Novo Horizonte\nMotivo:: Visita a paciente\nPaciente:: João Pereira\nQuarto:: 205\nAssinatura:: Maria Silva\nAcesso válido por 24 horas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "FICHA DE ACESSO - HOSPITAL NOVO HORIZONTE",
+    "fields": [
+     {
+      "label": "Nome:",
+      "value": "Maria Silva"
+     },
+     {
+      "label": "RG:",
+      "value": "45.678.901-2"
+     },
+     {
+      "label": "Data:",
+      "value": "05/10/2023"
+     },
+     {
+      "label": "Horário:",
+      "value": "14:00"
+     },
+     {
+      "label": "Local de Destino:",
+      "value": "Hospital Novo Horizonte"
+     },
+     {
+      "label": "Motivo:",
+      "value": "Visita a paciente"
+     },
+     {
+      "label": "Paciente:",
+      "value": "João Pereira"
+     },
+     {
+      "label": "Quarto:",
+      "value": "205"
+     },
+     {
+      "label": "Assinatura:",
+      "value": "Maria Silva"
+     }
+    ],
+    "footer": "Acesso válido por 24 horas."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-badge_form-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Shift Handover at Base São Paulo",
+   "body": "Crachá de Visitante\nNome:: João Silva\nBase:: São Paulo\nSetor:: COC\nHorário de Entrada:: 08:00\nHorário de Saída:: 17:00\nAssinatura:: João Silva\nData:: 10/05/2023\nTurno:: Manhã\nPosto:: Sargento\nAcesso Permitido Apenas no Setor COC",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Crachá de Visitante",
+    "fields": [
+     {
+      "label": "Nome:",
+      "value": "João Silva"
+     },
+     {
+      "label": "Base:",
+      "value": "São Paulo"
+     },
+     {
+      "label": "Setor:",
+      "value": "COC"
+     },
+     {
+      "label": "Horário de Entrada:",
+      "value": "08:00"
+     },
+     {
+      "label": "Horário de Saída:",
+      "value": "17:00"
+     },
+     {
+      "label": "Assinatura:",
+      "value": "João Silva"
+     },
+     {
+      "label": "Data:",
+      "value": "10/05/2023"
+     },
+     {
+      "label": "Turno:",
+      "value": "Manhã"
+     },
+     {
+      "label": "Posto:",
+      "value": "Sargento"
+     }
+    ],
+    "footer": "Acesso Permitido Apenas no Setor COC"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-0p-form-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -141,6 +361,129 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-0p-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "No-Drone Zone Notice for Floripa Fest",
+   "body": "AVISO DE ZONA PROIBIDA PARA DRONES\nDATA | HORÁRIO | LOCAL\n15/07 | 08:00 - 22:00 | BASE FLORIANÓPOLIS\n16/07 | 08:00 - 22:00 | PRAIA DO FESTIVAL\n17/07 | 08:00 - 22:00 | ZONA DE SEGURANÇA",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "AVISO DE ZONA PROIBIDA PARA DRONES",
+    "columns": [
+     "DATA",
+     "HORÁRIO",
+     "LOCAL"
+    ],
+    "rows": [
+     [
+      "15/07",
+      "08:00 - 22:00",
+      "BASE FLORIANÓPOLIS"
+     ],
+     [
+      "16/07",
+      "08:00 - 22:00",
+      "PRAIA DO FESTIVAL"
+     ],
+     [
+      "17/07",
+      "08:00 - 22:00",
+      "ZONA DE SEGURANÇA"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Voting Schedule for Local Election in São José",
+   "body": "Eleição Municipal em São José\nLocal | Horário | Mesário\nEscola Municipal João | 8h - 17h | Ana Silva\nEscola Municipal Maria | 8h - 17h | Carlos Souza\nCentro Comunitário | 8h - 17h | Elisa Santos",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Eleição Municipal em São José",
+    "columns": [
+     "Local",
+     "Horário",
+     "Mesário"
+    ],
+    "rows": [
+     [
+      "Escola Municipal João",
+      "8h - 17h",
+      "Ana Silva"
+     ],
+     [
+      "Escola Municipal Maria",
+      "8h - 17h",
+      "Carlos Souza"
+     ],
+     [
+      "Centro Comunitário",
+      "8h - 17h",
+      "Elisa Santos"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "New Drone Rules Near Base Brasília",
+   "body": "Novo Regulamento para Voo de Drones Próximo à Base Militar de Brasília\nHorário | Regra\n06:00 - 22:00 | Voo permitido até 120m de altura\n22:00 - 06:00 | Voo proibido\nTodos os dias | Manter distância mínima de 5km da base\nAplicável a todos | Respeitar as regras ou perder a licença",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Novo Regulamento para Voo de Drones Próximo à Base Militar de Brasília",
+    "columns": [
+     "Horário",
+     "Regra"
+    ],
+    "rows": [
+     [
+      "06:00 - 22:00",
+      "Voo permitido até 120m de altura"
+     ],
+     [
+      "22:00 - 06:00",
+      "Voo proibido"
+     ],
+     [
+      "Todos os dias",
+      "Manter distância mínima de 5km da base"
+     ],
+     [
+      "Aplicável a todos",
+      "Respeitar as regras ou perder a licença"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-0p-sign-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -183,6 +526,60 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-signage-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Lessons from Exercise Sky Shield",
+   "body": "EXERCÍCIO ESCUDO CELESTE\nBASE AÉREA DE ANÁPOLIS\nAPRENDIZADOS IMPORTANTES:\n1. DETECÇÃO TEMPOANA:\n   - DRONES DETECTADOS A 5KM\n2. RESPOSTA RÁPIDA: 3 MINUTOS MÉDIA: EXCELENTE! PARABÉNS EQUIPE 12 (CAP BRUNO). VISTO COMANDANTE SANTOS. 08/10/2023.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "EXERCÍCIO ESCUDO CELESTE",
+     "BASE AÉREA DE ANÁPOLIS",
+     "APRENDIZADOS IMPORTANTES:",
+     "1. DETECÇÃO TEMPOANA:",
+     "   - DRONES DETECTADOS A 5KM",
+     "2. RESPOSTA RÁPIDA: 3 MINUTOS MÉDIA: EXCELENTE! PARABÉNS EQUIPE 12 (CAP BRUNO). VISTO COMANDANTE SANTOS. 08/10/2023."
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-0p-signage-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Loitering Munition Threat at Base Recife",
+   "body": "ATENÇÃO: PERIGO DE MUNIÇÕES PERSISTENTES!\nÁREA RESTRIATA! PROIBIDA A ENTRADA!\nMunicões podem cair em qualquer lugar.\nFique dentro dos edifícios durante alertas.\nSiga as instruções do pessoal militar.\nBase Recife - 2023",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "ATENÇÃO: PERIGO DE MUNIÇÕES PERSISTENTES!",
+     "ÁREA RESTRIATA! PROIBIDA A ENTRADA!",
+     "Municões podem cair em qualquer lugar.",
+     "Fique dentro dos edifícios durante alertas.",
+     "Siga as instruções do pessoal militar.",
+     "Base Recife - 2023"
+    ],
+    "kind": "warning"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -229,6 +626,270 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Access Request for Radio Procedures Seminar",
+   "body": "Crachá de Visitante\nNome:: João Silva\nOrganização:: Base Aérea de Brasília\nFinalidade:: Seminário de Procedimentos de Rádio entre Unidades de Defesa Aérea Aliadas\nLocal:: Sala de Conferências, Base Aérea de Campo Grande\nData:: 15/10/2023\nHorário:: 09:00 - 17:00\nContato:: Capitão Ana Souza (67) 99999-0000\nAssinatura:: __________________________\nData de Emissão:: 14/10/2023\nEmitido por:: Sargento Carlos Mendes\nEste crachá deve ser usado visivelmente durante todo o evento.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Crachá de Visitante",
+    "fields": [
+     {
+      "label": "Nome:",
+      "value": "João Silva"
+     },
+     {
+      "label": "Organização:",
+      "value": "Base Aérea de Brasília"
+     },
+     {
+      "label": "Finalidade:",
+      "value": "Seminário de Procedimentos de Rádio entre Unidades de Defesa Aérea Aliadas"
+     },
+     {
+      "label": "Local:",
+      "value": "Sala de Conferências, Base Aérea de Campo Grande"
+     },
+     {
+      "label": "Data:",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Horário:",
+      "value": "09:00 - 17:00"
+     },
+     {
+      "label": "Contato:",
+      "value": "Capitão Ana Souza (67) 99999-0000"
+     },
+     {
+      "label": "Assinatura:",
+      "value": "__________________________"
+     },
+     {
+      "label": "Data de Emissão:",
+      "value": "14/10/2023"
+     },
+     {
+      "label": "Emitido por:",
+      "value": "Sargento Carlos Mendes"
+     }
+    ],
+    "footer": "Este crachá deve ser usado visivelmente durante todo o evento."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Small Drones Over Porto Alegre Harbor",
+   "body": "Crachá de Visitante\nNome:: Maria Silva\nIdentidade:: 123.456.789-00\nÓrgão:: Prefeitura de Porto Alegre\nData:: 10/05/2023\nHorário de Entrada:: 08:00\nHorário de Saída:: 17:00\nFinalidade da Visita:: Observar enxame de drones pequenos sobre o porto\nLocal a Visitar:: Porto de Porto Alegre\nAssinatura:: __________________________\nBase Naval de Porto Alegre",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Crachá de Visitante",
+    "fields": [
+     {
+      "label": "Nome:",
+      "value": "Maria Silva"
+     },
+     {
+      "label": "Identidade:",
+      "value": "123.456.789-00"
+     },
+     {
+      "label": "Órgão:",
+      "value": "Prefeitura de Porto Alegre"
+     },
+     {
+      "label": "Data:",
+      "value": "10/05/2023"
+     },
+     {
+      "label": "Horário de Entrada:",
+      "value": "08:00"
+     },
+     {
+      "label": "Horário de Saída:",
+      "value": "17:00"
+     },
+     {
+      "label": "Finalidade da Visita:",
+      "value": "Observar enxame de drones pequenos sobre o porto"
+     },
+     {
+      "label": "Local a Visitar:",
+      "value": "Porto de Porto Alegre"
+     },
+     {
+      "label": "Assinatura:",
+      "value": "__________________________"
+     }
+    ],
+    "footer": "Base Naval de Porto Alegre"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-chat-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "chat",
+   "title": "Preparations for Allied Exercise",
+   "body": "Marta: Oi Lucas! Tudo bem?\nLucas: Oi Marta! Tudo ótimo e contigo? Preciso confirmar os detalhes do exercício com os canadenses.\nMarta: Sim, o exercício é dia 15/05 no Base Campo Grande. Começa às 8h e termina às 17h.\nLucas: Perfeito! Precisamos de 5 veículos e 20 soldados. Você pode preparar tudo?\nMarta: Claro, Lucas! Vou organizar tudo e te aviso quando estiver pronto.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Exercício Conjunto",
+    "messages": [
+     {
+      "from": "Marta",
+      "text": "Oi Lucas! Tudo bem?",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Lucas",
+      "text": "Oi Marta! Tudo ótimo e contigo? Preciso confirmar os detalhes do exercício com os canadenses.",
+      "time": "10:05 AM",
+      "me": true
+     },
+     {
+      "from": "Marta",
+      "text": "Sim, o exercício é dia 15/05 no Base Campo Grande. Começa às 8h e termina às 17h.",
+      "time": "10:10 AM",
+      "me": false
+     },
+     {
+      "from": "Lucas",
+      "text": "Perfeito! Precisamos de 5 veículos e 20 soldados. Você pode preparar tudo?",
+      "time": "10:15 AM",
+      "me": true
+     },
+     {
+      "from": "Marta",
+      "text": "Claro, Lucas! Vou organizar tudo e te aviso quando estiver pronto.",
+      "time": "10:20 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "chat",
+   "title": "Delivery Driver Incident at Base Curitiba",
+   "body": "João: Oi Carlos, um entregador tentou passar pelo portão principal sem autorização há 10 min. Ele disse que tem uma entrega para a cozinha. O que fazemos?\nCarlos: João, mantenha ele lá. Já chamo segurança e a cozinha para confirmar. Não deixe ele passar sem autorização.\nJoão: Ok Carlos, ele está esperando no portão. Segurança e a cozinha estão a caminho.\nCarlos: João, cozinha confirmou. Entrega é esperada. Segurança vai liberar ele.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "",
+    "messages": [
+     {
+      "from": "João",
+      "text": "Oi Carlos, um entregador tentou passar pelo portão principal sem autorização há 10 min. Ele disse que tem uma entrega para a cozinha. O que fazemos?",
+      "time": "10:30 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "João, mantenha ele lá. Já chamo segurança e a cozinha para confirmar. Não deixe ele passar sem autorização.",
+      "time": "10:32 AM",
+      "me": false
+     },
+     {
+      "from": "João",
+      "text": "Ok Carlos, ele está esperando no portão. Segurança e a cozinha estão a caminho.",
+      "time": "10:35 AM",
+      "me": true
+     },
+     {
+      "from": "Carlos",
+      "text": "João, cozinha confirmou. Entrega é esperada. Segurança vai liberar ele.",
+      "time": "10:40 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "chat",
+   "title": "Campanha de Vacinação em Base Salvador",
+   "body": "Ana: Oi João, a campanha de vacinação começa na próxima segunda-feira, dia 15. Você vai participar?\nJoão: Oi Ana, sim, vou participar. A que horas começa?\nAna: Começa às 8h e termina às 17h. É na enfermaria da base. Não esquece de levar seu cartão de vacinação!\nJoão: Ok, Ana. Obrigado pela informação!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Campanha de Vacinação",
+    "messages": [
+     {
+      "from": "Ana",
+      "text": "Oi João, a campanha de vacinação começa na próxima segunda-feira, dia 15. Você vai participar?",
+      "time": "10:00 AM 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "João",
+      "text": "Oi Ana, sim, vou participar. A que horas começa?",
+      "time": "10:03 AM 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Ana",
+      "text": "Começa às 8h e termina às 17h. É na enfermaria da base. Não esquece de levar seu cartão de vacinação!",
+      "time": "10:05 AM 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "João",
+      "text": "Ok, Ana. Obrigado pela informação!",
+      "time": "10:07 AM 12/05/2023",
+      "me": true
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -432,6 +1093,192 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Night Drill Schedule for Quick Reaction Force",
+   "body": "Cronograma de Treino Noturno para Força de Reação Rápida\nHorário | Atividade | Responsável\n20:00 | Reunião Inicial | Sargento Silva\n20:30 | Verificação de Equipamentos | Cabos Pereira e Oliveira\n21:00 | Deslocamento para Área de Treino | Todos\n21:30 | Início do Treino | Tenente Rodrigues\n23:30 | Intervalo | Todos\n00:00 | Retomada do Treino | Tenente Rodrigues\n01:30 | Encerramento e Debriefing | Sargento Silva\n02:00 | Retorno à Base | Todos",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Cronograma de Treino Noturno para Força de Reação Rápida",
+    "columns": [
+     "Horário",
+     "Atividade",
+     "Responsável"
+    ],
+    "rows": [
+     [
+      "20:00",
+      "Reunião Inicial",
+      "Sargento Silva"
+     ],
+     [
+      "20:30",
+      "Verificação de Equipamentos",
+      "Cabos Pereira e Oliveira"
+     ],
+     [
+      "21:00",
+      "Deslocamento para Área de Treino",
+      "Todos"
+     ],
+     [
+      "21:30",
+      "Início do Treino",
+      "Tenente Rodrigues"
+     ],
+     [
+      "23:30",
+      "Intervalo",
+      "Todos"
+     ],
+     [
+      "00:00",
+      "Retomada do Treino",
+      "Tenente Rodrigues"
+     ],
+     [
+      "01:30",
+      "Encerramento e Debriefing",
+      "Sargento Silva"
+     ],
+     [
+      "02:00",
+      "Retorno à Base",
+      "Todos"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Cyberattack on Water Treatment Plant",
+   "body": "Aviso Importante: Ataque Cibernético na Estação de Tratamento de Água\nDia | Turno | Portão de Entrada | Horário de Abertura | Notas\nSegunda-feira | Manhã | Portão A | 6:00 AM | Atraso esperado devido ao ataque cibernético. Use o Portão B como alternativa.\nTerça-feira | Tarde | Portão B | 12:00 PM | Equipes de TI trabalhando para restaurar os sistemas. Acesso limitado.\nQuarta-feira | Noite | Portão C | 6:00 PM | Sistemas parcialmente restaurados. Verifique o status antes de entrar.\nQuinta-feira | Manhã | Portão A | 6:00 AM | Operação normal esperada. Monitorar atualizações.\nSexta-feira | Tarde | Portão B | 12:00 PM | Operação normal.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Aviso Importante: Ataque Cibernético na Estação de Tratamento de Água",
+    "columns": [
+     "Dia",
+     "Turno",
+     "Portão de Entrada",
+     "Horário de Abertura",
+     "Notas"
+    ],
+    "rows": [
+     [
+      "Segunda-feira",
+      "Manhã",
+      "Portão A",
+      "6:00 AM",
+      "Atraso esperado devido ao ataque cibernético. Use o Portão B como alternativa."
+     ],
+     [
+      "Terça-feira",
+      "Tarde",
+      "Portão B",
+      "12:00 PM",
+      "Equipes de TI trabalhando para restaurar os sistemas. Acesso limitado."
+     ],
+     [
+      "Quarta-feira",
+      "Noite",
+      "Portão C",
+      "6:00 PM",
+      "Sistemas parcialmente restaurados. Verifique o status antes de entrar."
+     ],
+     [
+      "Quinta-feira",
+      "Manhã",
+      "Portão A",
+      "6:00 AM",
+      "Operação normal esperada. Monitorar atualizações."
+     ],
+     [
+      "Sexta-feira",
+      "Tarde",
+      "Portão B",
+      "12:00 PM",
+      "Operação normal."
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Training Schedule for Recognizing Hostile Intent",
+   "body": "Horário de Treinamento para Reconhecer Intenção Hostil\nDia | Horário | Local | Instrutor\nSegunda | 08:00-10:00 | Sala A, Base São Paulo | Sargento Silva\nTerça | 13:00-15:00 | Campo de Treinamento, Base Rio |  Cabo Oliveira\nQuarta | 09:00-11:00 | Sala B, Base Belo Horizonte |  Tenente Souza\nQuinta | 14:00-16:00 | Campo de Treinamento, Base Curitiba | Sargento Costa\nSexta | 10:00-12:00 | Sala C, Base Porto Alegre |  Cabo Pereira",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Horário de Treinamento para Reconhecer Intenção Hostil",
+    "columns": [
+     "Dia",
+     "Horário",
+     "Local",
+     "Instrutor"
+    ],
+    "rows": [
+     [
+      "Segunda",
+      "08:00-10:00",
+      "Sala A, Base São Paulo",
+      "Sargento Silva"
+     ],
+     [
+      "Terça",
+      "13:00-15:00",
+      "Campo de Treinamento, Base Rio",
+      " Cabo Oliveira"
+     ],
+     [
+      "Quarta",
+      "09:00-11:00",
+      "Sala B, Base Belo Horizonte",
+      " Tenente Souza"
+     ],
+     [
+      "Quinta",
+      "14:00-16:00",
+      "Campo de Treinamento, Base Curitiba",
+      "Sargento Costa"
+     ],
+     [
+      "Sexta",
+      "10:00-12:00",
+      "Sala C, Base Porto Alegre",
+      " Cabo Pereira"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -459,6 +1306,114 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "signage",
+   "title": "Drone Exercise Results at Base Manaus",
+   "body": "Atenção, pessoal!\nExercício contra drones foi realizado em 10 de maio.\nAprendemos muito. Drones podem ser perigosos.\nNossa base, Base Manaus, precisou de nova proteção.\nUsamos novos equipamentos. Funcionou bem.\nMas, ainda há riscos. Todos devem ficar alerta. Drones não autorizados são proibidos perto da base. Denunciem qualquer atividade suspeita. Isso é importante para nossa segurança.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "Atenção, pessoal!",
+     "Exercício contra drones foi realizado em 10 de maio.",
+     "Aprendemos muito. Drones podem ser perigosos.",
+     "Nossa base, Base Manaus, precisou de nova proteção.",
+     "Usamos novos equipamentos. Funcionou bem.",
+     "Mas, ainda há riscos. Todos devem ficar alerta. Drones não autorizados são proibidos perto da base. Denunciem qualquer atividade suspeita. Isso é importante para nossa segurança."
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "signage",
+   "title": "Shift Handover Instructions at Base Defense Operations Center",
+   "body": "BASE AÉREA DE ANÁPOLIS\nCENTRO DE OPERAÇÕES DE DEFESA DA BASE\nATENÇÃO: TROCA DE TURNO\n\n1. Ao assumir o turno, verifique o relatório da equipe anterior.\n2. Confira os sistemas de segurança e os equipamentos de comunicação: todos devem estar operacionais e prontos para uso imediato. Se houver falhas, relatar imediatamente ao supervisor de turno, Capitão Silva, no telefone 2543. 3. Informe o sargento de plantão, Sargento Santos, sobre qualquer alteração no status da base ou nas condições de segurança. 4. Durante o turno, realize rondas a cada 30 minutos para garantir a segurança da base. 5. Ao final do turno, preencha o relatório de ocorrências e passe todas as informações relevantes para a equipe entrante. 6. NÃO DEIXE A ÁREA DESENGARDADA EM NENHUMA CIRCUNSTÂNCIA.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉREA DE ANÁPOLIS",
+     "CENTRO DE OPERAÇÕES DE DEFESA DA BASE",
+     "ATENÇÃO: TROCA DE TURNO",
+     "",
+     "1. Ao assumir o turno, verifique o relatório da equipe anterior.",
+     "2. Confira os sistemas de segurança e os equipamentos de comunicação: todos devem estar operacionais e prontos para uso imediato. Se houver falhas, relatar imediatamente ao supervisor de turno, Capitão Silva, no telefone 2543. 3. Informe o sargento de plantão, Sargento Santos, sobre qualquer alteração no status da base ou nas condições de segurança. 4. Durante o turno, realize rondas a cada 30 minutos para garantir a segurança da base. 5. Ao final do turno, preencha o relatório de ocorrências e passe todas as informações relevantes para a equipe entrante. 6. NÃO DEIXE A ÁREA DESENGARDADA EM NENHUMA CIRCUNSTÂNCIA."
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "signage",
+   "title": "Bus Route Change at Base São Joaquim",
+   "body": "ATENÇÃO, MILITARES E FUNCIONÁRIOS!\nA partir de 15 de julho, a rota do ônibus que vai para a cidade de São Joaquim\nmudará. O novo trajeto será: Base Aérea São Joaquim → Posto de Gasolina →\nSupermercado Brasil → Prefeitura → Centro da Cidade.\nOs horários continuam os mesmos: 6h, 12h e 18h.\nOBRIBADO PELA ATENÇÃO!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "ATENÇÃO, MILITARES E FUNCIONÁRIOS!",
+     "A partir de 15 de julho, a rota do ônibus que vai para a cidade de São Joaquim",
+     "mudará. O novo trajeto será: Base Aérea São Joaquim → Posto de Gasolina →",
+     "Supermercado Brasil → Prefeitura → Centro da Cidade.",
+     "Os horários continuam os mesmos: 6h, 12h e 18h.",
+     "OBRIBADO PELA ATENÇÃO!"
+    ],
+    "kind": "prohibition"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1-signage-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1",
+   "textType": "signage",
+   "title": "Recognizing Hostile Intent: A Critical Skill",
+   "body": "BASE DE FORÇAS AÉREAS DE SALVADOR\n\nTREINAMENTO: RECONHECENDO INTENÇÃO HOSTIL\n\nTodos os membros da segurança da base devem participar\ndo treinamento obrigatório: 'Reconhecendo Intenção Hostil'. O treinamento ensina a identificar comportamentos suspeitos e ações que podem indicar uma ameaça à segurança da base. Data: 15 de março de 2023. Horário: 09h00. Local: Sala de Conferências, Edifício Principal. Não falte!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE DE FORÇAS AÉREAS DE SALVADOR",
+     "",
+     "TREINAMENTO: RECONHECENDO INTENÇÃO HOSTIL",
+     "",
+     "Todos os membros da segurança da base devem participar",
+     "do treinamento obrigatório: 'Reconhecendo Intenção Hostil'. O treinamento ensina a identificar comportamentos suspeitos e ações que podem indicar uma ameaça à segurança da base. Data: 15 de março de 2023. Horário: 09h00. Local: Sala de Conferências, Edifício Principal. Não falte!"
+    ],
+    "kind": "mandatory"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -504,6 +1459,150 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "chat",
+   "title": "The New Metro Line in São Paulo",
+   "body": "Ana: Oi, Carlos! Você já ouviu falar da nova linha de metrô que vai passar pela Rua Augusto?\nCarlos: Oi Ana, sim! Li algo sobre isso no jornal. A linha 6-Laranja, né? Vamos ter que esperar até 2028, mas vai valer a pena!\nAna: Isso mesmo! A construção começa ano que vem. Vai ficar mais fácil pra ir pro trabalho, não acha?\nCarlos: Com certeza, Ana. E o trânsito na Rua Augusta vai melhorar bastante. Mal posso esperar!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Nova Linha de Metrô",
+    "messages": [
+     {
+      "from": "Ana",
+      "text": "Oi, Carlos! Você já ouviu falar da nova linha de metrô que vai passar pela Rua Augusto?",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Oi Ana, sim! Li algo sobre isso no jornal. A linha 6-Laranja, né? Vamos ter que esperar até 2028, mas vai valer a pena!",
+      "time": "10:02 AM",
+      "me": true
+     },
+     {
+      "from": "Ana",
+      "text": "Isso mesmo! A construção começa ano que vem. Vai ficar mais fácil pra ir pro trabalho, não acha?",
+      "time": "10:03 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Com certeza, Ana. E o trânsito na Rua Augusta vai melhorar bastante. Mal posso esperar!",
+      "time": "10:05 AM",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "chat",
+   "title": "No-Fly Zone for Festival Near Base",
+   "body": "Fernanda: Oi, Carlos! Recebi um aviso da Prefeitura de Florianópolis sobre o festival de música que vai acontecer no próximo fim de semana. Eles estão pedindo para a gente avisar a todos os pilotos de drone da base que a área vai ser zona proibida para voos de drones de sexta-feira à noite até domingo à noite. É para evitar acidentes e garantir a segurança de todos os participantes do festival.\nCarlos: Entendi, Fernanda. Vou enviar um aviso por e-mail para todos os pilotos e também colocar um aviso no quadro de comunicados da base. Alguém já teve problemas com drones no festival do ano passado?\nFernanda: Não que eu saiba, Carlos. Acho que é mais uma medida preventiva. O festival vai ser no Parque da Lagoa da Conceição, e a prefeitura quer garantir que tudo corra bem. Vamos manter todo mundo informado!\nCarlos: Ótimo! Vou cuidar disso agora mesmo. Obrigado pelo aviso, Fernanda!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Aviso: Zona Proibida para Drones",
+    "messages": [
+     {
+      "from": "Fernanda",
+      "text": "Oi, Carlos! Recebi um aviso da Prefeitura de Florianópolis sobre o festival de música que vai acontecer no próximo fim de semana. Eles estão pedindo para a gente avisar a todos os pilotos de drone da base que a área vai ser zona proibida para voos de drones de sexta-feira à noite até domingo à noite. É para evitar acidentes e garantir a segurança de todos os participantes do festival.",
+      "time": "10:00 AM, 2023-09-15",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Entendi, Fernanda. Vou enviar um aviso por e-mail para todos os pilotos e também colocar um aviso no quadro de comunicados da base. Alguém já teve problemas com drones no festival do ano passado?",
+      "time": "10:05 AM, 2023-09-15",
+      "me": true
+     },
+     {
+      "from": "Fernanda",
+      "text": "Não que eu saiba, Carlos. Acho que é mais uma medida preventiva. O festival vai ser no Parque da Lagoa da Conceição, e a prefeitura quer garantir que tudo corra bem. Vamos manter todo mundo informado!",
+      "time": "10:10 AM, 2023-09-15",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Ótimo! Vou cuidar disso agora mesmo. Obrigado pelo aviso, Fernanda!",
+      "time": "10:15 AM, 2023-09-15",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Power Outage in São Paulo",
+   "body": "Ana Silva: Oi João, você está sabendo do apagão na cidade?\nJoão Costa: Oi Ana, sim, acabei de ver as notícias. Parece que foi um ataque cibernético na companhia de luz.\nAna Silva: Que loucura! A cidade toda está sem energia. Você acha que vão consertar rápido?\nJoão Costa: Não sei, Ana. O pessoal da companhia tá trabalhando nisso, mas pode demorar. Melhor ficar de olho nas notícias.\nAna Silva: Tá bom, vou fazer isso. Espero que resolvam logo, tá um caos aqui!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Chamada de Voz",
+    "messages": [
+     {
+      "from": "Ana Silva",
+      "text": "Oi João, você está sabendo do apagão na cidade?",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "João Costa",
+      "text": "Oi Ana, sim, acabei de ver as notícias. Parece que foi um ataque cibernético na companhia de luz.",
+      "time": "10:16 AM",
+      "me": true
+     },
+     {
+      "from": "Ana Silva",
+      "text": "Que loucura! A cidade toda está sem energia. Você acha que vão consertar rápido?",
+      "time": "10:17 AM",
+      "me": false
+     },
+     {
+      "from": "João Costa",
+      "text": "Não sei, Ana. O pessoal da companhia tá trabalhando nisso, mas pode demorar. Melhor ficar de olho nas notícias.",
+      "time": "10:18 AM",
+      "me": true
+     },
+     {
+      "from": "Ana Silva",
+      "text": "Tá bom, vou fazer isso. Espero que resolvam logo, tá um caos aqui!",
+      "time": "10:19 AM",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -597,6 +1696,94 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Flood Warning in São João da Boa Vista",
+   "body": "Prefeitura Municipal de São João da Boa Vista\nAVISO IMPORTANTE: ALERTA DE INUNDAÇÃO\nA Prefeitura alerta aos moradores do bairro Rio Claro que, devido às fortes chuvas previstas para os próximos dias, há risco de inundação.\nO Rio São João está com seu nível elevado e, caso as chuvas persistam, pode transbordar, afetando principalmente as ruas próximas à margem.\nPedimos que todos tomem as seguintes precauções:\n1. Mantenham-se informados sobre as atualizações do tempo e do nível do rio.\n2. Evitem atravessar ruas alagadas ou áreas inundadas.\n3. Protejam seus pertences e, se necessário, desloquem-se para locais mais elevados e seguros.\n15 de março de 2023\nPara mais informações, entre em contato com a Defesa Civil no telefone (19) 3555-1234.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Prefeitura Municipal de São João da Boa Vista",
+    "title": "AVISO IMPORTANTE: ALERTA DE INUNDAÇÃO",
+    "paragraphs": [
+     "A Prefeitura alerta aos moradores do bairro Rio Claro que, devido às fortes chuvas previstas para os próximos dias, há risco de inundação.",
+     "O Rio São João está com seu nível elevado e, caso as chuvas persistam, pode transbordar, afetando principalmente as ruas próximas à margem.",
+     "Pedimos que todos tomem as seguintes precauções:",
+     "1. Mantenham-se informados sobre as atualizações do tempo e do nível do rio.",
+     "2. Evitem atravessar ruas alagadas ou áreas inundadas.",
+     "3. Protejam seus pertences e, se necessário, desloquem-se para locais mais elevados e seguros."
+    ],
+    "date": "15 de março de 2023",
+    "contact": "Para mais informações, entre em contato com a Defesa Civil no telefone (19) 3555-1234."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Upcoming Election in Vila Flor",
+   "body": "Prefeitura de Vila Flor\nAviso sobre Eleições Municipais\nA Prefeitura de Vila Flor informa que as eleições municipais ocorrerão no próximo dia 15 de outubro.\nOs eleitores de Vila Flor poderão votar nos candidatos a prefeito e vereadores no horário das 8h às 17h.\nO local de votação será informado no cartão de eleitor ou pode ser consultado no site do Tribunal Regional Eleitoral (TRE).\nÉ importante lembrar que o voto é obrigatório para brasileiros entre 18 e 70 anos.\nPara mais informações, entre em contato com o cartório eleitoral local ou visite o site da Prefeitura de Vila Flor.\n10 de setembro de 2023\nTelefone: (11) 1234-5678 | Email: contato@vilaflor.gov.br",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Prefeitura de Vila Flor",
+    "title": "Aviso sobre Eleições Municipais",
+    "paragraphs": [
+     "A Prefeitura de Vila Flor informa que as eleições municipais ocorrerão no próximo dia 15 de outubro.",
+     "Os eleitores de Vila Flor poderão votar nos candidatos a prefeito e vereadores no horário das 8h às 17h.",
+     "O local de votação será informado no cartão de eleitor ou pode ser consultado no site do Tribunal Regional Eleitoral (TRE).",
+     "É importante lembrar que o voto é obrigatório para brasileiros entre 18 e 70 anos.",
+     "Para mais informações, entre em contato com o cartório eleitoral local ou visite o site da Prefeitura de Vila Flor."
+    ],
+    "date": "10 de setembro de 2023",
+    "contact": "Telefone: (11) 1234-5678 | Email: contato@vilaflor.gov.br"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "New Drone Rules Near Base São Paulo",
+   "body": "Prefeitura de São Caetano do Sul\nNovo Regras para Voar Drones Próximo à Base Aérea de São Paulo\nÀs atenção de todos os moradores de São Caetano do Sul, especialmente aos que utilizam drones para lazer ou trabalho.\nPara garantir a segurança de todos e evitar interferências nas operações da Base Aérea de São Paulo, novas regras para o uso de drones foram estabelecidas. A partir do próximo mês, será proibido voar drones em um raio de 10 quilômetros da base, exceto com autorização especial.\nOs horários permitidos para voar drones na área circunvizinha à base serão das 7h às 9h e das 16h às 18h, de segunda a sexta-feira. Nos fins de semana e feriados, o voo de drones será permitido apenas das 8h às 12h.\nAlém disso, todos os drones devem estar devidamente registrados no Departamento de Controle do Tráfego Aéreo (DECEA). O não cumprimento dessas regras pode resultar em multas e apreensão do equipamento.\nPara mais informações, entre em contato com a Prefeitura de São Caetano do Sul através do telefone (11) 1234-5678 ou visite nosso site www.saocaetanodosul.sp.gov.br.\n15 de março de 2023\nPrefeitura de São Caetano do Sul",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Prefeitura de São Caetano do Sul",
+    "title": "Novo Regras para Voar Drones Próximo à Base Aérea de São Paulo",
+    "paragraphs": [
+     "Às atenção de todos os moradores de São Caetano do Sul, especialmente aos que utilizam drones para lazer ou trabalho.",
+     "Para garantir a segurança de todos e evitar interferências nas operações da Base Aérea de São Paulo, novas regras para o uso de drones foram estabelecidas. A partir do próximo mês, será proibido voar drones em um raio de 10 quilômetros da base, exceto com autorização especial.",
+     "Os horários permitidos para voar drones na área circunvizinha à base serão das 7h às 9h e das 16h às 18h, de segunda a sexta-feira. Nos fins de semana e feriados, o voo de drones será permitido apenas das 8h às 12h.",
+     "Além disso, todos os drones devem estar devidamente registrados no Departamento de Controle do Tráfego Aéreo (DECEA). O não cumprimento dessas regras pode resultar em multas e apreensão do equipamento.",
+     "Para mais informações, entre em contato com a Prefeitura de São Caetano do Sul através do telefone (11) 1234-5678 ou visite nosso site www.saocaetanodosul.sp.gov.br."
+    ],
+    "date": "15 de março de 2023",
+    "contact": "Prefeitura de São Caetano do Sul"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-1p-news_brief-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -639,6 +1826,130 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Flood Warning in Rio das Pedras",
+   "body": "Segurança Rio das Pedras 15/06/2023\n07:30 RJM: Recebemos aviso do INMET sobre alerta de inundação para nossa região. Tempestade prevista para hoje à tarde.\n08:15 LGP: Informamos a todos os moradores do bairro Rio das Pedras. Pedimos que tomem cuidado com os rios e áreas baixas.\n10:45 RJM: Recebemos ligação do Corpo de Bombeiros. Eles vão enviar equipe para ajudar, se necessário.\n12:00 LGP: Verificamos as áreas de risco. Tudo parece seguro por agora, mas continuamos vigilantes.\n14:30 RJM: A tempestade começou. Pedimos que todos fiquem em casa e evitem sair, a menos que seja necessário.\n16:45 LGP: Níveis de água estão subindo. Corpo de Bombeiros está pronto para agir, se necessário.\n18:00 RJM: Situação está estável. Agradecemos a todos pela cooperação.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Segurança Rio das Pedras",
+    "date": "15/06/2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "RJM: Recebemos aviso do INMET sobre alerta de inundação para nossa região. Tempestade prevista para hoje à tarde.",
+      "initials": "RJM"
+     },
+     {
+      "time": "08:15",
+      "entry": "LGP: Informamos a todos os moradores do bairro Rio das Pedras. Pedimos que tomem cuidado com os rios e áreas baixas.",
+      "initials": "LGP"
+     },
+     {
+      "time": "10:45",
+      "entry": "RJM: Recebemos ligação do Corpo de Bombeiros. Eles vão enviar equipe para ajudar, se necessário.",
+      "initials": "RJM"
+     },
+     {
+      "time": "12:00",
+      "entry": "LGP: Verificamos as áreas de risco. Tudo parece seguro por agora, mas continuamos vigilantes.",
+      "initials": "LGP"
+     },
+     {
+      "time": "14:30",
+      "entry": "RJM: A tempestade começou. Pedimos que todos fiquem em casa e evitem sair, a menos que seja necessário.",
+      "initials": "RJM"
+     },
+     {
+      "time": "16:45",
+      "entry": "LGP: Níveis de água estão subindo. Corpo de Bombeiros está pronto para agir, se necessário.",
+      "initials": "LGP"
+     },
+     {
+      "time": "18:00",
+      "entry": "RJM: Situação está estável. Agradecemos a todos pela cooperação.",
+      "initials": "RJM"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Allied Military Exercise in Base Brasília",
+   "body": "Unidade de Segurança - Base Brasília 2023-11-15\n07:30 Início do turno. Tudo em ordem.\n09:15 Chegada dos militares argentinos para exercício conjunto. Todos com documentos em ordem.\n10:45 Reunião com o Comando e os oficiais argentinos para alinhamento do exercício. Exercício começa às 14:00.\n12:00 Almoço dos militares argentinos no refeitório da base. Tudo tranquilo.\n14:00 Início do exercício conjunto. Tudo dentro do planejado.\n16:30 Pausa para descanso. Militares argentinos e brasileiros interagindo bem.\n18:00 Retomada do exercício. Tudo em ordem.\n20:00 Fim do exercício. Militares argentinos retornam aos seus alojamentos.\n21:30 Fim do turno. Tudo normal.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Unidade de Segurança - Base Brasília",
+    "date": "2023-11-15",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "Início do turno. Tudo em ordem.",
+      "initials": "JPM"
+     },
+     {
+      "time": "09:15",
+      "entry": "Chegada dos militares argentinos para exercício conjunto. Todos com documentos em ordem.",
+      "initials": "JPM"
+     },
+     {
+      "time": "10:45",
+      "entry": "Reunião com o Comando e os oficiais argentinos para alinhamento do exercício. Exercício começa às 14:00.",
+      "initials": "JPM"
+     },
+     {
+      "time": "12:00",
+      "entry": "Almoço dos militares argentinos no refeitório da base. Tudo tranquilo.",
+      "initials": "JPM"
+     },
+     {
+      "time": "14:00",
+      "entry": "Início do exercício conjunto. Tudo dentro do planejado.",
+      "initials": "JPM"
+     },
+     {
+      "time": "16:30",
+      "entry": "Pausa para descanso. Militares argentinos e brasileiros interagindo bem.",
+      "initials": "JPM"
+     },
+     {
+      "time": "18:00",
+      "entry": "Retomada do exercício. Tudo em ordem.",
+      "initials": "JPM"
+     },
+     {
+      "time": "20:00",
+      "entry": "Fim do exercício. Militares argentinos retornam aos seus alojamentos.",
+      "initials": "JPM"
+     },
+     {
+      "time": "21:30",
+      "entry": "Fim do turno. Tudo normal.",
+      "initials": "JPM"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -810,6 +2121,96 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "pt-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Drone Operator Detained Near Base Curitiba",
+   "body": "Prefeitura de São José dos Pinhais\nAviso à População: Detenção de Operador de Drone Próximo ao Aeroporto\nResidentes de São José dos Pinhais, boa tarde!\nGostaríamos de informar que, na manhã desta quarta-feira, 10 de maio de 2023, um operador de drone foi detido próximo ao Aeroporto Internacional Afonso Pena. O indivíduo, identificado como João Silva, 32 anos, residente em Colônia Santa Fé, foi flagrado operando um drone em uma área restrita, a aproximadamente 5 km do aeroporto.\nA operação do drone em áreas próximas a aeroportos é regulamentada pela Agência Nacional de Aviação Civil (ANAC) e só é permitida mediante autorização prévia. O Sr. Silva não possuía a devida autorização e foi detido pela Guarda Municipal por infringir as normas de segurança aérea.\nA Prefeitura de São José dos Pinhais reitera a importância do cumprimento das regras estabelecidas para o uso de drones. A operação indevida desses equipamentos pode comprometer a segurança de voos e colocar em risco a vida de passageiros e tripulantes.\nPara operar drones na região, é necessário obter autorização junto à ANAC e seguir todas as normas de segurança. Mais informações podem ser obtidas no site da Prefeitura ou entrando em contato com a Guarda Municipal.\nAgradecemos a compreensão e colaboração de todos os residentes.\n10 de maio de 2023\nGuarda Municipal de São José dos Pinhais - (41) 3381-4000",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Prefeitura de São José dos Pinhais",
+    "title": "Aviso à População: Detenção de Operador de Drone Próximo ao Aeroporto",
+    "paragraphs": [
+     "Residentes de São José dos Pinhais, boa tarde!",
+     "Gostaríamos de informar que, na manhã desta quarta-feira, 10 de maio de 2023, um operador de drone foi detido próximo ao Aeroporto Internacional Afonso Pena. O indivíduo, identificado como João Silva, 32 anos, residente em Colônia Santa Fé, foi flagrado operando um drone em uma área restrita, a aproximadamente 5 km do aeroporto.",
+     "A operação do drone em áreas próximas a aeroportos é regulamentada pela Agência Nacional de Aviação Civil (ANAC) e só é permitida mediante autorização prévia. O Sr. Silva não possuía a devida autorização e foi detido pela Guarda Municipal por infringir as normas de segurança aérea.",
+     "A Prefeitura de São José dos Pinhais reitera a importância do cumprimento das regras estabelecidas para o uso de drones. A operação indevida desses equipamentos pode comprometer a segurança de voos e colocar em risco a vida de passageiros e tripulantes.",
+     "Para operar drones na região, é necessário obter autorização junto à ANAC e seguir todas as normas de segurança. Mais informações podem ser obtidas no site da Prefeitura ou entrando em contato com a Guarda Municipal.",
+     "Agradecemos a compreensão e colaboração de todos os residentes."
+    ],
+    "date": "10 de maio de 2023",
+    "contact": "Guarda Municipal de São José dos Pinhais - (41) 3381-4000"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Drone Control Link Interference During Exercise",
+   "body": "Prefeitura Municipal de Vila Azul\nAviso sobre Interferência na Operação de Drones\nResidentes de Vila Azul,\nGostaríamos de informar que durante o exercício militar realizado na última sexta-feira, dia 10 de março, houve uma interferência no controle de um drone utilizado pela base militar local.\nA interferência, conhecida como 'jamming', ocorreu por volta das 14h30, causando a perda temporária do controle do drone. A equipe de segurança da base agiu rapidamente para recuperar o controle e garantir que o drone pousasse em uma área segura, perto da Praça da Matriz.\nPedimos desculpas pelo transtorno e garantimos que medidas estão sendo tomadas para evitar que isso aconteça novamente. A segurança de nossa comunidade é nossa prioridade.\nPara mais informações, entre em contato com a Prefeitura de Vila Azul.\nAtenciosamente,<br>Prefeito Carlos Silva\n15 de março de 2023\nPrefeitura de Vila Azul: (11) 1234-5678",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Prefeitura Municipal de Vila Azul",
+    "title": "Aviso sobre Interferência na Operação de Drones",
+    "paragraphs": [
+     "Residentes de Vila Azul,",
+     "Gostaríamos de informar que durante o exercício militar realizado na última sexta-feira, dia 10 de março, houve uma interferência no controle de um drone utilizado pela base militar local.",
+     "A interferência, conhecida como 'jamming', ocorreu por volta das 14h30, causando a perda temporária do controle do drone. A equipe de segurança da base agiu rapidamente para recuperar o controle e garantir que o drone pousasse em uma área segura, perto da Praça da Matriz.",
+     "Pedimos desculpas pelo transtorno e garantimos que medidas estão sendo tomadas para evitar que isso aconteça novamente. A segurança de nossa comunidade é nossa prioridade.",
+     "Para mais informações, entre em contato com a Prefeitura de Vila Azul.",
+     "Atenciosamente,<br>Prefeito Carlos Silva"
+    ],
+    "date": "15 de março de 2023",
+    "contact": "Prefeitura de Vila Azul: (11) 1234-5678"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Insider Threat Awareness Training in Base Porto Alegre",
+   "body": "Prefeitura de Vila Nova\nTreinamento de Conscientização sobre Ameaças Internas na Base Porto Alegre\nPrezados moradores de Vila Nova,\nA Prefeitura em parceria com a Base Porto Alegre, informam que haverá um treinamento de Conscientização sobre Ameaças Internas (CIAT) nos próximos meses. Este treinamento é crucial para a segurança de todos, tanto dentro da base quanto na nossa comunidade.\nO treinamento será realizado no Centro Comunitário de Vila Nova, nos dias 15 e 16 de outubro, das 9h às 17h. É importante que todos os moradores que trabalham ou frequentam a base participem deste treinamento. A entrada é gratuita e haverá tradução simultânea para o inglês.\nDurante o treinamento, serão abordados tópicos como reconhecimento de comportamentos suspeitos, procedimentos de segurança e como reportar atividades inapropriadas. Lembramos que a segurança é responsabilidade de todos nós.\nPara mais informações, entre em contato com a Prefeitura de Vila Nova pelo telefone (51) 3333-3333 ou visite nosso site www.vilanova.gov.br.\nAtenciosamente, A Prefeitura de Vila Nova\n10 de setembro de 2023\n(51) 3333-3333 | www.vilanova.gov.br",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Prefeitura de Vila Nova",
+    "title": "Treinamento de Conscientização sobre Ameaças Internas na Base Porto Alegre",
+    "paragraphs": [
+     "Prezados moradores de Vila Nova,",
+     "A Prefeitura em parceria com a Base Porto Alegre, informam que haverá um treinamento de Conscientização sobre Ameaças Internas (CIAT) nos próximos meses. Este treinamento é crucial para a segurança de todos, tanto dentro da base quanto na nossa comunidade.",
+     "O treinamento será realizado no Centro Comunitário de Vila Nova, nos dias 15 e 16 de outubro, das 9h às 17h. É importante que todos os moradores que trabalham ou frequentam a base participem deste treinamento. A entrada é gratuita e haverá tradução simultânea para o inglês.",
+     "Durante o treinamento, serão abordados tópicos como reconhecimento de comportamentos suspeitos, procedimentos de segurança e como reportar atividades inapropriadas. Lembramos que a segurança é responsabilidade de todos nós.",
+     "Para mais informações, entre em contato com a Prefeitura de Vila Nova pelo telefone (51) 3333-3333 ou visite nosso site www.vilanova.gov.br.",
+     "Atenciosamente, A Prefeitura de Vila Nova"
+    ],
+    "date": "10 de setembro de 2023",
+    "contact": "(51) 3333-3333 | www.vilanova.gov.br"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "pt-dr-2-news-001",
    "exam": "DLPT_READING",
    "language": "pt-BR",
@@ -915,6 +2316,239 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Change in Force Protection Condition at Base Fortaleza",
+   "body": "Destacamento de Segurança de Base Fortaleza 15/05/2024\n07:30 Recebemos alerta do Comando. Condição de força de proteção mudada para DELTA. Todos os postos devem ser ocupados imediatamente. (RL)\n07:45 Verificado com o Sargento Silva. Todos os homens estão em seus lugares. Postos externos também confirmados. (RL)\n08:15 Caminhão de suprimentos chegando. Precisa de autorização especial para entrar. Contate o Cabo Mendes para mais informações. (AM)\n09:30 Patrulha externa relatou atividade suspeita perto do portão sul. Nada encontrado após busca. Mantendo alerta. (RL)\n11:00 Reunião com a equipe. Reforçado procedimentos para condição DELTA. Todos devem estar vigilantes. (AM)\n13:45 Almoço servido. Todos os postos mantidos com pessoal designado. (RL)\n15:20 Aviso do Comando: Condição de força de proteção voltará para NORMAL às 18:00. Preparem-se para a transição. (AM)\n17:50 Preparando relatório diário. Todos os incidentes e ações tomadas registradas. (RL)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Destacamento de Segurança de Base Fortaleza",
+    "date": "15/05/2024",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "Recebemos alerta do Comando. Condição de força de proteção mudada para DELTA. Todos os postos devem ser ocupados imediatamente. (RL)",
+      "initials": "RL"
+     },
+     {
+      "time": "07:45",
+      "entry": "Verificado com o Sargento Silva. Todos os homens estão em seus lugares. Postos externos também confirmados. (RL)",
+      "initials": "RL"
+     },
+     {
+      "time": "08:15",
+      "entry": "Caminhão de suprimentos chegando. Precisa de autorização especial para entrar. Contate o Cabo Mendes para mais informações. (AM)",
+      "initials": "AM"
+     },
+     {
+      "time": "09:30",
+      "entry": "Patrulha externa relatou atividade suspeita perto do portão sul. Nada encontrado após busca. Mantendo alerta. (RL)",
+      "initials": "RL"
+     },
+     {
+      "time": "11:00",
+      "entry": "Reunião com a equipe. Reforçado procedimentos para condição DELTA. Todos devem estar vigilantes. (AM)",
+      "initials": "AM"
+     },
+     {
+      "time": "13:45",
+      "entry": "Almoço servido. Todos os postos mantidos com pessoal designado. (RL)",
+      "initials": "RL"
+     },
+     {
+      "time": "15:20",
+      "entry": "Aviso do Comando: Condição de força de proteção voltará para NORMAL às 18:00. Preparem-se para a transição. (AM)",
+      "initials": "AM"
+     },
+     {
+      "time": "17:50",
+      "entry": "Preparando relatório diário. Todos os incidentes e ações tomadas registradas. (RL)",
+      "initials": "RL"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Drone Incident at Base Belo Horizonte",
+   "body": "Segurança 15 de junho de 2023\n07:30 Início do turno. Tudo em ordem. (JC)\n10:15 Denúncia recebida sobre um drone sobrevoando perto da Base. Enviado agentes ao local. (JC)\n10:45 Agentes detiveram um indivíduo operando um drone. Nome: João Silva, 32 anos, residente em Contagem. Ele alegou estar tirando fotos para um projeto pessoal. (JC)\n11:20 João Silva foi levado para interrogatório. O drone e o equipamento foram apreendidos. (JC)\n12:00 Almoço. (JC)\n13:30 Interrogatório concluído. João Silva será liberado com uma advertência. O drone e o equipamento serão devolvidos após verificação. (JC)\n14:15 João Silva foi liberado. Ele prometeu não voltar a operar drones perto da Base. (JC)\n15:00 Relatório do incidente sendo preparado. (JC)\n17:30 Fim do turno. Tudo em ordem. (JC)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Segurança",
+    "date": "15 de junho de 2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "Início do turno. Tudo em ordem. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "10:15",
+      "entry": "Denúncia recebida sobre um drone sobrevoando perto da Base. Enviado agentes ao local. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "10:45",
+      "entry": "Agentes detiveram um indivíduo operando um drone. Nome: João Silva, 32 anos, residente em Contagem. Ele alegou estar tirando fotos para um projeto pessoal. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "11:20",
+      "entry": "João Silva foi levado para interrogatório. O drone e o equipamento foram apreendidos. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "12:00",
+      "entry": "Almoço. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "13:30",
+      "entry": "Interrogatório concluído. João Silva será liberado com uma advertência. O drone e o equipamento serão devolvidos após verificação. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "14:15",
+      "entry": "João Silva foi liberado. Ele prometeu não voltar a operar drones perto da Base. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "15:00",
+      "entry": "Relatório do incidente sendo preparado. (JC)",
+      "initials": "JC"
+     },
+     {
+      "time": "17:30",
+      "entry": "Fim do turno. Tudo em ordem. (JC)",
+      "initials": "JC"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Coordinating Drone Operations with Civil Aviation",
+   "body": "Unidade de Segurança Aérea 05/15/2023\n07:30 JC: Reunião com a ANAC e a Embraer para coordenar espaço aéreo para operações de drone na região de São José dos Campos. O drone será operado pela empresa SkyVision.\n09:45 RB: Confirmação recebida da ANAC sobre a liberação do espaço aéreo para as operações de drone entre 10:00 e 14:00. Coordenadas: 23°11'48\"S 45°53'06\"W.\n10:15 JC: Contato com a torre de controle do Aeroporto de São José dos Campos para garantir que todas as aeronaves civis estejam cientes da operação de drone.\n12:30 RB: Alerta recebido da Embraer sobre possível atraso no voo de teste devido a condições climáticas. Monitorando a situação.\n13:45 JC: Confirmação da Embraer de que os voos de teste serão adiados para amanhã devido ao mau tempo. Espaço aéreo liberado.\n14:15 RB: Notificação enviada à ANAC e à torre de controle sobre o adiamento dos voos de drone. Todas as partes informadas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Unidade de Segurança Aérea",
+    "date": "05/15/2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "JC: Reunião com a ANAC e a Embraer para coordenar espaço aéreo para operações de drone na região de São José dos Campos. O drone será operado pela empresa SkyVision.",
+      "initials": "JC"
+     },
+     {
+      "time": "09:45",
+      "entry": "RB: Confirmação recebida da ANAC sobre a liberação do espaço aéreo para as operações de drone entre 10:00 e 14:00. Coordenadas: 23°11'48\"S 45°53'06\"W.",
+      "initials": "RB"
+     },
+     {
+      "time": "10:15",
+      "entry": "JC: Contato com a torre de controle do Aeroporto de São José dos Campos para garantir que todas as aeronaves civis estejam cientes da operação de drone.",
+      "initials": "JC"
+     },
+     {
+      "time": "12:30",
+      "entry": "RB: Alerta recebido da Embraer sobre possível atraso no voo de teste devido a condições climáticas. Monitorando a situação.",
+      "initials": "RB"
+     },
+     {
+      "time": "13:45",
+      "entry": "JC: Confirmação da Embraer de que os voos de teste serão adiados para amanhã devido ao mau tempo. Espaço aéreo liberado.",
+      "initials": "JC"
+     },
+     {
+      "time": "14:15",
+      "entry": "RB: Notificação enviada à ANAC e à torre de controle sobre o adiamento dos voos de drone. Todas as partes informadas.",
+      "initials": "RB"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "pt-dr-2-shift_log-004",
+   "exam": "DLPT_READING",
+   "language": "pt-BR",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Public Transport Adjustments in São Paulo",
+   "body": "Unidade de Segurança Metropolitana 15/10/2023\n07:30 JC: Linha 1-Azul da CPTM está com funcionamento reduzido devido a manutenção. Trens saindo a cada 15 minutos. Recomenda-se usar alternativas como ônibus ou metrô.\n09:45 RB: Passageiros relataram congestionamento próximo à Estação da Luz. Polícia Militar foi acionada para controlar o fluxo.\n11:20 JC: Linha 3-Vermelha do Metrô terá parada de emergência na próxima hora. Viajar apenas se necessário.\n13:00 RB: Ônibus da linha 5112 estão com atraso devido a acidente na Av. Paulista. Tempo de espera estimado: 25 minutos.\n14:30 JC: Normalização do serviço na Linha 1-Azul. Trens voltando ao intervalo normal de 5 minutos.\n16:10 RB: Linha 3-Vermelha voltou ao funcionamento normal. Nenhuma interrupção prevista para as próximas horas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Unidade de Segurança Metropolitana",
+    "date": "15/10/2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "JC: Linha 1-Azul da CPTM está com funcionamento reduzido devido a manutenção. Trens saindo a cada 15 minutos. Recomenda-se usar alternativas como ônibus ou metrô.",
+      "initials": "JC"
+     },
+     {
+      "time": "09:45",
+      "entry": "RB: Passageiros relataram congestionamento próximo à Estação da Luz. Polícia Militar foi acionada para controlar o fluxo.",
+      "initials": "RB"
+     },
+     {
+      "time": "11:20",
+      "entry": "JC: Linha 3-Vermelha do Metrô terá parada de emergência na próxima hora. Viajar apenas se necessário.",
+      "initials": "JC"
+     },
+     {
+      "time": "13:00",
+      "entry": "RB: Ônibus da linha 5112 estão com atraso devido a acidente na Av. Paulista. Tempo de espera estimado: 25 minutos.",
+      "initials": "RB"
+     },
+     {
+      "time": "14:30",
+      "entry": "JC: Normalização do serviço na Linha 1-Azul. Trens voltando ao intervalo normal de 5 minutos.",
+      "initials": "JC"
+     },
+     {
+      "time": "16:10",
+      "entry": "RB: Linha 3-Vermelha voltou ao funcionamento normal. Nenhuma interrupção prevista para as próximas horas.",
+      "initials": "RB"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1376,6 +3010,150 @@
  ],
  "items": [
   {
+   "id": "pt-dr-0p-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-badge_form-001",
+   "stem": "What is the purpose of João Silva's visit according to the form?",
+   "choices": [
+    "To inspect the base",
+    "To deliver supplies",
+    "To meet with the base commander",
+    "To attend a night drill"
+   ],
+   "answer": 3,
+   "explanation": "The form states 'Motivo: Treino noturno', which translates to 'Reason: Night drill'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-badge_form-001",
+   "stem": "What is the main information conveyed by this access request form?",
+   "choices": [
+    "A command meeting",
+    "A supply delivery operation",
+    "A night drill exercise",
+    "A routine base inspection"
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the form is to grant access for a 'Treino noturno' (night drill) as indicated in the 'Motivo' field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-badge_form-002",
+   "stem": "What is the purpose of Ana Silva's visit?",
+   "choices": [
+    "To deliver supplies to the base",
+    "To train security forces to recognize hostile intent",
+    "To attend a meeting with base commanders",
+    "To inspect the base's security measures"
+   ],
+   "answer": 1,
+   "explanation": "The document explicitly states 'Treinar reconhecimento de intenções hostis', which translates to 'To train recognition of hostile intent'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-badge_form-002",
+   "stem": "What is the main focus of the access request form?",
+   "choices": [
+    "Security training",
+    "Base inspection",
+    "Command meeting",
+    "Supply delivery"
+   ],
+   "answer": 0,
+   "explanation": "The main focus of the form is on security training, as indicated by the objective 'Treinar reconhecimento de intenções hostis' and the job title 'Instrutora de Segurança' (Security Instructor).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-badge_form-003",
+   "stem": "What time does Maria Silva plan to visit the hospital?",
+   "choices": [
+    "12:00 PM",
+    "8:00 AM",
+    "4:00 PM",
+    "2:00 PM"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Horário: 14:00', which means 2:00 PM in 24-hour time format.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-badge_form-003",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To gain access to the hospital",
+    "To request a new job position",
+    "To order medical supplies",
+    "To schedule a doctor's appointment"
+   ],
+   "answer": 0,
+   "explanation": "The title 'FICHA DE ACESSO' and the context of the form indicate that it is used to gain access to the hospital.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-badge_form-004-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-badge_form-004",
+   "stem": "What time does João Silva start his shift?",
+   "choices": [
+    "09:00",
+    "07:00",
+    "10:00",
+    "08:00"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Horário de Entrada: 08:00', indicating that João Silva starts his shift at 08:00.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-badge_form-004-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-badge_form-004",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To schedule a meeting",
+    "To record a visitor's access to the base",
+    "To report an incident",
+    "To request equipment"
+   ],
+   "answer": 1,
+   "explanation": "The document is titled 'Crachá de Visitante' (Visitor Badge) and contains fields related to access, indicating its purpose is to record a visitor's access to the base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-0p-form-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1574,6 +3352,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-0p-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-schedule_board-001",
+   "stem": "What time are drones prohibited each day during the festival?",
+   "choices": [
+    "07:00 - 23:00",
+    "09:00 - 21:00",
+    "08:00 - 22:00",
+    "06:00 - 20:00"
+   ],
+   "answer": 2,
+   "explanation": "The document states '08:00 - 22:00' under the 'HORÁRIO' column for each day.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-schedule_board-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To prohibit drone usage in certain areas",
+    "To announce drone racing events",
+    "To promote drone safety workshops",
+    "To inform about festival activities"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to prohibit drone usage, as indicated by the title 'AVISO DE ZONA PROIBIDA PARA DRONES'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-schedule_board-002",
+   "stem": "When does voting start at Escola Municipal João?",
+   "choices": [
+    "9h",
+    "8h",
+    "6h",
+    "7h"
+   ],
+   "answer": 1,
+   "explanation": "The document states that voting hours are from 8h to 17h at Escola Municipal João, so the correct answer is 8h.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-schedule_board-002",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To announce a new school",
+    "To provide voting hours and locations",
+    "To list community centers",
+    "To list school locations"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of this document is to provide voting hours and locations for the local election in São José, as indicated by the title and the information presented.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-schedule_board-003",
+   "stem": "What is the maximum flying height allowed during the day?",
+   "choices": [
+    "120m",
+    "200m",
+    "No limit",
+    "60m"
+   ],
+   "answer": 0,
+   "explanation": "The document states 'Voo permitido até 120m de altura' during the day (06:00 - 22:00).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-schedule_board-003",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To schedule drone maintenance",
+    "To regulate drone flying near a military base",
+    "To advertise drone selling hours",
+    "To inform about drone racing events"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to regulate drone flying near a military base, as indicated by the title and the rules provided.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-0p-sign-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1660,6 +3546,78 @@
    ],
    "answer": 0,
    "explanation": "The sign states that the shelter is open to all people affected by the earthquake, using the phrases 'aberto a todos afetados pelo terremoto' (open to all affected by the earthquake) and 'socorro de emergência' (emergency aid). It does not mention any restrictions on the duration of stay or the provision of food for three days.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-signage-001",
+   "stem": "How far were drones detected in the exercise?",
+   "choices": [
+    "3 kilometers",
+    "5 kilometers",
+    "1 kilometer",
+    "10 kilometers"
+   ],
+   "answer": 1,
+   "explanation": "The sign states 'DRONES DETECTADOS A 5KM', indicating that drones were detected at 5 kilometers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-signage-001",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To advertise a new drone detection system",
+    "To announce an upcoming exercise",
+    "To provide lessons learned from a past exercise",
+    "To schedule a meeting for drone detection"
+   ],
+   "answer": 2,
+   "explanation": "The sign's main purpose is to provide lessons learned from a past exercise, as indicated by 'APRENDIZADOS IMPORTANTES' and the details provided about the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "pt-dr-0p-signage-002",
+   "stem": "What is the main hazard mentioned in the sign?",
+   "choices": [
+    "Fire outbreaks",
+    "Loitering munitions",
+    "Falling debris",
+    "Chemical spills"
+   ],
+   "answer": 1,
+   "explanation": "The sign explicitly mentions 'PERIGO DE MUNIÇÕES PERSISTENTES' (danger of loitering munitions).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-0p-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "pt-dr-0p-signage-002",
+   "stem": "What is the primary purpose of this sign?",
+   "choices": [
+    "To advertise a local event",
+    "To announce a change in base command",
+    "To warn about a potential danger and restrict access",
+    "To inform about a new military exercise"
+   ],
+   "answer": 2,
+   "explanation": "The sign's primary purpose is to warn about the danger of loitering munitions and restrict access to the area, as indicated by 'ATENÇÃO: PERIGO' (Attention: Danger) and 'ÁREA RESTRIATA! PROIBIDA A ENTRADA!' (Restricted area! Entry prohibited!).",
    "source": "llm",
    "verified": false
   },
@@ -1804,6 +3762,186 @@
    ],
    "answer": 0,
    "explanation": "In this context, \"simulação\" refers to a practice exercise, as the text is about a drill: \"o exercício de simulação será realizado para testar a resposta da força de reação rápida a uma emergência noturna.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-badge_form-001",
+   "stem": "What is the purpose of João Silva's visit?",
+   "choices": [
+    "To meet with the base commander",
+    "To attend a radio procedures seminar",
+    "To inspect the base facilities",
+    "To participate in a flight exercise"
+   ],
+   "answer": 1,
+   "explanation": "The purpose of João Silva's visit is clearly stated as 'Seminário de Procedimentos de Rádio entre Unidades de Defesa Aérea Aliadas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-badge_form-001",
+   "stem": "What is the main idea of this visitor badge?",
+   "choices": [
+    "To permit a meeting with the base commander",
+    "To authorize a base inspection",
+    "To grant access to a radio procedures seminar",
+    "To allow participation in a flight exercise"
+   ],
+   "answer": 2,
+   "explanation": "The main idea of this visitor badge is to grant access to a radio procedures seminar, as indicated by the 'Finalidade' field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-badge_form-003",
+   "stem": "What is the purpose of Maria Silva's visit?",
+   "choices": [
+    "To inspect the naval base",
+    "To visit a friend",
+    "To observe a swarm of small drones over the harbor",
+    "To attend a meeting"
+   ],
+   "answer": 2,
+   "explanation": "The purpose is stated as 'Observar enxame de drones pequenos sobre o porto' in the 'Finalidade da Visita' field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-badge_form-003",
+   "stem": "What is the main topic of the visitor badge?",
+   "choices": [
+    "A routine inspection at the naval base",
+    "A scheduled meeting at the base",
+    "A personal visit to a friend",
+    "A visit to observe small drones over the harbor"
+   ],
+   "answer": 3,
+   "explanation": "The main topic revolves around the visit to 'observar enxame de drones pequenos sobre o porto', as indicated in the 'Finalidade da Visita' field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-chat-001",
+   "stem": "When is the military exercise scheduled to take place?",
+   "choices": [
+    "On May 20th",
+    "On May 30th",
+    "On May 15th",
+    "On May 25th"
+   ],
+   "answer": 2,
+   "explanation": "The exercise is scheduled for 'dia 15/05' as mentioned by Marta.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-chat-001",
+   "stem": "What is the main purpose of this conversation?",
+   "choices": [
+    "To request leave from work",
+    "To discuss personal matters",
+    "To plan a social event",
+    "To coordinate a military exercise"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is 'para confirmar os detalhes do exercício com os canadenses' as stated by Lucas.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-chat-002",
+   "stem": "What is the delivery driver trying to do?",
+   "choices": [
+    "Enter the base without authorization",
+    "Speak to João directly",
+    "Ask for Carlos's contact information",
+    "Leave the base quickly"
+   ],
+   "answer": 0,
+   "explanation": "The message from João states that the delivery driver 'tried to pass through the main gate without authorization', which indicates the driver is attempting to enter the base without proper clearance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A scheduled maintenance at the base",
+    "A routine security check",
+    "A planned visit from higher-ups",
+    "A delivery driver incident at the base"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the conversation is the incident involving the delivery driver trying to enter the base without authorization. This is evident from the initial message and the subsequent discussion about handling the situation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-chat-003",
+   "stem": "When does the vaccination campaign start?",
+   "choices": [
+    "Thursday, May 18th",
+    "Monday, May 15th",
+    "Wednesday, May 17th",
+    "Tuesday, May 16th"
+   ],
+   "answer": 1,
+   "explanation": "The message states 'a campanha de vacinação começa na próxima segunda-feira, dia 15', indicating the start date is Monday, May 15th.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-chat-003",
+   "stem": "What is the main purpose of this conversation?",
+   "choices": [
+    "To discuss weekend plans",
+    "To arrange a meeting",
+    "To inform about a vaccination campaign",
+    "To talk about a new movie"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is 'To inform about a vaccination campaign', as evident from the repeated mentions of 'campanha de vacinação' and details about its schedule and location.",
    "source": "llm",
    "verified": false
   },
@@ -2384,6 +4522,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-schedule_board-001",
+   "stem": "When does the training start?",
+   "choices": [
+    "21:00",
+    "20:00",
+    "20:30",
+    "21:30"
+   ],
+   "answer": 3,
+   "explanation": "The training starts at 21:30, as indicated by the words \"Início do Treino\" in the schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "pt-dr-1-schedule_board-001",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To outline a night drill for the Quick Reaction Force",
+    "To schedule a meeting",
+    "To arrange a social event",
+    "To plan a regular work shift"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to outline a night drill for the Quick Reaction Force, as stated by the title \"Cronograma de Treino Noturno para Força de Reação Rápida\" and the activities listed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-schedule_board-002",
+   "stem": "What alternative gate should be used on Monday morning due to the cyberattack?",
+   "choices": [
+    "Portão B",
+    "Portão C",
+    "Portão D",
+    "Portão A"
+   ],
+   "answer": 0,
+   "explanation": "The document states 'Use o Portão B como alternativa' for Monday morning.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-schedule_board-002",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "A celebration at the water treatment plant",
+    "A new schedule for the water treatment plant",
+    "A cyberattack affecting the water treatment plant",
+    "A construction project at the water treatment plant"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is signaled by the title 'Ataque Cibernético na Estação de Tratamento de Água' and is mentioned in the notes for each day.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-schedule_board-003",
+   "stem": "On which day is Cabo Pereira scheduled to instruct?",
+   "choices": [
+    "Monday",
+    "Friday",
+    "Wednesday",
+    "Tuesday"
+   ],
+   "answer": 1,
+   "explanation": "The document states that Cabo Pereira is scheduled to instruct on 'Sexta', which is Friday in Brazilian Portuguese.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-schedule_board-003",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To schedule routine maintenance tasks",
+    "To coordinate a local election",
+    "To plan training sessions for recognizing hostile intent",
+    "To organize a community event"
+   ],
+   "answer": 2,
+   "explanation": "The title 'Horário de Treinamento para Reconhecer Intensão Hostil' and the context of the schedule indicate that the main purpose is to plan training sessions for recognizing hostile intent.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2470,6 +4716,150 @@
    ],
    "answer": 0,
    "explanation": "The message aims to 'alertar os moradores' and inform them about 'o aumento no número de incêndios florestais'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-signage-001",
+   "stem": "When did the counter-drone exercise take place?",
+   "choices": [
+    "May 11",
+    "May 10",
+    "June 11",
+    "June 10"
+   ],
+   "answer": 1,
+   "explanation": "The sign states 'Exercício contra drones foi realizado em 10 de maio,' which translates to 'The counter-drone exercise took place on May 10.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-signage-001",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To inform about new drone rules",
+    "To schedule a training session",
+    "To announce a new election",
+    "To warn about the dangers of drones and encourage vigilance"
+   ],
+   "answer": 3,
+   "explanation": "The sign emphasizes 'drones podem ser perigosos' (drones can be dangerous) and urges everyone to 'ficar alerta' (stay alert) and report suspicious activities, indicating its main purpose is to warn about drone dangers and encourage vigilance.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-signage-002",
+   "stem": "Who should be informed about any changes in the base's status or security conditions?",
+   "choices": [
+    "The sergeant on duty, Sergeant Santos",
+    "The incoming shift team",
+    "The maintenance crew",
+    "The supervisor on duty, Captain Silva"
+   ],
+   "answer": 0,
+   "explanation": "The sign instructs to 'Informe o sargento de plantão, Sargento Santos, sobre qualquer alteração no status da base ou nas condições de segurança.', which means 'Inform the sergeant on duty, Sergeant Santos, about any changes in the base's status or security conditions.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To schedule maintenance for the communication equipment",
+    "To inform about a change in the base's command structure",
+    "To announce a new security system",
+    "To provide instructions for shift handover at the base defense operations center"
+   ],
+   "answer": 3,
+   "explanation": "The sign's main purpose is to provide instructions for shift handover, as indicated by 'ATENÇÃO: TROCA DE TURNO' and the subsequent numbered list of instructions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-signage-003",
+   "stem": "What will be the first stop of the new bus route?",
+   "choices": [
+    "Centro da Cidade",
+    "Prefeitura",
+    "Supermercado Brasil",
+    "Posto de Gasolina"
+   ],
+   "answer": 3,
+   "explanation": "The Brazilian Portuguese text states 'O novo trajeto será: Base Aérea São Joaquim → Posto de Gasolina → ...', indicating that the first stop after the air base is the gas station.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-signage-003",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To warn about bus route cancellations",
+    "To announce a change in bus route",
+    "To advertise a new bus service",
+    "To inform about new bus schedules"
+   ],
+   "answer": 1,
+   "explanation": "The sign's main purpose is to inform about the change in the bus route, as indicated by the words 'A partir de 15 de julho, a rota do ônibus que vai para a cidade de São Joaquim mudará.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "pt-dr-1-signage-004",
+   "stem": "When is the training scheduled to take place?",
+   "choices": [
+    "March 16, 2023",
+    "March 17, 2023",
+    "March 14, 2023",
+    "March 15, 2023"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Data: 15 de março de 2023', indicating the training is scheduled for March 15, 2023.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1-signage-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "pt-dr-1-signage-004",
+   "stem": "What is the main purpose of the training?",
+   "choices": [
+    "To teach new combat techniques",
+    "To learn about new military equipment",
+    "To improve marksmanship skills",
+    "To identify suspicious behaviors and potential threats"
+   ],
+   "answer": 3,
+   "explanation": "The document mentions 'O treinamento ensina a identificar comportamentos suspeitos e ações que podem indicar uma ameaça à segurança da base', indicating the training's purpose is to recognize hostile intent and potential threats.",
    "source": "llm",
    "verified": false
   },
@@ -2632,6 +5022,114 @@
    ],
    "answer": 1,
    "explanation": "The text states that the exhibition will cover the history of coffee in Brazil: 'a exposição contará a história do café no Brasil, desde suas origens até os dias atuais.' This implies that visitors can expect to see artifacts and information related to this history.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-chat-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Work schedules",
+    "Newspaper articles",
+    "Traffic problems in Rua Augusto",
+    "A new metro line in São Paulo"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly the new metro line, as indicated by phrases like 'nova linha de metrô' and 'linha 6-Laranja'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "inference",
+   "passageId": "pt-dr-1p-chat-001",
+   "stem": "What can you infer about Carlos's opinion on the new metro line?",
+   "choices": [
+    "He is indifferent",
+    "He thinks it's unnecessary",
+    "He is excited about it",
+    "He thinks it will cause more traffic"
+   ],
+   "answer": 2,
+   "explanation": "Carlos's excitement is evident in his phrases 'vai valer a pena' and 'Mal posso esperar!'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A request to change the base's schedule",
+    "A complaint about noise pollution",
+    "Plans for a base-wide party",
+    "A notice about a no-drone zone for a festival"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly stated in the first message: 'Aviso: Zona Proibida para Drones', which translates to 'Notice: No-Fly Zone for Drones'. The conversation revolves around this notice and the actions to be taken because of it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-chat-002",
+   "stem": "When is the no-drone zone in effect?",
+   "choices": [
+    "From Friday night to Sunday night",
+    "From Monday to Friday",
+    "From Saturday morning to Sunday evening",
+    "From Sunday night to Monday morning"
+   ],
+   "answer": 0,
+   "explanation": "The specific time frame is given in the first message: 'a área vai ser zona proibida para voos de drones de sexta-feira à noite até domingo à noite', which translates to 'the area will be a no-fly zone for drone flights from Friday night to Sunday night'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-chat-003",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A protest causing a power outage in São Paulo",
+    "A cyberattack causing a power outage in São Paulo",
+    "A planned power outage in São Paulo",
+    "A new energy company in São Paulo"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the conversation is a cyberattack causing a power outage in São Paulo. This is evident from the phrase 'Parece que foi um ataque cibernético na companhia de luz.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-chat-003",
+   "stem": "What does João suggest Ana should do?",
+   "choices": [
+    "Call the energy company",
+    "Keep up with the news",
+    "Go out and check the city",
+    "Stay inside and wait"
+   ],
+   "answer": 1,
+   "explanation": "João suggests that Ana should 'ficar de olho nas notícias,' which means to keep up with the news.",
    "source": "llm",
    "verified": false
   },
@@ -2960,6 +5458,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-municipal_notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about a flood warning and necessary precautions",
+    "To advertise a sale at a local store",
+    "To schedule a community meeting about local issues",
+    "To announce a new construction project in the area"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to inform residents about a flood warning and necessary precautions, as indicated by the title 'AVISO IMPORTANTE: ALERTA DE INUNDAÇÃO' and the details provided about the risk and precautions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-municipal_notice-001",
+   "stem": "What is one of the precautions residents are advised to take?",
+   "choices": [
+    "To plant more trees in their yards",
+    "To avoid crossing flooded streets or areas",
+    "To keep their pets indoors at all times",
+    "To turn off all electronic devices"
+   ],
+   "answer": 1,
+   "explanation": "One of the precautions residents are advised to take is 'Evitem atravessar ruas alagadas ou áreas inundadas', which means 'to avoid crossing flooded streets or areas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-municipal_notice-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a change in the local government.",
+    "To provide details about a new city project.",
+    "To inform residents about the upcoming local elections.",
+    "To remind residents about a holiday celebration."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to inform residents about the upcoming local elections, as indicated by the title 'Aviso sobre Eleições Municipais' and the details provided about the election date, time, and location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-municipal_notice-002",
+   "stem": "What is the voting time for the upcoming election?",
+   "choices": [
+    "7 AM to 5 PM",
+    "9 AM to 6 PM",
+    "10 AM to 7 PM",
+    "8 AM to 5 PM"
+   ],
+   "answer": 3,
+   "explanation": "The voting time is clearly stated as 'das 8h às 17h' in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about new drone rules near a military airfield",
+    "To promote the registration of drones in the city",
+    "To advertise the services of the city hall",
+    "To announce a new military exercise at the airfield"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the notice is clearly stated in the first paragraph: 'Para garantir a segurança de todos e evitar interferências nas operações da Base Aérea de São Paulo, novas regras para o uso de drones foram estabelecidas.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-municipal_notice-003",
+   "stem": "What is the permitted flight time for drones on weekends and holidays?",
+   "choices": [
+    "7h às 9h e 16h às 18h",
+    "8h às 12h",
+    "16h às 18h",
+    "7h às 12h"
+   ],
+   "answer": 1,
+   "explanation": "The permitted flight time for drones on weekends and holidays is explicitly mentioned: 'Nos fins de semana e feriados, o voo de drones será permitido apenas das 8h às 12h.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-1p-news_brief-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -3118,6 +5724,78 @@
    ],
    "answer": 1,
    "explanation": "The word 'equipe' in this context means 'a team'. The letter mentions 'nossa equipe de resgate', referring to the rescue team.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-shift_log-001",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "A flood warning in Rio das Pedras",
+    "A celebration event in Rio das Pedras",
+    "A traffic jam in Rio das Pedras",
+    "A power outage in Rio das Pedras"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a flood warning, as indicated by the words 'alerta de inundação' and 'tempestade prevista'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-shift_log-001",
+   "stem": "Who was informed about the flood warning?",
+   "choices": [
+    "The local police",
+    "All residents of Rio das Pedras",
+    "The local school",
+    "The city council"
+   ],
+   "answer": 1,
+   "explanation": "The log states 'Informamos a todos os moradores do bairro Rio das Pedras', meaning all residents of Rio das Pedras were informed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "pt-dr-1p-shift_log-002",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A change in force protection condition",
+    "A military exercise with an allied country",
+    "A power outage at Base Brasília",
+    "A delivery driver incident at Base Brasília"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is a military exercise with an allied country, as indicated by the repeated mentions of 'exercício conjunto' and 'militares argentinos'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "pt-dr-1p-shift_log-002",
+   "stem": "What time did the military exercise start?",
+   "choices": [
+    "09:15",
+    "07:30",
+    "18:00",
+    "14:00"
+   ],
+   "answer": 3,
+   "explanation": "The military exercise started at 14:00, as stated in the entry 'Exercício começa às 14:00.'",
    "source": "llm",
    "verified": false
   },
@@ -3716,6 +6394,114 @@
    "verified": false
   },
   {
+   "id": "pt-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-municipal_notice-001",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To promote the Guarda Municipal's new drone unit.",
+    "To inform residents about a drone operator who was detained near the airport.",
+    "To announce a new drone festival near the airport.",
+    "To advertise a new drone regulation service."
+   ],
+   "answer": 1,
+   "explanation": "The notice explicitly states that it is informing residents about the detention of a drone operator near the airport, as seen in the first and second paragraphs. The other choices are not mentioned in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-municipal_notice-001",
+   "stem": "Where was the drone operator detained?",
+   "choices": [
+    "Approximately 5 km from the airport.",
+    "In the city center of São José dos Pinhais.",
+    "Near Colônia Santa Fé.",
+    "Inside the airport terminal."
+   ],
+   "answer": 0,
+   "explanation": "The text specifies that the drone operator was detained 'a aproximadamente 5 km do aeroporto,' which translates to 'approximately 5 km from the airport.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-municipal_notice-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To request residents to report any drone sightings.",
+    "To inform residents about a drone control link interference during a military exercise.",
+    "To announce a new military exercise in the area.",
+    "To warn residents about the dangers of drones."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the notice is to inform residents about the interference in the drone's control link during the military exercise, as stated in the first and second paragraphs: 'Gostaríamos de informar que durante o exercício militar... houve uma interferência no controle de um drone...'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "pt-dr-2-municipal_notice-002",
+   "stem": "What does the term 'jamming' refer to in this context?",
+   "choices": [
+    "A signal boosting technique.",
+    "A type of drone maneuver.",
+    "An intentional interference with the drone's control link.",
+    "A drone landing procedure."
+   ],
+   "answer": 2,
+   "explanation": "The term 'jamming' refers to 'uma interferência no controle de um drone', which means an intentional interference with the drone's control link.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-municipal_notice-003",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To announce a new policy at the base",
+    "To schedule a community meeting",
+    "To inform residents about an upcoming security training",
+    "To advertise a new service offered by the town hall"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the notice is to inform residents about an upcoming security training (treinamento de Conscientização sobre Ameaças Internas).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-municipal_notice-003",
+   "stem": "When and where will the training take place?",
+   "choices": [
+    "On October 1 and 2 at the Base Porto Alegre",
+    "On September 15 and 16 at the Base Porto Alegre",
+    "On October 15 and 16 at the Centro Comunitário de Vila Nova",
+    "On November 15 and 16 at the Centro Comunitário de Vila Nova"
+   ],
+   "answer": 2,
+   "explanation": "The training will take place on October 15 and 16 at the Centro Comunitário de Vila Nova, as stated in the notice (nos dias 15 e 16 de outubro, no Centro Comunitário de Vila Nova).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "pt-dr-2-news-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -4090,6 +6876,150 @@
    ],
    "answer": 3,
    "explanation": "The phrase 'restrição de acesso' is used in the context of the new security measures: \"A implementação do FPCON CHARLIE inclui a restrição de acesso a áreas específicas da base.\" This indicates that entry to certain areas will be limited.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-shift_log-001",
+   "stem": "What is the main topic of this log?",
+   "choices": [
+    "Daily routine activities at Base Fortaleza",
+    "A power outage at Base Fortaleza",
+    "A change in the force protection condition at Base Fortaleza",
+    "A delivery driver incident at Base Fortaleza"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in the first entry: 'Condição de força de proteção mudada para DELTA.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-shift_log-001",
+   "stem": "Who is responsible for authorizing special entry for the supply truck?",
+   "choices": [
+    "Sargento Silva",
+    "RL",
+    "AM",
+    "Cabo Mendes"
+   ],
+   "answer": 3,
+   "explanation": "The entry at 08:15 states 'Contate o Cabo Mendes para mais informações,' indicating Cabo Mendes is responsible for authorizing special entry.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-shift_log-002",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A military exercise was conducted",
+    "A power outage occurred at the base",
+    "A drone operator was detained near an airport",
+    "A festival was held near the base"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in multiple entries, such as 'Denúncia recebida sobre um drone sobrevoando perto da Base' and 'Agentes detiveram um indivíduo operando um drone.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-shift_log-002",
+   "stem": "What was the name of the individual detained for operating the drone?",
+   "choices": [
+    "Pedro Alves",
+    "Ana Oliveira",
+    "João Silva",
+    "Carlos Mendes"
+   ],
+   "answer": 2,
+   "explanation": "The name of the individual detained is explicitly mentioned: 'Nome: João Silva, 32 anos, residente em Contagem.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-shift_log-003",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "The installation of new security cameras",
+    "A change in force protection condition",
+    "The coordination of airspace for drone operations",
+    "A power outage at the security unit"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in the first entry: 'Reunião com a ANAC e a Embraer para coordenar espaço aéreo para operações de drone'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-shift_log-003",
+   "stem": "What time were the drone operations originally scheduled to take place?",
+   "choices": [
+    "09:00 to 13:00",
+    "08:00 to 12:00",
+    "11:00 to 15:00",
+    "10:00 to 14:00"
+   ],
+   "answer": 3,
+   "explanation": "The log mentions 'liberação do espaço aéreo para as operações de drone entre 10:00 e 14:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "pt-dr-2-shift_log-004",
+   "stem": "What is the main focus of this shift log?",
+   "choices": [
+    "Police operations in São Paulo",
+    "Weather disruptions",
+    "Security breaches in the city",
+    "Public transportation changes"
+   ],
+   "answer": 3,
+   "explanation": "The main focus is on public transportation changes, as indicated by entries discussing reduced service, congestion, emergency stops, and delays.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "pt-dr-2-shift_log-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "pt-dr-2-shift_log-004",
+   "stem": "What was the estimated waiting time for the delayed bus line?",
+   "choices": [
+    "15 minutes",
+    "20 minutes",
+    "30 minutes",
+    "25 minutes"
+   ],
+   "answer": 3,
+   "explanation": "The estimated waiting time for the delayed bus line was 25 minutes, as stated in the entry: 'Tempo de espera estimado: 25 minutos.'",
    "source": "llm",
    "verified": false
   },

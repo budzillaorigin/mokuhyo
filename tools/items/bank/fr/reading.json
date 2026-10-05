@@ -21,6 +21,184 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-0p-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Sports Championship Visitor Badge",
+   "body": "BADGE DE VISITEUR\nNom: Jean Dupont\nPrénom: Pierre\nDate: 05/10/2023\nHeure d'arrivée: 09:30\nÉvénement: Championnat de Sports\nLieu: Stade Municipal, Lyon\nOrganisateur: Fédération Française de Sports\nSignature: Jean Dupont\nAccès valable jusqu'à 18:00",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE DE VISITEUR",
+    "fields": [
+     {
+      "label": "Nom",
+      "value": "Jean Dupont"
+     },
+     {
+      "label": "Prénom",
+      "value": "Pierre"
+     },
+     {
+      "label": "Date",
+      "value": "05/10/2023"
+     },
+     {
+      "label": "Heure d'arrivée",
+      "value": "09:30"
+     },
+     {
+      "label": "Événement",
+      "value": "Championnat de Sports"
+     },
+     {
+      "label": "Lieu",
+      "value": "Stade Municipal, Lyon"
+     },
+     {
+      "label": "Organisateur",
+      "value": "Fédération Française de Sports"
+     },
+     {
+      "label": "Signature",
+      "value": "Jean Dupont"
+     }
+    ],
+    "footer": "Accès valable jusqu'à 18:00"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Urban Housing Crisis: Access Request",
+   "body": "BADGE DE VISITEUR\nNom: Jean-Luc Moreau\nPrénom: Sophie\nOrganisation: Fédération des Locataires\nDate: 15/03/2023\nHeure d'arrivée: 09:00\nHeure de départ: 17:00\nObjet de la visite: Pénurie de logements en ville\nBâtiment: Bureau du Logement\nSalle: 305\nNom du contact: M. Dubois\nMerci de porter ce badge de manière visible. Accès autorisé jusqu'au 15/03/2023 17:00.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE DE VISITEUR",
+    "fields": [
+     {
+      "label": "Nom",
+      "value": "Jean-Luc Moreau"
+     },
+     {
+      "label": "Prénom",
+      "value": "Sophie"
+     },
+     {
+      "label": "Organisation",
+      "value": "Fédération des Locataires"
+     },
+     {
+      "label": "Date",
+      "value": "15/03/2023"
+     },
+     {
+      "label": "Heure d'arrivée",
+      "value": "09:00"
+     },
+     {
+      "label": "Heure de départ",
+      "value": "17:00"
+     },
+     {
+      "label": "Objet de la visite",
+      "value": "Pénurie de logements en ville"
+     },
+     {
+      "label": "Bâtiment",
+      "value": "Bureau du Logement"
+     },
+     {
+      "label": "Salle",
+      "value": "305"
+     },
+     {
+      "label": "Nom du contact",
+      "value": "M. Dubois"
+     }
+    ],
+    "footer": "Merci de porter ce badge de manière visible. Accès autorisé jusqu'au 15/03/2023 17:00."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Resident's Concerns at Air Base Gate",
+   "body": "BADGE DE VISITEUR\nNom:: Jean-Luc Martin\nPrénom:: Jean-Luc\nDate de naissance:: 12/05/1975\nAdresse:: 15 Rue de la Paix, Saint-Pierre\nVille:: Saint-Pierre\nCode postal:: 13000\nTéléphone:: 06 12 34 56 78\nDate:: 03/10/2023\nHeure d'arrivée:: 14h00\nHeure de départ:: 15h30\nVeuillez vous présenter à la sécurité avec ce badge. Merci de votre compréhension.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE DE VISITEUR",
+    "fields": [
+     {
+      "label": "Nom:",
+      "value": "Jean-Luc Martin"
+     },
+     {
+      "label": "Prénom:",
+      "value": "Jean-Luc"
+     },
+     {
+      "label": "Date de naissance:",
+      "value": "12/05/1975"
+     },
+     {
+      "label": "Adresse:",
+      "value": "15 Rue de la Paix, Saint-Pierre"
+     },
+     {
+      "label": "Ville:",
+      "value": "Saint-Pierre"
+     },
+     {
+      "label": "Code postal:",
+      "value": "13000"
+     },
+     {
+      "label": "Téléphone:",
+      "value": "06 12 34 56 78"
+     },
+     {
+      "label": "Date:",
+      "value": "03/10/2023"
+     },
+     {
+      "label": "Heure d'arrivée:",
+      "value": "14h00"
+     },
+     {
+      "label": "Heure de départ:",
+      "value": "15h30"
+     }
+    ],
+    "footer": "Veuillez vous présenter à la sécurité avec ce badge. Merci de votre compréhension."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-0p-label-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -186,6 +364,192 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Drone Operator Detained Near Marseille Airport",
+   "body": "Ordre de Service - Détention Opérateur Drone\nDate | Heure | Nom | Poste | Action\n05/15/2023 | 14:00 | Jean-Luc Martin | Tour de Contrôle | Détenu\n05/15/2023 | 14:30 | Sophie Dubois | Sécurité | Inspection Drone\n05/15/2023 | 15:00 | Pierre Lefèvre | Police Aéroportuaire | Enquête",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Ordre de Service - Détention Opérateur Drone",
+    "columns": [
+     "Date",
+     "Heure",
+     "Nom",
+     "Poste",
+     "Action"
+    ],
+    "rows": [
+     [
+      "05/15/2023",
+      "14:00",
+      "Jean-Luc Martin",
+      "Tour de Contrôle",
+      "Détenu"
+     ],
+     [
+      "05/15/2023",
+      "14:30",
+      "Sophie Dubois",
+      "Sécurité",
+      "Inspection Drone"
+     ],
+     [
+      "05/15/2023",
+      "15:00",
+      "Pierre Lefèvre",
+      "Police Aéroportuaire",
+      "Enquête"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Flood Relief Drone Survey Schedule in Lyon",
+   "body": "Plan de vol drones - Opération Secours Inondation Lyon\nDate | Décollage | Atterrissage | Pilote | Zone\n10/05 | 08:00 | 10:00 | Dupont | Nord\n10/05 | 11:00 | 13:00 | Martin | Sud\n10/06 | 08:00 | 10:00 | Bernard | Est\n10/06 | 11:00 | 13:00 | Leroy | Ouest",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Plan de vol drones - Opération Secours Inondation Lyon",
+    "columns": [
+     "Date",
+     "Décollage",
+     "Atterrissage",
+     "Pilote",
+     "Zone"
+    ],
+    "rows": [
+     [
+      "10/05",
+      "08:00",
+      "10:00",
+      "Dupont",
+      "Nord"
+     ],
+     [
+      "10/05",
+      "11:00",
+      "13:00",
+      "Martin",
+      "Sud"
+     ],
+     [
+      "10/06",
+      "08:00",
+      "10:00",
+      "Bernard",
+      "Est"
+     ],
+     [
+      "10/06",
+      "11:00",
+      "13:00",
+      "Leroy",
+      "Ouest"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-signage-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Local Election Sign",
+   "body": "BASE AÉRIENNE 126\nVOTRE VOIX COMPTE!\nÉLECTIONS LOCALES\n15 JUIN, 08:00-20:00\nBUREAU DE VOTE: BÂTIMENT C\nPIÈCE D'IDENTITÉ REQUISE",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉRIENNE 126",
+     "VOTRE VOIX COMPTE!",
+     "ÉLECTIONS LOCALES",
+     "15 JUIN, 08:00-20:00",
+     "BUREAU DE VOTE: BÂTIMENT C",
+     "PIÈCE D'IDENTITÉ REQUISE"
+    ],
+    "kind": "prohibition"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-signage-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Bus Route Changes at Military Air Base",
+   "body": "BASE AÉRIENNE DE MONTROSE\nCHANGEMENT DE TRANSPORT\nÀ PARTIR DU: 15 MAI\nBUS N°3 - NOUVELLE ROUTE\nARRÊT 'PLACE DU MARCHÉ' SUPPRIMÉ\nNOUVEAU ARRÊT: 'PLACE DE LA GARE' (100M DISTANT)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉRIENNE DE MONTROSE",
+     "CHANGEMENT DE TRANSPORT",
+     "À PARTIR DU: 15 MAI",
+     "BUS N°3 - NOUVELLE ROUTE",
+     "ARRÊT 'PLACE DU MARCHÉ' SUPPRIMÉ",
+     "NOUVEAU ARRÊT: 'PLACE DE LA GARE' (100M DISTANT)"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-0p-signage-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Humanitarian Drone Survey Notice",
+   "body": "Base Aérienne 123, Saint-Pierre\nOpération Drone Humanitaire\nEnquête après l'inondation\nDrones en action: 08:00 - 18:00\nRespectez la zone de sécurité\nInterdiction de voler des drones privés",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "Base Aérienne 123, Saint-Pierre",
+     "Opération Drone Humanitaire",
+     "Enquête après l'inondation",
+     "Drones en action: 08:00 - 18:00",
+     "Respectez la zone de sécurité",
+     "Interdiction de voler des drones privés"
+    ],
+    "kind": "prohibition"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1-advertisement-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -260,6 +624,342 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Exercise Défense Conjointe Visitor Badge",
+   "body": "BADGE DE VISITEUR\nNom:: Jean-Luc Moreau\nPrénom:: Jean-Luc\nDate de Naissance:: 12/05/1985\nNationalité:: Française\nOrganisation:: Armée de Terre\nRôle:: Observateur\nExercice:: Défense Conjointe 2023\nDate d'Arrivée:: 03/10/2023\nHeure d'Arrivée:: 08:00\nDate de Départ:: 05/10/2023\nAccès autorisé uniquement aux zones désignées. Présentez ce badge à chaque point de contrôle.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE DE VISITEUR",
+    "fields": [
+     {
+      "label": "Nom:",
+      "value": "Jean-Luc Moreau"
+     },
+     {
+      "label": "Prénom:",
+      "value": "Jean-Luc"
+     },
+     {
+      "label": "Date de Naissance:",
+      "value": "12/05/1985"
+     },
+     {
+      "label": "Nationalité:",
+      "value": "Française"
+     },
+     {
+      "label": "Organisation:",
+      "value": "Armée de Terre"
+     },
+     {
+      "label": "Rôle:",
+      "value": "Observateur"
+     },
+     {
+      "label": "Exercice:",
+      "value": "Défense Conjointe 2023"
+     },
+     {
+      "label": "Date d'Arrivée:",
+      "value": "03/10/2023"
+     },
+     {
+      "label": "Heure d'Arrivée:",
+      "value": "08:00"
+     },
+     {
+      "label": "Date de Départ:",
+      "value": "05/10/2023"
+     }
+    ],
+    "footer": "Accès autorisé uniquement aux zones désignées. Présentez ce badge à chaque point de contrôle."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Visitor Badge for Counter-Drone System Inspection",
+   "body": "BADGE DE VISITEUR\nNom:: Jean-Luc Martin\nPrénom:: Jean-Luc\nOrganisation:: Aéroport de Lyon-Saint Exupéry\nPoste:: Ingénieur en sécurité\nDate de visite:: 15/10/2023\nHeure d'arrivée:: 09h00\nHeure de départ:: 17h00\nZone de visite:: Système anti-drone\nAccompagnateur:: Capitaine Sophie Dupont\nRaison de la visite:: Inspection et maintenance du système anti-drone\nCe badge est valable pour la journée du 15/10/2023. Merci de le porter en évidence.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE DE VISITEUR",
+    "fields": [
+     {
+      "label": "Nom:",
+      "value": "Jean-Luc Martin"
+     },
+     {
+      "label": "Prénom:",
+      "value": "Jean-Luc"
+     },
+     {
+      "label": "Organisation:",
+      "value": "Aéroport de Lyon-Saint Exupéry"
+     },
+     {
+      "label": "Poste:",
+      "value": "Ingénieur en sécurité"
+     },
+     {
+      "label": "Date de visite:",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Heure d'arrivée:",
+      "value": "09h00"
+     },
+     {
+      "label": "Heure de départ:",
+      "value": "17h00"
+     },
+     {
+      "label": "Zone de visite:",
+      "value": "Système anti-drone"
+     },
+     {
+      "label": "Accompagnateur:",
+      "value": "Capitaine Sophie Dupont"
+     },
+     {
+      "label": "Raison de la visite:",
+      "value": "Inspection et maintenance du système anti-drone"
+     }
+    ],
+    "footer": "Ce badge est valable pour la journée du 15/10/2023. Merci de le porter en évidence."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Visitor Badge for National Cycling Championship",
+   "body": "BADGE DE VISITEUR\nNom: Jean-Luc Martin\nPrénom: Étienne\nDate de naissance: 15/03/1985\nAdresse: 12 Rue de la République, 44000 Nantes\nÉvénement: Championnat de Cyclisme National\nDate de l'événement: 10/06/2023\nHeure d'arrivée: 09:00\nHeure de départ: 18:00\nZone d'accès: Stade Municipal\nSignature: Étienne Jean-Luc Martin\nCe badge est valable pour la journée du 10/06/2023 uniquement. Veuillez le présenter à chaque point de contrôle.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE DE VISITEUR",
+    "fields": [
+     {
+      "label": "Nom",
+      "value": "Jean-Luc Martin"
+     },
+     {
+      "label": "Prénom",
+      "value": "Étienne"
+     },
+     {
+      "label": "Date de naissance",
+      "value": "15/03/1985"
+     },
+     {
+      "label": "Adresse",
+      "value": "12 Rue de la République, 44000 Nantes"
+     },
+     {
+      "label": "Événement",
+      "value": "Championnat de Cyclisme National"
+     },
+     {
+      "label": "Date de l'événement",
+      "value": "10/06/2023"
+     },
+     {
+      "label": "Heure d'arrivée",
+      "value": "09:00"
+     },
+     {
+      "label": "Heure de départ",
+      "value": "18:00"
+     },
+     {
+      "label": "Zone d'accès",
+      "value": "Stade Municipal"
+     },
+     {
+      "label": "Signature",
+      "value": "Étienne Jean-Luc Martin"
+     }
+    ],
+    "footer": "Ce badge est valable pour la journée du 10/06/2023 uniquement. Veuillez le présenter à chaque point de contrôle."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-chat-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "chat",
+   "title": "Vaccination Campaign Reminder",
+   "body": "Camille: Salut tout le monde! La campagne de vaccination commence demain à la clinique de la base. Ne pas oublier! 💉\nLéa: À quelle heure? Je dois amener les enfants.\nCamille: C'est de 13h à 17h. Apportez vos cartes d'identité. 😊\nThomas: Merci pour l'info! On y sera.\nCamille: Super! À demain! 👋",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "",
+    "messages": [
+     {
+      "from": "Camille",
+      "text": "Salut tout le monde! La campagne de vaccination commence demain à la clinique de la base. Ne pas oublier! 💉",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Léa",
+      "text": "À quelle heure? Je dois amener les enfants.",
+      "time": "10:05 AM",
+      "me": false
+     },
+     {
+      "from": "Camille",
+      "text": "C'est de 13h à 17h. Apportez vos cartes d'identité. 😊",
+      "time": "10:10 AM",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "Merci pour l'info! On y sera.",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "Camille",
+      "text": "Super! À demain! 👋",
+      "time": "10:20 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "chat",
+   "title": "City Housing Woes",
+   "body": "Luc: Salut Sophie, tu as vu les nouvelles? Il n'y a plus de logements à Bordeaux. C'est la crise!\nSophie: Oui, Luc. J'ai essayé de trouver un appartement la semaine dernière. Rien! C'est terrible.\nLuc: Moi aussi. J'ai appelé 10 agences. Toutes pleines. Qu'est-ce qu'on va faire?\nSophie: Je ne sais pas. Peut-être qu'on devrait regarder en banlieue. C'est moins cher, non?\nLuc: Oui, tu as raison. Je vais commencer à chercher aujourd'hui. Merci Sophie!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "",
+    "messages": [
+     {
+      "from": "Luc",
+      "text": "Salut Sophie, tu as vu les nouvelles? Il n'y a plus de logements à Bordeaux. C'est la crise!",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Sophie",
+      "text": "Oui, Luc. J'ai essayé de trouver un appartement la semaine dernière. Rien! C'est terrible.",
+      "time": "10:05 AM",
+      "me": true
+     },
+     {
+      "from": "Luc",
+      "text": "Moi aussi. J'ai appelé 10 agences. Toutes pleines. Qu'est-ce qu'on va faire?",
+      "time": "10:10 AM",
+      "me": false
+     },
+     {
+      "from": "Sophie",
+      "text": "Je ne sais pas. Peut-être qu'on devrait regarder en banlieue. C'est moins cher, non?",
+      "time": "10:15 AM",
+      "me": true
+     },
+     {
+      "from": "Luc",
+      "text": "Oui, tu as raison. Je vais commencer à chercher aujourd'hui. Merci Sophie!",
+      "time": "10:20 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "chat",
+   "title": "Night Drill Alert",
+   "body": "Léa: Salut tout le monde! Rappel: exercice d'urgence cette nuit à 23h. RDV au QG. Merci d'être à l'heure.\nThomas: D'accord Léa. Je serai là. Tu as besoin d'aide pour préparer?\nLéa: Oui s'il te plaît. Viens 1h avant pour m'aider. Merci!\nThomas: Pas de problème. À tout à l'heure.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Message",
+    "messages": [
+     {
+      "from": "Léa",
+      "text": "Salut tout le monde! Rappel: exercice d'urgence cette nuit à 23h. RDV au QG. Merci d'être à l'heure.",
+      "time": "20:15",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "D'accord Léa. Je serai là. Tu as besoin d'aide pour préparer?",
+      "time": "20:17",
+      "me": false
+     },
+     {
+      "from": "Léa",
+      "text": "Oui s'il te plaît. Viens 1h avant pour m'aider. Merci!",
+      "time": "20:18",
+      "me": false
+     },
+     {
+      "from": "Thomas",
+      "text": "Pas de problème. À tout à l'heure.",
+      "time": "20:19",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -417,6 +1117,251 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Drone Control Link Jamming Incident",
+   "body": "Incident de brouillage de liaison de contrôle de drone\nDate | Heure | Lieu | Équipage | Statut\n12/05/2023 | 10:00-12:00 | Zone d'exercice Alpha | Équipe 1 (Lt. Dubois) | Terminé\n12/05/2023 | 13:00-15:00 | Zone d'exercice Bravo | Équipe 2 (Lt. Martin) | Annulé - Brouillage\n12/05/2023 | 15:00-17:00 | Zone d'exercice Charlie | Équipe 3 (Lt. Bernard) | Reporté",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Incident de brouillage de liaison de contrôle de drone",
+    "columns": [
+     "Date",
+     "Heure",
+     "Lieu",
+     "Équipage",
+     "Statut"
+    ],
+    "rows": [
+     [
+      "12/05/2023",
+      "10:00-12:00",
+      "Zone d'exercice Alpha",
+      "Équipe 1 (Lt. Dubois)",
+      "Terminé"
+     ],
+     [
+      "12/05/2023",
+      "13:00-15:00",
+      "Zone d'exercice Bravo",
+      "Équipe 2 (Lt. Martin)",
+      "Annulé - Brouillage"
+     ],
+     [
+      "12/05/2023",
+      "15:00-17:00",
+      "Zone d'exercice Charlie",
+      "Équipe 3 (Lt. Bernard)",
+      "Reporté"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Allied Air Defense Radio Schedule",
+   "body": "Horaires des procédures radio entre les unités de défense aérienne alliées\nUnité | Jour | Heure | Fréquence | Protocole\nUnité 1: Base Aérienne 105 | Lundi | 0800-1200 | 123.45 MHz | PROTOCOLE ALPHA\nUnité 2: Base Aérienne 117 | Lundi | 1300-1700 | 125.75 MHz | PROTOCOLE BETA\nUnité 3: Base Aérienne 120 | Mardi | 0900-1300 | 127.00 MHz | PROTOCOLE ALPHA\nUnité 1: Base Aérienne 105 | Mardi | 1400-1800 | 123.45 MHz | PROTOCOLE BETA\nUnité 2: Base Aérienne 117 | Mercredi | 1000-1400 | 125.75 MHz | PROTOCOLE ALPHA\nUnité 3: Base Aérienne 120 | Mercredi | 1500-1900 | 127.00 MHz | PROTOCOLE BETA",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Horaires des procédures radio entre les unités de défense aérienne alliées",
+    "columns": [
+     "Unité",
+     "Jour",
+     "Heure",
+     "Fréquence",
+     "Protocole"
+    ],
+    "rows": [
+     [
+      "Unité 1: Base Aérienne 105",
+      "Lundi",
+      "0800-1200",
+      "123.45 MHz",
+      "PROTOCOLE ALPHA"
+     ],
+     [
+      "Unité 2: Base Aérienne 117",
+      "Lundi",
+      "1300-1700",
+      "125.75 MHz",
+      "PROTOCOLE BETA"
+     ],
+     [
+      "Unité 3: Base Aérienne 120",
+      "Mardi",
+      "0900-1300",
+      "127.00 MHz",
+      "PROTOCOLE ALPHA"
+     ],
+     [
+      "Unité 1: Base Aérienne 105",
+      "Mardi",
+      "1400-1800",
+      "123.45 MHz",
+      "PROTOCOLE BETA"
+     ],
+     [
+      "Unité 2: Base Aérienne 117",
+      "Mercredi",
+      "1000-1400",
+      "125.75 MHz",
+      "PROTOCOLE ALPHA"
+     ],
+     [
+      "Unité 3: Base Aérienne 120",
+      "Mercredi",
+      "1500-1900",
+      "127.00 MHz",
+      "PROTOCOLE BETA"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Harbor Drone Monitoring Schedule in Saint-Pierre",
+   "body": "Horaires de Surveillance par Drones au Port de Saint-Pierre\nJour | Heure de Début | Heure de Fin | Opérateur | Zone\nLundi | 08:00 | 10:00 | Luc | Quai Nord\nMardi | 09:00 | 11:00 | Marie | Quai Sud\nMercredi | 08:00 | 10:00 | Pierre | Quai Est\nJeudi | 09:00 | 11:00 | Sophie | Quai Ouest\nVendredi | 08:00 | 10:00 | Luc | Quai Nord\nSamedi | 09:00 | 11:00 | Marie | Quai Sud\nDimanche | 08:00 | 10:00 | Pierre | Quai Est",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Horaires de Surveillance par Drones au Port de Saint-Pierre",
+    "columns": [
+     "Jour",
+     "Heure de Début",
+     "Heure de Fin",
+     "Opérateur",
+     "Zone"
+    ],
+    "rows": [
+     [
+      "Lundi",
+      "08:00",
+      "10:00",
+      "Luc",
+      "Quai Nord"
+     ],
+     [
+      "Mardi",
+      "09:00",
+      "11:00",
+      "Marie",
+      "Quai Sud"
+     ],
+     [
+      "Mercredi",
+      "08:00",
+      "10:00",
+      "Pierre",
+      "Quai Est"
+     ],
+     [
+      "Jeudi",
+      "09:00",
+      "11:00",
+      "Sophie",
+      "Quai Ouest"
+     ],
+     [
+      "Vendredi",
+      "08:00",
+      "10:00",
+      "Luc",
+      "Quai Nord"
+     ],
+     [
+      "Samedi",
+      "09:00",
+      "11:00",
+      "Marie",
+      "Quai Sud"
+     ],
+     [
+      "Dimanche",
+      "08:00",
+      "10:00",
+      "Pierre",
+      "Quai Est"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-schedule_board-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Senior Care Shift Schedule",
+   "body": "Horaires de travail pour la Maison de Retraite de Lyon\nLundi | Mardi | Mercredi | Jeudi | Vendredi\n8h-16h: Mme. Dubois | 8h-16h: M. Bernard | 8h-16h: Mme. Lefèvre | 8h-16h: M. Dubois | 8h-16h: Mme. Bernard\n14h-22h: M. Lefèvre | 14h-22h: Mme. Dubois | 14h-22h: M. Bernard | 14h-22h: Mme. Lefèvre | 14h-22h: M. Dubois\n22h-8h: Mme. Bernard | 22h-8h: M. Dubois | 22h-8h: Mme. Lefèvre | 22h-8h: M. Bernard | 22h-8h: Mme. Dubois",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Horaires de travail pour la Maison de Retraite de Lyon",
+    "columns": [
+     "Lundi",
+     "Mardi",
+     "Mercredi",
+     "Jeudi",
+     "Vendredi"
+    ],
+    "rows": [
+     [
+      "8h-16h: Mme. Dubois",
+      "8h-16h: M. Bernard",
+      "8h-16h: Mme. Lefèvre",
+      "8h-16h: M. Dubois",
+      "8h-16h: Mme. Bernard"
+     ],
+     [
+      "14h-22h: M. Lefèvre",
+      "14h-22h: Mme. Dubois",
+      "14h-22h: M. Bernard",
+      "14h-22h: Mme. Lefèvre",
+      "14h-22h: M. Dubois"
+     ],
+     [
+      "22h-8h: Mme. Bernard",
+      "22h-8h: M. Dubois",
+      "22h-8h: Mme. Lefèvre",
+      "22h-8h: M. Bernard",
+      "22h-8h: Mme. Dubois"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -459,6 +1404,87 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "signage",
+   "title": "Attention to Our Senior Community",
+   "body": "Base Aérienne 123 - Saint-Pierre\n\nAVIS IMPORTANT\n\nChers membres de la communauté,\nEn raison du vieillissement de notre population, certaines mesures sont mises en place pour assurer la sécurité et le bien-être de tous, notamment nos aînés qui sont plus fragiles. Voici quelques règles à respecter :",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "Base Aérienne 123 - Saint-Pierre",
+     "",
+     "AVIS IMPORTANT",
+     "",
+     "Chers membres de la communauté,",
+     "En raison du vieillissement de notre population, certaines mesures sont mises en place pour assurer la sécurité et le bien-être de tous, notamment nos aînés qui sont plus fragiles. Voici quelques règles à respecter :"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "signage",
+   "title": "Warning of Loitering Munition Threat",
+   "body": "AVIS IMPORTANT\n\nBase Aérienne 123\nSaint-Mathieu\n\nMENACE DE MUNITIONS ERRANTES DÉTECTÉE: CELLES-CI PEUVENT APPARAÎTRE À TOUT MOMENT ET SANS AVERTISSEMENT PRÉALABLE DANS LA ZONE DE LA BASE. LA MENACE EST RÉELLE ET IMMINENTE. RESTEZ ALERTES ! POUR VOTRE SÉCURITÉ, SUIVEZ LES INSTRUCTIONS CI-DESSOUS: AVISER TOUT PERSONNEL DE LA PRÉSENCE DE CETTE MENACE. EN CAS DE DÉTECTION D'UNE MUNITION ERRANTE, SIGNALEZ-LA IMMÉDIATEMENT AUX AUTORITÉS COMPÉTENTES. RESPECTEZ LES ZONES D'ÉVACUATION ET LES PROTOCOLES DE SÉCURITÉ EN VIGUEUR. CECI EST UNE QUESTION DE VIE OU DE MORT. MERCI DE VOTRE ATTENTION.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "AVIS IMPORTANT",
+     "",
+     "Base Aérienne 123",
+     "Saint-Mathieu",
+     "",
+     "MENACE DE MUNITIONS ERRANTES DÉTECTÉE: CELLES-CI PEUVENT APPARAÎTRE À TOUT MOMENT ET SANS AVERTISSEMENT PRÉALABLE DANS LA ZONE DE LA BASE. LA MENACE EST RÉELLE ET IMMINENTE. RESTEZ ALERTES ! POUR VOTRE SÉCURITÉ, SUIVEZ LES INSTRUCTIONS CI-DESSOUS: AVISER TOUT PERSONNEL DE LA PRÉSENCE DE CETTE MENACE. EN CAS DE DÉTECTION D'UNE MUNITION ERRANTE, SIGNALEZ-LA IMMÉDIATEMENT AUX AUTORITÉS COMPÉTENTES. RESPECTEZ LES ZONES D'ÉVACUATION ET LES PROTOCOLES DE SÉCURITÉ EN VIGUEUR. CECI EST UNE QUESTION DE VIE OU DE MORT. MERCI DE VOTRE ATTENTION."
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1",
+   "textType": "signage",
+   "title": "Drone Swarm Alert at Port de la Lune",
+   "body": "BASE AÉRIENNE DE BORDEAUX\nAVIS IMPORTANT\n\nUN ESSAIM DE PETITS DRONES A ÉTÉ\nOBSERVÉ AU-DESSUS DU PORT DE LA LUNE.\nRESTEZ À L'ÉCART DES DRONES ET ÉVITEZ LA ZONE DU PORT JUSQU'À NOUVEL ORDRE. POUR VOTRE SÉCURITÉ, RESPECTEZ CETTE INSTRUCTION. MERCI DE VOTRE COMPRÉHENSION.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉRIENNE DE BORDEAUX",
+     "AVIS IMPORTANT",
+     "",
+     "UN ESSAIM DE PETITS DRONES A ÉTÉ",
+     "OBSERVÉ AU-DESSUS DU PORT DE LA LUNE.",
+     "RESTEZ À L'ÉCART DES DRONES ET ÉVITEZ LA ZONE DU PORT JUSQU'À NOUVEL ORDRE. POUR VOTRE SÉCURITÉ, RESPECTEZ CETTE INSTRUCTION. MERCI DE VOTRE COMPRÉHENSION."
+    ],
+    "kind": "warning"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -519,6 +1545,162 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Border Crossing Instructions",
+   "body": "Léa: Salut Marc, tu traverses la frontière demain ?\nMarc: Oui, Léa. Je dois être à Genève à 14h. Tu connais la procédure ?\nLéa: Prends ton passeport, la carte verte et vérifie que ta voiture a l'assurance frontalière. À Saint-Julien, montre tes papiers au poste de douane. Ils vont scanner ton passeport.\nMarc: Merci. Et pour la voiture ?\nLéa: Ils vont vérifier l'assurance et peut-être ouvrir le coffre. Sois patient, ça peut prendre 20 minutes. Bon voyage !",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "",
+    "messages": [
+     {
+      "from": "Léa",
+      "text": "Salut Marc, tu traverses la frontière demain ?",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Marc",
+      "text": "Oui, Léa. Je dois être à Genève à 14h. Tu connais la procédure ?",
+      "time": "10:05 AM",
+      "me": true
+     },
+     {
+      "from": "Léa",
+      "text": "Prends ton passeport, la carte verte et vérifie que ta voiture a l'assurance frontalière. À Saint-Julien, montre tes papiers au poste de douane. Ils vont scanner ton passeport.",
+      "time": "10:10 AM",
+      "me": false
+     },
+     {
+      "from": "Marc",
+      "text": "Merci. Et pour la voiture ?",
+      "time": "10:15 AM",
+      "me": true
+     },
+     {
+      "from": "Léa",
+      "text": "Ils vont vérifier l'assurance et peut-être ouvrir le coffre. Sois patient, ça peut prendre 20 minutes. Bon voyage !",
+      "time": "10:20 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Bus Route Changes in Saint-Étienne",
+   "body": "Sophie: Salut Marc, tu as vu les changements pour les bus à Saint-Étienne? La ligne C est terminée.\nMe: Non, pas encore. Qu'est-ce qui change?\nSophie: La ligne C est remplacée par la ligne 4. Elle va à la gare maintenant. La ligne 5 a un nouveau arrêt près du parc.\nMe: Merci Sophie. Je vais vérifier les horaires. À ce soir!\nSophie: Pas de problème. On se voit plus tard. 😊",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Transport en commun",
+    "messages": [
+     {
+      "from": "Sophie",
+      "text": "Salut Marc, tu as vu les changements pour les bus à Saint-Étienne? La ligne C est terminée.",
+      "time": "10:15 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Me",
+      "text": "Non, pas encore. Qu'est-ce qui change?",
+      "time": "10:17 AM, 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Sophie",
+      "text": "La ligne C est remplacée par la ligne 4. Elle va à la gare maintenant. La ligne 5 a un nouveau arrêt près du parc.",
+      "time": "10:19 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Me",
+      "text": "Merci Sophie. Je vais vérifier les horaires. À ce soir!",
+      "time": "10:21 AM, 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Sophie",
+      "text": "Pas de problème. On se voit plus tard. 😊",
+      "time": "10:22 AM, 12/05/2023",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Flood Warning in Saint-Paul",
+   "body": "Météo France: Alerte météo : Inondation probable dans la région de Saint-Paul. Restez vigilants et suivez les conseils de sécurité. #vigilancecrues\nPierre: Tout le monde a vu l'alerte ? On doit préparer la base. Jean, tu peux vérifier les pompes ?\nJean: Oui, Pierre. Je vérifie les pompes maintenant. Marie, peux-tu t'assurer que tout le matériel est en haut ?\nMarie: D'accord, Jean. Je m'occupe du matériel. Pierre, as-tu contacté les services d'urgence ?\nPierre: Oui, Marie. Ils sont en route. Restons en contact. Tous, soyez prudents.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "",
+    "messages": [
+     {
+      "from": "Météo France",
+      "text": "Alerte météo : Inondation probable dans la région de Saint-Paul. Restez vigilants et suivez les conseils de sécurité. #vigilancecrues",
+      "time": "10:30 AM",
+      "me": false
+     },
+     {
+      "from": "Pierre",
+      "text": "Tout le monde a vu l'alerte ? On doit préparer la base. Jean, tu peux vérifier les pompes ?",
+      "time": "10:35 AM",
+      "me": false
+     },
+     {
+      "from": "Jean",
+      "text": "Oui, Pierre. Je vérifie les pompes maintenant. Marie, peux-tu t'assurer que tout le matériel est en haut ?",
+      "time": "10:40 AM",
+      "me": false
+     },
+     {
+      "from": "Marie",
+      "text": "D'accord, Jean. Je m'occupe du matériel. Pierre, as-tu contacté les services d'urgence ?",
+      "time": "10:45 AM",
+      "me": false
+     },
+     {
+      "from": "Pierre",
+      "text": "Oui, Marie. Ils sont en route. Restons en contact. Tous, soyez prudents.",
+      "time": "10:50 AM",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -642,6 +1824,180 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "fr-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Town Hall Addresses Aging Population in Saint-Pierre",
+   "body": "Mairie de Saint-Pierre\nRéunion Publique sur le Vieillissement de la Population\nChers habitants de Saint-Pierre,\nLa mairie organise une réunion publique le 15 mars à 18h00 à la salle des fêtes pour discuter des défis liés au vieillissement de notre population. Nous constaterons ensemble que de plus en plus de nos aînés ont besoin de soutien.\nNous avons invité Mme. Dubois, une experte en gériatrie, pour parler des services disponibles et des solutions possibles. Nous discuterons également des activités pour les seniors et des moyens de les aider à rester actifs et engagés dans notre communauté.\nVotre participation est très importante pour nous. Nous comptons sur vous pour partager vos idées et vos préoccupations. Ensemble, nous pouvons faire de Saint-Pierre un endroit où il fait bon vieillir.\nPour plus d'informations, n'hésitez pas à contacter le bureau du maire au 04 75 82 00 00.\nCordialement,\n10 mars 2023\nMairie de Saint-Pierre, 1 Rue de la Mairie, 42000 Saint-Pierre",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Mairie de Saint-Pierre",
+    "title": "Réunion Publique sur le Vieillissement de la Population",
+    "paragraphs": [
+     "Chers habitants de Saint-Pierre,",
+     "La mairie organise une réunion publique le 15 mars à 18h00 à la salle des fêtes pour discuter des défis liés au vieillissement de notre population. Nous constaterons ensemble que de plus en plus de nos aînés ont besoin de soutien.",
+     "Nous avons invité Mme. Dubois, une experte en gériatrie, pour parler des services disponibles et des solutions possibles. Nous discuterons également des activités pour les seniors et des moyens de les aider à rester actifs et engagés dans notre communauté.",
+     "Votre participation est très importante pour nous. Nous comptons sur vous pour partager vos idées et vos préoccupations. Ensemble, nous pouvons faire de Saint-Pierre un endroit où il fait bon vieillir.",
+     "Pour plus d'informations, n'hésitez pas à contacter le bureau du maire au 04 75 82 00 00.",
+     "Cordialement,"
+    ],
+    "date": "10 mars 2023",
+    "contact": "Mairie de Saint-Pierre, 1 Rue de la Mairie, 42000 Saint-Pierre"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Town Hall Coordinates Airspace for Drone Operations",
+   "body": "Mairie de Saint-Pierre\nCoordination de l'espace aérien pour les opérations de drones\nChers habitants de Saint-Pierre,\nPour améliorer la sécurité et la coordination des opérations de drones dans notre région, la mairie travaille en étroite collaboration avec la Direction Générale de l'Aviation Civile (DGAC). À partir du 1er octobre, une zone spécifique sera dédiée aux vols de drones près de la base militaire. Cette zone sera clairement marquée sur les cartes aériennes et les applications de navigation.\nNous vous rappelons que l'utilisation des drones est soumise à des règles strictes. Il est interdit de survoler les zones résidentielles sans autorisation et de voler au-dessus de 120 mètres. Les contrevenants s'exposent à des amendes.\nPour plus d'informations, veuillez consulter notre site web ou contacter le service des affaires militaires à la mairie.\nMerci pour votre compréhension et votre coopération.\nCordialement,\n15 septembre 2023\nService des Affaires Militaires, Tél: 04 12 34 56 78",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Mairie de Saint-Pierre",
+    "title": "Coordination de l'espace aérien pour les opérations de drones",
+    "paragraphs": [
+     "Chers habitants de Saint-Pierre,",
+     "Pour améliorer la sécurité et la coordination des opérations de drones dans notre région, la mairie travaille en étroite collaboration avec la Direction Générale de l'Aviation Civile (DGAC). À partir du 1er octobre, une zone spécifique sera dédiée aux vols de drones près de la base militaire. Cette zone sera clairement marquée sur les cartes aériennes et les applications de navigation.",
+     "Nous vous rappelons que l'utilisation des drones est soumise à des règles strictes. Il est interdit de survoler les zones résidentielles sans autorisation et de voler au-dessus de 120 mètres. Les contrevenants s'exposent à des amendes.",
+     "Pour plus d'informations, veuillez consulter notre site web ou contacter le service des affaires militaires à la mairie.",
+     "Merci pour votre compréhension et votre coopération.",
+     "Cordialement,"
+    ],
+    "date": "15 septembre 2023",
+    "contact": "Service des Affaires Militaires, Tél: 04 12 34 56 78"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "New Drone Regulations Near Airfield",
+   "body": "Mairie de Saint-Pierre\nNouvelle Réglementation pour les Drones Près de la Base Aérienne\nChers résidents de Saint-Pierre,\nAfin d'assurer la sécurité de tous et le bon fonctionnement de la base aérienne de Marcel, de nouvelles règles concernant l'utilisation des drones ont été mises en place. Voici ce que vous devez savoir :\n1. **Zone d'exclusion** : Il est interdit de faire voler des drones à moins de 5 kilomètres de la base aérienne. Cette zone est clairement indiquée sur les cartes disponibles à la mairie.\n2. **Heures d'utilisation** : Les drones ne peuvent être utilisés qu'entre 8h00 et 18h00, du lundi au vendredi.\n3. **Enregistrement** : Tous les drones doivent être enregistrés auprès de la Direction Générale de l'Aviation Civile (DGAC).\n4. **Sanctions** : Le non-respect de ces règles peut entraîner des amendes allant jusqu'à 1500 euros et la confiscation du drone. En cas de mise en danger de la sécurité de la base, des poursuites pénales peuvent être engagées.\n15 mars 2023\nPour plus d'informations, veuillez contacter la mairie au 04 12 34 56 78 ou par email à mairie@saintpierre.fr.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Mairie de Saint-Pierre",
+    "title": "Nouvelle Réglementation pour les Drones Près de la Base Aérienne",
+    "paragraphs": [
+     "Chers résidents de Saint-Pierre,",
+     "Afin d'assurer la sécurité de tous et le bon fonctionnement de la base aérienne de Marcel, de nouvelles règles concernant l'utilisation des drones ont été mises en place. Voici ce que vous devez savoir :",
+     "1. **Zone d'exclusion** : Il est interdit de faire voler des drones à moins de 5 kilomètres de la base aérienne. Cette zone est clairement indiquée sur les cartes disponibles à la mairie.",
+     "2. **Heures d'utilisation** : Les drones ne peuvent être utilisés qu'entre 8h00 et 18h00, du lundi au vendredi.",
+     "3. **Enregistrement** : Tous les drones doivent être enregistrés auprès de la Direction Générale de l'Aviation Civile (DGAC).",
+     "4. **Sanctions** : Le non-respect de ces règles peut entraîner des amendes allant jusqu'à 1500 euros et la confiscation du drone. En cas de mise en danger de la sécurité de la base, des poursuites pénales peuvent être engagées."
+    ],
+    "date": "15 mars 2023",
+    "contact": "Pour plus d'informations, veuillez contacter la mairie au 04 12 34 56 78 ou par email à mairie@saintpierre.fr."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Security Log: Green Energy Park",
+   "body": "Parc Éolien de Montvert 12/05/2023\n07:30 M. Dubois de Énergie Propre arrive avec les plans pour le nouveau parc solaire. IL a besoin d'accès au bâtiment principal. (JL)\n10:15 Livraison de panneaux solaires par Transports Verts. 2 camions. Dois vérifier les documents avant déchargement. (CL)\n14:45 Réunion de M. Lefèvre et Mme Bernard avec les investisseurs de Bordeaux. Ils ont besoin de la salle de conférence. (JL)\n16:20 Problème avec le groupe électrogène. Technicien appelé. (CL)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Parc Éolien de Montvert",
+    "date": "12/05/2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "M. Dubois de Énergie Propre arrive avec les plans pour le nouveau parc solaire. IL a besoin d'accès au bâtiment principal. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "10:15",
+      "entry": "Livraison de panneaux solaires par Transports Verts. 2 camions. Dois vérifier les documents avant déchargement. (CL)",
+      "initials": "CL"
+     },
+     {
+      "time": "14:45",
+      "entry": "Réunion de M. Lefèvre et Mme Bernard avec les investisseurs de Bordeaux. Ils ont besoin de la salle de conférence. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "16:20",
+      "entry": "Problème avec le groupe électrogène. Technicien appelé. (CL)",
+      "initials": "CL"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-1p-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Security Log: Delivery Incident at Gate A",
+   "body": "Section de Sécurité du Parc Industriel de Marseille 2023-11-15\n08:30 Le livreur M. Dubois (Transports Rapides) arrive avec un colis pour l'usine 3. Pas de badge de visiteur. (JL)\n08:32 Demande d'identification. Dubois montre permis de conduire. Pas de liste de livraison signée. (JL)\n08:35 Appel à l'usine 3 pour confirmation. Ils attendent le colis mais n'ont pas prévenu la sécurité. (JL)\n08:40 Livreur autorisé à entrer après signature du registre. Note: Usine 3 doit informer la sécurité à l'avance. (JL)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Section de Sécurité du Parc Industriel de Marseille",
+    "date": "2023-11-15",
+    "entries": [
+     {
+      "time": "08:30",
+      "entry": "Le livreur M. Dubois (Transports Rapides) arrive avec un colis pour l'usine 3. Pas de badge de visiteur. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "08:32",
+      "entry": "Demande d'identification. Dubois montre permis de conduire. Pas de liste de livraison signée. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "08:35",
+      "entry": "Appel à l'usine 3 pour confirmation. Ils attendent le colis mais n'ont pas prévenu la sécurité. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "08:40",
+      "entry": "Livreur autorisé à entrer après signature du registre. Note: Usine 3 doit informer la sécurité à l'avance. (JL)",
+      "initials": "JL"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "fr-dr-2-biography-001",
    "exam": "DLPT_READING",
    "language": "fr",
@@ -746,6 +2102,96 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Upcoming Defense Exercise in Saint-Pierre",
+   "body": "Mairie de Saint-Pierre\nExercice de Défense à Saint-Pierre\nChers résidents,\nNous vous informons qu'un exercice de défense conjoint sera organisé par la base militaire locale et les forces françaises le jeudi 15 juin. Cet exercice, appelé 'Operation Shield', aura lieu entre 9h00 et 17h00.\nPendant cet exercice, vous pourriez entendre des bruits de sirènes, des hélicoptères et des véhicules militaires dans la région. Ces activités sont normales et font partie de l'exercice.\nCertaines routes près de la base, comme la Rue de la Gare et l'Avenue des Alliés, pourraient être temporairement fermées. Veuillez suivre les panneaux de signalisation et les instructions des forces de l'ordre.\nNous vous encourageons à rester calme et à suivre les conseils des autorités locales. Votre sécurité et votre coopération sont très importantes pour nous.\nPour plus d'informations, veuillez contacter le bureau du maire au 04 12 34 56 78 ou visiter notre site web à mairie-saintpierre.fr.\n10 juin 2023\nMaire: Jean-Luc Martin",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Mairie de Saint-Pierre",
+    "title": "Exercice de Défense à Saint-Pierre",
+    "paragraphs": [
+     "Chers résidents,",
+     "Nous vous informons qu'un exercice de défense conjoint sera organisé par la base militaire locale et les forces françaises le jeudi 15 juin. Cet exercice, appelé 'Operation Shield', aura lieu entre 9h00 et 17h00.",
+     "Pendant cet exercice, vous pourriez entendre des bruits de sirènes, des hélicoptères et des véhicules militaires dans la région. Ces activités sont normales et font partie de l'exercice.",
+     "Certaines routes près de la base, comme la Rue de la Gare et l'Avenue des Alliés, pourraient être temporairement fermées. Veuillez suivre les panneaux de signalisation et les instructions des forces de l'ordre.",
+     "Nous vous encourageons à rester calme et à suivre les conseils des autorités locales. Votre sécurité et votre coopération sont très importantes pour nous.",
+     "Pour plus d'informations, veuillez contacter le bureau du maire au 04 12 34 56 78 ou visiter notre site web à mairie-saintpierre.fr."
+    ],
+    "date": "10 juin 2023",
+    "contact": "Maire: Jean-Luc Martin"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Housing Shortages in Saint-Pierre",
+   "body": "Mairie de Saint-Pierre\nProblèmes de Logement à Saint-Pierre\nChers Résidents,\nNous savons que beaucoup d'entre vous ont des difficultés à trouver un logement abordable à Saint-Pierre. Le nombre de personnes cherchant un logement est plus élevé que le nombre de logements disponibles. Cette situation est difficile pour les familles et les travailleurs de notre ville.\nPour résoudre ce problème, la mairie travaille avec des promoteurs pour construire de nouveaux logements. Nous avons également lancé un programme de rénovation pour améliorer les logements existants. Ces mesures sont mises en place pour augmenter le nombre de logements disponibles et les rendre plus accessibles.\nNous comprenons que cette situation peut être stressante. Nous vous encourageons à rester en contact avec nos services pour obtenir des informations sur les aides disponibles et les nouvelles opportunités de logement. Vous pouvez visiter notre site web ou venir à la mairie pour plus de détails.\nMerci pour votre patience et votre compréhension.\nCordialement, Le Maire de Saint-Pierre, Jean-Luc Martin\n15 Juillet 2023\nTéléphone : 04 12 34 56 78, Email : mairie@saint-pierre.fr",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Mairie de Saint-Pierre",
+    "title": "Problèmes de Logement à Saint-Pierre",
+    "paragraphs": [
+     "Chers Résidents,",
+     "Nous savons que beaucoup d'entre vous ont des difficultés à trouver un logement abordable à Saint-Pierre. Le nombre de personnes cherchant un logement est plus élevé que le nombre de logements disponibles. Cette situation est difficile pour les familles et les travailleurs de notre ville.",
+     "Pour résoudre ce problème, la mairie travaille avec des promoteurs pour construire de nouveaux logements. Nous avons également lancé un programme de rénovation pour améliorer les logements existants. Ces mesures sont mises en place pour augmenter le nombre de logements disponibles et les rendre plus accessibles.",
+     "Nous comprenons que cette situation peut être stressante. Nous vous encourageons à rester en contact avec nos services pour obtenir des informations sur les aides disponibles et les nouvelles opportunités de logement. Vous pouvez visiter notre site web ou venir à la mairie pour plus de détails.",
+     "Merci pour votre patience et votre compréhension.",
+     "Cordialement, Le Maire de Saint-Pierre, Jean-Luc Martin"
+    ],
+    "date": "15 Juillet 2023",
+    "contact": "Téléphone : 04 12 34 56 78, Email : mairie@saint-pierre.fr"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Post-Rocket Alarm Reconnaissance in Saint-Pierre",
+   "body": "Mairie de Saint-Pierre\nAvis de Reconnaissance Poste-alerte: 14 Mai\nChers habitants de Saint-Pierre,\nSuite à l'alerte à la fusée ce matin à 8h30, la municipalité a mené une reconnaissance pour évaluer les éventuels dommages. Voici les informations importantes:\n1. Aucun dommage significatif n'a été signalé dans notre ville. Les équipes ont inspecté les bâtiments publics, les écoles, et les routes principales.\n2. Une légère fumée a été observée près de la zone industrielle, mais il s'agit d'une fausse alerte. Les pompiers ont vérifié et tout est sous contrôle.\n3. Les enfants de l'école primaire ont été mis en sécurité dans les abris comme prévu. Ils ont pu reprendre leurs activités normales après la fin de l'alerte.\n4. Nous tenons à remercier tous les résidents pour leur calme et leur coopération pendant cette situation stressante. Votre sécurité est notre priorité absolue.\n14 mai 2023\nPour plus d'informations, veuillez contacter le bureau de la mairie au 04 75 82 05 05.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Mairie de Saint-Pierre",
+    "title": "Avis de Reconnaissance Poste-alerte: 14 Mai",
+    "paragraphs": [
+     "Chers habitants de Saint-Pierre,",
+     "Suite à l'alerte à la fusée ce matin à 8h30, la municipalité a mené une reconnaissance pour évaluer les éventuels dommages. Voici les informations importantes:",
+     "1. Aucun dommage significatif n'a été signalé dans notre ville. Les équipes ont inspecté les bâtiments publics, les écoles, et les routes principales.",
+     "2. Une légère fumée a été observée près de la zone industrielle, mais il s'agit d'une fausse alerte. Les pompiers ont vérifié et tout est sous contrôle.",
+     "3. Les enfants de l'école primaire ont été mis en sécurité dans les abris comme prévu. Ils ont pu reprendre leurs activités normales après la fin de l'alerte.",
+     "4. Nous tenons à remercier tous les résidents pour leur calme et leur coopération pendant cette situation stressante. Votre sécurité est notre priorité absolue."
+    ],
+    "date": "14 mai 2023",
+    "contact": "Pour plus d'informations, veuillez contacter le bureau de la mairie au 04 75 82 05 05."
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -915,6 +2361,254 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Cyberattack on Saint-Étienne Water Treatment Plant",
+   "body": "Poste de Sécurité de la Ville 15 mars 2023\n08:00 Prise de poste. Tout est calme. (JD)\n10:30 Appel de M. Lefèvre de la station d'épuration. Problèmes informatiques. Ils pensent à une cyberattaque. (JD)\n10:45 Contacté la société informatique pour assistance. En attente. (JD)\n11:15 M. Dubois, le responsable informatique, arrive sur place. Il confirme une cyberattaque. (JD)\n12:00 Mise à jour: Le système de contrôle des pompes est affecté. M. Dubois travaille sur une solution. (JD)\n14:30 Appel à la mairie pour informer de la situation. Ils envoient M. Bernard pour évaluer les risques. (JD)\n16:00 M. Bernard arrive. Il discute avec M. Dubois. Ils décident de couper les systèmes affectés pour éviter toute contamination. (JD)\n18:00 Fin de mon poste. La situation est sous contrôle, mais les systèmes informatiques sont toujours en cours de réparation. (JD)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Poste de Sécurité de la Ville",
+    "date": "15 mars 2023",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "Prise de poste. Tout est calme. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "10:30",
+      "entry": "Appel de M. Lefèvre de la station d'épuration. Problèmes informatiques. Ils pensent à une cyberattaque. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "10:45",
+      "entry": "Contacté la société informatique pour assistance. En attente. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "11:15",
+      "entry": "M. Dubois, le responsable informatique, arrive sur place. Il confirme une cyberattaque. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "12:00",
+      "entry": "Mise à jour: Le système de contrôle des pompes est affecté. M. Dubois travaille sur une solution. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "14:30",
+      "entry": "Appel à la mairie pour informer de la situation. Ils envoient M. Bernard pour évaluer les risques. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "16:00",
+      "entry": "M. Bernard arrive. Il discute avec M. Dubois. Ils décident de couper les systèmes affectés pour éviter toute contamination. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "18:00",
+      "entry": "Fin de mon poste. La situation est sous contrôle, mais les systèmes informatiques sont toujours en cours de réparation. (JD)",
+      "initials": "JD"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Security Log: Insider Threat Training at Base Marcel",
+   "body": "Journal de garde 12 Juin 2023\n07:30 Début du quart. Tout est calme. (JD)\n08:00 Réunion d'information sur la sensibilisation aux menaces intérieures. Tout le personnel doit y assister. (JD)\n09:15 Formation commencée par le Sgt. Moreau. Il parle de l'importance de signaler les comportements suspects. (JD)\n10:45 Pause café. Discussions sur l'importance de la vigilance. Tout le monde semble engagé. (JD)\n11:15 Formation continue. Sgt. Moreau montre des exemples de menaces intérieures passées. (JD)\n12:30 Déjeuner. Le personnel discute de ce qu'ils ont appris ce matin. (JD)\n13:45 Formation reprend. Sgt. Moreau explique les procédures à suivre en cas de suspicion. (JD)\n15:00 Fin de la formation. Tout le monde semble bien informé. Distribution de brochures pour référence future. (JD)\n16:30 Fin du quart. Tout est calme. (JD)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Journal de garde",
+    "date": "12 Juin 2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "Début du quart. Tout est calme. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "08:00",
+      "entry": "Réunion d'information sur la sensibilisation aux menaces intérieures. Tout le personnel doit y assister. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "09:15",
+      "entry": "Formation commencée par le Sgt. Moreau. Il parle de l'importance de signaler les comportements suspects. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "10:45",
+      "entry": "Pause café. Discussions sur l'importance de la vigilance. Tout le monde semble engagé. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "11:15",
+      "entry": "Formation continue. Sgt. Moreau montre des exemples de menaces intérieures passées. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "12:30",
+      "entry": "Déjeuner. Le personnel discute de ce qu'ils ont appris ce matin. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "13:45",
+      "entry": "Formation reprend. Sgt. Moreau explique les procédures à suivre en cas de suspicion. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "15:00",
+      "entry": "Fin de la formation. Tout le monde semble bien informé. Distribution de brochures pour référence future. (JD)",
+      "initials": "JD"
+     },
+     {
+      "time": "16:30",
+      "entry": "Fin du quart. Tout est calme. (JD)",
+      "initials": "JD"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Security Log: Housing Protests in Lyon",
+   "body": "Sécurité 12/05/2023\n07:00 Arrivée de la relève. Tout est calme pour l'instant. La manifestation pour le logement prévue pour aujourd'hui est toujours à l'ordre du jour. (JB)\n09:30 Premiers manifestants arrivés place Bellecour. Ils sont environ 200. Bandes avec des messages comme 'Logement pour tous' et 'Contre la pénurie de logements'. (JB)\n11:15 La foule grossit. Maintenant environ 500 personnes. Certains commencent à scander des slogans contre la mairie. (JB)\n12:45 Quelques tensions avec la police. Un groupe a tenté de bloquer la rue de la République. La situation est sous contrôle. (JB)\n14:30 La manifestation se disperse progressivement. Certains groupes restent et discutent avec les forces de l'ordre. (JB)\n16:00 Fin de manifestation. Nettoyage en cours. Aucune arrestation signalée. (JB)\n17:30 Relève effectuée. Situation revenue à la normale. (ML)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Sécurité",
+    "date": "12/05/2023",
+    "entries": [
+     {
+      "time": "07:00",
+      "entry": "Arrivée de la relève. Tout est calme pour l'instant. La manifestation pour le logement prévue pour aujourd'hui est toujours à l'ordre du jour. (JB)",
+      "initials": "JB"
+     },
+     {
+      "time": "09:30",
+      "entry": "Premiers manifestants arrivés place Bellecour. Ils sont environ 200. Bandes avec des messages comme 'Logement pour tous' et 'Contre la pénurie de logements'. (JB)",
+      "initials": "JB"
+     },
+     {
+      "time": "11:15",
+      "entry": "La foule grossit. Maintenant environ 500 personnes. Certains commencent à scander des slogans contre la mairie. (JB)",
+      "initials": "JB"
+     },
+     {
+      "time": "12:45",
+      "entry": "Quelques tensions avec la police. Un groupe a tenté de bloquer la rue de la République. La situation est sous contrôle. (JB)",
+      "initials": "JB"
+     },
+     {
+      "time": "14:30",
+      "entry": "La manifestation se disperse progressivement. Certains groupes restent et discutent avec les forces de l'ordre. (JB)",
+      "initials": "JB"
+     },
+     {
+      "time": "16:00",
+      "entry": "Fin de manifestation. Nettoyage en cours. Aucune arrestation signalée. (JB)",
+      "initials": "JB"
+     },
+     {
+      "time": "17:30",
+      "entry": "Relève effectuée. Situation revenue à la normale. (ML)",
+      "initials": "ML"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "fr-dr-2-shift_log-004",
+   "exam": "DLPT_READING",
+   "language": "fr",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Security Log: Local Election in Saint-Étienne",
+   "body": "Log de sécurité du poste de garde - Mairie de Saint-Étienne 15 mai 2023\n07:00 Prise de poste par JL. Tout est calme. Préparation pour l'élection municipale aujourd'hui.\n08:30 Arrival de M. Dubois, le maire actuel, avec son équipe. Ils sont entrés par l'entrée principale.\n10:15 Un groupe de manifestants s'est rassemblé devant la mairie. Environ 15 personnes. Ils portent des pancartes contre la politique actuelle du logement. La police municipale est présente.\n12:00 Distribution des bulletins de vote a commencé. Tout se passe bien jusqu'à présent.\n14:30 Incident mineure: Un électeur a tenté d'entrer sans pièce d'identité. Résolu rapidement.\n16:45 Fin de la distribution des bulletins de vote. Les portes vont fermer bientôt.\n19:00 Fin de l'élection. Tout s'est bien passé. Fin de poste par JL. Prise de poste par MP.\n20:30 Vérification des locaux avant de fermer. Tout est en ordre.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Log de sécurité du poste de garde - Mairie de Saint-Étienne",
+    "date": "15 mai 2023",
+    "entries": [
+     {
+      "time": "07:00",
+      "entry": "Prise de poste par JL. Tout est calme. Préparation pour l'élection municipale aujourd'hui.",
+      "initials": "JL"
+     },
+     {
+      "time": "08:30",
+      "entry": "Arrival de M. Dubois, le maire actuel, avec son équipe. Ils sont entrés par l'entrée principale.",
+      "initials": "JL"
+     },
+     {
+      "time": "10:15",
+      "entry": "Un groupe de manifestants s'est rassemblé devant la mairie. Environ 15 personnes. Ils portent des pancartes contre la politique actuelle du logement. La police municipale est présente.",
+      "initials": "JL"
+     },
+     {
+      "time": "12:00",
+      "entry": "Distribution des bulletins de vote a commencé. Tout se passe bien jusqu'à présent.",
+      "initials": "JL"
+     },
+     {
+      "time": "14:30",
+      "entry": "Incident mineure: Un électeur a tenté d'entrer sans pièce d'identité. Résolu rapidement.",
+      "initials": "JL"
+     },
+     {
+      "time": "16:45",
+      "entry": "Fin de la distribution des bulletins de vote. Les portes vont fermer bientôt.",
+      "initials": "JL"
+     },
+     {
+      "time": "19:00",
+      "entry": "Fin de l'élection. Tout s'est bien passé. Fin de poste par JL. Prise de poste par MP.",
+      "initials": "JL"
+     },
+     {
+      "time": "20:30",
+      "entry": "Vérification des locaux avant de fermer. Tout est en ordre.",
+      "initials": "MP"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1412,6 +3106,114 @@
    "verified": false
   },
   {
+   "id": "fr-dr-0p-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-badge_form-001",
+   "stem": "What is the visitor's first name?",
+   "choices": [
+    "Jean",
+    "Dupont",
+    "Stade Municipal",
+    "Pierre"
+   ],
+   "answer": 3,
+   "explanation": "The visitor's first name is clearly stated as 'Prénom: Pierre' on the form.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-badge_form-001",
+   "stem": "What is the purpose of this document?",
+   "choices": [
+    "To provide a schedule for the sports championship",
+    "To grant access to the sports championship",
+    "To list the participants of the sports championship",
+    "To advertise the sports championship"
+   ],
+   "answer": 1,
+   "explanation": "The document is a 'BADGE DE VISITEUR' (Visitor Badge) which grants access to the 'Championnat de Sports' (Sports Championship).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-badge_form-002",
+   "stem": "What building is Sophie visiting?",
+   "choices": [
+    "Bureau des Finances",
+    "Bureau de la Sante",
+    "Bureau de l'Education",
+    "Bureau du Logement"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Bâtiment: Bureau du Logement', indicating that Sophie is visiting the Housing Office.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-badge_form-002",
+   "stem": "What is the main purpose of Sophie's visit?",
+   "choices": [
+    "To discuss financial regulations",
+    "To discuss health policies",
+    "To discuss urban housing shortages",
+    "To discuss educational reforms"
+   ],
+   "answer": 2,
+   "explanation": "The document states 'Objet de la visite: Pénurie de logements en ville', indicating that the main purpose of Sophie's visit is to discuss urban housing shortages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-badge_form-003",
+   "stem": "What is Jean-Luc Martin's address?",
+   "choices": [
+    "12/05/1975",
+    "06 12 34 56 78",
+    "13000 Saint-Pierre",
+    "15 Rue de la Paix, Saint-Pierre"
+   ],
+   "answer": 3,
+   "explanation": "The address is explicitly stated as '15 Rue de la Paix, Saint-Pierre' in the form.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-badge_form-003",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To report a security concern",
+    "To schedule a meeting with base officials",
+    "To record visitor details for security purposes",
+    "To request access to restricted areas"
+   ],
+   "answer": 2,
+   "explanation": "The form collects personal information and visit details, which are used for security and access control as indicated by the fields and the instruction to present the badge to security.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-0p-label-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1754,6 +3556,186 @@
    "verified": false
   },
   {
+   "id": "fr-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-schedule_board-002",
+   "stem": "When was Jean-Luc Martin detained?",
+   "choices": [
+    "16:00",
+    "15:00",
+    "14:30",
+    "14:00"
+   ],
+   "answer": 3,
+   "explanation": "The schedule shows 'Jean-Luc Martin' was detained at '14:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-schedule_board-002",
+   "stem": "What is the main topic of this schedule?",
+   "choices": [
+    "A security exercise",
+    "A drone inspection",
+    "A drone operator detention",
+    "A police investigation"
+   ],
+   "answer": 2,
+   "explanation": "The title 'Ordre de Service - Détention Opérateur Drone' and the action 'Détenu' indicate the main topic is a drone operator detention.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-schedule_board-003",
+   "stem": "Who is scheduled to fly the drone in the North zone on May 10?",
+   "choices": [
+    "Martin",
+    "Leroy",
+    "Bernard",
+    "Dupont"
+   ],
+   "answer": 3,
+   "explanation": "The schedule shows that Dupont is assigned to the North zone on 10/05.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-schedule_board-003",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To schedule regular drone maintenance",
+    "To organize drone racing events",
+    "To plan drone training sessions",
+    "To coordinate drone flights for flood relief"
+   ],
+   "answer": 3,
+   "explanation": "The title 'Opération Secours Inondation Lyon' indicates that the purpose is to coordinate drone flights for flood relief.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-signage-001",
+   "stem": "When are the local elections?",
+   "choices": [
+    "June 17th",
+    "June 16th",
+    "June 14th",
+    "June 15th"
+   ],
+   "answer": 3,
+   "explanation": "The sign states '15 JUIN' which translates to 'June 15th'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-signage-001",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To inform about a military exercise",
+    "To advertise a local festival",
+    "To announce a local election and its details",
+    "To warn about a restricted area"
+   ],
+   "answer": 2,
+   "explanation": "The sign mentions 'ÉLECTIONS LOCALES' and provides details about the voting date, time, and location, which indicates that its main purpose is to announce a local election and its details.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-signage-002",
+   "stem": "When will the bus route change take effect?",
+   "choices": [
+    "Next month",
+    "Immediately",
+    "At the end of the year",
+    "On May 15th"
+   ],
+   "answer": 3,
+   "explanation": "The sign states 'À PARTIR DU: 15 MAI', which translates to 'Starting from: May 15th'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To promote public transportation",
+    "To inform about a bus route change",
+    "To announce a new bus route",
+    "To advertise a new bus service"
+   ],
+   "answer": 1,
+   "explanation": "The sign's main purpose is to inform about changes in the bus route, as indicated by 'CHANGEMENT DE TRANSPORT' and 'BUS N°3 - NOUVELLE ROUTE'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "fr-dr-0p-signage-003",
+   "stem": "What are the operating hours for the humanitarian drones?",
+   "choices": [
+    "07:00 - 17:00",
+    "09:00 - 19:00",
+    "06:00 - 16:00",
+    "08:00 - 18:00"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Drones en action: 08:00 - 18:00', indicating the operating hours.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-0p-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "fr-dr-0p-signage-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a local election",
+    "To change bus route schedules",
+    "To inform about a humanitarian drone survey",
+    "To warn about a security threat"
+   ],
+   "answer": 2,
+   "explanation": "The notice mentions 'Opération Drone Humanitaire' and 'Enquête après l'inondation', indicating a humanitarian drone survey.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1-advertisement-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1966,6 +3948,222 @@
    ],
    "answer": 0,
    "explanation": "The announcement is reporting an interruption during a drone exercise: “Pendant l'exercice de drone aujourd'hui”. The other options are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-badge_form-001",
+   "stem": "What is the visitor's role in the exercise?",
+   "choices": [
+    "Instructor",
+    "Observer",
+    "Participant",
+    "Security"
+   ],
+   "answer": 1,
+   "explanation": "The document states 'Rôle: Observateur', indicating that the visitor's role is an observer.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-badge_form-001",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To request additional resources for a unit",
+    "To announce a change in base operations",
+    "To grant access to a military base for a specific exercise",
+    "To schedule a meeting with base personnel"
+   ],
+   "answer": 2,
+   "explanation": "The document is a visitor badge for 'Exercice: Défense Conjointe 2023', which grants access to a military base for a specific exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-badge_form-002",
+   "stem": "What is the visitor's job title?",
+   "choices": [
+    "Engineer",
+    "Security Engineer",
+    "Inspection Officer",
+    "Maintenance Worker"
+   ],
+   "answer": 1,
+   "explanation": "The document states 'Ingénieur en sécurité', which translates to 'Security Engineer'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-badge_form-002",
+   "stem": "What is the main purpose of the visitor's visit?",
+   "choices": [
+    "To conduct a security audit",
+    "To meet with airport staff",
+    "To inspect and maintain the counter-drone system",
+    "To tour the airport facilities"
+   ],
+   "answer": 2,
+   "explanation": "The document specifies 'Inspection et maintenance du système anti-drone', indicating that the main purpose is to inspect and maintain the counter-drone system.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-badge_form-003",
+   "stem": "What time is the visitor allowed to leave the venue?",
+   "choices": [
+    "08:00",
+    "18:00",
+    "17:00",
+    "19:00"
+   ],
+   "answer": 1,
+   "explanation": "The document states 'Heure de départ: 18:00', indicating the visitor is allowed to leave at 18:00.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-badge_form-003",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To provide directions to the venue",
+    "To advertise cycling equipment",
+    "To announce a sports event",
+    "To grant access to a specific area for a limited time"
+   ],
+   "answer": 3,
+   "explanation": "The document is a visitor badge that specifies the holder's access to the 'Stade Municipal' for the duration of the event on '10/06/2023', indicating its main purpose is to grant access to a specific area for a limited time.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-chat-001",
+   "stem": "What time is the vaccination campaign happening?",
+   "choices": [
+    "8 AM to 12 PM",
+    "3 PM to 7 PM",
+    "2 PM to 6 PM",
+    "1 PM to 5 PM"
+   ],
+   "answer": 3,
+   "explanation": "The French phrase 'C'est de 13h à 17h' translates to 'It's from 1 PM to 5 PM'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-chat-001",
+   "stem": "What is the main purpose of this conversation?",
+   "choices": [
+    "To discuss weekend plans",
+    "To organize a party",
+    "To remind about a vaccination campaign",
+    "To talk about school events"
+   ],
+   "answer": 2,
+   "explanation": "The conversation starts with 'La campagne de vaccination commence demain' (The vaccination campaign starts tomorrow) and continues to discuss details about it.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-chat-002",
+   "stem": "What is the main problem discussed in the conversation?",
+   "choices": [
+    "Traffic congestion",
+    "High cost of food",
+    "Housing shortage",
+    "Lack of job opportunities"
+   ],
+   "answer": 2,
+   "explanation": "The conversation revolves around the difficulty of finding housing in Bordeaux. For example, Sophie says \"J'ai essayé de trouver un appartement la semaine dernière. Rien!\" (I tried to find an apartment last week. Nothing!) and Luc mentions \"Toutes pleines\" (All full).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-chat-002",
+   "stem": "What is the main idea of this conversation?",
+   "choices": [
+    "The friends are discussing the difficulties of finding housing in the city",
+    "The friends are complaining about the weather",
+    "The friends are talking about their jobs",
+    "The friends are planning a trip to the suburbs"
+   ],
+   "answer": 0,
+   "explanation": "The main idea is that Luc and Sophie are discussing the challenges of finding housing in Bordeaux. They mention trying to find apartments, calling agencies, and considering looking in the suburbs due to the housing crisis.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-chat-003",
+   "stem": "When is the drill scheduled to start?",
+   "choices": [
+    "At 24h",
+    "At 1h",
+    "At 22h",
+    "At 23h"
+   ],
+   "answer": 3,
+   "explanation": "The message clearly states 'exercice d'urgence cette nuit à 23h', indicating the drill is scheduled to start at 23h.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-chat-003",
+   "stem": "What is the main purpose of the messages?",
+   "choices": [
+    "To arrange a social gathering",
+    "To request time off",
+    "To discuss personal plans",
+    "To coordinate a night drill"
+   ],
+   "answer": 3,
+   "explanation": "The main idea of the messages is to coordinate a night drill, as indicated by 'exercice d'urgence cette nuit' and the instructions to meet at the QG.",
    "source": "llm",
    "verified": false
   },
@@ -2402,6 +4600,150 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-schedule_board-001",
+   "stem": "Which drone control link was jammed?",
+   "choices": [
+    "Zone d'exercice Alpha",
+    "Zone d'exercice Charlie",
+    "Zone d'exercice Delta",
+    "Zone d'exercice Bravo"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Annulé - Brouillage' for 'Zone d'exercice Bravo', indicating that the jamming occurred there.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-schedule_board-001",
+   "stem": "What is the main topic of this document?",
+   "choices": [
+    "A change in drone exercise schedule",
+    "A drone control link jamming incident",
+    "A new drone technology demonstration",
+    "A successful drone exercise"
+   ],
+   "answer": 1,
+   "explanation": "The document discusses the jamming of a drone's control link during an exercise, as indicated by 'Incident de brouillage de liaison de contrôle de drone' and 'Annulé - Brouillage'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-schedule_board-002",
+   "stem": "What is the frequency for Base Aérienne 117 on Tuesday?",
+   "choices": [
+    "None of the above",
+    "123.45 MHz",
+    "127.00 MHz",
+    "125.75 MHz"
+   ],
+   "answer": 0,
+   "explanation": "The schedule does not list any activities for Base Aérienne 117 on Tuesday. The French words 'Unité 2: Base Aérienne 117' do not appear next to 'Mardi'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-schedule_board-002",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To plan social events for air defense personnel",
+    "To outline the radio procedures and frequencies for allied air defense units",
+    "To list the daily activities of each air defense unit",
+    "To schedule maintenance for air defense equipment"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is 'Horaires des procédures radio entre les unités de défense aérienne alliées', which translates to 'Schedules for radio procedures between allied air defense units'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-schedule_board-003",
+   "stem": "What time does the drone monitoring start on Tuesday?",
+   "choices": [
+    "9:00",
+    "8:00",
+    "10:00",
+    "11:00"
+   ],
+   "answer": 0,
+   "explanation": "The document states 'Mardi' (Tuesday) starts at '09:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-schedule_board-003",
+   "stem": "What is the primary purpose of this document?",
+   "choices": [
+    "To schedule drone monitoring at the harbor.",
+    "To coordinate airspace for drone operations.",
+    "To announce a new drone regulation.",
+    "To report a drone incident."
+   ],
+   "answer": 0,
+   "explanation": "The document is titled 'Horaires de Surveillance par Drones au Port de Saint-Pierre', indicating a schedule for drone monitoring at the harbor.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-schedule_board-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-schedule_board-004",
+   "stem": "Who works the morning shift on Wednesday?",
+   "choices": [
+    "Mme. Dubois",
+    "M. Dubois",
+    "M. Bernard",
+    "Mme. Lefèvre"
+   ],
+   "answer": 3,
+   "explanation": "The schedule indicates that Mme. Lefèvre works the 8h-16h (morning) shift on Wednesday, as shown in the first row, third column.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-schedule_board-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-schedule_board-004",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To assign cleaning tasks",
+    "To schedule family visits",
+    "To manage staff shifts for a retirement home",
+    "To organize medical appointments"
+   ],
+   "answer": 2,
+   "explanation": "The schedule is for the 'Maison de Retraite de Lyon', which is a retirement home, and it organizes staff shifts throughout the week.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2542,6 +4884,114 @@
    ],
    "answer": 0,
    "explanation": "The text uses \"nous discuterons\" to indicate what the participants will do at the meeting. The correct meaning is \"we will discuss\", as in \"nous discuterons des principes directeurs pour le développement responsable\", which translates to \"we will discuss the guiding principles for responsible development\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-signage-001",
+   "stem": "What specific group is the sign primarily addressing?",
+   "choices": [
+    "Children",
+    "Senior citizens",
+    "Young adults",
+    "Military personnel"
+   ],
+   "answer": 1,
+   "explanation": "The sign mentions 'notre aînés' and 'nos aînés qui sont plus fragiles', which refers to senior citizens.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-signage-001",
+   "stem": "What is the main purpose of the sign?",
+   "choices": [
+    "To inform about changes in flight schedules",
+    "To communicate safety measures for the aging population",
+    "To announce a new recreation facility",
+    "To advertise a community event"
+   ],
+   "answer": 1,
+   "explanation": "The sign states 'certaines mesures sont mises en place pour assurer la sécurité et le bien-être de tous, notamment nos aînés', indicating that the main purpose is to communicate safety measures for the aging population.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-signage-002",
+   "stem": "What does the sign say about the warning?",
+   "choices": [
+    "The threat is only a drill.",
+    "The threat is far away.",
+    "The threat is real and imminent.",
+    "The threat is not serious."
+   ],
+   "answer": 2,
+   "explanation": "The sign states 'LA MENACE EST RÉELLE ET IMMINENTE,' indicating that the threat is real and imminent.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To advertise a new product.",
+    "To inform about a security threat.",
+    "To announce a new rule.",
+    "To schedule a meeting."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the sign is to inform about a security threat, specifically 'MENACE DE MUNITIONS ERRANTES DÉTECTÉE.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "fr-dr-1-signage-003",
+   "stem": "Where has a swarm of small drones been observed?",
+   "choices": [
+    "Near the Bordeaux airport",
+    "Over the Port de la Lune",
+    "Above the military air base",
+    "In Bordeaux city center"
+   ],
+   "answer": 1,
+   "explanation": "The document explicitly mentions that the drones were observed 'AU-DESSUS DU PORT DE LA LUNE'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "fr-dr-1-signage-003",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To warn about a drone swarm and ensure safety",
+    "To announce a change in air traffic routes",
+    "To inform about a new military exercise",
+    "To advertise a new drone technology"
+   ],
+   "answer": 0,
+   "explanation": "The sign's main purpose is to warn about the drone swarm and instruct people to stay away for their safety, as indicated by 'RESTEZ À L'ÉCART DES DRONES ET ÉVITEZ LA ZONE DU PORT JUSQU'À NOUVEL ORDRE.'",
    "source": "llm",
    "verified": false
   },
@@ -2758,6 +5208,114 @@
    ],
    "answer": 2,
    "explanation": "The phrase \"faire entendre votre voix\" means to express your opinion through voting, as indicated by the context: \"C'est le moment de faire entendre votre voix et de participer à la vie de notre ville.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-chat-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A. Planning a vacation trip",
+    "B. Border crossing procedure",
+    "D. Time management tips",
+    "C. Car insurance details"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the border crossing procedure, as indicated by phrases like 'la procédure' and 'montre tes papiers au poste de douane'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-chat-001",
+   "stem": "What documents does Marc need to present at the border?",
+   "choices": [
+    "D. Birth certificate and ID card",
+    "A. Driver's license and registration",
+    "B. Passport and green card",
+    "C. Credit card and hotel reservation"
+   ],
+   "answer": 2,
+   "explanation": "Marc needs to present his 'passeport' and 'la carte verte' at the border, as mentioned in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A request for bus schedules in Saint-Étienne",
+    "A new bus route in Saint-Étienne",
+    "A change in bus routes in Saint-Étienne",
+    "A complaint about bus services in Saint-Étienne"
+   ],
+   "answer": 2,
+   "explanation": "The conversation is about changes in bus routes, specifically the replacement of line C with line 4 and modifications to line 5.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-chat-002",
+   "stem": "What specific change is mentioned about line 5?",
+   "choices": [
+    "It has increased its frequency",
+    "It no longer operates on weekends",
+    "It has been replaced by another line",
+    "It has a new stop near the park"
+   ],
+   "answer": 3,
+   "explanation": "Sophie mentions that 'La ligne 5 a un nouveau arrêt près du parc,' indicating a new stop near the park.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A routine check of the base's equipment",
+    "A flood warning and necessary preparations",
+    "A planned event at the base",
+    "A discussion about weather patterns"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is a flood warning and the necessary preparations, as indicated by the words \"Alerte météo : Inondation probable\" and the subsequent discussion about preparing the base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-chat-003",
+   "stem": "What specific task is Jean asked to do?",
+   "choices": [
+    "Check the pumps",
+    "Move the equipment to a higher location",
+    "Monitor the weather updates",
+    "Contact the emergency services"
+   ],
+   "answer": 0,
+   "explanation": "Jean is asked to check the pumps, as stated in the message \"Jean, tu peux vérifier les pompes ?\"",
    "source": "llm",
    "verified": false
   },
@@ -3194,6 +5752,186 @@
    "verified": false
   },
   {
+   "id": "fr-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-municipal_notice-001",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "Local cultural events for seniors",
+    "The history of Saint-Pierre",
+    "An upcoming public meeting about the aging population",
+    "A new policy for senior citizens"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is an upcoming public meeting about the aging population, as indicated by the words 'Réunion Publique sur le Vieillissement de la Population' and the details about the event.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-municipal_notice-001",
+   "stem": "Who is the guest speaker at the public meeting?",
+   "choices": [
+    "A local historian",
+    "The mayor of Saint-Pierre",
+    "A representative from a senior living facility",
+    "Mme. Dubois, an expert in geriatrics"
+   ],
+   "answer": 3,
+   "explanation": "The guest speaker is Mme. Dubois, an expert in geriatrics, as stated in the French text: 'Nous avons invité Mme. Dubois, une experte en gériatrie'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-municipal_notice-002",
+   "stem": "What is the main topic of the notice?",
+   "choices": [
+    "New regulations for drone operations in Saint-Pierre",
+    "Changes in local traffic laws",
+    "Upcoming military exercises in the area",
+    "Announcement of a new public holiday"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the notice is the coordination of airspace for drone operations, as indicated by the title and the content discussing the dedicated zone and rules for drone use.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-municipal_notice-002",
+   "stem": "What is the specific date mentioned for the start of the new drone operation rules?",
+   "choices": [
+    "12 September 2023",
+    "15 September 2023",
+    "120 meters",
+    "1 October 2023"
+   ],
+   "answer": 3,
+   "explanation": "The specific date mentioned for the start of the new drone operation rules is \"À partir du 1er octobre\", which translates to \"Starting from October 1st\" in English.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-municipal_notice-003",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To encourage residents to buy drones for personal use.",
+    "To announce a new drone racing event in the area.",
+    "To advertise drone sales and services in Saint-Pierre.",
+    "To inform residents about new drone regulations near the airfield."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to inform residents about new drone regulations, as indicated by the phrases 'de nouvelles règles concernant l'utilisation des drones ont été mises en place' and 'voici ce que vous devez savoir'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-municipal_notice-003",
+   "stem": "What is the distance of the exclusion zone around the airfield?",
+   "choices": [
+    "2 kilometers",
+    "10 kilometers",
+    "3 kilometers",
+    "5 kilometers"
+   ],
+   "answer": 3,
+   "explanation": "The exclusion zone is clearly stated as '5 kilomètres' in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-shift_log-002",
+   "stem": "What is the main topic of this security log?",
+   "choices": [
+    "Daily security incidents at a wind energy park",
+    "Renewable energy investment activities at a facility",
+    "Regular maintenance of solar panels",
+    "Visitor management for a conference"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is the activities related to renewable energy investment at the Parc Éolien de Montvert, as seen in entries about plans for a new solar park, delivery of solar panels, and meetings with investors.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-shift_log-002",
+   "stem": "Who arrived at 07:30 with plans for a new solar park?",
+   "choices": [
+    "M. Dubois",
+    "Mme Bernard",
+    "A technician",
+    "M. Lefèvre"
+   ],
+   "answer": 0,
+   "explanation": "The entry at 07:30 states 'M. Dubois de Énergie Propre arrive avec les plans pour le nouveau parc solaire,' indicating that M. Dubois arrived with the plans.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "fr-dr-1p-shift_log-003",
+   "stem": "What is the main issue in this log?",
+   "choices": [
+    "A package was lost during delivery.",
+    "A security guard failed to follow procedure.",
+    "A driver was turned away for not having a visitor badge.",
+    "A delivery driver entered without proper prior authorization."
+   ],
+   "answer": 3,
+   "explanation": "The main issue is that the delivery driver entered without proper prior authorization. The log states that the driver did not have a visitor badge and that the receiving facility (usine 3) did not notify security in advance (\"Note: Usine 3 doit informer la sécurité à l'avance\").",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-1p-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "fr-dr-1p-shift_log-003",
+   "stem": "What did the delivery driver show for identification?",
+   "choices": [
+    "A passport.",
+    "A company ID card.",
+    "A visitor badge.",
+    "A driver's license."
+   ],
+   "answer": 3,
+   "explanation": "The log explicitly states that the driver showed a permis de conduire (driver's license) for identification (\"montre permis de conduire\").",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "fr-dr-2-biography-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -3568,6 +6306,114 @@
    ],
    "answer": 0,
    "explanation": "'Les précipitations' refers to rainfall. The text states 'les précipitations devraient diminuer en soirée.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-municipal_notice-001",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To warn residents about an impending disaster.",
+    "To announce a new military base in Saint-Pierre.",
+    "To schedule a town hall meeting.",
+    "To inform residents about an upcoming defense exercise."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to inform residents about an upcoming defense exercise, as stated in the first paragraph: 'Nous vous informons qu'un exercice de défense conjoint sera organisé...'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-municipal_notice-001",
+   "stem": "What time will the defense exercise take place?",
+   "choices": [
+    "From 10:00 AM to 6:00 PM",
+    "From 8:00 AM to 4:00 PM",
+    "From 9:00 AM to 5:00 PM",
+    "From 7:00 AM to 3:00 PM"
+   ],
+   "answer": 2,
+   "explanation": "The exercise will take place from 9:00 AM to 5:00 PM, as mentioned in the second paragraph: 'Cet exercice... aura lieu entre 9h00 et 17h00.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-municipal_notice-002",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "Problems finding affordable housing in Saint-Pierre",
+    "New laws regarding rent control in Saint-Pierre",
+    "A list of available housing options in Saint-Pierre",
+    "Upcoming construction projects in Saint-Pierre"
+   ],
+   "answer": 0,
+   "explanation": "The notice discusses the difficulties residents are facing in finding affordable housing and the steps the town hall is taking to address this issue.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-municipal_notice-002",
+   "stem": "According to the notice, what is one action the town hall is taking to address the housing shortage?",
+   "choices": [
+    "Building new housing developments",
+    "Increasing property taxes",
+    "Closing down old apartment buildings",
+    "Reducing public transportation services"
+   ],
+   "answer": 0,
+   "explanation": "The notice states 'la mairie travaille avec des promoteurs pour construire de nouveaux logements,' indicating that new housing developments are being built.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To schedule a meeting for town residents.",
+    "To report a major incident in the town.",
+    "To announce a new safety regulation for the town.",
+    "To inform residents about the town's response to a rocket alarm."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to inform residents about the town's response to a rocket alarm, as indicated by the phrases 'Suite à l'alerte à la fusée' and 'Voici les informations importantes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-municipal_notice-003",
+   "stem": "What happened near the zone industrielle?",
+   "choices": [
+    "A slight smoke was observed but it was a false alarm.",
+    "A fire broke out and needed to be extinguished.",
+    "A rocket landed and caused significant damage.",
+    "A protest took place and blocked the roads."
+   ],
+   "answer": 0,
+   "explanation": "The notice states 'Une légère fumée a été observée près de la zone industrielle, mais il s'agit d'une fausse alerte', indicating that slight smoke was observed but it was a false alarm.",
    "source": "llm",
    "verified": false
   },
@@ -4162,6 +7008,150 @@
    ],
    "answer": 3,
    "explanation": "Here, \"périmètre\" refers to an area or boundary. The phrase indicates that unusual activity was reported near the southern boundary of the base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-shift_log-001",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A cyberattack on the Saint-Étienne water treatment plant",
+    "A visit from the mayor's office",
+    "A scheduled maintenance of the water treatment plant",
+    "A routine day at the security post"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the cyberattack on the Saint-Étienne water treatment plant, as evidenced by multiple entries mentioning the cyberattack and its impact on the plant's systems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-shift_log-001",
+   "stem": "What specific system was affected by the cyberattack?",
+   "choices": [
+    "The system of control des pompes (pump control system)",
+    "The customer billing system",
+    "The water filtration system",
+    "The employee scheduling system"
+   ],
+   "answer": 0,
+   "explanation": "The entry at 12:00 states 'Le système de contrôle des pompes est affecté,' indicating that the pump control system was affected.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-shift_log-002",
+   "stem": "What is the main focus of the shift log entries for this day?",
+   "choices": [
+    "An insider threat awareness training session",
+    "A visitor management exercise",
+    "A cybersecurity drill",
+    "A routine security check"
+   ],
+   "answer": 0,
+   "explanation": "The main focus is an insider threat awareness training session, as indicated by the words 'Réunion d'information sur la sensibilisation aux menaces intérieures' and 'Formation commencée par le Sgt. Moreau.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-shift_log-002",
+   "stem": "Who led the insider threat awareness training?",
+   "choices": [
+    "The base commander",
+    "JD",
+    "Sgt. Moreau",
+    "A visiting expert"
+   ],
+   "answer": 2,
+   "explanation": "The training was led by Sgt. Moreau, as stated in 'Formation commencée par le Sgt. Moreau.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-shift_log-003",
+   "stem": "What is the main topic of the security log?",
+   "choices": [
+    "A routine security check",
+    "A cyberattack on a local building",
+    "A protest about housing shortages",
+    "A celebration event in the city"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is a protest about housing shortages, as indicated by the repeated mentions of 'manifestation pour le logement' and messages like 'Logement pour tous'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-shift_log-003",
+   "stem": "How many people were initially reported at the protest?",
+   "choices": [
+    "200",
+    "500",
+    "20",
+    "1000"
+   ],
+   "answer": 0,
+   "explanation": "The log states 'Ils sont environ 200' at 09:30, indicating that initially, there were about 200 people at the protest.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-004-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "fr-dr-2-shift_log-004",
+   "stem": "What is the main focus of this shift log?",
+   "choices": [
+    "A report on housing shortages in Saint-Étienne.",
+    "A description of the mayor's daily routine.",
+    "A record of a cyberattack on the town's water treatment plant.",
+    "A detailed account of a local election day at the town hall."
+   ],
+   "answer": 3,
+   "explanation": "The main focus is on the events and incidents during the local election day, as indicated by phrases like 'Prise de poste par JL. Tout est calme. Préparation pour l'élection municipale aujourd'hui.' and 'Distribution des bulletins de vote a commencé.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "fr-dr-2-shift_log-004-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "fr-dr-2-shift_log-004",
+   "stem": "What was the minor incident that occurred at 14:30?",
+   "choices": [
+    "An elector trying to enter without identification.",
+    "A group of protesters gathering outside.",
+    "A power outage in the town hall.",
+    "A technical issue with the voting machines."
+   ],
+   "answer": 0,
+   "explanation": "The log states 'Incident mineure: Un électeur a tenté d'entrer sans pièce d'identité.'",
    "source": "llm",
    "verified": false
   },

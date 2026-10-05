@@ -21,6 +21,156 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ja-dr-0p-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Harbor Drone Incident Report",
+   "body": "来訪者バッジ / アクセスリクエストフォーム\n名前: 佐藤 太郎\n所属: 海上保安庁\n目的: 無人機群の調査\n訪問日: 2023年11月15日\n訪問時間: 08:00-17:00\n詳細: 横浜港上空に小型無人機の群れが確認されました。数は約50機。目的は不明です。\n署名: 佐藤 太郎\nこのバッジは2023年11月15日まで有効です。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "来訪者バッジ / アクセスリクエストフォーム",
+    "fields": [
+     {
+      "label": "名前",
+      "value": "佐藤 太郎"
+     },
+     {
+      "label": "所属",
+      "value": "海上保安庁"
+     },
+     {
+      "label": "目的",
+      "value": "無人機群の調査"
+     },
+     {
+      "label": "訪問日",
+      "value": "2023年11月15日"
+     },
+     {
+      "label": "訪問時間",
+      "value": "08:00-17:00"
+     },
+     {
+      "label": "詳細",
+      "value": "横浜港上空に小型無人機の群れが確認されました。数は約50機。目的は不明です。"
+     },
+     {
+      "label": "署名",
+      "value": "佐藤 太郎"
+     }
+    ],
+    "footer": "このバッジは2023年11月15日まで有効です。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-0p-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Visitor Access for Counter-Drone Exercise",
+   "body": "来訪者バッジ / 訪問許可申請書\n名前: 佐藤 太郎\n所属: 防衛省\n目的: 対ドローン演習\n訪問日: 2023年11月15日\n来場時間: 08:00 - 17:00\n連絡先: 090-1234-5678\n備考: 演習の教訓を学ぶため\n以上の内容で正しい場合は、下記の署名欄に署名してください。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "来訪者バッジ / 訪問許可申請書",
+    "fields": [
+     {
+      "label": "名前",
+      "value": "佐藤 太郎"
+     },
+     {
+      "label": "所属",
+      "value": "防衛省"
+     },
+     {
+      "label": "目的",
+      "value": "対ドローン演習"
+     },
+     {
+      "label": "訪問日",
+      "value": "2023年11月15日"
+     },
+     {
+      "label": "来場時間",
+      "value": "08:00 - 17:00"
+     },
+     {
+      "label": "連絡先",
+      "value": "090-1234-5678"
+     },
+     {
+      "label": "備考",
+      "value": "演習の教訓を学ぶため"
+     }
+    ],
+    "footer": "以上の内容で正しい場合は、下記の署名欄に署名してください。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-0p-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Shift Handover at Defense Operations Center",
+   "body": "訪問者バッジ / アクセス要求書\n氏名: 山田 太郎\n所属: 防衛作戦センター\n目的: シフト引継ぎ\n入場時間: 14:00\n退場時間: 16:00\n署名: 山田 太郎\n日付: 2023年11月15日\n基地ゲートで提示してください。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "訪問者バッジ / アクセス要求書",
+    "fields": [
+     {
+      "label": "氏名",
+      "value": "山田 太郎"
+     },
+     {
+      "label": "所属",
+      "value": "防衛作戦センター"
+     },
+     {
+      "label": "目的",
+      "value": "シフト引継ぎ"
+     },
+     {
+      "label": "入場時間",
+      "value": "14:00"
+     },
+     {
+      "label": "退場時間",
+      "value": "16:00"
+     },
+     {
+      "label": "署名",
+      "value": "山田 太郎"
+     },
+     {
+      "label": "日付",
+      "value": "2023年11月15日"
+     }
+    ],
+    "footer": "基地ゲートで提示してください。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-0p-label-001",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -101,6 +251,165 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-0p-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "No-Drone Zone Notice for Miyazaki Spring Festival",
+   "body": "宮崎春祭りにおけるドローン飛行禁止エリアのお知らせ\n日付 | 場所 | 時間 | 備考\n4月15日–4月17日 | 宮崎市中央公園 | 8:00–22:00 | ドローン飛行禁止\n4月15日–4月17日 | 宮崎基地周辺 | 8:00–22:00 | ドローン飛行禁止\n4月18日 | 宮崎市中央公園 | 8:00–18:00 | ドローン飛行禁止",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "宮崎春祭りにおけるドローン飛行禁止エリアのお知らせ",
+    "columns": [
+     "日付",
+     "場所",
+     "時間",
+     "備考"
+    ],
+    "rows": [
+     [
+      "4月15日–4月17日",
+      "宮崎市中央公園",
+      "8:00–22:00",
+      "ドローン飛行禁止"
+     ],
+     [
+      "4月15日–4月17日",
+      "宮崎基地周辺",
+      "8:00–22:00",
+      "ドローン飛行禁止"
+     ],
+     [
+      "4月18日",
+      "宮崎市中央公園",
+      "8:00–18:00",
+      "ドローン飛行禁止"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Harbor Drone Patrol Schedule",
+   "body": "はしけ港のドローンパトロールスケジュール\n日付 | 開始時間 | 終了時間 | オペレーター | ドローン数\n2023年10月1日 | 08:00 | 10:00 | 田中 | 10\n2023年10月2日 | 13:00 | 15:00 | 佐藤 | 15\n2023年10月3日 | 09:00 | 11:00 | 鈴木 | 12\n2023年10月4日 | 14:00 | 16:00 | 高橋 | 10\n2023年10月5日 | 10:00 | 12:00 | 伊藤 | 14",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "はしけ港のドローンパトロールスケジュール",
+    "columns": [
+     "日付",
+     "開始時間",
+     "終了時間",
+     "オペレーター",
+     "ドローン数"
+    ],
+    "rows": [
+     [
+      "2023年10月1日",
+      "08:00",
+      "10:00",
+      "田中",
+      "10"
+     ],
+     [
+      "2023年10月2日",
+      "13:00",
+      "15:00",
+      "佐藤",
+      "15"
+     ],
+     [
+      "2023年10月3日",
+      "09:00",
+      "11:00",
+      "鈴木",
+      "12"
+     ],
+     [
+      "2023年10月4日",
+      "14:00",
+      "16:00",
+      "高橋",
+      "10"
+     ],
+     [
+      "2023年10月5日",
+      "10:00",
+      "12:00",
+      "伊藤",
+      "14"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Allied Military Exercise Schedule",
+   "body": "日米合同訓練スケジュール\n日付 | 時刻 | 場所 | 内容\n10月15日 | 0800-1200 | 高山訓練場 | 日米合同戦闘訓練\n10月16日 | 1300-1700 | 高山飛行場 | 航空機操作訓練\n10月17日 | 0900-1100 | 高山海岸 | 上陸訓練\n10月18日 | 1400-1600 | 高山市内 | 緊急対応訓練",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "日米合同訓練スケジュール",
+    "columns": [
+     "日付",
+     "時刻",
+     "場所",
+     "内容"
+    ],
+    "rows": [
+     [
+      "10月15日",
+      "0800-1200",
+      "高山訓練場",
+      "日米合同戦闘訓練"
+     ],
+     [
+      "10月16日",
+      "1300-1700",
+      "高山飛行場",
+      "航空機操作訓練"
+     ],
+     [
+      "10月17日",
+      "0900-1100",
+      "高山海岸",
+      "上陸訓練"
+     ],
+     [
+      "10月18日",
+      "1400-1600",
+      "高山市内",
+      "緊急対応訓練"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-0p-sign-001",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -166,6 +475,60 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-0p-signage-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Drone Warning at Hokkaido Harbor",
+   "body": "北海道港\nドローン群の飛行\n注意：空域に大量の小型ドローンが飛行中\n飛行禁止区域：赤い線の内側\n海上自衛隊 根室基地\n2023年11月15日",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "北海道港",
+     "ドローン群の飛行",
+     "注意：空域に大量の小型ドローンが飛行中",
+     "飛行禁止区域：赤い線の内側",
+     "海上自衛隊 根室基地",
+     "2023年11月15日"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-0p-signage-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Temporary Housing for Air Base Personnel",
+   "body": "注意：住宅不足のため、\n一時的な住宅を提供します。\n対象：航空自衛隊員\n場所：入間基地内\n定員：50名\n期間：2023年10月～2024年3月",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "注意：住宅不足のため、",
+     "一時的な住宅を提供します。",
+     "対象：航空自衛隊員",
+     "場所：入間基地内",
+     "定員：50名",
+     "期間：2023年10月～2024年3月"
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-1-announcement-001",
    "exam": "DLPT_READING",
    "language": "ja",
@@ -195,6 +558,320 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Visitor Access for Local Election",
+   "body": "訪問者バッジ / アクセスリクエストフォーム\n名前: 佐藤 太郎\n住所: 東京都練馬区1-2-3\n目的: 選挙期間中のボランティア活動\n訪問先: 練馬区役所\n訪問日: 2023年10月15日\n訪問時間: 9:00 ~ 17:00\n連絡先: 090-1234-5678\n署名: 佐藤 太郎\n日付: 2023年10月15日\nこのバッジは、練馬区役所の選挙期間中のボランティア活動のために必要です。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "訪問者バッジ / アクセスリクエストフォーム",
+    "fields": [
+     {
+      "label": "名前",
+      "value": "佐藤 太郎"
+     },
+     {
+      "label": "住所",
+      "value": "東京都練馬区1-2-3"
+     },
+     {
+      "label": "目的",
+      "value": "選挙期間中のボランティア活動"
+     },
+     {
+      "label": "訪問先",
+      "value": "練馬区役所"
+     },
+     {
+      "label": "訪問日",
+      "value": "2023年10月15日"
+     },
+     {
+      "label": "訪問時間",
+      "value": "9:00 ~ 17:00"
+     },
+     {
+      "label": "連絡先",
+      "value": "090-1234-5678"
+     },
+     {
+      "label": "署名",
+      "value": "佐藤 太郎"
+     },
+     {
+      "label": "日付",
+      "value": "2023年10月15日"
+     }
+    ],
+    "footer": "このバッジは、練馬区役所の選挙期間中のボランティア活動のために必要です。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Visitor Access Request at Yokota Air Base",
+   "body": "訪問者バッジ / アクセスリクエストフォーム\n基地名: 横田飛行場\n氏名: 佐藤 花子\n生年月日: 1985年3月15日\n国籍: 日本\nパスポート番号: P12345678\n訪問目的: 友人との面会\n訪問先の部署/場所: 第33飛行隊\n訪問日時: 2023年10月15日 14:00-16:00\n連絡先: 090-1234-5678\n署名: 佐藤 花子\nこのバッジは、横田飛行場の許可区域へのアクセス権を示します。紛失した場合は、すぐに基地警備隊に連絡してください。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "訪問者バッジ / アクセスリクエストフォーム",
+    "fields": [
+     {
+      "label": "基地名",
+      "value": "横田飛行場"
+     },
+     {
+      "label": "氏名",
+      "value": "佐藤 花子"
+     },
+     {
+      "label": "生年月日",
+      "value": "1985年3月15日"
+     },
+     {
+      "label": "国籍",
+      "value": "日本"
+     },
+     {
+      "label": "パスポート番号",
+      "value": "P12345678"
+     },
+     {
+      "label": "訪問目的",
+      "value": "友人との面会"
+     },
+     {
+      "label": "訪問先の部署/場所",
+      "value": "第33飛行隊"
+     },
+     {
+      "label": "訪問日時",
+      "value": "2023年10月15日 14:00-16:00"
+     },
+     {
+      "label": "連絡先",
+      "value": "090-1234-5678"
+     },
+     {
+      "label": "署名",
+      "value": "佐藤 花子"
+     }
+    ],
+    "footer": "このバッジは、横田飛行場の許可区域へのアクセス権を示します。紛失した場合は、すぐに基地警備隊に連絡してください。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Visitor Access for Tourism Recovery Meeting",
+   "body": "来場者バッジ / アクセスリクエストフォーム\n名前:: 佐藤 花子\n所属組織:: 観光協会\n目的:: 観光復興会議への出席\n来場日:: 2023年10月15日\n来場時間:: 14:00 - 16:00\n連絡先:: 090-1234-5678\n署名:: 佐藤 花子\nこのバッジは10月15日まで有効です。基地内では常に携帯してください。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "来場者バッジ / アクセスリクエストフォーム",
+    "fields": [
+     {
+      "label": "名前:",
+      "value": "佐藤 花子"
+     },
+     {
+      "label": "所属組織:",
+      "value": "観光協会"
+     },
+     {
+      "label": "目的:",
+      "value": "観光復興会議への出席"
+     },
+     {
+      "label": "来場日:",
+      "value": "2023年10月15日"
+     },
+     {
+      "label": "来場時間:",
+      "value": "14:00 - 16:00"
+     },
+     {
+      "label": "連絡先:",
+      "value": "090-1234-5678"
+     },
+     {
+      "label": "署名:",
+      "value": "佐藤 花子"
+     }
+    ],
+    "footer": "このバッジは10月15日まで有効です。基地内では常に携帯してください。"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-chat-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "chat",
+   "title": "Opening of a New Hospital in Yokosuka",
+   "body": "田中さん: みんな、聞いた？横須賀に新しい病院ができたよ！横須賀中央病院っていうんだ。\n佐藤さん: 本当に？どこにあるの？\n田中さん: 港の近くの新しいビルだよ。とても綺麗な建物で、最新の設備が揃ってるみたい。\n佐藤さん: いつから利用できるの？\n田中さん: 来週の月曜日からだよ。急患も受け付けるみたいだから、便利になるね！",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "新しい病院の開院",
+    "messages": [
+     {
+      "from": "田中さん",
+      "text": "みんな、聞いた？横須賀に新しい病院ができたよ！横須賀中央病院っていうんだ。",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "佐藤さん",
+      "text": "本当に？どこにあるの？",
+      "time": "10:02 AM",
+      "me": true
+     },
+     {
+      "from": "田中さん",
+      "text": "港の近くの新しいビルだよ。とても綺麗な建物で、最新の設備が揃ってるみたい。",
+      "time": "10:05 AM",
+      "me": false
+     },
+     {
+      "from": "佐藤さん",
+      "text": "いつから利用できるの？",
+      "time": "10:07 AM",
+      "me": true
+     },
+     {
+      "from": "田中さん",
+      "text": "来週の月曜日からだよ。急患も受け付けるみたいだから、便利になるね！",
+      "time": "10:08 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "chat",
+   "title": "Drone Survey After Flood in Miyama",
+   "body": "田中さん: 佐藤さん、こんにちは。明日のドローン調査、時間は10時からです。宮山町の被害地域を撮影します。天気は雨ですが、調査は続けます。\n佐藤さん: はい、田中さん。場所はどこですか？持って行くものがあれば教えてください。\n田中さん: 宮山町役場の前で集合です。ドローンと充電器を持ってきてください。雨具も必要です。\n佐藤さん: 了解しました。明日に備えて準備します。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "水害後のドローン調査",
+    "messages": [
+     {
+      "from": "田中さん",
+      "text": "佐藤さん、こんにちは。明日のドローン調査、時間は10時からです。宮山町の被害地域を撮影します。天気は雨ですが、調査は続けます。",
+      "time": "2023年7月10日 15:30",
+      "me": false
+     },
+     {
+      "from": "佐藤さん",
+      "text": "はい、田中さん。場所はどこですか？持って行くものがあれば教えてください。",
+      "time": "2023年7月10日 15:35",
+      "me": true
+     },
+     {
+      "from": "田中さん",
+      "text": "宮山町役場の前で集合です。ドローンと充電器を持ってきてください。雨具も必要です。",
+      "time": "2023年7月10日 15:40",
+      "me": false
+     },
+     {
+      "from": "佐藤さん",
+      "text": "了解しました。明日に備えて準備します。",
+      "time": "2023年7月10日 15:45",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "chat",
+   "title": "Unusual Drone Sighting at Yokota Base",
+   "body": "田中さん: 山田さん、今、基地の上空にドローンを見ました。\n山田さん: どこにいましたか？\n田中さん: 西ゲートの近くです。黒くて小さいドローンでした。\n山田さん: 了解しました。すぐに報告します。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "LINEメッセージ",
+    "messages": [
+     {
+      "from": "田中さん",
+      "text": "山田さん、今、基地の上空にドローンを見ました。",
+      "time": "14:30",
+      "me": false
+     },
+     {
+      "from": "山田さん",
+      "text": "どこにいましたか？",
+      "time": "14:31",
+      "me": true
+     },
+     {
+      "from": "田中さん",
+      "text": "西ゲートの近くです。黒くて小さいドローンでした。",
+      "time": "14:32",
+      "me": false
+     },
+     {
+      "from": "山田さん",
+      "text": "了解しました。すぐに報告します。",
+      "time": "14:33",
+      "me": true
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -375,6 +1052,159 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Flood Warning for Takayama Residents",
+   "body": "洪水注意報\n日付 | 時間 | 場所 | 注意事項\n10月15日 | 8:00-20:00 | 高山市の川沿いの地域 | 洪水の危険があります。外出を控えてください。\n10月16日 | 6:00-18:00 | 高山市の低地 | 洪水の危険があります。必要な場合は、避難する準備をしてください。\n10月17日 | 7:00-19:00 | 高山市の全域 | 雨が続く予定です。洪水に備えてください。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "洪水注意報",
+    "columns": [
+     "日付",
+     "時間",
+     "場所",
+     "注意事項"
+    ],
+    "rows": [
+     [
+      "10月15日",
+      "8:00-20:00",
+      "高山市の川沿いの地域",
+      "洪水の危険があります。外出を控えてください。"
+     ],
+     [
+      "10月16日",
+      "6:00-18:00",
+      "高山市の低地",
+      "洪水の危険があります。必要な場合は、避難する準備をしてください。"
+     ],
+     [
+      "10月17日",
+      "7:00-19:00",
+      "高山市の全域",
+      "雨が続く予定です。洪水に備えてください。"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Alert: Loitering Munition Threat to Air Bases",
+   "body": "緊急: 空飛ぶ爆弾の脅威\n日付 | シフト | ゲート時間 | フライトラインスケジュール | 注意事項\n2023年11月1日(水) | Aシフト | 06:00-18:00 | 通常運用 | 空飛ぶ爆弾に注意\n2023年11月2日(木) | Bシフト | 06:00-18:00 | 通常運用 | 空飛ぶ爆弾に注意\n2023年11月3日(金) | Aシフト | 06:00-18:00 | 通常運用 | 空飛ぶ爆弾に注意\n2023年11月4日(土) | Bシフト | 06:00-18:00 | 通常運用 | 空飛ぶ爆弾に注意\n2023年11月5日(日) | Aシフト | 06:00-18:00 | 通常運用 | 空飛ぶ爆弾に注意",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "緊急: 空飛ぶ爆弾の脅威",
+    "columns": [
+     "日付",
+     "シフト",
+     "ゲート時間",
+     "フライトラインスケジュール",
+     "注意事項"
+    ],
+    "rows": [
+     [
+      "2023年11月1日(水)",
+      "Aシフト",
+      "06:00-18:00",
+      "通常運用",
+      "空飛ぶ爆弾に注意"
+     ],
+     [
+      "2023年11月2日(木)",
+      "Bシフト",
+      "06:00-18:00",
+      "通常運用",
+      "空飛ぶ爆弾に注意"
+     ],
+     [
+      "2023年11月3日(金)",
+      "Aシフト",
+      "06:00-18:00",
+      "通常運用",
+      "空飛ぶ爆弾に注意"
+     ],
+     [
+      "2023年11月4日(土)",
+      "Bシフト",
+      "06:00-18:00",
+      "通常運用",
+      "空飛ぶ爆弾に注意"
+     ],
+     [
+      "2023年11月5日(日)",
+      "Aシフト",
+      "06:00-18:00",
+      "通常運用",
+      "空飛ぶ爆弾に注意"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Flood Warning for Kawaura Residents",
+   "body": "川浦市民への洪水注意報\n日付 | 場所 | 時間 | 注意事項\n10月15日 | 川浦川周辺 | 14:00 - 18:00 | 川の水位が上昇しています。近づかないでください。\n10月16日 | 山間部 | 全日 | 土砂崩れの危険があります。外出を控えてください。\n10月17日 | 低地 | 10:00 - 16:00 | 浸水の恐れがあります。重要な物を高い場所に移動してください。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "川浦市民への洪水注意報",
+    "columns": [
+     "日付",
+     "場所",
+     "時間",
+     "注意事項"
+    ],
+    "rows": [
+     [
+      "10月15日",
+      "川浦川周辺",
+      "14:00 - 18:00",
+      "川の水位が上昇しています。近づかないでください。"
+     ],
+     [
+      "10月16日",
+      "山間部",
+      "全日",
+      "土砂崩れの危険があります。外出を控えてください。"
+     ],
+     [
+      "10月17日",
+      "低地",
+      "10:00 - 16:00",
+      "浸水の恐れがあります。重要な物を高い場所に移動してください。"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "ja",
@@ -422,6 +1252,114 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ja-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "signage",
+   "title": "Solar Panel Installation Notice",
+   "body": "太陽光パネル工事のお知らせ\n皆様へ\n当基地では、環境保護のため\n太陽光パネルの設置工事を\n開始いたします。\n工事期間: 2023年11月1日～12月31日",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "太陽光パネル工事のお知らせ",
+     "皆様へ",
+     "当基地では、環境保護のため",
+     "太陽光パネルの設置工事を",
+     "開始いたします。",
+     "工事期間: 2023年11月1日～12月31日"
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "signage",
+   "title": "Change in Admissions Process for Aomori University",
+   "body": "航空自衛隊青森基地\n入学試験変更のお知らせ\n青森大学\n航空自衛隊の協定により、\n入学試験の場所が変更になりました。\n新しい場所は、航空自衛隊青森基地の体育館です。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "航空自衛隊青森基地",
+     "入学試験変更のお知らせ",
+     "青森大学",
+     "航空自衛隊の協定により、",
+     "入学試験の場所が変更になりました。",
+     "新しい場所は、航空自衛隊青森基地の体育館です。"
+    ],
+    "kind": "info"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "signage",
+   "title": "New Trade Agreement Announcement",
+   "body": "新貿易協定のお知らせ\n皆様へ\nこの度、当空軍基地では\n新しい貿易協定が締結されました\n協定名: 東アジア経済同盟 (EAE)\n協定の主な内容: 物資の輸出入が容易になります。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "新貿易協定のお知らせ",
+     "皆様へ",
+     "この度、当空軍基地では",
+     "新しい貿易協定が締結されました",
+     "協定名: 東アジア経済同盟 (EAE)",
+     "協定の主な内容: 物資の輸出入が容易になります。"
+    ],
+    "kind": "info"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1-signage-004",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1",
+   "textType": "signage",
+   "title": "Drone Alert at Kita Harbor",
+   "body": "注意！\n北港上空に無人機の群れが確認されました。\n飛行禁止区域です。\n安全のため、無人機の操作を控えてください。\n北基地防衛隊\n2023年11月15日",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "注意！",
+     "北港上空に無人機の群れが確認されました。",
+     "飛行禁止区域です。",
+     "安全のため、無人機の操作を控えてください。",
+     "北基地防衛隊",
+     "2023年11月15日"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-1p-announcement-001",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -446,6 +1384,168 @@
    "language": "ja",
    "script": [],
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Rising Costs of Drone Defense",
+   "body": "山田太郎: 森さん、今日、基地の防衛について話しませんか？安いドローンが問題になっています。\n森花子: はい、了解しました。どのくらいのコストがかかるのですか？\n山田太郎: 最近の予算会議で、年間5億円が必要だと聞きました。ドローン対策システムの更新と訓練費用です。\n森花子: そんなに高いんですね。安いドローンでも対策が必要なのですね。\n山田太郎: はい、特に安いドローンは多くの数が飛来する可能性があるので、対策が重要です。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "守るコスト",
+    "messages": [
+     {
+      "from": "山田太郎",
+      "text": "森さん、今日、基地の防衛について話しませんか？安いドローンが問題になっています。",
+      "time": "2023年5月10日 10:00 AM",
+      "me": false
+     },
+     {
+      "from": "森花子",
+      "text": "はい、了解しました。どのくらいのコストがかかるのですか？",
+      "time": "2023年5月10日 10:05 AM",
+      "me": true
+     },
+     {
+      "from": "山田太郎",
+      "text": "最近の予算会議で、年間5億円が必要だと聞きました。ドローン対策システムの更新と訓練費用です。",
+      "time": "2023年5月10日 10:10 AM",
+      "me": false
+     },
+     {
+      "from": "森花子",
+      "text": "そんなに高いんですね。安いドローンでも対策が必要なのですね。",
+      "time": "2023年5月10日 10:15 AM",
+      "me": true
+     },
+     {
+      "from": "山田太郎",
+      "text": "はい、特に安いドローンは多くの数が飛来する可能性があるので、対策が重要です。",
+      "time": "2023年5月10日 10:20 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Unexploded Ordnance Near Air Base",
+   "body": "田中: みんな、聞いた？ 木更津基地の近くで不発弾が発見されたみたいよ。\n佐藤: 本当？ いつ発見されたの？\n田中: 昨日の午後遅くらしい。警備員が見つけたんだって。\n山本: 危険だね。基地の人々は安全なの？\n田中: 基地は一時的に封鎖されたみたい。専門家が処理するまで待つんだって。\n佐藤: 了解。みんな注意してね。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "",
+    "messages": [
+     {
+      "from": "田中",
+      "text": "みんな、聞いた？ 木更津基地の近くで不発弾が発見されたみたいよ。",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "佐藤",
+      "text": "本当？ いつ発見されたの？",
+      "time": "10:17 AM",
+      "me": false
+     },
+     {
+      "from": "田中",
+      "text": "昨日の午後遅くらしい。警備員が見つけたんだって。",
+      "time": "10:18 AM",
+      "me": false
+     },
+     {
+      "from": "山本",
+      "text": "危険だね。基地の人々は安全なの？",
+      "time": "10:20 AM",
+      "me": false
+     },
+     {
+      "from": "田中",
+      "text": "基地は一時的に封鎖されたみたい。専門家が処理するまで待つんだって。",
+      "time": "10:22 AM",
+      "me": false
+     },
+     {
+      "from": "佐藤",
+      "text": "了解。みんな注意してね。",
+      "time": "10:23 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Planning for the Sakura Festival",
+   "body": "ユウジ: 山田さん、こんにちは！今年の桜祭りについて話し合いましょう。4月10日に公園で開かれる予定です。\nユウジ: 去年よりも多くの屋台を準備したいと思っています。食べ物やお土産も充実させたいです。\n山田: 了解しました。屋台の数を増やすためには、ボランティアを募集する必要がありますね。\nユウジ: はい、そうなんです。SNSで広く呼びかけましょう。また、音楽ライブも企画したいです。\n山田: 良いアイデアですね。私も手伝います！具体的なスケジュールを決めましょう。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "LINE",
+    "messages": [
+     {
+      "from": "ユウジ",
+      "text": "山田さん、こんにちは！今年の桜祭りについて話し合いましょう。4月10日に公園で開かれる予定です。",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "ユウジ",
+      "text": "去年よりも多くの屋台を準備したいと思っています。食べ物やお土産も充実させたいです。",
+      "time": "10:02 AM",
+      "me": false
+     },
+     {
+      "from": "山田",
+      "text": "了解しました。屋台の数を増やすためには、ボランティアを募集する必要がありますね。",
+      "time": "10:05 AM",
+      "me": true
+     },
+     {
+      "from": "ユウジ",
+      "text": "はい、そうなんです。SNSで広く呼びかけましょう。また、音楽ライブも企画したいです。",
+      "time": "10:07 AM",
+      "me": false
+     },
+     {
+      "from": "山田",
+      "text": "良いアイデアですね。私も手伝います！具体的なスケジュールを決めましょう。",
+      "time": "10:10 AM",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dr-1p-email-001",
@@ -485,6 +1585,94 @@
    "language": "ja",
    "script": [],
    "engine": "tsumugi (pre-fork draft)"
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Upcoming Base Defense Exercise in Takayama",
+   "body": "高山町役場\n自衛隊との共同防衛訓練のご案内\n高山町の皆様、平素より大変お世話になっております。\nこのたび、高山町周辺で米軍基地と自衛隊との共同防衛訓練が行われます。訓練は来週の月曜日（5月20日）から金曜日（5月24日）までの予定です。\n訓練時間は午前9時から午後4時までで、主に町の北側の山岳地域で行われます。\nこの訓練により、多少の騒音や交通規制が生じる可能性がありますが、皆様のご理解とご協力をお願いいたします。\n詳細については、町役場のホームページまたは防災課までお問い合わせください。\n皆様のご協力をよろしくお願いいたします。\n2023年5月15日\n防災課 電話番号：0123-456-7890",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "高山町役場",
+    "title": "自衛隊との共同防衛訓練のご案内",
+    "paragraphs": [
+     "高山町の皆様、平素より大変お世話になっております。",
+     "このたび、高山町周辺で米軍基地と自衛隊との共同防衛訓練が行われます。訓練は来週の月曜日（5月20日）から金曜日（5月24日）までの予定です。",
+     "訓練時間は午前9時から午後4時までで、主に町の北側の山岳地域で行われます。",
+     "この訓練により、多少の騒音や交通規制が生じる可能性がありますが、皆様のご理解とご協力をお願いいたします。",
+     "詳細については、町役場のホームページまたは防災課までお問い合わせください。",
+     "皆様のご協力をよろしくお願いいたします。"
+    ],
+    "date": "2023年5月15日",
+    "contact": "防災課 電話番号：0123-456-7890"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Notice of Joint Military Exercise in Yamaguchi",
+   "body": "山口市役所\n自衛隊とオーストラリア軍の共同演習のお知らせ\n山口市の住民の皆様へ、\n来月15日から20日まで、山口市周辺で自衛隊とオーストラリア軍の共同演習が行われます。この演習は、両国の防衛協力を強化するために行われ、主に山口市の北部と東部で実施されます。\n演習中は、一部の道路が一時的に通行止めになる場合があります。具体的には、国道188号線と県道234号線の一部が影響を受ける可能性があります。詳細は、市役所のホームページでご確認ください。\nまた、演習中は大きな音がすることがありますので、ご心配ないようお願いいたします。\nこの演習は、地域の安全と平和を守るために非常に重要なものです。皆様のご理解とご協力をお願いいたします。\nお問い合わせ先：山口市役所防災安全課（電話番号：083-123-4567）\n2023年10月1日\n山口市役所防災安全課",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "山口市役所",
+    "title": "自衛隊とオーストラリア軍の共同演習のお知らせ",
+    "paragraphs": [
+     "山口市の住民の皆様へ、",
+     "来月15日から20日まで、山口市周辺で自衛隊とオーストラリア軍の共同演習が行われます。この演習は、両国の防衛協力を強化するために行われ、主に山口市の北部と東部で実施されます。",
+     "演習中は、一部の道路が一時的に通行止めになる場合があります。具体的には、国道188号線と県道234号線の一部が影響を受ける可能性があります。詳細は、市役所のホームページでご確認ください。",
+     "また、演習中は大きな音がすることがありますので、ご心配ないようお願いいたします。",
+     "この演習は、地域の安全と平和を守るために非常に重要なものです。皆様のご理解とご協力をお願いいたします。",
+     "お問い合わせ先：山口市役所防災安全課（電話番号：083-123-4567）"
+    ],
+    "date": "2023年10月1日",
+    "contact": "山口市役所防災安全課"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "No-Drone Zone during Takayama Autumn Festival",
+   "body": "高山町役場\n高山秋祭り期間中のドローン飛行禁止のお知らせ\n高山町役場です。高山空軍基地の近くで開催される高山秋祭りの期間中、安全を確保するため、ドローンの飛行を禁止します。\n禁止エリアは、高山公園、高山小学校、高山空軍基地の周辺です。日付は10月15日から10月20日までです。\nこの期間中にドローンを飛行させると、法的措置を取られる可能性があります。皆様のご理解とご協力をお願いします。\n詳細については、高山町役場までお問い合わせください。電話番号は057-123-4567です。\n2023年9月20日\n高山町役場 057-123-4567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "高山町役場",
+    "title": "高山秋祭り期間中のドローン飛行禁止のお知らせ",
+    "paragraphs": [
+     "高山町役場です。高山空軍基地の近くで開催される高山秋祭りの期間中、安全を確保するため、ドローンの飛行を禁止します。",
+     "禁止エリアは、高山公園、高山小学校、高山空軍基地の周辺です。日付は10月15日から10月20日までです。",
+     "この期間中にドローンを飛行させると、法的措置を取られる可能性があります。皆様のご理解とご協力をお願いします。",
+     "詳細については、高山町役場までお問い合わせください。電話番号は057-123-4567です。"
+    ],
+    "date": "2023年9月20日",
+    "contact": "高山町役場 057-123-4567"
+   },
+   "checkedBy": "gpt-oss:20b"
   },
   {
    "id": "ja-dr-1p-narrative-001",
@@ -579,6 +1767,147 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1p-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Drone Incident Near Osaka Airport",
+   "body": "空港セキュリティ部隊 2023年10月15日\n08:30 JASDFの巡回中、大阪国際空港近くで無許可のドローン操作を発見。操作者は田中健太（32歳、大阪府在住）と自己申告。\n09:15 田中が所持するドローンは重量2kg、カメラ付き。操作範囲は空港の制限区域内。\n10:00 大阪府警察に連絡し、田中を空港法違反の疑いで一時拘束。\n14:30 警察の調査により、田中は空港周辺の風景撮影を目的としていたことが判明。\n16:00 田中は釈放され、今後ドローン操作には許可を取得するよう指導。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "空港セキュリティ部隊",
+    "date": "2023年10月15日",
+    "entries": [
+     {
+      "time": "08:30",
+      "entry": "JASDFの巡回中、大阪国際空港近くで無許可のドローン操作を発見。操作者は田中健太（32歳、大阪府在住）と自己申告。",
+      "initials": "YS"
+     },
+     {
+      "time": "09:15",
+      "entry": "田中が所持するドローンは重量2kg、カメラ付き。操作範囲は空港の制限区域内。",
+      "initials": "YS"
+     },
+     {
+      "time": "10:00",
+      "entry": "大阪府警察に連絡し、田中を空港法違反の疑いで一時拘束。",
+      "initials": "YS"
+     },
+     {
+      "time": "14:30",
+      "entry": "警察の調査により、田中は空港周辺の風景撮影を目的としていたことが判明。",
+      "initials": "YS"
+     },
+     {
+      "time": "16:00",
+      "entry": "田中は釈放され、今後ドローン操作には許可を取得するよう指導。",
+      "initials": "YS"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Rising Costs of Drone Defense",
+   "body": "高山基地 2023年11月15日\n08:00 今日の防衛費の話し合いについて、田中課長から指示を受けました。安価な無人機による攻撃に対処するための予算が増加しているとのことです。\n10:30 無人機対策の新しいシステムの導入費用が予想以上に高額であることが問題として挙げられました。\n12:15 昼休みに、駐屯地の防衛システムの見直しについての議論がありました。安価な無人機に対処するための戦略が必要です。\n15:45 予算委員会で、無人機対策の予算が来年度も増額される見込みです。特に、小型無人機の検知と迎撃システムの強化が焦点となっています。\n17:30 今日一日の議論をまとめると、安価な無人機による脅威に対処するためには、高額な防衛システムの導入が避けられないようです。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "高山基地",
+    "date": "2023年11月15日",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "今日の防衛費の話し合いについて、田中課長から指示を受けました。安価な無人機による攻撃に対処するための予算が増加しているとのことです。",
+      "initials": "HY"
+     },
+     {
+      "time": "10:30",
+      "entry": "無人機対策の新しいシステムの導入費用が予想以上に高額であることが問題として挙げられました。",
+      "initials": "MS"
+     },
+     {
+      "time": "12:15",
+      "entry": "昼休みに、駐屯地の防衛システムの見直しについての議論がありました。安価な無人機に対処するための戦略が必要です。",
+      "initials": "HY"
+     },
+     {
+      "time": "15:45",
+      "entry": "予算委員会で、無人機対策の予算が来年度も増額される見込みです。特に、小型無人機の検知と迎撃システムの強化が焦点となっています。",
+      "initials": "MS"
+     },
+     {
+      "time": "17:30",
+      "entry": "今日一日の議論をまとめると、安価な無人機による脅威に対処するためには、高額な防衛システムの導入が避けられないようです。",
+      "initials": "HY"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-1p-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Security Post's Observations on Food Prices",
+   "body": "食糧価格の観察 2023年11月15日\n08:00 TK: 当地のスーパーマーケットで食料品の価格上昇を確認。特にご飯、パン、野菜の値上げが目立つ。\n10:30 YS: 地元の農家から聞いた話では、気候変動と輸送コストの増加が主な原因とのこと。\n12:15 TK: 給食センターの担当者と話をした。食材費が増加し、予算見直しが必要だとのこと。\n14:45 YS: 市場で話を聞くと、消費者は価格上昇に不満を持っているが、選択肢が少ない。\n16:00 TK: 今後の値上げが予想される。住民の生活に与える影響を注意深く監視する必要がある。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "食糧価格の観察",
+    "date": "2023年11月15日",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "TK: 当地のスーパーマーケットで食料品の価格上昇を確認。特にご飯、パン、野菜の値上げが目立つ。",
+      "initials": "TK"
+     },
+     {
+      "time": "10:30",
+      "entry": "YS: 地元の農家から聞いた話では、気候変動と輸送コストの増加が主な原因とのこと。",
+      "initials": "YS"
+     },
+     {
+      "time": "12:15",
+      "entry": "TK: 給食センターの担当者と話をした。食材費が増加し、予算見直しが必要だとのこと。",
+      "initials": "TK"
+     },
+     {
+      "time": "14:45",
+      "entry": "YS: 市場で話を聞くと、消費者は価格上昇に不満を持っているが、選択肢が少ない。",
+      "initials": "YS"
+     },
+     {
+      "time": "16:00",
+      "entry": "TK: 今後の値上げが予想される。住民の生活に与える影響を注意深く監視する必要がある。",
+      "initials": "TK"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -721,6 +2050,94 @@
    "engine": "tsumugi (pre-fork draft)"
   },
   {
+   "id": "ja-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Important Notice: Changes to Air Defense Radio Procedures",
+   "body": "武田町役場\n防空ラジオ手順の変更について\n武田町の住民の皆様へ、米軍基地との連携のための防空ラジオ手順が変更されます。この変更は、より効果的な防空システムを構築するために必要なものです。\n変更点の一つは、使用する周波数帯の変更です。これまで使用してきた123.456メガヘルツから、新たに456.789メガヘルツに変更されます。この変更は、通信の安定性と明瞭さを向上させるために行われます。\nまた、緊急時の連絡方法も変更されます。これまで使用してきた「緊急連絡」というコードワードは廃止され、新たに「レッド・アラート」というコードワードが導入されます。このコードワードは、全ての関係者が迅速に行動を起こせるようにするためのものです。\nこれらの変更は、2023年11月1日から施行されます。住民の皆様には、変更内容をよく理解し、新しい手順に従っていただくようお願いします。\n詳細な変更内容については、武田町役場のホームページまたは町役場窓口で配布されるパンフレットをご覧ください。\n皆様のご理解とご協力をよろしくお願いいたします。\n2023年10月15日\n武田町役場防災課 電話：012-345-6789",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "武田町役場",
+    "title": "防空ラジオ手順の変更について",
+    "paragraphs": [
+     "武田町の住民の皆様へ、米軍基地との連携のための防空ラジオ手順が変更されます。この変更は、より効果的な防空システムを構築するために必要なものです。",
+     "変更点の一つは、使用する周波数帯の変更です。これまで使用してきた123.456メガヘルツから、新たに456.789メガヘルツに変更されます。この変更は、通信の安定性と明瞭さを向上させるために行われます。",
+     "また、緊急時の連絡方法も変更されます。これまで使用してきた「緊急連絡」というコードワードは廃止され、新たに「レッド・アラート」というコードワードが導入されます。このコードワードは、全ての関係者が迅速に行動を起こせるようにするためのものです。",
+     "これらの変更は、2023年11月1日から施行されます。住民の皆様には、変更内容をよく理解し、新しい手順に従っていただくようお願いします。",
+     "詳細な変更内容については、武田町役場のホームページまたは町役場窓口で配布されるパンフレットをご覧ください。",
+     "皆様のご理解とご協力をよろしくお願いいたします。"
+    ],
+    "date": "2023年10月15日",
+    "contact": "武田町役場防災課 電話：012-345-6789"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "No-Drone Zone Notice for Takayama Autumn Festival",
+   "body": "高山町役場\n高山町秋祭り期間中のドローン飛行禁止について\n高山町役場では、毎年恒例の高山町秋祭りが10月15日（土）から10月17日（月）まで開催されます。この期間中、高山町内の指定エリアでは、ドローンの飛行が禁止されます。\nこの規制は、祭りの安全を確保し、住民の方々や観光客の皆様の迷惑を防ぐために設けられています。特に、高山基地の上空付近では、ドローンの飛行が厳しく制限されています。\nドローンを飛行させる場合は、必ず高山町役場の許可を得てください。許可なく飛行した場合、法的な措置を取ることがあります。\n皆様のご理解とご協力をお願いいたします。\n詳しい情報は、高山町役場のホームページまたはお電話（0123-45-6789）でご確認ください。\n2023年9月15日\n高山町役場 総務課",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "高山町役場",
+    "title": "高山町秋祭り期間中のドローン飛行禁止について",
+    "paragraphs": [
+     "高山町役場では、毎年恒例の高山町秋祭りが10月15日（土）から10月17日（月）まで開催されます。この期間中、高山町内の指定エリアでは、ドローンの飛行が禁止されます。",
+     "この規制は、祭りの安全を確保し、住民の方々や観光客の皆様の迷惑を防ぐために設けられています。特に、高山基地の上空付近では、ドローンの飛行が厳しく制限されています。",
+     "ドローンを飛行させる場合は、必ず高山町役場の許可を得てください。許可なく飛行した場合、法的な措置を取ることがあります。",
+     "皆様のご理解とご協力をお願いいたします。",
+     "詳しい情報は、高山町役場のホームページまたはお電話（0123-45-6789）でご確認ください。"
+    ],
+    "date": "2023年9月15日",
+    "contact": "高山町役場 総務課"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Notice of University Admission Policy Change in Takayama",
+   "body": "高山市役所\n高山大学の入学試験方式の変更について\n高山市役所です。高山大学から、入学試験方式が変更されることが決定しましたので、ご案内いたします。\n今まで通り、筆記試験と面接試験を行いますが、新たに「高山市に関する知識」を問う試験が加わります。この試験は、高山市の歴史、文化、産業などについての基本的な知識を評価するものです。\nこの変更は、高山大学が地域に根ざした教育を推進するために、地元の学生をより積極的に受け入れることを目的としています。高山市に関する知識を持つ学生が、地域社会に貢献できる人材として成長することを期待しています。\n試験日程や詳細な内容については、高山大学の公式ウェブサイトでご確認ください。また、高山市役所の教育課までお問い合わせください。\n高山市役所教育課 電話番号：012-345-6789\n2023年10月15日\n高山市役所教育課",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "高山市役所",
+    "title": "高山大学の入学試験方式の変更について",
+    "paragraphs": [
+     "高山市役所です。高山大学から、入学試験方式が変更されることが決定しましたので、ご案内いたします。",
+     "今まで通り、筆記試験と面接試験を行いますが、新たに「高山市に関する知識」を問う試験が加わります。この試験は、高山市の歴史、文化、産業などについての基本的な知識を評価するものです。",
+     "この変更は、高山大学が地域に根ざした教育を推進するために、地元の学生をより積極的に受け入れることを目的としています。高山市に関する知識を持つ学生が、地域社会に貢献できる人材として成長することを期待しています。",
+     "試験日程や詳細な内容については、高山大学の公式ウェブサイトでご確認ください。また、高山市役所の教育課までお問い合わせください。",
+     "高山市役所教育課 電話番号：012-345-6789"
+    ],
+    "date": "2023年10月15日",
+    "contact": "高山市役所教育課"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ja-dr-2-news-001",
    "exam": "DLPT_READING",
    "level": "2",
@@ -844,6 +2261,177 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Public Transit Adjustments in Tokyo",
+   "body": "東京メトロ警備日誌 2023年10月15日\n07:30 JT: 今日から銀座線の一部区間で工事のため、電車の運行が変わります。昼のラッシュ時間帯に影響が出る可能性があります。乗客の皆様にはご注意ください。\n09:15 KS: 丸ノ内線の一部駅でエスカレーターが故障しました。修理中のため、利用できません。階段をご利用ください。\n11:45 JT: 千代田線の一部列車が遅延しています。理由は不明ですが、乗客に遅延情報を伝えています。\n13:20 KS: 総武線の一部区間で人身事故が発生しました。列車の運行が一時停止しています。\n15:00 JT: 今日の夕方、半蔵門線で車両の点検のため、運行本数が減少します。乗客の皆様にはご理解とご協力をお願いします。\n16:30 KS: 空港線の一部駅で電力供給の問題が発生しました。現在、修理作業中です。\n18:00 JT: 今日一日の運行状況をまとめます。主要な遅延や運行変更は以上の通りです。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "東京メトロ警備日誌",
+    "date": "2023年10月15日",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "JT: 今日から銀座線の一部区間で工事のため、電車の運行が変わります。昼のラッシュ時間帯に影響が出る可能性があります。乗客の皆様にはご注意ください。",
+      "initials": "JT"
+     },
+     {
+      "time": "09:15",
+      "entry": "KS: 丸ノ内線の一部駅でエスカレーターが故障しました。修理中のため、利用できません。階段をご利用ください。",
+      "initials": "KS"
+     },
+     {
+      "time": "11:45",
+      "entry": "JT: 千代田線の一部列車が遅延しています。理由は不明ですが、乗客に遅延情報を伝えています。",
+      "initials": "JT"
+     },
+     {
+      "time": "13:20",
+      "entry": "KS: 総武線の一部区間で人身事故が発生しました。列車の運行が一時停止しています。",
+      "initials": "KS"
+     },
+     {
+      "time": "15:00",
+      "entry": "JT: 今日の夕方、半蔵門線で車両の点検のため、運行本数が減少します。乗客の皆様にはご理解とご協力をお願いします。",
+      "initials": "JT"
+     },
+     {
+      "time": "16:30",
+      "entry": "KS: 空港線の一部駅で電力供給の問題が発生しました。現在、修理作業中です。",
+      "initials": "KS"
+     },
+     {
+      "time": "18:00",
+      "entry": "JT: 今日一日の運行状況をまとめます。主要な遅延や運行変更は以上の通りです。",
+      "initials": "JT"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "New Admission Policy at Kyoto University",
+   "body": "セキュリティポスト 交替日誌\n京都大学 京都市左京区吉田神楽町\n\n 2023年10月15日\n07:30 田中：今日より大学入試の変更に関するポスターを掲示しました。\n08:15 佐藤：学生から「入試日程が変わったのはなぜ？」と質問がありました。ポスターの内容を説明しました。\n09:45 鈴木：新しい入試方式の説明会の案内を掲示しました。10月20日に学内講堂で開催予定です。\n11:20 高橋：入試変更に関する問い合わせが多いので、事務局に連絡し、スタッフを増員するよう要請しました。\n14:00 山本：入試変更のポスターが破損していたため、新しいものと交換しました。\n15:30 中村：説明会の案内をSNSに掲載しました。より多くの学生に情報を伝えるためです。\n16:45 小林：入試変更に関する質問をまとめたFAQを作成し、ポストに掲示しました。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "セキュリティポスト 交替日誌\n京都大学 京都市左京区吉田神楽町\n\n",
+    "date": "2023年10月15日",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "田中：今日より大学入試の変更に関するポスターを掲示しました。",
+      "initials": "T"
+     },
+     {
+      "time": "08:15",
+      "entry": "佐藤：学生から「入試日程が変わったのはなぜ？」と質問がありました。ポスターの内容を説明しました。",
+      "initials": "S"
+     },
+     {
+      "time": "09:45",
+      "entry": "鈴木：新しい入試方式の説明会の案内を掲示しました。10月20日に学内講堂で開催予定です。",
+      "initials": "I"
+     },
+     {
+      "time": "11:20",
+      "entry": "高橋：入試変更に関する問い合わせが多いので、事務局に連絡し、スタッフを増員するよう要請しました。",
+      "initials": "T"
+     },
+     {
+      "time": "14:00",
+      "entry": "山本：入試変更のポスターが破損していたため、新しいものと交換しました。",
+      "initials": "Y"
+     },
+     {
+      "time": "15:30",
+      "entry": "中村：説明会の案内をSNSに掲載しました。より多くの学生に情報を伝えるためです。",
+      "initials": "N"
+     },
+     {
+      "time": "16:45",
+      "entry": "小林：入試変更に関する質問をまとめたFAQを作成し、ポストに掲示しました。",
+      "initials": "K"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ja-dr-2-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "ja",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Unusual Activity: Drone Swarm Over Yokohama Harbor",
+   "body": "横浜港警備所 2023年11月15日\n07:30 JH: 当直開始。横浜港は静かです。特段の異常なし。\n10:45 YS: 港の上空に複数の小型ドローンが発見されました。数は約20機。無線で管制塔に連絡済み。\n11:10 JH: ドローンは低空を飛行し、港内を徘徊しています。貨物船や漁船に接近する様子はありません。\n12:00 YS: 警察と連絡を取り、現場にパトカーを派遣してもらいました。ドローンは依然として飛行を続けています。\n13:30 JH: ドローンの数が増えています。現在30機以上確認されています。管制塔も混乱しています。\n14:45 YS: ドローンは突然高度を上げ、南へ向かって飛び去りました。原因は不明です。\n16:20 JH: ドローンは完全に視界から消えました。当直終了まで特に異常なし。",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "横浜港警備所",
+    "date": "2023年11月15日",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "JH: 当直開始。横浜港は静かです。特段の異常なし。",
+      "initials": "JH"
+     },
+     {
+      "time": "10:45",
+      "entry": "YS: 港の上空に複数の小型ドローンが発見されました。数は約20機。無線で管制塔に連絡済み。",
+      "initials": "YS"
+     },
+     {
+      "time": "11:10",
+      "entry": "JH: ドローンは低空を飛行し、港内を徘徊しています。貨物船や漁船に接近する様子はありません。",
+      "initials": "JH"
+     },
+     {
+      "time": "12:00",
+      "entry": "YS: 警察と連絡を取り、現場にパトカーを派遣してもらいました。ドローンは依然として飛行を続けています。",
+      "initials": "YS"
+     },
+     {
+      "time": "13:30",
+      "entry": "JH: ドローンの数が増えています。現在30機以上確認されています。管制塔も混乱しています。",
+      "initials": "JH"
+     },
+     {
+      "time": "14:45",
+      "entry": "YS: ドローンは突然高度を上げ、南へ向かって飛び去りました。原因は不明です。",
+      "initials": "YS"
+     },
+     {
+      "time": "16:20",
+      "entry": "JH: ドローンは完全に視界から消えました。当直終了まで特に異常なし。",
+      "initials": "JH"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1301,6 +2889,114 @@
    "verified": false
   },
   {
+   "id": "ja-dr-0p-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-badge_form-001",
+   "stem": "How many drones were spotted over the harbor?",
+   "choices": [
+    "5000 drones",
+    "50 drones",
+    "500 drones",
+    "5 drones"
+   ],
+   "answer": 1,
+   "explanation": "The document states the number of drones as '約50機', which translates to approximately 50 drones.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dr-0p-badge_form-001",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To change the admissions process",
+    "To schedule a meeting",
+    "To announce a new trade agreement",
+    "To report an incident involving drones"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to report an incident, as indicated by the phrase '無人機群の調査', which translates to 'investigation of a drone swarm'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-badge_form-002",
+   "stem": "When will the visitor arrive at the base?",
+   "choices": [
+    "11 AM",
+    "8 AM",
+    "10 AM",
+    "9 AM"
+   ],
+   "answer": 1,
+   "explanation": "The visitor's arrival time is clearly stated as \"08:00\" in the form.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dr-0p-badge_form-002",
+   "stem": "What is the main purpose of the visitor's trip to the base?",
+   "choices": [
+    "To install solar panels",
+    "To attend a trade agreement meeting",
+    "To participate in a local election",
+    "To learn from a counter-drone exercise"
+   ],
+   "answer": 3,
+   "explanation": "The purpose of the visit is explicitly mentioned as \"対ドローン演習\" (counter-drone exercise) and \"演習の教訓を学ぶため\" (to learn from the exercise) in the form.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-badge_form-003",
+   "stem": "What is the purpose of the visit according to the form?",
+   "choices": [
+    "Equipment repair",
+    "Shift handover",
+    "Drone inspection",
+    "Security training"
+   ],
+   "answer": 1,
+   "explanation": "The form explicitly states 'シフト引継ぎ' (shift handover) as the purpose of the visit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dr-0p-badge_form-003",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To request a new access card",
+    "To grant permanent access to the base",
+    "To record visitor details for a specific visit",
+    "To schedule a meeting with base personnel"
+   ],
+   "answer": 2,
+   "explanation": "The form is used to record visitor details, including name, affiliation, purpose of visit, and times of entry and exit, as indicated by fields like '氏名' (name), '所属' (affiliation), '目的' (purpose), '入場時間' (entry time), and '退場時間' (exit time).",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-0p-label-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1517,6 +3213,114 @@
    "verified": false
   },
   {
+   "id": "ja-dr-0p-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-schedule_board-001",
+   "stem": "What are the dates for the no-drone zone during the Miyazaki Spring Festival?",
+   "choices": [
+    "April 25th–April 27th",
+    "April 10th–April 12th",
+    "April 15th–April 17th",
+    "April 20th–April 22nd"
+   ],
+   "answer": 2,
+   "explanation": "The notice states '4月15日–4月17日' for the no-drone zone dates.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dr-0p-schedule_board-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To schedule base defense exercises",
+    "To inform about festival events",
+    "To adjust public transit routes",
+    "To announce the no-drone zone"
+   ],
+   "answer": 3,
+   "explanation": "The notice is titled '宮崎春祭りにおけるドローン飛行禁止エリアのお知らせ', which translates to 'Notice of No-Drone Zone for the Miyazaki Spring Festival'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-schedule_board-002",
+   "stem": "How many drones are operated by Suzuki on October 3rd?",
+   "choices": [
+    "12",
+    "10",
+    "14",
+    "15"
+   ],
+   "answer": 0,
+   "explanation": "The schedule shows that 鈴木 operates 12 ドローン on 2023年10月3日.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dr-0p-schedule_board-002",
+   "stem": "What is the primary purpose of this document?",
+   "choices": [
+    "To plan drone patrols over a harbor",
+    "To manage food prices",
+    "To schedule a festival",
+    "To organize a military exercise"
+   ],
+   "answer": 0,
+   "explanation": "The document's title はしけ港のドローンパトロールスケジュール and content indicate it is for planning drone patrols over a harbor.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-schedule_board-003",
+   "stem": "What is the time for the joint combat training on October 15th?",
+   "choices": [
+    "0800-1200",
+    "0900-1100",
+    "1400-1600",
+    "1300-1700"
+   ],
+   "answer": 0,
+   "explanation": "The schedule shows '10月15日' with the time '0800-1200' for '日米合同戦闘訓練'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dr-0p-schedule_board-003",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To inform about a joint military exercise with the US",
+    "To advertise a university policy change",
+    "To warn about a flood",
+    "To announce a local festival"
+   ],
+   "answer": 0,
+   "explanation": "The schedule is titled '日米合同訓練スケジュール' and lists various training activities involving both Japanese and US forces.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-0p-sign-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1697,6 +3501,78 @@
    "verified": false
   },
   {
+   "id": "ja-dr-0p-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-signage-001",
+   "stem": "What is the main content of the warning?",
+   "choices": [
+    "The harbor is closed for maintenance.",
+    "The base is under construction.",
+    "There is a naval exercise taking place.",
+    "A large number of small drones are flying in the airspace."
+   ],
+   "answer": 3,
+   "explanation": "The sign explicitly states '注意：空域に大量の小型ドローンが飛行中' which translates to 'Warning: A large number of small drones are flying in the airspace.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ja-dr-0p-signage-001",
+   "stem": "What is the primary purpose of this sign?",
+   "choices": [
+    "To advertise a local event.",
+    "To provide directions to the base.",
+    "To inform about drone activity and restrict flying in certain areas.",
+    "To announce a new military operation."
+   ],
+   "answer": 2,
+   "explanation": "The sign's main purpose is to inform about the drone activity ('ドローン群の飛行') and restrict flying in specific areas ('飛行禁止区域：赤い線の内側').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ja-dr-0p-signage-003",
+   "stem": "Who is eligible for the temporary housing?",
+   "choices": [
+    "Only Maritime Self-Defense Force members",
+    "Only Air Self-Defense Force members",
+    "Only Ground Self-Defense Force members",
+    "All military personnel"
+   ],
+   "answer": 1,
+   "explanation": "The sign specifies \"航空自衛隊員\" (Air Self-Defense Force members) as the target recipients.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-0p-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "purpose",
+   "passageId": "ja-dr-0p-signage-003",
+   "stem": "What is the purpose of this sign?",
+   "choices": [
+    "To warn about housing shortages in cities",
+    "To mandate a change in living arrangements",
+    "To prohibit personnel from living off-base",
+    "To inform about a temporary housing program"
+   ],
+   "answer": 3,
+   "explanation": "The sign states \"一時的な住宅を提供します\" (We will provide temporary housing), indicating its purpose is to inform about a temporary housing program.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-1-announcement-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -1783,6 +3659,222 @@
    ],
    "answer": 3,
    "explanation": "The main point of the announcement is that Haneda Airport has installed \"無人機対策システム\" (a counter-drone system) to \"侵入を防止するため\" (prevent intrusions).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-badge_form-001",
+   "stem": "What is the visitor's purpose?",
+   "choices": [
+    "To cast a vote.",
+    "To volunteer during the election period.",
+    "To observe the election process.",
+    "To attend a local election."
+   ],
+   "answer": 1,
+   "explanation": "The visitor's purpose is stated as '選挙期間中のボランティア活動' (volunteer activity during the election period).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-badge_form-001",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To request access for volunteer activity.",
+    "To register a voter.",
+    "To announce election results.",
+    "To schedule an election."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of this form is to request access for volunteer activity during the election period, as indicated by the title and the purpose field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-badge_form-002",
+   "stem": "What is the visitor's purpose for entering Yokota Air Base?",
+   "choices": [
+    "To meet a friend",
+    "To attend a conference",
+    "To deliver a package",
+    "To conduct an inspection"
+   ],
+   "answer": 0,
+   "explanation": "The visitor's purpose is written as \"友人との面会\" (to meet a friend) in the form.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-badge_form-002",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To apply for a job",
+    "To request a day off",
+    "To report an incident",
+    "To gain access to the base"
+   ],
+   "answer": 3,
+   "explanation": "The form is titled \"訪問者バッジ / アクセスリクエストフォーム\" (Visitor Badge / Access Request Form), indicating its purpose is to gain access to the base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-badge_form-003",
+   "stem": "What is the visitor's purpose for coming to the base?",
+   "choices": [
+    "To participate in a drone exercise.",
+    "To attend a tourism recovery meeting.",
+    "To install solar panels.",
+    "To visit a trade agreement announcement."
+   ],
+   "answer": 1,
+   "explanation": "The visitor's purpose is clearly stated as '観光復興会議への出席' (To attend a tourism recovery meeting).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-badge_form-003",
+   "stem": "What is the main topic of the document?",
+   "choices": [
+    "A notice about a change in admissions process.",
+    "A report on a harbor drone incident.",
+    "An announcement about a new trade agreement.",
+    "A visitor's access request for a tourism-related meeting."
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the document is a visitor's access request for a tourism-related meeting, as indicated by the title and the purpose field '観光復興会議への出席' (To attend a tourism recovery meeting).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-chat-001",
+   "stem": "Where is the new hospital located?",
+   "choices": [
+    "In the city center",
+    "Far from the town",
+    "Near the train station",
+    "Next to the harbor"
+   ],
+   "answer": 3,
+   "explanation": "The text states the hospital is located near the harbor: \"港の近くの新しいビル\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-chat-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A new hospital opening",
+    "A change in working hours",
+    "A new shopping center",
+    "A local festival"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is the opening of a new hospital, as indicated by phrases like \"新しい病院\" and \"開院\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-chat-002",
+   "stem": "Where will the drone survey take place?",
+   "choices": [
+    "Miyama Town",
+    "Yokosuka",
+    "Tokyo",
+    "Yokota Air Base"
+   ],
+   "answer": 0,
+   "explanation": "The survey location is explicitly mentioned as '宮山町の被害地域' (Miyama Town's disaster area).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-chat-002",
+   "stem": "What is the main purpose of this message thread?",
+   "choices": [
+    "To discuss the weather forecast",
+    "To plan a drone survey after a flood",
+    "To arrange a meeting at the town hall",
+    "To prepare for a drone racing event"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is '水害後のドローン調査' (drone survey after a flood), as mentioned in the first message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-chat-003",
+   "stem": "Where was the drone sighted?",
+   "choices": [
+    "Near the west gate",
+    "In the center of the base",
+    "Above the main building",
+    "Near the east gate"
+   ],
+   "answer": 0,
+   "explanation": "The message states '西ゲートの近くです' which translates to 'Near the west gate'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-chat-003",
+   "stem": "What is the main purpose of this conversation?",
+   "choices": [
+    "To report a drone sighting",
+    "To discuss the weather",
+    "To arrange a flight schedule",
+    "To plan a meeting"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to report a drone sighting, as indicated by the phrases '今、基地の上空にドローンを見ました' and 'すぐに報告します'.",
    "source": "llm",
    "verified": false
   },
@@ -2417,6 +4509,114 @@
    "verified": false
   },
   {
+   "id": "ja-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-schedule_board-001",
+   "stem": "When is the flood warning for the riverside areas of Takayama?",
+   "choices": [
+    "October 16th, 6:00-18:00",
+    "October 14th, 8:00-20:00",
+    "October 17th, 7:00-19:00",
+    "October 15th, 8:00-20:00"
+   ],
+   "answer": 3,
+   "explanation": "The flood warning for the riverside areas of Takayama is explicitly stated as \"10月15日, 8:00-20:00\" in the schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-schedule_board-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a new law",
+    "To warn about flood dangers",
+    "To inform about a festival",
+    "To advertise a sale"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of this notice is to warn about flood dangers, as indicated by the title \"洪水注意報\" and the repeated mentions of \"洪水の危険\" in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-schedule_board-002",
+   "stem": "What is the main concern mentioned in the schedule?",
+   "choices": [
+    "Increased traffic at the gates",
+    "Change in shift timings",
+    "New flight routes",
+    "Loitering munition threat"
+   ],
+   "answer": 3,
+   "explanation": "The document explicitly mentions '空飛ぶ爆弾の脅威' (loitering munition threat) as the main concern.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-schedule_board-002",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To alert about a security threat and maintain regular operations",
+    "To announce a change in shift timings",
+    "To inform about new flight routes",
+    "To notify about a base defense exercise"
+   ],
+   "answer": 0,
+   "explanation": "The primary purpose is to alert about a security threat ('空飛ぶ爆弾に注意') and maintain regular operations ('通常運用').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-schedule_board-003",
+   "stem": "When are residents near Kawaura River advised not to approach the river?",
+   "choices": [
+    "October 16th, all day",
+    "October 15th, all day",
+    "October 17th, 10:00 AM - 4:00 PM",
+    "October 15th, 2:00 PM - 6:00 PM"
+   ],
+   "answer": 3,
+   "explanation": "The document states '10月15日, 川浦川周辺, 14:00 - 18:00, 川の水位が上昇しています。近づかないでください。', which translates to 'October 15th, near Kawaura River, 2:00 PM - 6:00 PM, The river water level is rising. Do not approach.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-schedule_board-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a change in school hours",
+    "To schedule a community cleanup event",
+    "To advise residents about potential flood dangers and necessary precautions",
+    "To inform residents about upcoming festivals"
+   ],
+   "answer": 2,
+   "explanation": "The notice is titled '川浦市民への洪水注意報' (Flood Warning for Kawaura Residents) and provides specific times, locations, and safety instructions related to potential flooding. The Japanese words '洪水注意報' (flood warning) and phrases like '近づかないでください' (do not approach) and '浸水の恐れがあります' (there is a risk of flooding) emphasize the main purpose.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2561,6 +4761,150 @@
    "verified": false
   },
   {
+   "id": "ja-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-signage-001",
+   "stem": "When will the solar panel installation work start?",
+   "choices": [
+    "October 15, 2023",
+    "December 1, 2023",
+    "January 1, 2024",
+    "November 1, 2023"
+   ],
+   "answer": 3,
+   "explanation": "The start date is clearly mentioned as \"2023年11月1日\" in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-signage-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce the start of solar panel installation work",
+    "To warn about incoming drones",
+    "To inform about a new military exercise",
+    "To prohibit access to certain areas"
+   ],
+   "answer": 0,
+   "explanation": "The notice mentions \"太陽光パネルの設置工事を開始いたします\" indicating the main purpose is to announce the start of solar panel installation work.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-signage-002",
+   "stem": "Where will the entrance exams for Aomori University take place?",
+   "choices": [
+    "At the Aomori city hall",
+    "At the university library",
+    "At the local community center",
+    "At the Aomori Air Self-Defense Force Base gymnasium"
+   ],
+   "answer": 3,
+   "explanation": "The document states that the new location for the entrance exams is '航空自衛隊青森基地の体育館' (Aomori Air Self-Defense Force Base gymnasium).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-signage-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To advertise a new facility at the air base",
+    "To announce a new sports event",
+    "To inform about a change in the university admissions process",
+    "To schedule a meeting for university staff"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the notice is to inform about a change in the university admissions process, specifically the location of the entrance exams.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-signage-003",
+   "stem": "What is the name of the new trade agreement mentioned in the sign?",
+   "choices": [
+    "East Asian Economic Alliance",
+    "West Asian Economic Alliance",
+    "Southeast Asian Economic Alliance",
+    "Northeast Asian Economic Alliance"
+   ],
+   "answer": 0,
+   "explanation": "The sign explicitly states the name of the agreement as \"東アジア経済同盟 (EAE)\", which translates to \"East Asian Economic Alliance\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-signage-003",
+   "stem": "What is the main purpose of the sign?",
+   "choices": [
+    "To warn about changes in security measures",
+    "To inform about changes in working hours",
+    "To announce a new trade agreement and its main content",
+    "To prohibit certain activities on the base"
+   ],
+   "answer": 2,
+   "explanation": "The sign begins with \"新貿易協定のお知らせ\", which means \"Announcement of a new trade agreement\", indicating that the main purpose is to inform about the new agreement and its content.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-signage-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ja-dr-1-signage-004",
+   "stem": "What does the sign warn about?",
+   "choices": [
+    "A military exercise near Kita Harbor",
+    "A swarm of small drones over Kita Harbor",
+    "A festival taking place at Kita Harbor",
+    "A change in public transit routes"
+   ],
+   "answer": 1,
+   "explanation": "The sign explicitly mentions '北港上空に無人機の群れが確認されました' which translates to 'A swarm of small drones over Kita Harbor.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1-signage-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ja-dr-1-signage-004",
+   "stem": "What is the main message of the sign?",
+   "choices": [
+    "To update the public on transit changes",
+    "To advertise a local festival",
+    "To announce a new military exercise",
+    "To inform about a drone swarm and prohibit drone operation"
+   ],
+   "answer": 3,
+   "explanation": "The main idea of the sign is to warn about the drone swarm and instruct people not to operate drones, as indicated by '飛行禁止区域です' and '無人機の操作を控えてください'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-1p-announcement-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -2665,6 +5009,114 @@
    ],
    "answer": 3,
    "explanation": "The sentence is 「日本語の説明もありますので、外国語がわからなくても大丈夫です」, giving Japanese explanations as the reason. The other reasons are not in the text.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-chat-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The importance of regular training exercises.",
+    "The number of drones flying over the base.",
+    "The rising cost of defending bases against cheap drones.",
+    "The cost of updating base security systems."
+   ],
+   "answer": 2,
+   "explanation": "The main topic is the rising cost of defending bases against cheap drones, as indicated by the phrases \"安いドローンが問題になっています\" and \"年間5億円が必要\" in the conversation.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-chat-001",
+   "stem": "What is the estimated annual cost to defend the base against drones?",
+   "choices": [
+    "500 billion yen",
+    "5 billion yen",
+    "50 billion yen",
+    "500 million yen"
+   ],
+   "answer": 1,
+   "explanation": "The estimated annual cost is \"年間5億円\" which translates to 5 billion yen.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A new drone technology",
+    "An unexploded ordnance near an air base",
+    "A scheduled maintenance at the air base",
+    "A visit from foreign dignitaries"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is an unexploded ordnance near an air base, as mentioned by the phrase 「木更津基地の近くで不発弾が発見されたみたいよ」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-chat-002",
+   "stem": "Who found the unexploded ordnance?",
+   "choices": [
+    "A security guard",
+    "An air force pilot",
+    "A maintenance crew",
+    "A local resident"
+   ],
+   "answer": 0,
+   "explanation": "The security guard found the unexploded ordnance, as indicated by the phrase 「警備員が見つけたんだって」.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Discussing a new business venture",
+    "Planning a cherry blossom festival",
+    "Preparing for a school reunion",
+    "Organizing a sports event"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is planning a cherry blossom festival, as indicated by the repeated mention of '桜祭り' (cherry blossom festival) and discussions about stalls, volunteers, and music live.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "purpose",
+   "passageId": "ja-dr-1p-chat-003",
+   "stem": "What is the purpose of the message sent by ユウジ at 10:00 AM?",
+   "choices": [
+    "To discuss plans for the cherry blossom festival",
+    "To ask for help with a personal matter",
+    "To invite 山田 for a coffee",
+    "To cancel a previous appointment"
+   ],
+   "answer": 0,
+   "explanation": "The purpose of the message is to discuss plans for the cherry blossom festival, as stated in the message '今年の桜祭りについて話し合いましょう' (Let's discuss this year's cherry blossom festival).",
    "source": "llm",
    "verified": false
   },
@@ -2827,6 +5279,114 @@
    ],
    "answer": 1,
    "explanation": "Right after saying the plum tree John helped plant has bloomed for the first time, she writes 「写真を同封しますので、見てください」 (I am enclosing a photo, please take a look), so the photo is of the tree's flowers. The graduation and the husband's walks are mentioned without any photo, and she encloses a photo, not an actual flower.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-municipal_notice-001",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To provide updates on local traffic regulations",
+    "To inform residents about an upcoming base defense exercise",
+    "To schedule a public meeting for community issues",
+    "To announce a new policy for town development"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to inform residents about an upcoming base defense exercise, as indicated by the title '自衛隊との共同防衛訓練のご案内' (Notice of Joint Defense Exercise with the Self-Defense Forces).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-municipal_notice-001",
+   "stem": "When will the base defense exercise take place?",
+   "choices": [
+    "From May 20th to May 24th",
+    "From May 15th to May 19th",
+    "From May 21st to May 25th",
+    "From May 18th to May 22nd"
+   ],
+   "answer": 0,
+   "explanation": "The exercise will take place from May 20th to May 24th, as stated in the notice: '訓練は来週の月曜日（5月20日）から金曜日（5月24日）までの予定です' (The training is scheduled from next Monday (May 20th) to Friday (May 24th)).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-municipal_notice-002",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To schedule a community meeting",
+    "To announce a new road construction project",
+    "To advertise a local festival",
+    "To inform residents about a joint military exercise"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the notice is to inform residents about the upcoming joint military exercise. This is clearly stated in the title and the first paragraph: '自衛隊とオーストラリア軍の共同演習のお知らせ' and '来月15日から20日まで、山口市周辺で自衛隊とオーストラリア軍の共同演習が行われます。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-municipal_notice-002",
+   "stem": "Which roads might be temporarily closed during the exercise?",
+   "choices": [
+    "National Route 188 and Prefectural Road 234",
+    "National Route 10 and Prefectural Road 34",
+    "National Route 1 and Prefectural Road 4",
+    "National Route 18 and Prefectural Road 24"
+   ],
+   "answer": 0,
+   "explanation": "The notice mentions that '国道188号線と県道234号線の一部が影響を受ける可能性があります。' which translates to 'National Route 188 and Prefectural Road 234 might be affected.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-municipal_notice-003",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "Upcoming military exercises near Takayama",
+    "New regulations for radio procedures",
+    "Changes to public transportation routes",
+    "A ban on drone flying during the Takayama Autumn Festival"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the notice is stated at the beginning: \"高山秋祭り期間中のドローン飛行禁止のお知らせ\" which translates to \"No-Drone Zone during Takayama Autumn Festival.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-municipal_notice-003",
+   "stem": "When is the no-drone zone in effect?",
+   "choices": [
+    "From October 15th to October 20th",
+    "From September 20th to September 25th",
+    "From October 1st to October 7th",
+    "From November 1st to November 7th"
+   ],
+   "answer": 0,
+   "explanation": "The notice specifies the dates as \"10月15日から10月20日まで\" which translates to \"from October 15th to October 20th.\"",
    "source": "llm",
    "verified": false
   },
@@ -3205,6 +5765,114 @@
    ],
    "answer": 2,
    "explanation": "The writer is discussing the cost of living in an apartment, and 「家賃」 refers to the rent. This is clear from the sentence: 「東京の家賃は高くて、予算内で見つけるのが難しいです。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-shift_log-001",
+   "stem": "What is the main topic of this log?",
+   "choices": [
+    "A drone operator detained near an airport",
+    "A new security protocol being implemented",
+    "A routine security check at the airport",
+    "A planned drone exercise near the airport"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is clearly indicated by the repeated mentions of the drone operator (田中健太) and the incident near the airport (大阪国際空港).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-shift_log-001",
+   "stem": "What was the weight of the drone confiscated from Tanaka?",
+   "choices": [
+    "C 2kg",
+    "A 1kg",
+    "B 1.5kg",
+    "D 2.5kg"
+   ],
+   "answer": 0,
+   "explanation": "The log entry at 09:15 explicitly states that the drone weighed 2kg (重量2kg).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-shift_log-002",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "New military exercises in Takayama",
+    "The cost of defending against cheap drones",
+    "University admission policy updates",
+    "Changes in public transit in Tokyo"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the shift log is the cost of defending against cheap drones, as indicated by phrases like \"安価な無人機による攻撃に対処するための予算\" and \"無人機対策の予算が来年度も増額される見込み\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-shift_log-002",
+   "stem": "What specific area of drone defense is mentioned as needing improvement?",
+   "choices": [
+    "Detection and interception systems",
+    "Drone fuel efficiency",
+    "Drone pilot training",
+    "Drone maintenance facilities"
+   ],
+   "answer": 0,
+   "explanation": "The specific area of drone defense mentioned as needing improvement is \"小型無人機の検知と迎撃システムの強化\", which translates to detection and interception systems.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ja-dr-1p-shift_log-003",
+   "stem": "What is the main focus of the security post's shift log?",
+   "choices": [
+    "The security post's shift log focuses on the planning of a local festival.",
+    "The security post's shift log focuses on the rising costs of food and its impact on the local community.",
+    "The security post's shift log focuses on the drone sightings near the base.",
+    "The security post's shift log focuses on the adjustments in public transit."
+   ],
+   "answer": 1,
+   "explanation": "The main focus is on the rising costs of food and its impact on the local community, as indicated by the repeated mentions of food price increases and their effects.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-1p-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ja-dr-1p-shift_log-003",
+   "stem": "What is one of the main reasons for the price increase mentioned in the log?",
+   "choices": [
+    "The main reason for the price increase is the increase in transportation costs and climate change.",
+    "The main reason for the price increase is the rising cost of imported goods.",
+    "The main reason for the price increase is the decrease in local production.",
+    "The main reason for the price increase is the government's new tax policies."
+   ],
+   "answer": 0,
+   "explanation": "The log mentions '気候変動と輸送コストの増加が主な原因' (climate change and increased transportation costs are the main reasons).",
    "source": "llm",
    "verified": false
   },
@@ -3803,6 +6471,114 @@
    "verified": false
   },
   {
+   "id": "ja-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-municipal_notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To provide details about upcoming construction work",
+    "To announce a new festival in the town",
+    "To inform residents about changes in public transportation",
+    "To inform residents about changes in air defense radio procedures"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the notice is to inform residents about changes in air defense radio procedures, as stated in the first sentence: 「武田町の住民の皆様へ、米軍基地との連携のための防空ラジオ手順が変更されます。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-municipal_notice-001",
+   "stem": "What is the new frequency band that will be used for air defense radio communications?",
+   "choices": [
+    "987.654 megahertz",
+    "123.456 megahertz",
+    "789.123 megahertz",
+    "456.789 megahertz"
+   ],
+   "answer": 3,
+   "explanation": "The new frequency band is 456.789 megahertz, as mentioned in the sentence: 「これまで使用してきた123.456メガヘルツから、新たに456.789メガヘルツに変更されます。」",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-municipal_notice-002",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To promote tourism in Takayama town",
+    "To discuss the history of the Takayama Autumn Festival",
+    "To announce the dates of the Takayama Autumn Festival",
+    "To inform residents about a no-drone zone during the festival"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the notice is to inform residents about the no-drone zone during the Takayama Autumn Festival, as indicated by the title and the repeated mentions of the drone restrictions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-municipal_notice-002",
+   "stem": "What is the date range for the Takayama Autumn Festival?",
+   "choices": [
+    "September 15th to September 17th",
+    "October 10th to October 12th",
+    "October 15th to October 17th",
+    "October 20th to October 22nd"
+   ],
+   "answer": 2,
+   "explanation": "The notice states that the Takayama Autumn Festival will be held from October 15th (Saturday) to October 17th (Monday), using the words '10月15日（土）から10月17日（月）まで開催されます。'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To promote tourism in Takayama",
+    "To provide contact information for the city hall",
+    "To announce a new university admission policy change",
+    "To discuss the history of Takayama University"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to announce a change in the university admission policy, as indicated by the phrase \"高山大学の入学試験方式の変更について\" (Regarding the change in Takayama University's entrance examination method).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-municipal_notice-003",
+   "stem": "What new test will be added to the admission process?",
+   "choices": [
+    "A test on foreign languages",
+    "A test on global history",
+    "A test on advanced mathematics",
+    "A test on Takayama's knowledge"
+   ],
+   "answer": 3,
+   "explanation": "The notice states that a new test on \"高山市に関する知識\" (knowledge about Takayama City) will be added to the admission process.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ja-dr-2-news-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -4375,6 +7151,114 @@
    ],
    "answer": 2,
    "explanation": "The text uses \"対処\" in the phrase \"緊急事態への迅速な対処能力を向上させる\" indicating that it means to respond to or deal with something, specifically emergencies in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-shift_log-001",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "Daily security incidents",
+    "Weather updates",
+    "Criminal activities",
+    "Public transportation changes"
+   ],
+   "answer": 3,
+   "explanation": "The main topic of the shift log is public transportation changes, as indicated by repeated mentions of changes in train operations, delays, and other transit-related issues.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-shift_log-001",
+   "stem": "Which line experienced a reduction in the number of trains due to vehicle inspection?",
+   "choices": [
+    "Chiyoda Line",
+    "Hanzomon Line",
+    "Marunouchi Line",
+    "Ginza Line"
+   ],
+   "answer": 1,
+   "explanation": "The Hanzomon Line (半蔵門線) is mentioned as having a reduction in the number of trains due to vehicle inspection (車両の点検のため、運行本数が減少します).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-shift_log-002",
+   "stem": "What is the main topic of the shift log entries?",
+   "choices": [
+    "Maintenance of university buildings",
+    "Student protests against new rules",
+    "Changes in university admission policy",
+    "Security breaches on campus"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is changes in university admission policy, as indicated by phrases like \"大学入試の変更\" and \"新しい入試方式\" in multiple entries.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-shift_log-002",
+   "stem": "When is the information session about the new admission method scheduled?",
+   "choices": [
+    "October 20th",
+    "October 30th",
+    "October 15th",
+    "October 25th"
+   ],
+   "answer": 0,
+   "explanation": "The information session is scheduled for October 20th, as mentioned in the entry: \"10月20日に学内講堂で開催予定です\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ja-dr-2-shift_log-003",
+   "stem": "What is the main topic of this log?",
+   "choices": [
+    "Communication with the control tower",
+    "A swarm of drones over Yokohama Harbor",
+    "Daily routine at the security post",
+    "Police patrol activities"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is clearly indicated by multiple entries discussing the drones, such as '港の上空に複数の小型ドローンが発見されました' and 'ドローンの数が増えています'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ja-dr-2-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ja-dr-2-shift_log-003",
+   "stem": "How many drones were initially spotted?",
+   "choices": [
+    "40 machines",
+    "10 machines",
+    "20 machines",
+    "30 machines"
+   ],
+   "answer": 2,
+   "explanation": "The log states '数は約20機' when the drones are first discovered.",
    "source": "llm",
    "verified": false
   },
