@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -23,6 +24,25 @@ from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 
 LANG_IDS = {"ja": "ja", "es": "es", "fr": "fr", "de": "de", "pt-BR": "pt", "ru": "ru", "zh-Hans": "zh", "ko": "ko", "ar": "ar",
             "fa": None, "id": "ms"}  # fa: not supported by the model; id: Malay is the closest (logged listening test)
+
+
+SENTENCE_END = re.compile(r"(?<=[.!?。！？؟])\s*")
+
+
+def chunks(text: str, limit: int = 220) -> list[str]:
+    """Sentence-sized pieces of at most ~[limit] characters: Chatterbox stops after ~1000 speech tokens (~40 s), so a long
+    answer generated in one call was cut off. Sentences are kept whole unless one alone is over the limit."""
+    out: list[str] = []
+    cur = ""
+    for sent in (x.strip() for x in SENTENCE_END.split(text) if x.strip()):
+        if cur and len(cur) + len(sent) + 1 > limit:
+            out.append(cur)
+            cur = sent
+        else:
+            cur = f"{cur} {sent}".strip() if cur else sent
+    if cur:
+        out.append(cur)
+    return out or [text]
 
 
 def yield_to_other_work() -> None:
@@ -51,6 +71,7 @@ def main() -> int:
     ap.add_argument("refs")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--shard", default="0/1", help="i/n: render every n-th job starting at i (run n processes on one GPU)")
+    ap.add_argument("--max-jobs", type=int, default=0, help="exit after this many clips (Chatterbox leaks memory; a fresh process frees it)")
     ap.add_argument("--threads", type=int, default=4, help="CPU threads per process; parallel shards oversubscribe the CPU otherwise")
     a = ap.parse_args()
     yield_to_other_work()
@@ -72,16 +93,22 @@ def main() -> int:
         t0 = time.time()
         pieces = []
         gap = np.zeros(int(sr * job.get("pause", 0.6)), dtype=np.float32)
+        short_gap = np.zeros(int(sr * 0.25), dtype=np.float32)
         for ln in job["lines"]:
             kw = {"audio_prompt_path": str(refs / ln["ref"])} if ln.get("ref") else {}
-            wav = model.generate(ln["text"], language_id=lid, **kw)
-            pieces += [wav.squeeze(0).cpu().numpy().astype(np.float32), gap]
+            parts = chunks(ln["text"])
+            for k, piece in enumerate(parts):
+                wav = model.generate(piece, language_id=lid, **kw)
+                pieces += [wav.squeeze(0).cpu().numpy().astype(np.float32), short_gap if k < len(parts) - 1 else gap]
         tmp = target.with_suffix(".part.wav")
         sf.write(tmp, np.concatenate(pieces), sr, subtype="PCM_16")
         tmp.replace(target)
         done += 1
         print(f"render {job['lang']} {job['id']}: {sum(len(p) for p in pieces) / sr:.1f}s audio in {time.time() - t0:.1f}s", flush=True)
-        if a.limit and done >= a.limit:
+        del pieces
+        if device == "cuda":
+            torch.cuda.empty_cache()
+        if (a.limit and done >= a.limit) or (a.max_jobs and done >= a.max_jobs):
             break
     print(f"chatterbox_render: {done} rendered", flush=True)
     return 0
