@@ -792,3 +792,31 @@ ja 90/90 · es 90/90 · fr 90/90 · de 90/90 · pt-BR 90/90 · ru 90/90 · zh-Ha
 **Shortfall after three drafting rounds:** ko 87 / 90 and ar 81 / 90. Arabic answers keep slipping English acronyms
 in, and the script check rejects them. Close with:
 `cd tools && uv run --group content python exemplars/build_exemplars.py --language ko,ar`.
+
+## N-14 — v0.3.0 pre-release ✅
+
+https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.3.0 — **pre-release**, tag `v0.3.0` at 6563aac.
+Assets: `Mokuhyo-0.3.0-windows-x64.msi`, `-windows-x64-portable.zip`, `-macos-arm64.dmg`, `-macos-x64.dmg`,
+`Mokuhyo-0.3.0-sbom.cdx.json` (CycloneDX, BRIEF_PHASE8 N-11) and `SHA256SUMS`.
+- The installers bundle the Phase 9 packs with pre-rendered audio for every listening passage, dialogue and exemplar
+  answer: Chatterbox in nine languages, VOICEVOX for Japanese exam listening, Piper for Persian; Indonesian uses the OS
+  voice.
+- All native libraries (macOS arm64 Metal/CPU, macOS x64, Windows x64 CPU/Vulkan) were rebuilt with the prompted Whisper
+  entry point.
+
+**Gate `tools/gates/gate_release.sh v0.3.0`: PASS.**
+- It is a pre-release, not a draft.
+- All installers, the SBOM and `SHA256SUMS` are present, and GitHub's digests match.
+- The macOS fresh-install smokes passed: arm64 natively and Intel under Rosetta. Both confirm
+  `NSMicrophoneUsageDescription` in the app's Info.plist.
+- `gate_core` and `gate_content` passed at the release commit.
+
+**Pending (owner):** the Windows install check, and the Windows OS-voice and capture checks (N-00, N-00b).
+
+**Incident logged:** worktree symlinks for `voices/build` and `voices/models` were committed on `phase9` (the ignore
+rule had a trailing slash, so it didn't match a symlink). The merge into main replaced main's real Piper builds and voice
+models with self-referencing links. Both are regenerable build outputs: Piper was rebuilt and the models re-fetched and
+checksum-verified, the links are untracked on both branches, and the ignore rules now match symlinks.
+
+**Note:** the Persian exemplar answers are Piper-rendered and score 67 % in the Whisper round trip. That matches the
+Persian voice's known mispronunciations, which are labelled in the app.

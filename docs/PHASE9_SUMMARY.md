@@ -15,7 +15,7 @@ became an owner decision) in `docs/DECISIONS.md`.
 | N-02 | Numbers under stress (ICU spellout, spelling alphabets, 500-item generated set) | PASS |
 | N-03 | Exercise-week storyline with a remembering counterpart | PASS |
 | N-04 | Rater calibration harness and confidence band | PASS on fixtures; owner input missing ("uncalibrated") |
-| N-05 | Exemplar answers at ILR 1+, 2, 3 with "why" notes, audio, linked from the AAB | see `docs/PROGRESS.md` |
+| N-05 | Exemplar answers at ILR 1+, 2, 3 with "why" notes, audio, linked from the AAB | PASS, ko 87 / ar 81 of 90 |
 | N-06 | Degraded-audio listening (radio, phone, noise, wind) | PASS |
 | N-07 | Speaker variety: 19 Piper voices with measured gender, rotation, regional variants; Chatterbox pools 2F+2M per language | PASS, gaps (fa/ru/pt-BR female Piper voices) |
 | N-08 | Authentic-format reading (six formats, RTL-aware) | PASS, 382 / 396 passages |
@@ -24,7 +24,7 @@ became an owner decision) in `docs/DECISIONS.md`.
 | N-11 | SBOM and no-network install profile | PASS |
 | N-12 | Daily stand-to | PASS |
 | N-13 | Side-by-side terms | PASS |
-| N-14 | v0.3.0 pre-release | see `docs/PROGRESS.md` |
+| N-14 | v0.3.0 pre-release with SBOM: https://github.com/budzillaorigin/mokuhyo/releases/tag/v0.3.0 | PASS (`gate_release`) |
 
 ## Owner decisions in this phase
 - **Chatterbox Multilingual is a named exception to rule 13 (D-041).** Its speech tokenizer is CosyVoice2's (Alibaba).
@@ -70,4 +70,5 @@ became an owner decision) in `docs/DECISIONS.md`.
    - Exemplar answers: ko 87 / 90, ar 81 / 90.
    - Female Piper voices for ru, fa and pt-BR: none verified.
 5. **Windows checks pending (owner):** OS-voice detection with Haruka, capture and level on Windows, installer smoke.
-6. **Everything new is AI-drafted and unreviewed** (badged).
+6. **Persian audio** stays on Piper, which Chatterbox doesn't support; its exemplar clips score 67 % in the round trip.
+7. **Everything new is AI-drafted and unreviewed** (badged).
