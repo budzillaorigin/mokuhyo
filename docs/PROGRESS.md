@@ -771,3 +771,24 @@ Mostly length or rare-word band misses at ILR 1+/2. Close with:
 cell is marked *fixture* and never counts toward a band, so the app says "uncalibrated" everywhere.
 **Missing owner input (logged):** 10 instructor-rated practice recordings per language with the human ILR rating and
 rationale. Run `cd tools && uv run python models/calibrate.py` once they're in `tools/sources/calibration/<lang>/`.
+
+## N-05 — Exemplar answers ✅ (small shortfall logged)
+- `tools/exemplars/build_exemplars.py` drafts, for 30 interview prompts per language (OPI bank level checks and probes,
+  plus the counter-UAS track probes), model answers at ILR 1+, 2 and 3. Each answer has a two-sentence English note
+  explaining why it is that level and not the next, tied to the ILR factors.
+- The answers are written in the language's own script only, AI-drafted and badged. They ship as
+  `packs/<lang>/exemplars.json`.
+- **Audio:** Chatterbox for ja, ko, ar, zh-Hans, es, fr, de, pt-BR and ru (long answers rendered sentence by sentence);
+  Piper for fa; Indonesian uses the OS voice at run time.
+- **Where they show up:**
+  - Speaking → **Exemplars** browses them.
+  - Interview results offer "Compare with model answers" under each of the learner's answers.
+  - The After Action Brief links them per turn.
+
+**Gate:** `build_exemplars.py --validate`, `ExemplarsTest` (matching by question) and the gate_content/core runs for
+v0.3.0. Counts (answers / with audio):
+ja 90/90 · es 90/90 · fr 90/90 · de 90/90 · pt-BR 90/90 · ru 90/90 · zh-Hans 90/90 · ko 87/87 · ar 81/81 · fa 90/90 · id 90/0.
+
+**Shortfall after three drafting rounds:** ko 87 / 90 and ar 81 / 90. Arabic answers keep slipping English acronyms
+in, and the script check rejects them. Close with:
+`cd tools && uv run --group content python exemplars/build_exemplars.py --language ko,ar`.

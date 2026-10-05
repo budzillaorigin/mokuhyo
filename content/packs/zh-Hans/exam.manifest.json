@@ -2,14 +2,14 @@
  "language": "zh-Hans",
  "exam": {
   "file": "exam.json",
-  "sha256": "2c4970101ad663fbde99f5e97fef82ad4e73a4f6076a3192ef1efdd50d2731f9",
-  "bytes": 555743,
+  "sha256": "70117ad177eb38576cecf26a6e75fdad830ea7b7baf06d1322d63afff7b0d933",
+  "bytes": 659279,
   "passages": {
    "reading": {
-    "0+": 12,
-    "1": 18,
-    "1+": 12,
-    "2": 18,
+    "0+": 20,
+    "1": 31,
+    "1+": 22,
+    "2": 23,
     "2+": 12,
     "3": 18
    },
@@ -23,10 +23,10 @@
    }
   },
   "items": {
-   "reading": 242,
+   "reading": 314,
    "listening": 249
   },
-  "listeningWithAudio": 0,
+  "listeningWithAudio": 91,
   "listeningPassages": 91,
   "license": "CC BY-SA 4.0",
   "attribution": "Mokuhyo contributors (AI-drafted with Mistral-Small-3.2-24B, pending human review)"
@@ -43,7 +43,7 @@
    "file": "track-cuas-base-defense.json",
    "id": "cuas-base-defense",
    "version": "1.0.0",
-   "sha256": "0d0ba39993d95cfe6590cd94f08b85d22f5a966c3574a63f4d50f86c405d9c56",
+   "sha256": "557c9a2328e0de804098bc2f06e69aacce03fd0487f5a4384296faf423b31596",
    "terms": 387,
    "drills": 671,
    "scenarios": 12,
@@ -54,6 +54,7 @@
   "culture.json": "f657410ee13aed31c50dd3105bd62987ae2e9f77625f1bb5e4d3ad294e38e7a0",
   "pragmatics.json": "38c14206551c1c6bcb0906c40379cea78c30d605d1e062d5b89ab0441dddabbd",
   "personas.json": "5b5385012030ad6b73691d27e02a1e9ba4e84b8f73f3f592c40b41cf17ec9282",
+  "exemplars.json": "08356d593e8a284df7f678742a713a3d9aac8ef47ff9531122429d53d8f7e156",
   "feeds.json": "c77207192d73236e391dbd752ce1fbd1b78bf59cfca762fbb6ed3e2ab3aa82f9"
  }
 }

@@ -2,14 +2,14 @@
  "language": "es",
  "exam": {
   "file": "exam.json",
-  "sha256": "317da3062fb3aa1457816e9bb5d496627d4ec040a8c1b36d5a8f5c1e16f7746c",
-  "bytes": 583457,
+  "sha256": "a3248d8e519bb58db268d2f86170cd23178f8730fc9b59c8677c209270a0b687",
+  "bytes": 691565,
   "passages": {
    "reading": {
-    "0+": 12,
-    "1": 18,
-    "1+": 12,
-    "2": 18,
+    "0+": 21,
+    "1": 29,
+    "1+": 22,
+    "2": 24,
     "2+": 12,
     "3": 18
    },
@@ -23,7 +23,7 @@
    }
   },
   "items": {
-   "reading": 244,
+   "reading": 316,
    "listening": 249
   },
   "listeningWithAudio": 92,
@@ -54,6 +54,7 @@
   "culture.json": "70a8dc217e8c63a17106044525f21dc24df2802a4317da93f93fe44a5b6840e4",
   "pragmatics.json": "a0c5861d8fb15f05da36ec53a3aefd2191168710c211b039d0d72a437cfe4b24",
   "personas.json": "594549acb076ec97006d12719482010bc255ef5662aa45c686a035c3fd6cc14c",
+  "exemplars.json": "91a49c55c59c9e32ba95fc71ae3f2befa04de86986a9f8d56555f417a4a47162",
   "feeds.json": "f5f208464b571e0bd55ae5e25addb4a0c4f936377210e161a056cdcbe9bbf63c"
  }
 }

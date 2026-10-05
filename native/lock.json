@@ -26,18 +26,28 @@
   "artifacts": {
     "macos-arm64/cpu": {
       "file": "libmokuhyo_native.dylib",
-      "sha256": "bd79688b2e1c92e37b1770fbb0a67b2986b1eb15093f7d913db611b94e6647b5",
-      "bytes": 3700000
+      "sha256": "7a5c9d8b715a0cd245ba742deb1ab082b2674388b05ca7f33e7e2ccdb5ea8237",
+      "bytes": 3700080
     },
     "macos-arm64/metal": {
       "file": "libmokuhyo_native.dylib",
-      "sha256": "443b535dd17ad5481cdf1c42e7daa1292b3d0dd4e9d58d89aec3b33db714ae0d",
+      "sha256": "3b56c0769e5ef5d0ded72e292dd0d1e0655e87129273279ff42eb8aa16f18a2a",
       "bytes": 5756288
     },
     "macos-x86_64/metal": {
       "file": "libmokuhyo_native.dylib",
       "sha256": "65dd09ecb65f1ca141c03fe6d4c0cbe4e1f41e37678d8bc8c085515c954f0ff4",
       "bytes": 6401232
+    },
+    "windows-x86_64/cpu": {
+      "file": "mokuhyo_native.dll",
+      "sha256": "25f6cd77ca2442575cd62bd953b0a00162241c88392b74eb5f01e28609e46c07",
+      "bytes": 6569800
+    },
+    "windows-x86_64/vulkan": {
+      "file": "mokuhyo_native.dll",
+      "sha256": "0978f0f28d192909c335c036e647e4a60aa40b2f68ef5745e551cdbf2c68877e",
+      "bytes": 50495300
     }
   }
 }

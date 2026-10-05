@@ -1,4 +1,51 @@
-# Mokuhyo 0.2.0 (pre-release)
+# Mokuhyo 0.3.0 (pre-release)
+
+**What's new in 0.3.0: natural voices, reliable speaking practice, and new drills.** On Windows, installing 0.3.0
+upgrades 0.2.x in place; your history, recordings and settings stay.
+
+- **Natural listening audio:**
+  - Every shipped listening passage, dialogue and exemplar answer is pre-recorded with natural AI voices: Chatterbox
+    Multilingual, or VOICEVOX for Japanese exam listening.
+  - This covers Japanese, Korean, Arabic, Chinese, Spanish, French, German, Portuguese and Russian.
+  - Each clip shows the voice that read it, and the AI voices carry an inaudible watermark.
+- **Speaking that works:**
+  - Recording uses your microphone's own sample rate, stops by itself when you finish, and tells you when no audio
+    arrives.
+  - You can check, edit or retake what was heard before sending it.
+  - The interviewer follows a clear plan (topic, level, question type), and the screen says which model asked.
+  - If feedback fails, the conversation still goes on.
+  - Settings → AI → "Test the model" shows the exact error, and the model's context limit is respected.
+  - Optionally, use an Ollama server on your home network.
+- **macOS asks for the microphone** the first time you record. Earlier versions couldn't ask.
+- **Windows:** system voices installed through Windows (such as Haruka) are now found; "Rescan voices" is in Settings.
+- **New practice:**
+  - Interpretation drill: consecutive, radio relay and sight translation.
+  - Numbers under stress.
+  - Exercise-week storyline with a counterpart who remembers you.
+  - Daily stand-to.
+  - Degraded-audio listening.
+  - Side-by-side terms.
+  - Authentic-format reading: signs, badge forms, phone chats, shift logs, notices, schedule boards.
+  - Exemplar answers at ILR 1+, 2 and 3 for 30 interview questions per language.
+  - More voices per language, with speaker variety in dialogues.
+- **Security profile:** an SBOM ships with the release, and `--no-network` refuses every connection.
+
+All new content is AI-drafted and marked "unreviewed" until a person checks it. Interview estimates say
+"uncalibrated" until instructor-rated recordings calibrate them.
+
+**Unofficial practice — not an official rating. Not affiliated with DLI, ACTFL, AFCLC or the LEAP program.**
+
+| Computer | File |
+|---|---|
+| Windows 10/11 (64-bit) | `Mokuhyo-0.3.0-windows-x64.msi` |
+| Mac with Apple silicon | `Mokuhyo-0.3.0-macos-arm64.dmg` |
+| Mac with an Intel processor (AVX2, 2014 or later) | `Mokuhyo-0.3.0-macos-x64.dmg` |
+
+Check downloads against `SHA256SUMS`. The installers are unsigned; see `docs/INSTALL.md`.
+
+---
+
+## 0.2.0
 
 **What's new in 0.2.0: current military vocabulary and the cultural layer.** On Windows, installing 0.2.0 upgrades
 0.1.x in place; your history, recordings and settings stay.
