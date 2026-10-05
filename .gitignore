@@ -29,7 +29,9 @@ native/src/
 
 # Voice service binaries and voice weights (voices/fetch.py)
 voices/bin/
-voices/models/
+# no trailing slash: also matches a symlink of the same name (a worktree link was committed once, 2026-10-05)
+voices/models
+voices/build
 
 # OS
 .DS_Store
