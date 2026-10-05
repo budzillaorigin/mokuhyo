@@ -94,7 +94,11 @@ object LangSmoke {
             val o = json.parseToJsonElement(line).jsonObject
             val id = o.getValue("id").jsonPrimitive.content
             val lang = o.getValue("lang").jsonPrimitive.content
-            val wav = File(clips, "$lang/$id.wav").takeIf { it.isFile } ?: return@forEach
+            // A render directory of WAVs, or a pack's audio folder of Ogg Opus clips (`--clips content/packs/<lang>/..`).
+            val clip = File(clips, "$lang/$id.wav").takeIf { it.isFile } ?: File(clips, "$lang/audio/$id.ogg").takeIf { it.isFile } ?: return@forEach
+            val wav = if (clip.extension == "ogg") File.createTempFile("roundtrip", ".wav").apply {
+                deleteOnExit(); writeBytes(AudioIO.wav(app.mokuhyo.speech.OggOpus.decode(clip.readBytes())))
+            } else clip
             val text = o.getValue("lines").jsonArray.joinToString(" ") { it.jsonObject.getValue("text").jsonPrimitive.content }
             val module = registry.module(lang)
             val heard = recognizer.transcribe(AudioIO.toPcm16kMono(wav.readBytes()), module.sttLanguage).text
