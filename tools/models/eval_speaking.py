@@ -241,12 +241,13 @@ def write_models_md(results: list[dict], endpoint_note: str) -> None:
 
 
 COHERENCE = "## Interviewer coherence"
+REFERENCE = "mistral-small3.2:24b-instruct-2506-q8_0"  # §7.1 primary: simulates the candidate and judges the turns
 
 
 def run_coherence(fixture_files: list[Path], endpoint: str, models: list[str], out: Path, interviews: int) -> None:
     """`Mokuhyo --eval-coherence`: whole practice interviews through the app's own OpiSession (BRIEF_PHASE8 N-00b)."""
     args = ["--eval-coherence", "--fixtures", ",".join(str(f) for f in fixture_files), "--endpoint", endpoint, "--models", ",".join(models),
-            "--out", str(out), "--interviews", str(interviews)]
+            "--out", str(out), "--interviews", str(interviews), "--candidate-model", REFERENCE]
     launcher = os.environ.get("MOKUHYO_APP")
     if launcher:
         subprocess.run([launcher, *args], cwd=REPO, check=True)
@@ -268,8 +269,9 @@ def judge_coherence(client: llm.Client, rows: list[dict]) -> list[bool]:
             got = client.chat_json([
                 {"role": "system", "content": "You judge practice language-proficiency interviews. Answer in JSON only."},
                 {"role": "user", "content": "For each case, answer true if NEXT QUESTION is a sensible next interviewer turn: in the "
-                 "interview's language, grammatical, coherent with what was said, fitting the phase, not repeating an earlier "
-                 "question or the candidate's words. Otherwise false.\n\n" + listing},
+                 "interview's language, grammatical and natural, fitting the phase, not repeating an earlier question or the "
+                 "candidate's words, and not contradicting what was said. Interviewers move to a new topic between questions on "
+                 "purpose; a topic change is fine. Otherwise false.\n\n" + listing},
             ], schema, temperature=0.0, max_tokens=400)
             out += [bool(x) for x in got["ok"]][: len(batch)]
         except (RuntimeError, ValueError):
@@ -294,8 +296,9 @@ def write_coherence(rows: list[dict], sensible: list[bool]) -> list[dict]:
     base = text[: text.index(COHERENCE)].rstrip("\n") + "\n" if COHERENCE in text else text.rstrip("\n") + "\n"
     lines = ["", COHERENCE, "",
              (f"`tools/models/eval_speaking.py --coherence`, last run {dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')} (Ollama on the owner's "
-              "RTX 5090). Whole practice interviews through the app's own interview session, the candidate answering with fixture "
-              "turns; the reference model judges each interviewer turn. Targets (BRIEF_PHASE8 N-00b): ≥ 90 % sensible turns and "
+              "RTX 5090). Whole practice interviews through the app's own interview session; the reference model plays a learner "
+              "at ILR 1 to 2+ answering each actual question, then judges each interviewer turn (topic changes between questions "
+              "are allowed). Targets (BRIEF_PHASE8 N-00b): ≥ 90 % sensible turns and "
               "< 10 % scripted fallbacks for Tier B and above."), "",
              "| model | lang | turns | sensible | model turns sensible | scripted fallbacks | meets |", "|---|---|---|---|---|---|---|"]
     for r in results:

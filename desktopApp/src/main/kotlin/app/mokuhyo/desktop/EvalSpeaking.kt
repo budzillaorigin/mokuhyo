@@ -108,6 +108,10 @@ object EvalSpeaking {
         val out = File(Smoke.arg(args, "--out") ?: "eval-coherence.jsonl").apply { parentFile?.mkdirs(); writeText("") }
         val packs = Smoke.arg(args, "--packs")?.let(::File) ?: Resources.repoDir?.let { File(it, "content/packs") } ?: return@runBlocking fail("--packs")
         val interviews = Smoke.arg(args, "--interviews")?.toInt() ?: 2
+        // The candidate is simulated by the reference model answering each actual question at a set level: fixture
+        // answers don't reply to the question asked, which made coherent interviewers look incoherent.
+        val candidateModel = Smoke.arg(args, "--candidate-model")
+        val candidate = candidateModel?.let { OpenAICompatibleModel(Java.create(), endpoint, null, it, timeouts = NetTimeouts(5_000, 300_000, null)) }
         val registry = app.mokuhyo.lang.LanguageRegistry(packs)
         for (fx in fixtures) {
             val f = json.decodeFromString(Fixtures.serializer(), fx.readText())
@@ -133,7 +137,19 @@ object EvalSpeaking {
                             put("before", kotlinx.serialization.json.JsonPrimitive(before.takeLast(4).joinToString("\n") {
                                 (if (it.speaker == app.mokuhyo.opi.Speaker.PARTNER) "Interviewer: " else "Candidate: ") + it.text }))
                         }.toString() + "\n")
-                        session.answer(answers[(k * 7 + turn) % answers.size])
+                        val level = listOf("1", "2", "1+", "2+")[k % 4]
+                        val reply = candidate?.let { c ->
+                            runCatching {
+                                c.complete(app.mokuhyo.ai.CompletionRequest(listOf(
+                                    app.mokuhyo.ai.ChatMessage(app.mokuhyo.ai.Role.SYSTEM, "You are a learner of ${module.nameEnglish} at ILR speaking level $level " +
+                                        "in a practice interview. Answer the interviewer's last question in ${module.nameEnglish} only, as a learner at that level " +
+                                        "would (short and simple at 1, a paragraph at 2), with the errors typical of that level. Reply with the answer only."),
+                                    app.mokuhyo.ai.ChatMessage(app.mokuhyo.ai.Role.USER, (session.transcript.takeLast(6).joinToString("\n") {
+                                        (if (it.speaker == app.mokuhyo.opi.Speaker.PARTNER) "Interviewer: " else "Candidate: ") + it.text })),
+                                ), maxTokens = 220, temperature = 0.7)).text.trim()
+                            }.getOrNull()
+                        }?.takeIf { it.isNotBlank() } ?: answers[(k * 7 + turn) % answers.size]
+                        session.answer(reply)
                         turn++
                         if (turn > 30) break
                     }

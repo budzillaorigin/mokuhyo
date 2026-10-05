@@ -61,8 +61,9 @@ def build(client: llm.Client, lang: str) -> dict:
                f"Write three model answers a military linguist candidate might give, in natural spoken {NAMES[lang]}: one at ILR 1+ "
                f"({FACTORS['1+']}), one at ILR 2 ({FACTORS['2']}), one at ILR 3 ({FACTORS['3']}). Length grows with the level "
                f"(about 25, 70 and 130 words). For each, note = exactly two English sentences: why it is this level and not the next one "
-               f"up, naming the ILR factors (functions, content, accuracy, text type). Invent no real people.")
-        for _attempt in range(3):
+               f"up, naming the ILR factors (functions, content, accuracy, text type). Invent no real people. Write every answer entirely in {NAMES[lang]} "
+               f"script: no Latin letters, no English words or acronyms (spell terms out in {NAMES[lang]}).")
+        for _attempt in range(5):
             try:
                 raw = client.chat_json([{"role": "system", "content": "You write graded model answers for oral proficiency practice. JSON only."},
                                         {"role": "user", "content": msg}], SCHEMA, temperature=0.5, max_tokens=3000)
