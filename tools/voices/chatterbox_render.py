@@ -31,7 +31,12 @@ def yield_to_other_work() -> None:
     try:
         if sys.platform == "win32":
             import ctypes
-            ctypes.windll.kernel32.SetPriorityClass(ctypes.windll.kernel32.GetCurrentProcess(), 0x00004000)
+            from ctypes import wintypes
+            k32 = ctypes.windll.kernel32
+            k32.GetCurrentProcess.restype = wintypes.HANDLE  # a pointer-sized pseudo-handle; the int default truncates it
+            k32.SetPriorityClass.argtypes = [wintypes.HANDLE, wintypes.DWORD]
+            if not k32.SetPriorityClass(k32.GetCurrentProcess(), 0x00004000):
+                print(f"note: couldn't lower priority (error {ctypes.get_last_error()})", flush=True)
         else:
             import os
             os.nice(10)
