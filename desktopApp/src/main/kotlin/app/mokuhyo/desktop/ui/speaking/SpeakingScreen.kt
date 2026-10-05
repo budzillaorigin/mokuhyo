@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop.ui.speaking
 
+import app.mokuhyo.lang.VoiceRotation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -53,6 +54,7 @@ import app.mokuhyo.lexicon.Scenario
 import app.mokuhyo.lexicon.Track
 import app.mokuhyo.opi.AfterActionBrief
 import app.mokuhyo.opi.AfterActionBuilder
+import app.mokuhyo.opi.Calibration
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.CulturalReview
 import app.mokuhyo.opi.FeedbackQueue
@@ -74,6 +76,8 @@ import app.mokuhyo.opi.TopicSession
 import app.mokuhyo.opi.Turn
 import app.mokuhyo.opi.TurnFeedback
 import app.mokuhyo.opi.TurnFeedbackRecord
+import app.mokuhyo.opi.Storyline
+import app.mokuhyo.opi.StorylineRunner
 import app.mokuhyo.settings.Settings
 import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.FluencyAnalyzer
@@ -114,6 +118,8 @@ fun SpeakingScreen(app: AppGraph) {
         when (tab) {
             0, 1 -> InterviewView(app, module, pack!!, test = tab == 1, mode) { active = false }
             3 -> ScenarioView(app, module, pack!!, app.lexicon(module.code), mode, persona) { active = false }
+            4 -> InterpretSetup(app, module) { active = false }
+            5 -> ExemplarsBrowse(app, module) { active = false }
             else -> TopicView(app, module, pack!!, mode, persona) { active = false }
         }
         return
@@ -124,6 +130,8 @@ fun SpeakingScreen(app: AppGraph) {
             Tab(tab == 1, { tab = 1 }, text = { Text("Interview test") })
             Tab(tab == 2, { tab = 2 }, text = { Text("Topic conversation") })
             Tab(tab == 3, { tab = 3 }, text = { Text("Scenarios") })
+            Tab(tab == 4, { tab = 4 }, text = { Text("Interpret") })
+            Tab(tab == 5, { tab = 5 }, text = { Text("Exemplars") })
         }
         Spacer(Modifier.height(16.dp))
         if (pack == null) {
@@ -157,6 +165,16 @@ fun SpeakingScreen(app: AppGraph) {
                 PersonaPicker(personas, persona, module) { persona = it }
                 ModePicker(modes[activity.ordinal], hasModel) { modes[activity.ordinal] = it }
                 Button(enabled = hasModel, onClick = { active = true }) { Text("Choose a topic") }
+            }
+            5 -> SectionCard("Exemplar answers") {
+                Text("Hear and read what an answer at ILR 1+, 2 and 3 sounds like for the same interview question, with a note on what makes " +
+                    "each one that level and not the next.")
+                Button(onClick = { active = true }) { Text("Browse exemplars") }
+            }
+            4 -> SectionCard("Interpret") {
+                Text("Consecutive interpretation drills on the Counter-UAS & Base Defense dialogues: hear a chunk, take notes, say it in the other " +
+                    "language. Also a radio relay over a noisy channel and timed sight translation of notices. Feedback comes at the end.")
+                Button(onClick = { active = true }) { Text("Set up a drill") }
             }
             else -> SectionCard("Scenarios — Counter-UAS & Base Defense") {
                 val track = remember(lang) { app.track(lang) }
@@ -234,8 +252,10 @@ private fun saveRecording(app: AppGraph, conversationId: String, turn: Int, pcm:
     return file.path
 }
 
-private suspend fun speak(app: AppGraph, text: String, lang: String) = withContext(Dispatchers.IO) {
-    app.speech.synthesize(text, lang)?.let { runCatching { AudioIO.play(it.wav, app.settings.get(Settings.Key.OUTPUT_DEVICE)) } }
+private suspend fun speak(app: AppGraph, text: String, lang: String, persona: Persona? = null) = withContext(Dispatchers.IO) {
+    // A persona keeps one voice of their gender (BRIEF_PHASE8 N-07).
+    val voice = persona?.let { p -> VoiceRotation.forPersona(app.speech.voicesFor(lang), p.id, p.gender) }
+    app.speech.synthesize(text, lang, voice)?.let { runCatching { AudioIO.play(it.wav, app.settings.get(Settings.Key.OUTPUT_DEVICE)) } }
 }
 
 private fun wordCounter(module: LanguageModule): (String) -> Int {
@@ -268,6 +288,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     }
     val notes = remember { app.culturalNotes(module.code) }
     val lines = remember { mutableStateListOf<Pair<Turn, String>>() } // (turn, english gloss)
+    var asker by remember { mutableStateOf<String?>(null) }
     val records = remember { mutableStateListOf<TurnFeedbackRecord>() }
     val queue = remember {
         if (mode.records && app.languageModel() != null) FeedbackQueue(app.gateway, scope) { rec ->
@@ -327,6 +348,8 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                 return@launch
             }
             lines += Turn(Speaker.PARTNER, line.text) to line.english
+            // Say who asked (BRIEF_PHASE8 N-00b): the model by name, or a scripted bank question and why.
+            asker = line.engine?.let { "Asked by $it" } ?: "Scripted question" + (line.fallbackReason?.let { " ($it)" } ?: "")
             status = if (test) "Listen, then answer." else "Listen, then answer (show the question if you need it)."
             speak(app, line.text, module.code)
             busy = false
@@ -354,7 +377,11 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
             val r = rating
             if (r != null) InterviewResults(app, module, session, r, cultural, lines, fluency, pack, conversationId, test)
             else SectionCard { Text("Corrections were off: no rating or feedback was generated."); Text("Your transcript and recordings are saved in History.") }
-            aab?.let { AfterActionBriefView(app, module.code, it, conversationId) }
+            aab?.let { brief ->
+                AfterActionBriefView(app, module.code, brief, conversationId) { turnIndex ->
+                    lines.getOrNull(turnIndex - 1)?.first?.takeIf { it.speaker == Speaker.PARTNER }?.text
+                }
+            }
             if (r == null) TranscriptCard(app, module, session, lines, conversationId)
             Button(onClick = close) { Text("Done") }
             return@Page
@@ -362,6 +389,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         ModeChip(mode)
         SectionCard {
             Text(status, style = MaterialTheme.typography.titleMedium)
+            asker?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
             if (busy) LinearProgressIndicator(Modifier.fillMaxWidth())
             queue?.pendingCount?.collectAsState()?.value?.takeIf { it > 0 && mode == CorrectionsMode.LIVE }?.let {
                 Text("Feedback on $it answer(s) is being prepared…", style = MaterialTheme.typography.bodySmall)
@@ -375,24 +403,10 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     if (showText && !test) Text(last.first.text, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleLarge)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         OutlinedButton(onClick = { scope.launch { speak(app, last.first.text, module.code) } }) { Text("Repeat the question") }
-                        if (hasStt) Button(onClick = {
-                            if (!recorder.recording) {
-                                runCatching { recorder.start { level = it } }.onFailure { status = "Couldn't open the microphone: ${it.message}" }
-                                status = "Recording… press Stop when you're done."
-                            } else {
-                                val pcm = recorder.stop()
-                                level = 0.0
-                                busy = true
-                                status = "Transcribing…"
-                                scope.launch {
-                                    val text = withContext(Dispatchers.IO) { runCatching { app.recognizer()!!.transcribe(pcm, module.sttLanguage).text }.getOrDefault("") }
-                                    busy = false
-                                    if (text.isBlank()) status = "I didn't catch anything. Try again, or type your answer." else submitAnswer(text, pcm)
-                                }
-                            }
-                        }) { Text(if (recorder.recording) "■ Stop" else "● Record") }
                     }
-                    if (recorder.recording) LinearProgressIndicator(progress = { (level * 4).toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
+                    // Interview tests send what was heard; practice shows it first unless turned off (BRIEF_PHASE8 N-00b).
+                    if (hasStt) VoiceCapture(app, module, confirm = !test && app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
+                        enabled = !busy, onStatus = { status = it }, onBusy = { busy = it }, prompt = last.first.text) { t, pcm -> submitAnswer(t, pcm) }
                     OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type your answer") },
                         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -483,6 +497,13 @@ private fun InterviewResults(
             if (shown.selfRated) Badge("Self-rated")
         }
         if (shown.sustained != null) Text("Sustained: ILR ${shown.sustained}" + (shown.breakdown?.let { " · breaks down at ILR $it" } ?: ""))
+        // BRIEF_PHASE8 N-04: the confidence band from instructor-rated samples for this language and tier.
+        shown.estimate?.takeIf { shown.engine != null }?.let { est ->
+            val tier = app.tier
+            val band = Calibration.band(est, tier?.let { app.calibration.entry(module.code, it.id) }, module.nameEnglish, tier?.let { "Tier ${it.id}" } ?: "your model")
+            if (band.calibrated) Text("Likely range: ILR ${band.low}–${band.high}", fontWeight = FontWeight.SemiBold)
+            Text(band.sentence, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
         if (shown.rationale.isNotBlank()) Text(shown.rationale)
         Disclaimer()
     }
@@ -529,6 +550,7 @@ private fun TranscriptCard(app: AppGraph, module: LanguageModule, session: OpiSe
                     if (english.isNotBlank()) Text(english, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     val rec = session.turns.firstOrNull { it.answer == turn.text && turn.speaker == Speaker.LEARNER }
                     if (rec?.outcome == OpiTurnOutcome.BREAKDOWN) Text("breakdown at ILR ${rec.targetLevel.label}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                    if (turn.speaker == Speaker.LEARNER && rec != null) CompareWithExemplars(app, module, rec.question)
                 }
                 if (turn.speaker == Speaker.LEARNER) {
                     val file = File(app.dataDir, "recordings/$conversationId/turn-%02d.wav".format(i))
@@ -603,13 +625,14 @@ private fun TopicView(app: AppGraph, module: LanguageModule, pack: OpiPack, mode
 private fun TopicConversation(
     app: AppGraph, module: LanguageModule, pack: OpiPack, topic: Topic, close: () -> Unit,
     rolePlay: RolePlayContext? = null, kind: String = "TOPIC", mode: CorrectionsMode = CorrectionsMode.LIVE, persona: Persona? = null,
-    activity: SpeakingActivity = SpeakingActivity.TOPIC,
+    activity: SpeakingActivity = SpeakingActivity.TOPIC, memory: List<String> = emptyList(),
+    onFinished: ((TopicSession, String) -> Unit)? = null,
 ) {
     val scope = rememberCoroutineScope()
     val conversationId = remember { app.conversations.newId() }
     val session = remember {
         TopicSession(module.code, pack.profile, topic, app.gateway, rolePlay = rolePlay, persona = persona?.context(),
-            culturalNotes = app.culturalNotes(module.code, persona), mode = mode)
+            culturalNotes = app.culturalNotes(module.code, persona), mode = mode, memory = memory, critiqueTimeoutMs = app.critiqueTimeoutMs())
     }
     val exchanges = remember { mutableStateListOf<TopicExchange>() }
     val fluency = remember { mutableStateListOf<FluencyAnalyzer.Report>() }
@@ -628,7 +651,8 @@ private fun TopicConversation(
         scope.launch {
             val ex = withContext(Dispatchers.Default) { session.say(text) }
             if (ex == null) {
-                status = "The model didn't answer. Check Settings → AI, or try again."
+                // Say why (no model, timeout, load failure, schema failure), not a generic line (BRIEF_PHASE8 N-00b).
+                status = "No reply: ${session.lastError ?: "unknown error"}. Settings → AI → Test the model shows the details."
             } else {
                 exchanges += ex
                 val turn = exchanges.size * 2 - 1
@@ -639,13 +663,14 @@ private fun TopicConversation(
                     fluency += FluencyAnalyzer.analyze(pcm, words, tokenFactor = if (module.code in setOf("ja", "ko")) 1.5 else 1.0)
                 }
                 status = ""
-                speak(app, ex.reply, module.code)
+                speak(app, ex.reply, module.code, persona)
             }
             busy = false
         }
     }
 
     fun save(brief: AfterActionBrief?) {
+        onFinished?.invoke(session, conversationId)
         app.conversations.save(conversationId, app.learnerId, module.code, kind, topic.title, session.startedAt.toEpochMilliseconds(),
             StoredConversation(session.transcript, exchanges = exchanges.toList()), null, session.levelTrack.toList(), "recordings/$conversationId", mode, brief)
         session.recurringErrors().forEach { c ->
@@ -691,13 +716,17 @@ private fun TopicConversation(
             Text(persona?.name ?: "Partner", fontWeight = FontWeight.SemiBold)
             Text(topic.opener, fontFamily = Fonts.forLanguage(module.code), style = MaterialTheme.typography.titleMedium)
             if (topic.source == "llm") Badge("AI-generated")
-            TextButton(onClick = { scope.launch { speak(app, topic.opener, module.code) } }) { Text("▶ Listen") }
+            TextButton(onClick = { scope.launch { speak(app, topic.opener, module.code, persona) } }) { Text("▶ Listen") }
         }
         exchanges.forEach { ex ->
             SectionCard {
                 Text("You", fontWeight = FontWeight.SemiBold)
                 Text(ex.learner, fontFamily = Fonts.forLanguage(module.code))
                 if (mode == CorrectionsMode.LIVE) {
+                    ex.feedbackMissing?.let { why ->
+                        Text("No feedback for this turn ($why). The conversation goes on.", style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                     ex.corrected?.let { c ->
                         Text("Correction", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
                         Text(c, fontFamily = Fonts.forLanguage(module.code))
@@ -738,25 +767,12 @@ private fun TopicConversation(
         }
         if (!busy) SectionCard {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (hasStt) Button(onClick = {
-                    if (!recorder.recording) {
-                        runCatching { recorder.start { level = it } }.onFailure { status = "Couldn't open the microphone: ${it.message}" }
-                    } else {
-                        val pcm = recorder.stop()
-                        level = 0.0
-                        busy = true
-                        status = "Transcribing…"
-                        scope.launch {
-                            val text = withContext(Dispatchers.IO) { runCatching { app.recognizer()!!.transcribe(pcm, module.sttLanguage).text }.getOrDefault("") }
-                            busy = false
-                            if (text.isBlank()) status = "I didn't catch anything." else send(text, pcm)
-                        }
-                    }
-                }) { Text(if (recorder.recording) "■ Stop" else "● Record") }
                 if (mode == CorrectionsMode.LIVE) OutlinedButton(enabled = exchanges.isNotEmpty(), onClick = { if (session.redoLast()) exchanges.removeAt(exchanges.lastIndex) }) { Text("Say it again") }
                 TextButton(onClick = { finish() }) { Text(if (mode == CorrectionsMode.AFTER_ACTION) "End and show After Action Brief" else "End conversation") }
             }
-            if (recorder.recording) LinearProgressIndicator(progress = { (level * 4).toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
+            if (hasStt) VoiceCapture(app, module, confirm = app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true),
+                enabled = !busy, onStatus = { status = it }, onBusy = { busy = it },
+                prompt = (listOf(topic.title) + session.transcript.takeLast(1).map { it.text }).joinToString(" ")) { t, pcm -> send(t, pcm) }
             OutlinedTextField(typed, { typed = it }, Modifier.fillMaxWidth(), label = { Text("…or type") },
                 textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
             TextButton(enabled = typed.isNotBlank(), onClick = { val s = typed; typed = ""; send(s, null) }) { Text("Send") }
@@ -801,8 +817,24 @@ private fun ScenarioView(app: AppGraph, module: LanguageModule, pack: OpiPack, t
             kind = "SCENARIO", mode = mode, persona = persona, activity = SpeakingActivity.PERSONA)
         return
     }
+    var week by remember { mutableStateOf(false) }
+    if (week) {
+        ExerciseWeek(app, module, pack, mode, persona) { week = false }
+        return
+    }
     Page("Scenarios", "${module.nameEnglish} · ${track.title}") {
         if (s == null) {
+            SectionCard("Exercise week") {
+                val st = remember { app.storylines.current(app.learnerId, module.code) }
+                Text("Five linked sessions with the same counterpart — arrival, a drone sighting, an intrusion, a gate incident, the joint after-action " +
+                    "review. Your counterpart remembers what happened on earlier days, and how you handled each day shapes the next.")
+                Text(when {
+                    st == null -> "Not started."
+                    st.completed -> "Completed."
+                    else -> "Next: ${Storyline.day(st.nextDay)?.title}"
+                }, style = MaterialTheme.typography.bodySmall)
+                Button(onClick = { week = true }) { Text(if (st == null || st.completed) "Start an exercise week" else "Continue") }
+            }
             track.scenarios.forEach { sc ->
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     TextButton(onClick = { chosen = sc }) { Text(sc.title) }
@@ -830,5 +862,53 @@ private fun ScenarioView(app: AppGraph, module: LanguageModule, pack: OpiPack, t
                 TextButton(onClick = { chosen = null }) { Text("Choose another") }
             }
         }
+    }
+}
+
+
+/** The exercise-week storyline (BRIEF_PHASE8 N-03): day by day with a persistent counterpart and memory. */
+@Composable
+private fun ExerciseWeek(app: AppGraph, module: LanguageModule, pack: OpiPack, mode: CorrectionsMode, chosenPersona: Persona?, close: () -> Unit) {
+    val scope = rememberCoroutineScope()
+    val personas = remember(module.code) { app.personas(module.code) }
+    var state by remember { mutableStateOf(app.storylines.current(app.learnerId, module.code)?.takeIf { !it.completed }) }
+    var playing by remember { mutableStateOf(false) }
+    var status by remember { mutableStateOf("") }
+    val st = state
+    val persona = st?.let { s -> personas.firstOrNull { it.id == s.personaId } } ?: chosenPersona
+    if (st != null && playing) {
+        val (day, role) = StorylineRunner.rolePlay(st, persona?.let { PersonaContext(it.name, it.rankTitle, it.roleTitle, it.force, it.register, it.patience, it.formality) })
+        TopicConversation(app, module, pack, Topic(day.id, "military_operations", day.title, ""), { playing = false }, role, kind = "STORYLINE", mode = mode,
+            persona = persona, activity = SpeakingActivity.PERSONA, memory = st.memory) { session, conversationId ->
+            status = "Saving what your counterpart will remember…"
+            scope.launch {
+                val rec = withContext(Dispatchers.Default) { StorylineRunner.summarize(app.gateway, module.code, day, conversationId, session.transcript) }
+                app.storylines.addDay(st.id, rec)
+                state = app.storylines.current(app.learnerId, module.code)
+                status = "Day ${day.n} saved: ${rec.summary}"
+            }
+        }
+        return
+    }
+    Page("Exercise week", module.nameEnglish) {
+        if (st == null) {
+            SectionCard("Choose your counterpart") {
+                if (personas.isEmpty()) Text("No personas in this language's pack; your counterpart will be a generic host-nation officer.")
+                personas.filter { it.role in setOf("senior_counterpart", "peer_officer") }.forEach { p ->
+                    TextButton(onClick = { state = app.storylines.start(app.learnerId, module.code, p.id) }) { Text("${p.name}, ${p.rankTitle} (${p.force})") }
+                }
+                if (personas.isEmpty()) Button(onClick = { state = app.storylines.start(app.learnerId, module.code, "") }) { Text("Start") }
+            }
+        } else {
+            SectionCard(Storyline.day(st.nextDay)?.title ?: "Week complete") {
+                st.days.sortedBy { it.day }.forEach { d -> Text("Day ${d.day}: ${d.summary}", style = MaterialTheme.typography.bodySmall) }
+                if (!st.completed) {
+                    Text(Storyline.situation(st.nextDay, st.lastChoice))
+                    Button(onClick = { playing = true }) { Text("Play day ${st.nextDay}") }
+                } else Text("Exercise week complete.", fontWeight = FontWeight.SemiBold)
+            }
+        }
+        if (status.isNotEmpty()) Text(status, style = MaterialTheme.typography.bodySmall)
+        TextButton(onClick = close) { Text("Back") }
     }
 }

@@ -95,6 +95,14 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
 
     fun pragmatics(lang: String): app.mokuhyo.culture.PragmaticsPack? = packJson(lang, "pragmatics.json", app.mokuhyo.culture.PragmaticsPack::parse)
 
+    /**
+     * Time limit for a conversation's critique call (BRIEF_PHASE8 N-00b): on a CPU-only machine the critique (larger
+     * schema) gets 4 minutes instead of the gateway's default, so it isn't cut off where the reply alone fits.
+     */
+    fun critiqueTimeoutMs(): Long? = if (!runtime.gpuActive) 240_000 else null
+
+    fun exemplars(lang: String): app.mokuhyo.opi.ExemplarPack? = packJson(lang, "exemplars.json", app.mokuhyo.opi.ExemplarPack::parse)
+
     fun feeds(lang: String): List<app.mokuhyo.culture.Feed> = packJson(lang, "feeds.json", app.mokuhyo.culture.FeedPack::parse)?.feeds.orEmpty()
 
     fun personas(lang: String): List<app.mokuhyo.culture.Persona> =
@@ -108,6 +116,16 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
     }
 
     val lexicons = app.mokuhyo.lexicon.LexiconRepository(db)
+
+    val storylines = app.mokuhyo.opi.StorylineRepository(db)
+
+    /** Rater calibration table (BRIEF_PHASE8 N-04); empty = every estimate is "uncalibrated". */
+    val calibration: app.mokuhyo.opi.Calibration.Table by lazy {
+        Resources.textOrNull("models/calibration.json")?.let { runCatching { app.mokuhyo.opi.Calibration.Table.parse(it) }.getOrNull() } ?: app.mokuhyo.opi.Calibration.Table()
+    }
+
+    /** Learner suggestions and flags (BRIEF_PHASE8 N-10), kept on this computer. */
+    val suggestions = app.mokuhyo.feedback.SuggestionStore(File(dataDir, "suggestions.json"))
 
     /** Public keys of trusted lexicon publishers, shipped in the app (tools/release/keys/). */
     val trustedLexiconKeys: List<app.mokuhyo.lexicon.TrustedKey> by lazy {
@@ -175,24 +193,31 @@ class AppGraph(val dataDir: File = AppDirs.ensure()) {
      * The language model for speaking and generation: the learner's own Ollama when they turned that on (rule-13
      * screened), else the downloaded tier model on the embedded llama.cpp, else none (scripted fallbacks).
      */
+    /** The Ollama server to use: the saved local-network URL when it still validates, else this computer. */
+    fun ollamaBaseUrl(): String = settings.get(Settings.Key.OLLAMA_URL)?.let { app.mokuhyo.ai.LanUrl.check(it).baseUrl }
+        ?: app.mokuhyo.ai.OllamaDetector.DEFAULT_URL
+
     fun languageModel(): app.mokuhyo.ai.LanguageModel? {
         if (settings.bool(Settings.Key.USE_OLLAMA)) {
             val name = settings.get(Settings.Key.OLLAMA_MODEL)
             if (name != null && app.mokuhyo.ai.ModelPolicy.exclusion(name) == null) {
-                return app.mokuhyo.ai.OpenAICompatibleModel(Java.create(), app.mokuhyo.ai.OllamaDetector.DEFAULT_URL + "/v1", null, name)
+                return app.mokuhyo.ai.OpenAICompatibleModel(Java.create(), ollamaBaseUrl() + "/v1", null, name)
             }
         }
         val model = chosenModel() ?: return null
         val file = modelFile(model) ?: return null
         val bridge = runtime.llm() ?: return null
-        return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot) }
+        return llamaModels.getOrPut(file.absolutePath) { app.mokuhyo.ai.LocalLlamaModel(bridge, model, file.absolutePath, llamaSlot, app.mokuhyo.ai.GgufReader::read) }
     }
 
     private val llamaSlot = app.mokuhyo.ai.LoadedModelSlot()
     private val llamaModels = java.util.concurrent.ConcurrentHashMap<String, app.mokuhyo.ai.LanguageModel>()
 
     /** One gateway for every AI task; reads the current model per call so settings changes apply. */
-    val gateway = app.mokuhyo.ai.AiGateway({ languageModel() }, app.mokuhyo.ai.AiSettings(timeoutMs = 180_000))
+    /** Rolling diagnostics log in the data dir (BRIEF_PHASE8 N-00b). */
+    val log = RollingLog(java.io.File(dataDir, "logs"))
+
+    val gateway = app.mokuhyo.ai.AiGateway({ languageModel() }, app.mokuhyo.ai.AiSettings(timeoutMs = 180_000), onCall = log::ai)
 
     /** On-device Whisper, or null when the speech model or native runtime is missing. */
     fun recognizer(): app.mokuhyo.ai.SpeechRecognizer? {

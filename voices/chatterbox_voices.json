@@ -1,0 +1,276 @@
+{
+ "format": "mokuhyo-chatterbox-voices/1",
+ "engine": "chatterbox-multilingual",
+ "ownerException": "D-041",
+ "comment": "Reference voices for the Chatterbox pre-render (BRIEF_PHASE8 N-00). Only donated TTS voices (owner choice 2026-10-04); no LibriVox/MLS readers, no real person cloned without having released their voice for synthesis. Pools: two female and two male voices per language, native-language donors first; every voice scored >= 82% in the Whisper round trip (voices/chatterbox_voice_test.txt). fa is not supported by the model (stays on Piper); id stays on its current voices.",
+ "refs": {
+  "es_ES-sharvard-medium.wav": {
+   "donor": "es_ES-sharvard-medium",
+   "gender": "female",
+   "dataset": "Sharvard corpus (Aubanel, García Lecumberri, Cooke)",
+   "datasetLicense": "CC-BY-3.0",
+   "attribution": "Sharvard corpus © V. Aubanel, M. L. García Lecumberri, M. Cooke, CC BY 3.0",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "es_MX-claude-high.wav": {
+   "donor": "es_MX-claude-high",
+   "gender": "female",
+   "dataset": "claude (Mexican Spanish single-speaker dataset, per the model card)",
+   "datasetLicense": "Apache-2.0",
+   "attribution": "claude (Mexican Spanish single-speaker dataset, per the model card)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "fr_FR-siwis-medium.wav": {
+   "donor": "fr_FR-siwis-medium",
+   "gender": "female",
+   "dataset": "SIWIS French Speech Synthesis Database (Honnet, Lazaridis, Garner, Yamagishi)",
+   "datasetLicense": "CC-BY-4.0",
+   "attribution": "SIWIS French Speech Synthesis Database © Idiap/University of Edinburgh et al., CC BY 4.0",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "fr_FR-upmc-medium-f.wav": {
+   "donor": "fr_FR-upmc-medium-f",
+   "gender": "female",
+   "dataset": "UPMC Jessica (MaryTTS upmc-jessica-data)",
+   "datasetLicense": "CC-BY-SA-4.0",
+   "attribution": "upmc-pierre-data © Université Pierre et Marie Curie / MaryTTS, CC BY-SA 4.0",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "pt_PT-tugao-medium.wav": {
+   "donor": "pt_PT-tugao-medium",
+   "gender": "female",
+   "dataset": "tugão (OHF-Voice voice-datasets)",
+   "datasetLicense": "CC0-1.0",
+   "attribution": "tugão (OHF-Voice voice-datasets)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "fr_FR-upmc-medium.wav": {
+   "donor": "fr_FR-upmc-medium",
+   "gender": "male",
+   "dataset": "UPMC Pierre (MaryTTS upmc-pierre-data)",
+   "datasetLicense": "CC-BY-SA-4.0",
+   "attribution": "upmc-pierre-data © Université Pierre et Marie Curie / MaryTTS, CC BY-SA 4.0",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "pt_BR-faber-medium.wav": {
+   "donor": "pt_BR-faber-medium",
+   "gender": "male",
+   "dataset": "faber (OHF-Voice voice-datasets)",
+   "datasetLicense": "CC0-1.0",
+   "attribution": "faber (OHF-Voice voice-datasets)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "es_ES-davefx-medium.wav": {
+   "donor": "es_ES-davefx-medium",
+   "gender": "male",
+   "dataset": "davefx (OHF-Voice voice-datasets)",
+   "datasetLicense": "CC0-1.0",
+   "attribution": "davefx (OHF-Voice voice-datasets)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "pt_BR-cadu-medium.wav": {
+   "donor": "pt_BR-cadu-medium",
+   "gender": "male",
+   "dataset": "cadu (OHF-Voice voice-datasets)",
+   "datasetLicense": "CC0-1.0",
+   "attribution": "cadu (OHF-Voice voice-datasets)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "es_ES-sharvard-medium-m.wav": {
+   "donor": "es_ES-sharvard-medium-m",
+   "gender": "male",
+   "dataset": "Sharvard corpus (Aubanel, García Lecumberri, Cooke)",
+   "datasetLicense": "CC-BY-3.0",
+   "attribution": "Sharvard corpus © V. Aubanel, M. L. García Lecumberri, M. Cooke, CC BY 3.0",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "ru_RU-denis-medium.wav": {
+   "donor": "ru_RU-denis-medium",
+   "gender": "male",
+   "dataset": "denis (OHF-Voice voice-datasets)",
+   "datasetLicense": "CC0-1.0",
+   "attribution": "denis (OHF-Voice voice-datasets)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "ru_RU-dmitri-medium.wav": {
+   "donor": "ru_RU-dmitri-medium",
+   "gender": "male",
+   "dataset": "dmitri (OHF-Voice voice-datasets)",
+   "datasetLicense": "CC0-1.0",
+   "attribution": "dmitri (OHF-Voice voice-datasets)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  },
+  "de_DE-thorsten-medium.wav": {
+   "donor": "de_DE-thorsten-medium",
+   "gender": "male",
+   "dataset": "Thorsten-Voice (Thorsten Müller)",
+   "datasetLicense": "CC0-1.0",
+   "attribution": "Thorsten-Voice (Thorsten Müller)",
+   "rendered": "Piper reading of a neutral sentence (tools/voices/make_refs.py)"
+  }
+ },
+ "languages": {
+  "ja": [
+   {
+    "ref": "es_ES-sharvard-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_MX-claude-high.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "fr_FR-upmc-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "pt_BR-faber-medium.wav",
+    "gender": "male"
+   }
+  ],
+  "ko": [
+   {
+    "ref": "fr_FR-siwis-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_ES-sharvard-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_ES-davefx-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "pt_BR-faber-medium.wav",
+    "gender": "male"
+   }
+  ],
+  "ar": [
+   {
+    "ref": "fr_FR-siwis-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "fr_FR-upmc-medium-f.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "fr_FR-upmc-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "pt_BR-faber-medium.wav",
+    "gender": "male"
+   }
+  ],
+  "zh-Hans": [
+   {
+    "ref": "es_ES-sharvard-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_MX-claude-high.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_ES-davefx-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "fr_FR-upmc-medium.wav",
+    "gender": "male"
+   }
+  ],
+  "es": [
+   {
+    "ref": "es_ES-sharvard-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_MX-claude-high.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_ES-davefx-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "es_ES-sharvard-medium-m.wav",
+    "gender": "male"
+   }
+  ],
+  "fr": [
+   {
+    "ref": "fr_FR-siwis-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "fr_FR-upmc-medium-f.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "fr_FR-upmc-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "es_ES-davefx-medium.wav",
+    "gender": "male"
+   }
+  ],
+  "de": [
+   {
+    "ref": "fr_FR-siwis-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_ES-sharvard-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "de_DE-thorsten-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "fr_FR-upmc-medium.wav",
+    "gender": "male"
+   }
+  ],
+  "pt-BR": [
+   {
+    "ref": "pt_PT-tugao-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_MX-claude-high.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "pt_BR-faber-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "pt_BR-cadu-medium.wav",
+    "gender": "male"
+   }
+  ],
+  "ru": [
+   {
+    "ref": "fr_FR-siwis-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "es_ES-sharvard-medium.wav",
+    "gender": "female"
+   },
+   {
+    "ref": "ru_RU-denis-medium.wav",
+    "gender": "male"
+   },
+   {
+    "ref": "ru_RU-dmitri-medium.wav",
+    "gender": "male"
+   }
+  ]
+ }
+}

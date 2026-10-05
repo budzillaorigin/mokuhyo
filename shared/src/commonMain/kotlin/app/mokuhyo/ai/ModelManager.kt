@@ -224,6 +224,26 @@ class ModelManager(
         send(DownloadProgress.Done(dir / model.files.first().name))
     }.flowOn(Dispatchers.IO)
 
+    /**
+     * Air-gapped install (BRIEF_PHASE8 N-11): installs [model]'s single weight file from a local copy (USB stick, file
+     * share) after checking its size and SHA-256 against the manifest. Blocking; call off the UI thread.
+     */
+    fun installFromFile(model: ModelInfo, source: Path, progress: (Double) -> Unit = {}): Result<Unit> = runCatching {
+        val file = model.files.singleOrNull() ?: error("${model.name} has ${model.files.size} files; side-loading supports single-file models")
+        require(size(source) == file.bytes) { "the file is ${size(source)} bytes; ${model.name} should be ${file.bytes}" }
+        progress(0.1)
+        val digest = hashOf(source).hexDigest()
+        require(digest.equals(file.sha256, ignoreCase = true)) { "the file's SHA-256 doesn't match ${model.name} (wrong or damaged file)" }
+        progress(0.6)
+        val dir = dir(model)
+        fs.createDirectories(dir)
+        val tmp = dir / "${file.name}.part"
+        fs.copy(source, tmp)
+        fs.atomicMove(tmp, dir / file.name)
+        fs.write(dir / "${file.name}.sha256") { writeUtf8(file.sha256) }
+        progress(1.0)
+    }
+
     private fun partialBytes(dir: Path, model: ModelInfo): Long =
         model.files.sumOf { f -> (size(dir / "${f.name}.part") ?: 0L).coerceAtMost(f.bytes) }
 

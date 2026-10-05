@@ -20,12 +20,29 @@ DENYLIST = re.compile(
     re.IGNORECASE,
 )
 
+# Owner-approved exceptions to rule 13 (CLAUDE.md, docs/DECISIONS.md). An entry is exempt only when its id is listed
+# here AND it declares the same decision in "ownerException" and names the PRC-origin component in provenance; its
+# text is then not scanned for the denylist. Nothing else is exempt.
+OWNER_EXCEPTIONS = {
+    "chatterbox-multilingual": "D-041",  # Resemble AI; its speech tokenizer is CosyVoice2's (Alibaba), owner 2026-10-04
+}
+
 FILES = [
     "content/models/manifest.json",
     "voices/manifest.json",
     "tools/.env.example",
     "tools/models/approved_models.json",
 ]
+
+
+def _strings(v) -> list[str]:
+    if isinstance(v, str):
+        return [v]
+    if isinstance(v, dict):
+        return [x for val in v.values() for x in _strings(val)]
+    if isinstance(v, list):
+        return [x for val in v for x in _strings(val)]
+    return []
 
 
 def main() -> int:
@@ -35,8 +52,20 @@ def main() -> int:
         if not path.exists():
             continue
         text = path.read_text(encoding="utf-8")
-        for m in DENYLIST.finditer(text):
-            line = text.count("\n", 0, m.start()) + 1
+        scan = text
+        if rel.endswith("manifest.json"):
+            for entry in json.loads(text).get("models", json.loads(text).get("voices", [])):
+                eid, dec = entry.get("id"), entry.get("ownerException")
+                if eid in OWNER_EXCEPTIONS:
+                    if dec != OWNER_EXCEPTIONS[eid] or not (entry.get("provenance") or {}).get("prcComponent"):
+                        problems.append(f"{rel}: '{eid}' must declare ownerException {OWNER_EXCEPTIONS[eid]} and provenance.prcComponent")
+                    else:
+                        for v in _strings(entry):
+                            scan = scan.replace(v, "")  # exempt this entry's own strings only
+                elif dec:
+                    problems.append(f"{rel}: '{eid}' claims ownerException {dec}, which is not recorded in check_provenance.py")
+        for m in DENYLIST.finditer(scan):
+            line = scan.count("\n", 0, m.start()) + 1
             problems.append(f"{rel}:{line}: denylisted model family '{m.group(0)}'")
         if rel.endswith("manifest.json"):
             data = json.loads(text)
@@ -45,7 +74,8 @@ def main() -> int:
                 for field in ("developer", "country", "license", "source"):
                     if not prov.get(field):
                         problems.append(f"{rel}: '{entry.get('id')}' lacks provenance.{field}")
-                if str(prov.get("country", "")).strip().lower() in {"china", "prc", "cn", "people's republic of china"}:
+                if str(prov.get("country", "")).strip().lower() in {"china", "prc", "cn", "people's republic of china"} and \
+                        entry.get("id") not in OWNER_EXCEPTIONS:
                     problems.append(f"{rel}: '{entry.get('id')}' is PRC-origin")
     for p in problems:
         print("PROVENANCE:", p)

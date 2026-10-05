@@ -21,6 +21,164 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-0p-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Access Request for Local Election Observer",
+   "body": "Lembar Izin Pengunjung\nNama Lengkap:: Muhammad Nur\nNomor Identitas:: 3201010101010001\nAlamat:: Jalan Merdeka No. 12, Desa Sukabumi, Kabupaten Bogor\nTujuan Kunjungan:: Pemantau Pemilu\nLokasi Tujuan:: TPK Pemilu Kecamatan Bogor Barat\nTanggal Kunjungan:: 15 Desember 2023\nWaktu Kunjungan:: 08:00 - 16:00 WIB\nKeterangan:: Diberikan akses ke TPK Pemilu\nPemeriksaan keamanan diperlukan. Gunakan izin ini untuk akses masuk.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Lembar Izin Pengunjung",
+    "fields": [
+     {
+      "label": "Nama Lengkap:",
+      "value": "Muhammad Nur"
+     },
+     {
+      "label": "Nomor Identitas:",
+      "value": "3201010101010001"
+     },
+     {
+      "label": "Alamat:",
+      "value": "Jalan Merdeka No. 12, Desa Sukabumi, Kabupaten Bogor"
+     },
+     {
+      "label": "Tujuan Kunjungan:",
+      "value": "Pemantau Pemilu"
+     },
+     {
+      "label": "Lokasi Tujuan:",
+      "value": "TPK Pemilu Kecamatan Bogor Barat"
+     },
+     {
+      "label": "Tanggal Kunjungan:",
+      "value": "15 Desember 2023"
+     },
+     {
+      "label": "Waktu Kunjungan:",
+      "value": "08:00 - 16:00 WIB"
+     },
+     {
+      "label": "Keterangan:",
+      "value": "Diberikan akses ke TPK Pemilu"
+     }
+    ],
+    "footer": "Pemeriksaan keamanan diperlukan. Gunakan izin ini untuk akses masuk."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Vaccination Campaign at Tanjungpura Air Base",
+   "body": "BADGE KUNJUNGAN\nNama:: Budi Santoso\nAlamat:: Jl. Merdeka No. 10, Pontianak\nInstansi:: Dinas Kesehatan Kota Pontianak\nKeperluan:: Kampanye Vaksinasi\nTanggal:: 15 Juni 2023\nWaktu Kedatangan:: 08.00 - 12.00 WIB\nTanda Tangan:: ________________________\nUntuk keperluan keamanan, harap selalu menampilkan badge ini selama berada di dalam area.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE KUNJUNGAN",
+    "fields": [
+     {
+      "label": "Nama:",
+      "value": "Budi Santoso"
+     },
+     {
+      "label": "Alamat:",
+      "value": "Jl. Merdeka No. 10, Pontianak"
+     },
+     {
+      "label": "Instansi:",
+      "value": "Dinas Kesehatan Kota Pontianak"
+     },
+     {
+      "label": "Keperluan:",
+      "value": "Kampanye Vaksinasi"
+     },
+     {
+      "label": "Tanggal:",
+      "value": "15 Juni 2023"
+     },
+     {
+      "label": "Waktu Kedatangan:",
+      "value": "08.00 - 12.00 WIB"
+     },
+     {
+      "label": "Tanda Tangan:",
+      "value": "________________________"
+     }
+    ],
+    "footer": "Untuk keperluan keamanan, harap selalu menampilkan badge ini selama berada di dalam area."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Access Request for Allied Military Exercise Observer",
+   "body": "Kartu Izin Pengunjung\nNama Lengkap: John Smith\nNegara: Australia\nInstansi: Angkatan Udara Australia\nTanggal Kunjungan: 15/10/2023\nWaktu Kunjungan: 08:00 - 17:00\nLokasi Kunjungan: Pangkalan TNI AU Iswahjudi\nKegiatan: Latihan Gabungan Australia-Indonesia\nKontak Darurat: +62 812 3456 7890\nHanya untuk hari ini. Harap serahkan kembali kartu ini saat keluar.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Kartu Izin Pengunjung",
+    "fields": [
+     {
+      "label": "Nama Lengkap",
+      "value": "John Smith"
+     },
+     {
+      "label": "Negara",
+      "value": "Australia"
+     },
+     {
+      "label": "Instansi",
+      "value": "Angkatan Udara Australia"
+     },
+     {
+      "label": "Tanggal Kunjungan",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Waktu Kunjungan",
+      "value": "08:00 - 17:00"
+     },
+     {
+      "label": "Lokasi Kunjungan",
+      "value": "Pangkalan TNI AU Iswahjudi"
+     },
+     {
+      "label": "Kegiatan",
+      "value": "Latihan Gabungan Australia-Indonesia"
+     },
+     {
+      "label": "Kontak Darurat",
+      "value": "+62 812 3456 7890"
+     }
+    ],
+    "footer": "Hanya untuk hari ini. Harap serahkan kembali kartu ini saat keluar."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-0p-form-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -156,6 +314,190 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-0p-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Museum Exhibition Schedule",
+   "body": "Jadwal Pameran Museum Budaya Cibubur\nHari | Jam Buka | Jam Tutup | Pameran Khusus\nSenin | 09:00 | 16:00 | Senjata Tradisional\nSelasa | 09:00 | 16:00 | Busana Adat\nRabu | 09:00 | 16:00 | Tari Daerah\nKamis | 09:00 | 16:00 | Kerajinan Tangan\nJumat | 09:00 | 16:00 | Makanan Tradisional\nSabtu | 09:00 | 18:00 | Musik Tradisional\nMinggu | 09:00 | 18:00 | Wayang Kulit",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Jadwal Pameran Museum Budaya Cibubur",
+    "columns": [
+     "Hari",
+     "Jam Buka",
+     "Jam Tutup",
+     "Pameran Khusus"
+    ],
+    "rows": [
+     [
+      "Senin",
+      "09:00",
+      "16:00",
+      "Senjata Tradisional"
+     ],
+     [
+      "Selasa",
+      "09:00",
+      "16:00",
+      "Busana Adat"
+     ],
+     [
+      "Rabu",
+      "09:00",
+      "16:00",
+      "Tari Daerah"
+     ],
+     [
+      "Kamis",
+      "09:00",
+      "16:00",
+      "Kerajinan Tangan"
+     ],
+     [
+      "Jumat",
+      "09:00",
+      "16:00",
+      "Makanan Tradisional"
+     ],
+     [
+      "Sabtu",
+      "09:00",
+      "18:00",
+      "Musik Tradisional"
+     ],
+     [
+      "Minggu",
+      "09:00",
+      "18:00",
+      "Wayang Kulit"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "No-Drone Zone Notice for Festival",
+   "body": "Pemberitahuan Zona Tanpa Drone\nHari | Jam | Lokasi\nSabtu | 08:00-22:00 | Festival Kebudayaan Cibubur\nMinggu | 08:00-22:00 | Festival Kebudayaan Cibubur\nSenin | 08:00-22:00 | Festival Kebudayaan Cibubur\nSelasa | 08:00-22:00 | Festival Kebudayaan Cibubur",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Pemberitahuan Zona Tanpa Drone",
+    "columns": [
+     "Hari",
+     "Jam",
+     "Lokasi"
+    ],
+    "rows": [
+     [
+      "Sabtu",
+      "08:00-22:00",
+      "Festival Kebudayaan Cibubur"
+     ],
+     [
+      "Minggu",
+      "08:00-22:00",
+      "Festival Kebudayaan Cibubur"
+     ],
+     [
+      "Senin",
+      "08:00-22:00",
+      "Festival Kebudayaan Cibubur"
+     ],
+     [
+      "Selasa",
+      "08:00-22:00",
+      "Festival Kebudayaan Cibubur"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Drone Operator Detention at Soekarno-Hatta Airport",
+   "body": "Jadwal Pemeriksaan Drone\nHari | Jam | Lokasi | Petugas\nSenin | 08:00-10:00 | Gerbang Utara | Budi\nSelasa | 13:00-15:00 | Gerbang Selatan | Siti\nRabu | 09:00-11:00 | Gerbang Timur | Joko\nKamis | 14:00-16:00 | Gerbang Barat | Lina\nJumat | 10:00-12:00 | Gerbang Tengah | Budi\nSabtu | 15:00-17:00 | Gerbang Utara | Siti\nMinggu | 11:00-13:00 | Gerbang Selatan | Joko",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Jadwal Pemeriksaan Drone",
+    "columns": [
+     "Hari",
+     "Jam",
+     "Lokasi",
+     "Petugas"
+    ],
+    "rows": [
+     [
+      "Senin",
+      "08:00-10:00",
+      "Gerbang Utara",
+      "Budi"
+     ],
+     [
+      "Selasa",
+      "13:00-15:00",
+      "Gerbang Selatan",
+      "Siti"
+     ],
+     [
+      "Rabu",
+      "09:00-11:00",
+      "Gerbang Timur",
+      "Joko"
+     ],
+     [
+      "Kamis",
+      "14:00-16:00",
+      "Gerbang Barat",
+      "Lina"
+     ],
+     [
+      "Jumat",
+      "10:00-12:00",
+      "Gerbang Tengah",
+      "Budi"
+     ],
+     [
+      "Sabtu",
+      "15:00-17:00",
+      "Gerbang Utara",
+      "Siti"
+     ],
+     [
+      "Minggu",
+      "11:00-13:00",
+      "Gerbang Selatan",
+      "Joko"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-0p-sign-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -183,6 +525,87 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-signage-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Vaccination Campaign at Air Base",
+   "body": "PANGKALAN UDARA UDARA SRIWACAN\nKAMPANYE VAKSINASI COVID-19\nWAKTU: 08.00 - 14.00\nTEMPAT: BANGUNAN KESMAS\nHARI: SENIN - KAMIS\nUNTUK SEMUA PEGAWAI DAN KELUARGA",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "PANGKALAN UDARA UDARA SRIWACAN",
+     "KAMPANYE VAKSINASI COVID-19",
+     "WAKTU: 08.00 - 14.00",
+     "TEMPAT: BANGUNAN KESMAS",
+     "HARI: SENIN - KAMIS",
+     "UNTUK SEMUA PEGAWAI DAN KELUARGA"
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-signage-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Flood Warning at Air Base",
+   "body": "PERINGATAN BANJIR\nDAS KALIMANTARA\nTINGKAT BANJIR: 3 METER\nWASPADA!\nJANGAN MELINTASI\nJALAN INI 0600-1800 WIB",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "PERINGATAN BANJIR",
+     "DAS KALIMANTARA",
+     "TINGKAT BANJIR: 3 METER",
+     "WASPADA!",
+     "JANGAN MELINTASI",
+     "JALAN INI 0600-1800 WIB"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-0p-signage-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "0+",
+   "textType": "signage",
+   "title": "New Trade Agreement with Australia",
+   "body": "Pemberitahuan Baru\nPerjanjian Dagang\ndengan Australia\nMulai 1 April\nSemua personel\nharus memeriksa: https://lanjutan.baseudara.com.au/perjanjian-dagang",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "Pemberitahuan Baru",
+     "Perjanjian Dagang",
+     "dengan Australia",
+     "Mulai 1 April",
+     "Semua personel",
+     "harus memeriksa: https://lanjutan.baseudara.com.au/perjanjian-dagang"
+    ],
+    "kind": "info"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -244,6 +667,322 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Change in University Admissions Schedule",
+   "body": "BADGE KUNJUNGAN / PERMINTAAN AKSES\nNama Lengkap: Reni Sari\nNomor Identitas: 3201010101010001\nInstansi / Universitas: Universitas Gunung Jaya\nAlamat: Jl. Raya Bogor No. 123, Jakarta Selatan\nKeperluan: Pergi ke kantor pendaftaran untuk perubahan jadwal tes masuk universitas\nTanggal Kunjungan: 15 Oktober 2023\nWaktu Kunjungan: 09.00 - 11.00 WIB\nKontak: 08123456789\nTerima kasih telah mengisi badge kunjungan ini. Harap simpan dengan baik selama di dalam area universitas.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "BADGE KUNJUNGAN / PERMINTAAN AKSES",
+    "fields": [
+     {
+      "label": "Nama Lengkap",
+      "value": "Reni Sari"
+     },
+     {
+      "label": "Nomor Identitas",
+      "value": "3201010101010001"
+     },
+     {
+      "label": "Instansi / Universitas",
+      "value": "Universitas Gunung Jaya"
+     },
+     {
+      "label": "Alamat",
+      "value": "Jl. Raya Bogor No. 123, Jakarta Selatan"
+     },
+     {
+      "label": "Keperluan",
+      "value": "Pergi ke kantor pendaftaran untuk perubahan jadwal tes masuk universitas"
+     },
+     {
+      "label": "Tanggal Kunjungan",
+      "value": "15 Oktober 2023"
+     },
+     {
+      "label": "Waktu Kunjungan",
+      "value": "09.00 - 11.00 WIB"
+     },
+     {
+      "label": "Kontak",
+      "value": "08123456789"
+     }
+    ],
+    "footer": "Terima kasih telah mengisi badge kunjungan ini. Harap simpan dengan baik selama di dalam area universitas."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Drone Control Link Jammed During Exercise at Iswahjudi Air Base",
+   "body": "Formulir Permohonan Akses\nNama Lengkap: Bambang Priyanto\nInstansi: Dinas Komunikasi dan Informatika\nAlamat: Jalan Merdeka No. 10, Surabaya\nNomor Telepon: 08123456789\nKeperluan: Investigasi gangguan pada tautan kontrol drone selama latihan\nLokasi: Lapangan Udara Iswahjudi\nTanggal dan Waktu: 25 Mei 2023, 08.00-10.00 WIB\nKeterangan: Gangguan terjadi pada frekuensi 2.4 GHz selama latihan drone di Lapangan Udara Iswahjudi. Butuh akses untuk mengidentifikasi sumber gangguan.\nTerima kasih atas kerjasamanya. Petugas Keamanan, Lanud Iswahjudi",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Formulir Permohonan Akses",
+    "fields": [
+     {
+      "label": "Nama Lengkap",
+      "value": "Bambang Priyanto"
+     },
+     {
+      "label": "Instansi",
+      "value": "Dinas Komunikasi dan Informatika"
+     },
+     {
+      "label": "Alamat",
+      "value": "Jalan Merdeka No. 10, Surabaya"
+     },
+     {
+      "label": "Nomor Telepon",
+      "value": "08123456789"
+     },
+     {
+      "label": "Keperluan",
+      "value": "Investigasi gangguan pada tautan kontrol drone selama latihan"
+     },
+     {
+      "label": "Lokasi",
+      "value": "Lapangan Udara Iswahjudi"
+     },
+     {
+      "label": "Tanggal dan Waktu",
+      "value": "25 Mei 2023, 08.00-10.00 WIB"
+     },
+     {
+      "label": "Keterangan",
+      "value": "Gangguan terjadi pada frekuensi 2.4 GHz selama latihan drone di Lapangan Udara Iswahjudi. Butuh akses untuk mengidentifikasi sumber gangguan."
+     }
+    ],
+    "footer": "Terima kasih atas kerjasamanya. Petugas Keamanan, Lanud Iswahjudi"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Access Request for Joint Perimeter Patrol Briefing",
+   "body": "Lembar Izin Pengunjung\nNama Lengkap: Muhammad Nurdiansyah\nNomor Identitas: 3205123456780001\nUnit Kerja: Pusat Pertahanan Pesisir dan Laut\nInstitusi: TNI Angkatan Laut\nKeperluan: Briefing Patroli Perimeter Gabungan\nLokasi: Gerbang Utama Lanud Iswahjudi\nTanggal: 15 Maret 2023\nWaktu: 08.00-10.00 WIB\nKeterangan: Briefing akan dilakukan di Ruang Briefing, Blok C. Harap hadir tepat waktu.\nLembar ini harus diserahkan kepada petugas keamanan di gerbang.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Lembar Izin Pengunjung",
+    "fields": [
+     {
+      "label": "Nama Lengkap",
+      "value": "Muhammad Nurdiansyah"
+     },
+     {
+      "label": "Nomor Identitas",
+      "value": "3205123456780001"
+     },
+     {
+      "label": "Unit Kerja",
+      "value": "Pusat Pertahanan Pesisir dan Laut"
+     },
+     {
+      "label": "Institusi",
+      "value": "TNI Angkatan Laut"
+     },
+     {
+      "label": "Keperluan",
+      "value": "Briefing Patroli Perimeter Gabungan"
+     },
+     {
+      "label": "Lokasi",
+      "value": "Gerbang Utama Lanud Iswahjudi"
+     },
+     {
+      "label": "Tanggal",
+      "value": "15 Maret 2023"
+     },
+     {
+      "label": "Waktu",
+      "value": "08.00-10.00 WIB"
+     },
+     {
+      "label": "Keterangan",
+      "value": "Briefing akan dilakukan di Ruang Briefing, Blok C. Harap hadir tepat waktu."
+     }
+    ],
+    "footer": "Lembar ini harus diserahkan kepada petugas keamanan di gerbang."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-chat-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "chat",
+   "title": "No-Drone Zone for Semangka Festival",
+   "body": "Pusat Penerangan Lanud Iswahjudi: Halo semuanya, ini adalah pemberitahuan penting. Selama festival semangka di Kota Semangka, Lanud Iswahjudi menjadi zona tanpa drone dari 1-5 Agustus. Mohon patuhi peraturan ini untuk keselamatan semua orang. Terima kasih.\nBudiman: Baik, terima kasih atas pemberitahuan. Saya akan menyebarkan informasi ini kepada semua anggota tim.\nLala: Apakah ada pengecualian untuk drone pribadi?\nPusat Penerangan Lanud Iswahjudi: Tidak ada pengecualian. Semua drone, baik milik pribadi maupun komersial, dilarang terbang di zona tersebut selama festival.\nBudiman: Baik, saya mengerti. Saya akan memastikan tim saya mematuhi peraturan ini.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "Pemberitahuan Zona Tanpa Drone",
+    "messages": [
+     {
+      "from": "Pusat Penerangan Lanud Iswahjudi",
+      "text": "Halo semuanya, ini adalah pemberitahuan penting. Selama festival semangka di Kota Semangka, Lanud Iswahjudi menjadi zona tanpa drone dari 1-5 Agustus. Mohon patuhi peraturan ini untuk keselamatan semua orang. Terima kasih.",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Budiman",
+      "text": "Baik, terima kasih atas pemberitahuan. Saya akan menyebarkan informasi ini kepada semua anggota tim.",
+      "time": "10:02 AM",
+      "me": true
+     },
+     {
+      "from": "Lala",
+      "text": "Apakah ada pengecualian untuk drone pribadi?",
+      "time": "10:05 AM",
+      "me": false
+     },
+     {
+      "from": "Pusat Penerangan Lanud Iswahjudi",
+      "text": "Tidak ada pengecualian. Semua drone, baik milik pribadi maupun komersial, dilarang terbang di zona tersebut selama festival.",
+      "time": "10:07 AM",
+      "me": false
+     },
+     {
+      "from": "Budiman",
+      "text": "Baik, saya mengerti. Saya akan memastikan tim saya mematuhi peraturan ini.",
+      "time": "10:09 AM",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "chat",
+   "title": "Coordinating Drone Operations with Civil Aviation",
+   "body": "Andi: Halo Pak Joko, saya Andi dari Lapangan Iswahjudi. Kami mau lakukan operasi drone besok pukul 10 pagi. Bisa bantu koordinasi dengan BAKN? Terima kasih.\nJoko: Halo Andi, ya bisa. Kirimkan lokasi dan rentang waktu operasi ya. Kami akan koordinasi dengan BAKN. Mohon konfirmasi juga jika ada perubahan.\nAndi: Baik Pak. Lokasi di sekitar Lapangan Iswahjudi. Operasi akan berlangsung dari pukul 10.00 sampai 12.00. Terima kasih.\nJoko: Oke Andi, sudah dikirimkan ke BAKN. Jangan lupa konfirmasi lagi jika ada perubahan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Pesan Drone Operasi",
+    "messages": [
+     {
+      "from": "Andi",
+      "text": "Halo Pak Joko, saya Andi dari Lapangan Iswahjudi. Kami mau lakukan operasi drone besok pukul 10 pagi. Bisa bantu koordinasi dengan BAKN? Terima kasih.",
+      "time": "10:30 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Joko",
+      "text": "Halo Andi, ya bisa. Kirimkan lokasi dan rentang waktu operasi ya. Kami akan koordinasi dengan BAKN. Mohon konfirmasi juga jika ada perubahan.",
+      "time": "10:35 AM, 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Andi",
+      "text": "Baik Pak. Lokasi di sekitar Lapangan Iswahjudi. Operasi akan berlangsung dari pukul 10.00 sampai 12.00. Terima kasih.",
+      "time": "10:40 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Joko",
+      "text": "Oke Andi, sudah dikirimkan ke BAKN. Jangan lupa konfirmasi lagi jika ada perubahan.",
+      "time": "10:45 AM, 12/05/2023",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "chat",
+   "title": "Assisting After the Earthquake",
+   "body": "Budiyanto: Halo Pak, ada gempa besar tadi di Bener. Butuh bantuan.\nAndi: Iya Pak, rumah-rumah retak dan jembatan rusak. Saya butuh tim dan peralatan.\nme: Saya akan kirim tim segera. Ada korban?\nBudiyanto: Sedikit luka-luka. Dokter lokal sudah menyelamatkan mereka.\nme: Baik, tim akan membawa obat dan makanan. Tetap berhubungan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "Bantuan Pasca Gempa",
+    "messages": [
+     {
+      "from": "Budiyanto",
+      "text": "Halo Pak, ada gempa besar tadi di Bener. Butuh bantuan.",
+      "time": "10:15 AM 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Andi",
+      "text": "Iya Pak, rumah-rumah retak dan jembatan rusak. Saya butuh tim dan peralatan.",
+      "time": "10:16 AM 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "me",
+      "text": "Saya akan kirim tim segera. Ada korban?",
+      "time": "10:20 AM 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Budiyanto",
+      "text": "Sedikit luka-luka. Dokter lokal sudah menyelamatkan mereka.",
+      "time": "10:22 AM 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "me",
+      "text": "Baik, tim akan membawa obat dan makanan. Tetap berhubungan.",
+      "time": "10:25 AM 12/05/2023",
+      "me": true
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -356,6 +1095,126 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Festival Riau Schedule",
+   "body": "Festival Riau 2023\nHari | Jam | Lokasi | Acara\nSabtu | 08:00-10:00 | Taman Kota Pekanbaru | Pembukaan Festival\nSabtu | 10:30-12:30 | Lapangan Merdeka | Pertunjukan Seni\nSabtu | 13:00-15:00 | Taman Kota Pekanbaru | Pameran Kreatif\nMinggu | 09:00-11:00 | Lapangan Merdeka | Lomba Kesenian\nMinggu | 11:30-13:30 | Taman Kota Pekanbaru | Pertunjukan Musik\nMinggu | 14:00-16:00 | Lapangan Merdeka | Penutupan Festival",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Festival Riau 2023",
+    "columns": [
+     "Hari",
+     "Jam",
+     "Lokasi",
+     "Acara"
+    ],
+    "rows": [
+     [
+      "Sabtu",
+      "08:00-10:00",
+      "Taman Kota Pekanbaru",
+      "Pembukaan Festival"
+     ],
+     [
+      "Sabtu",
+      "10:30-12:30",
+      "Lapangan Merdeka",
+      "Pertunjukan Seni"
+     ],
+     [
+      "Sabtu",
+      "13:00-15:00",
+      "Taman Kota Pekanbaru",
+      "Pameran Kreatif"
+     ],
+     [
+      "Minggu",
+      "09:00-11:00",
+      "Lapangan Merdeka",
+      "Lomba Kesenian"
+     ],
+     [
+      "Minggu",
+      "11:30-13:30",
+      "Taman Kota Pekanbaru",
+      "Pertunjukan Musik"
+     ],
+     [
+      "Minggu",
+      "14:00-16:00",
+      "Lapangan Merdeka",
+      "Penutupan Festival"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Wind Energy Investment Schedule",
+   "body": "Jadwal Investasi Energi Angin\nHari | Waktu | Lokasi | Keterangan\nSenin | 08:00-10:00 | Balai Kota Cirebon | Rapat awal\nSelasa | 13:00-15:00 | Pabrik Mesin Angin | Pemeriksaan lahan\nRabu | 09:00-11:00 | Pantai Losari | Pembahasan dampak lingkungan\nKamis | 14:00-16:00 | Hotel Grand Cirebon | Presentasi investasi\nJumat | 10:00-12:00 | Kantor Investasi | Penandatanganan perjanjian",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Jadwal Investasi Energi Angin",
+    "columns": [
+     "Hari",
+     "Waktu",
+     "Lokasi",
+     "Keterangan"
+    ],
+    "rows": [
+     [
+      "Senin",
+      "08:00-10:00",
+      "Balai Kota Cirebon",
+      "Rapat awal"
+     ],
+     [
+      "Selasa",
+      "13:00-15:00",
+      "Pabrik Mesin Angin",
+      "Pemeriksaan lahan"
+     ],
+     [
+      "Rabu",
+      "09:00-11:00",
+      "Pantai Losari",
+      "Pembahasan dampak lingkungan"
+     ],
+     [
+      "Kamis",
+      "14:00-16:00",
+      "Hotel Grand Cirebon",
+      "Presentasi investasi"
+     ],
+     [
+      "Jumat",
+      "10:00-12:00",
+      "Kantor Investasi",
+      "Penandatanganan perjanjian"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -462,6 +1321,87 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "signage",
+   "title": "Vaccination Drive at Iskandar Air Base",
+   "body": "PENYEMAYAMAN VAKSIN\nDASAR UDARA ISKANDAR\nRabu, 15 November 2023\n10:00 - 14:00 WIB\nGedung Kesehatan Paskhas\nSemua personel wajib menyemayamkan vaksin COVID-19 dan flu. Bawa kartu vaksin Anda. Gunakan masker saat menunggu dan selama prosedur. Simpan jarak dan hindari kerumunan. Petugas kesehatan akan memberikan informasi lebih lanjut.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "PENYEMAYAMAN VAKSIN",
+     "DASAR UDARA ISKANDAR",
+     "Rabu, 15 November 2023",
+     "10:00 - 14:00 WIB",
+     "Gedung Kesehatan Paskhas",
+     "Semua personel wajib menyemayamkan vaksin COVID-19 dan flu. Bawa kartu vaksin Anda. Gunakan masker saat menunggu dan selama prosedur. Simpan jarak dan hindari kerumunan. Petugas kesehatan akan memberikan informasi lebih lanjut."
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "signage",
+   "title": "Debate on Laser Weapons at Tanjungpura Air Base",
+   "body": "PERHATIAN PENTING\nDITINGKATKAN KEAMANAN DENGAN SENJATA LASER\nPemerintah sedang membahas penggunaan senjata laser\nuntuk pertahanan udara di Pangkalan Udara Tanjungpura.\nDiskusi terus berlangsung tentang keamanan dan keefektifan.\nKami akan memberitahu Anda jika ada perubahan kebijakan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "PERHATIAN PENTING",
+     "DITINGKATKAN KEAMANAN DENGAN SENJATA LASER",
+     "Pemerintah sedang membahas penggunaan senjata laser",
+     "untuk pertahanan udara di Pangkalan Udara Tanjungpura.",
+     "Diskusi terus berlangsung tentang keamanan dan keefektifan.",
+     "Kami akan memberitahu Anda jika ada perubahan kebijakan."
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1",
+   "textType": "signage",
+   "title": "Change in Force Protection Condition at Tanjungpura Air Base",
+   "body": "PENGUMUMAN\nDASAR UDARA TANJUNGPURA\nTANGGAL: 15 MARCH 2023\nKEPADA: SEMUA PERSONEL DAN KONTRAKTOR\nKEADAAN KEAMANAN BERTAMBAH\nSEGERA DARI 08.00 WIB, KEADAAN KEAMANAN DASAR UDARA TANJUNGPURA BERUBAH MENJADI ALFA. SEMUA PERSONEL DAN KONTRAKTOR HARUS MEMATUHI PERATURAN BERIKUT: 1. TUNJUKKAN ID KARD KETIKA MASUK DAN KELUAR. 2. HINDARI BERKUMPUL-KUMPUL DI AREA TERBUKA. 3. LAPORKAN SEGERA SEBARANG KEGIATAN YANG TIDAK LAZIM. TERIMA KASIH ATAS KERJASAMA ANDA.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "PENGUMUMAN",
+     "DASAR UDARA TANJUNGPURA",
+     "TANGGAL: 15 MARCH 2023",
+     "KEPADA: SEMUA PERSONEL DAN KONTRAKTOR",
+     "KEADAAN KEAMANAN BERTAMBAH",
+     "SEGERA DARI 08.00 WIB, KEADAAN KEAMANAN DASAR UDARA TANJUNGPURA BERUBAH MENJADI ALFA. SEMUA PERSONEL DAN KONTRAKTOR HARUS MEMATUHI PERATURAN BERIKUT: 1. TUNJUKKAN ID KARD KETIKA MASUK DAN KELUAR. 2. HINDARI BERKUMPUL-KUMPUL DI AREA TERBUKA. 3. LAPORKAN SEGERA SEBARANG KEGIATAN YANG TIDAK LAZIM. TERIMA KASIH ATAS KERJASAMA ANDA."
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-1p-announcement-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -489,6 +1429,174 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Reminder for Insider Threat Awareness Training",
+   "body": "Dewi: Halo semua! Ingat ya, besok ada pelatihan kesadaran ancaman internal di markas. Waktu 13.00 WIB di ruang briefing. Harus diikuti semua personel.\nBudi: Iya Dewi, terima kasih sudah remind. Topiknya apa ya?\nDewi: Topiknya tentang cara mengidentifikasi tanda-tanda ancaman internal dan bagaimana melaporkannya. Jangan lupa bawa bukti identitas.\nAndi: Oke, saya catat. Di ruang briefing kan? Ada ujian setelah pelatihan?\nDewi: Ya benar di ruang briefing. Tidak ada ujian, tapi ada sesi tanya jawab di akhir. Jangan terlambat ya!\nBudi: Baik, terima kasih info. Saya persiapkan semua.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "",
+    "messages": [
+     {
+      "from": "Dewi",
+      "text": "Halo semua! Ingat ya, besok ada pelatihan kesadaran ancaman internal di markas. Waktu 13.00 WIB di ruang briefing. Harus diikuti semua personel.",
+      "time": "9:00 AM, 12 September 2023",
+      "me": false
+     },
+     {
+      "from": "Budi",
+      "text": "Iya Dewi, terima kasih sudah remind. Topiknya apa ya?",
+      "time": "9:15 AM, 12 September 2023",
+      "me": false
+     },
+     {
+      "from": "Dewi",
+      "text": "Topiknya tentang cara mengidentifikasi tanda-tanda ancaman internal dan bagaimana melaporkannya. Jangan lupa bawa bukti identitas.",
+      "time": "9:20 AM, 12 September 2023",
+      "me": false
+     },
+     {
+      "from": "Andi",
+      "text": "Oke, saya catat. Di ruang briefing kan? Ada ujian setelah pelatihan?",
+      "time": "9:30 AM, 12 September 2023",
+      "me": false
+     },
+     {
+      "from": "Dewi",
+      "text": "Ya benar di ruang briefing. Tidak ada ujian, tapi ada sesi tanya jawab di akhir. Jangan terlambat ya!",
+      "time": "9:35 AM, 12 September 2023",
+      "me": false
+     },
+     {
+      "from": "Budi",
+      "text": "Baik, terima kasih info. Saya persiapkan semua.",
+      "time": "9:40 AM, 12 September 2023",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Preparing for the Exercise",
+   "body": "Komandan Satya: Pak, besok ada latihan untuk pengenalan niat musuh. Silakan datang ke ruang briefing pukul 08.00. Bawa semua personel.\nAndi: Baik, Pak. Apa yang perlu disiapkan?\nKomandan Satya: Bawa catatan latihan sebelumnya dan pastikan semua personel sudah memahami prosedur kebersihan.\nAndi: Baik, Pak. Saya akan segera koordinasikan dengan tim.\nKomandan Satya: Terima kasih, Andi. Jangan lupa, ini penting untuk keamanan semua.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Pesanan dari Komandan",
+    "messages": [
+     {
+      "from": "Komandan Satya",
+      "text": "Pak, besok ada latihan untuk pengenalan niat musuh. Silakan datang ke ruang briefing pukul 08.00. Bawa semua personel.",
+      "time": "10:30 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Andi",
+      "text": "Baik, Pak. Apa yang perlu disiapkan?",
+      "time": "10:32 AM, 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Komandan Satya",
+      "text": "Bawa catatan latihan sebelumnya dan pastikan semua personel sudah memahami prosedur kebersihan.",
+      "time": "10:35 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Andi",
+      "text": "Baik, Pak. Saya akan segera koordinasikan dengan tim.",
+      "time": "10:37 AM, 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Komandan Satya",
+      "text": "Terima kasih, Andi. Jangan lupa, ini penting untuk keamanan semua.",
+      "time": "10:39 AM, 12/05/2023",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Vaccination Campaign at Halim Perdanakusuma Air Base",
+   "body": "Budi: Halo semua, besok ada kampanye vaksinasi di markas. Waktu 08.00-14.00. Silakan hadir untuk vaksinasi COVID-19.\nAndi: Baik, Budi. Saya akan datang. Di mana tempatnya?\nBudi: Di gedung serbaguna. Jangan lupa bawa KTP dan kartu BPJS.\nSri: Saya sudah divaksinasi. Tapi suaminya belum. Bisakah dia ikut?\nBudi: Tentu bisa. Silakan bawa suaminya besok. Vaksinasi gratis untuk semua personil dan keluarga.\nJoko: Terima kasih informasinya, Budi. Saya akan segera menghubungi tim medis untuk persiapan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "",
+    "messages": [
+     {
+      "from": "Budi",
+      "text": "Halo semua, besok ada kampanye vaksinasi di markas. Waktu 08.00-14.00. Silakan hadir untuk vaksinasi COVID-19.",
+      "time": "10:30 AM, 15/05/2023",
+      "me": false
+     },
+     {
+      "from": "Andi",
+      "text": "Baik, Budi. Saya akan datang. Di mana tempatnya?",
+      "time": "10:32 AM, 15/05/2023",
+      "me": false
+     },
+     {
+      "from": "Budi",
+      "text": "Di gedung serbaguna. Jangan lupa bawa KTP dan kartu BPJS.",
+      "time": "10:34 AM, 15/05/2023",
+      "me": false
+     },
+     {
+      "from": "Sri",
+      "text": "Saya sudah divaksinasi. Tapi suaminya belum. Bisakah dia ikut?",
+      "time": "10:36 AM, 15/05/2023",
+      "me": false
+     },
+     {
+      "from": "Budi",
+      "text": "Tentu bisa. Silakan bawa suaminya besok. Vaksinasi gratis untuk semua personil dan keluarga.",
+      "time": "10:38 AM, 15/05/2023",
+      "me": false
+     },
+     {
+      "from": "Joko",
+      "text": "Terima kasih informasinya, Budi. Saya akan segera menghubungi tim medis untuk persiapan.",
+      "time": "10:40 AM, 15/05/2023",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -549,6 +1657,96 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "New Counter-Drone System at Tanjung Emas Airport",
+   "body": "Pemerintah Kota Surabaya\nPemberitahuan: Penginstallan Sistem Anti-Dron di Bandara Tanjung Emas\nKepada warga setempat,\nUntuk meningkatkan keamanan di Bandara Tanjung Emas, Pemerintah Kota Surabaya telah menginstall sistem anti-dron baru. Sistem ini akan membantu dalam mendeteksi dan menghentikan aktivitas dron yang tidak diinginkan di sekitar bandara.\nSistem anti-dron ini telah beroperasi sejak 1 Januari 2023. Sistem ini akan aktif 24 jam sehari untuk memastikan keamanan dan ketertiban di bandara. Kami harapkan dengan adanya sistem ini, keamanan di bandara akan lebih terjamin.\nKami meminta maaf atas ketidaknyamanan yang mungkin timbul dan mengapresiasi kerjasama warga untuk menjaga keamanan bersama.\nTerima kasih atas perhatian dan kerjasama Anda.\nHormat kami, Pemerintah Kota Surabaya\n5 Januari 2023\nDinas Hubungan Masyarakat, Kota Surabaya",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Pemerintah Kota Surabaya",
+    "title": "Pemberitahuan: Penginstallan Sistem Anti-Dron di Bandara Tanjung Emas",
+    "paragraphs": [
+     "Kepada warga setempat,",
+     "Untuk meningkatkan keamanan di Bandara Tanjung Emas, Pemerintah Kota Surabaya telah menginstall sistem anti-dron baru. Sistem ini akan membantu dalam mendeteksi dan menghentikan aktivitas dron yang tidak diinginkan di sekitar bandara.",
+     "Sistem anti-dron ini telah beroperasi sejak 1 Januari 2023. Sistem ini akan aktif 24 jam sehari untuk memastikan keamanan dan ketertiban di bandara. Kami harapkan dengan adanya sistem ini, keamanan di bandara akan lebih terjamin.",
+     "Kami meminta maaf atas ketidaknyamanan yang mungkin timbul dan mengapresiasi kerjasama warga untuk menjaga keamanan bersama.",
+     "Terima kasih atas perhatian dan kerjasama Anda.",
+     "Hormat kami, Pemerintah Kota Surabaya"
+    ],
+    "date": "5 Januari 2023",
+    "contact": "Dinas Hubungan Masyarakat, Kota Surabaya"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Town Hall Notice: Laser Weapons Debate",
+   "body": "Pemerintah Kota Cibinong\nPemberitahuan: Debat Senjata Laser untuk Pertahanan Udara\nWarga setempat,\nKami ingin memberitahu kalian mengenai sebuah debat yang sedang berlangsung di DPRD Kota Cibinong terkait dengan penggunaan senjata laser untuk pertahanan udara di sekitar Pangkalan TNI Angkatan Udara Cibinong.\nBeberapa anggota DPRD mendukung ide ini karena senjata laser dapat menghentikan pesawat musuh tanpa menggunakan peluru. Mereka mengatakan ini akan menjaga keamanan warga dan mengurangi limbah peluru.\nNamun, ada juga yang menentang karena khawatir adanya efek samping pada lingkungan dan kesehatan. Mereka juga bingung dengan biaya yang sangat tinggi untuk membuat dan menggunakan senjata ini.\nKami akan menyelenggarakan rapat desa pada hari Selasa, 15 November 2023, pukul 19.00 di Balai Desa Cibinong. Semua warga diundang untuk berpartisipasi dan menyampaikan pendapat mereka.\nMari kita diskusikan bersama untuk keamanan dan kesejahteraan kita semua. Terima kasih.\n10 November 2023\nSekretariat Pemerintah Kota Cibinong, 021-1234567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Pemerintah Kota Cibinong",
+    "title": "Pemberitahuan: Debat Senjata Laser untuk Pertahanan Udara",
+    "paragraphs": [
+     "Warga setempat,",
+     "Kami ingin memberitahu kalian mengenai sebuah debat yang sedang berlangsung di DPRD Kota Cibinong terkait dengan penggunaan senjata laser untuk pertahanan udara di sekitar Pangkalan TNI Angkatan Udara Cibinong.",
+     "Beberapa anggota DPRD mendukung ide ini karena senjata laser dapat menghentikan pesawat musuh tanpa menggunakan peluru. Mereka mengatakan ini akan menjaga keamanan warga dan mengurangi limbah peluru.",
+     "Namun, ada juga yang menentang karena khawatir adanya efek samping pada lingkungan dan kesehatan. Mereka juga bingung dengan biaya yang sangat tinggi untuk membuat dan menggunakan senjata ini.",
+     "Kami akan menyelenggarakan rapat desa pada hari Selasa, 15 November 2023, pukul 19.00 di Balai Desa Cibinong. Semua warga diundang untuk berpartisipasi dan menyampaikan pendapat mereka.",
+     "Mari kita diskusikan bersama untuk keamanan dan kesejahteraan kita semua. Terima kasih."
+    ],
+    "date": "10 November 2023",
+    "contact": "Sekretariat Pemerintah Kota Cibinong, 021-1234567"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Drone Sighting Near Local Air Base",
+   "body": "Pemerintah Kota Cibinong\nPengumuman: Penerbangan Mesin Terbang Tanpa Awak di Sekitar Pangkalan Udara Cibubur\nKepada seluruh warga Cibinong,\nKemarin, Selasa, 12 Desember 2023, pukul 19.30 WIB, satu drone telah diamati terbang di sekitar Pangkalan Udara Cibubur. Drone tersebut terbang pada ketinggian sekitar 50 meter di atas tanah.\nTim keamanan Pangkalan Udara Cibubur telah segera menangani situasi ini. Drone tersebut berhasil ditangkap dan dikembalikan ke pemiliknya. Pemilik drone, Bapak Joko Susilo dari Desa Cibubur, mengaku tidak sengaja terbang di sekitar pangkalan udara.\nKami ingatkan kepada seluruh warga untuk tidak terbang drone di sekitar Pangkalan Udara Cibubur. Hal ini dilakukan untuk menjaga keamanan dan ketertiban di sekitar pangkalan udara.\nAtas kerjasamanya, kami ucapkan terima kasih.\nHormat kami, Pemerintah Kota Cibinong\n13 Desember 2023\nKantor Pemerintah Kota Cibinong, 021-XXXX-XXXX",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Pemerintah Kota Cibinong",
+    "title": "Pengumuman: Penerbangan Mesin Terbang Tanpa Awak di Sekitar Pangkalan Udara Cibubur",
+    "paragraphs": [
+     "Kepada seluruh warga Cibinong,",
+     "Kemarin, Selasa, 12 Desember 2023, pukul 19.30 WIB, satu drone telah diamati terbang di sekitar Pangkalan Udara Cibubur. Drone tersebut terbang pada ketinggian sekitar 50 meter di atas tanah.",
+     "Tim keamanan Pangkalan Udara Cibubur telah segera menangani situasi ini. Drone tersebut berhasil ditangkap dan dikembalikan ke pemiliknya. Pemilik drone, Bapak Joko Susilo dari Desa Cibubur, mengaku tidak sengaja terbang di sekitar pangkalan udara.",
+     "Kami ingatkan kepada seluruh warga untuk tidak terbang drone di sekitar Pangkalan Udara Cibubur. Hal ini dilakukan untuk menjaga keamanan dan ketertiban di sekitar pangkalan udara.",
+     "Atas kerjasamanya, kami ucapkan terima kasih.",
+     "Hormat kami, Pemerintah Kota Cibinong"
+    ],
+    "date": "13 Desember 2023",
+    "contact": "Kantor Pemerintah Kota Cibinong, 021-XXXX-XXXX"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -639,6 +1837,152 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Assisting After the Earthquake",
+   "body": "Petugas Keamanan 01/01/2023\n08:00 Pasukan PMI tiba di desa Cinta Damai. Membawa tenda dan makanan. (JJ)\n10:30 Penduduk mulai mengungsi ke tempat yang lebih aman. (YB)\n12:00 Tim medis mulai memberikan bantuan kesehatan. (RS)\n14:30 Pasokan air dan makanan mulai diterima dari Jakarta. (JJ)\n16:00 Pemadam kebakaran siap untuk menangani kebakaran jika terjadi. (YB)\n18:00 Makanan malam disediakan untuk pengungsi. (RS)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Petugas Keamanan",
+    "date": "01/01/2023",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "Pasukan PMI tiba di desa Cinta Damai. Membawa tenda dan makanan. (JJ)",
+      "initials": "JJ"
+     },
+     {
+      "time": "10:30",
+      "entry": "Penduduk mulai mengungsi ke tempat yang lebih aman. (YB)",
+      "initials": "YB"
+     },
+     {
+      "time": "12:00",
+      "entry": "Tim medis mulai memberikan bantuan kesehatan. (RS)",
+      "initials": "RS"
+     },
+     {
+      "time": "14:30",
+      "entry": "Pasokan air dan makanan mulai diterima dari Jakarta. (JJ)",
+      "initials": "JJ"
+     },
+     {
+      "time": "16:00",
+      "entry": "Pemadam kebakaran siap untuk menangani kebakaran jika terjadi. (YB)",
+      "initials": "YB"
+     },
+     {
+      "time": "18:00",
+      "entry": "Makanan malam disediakan untuk pengungsi. (RS)",
+      "initials": "RS"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Delivery Driver Incident at PT. Raharja Gate",
+   "body": "Pos Keamanan PT. Raharja 12 Juli 2023\n07.30 Sopir pengiriman dari PT. Logistik Cepat datang dengan truk berwarna merah. Truk tidak memiliki stiker akses ke pos.\n07.32 Sopir menunjukkan surat izin pengiriman. Surat tidak berwarna biru seperti yang diharapkan. Surat berwarna putih.\n07.35 Menghubungi manajer PT. Raharja. Manajer menyatakan surat berwarna putih juga dapat diterima. Sopir diizinkan masuk.\n07.40 Sopir pergi ke gudang dengan truk. Pelapor mengamati sopir tidak memakai jaket reflektif seperti yang diharapkan.\n07.45 Pelapor melaporkan ke manajer. Manajer meminta sopir keluar dan tidak diperbolehkan masuk lagi.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Pos Keamanan PT. Raharja",
+    "date": "12 Juli 2023",
+    "entries": [
+     {
+      "time": "07.30",
+      "entry": "Sopir pengiriman dari PT. Logistik Cepat datang dengan truk berwarna merah. Truk tidak memiliki stiker akses ke pos.",
+      "initials": "JKB"
+     },
+     {
+      "time": "07.32",
+      "entry": "Sopir menunjukkan surat izin pengiriman. Surat tidak berwarna biru seperti yang diharapkan. Surat berwarna putih.",
+      "initials": "JKB"
+     },
+     {
+      "time": "07.35",
+      "entry": "Menghubungi manajer PT. Raharja. Manajer menyatakan surat berwarna putih juga dapat diterima. Sopir diizinkan masuk.",
+      "initials": "JKB"
+     },
+     {
+      "time": "07.40",
+      "entry": "Sopir pergi ke gudang dengan truk. Pelapor mengamati sopir tidak memakai jaket reflektif seperti yang diharapkan.",
+      "initials": "JKB"
+     },
+     {
+      "time": "07.45",
+      "entry": "Pelapor melaporkan ke manajer. Manajer meminta sopir keluar dan tidak diperbolehkan masuk lagi.",
+      "initials": "JKB"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-1p-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Post-Rocket Alarm Reconnaissance",
+   "body": "Pos Keamanan Blok C 12 Mei 2023\n08:30 Alarm roket terdengar. Semua pos di sekitar Blok C siap.\n08:45 Tim rekonstruksi keluar untuk mengecek kerusakan. Tidak ada korban jiwa dilaporkan.\n09:15 Ditemukan kerusakan ringan di dinding gedung kantor. Jendela pecah.\n10:00 Tim medis datang untuk membersihkan puing-puing dan mengecek keamanan.\n10:30 Semua area di sekitar Blok C sudah aman. Tidak ada ancaman tambahan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Pos Keamanan Blok C",
+    "date": "12 Mei 2023",
+    "entries": [
+     {
+      "time": "08:30",
+      "entry": "Alarm roket terdengar. Semua pos di sekitar Blok C siap.",
+      "initials": "JNS"
+     },
+     {
+      "time": "08:45",
+      "entry": "Tim rekonstruksi keluar untuk mengecek kerusakan. Tidak ada korban jiwa dilaporkan.",
+      "initials": "RDM"
+     },
+     {
+      "time": "09:15",
+      "entry": "Ditemukan kerusakan ringan di dinding gedung kantor. Jendela pecah.",
+      "initials": "KWN"
+     },
+     {
+      "time": "10:00",
+      "entry": "Tim medis datang untuk membersihkan puing-puing dan mengecek keamanan.",
+      "initials": "LKT"
+     },
+     {
+      "time": "10:30",
+      "entry": "Semua area di sekitar Blok C sudah aman. Tidak ada ancaman tambahan.",
+      "initials": "JNS"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -778,6 +2122,95 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "id-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Upcoming Sports Championship in Cibubur",
+   "body": "Pemerintah Kota Cibubur\nPemberitahuan: Kejuaraan Olahraga Cibubur 2023\nYth. Warga Cibubur yang terhormat,\nDengan ini kami beritahu bahwa Pemerintah Kota Cibubur akan mengadakan Kejuaraan Olahraga Cibubur 2023. Acara ini akan diselenggarakan pada hari Minggu, 15 Oktober 2023, mulai pukul 08.00 WIB di Stadion Utama Cibubur.\nDalam acara ini, akan ada beberapa cabang olahraga yang diikuti, seperti lari, basket, voli, dan sepak bola. Kami mengundang semua warga untuk ikut serta dalam acara ini, baik sebagai peserta maupun penonton.\nUntuk peserta, pendaftaran akan dibuka mulai tanggal 1 September 2023 hingga tanggal 10 Oktober 2023. Formulir pendaftaran dapat diambil di Balai Desa Cibubur atau di website resmi Pemerintah Kota Cibubur.\nKami harap dengan adanya kegiatan ini, semangat olahraga di kota kami bisa semakin tumbuh dan berkembang. Kami juga mengundang seluruh warga untuk datang dan menikmati acara yang menarik ini.\nAtas perhatian dan kerjasamanya, kami ucapkan terima kasih. Semoga bersama-sama kita bisa membuat Kejuaraan Olahraga Cibubur 2023 menjadi sukses. Terima kasih.\n1 September 2023\nBalai Desa Cibubur, 021-XXXXXXXX",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Pemerintah Kota Cibubur",
+    "title": "Pemberitahuan: Kejuaraan Olahraga Cibubur 2023",
+    "paragraphs": [
+     "Yth. Warga Cibubur yang terhormat,",
+     "Dengan ini kami beritahu bahwa Pemerintah Kota Cibubur akan mengadakan Kejuaraan Olahraga Cibubur 2023. Acara ini akan diselenggarakan pada hari Minggu, 15 Oktober 2023, mulai pukul 08.00 WIB di Stadion Utama Cibubur.",
+     "Dalam acara ini, akan ada beberapa cabang olahraga yang diikuti, seperti lari, basket, voli, dan sepak bola. Kami mengundang semua warga untuk ikut serta dalam acara ini, baik sebagai peserta maupun penonton.",
+     "Untuk peserta, pendaftaran akan dibuka mulai tanggal 1 September 2023 hingga tanggal 10 Oktober 2023. Formulir pendaftaran dapat diambil di Balai Desa Cibubur atau di website resmi Pemerintah Kota Cibubur.",
+     "Kami harap dengan adanya kegiatan ini, semangat olahraga di kota kami bisa semakin tumbuh dan berkembang. Kami juga mengundang seluruh warga untuk datang dan menikmati acara yang menarik ini.",
+     "Atas perhatian dan kerjasamanya, kami ucapkan terima kasih. Semoga bersama-sama kita bisa membuat Kejuaraan Olahraga Cibubur 2023 menjadi sukses. Terima kasih."
+    ],
+    "date": "1 September 2023",
+    "contact": "Balai Desa Cibubur, 021-XXXXXXXX"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Change in Shift Handover at Pondok Betung Base",
+   "body": "Pemerintah Kota Pondok Betung\nPemberitahuan Perubahan Penyerahan Jabatan di Pusat Operasi Pertahanan Pondok Betung\nKepada warga setempat di sekitar Pusat Operasi Pertahanan (POP) Pondok Betung, kami informasikan perubahan dalam jadwal penyerahan jabatan antar shift yang akan berlaku mulai 15 Mei 2023.\nSejak tanggal tersebut, penyerahan jabatan antar shift akan berubah dari pukul 07.00 WIB menjadi pukul 06.30 WIB. Perubahan ini dilakukan untuk meningkatkan efisiensi operasional dan memastikan keamanan di sekitar basis kami.\nKami memahami bahwa perubahan ini mungkin akan memengaruhi aktivitas sehari-hari warga sekitar. Oleh karena itu, kami mengundang Anda untuk memahami dan menyambut perubahan ini. Kami juga siap untuk mendengar masukan dan kekhawatiran Anda.\nUntuk informasi lebih lanjut, Anda dapat menghubungi kantor kami di Gedung Kota Pondok Betung, Jl. Merdeka No. 10, atau melalui telepon (021) 1234567. Terima kasih atas perhatian dan kerjasama Anda.\nAtas perhatian dan kerjasama Anda, kami ucapkan terima kasih.\n10 Mei 2023\nKantor Pemerintah Kota Pondok Betung",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Pemerintah Kota Pondok Betung",
+    "title": "Pemberitahuan Perubahan Penyerahan Jabatan di Pusat Operasi Pertahanan Pondok Betung",
+    "paragraphs": [
+     "Kepada warga setempat di sekitar Pusat Operasi Pertahanan (POP) Pondok Betung, kami informasikan perubahan dalam jadwal penyerahan jabatan antar shift yang akan berlaku mulai 15 Mei 2023.",
+     "Sejak tanggal tersebut, penyerahan jabatan antar shift akan berubah dari pukul 07.00 WIB menjadi pukul 06.30 WIB. Perubahan ini dilakukan untuk meningkatkan efisiensi operasional dan memastikan keamanan di sekitar basis kami.",
+     "Kami memahami bahwa perubahan ini mungkin akan memengaruhi aktivitas sehari-hari warga sekitar. Oleh karena itu, kami mengundang Anda untuk memahami dan menyambut perubahan ini. Kami juga siap untuk mendengar masukan dan kekhawatiran Anda.",
+     "Untuk informasi lebih lanjut, Anda dapat menghubungi kantor kami di Gedung Kota Pondok Betung, Jl. Merdeka No. 10, atau melalui telepon (021) 1234567. Terima kasih atas perhatian dan kerjasama Anda.",
+     "Atas perhatian dan kerjasama Anda, kami ucapkan terima kasih."
+    ],
+    "date": "10 Mei 2023",
+    "contact": "Kantor Pemerintah Kota Pondok Betung"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "New Trade Agreement Benefits for Local Businesses",
+   "body": "Pemerintah Kota Menceng\nPemberitahuan Perjanjian Perdagangan Baru\nWarga setia Kota Menceng,\nDengan senang hati kami memberitahu bahwa Kota Menceng telah menandatangani perjanjian perdagangan baru dengan Provinsi Jaya Barat. Perjanjian ini, yang akan berlaku mulai 1 Januari 2024, akan memberikan manfaat besar bagi bisnis lokal kami.\nPertama, perjanjian ini akan menurunkan bea masuk untuk produk lokal seperti kerajinan tangan, pakaian, dan produk pertanian. Ini akan memudahkan produk kami untuk diekspor ke pasar di Provinsi Jaya Barat. Kami harapkan ini akan meningkatkan penjualan dan memperluas jaringan bisnis kami.\nKedua, perjanjian ini juga akan memudahkan akses modal untuk bisnis lokal. Bisnis yang berminat untuk berkembang ke Provinsi Jaya Barat akan mendapatkan bantuan dalam mendapatkan pinjaman dengan bunga lebih rendah.\nKami mengajak semua warga untuk menyambut perjanjian ini dengan baik dan memanfaatkan peluang yang ada. Kami juga akan menyelenggarakan workshop dan seminar untuk memberitahu lebih lanjut tentang perjanjian ini dan bagaimana bisnis lokal dapat memanfaatkannya.\nUntuk informasi lebih lanjut, silakan hubungi Dinas Perdagangan dan Industri Kota Menceng di 021-XXX-XXXX atau kunjungi website kami di www.kotamenceng.go.id/perdagangan.\n15 Oktober 2023\nDinas Perdagangan dan Industri Kota Menceng",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Pemerintah Kota Menceng",
+    "title": "Pemberitahuan Perjanjian Perdagangan Baru",
+    "paragraphs": [
+     "Warga setia Kota Menceng,",
+     "Dengan senang hati kami memberitahu bahwa Kota Menceng telah menandatangani perjanjian perdagangan baru dengan Provinsi Jaya Barat. Perjanjian ini, yang akan berlaku mulai 1 Januari 2024, akan memberikan manfaat besar bagi bisnis lokal kami.",
+     "Pertama, perjanjian ini akan menurunkan bea masuk untuk produk lokal seperti kerajinan tangan, pakaian, dan produk pertanian. Ini akan memudahkan produk kami untuk diekspor ke pasar di Provinsi Jaya Barat. Kami harapkan ini akan meningkatkan penjualan dan memperluas jaringan bisnis kami.",
+     "Kedua, perjanjian ini juga akan memudahkan akses modal untuk bisnis lokal. Bisnis yang berminat untuk berkembang ke Provinsi Jaya Barat akan mendapatkan bantuan dalam mendapatkan pinjaman dengan bunga lebih rendah.",
+     "Kami mengajak semua warga untuk menyambut perjanjian ini dengan baik dan memanfaatkan peluang yang ada. Kami juga akan menyelenggarakan workshop dan seminar untuk memberitahu lebih lanjut tentang perjanjian ini dan bagaimana bisnis lokal dapat memanfaatkannya.",
+     "Untuk informasi lebih lanjut, silakan hubungi Dinas Perdagangan dan Industri Kota Menceng di 021-XXX-XXXX atau kunjungi website kami di www.kotamenceng.go.id/perdagangan."
+    ],
+    "date": "15 Oktober 2023",
+    "contact": "Dinas Perdagangan dan Industri Kota Menceng"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "id-dr-2-news-001",
    "exam": "DLPT_READING",
    "language": "id",
@@ -900,6 +2333,167 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "No-Drone Zone Notice for Coconut Festival",
+   "body": "Unit Keamanan Lapangan (UKL) Pangkalan TNI Angkatan Udara (LANUD) Cilacap Hari, 15 Oktober 2023\n08.00 Pertama kali, pengawas drone (RD) dari UKL LANUD Cilacap, Kpl. JG, melaporkan adanya pemberitahuan zona larangan penerbangan drone di sekitar Festival Kelapa Cilacap. Zona ini mencakup area 5 km dari LANUD Cilacap.\n09.30 Kpl. JG kembali melaporkan bahwa pemberitahuan itu dikirim ke semua unit terkait, termasuk Polres Cilacap dan Satpol PP. Tujuannya adalah untuk mencegah insiden yang tidak diinginkan selama festival berlangsung.\n11.00 Kpl. PW, pengawas komunikasi (RC) dari UKL LANUD Cilacap, melaporkan bahwa semua jaringan komunikasi siap untuk memastikan pemberitahuan zona larangan diterima oleh semua pihak yang terkait.\n14.00 Kpl. JG melaporkan adanya pertanyaan dari warga sekitar tentang alasan zona larangan. Dia menjelaskan bahwa zona ini dibentuk untuk alasan keamanan selama festival.\n16.00 Kpl. PW melaporkan bahwa semua pemberitahuan telah diterima dan diakui oleh semua unit terkait. Zona larangan diterapkan mulai hari ini hingga selesainya festival.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Unit Keamanan Lapangan (UKL) Pangkalan TNI Angkatan Udara (LANUD) Cilacap",
+    "date": "Hari, 15 Oktober 2023",
+    "entries": [
+     {
+      "time": "08.00",
+      "entry": "Pertama kali, pengawas drone (RD) dari UKL LANUD Cilacap, Kpl. JG, melaporkan adanya pemberitahuan zona larangan penerbangan drone di sekitar Festival Kelapa Cilacap. Zona ini mencakup area 5 km dari LANUD Cilacap.",
+      "initials": "JG"
+     },
+     {
+      "time": "09.30",
+      "entry": "Kpl. JG kembali melaporkan bahwa pemberitahuan itu dikirim ke semua unit terkait, termasuk Polres Cilacap dan Satpol PP. Tujuannya adalah untuk mencegah insiden yang tidak diinginkan selama festival berlangsung.",
+      "initials": "JG"
+     },
+     {
+      "time": "11.00",
+      "entry": "Kpl. PW, pengawas komunikasi (RC) dari UKL LANUD Cilacap, melaporkan bahwa semua jaringan komunikasi siap untuk memastikan pemberitahuan zona larangan diterima oleh semua pihak yang terkait.",
+      "initials": "PW"
+     },
+     {
+      "time": "14.00",
+      "entry": "Kpl. JG melaporkan adanya pertanyaan dari warga sekitar tentang alasan zona larangan. Dia menjelaskan bahwa zona ini dibentuk untuk alasan keamanan selama festival.",
+      "initials": "JG"
+     },
+     {
+      "time": "16.00",
+      "entry": "Kpl. PW melaporkan bahwa semua pemberitahuan telah diterima dan diakui oleh semua unit terkait. Zona larangan diterapkan mulai hari ini hingga selesainya festival.",
+      "initials": "PW"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Change in Force Protection Condition at Tanjungpura Base",
+   "body": "Pusat Pertahanan Tanjungpura 15 September 2023\n07:30 FP Condition changed from Alpha to Bravo oleh Komandan. Semua personel diminta untuk meningkatkan kesadaran dan melakukan patroli tambahan. (JW)\n08:15 Informasi dari Komandan: Perubahan FP Condition akibat informasi intelijen tentang potensi ancaman. (DH)\n09:45 Semua gerbang dan titik kontrol telah diperkuat. Patroli tambahan telah dimulai. (KP)\n11:00 Briefing singkat kepada semua personel tentang perubahan FP Condition dan langkah-langkah yang harus diambil. (JW)\n13:30 Pembaruan dari Komandan: Tidak ada perubahan pada situasi saat ini. Tetap vigilan. (DH)\n15:00 Semua personel telah melaporkan posisi dan status mereka. (KP)\n16:45 Pembaruan terakhir dari Komandan: FP Condition tetap Bravo. (JW)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Pusat Pertahanan Tanjungpura",
+    "date": "15 September 2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "FP Condition changed from Alpha to Bravo oleh Komandan. Semua personel diminta untuk meningkatkan kesadaran dan melakukan patroli tambahan. (JW)",
+      "initials": "JW"
+     },
+     {
+      "time": "08:15",
+      "entry": "Informasi dari Komandan: Perubahan FP Condition akibat informasi intelijen tentang potensi ancaman. (DH)",
+      "initials": "DH"
+     },
+     {
+      "time": "09:45",
+      "entry": "Semua gerbang dan titik kontrol telah diperkuat. Patroli tambahan telah dimulai. (KP)",
+      "initials": "KP"
+     },
+     {
+      "time": "11:00",
+      "entry": "Briefing singkat kepada semua personel tentang perubahan FP Condition dan langkah-langkah yang harus diambil. (JW)",
+      "initials": "JW"
+     },
+     {
+      "time": "13:30",
+      "entry": "Pembaruan dari Komandan: Tidak ada perubahan pada situasi saat ini. Tetap vigilan. (DH)",
+      "initials": "DH"
+     },
+     {
+      "time": "15:00",
+      "entry": "Semua personel telah melaporkan posisi dan status mereka. (KP)",
+      "initials": "KP"
+     },
+     {
+      "time": "16:45",
+      "entry": "Pembaruan terakhir dari Komandan: FP Condition tetap Bravo. (JW)",
+      "initials": "JW"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "id-dr-2-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "id",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Flood Warning at Pondok Indah Security Post",
+   "body": "Pos Keamanan Pondok Indah 2023-11-15\n07:00 Petugas JK melaporkan hujan lebat di sekitar area Pondok Indah. Air mulai naik di beberapa saluran. Semua petugas diminta untuk waspada.\n08:30 Petugas AS melihat banjir mulai terjadi di Jalan Utama Pondok Indah. Tinggi air sekitar 20 cm. Mobil-mobil harus berhati-hati.\n09:15 Petugas DW melaporkan beberapa rumah di area Blok A mulai tergenang. Warga diminta untuk memindahkan barang-barang berharga ke tempat yang lebih tinggi.\n10:00 Petugas RH menerima informasi dari BPBD bahwa banjir bisa semakin parah. Semua petugas diminta untuk siap mengkoordinasikan evakuasi jika diperlukan.\n11:45 Petugas JK melaporkan jalan sudah mulai tertutup akibat banjir. Semua petugas diminta untuk tetap berada di pos kecuali ada darurat.\n13:30 Petugas AS melaporkan situasi masih stabil, tetapi air masih naik. Warga diminta untuk tetap waspada dan tidak panik.\n15:00 Petugas DW melaporkan beberapa warga mulai mengungsi ke tempat yang lebih tinggi. Kami siap membantu jika diperlukan.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Pos Keamanan Pondok Indah",
+    "date": "2023-11-15",
+    "entries": [
+     {
+      "time": "07:00",
+      "entry": "Petugas JK melaporkan hujan lebat di sekitar area Pondok Indah. Air mulai naik di beberapa saluran. Semua petugas diminta untuk waspada.",
+      "initials": "JK"
+     },
+     {
+      "time": "08:30",
+      "entry": "Petugas AS melihat banjir mulai terjadi di Jalan Utama Pondok Indah. Tinggi air sekitar 20 cm. Mobil-mobil harus berhati-hati.",
+      "initials": "AS"
+     },
+     {
+      "time": "09:15",
+      "entry": "Petugas DW melaporkan beberapa rumah di area Blok A mulai tergenang. Warga diminta untuk memindahkan barang-barang berharga ke tempat yang lebih tinggi.",
+      "initials": "DW"
+     },
+     {
+      "time": "10:00",
+      "entry": "Petugas RH menerima informasi dari BPBD bahwa banjir bisa semakin parah. Semua petugas diminta untuk siap mengkoordinasikan evakuasi jika diperlukan.",
+      "initials": "RH"
+     },
+     {
+      "time": "11:45",
+      "entry": "Petugas JK melaporkan jalan sudah mulai tertutup akibat banjir. Semua petugas diminta untuk tetap berada di pos kecuali ada darurat.",
+      "initials": "JK"
+     },
+     {
+      "time": "13:30",
+      "entry": "Petugas AS melaporkan situasi masih stabil, tetapi air masih naik. Warga diminta untuk tetap waspada dan tidak panik.",
+      "initials": "AS"
+     },
+     {
+      "time": "15:00",
+      "entry": "Petugas DW melaporkan beberapa warga mulai mengungsi ke tempat yang lebih tinggi. Kami siap membantu jika diperlukan.",
+      "initials": "DW"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1397,6 +2991,114 @@
    "verified": false
   },
   {
+   "id": "id-dr-0p-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-badge_form-001",
+   "stem": "What is Muhammad Nur's purpose of visit?",
+   "choices": [
+    "To observe the local election.",
+    "To deliver goods.",
+    "To participate in a vaccination campaign.",
+    "To discuss a trade agreement."
+   ],
+   "answer": 0,
+   "explanation": "The document states 'Pemantau Pemilu' which translates to 'election observer'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-badge_form-001",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To report an incident.",
+    "To record a delivery of goods.",
+    "To grant access to an election observation site.",
+    "To schedule a meeting."
+   ],
+   "answer": 2,
+   "explanation": "The form is titled 'Lembar Izin Pengunjung' (Visitor Permit Form) and specifies 'Diberikan akses ke TPK Pemilu' (Given access to the election observation site).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-badge_form-002",
+   "stem": "What is the purpose of Budi Santoso's visit?",
+   "choices": [
+    "To participate in a vaccination campaign",
+    "To attend a meeting",
+    "To inspect the facilities",
+    "To deliver a package"
+   ],
+   "answer": 0,
+   "explanation": "The document states 'Keperluan: Kampanye Vaksinasi', indicating that the purpose of the visit is to participate in a vaccination campaign.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-badge_form-002",
+   "stem": "What is the main topic of the document?",
+   "choices": [
+    "A delivery incident",
+    "A vaccination campaign",
+    "A new trade agreement",
+    "A security breach"
+   ],
+   "answer": 1,
+   "explanation": "The document is a visitor badge for a vaccination campaign at Tanjungpura Air Base, as indicated by 'Kampanye Vaksinasi' and the context provided.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-badge_form-003",
+   "stem": "What is the visitor's country of origin?",
+   "choices": [
+    "United States",
+    "Australia",
+    "Germany",
+    "Indonesia"
+   ],
+   "answer": 1,
+   "explanation": "The visitor's country of origin is explicitly stated as 'Australia' in the 'Negara' field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-badge_form-003",
+   "stem": "What is the main purpose of the visitor's access request?",
+   "choices": [
+    "To inspect facilities",
+    "To attend a meeting",
+    "To observe a military exercise",
+    "To deliver supplies"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to observe a military exercise, as indicated by the 'Kegiatan' field stating 'Latihan Gabungan Australia-Indonesia'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-0p-form-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1595,6 +3297,114 @@
    "verified": false
   },
   {
+   "id": "id-dr-0p-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-schedule_board-001",
+   "stem": "When does the museum open on weekdays?",
+   "choices": [
+    "07:00",
+    "08:00",
+    "09:00",
+    "10:00"
+   ],
+   "answer": 2,
+   "explanation": "The schedule shows that the museum opens at 09:00 on weekdays (Senin to Jumat).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-schedule_board-001",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To list the names of museum staff",
+    "To provide information about museum tickets",
+    "To describe the history of the museum",
+    "To inform visitors about museum opening hours and special exhibitions"
+   ],
+   "answer": 3,
+   "explanation": "The schedule provides information about the museum's opening and closing hours, as well as the special exhibitions (Pameran Khusus) each day.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-schedule_board-002",
+   "stem": "When is the no-drone zone active?",
+   "choices": [
+    "Only on weekends from 8 AM to 10 PM",
+    "Monday to Friday from 8 AM to 10 PM",
+    "Saturday to Tuesday from 8 AM to 10 PM",
+    "Every day from 8 AM to 10 PM"
+   ],
+   "answer": 2,
+   "explanation": "The notice states 'Sabtu' (Saturday) to 'Selasa' (Tuesday) with 'Jam' (time) from '08:00-22:00' (8 AM to 10 PM).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-schedule_board-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform about festival hours",
+    "To announce a change in festival location",
+    "To declare a no-drone zone during the festival",
+    "To promote the festival activities"
+   ],
+   "answer": 2,
+   "explanation": "The main idea is conveyed by the title 'Pemberitahuan Zona Tanpa Drone' (No-Drone Zone Notice) and the context of the festival.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-schedule_board-003",
+   "stem": "When is Budi scheduled to check drones at the North Gate?",
+   "choices": [
+    "14:00-16:00 on Thursday",
+    "13:00-15:00 on Tuesday",
+    "08:00-10:00 on Monday",
+    "09:00-11:00 on Wednesday"
+   ],
+   "answer": 2,
+   "explanation": "The schedule shows 'Budi' is assigned to 'Gerbang Utara' (North Gate) from '08:00-10:00' on 'Senin' (Monday).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-schedule_board-003",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To list airport maintenance tasks",
+    "To plan flight departure times",
+    "To outline drone checking assignments",
+    "To schedule passenger check-ins"
+   ],
+   "answer": 2,
+   "explanation": "The title 'Jadwal Pemeriksaan Drone' (Drone Inspection Schedule) and the columns 'Jam' (Time), 'Lokasi' (Location), and 'Petugas' (Officer) indicate the schedule is for drone checking assignments.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-0p-sign-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1645,6 +3455,114 @@
    ],
    "answer": 2,
    "explanation": "The phrase \"Pendapat Anda?\" is asking for the reader's opinion on the topic of military service, as indicated by the context of the debate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-signage-001",
+   "stem": "Where is the vaccination campaign taking place?",
+   "choices": [
+    "Near the vaccination tent",
+    "Hospital",
+    "Building Kesmas",
+    "Sriwacan Air Base"
+   ],
+   "answer": 2,
+   "explanation": "The sign states 'TEMPAT: BANGUNAN KESMAS', which means 'Place: Building Kesmas'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "purpose",
+   "passageId": "id-dr-0p-signage-001",
+   "stem": "What is the purpose of this sign?",
+   "choices": [
+    "To warn about a danger",
+    "To prohibit entry to a restricted area",
+    "To inform about the vaccination campaign schedule",
+    "To advertise a new product"
+   ],
+   "answer": 2,
+   "explanation": "The sign provides information about the vaccination campaign, including the time, place, and days, which is evident from the words 'KAMPANYE VAKSINASI COVID-19', 'WAKTU', 'TEMPAT', and 'HARI'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-signage-002",
+   "stem": "What is the flood level mentioned in the sign?",
+   "choices": [
+    "1 meter",
+    "4 meters",
+    "3 meters",
+    "2 meters"
+   ],
+   "answer": 2,
+   "explanation": "The sign states 'TINGKAT BANJIR: 3 METER', indicating the flood level is 3 meters.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To inform about a concert",
+    "To warn about a flood",
+    "To advertise a new road",
+    "To announce a festival"
+   ],
+   "answer": 1,
+   "explanation": "The sign begins with 'PERINGATAN BANJIR', which translates to 'FLOOD WARNING', indicating its main purpose is to warn about a flood.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "id-dr-0p-signage-003",
+   "stem": "When does the new trade agreement start?",
+   "choices": [
+    "April 1",
+    "March 1",
+    "June 1",
+    "May 1"
+   ],
+   "answer": 0,
+   "explanation": "The document states 'Mulai 1 April', which translates to 'Starts April 1'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-0p-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "id-dr-0p-signage-003",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To inform about a new trade agreement",
+    "To announce a flood warning",
+    "To announce a new vaccination campaign",
+    "To warn about a delivery driver incident"
+   ],
+   "answer": 0,
+   "explanation": "The sign mentions 'Perjanjian Dagang' (trade agreement) and provides a link for more information, indicating its main purpose is to inform about the new trade agreement.",
    "source": "llm",
    "verified": false
   },
@@ -1807,6 +3725,222 @@
    ],
    "answer": 2,
    "explanation": "The main purpose of the announcement is to inform about a change in the shift schedule, specifically that the shift change will take place today at 14:00, as indicated by the phrase 'Pemberitahuan perubahan jaga hari ini.' The other options are not the main focus of the announcement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-badge_form-001",
+   "stem": "What is the purpose of Reni Sari's visit?",
+   "choices": [
+    "To deliver packages",
+    "To change the university admissions test schedule",
+    "To observe a local election",
+    "To attend a vaccination campaign"
+   ],
+   "answer": 1,
+   "explanation": "The document states 'Pergi ke kantor pendaftaran untuk perubahan jadwal tes masuk universitas', which translates to 'Going to the registration office for a change in the university entrance test schedule'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-badge_form-001",
+   "stem": "What is the main topic of this visitor badge?",
+   "choices": [
+    "A debate on laser weapons",
+    "A flood warning",
+    "A change in university admissions schedule",
+    "A new trade agreement"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly indicated by the phrase 'perubahan jadwal tes masuk universitas' (a change in the university entrance test schedule) in the 'Keperluan' (Purpose) field.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-badge_form-002",
+   "stem": "What is the specific frequency mentioned as being jammed?",
+   "choices": [
+    "900 MHz",
+    "2.4 GHz",
+    "5 GHz",
+    "1.8 GHz"
+   ],
+   "answer": 1,
+   "explanation": "The document states 'Gangguan terjadi pada frekuensi 2.4 GHz', indicating the specific frequency mentioned as being jammed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-badge_form-002",
+   "stem": "What is the main purpose of the access request?",
+   "choices": [
+    "To identify the source of a drone control link jam",
+    "To test new drone equipment",
+    "To participate in a drone exercise",
+    "To observe a drone race"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is stated as 'Investigasi gangguan pada tautan kontrol drone selama latihan', which translates to investigating the jam on the drone control link during the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-badge_form-003",
+   "stem": "What is the purpose of Muhammad Nurdiansyah's visit?",
+   "choices": [
+    "To participate in a military exercise",
+    "To deliver supplies to the air base",
+    "To inspect the air base facilities",
+    "To attend a joint perimeter patrol briefing"
+   ],
+   "answer": 3,
+   "explanation": "The document explicitly states 'Briefing Patroli Perimeter Gabungan' as the purpose of the visit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-badge_form-003",
+   "stem": "What is the main topic of the text?",
+   "choices": [
+    "A request for access to an air base",
+    "An announcement of a change in security measures",
+    "A report of an incident at the air base",
+    "A notification of a military exercise"
+   ],
+   "answer": 0,
+   "explanation": "The text is a visitor's badge/access request form, as indicated by the title 'Lembar Izin Pengunjung' and the fields filled out for access to the air base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-chat-001",
+   "stem": "When is the no-drone zone in effect?",
+   "choices": [
+    "From 15-19 August",
+    "From 15-19 July",
+    "From 1-5 July",
+    "From 1-5 August"
+   ],
+   "answer": 3,
+   "explanation": "The message states 'Selama festival semangka di Kota Semangka, Lanud Iswahjudi menjadi zona tanpa drone dari 1-5 Agustus.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-chat-001",
+   "stem": "What is the main purpose of the messages?",
+   "choices": [
+    "To promote drone safety workshops",
+    "To inform about a no-drone zone during a festival",
+    "To announce a new drone racing event",
+    "To sell drones at a discounted price"
+   ],
+   "answer": 1,
+   "explanation": "The main idea is communicated in the first message: 'ini adalah pemberitahuan penting. Selama festival semangka di Kota Semangka, Lanud Iswahjudi menjadi zona tanpa drone dari 1-5 Agustus.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-chat-002",
+   "stem": "What time will the drone operations take place?",
+   "choices": [
+    "From 2:00 PM to 4:00 PM",
+    "From 12:00 PM to 2:00 PM",
+    "From 8:00 AM to 10:00 AM",
+    "From 10:00 AM to 12:00 PM"
+   ],
+   "answer": 3,
+   "explanation": "The message from Andi states 'Operasi akan berlangsung dari pukul 10.00 sampai 12.00,' indicating the drone operations will take place from 10:00 AM to 12:00 PM.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-chat-002",
+   "stem": "What is the main purpose of this conversation?",
+   "choices": [
+    "To discuss weather conditions for drone operations",
+    "To coordinate drone operations with civil aviation",
+    "To plan a meeting between Andi and Joko",
+    "To arrange transportation for drone equipment"
+   ],
+   "answer": 1,
+   "explanation": "The conversation revolves around coordinating drone operations with civil aviation, as indicated by phrases like 'koordinasi dengan BAKN' and 'operasi drone.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-chat-003",
+   "stem": "What specific damages were reported in the earthquake?",
+   "choices": [
+    "Roads flooded and power lines down",
+    "Houses collapsed and bridges destroyed",
+    "Houses cracked and bridges damaged",
+    "Hospitals overcrowded and communication towers fallen"
+   ],
+   "answer": 2,
+   "explanation": "The message from Budiyanto states 'rumah-rumah retak dan jembatan rusak', which translates to 'houses cracked and bridges damaged'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-chat-003",
+   "stem": "What is the main purpose of this conversation?",
+   "choices": [
+    "To coordinate disaster relief efforts",
+    "To plan a community event",
+    "To discuss the weather forecast",
+    "To arrange a medical appointment"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to coordinate disaster relief efforts, as indicated by phrases like 'ada gempa besar tadi di Bener. Butuh bantuan' ('there was a big earthquake in Bener. Need help') and 'Saya akan kirim tim segera' ('I will send the team immediately').",
    "source": "llm",
    "verified": false
   },
@@ -2135,6 +4269,78 @@
    "verified": false
   },
   {
+   "id": "id-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-schedule_board-001",
+   "stem": "When does the creative exhibition take place?",
+   "choices": [
+    "Saturday from 13:00 to 15:00",
+    "Saturday from 10:30 to 12:30",
+    "Sunday from 14:00 to 16:00",
+    "Saturday from 08:00 to 10:00"
+   ],
+   "answer": 0,
+   "explanation": "The creative exhibition, or 'Pameran Kreatif', is scheduled for Saturday from 13:00 to 15:00 at Taman Kota Pekanbaru.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-schedule_board-001",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To announce a new shopping mall",
+    "To inform about traffic regulations",
+    "To list local restaurant opening hours",
+    "To provide information about a festival"
+   ],
+   "answer": 3,
+   "explanation": "The schedule is titled 'Festival Riau 2023' and lists various events and their timings, indicating its main purpose is to provide information about a festival.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-schedule_board-002",
+   "stem": "When is the environmental impact discussion scheduled?",
+   "choices": [
+    "Monday 08:00-10:00",
+    "Wednesday 09:00-11:00",
+    "Tuesday 13:00-15:00",
+    "Thursday 14:00-16:00"
+   ],
+   "answer": 1,
+   "explanation": "The environmental impact discussion is scheduled on 'Rabu' (Wednesday) from '09:00-11:00' at 'Pantai Losari'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-schedule_board-002",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To plan a vacation",
+    "To schedule a music festival",
+    "To organize a wind energy investment project",
+    "To arrange a sports tournament"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is 'Jadwal Investasi Energi Angin' (Wind Energy Investment Schedule), as indicated by the title and the activities listed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2459,6 +4665,114 @@
    "verified": false
   },
   {
+   "id": "id-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-signage-001",
+   "stem": "What should personnel bring to the vaccination drive?",
+   "choices": [
+    "Their meal ticket",
+    "Their flight schedule",
+    "Their vaccination card",
+    "Their identification card"
+   ],
+   "answer": 2,
+   "explanation": "The sign explicitly states 'Bawa kartu vaksin Anda', which translates to 'Bring your vaccination card'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-signage-001",
+   "stem": "What is the main purpose of the sign?",
+   "choices": [
+    "To advertise a new health facility",
+    "To inform about a change in shift schedule",
+    "To announce a mandatory vaccination campaign",
+    "To remind about routine medical check-ups"
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the sign is to announce a mandatory vaccination campaign, as indicated by the title 'PENYEMAYAMAN VAKSIN' and the phrase 'Semua personel wajib menyemayamkan vaksin'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-signage-002",
+   "stem": "What is the air base considering for air defense?",
+   "choices": [
+    "New fighter jets",
+    "Laser weapons",
+    "More soldiers",
+    "Additional radar systems"
+   ],
+   "answer": 1,
+   "explanation": "The sign mentions 'DITINGKATKAN KEAMANAN DENGAN SENJATA LASER', which translates to 'Enhance security with laser weapons'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-signage-002",
+   "stem": "What is the main purpose of the sign?",
+   "choices": [
+    "To instruct personnel on new procedures",
+    "To warn about a security threat",
+    "To announce a new policy",
+    "To inform about an ongoing debate"
+   ],
+   "answer": 3,
+   "explanation": "The sign states 'Pemerintah sedang membahas penggunaan senjata laser', which translates to 'The government is discussing the use of laser weapons', indicating an ongoing debate.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "id-dr-1-signage-003",
+   "stem": "When does the change in force protection condition take effect?",
+   "choices": [
+    "At 08:00 WIB",
+    "Immediately",
+    "At 20:00 WIB",
+    "At 15:00 WIB"
+   ],
+   "answer": 0,
+   "explanation": "The document states 'SEGERA DARI 08.00 WIB', indicating that the change takes effect at 08:00 WIB.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "id-dr-1-signage-003",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To inform about a change in working hours",
+    "To announce a new exercise schedule",
+    "To inform about a change in force protection condition",
+    "To remind about regular security procedures"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to inform about a change in force protection condition, as stated by 'KEADAAN KEAMANAN BERTAMBAH' and 'KEADAAN KEAMANAN DASAR UDARA TANJUNGPURA BERUBAH MENJADI ALFA'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-1p-announcement-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -2563,6 +4877,114 @@
    ],
    "answer": 1,
    "explanation": "The announcement is aimed at potential tourists, as it emphasizes the safety and beauty of Lombok and encourages them to visit. The phrases “Lombok telah menjadi tempat yang aman untuk dikunjungi” and “bagi memulihkan pariwisata di Lombok” suggest that the target audience is people who might be considering visiting Lombok.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-chat-001",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A reminder for a cybersecurity workshop",
+    "A reminder for a physical fitness training",
+    "A reminder for an insider threat awareness training",
+    "A reminder for a fire drill"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in the first message: \"pelatihan kesadaran ancaman internal\" which translates to \"insider threat awareness training\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-chat-001",
+   "stem": "What is one of the topics that will be covered in the training?",
+   "choices": [
+    "How to perform CPR",
+    "How to operate a drone",
+    "How to identify signs of insider threats and how to report them",
+    "How to write a formal report"
+   ],
+   "answer": 2,
+   "explanation": "The topic is explicitly mentioned in Dewi's second message: \"cara mengidentifikasi tanda-tanda ancaman internal dan bagaimana melaporkannya\" which translates to \"how to identify signs of insider threats and how to report them\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Training security forces",
+    "Organizing a festival",
+    "Discussing personal matters",
+    "Planning a social event"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is training security forces, as indicated by the phrases 'latihan untuk pengenalan niat musuh' and 'prosedur kebersihan'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-chat-002",
+   "stem": "What time is the briefing scheduled for?",
+   "choices": [
+    "10.00",
+    "09.00",
+    "08.00",
+    "07.00"
+   ],
+   "answer": 2,
+   "explanation": "The briefing is scheduled for 'pukul 08.00', as mentioned in the first message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "D scheduling a meeting",
+    "C discussing a vaccination campaign",
+    "B organizing a sports event",
+    "A planning a family vacation"
+   ],
+   "answer": 1,
+   "explanation": "The main topic is a vaccination campaign, as indicated by the repeated use of the word 'vaksinasi' and the discussion about the COVID-19 vaccination event.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-chat-003",
+   "stem": "What documents are required for the vaccination?",
+   "choices": [
+    "A Passport and credit card",
+    "C KTP and BPJS card",
+    "D Birth certificate and social security card",
+    "B Driver's license and health insurance card"
+   ],
+   "answer": 1,
+   "explanation": "The required documents are KTP (identity card) and kartu BPJS (health insurance card), as mentioned in the message from Budi: 'Jangan lupa bawa KTP dan kartu BPJS.'",
    "source": "llm",
    "verified": false
   },
@@ -2779,6 +5201,114 @@
    ],
    "answer": 2,
    "explanation": "The word \"selesai\" in this context means \"finish\". The text says that you will be given an entry stamp after your passport and form are checked and the procedure is finished: \"Setelah paspor dan formulir Anda diperiksa, Anda akan diberi cap masuk. Prosedur ini umumnya selesai dalam 30 menit.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-municipal_notice-001",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To inform residents about a new counter-drone system at Tanjung Emas Airport",
+    "To announce the closure of Tanjung Emas Airport",
+    "To request donations for the new system",
+    "To advertise the latest technology in drone detection"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the notice is to inform residents about the installation and operation of a new counter-drone system at Tanjung Emas Airport, as stated in the first and second paragraphs: 'Untuk meningkatkan keamanan di Bandara Tanjung Emas, Pemerintah Kota Surabaya telah menginstall sistem anti-dron baru.' and 'Sistem ini akan membantu dalam mendeteksi dan menghentikan aktivitas dron yang tidak diinginkan di sekitar bandara.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-municipal_notice-001",
+   "stem": "When did the counter-drone system start operating?",
+   "choices": [
+    "5 January 2023",
+    "24 hours ago",
+    "1 January 2023",
+    "1 December 2022"
+   ],
+   "answer": 2,
+   "explanation": "The counter-drone system started operating on 1 January 2023, as mentioned in the third paragraph: 'Sistem anti-dron ini telah beroperasi sejak 1 Januari 2023.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-municipal_notice-002",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "A change in shift handover at a local air base",
+    "A new sports championship in Cibinong",
+    "A debate about using laser weapons for air defense",
+    "A flood warning in the Cibinong area"
+   ],
+   "answer": 2,
+   "explanation": "The notice discusses a debate about using laser weapons for air defense, as mentioned in the sentence 'terkait dengan penggunaan senjata laser untuk pertahanan udara'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-municipal_notice-002",
+   "stem": "When is the village meeting scheduled?",
+   "choices": [
+    "Saturday, 18 November 2023",
+    "Thursday, 23 November 2023",
+    "Tuesday, 15 November 2023",
+    "Friday, 10 November 2023"
+   ],
+   "answer": 2,
+   "explanation": "The notice states 'Kami akan menyelenggarakan rapat desa pada hari Selasa, 15 November 2023', which translates to 'We will hold a village meeting on Tuesday, 15 November 2023'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about a drone sighting and remind them not to fly drones near the air base.",
+    "To report a crime committed by a drone operator.",
+    "To describe the features of the captured drone.",
+    "To announce a new drone policy for the city of Cibinong."
+   ],
+   "answer": 0,
+   "explanation": "The notice explicitly states that it is a reminder ('kami ingatkan') to residents not to fly drones around the air base ('untuk tidak terbang drone di sekitar Pangkalan Udara Cibubur') and informs them about a recent drone sighting.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-municipal_notice-003",
+   "stem": "When did the drone sighting occur?",
+   "choices": [
+    "On Wednesday, December 13, 2023, at 7:30 PM WIB.",
+    "On Monday, December 11, 2023, at 7:30 PM WIB.",
+    "On Tuesday, December 12, 2023, at 7:30 PM WIB.",
+    "On Thursday, December 14, 2023, at 7:30 PM WIB."
+   ],
+   "answer": 2,
+   "explanation": "The notice states that the drone was sighted on Tuesday, December 12, 2023, at 7:30 PM WIB ('Kemarin, Selasa, 12 Desember 2023, pukul 19.30 WIB').",
    "source": "llm",
    "verified": false
   },
@@ -3103,6 +5633,114 @@
    ],
    "answer": 0,
    "explanation": "The letter uses \"membantu\" to mean \"to assist\" or \"to help\" in the context of the volunteer program, as seen in the phrase \"saya harap Anda bisa membantu\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-shift_log-001",
+   "stem": "What is the main focus of the shift log?",
+   "choices": [
+    "Preparation for an upcoming festival.",
+    "Disaster relief efforts after an earthquake.",
+    "Daily routine of the security post.",
+    "Training exercises for the security team."
+   ],
+   "answer": 1,
+   "explanation": "The main focus is on disaster relief efforts after an earthquake, as seen in entries like 'Pasukan PMI tiba di desa Cinta Damai. Membawa tenda dan makanan.' and 'Tim medis mulai memberikan bantuan kesehatan.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-shift_log-001",
+   "stem": "What specific items did the PMI team bring to the village?",
+   "choices": [
+    "Water purification tablets and radios.",
+    "Medical supplies and blankets.",
+    "Tents and food.",
+    "Generators and flashlights."
+   ],
+   "answer": 2,
+   "explanation": "The PMI team brought 'tenda dan makanan' (tents and food) as mentioned in the first entry.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-shift_log-002",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A security incident involving a delivery driver",
+    "A routine delivery at PT. Raharja",
+    "A truck without access sticker",
+    "A manager's decision to allow a delivery"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a security incident involving a delivery driver, as indicated by the repeated mentions of the driver's issues and the security measures taken (e.g., 'Sopir tidak memakai jaket reflektif seperti yang diharapkan', 'manajer meminta sopir keluar dan tidak diperbolehkan masuk lagi').",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-shift_log-002",
+   "stem": "What was the color of the delivery driver's truck?",
+   "choices": [
+    "Blue",
+    "Red",
+    "White",
+    "Yellow"
+   ],
+   "answer": 1,
+   "explanation": "The color of the delivery driver's truck is explicitly stated as 'merah' (red) in the first entry.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "id-dr-1p-shift_log-003",
+   "stem": "What is the main topic of this log?",
+   "choices": [
+    "A celebration event",
+    "A routine security check",
+    "A scheduled maintenance activity",
+    "A post-rocket alarm reconnaissance"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is a post-rocket alarm reconnaissance, as indicated by the phrases 'Alarm roket terdengar' and 'Tim rekonstruksi keluar untuk mengecek kerusakan.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-1p-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "id-dr-1p-shift_log-003",
+   "stem": "What specific damage was reported during the reconnaissance?",
+   "choices": [
+    "A minor damage to the office building wall and broken windows",
+    "A gas leak",
+    "A collapsed building",
+    "A power outage"
+   ],
+   "answer": 0,
+   "explanation": "The specific damage reported is 'kerusakan ringan di dinding gedung kantor. Jendela pecah,' which translates to 'minor damage to the office building wall. Windows broken.'",
    "source": "llm",
    "verified": false
   },
@@ -3593,6 +6231,114 @@
    "verified": false
   },
   {
+   "id": "id-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-municipal_notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about an upcoming sports championship and invite participation",
+    "To provide details about a completed sports event",
+    "To announce the cancellation of a sports championship",
+    "To advertise a new sports facility in the town"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose of the notice is to inform residents about the upcoming Kejuaraan Olahraga Cibubur 2023 and invite them to participate or attend. This is evident from phrases like 'Dengan ini kami beritahu bahwa...' and 'Kami mengundang semua warga untuk ikut serta dalam acara ini...'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-municipal_notice-001",
+   "stem": "When is the registration period for participants?",
+   "choices": [
+    "From September 15 to October 5, 2023",
+    "From August 15 to October 1, 2023",
+    "From September 1 to October 10, 2023",
+    "From October 1 to October 15, 2023"
+   ],
+   "answer": 2,
+   "explanation": "The registration period for participants is clearly stated as 'mulai tanggal 1 September 2023 hingga tanggal 10 Oktober 2023' in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-municipal_notice-002",
+   "stem": "What is the main topic of the notice?",
+   "choices": [
+    "A change in force protection condition at Pondok Betung Base",
+    "A new vaccination campaign at Pondok Betung Base",
+    "A change in the shift handover time at Pondok Betung Defense Operations Center",
+    "An upcoming military exercise in Pondok Betung"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the notice is clearly stated in the title and the first paragraph: 'Pemberitahuan Perubahan Penyerahan Jabatan di Pusat Operasi Pertahanan Pondok Betung' which translates to 'Notice of Change in Shift Handover at Pondok Betung Defense Operations Center'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-municipal_notice-002",
+   "stem": "What is the new shift handover time?",
+   "choices": [
+    "06.30 WIB",
+    "07.00 WIB",
+    "09.00 WIB",
+    "08.00 WIB"
+   ],
+   "answer": 0,
+   "explanation": "The new shift handover time is explicitly mentioned in the second paragraph: 'penyerahan jabatan antar shift akan berubah dari pukul 07.00 WIB menjadi pukul 06.30 WIB' which translates to 'the shift handover will change from 07.00 WIB to 06.30 WIB'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To advertise a new product",
+    "To announce a new trade agreement and its benefits for local businesses",
+    "To announce a citywide holiday",
+    "To inform about a new tax policy"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is clearly stated in the first paragraph: 'kota Menceng telah menandatangani perjanjian perdagangan baru' (City Menceng has signed a new trade agreement) and further elaborated in the subsequent paragraphs about its benefits.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-municipal_notice-003",
+   "stem": "What specific local products will have reduced import duties according to the agreement?",
+   "choices": [
+    "Furniture and home appliances",
+    "Electronics and machinery",
+    "Handicrafts, clothing, and agricultural products",
+    "Cars and motorcycles"
+   ],
+   "answer": 2,
+   "explanation": "The notice explicitly mentions 'kerajinan tangan, pakaian, dan produk pertanian' (handicrafts, clothing, and agricultural products) as the products that will have reduced import duties.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "id-dr-2-news-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -4021,6 +6767,114 @@
    ],
    "answer": 0,
    "explanation": "The text says 'Bagian yang dibutuhkan untuk memeriksa truk itu tidak ada', which means 'The part needed to inspect the truck was not there'. Therefore, 'dibutuhkan' means 'was required'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-shift_log-001",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "A security exercise at the air base",
+    "A request for access to the air base",
+    "A notice about a no-drone zone for a festival",
+    "A drone control system failure"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is a notice about a no-drone zone for a festival, as indicated by the repeated mentions of 'zona larangan penerbangan drone' and 'Festival Kelapa Cilacap'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-shift_log-001",
+   "stem": "What is the radius of the no-drone zone?",
+   "choices": [
+    "4 km",
+    "3 km",
+    "5 km",
+    "2 km"
+   ],
+   "answer": 2,
+   "explanation": "The radius of the no-drone zone is 5 km, as stated in the entry at 08.00: 'Zona ini mencakup area 5 km dari LANUD Cilacap.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-shift_log-002",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A routine patrol schedule",
+    "A maintenance check of the base",
+    "A new training exercise",
+    "A change in the force protection condition"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is clearly stated in the first entry: 'FP Condition changed from Alpha to Bravo oleh Komandan.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-shift_log-002",
+   "stem": "What is the reason given for the change in the force protection condition?",
+   "choices": [
+    "A routine inspection",
+    "A scheduled drill",
+    "Information about potential threats",
+    "A request from higher command"
+   ],
+   "answer": 2,
+   "explanation": "The reason is explicitly mentioned in the second entry: 'Perubahan FP Condition akibat informasi intelijen tentang potensi ancaman.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "id-dr-2-shift_log-003",
+   "stem": "What is the main topic of the shift log entries?",
+   "choices": [
+    "A change in shift handover procedures",
+    "A sports championship in Pondok Indah",
+    "A flood warning and its progression",
+    "A new security system at Pondok Indah"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is a flood warning and its progression, as indicated by entries like 'hujan lebat' (heavy rain), 'banjir mulai terjadi' (flood started), and 'air masih naik' (water still rising).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "id-dr-2-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "id-dr-2-shift_log-003",
+   "stem": "What specific action were residents asked to take in the Blok A area?",
+   "choices": [
+    "C. To move valuable items to higher ground",
+    "A. To evacuate immediately",
+    "B. To stay indoors",
+    "D. To call the security post"
+   ],
+   "answer": 0,
+   "explanation": "Residents in the Blok A area were asked to 'memindahkan barang-barang berharga ke tempat yang lebih tinggi' (move valuable items to higher ground).",
    "source": "llm",
    "verified": false
   },

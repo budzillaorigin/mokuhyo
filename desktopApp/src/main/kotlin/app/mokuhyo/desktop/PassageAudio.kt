@@ -1,5 +1,9 @@
 package app.mokuhyo.desktop
 
+import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import app.mokuhyo.lang.VoiceRotation
 import app.mokuhyo.exam.ExamPassage
 import app.mokuhyo.lang.SpeechOutput
 import app.mokuhyo.speech.AudioIO
@@ -21,7 +25,7 @@ class PassageAudio(private val app: AppGraph) {
     }
 
     suspend fun load(passage: ExamPassage): Result = withContext(Dispatchers.IO) {
-        passage.audio?.let { rel -> app.packFile(passage.language, rel)?.let { return@withContext Result.Ready(decode(it), "pre-rendered clip") } }
+        passage.audio?.let { rel -> app.packFile(passage.language, rel)?.let { return@withContext Result.Ready(decode(it), clipSource(passage)) } }
         val key = digest(passage.language + passage.script.joinToString("\n") { it.voice + "|" + it.text })
         val cached = File(app.dataDir, "cache/audio/${passage.language}/${passage.id}-$key.wav")
         if (cached.isFile) return@withContext Result.Ready(cached.readBytes(), "voice service (cached)")
@@ -36,12 +40,11 @@ class PassageAudio(private val app: AppGraph) {
     private suspend fun render(speech: SpeechOutput, passage: ExamPassage): ByteArray? {
         val voices = speech.voicesFor(passage.language)
         if (voices.isEmpty()) return null
-        val speakers = passage.script.map { it.speaker }.distinct()
+        // Speaker variety (BRIEF_PHASE8 N-07): rotate by passage id; distinct speakers get distinct voices when there are enough.
+        val cast = VoiceRotation.assign(voices, passage.script.map { it.speaker to it.voice }.distinctBy { it.first }, passage.id)
         val pcm = ArrayList<ShortArray>()
         for (line in passage.script) {
-            // Distinct speakers get distinct voices when there are enough; otherwise match gender.
-            val byGender = voices.filter { it.gender == line.voice }.ifEmpty { voices }
-            val voice = byGender[speakers.indexOf(line.speaker).coerceAtLeast(0) % byGender.size]
+            val voice = cast.getValue(line.speaker)
             val spoken = speech.synthesize(line.text, passage.language, voice) ?: return null
             pcm += AudioIO.toPcm16kMono(spoken.wav)
             pcm += ShortArray(16_000 * 6 / 10) // 0.6 s between lines
@@ -50,7 +53,27 @@ class PassageAudio(private val app: AppGraph) {
         return AudioIO.wav(all)
     }
 
+    /**
+     * "pre-rendered clip", plus the engine and donor voices when the pack's `audio/voices.json` records them (Chatterbox
+     * clips, BRIEF_PHASE8 N-00): the credit the voices' licenses ask for, and the honest label for AI audio.
+     */
+    private fun clipSource(passage: ExamPassage): String {
+        val credits = app.packFile(passage.language, "audio/voices.json") ?: return "pre-rendered clip"
+        val entry = runCatching {
+            kotlinx.serialization.json.Json.parseToJsonElement(credits.readText()).jsonObject[passage.id]?.jsonObject
+        }.getOrNull() ?: return "pre-rendered clip"
+        val voices = entry["voices"]?.jsonArray?.map { it.jsonPrimitive.content.removeSuffix(".wav") }.orEmpty()
+        if (entry["engine"]?.jsonPrimitive?.content == "voicevox") {
+            return "pre-rendered clip · " + voices.mapNotNull { VOICEVOX_CREDITS[it] }.distinct().joinToString()
+        }
+        return "pre-rendered clip · AI voice (Chatterbox Multilingual, Resemble AI; watermarked)" +
+            if (voices.isEmpty()) "" else " · reference voices: ${voices.joinToString()}"
+    }
+
     companion object {
+        /** VOICEVOX character credits the characters' terms require (voices/voicevox_voices.json). */
+        val VOICEVOX_CREDITS = mapOf("vv:8" to "VOICEVOX:春日部つむぎ", "vv:2" to "VOICEVOX:四国めたん", "vv:11" to "VOICEVOX:玄野武宏", "vv:11:low" to "VOICEVOX:玄野武宏")
+
         /** Honest labels for voices with known problems (docs/LANGUAGES.md, PROGRESS gate_lang known gap). */
         val VOICE_NOTES = mapOf("fa" to "synthetic voice; some words are mispronounced")
     }

@@ -27,6 +27,9 @@ interface LanguageModule {
     val sttLanguage: String get() = info.whisperCode
 
     val readingAids: ReadingAids
+
+    /** Number grammar for the numbers drill (BRIEF_PHASE8 N-02); null when the platform has none. */
+    val numbers: app.mokuhyo.numbers.NumberGrammar? get() = null
 }
 
 /** Writing-system facts the UI and the segmenter need. */

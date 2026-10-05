@@ -1,6 +1,7 @@
 package app.mokuhyo.desktop
 
 import app.mokuhyo.ai.AiGateway
+import app.mokuhyo.ai.GgufReader
 import app.mokuhyo.ai.LocalLlamaModel
 import app.mokuhyo.ai.ModelKind
 import app.mokuhyo.ai.Tier
@@ -36,7 +37,7 @@ object SmokeOpi {
         val manifest = app.mokuhyo.ai.ModelManager.parseManifest(Resources.text("models/manifest.json"))
         val info = TierAdvisor.defaultModel(Tier.A, manifest.models)!!
         val clock = TimeSource.Monotonic
-        val gateway = AiGateway({ LocalLlamaModel(llm, info, model.absolutePath) })
+        val gateway = AiGateway({ LocalLlamaModel(llm, info, model.absolutePath, inspect = GgufReader::read) })
         val registry = app.mokuhyo.lang.LanguageRegistry(Resources.repoDir?.let { File(it, "content/packs") })
         val ja = registry.module("ja")
         val profile = app.mokuhyo.opi.OpiProfile("ja", "Use polite です/ます form with the candidate.")

@@ -95,6 +95,71 @@ object EvalSpeaking {
         0
     }
 
+    /**
+     * `--eval-coherence --fixtures F --endpoint URL --models a,b --out O [--packs DIR] [--interviews N]` (BRIEF_PHASE8
+     * N-00b): N whole practice interviews per language and model through the real [app.mokuhyo.opi.OpiSession], the
+     * candidate answering with the fixture's learner turns. One row per interviewer turn — the question, the
+     * transcript before it, and whether it came from the scripted bank — for eval_speaking.py --coherence to judge.
+     */
+    fun coherence(args: Array<String>): Int = runBlocking {
+        val fixtures = Smoke.arg(args, "--fixtures")?.split(",")?.map { File(it) } ?: return@runBlocking fail("--fixtures")
+        val endpoint = Smoke.arg(args, "--endpoint") ?: return@runBlocking fail("--endpoint")
+        val models = Smoke.arg(args, "--models")?.split(",") ?: return@runBlocking fail("--models")
+        val out = File(Smoke.arg(args, "--out") ?: "eval-coherence.jsonl").apply { parentFile?.mkdirs(); writeText("") }
+        val packs = Smoke.arg(args, "--packs")?.let(::File) ?: Resources.repoDir?.let { File(it, "content/packs") } ?: return@runBlocking fail("--packs")
+        val interviews = Smoke.arg(args, "--interviews")?.toInt() ?: 2
+        // The candidate is simulated by the reference model answering each actual question at a set level: fixture
+        // answers don't reply to the question asked, which made coherent interviewers look incoherent.
+        val candidateModel = Smoke.arg(args, "--candidate-model")
+        val candidate = candidateModel?.let { OpenAICompatibleModel(Java.create(), endpoint, null, it, timeouts = NetTimeouts(5_000, 300_000, null)) }
+        val registry = app.mokuhyo.lang.LanguageRegistry(packs)
+        for (fx in fixtures) {
+            val f = json.decodeFromString(Fixtures.serializer(), fx.readText())
+            val pack = app.mokuhyo.opi.OpiPack.parse(File(packs, "${f.language}/opi.json").readText())
+            val answers = f.rating.flatMap { c -> c.history.filter { it.speaker == app.mokuhyo.opi.Speaker.LEARNER }.map { it.text } }
+            val module = registry.module(f.language)
+            for (m in models) {
+                val model = OpenAICompatibleModel(Java.create(), endpoint, null, m, timeouts = NetTimeouts(5_000, 300_000, null))
+                val gateway = app.mokuhyo.ai.AiGateway({ model }, app.mokuhyo.ai.AiSettings(timeoutMs = 300_000))
+                repeat(interviews) { k ->
+                    val session = app.mokuhyo.opi.OpiSession(f.language, pack.profile, pack.questions, pack.rolePlays, gateway,
+                        { t -> module.segment(t).count { it.isWord } }, random = kotlin.random.Random(k))
+                    var turn = 0
+                    while (true) {
+                        val before = session.transcript
+                        val line = session.next() ?: break
+                        out.appendText(kotlinx.serialization.json.buildJsonObject {
+                            put("lang", kotlinx.serialization.json.JsonPrimitive(f.language)); put("model", kotlinx.serialization.json.JsonPrimitive(m))
+                            put("interview", kotlinx.serialization.json.JsonPrimitive(k)); put("turn", kotlinx.serialization.json.JsonPrimitive(turn))
+                            put("phase", kotlinx.serialization.json.JsonPrimitive(line.phase.wireName)); put("question", kotlinx.serialization.json.JsonPrimitive(line.text))
+                            put("scripted", kotlinx.serialization.json.JsonPrimitive(line.engine == null))
+                            put("reason", kotlinx.serialization.json.JsonPrimitive(line.fallbackReason ?: ""))
+                            put("before", kotlinx.serialization.json.JsonPrimitive(before.takeLast(4).joinToString("\n") {
+                                (if (it.speaker == app.mokuhyo.opi.Speaker.PARTNER) "Interviewer: " else "Candidate: ") + it.text }))
+                        }.toString() + "\n")
+                        val level = listOf("1", "2", "1+", "2+")[k % 4]
+                        val reply = candidate?.let { c ->
+                            runCatching {
+                                c.complete(app.mokuhyo.ai.CompletionRequest(listOf(
+                                    app.mokuhyo.ai.ChatMessage(app.mokuhyo.ai.Role.SYSTEM, "You are a learner of ${module.nameEnglish} at ILR speaking level $level " +
+                                        "in a practice interview. Answer the interviewer's last question in ${module.nameEnglish} only, as a learner at that level " +
+                                        "would (short and simple at 1, a paragraph at 2), with the errors typical of that level. Reply with the answer only."),
+                                    app.mokuhyo.ai.ChatMessage(app.mokuhyo.ai.Role.USER, (session.transcript.takeLast(6).joinToString("\n") {
+                                        (if (it.speaker == app.mokuhyo.opi.Speaker.PARTNER) "Interviewer: " else "Candidate: ") + it.text })),
+                                ), maxTokens = 220, temperature = 0.7)).text.trim()
+                            }.getOrNull()
+                        }?.takeIf { it.isNotBlank() } ?: answers[(k * 7 + turn) % answers.size]
+                        session.answer(reply)
+                        turn++
+                        if (turn > 30) break
+                    }
+                    println("eval-coherence: ${f.language} $m interview $k: $turn turns, ${session.scriptedTurns} scripted")
+                }
+            }
+        }
+        0
+    }
+
     private suspend fun <I, O> case(
         model: LanguageModel, name: String, lang: String, id: String, kind: String, task: PromptTask<I, O>, input: I,
         extra: (O) -> Pair<List<String>, String?>,

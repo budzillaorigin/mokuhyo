@@ -105,6 +105,49 @@ Java_app_mokuhyo_ai_jni_WhisperNative_nativeTranscribe(JNIEnv *env, jclass, jlon
     return whisper_full_n_segments(s->ctx);
 }
 
+/// As nativeTranscribe, with an initial prompt that biases Whisper toward the session's vocabulary (BRIEF_PHASE8
+/// N-00b: topic terms such as the counter-UAS track's). An empty [jprompt] means none.
+JNIEXPORT jint JNICALL
+Java_app_mokuhyo_ai_jni_WhisperNative_nativeTranscribePrompt(JNIEnv *env, jclass, jlong handle, jfloatArray jsamples,
+                                                             jstring jlanguage, jstring jprompt, jint n_threads, jlong token, jlong id) {
+    auto *s = reinterpret_cast<Session *>(handle);
+    if (s == nullptr) return -100;
+    s->abort.token = reinterpret_cast<CancelToken *>(token);
+    s->abort.id = id;
+    if (s->abort.cancelled()) return -1000;
+
+    const jsize n = env->GetArrayLength(jsamples);
+    std::vector<float> samples(static_cast<size_t>(n));
+    env->GetFloatArrayRegion(jsamples, 0, n, samples.data());
+    const char *lang = env->GetStringUTFChars(jlanguage, nullptr);
+    const std::string language(lang);
+    env->ReleaseStringUTFChars(jlanguage, lang);
+    const char *pr = env->GetStringUTFChars(jprompt, nullptr);
+    const std::string prompt(pr);
+    env->ReleaseStringUTFChars(jprompt, pr);
+
+    whisper_full_params params = whisper_full_default_params(WHISPER_SAMPLING_GREEDY);
+    params.n_threads = n_threads;
+    params.translate = false;
+    params.no_context = true;
+    params.no_timestamps = false;
+    params.token_timestamps = false;
+    params.print_progress = false;
+    params.print_realtime = false;
+    params.print_timestamps = false;
+    params.print_special = false;
+    params.language = language.c_str();
+    params.detect_language = false;
+    params.initial_prompt = prompt.empty() ? nullptr : prompt.c_str();
+    params.abort_callback = mokuhyo::abort_if_cancelled;
+    params.abort_callback_user_data = &s->abort;
+
+    const int status = whisper_full(s->ctx, params, samples.data(), static_cast<int>(samples.size()));
+    if (s->abort.cancelled()) return -1000;
+    if (status != 0) return status < 0 ? status : -status;
+    return whisper_full_n_segments(s->ctx);
+}
+
 /// Segment [i] as {t0 ms, t1 ms}.
 JNIEXPORT jlongArray JNICALL
 Java_app_mokuhyo_ai_jni_WhisperNative_nativeSegmentTimes(JNIEnv *env, jclass, jlong handle, jint i) {

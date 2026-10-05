@@ -30,6 +30,12 @@ for want in "Mokuhyo-$VERSION-windows-x64.msi" "Mokuhyo-$VERSION-macos-arm64.dmg
   echo "  $want"
 done
 
+# From v0.3.0 every release carries a CycloneDX SBOM of the shipping runtime (BRIEF_PHASE8 N-11).
+if [[ "$VERSION" != 0.1.* && "$VERSION" != 0.2.* ]]; then
+  grep -qx "Mokuhyo-$VERSION-sbom.cdx.json" <<<"$assets" || fail "asset Mokuhyo-$VERSION-sbom.cdx.json (SBOM) missing"
+  echo "  Mokuhyo-$VERSION-sbom.cdx.json"
+fi
+
 echo "== gate_release: checksums"
 WORK=$(mktemp -d)
 trap 'rm -rf "$WORK"' EXIT

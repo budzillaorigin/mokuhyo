@@ -13,6 +13,7 @@ open class BaseLanguageModule(
     private val voiceList: () -> List<VoiceSpec>,
     override val readingAids: ReadingAids,
     private val extraLemmas: (String) -> List<String> = { emptyList() },
+    override val numbers: app.mokuhyo.numbers.NumberGrammar? = null,
 ) : LanguageModule {
     override fun segment(text: String): List<Token> = segmenter(text)
 

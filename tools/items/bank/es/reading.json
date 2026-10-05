@@ -36,6 +36,176 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-0p-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Visitor Access for Energy Conference",
+   "body": "FORMULARIO DE SOLICITUD DE ACCESO\nNombre:: María López\nEmpresa:: Inversiones Solares S.A.\nPropósito de la visita:: Conferencia de Energía Renovable\nFecha:: 15/10/2023\nHora de llegada:: 09:00\nNúmero de placa:: ABC123\nContacto en la base:: Dr. Carlos Mendoza\nGracias por su visita. Base Energética Verde, Chile.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "FORMULARIO DE SOLICITUD DE ACCESO",
+    "fields": [
+     {
+      "label": "Nombre:",
+      "value": "María López"
+     },
+     {
+      "label": "Empresa:",
+      "value": "Inversiones Solares S.A."
+     },
+     {
+      "label": "Propósito de la visita:",
+      "value": "Conferencia de Energía Renovable"
+     },
+     {
+      "label": "Fecha:",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Hora de llegada:",
+      "value": "09:00"
+     },
+     {
+      "label": "Número de placa:",
+      "value": "ABC123"
+     },
+     {
+      "label": "Contacto en la base:",
+      "value": "Dr. Carlos Mendoza"
+     }
+    ],
+    "footer": "Gracias por su visita. Base Energética Verde, Chile."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Sports Championship Visitor Access Request",
+   "body": "Solicitud de Acceso para Visitante\nNombre: Juan Pérez\nPaís: México\nFecha de Nacimiento: 12/05/1985\nEquipo: Águilas\nEvento: Campeonato de Fútbol\nFecha: 15/07/2023\nHora de Entrada: 09:00 AM\nHora de Salida: 05:00 PM\nLugar: Estadio Azteca\nID: A1B2C3D4\nAcceso permitido solo con este pase. Vigencia: 1 día.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Solicitud de Acceso para Visitante",
+    "fields": [
+     {
+      "label": "Nombre",
+      "value": "Juan Pérez"
+     },
+     {
+      "label": "País",
+      "value": "México"
+     },
+     {
+      "label": "Fecha de Nacimiento",
+      "value": "12/05/1985"
+     },
+     {
+      "label": "Equipo",
+      "value": "Águilas"
+     },
+     {
+      "label": "Evento",
+      "value": "Campeonato de Fútbol"
+     },
+     {
+      "label": "Fecha",
+      "value": "15/07/2023"
+     },
+     {
+      "label": "Hora de Entrada",
+      "value": "09:00 AM"
+     },
+     {
+      "label": "Hora de Salida",
+      "value": "05:00 PM"
+     },
+     {
+      "label": "Lugar",
+      "value": "Estadio Azteca"
+     },
+     {
+      "label": "ID",
+      "value": "A1B2C3D4"
+     }
+    ],
+    "footer": "Acceso permitido solo con este pase. Vigencia: 1 día."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Trade Agreement Access Request",
+   "body": "Solicitud de Acceso para Visita\nNombre: Juan Pérez\nEmpresa: Exporta S.A.\nPaís: Chile\nPropósito: Acuerdo comercial nuevo\nFecha: 15/10/2023\nHora: 14:00\nContacto: María López\nTeléfono: 56-2-2222-2222\nFirma: ________________________\nGracias por su visita. Base Militar, Antofagasta.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Solicitud de Acceso para Visita",
+    "fields": [
+     {
+      "label": "Nombre",
+      "value": "Juan Pérez"
+     },
+     {
+      "label": "Empresa",
+      "value": "Exporta S.A."
+     },
+     {
+      "label": "País",
+      "value": "Chile"
+     },
+     {
+      "label": "Propósito",
+      "value": "Acuerdo comercial nuevo"
+     },
+     {
+      "label": "Fecha",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Hora",
+      "value": "14:00"
+     },
+     {
+      "label": "Contacto",
+      "value": "María López"
+     },
+     {
+      "label": "Teléfono",
+      "value": "56-2-2222-2222"
+     },
+     {
+      "label": "Firma",
+      "value": "________________________"
+     }
+    ],
+    "footer": "Gracias por su visita. Base Militar, Antofagasta."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-0p-form-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -156,6 +326,147 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-0p-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Border Crossing Schedule at Paso Frontera",
+   "body": "Horario de Cruce Fronterizo\nHora | Puerta | Agente\n08:00 | Norte | Ana García\n10:00 | Sur | Carlos Mendoza\n12:00 | Norte | Laura Ruiz\n14:00 | Sur | Jorge Pérez\n16:00 | Norte | Ana García",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Horario de Cruce Fronterizo",
+    "columns": [
+     "Hora",
+     "Puerta",
+     "Agente"
+    ],
+    "rows": [
+     [
+      "08:00",
+      "Norte",
+      "Ana García"
+     ],
+     [
+      "10:00",
+      "Sur",
+      "Carlos Mendoza"
+     ],
+     [
+      "12:00",
+      "Norte",
+      "Laura Ruiz"
+     ],
+     [
+      "14:00",
+      "Sur",
+      "Jorge Pérez"
+     ],
+     [
+      "16:00",
+      "Norte",
+      "Ana García"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "No-Drone Zone Notice for Fiesta de San Miguel",
+   "body": "¡ATENCIÓN! Zona Sin Drones\nFecha | Hora | Lugar\n15 de junio | 9:00 AM - 10:00 PM | Fiesta de San Miguel, Plaza Central\n16 de junio | 9:00 AM - 10:00 PM | Fiesta de San Miguel, Plaza Central\n17 de junio | 9:00 AM - 10:00 PM | Fiesta de San Miguel, Plaza Central",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "¡ATENCIÓN! Zona Sin Drones",
+    "columns": [
+     "Fecha",
+     "Hora",
+     "Lugar"
+    ],
+    "rows": [
+     [
+      "15 de junio",
+      "9:00 AM - 10:00 PM",
+      "Fiesta de San Miguel, Plaza Central"
+     ],
+     [
+      "16 de junio",
+      "9:00 AM - 10:00 PM",
+      "Fiesta de San Miguel, Plaza Central"
+     ],
+     [
+      "17 de junio",
+      "9:00 AM - 10:00 PM",
+      "Fiesta de San Miguel, Plaza Central"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Base Defense Operations Center Shift Handover Schedule",
+   "body": "Cuadro de Turnos para Entrega de Turno en Centro de Operaciones de Defensa de la Base\nNombre | Turno | Hora de Inicio | Hora de Fin | Tarea Principal\nCarlos Mendoza | Día | 07:00 | 15:00 | Patrullaje exterior\nAna López | Tarde | 15:00 | 23:00 | Monitoreo de cámaras\nJavier Ruiz | Noche | 23:00 | 07:00 | Control de acceso",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Cuadro de Turnos para Entrega de Turno en Centro de Operaciones de Defensa de la Base",
+    "columns": [
+     "Nombre",
+     "Turno",
+     "Hora de Inicio",
+     "Hora de Fin",
+     "Tarea Principal"
+    ],
+    "rows": [
+     [
+      "Carlos Mendoza",
+      "Día",
+      "07:00",
+      "15:00",
+      "Patrullaje exterior"
+     ],
+     [
+      "Ana López",
+      "Tarde",
+      "15:00",
+      "23:00",
+      "Monitoreo de cámaras"
+     ],
+     [
+      "Javier Ruiz",
+      "Noche",
+      "23:00",
+      "07:00",
+      "Control de acceso"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-0p-sign-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -183,6 +494,87 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-signage-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Counter-Drone Exercise Lessons",
+   "body": "BASE AÉREA MILITAR \"PATRIA\"\nEJERCICIO CONTRA DRONES\nAPRENDIZAJES:\n1. DRONES EN ZONA PROHIBIDA\n2. USAR RADARES \"SIGMA\"\n3. EQUIPO \"ÁGUILA\" EFECTIVO",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉREA MILITAR \"PATRIA\"",
+     "EJERCICIO CONTRA DRONES",
+     "APRENDIZAJES:",
+     "1. DRONES EN ZONA PROHIBIDA",
+     "2. USAR RADARES \"SIGMA\"",
+     "3. EQUIPO \"ÁGUILA\" EFECTIVO"
+    ],
+    "kind": "info"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-signage-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Joint Perimeter Patrol Instructions",
+   "body": "BASE AÉREA CONJUNTA SANTA ROSA\nREUNIÓN DE PATRULLA DE PERÍMETRO\n10:00 HRS, HANGAR 3\nJEFE DE PATRULLA: CAP. GUTIÉRREZ\nEQUIPO: SARG. RODRÍGUEZ Y CABO MÉNDEZ\nTRAJE DE PATRULLA: VERDE Y NARANJA",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉREA CONJUNTA SANTA ROSA",
+     "REUNIÓN DE PATRULLA DE PERÍMETRO",
+     "10:00 HRS, HANGAR 3",
+     "JEFE DE PATRULLA: CAP. GUTIÉRREZ",
+     "EQUIPO: SARG. RODRÍGUEZ Y CABO MÉNDEZ",
+     "TRAJE DE PATRULLA: VERDE Y NARANJA"
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-0p-signage-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Vaccination Campaign Announcement",
+   "body": "BASE AÉREA MILITAR DE TOLEDO\nCAMPAÑA DE VACUNACIÓN\nFECHA: 15 DE OCTUBRE\nHORA: 08:00 - 16:00\nLUGAR: ENFERMERÍA PRINCIPAL\nTRAER TARJETA SANITARIA MILITAR Y DNI",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉREA MILITAR DE TOLEDO",
+     "CAMPAÑA DE VACUNACIÓN",
+     "FECHA: 15 DE OCTUBRE",
+     "HORA: 08:00 - 16:00",
+     "LUGAR: ENFERMERÍA PRINCIPAL",
+     "TRAER TARJETA SANITARIA MILITAR Y DNI"
+    ],
+    "kind": "mandatory"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -324,6 +716,280 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Humanitarian Drone Survey Access Request",
+   "body": "Solicitud de Acceso para Encuesta con Drones Humanitarios\nNombre:: María López\nOrganización:: Cruz Roja Local\nPropósito de la visita:: Encuesta con drones para evaluar los daños causados por la inundación en el pueblo de Río Verde\nFecha de la visita:: 15/10/2023\nHora de llegada:: 09:00 AM\nHora de salida:: 12:00 PM\nContacto en la base:: Capitán Juan Pérez\nEquipo a utilizar:: Drone DJI Mavic 3\nFirma:: ________________________\nAprobado por: _________________________\nFecha: ___________",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Solicitud de Acceso para Encuesta con Drones Humanitarios",
+    "fields": [
+     {
+      "label": "Nombre:",
+      "value": "María López"
+     },
+     {
+      "label": "Organización:",
+      "value": "Cruz Roja Local"
+     },
+     {
+      "label": "Propósito de la visita:",
+      "value": "Encuesta con drones para evaluar los daños causados por la inundación en el pueblo de Río Verde"
+     },
+     {
+      "label": "Fecha de la visita:",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Hora de llegada:",
+      "value": "09:00 AM"
+     },
+     {
+      "label": "Hora de salida:",
+      "value": "12:00 PM"
+     },
+     {
+      "label": "Contacto en la base:",
+      "value": "Capitán Juan Pérez"
+     },
+     {
+      "label": "Equipo a utilizar:",
+      "value": "Drone DJI Mavic 3"
+     },
+     {
+      "label": "Firma:",
+      "value": "________________________"
+     }
+    ],
+    "footer": "Aprobado por: _________________________\nFecha: ___________"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Vaccination Campaign Access Request",
+   "body": "Solicitud de Acceso para Campaña de Vacunación\nNombre:: María López\nOrganización:: Clínica Salud Familiar\nLugar de Trabajo:: Centro de Salud 'La Esperanza'\nMotivo de la Visita:: Campaña de Vacunación contra la Gripe\nFecha de Visita:: 15/10/2023\nHora de Llegada:: 08:30 AM\nHora de Salida:: 14:00 PM\nÁrea de Acceso:: Edificio Principal, Sala de Vacunación\nPersona de Contacto en la Base:: Dr. Carlos Mendoza\nTeléfono de Contacto:: 555-123-4567\nPor favor, presente esta solicitud en la entrada principal. Gracias.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Solicitud de Acceso para Campaña de Vacunación",
+    "fields": [
+     {
+      "label": "Nombre:",
+      "value": "María López"
+     },
+     {
+      "label": "Organización:",
+      "value": "Clínica Salud Familiar"
+     },
+     {
+      "label": "Lugar de Trabajo:",
+      "value": "Centro de Salud 'La Esperanza'"
+     },
+     {
+      "label": "Motivo de la Visita:",
+      "value": "Campaña de Vacunación contra la Gripe"
+     },
+     {
+      "label": "Fecha de Visita:",
+      "value": "15/10/2023"
+     },
+     {
+      "label": "Hora de Llegada:",
+      "value": "08:30 AM"
+     },
+     {
+      "label": "Hora de Salida:",
+      "value": "14:00 PM"
+     },
+     {
+      "label": "Área de Acceso:",
+      "value": "Edificio Principal, Sala de Vacunación"
+     },
+     {
+      "label": "Persona de Contacto en la Base:",
+      "value": "Dr. Carlos Mendoza"
+     },
+     {
+      "label": "Teléfono de Contacto:",
+      "value": "555-123-4567"
+     }
+    ],
+    "footer": "Por favor, presente esta solicitud en la entrada principal. Gracias."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Visitor Badge for Base Security Update",
+   "body": "Tarjeta de Visitante\nNombre:: María García López\nOrganización:: Embajada de España\nPropósito de la visita:: Reunión sobre cambio en el estado de protección de la fuerza\nFecha:: 10/05/2023\nHora de entrada:: 09:00\nHora de salida:: 11:30\nÁrea de acceso:: Edificio de Seguridad, Sala de Conferencias\nContacto en la base:: Carlos Méndez, Ext. 256\nFirma del visitante:: __________________________\nFirma del oficial de seguridad:: __________________________\nPor favor, muestre esta tarjeta en todo momento. La pérdida de esta tarjeta debe ser reportada inmediatamente al oficial de seguridad más cercano.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "Tarjeta de Visitante",
+    "fields": [
+     {
+      "label": "Nombre:",
+      "value": "María García López"
+     },
+     {
+      "label": "Organización:",
+      "value": "Embajada de España"
+     },
+     {
+      "label": "Propósito de la visita:",
+      "value": "Reunión sobre cambio en el estado de protección de la fuerza"
+     },
+     {
+      "label": "Fecha:",
+      "value": "10/05/2023"
+     },
+     {
+      "label": "Hora de entrada:",
+      "value": "09:00"
+     },
+     {
+      "label": "Hora de salida:",
+      "value": "11:30"
+     },
+     {
+      "label": "Área de acceso:",
+      "value": "Edificio de Seguridad, Sala de Conferencias"
+     },
+     {
+      "label": "Contacto en la base:",
+      "value": "Carlos Méndez, Ext. 256"
+     },
+     {
+      "label": "Firma del visitante:",
+      "value": "__________________________"
+     },
+     {
+      "label": "Firma del oficial de seguridad:",
+      "value": "__________________________"
+     }
+    ],
+    "footer": "Por favor, muestre esta tarjeta en todo momento. La pérdida de esta tarjeta debe ser reportada inmediatamente al oficial de seguridad más cercano."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "chat",
+   "title": "Allied Military Exercise Coordination",
+   "body": "Carlos: Hola Luis, el ejercicio con los franceses empieza el viernes a las 9:00 AM. ¿Puedes confirmar la asistencia de tu equipo?\nLuis: Hola Carlos, sí, mi equipo estará listo. Nos vemos en la base aérea de Santa Cruz. ¿Necesitas algo más?\nCarlos: Perfecto, Luis. Solo recuerda traer los uniformes de entrenamiento y los equipos de comunicación. ¡Gracias!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Ejercicio Militar Conjunto",
+    "messages": [
+     {
+      "from": "Carlos",
+      "text": "Hola Luis, el ejercicio con los franceses empieza el viernes a las 9:00 AM. ¿Puedes confirmar la asistencia de tu equipo?",
+      "time": "10:30 AM 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Luis",
+      "text": "Hola Carlos, sí, mi equipo estará listo. Nos vemos en la base aérea de Santa Cruz. ¿Necesitas algo más?",
+      "time": "10:35 AM 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Carlos",
+      "text": "Perfecto, Luis. Solo recuerda traer los uniformes de entrenamiento y los equipos de comunicación. ¡Gracias!",
+      "time": "10:40 AM 12/05/2023",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "chat",
+   "title": "Debate on Laser Weapons for Air Defense",
+   "body": "Carlos: Hola Ana, ¿qué opinas de usar armas láser para defensa aérea? Algunos dicen que son el futuro.\nAna: Hola Carlos. Yo creo que son caras y difíciles de mantener. ¿No prefieres misiles?\nCarlos: Sí, pero los láseres son rápidos y precisos. Además, no necesitan reabastecerse como los misiles.\nAna: Verdad. Pero, ¿y si falla el sistema eléctrico? Sin electricidad, los láseres no funcionan.\nCarlos: Buen punto. Aun así, creo que son una buena opción para complementar los misiles. ¿Qué opinas?",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "Armas láser para defensa aérea",
+    "messages": [
+     {
+      "from": "Carlos",
+      "text": "Hola Ana, ¿qué opinas de usar armas láser para defensa aérea? Algunos dicen que son el futuro.",
+      "time": "10:00 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Ana",
+      "text": "Hola Carlos. Yo creo que son caras y difíciles de mantener. ¿No prefieres misiles?",
+      "time": "10:05 AM, 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Carlos",
+      "text": "Sí, pero los láseres son rápidos y precisos. Además, no necesitan reabastecerse como los misiles.",
+      "time": "10:10 AM, 12/05/2023",
+      "me": false
+     },
+     {
+      "from": "Ana",
+      "text": "Verdad. Pero, ¿y si falla el sistema eléctrico? Sin electricidad, los láseres no funcionan.",
+      "time": "10:15 AM, 12/05/2023",
+      "me": true
+     },
+     {
+      "from": "Carlos",
+      "text": "Buen punto. Aun así, creo que son una buena opción para complementar los misiles. ¿Qué opinas?",
+      "time": "10:20 AM, 12/05/2023",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-1-instructions-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -432,6 +1098,197 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Trade Agreement Schedule",
+   "body": "Nuevo Acuerdo Comercial: Horario de Reuniones\nDía | Hora | Lugar | Responsable\nLunes | 10:00 AM | Salón A, Edificio Principal | Ana García\nMartes | 2:00 PM | Salón B, Edificio Principal | Carlos Mendoza\nMiércoles | 11:00 AM | Salón C, Edificio Principal | Laura Rodríguez\nJueves | 3:00 PM | Salón A, Edificio Principal | Jorge López\nViernes | 12:00 PM | Salón B, Edificio Principal | María Fernández",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Nuevo Acuerdo Comercial: Horario de Reuniones",
+    "columns": [
+     "Día",
+     "Hora",
+     "Lugar",
+     "Responsable"
+    ],
+    "rows": [
+     [
+      "Lunes",
+      "10:00 AM",
+      "Salón A, Edificio Principal",
+      "Ana García"
+     ],
+     [
+      "Martes",
+      "2:00 PM",
+      "Salón B, Edificio Principal",
+      "Carlos Mendoza"
+     ],
+     [
+      "Miércoles",
+      "11:00 AM",
+      "Salón C, Edificio Principal",
+      "Laura Rodríguez"
+     ],
+     [
+      "Jueves",
+      "3:00 PM",
+      "Salón A, Edificio Principal",
+      "Jorge López"
+     ],
+     [
+      "Viernes",
+      "12:00 PM",
+      "Salón B, Edificio Principal",
+      "María Fernández"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Insider Threat Awareness Training Schedule",
+   "body": "Programa de Capacitación en Conciencia de Amenazas Internas\nDía | Hora | Ubicación | Instructor\nLunes | 09:00-11:00 | Auditorio Base Álvarez | Sargento García\nMartes | 13:00-15:00 | Sala de Conferencias, Edificio 5 | Teniente Rodríguez\nMiércoles | 10:00-12:00 | Auditorio Base Álvarez | Capitán López\nJueves | 14:00-16:00 | Sala de Conferencias, Edificio 5 | Sargento Díaz\nViernes | 09:00-11:00 | Auditorio Base Álvarez | Teniente Pérez",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Programa de Capacitación en Conciencia de Amenazas Internas",
+    "columns": [
+     "Día",
+     "Hora",
+     "Ubicación",
+     "Instructor"
+    ],
+    "rows": [
+     [
+      "Lunes",
+      "09:00-11:00",
+      "Auditorio Base Álvarez",
+      "Sargento García"
+     ],
+     [
+      "Martes",
+      "13:00-15:00",
+      "Sala de Conferencias, Edificio 5",
+      "Teniente Rodríguez"
+     ],
+     [
+      "Miércoles",
+      "10:00-12:00",
+      "Auditorio Base Álvarez",
+      "Capitán López"
+     ],
+     [
+      "Jueves",
+      "14:00-16:00",
+      "Sala de Conferencias, Edificio 5",
+      "Sargento Díaz"
+     ],
+     [
+      "Viernes",
+      "09:00-11:00",
+      "Auditorio Base Álvarez",
+      "Teniente Pérez"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Counter-Drone System Schedule at San Carlos Airport",
+   "body": "Horario del Sistema Anti-Drones en el Aeropuerto de San Carlos\nFecha | Turno | Responsable | Hora de Inicio | Hora de Fin\nLunes, 15 de mayo | Mañana | Carlos Mendoza | 06:00 | 14:00\nMartes, 16 de mayo | Tarde | Ana López | 14:00 | 22:00\nMiércoles, 17 de mayo | Noche | Javier Ruiz | 22:00 | 06:00\nJueves, 18 de mayo | Mañana | Carlos Mendoza | 06:00 | 14:00\nViernes, 19 de mayo | Tarde | Ana López | 14:00 | 22:00\nSábado, 20 de mayo | Noche | Javier Ruiz | 22:00 | 06:00\nDomingo, 21 de mayo | Mañana | Carlos Mendoza | 06:00 | 14:00",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "Horario del Sistema Anti-Drones en el Aeropuerto de San Carlos",
+    "columns": [
+     "Fecha",
+     "Turno",
+     "Responsable",
+     "Hora de Inicio",
+     "Hora de Fin"
+    ],
+    "rows": [
+     [
+      "Lunes, 15 de mayo",
+      "Mañana",
+      "Carlos Mendoza",
+      "06:00",
+      "14:00"
+     ],
+     [
+      "Martes, 16 de mayo",
+      "Tarde",
+      "Ana López",
+      "14:00",
+      "22:00"
+     ],
+     [
+      "Miércoles, 17 de mayo",
+      "Noche",
+      "Javier Ruiz",
+      "22:00",
+      "06:00"
+     ],
+     [
+      "Jueves, 18 de mayo",
+      "Mañana",
+      "Carlos Mendoza",
+      "06:00",
+      "14:00"
+     ],
+     [
+      "Viernes, 19 de mayo",
+      "Tarde",
+      "Ana López",
+      "14:00",
+      "22:00"
+     ],
+     [
+      "Sábado, 20 de mayo",
+      "Noche",
+      "Javier Ruiz",
+      "22:00",
+      "06:00"
+     ],
+     [
+      "Domingo, 21 de mayo",
+      "Mañana",
+      "Carlos Mendoza",
+      "06:00",
+      "14:00"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -462,6 +1319,87 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "signage",
+   "title": "Change in Force Protection Condition",
+   "body": "BASE AÉREA DE SAN MIGUEL\n\nAviso Importante:\n\nSe ha cambiado la condición de protección de la fuerza\na CONDICIÓN CHARLIE a las 0800 horas de hoy, 15 de octubre de 2023, debido a una posible amenaza. Todos los miembros del personal deben seguir los protocolos de seguridad establecidos para esta condición. Esto incluye, pero no se limita a: llevar siempre el distintivo de identificación, evitar áreas no autorizadas y reportar cualquier actividad sospechosa de inmediato. El cambio afectará las operaciones normales en la base hasta nuevo aviso. Para más información, consulte al oficial de seguridad de su unidad.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉREA DE SAN MIGUEL",
+     "",
+     "Aviso Importante:",
+     "",
+     "Se ha cambiado la condición de protección de la fuerza",
+     "a CONDICIÓN CHARLIE a las 0800 horas de hoy, 15 de octubre de 2023, debido a una posible amenaza. Todos los miembros del personal deben seguir los protocolos de seguridad establecidos para esta condición. Esto incluye, pero no se limita a: llevar siempre el distintivo de identificación, evitar áreas no autorizadas y reportar cualquier actividad sospechosa de inmediato. El cambio afectará las operaciones normales en la base hasta nuevo aviso. Para más información, consulte al oficial de seguridad de su unidad."
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "signage",
+   "title": "Mandatory Training Reminder",
+   "body": "BASE AÉREA DE LA FUERZA\n\nENTRENAMIENTO DE CONCIENTIZACIÓN SOBRE AMENAZAS INTERNAS\n\nTODO EL PERSONAL DEBE ASISTIR\nLunes, 15 de mayo, 13:00 - 15:00 horas, Sala de Conferencias A-12, Edificio Principal, Ala Sur, Base Aérea de la Fuerza, San Antonio, Texas, EE. UU. (UTC-6). No hay excusas aceptadas. ¡Su asistencia es obligatoria! Por favor, traiga su tarjeta de identificación. La sesión será impartida por el Capitán María López. ¡No se lo pierda!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉREA DE LA FUERZA",
+     "",
+     "ENTRENAMIENTO DE CONCIENTIZACIÓN SOBRE AMENAZAS INTERNAS",
+     "",
+     "TODO EL PERSONAL DEBE ASISTIR",
+     "Lunes, 15 de mayo, 13:00 - 15:00 horas, Sala de Conferencias A-12, Edificio Principal, Ala Sur, Base Aérea de la Fuerza, San Antonio, Texas, EE. UU. (UTC-6). No hay excusas aceptadas. ¡Su asistencia es obligatoria! Por favor, traiga su tarjeta de identificación. La sesión será impartida por el Capitán María López. ¡No se lo pierda!"
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1",
+   "textType": "signage",
+   "title": "Humanitarian Drone Survey Notification",
+   "body": "BASE AÉREA DE LA ESPERANZA\nAVISO IMPORTANTE\nEl martes 15 de noviembre,\nde 9:00 a.m. a 5:00 p.m.,\ndrones humanitarios sobrevolarán\nla zona afectada por las inundaciones, entre los ríos Grande y Chico, incluyendo el pueblo de San Miguel. Esto es parte del esfuerzo de evaluación de daños y planeación de ayuda por las recientes lluvias. Por favor, manténganse alejados de los drones y no los interfieran. Su colaboración es crucial para el éxito de esta misión. ¡Gracias por su comprensión y apoyo!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "BASE AÉREA DE LA ESPERANZA",
+     "AVISO IMPORTANTE",
+     "El martes 15 de noviembre,",
+     "de 9:00 a.m. a 5:00 p.m.,",
+     "drones humanitarios sobrevolarán",
+     "la zona afectada por las inundaciones, entre los ríos Grande y Chico, incluyendo el pueblo de San Miguel. Esto es parte del esfuerzo de evaluación de daños y planeación de ayuda por las recientes lluvias. Por favor, manténganse alejados de los drones y no los interfieran. Su colaboración es crucial para el éxito de esta misión. ¡Gracias por su comprensión y apoyo!"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-1p-announcement-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -489,6 +1427,232 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Opening of the New Hospital in San Miguel",
+   "body": "Ana: Hola a todos! El nuevo hospital en San Miguel ya está listo para abrir sus puertas el próximo lunes. ¡Estoy muy emocionada!\nCarlos: ¡Qué buena noticia Ana! ¿A qué hora abre el lunes?\nAna: Abre a las 8:00 AM. Habrá una pequeña ceremonia de inauguración antes de que comiencen las consultas.\nLuis: ¿Dónde queda el hospital? Necesito ir con mi abuelo.\nAna: Está en la calle Principal, cerca de la plaza del pueblo. No tiene pérdida.\nCarlos: Genial, Ana. ¡Nos vemos el lunes en la inauguración!\nAna: ¡Claro que sí, Carlos! Todos están invitados.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Hospital Nuevo San Miguel",
+    "messages": [
+     {
+      "from": "Ana",
+      "text": "Hola a todos! El nuevo hospital en San Miguel ya está listo para abrir sus puertas el próximo lunes. ¡Estoy muy emocionada!",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "¡Qué buena noticia Ana! ¿A qué hora abre el lunes?",
+      "time": "10:17 AM",
+      "me": false
+     },
+     {
+      "from": "Ana",
+      "text": "Abre a las 8:00 AM. Habrá una pequeña ceremonia de inauguración antes de que comiencen las consultas.",
+      "time": "10:19 AM",
+      "me": false
+     },
+     {
+      "from": "Luis",
+      "text": "¿Dónde queda el hospital? Necesito ir con mi abuelo.",
+      "time": "10:22 AM",
+      "me": false
+     },
+     {
+      "from": "Ana",
+      "text": "Está en la calle Principal, cerca de la plaza del pueblo. No tiene pérdida.",
+      "time": "10:25 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Genial, Ana. ¡Nos vemos el lunes en la inauguración!",
+      "time": "10:27 AM",
+      "me": false
+     },
+     {
+      "from": "Ana",
+      "text": "¡Claro que sí, Carlos! Todos están invitados.",
+      "time": "10:29 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Local Concerns About Base Security",
+   "body": "Paco: Hola Carlos, soy Paco de la asociación de vecinos. Tenemos algunas preocupaciones sobre las nuevas medidas de seguridad en la base. ¿Podrías explicarnos más?\nCarlos: Hola Paco, claro. Las medidas son para mejorar la seguridad de todos. ¿Qué les preocupa?\nPaco: La gente dice que hay más patrullas de noche y que los vehículos militares pasan muy rápido por las calles. Los niños tienen miedo.\nCarlos: Entiendo. Hablaré con mis superiores para ver si podemos ajustar los horarios y la velocidad de las patrullas. Gracias por su comprensión.\nPaco: Gracias Carlos. Apreciamos tu ayuda. Nos mantenemos en contacto.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "Seguridad en la Base",
+    "messages": [
+     {
+      "from": "Paco",
+      "text": "Hola Carlos, soy Paco de la asociación de vecinos. Tenemos algunas preocupaciones sobre las nuevas medidas de seguridad en la base. ¿Podrías explicarnos más?",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Hola Paco, claro. Las medidas son para mejorar la seguridad de todos. ¿Qué les preocupa?",
+      "time": "10:17 AM",
+      "me": true
+     },
+     {
+      "from": "Paco",
+      "text": "La gente dice que hay más patrullas de noche y que los vehículos militares pasan muy rápido por las calles. Los niños tienen miedo.",
+      "time": "10:19 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Entiendo. Hablaré con mis superiores para ver si podemos ajustar los horarios y la velocidad de las patrullas. Gracias por su comprensión.",
+      "time": "10:22 AM",
+      "me": true
+     },
+     {
+      "from": "Paco",
+      "text": "Gracias Carlos. Apreciamos tu ayuda. Nos mantenemos en contacto.",
+      "time": "10:24 AM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Change in Force Protection Condition at Base San Carlos",
+   "body": "Comandante García: Buenos días equipo. Cambio de condición. Pasamos a FP Charlie a las 10:00. Mantengan a sus unidades informadas. Más detalles en breve.\nSargento López: Recibido Comandante. ¿Cuál es la duración estimada?\nComandante García: Por ahora 24 horas. Estamos monitoreando la situación. Mantengan la calma y sigan los protocolos.\nCaballero Ruiz: Entendido Comandante. Informaré a los guardias en la puerta principal. ¿Necesitan refuerzos?\nComandante García: No por ahora Ruiz. Aprecio su prontitud. Manténganse alerta.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Cambio en la Condición de Protección de la Fuerza en la Base San Carlos",
+    "messages": [
+     {
+      "from": "Comandante García",
+      "text": "Buenos días equipo. Cambio de condición. Pasamos a FP Charlie a las 10:00. Mantengan a sus unidades informadas. Más detalles en breve.",
+      "time": "09:30 AM, 15/05/2023",
+      "me": false
+     },
+     {
+      "from": "Sargento López",
+      "text": "Recibido Comandante. ¿Cuál es la duración estimada?",
+      "time": "09:32 AM, 15/05/2023",
+      "me": true
+     },
+     {
+      "from": "Comandante García",
+      "text": "Por ahora 24 horas. Estamos monitoreando la situación. Mantengan la calma y sigan los protocolos.",
+      "time": "09:35 AM, 15/05/2023",
+      "me": false
+     },
+     {
+      "from": "Caballero Ruiz",
+      "text": "Entendido Comandante. Informaré a los guardias en la puerta principal. ¿Necesitan refuerzos?",
+      "time": "09:38 AM, 15/05/2023",
+      "me": true
+     },
+     {
+      "from": "Comandante García",
+      "text": "No por ahora Ruiz. Aprecio su prontitud. Manténganse alerta.",
+      "time": "09:40 AM, 15/05/2023",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-chat-004",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Lessons from the Drone Defense Exercise",
+   "body": "Luisa: Hola equipo, ¿quién va a la reunión de lecciones aprendidas del ejercicio de ayer? Yo no puedo ir, tengo que llevar a mi hijo al médico. Gracias!\nCarlos: Yo puedo ir Luisa. ¿A qué hora es?\nAna: Carlos, la reunión es a las 14:00 en la sala de conferencias. Por favor, trae tus notas del ejercicio. Necesitamos discutir los problemas con el control de drones y cómo mejorar.\nCarlos: Entendido Ana. También debemos hablar sobre la interferencia que tuvimos con los drones pequeños. Fue difícil controlarlos. ¿Alguien tiene ideas para solucionar esto?\nJavier: Sí, la interferencia fue un problema grande. Propongo que usemos equipos de frecuencia más alta la próxima vez. También necesitamos más entrenamiento para manejar enjambres de drones.\nAna: Buena idea Javier. Vamos a discutirlo todo en la reunión. Gracias a todos.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "chat",
+   "formatData": {
+    "app": "whatsapp",
+    "title": "Ejercicio de Defensa Antidrones",
+    "messages": [
+     {
+      "from": "Luisa",
+      "text": "Hola equipo, ¿quién va a la reunión de lecciones aprendidas del ejercicio de ayer? Yo no puedo ir, tengo que llevar a mi hijo al médico. Gracias!",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Yo puedo ir Luisa. ¿A qué hora es?",
+      "time": "10:05 AM",
+      "me": false
+     },
+     {
+      "from": "Ana",
+      "text": "Carlos, la reunión es a las 14:00 en la sala de conferencias. Por favor, trae tus notas del ejercicio. Necesitamos discutir los problemas con el control de drones y cómo mejorar.",
+      "time": "10:10 AM",
+      "me": false
+     },
+     {
+      "from": "Carlos",
+      "text": "Entendido Ana. También debemos hablar sobre la interferencia que tuvimos con los drones pequeños. Fue difícil controlarlos. ¿Alguien tiene ideas para solucionar esto?",
+      "time": "10:15 AM",
+      "me": false
+     },
+     {
+      "from": "Javier",
+      "text": "Sí, la interferencia fue un problema grande. Propongo que usemos equipos de frecuencia más alta la próxima vez. También necesitamos más entrenamiento para manejar enjambres de drones.",
+      "time": "10:20 AM",
+      "me": false
+     },
+     {
+      "from": "Ana",
+      "text": "Buena idea Javier. Vamos a discutirlo todo en la reunión. Gracias a todos.",
+      "time": "10:25 AM",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -612,6 +1776,96 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Town Hall Notice on Base Security Measures",
+   "body": "Ayuntamiento de Villa del Mar\nAviso Importante: Medidas de Seguridad en la Base\nEstimados vecinos de Villa del Mar,\nNos dirigimos a ustedes para abordar las preocupaciones recientes sobre las medidas de seguridad en la Base Aérea San Miguel. Entendemos que algunos residentes han expresado inquietudes sobre el ruido y las restricciones de tráfico debido a los controles de seguridad adicionales.\nQueremos asegurarles que estas medidas son necesarias para garantizar la seguridad de todos. La base ha implementado controles de acceso más estrictos y patrullas adicionales en las áreas circundantes. También se han instalado cámaras de seguridad nuevas para monitorear las entradas y salidas.\nReconocemos el inconveniente que esto puede causar y trabajamos en estrecha colaboración con el comando de la base para minimizar el impacto en nuestra comunidad. Apreciamos su paciencia y comprensión mientras tomamos estas precauciones importantes.\nPor favor, no duden en contactar a nuestro Ayuntamiento si tienen más preguntas o preocupaciones. Estamos aquí para ayudar.\nAtentamente, El Ayuntamiento de Villa del Mar\n15 de octubre de 2023\nTeléfono: 555-1234, Email: contacto@ayuntamientovdm.es",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Ayuntamiento de Villa del Mar",
+    "title": "Aviso Importante: Medidas de Seguridad en la Base",
+    "paragraphs": [
+     "Estimados vecinos de Villa del Mar,",
+     "Nos dirigimos a ustedes para abordar las preocupaciones recientes sobre las medidas de seguridad en la Base Aérea San Miguel. Entendemos que algunos residentes han expresado inquietudes sobre el ruido y las restricciones de tráfico debido a los controles de seguridad adicionales.",
+     "Queremos asegurarles que estas medidas son necesarias para garantizar la seguridad de todos. La base ha implementado controles de acceso más estrictos y patrullas adicionales en las áreas circundantes. También se han instalado cámaras de seguridad nuevas para monitorear las entradas y salidas.",
+     "Reconocemos el inconveniente que esto puede causar y trabajamos en estrecha colaboración con el comando de la base para minimizar el impacto en nuestra comunidad. Apreciamos su paciencia y comprensión mientras tomamos estas precauciones importantes.",
+     "Por favor, no duden en contactar a nuestro Ayuntamiento si tienen más preguntas o preocupaciones. Estamos aquí para ayudar.",
+     "Atentamente, El Ayuntamiento de Villa del Mar"
+    ],
+    "date": "15 de octubre de 2023",
+    "contact": "Teléfono: 555-1234, Email: contacto@ayuntamientovdm.es"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Notice on Aging Population",
+   "body": "Ayuntamiento de Villaverde\nAVISO IMPORTANTE SOBRE EL ENVEJECIMIENTO DE LA POBLACIÓN\nEstimados vecinos de Villaverde,\nNos dirigimos a ustedes para informar sobre un cambio importante en nuestra comunidad. En los últimos años, hemos observado un aumento significativo en el número de personas mayores de 65 años en nuestro pueblo. Esto se debe a varios factores, como el aumento de la esperanza de vida y la migración de jóvenes a otras ciudades en busca de trabajo.\nPara abordar este desafío, el Ayuntamiento está planeando diversas iniciativas. Primero, mejoraremos los servicios de salud y transporte para nuestros adultos mayores. Segundo, organizaremos actividades recreativas y culturales para fomentar su participación en la vida comunitaria. Tercero, trabajaremos con empresas locales para crear oportunidades de empleo que sean accesibles para personas mayores.\nEsperamos contar con su apoyo y participación en estas iniciativas. Juntos, podemos hacer de Villaverde un lugar donde todos, independientemente de la edad, puedan vivir con dignidad y felicidad.\nAtentamente,\nEl Ayuntamiento de Villaverde\n15 de octubre de 2023\nPara más información, póngase en contacto con nosotros en el teléfono 925 123 456 o visite nuestra oficina en la Plaza Mayor.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Ayuntamiento de Villaverde",
+    "title": "AVISO IMPORTANTE SOBRE EL ENVEJECIMIENTO DE LA POBLACIÓN",
+    "paragraphs": [
+     "Estimados vecinos de Villaverde,",
+     "Nos dirigimos a ustedes para informar sobre un cambio importante en nuestra comunidad. En los últimos años, hemos observado un aumento significativo en el número de personas mayores de 65 años en nuestro pueblo. Esto se debe a varios factores, como el aumento de la esperanza de vida y la migración de jóvenes a otras ciudades en busca de trabajo.",
+     "Para abordar este desafío, el Ayuntamiento está planeando diversas iniciativas. Primero, mejoraremos los servicios de salud y transporte para nuestros adultos mayores. Segundo, organizaremos actividades recreativas y culturales para fomentar su participación en la vida comunitaria. Tercero, trabajaremos con empresas locales para crear oportunidades de empleo que sean accesibles para personas mayores.",
+     "Esperamos contar con su apoyo y participación en estas iniciativas. Juntos, podemos hacer de Villaverde un lugar donde todos, independientemente de la edad, puedan vivir con dignidad y felicidad.",
+     "Atentamente,",
+     "El Ayuntamiento de Villaverde"
+    ],
+    "date": "15 de octubre de 2023",
+    "contact": "Para más información, póngase en contacto con nosotros en el teléfono 925 123 456 o visite nuestra oficina en la Plaza Mayor."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "New Hospital for San Carlos",
+   "body": "Ayuntamiento de San Carlos\nAviso sobre el Nuevo Hospital en San Carlos\nEstimados vecinos,\nTenemos el placer de informarles que pronto contaremos con un nuevo hospital en nuestra ciudad. El Hospital San Carlos estará ubicado en la Avenida Principal, cerca del parque central. La construcción comenzará el próximo mes y se espera que esté listo en un año.\nEl nuevo hospital contará con modernos equipos y personal calificado para brindar la mejor atención a todos los residentes. Habrá servicios de emergencia las 24 horas, consultorios médicos, laboratorio y farmacia.\nAdemás, se han planeado áreas verdes y estacionamiento para la comodidad de los pacientes y visitantes. Estamos seguros de que esta nueva instalación mejorará la calidad de vida de todos en San Carlos.\nPara más información, pueden visitar nuestra página web o pasar por el Ayuntamiento.\nAtentamente, El Ayuntamiento de San Carlos\n15 de Octubre de 2023\nTeléfono: 555-1234, Email: info@sancarlos.gov",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Ayuntamiento de San Carlos",
+    "title": "Aviso sobre el Nuevo Hospital en San Carlos",
+    "paragraphs": [
+     "Estimados vecinos,",
+     "Tenemos el placer de informarles que pronto contaremos con un nuevo hospital en nuestra ciudad. El Hospital San Carlos estará ubicado en la Avenida Principal, cerca del parque central. La construcción comenzará el próximo mes y se espera que esté listo en un año.",
+     "El nuevo hospital contará con modernos equipos y personal calificado para brindar la mejor atención a todos los residentes. Habrá servicios de emergencia las 24 horas, consultorios médicos, laboratorio y farmacia.",
+     "Además, se han planeado áreas verdes y estacionamiento para la comodidad de los pacientes y visitantes. Estamos seguros de que esta nueva instalación mejorará la calidad de vida de todos en San Carlos.",
+     "Para más información, pueden visitar nuestra página web o pasar por el Ayuntamiento.",
+     "Atentamente, El Ayuntamiento de San Carlos"
+    ],
+    "date": "15 de Octubre de 2023",
+    "contact": "Teléfono: 555-1234, Email: info@sancarlos.gov"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-1p-news_brief-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -639,6 +1893,152 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Change in Force Protection Condition at Base San Carlos",
+   "body": "Compañía de Seguridad de la Base San Carlos 15 de marzo de 2023\n08:00 Cambio de condición de fuerza de FP-2 a FP-3 debido a información de inteligencia recibida. Todos los equipos deben estar alerta.\n08:15 Confirmado: acceso restringido a áreas sensibles hasta nuevo aviso.\n09:30 Patrullas adicionales desplegadas. Todos los puntos de control deben verificar identificación con más rigor.\n10:45 Reunión con todos los equipos de seguridad para revisar protocolos de FP-3.\n14:00 Nada sospechoso reportado hasta ahora. Mantener la vigilancia.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Compañía de Seguridad de la Base San Carlos",
+    "date": "15 de marzo de 2023",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "Cambio de condición de fuerza de FP-2 a FP-3 debido a información de inteligencia recibida. Todos los equipos deben estar alerta.",
+      "initials": "JSM"
+     },
+     {
+      "time": "08:15",
+      "entry": "Confirmado: acceso restringido a áreas sensibles hasta nuevo aviso.",
+      "initials": "MGC"
+     },
+     {
+      "time": "09:30",
+      "entry": "Patrullas adicionales desplegadas. Todos los puntos de control deben verificar identificación con más rigor.",
+      "initials": "JSM"
+     },
+     {
+      "time": "10:45",
+      "entry": "Reunión con todos los equipos de seguridad para revisar protocolos de FP-3.",
+      "initials": "MGC"
+     },
+     {
+      "time": "14:00",
+      "entry": "Nada sospechoso reportado hasta ahora. Mantener la vigilancia.",
+      "initials": "JSM"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Post-Rocket Alarm Reconnaissance",
+   "body": "Puesto de Seguridad, Base San Miguel 15 de marzo de 2023\n08:30 JCM: Recibido aviso de alerta de cohete. Se activa protocolo de seguridad.\n08:35 JCM: Equipo de reconocimiento enviado a zona norte. No se observan daños.\n08:45 LGS: Equipo de reconocimiento reporta posible impacto en área boscosa cerca de la carretera. Sin daños a infraestructura.\n09:00 JCM: Equipo de bombeo en camino para inspeccionar área del impacto. Se mantiene alerta.\n09:30 LGS: Equipo de bombeo confirma impacto de cohete en área boscosa. Sin explosivos sin detonar. Zona segura.\n10:00 JCM: Protocolo de seguridad finalizado. Todos los equipos regresan a base.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Puesto de Seguridad, Base San Miguel",
+    "date": "15 de marzo de 2023",
+    "entries": [
+     {
+      "time": "08:30",
+      "entry": "JCM: Recibido aviso de alerta de cohete. Se activa protocolo de seguridad.",
+      "initials": "JCM"
+     },
+     {
+      "time": "08:35",
+      "entry": "JCM: Equipo de reconocimiento enviado a zona norte. No se observan daños.",
+      "initials": "JCM"
+     },
+     {
+      "time": "08:45",
+      "entry": "LGS: Equipo de reconocimiento reporta posible impacto en área boscosa cerca de la carretera. Sin daños a infraestructura.",
+      "initials": "LGS"
+     },
+     {
+      "time": "09:00",
+      "entry": "JCM: Equipo de bombeo en camino para inspeccionar área del impacto. Se mantiene alerta.",
+      "initials": "JCM"
+     },
+     {
+      "time": "09:30",
+      "entry": "LGS: Equipo de bombeo confirma impacto de cohete en área boscosa. Sin explosivos sin detonar. Zona segura.",
+      "initials": "LGS"
+     },
+     {
+      "time": "10:00",
+      "entry": "JCM: Protocolo de seguridad finalizado. Todos los equipos regresan a base.",
+      "initials": "JCM"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-1p-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Interference in Drone Control During Exercise",
+   "body": "Cuerpo de Seguridad, Base Aérea de Colina Blanca, Chile 12 de octubre de 2023\n08:15 JEFE: Inicio del ejercicio de drones en el sector norte. Todo normal.\n09:30 Vuelo de drones interrumpido por posible interferencia. Piloto reporta pérdida de control.\n09:35 Equipo de comunicación verifica señal de radio. Se detecta jammeo en frecuencia 2.4 GHz.\n10:00 Interferencia cesa. Drones recuperan control. Ejercicio reanudado con normalidad.\n10:15 Se informa al comandante del batallón. Se recomienda revisión de protocolos de seguridad.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Cuerpo de Seguridad, Base Aérea de Colina Blanca, Chile",
+    "date": "12 de octubre de 2023",
+    "entries": [
+     {
+      "time": "08:15",
+      "entry": "JEFE: Inicio del ejercicio de drones en el sector norte. Todo normal.",
+      "initials": "JG"
+     },
+     {
+      "time": "09:30",
+      "entry": "Vuelo de drones interrumpido por posible interferencia. Piloto reporta pérdida de control.",
+      "initials": "MP"
+     },
+     {
+      "time": "09:35",
+      "entry": "Equipo de comunicación verifica señal de radio. Se detecta jammeo en frecuencia 2.4 GHz.",
+      "initials": "RS"
+     },
+     {
+      "time": "10:00",
+      "entry": "Interferencia cesa. Drones recuperan control. Ejercicio reanudado con normalidad.",
+      "initials": "JG"
+     },
+     {
+      "time": "10:15",
+      "entry": "Se informa al comandante del batallón. Se recomienda revisión de protocolos de seguridad.",
+      "initials": "MP"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -810,6 +2210,95 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "es-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "New Metro Line Coming to Town",
+   "body": "Ayuntamiento de San Miguel\n¡Atención! Nueva Línea de Metro en San Miguel\nEstimados vecinos de San Miguel, les informamos que pronto tendremos una nueva línea de metro. La Linea Verde conectará nuestro pueblo con la ciudad de Valencia en solo 20 minutos.\nLas obras comenzarán el próximo mes de octubre y se espera que la línea esté operativa para diciembre de 2025. Habrá tres paradas en San Miguel: Plaza Mayor, Estación Norte y Barrio Nuevo.\nEsta nueva línea mejorará el transporte público y reducirá el tráfico en nuestras carreteras. Además, se crearán nuevos puestos de trabajo durante la construcción y operación de la línea.\nPara más información, pueden visitar nuestra página web o pasar por el ayuntamiento. Estamos aquí para ayudar con cualquier pregunta o preocupación que tengan.\nAtentamente, el equipo del Ayuntamiento de San Miguel.\n15 de septiembre de 2023\nayuntamiento@sanmiguel.es",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Ayuntamiento de San Miguel",
+    "title": "¡Atención! Nueva Línea de Metro en San Miguel",
+    "paragraphs": [
+     "Estimados vecinos de San Miguel, les informamos que pronto tendremos una nueva línea de metro. La Linea Verde conectará nuestro pueblo con la ciudad de Valencia en solo 20 minutos.",
+     "Las obras comenzarán el próximo mes de octubre y se espera que la línea esté operativa para diciembre de 2025. Habrá tres paradas en San Miguel: Plaza Mayor, Estación Norte y Barrio Nuevo.",
+     "Esta nueva línea mejorará el transporte público y reducirá el tráfico en nuestras carreteras. Además, se crearán nuevos puestos de trabajo durante la construcción y operación de la línea.",
+     "Para más información, pueden visitar nuestra página web o pasar por el ayuntamiento. Estamos aquí para ayudar con cualquier pregunta o preocupación que tengan.",
+     "Atentamente, el equipo del Ayuntamiento de San Miguel."
+    ],
+    "date": "15 de septiembre de 2023",
+    "contact": "ayuntamiento@sanmiguel.es"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Town Hall Announces Tourism Recovery Initiatives",
+   "body": "Ayuntamiento de San Miguel\nIniciativas para la Recuperación del Turismo\nEstimados vecinos de San Miguel,\nComo saben, el turismo es una parte importante de nuestra economía local. Después de los desafíos que hemos enfrentado, estamos emocionados de anunciar varias iniciativas para impulsar la recuperación del turismo en nuestro hermoso pueblo.\nPrimero, trabajaremos con la Oficina de Turismo para organizar eventos culturales y festivales. Estos eventos atraerán a visitantes de todas partes y mostrarán lo mejor de nuestra cultura y tradiciones. Por ejemplo, el próximo mes tendremos el Festival de la Tapa, donde los restaurantes locales ofrecerán sus mejores tapas a precios especiales.\nAdemás, mejoraremos las instalaciones turísticas. Hemos recibido fondos para renovar el centro de visitantes y crear nuevas rutas de senderismo. Estas mejoras harán que la experiencia de los visitantes sea más agradable y segura.\nTambién, promocionaremos San Miguel en redes sociales y colaboraremos con influencers locales para llegar a un público más amplio. Usaremos hashtags como #DescubreSanMiguel y #TurismoSanMiguel para aumentar nuestra visibilidad.\nInvitamos a todos los residentes a participar en estas iniciativas. Pueden ofrecerse como voluntarios para los eventos o compartir información sobre San Miguel en sus redes sociales. Juntos, podemos hacer que nuestro pueblo sea un destino turístico aún más atractivo.\n15 de mayo de 2023\nPara más información, contacte a la Oficina de Turismo al 555-1234 o visite nuestro sitio web: www.sanmiguel.turismo",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Ayuntamiento de San Miguel",
+    "title": "Iniciativas para la Recuperación del Turismo",
+    "paragraphs": [
+     "Estimados vecinos de San Miguel,",
+     "Como saben, el turismo es una parte importante de nuestra economía local. Después de los desafíos que hemos enfrentado, estamos emocionados de anunciar varias iniciativas para impulsar la recuperación del turismo en nuestro hermoso pueblo.",
+     "Primero, trabajaremos con la Oficina de Turismo para organizar eventos culturales y festivales. Estos eventos atraerán a visitantes de todas partes y mostrarán lo mejor de nuestra cultura y tradiciones. Por ejemplo, el próximo mes tendremos el Festival de la Tapa, donde los restaurantes locales ofrecerán sus mejores tapas a precios especiales.",
+     "Además, mejoraremos las instalaciones turísticas. Hemos recibido fondos para renovar el centro de visitantes y crear nuevas rutas de senderismo. Estas mejoras harán que la experiencia de los visitantes sea más agradable y segura.",
+     "También, promocionaremos San Miguel en redes sociales y colaboraremos con influencers locales para llegar a un público más amplio. Usaremos hashtags como #DescubreSanMiguel y #TurismoSanMiguel para aumentar nuestra visibilidad.",
+     "Invitamos a todos los residentes a participar en estas iniciativas. Pueden ofrecerse como voluntarios para los eventos o compartir información sobre San Miguel en sus redes sociales. Juntos, podemos hacer que nuestro pueblo sea un destino turístico aún más atractivo."
+    ],
+    "date": "15 de mayo de 2023",
+    "contact": "Para más información, contacte a la Oficina de Turismo al 555-1234 o visite nuestro sitio web: www.sanmiguel.turismo"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Rising Costs of Drone Defense in San Carlos",
+   "body": "Ayuntamiento de San Carlos\nAviso Importante: Defensa de Bases contra Drones Económicos\nEstimados vecinos de San Carlos,\nLes escribimos para informarles sobre un nuevo desafío que enfrenta nuestra comunidad. Debido al aumento de drones económicos en el mercado, la defensa de nuestras bases locales se ha vuelto más costosa y compleja. Estas aeronaves no tripuladas, aunque pequeñas y baratas, pueden causar grandes daños si no se controlan adecuadamente.\nEl Ayuntamiento, en colaboración con las autoridades militares, ha estado implementando nuevas medidas de seguridad para proteger nuestras bases. Sin embargo, estos esfuerzos requieren una inversión significativa. Según el último informe, el costo de defensa contra drones ha aumentado en un 30% en el último año.\nEntendemos que esto puede afectar a nuestra comunidad, por lo que estamos buscando formas de reducir estos costos sin comprometer la seguridad. Una de las soluciones que estamos considerando es la instalación de sistemas de defensa más avanzados y eficientes, que a largo plazo podrían ahorrar dinero.\nLes mantendremos informados sobre los próximos pasos y las medidas que se tomarán. Agradecemos su comprensión y apoyo en estos tiempos desafiantes.\nAtentamente, Ayuntamiento de San Carlos\n15 de mayo de 2023\nPara más información, visite nuestra oficina en la Plaza Mayor o llame al 987-654-3210.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "Ayuntamiento de San Carlos",
+    "title": "Aviso Importante: Defensa de Bases contra Drones Económicos",
+    "paragraphs": [
+     "Estimados vecinos de San Carlos,",
+     "Les escribimos para informarles sobre un nuevo desafío que enfrenta nuestra comunidad. Debido al aumento de drones económicos en el mercado, la defensa de nuestras bases locales se ha vuelto más costosa y compleja. Estas aeronaves no tripuladas, aunque pequeñas y baratas, pueden causar grandes daños si no se controlan adecuadamente.",
+     "El Ayuntamiento, en colaboración con las autoridades militares, ha estado implementando nuevas medidas de seguridad para proteger nuestras bases. Sin embargo, estos esfuerzos requieren una inversión significativa. Según el último informe, el costo de defensa contra drones ha aumentado en un 30% en el último año.",
+     "Entendemos que esto puede afectar a nuestra comunidad, por lo que estamos buscando formas de reducir estos costos sin comprometer la seguridad. Una de las soluciones que estamos considerando es la instalación de sistemas de defensa más avanzados y eficientes, que a largo plazo podrían ahorrar dinero.",
+     "Les mantendremos informados sobre los próximos pasos y las medidas que se tomarán. Agradecemos su comprensión y apoyo en estos tiempos desafiantes.",
+     "Atentamente, Ayuntamiento de San Carlos"
+    ],
+    "date": "15 de mayo de 2023",
+    "contact": "Para más información, visite nuestra oficina en la Plaza Mayor o llame al 987-654-3210."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "es-dr-2-news-001",
    "exam": "DLPT_READING",
    "language": "es",
@@ -915,6 +2404,187 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Un Enjambre de Pequeños Drones Sobre el Puerto",
+   "body": "Unidad de Seguridad Puerto de Valparaíso 12 de abril de 2023\n08:00 Informe de inicio de turno. Todo en orden en el puerto. Cielo despejado. Viento del sur a 15 km/h. Temperatura de 18°C. (JL)\n10:30 Avistamiento de varios objetos voladores no identificados sobre el muelle 4. Parecen pequeños drones. Número aproximado: 20-30. (AS)\n10:45 Contacto con la autoridad portuaria. No hay operaciones de drones programadas para hoy. (JL)\n11:10 Los drones se mueven en formación sobre los barcos atracados. No muestran comportamiento agresivo. (AS)\n11:30 Llamada a la policía local para informe y posible asistencia. (JL)\n12:00 Llegada de la policía. Observación conjunta de los drones. Decisión de monitorear la situación. (AS)\n13:45 Los drones comienzan a dispersarse. Número reducido a aproximadamente 10. (JL)\n14:15 Último avistamiento de drones. Desaparecen en dirección noreste. (AS)\n15:00 Fin del incidente. Informe completo será enviado al comando regional. (JL)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Unidad de Seguridad Puerto de Valparaíso",
+    "date": "12 de abril de 2023",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "Informe de inicio de turno. Todo en orden en el puerto. Cielo despejado. Viento del sur a 15 km/h. Temperatura de 18°C. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "10:30",
+      "entry": "Avistamiento de varios objetos voladores no identificados sobre el muelle 4. Parecen pequeños drones. Número aproximado: 20-30. (AS)",
+      "initials": "AS"
+     },
+     {
+      "time": "10:45",
+      "entry": "Contacto con la autoridad portuaria. No hay operaciones de drones programadas para hoy. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "11:10",
+      "entry": "Los drones se mueven en formación sobre los barcos atracados. No muestran comportamiento agresivo. (AS)",
+      "initials": "AS"
+     },
+     {
+      "time": "11:30",
+      "entry": "Llamada a la policía local para informe y posible asistencia. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "12:00",
+      "entry": "Llegada de la policía. Observación conjunta de los drones. Decisión de monitorear la situación. (AS)",
+      "initials": "AS"
+     },
+     {
+      "time": "13:45",
+      "entry": "Los drones comienzan a dispersarse. Número reducido a aproximadamente 10. (JL)",
+      "initials": "JL"
+     },
+     {
+      "time": "14:15",
+      "entry": "Último avistamiento de drones. Desaparecen en dirección noreste. (AS)",
+      "initials": "AS"
+     },
+     {
+      "time": "15:00",
+      "entry": "Fin del incidente. Informe completo será enviado al comando regional. (JL)",
+      "initials": "JL"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Security Log: Exhibition Opening",
+   "body": "Museo de Arte Contemporáneo de San Luis 11 de octubre de 2023\n07:30 Inicio del turno. Revisión inicial de todas las entradas. Todo en orden. (J.M.)\n09:15 Llegada del personal del museo. Se les entrega un resumen de las medidas de seguridad para la exposición 'Luz y Sombra'. (J.M.)\n10:00 Apertura de la exposición al público. Se monitorea el flujo de visitantes. Se observa un gran interés en la obra 'Sueños de Cristal'. (J.M.)\n12:45 Incidente menor: un visitante (señor García) dejó su bolso sin supervisión cerca de la sala principal. Se revisó el bolso y se devolvió al dueño. (J.M.)\n14:30 Cambio de turno. Se informa al nuevo guardia (R.L.) sobre los eventos del día. (J.M.)\n15:00 Revisión de cámaras de seguridad. Todo funciona correctamente. (R.L.)\n16:20 Se observa un grupo de estudiantes haciendo preguntas sobre las medidas de seguridad. Se les explica brevemente el protocolo. (R.L.)\n18:00 Cierre de la exposición. Se verifica que todas las salas estén vacías. (R.L.)\n19:30 Fin del turno. Se deja un informe detallado para el turno de la noche. (R.L.)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Museo de Arte Contemporáneo de San Luis",
+    "date": "11 de octubre de 2023",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "Inicio del turno. Revisión inicial de todas las entradas. Todo en orden. (J.M.)",
+      "initials": "J.M."
+     },
+     {
+      "time": "09:15",
+      "entry": "Llegada del personal del museo. Se les entrega un resumen de las medidas de seguridad para la exposición 'Luz y Sombra'. (J.M.)",
+      "initials": "J.M."
+     },
+     {
+      "time": "10:00",
+      "entry": "Apertura de la exposición al público. Se monitorea el flujo de visitantes. Se observa un gran interés en la obra 'Sueños de Cristal'. (J.M.)",
+      "initials": "J.M."
+     },
+     {
+      "time": "12:45",
+      "entry": "Incidente menor: un visitante (señor García) dejó su bolso sin supervisión cerca de la sala principal. Se revisó el bolso y se devolvió al dueño. (J.M.)",
+      "initials": "J.M."
+     },
+     {
+      "time": "14:30",
+      "entry": "Cambio de turno. Se informa al nuevo guardia (R.L.) sobre los eventos del día. (J.M.)",
+      "initials": "J.M."
+     },
+     {
+      "time": "15:00",
+      "entry": "Revisión de cámaras de seguridad. Todo funciona correctamente. (R.L.)",
+      "initials": "R.L."
+     },
+     {
+      "time": "16:20",
+      "entry": "Se observa un grupo de estudiantes haciendo preguntas sobre las medidas de seguridad. Se les explica brevemente el protocolo. (R.L.)",
+      "initials": "R.L."
+     },
+     {
+      "time": "18:00",
+      "entry": "Cierre de la exposición. Se verifica que todas las salas estén vacías. (R.L.)",
+      "initials": "R.L."
+     },
+     {
+      "time": "19:30",
+      "entry": "Fin del turno. Se deja un informe detallado para el turno de la noche. (R.L.)",
+      "initials": "R.L."
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "es-dr-2-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "es",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Security Log: Post-Rocket Alarm Reconnaissance",
+   "body": "Guardia Civil 15 de marzo de 2023\n08:30 Iniciamos patrulla de reconocimiento en la zona de la playa de San Miguel tras la alarma de cohetes de esta madrugada. No se observan daños evidentes en la playa. (JML)\n09:15 Encontramos fragmentos de cohetes en la zona de los acantilados. Se han tomado fotos para el informe. (MAR)\n10:00 Habla con los residentes locales. Nadie reportó daños a la propiedad o lesiones. (JML)\n11:30 Se encontró un cohete sin explotar en la zona de dunas. Se ha acordonado la zona y se ha notificado al equipo de desactivación de bombas. (MAR)\n12:45 Finalizada la patrulla. Se ha informado de todos los hallazgos al cuartel general. (JML)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "Guardia Civil",
+    "date": "15 de marzo de 2023",
+    "entries": [
+     {
+      "time": "08:30",
+      "entry": "Iniciamos patrulla de reconocimiento en la zona de la playa de San Miguel tras la alarma de cohetes de esta madrugada. No se observan daños evidentes en la playa. (JML)",
+      "initials": "JML"
+     },
+     {
+      "time": "09:15",
+      "entry": "Encontramos fragmentos de cohetes en la zona de los acantilados. Se han tomado fotos para el informe. (MAR)",
+      "initials": "MAR"
+     },
+     {
+      "time": "10:00",
+      "entry": "Habla con los residentes locales. Nadie reportó daños a la propiedad o lesiones. (JML)",
+      "initials": "JML"
+     },
+     {
+      "time": "11:30",
+      "entry": "Se encontró un cohete sin explotar en la zona de dunas. Se ha acordonado la zona y se ha notificado al equipo de desactivación de bombas. (MAR)",
+      "initials": "MAR"
+     },
+     {
+      "time": "12:45",
+      "entry": "Finalizada la patrulla. Se ha informado de todos los hallazgos al cuartel general. (JML)",
+      "initials": "JML"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1430,6 +3100,114 @@
    "verified": false
   },
   {
+   "id": "es-dr-0p-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-badge_form-001",
+   "stem": "What is the purpose of María López's visit?",
+   "choices": [
+    "A humanitarian mission",
+    "A military training",
+    "A drone exercise",
+    "A renewable energy conference"
+   ],
+   "answer": 3,
+   "explanation": "The form states 'Conferencia de Energía Renovable' as the purpose of the visit.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-badge_form-001",
+   "stem": "What is the main topic of the document?",
+   "choices": [
+    "A perimeter patrol instruction",
+    "A military operation",
+    "A vaccination campaign",
+    "A visitor's access request for an energy conference"
+   ],
+   "answer": 3,
+   "explanation": "The document is a visitor access request form for a renewable energy conference, as indicated by the title 'FORMULARIO DE SOLICITUD DE ACCESO' and the purpose 'Conferencia de Energía Renovable'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-badge_form-002",
+   "stem": "What is the name of the visitor?",
+   "choices": [
+    "Juan Pérez",
+    "Carlos López",
+    "Luis García",
+    "Mario Sánchez"
+   ],
+   "answer": 0,
+   "explanation": "The document clearly states 'Nombre: Juan Pérez'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-badge_form-002",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To request access for a visitor",
+    "To invite participants to a conference",
+    "To schedule a training session",
+    "To announce a sports event"
+   ],
+   "answer": 0,
+   "explanation": "The title 'Solicitud de Acceso para Visitante' and the context of the information provided indicate that the purpose is to request access for a visitor.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-badge_form-003",
+   "stem": "What is the purpose of Juan Pérez's visit?",
+   "choices": [
+    "To participate in a vaccination campaign.",
+    "To survey humanitarian drone usage.",
+    "To attend a sports championship.",
+    "To discuss a new trade agreement."
+   ],
+   "answer": 3,
+   "explanation": "The document states 'Propósito: Acuerdo comercial nuevo,' which means 'Purpose: New trade agreement.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-badge_form-003",
+   "stem": "What is the main idea of this document?",
+   "choices": [
+    "Instructions for a joint perimeter patrol.",
+    "An announcement for a vaccination campaign.",
+    "A reminder for mandatory training.",
+    "A request for access to a military base for a new trade agreement discussion."
+   ],
+   "answer": 3,
+   "explanation": "The document is titled 'Solicitud de Acceso para Visita,' which means 'Access Request for Visit,' and specifies the purpose as 'Acuerdo comercial nuevo,' indicating a request for access to discuss a new trade agreement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-0p-form-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1646,6 +3424,114 @@
    "verified": false
   },
   {
+   "id": "es-dr-0p-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-schedule_board-001",
+   "stem": "Who is on duty at the North Gate at 12:00?",
+   "choices": [
+    "Carlos Mendoza",
+    "Jorge Pérez",
+    "Ana García",
+    "Laura Ruiz"
+   ],
+   "answer": 3,
+   "explanation": "The schedule shows that 'Laura Ruiz' is on duty at the 'Norte' gate at '12:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-schedule_board-001",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To list the names of all border agents",
+    "To display the locations of all border gates",
+    "To indicate the shift rotation for border agents at each gate",
+    "To show the daily operating hours of the border crossing"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to indicate the shift rotation for border agents at each gate, as shown by the 'Hora', 'Puerta', and 'Agente' columns.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-schedule_board-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform about drone racing events.",
+    "To schedule drone repair services.",
+    "To announce drone sales at the festival.",
+    "To warn about a no-drone zone during a festival."
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to warn about a no-drone zone, as indicated by the title '¡ATENCIÓN! Zona Sin Drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-schedule_board-002",
+   "stem": "When and where is the no-drone zone in effect?",
+   "choices": [
+    "June 17-19, Market Square from 9 AM to 6 PM.",
+    "June 14-16, City Park from 10 AM to 8 PM.",
+    "June 15-17, Plaza Central during festival hours.",
+    "June 18-20, Town Hall from 8 AM to 5 PM."
+   ],
+   "answer": 2,
+   "explanation": "The no-drone zone is in effect '15 de junio', '16 de junio', and '17 de junio' at 'Fiesta de San Miguel, Plaza Central' during '9:00 AM - 10:00 PM'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-schedule_board-003",
+   "stem": "What is Ana López's main task during her shift?",
+   "choices": [
+    "Exterior patrol",
+    "Security checks",
+    "Camera monitoring",
+    "Access control"
+   ],
+   "answer": 2,
+   "explanation": "The document states that Ana López's main task is 'Monitoreo de cámaras'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-schedule_board-003",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To schedule meetings for the defense team",
+    "To provide contact information for the operations center",
+    "To outline the shift handover tasks and times",
+    "To list the employees of the base"
+   ],
+   "answer": 2,
+   "explanation": "The document is titled 'Cuadro de Turnos para Entrega de Turno', indicating it is for scheduling shift handovers.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-0p-sign-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1714,6 +3600,114 @@
    ],
    "answer": 3,
    "explanation": "The text states 'Visita la alcaldía para más información.' which means 'Visit the city hall for more information.' This indicates that interested volunteers can find more information at the city hall.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-signage-001",
+   "stem": "What is one of the lessons learned from the counter-drone exercise?",
+   "choices": [
+    "Drones should not be used at all",
+    "The 'ÁGUILA' team was ineffective",
+    "Radars 'SIGMA' should be used",
+    "Drones are allowed in the prohibited zone"
+   ],
+   "answer": 2,
+   "explanation": "The sign lists 'USAR RADARES \"SIGMA\"' as one of the lessons learned.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-signage-001",
+   "stem": "What is the main purpose of the sign?",
+   "choices": [
+    "To advertise new drone technology",
+    "To inform about drone regulations",
+    "To schedule a drone exercise",
+    "To warn about drone accidents"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the sign is to inform about the lessons learned from a counter-drone exercise, specifically the use of radars and the effectiveness of the 'ÁGUILA' team.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-signage-002",
+   "stem": "Where will the perimeter patrol briefing take place?",
+   "choices": [
+    "Hangar 9",
+    "Hangar 5",
+    "Hangar 7",
+    "Hangar 3"
+   ],
+   "answer": 3,
+   "explanation": "The sign states 'REUNIÓN DE PATRULLA DE PERÍMETRO 10:00 HRS, HANGAR 3', indicating the briefing location.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To inform about a perimeter patrol briefing",
+    "To list the duties of the base commander",
+    "To schedule a counter-drone exercise",
+    "To announce a change in force protection condition"
+   ],
+   "answer": 0,
+   "explanation": "The sign provides details about a perimeter patrol briefing, including time, location, and participants, which is its main purpose.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "es-dr-0p-signage-003",
+   "stem": "What time does the vaccination campaign start?",
+   "choices": [
+    "9:00 AM",
+    "10:00 AM",
+    "8:00 AM",
+    "7:00 AM"
+   ],
+   "answer": 2,
+   "explanation": "The sign states 'HORA: 08:00 - 16:00', indicating the campaign starts at 8:00 AM.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-0p-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "es-dr-0p-signage-003",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To remind about a training exercise",
+    "To prohibit entry to certain areas",
+    "To inform about a vaccination campaign",
+    "To announce a change in base location"
+   ],
+   "answer": 2,
+   "explanation": "The sign's main purpose is to inform about a vaccination campaign, as indicated by 'CAMPAÑA DE VACUNACIÓN'.",
    "source": "llm",
    "verified": false
   },
@@ -2132,6 +4126,186 @@
    "verified": false
   },
   {
+   "id": "es-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-badge_form-001",
+   "stem": "What is the specific purpose of María López's visit according to the form?",
+   "choices": [
+    "To inspect the base's security",
+    "To deliver medical supplies",
+    "To attend a conference",
+    "To evaluate flood damage using drones"
+   ],
+   "answer": 3,
+   "explanation": "The form states 'Encuesta con drones para evaluar los daños causados por la inundación en el pueblo de Río Verde', which means 'Drone survey to evaluate the damage caused by the flood in the town of Río Verde'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-badge_form-001",
+   "stem": "What is the main idea of this document?",
+   "choices": [
+    "A notification of a training exercise",
+    "A reminder for mandatory vaccination",
+    "An announcement of a change in force protection condition",
+    "A request for access to the base for a humanitarian drone survey"
+   ],
+   "answer": 3,
+   "explanation": "The document is titled 'Solicitud de Acceso para Encuesta con Drones Humanitarios', which translates to 'Access Request for Humanitarian Drone Survey'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-badge_form-002",
+   "stem": "What is the purpose of María López's visit?",
+   "choices": [
+    "To conduct a drone exercise.",
+    "To survey energy consumption.",
+    "To participate in a vaccination campaign.",
+    "To attend a sports championship."
+   ],
+   "answer": 2,
+   "explanation": "The document states 'Motivo de la Visita: Campaña de Vacunación contra la Gripe', indicating that the purpose of María López's visit is to participate in a vaccination campaign.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-badge_form-002",
+   "stem": "What is the main idea of this access request form?",
+   "choices": [
+    "To request access for a conference.",
+    "To request access for a training session.",
+    "To request access for a vaccination campaign.",
+    "To request access for a survey."
+   ],
+   "answer": 2,
+   "explanation": "The main idea of the form is to request access for a vaccination campaign, as indicated by the title 'Solicitud de Acceso para Campaña de Vacunación' and the details provided about the vaccination campaign.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-badge_form-003",
+   "stem": "What is the purpose of María García López's visit?",
+   "choices": [
+    "To participate in a sports championship",
+    "To survey humanitarian drone operations",
+    "To attend a meeting about a change in the force protection condition",
+    "To receive a vaccination"
+   ],
+   "answer": 2,
+   "explanation": "The purpose of the visit is clearly stated as 'Reunión sobre cambio en el estado de protección de la fuerza', which translates to 'Meeting about a change in the force protection condition'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-badge_form-003",
+   "stem": "What is the main idea of this visitor badge?",
+   "choices": [
+    "To notify visitors about a drone survey",
+    "To grant access to a visitor for a specific meeting",
+    "To remind visitors about a vaccination campaign",
+    "To announce a new sports event"
+   ],
+   "answer": 1,
+   "explanation": "The main idea of this visitor badge is to grant access to María García López for a specific meeting about a change in the force protection condition, as indicated by the details filled in the form.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-chat-002",
+   "stem": "When does the military exercise start?",
+   "choices": [
+    "Saturday at 9:00 AM",
+    "Sunday at 9:00 AM",
+    "Thursday at 9:00 AM",
+    "Friday at 9:00 AM"
+   ],
+   "answer": 3,
+   "explanation": "The exercise starts on 'el viernes a las 9:00 AM' (Friday at 9:00 AM) as mentioned in the first message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "es-dr-1-chat-002",
+   "stem": "What is the purpose of the messages?",
+   "choices": [
+    "To plan a training session for new recruits",
+    "To schedule a meeting with French officials",
+    "To confirm attendance for a sports event",
+    "To coordinate a military exercise with an allied country"
+   ],
+   "answer": 3,
+   "explanation": "The purpose is 'el ejercicio con los franceses' (the exercise with the French), indicating a military exercise with an allied country.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-chat-003",
+   "stem": "What is Ana's main concern about laser weapons?",
+   "choices": [
+    "They are not effective against drones.",
+    "They are slow and inaccurate.",
+    "They need to be reloaded often.",
+    "They are expensive and hard to maintain."
+   ],
+   "answer": 3,
+   "explanation": "Ana explicitly states that laser weapons are 'caras y difíciles de mantener', which translates to 'expensive and hard to maintain'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The debate over using laser weapons for air defense.",
+    "The reliability of electrical systems in military applications.",
+    "The cost of maintaining military equipment.",
+    "The advantages of misiles over laser weapons."
+   ],
+   "answer": 0,
+   "explanation": "The conversation revolves around the use of 'armas láser para defensa aérea', as mentioned by Carlos in the first message.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-1-instructions-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2456,6 +4630,114 @@
    "verified": false
   },
   {
+   "id": "es-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-schedule_board-001",
+   "stem": "Who is responsible for the meeting on Wednesday?",
+   "choices": [
+    "Carlos Mendoza",
+    "Ana García",
+    "Laura Rodríguez",
+    "Jorge López"
+   ],
+   "answer": 2,
+   "explanation": "The document states 'Miércoles, 11:00 AM, Salón C, Edificio Principal, Laura Rodríguez', so Laura Rodríguez is responsible for the meeting on Wednesday.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-schedule_board-001",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To announce a new trade agreement",
+    "To list the attendees of a conference",
+    "To schedule meetings for a new trade agreement",
+    "To provide directions to various buildings"
+   ],
+   "answer": 2,
+   "explanation": "The document is titled 'Nuevo Acuerdo Comercial: Horario de Reuniones', which translates to 'New Trade Agreement: Meeting Schedule'. Therefore, the main purpose is to schedule meetings for a new trade agreement.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-schedule_board-002",
+   "stem": "When is the training scheduled on Wednesday?",
+   "choices": [
+    "09:00-11:00",
+    "10:00-12:00",
+    "14:00-16:00",
+    "13:00-15:00"
+   ],
+   "answer": 1,
+   "explanation": "The Spanish text specifies 'Miércoles' (Wednesday) with the time '10:00-12:00'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-schedule_board-002",
+   "stem": "What is the main topic of the scheduled sessions?",
+   "choices": [
+    "Border crossing procedures",
+    "Insider threat awareness",
+    "Drone defense strategies",
+    "Tourism recovery initiatives"
+   ],
+   "answer": 1,
+   "explanation": "The Spanish title 'Programa de Capacitación en Conciencia de Amenazas Internas' translates to 'Training Program in Insider Threat Awareness', indicating the main topic.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-schedule_board-003",
+   "stem": "Who is responsible for the morning shift on Monday, May 15th?",
+   "choices": [
+    "No one",
+    "Ana López",
+    "Carlos Mendoza",
+    "Javier Ruiz"
+   ],
+   "answer": 2,
+   "explanation": "The document states that \"Carlos Mendoza\" is responsible for the morning shift on \"Lunes, 15 de mayo.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-schedule_board-003",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To track flight schedules",
+    "To coordinate the counter-drone system operations",
+    "To schedule maintenance for airport facilities",
+    "To manage airport staff rotations"
+   ],
+   "answer": 1,
+   "explanation": "The title \"Horario del Sistema Anti-Drones\" clearly indicates that the schedule is for managing the counter-drone system operations.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2524,6 +4806,114 @@
    ],
    "answer": 3,
    "explanation": "The correct answer is 'To invite people to a celebration'. The text says 'celebremos nuestro centésimo aniversario de independencia' and 'Únase a nosotros', which means 'let's celebrate our hundredth anniversary of independence' and 'Join us'. This shows the main purpose is an invitation to a celebration.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-signage-001",
+   "stem": "What is the new force protection condition?",
+   "choices": [
+    "Condition Alpha",
+    "Condition Charlie",
+    "Condition Delta",
+    "Condition Bravo"
+   ],
+   "answer": 1,
+   "explanation": "The sign states 'Se ha cambiado la condición de protección de la fuerza a CONDICIÓN CHARLIE', indicating the new force protection condition is Condition Charlie.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-signage-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To advertise a base-wide event",
+    "To announce a new training exercise",
+    "To schedule a meeting for all base personnel",
+    "To inform about a change in force protection condition and required actions"
+   ],
+   "answer": 3,
+   "explanation": "The sign's main purpose is 'Aviso Importante' about a change in force protection condition and to instruct personnel to follow established security protocols.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-signage-002",
+   "stem": "What is the name of the person leading the training?",
+   "choices": [
+    "Sargento Ana Rodríguez",
+    "Teniente Carlos Méndez",
+    "Capitán Juan García",
+    "Capitán María López"
+   ],
+   "answer": 3,
+   "explanation": "The document states 'La sesión será impartida por el Capitán María López.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-signage-002",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To announce a new base commander",
+    "To remind personnel about mandatory insider threat awareness training",
+    "To advertise a social event",
+    "To inform about a change in base location"
+   ],
+   "answer": 1,
+   "explanation": "The main idea of the sign is communicated in the heading 'ENTRENAMIENTO DE CONCIENTIZACIÓN SOBRE AMENAZAS INTERNAS' and the following lines, which emphasize the mandatory nature of the training.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "es-dr-1-signage-003",
+   "stem": "When will the humanitarian drones survey the area?",
+   "choices": [
+    "Monday, November 14th, from 9:00 a.m. to 5:00 p.m.",
+    "Wednesday, November 16th, from 9:00 a.m. to 5:00 p.m.",
+    "Thursday, November 17th, from 9:00 a.m. to 5:00 p.m.",
+    "Tuesday, November 15th, from 9:00 a.m. to 5:00 p.m."
+   ],
+   "answer": 3,
+   "explanation": "The sign states 'El martes 15 de noviembre, de 9:00 a.m. a 5:00 p.m., drones humanitarios sobrevolarán la zona...', indicating the date and time of the drone survey.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "es-dr-1-signage-003",
+   "stem": "What is the main purpose of the sign?",
+   "choices": [
+    "To remind personnel about mandatory training.",
+    "To announce a change in base operations.",
+    "To notify about a humanitarian drone survey and request cooperation.",
+    "To inform about a military exercise."
+   ],
+   "answer": 2,
+   "explanation": "The sign's main purpose is 'drones humanitarios sobrevolarán la zona afectada por las inundaciones...', aiming to inform about the drone survey and request people to 'manténganse alejados de los drones y no los interfieran'.",
    "source": "llm",
    "verified": false
   },
@@ -2632,6 +5022,150 @@
    ],
    "answer": 3,
    "explanation": "'Inauguración' refers to a ceremony to mark the start of something. The announcement says, 'Les invitamos a la inauguración del nuevo Hospital San Carlos.' (We invite you to the inauguration of the new San Carlos Hospital.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-chat-001",
+   "stem": "What is the main topic of the conversation?",
+   "choices": [
+    "A community meeting",
+    "A medical conference",
+    "A new hospital opening",
+    "A sports event"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the conversation is the opening of a new hospital, as indicated by phrases like 'El nuevo hospital en San Miguel ya está listo para abrir sus puertas' and 'ceremonia de inauguración'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-chat-001",
+   "stem": "What time will the new hospital open on Monday?",
+   "choices": [
+    "8:00 AM",
+    "10:00 AM",
+    "9:00 AM",
+    "7:00 AM"
+   ],
+   "answer": 0,
+   "explanation": "The hospital will open at 8:00 AM on Monday, as stated in the message 'Abre a las 8:00 AM'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "C. Discussion about increasing the number of military vehicles",
+    "B. Complaints about the base's new security personnel",
+    "A. Request for information about new security measures",
+    "D. Plan to organize a community meeting about base security"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is Paco requesting information about the new security measures, as seen in the phrase 'Tenemos algunas preocupaciones sobre las nuevas medidas de seguridad en la base.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-chat-002",
+   "stem": "What specific concerns do the locals have about the new security measures?",
+   "choices": [
+    "B. There are too many military vehicles and they drive too fast",
+    "C. The new measures are too expensive for the community",
+    "A. The base is not secure enough",
+    "D. The locals are not allowed to enter the base anymore"
+   ],
+   "answer": 0,
+   "explanation": "The locals are concerned about the increased number of patrols at night and the speed of military vehicles, as mentioned in 'La gente dice que hay más patrullas de noche y que los vehículos militares pasan muy rápido por las calles.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A change in the force protection condition at Base San Carlos",
+    "A report on recent security incidents",
+    "A request for additional personnel at the base",
+    "A scheduled military exercise"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is explicitly stated in the first message: 'Cambio de condición. Pasamos a FP Charlie a las 10:00.' This indicates a change in the force protection condition.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-chat-003",
+   "stem": "What is the estimated duration of the changed condition?",
+   "choices": [
+    "24 hours",
+    "Indefinite",
+    "12 hours",
+    "48 hours"
+   ],
+   "answer": 0,
+   "explanation": "The estimated duration is provided in the third message: 'Por ahora 24 horas.' This clearly states that the changed condition is expected to last 24 hours.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-004-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-chat-004",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "The scheduling of a conference room",
+    "A doctor's appointment for Luisa's son",
+    "Lessons learned from a drone defense exercise",
+    "A problem with a new metro line"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the conversation is the lessons learned from a drone defense exercise, as indicated by phrases like 'reunión de lecciones aprendidas del ejercicio' and 'problemas con el control de drones'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-chat-004-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-chat-004",
+   "stem": "What specific problem did Carlos mention in his message?",
+   "choices": [
+    "Interference with small drones",
+    "A scheduling conflict",
+    "A medical emergency",
+    "A lack of conference rooms"
+   ],
+   "answer": 0,
+   "explanation": "Carlos specifically mentioned 'la interferencia que tuvimos con los drones pequeños' as the problem they encountered during the exercise.",
    "source": "llm",
    "verified": false
   },
@@ -3068,6 +5602,114 @@
    "verified": false
   },
   {
+   "id": "es-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-municipal_notice-001",
+   "stem": "What is the main topic of the notice?",
+   "choices": [
+    "The installation of new street lights.",
+    "A community event at the town hall.",
+    "A new policy on traffic restrictions.",
+    "The town hall's response to residents' concerns about base security measures."
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the town hall addressing residents' concerns about base security measures, as indicated by the phrases 'preocupaciones recientes sobre las medidas de seguridad en la Base Aérea San Miguel' and 'Entendemos que algunos residentes han expresado inquietudes sobre el ruido y las restricciones de tráfico'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-municipal_notice-001",
+   "stem": "What specific measures has the base implemented to enhance security?",
+   "choices": [
+    "New traffic lights and speed bumps.",
+    "A curfew from 10 PM to 6 AM.",
+    "Mandatory ID checks for all residents.",
+    "Stricter access controls and additional patrols."
+   ],
+   "answer": 3,
+   "explanation": "The notice specifies that the base has implemented 'controles de acceso más estrictos y patrullas adicionales en las áreas circundantes'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-municipal_notice-002",
+   "stem": "What is the main topic of this notice?",
+   "choices": [
+    "D. Changes in school curriculum in Villaverde",
+    "A. A new sports facility opening in Villaverde",
+    "C. A upcoming festival in Villaverde",
+    "B. The increasing number of elderly people in Villaverde"
+   ],
+   "answer": 3,
+   "explanation": "The notice explicitly mentions 'un aumento significativo en el número de personas mayores de 65 años' (a significant increase in the number of people over 65), indicating that the main topic is the aging population.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-municipal_notice-002",
+   "stem": "What are some of the initiatives the town hall is planning to address the aging population?",
+   "choices": [
+    "A. Building new schools and hiring more teachers",
+    "B. Improving health and transport services for the elderly, organizing recreational activities, and creating accessible job opportunities",
+    "D. Hosting a series of concerts in the town square",
+    "C. Organizing a town-wide cleaning campaign"
+   ],
+   "answer": 1,
+   "explanation": "The notice states 'mejoraremos los servicios de salud y transporte para nuestros adultos mayores' (we will improve health and transport services for our elderly), 'organizaremos actividades recreativas y culturales' (we will organize recreational and cultural activities), and 'trabaremos con empresas locales para crear oportunidades de empleo que sean accesibles para personas mayores' (we will work with local businesses to create job opportunities that are accessible to older people).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a new school in the city",
+    "To inform about a new park in the city",
+    "To advertise a new shopping center",
+    "To announce a new hospital in San Carlos"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose of the notice is to inform residents about the upcoming new hospital in San Carlos. This is clear from the title 'Aviso sobre el Nuevo Hospital en San Carlos' and the content discussing the new hospital.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-municipal_notice-003",
+   "stem": "Where will the new hospital be located?",
+   "choices": [
+    "Next to the train station",
+    "On the outskirts of the city",
+    "Avenida Principal, cerca del parque central",
+    "Near the airport"
+   ],
+   "answer": 2,
+   "explanation": "The notice states that the new hospital will be located on 'Avenida Principal, cerca del parque central'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-1p-news_brief-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -3172,6 +5814,114 @@
    ],
    "answer": 1,
    "explanation": "In this context, \"las tasas de interés\" refers to interest rates, as it is mentioned in relation to \"la inflación\" and how they affect the cost of borrowing money.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-shift_log-001",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "A change in the force protection condition",
+    "A routine change in guard shifts",
+    "A scheduled maintenance check",
+    "A new security training program"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a change in the force protection condition, as indicated by the repeated mentions of 'cambio de condición de fuerza' and 'FP-3'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-shift_log-001",
+   "stem": "What specific action was taken at 09:30?",
+   "choices": [
+    "Deploy additional patrols",
+    "Lower the force protection condition",
+    "Cancel all scheduled meetings",
+    "Reduce the number of patrols"
+   ],
+   "answer": 0,
+   "explanation": "The entry at 09:30 states 'Patrullas adicionales desplegadas,' which means additional patrols were deployed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-shift_log-002",
+   "stem": "What is the main topic of the shift log entries?",
+   "choices": [
+    "A training exercise",
+    "A routine patrol schedule",
+    "A base construction project",
+    "Post-rocket alarm reconnaissance"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is post-rocket alarm reconnaissance, as indicated by the repeated mentions of 'reconocimiento' and 'impacto de cohete'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-shift_log-002",
+   "stem": "Where was the rocket impact reported?",
+   "choices": [
+    "At the base's entrance",
+    "Inside the base",
+    "In an area boscosa near the carretera",
+    "In the city center"
+   ],
+   "answer": 2,
+   "explanation": "The rocket impact was reported in an area boscosa (wooded area) near the carretera (road), as stated in the entry at 08:45.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "es-dr-1p-shift_log-003",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A drone accident",
+    "A routine drone exercise",
+    "A new drone control system",
+    "Interference in a drone exercise"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the interference during the drone exercise, as indicated by entries mentioning 'Vuelo de drones interrumpido por posible interferencia' and 'Se detecta jammeo en frecuencia 2.4 GHz.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-1p-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "es-dr-1p-shift_log-003",
+   "stem": "What frequency was jammed during the exercise?",
+   "choices": [
+    "3.6 GHz",
+    "1.8 GHz",
+    "2.4 GHz",
+    "5 GHz"
+   ],
+   "answer": 2,
+   "explanation": "The log specifies 'Se detecta jammeo en frecuencia 2.4 GHz,' indicating that this was the jammed frequency.",
    "source": "llm",
    "verified": false
   },
@@ -3770,6 +6520,114 @@
    "verified": false
   },
   {
+   "id": "es-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-municipal_notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To complain about the traffic in San Miguel",
+    "To describe the history of San Miguel",
+    "To inform residents about a new metro line and its benefits",
+    "To announce a new job opening at the town hall"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to inform residents about the new metro line and its benefits, as stated in the first and last paragraphs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-municipal_notice-001",
+   "stem": "When will the construction of the new metro line begin?",
+   "choices": [
+    "In September 2023",
+    "In December 2025",
+    "Next year",
+    "Next month"
+   ],
+   "answer": 3,
+   "explanation": "The notice states 'Las obras comenzarán el próximo mes de octubre', which translates to 'The works will begin next month of October'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-municipal_notice-002",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To promote local restaurants and their special offers.",
+    "To inform residents about upcoming cultural events.",
+    "To announce initiatives aimed at boosting tourism.",
+    "To discuss the economic challenges faced by the town."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the notice is to announce initiatives aimed at boosting tourism, as stated in the opening sentence: \"estamos emocionados de anunciar varias iniciativas para impulsar la recuperación del turismo en nuestro hermoso pueblo.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-municipal_notice-002",
+   "stem": "What specific event is mentioned as part of the cultural initiatives?",
+   "choices": [
+    "A food festival.",
+    "A music concert.",
+    "A sports competition.",
+    "An art exhibition."
+   ],
+   "answer": 0,
+   "explanation": "The notice mentions the \"Festival de la Tapa\" as part of the cultural initiatives, which is a food festival where local restaurants offer their best tapas at special prices.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-municipal_notice-003",
+   "stem": "What is the main topic of the notice?",
+   "choices": [
+    "The new drone technology available in the market",
+    "The collaboration between the town hall and military authorities",
+    "The increasing cost of defending bases against cheap drones",
+    "The upcoming events in San Carlos"
+   ],
+   "answer": 2,
+   "explanation": "The notice primarily discusses the rising costs associated with defending bases against inexpensive drones, as indicated by the phrases 'Defensa de Bases contra Drones Económicos' and 'el costo de defensa contra drones ha aumentado en un 30% en el último año.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-municipal_notice-003",
+   "stem": "How much has the cost of drone defense increased in the past year?",
+   "choices": [
+    "10%",
+    "20%",
+    "40%",
+    "30%"
+   ],
+   "answer": 3,
+   "explanation": "The notice states that 'el costo de defensa contra drones ha aumentado en un 30% en el último año,' indicating a 30% increase.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "es-dr-2-news-001-q1",
    "exam": "DLPT_READING",
    "level": "2",
@@ -4144,6 +7002,114 @@
    ],
    "answer": 2,
    "explanation": "In the context of the text, 'recorrido' refers to the path or route that the patrol will take. The text mentions 'El recorrido de la patrulla comenzará en el puesto de control norte y continuará hacia el sur.' This indicates that 'recorrido' means a route in this context.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-shift_log-001",
+   "stem": "What is the main topic of this log?",
+   "choices": [
+    "A police operation at the port",
+    "A new security drill at the port",
+    "A swarm of small drones over the harbor",
+    "A change in weather conditions"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in multiple entries, such as 'Avistamiento de varios objetos voladores no identificados sobre el muelle 4. Parecen pequeños drones.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-shift_log-001",
+   "stem": "What was the approximate number of drones initially sighted?",
+   "choices": [
+    "10-15",
+    "5-10",
+    "20-30",
+    "30-40"
+   ],
+   "answer": 2,
+   "explanation": "The log states 'Número aproximado: 20-30,' indicating the initial number of drones sighted.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-shift_log-002",
+   "stem": "What is the main focus of this shift log?",
+   "choices": [
+    "A. The daily routines of the museum staff",
+    "C. The artistic details of the exhibition",
+    "B. The security measures during an exhibition opening",
+    "D. The financial aspects of running a museum"
+   ],
+   "answer": 2,
+   "explanation": "The main focus is on the security measures and incidents during the exhibition opening, as indicated by phrases like 'medidas de seguridad' and 'protocol'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-shift_log-002",
+   "stem": "What specific incident is mentioned in the log?",
+   "choices": [
+    "B. A visitor leaving their bag unattended",
+    "C. A break-in attempt",
+    "D. A fire alarm going off",
+    "A. A group of students causing a disturbance"
+   ],
+   "answer": 0,
+   "explanation": "The log mentions 'un visitante (señor García) dejó su bolso sin supervisión,' which translates to 'a visitor (Mr. García) left his bag unattended.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "es-dr-2-shift_log-003",
+   "stem": "What is the main purpose of the log entries?",
+   "choices": [
+    "To report routine patrol activities in San Miguel.",
+    "To document the daily activities of the Guardia Civil.",
+    "To record the findings during a post-rocket alarm reconnaissance.",
+    "To detail the procedures for handling unexploded ordnance."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to record the findings during a post-rocket alarm reconnaissance, as indicated by the phrase 'Iniciamos patrulla de reconocimiento en la zona de la playa de San Miguel tras la alarma de cohetes de esta madrugada.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "es-dr-2-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "es-dr-2-shift_log-003",
+   "stem": "What specific item was found in the dunes area?",
+   "choices": [
+    "Unexploded rocket.",
+    "Injured locals.",
+    "Cohete fragments.",
+    "Damaged property."
+   ],
+   "answer": 0,
+   "explanation": "The log entry at 11:30 states 'Se encontró un cohete sin explotar en la zona de dunas,' indicating that an unexploded rocket was found.",
    "source": "llm",
    "verified": false
   },

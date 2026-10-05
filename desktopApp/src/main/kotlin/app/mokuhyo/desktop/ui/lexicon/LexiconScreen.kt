@@ -40,10 +40,12 @@ import app.mokuhyo.desktop.ui.EmptyState
 import app.mokuhyo.desktop.ui.Fonts
 import app.mokuhyo.desktop.ui.Page
 import app.mokuhyo.desktop.ui.SectionCard
+import app.mokuhyo.desktop.ui.SuggestButton
 import app.mokuhyo.lang.LanguageModule
 import app.mokuhyo.lexicon.Dialogue
 import app.mokuhyo.lexicon.Drill
 import app.mokuhyo.lexicon.Drills
+import app.mokuhyo.lexicon.SideBySide
 import app.mokuhyo.lexicon.Track
 import app.mokuhyo.lexicon.TrackTerm
 import app.mokuhyo.speech.AudioIO
@@ -52,7 +54,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private enum class LexiconTab(val title: String) { TERMS("Terms"), DRILLS("Drills"), DIALOGUES("Dialogues"), WHATS_NEW("What's new") }
+private enum class LexiconTab(val title: String) { TERMS("Terms"), COMPARE("Compare languages"), DRILLS("Drills"), DIALOGUES("Dialogues"), WHATS_NEW("What's new") }
 
 /**
  * Lexicon (BRIEF_PHASE8 §B.3): the Counter-UAS & Base Defense track — terms with both-language definitions and their
@@ -80,6 +82,7 @@ fun LexiconScreen(app: AppGraph) {
         Spacer(Modifier.height(16.dp))
         when (tab) {
             LexiconTab.TERMS -> TermsTab(app, module, track)
+            LexiconTab.COMPARE -> CompareTab(app, track)
             LexiconTab.DRILLS -> DrillsTab(app, module, track)
             LexiconTab.DIALOGUES -> DialoguesTab(app, module, track)
             LexiconTab.WHATS_NEW -> LexiconUpdates(app, module)
@@ -101,6 +104,7 @@ private fun TermsTab(app: AppGraph, module: LanguageModule, track: Track) {
             FilterChip(domain == d, { domain = d }, label = { Text("${Track.DOMAIN_TITLES[d] ?: d} · ${track.terms.count { it.domain == d }}") })
         }
     }
+    SuggestButton(app, module.code, "suggest_term", "term", "", query)
     OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text("Search (English or ${module.nameEnglish})") },
         textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = Fonts.forLanguage(module.code)))
     val q = module.normalizeForCompare(query.trim())
@@ -156,6 +160,7 @@ fun TermCard(app: AppGraph, module: LanguageModule, t: TrackTerm, added: Boolean
                 app.reviews.add(app.learnerId, module.code, ReviewService.Kind.TERM, "term:${t.id}", t.term, "${t.termEn}\n${t.definition}", t.examples.firstOrNull()?.text)
                 onAdd()
             }) { Text(if (added) "Added" else "Add to review") }
+            SuggestButton(app, module.code, "flag", "term", t.id, t.term)
         }
     }
 }
@@ -279,5 +284,56 @@ private fun DialogueView(app: AppGraph, module: LanguageModule, d: Dialogue) {
             }
         }
         HorizontalDivider()
+    }
+}
+
+
+/**
+ * Side-by-side terms (BRIEF_PHASE8 N-13): English → each language the learner has enabled (Settings → Languages), with the
+ * kind of term, the radio note, whether an allied source confirms it, and audio per language.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun CompareTab(app: AppGraph, current: Track, languages: List<String> = app.chosenLanguages()) {
+    val tracks = remember(languages) { languages.mapNotNull { if (it == current.lang) current else app.lexicon(it) } }
+    var domain by remember { mutableStateOf<String?>(null) }
+    var query by remember { mutableStateOf("") }
+    var page by remember(domain, query) { mutableIntStateOf(0) }
+    val scope = rememberCoroutineScope()
+    if (tracks.size < 2) Text("Enable more languages in Settings → Languages to compare them side by side.", style = MaterialTheme.typography.bodySmall)
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        FilterChip(domain == null, { domain = null }, label = { Text("All") })
+        current.domains.forEach { d -> FilterChip(domain == d, { domain = d }, label = { Text(Track.DOMAIN_TITLES[d] ?: d) }) }
+    }
+    OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, label = { Text("Search any language") })
+    val rows = remember(tracks, domain, query) { SideBySide.rows(tracks, domain, query) }
+    val pageSize = 25
+    rows.drop(page * pageSize).take(pageSize).forEach { r ->
+        SectionCard {
+            Text(r.termEn, fontWeight = FontWeight.SemiBold)
+            r.cells.forEachIndexed { i, c ->
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    val lang = tracks[i].lang
+                    Text(app.languages.module(lang).nameEnglish, style = MaterialTheme.typography.bodySmall, modifier = Modifier.width(110.dp))
+                    if (c == null) {
+                        Text("—", style = MaterialTheme.typography.bodySmall)
+                    } else {
+                        Text(c.term, fontFamily = Fonts.forLanguage(lang), modifier = Modifier.weight(1f))
+                        if (c.kind.isNotEmpty()) Badge(c.kind)
+                        if (c.radioEnglish) Badge("radio: English")
+                        if (c.confirmed) Badge("source-confirmed") else c.badge?.let { Badge(it, MaterialTheme.colorScheme.tertiaryContainer) }
+                        TextButton(onClick = {
+                            scope.launch(Dispatchers.IO) { app.speech.synthesize(c.term, lang)?.let { runCatching { AudioIO.play(it.wav) } } }
+                        }) { Text("▶") }
+                    }
+                }
+            }
+        }
+    }
+    val pages = (rows.size + pageSize - 1) / pageSize
+    if (pages > 1) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        OutlinedButton(enabled = page > 0, onClick = { page-- }) { Text("Previous") }
+        Text("${page + 1} / $pages")
+        OutlinedButton(enabled = page < pages - 1, onClick = { page++ }) { Text("Next") }
     }
 }

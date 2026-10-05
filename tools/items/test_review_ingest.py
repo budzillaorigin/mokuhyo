@@ -69,6 +69,23 @@ def test_dry_run_changes_nothing_and_foreign_files_are_refused():
         assert review.main(["ingest", str(bad)]) == 1
 
 
+def test_suggestions_queue() -> None:
+    """N-10: an app export is queued once (by id); malformed entries are skipped."""
+    with tempfile.TemporaryDirectory() as t:
+        tmp = Path(t)
+        review.QUEUE = tmp / "queue.jsonl"
+        f = tmp / "s.json"
+        f.write_text(json.dumps({"format": "mokuhyo-suggestions/1", "suggestions": [
+            {"id": "a", "lang": "es", "type": "suggest_term", "targetKind": "term", "targetId": "", "text": "dron kamikaze"},
+            {"id": "b", "lang": "es", "type": "flag", "targetKind": "passage", "targetId": "es-dr-2-news-001", "text": "key wrong"},
+            {"id": "c", "lang": "es", "type": "nonsense", "targetKind": "x", "text": "?"},
+        ]}), encoding="utf-8")
+        assert review.main(["suggestions", str(f)]) == 0
+        assert review.main(["suggestions", str(f)]) == 0
+        ids = [json.loads(line)["id"] for line in review.QUEUE.read_text(encoding="utf-8").splitlines()]
+        assert ids == ["a", "b"], ids
+
+
 def main() -> int:
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     failed = 0

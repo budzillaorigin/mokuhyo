@@ -1,5 +1,16 @@
 package app.mokuhyo.desktop.ui
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.OutlinedTextField
+import app.mokuhyo.ai.LanUrl
+import app.mokuhyo.ai.LocalLlamaModel
+import app.mokuhyo.ai.AiResult
+import app.mokuhyo.ai.ModelCheck
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
+import androidx.compose.runtime.LaunchedEffect
+import app.mokuhyo.lang.Languages
+import app.mokuhyo.tts.OsVoice
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -28,6 +39,8 @@ import app.mokuhyo.ai.OllamaModel
 import app.mokuhyo.desktop.AppGraph
 import app.mokuhyo.desktop.BuildInfo
 import app.mokuhyo.desktop.Resources
+import app.mokuhyo.net.NetworkPolicy
+import okio.Path.Companion.toOkioPath
 import app.mokuhyo.desktop.ui.lexicon.ImportLexicon
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.SpeakingActivity
@@ -59,9 +72,13 @@ fun SettingsScreen(app: AppGraph) {
             SettingsTab.SPEECH -> {
                 SpeakingDefaults(app)
                 SpeechModels(app)
+                SystemVoices(app)
                 AudioCheck(app)
             }
-            SettingsTab.CONTENT -> ImportLexicon(app)
+            SettingsTab.CONTENT -> {
+                ImportLexicon(app)
+                ExportSuggestions(app)
+            }
             SettingsTab.BACKUP -> BackupSection(app)
             SettingsTab.PRIVACY -> PrivacySettings(app)
             SettingsTab.ABOUT -> About(app)
@@ -83,7 +100,91 @@ private fun AiSettings(app: AppGraph) {
         }
     }
     SectionCard("Model tier") { TierSettings(app) }
+    TestModel(app)
+    SideLoadModel(app)
     OllamaSection(app)
+}
+
+/**
+ * "Test the model" (BRIEF_PHASE8 N-00b): one turn through the gateway with the error shown verbatim; which native
+ * variant loaded; the model file's own name and its context limit; the last AI calls from the rolling log.
+ */
+@Composable
+private fun TestModel(app: AppGraph) {
+    val scope = rememberCoroutineScope()
+    var result by remember { mutableStateOf<String?>(null) }
+    var busy by remember { mutableStateOf(false) }
+    var tail by remember { mutableStateOf(app.log.tail(8)) }
+    SectionCard("Test the model") {
+        Text("Native engine: ${app.runtime.status}", style = MaterialTheme.typography.bodySmall)
+        val lm = app.languageModel()
+        val local = lm as? LocalLlamaModel
+        Text(
+            when {
+                lm == null -> "No model is set up."
+                local != null -> "Model file: ${local.fileInfo?.name ?: lm.id} · context ${local.contextSize} tokens" +
+                    (local.fileInfo?.contextLength?.let { " (trained for $it)" } ?: "")
+                else -> "Model: ${lm.id}" + (lm.contextSize?.let { " · context $it tokens" } ?: "")
+            },
+            style = MaterialTheme.typography.bodySmall,
+        )
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(enabled = !busy, onClick = {
+                busy = true
+                result = null
+                scope.launch {
+                    val start = System.nanoTime()
+                    val r = withContext(Dispatchers.Default) { app.gateway.run(ModelCheck(), "Spanish") }
+                    val s = (System.nanoTime() - start) / 1_000_000_000.0
+                    result = when (r) {
+                        is AiResult.Ok -> "OK in ${"%.1f".format(s)} s — ${r.engine}: “${r.value.reply}”"
+                        is AiResult.Fallback -> "Failed after ${"%.1f".format(s)} s: ${r.reason}"
+                        is AiResult.Unavailable -> "Failed after ${"%.1f".format(s)} s: ${r.reason}"
+                    }
+                    tail = app.log.tail(8)
+                    busy = false
+                }
+            }) { Text(if (busy) "Testing…" else "Test the model") }
+            Text("One short turn through the same path every feature uses.", style = MaterialTheme.typography.bodySmall)
+        }
+        result?.let { Text(it, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.bodySmall) }
+        if (tail.isNotEmpty()) {
+            Text("Recent AI calls (${app.log.file.absolutePath})", style = MaterialTheme.typography.labelMedium)
+            tail.forEach { Text(it, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.bodySmall) }
+        }
+    }
+}
+
+/** Air-gapped install (BRIEF_PHASE8 N-11): copy a model file from a USB stick or share; size and SHA-256 are checked. */
+@Composable
+private fun SideLoadModel(app: AppGraph) {
+    val scope = rememberCoroutineScope()
+    var status by remember { mutableStateOf("") }
+    var busy by remember { mutableStateOf(false) }
+    SectionCard("Install a model from a file (no network)") {
+        Text("For computers without internet: copy the model file (from the model's source page, see docs/MODELS.md) onto this computer, " +
+            "then choose it here. Mokuhyo checks its size and SHA-256 against its catalogue before installing.", style = MaterialTheme.typography.bodyMedium)
+        app.manifest.models.filter { it.files.size == 1 && app.modelFile(it) == null }.forEach { m ->
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("${m.name} — ${m.files.single().name} (${gb(m.totalBytes)})", modifier = Modifier.weight(1f))
+                OutlinedButton(enabled = !busy, onClick = {
+                    val d = java.awt.FileDialog(null as java.awt.Frame?, "Choose ${m.files.single().name}", java.awt.FileDialog.LOAD)
+                    d.isVisible = true
+                    val name = d.file ?: return@OutlinedButton
+                    busy = true
+                    status = "Checking ${name}…"
+                    scope.launch {
+                        val r = withContext(Dispatchers.IO) {
+                            app.models.installFromFile(m, java.io.File(d.directory, name).toOkioPath())
+                        }
+                        status = r.fold({ "${m.name} installed." }, { "Not installed: ${it.message}" })
+                        busy = false
+                    }
+                }) { Text("Choose file…") }
+            }
+        }
+        if (status.isNotEmpty()) Text(status, style = MaterialTheme.typography.bodySmall)
+    }
 }
 
 @Composable
@@ -93,17 +194,31 @@ private fun OllamaSection(app: AppGraph) {
     var checked by remember { mutableStateOf(false) }
     var use by remember { mutableStateOf(app.settings.bool(Settings.Key.USE_OLLAMA)) }
     var model by remember { mutableStateOf(app.settings.get(Settings.Key.OLLAMA_MODEL)) }
+    var url by remember { mutableStateOf(app.settings.get(Settings.Key.OLLAMA_URL).orEmpty()) }
+    var urlProblem by remember { mutableStateOf<String?>(null) }
     SectionCard("Use my Ollama (optional)") {
-        Text("If you already run Ollama on this computer, Mokuhyo can use one of its models instead of its own. Off by default; only localhost is checked.", style = MaterialTheme.typography.bodyMedium)
+        Text("If you run Ollama on this computer — or on another computer on your home network, such as a GPU machine — Mokuhyo can use " +
+            "one of its models instead of its own. Off by default. Only local-network addresses are accepted; nothing goes to the internet.",
+            style = MaterialTheme.typography.bodyMedium)
+        OutlinedTextField(url, { url = it; urlProblem = null }, Modifier.fillMaxWidth(), singleLine = true,
+            label = { Text("Server on my network (leave empty for this computer)") }, placeholder = { Text("http://192.168.1.46:11434") })
+        urlProblem?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
         OutlinedButton(onClick = {
+            val checkedUrl = if (url.isBlank()) LanUrl.Checked(OllamaDetector.DEFAULT_URL, null) else LanUrl.check(url)
+            val base = checkedUrl.baseUrl
+            if (base == null) {
+                urlProblem = checkedUrl.problem
+                return@OutlinedButton
+            }
+            app.settings.put(Settings.Key.OLLAMA_URL, if (url.isBlank()) "" else base)
             scope.launch {
-                found = OllamaDetector(Java.create()).detect()
+                found = OllamaDetector(Java.create(), base).detect()
                 checked = true
             }
-        }) { Text("Look for Ollama on this computer") }
+        }) { Text(if (url.isBlank()) "Look for Ollama on this computer" else "Connect to this server") }
         val list = found
         when {
-            checked && list == null -> Text("No Ollama server answered at localhost:11434.")
+            checked && list == null -> Text("No Ollama server answered at ${app.ollamaBaseUrl()}.")
             list != null -> {
                 list.forEach { m ->
                     RadioRow(use && model == m.name, enabled = m.excludedReason == null, onSelect = {
@@ -128,6 +243,15 @@ private fun OllamaSection(app: AppGraph) {
 /** Default corrections mode per speaking activity and AAB audio (BRIEF_PHASE8 §B.5); learner settings, so they travel in backups. */
 @Composable
 private fun SpeakingDefaults(app: AppGraph) {
+    var confirm by remember { mutableStateOf(app.settings.bool(Settings.Key.CONFIRM_TRANSCRIPT, default = true)) }
+    SectionCard("Speaking: voice input") {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Switch(confirm, onCheckedChange = { confirm = it; app.settings.put(Settings.Key.CONFIRM_TRANSCRIPT, it.toString()) })
+            Text("Show what I said before sending it, so I can edit it or record again (practice only; interview tests send it directly)")
+        }
+        Text("Recording stops by itself after a short silence. If nothing is heard, you'll get a hint about the microphone.",
+            style = MaterialTheme.typography.bodySmall)
+    }
     SectionCard("Speaking: corrections") {
         Text("How corrections appear by default. Interview tests always run as After action.", style = MaterialTheme.typography.bodyMedium)
         SpeakingActivity.entries.forEach { act ->
@@ -168,10 +292,44 @@ private fun SpeechModels(app: AppGraph) {
     }
 }
 
+/** The computer's own voices (BRIEF_PHASE8 N-00): what was found per language, the compact-voice hint, and a rescan. */
+@Composable
+private fun SystemVoices(app: AppGraph) {
+    val scope = rememberCoroutineScope()
+    var voices by remember { mutableStateOf<List<OsVoice.Info>?>(null) }
+    var busy by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { voices = withContext(Dispatchers.IO) { OsVoice.voices() } }
+    SectionCard("This computer's voices") {
+        if (!OsVoice.available) {
+            Text("This system has no built-in voices Mokuhyo can use; the bundled voices speak where a language has one.")
+            return@SectionCard
+        }
+        val all = voices
+        if (all == null) Text("Looking for installed voices…")
+        else Languages.all.forEach { l ->
+            val found = OsVoice.voicesFor(l.code, all)
+            Text("${l.nameEnglish}: " + (found.take(3).joinToString { it.name }.ifEmpty { "none installed" }), style = MaterialTheme.typography.bodySmall)
+            OsVoice.compactOnlyHint(l.code, all)?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary) }
+        }
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(enabled = !busy, onClick = {
+                busy = true
+                scope.launch {
+                    voices = withContext(Dispatchers.IO) { OsVoice.rescan() }
+                    busy = false
+                }
+            }) { Text(if (busy) "Rescanning…" else "Rescan voices") }
+            Text("After installing a voice in your system settings, rescan so Mokuhyo uses it without a restart.", style = MaterialTheme.typography.bodySmall)
+        }
+    }
+}
+
 @Composable
 private fun PrivacySettings(app: AppGraph) {
     var auto by remember { mutableStateOf(app.settings.bool(Settings.Key.UPDATE_CHECK)) }
     SectionCard("Network") {
+        if (NetworkPolicy.disabled) Text("Network access is turned off for this session (--no-network): downloads, the update check, " +
+            "Ollama detection and lexicon URL imports all refuse to connect.", color = MaterialTheme.colorScheme.error)
         Text("Mokuhyo works offline. It goes online only to download a model you chose, to check for updates if you turn that on, and to look for Ollama on this computer when you ask.")
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Switch(auto, onCheckedChange = {

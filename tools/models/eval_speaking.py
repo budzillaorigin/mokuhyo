@@ -235,8 +235,78 @@ def write_models_md(results: list[dict], endpoint_note: str) -> None:
         *rows,
         "",
     ]
-    doc.write_text(head + "\n".join(section), encoding="utf-8")
+    keep = text[text.index(COHERENCE):] if COHERENCE in text else ""  # the coherence section survives a speaking-eval run
+    doc.write_text(head + "\n".join(section) + ("\n" + keep if keep else ""), encoding="utf-8")
     print("wrote docs/MODELS.md")
+
+
+COHERENCE = "## Interviewer coherence"
+REFERENCE = "mistral-small3.2:24b-instruct-2506-q8_0"  # §7.1 primary: simulates the candidate and judges the turns
+
+
+def run_coherence(fixture_files: list[Path], endpoint: str, models: list[str], out: Path, interviews: int) -> None:
+    """`Mokuhyo --eval-coherence`: whole practice interviews through the app's own OpiSession (BRIEF_PHASE8 N-00b)."""
+    args = ["--eval-coherence", "--fixtures", ",".join(str(f) for f in fixture_files), "--endpoint", endpoint, "--models", ",".join(models),
+            "--out", str(out), "--interviews", str(interviews), "--candidate-model", REFERENCE]
+    launcher = os.environ.get("MOKUHYO_APP")
+    if launcher:
+        subprocess.run([launcher, *args], cwd=REPO, check=True)
+        return
+    gradle = str(REPO / ("gradlew.bat" if sys.platform == "win32" else "gradlew"))
+    subprocess.run([gradle, ":desktopApp:run", "--args=" + " ".join(args), "--console=plain", "-q"], cwd=REPO, check=True)
+
+
+def judge_coherence(client: llm.Client, rows: list[dict]) -> list[bool]:
+    """The reference model: is each interviewer question a sensible next turn (right language, coherent, not a repeat)?"""
+    out: list[bool] = []
+    for i in range(0, len(rows), 8):
+        batch = rows[i:i + 8]
+        listing = "\n\n".join(f"Case {k + 1} ({NAMES[r['lang']]}, phase {r['phase']}):\n{r['before'] or '(interview starting)'}\n"
+                               f"NEXT QUESTION: {r['question']}" for k, r in enumerate(batch))
+        schema = {"type": "object", "properties": {"ok": {"type": "array", "items": {"type": "boolean"}, "minItems": len(batch),
+                  "maxItems": len(batch)}}, "required": ["ok"]}
+        try:
+            got = client.chat_json([
+                {"role": "system", "content": "You judge practice language-proficiency interviews. Answer in JSON only."},
+                {"role": "user", "content": "For each case, answer true if NEXT QUESTION is a sensible next interviewer turn: in the "
+                 "interview's language, grammatical and natural, fitting the phase, not repeating an earlier question or the "
+                 "candidate's words, and not contradicting what was said. Interviewers move to a new topic between questions on "
+                 "purpose; a topic change is fine. Otherwise false.\n\n" + listing},
+            ], schema, temperature=0.0, max_tokens=400)
+            out += [bool(x) for x in got["ok"]][: len(batch)]
+        except (RuntimeError, ValueError):
+            out += [False] * len(batch)
+    return out
+
+
+def write_coherence(rows: list[dict], sensible: list[bool]) -> list[dict]:
+    """Per model and language: share of sensible interviewer turns and of scripted fallbacks (targets ≥ 90 % / < 10 %)."""
+    groups: dict[tuple[str, str], list[tuple[dict, bool]]] = {}
+    for r, ok in zip(rows, sensible, strict=True):
+        groups.setdefault((r["model"], r["lang"]), []).append((r, ok))
+    results = []
+    for (m, lang), items in sorted(groups.items()):
+        n = len(items)
+        model_turns = [ok for r, ok in items if not r["scripted"]]
+        results.append({"model": m, "lang": lang, "turns": n, "sensible": sum(ok for _, ok in items) / n,
+                        "modelSensible": (sum(model_turns) / len(model_turns)) if model_turns else 0.0,
+                        "scripted": sum(1 for r, _ in items if r["scripted"]) / n})
+    doc = REPO / "docs" / "MODELS.md"
+    text = doc.read_text(encoding="utf-8")
+    base = text[: text.index(COHERENCE)].rstrip("\n") + "\n" if COHERENCE in text else text.rstrip("\n") + "\n"
+    lines = ["", COHERENCE, "",
+             (f"`tools/models/eval_speaking.py --coherence`, last run {dt.datetime.now(dt.UTC).strftime('%Y-%m-%d')} (Ollama on the owner's "
+              "RTX 5090). Whole practice interviews through the app's own interview session; the reference model plays a learner "
+              "at ILR 1 to 2+ answering each actual question, then judges each interviewer turn (topic changes between questions "
+              "are allowed). Targets (BRIEF_PHASE8 N-00b): ≥ 90 % sensible turns and "
+              "< 10 % scripted fallbacks for Tier B and above."), "",
+             "| model | lang | turns | sensible | model turns sensible | scripted fallbacks | meets |", "|---|---|---|---|---|---|---|"]
+    for r in results:
+        ok = r["sensible"] >= 0.9 and r["scripted"] < 0.1
+        lines.append(f"| `{r['model']}` | {r['lang']} | {r['turns']} | {r['sensible']:.0%} | {r['modelSensible']:.0%} | {r['scripted']:.0%} | {'yes' if ok else 'no'} |")
+    doc.write_text(base + "\n".join(lines) + "\n", encoding="utf-8")
+    print("wrote docs/MODELS.md (interviewer coherence)")
+    return results
 
 
 def main() -> int:
@@ -247,6 +317,8 @@ def main() -> int:
     ap.add_argument("--limit", type=int, help="prompts per kind (smoke runs)")
     ap.add_argument("--no-pull", action="store_true")
     ap.add_argument("--fixtures-only", action="store_true", help="build/cache the fixtures and stop")
+    ap.add_argument("--coherence", action="store_true", help="whole interviews: sensible-turn and scripted-fallback rates (N-00b)")
+    ap.add_argument("--interviews", type=int, default=2, help="with --coherence: interviews per language and model")
     llm.add_args(ap)
     args = ap.parse_args()
     client = llm.Client.from_args(args.endpoint, args.model, args.check_model)
@@ -268,6 +340,14 @@ def main() -> int:
             if m.startswith("hf.co/"):
                 pull(client, m)
     files = [fixtures(client, lang, args.rebuild_fixtures) for lang in langs]
+    if args.coherence:
+        out = TOOLS / "logs" / "eval-coherence.jsonl"
+        run_coherence(files, client.endpoint, models, out, args.interviews)
+        rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines() if line.strip()]
+        results = write_coherence(rows, judge_coherence(client, rows))
+        for r in results:
+            print(f"coherence {r['model']} {r['lang']}: sensible {r['sensible']:.0%}, scripted {r['scripted']:.0%} over {r['turns']} turns")
+        return 0
     out = TOOLS / "logs" / "eval-speaking.jsonl"
     run_app(files, client.endpoint, models, out, args.limit)
     rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines() if line.strip()]

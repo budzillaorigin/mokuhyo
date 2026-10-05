@@ -13,7 +13,7 @@ OUT=build/dist
 mkdir -p "$OUT"
 (cd tools && uv run --locked python release/stage_fonts.py && uv run --locked python release/stage_resources.py --require-native --require-voices)
 rm -rf desktopApp/build/compose
-./gradlew :desktopApp:packageDmg :desktopApp:createDistributable -Pmokuhyo.version="$VERSION" --console=plain -q
+./gradlew :desktopApp:packageDmg :desktopApp:createDistributable :desktopApp:cyclonedxDirectBom -Pmokuhyo.version="$VERSION" --console=plain -q
 rm -f "$OUT"/*macos-arm64*
 (cd tools && uv run --locked python release/collect.py --name macos-arm64 --version "$VERSION" --out "../$OUT")
 (cd "$OUT" && shasum -a 256 Mokuhyo-"$VERSION"-macos-arm64* > SHA256SUMS.macos-arm64)

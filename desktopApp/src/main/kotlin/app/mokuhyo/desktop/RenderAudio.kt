@@ -1,5 +1,6 @@
 package app.mokuhyo.desktop
 
+import app.mokuhyo.lang.VoiceRotation
 import app.mokuhyo.exam.ExamContent
 import app.mokuhyo.exam.Skill
 import app.mokuhyo.speech.AudioIO
@@ -35,14 +36,21 @@ object RenderAudio {
         // Track dialogues (BRIEF_PHASE8 C-03) are rendered the same way, keyed by dialogue id.
         val dialogues = File(packs, "$lang/track-${app.mokuhyo.lexicon.TrackIds.CUAS}.json").takeIf { it.isFile }
             ?.let { f -> app.mokuhyo.lexicon.Track.parse(f.readText()).dialogues.map { it.asPassage(lang) } }.orEmpty()
-        (content.passagesFor(Skill.LISTENING) + dialogues).sortedBy { it.id }.forEach { p ->
+        // Exemplar answers (BRIEF_PHASE8 N-05), one voice, keyed by exemplar id.
+        val exemplars = File(packs, "$lang/exemplars.json").takeIf { it.isFile }?.let { f ->
+            app.mokuhyo.opi.ExemplarPack.parse(f.readText()).exemplars.map { e ->
+                app.mokuhyo.exam.ExamPassage(e.id, app.mokuhyo.exam.ExamKind.DLPT_LISTENING, lang, e.level, "exemplar", e.prompt, "",
+                    listOf(app.mokuhyo.exam.ScriptLine("candidate", "male", e.response)), e.source, e.verified)
+            }
+        }.orEmpty()
+        (content.passagesFor(Skill.LISTENING) + dialogues + exemplars).sortedBy { it.id }.forEach { p ->
             val out = File(outDir, "${p.id}.ogg")
             if (out.isFile && "--force" !in args) { kept++; return@forEach }
-            val speakers = p.script.map { it.speaker }.distinct()
+            // Speaker variety (BRIEF_PHASE8 N-07): rotate by passage id, distinct voices for distinct speakers.
+            val cast = VoiceRotation.assign(piper, p.script.map { it.speaker to it.voice }.distinctBy { it.first }, p.id)
             val pcm = ArrayList<ShortArray>()
             for (line in p.script) {
-                val byGender = piper.filter { it.gender == line.voice }.ifEmpty { piper }
-                val voice = byGender[speakers.indexOf(line.speaker).coerceAtLeast(0) % byGender.size]
+                val voice = cast.getValue(line.speaker)
                 val audio = voices.synthesize(line.text, lang, voice) ?: return@runBlocking fail("synthesis failed for ${p.id}")
                 pcm += AudioIO.toPcm16kMono(audio.wav)
                 pcm += ShortArray(16_000 * 6 / 10)

@@ -74,6 +74,11 @@ internal object WhisperNative {
         handle: Long, samples: FloatArray, language: String, nThreads: Int, token: Long, id: Long,
     ): Int
 
+    /** As [nativeTranscribe] with an initial prompt (BRIEF_PHASE8 N-00b); missing from native builds before 0.3.0. */
+    @JvmStatic external fun nativeTranscribePrompt(
+        handle: Long, samples: FloatArray, language: String, prompt: String, nThreads: Int, token: Long, id: Long,
+    ): Int
+
     /** `[t0, t1]` in milliseconds. */
     @JvmStatic external fun nativeSegmentTimes(handle: Long, index: Int): LongArray
 

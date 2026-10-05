@@ -1,0 +1,20 @@
+-- Schema 4 → 5 (Phase 9, N-03): exercise-week storyline.
+CREATE TABLE storyline (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    personaId TEXT NOT NULL,
+    startedAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX storyline_lang ON storyline(learnerId, lang, startedAt);
+
+CREATE TABLE storyline_day (
+    id TEXT NOT NULL PRIMARY KEY,
+    storylineId TEXT NOT NULL,
+    day INTEGER NOT NULL,
+    json TEXT NOT NULL,
+    createdAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX storyline_day_story ON storyline_day(storylineId, day);

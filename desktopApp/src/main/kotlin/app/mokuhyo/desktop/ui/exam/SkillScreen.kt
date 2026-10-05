@@ -1,6 +1,8 @@
 package app.mokuhyo.desktop.ui.exam
 
 import app.mokuhyo.desktop.ui.CheckRow
+import app.mokuhyo.desktop.ui.SuggestButton
+import app.mokuhyo.speech.Degrade
 import app.mokuhyo.desktop.ui.RadioRow
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.focusable
@@ -158,10 +160,13 @@ private fun Setup(app: AppGraph, module: LanguageModule, content: ExamContent, s
             Tab(tab == 0, { tab = 0 }, text = { Text("Practice") })
             Tab(tab == 1, { tab = 1 }, text = { Text("Test") })
             if (skill == Skill.READING) Tab(tab == 2, { tab = 2 }, text = { Text("This month") })
+            if (skill == Skill.LISTENING) Tab(tab == 3, { tab = 3 }, text = { Text("Numbers") })
         }
         Spacer(Modifier.height(16.dp))
         if (tab == 2) {
             ThisMonth(app, module)
+        } else if (tab == 3) {
+            NumbersDrillView(app, module)
         } else if (tab == 0) {
             var level by remember { mutableStateOf(levels.firstOrNull { (counts[it] ?: 0) > 0 } ?: levels.first()) }
             var track by remember { mutableStateOf<String?>(null) }
@@ -366,8 +371,14 @@ private fun SessionView(app: AppGraph, module: LanguageModule, content: ExamCont
                 if (passage != null) {
                     Text(passage.title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (skill == Skill.READING) {
-                        AidToggles(module, aids) { aids = it }
-                        PassageText(app, module, passage.body, aids, tapToDefine = practice)
+                        // Authentic formats (BRIEF_PHASE8 N-08) render as the real document; practice can also show the tappable text.
+                        val formatted = FormattedPassage(module, passage.format, passage.formatData)
+                        var asText by remember(passage.id) { mutableStateOf(false) }
+                        if (formatted && practice) CheckRow(asText, { asText = it }) { Text("Show as text (tap a word for its meaning)") }
+                        if (!formatted || asText) {
+                            AidToggles(module, aids) { aids = it }
+                            PassageText(app, module, passage.body, aids, tapToDefine = practice)
+                        }
                     } else {
                         ListeningPanel(app, module, session, passage, practice, transcriptVisible = showFeedback, aids = aids, onAids = { aids = it }) { tick++ }
                     }
@@ -446,6 +457,7 @@ private fun Feedback(app: AppGraph, module: LanguageModule, item: app.mokuhyo.ex
                 item.choices[item.answer] + if (item.explanation.isNotBlank()) "\n\n" + item.explanation else "", passage?.text?.take(600))
             added = true
         }) { Text(if (added) "Added to review" else "Add to review") }
+        SuggestButton(app, module.code, "flag", "item", item.id, item.stem, "Flag this question")
     }
 }
 
@@ -459,6 +471,10 @@ private fun ListeningPanel(
     var audio by remember(passage.id) { mutableStateOf<PassageAudio.Result?>(null) }
     var playing by remember(passage.id) { mutableStateOf(false) }
     var speed by remember { mutableStateOf(1.0) }
+    // Degraded audio (BRIEF_PHASE8 N-06): practice only — a test never shows these controls and Degrade refuses test mode.
+    var preset by remember { mutableStateOf<Degrade.Preset?>(null) }
+    var difficulty by remember { mutableStateOf(0.4f) }
+    var clean by remember(passage.id) { mutableStateOf(false) }
     val stop = remember(passage.id) { AtomicBoolean(false) }
     LaunchedEffect(passage.id) { audio = PassageAudio(app).load(passage) }
     DisposableEffect(passage.id) { onDispose { stop.set(true) } }
@@ -479,7 +495,10 @@ private fun ListeningPanel(
                         playing = true
                         scope.launch {
                             withContext(Dispatchers.IO) {
-                                runCatching { AudioIO.play(a.wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed) { stop.get() } }
+                                val p = preset
+                                val wav = if (p == null || clean) a.wav else AudioIO.wav(Degrade.apply(
+                                    AudioIO.toPcm16kMono(a.wav), p, difficulty.toDouble(), seed = passage.id.hashCode(), testMode = !practice))
+                                runCatching { AudioIO.play(wav, app.settings.get(Settings.Key.OUTPUT_DEVICE), speed) { stop.get() } }
                             }
                             playing = false
                         }
@@ -489,6 +508,7 @@ private fun ListeningPanel(
                     if (practice) listOf(0.8, 0.9, 1.0).forEach { s -> FilterChip(speed == s, { speed = s }, label = { Text("${s}×") }) }
                 }
                 Text("Audio: ${a.source}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                if (practice) DegradeControls(preset, difficulty, clean, { preset = it }, { difficulty = it }, { clean = it })
             }
         }
     }
@@ -586,4 +606,27 @@ internal fun SessionPreview(app: AppGraph, skill: Skill, level: String, answer: 
             .also { s -> if (answer) s.current?.let { s.choose((it.item.answer + 1) % it.item.choices.size) } }
     }
     SessionView(app, module, content, skill, session) {}
+}
+
+
+/** Practice-only listening conditions (BRIEF_PHASE8 N-06): telephone, radio, flightline… with a difficulty slider. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun DegradeControls(
+    preset: Degrade.Preset?, difficulty: Float, clean: Boolean,
+    onPreset: (Degrade.Preset?) -> Unit, onDifficulty: (Float) -> Unit, onClean: (Boolean) -> Unit,
+) {
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Text("Conditions:", style = MaterialTheme.typography.bodySmall)
+        FilterChip(preset == null, { onPreset(null) }, label = { Text("Clean") })
+        Degrade.Preset.entries.forEach { p -> FilterChip(preset == p, { onPreset(p) }, label = { Text(p.title) }) }
+    }
+    if (preset != null) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("Difficulty", style = MaterialTheme.typography.bodySmall)
+            androidx.compose.material3.Slider(difficulty, onDifficulty, Modifier.width(220.dp))
+            CheckRow(clean, onClean) { Text("Replay clean") }
+        }
+        Text("Noise is synthesized on this computer (no field recordings ship with the app).", style = MaterialTheme.typography.bodySmall)
+    }
 }

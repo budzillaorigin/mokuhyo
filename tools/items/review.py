@@ -36,6 +36,7 @@ JSON_KINDS = {
     "persona": ("personas/{lang}.json", "personas"),
     "scenario": ("tracks/cuas-base-defense.{lang}.json", "scenarios"),
     "dialogue": ("tracks/cuas-base-defense.{lang}.json", "dialogues"),
+    "exemplar": ("exemplars/{lang}.json", "exemplars"),
 }
 LOG = TOOLS / "items" / "review-log.jsonl"
 LANGS = ("ja", "es", "fr", "de", "pt-BR", "ru", "zh-Hans", "ko", "ar", "fa", "id")
@@ -309,6 +310,33 @@ def cmd_ingest(args) -> int:
     return 0
 
 
+QUEUE = TOOLS / "items" / "suggestions-queue.jsonl"
+
+
+def cmd_suggestions(args) -> int:
+    """Learner suggestions and flags (BRIEF_PHASE8 N-10) → the curator's queue (items/suggestions-queue.jsonl), by id."""
+    data = json.loads(Path(args.file).read_text(encoding="utf-8"))
+    if data.get("format") != "mokuhyo-suggestions/1":
+        print("not a Mokuhyo suggestions file (format mokuhyo-suggestions/1)", file=sys.stderr)
+        return 1
+    seen = set()
+    if QUEUE.exists():
+        seen = {json.loads(line)["id"] for line in QUEUE.read_text(encoding="utf-8").splitlines() if line.strip()}
+    new = [x for x in data.get("suggestions", []) if x.get("id") and x["id"] not in seen]
+    bad = [x for x in new if x.get("type") not in ("suggest_term", "flag") or not str(x.get("text", "")).strip()]
+    if bad:
+        print(f"{len(bad)} malformed suggestion(s) skipped", file=sys.stderr)
+    new = [x for x in new if x not in bad]
+    if not args.dry_run and new:
+        with QUEUE.open("a", encoding="utf-8") as f:
+            for x in new:
+                f.write(json.dumps(dict(x, queued=dt.datetime.now(dt.UTC).isoformat()), ensure_ascii=False) + "\n")
+    for x in new:
+        print(f"  {x['lang']:8} {x['type']:13} {x['targetKind']}:{x.get('targetId', '')} — {x['text'][:80]}")
+    print(f"suggestions: {len(new)} queued ({len(data.get('suggestions', [])) - len(new)} already queued or skipped)")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -323,8 +351,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("file")
     p.add_argument("--reviewer")
     p.add_argument("--dry-run", action="store_true")
+    p = sub.add_parser("suggestions", help="queue learner suggestions/flags exported by the app")
+    p.add_argument("file")
+    p.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
-    return {"status": cmd_status, "next": cmd_next, "tui": cmd_tui, "ingest": cmd_ingest}[args.cmd](args)
+    return {"status": cmd_status, "next": cmd_next, "tui": cmd_tui, "ingest": cmd_ingest, "suggestions": cmd_suggestions}[args.cmd](args)
 
 
 if __name__ == "__main__":

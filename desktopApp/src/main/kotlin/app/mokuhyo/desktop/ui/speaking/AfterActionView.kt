@@ -22,6 +22,7 @@ import app.mokuhyo.desktop.ui.Badge
 import app.mokuhyo.desktop.ui.Disclaimer
 import app.mokuhyo.desktop.ui.Fonts
 import app.mokuhyo.desktop.ui.SectionCard
+import app.mokuhyo.desktop.ui.SuggestButton
 import app.mokuhyo.opi.AfterActionBrief
 import app.mokuhyo.opi.CorrectionsMode
 import app.mokuhyo.opi.PragmaticFlag
@@ -38,7 +39,7 @@ const val NOT_ILR = "Not part of the ILR scale — it does not change your level
  * appropriateness. The interview part (phase map, rating, evidence) is shown by the interview results above it.
  */
 @Composable
-fun AfterActionBriefView(app: AppGraph, lang: String, aab: AfterActionBrief, conversationId: String) {
+fun AfterActionBriefView(app: AppGraph, lang: String, aab: AfterActionBrief, conversationId: String, questionFor: ((Int) -> String?)? = null) {
     val queued = remember { mutableStateListOf<String>() }
     val mode = CorrectionsMode.of(aab.mode) ?: CorrectionsMode.AFTER_ACTION
     SectionCard("After Action Brief") {
@@ -57,7 +58,11 @@ fun AfterActionBriefView(app: AppGraph, lang: String, aab: AfterActionBrief, con
         Disclaimer()
     }
     if (aab.records.isNotEmpty()) SectionCard("Turn by turn") {
-        aab.records.forEach { r -> TurnReview(app, lang, r, conversationId, queued) }
+        aab.records.forEach { r ->
+            TurnReview(app, lang, r, conversationId, queued)
+            // Interviews (BRIEF_PHASE8 N-05): model answers for the same question, linked from the brief.
+            questionFor?.invoke(r.turnIndex)?.let { q -> CompareWithExemplars(app, app.languages.module(lang), q) }
+        }
         Button(enabled = aab.records.any { it.changes.isNotEmpty() || it.pragmatics.isNotEmpty() }, onClick = {
             aab.records.forEach { r -> queue(app, lang, r, queued) }
         }) { Text("Queue all corrections and cultural notes to Review") }
@@ -109,6 +114,7 @@ private fun TurnReview(app: AppGraph, lang: String, r: TurnFeedbackRecord, conve
         if (r.changes.isNotEmpty() || r.pragmatics.isNotEmpty()) TextButton(enabled = key !in queued, onClick = { queue(app, lang, r, queued) }) {
             Text(if (key in queued) "Added to Review" else "Add to review")
         }
+        SuggestButton(app, lang, "flag", "turn", "$conversationId:${r.turnIndex}", r.learner, "Flag this feedback")
         HorizontalDivider()
     }
 }

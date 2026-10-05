@@ -56,6 +56,7 @@ class ExamContent(
                 ExamPassage(
                     id = p.id, exam = exam, language = pack.language, level = p.level, textType = p.textType, title = p.title,
                     body = p.body, script = p.script, source = p.source, verified = p.verified, audio = pack.audio[p.id], track = p.track,
+                    format = p.format, formatData = p.formatData,
                 )
             }.associateBy { it.id }
             val items = (pack.reading.items + pack.listening.items).mapNotNull { i ->

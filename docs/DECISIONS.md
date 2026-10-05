@@ -359,3 +359,43 @@ Recorded from the owner's answers to BRIEF_PHASE8.md Part A before the unattende
   term is the target-language term for exactly this concept — not broader, narrower, related or mixed with English. A
   rejection drops the citation (`unconfirmed-term`, note names the rejected term). Precision over coverage: a wrong
   term with a real citation would mislead learners more than an honest "unconfirmed" badge.
+## D-040 Phase 9 N-07: speaker variety (unattended default, 2026-10-03)
+- **Cap raised from two to four Piper voices per language** (`MAX_PER_LANGUAGE`), aiming at two female and two male.
+  The installer grows by ~280 MB of new model files (es_MX-claude-high, fr_FR-mls, de_DE-mls, pt_PT-tugão); extra
+  speakers of an already-bundled multi-speaker model (sharvard M, upmc Jessica, MLS speakers) cost nothing — manifest
+  entries name the shared files with `model`.
+- **Gender is measured, not guessed from a name.** `tools/voices/measure.py` synthesizes a fixed sentence and
+  `pitch.py` takes the median F0: below 150 Hz male, above 190 Hz female, between ambiguous. Every entry records
+  `measuredF0Hz`; `manifest.py check` refuses a gender label that contradicts the measurement unless `genderSource`
+  says "unverified". This relabelled fa_IR-ganji (unknown → male, 98 Hz) and left dmitri (185 Hz) and faber (179 Hz)
+  as unverified name-based labels.
+- **Regional variants:** es-MX (claude, Apache-2.0) next to es-ES; pt-PT (tugão, CC0) in the Portuguese pack, labelled
+  as European Portuguese. `region` is recorded per voice. es_MX-ald (Unlicense, 160 Hz) and pt_BR-jeff (154 Hz) were
+  allowed but left out: ambiguous gender and no new coverage. No Arabic variant: ar_JO-kareem has no license.
+- **Unlicense** joins the allowed dataset licenses (public-domain dedication, like CC0).
+- **Rotation** (`VoiceRotation`): passages start at a stable hash of their id, distinct speakers in a script get
+  distinct voices (same-gender speakers take consecutive voices), a persona keeps one voice of their gender.
+  Already-rendered pack clips keep their voice until re-rendered (`render-audio --force`).
+
+## D-041 Phase 9 N-00(b): Chatterbox Multilingual — owner exception to rule 13 (owner decision, 2026-10-04)
+- BRIEF_PHASE8 N-00(b) names Chatterbox Multilingual (Resemble AI, MIT) as the natural-voice engine and calls it "not
+  PRC-origin". Checking the code before adopting it: its speech tokenizer is `S3TokenizerV2` loading
+  `speech_tokenizer_v2_25hz`, the tokenizer trained by Alibaba's FunAudioLLM team for **CosyVoice2-0.5B** (and built on
+  SenseVoice). Chatterbox's own acknowledgements credit CosyVoice and S3Tokenizer; the S3Tokenizer repository states
+  the v2 25 Hz model comes from `iic/CosyVoice2-0.5B`. Rule 13 bans CosyVoice "or derivatives" by name, so a model
+  that ships and runs CosyVoice's trained tokenizer is out, whoever packaged it.
+- Compliant alternatives exist inside N-00 itself, so the run continues (CLAUDE.md: only a conflict with *no*
+  compliant alternative ends it): pre-rendered clips → Kokoro-82M (Apache-2.0, StyleTTS 2 lineage) → VOICEVOX
+  (Japanese, pre-render only) → Piper → OS voice → text. The "TTS → Whisper ≥ 80%" and "every ja/ko/ar/zh passage
+  pre-rendered" criteria are met with these engines where they cover a language, and logged as gaps where they don't.
+- Reversible: if the owner decides the tokenizer is acceptable (or Resemble ships a model without it), the
+  `--engine chatterbox` path can be added later; nothing in the voice manifest format depends on this choice.
+- **Owner decision (2026-10-04), superseding the above:** "Use chatterbox. It's the only option that keeps natural
+  sounding voices." Chatterbox Multilingual is adopted as a named exception to rule 13. Conditions kept so the
+  exception stays narrow and visible:
+  - only this model (`chatterbox-multilingual`), listed in `OWNER_EXCEPTIONS` in `tools/gates/check_provenance.py`;
+    its manifest entry must carry `"ownerException": "D-041"` and `provenance.prcComponent` naming the CosyVoice2
+    speech tokenizer (Alibaba / FunAudioLLM), or the gate fails;
+  - `docs/MODELS.md`, `docs/LICENSES.md` and the voice picker state the component's origin;
+  - every other rule-13 check (LLM tiers, STT, other TTS, drafting defaults) is unchanged; no other CosyVoice-family
+    model is allowed by this decision.

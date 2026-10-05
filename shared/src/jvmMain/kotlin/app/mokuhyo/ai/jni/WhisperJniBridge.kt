@@ -61,11 +61,14 @@ class WhisperJniBridge(
         return if (h == 0L) "Couldn't load the speech model at $modelPath" else null
     }
 
-    override fun transcribe(samples: FloatArray, language: String, onDone: (String?, String?) -> Unit) {
+    override fun transcribe(samples: FloatArray, language: String, onDone: (String?, String?) -> Unit) =
+        transcribe(samples, language, "", onDone)
+
+    override fun transcribe(samples: FloatArray, language: String, prompt: String, onDone: (String?, String?) -> Unit) {
         val id = lastIssued.incrementAndGet()
         worker.execute {
             val (json, error) = try {
-                transcribeNow(id, samples, language)
+                transcribeNow(id, samples, language, prompt)
             } catch (e: Throwable) {
                 if (isCancelled(id)) null to LocalLlmBridge.CANCELLED
                 else null to "Transcription failed: ${e.message ?: e.javaClass.simpleName}"
@@ -76,14 +79,25 @@ class WhisperJniBridge(
 
     private fun isCancelled(id: Long) = cancelledThrough.get() >= id
 
-    private fun transcribeNow(id: Long, samples: FloatArray, language: String): Pair<String?, String?> {
+    /** False once the loaded native library turned out to predate [WhisperNative.nativeTranscribePrompt]. */
+    @Volatile private var promptSupported = true
+
+    private fun transcribeNow(id: Long, samples: FloatArray, language: String, prompt: String = ""): Pair<String?, String?> {
         if (isCancelled(id)) return null to LocalLlmBridge.CANCELLED
         val h = handle
         if (h == 0L) return null to "No speech model loaded"
         val lang = whisperLanguage(language)
         if (!WhisperNative.nativeIsLanguage(lang)) return null to "Whisper doesn't support language '$language'"
         if (samples.isEmpty()) return "[]" to null
-        val n = WhisperNative.nativeTranscribe(h, samples, lang, threads ?: NativeLibrary.recommendedThreads(), cancelToken, id)
+        val nThreads = threads ?: NativeLibrary.recommendedThreads()
+        val n = if (prompt.isNotBlank() && promptSupported) {
+            try {
+                WhisperNative.nativeTranscribePrompt(h, samples, lang, prompt.take(800), nThreads, cancelToken, id)
+            } catch (e: UnsatisfiedLinkError) {
+                promptSupported = false // an older native build: transcribe without the prompt
+                WhisperNative.nativeTranscribe(h, samples, lang, nThreads, cancelToken, id)
+            }
+        } else WhisperNative.nativeTranscribe(h, samples, lang, nThreads, cancelToken, id)
         if (n == WhisperNative.CANCELLED || isCancelled(id)) return null to LocalLlmBridge.CANCELLED
         if (n < 0) return null to "Transcription failed ($n)"
         val segments = buildJsonArray {

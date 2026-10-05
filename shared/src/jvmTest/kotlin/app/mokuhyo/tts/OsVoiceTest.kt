@@ -72,4 +72,49 @@ class OsVoiceTest {
         println("os ${ja.name}: ${"%.2f".format(info.durationSeconds)} s")
         assertTrue(info.durationSeconds in 0.8..10.0)
     }
+
+    /** BRIEF_PHASE8 N-00(a): scripts go to PowerShell as -EncodedCommand, so quotes, spaces and Japanese survive. */
+    @Test
+    fun powershellScriptsAreEncodedNotQuoted() {
+        val script = OsVoice.sapiSpeakScript("Microsoft Haruka Desktop", 1.0, "C:\\Users\\Taro Yamada\\in put.txt", "C:\\Temp\\O'Brien\\音声.wav")
+        val cmd = OsVoice.powershell(script)
+        assertEquals("-EncodedCommand", cmd[cmd.size - 2])
+        assertTrue(cmd.none { '"' in it || ' ' in it }, "no argument carries quotes or spaces for the launcher to mangle: $cmd")
+        val decoded = String(java.util.Base64.getDecoder().decode(cmd.last()), Charsets.UTF_16LE)
+        assertEquals(script, decoded)
+        assertTrue("'C:\\Temp\\O''Brien\\音声.wav'" in decoded, "single quotes doubled, Japanese intact")
+        assertTrue("SelectVoice('Microsoft Haruka Desktop')" in decoded)
+        val winrt = OsVoice.winrtSpeakScript("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech_OneCore\\Voices\\Tokens\\MSTTS_V110_jaJP_HarukaM", 1.25, "in.txt", "out.wav")
+        assertTrue("SpeakingRate = 1.25" in winrt && "MSTTS_V110_jaJP_HarukaM'" in winrt)
+        assertEquals(winrt, String(java.util.Base64.getDecoder().decode(OsVoice.encode(winrt)), Charsets.UTF_16LE))
+    }
+
+    /** SAPI and WinRT listings merge: OneCore-only voices appear, duplicates keep SAPI, online voices are dropped. */
+    @Test
+    fun windowsListingMergesSapiAndWinRt() {
+        val out = """
+            sapi|Microsoft Zira Desktop|en-US|Female
+            sapi|Microsoft Haruka Desktop|ja-JP|Female
+            winrt|Microsoft Haruka|ja-JP|Female|TOKEN_HARUKA
+            winrt|Microsoft Ayumi|ja-JP|Female|TOKEN_AYUMI
+            winrt|Microsoft Ichiro|ja-JP|Male|TOKEN_ICHIRO
+            winrt|Microsoft Nanami Online (Natural) - Japanese (Japan)|ja-JP|Female|TOKEN_ONLINE
+            Microsoft David Desktop|en-US|Male
+        """.trimIndent()
+        val vs = OsVoice.parseWindowsVoices(out)
+        assertEquals(listOf("Microsoft Zira Desktop", "Microsoft Haruka Desktop", "Microsoft David Desktop", "Microsoft Ayumi", "Microsoft Ichiro"), vs.map { it.name })
+        assertEquals("sapi", vs.first { it.name.startsWith("Microsoft Haruka") }.api)
+        assertEquals("TOKEN_AYUMI", vs.first { it.name == "Microsoft Ayumi" }.id)
+        assertEquals(listOf("Microsoft Ayumi", "Microsoft Haruka Desktop", "Microsoft Ichiro"), OsVoice.voicesFor("ja", vs).map { it.name })
+    }
+
+    /** macOS: a compact-only language gets the System Settings hint; an Enhanced voice silences it. */
+    @Test
+    fun compactOnlyHintOnMac() {
+        if (Os.current != Os.MACOS) return
+        val compact = listOf(OsVoice.Info("Kyoko", "ja_JP", "female"))
+        assertTrue(OsVoice.compactOnlyHint("ja", compact)!!.contains("Spoken Content"))
+        assertNull(OsVoice.compactOnlyHint("ja", compact + OsVoice.Info("Kyoko (Enhanced)", "ja_JP", "female")))
+        assertNull(OsVoice.compactOnlyHint("ko", compact))
+    }
 }

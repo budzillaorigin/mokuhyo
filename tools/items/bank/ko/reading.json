@@ -81,6 +81,168 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-0p-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Senior Citizen's Visit to Community Center",
+   "body": "방문자 배지 / 출입 요청서\n이름: 김미자\n생년월일: 1950년 1월 15일\n방문 목적: 노인복지센터 방문\n방문 장소: 한빛마을 복지센터\n입장 시간: 오전 10:00\n퇴장 시간: 오후 2:00\n동행 인원: 1명 (자녀)\n※ 이 배지는 출입 시 반드시 착용하시기 바랍니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "방문자 배지 / 출입 요청서",
+    "fields": [
+     {
+      "label": "이름",
+      "value": "김미자"
+     },
+     {
+      "label": "생년월일",
+      "value": "1950년 1월 15일"
+     },
+     {
+      "label": "방문 목적",
+      "value": "노인복지센터 방문"
+     },
+     {
+      "label": "방문 장소",
+      "value": "한빛마을 복지센터"
+     },
+     {
+      "label": "입장 시간",
+      "value": "오전 10:00"
+     },
+     {
+      "label": "퇴장 시간",
+      "value": "오후 2:00"
+     },
+     {
+      "label": "동행 인원",
+      "value": "1명 (자녀)"
+     }
+    ],
+    "footer": "※ 이 배지는 출입 시 반드시 착용하시기 바랍니다."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Drone Sighting at Air Base Perimeter",
+   "body": "방문자 배지 / 출입 요청서\n이름: 김민수\n소속: 한국항공우주연구원\n출입 시간: 2023-11-15 08:30\n출입 목적: 드론 감시\n관심 지역: 공군기지 경계\n자세한 설명: 경계 근방에서 드론 확인. 추적 필요.\n전화번호: 010-1234-5678\n차량 번호: 12가 3456\n출입 허가: (사인) _______________",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "방문자 배지 / 출입 요청서",
+    "fields": [
+     {
+      "label": "이름",
+      "value": "김민수"
+     },
+     {
+      "label": "소속",
+      "value": "한국항공우주연구원"
+     },
+     {
+      "label": "출입 시간",
+      "value": "2023-11-15 08:30"
+     },
+     {
+      "label": "출입 목적",
+      "value": "드론 감시"
+     },
+     {
+      "label": "관심 지역",
+      "value": "공군기지 경계"
+     },
+     {
+      "label": "자세한 설명",
+      "value": "경계 근방에서 드론 확인. 추적 필요."
+     },
+     {
+      "label": "전화번호",
+      "value": "010-1234-5678"
+     },
+     {
+      "label": "차량 번호",
+      "value": "12가 3456"
+     }
+    ],
+    "footer": "출입 허가: (사인) _______________"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "badge_form",
+   "title": "Access Request for Base Defense Exercise",
+   "body": "입장 허가 신청서\n이름: 김민수\n소속: 국방부\n신분증 번호: KD-001234\n방문 목적: 방위 훈련 참여\n방문 날짜: 2023년 10월 15일\n입장 시간: 08:00\n퇴장 시간: 17:00\n방문 장소: 청암 기지\n연락처: 010-1234-5678\n※ 이 카드는 10월 15일까지 유효합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "입장 허가 신청서",
+    "fields": [
+     {
+      "label": "이름",
+      "value": "김민수"
+     },
+     {
+      "label": "소속",
+      "value": "국방부"
+     },
+     {
+      "label": "신분증 번호",
+      "value": "KD-001234"
+     },
+     {
+      "label": "방문 목적",
+      "value": "방위 훈련 참여"
+     },
+     {
+      "label": "방문 날짜",
+      "value": "2023년 10월 15일"
+     },
+     {
+      "label": "입장 시간",
+      "value": "08:00"
+     },
+     {
+      "label": "퇴장 시간",
+      "value": "17:00"
+     },
+     {
+      "label": "방문 장소",
+      "value": "청암 기지"
+     },
+     {
+      "label": "연락처",
+      "value": "010-1234-5678"
+     }
+    ],
+    "footer": "※ 이 카드는 10월 15일까지 유효합니다."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-0p-form-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -156,6 +318,160 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-0p-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Renewable Energy Investment Schedule in Busan",
+   "body": "부산 신재생 에너지 투자 일정\n날짜 | 장소 | 시간 | 세션\n2023-11-01 | 부산 시청 | 09:00-10:00 | 개회식\n2023-11-02 | 해운대 구청 | 11:00-12:30 | 태양광 투자 세션\n2023-11-03 | 기장 군청 | 14:00-15:30 | 풍력 에너지 세션\n2023-11-04 | 서면 상가 | 16:00-17:30 | 수소 에너지 세션",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "부산 신재생 에너지 투자 일정",
+    "columns": [
+     "날짜",
+     "장소",
+     "시간",
+     "세션"
+    ],
+    "rows": [
+     [
+      "2023-11-01",
+      "부산 시청",
+      "09:00-10:00",
+      "개회식"
+     ],
+     [
+      "2023-11-02",
+      "해운대 구청",
+      "11:00-12:30",
+      "태양광 투자 세션"
+     ],
+     [
+      "2023-11-03",
+      "기장 군청",
+      "14:00-15:30",
+      "풍력 에너지 세션"
+     ],
+     [
+      "2023-11-04",
+      "서면 상가",
+      "16:00-17:30",
+      "수소 에너지 세션"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "Flood Warning Schedule for Pine Valley",
+   "body": "피네 밸리 홍수 경보 일정\n시간 | 경보 수준 | 장소\n08:00 | 주의보 | 피네 강\n10:30 | 경보 | 산들마을\n13:45 | 주의보 | 피네 강\n16:15 | 경보 해제 | 전체 지역",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "피네 밸리 홍수 경보 일정",
+    "columns": [
+     "시간",
+     "경보 수준",
+     "장소"
+    ],
+    "rows": [
+     [
+      "08:00",
+      "주의보",
+      "피네 강"
+     ],
+     [
+      "10:30",
+      "경보",
+      "산들마을"
+     ],
+     [
+      "13:45",
+      "주의보",
+      "피네 강"
+     ],
+     [
+      "16:15",
+      "경보 해제",
+      "전체 지역"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "schedule_board",
+   "title": "New Metro Line Schedule",
+   "body": "새로운 지하철 노선 시간표\n노선 | 역 | 운행 시간 | 마지막 열차\n1호선 | 서울역 | 05:30-23:30 | 23:30\n1호선 | 대전역 | 05:45-23:45 | 23:45\n1호선 | 부산역 | 06:00-24:00 | 24:00\n2호선 | 강남역 | 05:15-23:15 | 23:15\n2호선 | 인천역 | 05:30-23:30 | 23:30",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "새로운 지하철 노선 시간표",
+    "columns": [
+     "노선",
+     "역",
+     "운행 시간",
+     "마지막 열차"
+    ],
+    "rows": [
+     [
+      "1호선",
+      "서울역",
+      "05:30-23:30",
+      "23:30"
+     ],
+     [
+      "1호선",
+      "대전역",
+      "05:45-23:45",
+      "23:45"
+     ],
+     [
+      "1호선",
+      "부산역",
+      "06:00-24:00",
+      "24:00"
+     ],
+     [
+      "2호선",
+      "강남역",
+      "05:15-23:15",
+      "23:15"
+     ],
+     [
+      "2호선",
+      "인천역",
+      "05:30-23:30",
+      "23:30"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-0p-sign-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -186,6 +502,87 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-0p-signage-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Solar Panel Installation Notice",
+   "body": "태양광 패널 설치 중\n2023년 3월 1일부터\n6월 30일까지\n안전 지역: B-12 구역\n접근 금지\n대한민국 공군 기지",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "태양광 패널 설치 중",
+     "2023년 3월 1일부터",
+     "6월 30일까지",
+     "안전 지역: B-12 구역",
+     "접근 금지",
+     "대한민국 공군 기지"
+    ],
+    "kind": "prohibition"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-signage-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Shuttle Bus Route Change Notice",
+   "body": "경계 내 버스 노선 변경\n2023년 10월 1일부터\n새로운 셔틀버스 경로:\n기숙사 → 관리실 → 식당\n운행 시간: 07:00, 12:00, 18:00\n문의: 김 대위, 010-1234-5678",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "경계 내 버스 노선 변경",
+     "2023년 10월 1일부터",
+     "새로운 셔틀버스 경로:",
+     "기숙사 → 관리실 → 식당",
+     "운행 시간: 07:00, 12:00, 18:00",
+     "문의: 김 대위, 010-1234-5678"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-0p-signage-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "0+",
+   "textType": "signage",
+   "title": "Security Awareness Training Notice",
+   "body": "주의: 적대적 의도를 인식하는 훈련\n2023년 10월 1일 (월) - 10월 7일 (일)\n9:00 AM - 4:00 PM\n장소: 안보 훈련장 (S-12)\n참여자: 특수부대 대원들\n안전 장비 필수적으로 착용하세요",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "주의: 적대적 의도를 인식하는 훈련",
+     "2023년 10월 1일 (월) - 10월 7일 (일)",
+     "9:00 AM - 4:00 PM",
+     "장소: 안보 훈련장 (S-12)",
+     "참여자: 특수부대 대원들",
+     "안전 장비 필수적으로 착용하세요"
+    ],
+    "kind": "mandatory"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-1-advertisement-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -213,6 +610,308 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-badge_form-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Bus Route Change Notice",
+   "body": "방문자 배지 / 출입 요청서\n성함:: 김민수\n소속:: 대구버스공사\n방문 목적:: 시내버스 노선 변경 안내\n방문일시:: 2023년 11월 15일 14:00\n안내사항:: 시내버스 5호선이 11월 20일부터 신천대교를 경유하게 됩니다. 자세한 내용은 부착된 공지문을 참고하시기 바랍니다.\n연락처:: 010-1234-5678\n※ 본 배지는 출입 시 반드시 착용하셔야 합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "방문자 배지 / 출입 요청서",
+    "fields": [
+     {
+      "label": "성함:",
+      "value": "김민수"
+     },
+     {
+      "label": "소속:",
+      "value": "대구버스공사"
+     },
+     {
+      "label": "방문 목적:",
+      "value": "시내버스 노선 변경 안내"
+     },
+     {
+      "label": "방문일시:",
+      "value": "2023년 11월 15일 14:00"
+     },
+     {
+      "label": "안내사항:",
+      "value": "시내버스 5호선이 11월 20일부터 신천대교를 경유하게 됩니다. 자세한 내용은 부착된 공지문을 참고하시기 바랍니다."
+     },
+     {
+      "label": "연락처:",
+      "value": "010-1234-5678"
+     }
+    ],
+    "footer": "※ 본 배지는 출입 시 반드시 착용하셔야 합니다."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-badge_form-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Allied Military Exercise Access Request",
+   "body": "연합 군사 훈련 접근 요청서\n이름: 김민수\n국적: 한국\n출생년월일: 1985년 3월 15일\n기관/부대: 국방부\n훈련명: 한미 연합 군사 훈련\n훈련장소: 평택 기지\n훈련기간: 2023년 5월 1일 ~ 2023년 5월 15일\n접근목적: 훈련 지원\n접근시간: 08:00 ~ 17:00\n연락처: 010-1234-5678\n이 요청서는 2023년 4월 25일 평택 기지 경비실에 제출되었습니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "badge_form",
+   "formatData": {
+    "title": "연합 군사 훈련 접근 요청서",
+    "fields": [
+     {
+      "label": "이름",
+      "value": "김민수"
+     },
+     {
+      "label": "국적",
+      "value": "한국"
+     },
+     {
+      "label": "출생년월일",
+      "value": "1985년 3월 15일"
+     },
+     {
+      "label": "기관/부대",
+      "value": "국방부"
+     },
+     {
+      "label": "훈련명",
+      "value": "한미 연합 군사 훈련"
+     },
+     {
+      "label": "훈련장소",
+      "value": "평택 기지"
+     },
+     {
+      "label": "훈련기간",
+      "value": "2023년 5월 1일 ~ 2023년 5월 15일"
+     },
+     {
+      "label": "접근목적",
+      "value": "훈련 지원"
+     },
+     {
+      "label": "접근시간",
+      "value": "08:00 ~ 17:00"
+     },
+     {
+      "label": "연락처",
+      "value": "010-1234-5678"
+     }
+    ],
+    "footer": "이 요청서는 2023년 4월 25일 평택 기지 경비실에 제출되었습니다."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-badge_form-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "badge_form",
+   "title": "Renewable Energy Investor's Base Visit",
+   "body": "방문자 배지 / 출입 요청서\n이름: 김민수\n회사: 청정에너지 투자 유한회사\n방문 목적: 신재생 에너지 투자 검토\n방문 날짜: 2023년 11월 15일\n방문 시간: 오후 2시 - 오후 5시\n방문 장소: 신재생 에너지 연구소\n연락처: 010-1234-5678\n동행자: 이수진 (회사 대표)\n차량 번호: 12가 3456\n안전 조치: 안전 규정 준수 확인\n이 배지는 출입 시 반드시 착용하셔야 합니다. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "badge_form",
+   "formatData": {
+    "title": "방문자 배지 / 출입 요청서",
+    "fields": [
+     {
+      "label": "이름",
+      "value": "김민수"
+     },
+     {
+      "label": "회사",
+      "value": "청정에너지 투자 유한회사"
+     },
+     {
+      "label": "방문 목적",
+      "value": "신재생 에너지 투자 검토"
+     },
+     {
+      "label": "방문 날짜",
+      "value": "2023년 11월 15일"
+     },
+     {
+      "label": "방문 시간",
+      "value": "오후 2시 - 오후 5시"
+     },
+     {
+      "label": "방문 장소",
+      "value": "신재생 에너지 연구소"
+     },
+     {
+      "label": "연락처",
+      "value": "010-1234-5678"
+     },
+     {
+      "label": "동행자",
+      "value": "이수진 (회사 대표)"
+     },
+     {
+      "label": "차량 번호",
+      "value": "12가 3456"
+     },
+     {
+      "label": "안전 조치",
+      "value": "안전 규정 준수 확인"
+     }
+    ],
+    "footer": "이 배지는 출입 시 반드시 착용하셔야 합니다. 감사합니다."
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-chat-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "chat",
+   "title": "Lessons from Counter-Drone Exercise",
+   "body": "강민수: 안녕하세요, 김대위님. 반드론 연습이 끝났어요. 몇 가지 배운 점이 있어요.\n나: 네, 강상사님. 어떤 점이요?\n강민수: 첫째, 드론이 낮은 고도에서 날아올 때 감지하기 어려웠어요. 둘째, 팀원들 간의 소통이 더 필요해요. 셋째, 훈련 후 장비 점검을 꼼꼼히 해야 합니다.\n나: 알겠어요. 다음 연습 때 참고할게요. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "반드론 연습 후기",
+    "messages": [
+     {
+      "from": "강민수",
+      "text": "안녕하세요, 김대위님. 반드론 연습이 끝났어요. 몇 가지 배운 점이 있어요.",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "나",
+      "text": "네, 강상사님. 어떤 점이요?",
+      "time": "10:02 AM",
+      "me": true
+     },
+     {
+      "from": "강민수",
+      "text": "첫째, 드론이 낮은 고도에서 날아올 때 감지하기 어려웠어요. 둘째, 팀원들 간의 소통이 더 필요해요. 셋째, 훈련 후 장비 점검을 꼼꼼히 해야 합니다.",
+      "time": "10:05 AM",
+      "me": false
+     },
+     {
+      "from": "나",
+      "text": "알겠어요. 다음 연습 때 참고할게요. 감사합니다.",
+      "time": "10:07 AM",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-chat-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "chat",
+   "title": "Drone Control Link Interference",
+   "body": "김 대위: 안녕하세요, 이중위님. 드론 연습 중 제어 링크가 갑작스럽게 방해받았습니다. 위치: 37.4567, 126.8901. 현재 상태 확인 중입니다.\n이 중위: 알겠습니다, 김 대위님. 어떤 문제가 발생했나요? 우리 팀이 즉시 확인하겠습니다.\n김 대위: 제어 신호가 불안정합니다. 드론이 응답하지 않습니다. 현재 위치에서 대기 중입니다.\n이 중위: 알겠습니다. 지원 팀을 보내드리겠습니다. 안전하게 대기해 주세요.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "",
+    "messages": [
+     {
+      "from": "김 대위",
+      "text": "안녕하세요, 이중위님. 드론 연습 중 제어 링크가 갑작스럽게 방해받았습니다. 위치: 37.4567, 126.8901. 현재 상태 확인 중입니다.",
+      "time": "오전 10:30",
+      "me": false
+     },
+     {
+      "from": "이 중위",
+      "text": "알겠습니다, 김 대위님. 어떤 문제가 발생했나요? 우리 팀이 즉시 확인하겠습니다.",
+      "time": "오전 10:32",
+      "me": true
+     },
+     {
+      "from": "김 대위",
+      "text": "제어 신호가 불안정합니다. 드론이 응답하지 않습니다. 현재 위치에서 대기 중입니다.",
+      "time": "오전 10:35",
+      "me": false
+     },
+     {
+      "from": "이 중위",
+      "text": "알겠습니다. 지원 팀을 보내드리겠습니다. 안전하게 대기해 주세요.",
+      "time": "오전 10:37",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-chat-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "chat",
+   "title": "New Drone Rules Near Osan Air Base",
+   "body": "지역 연락처: 안녕하세요, 오산 근처에 계신 분들. 새로운 드론 규칙이 있습니다. 공군 기지에 너무 가까이에 드론을 날릴 수 없습니다. 5km 안에서는 날릴 수 없습니다. 규칙을 잊지 마세요. 감사합니다.\n기지 직원: 네, 알겠습니다. 드론을 날리실 때 주의하세요. 기지 근처에서 드론을 날리면 큰 문제일 수 있습니다. 감사합니다.\n지역 연락처: 네, 맞습니다. 규칙을 지켜주세요. 드론을 날리기 전에 기지 지도와 거리 체크해 주세요.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "새로운 드론 규칙",
+    "messages": [
+     {
+      "from": "지역 연락처",
+      "text": "안녕하세요, 오산 근처에 계신 분들. 새로운 드론 규칙이 있습니다. 공군 기지에 너무 가까이에 드론을 날릴 수 없습니다. 5km 안에서는 날릴 수 없습니다. 규칙을 잊지 마세요. 감사합니다.",
+      "time": "10:00 AM",
+      "me": false
+     },
+     {
+      "from": "기지 직원",
+      "text": "네, 알겠습니다. 드론을 날리실 때 주의하세요. 기지 근처에서 드론을 날리면 큰 문제일 수 있습니다. 감사합니다.",
+      "time": "10:05 AM",
+      "me": true
+     },
+     {
+      "from": "지역 연락처",
+      "text": "네, 맞습니다. 규칙을 지켜주세요. 드론을 날리기 전에 기지 지도와 거리 체크해 주세요.",
+      "time": "10:10 AM",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -386,6 +1085,196 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-1-schedule_board-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Post-Attack Reconnaissance Schedule",
+   "body": "로켓 경보 후 정찰 일정\n날짜 | 조 | 시작 시간 | 종료 시간 | 지역\n2023년 11월 15일 | A조 | 10:00 | 12:00 | 강남구\n2023년 11월 15일 | B조 | 13:00 | 15:00 | 강동구\n2023년 11월 16일 | A조 | 10:00 | 12:00 | 송파구\n2023년 11월 16일 | B조 | 13:00 | 15:00 | 강북구\n2023년 11월 17일 | A조 | 10:00 | 12:00 | 서초구",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "로켓 경보 후 정찰 일정",
+    "columns": [
+     "날짜",
+     "조",
+     "시작 시간",
+     "종료 시간",
+     "지역"
+    ],
+    "rows": [
+     [
+      "2023년 11월 15일",
+      "A조",
+      "10:00",
+      "12:00",
+      "강남구"
+     ],
+     [
+      "2023년 11월 15일",
+      "B조",
+      "13:00",
+      "15:00",
+      "강동구"
+     ],
+     [
+      "2023년 11월 16일",
+      "A조",
+      "10:00",
+      "12:00",
+      "송파구"
+     ],
+     [
+      "2023년 11월 16일",
+      "B조",
+      "13:00",
+      "15:00",
+      "강북구"
+     ],
+     [
+      "2023년 11월 17일",
+      "A조",
+      "10:00",
+      "12:00",
+      "서초구"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-schedule_board-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Harbor Drone Monitoring Schedule",
+   "body": "부산항 드론 감시 일정\n날짜 | 시작 시간 | 종료 시간 | 담당자 | 비고\n2023년 10월 1일 | 07:00 | 09:00 | 김민수 | 부산항 북쪽\n2023년 10월 1일 | 14:00 | 16:00 | 이지은 | 부산항 남쪽\n2023년 10월 2일 | 08:00 | 10:00 | 박정훈 | 부산항 중앙\n2023년 10월 2일 | 15:00 | 17:00 | 최유리 | 부산항 북쪽\n2023년 10월 3일 | 09:00 | 11:00 | 정다혜 | 부산항 남쪽\n2023년 10월 3일 | 16:00 | 18:00 | 강민호 | 부산항 중앙",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "부산항 드론 감시 일정",
+    "columns": [
+     "날짜",
+     "시작 시간",
+     "종료 시간",
+     "담당자",
+     "비고"
+    ],
+    "rows": [
+     [
+      "2023년 10월 1일",
+      "07:00",
+      "09:00",
+      "김민수",
+      "부산항 북쪽"
+     ],
+     [
+      "2023년 10월 1일",
+      "14:00",
+      "16:00",
+      "이지은",
+      "부산항 남쪽"
+     ],
+     [
+      "2023년 10월 2일",
+      "08:00",
+      "10:00",
+      "박정훈",
+      "부산항 중앙"
+     ],
+     [
+      "2023년 10월 2일",
+      "15:00",
+      "17:00",
+      "최유리",
+      "부산항 북쪽"
+     ],
+     [
+      "2023년 10월 3일",
+      "09:00",
+      "11:00",
+      "정다혜",
+      "부산항 남쪽"
+     ],
+     [
+      "2023년 10월 3일",
+      "16:00",
+      "18:00",
+      "강민호",
+      "부산항 중앙"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-schedule_board-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "schedule_board",
+   "title": "Wind Farm Construction Schedule in Gwangyang",
+   "body": "광양시 풍력발전소 건설 일정\n날짜 | 작업 | 시간 | 담당자\n2023년 10월 1일 | 기초 공사 시작 | 08:00 - 17:00 | 김철수 팀장\n2023년 10월 15일 | 터빈 설치 준비 | 09:00 - 16:00 | 이영희 대리\n2023년 10월 20일 | 터빈 설치 | 07:00 - 18:00 | 박민수 과장\n2023년 10월 25일 | 전기 시스템 연결 | 08:00 - 17:00 | 최수진 팀장\n2023년 10월 30일 | 시운전 | 09:00 - 15:00 | 정태호 차장",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "schedule_board",
+   "formatData": {
+    "title": "광양시 풍력발전소 건설 일정",
+    "columns": [
+     "날짜",
+     "작업",
+     "시간",
+     "담당자"
+    ],
+    "rows": [
+     [
+      "2023년 10월 1일",
+      "기초 공사 시작",
+      "08:00 - 17:00",
+      "김철수 팀장"
+     ],
+     [
+      "2023년 10월 15일",
+      "터빈 설치 준비",
+      "09:00 - 16:00",
+      "이영희 대리"
+     ],
+     [
+      "2023년 10월 20일",
+      "터빈 설치",
+      "07:00 - 18:00",
+      "박민수 과장"
+     ],
+     [
+      "2023년 10월 25일",
+      "전기 시스템 연결",
+      "08:00 - 17:00",
+      "최수진 팀장"
+     ],
+     [
+      "2023년 10월 30일",
+      "시운전",
+      "09:00 - 15:00",
+      "정태호 차장"
+     ]
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-1-short_message-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -462,6 +1351,87 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-1-signage-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "signage",
+   "title": "New Metro Line Announcement",
+   "body": "경남공군기지\n새로운 지하철 노선 개통 안내\n\n2023년 10월 1일부터\n경남공군기지 인근에 새로운 지하철 노선 2호선이 개통됩니다.\n기존의 셔틀버스 서비스는 더 이상 운영되지 않습니다. 지하철을 이용하시기 바랍니다. 지하철역은 기지 입구에서 5분 거리에 있습니다. 지하철 이용 시 편리함을 제공합니다. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "경남공군기지",
+     "새로운 지하철 노선 개통 안내",
+     "",
+     "2023년 10월 1일부터",
+     "경남공군기지 인근에 새로운 지하철 노선 2호선이 개통됩니다.",
+     "기존의 셔틀버스 서비스는 더 이상 운영되지 않습니다. 지하철을 이용하시기 바랍니다. 지하철역은 기지 입구에서 5분 거리에 있습니다. 지하철 이용 시 편리함을 제공합니다. 감사합니다."
+    ],
+    "kind": "info"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-signage-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "signage",
+   "title": "Drone Activity Notice",
+   "body": "주의: 소형 드론의 대형 군집이 항구 위에 발견되었습니다.\n기간: 2023년 5월 15일 ~ 2023년 5월 20일\n위치: 청송 해군 기지\n주의 사항:\n1. 해당 기간 동안 항구 주변에서 비행 금지\n2. 드론 활동 구역에 접근 금지 (위반 시 처벌 대상됨)",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "주의: 소형 드론의 대형 군집이 항구 위에 발견되었습니다.",
+     "기간: 2023년 5월 15일 ~ 2023년 5월 20일",
+     "위치: 청송 해군 기지",
+     "주의 사항:",
+     "1. 해당 기간 동안 항구 주변에서 비행 금지",
+     "2. 드론 활동 구역에 접근 금지 (위반 시 처벌 대상됨)"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1-signage-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1",
+   "textType": "signage",
+   "title": "Upcoming Base Defense Exercise Notice",
+   "body": "주의: 주한 미군 기지 방어 훈련\n날짜: 2023년 11월 15일 (수) 오전 9시 - 오후 4시\n장소: 캠프 험프리스 전체 지역\n참여자: 주한 미군 및 한국 군인\n훈련 내용: 기지 방어 시나리오 및 응급 상황 대응\n교통 제한: 훈련 기간 중 특정 도로 폐쇄 가능성 있음",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "signage",
+   "formatData": {
+    "lines": [
+     "주의: 주한 미군 기지 방어 훈련",
+     "날짜: 2023년 11월 15일 (수) 오전 9시 - 오후 4시",
+     "장소: 캠프 험프리스 전체 지역",
+     "참여자: 주한 미군 및 한국 군인",
+     "훈련 내용: 기지 방어 시나리오 및 응급 상황 대응",
+     "교통 제한: 훈련 기간 중 특정 도로 폐쇄 가능성 있음"
+    ],
+    "kind": "warning"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-1p-announcement-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -489,6 +1459,156 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-chat-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Unidentified Drone Spotted Near Base",
+   "body": "김대위: 안녕하세요, 김대위입니다. 지금 비행장 주변에서 이상한 드론 날아다니는 거 보셨나요? 저도 방금 보고 왔어요. 경비실에 연락드려야 할까요?\n박하사: 네, 김대위님. 저도 방금 그 드론 봤어요. 비행장 주변을 몇 바퀴 돌고 있었어요. 경비실에 연락하는 게 좋겠어요. 제가 연락드릴게요.\n김대위: 고마워요, 박하사. 드론이 비행장 안으로 들어오는 거 막아야 해요. 경비실에서 어떻게 하는지 확인해 주세요.\n박하사: 네, 김대위님. 경비실에서 이미 확인했고, 추가 조치를 취하고 있다고 합니다. 드론이 더 이상 비행장 안으로 들어오지 못하게 할 거예요. 감사합니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "제17비행단",
+    "messages": [
+     {
+      "from": "김대위",
+      "text": "안녕하세요, 김대위입니다. 지금 비행장 주변에서 이상한 드론 날아다니는 거 보셨나요? 저도 방금 보고 왔어요. 경비실에 연락드려야 할까요?",
+      "time": "오후 3:45 PM  2023-11-15 Wed",
+      "me": false
+     },
+     {
+      "from": "박하사",
+      "text": "네, 김대위님. 저도 방금 그 드론 봤어요. 비행장 주변을 몇 바퀴 돌고 있었어요. 경비실에 연락하는 게 좋겠어요. 제가 연락드릴게요.",
+      "time": "오후 3:47 PM  2023-11-15 Wed",
+      "me": true
+     },
+     {
+      "from": "김대위",
+      "text": "고마워요, 박하사. 드론이 비행장 안으로 들어오는 거 막아야 해요. 경비실에서 어떻게 하는지 확인해 주세요.",
+      "time": "오후 3:49 PM  2023-11-15 Wed",
+      "me": false
+     },
+     {
+      "from": "박하사",
+      "text": "네, 김대위님. 경비실에서 이미 확인했고, 추가 조치를 취하고 있다고 합니다. 드론이 더 이상 비행장 안으로 들어오지 못하게 할 거예요. 감사합니다.",
+      "time": "오후 3:52 PM  2023-11-15 Wed",
+      "me": true
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-chat-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Crossing the Border to Busan",
+   "body": "미나: 안녕하세요, 김 씨. 저는 미나입니다. 미국 공군 기지에서 일합니다. 다음 주에 부산에 가지요. 어떻게 건너기 좋은지 알려 주실 수 있나요?\n미나: 미국 여권 가지고요. 비자 필요하나요?\n김씨: 안녕하세요, 미나 씨. 미국 공군에게 도움이 되서 기쁩니다. 부산으로 가려면 인천 공항에서 비행기를 타세요. 미국 여권으로 90일까지 체류 가능합니다. 비자 필요 없음.\n김씨: 공항에서 세관 검사를 받으세요. 가방 열어 보여주세요. 금지품이 없으면 문제 없음.\n미나: 고맙습니다, 김 씨! 도움이 많이 되네요. 좋은 하루 보내세요!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "",
+    "messages": [
+     {
+      "from": "미나",
+      "text": "안녕하세요, 김 씨. 저는 미나입니다. 미국 공군 기지에서 일합니다. 다음 주에 부산에 가지요. 어떻게 건너기 좋은지 알려 주실 수 있나요?",
+      "time": "오후 2:30 PM",
+      "me": false
+     },
+     {
+      "from": "미나",
+      "text": "미국 여권 가지고요. 비자 필요하나요?",
+      "time": "오후 2:31 PM",
+      "me": false
+     },
+     {
+      "from": "김씨",
+      "text": "안녕하세요, 미나 씨. 미국 공군에게 도움이 되서 기쁩니다. 부산으로 가려면 인천 공항에서 비행기를 타세요. 미국 여권으로 90일까지 체류 가능합니다. 비자 필요 없음.",
+      "time": "오후 3:15 PM",
+      "me": true
+     },
+     {
+      "from": "김씨",
+      "text": "공항에서 세관 검사를 받으세요. 가방 열어 보여주세요. 금지품이 없으면 문제 없음.",
+      "time": "오후 3:16 PM",
+      "me": true
+     },
+     {
+      "from": "미나",
+      "text": "고맙습니다, 김 씨! 도움이 많이 되네요. 좋은 하루 보내세요!",
+      "time": "오후 3:20 PM",
+      "me": false
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-chat-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "chat",
+   "title": "Exciting News About the New Metro Line",
+   "body": "김민수: 안녕하세요, 박지현 씨. 새로운 지하철 7호선이 개통될 예정이에요. 5월 15일부터 운영을 시작합니다. 편리해질 거예요!\n박지현: 정말요? 어디에서 어디까지 연결되나요?\n김민수: 네, 청담역에서 신도림역까지 연결돼요. 총 28개 역이 있습니다. 특히, 강남과 영등포를 빠르게 연결할 수 있게 될 거예요.\n박지현: 아, 정말 편리하겠어요. 출퇴근 시간에 도움이 될 것 같아요. 감사합니다!\n김민수: 천만에요. 궁금한 점이 있으면 언제든지 물어보세요. 좋은 하루 보내세요!",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "chat",
+   "formatData": {
+    "app": "line",
+    "title": "새로운 지하철 노선 소식",
+    "messages": [
+     {
+      "from": "김민수",
+      "text": "안녕하세요, 박지현 씨. 새로운 지하철 7호선이 개통될 예정이에요. 5월 15일부터 운영을 시작합니다. 편리해질 거예요!",
+      "time": "오전 10:30",
+      "me": false
+     },
+     {
+      "from": "박지현",
+      "text": "정말요? 어디에서 어디까지 연결되나요?",
+      "time": "오전 10:32",
+      "me": true
+     },
+     {
+      "from": "김민수",
+      "text": "네, 청담역에서 신도림역까지 연결돼요. 총 28개 역이 있습니다. 특히, 강남과 영등포를 빠르게 연결할 수 있게 될 거예요.",
+      "time": "오전 10:35",
+      "me": false
+     },
+     {
+      "from": "박지현",
+      "text": "아, 정말 편리하겠어요. 출퇴근 시간에 도움이 될 것 같아요. 감사합니다!",
+      "time": "오전 10:37",
+      "me": true
+     },
+     {
+      "from": "김민수",
+      "text": "천만에요. 궁금한 점이 있으면 언제든지 물어보세요. 좋은 하루 보내세요!",
+      "time": "오전 10:39",
+      "me": false
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -597,6 +1717,92 @@
    "checkedBy": "gpt-oss:20b"
   },
   {
+   "id": "ko-dr-1p-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Insider Threat Awareness Training Announcement",
+   "body": "해피밸리 시청\n기지에 대한 내부 위협 인식 교육 안내\n안녕하세요, 해피밸리 주민 여러분! 기지 주변의 안전을 위해 내부 위협 인식 교육을 진행합니다.\n교육일시: 2023년 10월 15일 (일) 오전 10시부터 오후 1시까지\n교육장소: 해피밸리 문화센터 강의실 1호\n참여대상: 기지 주변에 거주하시는 모든 주민님들\n교육내용: 내부 위협의 종류, 신고 방법, 안전 대처법 등\n교육신청: 10월 10일까지 해피밸리 시청 홈페이지 또는 전화(031-123-4567)로 신청하시기 바랍니다.\n2023년 9월 25일\n해피밸리 시청 보안과",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "해피밸리 시청",
+    "title": "기지에 대한 내부 위협 인식 교육 안내",
+    "paragraphs": [
+     "안녕하세요, 해피밸리 주민 여러분! 기지 주변의 안전을 위해 내부 위협 인식 교육을 진행합니다.",
+     "교육일시: 2023년 10월 15일 (일) 오전 10시부터 오후 1시까지",
+     "교육장소: 해피밸리 문화센터 강의실 1호",
+     "참여대상: 기지 주변에 거주하시는 모든 주민님들",
+     "교육내용: 내부 위협의 종류, 신고 방법, 안전 대처법 등",
+     "교육신청: 10월 10일까지 해피밸리 시청 홈페이지 또는 전화(031-123-4567)로 신청하시기 바랍니다."
+    ],
+    "date": "2023년 9월 25일",
+    "contact": "해피밸리 시청 보안과"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Upcoming Defense Exercise Announcement",
+   "body": "안양시청\n방어 연습 예고\n안양시민 여러분, 안녕하세요. 5월 15일부터 5월 20일까지 안양시 내 미국 공군 기지에 방위 연습이 있을 예정이오니 미리 알려드립니다.\n이 연습은 미국 군대와 한국 군대가 함께하는 일종입니다. 연습 기간 동안 항공기 소음이 조금 더 클 수 있으니 양해 부탁드립니다.\n연습 기간 중 기지 주변 도로가 일시적으로 차단될 수 있으니, 주민 여러분들은 출퇴근 시에 시간을 더 많이 잡으시기 바랍니다.\n추가로, 연습 중에는 드론을 비행시키지 마십시오. 안전을 위해 드론 비행을 금합니다.\n더 자세한 정보는 안양시청 홈페이지 또는 전화로 문의하시기 바랍니다. 감사합니다.\n2023년 5월 1일\n전화: 031-123-4567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "안양시청",
+    "title": "방어 연습 예고",
+    "paragraphs": [
+     "안양시민 여러분, 안녕하세요. 5월 15일부터 5월 20일까지 안양시 내 미국 공군 기지에 방위 연습이 있을 예정이오니 미리 알려드립니다.",
+     "이 연습은 미국 군대와 한국 군대가 함께하는 일종입니다. 연습 기간 동안 항공기 소음이 조금 더 클 수 있으니 양해 부탁드립니다.",
+     "연습 기간 중 기지 주변 도로가 일시적으로 차단될 수 있으니, 주민 여러분들은 출퇴근 시에 시간을 더 많이 잡으시기 바랍니다.",
+     "추가로, 연습 중에는 드론을 비행시키지 마십시오. 안전을 위해 드론 비행을 금합니다.",
+     "더 자세한 정보는 안양시청 홈페이지 또는 전화로 문의하시기 바랍니다. 감사합니다."
+    ],
+    "date": "2023년 5월 1일",
+    "contact": "전화: 031-123-4567"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "municipal_notice",
+   "title": "Notice: Drone Sighted Near Pine Valley Air Base",
+   "body": "파인 밸리 타운홀\n주목: 공군 기지 주변 드론 발견\n안녕하세요, 파인 밸리 주민 여러분. 최근 파인 밸리 공군 기지 주변에서 드론이 발견되었습니다. 이 드론은 기지 주변을 몇 번 돌더니 사라졌습니다. 현재 기지 보안팀이 이 사건에 대해 조사 중입니다.\n주민 여러분께서는 만약 드론이나 수상한 활동을 보시면 즉시 파인 밸리 공군 기지 보안팀(031-123-4567) 또는 파인 밸리 경찰서(031-987-6543)로 연락 부탁드립니다. 여러분의 협력이 필요합니다.\n이번 주말 동안 기지 주변에서 추가적인 보안 점검이 있을 예정입니다. 불편을 드려 죄송하지만, 여러분의 안전을 위해 필요합니다. 감사합니다.\n2023년 5월 15일\n파인 밸리 타운홀 보안팀",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "파인 밸리 타운홀",
+    "title": "주목: 공군 기지 주변 드론 발견",
+    "paragraphs": [
+     "안녕하세요, 파인 밸리 주민 여러분. 최근 파인 밸리 공군 기지 주변에서 드론이 발견되었습니다. 이 드론은 기지 주변을 몇 번 돌더니 사라졌습니다. 현재 기지 보안팀이 이 사건에 대해 조사 중입니다.",
+     "주민 여러분께서는 만약 드론이나 수상한 활동을 보시면 즉시 파인 밸리 공군 기지 보안팀(031-123-4567) 또는 파인 밸리 경찰서(031-987-6543)로 연락 부탁드립니다. 여러분의 협력이 필요합니다.",
+     "이번 주말 동안 기지 주변에서 추가적인 보안 점검이 있을 예정입니다. 불편을 드려 죄송하지만, 여러분의 안전을 위해 필요합니다. 감사합니다."
+    ],
+    "date": "2023년 5월 15일",
+    "contact": "파인 밸리 타운홀 보안팀"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
    "id": "ko-dr-1p-news_brief-001",
    "exam": "DLPT_READING",
    "language": "ko",
@@ -639,6 +1845,167 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Training Session on Hostile Intent Recognition",
+   "body": "보안대대 2023년 10월 12일\n08:00 김대위: 오늘의 훈련 주제 - 적의적 의도 인식. 모든 대원은 주의를 기울일 것.\n09:15 이상병: 훈련 시작. 시나리오 1: 수상한 차량 접근. 대원들이 차량의 의도를 정확하게 판단함.\n10:30 박중사: 시나리오 2: 수상한 인물 관찰. 대원들이 인물의 행동 패턴을 분석하여 적의적 의도를 인식함.\n12:00 최하사: 점심 휴식.\n13:30 김대위: 오후 훈련 시작. 시나리오 3: 수상한 패키지 발견. 대원들이 패키지의 위험성을 평가하고 적절한 조치를 취함.\n15:00 이상병: 훈련 종결. 모든 대원이 적의적 의도를 효과적으로 인식하고 대응함을 확인.\n16:00 박중사: 오늘의 훈련 내용을 복습하고, 내일 추가 훈련을 준비할 것.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "보안대대",
+    "date": "2023년 10월 12일",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "김대위: 오늘의 훈련 주제 - 적의적 의도 인식. 모든 대원은 주의를 기울일 것.",
+      "initials": "김대위"
+     },
+     {
+      "time": "09:15",
+      "entry": "이상병: 훈련 시작. 시나리오 1: 수상한 차량 접근. 대원들이 차량의 의도를 정확하게 판단함.",
+      "initials": "이상병"
+     },
+     {
+      "time": "10:30",
+      "entry": "박중사: 시나리오 2: 수상한 인물 관찰. 대원들이 인물의 행동 패턴을 분석하여 적의적 의도를 인식함.",
+      "initials": "박중사"
+     },
+     {
+      "time": "12:00",
+      "entry": "최하사: 점심 휴식.",
+      "initials": "최하사"
+     },
+     {
+      "time": "13:30",
+      "entry": "김대위: 오후 훈련 시작. 시나리오 3: 수상한 패키지 발견. 대원들이 패키지의 위험성을 평가하고 적절한 조치를 취함.",
+      "initials": "김대위"
+     },
+     {
+      "time": "15:00",
+      "entry": "이상병: 훈련 종결. 모든 대원이 적의적 의도를 효과적으로 인식하고 대응함을 확인.",
+      "initials": "이상병"
+     },
+     {
+      "time": "16:00",
+      "entry": "박중사: 오늘의 훈련 내용을 복습하고, 내일 추가 훈련을 준비할 것.",
+      "initials": "박중사"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Unusual Drone Activity Near Air Base",
+   "body": "제12전투비행단 보안중대 2023년 10월 15일\n08:30 초소 3번에서 드론 1대 발견. 고도 약 50m, 기지 동쪽 끝 부분에서 남쪽으로 이동 중. JK 초병.\n08:32 드론 색상 검정, 크기 일반 소형 드론과 유사. 동쪽으로 이동 속도 느림. YS 초병.\n08:35 기지 내부 알림. 모든 초병 경계 강화. JK 초병.\n08:45 드론 기지 외부에서 사라짐. 방향 남서쪽으로 변경. YS 초병.\n09:00 상황 종료. 모든 초병 정상 근무 복구. JK 초병.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "제12전투비행단 보안중대",
+    "date": "2023년 10월 15일",
+    "entries": [
+     {
+      "time": "08:30",
+      "entry": "초소 3번에서 드론 1대 발견. 고도 약 50m, 기지 동쪽 끝 부분에서 남쪽으로 이동 중. JK 초병.",
+      "initials": "JK"
+     },
+     {
+      "time": "08:32",
+      "entry": "드론 색상 검정, 크기 일반 소형 드론과 유사. 동쪽으로 이동 속도 느림. YS 초병.",
+      "initials": "YS"
+     },
+     {
+      "time": "08:35",
+      "entry": "기지 내부 알림. 모든 초병 경계 강화. JK 초병.",
+      "initials": "JK"
+     },
+     {
+      "time": "08:45",
+      "entry": "드론 기지 외부에서 사라짐. 방향 남서쪽으로 변경. YS 초병.",
+      "initials": "YS"
+     },
+     {
+      "time": "09:00",
+      "entry": "상황 종료. 모든 초병 정상 근무 복구. JK 초병.",
+      "initials": "JK"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-1p-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "1+",
+   "textType": "shift_log",
+   "title": "Unusual Drone Activity at Busan Harbor",
+   "body": "부산항 보안초소 2023년 10월 15일\n08:00 초소장 김민호: 아침 점검 완료. 이상 없음.\n12:30 경비원 이지은: 부산항 상공에 소형 드론 무리 발견. 약 20대 정도. 이상 행동 없음.\n12:45 초소장 김민호: 드론 무리에 대한 추가 관찰 요청. 항구 관리국에 연락.\n13:15 경비원 박정훈: 드론들이 항구 안의 선박들 주변을 비행중. 아직 위협적인 행동은 없음.\n14:00 초소장 김민호: 항구 관리국에서 드론 조종사에 연락하여 확인중. 조속히 해결될 예정.\n15:30 경비원 이지은: 드론들이 점차 흩어지고 있음. 상황 정상화 중.\n16:00 초소장 김민호: 모든 드론이 사라짐. 추가 관찰 필요 없음.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "부산항 보안초소",
+    "date": "2023년 10월 15일",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "초소장 김민호: 아침 점검 완료. 이상 없음.",
+      "initials": "KMH"
+     },
+     {
+      "time": "12:30",
+      "entry": "경비원 이지은: 부산항 상공에 소형 드론 무리 발견. 약 20대 정도. 이상 행동 없음.",
+      "initials": "LEE"
+     },
+     {
+      "time": "12:45",
+      "entry": "초소장 김민호: 드론 무리에 대한 추가 관찰 요청. 항구 관리국에 연락.",
+      "initials": "KMH"
+     },
+     {
+      "time": "13:15",
+      "entry": "경비원 박정훈: 드론들이 항구 안의 선박들 주변을 비행중. 아직 위협적인 행동은 없음.",
+      "initials": "PBH"
+     },
+     {
+      "time": "14:00",
+      "entry": "초소장 김민호: 항구 관리국에서 드론 조종사에 연락하여 확인중. 조속히 해결될 예정.",
+      "initials": "KMH"
+     },
+     {
+      "time": "15:30",
+      "entry": "경비원 이지은: 드론들이 점차 흩어지고 있음. 상황 정상화 중.",
+      "initials": "LEE"
+     },
+     {
+      "time": "16:00",
+      "entry": "초소장 김민호: 모든 드론이 사라짐. 추가 관찰 필요 없음.",
+      "initials": "KMH"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -760,6 +2127,96 @@
    "verified": false,
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-01",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Community Vaccination Campaign Announcement",
+   "body": "피치타운 시장\n피치타운 주민 여러분께\n피치타운에서 코로나19 백신 접종 캠페인이 시작됩니다. 모든 주민의 안전을 위해 함께 참여해 주세요.\n접종 일정은 다음과 같습니다: 첫 번째 접종은 5월 15일 토요일, 두 번째 접종은 6월 5일 토요일입니다. 시간은 오전 9시부터 오후 4시까지입니다.\n접종 장소는 피치타운 건강센터입니다. 건강센터로 가기 전에, 주민등록증을 준비해 주세요.\n백신은 무료입니다. 모든 주민이 안전하게 접종할 수 있도록 준비했습니다.\n만약 접종 일정에 참여할 수 없으시다면, 피치타운 행정복지센터로 연락해 주세요. 다른 날짜로 예약을 조정해 드리겠습니다.\n더 자세한 정보는 피치타운 홈페이지 또는 행정복지센터에 문의하시기 바랍니다. 함께 안전하게 지내봅시다.\n2023년 5월 1일\n피치타운 행정복지센터: 031-123-4567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "피치타운 시장",
+    "title": "피치타운 주민 여러분께",
+    "paragraphs": [
+     "피치타운에서 코로나19 백신 접종 캠페인이 시작됩니다. 모든 주민의 안전을 위해 함께 참여해 주세요.",
+     "접종 일정은 다음과 같습니다: 첫 번째 접종은 5월 15일 토요일, 두 번째 접종은 6월 5일 토요일입니다. 시간은 오전 9시부터 오후 4시까지입니다.",
+     "접종 장소는 피치타운 건강센터입니다. 건강센터로 가기 전에, 주민등록증을 준비해 주세요.",
+     "백신은 무료입니다. 모든 주민이 안전하게 접종할 수 있도록 준비했습니다.",
+     "만약 접종 일정에 참여할 수 없으시다면, 피치타운 행정복지센터로 연락해 주세요. 다른 날짜로 예약을 조정해 드리겠습니다.",
+     "더 자세한 정보는 피치타운 홈페이지 또는 행정복지센터에 문의하시기 바랍니다. 함께 안전하게 지내봅시다."
+    ],
+    "date": "2023년 5월 1일",
+    "contact": "피치타운 행정복지센터: 031-123-4567"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Notice: Recent Changes in Food Prices in Pine Valley",
+   "body": "파인밸리 구청\n최근 파인밸리 음식 가격 변화에 대한 안내\n파인밸리 주민 여러분, 안녕하세요. 최근 우리 마을의 음식 가격이 변동되고 있어 관련 정보를 공유드리겠습니다.\n먼저, 지역 농산물 가격이 10~15% 상승했습니다. 특히, 감자, 양파, 그리고 당근의 가격이 눈에 띄게 올랐습니다. 이는 최근 기후 변화와 수확량 감소로 인한 영향입니다.\n반면, 수산물 가격은 비교적 안정적으로 유지되고 있습니다. 다만, 일부 해산물의 가격은 5~10% 증가했습니다.\n마지막으로, 식료품점과 슈퍼마켓에서 판매되는 가공식품의 가격도 약간 상승했습니다. 이는 원자재 비용 증가와 유통비용 상승으로 인한 것입니다.\n구청에서는 주민 여러분이 이러한 가격 변동에 대비할 수 있도록 다양한 지원을 준비하고 있습니다. 추가적인 정보가 필요하시면 파인밸리 구청 농수산과(031-123-4567)로 연락주시기 바랍니다.\n감사합니다.\n2023년 10월 15일\n파인밸리 구청 농수산과 : 031-123-4567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "파인밸리 구청",
+    "title": "최근 파인밸리 음식 가격 변화에 대한 안내",
+    "paragraphs": [
+     "파인밸리 주민 여러분, 안녕하세요. 최근 우리 마을의 음식 가격이 변동되고 있어 관련 정보를 공유드리겠습니다.",
+     "먼저, 지역 농산물 가격이 10~15% 상승했습니다. 특히, 감자, 양파, 그리고 당근의 가격이 눈에 띄게 올랐습니다. 이는 최근 기후 변화와 수확량 감소로 인한 영향입니다.",
+     "반면, 수산물 가격은 비교적 안정적으로 유지되고 있습니다. 다만, 일부 해산물의 가격은 5~10% 증가했습니다.",
+     "마지막으로, 식료품점과 슈퍼마켓에서 판매되는 가공식품의 가격도 약간 상승했습니다. 이는 원자재 비용 증가와 유통비용 상승으로 인한 것입니다.",
+     "구청에서는 주민 여러분이 이러한 가격 변동에 대비할 수 있도록 다양한 지원을 준비하고 있습니다. 추가적인 정보가 필요하시면 파인밸리 구청 농수산과(031-123-4567)로 연락주시기 바랍니다.",
+     "감사합니다."
+    ],
+    "date": "2023년 10월 15일",
+    "contact": "파인밸리 구청 농수산과 : 031-123-4567"
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "municipal_notice",
+   "title": "Notice: Upcoming Base Defense Exercise with Host-Nation Forces",
+   "body": "자유시청\n주변 주택가 방위 훈련 알림\n자유시청은 2023년 10월 15일 일요일부터 10월 20일 금요일까지 자유시 근무반과 한국군과의 공동 방위 훈련을 진행할 예정입니다.\n이 훈련은 자유시 근무반의 방어 능력을 향상시키기 위해 매년 실시되는 것으로, 이번 훈련은 특히 드론과 무인 시스템의 사용에 중점을 두고 있습니다.\n훈련 기간 동안 주변 지역에서는 헬리콥터와 차량의 이동이 증가할 수 있으며, 소음이 발생할 수 있습니다. 주민 여러분들의 이해와 협조를 부탁드립니다.\n훈련 중에는 일부 도로가 일시적으로 폐쇄될 수 있으므로, 이동 시 주의가 필요합니다. 자세한 내용은 자유시청 홈페이지에서 확인하실 수 있습니다.\n훈련에 대한 문의사항은 자유시청 방위과(031-123-4567)로 연락주시기 바랍니다.\n주민 여러분의 안전과 편의를 위해 최대한 노력하겠습니다. 감사합니다.\n2023년 10월 1일\n자유시청 방위과: 031-123-4567",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "municipal_notice",
+   "formatData": {
+    "issuer": "자유시청",
+    "title": "주변 주택가 방위 훈련 알림",
+    "paragraphs": [
+     "자유시청은 2023년 10월 15일 일요일부터 10월 20일 금요일까지 자유시 근무반과 한국군과의 공동 방위 훈련을 진행할 예정입니다.",
+     "이 훈련은 자유시 근무반의 방어 능력을 향상시키기 위해 매년 실시되는 것으로, 이번 훈련은 특히 드론과 무인 시스템의 사용에 중점을 두고 있습니다.",
+     "훈련 기간 동안 주변 지역에서는 헬리콥터와 차량의 이동이 증가할 수 있으며, 소음이 발생할 수 있습니다. 주민 여러분들의 이해와 협조를 부탁드립니다.",
+     "훈련 중에는 일부 도로가 일시적으로 폐쇄될 수 있으므로, 이동 시 주의가 필요합니다. 자세한 내용은 자유시청 홈페이지에서 확인하실 수 있습니다.",
+     "훈련에 대한 문의사항은 자유시청 방위과(031-123-4567)로 연락주시기 바랍니다.",
+     "주민 여러분의 안전과 편의를 위해 최대한 노력하겠습니다. 감사합니다."
+    ],
+    "date": "2023년 10월 1일",
+    "contact": "자유시청 방위과: 031-123-4567"
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -915,6 +2372,177 @@
    "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
    "drafted": "2026-10-04",
    "track": "cuas-base-defense",
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-shift_log-001",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Security Log: Special Exhibition at Seoul National Museum",
+   "body": "보안 부서 2023년 10월 15일\n07:30 김민수: 오늘 서울 국립 박물관에서 특별한 전시회가 열립니다. '한국의 전통 공예'라는 제목으로, 한국의 전통 공예품들이 전시될 예정입니다.\n08:45 이진주: 전시회를 위해 추가 보안 인력이 배치되었습니다. 입구에 금속 탐지기가 설치되었습니다.\n10:20 박지훈: 전시관 내부에 CCTV를 추가로 설치했습니다. 모든 구석진 곳까지 감시가 가능하도록 했습니다.\n12:00 최서연: 점심 시간 동안 전시관 내부를 순찰했습니다. 특별한 이상 사항은 없습니다.\n14:30 김민수: 전시회가 시작되었습니다. 많은 방문객들이 찾아오고 있습니다. 보안 인력이 각 구역에 배치되어 있습니다.\n16:45 이진주: 전시회가 종료되었습니다. 모든 방문객들이 안전하게 박물관을 빠져나갔습니다.\n18:00 박지훈: 오늘의 순찰이 종료되었습니다. 내일도 같은 시간대에 전시회가 열립니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-04",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "보안 부서",
+    "date": "2023년 10월 15일",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "김민수: 오늘 서울 국립 박물관에서 특별한 전시회가 열립니다. '한국의 전통 공예'라는 제목으로, 한국의 전통 공예품들이 전시될 예정입니다.",
+      "initials": "김민수"
+     },
+     {
+      "time": "08:45",
+      "entry": "이진주: 전시회를 위해 추가 보안 인력이 배치되었습니다. 입구에 금속 탐지기가 설치되었습니다.",
+      "initials": "이진주"
+     },
+     {
+      "time": "10:20",
+      "entry": "박지훈: 전시관 내부에 CCTV를 추가로 설치했습니다. 모든 구석진 곳까지 감시가 가능하도록 했습니다.",
+      "initials": "박지훈"
+     },
+     {
+      "time": "12:00",
+      "entry": "최서연: 점심 시간 동안 전시관 내부를 순찰했습니다. 특별한 이상 사항은 없습니다.",
+      "initials": "최서연"
+     },
+     {
+      "time": "14:30",
+      "entry": "김민수: 전시회가 시작되었습니다. 많은 방문객들이 찾아오고 있습니다. 보안 인력이 각 구역에 배치되어 있습니다.",
+      "initials": "김민수"
+     },
+     {
+      "time": "16:45",
+      "entry": "이진주: 전시회가 종료되었습니다. 모든 방문객들이 안전하게 박물관을 빠져나갔습니다.",
+      "initials": "이진주"
+     },
+     {
+      "time": "18:00",
+      "entry": "박지훈: 오늘의 순찰이 종료되었습니다. 내일도 같은 시간대에 전시회가 열립니다.",
+      "initials": "박지훈"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-shift_log-002",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Public Transportation Updates",
+   "body": "서울시 교통안전과 2023년 10월 15일\n07:30 김철수: 오늘부터 2호선 강남역에서 사당역까지 선로 점검으로 인해 열차 운행이 지연되고 있습니다. 평균 10분 정도 지연될 예정이니 참고하시기 바랍니다.\n09:15 이영희: 버스 301번의 노선이 변경되었습니다. 이제 한강대교를 지나서 강북구로 직접 가므로 승객들께서는 참고하시기 바랍니다.\n11:45 박민수: 지하철 1호선 신림역에서 문이 열리지 않는 사건이 발생했습니다. 기술팀이 즉시 현장으로 출동 중입니다.\n14:20 최진영: 오늘 오후 3시부터 5시까지 4호선 당고개역에서 전력 공급 차질로 인해 열차 운행이 중단될 예정입니다. 대형 버스 운행을 통해 대체 교통편을 제공할 예정입니다.\n16:50 정민지: 버스 702번이 교통 사고로 인해 운행을 중단했습니다. 승객들께서는 다음 버스 703번 또는 704번을 이용해 주시기 바랍니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "서울시 교통안전과",
+    "date": "2023년 10월 15일",
+    "entries": [
+     {
+      "time": "07:30",
+      "entry": "김철수: 오늘부터 2호선 강남역에서 사당역까지 선로 점검으로 인해 열차 운행이 지연되고 있습니다. 평균 10분 정도 지연될 예정이니 참고하시기 바랍니다.",
+      "initials": "KCS"
+     },
+     {
+      "time": "09:15",
+      "entry": "이영희: 버스 301번의 노선이 변경되었습니다. 이제 한강대교를 지나서 강북구로 직접 가므로 승객들께서는 참고하시기 바랍니다.",
+      "initials": "LHY"
+     },
+     {
+      "time": "11:45",
+      "entry": "박민수: 지하철 1호선 신림역에서 문이 열리지 않는 사건이 발생했습니다. 기술팀이 즉시 현장으로 출동 중입니다.",
+      "initials": "PMS"
+     },
+     {
+      "time": "14:20",
+      "entry": "최진영: 오늘 오후 3시부터 5시까지 4호선 당고개역에서 전력 공급 차질로 인해 열차 운행이 중단될 예정입니다. 대형 버스 운행을 통해 대체 교통편을 제공할 예정입니다.",
+      "initials": "CJY"
+     },
+     {
+      "time": "16:50",
+      "entry": "정민지: 버스 702번이 교통 사고로 인해 운행을 중단했습니다. 승객들께서는 다음 버스 703번 또는 704번을 이용해 주시기 바랍니다.",
+      "initials": "JMJ"
+     }
+    ]
+   },
+   "checkedBy": "gpt-oss:20b"
+  },
+  {
+   "id": "ko-dr-2-shift_log-003",
+   "exam": "DLPT_READING",
+   "language": "ko",
+   "level": "2",
+   "textType": "shift_log",
+   "title": "Training Security Forces to Identify Threats",
+   "body": "경비대 2023년 10월 15일\n08:00 김대위: 오늘의 훈련 시작. 적의 의도를 인식하는 법에 대해 교육할 예정입니다.\n09:30 이중위: 훈련 장비 준비 완료. 카메라, 모니터, 시나리오 카드가 모두 준비되었습니다.\n10:15 박상사: 훈련 시작. 우선, 기본적인 신호와 행동 패턴에 대해 설명 중입니다.\n11:45 최하사: 훈련 참여자들 사이에서 적극적인 토론이 이루어지고 있습니다. 특히, 수상한 행동에 대한 예시가 흥미로운 반응을 이끌어내고 있습니다.\n13:00 김대위: 점심 휴식 시간. 오후에는 실제 시나리오를 통해 훈련을 진행할 예정입니다.\n14:30 이중위: 실제 시나리오 훈련 시작. 참여자들은 카메라와 모니터를 사용하여 수상한 행동을 식별해야 합니다.\n16:00 박상사: 훈련 참여자들이 시나리오에서 수상한 행동을 성공적으로 식별했습니다. 특히, 얼굴 표정과 몸짓에 대한 관찰이 효과적이었습니다.\n17:15 최하사: 오늘의 훈련을 마무리하며, 참여자들의 피드백을 수집 중입니다. 대부분 긍정적인 반응이지만, 몇 가지 개선 사항도 제시되었습니다.\n18:00 김대위: 오늘의 훈련 종료. 전체적으로 성공적이었으며, 다음 훈련에서는 피드백을 반영할 계획입니다.",
+   "script": [],
+   "source": "llm",
+   "verified": false,
+   "engine": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "drafted": "2026-10-05",
+   "format": "shift_log",
+   "formatData": {
+    "unit": "경비대",
+    "date": "2023년 10월 15일",
+    "entries": [
+     {
+      "time": "08:00",
+      "entry": "김대위: 오늘의 훈련 시작. 적의 의도를 인식하는 법에 대해 교육할 예정입니다.",
+      "initials": "김대위"
+     },
+     {
+      "time": "09:30",
+      "entry": "이중위: 훈련 장비 준비 완료. 카메라, 모니터, 시나리오 카드가 모두 준비되었습니다.",
+      "initials": "이중위"
+     },
+     {
+      "time": "10:15",
+      "entry": "박상사: 훈련 시작. 우선, 기본적인 신호와 행동 패턴에 대해 설명 중입니다.",
+      "initials": "박상사"
+     },
+     {
+      "time": "11:45",
+      "entry": "최하사: 훈련 참여자들 사이에서 적극적인 토론이 이루어지고 있습니다. 특히, 수상한 행동에 대한 예시가 흥미로운 반응을 이끌어내고 있습니다.",
+      "initials": "최하사"
+     },
+     {
+      "time": "13:00",
+      "entry": "김대위: 점심 휴식 시간. 오후에는 실제 시나리오를 통해 훈련을 진행할 예정입니다.",
+      "initials": "김대위"
+     },
+     {
+      "time": "14:30",
+      "entry": "이중위: 실제 시나리오 훈련 시작. 참여자들은 카메라와 모니터를 사용하여 수상한 행동을 식별해야 합니다.",
+      "initials": "이중위"
+     },
+     {
+      "time": "16:00",
+      "entry": "박상사: 훈련 참여자들이 시나리오에서 수상한 행동을 성공적으로 식별했습니다. 특히, 얼굴 표정과 몸짓에 대한 관찰이 효과적이었습니다.",
+      "initials": "박상사"
+     },
+     {
+      "time": "17:15",
+      "entry": "최하사: 오늘의 훈련을 마무리하며, 참여자들의 피드백을 수집 중입니다. 대부분 긍정적인 반응이지만, 몇 가지 개선 사항도 제시되었습니다.",
+      "initials": "최하사"
+     },
+     {
+      "time": "18:00",
+      "entry": "김대위: 오늘의 훈련 종료. 전체적으로 성공적이었으며, 다음 훈련에서는 피드백을 반영할 계획입니다.",
+      "initials": "김대위"
+     }
+    ]
+   },
    "checkedBy": "gpt-oss:20b"
   },
   {
@@ -1505,6 +3133,114 @@
    "verified": false
   },
   {
+   "id": "ko-dr-0p-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-badge_form-001",
+   "stem": "When will 김미자 leave the community center?",
+   "choices": [
+    "10:00 AM",
+    "3:00 PM",
+    "9:00 AM",
+    "2:00 PM"
+   ],
+   "answer": 3,
+   "explanation": "The document states '퇴장 시간 오후 2:00' (exit time 2:00 PM).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-badge_form-001",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To request a new ID card",
+    "To schedule a meeting",
+    "To register for an event",
+    "To gain access to a facility"
+   ],
+   "answer": 3,
+   "explanation": "The form is titled '방문자 배지 / 출입 요청서' (Visitor Badge / Access Request Form), indicating its purpose is to gain access to a facility.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-badge_form-002",
+   "stem": "What is the purpose of the visit?",
+   "choices": [
+    "To change bus routes",
+    "To visit a community center",
+    "To monitor a drone",
+    "To install solar panels"
+   ],
+   "answer": 2,
+   "explanation": "The document explicitly states '출입 목적: 드론 감시', which translates to 'Purpose of visit: Drone monitoring'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-badge_form-002",
+   "stem": "What is the main concern of this form?",
+   "choices": [
+    "A drone was sighted near the air base perimeter",
+    "A new metro line is being announced",
+    "A security awareness training is scheduled",
+    "There is a change in the shuttle bus route"
+   ],
+   "answer": 0,
+   "explanation": "The main concern is indicated by the phrases '관심 지역: 공군기지 경계' (Area of interest: Air base perimeter) and '자세한 설명: 경계 근방에서 드론 확인. 추적 필요.' (Detailed description: Drone confirmed near the perimeter. Tracking needed.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-badge_form-003",
+   "stem": "What is the purpose of Kim Min-soo's visit?",
+   "choices": [
+    "To install solar panels",
+    "To participate in a defense exercise",
+    "To attend a community event",
+    "To change bus routes"
+   ],
+   "answer": 1,
+   "explanation": "The document explicitly states '방위 훈련 참여' which translates to 'participate in a defense exercise'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-badge_form-003",
+   "stem": "What is the main purpose of this form?",
+   "choices": [
+    "To notify about a drone sighting",
+    "To announce a new metro line",
+    "To request access to a base",
+    "To schedule a security training"
+   ],
+   "answer": 2,
+   "explanation": "The form is titled '입장 허가 신청서' which translates to 'Access Request Form', indicating its purpose is to request access to a base.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-0p-form-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1667,6 +3403,114 @@
    "verified": false
   },
   {
+   "id": "ko-dr-0p-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-schedule_board-001",
+   "stem": "When is the solar investment session scheduled?",
+   "choices": [
+    "2023-11-02",
+    "2023-11-03",
+    "2023-11-01",
+    "2023-11-04"
+   ],
+   "answer": 0,
+   "explanation": "The solar investment session is scheduled for 2023-11-02, as indicated by the phrase '2023-11-02' alongside '태양광 투자 세션' (solar investment session).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-schedule_board-001",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To outline renewable energy investment sessions",
+    "To plan a community health campaign",
+    "To schedule military exercises",
+    "To announce a cultural festival"
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to outline renewable energy investment sessions, as indicated by the title '부산 신재생 에너지 투자 일정' (Busan Renewable Energy Investment Schedule) and the session topics listed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-schedule_board-002",
+   "stem": "What is the first location under flood watch?",
+   "choices": [
+    "Sandeul Village",
+    "San Francisco",
+    "Pine River",
+    "Pine Valley"
+   ],
+   "answer": 2,
+   "explanation": "The first location under flood watch is '피네 강' (Pine River), as indicated in the first row of the schedule.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-schedule_board-002",
+   "stem": "What is the overall purpose of this schedule?",
+   "choices": [
+    "To inform about flood warnings and their timeline",
+    "To announce a new bridge construction",
+    "To schedule community clean-up activities",
+    "To list local restaurants and their operating hours"
+   ],
+   "answer": 0,
+   "explanation": "The overall purpose of this schedule is '피네 밸리 홍수 경보 일정' (Pine Valley Flood Warning Schedule), which is to inform about flood warnings and their timeline.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-schedule_board-003",
+   "stem": "What is the last train time for the 1호선 at 부산역?",
+   "choices": [
+    "23:30",
+    "23:45",
+    "06:00",
+    "24:00"
+   ],
+   "answer": 3,
+   "explanation": "The document states that the last train for the 1호선 at 부산역 is at \"24:00\".",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-schedule_board-003",
+   "stem": "What is the main purpose of this document?",
+   "choices": [
+    "To inform about the construction of a new metro line",
+    "To advertise the new metro line features",
+    "To provide the schedule for a new metro line",
+    "To announce the new metro line routes"
+   ],
+   "answer": 2,
+   "explanation": "The document is titled \"새로운 지하철 노선 시간표\" which translates to \"New Metro Line Schedule\", indicating that the main purpose is to provide the schedule for a new metro line.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-0p-sign-001-q1",
    "exam": "DLPT_READING",
    "level": "0+",
@@ -1717,6 +3561,114 @@
    ],
    "answer": 2,
    "explanation": "The phrase \"사용 시간\" (“usage time”) in the context of the sign refers to the \"하루 2시간\" (“2 hours per day”) limit for smartphone use.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-signage-001",
+   "stem": "When will the solar panel installation begin?",
+   "choices": [
+    "March 1, 2023",
+    "June 30, 2023",
+    "April 1, 2023",
+    "July 1, 2023"
+   ],
+   "answer": 0,
+   "explanation": "The sign states '2023년 3월 1일부터' which translates to 'from March 1, 2023'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-signage-001",
+   "stem": "What is the main purpose of this sign?",
+   "choices": [
+    "To announce a public holiday",
+    "To advertise a new product",
+    "To inform about a solar panel installation",
+    "To warn about an upcoming storm"
+   ],
+   "answer": 2,
+   "explanation": "The sign mentions '태양광 패널 설치 중' which translates to 'solar panel installation in progress'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-signage-002",
+   "stem": "When does the new shuttle bus route start?",
+   "choices": [
+    "November 1, 2023",
+    "September 30, 2023",
+    "October 15, 2023",
+    "October 1, 2023"
+   ],
+   "answer": 3,
+   "explanation": "The notice states '2023년 10월 1일부터', which translates to 'Starting October 1, 2023'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-signage-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To warn about an upcoming construction project",
+    "To advertise a new food menu at the cafeteria",
+    "To announce a new shuttle bus route",
+    "To inform about a change in working hours"
+   ],
+   "answer": 2,
+   "explanation": "The notice begins with '경계 내 버스 노선 변경', which means 'Change in bus route within the base', indicating the main purpose is to announce a new shuttle bus route.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "detail",
+   "passageId": "ko-dr-0p-signage-003",
+   "stem": "When is the security awareness training scheduled?",
+   "choices": [
+    "October 8 to October 14",
+    "September 24 to September 30",
+    "November 1 to November 7",
+    "October 1 to October 7"
+   ],
+   "answer": 3,
+   "explanation": "The training is scheduled from \"2023년 10월 1일 (월) - 10월 7일 (일)\", which translates to October 1 to October 7.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-0p-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "0+",
+   "type": "main_idea",
+   "passageId": "ko-dr-0p-signage-003",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To announce a new shuttle bus route",
+    "To notify about a solar panel installation",
+    "To schedule a security awareness training",
+    "To inform about a drone activity"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the notice is \"주의: 적대적 의도를 인식하는 훈련\", which translates to \"Attention: Training to recognize hostile intent.\"",
    "source": "llm",
    "verified": false
   },
@@ -1825,6 +3777,222 @@
    ],
    "answer": 0,
    "explanation": "The purpose of the announcement is to warn residents about potential flooding: \"세종특별자치시 세종시청은... 홍수에 대한 주의가 필요합니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-badge_form-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-badge_form-001",
+   "stem": "When will the change in the bus route take effect?",
+   "choices": [
+    "November 20",
+    "November 25",
+    "November 10",
+    "November 15"
+   ],
+   "answer": 0,
+   "explanation": "The document states '11월 20일부터' which translates to 'starting from November 20'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-badge_form-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-badge_form-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To advertise a new bus service",
+    "To inform about a change in the bus route",
+    "To request feedback on bus services",
+    "To announce a new bus route"
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is to inform about a change in the bus route, as indicated by the phrase '시내버스 노선 변경 안내'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-badge_form-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-badge_form-002",
+   "stem": "What is the purpose of Kim Min-su's access request?",
+   "choices": [
+    "To observe the military exercise",
+    "To inspect the military exercise",
+    "To support the military exercise",
+    "To participate in the military exercise"
+   ],
+   "answer": 2,
+   "explanation": "The document states '훈련 지원' which translates to 'to support the training'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-badge_form-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-badge_form-002",
+   "stem": "What is the main topic of this document?",
+   "choices": [
+    "A visit to a community center",
+    "A notice about drone activity",
+    "A request for access to a military exercise",
+    "A change in bus route"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly indicated by the title '연합 군사 훈련 접근 요청서' which translates to 'Allied Military Exercise Access Request'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-badge_form-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-badge_form-003",
+   "stem": "What is the purpose of Kim Min-su's visit?",
+   "choices": [
+    "To participate in a community event",
+    "To inspect the base's security measures",
+    "To attend a training session",
+    "To review investments in renewable energy"
+   ],
+   "answer": 3,
+   "explanation": "The document states '방문 목적' as '신재생 에너지 투자 검토', which translates to 'purpose of visit' as 'review investments in renewable energy'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-badge_form-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-badge_form-003",
+   "stem": "What is the main topic of this visitor badge?",
+   "choices": [
+    "Military exercise",
+    "Food price changes",
+    "Renewable energy investment",
+    "Drone sighting"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is 'Renewable energy investment' as indicated by phrases like '청정에너지 투자 유한회사' (Clean Energy Investment Co.) and '신재생 에너지 투자 검토' (review investments in renewable energy).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-chat-001",
+   "stem": "What were the three main lessons learned from the counter-drone exercise?",
+   "choices": [
+    "Drone detection was difficult at high altitudes, communication was good, and equipment maintenance is not important.",
+    "Drones were easy to detect, team communication was excellent, and equipment maintenance is not necessary.",
+    "Drone detection was difficult at low altitudes, better team communication is needed, and post-exercise equipment inspection is crucial.",
+    "Drones were difficult to detect at any altitude, team communication was good, and equipment maintenance is important."
+   ],
+   "answer": 2,
+   "explanation": "The text states '드론이 낮은 고도에서 날아올 때 감지하기 어려웠어요' (Drone detection was difficult at low altitudes), '팀원들 간의 소통이 더 필요해요' (better team communication is needed), and '훈련 후 장비 점검을 꼼꼼히 해야 합니다' (post-exercise equipment inspection is crucial).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-chat-001",
+   "stem": "What is the main purpose of this message thread?",
+   "choices": [
+    "To discuss the equipment used during the counter-drone exercise.",
+    "To share the lessons learned from the counter-drone exercise.",
+    "To complain about the difficulties faced during the counter-drone exercise.",
+    "To schedule the next counter-drone exercise."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is '반드론 연습이 끝났어요. 몇 가지 배운 점이 있어요' (The counter-drone exercise is over. There are a few lessons learned).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-chat-002",
+   "stem": "What is the main problem reported by 김 대위?",
+   "choices": [
+    "A drone crashed.",
+    "A drone was stolen.",
+    "A drone's control link was jammed.",
+    "A drone was lost."
+   ],
+   "answer": 2,
+   "explanation": "김 대위 reports that the drone's 제어 링크가 갑작스럽게 방해받았습니다, indicating that the control link was jammed.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "purpose",
+   "passageId": "ko-dr-1-chat-002",
+   "stem": "What is the purpose of 이 중위's messages?",
+   "choices": [
+    "To scold 김 대위 for the problem.",
+    "To request help from 김 대위.",
+    "To acknowledge the problem and offer assistance.",
+    "To ignore the problem."
+   ],
+   "answer": 2,
+   "explanation": "이 중위 acknowledges the problem with 알겠습니다 and offers assistance by stating 우리 팀이 즉시 확인하겠습니다 and 지원 팀을 보내드리겠습니다.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-chat-003",
+   "stem": "How close to the base can drones be flown according to the new rules?",
+   "choices": [
+    "No closer than 5 kilometers",
+    "No closer than 10 kilometers",
+    "No closer than 1 kilometer",
+    "Drones are not allowed at all"
+   ],
+   "answer": 0,
+   "explanation": "The message states that drones cannot be flown within 5km of the air base (기지에 너무 가까이에 드론을 날릴 수 없습니다. 5km 안에서는 날릴 수 없습니다).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-chat-003",
+   "stem": "What is the main purpose of the messages?",
+   "choices": [
+    "To advertise drone sales near Osan Air Base",
+    "To announce a new drone racing event",
+    "To inform about new drone flying rules near the base",
+    "To schedule drone maintenance appointments"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the messages is to inform about new drone flying rules near the base (새로운 드론 규칙, 공군 기지에 너무 가까이에 드론을 날릴 수 없습니다).",
    "source": "llm",
    "verified": false
   },
@@ -2315,6 +4483,114 @@
    "verified": false
   },
   {
+   "id": "ko-dr-1-schedule_board-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-schedule_board-001",
+   "stem": "When does Team B's reconnaissance shift start on November 15?",
+   "choices": [
+    "12:00",
+    "13:00",
+    "15:00",
+    "10:00"
+   ],
+   "answer": 1,
+   "explanation": "The schedule shows that Team B's shift on November 15 starts at 13:00, as indicated by the Korean text '13:00' under the '시작 시간' (start time) column.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-schedule_board-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-schedule_board-001",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To plan community vaccination campaigns.",
+    "To organize post-attack reconnaissance efforts.",
+    "To outline daily work shifts for office employees.",
+    "To schedule regular military training exercises."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of this schedule is to organize post-attack reconnaissance efforts, as indicated by the Korean title '로켓 경보 후 정찰 일정' (Post-Attack Reconnaissance Schedule).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-schedule_board-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-schedule_board-002",
+   "stem": "When is 김민수 scheduled to monitor the northern part of Busan Harbor?",
+   "choices": [
+    "3:00 PM to 5:00 PM on October 2",
+    "8:00 AM to 10:00 AM on October 2",
+    "2:00 PM to 4:00 PM on October 1",
+    "7:00 AM to 9:00 AM on October 1"
+   ],
+   "answer": 3,
+   "explanation": "The schedule shows '김민수' is assigned to '부산항 북쪽' from '07:00' to '09:00' on '2023년 10월 1일'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-schedule_board-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-schedule_board-002",
+   "stem": "What is the primary purpose of this schedule?",
+   "choices": [
+    "To coordinate drone delivery services",
+    "To schedule regular maintenance for drones",
+    "To track drone activity over Busan Harbor",
+    "To plan a drone racing event"
+   ],
+   "answer": 2,
+   "explanation": "The schedule is titled '부산항 드론 감시 일정', indicating the purpose is to monitor drone activity over Busan Harbor.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-schedule_board-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-schedule_board-003",
+   "stem": "When is the turbine installation scheduled to begin?",
+   "choices": [
+    "October 15, 2023",
+    "October 20, 2023",
+    "October 25, 2023",
+    "October 1, 2023"
+   ],
+   "answer": 1,
+   "explanation": "The document states '2023년 10월 20일' for the turbine installation start date.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-schedule_board-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-schedule_board-003",
+   "stem": "What is the main purpose of this schedule?",
+   "choices": [
+    "To detail the renovation of a residential building",
+    "To organize a community event",
+    "To plan the construction of a wind farm",
+    "To outline the construction of a new shopping mall"
+   ],
+   "answer": 2,
+   "explanation": "The document is titled '광양시 풍력발전소 건설 일정', which translates to 'Gwangyang Wind Power Plant Construction Schedule'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-1-short_message-001-q1",
    "exam": "DLPT_READING",
    "level": "1",
@@ -2513,6 +4789,114 @@
    "verified": false
   },
   {
+   "id": "ko-dr-1-signage-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-signage-001",
+   "stem": "When will the new metro line start operating?",
+   "choices": [
+    "December 1, 2023",
+    "September 1, 2023",
+    "October 1, 2023",
+    "November 1, 2023"
+   ],
+   "answer": 2,
+   "explanation": "The document states '2023년 10월 1일부터,' which translates to 'Starting from October 1, 2023.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-signage-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-signage-001",
+   "stem": "What is the main purpose of this announcement?",
+   "choices": [
+    "To warn about construction near the air base",
+    "To announce the closure of the air base",
+    "To advertise a new bus service",
+    "To inform about the new metro line and its start date"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is to inform about the new metro line and its start date, as indicated by the phrases '새로운 지하철 노선 개통 안내' and '2023년 10월 1일부터.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-signage-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-signage-002",
+   "stem": "When is the drone activity expected to occur?",
+   "choices": [
+    "From May 1 to May 15, 2023",
+    "From May 20 to May 25, 2023",
+    "From May 10 to May 15, 2023",
+    "From May 15 to May 20, 2023"
+   ],
+   "answer": 3,
+   "explanation": "The notice states '기간: 2023년 5월 15일 ~ 2023년 5월 20일', which translates to 'Period: May 15, 2023 ~ May 20, 2023'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-signage-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-signage-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a new drone exhibition event",
+    "To recruit drone pilots for the base",
+    "To promote drone flying in the harbor",
+    "To inform about a drone activity and restrict access to the area"
+   ],
+   "answer": 3,
+   "explanation": "The notice is a warning about the drone activity and explicitly states restrictions ('주의 사항:') such as '항구 주변에서 비행 금지' (flight prohibition around the harbor) and '드론 활동 구역에 접근 금지' (prohibition of access to the drone activity area).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-signage-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "detail",
+   "passageId": "ko-dr-1-signage-003",
+   "stem": "When will the base defense exercise take place?",
+   "choices": [
+    "On November 16, 2023, from 9 AM to 4 PM",
+    "On November 15, 2023, from 9 AM to 4 PM",
+    "On November 17, 2023, from 9 AM to 4 PM",
+    "On November 14, 2023, from 9 AM to 4 PM"
+   ],
+   "answer": 1,
+   "explanation": "The exercise is scheduled for 2023년 11월 15일 (수) 오전 9시 - 오후 4시, which translates to November 15, 2023, from 9 AM to 4 PM.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1-signage-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1",
+   "type": "main_idea",
+   "passageId": "ko-dr-1-signage-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a new shuttle bus route",
+    "To promote a military recruitment drive",
+    "To inform about a base defense exercise",
+    "To advertise a local event"
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of this notice is to inform about a base defense exercise, as indicated by the phrase 주의: 주한 미군 기지 방어 훈련, which translates to 'Attention: U.S. Forces Korea Base Defense Training.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-1p-announcement-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -2617,6 +5001,114 @@
    ],
    "answer": 2,
    "explanation": "In this context, '배부' means 'to distribute'. The text states 'blanket을 배부하겠습니다', which means 'we will distribute blankets'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-chat-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-chat-001",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A report of a drone sighting near the air base",
+    "A complaint about noise pollution",
+    "A discussion about a new drone technology",
+    "A request for a meeting"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a report of a drone sighting near the air base, as indicated by the phrases \"이상한 드론 날아다니는 거 보셨나요?\" and \"그 드론 봤어요\" in the messages.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-chat-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-chat-001",
+   "stem": "What action did 박하사 decide to take?",
+   "choices": [
+    "D. To inform the local police",
+    "B. To contact the guard house",
+    "C. To shoot down the drone",
+    "A. To ignore the drone"
+   ],
+   "answer": 1,
+   "explanation": "박하사 decided to contact the guard house, as stated in the message \"경비실에 연락하는 게 좋겠어요. 제가 연락드릴게요.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-chat-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-chat-002",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "Hotel check-in",
+    "A restaurant reservation",
+    "Flight booking",
+    "Border crossing procedure"
+   ],
+   "answer": 3,
+   "explanation": "The main topic is the border crossing procedure, as indicated by the words \"부산에 가지요\" (going to Busan) and \"어떻게 건너기 좋은지\" (how to cross well).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-chat-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-chat-002",
+   "stem": "What does Kim say is required for Mina to enter Busan?",
+   "choices": [
+    "A passport",
+    "A visa",
+    "A hotel reservation",
+    "A flight ticket"
+   ],
+   "answer": 0,
+   "explanation": "Kim says Mina needs a \"미국 여권\" (American passport) to enter Busan, and mentions that a visa is not required.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-chat-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-chat-003",
+   "stem": "What is the main topic of this conversation?",
+   "choices": [
+    "A problem with the current metro system",
+    "A change in bus routes",
+    "A new metro line opening",
+    "A traffic jam in the city"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly about a new metro line opening, as indicated by the phrases '새로운 지하철 노선' and '개통될 예정이에요'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-chat-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-chat-003",
+   "stem": "When will the new metro line start operating?",
+   "choices": [
+    "May 15th",
+    "June 15th",
+    "June 1st",
+    "May 1st"
+   ],
+   "answer": 0,
+   "explanation": "The operating start date is explicitly mentioned as '5월 15일부터 운영을 시작합니다'.",
    "source": "llm",
    "verified": false
   },
@@ -2999,6 +5491,114 @@
    "verified": false
   },
   {
+   "id": "ko-dr-1p-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-municipal_notice-001",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To provide details about a new security system in the base.",
+    "To request residents to report any suspicious activities immediately.",
+    "To inform residents about an upcoming insider threat awareness training.",
+    "To announce a cultural event at the Happy Valley Cultural Center."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose is to inform residents about an upcoming insider threat awareness training, as stated in the title '기지에 대한 내부 위협 인식 교육 안내' and the details provided in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-municipal_notice-001",
+   "stem": "When and where will the insider threat awareness training be held?",
+   "choices": [
+    "October 20th, Happy Valley Community Center from 10 AM to 1 PM.",
+    "October 15th, Happy Valley Cultural Center Room 1 from 10 AM to 1 PM.",
+    "September 25th, Happy Valley Cultural Center Room 2 from 2 PM to 5 PM.",
+    "October 10th, Happy Valley Town Hall from 9 AM to 12 PM."
+   ],
+   "answer": 1,
+   "explanation": "The training will be held on '2023년 10월 15일 (일) 오전 10시부터 오후 1시까지' at '해피밸리 문화센터 강의실 1호', as specified in the notice.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-municipal_notice-002",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To request residents to participate in a local event.",
+    "To announce a defense exercise and its details.",
+    "To notify residents about a change in local laws.",
+    "To inform residents about upcoming construction work."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose of the notice is to announce a defense exercise and its details. The notice explicitly states '방어 연습 예고' (defense exercise announcement) and provides dates, participants, and relevant information about the exercise.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-municipal_notice-002",
+   "stem": "What is one of the specific instructions given to residents during the exercise period?",
+   "choices": [
+    "Residents should avoid using their cars.",
+    "Residents should attend a meeting at the town hall.",
+    "Residents should stay indoors at all times.",
+    "Residents should not fly drones."
+   ],
+   "answer": 3,
+   "explanation": "One of the specific instructions given to residents is not to fly drones. The notice states '연습 중에는 드론을 비행시키지 마십시오.' (Do not fly drones during the exercise.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-municipal_notice-003",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To announce a new law banning drones in the area",
+    "To schedule a meeting for residents to discuss drone safety",
+    "To advertise a new drone detection service",
+    "To inform residents about a recent drone sighting near the air base and ask for their cooperation"
+   ],
+   "answer": 3,
+   "explanation": "The main purpose is clearly stated in the notice: informing residents about the drone sighting and asking for their cooperation in reporting any suspicious activities, as seen in the phrases '파인 밸리 공군 기지 주변에서 드론이 발견되었습니다' and '여러분의 협력이 필요합니다'.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-municipal_notice-003",
+   "stem": "What should residents do if they see a drone or suspicious activity?",
+   "choices": [
+    "Ignore it and mind their own business",
+    "Try to shoot it down with a pellet gun",
+    "Report it to the town hall the next day",
+    "Contact the base security team or local police immediately"
+   ],
+   "answer": 3,
+   "explanation": "Residents are instructed to '즉시 파인 밸리 공군 기지 보안팀 or 파인 밸리 경찰서'로 연락 부탁드립니다 if they see a drone or suspicious activity.",
+   "source": "llm",
+   "verified": false
+  },
+  {
    "id": "ko-dr-1p-news_brief-001-q1",
    "exam": "DLPT_READING",
    "level": "1+",
@@ -3157,6 +5757,114 @@
    ],
    "answer": 3,
    "explanation": "\"배의 일과가\" refers to the ship's schedule. The writer mentions that they had to follow the ship's schedule during their visit to the port, indicating that it refers to the timing of activities or events related to the ship.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-shift_log-001",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "Visitors and access requests",
+    "Daily routine activities of the security unit",
+    "Training session on recognizing hostile intent",
+    "Equipment maintenance schedule"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in the first entry: \"오늘의 훈련 주제 - 적의적 의도 인식\" (Today's training topic - recognizing hostile intent).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-shift_log-001",
+   "stem": "Which scenario involved suspicious packages?",
+   "choices": [
+    "Scenario 2",
+    "None of the above",
+    "Scenario 3",
+    "Scenario 1"
+   ],
+   "answer": 2,
+   "explanation": "The scenario involving suspicious packages is mentioned in the entry at 13:30: \"시나리오 3: 수상한 패키지 발견\" (Scenario 3: suspicious package discovered).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-shift_log-002",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A drone sighting near the air base",
+    "A change in shift assignments",
+    "A maintenance issue with base equipment",
+    "A routine patrol schedule"
+   ],
+   "answer": 0,
+   "explanation": "The main topic is a drone sighting near the air base, as indicated by entries such as '초소 3번에서 드론 1대 발견' (A drone was discovered at Post 3) and '드론 색상 검정' (The drone color is black).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-shift_log-002",
+   "stem": "What was the drone's direction of movement initially?",
+   "choices": [
+    "West",
+    "North",
+    "East",
+    "South"
+   ],
+   "answer": 3,
+   "explanation": "The drone's initial direction of movement was south, as mentioned in the entry '기지 동쪽 끝 부분에서 남쪽으로 이동 중' (Moving south from the east end of the base).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "main_idea",
+   "passageId": "ko-dr-1p-shift_log-003",
+   "stem": "What is the main topic of this shift log?",
+   "choices": [
+    "A new security system installation",
+    "A routine security check at Busan Harbor",
+    "A swarm of small drones over Busan Harbor",
+    "A fire drill at Busan Harbor"
+   ],
+   "answer": 2,
+   "explanation": "The main topic is clearly stated in the entries, particularly in the entry at 12:30 where it mentions '소형 드론 무리 발견' (discovered a swarm of small drones).",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-1p-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "1+",
+   "type": "detail",
+   "passageId": "ko-dr-1p-shift_log-003",
+   "stem": "What action did the security chief take after the drones were discovered?",
+   "choices": [
+    "He ignored the situation",
+    "He shot down the drones",
+    "He evacuated the harbor",
+    "He contacted the harbor management office"
+   ],
+   "answer": 3,
+   "explanation": "The entry at 12:45 states '항구 관리국에 연락.' (contacted the harbor management office), indicating the action taken by the security chief.",
    "source": "llm",
    "verified": false
   },
@@ -3589,6 +6297,114 @@
    ],
    "answer": 3,
    "explanation": "In this context, \"대응\" means 'to respond'. The text states: \"이번 가뭄에 효과적으로 대응하기 위해 여러 가지 지원을 준비했습니다.\" (We have prepared various forms of support to effectively respond to this drought.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-municipal_notice-001",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To inform residents about a new traffic regulation.",
+    "To announce a community vaccination campaign.",
+    "To promote a local health fair.",
+    "To schedule a town hall meeting."
+   ],
+   "answer": 1,
+   "explanation": "The main purpose is clearly stated in the notice: '피치타운에서 코로나19 백신 접종 캠페인이 시작됩니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-municipal_notice-001",
+   "stem": "Where will the vaccinations take place?",
+   "choices": [
+    "At the residents' homes.",
+    "At the local school.",
+    "At the town hall.",
+    "At the 피치타운 건강센터."
+   ],
+   "answer": 3,
+   "explanation": "The notice specifies the location as '접종 장소는 피치타운 건강센터입니다.'",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-municipal_notice-002",
+   "stem": "What is the main purpose of this notice?",
+   "choices": [
+    "To inform residents about recent changes in food prices.",
+    "To discuss the impact of climate change on food production.",
+    "To promote local agricultural products.",
+    "To announce a new policy on food distribution."
+   ],
+   "answer": 0,
+   "explanation": "The main purpose is to inform residents about recent changes in food prices, as stated in the first and last paragraphs.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-municipal_notice-002",
+   "stem": "Which food items have seen a significant price increase?",
+   "choices": [
+    "Rice and bread.",
+    "Fruits and vegetables.",
+    "Potatoes, onions, and carrots.",
+    "Seafood and processed foods."
+   ],
+   "answer": 2,
+   "explanation": "The notice mentions that 감자 (potatoes), 양파 (onions), and 당근 (carrots) have seen a significant price increase.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-municipal_notice-003",
+   "stem": "What is the main purpose of the notice?",
+   "choices": [
+    "To schedule a meeting for local community leaders.",
+    "To announce a new policy for the air base.",
+    "To inform residents about an upcoming base defense exercise.",
+    "To advertise a new product for military use."
+   ],
+   "answer": 2,
+   "explanation": "The main purpose of the notice is to inform residents about an upcoming base defense exercise, as stated in the title and the first paragraph: \"자유시청은 2023년 10월 15일 일요일부터 10월 20일 금요일까지 자유시 근무반과 한국군과의 공동 방위 훈련을 진행할 예정입니다.\"",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-municipal_notice-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-municipal_notice-003",
+   "stem": "What is one of the main focuses of this year's training?",
+   "choices": [
+    "The use of drones and unmanned systems.",
+    "The implementation of new communication devices.",
+    "The use of traditional military strategies.",
+    "The deployment of new tanks."
+   ],
+   "answer": 0,
+   "explanation": "The notice specifies that this year's training will focus on the use of drones and unmanned systems: \"이번 훈련은 특히 드론과 무인 시스템의 사용에 중점을 두고 있습니다.\"",
    "source": "llm",
    "verified": false
   },
@@ -4129,6 +6945,114 @@
    ],
    "answer": 1,
    "explanation": "'검문' in this context means 'inspection'. The text states that the guard conducted a '검문' to check the package, which means the guard performed an inspection.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-shift_log-001-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-shift_log-001",
+   "stem": "What is the main topic of the security log entries?",
+   "choices": [
+    "A new security system installation",
+    "A daily routine of a museum",
+    "A special exhibition at Seoul National Museum",
+    "A visitor count at a museum"
+   ],
+   "answer": 2,
+   "explanation": "The main topic of the security log entries is a special exhibition at Seoul National Museum. This is evident from the repeated mentions of the 'special exhibition' and 'Seoul National Museum' in the entries.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-shift_log-001-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-shift_log-001",
+   "stem": "What additional security measures were taken for the exhibition?",
+   "choices": [
+    "C. Hiring of external security consultants",
+    "B. Installation of new lighting systems",
+    "D. Implementation of a new ticketing system",
+    "A. Increased security personnel and metal detectors at the entrance"
+   ],
+   "answer": 3,
+   "explanation": "The log mentions '추가 보안 인력이 배치되었습니다' (additional security personnel were deployed) and '입구에 금속 탐지기가 설치되었습니다' (metal detectors were installed at the entrance), indicating these were the additional security measures taken.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-shift_log-002-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-shift_log-002",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "Public transportation changes and incidents",
+    "Weather conditions affecting transportation",
+    "Announcements about upcoming construction projects",
+    "New traffic laws and regulations"
+   ],
+   "answer": 0,
+   "explanation": "The main topic of the shift log is public transportation changes and incidents, as indicated by entries discussing delays, route changes, and service disruptions.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-shift_log-002-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "vocabulary_in_context",
+   "passageId": "ko-dr-2-shift_log-002",
+   "stem": "What does the word \"지연\" mean in the context of the first entry?",
+   "choices": [
+    "Cancellation",
+    "Diversion",
+    "Acceleration",
+    "Delay"
+   ],
+   "answer": 3,
+   "explanation": "In the first entry, \"지연\" refers to a delay in train operations due to track inspections.",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-shift_log-003-q1",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "main_idea",
+   "passageId": "ko-dr-2-shift_log-003",
+   "stem": "What is the main topic of the shift log?",
+   "choices": [
+    "A security breach at a local facility",
+    "Training security forces to recognize hostile intent",
+    "Public transportation updates",
+    "A community vaccination campaign"
+   ],
+   "answer": 1,
+   "explanation": "The main topic of the shift log is clearly stated in the first entry: '오늘의 훈련 시작. 적의 의도를 인식하는 법에 대해 교육할 예정입니다.' (Today's training begins. We plan to educate on recognizing hostile intent.)",
+   "source": "llm",
+   "verified": false
+  },
+  {
+   "id": "ko-dr-2-shift_log-003-q2",
+   "exam": "DLPT_READING",
+   "level": "2",
+   "type": "detail",
+   "passageId": "ko-dr-2-shift_log-003",
+   "stem": "What equipment was used during the training?",
+   "choices": [
+    "Guns and ammunition",
+    "Walkie-talkies",
+    "Camera, monitor, and scenario cards",
+    "First aid kits"
+   ],
+   "answer": 2,
+   "explanation": "The equipment used during the training is listed in the second entry: '카메라, 모니터, 시나리오 카드가 모두 준비되었습니다.' (Camera, monitor, and scenario cards are all prepared.)",
    "source": "llm",
    "verified": false
   },

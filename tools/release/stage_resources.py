@@ -125,12 +125,15 @@ def stage_voices(native_dir: str, compose_dir: str, with_voice_files: bool = Tru
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     total = 0
     for v in manifest["voices"]:
+        model = v.get("model", v["id"])  # speakers of one multi-speaker model share its files (N-07)
         for f in v["files"]:
-            local = REPO / "voices" / "models" / v["id"] / f["name"]
+            target = common / model / f["name"]
+            if target.exists():
+                continue
+            local = REPO / "voices" / "models" / model / f["name"]
             if not (local.exists() and local.stat().st_size == f["bytes"] and sha256(local) == f["sha256"]):
-                local = VOICE_CACHE / v["id"] / f["name"]
+                local = VOICE_CACHE / model / f["name"]
                 fetch(f["url"], local, f["sha256"], f["bytes"])
-            target = common / v["id"] / f["name"]
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(local, target)
             total += f["bytes"]
@@ -139,7 +142,7 @@ def stage_voices(native_dir: str, compose_dir: str, with_voice_files: bool = Tru
     return have_piper
 
 
-PACK_FILES = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite", "culture.json", "pragmatics.json", "personas.json", "feeds.json")
+PACK_FILES = ("exam.json", "opi.json", "dictionary.sqlite", "tokenizer.sqlite", "culture.json", "pragmatics.json", "personas.json", "feeds.json", "exemplars.json")
 
 
 def stage_packs() -> int:

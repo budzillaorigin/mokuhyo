@@ -1,0 +1,7 @@
+{
+ "format": "mokuhyo-chatterbox-voices/1",
+ "engine": "voicevox",
+ "comment": "VOICEVOX characters for Japanese exam listening (BRIEF_PHASE8 N-00(d)), the set Tsumugi vetted: 春日部つむぎ (8) and 四国めたん (2) for women, 玄野武宏 (11) for men, with a lower variant for a second male speaker. 青山龍星 is not used (his terms require companies to apply before publishing; Tsumugi D-170). Credits: docs/LICENSES.md and packs/ja/audio/voices.json.",
+ "credits": {"vv:8": "VOICEVOX:春日部つむぎ", "vv:2": "VOICEVOX:四国めたん", "vv:11": "VOICEVOX:玄野武宏", "vv:11:low": "VOICEVOX:玄野武宏"},
+ "languages": {"ja": [{"ref": "vv:8", "gender": "female"}, {"ref": "vv:2", "gender": "female"}, {"ref": "vv:11", "gender": "male"}, {"ref": "vv:11:low", "gender": "male"}]}
+}

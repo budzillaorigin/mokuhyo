@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.mp)
+    alias(libs.plugins.cyclonedx)
 }
 
 kotlin {
@@ -53,6 +54,12 @@ compose.desktop {
                 dmgPackageVersion = macBundleVersion
                 appCategory = "public.app-category.education"
                 iconFile.set(project.file("icons/mokuhyo.icns"))
+                // Without this key macOS never asks for the microphone and recordings come back silent (BRIEF_PHASE8 N-00b).
+                // The app isn't signed with the hardened runtime, so no audio-input entitlement is needed.
+                infoPlist {
+                    extraKeysRawXml = "  <key>NSMicrophoneUsageDescription</key>\n" +
+                        "  <string>Mokuhyo records your spoken answers to transcribe them on this computer. Recordings never leave it.</string>\n"
+                }
             }
             windows {
                 menuGroup = "Mokuhyo"
@@ -79,6 +86,7 @@ tasks.withType<JavaExec>().configureEach {
 // Ship the model manifest and the licenses file inside the jar (read by the model picker and the Licenses screen).
 val bundledDocs by tasks.registering(Copy::class) {
     from(rootProject.file("content/models/manifest.json")) { into("models") }
+    from(rootProject.file("content/models")) { include("calibration.json"); into("models") }
     from(rootProject.file("docs/LICENSES.md")) { into("docs") }
     // Lexicon update channel (BRIEF_PHASE8 C-04): the publisher's Ed25519 public key; the private key never enters the repo.
     from(rootProject.file("tools/release/keys")) { into("keys") }
@@ -86,3 +94,9 @@ val bundledDocs by tasks.registering(Copy::class) {
     into(layout.buildDirectory.dir("generated/bundled"))
 }
 sourceSets.main { resources.srcDir(bundledDocs) }
+
+// SBOM (BRIEF_PHASE8 N-11): `./gradlew :desktopApp:cyclonedxDirectBom` → build/reports/cyclonedx-direct/bom.json, attached to each
+// GitHub release next to the installers. Only the runtime classpath — what ships — is listed.
+tasks.named<org.cyclonedx.gradle.CyclonedxDirectTask>("cyclonedxDirectBom") {
+    includeConfigs.set(listOf("runtimeClasspath"))
+}

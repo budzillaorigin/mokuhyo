@@ -79,16 +79,22 @@ EXTRAS = {  # BRIEF_PHASE8: source file → pack file name
     "culture.json": TOOLS / "culture" / "{lang}.cards.json",
     "pragmatics.json": TOOLS / "pragmatics" / "{lang}.json",
     "personas.json": TOOLS / "personas" / "{lang}.json",
+    "exemplars.json": TOOLS / "exemplars" / "{lang}.json",
 }
 
 
 def copy_extras(lang: str) -> dict:
     """Culture cards (C-05), pragmatics (C-07), personas (C-08) and the current-events links (C-09) for the language."""
     info = {}
+    audio = audio_index(lang)
     for name, pattern in EXTRAS.items():
         src = Path(str(pattern).format(lang=lang))
         if src.exists():
-            data = json.dumps(json.loads(src.read_text(encoding="utf-8")), ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+            obj = json.loads(src.read_text(encoding="utf-8"))
+            for e in obj.get("exemplars", []):  # pre-rendered exemplar clips (N-05)
+                if e["id"] in audio:
+                    e["audio"] = audio[e["id"]]
+            data = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
             (PACKS / lang / name).write_bytes(data)
             info[name] = hashlib.sha256(data).hexdigest()
     feeds = json.loads((TOOLS / "terms" / "feeds.json").read_text(encoding="utf-8"))["feeds"]

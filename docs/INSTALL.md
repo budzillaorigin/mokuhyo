@@ -34,6 +34,14 @@ processor and says so in Settings → AI.
 Welcome → choose your languages → Mokuhyo checks memory, graphics and disk → pick an AI tier (the recommended one is
 marked; "Reading/Listening only for now" skips the download) → test your microphone and speakers → Home.
 
+## If recording picks up nothing
+Mokuhyo says "No audio detected — check your microphone" when the input stays silent.
+- **macOS:** System Settings → Privacy & Security → Microphone → turn Mokuhyo on. From 0.3.0 macOS asks the first time
+  you record. Versions 0.2.x and earlier lacked the permission request, so macOS silenced the microphone and may not list
+  Mokuhyo there at all — install 0.3.0 or later.
+- **Windows:** Settings → Privacy & security → Microphone → turn on "Let desktop apps access your microphone".
+- In Mokuhyo, Settings → Speech & audio → pick the right input and use the level meter to check it.
+
 ## Uninstalling
 Windows: Settings → Apps → Mokuhyo → Uninstall. macOS: drag Mokuhyo from Applications to the Bin. Your data folder (see docs/PRIVACY.md) is kept; delete it to remove your history too.
 

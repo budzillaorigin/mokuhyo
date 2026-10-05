@@ -52,6 +52,10 @@ interface SpeechRecognizer {
     /** [pcm16kMono]: 16 kHz, mono, signed 16-bit samples. */
     @Throws(Exception::class)
     suspend fun transcribe(pcm16kMono: ShortArray, language: String = "ja"): Transcript
+
+    /** With an initial prompt of expected vocabulary (BRIEF_PHASE8 N-00b); engines without prompts ignore it. */
+    @Throws(Exception::class)
+    suspend fun transcribe(pcm16kMono: ShortArray, language: String, prompt: String): Transcript = transcribe(pcm16kMono, language)
 }
 
 interface Synthesizer {

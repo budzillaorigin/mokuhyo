@@ -244,5 +244,17 @@ def main() -> int:
     return 1 if failed else 0
 
 
+def test_format_text_and_validation() -> None:
+    """N-08: body must equal the plain text of formatData; unknown formats are refused."""
+    d = {"app": "sms", "title": "t", "messages": [{"from": "Ana", "text": "¿Dron?", "time": "", "me": False}, {"from": "Yo", "text": "Sí.", "time": "", "me": True}]}
+    assert g.format_text("chat", d) == "Ana: ¿Dron?\nYo: Sí."
+    bands = g.load_bands()
+    p = {"id": "es-dr-1-chat-001", "exam": "DLPT_READING", "language": "es", "level": "1", "textType": "chat", "title": "t",
+         "body": "otra cosa", "source": "llm", "verified": False, "format": "chat", "formatData": d}
+    r = g.Report()
+    g.validate_bank({"bank": "x", "language": "es", "title": "x", "license": "x", "attribution": "x", "passages": [p], "items": []}, "es", "reading", r, bands, False, "t")
+    assert any("plain text of formatData" in e for e in r.errors), r.errors
+
+
 if __name__ == "__main__":
     sys.exit(main())

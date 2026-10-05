@@ -137,6 +137,134 @@ TRACKS = {
 }
 
 
+# Authentic formats (BRIEF_PHASE8 N-08): structured content the app renders as the real document (Formats.kt).
+FORMATS = {
+    "signage": ("a sign at a military air base (warning, prohibition, mandatory or information sign)", ("0+", "1"),
+                {"type": "object", "properties": {"lines": {"type": "array", "items": {"type": "string"}, "minItems": 1, "maxItems": 6},
+                 "kind": {"type": "string", "enum": ["info", "warning", "prohibition", "mandatory"]}}, "required": ["lines", "kind"]}),
+    "badge_form": ("a filled-in visitor badge / access request form at a base gate", ("0+", "1"),
+                   {"type": "object", "properties": {"title": {"type": "string"}, "fields": {"type": "array", "minItems": 3, "maxItems": 10, "items": {
+                    "type": "object", "properties": {"label": {"type": "string"}, "value": {"type": "string"}}, "required": ["label", "value"]}},
+                    "footer": {"type": "string"}}, "required": ["title", "fields", "footer"]}),
+    "chat": ("a short phone message thread (SMS, LINE or WhatsApp) between base personnel or a local contact", ("1", "1+"),
+             {"type": "object", "properties": {"app": {"type": "string", "enum": ["sms", "line", "whatsapp"]}, "title": {"type": "string"},
+              "messages": {"type": "array", "minItems": 3, "maxItems": 12, "items": {"type": "object", "properties": {
+                  "from": {"type": "string"}, "text": {"type": "string"}, "time": {"type": "string"}, "me": {"type": "boolean"}},
+                  "required": ["from", "text", "time", "me"]}}}, "required": ["app", "title", "messages"]}),
+    "shift_log": ("a page of a security post's shift log (timestamped entries with initials)", ("1+", "2"),
+                  {"type": "object", "properties": {"unit": {"type": "string"}, "date": {"type": "string"}, "entries": {"type": "array", "minItems": 4,
+                   "maxItems": 14, "items": {"type": "object", "properties": {"time": {"type": "string"}, "entry": {"type": "string"},
+                   "initials": {"type": "string"}}, "required": ["time", "entry", "initials"]}}}, "required": ["unit", "date", "entries"]}),
+    "municipal_notice": ("a notice from the town hall near the base to residents", ("1+", "2"),
+                         {"type": "object", "properties": {"issuer": {"type": "string"}, "title": {"type": "string"}, "paragraphs": {"type": "array",
+                          "minItems": 1, "maxItems": 6, "items": {"type": "string"}}, "date": {"type": "string"}, "contact": {"type": "string"}},
+                          "required": ["issuer", "title", "paragraphs", "date", "contact"]}),
+    "schedule_board": ("a schedule board (shift rotation, gate hours or flight-line schedule)", ("0+", "1"),
+                       {"type": "object", "properties": {"title": {"type": "string"}, "columns": {"type": "array", "minItems": 2, "maxItems": 5,
+                        "items": {"type": "string"}}, "rows": {"type": "array", "minItems": 2, "maxItems": 10, "items": {"type": "array",
+                        "items": {"type": "string"}}}}, "required": ["title", "columns", "rows"]}),
+}
+
+
+def format_text(fmt: str, d: dict) -> str:
+    """Plain text of a format (must match Formats.text in the app)."""
+    if fmt == "signage":
+        return "\n".join(d["lines"])
+    if fmt == "badge_form":
+        return "\n".join(x for x in [d["title"], *(f"{f['label']}: {f['value']}" for f in d["fields"]), d.get("footer", "")] if x.strip())
+    if fmt == "chat":
+        return "\n".join(f"{m['from']}: {m['text']}" for m in d["messages"])
+    if fmt == "shift_log":
+        return "\n".join([f"{d['unit']} {d['date']}", *(f"{e['time']} {e['entry']}" for e in d["entries"])])
+    if fmt == "municipal_notice":
+        return "\n".join(x for x in [d["issuer"], d["title"], *d["paragraphs"], d.get("date", ""), d.get("contact", "")] if x.strip())
+    if fmt == "schedule_board":
+        return "\n".join([d["title"], " | ".join(d["columns"]), *(" | ".join(r) for r in d["rows"])])
+    raise ValueError(fmt)
+
+
+def draft_format(client: llm.Client, lang: str, fmt: str, level: str, bands: dict, taken: set[str], avoid: list[str], rng: random.Random,
+                 tries: int = 3) -> dict | None:
+    desc, _levels, schema = FORMATS[fmt]
+    band = bands["levels"][level]
+    n_items = 2
+    topic = rng.choice(TRACKS["cuas-base-defense"]["topics"] + TOPICS[:20])
+    item = draft_schema("reading", n_items)["properties"]["items"]
+    full = {"type": "object", "properties": {"title": {"type": "string"}, "formatData": schema, "items": item}, "required": ["title", "formatData", "items"]}
+    lo, hi = band["words"]["reading"]
+    feedback = None
+    for _ in range(tries):
+        user = (f"Create ORIGINAL practice material: {desc}, written in {LANG_NAMES[lang]} as a local would write it, at ILR reading level {level} "
+                f"({ILR_READING[level]}). Topic: {topic}. Total length {lo}–{hi} words. Invent names and places; no real personal data. Fill "
+                f"formatData; all text in it in {LANG_NAMES[lang]} (well-known acronyms and times/numbers fine). Give a short English title. Then "
+                f"write exactly {n_items} multiple-choice questions IN ENGLISH about it (4 English choices each, one clearly right from the document, "
+                f"answer = 0-based index, explanation in English quoting the {LANG_NAMES[lang]} words); question types: {', '.join(band['questionTypes'])}.")
+        if avoid:
+            user += "\nDo not reuse: " + "; ".join(avoid[-10:])
+        if feedback:
+            user += f"\nA previous draft was rejected: {feedback}. Fix that."
+        try:
+            raw = client.chat_json([{"role": "system", "content": "You write original authentic-format reading material for language proficiency practice. JSON only."},
+                                    {"role": "user", "content": user}], full, temperature=0.6, max_tokens=3000)
+            body = format_text(fmt, raw["formatData"])
+        except (ValueError, KeyError, TypeError, RuntimeError) as e:
+            if isinstance(e, llm.EndpointDown):
+                raise
+            feedback = f"invalid output ({e})"
+            continue
+        pid = next_index(lang, "reading", level, fmt, taken)
+        passage, items = to_entries({"title": raw.get("title", ""), "body": body, "items": raw.get("items", [])}, lang, "reading", level, fmt, pid, client.model)
+        passage["format"] = fmt
+        passage["formatData"] = raw["formatData"]
+        report = Report()
+        validate_bank({"bank": "x", "language": lang, "title": "x", "license": "x", "attribution": "x", "passages": [passage], "items": items},
+                      lang, "reading", report, bands, True, "draft")
+        if report.errors:
+            feedback = "; ".join(e.split(": ", 1)[-1] for e in report.errors[:4])
+            continue
+        taken.add(pid)
+        avoid.append(passage["title"])
+        return {"passage": passage, "items": items, "check": None}
+    print(f"    last problem ({fmt} {level}): {feedback}", flush=True)
+    return None
+
+
+def cmd_formats(args) -> int:
+    """Drafts --per-format passages of every format per language (split across the format's two levels), checks and merges them."""
+    client = llm.Client.from_args(args.endpoint, args.model, args.check_model)
+    try:
+        client.ping()
+    except llm.EndpointDown as e:
+        print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
+        return 2
+    bands = load_bands()
+    langs = list(langtext.LANGS) if args.language == "all" else args.language.split(",")
+    for lang in langs:
+        bank = load_bank(lang, "reading")
+        rows = read_staging(lang, "reading")
+        taken = {p["id"] for p in bank["passages"]} | {r["passage"]["id"] for r in rows}
+        avoid = [p["title"] for p in bank["passages"] if p.get("format")]
+        rng = random.Random(f"{lang}-formats")
+        for fmt, (_d, levels, _s) in FORMATS.items():
+            have = sum(1 for p in bank["passages"] if p.get("format") == fmt) + sum(1 for r in rows if r["passage"].get("format") == fmt)
+            for k in range(have, args.per_format):
+                try:
+                    row = draft_format(client, lang, fmt, levels[k % len(levels)], bands, taken, avoid, rng)
+                except llm.EndpointDown as e:
+                    print(f"ERROR {e}\nre-run: {e.rerun}", file=sys.stderr)
+                    write_staging(lang, "reading", rows)
+                    return 2
+                if row:
+                    rows.append(row)
+                    write_staging(lang, "reading", rows)
+                    print(f"  drafted {row['passage']['id']}: {row['passage']['title']}", flush=True)
+    for lang in langs:
+        if cmd_check(argparse.Namespace(language=lang, skill="reading"), client):
+            return 2
+        cmd_merge(argparse.Namespace(language=lang, skill="reading"))
+    return 0
+
+
 def pragmatics_topic(lang: str, rng: random.Random) -> tuple[str, str]:
     """(topic, rule) from the language's pragmatics pack (C-07)."""
     p = HERE.parent / "pragmatics" / f"{lang}.json"
@@ -261,6 +389,15 @@ def validate_bank(bank: dict, lang: str, skill: str, report: Report, bands: dict
                 (report.error if strict else report.warn)(where, miss)
         for problem in content_problems(p, [it for it in items if it.get("passageId") == pid], lang):
             report.error(where, problem)
+        if p.get("format"):
+            if p["format"] not in FORMATS:
+                report.error(where, f"unknown format {p['format']}")
+            else:
+                try:
+                    if format_text(p["format"], p.get("formatData") or {}).strip() != str(p.get("body", "")).strip():
+                        report.error(where, "body must be the plain text of formatData")
+                except (KeyError, TypeError):
+                    report.error(where, "formatData does not match its format")
     per_passage: dict[str, int] = {}
     seen: set[str] = set()
     for it in items:
@@ -789,9 +926,13 @@ def main(argv: list[str] | None = None) -> int:
             p.add_argument("--hours", type=float, default=0, help="drafting budget; 0 = none (D-019)")
         llm.add_args(p)
     sub.add_parser("status")
+    f = sub.add_parser("formats", help="authentic-format reading passages (N-08)")
+    f.add_argument("--language", required=True)
+    f.add_argument("--per-format", type=int, default=6)
+    llm.add_args(f)
     args = ap.parse_args(argv)
     return {"validate": cmd_validate, "draft": cmd_draft, "check": cmd_check, "merge": cmd_merge, "fill": cmd_fill,
-            "status": cmd_status}[args.cmd](args)
+            "status": cmd_status, "formats": cmd_formats}[args.cmd](args)
 
 
 if __name__ == "__main__":

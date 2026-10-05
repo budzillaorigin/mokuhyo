@@ -1,5 +1,7 @@
 package app.mokuhyo.opi
 
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 import app.mokuhyo.ai.AiGateway
 import app.mokuhyo.ai.FakeModel
 import kotlinx.coroutines.test.runTest
@@ -21,9 +23,34 @@ class CorrectionsModeTest {
     private val topic = Topic("t", "military_operations", "Drone sighting", "¿Qué ve?")
 
     private suspend fun run(mode: CorrectionsMode): TopicSession {
-        val s = TopicSession("es", profile, topic, AiGateway({ FakeModel(turn) }), mode = mode)
+        val s = TopicSession("es", profile, topic, AiGateway({ FakeModel(turn, turn) }), mode = mode) // reply, then critique
         s.say("Oye, el dron está sobre la puerta norte.")
         return s
+    }
+
+    /** BRIEF_PHASE8 N-00b: a failed critique degrades to "no feedback for this turn"; the partner's reply stands. */
+    @Test
+    fun critiqueFailureKeepsTheReply() = runTest {
+        val fake = FakeModel(turn, "not json", "still not json")
+        val s = TopicSession("es", profile, topic, AiGateway({ fake }), mode = CorrectionsMode.LIVE)
+        val ex = assertNotNull(s.say("Oye, el dron está sobre la puerta norte."))
+        assertEquals("Entendido, mi coronel. ¿Algo más?", ex.reply)
+        assertNull(ex.corrected)
+        assertTrue(ex.feedbackMissing!!.contains("failed checks"), ex.feedbackMissing)
+        assertNull(s.lastError)
+        assertEquals(2, s.transcript.size - 1, "the learner's turn and the reply are both in the transcript")
+    }
+
+    /** BRIEF_PHASE8 N-00b: when no reply comes, the session says why (the UI shows it instead of a generic line). */
+    @Test
+    fun replyFailureExposesTheReason() = runTest {
+        val s = TopicSession("es", profile, topic, AiGateway({ FakeModel(IllegalStateException("couldn't load model: out of memory")) }))
+        assertNull(s.say("Hola"))
+        assertEquals("couldn't load model: out of memory", s.lastError)
+        assertEquals(1, s.transcript.size, "the unanswered turn is not kept")
+        val none = TopicSession("es", profile, topic, AiGateway({ null }))
+        assertNull(none.say("Hola"))
+        assertEquals("no AI model is set up", none.lastError)
     }
 
     @Test

@@ -1,0 +1,21 @@
+-- Daily stand-to sessions (BRIEF_PHASE8 N-12): append-only; the weekly summary card reads them.
+CREATE TABLE stand_to (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    startedAt INTEGER NOT NULL,
+    finishedAt INTEGER NOT NULL,
+    recipeJson TEXT NOT NULL,
+    resultJson TEXT NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX stand_to_lang ON stand_to(learnerId, lang, finishedAt);
+
+insertStandTo:
+INSERT OR IGNORE INTO stand_to VALUES ?;
+
+standTosSince:
+SELECT * FROM stand_to WHERE learnerId = ? AND lang = ? AND deleted IS NULL AND finishedAt >= ? ORDER BY finishedAt;
+
+standTosAll:
+SELECT * FROM stand_to ORDER BY finishedAt;

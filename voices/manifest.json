@@ -10,15 +10,18 @@
     "CC-BY-4.0",
     "CC-BY-SA-4.0",
     "CC0-1.0",
-    "MIT"
+    "MIT",
+    "Unlicense"
   ],
   "voices": [
     {
       "id": "es_ES-davefx-medium",
       "language": "es",
       "gender": "male",
-      "genderSource": "unverified: inferred from the speaker's name (David); the dataset entry does not state gender",
+      "genderSource": "measured: median F0 126 Hz (the dataset entry does not state gender)",
       "engine": "piper",
+      "region": "es-ES",
+      "measuredF0Hz": 126,
       "quality": "medium",
       "files": [
         {
@@ -56,8 +59,10 @@
       "id": "es_ES-sharvard-medium",
       "language": "es",
       "gender": "female",
-      "genderSource": "model config speaker_id_map {M: 0, F: 1}; the corpus has one male and one female speaker",
+      "genderSource": "model config speaker_id_map {M: 0, F: 1}; measured median F0 204 Hz",
       "engine": "piper",
+      "region": "es-ES",
+      "measuredF0Hz": 204,
       "speaker": 1,
       "quality": "medium",
       "files": [
@@ -99,6 +104,8 @@
       "gender": "female",
       "genderSource": "dataset documentation: a single female speaker",
       "engine": "piper",
+      "region": "fr-FR",
+      "measuredF0Hz": 202,
       "quality": "medium",
       "files": [
         {
@@ -137,8 +144,10 @@
       "id": "fr_FR-upmc-medium",
       "language": "fr",
       "gender": "male",
-      "genderSource": "model config speaker_id_map {jessica: 0, pierre: 1}; dataset is the male speaker Pierre",
+      "genderSource": "model config speaker_id_map {jessica: 0, pierre: 1}; dataset is the male speaker Pierre; measured 138 Hz",
       "engine": "piper",
+      "region": "fr-FR",
+      "measuredF0Hz": 138,
       "speaker": 1,
       "quality": "medium",
       "files": [
@@ -180,6 +189,8 @@
       "gender": "male",
       "genderSource": "dataset documentation: Thorsten Müller's own (male) voice",
       "engine": "piper",
+      "region": "de-DE",
+      "measuredF0Hz": 127,
       "quality": "medium",
       "files": [
         {
@@ -217,8 +228,10 @@
       "id": "pt_BR-faber-medium",
       "language": "pt-BR",
       "gender": "male",
-      "genderSource": "unverified: inferred from the speaker's name; the dataset entry does not state gender",
+      "genderSource": "unverified: inferred from the speaker's name; median F0 179 Hz is in the ambiguous band",
       "engine": "piper",
+      "region": "pt-BR",
+      "measuredF0Hz": 179,
       "quality": "medium",
       "files": [
         {
@@ -256,8 +269,10 @@
       "id": "pt_BR-cadu-medium",
       "language": "pt-BR",
       "gender": "male",
-      "genderSource": "unverified: inferred from the speaker's name (Cadu); no female pt_BR voice is available",
+      "genderSource": "measured: median F0 145 Hz; no verified female pt_BR voice is available",
       "engine": "piper",
+      "region": "pt-BR",
+      "measuredF0Hz": 145,
       "quality": "medium",
       "files": [
         {
@@ -295,8 +310,10 @@
       "id": "ru_RU-dmitri-medium",
       "language": "ru",
       "gender": "male",
-      "genderSource": "unverified: inferred from the speaker's name (Dmitri)",
+      "genderSource": "unverified: inferred from the speaker's name (Dmitri); median F0 185 Hz is in the ambiguous band",
       "engine": "piper",
+      "region": "ru-RU",
+      "measuredF0Hz": 185,
       "quality": "medium",
       "files": [
         {
@@ -334,8 +351,10 @@
       "id": "ru_RU-denis-medium",
       "language": "ru",
       "gender": "male",
-      "genderSource": "unverified: inferred from the speaker's name (Denis); ru_RU-irina (female) is excluded",
+      "genderSource": "measured: median F0 144 Hz; ru_RU-irina (female) is excluded",
       "engine": "piper",
+      "region": "ru-RU",
+      "measuredF0Hz": 144,
       "quality": "medium",
       "files": [
         {
@@ -373,8 +392,10 @@
       "id": "fa_IR-amir-medium",
       "language": "fa",
       "gender": "male",
-      "genderSource": "unverified: inferred from the speaker's name (Amir)",
+      "genderSource": "measured: median F0 135 Hz",
       "engine": "piper",
+      "region": "fa-IR",
+      "measuredF0Hz": 135,
       "quality": "medium",
       "files": [
         {
@@ -411,9 +432,11 @@
     {
       "id": "fa_IR-ganji-medium",
       "language": "fa",
-      "gender": "unknown",
-      "genderSource": "unknown: neither the model card nor the dataset page we could reach states the speaker's gender (Ganji is a surname)",
+      "gender": "male",
+      "genderSource": "measured: median F0 98 Hz (neither the model card nor the dataset page states the speaker's gender)",
       "engine": "piper",
+      "region": "fa-IR",
+      "measuredF0Hz": 98,
       "quality": "medium",
       "files": [
         {
@@ -445,6 +468,352 @@
         "datasetUrl": "https://tts.datacula.com/",
         "datasetLicense": "CC0-1.0",
         "baseModel": "fa_IR-amir-medium"
+      }
+    },
+    {
+      "id": "es_ES-sharvard-medium-m",
+      "language": "es",
+      "gender": "male",
+      "genderSource": "model config speaker_id_map {M: 0, F: 1}; measured median F0 125 Hz",
+      "engine": "piper",
+      "model": "es_ES-sharvard-medium",
+      "region": "es-ES",
+      "measuredF0Hz": 125,
+      "speaker": 0,
+      "quality": "medium",
+      "files": [
+        {
+          "name": "es_ES-sharvard-medium.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_ES/sharvard/medium/es_ES-sharvard-medium.onnx",
+          "sha256": "40febfb1679c69a4505ff311dc136e121e3419a13a290ef264fdf43ddedd0fb1",
+          "bytes": 76733615
+        },
+        {
+          "name": "es_ES-sharvard-medium.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_ES/sharvard/medium/es_ES-sharvard-medium.onnx.json",
+          "sha256": "7438c9b699c72b0c3388dae1b68d3f364dc66a2150fe554a1c11f03372957b2c",
+          "bytes": 4903
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_ES/sharvard/medium/MODEL_CARD",
+          "sha256": "37655314d08fe8a0900abc628d3bcbee48ffbdd8fad9306b89525a0ada20fefc",
+          "bytes": 392
+        }
+      ],
+      "license": "CC-BY-3.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data CC-BY-3.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_ES/sharvard/medium",
+        "dataset": "Sharvard corpus (Aubanel, García Lecumberri, Cooke)",
+        "datasetUrl": "https://datashare.ed.ac.uk/handle/10283/574",
+        "datasetLicense": "CC-BY-3.0",
+        "baseModel": "en_US-lessac-medium (Blizzard 2013 Lessac data, research license)",
+        "attribution": "Sharvard corpus © V. Aubanel, M. L. García Lecumberri, M. Cooke, CC BY 3.0"
+      }
+    },
+    {
+      "id": "es_MX-claude-high",
+      "language": "es",
+      "gender": "female",
+      "genderSource": "measured: median F0 192 Hz",
+      "engine": "piper",
+      "region": "es-MX",
+      "measuredF0Hz": 192,
+      "quality": "high",
+      "files": [
+        {
+          "name": "es_MX-claude-high.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_MX/claude/high/es_MX-claude-high.onnx",
+          "sha256": "3ef40a71ea63852cd8ab7e6fa7d2ecdcfa67a0b47c9c48e3f10e02ee02083ea0",
+          "bytes": 63122309
+        },
+        {
+          "name": "es_MX-claude-high.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_MX/claude/high/es_MX-claude-high.onnx.json",
+          "sha256": "1afc81f703c0e4cb3b4d7c0dca096b8b54a98806807f0170cf5eb5557723c12d",
+          "bytes": 4963
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_MX/claude/high/MODEL_CARD",
+          "sha256": "f03da57c1e945f6d709b01e7699d26018e145570139de52ac7569aaa8962a174",
+          "bytes": 247
+        }
+      ],
+      "license": "Apache-2.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data Apache-2.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/es/es_MX/claude/high",
+        "dataset": "claude (Mexican Spanish single-speaker dataset, per the model card)",
+        "datasetUrl": "https://huggingface.co/rhasspy/piper-voices/tree/main/es/es_MX/claude/high",
+        "datasetLicense": "Apache-2.0",
+        "baseModel": "trained by the Piper community; model card states dataset license Apache-2.0"
+      }
+    },
+    {
+      "id": "fr_FR-upmc-medium-f",
+      "language": "fr",
+      "gender": "female",
+      "genderSource": "model config speaker_id_map {jessica: 0, pierre: 1}; measured median F0 242 Hz",
+      "engine": "piper",
+      "model": "fr_FR-upmc-medium",
+      "region": "fr-FR",
+      "measuredF0Hz": 242,
+      "speaker": 0,
+      "quality": "medium",
+      "files": [
+        {
+          "name": "fr_FR-upmc-medium.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx",
+          "sha256": "9abb3800c199148897a9ed64e100d224f3de83579f100044174ad19418f1786f",
+          "bytes": 76733615
+        },
+        {
+          "name": "fr_FR-upmc-medium.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx.json",
+          "sha256": "e8636ec15dfd5d72db37a02cb5320a20f2b8d339f2a0e4337da64c58a33a5868",
+          "bytes": 4996
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/upmc/medium/MODEL_CARD",
+          "sha256": "cf1ac7309e0e04bb159b7e6ae80bc8f66bfce9bdfb3e62ae93a6f57e210ab98a",
+          "bytes": 316
+        }
+      ],
+      "license": "CC-BY-SA-4.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data CC-BY-SA-4.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/upmc/medium",
+        "dataset": "UPMC Jessica (MaryTTS upmc-jessica-data)",
+        "datasetUrl": "https://github.com/marytts/upmc-pierre-data",
+        "datasetLicense": "CC-BY-SA-4.0",
+        "baseModel": "en_US-lessac-medium (Blizzard 2013 Lessac data, research license)",
+        "attribution": "upmc-pierre-data © Université Pierre et Marie Curie / MaryTTS, CC BY-SA 4.0"
+      }
+    },
+    {
+      "id": "fr_FR-mls-medium-m16",
+      "language": "fr",
+      "gender": "male",
+      "genderSource": "measured: speaker 16 (MLS 5764) median F0 109 Hz",
+      "engine": "piper",
+      "model": "fr_FR-mls-medium",
+      "region": "fr-FR",
+      "measuredF0Hz": 109,
+      "speaker": 16,
+      "quality": "medium",
+      "files": [
+        {
+          "name": "fr_FR-mls-medium.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx",
+          "sha256": "0ed223f78466917f2bae05ee90096ce69ab1fdeb251f55590d0e7422d234e162",
+          "bytes": 76733750
+        },
+        {
+          "name": "fr_FR-mls-medium.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json",
+          "sha256": "252b0b0a6e4cc4949e23eccb956f9c779986c32f934f2f7e2191e5fdc2edca61",
+          "bytes": 7036
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/mls/medium/MODEL_CARD",
+          "sha256": "443ca90f1ed8e57d9fb802da6dc19c302d5d9b51ddbfbf27a17f3fb5c37ad154",
+          "bytes": 222
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data CC-BY-4.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fr/fr_FR/mls/medium",
+        "dataset": "Multilingual LibriSpeech, French (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "datasetLicense": "CC-BY-4.0",
+        "baseModel": "trained from scratch (model card)",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)"
+      }
+    },
+    {
+      "id": "de_DE-mls-medium-f12",
+      "language": "de",
+      "gender": "female",
+      "genderSource": "measured: speaker 12 (MLS 5424) median F0 235 Hz",
+      "engine": "piper",
+      "model": "de_DE-mls-medium",
+      "region": "de-DE",
+      "measuredF0Hz": 235,
+      "speaker": 12,
+      "quality": "medium",
+      "files": [
+        {
+          "name": "de_DE-mls-medium.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        {
+          "name": "de_DE-mls-medium.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data CC-BY-4.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium",
+        "dataset": "Multilingual LibriSpeech, German (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "datasetLicense": "CC-BY-4.0",
+        "baseModel": "trained from scratch (model card)",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)"
+      }
+    },
+    {
+      "id": "de_DE-mls-medium-f15",
+      "language": "de",
+      "gender": "female",
+      "genderSource": "measured: speaker 15 (MLS 3885) median F0 248 Hz",
+      "engine": "piper",
+      "model": "de_DE-mls-medium",
+      "region": "de-DE",
+      "measuredF0Hz": 248,
+      "speaker": 15,
+      "quality": "medium",
+      "files": [
+        {
+          "name": "de_DE-mls-medium.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        {
+          "name": "de_DE-mls-medium.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data CC-BY-4.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium",
+        "dataset": "Multilingual LibriSpeech, German (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "datasetLicense": "CC-BY-4.0",
+        "baseModel": "trained from scratch (model card)",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)"
+      }
+    },
+    {
+      "id": "de_DE-mls-medium-m6",
+      "language": "de",
+      "gender": "male",
+      "genderSource": "measured: speaker 6 (MLS 5055) median F0 97 Hz",
+      "engine": "piper",
+      "model": "de_DE-mls-medium",
+      "region": "de-DE",
+      "measuredF0Hz": 97,
+      "speaker": 6,
+      "quality": "medium",
+      "files": [
+        {
+          "name": "de_DE-mls-medium.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        {
+          "name": "de_DE-mls-medium.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data CC-BY-4.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/de/de_DE/mls/medium",
+        "dataset": "Multilingual LibriSpeech, German (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "datasetLicense": "CC-BY-4.0",
+        "baseModel": "trained from scratch (model card)",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)"
+      }
+    },
+    {
+      "id": "pt_PT-tugao-medium",
+      "language": "pt-BR",
+      "gender": "unknown",
+      "genderSource": "unknown: median F0 179 Hz is in the ambiguous band and the dataset entry does not state gender; European Portuguese, offered as the regional variant in the Portuguese pack",
+      "engine": "piper",
+      "region": "pt-PT",
+      "measuredF0Hz": 179,
+      "quality": "medium",
+      "files": [
+        {
+          "name": "pt_PT-tugao-medium.onnx",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/pt/pt_PT/tug%C3%A3o/medium/pt_PT-tug%C3%A3o-medium.onnx",
+          "sha256": "223a7aaca69a155c61897e8ada7c3b13bc306e16c72dbb9c2fed733e2b0927d4",
+          "bytes": 63201294
+        },
+        {
+          "name": "pt_PT-tugao-medium.onnx.json",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/pt/pt_PT/tug%C3%A3o/medium/pt_PT-tug%C3%A3o-medium.onnx.json",
+          "sha256": "fe0918dfc0f1a89264a6eea4afe8e95d8e9fed3cc6c81b5c2f87fcb2b50c7320",
+          "bytes": 5026
+        },
+        {
+          "name": "MODEL_CARD",
+          "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/pt/pt_PT/tug%C3%A3o/medium/MODEL_CARD",
+          "sha256": "1d6c23095980c0c58a044f1cb23e26fdc1d27bd95b68db0b5b0c548788b99d50",
+          "bytes": 282
+        }
+      ],
+      "license": "CC0-1.0",
+      "provenance": {
+        "developer": "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices",
+        "country": "United States / Switzerland",
+        "license": "MIT (rhasspy/piper-voices repository); training data CC0-1.0",
+        "source": "https://huggingface.co/rhasspy/piper-voices/tree/c10ece1aade47bb51c153c893d14e5bf8e5b7117/pt/pt_PT/tugão/medium",
+        "dataset": "tugão (OHF-Voice voice-datasets)",
+        "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
+        "datasetLicense": "CC0-1.0",
+        "baseModel": "en_US-lessac-medium (Blizzard 2013 Lessac data, research license)"
       }
     }
   ],
@@ -483,15 +852,31 @@
     },
     {
       "id": "ar_JO-kareem-medium",
-      "reason": "dataset repository has no license"
+      "reason": "dataset repository (github.com/AliMokhammad/arabicttstrain) has no license file or terms; re-checked 2026-10-04 (N-00e), still excluded"
     },
     {
       "id": "id_ID-news_tts-medium",
-      "reason": "dataset provenance and license unclear"
+      "reason": "model card's dataset link is a Kaggle notebook about a Malayalam corpus and gives no license; re-checked 2026-10-04 (N-00e), still excluded"
     },
     {
-      "id": "es_MX-claude-high",
-      "reason": "allowed (Apache-2.0) but not bundled: at most two voices per language and es already has a female + male medium voice"
+      "id": "es_MX-ald-medium",
+      "reason": "allowed (Unlicense) but not bundled: median F0 160 Hz leaves its gender unverifiable and es already has two male voices"
+    },
+    {
+      "id": "pt_BR-jeff-medium",
+      "reason": "allowed (CC0) but not bundled: median F0 154 Hz (ambiguous) and pt-BR already has two such voices"
+    },
+    {
+      "id": "ru_RU-ruslan-medium",
+      "reason": "dataset is CC BY-NC-SA 4.0 (non-commercial)"
+    },
+    {
+      "id": "de_DE-pavoque-low",
+      "reason": "dataset is CC BY-NC-SA 4.0 (non-commercial)"
+    },
+    {
+      "id": "fa_IR-reza_ibrahim-medium",
+      "reason": "Quran-recitation dataset: a chanted reading style unsuited to everyday listening passages"
     }
   ],
   "osVoiceLanguages": {
@@ -500,5 +885,69 @@
     "zh-Hans": "OS voice (macOS Tingting; Windows Chinese speech pack)",
     "ar": "OS voice (macOS Majed; Windows Arabic speech pack)",
     "id": "OS voice (macOS Damayanti; Windows Indonesian speech pack)"
-  }
+  },
+  "fallbackOrder": {
+    "ja": [
+      "clip:voicevox (exam listening)",
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "ko": [
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "ar": [
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "zh-Hans": [
+      "clip:chatterbox-multilingual",
+      "os",
+      "text"
+    ],
+    "es": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "fr": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "de": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "pt-BR": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "ru": [
+      "clip:chatterbox-multilingual",
+      "piper",
+      "os",
+      "text"
+    ],
+    "fa": [
+      "clip:piper",
+      "piper",
+      "os",
+      "text"
+    ],
+    "id": [
+      "os",
+      "text"
+    ]
+  },
+  "fallbackNotes": "Live synthesis uses Piper or the OS voice. Chatterbox runs at build time only (D-041). Kokoro-82M (ja; Apache-2.0, hexgrad, StyleTTS 2 lineage) was evaluated for a Tier A live Japanese voice and is not bundled yet — logged in PROGRESS."
 }

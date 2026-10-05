@@ -24,6 +24,7 @@ import app.mokuhyo.desktop.ui.EmptyState
 import app.mokuhyo.desktop.ui.Fonts
 import app.mokuhyo.desktop.ui.SectionCard
 import app.mokuhyo.lang.LanguageModule
+import app.mokuhyo.net.NetworkPolicy
 import java.awt.Desktop
 import java.net.URI
 
@@ -47,7 +48,7 @@ fun ThisMonth(app: AppGraph, module: LanguageModule) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(f.title, fontFamily = Fonts.forLanguage(module.code), fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
                 Text(f.publisher, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
-                OutlinedButton(onClick = {
+                OutlinedButton(enabled = !NetworkPolicy.disabled, onClick = {
                     note = runCatching { Desktop.getDesktop().browse(URI(f.url)); "" }.getOrElse { "Couldn't open a browser: ${f.url}" }
                 }) { Text("Open") }
             }

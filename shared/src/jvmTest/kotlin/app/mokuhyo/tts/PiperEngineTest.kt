@@ -75,6 +75,23 @@ class PiperEngineTest {
         }
     }
 
+    /** BRIEF_PHASE8 N-07 gate: a dialogue renders with distinct voices for distinct speakers in every language that has two. */
+    @Test
+    fun dialoguesRenderWithDistinctVoices(): Unit = runBlocking {
+        val c = catalogOrSkip("dialoguesRenderWithDistinctVoices") ?: return@runBlocking
+        PiperEngine(c).use { engine ->
+            for (lang in c.voices.map { it.spec.language }.distinct()) {
+                val voices = c.voices.filter { it.spec.language == lang }.map { it.spec }
+                if (voices.size < 2) continue
+                val cast = app.mokuhyo.lang.VoiceRotation.assign(voices, listOf("a" to "male", "b" to "female"), "$lang-dialogue-1")
+                val a = assertNotNull(engine.synthesize(sentences.getValue(lang), cast.getValue("a"), 1.0))
+                val b = assertNotNull(engine.synthesize(sentences.getValue(lang), cast.getValue("b"), 1.0))
+                println("dialogue $lang: ${cast.getValue("a").id}/${cast.getValue("a").speaker} vs ${cast.getValue("b").id}/${cast.getValue("b").speaker}")
+                assertTrue(cast.getValue("a") != cast.getValue("b") && !a.contentEquals(b), "$lang: two speakers, two voices")
+            }
+        }
+    }
+
     @Test
     fun oneProcessServesManyRequests(): Unit = runBlocking {
         val c = catalogOrSkip("oneProcessServesManyRequests") ?: return@runBlocking

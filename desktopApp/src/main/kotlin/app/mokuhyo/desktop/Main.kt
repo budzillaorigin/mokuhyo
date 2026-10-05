@@ -20,13 +20,20 @@ import androidx.compose.runtime.LaunchedEffect
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
+    // BRIEF_PHASE8 N-11: no network at all — not even the optional update check or Ollama detection.
+    if ("--no-network" in args || System.getenv("MOKUHYO_NO_NETWORK") == "1") app.mokuhyo.net.NetworkPolicy.disabled = true
     when {
         "--smoke" in args -> exitProcess(Smoke.run(args))
         "--smoke-opi" in args -> exitProcess(SmokeOpi.run(args))
+        "--chatterbox-jobs" in args -> exitProcess(ChatterboxJobs.jobs(args))
+        "--import-clips" in args -> exitProcess(ChatterboxJobs.importClips(args))
+        "--eval-coherence" in args -> exitProcess(EvalSpeaking.coherence(args))
+        "--roundtrip" in args -> exitProcess(LangSmoke.roundtrip(args))
         "--smoke-lang" in args -> exitProcess(LangSmoke.run(args, app.mokuhyo.tts.VoiceService.create()))
         "--screenshots" in args -> exitProcess(Screenshots.run(args))
         "--render-audio" in args -> exitProcess(RenderAudio.run(args))
         "--eval-speaking" in args -> exitProcess(EvalSpeaking.run(args))
+        "--calibrate" in args -> exitProcess(CalibrateSpeaking.run(args))
         "--smoke-opi-full" in args -> exitProcess(SmokeOpiFull.run(args))
     }
     val app = AppGraph()

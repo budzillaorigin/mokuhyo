@@ -120,7 +120,7 @@ class ProgressReport(private val fontsDir: File) {
         w.text("Interviews and conversations", 13f, bold = true)
         if (s.conversations.isEmpty()) w.text("None in this period.", 10f, gray = true)
         s.conversations.forEach { c ->
-            val kind = when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario"; else -> "Conversation" }
+            val kind = when (c.kind) { "OPI_TEST" -> "Interview test"; "OPI" -> "Interview practice"; "SCENARIO" -> "Scenario"; "INTERPRET" -> "Interpretation"; "STORYLINE" -> "Exercise week"; else -> "Conversation" }
             w.text("${dateFmt.format(c.at)} · $kind${c.topic?.let { " · $it" } ?: ""}${c.estimate?.let { " · ILR $it" } ?: ""}${if (c.aiRated) " (AI-rated)" else ""}", 10.5f)
             c.nextSteps.forEach { w.text("   • $it", 9.5f, gray = true) }
             c.aab?.let { a ->

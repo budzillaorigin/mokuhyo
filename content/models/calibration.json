@@ -1,0 +1,78 @@
+{
+ "format": "mokuhyo-calibration/1",
+ "generated": "2026-10-05",
+ "entries": [
+  {
+   "lang": "ja",
+   "tier": "A",
+   "model": "phi4-mini:3.8b",
+   "n": 2,
+   "exact": 0,
+   "within1": 2,
+   "fixture": true
+  },
+  {
+   "lang": "es",
+   "tier": "A",
+   "model": "phi4-mini:3.8b",
+   "n": 3,
+   "exact": 2,
+   "within1": 3,
+   "fixture": true
+  },
+  {
+   "lang": "ja",
+   "tier": "B",
+   "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M",
+   "n": 2,
+   "exact": 0,
+   "within1": 1,
+   "fixture": true
+  },
+  {
+   "lang": "es",
+   "tier": "B",
+   "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M",
+   "n": 3,
+   "exact": 1,
+   "within1": 3,
+   "fixture": true
+  },
+  {
+   "lang": "ja",
+   "tier": "C",
+   "model": "mistral-nemo:12b",
+   "n": 2,
+   "exact": 1,
+   "within1": 2,
+   "fixture": true
+  },
+  {
+   "lang": "es",
+   "tier": "C",
+   "model": "mistral-nemo:12b",
+   "n": 3,
+   "exact": 1,
+   "within1": 3,
+   "fixture": true
+  },
+  {
+   "lang": "ja",
+   "tier": "D",
+   "model": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "n": 2,
+   "exact": 2,
+   "within1": 2,
+   "fixture": true
+  },
+  {
+   "lang": "es",
+   "tier": "D",
+   "model": "mistral-small3.2:24b-instruct-2506-q8_0",
+   "n": 3,
+   "exact": 2,
+   "within1": 3,
+   "fixture": true
+  }
+ ]
+}

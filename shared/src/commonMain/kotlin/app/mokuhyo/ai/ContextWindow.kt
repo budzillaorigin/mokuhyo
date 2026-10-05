@@ -40,4 +40,36 @@ object ContextWindow {
         }
         return items.subList(from, items.size)
     }
+
+    /**
+     * [messages] cut to fit `contextSize − maxTokens − margin` (BRIEF_PHASE8 N-00b; it was never applied before, so long
+     * conversations overflowed the context). Keeps a leading system message and the last message (the current turn)
+     * whole when it can; drops the oldest of the turns in between first; if system + last still don't fit, shortens
+     * the longer of them in its middle. Messages are never reordered.
+     */
+    fun fit(messages: List<ChatMessage>, contextSize: Int, maxTokens: Int, margin: Int = DEFAULT_MARGIN): List<ChatMessage> {
+        val budget = budget(contextSize, maxTokens, margin)
+        if (estimateTokens(messages) <= budget || messages.size <= 1) return shorten(messages, budget)
+        val head = messages.first().takeIf { it.role == Role.SYSTEM }
+        val last = messages.last()
+        val middle = messages.subList(if (head != null) 1 else 0, messages.size - 1)
+        val fixed = listOfNotNull(head, last).sumOf { estimateTokens(it.content) + PER_MESSAGE }
+        val kept = fitLatest(middle, fixed, budget) { estimateTokens(it.content) + PER_MESSAGE }
+        return shorten(listOfNotNull(head) + kept + last, budget)
+    }
+
+    /** Shortens the longest message (keeping its start and end) until the whole list fits [budget]. */
+    private fun shorten(messages: List<ChatMessage>, budget: Int): List<ChatMessage> {
+        var out = messages
+        repeat(8) {
+            val over = estimateTokens(out) - budget
+            if (over <= 0) return out
+            val i = out.indices.maxByOrNull { estimateTokens(out[it].content) } ?: return out
+            val c = out[i].content
+            val keepChars = (c.length - (over * c.length / estimateTokens(c).coerceAtLeast(1)) - 8).coerceAtLeast(0)
+            val cut = if (keepChars <= 0) "" else c.take(keepChars / 2) + " … " + c.takeLast(keepChars / 2)
+            out = out.toMutableList().also { l -> l[i] = out[i].copy(content = cut) }
+        }
+        return out
+    }
 }

@@ -30,6 +30,7 @@ def build_zip(out: Path) -> dict:
         for lang_dir in sorted(p for p in PACKS.iterdir() if p.is_dir()):
             files = [lang_dir / f for f in KEEP if (lang_dir / f).is_file()] + sorted(lang_dir.glob("track-*.json"))
             audio = sorted((lang_dir / "audio").glob("*.ogg")) if (lang_dir / "audio").is_dir() else []
+            audio += [f for f in [lang_dir / "audio" / "voices.json"] if f.is_file()]  # clip voice credits (N-00)
             for f in files + audio:
                 z.write(f, f.relative_to(PACKS).as_posix())
             counts[lang_dir.name] = {"files": len(files), "clips": len(audio)}

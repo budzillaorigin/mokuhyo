@@ -1,0 +1,33 @@
+-- Exercise-week storyline (BRIEF_PHASE8 N-03): a started storyline and one row per day played (append-only; the state
+-- — next day, memory, last choice — is derived from the day rows).
+CREATE TABLE storyline (
+    id TEXT NOT NULL PRIMARY KEY,
+    learnerId TEXT NOT NULL,
+    lang TEXT NOT NULL,
+    personaId TEXT NOT NULL,
+    startedAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX storyline_lang ON storyline(learnerId, lang, startedAt);
+
+CREATE TABLE storyline_day (
+    id TEXT NOT NULL PRIMARY KEY,
+    storylineId TEXT NOT NULL,
+    day INTEGER NOT NULL,
+    json TEXT NOT NULL,
+    createdAt INTEGER NOT NULL,
+    deleted INTEGER
+);
+CREATE INDEX storyline_day_story ON storyline_day(storylineId, day);
+
+insertStoryline:
+INSERT OR IGNORE INTO storyline VALUES ?;
+
+insertStorylineDay:
+INSERT OR IGNORE INTO storyline_day VALUES ?;
+
+storylines:
+SELECT * FROM storyline WHERE learnerId = ? AND lang = ? AND deleted IS NULL ORDER BY startedAt DESC;
+
+storylineDays:
+SELECT * FROM storyline_day WHERE storylineId = ? AND deleted IS NULL ORDER BY day, createdAt;

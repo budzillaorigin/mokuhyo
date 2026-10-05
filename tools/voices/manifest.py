@@ -20,6 +20,7 @@ import json
 import re
 import shutil
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -32,7 +33,7 @@ TIMEOUT = 30
 DOWNLOAD_TIMEOUT = 120
 
 # Training-data licenses that allow redistribution inside a free app (rule 6). SPDX ids.
-ALLOWED = {"CC0-1.0", "CC-BY-3.0", "CC-BY-4.0", "CC-BY-SA-4.0", "Apache-2.0", "MIT"}
+ALLOWED = {"CC0-1.0", "CC-BY-3.0", "CC-BY-4.0", "CC-BY-SA-4.0", "Apache-2.0", "MIT", "Unlicense"}
 
 # How each dataset license appears on a MODEL_CARD "License:" line -> SPDX id.
 CARD_LICENSES = [
@@ -42,7 +43,15 @@ CARD_LICENSES = [
     (re.compile(r"creativecommons\.org/licenses/by-sa/4\.0", re.IGNORECASE), "CC-BY-SA-4.0"),
     (re.compile(r"^apache-?2\.0$", re.IGNORECASE), "Apache-2.0"),
     (re.compile(r"^mit$", re.IGNORECASE), "MIT"),
+    (re.compile(r"unlicense\.org", re.IGNORECASE), "Unlicense"),
+    (re.compile(r"Attribution-ShareAlike 4\.0", re.IGNORECASE), "CC-BY-SA-4.0"),
 ]
+
+# Speaker variety (BRIEF_PHASE8 N-07): up to four voices per language — ideally two female and two male, regional variants
+# where licensed. A multi-speaker model can serve several entries ("model" names the shared files). Gender is measured:
+# "measuredF0Hz" is the median pitch tools/voices/measure.py found (male < 150 Hz, female > 190 Hz); between those the
+# label stays as documented or inferred and genderSource says so.
+MAX_PER_LANGUAGE = 4
 
 PUBLISHER = "Rhasspy / Open Home Foundation (Michael Hansen), published in rhasspy/piper-voices"
 PUBLISHER_COUNTRY = "United States / Switzerland"
@@ -53,23 +62,23 @@ LESSAC = "en_US-lessac-medium (Blizzard 2013 Lessac data, research license)"
 # so plainly when it is only inferred from the speaker's name.
 VOICES = [
     {
-        "id": "es_ES-davefx-medium", "language": "es", "gender": "male", "quality": "medium",
+        "id": "es_ES-davefx-medium", "measuredF0Hz": 126, "language": "es", "gender": "male", "quality": "medium",
         "path": "es/es_ES/davefx/medium", "datasetLicense": "CC0-1.0",
         "dataset": "davefx (OHF-Voice voice-datasets)", "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
         "baseModel": LESSAC,
-        "genderSource": "unverified: inferred from the speaker's name (David); the dataset entry does not state gender",
+        "genderSource": "measured: median F0 126 Hz (the dataset entry does not state gender)",
     },
     {
-        "id": "es_ES-sharvard-medium", "language": "es", "gender": "female", "speaker": 1, "quality": "medium",
+        "id": "es_ES-sharvard-medium", "measuredF0Hz": 204, "language": "es", "gender": "female", "speaker": 1, "quality": "medium",
         "path": "es/es_ES/sharvard/medium", "datasetLicense": "CC-BY-3.0",
         "dataset": "Sharvard corpus (Aubanel, García Lecumberri, Cooke)",
         "datasetUrl": "https://datashare.ed.ac.uk/handle/10283/574",
         "attribution": "Sharvard corpus © V. Aubanel, M. L. García Lecumberri, M. Cooke, CC BY 3.0",
         "baseModel": LESSAC,
-        "genderSource": "model config speaker_id_map {M: 0, F: 1}; the corpus has one male and one female speaker",
+        "genderSource": "model config speaker_id_map {M: 0, F: 1}; measured median F0 204 Hz",
     },
     {
-        "id": "fr_FR-siwis-medium", "language": "fr", "gender": "female", "quality": "medium",
+        "id": "fr_FR-siwis-medium", "measuredF0Hz": 202, "language": "fr", "gender": "female", "quality": "medium",
         "path": "fr/fr_FR/siwis/medium", "datasetLicense": "CC-BY-4.0",
         "dataset": "SIWIS French Speech Synthesis Database (Honnet, Lazaridis, Garner, Yamagishi)",
         "datasetUrl": "https://datashare.is.ed.ac.uk/handle/10283/2353",
@@ -78,62 +87,137 @@ VOICES = [
         "genderSource": "dataset documentation: a single female speaker",
     },
     {
-        "id": "fr_FR-upmc-medium", "language": "fr", "gender": "male", "speaker": 1, "quality": "medium",
+        "id": "fr_FR-upmc-medium", "measuredF0Hz": 138, "language": "fr", "gender": "male", "speaker": 1, "quality": "medium",
         "path": "fr/fr_FR/upmc/medium", "datasetLicense": "CC-BY-SA-4.0",
         "dataset": "UPMC Pierre (MaryTTS upmc-pierre-data)", "datasetUrl": "https://github.com/marytts/upmc-pierre-data",
         "attribution": "upmc-pierre-data © Université Pierre et Marie Curie / MaryTTS, CC BY-SA 4.0",
         "baseModel": LESSAC,
-        "genderSource": "model config speaker_id_map {jessica: 0, pierre: 1}; dataset is the male speaker Pierre",
+        "genderSource": "model config speaker_id_map {jessica: 0, pierre: 1}; dataset is the male speaker Pierre; measured 138 Hz",
     },
     {
-        "id": "de_DE-thorsten-medium", "language": "de", "gender": "male", "quality": "medium",
+        "id": "de_DE-thorsten-medium", "measuredF0Hz": 127, "language": "de", "gender": "male", "quality": "medium",
         "path": "de/de_DE/thorsten/medium", "datasetLicense": "CC0-1.0",
         "dataset": "Thorsten-Voice (Thorsten Müller)", "datasetUrl": "https://github.com/thorstenMueller/Thorsten-Voice",
         "baseModel": LESSAC,
         "genderSource": "dataset documentation: Thorsten Müller's own (male) voice",
     },
     {
-        "id": "pt_BR-faber-medium", "language": "pt-BR", "gender": "male", "quality": "medium",
+        "id": "pt_BR-faber-medium", "measuredF0Hz": 179, "language": "pt-BR", "gender": "male", "quality": "medium",
         "path": "pt/pt_BR/faber/medium", "datasetLicense": "CC0-1.0",
         "dataset": "faber (OHF-Voice voice-datasets)", "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
         "baseModel": LESSAC,
-        "genderSource": "unverified: inferred from the speaker's name; the dataset entry does not state gender",
+        "genderSource": "unverified: inferred from the speaker's name; median F0 179 Hz is in the ambiguous band",
     },
     {
-        "id": "pt_BR-cadu-medium", "language": "pt-BR", "gender": "male", "quality": "medium",
+        "id": "pt_BR-cadu-medium", "measuredF0Hz": 145, "language": "pt-BR", "gender": "male", "quality": "medium",
         "path": "pt/pt_BR/cadu/medium", "datasetLicense": "CC0-1.0",
         "dataset": "cadu (OHF-Voice voice-datasets)", "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
         "baseModel": LESSAC,
-        "genderSource": "unverified: inferred from the speaker's name (Cadu); no female pt_BR voice is available",
+        "genderSource": "measured: median F0 145 Hz; no verified female pt_BR voice is available",
     },
     {
-        "id": "ru_RU-dmitri-medium", "language": "ru", "gender": "male", "quality": "medium",
+        "id": "ru_RU-dmitri-medium", "measuredF0Hz": 185, "language": "ru", "gender": "male", "quality": "medium",
         "path": "ru/ru_RU/dmitri/medium", "datasetLicense": "CC0-1.0",
         "dataset": "dmitri (OHF-Voice voice-datasets)", "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
         "baseModel": LESSAC,
-        "genderSource": "unverified: inferred from the speaker's name (Dmitri)",
+        "genderSource": "unverified: inferred from the speaker's name (Dmitri); median F0 185 Hz is in the ambiguous band",
     },
     {
-        "id": "ru_RU-denis-medium", "language": "ru", "gender": "male", "quality": "medium",
+        "id": "ru_RU-denis-medium", "measuredF0Hz": 144, "language": "ru", "gender": "male", "quality": "medium",
         "path": "ru/ru_RU/denis/medium", "datasetLicense": "CC0-1.0",
         "dataset": "denis (OHF-Voice voice-datasets)", "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
         "baseModel": LESSAC,
-        "genderSource": "unverified: inferred from the speaker's name (Denis); ru_RU-irina (female) is excluded",
+        "genderSource": "measured: median F0 144 Hz; ru_RU-irina (female) is excluded",
     },
     {
-        "id": "fa_IR-amir-medium", "language": "fa", "gender": "male", "quality": "medium",
+        "id": "fa_IR-amir-medium", "measuredF0Hz": 135, "language": "fa", "gender": "male", "quality": "medium",
         "path": "fa/fa_IR/amir/medium", "datasetLicense": "CC0-1.0",
         "dataset": "Amir (Datacula Persian TTS databases)", "datasetUrl": "https://datacula.com/tts-databases",
         "baseModel": LESSAC,
-        "genderSource": "unverified: inferred from the speaker's name (Amir)",
+        "genderSource": "measured: median F0 135 Hz",
     },
     {
-        "id": "fa_IR-ganji-medium", "language": "fa", "gender": "unknown", "quality": "medium",
+        "id": "fa_IR-ganji-medium", "measuredF0Hz": 98, "language": "fa", "gender": "male", "quality": "medium",
         "path": "fa/fa_IR/ganji/medium", "datasetLicense": "CC0-1.0",
         "dataset": "Ganji (Datacula Persian TTS databases)", "datasetUrl": "https://tts.datacula.com/",
         "baseModel": "fa_IR-amir-medium",
-        "genderSource": "unknown: neither the model card nor the dataset page we could reach states the speaker's "
-                        "gender (Ganji is a surname)",
+        "genderSource": "measured: median F0 98 Hz (neither the model card nor the dataset page states the speaker's gender)",
+    },
+    {
+        "id": "es_ES-sharvard-medium-m", "model": "es_ES-sharvard-medium", "measuredF0Hz": 125, "language": "es", "region": "es-ES",
+        "gender": "male", "speaker": 0, "quality": "medium",
+        "path": "es/es_ES/sharvard/medium", "datasetLicense": "CC-BY-3.0",
+        "dataset": "Sharvard corpus (Aubanel, García Lecumberri, Cooke)",
+        "datasetUrl": "https://datashare.ed.ac.uk/handle/10283/574",
+        "attribution": "Sharvard corpus © V. Aubanel, M. L. García Lecumberri, M. Cooke, CC BY 3.0",
+        "baseModel": LESSAC,
+        "genderSource": "model config speaker_id_map {M: 0, F: 1}; measured median F0 125 Hz",
+    },
+    {
+        "id": "es_MX-claude-high", "measuredF0Hz": 192, "language": "es", "region": "es-MX", "gender": "female", "quality": "high",
+        "path": "es/es_MX/claude/high", "datasetLicense": "Apache-2.0",
+        "dataset": "claude (Mexican Spanish single-speaker dataset, per the model card)",
+        "datasetUrl": "https://huggingface.co/rhasspy/piper-voices/tree/main/es/es_MX/claude/high",
+        "baseModel": "trained by the Piper community; model card states dataset license Apache-2.0",
+        "genderSource": "measured: median F0 192 Hz",
+    },
+    {
+        "id": "fr_FR-upmc-medium-f", "model": "fr_FR-upmc-medium", "measuredF0Hz": 242, "language": "fr", "region": "fr-FR",
+        "gender": "female", "speaker": 0, "quality": "medium",
+        "path": "fr/fr_FR/upmc/medium", "datasetLicense": "CC-BY-SA-4.0",
+        "dataset": "UPMC Jessica (MaryTTS upmc-jessica-data)", "datasetUrl": "https://github.com/marytts/upmc-pierre-data",
+        "attribution": "upmc-pierre-data © Université Pierre et Marie Curie / MaryTTS, CC BY-SA 4.0",
+        "baseModel": LESSAC,
+        "genderSource": "model config speaker_id_map {jessica: 0, pierre: 1}; measured median F0 242 Hz",
+    },
+    {
+        "id": "fr_FR-mls-medium-m16", "model": "fr_FR-mls-medium", "measuredF0Hz": 109, "language": "fr", "region": "fr-FR",
+        "gender": "male", "speaker": 16, "quality": "medium",
+        "path": "fr/fr_FR/mls/medium", "datasetLicense": "CC-BY-4.0",
+        "dataset": "Multilingual LibriSpeech, French (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)",
+        "baseModel": "trained from scratch (model card)",
+        "genderSource": "measured: speaker 16 (MLS 5764) median F0 109 Hz",
+    },
+    {
+        "id": "de_DE-mls-medium-f12", "model": "de_DE-mls-medium", "measuredF0Hz": 235, "language": "de", "region": "de-DE",
+        "gender": "female", "speaker": 12, "quality": "medium",
+        "path": "de/de_DE/mls/medium", "datasetLicense": "CC-BY-4.0",
+        "dataset": "Multilingual LibriSpeech, German (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)",
+        "baseModel": "trained from scratch (model card)",
+        "genderSource": "measured: speaker 12 (MLS 5424) median F0 235 Hz",
+    },
+    {
+        "id": "de_DE-mls-medium-f15", "model": "de_DE-mls-medium", "measuredF0Hz": 248, "language": "de", "region": "de-DE",
+        "gender": "female", "speaker": 15, "quality": "medium",
+        "path": "de/de_DE/mls/medium", "datasetLicense": "CC-BY-4.0",
+        "dataset": "Multilingual LibriSpeech, German (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)",
+        "baseModel": "trained from scratch (model card)",
+        "genderSource": "measured: speaker 15 (MLS 3885) median F0 248 Hz",
+    },
+    {
+        "id": "de_DE-mls-medium-m6", "model": "de_DE-mls-medium", "measuredF0Hz": 97, "language": "de", "region": "de-DE",
+        "gender": "male", "speaker": 6, "quality": "medium",
+        "path": "de/de_DE/mls/medium", "datasetLicense": "CC-BY-4.0",
+        "dataset": "Multilingual LibriSpeech, German (Pratap et al., Meta AI; LibriVox public-domain recordings)",
+        "datasetUrl": "https://www.openslr.org/94/",
+        "attribution": "Multilingual LibriSpeech © Meta Platforms, Inc., CC BY 4.0; recordings from LibriVox (public domain)",
+        "baseModel": "trained from scratch (model card)",
+        "genderSource": "measured: speaker 6 (MLS 5055) median F0 97 Hz",
+    },
+    {
+        "id": "pt_PT-tugao-medium", "remoteId": "pt_PT-tugão-medium", "measuredF0Hz": 179, "language": "pt-BR", "region": "pt-PT",
+        "gender": "unknown", "quality": "medium",
+        "path": "pt/pt_PT/tugão/medium", "datasetLicense": "CC0-1.0",
+        "dataset": "tugão (OHF-Voice voice-datasets)", "datasetUrl": "https://github.com/OHF-Voice/voice-datasets",
+        "baseModel": LESSAC,
+        "genderSource": "unknown: median F0 179 Hz is in the ambiguous band and the dataset entry does not state gender; European "
+                        "Portuguese, offered as the regional variant in the Portuguese pack",
     },
 ]
 
@@ -148,12 +232,29 @@ EXCLUDED = [
                "only runs eSpeak-phoneme voices. Also fine-tuned from zh_CN-xiao_ya (non-commercial dataset)"},
     {"id": "ru_RU-irina-medium", "reason": "dataset license unknown"},
     {"id": "fr_FR-tom-medium", "reason": "dataset is AGPL (not a content license; copyleft terms unclear for weights)"},
-    {"id": "ar_JO-kareem-medium", "reason": "dataset repository has no license"},
-    {"id": "id_ID-news_tts-medium", "reason": "dataset provenance and license unclear"},
-    {"id": "es_MX-claude-high",
-     "reason": "allowed (Apache-2.0) but not bundled: at most two voices per language and es already has a "
-               "female + male medium voice"},
+    {"id": "ar_JO-kareem-medium", "reason": "dataset repository (github.com/AliMokhammad/arabicttstrain) has no license file or "
+                                            "terms; re-checked 2026-10-04 (N-00e), still excluded"},
+    {"id": "id_ID-news_tts-medium", "reason": "model card's dataset link is a Kaggle notebook about a Malayalam corpus and gives no "
+                                              "license; re-checked 2026-10-04 (N-00e), still excluded"},
+    {"id": "es_MX-ald-medium", "reason": "allowed (Unlicense) but not bundled: median F0 160 Hz leaves its gender unverifiable and es already has two male voices"},
+    {"id": "pt_BR-jeff-medium", "reason": "allowed (CC0) but not bundled: median F0 154 Hz (ambiguous) and pt-BR already has two such voices"},
+    {"id": "ru_RU-ruslan-medium", "reason": "dataset is CC BY-NC-SA 4.0 (non-commercial)"},
+    {"id": "de_DE-pavoque-low", "reason": "dataset is CC BY-NC-SA 4.0 (non-commercial)"},
+    {"id": "fa_IR-reza_ibrahim-medium", "reason": "Quran-recitation dataset: a chanted reading style unsuited to everyday listening passages"},
 ]
+
+# Fallback order per language (BRIEF_PHASE8 N-00): what speaks a line, first available wins.
+FALLBACK_ORDER = {
+    "ja": ["clip:voicevox (exam listening)", "clip:chatterbox-multilingual", "os", "text"],
+    **{lang: ["clip:chatterbox-multilingual", "os", "text"] for lang in ("ko", "ar", "zh-Hans")},
+    **{lang: ["clip:chatterbox-multilingual", "piper", "os", "text"] for lang in ("es", "fr", "de", "pt-BR", "ru")},
+    "fa": ["clip:piper", "piper", "os", "text"],
+    "id": ["os", "text"],
+}
+FALLBACK_NOTES = (
+    "Live synthesis uses Piper or the OS voice. Chatterbox runs at build time only (D-041). Kokoro-82M (ja; Apache-2.0, "
+    "hexgrad, StyleTTS 2 lineage) was evaluated for a Tier A live Japanese voice and is not bundled yet — logged in PROGRESS."
+)
 
 LANG_FALLBACK = {
     "ja": "OS voice (macOS Kyoko; Windows Japanese speech pack)",
@@ -198,16 +299,19 @@ def write() -> int:
         if re.search(r"\bNC\b|non-commercial", v.get("baseModel", ""), re.IGNORECASE):
             problems.append(f"{v['id']}: fine-tuned from a non-commercial base model ({v['baseModel']})")
             continue
-        tree = http_json(f"{HF}/api/models/{HF_REPO}/tree/{revision}/{v['path']}")
+        tree = http_json(f"{HF}/api/models/{HF_REPO}/tree/{revision}/{urllib.parse.quote(v['path'])}")
         by_name = {Path(e["path"]).name: e for e in tree if e["type"] == "file"}
-        names = [f"{v['id']}.onnx", f"{v['id']}.onnx.json", "MODEL_CARD"]
+        model = v.get("model", v["id"])
+        remote = v.get("remoteId", model)
+        names = [f"{remote}.onnx", f"{remote}.onnx.json", "MODEL_CARD"]
         files = []
         for name in names:
             entry = by_name.get(name)
+            local_name = name.replace(remote, model, 1)
             if entry is None:
                 problems.append(f"{v['id']}: {name} missing from {v['path']}")
                 continue
-            url = f"{HF}/{HF_REPO}/resolve/{revision}/{v['path']}/{name}"
+            url = f"{HF}/{HF_REPO}/resolve/{revision}/{urllib.parse.quote(v['path'] + '/' + name)}"
             if "lfs" in entry:
                 sha, size = entry["lfs"]["oid"], entry["lfs"]["size"]
             else:  # small git file: the API gives a git oid, not SHA-256, so hash it ourselves
@@ -228,13 +332,16 @@ def write() -> int:
                         problems.append(f"{v['id']}: speaker {v['speaker']} out of range (num_speakers {n})")
                     if "speaker" not in v and n > 1:
                         problems.append(f"{v['id']}: multi-speaker model needs a 'speaker'")
-            files.append({"name": name, "url": url, "sha256": sha, "bytes": size})
+            files.append({"name": local_name, "url": url, "sha256": sha, "bytes": size})
         entry = {
             "id": v["id"],
             "language": v["language"],
             "gender": v["gender"],
             "genderSource": v["genderSource"],
             "engine": "piper",
+            **({"model": v["model"]} if "model" in v else {}),
+            "region": v.get("region", v["id"][:5].replace("_", "-")),
+            "measuredF0Hz": v["measuredF0Hz"],
             **({"speaker": v["speaker"]} if "speaker" in v else {}),
             "quality": v["quality"],
             "files": files,
@@ -265,6 +372,8 @@ def write() -> int:
         "voices": voices,
         "excluded": EXCLUDED,
         "osVoiceLanguages": LANG_FALLBACK,
+        "fallbackOrder": FALLBACK_ORDER,
+        "fallbackNotes": FALLBACK_NOTES,
     }
     MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     total = sum(f["bytes"] for v in voices for f in v["files"])
@@ -294,8 +403,18 @@ def check() -> int:
             problems.append(f"{vid}: engine must be 'piper'")
         if v.get("gender") not in ("female", "male", "unknown"):
             problems.append(f"{vid}: gender must be female|male|unknown")
+        model = v.get("model", vid)
         names = {f["name"] for f in v.get("files", [])}
-        for need in (f"{vid}.onnx", f"{vid}.onnx.json"):
+        if not re.fullmatch(r"[A-Za-z0-9_.-]+", vid + model):
+            problems.append(f"{vid}: ids and model names must be ASCII (installer paths)")
+        f0 = v.get("measuredF0Hz")
+        if not isinstance(f0, int | float):
+            problems.append(f"{vid}: measuredF0Hz missing (tools/voices/measure.py)")
+        elif v.get("gender") == "male" and f0 >= 150 and not v.get("genderSource", "").startswith("unverified"):
+            problems.append(f"{vid}: labelled male but measured {f0} Hz without saying it is unverified")
+        elif v.get("gender") == "female" and f0 <= 190 and not v.get("genderSource", "").startswith("unverified"):
+            problems.append(f"{vid}: labelled female but measured {f0} Hz without saying it is unverified")
+        for need in (f"{model}.onnx", f"{model}.onnx.json"):
             if need not in names:
                 problems.append(f"{vid}: files lack {need}")
         for f in v.get("files", []):
@@ -303,8 +422,8 @@ def check() -> int:
                 problems.append(f"{vid}: {f.get('name')} lacks sha256/bytes")
         per_lang[v["language"]] = per_lang.get(v["language"], 0) + 1
     for lang, n in per_lang.items():
-        if n > 2:
-            problems.append(f"{lang}: {n} voices (at most two per language)")
+        if n > MAX_PER_LANGUAGE:
+            problems.append(f"{lang}: {n} voices (at most {MAX_PER_LANGUAGE} per language)")
     for p in problems:
         print("VOICE:", p, file=sys.stderr)
     print(f"voices/manifest.json: {len(data['voices'])} voices, {len(problems)} problem(s)")
@@ -344,7 +463,7 @@ def fetch(target: Path, only: list[str] | None) -> int:
         if only and v["id"] not in only and v["language"] not in only:
             continue
         for f in v["files"]:
-            did = fetch_file(f, target / v["id"] / f["name"])
+            did = fetch_file(f, target / v.get("model", v["id"]) / f["name"])
             print(f"{'fetched' if did else 'ok     '} {v['id']}/{f['name']} ({f['bytes'] / 1e6:.1f} MB)")
     return 0
 

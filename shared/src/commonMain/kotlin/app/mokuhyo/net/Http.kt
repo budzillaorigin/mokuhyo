@@ -37,9 +37,25 @@ data class NetTimeouts(val connectMs: Long, val requestMs: Long?, val socketMs: 
     }
 }
 
-/** The one way shared code creates an [HttpClient]: `expectSuccess = false` and [HttpTimeout] always installed. */
+/**
+ * `--no-network` (BRIEF_PHASE8 N-11): when [disabled], every HTTP request made through [mokuhyoHttpClient] — model
+ * download, update check, Ollama detection, lexicon URL import, endpoints — fails before it reaches the engine.
+ */
+object NetworkPolicy {
+    @kotlin.concurrent.Volatile
+    var disabled: Boolean = false
+}
+
+class NetworkDisabledException(url: String) : IllegalStateException("network access is disabled (--no-network): $url")
+
+private val FailClosed = io.ktor.client.plugins.api.createClientPlugin("MokuhyoNoNetwork") {
+    onRequest { request, _ -> if (NetworkPolicy.disabled) throw NetworkDisabledException(request.url.buildString()) }
+}
+
+/** The one way shared code creates an [HttpClient]: `expectSuccess = false`, [HttpTimeout] and the no-network guard always installed. */
 fun mokuhyoHttpClient(engine: HttpClientEngine, timeouts: NetTimeouts): HttpClient = HttpClient(engine) {
     expectSuccess = false
+    install(FailClosed)
     install(HttpTimeout) {
         connectTimeoutMillis = timeouts.connectMs
         timeouts.requestMs?.let { requestTimeoutMillis = it }

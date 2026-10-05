@@ -515,3 +515,259 @@ installed on Windows yet.
 regenerable build output. Builds now run one at a time, with intermediates removed between them. The Windows
 cross-build needs the macOS app image in `desktopApp/build`, so that image has to be kept or rebuilt
 (`./gradlew :desktopApp:createDistributable`).
+# Phase 9 — Follow-on (BRIEF_PHASE8 Part D; built on branch `phase9` while Phase 8 content drafted, merged after v0.2.0)
+
+## N-02 — Numbers under stress ✅
+- `NumberGrammar` on every `LanguageModule` (ICU4J spell-out + per-language time/date glue: `IcuNumbers`), spelling
+  alphabets (NATO; Japanese katakana NATO and 和文通話表; German DIN 5009; Russian), `NumberItems` (times, dates, MGRS
+  grids, bearing/range, call signs, tail numbers, phone numbers, frequencies, counts, spelling) and an adaptive
+  `NumberDrill`. Listening → **Numbers**: play, type, adaptive on the kinds you miss. No model, no network.
+
+**Gate:** `NumbersTest` — cardinal, ordinal, time and date forms pinned for all 11 languages, 12-hour forms, a 500-item
+generated set per language validates (unique ids, every kind, each item accepts its own answer), the drill adapts.
+
+## N-06 — Degraded audio ✅
+- `Degrade` (16 kHz PCM): RBJ band-pass, synthesized noise beds (pink, radio static, turbine, mains hum, babble,
+  engine) mixed at a target SNR (difficulty 0–1 → +20…0 dB), tanh compression, radio clipping, optional cross-talk.
+  Listening practice shows Conditions (Telephone, VHF/UHF radio, Flightline, Generator room, Crowd, Vehicle interior),
+  a difficulty slider and "Replay clean"; tests never show them and `Degrade.apply(testMode = true)` returns the clean
+  audio. Noise is labelled "synthesized" (no owner recordings were supplied — logged input gap).
+
+**Gate:** `DegradeTest` — band-pass gains, SNR exact to 0.01 dB, deterministic and length-preserving per preset, harder
+is noisier, test mode is always clean, cross-talk mixes in.
+
+## N-09 — Doctrine refresh ✅
+- `tools/terms/refresh.py` diffs a new glossary edition against `terms_en.json` → changed, deprecated, candidates;
+  `docs/LEXICON_MAINTENANCE.md` sets the quarterly procedure and reminder.
+
+**Gate:** `tools/terms/test_refresh.py` on two fixture editions (1 changed, 1 deprecated, 1 candidate; CLI too).
+
+## N-10 — Suggest a term / flag this item ✅
+- `SuggestionStore` (`<data dir>/suggestions.json`): Lexicon → Suggest a term and Flag on each term, Flag on exam
+  feedback and on After Action Brief turns; carried in the `.mokuhyo` bundle (merged by id); Settings → Content →
+  Export suggestions; `tools/items/review.py suggestions <file>` queues them for the curator.
+
+**Gate:** `SuggestionsTest` (bundle round-trip, idempotent merge, standalone export validates, bad input refused);
+`test_review_ingest.py::test_suggestions_queue`.
+
+## N-11 — SBOM and no-network install profile ✅
+- **`--no-network`** (or `MOKUHYO_NO_NETWORK=1`): `NetworkPolicy` plus a client plugin in `mokuhyoHttpClient` (the only
+  way the app makes HTTP clients) refuse every request before it reaches the network; Settings → Privacy says so and
+  the This month links are disabled.
+- **Air-gapped install:** Settings → AI → *Install a model from a file (no network)* — `ModelManager.installFromFile`
+  checks size and SHA-256 against the catalogue before installing.
+- **SBOM:** CycloneDX Gradle plugin (`:desktopApp:cyclonedxDirectBom`, CycloneDX 1.6, runtime classpath); the macOS build
+  produces it, `collect.py` names it `Mokuhyo-<version>-sbom.cdx.json`, and `gate_release` requires it from v0.3.0.
+- `docs/SECURITY_PROFILE.md`: network behaviour, data locations, signing status, provenance rules, air-gapped steps.
+
+**Gate:** `NoNetworkTest` (requests fail closed — the engine is never reached; the update check reports a failure);
+`ModelManagerTest.sideLoadsAVerifiedFileWithoutNetwork`; SBOM generated (155 components). The SBOM-on-release part of
+the gate is checked by `gate_release` at v0.3.0 (N-14).
+
+## N-12 — Daily stand-to ✅
+- `StandToPlanner` builds an 8–10 minute recipe: a numbers set, lexicon items (due terms first, else priority-1 track
+  terms), one listening clip at the learner's band (nearest band with unseen clips), and one speaking turn whose
+  feedback comes at the end — only with a model; without one the time goes to more numbers and terms.
+- Home → **Daily stand-to** (one tap) runs the steps, saves to the `stand_to` log (schema 3 → 4, `3.sqm`, carried in the
+  bundle) and shows this week's summary on the card.
+
+**Gate:** `StandToTest` — full recipe with a model, no speaking turn without one, nearest band and no-clip fallbacks all
+stay within 8–10 minutes, weekly summary arithmetic; migration verified.
+
+## N-13 — Side-by-side terms ✅
+- `SideBySide.rows` matches terms across the enabled languages by seed id; Lexicon → **Compare languages** shows English
+  → each language with its kind, the radio note, source confirmation or badge, and ▶ audio per language; domain
+  filter and search.
+
+**Gate:** `SideBySideTest` (row snapshots for 1, 2 and 3 languages, domain filter and search) and
+`SideBySideRenderTest` (the screen renders for 1, 2 and 3 languages).
+
+## N-01 — Consecutive interpretation drill ✅
+- Speaking → **Interpret**: track dialogue lines chunked into 1–3 sentences (`Chunker`), played in the target language or
+  English, a configurable note-taking pause (0–20 s) with a notes box, the rendering by voice (Whisper in the output
+  language) or typed; `grade_interpretation` scores accuracy, completeness and register (0–5), lists omissions and
+  distortions and gives a better version. Presented After-action (feedback at the end). Variants: **radio relay**
+  (radio-sounding dialogues through the N-06 radio channel) and **sight translation** (a track notice on screen for 45 s).
+- Saved as conversation kind `INTERPRET` (results in the stored record, so the `.mokuhyo` bundle carries them);
+  History shows the results; the PDF report lists the session score.
+
+**Gate:** `InterpretTest` — chunking pinned (joining short lines, splitting long ones, both directions, unspaced
+scripts), grader JSON validates on fixtures (and bad scores are rejected), scripted sessions complete in Spanish and
+Japanese with nothing graded until the end, live grading when asked.
+
+## N-03 — Exercise-week storyline ✅
+- Five linked sessions (`Storyline.DAYS`: arrival and handover → drone sighting → intrusion and QRF → incident with a
+  local national → joint after-action review) with one counterpart chosen from the language's personas. After each day
+  `storyline_summary` stores what the counterpart remembers (facts, a two-sentence summary) and how the learner
+  handled it (the branch key); the next day's situation branches on it and the counterpart's prompt carries the memory.
+  Speaking → Scenarios → **Exercise week**. Culture cards and personas apply as in scenarios.
+- Append-only `storyline` / `storyline_day` rows (schema 4 → 5, `4.sqm`), carried in the bundle; the state is derived.
+
+**Gate:** `StorylineTest` — a scripted five-session run completes with branches following the choices; the day-5 prompt
+recalls the facts of days 1–4 and day 1 recalls none (golden); an invalid summary falls back; the state round-trips
+through a `.mokuhyo` bundle.
+
+## N-07 — Speaker variety ✅ (with logged gaps)
+- `voices/manifest.json`: 19 Piper voices (was 11) — es 4 (2 F incl. es-MX, 2 M), fr 4 (2 F, 2 M), de 4 (2 F, 2 M),
+  pt-BR 3 (incl. pt-PT), ru 2, fa 2. Every entry records developer, country, licenses, dataset, base model, `region`
+  and `measuredF0Hz` (D-040). Multi-speaker models serve several entries through `model`.
+- `VoiceRotation` rotates listening passages by id, gives distinct speakers distinct voices, and fixes one voice per
+  persona; used by pack rendering (`--render-audio`), live passage audio and persona speech.
+
+**Gate:** `manifest.py check` 0 problems; `check_licenses` / `check_provenance` 0 problems; `VoiceRotationTest`
+(4) and `VoiceCatalogTest` pass; `PiperEngineTest.dialoguesRenderWithDistinctVoices` renders a two-speaker dialogue
+with two different voices in es, fr, de, pt-BR, ru and fa (real Piper, real voices).
+
+**Known gaps (logged, not blocking):**
+- No verified female voice for **ru** (irina: no license; ruslan: non-commercial), **fa** (all four candidates measure
+  male) or **pt-BR** (faber 179 Hz and tugão 179 Hz are ambiguous). Dialogues there use two distinct voices whose
+  gender may not match the script.
+- **ja, ko, zh-Hans, ar, id** have no redistributable Piper voice (D-013); they keep the OS voice, so variety depends on
+  the voices the user's OS has installed.
+
+## N-00 — Natural voices and the Windows OS-voice fix ✅ (gaps logged)
+Owner addition to Part D (2026-10-03). Built in the brief's order:
+- **(a) Windows OS voices:** PowerShell scripts go as `-EncodedCommand` (base64 UTF-16LE), so quotes, spaces and
+  Japanese survive Java's launcher; voices are listed from SAPI 5 **and** WinRT `Windows.Media.SpeechSynthesis`
+  (OneCore voices such as Haruka, no registry copy), online-only voices dropped, synthesis through the API that owns
+  the voice; Settings → Speech & audio → "This computer's voices" with **Rescan voices**; on macOS a one-line hint with
+  the System Settings path when only a compact voice is installed. `OsVoiceTest` covers the encoding (quotes, spaces,
+  Japanese), the SAPI + WinRT merge and the hint.
+- **(b) Chatterbox Multilingual** — adopted as the owner's named exception to rule 13 (**D-041**: its speech tokenizer is
+  CosyVoice2's). Runs on the RTX 5090 at build time only (`tools/voices/chatterbox_render.py`, CUDA 12.8 PyTorch, capped
+  threads, below-normal priority on the owner's machine). Chinese is pre-segmented with ICU so the PRC-origin `pkuseg`
+  is never installed. Voices: Chatterbox's single built-in voice is gender-ambiguous, so per the owner's choice the pools
+  are **donated TTS voices only** (Thorsten, OHF-Voice, Sharvard, SIWIS, UPMC, claude — no LibriVox/MLS readers):
+  two female and two male per language, each Whisper-scored ≥ 82 % in every gate language
+  (`voices/chatterbox_voices.json`, `voices/chatterbox_voice_test.txt`). PerTh watermark recorded in `docs/PRIVACY.md`
+  and `docs/LICENSES.md`; the listening screen credits engine and reference voices per clip (`audio/voices.json`).
+- **(d) VOICEVOX** for Japanese exam listening (Tsumugi's vetted characters 春日部つむぎ, 四国めたん, 玄野武宏;
+  per-clip credits): all 92 Japanese exam passages.
+- **(e) Piper `ar_JO` / `id_ID` re-checked:** still no license (Arabic repo has none; the Indonesian card links a
+  Malayalam notebook) — still excluded.
+- Fallback order per language is in `voices/manifest.json` (`fallbackOrder`).
+
+**Gate:**
+- Every shipped Japanese, Korean, Arabic and Chinese listening clip is pre-rendered (ja 100 = 92 VOICEVOX + 8
+  Chatterbox; ko, ar, zh-Hans 99 each).
+- TTS → Whisper round trip (`Mokuhyo --roundtrip`, large-v3-turbo, number-aware token match): **ja 98 % (VOICEVOX) /
+  93 % (Chatterbox), ko 91 %, ar 95 %, zh-Hans 97 %** — all ≥ 80 %. Three clips under 70 % (two ko, one zh) are queued for
+  re-render with the remaining languages.
+- The measurement exposed an app bug: Whisper segments were joined with no space, gluing words together in every
+  spaced language (fixed, `TranscriptJoinTest`).
+- The voice manifest carries the fallback order with provenance; the Chatterbox model and reference voices have
+  provenance rows in `docs/MODELS.md` and `docs/LICENSES.md`; `check_provenance.py` passes with the D-041 exception.
+
+**Known gaps (logged, not blocking):**
+- **Windows checks are the owner's** (no Windows machine here, CI disabled): `--smoke-lang` showing a `ja` voice with
+  Haruka installed, and the WinRT synthesis path.
+- **Live Chatterbox on Tier B+ and Kokoro-82M for Tier A Japanese are not built.** Both need a JVM port (Chatterbox's
+  tokenizers and autoregressive loop over ONNX Runtime; Kokoro's Japanese G2P), a sizeable job for a live path. Every
+  shipped clip already has natural pre-rendered audio; live speech (interviewer, generated content) still uses Piper or
+  the OS voice. Re-run plan: port after v0.3.0.
+- **Spanish, French, German, Portuguese and Russian** clips are still Piper; their Chatterbox render resumes after the
+  Phase 9 drafting frees the GPU (`chatterbox_render.py jobs.jsonl … --shard i/4`, resumable).
+- Indonesian stays on the OS voice; the Malay listening test was not run.
+
+## N-00b — Speaking reliability ✅ (one criterion is a known gap)
+Owner addition to Part D (2026-10-03).
+- **Capture:**
+  - Opens the microphone at its native rate (48 / 44.1 / 16 kHz, mono or stereo) and resamples to 16 kHz.
+  - Voice-activity detection auto-stops after 1.5 s of silence, ignores clicks, and says "No audio detected" with the
+    OS privacy path when the line stays at the noise floor; quiet recordings are gain-normalized.
+  - Transcript confirm / edit / retake before sending (practice; off in interview tests; Settings toggle).
+  - `NSMicrophoneUsageDescription` is in the macOS Info.plist, and `fresh_install_smoke.sh` fails without it.
+- **Whisper:**
+  - The session language is forced, and the question or topic is passed as the initial prompt (new native entry point
+    `nativeTranscribePrompt`; older native builds fall back).
+  - large-v3-turbo is offered in Settings → Speech.
+  - Segments are now joined with spaces in spaced languages; they were glued together.
+- **Model:**
+  - The interviewer is a slot-filling state machine: the session picks phase, target level, topic area and question
+    type, and the model writes only the question. Duplicate questions are rejected and retried.
+  - Role-play turns keep one situation (the model was inventing a new role-play each turn).
+  - The screen says who asked each question (model name, or "scripted question" and why).
+  - The highest runnable tier is recommended (`TierAdvisor`).
+  - Optional Ollama server on the local network (LAN-only address check, rule-13 filtering, `PRIVACY.md`).
+- **Diagnosability:**
+  - The UI shows the gateway's reason instead of "The model didn't answer".
+  - Rolling `logs/mokuhyo.log` in the data dir records each AI call's task, engine, duration, outcome and reason.
+  - Settings → AI → **Test the model** shows the error verbatim, the native variant and the context limit.
+- **Schema load:** reply first (`partner_reply`), critique second (`turn_feedback`). A failed critique means "no feedback
+  for this turn", never a dropped reply; the critique gets 4 minutes on CPU-only machines.
+- **Context and labelling:**
+  - `GgufReader` reads the file's own name and trained context; the context is capped at `n_ctx_train` (EuroLLM-9B
+    opens at 4096, not 8192).
+  - Every prompt is trimmed to fit (`ContextWindow.fit` existed but was never applied).
+  - The engine label comes from the GGUF.
+
+**Gate:**
+- `GgufReaderTest`: a 30-turn conversation stays inside 4096; two files loaded in sequence report each label; on the real
+  files EuroLLM reads 4096, Phi-4-mini reads "Phi 4 Mini Instruct".
+- `VadTest` and `CaptureResampleTest` (native-rate resampling keeps pitch and length).
+- `CorrectionsModeTest`: a critique failure keeps the reply; a reply failure exposes the reason.
+- `AiCallHookTest`, `RollingLogTest`, `LanUrlTest`, `TranscriptJoinTest`, `OpiSessionTest`: role-play continuity and slots.
+- Info.plist key verified in the built app.
+- Full Kotlin suite green (363+).
+
+**Known gap — interviewer coherence** (`eval_speaking.py --coherence`, 2 interviews × 11 languages × 3 tiers; the
+reference model plays a learner at ILR 1–2+ and judges each turn). Three distinct attempts:
+1. Slot-filling interviewer.
+2. Fair harness: a simulated learner instead of fixture answers, and topic changes allowed. The first harness measured
+   itself.
+3. Role-play continuity fix.
+
+Final run:
+
+| tier (model) | sensible turns, mean | languages ≥ 90 % | scripted fallbacks, mean | languages < 10 % |
+|---|---|---|---|---|
+| B (EuroLLM-9B) | 76 % | 2 / 11 | 12 % | 7 / 11 |
+| C (Mistral Nemo 12B) | 87 % | 2 / 11 | 0 % | 11 / 11 |
+| D (Mistral Small 3.2 24B) | 87 % | 5 / 11 | 1 % | 11 / 11 |
+
+The < 10 % fallback target is met on C and D; ≥ 90 % sensible turns is not reached on average (22 turns per cell, so
+±10 points is within noise). Tier B is weakest in fa, id, de, ru, ja. Re-run:
+
+```
+cd tools && uv run --group content python models/eval_speaking.py --coherence --languages all --interviews 2 --no-pull \
+  --models "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M,mistral-nemo:12b,mistral-small3.2:24b-instruct-2506-q8_0"
+```
+
+Table in `docs/MODELS.md` "## Interviewer coherence".
+
+**Owner checks pending:** `AudioCheck` live level and capture on Windows; the macOS microphone prompt on a fresh
+install of 0.3.0.
+
+## N-08 — Authentic-format reading ✅ (small shortfall logged)
+- Six formats rendered as the real document: sign, visitor-badge form, phone message thread (SMS/LINE/WhatsApp), shift
+  log, municipal notice and schedule board (`exam/Formats.kt`, `ui/exam/FormattedPassage.kt`), right-to-left aware,
+  with a "Show as text" toggle that keeps tap-to-define. `body` stays the plain text, so validators, the overlap gate
+  and dictionary lookup work unchanged.
+- Drafted with `gen_dlpt.py formats` at the format's ILR bands (0+–2); the validator checks that `body` is exactly the
+  text of `formatData`. AI-drafted and badged. Format passages enter practice (the text-type menu is built from the
+  pool) and test forms at their band like any reading passage.
+
+**Gate:** `FormatRenderTest` renders every format in Spanish and Arabic (left-to-right and right-to-left), and
+`FormatsTest` parses each fixture. `gen_dlpt.py validate --language all --strict` reports 0 errors. `gate_terms.sh`
+passes (267,767 fields, 0 failing).
+**382 of 396** format passages after three drafting rounds. Still short:
+- de: badge form 5, shift log 4
+- ru: shift log 5
+- ar: municipal notice 3
+- fa: chat 3, municipal notice 3
+- id: schedule board 5
+
+Mostly length or rare-word band misses at ILR 1+/2. Close with:
+`cd tools && uv run --group content python items/gen_dlpt.py formats --language de,ru,ar,fa,id --per-format 6`.
+
+## N-04 — Rater calibration and confidence band ✅ (owner input missing — "uncalibrated")
+- `tools/models/calibrate.py` rates instructor-rated recordings (`tools/sources/calibration/<lang>/`) with the app's
+  own `opi_rate` on each tier's model and writes `content/models/calibration.json` and the agreement table in
+  `docs/MODELS.md` ("## Rater calibration").
+- The interview results show the estimate with a band and the sentence "Based on N calibrated samples for <language> on
+  <tier>", or "Uncalibrated: no instructor-rated samples…" (`opi/Calibration.kt`, `CalibrationTest`).
+
+**Gate:** the harness runs: 20 ratings over 8 language/tier cells on the fixtures (es 3, ja 2), table generated. Every
+cell is marked *fixture* and never counts toward a band, so the app says "uncalibrated" everywhere.
+**Missing owner input (logged):** 10 instructor-rated practice recordings per language with the human ILR rating and
+rationale. Run `cd tools && uv run python models/calibrate.py` once they're in `tools/sources/calibration/<lang>/`.

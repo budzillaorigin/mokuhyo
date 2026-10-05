@@ -89,16 +89,19 @@ class PragmaticsGoldenTest {
     @Test
     fun fixtureTurnsProduceTheExpectedFlag() = runTest {
         fixtures.forEach { f ->
-            val model = FakeModel(output(f))
+            val model = FakeModel(output(f), output(f)) // reply, then the critique (N-00b split)
             val profile = OpiProfile(f.lang, "Use polite register with the learner.")
             val session = TopicSession(f.lang, profile, Topic("t", "military_operations", "Base security", "…"), AiGateway({ model }),
                 persona = persona, culturalNotes = listOf("Address seniors by rank."))
             val ex = assertNotNull(session.say(f.learner), "${f.lang}: ${f.learner}")
             assertEquals(listOf(f.kind), ex.pragmatics.map { it.kind }, "${f.lang}: ${f.learner}")
             assertEquals("1+", ex.turnLevel, "a pragmatic flag does not change the turn level")
-            // The persona and the cultural notes reach the prompt.
-            val system = model.requests.single().messages.first().content
-            assertTrue("Sato Kenji" in system && "Formality 5/5" in system && "Address seniors by rank." in system, f.lang)
+            // The persona reaches the partner's prompt; the cultural notes reach the critique's.
+            assertEquals(2, model.requests.size)
+            val partner = model.requests[0].messages.first().content
+            val critique = model.requests[1].messages.first().content
+            assertTrue("Sato Kenji" in partner && "Formality 5/5" in partner, f.lang)
+            assertTrue("Address seniors by rank." in critique, f.lang)
         }
     }
 
