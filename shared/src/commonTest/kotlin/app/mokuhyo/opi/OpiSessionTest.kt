@@ -26,6 +26,42 @@ class OpiSessionTest {
 
     private fun scripted(test: Boolean = false) = OpiSession("es", profile, bank, rolePlays, AiGateway({ null }), words, test = test, random = Random(1))
 
+    private val distinctQuestions = listOf(
+        "¿Dónde vive usted?", "¿Qué hace los domingos?", "Hábleme de su trabajo.", "¿Cómo era su escuela primaria?",
+        "Compare dos ciudades que conoce.", "¿Qué haría con un millón de euros?", "Buenas tardes, ¿tiene reserva?",
+        "Lo siento, la habitación no está lista.", "¿Prefiere una cama doble?", "Explique su opinión sobre el servicio militar.",
+        "¿Cuál es su comida favorita?", "Describa el último viaje que hizo.", "¿Qué opina del teletrabajo?",
+        "Gracias por su paciencia, ¿algo más?", "¿Le gusta el fútbol?", "¿Qué planes tiene para mañana?",
+    )
+
+    /** BRIEF_PHASE8 N-00b: every role-play turn carries the same situation; only the first sets it up. */
+    @Test
+    fun rolePlayTurnsContinueTheSameSituation() = runTest {
+        val prompts = mutableListOf<String>()
+        var n = 0
+        val model = object : app.mokuhyo.ai.LanguageModel {
+            override val id = "fake"
+            override val isLocal = true
+            override suspend fun complete(request: app.mokuhyo.ai.CompletionRequest): app.mokuhyo.ai.CompletionResult {
+                prompts += request.messages.last().content
+                n++
+                val q = distinctQuestions[(n - 1) % distinctQuestions.size]
+                return app.mokuhyo.ai.CompletionResult("""{"utterance":"$q","english":"Question $n?"}""", "fake engine", null)
+            }
+        }
+        val s = OpiSession("es", profile, bank, rolePlays, AiGateway({ model }), words, random = Random(1))
+        val rolePlayPrompts = mutableListOf<String>()
+        while (true) {
+            val line = s.next() ?: break
+            if (line.phase == OpiPhase.ROLEPLAY) rolePlayPrompts += prompts.last()
+            s.answer("Bueno, yo creo que es una pregunta interesante y quiero contestar con cuidado.")
+        }
+        assertTrue(rolePlayPrompts.size >= 2, "the plan has at least two role-play turns")
+        assertTrue(rolePlayPrompts.all { "You are at a hotel." in it && "receptionist" in it }, "every turn knows the situation: ")
+        assertTrue("set up the role-play situation" in rolePlayPrompts[0] && "already set up" !in rolePlayPrompts[0])
+        assertTrue(rolePlayPrompts.drop(1).all { "already set up" in it && "stay in your role in the same role-play" in it })
+    }
+
     @Test
     fun scriptedFallbackRunsAllFivePhases() = runTest {
         val s = scripted()

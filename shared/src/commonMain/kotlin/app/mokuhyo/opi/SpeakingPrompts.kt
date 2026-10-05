@@ -127,7 +127,7 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
                 (if (input.history.isEmpty()) "The interview is starting.\n" else "Interview so far:\n" + transcript(input.history, "Candidate", "Interviewer") + "\n\n") +
                     "Now: phase ${input.phase.wireName} (turn ${input.turnsInPhase + 1} of this phase). Working level hypothesis: ILR ${input.workingLevel.label} — " +
                     "${IlrSpeaking.describe(input.workingLevel)}. Aim this question at ILR ${aim.label}: ${IlrSpeaking.describe(aim)}." +
-                    (input.rolePlay?.let { " Role-play to set up now: $it" } ?: "") +
+                    (input.rolePlay?.let { " Role-play: $it" } ?: "") +
                     (if (input.domain.isNotBlank() && input.rolePlay == null) " Topic area for this question: ${input.domain}." else "") +
                     (if (input.questionType.isNotBlank()) " Kind of question: ${input.questionType}." else "") +
                     (if (input.usedDomains.isNotEmpty()) " Topic areas already covered: ${input.usedDomains.joinToString()}." else "") +
@@ -149,10 +149,11 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
 
     companion object {
         /** The kind of question each phase and target level calls for (the session's slot, BRIEF_PHASE8 N-00b). */
-        fun questionType(phase: OpiPhase, aim: IlrLevel): String = when (phase) {
+        fun questionType(phase: OpiPhase, aim: IlrLevel, turnInPhase: Int = 0): String = when (phase) {
             OpiPhase.WARMUP -> "an easy personal question (work, daily life, where they live)"
-            OpiPhase.WINDDOWN -> "an easy, friendly closing question"
-            OpiPhase.ROLEPLAY -> "set up the role-play situation and speak your first line in your role"
+            OpiPhase.WINDDOWN -> "an easy, friendly closing question that winds the interview down (a light follow-up, no new demanding topic)"
+            OpiPhase.ROLEPLAY -> if (turnInPhase == 0) "set up the role-play situation and speak your first line in your role"
+                else "stay in your role in the same role-play and reply to what the candidate just said, moving the situation forward"
             else -> when (aim) {
                 IlrLevel.L0, IlrLevel.L0_PLUS, IlrLevel.L1 -> "a simple question about a familiar fact or routine"
                 IlrLevel.L1_PLUS -> "ask them to describe something familiar in some detail"

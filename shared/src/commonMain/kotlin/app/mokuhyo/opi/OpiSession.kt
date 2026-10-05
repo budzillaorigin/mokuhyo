@@ -114,11 +114,15 @@ class OpiSession(
         val aim = targetFor(phase)
         val input = OpiInterviewerTurn.Input(
             language, profile.registerNotes, phase, workingLevel, history.toList(), turnsInPhase,
-            rolePlay?.let { "${it.situation} You play: ${it.interviewerRole}." }?.takeIf { phase == OpiPhase.ROLEPLAY && turnsInPhase == 0 },
+            // Every role-play turn knows the situation and the interviewer's role; only the first sets it up (the model
+            // otherwise invented a new role-play on each turn).
+            rolePlay?.takeIf { phase == OpiPhase.ROLEPLAY }?.let {
+                (if (turnsInPhase == 0) "" else "(already set up — continue it, do not start a new one) ") + "${it.situation} You play: ${it.interviewerRole}."
+            },
             usedDomains.distinct(),
             culturalNotes,
             domain = nextDomain(),
-            questionType = OpiInterviewerTurn.questionType(phase, aim),
+            questionType = OpiInterviewerTurn.questionType(phase, aim, turnsInPhase),
         )
         val task = OpiInterviewerTurn { scripted(it.phase) }
         var reason: String? = null
