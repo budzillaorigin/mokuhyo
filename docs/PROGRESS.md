@@ -668,3 +668,72 @@ Owner addition to Part D (2026-10-03). Built in the brief's order:
 - **Spanish, French, German, Portuguese and Russian** clips are still Piper; their Chatterbox render resumes after the
   Phase 9 drafting frees the GPU (`chatterbox_render.py jobs.jsonl … --shard i/4`, resumable).
 - Indonesian stays on the OS voice; the Malay listening test was not run.
+
+## N-00b — Speaking reliability ✅ (one criterion is a known gap)
+Owner addition to Part D (2026-10-03).
+- **Capture:**
+  - Opens the microphone at its native rate (48 / 44.1 / 16 kHz, mono or stereo) and resamples to 16 kHz.
+  - Voice-activity detection auto-stops after 1.5 s of silence, ignores clicks, and says "No audio detected" with the
+    OS privacy path when the line stays at the noise floor; quiet recordings are gain-normalized.
+  - Transcript confirm / edit / retake before sending (practice; off in interview tests; Settings toggle).
+  - `NSMicrophoneUsageDescription` is in the macOS Info.plist, and `fresh_install_smoke.sh` fails without it.
+- **Whisper:**
+  - The session language is forced, and the question or topic is passed as the initial prompt (new native entry point
+    `nativeTranscribePrompt`; older native builds fall back).
+  - large-v3-turbo is offered in Settings → Speech.
+  - Segments are now joined with spaces in spaced languages; they were glued together.
+- **Model:**
+  - The interviewer is a slot-filling state machine: the session picks phase, target level, topic area and question
+    type, and the model writes only the question. Duplicate questions are rejected and retried.
+  - Role-play turns keep one situation (the model was inventing a new role-play each turn).
+  - The screen says who asked each question (model name, or "scripted question" and why).
+  - The highest runnable tier is recommended (`TierAdvisor`).
+  - Optional Ollama server on the local network (LAN-only address check, rule-13 filtering, `PRIVACY.md`).
+- **Diagnosability:**
+  - The UI shows the gateway's reason instead of "The model didn't answer".
+  - Rolling `logs/mokuhyo.log` in the data dir records each AI call's task, engine, duration, outcome and reason.
+  - Settings → AI → **Test the model** shows the error verbatim, the native variant and the context limit.
+- **Schema load:** reply first (`partner_reply`), critique second (`turn_feedback`). A failed critique means "no feedback
+  for this turn", never a dropped reply; the critique gets 4 minutes on CPU-only machines.
+- **Context and labelling:**
+  - `GgufReader` reads the file's own name and trained context; the context is capped at `n_ctx_train` (EuroLLM-9B
+    opens at 4096, not 8192).
+  - Every prompt is trimmed to fit (`ContextWindow.fit` existed but was never applied).
+  - The engine label comes from the GGUF.
+
+**Gate:**
+- `GgufReaderTest`: a 30-turn conversation stays inside 4096; two files loaded in sequence report each label; on the real
+  files EuroLLM reads 4096, Phi-4-mini reads "Phi 4 Mini Instruct".
+- `VadTest` and `CaptureResampleTest` (native-rate resampling keeps pitch and length).
+- `CorrectionsModeTest`: a critique failure keeps the reply; a reply failure exposes the reason.
+- `AiCallHookTest`, `RollingLogTest`, `LanUrlTest`, `TranscriptJoinTest`, `OpiSessionTest`: role-play continuity and slots.
+- Info.plist key verified in the built app.
+- Full Kotlin suite green (363+).
+
+**Known gap — interviewer coherence** (`eval_speaking.py --coherence`, 2 interviews × 11 languages × 3 tiers; the
+reference model plays a learner at ILR 1–2+ and judges each turn). Three distinct attempts:
+1. Slot-filling interviewer.
+2. Fair harness: a simulated learner instead of fixture answers, and topic changes allowed. The first harness measured
+   itself.
+3. Role-play continuity fix.
+
+Final run:
+
+| tier (model) | sensible turns, mean | languages ≥ 90 % | scripted fallbacks, mean | languages < 10 % |
+|---|---|---|---|---|
+| B (EuroLLM-9B) | 76 % | 2 / 11 | 12 % | 7 / 11 |
+| C (Mistral Nemo 12B) | 87 % | 2 / 11 | 0 % | 11 / 11 |
+| D (Mistral Small 3.2 24B) | 87 % | 5 / 11 | 1 % | 11 / 11 |
+
+The < 10 % fallback target is met on C and D; ≥ 90 % sensible turns is not reached on average (22 turns per cell, so
+±10 points is within noise). Tier B is weakest in fa, id, de, ru, ja. Re-run:
+
+```
+cd tools && uv run --group content python models/eval_speaking.py --coherence --languages all --interviews 2 --no-pull \
+  --models "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M,mistral-nemo:12b,mistral-small3.2:24b-instruct-2506-q8_0"
+```
+
+Table in `docs/MODELS.md` "## Interviewer coherence".
+
+**Owner checks pending:** `AudioCheck` live level and capture on Windows; the macOS microphone prompt on a fresh
+install of 0.3.0.

@@ -52,3 +52,43 @@ Not run yet (`tools/models/calibrate.py`). Every OPI estimate is labelled "uncal
 | `eurollm-9b-instruct-q4km` | ar | 0.78 | B | 1.00 | 0.82 | 0.82 | 0.45 | 2.2 s |
 | `eurollm-9b-instruct-q4km` | es | 0.76 | B | 1.00 | 0.88 | 0.72 | 0.45 | 28.4 s |
 | `eurollm-9b-instruct-q4km` | ja | 0.79 | B | 1.00 | 0.88 | 0.82 | 0.45 | 23.2 s |
+
+## Interviewer coherence
+
+`tools/models/eval_speaking.py --coherence`, last run 2026-10-05 (Ollama on the owner's RTX 5090). Whole practice interviews through the app's own interview session; the reference model plays a learner at ILR 1 to 2+ answering each actual question, then judges each interviewer turn (topic changes between questions are allowed). Targets (BRIEF_PHASE8 N-00b): ≥ 90 % sensible turns and < 10 % scripted fallbacks for Tier B and above.
+
+| model | lang | turns | sensible | model turns sensible | scripted fallbacks | meets |
+|---|---|---|---|---|---|---|
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | ar | 22 | 91% | 90% | 5% | yes |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | de | 22 | 68% | 65% | 9% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | es | 22 | 95% | 95% | 5% | yes |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | fa | 22 | 45% | 35% | 23% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | fr | 22 | 86% | 85% | 9% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | id | 22 | 59% | 55% | 9% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | ja | 22 | 73% | 81% | 27% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | ko | 22 | 82% | 79% | 14% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | pt-BR | 22 | 86% | 86% | 5% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | ru | 22 | 68% | 65% | 9% | no |
+| `hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M` | zh-Hans | 22 | 82% | 79% | 14% | no |
+| `mistral-nemo:12b` | ar | 22 | 86% | 86% | 0% | no |
+| `mistral-nemo:12b` | de | 22 | 86% | 86% | 0% | no |
+| `mistral-nemo:12b` | es | 22 | 82% | 82% | 0% | no |
+| `mistral-nemo:12b` | fa | 22 | 86% | 86% | 0% | no |
+| `mistral-nemo:12b` | fr | 22 | 86% | 86% | 0% | no |
+| `mistral-nemo:12b` | id | 22 | 95% | 95% | 0% | yes |
+| `mistral-nemo:12b` | ja | 22 | 86% | 86% | 0% | no |
+| `mistral-nemo:12b` | ko | 22 | 82% | 81% | 5% | no |
+| `mistral-nemo:12b` | pt-BR | 22 | 91% | 91% | 0% | yes |
+| `mistral-nemo:12b` | ru | 22 | 86% | 86% | 0% | no |
+| `mistral-nemo:12b` | zh-Hans | 22 | 86% | 86% | 0% | no |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | ar | 22 | 91% | 91% | 0% | yes |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | de | 22 | 86% | 85% | 9% | no |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | es | 22 | 77% | 77% | 0% | no |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | fa | 22 | 82% | 82% | 0% | no |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | fr | 22 | 95% | 95% | 0% | yes |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | id | 22 | 73% | 73% | 0% | no |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | ja | 22 | 82% | 82% | 0% | no |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | ko | 22 | 95% | 95% | 0% | yes |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | pt-BR | 22 | 91% | 91% | 0% | yes |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | ru | 22 | 100% | 100% | 0% | yes |
+| `mistral-small3.2:24b-instruct-2506-q8_0` | zh-Hans | 22 | 86% | 86% | 0% | no |
