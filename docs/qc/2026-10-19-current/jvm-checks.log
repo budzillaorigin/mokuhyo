@@ -1,0 +1,111 @@
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:generateCommonMainDictionaryDatabaseInterface UP-TO-DATE
+> Task :shared:generateCommonMainMokuhyoDatabaseInterface UP-TO-DATE
+> Task :shared:generateCommonMainTokenizerDatabaseInterface UP-TO-DATE
+> Task :shared:jvmProcessResources NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :shared:jvmTestProcessResources UP-TO-DATE
+> Task :shared:processJvmTestResources SKIPPED
+> Task :desktopApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :desktopApp:convertXmlValueResourcesForMain NO-SOURCE
+> Task :desktopApp:copyNonXmlValueResourcesForMain NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForMain NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForMain SKIPPED
+> Task :desktopApp:generateActualResourceCollectorsForMain SKIPPED
+> Task :desktopApp:generateComposeResClass SKIPPED
+> Task :desktopApp:assembleMainResources UP-TO-DATE
+> Task :desktopApp:bundledDocs UP-TO-DATE
+> Task :desktopApp:processResources UP-TO-DATE
+> Task :desktopApp:convertXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:copyNonXmlValueResourcesForTest NO-SOURCE
+> Task :desktopApp:prepareComposeResourcesTaskForTest NO-SOURCE
+> Task :desktopApp:generateResourceAccessorsForTest SKIPPED
+> Task :desktopApp:assembleTestResources UP-TO-DATE
+> Task :desktopApp:processTestResources UP-TO-DATE
+> Task :shared:compileKotlinJvm
+w: file:///workspace/mokuhyo/shared/src/jvmMain/kotlin/app/mokuhyo/lang/IcuText.kt:17:36 No cast needed.
+w: file:///workspace/mokuhyo/shared/src/jvmMain/kotlin/app/mokuhyo/report/ProgressReport.kt:302:38 Redundant call of conversion method.
+
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmMainClasses
+> Task :shared:jvmJar UP-TO-DATE
+> Task :shared:compileTestKotlinJvm UP-TO-DATE
+> Task :shared:compileJvmTestJava NO-SOURCE
+> Task :shared:jvmTestClasses UP-TO-DATE
+
+> Task :shared:jvmTest
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+
+LanguageModuleContractTest[jvm] > dictionaryHitsOnKnownWords[jvm] FAILED
+    java.lang.AssertionError at LanguageModuleContractTest.kt:29
+
+LanguageModuleContractTest[jvm] > japaneseLatticeGivesDictionaryFormsAndFurigana[jvm] FAILED
+    java.lang.AssertionError at LanguageModuleContractTest.kt:29
+
+gguf_init_from_reader: invalid magic characters: 'hell', expected 'GGUF'
+llama_model_load: error loading model: llama_model_loader: failed to load model from /tmp/not-a-model7045990867928222301.gguf
+llama_model_load_from_file_impl: failed to load model
+
+> Task :shared:jvmTest
+
+377 tests completed, 2 failed
+
+> Task :shared:jvmTest FAILED
+> Task :desktopApp:compileKotlin UP-TO-DATE
+> Task :desktopApp:compileJava NO-SOURCE
+> Task :desktopApp:classes UP-TO-DATE
+> Task :desktopApp:jar UP-TO-DATE
+> Task :desktopApp:compileTestKotlin
+> Task :desktopApp:compileTestJava NO-SOURCE
+> Task :desktopApp:testClasses UP-TO-DATE
+
+> Task :desktopApp:test
+Picked up JAVA_TOOL_OPTIONS: -Dskiko.data.path=/workspace/.cache/skiko
+
+PassageAudioLoadTest > brokenOggWithNoVoiceIsUnavailableWithAnActionableReason FAILED
+    java.lang.AssertionError at PassageAudioLoadTest.kt:80
+
+PassageAudioLoadTest > brokenOggIsReplacedByTheVoiceServiceAndSaysSo FAILED
+    java.lang.AssertionError at PassageAudioLoadTest.kt:92
+
+PassageAudioLoadTest > brokenClipReachesTheRecoveryControlsWithoutUsingAPlay FAILED
+    java.lang.AssertionError at PassageAudioLoadTest.kt:183
+
+34 tests completed, 3 failed
+
+> Task :desktopApp:test FAILED
+
+[Incubating] Problems report is available at: file:///workspace/mokuhyo/build/reports/problems/problems-report.html
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':shared:jvmTest'.
+> There were failing tests. See the report at: file:///workspace/mokuhyo/shared/build/reports/tests/jvmTest/index.html
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':desktopApp:test'.
+> There were failing tests. See the report at: file:///workspace/mokuhyo/desktopApp/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+==============================================================================
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 1m 22s
+18 actionable tasks: 5 executed, 13 up-to-date

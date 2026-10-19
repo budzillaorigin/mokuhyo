@@ -1,0 +1,10 @@
+// Reproduce the corrupt-clip tests without staged packs shadowing their temporary data-dir fixtures.
+// This does not change the application's resource precedence or remove staged files.
+gradle.projectsEvaluated {
+    def empty = rootProject.layout.buildDirectory.dir('qc-empty-resources').get().asFile
+    empty.mkdirs()
+    rootProject.project(':desktopApp').tasks.withType(Test).configureEach {
+        systemProperty('compose.application.resources.dir', empty.absolutePath)
+        systemProperty('mokuhyo.repo.dir', rootProject.projectDir.absolutePath)
+    }
+}

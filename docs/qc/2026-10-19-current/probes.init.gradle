@@ -1,0 +1,5 @@
+// Diagnostic sources are opt-in and never enter the normal application/test source sets.
+gradle.projectsEvaluated {
+    def desktop = rootProject.project(':desktopApp')
+    desktop.kotlin.sourceSets.getByName('test').kotlin.srcDir(rootProject.file('docs/qc/2026-10-19-current/probes'))
+}
