@@ -1,0 +1,933 @@
+{
+    "language": "ja",
+    "prompts": [
+        {
+            "id": "ja-cuas-probe-01",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "military",
+            "textSha256": "1d3eb6fecd77bf38e2d69f404c4977a0a8964b0217492b1f3fe211bf45be7ed5"
+        },
+        {
+            "id": "ja-cuas-probe-02",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "military",
+            "textSha256": "b242497055cf978a39e26923a469a962c6a275a97f38c30ceee76bfc67a86c53"
+        },
+        {
+            "id": "ja-cuas-probe-03",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "military",
+            "textSha256": "aa481814492c8ed267119764f2bf5d250e08d00a7eaf8a987dc310da5f5427c8"
+        },
+        {
+            "id": "ja-cuas-probe-04",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "military",
+            "textSha256": "4ffb1e25b0f49276bdfd56bc53cf2a47b3c0bb730524055fb055d7ba1e737ecb"
+        },
+        {
+            "id": "ja-cuas-probe-05",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "military",
+            "textSha256": "98d4ffcbba4c532351d6c3e172bb58552449a3a8d589fad2dcf47b5b78a3e6aa"
+        },
+        {
+            "id": "ja-cuas-probe-06",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "military",
+            "textSha256": "df67322a1027e40083aa99b94bd246d2b97bdac9f7b2c205a362b592d8e82562"
+        },
+        {
+            "id": "ja-cuas-probe-07",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "military",
+            "textSha256": "e86ae0feaf9cb45298ad68e49acb3dcd658837d573f665f9f4c8465e82791ee3"
+        },
+        {
+            "id": "ja-cuas-probe-08",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "military",
+            "textSha256": "18c8cefb9f1fee2ffb0d76cf0fe48c2242d20e6b4c629b9c601be222937a8dd0"
+        },
+        {
+            "id": "ja-cuas-probe-09",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "military",
+            "textSha256": "b47833baac9b127984a23e593ee5bdf7609e7c6b8046c05173ca750e998566c5"
+        },
+        {
+            "id": "ja-cuas-probe-10",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "military",
+            "textSha256": "5985c949ad7e640e1b531ca1e9139a6668476b851087db907740b634a5b605c2"
+        },
+        {
+            "id": "ja-cuas-probe-11",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "military",
+            "textSha256": "2586739ecfeeb18c93b02840e3d0dc2255f86dbcdde5664c6ec9036879a03091"
+        },
+        {
+            "id": "ja-cuas-probe-12",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "military",
+            "textSha256": "97b3fdbb53a24e4b223a2b5531c2a83a3df7aa545a3837000c33f50aeac5a05e"
+        },
+        {
+            "id": "ja-q-level_check-0+-01",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "0+",
+            "domain": "personal",
+            "textSha256": "adf223a25143252cc7d4ad3685dcdb7e5457e01788c131d5c9f49b6ecfef2d62"
+        },
+        {
+            "id": "ja-q-level_check-0+-02",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "0+",
+            "domain": "family",
+            "textSha256": "25c7329035771a7bb040a01448d0501e37c8d0b61507caa0f544649f5b130369"
+        },
+        {
+            "id": "ja-q-level_check-0+-03",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "0+",
+            "domain": "work",
+            "textSha256": "995f5ae923d59457cc0a96f7b3dcf4f9b3ba73c7b237c0ddbb8e806212aa7c38"
+        },
+        {
+            "id": "ja-q-level_check-0+-04",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "0+",
+            "domain": "community",
+            "textSha256": "7430207aa66033b9d1dad8d11477848d2361984ece8c4dbf0dbc10a0fd3db57b"
+        },
+        {
+            "id": "ja-q-level_check-0+-05",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "0+",
+            "domain": "current_events",
+            "textSha256": "a7fcf00fe8ddcf060262cf3febd5c7d4ff8695a886c18d5d4d0824b7e461905f"
+        },
+        {
+            "id": "ja-q-level_check-0+-06",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "0+",
+            "domain": "travel",
+            "textSha256": "832a1d057b5c3f4fd023b5ade737a44f43e5b19a58564817646db062f9cec344"
+        },
+        {
+            "id": "ja-q-level_check-1+-01",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1+",
+            "domain": "personal",
+            "textSha256": "bb103004b601a8c1c71a26e889ee745a37b070ec0a7be3d33f04a203f8171834"
+        },
+        {
+            "id": "ja-q-level_check-1+-02",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1+",
+            "domain": "family",
+            "textSha256": "02610f71648fc62acdade44f3b3b694ca75f211679323f71f8c151da5e0e865f"
+        },
+        {
+            "id": "ja-q-level_check-1+-03",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1+",
+            "domain": "work",
+            "textSha256": "391d9374ba0b67e3d81e9fec06be54993865232ebb311fa550ae679e0a28d6a7"
+        },
+        {
+            "id": "ja-q-level_check-1+-04",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1+",
+            "domain": "community",
+            "textSha256": "e0ceaed9f37376a6022a9fe3e3dab7a7fd44bbaa8fa7c747b72cef5eb98588fd"
+        },
+        {
+            "id": "ja-q-level_check-1+-05",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1+",
+            "domain": "current_events",
+            "textSha256": "8ac56b588a765e2785184469e9ea6ca8280b614e796b57aec69e088ef0c0f2e4"
+        },
+        {
+            "id": "ja-q-level_check-1+-06",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1+",
+            "domain": "travel",
+            "textSha256": "c2cdc103d877eeda823e76b13f47ce3bb9598a1bc9bd59eee3938163aa0ccd14"
+        },
+        {
+            "id": "ja-q-level_check-1-01",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1",
+            "domain": "personal",
+            "textSha256": "a2061d04c1e4d7ef39b7ffe5cf78ce51892c069bc7dc234652d6b5b0e6f58c6d"
+        },
+        {
+            "id": "ja-q-level_check-1-02",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1",
+            "domain": "personal",
+            "textSha256": "078ce6c6a8ab48f0000fa4c9b7f831405c77a2338174e9d23b6885b8b0d5c49f"
+        },
+        {
+            "id": "ja-q-level_check-1-03",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1",
+            "domain": "family",
+            "textSha256": "f049181b78325f9d87c3f721befa62806abf29e3a1e266960dabca786cf17a32"
+        },
+        {
+            "id": "ja-q-level_check-1-04",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1",
+            "domain": "work",
+            "textSha256": "e95857def0c03db3701fa77accffb26eb35baa7119c86af966a999ff97786441"
+        },
+        {
+            "id": "ja-q-level_check-1-05",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1",
+            "domain": "community",
+            "textSha256": "1afbf200aa41469922542428ed648b46c287ee0158726ba0c6ba1c6ef10d726c"
+        },
+        {
+            "id": "ja-q-level_check-1-06",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "1",
+            "domain": "current_events",
+            "textSha256": "19be0091652da6d37a6bf510c2e99bcdffe96e25a6684f3189da6c5048622e03"
+        },
+        {
+            "id": "ja-q-level_check-2+-01",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2+",
+            "domain": "abstract",
+            "textSha256": "161c2232819c84b3ef72706a885a049088161e3d5927e9468f0aa8bc9ffaa3f3"
+        },
+        {
+            "id": "ja-q-level_check-2+-02",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2+",
+            "domain": "work",
+            "textSha256": "8a596ccbe679cb992adf01bfa0ce292a04e63c6637759b9538ba26d639a831ea"
+        },
+        {
+            "id": "ja-q-level_check-2+-03",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2+",
+            "domain": "community",
+            "textSha256": "1e922d9d55ed1654bf18c631f29517c1e96fc0230402c13eacdf65fd15cf8763"
+        },
+        {
+            "id": "ja-q-level_check-2+-04",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2+",
+            "domain": "current_events",
+            "textSha256": "00ff92e20035f1bcaac3b99a55d333590dfb8ddea0fb5185dd03a58560c0b244"
+        },
+        {
+            "id": "ja-q-level_check-2+-05",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2+",
+            "domain": "travel",
+            "textSha256": "100173a32a1b02c7717c9528bb9cbcd70d7d26bb6aedafa4a5c259728d2eb420"
+        },
+        {
+            "id": "ja-q-level_check-2+-06",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2+",
+            "domain": "work",
+            "textSha256": "ea4e37ebce8cc222f5290d326f1d15d4a6c2aa68b9621a0073dd7bebeeecdd88"
+        },
+        {
+            "id": "ja-q-level_check-2-01",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "personal",
+            "textSha256": "129152882eb0c01a4204776b0e9b02ee6b07069c9abb4da1d3f5ace0e85d2546"
+        },
+        {
+            "id": "ja-q-level_check-2-02",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "family",
+            "textSha256": "7606d33b5fdf5e4a7a0bc3f678e8153f1ff497ca483853066b790bdf6a7927f1"
+        },
+        {
+            "id": "ja-q-level_check-2-03",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "work",
+            "textSha256": "d4fb1d5c4b0bb67333ba685dd66c88c493ae7faf491aec822cef08bb7319b2f7"
+        },
+        {
+            "id": "ja-q-level_check-2-04",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "community",
+            "textSha256": "7c8103eb1847b392fbd0a232e6872442e09acbc7a91c39038ba56af012430c08"
+        },
+        {
+            "id": "ja-q-level_check-2-05",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "current_events",
+            "textSha256": "bf530dcd165d2aa6dbb6e539656002c6c1b06976d776b0aea838dedb851b8384"
+        },
+        {
+            "id": "ja-q-level_check-2-06",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "2",
+            "domain": "travel",
+            "textSha256": "9c4551899f72bf336cc6924b0678c165421a725b568fd27760872f5cbad6c99f"
+        },
+        {
+            "id": "ja-q-level_check-3-01",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "3",
+            "domain": "current_events",
+            "textSha256": "4df5cc4c5d4de53b22412db98a73a75dde1311c4849ae2af731b0b979285d22b"
+        },
+        {
+            "id": "ja-q-level_check-3-02",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "3",
+            "domain": "personal",
+            "textSha256": "cda56cd423cbb40e52bb94d0cf57b1559305f8a887186a4bdba4767e560f0b34"
+        },
+        {
+            "id": "ja-q-level_check-3-03",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "3",
+            "domain": "abstract",
+            "textSha256": "241693cb356964e1a5686edc40ef4febd4410f749092a39cd267fec842393a7d"
+        },
+        {
+            "id": "ja-q-level_check-3-04",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "3",
+            "domain": "family",
+            "textSha256": "d5fb8c31348d1a78e58875a2d140aec047c85f8029d498de2017f1f15131562d"
+        },
+        {
+            "id": "ja-q-level_check-3-05",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "3",
+            "domain": "travel",
+            "textSha256": "b2e9a9cb33779465c8e2c1a9e265b4a4f1ac304932b483e6c8f0293d5f3e7d8c"
+        },
+        {
+            "id": "ja-q-level_check-3-06",
+            "kind": "question",
+            "phase": "level_check",
+            "level": "3",
+            "domain": "community",
+            "textSha256": "104f51915bfa3fa990d5cc1a96bf790ed577a07587ee574f0273e44c347efeaf"
+        },
+        {
+            "id": "ja-q-probe-0+-01",
+            "kind": "question",
+            "phase": "probe",
+            "level": "0+",
+            "domain": "personal",
+            "textSha256": "e9ff9eb962f7b42b7670a05e1fd4d9269ea1d5e8f7a4aaaaed55d29f50ae8e7b"
+        },
+        {
+            "id": "ja-q-probe-0+-02",
+            "kind": "question",
+            "phase": "probe",
+            "level": "0+",
+            "domain": "family",
+            "textSha256": "9a87b896c9a97ee2b090405c7909b45b37e42a693fa3bfc80265f471c83f6d29"
+        },
+        {
+            "id": "ja-q-probe-0+-03",
+            "kind": "question",
+            "phase": "probe",
+            "level": "0+",
+            "domain": "work",
+            "textSha256": "10e9f3afc9bcddae4c8c9b6a05ad90a1e4c26a50bc0561358688eb4080b51ee7"
+        },
+        {
+            "id": "ja-q-probe-0+-04",
+            "kind": "question",
+            "phase": "probe",
+            "level": "0+",
+            "domain": "community",
+            "textSha256": "c51e1e7c829cd271f340fba73c03229dc6385f405b9dd42cefe427f485fe4a74"
+        },
+        {
+            "id": "ja-q-probe-1+-01",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1+",
+            "domain": "current_events",
+            "textSha256": "ccdfe2b90e92343ce9ee2410b42b3a4e5af351214140092836b261d9ebbc9a6d"
+        },
+        {
+            "id": "ja-q-probe-1+-02",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1+",
+            "domain": "abstract",
+            "textSha256": "0310a265ee310137445177b04fbcdac7dd13457f5b95bc9083271c62a6dbea21"
+        },
+        {
+            "id": "ja-q-probe-1+-03",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1+",
+            "domain": "travel",
+            "textSha256": "e1c79aa21b3ce507884516f87b124c477280fbafc528c817ff734b839da68bfc"
+        },
+        {
+            "id": "ja-q-probe-1+-04",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1+",
+            "domain": "work",
+            "textSha256": "a248319889f230f6f46fbfe3edf31e18759bec4feb780715aa2801f5ef7cbb11"
+        },
+        {
+            "id": "ja-q-probe-1-01",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1",
+            "domain": "personal",
+            "textSha256": "d76bb4956d36777f627e97542826fe8f8100e14a72a4694a8fe9af5052401df5"
+        },
+        {
+            "id": "ja-q-probe-1-02",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1",
+            "domain": "family",
+            "textSha256": "f70631998f4e5d404467bcb762d842f4c120004d62fb156c1ce605cb5dbac2eb"
+        },
+        {
+            "id": "ja-q-probe-1-03",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1",
+            "domain": "work",
+            "textSha256": "730b24255a39343742f38470ed8ab6a1d4d0a5330c9f6d14c11f17d4d9e78b5d"
+        },
+        {
+            "id": "ja-q-probe-1-04",
+            "kind": "question",
+            "phase": "probe",
+            "level": "1",
+            "domain": "community",
+            "textSha256": "213e223df4b7bba5132e2d3d44785cda9d59a8da1c65a5676766d5bb928348b3"
+        },
+        {
+            "id": "ja-q-probe-2+-01",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "current_events",
+            "textSha256": "8260317b3e2ea8f2012bd361f49110f05f65c8df8cc31dcbce3914bca1f38f87"
+        },
+        {
+            "id": "ja-q-probe-2+-02",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "travel",
+            "textSha256": "4c376cab138fce33eaa307392e6ce6c170bb5ae4f80a2a19fdaefe2a9841d456"
+        },
+        {
+            "id": "ja-q-probe-2+-03",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "work",
+            "textSha256": "dff9e466531f13cbc3e384ff5373d252ad5649bad6ce144f48fe6ead1106859a"
+        },
+        {
+            "id": "ja-q-probe-2+-04",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2+",
+            "domain": "community",
+            "textSha256": "4b655edadc78ca5058ac10bcc0c348834b6aa011b15a1b05cac173bfa4c89b58"
+        },
+        {
+            "id": "ja-q-probe-2-01",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2",
+            "domain": "current_events",
+            "textSha256": "320e15f7b2cb5ef53e7ab8920a6bf2efdab163ebf0dfb7aa088a4ff29627f74e"
+        },
+        {
+            "id": "ja-q-probe-2-02",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2",
+            "domain": "travel",
+            "textSha256": "814d76c9df8b6f20fc5e68077e8d4832b64db806eab286ed151fca77b2a35214"
+        },
+        {
+            "id": "ja-q-probe-2-03",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2",
+            "domain": "work",
+            "textSha256": "f2aac41b7af2cb84dd4589cb19f2e372c4faf7b1699d3f24f662c1b90b31e8b9"
+        },
+        {
+            "id": "ja-q-probe-2-04",
+            "kind": "question",
+            "phase": "probe",
+            "level": "2",
+            "domain": "community",
+            "textSha256": "1ae74d98285c0de49efea18829c8edeec2a82838ec8705f7b65859e0c9044cd5"
+        },
+        {
+            "id": "ja-q-probe-3-01",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "current_events",
+            "textSha256": "63edcf90782e7a12791b4ca2ccb3d17322360998e8d0ac4aabe42bde9eaed42d"
+        },
+        {
+            "id": "ja-q-probe-3-02",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "travel",
+            "textSha256": "39a1d09b0cde4799c2803a2f920ddd899d322aeac96f50b0b18542c0289fa148"
+        },
+        {
+            "id": "ja-q-probe-3-03",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "work",
+            "textSha256": "e5dc2def017ed48f3e5ef088994944d50c85a4345a231b715baca4d18e919a3e"
+        },
+        {
+            "id": "ja-q-probe-3-04",
+            "kind": "question",
+            "phase": "probe",
+            "level": "3",
+            "domain": "community",
+            "textSha256": "cf034c2c16d89807c99c6e992592aca0a134e268ab367c8719abfb3069fc958f"
+        },
+        {
+            "id": "ja-q-warmup-0+-01",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "0+",
+            "domain": "personal",
+            "textSha256": "accb3ae4e411c26525a424841839cd481e16398fd76003d38ce44d533116f938"
+        },
+        {
+            "id": "ja-q-warmup-0+-02",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "0+",
+            "domain": "family",
+            "textSha256": "49e0aee41cef52805308753355aea9b1b33149997b71b64aba43acfdbb29713a"
+        },
+        {
+            "id": "ja-q-warmup-0+-03",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "0+",
+            "domain": "work",
+            "textSha256": "1d3365b57d36fda4686765b16787dc74ba0b141e001cb6895a8b2325b488ff4a"
+        },
+        {
+            "id": "ja-q-warmup-0+-04",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "0+",
+            "domain": "community",
+            "textSha256": "1a2a5091b745d373f08114b4441068960eed75486dd4a33918bbbb7ec8ea9213"
+        },
+        {
+            "id": "ja-q-warmup-1+-01",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1+",
+            "domain": "current_events",
+            "textSha256": "64d34739a8a16149d4fa36e7e7bdd9c22cee4cb34e1eb6eb735dd9c48a05d367"
+        },
+        {
+            "id": "ja-q-warmup-1+-02",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1+",
+            "domain": "work",
+            "textSha256": "65eec8f6f6cdb2f0b873355b854a96c0d772c44409a8b5c9375cbd044974cdf0"
+        },
+        {
+            "id": "ja-q-warmup-1+-03",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1+",
+            "domain": "family",
+            "textSha256": "e1a86b91d9908709beb9a2ca0aa97781aa0bd9591c4a6bb00ae7e9498b698760"
+        },
+        {
+            "id": "ja-q-warmup-1+-04",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1+",
+            "domain": "community",
+            "textSha256": "7f03ba952dbcefb8aa64a4a36027e0ac2b1a94076f8c0d7e861e42c10af18579"
+        },
+        {
+            "id": "ja-q-warmup-1-01",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1",
+            "domain": "personal",
+            "textSha256": "a0926d37450ce8b16fa7994e11af5db1de0af500fbf95ce18120dd8d23cf812c"
+        },
+        {
+            "id": "ja-q-warmup-1-02",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1",
+            "domain": "family",
+            "textSha256": "44713cd83d5ac8d89f887a8ebb63c7d7a575383533aa24c4062b0625075cab23"
+        },
+        {
+            "id": "ja-q-warmup-1-03",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1",
+            "domain": "work",
+            "textSha256": "35b4133295facab4185d42a57ff8309761f224e56c63b9c544dd41a64759c8f9"
+        },
+        {
+            "id": "ja-q-warmup-1-04",
+            "kind": "question",
+            "phase": "warmup",
+            "level": "1",
+            "domain": "community",
+            "textSha256": "583f30b53eb7bdfed242f3fe79a14c08347725f2826ba24f7cc5e522967a42ea"
+        },
+        {
+            "id": "ja-q-winddown-1-01",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "1",
+            "domain": "personal",
+            "textSha256": "21ceeace392e10d6f204ad715a69a9879968827c0df01f4560d12a5b17a6cb05"
+        },
+        {
+            "id": "ja-q-winddown-1-02",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "1",
+            "domain": "family",
+            "textSha256": "876eefef60848621b2af0b777c9d55c81c46fb938dcaa7d62a8e01efab2c8ee0"
+        },
+        {
+            "id": "ja-q-winddown-1-03",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "1",
+            "domain": "personal",
+            "textSha256": "a6644e082bf3974a7203371cc54050ba0ff744dfb96cd28aea32d8ea81fa3c96"
+        },
+        {
+            "id": "ja-q-winddown-1-04",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "1",
+            "domain": "current_events",
+            "textSha256": "48ae294444e96913b37b944ffe1f7b2d0984b8086a6195046cef5f69413e0ad8"
+        },
+        {
+            "id": "ja-q-winddown-2-01",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "2",
+            "domain": "personal",
+            "textSha256": "8387d32659531d939dfda59bf09f1793ed366e98a7880b5f49b14c3ab392a48e"
+        },
+        {
+            "id": "ja-q-winddown-2-02",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "2",
+            "domain": "family",
+            "textSha256": "7ae8b694b40f810a5fffd9a119cec129c283c7f0ff622b8cff451845827cf81e"
+        },
+        {
+            "id": "ja-q-winddown-2-03",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "2",
+            "domain": "work",
+            "textSha256": "6170a5b22929f32db5656e4bb6d8b2bb162acccd5c8d82dd4fce93497c6643c0"
+        },
+        {
+            "id": "ja-q-winddown-2-04",
+            "kind": "question",
+            "phase": "winddown",
+            "level": "2",
+            "domain": "community",
+            "textSha256": "47e64e45af9056895ec9b789148b2294c861c35dec458331101b8c21bbc56532"
+        },
+        {
+            "id": "ja-rp-0+-01",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "0+",
+            "domain": "military_operations",
+            "textSha256": "e79dce5c0fbf3deccf0f3935baaf0628f0c19d099bc24ece71760d8b71e886e8"
+        },
+        {
+            "id": "ja-rp-0+-02",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "0+",
+            "domain": "society",
+            "textSha256": "ca8649398c8a7def06af1547559678baaa3fcc18a84e891dd172d134e11baf44"
+        },
+        {
+            "id": "ja-rp-0+-03",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "0+",
+            "domain": "military_operations",
+            "textSha256": "e9079211118243c8ddcc0856b179fad5f29e0d39483f7bfd7e7b166737e23db9"
+        },
+        {
+            "id": "ja-rp-0+-04",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "0+",
+            "domain": "travel_culture",
+            "textSha256": "57491f62f9ed5383bb1730697222c64ba513433c6e59e6af72331e2a71d25fae"
+        },
+        {
+            "id": "ja-rp-1+-01",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1+",
+            "domain": "military_operations",
+            "textSha256": "aa596d1e360dee317d4441f00bb54b573caeea959808797413625a873314ef2e"
+        },
+        {
+            "id": "ja-rp-1+-02",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1+",
+            "domain": "travel_culture",
+            "textSha256": "1ee074acb2ac269fad138393754be9fe21b5739fd71e8dd4a0511606e6b456ce"
+        },
+        {
+            "id": "ja-rp-1+-03",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1+",
+            "domain": "society",
+            "textSha256": "c96a6caf49b2a8b61fe411a3d23b63a4328f3b372a185023b4a9ac7efb312a65"
+        },
+        {
+            "id": "ja-rp-1+-04",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1+",
+            "domain": "society",
+            "textSha256": "a50a422a7e1d665878e9505f910b3ae93e5958d557835555950f80c15df8ce16"
+        },
+        {
+            "id": "ja-rp-1-01",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1",
+            "domain": "travel_culture",
+            "textSha256": "0e3f166bb460e4cda6749b50bf1bee5e3d58919ebe68c986b06909bcbfb6a07a"
+        },
+        {
+            "id": "ja-rp-1-02",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1",
+            "domain": "military_operations",
+            "textSha256": "42ddb69875d00d41eb0c0f83caf1026998b54103b0113e4a36c2b7a78c27515a"
+        },
+        {
+            "id": "ja-rp-1-03",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1",
+            "domain": "daily_life",
+            "textSha256": "619901d28e4efb2eabbbe19a644e7637203c457b184440331ce20e7eeaf0533d"
+        },
+        {
+            "id": "ja-rp-1-04",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "1",
+            "domain": "military_operations",
+            "textSha256": "2bdff82f4b9687f2aa898dff1cd0e1b716df1f56b6eba20e47ac342ebf33c2ea"
+        },
+        {
+            "id": "ja-rp-2+-01",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2+",
+            "domain": "military_operations",
+            "textSha256": "ab55911390ba06097202919f3255c5953d0f2c8cae55f49d0018c29c68ea2659"
+        },
+        {
+            "id": "ja-rp-2+-02",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2+",
+            "domain": "interpreter",
+            "textSha256": "a29258a91f660cdefce70787643897bb6c24d405e855db867926281ec543ccdd"
+        },
+        {
+            "id": "ja-rp-2+-03",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2+",
+            "domain": "daily_life",
+            "textSha256": "7afa55d58e15d824a1f8b6d6a61382a36ce1b1657ee5f3aaa1f29581508cfa74"
+        },
+        {
+            "id": "ja-rp-2+-04",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2+",
+            "domain": "interpreter",
+            "textSha256": "208817e300cee5a2e0086064ac0ae8b999c8bb1456b8026f1676ff98094730be"
+        },
+        {
+            "id": "ja-rp-2-01",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2",
+            "domain": "military_operations",
+            "textSha256": "0c5175bb4f6a6cf38e9536bd856a484e7f9100424109c99ce88cd4d83fafdabb"
+        },
+        {
+            "id": "ja-rp-2-02",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2",
+            "domain": "travel_culture",
+            "textSha256": "0ae47ec50688dfd81ade67bed72add42c2441f7b201160e2fcda0634e9cb29e2"
+        },
+        {
+            "id": "ja-rp-2-03",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2",
+            "domain": "daily_life",
+            "textSha256": "da5fedb1f1d9155ce1f3c98d62b52fc15c234955b62093c2fc92c23c5c72effb"
+        },
+        {
+            "id": "ja-rp-2-04",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "2",
+            "domain": "work_study",
+            "textSha256": "97639a13fd7db10fe8519bb11b3d325ab7b96a69398faaf480e2030f9860ed2e"
+        },
+        {
+            "id": "ja-rp-3-01",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "3",
+            "domain": "military_operations",
+            "textSha256": "22af3fafa8eb9e7a31c045059df7e19c61e51b281e8227972ba7ccb4689eae17"
+        },
+        {
+            "id": "ja-rp-3-02",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "3",
+            "domain": "travel_culture",
+            "textSha256": "ee1a915ba94cb148227db7b6b1ced10c84cfd5b2553ee82d2cb45b0df350b67a"
+        },
+        {
+            "id": "ja-rp-3-03",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "3",
+            "domain": "society",
+            "textSha256": "059f814e5153d67f26ea7966ab9fdfdb4cf23945387a8c5b3e6ba864d6c2302d"
+        },
+        {
+            "id": "ja-rp-3-04",
+            "kind": "roleplay",
+            "phase": "roleplay",
+            "level": "3",
+            "domain": "military_operations",
+            "textSha256": "a9f97ed4f4bb74d85eca297610316c2e1f660ca7763332364097284ab5b53c55"
+        }
+    ]
+}

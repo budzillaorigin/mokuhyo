@@ -20,6 +20,8 @@ data class InterviewerLine(
      * they are what played before the reply failed, and the caller still has to say [text].
      */
     val streamed: List<String> = emptyList(),
+    /** The bank question or role-play card id of a scripted line: its prerendered prompt audio (N5). */
+    val bankId: String? = null,
 ) {
     /** The whole line was already spoken by streaming: the caller must not say it again. */
     val spokenByStream: Boolean get() = engine != null && streamed.isNotEmpty()
@@ -183,7 +185,8 @@ class OpiSession(
             }
         }
         val domain = if (reason == null) input.domain.takeIf { phase != OpiPhase.ROLEPLAY } else out.domain.ifBlank { null }
-        val line = InterviewerLine(out.utterance, out.english, phase, engine, domain?.ifBlank { null }, reason, streamed)
+        val line = InterviewerLine(out.utterance, out.english, phase, engine, domain?.ifBlank { null }, reason, streamed,
+            bankId = out.bankId.takeIf { reason != null })
         records += OpiTurnRecord(records.size, phase, out.utterance, out.english, line.domain, targetFor(phase), workingLevel, engine = engine)
         line.domain?.let { usedDomains += it }
         questionPhase = phase
@@ -323,7 +326,7 @@ class OpiSession(
             if (rp != null && rp.opening !in asked) {
                 rolePlay = rp
                 asked += rp.opening
-                return OpiInterviewerTurn.Output(rp.opening, rp.english, nextFor(phase), "role-play", "roleplay")
+                return OpiInterviewerTurn.Output(rp.opening, rp.english, nextFor(phase), "role-play", "roleplay", bankId = rp.id)
             }
         }
         val index = IlrLevel.lowerRange.indexOf(workingLevel)
@@ -335,7 +338,7 @@ class OpiSession(
             fresh.filter { it.domain == null || it.domain !in usedDomains }.ifEmpty { fresh }.randomOrNull(random)
         } ?: bank.filter { it.phase == wire && it.prompt !in asked }.randomOrNull(random) ?: return null
         asked += q.prompt
-        return OpiInterviewerTurn.Output(q.prompt, q.english, nextFor(phase), "", q.domain.orEmpty())
+        return OpiInterviewerTurn.Output(q.prompt, q.english, nextFor(phase), "", q.domain.orEmpty(), bankId = q.id)
     }
 
     /** The next topic area: an unused one (in a stable shuffled order), else the least used. */

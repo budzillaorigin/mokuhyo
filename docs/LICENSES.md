@@ -110,6 +110,24 @@ Ported algorithms (code in this repo, original license kept):
 
 Clips rendered by Chatterbox carry Resemble AI's inaudible PerTh watermark (AI-generated audio marker).
 
+### Pre-rendered speech (VOICEVOX, build time only; Japanese)
+
+The VOICEVOX engine runs on the render host only (`tools/voices/voicevox_render.py`); no VOICEVOX software or voice
+model ships in the app. Only rendered clips ship, under each character's terms, with the credit the terms require
+(`voices/voicevox_voices.json`, per clip in `packs/ja/audio/voices.json` and `packs/ja/prompts.json`).
+
+| id | Voice | Developer (country) | Terms | Credit / source |
+|---|---|---|---|---|
+| `vv:8` | 春日部つむぎ (Kasukabe Tsumugi) | VOICEVOX (Hiroshiba Kazuyuki, Japan); character © 春日部つくし | VOICEVOX voice model terms + character terms: commercial and non-commercial use with credit | VOICEVOX:春日部つむぎ — https://voicevox.hiroshiba.jp/ · https://github.com/VOICEVOX/voicevox_vvm/blob/main/TERMS.txt |
+| `vv:2` | 四国めたん (Shikoku Metan) | VOICEVOX (Hiroshiba Kazuyuki, Japan); character © SSS LLC | as above: use with credit | VOICEVOX:四国めたん — https://zunko.jp/con_ongen_kiyaku.html |
+| `vv:11` | 玄野武宏 (Kurono Takehiro) | VOICEVOX (Hiroshiba Kazuyuki, Japan); character © 虚空デザイン | as above: use with credit | VOICEVOX:玄野武宏 — https://virvoxproject.wixsite.com/official |
+
+### Prerendered interview prompts (BRIEF_INTERVIEW_SPEED N5)
+
+| id | What | License | Source |
+|---|---|---|---|
+| `prompt-audio` | The scripted question bank and role-play openings of `packs/<lang>/opi.json`, spoken once at build time (`Mokuhyo --prompt-audio`) into `packs/<lang>/audio/prompts/<id>.ogg`; index with text and clip hashes, engine, voice and credit in `packs/<lang>/prompts.json`. Pilot: `es` (Piper `es_ES-davefx-medium`), `ja` (VOICEVOX `vv:8`). | Text: as the OPI pack (`source = "llm"`, CC BY-SA 4.0); audio: the rendering voice's terms (Piper voices table above; VOICEVOX credits above) | `desktopApp/.../PromptClips.kt`. OS voices are never rendered (D-013). |
+
 ## Voice service executables (separate processes, not linked)
 
 Piper runs as a child process (`voices/build/<os>-<arch>/piper/`, staged to `<resources>/voices/piper/`); the app

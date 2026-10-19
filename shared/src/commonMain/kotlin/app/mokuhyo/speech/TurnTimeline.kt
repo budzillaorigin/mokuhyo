@@ -155,7 +155,12 @@ class TurnTimeline(
                     ttsSynthMs = t.ttsSynthMs.takeIf { it > 0 }, ttsAudioMs = t.ttsAudioMs.takeIf { it > 0 },
                     peakRssMb = t.peakRssBytes?.let { it / (1024 * 1024) },
                     events = mine.sortedBy { it.atNanos }.map { TimingReport.Mark(it.stage.wire, it.atNanos / 1_000_000, it.meaningful) },
-                    stages = durations(mine),
+                    stages = durations(mine).let { d ->
+                        // A guided turn's clip: from choosing it to its first sound (target p95 ≤ 300 ms, N5).
+                        val pick = mine.filter { it.stage == TurnStage.TTS_START }.minOfOrNull { it.atNanos }
+                        val sound = mine.filter { it.stage == TurnStage.OUTPUT_START && it.meaningful }.minOfOrNull { it.atNanos }
+                        if (t.prerendered && pick != null && sound != null && sound >= pick) d + (PROMPT_START to (sound - pick) / 1_000_000) else d
+                    },
                 )
             },
         )
@@ -194,6 +199,9 @@ class TurnTimeline(
 
         /** The headline: last learner speech → first meaningful partner audio (endpointing, ASR and queues included). */
         const val FIRST_AUDIO = "first_audio"
+
+        /** A prerendered prompt's start: clip chosen → first sound. */
+        const val PROMPT_START = "prompt_start"
     }
 }
 

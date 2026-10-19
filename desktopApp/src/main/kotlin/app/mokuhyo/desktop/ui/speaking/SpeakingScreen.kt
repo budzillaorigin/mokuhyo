@@ -1,6 +1,8 @@
 package app.mokuhyo.desktop.ui.speaking
 
 import app.mokuhyo.lang.VoiceRotation
+import app.mokuhyo.lang.SpokenAudio
+import app.mokuhyo.lang.VoiceSpec
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -91,6 +93,7 @@ import app.mokuhyo.speech.AudioIO
 import app.mokuhyo.speech.FallbackKind
 import app.mokuhyo.speech.Preflight
 import app.mokuhyo.desktop.InterviewPreflight
+import app.mokuhyo.desktop.PromptClips
 import app.mokuhyo.desktop.ui.ReadinessRow
 import app.mokuhyo.speech.TimelineTrace
 import app.mokuhyo.speech.TurnStage
@@ -385,6 +388,8 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
     var operationFailed by remember { mutableStateOf(false) }
     val questionTextAllowed = !test || delivery.textFallback
     var preflight by remember { mutableStateOf<Preflight.Report?>(null) }
+    // The current question's bank id when it is scripted: its prerendered clip (N5), Repeat included.
+    var lineBankId by remember { mutableStateOf<String?>(null) }
     var preflightJob by remember { mutableStateOf<Job?>(null) }
     var preflightRunning by remember { mutableStateOf(false) }
     // Stage timings for Settings → Speech & audio → Diagnostics (BRIEF_INTERVIEW_SPEED N1): no text, no audio.
@@ -409,8 +414,22 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
         session.gloss(recordIndex, english)
     }
 
-    suspend fun askAloud(text: String) {
-        val outcome = delivery.deliver(delivery.question) { speak(app, text, module.code) } ?: return
+    /**
+     * Says the question: a guided (scripted) one from its prerendered clip when the pack has it (N5, no synthesis wait),
+     * else with the live voice; practice shows the text when neither plays.
+     */
+    suspend fun askAloud(text: String, bankId: String? = lineBankId) {
+        val outcome = delivery.deliver(delivery.question) {
+            val clip = bankId?.let { id ->
+                traceMark(TurnStage.TTS_START)
+                PromptClips.load(app, module.code, id, text)?.also { traceMark(TurnStage.TTS_FIRST_PCM) }
+            }
+            if (clip != null) {
+                timeline.note { prerendered = true }
+                val spec = VoiceSpec(clip.entry.voice ?: "prerendered", module.code, "", "prerendered", clip.entry.credit ?: "")
+                Voice.playRendered(app, SpokenAudio(clip.wav, spec))
+            } else speak(app, text, module.code)
+        } ?: return
         // Practice shows the question when it couldn't be heard; a test waits for the learner to fix it or fall back.
         if (!outcome.ok && !test) showText = true
     }
@@ -503,6 +522,7 @@ private fun InterviewView(app: AppGraph, module: LanguageModule, pack: OpiPack, 
                     return@launch
                 }
                 if (lines.size < session.transcript.size) lines += Turn(Speaker.PARTNER, line.text) to line.english
+                lineBankId = line.bankId
                 delivery.newQuestion(lines.lastIndex)
                 checkpoint()
                 if (line.engine == null) timeline.note { fallback = FallbackKind.ofReason(line.fallbackReason ?: "no AI model is set up") }

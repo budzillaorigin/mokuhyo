@@ -161,7 +161,9 @@ data class TimingReport(
                 .associate { (k, v) -> k to stat(v.map { it.second.stages.getValue(TurnTimeline.FIRST_AUDIO) }) }
             val synth = all.sumOf { it.second.ttsSynthMs ?: 0 }
             val audio = all.sumOf { it.second.ttsAudioMs ?: 0 }
-            val partnerTurns = all.map { it.second }
+            // Rates are over turns that produced a partner line (the answer to the last question opens a turn with none).
+            val partnerStages = setOf(TurnStage.LLM_QUEUED.wire, TurnStage.TTS_START.wire, TurnStage.OUTPUT_START.wire)
+            val partnerTurns = all.map { it.second }.filter { t -> t.fallback != FallbackKind.NONE.wire || t.prerendered || t.events.any { it.stage in partnerStages } }
             return Summary(
                 warm = group(warm),
                 cold = group(cold),
@@ -179,7 +181,7 @@ data class TimingReport(
         const val LONG_ANSWER_MS = 30_000L
 
         val STAGE_ORDER = listOf(TurnTimeline.FIRST_AUDIO, "endpoint", "asr_queue", "asr", "llm_queue", "llm_first_token", "llm_validated",
-            "tts_first_pcm", "output_open", "playback", "cancel")
+            "tts_first_pcm", "output_open", TurnTimeline.PROMPT_START, "playback", "cancel")
 
         private fun round3(d: Double) = (d * 1000).roundToLong() / 1000.0
         private fun fmt(d: Double) = round3(d).toString()

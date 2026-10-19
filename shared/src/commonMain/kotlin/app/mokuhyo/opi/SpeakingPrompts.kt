@@ -97,6 +97,8 @@ class OpiInterviewerTurn(private val fallbackHook: ((Input) -> Output?)? = null)
         @SerialName("next_phase") val nextPhase: OpiPhase? = null,
         val topic: String = "",
         val domain: String = "",
+        /** The bank question or role-play card a scripted line came from (its prerendered audio, N5); never from the model. */
+        @kotlinx.serialization.Transient val bankId: String? = null,
     )
 
     override val name = "opi_interviewer_turn"

@@ -16,6 +16,7 @@ import app.mokuhyo.history.StoredConversation
 import app.mokuhyo.lang.IcuSentences
 import app.mokuhyo.lang.Languages
 import app.mokuhyo.lang.SpokenAudio
+import app.mokuhyo.lang.VoiceSpec
 import app.mokuhyo.speech.SpokenReply
 import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
@@ -163,7 +164,15 @@ object BenchInterview {
                 }
                 if (line == null) return@withContext
                 if (line.engine == null) timeline.note(turn) { fallback = FallbackKind.ofReason(line.fallbackReason ?: "no AI model is set up") }
-                if (!line.spokenByStream) speak(line.text)
+                if (line.spokenByStream) return@withContext
+                // A guided line plays its prerendered clip when the pack has one (N5): the prompt_start stage.
+                val id = line.bankId
+                val clip = id?.let { traceMark(TurnStage.TTS_START); PromptClips.load(app, lang, it, line.text) }
+                if (clip != null) {
+                    traceMark(TurnStage.TTS_FIRST_PCM)
+                    timeline.note(turn) { prerendered = true }
+                    output(SpokenAudio(clip.wav, VoiceSpec(clip.entry.voice ?: "prerendered", lang, "", "prerendered", "")))
+                } else speak(line.text)
             }
 
             // Turn 0: the first question, cold (the model loads on this call).
