@@ -37,8 +37,9 @@ from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
 SOURCES_DIR = os.path.join(REPO, 'tools', 'sources')
-SOURCES_JSON = os.path.join(SOURCES_DIR, 'SOURCES.json')
-CACHE = os.path.join(SOURCES_DIR, '.cache', 'text')
+# Tests point these at a fixture corpus (tools/terms/overlap_fixture.py) so they run without the real source texts.
+SOURCES_JSON = os.environ.get('MOKUHYO_OVERLAP_SOURCES_JSON') or os.path.join(SOURCES_DIR, 'SOURCES.json')
+CACHE = os.environ.get('MOKUHYO_OVERLAP_CACHE') or os.path.join(SOURCES_DIR, '.cache', 'text')
 
 CHAR_LANGS = {'ja', 'zh', 'zh-Hans', 'zh-Hant', 'ko'}   # compared as character streams
 DEFAULT_FIELDS = ['definition', 'definition_en', 'example', 'text', 'prompt', 'answer', 'explanation']
