@@ -3,6 +3,10 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 GRADLE="${GRADLE:-./gradlew}"
+# The tools environment runs on the Python in tools/.python-version (CI run #15: uv picked 3.15 on macOS and
+# mecab-python3 had no wheel). UV_PYTHON overrides any interpreter the caller's environment selects.
+UV_PYTHON=$(tr -d '[:space:]' < tools/.python-version)
+export UV_PYTHON
 echo "== gate_core: Kotlin tests"
 $GRADLE :shared:allTests :desktopApp:test --console=plain
 echo "== gate_core: Python lint + tests"

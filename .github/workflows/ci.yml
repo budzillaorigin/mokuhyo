@@ -30,6 +30,9 @@ jobs:
           java-version: "21"
       - uses: gradle/actions/setup-gradle@v4
       - uses: astral-sh/setup-uv@v6
+      - name: Python for tools/ (tools/.python-version)
+        working-directory: tools
+        run: uv python install
       - name: gate_core
         # The reference PDFs (tools/sources/) are not in git and some are CAC-only (JEL+), so CI runs the term
         # validators without the overlap check; the release machine runs the full gate (D-029).
@@ -62,6 +65,9 @@ jobs:
           java-version: "21"
       - uses: gradle/actions/setup-gradle@v4
       - uses: astral-sh/setup-uv@v6
+      - name: Python for tools/ (tools/.python-version)
+        working-directory: tools
+        run: uv python install
       - name: Linux packaging tools
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y fakeroot dpkg-dev
